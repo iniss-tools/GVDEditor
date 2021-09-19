@@ -4,7 +4,6 @@ using System.Collections.Generic;
 namespace GVDEditor.Entities
 {
     /// <summary>
-    /// 
     /// </summary>
     public sealed class TableTypeModeItem : IEnumerable
     {
@@ -22,7 +21,6 @@ namespace GVDEditor.Entities
         public TableViewMode ViewMode { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public List<string> ItemsKeys { get; set; }
 

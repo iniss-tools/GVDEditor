@@ -12,23 +12,28 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
     <LangVersion>latest</LangVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>C:\Users\filip\Disk Google\INISSToolsPublish\GVDEditor\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <InstallUrl>http://iniss.6f.sk/gvdeditor/gvdeditor-download/</InstallUrl>
+    <ProductName>GVDEditor</ProductName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.7.3.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -66,7 +71,7 @@
     <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>GVDEditor.Program</StartupObject>
@@ -94,7 +99,9 @@
       <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xaml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
@@ -104,9 +111,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\MyScintilla.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MyScintilla.Designer.cs">
+      <DependentUpon>MyScintilla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Audio.cs" />
     <Compile Include="Entities\ChosenReportType.cs" />
-    <Compile Include="Entities\Enumeration.cs" />
     <Compile Include="Entities\ITable.cs" />
     <Compile Include="Forms\FAnalyzer.cs">
       <SubType>Form</SubType>
@@ -121,8 +133,6 @@
       <DependentUpon>FRenameStyle.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\Analyzer.cs" />
-    <Compile Include="XML\ColorCategory.cs" />
-    <Compile Include="XML\ColorSetting.cs" />
     <Compile Include="Entities\Dodatok.cs" />
     <Compile Include="Entities\FyzZvukDirType.cs" />
     <Compile Include="Entities\ImportTrainColumnType.cs" />
@@ -176,39 +186,23 @@
     <Compile Include="Forms\FTabTabRename.Designer.cs">
       <DependentUpon>FTabTabRename.cs</DependentUpon>
     </Compile>
-    <Compile Include="XML\AppFont.cs" />
-    <Compile Include="XML\ControlFonts.cs" />
     <Compile Include="XML\AppShortcuts.cs" />
-    <Compile Include="Tools\AutoUpdater.cs" />
-    <Compile Include="XML\CommandShortcut.cs" />
-    <Compile Include="Tools\CSVStringParser.cs" />
-    <Compile Include="XML\ControlsColorScheme.cs" />
-    <Compile Include="XML\DesktopColumn.cs" />
     <Compile Include="XML\DesktopColumns.cs" />
-    <Compile Include="XML\SettingsNaming.cs" />
+    <Compile Include="XML\GVDEditorSettingsNaming.cs" />
     <Compile Include="XML\StartupINISS.cs" />
-    <Compile Include="XML\Style.cs" />
+    <Compile Include="XML\GVDEditorStyle.cs" />
     <Compile Include="XML\TrainTypeColumnScheme.cs" />
     <Compile Include="Tools\ElisParser.cs" />
-    <Compile Include="Tools\FormUtils.cs" />
-    <Compile Include="Tools\DateRem.cs" />
-    <Compile Include="Tools\Interval.cs" />
+    <Compile Include="Tools\DateLimit.cs" />
     <Compile Include="LinkConsts.cs" />
-    <Compile Include="Tools\MessageBoxManager.cs" />
-    <Compile Include="Controls\MyScintilla.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Tools\TableFileReader.cs" />
     <Compile Include="Tools\TabTabACItems.cs" />
-    <Compile Include="XML\Styles.cs" />
     <Compile Include="XML\TabTabEditorScheme.cs" />
-    <Compile Include="Tools\XLSReader.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="XML\Config.cs" />
+    <Compile Include="XML\GVDEditorConfig.cs" />
     <Compile Include="Tools\AppRegistry.cs" />
     <Compile Include="GlobData.cs" />
     <Compile Include="Entities\GVDDirectory.cs" />
@@ -288,11 +282,11 @@
     <Compile Include="Forms\FGlobalSettings.Designer.cs">
       <DependentUpon>FGlobalSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FInformation.cs">
+    <Compile Include="Forms\FInfoApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FInformation.Designer.cs">
-      <DependentUpon>FInformation.cs</DependentUpon>
+    <Compile Include="Forms\FInfoApp.Designer.cs">
+      <DependentUpon>FInfoApp.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FWait.cs">
       <SubType>Form</SubType>
@@ -300,9 +294,6 @@
     <Compile Include="Forms\FWait.Designer.cs">
       <DependentUpon>FWait.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tools\Log.cs" />
-    <Compile Include="Tools\SortableBindingList.cs" />
-    <Compile Include="Tools\TXTProps.cs" />
     <Compile Include="Tools\TXTParser.cs" />
     <Compile Include="Entities\Operator.cs" />
     <Compile Include="Entities\TrainType.cs" />
@@ -325,9 +316,6 @@
     <Compile Include="Forms\FNewGrafikon.Designer.cs">
       <DependentUpon>FNewGrafikon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tools\CSVParser.cs" />
-    <Compile Include="Tools\TXTPropsAreasFields.cs" />
-    <Compile Include="Tools\TXTPropsAreas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -337,15 +325,12 @@
     <Compile Include="Forms\FLocalSettings.Designer.cs">
       <DependentUpon>FLocalSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tools\ComparableList.cs" />
     <Compile Include="Tools\RawBankReader.cs" />
     <Compile Include="Tools\TabTabLexer.cs" />
-    <Compile Include="Tools\Utils.cs" />
     <Compile Include="Tools\WAVPlayer.cs" />
-    <Compile Include="XML\XMLColor.cs" />
-    <Compile Include="XML\XMLEnum.cs" />
-    <Compile Include="XML\XMLFont.cs" />
-    <Compile Include="XML\XMLSerialization.cs" />
+    <EmbeddedResource Include="Controls\MyScintilla.resx">
+      <DependentUpon>MyScintilla.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FAnalyzer.cs.resx">
       <DependentUpon>FAnalyzer.cs</DependentUpon>
     </EmbeddedResource>
@@ -388,8 +373,8 @@
       <DependentUpon>FImportData.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FInformation.cs.resx">
-      <DependentUpon>FInformation.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FInfoApp.cs.resx">
+      <DependentUpon>FInfoApp.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FLocalSettings.cs.resx">
@@ -461,8 +446,8 @@
       <DependentUpon>FGlobalSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FInformation.resx">
-      <DependentUpon>FInformation.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FInfoApp.resx">
+      <DependentUpon>FInfoApp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
@@ -495,9 +480,6 @@
       <DependentUpon>FLocalSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </None>
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\GVDEditor.Entities.Language.datasource" />
@@ -523,6 +505,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CustomToolNamespace>\Licences</CustomToolNamespace>
     </Content>
+    <None Include="Resources\shutdown.png" />
+    <None Include="Properties\DataSources\SharpDX.DirectSound.DeviceInformation.datasource" />
     <None Include="Resources\analyze.png" />
     <None Include="Properties\DataSources\GVDEditor.Tools.IFix.datasource" />
     <None Include="Resources\restart.png" />
@@ -567,7 +551,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 a x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -575,6 +559,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ToolsCore\ToolsCore\ToolsCore.csproj">
+      <Project>{15b32c49-7b00-4849-9685-2f7d7438db54}</Project>
+      <Name>ToolsCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using GVDEditor.Tools;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
@@ -126,7 +127,7 @@ namespace GVDEditor.Entities
         /// <summary>
         ///     Datumove obmedzenie v textovej forme
         /// </summary>
-        public string DateremText { get; set; }
+        public string DateLimitText { get; set; }
 
         /// <summary>
         ///     Jazykove mutacie hlasenia vlaku
@@ -213,39 +214,43 @@ namespace GVDEditor.Entities
         /// <returns></returns>
         public static Train GetTrain(IEnumerable<Train> trains, string trainNum, string trainName, TrainType trainType, int variant)
         {
-            return trains.FirstOrDefault(train => train.Number == trainNum && train.Name == trainName && train.Type == trainType && train.Variant == variant);
+            return trains.FirstOrDefault(train =>
+                train.Number == trainNum && train.Name == trainName && train.Type == trainType && train.Variant == variant);
         }
 
         /// <summary>
         ///     Vrati vlak zo zoznamu variant, ktory je hlavna varianta vlaku (ma najdlhsiu trasu poctom stanic)
         /// </summary>
         /// <param name="allvariants">varianty vlaku</param>
-        /// <param name="index">index vrateneho vlaku v poli</param>
         /// <returns>hlavna varianta vlaku</returns>
-        public static Train FindMainVariant(List<Train> allvariants, out int index)
+        public static void ReorderVariants(List<Train> allvariants)
         {
-            var max = 0;
-            var pos = -1;
-
-            if (allvariants.Count is 0 or 1)
+            switch (allvariants.Count)
             {
-                index = -1;
-                return null;
+                case 0:
+                    return;
+                case 1:
+                    allvariants[0].Variant = -1;
+                    return;
             }
 
-            for (var i = 0; i < allvariants.Count; i++)
+            //P1: reordering
+            allvariants.Sort((t1, t2) =>
             {
-                var train = allvariants[i];
-                var stcount = train.StaniceZoSmeru.Count + train.StaniceDoSmeru.Count;
-                if (stcount > max)
-                {
-                    max = stcount;
-                    pos = i;
-                }
-            }
+                var stcount1 = t1.StaniceZoSmeru.Count + t1.StaniceDoSmeru.Count;
+                var stcount2 = t2.StaniceZoSmeru.Count + t2.StaniceDoSmeru.Count;
+                return stcount1.CompareTo(stcount2);
+            });
 
-            index = pos;
-            return pos == -1 ? null : allvariants[pos];
+            //P2: changing datelimits
+            //rovnaky limit pre vsetky varianty
+            var limit = new DateLimit(allvariants[0].ZaciatokPlatnosti, allvariants[0].KoniecPlatnosti, bInsertMarks: false);
+            for (var i = 0; i < allvariants.Count; i++) //prechadzam kazdym variantom vlaku
+            {
+                allvariants[i].Variant = i + 1; // nastavenie vlastnosti Variant kazdemu vlaku (zacina 1, lebo variant 0 nie je)
+                if (i + 1 != allvariants.Count) //ak nie je tento variant posledny, urobi sa op. XOR medzi tymto a nasledujucim variantom
+                    allvariants[i].DateLimitText = limit.TextXor(allvariants[i].DateLimitText, allvariants[i + 1].DateLimitText);
+            }
         }
 
         /// <summary>
@@ -261,9 +266,9 @@ namespace GVDEditor.Entities
 
         private bool Equals(Train other)
         {
-            return ID == other.ID && 
-                   Number == other.Number && 
-                   Equals(Type, other.Type) && 
+            return ID == other.ID &&
+                   Number == other.Number &&
+                   Equals(Type, other.Type) &&
                    Name == other.Name &&
                    Equals(StaniceZoSmeru, other.StaniceZoSmeru) &&
                    Equals(StaniceDoSmeru, other.StaniceDoSmeru) &&
@@ -271,7 +276,7 @@ namespace GVDEditor.Entities
                    Nullable.Equals(Departure, other.Departure) &&
                    Equals(Track, other.Track) &&
                    Equals(Operator, other.Operator) &&
-                   DateremText == other.DateremText &&
+                   DateLimitText == other.DateLimitText &&
                    Equals(Languages, other.Languages) &&
                    IsMedzistatny == other.IsMedzistatny &&
                    IsDialkovy == other.IsDialkovy &&
@@ -293,7 +298,7 @@ namespace GVDEditor.Entities
             if (obj is null) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((Train) obj);
+            return Equals((Train)obj);
         }
 
         /// <inheritdoc />
@@ -311,7 +316,7 @@ namespace GVDEditor.Entities
                 hashCode = (hashCode * 397) ^ Departure.GetHashCode();
                 hashCode = (hashCode * 397) ^ (Track != null ? Track.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Operator != null ? Operator.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (DateremText != null ? DateremText.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (DateLimitText != null ? DateLimitText.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Languages != null ? Languages.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ IsMedzistatny.GetHashCode();
                 hashCode = (hashCode * 397) ^ IsDialkovy.GetHashCode();
@@ -329,22 +334,40 @@ namespace GVDEditor.Entities
             }
         }
 
-        /// <summary>Returns a value that indicates whether the values of two <see cref="T:GVDEditor.Entities.Train" /> objects are equal.</summary>
+        /// <summary>
+        ///     Returns a value that indicates whether the values of two <see cref="T:GVDEditor.Entities.Train" /> objects are
+        ///     equal.
+        /// </summary>
         /// <param name="left">The first value to compare.</param>
         /// <param name="right">The second value to compare.</param>
-        /// <returns>true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise, false.</returns>
+        /// <returns>
+        ///     true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise,
+        ///     false.
+        /// </returns>
         public static bool operator ==(Train left, Train right)
         {
             return Equals(left, right);
         }
 
-        /// <summary>Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.Train" /> objects have different values.</summary>
+        /// <summary>
+        ///     Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.Train" /> objects have different
+        ///     values.
+        /// </summary>
         /// <param name="left">The first value to compare.</param>
         /// <param name="right">The second value to compare.</param>
         /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>
         public static bool operator !=(Train left, Train right)
         {
             return !Equals(left, right);
+        }
+
+        /// <summary>
+        ///     Vráti všetky názvy vlakov zo zvukovej banky (priečinok V8)
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GetTrainNames()
+        {
+            return GlobData.Sounds.Where(soundE => soundE.Dir.Name == "V8").Select(soundE => soundE.Name).ToList();
         }
     }
 }

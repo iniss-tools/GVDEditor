@@ -2,12 +2,12 @@
 
 namespace GVDEditor.XML
 {
-    internal static class SettingsNaming
+    internal static class GVDEditorSettingsNaming
     {
         /// <summary>
         ///     Nazve nastavenia farieb podla aktualnej lokalizacie
         /// </summary>
-        public static void NameColorSettings(Style style)
+        public static void NameColorSettings(GVDEditorStyle style)
         {
             style.TabTabEditorScheme.Default.Name = Resources.SetTEDefault;
             style.TabTabEditorScheme.Default.DisableBackColorEdit = true;
@@ -51,20 +51,6 @@ namespace GVDEditor.XML
         }
 
         /// <summary>
-        ///     Pomenuje názvy typov použitia písiem pre rôzne časti formulára
-        /// </summary>
-        /// <param name="fonts"></param>
-        public static void NameAppFontSetting(ControlFonts fonts)
-        {
-            fonts.Labels.Name = "Popisy formulárov";
-            fonts.Buttons.Name = "Tlačidlá formulárov";
-            fonts.ColsHeader.Name = "Nadpisy v tabuľkách";
-            fonts.TableCells.Name = "Dáta v tabuľkách";
-            fonts.StateRow.Name = "Stavový riadok";
-            fonts.Menu.Name = "Menu";
-        }
-
-        /// <summary>
         ///     Pomenuje názvy pre stĺpce tabulky na hlavnej obrazovke
         /// </summary>
         /// <param name="columns"></param>
@@ -100,8 +86,8 @@ namespace GVDEditor.XML
             columns.KonecnaStanica.Name = "Konečná stanica";
             columns.KonecnaStanica.Id = 9;
 
-            columns.DateRem.Name = "Dátumová obmedzenie";
-            columns.DateRem.Id = 10;
+            columns.DateLimit.Name = "Dátumová obmedzenie";
+            columns.DateLimit.Id = 10;
 
             columns.Track.Name = "Koľaj";
             columns.Track.Id = 11;
@@ -139,7 +125,8 @@ namespace GVDEditor.XML
             shortcuts.UpdateNotes.Name = "Poznámky k aktualizáciám";
 
             shortcuts.RunINISS.Name = "Spustiť INISS";
-            shortcuts.KillINISS.Name = "Ukončiť INISS";
+            shortcuts.ShutdownINISS.Name = "Ukončiť INISS";
+            shortcuts.KillINISS.Name = "Vynútene ukončiť INISS";
             shortcuts.RestartINISS.Name = "Reštartovať INISS";
 
             shortcuts.LSGrafikon.Name = "Lokálne nastavenia - Grafikon";

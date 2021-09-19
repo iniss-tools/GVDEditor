@@ -1,10 +1,37 @@
-﻿namespace GVDEditor.Entities
+﻿using ToolsCore.Tools;
+
+namespace GVDEditor.Entities
 {
     /// <summary>
     ///     Typ písma pre tabule
     /// </summary>
-    public sealed class TableFontType : Enumeration
+    public sealed class TableFontType : Enumeration<TableFontType>
     {
+        private TableFontType(string key, string name) : base(key, name)
+        {
+        }
+
+        /// <summary>
+        ///     This
+        /// </summary>
+        public TableFontType This => this;
+
+        /// <summary>
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public new static TableFontType Parse(string type)
+        {
+            return type switch
+            {
+                "" => None,
+                "Tučný" => Bold,
+                "Šikmý" => Italics,
+                "Šikmý a tučný" => BoldItalics,
+                _ => null
+            };
+        }
+
         #region VALUES
 
         /// <summary>
@@ -28,30 +55,5 @@
         public static readonly TableFontType BoldItalics = new("Šikmý a tučný", "Šikmé a tučné písmo");
 
         #endregion
-
-        private TableFontType(string key, string name) : base(key, name)
-        {
-        }
-
-        /// <summary>
-        ///     This
-        /// </summary>
-        public TableFontType This => this;
-
-        /// <summary>
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        public static TableFontType Parse(string type)
-        {
-            return type switch
-            {
-                "" => None,
-                "Tučný" => Bold,
-                "Šikmý" => Italics,
-                "Šikmý a tučný" => BoldItalics,
-                _ => null
-            };
-        }
     }
 }

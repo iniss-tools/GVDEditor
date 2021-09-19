@@ -1,8 +1,9 @@
-﻿using GVDEditor.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using GVDEditor.Annotations;
+using GVDEditor.Entities;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Tools
 {
@@ -29,7 +30,7 @@ namespace GVDEditor.Tools
 
             if (File.Exists(file))
             {
-                using var reader = new BinaryReader(File.Open(file, FileMode.Open), GlobData.AnsiEncoding);
+                using var reader = new BinaryReader(File.Open(file, FileMode.Open), GlobData.ANSIEncoding);
                 var countDirs = reader.ReadInt32();
                 var sounds = new List<FyzZvuk>();
 
@@ -98,7 +99,7 @@ namespace GVDEditor.Tools
 
             if (File.Exists(file))
             {
-                using var reader = new BinaryReader(File.Open(file, FileMode.Open), GlobData.AnsiEncoding);
+                using var reader = new BinaryReader(File.Open(file, FileMode.Open), GlobData.ANSIEncoding);
                 var countLangs = reader.ReadInt32();
                 maxLangs = countLangs;
                 var languages = new List<Language>(countLangs);
@@ -121,8 +122,8 @@ namespace GVDEditor.Tools
 
                     languages.Add(new Language
                     {
-                        Key = langKey, 
-                        FileFyzZvuk = fileFyzZvukName, 
+                        Key = langKey,
+                        FileFyzZvuk = fileFyzZvukName,
                         FyzBankName = langName,
                         RelativePath = langDirRelativePathName
                     });

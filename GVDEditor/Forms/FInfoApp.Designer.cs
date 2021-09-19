@@ -2,7 +2,7 @@
 
 namespace GVDEditor.Forms
 {
-    partial class FInformation
+    partial class FInfoApp
     {
         /// <summary>
         /// Required designer variable.
@@ -31,15 +31,15 @@ namespace GVDEditor.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FInformation));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FInfoApp));
             this.picIcon = new System.Windows.Forms.PictureBox();
             this.lAppName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lAppVersion = new System.Windows.Forms.Label();
-            this.groupBox1 = new ExControls.ExGroupBox(this.components);
+            this.groupBox1 = new ExControls.ExGroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.bOK = new System.Windows.Forms.Button();
-            this.groupBox2 = new ExControls.ExGroupBox(this.components);
+            this.groupBox2 = new ExControls.ExGroupBox();
             this.linkEmail = new System.Windows.Forms.LinkLabel();
             this.linkWeb = new System.Windows.Forms.LinkLabel();
             this.label8 = new System.Windows.Forms.Label();
@@ -140,7 +140,7 @@ namespace GVDEditor.Forms
             this.HelpButton = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FInformation";
+            this.Name = "FInfoApp";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.InformationForm_HelpButtonClicked);

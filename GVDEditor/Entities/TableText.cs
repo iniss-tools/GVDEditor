@@ -3,37 +3,12 @@
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Trieda zastesujuca texty na tabuliach
+    ///     Trieda zastrešujúca texty na tabuliach.
     /// </summary>
     public sealed class TableText : ITable
     {
         /// <summary>
-        ///     Kluc typu textu na tabuliach
-        /// </summary>
-        public string Key { get; set; }
-
-        /// <summary>
-        ///     Nazov typu textu na tabuliach
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        ///     Realizacie tohto typu textu na tabuliach
-        /// </summary>
-        public List<TableTextRealization> Realizations { get; set; }
-
-        /// <summary>
-        ///     Vlaky (<see cref="TableTrain"/>), ktore maju tento typ textu na tabuliach
-        /// </summary>
-        public List<TableTrain> Trains { get; set; }
-
-        /// <summary>
-        ///     Komentar ku danemu typu textu na tabuliach
-        /// </summary>
-        public string Comment { get; set; }
-
-        /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novu instanciu triedy <see cref="TableText"/>.
         /// </summary>
         public TableText()
         {
@@ -41,10 +16,32 @@ namespace GVDEditor.Entities
             Trains = new List<TableTrain>();
         }
 
+        /// <summary>
+        ///     Vrati alebo nastavi kluc typu textu na tabuliach.
+        /// </summary>
+        public string Key { get; set; }
+
+        /// <summary>
+        ///     Vrati alebo nastavi nazov typu textu na tabuliach.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Vrati alebo nastavi komentar ku danemu typu textu na tabuliach.
+        /// </summary>
+        public string Comment { get; set; }
+
+        /// <summary>
+        ///     Vrati alebo nastavi realizacie tohto typu textu na tabuliach.
+        /// </summary>
+        public List<TableTextRealization> Realizations { get; set; }
+
+        /// <summary>
+        ///     Vrati alebo nastavi vlaky (<see cref="TableTrain" />), ktore maju tento typ textu na tabuliach.
+        /// </summary>
+        public List<TableTrain> Trains { get; set; }
+
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
     }
 }

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
-using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
@@ -37,7 +37,9 @@ namespace GVDEditor.Forms
 
             tbName.Text = table.Name;
             tbKey.Text = table.Key;
+
             cbCatalogTable.DataSource = catalogs;
+            cbCatalogTable.SelectedItem = table.TableCatalog;
 
             tbComment.Text = table.Comment;
 
@@ -61,10 +63,7 @@ namespace GVDEditor.Forms
             tbREM.Text = table.Rem;
             tbReverseArrows.Text = table.ReverseArrows;
 
-            if (!string.IsNullOrEmpty(table.Rem) || !string.IsNullOrEmpty(table.ReverseArrows))
-            {
-                cbAdvanced.Checked = true;
-            }
+            if (!string.IsNullOrEmpty(table.Rem) || !string.IsNullOrEmpty(table.ReverseArrows)) cbAdvanced.Checked = true;
         }
 
         private void bSave_Click(object sender, EventArgs e)
@@ -91,7 +90,7 @@ namespace GVDEditor.Forms
             table.ID = decimal.ToInt32(nudID.Value);
             table.CommunicationPort = decimal.ToInt32(nudComPort.Value);
             table.RecCount = decimal.ToInt32(nudRecCount.Value);
-            table.TableCatalog = (TableCatalog) cbCatalogTable.SelectedItem;
+            table.TableCatalog = (TableCatalog)cbCatalogTable.SelectedItem;
             table.Comment = tbComment.Text;
             var xml = tbXMLName.Text;
             table.SaveXML = string.IsNullOrEmpty(xml) ? "" : xml;

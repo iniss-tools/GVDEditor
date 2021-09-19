@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Dodatkové hlásenie
+    ///     Trieda obshaujuca informacie o dodatkovom hláseni.
     /// </summary>
     public sealed class Dodatok
     {
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novu instanciu triedy <see cref="Dodatok"/>.
         /// </summary>
         public Dodatok()
         {
@@ -20,39 +20,37 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Fyzický zvuk
+        ///     Vrati alebo nastavi fyzický zvuk dodatku.
         /// </summary>
         public FyzZvuk Sound { get; set; }
 
         /// <summary>
-        ///     Názov dodatkového hlásenia (zvyčajne Dxxxx, x - 0-9)
+        ///     Vrati alebo nastavi názov dodatkového hlásenia (zvyčajne Dxxxx, kde x - 0-9).
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        ///     V akých reportoch sa má dodatok hlásiť
+        ///     Vrati alebo nastavi v akých reportoch sa má dodatok hlásiť.
         /// </summary>
         public List<ChosenReportType> ChosenReports { get; set; }
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
 
         /// <summary>
-        ///     Konveruje binárne pole na dodatkové hlásenie zo všetkými dátami
+        ///     Konveruje binárne pole na dodatkové hlásenie zo všetkými dátami.
         /// </summary>
-        /// <param name="sound">fyzický zvuk</param>
-        /// <param name="nums">binárne pole vo forme reťazca</param>
-        /// <param name="reportTypes">dostupné typy reportov</param>
-        /// <param name="reportVariants">dostupné varianty reportov</param>
-        /// <param name="smerovanie">smerovanie vlaku</param>
+        /// <param name="sound">Fyzický zvuk.</param>
+        /// <param name="nums">Binárne pole vo forme reťazca.</param>
+        /// <param name="reportTypes">Dostupné typy reportov.</param>
+        /// <param name="reportVariants">Dostupné varianty reportov.</param>
+        /// <param name="smerovanie">Smerovanie vlaku.</param>
         /// <returns>dodatkové hlásenie</returns>
         /// <exception cref="FormatException"></exception>
-        public static Dodatok NumsToDodatok(FyzZvuk sound, string nums, List<ReportType> reportTypes, List<ReportVariant> reportVariants, Routing smerovanie)
+        public static Dodatok NumsToDodatok(FyzZvuk sound, string nums, List<ReportType> reportTypes, List<ReportVariant> reportVariants,
+            Routing smerovanie)
         {
-            var dodatok = new Dodatok {Sound = sound, Name = sound.Name.Replace("D", "")};
+            var dodatok = new Dodatok { Sound = sound, Name = sound.Name.Replace("D", "") };
 
             if (!Utils.IsInt(nums)) throw new FormatException("Pole dodatku neobsahuje iba čísla.");
 
@@ -87,18 +85,18 @@ namespace GVDEditor.Entities
                     ch++;
                 }
 
-                dodatok.ChosenReports.Add(new ChosenReportType {Type = reportTypes[i], Variants = vars});
+                dodatok.ChosenReports.Add(new ChosenReportType { Type = reportTypes[i], Variants = vars });
             }
 
             return dodatok;
         }
 
         /// <summary>
-        ///     Konveruje dodatkové hlásenie na binárne pole
+        ///     Konveruje dodatkové hlásenie na binárne pole.
         /// </summary>
-        /// <param name="dodatok">dodatkové hlásenie</param>
-        /// <param name="reportTypes">dostupné typy reportov</param>
-        /// <param name="reportVariants">dostupné varianty reportov</param>
+        /// <param name="dodatok">Dodatkové hlásenie.</param>
+        /// <param name="reportTypes">Dostupné typy reportov.</param>
+        /// <param name="reportVariants">Dostupné varianty reportov.</param>
         /// <returns>binárne pole vo forme reťazca</returns>
         public static string DodatokToNums(Dodatok dodatok, List<ReportType> reportTypes,
             List<ReportVariant> reportVariants)

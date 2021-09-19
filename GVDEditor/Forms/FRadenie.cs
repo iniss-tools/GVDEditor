@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using GVDEditor.Entities;
 using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
@@ -49,7 +50,7 @@ namespace GVDEditor.Forms
 
             foreach (var sound in sounds) SelectedSounds.Add(sound);
 
-            cbSoundDir.DataSource = Enumeration.GetValues<FyzZvukDirType>();
+            cbSoundDir.DataSource = FyzZvukDirType.GetValues();
             cbLanguage.DataSource = GlobData.Languages;
             if (GlobData.Languages.Count != 0) cbLanguage.SelectedIndex = 0;
 
@@ -72,7 +73,7 @@ namespace GVDEditor.Forms
         {
             if (cbLanguage.SelectedIndex != -1 && cbSoundDir.SelectedIndex != -1)
             {
-                var list = new List<FyzZvuk>(AllSoundsLangs[(Language) cbLanguage.SelectedItem]);
+                var list = new List<FyzZvuk>(AllSoundsLangs[(Language)cbLanguage.SelectedItem]);
                 SoundInDir = new BindingList<FyzZvuk>();
                 foreach (var zvuk in list)
                     if (zvuk.Dir.DirType.Equals(cbSoundDir.SelectedItem))
@@ -86,7 +87,7 @@ namespace GVDEditor.Forms
         {
             if (cbLanguage.SelectedIndex != -1 && cbSoundDir.SelectedIndex != -1)
             {
-                var list = new List<FyzZvuk>(AllSoundsLangs[(Language) cbLanguage.SelectedItem]);
+                var list = new List<FyzZvuk>(AllSoundsLangs[(Language)cbLanguage.SelectedItem]);
                 SoundInDir = new BindingList<FyzZvuk>();
                 foreach (var zvuk in list)
                     if (zvuk.Dir.DirType.Equals(cbSoundDir.SelectedItem))
@@ -183,7 +184,7 @@ namespace GVDEditor.Forms
             var point = listRadenie.PointToClient(new Point(e.X, e.Y));
             var index = listRadenie.IndexFromPoint(point);
             if (index < 0) index = listRadenie.Items.Count - 1;
-            object data = e.Data.GetData(typeof(FyzZvuk));
+            var data = e.Data.GetData(typeof(FyzZvuk));
             SelectedSounds.Remove(data as FyzZvuk);
             SelectedSounds.Insert(index, data as FyzZvuk);
             listRadenie.SelectedItem = data;

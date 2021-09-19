@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using GVDEditor.Tools;
 
 namespace GVDEditor.Entities
 {
@@ -141,7 +140,7 @@ namespace GVDEditor.Entities
         {
             if (t1 is null && t2 is null)
                 return true;
-            return t1 is not null && t2 is not null && 
+            return t1 is not null && t2 is not null &&
                    t1.Key == t2.Key && t1.IsCustom == t2.IsCustom && t1.CategoryTrain == t2.CategoryTrain && t1.TextInTable == t2.TextInTable;
         }
 
@@ -165,16 +164,25 @@ namespace GVDEditor.Entities
             }
         }
 
-        /// <summary>Returns a value that indicates whether the values of two <see cref="T:GVDEditor.Entities.TrainType" /> objects are equal.</summary>
+        /// <summary>
+        ///     Returns a value that indicates whether the values of two <see cref="T:GVDEditor.Entities.TrainType" /> objects
+        ///     are equal.
+        /// </summary>
         /// <param name="left">The first value to compare.</param>
         /// <param name="right">The second value to compare.</param>
-        /// <returns>true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise, false.</returns>
+        /// <returns>
+        ///     true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise,
+        ///     false.
+        /// </returns>
         public static bool operator ==(TrainType left, TrainType right)
         {
             return Equals(left, right);
         }
 
-        /// <summary>Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.TrainType" /> objects have different values.</summary>
+        /// <summary>
+        ///     Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.TrainType" /> objects have
+        ///     different values.
+        /// </summary>
         /// <param name="left">The first value to compare.</param>
         /// <param name="right">The second value to compare.</param>
         /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>

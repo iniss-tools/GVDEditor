@@ -7,7 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
-using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
@@ -19,13 +19,13 @@ namespace GVDEditor.Forms
         private readonly BindingList<TableItem> Columns;
 
         private readonly bool copy;
+        private readonly Color defaultBorderColor;
         private readonly BindingList<TableSegment> Rows;
 
         private readonly BindingList<TableTabTab> TabTabs1;
         private readonly BindingList<TableTabTab> TabTabs2;
 
         private readonly BindingList<TableViewTypeTab> ViewTypeTabs;
-        private readonly Color defaultBorderColor;
 
         /// <summary>
         ///     Tato katalogova tabula
@@ -57,9 +57,9 @@ namespace GVDEditor.Forms
 
             TabTabs2 = new BindingList<TableTabTab>(tabtabs);
 
-            cbManufacturer.DataSource = Enumeration.GetValues<TableManufacturer>();
-            cbColumnFill.DataSource = Enumeration.GetValues<TableFillSection>();
-            cbDivType.DataSource = Enumeration.GetValues<TableDivType>();
+            cbManufacturer.DataSource = TableManufacturer.GetValues();
+            cbColumnFill.DataSource = TableFillSection.GetValues();
+            cbDivType.DataSource = TableDivType.GetValues();
 
             cbTab1.DataSource = TabTabs1;
             cbTab2.DataSource = TabTabs2;
@@ -95,7 +95,7 @@ namespace GVDEditor.Forms
         {
             if (Columns.Count != 0)
             {
-                var item = (TableItem) listColumns.SelectedItem;
+                var item = (TableItem)listColumns.SelectedItem;
                 tbColumnKey.Text = item.Key;
                 tbColumnName.Text = item.Name;
                 cbColumnFill.SelectedItem = item.FillSection;
@@ -105,7 +105,7 @@ namespace GVDEditor.Forms
                     rbLeft.Checked = true;
                 else if (item.Align == TableAlign.Center)
                     rbCenter.Checked = true;
-                else if (item.Align == TableAlign.Right) 
+                else if (item.Align == TableAlign.Right)
                     rbRight.Checked = true;
 
                 cbTab1.SelectedIndex = TabTabs1.IndexOf(item.Tab1);
@@ -133,9 +133,9 @@ namespace GVDEditor.Forms
                     return;
                 }
 
-            int start = decimal.ToInt32(nudStart.Value);
-            int end = decimal.ToInt32(nudEnd.Value);
-            int line = decimal.ToInt32(nudLine.Value);
+            var start = decimal.ToInt32(nudStart.Value);
+            var end = decimal.ToInt32(nudEnd.Value);
+            var line = decimal.ToInt32(nudLine.Value);
 
             if (start >= end)
             {
@@ -143,32 +143,29 @@ namespace GVDEditor.Forms
                 return;
             }
 
-            var item = new TableItem {Key = tbColumnKey.Text, Name = tbColumnName.Text};
+            var item = new TableItem { Key = tbColumnKey.Text, Name = tbColumnName.Text };
 
             if (rbCenter.Checked)
                 item.Align = TableAlign.Center;
             else if (rbLeft.Checked)
                 item.Align = TableAlign.Left;
-            else if (rbLeft.Checked) 
+            else if (rbLeft.Checked)
                 item.Align = TableAlign.Right;
 
             item.Start = start;
             item.End = end;
             item.Line = line;
 
-            item.DivType = (TableDivType) cbDivType.SelectedItem;
+            item.DivType = (TableDivType)cbDivType.SelectedItem;
 
-            item.FillSection = (TableFillSection) cbColumnFill.SelectedItem;
+            item.FillSection = (TableFillSection)cbColumnFill.SelectedItem;
 
             item.FontIDX = decimal.ToInt32(nudFont.Value);
 
-            item.Tab1 = (TableTabTab) cbTab1.SelectedItem;
-            item.Tab2 = (TableTabTab) cbTab2.SelectedItem;
+            item.Tab1 = (TableTabTab)cbTab1.SelectedItem;
+            item.Tab2 = (TableTabTab)cbTab2.SelectedItem;
 
-            if (CheckDivType(item.DivType,item.Tab1,item.Tab2))
-            {
-                Columns.Add(item);
-            }
+            if (CheckDivType(item.DivType, item.Tab1, item.Tab2)) Columns.Add(item);
         }
 
         private void bColumnEdit_Click(object sender, EventArgs e)
@@ -182,24 +179,22 @@ namespace GVDEditor.Forms
                 }
 
                 for (var i = 0; i < Columns.Count; i++)
-                {
                     if (Columns[i].Key == tbColumnKey.Text && i != listColumns.SelectedIndex)
                     {
                         Utils.ShowError(Resources.FTableCatalog_Zadaný_kľúč_stĺpca_už_existuje);
                         return;
                     }
-                }
 
-                var div = (TableDivType) cbDivType.SelectedItem;
-                var tab1 = (TableTabTab) cbTab1.SelectedItem;
-                var tab2 = (TableTabTab) cbTab2.SelectedItem;
+                var div = (TableDivType)cbDivType.SelectedItem;
+                var tab1 = (TableTabTab)cbTab1.SelectedItem;
+                var tab2 = (TableTabTab)cbTab2.SelectedItem;
 
                 if (!CheckDivType(div, tab1, tab2))
                     return;
 
-                int start = decimal.ToInt32(nudStart.Value);
-                int end = decimal.ToInt32(nudEnd.Value);
-                int line = decimal.ToInt32(nudLine.Value);
+                var start = decimal.ToInt32(nudStart.Value);
+                var end = decimal.ToInt32(nudEnd.Value);
+                var line = decimal.ToInt32(nudLine.Value);
 
                 if (start >= end)
                 {
@@ -215,7 +210,7 @@ namespace GVDEditor.Forms
                     item.Align = TableAlign.Center;
                 else if (rbLeft.Checked)
                     item.Align = TableAlign.Left;
-                else if (rbLeft.Checked) 
+                else if (rbLeft.Checked)
                     item.Align = TableAlign.Right;
 
                 item.Start = start;
@@ -224,7 +219,7 @@ namespace GVDEditor.Forms
 
                 item.DivType = div;
 
-                item.FillSection = (TableFillSection) cbColumnFill.SelectedItem;
+                item.FillSection = (TableFillSection)cbColumnFill.SelectedItem;
 
                 item.FontIDX = decimal.ToInt32(nudFont.Value);
 
@@ -239,14 +234,8 @@ namespace GVDEditor.Forms
         {
             if (div == TableDivType.Free)
             {
-                if (tab1 != TableTabTab.Empty)
-                {
-                    return ShowWarningDefTab(true);
-                }
-                if (tab2 != TableTabTab.Empty)
-                {
-                    return ShowWarningDefTab(false);
-                }
+                if (tab1 != TableTabTab.Empty) return ShowWarningDefTab(true);
+                if (tab2 != TableTabTab.Empty) return ShowWarningDefTab(false);
             }
             else if (div == TableDivType.Table || div == TableDivType.Translate || div == TableDivType.Char)
             {
@@ -255,10 +244,8 @@ namespace GVDEditor.Forms
                     ShowErrorUnDefTab(true);
                     return false;
                 }
-                if (tab2 != TableTabTab.Empty)
-                {
-                    return ShowWarningDefTab(false);
-                }
+
+                if (tab2 != TableTabTab.Empty) return ShowWarningDefTab(false);
             }
             else if (div == TableDivType.TableTime)
             {
@@ -267,6 +254,7 @@ namespace GVDEditor.Forms
                     ShowErrorUnDefTab(true);
                     return false;
                 }
+
                 if (tab2 == TableTabTab.Empty)
                 {
                     ShowErrorUnDefTab(false);
@@ -297,7 +285,7 @@ namespace GVDEditor.Forms
         {
             if (Rows.Count != 0 && listRows.SelectedItem != null)
             {
-                var segment = (TableSegment) listRows.SelectedItem;
+                var segment = (TableSegment)listRows.SelectedItem;
                 nudHeight.Value = segment.Height;
                 nudWidth.Value = segment.Width;
                 nudSize.Value = segment.Size;
@@ -319,7 +307,7 @@ namespace GVDEditor.Forms
 
         private void listRows_Format(object sender, ListControlConvertEventArgs e)
         {
-            var segment = (TableSegment) e.ListItem;
+            var segment = (TableSegment)e.ListItem;
             e.Value = "W:" + segment.Width + "; H:" + segment.Height + "; S:" + segment.Size;
         }
 
@@ -334,7 +322,7 @@ namespace GVDEditor.Forms
             else if (Rows.Count < nudMaxRecCount.Value)
             {
                 for (var i = Rows.Count; i < nudMaxRecCount.Value; i++)
-                    Rows.Add(new TableSegment {Height = 0, Size = 0, Width = 0});
+                    Rows.Add(new TableSegment { Height = 0, Size = 0, Width = 0 });
             }
         }
 
@@ -380,15 +368,16 @@ namespace GVDEditor.Forms
                     return;
                 }
 
-            int end = 0;
-            int line = 0;
+            var end = 0;
+            var line = 0;
             for (var i = 0; i < Columns.Count; i++)
             {
                 if (Columns[i].Line != line)
                 {
                     if (Columns[i].Line != line + 1)
                     {
-                        Utils.ShowError(string.Format(Resources.FTableCatalog_Definované_stĺpce_nie_sú_zotriedené_podľa_zobrazovaného_riadka_záznamu, Columns[i - 1].Name, Columns[i - 1].Line, Columns[i].Name, Columns[i].Line));
+                        Utils.ShowError(string.Format(Resources.FTableCatalog_Definované_stĺpce_nie_sú_zotriedené_podľa_zobrazovaného_riadka_záznamu,
+                            Columns[i - 1].Name, Columns[i - 1].Line, Columns[i].Name, Columns[i].Line));
                         DialogResult = DialogResult.None;
                         return;
                     }
@@ -399,7 +388,8 @@ namespace GVDEditor.Forms
 
                 if (Columns[i].End < end)
                 {
-                    Utils.ShowError(string.Format(Resources.FTableCatalog_Definované_stĺpce_nie_sú_zotriedené_podľa_pozície, Columns[i - 1].Name, Columns[i - 1].End, Columns[i].Name, Columns[i].End));
+                    Utils.ShowError(string.Format(Resources.FTableCatalog_Definované_stĺpce_nie_sú_zotriedené_podľa_pozície, Columns[i - 1].Name,
+                        Columns[i - 1].End, Columns[i].Name, Columns[i].End));
                     DialogResult = DialogResult.None;
                     return;
                 }
@@ -415,10 +405,10 @@ namespace GVDEditor.Forms
                 return;
             }
 
-            int modesCount = Enumeration.GetValues<TableViewMode>().Count;
+            var modesCount = TableViewMode.GetValues().Count;
             foreach (var tab in ViewTypeTabs)
             {
-                int c = tab.TypeModeItems.Count;
+                var c = tab.TypeModeItems.Count;
                 if (c != modesCount)
                 {
                     Utils.ShowError(string.Format(Resources.FTableCatalog_bSave_NespravnyPocetModov, tab.ViewType, c, modesCount));

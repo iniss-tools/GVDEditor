@@ -3,32 +3,32 @@
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Informácie o priečinku s grafikonom
+    ///     Trida obsahujuca informácie o priečinku s grafikonom.
     /// </summary>
     public sealed class DirList
     {
         /// <summary>
-        ///     Názov priečinka
+        ///     Vrati alebo nastavi názov priečinka.
         /// </summary>
         public string DirName { get; set; }
 
         /// <summary>
-        ///     Celá cesta k priečinku
+        ///     Vrati alebo nastavi celá cestu k priečinku s grafikonom.
         /// </summary>
         public string FullPath { get; set; }
 
         /// <summary>
-        ///     Port pre vzdialené ovládanie tabúľ
+        ///     Vrati alebo nastavi port pre vzdialené ovládanie tabúľ.
         /// </summary>
         public int? TablePort { get; set; }
 
         /// <summary>
-        ///     Port pre zabezpečenie vzdialeného hlásenia
+        ///     Vrati alebo nastavi port pre zabezpečenie vzdialeného hlásenia.
         /// </summary>
         public int? HlaseniePort { get; set; }
 
         /// <summary>
-        ///     Farba zobrazujúca v INISS ako farba pozadia vlaku na pracovnej ploche ako odlíšenie od vlakov iných staníc
+        ///     Vrati alebo nastavi farbu zobrazujúcu v INISS ako farba pozadia vlaku na pracovnej ploche ako odlíšenie od vlakov iných staníc.
         /// </summary>
         public Color? Farba { get; set; }
     }

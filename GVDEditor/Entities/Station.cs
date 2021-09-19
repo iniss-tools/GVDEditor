@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Entities
 {
@@ -68,7 +68,7 @@ namespace GVDEditor.Entities
         {
             foreach (var st in GlobData.Stations.Where(st => st.ID == id)) return new Station(st.ID, st.Name);
 
-            foreach (var customStation in GlobData.CustomStations.Where(customStation => customStation.ID == id)) 
+            foreach (var customStation in GlobData.CustomStations.Where(customStation => customStation.ID == id))
                 return new Station(customStation.ID, customStation.Name);
 
             return new Station(id, id);
@@ -107,12 +107,11 @@ namespace GVDEditor.Entities
         /// <returns>list staníc</returns>
         public static List<Station> GetStations()
         {
-            List<Station> list = new List<Station>();
+            var list = new List<Station>();
+
             foreach (var soundE in GlobData.Sounds)
-            {
-                if (soundE.Dir.Name == "R1") 
+                if (soundE.Dir.Name == "R1")
                     list.Add(new Station(soundE.Name, soundE.Text.Replace(",", "")));
-            }
 
             return list;
         }
@@ -145,7 +144,7 @@ namespace GVDEditor.Entities
             stations = stations.Trim().Replace(" ", "");
             var langsArrayS = stations.Split(',');
 
-            foreach (var s in langsArrayS) 
+            foreach (var s in langsArrayS)
                 stationsList.Add(GetStationFromID(s));
 
             return stationsList;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using GVDEditor.Entities;
-using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
@@ -11,7 +11,7 @@ namespace GVDEditor.Forms
     /// </summary>
     public partial class FColumnTypeSelect : Form
     {
-        private readonly List<ImportTrainColumnType> columnTypes = Enumeration.GetValues<ImportTrainColumnType>();
+        private readonly List<ImportTrainColumnType> columnTypes = ImportTrainColumnType.GetValues();
 
         /// <inheritdoc />
         public FColumnTypeSelect()
@@ -30,7 +30,7 @@ namespace GVDEditor.Forms
 
         private void bOK_Click(object sender, EventArgs e)
         {
-            SelectedType = (ImportTrainColumnType) listColumnTypes.SelectedItem;
+            SelectedType = (ImportTrainColumnType)listColumnTypes.SelectedItem;
             DialogResult = DialogResult.OK;
         }
 

@@ -1,9 +1,9 @@
-﻿using GVDEditor.Tools;
-using GVDEditor.XML;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using GVDEditor.Properties;
+using GVDEditor.XML;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
@@ -12,13 +12,14 @@ namespace GVDEditor.Forms
     /// </summary>
     public partial class FRenameStyle : Form
     {
+        private readonly int currentIndex;
+
+        private readonly List<GVDEditorStyle> styles;
+
         /// <summary>
         ///     Vrateny novy nazov stylu
         /// </summary>
         public string NewName;
-
-        private readonly List<Style> styles;
-        private readonly int currentIndex;
 
         /// <summary>
         ///     Konstruktor
@@ -26,7 +27,7 @@ namespace GVDEditor.Forms
         /// <param name="curIndex">index tohto stylu v zozname</param>
         /// <param name="pname">predosly nazov stylu</param>
         /// <param name="styles">vsetky dosial definovane styly</param>
-        public FRenameStyle(List<Style> styles, int curIndex, string pname)
+        public FRenameStyle(List<GVDEditorStyle> styles, int curIndex, string pname)
         {
             InitializeComponent();
             FormUtils.SetFormFont(this);

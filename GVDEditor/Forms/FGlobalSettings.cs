@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
@@ -23,6 +24,11 @@ namespace GVDEditor.Forms
         public static readonly BindingList<int> Meskania = new(GlobData.Delays);
 
         /// <summary>
+        ///     Vsetky audio oblasti
+        /// </summary>
+        public readonly BindingList<Audio> Audios = new(GlobData.Audios);
+
+        /// <summary>
         ///     Vsetky GVD
         /// </summary>
         public readonly BindingList<GVDDirectory> Grafikony;
@@ -34,11 +40,6 @@ namespace GVDEditor.Forms
         ///     Odstranene grafikony
         /// </summary>
         public readonly List<GVDDirectory> RemovedGVDs = new();
-
-        /// <summary>
-        ///     Vsetky audio oblasti
-        /// </summary>
-        public readonly BindingList<Audio> Audios = new(GlobData.Audios);
 
         /// <summary>
         ///     Vsetky typy vlakov
@@ -56,7 +57,7 @@ namespace GVDEditor.Forms
         {
             InitializeComponent();
             FormUtils.SetFormFont(this);
-            this.ApplyTheme();
+            FormUtils.ApplyTheme(this);
 
             Grafikony = new BindingList<GVDDirectory>(gvds);
 
@@ -98,10 +99,7 @@ namespace GVDEditor.Forms
             RBLangs = RawBankReader.ReadFyzBankFile(GlobData.RAWBANKDir, out _);
             dgvLanguagesRawBank.DataSource = RBLangs;
 
-            if (openIndex != -1)
-            {
-                tabControl.SelectTab(openIndex);
-            }
+            if (openIndex != -1) tabControl.SelectTab(openIndex);
         }
 
         private void bSave_Click(object sender, EventArgs e)
@@ -111,7 +109,7 @@ namespace GVDEditor.Forms
 
         private void listLanguages_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var jazyk = (Language) listLanguages.SelectedItem;
+            var jazyk = (Language)listLanguages.SelectedItem;
             tbLanguageName.Text = jazyk.Name;
             tbLanguageSkratka.Text = jazyk.Key;
             cbIsBasic.Checked = jazyk.IsBasic;
@@ -215,7 +213,7 @@ namespace GVDEditor.Forms
         {
             if (listGrafikony.SelectedIndex != -1)
             {
-                var dir = (GVDDirectory) listGrafikony.SelectedItem;
+                var dir = (GVDDirectory)listGrafikony.SelectedItem;
                 tbGrafikonStanica.Text = dir.GVD.ThisStation.Name;
                 tbGrafikonObdobie.Text = dir.GVD.StartValidTimeTable.ToString("dd.MM.yyyy") + @" - " +
                                          dir.GVD.EndValidTimeTable.ToString("dd.MM.yyyy");
@@ -252,11 +250,11 @@ namespace GVDEditor.Forms
         {
             if (listGrafikony.SelectedIndex != -1)
             {
-                var dir = (GVDDirectory) listGrafikony.SelectedItem;
+                var dir = (GVDDirectory)listGrafikony.SelectedItem;
                 var portTab = decimal.ToInt32(nudTabPort.Value);
                 var portHlas = decimal.ToInt32(nudHlaseniePort.Value);
-                dir.Dir.TablePort = portTab == 0 ? (int?) null : portTab;
-                dir.Dir.HlaseniePort = portHlas == 0 ? (int?) null : portHlas;
+                dir.Dir.TablePort = portTab == 0 ? null : portTab;
+                dir.Dir.HlaseniePort = portHlas == 0 ? null : portHlas;
                 dir.Dir.Farba = vybrataFarba;
             }
         }
@@ -319,14 +317,14 @@ namespace GVDEditor.Forms
 
         private void listMeskania_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listMeskania.SelectedItem != null) nudMeskanie.Value = (int) listMeskania.SelectedItem;
+            if (listMeskania.SelectedItem != null) nudMeskanie.Value = (int)listMeskania.SelectedItem;
         }
 
         private void listTrainTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listTrainTypes.SelectedIndex != 0)
             {
-                var typ = (TrainType) listTrainTypes.SelectedItem;
+                var typ = (TrainType)listTrainTypes.SelectedItem;
 
                 if (!typ.IsCustom)
                 {
@@ -360,7 +358,7 @@ namespace GVDEditor.Forms
 
         private void bDefTrainTypAdd_Click(object sender, EventArgs e)
         {
-            var typ = (TrainType) cbDefTrainTypSkratka.SelectedItem;
+            var typ = (TrainType)cbDefTrainTypSkratka.SelectedItem;
             foreach (var trainType in TrainTypes)
                 if (typ == trainType)
                 {
@@ -378,9 +376,9 @@ namespace GVDEditor.Forms
         {
             if (listTrainTypes.SelectedIndex != 0)
             {
-                var typ = (TrainType) cbDefTrainTypSkratka.SelectedItem;
+                var typ = (TrainType)cbDefTrainTypSkratka.SelectedItem;
                 foreach (var trainType in TrainTypes)
-                    if (typ == trainType && ((TrainType) listTrainTypes.SelectedItem).Key != typ.Key)
+                    if (typ == trainType && ((TrainType)listTrainTypes.SelectedItem).Key != typ.Key)
                     {
                         Utils.ShowError(Resources.FGlobalSettings_Vybraný_typ_vlaku_sa_už_v_zozname_nachádza);
                         return;
@@ -508,7 +506,7 @@ namespace GVDEditor.Forms
             if (listTrainTypes.SelectedIndex != 0)
             {
                 foreach (var trainType in TrainTypes)
-                    if (tbCustomTrainTypSkratka.Text == trainType.Key && ((TrainType) listTrainTypes.SelectedItem).Key != tbCustomTrainTypSkratka.Text)
+                    if (tbCustomTrainTypSkratka.Text == trainType.Key && ((TrainType)listTrainTypes.SelectedItem).Key != tbCustomTrainTypSkratka.Text)
                     {
                         Utils.ShowError(Resources.FGlobalSettings_Click_Zadaný_typ_vlaku_sa_už_v_zozname_nachádza);
                         return;

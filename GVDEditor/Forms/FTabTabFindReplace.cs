@@ -12,6 +12,10 @@ namespace GVDEditor.Forms
     {
         private readonly Scintilla scintilla;
         private int startPos, endPos;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public event EventHandler<SearchingEventArgs> Searching;
 
         /// <summary>

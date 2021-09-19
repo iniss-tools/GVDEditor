@@ -11,15 +11,13 @@ namespace GVDEditor.XML
         /// <summary>
         ///     Ci ma program zapnut ako Administrator
         /// </summary>
-        [XmlElement("RunAsAdmin")]
-        [DefaultValue(false)]
+        [XmlElement("RunAsAdmin")] [DefaultValue(false)]
         public bool RunAsAdmin;
 
         /// <summary>
         ///     Argumenty prikazoveho riadka ako vstup pre program
         /// </summary>
-        [XmlElement("CmdArgs")]
-        [DefaultValue("")]
+        [XmlElement("CmdArgs")] [DefaultValue("")]
         public string CmdArgs;
     }
 }

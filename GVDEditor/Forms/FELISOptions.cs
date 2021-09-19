@@ -2,12 +2,11 @@
 using System.IO;
 using System.Windows.Forms;
 using GVDEditor.Properties;
-using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     
     /// </summary>
     public partial class FELISOptions : Form
     {
@@ -27,10 +26,7 @@ namespace GVDEditor.Forms
         private void bBrowse_Click(object sender, EventArgs e)
         {
             var result = dOpenELIS.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                tbPath.Text = dOpenELIS.FileName;
-            }
+            if (result == DialogResult.OK) tbPath.Text = dOpenELIS.FileName;
         }
 
         private void bImport_Click(object sender, EventArgs e)
@@ -42,12 +38,14 @@ namespace GVDEditor.Forms
                 return;
             }
 
-            ResultOptions = new FMain.SendData()
+            ResultOptions = new FMain.SendData
             {
-                DefinedDateRems = cbDateRems.Checked,
+                DefinedDateLimits = cbDateRems.Checked,
                 DefinedOperators = cbOperators.Checked,
                 OmitPassingTrains = cbSkipPassingTrains.Checked,
-                Path = tbPath.Text
+                ReorderTrains = cbReorder.Checked,
+                Path = tbPath.Text,
+                NewFormat = cbNewFormat.Checked
             };
 
             DialogResult = DialogResult.OK;

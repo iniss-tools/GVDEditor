@@ -8,25 +8,6 @@ namespace GVDEditor.Entities
     /// </summary>
     public sealed class Routing
     {
-        #region VALUES
-
-        /// <summary>
-        ///     Vlak končí v stanici
-        /// </summary>
-        public static readonly Routing Konciaci = new("Končiaci", "->|", Resources.konecna_st, "K");
-
-        /// <summary>
-        ///     Vlak prechádza stanicou
-        /// </summary>
-        public static readonly Routing Prechadzajuci = new("Prechádzajúci", "<->", Resources.prechadza_st, "P");
-
-        /// <summary>
-        ///     Vlak vychádza zo stanice
-        /// </summary>
-        public static readonly Routing Vychadzajuci = new("Vychadzajúci", "|->", Resources.vychodzia_st, "V");
-
-        #endregion
-
         private Routing(string name, string symbol, Bitmap bitmap, string charSymbol)
         {
             Name = name;
@@ -101,5 +82,24 @@ namespace GVDEditor.Entities
         {
             return Symbol;
         }
+
+        #region VALUES
+
+        /// <summary>
+        ///     Vlak končí v stanici
+        /// </summary>
+        public static readonly Routing Konciaci = new("Končiaci", "->|", Resources.konecna_st, "K");
+
+        /// <summary>
+        ///     Vlak prechádza stanicou
+        /// </summary>
+        public static readonly Routing Prechadzajuci = new("Prechádzajúci", "<->", Resources.prechadza_st, "P");
+
+        /// <summary>
+        ///     Vlak vychádza zo stanice
+        /// </summary>
+        public static readonly Routing Vychadzajuci = new("Vychadzajúci", "|->", Resources.vychodzia_st, "V");
+
+        #endregion
     }
 }

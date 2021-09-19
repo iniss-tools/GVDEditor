@@ -8,7 +8,7 @@
         /// <summary>
         ///     Predvolený TabTab - žiadny
         /// </summary>
-        public static readonly TableTabTab Empty = new() {Key = "Žiadny", Text = ""};
+        public static readonly TableTabTab Empty = new() { Key = "Žiadny", Text = "" };
 
 
         /// <summary>
@@ -44,16 +44,25 @@
             return Key;
         }
 
-        /// <summary>Returns a value that indicates whether the values of two <see cref="T:GVDEditor.Entities.TableTabTab" /> objects are equal.</summary>
+        /// <summary>
+        ///     Returns a value that indicates whether the values of two <see cref="T:GVDEditor.Entities.TableTabTab" />
+        ///     objects are equal.
+        /// </summary>
         /// <param name="left">The first value to compare.</param>
         /// <param name="right">The second value to compare.</param>
-        /// <returns>true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise, false.</returns>
+        /// <returns>
+        ///     true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise,
+        ///     false.
+        /// </returns>
         public static bool operator ==(TableTabTab left, TableTabTab right)
         {
             return Equals(left, right);
         }
 
-        /// <summary>Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.TableTabTab" /> objects have different values.</summary>
+        /// <summary>
+        ///     Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.TableTabTab" /> objects have
+        ///     different values.
+        /// </summary>
         /// <param name="left">The first value to compare.</param>
         /// <param name="right">The second value to compare.</param>
         /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>

@@ -1,155 +1,100 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using ScintillaNET;
 
 namespace GVDEditor.Controls
 {
-    internal class MyScintilla : Scintilla
+    /// <summary>
+    ///     Custom Scintilla Control.
+    /// </summary>
+    public partial class MyScintilla : UserControl
     {
-        private bool _hScrollBar;
-        private bool _vScrollBar;
-
-        public VScrollBar VScrollBarControl { get; }
-
-        public HScrollBar HScrollBarControl { get; }
-
-        public new bool VScrollBar
-        {
-            get => _vScrollBar;
-            set
-            {
-                _vScrollBar = value;
-                VScrollBarControl.Visible = value;
-            }
-        }
-
-        public new bool HScrollBar
-        {
-            get => _hScrollBar;
-            set
-            {
-                value = false;
-                _hScrollBar = value;
-                HScrollBarControl.Visible = value;
-            }
-        }
-
+        /// <summary>
+        ///     Custom Scintilla Control.
+        /// </summary>
         public MyScintilla()
         {
-            base.HScrollBar = false;
-            base.VScrollBar = false;
-            
-            VScrollBarControl = new VScrollBar();
-            HScrollBarControl = new HScrollBar(); //TODO Horizontal scrollbar NOT WORKING
+            InitializeComponent();
 
             VScrollBarControl.Scroll += VScrollBarControlOnScroll;
             HScrollBarControl.Scroll += HScrollBarControlOnScroll;
-
-            Controls.Add(VScrollBarControl);
-            Controls.Add(HScrollBarControl);
-
-            VScrollBarControl.Dock = DockStyle.Right;
-            HScrollBarControl.Dock = DockStyle.Bottom;
-
-            VScrollBarControl.Cursor = Cursors.Default;
-            HScrollBarControl.Cursor = Cursors.Default;
-
-            //BUG this part doesnt work
-            var padding = HScrollBarControl.Padding;
-            padding.Right = HScrollBarControl.Height;
-            HScrollBarControl.Margin = padding;
         }
 
         private void VScrollBarControlOnScroll(object sender, ScrollEventArgs e)
         {
-            FirstVisibleLine = VScrollBarControl.Value;
+            scintilla.FirstVisibleLine = e.NewValue;
         }
 
         private void HScrollBarControlOnScroll(object sender, ScrollEventArgs e)
         {
-            XOffset = HScrollBarControl.Value;
+            scintilla.XOffset = e.NewValue;
         }
 
-        /// <summary>
-        /// Raises the <see cref="E:ScintillaNET.Scintilla.UpdateUI" /> event.
-        /// </summary>
-        /// <param name="e">An <see cref="T:ScintillaNET.UpdateUIEventArgs" /> that contains the event data.</param>
-        protected override void OnUpdateUI(UpdateUIEventArgs e)
+        private void Scintilla_UpdateUI(object sender, UpdateUIEventArgs e)
         {
-            base.OnUpdateUI(e);
-
-            if ((e.Change & UpdateChange.VScroll) != 0)
+            if (IsChange(e.Change, UpdateChange.VScroll))
             {
                 VScrollBarControl.Minimum = 0;
-                VScrollBarControl.Maximum = Lines.Count;
-                VScrollBarControl.LargeChange = LinesOnScreen;
-                VScrollBarControl.Value = FirstVisibleLine;
+                VScrollBarControl.Maximum = scintilla.Lines.Count;
+                VScrollBarControl.LargeChange = scintilla.LinesOnScreen;
+                VScrollBarControl.SmallChange = 1;
+                VScrollBarControl.Value = scintilla.FirstVisibleLine;
             }
-            if ((e.Change & UpdateChange.HScroll) != 0)  //TODO Horizontal scrollbar doesnt work properly
-            {
-                /*int largest = LargestLine();
-                int larW = Lines[largest].Length;
-                int textareaW = GetColumn(Lines[largest].EndPosition - 1);
 
+            if (IsChange(e.Change, UpdateChange.HScroll))
+            {
                 HScrollBarControl.Minimum = 0;
-                HScrollBarControl.Maximum = larW - textareaW + 20;
-                if (XOffset > textareaW)
-                {
-                    HScrollBarControl.Value = larW - XOffset;
-                }
-                else
-                {
-                    HScrollBarControl.Value = 0;
-                }*/
+                HScrollBarControl.Maximum = scintilla.ScrollWidth;
+                HScrollBarControl.LargeChange = scintilla.Width;
+                HScrollBarControl.SmallChange = 10;
+                HScrollBarControl.Value = scintilla.XOffset;
             }
 
-            if ((e.Change & UpdateChange.Content) != 0)
+            if (IsChange(e.Change, UpdateChange.Content))
             {
-                if (Lines.Count < LinesOnScreen)
+                ChangeScrollWidth();
+
+                if (scintilla.Lines.Count < scintilla.LinesOnScreen)
                 {
-                    VScrollBarControl.Visible = false;
+                    pVertical.Visible = false;
                 }
                 else
                 {
-                    VScrollBarControl.Visible = true;
+                    pVertical.Visible = true;
                     VScrollBarControl.Minimum = 0;
-                    VScrollBarControl.Maximum = Lines.Count;
-                    VScrollBarControl.LargeChange = LinesOnScreen;
-                    VScrollBarControl.Value = FirstVisibleLine;
+                    VScrollBarControl.Maximum = scintilla.Lines.Count;
+                    VScrollBarControl.LargeChange = scintilla.LinesOnScreen;
+                    VScrollBarControl.SmallChange = 1;
+                    VScrollBarControl.Value = scintilla.FirstVisibleLine;
                 }
 
-                //not working
-                /*int largest = LargestLine();
-                int larW = Lines[largest].Length;
-                int textareaW = GetColumn(Lines[largest].EndPosition - 1);
-
-                if (larW < textareaW)
+                if (scintilla.ScrollWidth < scintilla.Width)
                 {
-                    HScrollBarControl.Visible = false;
+                    pHorizontal.Visible = false;
                 }
                 else
                 {
-                    HScrollBarControl.Visible = true;
+                    pHorizontal.Visible = true;
                     HScrollBarControl.Minimum = 0;
-                    HScrollBarControl.Maximum = larW - textareaW + 20;
-
-                    if (XOffset > textareaW)
-                    {
-                        HScrollBarControl.Value = larW - XOffset;
-                    }
-                    else
-                    {
-                        HScrollBarControl.Value = 0;
-                    }
-                }*/
+                    HScrollBarControl.Maximum = scintilla.ScrollWidth;
+                    HScrollBarControl.LargeChange = scintilla.Width;
+                    HScrollBarControl.SmallChange = 10;
+                    HScrollBarControl.Value = scintilla.XOffset;
+                }
             }
         }
 
-        public int LargestLine()
+        private static bool IsChange(UpdateChange changes, UpdateChange expected)
+        {
+            return (changes & expected) != 0;
+        }
+
+        private int LargestLine()
         {
             int index = 0;
             int len = 0;
-            foreach (var line in Lines)
+            foreach (var line in scintilla.Lines)
             {
                 if (line.Length > len)
                 {
@@ -159,6 +104,88 @@ namespace GVDEditor.Controls
             }
 
             return index;
+        }
+
+        private void ChangeScrollWidth()
+        {
+            var index = LargestLine();
+            if (scintilla.Lines[index].EndPosition - 2 >= 0)
+            {
+                int point = scintilla.PointXFromPosition(scintilla.Lines[index].EndPosition - 2);
+                scintilla.ScrollWidth = point + 100;
+            }
+        }
+
+        /// <summary>
+        ///     Dokument bol vymeneny.
+        /// </summary>
+        public void SwitchedDocument()
+        {
+            Scintilla_UpdateUI(scintilla, new UpdateUIEventArgs(UpdateChange.Content));
+        }
+
+        /// <summary>
+        ///     Gets the Scintilla control.
+        /// </summary>
+        [Browsable(true)]
+        public Scintilla Scintilla => scintilla;
+
+        /// <summary>Occurs when the user enters a text character.</summary>
+        [Category("Notifications")]
+        [Description("Occurs when the user types a character.")]
+        public event EventHandler<CharAddedEventArgs> CharAdded
+        {
+            add => scintilla.CharAdded += value;
+            remove => scintilla.CharAdded -= value;
+        }
+
+        /// <summary>
+        /// Occurs when the control is about to display or print text and requires styling.
+        /// </summary>
+        /// <remarks>
+        /// This event is only raised when <see cref="P:ScintillaNET.Scintilla.Lexer" /> is set to <see cref="F:ScintillaNET.Lexer.Container" />.
+        /// The last position styled correctly can be determined by calling <see cref="M:ScintillaNET.Scintilla.GetEndStyled" />.
+        /// </remarks>
+        /// <seealso cref="M:ScintillaNET.Scintilla.GetEndStyled" />
+        [Category("Notifications")]
+        [Description("Occurs when the text needs styling.")]
+        public event EventHandler<StyleNeededEventArgs> StyleNeeded
+        {
+            add => scintilla.StyleNeeded += value;
+            remove => scintilla.StyleNeeded -= value;
+        }
+
+        /// <summary>
+        /// Occurs when the control UI is updated as a result of changes to text (including styling),
+        /// selection, and/or scroll positions.
+        /// </summary>
+        [Category("Notifications")]
+        [Description("Occurs when the control UI is updated.")]
+        public event EventHandler<UpdateUIEventArgs> UpdateUI
+        {
+            add => scintilla.UpdateUI += value;
+            remove => scintilla.UpdateUI -= value;
+        }
+
+        /// <inheritdoc cref="TextChanged"/>
+        public new event EventHandler TextChanged
+        {
+            add => scintilla.TextChanged += value;
+            remove => scintilla.TextChanged -= value;
+        }
+
+        /// <inheritdoc cref="KeyPress"/>
+        public new event KeyPressEventHandler KeyPress
+        {
+            add => scintilla.KeyPress += value;
+            remove => scintilla.KeyPress -= value;
+        }
+
+        /// <inheritdoc cref="MouseDown"/>
+        public new event MouseEventHandler MouseDown
+        {
+            add => scintilla.MouseDown += value;
+            remove => scintilla.MouseDown -= value;
         }
     }
 }

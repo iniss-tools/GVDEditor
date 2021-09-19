@@ -6,7 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
-using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
@@ -60,8 +60,8 @@ namespace GVDEditor.Forms
 
             TVybrane = new BindingList<TableLogicalZostava>(zostava);
 
-            cbTypeView.DataSource = Enumeration.GetValues<TableViewType>();
-            if (ThisTable.TypeView != null) cbTypeView.SelectedItem = ThisTable.TypeView;
+            cbTypeView.DataSource = TableViewType.GetValues();
+            if (ThisTable.ViewType != null) cbTypeView.SelectedItem = ThisTable.ViewType;
 
             listFyzTab.DataSource = tables;
             dgvZostava.DataSource = TVybrane;
@@ -95,7 +95,7 @@ namespace GVDEditor.Forms
 
             table.Key = tbKey.Text;
             table.Name = tbName.Text;
-            table.TypeView = (TableViewType) cbTypeView.SelectedItem;
+            table.ViewType = (TableViewType)cbTypeView.SelectedItem;
 
             var records = new List<TableRecord>();
 
@@ -107,10 +107,10 @@ namespace GVDEditor.Forms
                         positions.Add(new TablePosition
                         {
                             TablePhysical = zostava.Table, Position = i,
-                            TypeView = (TableViewType) cbTypeView.SelectedItem
+                            TypeView = (TableViewType)cbTypeView.SelectedItem
                         });
-                
-                records.Add(new TableRecord {Positions = positions});
+
+                records.Add(new TableRecord { Positions = positions });
             }
 
             table.Records = records;
@@ -131,7 +131,7 @@ namespace GVDEditor.Forms
         {
             if (listFyzTab.SelectedIndex != -1)
             {
-                var fyztab = (TablePhysical) listFyzTab.SelectedItem;
+                var fyztab = (TablePhysical)listFyzTab.SelectedItem;
                 var found = false;
                 foreach (var zostava in TVybrane)
                     if (zostava.Table.Equals(fyztab))
@@ -139,7 +139,7 @@ namespace GVDEditor.Forms
 
                 if (!found)
                     TVybrane.Add(new TableLogicalZostava
-                        {Table = fyztab, StartRow = 0, EndRow = decimal.ToInt32(nudCountRecords.Value)});
+                        { Table = fyztab, StartRow = 0, EndRow = decimal.ToInt32(nudCountRecords.Value) });
             }
         }
 
@@ -152,7 +152,7 @@ namespace GVDEditor.Forms
         {
             if (listFyzTab.SelectedIndex != -1)
             {
-                var fyztab = (TablePhysical) listFyzTab.SelectedItem;
+                var fyztab = (TablePhysical)listFyzTab.SelectedItem;
                 var found = false;
                 foreach (var zostava in TVybrane)
                     if (zostava.Table.Equals(fyztab))
@@ -160,7 +160,7 @@ namespace GVDEditor.Forms
 
                 if (!found)
                     TVybrane.Add(new TableLogicalZostava
-                        {Table = fyztab, StartRow = 0, EndRow = decimal.ToInt32(nudCountRecords.Value)});
+                        { Table = fyztab, StartRow = 0, EndRow = decimal.ToInt32(nudCountRecords.Value) });
             }
         }
 
@@ -171,14 +171,14 @@ namespace GVDEditor.Forms
                 {
                     case 0:
                     {
-                        var num = int.Parse((string) e.FormattedValue);
+                        var num = int.Parse((string)e.FormattedValue);
                         if (num < 1) e.Cancel = true;
 
                         break;
                     }
                     case 1:
                     {
-                        var num = int.Parse((string) e.FormattedValue);
+                        var num = int.Parse((string)e.FormattedValue);
                         if (num > nudCountRecords.Value) e.Cancel = true;
 
                         break;

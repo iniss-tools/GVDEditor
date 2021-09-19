@@ -1,5 +1,8 @@
 ﻿namespace GVDEditor.Entities
 {
+    /// <summary>
+    ///     Rozhranie pre všetky triedy tabuľovitého typu.
+    /// </summary>
     public interface ITable
     {
         /// <summary>

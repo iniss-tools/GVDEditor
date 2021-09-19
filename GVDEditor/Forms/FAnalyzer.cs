@@ -1,17 +1,25 @@
-﻿using GVDEditor.Entities;
-using GVDEditor.Tools;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using GVDEditor.Entities;
+using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
+    /// <summary>
+    ///     Analyza grafikonu
+    /// </summary>
     public partial class FAnalyzer : Form
     {
-        private BindingList<IProblem> Problems;
         private readonly GVDDirectory GVD;
+        private BindingList<IProblem> Problems;
 
+        /// <summary>
+        ///     Konstruktor
+        /// </summary>
+        /// <param name="gvd"></param>
         public FAnalyzer(GVDDirectory gvd)
         {
             InitializeComponent();
@@ -34,7 +42,6 @@ namespace GVDEditor.Forms
         {
             var cell = dgvResults.Rows[e.RowIndex].Cells[e.ColumnIndex];
             if (e.ColumnIndex == 0)
-            {
                 switch (Problems[e.RowIndex].ProblemType)
                 {
                     case Tools.ProblemType.HINT:
@@ -50,9 +57,7 @@ namespace GVDEditor.Forms
                         cell.ToolTipText = "Chyba";
                         break;
                 }
-            }
             else if (e.ColumnIndex == 2)
-            {
                 switch (Problems[e.RowIndex].FixType)
                 {
                     case Tools.FixType.AUTO:
@@ -68,7 +73,6 @@ namespace GVDEditor.Forms
                         cell.ToolTipText = "Používateľ musí problém opraviť sám, program len navedie k riešeniu";
                         break;
                 }
-            }
         }
 
         private void bgWorkAnalyze_DoWork(object sender, DoWorkEventArgs e)
@@ -90,18 +94,12 @@ namespace GVDEditor.Forms
 
         private void dgvResults_DoubleClick(object sender, EventArgs e)
         {
-            if (dgvResults.SelectedRows.Count != 0)
-            {
-                Repair(dgvResults.SelectedRows[0].DataBoundItem as IProblem);
-            }
+            if (dgvResults.SelectedRows.Count != 0) Repair(dgvResults.SelectedRows[0].DataBoundItem as IProblem);
         }
 
         private void bFixSelected_Click(object sender, EventArgs e)
         {
-            if (dgvResults.SelectedRows.Count != 0)
-            {
-                Repair(dgvResults.SelectedRows[0].DataBoundItem as IProblem);
-            }
+            if (dgvResults.SelectedRows.Count != 0) Repair(dgvResults.SelectedRows[0].DataBoundItem as IProblem);
         }
 
         private void Repair(IProblem problem)
@@ -117,7 +115,7 @@ namespace GVDEditor.Forms
                 error = e;
                 res = FixResult.ERROR;
             }
-            
+
             switch (res)
             {
                 case FixResult.ERROR:

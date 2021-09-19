@@ -18,6 +18,6 @@
         /// <summary>
         ///     ID písma
         /// </summary>
-        public int FontId { get; set; }
+        public int FontID { get; set; }
     }
 }

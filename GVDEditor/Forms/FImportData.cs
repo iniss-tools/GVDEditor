@@ -7,7 +7,9 @@ using System.Windows.Forms;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
-using GVDEditor.XML;
+using ToolsCore.Tools;
+using ToolsCore.XML;
+using TableFileReader = ToolsCore.Tools.TableFileReader;
 
 namespace GVDEditor.Forms
 {
@@ -31,7 +33,7 @@ namespace GVDEditor.Forms
         {
             InitializeComponent();
             FormUtils.SetFormFont(this);
-            this.ApplyTheme();
+            FormUtils.ApplyTheme(this);
 
             Gvd = gvd;
             cbDataType.SelectedIndex = 0;
@@ -51,7 +53,7 @@ namespace GVDEditor.Forms
             }
 
             var required = ImportTrainColumnType.GetRequiredValues();
-            if (!selectedColumnTypes.ContainsAllItems(required))
+            if (!Utils.ContainsAllItems(selectedColumnTypes, required))
             {
                 var text =
                     "Nie sú zadané všetky povinné stĺpce pre import. Povinné stĺpce sú:\r\nSmerovanie vlaku a/alebo stanice vlaku,\r\n";
@@ -60,7 +62,7 @@ namespace GVDEditor.Forms
                         text += required[i] + ".";
                     else
                         text += required[i] + ",\r\n";
-                
+
                 Utils.ShowError(text);
                 DialogResult = DialogResult.None;
                 return;
@@ -69,11 +71,8 @@ namespace GVDEditor.Forms
             var trains = new List<Train>(DataTable.Rows.Count);
 
             if (GlobData.Config.DebugModeGUI == Config.DebugMode.APP_CRASH)
-            {
                 Deserialize();
-            }
             else
-            {
                 try
                 {
                     Deserialize();
@@ -84,7 +83,6 @@ namespace GVDEditor.Forms
                     DialogResult = DialogResult.None;
                     return;
                 }
-            }
 
             if (rbRemoveAndInsert.Checked)
             {
@@ -163,23 +161,15 @@ namespace GVDEditor.Forms
                             else
                             {
                                 var oper = Operator.GetOperatorFromName(GlobData.Operators, data);
-
-                                if (oper == null)
-                                    throw new ArgumentException(string.Format(fmtException, data, i + 1, j,
-                                        selectedColumnTypes[j], typeof(Operator)));
-
-                                train.Operator = oper;
+                                train.Operator = oper ?? throw new ArgumentException(string.Format(fmtException, data, i + 1, j,
+                                    selectedColumnTypes[j], typeof(Operator)));
                             }
                         }
                         else if (selectedColumnTypes[j] == ImportTrainColumnType.Track)
                         {
                             var trk = Track.GetTrackFromId(GlobData.Tracks, data);
-
-                            if (trk == null)
-                                throw new ArgumentException(string.Format(fmtException, data, i + 1, j,
-                                    selectedColumnTypes[j], typeof(Track)));
-
-                            train.Track = trk;
+                            train.Track = trk ?? throw new ArgumentException(string.Format(fmtException, data, i + 1, j,
+                                selectedColumnTypes[j], typeof(Track)));
                         }
                         else if (selectedColumnTypes[j] == ImportTrainColumnType.LinkaOdchod)
                         {
@@ -426,7 +416,8 @@ namespace GVDEditor.Forms
                         var data = DataTable.Rows[i][index].ToString();
 
                         if (!Utils.TryParseDateAlts(data, out var date))
-                            throw new ArgumentException(string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index], typeof(DateTime)));
+                            throw new ArgumentException(string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index],
+                                typeof(DateTime)));
 
                         train.ZaciatokPlatnosti = date;
                     }
@@ -437,7 +428,8 @@ namespace GVDEditor.Forms
                         var data = DataTable.Rows[i][index].ToString();
 
                         if (!Utils.TryParseDateAlts(data, out var date))
-                            throw new ArgumentException(string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index], typeof(DateTime)));
+                            throw new ArgumentException(string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index],
+                                typeof(DateTime)));
 
                         train.KoniecPlatnosti = date;
                     }
@@ -457,16 +449,17 @@ namespace GVDEditor.Forms
 
                         try
                         {
-                            var test = new DateRem(train.ZaciatokPlatnosti, train.KoniecPlatnosti);
-                            test.TxtToBitArray(data);
+                            var test = new DateLimit(train.ZaciatokPlatnosti, train.KoniecPlatnosti);
+                            test.TextToBitArray(data);
                         }
                         catch (Exception exception)
                         {
                             throw new ArgumentException(
-                                string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index], typeof(DateTime)) + " " + exception.Message);
+                                string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index], typeof(DateTime)) + " " +
+                                exception.Message);
                         }
 
-                        train.DateremText = data;
+                        train.DateLimitText = data;
                     }
 
                     if (selectedColumnTypes.Contains(ImportTrainColumnType.DateRemBitArray))
@@ -477,16 +470,17 @@ namespace GVDEditor.Forms
                         string dateRemText;
                         try
                         {
-                            var dateRem = new DateRem(train.ZaciatokPlatnosti, train.KoniecPlatnosti, bInsertMarks: false);
-                            dateRemText = dateRem.BitArrayToTxt(Utils.StringToBitArray(data));
+                            var dateRem = new DateLimit(train.ZaciatokPlatnosti, train.KoniecPlatnosti, bInsertMarks: false);
+                            dateRemText = dateRem.BitArrayToText(Utils.StringToBitArray(data));
                         }
                         catch (Exception exception)
                         {
                             throw new ArgumentException(
-                                string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index], typeof(DateTime)) + " " + exception.Message);
+                                string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index], typeof(DateTime)) + " " +
+                                exception.Message);
                         }
 
-                        train.DateremText = dateRemText;
+                        train.DateLimitText = dateRemText;
                     }
 
                     trains.Add(train);
@@ -556,7 +550,7 @@ namespace GVDEditor.Forms
                 {
                     for (var i = 0; i < DataTable.Rows.Count; i++)
                     for (var j = 0; j < DataTable.Columns.Count; j++)
-                        DataTable.Rows[i][j] = ((string) DataTable.Rows[i][j]).ANSItoUTF();
+                        DataTable.Rows[i][j] = Utils.ANSItoUTF((string)DataTable.Rows[i][j]);
 
                     break;
                 }
@@ -564,7 +558,7 @@ namespace GVDEditor.Forms
                 {
                     for (var i = 0; i < DataTable.Rows.Count; i++)
                     for (var j = 0; j < DataTable.Columns.Count; j++)
-                        DataTable.Rows[i][j] = ((string) DataTable.Rows[i][j]).UTFtoANSI();
+                        DataTable.Rows[i][j] = Utils.UTFtoANSI((string)DataTable.Rows[i][j]);
 
                     break;
                 }
@@ -582,7 +576,7 @@ namespace GVDEditor.Forms
 
                     for (var i = 0; i < dgvData.Columns.Count; i++)
                     {
-                        var type = ImportTrainColumnType.ParseColumnName((string) firstRow[i]);
+                        var type = ImportTrainColumnType.ParseColumnName((string)firstRow[i]);
                         dgvData.Columns[i].HeaderText = type.Name;
                         selectedColumnTypes.Add(type);
                     }
@@ -638,7 +632,7 @@ namespace GVDEditor.Forms
             {
                 var ct = cboxFirstHeader.Checked ? ImportTrainColumnType.ParseColumnName(reader[0, i]) : ImportTrainColumnType.None;
 
-                var dc = new DataColumn {Caption = ct.Name, DefaultValue = ""};
+                var dc = new DataColumn { Caption = ct.Name, DefaultValue = "" };
 
                 selectedColumnTypes.Add(ct);
                 DataTable.Columns.Add(dc);
@@ -679,7 +673,7 @@ namespace GVDEditor.Forms
 
         private void FImportData_DragDrop(object sender, DragEventArgs e)
         {
-            var files = (string[]) e.Data.GetData(DataFormats.FileDrop);
+            var files = (string[])e.Data.GetData(DataFormats.FileDrop);
             switch (Path.GetExtension(files[0]).ToLower())
             {
                 case ".xls":

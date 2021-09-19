@@ -1,16 +1,15 @@
-﻿using AutocompleteMenuNS;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using AutocompleteMenuNS;
 
 namespace GVDEditor.Tools
 {
     internal class FunctionItem : AutocompleteItem
     {
-        public string FunctionName { get; }
-
-        public FunctionItem(string fname, string text, string desc = "", FunReturnType returns = FunReturnType.Bool, params FunParameter[] parameters) : base(text)
+        public FunctionItem(string fname, string text, string desc = "", FunReturnType returns = FunReturnType.Bool,
+            params FunParameter[] parameters) : base(text)
         {
             ImageIndex = 0;
 
@@ -24,6 +23,7 @@ namespace GVDEditor.Tools
                     titleB.Append(par.Type.ToString() + ' ');
                     titleB.Append(par.Name);
                 }
+
                 titleB.Append(')');
             }
 
@@ -33,6 +33,8 @@ namespace GVDEditor.Tools
             ToolTipText = desc;
             FunctionName = fname;
         }
+
+        public string FunctionName { get; }
 
         public override CompareResult Compare(string fragmentText)
         {
@@ -46,8 +48,6 @@ namespace GVDEditor.Tools
 
     internal class ConstantItem : AutocompleteItem
     {
-
-        public string ConstName { get; }
         public ConstantItem(string cname, string text, string desc = "") : base(text)
         {
             ImageIndex = 1;
@@ -56,6 +56,8 @@ namespace GVDEditor.Tools
             ToolTipText = desc;
             ConstName = cname;
         }
+
+        public string ConstName { get; }
 
         public override CompareResult Compare(string fragmentText)
         {
@@ -94,13 +96,22 @@ namespace GVDEditor.Tools
         private static readonly FunParameter pPriznak = new(FunParameterType.Priznak, "príznak");
         private static readonly FunParameter pStID = new(FunParameterType.Int, "id_stanice");
 
-        public static readonly FunctionItem Operator = new("OPERATOR", "OPERATOR(\"\")","Zistí, či sa dopravca daného vlaku rovná zadanému názvu dopravcu.",FunReturnType.Bool, pOperator);
+        public static readonly FunctionItem Operator = new("OPERATOR", "OPERATOR(\"\")",
+            "Zistí, či sa dopravca daného vlaku rovná zadanému názvu dopravcu.", FunReturnType.Bool, pOperator);
+
         public static readonly FunctionItem CVlaku = new("CVLAKU", "CVLAKU", "Vracia číslo daného vlaku.", FunReturnType.Int);
         public static readonly FunctionItem Pozice = new("POZICE", "POZICE", "Vracia pozíciu vlaku v stanici (vychádza, prechádza, končí).");
-        public static readonly FunctionItem Typ = new("TYP", "TYP()", "Zistí, či sa typ vlaku rovná zadanému typu vlaku.",FunReturnType.Bool, pTypVlaku);
-        public static readonly FunctionItem Priznak = new("PRIZNAK", "PRIZNAK()", "Zistí, či má daný vlak príznak rovný zadanému príznaku.",FunReturnType.Bool, pPriznak);
-        public static readonly FunctionItem Stav = new("STAV", "STAV()", "Zistí, či sa stav vlaku rovná zadanému stavu vlaku.",FunReturnType.Bool, pStavVlaku); 
-        public static readonly FunctionItem NaklTyp = new("NAKLTYP", "NAKLTYP", "Vracia, či je vlak nákladného typu."); 
+
+        public static readonly FunctionItem Typ = new("TYP", "TYP()", "Zistí, či sa typ vlaku rovná zadanému typu vlaku.", FunReturnType.Bool,
+            pTypVlaku);
+
+        public static readonly FunctionItem Priznak = new("PRIZNAK", "PRIZNAK()", "Zistí, či má daný vlak príznak rovný zadanému príznaku.",
+            FunReturnType.Bool, pPriznak);
+
+        public static readonly FunctionItem Stav = new("STAV", "STAV()", "Zistí, či sa stav vlaku rovná zadanému stavu vlaku.", FunReturnType.Bool,
+            pStavVlaku);
+
+        public static readonly FunctionItem NaklTyp = new("NAKLTYP", "NAKLTYP", "Vracia, či je vlak nákladného typu.");
         public static readonly FunctionItem VylukaTu = new("VYLUKAZDE", "VYLUKAZDE", "Vracia, či má vlak v tejto stanici výluku.");
         public static readonly FunctionItem Odklon = new("ODKLON", "ODKLON", "Vracia, či má vlak odklonenú trasu.");
         public static readonly FunctionItem MeskaniePrichod = new("ZPOZDENIPRIJ", "ZPOZDENIPRIJ");
@@ -108,16 +119,30 @@ namespace GVDEditor.Tools
         public static readonly FunctionItem Meskanie = new("ZPOZDENI", "ZPOZDENI", "Vracia, či má vlak nejaké meškanie.");
         public static readonly FunctionItem DobaPobytu = new("DOBAPOBYTU", "DOBAPOBYTU");
         public static readonly FunctionItem PlanDobaPobytu = new("PLANDOBAPOBYTU", "PLANDOBAPOBYTU");
-        public static readonly FunctionItem ZaujmovaStanica = new("ZAJMOSTANICE", "ZAJMOSTANICE", "Zistí, či sa záujmová stanica rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
-        public static readonly FunctionItem VychodziaStanica = new("VYCHSTANICE", "VYCHSTANICE", "Zistí, či sa východzia stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
-        public static readonly FunctionItem KonecnaStanica = new("CILSTANICE", "CILSTANICE", "Zistí, či sa konečná stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
+
+        public static readonly FunctionItem ZaujmovaStanica = new("ZAJMOSTANICE", "ZAJMOSTANICE",
+            "Zistí, či sa záujmová stanica rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
+
+        public static readonly FunctionItem VychodziaStanica = new("VYCHSTANICE", "VYCHSTANICE",
+            "Zistí, či sa východzia stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
+
+        public static readonly FunctionItem KonecnaStanica = new("CILSTANICE", "CILSTANICE",
+            "Zistí, či sa konečná stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
+
         public static readonly FunctionItem Miestne = new("MISTNI", "MISTNI");
         public static readonly FunctionItem Cudzie = new("CIZI", "CIZI");
-        public static readonly FunctionItem ZoSmeru = new("ZESMERU", "ZESMERU()","",FunReturnType.Bool, pStID);
+        public static readonly FunctionItem ZoSmeru = new("ZESMERU", "ZESMERU()", "", FunReturnType.Bool, pStID);
         public static readonly FunctionItem DoSmeru = new("DOSMERU", "DOSMERU()", "", FunReturnType.Bool, pStID);
-        public static readonly FunctionItem HomeStation = new("HOMESTATION", "HOMESTATION()", "Zistí, či sa záujmová stanica rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
-        public static readonly FunctionItem BaseStation = new("BASESTATION", "BASESTATION()", "Zistí, či sa východzia stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
-        public static readonly FunctionItem EndStation = new("ENDSTATION", "ENDSTATION()", "Zistí, či sa konečná stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
+
+        public static readonly FunctionItem HomeStation = new("HOMESTATION", "HOMESTATION()",
+            "Zistí, či sa záujmová stanica rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
+
+        public static readonly FunctionItem BaseStation = new("BASESTATION", "BASESTATION()",
+            "Zistí, či sa východzia stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
+
+        public static readonly FunctionItem EndStation = new("ENDSTATION", "ENDSTATION()",
+            "Zistí, či sa konečná stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
+
         public static readonly FunctionItem KolajPrichod = new("KOLEJPRIJ", "KOLEJPRIJ(\"\")");
         public static readonly FunctionItem KolajOdchod = new("KOLEJODJ", "KOLEJODJ(\"\")");
         public static readonly FunctionItem DatumPrichod = new("DATUMPRIJ", "DATUMPRIJ");
@@ -198,35 +223,37 @@ namespace GVDEditor.Tools
         public static readonly ConstantItem TypSl9 = new("Typ_Sl9", "Typ_Sl9", "Používateľský typ vlaku Sl9 (typu služobný vlak)");
 
 
-        public static readonly EventItem SWITCH = new("#SWITCH", "#SWITCH", "Text sa bude preblikávať. Ak text obsahuje '#', budú sa časti textu rezdelené týmto znakom preblikávať navzájom.");
+        public static readonly EventItem SWITCH = new("#SWITCH", "#SWITCH",
+            "Text sa bude preblikávať. Ak text obsahuje '#', budú sa časti textu rezdelené týmto znakom preblikávať navzájom.");
+
         public static readonly EventItem MERGE = new("#MERGE", "#MERGE");
         public static readonly EventItem VYLUKA = new("#VYLUKA", "#VYLUKA");
         public static readonly EventItem ODKLON = new("#ODKLON", "#ODKLON");
 
         public static IEnumerable<AutocompleteItem> GetItems()
         {
-            FieldInfo[] fields = typeof(TabTabACItems).GetFields(BindingFlags.Static | BindingFlags.Public);
+            var fields = typeof(TabTabACItems).GetFields(BindingFlags.Static | BindingFlags.Public);
 
             return fields.Select(field => field.GetValue(null) as AutocompleteItem).ToList();
         }
 
         public static IEnumerable<FunctionItem> GetFunctionItems()
         {
-            FieldInfo[] fields = typeof(TabTabACItems).GetFields(BindingFlags.Static | BindingFlags.Public);
+            var fields = typeof(TabTabACItems).GetFields(BindingFlags.Static | BindingFlags.Public);
 
             return fields.Where(field => field.GetValue(null) is FunctionItem).Select(field => field.GetValue(null) as FunctionItem).ToList();
         }
 
         public static IEnumerable<ConstantItem> GetConstantItems()
         {
-            FieldInfo[] fields = typeof(TabTabACItems).GetFields(BindingFlags.Static | BindingFlags.Public);
+            var fields = typeof(TabTabACItems).GetFields(BindingFlags.Static | BindingFlags.Public);
 
             return fields.Where(field => field.GetValue(null) is ConstantItem).Select(field => field.GetValue(null) as ConstantItem).ToList();
         }
 
         public static IEnumerable<EventItem> GetEventItems()
         {
-            FieldInfo[] fields = typeof(TabTabACItems).GetFields(BindingFlags.Static | BindingFlags.Public);
+            var fields = typeof(TabTabACItems).GetFields(BindingFlags.Static | BindingFlags.Public);
 
             return fields.Where(field => field.GetValue(null) is EventItem).Select(field => field.GetValue(null) as EventItem).ToList();
         }

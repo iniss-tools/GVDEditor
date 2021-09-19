@@ -30,17 +30,19 @@ namespace GVDEditor.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.cbOperators = new ExControls.ExCheckBox(this.components);
-            this.cbDateRems = new ExControls.ExCheckBox(this.components);
-            this.cbSkipPassingTrains = new ExControls.ExCheckBox(this.components);
+            this.cbOperators = new ExControls.ExCheckBox();
+            this.cbDateRems = new ExControls.ExCheckBox();
+            this.cbSkipPassingTrains = new ExControls.ExCheckBox();
             this.bImport = new System.Windows.Forms.Button();
             this.bStorno = new System.Windows.Forms.Button();
-            this.tbPath = new ExControls.ExTextBox(this.components);
-            this.exGroupBox1 = new ExControls.ExGroupBox(this.components);
+            this.tbPath = new ExControls.ExTextBox();
+            this.exGroupBox1 = new ExControls.ExGroupBox();
+            this.cbReorder = new ExControls.ExCheckBox();
+            this.exLineSeparator1 = new ExControls.ExLineSeparator();
             this.bBrowse = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dOpenELIS = new System.Windows.Forms.OpenFileDialog();
-            this.exLineSeparator1 = new ExControls.ExLineSeparator();
+            this.cbNewFormat = new ExControls.ExCheckBox();
             this.exGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,6 +125,8 @@ namespace GVDEditor.Forms
             // 
             // exGroupBox1
             // 
+            this.exGroupBox1.Controls.Add(this.cbNewFormat);
+            this.exGroupBox1.Controls.Add(this.cbReorder);
             this.exGroupBox1.Controls.Add(this.cbSkipPassingTrains);
             this.exGroupBox1.Controls.Add(this.exLineSeparator1);
             this.exGroupBox1.Controls.Add(this.cbOperators);
@@ -133,6 +137,26 @@ namespace GVDEditor.Forms
             this.exGroupBox1.TabIndex = 6;
             this.exGroupBox1.TabStop = false;
             this.exGroupBox1.Text = "Možnosti";
+            // 
+            // cbReorder
+            // 
+            this.cbReorder.AutoSize = true;
+            this.cbReorder.BoxBackColor = System.Drawing.Color.White;
+            this.cbReorder.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.cbReorder.Location = new System.Drawing.Point(323, 83);
+            this.cbReorder.Name = "cbReorder";
+            this.cbReorder.Size = new System.Drawing.Size(246, 21);
+            this.cbReorder.TabIndex = 4;
+            this.cbReorder.Text = "Zoradiť vlaky a prepočítať varianty";
+            this.cbReorder.UseVisualStyleBackColor = true;
+            // 
+            // exLineSeparator1
+            // 
+            this.exLineSeparator1.Location = new System.Drawing.Point(6, 73);
+            this.exLineSeparator1.Name = "exLineSeparator1";
+            this.exLineSeparator1.Size = new System.Drawing.Size(576, 10);
+            this.exLineSeparator1.TabIndex = 3;
+            this.exLineSeparator1.Text = null;
             // 
             // bBrowse
             // 
@@ -157,13 +181,19 @@ namespace GVDEditor.Forms
             // 
             this.dOpenELIS.Filter = "Textové súbory (*.txt)|*.txt";
             // 
-            // exLineSeparator1
+            // cbNewFormat
             // 
-            this.exLineSeparator1.Location = new System.Drawing.Point(6, 73);
-            this.exLineSeparator1.Name = "exLineSeparator1";
-            this.exLineSeparator1.Size = new System.Drawing.Size(576, 10);
-            this.exLineSeparator1.TabIndex = 3;
-            this.exLineSeparator1.Text = null;
+            this.cbNewFormat.AutoSize = true;
+            this.cbNewFormat.BoxBackColor = System.Drawing.Color.White;
+            this.cbNewFormat.Checked = true;
+            this.cbNewFormat.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbNewFormat.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.cbNewFormat.Location = new System.Drawing.Point(323, 21);
+            this.cbNewFormat.Name = "cbNewFormat";
+            this.cbNewFormat.Size = new System.Drawing.Size(148, 21);
+            this.cbNewFormat.TabIndex = 5;
+            this.cbNewFormat.Text = "Použiť nový formát";
+            this.cbNewFormat.UseVisualStyleBackColor = true;
             // 
             // FELISOptions
             // 
@@ -204,5 +234,7 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog dOpenELIS;
         private ExControls.ExLineSeparator exLineSeparator1;
+        private ExControls.ExCheckBox cbReorder;
+        private ExControls.ExCheckBox cbNewFormat;
     }
 }

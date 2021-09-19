@@ -24,11 +24,12 @@ namespace GVDEditor.Tools
         public void StartPlay()
         {
             worker.RunWorkerAsync();
+
         }
 
         private void PlayingSoundsDoWork(object sender, DoWorkEventArgs e)
         {
-            List<SoundPlayer> soundps = new List<SoundPlayer>();
+            var soundps = new List<SoundPlayer>();
             foreach (var sound in Sounds)
             {
                 var p = new SoundPlayer(sound);
@@ -40,15 +41,6 @@ namespace GVDEditor.Tools
             {
                 p.PlaySync();
                 if (WordPause > 0) Thread.Sleep(WordPause);
-            }
-        }
-
-        public static void Play(string sound)
-        {
-            if (File.Exists(sound))
-            {
-                using var player = new SoundPlayer(sound);
-                player.PlaySync();
             }
         }
     }

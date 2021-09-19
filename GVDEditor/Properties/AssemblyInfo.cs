@@ -1,5 +1,5 @@
-﻿using System.Resources;
-using System.Reflection;
+﻿using System.Reflection;
+using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GVDEditor")]
-[assembly: AssemblyDescription("Úprava textových súborov grafiku")]
+[assembly: AssemblyDescription("Úprava textových súborov grafikonu")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("iniss.6f.sk")]
 [assembly: AssemblyProduct("GVDEditor")]
@@ -33,8 +33,8 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.7.2.0")]
+[assembly: AssemblyVersion("1.7.3.0")]
 [assembly: NeutralResourcesLanguage("sk")]
-[assembly: AssemblyFileVersion("1.7.2.0")]
+[assembly: AssemblyFileVersion("1.7.3.0")]
 
 [assembly: InternalsVisibleTo("GVDEditorTests")]

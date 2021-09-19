@@ -1,4 +1,8 @@
-﻿using System;
+﻿using ExControls;
+using GVDEditor.Properties;
+using GVDEditor.Tools;
+using GVDEditor.XML;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -7,10 +11,13 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using ExControls;
-using GVDEditor.Properties;
-using GVDEditor.Tools;
-using GVDEditor.XML;
+using ToolsCore;
+using ToolsCore.Tools;
+using ToolsCore.XML;
+using ColorSetting = ToolsCore.XML.ColorSetting;
+using CommandShortcut = ToolsCore.XML.CommandShortcut;
+using FormUtils = ToolsCore.Tools.FormUtils;
+using ShortcutName = ToolsCore.XML.ShortcutName;
 
 namespace GVDEditor.Forms
 {
@@ -49,7 +56,7 @@ namespace GVDEditor.Forms
         private float actualFontSize;
         private bool actualDarkScrollBar, actualDarkTitleBar, actualDefaultConStyle;
 
-        private readonly BindingList<Style> Styles;
+        private readonly BindingList<GVDEditorStyle> Styles;
         private int usedStyleID, actualstyle = -1;
         private BindingList<ColorCategory> ColorCategories;
 
@@ -79,49 +86,29 @@ namespace GVDEditor.Forms
 
             initialization = true;
 
-            switch (config.DebugModeGUI)
+            cbDebugModeGUI.SelectedIndex = config.DebugModeGUI switch
             {
-                case Config.DebugMode.ONLY_MESSAGE:
-                    cbDebugModeGUI.SelectedIndex = 0;
-                    break;
-                case Config.DebugMode.DETAILED_INFO:
-                    cbDebugModeGUI.SelectedIndex = 1;
-                    break;
-                case Config.DebugMode.APP_CRASH:
-                    cbDebugModeGUI.SelectedIndex = 2;
-                    break;
-                default:
-                    cbDebugModeGUI.SelectedIndex = 0;
-                    break;
-            }
+                Config.DebugMode.ONLY_MESSAGE => 0,
+                Config.DebugMode.DETAILED_INFO => 1,
+                Config.DebugMode.APP_CRASH => 2,
+                _ => 0
+            };
 
-            switch (config.Language)
+            cbAppLanguage.SelectedIndex = config.Language switch
             {
-                case Config.AppLanguage.SK:
-                    cbAppLanguage.SelectedIndex = 0;
-                    break;
-                case Config.AppLanguage.CZ:
-                    cbAppLanguage.SelectedIndex = 1;
-                    break;
-                default:
-                    cbAppLanguage.SelectedIndex = 0;
-                    break;
-            }
+                Config.AppLanguage.SK => 0,
+                Config.AppLanguage.CZ => 1,
+                _ => 0
+            };
 
             initialization = false;
-            
-            switch (config.DateRemLocate)
+
+            cbDateRemLocate.SelectedIndex = config.DateRemLocate switch
             {
-                case Config.AppLanguage.SK:
-                    cbDateRemLocate.SelectedIndex = 0;
-                    break;
-                case Config.AppLanguage.CZ:
-                    cbDateRemLocate.SelectedIndex = 1;
-                    break;
-                default:
-                    cbDateRemLocate.SelectedIndex = 0;
-                    break;
-            }
+                Config.AppLanguage.SK => 0,
+                Config.AppLanguage.CZ => 1,
+                _ => 0
+            };
 
             switch (config.DesktopMenuMode)
             {
@@ -151,7 +138,7 @@ namespace GVDEditor.Forms
 
             nudWordPause.Value = config.PlayerWordPause;
 
-            cbArgRegister.DataSource = AppRegistry.GetINISSRegisters();
+            cbArgRegister.DataSource = Tools.AppRegistry.GetINISSRegisters();
             cbStartINISSAdmin.Checked = config.StartupINISSConfig.RunAsAdmin;
             tbCmdArguments.Text = config.StartupINISSConfig.CmdArgs;
             FormatArgs(config.StartupINISSConfig.CmdArgs);
@@ -173,7 +160,7 @@ namespace GVDEditor.Forms
 
             cbFontSize.DataSource = fontSizes;
 
-            Styles = new BindingList<Style>(GlobData.Styles.StyleList);
+            Styles = new BindingList<GVDEditorStyle>(GlobData.Styles.StyleList);
             cbStyles.DataSource = Styles;
             usedStyleID = GlobData.Styles.UsingStyleID;
             cbStyles.Invalidate();
@@ -195,14 +182,14 @@ namespace GVDEditor.Forms
             }
         }
 
-        private void InitializeAppColorSettings(Style style)
+        private void InitializeAppColorSettings(GVDEditorStyle style)
         {
             if (style == null)
             {
                 return;
             }
 
-            SettingsNaming.NameColorSettings(style);
+            GVDEditorSettingsNaming.NameColorSettings(style);
 
             var categories = new List<ColorCategory>();
 
@@ -280,7 +267,7 @@ namespace GVDEditor.Forms
             cbColorSettings.DataSource = ColorCategories;
         }
 
-        private void SaveAppColorSettings(Style style)
+        private void SaveAppColorSettings(GVDEditorStyle style)
         {
             style.TabTabEditorScheme.Font = ColorCategories[0].Font;
             style.TrainTypeColumnScheme.Font = ColorCategories[1].Font;
@@ -321,49 +308,36 @@ namespace GVDEditor.Forms
                 cbStyles.SelectedIndex = 0;
             }
 
-            var config = new Config();
-            switch (cbDebugModeGUI.SelectedIndex)
+            var config = new GVDEditorConfig
             {
-                case 0:
-                    config.DebugModeGUI = Config.DebugMode.ONLY_MESSAGE;
-                    break;
-                case 1:
-                    config.DebugModeGUI = Config.DebugMode.DETAILED_INFO;
-                    break;
-                case 2:
-                    config.DebugModeGUI = Config.DebugMode.APP_CRASH;
-                    break;
-                default:
-                    config.DebugModeGUI = Config.DebugMode.ONLY_MESSAGE;
-                    break;
-            }
-
-            switch (cbAppLanguage.SelectedIndex)
-            {
-                case 0:
-                    config.Language = Config.AppLanguage.SK;
-                    break;
-                case 1:
-                    config.Language = Config.AppLanguage.CZ;
-                    break;
-                default:
-                    config.Language = Config.AppLanguage.SK;
-                    break;
-            }
+                DebugModeGUI = cbDebugModeGUI.SelectedIndex switch
+                {
+                    0 => Config.DebugMode.ONLY_MESSAGE,
+                    1 => Config.DebugMode.DETAILED_INFO,
+                    2 => Config.DebugMode.APP_CRASH,
+                    _ => Config.DebugMode.ONLY_MESSAGE
+                },
+                Language = cbAppLanguage.SelectedIndex switch
+                {
+                    0 => Config.AppLanguage.SK,
+                    1 => Config.AppLanguage.CZ,
+                    _ => Config.AppLanguage.SK
+                }
+            };
 
             switch (cbDateRemLocate.SelectedIndex)
             {
                 case 0:
                     config.DateRemLocate = Config.AppLanguage.SK;
-                    DateRem.Loc = DateRem.LOCALE.SLOVAK;
+                    DateLimit.Loc = DateLimit.Locale.SK;
                     break;
                 case 1:
                     config.DateRemLocate = Config.AppLanguage.CZ;
-                    DateRem.Loc = DateRem.LOCALE.CZECH;
+                    DateLimit.Loc = DateLimit.Locale.CZ;
                     break;
                 default:
                     config.DateRemLocate = Config.AppLanguage.SK;
-                    DateRem.Loc = DateRem.LOCALE.SLOVAK;
+                    DateLimit.Loc = DateLimit.Locale.SK;
                     break;
             }
 
@@ -409,7 +383,7 @@ namespace GVDEditor.Forms
             config.DesktopCols.Odchod = Columns.First(x => x.Id == 7);
             config.DesktopCols.VychodziaStanica = Columns.First(x => x.Id == 8);
             config.DesktopCols.KonecnaStanica = Columns.First(x => x.Id == 9);
-            config.DesktopCols.DateRem = Columns.First(x => x.Id == 10);
+            config.DesktopCols.DateLimit = Columns.First(x => x.Id == 10);
             config.DesktopCols.Track = Columns.First(x => x.Id == 11);
             config.DesktopCols.Operator = Columns.First(x => x.Id == 12);
             config.DesktopCols.OtherBtn = Columns.First(x => x.Id == 13);
@@ -433,38 +407,42 @@ namespace GVDEditor.Forms
             config.Shortcuts.InfoApp = Shortcuts[13];
             config.Shortcuts.UpdateNotes = Shortcuts[14];
             config.Shortcuts.RunINISS = Shortcuts[15];
-            config.Shortcuts.KillINISS = Shortcuts[16];
-            config.Shortcuts.RestartINISS = Shortcuts[17];
+            config.Shortcuts.ShutdownINISS = Shortcuts[16];
+            config.Shortcuts.KillINISS = Shortcuts[17];
+            config.Shortcuts.RestartINISS = Shortcuts[18];
 
-            config.Shortcuts.LSGrafikon = Shortcuts[18];
-            config.Shortcuts.LSStanice = Shortcuts[19];
-            config.Shortcuts.LSDopravcovia = Shortcuts[20];
-            config.Shortcuts.LSPlatforms = Shortcuts[21];
-            config.Shortcuts.LSKolaje = Shortcuts[22];
-            config.Shortcuts.LSTPhysicals = Shortcuts[23];
-            config.Shortcuts.LSTLogicals = Shortcuts[24];
-            config.Shortcuts.LSTCatalogs = Shortcuts[25];
-            config.Shortcuts.LSTabTab = Shortcuts[26];
-            config.Shortcuts.LSTTexts = Shortcuts[27];
-            config.Shortcuts.LSTFonts = Shortcuts[28];
-            config.Shortcuts.LSTabTabEditor = Shortcuts[29];
+            config.Shortcuts.LSGrafikon = Shortcuts[19];
+            config.Shortcuts.LSStanice = Shortcuts[20];
+            config.Shortcuts.LSDopravcovia = Shortcuts[21];
+            config.Shortcuts.LSPlatforms = Shortcuts[22];
+            config.Shortcuts.LSKolaje = Shortcuts[23];
+            config.Shortcuts.LSTPhysicals = Shortcuts[24];
+            config.Shortcuts.LSTLogicals = Shortcuts[25];
+            config.Shortcuts.LSTCatalogs = Shortcuts[26];
+            config.Shortcuts.LSTabTab = Shortcuts[27];
+            config.Shortcuts.LSTTexts = Shortcuts[28];
+            config.Shortcuts.LSTFonts = Shortcuts[29];
+            config.Shortcuts.LSTabTabEditor = Shortcuts[30];
 
-            config.Shortcuts.GSGrafikony = Shortcuts[30];
-            config.Shortcuts.GSLanguages = Shortcuts[31];
-            config.Shortcuts.GSMeskania = Shortcuts[32];
-            config.Shortcuts.GSTrainTypes = Shortcuts[33];
-            config.Shortcuts.GSAudio = Shortcuts[34];
+            config.Shortcuts.GSGrafikony = Shortcuts[31];
+            config.Shortcuts.GSLanguages = Shortcuts[32];
+            config.Shortcuts.GSMeskania = Shortcuts[33];
+            config.Shortcuts.GSTrainTypes = Shortcuts[34];
+            config.Shortcuts.GSAudio = Shortcuts[35];
 
             GlobData.Config = config;
-            Config.WriteData(Utils.CombinePath(Application.StartupPath, FileConsts.FILE_CONFIG), config);
+            GlobSettings.Fonts = config.Fonts;
+            XMLSerialization.WriteData(Utils.CombinePath(Application.StartupPath, FileConsts.FILE_CONFIG), config);
 
             GlobData.Styles.StyleList = Styles.ToList();
             if (GlobData.Styles.UsingStyleID != usedStyleID)
             {
                 GlobData.UsingStyle = Styles[usedStyleID];
+                GlobSettings.UsingStyle = Styles[usedStyleID];
                 GlobData.Styles.UsingStyleID = usedStyleID;
             }
-            XML.Styles.WriteData(Utils.CombinePath(Application.StartupPath, FileConsts.FILE_STYLES), GlobData.Styles);
+
+            Styles<GVDEditorStyle>.WriteData(Utils.CombinePath(Application.StartupPath, FileConsts.FILE_STYLES), GlobData.Styles);
 
             if (showInfoRestart)
             {
@@ -536,7 +514,7 @@ namespace GVDEditor.Forms
 
         private void bColorsUseDefault_Click(object sender, EventArgs e)
         {
-            InitializeAppColorSettings(new Style());
+            InitializeAppColorSettings(new GVDEditorStyle());
         }
 
         private void cbFont_SelectedIndexChanged(object sender, EventArgs e)
@@ -734,7 +712,7 @@ namespace GVDEditor.Forms
 
         private void bAppFontDefault_Click(object sender, EventArgs e)
         {
-            var fonts = Config.SetAppFontsSettingsDefault();
+            var fonts = GVDEditorConfig.SetAppFontsSettingsDefault();
             SettingsNaming.NameAppFontSetting(fonts);
 
             dgvAppFonts.DataSource = null;
@@ -833,8 +811,8 @@ namespace GVDEditor.Forms
 
         private void bAllShortcutsSetDefault_Click(object sender, EventArgs e)
         {
-            var shortcuts = Config.SetShortcutsSettingsDefault();
-            SettingsNaming.NameShortcutCommands(shortcuts);
+            var shortcuts = GVDEditorConfig.SetShortcutsSettingsDefault();
+            GVDEditorSettingsNaming.NameShortcutCommands(shortcuts);
             dgvShortcuts.DataSource = null;
             Shortcuts = new BindingList<CommandShortcut>(shortcuts.GetValues());
             dgvShortcuts.DataSource = Shortcuts;
@@ -866,8 +844,8 @@ namespace GVDEditor.Forms
 
         private void SetDefaultShortcut(int index)
         {
-            var shortcuts = Config.SetShortcutsSettingsDefault();
-            SettingsNaming.NameShortcutCommands(shortcuts);
+            var shortcuts = GVDEditorConfig.SetShortcutsSettingsDefault();
+            GVDEditorSettingsNaming.NameShortcutCommands(shortcuts);
             Shortcuts[index].Shortcut = shortcuts.GetValues()[index].Shortcut;
             Shortcuts.ResetBindings();
             FindAndCheckDuplicateShortcuts();
@@ -943,7 +921,7 @@ namespace GVDEditor.Forms
             var result = frename.ShowDialog(this);
             if (result == DialogResult.OK)
             {
-                var style = new Style {Name = frename.NewName};
+                var style = new GVDEditorStyle {Name = frename.NewName};
                 Styles.Add(style);
                 cbStyles.SelectedIndex = Styles.Count - 1;
             }
@@ -980,7 +958,7 @@ namespace GVDEditor.Forms
             if (index == -1)
                 return;
 
-            if (Styles[index].Name == XML.Styles.DEFAULT_STYLE_NAME || Styles[index].Name == XML.Styles.DEFAULT_STYLE_NAME)
+            if (Styles[index].Name is Styles<GVDEditorStyle>.DEFAULT_STYLE_NAME or Styles<GVDEditorStyle>.DARK_STYLE_NAME)
             {
                 bRemoveStyle.Enabled = false;
                 bRenameStyle.Enabled = false;

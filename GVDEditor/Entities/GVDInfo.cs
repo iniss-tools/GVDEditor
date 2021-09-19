@@ -76,6 +76,5 @@ namespace GVDEditor.Entities
         ///     OnlyCityVLIndex
         /// </summary>
         public int OnlyCityVLIndex { get; set; }
-
     }
 }

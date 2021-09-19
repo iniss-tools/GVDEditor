@@ -4,12 +4,14 @@ using System.Text;
 using GVDEditor.Entities;
 using GVDEditor.Tools;
 using GVDEditor.XML;
+using ToolsCore.Tools;
+using ToolsCore.XML;
 
 namespace GVDEditor
 {
     internal static class GlobData
     {
-        public static readonly Encoding AnsiEncoding = Encoding.GetEncoding(1250);
+        public static readonly Encoding ANSIEncoding = Encoding.GetEncoding(1250);
 
         public static string INISSDir;
         public static string DATADir;
@@ -54,9 +56,9 @@ namespace GVDEditor
 
         public static List<Radenie> Radenia;
 
-        public static Config Config;
-        public static Styles Styles;
-        public static Style UsingStyle;
+        public static GVDEditorConfig Config;
+        public static Styles<GVDEditorStyle> Styles;
+        public static GVDEditorStyle UsingStyle;
         public static bool PrivateFeatures;
 
         public static void PrepareGlobalData(string pathtoiniss)
@@ -95,11 +97,8 @@ namespace GVDEditor
 
             INISSExeFiles = new List<string>();
             var di = new DirectoryInfo(INISSDir);
-            FileInfo[] subFiles = di.GetFiles("*.exe");
-            foreach (var file in subFiles)
-            {
-                INISSExeFiles.Add(file.Name);
-            }
+            var subFiles = di.GetFiles("*.exe");
+            foreach (var file in subFiles) INISSExeFiles.Add(file.Name);
 
             var langs = RawBankReader.ReadFyzBankFile(RAWBANKDir, out var maxLangs);
             Languages = TXTParser.ReadGlobalCategori(DATADir, langs, maxLangs);
@@ -114,7 +113,7 @@ namespace GVDEditor
             {
             }
 
-            TrainNames = Utils.GetTrainNames();
+            TrainNames = Train.GetTrainNames();
             Stations = Station.GetStations();
             Delays = TXTParser.ReadZpozdeni();
 

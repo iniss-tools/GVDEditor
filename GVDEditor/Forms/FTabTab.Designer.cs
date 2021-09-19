@@ -121,19 +121,15 @@ namespace GVDEditor.Forms
             // 
             // scText
             // 
-            this.scText.AutoCMaxHeight = 10;
-            this.scText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.scText.ContextMenuStrip = this.conMenuScText;
             resources.ApplyResources(this.scText, "scText");
-            this.scText.HScrollBar = false;
             this.scText.Name = "scText";
-            this.scText.VScrollBar = false;
             this.scText.CharAdded += new System.EventHandler<ScintillaNET.CharAddedEventArgs>(this.scText_CharAdded);
             this.scText.StyleNeeded += new System.EventHandler<ScintillaNET.StyleNeededEventArgs>(this.scText_StyleNeeded);
             this.scText.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.scText_UpdateUI);
             this.scText.TextChanged += new System.EventHandler(this.scText_TextChanged);
             this.scText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.scText_KeyPress);
             this.scText.MouseDown += new System.Windows.Forms.MouseEventHandler(this.scText_MouseDown);
+            this.scText.Scintilla.ContextMenuStrip = conMenuScText;
             // 
             // conMenuScText
             // 

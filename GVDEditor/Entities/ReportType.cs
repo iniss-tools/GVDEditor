@@ -8,14 +8,6 @@ namespace GVDEditor.Entities
     /// </summary>
     public sealed class ReportType
     {
-#pragma warning disable 1591
-        public static readonly ReportType Prichadza = new("Přijíždí", "Přijíždí", "P");
-        public static readonly ReportType Vchadza = new("Vjíždí", "Vjíždí", "I");
-        public static readonly ReportType Zastavil = new("Zastavil", "Zastavil", "L");
-        public static readonly ReportType Stoji = new("Pobytové", "Pobytové", "N", terminateTrain: false);
-        public static readonly ReportType Odchadza = new("Ukončit nástup", "Odjede", "O", terminateTrain: false);
-#pragma warning restore 1591
-
         /// <summary>
         ///     Konstruktor
         /// </summary>
@@ -26,7 +18,8 @@ namespace GVDEditor.Entities
         /// <param name="passThrough"></param>
         /// <param name="terminateTrain"></param>
         /// <param name="complement"></param>
-        public ReportType(string key, string name, string @char, bool baseTrain = true, bool passThrough = true, bool terminateTrain = true, bool complement = true)
+        public ReportType(string key, string name, string @char, bool baseTrain = true, bool passThrough = true, bool terminateTrain = true,
+            bool complement = true)
         {
             Key = key;
             Name = name;
@@ -53,12 +46,10 @@ namespace GVDEditor.Entities
         public string Char { get; }
 
         /// <summary>
-        /// 
         /// </summary>
         public bool BaseTrain { get; }
 
         /// <summary>
-        /// 
         /// </summary>
         public bool PassThrough { get; }
 
@@ -68,7 +59,6 @@ namespace GVDEditor.Entities
         public bool TerminateTrain { get; }
 
         /// <summary>
-        /// 
         /// </summary>
         public bool Complement { get; }
 
@@ -120,7 +110,7 @@ namespace GVDEditor.Entities
                         reports.Add(new ChosenReportType
                         {
                             Type = reportType,
-                            Variants = new List<ReportVariant> {GlobData.ReportVariants.ElementAtOrDefault(0)}
+                            Variants = new List<ReportVariant> { GlobData.ReportVariants.ElementAtOrDefault(0) }
                         });
                 }
 
@@ -137,7 +127,7 @@ namespace GVDEditor.Entities
                         reports.Add(new ChosenReportType
                         {
                             Type = reportType,
-                            Variants = new List<ReportVariant> {GlobData.ReportVariants.ElementAtOrDefault(1)}
+                            Variants = new List<ReportVariant> { GlobData.ReportVariants.ElementAtOrDefault(1) }
                         });
                 }
             }
@@ -158,7 +148,7 @@ namespace GVDEditor.Entities
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((ReportType) obj);
+            return Equals((ReportType)obj);
         }
 
         /// <inheritdoc />
@@ -177,16 +167,25 @@ namespace GVDEditor.Entities
             }
         }
 
-        /// <summary>Returns a value that indicates whether the values of two <see cref="T:GVDEditor.Entities.ReportType" /> objects are equal.</summary>
+        /// <summary>
+        ///     Returns a value that indicates whether the values of two <see cref="T:GVDEditor.Entities.ReportType" />
+        ///     objects are equal.
+        /// </summary>
         /// <param name="left">The first value to compare.</param>
         /// <param name="right">The second value to compare.</param>
-        /// <returns>true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise, false.</returns>
+        /// <returns>
+        ///     true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise,
+        ///     false.
+        /// </returns>
         public static bool operator ==(ReportType left, ReportType right)
         {
             return Equals(left, right);
         }
 
-        /// <summary>Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.ReportType" /> objects have different values.</summary>
+        /// <summary>
+        ///     Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.ReportType" /> objects have
+        ///     different values.
+        /// </summary>
         /// <param name="left">The first value to compare.</param>
         /// <param name="right">The second value to compare.</param>
         /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>
@@ -194,5 +193,12 @@ namespace GVDEditor.Entities
         {
             return !Equals(left, right);
         }
+#pragma warning disable 1591
+        public static readonly ReportType Prichadza = new("Přijíždí", "Přijíždí", "P");
+        public static readonly ReportType Vchadza = new("Vjíždí", "Vjíždí", "I");
+        public static readonly ReportType Zastavil = new("Zastavil", "Zastavil", "L");
+        public static readonly ReportType Stoji = new("Pobytové", "Pobytové", "N", terminateTrain: false);
+        public static readonly ReportType Odchadza = new("Ukončit nástup", "Odjede", "O", terminateTrain: false);
+#pragma warning restore 1591
     }
 }

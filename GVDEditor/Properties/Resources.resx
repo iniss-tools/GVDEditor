@@ -143,7 +143,9 @@
     <value>Tabuľka obsahuje nesprávny údaj: </value>
   </data>
   <data name="FAppSettings_bSave_Click_Niektoré_zmeny_sa_prejavia_až_po_reštarte_programu" xml:space="preserve">
-    <value>Niektoré vykonané zmeny sa prejavia po reštarte programu. Reštartovať program teraz?</value>
+    <value>Niektoré vykonané zmeny sa prejavia po reštarte programu. 
+
+Reštartovať program teraz?</value>
   </data>
   <data name="FEditTrain_FEditTrain_Pridať_vlak" xml:space="preserve">
     <value>Pridať vlak</value>
@@ -635,5 +637,8 @@ Mám ju nútene vypnúť ?</value>
   </data>
   <data name="analyze" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\analyze.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shutdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shutdown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

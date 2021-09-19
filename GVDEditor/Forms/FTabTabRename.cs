@@ -1,13 +1,11 @@
-﻿using GVDEditor.Tools;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
     internal partial class FTabTabRename : Form
     {
-        public string NewTabName { get; private set; }
-
         public FTabTabRename()
         {
             InitializeComponent();
@@ -15,6 +13,8 @@ namespace GVDEditor.Forms
             FormUtils.SetFormFont(this);
             this.ApplyTheme();
         }
+
+        public string NewTabName { get; private set; }
 
         private void bEdit_Click(object sender, EventArgs e)
         {
@@ -24,7 +24,7 @@ namespace GVDEditor.Forms
                 DialogResult = DialogResult.None;
                 return;
             }
-            
+
             NewTabName = tbName.Text;
             DialogResult = DialogResult.OK;
         }

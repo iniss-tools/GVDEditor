@@ -1,27 +1,13 @@
-﻿namespace GVDEditor.Entities
+﻿using ToolsCore.Tools;
+
+namespace GVDEditor.Entities
 {
     /// <summary>
     ///     Vyrobca tabule, ktory sa definuje v katalogovej tabuli
     /// </summary>
-    public sealed class TableManufacturer : Enumeration
+    public sealed class TableManufacturer : Enumeration<TableManufacturer>
     {
-        #region VALUES
-#pragma warning disable 1591
-        public static readonly TableManufacturer ELEN = new(0, "ELEN");
-        public static readonly TableManufacturer ELEN10 = new(1, "ELEN10");
-        public static readonly TableManufacturer ELENOLD = new(2, "ELENOLD");
-        public static readonly TableManufacturer ELEN16 = new(3, "ELEN16");
-        public static readonly TableManufacturer ELEN16Kam = new(4, "ELENKam16");
-        public static readonly TableManufacturer LCD1 = new(5, "LCD1");
-        public static readonly TableManufacturer ELEKTROCAS = new(6, "Elektrocas");
-        public static readonly TableManufacturer Pragotron = new(7, "Pragotron");
-        public static readonly TableManufacturer ERS = new(8, "ERS");
-        public static readonly TableManufacturer FERS = new(9, "FERS");
-#pragma warning restore 1591
-        #endregion
-
-
-        private TableManufacturer(int id, string name) : base(id,name)
+        private TableManufacturer(int id, string name) : base(id, name)
         {
         }
 
@@ -31,11 +17,12 @@
         public TableManufacturer This => this;
 
         /// <summary>
-        ///     Konvertuje textove vyjadrenie nazvu typu tabule na objekt. V pripade, ak sa to nepodari, metoda vrati <see langword="null"/>.
+        ///     Konvertuje textove vyjadrenie nazvu typu tabule na objekt. V pripade, ak sa to nepodari, metoda vrati
+        ///     <see langword="null" />.
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public static TableManufacturer Parse(string s)
+        public new static TableManufacturer Parse(string s)
         {
             return s switch
             {
@@ -52,5 +39,22 @@
                 _ => null
             };
         }
+
+        #region VALUES
+
+#pragma warning disable 1591
+        public static readonly TableManufacturer ELEN = new(0, "ELEN");
+        public static readonly TableManufacturer ELEN10 = new(1, "ELEN10");
+        public static readonly TableManufacturer ELENOLD = new(2, "ELENOLD");
+        public static readonly TableManufacturer ELEN16 = new(3, "ELEN16");
+        public static readonly TableManufacturer ELEN16Kam = new(4, "ELENKam16");
+        public static readonly TableManufacturer LCD1 = new(5, "LCD1");
+        public static readonly TableManufacturer ELEKTROCAS = new(6, "Elektrocas");
+        public static readonly TableManufacturer Pragotron = new(7, "Pragotron");
+        public static readonly TableManufacturer ERS = new(8, "ERS");
+        public static readonly TableManufacturer FERS = new(9, "FERS");
+#pragma warning restore 1591
+
+        #endregion
     }
 }

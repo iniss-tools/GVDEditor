@@ -8,12 +8,11 @@ namespace GVDEditor.Entities
     /// </summary>
     public sealed record Track
     {
-
         /// <summary>
         ///     Predvolená koľaj
         /// </summary>
         public static readonly Track None = new("K", "K", "Nedefinovaná", Platform.None, "", "Nedefinovaná");
-        
+
         /// <summary>
         ///     Konstruktor
         /// </summary>
@@ -25,7 +24,7 @@ namespace GVDEditor.Entities
         /// <summary>
         ///     Konstruktor
         /// </summary>
-        public Track(string key,string name,string fullname, Platform nastupiste, string sound,string trackName)
+        public Track(string key, string name, string fullname, Platform nastupiste, string sound, string trackName)
         {
             Tabule = new List<TableLogical>();
 

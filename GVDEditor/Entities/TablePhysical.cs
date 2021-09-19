@@ -11,16 +11,6 @@
         public int ID { get; set; }
 
         /// <summary>
-        ///     Nazov fyzickej tatule
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        ///     Kluc fyzickej tatule
-        /// </summary>
-        public string Key { get; set; }
-
-        /// <summary>
         ///     Cislo komunikacneho portu ku fyzickej tatuli
         /// </summary>
         public int CommunicationPort { get; set; }
@@ -49,6 +39,16 @@
         ///     Katalogova tabula definujuca obsah tejto fyzickej tabule
         /// </summary>
         public TableCatalog TableCatalog { get; set; }
+
+        /// <summary>
+        ///     Nazov fyzickej tatule
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Kluc fyzickej tatule
+        /// </summary>
+        public string Key { get; set; }
 
         /// <summary>
         ///     Textovy komentar ku tabuli

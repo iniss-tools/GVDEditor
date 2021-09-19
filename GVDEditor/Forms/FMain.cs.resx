@@ -307,10 +307,10 @@
   <data name="tsmimStartINISS.Text" xml:space="preserve">
     <value>Spustit INISS</value>
   </data>
-  <data name="tsmimExitINISS.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmimKillINISS.Size" type="System.Drawing.Size, System.Drawing">
     <value>237, 26</value>
   </data>
-  <data name="tsmimExitINISS.Text" xml:space="preserve">
+  <data name="tsmimKillINISS.Text" xml:space="preserve">
     <value>Ukončit INISS</value>
   </data>
   <data name="tsmimRestartINISS.Size" type="System.Drawing.Size, System.Drawing">

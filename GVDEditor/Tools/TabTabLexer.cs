@@ -14,7 +14,7 @@ namespace GVDEditor.Tools
         private const int STATE_STRING = 3;
         private const int STATE_COMMENT = 4;
         private const int STATE_VAR = 5;
-        
+
         private readonly HashSet<string> constans;
         private readonly HashSet<string> events;
         private readonly HashSet<string> functions;
@@ -54,7 +54,7 @@ namespace GVDEditor.Tools
             scintilla.StartStyling(startPos);
             while (startPos < endPos)
             {
-                var c = (char) scintilla.GetCharAt(startPos);
+                var c = (char)scintilla.GetCharAt(startPos);
 
                 REPROCESS:
                 switch (state)
@@ -131,7 +131,7 @@ namespace GVDEditor.Tools
                         break;
 
                     case STATE_NUMBER:
-                        if (char.IsDigit(c) || c >= 'a' && c <= 'f' || c >= 'A' && c <= 'F' || c == 'x')
+                        if (char.IsDigit(c) || c is >= 'a' and <= 'f' or >= 'A' and <= 'F' or 'x')
                         {
                             length++;
                         }
@@ -146,7 +146,7 @@ namespace GVDEditor.Tools
                         break;
 
                     case STATE_IDENTIFIER:
-                        if (char.IsLetterOrDigit(c) || c == '#' || c == '_')
+                        if (char.IsLetterOrDigit(c) || c is '#' or '_')
                         {
                             length++;
                         }

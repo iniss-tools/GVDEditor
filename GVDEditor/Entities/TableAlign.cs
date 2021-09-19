@@ -1,28 +1,13 @@
-﻿namespace GVDEditor.Entities
+﻿using ToolsCore.Tools;
+
+namespace GVDEditor.Entities
 {
     /// <summary>
     ///     Zarovnanie tabule
     /// </summary>
-    public sealed class TableAlign : Enumeration
+    public sealed class TableAlign : Enumeration<TableAlign>
     {
-        #region VALUES
-        
-        /// <summary>
-        ///     Zarovnanie vľavo
-        /// </summary>
-        public static readonly TableAlign Left = new(0, "Vľavo");
-        /// <summary>
-        ///     Zarovnanie na stred
-        /// </summary>
-        public static readonly TableAlign Center = new(1, "Do stredu");
-        /// <summary>
-        ///     Zarovnanie vpravo
-        /// </summary>
-        public static readonly TableAlign Right = new(2, "Vpravo");
-        
-        #endregion
-
-        private TableAlign(int id, string name) : base(id,name)
+        private TableAlign(int id, string name) : base(id, name)
         {
         }
 
@@ -41,5 +26,24 @@
                 _ => null
             };
         }
+
+        #region VALUES
+
+        /// <summary>
+        ///     Zarovnanie vľavo
+        /// </summary>
+        public static readonly TableAlign Left = new(0, "Vľavo");
+
+        /// <summary>
+        ///     Zarovnanie na stred
+        /// </summary>
+        public static readonly TableAlign Center = new(1, "Do stredu");
+
+        /// <summary>
+        ///     Zarovnanie vpravo
+        /// </summary>
+        public static readonly TableAlign Right = new(2, "Vpravo");
+
+        #endregion
     }
 }

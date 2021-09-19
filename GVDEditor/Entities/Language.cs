@@ -82,7 +82,8 @@ namespace GVDEditor.Entities
         /// </returns>
         public static bool ContainsKey(List<Language> languages, string key)
         {
-            if (key == null || languages == null || languages.Count == 0) return false;
+            if (key == null || languages == null || languages.Count == 0) 
+                return false;
 
             foreach (var language in languages)
                 if (language.Key == key)
@@ -108,7 +109,7 @@ namespace GVDEditor.Entities
             if (obj is null) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((Language) obj);
+            return Equals((Language)obj);
         }
 
         /// <inheritdoc />
@@ -123,16 +124,25 @@ namespace GVDEditor.Entities
             }
         }
 
-        /// <summary>Returns a value that indicates whether the values of two <see cref="T:GVDEditor.Entities.Language" /> objects are equal.</summary>
+        /// <summary>
+        ///     Returns a value that indicates whether the values of two <see cref="T:GVDEditor.Entities.Language" /> objects
+        ///     are equal.
+        /// </summary>
         /// <param name="left">The first value to compare.</param>
         /// <param name="right">The second value to compare.</param>
-        /// <returns>true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise, false.</returns>
+        /// <returns>
+        ///     true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise,
+        ///     false.
+        /// </returns>
         public static bool operator ==(Language left, Language right)
         {
             return Equals(left, right);
         }
 
-        /// <summary>Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.Language" /> objects have different values.</summary>
+        /// <summary>
+        ///     Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.Language" /> objects have different
+        ///     values.
+        /// </summary>
         /// <param name="left">The first value to compare.</param>
         /// <param name="right">The second value to compare.</param>
         /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>

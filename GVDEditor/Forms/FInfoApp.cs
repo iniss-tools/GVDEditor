@@ -2,19 +2,19 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
     /// <summary>
     ///     Dialog - Informacie o aplikacii
     /// </summary>
-    public partial class FInformation : Form
+    public partial class FInfoApp : Form
     {
         /// <summary>
         ///     Konstruktor
         /// </summary>
-        public FInformation()
+        public FInfoApp()
         {
             InitializeComponent();
             FormUtils.SetFormFont(this);

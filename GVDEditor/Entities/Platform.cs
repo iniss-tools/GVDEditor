@@ -8,8 +8,8 @@
         /// <summary>
         ///     Predvolené nástupište
         /// </summary>
-        public static readonly Platform None = new("N","Nedefinované","");
-        
+        public static readonly Platform None = new("N", "Nedefinované", "");
+
         /// <summary>
         ///     Konstruktor
         /// </summary>
@@ -52,7 +52,7 @@
         {
             return other.Key == Key;
         }
-        
+
         /// <inheritdoc />
         public override string ToString()
         {

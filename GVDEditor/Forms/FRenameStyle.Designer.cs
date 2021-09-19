@@ -31,7 +31,7 @@ namespace GVDEditor.Forms
         {
             this.components = new System.ComponentModel.Container();
             this.bRename = new System.Windows.Forms.Button();
-            this.tbStyleName = new ExControls.ExTextBox(this.components);
+            this.tbStyleName = new ExControls.ExTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 

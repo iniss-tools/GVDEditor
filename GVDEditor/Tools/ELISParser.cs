@@ -3,95 +3,207 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using GVDEditor.Annotations;
 using GVDEditor.Entities;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Tools
 {
     /// <summary>
     ///     Trieda spracujuca text exportovany z programu ELIS do objektov
     /// </summary>
-    public static class ELISParser
+    public class ELISParser
     {
         private const string FORMAT_EX = "Chyba v súbore na riadku {0}. ";
+        private const int NOT_SET = -2;
+
+        /// <summary>Initializes a new instance of the <see cref="T:System.Object" /> class.</summary>
+        public ELISParser(string path, List<Train> definedTrains, List<TrainType> trainTypes, List<Operator> operators, GVDInfo gvd,
+            Track defaultTrack)
+        {
+            Path = path;
+            DefinedTrains = definedTrains;
+            TrainTypes = trainTypes;
+            Operators = operators;
+            GVD = gvd;
+            DefaultTrack = defaultTrack;
+        }
 
         /// <summary>
-        ///     Spracuje textovy subor exportovany z programu ELIS do zoznamu vlakov ako objekty typu <see cref="Train"/>.
+        ///     Cesta k vygenerovanemu ELIS suboru
         /// </summary>
-        /// <param name="path">cesta k vygenerovanemu ELIS suboru</param>
-        /// <param name="deftrains">zoznam uz definovanych vlakov</param>
-        /// <param name="trainTypes">vsetky typy vlakov definovane v stanici</param>
-        /// <param name="operators">zoznam vsetkych definovanych dopravcov</param>
-        /// <param name="gvd">informacie o aktualnom grafikone</param>
-        /// <param name="defaultTrack">kolaj, ktora bude priradena kazdemu vlaku</param>
-        /// <param name="omitPassingTrains">ci sa maju preskocit vlaky, ktore su prechadzajuce</param>
-        /// <param name="defOperators">ci su v subore definovani dopravcovia ku kazdemu vlaku</param>
-        /// <param name="defDaterems">ci su v subore definovane datumove obmedzenia ku kazdemu vlaku</param>
+        public string Path { get; }
+
+        /// <summary>
+        ///     Zoznam uz definovanych vlakov
+        /// </summary>
+        public List<Train> DefinedTrains { get; }
+
+        /// <summary>
+        ///     Vsetky typy vlakov definovane v stanici
+        /// </summary>
+        public List<TrainType> TrainTypes { get; }
+
+        /// <summary>
+        ///     Zoznam vsetkych definovanych dopravcov
+        /// </summary>
+        public List<Operator> Operators { get; }
+
+        /// <summary>
+        ///     Informacie o aktualnom grafikone
+        /// </summary>
+        public GVDInfo GVD { get; }
+
+        /// <summary>
+        ///     kolaj, ktora bude priradena kazdemu vlaku
+        /// </summary>
+        public Track DefaultTrack { get; }
+
+        /// <summary>
+        ///     Ci sa maju preskocit vlaky, ktore su prechadzajuce
+        /// </summary>
+        public bool OmitPassingTrains { get; set; }
+
+        /// <summary>
+        ///     Ci su v subore definovani dopravcovia ku kazdemu vlaku
+        /// </summary>
+        public bool DefinedOperators { get; set; } = true;
+
+        /// <summary>
+        ///     Ci su v subore definovane datumove obmedzenia ku kazdemu vlaku
+        /// </summary>
+        public bool DefinedDateLimits { get; set; } = true;
+
+        /// <summary>
+        ///     Ci sa maju vlaky (ich varianty) zoradit a prepocitat
+        /// </summary>
+        public bool ReorderTrains { get; set; }
+
+        /// <summary>
+        ///     Ci sa ma pouzit novy format formatovania
+        /// </summary>
+        public bool NewFormat { get; set; }
+
+        /// <summary>
+        ///     Spracuje textovy subor exportovany z programu ELIS do zoznamu vlakov ako objekty typu <see cref="Train" />.
+        /// </summary>
         /// <exception cref="ArgumentException">ak sa zisti neplatny typ vlaku alebo datum</exception>
         /// <exception cref="FormatException">ak sa zistia nedefinovane stanice alebo subor obsahuje neocakavane znaky</exception>
-        public static List<Train> ReadELISFile([NotNull] string path, List<Train> deftrains, List<TrainType> trainTypes, List<Operator> operators, GVDInfo gvd, Track defaultTrack, bool omitPassingTrains = false, bool defOperators = true, bool defDaterems = true)
+        public List<Train> ReadELISFile()
         {
-            if (!File.Exists(path)) return null;
+            if (!File.Exists(Path)) return null;
 
-            var wstations = new List<string>();
-            var trains = new List<Train>(deftrains);
-            int countdef = deftrains.Count;
+            var invalidStations = new List<string>();
+            List<Train> trains;
+            int countdef;
 
-            using var file = new StreamReader(File.OpenRead(path));
+            if (DefinedTrains == null)
+            {
+                trains = new List<Train>();
+                countdef = 0;
+            }
+            else
+            {
+                trains = new List<Train>(DefinedTrains);
+                countdef = DefinedTrains.Count;
+            }
+
+            //vyber formatu
+            if (NewFormat)
+                ReadWithNewFormat(trains, invalidStations);
+            else
+                ReadWithOldFormat(trains, invalidStations);
+
+            //vypis neplatnych stanic (ak nejake su)
+            if (invalidStations.Count != 0)
+            {
+                var builder = new StringBuilder();
+                foreach (var invalid in invalidStations)
+                    builder.Append(invalid + "\r\n");
+
+                throw new FormatException($"Stanice {builder} nie sú definované.");
+            }
+
+            //ci sa maju zoradit vlaky podla variant
+            if (ReorderTrains)
+                //zotriedenie vlakov podla variant
+                for (var i = 0; i < trains.Count; i++)
+                {
+                    var t1 = trains[i];
+                    if (t1.Variant != NOT_SET)
+                        continue;
+
+                    var variants = trains.Where((t2, j) => i != j && Train.IsSameVariant(t1, t2)).ToList();
+
+                    variants.Add(t1);
+
+                    Train.ReorderVariants(variants);
+                }
+
+            //vratenie vysledku (a vymazanie duplicitnych vlakov, ktore prisli s argumentom deftrains)
+            trains.RemoveRange(0, countdef);
+            return trains;
+        }
+
+        private void ReadWithNewFormat(ICollection<Train> trains, ICollection<string> invalidStations)
+        {
+            using var file = new StreamReader(File.OpenRead(Path));
             var riadok = 0;
+            string line = null;
 
             while (!file.EndOfStream)
                 try
                 {
-                    //inicializacia vlaku a prveho riadku
-                    var firstrow = file.ReadLine();
-                    riadok++;
-                    if (firstrow == null)
+                    if (line is null)
                     {
-                        trains.RemoveRange(0, countdef);
-                        return trains;
+                        line = file.ReadLine();
+                        riadok++;
                     }
-                    var row = firstrow.Split(' ');
-                    var count = row.Length;
+
+                    //inicializacia vlaku a prveho riadku
+                    var firstrow = line;
+
+                    if (firstrow == null)
+                        return;
+
+                    var threeParts = firstrow.Replace("\t\t\t\t\t\t", "\t").Split('\t');
+                    var frow = threeParts[0].Split(' ');
+                    var count = frow.Length;
+
                     var train = new Train();
 
                     //typ vlaku
-                    foreach (var type in trainTypes.Where(type => row[0] == type.Key)) train.Type = type;
-                    if (train.Type == null) throw new ArgumentException($"Neexistujúci typ vlaku {row[0]}");
+                    foreach (var type in TrainTypes.Where(type => frow[0] == type.Key)) train.Type = type;
+                    if (train.Type == null) throw new ArgumentException($"Neexistujúci typ vlaku {frow[0]}");
 
                     //cislo vlaku
-                    train.Number = row[1];
+                    train.Number = frow[1];
 
                     //nazov vlaku
-                    var nazov = "";
-                    for (var i = 2; i < count - 5; i++) 
-                        nazov += row[i] + " ";
-                    train.Name = nazov.Trim();
+                    var trname = "";
+                    for (var i = 2; i < count; i++)
+                        trname += frow[i] + " ";
+                    train.Name = trname.Trim();
 
                     //obdobie platnosti
-                    train.ZaciatokPlatnosti = Utils.ParseDateAlts(row[count - 3]);
-                    train.KoniecPlatnosti = Utils.ParseDateAlts(row[count - 1]);
+                    train.ZaciatokPlatnosti = Utils.ParseDateAlts(threeParts[1]);
+                    train.KoniecPlatnosti = Utils.ParseDateAlts(threeParts[2]);
 
                     //spracovanie variant
-                    train.Variant = -2;
-
-                    //preskocenie
-                    file.ReadLine();
-                    file.ReadLine();
-                    file.ReadLine();
-                    riadok += 3;
+                    train.Variant = NOT_SET;
 
                     //stanice vlaku
-                    Station stanica = null;
+                    Station station = null;
                     var thisst = false;
                     while (true)
                     {
-                        var rowsts = SplitRow(file.ReadLine());
+                        line = file.ReadLine();
                         riadok++;
+
+                        var rowsts = SplitRow(line, true);
                         var count2 = rowsts.Length;
-                        if (rowsts[0].StartsWith("-") || rowsts[0].StartsWith("="))
+                        if (line.StartsWith("\t\t") || !line.StartsWith("\t"))
                         {
-                            if (stanica != null && stanica.ID == gvd.ThisStation.ID)
+                            if (station != null && station.ID == GVD.ThisStation.ID)
                             {
                                 train.Arrival = train.Departure;
                                 train.Departure = null;
@@ -101,18 +213,19 @@ namespace GVDEditor.Tools
                             break;
                         }
 
-                        stanica = Station.GetStationFromName(rowsts[0]);
-                        if (stanica == null)
+                        var stname = SplitRow(rowsts[0])[0]; //bez znakov O, !, ... oddelene 2 medzerami
+                        station = Station.GetStationFromName(stname);
+                        if (station == null)
                         {
-                            wstations.Add($"{rowsts[0]} ({riadok})");
+                            invalidStations.Add($"{stname} ({riadok})");
                             continue;
                         }
 
-                        if (stanica.ID == gvd.ThisStation.ID)
+                        if (station.ID == GVD.ThisStation.ID)
                         {
                             thisst = true;
 
-                            if (Utils.TryParseTime(rowsts[count2 - 3], out var prichod)) 
+                            if (Utils.TryParseTime(rowsts[count2 - 3], out var prichod))
                                 train.Arrival = prichod;
 
                             try
@@ -127,17 +240,17 @@ namespace GVDEditor.Tools
                             continue;
                         }
 
-                        stanica.IsInLongReport = true;
+                        station.IsInLongReport = true;
 
                         //este nebola domovska stanica
                         if (!thisst)
-                            train.StaniceZoSmeru.Add(stanica);
+                            train.StaniceZoSmeru.Add(station);
                         //uz bola domovska stanica
                         else
-                            train.StaniceDoSmeru.Add(stanica);
+                            train.StaniceDoSmeru.Add(station);
                     }
 
-                    //nastavenie vychdzej/konecnej stanice
+                    //nastavenie vychodzej/konecnej stanice
                     var firstZo = train.StaniceZoSmeru.FirstOrDefault();
                     var lastDo = train.StaniceDoSmeru.LastOrDefault();
                     if (firstZo != null)
@@ -157,10 +270,234 @@ namespace GVDEditor.Tools
                         train.Routing = Routing.Prechadzajuci;
                     else if (train.StaniceZoSmeru.Count == 0)
                         train.Routing = Routing.Vychadzajuci;
-                    else if (train.StaniceDoSmeru.Count == 0) train.Routing = Routing.Konciaci;
+                    else if (train.StaniceDoSmeru.Count == 0)
+                        train.Routing = Routing.Konciaci;
 
                     //citanie poznamok (dopravca, daterem)
-                    if (defOperators)
+                    if (DefinedOperators)
+                    {
+                        var lineOp = line;
+
+                        if (lineOp != null)
+                        {
+                            lineOp = lineOp.Trim();
+                            var sep = lineOp.Split(';');
+                            train.Operator = Operator.GetOperatorFromName(Operators, sep[0]) ?? Operator.None;
+                        }
+
+                        if (DefinedDateLimits)
+                        {
+                            line = file.ReadLine();
+                            riadok++;
+                        }
+                    }
+                    else
+                    {
+                        train.Operator = Operator.None;
+                    }
+
+                    var withoutLimit = false;
+
+                    if (DefinedDateLimits)
+                    {
+                        var lineLim = line;
+                        if (lineLim != null)
+                        {
+                            lineLim = lineLim.Trim();
+                            var dr = new DateLimit(train.ZaciatokPlatnosti, train.KoniecPlatnosti);
+                            try
+                            {
+                                dr.TextToBitArray(lineLim);
+                                train.DateLimitText = lineLim;
+                            }
+                            catch (Exception)
+                            {
+                                //automaticky tu bude ide denne
+                                train.DateLimitText = "";
+                                withoutLimit = true;
+                            }
+                        }
+                    }
+
+                    //preskocenie poznamok - okrem riadku s linkou
+                    while (true)
+                    {
+                        if (withoutLimit)
+                        {
+                            withoutLimit = false;
+                        }
+                        else
+                        {
+                            line = file.ReadLine();
+                            riadok++;
+                        }
+
+                        if (line is null || !line.StartsWith("\t\t"))
+                            break;
+
+                        line = line.Trim();
+                        if (line.StartsWith("linka"))
+                        {
+                            var route = line.Substring(line.IndexOf('('));
+                            route = route.Replace(")", "");
+                            var fromTo = route.Split(new[] { "->" }, StringSplitOptions.None);
+
+                            var cols = line.Split(' ');
+                            if (fromTo[0] == GVD.ThisStation.Name)
+                            {
+                                train.LineDeparture = cols[1];
+                            }
+                            else if (fromTo[1] == GVD.ThisStation.Name)
+                            {
+                                train.LineArrival = cols[1];
+                            }
+                            else
+                            {
+                                train.LineArrival = cols[1];
+                                train.LineDeparture = cols[1];
+                            }
+                        }
+                    }
+
+                    //nastavenie kolaje
+                    train.Track = DefaultTrack;
+
+                    //ak vlak neobsahuje ThisStation, bude preskoceny
+                    //a ak vlak nie je prechadzajuci alebo nema preskocit prechadzajuce tak ma podmienku uskutocnit 
+                    var isPassing = train.Routing == Routing.Prechadzajuci;
+                    if (thisst && (!isPassing || !OmitPassingTrains)) trains.Add(train);
+                }
+                catch (Exception e)
+                {
+                    throw new FormatException(string.Format(FORMAT_EX, riadok) + e.Message, e);
+                }
+        }
+
+        private void ReadWithOldFormat(ICollection<Train> trains, ICollection<string> invalidStations)
+        {
+            using var file = new StreamReader(File.OpenRead(Path));
+            var riadok = 0;
+
+            while (!file.EndOfStream)
+                try
+                {
+                    //inicializacia vlaku a prveho riadku
+                    var firstrow = file.ReadLine();
+                    riadok++;
+                    if (firstrow == null)
+                        return;
+
+                    var row = firstrow.Split(' ');
+                    var count = row.Length;
+                    var train = new Train();
+
+                    //typ vlaku
+                    foreach (var type in TrainTypes.Where(type => row[0] == type.Key)) train.Type = type;
+                    if (train.Type == null) throw new ArgumentException($"Neexistujúci typ vlaku {row[0]}");
+
+                    //cislo vlaku
+                    train.Number = row[1];
+
+                    //nazov vlaku
+                    var trname = "";
+                    for (var i = 2; i < count - 5; i++)
+                        trname += row[i] + " ";
+                    train.Name = trname.Trim();
+
+                    //obdobie platnosti
+                    train.ZaciatokPlatnosti = Utils.ParseDateAlts(row[count - 3]);
+                    train.KoniecPlatnosti = Utils.ParseDateAlts(row[count - 1]);
+
+                    //spracovanie variant
+                    train.Variant = NOT_SET;
+
+                    //preskocenie
+                    file.ReadLine();
+                    file.ReadLine();
+                    file.ReadLine();
+                    riadok += 3;
+
+                    //stanice vlaku
+                    Station station = null;
+                    var thisst = false;
+                    while (true)
+                    {
+                        var rowsts = SplitRow(file.ReadLine());
+                        riadok++;
+                        var count2 = rowsts.Length;
+                        if (rowsts[0].StartsWith("-") || rowsts[0].StartsWith("="))
+                        {
+                            if (station != null && station.ID == GVD.ThisStation.ID)
+                            {
+                                train.Arrival = train.Departure;
+                                train.Departure = null;
+                                train.Routing = Routing.Konciaci;
+                            }
+
+                            break;
+                        }
+
+                        station = Station.GetStationFromName(rowsts[0]);
+                        if (station == null)
+                        {
+                            invalidStations.Add($"{rowsts[0]} ({riadok})");
+                            continue;
+                        }
+
+                        if (station.ID == GVD.ThisStation.ID)
+                        {
+                            thisst = true;
+
+                            if (Utils.TryParseTime(rowsts[count2 - 3], out var prichod))
+                                train.Arrival = prichod;
+
+                            try
+                            {
+                                train.Departure = Utils.ParseTime(rowsts[count2 - 2]);
+                            }
+                            catch (Exception e)
+                            {
+                                throw new ArgumentException($"String {rowsts[count2 - 2]} sa nedá previesť na DateTime.", e);
+                            }
+
+                            continue;
+                        }
+
+                        station.IsInLongReport = true;
+
+                        //este nebola domovska stanica
+                        if (!thisst)
+                            train.StaniceZoSmeru.Add(station);
+                        //uz bola domovska stanica
+                        else
+                            train.StaniceDoSmeru.Add(station);
+                    }
+
+                    //nastavenie vychodzej/konecnej stanice
+                    var firstZo = train.StaniceZoSmeru.FirstOrDefault();
+                    var lastDo = train.StaniceDoSmeru.LastOrDefault();
+                    if (firstZo != null)
+                    {
+                        firstZo.IsInShortReport = true;
+                        train.StartingStation = firstZo;
+                    }
+
+                    if (lastDo != null)
+                    {
+                        lastDo.IsInShortReport = true;
+                        train.EndingStation = lastDo;
+                    }
+
+                    //nastavenie smerovania
+                    if (train.StaniceZoSmeru.Count != 0 && train.StaniceDoSmeru.Count != 0)
+                        train.Routing = Routing.Prechadzajuci;
+                    else if (train.StaniceZoSmeru.Count == 0)
+                        train.Routing = Routing.Vychadzajuci;
+                    else if (train.StaniceDoSmeru.Count == 0)
+                        train.Routing = Routing.Konciaci;
+
+                    //citanie poznamok (dopravca, daterem)
+                    if (DefinedOperators)
                     {
                         var lineOp = file.ReadLine();
                         riadok++;
@@ -168,16 +505,21 @@ namespace GVDEditor.Tools
                         {
                             lineOp = lineOp.Substring(2);
                             var sep = lineOp.Split(';');
-                            train.Operator = Operator.GetOperatorFromName(operators, sep[0]) ?? Operator.None;
+                            train.Operator = Operator.GetOperatorFromName(Operators, sep[0]) ?? Operator.None;
                         }
 
-                        if (!defDaterems)
+                        if (!DefinedDateLimits)
                         {
                             file.ReadLine();
+                            riadok++;
                         }
                     }
+                    else
+                    {
+                        train.Operator = Operator.None;
+                    }
 
-                    if (defDaterems)
+                    if (DefinedDateLimits)
                     {
                         var firstl = "";
                         var dateRemIsComming = false;
@@ -215,14 +557,14 @@ namespace GVDEditor.Tools
                             }
 
                             lineDateRem = lineDateRem.Trim();
-                            var dr = new DateRem(train.ZaciatokPlatnosti, train.KoniecPlatnosti);
-                            dr.TxtToBitArray(lineDateRem); //tu sa vyhodi pripadna vynimka
-                            train.DateremText = lineDateRem;
+                            var dr = new DateLimit(train.ZaciatokPlatnosti, train.KoniecPlatnosti);
+                            dr.TextToBitArray(lineDateRem); //tu sa vyhodi pripadna vynimka
+                            train.DateLimitText = lineDateRem;
                         }
                     }
 
                     //nastavenie kolaje
-                    train.Track = defaultTrack;
+                    train.Track = DefaultTrack;
 
                     //preskocenie
                     file.ReadLine();
@@ -232,64 +574,23 @@ namespace GVDEditor.Tools
                     //ak vlak neobsahuje ThisStation, bude preskoceny
                     //a ak vlak nie je prechadzajuci alebo nema preskocit prechadzajuce tak ma podmienku uskutocnit 
                     var isPassing = train.Routing == Routing.Prechadzajuci;
-                    if (thisst && (!isPassing || !omitPassingTrains)) trains.Add(train);
+                    if (thisst && (!isPassing || !OmitPassingTrains)) trains.Add(train);
                 }
                 catch (Exception e)
                 {
                     throw new FormatException(string.Format(FORMAT_EX, riadok) + e.Message, e);
                 }
-
-            if (wstations.Count != 0)
-            {
-                var builder = new StringBuilder();
-                foreach (var wstation in wstations) builder.Append(wstation + "\n");
-
-                throw new FormatException($"Stanice {builder} nie sú definované.");
-            }
-
-            for (var i = 0; i < trains.Count; i++)
-            {
-                var t1 = trains[i];
-                if (t1.Variant != -2) continue;
-
-                var variants = trains.Where((t2, j) => Train.IsSameVariant(t1, t2) && i != j).ToList();
-
-                variants.Add(t1);
-
-                var main = Train.FindMainVariant(variants, out var pos);
-                if (main != null)
-                {
-                    main.Variant = 1;
-                    var varID = 2;
-                    var rem = new DateRem(main.ZaciatokPlatnosti, main.KoniecPlatnosti, bInsertMarks: false);
-                    for (var k = 0; k < variants.Count; k++)
-                        if (k != pos)
-                        {
-                            var var = variants[k];
-                            var.DateremText = rem.TxtNot(main.DateremText);
-                            var.Variant = varID;
-                            varID++;
-                        }
-                }
-                else
-                    t1.Variant = -1;
-            }
-
-            trains.RemoveRange(0, countdef);
-            return trains;
         }
 
-        private static string[] SplitRow(string row)
+        private static string[] SplitRow(string row, bool tab = false)
         {
-            var splitted = row.Split(new[] {"  "}, StringSplitOptions.None);
-            var output = new List<string>();
+            var splitted = row.Split(new[] { tab ? "\t" : "  " }, StringSplitOptions.RemoveEmptyEntries);
             for (var i = 0; i < splitted.Length; i++)
             {
                 splitted[i] = splitted[i].Trim();
-                if (!string.IsNullOrEmpty(splitted[i])) output.Add(splitted[i]);
             }
 
-            return output.ToArray();
+            return splitted;
         }
     }
 }

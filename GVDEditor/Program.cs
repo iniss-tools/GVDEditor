@@ -4,10 +4,14 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using ExControls;
 using GVDEditor.Forms;
-using GVDEditor.Properties;
 using GVDEditor.Tools;
 using GVDEditor.XML;
+using ToolsCore;
+using ToolsCore.Properties;
+using ToolsCore.XML;
+using ToolsCore.Tools;
 
 namespace GVDEditor
 {
@@ -21,16 +25,20 @@ namespace GVDEditor
         [STAThread]
         private static void Main(string[] args)
         {
+            Log.AppDirPath = Application.StartupPath;
+            GlobSettings.LinkUpdater = "http://iniss.6f.sk/gvdeditor-updater/update.txt";
+
             using var mutex = new Mutex(false, "Global\\" + appGuid);
 
             try
             {
-                GlobData.Config = Config.ReadData(Utils.CombinePath(Application.StartupPath, FileConsts.FILE_CONFIG));
+                GlobData.Config = XMLSerialization.ReadData<GVDEditorConfig>(Utils.CombinePath(Application.StartupPath, FileConsts.FILE_CONFIG));
+                GlobSettings.Fonts = GlobData.Config.Fonts;
             }
             catch (Exception e)
             {
                 Log.Error($"Chyba pri načítaní konfiguračného súboru: {e.Message}");
-                return;
+                throw;
             }
 
             Log.DoAppLogs = GlobData.Config.LoggingInfo;
@@ -38,13 +46,14 @@ namespace GVDEditor
 
             try
             {
-                GlobData.Styles = Styles.ReadData(Utils.CombinePath(Application.StartupPath, FileConsts.FILE_STYLES));
+                GlobData.Styles = Styles<GVDEditorStyle>.ReadData(Utils.CombinePath(Application.StartupPath, FileConsts.FILE_STYLES));
                 GlobData.UsingStyle = GlobData.Styles[GlobData.Styles.UsingStyleID];
+                GlobSettings.UsingStyle = GlobData.UsingStyle;
             }
             catch (Exception e)
             {
                 Log.Error($"Chyba pri načítaní súboru so štýlmi: {e.Message}");
-                return;
+                throw;
             }
 
             if (!mutex.WaitOne(0, false) && !GlobData.Config.MoreInstance)
@@ -70,33 +79,49 @@ namespace GVDEditor
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-            if (args.Length == 1 && (args[0] == "-unlock" || args[0] == "/unlock")) GlobData.PrivateFeatures = true;
+            if (args.Length == 1 && (args[0] == "-unlock" || args[0] == "/unlock")) 
+                GlobData.PrivateFeatures = true;
 
-            MessageBoxManager.OK = Resources.Global_OK;
-            MessageBoxManager.Cancel = Resources.Global_Cancel;
-            MessageBoxManager.Retry = Resources.Global_Retry;
-            MessageBoxManager.Ignore = Resources.Global_Ignore;
-            MessageBoxManager.Abort = Resources.Global_Abort;
-            MessageBoxManager.Yes = Resources.Global_Yes;
-            MessageBoxManager.No = Resources.Global_No;
+            ExMessageBox.ButtonOKText = GlobalResources.Global_OK;
+            ExMessageBox.ButtonCancelText = GlobalResources.Global_Cancel;
+            ExMessageBox.ButtonRetryText = GlobalResources.Global_Retry;
+            ExMessageBox.ButtonIgnoreText = GlobalResources.Global_Ignore;
+            ExMessageBox.ButtonAbortText = GlobalResources.Global_Abort;
+            ExMessageBox.ButtonYesText = GlobalResources.Global_Yes;
+            ExMessageBox.ButtonNoText = GlobalResources.Global_No;
 
-            MessageBoxManager.Register();
-
-            foreach (var style in GlobData.Styles.StyleList)
+            var style = new ExMessageBoxStyle
             {
-                SettingsNaming.NameColorSettings(style);
+                UseDarkTitleBar = GlobData.UsingStyle.DarkTitleBar,
+                ForeColor = GlobData.UsingStyle.ControlsColorScheme.Box.ForeColor,
+                BackColor = GlobData.UsingStyle.ControlsColorScheme.Box.BackColor,
+                FooterBackColor = GlobData.UsingStyle.ControlsColorScheme.Panel.BackColor,
+                DefaultStyle = GlobData.UsingStyle.ControlsDefaultStyle,
+                ButtonBackColor = GlobData.UsingStyle.ControlsColorScheme.Button.BackColor,
+                ButtonBorderColor = GlobData.UsingStyle.ControlsColorScheme.Border.ForeColor,
+                ButtonForeColor = GlobData.UsingStyle.ControlsColorScheme.Button.ForeColor,
+                ButtonBorderSize = 1,
+                ButtonMouseDownColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor,
+                ButtonMouseOverColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor,
+                ButtonsFont = GlobData.Config.Fonts.Buttons
+            };
+
+            ExMessageBox.Style = style;
+
+            foreach (var s in GlobData.Styles.StyleList)
+            {
+                GVDEditorSettingsNaming.NameColorSettings(s);
             }
 
             SettingsNaming.NameAppFontSetting(GlobData.Config.Fonts);
-            SettingsNaming.NameDesktopColsSetting(GlobData.Config.DesktopCols);
-            SettingsNaming.NameShortcutCommands(GlobData.Config.Shortcuts);
+            GVDEditorSettingsNaming.NameDesktopColsSetting(GlobData.Config.DesktopCols);
+            GVDEditorSettingsNaming.NameShortcutCommands(GlobData.Config.Shortcuts);
 
             Log.AppInfo($"Program spustený - v.{Application.ProductVersion} - \"{Application.ExecutablePath}\"");
 
-            DateRem.Loc = GlobData.Config.DateRemLocate == Config.AppLanguage.CZ ? DateRem.LOCALE.CZECH : DateRem.LOCALE.SLOVAK;
+            DateLimit.Loc = GlobData.Config.DateRemLocate == Config.AppLanguage.CZ ? DateLimit.Locale.CZ : DateLimit.Locale.SK;
 
-            var main = new FMain();
-            Application.Run(main);
+            Application.Run(new FMain());
 
             Log.AppInfo("Program sa ukončuje\r\n");
         }

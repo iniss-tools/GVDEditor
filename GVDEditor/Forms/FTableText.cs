@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
-using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
@@ -128,7 +128,7 @@ namespace GVDEditor.Forms
         {
             if (listRealisations.SelectedItem is TableTextRealization realization)
             {
-                cbCatalogTable.SelectedItem = realization.Catalog;
+                cbCatalogTable.SelectedItem = realization.Table;
                 cbCatalogItem.SelectedItem = realization.Item;
             }
         }
@@ -139,14 +139,14 @@ namespace GVDEditor.Forms
                 if (listTrains.SelectedItem is TableTrain tableTrain)
                 {
                     tbTrainText.Text = tableTrain.Text;
-                    nudFont.Value = tableTrain.FontId;
+                    nudFont.Value = tableTrain.FontID;
                 }
         }
 
         private void listRealisations_Format(object sender, ListControlConvertEventArgs e)
         {
             if (e.ListItem is TableTextRealization realization)
-                e.Value = realization.Catalog.Name + " - " + realization.Item.Name;
+                e.Value = realization.Table.Name + " - " + realization.Item.Name;
         }
 
         private void listTrains_Format(object sender, ListControlConvertEventArgs e)
@@ -181,7 +181,7 @@ namespace GVDEditor.Forms
         {
             var realization = new TableTextRealization
             {
-                Catalog = (TableCatalog) cbCatalogTable.SelectedItem, Item = (TableItem) cbCatalogItem.SelectedItem
+                Table = (TableCatalog)cbCatalogTable.SelectedItem, Item = (TableItem)cbCatalogItem.SelectedItem
             };
 
             TRealizations.Add(realization);
@@ -192,8 +192,8 @@ namespace GVDEditor.Forms
             if (listRealisations.SelectedIndex != -1)
             {
                 var realization = TRealizations[listRealisations.SelectedIndex];
-                realization.Catalog = (TableCatalog) cbCatalogTable.SelectedItem;
-                realization.Item = (TableItem) cbCatalogItem.SelectedItem;
+                realization.Table = (TableCatalog)cbCatalogTable.SelectedItem;
+                realization.Item = (TableItem)cbCatalogItem.SelectedItem;
 
                 TRealizations.ResetBindings();
             }
@@ -208,9 +208,9 @@ namespace GVDEditor.Forms
         {
             if (listTrains.SelectedIndex != -1)
             {
-                var tableTrain = (TableTrain) listTrains.SelectedItem;
+                var tableTrain = (TableTrain)listTrains.SelectedItem;
                 tableTrain.Text = tbTrainText.Text;
-                tableTrain.FontId = decimal.ToInt32(nudFont.Value);
+                tableTrain.FontID = decimal.ToInt32(nudFont.Value);
             }
         }
 
@@ -222,7 +222,7 @@ namespace GVDEditor.Forms
                 TableItem item;
                 if (cbCatalogItem.SelectedItem != null)
                 {
-                    item = (TableItem) cbCatalogItem.SelectedItem;
+                    item = (TableItem)cbCatalogItem.SelectedItem;
 
                     if (item.FillSection != TableFillSection.CielovaStanica
                         && item.FillSection != TableFillSection.CielovaStanicaNastupiste
@@ -245,7 +245,7 @@ namespace GVDEditor.Forms
 
                 foreach (var vlak in FMain.Trains)
                 {
-                    var tableTrain = new TableTrain {FontId = -1, Train = vlak};
+                    var tableTrain = new TableTrain { FontID = -1, Train = vlak };
 
                     if (item.FillSection == TableFillSection.CielovaStanica || item.FillSection == TableFillSection.CielovaStanicaNastupiste ||
                         item.FillSection == TableFillSection.CielovaStanicaPodchod)
@@ -274,10 +274,7 @@ namespace GVDEditor.Forms
                                 if (t.IsInShortReport)
                                     staniceDo.Add(t);
 
-                            if (staniceDo.Count != 0)
-                            {
-                                staniceDo.RemoveAt(staniceDo.Count - 1);
-                            }
+                            if (staniceDo.Count != 0) staniceDo.RemoveAt(staniceDo.Count - 1);
 
                             for (var i = 0; i < staniceDo.Count; i++)
                                 if (i < staniceDo.Count - 1)

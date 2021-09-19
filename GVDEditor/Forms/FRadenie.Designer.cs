@@ -34,7 +34,7 @@ namespace GVDEditor.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRadenie));
             this.bSave = new System.Windows.Forms.Button();
             this.bStorno = new System.Windows.Forms.Button();
-            this.cbSoundDir = new ExComboBox(this.components);
+            this.cbSoundDir = new ExComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listAllSounds = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,11 +45,11 @@ namespace GVDEditor.Forms
             this.listRadenie = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbLanguage = new ExComboBox(this.components);
-            this.tbTextSound = new ExTextBox(this.components);
+            this.cbLanguage = new ExComboBox();
+            this.tbTextSound = new ExTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.tbTextRadenie = new ExTextBox(this.components);
+            this.tbTextRadenie = new ExTextBox();
             this.bPlay = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 

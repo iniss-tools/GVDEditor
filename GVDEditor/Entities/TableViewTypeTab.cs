@@ -22,7 +22,7 @@ namespace GVDEditor.Entities
         public TableViewType ViewType { get; set; }
 
         /// <summary>
-        ///     Pocet riadkov, kolko ma 1 zaznam na tabuli 
+        ///     Pocet riadkov, kolko ma 1 zaznam na tabuli
         /// </summary>
         public string CountLinesRecord { get; set; }
 

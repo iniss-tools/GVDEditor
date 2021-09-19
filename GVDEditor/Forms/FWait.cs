@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {

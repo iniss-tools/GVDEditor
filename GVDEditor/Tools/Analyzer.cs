@@ -1,7 +1,7 @@
-﻿using GVDEditor.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using GVDEditor.Entities;
 using GVDEditor.Forms;
 
 namespace GVDEditor.Tools
@@ -21,7 +21,7 @@ namespace GVDEditor.Tools
         /// <summary>
         ///     Pouzivatel musi chybu opravit sam a program mu len ukaze, kde ma chybu opravit
         /// </summary>
-        MANUAL 
+        MANUAL
     }
 
     internal enum ProblemType
@@ -89,17 +89,17 @@ namespace GVDEditor.Tools
                 var problem = new GVDOutOfValidity(gvd);
                 problems.Add(problem);
             }
+
             bw.ReportProgress(5);
 
             //2. Check Empty TabTabs
             foreach (var tab in GlobData.TabTabs)
-            {
                 if (string.IsNullOrEmpty(tab.Text))
                 {
                     var problem = new EmptyTabTab(tab);
                     problems.Add(problem);
                 }
-            }
+
             bw.ReportProgress(10);
 
             //3. Check using Catalog tables in TPhysic and in TableTextRealization AND Segments
@@ -111,31 +111,20 @@ namespace GVDEditor.Tools
                     problems.Add(problem);
                 }
 
-                bool unused = true;
+                var unused = true;
                 foreach (var physical in GlobData.TablePhysicals)
-                {
                     if (physical.TableCatalog == catalog)
                     {
                         unused = false;
                         break;
                     }
-                }
 
-                if (!unused)
-                {
-                    continue;
-                }
+                if (!unused) continue;
 
                 foreach (var tt in GlobData.TableTexts)
-                {
-                    foreach (var realization in tt.Realizations)
-                    {
-                        if (realization.Catalog == catalog)
-                        {
-                            unused = false;
-                        }
-                    }
-                }
+                foreach (var realization in tt.Realizations)
+                    if (realization.Table == catalog)
+                        unused = false;
 
                 if (unused)
                 {
@@ -143,26 +132,27 @@ namespace GVDEditor.Tools
                     problems.Add(problem);
                 }
             }
+
             bw.ReportProgress(25);
 
             //4. Check using Physic tables in Tlogical
             foreach (var physical in GlobData.TablePhysicals)
             {
-                bool unused = true;
+                var unused = true;
                 foreach (var logical in GlobData.TableLogicals)
                 {
                     foreach (var rec in logical.Records)
                     {
                         foreach (var position in rec.Positions)
-                        {
                             if (position.TablePhysical == physical)
                             {
                                 unused = false;
                                 break;
                             }
-                        }
+
                         if (!unused) break;
                     }
+
                     if (!unused) break;
                 }
 
@@ -172,22 +162,22 @@ namespace GVDEditor.Tools
                     problems.Add(problem);
                 }
             }
+
             bw.ReportProgress(50);
 
             //5. Check using TabTabs
             foreach (var tab in GlobData.TabTabs)
             {
-                bool unused = true;
+                var unused = true;
                 foreach (var catalog in GlobData.TableCatalogs)
                 {
                     foreach (var item in catalog.Items)
-                    {
                         if (item.Tab1 == tab || item.Tab2 == tab)
                         {
                             unused = false;
                             break;
                         }
-                    }
+
                     if (!unused) break;
                 }
 
@@ -197,6 +187,7 @@ namespace GVDEditor.Tools
                     problems.Add(problem);
                 }
             }
+
             bw.ReportProgress(75);
 
             //6. Check TTexts
@@ -230,11 +221,13 @@ namespace GVDEditor.Tools
             Table = table;
         }
 
+        public ITable Table { get; }
+
         public string Text
         {
             get
             {
-                string tabname = Table switch
+                var tabname = Table switch
                 {
                     TableCatalog => "Katalógová",
                     TablePhysical => "Fyzická",
@@ -250,8 +243,6 @@ namespace GVDEditor.Tools
         public ProblemType ProblemType => ProblemType.HINT;
 
         public FixType FixType => FixType.AUTO;
-
-        public ITable Table { get; }
 
         public FixResult FixProblem()
         {
@@ -273,6 +264,8 @@ namespace GVDEditor.Tools
             TabTab = table;
         }
 
+        public TableTabTab TabTab { get; }
+
         public string Text => $"TabTab {TabTab.Key} sa nikde nepoužíva.";
 
         public string Solution => "Odstrániť TabTab";
@@ -280,8 +273,6 @@ namespace GVDEditor.Tools
         public ProblemType ProblemType => ProblemType.HINT;
 
         public FixType FixType => FixType.AUTO;
-
-        public TableTabTab TabTab { get; }
 
         public FixResult FixProblem()
         {
@@ -297,6 +288,8 @@ namespace GVDEditor.Tools
             Table = table;
         }
 
+        public TableCatalog Table { get; }
+
         public string Text => $"Katalógova tabuľa {Table.Key} nemá nastavené žiadne riadky (segmenty).";
 
         public string Solution => "Upraviť segmenty katalógovej tabule";
@@ -304,8 +297,6 @@ namespace GVDEditor.Tools
         public ProblemType ProblemType => ProblemType.WARNING;
 
         public FixType FixType => FixType.MANUAL;
-
-        public TableCatalog Table { get; }
 
         public FixResult FixProblem()
         {
@@ -327,6 +318,12 @@ namespace GVDEditor.Tools
             Row = row;
         }
 
+        public TableText TText { get; }
+
+        public GVDDirectory GVDDir { get; }
+
+        public int Row { get; }
+
         public string Text => $"Table Text je \"{TText.Key}\" nemá žiadnu realizáciu.";
 
         public string Solution => "Pridať realizácie textu";
@@ -334,12 +331,6 @@ namespace GVDEditor.Tools
         public ProblemType ProblemType => ProblemType.WARNING;
 
         public FixType FixType => FixType.MANUAL;
-
-        public TableText TText { get; }
-
-        public GVDDirectory GVDDir { get; }
-
-        public int Row { get; }
 
         public FixResult FixProblem()
         {
@@ -361,6 +352,12 @@ namespace GVDEditor.Tools
             Row = row;
         }
 
+        public TableText TText { get; }
+
+        public GVDDirectory GVDDir { get; }
+
+        public int Row { get; }
+
         public string Text => $"Table Text je \"{TText.Key}\" nemá nastavené žiadne texty vlakov.";
 
         public string Solution => "Pridať realizácie textu";
@@ -368,12 +365,6 @@ namespace GVDEditor.Tools
         public ProblemType ProblemType => ProblemType.WARNING;
 
         public FixType FixType => FixType.MANUAL;
-
-        public TableText TText { get; }
-
-        public GVDDirectory GVDDir { get; }
-
-        public int Row { get; }
 
         public FixResult FixProblem()
         {
@@ -393,6 +384,8 @@ namespace GVDEditor.Tools
             TabTab = tabTab;
         }
 
+        public TableTabTab TabTab { get; }
+
         public string Text => $"TabTab {TabTab.Key} je prázdny";
 
         public string Solution => "Upraviť TabTab";
@@ -400,8 +393,6 @@ namespace GVDEditor.Tools
         public ProblemType ProblemType => ProblemType.WARNING;
 
         public FixType FixType => FixType.MANUAL;
-
-        public TableTabTab TabTab { get; }
 
         public FixResult FixProblem()
         {
@@ -421,6 +412,8 @@ namespace GVDEditor.Tools
             GVDDir = gvdDir;
         }
 
+        public GVDDirectory GVDDir { get; }
+
         public string Text => $"Grafikon {GVDDir.PeriodFormatted} je po platnosti";
 
         public string Solution => "Zmeniť platnosť grafikonu";
@@ -428,8 +421,6 @@ namespace GVDEditor.Tools
         public ProblemType ProblemType => ProblemType.WARNING;
 
         public FixType FixType => FixType.MANUAL;
-
-        public GVDDirectory GVDDir { get; }
 
         public FixResult FixProblem()
         {

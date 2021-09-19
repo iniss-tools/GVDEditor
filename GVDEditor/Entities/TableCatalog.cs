@@ -18,16 +18,6 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Kluc katalogovej tabule
-        /// </summary>
-        public string Key { get; set; }
-
-        /// <summary>
-        ///     Nazov katalogovej tabule
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
         ///     Vyrobca a typ tabule
         /// </summary>
         public TableManufacturer Manufacturer { get; set; }
@@ -61,6 +51,16 @@ namespace GVDEditor.Entities
         ///     Definuje typ, mod zobrazenia a pocet riadkov na zaznam katalogovej tabuli
         /// </summary>
         public List<TableViewTypeTab> ViewTypeTabs { get; set; }
+
+        /// <summary>
+        ///     Kluc katalogovej tabule
+        /// </summary>
+        public string Key { get; set; }
+
+        /// <summary>
+        ///     Nazov katalogovej tabule
+        /// </summary>
+        public string Name { get; set; }
 
         /// <summary>
         ///     Textovy komentar ku tabuli

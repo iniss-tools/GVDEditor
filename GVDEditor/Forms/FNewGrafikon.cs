@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
@@ -98,8 +99,8 @@ namespace GVDEditor.Forms
                     return;
                 }
 
-                gvd.ThisStation = new Station(((Station) cbStationName.SelectedItem).ID,
-                    ((Station) cbStationName.SelectedItem).Name);
+                gvd.ThisStation = new Station(((Station)cbStationName.SelectedItem).ID,
+                    ((Station)cbStationName.SelectedItem).Name);
             }
 
             gvd.StartValidData = odD;

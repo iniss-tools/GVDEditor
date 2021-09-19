@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using GVDEditor.Entities;
 using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
@@ -10,6 +11,7 @@ namespace GVDEditor.Forms
     /// </summary>
     public partial class FDateRemEdit : Form
     {
+        private readonly DateTime PlatnostOd, PlatnostDo;
         private readonly Train ThisTrain;
 
         /// <summary>
@@ -17,22 +19,20 @@ namespace GVDEditor.Forms
         /// </summary>
         public string DateRemEdited;
 
-        private readonly DateTime PlatnostOd, PlatnostDo;
-
         /// <inheritdoc />
         public FDateRemEdit(Train thisConflict, string original, DateTime platnostOd, DateTime platnostDo)
         {
             InitializeComponent();
             FormUtils.SetFormFont(this);
-            this.ApplyTheme();
+            FormUtils.ApplyTheme(this);
 
             ThisTrain = thisConflict;
             PlatnostOd = platnostOd;
             PlatnostDo = platnostDo;
 
             tbDateRemOrig.Text = original;
-            var dr = new DateRem(platnostOd, platnostDo, bInsertMarks: false);
-            tbDateRemNew.Text = dr.TxtNot(original);
+            var dr = new DateLimit(platnostOd, platnostDo, bInsertMarks: false);
+            tbDateRemNew.Text = dr.TextNot(original);
         }
 
         private void FDateRemEdit_Load(object sender, EventArgs e)
@@ -45,8 +45,8 @@ namespace GVDEditor.Forms
             var daterems = tbDateRemNew.Text;
             try
             {
-                var dom = new DateRem(PlatnostOd.Date, PlatnostDo.Date);
-                dom.TxtToBitArray(daterems);
+                var dom = new DateLimit(PlatnostOd.Date, PlatnostDo.Date);
+                dom.TextToBitArray(daterems);
             }
             catch (Exception exception)
             {

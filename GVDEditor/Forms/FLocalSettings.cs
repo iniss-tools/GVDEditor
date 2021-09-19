@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
@@ -49,22 +50,19 @@ namespace GVDEditor.Forms
         /// <summary>
         ///     Typy fontov
         /// </summary>
-        public static readonly BindingList<TableFontType> TFontsTypes = new(Enumeration.GetValues<TableFontType>());
+        public static readonly BindingList<TableFontType> TFontsTypes = new(TableFontType.GetValues());
 
         /// <summary>
         ///     Stanice dostupne zo suboru STANICE.TXT
         /// </summary>
         public readonly BindingList<Station> CustomStations;
 
+        private readonly Color defaultBorderColor;
+
         /// <summary>
         ///     Dopravcovia v GVD
         /// </summary>
         public readonly BindingList<Operator> Dopravcovia;
-
-        /// <summary>
-        ///     Priečinok s písmami pre tabule
-        /// </summary>
-        public string FontDir;
 
         /// <summary>
         ///     Kolaje v GVD
@@ -76,13 +74,17 @@ namespace GVDEditor.Forms
         /// </summary>
         public readonly BindingList<Platform> Nastupistia;
 
+        private readonly bool openTabTabEditor;
+
         /// <summary>
         ///     Tento priecinok
         /// </summary>
         public readonly GVDDirectory ThisDir;
 
-        private readonly Color defaultBorderColor;
-        private readonly bool openTabTabEditor;
+        /// <summary>
+        ///     Priečinok s písmami pre tabule
+        /// </summary>
+        public string FontDir;
 
         /// <summary>
         ///     Konstruktor
@@ -96,7 +98,7 @@ namespace GVDEditor.Forms
             this.ApplyTheme();
 
             defaultBorderColor = nudFontID.BorderColor;
-            
+
             ThisDir = dir;
 
             Dopravcovia = new BindingList<Operator>(GlobData.Operators);
@@ -196,10 +198,7 @@ namespace GVDEditor.Forms
                 bKatTabDelete.Enabled = false;
             }
 
-            if (TabTabs.Count == 0)
-            {
-                bTabTabDelete.Enabled = false;
-            }
+            if (TabTabs.Count == 0) bTabTabDelete.Enabled = false;
 
             if (TFonts.Count == 0)
             {
@@ -243,7 +242,7 @@ namespace GVDEditor.Forms
             }
             else
             {
-                gvdInfo.ThisStation = (Station) cbStationName.SelectedItem;
+                gvdInfo.ThisStation = (Station)cbStationName.SelectedItem;
             }
 
             DialogResult = DialogResult.OK;
@@ -329,7 +328,7 @@ namespace GVDEditor.Forms
         {
             if (listDopravcovia.SelectedIndex != -1)
             {
-                var dopravca = (Operator) listDopravcovia.SelectedItem;
+                var dopravca = (Operator)listDopravcovia.SelectedItem;
                 if (dopravca == Operator.None)
                 {
                     bDopravcaEdit.Enabled = false;
@@ -385,18 +384,14 @@ namespace GVDEditor.Forms
         {
             if (listDopravcovia.SelectedIndex != -1)
             {
-                int index = listDopravcovia.SelectedIndex;
+                var index = listDopravcovia.SelectedIndex;
                 var op = Dopravcovia[index];
                 foreach (var train in FMain.Trains)
-                {
                     if (train.Operator == op)
-                    {
                         train.Operator = Operator.None;
-                    }
-                }
-                
+
                 Dopravcovia.RemoveAt(index);
-                
+
                 if (Dopravcovia.Count == 0)
                 {
                     bDopravcaEdit.Enabled = false;
@@ -409,8 +404,8 @@ namespace GVDEditor.Forms
         {
             if (listNastupistia.SelectedIndex != -1)
             {
-                var nastupiste = (Platform) listNastupistia.SelectedItem;
-                
+                var nastupiste = (Platform)listNastupistia.SelectedItem;
+
                 if (nastupiste == Platform.None)
                 {
                     bNastEdit.Enabled = false;
@@ -421,6 +416,7 @@ namespace GVDEditor.Forms
                     bNastEdit.Enabled = true;
                     bNastDelete.Enabled = true;
                 }
+
                 tbNastOznacenie.Text = nastupiste.Key;
                 tbNastFullName.Text = nastupiste.FullName;
                 tbNastSound.Text = nastupiste.SoundName;
@@ -479,20 +475,18 @@ namespace GVDEditor.Forms
         {
             if (listNastupistia.SelectedIndex != -1)
             {
-                bool delete = true;
-                string where = " ";
-                int index = listNastupistia.SelectedIndex;
+                var delete = true;
+                var where = " ";
+                var index = listNastupistia.SelectedIndex;
                 var nast = Nastupistia[index];
 
                 foreach (var tr in Kolaje)
-                {
                     if (tr.Nastupiste == nast)
                     {
                         delete = false;
                         where += $"Koľaj {tr.Name}";
                         break;
                     }
-                }
 
                 if (delete)
                 {
@@ -515,8 +509,8 @@ namespace GVDEditor.Forms
         {
             if (listKolaje.SelectedIndex != -1)
             {
-                var kolaj = (Track) listKolaje.SelectedItem;
-                
+                var kolaj = (Track)listKolaje.SelectedItem;
+
                 if (kolaj == Track.None)
                 {
                     bKolajEdit.Enabled = false;
@@ -527,7 +521,7 @@ namespace GVDEditor.Forms
                     bKolajEdit.Enabled = true;
                     bKolajDelete.Enabled = true;
                 }
-                
+
                 tbKolajOznacenie.Text = kolaj.Key;
                 tbKolajFullName.Text = kolaj.FullName;
                 tbKolajSound.Text = kolaj.SoundName;
@@ -561,7 +555,7 @@ namespace GVDEditor.Forms
                 Key = tbKolajOznacenie.Text,
                 FullName = tbKolajFullName.Text,
                 SoundName = tbKolajSound.Text,
-                Nastupiste = (Platform) cbNastupistia.SelectedItem
+                Nastupiste = (Platform)cbNastupistia.SelectedItem
             };
 
             foreach (var test in Kolaje)
@@ -599,7 +593,7 @@ namespace GVDEditor.Forms
                 track.Key = tbKolajOznacenie.Text;
                 track.FullName = tbKolajFullName.Text;
                 track.SoundName = tbKolajSound.Text;
-                track.Nastupiste = (Platform) cbNastupistia.SelectedItem;
+                track.Nastupiste = (Platform)cbNastupistia.SelectedItem;
 
                 Kolaje.ResetBindings();
             }
@@ -609,16 +603,12 @@ namespace GVDEditor.Forms
         {
             if (listKolaje.SelectedIndex != -1)
             {
-                int index = listKolaje.SelectedIndex;
+                var index = listKolaje.SelectedIndex;
                 var kolaj = Kolaje[index];
                 foreach (var train in FMain.Trains)
-                {
                     if (train.Track == kolaj)
-                    {
                         train.Track = Track.None;
-                    }
-                }
-                
+
                 Kolaje.RemoveAt(index);
 
                 if (Kolaje.Count == 0)
@@ -667,9 +657,9 @@ namespace GVDEditor.Forms
         {
             if (listFyzTabule.SelectedIndex != -1)
             {
-                bool delete = true;
-                string where = " ";
-                int index = listFyzTabule.SelectedIndex;
+                var delete = true;
+                var where = " ";
+                var index = listFyzTabule.SelectedIndex;
                 var tp = TPhysicals[index];
 
                 foreach (var tl in TLogicals)
@@ -677,17 +667,17 @@ namespace GVDEditor.Forms
                     foreach (var trecord in tl.Records)
                     {
                         foreach (TablePosition position in trecord)
-                        {
                             if (position.TablePhysical == tp)
                             {
                                 delete = false;
                                 where += $"Logická tabuľa {tl.Name}, pozícia {position.Position}.";
                                 break;
                             }
-                        }
+
                         if (!delete)
                             break;
                     }
+
                     if (!delete)
                         break;
                 }
@@ -748,22 +738,20 @@ namespace GVDEditor.Forms
         {
             if (listLogTabule.SelectedIndex != -1)
             {
-                bool delete = true;
-                string where = " ";
-                int index = listLogTabule.SelectedIndex;
+                var delete = true;
+                var where = " ";
+                var index = listLogTabule.SelectedIndex;
                 var tlog = TLogicals[index];
-                
+
                 foreach (var tr in Kolaje)
                 {
                     foreach (var logical in tr.Tabule)
-                    {
                         if (logical == tlog)
                         {
-                            delete = false;
+                            delete = false; 
                             where += $"Koľaj {tr.Name}";
                             break;
                         }
-                    }
 
                     if (!delete)
                         break;
@@ -825,39 +813,33 @@ namespace GVDEditor.Forms
         {
             if (listKatTabule.SelectedIndex != -1)
             {
-                bool delete = true;
-                string where = " ";
-                int index = listKatTabule.SelectedIndex;
+                var delete = true;
+                var where = " ";
+                var index = listKatTabule.SelectedIndex;
                 var tcat = TCatalogs[index];
-                
+
                 foreach (var ph in TPhysicals)
-                {
                     if (ph.TableCatalog == tcat)
                     {
                         delete = false;
                         where += $"Fyzická tabuľa {ph.Name}";
                         break;
                     }
-                }
 
                 if (delete)
-                {
                     foreach (var tt in TTexts)
                     {
                         foreach (var realization in tt.Realizations)
-                        {
-                            if (realization.Catalog == tcat)
+                            if (realization.Table == tcat)
                             {
                                 delete = false;
                                 where += $"Text do tabule {tt.Name}, realizácia {realization.Item.Name}";
                                 break;
                             }
-                        }
 
                         if (!delete)
                             break;
                     }
-                }
 
                 if (delete)
                 {
@@ -884,10 +866,7 @@ namespace GVDEditor.Forms
             if (result == DialogResult.OK)
             {
                 TabTabs.Clear();
-                foreach (var doc in ettf.documents)
-                {
-                    TabTabs.Add(doc.TabTab);
-                }
+                foreach (var doc in ettf.documents) TabTabs.Add(doc.TabTab);
                 TabTabs.ResetBindings();
             }
 
@@ -898,9 +877,9 @@ namespace GVDEditor.Forms
         {
             if (listTabTabs.SelectedIndex != -1)
             {
-                bool delete = true;
-                string where = " ";
-                int index = listLogTabule.SelectedIndex;
+                var delete = true;
+                var where = " ";
+                var index = listLogTabule.SelectedIndex;
                 var tab = TabTabs[index];
 
                 foreach (var tc in TCatalogs)
@@ -931,10 +910,8 @@ namespace GVDEditor.Forms
                     TabTabs.RemoveAt(listTabTabs.SelectedIndex);
 
                     if (TabTabs.Count == 0)
-                    {
                         //bTabTabEdit.Enabled = false;
                         bTabTabDelete.Enabled = false;
-                    }
                 }
                 else
                 {
@@ -987,7 +964,7 @@ namespace GVDEditor.Forms
         {
             if (listFonts.SelectedIndex != -1)
             {
-                var tfont = (TableFont) listFonts.SelectedItem;
+                var tfont = (TableFont)listFonts.SelectedItem;
                 tbFontName.Text = tfont.Name;
                 nudFontID.Value = tfont.FontID;
                 tbFontFile.Text = tfont.FileName;
@@ -1014,7 +991,7 @@ namespace GVDEditor.Forms
             {
                 Name = tbFontName.Text,
                 FontID = decimal.ToInt32(nudFontID.Value),
-                Type = (TableFontType) cbFontType.SelectedItem,
+                Type = (TableFontType)cbFontType.SelectedItem,
                 Width = decimal.ToInt32(nudFontWidth.Value),
                 Size = decimal.ToInt32(nudFontSize.Value),
                 FileName = tbFontFile.Text,
@@ -1047,7 +1024,7 @@ namespace GVDEditor.Forms
             var tfont = TFonts[index];
             tfont.Name = tbFontName.Text;
             tfont.FontID = decimal.ToInt32(nudFontID.Value);
-            tfont.Type = (TableFontType) cbFontType.SelectedItem;
+            tfont.Type = (TableFontType)cbFontType.SelectedItem;
             tfont.Width = decimal.ToInt32(nudFontWidth.Value);
             tfont.Size = decimal.ToInt32(nudFontSize.Value);
             tfont.FileName = tbFontFile.Text;
@@ -1153,7 +1130,7 @@ namespace GVDEditor.Forms
 
             var name = tbStationName.Text;
 
-            var st = new Station(id.ToString(), name) {IsCustom = true};
+            var st = new Station(id.ToString(), name) { IsCustom = true };
             CustomStations.Add(st);
 
             bCStationEdit.Enabled = true;
@@ -1216,10 +1193,7 @@ namespace GVDEditor.Forms
 
         private void FLocalSettings_Load(object sender, EventArgs e)
         {
-            if (openTabTabEditor)
-            {
-                bOpenEditorTab.PerformClick();
-            }
+            if (openTabTabEditor) bOpenEditorTab.PerformClick();
         }
 
         private void listKatTabule_SelectedIndexChanged(object sender, EventArgs e)

@@ -8,7 +8,7 @@
         /// <summary>
         ///     Katalogova tabula, na ktorej sa dany typ textu zobrazuje
         /// </summary>
-        public TableCatalog Catalog { get; set; }
+        public TableCatalog Table { get; set; }
 
         /// <summary>
         ///     Konkretny item (polozka) na katalogovej tabuli, na ktorej sa dany typ textu zobrazuje

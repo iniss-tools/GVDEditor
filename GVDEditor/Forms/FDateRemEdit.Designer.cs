@@ -34,9 +34,9 @@ namespace GVDEditor.Forms
             this.bSave = new System.Windows.Forms.Button();
             this.bStorno = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbDateRemNew = new ExTextBox(this.components);
+            this.tbDateRemNew = new ExTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbDateRemOrig = new ExTextBox(this.components);
+            this.tbDateRemOrig = new ExTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
