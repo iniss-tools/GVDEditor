@@ -1,42 +1,32 @@
 ﻿namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Nástupište na stanici
+    ///     Nástupište na stanici.
     /// </summary>
-    public sealed record Platform
+    /// <param name="Key">kľúč nástupišťa</param>
+    /// <param name="FullName">celý názov nástupišťa</param>
+    /// <param name="SoundName">názov zvuku nástupišťa (bez prípony)</param>
+    public sealed record Platform(string Key, string FullName, string SoundName)
     {
         /// <summary>
-        ///     Predvolené nástupište
+        ///     Predvolené nástupište.
         /// </summary>
         public static readonly Platform None = new("N", "Nedefinované", "");
 
         /// <summary>
-        ///     Konstruktor
+        ///     Kľúč nástupišťa.
         /// </summary>
-        /// <param name="key">kľúč nástupišťa</param>
-        /// <param name="fullName">celý názov nástupišťa</param>
-        /// <param name="soundName">názov zvuku nástupišťa (bez prípony)</param>
-        public Platform(string key, string fullName, string soundName)
-        {
-            Key = key;
-            FullName = fullName;
-            SoundName = soundName;
-        }
+        public string Key { get; set; } = Key;
 
         /// <summary>
-        ///     Kľúč nástupišťa
+        ///     Celý názov nástupišťa.
         /// </summary>
-        public string Key { get; set; }
+        public string FullName { get; set; } = FullName;
 
         /// <summary>
-        ///     Celý názov nástupišťa
+        ///     Názov zvuku nástupišťa (bez prípony).
         /// </summary>
-        public string FullName { get; set; }
-
-        /// <summary>
-        ///     Názov zvuku nástupišťa (bez prípony)
-        /// </summary>
-        public string SoundName { get; set; }
+        public string SoundName { get; set; } = SoundName;
 
         /// <summary>
         ///     This
@@ -44,7 +34,7 @@
         public Platform This => this;
 
         /// <summary>
-        ///     Porovná nástupišťa (porovná iba ich kľúče)
+        ///     Porovná nástupišťa (porovná iba ich kľúče).
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>

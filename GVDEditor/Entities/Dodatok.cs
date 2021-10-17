@@ -14,10 +14,7 @@ namespace GVDEditor.Entities
         /// <summary>
         ///     Vytvori novu instanciu triedy <see cref="Dodatok"/>.
         /// </summary>
-        public Dodatok()
-        {
-            ChosenReports = new List<ChosenReportType>();
-        }
+        public Dodatok() => ChosenReports = new List<ChosenReportType>();
 
         /// <summary>
         ///     Vrati alebo nastavi fyzický zvuk dodatku.
@@ -98,8 +95,7 @@ namespace GVDEditor.Entities
         /// <param name="reportTypes">Dostupné typy reportov.</param>
         /// <param name="reportVariants">Dostupné varianty reportov.</param>
         /// <returns>binárne pole vo forme reťazca</returns>
-        public static string DodatokToNums(Dodatok dodatok, List<ReportType> reportTypes,
-            List<ReportVariant> reportVariants)
+        public static string DodatokToNums(Dodatok dodatok, IList<ReportType> reportTypes, IList<ReportVariant> reportVariants)
         {
             var nums = new StringBuilder();
 

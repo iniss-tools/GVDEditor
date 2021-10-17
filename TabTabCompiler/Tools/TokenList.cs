@@ -19,11 +19,9 @@ namespace TabTabCompiler.Tools
         public Token GetToken()
         {
             if (Position == Tokens.Count)
-            {
                 return null;
-            }
 
-            Token ret = Tokens[Position];
+            var ret = Tokens[Position];
             Position++;
             return ret;
         }
@@ -31,18 +29,15 @@ namespace TabTabCompiler.Tools
         public Token Peek()
         {
             if (Position == Tokens.Count)
-            {
                 return null;
-            }
 
             return Tokens[Position];
         }
+
         public Token PeekNext()
         {
             if (Position + 1 == Tokens.Count)
-            {
                 return null;
-            }
 
             return Tokens[Position + 1];
         }

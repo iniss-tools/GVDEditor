@@ -13,24 +13,24 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Novy grafikon
+    ///     Dialog - Novy grafikon.
     /// </summary>
     public partial class FNewGrafikon : Form
     {
         /// <summary>
-        ///     Novy grafikon
+        ///     Novy grafikon.
         /// </summary>
-        public GVDInfo GvdInfo;
+        public GVDInfo GvdInfo { get; private set; }
 
         /// <summary>
-        ///     Novy priecinok s grafikonom
+        ///     Novy priecinok s grafikonom.
         /// </summary>
-        public DirList NewDir;
+        public DirList NewDir { get; private set; }
 
-        private Color vybrataFarba = Color.White;
+        private Color selectedColor = Color.White;
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FNewGrafikon"/>.
         /// </summary>
         public FNewGrafikon()
         {
@@ -38,7 +38,8 @@ namespace GVDEditor.Forms
             FormUtils.SetFormFont(this);
             this.ApplyTheme();
 
-            if (!string.IsNullOrEmpty(GlobData.INISSDir)) tbDirIniss.Text = GlobData.INISSDir;
+            if (!string.IsNullOrEmpty(GlobData.INISSDir)) 
+                tbDirIniss.Text = GlobData.INISSDir;
 
             if (FMain.Stanice.Count == 0) rbNewObd.Enabled = false;
 
@@ -119,8 +120,8 @@ namespace GVDEditor.Forms
                 DirName = tbDirName.Text,
                 FullPath = GlobData.DATADir + Path.DirectorySeparatorChar + tbDirName.Text,
                 TablePort = decimal.ToInt32(nudTabPort.Value),
-                HlaseniePort = decimal.ToInt32(nudHlaseniePort.Value),
-                Farba = vybrataFarba
+                ReportPort = decimal.ToInt32(nudHlaseniePort.Value),
+                BackColor = selectedColor
             };
 
             GvdInfo = gvd;
@@ -226,8 +227,8 @@ namespace GVDEditor.Forms
             var result = colorDialogFarba.ShowDialog();
             if (result == DialogResult.OK)
             {
-                vybrataFarba = colorDialogFarba.Color;
-                pbColor.BackColor = vybrataFarba;
+                selectedColor = colorDialogFarba.Color;
+                pbColor.BackColor = selectedColor;
             }
         }
 

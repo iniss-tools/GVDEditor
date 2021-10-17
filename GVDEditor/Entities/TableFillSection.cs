@@ -3,7 +3,7 @@
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Urcuje obsah sekcie na katalogovej tabuli
+    ///     Urcuje obsah sekcie na katalogovej tabuli.
     /// </summary>
     public sealed class TableFillSection : Enumeration<TableFillSection>
     {
@@ -12,12 +12,12 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Odkaz na seba, pre potreby DataSource
+        ///     Odkaz na seba, pre potreby DataSource.
         /// </summary>
         public TableFillSection This => this;
 
         /// <summary>
-        ///     Konvertuje ID typu obsahu sekcie na objekt
+        ///     Konvertuje ID typu obsahu sekcie na objekt.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

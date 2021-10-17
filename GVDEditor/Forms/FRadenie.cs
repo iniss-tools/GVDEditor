@@ -13,7 +13,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Radenie vlaku
+    ///     Dialog - Radenie vlaku.
     /// </summary>
     public partial class FRadenie : Form
     {
@@ -21,16 +21,16 @@ namespace GVDEditor.Forms
         private readonly BindingList<FyzZvuk> SelectedSounds = new();
 
         /// <summary>
-        ///     Vybrane zvuky reprezentujuce radenie
+        ///     Vybrane zvuky reprezentujuce radenie.
         /// </summary>
         public List<FyzZvuk> SelSounds;
 
         private BindingList<FyzZvuk> SoundInDir = new();
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FRadenie"/>.
         /// </summary>
-        /// <param name="sounds"></param>
+        /// <param name="sounds">Zoznam fyzickych zvukov reprezentujucich radenie vlaku.</param>
         public FRadenie(List<FyzZvuk> sounds)
         {
             InitializeComponent();
@@ -60,14 +60,10 @@ namespace GVDEditor.Forms
         private void bSave_Click(object sender, EventArgs e)
         {
             SelSounds = SelectedSounds.ToList();
-
             DialogResult = DialogResult.OK;
         }
 
-        private void bStorno_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
+        private void bStorno_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
 
         private void cbLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -110,22 +106,26 @@ namespace GVDEditor.Forms
 
         private void listAllSounds_DoubleClick(object sender, EventArgs e)
         {
-            if (listAllSounds.SelectedIndex != -1) SelectedSounds.Add(SoundInDir[listAllSounds.SelectedIndex]);
+            if (listAllSounds.SelectedIndex != -1) 
+                SelectedSounds.Add(SoundInDir[listAllSounds.SelectedIndex]);
         }
 
         private void listRadenie_DoubleClick(object sender, EventArgs e)
         {
-            if (listRadenie.SelectedIndex != -1) SelectedSounds.RemoveAt(listRadenie.SelectedIndex);
+            if (listRadenie.SelectedIndex != -1) 
+                SelectedSounds.RemoveAt(listRadenie.SelectedIndex);
         }
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-            if (listAllSounds.SelectedIndex != -1) SelectedSounds.Add(SoundInDir[listAllSounds.SelectedIndex]);
+            if (listAllSounds.SelectedIndex != -1) 
+                SelectedSounds.Add(SoundInDir[listAllSounds.SelectedIndex]);
         }
 
         private void bDelete_Click(object sender, EventArgs e)
         {
-            if (listRadenie.SelectedIndex != -1) SelectedSounds.RemoveAt(listRadenie.SelectedIndex);
+            if (listRadenie.SelectedIndex != -1) 
+                SelectedSounds.RemoveAt(listRadenie.SelectedIndex);
         }
 
         private void bSkor_Click(object sender, EventArgs e)
@@ -174,10 +174,7 @@ namespace GVDEditor.Forms
             listRadenie.DoDragDrop(listRadenie.SelectedItem, DragDropEffects.Move);
         }
 
-        private void listRadenie_DragOver(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Move;
-        }
+        private void listRadenie_DragOver(object sender, DragEventArgs e) => e.Effect = DragDropEffects.Move;
 
         private void listRadenie_DragDrop(object sender, DragEventArgs e)
         {
@@ -190,15 +187,9 @@ namespace GVDEditor.Forms
             listRadenie.SelectedItem = data;
         }
 
-        private void listAllSounds_Format(object sender, ListControlConvertEventArgs e)
-        {
-            Format(e);
-        }
+        private void listAllSounds_Format(object sender, ListControlConvertEventArgs e) => Format(e);
 
-        private void listRadenie_Format(object sender, ListControlConvertEventArgs e)
-        {
-            Format(e);
-        }
+        private void listRadenie_Format(object sender, ListControlConvertEventArgs e) => Format(e);
 
         private static void Format(ListControlConvertEventArgs e)
         {

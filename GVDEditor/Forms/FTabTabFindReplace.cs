@@ -5,7 +5,7 @@ using ScintillaNET;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog vyhladavania textu v editore TabTab
+    ///     Dialog vyhladavania textu v editore TabTab.
     /// </summary>
     //TODO dorobit FTabTabFindReplace dialog
     public partial class FTabTabFindReplace : Form
@@ -19,7 +19,7 @@ namespace GVDEditor.Forms
         public event EventHandler<SearchingEventArgs> Searching;
 
         /// <summary>
-        ///     Konstuktor
+        ///     Vytvori novy formular typu <see cref="FTabTabFindReplace"/>.
         /// </summary>
         public FTabTabFindReplace(Scintilla scintilla)
         {
@@ -44,10 +44,7 @@ namespace GVDEditor.Forms
             //startPos
         }
 
-        private void bCount_Click(object sender, EventArgs e)
-        {
-            SetParams();
-        }
+        private void bCount_Click(object sender, EventArgs e) => SetParams();
 
         private void SetParams()
         {
@@ -74,10 +71,7 @@ namespace GVDEditor.Forms
             }
         }
 
-        private void bFindClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void bFindClose_Click(object sender, EventArgs e) => Close();
 
         private void cboxTransparency_CheckedChanged(object sender, EventArgs e)
         {
@@ -132,10 +126,7 @@ namespace GVDEditor.Forms
             }
         }
 
-        private void OnSearching(SearchingEventArgs e)
-        {
-            Searching?.Invoke(this, e);
-        }
+        private void OnSearching(SearchingEventArgs e) => Searching?.Invoke(this, e);
     }
 
     /// <summary>

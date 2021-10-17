@@ -258,6 +258,7 @@ namespace GVDEditor.Forms
             exComboBoxStyle4.ButtonRenderFirst = null;
             exComboBoxStyle4.ForeColor = null;
             this.cbDateRemLocate.StyleSelected = exComboBoxStyle4;
+            this.cbDateRemLocate.UseDarkScrollBar = false;
             // 
             // cbAppLanguage
             // 
@@ -301,6 +302,7 @@ namespace GVDEditor.Forms
             exComboBoxStyle8.ButtonRenderFirst = null;
             exComboBoxStyle8.ForeColor = null;
             this.cbAppLanguage.StyleSelected = exComboBoxStyle8;
+            this.cbAppLanguage.UseDarkScrollBar = false;
             this.cbAppLanguage.SelectedIndexChanged += new System.EventHandler(this.cbAppLanguage_SelectedIndexChanged);
             // 
             // label2
@@ -371,6 +373,7 @@ namespace GVDEditor.Forms
             exComboBoxStyle12.ButtonRenderFirst = null;
             exComboBoxStyle12.ForeColor = null;
             this.cbDebugModeGUI.StyleSelected = exComboBoxStyle12;
+            this.cbDebugModeGUI.UseDarkScrollBar = false;
             this.cbDebugModeGUI.SelectedIndexChanged += new System.EventHandler(this.cbDebugModeGUI_SelectedIndexChanged);
             // 
             // cbLoggingInfo
@@ -674,6 +677,7 @@ namespace GVDEditor.Forms
             exComboBoxStyle16.ButtonRenderFirst = null;
             exComboBoxStyle16.ForeColor = null;
             this.cbColorSettings.StyleSelected = exComboBoxStyle16;
+            this.cbColorSettings.UseDarkScrollBar = false;
             this.cbColorSettings.SelectedIndexChanged += new System.EventHandler(this.cbColorSettings_SelectedIndexChanged);
             // 
             // bRemoveStyle
@@ -740,6 +744,7 @@ namespace GVDEditor.Forms
             exComboBoxStyle20.ButtonRenderFirst = null;
             exComboBoxStyle20.ForeColor = null;
             this.cbStyles.StyleSelected = exComboBoxStyle20;
+            this.cbStyles.UseDarkScrollBar = false;
             this.cbStyles.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbStyles_DrawItem);
             this.cbStyles.SelectedIndexChanged += new System.EventHandler(this.cbStyles_SelectedIndexChanged);
             // 
@@ -801,6 +806,7 @@ namespace GVDEditor.Forms
             exComboBoxStyle24.ButtonRenderFirst = null;
             exComboBoxStyle24.ForeColor = null;
             this.cbFontSize.StyleSelected = exComboBoxStyle24;
+            this.cbFontSize.UseDarkScrollBar = false;
             this.cbFontSize.SelectedIndexChanged += new System.EventHandler(this.cbFontSize_SelectedIndexChanged);
             this.cbFontSize.TextChanged += new System.EventHandler(this.cbFontSize_TextChanged);
             this.cbFontSize.Validating += new System.ComponentModel.CancelEventHandler(this.cbFontSize_Validating);
@@ -907,6 +913,7 @@ namespace GVDEditor.Forms
             exComboBoxStyle28.ButtonRenderFirst = null;
             exComboBoxStyle28.ForeColor = null;
             this.cbFont.StyleSelected = exComboBoxStyle28;
+            this.cbFont.UseDarkScrollBar = false;
             this.cbFont.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbFont_DrawItem);
             this.cbFont.SelectedIndexChanged += new System.EventHandler(this.cbFont_SelectedIndexChanged);
             // 
@@ -1257,6 +1264,7 @@ namespace GVDEditor.Forms
             exComboBoxStyle32.ButtonRenderFirst = null;
             exComboBoxStyle32.ForeColor = null;
             this.cbArgRegister.StyleSelected = exComboBoxStyle32;
+            this.cbArgRegister.UseDarkScrollBar = false;
             this.cbArgRegister.SelectedIndexChanged += new System.EventHandler(this.cbArgRegister_SelectedIndexChanged);
             this.cbArgRegister.TextUpdate += new System.EventHandler(this.cbArgRegister_TextUpdate);
             // 
@@ -1355,15 +1363,15 @@ namespace GVDEditor.Forms
             this.Controls.Add(this.treeMenu);
             this.Controls.Add(this.bStorno);
             this.Controls.Add(this.bSave);
+            this.Controls.Add(this.pFontsColors);
+            this.Controls.Add(this.pLogging);
+            this.Controls.Add(this.pStartup);
+            this.Controls.Add(this.pObecne);
             this.Controls.Add(this.pPlaying);
             this.Controls.Add(this.pLocalization);
             this.Controls.Add(this.pShortcuts);
             this.Controls.Add(this.pDesktop);
             this.Controls.Add(this.pEnvironment);
-            this.Controls.Add(this.pFontsColors);
-            this.Controls.Add(this.pLogging);
-            this.Controls.Add(this.pStartup);
-            this.Controls.Add(this.pObecne);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.HelpButton = true;
             this.MaximizeBox = false;

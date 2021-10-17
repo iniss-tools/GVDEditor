@@ -3,7 +3,7 @@
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Definuje sposob zadavania informacii do sekcie katalogovej tabule
+    ///     Definuje sposob zadavania informacii do sekcie katalogovej tabule.
     /// </summary>
     public sealed class TableDivType : Enumeration<TableDivType>
     {

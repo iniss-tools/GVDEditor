@@ -4,7 +4,7 @@ using ScintillaNET;
 namespace GVDEditor.Tools
 {
     /// <summary>
-    ///     Zabezpečuje štýly formátovanie textu v prvku Scintilla vo FTabTab form
+    ///     Zabezpečuje štýly formátovanie textu v prvku Scintilla vo FTabTab form.
     /// </summary>
     public class TabTabLexer
     {
@@ -21,13 +21,17 @@ namespace GVDEditor.Tools
         private readonly HashSet<string> operators;
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novu instanciu triedy <see cref="TabTabLexer"/>.
         /// </summary>
         /// <param name="functions"></param>
         /// <param name="events"></param>
         /// <param name="constans"></param>
         /// <param name="operators"></param>
-        public TabTabLexer(IEnumerable<string> functions, IEnumerable<string> events, IEnumerable<string> constans, IEnumerable<string> operators)
+        public TabTabLexer(
+            IEnumerable<string> functions, 
+            IEnumerable<string> events, 
+            IEnumerable<string> constans, 
+            IEnumerable<string> operators)
         {
             this.functions = new HashSet<string>(functions);
             this.events = new HashSet<string>(events);
@@ -36,11 +40,11 @@ namespace GVDEditor.Tools
         }
 
         /// <summary>
-        ///     Nastavuje štýl pre prvok Scintilla RichTextBox v FTabTab
+        ///     Nastavuje štýl pre prvok Scintilla RichTextBox v FTabTab.
         /// </summary>
-        /// <param name="scintilla"></param>
-        /// <param name="startPos"></param>
-        /// <param name="endPos"></param>
+        /// <param name="scintilla">Ovladaci prvok <see cref="Scintilla"/>.</param>
+        /// <param name="startPos">Pociatocna pozicia stylovania (vratane).</param>
+        /// <param name="endPos">Koncova pozicia stylovania (okrem).</param>
         public void Style(Scintilla scintilla, int startPos, int endPos)
         {
             // Back up to the line start
@@ -193,62 +197,62 @@ namespace GVDEditor.Tools
     }
 
     /// <summary>
-    ///     Typy štýlov pre TabTab
+    ///     Typy štýlov pre TabTab.
     /// </summary>
     public static class TabTabStyle
     {
         /// <summary>
-        ///     Bežný text
+        ///     Bežný text.
         /// </summary>
         public const int Default = 0;
 
         /// <summary>
-        ///     Funkcia
+        ///     Funkcia.
         /// </summary>
         public const int Function = 1;
 
         /// <summary>
-        ///     Identifikátor
+        ///     Identifikátor.
         /// </summary>
         public const int Identifier = 2;
 
         /// <summary>
-        ///     Číslo
+        ///     Číslo.
         /// </summary>
         public const int Number = 3;
 
         /// <summary>
-        ///     Reťazec
+        ///     Reťazec.
         /// </summary>
         public const int String = 4;
 
         /// <summary>
-        ///     Komentár
+        ///     Komentár.
         /// </summary>
         public const int Comment = 5;
 
         /// <summary>
-        ///     Premenná
+        ///     Premenná.
         /// </summary>
         public const int Var = 6;
 
         /// <summary>
-        ///     Udalosť
+        ///     Udalosť.
         /// </summary>
         public const int Event = 7;
 
         /// <summary>
-        ///     Pokračovanie do nového riadku
+        ///     Pokračovanie do nového riadku.
         /// </summary>
         public const int OnNewLine = 8;
 
         /// <summary>
-        ///     Operátor
+        ///     Operátor.
         /// </summary>
         public const int Operator = 9;
 
         /// <summary>
-        ///     Konštanta
+        ///     Konštanta.
         /// </summary>
         public const int Constant = 10;
     }

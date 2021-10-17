@@ -16,44 +16,41 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Typ pouzitia logickej tabule
+        ///     Typ pouzitia logickej tabule.
         /// </summary>
         public TableViewType ViewType { get; set; }
 
         /// <summary>
-        ///     Dalsie data ohladom pouzitia tejto logickej tabule
+        ///     Dalsie data ohladom pouzitia tejto logickej tabule.
         /// </summary>
         public string TypeViewFlags { get; set; }
 
         /// <summary>
-        ///     Zaznamy logickej tabule
+        ///     Zaznamy logickej tabule.
         /// </summary>
         public List<TableRecord> Records { get; set; }
 
         /// <summary>
-        ///     Odkaz na seba, pouzivane pre DataSource
+        ///     Odkaz na seba, pouzivane pre DataSource.
         /// </summary>
         public TableLogical This => this;
 
         /// <summary>
-        ///     Nazov logickej tatule
+        ///     Nazov logickej tatule.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        ///     Kluc logickej tatule
+        ///     Kluc logickej tatule.
         /// </summary>
         public string Key { get; set; }
 
         /// <summary>
-        ///     Textovy komentar ku tabuli
+        ///     Textovy komentar ku tabuli.
         /// </summary>
         public string Comment { get; set; }
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
     }
 }

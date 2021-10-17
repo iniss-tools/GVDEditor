@@ -9,7 +9,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Tools
 {
     /// <summary>
-    ///     Trieda spracujuca text exportovany z programu ELIS do objektov
+    ///     Trieda spracujuca text exportovany z programu ELIS do objektov.
     /// </summary>
     public class ELISParser
     {
@@ -29,57 +29,57 @@ namespace GVDEditor.Tools
         }
 
         /// <summary>
-        ///     Cesta k vygenerovanemu ELIS suboru
+        ///     Cesta k vygenerovanemu ELIS suboru.
         /// </summary>
         public string Path { get; }
 
         /// <summary>
-        ///     Zoznam uz definovanych vlakov
+        ///     Zoznam uz definovanych vlakov.
         /// </summary>
         public List<Train> DefinedTrains { get; }
 
         /// <summary>
-        ///     Vsetky typy vlakov definovane v stanici
+        ///     Vsetky typy vlakov definovane v stanici.
         /// </summary>
         public List<TrainType> TrainTypes { get; }
 
         /// <summary>
-        ///     Zoznam vsetkych definovanych dopravcov
+        ///     Zoznam vsetkych definovanych dopravcov.
         /// </summary>
         public List<Operator> Operators { get; }
 
         /// <summary>
-        ///     Informacie o aktualnom grafikone
+        ///     Informacie o aktualnom grafikone.
         /// </summary>
         public GVDInfo GVD { get; }
 
         /// <summary>
-        ///     kolaj, ktora bude priradena kazdemu vlaku
+        ///     kolaj, ktora bude priradena kazdemu vlaku.
         /// </summary>
         public Track DefaultTrack { get; }
 
         /// <summary>
-        ///     Ci sa maju preskocit vlaky, ktore su prechadzajuce
+        ///     Ci sa maju preskocit vlaky, ktore su prechadzajuce.
         /// </summary>
         public bool OmitPassingTrains { get; set; }
 
         /// <summary>
-        ///     Ci su v subore definovani dopravcovia ku kazdemu vlaku
+        ///     Ci su v subore definovani dopravcovia ku kazdemu vlaku.
         /// </summary>
         public bool DefinedOperators { get; set; } = true;
 
         /// <summary>
-        ///     Ci su v subore definovane datumove obmedzenia ku kazdemu vlaku
+        ///     Ci su v subore definovane datumove obmedzenia ku kazdemu vlaku.
         /// </summary>
         public bool DefinedDateLimits { get; set; } = true;
 
         /// <summary>
-        ///     Ci sa maju vlaky (ich varianty) zoradit a prepocitat
+        ///     Ci sa maju vlaky (ich varianty) zoradit a prepocitat.
         /// </summary>
         public bool ReorderTrains { get; set; }
 
         /// <summary>
-        ///     Ci sa ma pouzit novy format formatovania
+        ///     Ci sa ma pouzit novy format formatovania.
         /// </summary>
         public bool NewFormat { get; set; }
 
@@ -214,7 +214,7 @@ namespace GVDEditor.Tools
                         }
 
                         var stname = SplitRow(rowsts[0])[0]; //bez znakov O, !, ... oddelene 2 medzerami
-                        station = Station.GetStationFromName(stname);
+                        station = Station.GetFromName(stname);
                         if (station == null)
                         {
                             invalidStations.Add($"{stname} ({riadok})");
@@ -282,7 +282,7 @@ namespace GVDEditor.Tools
                         {
                             lineOp = lineOp.Trim();
                             var sep = lineOp.Split(';');
-                            train.Operator = Operator.GetOperatorFromName(Operators, sep[0]) ?? Operator.None;
+                            train.Operator = Operator.GetFromName(Operators, sep[0]) ?? Operator.None;
                         }
 
                         if (DefinedDateLimits)
@@ -437,7 +437,7 @@ namespace GVDEditor.Tools
                             break;
                         }
 
-                        station = Station.GetStationFromName(rowsts[0]);
+                        station = Station.GetFromName(rowsts[0]);
                         if (station == null)
                         {
                             invalidStations.Add($"{rowsts[0]} ({riadok})");
@@ -505,7 +505,7 @@ namespace GVDEditor.Tools
                         {
                             lineOp = lineOp.Substring(2);
                             var sep = lineOp.Split(';');
-                            train.Operator = Operator.GetOperatorFromName(Operators, sep[0]) ?? Operator.None;
+                            train.Operator = Operator.GetFromName(Operators, sep[0]) ?? Operator.None;
                         }
 
                         if (!DefinedDateLimits)

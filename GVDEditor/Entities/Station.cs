@@ -53,10 +53,7 @@ namespace GVDEditor.Entities
         public bool IsCustom { get; set; }
 
         /// <inheritdoc />
-        public int CompareTo(object obj)
-        {
-            return string.Compare(Name, obj.ToString(), StringComparison.Ordinal);
-        }
+        public int CompareTo(object obj) => string.Compare(Name, obj.ToString(), StringComparison.Ordinal);
 
         /// <summary>
         ///     Vráti stanicu z <see cref="GlobData.Stations" /> alebo <see cref="GlobData.CustomStations" /> podľa identifikátora
@@ -64,7 +61,7 @@ namespace GVDEditor.Entities
         /// </summary>
         /// <param name="id">identifikátor stanice</param>
         /// <returns><see cref="Station" /> alebo <see langword="null" /> ak nenašlo žiadnu zhodu</returns>
-        public static Station GetStationFromID(string id)
+        public static Station GetFromID(string id)
         {
             foreach (var st in GlobData.Stations.Where(st => st.ID == id)) return new Station(st.ID, st.Name);
 
@@ -79,7 +76,7 @@ namespace GVDEditor.Entities
         /// </summary>
         /// <param name="name">názov stanice</param>
         /// <returns><see cref="Station" /> alebo <see langword="null" /> ak nenašlo žiadnu zhodu</returns>
-        public static Station GetStationFromName(string name)
+        public static Station GetFromName(string name)
         {
             name = name.Replace(".", "").Replace("-", "").ToLower();
             name = Utils.RemoveDiacritics(name);
@@ -102,9 +99,9 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Vráti stanice dostupné zo zvukovej banky (prehľadáva sa priečinok R1)
+        ///     Vráti stanice dostupné zo zvukovej banky (prehľadáva sa priečinok R1).
         /// </summary>
-        /// <returns>list staníc</returns>
+        /// <returns>list staníc.</returns>
         public static List<Station> GetStations()
         {
             var list = new List<Station>();
@@ -117,10 +114,10 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Kopíruje trasu vlaku
+        ///     Kopíruje trasu vlaku.
         /// </summary>
-        /// <param name="stations">list staníc</param>
-        /// <returns>skopírovaná trasa vlaku</returns>
+        /// <param name="stations">list staníc.</param>
+        /// <returns>skopírovaná trasa vlaku.</returns>
         public static List<Station> CopyRoute(IEnumerable<Station> stations)
         {
             var result = new List<Station>();
@@ -145,7 +142,7 @@ namespace GVDEditor.Entities
             var langsArrayS = stations.Split(',');
 
             foreach (var s in langsArrayS)
-                stationsList.Add(GetStationFromID(s));
+                stationsList.Add(GetFromID(s));
 
             return stationsList;
         }
@@ -165,7 +162,7 @@ namespace GVDEditor.Entities
 
             foreach (var s in stationsStringArr)
             {
-                var station = GetStationFromName(s);
+                var station = GetFromName(s);
 
                 if (station == null) throw new ArgumentException($"Stanica \"{s}\" neexistuje.");
 
@@ -217,10 +214,7 @@ namespace GVDEditor.Entities
         }
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
 
         /// <inheritdoc />
         public override int GetHashCode()
@@ -249,19 +243,13 @@ namespace GVDEditor.Entities
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator ==(Station left, Station right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(Station left, Station right) => Equals(left, right);
 
         /// <summary>
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator !=(Station left, Station right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(Station left, Station right) => !Equals(left, right);
     }
 }

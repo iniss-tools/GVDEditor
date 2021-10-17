@@ -30,7 +30,6 @@ namespace GVDEditor.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FInfoApp));
             this.picIcon = new System.Windows.Forms.PictureBox();
             this.lAppName = new System.Windows.Forms.Label();
@@ -124,7 +123,7 @@ namespace GVDEditor.Forms
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
-            // FInformation
+            // FInfoApp
             // 
             this.AcceptButton = this.bOK;
             resources.ApplyResources(this, "$this");

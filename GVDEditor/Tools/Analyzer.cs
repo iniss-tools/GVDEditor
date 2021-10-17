@@ -9,17 +9,17 @@ namespace GVDEditor.Tools
     internal enum FixType
     {
         /// <summary>
-        ///     Program problem opravi uplne sam automaticky
+        ///     Program problem opravi uplne sam automaticky.
         /// </summary>
         AUTO,
 
         /// <summary>
-        ///     Pouzivatel musi vybrat jednu z ponukanych moznosti, aby chybu opravil
+        ///     Pouzivatel musi vybrat jednu z ponukanych moznosti, aby chybu opravil.
         /// </summary>
         SEMI_AUTO,
 
         /// <summary>
-        ///     Pouzivatel musi chybu opravit sam a program mu len ukaze, kde ma chybu opravit
+        ///     Pouzivatel musi chybu opravit sam a program mu len ukaze, kde ma chybu opravit.
         /// </summary>
         MANUAL
     }
@@ -32,7 +32,7 @@ namespace GVDEditor.Tools
         HINT,
 
         /// <summary>
-        ///     Grafikon nemusi fungovat uplne spravne, ale je spustitelny
+        ///     Grafikon nemusi fungovat uplne spravne, ale je spustitelny.
         /// </summary>
         WARNING,
 
@@ -45,17 +45,17 @@ namespace GVDEditor.Tools
     internal enum FixResult
     {
         /// <summary>
-        ///     Ak bola chyba opravena
+        ///     Ak bola chyba opravena.
         /// </summary>
         DONE,
 
         /// <summary>
-        ///     Ak pouzivatel chybu neopravil
+        ///     Ak pouzivatel chybu neopravil.
         /// </summary>
         NOT_SOLVED,
 
         /// <summary>
-        ///     Ak pocas opravy doslo k chybe
+        ///     Ak pocas opravy doslo k chybe.
         /// </summary>
         ERROR
     }
@@ -74,7 +74,7 @@ namespace GVDEditor.Tools
     }
 
     /// <summary>
-    ///     Analyzuje a opravuje problemy najdene v grafikone
+    ///     Analyzuje a opravuje problemy najdene v grafikone.
     /// </summary>
     internal static class Analyzer
     {

@@ -25,11 +25,11 @@ namespace GVDEditor.Entities
         /// <summary>
         ///     Vrati alebo nastavi port pre zabezpečenie vzdialeného hlásenia.
         /// </summary>
-        public int? HlaseniePort { get; set; }
+        public int? ReportPort { get; set; }
 
         /// <summary>
         ///     Vrati alebo nastavi farbu zobrazujúcu v INISS ako farba pozadia vlaku na pracovnej ploche ako odlíšenie od vlakov iných staníc.
         /// </summary>
-        public Color? Farba { get; set; }
+        public Color? BackColor { get; set; }
     }
 }

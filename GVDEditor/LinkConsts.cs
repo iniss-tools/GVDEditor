@@ -18,6 +18,7 @@
         public const string LINK_NEW_GVD = "http://iniss.6f.sk/pridanie-noveho-grafikonu/";
         public const string LINK_INFO_APP = "http://iniss.6f.sk/";
         public const string LINK_DOWNLOAD = "http://iniss.6f.sk/gvdeditor/gvdeditor-download/";
+        public const string LINK_NEWS = "http://iniss.6f.sk/gvdeditor/novinky/";
         public const string EMAIL = "iniss.sk@gmail.com";
     }
 }

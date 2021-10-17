@@ -119,14 +119,14 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="picIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 14</value>
+    <value>25, 13</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="picIcon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="picIcon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 89</value>
+    <value>90, 90</value>
   </data>
   <data name="picIcon.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -154,7 +154,7 @@
     <value>139, 25</value>
   </data>
   <data name="lAppName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 17</value>
+    <value>69, 16</value>
   </data>
   <data name="lAppName.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -181,7 +181,7 @@
     <value>139, 58</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 17</value>
+    <value>48, 16</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -208,7 +208,7 @@
     <value>197, 58</value>
   </data>
   <data name="lAppVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 17</value>
+    <value>44, 16</value>
   </data>
   <data name="lAppVersion.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -275,7 +275,7 @@ Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnos
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -320,7 +320,7 @@ Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnos
     <value>69, 43</value>
   </data>
   <data name="linkEmail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 17</value>
+    <value>40, 16</value>
   </data>
   <data name="linkEmail.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -347,7 +347,7 @@ Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnos
     <value>69, 18</value>
   </data>
   <data name="linkWeb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 17</value>
+    <value>89, 16</value>
   </data>
   <data name="linkWeb.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -374,7 +374,7 @@ Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnos
     <value>15, 43</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 17</value>
+    <value>48, 16</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -401,7 +401,7 @@ Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnos
     <value>15, 18</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 17</value>
+    <value>39, 16</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -422,7 +422,7 @@ Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnos
     <value>3</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 225</value>
+    <value>15, 225</value>
   </data>
   <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -443,7 +443,7 @@ Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnos
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
     <value>$this</value>

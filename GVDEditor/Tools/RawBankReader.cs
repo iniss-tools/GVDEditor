@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using GVDEditor.Annotations;
 using GVDEditor.Entities;
+using ToolsCore;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Tools
@@ -12,9 +13,9 @@ namespace GVDEditor.Tools
         /// <summary>
         ///     Precita a vrati zoznam fyzickych zvukov zo zvukovej banky.
         /// </summary>
-        /// <param name="pathToBank">cesta k zvukovej banke</param>
-        /// <param name="language">jazyk, z ktoreho sa maju precitat zvuky</param>
-        /// <returns>zoznam fyzickych zvukov zo zvukovej banky</returns>
+        /// <param name="pathToBank">Cesta k zvukovej banke.</param>
+        /// <param name="language">Jazyk, z ktoreho sa maju precitat zvuky.</param>
+        /// <returns>zoznam fyzickych zvukov zo zvukovej banky.</returns>
         public static List<FyzZvuk> ReadFyzZvukFile([NotNull] string pathToBank, [NotNull] Language language)
         {
             if (string.IsNullOrEmpty(pathToBank))
@@ -30,7 +31,7 @@ namespace GVDEditor.Tools
 
             if (File.Exists(file))
             {
-                using var reader = new BinaryReader(File.Open(file, FileMode.Open), GlobData.ANSIEncoding);
+                using var reader = new BinaryReader(File.Open(file, FileMode.Open), Encodings.Win1250);
                 var countDirs = reader.ReadInt32();
                 var sounds = new List<FyzZvuk>();
 
@@ -85,10 +86,10 @@ namespace GVDEditor.Tools
         }
 
         /// <summary>
-        ///     Precita data o zvukovej banke a vrati zoznam jazykov
+        ///     Precita data o zvukovej banke a vrati zoznam jazykov.
         /// </summary>
-        /// <param name="pathToBank">cesta k zvukovej banke</param>
-        /// <param name="maxLangs">maximalny pocet jazkov, ktore sa mozu nachadzat v globalnych a lokalnych CATEGORI.TXT</param>
+        /// <param name="pathToBank">Cesta k zvukovej banke.</param>
+        /// <param name="maxLangs">Maximalny pocet jazkov, ktore sa mozu nachadzat v globalnych a lokalnych CATEGORI.TXT.</param>
         /// <returns></returns>
         public static List<Language> ReadFyzBankFile([NotNull] string pathToBank, out int maxLangs)
         {
@@ -99,7 +100,7 @@ namespace GVDEditor.Tools
 
             if (File.Exists(file))
             {
-                using var reader = new BinaryReader(File.Open(file, FileMode.Open), GlobData.ANSIEncoding);
+                using var reader = new BinaryReader(File.Open(file, FileMode.Open), Encodings.Win1250);
                 var countLangs = reader.ReadInt32();
                 maxLangs = countLangs;
                 var languages = new List<Language>(countLangs);

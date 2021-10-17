@@ -7,12 +7,12 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Informacie o aplikacii
+    ///     Dialog - Informacie o aplikacii.
     /// </summary>
     public partial class FInfoApp : Form
     {
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FInfoApp"/>.
         /// </summary>
         public FInfoApp()
         {

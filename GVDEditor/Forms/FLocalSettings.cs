@@ -13,84 +13,84 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Lokalne nastavenia konkretneho GVD
+    ///     Dialog - Lokalne nastavenia konkretneho GVD.
     /// </summary>
     public partial class FLocalSettings : Form
     {
         /// <summary>
-        ///     Fyzicke tabule v GVD
+        ///     Fyzicke tabule v GVD.
         /// </summary>
         public static BindingList<TablePhysical> TPhysicals;
 
         /// <summary>
-        ///     Katalogove tabule v GVD
+        ///     Katalogove tabule v GVD.
         /// </summary>
         public static BindingList<TableCatalog> TCatalogs;
 
         /// <summary>
-        ///     Logicke tabule v GVD
+        ///     Logicke tabule v GVD.
         /// </summary>
         public static BindingList<TableLogical> TLogicals;
 
         /// <summary>
-        ///     TabTabs v GVD
+        ///     TabTabs v GVD.
         /// </summary>
         public static BindingList<TableTabTab> TabTabs;
 
         /// <summary>
-        ///     Texty do tabul
+        ///     Texty do tabul.
         /// </summary>
         public static BindingList<TableText> TTexts;
 
         /// <summary>
-        ///     Fonty do tabul
+        ///     Pisma do tabul.
         /// </summary>
         public static BindingList<TableFont> TFonts;
 
         /// <summary>
-        ///     Typy fontov
+        ///     Typy fontov.
         /// </summary>
         public static readonly BindingList<TableFontType> TFontsTypes = new(TableFontType.GetValues());
 
         /// <summary>
-        ///     Stanice dostupne zo suboru STANICE.TXT
+        ///     Stanice dostupne zo suboru STANICE.TXT.
         /// </summary>
         public readonly BindingList<Station> CustomStations;
 
         private readonly Color defaultBorderColor;
 
         /// <summary>
-        ///     Dopravcovia v GVD
+        ///     Dopravcovia v GVD.
         /// </summary>
         public readonly BindingList<Operator> Dopravcovia;
 
         /// <summary>
-        ///     Kolaje v GVD
+        ///     Kolaje v GVD.
         /// </summary>
         public readonly BindingList<Track> Kolaje;
 
         /// <summary>
-        ///     Nastupistia v GVD
+        ///     Nastupistia v GVD.
         /// </summary>
         public readonly BindingList<Platform> Nastupistia;
 
         private readonly bool openTabTabEditor;
 
         /// <summary>
-        ///     Tento priecinok
+        ///     Tento priecinok.
         /// </summary>
         public readonly GVDDirectory ThisDir;
 
         /// <summary>
-        ///     Priečinok s písmami pre tabule
+        ///     Priečinok s písmami pre tabule.
         /// </summary>
         public string FontDir;
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FLocalSettings"/>.
         /// </summary>
-        /// <param name="dir">aktualny priecinok s GVD</param>
-        /// <param name="openIndex">index TabPage, ktory sa ma otvorit po otvoreni dialogu</param>
+        /// <param name="dir">Aktualny priecinok s grafikonom.</param>
+        /// <param name="openIndex">Index TabPage, ktory sa ma otvorit po otvoreni dialogu.</param>
         public FLocalSettings(GVDDirectory dir, int openIndex = -1)
         {
             InitializeComponent();
@@ -248,10 +248,7 @@ namespace GVDEditor.Forms
             DialogResult = DialogResult.OK;
         }
 
-        private void bOpenDir_Click(object sender, EventArgs e)
-        {
-            Process.Start(ThisDir.Dir.FullPath);
-        }
+        private void bOpenDir_Click(object sender, EventArgs e) => Process.Start(ThisDir.Dir.FullPath);
 
         private void cbCustomStation_CheckedChanged(object sender, EventArgs e)
         {
@@ -386,7 +383,7 @@ namespace GVDEditor.Forms
             {
                 var index = listDopravcovia.SelectedIndex;
                 var op = Dopravcovia[index];
-                foreach (var train in FMain.Trains)
+                foreach (var train in GlobData.Trains)
                     if (train.Operator == op)
                         train.Operator = Operator.None;
 
@@ -531,7 +528,7 @@ namespace GVDEditor.Forms
                     for (var i = 0; i < TLogicals.Count; i++)
                         clbKolajTables.SetItemChecked(i, false);
 
-                foreach (var table in kolaj.Tabule)
+                foreach (var table in kolaj.Tables)
                     clbKolajTables.SetItemChecked(clbKolajTables.Items.IndexOf(table), true);
             }
         }
@@ -550,7 +547,7 @@ namespace GVDEditor.Forms
                 return;
             }
 
-            var kolaj = new Track
+            var track = new Track
             {
                 Key = tbKolajOznacenie.Text,
                 FullName = tbKolajFullName.Text,
@@ -559,13 +556,16 @@ namespace GVDEditor.Forms
             };
 
             foreach (var test in Kolaje)
-                if (kolaj.EqualsKeys(test))
+                if (track.EqualsKeys(test))
                 {
                     Utils.ShowError(Resources.FLocalSettings_Zadaný_kľúč_koľaje_už_existuje);
                     return;
                 }
 
-            Kolaje.Add(kolaj);
+            foreach (var item in clbKolajTables.CheckedItems) 
+                track.Tables.Add(item as TableLogical);
+
+            Kolaje.Add(track);
 
             bKolajEdit.Enabled = true;
             bKolajDelete.Enabled = true;
@@ -595,6 +595,10 @@ namespace GVDEditor.Forms
                 track.SoundName = tbKolajSound.Text;
                 track.Nastupiste = (Platform)cbNastupistia.SelectedItem;
 
+                track.Tables.Clear();
+                foreach (var item in clbKolajTables.CheckedItems) 
+                    track.Tables.Add(item as TableLogical);
+
                 Kolaje.ResetBindings();
             }
         }
@@ -605,7 +609,7 @@ namespace GVDEditor.Forms
             {
                 var index = listKolaje.SelectedIndex;
                 var kolaj = Kolaje[index];
-                foreach (var train in FMain.Trains)
+                foreach (var train in GlobData.Trains)
                     if (train.Track == kolaj)
                         train.Track = Track.None;
 
@@ -745,7 +749,7 @@ namespace GVDEditor.Forms
 
                 foreach (var tr in Kolaje)
                 {
-                    foreach (var logical in tr.Tabule)
+                    foreach (var logical in tr.Tables)
                         if (logical == tlog)
                         {
                             delete = false; 

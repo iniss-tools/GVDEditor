@@ -8,64 +8,60 @@ using ToolsCore.XML;
 namespace GVDEditor.XML
 {
     /// <summary>
-    ///     Konfiguracny subor
+    ///     Konfiguracny subor pre program GVDEitor.
     /// </summary>
     [XmlRoot("CONFIG")]
     public class GVDEditorConfig : Config
     {
         /// <summary>
-        ///     Povolit pouzivanie automatickej spravy variant vlaku
+        ///     Povolit pouzivanie automatickej spravy variant vlaku.
         /// </summary>
-        [XmlElement("AutoVariant")] [DefaultValue(false)]
+        [XmlElement("AutoVariant"), DefaultValue(false)]
         public bool AutoVariant;
 
         /// <summary>
-        ///     Povoli/zakaze kontrolovanie spravnosti zadanej varianty vlaku
+        ///     Povoli/zakaze kontrolovanie spravnosti zadanej varianty vlaku.
         /// </summary>
-        [XmlElement("DisableVariantChk")] [DefaultValue(false)]
+        [XmlElement("DisableVariantChk"), DefaultValue(false)]
         public bool DisableVariantCheck;
 
         /// <summary>
-        ///     Automaticky generovat texty do tabul pri ukladani do suborov
+        ///     Automaticky generovat texty do tabul pri ukladani do suborov.
         /// </summary>
-        [XmlElement("AutoTableText")] [DefaultValue(false)]
+        [XmlElement("AutoTableText"), DefaultValue(false)]
         public bool AutoTableText;
 
-        /*/// <summary>
-        /// Povoli/zakaze upravu datovych obmedzeni variant podla hlavnej varianty
-        /// </summary>
-        [XmlElement("EditVariantsDaterem")] public bool EditVariantsDaterem;*/
-
         /// <summary>
-        ///     Ci sa ma zobrazovat datum v stavovom riadku na pracovnej ploche programu
+        ///     Ci sa ma zobrazovat datum v stavovom riadku na pracovnej ploche programu.
         /// </summary>
-        [XmlElement("ShowDateTimeInStateRow")] [DefaultValue(true)]
+        [XmlElement("ShowDateTimeInStateRow"), DefaultValue(true)]
         public bool ShowDateTimeInStateRow = true;
 
         /// <summary>
-        ///     Nastavi cas medzi zvukmi pri prehravani
+        ///     Nastavi cas medzi zvukmi pri prehravani.
         /// </summary>
-        [XmlElement("PlayerWordPause")] [DefaultValue(0)]
+        [XmlElement("PlayerWordPause"), DefaultValue(0)]
         public int PlayerWordPause;
 
         /// <summary>
-        ///     Stlpce zobrazujuce sa v tabulke na pracovnej ploche programu
+        ///     Stlpce zobrazujuce sa v tabulke na pracovnej ploche programu.
         /// </summary>
-        [XmlElement("DesktopCols")] public DesktopColumns DesktopCols = new();
-
+        [XmlElement("DesktopCols")] 
+        public DesktopColumns DesktopCols = new();
 
         /// <summary>
-        ///     Klávesové skratky pre akcie na pracovnej ploche programu
+        ///     Klávesové skratky pre akcie na pracovnej ploche programu.
         /// </summary>
-        [XmlElement("Shortcuts")] public AppShortcuts Shortcuts = new();
-
+        [XmlElement("Shortcuts")] 
+        public AppShortcuts Shortcuts = new();
 
         /// <summary>
-        ///     konfiguracia spustania INISSu z tohto programu
+        ///     konfiguracia spustania INISSu z tohto programu.
         /// </summary>
-        [XmlElement("StartupINISSConfig")] public StartupINISS StartupINISSConfig = new() { CmdArgs = "", RunAsAdmin = false };
+        [XmlElement("StartupINISSConfig")] 
+        public StartupINISS StartupINISSConfig = new() { CmdArgs = "", RunAsAdmin = false };
 
-        private static DesktopColumns SetDesktopColumnsSettingsDefault()
+        private static DesktopColumns GetDefaultDesktopColumnsSettings()
         {
             var cols = new DesktopColumns
             {
@@ -88,10 +84,10 @@ namespace GVDEditor.XML
         }
 
         /// <summary>
-        ///     Vrati predvolene nastavenia pre klavesove skratky pracovnej plochy programu
+        ///     Vrati predvolene nastavenia pre klavesove skratky pracovnej plochy programu.
         /// </summary>
         /// <returns></returns>
-        public static AppShortcuts SetShortcutsSettingsDefault()
+        public static AppShortcuts GetDefaultShortcutsSettings()
         {
             var shortcuts = new AppShortcuts
             {
@@ -117,19 +113,19 @@ namespace GVDEditor.XML
         }
 
         /// <summary>
-        ///     Vrati predvolene nastavenia pre pisma komponentov v GUI
+        ///     Vrati predvolene nastavenia pre pisma komponentov v GUI.
         /// </summary>
         /// <returns></returns>
-        public static ControlFonts SetAppFontsSettingsDefault()
+        public static ControlFonts GetDefaultAppFontsSettings()
         {
             var fonts = new ControlFonts
             {
-                Labels = new AppFont { Font = SystemFonts.DefaultFont },
-                Buttons = new AppFont { Font = SystemFonts.DefaultFont },
-                ColsHeader = new AppFont { Font = SystemFonts.MenuFont },
-                TableCells = new AppFont { Font = SystemFonts.DefaultFont },
-                Menu = new AppFont { Font = SystemFonts.MenuFont },
-                StateRow = new AppFont { Font = new Font(SystemFonts.MenuFont.FontFamily, 10, FontStyle.Bold) }
+                Labels = new AppFont(SystemFonts.DefaultFont),
+                Buttons = new AppFont(SystemFonts.DefaultFont),
+                ColsHeader = new AppFont(SystemFonts.MenuFont),
+                TableCells = new AppFont(SystemFonts.DefaultFont),
+                Menu = new AppFont(SystemFonts.MenuFont),
+                StateRow = new AppFont(new Font(SystemFonts.MenuFont.FontFamily, 10, FontStyle.Bold))
             };
 
             return fonts;

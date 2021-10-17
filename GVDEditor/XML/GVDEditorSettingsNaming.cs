@@ -5,7 +5,7 @@ namespace GVDEditor.XML
     internal static class GVDEditorSettingsNaming
     {
         /// <summary>
-        ///     Nazve nastavenia farieb podla aktualnej lokalizacie
+        ///     Nazve nastavenia farieb podla aktualnej lokalizacie.
         /// </summary>
         public static void NameColorSettings(GVDEditorStyle style)
         {
@@ -51,7 +51,7 @@ namespace GVDEditor.XML
         }
 
         /// <summary>
-        ///     Pomenuje názvy pre stĺpce tabulky na hlavnej obrazovke
+        ///     Pomenuje názvy pre stĺpce tabulky na hlavnej obrazovke.
         /// </summary>
         /// <param name="columns"></param>
         public static void NameDesktopColsSetting(DesktopColumns columns)
@@ -100,9 +100,9 @@ namespace GVDEditor.XML
         }
 
         /// <summary>
-        ///     Pomenuje názvy pre klávesové skratky programu
+        ///     Pomenuje názvy pre klávesové skratky programu.
         /// </summary>
-        /// <param name="shortcuts"></param>
+        /// <param name="shortcuts">klavesove skratky programu</param>
         public static void NameShortcutCommands(AppShortcuts shortcuts)
         {
             shortcuts.NewGVD.Name = "Nový grafikon";
@@ -147,6 +147,8 @@ namespace GVDEditor.XML
             shortcuts.GSMeskania.Name = "Globálne nastavenia - Meškania";
             shortcuts.GSTrainTypes.Name = "Globálne nastavenia - Typy vlakov";
             shortcuts.GSAudio.Name = "Globálne nastavenia - Audio";
+
+            shortcuts.DatObm.Name = "Generátor dátum. obm.";
         }
     }
 }

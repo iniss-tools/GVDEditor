@@ -8,7 +8,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialóg - Zmena názvu štýlu
+    ///     Dialóg - Zmena názvu štýlu.
     /// </summary>
     public partial class FRenameStyle : Form
     {
@@ -17,16 +17,16 @@ namespace GVDEditor.Forms
         private readonly List<GVDEditorStyle> styles;
 
         /// <summary>
-        ///     Vrateny novy nazov stylu
+        ///     Vrateny novy nazov stylu.
         /// </summary>
         public string NewName;
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FRenameStyle"/>.
         /// </summary>
-        /// <param name="curIndex">index tohto stylu v zozname</param>
-        /// <param name="pname">predosly nazov stylu</param>
-        /// <param name="styles">vsetky dosial definovane styly</param>
+        /// <param name="curIndex">Index tohto stylu v zozname.</param>
+        /// <param name="pname">Predosly nazov stylu.</param>
+        /// <param name="styles">Vsetky dosial definovane styly.</param>
         public FRenameStyle(List<GVDEditorStyle> styles, int curIndex, string pname)
         {
             InitializeComponent();

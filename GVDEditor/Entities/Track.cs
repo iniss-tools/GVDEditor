@@ -18,7 +18,7 @@ namespace GVDEditor.Entities
         /// </summary>
         public Track()
         {
-            Tabule = new List<TableLogical>();
+            Tables = new List<TableLogical>();
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace GVDEditor.Entities
         /// </summary>
         public Track(string key, string name, string fullname, Platform nastupiste, string sound, string trackName)
         {
-            Tabule = new List<TableLogical>();
+            Tables = new List<TableLogical>();
 
             Key = key;
             Name = name;
@@ -69,7 +69,7 @@ namespace GVDEditor.Entities
         /// <summary>
         ///     Logicke tabule nachadzajuce sa na tejto kolaji
         /// </summary>
-        public List<TableLogical> Tabule { get; }
+        public List<TableLogical> Tables { get; }
 
         /// <summary>
         ///     Odkaz na seba, pouzite pre DataSource

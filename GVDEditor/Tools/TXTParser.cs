@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ExControls;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
+using ToolsCore;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 using static GVDEditor.FileConsts;
@@ -24,6 +25,32 @@ namespace GVDEditor.Tools
     {
         private const string FORMAT_EX = "Chyba v súbore {0} na riadku {1}. ";
         private const string FORMAT_EX_AREA = "{0}: Nezadefinované pole {1}.";
+
+        private static string CheckKey<T>(string key, string name, IEnumerable<T> items) where T : ITable
+        {
+            string tabtype = typeof(T) switch
+            {
+                { } catalog when catalog == typeof(TableCatalog) => "Katalógová tabuľa",
+                { } log when log == typeof(TableLogical) => "Logická tabuľa",
+                { } ph when ph == typeof(TablePhysical) => "Fyzická tabuľa",
+                _ => "Tabuľa"
+            };
+
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new FormatException($"{tabtype} s názvom {name} nemá zadaný kľúč.");
+            }
+
+            foreach (var item in items)
+            {
+                if (item.Key == key)
+                {
+                    throw new FormatException($"{tabtype} s názvom {name} má kľúč \"{key}\" zhodný s inou tabuľov.");
+                }
+            }
+
+            return key;
+        }
 
         #region COMMENTS
 
@@ -42,7 +69,7 @@ namespace GVDEditor.Tools
 
             switch (lang)
             {
-                case Config.AppLanguage.SK:
+                case Config.AppLanguage.Slovak:
                     rows.Add(CombinePath(path, filename));
                     rows.Add(
                         $"Vygenerované programom {Application.ProductName}, verzia {Application.ProductVersion} dňa {DateTime.Today:dd.MM.yyyy} v {DateTime.Now:HH:mm}");
@@ -52,7 +79,7 @@ namespace GVDEditor.Tools
                     rows.Add($"Dáta vytvorené: {gvd.CreateData:dd.MM.yyyy}");
                     rows.Add("=============================================================================================");
                     break;
-                case Config.AppLanguage.CZ:
+                case Config.AppLanguage.Czech:
                     rows.Add(CombinePath(path, filename));
                     rows.Add(
                         $"Vygenerované programem {Application.ProductName}, verze {Application.ProductVersion} dne {DateTime.Today:dd.MM.yyyy} v {DateTime.Now:HH:mm}");
@@ -86,9 +113,9 @@ namespace GVDEditor.Tools
         public static void WriteStateDgm(string path, bool skversion = true)
         {
             if (skversion)
-                File.WriteAllText(CombinePath(path, FILE_STATEDGM), Resources.statedgmSK, GlobData.ANSIEncoding);
+                File.WriteAllText(CombinePath(path, FILE_STATEDGM), Resources.statedgmSK, Encodings.Win1250);
             else
-                File.WriteAllText(CombinePath(path, FILE_STATEDGM), Resources.statedgmSK, GlobData.ANSIEncoding); //TODO cz version
+                File.WriteAllText(CombinePath(path, FILE_STATEDGM), Resources.statedgmSK, Encodings.Win1250); //TODO cz version
         }
 
         #endregion
@@ -128,8 +155,8 @@ namespace GVDEditor.Tools
                     dirList.FullPath = GlobData.DATADir + Path.DirectorySeparatorChar + dirName;
 
                     dirList.TablePort = ParseIntOrNull(row.ElementAtOrDefault(1));
-                    dirList.HlaseniePort = ParseIntOrNull(row.ElementAtOrDefault(2));
-                    dirList.Farba = TryParseHEX(row.ElementAtOrDefault(4));
+                    dirList.ReportPort = ParseIntOrNull(row.ElementAtOrDefault(2));
+                    dirList.BackColor = TryParseHEX(row.ElementAtOrDefault(4));
 
                     dirs.Add(dirList);
                 }
@@ -162,13 +189,13 @@ namespace GVDEditor.Tools
                 else
                     row.Insert(1, "");
 
-                if (dir.HlaseniePort.HasValue && dir.HlaseniePort != 0)
+                if (dir.ReportPort.HasValue && dir.ReportPort != 0)
                     row.Insert(2, dir.TablePort.ToString());
                 else
                     row.Insert(2, "");
 
                 row.Insert(3, "");
-                row.Insert(4, dir.Farba.HasValue ? dir.Farba.Value.ToHEX() : "");
+                row.Insert(4, dir.BackColor.HasValue ? dir.BackColor.Value.ToHEX() : "");
 
                 dirlistF.WriteRow(row);
             }
@@ -275,7 +302,7 @@ namespace GVDEditor.Tools
                 {
                     var audio = new Audio
                     {
-                        Station = Station.GetStationFromID(row[0]),
+                        Station = Station.GetFromID(row[0]),
                         Name = row[1],
                         ShortName = row[2],
                         QueueName = row[3],
@@ -518,7 +545,7 @@ namespace GVDEditor.Tools
         /// <param name="jazykyFromBank">jazykove mutacie z banky zvukov</param>
         /// <param name="maxLangs">maximalny pocet jazykovych mutacii (podla zvukovej banky)</param>
         /// <returns>jazyky</returns>
-        public static List<Language> ReadGlobalCategori(string path, List<Language> jazykyFromBank, int maxLangs)
+        public static List<Language> ReadGlobalCategori(string path, IList<Language> jazykyFromBank, int maxLangs)
         {
             var file = CombinePath(path, FILE_CATEGORI);
 
@@ -573,10 +600,10 @@ namespace GVDEditor.Tools
             for (var i = 1; i <= jazyky.Count; i++)
             {
                 var area = $"LANGUAGE_{i.PadZeros(2)}";
-                categoriF.Set(area, "KEY", jazyky[i - 1].Key, WriteType.WRITE_STRING_ANSI);
+                categoriF.Set(area, "KEY", jazyky[i - 1].Key, WriteType.WriteStringANSI);
                 var isBasic = jazyky[i - 1].IsBasic ? 1 : 0;
                 categoriF.Set(area, "IS_BASIC", isBasic);
-                categoriF.Set(area, "NAME", jazyky[i - 1].Name, WriteType.WRITE_STRING_ANSI);
+                categoriF.Set(area, "NAME", jazyky[i - 1].Name, WriteType.WriteStringANSI);
             }
 
             categoriF.Save();
@@ -590,17 +617,13 @@ namespace GVDEditor.Tools
         ///     Nainicializuje data o variantach a typoch reportov a jazykovych mutaciach hlaseni (pre konkretne GVD)
         /// </summary>
         /// <param name="path">cesta do priecinka s datami</param>
-        public static void ReadLocalCategori(string path)
+        public static (List<ReportVariant>,List<ReportType>,List<Language>) ReadLocalCategori(string path)
         {
             var file = CombinePath(path, FILE_CATEGORI);
 
-            var varianty = new List<ReportVariant>();
+            var variants = new List<ReportVariant>();
             var types = new List<ReportType>();
             var languages = new List<Language>();
-
-            GlobData.ReportVariants = varianty;
-            GlobData.ReportTypes = types;
-            GlobData.LocalLanguages = languages;
 
             var categoriF = new TXTPropsAreasFields(file);
 
@@ -612,7 +635,7 @@ namespace GVDEditor.Tools
                 variant.Key = int.Parse(categoriF.Get(area, "KEY"));
                 variant.Name = categoriF.Get(area, "NAME").ANSItoUTF();
 
-                varianty.Add(variant);
+                variants.Add(variant);
             }
 
             var countT = int.Parse(categoriF.Get("MAIN", "COUNT_TYPE_BASIC_REPORT"));
@@ -650,6 +673,8 @@ namespace GVDEditor.Tools
                 if (!Language.ContainsKey(GlobData.Languages, key))
                     throw new ArgumentException($"Neplatný kľúč jazyka {key} v súbore {file}.");
             }
+
+            return (variants, types, languages);
         }
 
         /// <summary>
@@ -678,7 +703,7 @@ namespace GVDEditor.Tools
 
                 var area = $"VARIANT_{ti.PadZeros(2)}";
                 categoriF.Set(area, "KEY", variant.Key);
-                categoriF.Set(area, "NAME", variant.Name, WriteType.WRITE_STRING_ANSI);
+                categoriF.Set(area, "NAME", variant.Name, WriteType.WriteStringANSI);
             }
 
 
@@ -688,9 +713,9 @@ namespace GVDEditor.Tools
                 var ti = i + 1;
 
                 var area = $"TYPE_REPORT_{ti.PadZeros(2)}";
-                categoriF.Set(area, "KEY", typ.Key, WriteType.WRITE_STRING_ANSI);
-                categoriF.Set(area, "NAME", typ.Name, WriteType.WRITE_STRING_ANSI);
-                categoriF.Set(area, "CHAR", typ.Char, WriteType.WRITE_STRING_ANSI);
+                categoriF.Set(area, "KEY", typ.Key, WriteType.WriteStringANSI);
+                categoriF.Set(area, "NAME", typ.Name, WriteType.WriteStringANSI);
+                categoriF.Set(area, "CHAR", typ.Char, WriteType.WriteStringANSI);
                 categoriF.Set(area, "BASE_TRAIN", typ.BaseTrain.ToNumber());
                 categoriF.Set(area, "PASS_THROUGH", typ.PassThrough.ToNumber());
                 categoriF.Set(area, "TERMINATE_TRAIN", typ.TerminateTrain.ToNumber());
@@ -704,9 +729,9 @@ namespace GVDEditor.Tools
                 var ti = i + 1;
 
                 var area = $"LANGUAGE_{ti.PadZeros(2)}";
-                categoriF.Set(area, "KEY", language.Key, WriteType.WRITE_STRING_ANSI);
+                categoriF.Set(area, "KEY", language.Key, WriteType.WriteStringANSI);
                 categoriF.Set(area, "IS_BASIC", language.IsBasic.ToNumber());
-                categoriF.Set(area, "NAME", language.Name, WriteType.WRITE_STRING_ANSI);
+                categoriF.Set(area, "NAME", language.Name, WriteType.WriteStringANSI);
             }
 
             categoriF.Save();
@@ -782,24 +807,24 @@ namespace GVDEditor.Tools
                         if (vlak.Routing == Routing.Vychadzajuci)
                         {
                             vlak.Departure = ParseTime(row[8]);
-                            vlak.EndingStation = Station.GetStationFromID(row[10]);
+                            vlak.EndingStation = Station.GetFromID(row[10]);
                         }
                         else if (vlak.Routing == Routing.Prechadzajuci)
                         {
                             vlak.Arrival = ParseTime(row[7]);
                             vlak.Departure = ParseTime(row[8]);
 
-                            vlak.StartingStation = Station.GetStationFromID(row[9]);
-                            vlak.EndingStation = Station.GetStationFromID(row[10]);
+                            vlak.StartingStation = Station.GetFromID(row[9]);
+                            vlak.EndingStation = Station.GetFromID(row[10]);
                         }
                         else if (vlak.Routing == Routing.Konciaci)
                         {
                             vlak.Arrival = ParseTime(row[7]);
-                            vlak.StartingStation = Station.GetStationFromID(row[9]);
+                            vlak.StartingStation = Station.GetFromID(row[9]);
                         }
 
                         var idOperator = ParseIntOrDefault(row[12], -1);
-                        vlak.Operator = Operator.GetOperatorFromId(GlobData.Operators, idOperator);
+                        vlak.Operator = Operator.GetFromID(GlobData.Operators, idOperator);
 
                         vlak.LineArrival = row.ElementAtOrDefault(13);
                         vlak.LineDeparture = row.ElementAtOrDefault(14);
@@ -908,7 +933,7 @@ namespace GVDEditor.Tools
                         for (var i = 0; i < x; i++)
                         {
                             var idS = row[i + 2];
-                            vzor.Stations.Add(Station.GetStationFromID(idS));
+                            vzor.Stations.Add(Station.GetFromID(idS));
                         }
 
                         vzoryList.Add(vzor);
@@ -1205,7 +1230,7 @@ namespace GVDEditor.Tools
         /// <param name="vlaky">vlaky</param>
         /// <param name="gvd">informacie o grafikone</param>
         /// <param name="reportVariants">varianty reportov</param>
-        public static void WriteTrains(string path, List<Train> vlaky, GVDInfo gvd, List<ReportVariant> reportVariants)
+        public static void WriteTrains(string path, IList<Train> vlaky, GVDInfo gvd, IList<ReportVariant> reportVariants)
         {
             var fileEXP3A = CombinePath(path, FILE_EXPORT3A);
             var fileEXP3B = CombinePath(path, FILE_EXPORT3B);
@@ -1230,9 +1255,9 @@ namespace GVDEditor.Tools
                 {
                     var row = new CSVRow();
                     row.Insert(0, (vlakId + 1).ToString());
-                    row.Insert(1, vlak.Number.ToQuotedString());
-                    row.Insert(2, (vlak.Name ?? "").UTFtoANSI().ToQuotedString());
-                    row.Insert(3, vlak.Type.ToString().ToQuotedString());
+                    row.Insert(1, vlak.Number.Quote());
+                    row.Insert(2, (vlak.Name ?? "").UTFtoANSI().Quote());
+                    row.Insert(3, vlak.Type.ToString().Quote());
                     row.Insert(4, vlak.Variant != -1 ? vlak.Variant.ToString() : "-1");
                     row.Insert(5, vlak.Routing.CharSymbol);
 
@@ -1317,7 +1342,7 @@ namespace GVDEditor.Tools
                     var row = new CSVRow();
                     row.Insert(0, (vlakId + 1).ToString());
                     row.Insert(1, "1");
-                    row.Insert(2, vlak.DateLimitText.ToQuotedString());
+                    row.Insert(2, vlak.DateLimitText.Quote());
 
                     export3cF.WriteRow(row);
                     vlakId++;
@@ -1409,9 +1434,9 @@ namespace GVDEditor.Tools
                     var i = 0;
                     foreach (var vlak in vzor.Trains)
                     {
-                        row.Insert(2 + i * 4, vlak.Number.ToQuotedString());
-                        row.Insert(3 + i * 4, vlak.Name.ToQuotedString());
-                        row.Insert(4 + i * 4, vlak.Type.Key.ToQuotedString());
+                        row.Insert(2 + i * 4, vlak.Number.Quote());
+                        row.Insert(3 + i * 4, vlak.Name.Quote());
+                        row.Insert(4 + i * 4, vlak.Type.Key.Quote());
                         row.Insert(5 + i * 4, vlak.Variant.ToString());
                         i++;
                     }
@@ -1483,7 +1508,7 @@ namespace GVDEditor.Tools
                 {
                     var row = new CSVRow();
                     row.Insert(0, (vlakId + 1).ToString());
-                    row.Insert(1, vlak.Track.Key.ToQuotedString());
+                    row.Insert(1, vlak.Track.Key.Quote());
 
                     poziceF.WriteRow(row);
                     vlakId++;
@@ -1552,7 +1577,7 @@ namespace GVDEditor.Tools
                         foreach (var t in vlak.Languages)
                             if (!t.IsBasic)
                             {
-                                row.Add(t.Key.ToQuotedString());
+                                row.Add(t.Key.Quote());
                                 break;
                             }
 
@@ -1586,7 +1611,7 @@ namespace GVDEditor.Tools
                 {
                     var row = new CSVRow();
                     row.Insert(0, st.ID);
-                    row.Insert(1, st.Name.UTFtoANSI().ToQuotedString());
+                    row.Insert(1, st.Name.UTFtoANSI().Quote());
                     staniceF.WriteRow(row);
                 }
             }
@@ -1600,7 +1625,7 @@ namespace GVDEditor.Tools
         ///     Nainicializuje informacie o nastupistiach a kolajach nachadzajucich sa na stanici
         /// </summary>
         /// <param name="path">cesta do priecinka s datami</param>
-        public static void ReadTracks(string path)
+        public static List<Track> ReadTracks(string path)
         {
             var file = CombinePath(path, FILE_POZICE_A);
 
@@ -1637,7 +1662,7 @@ namespace GVDEditor.Tools
                         foreach (var table in GlobData.TableLogicals)
                             if (table.Key == row[i + 9])
                             {
-                                kolaj.Tabule.Add(table);
+                                kolaj.Tables.Add(table);
                                 break;
                             }
 
@@ -1653,7 +1678,7 @@ namespace GVDEditor.Tools
 
             if (!tracks.Contains(Track.None)) tracks.Insert(0, Track.None);
 
-            GlobData.Tracks = tracks;
+            return tracks;
         }
 
         /// <summary>
@@ -1671,23 +1696,23 @@ namespace GVDEditor.Tools
             {
                 if (track == Track.None) continue;
 
-                var tabcount = track.Tabule.Count;
+                var tabcount = track.Tables.Count;
                 var row = new CSVRow(9 + 2 * tabcount)
                 {
-                    track.Key.ToQuotedString().UTFtoANSI(),
-                    track.Name.ToQuotedString().UTFtoANSI(),
-                    track.FullName.ToQuotedString().UTFtoANSI(),
-                    track.Nastupiste.FullName.ToQuotedString().UTFtoANSI(),
-                    track.TrackName.ToQuotedString().UTFtoANSI(),
-                    track.Nastupiste.Key.ToQuotedString().UTFtoANSI(),
-                    track.SoundName.ToQuotedString().UTFtoANSI(),
-                    track.Nastupiste.SoundName.ToQuotedString().UTFtoANSI(),
-                    track.Tabule.Count.ToString()
+                    track.Key.Quote().UTFtoANSI(),
+                    track.Name.Quote().UTFtoANSI(),
+                    track.FullName.Quote().UTFtoANSI(),
+                    track.Nastupiste.FullName.Quote().UTFtoANSI(),
+                    track.TrackName.Quote().UTFtoANSI(),
+                    track.Nastupiste.Key.Quote().UTFtoANSI(),
+                    track.SoundName.Quote().UTFtoANSI(),
+                    track.Nastupiste.SoundName.Quote().UTFtoANSI(),
+                    track.Tables.Count.ToString()
                 };
 
                 for (var i = 0; i < tabcount; i++)
                 {
-                    row.Insert(9 + i, track.Tabule[i].Key.ToQuotedString().UTFtoANSI());
+                    row.Insert(9 + i, track.Tables[i].Key.Quote().UTFtoANSI());
                     row.Insert(10 + i, "0"); //TODO priority (nie su prioritne) :D
                 }
 
@@ -1703,7 +1728,7 @@ namespace GVDEditor.Tools
         ///     Nainicializuje informacie o dopravcoch
         /// </summary>
         /// <param name="path">cesta do priecinka s datami</param>
-        public static void ReadOperators(string path)
+        public static List<Operator> ReadOperators(string path)
         {
             var file = CombinePath(path, FILE_VLASTNIK);
 
@@ -1744,7 +1769,7 @@ namespace GVDEditor.Tools
             {
             }
 
-            GlobData.Operators = operators.ToList();
+            return operators.ToList();
         }
 
         /// <summary>
@@ -1763,7 +1788,7 @@ namespace GVDEditor.Tools
                     var row = new CSVRow(2)
                     {
                         operatorV.Id.ToString(),
-                        operatorV.Name.ToQuotedString().UTFtoANSI()
+                        operatorV.Name.Quote().UTFtoANSI()
                     };
 
                     vlastnikF.WriteRow(row);
@@ -1780,7 +1805,7 @@ namespace GVDEditor.Tools
         /// <param name="path">cesta do priecinka s datami</param>
         /// <param name="gvd">informacie o grafikone</param>
         /// <returns>vlastne stanice</returns>
-        public static void ReadCustomStations(string path, GVDInfo gvd)
+        public static List<Station> ReadCustomStations(string path, GVDInfo gvd)
         {
             var fileStanice = CombinePath(path, FILE_STANICE);
 
@@ -1828,7 +1853,7 @@ namespace GVDEditor.Tools
                 riadok++;
             }
 
-            GlobData.CustomStations = stanice;
+            return stanice;
         }
 
         /// <summary>
@@ -1851,7 +1876,7 @@ namespace GVDEditor.Tools
                 var row = new CSVRow(2)
                 {
                     cs.ID,
-                    cs.Name.UTFtoANSI().ToQuotedString()
+                    cs.Name.UTFtoANSI().Quote()
                 };
 
                 staniceF.WriteRow(row);
@@ -1868,13 +1893,11 @@ namespace GVDEditor.Tools
         /// <param name="path">cesta do priecinka s datami</param>
         /// <param name="sounds">zvuky zo zvukovej banky</param>
         /// <returns>radenia vlakov</returns>
-        public static void ReadRazeni1(string path, List<FyzZvuk> sounds)
+        public static List<Radenie> ReadRazeni1(string path, List<FyzZvuk> sounds)
         {
             var fileRazeni1 = CombinePath(path, FILE_RAZENI1);
 
             var radeniaList = new List<Radenie>();
-
-            GlobData.Radenia = radeniaList;
 
             using var razeni1F = new CSVFileReader(fileRazeni1);
             var riadok = 1;
@@ -1930,15 +1953,15 @@ namespace GVDEditor.Tools
                                 continue;
                             }
 
-                            radenie.DestStation = Station.GetStationFromID(id.ToString());
+                            radenie.DestStation = Station.GetFromID(id.ToString());
                         }
 
                         radenie.ChosenReports = ReportType.Parse(GlobData.ReportTypes, row[1]);
                         radenie.ZacPlatnosti = ParseDateAlts(row[2]);
                         radenie.KonPlatnosti = ParseDateAlts(row[3]);
-                        var dateRem = new DateLimit(radenie.ZacPlatnosti, radenie.KonPlatnosti, bInsertMarks: false);
+                        var dateLimit = new DateLimit(radenie.ZacPlatnosti, radenie.KonPlatnosti, insertMarks: false);
                         var bit = new BitArray(row[4].Select(c => c == '1').ToArray());
-                        radenie.DatObm = dateRem.BitArrayToText(bit);
+                        radenie.DatObm = dateLimit.BitArrayToText(bit);
                     }
                     else
                     {
@@ -1971,16 +1994,15 @@ namespace GVDEditor.Tools
 
                 riadok++;
             }
+
+            return radeniaList;
         }
 
         /// <summary>
         ///     Vytvori novy subor, ktory bude sluzit na ukladanie informacii o radeniach vlakov
         /// </summary>
         /// <param name="path">cesta do priecinka s datami</param>
-        public static void WriteRazeni1Default(string path)
-        {
-            File.Create(CombinePath(path, FILE_RAZENI1));
-        }
+        public static void WriteRazeni1Default(string path) => File.Create(CombinePath(path, FILE_RAZENI1));
 
         /// <summary>
         ///     Zapise informacie o radeniach vlakov
@@ -2006,13 +2028,15 @@ namespace GVDEditor.Tools
                         ? $"#{radenie.CisloVlaku}:{radenie.DestStation.ID}"
                         : $"#{radenie.CisloVlaku}");
                 var sb = new StringBuilder();
+
                 foreach (var reportType in radenie.ChosenReports)
-                foreach (var variant in reportType.Variants)
-                    sb.Append(variant.Key == 0 ? reportType.Type.Char : reportType.Type.Char.ToLower());
+                    foreach (var variant in reportType.Variants)
+                        sb.Append(variant.Key == 0 ? reportType.Type.Char : reportType.Type.Char.ToLower());
+
                 row.Insert(1, sb.ToString());
                 row.Insert(2, radenie.ZacPlatnosti.ToString("dd.MM.yyyy"));
                 row.Insert(3, radenie.KonPlatnosti.ToString("dd.MM.yyyy"));
-                var dateRem = new DateLimit(radenie.ZacPlatnosti.Date, radenie.KonPlatnosti.Date, bInsertMarks: false);
+                var dateRem = new DateLimit(radenie.ZacPlatnosti.Date, radenie.KonPlatnosti.Date, insertMarks: false);
                 var bits = dateRem.TextToBitArray(radenie.DatObm);
                 row.Insert(4, BitArrayToString(bits));
                 razeni1F.WriteRow(row);
@@ -2046,13 +2070,13 @@ namespace GVDEditor.Tools
                 }
 
                 var rowcomment = new CSVRow();
-                rowcomment.Insert(0, $";{radenie.DatObm.ToQuotedString().UTFtoANSI()}");
-                rowcomment.Insert(1, sbL1.ToString().Trim().ToQuotedString().UTFtoANSI());
-                rowcomment.Insert(2, sbZvuk.ToString().Trim().ToQuotedString().UTFtoANSI());
-                rowcomment.Insert(3, ""); //TODO ich weiss nicht was ist das
+                rowcomment.Insert(0, $";{radenie.DatObm.Quote().UTFtoANSI()}");
+                rowcomment.Insert(1, sbL1.ToString().Trim().Quote().UTFtoANSI());
+                rowcomment.Insert(2, sbZvuk.ToString().Trim().Quote().UTFtoANSI());
+                rowcomment.Insert(3, ""); //ich weiss nicht was ist das
                 rowcomment.Insert(4, "");
-                rowcomment.Insert(5, sbL2.ToString().Trim().ToQuotedString().UTFtoANSI());
-                rowcomment.Insert(6, sbL3.ToString().Trim().ToQuotedString().UTFtoANSI());
+                rowcomment.Insert(5, sbL2.ToString().Trim().Quote().UTFtoANSI());
+                rowcomment.Insert(6, sbL3.ToString().Trim().Quote().UTFtoANSI());
                 razeni1F.WriteRow(rowcomment);
             }
         }
@@ -2061,10 +2085,7 @@ namespace GVDEditor.Tools
         ///     Vytvori novy subor, ktory bude sluzit na ukladanie informacii o radeniach vlakov
         /// </summary>
         /// <param name="path">cesta do priecinka s datami</param>
-        public static void WriteRazeniDefault(string path)
-        {
-            File.Create(CombinePath(path, FILE_RAZENI));
-        }
+        public static void WriteRazeniDefault(string path) => File.Create(CombinePath(path, FILE_RAZENI));
 
         #endregion
 
@@ -2074,7 +2095,7 @@ namespace GVDEditor.Tools
         ///     Inicializuje definicie a vlastnosti tabul do GlobData
         /// </summary>
         /// <param name="path">cesta do priecinka s datami</param>
-        public static void ReadTables(string path)
+        public static (List<TableTabTab>, List<TableCatalog>, List<TablePhysical>, List<TableLogical>) ReadTables(string path)
         {
             var fileTabTab = CombinePath(path, FILE_TABTAB);
             var fileTCatalog = CombinePath(path, FILE_TKATALOG);
@@ -2086,22 +2107,23 @@ namespace GVDEditor.Tools
             var tphysicals = new List<TablePhysical>();
             var tlogicals = new List<TableLogical>();
 
-            GlobData.TabTabs = tabtabs;
-            GlobData.TableCatalogs = tcatalogs;
-            GlobData.TablePhysicals = tphysicals;
-            GlobData.TableLogicals = tlogicals;
-
+            //TABTABS
             var tabtabF = new TXTPropsAreas(fileTabTab);
-
+            int p = 1;
             foreach (var area in tabtabF.GetAreas())
             {
-                var tabTab = new TableTabTab { Key = area, Text = tabtabF.Get(area) };
+                if (string.IsNullOrWhiteSpace(area) || area == "")
+                {
+                    throw new FormatException($"TabTab č. {p} má neplatný názov (prázdny alebo obsahujúci iba biele znaky).");
+                }
 
+                var tabTab = new TableTabTab { Key = area, Text = tabtabF.Get(area) };
                 tabtabs.Add(tabTab);
+                p++;
             }
 
+            //TCATALOGS
             var catalogF = new TXTPropsAreasFields(fileTCatalog);
-
             var count = int.Parse(catalogF.Get("MAIN", "COUNT"));
             for (var i = 0; i < count; i++)
             {
@@ -2111,9 +2133,16 @@ namespace GVDEditor.Tools
                 var area = $"TABLE_{ti.PadZeros()}";
                 tcatalog.Comment = catalogF.GetComment(area);
 
-                tcatalog.Key = catalogF.Get(area, "KEY").ANSItoUTF();
                 tcatalog.Name = catalogF.Get(area, "NAME").ANSItoUTF();
-                tcatalog.Manufacturer = TableManufacturer.Parse(catalogF.Get(area, "MANUFACTURER_KEY"));
+                tcatalog.Key = CheckKey(catalogF.Get(area, "KEY").ANSItoUTF(), tcatalog.Name, tcatalogs);
+                var manufacturer = catalogF.Get(area, "MANUFACTURER_KEY");
+                tcatalog.Manufacturer = TableManufacturer.Parse(manufacturer);
+                if (tcatalog.Manufacturer == null)
+                {
+                    throw new FormatException(
+                        $"Katalógová tabuľa {tcatalog.Key} má zadaný neplatný kľúč výrobcu (MANUFACTURER_KEY): {manufacturer}.");
+                }
+
                 tcatalog.MaxRecCount = ParseIntOrDefault(catalogF.Get(area, "MAX_REC_COUNT", false));
                 tcatalog.MinHeight = ParseIntOrDefault(catalogF.Get(area, "MIN_HEIGHT", false));
                 tcatalog.NumSegments = ParseIntOrDefault(catalogF.Get(area, "NUM_SEGMENTS", false), 1);
@@ -2133,21 +2162,48 @@ namespace GVDEditor.Tools
                 for (var j = 0; j < ParseIntOrDefault(catalogF.Get(area, "COUNT_TYPE_ITEMS", false)); j++)
                 {
                     var tj = j + 1;
+                    var padded = tj.PadZeros();
+
+                    var name = catalogF.Get(area, $"TYPE_ITEMS_NAME_{padded}").ANSItoUTF();
                     var item = new TableItem
                     {
-                        Key = catalogF.Get(area, $"TYPE_ITEMS_KEY_{tj.PadZeros()}").ANSItoUTF(),
-                        Name = catalogF.Get(area, $"TYPE_ITEMS_NAME_{tj.PadZeros()}").ANSItoUTF(),
-                        FillSection = TableFillSection.Parse(ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_IDX_{tj.PadZeros()}", false))),
-                        Line = ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_LINE_{tj.PadZeros()}", false)),
-                        Start = ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_START_{tj.PadZeros()}", false)),
-                        End = ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_END_{tj.PadZeros()}", false)),
-                        FontIDX = ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_FONT_IDX_{tj.PadZeros()}", false)),
-                        Align = TableAlign.Parse(ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_ALIGN_{tj.PadZeros()}", false))),
-                        DivType = TableDivType.Parse(ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_DIVTYPE_{tj.PadZeros()}", false)))
+                        Name = name,
+                        Key = CheckKey(catalogF.Get(area, $"TYPE_ITEMS_KEY_{padded}").ANSItoUTF(), name, tcatalog.Items),
+                        Line = ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_LINE_{padded}", false)),
+                        Start = ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_START_{padded}", false)),
+                        End = ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_END_{padded}", false)),
+                        FontIDX = ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_FONT_IDX_{padded}", false))
                     };
 
-                    var tab1 = catalogF.Get(area, $"TYPE_ITEMS_TAB1_{tj.PadZeros()}").ANSItoUTF();
-                    var tab2 = catalogF.Get(area, $"TYPE_ITEMS_TAB2_{tj.PadZeros()}").ANSItoUTF();
+                    var fillSection = catalogF.Get(area, $"TYPE_ITEMS_IDX_{padded}", false);
+                    item.FillSection = TableFillSection.Parse(ParseIntOrDefault(fillSection));
+
+                    var align = catalogF.Get(area, $"TYPE_ITEMS_ALIGN_{padded}", false);
+                    item.Align = TableAlign.Parse(ParseIntOrDefault(align));
+
+                    var divType = catalogF.Get(area, $"TYPE_ITEMS_DIVTYPE_{padded}", false);
+                    item.DivType = TableDivType.Parse(ParseIntOrDefault(divType));
+
+                    if (item.FillSection == null)
+                    {
+                        throw new FormatException(
+                            $"Katalógová tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neplatnú hodnotu TYPE_ITEMS_IDX: {fillSection}.");
+                    }
+
+                    if (item.Align == null)
+                    {
+                        throw new FormatException(
+                            $"Katalógová tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neplatnú hodnotu TYPE_ITEMS_ALIGN: {align}.");
+                    }
+
+                    if (item.DivType == null)
+                    {
+                        throw new FormatException(
+                            $"Katalógová tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neplatnú hodnotu TYPE_ITEMS_DIVTYPE: {align}.");
+                    }
+
+                    var tab1 = catalogF.Get(area, $"TYPE_ITEMS_TAB1_{padded}").ANSItoUTF();
+                    var tab2 = catalogF.Get(area, $"TYPE_ITEMS_TAB2_{padded}").ANSItoUTF();
 
                     if (!string.IsNullOrEmpty(tab1))
                     {
@@ -2160,7 +2216,7 @@ namespace GVDEditor.Tools
 
                         if (item.Tab1 == null)
                             throw new FormatException(
-                                $"Katalógova tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neexistujúci TABTAB1 {tab1}.");
+                                $"Katalógová tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neexistujúci TABTAB1 {tab1}.");
                     }
                     else
                     {
@@ -2178,7 +2234,7 @@ namespace GVDEditor.Tools
 
                         if (item.Tab2 == null)
                             throw new FormatException(
-                                $"Katalógova tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neexistujúci TABTAB2 {tab2}.");
+                                $"Katalógová tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neexistujúci TABTAB2 {tab2}.");
                     }
                     else
                     {
@@ -2191,24 +2247,38 @@ namespace GVDEditor.Tools
                 for (var j = 0; j < ParseIntOrDefault(catalogF.Get(area, "COUNT_TYPE_VIEW_TAB", false)); j++)
                 {
                     var tj = j + 1;
-                    var typetab = new TableViewTypeTab
-                    {
-                        ViewType = TableViewType.Parse(catalogF.Get(area, $"TYPE_VIEW_TAB_KEY_{tj.PadZeros()}").ANSItoUTF()),
-                        CountLinesRecord = catalogF.Get(area, $"TYPE_VIEW_TAB_COUNT_LINES_RECORD_{tj.PadZeros()}")
-                    };
+                    var typetab = new TableViewTypeTab();
 
-                    if (!IsInt(typetab.CountLinesRecord))
+                    var viewType = catalogF.Get(area, $"TYPE_VIEW_TAB_KEY_{tj.PadZeros()}").ANSItoUTF();
+                    typetab.ViewType = TableViewType.Parse(viewType);
+
+                    if (typetab.ViewType == null)
+                    {
                         throw new FormatException(
-                            $"Katalógová tabuľa {tcatalog.Key} obsahuje v type {typetab.ViewType.Key} neplatný počet riadkov - \"{typetab.CountLinesRecord}\" (počet má byť číslo)");
+                            $"Katalógová tabuľa {tcatalog.Key} obsahuje neplatný typ zobrazenia (TYPE_VIEW_TAB_KEY): {viewType}.");
+                    }
+
+                    typetab.CountLinesRecord = catalogF.Get(area, $"TYPE_VIEW_TAB_COUNT_LINES_RECORD_{tj.PadZeros()}");
+                    if (!IsInt(typetab.CountLinesRecord))
+                    {
+                        throw new FormatException(
+                            $"Katalógová tabuľa {tcatalog.Key} obsahuje v type zobrazenia {typetab.ViewType.Key} neplatný počet riadkov - \"{typetab.CountLinesRecord}\" (počet má byť číslo).");
+                    }
 
                     var ck = ParseIntOrDefault(catalogF.Get(area, $"TYPE_VIEW_TAB_COUNT_TYPE_MODE_{tj.PadZeros()}", false));
                     for (var k = 0; k < ck; k++)
                     {
                         var tk = k + 1;
-                        var ttmi = new TableTypeModeItem
+                        var ttmi = new TableTypeModeItem();
+
+                        var viewMode = catalogF.Get(area, $"TYPE_MODE_KEY_{tj.PadZeros()}_{tk.PadZeros()}").ANSItoUTF();
+                        ttmi.ViewMode = TableViewMode.Parse(viewMode);
+
+                        if (ttmi.ViewMode == null)
                         {
-                            ViewMode = TableViewMode.Parse(catalogF.Get(area, $"TYPE_MODE_KEY_{tj.PadZeros()}_{tk.PadZeros()}").ANSItoUTF())
-                        };
+                            throw new FormatException(
+                                $"Katalógová tabuľa {tcatalog.Key} obsahuje neplatný typ zobrazenia (TYPE_VIEW_TAB_KEY): {viewMode}.");
+                        }
 
                         var cl = ParseIntOrDefault(catalogF.Get(area, $"TYPE_MODE_COUNT_TYPE_ITEM_{tj.PadZeros()}_{tk.PadZeros()}", false));
                         for (var l = 0; l < cl; l++)
@@ -2237,10 +2307,9 @@ namespace GVDEditor.Tools
                 tcatalogs.Add(tcatalog);
             }
 
+            //TPHYSIC
             var tphysicF = new TXTPropsAreasFields(fileTPhysical);
-
             var countp = int.Parse(tphysicF.Get("MAIN", "COUNT"));
-
             for (var i = 0; i < countp; i++)
             {
                 var tphysical = new TablePhysical();
@@ -2249,8 +2318,8 @@ namespace GVDEditor.Tools
                 var area = $"TABLE_{ti.PadZeros()}";
                 tphysical.Comment = tphysicF.GetComment(area);
 
-                tphysical.Key = tphysicF.Get(area, "KEY").ANSItoUTF();
                 tphysical.Name = tphysicF.Get(area, "NAME").ANSItoUTF();
+                tphysical.Key = CheckKey(tphysicF.Get(area, "KEY").ANSItoUTF(), tphysical.Name, tphysicals);
                 tphysical.ID = ParseIntOrDefault(tphysicF.Get(area, "ID", false));
                 tphysical.CommunicationPort = ParseIntOrDefault(tphysicF.Get(area, "COMUNICATION_PORT", false));
                 tphysical.RecCount = ParseIntOrDefault(tphysicF.Get(area, "REC_COUNT", false));
@@ -2259,23 +2328,16 @@ namespace GVDEditor.Tools
                 tphysical.SaveXML = tphysicF.Get(area, "SAVE_XML", "").ANSItoUTF();
 
                 var catname = tphysicF.Get(area, "CATALOG_KEY").ANSItoUTF();
-                foreach (var tableCatalog in tcatalogs)
-                    if (tableCatalog.Key == catname)
-                    {
-                        tphysical.TableCatalog = tableCatalog;
-                        break;
-                    }
-
+                AssignCatalogToPhysical(tcatalogs, tphysical, catname);
                 if (tphysical.TableCatalog == null)
                     throw new FormatException($"Katalógová tabuľa {catname}, ktorá bola použitá vo fyzickej tabuli {tphysical.Key}, neexistuje.");
 
                 tphysicals.Add(tphysical);
             }
 
+            //TLOGICAL
             var tlogicF = new TXTPropsAreasFields(fileTLogical);
-
             var countl = int.Parse(tlogicF.Get("MAIN", "COUNT"));
-
             for (var i = 0; i < countl; i++)
             {
                 var tlLogical = new TableLogical();
@@ -2284,10 +2346,15 @@ namespace GVDEditor.Tools
                 var area = $"TABLE_{ti.PadZeros()}";
                 tlLogical.Comment = tlogicF.GetComment(area);
 
-                tlLogical.Key = tlogicF.Get(area, "KEY").ANSItoUTF();
                 tlLogical.Name = tlogicF.Get(area, "NAME").ANSItoUTF();
-                tlLogical.ViewType = TableViewType.Parse(tlogicF.Get(area, "TYPE_VIEW").ANSItoUTF());
+                tlLogical.Key = CheckKey(tlogicF.Get(area, "KEY").ANSItoUTF(), tlLogical.Name, tlogicals);
                 tlLogical.TypeViewFlags = tlogicF.Get(area, "TYPE_VIEW_FLAGS").ANSItoUTF();
+                var viewtype = tlogicF.Get(area, "TYPE_VIEW").ANSItoUTF();
+                tlLogical.ViewType = TableViewType.Parse(viewtype);
+                if (tlLogical.ViewType == null)
+                {
+                    throw new FormatException($"Logická tabuľa {tlLogical.Key} obsahuje neplatný typ zobrazenia (TYPE_VIEW): {viewtype}.");
+                }
 
                 for (var j = 0; j < ParseIntOrDefault(tlogicF.Get(area, "COUNT_REC", false)); j++)
                 {
@@ -2300,15 +2367,15 @@ namespace GVDEditor.Tools
                         var tk = k + 1;
 
                         tposition.Position = int.Parse(tlogicF.Get(area, $"POSITION_{tj.PadZeros()}_{tk.PadZeros()}"));
-                        tposition.TypeView = TableViewType.Parse(tlogicF.Get(area, $"TYPE_VIEW_KEY_{tj.PadZeros()}_{tk.PadZeros()}").ANSItoUTF());
+                        var tv = tlogicF.Get(area, $"TYPE_VIEW_KEY_{tj.PadZeros()}_{tk.PadZeros()}").ANSItoUTF();
+                        tposition.TypeView = TableViewType.Parse(tv);
+                        if (tposition.TypeView == null)
+                        {
+                            throw new FormatException($"Logická tabuľa {tlLogical.Key} obsahuje pre neplatný kľúč typu zobrazenia (TYPE_VIEW_KEY_{tj.PadZeros()}_{tk.PadZeros()}): {tv}.");
+                        }
 
                         var fyzname = tlogicF.Get(area, $"PHYSICAL_KEY_{tj.PadZeros()}_{tk.PadZeros()}").ANSItoUTF();
-                        foreach (var physical in tphysicals)
-                            if (physical.Key == fyzname)
-                            {
-                                tposition.TablePhysical = physical;
-                                break;
-                            }
+                        AssignPhysicalToPosition(tphysicals, tposition, fyzname);
 
                         if (tposition.TablePhysical == null)
                             throw new FormatException($"Logická tabuľa {tlLogical.Key} obsahuje neexistujúcu fyzickú tabuľu {fyzname}.");
@@ -2321,16 +2388,42 @@ namespace GVDEditor.Tools
 
                 tlogicals.Add(tlLogical);
             }
+
+            return (tabtabs,tcatalogs,tphysicals,tlogicals);
+        }
+
+        private static void AssignPhysicalToPosition(IEnumerable<TablePhysical> tphysicals, TablePosition tposition, string fyzname)
+        {
+            foreach (var physical in tphysicals)
+            {
+                if (physical.Key == fyzname)
+                {
+                    tposition.TablePhysical = physical;
+                    break;
+                }
+            }
+        }
+
+        private static void AssignCatalogToPhysical(IEnumerable<TableCatalog> tcatalogs, TablePhysical tphysical, string catname)
+        {
+            foreach (var tableCatalog in tcatalogs)
+            {
+                if (tableCatalog.Key == catname)
+                {
+                    tphysical.TableCatalog = tableCatalog;
+                    break;
+                }
+            }
         }
 
         /// <summary>
-        ///     Zapise data o tabuliach do suborov
+        ///     Zapise data o tabuliach do suborov.
         /// </summary>
-        /// <param name="path">cesta do priecinka s datami</param>
-        /// <param name="TabTabs">tabtabs</param>
-        /// <param name="Catalogs">katalogove tabule</param>
-        /// <param name="Physicals">fyzicke tabule</param>
-        /// <param name="Logicals">logicke tabule</param>
+        /// <param name="path">Cesta do priecinka s datami.</param>
+        /// <param name="TabTabs">TabTabs.</param>
+        /// <param name="Catalogs">Katalogove tabule.</param>
+        /// <param name="Physicals">Fyzicke tabule.</param>
+        /// <param name="Logicals">Logicke tabule.</param>
         public static void WriteTables(string path, IEnumerable<TableTabTab> TabTabs, List<TableCatalog> Catalogs,
             List<TablePhysical> Physicals, List<TableLogical> Logicals)
         {
@@ -2339,17 +2432,17 @@ namespace GVDEditor.Tools
             var fileTPhysical = CombinePath(path, FILE_TPHYSIC);
             var fileTLogical = CombinePath(path, FILE_TLOGICAL);
 
+            //TABTABS
             var tabtabF = new TXTPropsAreas(fileTabTab, true);
-
             foreach (var tabTab in TabTabs)
+            {
                 tabtabF.Set(tabTab.Key, tabTab.Text);
-
+            }
             tabtabF.Save();
 
+            //TCATALOG
             var catalogF = new TXTPropsAreasFields(fileTCatalog, true);
-
             catalogF.Set("MAIN", "COUNT", Catalogs.Count);
-
             for (var i = 0; i < Catalogs.Count; i++)
             {
                 var tcatalog = Catalogs[i];
@@ -2358,9 +2451,9 @@ namespace GVDEditor.Tools
                 var area = $"TABLE_{ti.PadZeros()}";
                 catalogF.SetComment(area, tcatalog.Comment);
 
-                catalogF.Set(area, "KEY", tcatalog.Key, WriteType.WRITE_STRING_ANSI);
-                catalogF.Set(area, "NAME", tcatalog.Name, WriteType.WRITE_STRING_ANSI);
-                catalogF.Set(area, "MANUFACTURER_KEY", tcatalog.Manufacturer.Name, WriteType.WRITE_STRING_ANSI);
+                catalogF.Set(area, "KEY", tcatalog.Key, WriteType.WriteStringANSI);
+                catalogF.Set(area, "NAME", tcatalog.Name, WriteType.WriteStringANSI);
+                catalogF.Set(area, "MANUFACTURER_KEY", tcatalog.Manufacturer.Name, WriteType.WriteStringANSI);
                 catalogF.Set(area, "MAX_REC_COUNT", tcatalog.MaxRecCount);
                 catalogF.Set(area, "MIN_HEIGHT", tcatalog.MinHeight);
                 catalogF.Set(area, "NUM_SEGMENTS", tcatalog.NumSegments);
@@ -2382,8 +2475,8 @@ namespace GVDEditor.Tools
                     var item = tcatalog.Items[j];
                     var tj = j + 1;
 
-                    catalogF.Set(area, $"TYPE_ITEMS_KEY_{tj.PadZeros()}", item.Key, WriteType.WRITE_STRING_ANSI);
-                    catalogF.Set(area, $"TYPE_ITEMS_NAME_{tj.PadZeros()}", item.Name, WriteType.WRITE_STRING_ANSI);
+                    catalogF.Set(area, $"TYPE_ITEMS_KEY_{tj.PadZeros()}", item.Key, WriteType.WriteStringANSI);
+                    catalogF.Set(area, $"TYPE_ITEMS_NAME_{tj.PadZeros()}", item.Name, WriteType.WriteStringANSI);
                     catalogF.Set(area, $"TYPE_ITEMS_IDX_{tj.PadZeros()}", item.FillSection.ID);
                     catalogF.Set(area, $"TYPE_ITEMS_LINE_{tj.PadZeros()}", item.Line);
                     catalogF.Set(area, $"TYPE_ITEMS_START_{tj.PadZeros()}", item.Start);
@@ -2392,9 +2485,9 @@ namespace GVDEditor.Tools
                     catalogF.Set(area, $"TYPE_ITEMS_ALIGN_{tj.PadZeros()}", item.Align.ID);
                     catalogF.Set(area, $"TYPE_ITEMS_DIVTYPE_{tj.PadZeros()}", item.DivType.ID);
                     catalogF.Set(area, $"TYPE_ITEMS_TAB1_{tj.PadZeros()}", item.Tab1 == TableTabTab.Empty ? "" : item.Tab1.Key,
-                        WriteType.WRITE_STRING_ANSI);
+                        WriteType.WriteStringANSI);
                     catalogF.Set(area, $"TYPE_ITEMS_TAB2_{tj.PadZeros()}", item.Tab2 == TableTabTab.Empty ? "" : item.Tab2.Key,
-                        WriteType.WRITE_STRING_ANSI);
+                        WriteType.WriteStringANSI);
                 }
 
                 catalogF.Set(area, "COUNT_TYPE_VIEW_TAB", tcatalog.ViewTypeTabs.Count);
@@ -2403,33 +2496,30 @@ namespace GVDEditor.Tools
                     var typetab = tcatalog.ViewTypeTabs[j];
                     var tj = j + 1;
 
-                    catalogF.Set(area, $"TYPE_VIEW_TAB_KEY_{tj.PadZeros()}", typetab.ViewType.Key, WriteType.WRITE_STRING_ANSI);
-                    catalogF.Set(area, $"TYPE_VIEW_TAB_COUNT_LINES_RECORD_{tj.PadZeros()}", typetab.CountLinesRecord, WriteType.WRITE_STRING_ANSI);
+                    catalogF.Set(area, $"TYPE_VIEW_TAB_KEY_{tj.PadZeros()}", typetab.ViewType.Key, WriteType.WriteStringANSI);
+                    catalogF.Set(area, $"TYPE_VIEW_TAB_COUNT_LINES_RECORD_{tj.PadZeros()}", typetab.CountLinesRecord, WriteType.WriteStringANSI);
                     catalogF.Set(area, $"TYPE_VIEW_TAB_COUNT_TYPE_MODE_{tj.PadZeros()}", typetab.TypeModeItems.Count);
                     for (var k = 0; k < typetab.TypeModeItems.Count; k++)
                     {
                         var ttmi = typetab.TypeModeItems[k];
                         var tk = k + 1;
 
-                        catalogF.Set(area, $"TYPE_MODE_KEY_{tj.PadZeros()}_{tk.PadZeros()}", ttmi.ViewMode.Key, WriteType.WRITE_STRING_ANSI);
-                        catalogF.Set(area,
-                            $"TYPE_MODE_COUNT_TYPE_ITEM_{tj.PadZeros()}_{tk.PadZeros()}", ttmi.ItemsKeys.Count);
+                        catalogF.Set(area, $"TYPE_MODE_KEY_{tj.PadZeros()}_{tk.PadZeros()}", ttmi.ViewMode.Key, WriteType.WriteStringANSI);
+                        catalogF.Set(area, $"TYPE_MODE_COUNT_TYPE_ITEM_{tj.PadZeros()}_{tk.PadZeros()}", ttmi.ItemsKeys.Count);
                         for (var l = 0; l < ttmi.ItemsKeys.Count; l++)
                         {
                             var tl = l + 1;
                             catalogF.Set(area, $"TYPE_ITEM_{tj.PadZeros()}_{tk.PadZeros()}_{tl.PadZeros(2)}", ttmi.ItemsKeys[l],
-                                WriteType.WRITE_STRING_ANSI);
+                                WriteType.WriteStringANSI);
                         }
                     }
                 }
             }
-
             catalogF.Save();
 
+            //TPHYSIC
             var tphysicF = new TXTPropsAreasFields(fileTPhysical, true);
-
             tphysicF.Set("MAIN", "COUNT", Physicals.Count);
-
             for (var i = 0; i < Physicals.Count; i++)
             {
                 var tphysical = Physicals[i];
@@ -2438,23 +2528,21 @@ namespace GVDEditor.Tools
                 var area = $"TABLE_{ti.PadZeros()}";
                 tphysicF.SetComment(area, tphysical.Comment);
 
-                tphysicF.Set(area, "KEY", tphysical.Key, WriteType.WRITE_STRING_ANSI);
-                tphysicF.Set(area, "NAME", tphysical.Name, WriteType.WRITE_STRING_ANSI);
+                tphysicF.Set(area, "KEY", tphysical.Key, WriteType.WriteStringANSI);
+                tphysicF.Set(area, "NAME", tphysical.Name, WriteType.WriteStringANSI);
                 tphysicF.Set(area, "ID", tphysical.ID);
                 tphysicF.Set(area, "COMUNICATION_PORT", tphysical.CommunicationPort);
                 tphysicF.Set(area, "REC_COUNT", tphysical.RecCount);
-                tphysicF.Set(area, "REM", tphysical.Rem, WriteType.WRITE_STRING_ANSI_NULLABLE);
-                tphysicF.Set(area, "REVERSE_ARROWS", tphysical.ReverseArrows, WriteType.WRITE_STRING_ANSI_NULLABLE);
-                tphysicF.Set(area, "SAVE_XML", tphysical.SaveXML, WriteType.WRITE_STRING_ANSI);
-                tphysicF.Set(area, "CATALOG_KEY", tphysical.TableCatalog.Key, WriteType.WRITE_STRING_ANSI);
+                tphysicF.Set(area, "REM", tphysical.Rem, WriteType.WriteStringANSINullable);
+                tphysicF.Set(area, "REVERSE_ARROWS", tphysical.ReverseArrows, WriteType.WriteStringANSINullable);
+                tphysicF.Set(area, "SAVE_XML", tphysical.SaveXML, WriteType.WriteStringANSI);
+                tphysicF.Set(area, "CATALOG_KEY", tphysical.TableCatalog.Key, WriteType.WriteStringANSI);
             }
-
             tphysicF.Save();
 
+            //TLOGICAL
             var tlogicF = new TXTPropsAreasFields(fileTLogical, true);
-
             tlogicF.Set("MAIN", "COUNT", Logicals.Count);
-
             for (var i = 0; i < Logicals.Count; i++)
             {
                 var tlLogical = Logicals[i];
@@ -2463,10 +2551,10 @@ namespace GVDEditor.Tools
                 var area = $"TABLE_{ti.PadZeros()}";
                 tlogicF.SetComment(area, tlLogical.Comment);
 
-                tlogicF.Set(area, "KEY", tlLogical.Key, WriteType.WRITE_STRING_ANSI);
-                tlogicF.Set(area, "NAME", tlLogical.Name, WriteType.WRITE_STRING_ANSI);
-                tlogicF.Set(area, "TYPE_VIEW", tlLogical.ViewType.Key, WriteType.WRITE_STRING_ANSI);
-                tlogicF.Set(area, "TYPE_VIEW_FLAGS", tlLogical.TypeViewFlags, WriteType.WRITE_STRING_ANSI_NULLABLE);
+                tlogicF.Set(area, "KEY", tlLogical.Key, WriteType.WriteStringANSI);
+                tlogicF.Set(area, "NAME", tlLogical.Name, WriteType.WriteStringANSI);
+                tlogicF.Set(area, "TYPE_VIEW", tlLogical.ViewType.Key, WriteType.WriteStringANSI);
+                tlogicF.Set(area, "TYPE_VIEW_FLAGS", tlLogical.TypeViewFlags, WriteType.WriteStringANSINullable);
                 tlogicF.Set(area, "COUNT_REC", tlLogical.Records.Count);
 
                 for (var j = 0; j < tlLogical.Records.Count; j++)
@@ -2482,13 +2570,12 @@ namespace GVDEditor.Tools
 
                         tlogicF.Set(area, $"POSITION_{tj.PadZeros()}_{tk.PadZeros()}", tposition.Position);
                         tlogicF.Set(area, $"TYPE_VIEW_KEY_{tj.PadZeros()}_{tk.PadZeros()}", tposition.TypeView.Key,
-                            WriteType.WRITE_STRING_ANSI);
+                            WriteType.WriteStringANSI);
                         tlogicF.Set(area, $"PHYSICAL_KEY_{tj.PadZeros()}_{tk.PadZeros()}", tposition.TablePhysical.Key,
-                            WriteType.WRITE_STRING_ANSI);
+                            WriteType.WriteStringANSI);
                     }
                 }
             }
-
             tlogicF.Save();
         }
 
@@ -2501,7 +2588,7 @@ namespace GVDEditor.Tools
         /// </summary>
         /// <param name="path">cesta do priecinka s datami</param>
         /// <param name="trains">vlaky</param>
-        public static void ReadTTexts(string path, List<Train> trains)
+        public static List<TableText> ReadTTexts(string path, IList<Train> trains)
         {
             var fileTTexts = CombinePath(path, FILE_TTEXTS);
 
@@ -2535,7 +2622,9 @@ namespace GVDEditor.Tools
                         }
 
                     if (realization.Table == null)
+                    {
                         throw new FormatException($"Súbor s textami pre tabule {ttext.Key} obsahuje neexistujúcu katalógovú tabuľu {catname}.");
+                    }
 
                     var realname = ttextsF.Get(area, $"REALIZE_{tj.PadZeros()}_TYPEITEM_KEY").ANSItoUTF();
                     foreach (var item in realization.Table.Items)
@@ -2573,7 +2662,7 @@ namespace GVDEditor.Tools
                 ttexts.Add(ttext);
             }
 
-            GlobData.TableTexts = ttexts;
+            return ttexts;
         }
 
         /// <summary>
@@ -2598,8 +2687,8 @@ namespace GVDEditor.Tools
 
                 ttextsF.SetComment(area, ttext.Comment);
 
-                ttextsF.Set(area, "KEY", ttext.Key, WriteType.WRITE_STRING_ANSI);
-                ttextsF.Set(area, "NAME", ttext.Name, WriteType.WRITE_STRING_ANSI);
+                ttextsF.Set(area, "KEY", ttext.Key, WriteType.WriteStringANSI);
+                ttextsF.Set(area, "NAME", ttext.Name, WriteType.WriteStringANSI);
 
                 ttextsF.Set(area, "REALIZE_COUNT", ttext.Realizations.Count);
                 for (var j = 0; j < ttext.Realizations.Count; j++)
@@ -2607,8 +2696,8 @@ namespace GVDEditor.Tools
                     var realization = ttext.Realizations[j];
                     var tj = j + 1;
 
-                    ttextsF.Set(area, $"REALIZE_{tj.PadZeros()}_CATALOG_KEY", realization.Table.Key, WriteType.WRITE_STRING_ANSI);
-                    ttextsF.Set(area, $"REALIZE_{tj.PadZeros()}_TYPEITEM_KEY", realization.Item.Key, WriteType.WRITE_STRING_ANSI);
+                    ttextsF.Set(area, $"REALIZE_{tj.PadZeros()}_CATALOG_KEY", realization.Table.Key, WriteType.WriteStringANSI);
+                    ttextsF.Set(area, $"REALIZE_{tj.PadZeros()}_TYPEITEM_KEY", realization.Item.Key, WriteType.WriteStringANSI);
                 }
 
                 ttextsF.Set(area, "COUNT", ttext.Trains.Count);
@@ -2619,7 +2708,7 @@ namespace GVDEditor.Tools
 
                     ttextsF.Set(area, $"TRAIN_{tj.PadZeros()}_ID", ttrain.Train.ID);
                     ttextsF.Set(area, $"TRAIN_{tj.PadZeros()}_IDX_FONT", ttrain.FontID);
-                    ttextsF.Set(area, $"TRAIN_{tj.PadZeros()}_TEXT", ttrain.Text, WriteType.WRITE_STRING_ANSI);
+                    ttextsF.Set(area, $"TRAIN_{tj.PadZeros()}_TEXT", ttrain.Text, WriteType.WriteStringANSI);
                 }
             }
 
@@ -2634,7 +2723,7 @@ namespace GVDEditor.Tools
         ///     Vrati typy fontov pre tabule
         /// </summary>
         /// <param name="path">cesta do priecinka s datami</param>
-        public static void ReadTableFonts(string path)
+        public static List<TableFont> ReadTableFonts(string path)
         {
             var fileModeTabs = CombinePath(path, FILE_MODETABS);
 
@@ -2657,8 +2746,7 @@ namespace GVDEditor.Tools
                     Name = modetabsF.Get(area, $"NAME_{pad}").ANSItoUTF(),
                     Size = ParseIntOrDefault(modetabsF.Get(area, $"SIZE_{pad}", false)),
                     Width = ParseIntOrDefault(modetabsF.Get(area, $"WIDTH_{pad}", false)),
-                    IsProportional = Utils.ToBool((byte)ParseIntOrDefault(modetabsF.Get(area, $"PROPORTIONAL_{pad}", false))),
-                    Type = TableFontType.Parse(ParseStringOrDefault(modetabsF.Get(area, $"BOLD_FACE_{pad}", false)).ANSItoUTF()),
+                    IsProportional = ParseIntOrDefault(modetabsF.Get(area, $"PROPORTIONAL_{pad}", false)).ToBool(),
                     FileName = ParseStringOrDefault(modetabsF.Get(area, $"FILE_NAME_{pad}", false)).ANSItoUTF(),
                     IsDia = ParseIntOrDefault(modetabsF.Get(area, $"IS_DIA_{pad}", false)).ToBool(),
                     IsLower = ParseIntOrDefault(modetabsF.Get(area, $"IS_LOWER_{pad}", false)).ToBool(),
@@ -2668,10 +2756,17 @@ namespace GVDEditor.Tools
                     IsSpecAssigment = ParseIntOrDefault(modetabsF.Get(area, $"IS_SPECIAL_ASSIGNMENT_{pad}", false)).ToBool()
                 };
 
+                var type = ParseStringOrDefault(modetabsF.Get(area, $"BOLD_FACE_{pad}", false)).ANSItoUTF();
+                font.Type = TableFontType.Parse(type);
+                if (font.Type == null)
+                {
+                    throw new FormatException($"Písmo tabule {font.Name} má neplatný typ (BOLD_FACE_{pad}): {type}.");
+                }
+
                 fonts.Add(font);
             }
 
-            GlobData.TableFonts = fonts;
+            return fonts;
         }
 
         /// <summary>
@@ -2693,7 +2788,7 @@ namespace GVDEditor.Tools
             const string areaFont = "FONT";
             const string areaAlign = "ALIGN";
 
-            modetabsF.Set("MAIN", "BREAK_CHAR", "#", WriteType.WRITE_STRING_ANSI);
+            modetabsF.Set("MAIN", "BREAK_CHAR", "#", WriteType.WriteStringANSI);
 
             var modes = TableViewMode.GetValues();
             modetabsF.Set(areaMode, "COUNT", modes.Count);
@@ -2702,8 +2797,8 @@ namespace GVDEditor.Tools
                 var mode = modes[i];
                 var ti = i + 1;
 
-                modetabsF.Set(areaMode, $"KEY_{ti.PadZeros()}", mode.Key, WriteType.WRITE_STRING_ANSI);
-                modetabsF.Set(areaMode, $"NAME_{ti.PadZeros()}", mode.Name, WriteType.WRITE_STRING_ANSI);
+                modetabsF.Set(areaMode, $"KEY_{ti.PadZeros()}", mode.Key, WriteType.WriteStringANSI);
+                modetabsF.Set(areaMode, $"NAME_{ti.PadZeros()}", mode.Name, WriteType.WriteStringANSI);
             }
 
             var views = TableViewType.GetValues();
@@ -2713,8 +2808,8 @@ namespace GVDEditor.Tools
                 var type = views[i];
                 var ti = i + 1;
 
-                modetabsF.Set(areatType, $"KEY_{ti.PadZeros()}", type.Key, WriteType.WRITE_STRING_ANSI);
-                modetabsF.Set(areatType, $"NAME_{ti.PadZeros()}", type.Name, WriteType.WRITE_STRING_ANSI);
+                modetabsF.Set(areatType, $"KEY_{ti.PadZeros()}", type.Key, WriteType.WriteStringANSI);
+                modetabsF.Set(areatType, $"NAME_{ti.PadZeros()}", type.Name, WriteType.WriteStringANSI);
             }
 
             var sections = TableFillSection.GetValues();
@@ -2725,7 +2820,7 @@ namespace GVDEditor.Tools
                 var ti = i + 1;
 
                 modetabsF.Set(areaFillSection, $"IDX_{ti.PadZeros()}", fill.ID);
-                modetabsF.Set(areaFillSection, $"NAME_{ti.PadZeros()}", fill.Name, WriteType.WRITE_STRING_ANSI);
+                modetabsF.Set(areaFillSection, $"NAME_{ti.PadZeros()}", fill.Name, WriteType.WriteStringANSI);
             }
 
             var manufactures = TableManufacturer.GetValues();
@@ -2735,23 +2830,24 @@ namespace GVDEditor.Tools
                 var manufacturer = manufactures[i];
                 var ti = i + 1;
 
-                modetabsF.Set(areaManufacturer, $"KEY_{ti.PadZeros()}", manufacturer.Name, WriteType.WRITE_STRING_ANSI);
-                modetabsF.Set(areaManufacturer, $"NAME_{ti.PadZeros()}", manufacturer.Name, WriteType.WRITE_STRING_ANSI);
+                modetabsF.Set(areaManufacturer, $"KEY_{ti.PadZeros()}", manufacturer.Name, WriteType.WriteStringANSI);
+                modetabsF.Set(areaManufacturer, $"NAME_{ti.PadZeros()}", manufacturer.Name, WriteType.WriteStringANSI);
             }
 
             modetabsF.Set(areaFont, "COUNT", fonts.Count);
-            if (!string.IsNullOrEmpty(fontdir)) modetabsF.Set(areaFont, "PATH", fontdir, WriteType.WRITE_STRING_ANSI);
+            if (!string.IsNullOrEmpty(fontdir)) 
+                modetabsF.Set(areaFont, "PATH", fontdir, WriteType.WriteStringANSI);
             for (var i = 0; i < fonts.Count; i++)
             {
                 var font = fonts[i];
                 var ti = i + 1;
 
                 modetabsF.Set(areaFont, $"IDX_{ti.PadZeros()}", font.FontID);
-                modetabsF.Set(areaFont, $"NAME_{ti.PadZeros()}", font.Name, WriteType.WRITE_STRING_ANSI);
+                modetabsF.Set(areaFont, $"NAME_{ti.PadZeros()}", font.Name, WriteType.WriteStringANSI);
                 if (!string.IsNullOrEmpty(font.FileName))
-                    modetabsF.Set(areaFont, $"FILE_NAME_{ti.PadZeros()}", font.Name, WriteType.WRITE_STRING_ANSI);
+                    modetabsF.Set(areaFont, $"FILE_NAME_{ti.PadZeros()}", font.Name, WriteType.WriteStringANSI);
 
-                if (font.Type != null) modetabsF.Set(areaFont, $"BOLD_FACE_{ti.PadZeros()}", font.Type.Key, WriteType.WRITE_STRING_ANSI);
+                if (font.Type != null) modetabsF.Set(areaFont, $"BOLD_FACE_{ti.PadZeros()}", font.Type.Key, WriteType.WriteStringANSI);
 
                 if (font.Size != 0) modetabsF.Set(areaFont, $"SIZE_{ti.PadZeros()}", font.Size);
 
@@ -2774,7 +2870,7 @@ namespace GVDEditor.Tools
                 var ti = i + 1;
 
                 modetabsF.Set(areaAlign, $"IDX_{ti.PadZeros()}", align.ID);
-                modetabsF.Set(areaAlign, $"NAME_{ti.PadZeros()}", align.Name, WriteType.WRITE_STRING_ANSI);
+                modetabsF.Set(areaAlign, $"NAME_{ti.PadZeros()}", align.Name, WriteType.WriteStringANSI);
             }
 
             modetabsF.Save();

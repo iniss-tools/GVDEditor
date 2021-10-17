@@ -14,22 +14,22 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Globalne nastavenia vsetkych GVD v priecinku
+    ///     Dialog - Globalne nastavenia vsetkych GVD v priecinku.
     /// </summary>
     public partial class FGlobalSettings : Form
     {
         /// <summary>
-        ///     Vsetky casy meskani
+        ///     Vsetky casy meskani.
         /// </summary>
         public static readonly BindingList<int> Meskania = new(GlobData.Delays);
 
         /// <summary>
-        ///     Vsetky audio oblasti
+        ///     Vsetky audio oblasti.
         /// </summary>
         public readonly BindingList<Audio> Audios = new(GlobData.Audios);
 
         /// <summary>
-        ///     Vsetky GVD
+        ///     Vsetky grafikony.
         /// </summary>
         public readonly BindingList<GVDDirectory> Grafikony;
 
@@ -37,27 +37,27 @@ namespace GVDEditor.Forms
         private readonly List<Language> RBLangs;
 
         /// <summary>
-        ///     Odstranene grafikony
+        ///     Odstranene grafikony.
         /// </summary>
         public readonly List<GVDDirectory> RemovedGVDs = new();
 
         /// <summary>
-        ///     Vsetky typy vlakov
+        ///     Vsetky typy vlakov.
         /// </summary>
         public readonly BindingList<TrainType> TrainTypes = new(GlobData.TrainsTypes);
 
-        private Color vybrataFarba = Color.White;
+        private Color selectedColor = Color.White;
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FGlobalSettings"/>.
         /// </summary>
-        /// <param name="gvds">vsetky GVD v priecinku</param>
-        /// <param name="openIndex">index TabPage, ktory sa ma otvorit po otvoreni dialogu</param>
+        /// <param name="gvds">Vsetky grafikony v priecinku.</param>
+        /// <param name="openIndex">Index TabPage, ktory sa ma otvorit po otvoreni dialogu.</param>
         public FGlobalSettings(IList<GVDDirectory> gvds, int openIndex = -1)
         {
             InitializeComponent();
             FormUtils.SetFormFont(this);
-            FormUtils.ApplyTheme(this);
+            this.ApplyTheme();
 
             Grafikony = new BindingList<GVDDirectory>(gvds);
 
@@ -102,10 +102,7 @@ namespace GVDEditor.Forms
             if (openIndex != -1) tabControl.SelectTab(openIndex);
         }
 
-        private void bSave_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.OK;
-        }
+        private void bSave_Click(object sender, EventArgs e) => DialogResult = DialogResult.OK;
 
         private void listLanguages_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -221,16 +218,16 @@ namespace GVDEditor.Forms
 
                 nudTabPort.Value = dir.Dir.TablePort ?? 0;
 
-                nudHlaseniePort.Value = dir.Dir.HlaseniePort ?? 0;
+                nudHlaseniePort.Value = dir.Dir.ReportPort ?? 0;
 
-                if (dir.Dir.Farba.HasValue)
+                if (dir.Dir.BackColor.HasValue)
                 {
-                    vybrataFarba = dir.Dir.Farba.Value;
-                    pbColor.BackColor = vybrataFarba;
+                    selectedColor = dir.Dir.BackColor.Value;
+                    pbColor.BackColor = selectedColor;
                 }
                 else
                 {
-                    vybrataFarba = Color.White;
+                    selectedColor = Color.White;
                     pbColor.BackColor = Color.White;
                 }
             }
@@ -241,8 +238,8 @@ namespace GVDEditor.Forms
             var result = colorDialogFarba.ShowDialog();
             if (result == DialogResult.OK)
             {
-                vybrataFarba = colorDialogFarba.Color;
-                pbColor.BackColor = vybrataFarba;
+                selectedColor = colorDialogFarba.Color;
+                pbColor.BackColor = selectedColor;
             }
         }
 
@@ -254,8 +251,8 @@ namespace GVDEditor.Forms
                 var portTab = decimal.ToInt32(nudTabPort.Value);
                 var portHlas = decimal.ToInt32(nudHlaseniePort.Value);
                 dir.Dir.TablePort = portTab == 0 ? null : portTab;
-                dir.Dir.HlaseniePort = portHlas == 0 ? null : portHlas;
-                dir.Dir.Farba = vybrataFarba;
+                dir.Dir.ReportPort = portHlas == 0 ? null : portHlas;
+                dir.Dir.BackColor = selectedColor;
             }
         }
 

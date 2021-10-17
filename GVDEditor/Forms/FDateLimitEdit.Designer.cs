@@ -2,7 +2,7 @@
 
 namespace GVDEditor.Forms
 {
-    partial class FDateRemEdit
+    partial class FDateLimitEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -142,7 +142,7 @@ namespace GVDEditor.Forms
             this.flowLayoutPanel1.Size = new System.Drawing.Size(493, 39);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
-            // FDateRemEdit
+            // FDateLimitEdit
             // 
             this.AcceptButton = this.bSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -155,7 +155,7 @@ namespace GVDEditor.Forms
             this.MaximumSize = new System.Drawing.Size(1920, 168);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(380, 168);
-            this.Name = "FDateRemEdit";
+            this.Name = "FDateLimitEdit";
             this.ShowInTaskbar = false;
             this.Text = "Úprava dátumového obmedzenia vlaku";
             this.Load += new System.EventHandler(this.FDateRemEdit_Load);

@@ -1,0 +1,20 @@
+1.7.3.0
+- V editore TabTab sa zobrazuje horizontálny posuvník
+- Pri spustenom INISSe z GVDEditora je po novom možné INISS vypnuť v miernom režime (odošle sa len správa, aby sa zatvorilo hlavné okno), miesto vynúteného
+	vypnutia programu
+- Interné zmeny
+- Pri úprave fyzickej tabule sa v časti Katalógová tabula nesprávne zobrazovala predtým vybraná katalógová tabuľa
+
+1.7.4.0
+- Pri úprave koľaje sa neukladali zmeny výberu tabúľ na danej koľaji
+- Opravený problém s predvoleným tmavým štýlom
+- Pridaný generátor dát. obm. (z programu DatObm)
+- Zmenená ikona programu
+- Pri nastavení štýlov v nastaveniach programu sa nedalo uložiť písmo  
+- <Použiva verziu frameworku 4.8> - predtym 4.7.2
+
+1.7.5.0
+- Program sa na obrazovkách, ktoré mali iné nastavenie veľkosti komponentov ako 96DPI (100%) javil ako rozmazaný
+- Pri súboroch grafikonu typu CSV sa neignorovali riadky tvorené iba z "white-space" znakov a program to pokladal za chybu
+- Pri čítaní tabúľ z grafikonu sa nekontrola správnosť niektorých hodnôt, kvôli čomu pri následnom ukladaní grafikonu vznikali chyby
+- Program nekontroloval pri načítaní grafikonu kľuče tabúľ

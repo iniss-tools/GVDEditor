@@ -89,12 +89,13 @@ namespace TabTabCompiler.Compilation
 
         private SetFontsTypeBlock ParseSetFontsTypeBlock()
         {
-            var running = true;
             var block = new SetFontsTypeBlock();
+            /*var running = true;
+        
             do
             {
                 break;
-            } while (running);
+            } while (running);*/
             return block;
         }
 
@@ -207,15 +208,15 @@ namespace TabTabCompiler.Compilation
 
         private void ParseSetTextBlock()
         {
-            bool running = true;
-            var tok = tokens.Peek();
-            while (running)
+            //bool running = true;
+            //var tok = tokens.Peek();
+            /*while (running)
             {
                 switch (tok)
                 {
                     
                 }
-            }
+            }*/
         }
 
         private ConditionStmtsBlock ParseConditionStatements()

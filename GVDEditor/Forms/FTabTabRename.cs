@@ -4,8 +4,14 @@ using ToolsCore.Tools;
 
 namespace GVDEditor.Forms
 {
+    /// <summary>
+    ///     Dialog premenovania TabTab.
+    /// </summary>
     internal partial class FTabTabRename : Form
     {
+        /// <summary>
+        ///     Vytvori novy formular typu <see cref="FTabTabRename"/>.
+        /// </summary>
         public FTabTabRename()
         {
             InitializeComponent();
@@ -20,7 +26,7 @@ namespace GVDEditor.Forms
         {
             if (string.IsNullOrEmpty(tbName.Text))
             {
-                Utils.ShowError("Nezadaný názov TabTab");
+                Utils.ShowError(@"Nezadaný názov TabTab");
                 DialogResult = DialogResult.None;
                 return;
             }

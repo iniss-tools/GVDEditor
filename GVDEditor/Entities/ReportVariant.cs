@@ -18,10 +18,7 @@ namespace GVDEditor.Entities
         public string Name { get; set; }
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
 
         /// <summary>
         ///     Vrati predvolene hodnoty variant reportov
@@ -33,10 +30,7 @@ namespace GVDEditor.Entities
             return variants;
         }
 
-        private bool Equals(ReportVariant other)
-        {
-            return Key == other.Key && Name == other.Name;
-        }
+        private bool Equals(ReportVariant other) => Key == other.Key && Name == other.Name;
 
         /// <summary>Determines whether the specified object is equal to the current object.</summary>
         /// <param name="obj">The object to compare with the current object. </param>
@@ -69,10 +63,7 @@ namespace GVDEditor.Entities
         ///     true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise,
         ///     false.
         /// </returns>
-        public static bool operator ==(ReportVariant left, ReportVariant right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(ReportVariant left, ReportVariant right) => Equals(left, right);
 
         /// <summary>
         ///     Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.ReportVariant" /> objects have
@@ -81,10 +72,7 @@ namespace GVDEditor.Entities
         /// <param name="left">The first value to compare.</param>
         /// <param name="right">The second value to compare.</param>
         /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>
-        public static bool operator !=(ReportVariant left, ReportVariant right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(ReportVariant left, ReportVariant right) => !Equals(left, right);
 #pragma warning disable 1591
         public static readonly ReportVariant KratkeHlasenie = new() { Key = 0, Name = "Krátke hlásenie" };
         public static readonly ReportVariant DlheHlasenie = new() { Key = 1, Name = "Dlhé hlásenie" };

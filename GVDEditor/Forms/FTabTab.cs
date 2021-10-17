@@ -13,7 +13,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Nastavenie TabTabs
+    ///     Dialog - Nastavenie TabTabs.
     /// </summary>
     public partial class FTabTab : Form
     {
@@ -36,7 +36,7 @@ namespace GVDEditor.Forms
 
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FTabTab"/>.
         /// </summary>
         public FTabTab(TableTabTab tab = null)
         {
@@ -208,10 +208,7 @@ namespace GVDEditor.Forms
             }
         }
 
-        private void DoRedo()
-        {
-            sc.Redo();
-        }
+        private void DoRedo() => sc.Redo();
 
         private void DoAddTab()
         {
@@ -313,115 +310,49 @@ namespace GVDEditor.Forms
             });
         }
 
-        private void tsbSave_Click(object sender, EventArgs e)
-        {
-            DoSave();
-        }
+        private void tsbSave_Click(object sender, EventArgs e) => DoSave();
 
-        private void tsbSaveAll_Click(object sender, EventArgs e)
-        {
-            DoSaveAll();
-        }
+        private void tsbSaveAll_Click(object sender, EventArgs e) => DoSaveAll();
 
-        private void tsbStorno_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
+        private void tsbStorno_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
 
-        private void tsbUndo_Click(object sender, EventArgs e)
-        {
-            DoUndo();
-        }
+        private void tsbUndo_Click(object sender, EventArgs e) => DoUndo();
 
-        private void tsbRedo_Click(object sender, EventArgs e)
-        {
-            DoRedo();
-        }
+        private void tsbRedo_Click(object sender, EventArgs e) => DoRedo();
 
-        private void tsbAddTab_Click(object sender, EventArgs e)
-        {
-            DoAddTab();
-        }
+        private void tsbAddTab_Click(object sender, EventArgs e) => DoAddTab();
 
-        private void tsbRemoveTab_Click(object sender, EventArgs e)
-        {
-            DoRemoveTab();
-        }
+        private void tsbRemoveTab_Click(object sender, EventArgs e) => DoRemoveTab();
 
-        private void tsbRename_Click(object sender, EventArgs e)
-        {
-            DoRenameTab();
-        }
+        private void tsbRename_Click(object sender, EventArgs e) => DoRenameTab();
 
-        private void tsbFindReplace_Click(object sender, EventArgs e)
-        {
-            DoFindReplace();
-        }
+        private void tsbFindReplace_Click(object sender, EventArgs e) => DoFindReplace();
 
-        private void tsbReformat_Click(object sender, EventArgs e)
-        {
-            DoReformat();
-        }
+        private void tsbReformat_Click(object sender, EventArgs e) => DoReformat();
 
-        private void tsmiSave_Click(object sender, EventArgs e)
-        {
-            DoSave();
-        }
+        private void tsmiSave_Click(object sender, EventArgs e) => DoSave();
 
-        private void tsmiSaveAll_Click(object sender, EventArgs e)
-        {
-            DoSaveAll();
-        }
+        private void tsmiSaveAll_Click(object sender, EventArgs e) => DoSaveAll();
 
-        private void tsmiUndo_Click(object sender, EventArgs e)
-        {
-            DoUndo();
-        }
+        private void tsmiUndo_Click(object sender, EventArgs e) => DoUndo();
 
-        private void tsmiRedo_Click(object sender, EventArgs e)
-        {
-            DoRedo();
-        }
+        private void tsmiRedo_Click(object sender, EventArgs e) => DoRedo();
 
-        private void tsmiCut_Click(object sender, EventArgs e)
-        {
-            sc.Cut();
-        }
+        private void tsmiCut_Click(object sender, EventArgs e) => sc.Cut();
 
-        private void tsmiCopy_Click(object sender, EventArgs e)
-        {
-            sc.Copy();
-        }
+        private void tsmiCopy_Click(object sender, EventArgs e) => sc.Copy();
 
-        private void tsmiPaste_Click(object sender, EventArgs e)
-        {
-            sc.Paste();
-        }
+        private void tsmiPaste_Click(object sender, EventArgs e) => sc.Paste();
 
-        private void tsmiDelete_Click(object sender, EventArgs e)
-        {
-            sc.ReplaceSelection("");
-        }
+        private void tsmiDelete_Click(object sender, EventArgs e) => sc.ReplaceSelection("");
 
-        private void tsmiSelectAll_Click(object sender, EventArgs e)
-        {
-            sc.SelectAll();
-        }
+        private void tsmiSelectAll_Click(object sender, EventArgs e) => sc.SelectAll();
 
-        private void tsmiAddTabTab_Click(object sender, EventArgs e)
-        {
-            DoAddTab();
-        }
+        private void tsmiAddTabTab_Click(object sender, EventArgs e) => DoAddTab();
 
-        private void tsmiDeleteTabTab_Click(object sender, EventArgs e)
-        {
-            DoRemoveTab();
-        }
+        private void tsmiDeleteTabTab_Click(object sender, EventArgs e) => DoRemoveTab();
 
-        private void tsmiRenameTabTab_Click(object sender, EventArgs e)
-        {
-            DoRenameTab();
-        }
+        private void tsmiRenameTabTab_Click(object sender, EventArgs e) => DoRenameTab();
 
         private void scText_StyleNeeded(object sender, StyleNeededEventArgs e)
         {
@@ -465,10 +396,7 @@ namespace GVDEditor.Forms
                 DoSave();
         }
 
-        private void scText_CharAdded(object sender, CharAddedEventArgs e)
-        {
-            InsertMatchedChars(e);
-        }
+        private void scText_CharAdded(object sender, CharAddedEventArgs e) => InsertMatchedChars(e);
 
         private void InsertMatchedChars(CharAddedEventArgs e)
         {

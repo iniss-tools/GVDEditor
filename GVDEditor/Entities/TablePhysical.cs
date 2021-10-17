@@ -1,22 +1,22 @@
 ﻿namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Definuje fyzicku tabulu
+    ///     Definuje fyzicku tabulu.
     /// </summary>
     public sealed class TablePhysical : ITable
     {
         /// <summary>
-        ///     ID tabule
+        ///     Identifikator tabule.
         /// </summary>
         public int ID { get; set; }
 
         /// <summary>
-        ///     Cislo komunikacneho portu ku fyzickej tatuli
+        ///     Cislo komunikacneho portu ku fyzickej tatuli.
         /// </summary>
         public int CommunicationPort { get; set; }
 
         /// <summary>
-        ///     Pocet zaznamou, ktore dokaze tato tabula obsahovat
+        ///     Pocet zaznamou, ktore dokaze tato tabula obsahovat.
         /// </summary>
         public int RecCount { get; set; }
 
@@ -41,17 +41,17 @@
         public TableCatalog TableCatalog { get; set; }
 
         /// <summary>
-        ///     Nazov fyzickej tatule
+        ///     Nazov fyzickej tatule.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        ///     Kluc fyzickej tatule
+        ///     Kluc fyzickej tatule.
         /// </summary>
         public string Key { get; set; }
 
         /// <summary>
-        ///     Textovy komentar ku tabuli
+        ///     Textovy komentar ku tabuli.
         /// </summary>
         public string Comment { get; set; }
 

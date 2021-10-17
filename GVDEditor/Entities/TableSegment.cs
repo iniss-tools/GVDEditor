@@ -1,22 +1,22 @@
 ﻿namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Definuje segment katalogovej tabule
+    ///     Definuje segment katalogovej tabule.
     /// </summary>
     public class TableSegment
     {
         /// <summary>
-        ///     Vyska segmentu
+        ///     Vyska segmentu.
         /// </summary>
         public int Height { get; set; }
 
         /// <summary>
-        ///     Sirka segmentu
+        ///     Sirka segmentu.
         /// </summary>
         public int Width { get; set; }
 
         /// <summary>
-        ///     Velkost pisma segmentu
+        ///     Velkost pisma segmentu.
         /// </summary>
         public int Size { get; set; }
     }

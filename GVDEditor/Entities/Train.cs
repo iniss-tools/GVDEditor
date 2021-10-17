@@ -244,7 +244,7 @@ namespace GVDEditor.Entities
 
             //P2: changing datelimits
             //rovnaky limit pre vsetky varianty
-            var limit = new DateLimit(allvariants[0].ZaciatokPlatnosti, allvariants[0].KoniecPlatnosti, bInsertMarks: false);
+            var limit = new DateLimit(allvariants[0].ZaciatokPlatnosti, allvariants[0].KoniecPlatnosti, insertMarks: false);
             for (var i = 0; i < allvariants.Count; i++) //prechadzam kazdym variantom vlaku
             {
                 allvariants[i].Variant = i + 1; // nastavenie vlastnosti Variant kazdemu vlaku (zacina 1, lebo variant 0 nie je)

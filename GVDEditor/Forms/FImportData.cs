@@ -14,7 +14,7 @@ using TableFileReader = ToolsCore.Tools.TableFileReader;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Import dát zo súborov resp. schránky
+    ///     Dialog - Import dát zo súborov resp. schránky.
     /// </summary>
     public partial class FImportData : Form
     {
@@ -26,14 +26,14 @@ namespace GVDEditor.Forms
 
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FGlobalSettings"/>.
         /// </summary>
-        /// <param name="gvd">aktulny GVD</param>
+        /// <param name="gvd">aktulne vybrany grafikon.</param>
         public FImportData(GVDInfo gvd)
         {
             InitializeComponent();
             FormUtils.SetFormFont(this);
-            FormUtils.ApplyTheme(this);
+            this.ApplyTheme();
 
             Gvd = gvd;
             cbDataType.SelectedIndex = 0;
@@ -53,7 +53,7 @@ namespace GVDEditor.Forms
             }
 
             var required = ImportTrainColumnType.GetRequiredValues();
-            if (!Utils.ContainsAllItems(selectedColumnTypes, required))
+            if (!selectedColumnTypes.ContainsAllItems(required))
             {
                 var text =
                     "Nie sú zadané všetky povinné stĺpce pre import. Povinné stĺpce sú:\r\nSmerovanie vlaku a/alebo stanice vlaku,\r\n";
@@ -70,7 +70,7 @@ namespace GVDEditor.Forms
 
             var trains = new List<Train>(DataTable.Rows.Count);
 
-            if (GlobData.Config.DebugModeGUI == Config.DebugMode.APP_CRASH)
+            if (GlobData.Config.DebugModeGUI == Config.DebugMode.AppCrash)
                 Deserialize();
             else
                 try
@@ -79,20 +79,20 @@ namespace GVDEditor.Forms
                 }
                 catch (Exception ex)
                 {
-                    Utils.ShowError(GlobData.Config.DebugModeGUI == Config.DebugMode.ONLY_MESSAGE ? ex.Message : ex.ToString());
+                    Utils.ShowError(GlobData.Config.DebugModeGUI == Config.DebugMode.OnlyMessage ? ex.Message : ex.ToString());
                     DialogResult = DialogResult.None;
                     return;
                 }
 
             if (rbRemoveAndInsert.Checked)
             {
-                FMain.Trains.Clear();
+                GlobData.Trains.Clear();
 
-                foreach (var train in trains) FMain.Trains.Add(train);
+                foreach (var train in trains) GlobData.Trains.Add(train);
             }
             else if (rbAppend.Checked)
             {
-                foreach (var train in trains) FMain.Trains.Add(train);
+                foreach (var train in trains) GlobData.Trains.Add(train);
             }
 
             DialogResult = DialogResult.OK;
@@ -143,7 +143,7 @@ namespace GVDEditor.Forms
                                     throw new ArgumentException(string.Format(fmtException, data, i + 1, j,
                                         selectedColumnTypes[j], typeof(Operator)));
 
-                                var oper = Operator.GetOperatorFromId(GlobData.Operators, num);
+                                var oper = Operator.GetFromID(GlobData.Operators, num);
 
                                 if (oper == null)
                                     throw new ArgumentException(string.Format(fmtException, data, i + 1, j,
@@ -160,7 +160,7 @@ namespace GVDEditor.Forms
                             }
                             else
                             {
-                                var oper = Operator.GetOperatorFromName(GlobData.Operators, data);
+                                var oper = Operator.GetFromName(GlobData.Operators, data);
                                 train.Operator = oper ?? throw new ArgumentException(string.Format(fmtException, data, i + 1, j,
                                     selectedColumnTypes[j], typeof(Operator)));
                             }
@@ -470,7 +470,7 @@ namespace GVDEditor.Forms
                         string dateRemText;
                         try
                         {
-                            var dateRem = new DateLimit(train.ZaciatokPlatnosti, train.KoniecPlatnosti, bInsertMarks: false);
+                            var dateRem = new DateLimit(train.ZaciatokPlatnosti, train.KoniecPlatnosti, insertMarks: false);
                             dateRemText = dateRem.BitArrayToText(Utils.StringToBitArray(data));
                         }
                         catch (Exception exception)
@@ -497,7 +497,7 @@ namespace GVDEditor.Forms
         {
             if (!Clipboard.ContainsText()) return;
 
-            var reader = new CsvStringReader(Clipboard.GetText());
+            var reader = new CSVStringReader(Clipboard.GetText());
 
             if (reader.RowCount == 0) return;
 
@@ -516,7 +516,7 @@ namespace GVDEditor.Forms
                 text = readerFile.ReadToEnd();
             }
 
-            var reader = new CsvStringReader(text);
+            var reader = new CSVStringReader(text);
 
             if (reader.RowCount == 0) return;
 
@@ -550,7 +550,7 @@ namespace GVDEditor.Forms
                 {
                     for (var i = 0; i < DataTable.Rows.Count; i++)
                     for (var j = 0; j < DataTable.Columns.Count; j++)
-                        DataTable.Rows[i][j] = Utils.ANSItoUTF((string)DataTable.Rows[i][j]);
+                        DataTable.Rows[i][j] = ((string)DataTable.Rows[i][j]).ANSItoUTF();
 
                     break;
                 }
@@ -558,7 +558,7 @@ namespace GVDEditor.Forms
                 {
                     for (var i = 0; i < DataTable.Rows.Count; i++)
                     for (var j = 0; j < DataTable.Columns.Count; j++)
-                        DataTable.Rows[i][j] = Utils.UTFtoANSI((string)DataTable.Rows[i][j]);
+                        DataTable.Rows[i][j] = ((string)DataTable.Rows[i][j]).UTFtoANSI();
 
                     break;
                 }
@@ -691,7 +691,7 @@ namespace GVDEditor.Forms
                         text = readerFile.ReadToEnd();
                     }
 
-                    var readerCSV = new CsvStringReader(text);
+                    var readerCSV = new CSVStringReader(text);
 
                     if (readerCSV.RowCount == 0) return;
 

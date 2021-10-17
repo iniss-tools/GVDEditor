@@ -3,7 +3,7 @@
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Typ písma pre tabule
+    ///     Typ písma pre tabule.
     /// </summary>
     public sealed class TableFontType : Enumeration<TableFontType>
     {
@@ -12,7 +12,7 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     This
+        ///     This.
         /// </summary>
         public TableFontType This => this;
 
@@ -25,9 +25,12 @@ namespace GVDEditor.Entities
             return type switch
             {
                 "" => None,
+                "Tenký" => None,
                 "Tučný" => Bold,
                 "Šikmý" => Italics,
                 "Šikmý a tučný" => BoldItalics,
+                "Špeciálny" => Special,
+                "Speciální" => Special,
                 _ => null
             };
         }
@@ -35,24 +38,29 @@ namespace GVDEditor.Entities
         #region VALUES
 
         /// <summary>
-        ///     Obyčajné písmo
+        ///     Obyčajné písmo.
         /// </summary>
-        public static readonly TableFontType None = new("", "Normálne");
+        public static readonly TableFontType None = new("", "Normálne písmo");
 
         /// <summary>
-        ///     Tučné písmo
+        ///     Tučné písmo.
         /// </summary>
         public static readonly TableFontType Bold = new("Tučný", "Tučné písmo");
 
         /// <summary>
-        ///     Šikmé písmo (kurzíva)
+        ///     Šikmé písmo (kurzíva).
         /// </summary>
         public static readonly TableFontType Italics = new("Šikmý", "Šikmé písmo");
 
         /// <summary>
-        ///     Tučné a šikmé písmo
+        ///     Tučné a šikmé písmo.
         /// </summary>
         public static readonly TableFontType BoldItalics = new("Šikmý a tučný", "Šikmé a tučné písmo");
+
+        /// <summary>
+        ///     Špeciálne písmo.
+        /// </summary>
+        public static readonly TableFontType Special = new("Špeciálny", "Špeciálne písmo");
 
         #endregion
     }

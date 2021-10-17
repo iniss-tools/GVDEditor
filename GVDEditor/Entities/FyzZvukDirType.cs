@@ -17,10 +17,7 @@ namespace GVDEditor.Entities
         public FyzZvukDirType This => this;
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return $"{Name} - {Description}";
-        }
+        public override string ToString() => $"{Name} - {Description}";
 
         /// <summary>
         ///     Prevedie názov priečinka na jeho typ, ak je názov priečinka neznámy, vráti UNCATEGORIZED.

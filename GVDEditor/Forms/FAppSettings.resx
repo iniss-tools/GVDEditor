@@ -208,7 +208,7 @@
     <value>cbDateRemLocate</value>
   </data>
   <data name="&gt;&gt;cbDateRemLocate.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDateRemLocate.Parent" xml:space="preserve">
     <value>pLocalization</value>
@@ -238,7 +238,7 @@
     <value>cbAppLanguage</value>
   </data>
   <data name="&gt;&gt;cbAppLanguage.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbAppLanguage.Parent" xml:space="preserve">
     <value>pLocalization</value>
@@ -331,7 +331,7 @@
     <value>cbLoggingError</value>
   </data>
   <data name="&gt;&gt;cbLoggingError.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbLoggingError.Parent" xml:space="preserve">
     <value>pLogging</value>
@@ -394,7 +394,7 @@
     <value>cbDebugModeGUI</value>
   </data>
   <data name="&gt;&gt;cbDebugModeGUI.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDebugModeGUI.Parent" xml:space="preserve">
     <value>pLogging</value>
@@ -427,7 +427,7 @@
     <value>cbLoggingInfo</value>
   </data>
   <data name="&gt;&gt;cbLoggingInfo.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbLoggingInfo.Parent" xml:space="preserve">
     <value>pLogging</value>
@@ -481,7 +481,7 @@
     <value>nudWordPause</value>
   </data>
   <data name="&gt;&gt;nudWordPause.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudWordPause.Parent" xml:space="preserve">
     <value>pPlaying</value>
@@ -514,7 +514,7 @@
     <value>cbAutoTableText</value>
   </data>
   <data name="&gt;&gt;cbAutoTableText.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbAutoTableText.Parent" xml:space="preserve">
     <value>pObecne</value>
@@ -547,7 +547,7 @@
     <value>cbClassicGUI</value>
   </data>
   <data name="&gt;&gt;cbClassicGUI.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbClassicGUI.Parent" xml:space="preserve">
     <value>pObecne</value>
@@ -580,7 +580,7 @@
     <value>cbMoreInstance</value>
   </data>
   <data name="&gt;&gt;cbMoreInstance.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbMoreInstance.Parent" xml:space="preserve">
     <value>pObecne</value>
@@ -602,14 +602,14 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACC
-        RgAAAk1TRnQBSQFMAgEBCQEAATABAQEwAQEBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
+        RgAAAk1TRnQBSQFMAgEBCQEAATgBAQE4AQEBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
         AwABPAMAAQEBAAEgBgABS/8AXwADFQEdAwoBDf8AOQADIwEzAVoBzAEXAf8DSwGMAwYBCP8AMQADIwEz
-        AVoBzAEXAf8BWgHMARcB/wFgAWwBTwHzAz0BZ/8ALQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
+        AVoBzAEXAf8BWgHMARcB/wFgAWwBUAHzAz0BZ/8ALQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
         AVoBzAEXAf8BZQFoAVMB9AMSARj/ACUAAyMBMwFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
         AVoBzAEXAf8BWgHMARcB/wNWAbMDEgEX/wAdAAMjATMBWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHM
-        ARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFOAX0BMQH6A00Bkv8AGQADIwEzAVoBzAEXAf8BWgHM
+        ARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFNAX0BMgH6A00Bkv8AGQADIwEzAVoBzAEXAf8BWgHM
         ARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
-        AWoBhAFBAfkDLAFD/wARAAMjATMBWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
+        AWoBgwFBAfkDLAFD/wARAAMjATMBWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
         AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/Al4BWwHTAx0BKf8A
         CQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEX
         Af8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8CWgFXAcL/AAUA
@@ -617,10 +617,10 @@
         AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wJUAVIBqAMGAQf/AAUAAyMBMwFa
         AcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEX
         Af8BWgHMARcB/wFaAcwBFwH/AmEBWwHeAxUBHf8ADQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
-        AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFeAWABUQHwAzEBTf8AFQADIwEz
+        AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFeAV8BUgHwAzEBTf8AFQADIwEz
         AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8DRgF+
         AwMBBP8AGQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wNcAcv/ACUA
-        AyMBMwFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wJgAV0B2wMiATH/ACkAAyMBMwFaAcwBFwH/AVoBzAEX
+        AyMBMwFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wJgAV4B2wMiATH/ACkAAyMBMwFaAcwBFwH/AVoBzAEX
         Af8DMgFPBAH/AC0AAyEBMAJRAVABnP8A/wD/AP8AJAAE/wPvAf88AAT/AfcC7wH/AecB3gHWAf8B5wHe
         AdYB/wHnAd4B1gH/AecB3gHWAf8C7wHnBf9sAAHnAdYBxgH/AbUBXgEtAf8BtQFeAS0B/wG1AV4BLQH/
         AbUBXgEtAf8BtQFeAS0B/wG1AV4BLQH/AbUBXgEtAf8B5wHWAcYB/0wAA+cB/wGMAV4BRgH/OAAB9wHv
@@ -1026,7 +1026,7 @@
     <value>cbAutoVariant</value>
   </data>
   <data name="&gt;&gt;cbAutoVariant.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbAutoVariant.Parent" xml:space="preserve">
     <value>pObecne</value>
@@ -1056,7 +1056,7 @@
     <value>cbDisableVariantCheck</value>
   </data>
   <data name="&gt;&gt;cbDisableVariantCheck.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDisableVariantCheck.Parent" xml:space="preserve">
     <value>pObecne</value>
@@ -1083,7 +1083,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pObecne.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>6</value>
   </data>
   <data name="nameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Typ textu</value>
@@ -1215,7 +1215,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pEnvironment.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="pLocalization.Location" type="System.Drawing.Point, System.Drawing">
     <value>282, 11</value>
@@ -1236,7 +1236,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pLocalization.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="bUseStyle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1314,7 +1314,7 @@
     <value>cboxDarkScrollBars</value>
   </data>
   <data name="&gt;&gt;cboxDarkScrollBars.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxDarkScrollBars.Parent" xml:space="preserve">
     <value>exGroupBox2</value>
@@ -1341,7 +1341,7 @@
     <value>cboxDarkTitleBar</value>
   </data>
   <data name="&gt;&gt;cboxDarkTitleBar.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxDarkTitleBar.Parent" xml:space="preserve">
     <value>exGroupBox2</value>
@@ -1368,7 +1368,7 @@
     <value>cboxDefaultStyle</value>
   </data>
   <data name="&gt;&gt;cboxDefaultStyle.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxDefaultStyle.Parent" xml:space="preserve">
     <value>exGroupBox2</value>
@@ -1392,7 +1392,7 @@
     <value>exGroupBox2</value>
   </data>
   <data name="&gt;&gt;exGroupBox2.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;exGroupBox2.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1446,7 +1446,7 @@
     <value>cbColorSettings</value>
   </data>
   <data name="&gt;&gt;cbColorSettings.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbColorSettings.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1575,7 +1575,7 @@
     <value>cbStyles</value>
   </data>
   <data name="&gt;&gt;cbStyles.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbStyles.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1626,7 +1626,7 @@
     <value>cbFontSize</value>
   </data>
   <data name="&gt;&gt;cbFontSize.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbFontSize.Parent" xml:space="preserve">
     <value>exGroupBox3</value>
@@ -1854,7 +1854,7 @@
     <value>cbBold</value>
   </data>
   <data name="&gt;&gt;cbBold.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbBold.Parent" xml:space="preserve">
     <value>exGroupBox1</value>
@@ -1878,7 +1878,7 @@
     <value>exGroupBox1</value>
   </data>
   <data name="&gt;&gt;exGroupBox1.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;exGroupBox1.Parent" xml:space="preserve">
     <value>exGroupBox3</value>
@@ -1899,7 +1899,7 @@
     <value>cbFont</value>
   </data>
   <data name="&gt;&gt;cbFont.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbFont.Parent" xml:space="preserve">
     <value>exGroupBox3</value>
@@ -2037,7 +2037,7 @@
     <value>exGroupBox3</value>
   </data>
   <data name="&gt;&gt;exGroupBox3.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;exGroupBox3.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -2064,7 +2064,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pFontsColors.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>3</value>
   </data>
   <data name="pLogging.Location" type="System.Drawing.Point, System.Drawing">
     <value>282, 11</value>
@@ -2085,7 +2085,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pLogging.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>4</value>
   </data>
   <data name="pPlaying.Location" type="System.Drawing.Point, System.Drawing">
     <value>282, 11</value>
@@ -2106,7 +2106,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pPlaying.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <metadata name="deviceInformationBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 60</value>
@@ -2136,7 +2136,7 @@
     <value>cbFitLastColumn</value>
   </data>
   <data name="&gt;&gt;cbFitLastColumn.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbFitLastColumn.Parent" xml:space="preserve">
     <value>pDesktop</value>
@@ -2310,7 +2310,7 @@
     <value>cboxDateTimeInStateRow</value>
   </data>
   <data name="&gt;&gt;cboxDateTimeInStateRow.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxDateTimeInStateRow.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2340,7 +2340,7 @@
     <value>cbShowRowsHeader</value>
   </data>
   <data name="&gt;&gt;cbShowRowsHeader.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbShowRowsHeader.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2370,7 +2370,7 @@
     <value>rbTS</value>
   </data>
   <data name="&gt;&gt;rbTS.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbTS.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2400,7 +2400,7 @@
     <value>rbMS</value>
   </data>
   <data name="&gt;&gt;rbMS.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbMS.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2430,7 +2430,7 @@
     <value>rbMSandTS</value>
   </data>
   <data name="&gt;&gt;rbMSandTS.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbMSandTS.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2490,7 +2490,7 @@
     <value>cbShowStateRow</value>
   </data>
   <data name="&gt;&gt;cbShowStateRow.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbShowStateRow.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2514,7 +2514,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
     <value>pDesktop</value>
@@ -2541,7 +2541,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pDesktop.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="lShortcutHelp.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2733,7 +2733,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pShortcuts.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2775,7 +2775,7 @@
     <value>cbArgRegister</value>
   </data>
   <data name="&gt;&gt;cbArgRegister.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbArgRegister.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -2829,7 +2829,7 @@
     <value>cboxArgExportTableTexts</value>
   </data>
   <data name="&gt;&gt;cboxArgExportTableTexts.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgExportTableTexts.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -2856,7 +2856,7 @@
     <value>cboxArgAsClient</value>
   </data>
   <data name="&gt;&gt;cboxArgAsClient.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgAsClient.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -2883,7 +2883,7 @@
     <value>cboxArgExportHlasTexts</value>
   </data>
   <data name="&gt;&gt;cboxArgExportHlasTexts.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgExportHlasTexts.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -2910,7 +2910,7 @@
     <value>cboxArgMinimize</value>
   </data>
   <data name="&gt;&gt;cboxArgMinimize.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgMinimize.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -2937,7 +2937,7 @@
     <value>cboxArgMoreInstances</value>
   </data>
   <data name="&gt;&gt;cboxArgMoreInstances.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgMoreInstances.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -2964,7 +2964,7 @@
     <value>groupArguments</value>
   </data>
   <data name="&gt;&gt;groupArguments.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupArguments.Parent" xml:space="preserve">
     <value>pStartup</value>
@@ -2991,7 +2991,7 @@
     <value>cboxManualCmdArgs</value>
   </data>
   <data name="&gt;&gt;cboxManualCmdArgs.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxManualCmdArgs.Parent" xml:space="preserve">
     <value>pStartup</value>
@@ -3012,7 +3012,7 @@
     <value>tbCmdArguments</value>
   </data>
   <data name="&gt;&gt;tbCmdArguments.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbCmdArguments.Parent" xml:space="preserve">
     <value>pStartup</value>
@@ -3072,7 +3072,7 @@
     <value>cbStartINISSAdmin</value>
   </data>
   <data name="&gt;&gt;cbStartINISSAdmin.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbStartINISSAdmin.Parent" xml:space="preserve">
     <value>pStartup</value>
@@ -3099,7 +3099,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pStartup.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>5</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

@@ -3,7 +3,7 @@
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Trieda reprezentujúca priečinok s fyzickými zvukmi vo zvukovej banke
+    ///     Trieda reprezentujúca priečinok s fyzickými zvukmi vo zvukovej banke.
     /// </summary>
     public sealed class FyzZvukDir
     {
@@ -24,32 +24,32 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Názov skupiny so zvukmi
+        ///     Názov skupiny so zvukmi.
         /// </summary>
         public string SoundGroup { get; }
 
         /// <summary>
-        ///     Názov priečinka
+        ///     Názov priečinka.
         /// </summary>
         public string Name { get; }
 
         /// <summary>
-        ///     Relatívna cesta k priečinku (formát: \(nazov))
+        ///     Relatívna cesta k priečinku (formát: \(nazov)).
         /// </summary>
         public string RelativePath { get; }
 
         /// <summary>
-        ///     Počet súborov v priečinku
+        ///     Počet súborov v priečinku.
         /// </summary>
         public int CountFilesInDir { get; }
 
         /// <summary>
-        ///     Typ priečinka podľa zvukov, ktoré obsahuje
+        ///     Typ priečinka podľa zvukov, ktoré obsahuje.
         /// </summary>
         public FyzZvukDirType DirType { get; }
 
         /// <summary>
-        ///     Porovnava priecinky s fyzickymi zvukmi
+        ///     Porovnava priecinky s fyzickymi zvukmi.
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>

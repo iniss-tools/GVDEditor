@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using ExControls;
 using GVDEditor.Entities;
 using GVDEditor.Tools;
 using GVDEditor.XML;
@@ -11,55 +12,54 @@ namespace GVDEditor
 {
     internal static class GlobData
     {
-        public static readonly Encoding ANSIEncoding = Encoding.GetEncoding(1250);
+        public static string INISSDir { get; set; }
+        public static string DATADir { get; set; }
+        public static string RAWBANKDir { get; set; }
 
-        public static string INISSDir;
-        public static string DATADir;
-        public static string RAWBANKDir;
+        public static List<string> INISSExeFiles { get; set; }
 
-        public static List<string> INISSExeFiles;
+        public static List<DirList> GVDDirs { get; set; }
+        public static List<Audio> Audios { get; set; }
 
-        public static List<DirList> GVDDirs;
-        public static List<Audio> Audios;
+        public static List<FyzZvuk> Sounds { get; set; }
+        public static List<Language> Languages { get; set; }
+        public static List<Language> LocalLanguages { get; set; }
+        public static List<Station> Stations { get; set; }
+        public static List<Station> CustomStations { get; set; }
 
-        public static List<FyzZvuk> Sounds;
-        public static List<Language> Languages;
-        public static List<Language> LocalLanguages;
-        public static List<Station> Stations;
-        public static List<Station> CustomStations;
+        public static List<Operator> Operators { get; set; }
 
-        public static List<Operator> Operators;
+        public static ExBindingList<Train> Trains { get; set; } = new();
+        public static List<Track> Tracks { get; set; }
+        public static List<Platform> Platforms { get; set; }
 
-        public static List<Track> Tracks;
-        public static List<Platform> Platforms;
+        public static List<int> Delays { get; set; }
 
-        public static List<int> Delays;
+        public static List<TrainType> TrainsTypes { get; set; }
 
-        public static List<TrainType> TrainsTypes;
+        public static List<string> TrainNames { get; set; }
 
-        public static List<string> TrainNames;
+        public static List<TableTabTab> TabTabs { get; set; }
+        public static List<TableCatalog> TableCatalogs { get; set; }
+        public static List<TablePhysical> TablePhysicals { get; set; }
+        public static List<TableLogical> TableLogicals { get; set; }
+        public static List<TableText> TableTexts { get; set; }
+        public static List<TableFont> TableFonts { get; set; }
+        public static string TableFontDir { get; set; }
 
-        public static List<TableTabTab> TabTabs;
-        public static List<TableCatalog> TableCatalogs;
-        public static List<TablePhysical> TablePhysicals;
-        public static List<TableLogical> TableLogicals;
-        public static List<TableText> TableTexts;
-        public static List<TableFont> TableFonts;
-        public static string TableFontDir;
+        public static List<ReportVariant> ReportVariants { get; set; }
+        public static List<ReportType> ReportTypes { get; set; }
 
-        public static List<ReportVariant> ReportVariants;
-        public static List<ReportType> ReportTypes;
+        public static List<ReportType> ReportTypesV { get; set; }
+        public static List<ReportType> ReportTypesP { get; set; }
+        public static List<ReportType> ReportTypesK { get; set; }
 
-        public static List<ReportType> ReportTypesV;
-        public static List<ReportType> ReportTypesP;
-        public static List<ReportType> ReportTypesK;
+        public static List<Radenie> Radenia { get; set; }
 
-        public static List<Radenie> Radenia;
-
-        public static GVDEditorConfig Config;
-        public static Styles<GVDEditorStyle> Styles;
-        public static GVDEditorStyle UsingStyle;
-        public static bool PrivateFeatures;
+        public static GVDEditorConfig Config { get; set; }
+        public static Styles<GVDEditorStyle> Styles { get; set; }
+        public static GVDEditorStyle UsingStyle { get; set; }
+        public static bool PrivateFeatures { get; set; }
 
         public static void PrepareGlobalData(string pathtoiniss)
         {
@@ -125,5 +125,7 @@ namespace GVDEditor
             {
             }
         }
+
+        
     }
 }

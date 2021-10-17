@@ -14,7 +14,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Nastavenie textov do tabul
+    ///     Dialog - Nastavenie textov do tabul.
     /// </summary>
     public partial class FTableText : Form
     {
@@ -26,17 +26,17 @@ namespace GVDEditor.Forms
         private readonly BindingList<TableTextRealization> TRealizations;
 
         /// <summary>
-        ///     Tieto texty do tabul
+        ///     Tieto texty do tabul.
         /// </summary>
         public TableText ThisTableText;
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FTableText"/>.
         /// </summary>
-        /// <param name="tableText">tieto texty do tabul</param>
-        /// <param name="catalogs">dostupne katalogove tabule</param>
-        /// <param name="gvd">aktualny grafikon</param>
-        /// <param name="row">id riadku v liste</param>
+        /// <param name="tableText">Tieto texty do tabul.</param>
+        /// <param name="catalogs">Dostupne katalogove tabule.</param>
+        /// <param name="gvd">Aktualny grafikon.</param>
+        /// <param name="row">ID riadku v liste.</param>
         public FTableText(TableText tableText, IReadOnlyCollection<TableCatalog> catalogs, GVDInfo gvd, int row)
         {
             InitializeComponent();
@@ -119,10 +119,7 @@ namespace GVDEditor.Forms
             DialogResult = DialogResult.OK;
         }
 
-        private void bStorno_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
+        private void bStorno_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
 
         private void listRealisations_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -243,7 +240,7 @@ namespace GVDEditor.Forms
 
                 TextTrains.Clear();
 
-                foreach (var vlak in FMain.Trains)
+                foreach (var vlak in GlobData.Trains)
                 {
                     var tableTrain = new TableTrain { FontID = -1, Train = vlak };
 
@@ -357,9 +354,6 @@ namespace GVDEditor.Forms
             }
         }
 
-        private void FTableText_HelpButtonClicked(object sender, CancelEventArgs e)
-        {
-            Process.Start(LinkConsts.LINK_TTEXTS);
-        }
+        private void FTableText_HelpButtonClicked(object sender, CancelEventArgs e) => Process.Start(LinkConsts.LINK_TTEXTS);
     }
 }

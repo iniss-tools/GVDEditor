@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using TabTabCompiler.Compilation;
 using TabTabCompiler.Components.AST;
 using TabTabCompiler.Tools;
@@ -26,17 +25,11 @@ namespace TabTabCompiler.Components
         public Position Parse(string name)
         {
             if (PozV.Name.EqualsIgnoreCase(name))
-            {
                 return PozV;
-            }
             if (PozP.Name.EqualsIgnoreCase(name))
-            {
                 return PozP;
-            }
             if (PozK.Name.EqualsIgnoreCase(name))
-            {
                 return PozK;
-            }
 
             return null;
         }
@@ -77,59 +70,34 @@ namespace TabTabCompiler.Components
         public Priznak Parse(string name)
         {
             if (PriznVyl.Name.EqualsIgnoreCase(name))
-            {
                 return PriznVyl;
-            }
             if (PriznVylP.Name.EqualsIgnoreCase(name))
-            {
                 return PriznVylP;
-            }
             if (PriznVylO.Name.EqualsIgnoreCase(name))
-            {
                 return PriznVylO;
-            }
             if (PriznM.Name.EqualsIgnoreCase(name))
-            {
                 return PriznM;
-            }
             if (PriznO.Name.EqualsIgnoreCase(name))
-            {
                 return PriznO;
-            }
             if (PriznD.Name.EqualsIgnoreCase(name))
-            {
                 return PriznD;
-            }
             if (PriznX.Name.EqualsIgnoreCase(name))
-            {
                 return PriznX;
-            }
             if (PriznR.Name.EqualsIgnoreCase(name))
-            {
                 return PriznR;
-            }
             if (PriznL.Name.EqualsIgnoreCase(name))
-            {
                 return PriznL;
-            }
             if (PriznN.Name.EqualsIgnoreCase(name))
-            {
                 return PriznN;
-            }
             if (PriznPre.Name.EqualsIgnoreCase(name))
-            {
                 return PriznPre;
-            }
 
             return null;
         }
 
         /// <summary>Returns a string that represents the current object.</summary>
         /// <returns>A string that represents the current object.</returns>
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
     }
 
     public class State : Statement
@@ -151,22 +119,15 @@ namespace TabTabCompiler.Components
         public static State Parse(string name)
         {
             if (StavOdbaveny.Name.EqualsIgnoreCase(name))
-            {
                 return StavOdbaveny;
-            }
             if (StavStoji.Name.EqualsIgnoreCase(name))
-            {
                 return StavStoji;
-            }
             return null;
         }
 
         /// <summary>Returns a string that represents the current object.</summary>
         /// <returns>A string that represents the current object.</returns>
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
     }
 
     public class TrType : Statement
@@ -218,19 +179,14 @@ namespace TabTabCompiler.Components
             foreach (var trType in TrTypes)
             {
                 if (trType.Name == text || trType.AltName == text)
-                {
                     return trType;
-                }
             }
             return null;
         }
 
         /// <summary>Returns a string that represents the current object.</summary>
         /// <returns>A string that represents the current object.</returns>
-        public override string ToString()
-        {
-            return Key;
-        }
+        public override string ToString() => Key;
 
         public static void Prepare()
         {

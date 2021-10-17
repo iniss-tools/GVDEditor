@@ -7,13 +7,14 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
+    ///     Dialog - Volby importu dat z ELIS suboru.
     /// </summary>
     public partial class FELISOptions : Form
     {
         internal FMain.SendData ResultOptions;
 
         /// <summary>
-        ///     Constructor
+        ///     Vytvori novy formular typu <see cref="FELISOptions"/>.
         /// </summary>
         public FELISOptions()
         {
@@ -51,9 +52,6 @@ namespace GVDEditor.Forms
             DialogResult = DialogResult.OK;
         }
 
-        private void bStorno_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
+        private void bStorno_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
     }
 }

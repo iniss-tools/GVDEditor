@@ -63,10 +63,7 @@ namespace GVDEditor.Entities
         public bool Complement { get; }
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
 
         /// <summary>
         ///     Vrati predvolene typy reportov pre SK ako list

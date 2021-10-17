@@ -3,7 +3,7 @@
     /// <summary>
     ///     Definuje jeden stlpec katalogovej tabule a jeho vlastnosti
     /// </summary>
-    public sealed class TableItem
+    public sealed class TableItem : ITable
     {
         /// <summary>
         ///     Kluc polozky

@@ -4,7 +4,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Typ stĺpca pre imporovanie dát
+    ///     Typ stĺpca pre imporovanie dát.
     /// </summary>
     public sealed class ImportTrainColumnType : Enumeration<ImportTrainColumnType>
     {
@@ -13,7 +13,7 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Vráti všetky požadované typy stĺpcov pre importovanie dát
+        ///     Vráti všetky požadované typy stĺpcov pre importovanie dát.
         /// </summary>
         /// <returns>všetky požadované typy stĺpcov</returns>
         public static List<ImportTrainColumnType> GetRequiredValues()
@@ -29,121 +29,100 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Konvertuje názov stĺpca na objekt
+        ///     Konvertuje názov stĺpca na objekt.
         /// </summary>
         /// <param name="name">názov stĺpca ako reťazec</param>
         /// <returns>objekt <see cref="ImportTrainColumnType" /> alebo <see cref="None" /> ak sa nenašla žiadna zhoda</returns>
         public static ImportTrainColumnType ParseColumnName(string name)
         {
             if (string.IsNullOrEmpty(name)) return None;
-            switch (name.ToLower().Replace("-", ""))
+            return name.ToLower().Replace("-", "") switch
             {
-                case "číslo":
-                case "cislo":
-                case "number":
-                    return Number;
-                case "typ":
-                case "type":
-                    return Type;
-                case "variant":
-                case "varianta":
-                    return Variant;
-                case "názov":
-                case "nazov":
-                case "název":
-                case "nazev":
-                case "názov vlaku":
-                case "nazov vlaku":
-                case "název vlaku":
-                case "nazev vlaku":
-                case "name":
-                    return Nazov;
-                case "príchod":
-                case "příjezd":
-                case "prichod":
-                case "arrival":
-                    return Prichod;
-                case "odchod":
-                case "odjezd":
-                case "departure":
-                    return Odchod;
-                case "daterem":
-                case "datum. obm.":
-                case "dátum. obm.":
-                case "datum. om.":
-                case "dátumové obmedzenie":
-                case "datumové omezení":
-                    return DateRemText;
-                case "platnosť od":
-                case "platnost od":
-                    return PlatnostOd;
-                case "platnosť do":
-                case "platnost do":
-                    return PlatnostDo;
-                case "dopravca id":
-                case "dopravce id":
-                case "id dopravca":
-                case "id dopravce":
-                    return DopravcaId;
-                case "dopravca":
-                case "dopravce":
-                case "název dopravce":
-                case "názov dopravcu":
-                    return DopravcaName;
-                case "kolaj":
-                case "kolej":
-                case "track":
-                    return Track;
-                case "jazyky":
-                case "languages":
-                case "jazyk":
-                case "language":
-                    return Languages;
-                case "linka odchod":
-                case "linka odjezd":
-                    return LinkaOdchod;
-                case "linka príchod":
-                case "linka příjezd":
-                case "linka prijezd":
-                case "linka prichod":
-                    return LinkaPrichod;
-                case "routing":
-                case "smerovanie":
-                case "směrování":
-                case "smerovani":
-                    return Routing;
-                case "trasy":
-                case "všetky stanice":
-                case "všechny stanice":
-                case "vsetky stanice":
-                case "vsechny stanice":
-                case "all stations":
-                    return AllStationsID;
-                case "stahlasb":
-                case "stanice kratke hlasenie":
-                case "stanice krátke hlásenie":
-                case "stanice kratke hlaseni":
-                case "stanice krátke hlášeni":
-                case "stanice kratke":
-                case "stanice krátke":
-                    return StationsShortID;
-                case "stahlasc":
-                case "stanice dlhe hlasenie":
-                case "stanice dlhé hlásenie":
-                case "stanice dlouhe hlaseni":
-                case "stanice dlhé hlášeni":
-                case "stanice dlhe":
-                case "stanice dlhé":
-                case "stanice dlouhe":
-                case "stanice dlouhé":
-                    return StationsLongID;
-                case "attributes":
-                case "atributy":
-                case "atribúty":
-                    return Attributes;
-                default:
-                    return None;
-            }
+                "číslo" => Number,
+                "cislo" => Number,
+                "number" => Number,
+                "typ" => Type,
+                "type" => Type,
+                "variant" => Variant,
+                "varianta" => Variant,
+                "názov" => Nazov,
+                "nazov" => Nazov,
+                "název" => Nazov,
+                "nazev" => Nazov,
+                "názov vlaku" => Nazov,
+                "nazov vlaku" => Nazov,
+                "název vlaku" => Nazov,
+                "nazev vlaku" => Nazov,
+                "name" => Nazov,
+                "príchod" => Prichod,
+                "příjezd" => Prichod,
+                "prichod" => Prichod,
+                "arrival" => Prichod,
+                "odchod" => Odchod,
+                "odjezd" => Odchod,
+                "departure" => Odchod,
+                "daterem" => DateRemText,
+                "datum. obm." => DateRemText,
+                "dátum. obm." => DateRemText,
+                "datum. om." => DateRemText,
+                "dátumové obmedzenie" => DateRemText,
+                "datumové omezení" => DateRemText,
+                "platnosť od" => PlatnostOd,
+                "platnost od" => PlatnostOd,
+                "platnosť do" => PlatnostDo,
+                "platnost do" => PlatnostDo,
+                "dopravca id" => DopravcaId,
+                "dopravce id" => DopravcaId,
+                "id dopravca" => DopravcaId,
+                "id dopravce" => DopravcaId,
+                "dopravca" => DopravcaName,
+                "dopravce" => DopravcaName,
+                "název dopravce" => DopravcaName,
+                "názov dopravcu" => DopravcaName,
+                "kolaj" => Track,
+                "kolej" => Track,
+                "track" => Track,
+                "jazyky" => Languages,
+                "languages" => Languages,
+                "jazyk" => Languages,
+                "language" => Languages,
+                "linka odchod" => LinkaOdchod,
+                "linka odjezd" => LinkaOdchod,
+                "linka príchod" => LinkaPrichod,
+                "linka příjezd" => LinkaPrichod,
+                "linka prijezd" => LinkaPrichod,
+                "linka prichod" => LinkaPrichod,
+                "routing" => Routing,
+                "smerovanie" => Routing,
+                "směrování" => Routing,
+                "smerovani" => Routing,
+                "trasy" => AllStationsID,
+                "všetky stanice" => AllStationsID,
+                "všechny stanice" => AllStationsID,
+                "vsetky stanice" => AllStationsID,
+                "vsechny stanice" => AllStationsID,
+                "all stations" => AllStationsID,
+                "stahlasb" => StationsShortID,
+                "stanice kratke hlasenie" => StationsShortID,
+                "stanice krátke hlásenie" => StationsShortID,
+                "stanice kratke hlaseni" => StationsShortID,
+                "stanice krátke hlášeni" => StationsShortID,
+                "stanice kratke" => StationsShortID,
+                "stanice krátke" => StationsShortID,
+                "stahlasc" => StationsLongID,
+                "stanice dlhe hlasenie" => StationsLongID,
+                "stanice dlhé hlásenie" => StationsLongID,
+                "stanice dlouhe hlaseni" => StationsLongID,
+                "stanice dlhé hlášeni" => StationsLongID,
+                "stanice dlhe" => StationsLongID,
+                "stanice dlhé" => StationsLongID,
+                "stanice dlouhe" => StationsLongID,
+                "stanice dlouhé" => StationsLongID,
+                "attributes" => Attributes,
+                "atributy" => Attributes,
+                "atribúty" => Attributes,
+                _ => None
+            };
         }
 
         #region VALUES

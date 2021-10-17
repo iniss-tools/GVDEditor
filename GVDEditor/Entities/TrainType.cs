@@ -3,14 +3,14 @@
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Reprezentuje typ vlaku
+    ///     Reprezentuje typ vlaku.
     /// </summary>
     public sealed class TrainType
     {
         /// <summary>
-        ///     Konstruktor pre definovanie predvoleneho typu vlaku
+        ///     Konstruktor pre definovanie predvoleneho typu vlaku.
         /// </summary>
-        /// <param name="key">kluc typu vlaku</param>
+        /// <param name="key">Kluc typu vlaku.</param>
         public TrainType(string key)
         {
             Key = key;
@@ -20,7 +20,7 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Konstruktor pre definovanie pouzivatelom definovaneho typu vlaku
+        ///     Konstruktor pre definovanie pouzivatelom definovaneho typu vlaku.
         /// </summary>
         /// <param name="categoryTrain"></param>
         /// <param name="key"></param>
@@ -34,38 +34,35 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Kluc typu vlaku
+        ///     Kluc typu vlaku.
         /// </summary>
         public string Key { get; }
 
         /// <summary>
-        ///     Ci je pouzivatelom definovany
+        ///     Ci je pouzivatelom definovany.
         /// </summary>
         public bool IsCustom { get; }
 
         /// <summary>
-        ///     Vrati text na tabuli, ktory sa ma zobrazovat na mieste typu vlaku
+        ///     Vrati text na tabuli, ktory sa ma zobrazovat na mieste typu vlaku.
         /// </summary>
         public string TextInTable { get; }
 
         /// <summary>
-        ///     kategoria typu vlaku
+        ///     Kategoria typu vlaku.
         /// </summary>
         public string CategoryTrain { get; set; }
 
         /// <summary>
-        ///     This
+        ///     This.
         /// </summary>
         public TrainType This => this;
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Key;
-        }
+        public override string ToString() => Key;
 
         /// <summary>
-        ///     Zisti, ci zadany retazec reprezentuje predvoleny typ vlaku
+        ///     Zisti, ci zadany retazec reprezentuje predvoleny typ vlaku.
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -100,7 +97,7 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Vrati vsetky predvolene typy vlakov
+        ///     Vrati vsetky predvolene typy vlakov.
         /// </summary>
         /// <returns></returns>
         public static List<TrainType> GetDefaultValues()

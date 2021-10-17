@@ -2,15 +2,15 @@
 {
     /// <summary>
     ///     Spojenie vlastností <see cref="DirList" /> a <see cref="GVDInfo" /> s ďalšími vlastnosťami
-    ///     (používa sa len pre potreby GUI)
+    ///     (používa sa len pre potreby GUI).
     /// </summary>
     public sealed class GVDDirectory
     {
         /// <summary>
         ///     Vytvori novu instanciu triedy <see cref="GVDDirectory"/>.
         /// </summary>
-        /// <param name="dir">informácie o priečinku s grafikonom</param>
-        /// <param name="gvd">informácie grafiku</param>
+        /// <param name="dir">Informácie o priečinku s grafikonom.</param>
+        /// <param name="gvd">Informácie grafiku.</param>
         public GVDDirectory(DirList dir, GVDInfo gvd)
         {
             Period = gvd.StartValidTimeTable.Year + "/" + gvd.EndValidTimeTable.Year;
@@ -24,17 +24,17 @@
         public string Period { get; }
 
         /// <summary>
-        ///     Formátovaný reťazec obdobia (názov stanice + obdobie)
+        ///     Formátovaný reťazec obdobia (názov stanice + obdobie).
         /// </summary>
         public string PeriodFormatted => GVD.ThisStation.Name + " " + Period;
 
         /// <summary>
-        ///     Priečinok s dátami grafikonu
+        ///     Priečinok s dátami grafikonu.
         /// </summary>
         public DirList Dir { get; }
 
         /// <summary>
-        ///     Informácie o grafikone
+        ///     Informácie o grafikone.
         /// </summary>
         public GVDInfo GVD { get; }
 

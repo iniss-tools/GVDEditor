@@ -9,23 +9,23 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Nastavenie fyzickej tabule
+    ///     Dialog - Nastavenie fyzickej tabule.
     /// </summary>
     public partial class FTablePhysical : Form
     {
         private readonly bool copy;
 
         /// <summary>
-        ///     Tato fyzicka tabula
+        ///     Fyzicka tabula, ktoru upravuje tento dialog.
         /// </summary>
         public TablePhysical ThisTable;
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FTablePhysical"/>.
         /// </summary>
-        /// <param name="table">tato tabula</param>
-        /// <param name="catalogs">dostupne kataloge tabule</param>
-        /// <param name="copy">ci sa jedna o kopiu</param>
+        /// <param name="table">Upravujuca tabula.</param>
+        /// <param name="catalogs">Dostupne kataloge tabule.</param>
+        /// <param name="copy">Ci sa jedna o kopiu.</param>
         public FTablePhysical(TablePhysical table, BindingList<TableCatalog> catalogs, bool copy = false)
         {
             InitializeComponent();
@@ -102,10 +102,7 @@ namespace GVDEditor.Forms
             DialogResult = DialogResult.OK;
         }
 
-        private void bStorno_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
+        private void bStorno_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
 
         private void cbXML_CheckedChanged(object sender, EventArgs e)
         {

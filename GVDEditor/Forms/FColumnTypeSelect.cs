@@ -7,13 +7,15 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Vyber stlpca pre import
+    ///     Dialog - Vyber stlpca pre import.
     /// </summary>
     public partial class FColumnTypeSelect : Form
     {
         private readonly List<ImportTrainColumnType> columnTypes = ImportTrainColumnType.GetValues();
 
-        /// <inheritdoc />
+        /// <summary>
+        ///     Vytvori novy formular typu <see cref="FColumnTypeSelect"/>.
+        /// </summary>
         public FColumnTypeSelect()
         {
             InitializeComponent();
@@ -24,7 +26,7 @@ namespace GVDEditor.Forms
         }
 
         /// <summary>
-        ///     Vracia stlpec vybrany pouzivatelom
+        ///     Vracia stlpec vybrany pouzivatelom.
         /// </summary>
         public ImportTrainColumnType SelectedType { get; private set; }
 

@@ -9,7 +9,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Analyza grafikonu
+    ///     Dialog - Analyza grafikonu.
     /// </summary>
     public partial class FAnalyzer : Form
     {
@@ -17,9 +17,9 @@ namespace GVDEditor.Forms
         private BindingList<IProblem> Problems;
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FAnalyzer"/>.
         /// </summary>
-        /// <param name="gvd"></param>
+        /// <param name="gvd">Aktualne vybrany grafikon na analyzovanie.</param>
         public FAnalyzer(GVDDirectory gvd)
         {
             InitializeComponent();
@@ -28,15 +28,9 @@ namespace GVDEditor.Forms
             GVD = gvd;
         }
 
-        private void bOK_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.OK;
-        }
+        private void bOK_Click(object sender, EventArgs e) => DialogResult = DialogResult.OK;
 
-        private void bAnalyze_Click(object sender, EventArgs e)
-        {
-            bgWorkAnalyze.RunWorkerAsync();
-        }
+        private void bAnalyze_Click(object sender, EventArgs e) => bgWorkAnalyze.RunWorkerAsync();
 
         private void dgvResults_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -119,13 +113,13 @@ namespace GVDEditor.Forms
             switch (res)
             {
                 case FixResult.ERROR:
-                    Utils.ShowError($"Počas operácie sa vyskytla chyba: {error!.Message}");
+                    Utils.ShowError(@$"Počas operácie sa vyskytla chyba: {error!.Message}");
                     break;
                 case FixResult.NOT_SOLVED:
-                    Utils.ShowWarning("Používateľ chybu neopravil.");
+                    Utils.ShowWarning(@"Používateľ chybu neopravil.");
                     break;
                 case FixResult.DONE:
-                    Utils.ShowInfo("Problém bol opravený.");
+                    Utils.ShowInfo(@"Problém bol opravený.");
                     Problems.Remove(problem);
                     break;
             }

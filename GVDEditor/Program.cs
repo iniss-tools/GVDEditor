@@ -72,7 +72,7 @@ namespace GVDEditor
                 Application.SetCompatibleTextRenderingDefault(false);
             }
 
-            var culture = CultureInfo.CreateSpecificCulture(GlobData.Config.Language == Config.AppLanguage.CZ ? "cs" : "sk");
+            var culture = CultureInfo.CreateSpecificCulture(GlobData.Config.Language == Config.AppLanguage.Czech ? "cs" : "sk");
 
             Thread.CurrentThread.CurrentUICulture = culture;
             Thread.CurrentThread.CurrentCulture = culture;
@@ -119,7 +119,7 @@ namespace GVDEditor
 
             Log.AppInfo($"Program spustený - v.{Application.ProductVersion} - \"{Application.ExecutablePath}\"");
 
-            DateLimit.Loc = GlobData.Config.DateRemLocate == Config.AppLanguage.CZ ? DateLimit.Locale.CZ : DateLimit.Locale.SK;
+            DateLimit.Loc = GlobData.Config.DateRemLocate == Config.AppLanguage.Czech ? DateLimit.Locale.CZ : DateLimit.Locale.SK;
 
             Application.Run(new FMain());
 

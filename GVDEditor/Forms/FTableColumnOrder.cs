@@ -11,7 +11,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Nastavenie poradia stlpcov katalogej tabule
+    ///     Dialog - Nastavenie poradia stlpcov katalogej tabule.
     /// </summary>
     public partial class FTableColumnOrder : Form
     {
@@ -28,10 +28,10 @@ namespace GVDEditor.Forms
         private TableViewType selectedType;
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FTableColumnOrder"/>.
         /// </summary>
-        /// <param name="items">stlpce</param>
-        /// <param name="itemsTypeTabs">typy pohladov</param>
+        /// <param name="items">Stlpce.</param>
+        /// <param name="itemsTypeTabs">Typy pohladov.</param>
         public FTableColumnOrder(IList<TableItem> items, IList<TableViewTypeTab> itemsTypeTabs)
         {
             InitializeComponent();
@@ -102,22 +102,26 @@ namespace GVDEditor.Forms
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-            if (listColumns.SelectedIndex != -1) OrderedItems.Add((TableItem)listColumns.SelectedItem);
+            if (listColumns.SelectedIndex != -1) 
+                OrderedItems.Add((TableItem)listColumns.SelectedItem);
         }
 
         private void listColumns_DoubleClick(object sender, EventArgs e)
         {
-            if (listColumns.SelectedIndex != -1) OrderedItems.Add((TableItem)listColumns.SelectedItem);
+            if (listColumns.SelectedIndex != -1) 
+                OrderedItems.Add((TableItem)listColumns.SelectedItem);
         }
 
         private void listOrder_DoubleClick(object sender, EventArgs e)
         {
-            if (listOrder.SelectedIndex != -1) OrderedItems.RemoveAt(listOrder.SelectedIndex);
+            if (listOrder.SelectedIndex != -1) 
+                OrderedItems.RemoveAt(listOrder.SelectedIndex);
         }
 
         private void bDelete_Click(object sender, EventArgs e)
         {
-            if (listOrder.SelectedIndex != -1) OrderedItems.RemoveAt(listOrder.SelectedIndex);
+            if (listOrder.SelectedIndex != -1) 
+                OrderedItems.RemoveAt(listOrder.SelectedIndex);
         }
 
         private void bSetForAll_Click(object sender, EventArgs e)
@@ -156,7 +160,6 @@ namespace GVDEditor.Forms
         private void bSave_Click(object sender, EventArgs e)
         {
             SaveTypeModeItems();
-
             DialogResult = DialogResult.OK;
         }
 
@@ -166,10 +169,7 @@ namespace GVDEditor.Forms
             listOrder.DoDragDrop(listOrder.SelectedItem, DragDropEffects.Move);
         }
 
-        private void listOrder_DragOver(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Move;
-        }
+        private void listOrder_DragOver(object sender, DragEventArgs e) => e.Effect = DragDropEffects.Move;
 
         private void listOrder_DragDrop(object sender, DragEventArgs e)
         {
@@ -229,9 +229,7 @@ namespace GVDEditor.Forms
             }
         }
 
-        private void FTableColumnOrder_HelpButtonClicked(object sender, CancelEventArgs e)
-        {
+        private void FTableColumnOrder_HelpButtonClicked(object sender, CancelEventArgs e) => 
             Process.Start(LinkConsts.LINK_TCOLUMN_ORDER);
-        }
     }
 }

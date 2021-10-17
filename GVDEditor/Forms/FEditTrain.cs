@@ -14,7 +14,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Uprava/pridanie vlaku
+    ///     Dialog - Uprava/pridanie vlaku.
     /// </summary>
     public partial class FEditTrain : Form
     {
@@ -41,7 +41,7 @@ namespace GVDEditor.Forms
         private string linkaPrichod = "", linkaOdchod = "";
 
         /// <summary>
-        ///     index riadku na pracovnej ploche
+        ///     Index riadku na pracovnej ploche.
         /// </summary>
         public int Row;
 
@@ -50,19 +50,19 @@ namespace GVDEditor.Forms
         private string tbCisloOldValue = "";
 
         /// <summary>
-        ///     tento vlak
+        ///     Vlak, s ktorym tento dialog pracuje.
         /// </summary>
         public Train ThisTrain;
 
         private List<ReportType> VybraneReporty;
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FEditTrain"/>.
         /// </summary>
-        /// <param name="train">upravovany vlak</param>
-        /// <param name="row">index riadku na prac. ploche</param>
-        /// <param name="gvd">vybrane GVD</param>
-        /// <param name="copy">ci sa jedna o kopiu vlaku</param>
+        /// <param name="train">Upravovany vlak.</param>
+        /// <param name="row">Index riadku na prac. ploche.</param>
+        /// <param name="gvd">Vybrane GVD.</param>
+        /// <param name="copy">Ci sa jedna o kopiu vlaku.</param>
         public FEditTrain(Train train, int row, GVDInfo gvd, bool copy = false)
         {
             InitializeComponent();
@@ -76,7 +76,8 @@ namespace GVDEditor.Forms
 
             cbTyp.DataSource = GlobData.TrainsTypes;
 
-            foreach (var name in GlobData.TrainNames) TrainNames.Add(name);
+            foreach (var name in GlobData.TrainNames) 
+                TrainNames.Add(name);
 
             if (GlobData.Config.AutoVariant) nudVarianta.Enabled = false;
 
@@ -110,7 +111,7 @@ namespace GVDEditor.Forms
 
             var lenDoplnky = new List<FyzZvuk>();
             foreach (var snd in GlobData.Sounds)
-                if (Utils.EqualsIgnoreCase(snd.Dir.Name, "DODATKY"))
+                if (snd.Dir.Name.EqualsIgnoreCase("DODATKY"))
                     lenDoplnky.Add(snd);
 
             listAllDoplnky.DataSource = lenDoplnky;
@@ -145,7 +146,7 @@ namespace GVDEditor.Forms
                 bDoplnkyDelete.Enabled = false;
             }
 
-            FormUtils.ApplyTheme(this);
+            this.ApplyTheme();
 
             initialization = false;
         }
@@ -173,9 +174,11 @@ namespace GVDEditor.Forms
             cbDopravca.SelectedItem = ThisTrain.Operator;
 
 
-            if (ThisTrain.Arrival != null) mtPrichod.Text = ThisTrain.Arrival?.ToString("HH:mm");
+            if (ThisTrain.Arrival != null) 
+                mtPrichod.Text = ThisTrain.Arrival?.ToString("HH:mm");
 
-            if (ThisTrain.Departure != null) mtOdchod.Text = ThisTrain.Departure?.ToString("HH:mm");
+            if (ThisTrain.Departure != null) 
+                mtOdchod.Text = ThisTrain.Departure?.ToString("HH:mm");
 
 
             cbKolajPrichod.SelectedItem = ThisTrain.Track;
@@ -403,7 +406,7 @@ namespace GVDEditor.Forms
 
             var id = 0;
             var seltrains = new List<Train>();
-            foreach (var vlak in FMain.Trains)
+            foreach (var vlak in GlobData.Trains)
             {
                 if (Train.IsSameVariant(train, vlak) && Row != id)
                 {
@@ -454,7 +457,7 @@ namespace GVDEditor.Forms
 
                         if (result == DialogResult.Yes)
                         {
-                            var fDateRemEdit = new FDateRemEdit(train, seltrain.DateLimitText, platnostOd, platnostDo);
+                            var fDateRemEdit = new FDateLimitEdit(train, seltrain.DateLimitText, platnostOd, platnostDo);
                             var result2 = fDateRemEdit.ShowDialog();
                             if (result2 == DialogResult.OK)
                                 seltrain.DateLimitText = fDateRemEdit.DateRemEdited;
@@ -491,7 +494,7 @@ namespace GVDEditor.Forms
 
             GlobData.Radenia.AddRange(newrads);
 
-            foreach (var vlak in FMain.Trains)
+            foreach (var vlak in GlobData.Trains)
                 if (train.Number == vlak.Number)
                 {
                     vlak.Radenia.AddRange(newrads);
@@ -546,7 +549,7 @@ namespace GVDEditor.Forms
                 if (!string.IsNullOrEmpty(tbCislo.Text))
                 {
                     var i = 0;
-                    foreach (var train in FMain.Trains)
+                    foreach (var train in GlobData.Trains)
                     {
                         var cislo = tbCislo.Text;
                         if (train.Number == cislo && train.Radenia.Count != 0 && Row != i && !copy && !initialization)
@@ -951,7 +954,7 @@ namespace GVDEditor.Forms
 
             foreach (var rad in Radenia)
             {
-                var rem = new DateLimit(rad.ZacPlatnosti, rad.KonPlatnosti, bInsertMarks: false);
+                var rem = new DateLimit(rad.ZacPlatnosti, rad.KonPlatnosti, insertMarks: false);
                 var and = rem.TextAnd(rad.DatObm, tbDateRemRadenie.Text);
                 if (rad.ZacPlatnosti == odP && rad.KonPlatnosti == doP && and != "t.č. nejde" && and != "t.č. nejede")
                 {
@@ -1008,7 +1011,7 @@ namespace GVDEditor.Forms
                 var j = 0;
                 foreach (var rad in Radenia)
                 {
-                    var rem = new DateLimit(rad.ZacPlatnosti, rad.KonPlatnosti, bInsertMarks: false);
+                    var rem = new DateLimit(rad.ZacPlatnosti, rad.KonPlatnosti, insertMarks: false);
                     var and = rem.TextAnd(rad.DatObm, tbDateRemRadenie.Text);
                     if (rad.ZacPlatnosti == odP && rad.KonPlatnosti == doP && and != "t.č. nejde" && and != "t.č. nejede" &&
                         listRadenia.SelectedIndex != j)

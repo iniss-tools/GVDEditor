@@ -3,25 +3,22 @@
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Cislo a varianta vlaku
+    ///     Cislo a varianta vlaku.
     /// </summary>
     public struct NumberVariant : IComparable
     {
         /// <summary>
-        ///     Cislo vlaku
+        ///     Cislo vlaku.
         /// </summary>
         public string Number { get; set; }
 
         /// <summary>
-        ///     Varianta vlaku
+        ///     Varianta vlaku.
         /// </summary>
         public int Variant { get; set; }
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Variant == -1 ? $"{Number}" : $"{Number} v{Variant}";
-        }
+        public override string ToString() => Variant == -1 ? $"{Number}" : $"{Number} v{Variant}";
 
         /// <inheritdoc />
         public int CompareTo(object obj)

@@ -22,7 +22,7 @@ using ShortcutName = ToolsCore.XML.ShortcutName;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Nastavenia programu
+    ///     Dialog - Nastavenia programu.
     /// </summary>
     internal partial class FAppSettings : Form
     {
@@ -42,9 +42,11 @@ namespace GVDEditor.Forms
         private readonly bool initialization;
         private bool argsinit;
 
-        [Localizable(true)] private readonly string lShortcutHelp1 = Resources.FAppSettings_lShortcutHelp1;
+        [Localizable(true)] 
+        private readonly string lShortcutHelp1 = Resources.FAppSettings_lShortcutHelp1;
 
-        [Localizable(true)] private readonly string lShortcutHelp2 = Resources.FAppSettings_lShortcutHelp2;
+        [Localizable(true)] 
+        private readonly string lShortcutHelp2 = Resources.FAppSettings_lShortcutHelp2;
 
         private readonly List<string> SystemFonts = Utils.GetSystemFontNames();
 
@@ -70,7 +72,9 @@ namespace GVDEditor.Forms
 
         private readonly string selectTree;
 
-        /// <inheritdoc />
+        /// <summary>
+        ///     Vytvori novy formular typu <see cref="FAppSettings"/>.
+        /// </summary>
         public FAppSettings(string opentree = null)
         {
             InitializeComponent();
@@ -88,16 +92,16 @@ namespace GVDEditor.Forms
 
             cbDebugModeGUI.SelectedIndex = config.DebugModeGUI switch
             {
-                Config.DebugMode.ONLY_MESSAGE => 0,
-                Config.DebugMode.DETAILED_INFO => 1,
-                Config.DebugMode.APP_CRASH => 2,
+                Config.DebugMode.OnlyMessage => 0,
+                Config.DebugMode.DetailedInfo => 1,
+                Config.DebugMode.AppCrash => 2,
                 _ => 0
             };
 
             cbAppLanguage.SelectedIndex = config.Language switch
             {
-                Config.AppLanguage.SK => 0,
-                Config.AppLanguage.CZ => 1,
+                Config.AppLanguage.Slovak => 0,
+                Config.AppLanguage.Czech => 1,
                 _ => 0
             };
 
@@ -105,20 +109,20 @@ namespace GVDEditor.Forms
 
             cbDateRemLocate.SelectedIndex = config.DateRemLocate switch
             {
-                Config.AppLanguage.SK => 0,
-                Config.AppLanguage.CZ => 1,
+                Config.AppLanguage.Slovak => 0,
+                Config.AppLanguage.Czech => 1,
                 _ => 0
             };
 
             switch (config.DesktopMenuMode)
             {
-                case Config.DesktopMenu.TS_MS:
+                case Config.DesktopMenu.MsTs:
                     rbMSandTS.Checked = true;
                     break;
-                case Config.DesktopMenu.TS_ONLY:
+                case Config.DesktopMenu.TsOnly:
                     rbTS.Checked = true;
                     break;
-                case Config.DesktopMenu.MS_ONLY:
+                case Config.DesktopMenu.MsOnly:
                     rbMS.Checked = true;
                     break;
             }
@@ -182,12 +186,11 @@ namespace GVDEditor.Forms
             }
         }
 
+        //TODO prerobit tuto metodu
         private void InitializeAppColorSettings(GVDEditorStyle style)
         {
             if (style == null)
-            {
                 return;
-            }
 
             GVDEditorSettingsNaming.NameColorSettings(style);
 
@@ -312,40 +315,40 @@ namespace GVDEditor.Forms
             {
                 DebugModeGUI = cbDebugModeGUI.SelectedIndex switch
                 {
-                    0 => Config.DebugMode.ONLY_MESSAGE,
-                    1 => Config.DebugMode.DETAILED_INFO,
-                    2 => Config.DebugMode.APP_CRASH,
-                    _ => Config.DebugMode.ONLY_MESSAGE
+                    0 => Config.DebugMode.OnlyMessage,
+                    1 => Config.DebugMode.DetailedInfo,
+                    2 => Config.DebugMode.AppCrash,
+                    _ => Config.DebugMode.OnlyMessage
                 },
                 Language = cbAppLanguage.SelectedIndex switch
                 {
-                    0 => Config.AppLanguage.SK,
-                    1 => Config.AppLanguage.CZ,
-                    _ => Config.AppLanguage.SK
+                    0 => Config.AppLanguage.Slovak,
+                    1 => Config.AppLanguage.Czech,
+                    _ => Config.AppLanguage.Slovak
                 }
             };
 
             switch (cbDateRemLocate.SelectedIndex)
             {
                 case 0:
-                    config.DateRemLocate = Config.AppLanguage.SK;
+                    config.DateRemLocate = Config.AppLanguage.Slovak;
                     DateLimit.Loc = DateLimit.Locale.SK;
                     break;
                 case 1:
-                    config.DateRemLocate = Config.AppLanguage.CZ;
+                    config.DateRemLocate = Config.AppLanguage.Czech;
                     DateLimit.Loc = DateLimit.Locale.CZ;
                     break;
                 default:
-                    config.DateRemLocate = Config.AppLanguage.SK;
+                    config.DateRemLocate = Config.AppLanguage.Slovak;
                     DateLimit.Loc = DateLimit.Locale.SK;
                     break;
             }
 
             if (rbMSandTS.Checked)
-                config.DesktopMenuMode = Config.DesktopMenu.TS_MS;
+                config.DesktopMenuMode = Config.DesktopMenu.MsTs;
             else if (rbMS.Checked)
-                config.DesktopMenuMode = Config.DesktopMenu.MS_ONLY;
-            else if (rbTS.Checked) config.DesktopMenuMode = Config.DesktopMenu.TS_ONLY;
+                config.DesktopMenuMode = Config.DesktopMenu.MsOnly;
+            else if (rbTS.Checked) config.DesktopMenuMode = Config.DesktopMenu.TsOnly;
 
             config.MoreInstance = cbMoreInstance.Checked;
             config.ClassicGUI = cbClassicGUI.Checked;
@@ -430,6 +433,8 @@ namespace GVDEditor.Forms
             config.Shortcuts.GSTrainTypes = Shortcuts[34];
             config.Shortcuts.GSAudio = Shortcuts[35];
 
+            config.Shortcuts.DatObm = Shortcuts[36];
+
             GlobData.Config = config;
             GlobSettings.Fonts = config.Fonts;
             XMLSerialization.WriteData(Utils.CombinePath(Application.StartupPath, FileConsts.FILE_CONFIG), config);
@@ -488,6 +493,7 @@ namespace GVDEditor.Forms
                 var category = (ColorCategory) cbColorSettings.SelectedItem;
 
                 actualColorSettingsFont = category.Font;
+                actualFontSize = category.Font.Size;
 
                 listSettings.DataSource = null;
                 listSettings.DataSource = category.Settings;
@@ -514,7 +520,14 @@ namespace GVDEditor.Forms
 
         private void bColorsUseDefault_Click(object sender, EventArgs e)
         {
-            InitializeAppColorSettings(new GVDEditorStyle());
+            var style = new GVDEditorStyle();
+            if (cbStyles.SelectedItem is Style { Name: StyleNames.DARK })
+            {
+                style.ControlsColorScheme = Style.SetDefaultDarkControlsScheme();
+                style.TabTabEditorScheme = GVDEditorStyle.SetTabTabEditorSchemeDarkDefault();
+            }
+
+            InitializeAppColorSettings(style);
         }
 
         private void cbFont_SelectedIndexChanged(object sender, EventArgs e)
@@ -712,7 +725,7 @@ namespace GVDEditor.Forms
 
         private void bAppFontDefault_Click(object sender, EventArgs e)
         {
-            var fonts = GVDEditorConfig.SetAppFontsSettingsDefault();
+            var fonts = GVDEditorConfig.GetDefaultAppFontsSettings();
             SettingsNaming.NameAppFontSetting(fonts);
 
             dgvAppFonts.DataSource = null;
@@ -811,7 +824,7 @@ namespace GVDEditor.Forms
 
         private void bAllShortcutsSetDefault_Click(object sender, EventArgs e)
         {
-            var shortcuts = GVDEditorConfig.SetShortcutsSettingsDefault();
+            var shortcuts = GVDEditorConfig.GetDefaultShortcutsSettings();
             GVDEditorSettingsNaming.NameShortcutCommands(shortcuts);
             dgvShortcuts.DataSource = null;
             Shortcuts = new BindingList<CommandShortcut>(shortcuts.GetValues());
@@ -844,7 +857,7 @@ namespace GVDEditor.Forms
 
         private void SetDefaultShortcut(int index)
         {
-            var shortcuts = GVDEditorConfig.SetShortcutsSettingsDefault();
+            var shortcuts = GVDEditorConfig.GetDefaultShortcutsSettings();
             GVDEditorSettingsNaming.NameShortcutCommands(shortcuts);
             Shortcuts[index].Shortcut = shortcuts.GetValues()[index].Shortcut;
             Shortcuts.ResetBindings();
@@ -958,7 +971,7 @@ namespace GVDEditor.Forms
             if (index == -1)
                 return;
 
-            if (Styles[index].Name is Styles<GVDEditorStyle>.DEFAULT_STYLE_NAME or Styles<GVDEditorStyle>.DARK_STYLE_NAME)
+            if (Styles[index].Name is StyleNames.LIGHT or StyleNames.DARK)
             {
                 bRemoveStyle.Enabled = false;
                 bRenameStyle.Enabled = false;

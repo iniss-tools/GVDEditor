@@ -80,7 +80,7 @@ namespace GVDEditor.Entities
         ///     <see langword="true" /> ak sa v poli nachádza prvok s rovnakým kľučom ako zadaný kľúč, inak
         ///     <see langword="false" />
         /// </returns>
-        public static bool ContainsKey(List<Language> languages, string key)
+        public static bool ContainsKey(ICollection<Language> languages, string key)
         {
             if (key == null || languages == null || languages.Count == 0) 
                 return false;

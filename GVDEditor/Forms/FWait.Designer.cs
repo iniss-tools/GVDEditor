@@ -56,6 +56,7 @@
             this.Name = "FWait";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FWait_Paint);
             this.ResumeLayout(false);
             this.PerformLayout();
 

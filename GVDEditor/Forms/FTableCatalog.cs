@@ -12,7 +12,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Nastavenie katalogej tabule
+    ///     Dialog - Nastavenie katalogej tabule.
     /// </summary>
     public partial class FTableCatalog : Form
     {
@@ -28,17 +28,17 @@ namespace GVDEditor.Forms
         private readonly BindingList<TableViewTypeTab> ViewTypeTabs;
 
         /// <summary>
-        ///     Tato katalogova tabula
+        ///     Tato katalogova tabula.
         /// </summary>
         public TableCatalog ThisTable;
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FTableCatalog"/>.
         /// </summary>
-        /// <param name="table">tato tabula</param>
-        /// <param name="tabtabs">tabtabs</param>
-        /// <param name="copy">ci sa jedna o kopiu</param>
-        public FTableCatalog(TableCatalog table, List<TableTabTab> tabtabs, bool copy = false)
+        /// <param name="table">Tato tabula.</param>
+        /// <param name="tabtabs">Tabtabs.</param>
+        /// <param name="copy">Ci sa jedna o kopiu.</param>
+        public FTableCatalog(TableCatalog table, IList<TableTabTab> tabtabs, bool copy = false)
         {
             InitializeComponent();
             FormUtils.SetFormFont(this);
@@ -433,14 +433,12 @@ namespace GVDEditor.Forms
             DialogResult = DialogResult.OK;
         }
 
-        private void bStorno_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
+        private void bStorno_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
 
         private void nudHeight_Validating(object sender, CancelEventArgs e)
         {
-            if (nudHeight.Value > nudMinHeight.Value) e.Cancel = true;
+            if (nudHeight.Value > nudMinHeight.Value) 
+                e.Cancel = true;
         }
 
         private void nudFont_ValueChanged(object sender, EventArgs e)

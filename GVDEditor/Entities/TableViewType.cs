@@ -3,7 +3,7 @@
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Druh tabule
+    ///     Druh tabule.
     /// </summary>
     public sealed class TableViewType : Enumeration<TableViewType>
     {
@@ -12,12 +12,12 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Tento objekt (použitie pre GUI)
+        ///     Tento objekt (použitie pre GUI).
         /// </summary>
         public TableViewType This => this;
 
         /// <summary>
-        ///     Konveruje kľúč druhu tabule na objekt
+        ///     Konveruje kľúč druhu tabule na objekt.
         /// </summary>
         /// <param name="s">kľúč druhu tabule</param>
         /// <returns>druh tabule alebo <see langword="null" /> ak sa nenašla zhoda</returns>
@@ -38,32 +38,32 @@ namespace GVDEditor.Entities
         #region VALUES
 
         /// <summary>
-        ///     Odchodová tabuľa
+        ///     Odchodová tabuľa.
         /// </summary>
         public static readonly TableViewType Odchodova = new("Tabule_Odjezdova", "Odchodová");
 
         /// <summary>
-        ///     Príchodová tabuľa
+        ///     Príchodová tabuľa.
         /// </summary>
         public static readonly TableViewType Prichodova = new("Tabule_Prijezdova", "Prichodová");
 
         /// <summary>
-        ///     Nástupištná tabuľa
+        ///     Nástupištná tabuľa.
         /// </summary>
         public static readonly TableViewType Nastupistna = new("Tabule_Nastupistni", "Nástupištná");
 
         /// <summary>
-        ///     Podchodová tabuľa
+        ///     Podchodová tabuľa.
         /// </summary>
         public static readonly TableViewType Podchodova = new("Tabule_Podchodova", "Podchodová");
 
         /// <summary>
-        ///     Reklamná tabuľa
+        ///     Reklamná tabuľa.
         /// </summary>
         public static readonly TableViewType Reklamna = new("Tabule_Reklamni", "Reklamná");
 
         /// <summary>
-        ///     Iný druh tabule
+        ///     Iný druh tabule.
         /// </summary>
         public static readonly TableViewType Ina = new("Tabule_JinyDruh", "Iná");
 

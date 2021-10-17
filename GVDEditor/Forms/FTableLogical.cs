@@ -11,7 +11,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms
 {
     /// <summary>
-    ///     Dialog - Nastavenie logickej tabule
+    ///     Dialog - Nastavenie logickej tabule.
     /// </summary>
     public partial class FTableLogical : Form
     {
@@ -19,17 +19,17 @@ namespace GVDEditor.Forms
         private readonly BindingList<TableLogicalZostava> TVybrane;
 
         /// <summary>
-        ///     Tato logicka tabula
+        ///     Logicka tabula, ktoru upravuje tento dialog.
         /// </summary>
         public TableLogical ThisTable;
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novy formular typu <see cref="FTableLogical"/>.
         /// </summary>
-        /// <param name="table">tato tabula</param>
-        /// <param name="tables">dostupne fyzicke tabule</param>
-        /// <param name="copy">ci sa jedna o kopiu</param>
-        public FTableLogical(TableLogical table, List<TablePhysical> tables, bool copy = false)
+        /// <param name="table">Upravujuca tabula.</param>
+        /// <param name="tables">Dostupne fyzicke tabule.</param>
+        /// <param name="copy">Ci sa jedna o kopiu.</param>
+        public FTableLogical(TableLogical table, IReadOnlyCollection<TablePhysical> tables, bool copy = false)
         {
             InitializeComponent();
             FormUtils.SetFormFont(this);
@@ -122,10 +122,7 @@ namespace GVDEditor.Forms
             DialogResult = DialogResult.OK;
         }
 
-        private void bStorno_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
+        private void bStorno_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
 
         private void bAddTab_Click(object sender, EventArgs e)
         {

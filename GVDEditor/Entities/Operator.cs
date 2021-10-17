@@ -3,48 +3,39 @@
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Dopravca vlaku (operátor)
+    ///     Dopravca vlaku (operátor).
     /// </summary>
-    public sealed record Operator
+    /// <param name="Id">identifikátor dopravcu</param>
+    /// <param name="Name">názov dopravcu</param>
+    public sealed record Operator(int Id, string Name)
     {
         /// <summary>
-        ///     Predvolený dopravca
+        ///     Predvolený dopravca.
         /// </summary>
         public static readonly Operator None = new(-1, "Žiadny");
 
         /// <summary>
-        ///     Konstruktor
+        ///     Identifikátor dopravcu.
         /// </summary>
-        /// <param name="id">identifikátor dopravcu</param>
-        /// <param name="name">názov dopravcu</param>
-        public Operator(int id, string name)
-        {
-            Id = id;
-            Name = name;
-        }
+        public int Id { get; } = Id;
 
         /// <summary>
-        ///     Identifikátor dopravcu
+        ///     Názov dopravcu.
         /// </summary>
-        public int Id { get; }
+        public string Name { get; set; } = Name;
 
         /// <summary>
-        ///     Názov dopravcu
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        ///     This
+        ///     This.
         /// </summary>
         public Operator This => this;
 
         /// <summary>
-        ///     Vráti dopravcu zo zadaného listu podľa identifikátora dopravcu
+        ///     Vráti dopravcu zo zadaného listu podľa identifikátora dopravcu.
         /// </summary>
         /// <param name="operators">list dopravcov</param>
         /// <param name="id">identifikátor dopravcu</param>
         /// <returns>dopravcu, ak ho nenájde, vráti <see langword="null" /></returns>
-        public static Operator GetOperatorFromId(IEnumerable<Operator> operators, int id)
+        public static Operator GetFromID(IEnumerable<Operator> operators, int id)
         {
             foreach (var dopravca in operators)
                 if (dopravca.Id == id)
@@ -59,7 +50,7 @@ namespace GVDEditor.Entities
         /// <param name="operators">list dopravcov</param>
         /// <param name="name">názov dopravcu</param>
         /// <returns>dopravcu, ak ho nenájde, vráti <see langword="null" /></returns>
-        public static Operator GetOperatorFromName(IEnumerable<Operator> operators, string name)
+        public static Operator GetFromName(IEnumerable<Operator> operators, string name)
         {
             foreach (var dopravca in operators)
                 if (dopravca.Name == name)
@@ -69,9 +60,6 @@ namespace GVDEditor.Entities
         }
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
     }
 }
