@@ -42,14 +42,15 @@ namespace GVDEditor.Entities
         /// <param name="reportTypes">Dostupné typy reportov.</param>
         /// <param name="reportVariants">Dostupné varianty reportov.</param>
         /// <param name="smerovanie">Smerovanie vlaku.</param>
-        /// <returns>dodatkové hlásenie</returns>
+        /// <returns>dodatkové hlásenie.</returns>
         /// <exception cref="FormatException"></exception>
         public static Dodatok NumsToDodatok(FyzZvuk sound, string nums, List<ReportType> reportTypes, List<ReportVariant> reportVariants,
             Routing smerovanie)
         {
             var dodatok = new Dodatok { Sound = sound, Name = sound.Name.Replace("D", "") };
 
-            if (!Utils.IsInt(nums)) throw new FormatException("Pole dodatku neobsahuje iba čísla.");
+            if (!Utils.IsInt(nums)) 
+                throw new FormatException("Pole dodatku neobsahuje iba čísla.");
 
             var numChars = nums.ToCharArray();
 

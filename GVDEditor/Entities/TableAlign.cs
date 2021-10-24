@@ -37,7 +37,7 @@ namespace GVDEditor.Entities
         /// <summary>
         ///     Zarovnanie na stred
         /// </summary>
-        public static readonly TableAlign Center = new(1, "Do stredu");
+        public static readonly TableAlign Center = new(1, "V strede");
 
         /// <summary>
         ///     Zarovnanie vpravo

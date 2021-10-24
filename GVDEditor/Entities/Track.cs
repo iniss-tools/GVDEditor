@@ -4,9 +4,9 @@ using System.Linq;
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Trieda reprezentujuca kolaj
+    ///     Trieda reprezentujuca kolaj v stanici.
     /// </summary>
-    public sealed record Track
+    public sealed record Track()
     {
         /// <summary>
         ///     Predvolená koľaj
@@ -16,18 +16,8 @@ namespace GVDEditor.Entities
         /// <summary>
         ///     Konstruktor
         /// </summary>
-        public Track()
+        public Track(string key, string name, string fullname, Platform nastupiste, string sound, string trackName) : this()
         {
-            Tables = new List<TableLogical>();
-        }
-
-        /// <summary>
-        ///     Konstruktor
-        /// </summary>
-        public Track(string key, string name, string fullname, Platform nastupiste, string sound, string trackName)
-        {
-            Tables = new List<TableLogical>();
-
             Key = key;
             Name = name;
             FullName = fullname;
@@ -69,7 +59,7 @@ namespace GVDEditor.Entities
         /// <summary>
         ///     Logicke tabule nachadzajuce sa na tejto kolaji
         /// </summary>
-        public List<TableLogical> Tables { get; }
+        public List<TableLogical> Tables { get; } = new();
 
         /// <summary>
         ///     Odkaz na seba, pouzite pre DataSource
@@ -87,25 +77,16 @@ namespace GVDEditor.Entities
         /// <param name="tracks"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static Track GetTrackFromId(IEnumerable<Track> tracks, string id)
-        {
-            return tracks.FirstOrDefault(kolaj => kolaj.Key == id);
-        }
+        public static Track GetFromID(IEnumerable<Track> tracks, string id) => tracks.FirstOrDefault(kolaj => kolaj.Key == id);
 
         /// <summary>
         ///     Porovna identifikatory kolaji
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public bool EqualsKeys(Track other)
-        {
-            return other.Key == Key;
-        }
+        public bool EqualsKeys(Track other) => other.Key == Key;
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Key;
-        }
+        public override string ToString() => Key;
     }
 }

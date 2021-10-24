@@ -1,12 +1,12 @@
 ﻿namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Definuje poziciu zaznamu tabule.
+    ///     Reprezentuje poziciu zaznamu tabule.
     /// </summary>
     public sealed class TablePosition
     {
         /// <summary>
-        ///     Ciselna pozicia.
+        ///     Pozicia tabule podla cisla.
         /// </summary>
         public int Position { get; set; }
 
@@ -18,6 +18,6 @@
         /// <summary>
         ///     Fyzicka tabula, na ktorej sa zaznam zobrazuje.
         /// </summary>
-        public TablePhysical TablePhysical { get; set; }
+        public TablePhysical Table { get; set; }
     }
 }

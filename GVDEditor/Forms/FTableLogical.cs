@@ -43,18 +43,18 @@ namespace GVDEditor.Forms
 
             foreach (var record in ThisTable.Records)
             foreach (TablePosition position in record)
-                if (vybrane.Contains(position.TablePhysical))
+                if (vybrane.Contains(position.Table))
                 {
                     foreach (var logicalZostava in zostava.Where(logicalZostava =>
-                        logicalZostava.Table.Equals(position.TablePhysical)))
+                        logicalZostava.Table.Equals(position.Table)))
                         logicalZostava.EndRow = position.Position + 1;
                 }
                 else
                 {
-                    vybrane.Add(position.TablePhysical);
+                    vybrane.Add(position.Table);
                     zostava.Add(new TableLogicalZostava
                     {
-                        Table = position.TablePhysical, StartRow = position.Position + 1, EndRow = position.Position + 1
+                        Table = position.Table, StartRow = position.Position + 1, EndRow = position.Position + 1
                     });
                 }
 
@@ -106,7 +106,7 @@ namespace GVDEditor.Forms
                     if (i >= zostava.StartRow - 1 && i <= zostava.EndRow - 1)
                         positions.Add(new TablePosition
                         {
-                            TablePhysical = zostava.Table, Position = i,
+                            Table = zostava.Table, Position = i,
                             TypeView = (TableViewType)cbTypeView.SelectedItem
                         });
 

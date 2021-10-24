@@ -10,7 +10,6 @@
         /// </summary>
         public static readonly TableTabTab Empty = new() { Key = "Žiadny", Text = "" };
 
-
         /// <summary>
         ///     Kluc TabTab.
         /// </summary>

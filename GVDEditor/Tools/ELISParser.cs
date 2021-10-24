@@ -16,7 +16,7 @@ namespace GVDEditor.Tools
         private const string FORMAT_EX = "Chyba v súbore na riadku {0}. ";
         private const int NOT_SET = -2;
 
-        /// <summary>Initializes a new instance of the <see cref="T:System.Object" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="ELISParser" /> class.</summary>
         public ELISParser(string path, List<Train> definedTrains, List<TrainType> trainTypes, List<Operator> operators, GVDInfo gvd,
             Track defaultTrack)
         {

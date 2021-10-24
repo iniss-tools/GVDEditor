@@ -671,7 +671,7 @@ namespace GVDEditor.Forms
                     foreach (var trecord in tl.Records)
                     {
                         foreach (TablePosition position in trecord)
-                            if (position.TablePhysical == tp)
+                            if (position.Table == tp)
                             {
                                 delete = false;
                                 where += $"Logická tabuľa {tl.Name}, pozícia {position.Position}.";

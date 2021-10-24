@@ -144,7 +144,7 @@ namespace GVDEditor.Tools
                     foreach (var rec in logical.Records)
                     {
                         foreach (var position in rec.Positions)
-                            if (position.TablePhysical == physical)
+                            if (position.Table == physical)
                             {
                                 unused = false;
                                 break;

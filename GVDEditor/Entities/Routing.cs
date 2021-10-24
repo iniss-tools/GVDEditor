@@ -56,32 +56,29 @@ namespace GVDEditor.Entities
         ///     Konvertuje označenie smerovania na objekt a vráti, či sa operácia podarila
         /// </summary>
         /// <param name="s">označenie smerovania</param>
-        /// <param name="exit">výsledné smerovanie</param>
+        /// <param name="routing">výsledné smerovanie</param>
         /// <returns><see langword="true" /> ak sa operácia podarila, inak vráti <see langword="false" /></returns>
-        public static bool TryParse(string s, out Routing exit)
+        public static bool TryParse(string s, out Routing routing)
         {
             switch (s)
             {
                 case "V":
-                    exit = Vychadzajuci;
+                    routing = Vychadzajuci;
                     return true;
                 case "P":
-                    exit = Prechadzajuci;
+                    routing = Prechadzajuci;
                     return true;
                 case "K":
-                    exit = Konciaci;
+                    routing = Konciaci;
                     return true;
                 default:
-                    exit = null;
+                    routing = null;
                     return false;
             }
         }
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Symbol;
-        }
+        public override string ToString() => Symbol;
 
         #region VALUES
 

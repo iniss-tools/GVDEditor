@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ExControls;
+using GVDEditor.Entities;
+using GVDEditor.Properties;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -6,9 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using ExControls;
-using GVDEditor.Entities;
-using GVDEditor.Properties;
 using ToolsCore;
 using ToolsCore.Tools;
 using ToolsCore.XML;
@@ -19,7 +19,7 @@ using static ToolsCore.Tools.Utils;
 namespace GVDEditor.Tools
 {
     /// <summary>
-    ///     Trieda obsahujuca funkcie pre citanie a zapisovanie dat do .TXT suborov
+    ///     Trieda obsahujuca funkcie pre citanie a zapisovanie dat do .TXT suborov.
     /// </summary>
     internal static class TXTParser
     {
@@ -1111,7 +1111,7 @@ namespace GVDEditor.Tools
                         var id = int.Parse(row[0]);
                         var train = vlaky[id - 1];
 
-                        var kolaj = Track.GetTrackFromId(GlobData.Tracks, row[1]);
+                        var kolaj = Track.GetFromID(GlobData.Tracks, row[1]);
                         train.Track = kolaj;
                     }
                     catch (Exception e)
@@ -1974,7 +1974,8 @@ namespace GVDEditor.Tools
                             if (jazyk.Key == array[0])
                                 lang = jazyk;
 
-                        if (lang == null) throw new FormatException($"Jazyk {array[0]} neexistuje.");
+                        if (lang == null) 
+                            throw new FormatException($"Jazyk {array[0]} neexistuje.");
 
                         FyzZvuk zvuk = null;
                         var formated = array[1];
@@ -2057,15 +2058,23 @@ namespace GVDEditor.Tools
                         sbL1.Append(sound.Text + " ");
                     }
 
-                    if (otherLangs.Count == 1)
+                    switch (otherLangs.Count)
                     {
-                        if (sound.Language == otherLangs[0]) sbL2.Append(sound.Text + " ");
-                    }
-                    else if (otherLangs.Count == 2)
-                    {
-                        if (sound.Language == otherLangs[0]) sbL2.Append(sound.Text + " ");
+                        case 1:
+                        {
+                            if (sound.Language == otherLangs[0]) 
+                                sbL2.Append(sound.Text + " ");
+                            break;
+                        }
+                        case 2:
+                        {
+                            if (sound.Language == otherLangs[0]) 
+                                sbL2.Append(sound.Text + " ");
 
-                        if (sound.Language == otherLangs[1]) sbL3.Append(sound.Text + " ");
+                            if (sound.Language == otherLangs[1]) 
+                                sbL3.Append(sound.Text + " ");
+                            break;
+                        }
                     }
                 }
 
@@ -2092,7 +2101,7 @@ namespace GVDEditor.Tools
         #region TABLES
 
         /// <summary>
-        ///     Inicializuje definicie a vlastnosti tabul do GlobData
+        ///     Inicializuje definicie a vlastnosti tabul
         /// </summary>
         /// <param name="path">cesta do priecinka s datami</param>
         public static (List<TableTabTab>, List<TableCatalog>, List<TablePhysical>, List<TableLogical>) ReadTables(string path)
@@ -2205,41 +2214,8 @@ namespace GVDEditor.Tools
                     var tab1 = catalogF.Get(area, $"TYPE_ITEMS_TAB1_{padded}").ANSItoUTF();
                     var tab2 = catalogF.Get(area, $"TYPE_ITEMS_TAB2_{padded}").ANSItoUTF();
 
-                    if (!string.IsNullOrEmpty(tab1))
-                    {
-                        foreach (var tabtab in tabtabs)
-                            if (tab1 == tabtab.Key)
-                            {
-                                item.Tab1 = tabtab;
-                                break;
-                            }
-
-                        if (item.Tab1 == null)
-                            throw new FormatException(
-                                $"Katalógová tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neexistujúci TABTAB1 {tab1}.");
-                    }
-                    else
-                    {
-                        item.Tab1 = TableTabTab.Empty;
-                    }
-
-                    if (!string.IsNullOrEmpty(tab2))
-                    {
-                        foreach (var tabtab in tabtabs)
-                            if (tab2 == tabtab.Key)
-                            {
-                                item.Tab2 = tabtab;
-                                break;
-                            }
-
-                        if (item.Tab2 == null)
-                            throw new FormatException(
-                                $"Katalógová tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neexistujúci TABTAB2 {tab2}.");
-                    }
-                    else
-                    {
-                        item.Tab2 = TableTabTab.Empty;
-                    }
+                    CheckTabTab(tab1, item, tabtabs, true, tcatalog.Key);
+                    CheckTabTab(tab2, item, tabtabs, false, tcatalog.Key);
 
                     tcatalog.Items.Add(item);
                 }
@@ -2377,7 +2353,7 @@ namespace GVDEditor.Tools
                         var fyzname = tlogicF.Get(area, $"PHYSICAL_KEY_{tj.PadZeros()}_{tk.PadZeros()}").ANSItoUTF();
                         AssignPhysicalToPosition(tphysicals, tposition, fyzname);
 
-                        if (tposition.TablePhysical == null)
+                        if (tposition.Table == null)
                             throw new FormatException($"Logická tabuľa {tlLogical.Key} obsahuje neexistujúcu fyzickú tabuľu {fyzname}.");
 
                         trecord.Positions.Add(tposition);
@@ -2392,13 +2368,39 @@ namespace GVDEditor.Tools
             return (tabtabs,tcatalogs,tphysicals,tlogicals);
         }
 
+        private static void CheckTabTab(string tabkey, TableItem item, IEnumerable<TableTabTab> tabtabs, bool tab1, string catalogKey)
+        {
+            if (!string.IsNullOrEmpty(tabkey))
+            {
+                TableTabTab tab = null;
+                foreach (var tabtab in tabtabs)
+                    if (tabkey == tabtab.Key)
+                    {
+                        tab = tabtab;
+                        break;
+                    }
+
+                if (tab == null)
+                    throw new FormatException(
+                        $"Katalógová tabuľa {catalogKey} obsahuje pre stĺpec {item.Key} neexistujúci {(tab1 ? "TABTAB1" : "TABTAB2")} {tabkey}.");
+                
+                if (tab1) item.Tab1 = tab;
+                else item.Tab2 = tab;
+            }
+            else
+            {
+                if (tab1) item.Tab1 = TableTabTab.Empty;
+                else item.Tab2 = TableTabTab.Empty;
+            }
+        }
+
         private static void AssignPhysicalToPosition(IEnumerable<TablePhysical> tphysicals, TablePosition tposition, string fyzname)
         {
             foreach (var physical in tphysicals)
             {
                 if (physical.Key == fyzname)
                 {
-                    tposition.TablePhysical = physical;
+                    tposition.Table = physical;
                     break;
                 }
             }
@@ -2571,7 +2573,7 @@ namespace GVDEditor.Tools
                         tlogicF.Set(area, $"POSITION_{tj.PadZeros()}_{tk.PadZeros()}", tposition.Position);
                         tlogicF.Set(area, $"TYPE_VIEW_KEY_{tj.PadZeros()}_{tk.PadZeros()}", tposition.TypeView.Key,
                             WriteType.WriteStringANSI);
-                        tlogicF.Set(area, $"PHYSICAL_KEY_{tj.PadZeros()}_{tk.PadZeros()}", tposition.TablePhysical.Key,
+                        tlogicF.Set(area, $"PHYSICAL_KEY_{tj.PadZeros()}_{tk.PadZeros()}", tposition.Table.Key,
                             WriteType.WriteStringANSI);
                     }
                 }

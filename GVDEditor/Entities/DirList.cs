@@ -28,7 +28,8 @@ namespace GVDEditor.Entities
         public int? ReportPort { get; set; }
 
         /// <summary>
-        ///     Vrati alebo nastavi farbu zobrazujúcu v INISS ako farba pozadia vlaku na pracovnej ploche ako odlíšenie od vlakov iných staníc.
+        ///     Vrati alebo nastavi farbu zobrazujúcu v INISS ako farba pozadia vlaku
+        ///     na pracovnej ploche ako odlíšenie od vlakov iných staníc.
         /// </summary>
         public Color? BackColor { get; set; }
     }

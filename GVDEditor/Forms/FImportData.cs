@@ -167,7 +167,7 @@ namespace GVDEditor.Forms
                         }
                         else if (selectedColumnTypes[j] == ImportTrainColumnType.Track)
                         {
-                            var trk = Track.GetTrackFromId(GlobData.Tracks, data);
+                            var trk = Track.GetFromID(GlobData.Tracks, data);
                             train.Track = trk ?? throw new ArgumentException(string.Format(fmtException, data, i + 1, j,
                                 selectedColumnTypes[j], typeof(Track)));
                         }
