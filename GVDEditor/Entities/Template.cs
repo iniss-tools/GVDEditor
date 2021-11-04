@@ -8,15 +8,6 @@ namespace GVDEditor.Entities
     public sealed class Template
     {
         /// <summary>
-        ///     Konstruktor
-        /// </summary>
-        public Template()
-        {
-            Stations = new List<Station>();
-            Trains = new List<Train>();
-        }
-
-        /// <summary>
         ///     Identifikator trasy.
         /// </summary>
         public int ID { get; set; }
@@ -24,11 +15,11 @@ namespace GVDEditor.Entities
         /// <summary>
         ///     Stanice vo vzore trasy.
         /// </summary>
-        public List<Station> Stations { get; set; }
+        public List<Station> Stations { get; set; } = new();
 
         /// <summary>
         ///     Vlaky, ktore maju tuto trasu.
         /// </summary>
-        public List<Train> Trains { get; set; }
+        public List<Train> Trains { get; set; } = new();
     }
 }

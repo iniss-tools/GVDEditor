@@ -38,15 +38,9 @@
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public bool EqualsKeys(Platform other)
-        {
-            return other.Key == Key;
-        }
+        public bool EqualsKeys(Platform other) => other.Key == Key;
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Key;
-        }
+        public override string ToString() => Key;
     }
 }

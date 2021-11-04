@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace GVDEditor.Entities
 {
@@ -37,11 +38,7 @@ namespace GVDEditor.Entities
         /// <returns>dopravcu, ak ho nenájde, vráti <see langword="null" /></returns>
         public static Operator GetFromID(IEnumerable<Operator> operators, int id)
         {
-            foreach (var dopravca in operators)
-                if (dopravca.Id == id)
-                    return dopravca;
-
-            return null;
+            return operators.FirstOrDefault(dopravca => dopravca.Id == id);
         }
 
         /// <summary>
@@ -52,11 +49,7 @@ namespace GVDEditor.Entities
         /// <returns>dopravcu, ak ho nenájde, vráti <see langword="null" /></returns>
         public static Operator GetFromName(IEnumerable<Operator> operators, string name)
         {
-            foreach (var dopravca in operators)
-                if (dopravca.Name == name)
-                    return dopravca;
-
-            return null;
+            return operators.FirstOrDefault(dopravca => dopravca.Name == name);
         }
 
         /// <inheritdoc />

@@ -19,7 +19,7 @@ namespace GVDEditor
     {
         private static readonly string appGuid = ((GuidAttribute) Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(GuidAttribute), true)[0]).Value;
         
-        public static FMain MainForm { get; } = new();
+        public static FMain MainForm { get; private set; }
 
         /// <summary>
         ///     The main entry point for the application.
@@ -123,6 +123,7 @@ namespace GVDEditor
 
             DateLimit.Loc = GlobData.Config.DateRemLocate == Config.AppLanguage.Czech ? DateLimit.Locale.CZ : DateLimit.Locale.SK;
 
+            MainForm = new FMain();
             Application.Run(MainForm);
 
             Log.AppInfo("Program sa ukončuje\r\n");

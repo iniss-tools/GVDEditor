@@ -89,7 +89,7 @@ namespace GVDEditor.Forms
                         return;
                     }
 
-                gvd.ThisStation = new Station(id.ToString(), name, isCustom: true);
+                gvd.ThisStation = new Station(id.ToString(), name, IsCustom: true);
             }
             else
             {

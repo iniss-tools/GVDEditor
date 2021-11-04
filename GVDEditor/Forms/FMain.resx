@@ -247,7 +247,7 @@
     <value>False</value>
   </data>
   <data name="tsmimAddTrain.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ins</value>
+    <value>Insert</value>
   </data>
   <data name="tsmimAddTrain.Size" type="System.Drawing.Size, System.Drawing">
     <value>254, 26</value>
@@ -259,7 +259,7 @@
     <value>False</value>
   </data>
   <data name="tsmimEditTrain.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Shift+Ins</value>
+    <value>Shift+Insert</value>
   </data>
   <data name="tsmimEditTrain.Size" type="System.Drawing.Size, System.Drawing">
     <value>254, 26</value>
@@ -274,7 +274,7 @@
     <value>False</value>
   </data>
   <data name="tsmiDeleteTrain.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Del</value>
+    <value>Delete</value>
   </data>
   <data name="tsmiDeleteTrain.Size" type="System.Drawing.Size, System.Drawing">
     <value>254, 26</value>

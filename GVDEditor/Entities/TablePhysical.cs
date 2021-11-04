@@ -11,7 +11,7 @@
         public int ID { get; set; }
 
         /// <summary>
-        ///     Cislo komunikacneho portu ku fyzickej tatuli.
+        ///     Cislo komunikacneho portu ku fyzickej tabuli.
         /// </summary>
         public int CommunicationPort { get; set; }
 
@@ -36,7 +36,7 @@
         public string SaveXML { get; set; }
 
         /// <summary>
-        ///     Katalogova tabula definujuca obsah tejto fyzickej tabule
+        ///     Katalogova tabula definujuca obsah tejto fyzickej tabule.
         /// </summary>
         public TableCatalog TableCatalog { get; set; }
 
@@ -56,9 +56,6 @@
         public string Comment { get; set; }
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
     }
 }

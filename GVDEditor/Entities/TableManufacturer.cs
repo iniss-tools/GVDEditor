@@ -12,7 +12,7 @@ namespace GVDEditor.Entities
         }
 
         /// <summary>
-        ///     Odkaz na seba, pouzivane pre DataSource
+        ///     Odkaz na seba, pouzivane pre DataSource.
         /// </summary>
         public TableManufacturer This => this;
 
@@ -20,7 +20,7 @@ namespace GVDEditor.Entities
         ///     Konvertuje textove vyjadrenie nazvu typu tabule na objekt. V pripade, ak sa to nepodari, metoda vrati
         ///     <see langword="null" />.
         /// </summary>
-        /// <param name="s"></param>
+        /// <param name="s">Vstupny retazec.</param>
         /// <returns></returns>
         public new static TableManufacturer Parse(string s)
         {

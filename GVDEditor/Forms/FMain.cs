@@ -200,7 +200,7 @@ namespace GVDEditor.Forms
 
             var nastupistia = new HashSet<Platform>();
             foreach (var kolaj in GlobData.Tracks)
-                nastupistia.Add(kolaj.Nastupiste);
+                nastupistia.Add(kolaj.Platform);
             GlobData.Platforms = nastupistia.ToList();
 
             (GlobData.ReportVariants,GlobData.ReportTypes,GlobData.LocalLanguages) = TXTParser.ReadLocalCategori(pathgvd.Path);

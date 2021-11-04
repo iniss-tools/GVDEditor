@@ -37,17 +37,10 @@ namespace GVDEditor.Tools
             };
 
             if (string.IsNullOrEmpty(key))
-            {
                 throw new FormatException($"{tabtype} s názvom {name} nemá zadaný kľúč.");
-            }
 
-            foreach (var item in items)
-            {
-                if (item.Key == key)
-                {
-                    throw new FormatException($"{tabtype} s názvom {name} má kľúč \"{key}\" zhodný s inou tabuľov.");
-                }
-            }
+            if (items.Any(item => item.Key == key))
+                throw new FormatException($"{tabtype} s názvom {name} má kľúč \"{key}\" zhodný s inou tabuľov.");
 
             return key;
         }
@@ -1655,7 +1648,7 @@ namespace GVDEditor.Tools
                         FullName = row[2].ANSItoUTF(),
                         TrackName = row[4],
                         SoundName = row[6],
-                        Nastupiste = new Platform(row[5], row[3].ANSItoUTF(), row[7])
+                        Platform = new Platform(row[5], row[3].ANSItoUTF(), row[7])
                     };
 
                     for (var i = 0; i < ParseIntOrDefault(row[8]); i++)
@@ -1702,11 +1695,11 @@ namespace GVDEditor.Tools
                     track.Key.Quote().UTFtoANSI(),
                     track.Name.Quote().UTFtoANSI(),
                     track.FullName.Quote().UTFtoANSI(),
-                    track.Nastupiste.FullName.Quote().UTFtoANSI(),
+                    track.Platform.FullName.Quote().UTFtoANSI(),
                     track.TrackName.Quote().UTFtoANSI(),
-                    track.Nastupiste.Key.Quote().UTFtoANSI(),
+                    track.Platform.Key.Quote().UTFtoANSI(),
                     track.SoundName.Quote().UTFtoANSI(),
-                    track.Nastupiste.SoundName.Quote().UTFtoANSI(),
+                    track.Platform.SoundName.Quote().UTFtoANSI(),
                     track.Tables.Count.ToString()
                 };
 

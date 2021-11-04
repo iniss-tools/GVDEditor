@@ -607,7 +607,7 @@ namespace GVDEditor.Forms
             if (listStaniceZo.SelectedIndex != -1)
             {
                 var st = (Station)listStaniceZo.SelectedItem;
-                StaniceZo.Add(new Station(st.ID, st.Name, inLongReport: true));
+                StaniceZo.Add(new Station(st.ID, st.Name, IsInLongReport: true));
                 dgvTrasaZo.Rows[StaniceZo.Count - 1].Cells[0].Value = true;
             }
         }
@@ -656,7 +656,7 @@ namespace GVDEditor.Forms
             if (listStaniceDo.SelectedIndex != -1)
             {
                 var st = (Station)listStaniceDo.SelectedItem;
-                StaniceDo.Add(new Station(st.ID, st.Name, inLongReport: true));
+                StaniceDo.Add(new Station(st.ID, st.Name, IsInLongReport: true));
                 dgvTrasaDo.Rows[StaniceDo.Count - 1].Cells[0].Value = true;
             }
         }
@@ -671,7 +671,7 @@ namespace GVDEditor.Forms
             if (listStaniceZo.SelectedIndex != -1)
             {
                 var st = (Station)listStaniceZo.SelectedItem;
-                StaniceZo.Add(new Station(st.ID, st.Name, inLongReport: true));
+                StaniceZo.Add(new Station(st.ID, st.Name, IsInLongReport: true));
             }
         }
 
@@ -680,7 +680,7 @@ namespace GVDEditor.Forms
             if (listStaniceDo.SelectedIndex != -1)
             {
                 var st = (Station)listStaniceDo.SelectedItem;
-                StaniceDo.Add(new Station(st.ID, st.Name, inLongReport: true));
+                StaniceDo.Add(new Station(st.ID, st.Name, IsInLongReport: true));
             }
         }
 

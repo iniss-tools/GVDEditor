@@ -238,7 +238,7 @@ namespace GVDEditor.Forms
             {
                 var id = decimal.ToInt32(nudIDStation.Value).ToString();
                 var name = tbGVDStationName.Text;
-                gvdInfo.ThisStation = new Station(id, name, isCustom: true);
+                gvdInfo.ThisStation = new Station(id, name, IsCustom: true);
             }
             else
             {
@@ -478,7 +478,7 @@ namespace GVDEditor.Forms
                 var nast = Nastupistia[index];
 
                 foreach (var tr in Kolaje)
-                    if (tr.Nastupiste == nast)
+                    if (tr.Platform == nast)
                     {
                         delete = false;
                         where += $"Koľaj {tr.Name}";
@@ -522,7 +522,7 @@ namespace GVDEditor.Forms
                 tbKolajOznacenie.Text = kolaj.Key;
                 tbKolajFullName.Text = kolaj.FullName;
                 tbKolajSound.Text = kolaj.SoundName;
-                cbNastupistia.SelectedItem = kolaj.Nastupiste;
+                cbNastupistia.SelectedItem = kolaj.Platform;
 
                 if (clbKolajTables.Items.Count != 0)
                     for (var i = 0; i < TLogicals.Count; i++)
@@ -552,7 +552,7 @@ namespace GVDEditor.Forms
                 Key = tbKolajOznacenie.Text,
                 FullName = tbKolajFullName.Text,
                 SoundName = tbKolajSound.Text,
-                Nastupiste = (Platform)cbNastupistia.SelectedItem
+                Platform = (Platform)cbNastupistia.SelectedItem
             };
 
             foreach (var test in Kolaje)
@@ -593,7 +593,7 @@ namespace GVDEditor.Forms
                 track.Key = tbKolajOznacenie.Text;
                 track.FullName = tbKolajFullName.Text;
                 track.SoundName = tbKolajSound.Text;
-                track.Nastupiste = (Platform)cbNastupistia.SelectedItem;
+                track.Platform = (Platform)cbNastupistia.SelectedItem;
 
                 track.Tables.Clear();
                 foreach (var item in clbKolajTables.CheckedItems) 

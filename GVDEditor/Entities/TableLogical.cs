@@ -3,17 +3,14 @@
 namespace GVDEditor.Entities
 {
     /// <summary>
-    ///     Definuje logicku tabulu
+    ///     Trieda reprezentujuca logicku tabulu.
     /// </summary>
     public sealed class TableLogical : ITable
     {
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novu instanciu triedy <see cref="TableLogical"/>.
         /// </summary>
-        public TableLogical()
-        {
-            Records = new List<TableRecord>();
-        }
+        public TableLogical() => Records = new List<TableRecord>();
 
         /// <summary>
         ///     Typ pouzitia logickej tabule.

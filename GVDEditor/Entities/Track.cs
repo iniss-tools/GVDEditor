@@ -9,70 +9,65 @@ namespace GVDEditor.Entities
     public sealed record Track()
     {
         /// <summary>
-        ///     Predvolená koľaj
+        ///     Predvolená koľaj - ziadna.
         /// </summary>
         public static readonly Track None = new("K", "K", "Nedefinovaná", Platform.None, "", "Nedefinovaná");
 
         /// <summary>
-        ///     Konstruktor
+        ///     Vytvori novu instanciu triedy typu <see cref="Track"/> so zadanymi vlastnostami.
         /// </summary>
-        public Track(string key, string name, string fullname, Platform nastupiste, string sound, string trackName) : this()
+        public Track(string key, string name, string fullname, Platform platform, string sound, string trackName) : this()
         {
             Key = key;
             Name = name;
             FullName = fullname;
-            Nastupiste = nastupiste;
+            Platform = platform;
             SoundName = sound;
             TrackName = trackName;
         }
 
         /// <summary>
-        ///     Identifikátor kolaje
+        ///     Identifikátor kolaje.
         /// </summary>
         public string Key { get; set; }
 
         /// <summary>
-        ///     Názov kolaje
+        ///     Názov kolaje.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        ///     Cely názov kolaje
+        ///     Cely názov kolaje.
         /// </summary>
         public string FullName { get; set; }
 
         /// <summary>
-        ///     Nastupiste kolaje
+        ///     Nastupiste kolaje.
         /// </summary>
-        public Platform Nastupiste { get; set; }
+        public Platform Platform { get; set; }
 
         /// <summary>
-        ///     Názov kolaje
+        ///     Názov kolaje.
         /// </summary>
         public string TrackName { get; set; }
 
         /// <summary>
-        ///     Nazov zvuku kolaje
+        ///     Nazov zvuku kolaje.
         /// </summary>
         public string SoundName { get; set; }
 
         /// <summary>
-        ///     Logicke tabule nachadzajuce sa na tejto kolaji
+        ///     Logicke tabule nachadzajuce sa na tejto kolaji.
         /// </summary>
         public List<TableLogical> Tables { get; } = new();
 
         /// <summary>
-        ///     Odkaz na seba, pouzite pre DataSource
+        ///     Odkaz na seba, pouzite pre DataSource.
         /// </summary>
         public Track This => this;
 
         /// <summary>
-        ///     Cely názov nástupista - len pre potreby GUI
-        /// </summary>
-        public string NastupisteCelyNazov => Nastupiste.FullName;
-
-        /// <summary>
-        ///     Vyhlada kolaj z listu podla zadaneho identifikatora kolaje
+        ///     Vyhlada kolaj z listu podla zadaneho identifikatora kolaje.
         /// </summary>
         /// <param name="tracks"></param>
         /// <param name="id"></param>
