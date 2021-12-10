@@ -1,134 +1,129 @@
-﻿using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 using ToolsCore.XML;
 
-namespace GVDEditor.XML
+namespace GVDEditor.XML;
+
+/// <summary>
+///     Konfiguracny subor pre program GVDEitor.
+/// </summary>
+[XmlRoot("CONFIG")]
+public class GVDEditorConfig : Config
 {
     /// <summary>
-    ///     Konfiguracny subor pre program GVDEitor.
+    ///     Povolit pouzivanie automatickej spravy variant vlaku.
     /// </summary>
-    [XmlRoot("CONFIG")]
-    public class GVDEditorConfig : Config
+    [XmlElement("AutoVariant"), DefaultValue(false)]
+    public bool AutoVariant;
+
+    /// <summary>
+    ///     Povoli/zakaze kontrolovanie spravnosti zadanej varianty vlaku.
+    /// </summary>
+    [XmlElement("DisableVariantChk"), DefaultValue(false)]
+    public bool DisableVariantCheck;
+
+    /// <summary>
+    ///     Automaticky generovat texty do tabul pri ukladani do suborov.
+    /// </summary>
+    [XmlElement("AutoTableText"), DefaultValue(false)]
+    public bool AutoTableText;
+
+    /// <summary>
+    ///     Ci sa ma zobrazovat datum v stavovom riadku na pracovnej ploche programu.
+    /// </summary>
+    [XmlElement("ShowDateTimeInStateRow"), DefaultValue(true)]
+    public bool ShowDateTimeInStateRow = true;
+
+    /// <summary>
+    ///     Nastavi cas medzi zvukmi pri prehravani.
+    /// </summary>
+    [XmlElement("PlayerWordPause"), DefaultValue(0)]
+    public int PlayerWordPause;
+
+    /// <summary>
+    ///     Stlpce zobrazujuce sa v tabulke na pracovnej ploche programu.
+    /// </summary>
+    [XmlElement("DesktopCols")] 
+    public DesktopColumns DesktopCols = new();
+
+    /// <summary>
+    ///     Klávesové skratky pre akcie na pracovnej ploche programu.
+    /// </summary>
+    [XmlElement("Shortcuts")] 
+    public AppShortcuts Shortcuts = new();
+
+    /// <summary>
+    ///     konfiguracia spustania INISSu z tohto programu.
+    /// </summary>
+    [XmlElement("StartupINISSConfig")] 
+    public StartupINISS StartupINISSConfig = new() { CmdArgs = "", RunAsAdmin = false };
+
+    private static DesktopColumns GetDefaultDesktopColumnsSettings()
     {
-        /// <summary>
-        ///     Povolit pouzivanie automatickej spravy variant vlaku.
-        /// </summary>
-        [XmlElement("AutoVariant"), DefaultValue(false)]
-        public bool AutoVariant;
-
-        /// <summary>
-        ///     Povoli/zakaze kontrolovanie spravnosti zadanej varianty vlaku.
-        /// </summary>
-        [XmlElement("DisableVariantChk"), DefaultValue(false)]
-        public bool DisableVariantCheck;
-
-        /// <summary>
-        ///     Automaticky generovat texty do tabul pri ukladani do suborov.
-        /// </summary>
-        [XmlElement("AutoTableText"), DefaultValue(false)]
-        public bool AutoTableText;
-
-        /// <summary>
-        ///     Ci sa ma zobrazovat datum v stavovom riadku na pracovnej ploche programu.
-        /// </summary>
-        [XmlElement("ShowDateTimeInStateRow"), DefaultValue(true)]
-        public bool ShowDateTimeInStateRow = true;
-
-        /// <summary>
-        ///     Nastavi cas medzi zvukmi pri prehravani.
-        /// </summary>
-        [XmlElement("PlayerWordPause"), DefaultValue(0)]
-        public int PlayerWordPause;
-
-        /// <summary>
-        ///     Stlpce zobrazujuce sa v tabulke na pracovnej ploche programu.
-        /// </summary>
-        [XmlElement("DesktopCols")] 
-        public DesktopColumns DesktopCols = new();
-
-        /// <summary>
-        ///     Klávesové skratky pre akcie na pracovnej ploche programu.
-        /// </summary>
-        [XmlElement("Shortcuts")] 
-        public AppShortcuts Shortcuts = new();
-
-        /// <summary>
-        ///     konfiguracia spustania INISSu z tohto programu.
-        /// </summary>
-        [XmlElement("StartupINISSConfig")] 
-        public StartupINISS StartupINISSConfig = new() { CmdArgs = "", RunAsAdmin = false };
-
-        private static DesktopColumns GetDefaultDesktopColumnsSettings()
+        var cols = new DesktopColumns
         {
-            var cols = new DesktopColumns
-            {
-                Number = new DesktopColumn { Order = 0, Visible = true, MinWidth = 60 },
-                Type = new DesktopColumn { Order = 1, Visible = true, MinWidth = 40 },
-                Name = new DesktopColumn { Order = 2, Visible = true, MinWidth = 100 },
-                LinkaPrichod = new DesktopColumn { Order = 3, Visible = false, MinWidth = 50 },
-                LinkaOdchod = new DesktopColumn { Order = 4, Visible = false, MinWidth = 50 },
-                Routing = new DesktopColumn { Order = 5, Visible = true, MinWidth = 100 },
-                Prichod = new DesktopColumn { Order = 6, Visible = true, MinWidth = 60 },
-                Odchod = new DesktopColumn { Order = 7, Visible = true, MinWidth = 60 },
-                VychodziaStanica = new DesktopColumn { Order = 8, Visible = true, MinWidth = 120 },
-                KonecnaStanica = new DesktopColumn { Order = 9, Visible = true, MinWidth = 120 },
-                DateLimit = new DesktopColumn { Order = 10, Visible = true, MinWidth = 300 },
-                Track = new DesktopColumn { Order = 11, Visible = true, MinWidth = 100 },
-                Operator = new DesktopColumn { Order = 12, Visible = true, MinWidth = 50 },
-                OtherBtn = new DesktopColumn { Order = 13, Visible = true, MinWidth = 50 }
-            };
-            return cols;
-        }
+            Number = new DesktopColumn { Order = 0, Visible = true, MinWidth = 60 },
+            Type = new DesktopColumn { Order = 1, Visible = true, MinWidth = 40 },
+            Name = new DesktopColumn { Order = 2, Visible = true, MinWidth = 100 },
+            LinkaPrichod = new DesktopColumn { Order = 3, Visible = false, MinWidth = 50 },
+            LinkaOdchod = new DesktopColumn { Order = 4, Visible = false, MinWidth = 50 },
+            Routing = new DesktopColumn { Order = 5, Visible = true, MinWidth = 100 },
+            Prichod = new DesktopColumn { Order = 6, Visible = true, MinWidth = 60 },
+            Odchod = new DesktopColumn { Order = 7, Visible = true, MinWidth = 60 },
+            VychodziaStanica = new DesktopColumn { Order = 8, Visible = true, MinWidth = 120 },
+            KonecnaStanica = new DesktopColumn { Order = 9, Visible = true, MinWidth = 120 },
+            DateLimit = new DesktopColumn { Order = 10, Visible = true, MinWidth = 300 },
+            Track = new DesktopColumn { Order = 11, Visible = true, MinWidth = 100 },
+            Operator = new DesktopColumn { Order = 12, Visible = true, MinWidth = 50 },
+            OtherBtn = new DesktopColumn { Order = 13, Visible = true, MinWidth = 50 }
+        };
+        return cols;
+    }
 
-        /// <summary>
-        ///     Vrati predvolene nastavenia pre klavesove skratky pracovnej plochy programu.
-        /// </summary>
-        /// <returns></returns>
-        public static AppShortcuts GetDefaultShortcutsSettings()
+    /// <summary>
+    ///     Vrati predvolene nastavenia pre klavesove skratky pracovnej plochy programu.
+    /// </summary>
+    /// <returns></returns>
+    public static AppShortcuts GetDefaultShortcutsSettings()
+    {
+        var shortcuts = new AppShortcuts
         {
-            var shortcuts = new AppShortcuts
-            {
-                NewGVD = new CommandShortcut(new ShortcutName(Shortcut.None)),
-                OpenGVD = new CommandShortcut(new ShortcutName(Shortcut.CtrlO)),
-                ImportGVD = new CommandShortcut(new ShortcutName(Shortcut.CtrlI)),
-                ImportData = new CommandShortcut(new ShortcutName(Shortcut.None)),
-                Save = new CommandShortcut(new ShortcutName(Shortcut.CtrlS)),
-                AddTrain = new CommandShortcut(new ShortcutName(Shortcut.Ins)),
-                EditTrain = new CommandShortcut(new ShortcutName(Shortcut.ShiftIns)),
-                DeleteTrains = new CommandShortcut(new ShortcutName(Shortcut.Del)),
-                DuplicateTrain = new CommandShortcut(new ShortcutName(Shortcut.CtrlD)),
-                LocalSettings = new CommandShortcut(new ShortcutName(Shortcut.CtrlL)),
-                GlobalSettings = new CommandShortcut(new ShortcutName(Shortcut.CtrlG)),
-                AppSettings = new CommandShortcut(new ShortcutName(Shortcut.CtrlP)),
-                InfoApp = new CommandShortcut(new ShortcutName(Shortcut.F6)),
-                UpdateNotes = new CommandShortcut(new ShortcutName(Shortcut.None)),
-                RunINISS = new CommandShortcut(new ShortcutName(Shortcut.F5)),
-                KillINISS = new CommandShortcut(new ShortcutName(Shortcut.ShiftF5))
-            };
+            NewGVD = new CommandShortcut(new ShortcutName(Shortcut.None)),
+            OpenGVD = new CommandShortcut(new ShortcutName(Shortcut.CtrlO)),
+            ImportGVD = new CommandShortcut(new ShortcutName(Shortcut.CtrlI)),
+            ImportData = new CommandShortcut(new ShortcutName(Shortcut.None)),
+            Save = new CommandShortcut(new ShortcutName(Shortcut.CtrlS)),
+            AddTrain = new CommandShortcut(new ShortcutName(Shortcut.Ins)),
+            EditTrain = new CommandShortcut(new ShortcutName(Shortcut.ShiftIns)),
+            DeleteTrains = new CommandShortcut(new ShortcutName(Shortcut.Del)),
+            DuplicateTrain = new CommandShortcut(new ShortcutName(Shortcut.CtrlD)),
+            LocalSettings = new CommandShortcut(new ShortcutName(Shortcut.CtrlL)),
+            GlobalSettings = new CommandShortcut(new ShortcutName(Shortcut.CtrlG)),
+            AppSettings = new CommandShortcut(new ShortcutName(Shortcut.CtrlP)),
+            InfoApp = new CommandShortcut(new ShortcutName(Shortcut.F6)),
+            UpdateNotes = new CommandShortcut(new ShortcutName(Shortcut.None)),
+            RunINISS = new CommandShortcut(new ShortcutName(Shortcut.F5)),
+            KillINISS = new CommandShortcut(new ShortcutName(Shortcut.ShiftF5))
+        };
 
-            return shortcuts;
-        }
+        return shortcuts;
+    }
 
-        /// <summary>
-        ///     Vrati predvolene nastavenia pre pisma komponentov v GUI.
-        /// </summary>
-        /// <returns></returns>
-        public static ControlFonts GetDefaultAppFontsSettings()
+    /// <summary>
+    ///     Vrati predvolene nastavenia pre pisma komponentov v GUI.
+    /// </summary>
+    /// <returns></returns>
+    public static ControlFonts GetDefaultAppFontsSettings()
+    {
+        var fonts = new ControlFonts
         {
-            var fonts = new ControlFonts
-            {
-                Labels = new AppFont(SystemFonts.DefaultFont),
-                Buttons = new AppFont(SystemFonts.DefaultFont),
-                ColsHeader = new AppFont(SystemFonts.MenuFont),
-                TableCells = new AppFont(SystemFonts.DefaultFont),
-                Menu = new AppFont(SystemFonts.MenuFont),
-                StateRow = new AppFont(new Font(SystemFonts.MenuFont.FontFamily, 10, FontStyle.Bold))
-            };
+            Labels = new AppFont(SystemFonts.DefaultFont),
+            Buttons = new AppFont(SystemFonts.DefaultFont),
+            ColsHeader = new AppFont(SystemFonts.MenuFont),
+            TableCells = new AppFont(SystemFonts.DefaultFont),
+            Menu = new AppFont(SystemFonts.MenuFont),
+            StateRow = new AppFont(new Font(SystemFonts.MenuFont.FontFamily, 10, FontStyle.Bold))
+        };
 
-            return fonts;
-        }
+        return fonts;
     }
 }

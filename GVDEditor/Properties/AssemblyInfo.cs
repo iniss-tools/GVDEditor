@@ -38,3 +38,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.7.5.0")]
 
 [assembly: InternalsVisibleTo("GVDEditorTests")]
+[assembly: InternalsVisibleTo("GVDEditor.Tests")]
+[assembly: InternalsVisibleTo("GVDEditor.Explorables")]

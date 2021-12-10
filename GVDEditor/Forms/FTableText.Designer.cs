@@ -41,8 +41,8 @@ namespace GVDEditor.Forms
             ExControls.ExComboBoxStyle exComboBoxStyle6 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle7 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle8 = new ExControls.ExComboBoxStyle();
-            this.bSave = new System.Windows.Forms.Button();
-            this.bStorno = new System.Windows.Forms.Button();
+            this.bSave = new ExControls.ExButton();
+            this.bStorno = new ExControls.ExButton();
             this.groupBox1 = new ExControls.ExGroupBox();
             this.tbKey = new ExControls.ExTextBox();
             this.tbName = new ExControls.ExTextBox();
@@ -52,17 +52,17 @@ namespace GVDEditor.Forms
             this.cbCatalogItem = new ExControls.ExComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbCatalogTable = new ExControls.ExComboBox();
-            this.bReDelete = new System.Windows.Forms.Button();
-            this.bReEdit = new System.Windows.Forms.Button();
-            this.bReAdd = new System.Windows.Forms.Button();
+            this.bReDelete = new ExControls.ExButton();
+            this.bReEdit = new ExControls.ExButton();
+            this.bReAdd = new ExControls.ExButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.listRealisations = new System.Windows.Forms.ListBox();
             this.groupBox3 = new ExControls.ExGroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.nudFont = new ExControls.ExNumericUpDown();
-            this.bGenerate = new System.Windows.Forms.Button();
-            this.bTextEdit = new System.Windows.Forms.Button();
+            this.bGenerate = new ExControls.ExButton();
+            this.bTextEdit = new ExControls.ExButton();
             this.tbTrainText = new ExControls.ExTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -422,17 +422,17 @@ namespace GVDEditor.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button bSave;
-        private System.Windows.Forms.Button bStorno;
+        private ExControls.ExButton bSave;
+        private ExControls.ExButton bStorno;
         private ExGroupBox groupBox1;
         private ExTextBox tbKey;
         private ExTextBox tbName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private ExGroupBox groupBox2;
-        private System.Windows.Forms.Button bReDelete;
-        private System.Windows.Forms.Button bReEdit;
-        private System.Windows.Forms.Button bReAdd;
+        private ExControls.ExButton bReDelete;
+        private ExControls.ExButton bReEdit;
+        private ExControls.ExButton bReAdd;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox listRealisations;
@@ -440,14 +440,14 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.Label label5;
         private ExComboBox cbCatalogTable;
         private ExGroupBox groupBox3;
-        private System.Windows.Forms.Button bTextEdit;
+        private ExControls.ExButton bTextEdit;
         private ExTextBox tbTrainText;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox listTrains;
         private ExGroupBox groupBox4;
         private ExTextBox tbComment;
-        private System.Windows.Forms.Button bGenerate;
+        private ExControls.ExButton bGenerate;
         private System.Windows.Forms.BindingSource tableTextRealizationBindingSource;
         private System.Windows.Forms.Label label8;
         private ExNumericUpDown nudFont;

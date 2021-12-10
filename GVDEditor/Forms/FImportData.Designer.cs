@@ -32,8 +32,8 @@ namespace GVDEditor.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FImportData));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.bStorno = new System.Windows.Forms.Button();
-            this.bImport = new System.Windows.Forms.Button();
+            this.bStorno = new ExControls.ExButton();
+            this.bImport = new ExControls.ExButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,9 +44,9 @@ namespace GVDEditor.Forms
             this.cbDataType = new ExComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.bClipboard = new System.Windows.Forms.Button();
-            this.bCSV = new System.Windows.Forms.Button();
-            this.bXLS = new System.Windows.Forms.Button();
+            this.bClipboard = new ExControls.ExButton();
+            this.bCSV = new ExControls.ExButton();
+            this.bXLS = new ExControls.ExButton();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new ExGroupBox();
@@ -284,8 +284,8 @@ namespace GVDEditor.Forms
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button bStorno;
-        private System.Windows.Forms.Button bImport;
+        private ExControls.ExButton bStorno;
+        private ExControls.ExButton bImport;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -297,13 +297,13 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.Label label3;
         private ExGroupBox groupBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.Button bClipboard;
+        private ExControls.ExButton bClipboard;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private ExRadioButton rbRemoveAndInsert;
         private ExRadioButton rbAppend;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
-        private System.Windows.Forms.Button bCSV;
-        private System.Windows.Forms.Button bXLS;
+        private ExControls.ExButton bCSV;
+        private ExControls.ExButton bXLS;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private ExCheckBox cboxFirstHeader;
         private System.Windows.Forms.OpenFileDialog ofDialogCSV;

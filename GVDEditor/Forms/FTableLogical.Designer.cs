@@ -37,8 +37,8 @@ namespace GVDEditor.Forms
             ExControls.ExComboBoxStyle exComboBoxStyle2 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle3 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle4 = new ExControls.ExComboBoxStyle();
-            this.bSave = new System.Windows.Forms.Button();
-            this.bStorno = new System.Windows.Forms.Button();
+            this.bSave = new ExControls.ExButton();
+            this.bStorno = new ExControls.ExButton();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLogicalZostavaBindingSource = new System.Windows.Forms.BindingSource();
             this.groupBox4 = new ExControls.ExGroupBox();
@@ -48,8 +48,8 @@ namespace GVDEditor.Forms
             this.startRowDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endRowDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bRemoveTab = new System.Windows.Forms.Button();
-            this.bAddTab = new System.Windows.Forms.Button();
+            this.bRemoveTab = new ExControls.ExButton();
+            this.bAddTab = new ExControls.ExButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.listFyzTab = new System.Windows.Forms.ListBox();
@@ -378,8 +378,8 @@ namespace GVDEditor.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button bSave;
-        private System.Windows.Forms.Button bStorno;
+        private ExControls.ExButton bSave;
+        private ExControls.ExButton bStorno;
         private ExGroupBox groupBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -388,8 +388,8 @@ namespace GVDEditor.Forms
         private ExTextBox tbName;
         private System.Windows.Forms.Label label3;
         private ExGroupBox gboxSimple;
-        private System.Windows.Forms.Button bRemoveTab;
-        private System.Windows.Forms.Button bAddTab;
+        private ExControls.ExButton bRemoveTab;
+        private ExControls.ExButton bAddTab;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox listFyzTab;

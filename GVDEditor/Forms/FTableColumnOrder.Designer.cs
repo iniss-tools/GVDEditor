@@ -33,7 +33,7 @@ namespace GVDEditor.Forms
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FTableColumnOrder));
-            this.bSave = new System.Windows.Forms.Button();
+            this.bSave = new ExControls.ExButton();
             this.groupBox1 = new ExGroupBox();
             this.nudTypeCountLines = new ExNumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,10 +42,10 @@ namespace GVDEditor.Forms
             this.cbViewType = new ExComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new ExGroupBox();
-            this.bSetForAll = new System.Windows.Forms.Button();
+            this.bSetForAll = new ExControls.ExButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.bDelete = new System.Windows.Forms.Button();
-            this.bAdd = new System.Windows.Forms.Button();
+            this.bDelete = new ExControls.ExButton();
+            this.bAdd = new ExControls.ExButton();
             this.listOrder = new System.Windows.Forms.ListBox();
             this.tableItemBindingSource = new System.Windows.Forms.BindingSource();
             this.label3 = new System.Windows.Forms.Label();
@@ -214,7 +214,7 @@ namespace GVDEditor.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button bSave;
+        private ExControls.ExButton bSave;
         private ExGroupBox groupBox1;
         private ExComboBox cbViewMode;
         private System.Windows.Forms.Label label2;
@@ -222,12 +222,12 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.Label label1;
         private ExGroupBox groupBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button bDelete;
-        private System.Windows.Forms.Button bAdd;
+        private ExControls.ExButton bDelete;
+        private ExControls.ExButton bAdd;
         private System.Windows.Forms.ListBox listOrder;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox listColumns;
-        private System.Windows.Forms.Button bSetForAll;
+        private ExControls.ExButton bSetForAll;
         private System.Windows.Forms.BindingSource tableItemBindingSource;
         private System.Windows.Forms.Label label5;
         private ExNumericUpDown nudTypeCountLines;

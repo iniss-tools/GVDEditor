@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FColumnTypeSelect));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.bStorno = new System.Windows.Forms.Button();
-            this.bOK = new System.Windows.Forms.Button();
-            this.bDontImport = new System.Windows.Forms.Button();
+            this.bStorno = new ExControls.ExButton();
+            this.bOK = new ExControls.ExButton();
+            this.bDontImport = new ExControls.ExButton();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -122,12 +122,12 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button bStorno;
-        private System.Windows.Forms.Button bOK;
+        private ExControls.ExButton bStorno;
+        private ExControls.ExButton bOK;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ListBox listColumnTypes;
-        private System.Windows.Forms.Button bDontImport;
+        private ExControls.ExButton bDontImport;
     }
 }

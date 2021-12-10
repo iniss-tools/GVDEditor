@@ -41,9 +41,9 @@ namespace GVDEditor.Forms
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.cbFind = new ExControls.ExComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.bFind = new System.Windows.Forms.Button();
-            this.bCount = new System.Windows.Forms.Button();
-            this.bFindClose = new System.Windows.Forms.Button();
+            this.bFind = new ExControls.ExButton();
+            this.bCount = new ExControls.ExButton();
+            this.bFindClose = new ExControls.ExButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.cboxSearchingCyclic = new ExControls.ExCheckBox();
             this.cboxSearchingCaseSensitive = new ExControls.ExCheckBox();
@@ -485,10 +485,10 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private ExComboBox cbFind;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button bFind;
+        private ExControls.ExButton bFind;
         private System.Windows.Forms.ToolStripStatusLabel tsslStatus;
-        private System.Windows.Forms.Button bCount;
-        private System.Windows.Forms.Button bFindClose;
+        private ExControls.ExButton bCount;
+        private ExControls.ExButton bFindClose;
         private ExCheckBox cboxBackSearching;
         private ExCheckBox cboxSearchingWholeWord;
         private ExCheckBox cboxSearchingCaseSensitive;

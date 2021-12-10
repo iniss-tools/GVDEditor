@@ -1,38 +1,35 @@
-﻿using System;
-using System.Windows.Forms;
-using ToolsCore.Tools;
+﻿using ToolsCore.Tools;
 
-namespace GVDEditor.Forms
+namespace GVDEditor.Forms;
+
+/// <summary>
+///     Dialog premenovania TabTab.
+/// </summary>
+internal partial class FTabTabRename : Form
 {
     /// <summary>
-    ///     Dialog premenovania TabTab.
+    ///     Vytvori novy formular typu <see cref="FTabTabRename"/>.
     /// </summary>
-    internal partial class FTabTabRename : Form
+    public FTabTabRename()
     {
-        /// <summary>
-        ///     Vytvori novy formular typu <see cref="FTabTabRename"/>.
-        /// </summary>
-        public FTabTabRename()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            FormUtils.SetFormFont(this);
-            this.ApplyTheme();
+        FormUtils.SetFormFont(this);
+        this.ApplyTheme();
+    }
+
+    public string NewTabName { get; private set; }
+
+    private void bEdit_Click(object sender, EventArgs e)
+    {
+        if (string.IsNullOrEmpty(tbName.Text))
+        {
+            Utils.ShowError(@"Nezadaný názov TabTab");
+            DialogResult = DialogResult.None;
+            return;
         }
 
-        public string NewTabName { get; private set; }
-
-        private void bEdit_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(tbName.Text))
-            {
-                Utils.ShowError(@"Nezadaný názov TabTab");
-                DialogResult = DialogResult.None;
-                return;
-            }
-
-            NewTabName = tbName.Text;
-            DialogResult = DialogResult.OK;
-        }
+        NewTabName = tbName.Text;
+        DialogResult = DialogResult.OK;
     }
 }

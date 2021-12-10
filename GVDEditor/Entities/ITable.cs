@@ -1,19 +1,18 @@
 ﻿// ReSharper disable UnusedMemberInSuper.Global
-namespace GVDEditor.Entities
+namespace GVDEditor.Entities;
+
+/// <summary>
+///     Rozhranie pre všetky triedy tabuľovitého typu s klucom a nazvom.
+/// </summary>
+public interface ITable
 {
     /// <summary>
-    ///     Rozhranie pre všetky triedy tabuľovitého typu s klucom a nazvom.
+    ///     Kluc tabule.
     /// </summary>
-    public interface ITable
-    {
-        /// <summary>
-        ///     Kluc tabule.
-        /// </summary>
-        public string Key { get; set; }
+    public string Key { get; set; }
 
-        /// <summary>
-        ///     Nazov tabule.
-        /// </summary>
-        public string Name { get; set; }
-    }
+    /// <summary>
+    ///     Nazov tabule.
+    /// </summary>
+    public string Name { get; set; }
 }

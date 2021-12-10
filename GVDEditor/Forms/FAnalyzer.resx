@@ -171,7 +171,7 @@
     <value>bAnalyze</value>
   </data>
   <data name="&gt;&gt;bAnalyze.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bAnalyze.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -283,7 +283,7 @@
     <value>bOK</value>
   </data>
   <data name="&gt;&gt;bOK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bOK.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -313,7 +313,7 @@
     <value>bFixSelected</value>
   </data>
   <data name="&gt;&gt;bFixSelected.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bFixSelected.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>

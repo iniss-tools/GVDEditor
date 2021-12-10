@@ -145,7 +145,7 @@
     <value>bSave</value>
   </data>
   <data name="&gt;&gt;bSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bSave.Parent" xml:space="preserve">
     <value>$this</value>
@@ -178,7 +178,7 @@
     <value>bStorno</value>
   </data>
   <data name="&gt;&gt;bStorno.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bStorno.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1158,7 +1158,7 @@
     <value>bAppFontDefault</value>
   </data>
   <data name="&gt;&gt;bAppFontDefault.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bAppFontDefault.Parent" xml:space="preserve">
     <value>pEnvironment</value>
@@ -1257,7 +1257,7 @@
     <value>bUseStyle</value>
   </data>
   <data name="&gt;&gt;bUseStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bUseStyle.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1287,7 +1287,7 @@
     <value>bColorsUseDefault</value>
   </data>
   <data name="&gt;&gt;bColorsUseDefault.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bColorsUseDefault.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1473,7 +1473,7 @@
     <value>bRemoveStyle</value>
   </data>
   <data name="&gt;&gt;bRemoveStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bRemoveStyle.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1500,7 +1500,7 @@
     <value>bRenameStyle</value>
   </data>
   <data name="&gt;&gt;bRenameStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bRenameStyle.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1527,7 +1527,7 @@
     <value>bAddStyle</value>
   </data>
   <data name="&gt;&gt;bAddStyle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bAddStyle.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1740,7 +1740,7 @@
     <value>bSetBackgroundColor</value>
   </data>
   <data name="&gt;&gt;bSetBackgroundColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bSetBackgroundColor.Parent" xml:space="preserve">
     <value>exGroupBox1</value>
@@ -1824,7 +1824,7 @@
     <value>bSetForegroundColor</value>
   </data>
   <data name="&gt;&gt;bSetForegroundColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bSetForegroundColor.Parent" xml:space="preserve">
     <value>exGroupBox1</value>
@@ -2166,7 +2166,7 @@
     <value>bColumnDown</value>
   </data>
   <data name="&gt;&gt;bColumnDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bColumnDown.Parent" xml:space="preserve">
     <value>pDesktop</value>
@@ -2196,7 +2196,7 @@
     <value>bColumnUp</value>
   </data>
   <data name="&gt;&gt;bColumnUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bColumnUp.Parent" xml:space="preserve">
     <value>pDesktop</value>
@@ -2676,7 +2676,7 @@
     <value>bAllShortcutsSetDefault</value>
   </data>
   <data name="&gt;&gt;bAllShortcutsSetDefault.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bAllShortcutsSetDefault.Parent" xml:space="preserve">
     <value>pShortcuts</value>

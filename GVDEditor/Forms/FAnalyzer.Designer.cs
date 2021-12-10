@@ -34,12 +34,12 @@ namespace GVDEditor.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.bAnalyze = new System.Windows.Forms.Button();
+            this.bAnalyze = new ExControls.ExButton();
             this.pbStatus = new System.Windows.Forms.ProgressBar();
             this.lStatus = new System.Windows.Forms.Label();
-            this.bOK = new System.Windows.Forms.Button();
+            this.bOK = new ExControls.ExButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.bFixSelected = new System.Windows.Forms.Button();
+            this.bFixSelected = new ExControls.ExButton();
             this.dgvResults = new System.Windows.Forms.DataGridView();
             this.ProblemType = new System.Windows.Forms.DataGridViewImageColumn();
             this.textDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -205,12 +205,12 @@ namespace GVDEditor.Forms
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button bAnalyze;
+        private ExControls.ExButton bAnalyze;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ProgressBar pbStatus;
         private System.Windows.Forms.Label lStatus;
-        private System.Windows.Forms.Button bFixSelected;
-        private System.Windows.Forms.Button bOK;
+        private ExControls.ExButton bFixSelected;
+        private ExControls.ExButton bOK;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataGridView dgvResults;
         private System.Windows.Forms.BindingSource iFixBindingSource;

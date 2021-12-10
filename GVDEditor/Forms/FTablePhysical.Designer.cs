@@ -36,8 +36,8 @@ namespace GVDEditor.Forms
             ExControls.ExComboBoxStyle exComboBoxStyle2 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle3 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle4 = new ExControls.ExComboBoxStyle();
-            this.bSave = new System.Windows.Forms.Button();
-            this.bStorno = new System.Windows.Forms.Button();
+            this.bSave = new ExControls.ExButton();
+            this.bStorno = new ExControls.ExButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbName = new ExControls.ExTextBox();
@@ -388,8 +388,8 @@ namespace GVDEditor.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button bSave;
-        private System.Windows.Forms.Button bStorno;
+        private ExControls.ExButton bSave;
+        private ExControls.ExButton bStorno;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private ExTextBox tbName;

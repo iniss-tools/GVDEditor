@@ -32,16 +32,16 @@ namespace GVDEditor.Forms
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRadenie));
-            this.bSave = new System.Windows.Forms.Button();
-            this.bStorno = new System.Windows.Forms.Button();
+            this.bSave = new ExControls.ExButton();
+            this.bStorno = new ExControls.ExButton();
             this.cbSoundDir = new ExComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listAllSounds = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.bAdd = new System.Windows.Forms.Button();
-            this.bDelete = new System.Windows.Forms.Button();
-            this.bSkor = new System.Windows.Forms.Button();
-            this.bNeskor = new System.Windows.Forms.Button();
+            this.bAdd = new ExControls.ExButton();
+            this.bDelete = new ExControls.ExButton();
+            this.bSkor = new ExControls.ExButton();
+            this.bNeskor = new ExControls.ExButton();
             this.listRadenie = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,7 +50,7 @@ namespace GVDEditor.Forms
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tbTextRadenie = new ExTextBox();
-            this.bPlay = new System.Windows.Forms.Button();
+            this.bPlay = new ExControls.ExButton();
             this.SuspendLayout();
             // 
             // bSave
@@ -229,16 +229,16 @@ namespace GVDEditor.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button bSave;
-        private System.Windows.Forms.Button bStorno;
+        private ExControls.ExButton bSave;
+        private ExControls.ExButton bStorno;
         private ExComboBox cbSoundDir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listAllSounds;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button bAdd;
-        private System.Windows.Forms.Button bDelete;
-        private System.Windows.Forms.Button bSkor;
-        private System.Windows.Forms.Button bNeskor;
+        private ExControls.ExButton bAdd;
+        private ExControls.ExButton bDelete;
+        private ExControls.ExButton bSkor;
+        private ExControls.ExButton bNeskor;
         private System.Windows.Forms.ListBox listRadenie;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -247,6 +247,6 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private ExTextBox tbTextRadenie;
-        private System.Windows.Forms.Button bPlay;
+        private ExControls.ExButton bPlay;
     }
 }

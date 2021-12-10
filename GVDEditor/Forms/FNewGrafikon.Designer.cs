@@ -53,13 +53,13 @@ namespace GVDEditor.Forms
             this.cbStationName = new ExControls.ExComboBox();
             this.stanicaBindingSource = new System.Windows.Forms.BindingSource();
             this.label4 = new System.Windows.Forms.Label();
-            this.bCreate = new System.Windows.Forms.Button();
-            this.bZrusit = new System.Windows.Forms.Button();
+            this.bCreate = new ExControls.ExButton();
+            this.bZrusit = new ExControls.ExButton();
             this.groupBox2 = new ExControls.ExGroupBox();
             this.rbNewObd = new ExControls.ExRadioButton();
             this.rbNewStation = new ExControls.ExRadioButton();
             this.groupBox3 = new ExControls.ExGroupBox();
-            this.bEditColor = new System.Windows.Forms.Button();
+            this.bEditColor = new ExControls.ExButton();
             this.pbColor = new System.Windows.Forms.PictureBox();
             this.nudHlaseniePort = new ExControls.ExNumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
@@ -473,8 +473,8 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button bCreate;
-        private System.Windows.Forms.Button bZrusit;
+        private ExControls.ExButton bCreate;
+        private ExControls.ExButton bZrusit;
         private ExComboBox cbStationName;
         private ExGroupBox groupBox2;
         private ExRadioButton rbNewObd;
@@ -487,7 +487,7 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.DateTimePicker dtpGVDOd;
         private System.Windows.Forms.Label label6;
         private ExGroupBox groupBox3;
-        private System.Windows.Forms.Button bEditColor;
+        private ExControls.ExButton bEditColor;
         private System.Windows.Forms.PictureBox pbColor;
         private ExNumericUpDown nudHlaseniePort;
         private System.Windows.Forms.Label label10;

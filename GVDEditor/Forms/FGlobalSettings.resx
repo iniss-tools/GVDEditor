@@ -235,7 +235,7 @@
     <value>bGrafikonEdit</value>
   </data>
   <data name="&gt;&gt;bGrafikonEdit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bGrafikonEdit.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -268,7 +268,7 @@
     <value>bEditColor</value>
   </data>
   <data name="&gt;&gt;bEditColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bEditColor.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -613,7 +613,7 @@
     <value>bGrafikonDelete</value>
   </data>
   <data name="&gt;&gt;bGrafikonDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bGrafikonDelete.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -973,7 +973,7 @@
     <value>bLanguageRemove</value>
   </data>
   <data name="&gt;&gt;bLanguageRemove.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bLanguageRemove.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -1006,7 +1006,7 @@
     <value>bLanguageEdit</value>
   </data>
   <data name="&gt;&gt;bLanguageEdit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bLanguageEdit.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -1039,7 +1039,7 @@
     <value>bLanguageAdd</value>
   </data>
   <data name="&gt;&gt;bLanguageAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bLanguageAdd.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -1243,7 +1243,7 @@
     <value>bMeskanieDelete</value>
   </data>
   <data name="&gt;&gt;bMeskanieDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bMeskanieDelete.Parent" xml:space="preserve">
     <value>groupBox10</value>
@@ -1276,7 +1276,7 @@
     <value>bMeskanieEdit</value>
   </data>
   <data name="&gt;&gt;bMeskanieEdit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bMeskanieEdit.Parent" xml:space="preserve">
     <value>groupBox10</value>
@@ -1309,7 +1309,7 @@
     <value>bMeskanieAdd</value>
   </data>
   <data name="&gt;&gt;bMeskanieAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bMeskanieAdd.Parent" xml:space="preserve">
     <value>groupBox10</value>
@@ -1606,7 +1606,7 @@
     <value>bCustomTrainTypDelete</value>
   </data>
   <data name="&gt;&gt;bCustomTrainTypDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bCustomTrainTypDelete.Parent" xml:space="preserve">
     <value>groupBox11</value>
@@ -1639,7 +1639,7 @@
     <value>bCustomTrainTypAdd</value>
   </data>
   <data name="&gt;&gt;bCustomTrainTypAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bCustomTrainTypAdd.Parent" xml:space="preserve">
     <value>groupBox11</value>
@@ -1672,7 +1672,7 @@
     <value>bCustomTrainTypEdit</value>
   </data>
   <data name="&gt;&gt;bCustomTrainTypEdit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bCustomTrainTypEdit.Parent" xml:space="preserve">
     <value>groupBox11</value>
@@ -1816,7 +1816,7 @@
     <value>bDefTrainTypDelete</value>
   </data>
   <data name="&gt;&gt;bDefTrainTypDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bDefTrainTypDelete.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1849,7 +1849,7 @@
     <value>bDefTrainTypEdit</value>
   </data>
   <data name="&gt;&gt;bDefTrainTypEdit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bDefTrainTypEdit.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1882,7 +1882,7 @@
     <value>bDefTrainTypAdd</value>
   </data>
   <data name="&gt;&gt;bDefTrainTypAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bDefTrainTypAdd.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -2284,7 +2284,7 @@
     <value>bAudioDelete</value>
   </data>
   <data name="&gt;&gt;bAudioDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bAudioDelete.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2317,7 +2317,7 @@
     <value>bAudioEdit</value>
   </data>
   <data name="&gt;&gt;bAudioEdit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bAudioEdit.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2350,7 +2350,7 @@
     <value>bAudioAdd</value>
   </data>
   <data name="&gt;&gt;bAudioAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bAudioAdd.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2500,7 +2500,7 @@
     <value>bSave</value>
   </data>
   <data name="&gt;&gt;bSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bSave.Parent" xml:space="preserve">
     <value>$this</value>

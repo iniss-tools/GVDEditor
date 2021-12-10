@@ -682,7 +682,7 @@
     <value>bCreate</value>
   </data>
   <data name="&gt;&gt;bCreate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bCreate.Parent" xml:space="preserve">
     <value>$this</value>
@@ -712,7 +712,7 @@
     <value>bZrusit</value>
   </data>
   <data name="&gt;&gt;bZrusit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bZrusit.Parent" xml:space="preserve">
     <value>$this</value>
@@ -838,7 +838,7 @@
     <value>bEditColor</value>
   </data>
   <data name="&gt;&gt;bEditColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bEditColor.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -967,7 +967,7 @@
     <value>bEditColor</value>
   </data>
   <data name="&gt;&gt;bEditColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bEditColor.Parent" xml:space="preserve">
     <value>groupBox3</value>

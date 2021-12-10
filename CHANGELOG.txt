@@ -18,3 +18,8 @@
 - Pri súboroch grafikonu typu CSV sa neignorovali riadky tvorené iba z "white-space" znakov a program to pokladal za chybu
 - Pri čítaní tabúľ z grafikonu sa nekontrola správnosť niektorých hodnôt, kvôli čomu pri následnom ukladaní grafikonu vznikali chyby
 - Program nekontroloval pri načítaní grafikonu kľuče tabúľ
+
+1.7.6.0 (1.8.0.0)
+- Upravené odkazy na stránky (ZMAZAŤ PôVODNÉ)
+- Male zmeny vo vizuale niektorych ovladacich prvkov
+- Opravena chyba pri vybere skupiny stylov v nastaveniach programu

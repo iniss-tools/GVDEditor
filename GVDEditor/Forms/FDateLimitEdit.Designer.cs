@@ -31,8 +31,8 @@ namespace GVDEditor.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.bSave = new System.Windows.Forms.Button();
-            this.bStorno = new System.Windows.Forms.Button();
+            this.bSave = new ExControls.ExButton();
+            this.bStorno = new ExControls.ExButton();
             this.label1 = new System.Windows.Forms.Label();
             this.tbDateRemNew = new ExTextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -168,8 +168,8 @@ namespace GVDEditor.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button bSave;
-        private System.Windows.Forms.Button bStorno;
+        private ExControls.ExButton bSave;
+        private ExControls.ExButton bStorno;
         private System.Windows.Forms.Label label1;
         private ExTextBox tbDateRemNew;
         private System.Windows.Forms.Label label2;

@@ -37,7 +37,7 @@ namespace GVDEditor.Forms
             this.lAppVersion = new System.Windows.Forms.Label();
             this.groupBox1 = new ExControls.ExGroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.bOK = new System.Windows.Forms.Button();
+            this.bOK = new ExControls.ExButton();
             this.groupBox2 = new ExControls.ExGroupBox();
             this.linkEmail = new System.Windows.Forms.LinkLabel();
             this.linkWeb = new System.Windows.Forms.LinkLabel();
@@ -159,7 +159,7 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lAppVersion;
         private ExGroupBox groupBox1;
-        private System.Windows.Forms.Button bOK;
+        private ExControls.ExButton bOK;
         private System.Windows.Forms.Label label4;
         private ExGroupBox groupBox2;
         private System.Windows.Forms.LinkLabel linkEmail;

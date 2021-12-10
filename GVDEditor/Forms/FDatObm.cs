@@ -1,57 +1,53 @@
-﻿using System;
-using System.Collections;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Collections;
 using GVDEditor.Tools;
 using ToolsCore.Tools;
 
-namespace GVDEditor.Forms
+namespace GVDEditor.Forms;
+
+public partial class FDatObm : Form
 {
-    public partial class FDatObm : Form
+    public FDatObm()
     {
-        public FDatObm()
+        InitializeComponent();
+        FormUtils.SetFormFont(this);
+        this.ApplyTheme();
+    }
+
+    private void bCopy_Click(object sender, EventArgs e)
+    {
+        Clipboard.SetText(tbBitArray.Text);
+    }
+
+    private static string ToBitString(BitArray bits)
+    {
+        var sb = new StringBuilder();
+
+        for (var i = 0; i < bits.Count; i++)
         {
-            InitializeComponent();
-            FormUtils.SetFormFont(this);
-            this.ApplyTheme();
+            var c = bits[i] ? '1' : '0';
+            sb.Append(c);
         }
 
-        private void bCopy_Click(object sender, EventArgs e)
+        return sb.ToString();
+    }
+
+    private void bGenerate_Click(object sender, EventArgs e)
+    {
+        try
         {
-            Clipboard.SetText(tbBitArray.Text);
+            var limit = new DateLimit(dpStart.Value.Date, 
+                dpEnd.Value.Date,
+                cbSpecDays.Checked, 
+                insertMarks: false, 
+                monthRoman: cbMonthRoman.Checked,
+                skipDateRangeCheck: cbSkipDateRangeCheck.Checked);
+
+            var bits = limit.TextToBitArray(tbDatObm.Text);
+            tbBitArray.Text = ToBitString(bits);
         }
-
-        private static string ToBitString(BitArray bits)
+        catch (Exception ex)
         {
-            var sb = new StringBuilder();
-
-            for (var i = 0; i < bits.Count; i++)
-            {
-                var c = bits[i] ? '1' : '0';
-                sb.Append(c);
-            }
-
-            return sb.ToString();
-        }
-
-        private void bGenerate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var limit = new DateLimit(dpStart.Value.Date, 
-                    dpEnd.Value.Date,
-                    cbSpecDays.Checked, 
-                    insertMarks: false, 
-                    monthRoman: cbMonthRoman.Checked,
-                    skipDateRangeCheck: cbSkipDateRangeCheck.Checked);
-
-                var bits = limit.TextToBitArray(tbDatObm.Text);
-                tbBitArray.Text = ToBitString(bits);
-            }
-            catch (Exception ex)
-            {
-                Utils.ShowError(ex.Message);
-            }
+            Utils.ShowError(ex.Message);
         }
     }
 }

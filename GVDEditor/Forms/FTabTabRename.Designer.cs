@@ -33,7 +33,7 @@ namespace GVDEditor.Forms
         {
             this.label1 = new System.Windows.Forms.Label();
             this.tbName = new ExTextBox();
-            this.bEdit = new System.Windows.Forms.Button();
+            this.bEdit = new ExControls.ExButton();
             this.SuspendLayout();
             // 
             // label1
@@ -87,6 +87,6 @@ namespace GVDEditor.Forms
 
         private System.Windows.Forms.Label label1;
         private ExTextBox tbName;
-        private System.Windows.Forms.Button bEdit;
+        private ExControls.ExButton bEdit;
     }
 }

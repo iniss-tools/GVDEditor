@@ -1,434 +1,419 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using GVDEditor.Entities;
+﻿using GVDEditor.Entities;
 using GVDEditor.Forms;
 
-namespace GVDEditor.Tools
+namespace GVDEditor.Tools;
+
+internal enum FixType
 {
-    internal enum FixType
-    {
-        /// <summary>
-        ///     Program problem opravi uplne sam automaticky.
-        /// </summary>
-        AUTO,
-
-        /// <summary>
-        ///     Pouzivatel musi vybrat jednu z ponukanych moznosti, aby chybu opravil.
-        /// </summary>
-        SEMI_AUTO,
-
-        /// <summary>
-        ///     Pouzivatel musi chybu opravit sam a program mu len ukaze, kde ma chybu opravit.
-        /// </summary>
-        MANUAL
-    }
-
-    internal enum ProblemType
-    {
-        /// <summary>
-        ///     Len informacia pre pouzivatela. Grafikon je uplne funkcny.
-        /// </summary>
-        HINT,
-
-        /// <summary>
-        ///     Grafikon nemusi fungovat uplne spravne, ale je spustitelny.
-        /// </summary>
-        WARNING,
-
-        /// <summary>
-        ///     Zavazna chyba v grafikone. INISS pravdepodobne nespusti tento grafikon.
-        /// </summary>
-        ERROR
-    }
-
-    internal enum FixResult
-    {
-        /// <summary>
-        ///     Ak bola chyba opravena.
-        /// </summary>
-        DONE,
-
-        /// <summary>
-        ///     Ak pouzivatel chybu neopravil.
-        /// </summary>
-        NOT_SOLVED,
-
-        /// <summary>
-        ///     Ak pocas opravy doslo k chybe.
-        /// </summary>
-        ERROR
-    }
-
-    internal interface IProblem
-    {
-        public string Text { get; }
-
-        public string Solution { get; }
-
-        public ProblemType ProblemType { get; }
-
-        public FixType FixType { get; }
-
-        public FixResult FixProblem();
-    }
+    /// <summary>
+    ///     Program problem opravi uplne sam automaticky.
+    /// </summary>
+    Auto,
 
     /// <summary>
-    ///     Analyzuje a opravuje problemy najdene v grafikone.
+    ///     Pouzivatel musi vybrat jednu z ponukanych moznosti, aby chybu opravil.
     /// </summary>
-    internal static class Analyzer
-    {
-        public static List<IProblem> FindProblems(BackgroundWorker bw, GVDDirectory gvd)
-        {
-            List<IProblem> problems = new();
+    SemiAuto,
 
-            //1. Check GVD validity
-            var now = DateTime.Now;
-            if (gvd.GVD.EndValidData < now)
+    /// <summary>
+    ///     Pouzivatel musi chybu opravit sam a program mu len ukaze, kde ma chybu opravit.
+    /// </summary>
+    Manual
+}
+
+internal enum ProblemType
+{
+    /// <summary>
+    ///     Len informacia pre pouzivatela. Grafikon je uplne funkcny.
+    /// </summary>
+    Hint,
+
+    /// <summary>
+    ///     Grafikon nemusi fungovat uplne spravne, ale je spustitelny.
+    /// </summary>
+    Warning,
+
+    /// <summary>
+    ///     Zavazna chyba v grafikone. INISS pravdepodobne nespusti tento grafikon.
+    /// </summary>
+    Error
+}
+
+internal enum FixResult
+{
+    /// <summary>
+    ///     Ak bola chyba opravena.
+    /// </summary>
+    Done,
+
+    /// <summary>
+    ///     Ak pouzivatel chybu neopravil.
+    /// </summary>
+    NotSolved,
+
+    /// <summary>
+    ///     Ak pocas opravy doslo k chybe.
+    /// </summary>
+    Error
+}
+
+internal interface IProblem
+{
+    public string Text { get; }
+
+    public string Solution { get; }
+
+    public ProblemType ProblemType { get; }
+
+    public FixType FixType { get; }
+
+    public FixResult FixProblem();
+}
+
+/// <summary>
+///     Analyzuje a opravuje problemy najdene v grafikone.
+/// </summary>
+internal static class Analyzer
+{
+    public static List<IProblem> FindProblems(BackgroundWorker bw, GVDDirectory gvd)
+    {
+        List<IProblem> problems = new();
+
+        //1. Check GVD validity
+        var now = DateTime.Now;
+        if (gvd.GVD.EndValidData < now)
+        {
+            var problem = new GVDOutOfValidity(gvd);
+            problems.Add(problem);
+        }
+
+        bw.ReportProgress(5);
+
+        //2. Check Empty TabTabs
+        foreach (var tab in GlobData.TabTabs)
+            if (string.IsNullOrEmpty(tab.Text))
             {
-                var problem = new GVDOutOfValidity(gvd);
+                var problem = new EmptyTabTab(tab);
                 problems.Add(problem);
             }
 
-            bw.ReportProgress(5);
+        bw.ReportProgress(10);
 
-            //2. Check Empty TabTabs
-            foreach (var tab in GlobData.TabTabs)
-                if (string.IsNullOrEmpty(tab.Text))
+        //3. Check using Catalog tables in TPhysic and in TableTextRealization AND Segments
+        foreach (var catalog in GlobData.TableCatalogs)
+        {
+            if (catalog.Segments.Count == 0)
+            {
+                var problem = new TableWithoutSegments(catalog);
+                problems.Add(problem);
+            }
+
+            var unused = GlobData.TablePhysicals.All(physical => physical.TableCatalog != catalog);
+
+            if (!unused) continue;
+
+            foreach (var tt in GlobData.TableTexts)
+            foreach (var realization in tt.Realizations)
+                if (realization.Table == catalog)
+                    unused = false;
+
+            if (unused)
+            {
+                var problem = new UnusedTable(catalog);
+                problems.Add(problem);
+            }
+        }
+
+        bw.ReportProgress(25);
+
+        //4. Check using Physic tables in Tlogical
+        foreach (var physical in GlobData.TablePhysicals)
+        {
+            var unused = true;
+            foreach (var logical in GlobData.TableLogicals)
+            {
+                foreach (var rec in logical.Records)
                 {
-                    var problem = new EmptyTabTab(tab);
-                    problems.Add(problem);
+                    if (rec.Positions.Any(position => position.Table == physical)) unused = false;
+
+                    if (!unused) break;
                 }
 
-            bw.ReportProgress(10);
+                if (!unused) break;
+            }
 
-            //3. Check using Catalog tables in TPhysic and in TableTextRealization AND Segments
+            if (unused)
+            {
+                var problem = new UnusedTable(physical);
+                problems.Add(problem);
+            }
+        }
+
+        bw.ReportProgress(50);
+
+        //5. Check using TabTabs
+        foreach (var tab in GlobData.TabTabs)
+        {
+            var unused = true;
             foreach (var catalog in GlobData.TableCatalogs)
             {
-                if (catalog.Segments.Count == 0)
-                {
-                    var problem = new TableWithoutSegments(catalog);
-                    problems.Add(problem);
-                }
-
-                var unused = true;
-                foreach (var physical in GlobData.TablePhysicals)
-                    if (physical.TableCatalog == catalog)
+                foreach (var item in catalog.Items)
+                    if (item.Tab1 == tab || item.Tab2 == tab)
                     {
                         unused = false;
                         break;
                     }
 
-                if (!unused) continue;
-
-                foreach (var tt in GlobData.TableTexts)
-                foreach (var realization in tt.Realizations)
-                    if (realization.Table == catalog)
-                        unused = false;
-
-                if (unused)
-                {
-                    var problem = new UnusedTable(catalog);
-                    problems.Add(problem);
-                }
+                if (!unused) break;
             }
 
-            bw.ReportProgress(25);
-
-            //4. Check using Physic tables in Tlogical
-            foreach (var physical in GlobData.TablePhysicals)
+            if (unused)
             {
-                var unused = true;
-                foreach (var logical in GlobData.TableLogicals)
-                {
-                    foreach (var rec in logical.Records)
-                    {
-                        foreach (var position in rec.Positions)
-                            if (position.Table == physical)
-                            {
-                                unused = false;
-                                break;
-                            }
-
-                        if (!unused) break;
-                    }
-
-                    if (!unused) break;
-                }
-
-                if (unused)
-                {
-                    var problem = new UnusedTable(physical);
-                    problems.Add(problem);
-                }
+                var problem = new UnusedTabTab(tab);
+                problems.Add(problem);
             }
-
-            bw.ReportProgress(50);
-
-            //5. Check using TabTabs
-            foreach (var tab in GlobData.TabTabs)
-            {
-                var unused = true;
-                foreach (var catalog in GlobData.TableCatalogs)
-                {
-                    foreach (var item in catalog.Items)
-                        if (item.Tab1 == tab || item.Tab2 == tab)
-                        {
-                            unused = false;
-                            break;
-                        }
-
-                    if (!unused) break;
-                }
-
-                if (unused)
-                {
-                    var problem = new UnusedTabTab(tab);
-                    problems.Add(problem);
-                }
-            }
-
-            bw.ReportProgress(75);
-
-            //6. Check TTexts
-            for (var i = 0; i < GlobData.TableTexts.Count; i++)
-            {
-                var tableText = GlobData.TableTexts[i];
-                if (tableText.Realizations.Count == 0)
-                {
-                    var problem = new TableTextWithoutRealization(tableText, gvd, i);
-                    problems.Add(problem);
-                }
-
-                if (tableText.Trains.Count == 0)
-                {
-                    var problem = new TableTextWithoutTrains(tableText, gvd, i);
-                    problems.Add(problem);
-                }
-            }
-
-            bw.ReportProgress(100);
-
-            return problems;
         }
+
+        bw.ReportProgress(75);
+
+        //6. Check TTexts
+        for (var i = 0; i < GlobData.TableTexts.Count; i++)
+        {
+            var tableText = GlobData.TableTexts[i];
+            if (tableText.Realizations.Count == 0)
+            {
+                var problem = new TableTextWithoutRealization(tableText, gvd, i);
+                problems.Add(problem);
+            }
+
+            if (tableText.Trains.Count == 0)
+            {
+                var problem = new TableTextWithoutTrains(tableText, gvd, i);
+                problems.Add(problem);
+            }
+        }
+
+        bw.ReportProgress(100);
+
+        return problems;
+    }
+}
+
+internal class UnusedTable : IProblem
+{
+    /// <summary>Initializes a new instance of the <see cref="UnusedTable" /> class.</summary>
+    public UnusedTable(ITable table)
+    {
+        Table = table;
     }
 
-    internal class UnusedTable : IProblem
+    public ITable Table { get; }
+
+    public string Text
     {
-        /// <summary>Initializes a new instance of the <see cref="UnusedTable" /> class.</summary>
-        public UnusedTable(ITable table)
+        get
         {
-            Table = table;
-        }
-
-        public ITable Table { get; }
-
-        public string Text
-        {
-            get
+            var tabname = Table switch
             {
-                var tabname = Table switch
-                {
-                    TableCatalog => "Katalógová",
-                    TablePhysical => "Fyzická",
-                    TableLogical => "Logická",
-                    _ => ""
-                };
-                return $"{tabname} tabuľa {Table.Key} sa nikde nepoužíva.";
-            }
-        }
-
-        public string Solution => "Odstrániť tabuľu";
-
-        public ProblemType ProblemType => ProblemType.HINT;
-
-        public FixType FixType => FixType.AUTO;
-
-        public FixResult FixProblem()
-        {
-            return Table switch
-            {
-                TableCatalog tc => GlobData.TableCatalogs.Remove(tc) ? FixResult.DONE : FixResult.NOT_SOLVED,
-                TablePhysical tb => GlobData.TablePhysicals.Remove(tb) ? FixResult.DONE : FixResult.NOT_SOLVED,
-                TableLogical tl => GlobData.TableLogicals.Remove(tl) ? FixResult.DONE : FixResult.NOT_SOLVED,
-                _ => FixResult.NOT_SOLVED
+                TableCatalog => "Katalógová",
+                TablePhysical => "Fyzická",
+                TableLogical => "Logická",
+                _ => ""
             };
+            return $"{tabname} tabuľa {Table.Key} sa nikde nepoužíva.";
         }
     }
 
-    internal class UnusedTabTab : IProblem
+    public string Solution => "Odstrániť tabuľu";
+
+    public ProblemType ProblemType => ProblemType.Hint;
+
+    public FixType FixType => FixType.Auto;
+
+    public FixResult FixProblem()
     {
-        /// <summary>Initializes a new instance of the <see cref="UnusedTabTab" /> class.</summary>
-        public UnusedTabTab(TableTabTab table)
+        return Table switch
         {
-            TabTab = table;
-        }
+            TableCatalog tc => GlobData.TableCatalogs.Remove(tc) ? FixResult.Done : FixResult.NotSolved,
+            TablePhysical tb => GlobData.TablePhysicals.Remove(tb) ? FixResult.Done : FixResult.NotSolved,
+            TableLogical tl => GlobData.TableLogicals.Remove(tl) ? FixResult.Done : FixResult.NotSolved,
+            _ => FixResult.NotSolved
+        };
+    }
+}
 
-        public TableTabTab TabTab { get; }
-
-        public string Text => $"TabTab {TabTab.Key} sa nikde nepoužíva.";
-
-        public string Solution => "Odstrániť TabTab";
-
-        public ProblemType ProblemType => ProblemType.HINT;
-
-        public FixType FixType => FixType.AUTO;
-
-        public FixResult FixProblem()
-        {
-            return GlobData.TabTabs.Remove(TabTab) ? FixResult.DONE : FixResult.NOT_SOLVED;
-        }
+internal class UnusedTabTab : IProblem
+{
+    /// <summary>Initializes a new instance of the <see cref="UnusedTabTab" /> class.</summary>
+    public UnusedTabTab(TableTabTab table)
+    {
+        TabTab = table;
     }
 
-    internal class TableWithoutSegments : IProblem
+    public TableTabTab TabTab { get; }
+
+    public string Text => $"TabTab {TabTab.Key} sa nikde nepoužíva.";
+
+    public string Solution => "Odstrániť TabTab";
+
+    public ProblemType ProblemType => ProblemType.Hint;
+
+    public FixType FixType => FixType.Auto;
+
+    public FixResult FixProblem()
     {
-        /// <summary>Initializes a new instance of the <see cref="TableWithoutSegments" /> class.</summary>
-        public TableWithoutSegments(TableCatalog table)
-        {
-            Table = table;
-        }
+        return GlobData.TabTabs.Remove(TabTab) ? FixResult.Done : FixResult.NotSolved;
+    }
+}
 
-        public TableCatalog Table { get; }
-
-        public string Text => $"Katalógova tabuľa {Table.Key} nemá nastavené žiadne riadky (segmenty).";
-
-        public string Solution => "Upraviť segmenty katalógovej tabule";
-
-        public ProblemType ProblemType => ProblemType.WARNING;
-
-        public FixType FixType => FixType.MANUAL;
-
-        public FixResult FixProblem()
-        {
-            var form = new FTableCatalog(Table, GlobData.TabTabs);
-            form.ShowDialog();
-
-            //Check if the problem was solved
-            return Table.Segments.Count == 0 ? FixResult.NOT_SOLVED : FixResult.DONE;
-        }
+internal class TableWithoutSegments : IProblem
+{
+    /// <summary>Initializes a new instance of the <see cref="TableWithoutSegments" /> class.</summary>
+    public TableWithoutSegments(TableCatalog table)
+    {
+        Table = table;
     }
 
-    internal class TableTextWithoutRealization : IProblem
+    public TableCatalog Table { get; }
+
+    public string Text => $"Katalógova tabuľa {Table.Key} nemá nastavené žiadne riadky (segmenty).";
+
+    public string Solution => "Upraviť segmenty katalógovej tabule";
+
+    public ProblemType ProblemType => ProblemType.Warning;
+
+    public FixType FixType => FixType.Manual;
+
+    public FixResult FixProblem()
     {
-        /// <summary>Initializes a new instance of the <see cref="TableTextWithoutRealization" /> class.</summary>
-        public TableTextWithoutRealization(TableText text, GVDDirectory gvdDir, int row)
-        {
-            TText = text;
-            GVDDir = gvdDir;
-            Row = row;
-        }
+        var form = new FTableCatalog(Table, GlobData.TabTabs);
+        form.ShowDialog();
 
-        public TableText TText { get; }
+        //Check if the problem was solved
+        return Table.Segments.Count == 0 ? FixResult.NotSolved : FixResult.Done;
+    }
+}
 
-        public GVDDirectory GVDDir { get; }
-
-        public int Row { get; }
-
-        public string Text => $"Table Text je \"{TText.Key}\" nemá žiadnu realizáciu.";
-
-        public string Solution => "Pridať realizácie textu";
-
-        public ProblemType ProblemType => ProblemType.WARNING;
-
-        public FixType FixType => FixType.MANUAL;
-
-        public FixResult FixProblem()
-        {
-            var form = new FTableText(TText, GlobData.TableCatalogs, GVDDir.GVD, Row);
-            form.ShowDialog();
-
-            //Check if the problem was solved
-            return TText.Realizations.Count == 0 ? FixResult.NOT_SOLVED : FixResult.DONE;
-        }
+internal class TableTextWithoutRealization : IProblem
+{
+    /// <summary>Initializes a new instance of the <see cref="TableTextWithoutRealization" /> class.</summary>
+    public TableTextWithoutRealization(TableText text, GVDDirectory gvdDir, int row)
+    {
+        TText = text;
+        GVDDir = gvdDir;
+        Row = row;
     }
 
-    internal class TableTextWithoutTrains : IProblem
+    public TableText TText { get; }
+
+    public GVDDirectory GVDDir { get; }
+
+    public int Row { get; }
+
+    public string Text => $"Table Text je \"{TText.Key}\" nemá žiadnu realizáciu.";
+
+    public string Solution => "Pridať realizácie textu";
+
+    public ProblemType ProblemType => ProblemType.Warning;
+
+    public FixType FixType => FixType.Manual;
+
+    public FixResult FixProblem()
     {
-        /// <summary>Initializes a new instance of the <see cref="TableTextWithoutTrains" /> class.</summary>
-        public TableTextWithoutTrains(TableText text, GVDDirectory gvdDir, int row)
-        {
-            TText = text;
-            GVDDir = gvdDir;
-            Row = row;
-        }
+        var form = new FTableText(TText, GlobData.TableCatalogs, GVDDir.GVD, Row);
+        form.ShowDialog();
 
-        public TableText TText { get; }
+        //Check if the problem was solved
+        return TText.Realizations.Count == 0 ? FixResult.NotSolved : FixResult.Done;
+    }
+}
 
-        public GVDDirectory GVDDir { get; }
-
-        public int Row { get; }
-
-        public string Text => $"Table Text je \"{TText.Key}\" nemá nastavené žiadne texty vlakov.";
-
-        public string Solution => "Pridať realizácie textu";
-
-        public ProblemType ProblemType => ProblemType.WARNING;
-
-        public FixType FixType => FixType.MANUAL;
-
-        public FixResult FixProblem()
-        {
-            var form = new FTableText(TText, GlobData.TableCatalogs, GVDDir.GVD, Row);
-            form.ShowDialog();
-
-            //Check if the problem was solved
-            return TText.Trains.Count == 0 ? FixResult.NOT_SOLVED : FixResult.DONE;
-        }
+internal class TableTextWithoutTrains : IProblem
+{
+    /// <summary>Initializes a new instance of the <see cref="TableTextWithoutTrains" /> class.</summary>
+    public TableTextWithoutTrains(TableText text, GVDDirectory gvdDir, int row)
+    {
+        TText = text;
+        GVDDir = gvdDir;
+        Row = row;
     }
 
-    internal class EmptyTabTab : IProblem
+    public TableText TText { get; }
+
+    public GVDDirectory GVDDir { get; }
+
+    public int Row { get; }
+
+    public string Text => $"Table Text je \"{TText.Key}\" nemá nastavené žiadne texty vlakov.";
+
+    public string Solution => "Pridať realizácie textu";
+
+    public ProblemType ProblemType => ProblemType.Warning;
+
+    public FixType FixType => FixType.Manual;
+
+    public FixResult FixProblem()
     {
-        /// <summary>Initializes a new instance of the <see cref="EmptyTabTab" /> class.</summary>
-        public EmptyTabTab(TableTabTab tabTab)
-        {
-            TabTab = tabTab;
-        }
+        var form = new FTableText(TText, GlobData.TableCatalogs, GVDDir.GVD, Row);
+        form.ShowDialog();
 
-        public TableTabTab TabTab { get; }
+        //Check if the problem was solved
+        return TText.Trains.Count == 0 ? FixResult.NotSolved : FixResult.Done;
+    }
+}
 
-        public string Text => $"TabTab {TabTab.Key} je prázdny";
-
-        public string Solution => "Upraviť TabTab";
-
-        public ProblemType ProblemType => ProblemType.WARNING;
-
-        public FixType FixType => FixType.MANUAL;
-
-        public FixResult FixProblem()
-        {
-            var form = new FTabTab(TabTab);
-            form.ShowDialog();
-
-            //Check if the problem was solved
-            return string.IsNullOrEmpty(TabTab.Text) ? FixResult.NOT_SOLVED : FixResult.DONE;
-        }
+internal class EmptyTabTab : IProblem
+{
+    /// <summary>Initializes a new instance of the <see cref="EmptyTabTab" /> class.</summary>
+    public EmptyTabTab(TableTabTab tabTab)
+    {
+        TabTab = tabTab;
     }
 
-    internal class GVDOutOfValidity : IProblem
+    public TableTabTab TabTab { get; }
+
+    public string Text => $"TabTab {TabTab.Key} je prázdny";
+
+    public string Solution => "Upraviť TabTab";
+
+    public ProblemType ProblemType => ProblemType.Warning;
+
+    public FixType FixType => FixType.Manual;
+
+    public FixResult FixProblem()
     {
-        /// <summary>Initializes a new instance of the <see cref="GVDOutOfValidity" /> class.</summary>
-        public GVDOutOfValidity(GVDDirectory gvdDir)
-        {
-            GVDDir = gvdDir;
-        }
+        var form = new FTabTab(TabTab);
+        form.ShowDialog();
 
-        public GVDDirectory GVDDir { get; }
+        //Check if the problem was solved
+        return string.IsNullOrEmpty(TabTab.Text) ? FixResult.NotSolved : FixResult.Done;
+    }
+}
 
-        public string Text => $"Grafikon {GVDDir.PeriodFormatted} je po platnosti";
+internal class GVDOutOfValidity : IProblem
+{
+    /// <summary>Initializes a new instance of the <see cref="GVDOutOfValidity" /> class.</summary>
+    public GVDOutOfValidity(GVDDirectory gvdDir)
+    {
+        GVDDir = gvdDir;
+    }
 
-        public string Solution => "Zmeniť platnosť grafikonu";
+    public GVDDirectory GVDDir { get; }
 
-        public ProblemType ProblemType => ProblemType.WARNING;
+    public string Text => $"Grafikon {GVDDir.PeriodFormatted} je po platnosti";
 
-        public FixType FixType => FixType.MANUAL;
+    public string Solution => "Zmeniť platnosť grafikonu";
 
-        public FixResult FixProblem()
-        {
-            var form = new FLocalSettings(GVDDir, 0);
-            form.ShowDialog();
+    public ProblemType ProblemType => ProblemType.Warning;
 
-            //Check if the problem was solved
-            return GVDDir.GVD.EndValidData < DateTime.Now ? FixResult.NOT_SOLVED : FixResult.DONE;
-        }
+    public FixType FixType => FixType.Manual;
+
+    public FixResult FixProblem()
+    {
+        var form = new FLocalSettings(GVDDir, 0);
+        form.ShowDialog();
+
+        //Check if the problem was solved
+        return GVDDir.GVD.EndValidData < DateTime.Now ? FixResult.NotSolved : FixResult.Done;
     }
 }

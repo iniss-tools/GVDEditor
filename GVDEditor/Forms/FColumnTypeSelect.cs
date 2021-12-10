@@ -1,49 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using GVDEditor.Entities;
+﻿using GVDEditor.Entities;
 using ToolsCore.Tools;
 
-namespace GVDEditor.Forms
+namespace GVDEditor.Forms;
+
+/// <summary>
+///     Dialog - Vyber stlpca pre import.
+/// </summary>
+public partial class FColumnTypeSelect : Form
 {
+    private readonly List<ImportTrainColumnType> columnTypes = ImportTrainColumnType.GetValues();
+
     /// <summary>
-    ///     Dialog - Vyber stlpca pre import.
+    ///     Vytvori novy formular typu <see cref="FColumnTypeSelect"/>.
     /// </summary>
-    public partial class FColumnTypeSelect : Form
+    public FColumnTypeSelect()
     {
-        private readonly List<ImportTrainColumnType> columnTypes = ImportTrainColumnType.GetValues();
+        InitializeComponent();
+        FormUtils.SetFormFont(this);
+        this.ApplyTheme();
 
-        /// <summary>
-        ///     Vytvori novy formular typu <see cref="FColumnTypeSelect"/>.
-        /// </summary>
-        public FColumnTypeSelect()
-        {
-            InitializeComponent();
-            FormUtils.SetFormFont(this);
-            this.ApplyTheme();
+        listColumnTypes.DataSource = columnTypes;
+    }
 
-            listColumnTypes.DataSource = columnTypes;
-        }
+    /// <summary>
+    ///     Vracia stlpec vybrany pouzivatelom.
+    /// </summary>
+    public ImportTrainColumnType SelectedType { get; private set; }
 
-        /// <summary>
-        ///     Vracia stlpec vybrany pouzivatelom.
-        /// </summary>
-        public ImportTrainColumnType SelectedType { get; private set; }
+    private void bOK_Click(object sender, EventArgs e)
+    {
+        SelectedType = (ImportTrainColumnType)listColumnTypes.SelectedItem;
+        DialogResult = DialogResult.OK;
+    }
 
-        private void bOK_Click(object sender, EventArgs e)
-        {
-            SelectedType = (ImportTrainColumnType)listColumnTypes.SelectedItem;
-            DialogResult = DialogResult.OK;
-        }
+    private void bStorno_Click(object sender, EventArgs e)
+    {
+        DialogResult = DialogResult.Cancel;
+    }
 
-        private void bStorno_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
-
-        private void bDontImport_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.No;
-        }
+    private void bDontImport_Click(object sender, EventArgs e)
+    {
+        DialogResult = DialogResult.No;
     }
 }

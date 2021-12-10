@@ -33,7 +33,7 @@ namespace GVDEditor.Forms
             this.groupBox4 = new ExControls.ExGroupBox();
             this.tbDatObm = new ExControls.ExTextBox();
             this.groupBox3 = new ExControls.ExGroupBox();
-            this.bCopy = new System.Windows.Forms.Button();
+            this.bCopy = new ExControls.ExButton();
             this.tbBitArray = new ExControls.ExTextBox();
             this.groupBox2 = new ExControls.ExGroupBox();
             this.cbSpecDays = new ExControls.ExCheckBox();
@@ -44,7 +44,7 @@ namespace GVDEditor.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.dpStart = new System.Windows.Forms.DateTimePicker();
             this.dpEnd = new System.Windows.Forms.DateTimePicker();
-            this.bGenerate = new System.Windows.Forms.Button();
+            this.bGenerate = new ExControls.ExButton();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -273,7 +273,7 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dpStart;
         private System.Windows.Forms.DateTimePicker dpEnd;
-        private System.Windows.Forms.Button bGenerate;
-        private System.Windows.Forms.Button bCopy;
+        private ExControls.ExButton bGenerate;
+        private ExControls.ExButton bCopy;
     }
 }
