@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="hlavneMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="mainMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>14, 14</value>
   </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -621,31 +621,31 @@
   <data name="tsmiNastavenia.Text" xml:space="preserve">
     <value>Pomocník</value>
   </data>
-  <data name="hlavneMenu.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="mainMenu.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="hlavneMenu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="mainMenu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 2, 0, 2</value>
   </data>
-  <data name="hlavneMenu.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="mainMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>1044, 23</value>
   </data>
-  <data name="hlavneMenu.TabIndex" type="System.Int32, mscorlib">
+  <data name="mainMenu.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="hlavneMenu.Text" xml:space="preserve">
+  <data name="mainMenu.Text" xml:space="preserve">
     <value>menuStrip1</value>
   </data>
-  <data name="&gt;&gt;hlavneMenu.Name" xml:space="preserve">
-    <value>hlavneMenu</value>
+  <data name="&gt;&gt;mainMenu.Name" xml:space="preserve">
+    <value>mainMenu</value>
   </data>
-  <data name="&gt;&gt;hlavneMenu.Type" xml:space="preserve">
+  <data name="&gt;&gt;mainMenu.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;hlavneMenu.Parent" xml:space="preserve">
+  <data name="&gt;&gt;mainMenu.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;hlavneMenu.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;mainMenu.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <metadata name="toolMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -2499,9 +2499,6 @@
         X/g/g1KMu1R0dqcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
@@ -3081,16 +3078,46 @@
   <data name="&gt;&gt;backgroundWorker1.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;cisloDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>cisloDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;cisloDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>nameDataGridViewTextBoxColumn</value>
   </data>
   <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;typDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>typDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;typDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;LinkaPrichod.Name" xml:space="preserve">
     <value>LinkaPrichod</value>
   </data>
   <data name="&gt;&gt;LinkaPrichod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;smerovanieDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>smerovanieDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;smerovanieDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;prichodDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>prichodDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;prichodDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;odchodDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>odchodDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;odchodDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dgvcVychodziaStanica.Name" xml:space="preserve">
@@ -3123,17 +3150,35 @@
   <data name="&gt;&gt;Kolaj.Type" xml:space="preserve">
     <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="&gt;&gt;trackBindingSource.Name" xml:space="preserve">
+    <value>trackBindingSource</value>
+  </data>
+  <data name="&gt;&gt;trackBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;Dopravca.Name" xml:space="preserve">
     <value>Dopravca</value>
   </data>
   <data name="&gt;&gt;Dopravca.Type" xml:space="preserve">
     <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="&gt;&gt;operatorBindingSource.Name" xml:space="preserve">
+    <value>operatorBindingSource</value>
+  </data>
+  <data name="&gt;&gt;operatorBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;Ostatne.Name" xml:space="preserve">
     <value>Ostatne</value>
   </data>
   <data name="&gt;&gt;Ostatne.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vlakBindingSource.Name" xml:space="preserve">
+    <value>vlakBindingSource</value>
+  </data>
+  <data name="&gt;&gt;vlakBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
     <value>dataGridViewTextBoxColumn1</value>
@@ -3512,54 +3557,6 @@
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn16.Type" xml:space="preserve">
     <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cisloDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>cisloDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;cisloDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;typDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>typDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;typDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;smerovanieDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>smerovanieDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;smerovanieDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;prichodDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>prichodDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;prichodDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;odchodDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>odchodDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;odchodDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBindingSource.Name" xml:space="preserve">
-    <value>trackBindingSource</value>
-  </data>
-  <data name="&gt;&gt;trackBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;operatorBindingSource.Name" xml:space="preserve">
-    <value>operatorBindingSource</value>
-  </data>
-  <data name="&gt;&gt;operatorBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vlakBindingSource.Name" xml:space="preserve">
-    <value>vlakBindingSource</value>
-  </data>
-  <data name="&gt;&gt;vlakBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FMain</value>

@@ -3,7 +3,7 @@
 namespace GVDEditor.Entities;
 
 /// <summary>
-///     Trieda obshaujuca informacie o dodatkovom hláseni.
+///     Trieda obsahujuca informacie o dodatkovom hláseni.
 /// </summary>
 public sealed class Dodatok
 {
@@ -31,7 +31,7 @@ public sealed class Dodatok
     public override string ToString() => Name;
 
     /// <summary>
-    ///     Konveruje binárne pole na dodatkové hlásenie zo všetkými dátami.
+    ///     Konvertuje binárne pole na dodatkové hlásenie zo všetkými dátami.
     /// </summary>
     /// <param name="sound">Fyzický zvuk.</param>
     /// <param name="nums">Binárne pole vo forme reťazca.</param>
@@ -48,15 +48,7 @@ public sealed class Dodatok
         if (!Utils.IsInt(nums)) 
             throw new FormatException("Pole dodatku neobsahuje iba čísla.");
 
-        var numChars = nums.ToCharArray();
-
-        foreach (var c in numChars)
-            if (!c.Equals('0') && !c.Equals('1'))
-                throw new FormatException("Pole dodatku musí obsahovať iba číslice 0 a 1.");
-
-        var countVariants = reportVariants.Count;
         List<ReportType> rightTypes;
-
         if (smerovanie == Routing.Vychadzajuci)
             rightTypes = reportTypes.Where(t => t.BaseTrain).ToList();
         else if (smerovanie == Routing.Prechadzajuci)
@@ -64,18 +56,27 @@ public sealed class Dodatok
         else
             rightTypes = reportTypes.Where(t => t.TerminateTrain).ToList();
 
-        var rightMapLength = rightTypes.Count * countVariants;
+        var rightMapLength = rightTypes.Count * reportVariants.Count;
 
-        if (rightMapLength != numChars.Length)
-            throw new FormatException($"Mapa dodatku má nesprávnu dĺžku ({numChars.Length}). Mala by mať dĺžku {rightMapLength}.");
+        if (rightMapLength != nums.Length)
+            throw new FormatException($"Mapa dodatku má nesprávnu dĺžku ({nums.Length}). Mala by mať dĺžku {rightMapLength}.");
 
         var ch = 0;
         for (var i = 0; i < rightTypes.Count; i++)
         {
             var vars = new List<ReportVariant>();
-            for (var j = 0; j < countVariants; j++)
+            foreach (var reportVariant in reportVariants)
             {
-                if (numChars[ch].Equals('1')) vars.Add(reportVariants[j]);
+                switch (nums[ch])
+                {
+                    case '1':
+                        vars.Add(reportVariant);
+                        break;
+                    case '0':
+                        break;
+                    default:
+                        throw new FormatException("Pole dodatku musí obsahovať iba číslice 0 a 1.");
+                }
                 ch++;
             }
 
@@ -86,7 +87,7 @@ public sealed class Dodatok
     }
 
     /// <summary>
-    ///     Konveruje dodatkové hlásenie na binárne pole.
+    ///     Konvertuje dodatkové hlásenie na binárne pole.
     /// </summary>
     /// <param name="dodatok">Dodatkové hlásenie.</param>
     /// <param name="reportTypes">Dostupné typy reportov.</param>
@@ -96,13 +97,16 @@ public sealed class Dodatok
     {
         var nums = new StringBuilder();
 
-        for (var i = 0; i < reportTypes.Count; i++)
-            if (i < dodatok.ChosenReports.Count && dodatok.ChosenReports[i].Type == reportTypes[i])
+        foreach (var reportType in reportTypes)
+        {
+            var chosenReportType = dodatok.ChosenReports.FirstOrDefault(x => x.Type == reportType);
+            if (chosenReportType != null)
                 foreach (var variant in reportVariants)
-                    nums.Append(dodatok.ChosenReports[i].Variants.Contains(variant) ? '1' : '0');
+                    nums.Append(chosenReportType.Variants.Contains(variant) ? '1' : '0');
             else
                 for (var j = 0; j < reportVariants.Count; j++)
                     nums.Append('0');
+        }
 
         return nums.ToString();
     }

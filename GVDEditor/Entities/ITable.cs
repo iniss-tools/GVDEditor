@@ -15,4 +15,9 @@ public interface ITable
     ///     Nazov tabule.
     /// </summary>
     public string Name { get; set; }
+
+    /// <summary>
+    ///     Typ tabule ako retazec.
+    /// </summary>
+    public string TypeName { get; }
 }

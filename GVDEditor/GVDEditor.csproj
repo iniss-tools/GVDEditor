@@ -82,9 +82,6 @@
     <Reference Include="AutocompleteMenu-ScintillaNET, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoCompleteMenu-ScintillaNET.1.6.2\lib\net461\AutocompleteMenu-ScintillaNET.dll</HintPath>
     </Reference>
-    <Reference Include="ExControls">
-      <HintPath>..\..\ExControls\ExControls\bin\Debug\ExControls.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -116,12 +113,6 @@
     <Compile Include="Entities\Audio.cs" />
     <Compile Include="Entities\ChosenReportType.cs" />
     <Compile Include="Entities\ITable.cs" />
-    <Compile Include="Forms\FAbout.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FAbout.Designer.cs">
-      <DependentUpon>FAbout.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FAnalyzer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,9 +330,6 @@
     <Compile Include="Tools\WAVPlayer.cs" />
     <EmbeddedResource Include="Controls\MyScintilla.resx">
       <DependentUpon>MyScintilla.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FAbout.resx">
-      <DependentUpon>FAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FAnalyzer.cs.resx">
       <DependentUpon>FAnalyzer.cs</DependentUpon>
@@ -579,6 +567,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ExControls\ExControls\ExControls.csproj">
+      <Project>{e2064a91-6132-498f-9f22-8c3e7c5941bc}</Project>
+      <Name>ExControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\ToolsCore\ToolsCore\ToolsCore.csproj">
       <Project>{15b32c49-7b00-4849-9685-2f7d7438db54}</Project>
       <Name>ToolsCore</Name>

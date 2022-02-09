@@ -45,6 +45,9 @@ public sealed class TableLogical : ITable
     /// </summary>
     public string Comment { get; set; }
 
+    /// <inheritdoc/>
+    public string TypeName => "Logická tabuľa";
+
     /// <inheritdoc />
     public override string ToString() => Name;
 }

@@ -79,7 +79,7 @@ public partial class FTableLogical : Form
             return;
         }
 
-        foreach (var t in FLocalSettings.Logicals)
+        foreach (var t in GlobData.TableLogicals)
             if (t.Key == tbKey.Text && table != t)
             {
                 Utils.ShowError(Resources.Tables_Zadaný_kľúč_tabule_už_existuje);

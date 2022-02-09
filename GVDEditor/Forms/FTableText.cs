@@ -74,7 +74,7 @@ public partial class FTableText : Form
         if (row != -1)
         {
             var i = 0;
-            foreach (var t in FLocalSettings.TTexts)
+            foreach (var t in GlobData.TableTexts)
             {
                 if (t.Key == tbKey.Text && row != i)
                 {
@@ -88,7 +88,7 @@ public partial class FTableText : Form
         }
         else
         {
-            foreach (var t in FLocalSettings.TTexts)
+            foreach (var t in GlobData.TableTexts)
                 if (t.Key == tbKey.Text)
                 {
                     Utils.ShowError(Resources.Tables_Zadaný_kľúč_tabule_už_existuje);

@@ -127,13 +127,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>338, 534</value>
+    <value>254, 434</value>
   </data>
   <data name="bSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 33</value>
+    <value>69, 27</value>
   </data>
   <data name="bSave.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -145,7 +145,7 @@
     <value>bSave</value>
   </data>
   <data name="&gt;&gt;bSave.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bSave.Parent" xml:space="preserve">
     <value>$this</value>
@@ -160,13 +160,13 @@
     <value>NoControl</value>
   </data>
   <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>535, 534</value>
+    <value>401, 434</value>
   </data>
   <data name="bStorno.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 33</value>
+    <value>69, 27</value>
   </data>
   <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -178,7 +178,7 @@
     <value>bStorno</value>
   </data>
   <data name="&gt;&gt;bStorno.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bStorno.Parent" xml:space="preserve">
     <value>$this</value>
@@ -193,13 +193,13 @@
     <value>Česky</value>
   </data>
   <data name="cbDateRemLocate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 36</value>
+    <value>163, 29</value>
   </data>
   <data name="cbDateRemLocate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbDateRemLocate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 24</value>
+    <value>150, 21</value>
   </data>
   <data name="cbDateRemLocate.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -208,7 +208,7 @@
     <value>cbDateRemLocate</value>
   </data>
   <data name="&gt;&gt;cbDateRemLocate.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDateRemLocate.Parent" xml:space="preserve">
     <value>pLocalization</value>
@@ -223,13 +223,13 @@
     <value>Čeština</value>
   </data>
   <data name="cbAppLanguage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 6</value>
+    <value>163, 5</value>
   </data>
   <data name="cbAppLanguage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbAppLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 24</value>
+    <value>150, 21</value>
   </data>
   <data name="cbAppLanguage.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -238,7 +238,7 @@
     <value>cbAppLanguage</value>
   </data>
   <data name="&gt;&gt;cbAppLanguage.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbAppLanguage.Parent" xml:space="preserve">
     <value>pLocalization</value>
@@ -253,10 +253,13 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 39</value>
+    <value>16, 32</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 16</value>
+    <value>132, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -283,10 +286,13 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 9</value>
+    <value>16, 7</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 16</value>
+    <value>83, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -313,13 +319,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbLoggingError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 41</value>
+    <value>10, 33</value>
   </data>
   <data name="cbLoggingError.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbLoggingError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 20</value>
+    <value>205, 17</value>
   </data>
   <data name="cbLoggingError.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -331,7 +337,7 @@
     <value>cbLoggingError</value>
   </data>
   <data name="&gt;&gt;cbLoggingError.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbLoggingError.Parent" xml:space="preserve">
     <value>pLogging</value>
@@ -346,10 +352,13 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 72</value>
+    <value>10, 58</value>
+  </data>
+  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 16</value>
+    <value>142, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -379,13 +388,13 @@
     <value>Bez chybových hlášok (systémové hlášky)</value>
   </data>
   <data name="cbDebugModeGUI.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 69</value>
+    <value>163, 56</value>
   </data>
   <data name="cbDebugModeGUI.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbDebugModeGUI.Size" type="System.Drawing.Size, System.Drawing">
-    <value>321, 24</value>
+    <value>242, 21</value>
   </data>
   <data name="cbDebugModeGUI.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -394,7 +403,7 @@
     <value>cbDebugModeGUI</value>
   </data>
   <data name="&gt;&gt;cbDebugModeGUI.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDebugModeGUI.Parent" xml:space="preserve">
     <value>pLogging</value>
@@ -409,13 +418,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbLoggingInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 13</value>
+    <value>10, 11</value>
   </data>
   <data name="cbLoggingInfo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbLoggingInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 20</value>
+    <value>260, 17</value>
   </data>
   <data name="cbLoggingInfo.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -427,7 +436,7 @@
     <value>cbLoggingInfo</value>
   </data>
   <data name="&gt;&gt;cbLoggingInfo.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbLoggingInfo.Parent" xml:space="preserve">
     <value>pLogging</value>
@@ -442,10 +451,13 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 22</value>
+    <value>14, 18</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 16</value>
+    <value>185, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -466,13 +478,13 @@
     <value>1</value>
   </data>
   <data name="nudWordPause.Location" type="System.Drawing.Point, System.Drawing">
-    <value>273, 20</value>
+    <value>205, 16</value>
   </data>
   <data name="nudWordPause.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudWordPause.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 22</value>
+    <value>90, 19</value>
   </data>
   <data name="nudWordPause.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -481,7 +493,7 @@
     <value>nudWordPause</value>
   </data>
   <data name="&gt;&gt;nudWordPause.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudWordPause.Parent" xml:space="preserve">
     <value>pPlaying</value>
@@ -496,13 +508,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbAutoTableText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 9</value>
+    <value>13, 7</value>
   </data>
   <data name="cbAutoTableText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbAutoTableText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>379, 20</value>
+    <value>310, 17</value>
   </data>
   <data name="cbAutoTableText.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -514,13 +526,13 @@
     <value>cbAutoTableText</value>
   </data>
   <data name="&gt;&gt;cbAutoTableText.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbAutoTableText.Parent" xml:space="preserve">
     <value>pObecne</value>
   </data>
   <data name="&gt;&gt;cbAutoTableText.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="cbClassicGUI.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -529,13 +541,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbClassicGUI.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 154</value>
+    <value>13, 125</value>
   </data>
   <data name="cbClassicGUI.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbClassicGUI.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 20</value>
+    <value>209, 17</value>
   </data>
   <data name="cbClassicGUI.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -547,13 +559,13 @@
     <value>cbClassicGUI</value>
   </data>
   <data name="&gt;&gt;cbClassicGUI.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbClassicGUI.Parent" xml:space="preserve">
     <value>pObecne</value>
   </data>
   <data name="&gt;&gt;cbClassicGUI.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="cbMoreInstance.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -562,13 +574,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbMoreInstance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 114</value>
+    <value>13, 93</value>
   </data>
   <data name="cbMoreInstance.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbMoreInstance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 20</value>
+    <value>164, 17</value>
   </data>
   <data name="cbMoreInstance.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -580,13 +592,13 @@
     <value>cbMoreInstance</value>
   </data>
   <data name="&gt;&gt;cbMoreInstance.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbMoreInstance.Parent" xml:space="preserve">
     <value>pObecne</value>
   </data>
   <data name="&gt;&gt;cbMoreInstance.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <metadata name="colorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -601,15 +613,15 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACC
-        RgAAAk1TRnQBSQFMAgEBCQEAATgBAQE4AQEBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB+
+        RgAAAk1TRnQBSQFMAgEBCQEAAVgBAQFYAQEBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
         AwABPAMAAQEBAAEgBgABS/8AXwADFQEdAwoBDf8AOQADIwEzAVoBzAEXAf8DSwGMAwYBCP8AMQADIwEz
-        AVoBzAEXAf8BWgHMARcB/wFgAWwBUAHzAz0BZ/8ALQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
+        AVoBzAEXAf8BWgHMARcB/wFgAWwBVAHzAz0BZ/8ALQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
         AVoBzAEXAf8BZQFoAVMB9AMSARj/ACUAAyMBMwFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
         AVoBzAEXAf8BWgHMARcB/wNWAbMDEgEX/wAdAAMjATMBWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHM
-        ARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFNAX0BMgH6A00Bkv8AGQADIwEzAVoBzAEXAf8BWgHM
+        ARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFNAX0BOAH6A00Bkv8AGQADIwEzAVoBzAEXAf8BWgHM
         ARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
-        AWoBgwFBAfkDLAFD/wARAAMjATMBWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
+        AWoBfwFBAfkDLAFD/wARAAMjATMBWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
         AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/Al4BWwHTAx0BKf8A
         CQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEX
         Af8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8CWgFXAcL/AAUA
@@ -617,299 +629,302 @@
         AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wJUAVIBqAMGAQf/AAUAAyMBMwFa
         AcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEX
         Af8BWgHMARcB/wFaAcwBFwH/AmEBWwHeAxUBHf8ADQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
-        AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFeAV8BUgHwAzEBTf8AFQADIwEz
-        AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8DRgF+
-        AwMBBP8AGQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wNcAcv/ACUA
-        AyMBMwFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wJgAV4B2wMiATH/ACkAAyMBMwFaAcwBFwH/AVoBzAEX
-        Af8DMgFPBAH/AC0AAyEBMAJRAVABnP8A/wD/AP8AJAAE/wPvAf88AAT/AfcC7wH/AecB3gHWAf8B5wHe
-        AdYB/wHnAd4B1gH/AecB3gHWAf8C7wHnBf9sAAHnAdYBxgH/AbUBXgEtAf8BtQFeAS0B/wG1AV4BLQH/
-        AbUBXgEtAf8BtQFeAS0B/wG1AV4BLQH/AbUBXgEtAf8B5wHWAcYB/0wAA+cB/wGMAV4BRgH/OAAB9wHv
-        AecB/wHOAZwBXgH/AcYBnAFWAf8B1gGtAYwB/wHeAbUBjAH/AecBvQGcAf8B1gGtAYQB/wHGAZwBVgH/
-        Ac4BnAGEAf8B7wHnAdYB/xgABP8B1gHOAcYB/wGUAYQBVgH/AYwBXgFGAf8BjAFeAUYB/wGMAV4BRgH/
-        AYwBXgFGAf8BjAFeAUYB/wGMAV4BRgH/AYwBXgFGAf8BjAFeAUYB/wGMAV4BRgH/AYwBXgFGAf8BjAFe
-        AUYB/wGMAV4BRgH/AYwBXgFGAf8BvQGtAaUF/wgAAecB1gHGAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGM
-        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wHnAdYBxgH/RAAE/wLeAdYB/wG1AaUBlAH/
-        AYwBXgFGAf8IAAL3Ae8B/wH3AecB1gL/AvcB/xwABP8B5wHWAcYB/wHWAa0BhAH/AdYBnAFeAf8B5wG1
-        AYQB/wHeAbUBjAH/Ae8BzgGlAv8B7wHGAf8B5wG9AZwC/wHnAb0B/wHeAb0BlAH/AdYBtQGMAf8B3gG9
-        AaUB/wL3Ae8B/xAAA+cB/wG9Aa0BnAH/Ad4BzgHGAf8B5wHWAcYB/wHnAdYBxgH/AecB1gHGAf8B5wHW
-        AcYB/wHnAdYBxgH/AecB1gHGAf8B5wHWAcYB/wHnAdYBxgH/AecB1gHGAf8B5wHWAcYB/wHnAdYBxgH/
-        AecB1gHGAf8B5wHWAcYB/wHOAb0BrQH/Ab0BrQGlAf8IAAHnAdYBxgH/AfcBtQGMAf8B9wG1AYwB/wH3
-        AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHWAcYB/0QAAdYBzgHGAf8BrQGc
-        AYQB/wHWAcYBtQH/AYwBXgFGAf8MAAT/Ae8BzgG1Af8C9wHvAf8YAAHeAcYBtQH/Ae8B1gGtAf8B3gGt
-        AYwB/wHvAbUBjAH/AfcBtQGMAf8BxgGcAVYB/wH3AcYBnAL/Ae8BxgH/AecBvQGcAv8B7wHGAv8B5wHG
-        Af8BzgGlAYQB/wHnAbUBjAH/Ac4BnAFWAf8C9wHvAf8MAAHeAdYBzgH/Ae8B3gHWAf8B7wHnAd4B/wHv
-        AecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHe
-        Af8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHWAf8BjAFeAUYB/wgA
-        AecB1gHGAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1
-        AYwB/wHnAdYBxgH/BAAC7wHnAf8BnAG9AYwB/wGcAb0BjAH/AZwBvQGMAf8BnAG9AYwB/wGcAb0BjAH/
-        AZwBvQGMAf8BxgHWAb0B/xgABP8BzgHGAb0B/wG9AaUBlAH/AdYBxgG1Af8B1gHGAbUB/wGMAV4BRgH/
-        BAAF/wL3Af8EAAT/AfcB5wHWAf8B9wHvAecB/wwABP8B5wHWAc4B/wHWAaUBhAH/AecBvQGcAf8BzgGc
-        AV4B/wHeAaUBhAH/Ad4BpQFeAf8BzgGcAVYB/wHeAa0BhAH/AecBvQGcAf8B1gGtAYwB/wHeAb0BlAH/
-        AecBvQGcAf8B3gG1AZQB/wHWAaUBXgH/AdYBpQFeAf8B1gG1AZwF/wgAAd4B1gHOAf8B7wHnAd4B/wHv
-        AecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHe
-        Af8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wGM
-        AV4BRgH/CAAB5wHWAcYB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1
-        AYwB/wH3AbUBjAH/AecB1gHGAf8EAAHWAd4BzgH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9
-        Af8BvQHnAb0B/wG9AecBvQH/AVYBnAE9Af8YAAG9AbUBrQH/AcYBtQGcAf8B1gHGAbUB/wHWAcYBtQH/
-        AdYBxgG1Af8BjAFeAUYB/wQABP8B7wHOAbUB/wHvAd4BzgX/BAAB9wHeAdYF/wgAAvcB7wH/Ac4BpQGE
-        Av8B7wHGAf8BzgGlAV4B/wHvAbUBjAH/AfcBtQGMAf8B5wGtAYQB/wHeAa0BhAL/AdYBrQL/Ae8BxgH/
-        AfcB1gGtAf8B5wG9AZwC/wHvAcYB/wH3Ac4BpQH/Ad4BpQFeAf8B9wG1AYwB/wHeAa0BhAH/AecBzgG9
-        Af8IAAHeAdYBzgH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/
-        Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHn
-        Ad4B/wHvAecB3gH/Ae8B5wHeAf8BjAFeAUYB/wgAAecB1gHGAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGM
-        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wHnAdYBxgH/BAAB1gHeAc4B/wG9AecBvQH/
-        Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wFWAZwBPQH/CAABvQG1AaUB/wG1
-        AZwBjAH/AbUBnAGMAf8BtQGcAYwB/wG1AZwBjAH/AdYBxgG1Af8B1gHGAbUB/wHWAcYBtQH/AdYBxgG1
-        Af8BjAFeAUYB/wgABP8B9wHvAecB/wH3AecB1gH/BAAC/wH3Af8B7wHOAbUF/wQAAecB1gHOAf8B9wHe
-        Ab0B/wH3Ad4BtQH/AdYBpQFeAf8B9wG1AYwB/wH3Ab0BjAH/AecBtQGMAf8B7wHWAa0C/wHvAcYC/wHv
-        AcYB/wH3AdYBtQH/AdYBrQGEAf8B9wHOAaUB/wH3Ab0BjAH/AecBrQGEAf8B5wGtAYQB/wHvAbUBjAH/
-        Ac4BnAFeBf8EAAHeAdYBzgH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHv
-        AecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHe
-        Af8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8BjAFeAUYB/wgAAecB1gHGAf8B9wG1AYwB/wH3AbUBjAH/
-        AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wHnAdYBxgH/BAAB1gHeAc4B/wG9
-        AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wFWAZwBPQH/CAABtQGc
-        AYwB/wHWAcYBtQH/AdYBxgG1Af8B1gHGAbUB/wG1AZwBjAH/AdYBxgG1Af8B1gHGAbUB/wHWAcYBtQH/
-        AdYBxgG1Af8BjAFeAUYF/wHvAdYBxgX/BAAB9wHnAdYC/wL3Af8EAAHvAd4BzgH/A/cB/wQAAd4BxgGl
-        Av8B5wG9Af8B5wG9AZQB/wHvAcYBpQL/Ae8BxgL/Ae8BxgH/AecBxgGlAf8B9wHeAbUC/wHvAcYC/wHv
-        AcYB/wH3AcYBnAH/Ac4BnAFWAf8B9wG1AYwB/wH3AbUBjAH/Ae8BtQGEAf8B1gGlAV4B/wH3AbUBjAH/
-        Ad4BpQFeAf8B7wHnAd4B/wQAAd4B1gHOAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8BpQGUAYwB/wE9
-        AS0BJQH/AU4BPQE1Af8B1gHOAcYB/wHOAcYBtQH/AUYBNQEtAf8BvQG1AaUB/wFWAU4BPQH/Ae8B5wHe
-        Af8B7wHnAd4B/wGtAZwBlAH/Ae8B5wHeAf8B7wHnAd4B/wGMAV4BRgH/CAAB5wHWAcYB/wH3AbUBjAH/
-        AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AecB1gHGAf8EAAHW
-        Ad4BzgH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/AVYBnAE9
-        Af8IAAG1AZwBjAH/AdYBxgG1Af8B1gHGAbUB/wHWAcYBtQH/AbUBnAGMAf8B1gHGAbUB/wHWAcYBtQH/
-        AdYBxgG1Af8B1gHGAbUB/wGMAV4BRgX/AvcB7wH/AfcB3gHOAf8EAAH/AvcB/wHvAdYBvQH/BAAD9wH/
-        AfcB7wHnAf8EAAHWAaUBhAH/Ad4BpQGEAf8B1gGtAYwB/wHeAb0BlAH/AecBvQGUAf8B5wG9AZwB/wHW
-        Aa0BjAH/AecBvQGcAf8B5wG9AZwB/wHnAb0BnAH/Ad4BtQGUAf8BxgGUAVYB/wHeAaUBhAH/Ad4BpQGE
-        Af8B3gGlAV4B/wHGAZwBVgH/Ad4BpQGEAf8B1gGlAV4B/wHnAd4B1gH/BAAB3gHWAc4B/wHvAecB3gH/
-        Ae8B5wHeAf8BpQGcAYwB/wGtAZwBlAH/Ae8B5wHWAf8B7wHeAdYB/wHnAd4B1gH/Aa0BnAGUAf8B1gHG
-        Ab0B/wHnAdYBzgH/AUYBNQEtAf8B7wHnAd4B/wHvAecB3gH/AZwBlAGEAf8B7wHnAd4B/wHvAecB3gH/
+        AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wJeAVcB8AMxAU3/ABUAAyMBMwFa
+        AcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/A0YBfgMD
+        AQT/ABkAAyMBMwFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8DXAHL/wAlAAMj
+        ATMBWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8DYAHbAyIBMf8AKQADIwEzAVoBzAEXAf8BWgHMARcB/wMy
+        AU8EAf8ALQADIQEwAlEBUAGc/wD/AP8A/wAkAAT/A+8B/zwABP8B9wLvAf8B5wHeAdYB/wHnAd4B1gH/
+        AecB3gHWAf8B5wHeAdYB/wLvAecF/2wAAecB1gHGAf8BtQFeAS0B/wG1AV4BLQH/AbUBXgEtAf8BtQFe
+        AS0B/wG1AV4BLQH/AbUBXgEtAf8BtQFeAS0B/wHnAdYBxgH/TAAD5wH/AYwBXgFGAf84AAH3Ae8B5wH/
+        Ac4BnAFeAf8BxgGcAVYB/wHWAa0BjAH/Ad4BtQGMAf8B5wG9AZwB/wHWAa0BhAH/AcYBnAFWAf8BzgGc
+        AYQB/wHvAecB1gH/GAAE/wHWAc4BxgH/AZQBhAFWAf8BjAFeAUYB/wGMAV4BRgH/AYwBXgFGAf8BjAFe
+        AUYB/wGMAV4BRgH/AYwBXgFGAf8BjAFeAUYB/wGMAV4BRgH/AYwBXgFGAf8BjAFeAUYB/wGMAV4BRgH/
+        AYwBXgFGAf8BjAFeAUYB/wG9Aa0BpQX/CAAB5wHWAcYB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3
+        AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AecB1gHGAf9EAAT/At4B1gH/AbUBpQGUAf8BjAFe
+        AUYB/wgAAvcB7wH/AfcB5wHWAv8C9wH/HAAE/wHnAdYBxgH/AdYBrQGEAf8B1gGcAV4B/wHnAbUBhAH/
+        Ad4BtQGMAf8B7wHOAaUC/wHvAcYB/wHnAb0BnAL/AecBvQH/Ad4BvQGUAf8B1gG1AYwB/wHeAb0BpQH/
+        AvcB7wH/EAAD5wH/Ab0BrQGcAf8B3gHOAcYB/wHnAdYBxgH/AecB1gHGAf8B5wHWAcYB/wHnAdYBxgH/
+        AecB1gHGAf8B5wHWAcYB/wHnAdYBxgH/AecB1gHGAf8B5wHWAcYB/wHnAdYBxgH/AecB1gHGAf8B5wHW
+        AcYB/wHnAdYBxgH/Ac4BvQGtAf8BvQGtAaUB/wgAAecB1gHGAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGM
+        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wHnAdYBxgH/RAAB1gHOAcYB/wGtAZwBhAH/
+        AdYBxgG1Af8BjAFeAUYB/wwABP8B7wHOAbUB/wL3Ae8B/xgAAd4BxgG1Af8B7wHWAa0B/wHeAa0BjAH/
+        Ae8BtQGMAf8B9wG1AYwB/wHGAZwBVgH/AfcBxgGcAv8B7wHGAf8B5wG9AZwC/wHvAcYC/wHnAcYB/wHO
+        AaUBhAH/AecBtQGMAf8BzgGcAVYB/wL3Ae8B/wwAAd4B1gHOAf8B7wHeAdYB/wHvAecB3gH/Ae8B5wHe
+        Af8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHv
+        AecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAdYB/wGMAV4BRgH/CAAB5wHW
+        AcYB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/
+        AecB1gHGAf8EAALvAecB/wGcAb0BjAH/AZwBvQGMAf8BnAG9AYwB/wGcAb0BjAH/AZwBvQGMAf8BnAG9
+        AYwB/wHGAdYBvQH/GAAE/wHOAcYBvQH/Ab0BpQGUAf8B1gHGAbUB/wHWAcYBtQH/AYwBXgFGAf8EAAX/
+        AvcB/wQABP8B9wHnAdYB/wH3Ae8B5wH/DAAE/wHnAdYBzgH/AdYBpQGEAf8B5wG9AZwB/wHOAZwBXgH/
+        Ad4BpQGEAf8B3gGlAV4B/wHOAZwBVgH/Ad4BrQGEAf8B5wG9AZwB/wHWAa0BjAH/Ad4BvQGUAf8B5wG9
+        AZwB/wHeAbUBlAH/AdYBpQFeAf8B1gGlAV4B/wHWAbUBnAX/CAAB3gHWAc4B/wHvAecB3gH/Ae8B5wHe
+        Af8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHv
+        AecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/AYwBXgFG
+        Af8IAAHnAdYBxgH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/
+        AfcBtQGMAf8B5wHWAcYB/wQAAdYB3gHOAf8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9
+        AecBvQH/Ab0B5wG9Af8BVgGcAT0B/xgAAb0BtQGtAf8BxgG1AZwB/wHWAcYBtQH/AdYBxgG1Af8B1gHG
+        AbUB/wGMAV4BRgH/BAAE/wHvAc4BtQH/Ae8B3gHOBf8EAAH3Ad4B1gX/CAAC9wHvAf8BzgGlAYQC/wHv
+        AcYB/wHOAaUBXgH/Ae8BtQGMAf8B9wG1AYwB/wHnAa0BhAH/Ad4BrQGEAv8B1gGtAv8B7wHGAf8B9wHW
+        Aa0B/wHnAb0BnAL/Ae8BxgH/AfcBzgGlAf8B3gGlAV4B/wH3AbUBjAH/Ad4BrQGEAf8B5wHOAb0B/wgA
+        Ad4B1gHOAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHn
+        Ad4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/
+        Ae8B5wHeAf8B7wHnAd4B/wGMAV4BRgH/CAAB5wHWAcYB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3
+        AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AecB1gHGAf8EAAHWAd4BzgH/Ab0B5wG9Af8BvQHn
+        Ab0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/AVYBnAE9Af8IAAG9AbUBpQH/AbUBnAGM
+        Af8BtQGcAYwB/wG1AZwBjAH/AbUBnAGMAf8B1gHGAbUB/wHWAcYBtQH/AdYBxgG1Af8B1gHGAbUB/wGM
+        AV4BRgH/CAAE/wH3Ae8B5wH/AfcB5wHWAf8EAAL/AfcB/wHvAc4BtQX/BAAB5wHWAc4B/wH3Ad4BvQH/
+        AfcB3gG1Af8B1gGlAV4B/wH3AbUBjAH/AfcBvQGMAf8B5wG1AYwB/wHvAdYBrQL/Ae8BxgL/Ae8BxgH/
+        AfcB1gG1Af8B1gGtAYQB/wH3Ac4BpQH/AfcBvQGMAf8B5wGtAYQB/wHnAa0BhAH/Ae8BtQGMAf8BzgGc
+        AV4F/wQAAd4B1gHOAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHe
+        Af8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHv
+        AecB3gH/Ae8B5wHeAf8B7wHnAd4B/wGMAV4BRgH/CAAB5wHWAcYB/wH3AbUBjAH/AfcBtQGMAf8B9wG1
+        AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AecB1gHGAf8EAAHWAd4BzgH/Ab0B5wG9
+        Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/AVYBnAE9Af8IAAG1AZwBjAH/
+        AdYBxgG1Af8B1gHGAbUB/wHWAcYBtQH/AbUBnAGMAf8B1gHGAbUB/wHWAcYBtQH/AdYBxgG1Af8B1gHG
+        AbUB/wGMAV4BRgX/Ae8B1gHGBf8EAAH3AecB1gL/AvcB/wQAAe8B3gHOAf8D9wH/BAAB3gHGAaUC/wHn
+        Ab0B/wHnAb0BlAH/Ae8BxgGlAv8B7wHGAv8B7wHGAf8B5wHGAaUB/wH3Ad4BtQL/Ae8BxgL/Ae8BxgH/
+        AfcBxgGcAf8BzgGcAVYB/wH3AbUBjAH/AfcBtQGMAf8B7wG1AYQB/wHWAaUBXgH/AfcBtQGMAf8B3gGl
+        AV4B/wHvAecB3gH/BAAB3gHWAc4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wGlAZQBjAH/AT0BLQEl
+        Af8BTgE9ATUB/wHWAc4BxgH/Ac4BxgG1Af8BRgE1AS0B/wG9AbUBpQH/AVYBTgE9Af8B7wHnAd4B/wHv
+        AecB3gH/Aa0BnAGUAf8B7wHnAd4B/wHvAecB3gH/AYwBXgFGAf8IAAHnAdYBxgH/AfcBtQGMAf8B9wG1
+        AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHWAcYB/wQAAdYB3gHO
+        Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BVgGcAT0B/wgA
+        AbUBnAGMAf8B1gHGAbUB/wHWAcYBtQH/AdYBxgG1Af8BtQGcAYwB/wHWAcYBtQH/AdYBxgG1Af8B1gHG
+        AbUB/wHWAcYBtQH/AYwBXgFGBf8C9wHvAf8B9wHeAc4B/wQAAf8C9wH/Ae8B1gG9Af8EAAP3Af8B9wHv
+        AecB/wQAAdYBpQGEAf8B3gGlAYQB/wHWAa0BjAH/Ad4BvQGUAf8B5wG9AZQB/wHnAb0BnAH/AdYBrQGM
+        Af8B5wG9AZwB/wHnAb0BnAH/AecBvQGcAf8B3gG1AZQB/wHGAZQBVgH/Ad4BpQGEAf8B3gGlAYQB/wHe
+        AaUBXgH/AcYBnAFWAf8B3gGlAYQB/wHWAaUBXgH/AecB3gHWAf8EAAHeAdYBzgH/Ae8B5wHeAf8B7wHn
+        Ad4B/wGlAZwBjAH/Aa0BnAGUAf8B7wHnAdYB/wHvAd4B1gH/AecB3gHWAf8BrQGcAZQB/wHWAcYBvQH/
+        AecB1gHOAf8BRgE1AS0B/wHvAecB3gH/Ae8B5wHeAf8BnAGUAYQB/wHvAecB3gH/Ae8B5wHeAf8BjAFe
+        AUYB/wgAAecB1gHGAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGM
+        Af8B9wG1AYwB/wHnAdYBxgH/BAAB1gHeAc4B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/
+        Ab0B5wG9Af8BvQHnAb0B/wFWAZwBPQH/CAABtQGcAYwB/wHWAcYBtQH/AdYBxgG1Af8B1gHGAbUB/wG1
+        AZwBjAH/AdYBxgG1Af8B1gHGAbUB/wHWAcYBtQH/AdYBxgG1Af8BjAFeAUYB/wgAAfcB3gHWAf8EAAT/
+        AfcBvQGUAf8EAAT/AfcB5wHeAf8EAAHeAaUBhAH/AfcBtQGMAf8B3gGtAYwB/wH3Ab0BlAL/Ad4BtQL/
+        Ae8BxgH/AecBxgGcAv8B5wHGAv8B7wHGAv8B7wHGAv8B5wG9Af8BxgGUAVYB/wH3AbUBjAH/AfcBtQGM
+        Af8B7wG1AYwB/wHGAZwBVgH/AfcBtQGMAf8B7wG1AYwB/wHnAd4B1gH/BAAB3gHWAc4B/wHvAecB3gH/
+        Ae8B5wHeAf8BNQEtARwB/wHnAd4B1gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Aa0BnAGUAf8B3gHO
+        AcYB/wHnAdYBzgH/AT0BNQEtAf8B7wHnAd4B/wHvAecB3gH/AZwBlAGEAf8B7wHnAd4B/wHvAecB3gH/
         AYwBXgFGAf8IAAHnAdYBxgH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3
         AbUBjAH/AfcBtQGMAf8B5wHWAcYB/wQAAdYB3gHOAf8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHn
         Ab0B/wG9AecBvQH/Ab0B5wG9Af8BVgGcAT0B/wgAAbUBnAGMAf8B1gHGAbUB/wHWAcYBtQH/AdYBxgG1
-        Af8BtQGcAYwB/wHWAcYBtQH/AdYBxgG1Af8B1gHGAbUB/wHWAcYBtQH/AYwBXgFGAf8IAAH3Ad4B1gH/
-        BAAE/wH3Ab0BlAH/BAAE/wH3AecB3gH/BAAB3gGlAYQB/wH3AbUBjAH/Ad4BrQGMAf8B9wG9AZQC/wHe
-        AbUC/wHvAcYB/wHnAcYBnAL/AecBxgL/Ae8BxgL/Ae8BxgL/AecBvQH/AcYBlAFWAf8B9wG1AYwB/wH3
-        AbUBjAH/Ae8BtQGMAf8BxgGcAVYB/wH3AbUBjAH/Ae8BtQGMAf8B5wHeAdYB/wQAAd4B1gHOAf8B7wHn
-        Ad4B/wHvAecB3gH/ATUBLQEcAf8B5wHeAdYB/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wGtAZwBlAH/
-        Ad4BzgHGAf8B5wHWAc4B/wE9ATUBLQH/Ae8B5wHeAf8B7wHnAd4B/wGcAZQBhAH/Ae8B5wHeAf8B7wHn
-        Ad4B/wGMAV4BRgH/CAAB5wHWAcYB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGM
-        Af8B9wG1AYwB/wH3AbUBjAH/AecB1gHGAf8EAAHWAd4BzgH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/
-        Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/AVYBnAE9Af8IAAG1AZwBjAH/AdYBxgG1Af8B1gHGAbUB/wHW
-        AcYBtQH/AbUBnAGMAf8B1gHGAbUB/wHWAcYBtQH/AdYBxgG1Af8B1gHGAbUB/wGMAV4BRgH/CAAB7wHe
-        Ac4B/wQABP8B7wHGAZwB/wQABP8B9wHnAd4B/wQAAd4BpQGEAf8B9wG1AYwB/wHeAa0BhAH/Ae8BtQGM
-        Af8B9wHOAaUC/wHnAcYB/wHnAcYBnAL/AecBxgL/Ae8BxgL/Ae8BxgL/AecBxgH/AcYBnAFWAf8B9wG1
-        AYwB/wH3AbUBjAH/Ae8BtQGMAf8BxgGcAVYB/wH3AbUBjAH/Ae8BtQGMAf8B5wHeAdYB/wQAAd4B1gHO
-        Af8B7wHnAd4B/wHvAecB3gH/AT0BLQElAf8B5wHWAc4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wGM
-        AYQBXgH/AaUBnAGUAf8BzgHGAb0B/wE9AS0BJQH/Aa0BpQGUAf8B7wHnAd4B/wGcAZQBhAH/Ae8B5wHe
-        Af8B7wHnAd4B/wGMAV4BRgH/CAAB5wHWAcYB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/
-        AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AecB1gHGAf8EAAHWAd4BzgH/Ab0B5wG9Af8BvQHnAb0B/wG9
-        AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/AVYBnAE9Af8IAAG1AZwBjAH/AdYBxgG1Af8B1gHG
-        AbUB/wHWAcYBtQH/AbUBnAGMAf8B1gHGAbUB/wHWAcYBtQH/AdYBxgG1Af8B1gHGAbUB/wGMAV4BRgX/
-        AfcB5wHWAf8B9wHnAdYB/wQAA/cB/wHvAd4BzgH/BAAB9wLvAf8B9wHvAecB/wQAAc4BnAFeAf8BxgGU
-        AVYB/wHGAZQBVgH/AcYBlAFWAf8BxgGUAVYB/wHGAZQBVgH/AcYBlAFWAf8BxgGUAVYB/wHGAZQBVgH/
+        Af8BtQGcAYwB/wHWAcYBtQH/AdYBxgG1Af8B1gHGAbUB/wHWAcYBtQH/AYwBXgFGAf8IAAHvAd4BzgH/
+        BAAE/wHvAcYBnAH/BAAE/wH3AecB3gH/BAAB3gGlAYQB/wH3AbUBjAH/Ad4BrQGEAf8B7wG1AYwB/wH3
+        Ac4BpQL/AecBxgH/AecBxgGcAv8B5wHGAv8B7wHGAv8B7wHGAv8B5wHGAf8BxgGcAVYB/wH3AbUBjAH/
+        AfcBtQGMAf8B7wG1AYwB/wHGAZwBVgH/AfcBtQGMAf8B7wG1AYwB/wHnAd4B1gH/BAAB3gHWAc4B/wHv
+        AecB3gH/Ae8B5wHeAf8BPQEtASUB/wHnAdYBzgH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/AYwBhAFe
+        Af8BpQGcAZQB/wHOAcYBvQH/AT0BLQElAf8BrQGlAZQB/wHvAecB3gH/AZwBlAGEAf8B7wHnAd4B/wHv
+        AecB3gH/AYwBXgFGAf8IAAHnAdYBxgH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1
+        AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHWAcYB/wQAAdYB3gHOAf8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9
+        Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BVgGcAT0B/wgAAbUBnAGMAf8B1gHGAbUB/wHWAcYBtQH/
+        AdYBxgG1Af8BtQGcAYwB/wHWAcYBtQH/AdYBxgG1Af8B1gHGAbUB/wHWAcYBtQH/AYwBXgFGBf8B9wHn
+        AdYB/wH3AecB1gH/BAAD9wH/Ae8B3gHOAf8EAAH3Au8B/wH3Ae8B5wH/BAABzgGcAV4B/wHGAZQBVgH/
         AcYBlAFWAf8BxgGUAVYB/wHGAZQBVgH/AcYBlAFWAf8BxgGUAVYB/wHGAZQBVgH/AcYBlAFWAf8BxgGU
-        AVYB/wHGAZQBVgH/Ae8B3gHWAf8EAAHeAdYBzgH/Ae8B5wHeAf8B7wHnAd4B/wGtAZwBlAH/Aa0BpQGc
-        Af8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8BnAGUAYwB/wHGAb0BrQH/AecB3gHWAf8B3gHOAcYB/wHe
-        AdYBzgH/Ae8B5wHeAf8BnAGUAYQB/wHvAecB3gH/Ae8B5wHeAf8BjAFeAUYB/wgAAecB1gHGAf8B9wG1
-        AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wHnAdYBxgH/
-        BAAB1gHeAc4B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wFW
-        AZwBPQH/CAABtQGcAYwB/wHWAcYBtQH/AdYBxgG1Af8B1gHGAbUB/wG1AZwBjAH/AdYBxgG1Af8B1gHG
-        AbUB/wHWAcYBtQH/AdYBxgG1Af8BjAFeAUYF/wH3Au8F/wQAAfcB5wHWCf8B7wHOAbUF/wQAAd4BvQGc
-        Af8B9wG1AYwB/wHnAa0BhAH/Ad4BrQGEAf8B9wG9AYwB/wH3AbUBjAH/Ad4BrQGEAf8B7wG9AYwC/wHv
-        AcYC/wHvAcYC/wHnAb0B/wHWAaUBhAL/AdYBrQH/AfcBtQGMAf8B5wGtAYQB/wHeAaUBXgH/AfcBtQGM
-        Af8B1gGlAV4B/wH3Ae8B5wH/BAAB3gHWAc4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAdYB/wGtAZwBlAH/
-        AaUBnAGMAf8BpQGcAZQB/wHWAc4BxgH/AdYBzgHGAf8B5wHeAc4B/wHvAecB3gH/Ae8B5wHeAf8B7wHn
-        Ad4B/wHvAecB3gH/AZwBlAGEAf8B7wHnAd4B/wHvAecB3gH/AYwBXgFGAf8IAAHnAdYBxgH/AfcBtQGM
-        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHWAcYB/wQA
-        AdYB3gHOAf8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BVgGc
-        AT0B/wgAAc4BxgG9Af8BjAFeAUYB/wGMAV4BRgH/AYwBXgFGAf8BrQGcAYwB/wHWAcYBtQH/AdYBxgG1
-        Af8B1gHGAbUB/wHWAcYBtQH/AYwBXgFGAf8IAAT/AfcB3gHOAf8B9wHvAecB/wQAAvcB7wH/Ae8B3gHO
-        Af8IAAHnAd4B1gH/AecBtQGEAf8B7wG1AYwB/wHOAZwBVgL/Ad4BtQH/AfcBvQGUAf8B5wGtAYQB/wHn
-        Ab0BlAL/Ae8BxgL/Ae8BxgH/AfcB3gG1Af8B3gG1AYwC/wHvAcYC/wHWAa0B/wHeAa0BhAH/Ae8BtQGE
-        Af8B7wG1AYwB/wHOAZwBXgX/BAAB3gHWAc4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/
-        Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHn
-        Ad4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/AYwBXgFGAf8IAAHnAdYBxgH/AfcBtQGM
-        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHWAcYB/wQA
-        AdYB3gHOAf8BtQHeAbUB/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B3gG1Af8BhAGl
-        AU4B/xgAAecC3gH/AbUBnAGMAf8B1gG9Aa0B/wHWAcYBtQH/AdYBxgG1Af8BjAFeAUYB/wQABP8B7wHe
-        AdYB/wH3Au8J/wH3Ad4BzgX/CAAD9wH/Ac4BnAFeAf8B3gGlAYQB/wHOAZwBVgH/Ad4BvQGUAf8B5wG9
-        AZwB/wHWAa0BhAH/AdYBrQGMAf8B5wG9AZwB/wHnAb0BnAH/Ad4BtQGUAf8B1gGtAYQB/wHnAb0BnAH/
-        AecBvQGcAf8BzgGlAV4B/wHeAaUBhAH/AdYBpQFeAf8B9wHvAecB/wgAAd4B1gHOAf8B7wHnAd4B/wHv
-        AecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHe
-        Af8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wGM
-        AV4BRgH/CAAB5wHWAcYB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1
-        AYwB/wH3AbUBjAH/AecB1gHGAf8EAAP3Af8BjAGlAVYB/wFWAZwBPQH/AVYBnAE9Af8BVgGcAT0B/wFW
-        AZwBPQH/AV4BpQFOAf8D7wH/HAAB9wLvAf8BrQGcAYQB/wHWAcYBtQH/AdYBxgG1Af8BjAFeAUYB/xAA
-        BP8B7wHGAZwB/wP3Af8QAAH3Ae8B5wH/Ad4BpQFeAf8B7wG1AYwB/wHeAa0BjAL/AecBxgH/AfcBxgGc
-        Af8BzgGlAV4C/wHnAb0B/wH3AbUBjAH/Ad4BtQGMAf8B9wHeAbUC/wHvAcYB/wHvAc4BrQH/Ad4BrQGE
-        Af8B7wG1AYQB/wHeAcYBtQH/DAAB3gHWAc4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/
-        Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHn
-        Ad4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/AYwBXgFGAf8IAAHnAdYBxgH/AfcBtQGM
-        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHWAcYB/0QA
-        A+8B/wG1AZwBjAH/Ac4BtQGlAf8BjAFeAUYB/wgAAf8C9wH/AfcB5wHWAf8B9wHeAdYD/wH3Af8YAAHn
-        Ad4BzgH/Ad4BpQGEAf8B3gGtAYQB/wHnAa0BhAH/AfcBzgGcAf8B1gGtAYQB/wH3Ad4BtQH/AfcBtQGM
-        Af8B3gGlAYQB/wH3Ac4BpQH/AfcB1gG1Af8B1gGtAYwB/wHnAbUBlAH/Ad4BvQGlA/8B9wH/DAAB3gLW
-        Af8B7wHnAdYB/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHv
-        AecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHe
-        Af8B7wHnAdYB/wGUAYQBVgH/CAAB5wHWAcYB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/
-        AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AecB1gHGAf9IAAT/Aa0BnAGUAf8BjAFeAUYB/wgAA/cF/yQA
-        AvcB7wH/AdYBpQGEAf8B1gGtAYwB/wHnAcYBpQH/Ae8B1gGtAf8B5wHGAaUB/wH3AbUBjAH/Ad4BpQFe
-        Af8B7wG1AYwB/wHWAa0BhAH/AdYBrQGMAf8B5wHWAcYB/xQAA+8B/wG9Aa0BnAH/Ae8B5wHWAf8B7wHn
+        AVYB/wHGAZQBVgH/AcYBlAFWAf8BxgGUAVYB/wHGAZQBVgH/AcYBlAFWAf8BxgGUAVYB/wHGAZQBVgH/
+        AcYBlAFWAf8B7wHeAdYB/wQAAd4B1gHOAf8B7wHnAd4B/wHvAecB3gH/Aa0BnAGUAf8BrQGlAZwB/wHv
+        AecB3gH/Ae8B5wHeAf8B7wHnAd4B/wGcAZQBjAH/AcYBvQGtAf8B5wHeAdYB/wHeAc4BxgH/Ad4B1gHO
+        Af8B7wHnAd4B/wGcAZQBhAH/Ae8B5wHeAf8B7wHnAd4B/wGMAV4BRgH/CAAB5wHWAcYB/wH3AbUBjAH/
+        AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AecB1gHGAf8EAAHW
+        Ad4BzgH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/AVYBnAE9
+        Af8IAAG1AZwBjAH/AdYBxgG1Af8B1gHGAbUB/wHWAcYBtQH/AbUBnAGMAf8B1gHGAbUB/wHWAcYBtQH/
+        AdYBxgG1Af8B1gHGAbUB/wGMAV4BRgX/AfcC7wX/BAAB9wHnAdYJ/wHvAc4BtQX/BAAB3gG9AZwB/wH3
+        AbUBjAH/AecBrQGEAf8B3gGtAYQB/wH3Ab0BjAH/AfcBtQGMAf8B3gGtAYQB/wHvAb0BjAL/Ae8BxgL/
+        Ae8BxgL/AecBvQH/AdYBpQGEAv8B1gGtAf8B9wG1AYwB/wHnAa0BhAH/Ad4BpQFeAf8B9wG1AYwB/wHW
+        AaUBXgH/AfcB7wHnAf8EAAHeAdYBzgH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB1gH/Aa0BnAGUAf8BpQGc
+        AYwB/wGlAZwBlAH/AdYBzgHGAf8B1gHOAcYB/wHnAd4BzgH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/
+        Ae8B5wHeAf8BnAGUAYQB/wHvAecB3gH/Ae8B5wHeAf8BjAFeAUYB/wgAAecB1gHGAf8B9wG1AYwB/wH3
+        AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wHnAdYBxgH/BAAB1gHe
+        Ac4B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wFWAZwBPQH/
+        CAABzgHGAb0B/wGMAV4BRgH/AYwBXgFGAf8BjAFeAUYB/wGtAZwBjAH/AdYBxgG1Af8B1gHGAbUB/wHW
+        AcYBtQH/AdYBxgG1Af8BjAFeAUYB/wgABP8B9wHeAc4B/wH3Ae8B5wH/BAAC9wHvAf8B7wHeAc4B/wgA
+        AecB3gHWAf8B5wG1AYQB/wHvAbUBjAH/Ac4BnAFWAv8B3gG1Af8B9wG9AZQB/wHnAa0BhAH/AecBvQGU
+        Av8B7wHGAv8B7wHGAf8B9wHeAbUB/wHeAbUBjAL/Ae8BxgL/AdYBrQH/Ad4BrQGEAf8B7wG1AYQB/wHv
+        AbUBjAH/Ac4BnAFeBf8EAAHeAdYBzgH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHn
         Ad4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/
-        Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHWAcYBtQH/AdYBzgHGAf8IAAH3
-        Au8B/wHnAdYBxgH/AecB1gHGAf8B5wHWAcYB/wHnAdYBxgH/AecB1gHGAf8B5wHWAcYB/wHnAdYBxgH/
-        AfcC7wH/TAAD9wH/AbUBpQGcAf84AAL/AfcB/wHnAd4B1gH/Ad4BvQGtAf8B1gGtAYwB/wHOAaUBXgH/
-        Ac4BnAFeAf8BzgGcAV4B/wHWAaUBhAH/AecB1gHGAf8C9wHvBf8UAAT/A+8B/wHeAtYB/wHeAdYBzgH/
-        Ad4B1gHOAf8B3gHWAc4B/wHeAdYBzgH/Ad4B1gHOAf8B3gHWAc4B/wHeAdYBzgH/Ad4B1gHOAf8B3gHW
-        Ac4B/wHeAdYBzgH/Ad4B1gHOAf8B3gHWAc4B/wHeAdYBzgH/A+cF//8AYQAD9wH/Ae8B5wHeAf8B5wHe
-        AdYB/wHWAd4BzgH/Ad4B5wHeAf8B7wH3Ae8F/7wAAcYBjAE9Af8B1gGcAU4B/wHWAZwBTgH/AdYBnAFO
-        Af8B1gGcAU4B/wG1AV4BLQH/SAAD9wH/Ac4BpQGEAf8BzgGUAUYB/wHnAaUBVgH/Ae8BrQFeAf8BnAHW
-        AZQB/wGUAc4BhAH/AYQBtQFWAf8BhAGlAU4B/wHnAe8B5wX/FAABzgHWAd4B/0AAAUYBVgGUAf9YAAHW
-        AZwBTgH/Ae8BvQGUAf8BxgLWAf8B1gHOAbUB/wHvAb0BjAH/AbUBXgEtAf9AAAT/AecB1gHGAf8B1gGl
-        AVYB/wHvAa0BXgH/AfcBtQGEAf8B9wG1AYQB/wH3AbUBhAH/AZwB1gGUAf8BnAHWAZQB/wGcAdYBlAH/
-        AZwB1gGUAf8BjAG9AV4B/wG1Ac4BpQP/AfcB/xAAAtYB3gH/Au8B9wH/DAAE/wLeAecB/wGUAaUBtQH/
-        AT0BXgGMAf8BJQE9AYQB/wGMAZwBrQH/Ab0BxgHOBf8MAAT/AVYBhAGlAf8IAAHnAdYBxgH/AecB1gHG
-        Af8B5wHWAcYB/wHnAdYBxgH/AecB1gHGAf8B5wHWAcYB/wHnAdYBxgH/AecB1gHGAf8B5wHWAcYB/wHn
+        Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8BjAFeAUYB/wgAAecB1gHGAf8B9wG1AYwB/wH3
+        AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wHnAdYBxgH/BAAB1gHe
+        Ac4B/wG1Ad4BtQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHeAbUB/wGEAaUBTgH/
+        GAAB5wLeAf8BtQGcAYwB/wHWAb0BrQH/AdYBxgG1Af8B1gHGAbUB/wGMAV4BRgH/BAAE/wHvAd4B1gH/
+        AfcC7wn/AfcB3gHOBf8IAAP3Af8BzgGcAV4B/wHeAaUBhAH/Ac4BnAFWAf8B3gG9AZQB/wHnAb0BnAH/
+        AdYBrQGEAf8B1gGtAYwB/wHnAb0BnAH/AecBvQGcAf8B3gG1AZQB/wHWAa0BhAH/AecBvQGcAf8B5wG9
+        AZwB/wHOAaUBXgH/Ad4BpQGEAf8B1gGlAV4B/wH3Ae8B5wH/CAAB3gHWAc4B/wHvAecB3gH/Ae8B5wHe
+        Af8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHv
+        AecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/AYwBXgFG
+        Af8IAAHnAdYBxgH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/
+        AfcBtQGMAf8B5wHWAcYB/wQAA/cB/wGMAaUBVgH/AVYBnAE9Af8BVgGcAT0B/wFWAZwBPQH/AVYBnAE9
+        Af8BXgGlAU4B/wPvAf8cAAH3Au8B/wGtAZwBhAH/AdYBxgG1Af8B1gHGAbUB/wGMAV4BRgH/EAAE/wHv
+        AcYBnAH/A/cB/xAAAfcB7wHnAf8B3gGlAV4B/wHvAbUBjAH/Ad4BrQGMAv8B5wHGAf8B9wHGAZwB/wHO
+        AaUBXgL/AecBvQH/AfcBtQGMAf8B3gG1AYwB/wH3Ad4BtQL/Ae8BxgH/Ae8BzgGtAf8B3gGtAYQB/wHv
+        AbUBhAH/Ad4BxgG1Af8MAAHeAdYBzgH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHn
+        Ad4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/
+        Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8BjAFeAUYB/wgAAecB1gHGAf8B9wG1AYwB/wH3
+        AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wHnAdYBxgH/RAAD7wH/
+        AbUBnAGMAf8BzgG1AaUB/wGMAV4BRgH/CAAB/wL3Af8B9wHnAdYB/wH3Ad4B1gP/AfcB/xgAAecB3gHO
+        Af8B3gGlAYQB/wHeAa0BhAH/AecBrQGEAf8B9wHOAZwB/wHWAa0BhAH/AfcB3gG1Af8B9wG1AYwB/wHe
+        AaUBhAH/AfcBzgGlAf8B9wHWAbUB/wHWAa0BjAH/AecBtQGUAf8B3gG9AaUD/wH3Af8MAAHeAtYB/wHv
+        AecB1gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHe
+        Af8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHv
+        AecB1gH/AZQBhAFWAf8IAAHnAdYBxgH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1
+        AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHWAcYB/0gABP8BrQGcAZQB/wGMAV4BRgH/CAAD9wX/JAAC9wHv
+        Af8B1gGlAYQB/wHWAa0BjAH/AecBxgGlAf8B7wHWAa0B/wHnAcYBpQH/AfcBtQGMAf8B3gGlAV4B/wHv
+        AbUBjAH/AdYBrQGEAf8B1gGtAYwB/wHnAdYBxgH/FAAD7wH/Ab0BrQGcAf8B7wHnAdYB/wHvAecB3gH/
+        Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/Ae8B5wHeAf8B7wHn
+        Ad4B/wHvAecB3gH/Ae8B5wHeAf8B7wHnAd4B/wHvAecB3gH/AdYBxgG1Af8B1gHOAcYB/wgAAfcC7wH/
+        AecB1gHGAf8B5wHWAcYB/wHnAdYBxgH/AecB1gHGAf8B5wHWAcYB/wHnAdYBxgH/AecB1gHGAf8B9wLv
+        Af9MAAP3Af8BtQGlAZwB/zgAAv8B9wH/AecB3gHWAf8B3gG9Aa0B/wHWAa0BjAH/Ac4BpQFeAf8BzgGc
+        AV4B/wHOAZwBXgH/AdYBpQGEAf8B5wHWAcYB/wL3Ae8F/xQABP8D7wH/Ad4C1gH/Ad4B1gHOAf8B3gHW
+        Ac4B/wHeAdYBzgH/Ad4B1gHOAf8B3gHWAc4B/wHeAdYBzgH/Ad4B1gHOAf8B3gHWAc4B/wHeAdYBzgH/
+        Ad4B1gHOAf8B3gHWAc4B/wHeAdYBzgH/Ad4B1gHOAf8D5wX//wBhAAP3Af8B7wHnAd4B/wHnAd4B1gH/
+        AdYB3gHOAf8B3gHnAd4B/wHvAfcB7wX/vAABxgGMAT0B/wHWAZwBTgH/AdYBnAFOAf8B1gGcAU4B/wHW
+        AZwBTgH/AbUBXgEtAf9IAAP3Af8BzgGlAYQB/wHOAZQBRgH/AecBpQFWAf8B7wGtAV4B/wGcAdYBlAH/
+        AZQBzgGEAf8BhAG1AVYB/wGEAaUBTgH/AecB7wHnBf8UAAHOAdYB3gH/QAABRgFWAZQB/1gAAdYBnAFO
+        Af8B7wG9AZQB/wHGAtYB/wHWAc4BtQH/Ae8BvQGMAf8BtQFeAS0B/0AABP8B5wHWAcYB/wHWAaUBVgH/
+        Ae8BrQFeAf8B9wG1AYQB/wH3AbUBhAH/AfcBtQGEAf8BnAHWAZQB/wGcAdYBlAH/AZwB1gGUAf8BnAHW
+        AZQB/wGMAb0BXgH/AbUBzgGlA/8B9wH/EAAC1gHeAf8C7wH3Af8MAAT/At4B5wH/AZQBpQG1Af8BPQFe
+        AYwB/wElAT0BhAH/AYwBnAGtAf8BvQHGAc4F/wwABP8BVgGEAaUB/wgAAecB1gHGAf8B5wHWAcYB/wHn
         AdYBxgH/AecB1gHGAf8B5wHWAcYB/wHnAdYBxgH/AecB1gHGAf8B5wHWAcYB/wHnAdYBxgH/AecB1gHG
-        Af8B5wHWAcYB/wH3Au8B/wQAAdYBnAFOAf8BxgLWAf8B1gH3Av8BvQH3Av8B3gHGAa0B/wG1AV4BLQH/
-        CAAB3gLWAf8B3gLWAf8B3gLWAf8B3gLWAf8B3gLWAf8B3gLWAf8B3gLWAf8B3gLWAf8B3gLWAf8B3gLW
-        Af8B9wLvAf8MAAHnAdYBzgH/AecBpQFWAf8B9wG1AYQB/wH3AbUBhAH/AfcBtQGEAf8B9wG1AYQB/wH3
-        AbUBhAH/AZwB1gGUAf8BnAHWAZQB/wGcAdYBlAH/AZwB1gGUAf8BnAHWAZQB/wGUAc4BjAH/AZwBvQGt
-        Af8B9wP/DAAB9wP/AT0BVgGUBf8IAAGtAb0BxgH/AU4BjAGUAf8BvQHnAb0B/wGMAa0BpQH/AT0BXgGM
-        Af8BvQHnAb0B/wGlAcYBrQH/AYQBlAGtAf8MAAHGAc4B1gH/Au8B9wH/CAABhAE9ASUB/wEtASUBFAH/
-        AS0BJQEUAf8BLQElARQB/wEtASUBFAH/AS0BJQEUAf8BLQElARQB/wEtASUBFAH/AS0BJQEUAf8BLQEl
+        Af8B5wHWAcYB/wHnAdYBxgH/AecB1gHGAf8B5wHWAcYB/wHnAdYBxgH/AecB1gHGAf8B5wHWAcYB/wHn
+        AdYBxgH/AfcC7wH/BAAB1gGcAU4B/wHGAtYB/wHWAfcC/wG9AfcC/wHeAcYBrQH/AbUBXgEtAf8IAAHe
+        AtYB/wHeAtYB/wHeAtYB/wHeAtYB/wHeAtYB/wHeAtYB/wHeAtYB/wHeAtYB/wHeAtYB/wHeAtYB/wH3
+        Au8B/wwAAecB1gHOAf8B5wGlAVYB/wH3AbUBhAH/AfcBtQGEAf8B9wG1AYQB/wH3AbUBhAH/AfcBtQGE
+        Af8BnAHWAZQB/wGcAdYBlAH/AZwB1gGUAf8BnAHWAZQB/wGcAdYBlAH/AZQBzgGMAf8BnAG9Aa0B/wH3
+        A/8MAAH3A/8BPQFWAZQF/wgAAa0BvQHGAf8BTgGMAZQB/wG9AecBvQH/AYwBrQGlAf8BPQFeAYwB/wG9
+        AecBvQH/AaUBxgGtAf8BhAGUAa0B/wwAAcYBzgHWAf8C7wH3Af8IAAGEAT0BJQH/AS0BJQEUAf8BLQEl
         ARQB/wEtASUBFAH/AS0BJQEUAf8BLQElARQB/wEtASUBFAH/AS0BJQEUAf8BLQElARQB/wEtASUBFAH/
-        AS0BJQEUAf8B5wHWAcYB/wQAAdYBnAFOAf8B1gHOAbUB/wG9AfcC/wGtAe8C/wHnAcYBpQH/AbUBXgEt
-        Af84AAT/AecB1gHOAf8BzgGEAU4B/wHnAZQBXgH/Ae8BrQGEAf8B9wG1AYQB/wH3AbUBhAH/AfcBtQGE
-        Af8B9wG1AYQB/wGcAdYBlAH/AZwB1gGUAf8BnAHWAZQB/wGcAdYBlAH/AZwB1gGUAf8BjAHWAbUB/wFW
-        AdYB7wH/AZQBxgHeBf8MAALvAfcB/wG1Ab0BzgH/AucB7wH/Ac4B1gHeAf8BTgGMAZQB/wG9Ad4BvQH/
-        Ab0B5wG9Af8BlAG1Aa0B/wFOAYwBlAH/Ab0B5wG9Af8BvQHnAb0B/wGcAb0BrQH/AZQBpQG1Af8C7wH3
-        Af8BvQHGAc4B/wLWAd4B/wwAAa0BXgE9Af8BnAFeAUYB/wGcAV4BRgH/AZwBXgFGAf8BnAFeAUYB/wGc
-        AV4BRgH/AZwBXgFGAf8BnAFeAUYB/wGcAV4BRgH/AZwBXgFGAf8BnAFeAUYB/wGcAV4BRgH/AZwBXgFG
-        Af8BnAFeAUYB/wGcAV4BRgH/AZwBXgFGAf8BnAFeAUYB/wGcAV4BRgH/AecB1gHGAf8EAAHWAZwBTgH/
-        Ae8BvQGMAf8B3gHGAa0B/wHnAcYBpQH/Ae8BvQGMAf8BtQFeAS0B/zgAA/cB/wG1AU4BNQH/Ae8BlAFe
-        Af8B7wGUAV4B/wHnAZQBXgH/AfcBtQGEAf8B9wG1AYQB/wH3AbUBhAH/AfcBtQGEAf8BnAHWAZQB/wGc
-        AdYBlAH/AZwB1gGUAf8BnAHWAZQB/wGUAc4BrQH/AV4B3gH3Af8BXgHeAfcB/wE9Ab0B3gH/AecC7wH/
-        EAAE/wHGAc4B1gH/ATUBVgGMAf8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BnAG9Aa0B/wFeApwB/wG9
-        AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wGEApwB/wGMAZwBtQX/EAAB1gGcAU4B/wH3AbUBjAH/AfcBtQGM
-        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3
+        AS0BJQEUAf8BLQElARQB/wEtASUBFAH/AS0BJQEUAf8BLQElARQB/wEtASUBFAH/AS0BJQEUAf8BLQEl
+        ARQB/wHnAdYBxgH/BAAB1gGcAU4B/wHWAc4BtQH/Ab0B9wL/Aa0B7wL/AecBxgGlAf8BtQFeAS0B/zgA
+        BP8B5wHWAc4B/wHOAYQBTgH/AecBlAFeAf8B7wGtAYQB/wH3AbUBhAH/AfcBtQGEAf8B9wG1AYQB/wH3
+        AbUBhAH/AZwB1gGUAf8BnAHWAZQB/wGcAdYBlAH/AZwB1gGUAf8BnAHWAZQB/wGMAdYBtQH/AVYB1gHv
+        Af8BlAHGAd4F/wwAAu8B9wH/AbUBvQHOAf8C5wHvAf8BzgHWAd4B/wFOAYwBlAH/Ab0B3gG9Af8BvQHn
+        Ab0B/wGUAbUBrQH/AU4BjAGUAf8BvQHnAb0B/wG9AecBvQH/AZwBvQGtAf8BlAGlAbUB/wLvAfcB/wG9
+        AcYBzgH/AtYB3gH/DAABrQFeAT0B/wGcAV4BRgH/AZwBXgFGAf8BnAFeAUYB/wGcAV4BRgH/AZwBXgFG
+        Af8BnAFeAUYB/wGcAV4BRgH/AZwBXgFGAf8BnAFeAUYB/wGcAV4BRgH/AZwBXgFGAf8BnAFeAUYB/wGc
+        AV4BRgH/AZwBXgFGAf8BnAFeAUYB/wGcAV4BRgH/AZwBXgFGAf8B5wHWAcYB/wQAAdYBnAFOAf8B7wG9
+        AYwB/wHeAcYBrQH/AecBxgGlAf8B7wG9AYwB/wG1AV4BLQH/OAAD9wH/AbUBTgE1Af8B7wGUAV4B/wHv
+        AZQBXgH/AecBlAFeAf8B9wG1AYQB/wH3AbUBhAH/AfcBtQGEAf8B9wG1AYQB/wGcAdYBlAH/AZwB1gGU
+        Af8BnAHWAZQB/wGcAdYBlAH/AZQBzgGtAf8BXgHeAfcB/wFeAd4B9wH/AT0BvQHeAf8B5wLvAf8QAAT/
+        AcYBzgHWAf8BNQFWAYwB/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wGcAb0BrQH/AV4CnAH/Ab0B5wG9
+        Af8BvQHnAb0B/wG9AecBvQH/AYQCnAH/AYwBnAG1Bf8QAAHWAZwBTgH/AfcBtQGMAf8B9wG1AYwB/wH3
         AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGM
-        Af8B5wHWAcYB/wQAAbUBXgEtAf8BtQFeAS0B/wG1AV4BLQH/AbUBXgEtAf8BtQFeAS0B/wG1AV4BLQH/
-        OAAB3gHOAcYB/wHeAYwBVgH/Ae8BlAFeAf8B7wGUAV4B/wHvAZQBXgH/AecBlAFeAf8B7wGtAYQB/wH3
-        AbUBhAH/AfcBtQGEAf8BnAHWAZQB/wGcAdYBlAH/AZwB1gGUAf8BjAHWAbUB/wFeAd4B9wH/AV4B3gH3
-        Af8BXgHeAfcB/wFeAdYB7wH/AS0BpQHGBf8QAAPvAf8BXgKcAf8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9
-        Af8BpQHOAbUB/wGUAbUBpQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B3gG9Af8BtQG9Ac4B/xQA
-        AdYBnAFOAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1
-        AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/
-        AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AecB1gHGAf8EAAHWAd4BzgH/AdYB3gHOAf8B1gHeAc4B/wHW
-        Ad4BzgH/AdYB3gHOAf8B1gHeAc4B/zgAAdYBpQGcAf8B7wGUAV4B/wHvAZQBXgH/Ae8BlAFeAf8B7wGU
-        AV4B/wHvAZQBXgH/AecBlAFeAf8B9wG1AYQB/wH3AbUBhAH/AZwB1gGUAf8BnAHWAZQB/wGUAc4BrQH/
-        AV4B3gH3Af8BXgHeAfcB/wFeAd4B9wH/AV4B3gH3Af8BXgHeAfcB/wEtAbUB1gH/Ae8C9wH/EAABlAGl
-        AbUB/wGcAb0BrQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Aa0B1gG1Af8BpQHGAa0B/wG9AecBvQH/
-        Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/AZQCrQH/FAAB1gGcAU4B/wH3AbUBjAH/AS0BnAG9Af8BLQGc
-        Ab0B/wEtAZwBvQH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/
-        AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHW
-        AcYB/wQAAZwBvQGMAf8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wFWAZwBPQH/OAABzgGM
-        AV4B/wHvAZQBXgH/Ae8BlAFeAf8B7wGUAV4B/wHvAZQBXgH/Ae8BlAFeAf8B7wGUAV4B/wHnAZQBXgH/
-        Ae8BrQGEAf8BnAHWAZQB/wGMAdYBtQH/AV4B3gH3Af8BXgHeAfcB/wFeAd4B9wH/AV4B3gH3Af8BXgHe
-        AfcB/wFeAd4B9wH/AU4BzgHnAf8B1gHnAe8B/wQAAs4B1gH/AcYBzgHWAf8BxgHOAdYB/wElAT0BhAH/
-        Aa0B1gG1Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHeAb0B/wG1AdYBtQH/Ab0B5wG9Af8BvQHn
-        Ab0B/wG9AecBvQH/Ab0B5wG9Af8BXgKcAf8BxgHOAdYB/wHGAc4B1gH/AcYBzgHWAf8C7wH3Af8EAAHW
-        AZwBTgH/AfcBtQGMAf8BVgHGAd4B/wGlAe8C/wFWAcYB3gH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/
+        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wHn
+        AdYBxgH/BAABtQFeAS0B/wG1AV4BLQH/AbUBXgEtAf8BtQFeAS0B/wG1AV4BLQH/AbUBXgEtAf84AAHe
+        Ac4BxgH/Ad4BjAFWAf8B7wGUAV4B/wHvAZQBXgH/Ae8BlAFeAf8B5wGUAV4B/wHvAa0BhAH/AfcBtQGE
+        Af8B9wG1AYQB/wGcAdYBlAH/AZwB1gGUAf8BnAHWAZQB/wGMAdYBtQH/AV4B3gH3Af8BXgHeAfcB/wFe
+        Ad4B9wH/AV4B1gHvAf8BLQGlAcYF/xAAA+8B/wFeApwB/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wGl
+        Ac4BtQH/AZQBtQGlAf8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHeAb0B/wG1Ab0BzgH/FAAB1gGc
+        AU4B/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/
         AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1
-        AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHWAcYB/wQAAZwBvQGMAf8B1gHvAdYB/wHnAfcB7wH/AecB9wHn
-        Af8BzgHnAcYB/wFWAZwBPQH/OAABzgFeAU4B/wHvAZQBXgH/Ae8BlAFeAf8B7wGUAV4B/wHvAZQBXgH/
-        Ae8BlAFeAf8B7wGUAV4B/wHvAZQBXgH/AecBlAFeAf8BlAHOAa0B/wFeAd4B9wH/AV4B3gH3Af8BXgHe
-        AfcB/wFeAd4B9wH/AV4B3gH3Af8BXgHeAfcB/wFeAd4B9wH/AV4B3gHvAf8BxgHeAecB/xAAARQBNQFe
-        Af8BtQHeAbUB/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9
-        AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wGEAqUB/xQAAdYBnAFOAf8B9wG1AYwB/wFWAcYB3gH/AaUB7wL/
-        AVYBxgHeAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1
+        AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHWAcYB/wQAAdYB3gHOAf8B1gHeAc4B/wHWAd4BzgH/AdYB3gHO
+        Af8B1gHeAc4B/wHWAd4BzgH/OAAB1gGlAZwB/wHvAZQBXgH/Ae8BlAFeAf8B7wGUAV4B/wHvAZQBXgH/
+        Ae8BlAFeAf8B5wGUAV4B/wH3AbUBhAH/AfcBtQGEAf8BnAHWAZQB/wGcAdYBlAH/AZQBzgGtAf8BXgHe
+        AfcB/wFeAd4B9wH/AV4B3gH3Af8BXgHeAfcB/wFeAd4B9wH/AS0BtQHWAf8B7wL3Af8QAAGUAaUBtQH/
+        AZwBvQGtAf8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BrQHWAbUB/wGlAcYBrQH/Ab0B5wG9Af8BvQHn
+        Ab0B/wG9AecBvQH/Ab0B5wG9Af8BlAKtAf8UAAHWAZwBTgH/AfcBtQGMAf8BLQGcAb0B/wEtAZwBvQH/
+        AS0BnAG9Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1
         AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wHnAdYBxgH/
-        BAABnAG9AYwB/wHeAe8B3gH/Ab0B9wL/Ac4C9wH/Ac4B5wHOAf8BVgGcAT0B/wgAAZwBjAFeAf8BnAGM
-        AV4B/wGcAYwBXgH/AZwBjAFeAf8BnAGMAV4B/wGcAYwBXgH/AZwBjAFeAf8BnAGMAV4B/wGcAYwBXgH/
-        AZwBjAFeAf8B3gLWAf8EAAHGAV4BpQH/AecBhAHGAf8B5wGEAcYB/wHnAYQBxgH/AecBhAHGAf8B5wGE
-        AcYB/wHnAYQBxgH/AecBhAHGAf8B3gGEAc4B/wGEAZQB5wH/AVYBpQHvAf8BVgGlAfcB/wFWAaUB9wH/
-        AVYBpQH3Af8BVgGlAfcB/wFWAaUB9wH/AVYBpQH3Af8BTgGcAe8B/wHOAdYB5wH/DAAD7wH/ARwBNQFe
-        Af8BrQHWAbUB/wG9AecBvQH/Aa0BzgG1Af8BhAKlAf8BXgKcAf8BXgKcAf8BXgKcAf8BnAG9Aa0B/wG9
-        Ad4BvQH/Ab0B5wG9Af8BXgKcAf8B1gHeAecF/wwAAdYBnAFOAf8B9wG1AYwB/wGcAa0BpQH/AZwBrQGl
-        Af8BnAGtAaUB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3
-        AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AecB1gHG
-        Af8EAAGcAb0BjAH/AdYB7wHWAf8B5wH3Ae8B/wHnAfcB5wH/Ac4B5wHGAf8BVgGcAT0B/zgAAcYBjAGt
-        Af8B5wGEAcYB/wHnAYQBxgH/AecBhAHGAf8B5wGEAcYB/wHnAYQBxgH/AecBhAHGAf8B1gGMAcYB/wHn
-        AYQB3gH/AowB7wH/AYQBlAHvAf8BVgGlAfcB/wFWAaUB9wH/AVYBpQH3Af8BVgGlAfcB/wFWAaUB9wH/
-        AVYBpQH3Af8BRgGUAecB/wHeAecB7wH/CAAB5wLvAf8BrQG1AcYB/wGUAaUBtQH/AYwBrQGlAf8BTgGM
-        AZQB/wEcAT0BhAH/AT0BjAG1Af8BTgGlAc4B/wFOAaUB1gH/AUYBlAG9Af8BJQFGAYwB/wE1AVYBjAH/
-        Aa0BzgG1Af8BnAGtAbUB/wLnAe8B/wGtAbUBxgH/DAAB1gGcAU4B/wH3AbUBjAH/AfcBtQGMAf8B9wG1
+        BAABnAG9AYwB/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/AVYBnAE9Af84AAHOAYwBXgH/
+        Ae8BlAFeAf8B7wGUAV4B/wHvAZQBXgH/Ae8BlAFeAf8B7wGUAV4B/wHvAZQBXgH/AecBlAFeAf8B7wGt
+        AYQB/wGcAdYBlAH/AYwB1gG1Af8BXgHeAfcB/wFeAd4B9wH/AV4B3gH3Af8BXgHeAfcB/wFeAd4B9wH/
+        AV4B3gH3Af8BTgHOAecB/wHWAecB7wH/BAACzgHWAf8BxgHOAdYB/wHGAc4B1gH/ASUBPQGEAf8BrQHW
+        AbUB/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9Ad4BvQH/AbUB1gG1Af8BvQHnAb0B/wG9AecBvQH/
+        Ab0B5wG9Af8BvQHnAb0B/wFeApwB/wHGAc4B1gH/AcYBzgHWAf8BxgHOAdYB/wLvAfcB/wQAAdYBnAFO
+        Af8B9wG1AYwB/wFWAcYB3gH/AaUB7wL/AVYBxgHeAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1
         AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/
-        AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHW
-        AcYB/wQAAZwBvQGMAf8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wFWAZwBPQH/OAAB1gGt
-        AcYB/wHnAYQBxgH/AecBhAHGAf8B5wGEAcYB/wHnAYQBxgH/AecBhAHGAf8B3gGEAc4B/wHnAYQB3gH/
-        AecBhAHeAf8CjAHvAf8CjAHvAf8BhAGUAe8B/wFWAaUB7wH/AVYBpQH3Af8BVgGlAfcB/wFWAaUB9wH/
-        AVYBpQH3Af8BLQFeAc4B/wP3Af8EAAT/AVYBhAGcCf8BnAGtAb0B/wEtAVYBnAH/AU4BpQHWAf8BVgGt
-        AdYB/wFWAa0B1gH/AVYBrQHWAf8BVgGtAdYB/wFWAa0B1gH/AT0BjAG1Af8BPQFWAZQB/wPvAf8EAAHG
-        Ac4B1gH/Ae8C9wH/CAAB1gGcAU4B/wH3AbUBjAH/AT0BtQHOAf8BVgHGAd4B/wE9AbUBzgH/AfcBtQGM
-        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3
-        AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHWAcYB/wQAAdYB3gHOAf8B1gHe
-        Ac4B/wHWAd4BzgH/AdYB3gHOAf8B1gHeAc4B/wHWAd4BzgH/OAAB5wHWAd4B/wHWAV4BtQH/AecBhAHG
-        Af8B5wGEAcYB/wHnAYQBxgH/AdYBjAHGAf8B5wGEAd4B/wHnAYQB3gH/AecBhAHeAf8CjAHvAf8CjAHv
-        Af8CjAHvAf8BhAGUAe8B/wFWAaUB9wH/AVYBpQH3Af8BVgGlAfcB/wFOAZwB7wH/AVYBlAHGBf8EAAHe
-        AucB/wLeAecB/wgAAcYBzgHWAf8BTgGlAdYB/wFWAa0B1gH/AVYBrQHWAf8BVgGtAdYB/wFWAa0B1gH/
-        AVYBrQHWAf8BVgGtAdYB/wFOAa0B1gH/ARwBNQGEAf8IAAP3Af8BlAGlAbUB/wgAAdYBnAFOAf8B9wG1
-        AYwB/wFWAcYB3gH/AaUB7wL/AVYBxgHeAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3
-        AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGM
-        Af8B9wG1AYwB/wHnAdYBxgH/BAABLQFOAaUB/wEtAU4BpQH/AS0BTgGlAf8BLQFOAaUB/wEtAU4BpQH/
-        AS0BTgGlAf84AAT/AbUBXgGcAf8B3gGEAb0B/wHnAYQBxgH/Ad4BhAHOAf8B5wGEAd4B/wHnAYQB3gH/
-        AecBhAHeAf8B5wGEAd4B/wKMAe8B/wKMAe8B/wKMAe8B/wKMAe8B/wGEAZQB7wH/AVYBpQHvAf8BVgGl
-        AfcB/wFGAZQB1gH/A/cB/wgAAs4B1gH/AfcD/wgAAecC7wH/ATUBXgGlAf8BTgGlAdYB/wFWAa0B1gH/
-        AVYBrQHWAf8BVgGtAdYB/wFWAa0B1gH/AVYBrQHWAf8BPQGMAbUB/wG9AcYBzgH/CAAE/wE1AUYBjAH/
-        CAAB1gGcAU4B/wH3AbUBjAH/AT0BtQHOAf8BVgHGAd4B/wE9AbUBzgH/AfcBtQGMAf8B9wG1AYwB/wH3
-        AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGM
-        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHWAcYB/wQAAT0BXgHGAf8BRgGUAecB/wFGAZQB5wH/
-        AUYBjAHWAf8BNQFWAa0B/wEtAU4BpQH/PAAE/wG9AVYBnAH/AdYBhAHGAf8B5wGEAd4B/wHnAYQB3gH/
-        AecBhAHeAf8B5wGEAd4B/wHnAYQB3gH/AowB7wH/AowB7wH/AowB7wH/AowB7wH/AowB7wH/AYQBlAHv
-        Af8BRgGUAecB/wG9Ac4B5wH/DAABxgHOAdYB/xAAAecC7wH/AS0BRgGMAf8BPQGMAbUB/wFOAaUBzgH/
-        AU4BpQHWAf8BRgGUAb0B/wElAUYBjAH/Aa0BtQHGAf8QAAEUAS0BXgH/CAAB1gGcAU4B/wH3AbUBjAH/
+        AfcBtQGMAf8B9wG1AYwB/wHnAdYBxgH/BAABnAG9AYwB/wHWAe8B1gH/AecB9wHvAf8B5wH3AecB/wHO
+        AecBxgH/AVYBnAE9Af84AAHOAV4BTgH/Ae8BlAFeAf8B7wGUAV4B/wHvAZQBXgH/Ae8BlAFeAf8B7wGU
+        AV4B/wHvAZQBXgH/Ae8BlAFeAf8B5wGUAV4B/wGUAc4BrQH/AV4B3gH3Af8BXgHeAfcB/wFeAd4B9wH/
+        AV4B3gH3Af8BXgHeAfcB/wFeAd4B9wH/AV4B3gH3Af8BXgHeAe8B/wHGAd4B5wH/EAABFAE1AV4B/wG1
+        Ad4BtQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/Ab0B5wG9
+        Af8BvQHnAb0B/wG9AecBvQH/AYQCpQH/FAAB1gGcAU4B/wH3AbUBjAH/AVYBxgHeAf8BpQHvAv8BVgHG
+        Ad4B/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/
+        AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AecB1gHGAf8EAAGc
+        Ab0BjAH/Ad4B7wHeAf8BvQH3Av8BzgL3Af8BzgHnAc4B/wFWAZwBPQH/CAABnAGMAV4B/wGcAYwBXgH/
+        AZwBjAFeAf8BnAGMAV4B/wGcAYwBXgH/AZwBjAFeAf8BnAGMAV4B/wGcAYwBXgH/AZwBjAFeAf8BnAGM
+        AV4B/wHeAtYB/wQAAcYBXgGlAf8B5wGEAcYB/wHnAYQBxgH/AecBhAHGAf8B5wGEAcYB/wHnAYQBxgH/
+        AecBhAHGAf8B5wGEAcYB/wHeAYQBzgH/AYQBlAHnAf8BVgGlAe8B/wFWAaUB9wH/AVYBpQH3Af8BVgGl
+        AfcB/wFWAaUB9wH/AVYBpQH3Af8BVgGlAfcB/wFOAZwB7wH/Ac4B1gHnAf8MAAPvAf8BHAE1AV4B/wGt
+        AdYBtQH/Ab0B5wG9Af8BrQHOAbUB/wGEAqUB/wFeApwB/wFeApwB/wFeApwB/wGcAb0BrQH/Ab0B3gG9
+        Af8BvQHnAb0B/wFeApwB/wHWAd4B5wX/DAAB1gGcAU4B/wH3AbUBjAH/AZwBrQGlAf8BnAGtAaUB/wGc
+        Aa0BpQH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGM
+        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B5wHWAcYB/wQA
+        AZwBvQGMAf8B1gHvAdYB/wHnAfcB7wH/AecB9wHnAf8BzgHnAcYB/wFWAZwBPQH/OAABxgGMAa0B/wHn
+        AYQBxgH/AecBhAHGAf8B5wGEAcYB/wHnAYQBxgH/AecBhAHGAf8B5wGEAcYB/wHWAYwBxgH/AecBhAHe
+        Af8CjAHvAf8BhAGUAe8B/wFWAaUB9wH/AVYBpQH3Af8BVgGlAfcB/wFWAaUB9wH/AVYBpQH3Af8BVgGl
+        AfcB/wFGAZQB5wH/Ad4B5wHvAf8IAAHnAu8B/wGtAbUBxgH/AZQBpQG1Af8BjAGtAaUB/wFOAYwBlAH/
+        ARwBPQGEAf8BPQGMAbUB/wFOAaUBzgH/AU4BpQHWAf8BRgGUAb0B/wElAUYBjAH/ATUBVgGMAf8BrQHO
+        AbUB/wGcAa0BtQH/AucB7wH/Aa0BtQHGAf8MAAHWAZwBTgH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/
         AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1
+        AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wHnAdYBxgH/
+        BAABnAG9AYwB/wG9AecBvQH/Ab0B5wG9Af8BvQHnAb0B/wG9AecBvQH/AVYBnAE9Af84AAHWAa0BxgH/
+        AecBhAHGAf8B5wGEAcYB/wHnAYQBxgH/AecBhAHGAf8B5wGEAcYB/wHeAYQBzgH/AecBhAHeAf8B5wGE
+        Ad4B/wKMAe8B/wKMAe8B/wGEAZQB7wH/AVYBpQHvAf8BVgGlAfcB/wFWAaUB9wH/AVYBpQH3Af8BVgGl
+        AfcB/wEtAV4BzgH/A/cB/wQABP8BVgGEAZwJ/wGcAa0BvQH/AS0BVgGcAf8BTgGlAdYB/wFWAa0B1gH/
+        AVYBrQHWAf8BVgGtAdYB/wFWAa0B1gH/AVYBrQHWAf8BPQGMAbUB/wE9AVYBlAH/A+8B/wQAAcYBzgHW
+        Af8B7wL3Af8IAAHWAZwBTgH/AfcBtQGMAf8BPQG1Ac4B/wFWAcYB3gH/AT0BtQHOAf8B9wG1AYwB/wH3
+        AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGM
+        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wHnAdYBxgH/BAAB1gHeAc4B/wHWAd4BzgH/
+        AdYB3gHOAf8B1gHeAc4B/wHWAd4BzgH/AdYB3gHOAf84AAHnAdYB3gH/AdYBXgG1Af8B5wGEAcYB/wHn
+        AYQBxgH/AecBhAHGAf8B1gGMAcYB/wHnAYQB3gH/AecBhAHeAf8B5wGEAd4B/wKMAe8B/wKMAe8B/wKM
+        Ae8B/wGEAZQB7wH/AVYBpQH3Af8BVgGlAfcB/wFWAaUB9wH/AU4BnAHvAf8BVgGUAcYF/wQAAd4C5wH/
+        At4B5wH/CAABxgHOAdYB/wFOAaUB1gH/AVYBrQHWAf8BVgGtAdYB/wFWAa0B1gH/AVYBrQHWAf8BVgGt
+        AdYB/wFWAa0B1gH/AU4BrQHWAf8BHAE1AYQB/wgAA/cB/wGUAaUBtQH/CAAB1gGcAU4B/wH3AbUBjAH/
+        AVYBxgHeAf8BpQHvAv8BVgHGAd4B/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGM
+        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3
+        AbUBjAH/AecB1gHGAf8EAAEtAU4BpQH/AS0BTgGlAf8BLQFOAaUB/wEtAU4BpQH/AS0BTgGlAf8BLQFO
+        AaUB/zgABP8BtQFeAZwB/wHeAYQBvQH/AecBhAHGAf8B3gGEAc4B/wHnAYQB3gH/AecBhAHeAf8B5wGE
+        Ad4B/wHnAYQB3gH/AowB7wH/AowB7wH/AowB7wH/AowB7wH/AYQBlAHvAf8BVgGlAe8B/wFWAaUB9wH/
+        AUYBlAHWAf8D9wH/CAACzgHWAf8B9wP/CAAB5wLvAf8BNQFeAaUB/wFOAaUB1gH/AVYBrQHWAf8BVgGt
+        AdYB/wFWAa0B1gH/AVYBrQHWAf8BVgGtAdYB/wE9AYwBtQH/Ab0BxgHOAf8IAAT/ATUBRgGMAf8IAAHW
+        AZwBTgH/AfcBtQGMAf8BPQG1Ac4B/wFWAcYB3gH/AT0BtQHOAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGM
+        Af8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3
+        AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wHnAdYBxgH/BAABPQFeAcYB/wFGAZQB5wH/AUYBlAHnAf8BRgGM
+        AdYB/wE1AVYBrQH/AS0BTgGlAf88AAT/Ab0BVgGcAf8B1gGEAcYB/wHnAYQB3gH/AecBhAHeAf8B5wGE
+        Ad4B/wHnAYQB3gH/AecBhAHeAf8CjAHvAf8CjAHvAf8CjAHvAf8CjAHvAf8CjAHvAf8BhAGUAe8B/wFG
+        AZQB5wH/Ab0BzgHnAf8MAAHGAc4B1gH/EAAB5wLvAf8BLQFGAYwB/wE9AYwBtQH/AU4BpQHOAf8BTgGl
+        AdYB/wFGAZQBvQH/ASUBRgGMAf8BrQG1AcYB/xAAARQBLQFeAf8IAAHWAZwBTgH/AfcBtQGMAf8B9wG1
         AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/
-        AfcBtQGMAf8B5wHWAcYB/wQAAU4BlAHOAf8BTgGUAecB/wFOAZwB5wH/ATUBVgGtAf8BVgGUAc4B/wEt
-        AU4BpQH/QAAB7wHnAe8B/wGtAU4BtQH/AdYBXgHWAf8B5wGEAd4B/wHnAYQB3gH/AecBhAHeAf8B5wGE
-        Ad4B/wKMAe8B/wKMAe8B/wKMAe8B/wKMAe8B/wKMAe8B/wJOAdYB/wHGAc4B5wX/DAAC7wH3Af8UAALe
-        AecB/wEcAT0BhAH/ASUBRgGUAf8BJQFGAZQB/wElAT0BjAH/AZQBpQG9Bf8QAAHOAdYB3gH/CAABxgGM
-        AT0B/wHWAZwBTgH/AdYBnAFOAf8B1gGcAU4B/wHWAZwBTgH/AdYBnAFOAf8B1gGcAU4B/wHWAZwBTgH/
+        AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1AYwB/wH3AbUBjAH/AfcBtQGMAf8B9wG1
+        AYwB/wHnAdYBxgH/BAABTgGUAc4B/wFOAZQB5wH/AU4BnAHnAf8BNQFWAa0B/wFWAZQBzgH/AS0BTgGl
+        Af9AAAHvAecB7wH/Aa0BTgG1Af8B1gFeAdYB/wHnAYQB3gH/AecBhAHeAf8B5wGEAd4B/wHnAYQB3gH/
+        AowB7wH/AowB7wH/AowB7wH/AowB7wH/AowB7wH/Ak4B1gH/AcYBzgHnBf8MAALvAfcB/xQAAt4B5wH/
+        ARwBPQGEAf8BJQFGAZQB/wElAUYBlAH/ASUBPQGMAf8BlAGlAb0F/xAAAc4B1gHeAf8IAAHGAYwBPQH/
         AdYBnAFOAf8B1gGcAU4B/wHWAZwBTgH/AdYBnAFOAf8B1gGcAU4B/wHWAZwBTgH/AdYBnAFOAf8B1gGc
-        AU4B/wHWAZwBTgH/AdYBnAFOAf8B5wHWAcYB/wQAAVYBlAHWAf8BlAG9Av8BlAG9Av8BlAG9AfcB/wGc
-        AcYC/wEtAU4BpQH/CAAB3gLWAf8B3gLWAf8B3gLWAf8B3gLWAf8B3gLWAf8B3gLWAf8B3gLWAf8B3gLW
-        Af8B3gLWAf8B3gLWAf8B9wLvAf8QAAH/AfcC/wGlAU4BrQH/AcYBVgHGAf8B5wGEAd4B/wHnAYQB3gH/
-        AecBhAHeAf8CjAHvAf8CjAHvAf8CjAHvAf8ChAHnAf8CLQHGAf8CzgHnAf8oAAT/AV4BjAGlAf8BTgFe
-        AZwB/wElAUYBlAH/AS0BTgGlAf8BPQFOAZQB/wFeAZQBrQH/As4B3gH/bAABVgGUAdYB/wGcAcYC/wGc
-        AcYC/wGcAcYC/wG9Ad4C/wEtAU4BpQH/SAAE/wHeAdYB5wH/AcYBpQHOAf8BvQGEAb0B/wG1AU4BtQH/
-        AkYB1gH/Al4B1gH/ApQB1gH/AsYB5wH/A/cF/ygAAV4BjAGlAf8D9wX/AdYB3gHnAf8BxgHOAdYB/wP3
-        Bf8BvQHGAc4B/2wAAT0BhAG9Af8BVgGUAdYB/wFWAZQB1gH/AVYBlAHWAf8BVgGUAdYB/wEtAU4BpQH/
-        /wB1AAFCAU0BPgcAAT4DAAEoAwABUAMAATwDAAEBAQABAQUAAdABAhYAA/8BAAL/AfAJAAHnAf8B8AkA
-        AeEB/wHwCQAB4AH/AfAJAAHgAT8B8AkAAeABDwHwCQAB4AEHAfAJAAHgAQEB8AkAAeABAAFwCQAB4AEA
-        ATAJAAHgAQABMAkAAeABAAHwCQAB4AEDAfAJAAHgAQcB8AkAAeABPwHwCQAB4AF/AfAJAAHgAf8B8AkA
-        AecB/wHwCQAC/wHwCQAC/wHwCQAD/wH5Af8B/AEDA/8CAAGAAT8B/wH5Af8B+AEBAfgBAAEBAgABgAE/
-        Af8B4QGPAeABAAF4AQABAQIAAYABPwH/AeEBxwHgAQABOAEAAQECAAGAASABHwGBASMBgAEAARgBAAEB
-        AgABgAEgAR8BgQEJAYABAAEYAQABAQIAAYABIAEYAQEBiAGAAQABCAEAAQECAAGAASABGAEAASQBgAEA
-        AQgBAAEBAgABgAEgARgBAAEkAYABAAEIAQABAQIAAYABIAEYAQEBpAGAAQABCAEAAQECAAGAASABGAEB
-        AaQBgAEAAQgBAAEBAgABgAEgARgBAAEkAYABAAEIAQABAQIAAYABIAEYAQABIAGAAQABCAEAAQECAAGA
-        ASABGAEBAYkBgAEAAQgBAAEBAgABgAEgAR8BgQEBAYABAAEYAQABAQIAAYABIAEfAcEB4wHAAQABOAEA
-        AQECAAGAAT8B/wHhAYcB4AEAATgBAAEBAgABgAE/Af8B8QGfAfABAAH4AQABAQIAAYABPwH/AfkB/wH4
-        AQAB+AEAAQECAAr/AgAB/gEDBf8B+AEfAf8CAAH4AQAB+wH/Af0C/wH4AR8B/wIAAeABAAF5AcABOQGA
-        AQABCAEYAwAB4AEAATgBwAE5AYABAAEIAR8B/wIAAYABAAEcAQABAwGAAQABCAEfAf8CAAGAAQABHgEA
-        AQcBgAEAAQgBHwH/AgABgAEAAQ8BAAEPAYABAAEIAR8B/wIAAYABAAEPAQABDwGAAQABCAEfAf8CAAGA
-        AQABCAIAAYABAAEIAR8B/wIAAYABAAEPAQABDwGAAQABCAEYAwABgAEAAQ4BAAEDAYABAAEIAR8B/wIA
-        AYABAAEMAQABAwGAAQABCAEfAf8CAAGAAQABCAEAAQkBgAEAAQgBHwH/AgABgAEAAQkBgAEZAYABAAEI
-        AR8B/wIAAYABAAEZAYABGQGAAQABCAEfAf8CAAHAAQABOwHAAT0BgAEAAQgBHwH/AgAB4AEAATsB4AE9
-        AYABAAEIARgDAAHwAQAB/wHAAT8C/wH4AR8B/wIAAfgBAAH/AcABPwL/AfgBHwH/AgAK/wIACw==
+        AU4B/wHWAZwBTgH/AdYBnAFOAf8B1gGcAU4B/wHWAZwBTgH/AdYBnAFOAf8B1gGcAU4B/wHWAZwBTgH/
+        AdYBnAFOAf8B1gGcAU4B/wHnAdYBxgH/BAABVgGUAdYB/wGUAb0C/wGUAb0C/wGUAb0B9wH/AZwBxgL/
+        AS0BTgGlAf8IAAHeAtYB/wHeAtYB/wHeAtYB/wHeAtYB/wHeAtYB/wHeAtYB/wHeAtYB/wHeAtYB/wHe
+        AtYB/wHeAtYB/wH3Au8B/xAAAf8B9wL/AaUBTgGtAf8BxgFWAcYB/wHnAYQB3gH/AecBhAHeAf8B5wGE
+        Ad4B/wKMAe8B/wKMAe8B/wKMAe8B/wKEAecB/wItAcYB/wLOAecB/ygABP8BXgGMAaUB/wFOAV4BnAH/
+        ASUBRgGUAf8BLQFOAaUB/wE9AU4BlAH/AV4BlAGtAf8CzgHeAf9sAAFWAZQB1gH/AZwBxgL/AZwBxgL/
+        AZwBxgL/Ab0B3gL/AS0BTgGlAf9IAAT/Ad4B1gHnAf8BxgGlAc4B/wG9AYQBvQH/AbUBTgG1Af8CRgHW
+        Af8CXgHWAf8ClAHWAf8CxgHnAf8D9wX/KAABXgGMAaUB/wP3Bf8B1gHeAecB/wHGAc4B1gH/A/cF/wG9
+        AcYBzgH/bAABPQGEAb0B/wFWAZQB1gH/AVYBlAHWAf8BVgGUAdYB/wFWAZQB1gH/AS0BTgGlAf//AHUA
+        AUIBTQE+BwABPgMAASgDAAFQAwABPAMAAQEBAAEBBQAB0AECFgAD/wEAAv8B8AkAAecB/wHwCQAB4QH/
+        AfAJAAHgAf8B8AkAAeABPwHwCQAB4AEPAfAJAAHgAQcB8AkAAeABAQHwCQAB4AEAAXAJAAHgAQABMAkA
+        AeABAAEwCQAB4AEAAfAJAAHgAQMB8AkAAeABBwHwCQAB4AE/AfAJAAHgAX8B8AkAAeAB/wHwCQAB5wH/
+        AfAJAAL/AfAJAAL/AfAJAAP/AfkB/wH8AQMD/wIAAYABPwH/AfkB/wH4AQEB+AEAAQECAAGAAT8B/wHh
+        AY8B4AEAAXgBAAEBAgABgAE/Af8B4QHHAeABAAE4AQABAQIAAYABIAEfAYEBIwGAAQABGAEAAQECAAGA
+        ASABHwGBAQkBgAEAARgBAAEBAgABgAEgARgBAQGIAYABAAEIAQABAQIAAYABIAEYAQABJAGAAQABCAEA
+        AQECAAGAASABGAEAASQBgAEAAQgBAAEBAgABgAEgARgBAQGkAYABAAEIAQABAQIAAYABIAEYAQEBpAGA
+        AQABCAEAAQECAAGAASABGAEAASQBgAEAAQgBAAEBAgABgAEgARgBAAEgAYABAAEIAQABAQIAAYABIAEY
+        AQEBiQGAAQABCAEAAQECAAGAASABHwGBAQEBgAEAARgBAAEBAgABgAEgAR8BwQHjAcABAAE4AQABAQIA
+        AYABPwH/AeEBhwHgAQABOAEAAQECAAGAAT8B/wHxAZ8B8AEAAfgBAAEBAgABgAE/Af8B+QH/AfgBAAH4
+        AQABAQIACv8CAAH+AQMF/wH4AR8B/wIAAfgBAAH7Af8B/QL/AfgBHwH/AgAB4AEAAXkBwAE5AYABAAEI
+        ARgDAAHgAQABOAHAATkBgAEAAQgBHwH/AgABgAEAARwBAAEDAYABAAEIAR8B/wIAAYABAAEeAQABBwGA
+        AQABCAEfAf8CAAGAAQABDwEAAQ8BgAEAAQgBHwH/AgABgAEAAQ8BAAEPAYABAAEIAR8B/wIAAYABAAEI
+        AgABgAEAAQgBHwH/AgABgAEAAQ8BAAEPAYABAAEIARgDAAGAAQABDgEAAQMBgAEAAQgBHwH/AgABgAEA
+        AQwBAAEDAYABAAEIAR8B/wIAAYABAAEIAQABCQGAAQABCAEfAf8CAAGAAQABCQGAARkBgAEAAQgBHwH/
+        AgABgAEAARkBgAEZAYABAAEIAR8B/wIAAcABAAE7AcABPQGAAQABCAEfAf8CAAHgAQABOwHgAT0BgAEA
+        AQgBGAMAAfABAAH/AcABPwL/AfgBHwH/AgAB+AEAAf8BwAE/Av8B+AEfAf8CAAr/AgAL
 </value>
   </data>
   <data name="treeMenu.Indent" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
   <data name="treeMenu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 11</value>
+    <value>9, 9</value>
+  </data>
+  <data name="treeMenu.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="treeMenu.Nodes" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -917,8 +932,8 @@
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
         ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
-        aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAAB09iZWNuw6kGBAAAAAAGBQAAAAd1T2JlY25lAP//
-        //8GBgAAAAtnZW5lcmFsLnBuZ/////8GBwAAAAtnZW5lcmFsLnBuZwAAAAAL
+        aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAAB09iZWNuw6kGBAAAAAAGBQAAAAd1T2JlY25lAAQA
+        AAAJBAAAAAQAAAAJBAAAAAAAAAAL
 </value>
   </data>
   <data name="treeMenu.Nodes1" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -931,24 +946,22 @@
         BAEICAgdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUCAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1z
         LlRyZWVOb2RlAgAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQIAAAAdU3lzdGVtLldpbmRv
         d3MuRm9ybXMuVHJlZU5vZGUCAAAAAgAAAAYDAAAAClByb3N0cmVkaWUGBAAAAAAGBQAAAAt1UHJvc3Ry
-        ZWRpZQD/////BgYAAAAPZW52aXJvbm1lbnQucG5n/////wYHAAAAD2Vudmlyb25tZW50LnBuZwQAAAAJ
-        CAAAAAkJAAAACQoAAAAJCwAAAAUIAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlCQAAAARU
-        ZXh0C1Rvb2xUaXBUZXh0BE5hbWUJSXNDaGVja2VkCkltYWdlSW5kZXgISW1hZ2VLZXkSU2VsZWN0ZWRJ
-        bWFnZUluZGV4EFNlbGVjdGVkSW1hZ2VLZXkKQ2hpbGRDb3VudAEBAQAAAQABAAEICAgCAAAABgwAAAAM
-        TG9rYWxpesOhY2lhCQQAAAAGDgAAAA11TG9jYWxpemF0aW9uAP////8GDwAAABBsb2NhbGl6YXRpb24u
-        cG5n/////wYQAAAAEGxvY2FsaXphdGlvbi5wbmcAAAAABQkAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMu
-        VHJlZU5vZGUJAAAABFRleHQLVG9vbFRpcFRleHQETmFtZQlJc0NoZWNrZWQKSW1hZ2VJbmRleAhJbWFn
-        ZUtleRJTZWxlY3RlZEltYWdlSW5kZXgQU2VsZWN0ZWRJbWFnZUtleQpDaGlsZENvdW50AQEBAAABAAEA
-        AQgICAIAAAAGEQAAAA5Qw61zbWEgYSBmYXJieQkEAAAABhMAAAAMdUZvbnRzQ29sb3JzAP////8GFAAA
-        AApjb2xvcnMucG5n/////wkUAAAAAAAAAAUKAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2Rl
-        CQAAAARUZXh0C1Rvb2xUaXBUZXh0BE5hbWUJSXNDaGVja2VkCkltYWdlSW5kZXgISW1hZ2VLZXkSU2Vs
-        ZWN0ZWRJbWFnZUluZGV4EFNlbGVjdGVkSW1hZ2VLZXkKQ2hpbGRDb3VudAEBAQAAAQABAAEICAgCAAAA
-        BhUAAAAQUHJhY292bsOhIHBsb2NoYQkEAAAABhcAAAAIdURlc2t0b3AA/////wYYAAAAC2Rlc2t0b3Au
-        cG5n/////wYZAAAAC2Rlc2t0b3AucG5nAAAAAAULAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVO
-        b2RlCQAAAARUZXh0C1Rvb2xUaXBUZXh0BE5hbWUJSXNDaGVja2VkCkltYWdlSW5kZXgISW1hZ2VLZXkS
-        U2VsZWN0ZWRJbWFnZUluZGV4EFNlbGVjdGVkSW1hZ2VLZXkKQ2hpbGRDb3VudAEBAQAAAQABAAEICAgC
-        AAAABhoAAAATS2zDoXZlc292w6kgc2tyYXRreQkEAAAABhwAAAAKdVNob3J0Y3V0cwD/////Bh0AAAAM
-        c2hvcnRjdXQucG5n/////wkdAAAAAAAAAAs=
+        ZWRpZQADAAAACQQAAAADAAAACQQAAAAEAAAACQcAAAAJCAAAAAkJAAAACQoAAAAFBwAAAB1TeXN0ZW0u
+        V2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tlZApJ
+        bWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxk
+        Q291bnQBAQEAAAEAAQABCAgIAgAAAAYLAAAADExva2FsaXrDoWNpYQkEAAAABg0AAAANdUxvY2FsaXph
+        dGlvbgAGAAAACQQAAAAGAAAACQQAAAAAAAAABQgAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5v
+        ZGUJAAAABFRleHQLVG9vbFRpcFRleHQETmFtZQlJc0NoZWNrZWQKSW1hZ2VJbmRleAhJbWFnZUtleRJT
+        ZWxlY3RlZEltYWdlSW5kZXgQU2VsZWN0ZWRJbWFnZUtleQpDaGlsZENvdW50AQEBAAABAAEAAQgICAIA
+        AAAGDwAAAA5Qw61zbWEgYSBmYXJieQkEAAAABhEAAAAMdUZvbnRzQ29sb3JzAAAAAAAJBAAAAAAAAAAJ
+        BAAAAAAAAAAFCQAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlw
+        VGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBT
+        ZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYTAAAAEFByYWNvdm7DoSBw
+        bG9jaGEJBAAAAAYVAAAACHVEZXNrdG9wAAIAAAAJBAAAAAIAAAAJBAAAAAAAAAAFCgAAAB1TeXN0ZW0u
+        V2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tlZApJ
+        bWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxk
+        Q291bnQBAQEAAAEAAQABCAgIAgAAAAYXAAAAE0tsw6F2ZXNvdsOpIHNrcmF0a3kJBAAAAAYZAAAACnVT
+        aG9ydGN1dHMABwAAAAkEAAAABwAAAAkEAAAAAAAAAAs=
 </value>
   </data>
   <data name="treeMenu.Nodes2" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -958,8 +971,7 @@
         ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
         ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
         aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAAFUxvZ292YW5pZSBhIGRlYnVnZ2luZwYEAAAAAAYF
-        AAAACHVMb2dnaW5nAP////8GBgAAAA1kZWJ1Z2dpbmcucG5n/////wYHAAAADWRlYnVnZ2luZy5wbmcA
-        AAAACw==
+        AAAACHVMb2dnaW5nAAEAAAAJBAAAAAEAAAAJBAAAAAAAAAAL
 </value>
   </data>
   <data name="treeMenu.Nodes3" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -969,8 +981,7 @@
         ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
         ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
         aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAADFByZWhyw6F2YW5pZQYEAAAAAAYFAAAACHVQbGF5
-        aW5nAP////8GBgAAABJpbmlzcy1zZXR0aW5ncy5wbmf/////BgcAAAASaW5pc3Mtc2V0dGluZ3MucG5n
-        AAAAAAs=
+        aW5nAAUAAAAJBAAAAAUAAAAJBAAAAAAAAAAL
 </value>
   </data>
   <data name="treeMenu.Nodes4" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -980,14 +991,14 @@
         ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
         ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
         aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAAElNww7rFocWlYW5pZSBJTklTUwYEAAAAAAYFAAAA
-        CHVTdGFydHVwAP////8GBgAAAAlzdGFydC5wbmf/////BgcAAAAJc3RhcnQucG5nAAAAAAs=
+        CHVTdGFydHVwAAgAAAAJBAAAAAgAAAAJBAAAAAAAAAAL
 </value>
   </data>
   <data name="treeMenu.SelectedImageIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="treeMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 518</value>
+    <value>198, 421</value>
   </data>
   <data name="treeMenu.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1004,6 +1015,36 @@
   <data name="&gt;&gt;treeMenu.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="cbCheckUpdate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbCheckUpdate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cbCheckUpdate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 153</value>
+  </data>
+  <data name="cbCheckUpdate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 17</value>
+  </data>
+  <data name="cbCheckUpdate.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="cbCheckUpdate.Text" xml:space="preserve">
+    <value>Kontrolovať, či nie je k dispozícií aktualizácia programu</value>
+  </data>
+  <data name="&gt;&gt;cbCheckUpdate.Name" xml:space="preserve">
+    <value>cbCheckUpdate</value>
+  </data>
+  <data name="&gt;&gt;cbCheckUpdate.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbCheckUpdate.Parent" xml:space="preserve">
+    <value>pObecne</value>
+  </data>
+  <data name="&gt;&gt;cbCheckUpdate.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="cbAutoVariant.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1011,10 +1052,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbAutoVariant.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 49</value>
+    <value>13, 40</value>
+  </data>
+  <data name="cbAutoVariant.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbAutoVariant.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 20</value>
+    <value>190, 17</value>
   </data>
   <data name="cbAutoVariant.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1026,13 +1070,13 @@
     <value>cbAutoVariant</value>
   </data>
   <data name="&gt;&gt;cbAutoVariant.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbAutoVariant.Parent" xml:space="preserve">
     <value>pObecne</value>
   </data>
   <data name="&gt;&gt;cbAutoVariant.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="cbDisableVariantCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1041,10 +1085,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbDisableVariantCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 75</value>
+    <value>13, 61</value>
+  </data>
+  <data name="cbDisableVariantCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbDisableVariantCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 20</value>
+    <value>332, 17</value>
   </data>
   <data name="cbDisableVariantCheck.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1056,19 +1103,22 @@
     <value>cbDisableVariantCheck</value>
   </data>
   <data name="&gt;&gt;cbDisableVariantCheck.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDisableVariantCheck.Parent" xml:space="preserve">
     <value>pObecne</value>
   </data>
   <data name="&gt;&gt;cbDisableVariantCheck.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="pObecne.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 11</value>
+    <value>212, 9</value>
+  </data>
+  <data name="pObecne.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="pObecne.Size" type="System.Drawing.Size, System.Drawing">
-    <value>670, 518</value>
+    <value>502, 421</value>
   </data>
   <data name="pObecne.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1113,13 +1163,16 @@
     <value>297, 17</value>
   </metadata>
   <data name="dgvAppFonts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 56</value>
+    <value>7, 46</value>
+  </data>
+  <data name="dgvAppFonts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="dgvAppFonts.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
   <data name="dgvAppFonts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 439</value>
+    <value>486, 357</value>
   </data>
   <data name="dgvAppFonts.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1143,10 +1196,13 @@
     <value>NoControl</value>
   </data>
   <data name="bAppFontDefault.Location" type="System.Drawing.Point, System.Drawing">
-    <value>564, 15</value>
+    <value>423, 12</value>
+  </data>
+  <data name="bAppFontDefault.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bAppFontDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 30</value>
+    <value>71, 24</value>
   </data>
   <data name="bAppFontDefault.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1158,7 +1214,7 @@
     <value>bAppFontDefault</value>
   </data>
   <data name="&gt;&gt;bAppFontDefault.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bAppFontDefault.Parent" xml:space="preserve">
     <value>pEnvironment</value>
@@ -1173,10 +1229,13 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 22</value>
+    <value>5, 18</value>
+  </data>
+  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 16</value>
+    <value>150, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1197,10 +1256,13 @@
     <value>2</value>
   </data>
   <data name="pEnvironment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 11</value>
+    <value>212, 9</value>
+  </data>
+  <data name="pEnvironment.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="pEnvironment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>670, 518</value>
+    <value>502, 421</value>
   </data>
   <data name="pEnvironment.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1218,10 +1280,13 @@
     <value>11</value>
   </data>
   <data name="pLocalization.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 11</value>
+    <value>212, 9</value>
+  </data>
+  <data name="pLocalization.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="pLocalization.Size" type="System.Drawing.Size, System.Drawing">
-    <value>670, 518</value>
+    <value>502, 421</value>
   </data>
   <data name="pLocalization.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1241,11 +1306,17 @@
   <data name="bUseStyle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="bUseStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="bUseStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>308, 9</value>
+    <value>231, 7</value>
+  </data>
+  <data name="bUseStyle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bUseStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 27</value>
+    <value>56, 23</value>
   </data>
   <data name="bUseStyle.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -1257,7 +1328,7 @@
     <value>bUseStyle</value>
   </data>
   <data name="&gt;&gt;bUseStyle.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bUseStyle.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1272,10 +1343,13 @@
     <value>NoControl</value>
   </data>
   <data name="bColorsUseDefault.Location" type="System.Drawing.Point, System.Drawing">
-    <value>517, 138</value>
+    <value>388, 112</value>
+  </data>
+  <data name="bColorsUseDefault.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bColorsUseDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 30</value>
+    <value>105, 24</value>
   </data>
   <data name="bColorsUseDefault.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1287,7 +1361,7 @@
     <value>bColorsUseDefault</value>
   </data>
   <data name="&gt;&gt;bColorsUseDefault.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bColorsUseDefault.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1298,11 +1372,17 @@
   <data name="cboxDarkScrollBars.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="cboxDarkScrollBars.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="cboxDarkScrollBars.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 48</value>
+    <value>14, 39</value>
+  </data>
+  <data name="cboxDarkScrollBars.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cboxDarkScrollBars.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 20</value>
+    <value>212, 17</value>
   </data>
   <data name="cboxDarkScrollBars.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -1314,7 +1394,7 @@
     <value>cboxDarkScrollBars</value>
   </data>
   <data name="&gt;&gt;cboxDarkScrollBars.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxDarkScrollBars.Parent" xml:space="preserve">
     <value>exGroupBox2</value>
@@ -1325,11 +1405,17 @@
   <data name="cboxDarkTitleBar.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="cboxDarkTitleBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="cboxDarkTitleBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>326, 48</value>
+    <value>244, 39</value>
+  </data>
+  <data name="cboxDarkTitleBar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cboxDarkTitleBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 20</value>
+    <value>214, 17</value>
   </data>
   <data name="cboxDarkTitleBar.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -1341,7 +1427,7 @@
     <value>cboxDarkTitleBar</value>
   </data>
   <data name="&gt;&gt;cboxDarkTitleBar.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxDarkTitleBar.Parent" xml:space="preserve">
     <value>exGroupBox2</value>
@@ -1352,11 +1438,17 @@
   <data name="cboxDefaultStyle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="cboxDefaultStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="cboxDefaultStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 21</value>
+    <value>14, 17</value>
+  </data>
+  <data name="cboxDefaultStyle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cboxDefaultStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 20</value>
+    <value>240, 17</value>
   </data>
   <data name="cboxDefaultStyle.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -1368,7 +1460,7 @@
     <value>cboxDefaultStyle</value>
   </data>
   <data name="&gt;&gt;cboxDefaultStyle.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxDefaultStyle.Parent" xml:space="preserve">
     <value>exGroupBox2</value>
@@ -1377,10 +1469,16 @@
     <value>2</value>
   </data>
   <data name="exGroupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 40</value>
+    <value>11, 32</value>
+  </data>
+  <data name="exGroupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="exGroupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="exGroupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>642, 76</value>
+    <value>482, 62</value>
   </data>
   <data name="exGroupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -1392,7 +1490,7 @@
     <value>exGroupBox2</value>
   </data>
   <data name="&gt;&gt;exGroupBox2.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;exGroupBox2.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1407,10 +1505,13 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 122</value>
+    <value>14, 99</value>
+  </data>
+  <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 16</value>
+    <value>122, 13</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1434,10 +1535,13 @@
     <value>Textový editor TabTab</value>
   </data>
   <data name="cbColorSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 142</value>
+    <value>15, 115</value>
+  </data>
+  <data name="cbColorSettings.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbColorSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 24</value>
+    <value>356, 21</value>
   </data>
   <data name="cbColorSettings.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1446,7 +1550,7 @@
     <value>cbColorSettings</value>
   </data>
   <data name="&gt;&gt;cbColorSettings.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbColorSettings.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1457,11 +1561,17 @@
   <data name="bRemoveStyle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="bRemoveStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="bRemoveStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>582, 9</value>
+    <value>436, 7</value>
+  </data>
+  <data name="bRemoveStyle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bRemoveStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 27</value>
+    <value>58, 23</value>
   </data>
   <data name="bRemoveStyle.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -1473,7 +1583,7 @@
     <value>bRemoveStyle</value>
   </data>
   <data name="&gt;&gt;bRemoveStyle.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bRemoveStyle.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1484,11 +1594,17 @@
   <data name="bRenameStyle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="bRenameStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="bRenameStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>469, 9</value>
+    <value>352, 7</value>
+  </data>
+  <data name="bRenameStyle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bRenameStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 27</value>
+    <value>84, 23</value>
   </data>
   <data name="bRenameStyle.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -1500,7 +1616,7 @@
     <value>bRenameStyle</value>
   </data>
   <data name="&gt;&gt;bRenameStyle.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bRenameStyle.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1511,11 +1627,17 @@
   <data name="bAddStyle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="bAddStyle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="bAddStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>389, 9</value>
+    <value>292, 7</value>
+  </data>
+  <data name="bAddStyle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bAddStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 27</value>
+    <value>56, 23</value>
   </data>
   <data name="bAddStyle.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -1527,7 +1649,7 @@
     <value>bAddStyle</value>
   </data>
   <data name="&gt;&gt;bAddStyle.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bAddStyle.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1538,11 +1660,17 @@
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 15</value>
+    <value>10, 12</value>
+  </data>
+  <data name="label17.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 16</value>
+    <value>27, 13</value>
   </data>
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -1563,10 +1691,13 @@
     <value>8</value>
   </data>
   <data name="cbStyles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 11</value>
+    <value>42, 9</value>
+  </data>
+  <data name="cbStyles.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbStyles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 23</value>
+    <value>173, 20</value>
   </data>
   <data name="cbStyles.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -1575,7 +1706,7 @@
     <value>cbStyles</value>
   </data>
   <data name="&gt;&gt;cbStyles.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbStyles.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1590,10 +1721,13 @@
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 26</value>
+    <value>7, 21</value>
+  </data>
+  <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 16</value>
+    <value>271, 13</value>
   </data>
   <data name="label10.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1614,10 +1748,13 @@
     <value>0</value>
   </data>
   <data name="cbFontSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>447, 45</value>
+    <value>335, 37</value>
+  </data>
+  <data name="cbFontSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbFontSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 24</value>
+    <value>101, 21</value>
   </data>
   <data name="cbFontSize.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1626,7 +1763,7 @@
     <value>cbFontSize</value>
   </data>
   <data name="&gt;&gt;cbFontSize.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbFontSize.Parent" xml:space="preserve">
     <value>exGroupBox3</value>
@@ -1641,10 +1778,13 @@
     <value>NoControl</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>444, 26</value>
+    <value>333, 21</value>
+  </data>
+  <data name="label12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 16</value>
+    <value>48, 13</value>
   </data>
   <data name="label12.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1671,10 +1811,13 @@
     <value>NoControl</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 25</value>
+    <value>4, 20</value>
+  </data>
+  <data name="label15.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 16</value>
+    <value>77, 13</value>
   </data>
   <data name="label15.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1698,10 +1841,13 @@
     <value>NoControl</value>
   </data>
   <data name="pbBackgroundColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 45</value>
+    <value>7, 37</value>
+  </data>
+  <data name="pbBackgroundColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="pbBackgroundColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 27</value>
+    <value>21, 22</value>
   </data>
   <data name="pbBackgroundColor.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -1725,10 +1871,13 @@
     <value>NoControl</value>
   </data>
   <data name="bSetBackgroundColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>61, 45</value>
+    <value>46, 37</value>
+  </data>
+  <data name="bSetBackgroundColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bSetBackgroundColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 30</value>
+    <value>66, 24</value>
   </data>
   <data name="bSetBackgroundColor.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -1740,7 +1889,7 @@
     <value>bSetBackgroundColor</value>
   </data>
   <data name="&gt;&gt;bSetBackgroundColor.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bSetBackgroundColor.Parent" xml:space="preserve">
     <value>exGroupBox1</value>
@@ -1755,10 +1904,13 @@
     <value>NoControl</value>
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 85</value>
+    <value>4, 69</value>
+  </data>
+  <data name="label16.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 16</value>
+    <value>113, 13</value>
   </data>
   <data name="label16.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1782,10 +1934,13 @@
     <value>NoControl</value>
   </data>
   <data name="pbForegroundColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 105</value>
+    <value>6, 85</value>
+  </data>
+  <data name="pbForegroundColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="pbForegroundColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 27</value>
+    <value>21, 22</value>
   </data>
   <data name="pbForegroundColor.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -1809,10 +1964,13 @@
     <value>NoControl</value>
   </data>
   <data name="bSetForegroundColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>61, 105</value>
+    <value>46, 85</value>
+  </data>
+  <data name="bSetForegroundColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bSetForegroundColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 30</value>
+    <value>66, 24</value>
   </data>
   <data name="bSetForegroundColor.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -1824,7 +1982,7 @@
     <value>bSetForegroundColor</value>
   </data>
   <data name="&gt;&gt;bSetForegroundColor.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bSetForegroundColor.Parent" xml:space="preserve">
     <value>exGroupBox1</value>
@@ -1839,10 +1997,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbBold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 141</value>
+    <value>7, 115</value>
+  </data>
+  <data name="cbBold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbBold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 20</value>
+    <value>57, 17</value>
   </data>
   <data name="cbBold.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1854,7 +2015,7 @@
     <value>cbBold</value>
   </data>
   <data name="&gt;&gt;cbBold.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbBold.Parent" xml:space="preserve">
     <value>exGroupBox1</value>
@@ -1863,10 +2024,16 @@
     <value>6</value>
   </data>
   <data name="exGroupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>370, 75</value>
+    <value>278, 61</value>
+  </data>
+  <data name="exGroupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="exGroupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="exGroupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>262, 167</value>
+    <value>196, 136</value>
   </data>
   <data name="exGroupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -1878,7 +2045,7 @@
     <value>exGroupBox1</value>
   </data>
   <data name="&gt;&gt;exGroupBox1.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;exGroupBox1.Parent" xml:space="preserve">
     <value>exGroupBox3</value>
@@ -1887,10 +2054,13 @@
     <value>3</value>
   </data>
   <data name="cbFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 46</value>
+    <value>8, 37</value>
+  </data>
+  <data name="cbFont.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>412, 23</value>
+    <value>310, 20</value>
   </data>
   <data name="cbFont.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1899,7 +2069,7 @@
     <value>cbFont</value>
   </data>
   <data name="&gt;&gt;cbFont.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbFont.Parent" xml:space="preserve">
     <value>exGroupBox3</value>
@@ -1914,10 +2084,13 @@
     <value>NoControl</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 75</value>
+    <value>7, 61</value>
+  </data>
+  <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 16</value>
+    <value>47, 13</value>
   </data>
   <data name="label11.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1937,14 +2110,14 @@
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="listSettings.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
   <data name="listSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 95</value>
+    <value>8, 77</value>
+  </data>
+  <data name="listSettings.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="listSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 244</value>
+    <value>266, 199</value>
   </data>
   <data name="listSettings.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1968,10 +2141,13 @@
     <value>NoControl</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 252</value>
+    <value>290, 205</value>
+  </data>
+  <data name="label13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 16</value>
+    <value>47, 13</value>
   </data>
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1995,10 +2171,13 @@
     <value>NoControl</value>
   </data>
   <data name="labelExample.Location" type="System.Drawing.Point, System.Drawing">
-    <value>388, 269</value>
+    <value>291, 219</value>
+  </data>
+  <data name="labelExample.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="labelExample.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 58</value>
+    <value>175, 48</value>
   </data>
   <data name="labelExample.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2022,10 +2201,16 @@
     <value>8</value>
   </data>
   <data name="exGroupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 168</value>
+    <value>8, 136</value>
+  </data>
+  <data name="exGroupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="exGroupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="exGroupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>647, 347</value>
+    <value>485, 282</value>
   </data>
   <data name="exGroupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -2037,7 +2222,7 @@
     <value>exGroupBox3</value>
   </data>
   <data name="&gt;&gt;exGroupBox3.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;exGroupBox3.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -2046,10 +2231,13 @@
     <value>10</value>
   </data>
   <data name="pFontsColors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 11</value>
+    <value>212, 9</value>
+  </data>
+  <data name="pFontsColors.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="pFontsColors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>670, 518</value>
+    <value>502, 421</value>
   </data>
   <data name="pFontsColors.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2067,10 +2255,13 @@
     <value>3</value>
   </data>
   <data name="pLogging.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 11</value>
+    <value>212, 9</value>
+  </data>
+  <data name="pLogging.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="pLogging.Size" type="System.Drawing.Size, System.Drawing">
-    <value>670, 518</value>
+    <value>502, 421</value>
   </data>
   <data name="pLogging.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2088,10 +2279,13 @@
     <value>4</value>
   </data>
   <data name="pPlaying.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 11</value>
+    <value>212, 9</value>
+  </data>
+  <data name="pPlaying.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="pPlaying.Size" type="System.Drawing.Size, System.Drawing">
-    <value>670, 518</value>
+    <value>502, 421</value>
   </data>
   <data name="pPlaying.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -2121,10 +2315,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbFitLastColumn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>244, 128</value>
+    <value>183, 104</value>
+  </data>
+  <data name="cbFitLastColumn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbFitLastColumn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 20</value>
+    <value>155, 17</value>
   </data>
   <data name="cbFitLastColumn.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -2136,7 +2333,7 @@
     <value>cbFitLastColumn</value>
   </data>
   <data name="&gt;&gt;cbFitLastColumn.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbFitLastColumn.Parent" xml:space="preserve">
     <value>pDesktop</value>
@@ -2151,10 +2348,13 @@
     <value>NoControl</value>
   </data>
   <data name="bColumnDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>573, 122</value>
+    <value>430, 99</value>
+  </data>
+  <data name="bColumnDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bColumnDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 30</value>
+    <value>56, 24</value>
   </data>
   <data name="bColumnDown.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -2166,7 +2366,7 @@
     <value>bColumnDown</value>
   </data>
   <data name="&gt;&gt;bColumnDown.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bColumnDown.Parent" xml:space="preserve">
     <value>pDesktop</value>
@@ -2181,10 +2381,13 @@
     <value>NoControl</value>
   </data>
   <data name="bColumnUp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>470, 122</value>
+    <value>352, 99</value>
+  </data>
+  <data name="bColumnUp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bColumnUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 30</value>
+    <value>56, 24</value>
   </data>
   <data name="bColumnUp.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -2196,7 +2399,7 @@
     <value>bColumnUp</value>
   </data>
   <data name="&gt;&gt;bColumnUp.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bColumnUp.Parent" xml:space="preserve">
     <value>pDesktop</value>
@@ -2211,10 +2414,13 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 132</value>
+    <value>7, 107</value>
+  </data>
+  <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 16</value>
+    <value>41, 13</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2244,7 +2450,7 @@
     <value>6</value>
   </data>
   <data name="nameDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>75</value>
+    <value>63</value>
   </data>
   <data name="visibleDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
     <value>Viditeľný</value>
@@ -2253,7 +2459,7 @@
     <value>6</value>
   </data>
   <data name="visibleDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>65</value>
+    <value>54</value>
   </data>
   <metadata name="MinWidth.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -2268,13 +2474,16 @@
     <value>666, 17</value>
   </metadata>
   <data name="dgvDesktopColums.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 158</value>
+    <value>7, 128</value>
+  </data>
+  <data name="dgvDesktopColums.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="dgvDesktopColums.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
   <data name="dgvDesktopColums.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 348</value>
+    <value>486, 283</value>
   </data>
   <data name="dgvDesktopColums.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2294,11 +2503,17 @@
   <data name="cboxDateTimeInStateRow.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="cboxDateTimeInStateRow.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="cboxDateTimeInStateRow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 79</value>
+    <value>8, 64</value>
+  </data>
+  <data name="cboxDateTimeInStateRow.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cboxDateTimeInStateRow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 20</value>
+    <value>209, 17</value>
   </data>
   <data name="cboxDateTimeInStateRow.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2310,7 +2525,7 @@
     <value>cboxDateTimeInStateRow</value>
   </data>
   <data name="&gt;&gt;cboxDateTimeInStateRow.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxDateTimeInStateRow.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2325,10 +2540,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbShowRowsHeader.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 52</value>
+    <value>176, 42</value>
+  </data>
+  <data name="cbShowRowsHeader.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbShowRowsHeader.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 20</value>
+    <value>211, 17</value>
   </data>
   <data name="cbShowRowsHeader.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2340,7 +2558,7 @@
     <value>cbShowRowsHeader</value>
   </data>
   <data name="&gt;&gt;cbShowRowsHeader.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbShowRowsHeader.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2355,10 +2573,13 @@
     <value>NoControl</value>
   </data>
   <data name="rbTS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>525, 25</value>
+    <value>394, 20</value>
+  </data>
+  <data name="rbTS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="rbTS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 20</value>
+    <value>88, 17</value>
   </data>
   <data name="rbTS.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2370,7 +2591,7 @@
     <value>rbTS</value>
   </data>
   <data name="&gt;&gt;rbTS.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbTS.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2385,10 +2606,13 @@
     <value>NoControl</value>
   </data>
   <data name="rbMS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>338, 25</value>
+    <value>254, 20</value>
+  </data>
+  <data name="rbMS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="rbMS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 20</value>
+    <value>94, 17</value>
   </data>
   <data name="rbMS.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2400,7 +2624,7 @@
     <value>rbMS</value>
   </data>
   <data name="&gt;&gt;rbMS.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbMS.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2415,10 +2639,13 @@
     <value>NoControl</value>
   </data>
   <data name="rbMSandTS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 25</value>
+    <value>80, 20</value>
+  </data>
+  <data name="rbMSandTS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="rbMSandTS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 20</value>
+    <value>129, 17</value>
   </data>
   <data name="rbMSandTS.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2430,7 +2657,7 @@
     <value>rbMSandTS</value>
   </data>
   <data name="&gt;&gt;rbMSandTS.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbMSandTS.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2445,10 +2672,13 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 27</value>
+    <value>9, 22</value>
+  </data>
+  <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 16</value>
+    <value>65, 13</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2475,10 +2705,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbShowStateRow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 52</value>
+    <value>8, 42</value>
+  </data>
+  <data name="cbShowStateRow.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbShowStateRow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 20</value>
+    <value>153, 17</value>
   </data>
   <data name="cbShowStateRow.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2490,7 +2723,7 @@
     <value>cbShowStateRow</value>
   </data>
   <data name="&gt;&gt;cbShowStateRow.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbShowStateRow.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2499,10 +2732,16 @@
     <value>6</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 3</value>
+    <value>7, 2</value>
+  </data>
+  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 107</value>
+    <value>486, 87</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2514,7 +2753,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
     <value>pDesktop</value>
@@ -2523,10 +2762,13 @@
     <value>5</value>
   </data>
   <data name="pDesktop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 11</value>
+    <value>212, 9</value>
+  </data>
+  <data name="pDesktop.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="pDesktop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>670, 518</value>
+    <value>502, 421</value>
   </data>
   <data name="pDesktop.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -2550,10 +2792,13 @@
     <value>NoControl</value>
   </data>
   <data name="lShortcutHelp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 489</value>
+    <value>8, 397</value>
+  </data>
+  <data name="lShortcutHelp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lShortcutHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 16</value>
+    <value>254, 13</value>
   </data>
   <data name="lShortcutHelp.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2631,13 +2876,16 @@
     <value>929, 17</value>
   </metadata>
   <data name="dgvShortcuts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 41</value>
+    <value>10, 33</value>
+  </data>
+  <data name="dgvShortcuts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="dgvShortcuts.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
   <data name="dgvShortcuts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>643, 433</value>
+    <value>482, 352</value>
   </data>
   <data name="dgvShortcuts.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2661,10 +2909,13 @@
     <value>NoControl</value>
   </data>
   <data name="bAllShortcutsSetDefault.Location" type="System.Drawing.Point, System.Drawing">
-    <value>564, 5</value>
+    <value>423, 4</value>
+  </data>
+  <data name="bAllShortcutsSetDefault.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bAllShortcutsSetDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 30</value>
+    <value>71, 24</value>
   </data>
   <data name="bAllShortcutsSetDefault.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2676,7 +2927,7 @@
     <value>bAllShortcutsSetDefault</value>
   </data>
   <data name="&gt;&gt;bAllShortcutsSetDefault.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bAllShortcutsSetDefault.Parent" xml:space="preserve">
     <value>pShortcuts</value>
@@ -2691,10 +2942,13 @@
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 18</value>
+    <value>8, 15</value>
+  </data>
+  <data name="label8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 16</value>
+    <value>97, 13</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2715,10 +2969,13 @@
     <value>3</value>
   </data>
   <data name="pShortcuts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 11</value>
+    <value>212, 9</value>
+  </data>
+  <data name="pShortcuts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="pShortcuts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>670, 518</value>
+    <value>502, 421</value>
   </data>
   <data name="pShortcuts.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -2738,11 +2995,17 @@
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 378</value>
+    <value>10, 307</value>
+  </data>
+  <data name="label18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 16</value>
+    <value>436, 13</value>
   </data>
   <data name="label18.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2763,10 +3026,13 @@
     <value>0</value>
   </data>
   <data name="cbArgRegister.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 198</value>
+    <value>8, 161</value>
+  </data>
+  <data name="cbArgRegister.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbArgRegister.Size" type="System.Drawing.Size, System.Drawing">
-    <value>298, 24</value>
+    <value>224, 21</value>
   </data>
   <data name="cbArgRegister.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2775,7 +3041,7 @@
     <value>cbArgRegister</value>
   </data>
   <data name="&gt;&gt;cbArgRegister.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbArgRegister.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -2786,11 +3052,17 @@
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 175</value>
+    <value>5, 142</value>
+  </data>
+  <data name="label19.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 16</value>
+    <value>96, 13</value>
   </data>
   <data name="label19.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2813,11 +3085,17 @@
   <data name="cboxArgExportTableTexts.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="cboxArgExportTableTexts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="cboxArgExportTableTexts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 140</value>
+    <value>8, 114</value>
+  </data>
+  <data name="cboxArgExportTableTexts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cboxArgExportTableTexts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>389, 20</value>
+    <value>315, 17</value>
   </data>
   <data name="cboxArgExportTableTexts.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2829,7 +3107,7 @@
     <value>cboxArgExportTableTexts</value>
   </data>
   <data name="&gt;&gt;cboxArgExportTableTexts.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgExportTableTexts.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -2840,11 +3118,17 @@
   <data name="cboxArgAsClient.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="cboxArgAsClient.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="cboxArgAsClient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 112</value>
+    <value>8, 91</value>
+  </data>
+  <data name="cboxArgAsClient.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cboxArgAsClient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 20</value>
+    <value>149, 17</value>
   </data>
   <data name="cboxArgAsClient.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2856,7 +3140,7 @@
     <value>cboxArgAsClient</value>
   </data>
   <data name="&gt;&gt;cboxArgAsClient.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgAsClient.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -2867,11 +3151,17 @@
   <data name="cboxArgExportHlasTexts.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="cboxArgExportHlasTexts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="cboxArgExportHlasTexts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 85</value>
+    <value>8, 69</value>
+  </data>
+  <data name="cboxArgExportHlasTexts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cboxArgExportHlasTexts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>346, 20</value>
+    <value>285, 17</value>
   </data>
   <data name="cboxArgExportHlasTexts.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2883,7 +3173,7 @@
     <value>cboxArgExportHlasTexts</value>
   </data>
   <data name="&gt;&gt;cboxArgExportHlasTexts.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgExportHlasTexts.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -2894,11 +3184,17 @@
   <data name="cboxArgMinimize.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="cboxArgMinimize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="cboxArgMinimize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 57</value>
+    <value>8, 46</value>
+  </data>
+  <data name="cboxArgMinimize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cboxArgMinimize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 20</value>
+    <value>222, 17</value>
   </data>
   <data name="cboxArgMinimize.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2910,7 +3206,7 @@
     <value>cboxArgMinimize</value>
   </data>
   <data name="&gt;&gt;cboxArgMinimize.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgMinimize.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -2921,11 +3217,17 @@
   <data name="cboxArgMoreInstances.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="cboxArgMoreInstances.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="cboxArgMoreInstances.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 31</value>
+    <value>8, 25</value>
+  </data>
+  <data name="cboxArgMoreInstances.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cboxArgMoreInstances.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 20</value>
+    <value>199, 17</value>
   </data>
   <data name="cboxArgMoreInstances.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2937,7 +3239,7 @@
     <value>cboxArgMoreInstances</value>
   </data>
   <data name="&gt;&gt;cboxArgMoreInstances.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgMoreInstances.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -2949,10 +3251,16 @@
     <value>False</value>
   </data>
   <data name="groupArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 123</value>
+    <value>10, 100</value>
+  </data>
+  <data name="groupArguments.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupArguments.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>646, 238</value>
+    <value>484, 193</value>
   </data>
   <data name="groupArguments.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2964,7 +3272,7 @@
     <value>groupArguments</value>
   </data>
   <data name="&gt;&gt;groupArguments.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupArguments.Parent" xml:space="preserve">
     <value>pStartup</value>
@@ -2975,11 +3283,17 @@
   <data name="cboxManualCmdArgs.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="cboxManualCmdArgs.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="cboxManualCmdArgs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 38</value>
+    <value>10, 31</value>
+  </data>
+  <data name="cboxManualCmdArgs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cboxManualCmdArgs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 20</value>
+    <value>251, 17</value>
   </data>
   <data name="cboxManualCmdArgs.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2991,7 +3305,7 @@
     <value>cboxManualCmdArgs</value>
   </data>
   <data name="&gt;&gt;cboxManualCmdArgs.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxManualCmdArgs.Parent" xml:space="preserve">
     <value>pStartup</value>
@@ -3000,10 +3314,13 @@
     <value>2</value>
   </data>
   <data name="tbCmdArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 88</value>
+    <value>11, 72</value>
+  </data>
+  <data name="tbCmdArguments.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbCmdArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>645, 22</value>
+    <value>485, 19</value>
   </data>
   <data name="tbCmdArguments.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3012,7 +3329,7 @@
     <value>tbCmdArguments</value>
   </data>
   <data name="&gt;&gt;tbCmdArguments.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbCmdArguments.Parent" xml:space="preserve">
     <value>pStartup</value>
@@ -3027,10 +3344,13 @@
     <value>NoControl</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 68</value>
+    <value>10, 55</value>
+  </data>
+  <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 16</value>
+    <value>155, 13</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3057,10 +3377,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbStartINISSAdmin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 12</value>
+    <value>10, 10</value>
+  </data>
+  <data name="cbStartINISSAdmin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbStartINISSAdmin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 20</value>
+    <value>147, 17</value>
   </data>
   <data name="cbStartINISSAdmin.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3072,7 +3395,7 @@
     <value>cbStartINISSAdmin</value>
   </data>
   <data name="&gt;&gt;cbStartINISSAdmin.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbStartINISSAdmin.Parent" xml:space="preserve">
     <value>pStartup</value>
@@ -3081,10 +3404,13 @@
     <value>5</value>
   </data>
   <data name="pStartup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 11</value>
+    <value>212, 9</value>
+  </data>
+  <data name="pStartup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="pStartup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>670, 518</value>
+    <value>502, 421</value>
   </data>
   <data name="pStartup.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3105,16 +3431,19 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>964, 575</value>
+    <value>723, 467</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Nastavenia programu</value>
@@ -3131,12 +3460,6 @@
   <data name="&gt;&gt;imagesMenu.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>nameDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;FontDescription.Name" xml:space="preserve">
     <value>FontDescription</value>
   </data>
@@ -3148,12 +3471,6 @@
   </data>
   <data name="&gt;&gt;Example.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;appFontBindingSource.Name" xml:space="preserve">
-    <value>appFontBindingSource</value>
-  </data>
-  <data name="&gt;&gt;appFontBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;deviceInformationBindingSource.Name" xml:space="preserve">
     <value>deviceInformationBindingSource</value>
@@ -3173,34 +3490,10 @@
   <data name="&gt;&gt;nameDataGridViewCheckBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;visibleDataGridViewCheckBoxColumn.Name" xml:space="preserve">
-    <value>visibleDataGridViewCheckBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;visibleDataGridViewCheckBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;MinWidth.Name" xml:space="preserve">
     <value>MinWidth</value>
   </data>
   <data name="&gt;&gt;MinWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;desktopColumnBindingSource.Name" xml:space="preserve">
-    <value>desktopColumnBindingSource</value>
-  </data>
-  <data name="&gt;&gt;desktopColumnBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>nameDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;shortcutDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>shortcutDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;shortcutDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;AssignShortcut.Name" xml:space="preserve">
@@ -3221,10 +3514,46 @@
   <data name="&gt;&gt;Default.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>nameDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;visibleDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>visibleDataGridViewCheckBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;visibleDataGridViewCheckBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>nameDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;shortcutDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>shortcutDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;shortcutDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;commandShortcutBindingSource.Name" xml:space="preserve">
     <value>commandShortcutBindingSource</value>
   </data>
   <data name="&gt;&gt;commandShortcutBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;desktopColumnBindingSource.Name" xml:space="preserve">
+    <value>desktopColumnBindingSource</value>
+  </data>
+  <data name="&gt;&gt;desktopColumnBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;appFontBindingSource.Name" xml:space="preserve">
+    <value>appFontBindingSource</value>
+  </data>
+  <data name="&gt;&gt;appFontBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

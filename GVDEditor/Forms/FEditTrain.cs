@@ -154,6 +154,16 @@ public partial class FEditTrain : Form
         set => base.Text = value;
     }
 
+    protected override CreateParams CreateParams
+    {
+        get
+        {
+            var handleParam = base.CreateParams;
+            handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+            return handleParam;
+        }
+    }
+
     private void InitializeData()
     {
         //initialization = true;

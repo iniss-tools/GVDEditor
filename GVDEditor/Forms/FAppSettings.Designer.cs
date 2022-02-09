@@ -86,14 +86,13 @@ namespace GVDEditor.Forms
             this.treeMenu = new System.Windows.Forms.TreeView();
             this.imagesMenu = new System.Windows.Forms.ImageList(this.components);
             this.pObecne = new System.Windows.Forms.Panel();
+            this.cbCheckUpdate = new ExControls.ExCheckBox();
             this.cbAutoVariant = new ExControls.ExCheckBox();
             this.cbDisableVariantCheck = new ExControls.ExCheckBox();
             this.pEnvironment = new System.Windows.Forms.Panel();
             this.dgvAppFonts = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FontDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Example = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appFontBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bAppFontDefault = new ExControls.ExButton();
             this.label5 = new System.Windows.Forms.Label();
             this.pLocalization = new System.Windows.Forms.Panel();
@@ -139,9 +138,7 @@ namespace GVDEditor.Forms
             this.label6 = new System.Windows.Forms.Label();
             this.dgvDesktopColums = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.visibleDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MinWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desktopColumnBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new ExControls.ExGroupBox();
             this.cboxDateTimeInStateRow = new ExControls.ExCheckBox();
             this.cbShowRowsHeader = new ExControls.ExCheckBox();
@@ -153,12 +150,9 @@ namespace GVDEditor.Forms
             this.pShortcuts = new System.Windows.Forms.Panel();
             this.lShortcutHelp = new System.Windows.Forms.Label();
             this.dgvShortcuts = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shortcutDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AssignShortcut = new System.Windows.Forms.DataGridViewButtonColumn();
             this.RemoveShortcut = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Default = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.commandShortcutBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bAllShortcutsSetDefault = new ExControls.ExButton();
             this.label8 = new System.Windows.Forms.Label();
             this.pStartup = new System.Windows.Forms.Panel();
@@ -175,11 +169,17 @@ namespace GVDEditor.Forms
             this.tbCmdArguments = new ExControls.ExTextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.cbStartINISSAdmin = new ExControls.ExCheckBox();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.visibleDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shortcutDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commandShortcutBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.desktopColumnBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.appFontBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nudWordPause)).BeginInit();
             this.pObecne.SuspendLayout();
             this.pEnvironment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppFonts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appFontBindingSource)).BeginInit();
             this.pLocalization.SuspendLayout();
             this.pFontsColors.SuspendLayout();
             this.exGroupBox2.SuspendLayout();
@@ -192,13 +192,14 @@ namespace GVDEditor.Forms
             ((System.ComponentModel.ISupportInitialize)(this.deviceInformationBindingSource)).BeginInit();
             this.pDesktop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDesktopColums)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.desktopColumnBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.pShortcuts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShortcuts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.commandShortcutBindingSource)).BeginInit();
             this.pStartup.SuspendLayout();
             this.groupArguments.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.commandShortcutBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.desktopColumnBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appFontBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bSave
@@ -465,6 +466,7 @@ namespace GVDEditor.Forms
             // 
             // pObecne
             // 
+            this.pObecne.Controls.Add(this.cbCheckUpdate);
             this.pObecne.Controls.Add(this.cbAutoVariant);
             this.pObecne.Controls.Add(this.cbDisableVariantCheck);
             this.pObecne.Controls.Add(this.cbClassicGUI);
@@ -472,6 +474,14 @@ namespace GVDEditor.Forms
             this.pObecne.Controls.Add(this.cbAutoTableText);
             resources.ApplyResources(this.pObecne, "pObecne");
             this.pObecne.Name = "pObecne";
+            // 
+            // cbCheckUpdate
+            // 
+            resources.ApplyResources(this.cbCheckUpdate, "cbCheckUpdate");
+            this.cbCheckUpdate.BoxBackColor = System.Drawing.Color.White;
+            this.cbCheckUpdate.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.cbCheckUpdate.Name = "cbCheckUpdate";
+            this.cbCheckUpdate.UseVisualStyleBackColor = true;
             // 
             // cbAutoVariant
             // 
@@ -517,14 +527,6 @@ namespace GVDEditor.Forms
             this.dgvAppFonts.RowTemplate.Height = 24;
             this.dgvAppFonts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAppFonts_CellDoubleClick);
             // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.Frozen = true;
-            resources.ApplyResources(this.nameDataGridViewTextBoxColumn, "nameDataGridViewTextBoxColumn");
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // FontDescription
             // 
             this.FontDescription.DataPropertyName = "FontDescription";
@@ -539,10 +541,6 @@ namespace GVDEditor.Forms
             resources.ApplyResources(this.Example, "Example");
             this.Example.Name = "Example";
             this.Example.ReadOnly = true;
-            // 
-            // appFontBindingSource
-            // 
-            this.appFontBindingSource.DataSource = typeof(ToolsCore.XML.AppFont);
             // 
             // bAppFontDefault
             // 
@@ -1023,22 +1021,12 @@ namespace GVDEditor.Forms
             this.nameDataGridViewCheckBoxColumn.Name = "nameDataGridViewCheckBoxColumn";
             this.nameDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
-            // visibleDataGridViewCheckBoxColumn
-            // 
-            this.visibleDataGridViewCheckBoxColumn.DataPropertyName = "Visible";
-            resources.ApplyResources(this.visibleDataGridViewCheckBoxColumn, "visibleDataGridViewCheckBoxColumn");
-            this.visibleDataGridViewCheckBoxColumn.Name = "visibleDataGridViewCheckBoxColumn";
-            // 
             // MinWidth
             // 
             this.MinWidth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.MinWidth.DataPropertyName = "MinWidth";
             resources.ApplyResources(this.MinWidth, "MinWidth");
             this.MinWidth.Name = "MinWidth";
-            // 
-            // desktopColumnBindingSource
-            // 
-            this.desktopColumnBindingSource.DataSource = typeof(ToolsCore.XML.DesktopColumn);
             // 
             // groupBox2
             // 
@@ -1142,20 +1130,6 @@ namespace GVDEditor.Forms
             this.dgvShortcuts.RowTemplate.Height = 24;
             this.dgvShortcuts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShortcuts_CellClick);
             // 
-            // nameDataGridViewTextBoxColumn1
-            // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            resources.ApplyResources(this.nameDataGridViewTextBoxColumn1, "nameDataGridViewTextBoxColumn1");
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // shortcutDataGridViewTextBoxColumn
-            // 
-            this.shortcutDataGridViewTextBoxColumn.DataPropertyName = "Shortcut";
-            resources.ApplyResources(this.shortcutDataGridViewTextBoxColumn, "shortcutDataGridViewTextBoxColumn");
-            this.shortcutDataGridViewTextBoxColumn.Name = "shortcutDataGridViewTextBoxColumn";
-            this.shortcutDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // AssignShortcut
             // 
             resources.ApplyResources(this.AssignShortcut, "AssignShortcut");
@@ -1180,10 +1154,6 @@ namespace GVDEditor.Forms
             this.Default.ReadOnly = true;
             this.Default.Text = "Pôvodné";
             this.Default.UseColumnTextForButtonValue = true;
-            // 
-            // commandShortcutBindingSource
-            // 
-            this.commandShortcutBindingSource.DataSource = typeof(ToolsCore.XML.CommandShortcut);
             // 
             // bAllShortcutsSetDefault
             // 
@@ -1354,6 +1324,46 @@ namespace GVDEditor.Forms
             this.cbStartINISSAdmin.Name = "cbStartINISSAdmin";
             this.cbStartINISSAdmin.UseVisualStyleBackColor = true;
             // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.Frozen = true;
+            resources.ApplyResources(this.nameDataGridViewTextBoxColumn, "nameDataGridViewTextBoxColumn");
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // visibleDataGridViewCheckBoxColumn
+            // 
+            this.visibleDataGridViewCheckBoxColumn.DataPropertyName = "Visible";
+            resources.ApplyResources(this.visibleDataGridViewCheckBoxColumn, "visibleDataGridViewCheckBoxColumn");
+            this.visibleDataGridViewCheckBoxColumn.Name = "visibleDataGridViewCheckBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            resources.ApplyResources(this.nameDataGridViewTextBoxColumn1, "nameDataGridViewTextBoxColumn1");
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // shortcutDataGridViewTextBoxColumn
+            // 
+            this.shortcutDataGridViewTextBoxColumn.DataPropertyName = "Shortcut";
+            resources.ApplyResources(this.shortcutDataGridViewTextBoxColumn, "shortcutDataGridViewTextBoxColumn");
+            this.shortcutDataGridViewTextBoxColumn.Name = "shortcutDataGridViewTextBoxColumn";
+            this.shortcutDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // commandShortcutBindingSource
+            // 
+            this.commandShortcutBindingSource.DataSource = typeof(ToolsCore.XML.CommandShortcut);
+            // 
+            // desktopColumnBindingSource
+            // 
+            this.desktopColumnBindingSource.DataSource = typeof(ToolsCore.XML.DesktopColumn);
+            // 
+            // appFontBindingSource
+            // 
+            this.appFontBindingSource.DataSource = typeof(ToolsCore.XML.AppFont);
+            // 
             // FAppSettings
             // 
             this.AcceptButton = this.bSave;
@@ -1387,7 +1397,6 @@ namespace GVDEditor.Forms
             this.pEnvironment.ResumeLayout(false);
             this.pEnvironment.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppFonts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appFontBindingSource)).EndInit();
             this.pLocalization.ResumeLayout(false);
             this.pLocalization.PerformLayout();
             this.pFontsColors.ResumeLayout(false);
@@ -1408,17 +1417,18 @@ namespace GVDEditor.Forms
             this.pDesktop.ResumeLayout(false);
             this.pDesktop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDesktopColums)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.desktopColumnBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.pShortcuts.ResumeLayout(false);
             this.pShortcuts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShortcuts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.commandShortcutBindingSource)).EndInit();
             this.pStartup.ResumeLayout(false);
             this.pStartup.PerformLayout();
             this.groupArguments.ResumeLayout(false);
             this.groupArguments.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.commandShortcutBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.desktopColumnBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appFontBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1534,5 +1544,6 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.Label label19;
         private ExComboBox cbArgRegister;
         private System.Windows.Forms.BindingSource deviceInformationBindingSource;
+        private ExCheckBox cbCheckUpdate;
     }
 }

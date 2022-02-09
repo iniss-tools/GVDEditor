@@ -8,8 +8,8 @@ namespace GVDEditor.Tools;
 /// </summary>
 public class ELISParser
 {
-    private const string FORMAT_EX = "Chyba v súbore na riadku {0}. ";
-    private const int NOT_SET = -2;
+    private const string FormatEx = "Chyba v súbore na riadku {0}. ";
+    private const int NotSet = -2;
 
     /// <summary>Initializes a new instance of the <see cref="ELISParser" /> class.</summary>
     public ELISParser(string path, List<Train> definedTrains, List<TrainType> trainTypes, List<Operator> operators, GVDInfo gvd,
@@ -44,7 +44,7 @@ public class ELISParser
     public List<Operator> Operators { get; }
 
     /// <summary>
-    ///     Informacie o aktualnom grafikone.
+    ///     Informácie o aktualnom grafikone.
     /// </summary>
     public GVDInfo GVD { get; }
 
@@ -124,7 +124,7 @@ public class ELISParser
             for (var i = 0; i < trains.Count; i++)
             {
                 var t1 = trains[i];
-                if (t1.Variant != NOT_SET)
+                if (t1.Variant != NotSet)
                     continue;
 
                 var variants = trains.Where((t2, j) => i != j && Train.IsSameVariant(t1, t2)).ToList();
@@ -184,7 +184,7 @@ public class ELISParser
                 train.KoniecPlatnosti = Utils.ParseDateAlts(threeParts[2]);
 
                 //spracovanie variant
-                train.Variant = NOT_SET;
+                train.Variant = NotSet;
 
                 //stanice vlaku
                 Station station = null;
@@ -364,7 +364,7 @@ public class ELISParser
             }
             catch (Exception e)
             {
-                throw new FormatException(string.Format(FORMAT_EX, riadok) + e.Message, e);
+                throw new FormatException(string.Format(FormatEx, riadok) + e.Message, e);
             }
     }
 
@@ -404,7 +404,7 @@ public class ELISParser
                 train.KoniecPlatnosti = Utils.ParseDateAlts(row[count - 1]);
 
                 //spracovanie variant
-                train.Variant = NOT_SET;
+                train.Variant = NotSet;
 
                 //preskocenie
                 file.ReadLine();
@@ -573,7 +573,7 @@ public class ELISParser
             }
             catch (Exception e)
             {
-                throw new FormatException(string.Format(FORMAT_EX, riadok) + e.Message, e);
+                throw new FormatException(string.Format(FormatEx, riadok) + e.Message, e);
             }
     }
 

@@ -16,10 +16,16 @@ public class GVDEditorConfig : Config
     public bool AutoVariant;
 
     /// <summary>
-    ///     Povoli/zakaze kontrolovanie spravnosti zadanej varianty vlaku.
+    ///     Povoli/zakaze kontrolovanie ci je aktualizacia programu dostupna.
     /// </summary>
     [XmlElement("DisableVariantChk"), DefaultValue(false)]
     public bool DisableVariantCheck;
+
+    /// <summary>
+    ///     Povolit pouzivanie automatickej spravy variant vlaku.
+    /// </summary>
+    [XmlElement("CheckUpdate"), DefaultValue(true)]
+    public bool CheckUpdate = true;
 
     /// <summary>
     ///     Automaticky generovat texty do tabul pri ukladani do suborov.

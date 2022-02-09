@@ -55,6 +55,9 @@ public sealed class TablePhysical : ITable
     /// </summary>
     public string Comment { get; set; }
 
+    /// <inheritdoc/>
+    public string TypeName => "Fyzická tabuľa";
+
     /// <inheritdoc />
     public override string ToString() => Name;
 }

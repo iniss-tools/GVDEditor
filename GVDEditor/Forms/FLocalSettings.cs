@@ -10,67 +10,10 @@ namespace GVDEditor.Forms;
 /// </summary>
 public partial class FLocalSettings : Form
 {
-    /// <summary>
-    ///     Fyzické tabule v GVD.
-    /// </summary>
-    public static BindingList<TablePhysical> Physicals;
+    private readonly bool _openTabTabEditor;
 
     /// <summary>
-    ///     Katalogové tabule v GVD.
-    /// </summary>
-    public static BindingList<TableCatalog> Catalogs;
-
-    /// <summary>
-    ///     Logické tabule v GVD.
-    /// </summary>
-    public static BindingList<TableLogical> Logicals;
-
-    /// <summary>
-    ///     TabTabs v GVD.
-    /// </summary>
-    public static BindingList<TableTabTab> TabTabs;
-
-    /// <summary>
-    ///     Texty do tabúľ.
-    /// </summary>
-    public static BindingList<TableText> TTexts;
-
-    /// <summary>
-    ///     Písma do tabúľ.
-    /// </summary>
-    public static BindingList<TableFont> TFonts;
-
-    /// <summary>
-    ///     Typy písiem.
-    /// </summary>
-    public static readonly BindingList<TableFontType> FontsTypes = new(TableFontType.GetValues());
-
-    /// <summary>
-    ///     Stanice dostupne zo súboru STANICE.TXT.
-    /// </summary>
-    public readonly BindingList<Station> CustomStations;
-
-    private readonly Color _defaultBorderColor;
-
-    /// <summary>
-    ///     Dopravcovia v GVD.
-    /// </summary>
-    public readonly BindingList<Operator> Dopravcovia;
-
-    /// <summary>
-    ///     Kolaje v GVD.
-    /// </summary>
-    public readonly BindingList<Track> Kolaje;
-
-    /// <summary>
-    ///     Nastupistia v GVD.
-    /// </summary>
-    public readonly BindingList<Platform> Nastupistia;
-
-    private readonly bool openTabTabEditor;
-
-    /// <summary>
-    ///     Tento priecinok.
+    ///     Tento priečinok.
     /// </summary>
     public readonly GVDDirectory ThisDir;
 
@@ -79,8 +22,10 @@ public partial class FLocalSettings : Form
     /// </summary>
     public string FontDir;
 
+    private readonly Color _defaultBorderColor;
+
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FLocalSettings"/>.
+    ///     Vytvori novy formulár typu <see cref="FLocalSettings"/>.
     /// </summary>
     /// <param name="dir">Aktualny priecinok s grafikonom.</param>
     /// <param name="openIndex">Index TabPage, ktory sa ma otvorit po otvoreni dialogu.</param>
@@ -93,19 +38,6 @@ public partial class FLocalSettings : Form
         _defaultBorderColor = nudFontID.BorderColor;
 
         ThisDir = dir;
-
-        Dopravcovia = new BindingList<Operator>(GlobData.Operators);
-        CustomStations = new BindingList<Station>(GlobData.CustomStations);
-
-        Nastupistia = new BindingList<Platform>(GlobData.Platforms);
-        Kolaje = new BindingList<Track>(GlobData.Tracks);
-
-        Physicals = new BindingList<TablePhysical>(GlobData.TablePhysicals);
-        Catalogs = new BindingList<TableCatalog>(GlobData.TableCatalogs);
-        Logicals = new BindingList<TableLogical>(GlobData.TableLogicals);
-        TabTabs = new BindingList<TableTabTab>(GlobData.TabTabs);
-        TTexts = new BindingList<TableText>(GlobData.TableTexts);
-        TFonts = new BindingList<TableFont>(GlobData.TableFonts);
 
         tbDir.Text = dir.Dir.FullPath;
 
@@ -131,75 +63,76 @@ public partial class FLocalSettings : Form
 
         tbDirName.Text = dir.Dir.DirName;
 
-        listDopravcovia.DataSource = Dopravcovia;
+        listDopravcovia.DataSource = GlobData.Operators;
 
-        listNastupistia.DataSource = Nastupistia;
-        listKolaje.DataSource = Kolaje;
-        cbNastupistia.DataSource = Nastupistia;
+        listNastupistia.DataSource = GlobData.Platforms;
+        listKolaje.DataSource = GlobData.Tracks;
+        cbNastupistia.DataSource = GlobData.Platforms;
 
-        foreach (var logical in Logicals) clbKolajTables.Items.Add(logical);
-        cbFontType.DataSource = FontsTypes;
+        foreach (var logical in GlobData.TableLogicals) clbKolajTables.Items.Add(logical);
+        cbFontType.DataSource = TableFontType.GetValues();
 
-        listFyzTabule.DataSource = Physicals;
-        listLogTabule.DataSource = Logicals;
-        listKatTabule.DataSource = Catalogs;
-        listTabTabs.DataSource = TabTabs;
-        listTexty.DataSource = TTexts;
-        listFonts.DataSource = TFonts;
+        listFyzTabule.DataSource = GlobData.TablePhysicals;
+        listLogTabule.DataSource = GlobData.TableLogicals;
+        listKatTabule.DataSource = GlobData.TableCatalogs;
+        listTabTabs.DataSource = GlobData.TabTabs;
+        listTexty.DataSource = GlobData.TableTexts;
+        listFonts.DataSource = GlobData.TableFonts;
 
-        listCustomStations.DataSource = CustomStations;
+        listCustomStations.DataSource = GlobData.CustomStations;
 
         FontDir = Utils.ParseStringOrDefault(GlobData.TableFontDir);
         tbFontDir.Text = Utils.ParseStringOrDefault(GlobData.TableFontDir);
 
-        if (Dopravcovia.Count == 0)
+        if (GlobData.Operators.Count == 0)
         {
             bDopravcaEdit.Enabled = false;
             bDopravcaDelete.Enabled = false;
         }
 
-        if (Nastupistia.Count == 0)
+        if (GlobData.Platforms.Count == 0)
         {
             bNastEdit.Enabled = false;
             bNastDelete.Enabled = false;
         }
 
-        if (Kolaje.Count == 0)
+        if (GlobData.Tracks.Count == 0)
         {
             bKolajEdit.Enabled = false;
             bKolajDelete.Enabled = false;
         }
 
-        if (Physicals.Count == 0)
+        if (GlobData.TablePhysicals.Count == 0)
         {
             bFyzTabEdit.Enabled = false;
             bFyzTabCopy.Enabled = false;
             bFyzTabDelete.Enabled = false;
         }
 
-        if (Logicals.Count == 0)
+        if (GlobData.TableLogicals.Count == 0)
         {
             bLogTabEdit.Enabled = false;
             bLogTabCopy.Enabled = false;
             bLogTabDelete.Enabled = false;
         }
 
-        if (Catalogs.Count == 0)
+        if (GlobData.TableCatalogs.Count == 0)
         {
             bKatTabEdit.Enabled = false;
             bKatTabCopy.Enabled = false;
             bKatTabDelete.Enabled = false;
         }
 
-        if (TabTabs.Count == 0) bTabTabDelete.Enabled = false;
+        if (GlobData.TabTabs.Count == 0) 
+            bTabTabDelete.Enabled = false;
 
-        if (TFonts.Count == 0)
+        if (GlobData.TableFonts.Count == 0)
         {
             bFontEdit.Enabled = false;
             bFontDelete.Enabled = false;
         }
 
-        if (CustomStations.Count == 0)
+        if (GlobData.CustomStations.Count == 0)
         {
             bCStationEdit.Enabled = false;
             bCStationDelete.Enabled = false;
@@ -210,7 +143,7 @@ public partial class FLocalSettings : Form
             if (openIndex == -2)
             {
                 tabControl.SelectTab(8);
-                openTabTabEditor = true;
+                _openTabTabEditor = true;
             }
             else
             {
@@ -336,15 +269,15 @@ public partial class FLocalSettings : Form
 
     private void bDopravcaAdd_Click(object sender, EventArgs e)
     {
-        var dopravca = new Operator(Dopravcovia.Count, tbDopravca.Text);
-        foreach (var dop in Dopravcovia)
+        var dopravca = new Operator(GlobData.Operators.Count, tbDopravca.Text);
+        foreach (var dop in GlobData.Operators)
             if (dop.Name == dopravca.Name)
             {
                 Utils.ShowError(Resources.FLocalSettings_Zadaný_dopravca_už_existuje);
                 return;
             }
 
-        Dopravcovia.Add(dopravca);
+        GlobData.Operators.Add(dopravca);
 
         bDopravcaEdit.Enabled = true;
         bDopravcaDelete.Enabled = true;
@@ -354,10 +287,10 @@ public partial class FLocalSettings : Form
     {
         if (listDopravcovia.SelectedIndex != -1)
         {
-            var dopravca = Dopravcovia[listDopravcovia.SelectedIndex];
+            var dopravca = GlobData.Operators[listDopravcovia.SelectedIndex];
             dopravca.Name = tbDopravca.Text;
             var i = 0;
-            foreach (var test in Dopravcovia)
+            foreach (var test in GlobData.Operators)
             {
                 if (dopravca.Name == test.Name && i != listDopravcovia.SelectedIndex)
                 {
@@ -375,14 +308,14 @@ public partial class FLocalSettings : Form
         if (listDopravcovia.SelectedIndex != -1)
         {
             var index = listDopravcovia.SelectedIndex;
-            var op = Dopravcovia[index];
+            var op = GlobData.Operators[index];
             foreach (var train in GlobData.Trains)
                 if (train.Operator == op)
                     train.Operator = Operator.None;
 
-            Dopravcovia.RemoveAt(index);
+            GlobData.Operators.RemoveAt(index);
 
-            if (Dopravcovia.Count == 0)
+            if (GlobData.Operators.Count == 0)
             {
                 bDopravcaEdit.Enabled = false;
                 bDopravcaDelete.Enabled = false;
@@ -421,14 +354,14 @@ public partial class FLocalSettings : Form
     private void bNastAdd_Click(object sender, EventArgs e)
     {
         var nastupiste = new Platform(tbNastOznacenie.Text, tbNastFullName.Text, tbNastSound.Text);
-        foreach (var test in Nastupistia)
+        foreach (var test in GlobData.Platforms)
             if (nastupiste.EqualsKeys(test))
             {
                 Utils.ShowError(Resources.FLocalSettings_Zadaný_kľúč_nástupišťa_už_existuje);
                 return;
             }
 
-        Nastupistia.Add(nastupiste);
+        GlobData.Platforms.Add(nastupiste);
 
         bNastEdit.Enabled = true;
         bNastDelete.Enabled = true;
@@ -445,19 +378,19 @@ public partial class FLocalSettings : Form
                 return;
             }
 
-            for (var i = 0; i < Nastupistia.Count; i++)
-                if (tbNastOznacenie.Text == Nastupistia[i].Key && i != listNastupistia.SelectedIndex)
+            for (var i = 0; i < GlobData.Platforms.Count; i++)
+                if (tbNastOznacenie.Text == GlobData.Platforms[i].Key && i != listNastupistia.SelectedIndex)
                 {
                     Utils.ShowError(Resources.FLocalSettings_Zadaný_kľúč_nástupišťa_už_existuje);
                     return;
                 }
 
-            var platform = Nastupistia[listNastupistia.SelectedIndex];
+            var platform = GlobData.Platforms[listNastupistia.SelectedIndex];
             platform.Key = tbNastOznacenie.Text;
             platform.FullName = tbNastFullName.Text;
             platform.SoundName = tbNastSound.Text;
 
-            Nastupistia.ResetBindings();
+            GlobData.Platforms.ResetBindings();
         }
     }
 
@@ -468,9 +401,9 @@ public partial class FLocalSettings : Form
             var delete = true;
             var where = " ";
             var index = listNastupistia.SelectedIndex;
-            var nast = Nastupistia[index];
+            var nast = GlobData.Platforms[index];
 
-            foreach (var tr in Kolaje)
+            foreach (var tr in GlobData.Tracks)
                 if (tr.Platform == nast)
                 {
                     delete = false;
@@ -480,9 +413,9 @@ public partial class FLocalSettings : Form
 
             if (delete)
             {
-                Nastupistia.RemoveAt(index);
+                GlobData.Platforms.RemoveAt(index);
 
-                if (Nastupistia.Count == 0)
+                if (GlobData.Platforms.Count == 0)
                 {
                     bNastEdit.Enabled = false;
                     bNastDelete.Enabled = false;
@@ -518,7 +451,7 @@ public partial class FLocalSettings : Form
             cbNastupistia.SelectedItem = kolaj.Platform;
 
             if (clbKolajTables.Items.Count != 0)
-                for (var i = 0; i < Logicals.Count; i++)
+                for (var i = 0; i < GlobData.TableLogicals.Count; i++)
                     clbKolajTables.SetItemChecked(i, false);
 
             foreach (var table in kolaj.Tables)
@@ -548,7 +481,7 @@ public partial class FLocalSettings : Form
             Platform = (Platform)cbNastupistia.SelectedItem
         };
 
-        foreach (var test in Kolaje)
+        foreach (var test in GlobData.Tracks)
             if (track.EqualsKeys(test))
             {
                 Utils.ShowError(Resources.FLocalSettings_Zadaný_kľúč_koľaje_už_existuje);
@@ -558,7 +491,7 @@ public partial class FLocalSettings : Form
         foreach (var item in clbKolajTables.CheckedItems) 
             track.Tables.Add(item as TableLogical);
 
-        Kolaje.Add(track);
+        GlobData.Tracks.Add(track);
 
         bKolajEdit.Enabled = true;
         bKolajDelete.Enabled = true;
@@ -568,21 +501,20 @@ public partial class FLocalSettings : Form
     {
         if (listKolaje.SelectedIndex != -1)
         {
-            if (string.IsNullOrEmpty(tbKolajOznacenie.Text) || string.IsNullOrEmpty(tbKolajFullName.Text) ||
-                string.IsNullOrEmpty(tbKolajSound.Text))
+            if (string.IsNullOrEmpty(tbKolajOznacenie.Text) || string.IsNullOrEmpty(tbKolajFullName.Text) || string.IsNullOrEmpty(tbKolajSound.Text))
             {
                 Utils.ShowError(Resources.FLocalSettings_Všetky_parametre_sú_povinné);
                 return;
             }
 
-            for (var i = 0; i < Kolaje.Count; i++)
-                if (tbKolajOznacenie.Text == Kolaje[i].Key && i != listKolaje.SelectedIndex)
+            for (var i = 0; i < GlobData.Tracks.Count; i++)
+                if (tbKolajOznacenie.Text == GlobData.Tracks[i].Key && i != listKolaje.SelectedIndex)
                 {
                     Utils.ShowError(Resources.FLocalSettings_Zadaný_kľúč_koľaje_už_existuje);
                     return;
                 }
 
-            var track = Kolaje[listKolaje.SelectedIndex];
+            var track = GlobData.Tracks[listKolaje.SelectedIndex];
             track.Key = tbKolajOznacenie.Text;
             track.FullName = tbKolajFullName.Text;
             track.SoundName = tbKolajSound.Text;
@@ -592,7 +524,7 @@ public partial class FLocalSettings : Form
             foreach (var item in clbKolajTables.CheckedItems) 
                 track.Tables.Add(item as TableLogical);
 
-            Kolaje.ResetBindings();
+            GlobData.Tracks.ResetBindings();
         }
     }
 
@@ -601,14 +533,14 @@ public partial class FLocalSettings : Form
         if (listKolaje.SelectedIndex != -1)
         {
             var index = listKolaje.SelectedIndex;
-            var kolaj = Kolaje[index];
+            var kolaj = GlobData.Tracks[index];
             foreach (var train in GlobData.Trains)
                 if (train.Track == kolaj)
                     train.Track = Track.None;
 
-            Kolaje.RemoveAt(index);
+            GlobData.Tracks.RemoveAt(index);
 
-            if (Kolaje.Count == 0)
+            if (GlobData.Tracks.Count == 0)
             {
                 bKolajEdit.Enabled = false;
                 bKolajDelete.Enabled = false;
@@ -618,11 +550,11 @@ public partial class FLocalSettings : Form
 
     private void bFyzTabAdd_Click(object sender, EventArgs e)
     {
-        var eptf = new FTablePhysical(new TablePhysical(), Catalogs);
+        var eptf = new FTablePhysical(new TablePhysical(), GlobData.TableCatalogs);
         var result = eptf.ShowDialog();
         if (result == DialogResult.OK)
         {
-            Physicals.Add(eptf.ThisTable);
+            GlobData.TablePhysicals.Add(eptf.ThisTable);
 
             bFyzTabEdit.Enabled = true;
             bFyzTabCopy.Enabled = true;
@@ -634,9 +566,9 @@ public partial class FLocalSettings : Form
     {
         if (listFyzTabule.SelectedIndex != -1)
         {
-            var eptf = new FTablePhysical(Physicals[listFyzTabule.SelectedIndex], Catalogs, true);
+            var eptf = new FTablePhysical(GlobData.TablePhysicals[listFyzTabule.SelectedIndex], GlobData.TableCatalogs, true);
             var result = eptf.ShowDialog();
-            if (result == DialogResult.OK) Physicals.Add(eptf.ThisTable);
+            if (result == DialogResult.OK) GlobData.TablePhysicals.Add(eptf.ThisTable);
         }
     }
 
@@ -644,9 +576,9 @@ public partial class FLocalSettings : Form
     {
         if (listFyzTabule.SelectedIndex != -1)
         {
-            var eptf = new FTablePhysical(Physicals[listFyzTabule.SelectedIndex], Catalogs);
+            var eptf = new FTablePhysical(GlobData.TablePhysicals[listFyzTabule.SelectedIndex], GlobData.TableCatalogs);
             var result = eptf.ShowDialog();
-            if (result == DialogResult.OK) Physicals.ResetBindings();
+            if (result == DialogResult.OK) GlobData.TablePhysicals.ResetBindings();
         }
     }
 
@@ -657,9 +589,9 @@ public partial class FLocalSettings : Form
             var delete = true;
             var where = " ";
             var index = listFyzTabule.SelectedIndex;
-            var tp = Physicals[index];
+            var tp = GlobData.TablePhysicals[index];
 
-            foreach (var tl in Logicals)
+            foreach (var tl in GlobData.TableLogicals)
             {
                 foreach (var trecord in tl.Records)
                 {
@@ -681,9 +613,9 @@ public partial class FLocalSettings : Form
 
             if (delete)
             {
-                Physicals.RemoveAt(index);
+                GlobData.TablePhysicals.RemoveAt(index);
 
-                if (Physicals.Count == 0)
+                if (GlobData.TablePhysicals.Count == 0)
                 {
                     bFyzTabEdit.Enabled = false;
                     bFyzTabCopy.Enabled = false;
@@ -699,11 +631,11 @@ public partial class FLocalSettings : Form
 
     private void bLogTabAdd_Click(object sender, EventArgs e)
     {
-        var eltf = new FTableLogical(new TableLogical(), Physicals.ToList());
+        var eltf = new FTableLogical(new TableLogical(), GlobData.TablePhysicals);
         var result = eltf.ShowDialog();
         if (result == DialogResult.OK)
         {
-            Logicals.Add(eltf.ThisTable);
+            GlobData.TableLogicals.Add(eltf.ThisTable);
 
             bLogTabEdit.Enabled = true;
             bLogTabCopy.Enabled = true;
@@ -715,9 +647,9 @@ public partial class FLocalSettings : Form
     {
         if (listLogTabule.SelectedIndex != -1)
         {
-            var eltf = new FTableLogical(Logicals[listLogTabule.SelectedIndex], Physicals.ToList(), true);
+            var eltf = new FTableLogical(GlobData.TableLogicals[listLogTabule.SelectedIndex], GlobData.TablePhysicals, true);
             var result = eltf.ShowDialog();
-            if (result == DialogResult.OK) Logicals.Add(eltf.ThisTable);
+            if (result == DialogResult.OK) GlobData.TableLogicals.Add(eltf.ThisTable);
         }
     }
 
@@ -725,9 +657,9 @@ public partial class FLocalSettings : Form
     {
         if (listLogTabule.SelectedIndex != -1)
         {
-            var eltf = new FTableLogical(Logicals[listLogTabule.SelectedIndex], Physicals.ToList());
+            var eltf = new FTableLogical(GlobData.TableLogicals[listLogTabule.SelectedIndex], GlobData.TablePhysicals);
             var result = eltf.ShowDialog();
-            if (result == DialogResult.OK) Logicals.ResetBindings();
+            if (result == DialogResult.OK) GlobData.TableLogicals.ResetBindings();
         }
     }
 
@@ -738,9 +670,9 @@ public partial class FLocalSettings : Form
             var delete = true;
             var where = " ";
             var index = listLogTabule.SelectedIndex;
-            var tlog = Logicals[index];
+            var tlog = GlobData.TableLogicals[index];
 
-            foreach (var tr in Kolaje)
+            foreach (var tr in GlobData.Tracks)
             {
                 foreach (var logical in tr.Tables)
                     if (logical == tlog)
@@ -756,9 +688,9 @@ public partial class FLocalSettings : Form
 
             if (delete)
             {
-                Logicals.RemoveAt(index);
+                GlobData.TableLogicals.RemoveAt(index);
 
-                if (Logicals.Count == 0)
+                if (GlobData.TableLogicals.Count == 0)
                 {
                     bLogTabEdit.Enabled = false;
                     bLogTabCopy.Enabled = false;
@@ -774,11 +706,11 @@ public partial class FLocalSettings : Form
 
     private void bKatTabAdd_Click(object sender, EventArgs e)
     {
-        var ectf = new FTableCatalog(new TableCatalog(), TabTabs.ToList());
+        var ectf = new FTableCatalog(new TableCatalog(), GlobData.TabTabs.ToList());
         var result = ectf.ShowDialog();
         if (result == DialogResult.OK)
         {
-            Catalogs.Add(ectf.ThisTable);
+            GlobData.TableCatalogs.Add(ectf.ThisTable);
 
             bKatTabEdit.Enabled = true;
             bKatTabCopy.Enabled = true;
@@ -790,9 +722,9 @@ public partial class FLocalSettings : Form
     {
         if (listKatTabule.SelectedIndex != -1)
         {
-            var ectf = new FTableCatalog(Catalogs[listKatTabule.SelectedIndex], TabTabs.ToList(), true);
+            var ectf = new FTableCatalog(GlobData.TableCatalogs[listKatTabule.SelectedIndex], GlobData.TabTabs, true);
             var result = ectf.ShowDialog();
-            if (result == DialogResult.OK) Catalogs.Add(ectf.ThisTable);
+            if (result == DialogResult.OK) GlobData.TableCatalogs.Add(ectf.ThisTable);
         }
     }
 
@@ -800,9 +732,9 @@ public partial class FLocalSettings : Form
     {
         if (listKatTabule.SelectedIndex != -1)
         {
-            var ectf = new FTableCatalog(Catalogs[listKatTabule.SelectedIndex], TabTabs.ToList());
+            var ectf = new FTableCatalog(GlobData.TableCatalogs[listKatTabule.SelectedIndex], GlobData.TabTabs);
             var result = ectf.ShowDialog();
-            if (result == DialogResult.OK) Catalogs.ResetBindings();
+            if (result == DialogResult.OK) GlobData.TableCatalogs.ResetBindings();
         }
     }
 
@@ -813,9 +745,9 @@ public partial class FLocalSettings : Form
             var delete = true;
             var where = " ";
             var index = listKatTabule.SelectedIndex;
-            var tcat = Catalogs[index];
+            var tcat = GlobData.TableCatalogs[index];
 
-            foreach (var ph in Physicals)
+            foreach (var ph in GlobData.TablePhysicals)
                 if (ph.TableCatalog == tcat)
                 {
                     delete = false;
@@ -824,7 +756,7 @@ public partial class FLocalSettings : Form
                 }
 
             if (delete)
-                foreach (var tt in TTexts)
+                foreach (var tt in GlobData.TableTexts)
                 {
                     foreach (var realization in tt.Realizations)
                         if (realization.Table == tcat)
@@ -840,9 +772,9 @@ public partial class FLocalSettings : Form
 
             if (delete)
             {
-                Catalogs.RemoveAt(listKatTabule.SelectedIndex);
+                GlobData.TableCatalogs.RemoveAt(listKatTabule.SelectedIndex);
 
-                if (Catalogs.Count == 0)
+                if (GlobData.TableCatalogs.Count == 0)
                 {
                     bKatTabEdit.Enabled = false;
                     bKatTabCopy.Enabled = false;
@@ -862,12 +794,12 @@ public partial class FLocalSettings : Form
         var result = ettf.ShowDialog();
         if (result == DialogResult.OK)
         {
-            TabTabs.Clear();
-            foreach (var doc in ettf.documents) TabTabs.Add(doc.TabTab);
-            TabTabs.ResetBindings();
+            GlobData.TabTabs.Clear();
+            foreach (var doc in ettf.documents) GlobData.TabTabs.Add(doc.TabTab);
+            GlobData.TabTabs.ResetBindings();
         }
 
-        if (TabTabs.Count == 0) bTabTabDelete.Enabled = false;
+        if (GlobData.TabTabs.Count == 0) bTabTabDelete.Enabled = false;
     }
 
     private void bTabTabDelete_Click(object sender, EventArgs e)
@@ -877,9 +809,9 @@ public partial class FLocalSettings : Form
             var delete = true;
             var where = " ";
             var index = listLogTabule.SelectedIndex;
-            var tab = TabTabs[index];
+            var tab = GlobData.TabTabs[index];
 
-            foreach (var tc in Catalogs)
+            foreach (var tc in GlobData.TableCatalogs)
             {
                 foreach (var ti in tc.Items)
                 {
@@ -904,10 +836,9 @@ public partial class FLocalSettings : Form
 
             if (delete)
             {
-                TabTabs.RemoveAt(listTabTabs.SelectedIndex);
+                GlobData.TabTabs.RemoveAt(listTabTabs.SelectedIndex);
 
-                if (TabTabs.Count == 0)
-                    //bTabTabEdit.Enabled = false;
+                if (GlobData.TabTabs.Count == 0)
                     bTabTabDelete.Enabled = false;
             }
             else
@@ -919,11 +850,11 @@ public partial class FLocalSettings : Form
 
     private void bTextAdd_Click(object sender, EventArgs e)
     {
-        var ettf = new FTableText(new TableText(), Catalogs.ToList(), ThisDir.GVD, -1);
+        var ettf = new FTableText(new TableText(), GlobData.TableCatalogs, ThisDir.GVD, -1);
         var result = ettf.ShowDialog();
         if (result == DialogResult.OK)
         {
-            TTexts.Add(ettf.ThisTableText);
+            GlobData.TableTexts.Add(ettf.ThisTableText);
 
             bTextEdit.Enabled = true;
             bTextDelete.Enabled = true;
@@ -935,12 +866,12 @@ public partial class FLocalSettings : Form
         if (listTexty.SelectedIndex != -1)
         {
             var index = listTexty.SelectedIndex;
-            var ettf = new FTableText(TTexts[index], Catalogs.ToList(), ThisDir.GVD, index);
+            var ettf = new FTableText(GlobData.TableTexts[index], GlobData.TableCatalogs, ThisDir.GVD, index);
             var result = ettf.ShowDialog();
             if (result == DialogResult.OK)
             {
-                TTexts.RemoveAt(index);
-                TTexts.Insert(index, ettf.ThisTableText);
+                GlobData.TableTexts.RemoveAt(index);
+                GlobData.TableTexts.Insert(index, ettf.ThisTableText);
                 listTexty.SelectedIndex = index;
             }
         }
@@ -948,9 +879,9 @@ public partial class FLocalSettings : Form
 
     private void bTextDelete_Click(object sender, EventArgs e)
     {
-        if (listTexty.SelectedIndex != -1) TTexts.RemoveAt(listTexty.SelectedIndex);
+        if (listTexty.SelectedIndex != -1) GlobData.TableTexts.RemoveAt(listTexty.SelectedIndex);
 
-        if (TTexts.Count == 0)
+        if (GlobData.TableTexts.Count == 0)
         {
             bTextEdit.Enabled = false;
             bTextDelete.Enabled = false;
@@ -1001,7 +932,7 @@ public partial class FLocalSettings : Form
             IsSpecAssigment = cbFontSpecAssigments.Checked
         };
 
-        TFonts.Add(tfont);
+        GlobData.TableFonts.Add(tfont);
 
         bFontEdit.Enabled = true;
         bFontDelete.Enabled = true;
@@ -1018,7 +949,7 @@ public partial class FLocalSettings : Form
             return;
         }
 
-        var tfont = TFonts[index];
+        var tfont = GlobData.TableFonts[index];
         tfont.Name = tbFontName.Text;
         tfont.FontID = decimal.ToInt32(nudFontID.Value);
         tfont.Type = (TableFontType)cbFontType.SelectedItem;
@@ -1033,14 +964,14 @@ public partial class FLocalSettings : Form
         tfont.IsSpecChars = cbFontSpecChar.Checked;
         tfont.IsSpecAssigment = cbFontSpecAssigments.Checked;
 
-        TFonts.ResetBindings();
+        GlobData.TableFonts.ResetBindings();
     }
 
     private void bFontDelete_Click(object sender, EventArgs e)
     {
-        if (listFonts.SelectedIndex != -1) TFonts.RemoveAt(listFonts.SelectedIndex);
+        if (listFonts.SelectedIndex != -1) GlobData.TableFonts.RemoveAt(listFonts.SelectedIndex);
 
-        if (TFonts.Count == 0)
+        if (GlobData.TableFonts.Count == 0)
         {
             bFontEdit.Enabled = false;
             bFontDelete.Enabled = false;
@@ -1093,7 +1024,7 @@ public partial class FLocalSettings : Form
     {
         if (listCustomStations.SelectedIndex != -1)
         {
-            var st = CustomStations[listCustomStations.SelectedIndex];
+            var st = GlobData.CustomStations[listCustomStations.SelectedIndex];
             nudIDStanice.Value = int.Parse(st.ID);
             tbStationName.Text = st.Name;
         }
@@ -1109,7 +1040,7 @@ public partial class FLocalSettings : Form
             if (station.ID == id.ToString())
                 err = true;
 
-        foreach (var station in CustomStations)
+        foreach (var station in GlobData.CustomStations)
             if (station.ID == id.ToString())
                 err = true;
 
@@ -1128,7 +1059,7 @@ public partial class FLocalSettings : Form
         var name = tbStationName.Text;
 
         var st = new Station(id.ToString(), name) { IsCustom = true };
-        CustomStations.Add(st);
+        GlobData.CustomStations.Add(st);
 
         bCStationEdit.Enabled = true;
         bCStationDelete.Enabled = true;
@@ -1146,7 +1077,7 @@ public partial class FLocalSettings : Form
                 if (station.ID == id.ToString())
                     err = true;
 
-            foreach (var station in CustomStations)
+            foreach (var station in GlobData.CustomStations)
                 if (station.ID == id.ToString())
                     err = true;
 
@@ -1164,19 +1095,19 @@ public partial class FLocalSettings : Form
 
             var name = tbStationName.Text;
 
-            var st = CustomStations[listCustomStations.SelectedIndex];
+            var st = GlobData.CustomStations[listCustomStations.SelectedIndex];
             st.ID = id.ToString();
             st.Name = name;
             st.IsCustom = true;
-            CustomStations.ResetBindings();
+            GlobData.CustomStations.ResetBindings();
         }
     }
 
     private void bCStationDelete_Click(object sender, EventArgs e)
     {
-        if (listCustomStations.SelectedIndex != -1) CustomStations.RemoveAt(listCustomStations.SelectedIndex);
+        if (listCustomStations.SelectedIndex != -1) GlobData.CustomStations.RemoveAt(listCustomStations.SelectedIndex);
 
-        if (CustomStations.Count == 0)
+        if (GlobData.CustomStations.Count == 0)
         {
             bCStationEdit.Enabled = false;
             bCStationDelete.Enabled = false;
@@ -1190,28 +1121,28 @@ public partial class FLocalSettings : Form
 
     private void FLocalSettings_Load(object sender, EventArgs e)
     {
-        if (openTabTabEditor) bOpenEditorTab.PerformClick();
+        if (_openTabTabEditor) bOpenEditorTab.PerformClick();
         EnableEvents(true);
     }
 
     private void listKatTabule_SelectedIndexChanged(object sender, EventArgs e)
     {
-        tbCommentKat.Text = listKatTabule.SelectedIndex != -1 ? Catalogs[listKatTabule.SelectedIndex].Comment : "";
+        tbCommentKat.Text = listKatTabule.SelectedIndex != -1 ? GlobData.TableCatalogs[listKatTabule.SelectedIndex].Comment : "";
     }
 
     private void listTexty_SelectedIndexChanged(object sender, EventArgs e)
     {
-        tbCommentTText.Text = listTexty.SelectedIndex != -1 ? TTexts[listTexty.SelectedIndex].Comment : "";
+        tbCommentTText.Text = listTexty.SelectedIndex != -1 ? GlobData.TableTexts[listTexty.SelectedIndex].Comment : "";
     }
 
     private void listFyzTabule_SelectedIndexChanged(object sender, EventArgs e)
     {
-        tbCommentFyz.Text = listFyzTabule.SelectedIndex != -1 ? Physicals[listFyzTabule.SelectedIndex].Comment : "";
+        tbCommentFyz.Text = listFyzTabule.SelectedIndex != -1 ? GlobData.TablePhysicals[listFyzTabule.SelectedIndex].Comment : "";
     }
 
     private void listLogTabule_SelectedIndexChanged(object sender, EventArgs e)
     {
-        tbCommentLog.Text = listLogTabule.SelectedIndex != -1 ? Logicals[listLogTabule.SelectedIndex].Comment : "";
+        tbCommentLog.Text = listLogTabule.SelectedIndex != -1 ? GlobData.TableLogicals[listLogTabule.SelectedIndex].Comment : "";
     }
 
     private void FLocalSettings_FormClosed(object sender, FormClosedEventArgs e)
@@ -1221,6 +1152,13 @@ public partial class FLocalSettings : Form
 
     private void EnableEvents(bool enable)
     {
-
+        GlobData.CustomStations.FireEventOnSort = enable;
+        GlobData.Platforms.FireEventOnSort = enable;
+        GlobData.TablePhysicals.FireEventOnSort = enable;
+        GlobData.TableCatalogs.FireEventOnSort = enable;
+        GlobData.TableLogicals.FireEventOnSort = enable;
+        GlobData.TabTabs.FireEventOnSort = enable;
+        GlobData.TableTexts.FireEventOnSort = enable;
+        GlobData.TableFonts.FireEventOnSort = enable;
     }
 }

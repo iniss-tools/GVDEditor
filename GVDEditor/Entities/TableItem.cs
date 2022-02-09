@@ -60,6 +60,9 @@ public sealed class TableItem : ITable
     /// </summary>
     public TableTabTab Tab2 { get; set; }
 
+    /// <inheritdoc/>
+    public string TypeName => "Riadok tabule";
+
     /// <inheritdoc />
     public override string ToString() => Name;
 }

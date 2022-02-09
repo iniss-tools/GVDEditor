@@ -1,12 +1,12 @@
 ﻿namespace GVDEditor.Entities;
 
 /// <summary>
-///     Definuje katalogovu tabulu
+///     Definuje katalogovu tabulu.
 /// </summary>
 public sealed class TableCatalog : ITable
 {
     /// <summary>
-    ///     Konstruktor
+    ///     Konstruktor.
     /// </summary>
     public TableCatalog()
     {
@@ -16,54 +16,57 @@ public sealed class TableCatalog : ITable
     }
 
     /// <summary>
-    ///     Vyrobca a typ tabule
+    ///     Vyrobca a typ tabule.
     /// </summary>
     public TableManufacturer Manufacturer { get; set; }
 
     /// <summary>
-    ///     Segmenty katalogovej tabule
+    ///     Segmenty katalogovej tabule.
     /// </summary>
     public List<TableSegment> Segments { get; set; }
 
     /// <summary>
-    ///     Minimalna vyska segmentu
+    ///     Minimalna vyska segmentu.
     /// </summary>
     public int MinHeight { get; set; }
 
     /// <summary>
-    ///     Pocet segmentov na tabuli
+    ///     Pocet segmentov na tabuli.
     /// </summary>
     public int NumSegments { get; set; }
 
     /// <summary>
-    ///     Max pocet zaznamov, ktore mozu byt na tabuli v jednom case
+    ///     Max pocet zaznamov, ktore mozu byt na tabuli v jednom case.
     /// </summary>
     public int MaxRecCount { get; set; }
 
     /// <summary>
-    ///     Itemy (polozky/stlpce) katalogovej tabule
+    ///     Itemy (polozky/stlpce) katalogovej tabule.
     /// </summary>
     public List<TableItem> Items { get; set; }
 
     /// <summary>
-    ///     Definuje typ, mod zobrazenia a pocet riadkov na zaznam katalogovej tabuli
+    ///     Definuje typ, mod zobrazenia a pocet riadkov na zaznam katalogovej tabuli.
     /// </summary>
     public List<TableViewTypeTab> ViewTypeTabs { get; set; }
 
     /// <summary>
-    ///     Kluc katalogovej tabule
+    ///     Kluc katalogovej tabule.
     /// </summary>
     public string Key { get; set; }
 
     /// <summary>
-    ///     Nazov katalogovej tabule
+    ///     Nazov katalogovej tabule.
     /// </summary>
     public string Name { get; set; }
 
     /// <summary>
-    ///     Textovy komentar ku tabuli
+    ///     Textovy komentar ku tabuli.
     /// </summary>
     public string Comment { get; set; }
+
+    /// <inheritdoc/>
+    public string TypeName => "Katalógová tabuľa";
 
     /// <inheritdoc />
     public override string ToString()

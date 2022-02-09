@@ -10,6 +10,7 @@ using ColorSetting = ToolsCore.XML.ColorSetting;
 using CommandShortcut = ToolsCore.XML.CommandShortcut;
 using FormUtils = ToolsCore.Tools.FormUtils;
 using ShortcutName = ToolsCore.XML.ShortcutName;
+// ReSharper disable MemberCanBePrivate.Global
 
 namespace GVDEditor.Forms;
 
@@ -18,17 +19,17 @@ namespace GVDEditor.Forms;
 /// </summary>
 internal partial class FAppSettings : Form
 {
-    public const string GENERAL = "uObecne";
-    public const string ENVIRONMENT = "uProstredie";
-    public const string LOCALIZATION = "uLocalization";
-    public const string FONTS_COLORS = "uFontsColors"; 
-    public const string LOGGING = "uLogging";
-    public const string PLAYING = "uPlaying";
-    public const string DESKTOP = "uDesktop";
-    public const string SHORTCUTS = "uShortcuts";
-    public const string STARTUP = "uStartup";
+    public const string General = "uObecne";
+    public const string Environment = "uProstredie";
+    public const string Localization = "uLocalization";
+    public const string FontsColors = "uFontsColors"; 
+    public const string Logging = "uLogging";
+    public const string Playing = "uPlaying";
+    public const string Desktop = "uDesktop";
+    public const string Shortcuts = "uShortcuts";
+    public const string Startup = "uStartup";
 
-    private readonly BindingList<DesktopColumn> Columns;
+    private readonly BindingList<DesktopColumn> columns;
 
     private readonly List<int> fontSizes = new();
     private readonly bool initialization;
@@ -40,9 +41,9 @@ internal partial class FAppSettings : Form
     [Localizable(true)] 
     private readonly string lShortcutHelp2 = Resources.FAppSettings_lShortcutHelp2;
 
-    private readonly List<string> SystemFonts = Utils.GetSystemFontNames();
+    private readonly List<string> systemFonts = Utils.GetSystemFontNames();
 
-    private BindingList<AppFont> AppFonts;
+    private BindingList<AppFont> appFonts;
 
     private Color actualColorBackground, actualColorForeground;
     private Font actualColorSettingsFont;
@@ -50,15 +51,15 @@ internal partial class FAppSettings : Form
     private float actualFontSize;
     private bool actualDarkScrollBar, actualDarkTitleBar, actualDefaultConStyle;
 
-    private readonly BindingList<GVDEditorStyle> Styles;
-    private int usedStyleID, actualstyle = -1;
-    private BindingList<ColorCategory> ColorCategories;
+    private readonly BindingList<GVDEditorStyle> styles;
+    private int usedStyleId, actualstyle = -1;
+    private BindingList<ColorCategory> colorCategories;
 
     private ColorSetting previousColorSetting;
     private ColorCategory previousSelectedColorCategory;
 
     private int shortcutindex = -1;
-    private BindingList<CommandShortcut> Shortcuts;
+    private BindingList<CommandShortcut> shortcuts;
 
     private bool showInfoRestart;
 
@@ -75,8 +76,8 @@ internal partial class FAppSettings : Form
         treeMenu.SetTheme(WindowsTheme.Explorer);
         this.ApplyTheme();
 
-        bColumnUp.Text += $@" {Utils.Arrow(Arrow.UP)}";
-        bColumnDown.Text += $@" {Utils.Arrow(Arrow.DOWN)}";
+        bColumnUp.Text += $@" {Utils.Arrow(Arrow.Up)}";
+        bColumnDown.Text += $@" {Utils.Arrow(Arrow.Down)}";
 
         var config = GlobData.Config;
 
@@ -128,6 +129,7 @@ internal partial class FAppSettings : Form
         cboxDateTimeInStateRow.Checked = config.ShowDateTimeInStateRow;
         cbShowRowsHeader.Checked = config.ShowRowsHeader;
         cbFitLastColumn.Checked = config.FitLastColumn;
+        cbCheckUpdate.Checked = config.CheckUpdate;
 
         cbLoggingInfo.Checked = config.LoggingInfo;
         cbLoggingError.Checked = config.LoggingError;
@@ -139,26 +141,26 @@ internal partial class FAppSettings : Form
         tbCmdArguments.Text = config.StartupINISSConfig.CmdArgs;
         FormatArgs(config.StartupINISSConfig.CmdArgs);
 
-        AppFonts = new BindingList<AppFont>(config.Fonts.GetValues());
-        dgvAppFonts.DataSource = AppFonts;
+        appFonts = new BindingList<AppFont>(config.Fonts.GetValues());
+        dgvAppFonts.DataSource = appFonts;
 
-        Columns = new BindingList<DesktopColumn>(config.DesktopCols.GetOrderedValues());
-        dgvDesktopColums.DataSource = Columns;
+        columns = new BindingList<DesktopColumn>(config.DesktopCols.GetOrderedValues());
+        dgvDesktopColums.DataSource = columns;
 
-        Shortcuts = new BindingList<CommandShortcut>(config.Shortcuts.GetValues());
-        dgvShortcuts.DataSource = Shortcuts;
+        shortcuts = new BindingList<CommandShortcut>(config.Shortcuts.GetValues());
+        dgvShortcuts.DataSource = shortcuts;
         FindAndCheckDuplicateShortcuts();
 
         initialization = true;
-        cbFont.DataSource = SystemFonts;
+        cbFont.DataSource = systemFonts;
 
         for (var i = 6; i <= 24; i++) fontSizes.Add(i);
 
         cbFontSize.DataSource = fontSizes;
 
-        Styles = new BindingList<GVDEditorStyle>(GlobData.Styles.StyleList);
-        cbStyles.DataSource = Styles;
-        usedStyleID = GlobData.Styles.UsingStyleID;
+        styles = new BindingList<GVDEditorStyle>(GlobData.Styles.StyleList);
+        cbStyles.DataSource = styles;
+        usedStyleId = GlobData.Styles.UsingStyleID;
         cbStyles.Invalidate();
         cbStyles.SelectedIndex = GlobData.Styles.UsingStyleID;
 
@@ -242,7 +244,6 @@ internal partial class FAppSettings : Form
         categories.Add(itemDeskopTT);
 
         var tesettingsControls = new List<ColorSetting>();
-        var tesettingsControlsCP = new List<ColorSetting>();
         tesettingsControls.AddRange(new[]
         {
             style.ControlsColorScheme.Panel,
@@ -253,51 +254,52 @@ internal partial class FAppSettings : Form
             style.ControlsColorScheme.Mark,
             style.ControlsColorScheme.Highlight
         });
-        foreach (var t in tesettingsControls) tesettingsControlsCP.Add(ColorSetting.Copy(t));
+
+        var tesettingsControlsCP = tesettingsControls.Select(ColorSetting.Copy).ToList();
         itemControls.Settings = tesettingsControlsCP;
         categories.Add(itemControls);
 
-        ColorCategories = new BindingList<ColorCategory>(categories);
+        colorCategories = new BindingList<ColorCategory>(categories);
         cbColorSettings.DataSource = null;
-        cbColorSettings.DataSource = ColorCategories;
+        cbColorSettings.DataSource = colorCategories;
     }
 
     private void SaveAppColorSettings(GVDEditorStyle style)
     {
-        style.TabTabEditorScheme.Font = ColorCategories[0].Font;
-        style.TrainTypeColumnScheme.Font = ColorCategories[1].Font;
+        style.TabTabEditorScheme.Font = colorCategories[0].Font;
+        style.TrainTypeColumnScheme.Font = colorCategories[1].Font;
 
-        style.TabTabEditorScheme.Default = ColorCategories[0].Settings[0];
-        style.TabTabEditorScheme.Function = ColorCategories[0].Settings[1];
-        style.TabTabEditorScheme.Identifier = ColorCategories[0].Settings[2];
-        style.TabTabEditorScheme.Number = ColorCategories[0].Settings[3];
-        style.TabTabEditorScheme.String = ColorCategories[0].Settings[4];
-        style.TabTabEditorScheme.Comment = ColorCategories[0].Settings[5];
-        style.TabTabEditorScheme.Var = ColorCategories[0].Settings[6];
-        style.TabTabEditorScheme.Event = ColorCategories[0].Settings[7];
-        style.TabTabEditorScheme.OnNewLine = ColorCategories[0].Settings[8];
-        style.TabTabEditorScheme.Operator = ColorCategories[0].Settings[9];
-        style.TabTabEditorScheme.Constant = ColorCategories[0].Settings[10];
-        style.TabTabEditorScheme.SelBraces = ColorCategories[0].Settings[11];
-        style.TabTabEditorScheme.SelBraceBad = ColorCategories[0].Settings[12];
+        style.TabTabEditorScheme.Default = colorCategories[0].Settings[0];
+        style.TabTabEditorScheme.Function = colorCategories[0].Settings[1];
+        style.TabTabEditorScheme.Identifier = colorCategories[0].Settings[2];
+        style.TabTabEditorScheme.Number = colorCategories[0].Settings[3];
+        style.TabTabEditorScheme.String = colorCategories[0].Settings[4];
+        style.TabTabEditorScheme.Comment = colorCategories[0].Settings[5];
+        style.TabTabEditorScheme.Var = colorCategories[0].Settings[6];
+        style.TabTabEditorScheme.Event = colorCategories[0].Settings[7];
+        style.TabTabEditorScheme.OnNewLine = colorCategories[0].Settings[8];
+        style.TabTabEditorScheme.Operator = colorCategories[0].Settings[9];
+        style.TabTabEditorScheme.Constant = colorCategories[0].Settings[10];
+        style.TabTabEditorScheme.SelBraces = colorCategories[0].Settings[11];
+        style.TabTabEditorScheme.SelBraceBad = colorCategories[0].Settings[12];
 
-        style.TrainTypeColumnScheme.Os = ColorCategories[1].Settings[0];
-        style.TrainTypeColumnScheme.R = ColorCategories[1].Settings[1];
-        style.TrainTypeColumnScheme.X = ColorCategories[1].Settings[2];
-        style.TrainTypeColumnScheme.Sl = ColorCategories[1].Settings[3];
+        style.TrainTypeColumnScheme.Os = colorCategories[1].Settings[0];
+        style.TrainTypeColumnScheme.R = colorCategories[1].Settings[1];
+        style.TrainTypeColumnScheme.X = colorCategories[1].Settings[2];
+        style.TrainTypeColumnScheme.Sl = colorCategories[1].Settings[3];
 
-        style.ControlsColorScheme.Panel = ColorCategories[2].Settings[0];
-        style.ControlsColorScheme.Button = ColorCategories[2].Settings[1];
-        style.ControlsColorScheme.Label = ColorCategories[2].Settings[2];
-        style.ControlsColorScheme.Box = ColorCategories[2].Settings[3];
-        style.ControlsColorScheme.Border = ColorCategories[2].Settings[4];
-        style.ControlsColorScheme.Mark = ColorCategories[2].Settings[5];
-        style.ControlsColorScheme.Highlight = ColorCategories[2].Settings[6];
+        style.ControlsColorScheme.Panel = colorCategories[2].Settings[0];
+        style.ControlsColorScheme.Button = colorCategories[2].Settings[1];
+        style.ControlsColorScheme.Label = colorCategories[2].Settings[2];
+        style.ControlsColorScheme.Box = colorCategories[2].Settings[3];
+        style.ControlsColorScheme.Border = colorCategories[2].Settings[4];
+        style.ControlsColorScheme.Mark = colorCategories[2].Settings[5];
+        style.ControlsColorScheme.Highlight = colorCategories[2].Settings[6];
     }
 
     private void bSave_Click(object sender, EventArgs e)
     {
-        if (Styles.Count != 0)
+        if (styles.Count != 0)
         {
             cbStyles.SelectedIndex = -1;
             cbStyles.SelectedIndex = 0;
@@ -351,6 +353,7 @@ internal partial class FAppSettings : Form
         config.ShowStateRow = cbShowStateRow.Checked;
         config.ShowDateTimeInStateRow = cboxDateTimeInStateRow.Checked;
         config.FitLastColumn = cbFitLastColumn.Checked;
+        config.CheckUpdate = cbCheckUpdate.Checked;
 
         config.LoggingInfo = cbLoggingInfo.Checked;
         config.LoggingError = cbLoggingError.Checked;
@@ -359,84 +362,84 @@ internal partial class FAppSettings : Form
 
         config.StartupINISSConfig = new StartupINISS {RunAsAdmin = cbStartINISSAdmin.Checked, CmdArgs = tbCmdArguments.Text.Trim()};
 
-        config.Fonts.Labels = AppFonts[0];
-        config.Fonts.Buttons = AppFonts[1];
-        config.Fonts.Menu = AppFonts[2];
-        config.Fonts.ColsHeader = AppFonts[3];
-        config.Fonts.TableCells = AppFonts[4];
-        config.Fonts.StateRow = AppFonts[5];
+        config.Fonts.Labels = appFonts[0];
+        config.Fonts.Buttons = appFonts[1];
+        config.Fonts.Menu = appFonts[2];
+        config.Fonts.ColsHeader = appFonts[3];
+        config.Fonts.TableCells = appFonts[4];
+        config.Fonts.StateRow = appFonts[5];
 
-        for (var i = 0; i < Columns.Count; i++) Columns[i].Order = i;
+        for (var i = 0; i < columns.Count; i++) columns[i].Order = i;
 
-        config.DesktopCols.Number = Columns.First(x => x.Id == 0);
-        config.DesktopCols.Type = Columns.First(x => x.Id == 1);
-        config.DesktopCols.Name = Columns.First(x => x.Id == 2);
-        config.DesktopCols.LinkaPrichod = Columns.First(x => x.Id == 3);
-        config.DesktopCols.LinkaOdchod = Columns.First(x => x.Id == 4);
-        config.DesktopCols.Routing = Columns.First(x => x.Id == 5);
-        config.DesktopCols.Prichod = Columns.First(x => x.Id == 6);
-        config.DesktopCols.Odchod = Columns.First(x => x.Id == 7);
-        config.DesktopCols.VychodziaStanica = Columns.First(x => x.Id == 8);
-        config.DesktopCols.KonecnaStanica = Columns.First(x => x.Id == 9);
-        config.DesktopCols.DateLimit = Columns.First(x => x.Id == 10);
-        config.DesktopCols.Track = Columns.First(x => x.Id == 11);
-        config.DesktopCols.Operator = Columns.First(x => x.Id == 12);
-        config.DesktopCols.OtherBtn = Columns.First(x => x.Id == 13);
+        config.DesktopCols.Number = columns.First(x => x.Id == 0);
+        config.DesktopCols.Type = columns.First(x => x.Id == 1);
+        config.DesktopCols.Name = columns.First(x => x.Id == 2);
+        config.DesktopCols.LinkaPrichod = columns.First(x => x.Id == 3);
+        config.DesktopCols.LinkaOdchod = columns.First(x => x.Id == 4);
+        config.DesktopCols.Routing = columns.First(x => x.Id == 5);
+        config.DesktopCols.Prichod = columns.First(x => x.Id == 6);
+        config.DesktopCols.Odchod = columns.First(x => x.Id == 7);
+        config.DesktopCols.VychodziaStanica = columns.First(x => x.Id == 8);
+        config.DesktopCols.KonecnaStanica = columns.First(x => x.Id == 9);
+        config.DesktopCols.DateLimit = columns.First(x => x.Id == 10);
+        config.DesktopCols.Track = columns.First(x => x.Id == 11);
+        config.DesktopCols.Operator = columns.First(x => x.Id == 12);
+        config.DesktopCols.OtherBtn = columns.First(x => x.Id == 13);
 
-        config.Shortcuts.NewGVD = Shortcuts[0];
-        config.Shortcuts.OpenGVD = Shortcuts[1];
-        config.Shortcuts.ImportData = Shortcuts[2];
-        config.Shortcuts.ImportGVD = Shortcuts[3];
-        config.Shortcuts.Save = Shortcuts[4];
-        config.Shortcuts.Analyze = Shortcuts[5];
+        config.Shortcuts.NewGVD = shortcuts[0];
+        config.Shortcuts.OpenGVD = shortcuts[1];
+        config.Shortcuts.ImportData = shortcuts[2];
+        config.Shortcuts.ImportGVD = shortcuts[3];
+        config.Shortcuts.Save = shortcuts[4];
+        config.Shortcuts.Analyze = shortcuts[5];
 
-        config.Shortcuts.AddTrain = Shortcuts[6];
-        config.Shortcuts.EditTrain = Shortcuts[7];
-        config.Shortcuts.DeleteTrains = Shortcuts[8];
-        config.Shortcuts.DuplicateTrain = Shortcuts[9];
+        config.Shortcuts.AddTrain = shortcuts[6];
+        config.Shortcuts.EditTrain = shortcuts[7];
+        config.Shortcuts.DeleteTrains = shortcuts[8];
+        config.Shortcuts.DuplicateTrain = shortcuts[9];
 
-        config.Shortcuts.LocalSettings = Shortcuts[10];
-        config.Shortcuts.GlobalSettings = Shortcuts[11];
-        config.Shortcuts.AppSettings = Shortcuts[12];
+        config.Shortcuts.LocalSettings = shortcuts[10];
+        config.Shortcuts.GlobalSettings = shortcuts[11];
+        config.Shortcuts.AppSettings = shortcuts[12];
 
-        config.Shortcuts.InfoApp = Shortcuts[13];
-        config.Shortcuts.UpdateNotes = Shortcuts[14];
-        config.Shortcuts.RunINISS = Shortcuts[15];
-        config.Shortcuts.ShutdownINISS = Shortcuts[16];
-        config.Shortcuts.KillINISS = Shortcuts[17];
-        config.Shortcuts.RestartINISS = Shortcuts[18];
+        config.Shortcuts.InfoApp = shortcuts[13];
+        config.Shortcuts.UpdateNotes = shortcuts[14];
+        config.Shortcuts.RunINISS = shortcuts[15];
+        config.Shortcuts.ShutdownINISS = shortcuts[16];
+        config.Shortcuts.KillINISS = shortcuts[17];
+        config.Shortcuts.RestartINISS = shortcuts[18];
 
-        config.Shortcuts.LSGrafikon = Shortcuts[19];
-        config.Shortcuts.LSStanice = Shortcuts[20];
-        config.Shortcuts.LSDopravcovia = Shortcuts[21];
-        config.Shortcuts.LSPlatforms = Shortcuts[22];
-        config.Shortcuts.LSKolaje = Shortcuts[23];
-        config.Shortcuts.LSTPhysicals = Shortcuts[24];
-        config.Shortcuts.LSTLogicals = Shortcuts[25];
-        config.Shortcuts.LSTCatalogs = Shortcuts[26];
-        config.Shortcuts.LSTabTab = Shortcuts[27];
-        config.Shortcuts.LSTTexts = Shortcuts[28];
-        config.Shortcuts.LSTFonts = Shortcuts[29];
-        config.Shortcuts.LSTabTabEditor = Shortcuts[30];
+        config.Shortcuts.LSGrafikon = shortcuts[19];
+        config.Shortcuts.LSStanice = shortcuts[20];
+        config.Shortcuts.LSDopravcovia = shortcuts[21];
+        config.Shortcuts.LSPlatforms = shortcuts[22];
+        config.Shortcuts.LSKolaje = shortcuts[23];
+        config.Shortcuts.LSTPhysicals = shortcuts[24];
+        config.Shortcuts.LSTLogicals = shortcuts[25];
+        config.Shortcuts.LSTCatalogs = shortcuts[26];
+        config.Shortcuts.LSTabTab = shortcuts[27];
+        config.Shortcuts.LSTTexts = shortcuts[28];
+        config.Shortcuts.LSTFonts = shortcuts[29];
+        config.Shortcuts.LSTabTabEditor = shortcuts[30];
 
-        config.Shortcuts.GSGrafikony = Shortcuts[31];
-        config.Shortcuts.GSLanguages = Shortcuts[32];
-        config.Shortcuts.GSMeskania = Shortcuts[33];
-        config.Shortcuts.GSTrainTypes = Shortcuts[34];
-        config.Shortcuts.GSAudio = Shortcuts[35];
+        config.Shortcuts.GSGrafikony = shortcuts[31];
+        config.Shortcuts.GSLanguages = shortcuts[32];
+        config.Shortcuts.GSMeskania = shortcuts[33];
+        config.Shortcuts.GSTrainTypes = shortcuts[34];
+        config.Shortcuts.GSAudio = shortcuts[35];
 
-        config.Shortcuts.DatObm = Shortcuts[36];
+        config.Shortcuts.DatObm = shortcuts[36];
 
         GlobData.Config = config;
         GlobSettings.Fonts = config.Fonts;
         XMLSerialization.WriteData(Utils.CombinePath(Application.StartupPath, FileConsts.FILE_CONFIG), config);
 
-        GlobData.Styles.StyleList = Styles.ToList();
-        if (GlobData.Styles.UsingStyleID != usedStyleID)
+        GlobData.Styles.StyleList = styles.ToList();
+        if (GlobData.Styles.UsingStyleID != usedStyleId)
         {
-            GlobData.UsingStyle = Styles[usedStyleID];
-            GlobSettings.UsingStyle = Styles[usedStyleID];
-            GlobData.Styles.UsingStyleID = usedStyleID;
+            GlobData.UsingStyle = styles[usedStyleId];
+            GlobSettings.UsingStyle = styles[usedStyleId];
+            GlobData.Styles.UsingStyleID = usedStyleId;
         }
 
         Styles<GVDEditorStyle>.WriteData(Utils.CombinePath(Application.StartupPath, FileConsts.FILE_STYLES), GlobData.Styles);
@@ -542,7 +545,7 @@ internal partial class FAppSettings : Form
 
         e.DrawBackground();
 
-        var font = new Font(SystemFonts[e.Index], 10);
+        var font = new Font(systemFonts[e.Index], 10);
         var text = (string) cbFont.Items[e.Index];
 
         TextRenderer.DrawText(e.Graphics,text, Utils.IsFontMonospaced(e.Graphics, font) ? new Font(e.Font, FontStyle.Bold) : e.Font, e.Bounds.Location,e.ForeColor);
@@ -615,7 +618,7 @@ internal partial class FAppSettings : Form
             pbForegroundColor.BackColor = setting.ForeColor;
             cbBold.Checked = setting.Bold;
 
-            if (!ColorCategories[cbColorSettings.SelectedIndex].DisableFontEdit)
+            if (!colorCategories[cbColorSettings.SelectedIndex].DisableFontEdit)
             {
                 labelExample.Font = setting.Bold
                     ? new Font(actualColorSettingsFont, FontStyle.Bold)
@@ -671,31 +674,31 @@ internal partial class FAppSettings : Form
 
         switch (e.Node.Name)
         {
-            case GENERAL:
+            case General:
                 pObecne.Visible = true;
                 break;
-            case ENVIRONMENT:
+            case Environment:
                 pEnvironment.Visible = true;
                 break;
-            case LOCALIZATION:
+            case Localization:
                 pLocalization.Visible = true;
                 break;
-            case FONTS_COLORS:
+            case FontsColors:
                 pFontsColors.Visible = true;
                 break;
-            case LOGGING:
+            case Logging:
                 pLogging.Visible = true;
                 break;
-            case PLAYING:
+            case Playing:
                 pPlaying.Visible = true;
                 break;
-            case DESKTOP:
+            case Desktop:
                 pDesktop.Visible = true;
                 break;
-            case SHORTCUTS:
+            case Shortcuts:
                 pShortcuts.Visible = true;
                 break;
-            case STARTUP:
+            case Startup:
                 pStartup.Visible = true;
                 break;
             default:
@@ -706,12 +709,33 @@ internal partial class FAppSettings : Form
 
     private void FAppSettings_Load(object sender, EventArgs e)
     {
+        imagesMenu.Images.Clear();
+        imagesMenu.Images.Add(Resources.colors);
+        imagesMenu.Images.Add(Resources.debugging);
+        imagesMenu.Images.Add(Resources.desktop);
+        imagesMenu.Images.Add(Resources.environment);
+        imagesMenu.Images.Add(Resources.general);
+        imagesMenu.Images.Add(Resources.iniss_settings);
+        imagesMenu.Images.Add(Resources.localization);
+        imagesMenu.Images.Add(Resources.shortcut);
+        imagesMenu.Images.Add(Resources.start);
+
+        treeMenu.Nodes[0].ImageIndex = treeMenu.Nodes[0].SelectedImageIndex = 4;
+        treeMenu.Nodes[1].ImageIndex = treeMenu.Nodes[1].SelectedImageIndex = 3;
+        treeMenu.Nodes[1].Nodes[0].ImageIndex = treeMenu.Nodes[1].Nodes[0].SelectedImageIndex = 6;
+        treeMenu.Nodes[1].Nodes[1].ImageIndex = treeMenu.Nodes[1].Nodes[1].SelectedImageIndex = 0;
+        treeMenu.Nodes[1].Nodes[2].ImageIndex = treeMenu.Nodes[1].Nodes[2].SelectedImageIndex = 2;
+        treeMenu.Nodes[1].Nodes[3].ImageIndex = treeMenu.Nodes[1].Nodes[3].SelectedImageIndex = 7;
+        treeMenu.Nodes[2].ImageIndex = treeMenu.Nodes[2].SelectedImageIndex = 1;
+        treeMenu.Nodes[3].ImageIndex = treeMenu.Nodes[3].SelectedImageIndex = 5;
+        treeMenu.Nodes[4].ImageIndex = treeMenu.Nodes[4].SelectedImageIndex = 8;
+
         treeMenu.SelectedNode = selectTree != null ? treeMenu.Nodes.Find(selectTree, true)[0] : treeMenu.Nodes[0];
         treeMenu.ExpandAll();
 
         for (var i = 0; i < dgvAppFonts.Rows.Count; i++)
         {
-            var dgvcs = new DataGridViewCellStyle {Font = AppFonts[i].Font};
+            var dgvcs = new DataGridViewCellStyle {Font = appFonts[i].Font};
             dgvAppFonts.Rows[i].Cells[dgvAppFonts.Columns.Count - 1].Style = dgvcs;
         }
     }
@@ -722,11 +746,11 @@ internal partial class FAppSettings : Form
         SettingsNaming.NameAppFontSetting(fonts);
 
         dgvAppFonts.DataSource = null;
-        AppFonts = new BindingList<AppFont>(fonts.GetValues());
-        dgvAppFonts.DataSource = AppFonts;
+        appFonts = new BindingList<AppFont>(fonts.GetValues());
+        dgvAppFonts.DataSource = appFonts;
         for (var i = 0; i < dgvAppFonts.Rows.Count; i++)
         {
-            var dgvcs = new DataGridViewCellStyle {Font = AppFonts[i].Font};
+            var dgvcs = new DataGridViewCellStyle {Font = appFonts[i].Font};
             dgvAppFonts.Rows[i].Cells[dgvAppFonts.Columns.Count - 1].Style = dgvcs;
         }
 
@@ -755,12 +779,12 @@ internal partial class FAppSettings : Form
         var index = dgvAppFonts.CurrentCell.RowIndex;
         if (index != -1)
         {
-            appFontDialog.Font = AppFonts[index].Font;
+            appFontDialog.Font = appFonts[index].Font;
 
             var result = appFontDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                AppFonts[index].Font = appFontDialog.Font;
+                appFonts[index].Font = appFontDialog.Font;
                 SetAppFontExample(index, appFontDialog.Font);
             }
         }
@@ -771,12 +795,12 @@ internal partial class FAppSettings : Form
         if (dgvDesktopColums.CurrentRow != null)
         {
             var sel = dgvDesktopColums.SelectedRows[0].Index;
-            var col = Columns[sel];
+            var col = columns[sel];
 
             if (sel - 1 >= 0)
             {
-                Columns.RemoveAt(sel);
-                Columns.Insert(sel - 1, col);
+                columns.RemoveAt(sel);
+                columns.Insert(sel - 1, col);
                 dgvDesktopColums.ClearSelection();
                 dgvDesktopColums.Rows[sel - 1].Selected = true;
             }
@@ -788,12 +812,12 @@ internal partial class FAppSettings : Form
         if (dgvDesktopColums.CurrentRow != null)
         {
             var sel = dgvDesktopColums.SelectedRows[0].Index;
-            var col = Columns[sel];
+            var col = columns[sel];
 
-            if (sel + 1 < Columns.Count)
+            if (sel + 1 < columns.Count)
             {
-                Columns.RemoveAt(sel);
-                Columns.Insert(sel + 1, col);
+                columns.RemoveAt(sel);
+                columns.Insert(sel + 1, col);
                 dgvDesktopColums.ClearSelection();
                 dgvDesktopColums.Rows[sel + 1].Selected = true;
             }
@@ -802,7 +826,7 @@ internal partial class FAppSettings : Form
 
     private void dgvDesktopColums_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
     {
-        if (e.RowIndex < 0 || e.RowIndex >= Columns.Count) return;
+        if (e.RowIndex < 0 || e.RowIndex >= columns.Count) return;
 
         if (dgvDesktopColums.Columns["MinWidth"] != null &&
             dgvDesktopColums.Columns["MinWidth"].Index == e.ColumnIndex)
@@ -820,8 +844,8 @@ internal partial class FAppSettings : Form
         var shortcuts = GVDEditorConfig.GetDefaultShortcutsSettings();
         GVDEditorSettingsNaming.NameShortcutCommands(shortcuts);
         dgvShortcuts.DataSource = null;
-        Shortcuts = new BindingList<CommandShortcut>(shortcuts.GetValues());
-        dgvShortcuts.DataSource = Shortcuts;
+        this.shortcuts = new BindingList<CommandShortcut>(shortcuts.GetValues());
+        dgvShortcuts.DataSource = this.shortcuts;
     }
 
     private void dgvShortcuts_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -843,8 +867,8 @@ internal partial class FAppSettings : Form
 
     private void DoRemoveShortcut(int index)
     {
-        Shortcuts[index].Shortcut = new ShortcutName(Shortcut.None);
-        Shortcuts.ResetBindings();
+        shortcuts[index].Shortcut = new ShortcutName(Shortcut.None);
+        shortcuts.ResetBindings();
         FindAndCheckDuplicateShortcuts();
     }
 
@@ -852,8 +876,8 @@ internal partial class FAppSettings : Form
     {
         var shortcuts = GVDEditorConfig.GetDefaultShortcutsSettings();
         GVDEditorSettingsNaming.NameShortcutCommands(shortcuts);
-        Shortcuts[index].Shortcut = shortcuts.GetValues()[index].Shortcut;
-        Shortcuts.ResetBindings();
+        this.shortcuts[index].Shortcut = shortcuts.GetValues()[index].Shortcut;
+        this.shortcuts.ResetBindings();
         FindAndCheckDuplicateShortcuts();
     }
 
@@ -864,8 +888,8 @@ internal partial class FAppSettings : Form
         if (Utils.ValidateShortcut(keys))
         {
             var sc = (Shortcut) keys;
-            Shortcuts[shortcutindex].Shortcut = new ShortcutName(sc);
-            Shortcuts.ResetBindings();
+            shortcuts[shortcutindex].Shortcut = new ShortcutName(sc);
+            shortcuts.ResetBindings();
 
             FindAndCheckDuplicateShortcuts();
 
@@ -889,7 +913,7 @@ internal partial class FAppSettings : Form
 
     private void ResetColorShortcutDuplicates()
     {
-        for (var i = 0; i < Shortcuts.Count; i++) dgvShortcuts.Rows[i].Cells[1].Style.ForeColor = dgvShortcuts.ForeColor;
+        for (var i = 0; i < shortcuts.Count; i++) dgvShortcuts.Rows[i].Cells[1].Style.ForeColor = dgvShortcuts.ForeColor;
     }
 
     private void FAppSettings_HelpButtonClicked(object sender, CancelEventArgs e)
@@ -909,9 +933,9 @@ internal partial class FAppSettings : Form
         if (index == -1)
             return;
 
-        if (usedStyleID != index)
+        if (usedStyleId != index)
         {
-            usedStyleID = index;
+            usedStyleId = index;
             cbStyles.Invalidate();
 
             if (!initialization)
@@ -923,13 +947,13 @@ internal partial class FAppSettings : Form
 
     private void bAddStyle_Click(object sender, EventArgs e)
     {
-        var frename = new FRenameStyle(Styles.ToList(), Styles.Count - 1, "");
+        var frename = new FRenameStyle(styles.ToList(), styles.Count - 1, "");
         var result = frename.ShowDialog(this);
         if (result == DialogResult.OK)
         {
             var style = new GVDEditorStyle {Name = frename.NewName};
-            Styles.Add(style);
-            cbStyles.SelectedIndex = Styles.Count - 1;
+            styles.Add(style);
+            cbStyles.SelectedIndex = styles.Count - 1;
         }
     }
 
@@ -939,12 +963,12 @@ internal partial class FAppSettings : Form
         if (index == -1)
             return;
 
-        var frename = new FRenameStyle(Styles.ToList(), index, Styles[index].Name);
+        var frename = new FRenameStyle(styles.ToList(), index, styles[index].Name);
         var result = frename.ShowDialog(this);
         if (result == DialogResult.OK)
         {
-            Styles[index].Name = frename.NewName;
-            Styles.ResetBindings();
+            styles[index].Name = frename.NewName;
+            styles.ResetBindings();
         }
     }
 
@@ -954,7 +978,7 @@ internal partial class FAppSettings : Form
         if (index == -1)
             return;
 
-        Styles.RemoveAt(index);
+        styles.RemoveAt(index);
         cbStyles.SelectedIndex = 0;
     }
 
@@ -964,7 +988,7 @@ internal partial class FAppSettings : Form
         if (index == -1)
             return;
 
-        if (Styles[index].Name is StyleNames.LIGHT or StyleNames.DARK)
+        if (styles[index].Name is StyleNames.LIGHT or StyleNames.DARK)
         {
             bRemoveStyle.Enabled = false;
             bRenameStyle.Enabled = false;
@@ -977,16 +1001,16 @@ internal partial class FAppSettings : Form
 
         if (actualstyle != -1)
         {
-            SaveAppColorSettings(Styles[actualstyle]);
-            Styles[actualstyle].DarkScrollBar = actualDarkScrollBar;
-            Styles[actualstyle].DarkTitleBar = actualDarkTitleBar;
-            Styles[actualstyle].ControlsDefaultStyle = actualDefaultConStyle;
+            SaveAppColorSettings(styles[actualstyle]);
+            styles[actualstyle].DarkScrollBar = actualDarkScrollBar;
+            styles[actualstyle].DarkTitleBar = actualDarkTitleBar;
+            styles[actualstyle].ControlsDefaultStyle = actualDefaultConStyle;
         }
 
-        InitializeAppColorSettings(Styles[index]);
-        cboxDarkScrollBars.Checked = Styles[index].DarkScrollBar;
-        cboxDarkTitleBar.Checked = Styles[index].DarkTitleBar;
-        cboxDefaultStyle.Checked = Styles[index].ControlsDefaultStyle;
+        InitializeAppColorSettings(styles[index]);
+        cboxDarkScrollBars.Checked = styles[index].DarkScrollBar;
+        cboxDarkTitleBar.Checked = styles[index].DarkTitleBar;
+        cboxDefaultStyle.Checked = styles[index].ControlsDefaultStyle;
         actualstyle = index;
     }
 
@@ -1010,19 +1034,19 @@ internal partial class FAppSettings : Form
         if (e.Index == -1) return;
         e.DrawBackground();
         TextRenderer.DrawText(
-            e.Graphics, Styles[e.Index].Name, e.Index == usedStyleID ? new Font(e.Font, FontStyle.Bold) : e.Font, e.Bounds.Location, e.ForeColor);
+            e.Graphics, styles[e.Index].Name, e.Index == usedStyleId ? new Font(e.Font, FontStyle.Bold) : e.Font, e.Bounds.Location, e.ForeColor);
         e.DrawFocusRectangle();
     }
 
     private void FindAndCheckDuplicateShortcuts()
     {
         ResetColorShortcutDuplicates();
-        for (var i = 0; i < Shortcuts.Count; i++)
+        for (var i = 0; i < shortcuts.Count; i++)
         {
-            var s1 = Shortcuts[i].Shortcut.ThisShortcut;
-            for (var j = 0; j < Shortcuts.Count; j++)
+            var s1 = shortcuts[i].Shortcut.ThisShortcut;
+            for (var j = 0; j < shortcuts.Count; j++)
             {
-                var s2 = Shortcuts[j].Shortcut.ThisShortcut;
+                var s2 = shortcuts[j].Shortcut.ThisShortcut;
                 if (i != j && s1 == s2 && (s1 != Shortcut.None || s2 != Shortcut.None))
                 {
                     dgvShortcuts.Rows[i].Cells[1].Style.ForeColor = Color.Red;

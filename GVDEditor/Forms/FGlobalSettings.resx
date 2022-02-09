@@ -117,23 +117,176 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;tpGrafikony.Name" xml:space="preserve">
+    <value>tpGrafikony</value>
+  </data>
+  <data name="&gt;&gt;tpGrafikony.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpGrafikony.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tpGrafikony.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tpJazyky.Name" xml:space="preserve">
+    <value>tpJazyky</value>
+  </data>
+  <data name="&gt;&gt;tpJazyky.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpJazyky.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tpJazyky.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tpMeskania.Name" xml:space="preserve">
+    <value>tpMeskania</value>
+  </data>
+  <data name="&gt;&gt;tpMeskania.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpMeskania.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tpMeskania.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tpTrainTypes.Name" xml:space="preserve">
+    <value>tpTrainTypes</value>
+  </data>
+  <data name="&gt;&gt;tpTrainTypes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpTrainTypes.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tpTrainTypes.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tpAudio.Name" xml:space="preserve">
+    <value>tpAudio</value>
+  </data>
+  <data name="&gt;&gt;tpAudio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpAudio.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tpAudio.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 5</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>554, 319</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>ExControls.ExTabControl, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>tpGrafikony</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;listGrafikony.Name" xml:space="preserve">
+    <value>listGrafikony</value>
+  </data>
+  <data name="&gt;&gt;listGrafikony.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listGrafikony.Parent" xml:space="preserve">
+    <value>tpGrafikony</value>
+  </data>
+  <data name="&gt;&gt;listGrafikony.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>tpGrafikony</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>tpGrafikony</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tpGrafikony.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tpGrafikony.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tpGrafikony.Size" type="System.Drawing.Size, System.Drawing">
+    <value>546, 293</value>
+  </data>
+  <data name="tpGrafikony.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tpGrafikony.Text" xml:space="preserve">
+    <value>Grafikony</value>
+  </data>
+  <data name="&gt;&gt;tpGrafikony.Name" xml:space="preserve">
+    <value>tpGrafikony</value>
+  </data>
+  <data name="&gt;&gt;tpGrafikony.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpGrafikony.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tpGrafikony.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 306</value>
-  </data>
-  <data name="label13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>194, 249</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>452, 17</value>
+    <value>342, 13</value>
   </data>
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -153,17 +306,11 @@
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="listGrafikony.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
   <data name="listGrafikony.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 28</value>
-  </data>
-  <data name="listGrafikony.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>6, 23</value>
   </data>
   <data name="listGrafikony.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 324</value>
+    <value>176, 264</value>
   </data>
   <data name="listGrafikony.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -187,10 +334,13 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 2</value>
+    <value>3, 2</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 17</value>
+    <value>101, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -210,6 +360,216 @@
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="&gt;&gt;bGrafikonEdit.Name" xml:space="preserve">
+    <value>bGrafikonEdit</value>
+  </data>
+  <data name="&gt;&gt;bGrafikonEdit.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bGrafikonEdit.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;bGrafikonEdit.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;bEditColor.Name" xml:space="preserve">
+    <value>bEditColor</value>
+  </data>
+  <data name="&gt;&gt;bEditColor.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bEditColor.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;bEditColor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pbColor.Name" xml:space="preserve">
+    <value>pbColor</value>
+  </data>
+  <data name="&gt;&gt;pbColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pbColor.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;pbColor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;nudHlaseniePort.Name" xml:space="preserve">
+    <value>nudHlaseniePort</value>
+  </data>
+  <data name="&gt;&gt;nudHlaseniePort.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudHlaseniePort.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;nudHlaseniePort.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;nudTabPort.Name" xml:space="preserve">
+    <value>nudTabPort</value>
+  </data>
+  <data name="&gt;&gt;nudTabPort.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudTabPort.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;nudTabPort.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;tbGrafikonPath.Name" xml:space="preserve">
+    <value>tbGrafikonPath</value>
+  </data>
+  <data name="&gt;&gt;tbGrafikonPath.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbGrafikonPath.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;tbGrafikonPath.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;tbGrafikonObdobie.Name" xml:space="preserve">
+    <value>tbGrafikonObdobie</value>
+  </data>
+  <data name="&gt;&gt;tbGrafikonObdobie.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbGrafikonObdobie.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;tbGrafikonObdobie.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;tbGrafikonStanica.Name" xml:space="preserve">
+    <value>tbGrafikonStanica</value>
+  </data>
+  <data name="&gt;&gt;tbGrafikonStanica.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbGrafikonStanica.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;tbGrafikonStanica.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;bGrafikonDelete.Name" xml:space="preserve">
+    <value>bGrafikonDelete</value>
+  </data>
+  <data name="&gt;&gt;bGrafikonDelete.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bGrafikonDelete.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;bGrafikonDelete.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 20</value>
+  </data>
+  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>345, 223</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Grafikon</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>tpGrafikony</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="bGrafikonEdit.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -217,13 +577,10 @@
     <value>NoControl</value>
   </data>
   <data name="bGrafikonEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 236</value>
-  </data>
-  <data name="bGrafikonEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>66, 192</value>
   </data>
   <data name="bGrafikonEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bGrafikonEdit.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -235,7 +592,7 @@
     <value>bGrafikonEdit</value>
   </data>
   <data name="&gt;&gt;bGrafikonEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bGrafikonEdit.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -250,13 +607,10 @@
     <value>NoControl</value>
   </data>
   <data name="bEditColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 178</value>
-  </data>
-  <data name="bEditColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>152, 145</value>
   </data>
   <data name="bEditColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 27</value>
+    <value>89, 23</value>
   </data>
   <data name="bEditColor.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -268,7 +622,7 @@
     <value>bEditColor</value>
   </data>
   <data name="&gt;&gt;bEditColor.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bEditColor.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -286,13 +640,10 @@
     <value />
   </data>
   <data name="pbColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 178</value>
-  </data>
-  <data name="pbColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>126, 145</value>
   </data>
   <data name="pbColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 27</value>
+    <value>21, 22</value>
   </data>
   <data name="pbColor.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -316,13 +667,10 @@
     <value>NoControl</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 183</value>
-  </data>
-  <data name="label12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>4, 149</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 17</value>
+    <value>74, 13</value>
   </data>
   <data name="label12.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -343,13 +691,10 @@
     <value>3</value>
   </data>
   <data name="nudHlaseniePort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 148</value>
-  </data>
-  <data name="nudHlaseniePort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>126, 120</value>
   </data>
   <data name="nudHlaseniePort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 22</value>
+    <value>75, 20</value>
   </data>
   <data name="nudHlaseniePort.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -358,7 +703,7 @@
     <value>nudHlaseniePort</value>
   </data>
   <data name="&gt;&gt;nudHlaseniePort.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudHlaseniePort.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -367,13 +712,10 @@
     <value>4</value>
   </data>
   <data name="nudTabPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 119</value>
-  </data>
-  <data name="nudTabPort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>126, 97</value>
   </data>
   <data name="nudTabPort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 22</value>
+    <value>75, 20</value>
   </data>
   <data name="nudTabPort.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -382,7 +724,7 @@
     <value>nudTabPort</value>
   </data>
   <data name="&gt;&gt;nudTabPort.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudTabPort.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -397,13 +739,10 @@
     <value>NoControl</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 150</value>
-  </data>
-  <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>4, 122</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 17</value>
+    <value>113, 13</value>
   </data>
   <data name="label11.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -430,13 +769,10 @@
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 121</value>
-  </data>
-  <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>4, 98</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 17</value>
+    <value>79, 13</value>
   </data>
   <data name="label10.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -457,13 +793,13 @@
     <value>7</value>
   </data>
   <data name="tbGrafikonPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 86</value>
+    <value>66, 70</value>
   </data>
   <data name="tbGrafikonPath.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbGrafikonPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>353, 22</value>
+    <value>265, 20</value>
   </data>
   <data name="tbGrafikonPath.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -472,7 +808,7 @@
     <value>tbGrafikonPath</value>
   </data>
   <data name="&gt;&gt;tbGrafikonPath.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbGrafikonPath.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -487,10 +823,13 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 88</value>
+    <value>4, 72</value>
+  </data>
+  <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 17</value>
+    <value>54, 13</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -511,13 +850,13 @@
     <value>9</value>
   </data>
   <data name="tbGrafikonObdobie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 57</value>
+    <value>66, 46</value>
   </data>
   <data name="tbGrafikonObdobie.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbGrafikonObdobie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>353, 22</value>
+    <value>265, 20</value>
   </data>
   <data name="tbGrafikonObdobie.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -526,7 +865,7 @@
     <value>tbGrafikonObdobie</value>
   </data>
   <data name="&gt;&gt;tbGrafikonObdobie.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbGrafikonObdobie.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -541,10 +880,13 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 59</value>
+    <value>4, 48</value>
+  </data>
+  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
+    <value>50, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -565,13 +907,13 @@
     <value>11</value>
   </data>
   <data name="tbGrafikonStanica.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 27</value>
+    <value>66, 22</value>
   </data>
   <data name="tbGrafikonStanica.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbGrafikonStanica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>353, 22</value>
+    <value>265, 20</value>
   </data>
   <data name="tbGrafikonStanica.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -580,7 +922,7 @@
     <value>tbGrafikonStanica</value>
   </data>
   <data name="&gt;&gt;tbGrafikonStanica.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbGrafikonStanica.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -595,13 +937,13 @@
     <value>NoControl</value>
   </data>
   <data name="bGrafikonDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 236</value>
+    <value>197, 192</value>
   </data>
   <data name="bGrafikonDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bGrafikonDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 27</value>
+    <value>77, 23</value>
   </data>
   <data name="bGrafikonDelete.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -613,7 +955,7 @@
     <value>bGrafikonDelete</value>
   </data>
   <data name="&gt;&gt;bGrafikonDelete.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bGrafikonDelete.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -628,10 +970,13 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 29</value>
+    <value>4, 24</value>
+  </data>
+  <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 17</value>
+    <value>46, 13</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -651,61 +996,121 @@
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 25</value>
+  <data name="&gt;&gt;dgvLanguagesRawBank.Name" xml:space="preserve">
+    <value>dgvLanguagesRawBank</value>
   </data>
-  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+  <data name="&gt;&gt;dgvLanguagesRawBank.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+  <data name="&gt;&gt;dgvLanguagesRawBank.Parent" xml:space="preserve">
+    <value>tpJazyky</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>460, 274</value>
+  <data name="&gt;&gt;dgvLanguagesRawBank.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Grafikon</value>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>tpJazyky</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>tpGrafikony</value>
+  <data name="&gt;&gt;listLanguages.Name" xml:space="preserve">
+    <value>listLanguages</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;listLanguages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tpGrafikony.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
+  <data name="&gt;&gt;listLanguages.Parent" xml:space="preserve">
+    <value>tpJazyky</value>
   </data>
-  <data name="tpGrafikony.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="tpGrafikony.Size" type="System.Drawing.Size, System.Drawing">
-    <value>731, 364</value>
-  </data>
-  <data name="tpGrafikony.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;listLanguages.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tpGrafikony.Text" xml:space="preserve">
-    <value>Grafikony</value>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
   </data>
-  <data name="&gt;&gt;tpGrafikony.Name" xml:space="preserve">
-    <value>tpGrafikony</value>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tpGrafikony.Type" xml:space="preserve">
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>tpJazyky</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>tpJazyky</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tpJazyky.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tpJazyky.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tpJazyky.Size" type="System.Drawing.Size, System.Drawing">
+    <value>546, 293</value>
+  </data>
+  <data name="tpJazyky.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tpJazyky.Text" xml:space="preserve">
+    <value>Jazyky</value>
+  </data>
+  <data name="&gt;&gt;tpJazyky.Name" xml:space="preserve">
+    <value>tpJazyky</value>
+  </data>
+  <data name="&gt;&gt;tpJazyky.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tpGrafikony.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tpJazyky.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tpGrafikony.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tpJazyky.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="languageBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>190, 17</value>
+  </metadata>
+  <data name="dgvLanguagesRawBank.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 176</value>
+  </data>
+  <data name="dgvLanguagesRawBank.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="dgvLanguagesRawBank.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="dgvLanguagesRawBank.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 110</value>
+  </data>
+  <data name="dgvLanguagesRawBank.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="&gt;&gt;dgvLanguagesRawBank.Name" xml:space="preserve">
+    <value>dgvLanguagesRawBank</value>
+  </data>
+  <data name="&gt;&gt;dgvLanguagesRawBank.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvLanguagesRawBank.Parent" xml:space="preserve">
+    <value>tpJazyky</value>
+  </data>
+  <data name="&gt;&gt;dgvLanguagesRawBank.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="keyDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
@@ -726,30 +1131,6 @@
   <metadata name="languageBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>190, 17</value>
   </metadata>
-  <data name="dgvLanguagesRawBank.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 216</value>
-  </data>
-  <data name="dgvLanguagesRawBank.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="dgvLanguagesRawBank.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 136</value>
-  </data>
-  <data name="dgvLanguagesRawBank.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="&gt;&gt;dgvLanguagesRawBank.Name" xml:space="preserve">
-    <value>dgvLanguagesRawBank</value>
-  </data>
-  <data name="&gt;&gt;dgvLanguagesRawBank.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvLanguagesRawBank.Parent" xml:space="preserve">
-    <value>tpJazyky</value>
-  </data>
-  <data name="&gt;&gt;dgvLanguagesRawBank.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -757,10 +1138,13 @@
     <value>NoControl</value>
   </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 189</value>
+    <value>194, 154</value>
+  </data>
+  <data name="label19.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 17</value>
+    <value>180, 13</value>
   </data>
   <data name="label19.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -780,17 +1164,11 @@
   <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="listLanguages.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
   <data name="listLanguages.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 28</value>
-  </data>
-  <data name="listLanguages.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>6, 23</value>
   </data>
   <data name="listLanguages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 324</value>
+    <value>176, 264</value>
   </data>
   <data name="listLanguages.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -814,10 +1192,13 @@
     <value>NoControl</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 2</value>
+    <value>3, 2</value>
+  </data>
+  <data name="label15.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 17</value>
+    <value>87, 13</value>
   </data>
   <data name="label15.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -837,14 +1218,140 @@
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;tbLanguageSkratka.Name" xml:space="preserve">
+    <value>tbLanguageSkratka</value>
+  </data>
+  <data name="&gt;&gt;tbLanguageSkratka.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbLanguageSkratka.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;tbLanguageSkratka.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbIsBasic.Name" xml:space="preserve">
+    <value>cbIsBasic</value>
+  </data>
+  <data name="&gt;&gt;cbIsBasic.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbIsBasic.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;cbIsBasic.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbLanguageName.Name" xml:space="preserve">
+    <value>tbLanguageName</value>
+  </data>
+  <data name="&gt;&gt;tbLanguageName.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbLanguageName.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;tbLanguageName.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;bLanguageRemove.Name" xml:space="preserve">
+    <value>bLanguageRemove</value>
+  </data>
+  <data name="&gt;&gt;bLanguageRemove.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bLanguageRemove.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;bLanguageRemove.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;bLanguageEdit.Name" xml:space="preserve">
+    <value>bLanguageEdit</value>
+  </data>
+  <data name="&gt;&gt;bLanguageEdit.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bLanguageEdit.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;bLanguageEdit.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;bLanguageAdd.Name" xml:space="preserve">
+    <value>bLanguageAdd</value>
+  </data>
+  <data name="&gt;&gt;bLanguageAdd.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bLanguageAdd.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;bLanguageAdd.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 20</value>
+  </data>
+  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>345, 128</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>tpJazyky</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="tbLanguageSkratka.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 62</value>
+    <value>81, 50</value>
   </data>
   <data name="tbLanguageSkratka.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbLanguageSkratka.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 22</value>
+    <value>76, 20</value>
   </data>
   <data name="tbLanguageSkratka.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -853,7 +1360,7 @@
     <value>tbLanguageSkratka</value>
   </data>
   <data name="&gt;&gt;tbLanguageSkratka.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbLanguageSkratka.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -868,10 +1375,13 @@
     <value>NoControl</value>
   </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 65</value>
+    <value>26, 53</value>
+  </data>
+  <data name="label17.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 17</value>
+    <value>47, 13</value>
   </data>
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -898,13 +1408,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbIsBasic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 62</value>
+    <value>199, 50</value>
   </data>
   <data name="cbIsBasic.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbIsBasic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 21</value>
+    <value>86, 17</value>
   </data>
   <data name="cbIsBasic.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -916,7 +1426,7 @@
     <value>cbIsBasic</value>
   </data>
   <data name="&gt;&gt;cbIsBasic.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbIsBasic.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -925,13 +1435,13 @@
     <value>2</value>
   </data>
   <data name="tbLanguageName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 26</value>
+    <value>81, 21</value>
   </data>
   <data name="tbLanguageName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbLanguageName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>265, 22</value>
+    <value>200, 20</value>
   </data>
   <data name="tbLanguageName.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -940,7 +1450,7 @@
     <value>tbLanguageName</value>
   </data>
   <data name="&gt;&gt;tbLanguageName.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbLanguageName.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -955,13 +1465,13 @@
     <value>NoControl</value>
   </data>
   <data name="bLanguageRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>340, 108</value>
+    <value>255, 88</value>
   </data>
   <data name="bLanguageRemove.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bLanguageRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 27</value>
+    <value>77, 23</value>
   </data>
   <data name="bLanguageRemove.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -973,7 +1483,7 @@
     <value>bLanguageRemove</value>
   </data>
   <data name="&gt;&gt;bLanguageRemove.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bLanguageRemove.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -988,13 +1498,13 @@
     <value>NoControl</value>
   </data>
   <data name="bLanguageEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>191, 108</value>
+    <value>143, 88</value>
   </data>
   <data name="bLanguageEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bLanguageEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 27</value>
+    <value>64, 23</value>
   </data>
   <data name="bLanguageEdit.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -1006,7 +1516,7 @@
     <value>bLanguageEdit</value>
   </data>
   <data name="&gt;&gt;bLanguageEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bLanguageEdit.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -1021,13 +1531,13 @@
     <value>NoControl</value>
   </data>
   <data name="bLanguageAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 108</value>
+    <value>28, 88</value>
   </data>
   <data name="bLanguageAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bLanguageAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 27</value>
+    <value>56, 23</value>
   </data>
   <data name="bLanguageAdd.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -1039,7 +1549,7 @@
     <value>bLanguageAdd</value>
   </data>
   <data name="&gt;&gt;bLanguageAdd.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bLanguageAdd.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -1054,10 +1564,13 @@
     <value>NoControl</value>
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 31</value>
+    <value>26, 25</value>
+  </data>
+  <data name="label16.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 17</value>
+    <value>41, 13</value>
   </data>
   <data name="label16.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -1077,77 +1590,74 @@
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 25</value>
+  <data name="&gt;&gt;listMeskania.Name" xml:space="preserve">
+    <value>listMeskania</value>
   </data>
-  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+  <data name="&gt;&gt;listMeskania.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+  <data name="&gt;&gt;listMeskania.Parent" xml:space="preserve">
+    <value>tpMeskania</value>
   </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>460, 158</value>
+  <data name="&gt;&gt;listMeskania.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
+  <data name="&gt;&gt;label38.Name" xml:space="preserve">
+    <value>label38</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Jazyk</value>
+  <data name="&gt;&gt;label38.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
+  <data name="&gt;&gt;label38.Parent" xml:space="preserve">
+    <value>tpMeskania</value>
   </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>tpJazyky</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tpJazyky.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="tpJazyky.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="tpJazyky.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="tpJazyky.Size" type="System.Drawing.Size, System.Drawing">
-    <value>731, 364</value>
-  </data>
-  <data name="tpJazyky.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;label38.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tpJazyky.Text" xml:space="preserve">
-    <value>Jazyky</value>
+  <data name="&gt;&gt;groupBox10.Name" xml:space="preserve">
+    <value>groupBox10</value>
   </data>
-  <data name="&gt;&gt;tpJazyky.Name" xml:space="preserve">
-    <value>tpJazyky</value>
+  <data name="&gt;&gt;groupBox10.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tpJazyky.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBox10.Parent" xml:space="preserve">
+    <value>tpMeskania</value>
+  </data>
+  <data name="&gt;&gt;groupBox10.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tpMeskania.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tpMeskania.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tpMeskania.Size" type="System.Drawing.Size, System.Drawing">
+    <value>546, 293</value>
+  </data>
+  <data name="tpMeskania.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tpMeskania.Text" xml:space="preserve">
+    <value>Meškania</value>
+  </data>
+  <data name="&gt;&gt;tpMeskania.Name" xml:space="preserve">
+    <value>tpMeskania</value>
+  </data>
+  <data name="&gt;&gt;tpMeskania.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tpJazyky.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tpMeskania.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tpJazyky.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="listMeskania.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
+  <data name="&gt;&gt;tpMeskania.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="listMeskania.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 28</value>
-  </data>
-  <data name="listMeskania.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>6, 23</value>
   </data>
   <data name="listMeskania.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 324</value>
+    <value>176, 264</value>
   </data>
   <data name="listMeskania.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1171,10 +1681,13 @@
     <value>NoControl</value>
   </data>
   <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 2</value>
+    <value>3, 2</value>
+  </data>
+  <data name="label38.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 17</value>
+    <value>128, 13</value>
   </data>
   <data name="label38.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1194,14 +1707,101 @@
   <data name="&gt;&gt;label38.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="nudMeskanie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 52</value>
+  <data name="&gt;&gt;nudMeskanie.Name" xml:space="preserve">
+    <value>nudMeskanie</value>
   </data>
-  <data name="nudMeskanie.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="&gt;&gt;nudMeskanie.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudMeskanie.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;nudMeskanie.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;bMeskanieDelete.Name" xml:space="preserve">
+    <value>bMeskanieDelete</value>
+  </data>
+  <data name="&gt;&gt;bMeskanieDelete.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bMeskanieDelete.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;bMeskanieDelete.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;bMeskanieEdit.Name" xml:space="preserve">
+    <value>bMeskanieEdit</value>
+  </data>
+  <data name="&gt;&gt;bMeskanieEdit.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bMeskanieEdit.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;bMeskanieEdit.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;bMeskanieAdd.Name" xml:space="preserve">
+    <value>bMeskanieAdd</value>
+  </data>
+  <data name="&gt;&gt;bMeskanieAdd.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bMeskanieAdd.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;bMeskanieAdd.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label39.Name" xml:space="preserve">
+    <value>label39</value>
+  </data>
+  <data name="&gt;&gt;label39.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label39.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;label39.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 20</value>
+  </data>
+  <data name="groupBox10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox10.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 137</value>
+  </data>
+  <data name="groupBox10.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="groupBox10.Text" xml:space="preserve">
+    <value>Čas meškania</value>
+  </data>
+  <data name="&gt;&gt;groupBox10.Name" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;groupBox10.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupBox10.Parent" xml:space="preserve">
+    <value>tpMeskania</value>
+  </data>
+  <data name="&gt;&gt;groupBox10.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="nudMeskanie.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 42</value>
   </data>
   <data name="nudMeskanie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 22</value>
+    <value>79, 20</value>
   </data>
   <data name="nudMeskanie.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1210,7 +1810,7 @@
     <value>nudMeskanie</value>
   </data>
   <data name="&gt;&gt;nudMeskanie.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudMeskanie.Parent" xml:space="preserve">
     <value>groupBox10</value>
@@ -1225,13 +1825,13 @@
     <value>NoControl</value>
   </data>
   <data name="bMeskanieDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>333, 113</value>
+    <value>250, 92</value>
   </data>
   <data name="bMeskanieDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bMeskanieDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 27</value>
+    <value>62, 23</value>
   </data>
   <data name="bMeskanieDelete.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1243,7 +1843,7 @@
     <value>bMeskanieDelete</value>
   </data>
   <data name="&gt;&gt;bMeskanieDelete.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bMeskanieDelete.Parent" xml:space="preserve">
     <value>groupBox10</value>
@@ -1258,13 +1858,13 @@
     <value>NoControl</value>
   </data>
   <data name="bMeskanieEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 113</value>
+    <value>132, 92</value>
   </data>
   <data name="bMeskanieEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bMeskanieEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 27</value>
+    <value>62, 23</value>
   </data>
   <data name="bMeskanieEdit.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1276,7 +1876,7 @@
     <value>bMeskanieEdit</value>
   </data>
   <data name="&gt;&gt;bMeskanieEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bMeskanieEdit.Parent" xml:space="preserve">
     <value>groupBox10</value>
@@ -1291,13 +1891,13 @@
     <value>NoControl</value>
   </data>
   <data name="bMeskanieAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 113</value>
+    <value>23, 92</value>
   </data>
   <data name="bMeskanieAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bMeskanieAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 27</value>
+    <value>65, 23</value>
   </data>
   <data name="bMeskanieAdd.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1309,7 +1909,7 @@
     <value>bMeskanieAdd</value>
   </data>
   <data name="&gt;&gt;bMeskanieAdd.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bMeskanieAdd.Parent" xml:space="preserve">
     <value>groupBox10</value>
@@ -1324,10 +1924,13 @@
     <value>NoControl</value>
   </data>
   <data name="label39.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 54</value>
+    <value>21, 44</value>
+  </data>
+  <data name="label39.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label39.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 17</value>
+    <value>76, 13</value>
   </data>
   <data name="label39.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1347,65 +1950,221 @@
   <data name="&gt;&gt;label39.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="groupBox10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 25</value>
+  <data name="&gt;&gt;groupBox11.Name" xml:space="preserve">
+    <value>groupBox11</value>
   </data>
-  <data name="groupBox10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+  <data name="&gt;&gt;groupBox11.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="groupBox10.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+  <data name="&gt;&gt;groupBox11.Parent" xml:space="preserve">
+    <value>tpTrainTypes</value>
   </data>
-  <data name="groupBox10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>435, 169</value>
+  <data name="&gt;&gt;groupBox11.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="groupBox10.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="&gt;&gt;listTrainTypes.Name" xml:space="preserve">
+    <value>listTrainTypes</value>
   </data>
-  <data name="groupBox10.Text" xml:space="preserve">
-    <value>Čas meškania</value>
+  <data name="&gt;&gt;listTrainTypes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox10.Name" xml:space="preserve">
-    <value>groupBox10</value>
+  <data name="&gt;&gt;listTrainTypes.Parent" xml:space="preserve">
+    <value>tpTrainTypes</value>
   </data>
-  <data name="&gt;&gt;groupBox10.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;listTrainTypes.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;groupBox10.Parent" xml:space="preserve">
-    <value>tpMeskania</value>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
   </data>
-  <data name="&gt;&gt;groupBox10.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>tpTrainTypes</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tpMeskania.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
   </data>
-  <data name="tpMeskania.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="tpMeskania.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>tpTrainTypes</value>
   </data>
-  <data name="tpMeskania.Size" type="System.Drawing.Size, System.Drawing">
-    <value>731, 364</value>
-  </data>
-  <data name="tpMeskania.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tpMeskania.Text" xml:space="preserve">
-    <value>Meškania</value>
+  <data name="tpTrainTypes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;tpMeskania.Name" xml:space="preserve">
-    <value>tpMeskania</value>
+  <data name="tpTrainTypes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="&gt;&gt;tpMeskania.Type" xml:space="preserve">
+  <data name="tpTrainTypes.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tpTrainTypes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>546, 293</value>
+  </data>
+  <data name="tpTrainTypes.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tpTrainTypes.Text" xml:space="preserve">
+    <value>Typy vlakov</value>
+  </data>
+  <data name="&gt;&gt;tpTrainTypes.Name" xml:space="preserve">
+    <value>tpTrainTypes</value>
+  </data>
+  <data name="&gt;&gt;tpTrainTypes.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tpMeskania.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tpTrainTypes.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tpMeskania.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tpTrainTypes.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label42.Name" xml:space="preserve">
+    <value>label42</value>
+  </data>
+  <data name="&gt;&gt;label42.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label42.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;label42.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tbCustomTrainTypText.Name" xml:space="preserve">
+    <value>tbCustomTrainTypText</value>
+  </data>
+  <data name="&gt;&gt;tbCustomTrainTypText.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbCustomTrainTypText.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;tbCustomTrainTypText.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tbCustomTrainTypSkratka.Name" xml:space="preserve">
+    <value>tbCustomTrainTypSkratka</value>
+  </data>
+  <data name="&gt;&gt;tbCustomTrainTypSkratka.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbCustomTrainTypSkratka.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;tbCustomTrainTypSkratka.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;label41.Name" xml:space="preserve">
+    <value>label41</value>
+  </data>
+  <data name="&gt;&gt;label41.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label41.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;label41.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cbCustomTrainTypDruh.Name" xml:space="preserve">
+    <value>cbCustomTrainTypDruh</value>
+  </data>
+  <data name="&gt;&gt;cbCustomTrainTypDruh.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbCustomTrainTypDruh.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;cbCustomTrainTypDruh.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label40.Name" xml:space="preserve">
+    <value>label40</value>
+  </data>
+  <data name="&gt;&gt;label40.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label40.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;label40.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;bCustomTrainTypDelete.Name" xml:space="preserve">
+    <value>bCustomTrainTypDelete</value>
+  </data>
+  <data name="&gt;&gt;bCustomTrainTypDelete.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bCustomTrainTypDelete.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;bCustomTrainTypDelete.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;bCustomTrainTypAdd.Name" xml:space="preserve">
+    <value>bCustomTrainTypAdd</value>
+  </data>
+  <data name="&gt;&gt;bCustomTrainTypAdd.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bCustomTrainTypAdd.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;bCustomTrainTypAdd.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;bCustomTrainTypEdit.Name" xml:space="preserve">
+    <value>bCustomTrainTypEdit</value>
+  </data>
+  <data name="&gt;&gt;bCustomTrainTypEdit.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bCustomTrainTypEdit.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;bCustomTrainTypEdit.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="groupBox11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 119</value>
+  </data>
+  <data name="groupBox11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox11.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 149</value>
+  </data>
+  <data name="groupBox11.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="groupBox11.Text" xml:space="preserve">
+    <value>Typ vlaku (používateľom definované)</value>
+  </data>
+  <data name="&gt;&gt;groupBox11.Name" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;groupBox11.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupBox11.Parent" xml:space="preserve">
+    <value>tpTrainTypes</value>
+  </data>
+  <data name="&gt;&gt;groupBox11.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label42.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1414,10 +2173,13 @@
     <value>NoControl</value>
   </data>
   <data name="label42.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 97</value>
+    <value>21, 79</value>
+  </data>
+  <data name="label42.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label42.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 17</value>
+    <value>74, 13</value>
   </data>
   <data name="label42.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -1438,13 +2200,13 @@
     <value>0</value>
   </data>
   <data name="tbCustomTrainTypText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 94</value>
+    <value>98, 76</value>
   </data>
   <data name="tbCustomTrainTypText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbCustomTrainTypText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 22</value>
+    <value>213, 20</value>
   </data>
   <data name="tbCustomTrainTypText.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1453,7 +2215,7 @@
     <value>tbCustomTrainTypText</value>
   </data>
   <data name="&gt;&gt;tbCustomTrainTypText.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbCustomTrainTypText.Parent" xml:space="preserve">
     <value>groupBox11</value>
@@ -1462,13 +2224,13 @@
     <value>1</value>
   </data>
   <data name="tbCustomTrainTypSkratka.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 63</value>
+    <value>98, 51</value>
   </data>
   <data name="tbCustomTrainTypSkratka.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbCustomTrainTypSkratka.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 22</value>
+    <value>65, 20</value>
   </data>
   <data name="tbCustomTrainTypSkratka.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1477,7 +2239,7 @@
     <value>tbCustomTrainTypSkratka</value>
   </data>
   <data name="&gt;&gt;tbCustomTrainTypSkratka.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbCustomTrainTypSkratka.Parent" xml:space="preserve">
     <value>groupBox11</value>
@@ -1492,10 +2254,13 @@
     <value>NoControl</value>
   </data>
   <data name="label41.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 66</value>
+    <value>21, 54</value>
+  </data>
+  <data name="label41.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label41.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 17</value>
+    <value>47, 13</value>
   </data>
   <data name="label41.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1528,13 +2293,13 @@
     <value>Pre služobné vlaky</value>
   </data>
   <data name="cbCustomTrainTypDruh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 31</value>
+    <value>98, 25</value>
   </data>
   <data name="cbCustomTrainTypDruh.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbCustomTrainTypDruh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 24</value>
+    <value>213, 21</value>
   </data>
   <data name="cbCustomTrainTypDruh.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1543,7 +2308,7 @@
     <value>cbCustomTrainTypDruh</value>
   </data>
   <data name="&gt;&gt;cbCustomTrainTypDruh.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbCustomTrainTypDruh.Parent" xml:space="preserve">
     <value>groupBox11</value>
@@ -1558,10 +2323,13 @@
     <value>NoControl</value>
   </data>
   <data name="label40.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 34</value>
+    <value>21, 28</value>
+  </data>
+  <data name="label40.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label40.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 17</value>
+    <value>69, 13</value>
   </data>
   <data name="label40.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1588,13 +2356,13 @@
     <value>NoControl</value>
   </data>
   <data name="bCustomTrainTypDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>331, 135</value>
+    <value>248, 110</value>
   </data>
   <data name="bCustomTrainTypDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bCustomTrainTypDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 27</value>
+    <value>62, 23</value>
   </data>
   <data name="bCustomTrainTypDelete.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1606,7 +2374,7 @@
     <value>bCustomTrainTypDelete</value>
   </data>
   <data name="&gt;&gt;bCustomTrainTypDelete.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bCustomTrainTypDelete.Parent" xml:space="preserve">
     <value>groupBox11</value>
@@ -1621,13 +2389,13 @@
     <value>NoControl</value>
   </data>
   <data name="bCustomTrainTypAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 135</value>
+    <value>23, 110</value>
   </data>
   <data name="bCustomTrainTypAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bCustomTrainTypAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 27</value>
+    <value>65, 23</value>
   </data>
   <data name="bCustomTrainTypAdd.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1639,7 +2407,7 @@
     <value>bCustomTrainTypAdd</value>
   </data>
   <data name="&gt;&gt;bCustomTrainTypAdd.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bCustomTrainTypAdd.Parent" xml:space="preserve">
     <value>groupBox11</value>
@@ -1654,13 +2422,13 @@
     <value>NoControl</value>
   </data>
   <data name="bCustomTrainTypEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 135</value>
+    <value>133, 110</value>
   </data>
   <data name="bCustomTrainTypEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bCustomTrainTypEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 27</value>
+    <value>62, 23</value>
   </data>
   <data name="bCustomTrainTypEdit.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1672,7 +2440,7 @@
     <value>bCustomTrainTypEdit</value>
   </data>
   <data name="&gt;&gt;bCustomTrainTypEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bCustomTrainTypEdit.Parent" xml:space="preserve">
     <value>groupBox11</value>
@@ -1680,47 +2448,11 @@
   <data name="&gt;&gt;bCustomTrainTypEdit.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="groupBox11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 146</value>
-  </data>
-  <data name="groupBox11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="groupBox11.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="groupBox11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>435, 183</value>
-  </data>
-  <data name="groupBox11.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="groupBox11.Text" xml:space="preserve">
-    <value>Typ vlaku (používateľom definované)</value>
-  </data>
-  <data name="&gt;&gt;groupBox11.Name" xml:space="preserve">
-    <value>groupBox11</value>
-  </data>
-  <data name="&gt;&gt;groupBox11.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;groupBox11.Parent" xml:space="preserve">
-    <value>tpTrainTypes</value>
-  </data>
-  <data name="&gt;&gt;groupBox11.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="listTrainTypes.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
   <data name="listTrainTypes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 28</value>
-  </data>
-  <data name="listTrainTypes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>6, 23</value>
   </data>
   <data name="listTrainTypes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 324</value>
+    <value>176, 264</value>
   </data>
   <data name="listTrainTypes.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1744,10 +2476,13 @@
     <value>NoControl</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 2</value>
+    <value>3, 2</value>
+  </data>
+  <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 17</value>
+    <value>112, 13</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1767,14 +2502,104 @@
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="&gt;&gt;cbDefTrainTypSkratka.Name" xml:space="preserve">
+    <value>cbDefTrainTypSkratka</value>
+  </data>
+  <data name="&gt;&gt;cbDefTrainTypSkratka.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbDefTrainTypSkratka.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;cbDefTrainTypSkratka.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;bDefTrainTypDelete.Name" xml:space="preserve">
+    <value>bDefTrainTypDelete</value>
+  </data>
+  <data name="&gt;&gt;bDefTrainTypDelete.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bDefTrainTypDelete.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;bDefTrainTypDelete.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;bDefTrainTypEdit.Name" xml:space="preserve">
+    <value>bDefTrainTypEdit</value>
+  </data>
+  <data name="&gt;&gt;bDefTrainTypEdit.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bDefTrainTypEdit.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;bDefTrainTypEdit.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;bDefTrainTypAdd.Name" xml:space="preserve">
+    <value>bDefTrainTypAdd</value>
+  </data>
+  <data name="&gt;&gt;bDefTrainTypAdd.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bDefTrainTypAdd.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;bDefTrainTypAdd.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 20</value>
+  </data>
+  <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 95</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Typ vlaku (predvolené)</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>tpTrainTypes</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="cbDefTrainTypSkratka.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 28</value>
+    <value>98, 23</value>
   </data>
   <data name="cbDefTrainTypSkratka.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbDefTrainTypSkratka.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 24</value>
+    <value>65, 21</value>
   </data>
   <data name="cbDefTrainTypSkratka.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1783,7 +2608,7 @@
     <value>cbDefTrainTypSkratka</value>
   </data>
   <data name="&gt;&gt;cbDefTrainTypSkratka.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDefTrainTypSkratka.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1798,13 +2623,13 @@
     <value>NoControl</value>
   </data>
   <data name="bDefTrainTypDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>331, 66</value>
+    <value>248, 54</value>
   </data>
   <data name="bDefTrainTypDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bDefTrainTypDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 27</value>
+    <value>62, 23</value>
   </data>
   <data name="bDefTrainTypDelete.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1816,7 +2641,7 @@
     <value>bDefTrainTypDelete</value>
   </data>
   <data name="&gt;&gt;bDefTrainTypDelete.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bDefTrainTypDelete.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1831,13 +2656,13 @@
     <value>NoControl</value>
   </data>
   <data name="bDefTrainTypEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 66</value>
+    <value>133, 54</value>
   </data>
   <data name="bDefTrainTypEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bDefTrainTypEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 27</value>
+    <value>62, 23</value>
   </data>
   <data name="bDefTrainTypEdit.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1849,7 +2674,7 @@
     <value>bDefTrainTypEdit</value>
   </data>
   <data name="&gt;&gt;bDefTrainTypEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bDefTrainTypEdit.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1864,13 +2689,13 @@
     <value>NoControl</value>
   </data>
   <data name="bDefTrainTypAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 66</value>
+    <value>23, 54</value>
   </data>
   <data name="bDefTrainTypAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bDefTrainTypAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 27</value>
+    <value>65, 23</value>
   </data>
   <data name="bDefTrainTypAdd.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1882,7 +2707,7 @@
     <value>bDefTrainTypAdd</value>
   </data>
   <data name="&gt;&gt;bDefTrainTypAdd.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bDefTrainTypAdd.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1897,10 +2722,13 @@
     <value>NoControl</value>
   </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 31</value>
+    <value>21, 25</value>
+  </data>
+  <data name="label18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 17</value>
+    <value>47, 13</value>
   </data>
   <data name="label18.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1920,77 +2748,77 @@
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 25</value>
+  <data name="&gt;&gt;listAudio.Name" xml:space="preserve">
+    <value>listAudio</value>
   </data>
-  <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+  <data name="&gt;&gt;listAudio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+  <data name="&gt;&gt;listAudio.Parent" xml:space="preserve">
+    <value>tpAudio</value>
   </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>435, 117</value>
+  <data name="&gt;&gt;listAudio.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Typ vlaku (predvolené)</value>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>tpAudio</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>tpTrainTypes</value>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="tpTrainTypes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>tpAudio</value>
   </data>
-  <data name="tpTrainTypes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="tpTrainTypes.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+  <data name="tpAudio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="tpTrainTypes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>731, 364</value>
+  <data name="tpAudio.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="tpTrainTypes.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="tpAudio.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="tpTrainTypes.Text" xml:space="preserve">
-    <value>Typy vlakov</value>
+  <data name="tpAudio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>546, 293</value>
   </data>
-  <data name="&gt;&gt;tpTrainTypes.Name" xml:space="preserve">
-    <value>tpTrainTypes</value>
+  <data name="tpAudio.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;tpTrainTypes.Type" xml:space="preserve">
+  <data name="tpAudio.Text" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="&gt;&gt;tpAudio.Name" xml:space="preserve">
+    <value>tpAudio</value>
+  </data>
+  <data name="&gt;&gt;tpAudio.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tpTrainTypes.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tpAudio.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tpTrainTypes.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="listAudio.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
+  <data name="&gt;&gt;tpAudio.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="listAudio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 28</value>
-  </data>
-  <data name="listAudio.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>6, 23</value>
   </data>
   <data name="listAudio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 324</value>
+    <value>176, 264</value>
   </data>
   <data name="listAudio.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -2014,10 +2842,13 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 2</value>
+    <value>3, 2</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 17</value>
+    <value>104, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -2037,14 +2868,185 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tbAudioName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 65</value>
+  <data name="&gt;&gt;tbAudioName.Name" xml:space="preserve">
+    <value>tbAudioName</value>
   </data>
-  <data name="tbAudioName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="&gt;&gt;tbAudioName.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbAudioName.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;tbAudioName.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbAudioNazovFronta.Name" xml:space="preserve">
+    <value>tbAudioNazovFronta</value>
+  </data>
+  <data name="&gt;&gt;tbAudioNazovFronta.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbAudioNazovFronta.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;tbAudioNazovFronta.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tbAudioNazovSkratka.Name" xml:space="preserve">
+    <value>tbAudioNazovSkratka</value>
+  </data>
+  <data name="&gt;&gt;tbAudioNazovSkratka.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbAudioNazovSkratka.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;tbAudioNazovSkratka.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;cbCustomOnly.Name" xml:space="preserve">
+    <value>cbCustomOnly</value>
+  </data>
+  <data name="&gt;&gt;cbCustomOnly.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbCustomOnly.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;cbCustomOnly.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;cbAudioStanica.Name" xml:space="preserve">
+    <value>cbAudioStanica</value>
+  </data>
+  <data name="&gt;&gt;cbAudioStanica.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbAudioStanica.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;cbAudioStanica.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;bAudioDelete.Name" xml:space="preserve">
+    <value>bAudioDelete</value>
+  </data>
+  <data name="&gt;&gt;bAudioDelete.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bAudioDelete.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;bAudioDelete.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;bAudioEdit.Name" xml:space="preserve">
+    <value>bAudioEdit</value>
+  </data>
+  <data name="&gt;&gt;bAudioEdit.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bAudioEdit.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;bAudioEdit.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;bAudioAdd.Name" xml:space="preserve">
+    <value>bAudioAdd</value>
+  </data>
+  <data name="&gt;&gt;bAudioAdd.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bAudioAdd.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;bAudioAdd.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 20</value>
+  </data>
+  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 194</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Audio linka</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>tpAudio</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tbAudioName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 53</value>
   </data>
   <data name="tbAudioName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 22</value>
+    <value>180, 20</value>
   </data>
   <data name="tbAudioName.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -2053,7 +3055,7 @@
     <value>tbAudioName</value>
   </data>
   <data name="&gt;&gt;tbAudioName.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbAudioName.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2068,13 +3070,10 @@
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 69</value>
-  </data>
-  <data name="label8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>21, 56</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 17</value>
+    <value>65, 13</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -2101,10 +3100,13 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 149</value>
+    <value>21, 121</value>
+  </data>
+  <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 17</value>
+    <value>70, 13</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -2125,13 +3127,13 @@
     <value>2</value>
   </data>
   <data name="tbAudioNazovFronta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 145</value>
+    <value>121, 118</value>
   </data>
   <data name="tbAudioNazovFronta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbAudioNazovFronta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 22</value>
+    <value>180, 20</value>
   </data>
   <data name="tbAudioNazovFronta.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -2140,7 +3142,7 @@
     <value>tbAudioNazovFronta</value>
   </data>
   <data name="&gt;&gt;tbAudioNazovFronta.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbAudioNazovFronta.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2149,13 +3151,13 @@
     <value>3</value>
   </data>
   <data name="tbAudioNazovSkratka.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 105</value>
+    <value>121, 85</value>
   </data>
   <data name="tbAudioNazovSkratka.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbAudioNazovSkratka.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 22</value>
+    <value>180, 20</value>
   </data>
   <data name="tbAudioNazovSkratka.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -2164,7 +3166,7 @@
     <value>tbAudioNazovSkratka</value>
   </data>
   <data name="&gt;&gt;tbAudioNazovSkratka.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbAudioNazovSkratka.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2179,10 +3181,13 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 108</value>
+    <value>21, 88</value>
+  </data>
+  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 17</value>
+    <value>88, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -2209,13 +3214,13 @@
     <value>NoControl</value>
   </data>
   <data name="cbCustomOnly.Location" type="System.Drawing.Point, System.Drawing">
-    <value>316, 30</value>
+    <value>237, 24</value>
   </data>
   <data name="cbCustomOnly.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbCustomOnly.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 21</value>
+    <value>78, 17</value>
   </data>
   <data name="cbCustomOnly.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2227,7 +3232,7 @@
     <value>cbCustomOnly</value>
   </data>
   <data name="&gt;&gt;cbCustomOnly.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbCustomOnly.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2236,13 +3241,13 @@
     <value>6</value>
   </data>
   <data name="cbAudioStanica.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 28</value>
+    <value>80, 23</value>
   </data>
   <data name="cbAudioStanica.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbAudioStanica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 24</value>
+    <value>144, 21</value>
   </data>
   <data name="cbAudioStanica.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2251,7 +3256,7 @@
     <value>cbAudioStanica</value>
   </data>
   <data name="&gt;&gt;cbAudioStanica.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbAudioStanica.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2266,13 +3271,13 @@
     <value>NoControl</value>
   </data>
   <data name="bAudioDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>333, 197</value>
+    <value>250, 160</value>
   </data>
   <data name="bAudioDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bAudioDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 27</value>
+    <value>62, 23</value>
   </data>
   <data name="bAudioDelete.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2284,7 +3289,7 @@
     <value>bAudioDelete</value>
   </data>
   <data name="&gt;&gt;bAudioDelete.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bAudioDelete.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2299,13 +3304,13 @@
     <value>NoControl</value>
   </data>
   <data name="bAudioEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 197</value>
+    <value>137, 160</value>
   </data>
   <data name="bAudioEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bAudioEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 27</value>
+    <value>62, 23</value>
   </data>
   <data name="bAudioEdit.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2317,7 +3322,7 @@
     <value>bAudioEdit</value>
   </data>
   <data name="&gt;&gt;bAudioEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bAudioEdit.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2332,13 +3337,13 @@
     <value>NoControl</value>
   </data>
   <data name="bAudioAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 197</value>
+    <value>23, 160</value>
   </data>
   <data name="bAudioAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bAudioAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 27</value>
+    <value>65, 23</value>
   </data>
   <data name="bAudioAdd.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2350,7 +3355,7 @@
     <value>bAudioAdd</value>
   </data>
   <data name="&gt;&gt;bAudioAdd.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bAudioAdd.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2365,10 +3370,13 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 31</value>
+    <value>21, 25</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 17</value>
+    <value>46, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2388,90 +3396,6 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 25</value>
-  </data>
-  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>435, 239</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Audio linka</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>tpAudio</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tpAudio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="tpAudio.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="tpAudio.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
-  </data>
-  <data name="tpAudio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>731, 364</value>
-  </data>
-  <data name="tpAudio.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="tpAudio.Text" xml:space="preserve">
-    <value>Audio</value>
-  </data>
-  <data name="&gt;&gt;tpAudio.Name" xml:space="preserve">
-    <value>tpAudio</value>
-  </data>
-  <data name="&gt;&gt;tpAudio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tpAudio.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tpAudio.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 6</value>
-  </data>
-  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>739, 393</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>ExControls.ExTabControl, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="bSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -2482,13 +3406,10 @@
     <value>NoControl</value>
   </data>
   <data name="bSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 407</value>
-  </data>
-  <data name="bSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>261, 331</value>
   </data>
   <data name="bSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 33</value>
+    <value>51, 27</value>
   </data>
   <data name="bSave.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2500,7 +3421,7 @@
     <value>bSave</value>
   </data>
   <data name="&gt;&gt;bSave.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bSave.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2515,13 +3436,10 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>765, 448</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>574, 364</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Globálne nastavenia</value>

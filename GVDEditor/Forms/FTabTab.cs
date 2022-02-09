@@ -44,7 +44,8 @@ public partial class FTabTab : Form
         sc = scText.scintilla;
         acMenu.TargetControlWrapper = new ScintillaWrapper(sc);
 
-        foreach (var tabTab in FLocalSettings.TabTabs) documents.Add(new TabTabDoc { Document = CreateDocument(tabTab.Text), TabTab = tabTab });
+        foreach (var tabTab in GlobData.TabTabs) 
+            documents.Add(new TabTabDoc { Document = CreateDocument(tabTab.Text), TabTab = tabTab });
 
         lbTabTabs.DataSource = documents;
 
@@ -224,9 +225,9 @@ public partial class FTabTab : Form
             var delete = true;
             var where = " ";
             var index = lbTabTabs.SelectedIndex;
-            var tab = FLocalSettings.TabTabs[index];
+            var tab = GlobData.TabTabs[index];
 
-            foreach (var tc in FLocalSettings.Catalogs)
+            foreach (var tc in GlobData.TableCatalogs)
             {
                 foreach (var ti in tc.Items)
                 {

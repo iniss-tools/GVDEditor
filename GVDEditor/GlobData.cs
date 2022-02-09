@@ -9,47 +9,47 @@ namespace GVDEditor;
 
 internal static class GlobData
 {
-    public static string INISSDir { get; set; }
-    public static string DataDir { get; set; }
-    public static string RawBankDir { get; set; }
+    public static string INISSDir { get; private set; }
+    public static string DataDir { get; private set; }
+    public static string RawBankDir { get; private set; }
 
-    public static List<string> INISSExeFiles { get; set; }
+    public static List<string> INISSExeFiles { get; private set; }
 
     public static List<DirList> GVDDirs { get; set; }
-    public static List<Audio> Audios { get; set; }
+    public static ExBindingList<Audio> Audios { get; private set; }
 
-    public static List<FyzZvuk> Sounds { get; set; }
-    public static List<Language> Languages { get; set; }
+    public static List<FyzZvuk> Sounds { get; private set; }
+    public static ExBindingList<Language> Languages { get; private set; }
     public static List<Language> LocalLanguages { get; set; }
     public static List<Station> Stations { get; set; }
-    public static List<Station> CustomStations { get; set; }
+    public static ExBindingList<Station> CustomStations { get; set; }
 
-    public static List<Operator> Operators { get; set; }
+    public static ExBindingList<Operator> Operators { get; set; }
 
     public static ExBindingList<Train> Trains { get; set; } = new();
-    public static List<Track> Tracks { get; set; }
-    public static List<Platform> Platforms { get; set; }
+    public static ExBindingList<Track> Tracks { get; set; }
+    public static ExBindingList<Platform> Platforms { get; set; }
 
-    public static List<int> Delays { get; set; }
+    public static ExBindingList<int> Delays { get; private set; }
 
-    public static List<TrainType> TrainsTypes { get; set; }
+    public static ExBindingList<TrainType> TrainsTypes { get; private set; }
 
-    public static List<string> TrainNames { get; set; }
+    public static List<string> TrainNames { get; private set; }
 
-    public static List<TableTabTab> TabTabs { get; set; }
-    public static List<TableCatalog> TableCatalogs { get; set; }
-    public static List<TablePhysical> TablePhysicals { get; set; }
-    public static List<TableLogical> TableLogicals { get; set; }
-    public static List<TableText> TableTexts { get; set; }
-    public static List<TableFont> TableFonts { get; set; }
+    public static ExBindingList<TableTabTab> TabTabs { get; set; }
+    public static ExBindingList<TableCatalog> TableCatalogs { get; set; }
+    public static ExBindingList<TablePhysical> TablePhysicals { get; set; }
+    public static ExBindingList<TableLogical> TableLogicals { get; set; }
+    public static ExBindingList<TableText> TableTexts { get; set; }
+    public static ExBindingList<TableFont> TableFonts { get; set; }
     public static string TableFontDir { get; set; }
 
     public static List<ReportVariant> ReportVariants { get; set; }
     public static List<ReportType> ReportTypes { get; set; }
 
-    public static List<ReportType> ReportTypesV { get; set; }
-    public static List<ReportType> ReportTypesP { get; set; }
-    public static List<ReportType> ReportTypesK { get; set; }
+    public static List<ReportType> ReportTypesV { get; private set; }
+    public static List<ReportType> ReportTypesP { get; private set; }
+    public static List<ReportType> ReportTypesK { get; private set; }
 
     public static List<Radenie> Radenia { get; set; }
 
@@ -62,21 +62,21 @@ internal static class GlobData
     {
         Trains.FireEventOnSort = true;
 
-        Audios = new List<Audio>();
+        Audios = new ExBindingList<Audio>();
 
-        Tracks = new List<Track>();
-        Platforms = new List<Platform>();
+        Tracks = new ExBindingList<Track>();
+        Platforms = new ExBindingList<Platform>();
 
-        TrainsTypes = new List<TrainType>();
+        TrainsTypes = new ExBindingList<TrainType>();
 
-        Operators = new List<Operator>();
+        Operators = new ExBindingList<Operator>();
 
-        TabTabs = new List<TableTabTab>();
-        TableCatalogs = new List<TableCatalog>();
-        TablePhysicals = new List<TablePhysical>();
-        TableLogicals = new List<TableLogical>();
-        TableTexts = new List<TableText>();
-        TableFonts = new List<TableFont>();
+        TabTabs = new ExBindingList<TableTabTab>();
+        TableCatalogs = new ExBindingList<TableCatalog>();
+        TablePhysicals = new ExBindingList<TablePhysical>();
+        TableLogicals = new ExBindingList<TableLogical>();
+        TableTexts = new ExBindingList<TableText>();
+        TableFonts = new ExBindingList<TableFont>();
 
         ReportVariants = new List<ReportVariant>();
         ReportTypes = new List<ReportType>();
@@ -85,7 +85,7 @@ internal static class GlobData
         ReportTypesP = new List<ReportType>();
         ReportTypesK = new List<ReportType>();
 
-        CustomStations = new List<Station>();
+        CustomStations = new ExBindingList<Station>();
 
         Radenia = new List<Radenie>();
 
@@ -100,13 +100,13 @@ internal static class GlobData
         foreach (var file in subFiles) INISSExeFiles.Add(file.Name);
 
         var langs = RawBankReader.ReadFyzBankFile(RawBankDir, out var maxLangs);
-        Languages = TXTParser.ReadGlobalCategori(DataDir, langs, maxLangs);
+        Languages = new ExBindingList<Language>(TXTParser.ReadGlobalCategori(DataDir, langs, maxLangs));
 
         LocalLanguages = new List<Language>();
         Sounds = RawBankReader.ReadFyzZvukFile(RawBankDir, Language.GetBasicLanguage(Languages));
         try
         {
-            TrainsTypes = TXTParser.ReadTrainTypes();
+            TrainsTypes = new ExBindingList<TrainType>(TXTParser.ReadTrainTypes());
         }
         catch (FileNotFoundException)
         {
@@ -114,11 +114,11 @@ internal static class GlobData
 
         TrainNames = Train.GetTrainNames();
         Stations = Station.GetStations();
-        Delays = TXTParser.ReadZpozdeni();
+        Delays = new ExBindingList<int>(TXTParser.ReadZpozdeni());
 
         try
         {
-            Audios = TXTParser.ReadAudio();
+            Audios = new ExBindingList<Audio>(TXTParser.ReadAudio());
         }
         catch (FileNotFoundException)
         {

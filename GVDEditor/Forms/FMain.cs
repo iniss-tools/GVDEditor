@@ -26,20 +26,14 @@ public partial class FMain : Form
     public static readonly BindingList<GVDDirectory> ObdobiaList = new();
 
     private readonly List<GVDDirectory> _gvdDirs = new();
-
     private Process _actualINISSProcess;
     private bool _error;
     private bool _dataSaved = true;
-
     private string _lastINISSStart;
     private GVDDirectory _newDir;
-    private BindingList<Operator> _operators;
-        
     private bool _prechod;
-
     private GVDDirectory _previousSelectedGVD;
     private bool _removingGVD;
-    private BindingList<Track> _tracks;
     private FWait _waitForm;
 
     /// <summary>
@@ -49,7 +43,7 @@ public partial class FMain : Form
     {
         InitializeComponent();
 
-        if (AutoUpdater.UpdateAvailable(Application.ProductVersion, out var version))
+        if (GlobData.Config.CheckUpdate && AutoUpdater.UpdateAvailable(Application.ProductVersion, out var version))
         {
             var res = Utils.ShowInfo(string.Format(Resources.RUpdateInfo, version), Resources.RUpdate, MessageBoxButtons.YesNo);
             if (res == DialogResult.Yes)
@@ -57,7 +51,7 @@ public partial class FMain : Form
         }
 
         FormUtils.SetFormFont(this);
-        hlavneMenu.Renderer = new ToolStripProfessionalRenderer(new FormUtils.LightColorTable());
+        mainMenu.Renderer = new ToolStripProfessionalRenderer(new FormUtils.LightColorTable());
 
         tsslDate.Font = GlobData.Config.Fonts.StateRow.Font;
         tsslTime.Font = GlobData.Config.Fonts.StateRow.Font;
@@ -80,22 +74,22 @@ public partial class FMain : Form
         switch (GlobData.Config.DesktopMenuMode)
         {
             case Config.DesktopMenu.MsTs:
-                hlavneMenu.Visible = true;
+                mainMenu.Visible = true;
                 toolMenu.Visible = true;
-                hlavneMenu.Items.Remove(tscbObdobie);
-                hlavneMenu.Items.Remove(tscbStanica);
+                mainMenu.Items.Remove(tscbObdobie);
+                mainMenu.Items.Remove(tscbStanica);
                 break;
             case Config.DesktopMenu.MsOnly:
-                hlavneMenu.Visible = true;
+                mainMenu.Visible = true;
                 toolMenu.Visible = false;
-                hlavneMenu.Items.Add(tscbObdobie);
-                hlavneMenu.Items.Add(tscbStanica);
+                mainMenu.Items.Add(tscbObdobie);
+                mainMenu.Items.Add(tscbStanica);
                 break;
             case Config.DesktopMenu.TsOnly:
-                hlavneMenu.Visible = false;
+                mainMenu.Visible = false;
                 toolMenu.Visible = true;
-                hlavneMenu.Items.Remove(tscbObdobie);
-                hlavneMenu.Items.Remove(tscbStanica);
+                mainMenu.Items.Remove(tscbObdobie);
+                mainMenu.Items.Remove(tscbStanica);
                 break;
         }
 
@@ -149,6 +143,16 @@ public partial class FMain : Form
         } 
     }
 
+    protected override CreateParams CreateParams
+    {
+        get
+        {
+            var handleParam = base.CreateParams;
+            handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+            return handleParam;
+        }
+    }
+
     private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
     {
         if (GlobData.Config.DebugModeGUI != Config.DebugMode.AppCrash)
@@ -176,23 +180,30 @@ public partial class FMain : Form
 
     private void ProccessData(PathAndGVD pathgvd)
     {
-        GlobData.CustomStations = TXTParser.ReadCustomStations(pathgvd.Path, pathgvd.Gvd);
+        GlobData.CustomStations = new ExBindingList<Station>(TXTParser.ReadCustomStations(pathgvd.Path, pathgvd.Gvd));
 
-        (GlobData.TabTabs,GlobData.TableCatalogs,GlobData.TablePhysicals,GlobData.TableLogicals) 
-            = TXTParser.ReadTables(pathgvd.Path);
+        var (tabtabs, catalogs, physicals, logicals) = TXTParser.ReadTables(pathgvd.Path);
+        GlobData.TabTabs = new ExBindingList<TableTabTab>(tabtabs);
+        GlobData.TableCatalogs = new ExBindingList<TableCatalog>(catalogs);
+        GlobData.TablePhysicals = new ExBindingList<TablePhysical>(physicals);
+        GlobData.TableLogicals = new ExBindingList<TableLogical>(logicals);
 
         var operators = TXTParser.ReadOperators(pathgvd.Path);
-        GlobData.Operators = operators;
-        _operators = new BindingList<Operator>(GlobData.Operators);
+        GlobData.Operators = new ExBindingList<Operator>(operators)
+        {
+            FireEventOnSort = true
+        };
 
         var tracks = TXTParser.ReadTracks(pathgvd.Path);
-        GlobData.Tracks = tracks;
-        _tracks = new BindingList<Track>(tracks);
+        GlobData.Tracks = new ExBindingList<Track>(tracks)
+        {
+            FireEventOnSort = true
+        };
 
         var nastupistia = new HashSet<Platform>();
         foreach (var kolaj in GlobData.Tracks)
             nastupistia.Add(kolaj.Platform);
-        GlobData.Platforms = nastupistia.ToList();
+        GlobData.Platforms = new ExBindingList<Platform>(nastupistia.ToList());
 
         (GlobData.ReportVariants,GlobData.ReportTypes,GlobData.LocalLanguages) = TXTParser.ReadLocalCategori(pathgvd.Path);
         InitDruhyReportov();
@@ -205,8 +216,8 @@ public partial class FMain : Form
 
         GlobData.Trains = new ExBindingList<Train>(TXTParser.ReadTrains(pathgvd.Path));
 
-        GlobData.TableTexts = TXTParser.ReadTTexts(pathgvd.Path, GlobData.Trains);
-        GlobData.TableFonts = TXTParser.ReadTableFonts(pathgvd.Path);
+        GlobData.TableTexts = new ExBindingList<TableText>(TXTParser.ReadTTexts(pathgvd.Path, GlobData.Trains));
+        GlobData.TableFonts = new ExBindingList<TableFont>(TXTParser.ReadTableFonts(pathgvd.Path));
     }
 
     private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -215,8 +226,8 @@ public partial class FMain : Form
 
         if (!_error)
         {
-            Kolaj.DataSource = _tracks;
-            Dopravca.DataSource = _operators;
+            Kolaj.DataSource = GlobData.Tracks;
+            Dopravca.DataSource = GlobData.Operators;
 
             _prechod = true;
             dgvTrains.DataSource = GlobData.Trains;
@@ -302,11 +313,13 @@ public partial class FMain : Form
         {
             var dir = _previousSelectedGVD;
 
+            if (GlobData.Config.AutoTableText) 
+                GenerateTableTextWhileSaving(dir);
+
             TXTParser.WriteTrains(dir.Dir.FullPath, GlobData.Trains, dir.GVD, GlobData.ReportVariants);
             TXTParser.WriteRazeni1(dir.Dir.FullPath, GlobData.Radenia, GlobData.LocalLanguages);
-            if (GlobData.Config.AutoTableText) GenerateTableTextWhileSaving(dir);
-            TXTParser.WriteTables(dir.Dir.FullPath, GlobData.TabTabs, GlobData.TableCatalogs, 
-                GlobData.TablePhysicals, GlobData.TableLogicals);
+            
+            TXTParser.WriteTables(dir.Dir.FullPath, GlobData.TabTabs, GlobData.TableCatalogs, GlobData.TablePhysicals, GlobData.TableLogicals);
             TXTParser.WriteTTexts(dir.Dir.FullPath, GlobData.TableTexts);
             TXTParser.WriteTracks(dir.Dir.FullPath, GlobData.Tracks);
             TXTParser.WriteInfoGVD(dir.Dir.FullPath, dir.GVD);
@@ -474,7 +487,7 @@ public partial class FMain : Form
     private void UpdateMainUI()
     {
         var menu = GlobData.Config.DesktopMenuMode;
-        hlavneMenu.Visible = menu is Config.DesktopMenu.MsTs or Config.DesktopMenu.MsOnly;
+        mainMenu.Visible = menu is Config.DesktopMenu.MsTs or Config.DesktopMenu.MsOnly;
         toolMenu.Visible = menu is Config.DesktopMenu.MsTs or Config.DesktopMenu.TsOnly;
         statusStrip.Visible = GlobData.Config.ShowStateRow;
         tsslDate.Visible = GlobData.Config.ShowDateTimeInStateRow;
@@ -505,22 +518,8 @@ public partial class FMain : Form
             if (dir.GVD != svform.ThisDir.GVD) 
                 Stanice.ResetBindings();
 
-            GlobData.TabTabs = FLocalSettings.TabTabs.ToList();
-            GlobData.TableCatalogs = FLocalSettings.Catalogs.ToList();
-            GlobData.TablePhysicals = FLocalSettings.Physicals.ToList();
-            GlobData.TableLogicals = FLocalSettings.Logicals.ToList();
-            GlobData.TableTexts = FLocalSettings.TTexts.ToList();
-            GlobData.Tracks = svform.Kolaje.ToList();
-            GlobData.Platforms = svform.Nastupistia.ToList();
-            _tracks = new BindingList<Track>(GlobData.Tracks);
-            GlobData.Operators = svform.Dopravcovia.ToList();
-            _operators = new BindingList<Operator>(GlobData.Operators);
-            GlobData.TableFonts = FLocalSettings.TFonts.ToList();
             GlobData.TableFontDir = svform.FontDir;
-            GlobData.CustomStations = svform.CustomStations.ToList();
-
             DataSaved = false;
-
             GlobData.Trains.ResetBindings();
         }
     }
@@ -535,15 +534,9 @@ public partial class FMain : Form
 
             GlobData.GVDDirs = dirlist;
             TXTParser.WriteDirList(dirlist);
-
-            GlobData.TrainsTypes = gf.TrainTypes.ToList();
             TXTParser.WriteTrainTypes(GlobData.TrainsTypes);
-
-            GlobData.Delays = FGlobalSettings.Meskania.ToList();
             TXTParser.WriteZpozdeni(GlobData.Delays);
-
-            GlobData.Audios = gf.Audios.ToList();
-            if (GlobData.Audios.Count != 0) TXTParser.WriteAudio(GlobData.Audios);
+            /*if (GlobData.Audios.Count != 0)*/ TXTParser.WriteAudio(GlobData.Audios);
 
             _removingGVD = true;
             foreach (var gvd in gf.RemovedGVDs)
@@ -669,7 +662,7 @@ public partial class FMain : Form
 
     private void ShowStartupINISSSettings()
     {
-        var appSettings = new FAppSettings(FAppSettings.STARTUP);
+        var appSettings = new FAppSettings(FAppSettings.Startup);
         var result = appSettings.ShowDialog();
         if (result == DialogResult.OK) UpdateMainUI();
     }
@@ -972,19 +965,19 @@ public partial class FMain : Form
         //ak sa jedna o novy grafikon
         if (Equals(dir, _newDir))
         {
-            GlobData.Tracks = new List<Track> { Track.None };
-            GlobData.Platforms = new List<Platform> { Platform.None };
+            GlobData.Tracks = new ExBindingList<Track> { Track.None };
+            GlobData.Platforms = new ExBindingList<Platform> { Platform.None };
 
-            GlobData.Operators = new List<Operator> { Operator.None };
+            GlobData.Operators = new ExBindingList<Operator> { Operator.None };
 
-            GlobData.TabTabs = new List<TableTabTab>();
-            GlobData.TableCatalogs = new List<TableCatalog>();
-            GlobData.TablePhysicals = new List<TablePhysical>();
-            GlobData.TableLogicals = new List<TableLogical>();
-            GlobData.TableTexts = new List<TableText>();
-            GlobData.TableFonts = new List<TableFont>();
+            GlobData.TabTabs = new ExBindingList<TableTabTab>();
+            GlobData.TableCatalogs = new ExBindingList<TableCatalog>();
+            GlobData.TablePhysicals = new ExBindingList<TablePhysical>();
+            GlobData.TableLogicals = new ExBindingList<TableLogical>();
+            GlobData.TableTexts = new ExBindingList<TableText>();
+            GlobData.TableFonts = new ExBindingList<TableFont>();
 
-            GlobData.CustomStations = new List<Station>();
+            GlobData.CustomStations = new ExBindingList<Station>();
 
             GlobData.Radenia = new List<Radenie>();
 
@@ -1072,10 +1065,10 @@ public partial class FMain : Form
     private void dgvTrains_DataError(object sender, DataGridViewDataErrorEventArgs e)
     {
         if (dgvTrains.Columns[e.ColumnIndex].Name == @"Kolaj" && e.RowIndex != -1 && e.RowIndex < GlobData.Trains.Count)
-            GlobData.Trains[e.RowIndex].Track = _tracks[0];
+            GlobData.Trains[e.RowIndex].Track = GlobData.Tracks[0];
         else if (dgvTrains.Columns[e.ColumnIndex].Name == @"Dopravca" && e.RowIndex != -1 &&
                  e.RowIndex < GlobData.Trains.Count)
-            GlobData.Trains[e.RowIndex].Operator = _operators[0];
+            GlobData.Trains[e.RowIndex].Operator = GlobData.Operators[0];
         else
             Utils.ShowError(Resources.FMain_dgvTrains_DataError_Tabuľka_obsahuje_nesprávny_údaj + e.Exception.Message);
     }
@@ -1612,7 +1605,7 @@ public partial class FMain : Form
 
     private static List<Train> CallELISParser(SendData data)
     {
-        var parser = new ELISParser(data.Path, data.DefTrains, GlobData.TrainsTypes, GlobData.Operators, data.GVDInfo, data.Track)
+        var parser = new ELISParser(data.Path, data.DefTrains, GlobData.TrainsTypes.ToList(), GlobData.Operators.ToList(), data.GVDInfo, data.Track)
         {
             OmitPassingTrains = data.OmitPassingTrains,
             DefinedOperators = data.DefinedOperators,

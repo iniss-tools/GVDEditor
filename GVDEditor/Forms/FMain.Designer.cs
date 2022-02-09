@@ -36,6 +36,9 @@ namespace GVDEditor.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FMain));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle1 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle2 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle3 = new ExControls.ExComboBoxStyle();
@@ -108,10 +111,7 @@ namespace GVDEditor.Forms
             ExControls.ExComboBoxStyle exComboBoxStyle70 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle71 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle72 = new ExControls.ExComboBoxStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.hlavneMenu = new System.Windows.Forms.MenuStrip();
+            this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.tsmiSubor = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNew = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -209,15 +209,23 @@ namespace GVDEditor.Forms
             this.timerTimeAndDate = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.dgvTrains = new System.Windows.Forms.DataGridView();
+            this.cisloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LinkaPrichod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.smerovanieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.prichodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.odchodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcVychodziaStanica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcKonecnaStanica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumoveObmedzenieText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LinkaOdchod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kolaj = new ExControls.DataGridViewExComboBoxColumn();
+            this.trackBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Dopravca = new ExControls.DataGridViewExComboBoxColumn();
+            this.operatorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Ostatne = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.vlakBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -282,38 +290,30 @@ namespace GVDEditor.Forms
             this.dataGridViewExComboBoxColumn14 = new ExControls.DataGridViewExComboBoxColumn();
             this.dataGridViewExComboBoxColumn15 = new ExControls.DataGridViewExComboBoxColumn();
             this.dataGridViewExComboBoxColumn16 = new ExControls.DataGridViewExComboBoxColumn();
-            this.cisloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.smerovanieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.prichodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.odchodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trackBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.operatorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vlakBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.hlavneMenu.SuspendLayout();
+            this.mainMenu.SuspendLayout();
             this.toolMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrains)).BeginInit();
-            this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.operatorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vlakBindingSource)).BeginInit();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // hlavneMenu
+            // mainMenu
             // 
-            this.hlavneMenu.BackColor = System.Drawing.SystemColors.Control;
-            this.hlavneMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.hlavneMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenu.BackColor = System.Drawing.SystemColors.Control;
+            this.mainMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiSubor,
             this.tsmiUpravit,
             this.tsmiStanica,
             this.tsmiTools,
             this.tsmiRun,
             this.tsmiNastavenia});
-            this.hlavneMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            resources.ApplyResources(this.hlavneMenu, "hlavneMenu");
-            this.hlavneMenu.Name = "hlavneMenu";
-            this.hlavneMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.mainMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            resources.ApplyResources(this.mainMenu, "mainMenu");
+            this.mainMenu.Name = "mainMenu";
+            this.mainMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
             // tsmiSubor
             // 
@@ -1068,6 +1068,13 @@ namespace GVDEditor.Forms
             this.dgvTrains.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvTrains_RowsRemoved);
             this.dgvTrains.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvTrains_KeyDown);
             // 
+            // cisloDataGridViewTextBoxColumn
+            // 
+            this.cisloDataGridViewTextBoxColumn.DataPropertyName = "NumberVariant";
+            resources.ApplyResources(this.cisloDataGridViewTextBoxColumn, "cisloDataGridViewTextBoxColumn");
+            this.cisloDataGridViewTextBoxColumn.Name = "cisloDataGridViewTextBoxColumn";
+            this.cisloDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
@@ -1075,11 +1082,46 @@ namespace GVDEditor.Forms
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // typDataGridViewTextBoxColumn
+            // 
+            this.typDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            resources.ApplyResources(this.typDataGridViewTextBoxColumn, "typDataGridViewTextBoxColumn");
+            this.typDataGridViewTextBoxColumn.Name = "typDataGridViewTextBoxColumn";
+            this.typDataGridViewTextBoxColumn.ReadOnly = true;
+            this.typDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // LinkaPrichod
             // 
             this.LinkaPrichod.DataPropertyName = "LineArrival";
             resources.ApplyResources(this.LinkaPrichod, "LinkaPrichod");
             this.LinkaPrichod.Name = "LinkaPrichod";
+            // 
+            // smerovanieDataGridViewTextBoxColumn
+            // 
+            this.smerovanieDataGridViewTextBoxColumn.DataPropertyName = "RoutingImage";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle2.NullValue")));
+            this.smerovanieDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.smerovanieDataGridViewTextBoxColumn, "smerovanieDataGridViewTextBoxColumn");
+            this.smerovanieDataGridViewTextBoxColumn.Name = "smerovanieDataGridViewTextBoxColumn";
+            this.smerovanieDataGridViewTextBoxColumn.ReadOnly = true;
+            this.smerovanieDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // prichodDataGridViewTextBoxColumn
+            // 
+            this.prichodDataGridViewTextBoxColumn.DataPropertyName = "Arrival";
+            dataGridViewCellStyle3.Format = "HH:mm";
+            this.prichodDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.prichodDataGridViewTextBoxColumn, "prichodDataGridViewTextBoxColumn");
+            this.prichodDataGridViewTextBoxColumn.Name = "prichodDataGridViewTextBoxColumn";
+            // 
+            // odchodDataGridViewTextBoxColumn
+            // 
+            this.odchodDataGridViewTextBoxColumn.DataPropertyName = "Departure";
+            dataGridViewCellStyle4.Format = "HH:mm";
+            this.odchodDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.odchodDataGridViewTextBoxColumn, "odchodDataGridViewTextBoxColumn");
+            this.odchodDataGridViewTextBoxColumn.Name = "odchodDataGridViewTextBoxColumn";
             // 
             // dgvcVychodziaStanica
             // 
@@ -1149,6 +1191,10 @@ namespace GVDEditor.Forms
             this.Kolaj.StyleSelected = exComboBoxStyle4;
             this.Kolaj.ValueMember = "This";
             // 
+            // trackBindingSource
+            // 
+            this.trackBindingSource.DataSource = typeof(GVDEditor.Entities.Track);
+            // 
             // Dopravca
             // 
             this.Dopravca.DataPropertyName = "Operator";
@@ -1191,6 +1237,10 @@ namespace GVDEditor.Forms
             this.Dopravca.StyleSelected = exComboBoxStyle8;
             this.Dopravca.ValueMember = "This";
             // 
+            // operatorBindingSource
+            // 
+            this.operatorBindingSource.DataSource = typeof(GVDEditor.Entities.Operator);
+            // 
             // Ostatne
             // 
             this.Ostatne.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -1198,6 +1248,10 @@ namespace GVDEditor.Forms
             this.Ostatne.Name = "Ostatne";
             this.Ostatne.Text = global::GVDEditor.Properties.Resources.REdit;
             this.Ostatne.UseColumnTextForButtonValue = true;
+            // 
+            // vlakBindingSource
+            // 
+            this.vlakBindingSource.DataSource = typeof(GVDEditor.Entities.Train);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -2151,87 +2205,33 @@ namespace GVDEditor.Forms
             exComboBoxStyle72.ForeColor = null;
             this.dataGridViewExComboBoxColumn16.StyleSelected = exComboBoxStyle72;
             // 
-            // cisloDataGridViewTextBoxColumn
-            // 
-            this.cisloDataGridViewTextBoxColumn.DataPropertyName = "NumberVariant";
-            resources.ApplyResources(this.cisloDataGridViewTextBoxColumn, "cisloDataGridViewTextBoxColumn");
-            this.cisloDataGridViewTextBoxColumn.Name = "cisloDataGridViewTextBoxColumn";
-            this.cisloDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // typDataGridViewTextBoxColumn
-            // 
-            this.typDataGridViewTextBoxColumn.DataPropertyName = "Type";
-            resources.ApplyResources(this.typDataGridViewTextBoxColumn, "typDataGridViewTextBoxColumn");
-            this.typDataGridViewTextBoxColumn.Name = "typDataGridViewTextBoxColumn";
-            this.typDataGridViewTextBoxColumn.ReadOnly = true;
-            this.typDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // smerovanieDataGridViewTextBoxColumn
-            // 
-            this.smerovanieDataGridViewTextBoxColumn.DataPropertyName = "RoutingImage";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle2.NullValue")));
-            this.smerovanieDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.smerovanieDataGridViewTextBoxColumn, "smerovanieDataGridViewTextBoxColumn");
-            this.smerovanieDataGridViewTextBoxColumn.Name = "smerovanieDataGridViewTextBoxColumn";
-            this.smerovanieDataGridViewTextBoxColumn.ReadOnly = true;
-            this.smerovanieDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // prichodDataGridViewTextBoxColumn
-            // 
-            this.prichodDataGridViewTextBoxColumn.DataPropertyName = "Arrival";
-            dataGridViewCellStyle3.Format = "HH:mm";
-            this.prichodDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.prichodDataGridViewTextBoxColumn, "prichodDataGridViewTextBoxColumn");
-            this.prichodDataGridViewTextBoxColumn.Name = "prichodDataGridViewTextBoxColumn";
-            // 
-            // odchodDataGridViewTextBoxColumn
-            // 
-            this.odchodDataGridViewTextBoxColumn.DataPropertyName = "Departure";
-            dataGridViewCellStyle4.Format = "HH:mm";
-            this.odchodDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.odchodDataGridViewTextBoxColumn, "odchodDataGridViewTextBoxColumn");
-            this.odchodDataGridViewTextBoxColumn.Name = "odchodDataGridViewTextBoxColumn";
-            // 
-            // trackBindingSource
-            // 
-            this.trackBindingSource.DataSource = typeof(GVDEditor.Entities.Track);
-            // 
-            // operatorBindingSource
-            // 
-            this.operatorBindingSource.DataSource = typeof(GVDEditor.Entities.Operator);
-            // 
-            // vlakBindingSource
-            // 
-            this.vlakBindingSource.DataSource = typeof(GVDEditor.Entities.Train);
-            // 
             // FMain
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dgvTrains);
             this.Controls.Add(this.toolMenu);
-            this.Controls.Add(this.hlavneMenu);
+            this.Controls.Add(this.mainMenu);
             this.Controls.Add(this.statusStrip);
-            this.MainMenuStrip = this.hlavneMenu;
+            this.MainMenuStrip = this.mainMenu;
             this.Name = "FMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.hlavneMenu.ResumeLayout(false);
-            this.hlavneMenu.PerformLayout();
+            this.mainMenu.ResumeLayout(false);
+            this.mainMenu.PerformLayout();
             this.toolMenu.ResumeLayout(false);
             this.toolMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrains)).EndInit();
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.operatorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vlakBindingSource)).EndInit();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-        private MenuStrip hlavneMenu;
+        private MenuStrip mainMenu;
         private ToolStripMenuItem tsmiNastavenia;
         private ToolStripMenuItem tsmiNew;
         private ToolStripMenuItem tsmiOpen;

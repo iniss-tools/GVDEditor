@@ -39,6 +39,9 @@ public sealed class TableText : ITable
     /// </summary>
     public List<TableTrain> Trains { get; set; }
 
+    /// <inheritdoc/>
+    public string TypeName => "Text tabule";
+
     /// <inheritdoc />
     public override string ToString() => Name;
 }

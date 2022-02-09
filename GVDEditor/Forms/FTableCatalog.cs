@@ -5,7 +5,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Forms;
 
 /// <summary>
-///     Dialog - Nastavenie katalogej tabule.
+///     Dialog - Nastavenie katalógovej tabule.
 /// </summary>
 public partial class FTableCatalog : Form
 {
@@ -353,7 +353,7 @@ public partial class FTableCatalog : Form
             return;
         }
 
-        foreach (var t in FLocalSettings.Catalogs)
+        foreach (var t in GlobData.TableCatalogs)
             if (t.Key == tbName.Text && !table.Equals(t))
             {
                 Utils.ShowError(Resources.Tables_Zadaný_kľúč_tabule_už_existuje);

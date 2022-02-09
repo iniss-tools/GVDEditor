@@ -73,7 +73,7 @@ public partial class FTablePhysical : Form
             return;
         }
 
-        foreach (var t in FLocalSettings.Physicals)
+        foreach (var t in GlobData.TablePhysicals)
             if (t.Key == tbKey.Text && table != t)
             {
                 Utils.ShowError(Resources.Tables_Zadaný_kľúč_tabule_už_existuje);
