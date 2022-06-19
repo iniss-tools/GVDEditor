@@ -20,7 +20,6 @@ namespace TabTabCompiler.Compilation
         private Block ParseBlock()
         {
             var tok = tokens.Peek();
-
             switch (tok)
             {
                 case IdentifierToken:

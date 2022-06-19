@@ -1,4 +1,5 @@
 ﻿using ToolsCore.Tools;
+// ReSharper disable StringLiteralTypo
 
 namespace GVDEditor.Entities;
 

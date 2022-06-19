@@ -26,6 +26,7 @@ public partial class FGlobalSettings : Form
 
 
     private Color selectedColor = Color.White;
+    private List<TrainType> predefinedTrainTypes;
 
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FGlobalSettings"/>.
@@ -45,7 +46,8 @@ public partial class FGlobalSettings : Form
         listMeskania.DataSource = GlobData.Delays;
         listGrafikony.DisplayMember = "PeriodFormatted";
 
-        cbDefTrainTypSkratka.DataSource = TrainType.GetDefaultValues();
+        predefinedTrainTypes = TrainType.GetDefaultValues();
+        cbDefTrainTypSkratka.DataSource = predefinedTrainTypes;
         listTrainTypes.DataSource = GlobData.TrainsTypes;
 
         var st = new List<Station>(GlobData.Stations);
@@ -253,6 +255,13 @@ public partial class FGlobalSettings : Form
     private void bMeskanieAdd_Click(object sender, EventArgs e)
     {
         var num = decimal.ToInt32(nudMeskanie.Value);
+
+        if (num is < 0 or > 480)
+        {
+            Utils.ShowError(string.Format(Resources.FGlobalSettings_Meskanie_CisloNieJeVIntervale, num));
+            return;
+        }
+
         foreach (var meskanie in GlobData.Delays)
             if (meskanie == num)
             {
@@ -269,12 +278,18 @@ public partial class FGlobalSettings : Form
         if (index == -1) return;
 
         var num = decimal.ToInt32(nudMeskanie.Value);
-        foreach (var meskanie in GlobData.Delays)
-            if (meskanie == num)
-            {
-                Utils.ShowError(Resources.FGlobalSettings_Táto_hodnota_sa_už_v_zozname_nachádza);
-                return;
-            }
+
+        if (num is < 0 or > 480)
+        {
+            Utils.ShowError(string.Format(Resources.FGlobalSettings_Meskanie_CisloNieJeVIntervale, num));
+            return;
+        }
+
+        if (GlobData.Delays.Where((t, i) => t == num && i != index).Any())
+        {
+            Utils.ShowError(Resources.FGlobalSettings_Táto_hodnota_sa_už_v_zozname_nachádza);
+            return;
+        }
 
         GlobData.Delays.RemoveAt(index);
         GlobData.Delays.Insert(index, decimal.ToInt32(nudMeskanie.Value));
@@ -298,49 +313,56 @@ public partial class FGlobalSettings : Form
 
     private void listTrainTypes_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (listTrainTypes.SelectedIndex != 0)
+        if (listTrainTypes.SelectedIndex == -1) 
+            return;
+
+        var typ = (TrainType)listTrainTypes.SelectedItem;
+
+        if (!typ.IsCustom)
         {
-            var typ = (TrainType)listTrainTypes.SelectedItem;
+            cbDefTrainTypSkratka.SelectedItem = predefinedTrainTypes.FirstOrDefault(t => t.CategoryTrain == typ.CategoryTrain);
 
-            if (!typ.IsCustom)
-            {
-                cbDefTrainTypSkratka.SelectedItem = typ;
+            tbDefaultTrainTypSkratka.Text = typ.Key;
+            tbDefaultTrainTypText.Text = typ.TextInTable;
 
-                bDefTrainTypEdit.Enabled = true;
-                bDefTrainTypDelete.Enabled = true;
-                bCustomTrainTypEdit.Enabled = false;
-                bCustomTrainTypDelete.Enabled = false;
-            }
-            else
-            {
-                if (Regex.IsMatch(typ.CategoryTrain, "^Os[1-9]$"))
-                    cbCustomTrainTypDruh.SelectedIndex = 0;
-                else if (Regex.IsMatch(typ.CategoryTrain, "^R[1-9]$"))
-                    cbCustomTrainTypDruh.SelectedIndex = 1;
-                else if (Regex.IsMatch(typ.CategoryTrain, "^X[1-9]$"))
-                    cbCustomTrainTypDruh.SelectedIndex = 2;
-                else if (Regex.IsMatch(typ.CategoryTrain, "^Sl[1-9]$")) cbCustomTrainTypDruh.SelectedIndex = 3;
+            bDefTrainTypEdit.Enabled = true;
+            bDefTrainTypDelete.Enabled = true;
+            bCustomTrainTypEdit.Enabled = false;
+            bCustomTrainTypDelete.Enabled = false;
+        }
+        else
+        {
+            if (Regex.IsMatch(typ.CategoryTrain, "^Os[1-9]$"))
+                cbCustomTrainTypDruh.SelectedIndex = 0;
+            else if (Regex.IsMatch(typ.CategoryTrain, "^R[1-9]$"))
+                cbCustomTrainTypDruh.SelectedIndex = 1;
+            else if (Regex.IsMatch(typ.CategoryTrain, "^X[1-9]$"))
+                cbCustomTrainTypDruh.SelectedIndex = 2;
+            else if (Regex.IsMatch(typ.CategoryTrain, "^Sl[1-9]$")) cbCustomTrainTypDruh.SelectedIndex = 3;
 
-                tbCustomTrainTypSkratka.Text = typ.Key;
-                tbCustomTrainTypText.Text = typ.TextInTable;
+            tbCustomTrainTypSkratka.Text = typ.Key;
+            tbCustomTrainTypText.Text = typ.TextInTable;
 
-                bDefTrainTypEdit.Enabled = false;
-                bDefTrainTypDelete.Enabled = false;
-                bCustomTrainTypEdit.Enabled = true;
-                bCustomTrainTypDelete.Enabled = true;
-            }
+            bDefTrainTypEdit.Enabled = false;
+            bDefTrainTypDelete.Enabled = false;
+            bCustomTrainTypEdit.Enabled = true;
+            bCustomTrainTypDelete.Enabled = true;
         }
     }
 
     private void bDefTrainTypAdd_Click(object sender, EventArgs e)
     {
         var typ = (TrainType)cbDefTrainTypSkratka.SelectedItem;
-        foreach (var trainType in GlobData.TrainsTypes)
-            if (typ == trainType)
-            {
-                Utils.ShowError(Resources.FGlobalSettings_Vybraný_typ_vlaku_sa_už_v_zozname_nachádza);
-                return;
-            }
+
+        if (GlobData.TrainsTypes.Any(trainType => tbDefaultTrainTypSkratka.Text == trainType.Key))
+        {
+            Utils.ShowError(Resources.FGlobalSettings_Vybraný_typ_vlaku_sa_už_v_zozname_nachádza);
+            return;
+        }
+
+        typ.CategoryTrain = ((TrainType) cbDefTrainTypSkratka.SelectedItem).CategoryTrain;
+        typ.Key = tbDefaultTrainTypSkratka.Text;
+        typ.TextInTable = tbDefaultTrainTypText.Text;
 
         GlobData.TrainsTypes.Add(typ);
 
@@ -350,23 +372,26 @@ public partial class FGlobalSettings : Form
 
     private void bDefTrainTypEdit_Click(object sender, EventArgs e)
     {
-        if (listTrainTypes.SelectedIndex != 0)
-        {
-            var typ = (TrainType)cbDefTrainTypSkratka.SelectedItem;
-            foreach (var trainType in GlobData.TrainsTypes)
-                if (typ == trainType && ((TrainType)listTrainTypes.SelectedItem).Key != typ.Key)
-                {
-                    Utils.ShowError(Resources.FGlobalSettings_Vybraný_typ_vlaku_sa_už_v_zozname_nachádza);
-                    return;
-                }
+        if (listTrainTypes.SelectedIndex == -1) 
+            return;
 
-            GlobData.TrainsTypes[listTrainTypes.SelectedIndex] = typ;
+        var typ = GlobData.TrainsTypes[listTrainTypes.SelectedIndex];
+        if (GlobData.TrainsTypes.Where((t, i) => tbDefaultTrainTypSkratka.Text == t.Key && listTrainTypes.SelectedIndex != i).Any())
+        {
+            Utils.ShowError(Resources.FGlobalSettings_Vybraný_typ_vlaku_sa_už_v_zozname_nachádza);
+            return;
         }
+
+        typ.CategoryTrain = ((TrainType) cbDefTrainTypSkratka.SelectedItem).CategoryTrain;
+        typ.Key = tbDefaultTrainTypSkratka.Text;
+        typ.TextInTable = tbDefaultTrainTypText.Text;
+        GlobData.TrainsTypes.ResetBindings();
     }
 
     private void bDefTrainTypDelete_Click(object sender, EventArgs e)
     {
-        if (listTrainTypes.SelectedIndex != 0) GlobData.TrainsTypes.RemoveAt(listTrainTypes.SelectedIndex);
+        if (listTrainTypes.SelectedIndex != -1) 
+            GlobData.TrainsTypes.RemoveAt(listTrainTypes.SelectedIndex);
 
         if (GlobData.TrainsTypes.Count == 0)
         {
@@ -479,7 +504,7 @@ public partial class FGlobalSettings : Form
 
     private void bCustomTrainTypEdit_Click(object sender, EventArgs e)
     {
-        if (listTrainTypes.SelectedIndex != 0)
+        if (listTrainTypes.SelectedIndex != -1)
         {
             foreach (var trainType in GlobData.TrainsTypes)
                 if (tbCustomTrainTypSkratka.Text == trainType.Key && ((TrainType)listTrainTypes.SelectedItem).Key != tbCustomTrainTypSkratka.Text)
@@ -585,7 +610,7 @@ public partial class FGlobalSettings : Form
 
     private void bCustomTrainTypDelete_Click(object sender, EventArgs e)
     {
-        if (listTrainTypes.SelectedIndex != 0) GlobData.TrainsTypes.RemoveAt(listTrainTypes.SelectedIndex);
+        if (listTrainTypes.SelectedIndex != -1) GlobData.TrainsTypes.RemoveAt(listTrainTypes.SelectedIndex);
 
         if (GlobData.TrainsTypes.Count == 0)
         {

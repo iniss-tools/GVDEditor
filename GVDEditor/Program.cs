@@ -122,6 +122,7 @@ internal static class Program
         DateLimit.Loc = GlobData.Config.DateRemLocate == Config.AppLanguage.Czech ? DateLimit.Locale.CZ : DateLimit.Locale.SK;
 
         MainForm = new FMain();
+        //Application.Run(new FAppSettingsNew());
         Application.Run(MainForm);
 
         Log.AppInfo("Program sa ukončuje\r\n");

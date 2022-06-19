@@ -5,6 +5,6 @@
     Renaming the file extension or editing the content of this file may   
     cause the file to be unrecognizable by the program.
 -->
-<GenericObjectDataSource DisplayName="DeviceInformation" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>SharpDX.DirectSound.DeviceInformation, SharpDX.DirectSound, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1</TypeInfo>
+<GenericObjectDataSource DisplayName="Config+AppLanguage" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+   <TypeInfo>ToolsCore.XML.Config+AppLanguage, ToolsCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

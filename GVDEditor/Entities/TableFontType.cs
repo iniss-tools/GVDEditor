@@ -22,15 +22,15 @@ public sealed class TableFontType : Enumeration<TableFontType>
     /// <returns></returns>
     public new static TableFontType Parse(string type)
     {
-        return type switch
+        return type.ToLower() switch
         {
             "" => None,
-            "Tenký" => None,
-            "Tučný" => Bold,
-            "Šikmý" => Italics,
-            "Šikmý a tučný" => BoldItalics,
-            "Špeciálny" => Special,
-            "Speciální" => Special,
+            "tenký" => None,
+            "tučný" => Bold,
+            "šikmý" => Italics,
+            "šikmý a tučný" => BoldItalics,
+            "špeciálny" => Special,
+            "speciální" => Special,
             _ => null
         };
     }

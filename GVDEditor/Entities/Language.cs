@@ -1,9 +1,11 @@
-﻿namespace GVDEditor.Entities;
+﻿// ReSharper disable UnusedAutoPropertyAccessor.Global
+// ReSharper disable UnusedMember.Global
+namespace GVDEditor.Entities;
 
 /// <summary>
 ///     Jazyková mútácia používaná pre vlak
 /// </summary>
-public sealed class Language
+public record Language
 {
     /// <summary>
     ///     Kľúč jazyka
@@ -46,28 +48,14 @@ public sealed class Language
     /// <param name="langs">list zvukov</param>
     /// <param name="key">kľúč jazyka</param>
     /// <returns>jazyk z listu, resp. <see langword="null" /> ak nebola nájdená zhoda</returns>
-    public static Language GetLanguageFromKey(IEnumerable<Language> langs, string key)
-    {
-        foreach (var jazyk in langs)
-            if (jazyk.Key == key)
-                return jazyk;
-
-        return null;
-    }
+    public static Language GetLanguageFromKey(IEnumerable<Language> langs, string key) => langs.FirstOrDefault(jazyk => jazyk.Key == key);
 
     /// <summary>
     ///     Vráti hlavný jazyk z listu zvukov
     /// </summary>
     /// <param name="langs">list jazykov</param>
     /// <returns>hlavný jazyk alebo <see langword="null" /> ak zadaný list neobsahuje hlavný jazyk</returns>
-    public static Language GetBasicLanguage(IEnumerable<Language> langs)
-    {
-        foreach (var jazyk in langs)
-            if (jazyk.IsBasic)
-                return jazyk;
-
-        return null;
-    }
+    public static Language GetBasicLanguage(IEnumerable<Language> langs) => langs.FirstOrDefault(jazyk => jazyk.IsBasic);
 
     /// <summary>
     ///     Zistí, či v zadanom poli jazykov sa nachádza prvok s rovnakým kľúčom ako zadaný kľúč
@@ -83,69 +71,9 @@ public sealed class Language
         if (key == null || languages == null || languages.Count == 0) 
             return false;
 
-        foreach (var language in languages)
-            if (language.Key == key)
-                return true;
-
-        return false;
+        return languages.Any(language => language.Key == key);
     }
 
     /// <inheritdoc />
-    public override string ToString()
-    {
-        return Name;
-    }
-
-    private bool Equals(Language other)
-    {
-        return Key == other.Key && IsBasic == other.IsBasic && Name == other.Name;
-    }
-
-    /// <inheritdoc />
-    public override bool Equals(object obj)
-    {
-        if (obj is null) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != GetType()) return false;
-        return Equals((Language)obj);
-    }
-
-    /// <inheritdoc />
-    public override int GetHashCode()
-    {
-        unchecked
-        {
-            var hashCode = Key != null ? Key.GetHashCode() : 0;
-            hashCode = (hashCode * 397) ^ IsBasic.GetHashCode();
-            hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
-            return hashCode;
-        }
-    }
-
-    /// <summary>
-    ///     Returns a value that indicates whether the values of two <see cref="T:GVDEditor.Entities.Language" /> objects
-    ///     are equal.
-    /// </summary>
-    /// <param name="left">The first value to compare.</param>
-    /// <param name="right">The second value to compare.</param>
-    /// <returns>
-    ///     true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise,
-    ///     false.
-    /// </returns>
-    public static bool operator ==(Language left, Language right)
-    {
-        return Equals(left, right);
-    }
-
-    /// <summary>
-    ///     Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.Language" /> objects have different
-    ///     values.
-    /// </summary>
-    /// <param name="left">The first value to compare.</param>
-    /// <param name="right">The second value to compare.</param>
-    /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>
-    public static bool operator !=(Language left, Language right)
-    {
-        return !Equals(left, right);
-    }
+    public override string ToString() => Name;
 }

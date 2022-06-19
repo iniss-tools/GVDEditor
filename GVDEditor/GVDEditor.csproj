@@ -119,17 +119,35 @@
     <Compile Include="Forms\FAnalyzer.Designer.cs">
       <DependentUpon>FAnalyzer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FAppSettingsNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FAppSettingsNew.Designer.cs">
+      <DependentUpon>FAppSettingsNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FDatObm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FDatObm.Designer.cs">
       <DependentUpon>FDatObm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FOpenGvdError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FOpenGvdError.Designer.cs">
+      <DependentUpon>FOpenGvdError.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FRenameStyle.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FRenameStyle.Designer.cs">
       <DependentUpon>FRenameStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FStart.Designer.cs">
+      <DependentUpon>FStart.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobUsings.cs" />
     <Compile Include="Tools\Analyzer.cs" />
@@ -346,6 +364,9 @@
       <DependentUpon>FAppSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FAppSettingsNew.resx">
+      <DependentUpon>FAppSettingsNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FColumnTypeSelect.cs.resx">
       <DependentUpon>FColumnTypeSelect.cs</DependentUpon>
     </EmbeddedResource>
@@ -394,11 +415,17 @@
       <DependentUpon>FNewGrafikon.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FOpenGvdError.resx">
+      <DependentUpon>FOpenGvdError.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FRadenie.cs.resx">
       <DependentUpon>FRadenie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FRenameStyle.resx">
       <DependentUpon>FRenameStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FStart.resx">
+      <DependentUpon>FStart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FTableCatalog.cs.resx">
       <DependentUpon>FTableCatalog.cs</DependentUpon>
@@ -510,9 +537,16 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CustomToolNamespace>\Licences</CustomToolNamespace>
     </Content>
+    <None Include="Properties\DataSources\GVDEditor.XML.AppShortcuts.datasource" />
+    <None Include="Properties\DataSources\GVDEditor.XML.DesktopColumns.datasource" />
+    <None Include="Properties\DataSources\GVDEditor.XML.GVDEditorConfig.datasource" />
+    <None Include="Properties\DataSources\ToolsCore.XML.AppFont.datasource" />
+    <None Include="Properties\DataSources\ToolsCore.XML.CommandShortcut.datasource" />
+    <None Include="Properties\DataSources\ToolsCore.XML.Config+AppLanguage.datasource" />
+    <None Include="Properties\DataSources\ToolsCore.XML.ControlFonts.datasource" />
+    <None Include="Properties\DataSources\ToolsCore.XML.DesktopColumn.datasource" />
     <None Include="Resources\calendar.png" />
     <None Include="Resources\shutdown.png" />
-    <None Include="Properties\DataSources\SharpDX.DirectSound.DeviceInformation.datasource" />
     <None Include="Resources\analyze.png" />
     <None Include="Properties\DataSources\GVDEditor.Tools.IFix.datasource" />
     <None Include="Resources\restart.png" />

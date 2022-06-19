@@ -26,60 +26,57 @@ internal static class RawBankReader
 
         var file = pathToBank + Path.DirectorySeparatorChar + language.RelativePath + language.FileFyzZvuk;
 
-        if (File.Exists(file))
+        if (!File.Exists(file))
+            throw new FileNotFoundException($"Súbor s definíciou zvukov sa na zvolenej ceste nenašiel: {file}");
+
+        using var reader = new BinaryReader(File.Open(file, FileMode.Open), Encodings.Win1250);
+        var countDirs = reader.ReadInt32();
+        var sounds = new List<FyzZvuk>();
+
+        for (var i = 0; i < countDirs; i++)
         {
-            using var reader = new BinaryReader(File.Open(file, FileMode.Open), Encodings.Win1250);
-            var countDirs = reader.ReadInt32();
-            var sounds = new List<FyzZvuk>();
+            int dirSkupinaZvukovLength = reader.ReadByte();
+            var skupinaZvukovName = reader.ReadBytes(dirSkupinaZvukovLength).ANSItoUTF();
 
-            for (var i = 0; i < countDirs; i++)
+            int dirNameLength = reader.ReadByte();
+            var dirName = reader.ReadBytes(dirNameLength).ANSItoUTF();
+
+            int dirRelativnaCestaLength = reader.ReadByte();
+            var dirRelativnaCesta = reader.ReadBytes(dirRelativnaCestaLength).ANSItoUTF();
+
+            var countFiles = reader.ReadInt32();
+
+            var fyzZvukDir = new FyzZvukDir(skupinaZvukovName, dirName, dirRelativnaCesta, countFiles);
+
+            for (var j = 0; j < countFiles; j++)
             {
-                int dirSkupinaZvukovLength = reader.ReadByte();
-                var skupinaZvukovName = reader.ReadBytes(dirSkupinaZvukovLength).ANSItoUTF();
-
-                int dirNameLength = reader.ReadByte();
-                var dirName = reader.ReadBytes(dirNameLength).ANSItoUTF();
-
-                int dirRelativnaCestaLength = reader.ReadByte();
-                var dirRelativnaCesta = reader.ReadBytes(dirRelativnaCestaLength).ANSItoUTF();
-
-                var countFiles = reader.ReadInt32();
-
-                var fyzZvukDir = new FyzZvukDir(skupinaZvukovName, dirName, dirRelativnaCesta, countFiles);
-
-                for (var j = 0; j < countFiles; j++)
+                int textHlaseniaLength = reader.ReadByte();
+                string textHlasenia;
+                if (textHlaseniaLength == 0xff)
                 {
-                    int textHlaseniaLength = reader.ReadByte();
-                    string textHlasenia;
-                    if (textHlaseniaLength == 0xff)
-                    {
-                        int textHlasenia2Length = reader.ReadInt16();
-                        textHlasenia = reader.ReadBytes(textHlasenia2Length).ANSItoUTF();
-                    }
-                    else
-                    {
-                        textHlasenia = reader.ReadBytes(textHlaseniaLength).ANSItoUTF();
-                    }
-
-                    int zvukLength = reader.ReadByte();
-                    var zvuk = reader.ReadBytes(zvukLength).ANSItoUTF();
-
-                    int nazevZvukuProLength = reader.ReadByte();
-                    var nazevZvukuPro = reader.ReadBytes(nazevZvukuProLength).ANSItoUTF();
-
-                    int nameFileLength = reader.ReadByte();
-                    var nameFile = reader.ReadBytes(nameFileLength).ANSItoUTF();
-
-                    sounds.Add(new FyzZvuk(fyzZvukDir, zvuk, nazevZvukuPro, nameFile, textHlasenia, language));
-
-                    reader.ReadBytes(4);
+                    int textHlasenia2Length = reader.ReadInt16();
+                    textHlasenia = reader.ReadBytes(textHlasenia2Length).ANSItoUTF();
                 }
-            }
+                else
+                    textHlasenia = reader.ReadBytes(textHlaseniaLength).ANSItoUTF();
 
-            return sounds;
+                int zvukLength = reader.ReadByte();
+                var zvuk = reader.ReadBytes(zvukLength).ANSItoUTF();
+
+                int nazevZvukuProLength = reader.ReadByte();
+                var nazevZvukuPro = reader.ReadBytes(nazevZvukuProLength).ANSItoUTF();
+
+                int nameFileLength = reader.ReadByte();
+                var nameFile = reader.ReadBytes(nameFileLength).ANSItoUTF();
+
+                sounds.Add(new FyzZvuk(fyzZvukDir, zvuk, nazevZvukuPro, nameFile, textHlasenia, language));
+
+                reader.ReadBytes(4);
+            }
         }
 
-        throw new FileNotFoundException($"Súbor s definíciou zvukov sa na zvolenej ceste nenašiel: {file}");
+        return sounds;
+
     }
 
     /// <summary>
@@ -95,41 +92,40 @@ internal static class RawBankReader
 
         var file = pathToBank + Path.DirectorySeparatorChar + FileConsts.FILE_FYZBANK;
 
-        if (File.Exists(file))
+        if (!File.Exists(file))
+            throw new FileNotFoundException($"Súbor s definíciou priečinkov zvukov sa na zvolenej ceste nenašiel: {file}");
+
+        using var reader = new BinaryReader(File.Open(file, FileMode.Open), Encodings.Win1250);
+        var countLangs = reader.ReadInt32();
+        maxLangs = countLangs;
+        var languages = new List<Language>(countLangs);
+
+        for (var i = 0; i < countLangs; i++)
         {
-            using var reader = new BinaryReader(File.Open(file, FileMode.Open), Encodings.Win1250);
-            var countLangs = reader.ReadInt32();
-            maxLangs = countLangs;
-            var languages = new List<Language>(countLangs);
+            int fileFyzZvukLength = reader.ReadByte();
+            var fileFyzZvukName = reader.ReadBytes(fileFyzZvukLength).ANSItoUTF();
 
-            for (var i = 0; i < countLangs; i++)
+            int langDirRelativePathLength = reader.ReadByte();
+            var langDirRelativePathName = reader.ReadBytes(langDirRelativePathLength).ANSItoUTF();
+
+            int langKeyLength = reader.ReadByte();
+            var langKey = reader.ReadBytes(langKeyLength).ANSItoUTF();
+
+            int langNameLength = reader.ReadByte();
+            var langName = reader.ReadBytes(langNameLength).ANSItoUTF();
+
+            reader.ReadBytes(4);
+
+            languages.Add(new Language
             {
-                int fileFyzZvukLength = reader.ReadByte();
-                var fileFyzZvukName = reader.ReadBytes(fileFyzZvukLength).ANSItoUTF();
-
-                int langDirRelativePathLength = reader.ReadByte();
-                var langDirRelativePathName = reader.ReadBytes(langDirRelativePathLength).ANSItoUTF();
-
-                int langKeyLength = reader.ReadByte();
-                var langKey = reader.ReadBytes(langKeyLength).ANSItoUTF();
-
-                int langNameLength = reader.ReadByte();
-                var langName = reader.ReadBytes(langNameLength).ANSItoUTF();
-
-                reader.ReadBytes(4);
-
-                languages.Add(new Language
-                {
-                    Key = langKey,
-                    FileFyzZvuk = fileFyzZvukName,
-                    FyzBankName = langName,
-                    RelativePath = langDirRelativePathName
-                });
-            }
-
-            return languages;
+                Key = langKey,
+                FileFyzZvuk = fileFyzZvukName,
+                FyzBankName = langName,
+                RelativePath = langDirRelativePathName
+            });
         }
 
-        throw new FileNotFoundException($"Súbor s definíciou priečinkov zvukov sa na zvolenej ceste nenašiel: {file}");
+        return languages;
+
     }
 }

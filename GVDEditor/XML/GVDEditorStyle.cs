@@ -10,13 +10,13 @@ public class GVDEditorStyle : Style
     ///     Farebna schema pre druh vlaku zobrazujuceho sa v tabulke na pracovnej ploche programu
     /// </summary>
     [XmlElement("TrainType")]
-    public TrainTypeColumnScheme TrainTypeColumnScheme = new();
+    public TrainTypeColumnScheme TrainTypeColumnScheme { get; set; } = new();
 
     /// <summary>
     ///     Farebna schéma pre textový editor TabTab
     /// </summary>
     [XmlElement("TabTabEditor")]
-    public TabTabEditorScheme TabTabEditorScheme = new();
+    public TabTabEditorScheme TabTabEditorScheme { get; set; } = new();
 
     /// <inheritdoc />
     public GVDEditorStyle()

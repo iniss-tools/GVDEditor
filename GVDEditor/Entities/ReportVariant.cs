@@ -71,6 +71,7 @@ public sealed class ReportVariant
     /// <param name="right">The second value to compare.</param>
     /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>
     public static bool operator !=(ReportVariant left, ReportVariant right) => !Equals(left, right);
+
 #pragma warning disable 1591
     public static readonly ReportVariant KratkeHlasenie = new() { Key = 0, Name = "Krátke hlásenie" };
     public static readonly ReportVariant DlheHlasenie = new() { Key = 1, Name = "Dlhé hlásenie" };

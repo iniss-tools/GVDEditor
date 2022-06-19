@@ -4,7 +4,7 @@ using ToolsCore.XML;
 namespace GVDEditor.XML;
 
 /// <summary>
-///     Konfiguracny subor pre program GVDEitor.
+///     Konfiguracny subor pre program GVDEditor.
 /// </summary>
 [XmlRoot("CONFIG")]
 public class GVDEditorConfig : Config
@@ -13,49 +13,49 @@ public class GVDEditorConfig : Config
     ///     Povolit pouzivanie automatickej spravy variant vlaku.
     /// </summary>
     [XmlElement("AutoVariant"), DefaultValue(false)]
-    public bool AutoVariant;
+    public bool AutoVariant { get; set; }
 
     /// <summary>
     ///     Povoli/zakaze kontrolovanie ci je aktualizacia programu dostupna.
     /// </summary>
     [XmlElement("DisableVariantChk"), DefaultValue(false)]
-    public bool DisableVariantCheck;
+    public bool DisableVariantCheck { get; set; }
 
     /// <summary>
     ///     Povolit pouzivanie automatickej spravy variant vlaku.
     /// </summary>
     [XmlElement("CheckUpdate"), DefaultValue(true)]
-    public bool CheckUpdate = true;
+    public bool CheckUpdate { get; set; } = true;
 
     /// <summary>
     ///     Automaticky generovat texty do tabul pri ukladani do suborov.
     /// </summary>
     [XmlElement("AutoTableText"), DefaultValue(false)]
-    public bool AutoTableText;
+    public bool AutoTableText { get; set; }
 
     /// <summary>
     ///     Ci sa ma zobrazovat datum v stavovom riadku na pracovnej ploche programu.
     /// </summary>
     [XmlElement("ShowDateTimeInStateRow"), DefaultValue(true)]
-    public bool ShowDateTimeInStateRow = true;
+    public bool ShowDateTimeInStateRow { get; set; } = true;
 
     /// <summary>
     ///     Nastavi cas medzi zvukmi pri prehravani.
     /// </summary>
     [XmlElement("PlayerWordPause"), DefaultValue(0)]
-    public int PlayerWordPause;
+    public int PlayerWordPause { get; set; }
 
     /// <summary>
     ///     Stlpce zobrazujuce sa v tabulke na pracovnej ploche programu.
     /// </summary>
     [XmlElement("DesktopCols")] 
-    public DesktopColumns DesktopCols = new();
+    public DesktopColumns DesktopCols { get; set; } = new();
 
     /// <summary>
     ///     Klávesové skratky pre akcie na pracovnej ploche programu.
     /// </summary>
     [XmlElement("Shortcuts")] 
-    public AppShortcuts Shortcuts = new();
+    public AppShortcuts Shortcuts { get; set; } = new();
 
     /// <summary>
     ///     konfiguracia spustania INISSu z tohto programu.

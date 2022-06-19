@@ -163,11 +163,14 @@ public partial class FMain : Form
             catch (Exception exception)
             {
                 Log.Exception(exception);
-
-                if (GlobData.Config.DebugModeGUI == Config.DebugMode.OnlyMessage)
-                    Utils.ShowError(exception.Message);
-                if (GlobData.Config.DebugModeGUI == Config.DebugMode.DetailedInfo)
-                    Utils.ShowError(exception.ToString());
+                Program.MainForm.Invoke(delegate()
+                {
+                    if (GlobData.Config.DebugModeGUI == Config.DebugMode.OnlyMessage)
+                        FOpenGvdError.ShowError(exception.Message);
+                    if (GlobData.Config.DebugModeGUI == Config.DebugMode.DetailedInfo)
+                        FOpenGvdError.ShowError(exception.ToString());
+                }
+                );
 
                 _error = true;
                 return;
@@ -325,6 +328,8 @@ public partial class FMain : Form
             TXTParser.WriteInfoGVD(dir.Dir.FullPath, dir.GVD);
             TXTParser.WriteOperators(dir.Dir.FullPath, GlobData.Operators);
             TXTParser.WriteModeTabs(dir.Dir.FullPath, GlobData.TableFonts, GlobData.TableFontDir);
+            TXTParser.WriteLocalCategori(dir.Dir.FullPath, GlobData.ReportVariants, GlobData.ReportTypes, GlobData.LocalLanguages);
+            TXTParser.WriteCustomStations(dir.Dir.FullPath, GlobData.CustomStations, dir.GVD);
 
             DataSaved = true;
         }
@@ -536,7 +541,11 @@ public partial class FMain : Form
             TXTParser.WriteDirList(dirlist);
             TXTParser.WriteTrainTypes(GlobData.TrainsTypes);
             TXTParser.WriteZpozdeni(GlobData.Delays);
-            /*if (GlobData.Audios.Count != 0)*/ TXTParser.WriteAudio(GlobData.Audios);
+            TXTParser.WriteAudio(GlobData.Audios);
+            TXTParser.WriteLanguages(GlobData.Languages.ToList());
+            GlobData.LocalLanguages = GlobData.Languages.ToList(); //TODO prerobit
+            
+            GlobData.Trains.ResetBindings();
 
             _removingGVD = true;
             foreach (var gvd in gf.RemovedGVDs)
@@ -595,9 +604,8 @@ public partial class FMain : Form
                 {
                     MessageBox.Show(e.Message);
                 }
-
-                _removingGVD = false;
             }
+            _removingGVD = false;
         }
     }
 
@@ -643,10 +651,10 @@ public partial class FMain : Form
                 switch (GlobData.Config.DebugModeGUI)
                 {
                     case Config.DebugMode.OnlyMessage:
-                        Utils.ShowError(e.Message);
+                        FOpenGvdError.ShowError(e.Message);
                         break;
                     case Config.DebugMode.DetailedInfo:
-                        Utils.ShowError(e.ToString());
+                        FOpenGvdError.ShowError(e.ToString());
                         break;
                 }
 
@@ -712,7 +720,7 @@ public partial class FMain : Form
                     }
                     catch (Exception e)
                     {
-                        Utils.ShowError(GlobData.Config.DebugModeGUI == Config.DebugMode.DetailedInfo ? e.ToString() : e.Message);
+                        FOpenGvdError.ShowError(GlobData.Config.DebugModeGUI == Config.DebugMode.DetailedInfo ? e.ToString() : e.Message);
                         Log.Exception(e);
                     }
                 }
@@ -882,10 +890,10 @@ public partial class FMain : Form
                 switch (GlobData.Config.DebugModeGUI)
                 {
                     case Config.DebugMode.OnlyMessage:
-                        Utils.ShowError(exception.Message);
+                        FOpenGvdError.ShowError(exception.Message);
                         break;
                     case Config.DebugMode.DetailedInfo:
-                        Utils.ShowError(exception.ToString());
+                        FOpenGvdError.ShowError(exception.ToString());
                         break;
                 }
 
@@ -1342,7 +1350,7 @@ public partial class FMain : Form
                 }
                 else
                 {
-                    switch (type.Key)
+                    switch (type.CategoryTrain)
                     {
                         case "R":
                         case "REX":

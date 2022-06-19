@@ -359,8 +359,8 @@ internal static class TXTParser
             try
             {
                 var num = int.Parse(row[0]);
-                if (num is < 5 or > 480 || num % 5 != 0)
-                    throw new FormatException($"Číslo {num} nie je v intervale X >= 5 a zároveň X <= 480 alebo nie je delitelné 5.");
+                if (num is < 0 or > 480)
+                    throw new FormatException($"Číslo {num} nie je v intervale X >= 0 a zároveň X <= 480.");
                 meskania.Add(num);
             }
             catch (Exception e)
@@ -452,7 +452,11 @@ internal static class TXTParser
                 else
                 {
                     if (TrainType.Validate(s))
+                    {
                         typ = new TrainType(s);
+                        typ.Key = row.Count > 1 ? row[1] : s;
+                        typ.TextInTable =  row.Count > 2 ? row[2] : s;
+                    }
                     else
                         throw new ArgumentException($"Neznámy typ vlaku {s}");
                 }
@@ -490,7 +494,14 @@ internal static class TXTParser
             }
             else
             {
-                row.Add(typ.Key);
+                row.Add(typ.CategoryTrain);
+                if (typ.Key != typ.CategoryTrain || typ.Key != typ.TextInTable)
+                {
+                    row.Add(typ.Key);
+                    row.Add(typ.TextInTable);
+                }
+                else if (typ.Key != typ.CategoryTrain) 
+                    row.Add(typ.Key);
             }
 
             trtypesF.WriteRow(row);
@@ -568,11 +579,10 @@ internal static class TXTParser
     /// <summary>
     ///     Zapise informacie o jazykovych mutaciach hlaseni pouzivanych na stanici
     /// </summary>
-    /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="jazyky">jazyky</param>
-    public static void WriteLanguages(string path, List<Language> jazyky)
+    public static void WriteLanguages(List<Language> jazyky)
     {
-        var file = CombinePath(path, FILE_CATEGORI);
+        var file = CombinePath(GlobData.DataDir, FILE_CATEGORI);
 
         var categoriF = new TXTPropsAreasFields(file, true);
 
@@ -658,8 +668,7 @@ internal static class TXTParser
     }
 
     /// <summary>
-    ///     Zapise data o variantach a typoch reportov a jazykovych mutaciach hlaseni pouzivanych na stanici (pre konkretne
-    ///     GVD)
+    ///     Zapise data o variantach a typoch reportov a jazykovych mutaciach hlaseni pouzivanych na stanici (pre konkretne GVD).
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="varianty">verianty reportov</param>
@@ -782,23 +791,23 @@ internal static class TXTParser
                     if (train.Routing == Routing.Vychadzajuci)
                     {
                         train.Departure = ParseTime(row[8]);
-                        train.EndingStation = Station.GetFromID(row[10]);
+                        train.EndingStation = Station.GetFromID(row.ElementAtOrDefault(10));
                     }
                     else if (train.Routing == Routing.Prechadzajuci)
                     {
                         train.Arrival = ParseTime(row[7]);
                         train.Departure = ParseTime(row[8]);
 
-                        train.StartingStation = Station.GetFromID(row[9]);
-                        train.EndingStation = Station.GetFromID(row[10]);
+                        train.StartingStation = Station.GetFromID(row.ElementAtOrDefault(9));
+                        train.EndingStation = Station.GetFromID(row.ElementAtOrDefault(10));
                     }
                     else if (train.Routing == Routing.Konciaci)
                     {
                         train.Arrival = ParseTime(row[7]);
-                        train.StartingStation = Station.GetFromID(row[9]);
+                        train.StartingStation = Station.GetFromID(row.ElementAtOrDefault(9));
                     }
 
-                    var idOperator = ParseIntOrDefault(row[12], -1);
+                    var idOperator = ParseIntOrDefault(row.ElementAtOrDefault(12), -1);
                     train.Operator = Operator.GetFromID(GlobData.Operators, idOperator);
 
                     train.LineArrival = row.ElementAtOrDefault(13);
@@ -835,8 +844,8 @@ internal static class TXTParser
                 {
                     var id = int.Parse(row[0]);
                     var train = vlaky[id - 1];
-                    train.ZaciatokPlatnosti = ParseDate(row[1]);
-                    train.KoniecPlatnosti = ParseDate(row[2]);
+                    train.ZaciatokPlatnosti = ParseDateAlts(row[1]);
+                    train.KoniecPlatnosti = ParseDateAlts(row[2]);
                 }
                 catch (Exception e)
                 {
@@ -1098,8 +1107,9 @@ internal static class TXTParser
             }
         }
 
-        using (var doplnkyF = new CSVFileReader(fileDoplnky))
+        if (File.Exists(fileDoplnky))
         {
+            using var doplnkyF = new CSVFileReader(fileDoplnky);
             var rowNumber = 1;
             var row = new CSVRow();
             while (true)

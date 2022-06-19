@@ -32,18 +32,6 @@ namespace GVDEditor.Forms
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FGlobalSettings));
-            ExControls.ExComboBoxStyle exComboBoxStyle13 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle14 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle15 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle16 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle17 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle18 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle19 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle20 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle21 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle22 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle23 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle24 = new ExControls.ExComboBoxStyle();
             this.tabControl = new ExControls.ExTabControl();
             this.tpGrafikony = new System.Windows.Forms.TabPage();
             this.label13 = new System.Windows.Forms.Label();
@@ -105,6 +93,10 @@ namespace GVDEditor.Forms
             this.listTrainTypes = new System.Windows.Forms.ListBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox3 = new ExControls.ExGroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tbDefaultTrainTypText = new ExControls.ExTextBox();
+            this.tbDefaultTrainTypSkratka = new ExControls.ExTextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.cbDefTrainTypSkratka = new ExControls.ExComboBox();
             this.bDefTrainTypDelete = new ExControls.ExButton();
             this.bDefTrainTypEdit = new ExControls.ExButton();
@@ -626,38 +618,34 @@ namespace GVDEditor.Forms
             resources.GetString("cbCustomTrainTypDruh.Items3")});
             resources.ApplyResources(this.cbCustomTrainTypDruh, "cbCustomTrainTypDruh");
             this.cbCustomTrainTypDruh.Name = "cbCustomTrainTypDruh";
-            exComboBoxStyle13.ArrowColor = null;
-            exComboBoxStyle13.BackColor = null;
-            exComboBoxStyle13.BorderColor = null;
-            exComboBoxStyle13.ButtonBackColor = null;
-            exComboBoxStyle13.ButtonBorderColor = null;
-            exComboBoxStyle13.ButtonRenderFirst = null;
-            exComboBoxStyle13.ForeColor = null;
-            this.cbCustomTrainTypDruh.StyleDisabled = exComboBoxStyle13;
-            exComboBoxStyle14.ArrowColor = null;
-            exComboBoxStyle14.BackColor = null;
-            exComboBoxStyle14.BorderColor = null;
-            exComboBoxStyle14.ButtonBackColor = null;
-            exComboBoxStyle14.ButtonBorderColor = null;
-            exComboBoxStyle14.ButtonRenderFirst = null;
-            exComboBoxStyle14.ForeColor = null;
-            this.cbCustomTrainTypDruh.StyleHighlight = exComboBoxStyle14;
-            exComboBoxStyle15.ArrowColor = null;
-            exComboBoxStyle15.BackColor = null;
-            exComboBoxStyle15.BorderColor = null;
-            exComboBoxStyle15.ButtonBackColor = null;
-            exComboBoxStyle15.ButtonBorderColor = null;
-            exComboBoxStyle15.ButtonRenderFirst = null;
-            exComboBoxStyle15.ForeColor = null;
-            this.cbCustomTrainTypDruh.StyleNormal = exComboBoxStyle15;
-            exComboBoxStyle16.ArrowColor = null;
-            exComboBoxStyle16.BackColor = null;
-            exComboBoxStyle16.BorderColor = null;
-            exComboBoxStyle16.ButtonBackColor = null;
-            exComboBoxStyle16.ButtonBorderColor = null;
-            exComboBoxStyle16.ButtonRenderFirst = null;
-            exComboBoxStyle16.ForeColor = null;
-            this.cbCustomTrainTypDruh.StyleSelected = exComboBoxStyle16;
+            this.cbCustomTrainTypDruh.StyleDisabled.ArrowColor = null;
+            this.cbCustomTrainTypDruh.StyleDisabled.BackColor = null;
+            this.cbCustomTrainTypDruh.StyleDisabled.BorderColor = null;
+            this.cbCustomTrainTypDruh.StyleDisabled.ButtonBackColor = null;
+            this.cbCustomTrainTypDruh.StyleDisabled.ButtonBorderColor = null;
+            this.cbCustomTrainTypDruh.StyleDisabled.ButtonRenderFirst = null;
+            this.cbCustomTrainTypDruh.StyleDisabled.ForeColor = null;
+            this.cbCustomTrainTypDruh.StyleHighlight.ArrowColor = null;
+            this.cbCustomTrainTypDruh.StyleHighlight.BackColor = null;
+            this.cbCustomTrainTypDruh.StyleHighlight.BorderColor = null;
+            this.cbCustomTrainTypDruh.StyleHighlight.ButtonBackColor = null;
+            this.cbCustomTrainTypDruh.StyleHighlight.ButtonBorderColor = null;
+            this.cbCustomTrainTypDruh.StyleHighlight.ButtonRenderFirst = null;
+            this.cbCustomTrainTypDruh.StyleHighlight.ForeColor = null;
+            this.cbCustomTrainTypDruh.StyleNormal.ArrowColor = null;
+            this.cbCustomTrainTypDruh.StyleNormal.BackColor = null;
+            this.cbCustomTrainTypDruh.StyleNormal.BorderColor = null;
+            this.cbCustomTrainTypDruh.StyleNormal.ButtonBackColor = null;
+            this.cbCustomTrainTypDruh.StyleNormal.ButtonBorderColor = null;
+            this.cbCustomTrainTypDruh.StyleNormal.ButtonRenderFirst = null;
+            this.cbCustomTrainTypDruh.StyleNormal.ForeColor = null;
+            this.cbCustomTrainTypDruh.StyleSelected.ArrowColor = null;
+            this.cbCustomTrainTypDruh.StyleSelected.BackColor = null;
+            this.cbCustomTrainTypDruh.StyleSelected.BorderColor = null;
+            this.cbCustomTrainTypDruh.StyleSelected.ButtonBackColor = null;
+            this.cbCustomTrainTypDruh.StyleSelected.ButtonBorderColor = null;
+            this.cbCustomTrainTypDruh.StyleSelected.ButtonRenderFirst = null;
+            this.cbCustomTrainTypDruh.StyleSelected.ForeColor = null;
             this.cbCustomTrainTypDruh.UseDarkScrollBar = false;
             // 
             // label40
@@ -701,6 +689,10 @@ namespace GVDEditor.Forms
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label20);
+            this.groupBox3.Controls.Add(this.tbDefaultTrainTypText);
+            this.groupBox3.Controls.Add(this.tbDefaultTrainTypSkratka);
+            this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.cbDefTrainTypSkratka);
             this.groupBox3.Controls.Add(this.bDefTrainTypDelete);
             this.groupBox3.Controls.Add(this.bDefTrainTypEdit);
@@ -710,6 +702,40 @@ namespace GVDEditor.Forms
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
+            // label20
+            // 
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
+            // 
+            // tbDefaultTrainTypText
+            // 
+            this.tbDefaultTrainTypText.BorderColor = System.Drawing.Color.DimGray;
+            this.tbDefaultTrainTypText.DisabledBackColor = System.Drawing.SystemColors.Control;
+            this.tbDefaultTrainTypText.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
+            this.tbDefaultTrainTypText.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbDefaultTrainTypText.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.tbDefaultTrainTypText.HintForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbDefaultTrainTypText.HintText = null;
+            resources.ApplyResources(this.tbDefaultTrainTypText, "tbDefaultTrainTypText");
+            this.tbDefaultTrainTypText.Name = "tbDefaultTrainTypText";
+            // 
+            // tbDefaultTrainTypSkratka
+            // 
+            this.tbDefaultTrainTypSkratka.BorderColor = System.Drawing.Color.DimGray;
+            this.tbDefaultTrainTypSkratka.DisabledBackColor = System.Drawing.SystemColors.Control;
+            this.tbDefaultTrainTypSkratka.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
+            this.tbDefaultTrainTypSkratka.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbDefaultTrainTypSkratka.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.tbDefaultTrainTypSkratka.HintForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbDefaultTrainTypSkratka.HintText = null;
+            resources.ApplyResources(this.tbDefaultTrainTypSkratka, "tbDefaultTrainTypSkratka");
+            this.tbDefaultTrainTypSkratka.Name = "tbDefaultTrainTypSkratka";
+            // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
+            // 
             // cbDefTrainTypSkratka
             // 
             this.cbDefTrainTypSkratka.DropDownSelectedRowBackColor = System.Drawing.SystemColors.Highlight;
@@ -717,38 +743,34 @@ namespace GVDEditor.Forms
             this.cbDefTrainTypSkratka.FormattingEnabled = true;
             resources.ApplyResources(this.cbDefTrainTypSkratka, "cbDefTrainTypSkratka");
             this.cbDefTrainTypSkratka.Name = "cbDefTrainTypSkratka";
-            exComboBoxStyle17.ArrowColor = null;
-            exComboBoxStyle17.BackColor = null;
-            exComboBoxStyle17.BorderColor = null;
-            exComboBoxStyle17.ButtonBackColor = null;
-            exComboBoxStyle17.ButtonBorderColor = null;
-            exComboBoxStyle17.ButtonRenderFirst = null;
-            exComboBoxStyle17.ForeColor = null;
-            this.cbDefTrainTypSkratka.StyleDisabled = exComboBoxStyle17;
-            exComboBoxStyle18.ArrowColor = null;
-            exComboBoxStyle18.BackColor = null;
-            exComboBoxStyle18.BorderColor = null;
-            exComboBoxStyle18.ButtonBackColor = null;
-            exComboBoxStyle18.ButtonBorderColor = null;
-            exComboBoxStyle18.ButtonRenderFirst = null;
-            exComboBoxStyle18.ForeColor = null;
-            this.cbDefTrainTypSkratka.StyleHighlight = exComboBoxStyle18;
-            exComboBoxStyle19.ArrowColor = null;
-            exComboBoxStyle19.BackColor = null;
-            exComboBoxStyle19.BorderColor = null;
-            exComboBoxStyle19.ButtonBackColor = null;
-            exComboBoxStyle19.ButtonBorderColor = null;
-            exComboBoxStyle19.ButtonRenderFirst = null;
-            exComboBoxStyle19.ForeColor = null;
-            this.cbDefTrainTypSkratka.StyleNormal = exComboBoxStyle19;
-            exComboBoxStyle20.ArrowColor = null;
-            exComboBoxStyle20.BackColor = null;
-            exComboBoxStyle20.BorderColor = null;
-            exComboBoxStyle20.ButtonBackColor = null;
-            exComboBoxStyle20.ButtonBorderColor = null;
-            exComboBoxStyle20.ButtonRenderFirst = null;
-            exComboBoxStyle20.ForeColor = null;
-            this.cbDefTrainTypSkratka.StyleSelected = exComboBoxStyle20;
+            this.cbDefTrainTypSkratka.StyleDisabled.ArrowColor = null;
+            this.cbDefTrainTypSkratka.StyleDisabled.BackColor = null;
+            this.cbDefTrainTypSkratka.StyleDisabled.BorderColor = null;
+            this.cbDefTrainTypSkratka.StyleDisabled.ButtonBackColor = null;
+            this.cbDefTrainTypSkratka.StyleDisabled.ButtonBorderColor = null;
+            this.cbDefTrainTypSkratka.StyleDisabled.ButtonRenderFirst = null;
+            this.cbDefTrainTypSkratka.StyleDisabled.ForeColor = null;
+            this.cbDefTrainTypSkratka.StyleHighlight.ArrowColor = null;
+            this.cbDefTrainTypSkratka.StyleHighlight.BackColor = null;
+            this.cbDefTrainTypSkratka.StyleHighlight.BorderColor = null;
+            this.cbDefTrainTypSkratka.StyleHighlight.ButtonBackColor = null;
+            this.cbDefTrainTypSkratka.StyleHighlight.ButtonBorderColor = null;
+            this.cbDefTrainTypSkratka.StyleHighlight.ButtonRenderFirst = null;
+            this.cbDefTrainTypSkratka.StyleHighlight.ForeColor = null;
+            this.cbDefTrainTypSkratka.StyleNormal.ArrowColor = null;
+            this.cbDefTrainTypSkratka.StyleNormal.BackColor = null;
+            this.cbDefTrainTypSkratka.StyleNormal.BorderColor = null;
+            this.cbDefTrainTypSkratka.StyleNormal.ButtonBackColor = null;
+            this.cbDefTrainTypSkratka.StyleNormal.ButtonBorderColor = null;
+            this.cbDefTrainTypSkratka.StyleNormal.ButtonRenderFirst = null;
+            this.cbDefTrainTypSkratka.StyleNormal.ForeColor = null;
+            this.cbDefTrainTypSkratka.StyleSelected.ArrowColor = null;
+            this.cbDefTrainTypSkratka.StyleSelected.BackColor = null;
+            this.cbDefTrainTypSkratka.StyleSelected.BorderColor = null;
+            this.cbDefTrainTypSkratka.StyleSelected.ButtonBackColor = null;
+            this.cbDefTrainTypSkratka.StyleSelected.ButtonBorderColor = null;
+            this.cbDefTrainTypSkratka.StyleSelected.ButtonRenderFirst = null;
+            this.cbDefTrainTypSkratka.StyleSelected.ForeColor = null;
             this.cbDefTrainTypSkratka.UseDarkScrollBar = false;
             // 
             // bDefTrainTypDelete
@@ -885,38 +907,34 @@ namespace GVDEditor.Forms
             this.cbAudioStanica.FormattingEnabled = true;
             resources.ApplyResources(this.cbAudioStanica, "cbAudioStanica");
             this.cbAudioStanica.Name = "cbAudioStanica";
-            exComboBoxStyle21.ArrowColor = null;
-            exComboBoxStyle21.BackColor = null;
-            exComboBoxStyle21.BorderColor = null;
-            exComboBoxStyle21.ButtonBackColor = null;
-            exComboBoxStyle21.ButtonBorderColor = null;
-            exComboBoxStyle21.ButtonRenderFirst = null;
-            exComboBoxStyle21.ForeColor = null;
-            this.cbAudioStanica.StyleDisabled = exComboBoxStyle21;
-            exComboBoxStyle22.ArrowColor = null;
-            exComboBoxStyle22.BackColor = null;
-            exComboBoxStyle22.BorderColor = null;
-            exComboBoxStyle22.ButtonBackColor = null;
-            exComboBoxStyle22.ButtonBorderColor = null;
-            exComboBoxStyle22.ButtonRenderFirst = null;
-            exComboBoxStyle22.ForeColor = null;
-            this.cbAudioStanica.StyleHighlight = exComboBoxStyle22;
-            exComboBoxStyle23.ArrowColor = null;
-            exComboBoxStyle23.BackColor = null;
-            exComboBoxStyle23.BorderColor = null;
-            exComboBoxStyle23.ButtonBackColor = null;
-            exComboBoxStyle23.ButtonBorderColor = null;
-            exComboBoxStyle23.ButtonRenderFirst = null;
-            exComboBoxStyle23.ForeColor = null;
-            this.cbAudioStanica.StyleNormal = exComboBoxStyle23;
-            exComboBoxStyle24.ArrowColor = null;
-            exComboBoxStyle24.BackColor = null;
-            exComboBoxStyle24.BorderColor = null;
-            exComboBoxStyle24.ButtonBackColor = null;
-            exComboBoxStyle24.ButtonBorderColor = null;
-            exComboBoxStyle24.ButtonRenderFirst = null;
-            exComboBoxStyle24.ForeColor = null;
-            this.cbAudioStanica.StyleSelected = exComboBoxStyle24;
+            this.cbAudioStanica.StyleDisabled.ArrowColor = null;
+            this.cbAudioStanica.StyleDisabled.BackColor = null;
+            this.cbAudioStanica.StyleDisabled.BorderColor = null;
+            this.cbAudioStanica.StyleDisabled.ButtonBackColor = null;
+            this.cbAudioStanica.StyleDisabled.ButtonBorderColor = null;
+            this.cbAudioStanica.StyleDisabled.ButtonRenderFirst = null;
+            this.cbAudioStanica.StyleDisabled.ForeColor = null;
+            this.cbAudioStanica.StyleHighlight.ArrowColor = null;
+            this.cbAudioStanica.StyleHighlight.BackColor = null;
+            this.cbAudioStanica.StyleHighlight.BorderColor = null;
+            this.cbAudioStanica.StyleHighlight.ButtonBackColor = null;
+            this.cbAudioStanica.StyleHighlight.ButtonBorderColor = null;
+            this.cbAudioStanica.StyleHighlight.ButtonRenderFirst = null;
+            this.cbAudioStanica.StyleHighlight.ForeColor = null;
+            this.cbAudioStanica.StyleNormal.ArrowColor = null;
+            this.cbAudioStanica.StyleNormal.BackColor = null;
+            this.cbAudioStanica.StyleNormal.BorderColor = null;
+            this.cbAudioStanica.StyleNormal.ButtonBackColor = null;
+            this.cbAudioStanica.StyleNormal.ButtonBorderColor = null;
+            this.cbAudioStanica.StyleNormal.ButtonRenderFirst = null;
+            this.cbAudioStanica.StyleNormal.ForeColor = null;
+            this.cbAudioStanica.StyleSelected.ArrowColor = null;
+            this.cbAudioStanica.StyleSelected.BackColor = null;
+            this.cbAudioStanica.StyleSelected.BorderColor = null;
+            this.cbAudioStanica.StyleSelected.ButtonBackColor = null;
+            this.cbAudioStanica.StyleSelected.ButtonBorderColor = null;
+            this.cbAudioStanica.StyleSelected.ButtonRenderFirst = null;
+            this.cbAudioStanica.StyleSelected.ForeColor = null;
             this.cbAudioStanica.UseDarkScrollBar = false;
             // 
             // bAudioDelete
@@ -1088,5 +1106,9 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.BindingSource languageBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn keyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fyzBankNameDataGridViewTextBoxColumn;
+        private Label label20;
+        private ExTextBox tbDefaultTrainTypText;
+        private ExTextBox tbDefaultTrainTypSkratka;
+        private Label label21;
     }
 }

@@ -13,6 +13,11 @@ namespace GVDEditor.Entities;
 public sealed record Station(string ID, string Name, bool IsInShortReport = false, bool IsInLongReport = false, bool IsCustom = false) : IComparable
 {
     /// <summary>
+    ///     Predvolena (nedefinovana) stanica.
+    /// </summary>
+    public static Station None { get; } = new("0000000", "None");
+
+    /// <summary>
     ///     Identifikátor stanice.
     /// </summary>
     public string ID { get; set; } = ID;
@@ -48,6 +53,9 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
     /// <returns><see cref="Station" />. Ak nenašlo žiadnu zhodu, vrati stanicu s nazvom zadaneho ID.</returns>
     public static Station GetFromID(string id)
     {
+        if (string.IsNullOrEmpty(id))
+            return None;
+
         var stationsWithSameId = GlobData.Stations.Where(station => station.ID == id);
         foreach (var st in stationsWithSameId) 
             return new Station(st.ID, st.Name);
@@ -66,6 +74,9 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
     /// <returns><see cref="Station" /> alebo <see langword="null" /> ak nenašlo žiadnu zhodu</returns>
     public static Station GetFromName(string name)
     {
+        if (string.IsNullOrEmpty(name))
+            return None;
+
         name = name.Replace(".", "").Replace("-", "").ToLower();
         name = Utils.RemoveDiacritics(name);
 

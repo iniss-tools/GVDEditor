@@ -145,7 +145,7 @@
     <value>bSave</value>
   </data>
   <data name="&gt;&gt;bSave.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bSave.Parent" xml:space="preserve">
     <value>$this</value>
@@ -178,7 +178,7 @@
     <value>bStorno</value>
   </data>
   <data name="&gt;&gt;bStorno.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bStorno.Parent" xml:space="preserve">
     <value>$this</value>
@@ -208,7 +208,7 @@
     <value>cbDateRemLocate</value>
   </data>
   <data name="&gt;&gt;cbDateRemLocate.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDateRemLocate.Parent" xml:space="preserve">
     <value>pLocalization</value>
@@ -238,7 +238,7 @@
     <value>cbAppLanguage</value>
   </data>
   <data name="&gt;&gt;cbAppLanguage.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbAppLanguage.Parent" xml:space="preserve">
     <value>pLocalization</value>
@@ -337,7 +337,7 @@
     <value>cbLoggingError</value>
   </data>
   <data name="&gt;&gt;cbLoggingError.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbLoggingError.Parent" xml:space="preserve">
     <value>pLogging</value>
@@ -403,7 +403,7 @@
     <value>cbDebugModeGUI</value>
   </data>
   <data name="&gt;&gt;cbDebugModeGUI.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDebugModeGUI.Parent" xml:space="preserve">
     <value>pLogging</value>
@@ -436,7 +436,7 @@
     <value>cbLoggingInfo</value>
   </data>
   <data name="&gt;&gt;cbLoggingInfo.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbLoggingInfo.Parent" xml:space="preserve">
     <value>pLogging</value>
@@ -493,7 +493,7 @@
     <value>nudWordPause</value>
   </data>
   <data name="&gt;&gt;nudWordPause.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudWordPause.Parent" xml:space="preserve">
     <value>pPlaying</value>
@@ -526,7 +526,7 @@
     <value>cbAutoTableText</value>
   </data>
   <data name="&gt;&gt;cbAutoTableText.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbAutoTableText.Parent" xml:space="preserve">
     <value>pObecne</value>
@@ -559,7 +559,7 @@
     <value>cbClassicGUI</value>
   </data>
   <data name="&gt;&gt;cbClassicGUI.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbClassicGUI.Parent" xml:space="preserve">
     <value>pObecne</value>
@@ -592,7 +592,7 @@
     <value>cbMoreInstance</value>
   </data>
   <data name="&gt;&gt;cbMoreInstance.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbMoreInstance.Parent" xml:space="preserve">
     <value>pObecne</value>
@@ -614,14 +614,14 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB+
-        RgAAAk1TRnQBSQFMAgEBCQEAAVgBAQFYAQEBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
+        RgAAAk1TRnQBSQFMAgEBCQEAAWABAQFgAQEBFAEAARQBAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFQ
         AwABPAMAAQEBAAEgBgABS/8AXwADFQEdAwoBDf8AOQADIwEzAVoBzAEXAf8DSwGMAwYBCP8AMQADIwEz
-        AVoBzAEXAf8BWgHMARcB/wFgAWwBVAHzAz0BZ/8ALQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
+        AVoBzAEXAf8BWgHMARcB/wFgAWwBVQHzAz0BZ/8ALQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
         AVoBzAEXAf8BZQFoAVMB9AMSARj/ACUAAyMBMwFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
         AVoBzAEXAf8BWgHMARcB/wNWAbMDEgEX/wAdAAMjATMBWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHM
-        ARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFNAX0BOAH6A00Bkv8AGQADIwEzAVoBzAEXAf8BWgHM
+        ARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFNAX0BOgH6A00Bkv8AGQADIwEzAVoBzAEXAf8BWgHM
         ARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
-        AWoBfwFBAfkDLAFD/wARAAMjATMBWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
+        AWoBfQFBAfkDLAFD/wARAAMjATMBWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
         AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/Al4BWwHTAx0BKf8A
         CQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEX
         Af8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8CWgFXAcL/AAUA
@@ -629,7 +629,7 @@
         AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wJUAVIBqAMGAQf/AAUAAyMBMwFa
         AcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEX
         Af8BWgHMARcB/wFaAcwBFwH/AmEBWwHeAxUBHf8ADQADIwEzAVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/
-        AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wJeAVcB8AMxAU3/ABUAAyMBMwFa
+        AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wJeAVgB8AMxAU3/ABUAAyMBMwFa
         AcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/A0YBfgMD
         AQT/ABkAAyMBMwFaAcwBFwH/AVoBzAEXAf8BWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8DXAHL/wAlAAMj
         ATMBWgHMARcB/wFaAcwBFwH/AVoBzAEXAf8DYAHbAyIBMf8AKQADIwEzAVoBzAEXAf8BWgHMARcB/wMy
@@ -932,8 +932,8 @@
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
         ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
-        aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAAB09iZWNuw6kGBAAAAAAGBQAAAAd1T2JlY25lAAQA
-        AAAJBAAAAAQAAAAJBAAAAAAAAAAL
+        aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAAB09iZWNuw6kGBAAAAAAGBQAAAAd1T2JlY25lAP//
+        //8JBAAAAP////8JBAAAAAAAAAAL
 </value>
   </data>
   <data name="treeMenu.Nodes1" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -946,22 +946,22 @@
         BAEICAgdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUCAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1z
         LlRyZWVOb2RlAgAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQIAAAAdU3lzdGVtLldpbmRv
         d3MuRm9ybXMuVHJlZU5vZGUCAAAAAgAAAAYDAAAAClByb3N0cmVkaWUGBAAAAAAGBQAAAAt1UHJvc3Ry
-        ZWRpZQADAAAACQQAAAADAAAACQQAAAAEAAAACQcAAAAJCAAAAAkJAAAACQoAAAAFBwAAAB1TeXN0ZW0u
+        ZWRpZQD/////CQQAAAD/////CQQAAAAEAAAACQcAAAAJCAAAAAkJAAAACQoAAAAFBwAAAB1TeXN0ZW0u
         V2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tlZApJ
         bWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxk
         Q291bnQBAQEAAAEAAQABCAgIAgAAAAYLAAAADExva2FsaXrDoWNpYQkEAAAABg0AAAANdUxvY2FsaXph
-        dGlvbgAGAAAACQQAAAAGAAAACQQAAAAAAAAABQgAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5v
+        dGlvbgD/////CQQAAAD/////CQQAAAAAAAAABQgAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5v
         ZGUJAAAABFRleHQLVG9vbFRpcFRleHQETmFtZQlJc0NoZWNrZWQKSW1hZ2VJbmRleAhJbWFnZUtleRJT
         ZWxlY3RlZEltYWdlSW5kZXgQU2VsZWN0ZWRJbWFnZUtleQpDaGlsZENvdW50AQEBAAABAAEAAQgICAIA
-        AAAGDwAAAA5Qw61zbWEgYSBmYXJieQkEAAAABhEAAAAMdUZvbnRzQ29sb3JzAAAAAAAJBAAAAAAAAAAJ
+        AAAGDwAAAA5Qw61zbWEgYSBmYXJieQkEAAAABhEAAAAMdUZvbnRzQ29sb3JzAP////8JBAAAAP////8J
         BAAAAAAAAAAFCQAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlw
         VGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBT
         ZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYTAAAAEFByYWNvdm7DoSBw
-        bG9jaGEJBAAAAAYVAAAACHVEZXNrdG9wAAIAAAAJBAAAAAIAAAAJBAAAAAAAAAAFCgAAAB1TeXN0ZW0u
+        bG9jaGEJBAAAAAYVAAAACHVEZXNrdG9wAP////8JBAAAAP////8JBAAAAAAAAAAFCgAAAB1TeXN0ZW0u
         V2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tlZApJ
         bWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxk
         Q291bnQBAQEAAAEAAQABCAgIAgAAAAYXAAAAE0tsw6F2ZXNvdsOpIHNrcmF0a3kJBAAAAAYZAAAACnVT
-        aG9ydGN1dHMABwAAAAkEAAAABwAAAAkEAAAAAAAAAAs=
+        aG9ydGN1dHMA/////wkEAAAA/////wkEAAAAAAAAAAs=
 </value>
   </data>
   <data name="treeMenu.Nodes2" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -971,7 +971,7 @@
         ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
         ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
         aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAAFUxvZ292YW5pZSBhIGRlYnVnZ2luZwYEAAAAAAYF
-        AAAACHVMb2dnaW5nAAEAAAAJBAAAAAEAAAAJBAAAAAAAAAAL
+        AAAACHVMb2dnaW5nAP////8JBAAAAP////8JBAAAAAAAAAAL
 </value>
   </data>
   <data name="treeMenu.Nodes3" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -981,7 +981,7 @@
         ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
         ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
         aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAADFByZWhyw6F2YW5pZQYEAAAAAAYFAAAACHVQbGF5
-        aW5nAAUAAAAJBAAAAAUAAAAJBAAAAAAAAAAL
+        aW5nAP////8JBAAAAP////8JBAAAAAAAAAAL
 </value>
   </data>
   <data name="treeMenu.Nodes4" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -991,7 +991,7 @@
         ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
         ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
         aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAAElNww7rFocWlYW5pZSBJTklTUwYEAAAAAAYFAAAA
-        CHVTdGFydHVwAAgAAAAJBAAAAAgAAAAJBAAAAAAAAAAL
+        CHVTdGFydHVwAP////8JBAAAAP////8JBAAAAAAAAAAL
 </value>
   </data>
   <data name="treeMenu.SelectedImageIndex" type="System.Int32, mscorlib">
@@ -1015,6 +1015,66 @@
   <data name="&gt;&gt;treeMenu.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;cbCheckUpdate.Name" xml:space="preserve">
+    <value>cbCheckUpdate</value>
+  </data>
+  <data name="&gt;&gt;cbCheckUpdate.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbCheckUpdate.Parent" xml:space="preserve">
+    <value>pObecne</value>
+  </data>
+  <data name="&gt;&gt;cbCheckUpdate.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbAutoVariant.Name" xml:space="preserve">
+    <value>cbAutoVariant</value>
+  </data>
+  <data name="&gt;&gt;cbAutoVariant.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbAutoVariant.Parent" xml:space="preserve">
+    <value>pObecne</value>
+  </data>
+  <data name="&gt;&gt;cbAutoVariant.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbDisableVariantCheck.Name" xml:space="preserve">
+    <value>cbDisableVariantCheck</value>
+  </data>
+  <data name="&gt;&gt;cbDisableVariantCheck.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbDisableVariantCheck.Parent" xml:space="preserve">
+    <value>pObecne</value>
+  </data>
+  <data name="&gt;&gt;cbDisableVariantCheck.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pObecne.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 9</value>
+  </data>
+  <data name="pObecne.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pObecne.Size" type="System.Drawing.Size, System.Drawing">
+    <value>502, 421</value>
+  </data>
+  <data name="pObecne.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;pObecne.Name" xml:space="preserve">
+    <value>pObecne</value>
+  </data>
+  <data name="&gt;&gt;pObecne.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pObecne.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pObecne.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="cbCheckUpdate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1037,7 +1097,7 @@
     <value>cbCheckUpdate</value>
   </data>
   <data name="&gt;&gt;cbCheckUpdate.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbCheckUpdate.Parent" xml:space="preserve">
     <value>pObecne</value>
@@ -1070,7 +1130,7 @@
     <value>cbAutoVariant</value>
   </data>
   <data name="&gt;&gt;cbAutoVariant.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbAutoVariant.Parent" xml:space="preserve">
     <value>pObecne</value>
@@ -1103,7 +1163,7 @@
     <value>cbDisableVariantCheck</value>
   </data>
   <data name="&gt;&gt;cbDisableVariantCheck.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDisableVariantCheck.Parent" xml:space="preserve">
     <value>pObecne</value>
@@ -1111,54 +1171,72 @@
   <data name="&gt;&gt;cbDisableVariantCheck.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="pObecne.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;dgvAppFonts.Name" xml:space="preserve">
+    <value>dgvAppFonts</value>
+  </data>
+  <data name="&gt;&gt;dgvAppFonts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvAppFonts.Parent" xml:space="preserve">
+    <value>pEnvironment</value>
+  </data>
+  <data name="&gt;&gt;dgvAppFonts.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;bAppFontDefault.Name" xml:space="preserve">
+    <value>bAppFontDefault</value>
+  </data>
+  <data name="&gt;&gt;bAppFontDefault.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bAppFontDefault.Parent" xml:space="preserve">
+    <value>pEnvironment</value>
+  </data>
+  <data name="&gt;&gt;bAppFontDefault.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>pEnvironment</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pEnvironment.Location" type="System.Drawing.Point, System.Drawing">
     <value>212, 9</value>
   </data>
-  <data name="pObecne.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="pEnvironment.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="pObecne.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pEnvironment.Size" type="System.Drawing.Size, System.Drawing">
     <value>502, 421</value>
   </data>
-  <data name="pObecne.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="pEnvironment.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
-  <data name="&gt;&gt;pObecne.Name" xml:space="preserve">
-    <value>pObecne</value>
+  <data name="&gt;&gt;pEnvironment.Name" xml:space="preserve">
+    <value>pEnvironment</value>
   </data>
-  <data name="&gt;&gt;pObecne.Type" xml:space="preserve">
+  <data name="&gt;&gt;pEnvironment.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pObecne.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pEnvironment.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;pObecne.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="nameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Typ textu</value>
-  </data>
-  <data name="nameDataGridViewTextBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
-    <value>100</value>
+  <data name="&gt;&gt;pEnvironment.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <metadata name="FontDescription.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="FontDescription.HeaderText" xml:space="preserve">
-    <value>Písmo</value>
-  </data>
-  <data name="FontDescription.MinimumWidth" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
   <metadata name="Example.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="Example.HeaderText" xml:space="preserve">
-    <value>Ukážka</value>
-  </data>
-  <data name="Example.MinimumWidth" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
   <metadata name="appFontBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>297, 17</value>
   </metadata>
@@ -1189,6 +1267,27 @@
   <data name="&gt;&gt;dgvAppFonts.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="FontDescription.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="FontDescription.HeaderText" xml:space="preserve">
+    <value>Písmo</value>
+  </data>
+  <data name="FontDescription.MinimumWidth" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <metadata name="Example.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Example.HeaderText" xml:space="preserve">
+    <value>Ukážka</value>
+  </data>
+  <data name="Example.MinimumWidth" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <metadata name="appFontBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>297, 17</value>
+  </metadata>
   <data name="bAppFontDefault.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1202,7 +1301,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bAppFontDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 24</value>
+    <value>87, 26</value>
   </data>
   <data name="bAppFontDefault.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1214,7 +1313,7 @@
     <value>bAppFontDefault</value>
   </data>
   <data name="&gt;&gt;bAppFontDefault.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bAppFontDefault.Parent" xml:space="preserve">
     <value>pEnvironment</value>
@@ -1255,30 +1354,6 @@
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="pEnvironment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 9</value>
-  </data>
-  <data name="pEnvironment.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="pEnvironment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>502, 421</value>
-  </data>
-  <data name="pEnvironment.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;pEnvironment.Name" xml:space="preserve">
-    <value>pEnvironment</value>
-  </data>
-  <data name="&gt;&gt;pEnvironment.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pEnvironment.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pEnvironment.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
   <data name="pLocalization.Location" type="System.Drawing.Point, System.Drawing">
     <value>212, 9</value>
   </data>
@@ -1301,7 +1376,163 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pLocalization.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;bUseStyle.Name" xml:space="preserve">
+    <value>bUseStyle</value>
+  </data>
+  <data name="&gt;&gt;bUseStyle.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bUseStyle.Parent" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;bUseStyle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;bColorsUseDefault.Name" xml:space="preserve">
+    <value>bColorsUseDefault</value>
+  </data>
+  <data name="&gt;&gt;bColorsUseDefault.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bColorsUseDefault.Parent" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;bColorsUseDefault.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.Name" xml:space="preserve">
+    <value>exGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.Parent" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cbColorSettings.Name" xml:space="preserve">
+    <value>cbColorSettings</value>
+  </data>
+  <data name="&gt;&gt;cbColorSettings.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbColorSettings.Parent" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;cbColorSettings.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;bRemoveStyle.Name" xml:space="preserve">
+    <value>bRemoveStyle</value>
+  </data>
+  <data name="&gt;&gt;bRemoveStyle.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bRemoveStyle.Parent" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;bRemoveStyle.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;bRenameStyle.Name" xml:space="preserve">
+    <value>bRenameStyle</value>
+  </data>
+  <data name="&gt;&gt;bRenameStyle.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bRenameStyle.Parent" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;bRenameStyle.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;bAddStyle.Name" xml:space="preserve">
+    <value>bAddStyle</value>
+  </data>
+  <data name="&gt;&gt;bAddStyle.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bAddStyle.Parent" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;bAddStyle.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="&gt;&gt;cbStyles.Name" xml:space="preserve">
+    <value>cbStyles</value>
+  </data>
+  <data name="&gt;&gt;cbStyles.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbStyles.Parent" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;cbStyles.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox3.Name" xml:space="preserve">
+    <value>exGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox3.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox3.Parent" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox3.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="pFontsColors.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 9</value>
+  </data>
+  <data name="pFontsColors.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pFontsColors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>502, 421</value>
+  </data>
+  <data name="pFontsColors.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;pFontsColors.Name" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;pFontsColors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pFontsColors.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pFontsColors.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="bUseStyle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1316,7 +1547,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bUseStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 23</value>
+    <value>56, 26</value>
   </data>
   <data name="bUseStyle.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -1328,7 +1559,7 @@
     <value>bUseStyle</value>
   </data>
   <data name="&gt;&gt;bUseStyle.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bUseStyle.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1349,7 +1580,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bColorsUseDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 24</value>
+    <value>126, 26</value>
   </data>
   <data name="bColorsUseDefault.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1361,13 +1592,79 @@
     <value>bColorsUseDefault</value>
   </data>
   <data name="&gt;&gt;bColorsUseDefault.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bColorsUseDefault.Parent" xml:space="preserve">
     <value>pFontsColors</value>
   </data>
   <data name="&gt;&gt;bColorsUseDefault.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;cboxDarkScrollBars.Name" xml:space="preserve">
+    <value>cboxDarkScrollBars</value>
+  </data>
+  <data name="&gt;&gt;cboxDarkScrollBars.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxDarkScrollBars.Parent" xml:space="preserve">
+    <value>exGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;cboxDarkScrollBars.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboxDarkTitleBar.Name" xml:space="preserve">
+    <value>cboxDarkTitleBar</value>
+  </data>
+  <data name="&gt;&gt;cboxDarkTitleBar.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxDarkTitleBar.Parent" xml:space="preserve">
+    <value>exGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;cboxDarkTitleBar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cboxDefaultStyle.Name" xml:space="preserve">
+    <value>cboxDefaultStyle</value>
+  </data>
+  <data name="&gt;&gt;cboxDefaultStyle.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxDefaultStyle.Parent" xml:space="preserve">
+    <value>exGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;cboxDefaultStyle.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="exGroupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 32</value>
+  </data>
+  <data name="exGroupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="exGroupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="exGroupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 62</value>
+  </data>
+  <data name="exGroupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="exGroupBox2.Text" xml:space="preserve">
+    <value>Nastavenia štýlu</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.Name" xml:space="preserve">
+    <value>exGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.Parent" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="cboxDarkScrollBars.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1394,7 +1691,7 @@
     <value>cboxDarkScrollBars</value>
   </data>
   <data name="&gt;&gt;cboxDarkScrollBars.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxDarkScrollBars.Parent" xml:space="preserve">
     <value>exGroupBox2</value>
@@ -1427,7 +1724,7 @@
     <value>cboxDarkTitleBar</value>
   </data>
   <data name="&gt;&gt;cboxDarkTitleBar.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxDarkTitleBar.Parent" xml:space="preserve">
     <value>exGroupBox2</value>
@@ -1460,42 +1757,12 @@
     <value>cboxDefaultStyle</value>
   </data>
   <data name="&gt;&gt;cboxDefaultStyle.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxDefaultStyle.Parent" xml:space="preserve">
     <value>exGroupBox2</value>
   </data>
   <data name="&gt;&gt;cboxDefaultStyle.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="exGroupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 32</value>
-  </data>
-  <data name="exGroupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="exGroupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="exGroupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 62</value>
-  </data>
-  <data name="exGroupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="exGroupBox2.Text" xml:space="preserve">
-    <value>Nastavenia štýlu</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox2.Name" xml:space="preserve">
-    <value>exGroupBox2</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox2.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox2.Parent" xml:space="preserve">
-    <value>pFontsColors</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
@@ -1550,7 +1817,7 @@
     <value>cbColorSettings</value>
   </data>
   <data name="&gt;&gt;cbColorSettings.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbColorSettings.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1571,7 +1838,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bRemoveStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 23</value>
+    <value>70, 26</value>
   </data>
   <data name="bRemoveStyle.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -1583,7 +1850,7 @@
     <value>bRemoveStyle</value>
   </data>
   <data name="&gt;&gt;bRemoveStyle.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bRemoveStyle.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1604,7 +1871,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bRenameStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 23</value>
+    <value>100, 26</value>
   </data>
   <data name="bRenameStyle.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -1616,7 +1883,7 @@
     <value>bRenameStyle</value>
   </data>
   <data name="&gt;&gt;bRenameStyle.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bRenameStyle.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1637,7 +1904,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bAddStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 23</value>
+    <value>56, 26</value>
   </data>
   <data name="bAddStyle.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -1649,7 +1916,7 @@
     <value>bAddStyle</value>
   </data>
   <data name="&gt;&gt;bAddStyle.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bAddStyle.Parent" xml:space="preserve">
     <value>pFontsColors</value>
@@ -1706,13 +1973,151 @@
     <value>cbStyles</value>
   </data>
   <data name="&gt;&gt;cbStyles.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbStyles.Parent" xml:space="preserve">
     <value>pFontsColors</value>
   </data>
   <data name="&gt;&gt;cbStyles.ZOrder" xml:space="preserve">
     <value>9</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>exGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbFontSize.Name" xml:space="preserve">
+    <value>cbFontSize</value>
+  </data>
+  <data name="&gt;&gt;cbFontSize.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbFontSize.Parent" xml:space="preserve">
+    <value>exGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;cbFontSize.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>exGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox1.Name" xml:space="preserve">
+    <value>exGroupBox1</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox1.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox1.Parent" xml:space="preserve">
+    <value>exGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cbFont.Name" xml:space="preserve">
+    <value>cbFont</value>
+  </data>
+  <data name="&gt;&gt;cbFont.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbFont.Parent" xml:space="preserve">
+    <value>exGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;cbFont.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>exGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;listSettings.Name" xml:space="preserve">
+    <value>listSettings</value>
+  </data>
+  <data name="&gt;&gt;listSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listSettings.Parent" xml:space="preserve">
+    <value>exGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;listSettings.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>exGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;labelExample.Name" xml:space="preserve">
+    <value>labelExample</value>
+  </data>
+  <data name="&gt;&gt;labelExample.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelExample.Parent" xml:space="preserve">
+    <value>exGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;labelExample.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="exGroupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 136</value>
+  </data>
+  <data name="exGroupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="exGroupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="exGroupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>485, 282</value>
+  </data>
+  <data name="exGroupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="exGroupBox3.Text" xml:space="preserve">
+    <value>Nastavenie skupiny</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox3.Name" xml:space="preserve">
+    <value>exGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox3.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox3.Parent" xml:space="preserve">
+    <value>pFontsColors</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox3.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1763,7 +2168,7 @@
     <value>cbFontSize</value>
   </data>
   <data name="&gt;&gt;cbFontSize.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbFontSize.Parent" xml:space="preserve">
     <value>exGroupBox3</value>
@@ -1803,6 +2208,120 @@
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>exGroupBox1</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pbBackgroundColor.Name" xml:space="preserve">
+    <value>pbBackgroundColor</value>
+  </data>
+  <data name="&gt;&gt;pbBackgroundColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pbBackgroundColor.Parent" xml:space="preserve">
+    <value>exGroupBox1</value>
+  </data>
+  <data name="&gt;&gt;pbBackgroundColor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;bSetBackgroundColor.Name" xml:space="preserve">
+    <value>bSetBackgroundColor</value>
+  </data>
+  <data name="&gt;&gt;bSetBackgroundColor.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bSetBackgroundColor.Parent" xml:space="preserve">
+    <value>exGroupBox1</value>
+  </data>
+  <data name="&gt;&gt;bSetBackgroundColor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>exGroupBox1</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;pbForegroundColor.Name" xml:space="preserve">
+    <value>pbForegroundColor</value>
+  </data>
+  <data name="&gt;&gt;pbForegroundColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pbForegroundColor.Parent" xml:space="preserve">
+    <value>exGroupBox1</value>
+  </data>
+  <data name="&gt;&gt;pbForegroundColor.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;bSetForegroundColor.Name" xml:space="preserve">
+    <value>bSetForegroundColor</value>
+  </data>
+  <data name="&gt;&gt;bSetForegroundColor.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bSetForegroundColor.Parent" xml:space="preserve">
+    <value>exGroupBox1</value>
+  </data>
+  <data name="&gt;&gt;bSetForegroundColor.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;cbBold.Name" xml:space="preserve">
+    <value>cbBold</value>
+  </data>
+  <data name="&gt;&gt;cbBold.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbBold.Parent" xml:space="preserve">
+    <value>exGroupBox1</value>
+  </data>
+  <data name="&gt;&gt;cbBold.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="exGroupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>278, 61</value>
+  </data>
+  <data name="exGroupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="exGroupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="exGroupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 136</value>
+  </data>
+  <data name="exGroupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="exGroupBox1.Text" xml:space="preserve">
+    <value>Nastavenia položky</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox1.Name" xml:space="preserve">
+    <value>exGroupBox1</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox1.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox1.Parent" xml:space="preserve">
+    <value>exGroupBox3</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1877,7 +2396,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bSetBackgroundColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 24</value>
+    <value>76, 26</value>
   </data>
   <data name="bSetBackgroundColor.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -1889,7 +2408,7 @@
     <value>bSetBackgroundColor</value>
   </data>
   <data name="&gt;&gt;bSetBackgroundColor.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bSetBackgroundColor.Parent" xml:space="preserve">
     <value>exGroupBox1</value>
@@ -1970,7 +2489,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bSetForegroundColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 24</value>
+    <value>76, 26</value>
   </data>
   <data name="bSetForegroundColor.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -1982,7 +2501,7 @@
     <value>bSetForegroundColor</value>
   </data>
   <data name="&gt;&gt;bSetForegroundColor.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bSetForegroundColor.Parent" xml:space="preserve">
     <value>exGroupBox1</value>
@@ -2015,43 +2534,13 @@
     <value>cbBold</value>
   </data>
   <data name="&gt;&gt;cbBold.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbBold.Parent" xml:space="preserve">
     <value>exGroupBox1</value>
   </data>
   <data name="&gt;&gt;cbBold.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="exGroupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>278, 61</value>
-  </data>
-  <data name="exGroupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="exGroupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="exGroupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 136</value>
-  </data>
-  <data name="exGroupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="exGroupBox1.Text" xml:space="preserve">
-    <value>Nastavenia položky</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox1.Name" xml:space="preserve">
-    <value>exGroupBox1</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox1.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox1.Parent" xml:space="preserve">
-    <value>exGroupBox3</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox1.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="cbFont.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 37</value>
@@ -2069,7 +2558,7 @@
     <value>cbFont</value>
   </data>
   <data name="&gt;&gt;cbFont.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbFont.Parent" xml:space="preserve">
     <value>exGroupBox3</value>
@@ -2200,60 +2689,6 @@
   <data name="&gt;&gt;labelExample.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="exGroupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 136</value>
-  </data>
-  <data name="exGroupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="exGroupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="exGroupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>485, 282</value>
-  </data>
-  <data name="exGroupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="exGroupBox3.Text" xml:space="preserve">
-    <value>Nastavenie skupiny</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox3.Name" xml:space="preserve">
-    <value>exGroupBox3</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox3.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox3.Parent" xml:space="preserve">
-    <value>pFontsColors</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox3.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="pFontsColors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 9</value>
-  </data>
-  <data name="pFontsColors.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="pFontsColors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>502, 421</value>
-  </data>
-  <data name="pFontsColors.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;pFontsColors.Name" xml:space="preserve">
-    <value>pFontsColors</value>
-  </data>
-  <data name="&gt;&gt;pFontsColors.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pFontsColors.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pFontsColors.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="pLogging.Location" type="System.Drawing.Point, System.Drawing">
     <value>212, 9</value>
   </data>
@@ -2276,7 +2711,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pLogging.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>11</value>
   </data>
   <data name="pPlaying.Location" type="System.Drawing.Point, System.Drawing">
     <value>212, 9</value>
@@ -2300,7 +2735,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pPlaying.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>5</value>
   </data>
   <metadata name="deviceInformationBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 60</value>
@@ -2308,6 +2743,102 @@
   <metadata name="appFontDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>509, 17</value>
   </metadata>
+  <data name="&gt;&gt;cbFitLastColumn.Name" xml:space="preserve">
+    <value>cbFitLastColumn</value>
+  </data>
+  <data name="&gt;&gt;cbFitLastColumn.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbFitLastColumn.Parent" xml:space="preserve">
+    <value>pDesktop</value>
+  </data>
+  <data name="&gt;&gt;cbFitLastColumn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;bColumnDown.Name" xml:space="preserve">
+    <value>bColumnDown</value>
+  </data>
+  <data name="&gt;&gt;bColumnDown.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bColumnDown.Parent" xml:space="preserve">
+    <value>pDesktop</value>
+  </data>
+  <data name="&gt;&gt;bColumnDown.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;bColumnUp.Name" xml:space="preserve">
+    <value>bColumnUp</value>
+  </data>
+  <data name="&gt;&gt;bColumnUp.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bColumnUp.Parent" xml:space="preserve">
+    <value>pDesktop</value>
+  </data>
+  <data name="&gt;&gt;bColumnUp.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>pDesktop</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;dgvDesktopColums.Name" xml:space="preserve">
+    <value>dgvDesktopColums</value>
+  </data>
+  <data name="&gt;&gt;dgvDesktopColums.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvDesktopColums.Parent" xml:space="preserve">
+    <value>pDesktop</value>
+  </data>
+  <data name="&gt;&gt;dgvDesktopColums.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>pDesktop</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="pDesktop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 9</value>
+  </data>
+  <data name="pDesktop.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pDesktop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>502, 421</value>
+  </data>
+  <data name="pDesktop.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;pDesktop.Name" xml:space="preserve">
+    <value>pDesktop</value>
+  </data>
+  <data name="&gt;&gt;pDesktop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pDesktop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pDesktop.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
   <data name="cbFitLastColumn.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2333,7 +2864,7 @@
     <value>cbFitLastColumn</value>
   </data>
   <data name="&gt;&gt;cbFitLastColumn.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbFitLastColumn.Parent" xml:space="preserve">
     <value>pDesktop</value>
@@ -2354,7 +2885,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bColumnDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 24</value>
+    <value>56, 26</value>
   </data>
   <data name="bColumnDown.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -2366,7 +2897,7 @@
     <value>bColumnDown</value>
   </data>
   <data name="&gt;&gt;bColumnDown.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bColumnDown.Parent" xml:space="preserve">
     <value>pDesktop</value>
@@ -2387,7 +2918,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bColumnUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 24</value>
+    <value>58, 26</value>
   </data>
   <data name="bColumnUp.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -2399,7 +2930,7 @@
     <value>bColumnUp</value>
   </data>
   <data name="&gt;&gt;bColumnUp.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bColumnUp.Parent" xml:space="preserve">
     <value>pDesktop</value>
@@ -2443,33 +2974,9 @@
   <metadata name="nameDataGridViewCheckBoxColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="nameDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
-    <value>Názov</value>
-  </data>
-  <data name="nameDataGridViewCheckBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="nameDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="visibleDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
-    <value>Viditeľný</value>
-  </data>
-  <data name="visibleDataGridViewCheckBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="visibleDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
   <metadata name="MinWidth.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="MinWidth.HeaderText" xml:space="preserve">
-    <value>Minimálna šírka (px)</value>
-  </data>
-  <data name="MinWidth.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
   <metadata name="desktopColumnBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>666, 17</value>
   </metadata>
@@ -2500,6 +3007,153 @@
   <data name="&gt;&gt;dgvDesktopColums.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="nameDataGridViewCheckBoxColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="nameDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>Názov</value>
+  </data>
+  <data name="nameDataGridViewCheckBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="nameDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="visibleDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>Viditeľný</value>
+  </data>
+  <data name="visibleDataGridViewCheckBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="visibleDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <metadata name="MinWidth.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="MinWidth.HeaderText" xml:space="preserve">
+    <value>Minimálna šírka (px)</value>
+  </data>
+  <data name="MinWidth.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <metadata name="desktopColumnBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>666, 17</value>
+  </metadata>
+  <data name="&gt;&gt;cboxDateTimeInStateRow.Name" xml:space="preserve">
+    <value>cboxDateTimeInStateRow</value>
+  </data>
+  <data name="&gt;&gt;cboxDateTimeInStateRow.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxDateTimeInStateRow.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;cboxDateTimeInStateRow.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbShowRowsHeader.Name" xml:space="preserve">
+    <value>cbShowRowsHeader</value>
+  </data>
+  <data name="&gt;&gt;cbShowRowsHeader.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbShowRowsHeader.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;cbShowRowsHeader.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;rbTS.Name" xml:space="preserve">
+    <value>rbTS</value>
+  </data>
+  <data name="&gt;&gt;rbTS.Type" xml:space="preserve">
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rbTS.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;rbTS.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;rbMS.Name" xml:space="preserve">
+    <value>rbMS</value>
+  </data>
+  <data name="&gt;&gt;rbMS.Type" xml:space="preserve">
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rbMS.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;rbMS.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;rbMSandTS.Name" xml:space="preserve">
+    <value>rbMSandTS</value>
+  </data>
+  <data name="&gt;&gt;rbMSandTS.Type" xml:space="preserve">
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rbMSandTS.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;rbMSandTS.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;cbShowStateRow.Name" xml:space="preserve">
+    <value>cbShowStateRow</value>
+  </data>
+  <data name="&gt;&gt;cbShowStateRow.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbShowStateRow.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;cbShowStateRow.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 2</value>
+  </data>
+  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>486, 87</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Zobrazovanie komponentov</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>pDesktop</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="cboxDateTimeInStateRow.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2525,7 +3179,7 @@
     <value>cboxDateTimeInStateRow</value>
   </data>
   <data name="&gt;&gt;cboxDateTimeInStateRow.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxDateTimeInStateRow.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2558,7 +3212,7 @@
     <value>cbShowRowsHeader</value>
   </data>
   <data name="&gt;&gt;cbShowRowsHeader.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbShowRowsHeader.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2591,7 +3245,7 @@
     <value>rbTS</value>
   </data>
   <data name="&gt;&gt;rbTS.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbTS.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2624,7 +3278,7 @@
     <value>rbMS</value>
   </data>
   <data name="&gt;&gt;rbMS.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbMS.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2657,7 +3311,7 @@
     <value>rbMSandTS</value>
   </data>
   <data name="&gt;&gt;rbMSandTS.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbMSandTS.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2723,7 +3377,7 @@
     <value>cbShowStateRow</value>
   </data>
   <data name="&gt;&gt;cbShowStateRow.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbShowStateRow.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -2731,59 +3385,77 @@
   <data name="&gt;&gt;cbShowStateRow.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 2</value>
+  <data name="&gt;&gt;lShortcutHelp.Name" xml:space="preserve">
+    <value>lShortcutHelp</value>
   </data>
-  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="&gt;&gt;lShortcutHelp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="&gt;&gt;lShortcutHelp.Parent" xml:space="preserve">
+    <value>pShortcuts</value>
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>486, 87</value>
+  <data name="&gt;&gt;lShortcutHelp.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="&gt;&gt;dgvShortcuts.Name" xml:space="preserve">
+    <value>dgvShortcuts</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Zobrazovanie komponentov</value>
+  <data name="&gt;&gt;dgvShortcuts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="&gt;&gt;dgvShortcuts.Parent" xml:space="preserve">
+    <value>pShortcuts</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;dgvShortcuts.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>pDesktop</value>
+  <data name="&gt;&gt;bAllShortcutsSetDefault.Name" xml:space="preserve">
+    <value>bAllShortcutsSetDefault</value>
   </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;bAllShortcutsSetDefault.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="pDesktop.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;bAllShortcutsSetDefault.Parent" xml:space="preserve">
+    <value>pShortcuts</value>
+  </data>
+  <data name="&gt;&gt;bAllShortcutsSetDefault.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>pShortcuts</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pShortcuts.Location" type="System.Drawing.Point, System.Drawing">
     <value>212, 9</value>
   </data>
-  <data name="pDesktop.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="pShortcuts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="pDesktop.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pShortcuts.Size" type="System.Drawing.Size, System.Drawing">
     <value>502, 421</value>
   </data>
-  <data name="pDesktop.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="pShortcuts.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
-  <data name="&gt;&gt;pDesktop.Name" xml:space="preserve">
-    <value>pDesktop</value>
+  <data name="&gt;&gt;pShortcuts.Name" xml:space="preserve">
+    <value>pShortcuts</value>
   </data>
-  <data name="&gt;&gt;pDesktop.Type" xml:space="preserve">
+  <data name="&gt;&gt;pShortcuts.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pDesktop.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pShortcuts.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;pDesktop.ZOrder" xml:space="preserve">
-    <value>10</value>
+  <data name="&gt;&gt;pShortcuts.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="lShortcutHelp.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2820,6 +3492,45 @@
   </data>
   <data name="&gt;&gt;lShortcutHelp.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <metadata name="AssignShortcut.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="RemoveShortcut.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Default.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="commandShortcutBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>929, 17</value>
+  </metadata>
+  <data name="dgvShortcuts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 33</value>
+  </data>
+  <data name="dgvShortcuts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="dgvShortcuts.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="dgvShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 352</value>
+  </data>
+  <data name="dgvShortcuts.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;dgvShortcuts.Name" xml:space="preserve">
+    <value>dgvShortcuts</value>
+  </data>
+  <data name="&gt;&gt;dgvShortcuts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvShortcuts.Parent" xml:space="preserve">
+    <value>pShortcuts</value>
+  </data>
+  <data name="&gt;&gt;dgvShortcuts.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="nameDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
     <value>Príkaz</value>
@@ -2875,33 +3586,6 @@
   <metadata name="commandShortcutBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>929, 17</value>
   </metadata>
-  <data name="dgvShortcuts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 33</value>
-  </data>
-  <data name="dgvShortcuts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="dgvShortcuts.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="dgvShortcuts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 352</value>
-  </data>
-  <data name="dgvShortcuts.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;dgvShortcuts.Name" xml:space="preserve">
-    <value>dgvShortcuts</value>
-  </data>
-  <data name="&gt;&gt;dgvShortcuts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvShortcuts.Parent" xml:space="preserve">
-    <value>pShortcuts</value>
-  </data>
-  <data name="&gt;&gt;dgvShortcuts.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="bAllShortcutsSetDefault.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2915,7 +3599,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bAllShortcutsSetDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 24</value>
+    <value>87, 26</value>
   </data>
   <data name="bAllShortcutsSetDefault.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2927,7 +3611,7 @@
     <value>bAllShortcutsSetDefault</value>
   </data>
   <data name="&gt;&gt;bAllShortcutsSetDefault.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bAllShortcutsSetDefault.Parent" xml:space="preserve">
     <value>pShortcuts</value>
@@ -2968,29 +3652,101 @@
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="pShortcuts.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>pStartup</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupArguments.Name" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;groupArguments.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupArguments.Parent" xml:space="preserve">
+    <value>pStartup</value>
+  </data>
+  <data name="&gt;&gt;groupArguments.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cboxManualCmdArgs.Name" xml:space="preserve">
+    <value>cboxManualCmdArgs</value>
+  </data>
+  <data name="&gt;&gt;cboxManualCmdArgs.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxManualCmdArgs.Parent" xml:space="preserve">
+    <value>pStartup</value>
+  </data>
+  <data name="&gt;&gt;cboxManualCmdArgs.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tbCmdArguments.Name" xml:space="preserve">
+    <value>tbCmdArguments</value>
+  </data>
+  <data name="&gt;&gt;tbCmdArguments.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbCmdArguments.Parent" xml:space="preserve">
+    <value>pStartup</value>
+  </data>
+  <data name="&gt;&gt;tbCmdArguments.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>pStartup</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;cbStartINISSAdmin.Name" xml:space="preserve">
+    <value>cbStartINISSAdmin</value>
+  </data>
+  <data name="&gt;&gt;cbStartINISSAdmin.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbStartINISSAdmin.Parent" xml:space="preserve">
+    <value>pStartup</value>
+  </data>
+  <data name="&gt;&gt;cbStartINISSAdmin.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="pStartup.Location" type="System.Drawing.Point, System.Drawing">
     <value>212, 9</value>
   </data>
-  <data name="pShortcuts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="pStartup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="pShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pStartup.Size" type="System.Drawing.Size, System.Drawing">
     <value>502, 421</value>
   </data>
-  <data name="pShortcuts.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+  <data name="pStartup.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="&gt;&gt;pShortcuts.Name" xml:space="preserve">
-    <value>pShortcuts</value>
+  <data name="&gt;&gt;pStartup.Name" xml:space="preserve">
+    <value>pStartup</value>
   </data>
-  <data name="&gt;&gt;pShortcuts.Type" xml:space="preserve">
+  <data name="&gt;&gt;pStartup.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pShortcuts.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pStartup.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;pShortcuts.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="&gt;&gt;pStartup.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3025,6 +3781,123 @@
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;cbArgRegister.Name" xml:space="preserve">
+    <value>cbArgRegister</value>
+  </data>
+  <data name="&gt;&gt;cbArgRegister.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbArgRegister.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;cbArgRegister.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
+  </data>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportTableTexts.Name" xml:space="preserve">
+    <value>cboxArgExportTableTexts</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportTableTexts.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportTableTexts.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportTableTexts.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;cboxArgAsClient.Name" xml:space="preserve">
+    <value>cboxArgAsClient</value>
+  </data>
+  <data name="&gt;&gt;cboxArgAsClient.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxArgAsClient.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;cboxArgAsClient.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportHlasTexts.Name" xml:space="preserve">
+    <value>cboxArgExportHlasTexts</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportHlasTexts.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportHlasTexts.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportHlasTexts.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMinimize.Name" xml:space="preserve">
+    <value>cboxArgMinimize</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMinimize.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMinimize.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMinimize.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMoreInstances.Name" xml:space="preserve">
+    <value>cboxArgMoreInstances</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMoreInstances.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMoreInstances.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMoreInstances.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="groupArguments.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 100</value>
+  </data>
+  <data name="groupArguments.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupArguments.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>484, 193</value>
+  </data>
+  <data name="groupArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="groupArguments.Text" xml:space="preserve">
+    <value>Nastavenie argumentov príkazového riadka pre program INISS</value>
+  </data>
+  <data name="&gt;&gt;groupArguments.Name" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;groupArguments.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupArguments.Parent" xml:space="preserve">
+    <value>pStartup</value>
+  </data>
+  <data name="&gt;&gt;groupArguments.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="cbArgRegister.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 161</value>
   </data>
@@ -3041,7 +3914,7 @@
     <value>cbArgRegister</value>
   </data>
   <data name="&gt;&gt;cbArgRegister.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbArgRegister.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -3107,7 +3980,7 @@
     <value>cboxArgExportTableTexts</value>
   </data>
   <data name="&gt;&gt;cboxArgExportTableTexts.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgExportTableTexts.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -3140,7 +4013,7 @@
     <value>cboxArgAsClient</value>
   </data>
   <data name="&gt;&gt;cboxArgAsClient.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgAsClient.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -3173,7 +4046,7 @@
     <value>cboxArgExportHlasTexts</value>
   </data>
   <data name="&gt;&gt;cboxArgExportHlasTexts.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgExportHlasTexts.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -3206,7 +4079,7 @@
     <value>cboxArgMinimize</value>
   </data>
   <data name="&gt;&gt;cboxArgMinimize.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgMinimize.Parent" xml:space="preserve">
     <value>groupArguments</value>
@@ -3239,46 +4112,13 @@
     <value>cboxArgMoreInstances</value>
   </data>
   <data name="&gt;&gt;cboxArgMoreInstances.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxArgMoreInstances.Parent" xml:space="preserve">
     <value>groupArguments</value>
   </data>
   <data name="&gt;&gt;cboxArgMoreInstances.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="groupArguments.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="groupArguments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 100</value>
-  </data>
-  <data name="groupArguments.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupArguments.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupArguments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>484, 193</value>
-  </data>
-  <data name="groupArguments.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="groupArguments.Text" xml:space="preserve">
-    <value>Nastavenie argumentov príkazového riadka pre program INISS</value>
-  </data>
-  <data name="&gt;&gt;groupArguments.Name" xml:space="preserve">
-    <value>groupArguments</value>
-  </data>
-  <data name="&gt;&gt;groupArguments.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;groupArguments.Parent" xml:space="preserve">
-    <value>pStartup</value>
-  </data>
-  <data name="&gt;&gt;groupArguments.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="cboxManualCmdArgs.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3305,7 +4145,7 @@
     <value>cboxManualCmdArgs</value>
   </data>
   <data name="&gt;&gt;cboxManualCmdArgs.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxManualCmdArgs.Parent" xml:space="preserve">
     <value>pStartup</value>
@@ -3329,7 +4169,7 @@
     <value>tbCmdArguments</value>
   </data>
   <data name="&gt;&gt;tbCmdArguments.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbCmdArguments.Parent" xml:space="preserve">
     <value>pStartup</value>
@@ -3395,7 +4235,7 @@
     <value>cbStartINISSAdmin</value>
   </data>
   <data name="&gt;&gt;cbStartINISSAdmin.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8073.32340, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8106.31389, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbStartINISSAdmin.Parent" xml:space="preserve">
     <value>pStartup</value>
@@ -3403,29 +4243,11 @@
   <data name="&gt;&gt;cbStartINISSAdmin.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="pStartup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 9</value>
+  <data name="fontDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Font</value>
   </data>
-  <data name="pStartup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="pStartup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>502, 421</value>
-  </data>
-  <data name="pStartup.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;pStartup.Name" xml:space="preserve">
-    <value>pStartup</value>
-  </data>
-  <data name="&gt;&gt;pStartup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pStartup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pStartup.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="fontDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>53</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3438,9 +4260,6 @@
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.8pt</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -3472,6 +4291,12 @@
   <data name="&gt;&gt;Example.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;appFontBindingSource.Name" xml:space="preserve">
+    <value>appFontBindingSource</value>
+  </data>
+  <data name="&gt;&gt;appFontBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;deviceInformationBindingSource.Name" xml:space="preserve">
     <value>deviceInformationBindingSource</value>
   </data>
@@ -3490,10 +4315,34 @@
   <data name="&gt;&gt;nameDataGridViewCheckBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;visibleDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>visibleDataGridViewCheckBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;visibleDataGridViewCheckBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;MinWidth.Name" xml:space="preserve">
     <value>MinWidth</value>
   </data>
   <data name="&gt;&gt;MinWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;desktopColumnBindingSource.Name" xml:space="preserve">
+    <value>desktopColumnBindingSource</value>
+  </data>
+  <data name="&gt;&gt;desktopColumnBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>nameDataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;shortcutDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>shortcutDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;shortcutDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;AssignShortcut.Name" xml:space="preserve">
@@ -3514,47 +4363,17 @@
   <data name="&gt;&gt;Default.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>nameDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;visibleDataGridViewCheckBoxColumn.Name" xml:space="preserve">
-    <value>visibleDataGridViewCheckBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;visibleDataGridViewCheckBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>nameDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;shortcutDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>shortcutDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;shortcutDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;commandShortcutBindingSource.Name" xml:space="preserve">
     <value>commandShortcutBindingSource</value>
   </data>
   <data name="&gt;&gt;commandShortcutBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;desktopColumnBindingSource.Name" xml:space="preserve">
-    <value>desktopColumnBindingSource</value>
+  <data name="&gt;&gt;fontDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>fontDataGridViewTextBoxColumn</value>
   </data>
-  <data name="&gt;&gt;desktopColumnBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;appFontBindingSource.Name" xml:space="preserve">
-    <value>appFontBindingSource</value>
-  </data>
-  <data name="&gt;&gt;appFontBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;fontDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FAppSettings</value>

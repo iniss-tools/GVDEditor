@@ -13,7 +13,7 @@ public sealed class TrainType
     {
         Key = key;
         IsCustom = false;
-        CategoryTrain = null;
+        CategoryTrain = key;
         TextInTable = key;
     }
 
@@ -34,7 +34,7 @@ public sealed class TrainType
     /// <summary>
     ///     Kluc typu vlaku.
     /// </summary>
-    public string Key { get; }
+    public string Key { get; set; }
 
     /// <summary>
     ///     Ci je pouzivatelom definovany.
@@ -44,7 +44,7 @@ public sealed class TrainType
     /// <summary>
     ///     Vrati text na tabuli, ktory sa ma zobrazovat na mieste typu vlaku.
     /// </summary>
-    public string TextInTable { get; }
+    public string TextInTable { get; set; }
 
     /// <summary>
     ///     Kategoria typu vlaku.

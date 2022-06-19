@@ -34,6 +34,26 @@ namespace GVDEditor.Forms
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FEditTrain));
+            ExControls.ExComboBoxStyle exComboBoxStyle1 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle2 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle3 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle4 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle5 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle6 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle7 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle8 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle9 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle10 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle11 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle12 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle13 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle14 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle15 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle16 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle17 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle18 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle19 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle20 = new ExControls.ExComboBoxStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -66,7 +86,7 @@ namespace GVDEditor.Forms
             this.label16 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dtpPlatnostDo = new System.Windows.Forms.DateTimePicker();
-            this.dtpPlatnostOd = new DateTimePicker();
+            this.dtpPlatnostOd = new System.Windows.Forms.DateTimePicker();
             this.tDatumoveObmedzenie = new ExControls.ExTextBox();
             this.groupBox2 = new ExControls.ExGroupBox();
             this.mtOdchod = new ExControls.ExMaskedTextBox();
@@ -96,7 +116,7 @@ namespace GVDEditor.Forms
             this.isVDlhomHlaseniDataGridViewCheckBoxColumn2 = new ExControls.DataGridViewExCheckBoxColumn();
             this.isVKratkomHlaseniDataGridViewCheckBoxColumn2 = new ExControls.DataGridViewExCheckBoxColumn();
             this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stanicaBindingSource = new System.Windows.Forms.BindingSource();
+            this.stanicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDeleteZo = new ExControls.ExButton();
             this.bAddZo = new ExControls.ExButton();
             this.bNeskorZo = new ExControls.ExButton();
@@ -192,6 +212,7 @@ namespace GVDEditor.Forms
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.HeaderBackColor = System.Drawing.Color.Gainsboro;
+            this.tabControl1.HighlightBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -223,49 +244,49 @@ namespace GVDEditor.Forms
             // boxDialkovy
             // 
             resources.ApplyResources(this.boxDialkovy, "boxDialkovy");
+            this.boxDialkovy.BoxBackColor = System.Drawing.Color.White;
             this.boxDialkovy.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.boxDialkovy.Name = "boxDialkovy";
-            this.boxDialkovy.BoxBackColor = System.Drawing.Color.White;
             this.boxDialkovy.UseVisualStyleBackColor = true;
             // 
             // boxNizkopodlazny
             // 
             resources.ApplyResources(this.boxNizkopodlazny, "boxNizkopodlazny");
+            this.boxNizkopodlazny.BoxBackColor = System.Drawing.Color.White;
             this.boxNizkopodlazny.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.boxNizkopodlazny.Name = "boxNizkopodlazny";
-            this.boxNizkopodlazny.BoxBackColor = System.Drawing.Color.White;
             this.boxNizkopodlazny.UseVisualStyleBackColor = true;
             // 
             // boxMiestenkovy
             // 
             resources.ApplyResources(this.boxMiestenkovy, "boxMiestenkovy");
+            this.boxMiestenkovy.BoxBackColor = System.Drawing.Color.White;
             this.boxMiestenkovy.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.boxMiestenkovy.Name = "boxMiestenkovy";
-            this.boxMiestenkovy.BoxBackColor = System.Drawing.Color.White;
             this.boxMiestenkovy.UseVisualStyleBackColor = true;
             // 
             // boxMimoriadny
             // 
             resources.ApplyResources(this.boxMimoriadny, "boxMimoriadny");
+            this.boxMimoriadny.BoxBackColor = System.Drawing.Color.White;
             this.boxMimoriadny.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.boxMimoriadny.Name = "boxMimoriadny";
-            this.boxMimoriadny.BoxBackColor = System.Drawing.Color.White;
             this.boxMimoriadny.UseVisualStyleBackColor = true;
             // 
             // boxMedzistatny
             // 
             resources.ApplyResources(this.boxMedzistatny, "boxMedzistatny");
+            this.boxMedzistatny.BoxBackColor = System.Drawing.Color.White;
             this.boxMedzistatny.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.boxMedzistatny.Name = "boxMedzistatny";
-            this.boxMedzistatny.BoxBackColor = System.Drawing.Color.White;
             this.boxMedzistatny.UseVisualStyleBackColor = true;
             // 
             // boxLozkovy
             // 
             resources.ApplyResources(this.boxLozkovy, "boxLozkovy");
+            this.boxLozkovy.BoxBackColor = System.Drawing.Color.White;
             this.boxLozkovy.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.boxLozkovy.Name = "boxLozkovy";
-            this.boxLozkovy.BoxBackColor = System.Drawing.Color.White;
             this.boxLozkovy.UseVisualStyleBackColor = true;
             // 
             // groupBox5
@@ -288,7 +309,7 @@ namespace GVDEditor.Forms
             this.nudVarianta.HighlightColor = System.Drawing.Color.Empty;
             resources.ApplyResources(this.nudVarianta, "nudVarianta");
             this.nudVarianta.Maximum = new decimal(new int[] {
-            20,
+            100000000,
             0,
             0,
             0});
@@ -453,6 +474,39 @@ namespace GVDEditor.Forms
             this.cbKolajOdchod.FormattingEnabled = true;
             resources.ApplyResources(this.cbKolajOdchod, "cbKolajOdchod");
             this.cbKolajOdchod.Name = "cbKolajOdchod";
+            exComboBoxStyle1.ArrowColor = null;
+            exComboBoxStyle1.BackColor = null;
+            exComboBoxStyle1.BorderColor = null;
+            exComboBoxStyle1.ButtonBackColor = null;
+            exComboBoxStyle1.ButtonBorderColor = null;
+            exComboBoxStyle1.ButtonRenderFirst = null;
+            exComboBoxStyle1.ForeColor = null;
+            this.cbKolajOdchod.StyleDisabled = exComboBoxStyle1;
+            exComboBoxStyle2.ArrowColor = null;
+            exComboBoxStyle2.BackColor = null;
+            exComboBoxStyle2.BorderColor = null;
+            exComboBoxStyle2.ButtonBackColor = null;
+            exComboBoxStyle2.ButtonBorderColor = null;
+            exComboBoxStyle2.ButtonRenderFirst = null;
+            exComboBoxStyle2.ForeColor = null;
+            this.cbKolajOdchod.StyleHighlight = exComboBoxStyle2;
+            exComboBoxStyle3.ArrowColor = null;
+            exComboBoxStyle3.BackColor = null;
+            exComboBoxStyle3.BorderColor = null;
+            exComboBoxStyle3.ButtonBackColor = null;
+            exComboBoxStyle3.ButtonBorderColor = null;
+            exComboBoxStyle3.ButtonRenderFirst = null;
+            exComboBoxStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.cbKolajOdchod.StyleNormal = exComboBoxStyle3;
+            exComboBoxStyle4.ArrowColor = null;
+            exComboBoxStyle4.BackColor = null;
+            exComboBoxStyle4.BorderColor = null;
+            exComboBoxStyle4.ButtonBackColor = null;
+            exComboBoxStyle4.ButtonBorderColor = null;
+            exComboBoxStyle4.ButtonRenderFirst = null;
+            exComboBoxStyle4.ForeColor = null;
+            this.cbKolajOdchod.StyleSelected = exComboBoxStyle4;
+            this.cbKolajOdchod.UseDarkScrollBar = false;
             this.cbKolajOdchod.SelectedIndexChanged += new System.EventHandler(this.cbKolajOdchod_SelectedIndexChanged);
             // 
             // cbKolajPrichod
@@ -462,6 +516,39 @@ namespace GVDEditor.Forms
             this.cbKolajPrichod.FormattingEnabled = true;
             resources.ApplyResources(this.cbKolajPrichod, "cbKolajPrichod");
             this.cbKolajPrichod.Name = "cbKolajPrichod";
+            exComboBoxStyle5.ArrowColor = null;
+            exComboBoxStyle5.BackColor = null;
+            exComboBoxStyle5.BorderColor = null;
+            exComboBoxStyle5.ButtonBackColor = null;
+            exComboBoxStyle5.ButtonBorderColor = null;
+            exComboBoxStyle5.ButtonRenderFirst = null;
+            exComboBoxStyle5.ForeColor = null;
+            this.cbKolajPrichod.StyleDisabled = exComboBoxStyle5;
+            exComboBoxStyle6.ArrowColor = null;
+            exComboBoxStyle6.BackColor = null;
+            exComboBoxStyle6.BorderColor = null;
+            exComboBoxStyle6.ButtonBackColor = null;
+            exComboBoxStyle6.ButtonBorderColor = null;
+            exComboBoxStyle6.ButtonRenderFirst = null;
+            exComboBoxStyle6.ForeColor = null;
+            this.cbKolajPrichod.StyleHighlight = exComboBoxStyle6;
+            exComboBoxStyle7.ArrowColor = null;
+            exComboBoxStyle7.BackColor = null;
+            exComboBoxStyle7.BorderColor = null;
+            exComboBoxStyle7.ButtonBackColor = null;
+            exComboBoxStyle7.ButtonBorderColor = null;
+            exComboBoxStyle7.ButtonRenderFirst = null;
+            exComboBoxStyle7.ForeColor = null;
+            this.cbKolajPrichod.StyleNormal = exComboBoxStyle7;
+            exComboBoxStyle8.ArrowColor = null;
+            exComboBoxStyle8.BackColor = null;
+            exComboBoxStyle8.BorderColor = null;
+            exComboBoxStyle8.ButtonBackColor = null;
+            exComboBoxStyle8.ButtonBorderColor = null;
+            exComboBoxStyle8.ButtonRenderFirst = null;
+            exComboBoxStyle8.ForeColor = null;
+            this.cbKolajPrichod.StyleSelected = exComboBoxStyle8;
+            this.cbKolajPrichod.UseDarkScrollBar = false;
             this.cbKolajPrichod.SelectedIndexChanged += new System.EventHandler(this.cbKolajPrichod_SelectedIndexChanged);
             // 
             // label4
@@ -494,6 +581,39 @@ namespace GVDEditor.Forms
             this.cbNazov.FormattingEnabled = true;
             resources.ApplyResources(this.cbNazov, "cbNazov");
             this.cbNazov.Name = "cbNazov";
+            exComboBoxStyle9.ArrowColor = null;
+            exComboBoxStyle9.BackColor = null;
+            exComboBoxStyle9.BorderColor = null;
+            exComboBoxStyle9.ButtonBackColor = null;
+            exComboBoxStyle9.ButtonBorderColor = null;
+            exComboBoxStyle9.ButtonRenderFirst = null;
+            exComboBoxStyle9.ForeColor = null;
+            this.cbNazov.StyleDisabled = exComboBoxStyle9;
+            exComboBoxStyle10.ArrowColor = null;
+            exComboBoxStyle10.BackColor = null;
+            exComboBoxStyle10.BorderColor = null;
+            exComboBoxStyle10.ButtonBackColor = null;
+            exComboBoxStyle10.ButtonBorderColor = null;
+            exComboBoxStyle10.ButtonRenderFirst = null;
+            exComboBoxStyle10.ForeColor = null;
+            this.cbNazov.StyleHighlight = exComboBoxStyle10;
+            exComboBoxStyle11.ArrowColor = null;
+            exComboBoxStyle11.BackColor = null;
+            exComboBoxStyle11.BorderColor = null;
+            exComboBoxStyle11.ButtonBackColor = null;
+            exComboBoxStyle11.ButtonBorderColor = null;
+            exComboBoxStyle11.ButtonRenderFirst = null;
+            exComboBoxStyle11.ForeColor = null;
+            this.cbNazov.StyleNormal = exComboBoxStyle11;
+            exComboBoxStyle12.ArrowColor = null;
+            exComboBoxStyle12.BackColor = null;
+            exComboBoxStyle12.BorderColor = null;
+            exComboBoxStyle12.ButtonBackColor = null;
+            exComboBoxStyle12.ButtonBorderColor = null;
+            exComboBoxStyle12.ButtonRenderFirst = null;
+            exComboBoxStyle12.ForeColor = null;
+            this.cbNazov.StyleSelected = exComboBoxStyle12;
+            this.cbNazov.UseDarkScrollBar = false;
             // 
             // cbDopravca
             // 
@@ -502,6 +622,39 @@ namespace GVDEditor.Forms
             this.cbDopravca.FormattingEnabled = true;
             resources.ApplyResources(this.cbDopravca, "cbDopravca");
             this.cbDopravca.Name = "cbDopravca";
+            exComboBoxStyle13.ArrowColor = null;
+            exComboBoxStyle13.BackColor = null;
+            exComboBoxStyle13.BorderColor = null;
+            exComboBoxStyle13.ButtonBackColor = null;
+            exComboBoxStyle13.ButtonBorderColor = null;
+            exComboBoxStyle13.ButtonRenderFirst = null;
+            exComboBoxStyle13.ForeColor = null;
+            this.cbDopravca.StyleDisabled = exComboBoxStyle13;
+            exComboBoxStyle14.ArrowColor = null;
+            exComboBoxStyle14.BackColor = null;
+            exComboBoxStyle14.BorderColor = null;
+            exComboBoxStyle14.ButtonBackColor = null;
+            exComboBoxStyle14.ButtonBorderColor = null;
+            exComboBoxStyle14.ButtonRenderFirst = null;
+            exComboBoxStyle14.ForeColor = null;
+            this.cbDopravca.StyleHighlight = exComboBoxStyle14;
+            exComboBoxStyle15.ArrowColor = null;
+            exComboBoxStyle15.BackColor = null;
+            exComboBoxStyle15.BorderColor = null;
+            exComboBoxStyle15.ButtonBackColor = null;
+            exComboBoxStyle15.ButtonBorderColor = null;
+            exComboBoxStyle15.ButtonRenderFirst = null;
+            exComboBoxStyle15.ForeColor = null;
+            this.cbDopravca.StyleNormal = exComboBoxStyle15;
+            exComboBoxStyle16.ArrowColor = null;
+            exComboBoxStyle16.BackColor = null;
+            exComboBoxStyle16.BorderColor = null;
+            exComboBoxStyle16.ButtonBackColor = null;
+            exComboBoxStyle16.ButtonBorderColor = null;
+            exComboBoxStyle16.ButtonRenderFirst = null;
+            exComboBoxStyle16.ForeColor = null;
+            this.cbDopravca.StyleSelected = exComboBoxStyle16;
+            this.cbDopravca.UseDarkScrollBar = false;
             // 
             // cbTyp
             // 
@@ -510,6 +663,39 @@ namespace GVDEditor.Forms
             this.cbTyp.FormattingEnabled = true;
             resources.ApplyResources(this.cbTyp, "cbTyp");
             this.cbTyp.Name = "cbTyp";
+            exComboBoxStyle17.ArrowColor = null;
+            exComboBoxStyle17.BackColor = null;
+            exComboBoxStyle17.BorderColor = null;
+            exComboBoxStyle17.ButtonBackColor = null;
+            exComboBoxStyle17.ButtonBorderColor = null;
+            exComboBoxStyle17.ButtonRenderFirst = null;
+            exComboBoxStyle17.ForeColor = null;
+            this.cbTyp.StyleDisabled = exComboBoxStyle17;
+            exComboBoxStyle18.ArrowColor = null;
+            exComboBoxStyle18.BackColor = null;
+            exComboBoxStyle18.BorderColor = null;
+            exComboBoxStyle18.ButtonBackColor = null;
+            exComboBoxStyle18.ButtonBorderColor = null;
+            exComboBoxStyle18.ButtonRenderFirst = null;
+            exComboBoxStyle18.ForeColor = null;
+            this.cbTyp.StyleHighlight = exComboBoxStyle18;
+            exComboBoxStyle19.ArrowColor = null;
+            exComboBoxStyle19.BackColor = null;
+            exComboBoxStyle19.BorderColor = null;
+            exComboBoxStyle19.ButtonBackColor = null;
+            exComboBoxStyle19.ButtonBorderColor = null;
+            exComboBoxStyle19.ButtonRenderFirst = null;
+            exComboBoxStyle19.ForeColor = null;
+            this.cbTyp.StyleNormal = exComboBoxStyle19;
+            exComboBoxStyle20.ArrowColor = null;
+            exComboBoxStyle20.BackColor = null;
+            exComboBoxStyle20.BorderColor = null;
+            exComboBoxStyle20.ButtonBackColor = null;
+            exComboBoxStyle20.ButtonBorderColor = null;
+            exComboBoxStyle20.ButtonRenderFirst = null;
+            exComboBoxStyle20.ForeColor = null;
+            this.cbTyp.StyleSelected = exComboBoxStyle20;
+            this.cbTyp.UseDarkScrollBar = false;
             // 
             // tbCislo
             // 
@@ -563,9 +749,9 @@ namespace GVDEditor.Forms
             // cbZoSmeruCustom
             // 
             resources.ApplyResources(this.cbZoSmeruCustom, "cbZoSmeruCustom");
+            this.cbZoSmeruCustom.BoxBackColor = System.Drawing.Color.White;
             this.cbZoSmeruCustom.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cbZoSmeruCustom.Name = "cbZoSmeruCustom";
-            this.cbZoSmeruCustom.BoxBackColor = System.Drawing.Color.White;
             this.cbZoSmeruCustom.UseVisualStyleBackColor = true;
             this.cbZoSmeruCustom.CheckedChanged += new System.EventHandler(this.cbZoSmeruCustom_CheckedChanged);
             // 
@@ -702,9 +888,9 @@ namespace GVDEditor.Forms
             // cbDoSmeruCustom
             // 
             resources.ApplyResources(this.cbDoSmeruCustom, "cbDoSmeruCustom");
+            this.cbDoSmeruCustom.BoxBackColor = System.Drawing.Color.White;
             this.cbDoSmeruCustom.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cbDoSmeruCustom.Name = "cbDoSmeruCustom";
-            this.cbDoSmeruCustom.BoxBackColor = System.Drawing.Color.White;
             this.cbDoSmeruCustom.UseVisualStyleBackColor = true;
             this.cbDoSmeruCustom.CheckedChanged += new System.EventHandler(this.cbDoSmeruCustom_CheckedChanged);
             // 

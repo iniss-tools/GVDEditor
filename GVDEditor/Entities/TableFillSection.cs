@@ -67,7 +67,7 @@ public sealed class TableFillSection : Enumeration<TableFillSection>
 #pragma warning disable 1591
     public static readonly TableFillSection NotDefined = new(0, "Nedefinované");
     public static readonly TableFillSection Free = new(1, "Prázdny text");
-    public static readonly TableFillSection VychadzajucaStanica = new(2, "Názov vychadzajúcej stanice");
+    public static readonly TableFillSection VychadzajucaStanica = new(2, "Názov vychádzajúcej stanice");
     public static readonly TableFillSection StaniceZoSmeru = new(3, "Stanice zo smeru");
     public static readonly TableFillSection StaniceDoSmeru = new(4, "Stanice do smeru");
     public static readonly TableFillSection StaniceDoSmeruNastupiste = new(5, "Stanice do smeru (pre nástupištnú tabuľu)");

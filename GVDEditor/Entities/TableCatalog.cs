@@ -69,8 +69,5 @@ public sealed class TableCatalog : ITable
     public string TypeName => "Katalógová tabuľa";
 
     /// <inheritdoc />
-    public override string ToString()
-    {
-        return Name;
-    }
+    public override string ToString() => Name;
 }

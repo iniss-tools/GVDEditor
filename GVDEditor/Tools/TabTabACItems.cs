@@ -1,5 +1,8 @@
 ﻿using System.Reflection;
 using AutocompleteMenuNS;
+// ReSharper disable StringLiteralTypo
+// ReSharper disable UnusedMember.Global
+// ReSharper disable InconsistentNaming
 
 namespace GVDEditor.Tools;
 
@@ -24,10 +27,10 @@ internal class FunctionItem : AutocompleteItem
             titleB.Append(')');
         }
 
-        ToolTipTitle = $"(funkcia) {returns} {titleB}";
-        MenuText = titleB.ToString();
+        base.ToolTipTitle = $"(funkcia) {returns} {titleB}";
+        base.MenuText = titleB.ToString();
 
-        ToolTipText = desc;
+        base.ToolTipText = desc;
         FunctionName = fname;
     }
 
@@ -48,9 +51,9 @@ internal class ConstantItem : AutocompleteItem
     public ConstantItem(string cname, string text, string desc = "") : base(text)
     {
         ImageIndex = 1;
-        ToolTipTitle = "(konštanta) " + cname;
-        MenuText = cname;
-        ToolTipText = desc;
+        base.ToolTipTitle = "(konštanta) " + cname;
+        base.MenuText = cname;
+        base.ToolTipText = desc;
         ConstName = cname;
     }
 
@@ -72,9 +75,9 @@ internal class EventItem : AutocompleteItem
     public EventItem(string ename, string text, string desc = "") : base(text)
     {
         ImageIndex = 2;
-        ToolTipTitle = "(udalosť) " + ename;
-        MenuText = ename;
-        ToolTipText = desc;
+        base.ToolTipTitle = "(udalosť) " + ename;
+        base.MenuText = ename;
+        base.ToolTipText = desc;
     }
 
     public override CompareResult Compare(string fragmentText)
@@ -92,22 +95,12 @@ internal static class TabTabACItems
     private static readonly FunParameter pStavVlaku = new(FunParameterType.StavVlaku, "stav");
     private static readonly FunParameter pPriznak = new(FunParameterType.Priznak, "príznak");
     private static readonly FunParameter pStID = new(FunParameterType.Int, "id_stanice");
-
-    public static readonly FunctionItem Operator = new("OPERATOR", "OPERATOR(\"\")",
-        "Zistí, či sa dopravca daného vlaku rovná zadanému názvu dopravcu.", FunReturnType.Bool, pOperator);
-
+    public static readonly FunctionItem Operator = new("OPERATOR", "OPERATOR(\"\")", "Zistí, či sa dopravca daného vlaku rovná zadanému názvu dopravcu.", FunReturnType.Bool, pOperator);
     public static readonly FunctionItem CVlaku = new("CVLAKU", "CVLAKU", "Vracia číslo daného vlaku.", FunReturnType.Int);
     public static readonly FunctionItem Pozice = new("POZICE", "POZICE", "Vracia pozíciu vlaku v stanici (vychádza, prechádza, končí).");
-
-    public static readonly FunctionItem Typ = new("TYP", "TYP()", "Zistí, či sa typ vlaku rovná zadanému typu vlaku.", FunReturnType.Bool,
-        pTypVlaku);
-
-    public static readonly FunctionItem Priznak = new("PRIZNAK", "PRIZNAK()", "Zistí, či má daný vlak príznak rovný zadanému príznaku.",
-        FunReturnType.Bool, pPriznak);
-
-    public static readonly FunctionItem Stav = new("STAV", "STAV()", "Zistí, či sa stav vlaku rovná zadanému stavu vlaku.", FunReturnType.Bool,
-        pStavVlaku);
-
+    public static readonly FunctionItem Typ = new("TYP", "TYP()", "Zistí, či sa typ vlaku rovná zadanému typu vlaku.", FunReturnType.Bool, pTypVlaku);
+    public static readonly FunctionItem Priznak = new("PRIZNAK", "PRIZNAK()", "Zistí, či má daný vlak príznak rovný zadanému príznaku.", FunReturnType.Bool, pPriznak);
+    public static readonly FunctionItem Stav = new("STAV", "STAV()", "Zistí, či sa stav vlaku rovná zadanému stavu vlaku.", FunReturnType.Bool, pStavVlaku);
     public static readonly FunctionItem NaklTyp = new("NAKLTYP", "NAKLTYP", "Vracia, či je vlak nákladného typu.");
     public static readonly FunctionItem VylukaTu = new("VYLUKAZDE", "VYLUKAZDE", "Vracia, či má vlak v tejto stanici výluku.");
     public static readonly FunctionItem Odklon = new("ODKLON", "ODKLON", "Vracia, či má vlak odklonenú trasu.");
@@ -116,30 +109,16 @@ internal static class TabTabACItems
     public static readonly FunctionItem Meskanie = new("ZPOZDENI", "ZPOZDENI", "Vracia, či má vlak nejaké meškanie.");
     public static readonly FunctionItem DobaPobytu = new("DOBAPOBYTU", "DOBAPOBYTU");
     public static readonly FunctionItem PlanDobaPobytu = new("PLANDOBAPOBYTU", "PLANDOBAPOBYTU");
-
-    public static readonly FunctionItem ZaujmovaStanica = new("ZAJMOSTANICE", "ZAJMOSTANICE",
-        "Zistí, či sa záujmová stanica rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
-
-    public static readonly FunctionItem VychodziaStanica = new("VYCHSTANICE", "VYCHSTANICE",
-        "Zistí, či sa východzia stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
-
-    public static readonly FunctionItem KonecnaStanica = new("CILSTANICE", "CILSTANICE",
-        "Zistí, či sa konečná stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
-
+    public static readonly FunctionItem ZaujmovaStanica = new("ZAJMOSTANICE", "ZAJMOSTANICE", "Zistí, či sa záujmová stanica rovná zadanému ID stanice.", FunReturnType.Bool, pStID);
+    public static readonly FunctionItem VychodziaStanica = new("VYCHSTANICE", "VYCHSTANICE", "Zistí, či sa východzia stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
+    public static readonly FunctionItem KonecnaStanica = new("CILSTANICE", "CILSTANICE", "Zistí, či sa konečná stanica vlaku rovná zadanému ID stanice.", FunReturnType.Bool, pStID);
     public static readonly FunctionItem Miestne = new("MISTNI", "MISTNI");
     public static readonly FunctionItem Cudzie = new("CIZI", "CIZI");
     public static readonly FunctionItem ZoSmeru = new("ZESMERU", "ZESMERU()", "", FunReturnType.Bool, pStID);
     public static readonly FunctionItem DoSmeru = new("DOSMERU", "DOSMERU()", "", FunReturnType.Bool, pStID);
-
-    public static readonly FunctionItem HomeStation = new("HOMESTATION", "HOMESTATION()",
-        "Zistí, či sa záujmová stanica rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
-
-    public static readonly FunctionItem BaseStation = new("BASESTATION", "BASESTATION()",
-        "Zistí, či sa východzia stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
-
-    public static readonly FunctionItem EndStation = new("ENDSTATION", "ENDSTATION()",
-        "Zistí, či sa konečná stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
-
+    public static readonly FunctionItem HomeStation = new("HOMESTATION", "HOMESTATION()", "Zistí, či sa záujmová stanica rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
+    public static readonly FunctionItem BaseStation = new("BASESTATION", "BASESTATION()", "Zistí, či sa východzia stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
+    public static readonly FunctionItem EndStation = new("ENDSTATION", "ENDSTATION()", "Zistí, či sa konečná stanica vlaku rovná zadanenému ID stanice.", FunReturnType.Bool, pStID);
     public static readonly FunctionItem KolajPrichod = new("KOLEJPRIJ", "KOLEJPRIJ(\"\")");
     public static readonly FunctionItem KolajOdchod = new("KOLEJODJ", "KOLEJODJ(\"\")");
     public static readonly FunctionItem DatumPrichod = new("DATUMPRIJ", "DATUMPRIJ");
@@ -219,9 +198,7 @@ internal static class TabTabACItems
     public static readonly ConstantItem TypSl8 = new("Typ_Sl8", "Typ_Sl8", "Používateľský typ vlaku Sl8 (typu služobný vlak)");
     public static readonly ConstantItem TypSl9 = new("Typ_Sl9", "Typ_Sl9", "Používateľský typ vlaku Sl9 (typu služobný vlak)");
 
-
-    public static readonly EventItem SWITCH = new("#SWITCH", "#SWITCH",
-        "Text sa bude preblikávať. Ak text obsahuje '#', budú sa časti textu rezdelené týmto znakom preblikávať navzájom.");
+    public static readonly EventItem SWITCH = new("#SWITCH", "#SWITCH", "Text sa bude preblikávať. Ak text obsahuje '#', budú sa časti textu rezdelené týmto znakom preblikávať navzájom.");
 
     public static readonly EventItem MERGE = new("#MERGE", "#MERGE");
     public static readonly EventItem VYLUKA = new("#VYLUKA", "#VYLUKA");
