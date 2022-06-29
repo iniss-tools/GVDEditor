@@ -17,7 +17,7 @@ namespace GVDEditor.Forms;
 /// <summary>
 ///     Dialog - Nastavenia programu.
 /// </summary>
-internal partial class FAppSettings : Form
+public partial class FAppSettings : Form
 {
     public const string General = "uObecne";
     public const string Environment = "uProstredie";

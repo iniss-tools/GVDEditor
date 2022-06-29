@@ -2,6 +2,7 @@
 using GVDEditor.Entities;
 using GVDEditor.Tools;
 using GVDEditor.XML;
+using ToolsCore.Entities;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 
@@ -18,9 +19,9 @@ internal static class GlobData
     public static List<DirList> GVDDirs { get; set; }
     public static ExBindingList<Audio> Audios { get; private set; }
 
-    public static List<FyzZvuk> Sounds { get; private set; }
-    public static ExBindingList<Language> Languages { get; private set; }
-    public static List<Language> LocalLanguages { get; set; }
+    public static List<FyzSound> Sounds { get; private set; }
+    public static ExBindingList<FyzLanguage> Languages { get; private set; }
+    public static List<FyzLanguage> LocalLanguages { get; set; }
     public static List<Station> Stations { get; set; }
     public static ExBindingList<Station> CustomStations { get; set; }
 
@@ -99,11 +100,11 @@ internal static class GlobData
         var subFiles = di.GetFiles("*.exe");
         foreach (var file in subFiles) INISSExeFiles.Add(file.Name);
 
-        var langs = RawBankReader.ReadFyzBankFile(RawBankDir, out var maxLangs);
-        Languages = new ExBindingList<Language>(TXTParser.ReadGlobalCategori(DataDir, langs, maxLangs));
+        var langs = RawBankParser.ReadFyzBankFile(RawBankDir, out var maxLangs);
+        Languages = new ExBindingList<FyzLanguage>(TXTParser.ReadGlobalCategori(DataDir, langs, maxLangs));
 
-        LocalLanguages = new List<Language>();
-        Sounds = RawBankReader.ReadFyzZvukFile(RawBankDir, Language.GetBasicLanguage(Languages));
+        LocalLanguages = new List<FyzLanguage>();
+        Sounds = RawBankParser.ReadFyzZvukFile(RawBankDir, FyzLanguage.GetBasicLanguage(Languages));
         try
         {
             TrainsTypes = new ExBindingList<TrainType>(TXTParser.ReadTrainTypes());

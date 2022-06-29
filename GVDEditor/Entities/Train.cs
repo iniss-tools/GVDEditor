@@ -1,4 +1,5 @@
 ﻿using GVDEditor.Tools;
+using ToolsCore.Entities;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
@@ -116,7 +117,7 @@ public sealed record Train
     /// <summary>
     ///     Jazykove mutacie hlasenia vlaku.
     /// </summary>
-    public List<Language> Languages { get; set; } = new();
+    public List<FyzLanguage> Languages { get; set; } = new();
 
     /// <summary>
     ///     Ci ma vlak priznak medzistatny.
@@ -204,8 +205,7 @@ public sealed record Train
     ///     Vráti všetky názvy vlakov zo zvukovej banky (priečinok V8).
     /// </summary>
     /// <returns></returns>
-    public static List<string> GetTrainNames() 
-        => GlobData.Sounds.Where(soundE => soundE.Dir.Name == "V8").Select(soundE => soundE.Name).ToList();
+    public static List<string> GetTrainNames() => GlobData.Sounds.Where(soundE => soundE.Group.Name == "V8").Select(soundE => soundE.Name).ToList();
 
     /// <summary>
     ///     Vrati vlak zo zoznamu variant, ktory je hlavna varianta vlaku (ma najdlhsiu trasu poctom stanic).

@@ -5,7 +5,7 @@ using ToolsCore.XML;
 
 namespace GVDEditor.Forms
 {
-    partial class FAppSettings
+    public partial class FAppSettings
     {
         /// <summary>
         /// Required designer variable.

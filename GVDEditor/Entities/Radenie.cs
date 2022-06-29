@@ -1,4 +1,6 @@
-﻿namespace GVDEditor.Entities;
+﻿using ToolsCore.Entities;
+
+namespace GVDEditor.Entities;
 
 /// <summary>
 ///     Radenie vlaku
@@ -10,7 +12,7 @@ public sealed class Radenie
     /// </summary>
     public Radenie()
     {
-        Sounds = new List<FyzZvuk>();
+        Sounds = new List<FyzSound>();
         ChosenReports = new List<ChosenReportType>();
     }
 
@@ -32,7 +34,7 @@ public sealed class Radenie
     /// <summary>
     ///     Fyzické zvuky, ktoré tvoria hlásenie radenia vlaku
     /// </summary>
-    public List<FyzZvuk> Sounds { get; set; }
+    public List<FyzSound> Sounds { get; set; }
 
     /// <summary>
     ///     V ktorých variantach hlásení sa má radenie vlaku vyhlasovať
@@ -59,7 +61,7 @@ public sealed class Radenie
     /// </summary>
     /// <param name="sounds"></param>
     /// <returns>text hlasenia radenia</returns>
-    public static string SoundsToString(IEnumerable<FyzZvuk> sounds)
+    public static string SoundsToString(IEnumerable<FyzSound> sounds)
     {
         var sb = new StringBuilder();
         foreach (var fyzZvuk in sounds) sb.Append(fyzZvuk.Text + " ");

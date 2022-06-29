@@ -5,7 +5,7 @@ using ToolsCore.Tools;
 
 namespace GVDEditor.Tools;
 
-internal static class RawBankReader
+/*internal static class RawBankReader
 {
     /// <summary>
     ///     Precita a vrati zoznam fyzickych zvukov zo zvukovej banky.
@@ -128,4 +128,4 @@ internal static class RawBankReader
         return languages;
 
     }
-}
+}*/

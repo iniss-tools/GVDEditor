@@ -152,7 +152,6 @@
     <Compile Include="GlobUsings.cs" />
     <Compile Include="Tools\Analyzer.cs" />
     <Compile Include="Entities\Dodatok.cs" />
-    <Compile Include="Entities\FyzZvukDirType.cs" />
     <Compile Include="Entities\ImportTrainColumnType.cs" />
     <Compile Include="Entities\NumberVariant.cs" />
     <Compile Include="FileConsts.cs" />
@@ -225,8 +224,6 @@
     <Compile Include="GlobData.cs" />
     <Compile Include="Entities\GVDDirectory.cs" />
     <Compile Include="Entities\DirList.cs" />
-    <Compile Include="Entities\FyzZvuk.cs" />
-    <Compile Include="Entities\FyzZvukDir.cs" />
     <Compile Include="Entities\GVDInfo.cs" />
     <Compile Include="Entities\Radenie.cs" />
     <Compile Include="Entities\ReportType.cs" />
@@ -315,7 +312,6 @@
     <Compile Include="Tools\TXTParser.cs" />
     <Compile Include="Entities\Operator.cs" />
     <Compile Include="Entities\TrainType.cs" />
-    <Compile Include="Entities\Language.cs" />
     <Compile Include="Entities\Track.cs" />
     <Compile Include="Entities\Platform.cs" />
     <Compile Include="Entities\Station.cs" />

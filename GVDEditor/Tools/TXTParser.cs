@@ -4,6 +4,7 @@ using GVDEditor.Properties;
 using System.Collections;
 using System.Text.RegularExpressions;
 using ToolsCore;
+using ToolsCore.Entities;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 using static GVDEditor.FileConsts;
@@ -536,11 +537,11 @@ internal static class TXTParser
     /// <param name="jazykyFromBank">jazykove mutacie z banky zvukov</param>
     /// <param name="maxLangs">maximalny pocet jazykovych mutacii (podla zvukovej banky)</param>
     /// <returns>jazyky</returns>
-    public static List<Language> ReadGlobalCategori(string path, IList<Language> jazykyFromBank, int maxLangs)
+    public static List<FyzLanguage> ReadGlobalCategori(string path, IList<FyzLanguage> jazykyFromBank, int maxLangs)
     {
         var file = CombinePath(path, FILE_CATEGORI);
 
-        var jazyky = new List<Language>();
+        var jazyky = new List<FyzLanguage>();
 
         var categoriF = new TXTPropsAreasFields(file);
 
@@ -569,7 +570,7 @@ internal static class TXTParser
                     jazyky.Add(language);
                 }
 
-            if (!Language.ContainsKey(jazykyFromBank, key))
+            if (!FyzLanguage.ContainsKey(jazykyFromBank, key))
                 throw new ArgumentException($"Neplatný kľúč jazyka {key} v súbore {file} (Nenachádza sa v zvukovej banke).");
         }
 
@@ -580,7 +581,7 @@ internal static class TXTParser
     ///     Zapise informacie o jazykovych mutaciach hlaseni pouzivanych na stanici
     /// </summary>
     /// <param name="jazyky">jazyky</param>
-    public static void WriteLanguages(List<Language> jazyky)
+    public static void WriteLanguages(List<FyzLanguage> jazyky)
     {
         var file = CombinePath(GlobData.DataDir, FILE_CATEGORI);
 
@@ -607,13 +608,13 @@ internal static class TXTParser
     ///     Nainicializuje data o variantach a typoch reportov a jazykovych mutaciach hlaseni (pre konkretne GVD)
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
-    public static (List<ReportVariant>,List<ReportType>,List<Language>) ReadLocalCategori(string path)
+    public static (List<ReportVariant>,List<ReportType>,List<FyzLanguage>) ReadLocalCategori(string path)
     {
         var file = CombinePath(path, FILE_CATEGORI);
 
         var variants = new List<ReportVariant>();
         var types = new List<ReportType>();
-        var languages = new List<Language>();
+        var languages = new List<FyzLanguage>();
 
         var categoriF = new TXTPropsAreasFields(file);
 
@@ -660,7 +661,7 @@ internal static class TXTParser
                     break;
                 }
 
-            if (!Language.ContainsKey(GlobData.Languages, key))
+            if (!FyzLanguage.ContainsKey(GlobData.Languages, key))
                 throw new ArgumentException($"Neplatný kľúč jazyka {key} v súbore {file}.");
         }
 
@@ -674,7 +675,7 @@ internal static class TXTParser
     /// <param name="varianty">verianty reportov</param>
     /// <param name="types">typy reportov</param>
     /// <param name="languages">jazyky</param>
-    public static void WriteLocalCategori(string path, List<ReportVariant> varianty, List<ReportType> types, IList<Language> languages)
+    public static void WriteLocalCategori(string path, List<ReportVariant> varianty, List<ReportType> types, IList<FyzLanguage> languages)
     {
         var file = CombinePath(path, FILE_CATEGORI);
 
@@ -1135,7 +1136,7 @@ internal static class TXTParser
                             foreach (var sound in GlobData.Sounds)
                             {
                                 var sndName = sound.Name.Replace("D", "");
-                                if (sound.Dir.Name.EqualsIgnoreCase("DODATKY") && sndName == row[i * 2 + 2])
+                                if (sound.Group.Name.EqualsIgnoreCase("DODATKY") && sndName == row[i * 2 + 2])
                                     try
                                     {
                                         train.Doplnky.Add(Dodatok.NumsToDodatok(sound, row[i * 2 + 3], GlobData.ReportTypes, GlobData.ReportVariants, train.Routing));
@@ -1179,7 +1180,7 @@ internal static class TXTParser
 
                     if (!IsInt(row[1]))
                     {
-                        var j = Language.GetLanguageFromKey(GlobData.Languages, row[1]);
+                        var j = FyzLanguage.GetLanguageFromKey(GlobData.Languages, row[1]);
                         if (j != null) train.Languages.Add(j);
                     }
                     else if (IsInt(row[1]) && int.Parse(row[1]) == 1)
@@ -1864,7 +1865,7 @@ internal static class TXTParser
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="sounds">zvuky zo zvukovej banky</param>
     /// <returns>radenia vlakov</returns>
-    public static List<Radenie> ReadRazeni1(string path, List<FyzZvuk> sounds)
+    public static List<Radenie> ReadRazeni1(string path, List<FyzSound> sounds)
     {
         var fileRazeni1 = CombinePath(path, FILE_RAZENI1);
 
@@ -1940,7 +1941,7 @@ internal static class TXTParser
                     var file = row[0];
                     var array = file.Split('/');
 
-                    Language lang = null;
+                    FyzLanguage lang = null;
                     foreach (var jazyk in GlobData.LocalLanguages)
                         if (jazyk.Key == array[0])
                             lang = jazyk;
@@ -1948,10 +1949,10 @@ internal static class TXTParser
                     if (lang == null) 
                         throw new FormatException($"Jazyk {array[0]} neexistuje.");
 
-                    FyzZvuk zvuk = null;
+                    FyzSound zvuk = null;
                     var formated = array[1];
                     foreach (var sound in sounds)
-                        if (formated.EqualsIgnoreCase(sound.Dir.Name) && array[2].EqualsIgnoreCase(sound.Name) && lang == sound.Language)
+                        if (formated.EqualsIgnoreCase(sound.Group.Name) && array[2].EqualsIgnoreCase(sound.Name) && lang == sound.Group.Language)
                             zvuk = sound;
 
                     if (zvuk == null)
@@ -1982,12 +1983,12 @@ internal static class TXTParser
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="radenia">radenia vlakov</param>
     /// <param name="languages">jazykove mutacie hlaseni</param>
-    public static void WriteRazeni1(string path, IEnumerable<Radenie> radenia, IEnumerable<Language> languages)
+    public static void WriteRazeni1(string path, IEnumerable<Radenie> radenia, IEnumerable<FyzLanguage> languages)
     {
         var fileRazeni1 = CombinePath(path, FILE_RAZENI1);
 
         using var razeni1F = new CSVFileWriter(fileRazeni1);
-        var otherLangs = new List<Language>(2);
+        var otherLangs = new List<FyzLanguage>(2);
         foreach (var lang in languages)
             if (!lang.IsBasic)
                 otherLangs.Add(lang);
@@ -2021,7 +2022,7 @@ internal static class TXTParser
             foreach (var sound in radenie.Sounds)
             {
                 var rowsound = new CSVRow();
-                rowsound.Insert(0, $"{sound.Language.Key}/{sound.Dir.Name}/{sound.Name}");
+                rowsound.Insert(0, $"{sound.Language.Key}/{sound.Group.Name}/{sound.Name}");
                 razeni1F.WriteRow(rowsound);
                 if (sound.Language.IsBasic)
                 {

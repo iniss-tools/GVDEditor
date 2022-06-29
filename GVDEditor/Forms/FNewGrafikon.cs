@@ -1,6 +1,7 @@
 ﻿using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
+using ToolsCore.Entities;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
@@ -182,7 +183,7 @@ public partial class FNewGrafikon : Form
         try
         {
             var path = tbDirIniss.Text + Path.DirectorySeparatorChar + "RAWBANK";
-            RawBankReader.ReadFyzZvukFile(path, Language.GetBasicLanguage(GlobData.Languages));
+            RawBankParser.ReadFyzZvukFile(path, FyzLanguage.GetBasicLanguage(GlobData.Languages));
             GlobData.Stations = Station.GetStations();
             GlobData.Stations.Sort();
             cbStationName.DataSource = GlobData.Stations;

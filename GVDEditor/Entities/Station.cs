@@ -106,7 +106,7 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
         return (
             from soundE 
                 in GlobData.Sounds 
-            where soundE.Dir.Name == "R1" 
+            where soundE.Group.Name == "R1" 
             select new Station(soundE.Name, soundE.Text.Replace(",", ""))
         ).ToList();
     }

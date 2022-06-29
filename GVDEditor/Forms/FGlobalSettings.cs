@@ -2,6 +2,7 @@
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
+using ToolsCore.Entities;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
@@ -17,7 +18,7 @@ public partial class FGlobalSettings : Form
     public readonly BindingList<GVDDirectory> Grafikony;
 
 
-    private readonly List<Language> RBLangs;
+    private readonly List<FyzLanguage> RBLangs;
 
     /// <summary>
     ///     Odstranene grafikony.
@@ -77,7 +78,7 @@ public partial class FGlobalSettings : Form
 
         cbCustomTrainTypDruh.SelectedIndex = 0;
 
-        RBLangs = RawBankReader.ReadFyzBankFile(GlobData.RawBankDir, out _);
+        RBLangs = RawBankParser.ReadFyzBankFile(GlobData.RawBankDir, out _);
         dgvLanguagesRawBank.DataSource = RBLangs;
 
         if (openIndex != -1) tabControl.SelectTab(openIndex);
@@ -87,7 +88,7 @@ public partial class FGlobalSettings : Form
 
     private void listLanguages_SelectedIndexChanged(object sender, EventArgs e)
     {
-        var jazyk = (Language)listLanguages.SelectedItem;
+        var jazyk = (FyzLanguage)listLanguages.SelectedItem;
         tbLanguageName.Text = jazyk.Name;
         tbLanguageSkratka.Text = jazyk.Key;
         cbIsBasic.Checked = jazyk.IsBasic;
@@ -96,8 +97,8 @@ public partial class FGlobalSettings : Form
     private void bLanguageAdd_Click(object sender, EventArgs e)
     {
         var basic = false;
-        foreach (var language in GlobData.Languages)
-            if (language.IsBasic)
+        foreach (var lang in GlobData.Languages)
+            if (lang.IsBasic)
                 basic = true;
 
         if (cbIsBasic.Checked && basic)
@@ -106,13 +107,10 @@ public partial class FGlobalSettings : Form
             return;
         }
 
-        var jazyk = new Language
-        {
-            Name = tbLanguageName.Text, Key = tbLanguageSkratka.Text, IsBasic = cbIsBasic.Checked
-        };
+        var language = new FyzLanguage(tbLanguageSkratka.Text, tbLanguageName.Text) { IsBasic = cbIsBasic.Checked };
 
         foreach (var lang in GlobData.Languages)
-            if (lang.Key == jazyk.Key)
+            if (lang.Key == language.Key)
             {
                 Utils.ShowError(Resources.FGlobalSettings_Zadaný_jazyk_sa_sa_už_v_zozname_nachádza);
                 return;
@@ -120,13 +118,13 @@ public partial class FGlobalSettings : Form
 
         var keys = RBLangs.Select(lang => lang.Key).ToList();
 
-        if (!keys.Contains(jazyk.Key))
+        if (!keys.Contains(language.Key))
         {
             Utils.ShowError(Resources.FGlobalSettings_Kľúč_jazyka_sa_nezhoduje_so_žiadnym_jazykom_nacházajúci_sa_v_zvukovej_banke);
             return;
         }
 
-        GlobData.Languages.Add(jazyk);
+        GlobData.Languages.Add(language);
     }
 
     private void bLanguageEdit_Click(object sender, EventArgs e)

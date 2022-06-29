@@ -1,4 +1,5 @@
-﻿using ToolsCore.Tools;
+﻿using ToolsCore.Entities;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Entities;
 
@@ -15,7 +16,7 @@ public sealed class Dodatok
     /// <summary>
     ///     Vrati alebo nastavi fyzický zvuk dodatku.
     /// </summary>
-    public FyzZvuk Sound { get; set; }
+    public FyzSound Sound { get; set; }
 
     /// <summary>
     ///     Vrati alebo nastavi názov dodatkového hlásenia (zvyčajne Dxxxx, kde x - 0-9).
@@ -40,7 +41,7 @@ public sealed class Dodatok
     /// <param name="smerovanie">Smerovanie vlaku.</param>
     /// <returns>dodatkové hlásenie.</returns>
     /// <exception cref="FormatException"></exception>
-    public static Dodatok NumsToDodatok(FyzZvuk sound, string nums, List<ReportType> reportTypes, List<ReportVariant> reportVariants,
+    public static Dodatok NumsToDodatok(FyzSound sound, string nums, List<ReportType> reportTypes, List<ReportVariant> reportVariants,
         Routing smerovanie)
     {
         var dodatok = new Dodatok { Sound = sound, Name = sound.Name.Replace("D", "") };

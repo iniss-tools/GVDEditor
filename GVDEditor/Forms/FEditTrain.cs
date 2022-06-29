@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
+using ToolsCore.Entities;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
@@ -39,7 +40,7 @@ public partial class FEditTrain : Form
     /// </summary>
     public int Row;
 
-    private List<FyzZvuk> selSounds;
+    private List<FyzSound> selSounds;
 
     private string tbCisloOldValue = "";
 
@@ -103,9 +104,9 @@ public partial class FEditTrain : Form
             if (!jazyk.IsBasic)
                 clbJazyky.Items.Add(jazyk);
 
-        var lenDoplnky = new List<FyzZvuk>();
+        var lenDoplnky = new List<FyzSound>();
         foreach (var snd in GlobData.Sounds)
-            if (snd.Dir.Name.EqualsIgnoreCase("DODATKY"))
+            if (snd.Group.Name.EqualsIgnoreCase("DODATKY"))
                 lenDoplnky.Add(snd);
 
         listAllDoplnky.DataSource = lenDoplnky;
@@ -372,7 +373,7 @@ public partial class FEditTrain : Form
 
         train.Languages.Clear();
 
-        foreach (var item in clbJazyky.CheckedItems.OfType<Language>()) train.Languages.Add(item);
+        foreach (var item in clbJazyky.CheckedItems.OfType<FyzLanguage>()) train.Languages.Add(item);
 
         var platnostOd = dtpPlatnostOd.Value;
         var platnostDo = dtpPlatnostDo.Value;
@@ -710,8 +711,8 @@ public partial class FEditTrain : Form
         {
             var doplnok = new Dodatok
             {
-                Sound = listAllDoplnky.SelectedItem as FyzZvuk,
-                Name = ((FyzZvuk)listAllDoplnky.SelectedItem).Name.Replace("D", "")
+                Sound = listAllDoplnky.SelectedItem as FyzSound,
+                Name = ((FyzSound)listAllDoplnky.SelectedItem).Name.Replace("D", "")
             };
             Doplnky.Add(doplnok);
         }
@@ -723,8 +724,8 @@ public partial class FEditTrain : Form
         {
             var doplnok = new Dodatok
             {
-                Sound = listAllDoplnky.SelectedItem as FyzZvuk,
-                Name = ((FyzZvuk)listAllDoplnky.SelectedItem).Name.Replace("D", "")
+                Sound = listAllDoplnky.SelectedItem as FyzSound,
+                Name = ((FyzSound)listAllDoplnky.SelectedItem).Name.Replace("D", "")
             };
             Doplnky.Add(doplnok);
 
@@ -760,7 +761,7 @@ public partial class FEditTrain : Form
     private void listAllDoplnky_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (listAllDoplnky.SelectedIndex != -1 && listAllDoplnky.SelectedItem != null)
-            tbTextDoplnku.Text = ((FyzZvuk)listAllDoplnky.SelectedItem).Text;
+            tbTextDoplnku.Text = ((FyzSound)listAllDoplnky.SelectedItem).Text;
     }
 
     private void listVybrateDoplnky_SelectedIndexChanged(object sender, EventArgs e)
@@ -1065,21 +1066,21 @@ public partial class FEditTrain : Form
         FRadenie fRadenie;
         if (listRadenia.SelectedIndex == -1)
         {
-            fRadenie = new FRadenie(new List<FyzZvuk>());
+            fRadenie = new FRadenie(new List<FyzSound>());
             var result = fRadenie.ShowDialog();
             if (result == DialogResult.OK)
             {
-                selSounds = new List<FyzZvuk>(fRadenie.SelSounds);
+                selSounds = new List<FyzSound>(fRadenie.SelSounds);
                 tbRadenie.Text = Radenie.SoundsToString(selSounds);
             }
         }
         else
         {
-            fRadenie = new FRadenie(new List<FyzZvuk>(Radenia[listRadenia.SelectedIndex].Sounds));
+            fRadenie = new FRadenie(new List<FyzSound>(Radenia[listRadenia.SelectedIndex].Sounds));
             var result = fRadenie.ShowDialog();
             if (result == DialogResult.OK)
             {
-                selSounds = new List<FyzZvuk>(fRadenie.SelSounds);
+                selSounds = new List<FyzSound>(fRadenie.SelSounds);
                 tbRadenie.Text = Radenie.SoundsToString(selSounds);
             }
         }
@@ -1103,11 +1104,11 @@ public partial class FEditTrain : Form
         if (selSounds != null)
             foreach (var fyzZvuk in selSounds)
                 soundsS.Add(GlobData.RawBankDir + "\\" + fyzZvuk.Language.RelativePath +
-                            fyzZvuk.Dir.RelativePath + fyzZvuk.FileName);
+                            fyzZvuk.Group.RelativePath + fyzZvuk.FileName);
         else if (listRadenia.SelectedIndex != -1)
             foreach (var fyzZvuk in Radenia[listRadenia.SelectedIndex].Sounds)
                 soundsS.Add(GlobData.RawBankDir + "\\" + fyzZvuk.Language.RelativePath +
-                            fyzZvuk.Dir.RelativePath + fyzZvuk.FileName);
+                            fyzZvuk.Group.RelativePath + fyzZvuk.FileName);
 
         var player = new WAVPlayer(soundsS.ToArray(), GlobData.Config.PlayerWordPause);
         player.StartPlay();

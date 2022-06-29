@@ -4,6 +4,7 @@ using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
 using Microsoft.VisualBasic.FileIO;
+using ToolsCore.Entities;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 using AppRegistry = ToolsCore.Tools.AppRegistry;
@@ -211,9 +212,9 @@ public partial class FMain : Form
         (GlobData.ReportVariants,GlobData.ReportTypes,GlobData.LocalLanguages) = TXTParser.ReadLocalCategori(pathgvd.Path);
         InitDruhyReportov();
 
-        var allSounds = new List<FyzZvuk>();
+        var allSounds = new List<FyzSound>();
         foreach (var language in GlobData.LocalLanguages)
-            allSounds.AddRange(language.IsBasic ? GlobData.Sounds : RawBankReader.ReadFyzZvukFile(GlobData.RawBankDir, language));
+            allSounds.AddRange(language.IsBasic ? GlobData.Sounds : RawBankParser.ReadFyzZvukFile(GlobData.RawBankDir, language));
 
         try { GlobData.Radenia = TXTParser.ReadRazeni1(pathgvd.Path, allSounds); }catch (FileNotFoundException) { }
 

@@ -1,5 +1,6 @@
 ﻿using GVDEditor.Entities;
 using GVDEditor.Tools;
+using ToolsCore.Entities;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
@@ -9,20 +10,20 @@ namespace GVDEditor.Forms;
 /// </summary>
 public partial class FRadenie : Form
 {
-    private readonly Dictionary<Language, List<FyzZvuk>> _allSoundsLangs = new();
-    private readonly BindingList<FyzZvuk> _selectedSounds = new();
-    private BindingList<FyzZvuk> _soundInDir = new();
+    private readonly Dictionary<FyzLanguage, List<FyzSound>> _allSoundsLangs = new();
+    private readonly BindingList<FyzSound> _selectedSounds = new();
+    private BindingList<FyzSound> _soundInDir = new();
 
     /// <summary>
     ///     Vybrane zvuky reprezentujúce radenie.
     /// </summary>
-    public List<FyzZvuk> SelSounds;
+    public List<FyzSound> SelSounds;
 
     /// <summary>
     ///     Vytvori novy formulár typu <see cref="FRadenie"/>.
     /// </summary>
     /// <param name="sounds">Zoznam fyzických zvukov reprezentujúcich radenie vlaku.</param>
-    public FRadenie(List<FyzZvuk> sounds)
+    public FRadenie(List<FyzSound> sounds)
     {
         InitializeComponent();
         FormUtils.SetFormFont(this);
@@ -31,8 +32,7 @@ public partial class FRadenie : Form
         SelSounds = sounds;
 
         foreach (var lang in GlobData.Languages)
-            _allSoundsLangs.Add(lang,
-                lang.IsBasic ? GlobData.Sounds : RawBankReader.ReadFyzZvukFile(GlobData.RawBankDir, lang));
+            _allSoundsLangs.Add(lang, lang.IsBasic ? GlobData.Sounds : RawBankParser.ReadFyzZvukFile(GlobData.RawBankDir, lang));
 
         _selectedSounds.ListChanged += SelectedSounds_ListChanged;
 
@@ -41,7 +41,7 @@ public partial class FRadenie : Form
 
         foreach (var sound in sounds) _selectedSounds.Add(sound);
 
-        cbSoundDir.DataSource = FyzZvukDirType.GetValues();
+        cbSoundDir.DataSource = FyzGroupType.GetValues();
         cbLanguage.DataSource = GlobData.Languages;
         if (GlobData.Languages.Count != 0) cbLanguage.SelectedIndex = 0;
 
@@ -60,9 +60,9 @@ public partial class FRadenie : Form
     {
         if (cbLanguage.SelectedIndex != -1 && cbSoundDir.SelectedIndex != -1)
         {
-            var list = new List<FyzZvuk>(_allSoundsLangs[(Language)cbLanguage.SelectedItem]);
-            _soundInDir = new BindingList<FyzZvuk>();
-            foreach (var zvuk in list.Where(zvuk => zvuk.Dir.DirType.Equals(cbSoundDir.SelectedItem)))
+            var list = new List<FyzSound>(_allSoundsLangs[(FyzLanguage)cbLanguage.SelectedItem]);
+            _soundInDir = new BindingList<FyzSound>();
+            foreach (var zvuk in list.Where(zvuk => zvuk.Group.Type.Equals(cbSoundDir.SelectedItem)))
                 _soundInDir.Add(zvuk);
 
             listAllSounds.DataSource = _soundInDir;
@@ -73,9 +73,9 @@ public partial class FRadenie : Form
     {
         if (cbLanguage.SelectedIndex != -1 && cbSoundDir.SelectedIndex != -1)
         {
-            var list = new List<FyzZvuk>(_allSoundsLangs[(Language)cbLanguage.SelectedItem]);
-            _soundInDir = new BindingList<FyzZvuk>();
-            foreach (var zvuk in list.Where(zvuk => zvuk.Dir.DirType.Equals(cbSoundDir.SelectedItem)))
+            var list = new List<FyzSound>(_allSoundsLangs[(FyzLanguage)cbLanguage.SelectedItem]);
+            _soundInDir = new BindingList<FyzSound>();
+            foreach (var zvuk in list.Where(zvuk => zvuk.Group.Type.Equals(cbSoundDir.SelectedItem)))
                 _soundInDir.Add(zvuk);
             listAllSounds.DataSource = _soundInDir;
         }
@@ -170,9 +170,9 @@ public partial class FRadenie : Form
         var point = listRadenie.PointToClient(new Point(e.X, e.Y));
         var index = listRadenie.IndexFromPoint(point);
         if (index < 0) index = listRadenie.Items.Count - 1;
-        var data = e.Data.GetData(typeof(FyzZvuk));
-        _selectedSounds.Remove(data as FyzZvuk);
-        _selectedSounds.Insert(index, data as FyzZvuk);
+        var data = e.Data.GetData(typeof(FyzSound));
+        _selectedSounds.Remove(data as FyzSound);
+        _selectedSounds.Insert(index, data as FyzSound);
         listRadenie.SelectedItem = data;
     }
 
@@ -182,56 +182,56 @@ public partial class FRadenie : Form
 
     private static void Format(ListControlConvertEventArgs e)
     {
-        if (e.ListItem is FyzZvuk zvuk)
+        if (e.ListItem is FyzSound sound)
         {
-            var type = zvuk.Dir.DirType;
+            var type = sound.Group.Type;
             if (
-                type == FyzZvukDirType.K1 ||
-                type == FyzZvukDirType.K2 ||
-                type == FyzZvukDirType.K3 ||
-                type == FyzZvukDirType.K4 ||
-                type == FyzZvukDirType.N1 ||
-                type == FyzZvukDirType.N2 ||
-                type == FyzZvukDirType.N3 ||
-                type == FyzZvukDirType.N4 ||
-                type == FyzZvukDirType.N5 ||
-                type == FyzZvukDirType.N10 ||
-                type == FyzZvukDirType.N11 ||
-                type == FyzZvukDirType.N12 ||
-                type == FyzZvukDirType.N13 ||
-                type == FyzZvukDirType.POZ1 ||
-                type == FyzZvukDirType.POZ2 ||
-                type == FyzZvukDirType.POZ3 ||
-                type == FyzZvukDirType.POZ7 ||
-                type == FyzZvukDirType.R1 ||
-                type == FyzZvukDirType.R2 ||
-                type == FyzZvukDirType.R3 ||
-                type == FyzZvukDirType.R4 ||
-                type == FyzZvukDirType.V1 ||
-                type == FyzZvukDirType.V2 ||
-                type == FyzZvukDirType.V4 ||
-                type == FyzZvukDirType.V14 ||
-                type == FyzZvukDirType.SLOVA ||
-                type == FyzZvukDirType.VOZY1 ||
-                type == FyzZvukDirType.VOZY1M ||
-                type == FyzZvukDirType.VOZY2 ||
-                type == FyzZvukDirType.VOZY2M ||
-                type == FyzZvukDirType.VOZY3 ||
-                type == FyzZvukDirType.VOZY3M ||
-                type == FyzZvukDirType.VOZY4 ||
-                type == FyzZvukDirType.VOZY4M ||
-                type == FyzZvukDirType.VOZY5 ||
-                type == FyzZvukDirType.VOZY5M ||
-                type == FyzZvukDirType.VOZY6 ||
-                type == FyzZvukDirType.VOZY6M ||
-                type == FyzZvukDirType.VOZY7 ||
-                type == FyzZvukDirType.VOZY7M ||
-                type == FyzZvukDirType.VOZY8 ||
-                type == FyzZvukDirType.VOZY8M
+                type == FyzGroupType.K1 ||
+                type == FyzGroupType.K2 ||
+                type == FyzGroupType.K3 ||
+                type == FyzGroupType.K4 ||
+                type == FyzGroupType.N1 ||
+                type == FyzGroupType.N2 ||
+                type == FyzGroupType.N3 ||
+                type == FyzGroupType.N4 ||
+                type == FyzGroupType.N5 ||
+                type == FyzGroupType.N10 ||
+                type == FyzGroupType.N11 ||
+                type == FyzGroupType.N12 ||
+                type == FyzGroupType.N13 ||
+                type == FyzGroupType.POZ1 ||
+                type == FyzGroupType.POZ2 ||
+                type == FyzGroupType.POZ3 ||
+                type == FyzGroupType.POZ7 ||
+                type == FyzGroupType.R1 ||
+                type == FyzGroupType.R2 ||
+                type == FyzGroupType.R3 ||
+                type == FyzGroupType.R4 ||
+                type == FyzGroupType.V1 ||
+                type == FyzGroupType.V2 ||
+                type == FyzGroupType.V4 ||
+                type == FyzGroupType.V14 ||
+                type == FyzGroupType.SLOVA ||
+                type == FyzGroupType.VOZY1 ||
+                type == FyzGroupType.VOZY1M ||
+                type == FyzGroupType.VOZY2 ||
+                type == FyzGroupType.VOZY2M ||
+                type == FyzGroupType.VOZY3 ||
+                type == FyzGroupType.VOZY3M ||
+                type == FyzGroupType.VOZY4 ||
+                type == FyzGroupType.VOZY4M ||
+                type == FyzGroupType.VOZY5 ||
+                type == FyzGroupType.VOZY5M ||
+                type == FyzGroupType.VOZY6 ||
+                type == FyzGroupType.VOZY6M ||
+                type == FyzGroupType.VOZY7 ||
+                type == FyzGroupType.VOZY7M ||
+                type == FyzGroupType.VOZY8 ||
+                type == FyzGroupType.VOZY8M
             )
-                e.Value = zvuk.Text;
+                e.Value = sound.Text;
             else
-                e.Value = zvuk.ToString();
+                e.Value = sound.ToString();
         }
     }
 
@@ -246,7 +246,7 @@ public partial class FRadenie : Form
         var soundsS = new List<string>();
 
         foreach (var fyzZvuk in _selectedSounds)
-            soundsS.Add(GlobData.RawBankDir + "\\" + fyzZvuk.Language.RelativePath + fyzZvuk.Dir.RelativePath + fyzZvuk.FileName);
+            soundsS.Add(GlobData.RawBankDir + "\\" + fyzZvuk.Language.RelativePath + fyzZvuk.Group.RelativePath + fyzZvuk.FileName);
 
         var player = new WAVPlayer(soundsS.ToArray(), GlobData.Config.PlayerWordPause);
         player.StartPlay();

@@ -1,4 +1,5 @@
 ﻿using ExControls;
+using ToolsCore.Entities;
 
 namespace GVDEditor.Forms
 {
@@ -359,14 +360,14 @@ namespace GVDEditor.Forms
             // fyzBankNameDataGridViewTextBoxColumn
             // 
             this.fyzBankNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.fyzBankNameDataGridViewTextBoxColumn.DataPropertyName = "FyzBankName";
+            this.fyzBankNameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             resources.ApplyResources(this.fyzBankNameDataGridViewTextBoxColumn, "fyzBankNameDataGridViewTextBoxColumn");
             this.fyzBankNameDataGridViewTextBoxColumn.Name = "fyzBankNameDataGridViewTextBoxColumn";
             this.fyzBankNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // languageBindingSource
             // 
-            this.languageBindingSource.DataSource = typeof(GVDEditor.Entities.Language);
+            this.languageBindingSource.DataSource = typeof(FyzLanguage);
             // 
             // label19
             // 

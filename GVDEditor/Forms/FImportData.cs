@@ -2,6 +2,7 @@
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
+using ToolsCore.Entities;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 using TableFileReader = ToolsCore.Tools.TableFileReader;
@@ -176,18 +177,18 @@ public partial class FImportData : Form
                     }
                     else if (selectedColumnTypes[j] == ImportTrainColumnType.Languages)
                     {
-                        var langs = new List<Language>();
+                        var langs = new List<FyzLanguage>();
 
                         data = data.Trim().Replace(" ", "");
                         var langsArrayS = data.Split(',');
 
                         foreach (var s in langsArrayS)
                         {
-                            var language = Language.GetLanguageFromKey(GlobData.LocalLanguages, s);
+                            var language = FyzLanguage.GetLanguageFromKey(GlobData.LocalLanguages, s);
 
                             if (language == null)
                                 throw new ArgumentException(string.Format(fmtException, data, i + 1, j,
-                                    selectedColumnTypes[j], typeof(Language)));
+                                    selectedColumnTypes[j], typeof(FyzLanguage)));
 
                             langs.Add(language);
                         }
@@ -431,7 +432,7 @@ public partial class FImportData : Form
 
                 train.Operator ??= Operator.None;
 
-                train.Languages ??= new List<Language>();
+                train.Languages ??= new List<FyzLanguage>();
 
                 if (train.ZaciatokPlatnosti == default) train.ZaciatokPlatnosti = Gvd.StartValidTimeTable;
 
