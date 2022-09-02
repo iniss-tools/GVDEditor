@@ -205,16 +205,22 @@
     <value>Fill</value>
   </data>
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 33</value>
+    <value>0, 31</value>
+  </data>
+  <data name="splitContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="scText.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="scText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
+    <value>3, 3</value>
+  </data>
+  <data name="scText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="scText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>759, 410</value>
+    <value>569, 330</value>
   </data>
   <data name="scText.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -223,7 +229,7 @@
     <value>scText</value>
   </data>
   <data name="&gt;&gt;scText.Type" xml:space="preserve">
-    <value>GVDEditor.Controls.MyScintilla, GVDEditor, Version=1.7.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>GVDEditor.Controls.MyScintilla, GVDEditor, Version=1.7.9.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;scText.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -232,7 +238,7 @@
     <value>0</value>
   </data>
   <data name="splitContainer1.Panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 2, 4</value>
+    <value>3, 3, 2, 3</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -268,7 +274,7 @@
 </value>
   </data>
   <data name="tsmiAddTabTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 26</value>
+    <value>171, 26</value>
   </data>
   <data name="tsmiAddTabTab.Text" xml:space="preserve">
     <value>Pridať TabTab...</value>
@@ -286,13 +292,13 @@
 </value>
   </data>
   <data name="tsmiDeleteTabTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 26</value>
+    <value>171, 26</value>
   </data>
   <data name="tsmiDeleteTabTab.Text" xml:space="preserve">
     <value>Odstrániť TabTab</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 6</value>
+    <value>168, 6</value>
   </data>
   <data name="tsmiRenameTabTab.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -307,13 +313,13 @@
     <value>F2</value>
   </data>
   <data name="tsmiRenameTabTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 26</value>
+    <value>171, 26</value>
   </data>
   <data name="tsmiRenameTabTab.Text" xml:space="preserve">
     <value>Premenovať...</value>
   </data>
   <data name="conMenuLbTabs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 88</value>
+    <value>172, 88</value>
   </data>
   <data name="&gt;&gt;conMenuLbTabs.Name" xml:space="preserve">
     <value>conMenuLbTabs</value>
@@ -324,14 +330,14 @@
   <data name="lbTabTabs.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="lbTabTabs.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
   <data name="lbTabTabs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 4</value>
+    <value>2, 3</value>
+  </data>
+  <data name="lbTabTabs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="lbTabTabs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 410</value>
+    <value>92, 330</value>
   </data>
   <data name="lbTabTabs.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -349,7 +355,7 @@
     <value>0</value>
   </data>
   <data name="splitContainer1.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 4, 4, 4</value>
+    <value>2, 3, 3, 3</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -364,13 +370,16 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>898, 418</value>
+    <value>674, 336</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>765</value>
+    <value>574</value>
+  </data>
+  <data name="splitContainer1.SplitterWidth" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
     <value>splitContainer1</value>
@@ -401,7 +410,7 @@
     <value>Ctrl+S</value>
   </data>
   <data name="tsmiSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 26</value>
+    <value>218, 26</value>
   </data>
   <data name="tsmiSave.Text" xml:space="preserve">
     <value>Uložiť</value>
@@ -421,13 +430,13 @@
     <value>Ctrl+Shift+S</value>
   </data>
   <data name="tsmiSaveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 26</value>
+    <value>218, 26</value>
   </data>
   <data name="tsmiSaveAll.Text" xml:space="preserve">
     <value>Uložiť všetko</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 6</value>
+    <value>215, 6</value>
   </data>
   <data name="tsmiUndo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -448,7 +457,7 @@
     <value>Ctrl+Z</value>
   </data>
   <data name="tsmiUndo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 26</value>
+    <value>218, 26</value>
   </data>
   <data name="tsmiUndo.Text" xml:space="preserve">
     <value>Naspäť</value>
@@ -472,19 +481,19 @@
     <value>Ctrl+Y</value>
   </data>
   <data name="tsmiRedo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 26</value>
+    <value>218, 26</value>
   </data>
   <data name="tsmiRedo.Text" xml:space="preserve">
     <value>Dopredu</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 6</value>
+    <value>215, 6</value>
   </data>
   <data name="tsmiCut.ShortcutKeyDisplayString" xml:space="preserve">
     <value>Ctrl+X</value>
   </data>
   <data name="tsmiCut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 26</value>
+    <value>218, 26</value>
   </data>
   <data name="tsmiCut.Text" xml:space="preserve">
     <value>Vystrihnúť</value>
@@ -493,7 +502,7 @@
     <value>Ctrl+C</value>
   </data>
   <data name="tsmiCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 26</value>
+    <value>218, 26</value>
   </data>
   <data name="tsmiCopy.Text" xml:space="preserve">
     <value>Kopírovať</value>
@@ -502,7 +511,7 @@
     <value>Ctrl+V</value>
   </data>
   <data name="tsmiPaste.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 26</value>
+    <value>218, 26</value>
   </data>
   <data name="tsmiPaste.Text" xml:space="preserve">
     <value>Prilepiť</value>
@@ -511,25 +520,25 @@
     <value>Delete</value>
   </data>
   <data name="tsmiDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 26</value>
+    <value>218, 26</value>
   </data>
   <data name="tsmiDelete.Text" xml:space="preserve">
     <value>Odstrániť</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 6</value>
+    <value>215, 6</value>
   </data>
   <data name="tsmiSelectAll.ShortcutKeyDisplayString" xml:space="preserve">
     <value>Ctrl+A</value>
   </data>
   <data name="tsmiSelectAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 26</value>
+    <value>218, 26</value>
   </data>
   <data name="tsmiSelectAll.Text" xml:space="preserve">
     <value>Označiť všetko</value>
   </data>
   <data name="conMenuScText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 256</value>
+    <value>219, 256</value>
   </data>
   <data name="&gt;&gt;conMenuScText.Name" xml:space="preserve">
     <value>conMenuScText</value>
@@ -540,21 +549,11 @@
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="tsbSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADhSURBVEhL7ZO9CsIwFEb7tD5AQazgz+AYqk6ZXMSCky/g
-        JA4u4titi4so3Yp75QsJ/rX12iRgqAfOUEjv4QbiNRfWnudl+j2et7oTsn6f52EnCuXoahBI4uzJ3fok
-        xLBjmpHFeT5cXcNgMZbjy9EJB2wmVN84Hx9SWtx0GP+T4jbC8GPcVhhWxm2GIeJoyNwdnfCrRWFIDu83
-        FxEesEgMozqaLt9mQXLYtP+w4CfC6nmY8quwKdwLb8/1VLi3sS61w0XXSFHh3sa61A4XXSNFhXsb60IK
-        K3HYpI+zZa5xeN4Nbq3eM/llxHkAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="tsbSave.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsbSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 24</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbSave.Text" xml:space="preserve">
     <value>toolStripButton1</value>
@@ -562,72 +561,35 @@
   <data name="tsbSave.ToolTipText" xml:space="preserve">
     <value>Uložiť (Ctrl+S)</value>
   </data>
-  <data name="tsbSaveAll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFESURBVEhL7ZJBSwJBGIb313ZXqIw2iczTpgUxEtTBSDBI
-        6ZBdgsDtEEF06CAEdbBLFN7E+8Q7zKfuOM7uzLqHzBeewy7f9z7M7HqrUIL1c64jt8342tahkZzPeGWz
-        UZFVdoHk8e5rzE37TYDip9d3I5g5Ll6NDjYuqrIueWzEheBMQM+YCW/7bvK0YuwkktM3VMn7NVFkIr9T
-        4/u79RlxIjkkH73hGFpEyedgaAQzrNTil/X7GXGs3EZMV0vPmOm9DPhJ+VrIVTEIO31xg1I3SVoxdkju
-        F04jUiIzMcnZXps3WRiRgkzFgE6uyjMXA8jRuVCxik4MnMTP3R8xXAwaothE6agZ2SWcxItgJY4V01/r
-        QmqxS5ZD/PAdD2U5TmwTnVhF6ibBS51Yd7UqFJ1Y1s/PPLFN/p6YQIEr0z1A1v/7eN4vndcWhmlz/OkA
-        AAAASUVORK5CYII=
-</value>
-  </data>
   <data name="tsbSaveAll.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsbSaveAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 24</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbSaveAll.Text" xml:space="preserve">
     <value>Uložiť všetko (Ctrl+Shift+S)</value>
-  </data>
-  <data name="tsbStorno.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADwSURBVEhLYxh0oGTakf/UxFBjCQOQ4kMv/lMFj1qMF4xa
-        TApuXXsDhU83i/2qtv5vWYOwfMKWm/SzOLr9wP/2DTfB/IPP/tHP4rZNr/9Htx2A+xxqLGFAqcXd2z+g
-        WA41ljCghsXIlgdUbe+DGo0fIFsMMohUDLMYZnlg/d4vgTU7eqHG4wboFiMbRA6GWU7Q57SyOKhuRyvU
-        CuyAFkEdULMNv6UgQO3ERdCnMEANi2GWggoSqLGEAaUWI1sKEoMaSxhQavGAFZkwS0F4wmY6BXXHxlso
-        fJBZUGMJA0osRsejFuMFI9NiamKosQMNGBgA+riFKXlBEtwAAAAASUVORK5CYII=
-</value>
   </data>
   <data name="tsbStorno.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsbStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 24</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbStorno.Text" xml:space="preserve">
     <value>toolStripButton2</value>
   </data>
   <data name="tsbStorno.ToolTipText" xml:space="preserve">
-    <value>Storno</value>
+    <value>Odísť</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
-  </data>
-  <data name="tsbUndo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAILSURBVEhL7ZVLSxtRFMez9/Ep1G9hYy2CRDMPIUEX6t6N
-        ghVMZiaTSOMjfgXdmIUbS9XMK2AaIXHT0u/QQqug+MCk+IA4nX84gxNNxJrJrPKDAwln5v645557xtfG
-        STCixumnd3CikWSiqkl/vYGJaklezpU9FUMaShz8Te6dmp6JndJ1/cobMc4U5V3eP6tKbfH/hn9Gu+Oj
-        6h8+ZqSt5hyi5etTT/rWWFUuzMTnE3MuVXgILyklVjR+cItqH6lqsZvJDbEzUtqlObV5VAl8VEqMoLwj
-        XS1ulXpU2L8fl/NXU5vFSkq7qK4T3f5lcqJ+PSJmeklXy1M5FqLUqxmaz3awQmaAlfQcL38tf6JGndwo
-        VDhJ/06PPccpf4vYCSMYMcixc5Q9nFBKoxHtA6WfY8ubFQNeMvLTG8UKdj23VnjgxOwWpeoDuRtiJqK8
-        x5lDHN85NrmY8ZtSjXHjI8Es7Hb5Z/Q7iFeVc5MV9FtKtZZhWevGUIF4BeLZLzeUai1BQR2ckA8fSy29
-        otRuwEvZPO40xLPWNLN65+XmcgPrPOPO6xSwrhMqQGl3Ccn5TiyOnUKa3H0cIGMx4xs91hy4bk8DIxNn
-        6hyZwvbP6sgMLho99GpzQISFGwXKO2kND3wk2Eimn15rnnpifBbRvWgknCnK69pObZwltoMV0re4Muje
-        ljVSmzaN8fn+AQzQZ48jF6JXAAAAAElFTkSuQmCC
-</value>
   </data>
   <data name="tsbUndo.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsbUndo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 24</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbUndo.Text" xml:space="preserve">
     <value>toolStripButton1</value>
@@ -635,26 +597,11 @@
   <data name="tsbUndo.ToolTipText" xml:space="preserve">
     <value>Späť (Ctrl+Z)</value>
   </data>
-  <data name="tsbRedo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAH8SURBVEhL7ZVLSwJRFMfd19eovkUWZZtsZgyyWuQHaJMQ
-        hHpn8kGJD+oT1KaCWtQinZeEGdkuauUXCMqgSK0MKnx0z3QVM5+TIy38wYGZOXfu/95zzzlX16NTUHbB
-        Rx67C+UQiiZW3iCv3QOEzZ7oG41EL/nUHUDYG3osmpzRLOOQNsln7QHhoJRpX9xoEydoNrJncgh3+kXx
-        AyZq10D4hzgrr5Ppf0Ox0hDDyddmD/9qDcQL7qP7oo9PlSdRaw3FjXZRz6zIz9ZgIheU0jUnUGsgXDPZ
-        lJ2y0gs6uFEG+oVU0bIVz885YxkjCn3WCmUzqxStu1sIr2X7Ig8D144f8MDTLMNFTiAKhuVIHxnWMiXh
-        hqJTdsEAZxoQ08pOQZRiRUTcqgDhpkkF2QuJBCuE8MJOiUs1INw0k6Fk3EdJJTSzcKY4vMSlGhBuKArQ
-        SHr38U+KMNTsjDPWT1yqwcfnIo/1odFuWRgyuBPCLVEZaigfGoVHiEtbILmWAudKci3g5KI5KUpc2kIh
-        ftzsrionJK8St7ZMs/JVdQMxcXKMsvOjmp45YxMGoWU69r9bZkDELRMvZN55Vrdlkl//Dg75sHJJ+BM5
-        CDssoJ51VBiYZMMDDCddwplb/fGC6zBZ81rsuHAJ3L3GcOfZwZfHLdR5ZYhLRob26PGf0Om+AImEaFit
-        mb6aAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="tsbRedo.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsbRedo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 24</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbRedo.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -665,29 +612,11 @@
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
   </data>
-  <data name="tsbAddTab.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAALZSURBVEhL7VZNbxJRFMW1GvWf2SrGGmGYoW26IylfM9SE
-        j5g2aguYGIztMHxsQKWlEKmNHzv/gO0KtNV/YDGAG8P4DvOaAn0D76WbLjzJyYTJ3HuYN/fecx2XGooe
-        vO7Sg05vQdtRdPW7K6eeSE9Cf3Gdz0W+EW67N0N3nS+i12jIxfAgo95S8lpK3lJ7we21duZL3iwfVs1a
-        c8/c//FpcC0fVE3cD1TW2nhOMiJJKee7SVOIw6Orzvs57Xe8mvoDgQ8/P08lnos2nvcQJ+nhOzQVJ0zH
-        FY8RTixkVjqvyduxBKYRpzJXWO4qhpZAPpp5Mojo46VStFNvvWcm5WWNxC+Vox0lr8ZpanvgeBcyj7hE
-        j06OmfeHCXG8uccIzVKJ80Ah4dvwHi/Auj9OHLu8GWovvgrfoFKjkLORNAqDFcwirzCIApVz2gaVOgP6
-        FK3AW72giDDyIv+5PndnQ/cCpE9ZQXYUEQb9pM8lPTDaYphIGAKsADuKCifqG32voVWopIX5fOSofLjL
-        DLCjqHDpYMf05tUWlbSAqqu1+L8vKCqM76y8DP+ikhYw8DF7hx9En14E432+f/zRhA6VtACXEaloEGDd
-        t+Nus3H+jWFtcBlWgB1FhUtfySApRppU0gL8NFFP9lkBdhQVTtSSfW9+5Q2VtAATh5+yAuwoKux/u9p2
-        ZwMzVNICJoqc8nH7LigijO+LyfWw6L9KJc8gGWoy3ljvsgJZFBH2kVntMdSnVGoUWFfgTnATVvA4eYUx
-        OCa6E4B1ZZH4MXyUlWSYfH68Z84Vl7uSrt2mEvbAuoLNgUd8EiGKTUbOajGaegrIjiTnwjFsIrzHPk4c
-        LzYP4sEx7p3rFO5seEYh3ybaSHP7NKo3+i7dQxzX8doBBUGqcR2tAD/FkMHb4I+c7tWYSLA8f2V1sFeT
-        o302sZBEgP6DicNPvQW1hZmLgY8rfmMiubZCs8w+/Y8BHI5/kLNxEuE58PsAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="tsbAddTab.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsbAddTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 24</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbAddTab.Text" xml:space="preserve">
     <value>toolStripButton1</value>
@@ -695,24 +624,11 @@
   <data name="tsbAddTab.ToolTipText" xml:space="preserve">
     <value>Pridať TabTab...</value>
   </data>
-  <data name="tsbRemoveTab.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAF+SURBVEhL7ZZNTsMwEIV7ChBcACG4Q5Umjje9QTdd9m/b
-        c/RSidKIZUWXSWEPLBFB/PgFjxSS2HIcV930k0ZVnfG8zOg58uDMSYk87yYJgjgKgmu51JmYsYtkNIrE
-        771c0iMEb1Pff32cTD6TMHwSmy/lI2OwJ2XssB+Pi4SxN9SUj9pBp9vh8GU3nX69bzY/h9WqiDl/7tI5
-        Ok05z/LZ7AM1duv1N8S1nWM0e9EpNlDk83lh2jlykIs91RqoidoyrUn5tmGYZfJtKUw6r3dKkS+X5d4H
-        zq9kajs24r1FiS7izkQJE3HnogTMshXHQpjlf+HFojQcjkzjWQczalE5Ff/b1pyIEqqxV6P3eFXoxI8m
-        ClRGQth84YzQiVI4Fy9FfT9vGEmMt23NiTjcqTsyuqNm7WzVeKtGUhnOeuwmojL1L9eFeBdRore4jSjR
-        S1wY4jQXgfrVx6TTOvXO6eqTet6dTGnH1WUPR834skcgEaOxESWwt6xhKnrmOAwGv4nnMLTvTXvVAAAA
-        AElFTkSuQmCC
-</value>
-  </data>
   <data name="tsbRemoveTab.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsbRemoveTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 24</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbRemoveTab.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -723,21 +639,11 @@
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
   </data>
-  <data name="tsbRename.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADDSURBVEhLYxgFo4AUYObg+9/M3v6nmZ3vHjM7f1sTe++9
-        YD5QHKqEdkArNJTNzMGnzsTe952pvU8NiA+Voj1Q8fBgN7P3/U9XS2GALsGLDQxuiyu65/ynNgZZjE0c
-        hKHWQiymNgBZjA0MPosPvSAfI4NRi2Fg8FlMLTD4LaY2BlmMTRyEodbSBoAshjLpC0aWxbCGAIiGCtEe
-        gC118Kk3tPd5C2oC0cVyUPCCGnemDt67zO0DbIAW76ZbY28UDDLAwAAAJ7IEeanKh7cAAAAASUVORK5C
-        YII=
-</value>
-  </data>
   <data name="tsbRename.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsbRename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 24</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbRename.Text" xml:space="preserve">
     <value>toolStripButton3</value>
@@ -745,67 +651,23 @@
   <data name="tsbRename.ToolTipText" xml:space="preserve">
     <value>Premenovať... (F2)</value>
   </data>
-  <data name="tsbFindReplace.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tsbFindReplace.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAANWSURBVEhL3ZZdSFNhGMclKLqJqJugi6C7gq6KrrrwvtJt
-        birihTciUUEEpp6d6Zl9zH05NU3Zh2fRDEvRfeCO23IdL/yoFDSxD9JIJZ2kksuFOt3eznN6CalDO0cm
-        RH/2h5dzHv6/w7P3fc7J+OeVTfj1eMkrl+o4ICP9+Soq5MulgguZV5lNMKzztAFvFtGTBzW4fPfKVvuR
-        QhOo5dcaRqWkmMXiB2yU7p9D4ekYGlnc5t03tYZa2TlU3MRGZepAhHuAHD5gtwJw3u3wd0UlM6qgwjHv
-        6xXE/f5qz/gKglpVVaCBoqh9OEqaAKzzLaF8qjOp63wjCBLyi/k4utIwEFNSgXocJU0ANvWu8vDCmn5k
-        dL8XBAkZ4AqqL3aZ8MtxnDg5Bt4dAvDvNnvEw6HtyipmUdKGawnPmIXCpBo2XDbZk4tjU6trJPJZKEiq
-        Hews4o6bB8emFpxNODJCYVIMR01Z7Z/Hsakl17g24IwKhUkxZEAWjk2tdIFfRbaQ7IZ7HcemVlpbrZXQ
-        api9pq6xpFCYFDuezyJVdciNY1MLBv61xqFvQmFSbQt9MuDY1CopGd2vogIL7vFlwTCx7p+c26ac7EEc
-        K07yCm/BJd2zBIw/odCdbuyd/mPKgW3szF0cJ07leuth0uwYKzK7tq43DfKzVwi40/eZKVSoY9E97xd+
-        xgMYx4lTRU3zEaKudbLO5V5nhidRkcW1dVEXSnhEtF3bPsG9Svt4uCQwUW8/Rhrpj01NzCbz8i1qdLk2
-        CItzQk56C+A/h9kLYxCOya8PgQ/chwC3e4sb2SjUyNQ9nfBOFg3m2ntCXUvP333qiwP0zhNfnLTQUzdr
-        7UfhPmw4GPgqbdANYxCGDBjWcC2bYFRQA7Uyjb9SFJg02U6qa20Rm7NjC6C2Ll+8zGKdgw7gEsnKIvxa
-        vBRWmd5+Wm22LdMeNgFQfXd4mzTQC7cMjuO4JP1SG+izZXpb1OzsTgLU6WMT3H+6BB3AJelXhcl6HqD1
-        j7w8tN7lTZbXtHwlzNZTuCT9IgytmaVG59rj4BACaEObLwkPQZgcZ3DJ3khteRhp6/0JBXipkV6rMNvP
-        4dt7J+7YrLYHh1Fb7yAiLc0xwmi/gG/trQgTnQNwOELQdnz5f1RGxg+J/zhwZKdKuAAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
   <data name="tsbFindReplace.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsbFindReplace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 24</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbFindReplace.Text" xml:space="preserve">
     <value>toolStripButton4</value>
   </data>
   <data name="tsbFindReplace.ToolTipText" xml:space="preserve">
-    <value>Hľadať a nahradiť...</value>
-  </data>
-  <data name="tsbReformat.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAMhSURBVEhL5ZbdT9NQGIenF954440xJmjUqIl/hVdGEQjB
-        qAnxghAG3boy4kC27oMDgyDovtptqCDgGBtCFqagiLCIhkFAIwkwvAOjhChCjApEkbXHntkqbOMjWSEm
-        Psnvomnf9znn9LQ5kn8aHFC2i5iVySOtUAi6xvW2LwRw9GBqS7pEAnfxj4sHDhwjTm8X0z82CQdCU5EE
-        xydh76sJ2NT5AhZW1i0QJfRQNknt50vEQaqjjxIGul8GahZ9gZd/5KsHYXc8Ws7TWmbkOtMhvkw8MI35
-        vLSY/lrtC4Sj5Si1jS0rUq31Q57adpgvEQ+5xnJMpqWnG/zPmHjyOl+AUZC2WUxtPcKXiAemt53IKrqx
-        8PD56xgxSn17gMFJeg4Nki8RD6nGckUNGr4Fx2PFKGhFkDxHYz7Ol4gDAGC3Qke/9XYF44pRGjm5nKTm
-        soB1H1+WOLXSjCSMtPQTwMg+GRyLK346HIK4wr4s1ZhO8mWJ4SZSr7kyTzN6HfhBUC0MUWJkHw+MrpH2
-        DE/AAlDBynUgLNVQKoykrQm9cyRtk2UsTnlKobsgAzbe80JQdovNB+Vs91BojZSgvExVrR/iehqaG/yM
-        VG+aRxuTb7V1mvJTizyqC0sL3RSEwbtw1l8VkbsaPBAAJ6vk5L7AMCctZwnaw9Tc74VyAw2dnk4WDcjV
-        0cfgBsvnnGLrKb7l5kRLhQjyMlDJZsmpFVxlWpLh1LLR2cr9y0vZGu9vqZB7D/oYmdY+zbfdmGYipRgt
-        71KPfY1UyMf267BJmQ4rVQoVeh59amh5o6UoFS0dPxUG+k2k8UasN9PVCZm14WZl8ny9PCWyeQiDo6/6
-        TmuMtJyT4jr6XQ5pOxBpvh5blbqVaZ8EKQIjqcsEt+Rdg393+rZLBTANnZlfysm5z6yyjZMaqPe5WstB
-        /nZ8EpUK5GpsWfIC63eZwTK17TONBh0OLgGwh7+Mj9jSLfEfSQvP7G2WpU2PGK+G4wlRQjfJsEeZMtuI
-        nRX3VOHOP5fkUibPjN7OXomRij3TaOLJt10qsFq+Y1IBQb4t73QzkHzHpTuDRPIL3tXRUMbvkYsAAAAA
-        SUVORK5CYII=
-</value>
+    <value>Hľadať a nahradiť... (Ctrl+F)</value>
   </data>
   <data name="tsbReformat.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsbReformat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 24</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbReformat.Text" xml:space="preserve">
     <value>toolStripButton3</value>
@@ -817,13 +679,13 @@
     <value>0, 0</value>
   </data>
   <data name="toolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 1, 3</value>
+    <value>0, 2, 1, 2</value>
   </data>
   <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>898, 33</value>
+    <value>674, 31</value>
   </data>
   <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>0</value>
   </data>
   <data name="toolStrip.Text" xml:space="preserve">
     <value>toolStrip1</value>
@@ -867,165 +729,168 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAM
-        EQAAAk1TRnQBSQFMAgEBAwEAAbABAQGwAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAI
+        EQAAAk1TRnQBSQFMAgEBAwEAAdABAQHQAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABEAMAAQEBAAEgBgABECoAAyoBQANRAaIDVgGwA0QBewMCAQMsAAMqAUADUQGiA1YBsANEAXsDAgED
         LAADKgFAA1EBogNWAbADRAF7AwIBA2QAA08BmQHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/
-        AdsBmAEBAf8B2wGYAQEB/wFkAV8BMgH7AxABFRwAA08BmQEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJ
-        ARkB5wH/AQkBGQHnAf8BCQEZAecB/wEyAU8BagH7AxABFRwAA08BmQG2ASYBmwH/AbYBJgGbAf8BtgEm
-        AZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wFfAVwBXwH7AxABFVgAAloBRQH1AdsBmAEBAf8B2wGY
-        AQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/
-        AzEBTRQAAUUBUQFaAfUBCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHn
-        Af8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8DMQFNFAADWgH1AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/
-        AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AzEBTVAAAmEBXgHi
-        AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGY
-        AQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wMQARUMAAJeAWEB4gEJARkB5wH/AQkBGQHnAf8BCQEZ
-        AecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/
-        AQkBGQHnAf8DEAEVDAABYQFeAWEB4gG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGb
-        Af8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8DEAEVSAADHAEn
-        AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGY
-        AQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AWQBXwEyAfsIAAMdASkBCQEZAecB/wEJ
-        ARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BSAFJAWIB9gEJARkB5wH/AQkBGQHn
-        Af8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BMgFPAWoB+wgAAxwBJwG2ASYBmwH/AbYBJgGbAf8BtgEm
-        AZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/
-        AbYBJgGbAf8BtgEmAZsB/wFfAVwBXwH7SAACZQFcAewB2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGY
-        AQEB/wJHAUYBgAHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHb
-        AZgBAQH/AdsBmAEBAf8DAwEEBAADXgHtAQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8DTAGQ
-        Ay0BRANWAbMDDwEUAlwBZQHsAQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8DAwEEBAADXgHt
-        AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8DQAFuA0MBdwNDAXcDQwF3AbYBJgGbAf8BtgEm
-        AZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wMDAQREAAHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHb
-        AZgBAQH/AdsBmAEBAf8CRwFGAYAB2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/
-        AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/A0UBfAQAAQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHn
-        Af8BCQEZAecB/wMHAgkBGQHnAf8BCQEZAecB/wEJARkB5wH/AlQBVgGrAQkBGQHnAf8BCQEZAecB/wEJ
-        ARkB5wH/AQkBGQHnAf8DRQF8BAABtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/
-        A0ABbgG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/
-        AbYBJgGbAf8DRQF8RAAB2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AkcBRgGA
-        AyMBMwMjATMDIwEzAdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wNWAbAEAAEJ
-        ARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8DOAFcAQkBGQHnAf8BCQEZAecB/wEJ
-        ARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wNWAbAEAAG2ASYBmwH/
-        AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8DQAFuA0MBdwNDAXcDQwF3AbYBJgGbAf8BtgEm
-        AZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wNWAbBEAAHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHb
-        AZgBAQH/AdsBmAEBAf8CRwFGAYAB2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/
-        AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/A1IBoAQAAQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHn
-        Af8BCQEZAecB/wMoATsBCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHn
-        Af8BCQEZAecB/wEJARkB5wH/A1IBoAQAAbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEm
-        AZsB/wNAAW4BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEm
-        AZsB/wG2ASYBmwH/A1IBoEQAAdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wJH
-        AUYBgAHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/
-        AdsBmAEBAf8DKgFABAABCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AwQBBQEJ
-        ARkB5wH/AQkBGQHnAf8DWgHHA0QBegEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AyoBQAQA
-        AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wNAAW4BtgEmAZsB/wG2ASYBmwH/
-        AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AyoBQEQAAlIBUQGh
-        AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8DUQGiAy0BRAMtAUQDLQFEAdsBmAEBAf8B2wGY
-        AQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wgAAlEBUgGhAQkBGQHnAf8BCQEZAecB/wEJARkB5wH/
-        AQkBGQHnAf8BCQEZAecB/wMkATUEAQFGAkcBgQEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/
-        AQkBGQHnAf8IAANSAaEBtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wNOAZQDLQFEAy0BRAMt
-        AUQBtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/TAAB2wGYAQEB/wHbAZgBAQH/
-        AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGY
-        AQEB/wHbAZgBAQH/AdsBmAEBAf8DTwGZDAABCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJ
-        ARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHn
-        Af8DTwGZDAABtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEm
-        AZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8DTwGZTAADIgExAdsBmAEB
-        Af8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHb
-        AZgBAQH/AdsBmAEBAf8CYgFIAfYQAAMiATEBCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJ
-        ARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wFIAUkBYgH2EAADIgEx
+        AdsBmAEBAf8B2wGYAQEB/wJfATIB+wMQARUcAANPAZkBCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZ
+        AecB/wEJARkB5wH/AQkBGQHnAf8BMgFTAWIB+wMQARUcAANPAZkBtgEmAZsB/wG2ASYBmwH/AbYBJgGb
+        Af8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BXwFeAV8B+wMQARVYAAJaAUkB9QHbAZgBAQH/AdsBmAEB
+        Af8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wMx
+        AU0UAAFJAVcBWgH1AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/
+        AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AzEBTRQAA1oB9QG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2
+        ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wMxAU1QAAJhAV4B4gHb
+        AZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEB
+        Af8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8DEAEVDAACXgFhAeIBCQEZAecB/wEJARkB5wH/AQkBGQHn
+        Af8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJ
+        ARkB5wH/AxABFQwAAWEBXgFhAeIBtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/
+        AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AxABFUgAAxwBJwHb
+        AZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEB
+        Af8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wJfATIB+wgAAx0BKQEJARkB5wH/AQkBGQHn
+        Af8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wFIAUkBYgH2AQkBGQHnAf8BCQEZAecB/wEJ
+        ARkB5wH/AQkBGQHnAf8BCQEZAecB/wEyAVMBYgH7CAADHAEnAbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/
         AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEm
-        AZsB/wG2ASYBmwH/AbYBJgGbAf8BYgFcAWIB9lQAAyEBMAHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHb
-        AZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8CYQFbAeQYAAMhATABCQEZAecB/wEJ
-        ARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AlsBYQHk
-        GAADIQEwAbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGb
-        Af8BtgEmAZsB/wFhAVsBYQHkYAACUgFRAaEB2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wNe
-        Ae0DHQEpJAACUQFSAaEBCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wNeAe0DHQEpJAADUgGh
-        AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8DXgHtAx0BKf8AUQABQgFNAT4HAAE+AwABKAMA
-        AUADAAEQAwABAQEAAQEFAAGAFwAD/wEAAfwBHwH8AR8B/AEfAgAB8AEHAfABBwHwAQcCAAHgAQMB4AED
-        AeABAwIAAcABAQHAAQEBwAEBAgABgAEBAYABAQGAAQECAAGAAQABgAEAAYADAAGAAQABgAEAAYADAAGA
-        AQABgAEAAYADAAGAAQABgAEAAYADAAGAAQABgAEAAYADAAGAAQEBgAEBAYABAQIAAcABAQHAAQEBwAEB
-        AgABwAEDAcABAwHAAQMCAAHgAQcB4AEHAeABBwIAAfgBDwH4AQ8B+AEPAgAG/wIACw==
+        AZsB/wG2ASYBmwH/AV8BXgFfAftIAAJlAV0B7AHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/
+        AkcBRgGAAdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEB
+        Af8B2wGYAQEB/wMDAQQEAANeAe0BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wNMAZADLQFE
+        A1YBswMPARQCXQFlAewBCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wMDAQQEAANeAe0BtgEm
+        AZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wNAAW4DQwF3A0MBdwNDAXcBtgEmAZsB/wG2ASYBmwH/
+        AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AwMBBEQAAdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEB
+        Af8B2wGYAQEB/wJHAUYBgAHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGY
+        AQEB/wHbAZgBAQH/AdsBmAEBAf8DRQF8BAABCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJ
+        ARkB5wH/AwcCCQEZAecB/wEJARkB5wH/AQkBGQHnAf8CVAFWAasBCQEZAecB/wEJARkB5wH/AQkBGQHn
+        Af8BCQEZAecB/wNFAXwEAAG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8DQAFu
+        AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEm
+        AZsB/wNFAXxEAAHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8CRwFGAYADIwEz
+        AyMBMwMjATMB2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/A1YBsAQAAQkBGQHn
+        Af8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wM4AVwBCQEZAecB/wEJARkB5wH/AQkBGQHn
+        Af8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/A1YBsAQAAbYBJgGbAf8BtgEm
+        AZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wNAAW4DQwF3A0MBdwNDAXcBtgEmAZsB/wG2ASYBmwH/
+        AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/A1YBsEQAAdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEB
+        Af8B2wGYAQEB/wJHAUYBgAHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGY
+        AQEB/wHbAZgBAQH/AdsBmAEBAf8DUgGgBAABCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJ
+        ARkB5wH/AygBOwEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJ
+        ARkB5wH/AQkBGQHnAf8DUgGgBAABtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/
+        A0ABbgG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/
+        AbYBJgGbAf8DUgGgRAAB2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AkcBRgGA
+        AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGY
+        AQEB/wMqAUAEAAEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8DBAEFAQkBGQHn
+        Af8BCQEZAecB/wNaAccDRAF6AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8DKgFABAABtgEm
+        AZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/A0ABbgG2ASYBmwH/AbYBJgGbAf8BtgEm
+        AZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8DKgFARAACUgFRAaEB2wGY
+        AQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wNRAaIDLQFEAy0BRAMtAUQB2wGYAQEB/wHbAZgBAQH/
+        AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/CAACUQFSAaEBCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZ
+        AecB/wEJARkB5wH/AyQBNQQBAUYCRwGBAQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZ
+        AecB/wgAA1IBoQG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/A04BlAMtAUQDLQFEAy0BRAG2
+        ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf9MAAHbAZgBAQH/AdsBmAEBAf8B2wGY
+        AQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/
+        AdsBmAEBAf8B2wGYAQEB/wNPAZkMAAEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHn
+        Af8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wNP
+        AZkMAAG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/
+        AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wNPAZlMAAMiATEB2wGYAQEB/wHb
+        AZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEB
+        Af8B2wGYAQEB/wJiAUgB9hAAAyIBMQEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHn
+        Af8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AUgBSQFiAfYQAAMiATEBtgEm
+        AZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/
+        AbYBJgGbAf8BtgEmAZsB/wFiAWABYgH2VAADIQEwAdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/AdsBmAEB
+        Af8B2wGYAQEB/wHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wJhAVsB5BgAAyEBMAEJARkB5wH/AQkBGQHn
+        Af8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/AQkBGQHnAf8CWwFhAeQYAAMh
+        ATABtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wG2
+        ASYBmwH/AWEBWwFhAeRgAAJSAVEBoQHbAZgBAQH/AdsBmAEBAf8B2wGYAQEB/wHbAZgBAQH/A14B7QMd
+        ASkkAAJRAVIBoQEJARkB5wH/AQkBGQHnAf8BCQEZAecB/wEJARkB5wH/A14B7QMdASkkAANSAaEBtgEm
+        AZsB/wG2ASYBmwH/AbYBJgGbAf8BtgEmAZsB/wNeAe0DHQEp/wBRAAFCAU0BPgcAAT4DAAEoAwABQAMA
+        ARADAAEBAQABAQUAAYAXAAP/AQAB/AEfAfwBHwH8AR8CAAHwAQcB8AEHAfABBwIAAeABAwHgAQMB4AED
+        AgABwAEBAcABAQHAAQECAAGAAQEBgAEBAYABAQIAAYABAAGAAQABgAMAAYABAAGAAQABgAMAAYABAAGA
+        AQABgAMAAYABAAGAAQABgAMAAYABAAGAAQABgAMAAYABAQGAAQEBgAEBAgABwAEBAcABAQHAAQECAAHA
+        AQMBwAEDAcABAwIAAeABBwHgAQcB4AEHAgAB+AEPAfgBDwH4AQ8CAAb/AgAL
 </value>
   </data>
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>702, 17</value>
   </metadata>
   <data name="tsslTabTabName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 24</value>
+    <value>43, 19</value>
   </data>
   <data name="tsslTabTabName.Text" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="toolStripStatusLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>518, 24</value>
+    <value>365, 19</value>
   </data>
   <data name="toolStripStatusLabel3.Text" xml:space="preserve">
     <value> </value>
   </data>
   <data name="tsslLenText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 24</value>
+    <value>49, 19</value>
   </data>
   <data name="tsslLenText.Text" xml:space="preserve">
     <value>Veľkosť:</value>
   </data>
   <data name="tsslLen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 24</value>
+    <value>13, 18</value>
   </data>
   <data name="tsslLen.Text" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="tsslLinesText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 24</value>
+    <value>45, 19</value>
   </data>
   <data name="tsslLinesText.Text" xml:space="preserve">
     <value>Riadky:</value>
   </data>
   <data name="tsslLines.Size" type="System.Drawing.Size, System.Drawing">
-    <value>21, 24</value>
+    <value>17, 19</value>
   </data>
   <data name="tsslLines.Text" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>21, 24</value>
+    <value>17, 19</value>
   </data>
   <data name="toolStripStatusLabel1.Text" xml:space="preserve">
     <value>R:</value>
   </data>
   <data name="tsslRow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 24</value>
+    <value>13, 18</value>
   </data>
   <data name="tsslRow.Text" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 24</value>
+    <value>16, 19</value>
   </data>
   <data name="toolStripStatusLabel2.Text" xml:space="preserve">
     <value>S:</value>
   </data>
   <data name="tsslCol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 24</value>
+    <value>13, 18</value>
   </data>
   <data name="tsslCol.Text" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="tsslPosText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 24</value>
+    <value>29, 19</value>
   </data>
   <data name="tsslPosText.Text" xml:space="preserve">
     <value>Pos:</value>
   </data>
   <data name="tsslPos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 24</value>
+    <value>13, 19</value>
   </data>
   <data name="tsslPos.Text" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 451</value>
+    <value>0, 367</value>
+  </data>
+  <data name="statusStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 10, 0</value>
   </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>898, 30</value>
+    <value>674, 24</value>
   </data>
   <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>2</value>
   </data>
   <data name="statusStrip.Text" xml:space="preserve">
     <value>statusStrip1</value>
@@ -1046,16 +911,40 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>898, 481</value>
+    <value>674, 391</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Úprava TabTab</value>
+  </data>
+  <data name="&gt;&gt;tsmiAddTabTab.Name" xml:space="preserve">
+    <value>tsmiAddTabTab</value>
+  </data>
+  <data name="&gt;&gt;tsmiAddTabTab.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiDeleteTabTab.Name" xml:space="preserve">
+    <value>tsmiDeleteTabTab</value>
+  </data>
+  <data name="&gt;&gt;tsmiDeleteTabTab.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator8.Name" xml:space="preserve">
+    <value>toolStripSeparator8</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiRenameTabTab.Name" xml:space="preserve">
+    <value>tsmiRenameTabTab</value>
+  </data>
+  <data name="&gt;&gt;tsmiRenameTabTab.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiSave.Name" xml:space="preserve">
     <value>tsmiSave</value>
@@ -1127,30 +1016,6 @@
     <value>tsmiSelectAll</value>
   </data>
   <data name="&gt;&gt;tsmiSelectAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsmiAddTabTab.Name" xml:space="preserve">
-    <value>tsmiAddTabTab</value>
-  </data>
-  <data name="&gt;&gt;tsmiAddTabTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsmiDeleteTabTab.Name" xml:space="preserve">
-    <value>tsmiDeleteTabTab</value>
-  </data>
-  <data name="&gt;&gt;tsmiDeleteTabTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator8.Name" xml:space="preserve">
-    <value>toolStripSeparator8</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsmiRenameTabTab.Name" xml:space="preserve">
-    <value>tsmiRenameTabTab</value>
-  </data>
-  <data name="&gt;&gt;tsmiRenameTabTab.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbSave.Name" xml:space="preserve">

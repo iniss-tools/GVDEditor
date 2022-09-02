@@ -39,14 +39,6 @@ namespace GVDEditor.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle1 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle2 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle3 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle4 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle5 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle6 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle7 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle8 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle9 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle10 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle11 = new ExControls.ExComboBoxStyle();
@@ -55,6 +47,14 @@ namespace GVDEditor.Forms
             ExControls.ExComboBoxStyle exComboBoxStyle14 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle15 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle16 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle1 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle2 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle3 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle4 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle5 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle6 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle7 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle8 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle17 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle18 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle19 = new ExControls.ExComboBoxStyle();
@@ -183,9 +183,9 @@ namespace GVDEditor.Forms
             this.tsbAddGVD = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbAddTrain = new System.Windows.Forms.ToolStripButton();
-            this.tsbCopyTrain = new System.Windows.Forms.ToolStripButton();
             this.tsbEditTrain = new System.Windows.Forms.ToolStripButton();
             this.tsbDeleteTrain = new System.Windows.Forms.ToolStripButton();
+            this.tsbCopyTrain = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbStanica = new System.Windows.Forms.ToolStripButton();
             this.tsbGlobalSettings = new System.Windows.Forms.ToolStripButton();
@@ -194,9 +194,7 @@ namespace GVDEditor.Forms
             this.tsbInformation = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.tscbStanica = new ExControls.ExToolStripComboBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.tscbObdobie = new ExControls.ExToolStripComboBox();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.tssbStartINISS = new System.Windows.Forms.ToolStripSplitButton();
             this.tsmiStartupSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -220,9 +218,7 @@ namespace GVDEditor.Forms
             this.dgvcKonecnaStanica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumoveObmedzenieText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LinkaOdchod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kolaj = new ExControls.DataGridViewExComboBoxColumn();
             this.trackBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Dopravca = new ExControls.DataGridViewExComboBoxColumn();
             this.operatorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Ostatne = new System.Windows.Forms.DataGridViewButtonColumn();
             this.vlakBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -264,8 +260,13 @@ namespace GVDEditor.Forms
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridViewExComboBoxColumn1 = new ExControls.DataGridViewExComboBoxColumn();
             this.dataGridViewExComboBoxColumn2 = new ExControls.DataGridViewExComboBoxColumn();
+            this.tscbStanica = new ExControls.ExToolStripComboBox();
+            this.tscbObdobie = new ExControls.ExToolStripComboBox();
+            this.Kolaj = new ExControls.DataGridViewExComboBoxColumn();
+            this.Dopravca = new ExControls.DataGridViewExComboBoxColumn();
             this.dataGridViewExComboBoxColumn3 = new ExControls.DataGridViewExComboBoxColumn();
             this.dataGridViewExComboBoxColumn4 = new ExControls.DataGridViewExComboBoxColumn();
             this.dataGridViewExComboBoxColumn5 = new ExControls.DataGridViewExComboBoxColumn();
@@ -297,6 +298,7 @@ namespace GVDEditor.Forms
             ((System.ComponentModel.ISupportInitialize)(this.operatorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vlakBindingSource)).BeginInit();
             this.statusStrip.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -334,7 +336,7 @@ namespace GVDEditor.Forms
             // tsmiNew
             // 
             resources.ApplyResources(this.tsmiNew, "tsmiNew");
-            this.tsmiNew.Image = global::GVDEditor.Properties.Resources.create;
+            this.tsmiNew.Image = global::ToolsCore.GlobalResources.create;
             this.tsmiNew.Name = "tsmiNew";
             this.tsmiNew.Click += new System.EventHandler(this.tsmiNew_Click);
             // 
@@ -345,15 +347,16 @@ namespace GVDEditor.Forms
             // 
             // tsmiOpen
             // 
-            this.tsmiOpen.Image = global::GVDEditor.Properties.Resources.open;
+            this.tsmiOpen.Image = global::ToolsCore.GlobalResources.open;
             this.tsmiOpen.Name = "tsmiOpen";
             resources.ApplyResources(this.tsmiOpen, "tsmiOpen");
             this.tsmiOpen.Click += new System.EventHandler(this.tsmiOpen_Click);
             // 
             // tsmiRecent
             // 
-            resources.ApplyResources(this.tsmiRecent, "tsmiRecent");
+            this.tsmiRecent.Image = global::ToolsCore.GlobalResources.recent_gvds;
             this.tsmiRecent.Name = "tsmiRecent";
+            resources.ApplyResources(this.tsmiRecent, "tsmiRecent");
             // 
             // toolStripSeparator4
             // 
@@ -367,7 +370,7 @@ namespace GVDEditor.Forms
             this.tsmiImportGVD,
             this.tsmiImportELIS});
             resources.ApplyResources(this.tsmiImport, "tsmiImport");
-            this.tsmiImport.Image = global::GVDEditor.Properties.Resources.import;
+            this.tsmiImport.Image = global::ToolsCore.GlobalResources.import;
             this.tsmiImport.Name = "tsmiImport";
             // 
             // tsmiImportData
@@ -396,7 +399,7 @@ namespace GVDEditor.Forms
             // tsmiSave
             // 
             resources.ApplyResources(this.tsmiSave, "tsmiSave");
-            this.tsmiSave.Image = global::GVDEditor.Properties.Resources.save;
+            this.tsmiSave.Image = global::ToolsCore.GlobalResources.save;
             this.tsmiSave.Name = "tsmiSave";
             this.tsmiSave.Click += new System.EventHandler(this.tsmiSave_Click);
             // 
@@ -408,7 +411,7 @@ namespace GVDEditor.Forms
             // tsmiAnalyze
             // 
             resources.ApplyResources(this.tsmiAnalyze, "tsmiAnalyze");
-            this.tsmiAnalyze.Image = global::GVDEditor.Properties.Resources.analyze;
+            this.tsmiAnalyze.Image = global::ToolsCore.GlobalResources.analyze;
             this.tsmiAnalyze.Name = "tsmiAnalyze";
             this.tsmiAnalyze.Click += new System.EventHandler(this.tsmiAnalyze_Click);
             // 
@@ -427,14 +430,14 @@ namespace GVDEditor.Forms
             // tsmimAddTrain
             // 
             resources.ApplyResources(this.tsmimAddTrain, "tsmimAddTrain");
-            this.tsmimAddTrain.Image = global::GVDEditor.Properties.Resources.add;
+            this.tsmimAddTrain.Image = global::ToolsCore.GlobalResources.add;
             this.tsmimAddTrain.Name = "tsmimAddTrain";
             this.tsmimAddTrain.Click += new System.EventHandler(this.tsmimAddTrain_Click);
             // 
             // tsmimEditTrain
             // 
             resources.ApplyResources(this.tsmimEditTrain, "tsmimEditTrain");
-            this.tsmimEditTrain.Image = global::GVDEditor.Properties.Resources.edit;
+            this.tsmimEditTrain.Image = global::ToolsCore.GlobalResources.edit;
             this.tsmimEditTrain.Name = "tsmimEditTrain";
             this.tsmimEditTrain.Click += new System.EventHandler(this.tsmimEditTrain_Click);
             // 
@@ -446,7 +449,7 @@ namespace GVDEditor.Forms
             // tsmiDeleteTrain
             // 
             resources.ApplyResources(this.tsmiDeleteTrain, "tsmiDeleteTrain");
-            this.tsmiDeleteTrain.Image = global::GVDEditor.Properties.Resources.delete;
+            this.tsmiDeleteTrain.Image = global::ToolsCore.GlobalResources.delete;
             this.tsmiDeleteTrain.Name = "tsmiDeleteTrain";
             this.tsmiDeleteTrain.Click += new System.EventHandler(this.tsmiDeleteTrain_Click);
             // 
@@ -458,7 +461,7 @@ namespace GVDEditor.Forms
             // tsmiDuplikovat
             // 
             resources.ApplyResources(this.tsmiDuplikovat, "tsmiDuplikovat");
-            this.tsmiDuplikovat.Image = global::GVDEditor.Properties.Resources.copy;
+            this.tsmiDuplikovat.Image = global::ToolsCore.GlobalResources.copy;
             this.tsmiDuplikovat.Name = "tsmiDuplikovat";
             this.tsmiDuplikovat.Click += new System.EventHandler(this.tsmiDuplikovat_Click);
             // 
@@ -491,6 +494,7 @@ namespace GVDEditor.Forms
             this.toolStripSeparator17,
             this.tsmiTabTabEditor});
             resources.ApplyResources(this.tsmiVlastnostiStanice, "tsmiVlastnostiStanice");
+            this.tsmiVlastnostiStanice.Image = global::ToolsCore.GlobalResources.local_settings;
             this.tsmiVlastnostiStanice.Name = "tsmiVlastnostiStanice";
             this.tsmiVlastnostiStanice.Click += new System.EventHandler(this.tsmiLocalSettings_Click);
             // 
@@ -590,7 +594,7 @@ namespace GVDEditor.Forms
             this.tsmiTypyVlakov,
             this.tsmiAudio});
             resources.ApplyResources(this.tsmiGlobalSettings, "tsmiGlobalSettings");
-            this.tsmiGlobalSettings.Image = global::GVDEditor.Properties.Resources.global_settings;
+            this.tsmiGlobalSettings.Image = global::ToolsCore.GlobalResources.global_settings;
             this.tsmiGlobalSettings.Name = "tsmiGlobalSettings";
             this.tsmiGlobalSettings.Click += new System.EventHandler(this.tsmiGlobalSettings_Click);
             // 
@@ -631,7 +635,7 @@ namespace GVDEditor.Forms
             // 
             // tsmiAppSettings
             // 
-            this.tsmiAppSettings.Image = global::GVDEditor.Properties.Resources.app_settings;
+            this.tsmiAppSettings.Image = global::ToolsCore.GlobalResources.app_settings;
             this.tsmiAppSettings.Name = "tsmiAppSettings";
             resources.ApplyResources(this.tsmiAppSettings, "tsmiAppSettings");
             this.tsmiAppSettings.Click += new System.EventHandler(this.tsmiAppSettings_Click);
@@ -645,7 +649,7 @@ namespace GVDEditor.Forms
             // 
             // tsmiDatObm
             // 
-            this.tsmiDatObm.Image = global::GVDEditor.Properties.Resources.calendar;
+            this.tsmiDatObm.Image = global::ToolsCore.GlobalResources.calendar;
             this.tsmiDatObm.Name = "tsmiDatObm";
             resources.ApplyResources(this.tsmiDatObm, "tsmiDatObm");
             this.tsmiDatObm.Click += new System.EventHandler(this.tsmiDatObm_Click);
@@ -665,7 +669,7 @@ namespace GVDEditor.Forms
             // 
             // tsmimStartupSettings
             // 
-            this.tsmimStartupSettings.Image = global::GVDEditor.Properties.Resources.wrench;
+            this.tsmimStartupSettings.Image = global::ToolsCore.GlobalResources.wrench;
             this.tsmimStartupSettings.Name = "tsmimStartupSettings";
             resources.ApplyResources(this.tsmimStartupSettings, "tsmimStartupSettings");
             this.tsmimStartupSettings.Click += new System.EventHandler(this.tsmimStartupSettings_Click);
@@ -678,28 +682,28 @@ namespace GVDEditor.Forms
             // tsmimStartINISS
             // 
             resources.ApplyResources(this.tsmimStartINISS, "tsmimStartINISS");
-            this.tsmimStartINISS.Image = global::GVDEditor.Properties.Resources.start;
+            this.tsmimStartINISS.Image = global::ToolsCore.GlobalResources.start;
             this.tsmimStartINISS.Name = "tsmimStartINISS";
             this.tsmimStartINISS.Click += new System.EventHandler(this.tsmimStartINISS_Click);
             // 
             // tsmimShutdownINISS
             // 
             resources.ApplyResources(this.tsmimShutdownINISS, "tsmimShutdownINISS");
-            this.tsmimShutdownINISS.Image = global::GVDEditor.Properties.Resources.shutdown;
+            this.tsmimShutdownINISS.Image = global::ToolsCore.GlobalResources.shutdown;
             this.tsmimShutdownINISS.Name = "tsmimShutdownINISS";
             this.tsmimShutdownINISS.Click += new System.EventHandler(this.tsmimShutdownINISS_Click);
             // 
             // tsmimKillINISS
             // 
             resources.ApplyResources(this.tsmimKillINISS, "tsmimKillINISS");
-            this.tsmimKillINISS.Image = global::GVDEditor.Properties.Resources.stop;
+            this.tsmimKillINISS.Image = global::ToolsCore.GlobalResources.stop;
             this.tsmimKillINISS.Name = "tsmimKillINISS";
             this.tsmimKillINISS.Click += new System.EventHandler(this.tsmimKillINISS_Click);
             // 
             // tsmimRestartINISS
             // 
             resources.ApplyResources(this.tsmimRestartINISS, "tsmimRestartINISS");
-            this.tsmimRestartINISS.Image = global::GVDEditor.Properties.Resources.restart;
+            this.tsmimRestartINISS.Image = global::ToolsCore.GlobalResources.restart;
             this.tsmimRestartINISS.Name = "tsmimRestartINISS";
             this.tsmimRestartINISS.Click += new System.EventHandler(this.tsmimRestartINISS_Click);
             // 
@@ -718,7 +722,7 @@ namespace GVDEditor.Forms
             // 
             // tsmiInformation
             // 
-            this.tsmiInformation.Image = global::GVDEditor.Properties.Resources.info_app;
+            this.tsmiInformation.Image = global::ToolsCore.GlobalResources.info_app;
             this.tsmiInformation.Name = "tsmiInformation";
             resources.ApplyResources(this.tsmiInformation, "tsmiInformation");
             this.tsmiInformation.Click += new System.EventHandler(this.tsmiInformation_Click);
@@ -742,9 +746,9 @@ namespace GVDEditor.Forms
             this.tsbAddGVD,
             this.toolStripSeparator12,
             this.tsbAddTrain,
-            this.tsbCopyTrain,
             this.tsbEditTrain,
             this.tsbDeleteTrain,
+            this.tsbCopyTrain,
             this.toolStripSeparator10,
             this.tsbStanica,
             this.tsbGlobalSettings,
@@ -770,14 +774,14 @@ namespace GVDEditor.Forms
             // 
             this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.tsbSave, "tsbSave");
-            this.tsbSave.Image = global::GVDEditor.Properties.Resources.save;
+            this.tsbSave.Image = global::ToolsCore.GlobalResources.save;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // tsbOpen
             // 
             this.tsbOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbOpen.Image = global::GVDEditor.Properties.Resources.open;
+            this.tsbOpen.Image = global::ToolsCore.GlobalResources.open;
             resources.ApplyResources(this.tsbOpen, "tsbOpen");
             this.tsbOpen.Name = "tsbOpen";
             this.tsbOpen.Click += new System.EventHandler(this.tsbOpen_Click);
@@ -790,7 +794,7 @@ namespace GVDEditor.Forms
             this.tsmimImportGVD,
             this.tsmimImportELIS});
             resources.ApplyResources(this.tsbImport, "tsbImport");
-            this.tsbImport.Image = global::GVDEditor.Properties.Resources.import;
+            this.tsbImport.Image = global::ToolsCore.GlobalResources.import;
             this.tsbImport.Name = "tsbImport";
             // 
             // tsmimImportData
@@ -814,6 +818,7 @@ namespace GVDEditor.Forms
             // tssbRecentDirs
             // 
             this.tssbRecentDirs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tssbRecentDirs.Image = global::ToolsCore.GlobalResources.recent_gvds;
             resources.ApplyResources(this.tssbRecentDirs, "tssbRecentDirs");
             this.tssbRecentDirs.Name = "tssbRecentDirs";
             // 
@@ -821,7 +826,7 @@ namespace GVDEditor.Forms
             // 
             this.tsbAnalyze.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.tsbAnalyze, "tsbAnalyze");
-            this.tsbAnalyze.Image = global::GVDEditor.Properties.Resources.analyze;
+            this.tsbAnalyze.Image = global::ToolsCore.GlobalResources.analyze;
             this.tsbAnalyze.Name = "tsbAnalyze";
             this.tsbAnalyze.Click += new System.EventHandler(this.tsbAnalyze_Click);
             // 
@@ -829,7 +834,7 @@ namespace GVDEditor.Forms
             // 
             this.tsbAddGVD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.tsbAddGVD, "tsbAddGVD");
-            this.tsbAddGVD.Image = global::GVDEditor.Properties.Resources.create;
+            this.tsbAddGVD.Image = global::ToolsCore.GlobalResources.create;
             this.tsbAddGVD.Name = "tsbAddGVD";
             this.tsbAddGVD.Click += new System.EventHandler(this.tsbAddGVD_Click);
             // 
@@ -842,23 +847,15 @@ namespace GVDEditor.Forms
             // 
             this.tsbAddTrain.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.tsbAddTrain, "tsbAddTrain");
-            this.tsbAddTrain.Image = global::GVDEditor.Properties.Resources.add;
+            this.tsbAddTrain.Image = global::ToolsCore.GlobalResources.add;
             this.tsbAddTrain.Name = "tsbAddTrain";
             this.tsbAddTrain.Click += new System.EventHandler(this.tsbAddTrain_Click);
-            // 
-            // tsbCopyTrain
-            // 
-            this.tsbCopyTrain.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.tsbCopyTrain, "tsbCopyTrain");
-            this.tsbCopyTrain.Image = global::GVDEditor.Properties.Resources.copy;
-            this.tsbCopyTrain.Name = "tsbCopyTrain";
-            this.tsbCopyTrain.Click += new System.EventHandler(this.tsbCopyTrain_Click);
             // 
             // tsbEditTrain
             // 
             this.tsbEditTrain.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.tsbEditTrain, "tsbEditTrain");
-            this.tsbEditTrain.Image = global::GVDEditor.Properties.Resources.edit;
+            this.tsbEditTrain.Image = global::ToolsCore.GlobalResources.edit;
             this.tsbEditTrain.Name = "tsbEditTrain";
             this.tsbEditTrain.Click += new System.EventHandler(this.tsbEditTrain_Click);
             // 
@@ -866,9 +863,17 @@ namespace GVDEditor.Forms
             // 
             this.tsbDeleteTrain.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.tsbDeleteTrain, "tsbDeleteTrain");
-            this.tsbDeleteTrain.Image = global::GVDEditor.Properties.Resources.delete;
+            this.tsbDeleteTrain.Image = global::ToolsCore.GlobalResources.delete;
             this.tsbDeleteTrain.Name = "tsbDeleteTrain";
             this.tsbDeleteTrain.Click += new System.EventHandler(this.tsbDeleteTrain_Click);
+            // 
+            // tsbCopyTrain
+            // 
+            this.tsbCopyTrain.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.tsbCopyTrain, "tsbCopyTrain");
+            this.tsbCopyTrain.Image = global::ToolsCore.GlobalResources.copy;
+            this.tsbCopyTrain.Name = "tsbCopyTrain";
+            this.tsbCopyTrain.Click += new System.EventHandler(this.tsbCopyTrain_Click);
             // 
             // toolStripSeparator10
             // 
@@ -879,6 +884,7 @@ namespace GVDEditor.Forms
             // 
             this.tsbStanica.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.tsbStanica, "tsbStanica");
+            this.tsbStanica.Image = global::ToolsCore.GlobalResources.local_settings;
             this.tsbStanica.Name = "tsbStanica";
             this.tsbStanica.Click += new System.EventHandler(this.tsbLocalSettings_Click);
             // 
@@ -886,7 +892,7 @@ namespace GVDEditor.Forms
             // 
             this.tsbGlobalSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.tsbGlobalSettings, "tsbGlobalSettings");
-            this.tsbGlobalSettings.Image = global::GVDEditor.Properties.Resources.global_settings;
+            this.tsbGlobalSettings.Image = global::ToolsCore.GlobalResources.global_settings;
             this.tsbGlobalSettings.Name = "tsbGlobalSettings";
             this.tsbGlobalSettings.Click += new System.EventHandler(this.tsbGlobalSettings_Click);
             // 
@@ -898,6 +904,7 @@ namespace GVDEditor.Forms
             // tsbAppSettings
             // 
             this.tsbAppSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbAppSettings.Image = global::ToolsCore.GlobalResources.app_settings;
             resources.ApplyResources(this.tsbAppSettings, "tsbAppSettings");
             this.tsbAppSettings.Name = "tsbAppSettings";
             this.tsbAppSettings.Click += new System.EventHandler(this.tsbAppSettings_Click);
@@ -905,7 +912,7 @@ namespace GVDEditor.Forms
             // tsbInformation
             // 
             this.tsbInformation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbInformation.Image = global::GVDEditor.Properties.Resources.info_app;
+            this.tsbInformation.Image = global::ToolsCore.GlobalResources.info_app;
             resources.ApplyResources(this.tsbInformation, "tsbInformation");
             this.tsbInformation.Name = "tsbInformation";
             this.tsbInformation.Click += new System.EventHandler(this.tsbInformation_Click);
@@ -921,29 +928,11 @@ namespace GVDEditor.Forms
             this.toolStripLabel1.Name = "toolStripLabel1";
             resources.ApplyResources(this.toolStripLabel1, "toolStripLabel1");
             // 
-            // tscbStanica
-            // 
-            this.tscbStanica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tscbStanica.DropDownWidth = 200;
-            resources.ApplyResources(this.tscbStanica, "tscbStanica");
-            this.tscbStanica.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
-            this.tscbStanica.Name = "tscbStanica";
-            this.tscbStanica.SelectedIndexChanged += new System.EventHandler(this.tscbStanica_SelectedIndexChanged);
-            // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Margin = new System.Windows.Forms.Padding(0);
             this.toolStripLabel2.Name = "toolStripLabel2";
             resources.ApplyResources(this.toolStripLabel2, "toolStripLabel2");
-            // 
-            // tscbObdobie
-            // 
-            this.tscbObdobie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tscbObdobie.DropDownWidth = 150;
-            resources.ApplyResources(this.tscbObdobie, "tscbObdobie");
-            this.tscbObdobie.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.tscbObdobie.Name = "tscbObdobie";
-            this.tscbObdobie.SelectedIndexChanged += new System.EventHandler(this.tscbObdobie_SelectedIndexChanged);
             // 
             // toolStripSeparator7
             // 
@@ -956,12 +945,13 @@ namespace GVDEditor.Forms
             this.tsmiStartupSettings,
             this.toolStripSeparator8});
             resources.ApplyResources(this.tssbStartINISS, "tssbStartINISS");
+            this.tssbStartINISS.Image = global::ToolsCore.GlobalResources.start;
             this.tssbStartINISS.Name = "tssbStartINISS";
             this.tssbStartINISS.ButtonClick += new System.EventHandler(this.tssbStartINISS_ButtonClick);
             // 
             // tsmiStartupSettings
             // 
-            this.tsmiStartupSettings.Image = global::GVDEditor.Properties.Resources.wrench;
+            this.tsmiStartupSettings.Image = global::ToolsCore.GlobalResources.wrench;
             this.tsmiStartupSettings.Name = "tsmiStartupSettings";
             resources.ApplyResources(this.tsmiStartupSettings, "tsmiStartupSettings");
             this.tsmiStartupSettings.Click += new System.EventHandler(this.tsmiStartupSettings_Click);
@@ -975,7 +965,7 @@ namespace GVDEditor.Forms
             // 
             this.tsbKillINISS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.tsbKillINISS, "tsbKillINISS");
-            this.tsbKillINISS.Image = global::GVDEditor.Properties.Resources.stop;
+            this.tsbKillINISS.Image = global::ToolsCore.GlobalResources.stop;
             this.tsbKillINISS.Name = "tsbKillINISS";
             this.tsbKillINISS.Click += new System.EventHandler(this.tsbKillINISS_Click);
             // 
@@ -983,7 +973,7 @@ namespace GVDEditor.Forms
             // 
             this.tsbShutdownINISS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.tsbShutdownINISS, "tsbShutdownINISS");
-            this.tsbShutdownINISS.Image = global::GVDEditor.Properties.Resources.shutdown;
+            this.tsbShutdownINISS.Image = global::ToolsCore.GlobalResources.shutdown;
             this.tsbShutdownINISS.Name = "tsbShutdownINISS";
             this.tsbShutdownINISS.Click += new System.EventHandler(this.tsbShutdownINISS_Click);
             // 
@@ -991,7 +981,7 @@ namespace GVDEditor.Forms
             // 
             this.tsbRestartINISS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.tsbRestartINISS, "tsbRestartINISS");
-            this.tsbRestartINISS.Image = global::GVDEditor.Properties.Resources.restart;
+            this.tsbRestartINISS.Image = global::ToolsCore.GlobalResources.restart;
             this.tsbRestartINISS.Name = "tsbRestartINISS";
             this.tsbRestartINISS.Click += new System.EventHandler(this.tsbRestartINISS_Click);
             // 
@@ -1003,7 +993,7 @@ namespace GVDEditor.Forms
             // tsbDatObm
             // 
             this.tsbDatObm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbDatObm.Image = global::GVDEditor.Properties.Resources.calendar;
+            this.tsbDatObm.Image = global::ToolsCore.GlobalResources.calendar;
             resources.ApplyResources(this.tsbDatObm, "tsbDatObm");
             this.tsbDatObm.Name = "tsbDatObm";
             this.tsbDatObm.Click += new System.EventHandler(this.tsbDatObm_Click);
@@ -1150,93 +1140,9 @@ namespace GVDEditor.Forms
             resources.ApplyResources(this.LinkaOdchod, "LinkaOdchod");
             this.LinkaOdchod.Name = "LinkaOdchod";
             // 
-            // Kolaj
-            // 
-            this.Kolaj.DataPropertyName = "Track";
-            this.Kolaj.DataSource = this.trackBindingSource;
-            this.Kolaj.DisplayMember = "Key";
-            this.Kolaj.DropDownSelectedBackColor = System.Drawing.SystemColors.Highlight;
-            resources.ApplyResources(this.Kolaj, "Kolaj");
-            this.Kolaj.Name = "Kolaj";
-            exComboBoxStyle1.ArrowColor = null;
-            exComboBoxStyle1.BackColor = null;
-            exComboBoxStyle1.BorderColor = null;
-            exComboBoxStyle1.ButtonBackColor = null;
-            exComboBoxStyle1.ButtonBorderColor = null;
-            exComboBoxStyle1.ButtonRenderFirst = null;
-            exComboBoxStyle1.ForeColor = null;
-            this.Kolaj.StyleDisabled = exComboBoxStyle1;
-            exComboBoxStyle2.ArrowColor = null;
-            exComboBoxStyle2.BackColor = null;
-            exComboBoxStyle2.BorderColor = null;
-            exComboBoxStyle2.ButtonBackColor = null;
-            exComboBoxStyle2.ButtonBorderColor = null;
-            exComboBoxStyle2.ButtonRenderFirst = null;
-            exComboBoxStyle2.ForeColor = null;
-            this.Kolaj.StyleHighlight = exComboBoxStyle2;
-            exComboBoxStyle3.ArrowColor = null;
-            exComboBoxStyle3.BackColor = null;
-            exComboBoxStyle3.BorderColor = null;
-            exComboBoxStyle3.ButtonBackColor = null;
-            exComboBoxStyle3.ButtonBorderColor = System.Drawing.Color.White;
-            exComboBoxStyle3.ButtonRenderFirst = true;
-            exComboBoxStyle3.ForeColor = null;
-            this.Kolaj.StyleNormal = exComboBoxStyle3;
-            exComboBoxStyle4.ArrowColor = null;
-            exComboBoxStyle4.BackColor = null;
-            exComboBoxStyle4.BorderColor = null;
-            exComboBoxStyle4.ButtonBackColor = null;
-            exComboBoxStyle4.ButtonBorderColor = null;
-            exComboBoxStyle4.ButtonRenderFirst = null;
-            exComboBoxStyle4.ForeColor = null;
-            this.Kolaj.StyleSelected = exComboBoxStyle4;
-            this.Kolaj.ValueMember = "This";
-            // 
             // trackBindingSource
             // 
             this.trackBindingSource.DataSource = typeof(GVDEditor.Entities.Track);
-            // 
-            // Dopravca
-            // 
-            this.Dopravca.DataPropertyName = "Operator";
-            this.Dopravca.DataSource = this.operatorBindingSource;
-            this.Dopravca.DisplayMember = "Name";
-            this.Dopravca.DropDownSelectedBackColor = System.Drawing.SystemColors.Highlight;
-            resources.ApplyResources(this.Dopravca, "Dopravca");
-            this.Dopravca.Name = "Dopravca";
-            exComboBoxStyle5.ArrowColor = null;
-            exComboBoxStyle5.BackColor = null;
-            exComboBoxStyle5.BorderColor = null;
-            exComboBoxStyle5.ButtonBackColor = null;
-            exComboBoxStyle5.ButtonBorderColor = null;
-            exComboBoxStyle5.ButtonRenderFirst = null;
-            exComboBoxStyle5.ForeColor = null;
-            this.Dopravca.StyleDisabled = exComboBoxStyle5;
-            exComboBoxStyle6.ArrowColor = null;
-            exComboBoxStyle6.BackColor = null;
-            exComboBoxStyle6.BorderColor = null;
-            exComboBoxStyle6.ButtonBackColor = null;
-            exComboBoxStyle6.ButtonBorderColor = null;
-            exComboBoxStyle6.ButtonRenderFirst = null;
-            exComboBoxStyle6.ForeColor = null;
-            this.Dopravca.StyleHighlight = exComboBoxStyle6;
-            exComboBoxStyle7.ArrowColor = null;
-            exComboBoxStyle7.BackColor = null;
-            exComboBoxStyle7.BorderColor = null;
-            exComboBoxStyle7.ButtonBackColor = null;
-            exComboBoxStyle7.ButtonBorderColor = System.Drawing.Color.White;
-            exComboBoxStyle7.ButtonRenderFirst = true;
-            exComboBoxStyle7.ForeColor = null;
-            this.Dopravca.StyleNormal = exComboBoxStyle7;
-            exComboBoxStyle8.ArrowColor = null;
-            exComboBoxStyle8.BackColor = null;
-            exComboBoxStyle8.BorderColor = null;
-            exComboBoxStyle8.ButtonBackColor = null;
-            exComboBoxStyle8.ButtonBorderColor = null;
-            exComboBoxStyle8.ButtonRenderFirst = null;
-            exComboBoxStyle8.ForeColor = null;
-            this.Dopravca.StyleSelected = exComboBoxStyle8;
-            this.Dopravca.ValueMember = "This";
             // 
             // operatorBindingSource
             // 
@@ -1247,7 +1153,7 @@ namespace GVDEditor.Forms
             this.Ostatne.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             resources.ApplyResources(this.Ostatne, "Ostatne");
             this.Ostatne.Name = "Ostatne";
-            this.Ostatne.Text = global::GVDEditor.Properties.Resources.REdit;
+            this.Ostatne.Text = "Upraviť";
             this.Ostatne.UseColumnTextForButtonValue = true;
             // 
             // vlakBindingSource
@@ -1514,6 +1420,12 @@ namespace GVDEditor.Forms
             this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
             this.dataGridViewTextBoxColumn28.ReadOnly = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgvTrains);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
             // dataGridViewExComboBoxColumn1
             // 
             this.dataGridViewExComboBoxColumn1.DataPropertyName = "Track";
@@ -1597,6 +1509,108 @@ namespace GVDEditor.Forms
             exComboBoxStyle16.ForeColor = null;
             this.dataGridViewExComboBoxColumn2.StyleSelected = exComboBoxStyle16;
             this.dataGridViewExComboBoxColumn2.ValueMember = "This";
+            // 
+            // tscbStanica
+            // 
+            this.tscbStanica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tscbStanica.DropDownWidth = 200;
+            resources.ApplyResources(this.tscbStanica, "tscbStanica");
+            this.tscbStanica.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
+            this.tscbStanica.Name = "tscbStanica";
+            this.tscbStanica.SelectedIndexChanged += new System.EventHandler(this.tscbStanica_SelectedIndexChanged);
+            // 
+            // tscbObdobie
+            // 
+            this.tscbObdobie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tscbObdobie.DropDownWidth = 150;
+            resources.ApplyResources(this.tscbObdobie, "tscbObdobie");
+            this.tscbObdobie.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.tscbObdobie.Name = "tscbObdobie";
+            this.tscbObdobie.SelectedIndexChanged += new System.EventHandler(this.tscbObdobie_SelectedIndexChanged);
+            // 
+            // Kolaj
+            // 
+            this.Kolaj.DataPropertyName = "Track";
+            this.Kolaj.DataSource = this.trackBindingSource;
+            this.Kolaj.DisplayMember = "Key";
+            this.Kolaj.DropDownSelectedBackColor = System.Drawing.SystemColors.Highlight;
+            resources.ApplyResources(this.Kolaj, "Kolaj");
+            this.Kolaj.Name = "Kolaj";
+            exComboBoxStyle1.ArrowColor = null;
+            exComboBoxStyle1.BackColor = null;
+            exComboBoxStyle1.BorderColor = null;
+            exComboBoxStyle1.ButtonBackColor = null;
+            exComboBoxStyle1.ButtonBorderColor = null;
+            exComboBoxStyle1.ButtonRenderFirst = null;
+            exComboBoxStyle1.ForeColor = null;
+            this.Kolaj.StyleDisabled = exComboBoxStyle1;
+            exComboBoxStyle2.ArrowColor = null;
+            exComboBoxStyle2.BackColor = null;
+            exComboBoxStyle2.BorderColor = null;
+            exComboBoxStyle2.ButtonBackColor = null;
+            exComboBoxStyle2.ButtonBorderColor = null;
+            exComboBoxStyle2.ButtonRenderFirst = null;
+            exComboBoxStyle2.ForeColor = null;
+            this.Kolaj.StyleHighlight = exComboBoxStyle2;
+            exComboBoxStyle3.ArrowColor = null;
+            exComboBoxStyle3.BackColor = null;
+            exComboBoxStyle3.BorderColor = null;
+            exComboBoxStyle3.ButtonBackColor = null;
+            exComboBoxStyle3.ButtonBorderColor = System.Drawing.Color.White;
+            exComboBoxStyle3.ButtonRenderFirst = true;
+            exComboBoxStyle3.ForeColor = null;
+            this.Kolaj.StyleNormal = exComboBoxStyle3;
+            exComboBoxStyle4.ArrowColor = null;
+            exComboBoxStyle4.BackColor = null;
+            exComboBoxStyle4.BorderColor = null;
+            exComboBoxStyle4.ButtonBackColor = null;
+            exComboBoxStyle4.ButtonBorderColor = null;
+            exComboBoxStyle4.ButtonRenderFirst = null;
+            exComboBoxStyle4.ForeColor = null;
+            this.Kolaj.StyleSelected = exComboBoxStyle4;
+            this.Kolaj.ValueMember = "This";
+            // 
+            // Dopravca
+            // 
+            this.Dopravca.DataPropertyName = "Operator";
+            this.Dopravca.DataSource = this.operatorBindingSource;
+            this.Dopravca.DisplayMember = "Name";
+            this.Dopravca.DropDownSelectedBackColor = System.Drawing.SystemColors.Highlight;
+            resources.ApplyResources(this.Dopravca, "Dopravca");
+            this.Dopravca.Name = "Dopravca";
+            exComboBoxStyle5.ArrowColor = null;
+            exComboBoxStyle5.BackColor = null;
+            exComboBoxStyle5.BorderColor = null;
+            exComboBoxStyle5.ButtonBackColor = null;
+            exComboBoxStyle5.ButtonBorderColor = null;
+            exComboBoxStyle5.ButtonRenderFirst = null;
+            exComboBoxStyle5.ForeColor = null;
+            this.Dopravca.StyleDisabled = exComboBoxStyle5;
+            exComboBoxStyle6.ArrowColor = null;
+            exComboBoxStyle6.BackColor = null;
+            exComboBoxStyle6.BorderColor = null;
+            exComboBoxStyle6.ButtonBackColor = null;
+            exComboBoxStyle6.ButtonBorderColor = null;
+            exComboBoxStyle6.ButtonRenderFirst = null;
+            exComboBoxStyle6.ForeColor = null;
+            this.Dopravca.StyleHighlight = exComboBoxStyle6;
+            exComboBoxStyle7.ArrowColor = null;
+            exComboBoxStyle7.BackColor = null;
+            exComboBoxStyle7.BorderColor = null;
+            exComboBoxStyle7.ButtonBackColor = null;
+            exComboBoxStyle7.ButtonBorderColor = System.Drawing.Color.White;
+            exComboBoxStyle7.ButtonRenderFirst = true;
+            exComboBoxStyle7.ForeColor = null;
+            this.Dopravca.StyleNormal = exComboBoxStyle7;
+            exComboBoxStyle8.ArrowColor = null;
+            exComboBoxStyle8.BackColor = null;
+            exComboBoxStyle8.BorderColor = null;
+            exComboBoxStyle8.ButtonBackColor = null;
+            exComboBoxStyle8.ButtonBorderColor = null;
+            exComboBoxStyle8.ButtonRenderFirst = null;
+            exComboBoxStyle8.ForeColor = null;
+            this.Dopravca.StyleSelected = exComboBoxStyle8;
+            this.Dopravca.ValueMember = "This";
             // 
             // dataGridViewExComboBoxColumn3
             // 
@@ -2228,7 +2242,7 @@ namespace GVDEditor.Forms
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dgvTrains);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolMenu);
             this.Controls.Add(this.mainMenu);
             this.Controls.Add(this.statusStrip);
@@ -2236,6 +2250,7 @@ namespace GVDEditor.Forms
             this.Name = "FMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.FMain_Load);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.toolMenu.ResumeLayout(false);
@@ -2246,6 +2261,7 @@ namespace GVDEditor.Forms
             ((System.ComponentModel.ISupportInitialize)(this.vlakBindingSource)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2431,6 +2447,7 @@ namespace GVDEditor.Forms
         private ToolStripMenuItem tsmiDatObm;
         private ToolStripSeparator toolStripSeparator19;
         private ToolStripButton tsbDatObm;
+        private Panel panel1;
     }
 }
 

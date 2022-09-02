@@ -23,8 +23,7 @@ public partial class FDateLimitEdit : Form
     public FDateLimitEdit(Train thisConflict, string original, DateTime platnostOd, DateTime platnostDo)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         ThisTrain = thisConflict;
         PlatnostOd = platnostOd;

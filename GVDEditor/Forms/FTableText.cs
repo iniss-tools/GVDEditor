@@ -32,8 +32,7 @@ public partial class FTableText : Form
     public FTableText(TableText tableText, IReadOnlyCollection<TableCatalog> catalogs, GVDInfo gvd, int row)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         ThisTableText = tableText;
         this.gvd = gvd;

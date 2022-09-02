@@ -25,8 +25,7 @@ public partial class FTablePhysical : Form
     public FTablePhysical(TablePhysical table, BindingList<TableCatalog> catalogs, bool copy = false)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         ThisTable = table;
         this.copy = copy;

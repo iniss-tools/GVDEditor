@@ -16,9 +16,7 @@ public partial class FELISOptions : Form
     public FELISOptions()
     {
         InitializeComponent();
-
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
     }
 
     private void bBrowse_Click(object sender, EventArgs e)

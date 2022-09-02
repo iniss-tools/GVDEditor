@@ -34,20 +34,20 @@ namespace GVDEditor.Forms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FTableColumnOrder));
             this.bSave = new ExControls.ExButton();
-            this.groupBox1 = new ExGroupBox();
-            this.nudTypeCountLines = new ExNumericUpDown();
+            this.groupBox1 = new ExControls.ExGroupBox();
+            this.nudTypeCountLines = new ExControls.ExNumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.cbViewMode = new ExComboBox();
+            this.cbViewMode = new ExControls.ExComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbViewType = new ExComboBox();
+            this.cbViewType = new ExControls.ExComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new ExGroupBox();
+            this.groupBox2 = new ExControls.ExGroupBox();
             this.bSetForAll = new ExControls.ExButton();
             this.label4 = new System.Windows.Forms.Label();
             this.bDelete = new ExControls.ExButton();
             this.bAdd = new ExControls.ExButton();
             this.listOrder = new System.Windows.Forms.ListBox();
-            this.tableItemBindingSource = new System.Windows.Forms.BindingSource();
+            this.tableItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.listColumns = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
@@ -77,8 +77,10 @@ namespace GVDEditor.Forms
             // 
             // nudTypeCountLines
             // 
+            this.nudTypeCountLines.HighlightColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.nudTypeCountLines, "nudTypeCountLines");
             this.nudTypeCountLines.Name = "nudTypeCountLines";
+            this.nudTypeCountLines.SelectedButtonColor = System.Drawing.SystemColors.Highlight;
             this.nudTypeCountLines.Value = new decimal(new int[] {
             1,
             0,
@@ -92,10 +94,12 @@ namespace GVDEditor.Forms
             // 
             // cbViewMode
             // 
+            this.cbViewMode.DropDownSelectedRowBackColor = System.Drawing.SystemColors.Highlight;
             this.cbViewMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbViewMode.FormattingEnabled = true;
             resources.ApplyResources(this.cbViewMode, "cbViewMode");
             this.cbViewMode.Name = "cbViewMode";
+            this.cbViewMode.UseDarkScrollBar = false;
             this.cbViewMode.SelectedIndexChanged += new System.EventHandler(this.cbViewMode_SelectedIndexChanged);
             // 
             // label2
@@ -105,10 +109,12 @@ namespace GVDEditor.Forms
             // 
             // cbViewType
             // 
+            this.cbViewType.DropDownSelectedRowBackColor = System.Drawing.SystemColors.Highlight;
             this.cbViewType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbViewType.FormattingEnabled = true;
             resources.ApplyResources(this.cbViewType, "cbViewType");
             this.cbViewType.Name = "cbViewType";
+            this.cbViewType.UseDarkScrollBar = false;
             this.cbViewType.SelectedIndexChanged += new System.EventHandler(this.cbViewType_SelectedIndexChanged);
             // 
             // label1

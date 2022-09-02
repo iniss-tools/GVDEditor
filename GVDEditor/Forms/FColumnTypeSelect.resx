@@ -126,13 +126,17 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 3</value>
+    <value>182, 2</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bStorno.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 33</value>
+    <value>56, 27</value>
   </data>
   <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="bStorno.Text" xml:space="preserve">
     <value>Zrušiť</value>
@@ -141,7 +145,7 @@
     <value>bStorno</value>
   </data>
   <data name="&gt;&gt;bStorno.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bStorno.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -153,13 +157,16 @@
     <value>True</value>
   </data>
   <data name="bOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 3</value>
+    <value>122, 2</value>
+  </data>
+  <data name="bOK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 33</value>
+    <value>56, 27</value>
   </data>
   <data name="bOK.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="bOK.Text" xml:space="preserve">
     <value>OK</value>
@@ -168,7 +175,7 @@
     <value>bOK</value>
   </data>
   <data name="&gt;&gt;bOK.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bOK.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -180,17 +187,16 @@
     <value>True</value>
   </data>
   <data name="bDontImport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 3</value>
+    <value>9, 2</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="bDontImport.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 40, 3</value>
+    <value>2, 2, 30, 2</value>
   </data>
   <data name="bDontImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 33</value>
+    <value>81, 27</value>
   </data>
   <data name="bDontImport.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="bDontImport.Text" xml:space="preserve">
     <value>Neimportovať</value>
@@ -199,7 +205,7 @@
     <value>bDontImport</value>
   </data>
   <data name="&gt;&gt;bDontImport.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bDontImport.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -214,16 +220,19 @@
     <value>RightToLeft</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 321</value>
+    <value>0, 268</value>
+  </data>
+  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="flowLayoutPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 10, 5</value>
+    <value>8, 0, 8, 4</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 44</value>
+    <value>256, 35</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -244,13 +253,16 @@
     <value>True</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
+    <value>2, 0</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 0, 10</value>
+    <value>8, 8, 0, 8</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 37</value>
+    <value>77, 29</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -276,11 +288,14 @@
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 37</value>
+    <value>256, 29</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -297,14 +312,14 @@
   <data name="listColumnTypes.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="listColumnTypes.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
   <data name="listColumnTypes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 10</value>
+    <value>8, 8</value>
+  </data>
+  <data name="listColumnTypes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="listColumnTypes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>319, 264</value>
+    <value>240, 223</value>
   </data>
   <data name="listColumnTypes.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -325,16 +340,19 @@
     <value>Fill</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 37</value>
+    <value>0, 29</value>
+  </data>
+  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
+    <value>8, 8, 8, 8</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 284</value>
+    <value>256, 239</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;panel1.Name" xml:space="preserve">
     <value>panel1</value>
@@ -352,13 +370,16 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>339, 365</value>
+    <value>256, 303</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>357, 412</value>
+    <value>272, 342</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Stĺpec</value>

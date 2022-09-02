@@ -19,8 +19,7 @@ public partial class FAnalyzer : Form
     public FAnalyzer(GVDDirectory gvd)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
         GVD = gvd;
     }
 

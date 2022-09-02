@@ -30,12 +30,7 @@ namespace GVDEditor.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FTablePhysical));
-            ExControls.ExComboBoxStyle exComboBoxStyle1 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle2 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle3 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle4 = new ExControls.ExComboBoxStyle();
             this.bSave = new ExControls.ExButton();
             this.bStorno = new ExControls.ExButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -213,38 +208,35 @@ namespace GVDEditor.Forms
             this.cbCatalogTable.FormattingEnabled = true;
             resources.ApplyResources(this.cbCatalogTable, "cbCatalogTable");
             this.cbCatalogTable.Name = "cbCatalogTable";
-            exComboBoxStyle1.ArrowColor = null;
-            exComboBoxStyle1.BackColor = null;
-            exComboBoxStyle1.BorderColor = null;
-            exComboBoxStyle1.ButtonBackColor = null;
-            exComboBoxStyle1.ButtonBorderColor = null;
-            exComboBoxStyle1.ButtonRenderFirst = null;
-            exComboBoxStyle1.ForeColor = null;
-            this.cbCatalogTable.StyleDisabled = exComboBoxStyle1;
-            exComboBoxStyle2.ArrowColor = null;
-            exComboBoxStyle2.BackColor = null;
-            exComboBoxStyle2.BorderColor = null;
-            exComboBoxStyle2.ButtonBackColor = null;
-            exComboBoxStyle2.ButtonBorderColor = null;
-            exComboBoxStyle2.ButtonRenderFirst = null;
-            exComboBoxStyle2.ForeColor = null;
-            this.cbCatalogTable.StyleHighlight = exComboBoxStyle2;
-            exComboBoxStyle3.ArrowColor = null;
-            exComboBoxStyle3.BackColor = null;
-            exComboBoxStyle3.BorderColor = null;
-            exComboBoxStyle3.ButtonBackColor = null;
-            exComboBoxStyle3.ButtonBorderColor = null;
-            exComboBoxStyle3.ButtonRenderFirst = null;
-            exComboBoxStyle3.ForeColor = null;
-            this.cbCatalogTable.StyleNormal = exComboBoxStyle3;
-            exComboBoxStyle4.ArrowColor = null;
-            exComboBoxStyle4.BackColor = null;
-            exComboBoxStyle4.BorderColor = null;
-            exComboBoxStyle4.ButtonBackColor = null;
-            exComboBoxStyle4.ButtonBorderColor = null;
-            exComboBoxStyle4.ButtonRenderFirst = null;
-            exComboBoxStyle4.ForeColor = null;
-            this.cbCatalogTable.StyleSelected = exComboBoxStyle4;
+            this.cbCatalogTable.StyleDisabled.ArrowColor = null;
+            this.cbCatalogTable.StyleDisabled.BackColor = null;
+            this.cbCatalogTable.StyleDisabled.BorderColor = null;
+            this.cbCatalogTable.StyleDisabled.ButtonBackColor = null;
+            this.cbCatalogTable.StyleDisabled.ButtonBorderColor = null;
+            this.cbCatalogTable.StyleDisabled.ButtonRenderFirst = null;
+            this.cbCatalogTable.StyleDisabled.ForeColor = null;
+            this.cbCatalogTable.StyleHighlight.ArrowColor = null;
+            this.cbCatalogTable.StyleHighlight.BackColor = null;
+            this.cbCatalogTable.StyleHighlight.BorderColor = null;
+            this.cbCatalogTable.StyleHighlight.ButtonBackColor = null;
+            this.cbCatalogTable.StyleHighlight.ButtonBorderColor = null;
+            this.cbCatalogTable.StyleHighlight.ButtonRenderFirst = null;
+            this.cbCatalogTable.StyleHighlight.ForeColor = null;
+            this.cbCatalogTable.StyleNormal.ArrowColor = null;
+            this.cbCatalogTable.StyleNormal.BackColor = null;
+            this.cbCatalogTable.StyleNormal.BorderColor = null;
+            this.cbCatalogTable.StyleNormal.ButtonBackColor = null;
+            this.cbCatalogTable.StyleNormal.ButtonBorderColor = null;
+            this.cbCatalogTable.StyleNormal.ButtonRenderFirst = null;
+            this.cbCatalogTable.StyleNormal.ForeColor = null;
+            this.cbCatalogTable.StyleSelected.ArrowColor = null;
+            this.cbCatalogTable.StyleSelected.BackColor = null;
+            this.cbCatalogTable.StyleSelected.BorderColor = null;
+            this.cbCatalogTable.StyleSelected.ButtonBackColor = null;
+            this.cbCatalogTable.StyleSelected.ButtonBorderColor = null;
+            this.cbCatalogTable.StyleSelected.ButtonRenderFirst = null;
+            this.cbCatalogTable.StyleSelected.ForeColor = null;
+            this.cbCatalogTable.UseDarkScrollBar = false;
             // 
             // groupBox2
             // 

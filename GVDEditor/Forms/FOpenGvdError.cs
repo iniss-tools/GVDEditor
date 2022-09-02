@@ -8,8 +8,8 @@ public partial class FOpenGvdError : Form
     private FOpenGvdError(string msg)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
+
         pbIcon.Image = new ShellIcon(ShellIconType.Error,ShellIconSize.Large).ToBitmap();
         rtbMessage.Text = msg;
     }

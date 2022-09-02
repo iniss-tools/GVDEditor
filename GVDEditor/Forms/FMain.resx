@@ -126,77 +126,50 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="tsmiNew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 26</value>
+    <value>180, 22</value>
   </data>
   <data name="tsmiNew.Text" xml:space="preserve">
     <value>Nové...</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 6</value>
+    <value>177, 6</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tsmiOpen.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+O</value>
   </data>
   <data name="tsmiOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 26</value>
+    <value>180, 22</value>
   </data>
   <data name="tsmiOpen.Text" xml:space="preserve">
     <value>Otvoriť...</value>
   </data>
-  <data name="tsmiRecent.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAABOJJREFUSEvNVllPG1cUnvZ/dPkFXV7bh8T22A6JBJhI5IFESqKEl0SENi8hEKUV
-        iEWAUFS1QYlEk3RRmyp96KLwQKuqYDzeoDSlqBJggzFgExZvsWem8e35xsfFBi+Qp3zSlcbX557vLud8
-        50gvPZwWy7uK1drlramZctvt4QmTScXAt7umxq/YbJ2wYfPDYdJi6eVPA0KSXnHJcsOk2bzsP3EiNn/x
-        ohptbxfbnZ0iNTBgjO2uLoE5/Oez2+Mum22J7B3s4mBwWSyCdj5ofB858qbHbv9jur4+tnHjhoh3d4tA
-        S0t2xuGI+Y4fj03Isobhow3NNDTEgleuZGGz0dEhpuvqYuRnalyWXzccVwOIPbW1SVr0hcdq3VpuadHj
-        PT1itqkp7WlsTKw9fOhLr697NVVd03U9QyOpa9piJhJRVh48cLsdjuTs2bNprAlcuqTTM2xOHj36Prsv
-        DxAn+/rEVENDFteJodTXp7acTkXTtGeiAH8uroonNApBm0hsjI2Nu+rqUpFr14zTe2Q5XpUcxOmhIfFs
-        cFCsXr0q/A5Hmk4XZL9FAOle4uDKupgPhoWeSs35T5/eDF6+rOOZcHKnyfQG0xRD3Lz5ap4YAyf3nzqV
-        XRoeZreVoWm6aO8fETNzi7nfqhoBOU4eoA24ZdnPVMWgK7oF4lJj6e5dw1klfD86IW5/+SP/ygEnd9XW
-        phK9vUbAOc3meqbLAWkTDwRUtj80wutPxQedt8XWToJndoE3/5sCDu+NVGPKHMKPHjWx3aGRzWZF3/C3
-        4tfJaZ4pBgVcHNGOSEeeKybT20wrSVCkheZmFXm6dOfOJK85EH5TZkT3p1+L58+zPLMfofv33chziIwi
-        y51MS8Qkg1CfJ42NO+lQaJztqyIWT4oPu4bFcjjCM6VBua9AZKLXrwvPsWM+ppUkEou1HZI+r80WhyCw
-        fVngepXpOdHz2Tfiu59/59nygE9cM3QB2s60dGKTKZPs7xcTVivphJYsJQ6FAGlz25Axxr1/8ex+5P3A
-        J3yDA1w5VkKemMJdhVEpcShEIbHTV5447wcBRgKiGsSynM6xEqgqreKqUYHIKMDryoJu2iDv+uQr8cOY
-        wrPlQT4XUExQyYqvuiC4IPhsXxWb23EjuDa2YjxTGulwWJk5edIILq/d7mVaIqYivnD+fAbphCrD9gfC
-        T78o+xRrL5ZHRrxGOp07l3FbrR8xrSTRw7+DqEM9RbLjTXhNVej6v6Jj4HMxN7/MM8UgX7G8gNBp4y6z
-        +S2mzcFlty9B1lBPIXO87kAIrUZF5Ok2/ypGdHTUkEw8JQlVkOl2gXYFQo6doZ5C4HntC6OwSEyRb5fJ
-        VMt0xUC7gs4BpQwljUrbOvs4NLDWf+bMVqStTVAno3lstt2g2gv0SCjauHIUcZDTrmfZVxEqiYyeTP7z
-        fyNAvuCTiF9jmtJAm0InT6BzwMlx7XjzvQFXSmRgE338eALXG6HUMUip9SHxeI/dVwbIsUt0DngfBAci
-        c4WqDAQfggCFw8A35kL37nlgA1uswfXCx4FJ80CPhHYFAYedI+iCra1ZCAFUCNqLkW9vQ62thg2iF4GE
-        N616vZWAdgWdA/J8/sIFFeoD6YPuYhgNPc1BHJCnSJmy0fsiQOeAIo56Cr1FYcGgU624ac5ltX68Txxe
-        PkjSf+/RWRsLnF1/AAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="tsmiRecent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 26</value>
+    <value>180, 22</value>
   </data>
   <data name="tsmiRecent.Text" xml:space="preserve">
     <value>Nedávne</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="tsmiImportData.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+I</value>
   </data>
   <data name="tsmiImportData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 26</value>
+    <value>161, 22</value>
   </data>
   <data name="tsmiImportData.Text" xml:space="preserve">
     <value>Dáta...</value>
   </data>
   <data name="tsmiImportGVD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 26</value>
+    <value>161, 22</value>
   </data>
   <data name="tsmiImportGVD.Text" xml:space="preserve">
     <value>Grafikon...</value>
   </data>
   <data name="tsmiImportELIS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 26</value>
+    <value>161, 22</value>
   </data>
   <data name="tsmiImportELIS.Text" xml:space="preserve">
     <value>Z programu ELIS</value>
@@ -205,13 +178,13 @@
     <value>False</value>
   </data>
   <data name="tsmiImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 26</value>
+    <value>180, 22</value>
   </data>
   <data name="tsmiImport.Text" xml:space="preserve">
     <value>Importovať</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="tsmiSave.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -220,25 +193,25 @@
     <value>Ctrl+S</value>
   </data>
   <data name="tsmiSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 26</value>
+    <value>180, 22</value>
   </data>
   <data name="tsmiSave.Text" xml:space="preserve">
     <value>Uložiť</value>
   </data>
   <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="tsmiAnalyze.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="tsmiAnalyze.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 26</value>
+    <value>180, 22</value>
   </data>
   <data name="tsmiAnalyze.Text" xml:space="preserve">
     <value>Analyzovať grafikon</value>
   </data>
   <data name="tsmiSubor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 24</value>
+    <value>50, 19</value>
   </data>
   <data name="tsmiSubor.Text" xml:space="preserve">
     <value>Súbor</value>
@@ -250,7 +223,7 @@
     <value>Ins</value>
   </data>
   <data name="tsmimAddTrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 26</value>
+    <value>201, 22</value>
   </data>
   <data name="tsmimAddTrain.Text" xml:space="preserve">
     <value>Pridať vlak...</value>
@@ -262,13 +235,13 @@
     <value>Shift+Ins</value>
   </data>
   <data name="tsmimEditTrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 26</value>
+    <value>201, 22</value>
   </data>
   <data name="tsmimEditTrain.Text" xml:space="preserve">
     <value>Upraviť vlak...</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 6</value>
+    <value>198, 6</value>
   </data>
   <data name="tsmiDeleteTrain.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -277,13 +250,13 @@
     <value>Del</value>
   </data>
   <data name="tsmiDeleteTrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 26</value>
+    <value>201, 22</value>
   </data>
   <data name="tsmiDeleteTrain.Text" xml:space="preserve">
     <value>Odstrániť označené</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 6</value>
+    <value>198, 6</value>
   </data>
   <data name="tsmiDuplikovat.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -292,7 +265,7 @@
     <value>Ctrl+D</value>
   </data>
   <data name="tsmiDuplikovat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 26</value>
+    <value>201, 22</value>
   </data>
   <data name="tsmiDuplikovat.Text" xml:space="preserve">
     <value>Duplikovať</value>
@@ -301,7 +274,7 @@
     <value>False</value>
   </data>
   <data name="tsmiUpravit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 24</value>
+    <value>58, 19</value>
   </data>
   <data name="tsmiUpravit.Text" xml:space="preserve">
     <value>Upraviť</value>
@@ -313,7 +286,7 @@
     <value />
   </data>
   <data name="tsmiGrafikon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 26</value>
+    <value>169, 22</value>
   </data>
   <data name="tsmiGrafikon.Text" xml:space="preserve">
     <value>Grafikon</value>
@@ -322,7 +295,7 @@
     <value>False</value>
   </data>
   <data name="tsmiStanice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 26</value>
+    <value>169, 22</value>
   </data>
   <data name="tsmiStanice.Text" xml:space="preserve">
     <value>Stanice</value>
@@ -331,19 +304,19 @@
     <value>False</value>
   </data>
   <data name="tsmiDopravcovia.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 26</value>
+    <value>169, 22</value>
   </data>
   <data name="tsmiDopravcovia.Text" xml:space="preserve">
     <value>Dopravcovia</value>
   </data>
   <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="tsmiPlatforms.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="tsmiPlatforms.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 26</value>
+    <value>169, 22</value>
   </data>
   <data name="tsmiPlatforms.Text" xml:space="preserve">
     <value>Nástupištia</value>
@@ -352,19 +325,19 @@
     <value>False</value>
   </data>
   <data name="tsmiKolaje.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 26</value>
+    <value>169, 22</value>
   </data>
   <data name="tsmiKolaje.Text" xml:space="preserve">
     <value>Koľaje</value>
   </data>
   <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="tsmiTPhysical.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="tsmiTPhysical.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 26</value>
+    <value>169, 22</value>
   </data>
   <data name="tsmiTPhysical.Text" xml:space="preserve">
     <value>Fyzické tabule</value>
@@ -373,7 +346,7 @@
     <value>False</value>
   </data>
   <data name="tsmiTLogical.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 26</value>
+    <value>169, 22</value>
   </data>
   <data name="tsmiTLogical.Text" xml:space="preserve">
     <value>Logické tabule</value>
@@ -382,7 +355,7 @@
     <value>False</value>
   </data>
   <data name="tsmiTCatalog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 26</value>
+    <value>169, 22</value>
   </data>
   <data name="tsmiTCatalog.Text" xml:space="preserve">
     <value>Katalóg tabúľ</value>
@@ -391,7 +364,7 @@
     <value>False</value>
   </data>
   <data name="tsmiTabTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 26</value>
+    <value>169, 22</value>
   </data>
   <data name="tsmiTabTab.Text" xml:space="preserve">
     <value>TabTab</value>
@@ -400,7 +373,7 @@
     <value>False</value>
   </data>
   <data name="tsmiTTexts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 26</value>
+    <value>169, 22</value>
   </data>
   <data name="tsmiTTexts.Text" xml:space="preserve">
     <value>Texty na tabuliach</value>
@@ -409,19 +382,19 @@
     <value>False</value>
   </data>
   <data name="tsmiTFonts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 26</value>
+    <value>169, 22</value>
   </data>
   <data name="tsmiTFonts.Text" xml:space="preserve">
     <value>Písma tabúľ</value>
   </data>
   <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="tsmiTabTabEditor.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="tsmiTabTabEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 26</value>
+    <value>169, 22</value>
   </data>
   <data name="tsmiTabTabEditor.Text" xml:space="preserve">
     <value>Editor TabTab</value>
@@ -429,29 +402,11 @@
   <data name="tsmiVlastnostiStanice.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="tsmiVlastnostiStanice.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cQAAEnEB89x6jgAAAstJREFUSEvtlu9LE3Ecx4/qQRD9AT3qb+hhf0Q9KQND6kk9iqAlsanbnWhO8+y2
-        Bam47Xa3gpwSLlZNcyYZpvgDKrQ0ldKk5pjkfrg2s326z3Wu7XunN1MKwQ+8Gdz383m99r3vbRy1Z4ph
-        mANG1nmKsYtvaYcwZWx0X5CuHVKWd79u3HIdrWDdBjMnhDn+YWz0/SfA2DxdCdomRqqa+OvYo7TvvCq5
-        1mMWu8dqtvHJlvbg6rv5MMTXoCAzi1EQ/KGUxcanLHaxtYp1HVfGt1/GJtcJCdKJsPaewfTickIlJPPl
-        2yoE+kcytN2Toh1iyNToOqngtq7c+d0RhmvuehPdr16vR+LpAviLiSUoqwvB6concsqsIXg5GSnoiSbX
-        oH9sMlvb/CBJ238/ByUdHQcVzZ9iGM9hE8tfZBziQmObLz74ZgZW0j8LYBtBkcW3AGxwRY7Z91m+ptUb
-        y2RhfHoeOHwOODFSwbkN5az3iKKlqKrbfLytM5gkz+9j9DtUC2NwlunJ7RCzId1I/hr20sIoTH9NFrCQ
-        jQ50KVqKMrGugiYMSs/f7AWDcxLq/BGVbLNg7zXXBJTW9soMkosuRastxp0iQAteTAzOCaj2jqu4umK8
-        ZdvZKRmcLZEYJFdXnH9uOwnJLUo8EIYdZV+M2RerGnBoN0JyixJr/T63k70rHp5Lw9p6Foakz3xwfrR6
-        /kp8hu6GhsfLMgCBWJkf2RyUDNnTEFiW/3ZJrq7Y0DwEpvtzMgR3Ie9mdvMdkz3Ge3NQ3jKk4uqK5TcN
-        63OoD0RVEr3gTFldPwxIDJKrK8a0PZ2CczXPpG8/C/XKbd8q2IM7La3tA2dwWpNZlPiD9PZ4ifHAFceA
-        fOb4sGwV7Lkq9V6WZnBWi6krxhc2CyeCv29EtaYXnMFZZJBrumKnrwc4vkt+YSPX9BLLADiERzKDXFOJ
-        /2UU7f8oivoFlm81EU3c8WsAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="tsmiVlastnostiStanice.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+L</value>
   </data>
   <data name="tsmiVlastnostiStanice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 26</value>
+    <value>238, 22</value>
   </data>
   <data name="tsmiVlastnostiStanice.Text" xml:space="preserve">
     <value>Lokálne nastavenia...</value>
@@ -460,7 +415,7 @@
     <value>False</value>
   </data>
   <data name="tsmiGrafikony.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 26</value>
+    <value>135, 22</value>
   </data>
   <data name="tsmiGrafikony.Text" xml:space="preserve">
     <value>Grafikony</value>
@@ -469,7 +424,7 @@
     <value>False</value>
   </data>
   <data name="tsmiLanguages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 26</value>
+    <value>135, 22</value>
   </data>
   <data name="tsmiLanguages.Text" xml:space="preserve">
     <value>Jazyky</value>
@@ -478,7 +433,7 @@
     <value>False</value>
   </data>
   <data name="tsmiMeskania.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 26</value>
+    <value>135, 22</value>
   </data>
   <data name="tsmiMeskania.Text" xml:space="preserve">
     <value>Meškania</value>
@@ -487,7 +442,7 @@
     <value>False</value>
   </data>
   <data name="tsmiTypyVlakov.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 26</value>
+    <value>135, 22</value>
   </data>
   <data name="tsmiTypyVlakov.Text" xml:space="preserve">
     <value>Typy vlakov</value>
@@ -496,7 +451,7 @@
     <value>False</value>
   </data>
   <data name="tsmiAudio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 26</value>
+    <value>135, 22</value>
   </data>
   <data name="tsmiAudio.Text" xml:space="preserve">
     <value>Audio</value>
@@ -508,55 +463,55 @@
     <value>Ctrl+G</value>
   </data>
   <data name="tsmiGlobalSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 26</value>
+    <value>238, 22</value>
   </data>
   <data name="tsmiGlobalSettings.Text" xml:space="preserve">
     <value>Globálne nastavenia...</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 6</value>
+    <value>235, 6</value>
   </data>
   <data name="tsmiAppSettings.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+P</value>
   </data>
   <data name="tsmiAppSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 26</value>
+    <value>238, 22</value>
   </data>
   <data name="tsmiAppSettings.Text" xml:space="preserve">
     <value>Nastavenia programu...</value>
   </data>
   <data name="tsmiStanica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 24</value>
+    <value>70, 19</value>
   </data>
   <data name="tsmiStanica.Text" xml:space="preserve">
     <value>Vlastnosti</value>
   </data>
   <data name="tsmiDatObm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 26</value>
+    <value>198, 22</value>
   </data>
   <data name="tsmiDatObm.Text" xml:space="preserve">
     <value>Generátor dátum. obm.</value>
   </data>
   <data name="tsmiTools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 24</value>
+    <value>63, 19</value>
   </data>
   <data name="tsmiTools.Text" xml:space="preserve">
     <value>Nástroje</value>
   </data>
   <data name="tsmimStartupSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 26</value>
+    <value>201, 22</value>
   </data>
   <data name="tsmimStartupSettings.Text" xml:space="preserve">
     <value>Nastavenia spúšťania...</value>
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 6</value>
+    <value>198, 6</value>
   </data>
   <data name="tsmimStartINISS.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="tsmimStartINISS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 26</value>
+    <value>201, 22</value>
   </data>
   <data name="tsmimStartINISS.Text" xml:space="preserve">
     <value>Spustiť INISS</value>
@@ -565,7 +520,7 @@
     <value>False</value>
   </data>
   <data name="tsmimShutdownINISS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 26</value>
+    <value>201, 22</value>
   </data>
   <data name="tsmimShutdownINISS.Text" xml:space="preserve">
     <value>Ukončiť INISS</value>
@@ -574,7 +529,7 @@
     <value>False</value>
   </data>
   <data name="tsmimKillINISS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 26</value>
+    <value>201, 22</value>
   </data>
   <data name="tsmimKillINISS.Text" xml:space="preserve">
     <value>Vynútiť ukončenie INISS</value>
@@ -583,16 +538,16 @@
     <value>False</value>
   </data>
   <data name="tsmimRestartINISS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 26</value>
+    <value>201, 22</value>
   </data>
   <data name="tsmimRestartINISS.Text" xml:space="preserve">
     <value>Reštartovať INISS</value>
   </data>
   <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 6</value>
+    <value>198, 6</value>
   </data>
   <data name="tsmiRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 24</value>
+    <value>56, 19</value>
   </data>
   <data name="tsmiRun.Text" xml:space="preserve">
     <value>Spustiť</value>
@@ -601,7 +556,7 @@
     <value>F6</value>
   </data>
   <data name="tsmiInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 26</value>
+    <value>224, 22</value>
   </data>
   <data name="tsmiInformation.Text" xml:space="preserve">
     <value>Informácie o programe...</value>
@@ -610,13 +565,13 @@
     <value>Center</value>
   </data>
   <data name="tsmiChangelog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 26</value>
+    <value>224, 22</value>
   </data>
   <data name="tsmiChangelog.Text" xml:space="preserve">
     <value>Poznámky k aktualizáciám...</value>
   </data>
   <data name="tsmiNastavenia.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 24</value>
+    <value>73, 19</value>
   </data>
   <data name="tsmiNastavenia.Text" xml:space="preserve">
     <value>Pomocník</value>
@@ -625,10 +580,10 @@
     <value>0, 0</value>
   </data>
   <data name="mainMenu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 2, 0, 2</value>
+    <value>4, 2, 0, 2</value>
   </data>
   <data name="mainMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1392, 28</value>
+    <value>1044, 23</value>
   </data>
   <data name="mainMenu.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -658,7 +613,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsbSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbSave.Text" xml:space="preserve">
     <value>toolStripButton6</value>
@@ -670,7 +625,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsbOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbOpen.Text" xml:space="preserve">
     <value>toolStripButton5</value>
@@ -682,19 +637,19 @@
     <value>Ctrl+I</value>
   </data>
   <data name="tsmimImportData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 26</value>
+    <value>161, 22</value>
   </data>
   <data name="tsmimImportData.Text" xml:space="preserve">
     <value>Dáta...</value>
   </data>
   <data name="tsmimImportGVD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 26</value>
+    <value>161, 22</value>
   </data>
   <data name="tsmimImportGVD.Text" xml:space="preserve">
     <value>Grafikon...</value>
   </data>
   <data name="tsmimImportELIS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 26</value>
+    <value>161, 22</value>
   </data>
   <data name="tsmimImportELIS.Text" xml:space="preserve">
     <value>Z programu ELIS</value>
@@ -706,7 +661,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsbImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 28</value>
+    <value>36, 24</value>
   </data>
   <data name="tsbImport.Text" xml:space="preserve">
     <value>toolStripButton1</value>
@@ -714,38 +669,11 @@
   <data name="tsbImport.ToolTipText" xml:space="preserve">
     <value>Importovať</value>
   </data>
-  <data name="tssbRecentDirs.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAATTSURBVEhLzVZJT1tXFH7t/+jwCzpssmgXxPZ7dkgkpgVZ
-        kChZJCwJbTYhELkViEGAUFS1QYlEk3RQmypd0FZhQUtVMH4egNK0QpWYjQEzGA/PMbYb357v+jjY4AGy
-        yiddye/63vPde+453znKKw+HxfK+rmkdnsrKaZfN5h+rqEhg4LersnJKt1rbsYaXnwyTFks3/5QQivKa
-        U1XrHCbT6tS5c+H5q1cTW62tYq+9XcT6+uTY6+gQmMN/XlWNOK3WlUmzuZZNHA9Oi0XQyfvl74qKt902
-        258zNTXh7Vu3RKSzU9ibmtKztbVh79mz4WFVTWJ46UCYs1+7lsaa7bY2MVNdHSY70+Oq+qY0XA4gdlRV
-        GbTpK7fFEly6dCkV6eqCobirvj668eiRN7656UkkEhs7Ozv70WjUSCWTi/uBgL728KHLUVtrzFy+HMce
-        7KVn2J08ffpDNl8cIDZ6eoS9ri4Nd2KM1dTEgg6HHgqFnokc/LW4Lp7SyIVhGNHt0dHxserqWODGDXl7
-        N7m/LDmI4wMD4ll/v1i/fl1M0U2TicQy280DSA8TL69tivllv0jFYnNTFy7s4tZ4Jtyc4uQtpsmHsNtf
-        zxJjyJufP59eGRxks6WRTKZEa++QmJ1blN/0HAGQ4+bS7ao6xVT5IBfdBnGhsXLvnjRWCj+OTIg7X//E
-        Xxng5mNVVbFod7cMOIfZXMN0GSBtAktLCV5/Yvg3d8RH7XdEMBTlmQPgzRFweG+kGlNm4H/8uIHXnRjp
-        dFr0DH4vfpuc4Zl8xGKxCKIdkY48102md5lWUaBIC42NCeTpyt27k7znWPhdnxWdn38rnj9P88xR+B48
-        cCHPITK6qrYzLRGTDEJ9ntbXh+I+3zivL4twxBAfdwyKVX+AZwqDcl+HyGzdvCncZ854mVZR3Jq2ESLp
-        85ArIAi8vijgXn1mTnR98Z344Zc/eLY4YBNuhi5A25mWbnzq1L7R2yuGNS0JNSokDrkAaWPLgBzjnr95
-        9iiydmATtsEBrgwrIUuMaoNFhcQhF7nEDm9x4qwdBBhsS2JVjWdYCVRN1uFqVCByyxLvKwrytCTv+Owb
-        MTyq82xxkM0FFBNUsnxX5wQXBJ/Xl8XuXkQG13YwzDOFEff7XwSXx2bzMC0RUxFfaGjYRzqhyvD6Y+Hn
-        X/UjinUYq0NDHplOxOHStE+YVlEmNO09RB3qKZIdb8J7yiKV+k+09X0p5uZXeSYfZCucFRBkjdNsfodp
-        M3DabCuyiEPeSOZ437HgW98SgZ09/srH1siIlEw8JQnVMtMdAO0KhBwnQz2FwPPel0ZukZgm206TqYrp
-        8oF2BSUMpQwljUrbJts4MbDXffFiMNDSIlabmpJuq/UgqA4DPRKKNlyOA4CcTv0P28pDKZFJGca/LxoB
-        sgWbRPwG0xQG2hS6eRSdA24Ot+PNDwdcIZHBmq0nTybg3gCljiSlgKLu4wM2XxogxylxYlnEKTgQmWtU
-        ZSD4EAQoHDd7C5jz3b/vzjZ72AP3wsaxSbNAj4R2BQGHkyPo7M3NmfaWVAjai5Ftb33NzXINoheBhDct
-        695SQLuCzgF5Pn/lSgLqA+mD7mLIhp7mIA7IU6RM0eh9GaBzQBFHPYXeorBg0K3WXDTn1LRPj4jDqwdF
-        +R9MeFGnym8FMgAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="tssbRecentDirs.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tssbRecentDirs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 28</value>
+    <value>36, 24</value>
   </data>
   <data name="tssbRecentDirs.Text" xml:space="preserve">
     <value>fa</value>
@@ -760,7 +688,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsbAnalyze.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbAnalyze.Text" xml:space="preserve">
     <value>Analyzovať grafikon</value>
@@ -772,7 +700,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsbAddGVD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbAddGVD.ToolTipText" xml:space="preserve">
     <value>Vytvoriť nový...</value>
@@ -790,22 +718,10 @@
     <value>Magenta</value>
   </data>
   <data name="tsbAddTrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbAddTrain.ToolTipText" xml:space="preserve">
     <value>Pridať vlak</value>
-  </data>
-  <data name="tsbCopyTrain.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tsbCopyTrain.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tsbCopyTrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
-  </data>
-  <data name="tsbCopyTrain.ToolTipText" xml:space="preserve">
-    <value>Duplikovať vlak</value>
   </data>
   <data name="tsbEditTrain.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -814,7 +730,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsbEditTrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbEditTrain.ToolTipText" xml:space="preserve">
     <value>Upraviť vlak</value>
@@ -826,10 +742,22 @@
     <value>Magenta</value>
   </data>
   <data name="tsbDeleteTrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbDeleteTrain.ToolTipText" xml:space="preserve">
     <value>Odstrániť vlaky</value>
+  </data>
+  <data name="tsbCopyTrain.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tsbCopyTrain.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsbCopyTrain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="tsbCopyTrain.ToolTipText" xml:space="preserve">
+    <value>Duplikovať vlak</value>
   </data>
   <data name="toolStripSeparator10.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -840,29 +768,11 @@
   <data name="tsbStanica.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="tsbStanica.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAALHSURBVEhL7ZZdT9NgFMcb9cLE+AG88jN46YfQG8UEQ/RG
-        r4yJk5iNl7UE3MB1jk3jJLRbN/AlQAiYqWwyJM7giEiiZigIREGCuIzIXsANccee2s3taaFDiIaEk/yz
-        pM85v9+ePt1SascUwzB79Cx3jLF739IOz7je4jojXtsnL29/XbnGH6xiXbpai2ehqbU7PvL+E2AsQk+S
-        Zr3RGqv7MvbI7VuvalvLIaNdMNc2O1PWu33L72YWILEKRZmciwHX618xNnMrRru3pYblD8vjmy+9lT8i
-        QroQ1h4YSs8tJhVCMvPflsE3OJih7dwK7fAGDRb+qIzbuPLnd0MYrr8lJP0vXq9FE+ki+LPIV6gwBeF4
-        9SMpFeYgPB+LFvXEUqsgsrKM836Ktv9+Dso6O/fKmj/FMMJ+A+s+yzi8s5ab9xJDbyZhKf2zCJYLiowd
-        s8D2LUmp7fgsXVPrjWeyMDoxk38OqmwuXSXbdkDWUlTNdXfC2dWdIs/vY+w71HlewUkmkN8hJifNpXAN
-        e2nPCEx8SRWxkI0OdMlaijKwfFETBqWnr/aDjhsDU29UIVsv2HuJj0B5Q7/EILnokrXqYtwpAtTgpUTH
-        RaCubVTB1RTjLdvMTsngbJnIILma4sJz20pIbkni0AJsKbtizK5Y0YBD2xGSW5JY7fe5mexc8fB0GlbX
-        shAWPwvBhVHr+SvxCdoPTQ8XJQACsTI/snkoGbKnybco/e2SXE2xzhkGw51pCYK7kHYztf6OyR59+zRU
-        3g4ruJpi6U3D/BQafTGFRCs4U2EahJDIILmaYkzr43E4Vf9E/PZT0Cjf9o2CPbjT8oYB4PomVJkliT+I
-        b4/nGAEuOELSmePDslGw56LYe16cwVk1pqYYX9iMNi/0DrxUrGkFZ3AWGeSappjrCIDN3SO9sJFrWoln
-        AByeBxKDXFOI/2Vk7f8oivoFPP4zqeYW39oAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="tsbStanica.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsbStanica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbStanica.Text" xml:space="preserve">
     <value>toolStripButton8</value>
@@ -877,7 +787,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsbGlobalSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbGlobalSettings.Text" xml:space="preserve">
     <value>toolStripButton7</value>
@@ -891,21 +801,11 @@
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 26</value>
   </data>
-  <data name="tsbAppSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADjSURBVEhLYxgFdAWZVX3eWRUT36ZV9v+nJQbZkV4zwQtq
-        LQNDVsWkt5v3n/5/4uJtmuLN+07/T6npeQO1loEB5BpsCmmBQXZBrYVYTE8MtZaBoaJ7zn96AZBdUGtH
-        LUaA+RsPQVnYAT55XHJD0+L+1Rf+l0w7AscT1lyEyiAATSwGWXboxX84BvHRAV18PJFePoYBv6qtUBYm
-        oLvFhOIfr8XEJB4QwGYxSD2++MdrMSHNMECMj9HjnyQfY0s8IIAvjnHJ4bUYBvAZDAKjFiMDiiymBRi1
-        GCxALwy1dhTQAzAwAABd5lF5oRG2KAAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="tsbAppSettings.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsbAppSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbAppSettings.ToolTipText" xml:space="preserve">
     <value>Nastavenia programu</value>
@@ -914,7 +814,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsbInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbInformation.Text" xml:space="preserve">
     <value>toolStripButton9</value>
@@ -929,7 +829,7 @@
     <value>6, 26</value>
   </data>
   <data name="toolStripLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 31</value>
+    <value>48, 27</value>
   </data>
   <data name="toolStripLabel1.Text" xml:space="preserve">
     <value>Stanica:</value>
@@ -941,10 +841,10 @@
     <value>Standard</value>
   </data>
   <data name="tscbStanica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 28</value>
+    <value>151, 21</value>
   </data>
   <data name="toolStripLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 31</value>
+    <value>56, 27</value>
   </data>
   <data name="toolStripLabel2.Text" xml:space="preserve">
     <value>Obdobie:</value>
@@ -956,43 +856,28 @@
     <value>Standard</value>
   </data>
   <data name="tscbObdobie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 28</value>
+    <value>114, 21</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 31</value>
+    <value>6, 27</value>
   </data>
   <data name="tsmiStartupSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+    <value>195, 22</value>
   </data>
   <data name="tsmiStartupSettings.Text" xml:space="preserve">
     <value>Nastavenie spúšťania...</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 6</value>
+    <value>192, 6</value>
   </data>
   <data name="tssbStartINISS.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="tssbStartINISS.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAHuSURBVGhD7Zm7S8NQFMaDgrj4GFRw8LkUm0cLgoMgHQX3
-        ro4ixTa5LdIx/guOro4dFaeCXSy0tzetg4iz4ORjclHQegOnSOFQbZukOZAffEPS5HzfgaQ991aJiIjo
-        jSFYOVG3VDikh2ygvXjBPo0GO9sU+Tk4TQe3gV9lXnVhmelSehw+Dj/dDYA4uzeEuQuXhBu0AZDOrUuj
-        VliDS8MJFrxLlcyHbOQ0dnM8BbeECzQ0Iq1uPemOdaC07TG4NRxgYXtJF4yrPL8Nt48eLOSfstm3IaxS
-        XOSWoczoQAP+U+vVw3e9wU5WKvYklAseLFj/yj7KH8J9KBkseKDBpHPzWnNyBpQOBizIUKqkvuSLfm7c
-        FhbAwl/QEF6IW29agxXjd/YEWPkDau6tHmQje2DnPYihXyonm4U42HoHYuSb3LHdHUs2RXEG7IcHMwpA
-        L56N7Ujx4FRnjmxkB6IMBlo4YLlje6JlrkKk/sAKBi26DVB9hLTq0TPJl7jzNbpVy06D/fBgRj6prDrm
-        Bth6B2LktYiOEmSHORink83sPFj4CxpiQBFe0BBdUtJd1MO2isrzS1BmdKABe4jsxhbdrUXKm7vumEty
-        e10+5y2NsxRcEm66wxP9i6kz5spV0SycpoMhzCs5AsTgMCIiIlQoyg9XP8/ng8pgSAAAAABJRU5ErkJg
-        gg==
-</value>
   </data>
   <data name="tssbStartINISS.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tssbStartINISS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 28</value>
+    <value>80, 24</value>
   </data>
   <data name="tssbStartINISS.Text" xml:space="preserve">
     <value>Spustiť</value>
@@ -1004,7 +889,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsbKillINISS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbKillINISS.Text" xml:space="preserve">
     <value>Vynútiť ukončenie programu</value>
@@ -1016,7 +901,7 @@
     <value>Magenta</value>
   </data>
   <data name="tsbShutdownINISS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbShutdownINISS.Text" xml:space="preserve">
     <value>Ukončiť program</value>
@@ -1028,34 +913,34 @@
     <value>Magenta</value>
   </data>
   <data name="tsbRestartINISS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbRestartINISS.Text" xml:space="preserve">
     <value>Reštartovať program</value>
   </data>
   <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 31</value>
+    <value>6, 27</value>
   </data>
   <data name="tsbDatObm.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="tsbDatObm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>24, 24</value>
   </data>
   <data name="tsbDatObm.Text" xml:space="preserve">
     <value>Generátor dátum. obm.</value>
   </data>
   <data name="toolMenu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 28</value>
+    <value>0, 23</value>
   </data>
   <data name="toolMenu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 1, 2</value>
   </data>
   <data name="toolMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1392, 35</value>
+    <value>1044, 31</value>
   </data>
   <data name="toolMenu.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="toolMenu.Text" xml:space="preserve">
     <value>toolStrip1</value>
@@ -1088,7 +973,7 @@
     <value>60</value>
   </data>
   <data name="cisloDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>70</value>
+    <value>60</value>
   </data>
   <metadata name="nameDataGridViewTextBoxColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1100,7 +985,7 @@
     <value>6</value>
   </data>
   <data name="nameDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>80</value>
+    <value>65</value>
   </data>
   <data name="typDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Typ</value>
@@ -1109,7 +994,7 @@
     <value>40</value>
   </data>
   <data name="typDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>61</value>
+    <value>50</value>
   </data>
   <metadata name="LinkaPrichod.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1121,7 +1006,7 @@
     <value>6</value>
   </data>
   <data name="LinkaPrichod.Width" type="System.Int32, mscorlib">
-    <value>136</value>
+    <value>112</value>
   </data>
   <data name="dataGridViewCellStyle2.NullValue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1142,7 +1027,7 @@
     <value>60</value>
   </data>
   <data name="prichodDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>88</value>
+    <value>73</value>
   </data>
   <data name="odchodDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Odchod</value>
@@ -1151,7 +1036,7 @@
     <value>60</value>
   </data>
   <data name="odchodDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>91</value>
+    <value>75</value>
   </data>
   <metadata name="dgvcVychodziaStanica.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1163,7 +1048,7 @@
     <value>120</value>
   </data>
   <data name="dgvcVychodziaStanica.Width" type="System.Int32, mscorlib">
-    <value>156</value>
+    <value>126</value>
   </data>
   <metadata name="dgvcKonecnaStanica.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1175,7 +1060,7 @@
     <value>120</value>
   </data>
   <data name="dgvcKonecnaStanica.Width" type="System.Int32, mscorlib">
-    <value>145</value>
+    <value>120</value>
   </data>
   <metadata name="DatumoveObmedzenieText.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1199,7 +1084,7 @@
     <value>6</value>
   </data>
   <data name="LinkaOdchod.Width" type="System.Int32, mscorlib">
-    <value>139</value>
+    <value>114</value>
   </data>
   <metadata name="Kolaj.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1226,7 +1111,7 @@
     <value>50</value>
   </data>
   <data name="Dopravca.Width" type="System.Int32, mscorlib">
-    <value>79</value>
+    <value>63</value>
   </data>
   <metadata name="Ostatne.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1244,19 +1129,16 @@
     <value>Fill</value>
   </data>
   <data name="dgvTrains.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 63</value>
-  </data>
-  <data name="dgvTrains.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>5, 0</value>
   </data>
   <data name="dgvTrains.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
   <data name="dgvTrains.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1392, 605</value>
+    <value>1034, 489</value>
   </data>
   <data name="dgvTrains.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;dgvTrains.Name" xml:space="preserve">
     <value>dgvTrains</value>
@@ -1265,7 +1147,7 @@
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dgvTrains.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel1</value>
   </data>
   <data name="&gt;&gt;dgvTrains.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1312,17 +1194,11 @@
   <data name="dataGridViewTextBoxColumn5.MinimumWidth" type="System.Int32, mscorlib">
     <value>120</value>
   </data>
-  <data name="dataGridViewTextBoxColumn5.Width" type="System.Int32, mscorlib">
-    <value>125</value>
-  </data>
   <data name="dataGridViewTextBoxColumn6.HeaderText" xml:space="preserve">
     <value>Konečná stanica</value>
   </data>
   <data name="dataGridViewTextBoxColumn6.MinimumWidth" type="System.Int32, mscorlib">
     <value>120</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn6.Width" type="System.Int32, mscorlib">
-    <value>125</value>
   </data>
   <data name="dataGridViewTextBoxColumn7.HeaderText" xml:space="preserve">
     <value>Východzia stanica</value>
@@ -1394,25 +1270,25 @@
     <value>1446, 11</value>
   </metadata>
   <data name="tsslDate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 24</value>
+    <value>49, 18</value>
   </data>
   <data name="tsslDate.Text" xml:space="preserve">
     <value>1.1.1970</value>
   </data>
   <data name="tsslTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 24</value>
+    <value>49, 19</value>
   </data>
   <data name="tsslTime.Text" xml:space="preserve">
     <value>00:00:00</value>
   </data>
   <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1194, 24</value>
+    <value>887, 19</value>
   </data>
   <data name="toolStripStatusLabel1.Text" xml:space="preserve">
     <value> </value>
   </data>
   <data name="tsslTrainCountWithVariants.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 24</value>
+    <value>13, 19</value>
   </data>
   <data name="tsslTrainCountWithVariants.Text" xml:space="preserve">
     <value>0</value>
@@ -1421,7 +1297,7 @@
     <value>Počet všetkých vlakov</value>
   </data>
   <data name="tsslTrainCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 24</value>
+    <value>25, 19</value>
   </data>
   <data name="tsslTrainCount.Text" xml:space="preserve">
     <value>(0)</value>
@@ -1430,7 +1306,7 @@
     <value>Počet všetkých vlakov (mimo variánt)</value>
   </data>
   <data name="tsslSelTrainName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 24</value>
+    <value>51, 19</value>
   </data>
   <data name="tsslSelTrainName.Text" xml:space="preserve">
     <value>Os 0000:</value>
@@ -1439,7 +1315,7 @@
     <value>False</value>
   </data>
   <data name="tsslSelTrainVariants.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 24</value>
+    <value>13, 19</value>
   </data>
   <data name="tsslSelTrainVariants.Text" xml:space="preserve">
     <value>0</value>
@@ -1448,16 +1324,16 @@
     <value>False</value>
   </data>
   <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 668</value>
+    <value>0, 543</value>
   </data>
   <data name="statusStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 13, 0</value>
+    <value>1, 0, 10, 0</value>
   </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1392, 30</value>
+    <value>1044, 24</value>
   </data>
   <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="statusStrip.Text" xml:space="preserve">
     <value>statusStrip</value>
@@ -1618,6 +1494,33 @@
   <data name="dataGridViewTextBoxColumn28.Width" type="System.Int32, mscorlib">
     <value>145</value>
   </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 54</value>
+  </data>
+  <data name="panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 5, 0</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1044, 489</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="dataGridViewExComboBoxColumn1.HeaderText" xml:space="preserve">
     <value>Koľaj</value>
   </data>
@@ -1714,17 +1617,11 @@
   <data name="dataGridViewComboBoxColumn3.MinimumWidth" type="System.Int32, mscorlib">
     <value>100</value>
   </data>
-  <data name="dataGridViewComboBoxColumn3.Width" type="System.Int32, mscorlib">
-    <value>125</value>
-  </data>
   <data name="dataGridViewComboBoxColumn4.HeaderText" xml:space="preserve">
     <value>Dopravca</value>
   </data>
   <data name="dataGridViewComboBoxColumn4.MinimumWidth" type="System.Int32, mscorlib">
     <value>150</value>
-  </data>
-  <data name="dataGridViewComboBoxColumn4.Width" type="System.Int32, mscorlib">
-    <value>125</value>
   </data>
   <data name="dataGridViewComboBoxColumn5.HeaderText" xml:space="preserve">
     <value>Koľaj</value>
@@ -1859,10 +1756,10 @@
     <value>63</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1392, 698</value>
+    <value>1044, 567</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2511,11 +2408,14 @@
         X/g/g1KMu1R0dqcAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1150, 612</value>
+    <value>866, 505</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>GVDEditor</value>
@@ -2940,12 +2840,6 @@
   <data name="&gt;&gt;tsbAddTrain.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tsbCopyTrain.Name" xml:space="preserve">
-    <value>tsbCopyTrain</value>
-  </data>
-  <data name="&gt;&gt;tsbCopyTrain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;tsbEditTrain.Name" xml:space="preserve">
     <value>tsbEditTrain</value>
   </data>
@@ -2956,6 +2850,12 @@
     <value>tsbDeleteTrain</value>
   </data>
   <data name="&gt;&gt;tsbDeleteTrain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsbCopyTrain.Name" xml:space="preserve">
+    <value>tsbCopyTrain</value>
+  </data>
+  <data name="&gt;&gt;tsbCopyTrain.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator10.Name" xml:space="preserve">
@@ -3006,23 +2906,11 @@
   <data name="&gt;&gt;toolStripLabel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tscbStanica.Name" xml:space="preserve">
-    <value>tscbStanica</value>
-  </data>
-  <data name="&gt;&gt;tscbStanica.Type" xml:space="preserve">
-    <value>ExControls.ExToolStripComboBox, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;toolStripLabel2.Name" xml:space="preserve">
     <value>toolStripLabel2</value>
   </data>
   <data name="&gt;&gt;toolStripLabel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tscbObdobie.Name" xml:space="preserve">
-    <value>tscbObdobie</value>
-  </data>
-  <data name="&gt;&gt;tscbObdobie.Type" xml:space="preserve">
-    <value>ExControls.ExToolStripComboBox, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
     <value>toolStripSeparator7</value>
@@ -3156,23 +3044,11 @@
   <data name="&gt;&gt;LinkaOdchod.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Kolaj.Name" xml:space="preserve">
-    <value>Kolaj</value>
-  </data>
-  <data name="&gt;&gt;Kolaj.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;trackBindingSource.Name" xml:space="preserve">
     <value>trackBindingSource</value>
   </data>
   <data name="&gt;&gt;trackBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Dopravca.Name" xml:space="preserve">
-    <value>Dopravca</value>
-  </data>
-  <data name="&gt;&gt;Dopravca.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;operatorBindingSource.Name" xml:space="preserve">
     <value>operatorBindingSource</value>
@@ -3418,49 +3294,73 @@
     <value>dataGridViewExComboBoxColumn1</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn1.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn2.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn2</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn2.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tscbStanica.Name" xml:space="preserve">
+    <value>tscbStanica</value>
+  </data>
+  <data name="&gt;&gt;tscbStanica.Type" xml:space="preserve">
+    <value>ExControls.ExToolStripComboBox, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tscbObdobie.Name" xml:space="preserve">
+    <value>tscbObdobie</value>
+  </data>
+  <data name="&gt;&gt;tscbObdobie.Type" xml:space="preserve">
+    <value>ExControls.ExToolStripComboBox, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Kolaj.Name" xml:space="preserve">
+    <value>Kolaj</value>
+  </data>
+  <data name="&gt;&gt;Kolaj.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;Dopravca.Name" xml:space="preserve">
+    <value>Dopravca</value>
+  </data>
+  <data name="&gt;&gt;Dopravca.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn3.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn3</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn3.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn4.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn4</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn4.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn5.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn5</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn5.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn6.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn6</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn6.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn7.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn7</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn7.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn8.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn8</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn8.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewComboBoxColumn1.Name" xml:space="preserve">
     <value>dataGridViewComboBoxColumn1</value>
@@ -3526,49 +3426,49 @@
     <value>dataGridViewExComboBoxColumn9</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn9.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn10.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn10</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn10.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn11.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn11</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn11.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn12.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn12</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn12.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn13.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn13</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn13.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn14.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn14</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn14.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn15.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn15</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn15.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn16.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn16</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn16.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8134.36003, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FMain</value>

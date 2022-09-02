@@ -28,8 +28,7 @@ public partial class FImportData : Form
     public FImportData(GVDInfo gvd)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         Gvd = gvd;
         cbDataType.SelectedIndex = 0;
@@ -51,22 +50,22 @@ public partial class FImportData : Form
         var required = ImportTrainColumnType.GetRequiredValues();
         if (!selectedColumnTypes.ContainsAllItems(required))
         {
-            var text =
-                "Nie sú zadané všetky povinné stĺpce pre import. Povinné stĺpce sú:\r\nSmerovanie vlaku a/alebo stanice vlaku,\r\n";
+            var text = new StringBuilder(
+                "Nie sú zadané všetky povinné stĺpce pre import. Povinné stĺpce sú:\r\nSmerovanie vlaku a/alebo stanice vlaku,\r\n");
             for (var i = 0; i < required.Count; i++)
                 if (i == required.Count - 1)
-                    text += required[i] + ".";
+                    text.Append(required[i] + ".");
                 else
-                    text += required[i] + ",\r\n";
+                    text.Append(required[i] + ",\r\n");
 
-            Utils.ShowError(text);
+            Utils.ShowError(text.ToString());
             DialogResult = DialogResult.None;
             return;
         }
 
         var trains = new List<Train>(DataTable.Rows.Count);
 
-        if (GlobData.Config.DebugModeGUI == Config.DebugMode.AppCrash)
+        if (GlobData.Config.DebugModeGUI == DebugMode.AppCrash)
             Deserialize();
         else
             try
@@ -75,7 +74,7 @@ public partial class FImportData : Form
             }
             catch (Exception ex)
             {
-                Utils.ShowError(GlobData.Config.DebugModeGUI == Config.DebugMode.OnlyMessage ? ex.Message : ex.ToString());
+                Utils.ShowError(GlobData.Config.DebugModeGUI == DebugMode.OnlyMessage ? ex.Message : ex.ToString());
                 DialogResult = DialogResult.None;
                 return;
             }
@@ -493,7 +492,7 @@ public partial class FImportData : Form
     {
         if (!Clipboard.ContainsText()) return;
 
-        var reader = new CSVStringReader(Clipboard.GetText());
+        var reader = new CsvStringReader(Clipboard.GetText());
 
         if (reader.RowCount == 0) return;
 
@@ -512,7 +511,7 @@ public partial class FImportData : Form
             text = readerFile.ReadToEnd();
         }
 
-        var reader = new CSVStringReader(text);
+        var reader = new CsvStringReader(text);
 
         if (reader.RowCount == 0) return;
 
@@ -525,7 +524,7 @@ public partial class FImportData : Form
 
         if (result == DialogResult.Cancel) return;
 
-        var reader = new XLSReader(ofDialogXLS.FileName);
+        var reader = new XlsReader(ofDialogXLS.FileName);
 
         if (reader.RowCount == 0) return;
 
@@ -674,7 +673,7 @@ public partial class FImportData : Form
         {
             case ".xls":
             case ".xlsx":
-                var readerXLS = new XLSReader(files[0]);
+                var readerXLS = new XlsReader(files[0]);
 
                 if (readerXLS.RowCount == 0) return;
                 SetTable(readerXLS);
@@ -687,7 +686,7 @@ public partial class FImportData : Form
                     text = readerFile.ReadToEnd();
                 }
 
-                var readerCSV = new CSVStringReader(text);
+                var readerCSV = new CsvStringReader(text);
 
                 if (readerCSV.RowCount == 0) return;
 

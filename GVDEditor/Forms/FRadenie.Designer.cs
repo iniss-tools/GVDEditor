@@ -30,11 +30,10 @@ namespace GVDEditor.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRadenie));
             this.bSave = new ExControls.ExButton();
             this.bStorno = new ExControls.ExButton();
-            this.cbSoundDir = new ExComboBox();
+            this.cbSoundDir = new ExControls.ExComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listAllSounds = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,11 +44,11 @@ namespace GVDEditor.Forms
             this.listRadenie = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbLanguage = new ExComboBox();
-            this.tbTextSound = new ExTextBox();
+            this.cbLanguage = new ExControls.ExComboBox();
+            this.tbTextSound = new ExControls.ExTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.tbTextRadenie = new ExTextBox();
+            this.tbTextRadenie = new ExControls.ExTextBox();
             this.bPlay = new ExControls.ExButton();
             this.SuspendLayout();
             // 
@@ -70,10 +69,12 @@ namespace GVDEditor.Forms
             // 
             // cbSoundDir
             // 
+            this.cbSoundDir.DropDownSelectedRowBackColor = System.Drawing.SystemColors.Highlight;
             this.cbSoundDir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSoundDir.FormattingEnabled = true;
             resources.ApplyResources(this.cbSoundDir, "cbSoundDir");
             this.cbSoundDir.Name = "cbSoundDir";
+            this.cbSoundDir.UseDarkScrollBar = false;
             this.cbSoundDir.SelectedIndexChanged += new System.EventHandler(this.cbSoundDir_SelectedIndexChanged);
             // 
             // label1
@@ -149,17 +150,24 @@ namespace GVDEditor.Forms
             // 
             // cbLanguage
             // 
+            this.cbLanguage.DropDownSelectedRowBackColor = System.Drawing.SystemColors.Highlight;
             this.cbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLanguage.FormattingEnabled = true;
             resources.ApplyResources(this.cbLanguage, "cbLanguage");
             this.cbLanguage.Name = "cbLanguage";
+            this.cbLanguage.UseDarkScrollBar = false;
             this.cbLanguage.SelectedIndexChanged += new System.EventHandler(this.cbLanguage_SelectedIndexChanged);
             // 
             // tbTextSound
             // 
+            this.tbTextSound.BorderColor = System.Drawing.Color.DimGray;
             this.tbTextSound.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTextSound.DisabledBackColor = System.Drawing.SystemColors.Control;
             this.tbTextSound.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
+            this.tbTextSound.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.tbTextSound.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.tbTextSound.HintForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbTextSound.HintText = null;
             resources.ApplyResources(this.tbTextSound, "tbTextSound");
             this.tbTextSound.Name = "tbTextSound";
             this.tbTextSound.ReadOnly = true;
@@ -176,9 +184,14 @@ namespace GVDEditor.Forms
             // 
             // tbTextRadenie
             // 
+            this.tbTextRadenie.BorderColor = System.Drawing.Color.DimGray;
             this.tbTextRadenie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTextRadenie.DisabledBackColor = System.Drawing.SystemColors.Control;
             this.tbTextRadenie.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
+            this.tbTextRadenie.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.tbTextRadenie.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.tbTextRadenie.HintForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbTextRadenie.HintText = null;
             resources.ApplyResources(this.tbTextRadenie, "tbTextRadenie");
             this.tbTextRadenie.Name = "tbTextRadenie";
             this.tbTextRadenie.ReadOnly = true;

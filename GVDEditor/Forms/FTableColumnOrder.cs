@@ -28,8 +28,7 @@ public partial class FTableColumnOrder : Form
     public FTableColumnOrder(IList<TableItem> items, IList<TableViewTypeTab> itemsTypeTabs)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         AllItems = new BindingList<TableItem>(items);
         ItemsTypeTabs = new BindingList<TableViewTypeTab>(itemsTypeTabs);

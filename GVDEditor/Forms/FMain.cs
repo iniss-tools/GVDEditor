@@ -4,7 +4,9 @@ using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
 using Microsoft.VisualBasic.FileIO;
+using ToolsCore;
 using ToolsCore.Entities;
+using ToolsCore.Forms;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 using AppRegistry = ToolsCore.Tools.AppRegistry;
@@ -51,7 +53,6 @@ public partial class FMain : Form
                 Process.Start(LinkConsts.LINK_DOWNLOAD);
         }
 
-        FormUtils.SetFormFont(this);
         mainMenu.Renderer = new ToolStripProfessionalRenderer(new FormUtils.LightColorTable());
 
         tsslDate.Font = GlobData.Config.Fonts.StateRow.Font;
@@ -74,19 +75,19 @@ public partial class FMain : Form
 
         switch (GlobData.Config.DesktopMenuMode)
         {
-            case Config.DesktopMenu.MsTs:
+            case DesktopMenu.MsTs:
                 mainMenu.Visible = true;
                 toolMenu.Visible = true;
                 mainMenu.Items.Remove(tscbObdobie);
                 mainMenu.Items.Remove(tscbStanica);
                 break;
-            case Config.DesktopMenu.MsOnly:
+            case DesktopMenu.MsOnly:
                 mainMenu.Visible = true;
                 toolMenu.Visible = false;
                 mainMenu.Items.Add(tscbObdobie);
                 mainMenu.Items.Add(tscbStanica);
                 break;
-            case Config.DesktopMenu.TsOnly:
+            case DesktopMenu.TsOnly:
                 mainMenu.Visible = false;
                 toolMenu.Visible = true;
                 mainMenu.Items.Remove(tscbObdobie);
@@ -98,15 +99,15 @@ public partial class FMain : Form
         backgroundWorker1.DoWork += BackgroundWorker1_DoWork;
         backgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
 
-        var recentDirs = AppRegistry.GetRecentDirs(Application.ProductName);
+        var recentDirs = AppRegistry.GetOpenedProjects(Application.ProductName);
 
         foreach (var dir in recentDirs)
         {
             var itemA = new ToolStripMenuItem(dir);
             var itemB = new ToolStripMenuItem(dir);
 
-            itemA.Click += NedavneDirsClick;
-            itemB.Click += NedavneDirsClick;
+            itemA.Click += RecentDirsClick;
+            itemB.Click += RecentDirsClick;
             tsmiRecent.DropDownItems.Add(itemA);
             tssbRecentDirs.DropDownItems.Add(itemB);
         }
@@ -125,7 +126,17 @@ public partial class FMain : Form
         if (tscbStanica.ComboBox != null) tscbStanica.ComboBox.DataSource = Stanice;
         if (tscbObdobie.ComboBox != null) tscbObdobie.ComboBox.DataSource = ObdobiaList;
 
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
+    }
+
+    private void FMain_Load(object sender, EventArgs e)
+    {
+        if (GlobData.Config.Startup == StartupType.LastProject)
+        {
+            var path = AppRegistry.GetLastProject(Application.ProductName);
+            if (!string.IsNullOrWhiteSpace(path)) 
+                OpenRecentProject(path);
+        }
     }
 
     private bool DataSaved
@@ -156,7 +167,7 @@ public partial class FMain : Form
 
     private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
     {
-        if (GlobData.Config.DebugModeGUI != Config.DebugMode.AppCrash)
+        if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
             try
             {
                 ProccessData((PathAndGVD)e.Argument);
@@ -166,9 +177,9 @@ public partial class FMain : Form
                 Log.Exception(exception);
                 Program.MainForm.Invoke(delegate()
                 {
-                    if (GlobData.Config.DebugModeGUI == Config.DebugMode.OnlyMessage)
+                    if (GlobData.Config.DebugModeGUI == DebugMode.OnlyMessage)
                         FOpenGvdError.ShowError(exception.Message);
-                    if (GlobData.Config.DebugModeGUI == Config.DebugMode.DetailedInfo)
+                    if (GlobData.Config.DebugModeGUI == DebugMode.DetailInfo)
                         FOpenGvdError.ShowError(exception.ToString());
                 }
                 );
@@ -184,21 +195,21 @@ public partial class FMain : Form
 
     private void ProccessData(PathAndGVD pathgvd)
     {
-        GlobData.CustomStations = new ExBindingList<Station>(TXTParser.ReadCustomStations(pathgvd.Path, pathgvd.Gvd));
+        GlobData.CustomStations = new ExBindingList<Station>(TxtParser.ReadCustomStations(pathgvd.Path, pathgvd.Gvd));
 
-        var (tabtabs, catalogs, physicals, logicals) = TXTParser.ReadTables(pathgvd.Path);
+        var (tabtabs, catalogs, physicals, logicals) = TxtParser.ReadTables(pathgvd.Path);
         GlobData.TabTabs = new ExBindingList<TableTabTab>(tabtabs);
         GlobData.TableCatalogs = new ExBindingList<TableCatalog>(catalogs);
         GlobData.TablePhysicals = new ExBindingList<TablePhysical>(physicals);
         GlobData.TableLogicals = new ExBindingList<TableLogical>(logicals);
 
-        var operators = TXTParser.ReadOperators(pathgvd.Path);
+        var operators = TxtParser.ReadOperators(pathgvd.Path);
         GlobData.Operators = new ExBindingList<Operator>(operators)
         {
             FireEventOnSort = true
         };
 
-        var tracks = TXTParser.ReadTracks(pathgvd.Path);
+        var tracks = TxtParser.ReadTracks(pathgvd.Path);
         GlobData.Tracks = new ExBindingList<Track>(tracks)
         {
             FireEventOnSort = true
@@ -209,19 +220,19 @@ public partial class FMain : Form
             nastupistia.Add(kolaj.Platform);
         GlobData.Platforms = new ExBindingList<Platform>(nastupistia.ToList());
 
-        (GlobData.ReportVariants,GlobData.ReportTypes,GlobData.LocalLanguages) = TXTParser.ReadLocalCategori(pathgvd.Path);
+        (GlobData.ReportVariants,GlobData.ReportTypes,GlobData.LocalLanguages) = TxtParser.ReadLocalCategori(pathgvd.Path);
         InitDruhyReportov();
 
         var allSounds = new List<FyzSound>();
         foreach (var language in GlobData.LocalLanguages)
             allSounds.AddRange(language.IsBasic ? GlobData.Sounds : RawBankParser.ReadFyzZvukFile(GlobData.RawBankDir, language));
 
-        try { GlobData.Radenia = TXTParser.ReadRazeni1(pathgvd.Path, allSounds); }catch (FileNotFoundException) { }
+        try { GlobData.Radenia = TxtParser.ReadRazeni1(pathgvd.Path, allSounds); }catch (FileNotFoundException) { }
 
-        GlobData.Trains = new ExBindingList<Train>(TXTParser.ReadTrains(pathgvd.Path));
+        GlobData.Trains = new ExBindingList<Train>(TxtParser.ReadTrains(pathgvd.Path));
 
-        GlobData.TableTexts = new ExBindingList<TableText>(TXTParser.ReadTTexts(pathgvd.Path, GlobData.Trains));
-        GlobData.TableFonts = new ExBindingList<TableFont>(TXTParser.ReadTableFonts(pathgvd.Path));
+        GlobData.TableTexts = new ExBindingList<TableText>(TxtParser.ReadTTexts(pathgvd.Path, GlobData.Trains));
+        GlobData.TableFonts = new ExBindingList<TableFont>(TxtParser.ReadTableFonts(pathgvd.Path));
     }
 
     private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -300,7 +311,7 @@ public partial class FMain : Form
 
     private void DoSave()
     {
-        if (GlobData.Config.DebugModeGUI == Config.DebugMode.AppCrash)
+        if (GlobData.Config.DebugModeGUI == DebugMode.AppCrash)
             DoSaveInternal();
         else
             try
@@ -309,7 +320,7 @@ public partial class FMain : Form
             }
             catch (Exception e)
             {
-                var monly = GlobData.Config.DebugModeGUI == Config.DebugMode.OnlyMessage;
+                var monly = GlobData.Config.DebugModeGUI == DebugMode.OnlyMessage;
                 Utils.ShowError(monly ? e.Message : e.ToString());
             }
 
@@ -320,17 +331,17 @@ public partial class FMain : Form
             if (GlobData.Config.AutoTableText) 
                 GenerateTableTextWhileSaving(dir);
 
-            TXTParser.WriteTrains(dir.Dir.FullPath, GlobData.Trains, dir.GVD, GlobData.ReportVariants);
-            TXTParser.WriteRazeni1(dir.Dir.FullPath, GlobData.Radenia, GlobData.LocalLanguages);
+            TxtParser.WriteTrains(dir.Dir.FullPath, GlobData.Trains, dir.GVD, GlobData.ReportVariants);
+            TxtParser.WriteRazeni1(dir.Dir.FullPath, GlobData.Radenia, GlobData.LocalLanguages);
             
-            TXTParser.WriteTables(dir.Dir.FullPath, GlobData.TabTabs, GlobData.TableCatalogs, GlobData.TablePhysicals, GlobData.TableLogicals);
-            TXTParser.WriteTTexts(dir.Dir.FullPath, GlobData.TableTexts);
-            TXTParser.WriteTracks(dir.Dir.FullPath, GlobData.Tracks);
-            TXTParser.WriteInfoGVD(dir.Dir.FullPath, dir.GVD);
-            TXTParser.WriteOperators(dir.Dir.FullPath, GlobData.Operators);
-            TXTParser.WriteModeTabs(dir.Dir.FullPath, GlobData.TableFonts, GlobData.TableFontDir);
-            TXTParser.WriteLocalCategori(dir.Dir.FullPath, GlobData.ReportVariants, GlobData.ReportTypes, GlobData.LocalLanguages);
-            TXTParser.WriteCustomStations(dir.Dir.FullPath, GlobData.CustomStations, dir.GVD);
+            TxtParser.WriteTables(dir.Dir.FullPath, GlobData.TabTabs, GlobData.TableCatalogs, GlobData.TablePhysicals, GlobData.TableLogicals);
+            TxtParser.WriteTTexts(dir.Dir.FullPath, GlobData.TableTexts);
+            TxtParser.WriteTracks(dir.Dir.FullPath, GlobData.Tracks);
+            TxtParser.WriteInfoGVD(dir.Dir.FullPath, dir.GVD);
+            TxtParser.WriteOperators(dir.Dir.FullPath, GlobData.Operators);
+            TxtParser.WriteModeTabs(dir.Dir.FullPath, GlobData.TableFonts, GlobData.TableFontDir);
+            TxtParser.WriteLocalCategori(dir.Dir.FullPath, GlobData.ReportVariants, GlobData.ReportTypes, GlobData.LocalLanguages);
+            TxtParser.WriteCustomStations(dir.Dir.FullPath, GlobData.CustomStations, dir.GVD);
 
             DataSaved = true;
         }
@@ -389,11 +400,11 @@ public partial class FMain : Form
             if ((string)tscbStanica.ComboBox.SelectedItem == gvd.ThisStation.Name)
                 ObdobiaList.Add(new GVDDirectory(dir, gvd));
 
-            var dirs = TXTParser.ReadDirList();
+            var dirs = TxtParser.ReadDirList();
             dirs.Add(dir);
-            TXTParser.WriteDirList(dirs);
+            TxtParser.WriteDirList(dirs);
             Directory.CreateDirectory(dir.FullPath);
-            TXTParser.WriteInfoGVD(dir.FullPath, gvd);
+            TxtParser.WriteInfoGVD(dir.FullPath, gvd);
 
             var dgyv = new GVDDirectory(dir, gvd);
             _gvdDirs.Add(dgyv);
@@ -458,13 +469,13 @@ public partial class FMain : Form
 
         try
         {
-            var gvd = TXTParser.ReadInfoGVD(newDirPath);
+            var gvd = TxtParser.ReadInfoGVD(newDirPath);
             var dirList = new DirList { DirName = dirname, FullPath = selectedPath };
             var dgyv = new GVDDirectory(dirList, gvd);
 
-            var dirs = TXTParser.ReadDirList();
+            var dirs = TxtParser.ReadDirList();
             dirs.Add(dirList);
-            TXTParser.WriteDirList(dirs);
+            TxtParser.WriteDirList(dirs);
 
             GlobData.GVDDirs.Add(dirList);
 
@@ -484,17 +495,19 @@ public partial class FMain : Form
 
     private void ShowAppSettings()
     {
-        var appSettings = new FAppSettings();
-        var result = appSettings.ShowDialog();
-        if (result == DialogResult.OK) 
+        var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+        var result = form.ShowDialog();
+        if (result == DialogResult.OK)
+        {
             UpdateMainUI();
+        }
     }
 
     private void UpdateMainUI()
     {
         var menu = GlobData.Config.DesktopMenuMode;
-        mainMenu.Visible = menu is Config.DesktopMenu.MsTs or Config.DesktopMenu.MsOnly;
-        toolMenu.Visible = menu is Config.DesktopMenu.MsTs or Config.DesktopMenu.TsOnly;
+        mainMenu.Visible = menu is DesktopMenu.MsTs or DesktopMenu.MsOnly;
+        toolMenu.Visible = menu is DesktopMenu.MsTs or DesktopMenu.TsOnly;
         statusStrip.Visible = GlobData.Config.ShowStateRow;
         tsslDate.Visible = GlobData.Config.ShowDateTimeInStateRow;
         tsslTime.Visible = GlobData.Config.ShowDateTimeInStateRow;
@@ -505,12 +518,13 @@ public partial class FMain : Form
         SetColumnsAutoWidth();
         SetShortcuts();
         Refresh();
+        AppInit.MsgBoxStyleInit(GlobData.UsingStyle, GlobData.Config);
     }
 
-    private static void ShowInformationApp()
+    private void ShowInfoApp()
     {
-        var iform = new FInfoApp();
-        iform.ShowDialog();
+        var form = new FAboutApp(Resources.AboutAppDescription, Resources.gvd);
+        form.ShowDialog(this);
     }
 
     //TODO prerobiť
@@ -539,11 +553,11 @@ public partial class FMain : Form
             var dirlist = gf.Grafikony.Select(gvd => gvd.Dir).ToList();
 
             GlobData.GVDDirs = dirlist;
-            TXTParser.WriteDirList(dirlist);
-            TXTParser.WriteTrainTypes(GlobData.TrainsTypes);
-            TXTParser.WriteZpozdeni(GlobData.Delays);
-            TXTParser.WriteAudio(GlobData.Audios);
-            TXTParser.WriteLanguages(GlobData.Languages.ToList());
+            TxtParser.WriteDirList(dirlist);
+            TxtParser.WriteTrainTypes(GlobData.TrainsTypes);
+            TxtParser.WriteZpozdeni(GlobData.Delays);
+            TxtParser.WriteAudio(GlobData.Audios);
+            TxtParser.WriteLanguages(GlobData.Languages.ToList());
             GlobData.LocalLanguages = GlobData.Languages.ToList(); //TODO prerobit
             
             GlobData.Trains.ResetBindings();
@@ -595,7 +609,7 @@ public partial class FMain : Form
 
                 GlobData.GVDDirs.Remove(gvd.Dir);
 
-                TXTParser.WriteDirList(GlobData.GVDDirs);
+                TxtParser.WriteDirList(GlobData.GVDDirs);
 
                 try
                 {
@@ -640,7 +654,7 @@ public partial class FMain : Form
         GlobData.Trains.Clear();
         _prechod = false;
 
-        if (GlobData.Config.DebugModeGUI != Config.DebugMode.AppCrash)
+        if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
             try
             {
                 GlobData.PrepareGlobalData(selectedPath);
@@ -651,10 +665,10 @@ public partial class FMain : Form
 
                 switch (GlobData.Config.DebugModeGUI)
                 {
-                    case Config.DebugMode.OnlyMessage:
+                    case DebugMode.OnlyMessage:
                         FOpenGvdError.ShowError(e.Message);
                         break;
-                    case Config.DebugMode.DetailedInfo:
+                    case DebugMode.DetailInfo:
                         FOpenGvdError.ShowError(e.ToString());
                         break;
                 }
@@ -664,16 +678,19 @@ public partial class FMain : Form
         else
             GlobData.PrepareGlobalData(selectedPath);
 
-        AppRegistry.SetNewRecentDir(Application.ProductName, selectedPath);
+        AppRegistry.AddNewOpenedProject(Application.ProductName, selectedPath);
 
         if (InitializeDataList()) InitializeGUI();
     }
 
     private void ShowStartupINISSSettings()
     {
-        var appSettings = new FAppSettings(FAppSettings.Startup);
-        var result = appSettings.ShowDialog();
-        if (result == DialogResult.OK) UpdateMainUI();
+        var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+        form.PreselectMenuItem("pStartupIniss");
+        if (form.ShowDialog() == DialogResult.OK)
+        {
+            UpdateMainUI();
+        }
     }
 
     private void DoDeleteTrains()
@@ -701,13 +718,13 @@ public partial class FMain : Form
         {
             var stanice = new HashSet<string>();
             var obdobiaList = new List<GVDDirectory>();
-            var dirsInData = TXTParser.ReadDirList();
+            var dirsInData = TxtParser.ReadDirList();
             foreach (var dir in dirsInData)
             {
                 GVDInfo gvd;
-                if (GlobData.Config.DebugModeGUI == Config.DebugMode.AppCrash)
+                if (GlobData.Config.DebugModeGUI == DebugMode.AppCrash)
                 {
-                    gvd = TXTParser.ReadInfoGVD(dir.FullPath);
+                    gvd = TxtParser.ReadInfoGVD(dir.FullPath);
                     stanice.Add(gvd.ThisStation.Name);
                     obdobiaList.Add(new GVDDirectory(dir, gvd));
                 }
@@ -715,13 +732,13 @@ public partial class FMain : Form
                 {
                     try
                     {
-                        gvd = TXTParser.ReadInfoGVD(dir.FullPath);
+                        gvd = TxtParser.ReadInfoGVD(dir.FullPath);
                         stanice.Add(gvd.ThisStation.Name);
                         obdobiaList.Add(new GVDDirectory(dir, gvd));
                     }
                     catch (Exception e)
                     {
-                        FOpenGvdError.ShowError(GlobData.Config.DebugModeGUI == Config.DebugMode.DetailedInfo ? e.ToString() : e.Message);
+                        FOpenGvdError.ShowError(GlobData.Config.DebugModeGUI == DebugMode.DetailInfo ? e.ToString() : e.Message);
                         Log.Exception(e);
                     }
                 }
@@ -739,6 +756,7 @@ public partial class FMain : Form
             return false;
         }
 
+        AppRegistry.SetLastProject(Application.ProductName, GlobData.INISSDir);
         return true;
     }
 
@@ -870,19 +888,22 @@ public partial class FMain : Form
         }
     }
 
-    private void NedavneDirsClick(object sender, EventArgs e)
+    private void RecentDirsClick(object sender, EventArgs e)
     {
         var menuItem = (ToolStripMenuItem)sender;
-        var menuText = menuItem.Text;
+        OpenRecentProject(menuItem.Text);
+    }
 
+    private void OpenRecentProject(string fullPath)
+    {
         _prechod = true;
         GlobData.Trains.Clear();
         _prechod = false;
 
-        if (GlobData.Config.DebugModeGUI != Config.DebugMode.AppCrash)
+        if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
             try
             {
-                GlobData.PrepareGlobalData(menuText);
+                GlobData.PrepareGlobalData(fullPath);
             }
             catch (Exception exception)
             {
@@ -890,10 +911,10 @@ public partial class FMain : Form
 
                 switch (GlobData.Config.DebugModeGUI)
                 {
-                    case Config.DebugMode.OnlyMessage:
+                    case DebugMode.OnlyMessage:
                         FOpenGvdError.ShowError(exception.Message);
                         break;
-                    case Config.DebugMode.DetailedInfo:
+                    case DebugMode.DetailInfo:
                         FOpenGvdError.ShowError(exception.ToString());
                         break;
                 }
@@ -901,9 +922,10 @@ public partial class FMain : Form
                 return;
             }
         else
-            GlobData.PrepareGlobalData(menuText);
+            GlobData.PrepareGlobalData(fullPath);
 
-        if (InitializeDataList()) InitializeGUI();
+        if (InitializeDataList()) 
+            InitializeGUI();
     }
 
     private void timerTimeAndDate_Tick(object sender, EventArgs e)
@@ -913,7 +935,7 @@ public partial class FMain : Form
     }
 
     private void tsbInformation_Click(object sender, EventArgs e)
-        => ShowInformationApp();
+        => ShowInfoApp();
 
     private void tscbStanica_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -997,25 +1019,25 @@ public partial class FMain : Form
             GlobData.Trains.Clear();
             _prechod = false;
 
-            TXTParser.WriteTrains(dir.Dir.FullPath, GlobData.Trains.ToList(), dir.GVD, GlobData.ReportVariants);
+            TxtParser.WriteTrains(dir.Dir.FullPath, GlobData.Trains.ToList(), dir.GVD, GlobData.ReportVariants);
 
-            TXTParser.WriteTables(dir.Dir.FullPath, GlobData.TabTabs, GlobData.TableCatalogs, GlobData.TablePhysicals, GlobData.TableLogicals);
-            TXTParser.WriteTTexts(dir.Dir.FullPath, GlobData.TableTexts);
+            TxtParser.WriteTables(dir.Dir.FullPath, GlobData.TabTabs, GlobData.TableCatalogs, GlobData.TablePhysicals, GlobData.TableLogicals);
+            TxtParser.WriteTTexts(dir.Dir.FullPath, GlobData.TableTexts);
 
-            TXTParser.WriteTracks(dir.Dir.FullPath, GlobData.Tracks);
+            TxtParser.WriteTracks(dir.Dir.FullPath, GlobData.Tracks);
 
-            TXTParser.WriteInfoGVD(dir.Dir.FullPath, dir.GVD);
+            TxtParser.WriteInfoGVD(dir.Dir.FullPath, dir.GVD);
 
-            TXTParser.WriteOperators(dir.Dir.FullPath, GlobData.Operators);
+            TxtParser.WriteOperators(dir.Dir.FullPath, GlobData.Operators);
 
-            TXTParser.WriteModeTabs(dir.Dir.FullPath, GlobData.TableFonts, GlobData.TableFontDir);
+            TxtParser.WriteModeTabs(dir.Dir.FullPath, GlobData.TableFonts, GlobData.TableFontDir);
 
-            TXTParser.WriteStateDgm(dir.Dir.FullPath);
+            TxtParser.WriteStateDgm(dir.Dir.FullPath);
 
-            TXTParser.WriteLocalCategori(dir.Dir.FullPath, GlobData.ReportVariants, GlobData.ReportTypes, GlobData.Languages);
+            TxtParser.WriteLocalCategori(dir.Dir.FullPath, GlobData.ReportVariants, GlobData.ReportTypes, GlobData.Languages);
 
-            TXTParser.WriteRazeniDefault(dir.Dir.FullPath);
-            TXTParser.WriteRazeni1Default(dir.Dir.FullPath);
+            TxtParser.WriteRazeniDefault(dir.Dir.FullPath);
+            TxtParser.WriteRazeni1Default(dir.Dir.FullPath);
 
             _newDir = null;
             return;
@@ -1244,7 +1266,7 @@ public partial class FMain : Form
 
     private void tsmiAppSettings_Click(object sender, EventArgs e) => ShowAppSettings();
 
-    private void tsmiInformation_Click(object sender, EventArgs e) => ShowInformationApp();
+    private void tsmiInformation_Click(object sender, EventArgs e) => ShowInfoApp();
 
     private void tsmiChangelog_Click(object sender, EventArgs e) => Process.Start(LinkConsts.LINK_NEWS);
 
@@ -1516,50 +1538,51 @@ public partial class FMain : Form
 
     private void SetShortcuts()
     {
-        tsmiNew.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.NewGVD.Shortcut.ThisShortcut;
-        tsmiOpen.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.OpenGVD.Shortcut.ThisShortcut;
-        tsmiImportData.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.ImportData.Shortcut.ThisShortcut;
-        tsmiImportGVD.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.ImportGVD.Shortcut.ThisShortcut;
-        tsmiSave.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.Save.Shortcut.ThisShortcut;
-        tsmiAnalyze.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.Analyze.Shortcut.ThisShortcut;
+        var sc = GlobData.Config.Shortcuts;
+        tsmiNew.ShortcutKeys = (Keys)sc.New.Shortcut.Value;
+        tsmiOpen.ShortcutKeys = (Keys)sc.Open.Shortcut.Value;
+        tsmiImportData.ShortcutKeys = (Keys)sc.ImportData.Shortcut.Value;
+        tsmiImportGVD.ShortcutKeys = (Keys)sc.ImportGvd.Shortcut.Value;
+        tsmiSave.ShortcutKeys = (Keys)sc.Save.Shortcut.Value;
+        tsmiAnalyze.ShortcutKeys = (Keys)sc.Analyze.Shortcut.Value;
 
-        tsmimAddTrain.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.AddTrain.Shortcut.ThisShortcut;
-        tsmimEditTrain.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.EditTrain.Shortcut.ThisShortcut;
-        tsmiDeleteTrain.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.DeleteTrains.Shortcut.ThisShortcut;
-        tsmiDuplikovat.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.DuplicateTrain.Shortcut.ThisShortcut;
+        tsmimAddTrain.ShortcutKeys = (Keys)sc.AddTrain.Shortcut.Value;
+        tsmimEditTrain.ShortcutKeys = (Keys)sc.EditTrain.Shortcut.Value;
+        tsmiDeleteTrain.ShortcutKeys = (Keys)sc.DeleteTrains.Shortcut.Value;
+        tsmiDuplikovat.ShortcutKeys = (Keys)sc.DuplicateTrain.Shortcut.Value;
 
-        tsmiVlastnostiStanice.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.LocalSettings.Shortcut.ThisShortcut;
-        tsmiGlobalSettings.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.GlobalSettings.Shortcut.ThisShortcut;
-        tsmiAppSettings.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.AppSettings.Shortcut.ThisShortcut;
+        tsmiVlastnostiStanice.ShortcutKeys = (Keys)sc.LocalSettings.Shortcut.Value;
+        tsmiGlobalSettings.ShortcutKeys = (Keys)sc.GlobalSettings.Shortcut.Value;
+        tsmiAppSettings.ShortcutKeys = (Keys)sc.AppSettings.Shortcut.Value;
 
-        tsmiInformation.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.InfoApp.Shortcut.ThisShortcut;
-        tsmiChangelog.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.UpdateNotes.Shortcut.ThisShortcut;
+        tsmiInformation.ShortcutKeys = (Keys)sc.InfoApp.Shortcut.Value;
+        tsmiChangelog.ShortcutKeys = (Keys) sc.UpdateNotes.Shortcut.Value;
 
-        tsmimStartINISS.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.RunINISS.Shortcut.ThisShortcut;
-        tsmimShutdownINISS.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.ShutdownINISS.Shortcut.ThisShortcut;
-        tsmimKillINISS.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.KillINISS.Shortcut.ThisShortcut;
-        tsmimRestartINISS.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.RestartINISS.Shortcut.ThisShortcut;
+        tsmimStartINISS.ShortcutKeys = (Keys)sc.RunINISS.Shortcut.Value;
+        tsmimShutdownINISS.ShortcutKeys = (Keys)sc.ShutdownINISS.Shortcut.Value;
+        tsmimKillINISS.ShortcutKeys = (Keys)sc.KillINISS.Shortcut.Value;
+        tsmimRestartINISS.ShortcutKeys = (Keys)sc.RestartINISS.Shortcut.Value;
 
-        tsmiGrafikon.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.LSGrafikon.Shortcut.ThisShortcut;
-        tsmiStanice.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.LSStanice.Shortcut.ThisShortcut;
-        tsmiDopravcovia.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.LSDopravcovia.Shortcut.ThisShortcut;
-        tsmiPlatforms.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.LSPlatforms.Shortcut.ThisShortcut;
-        tsmiKolaje.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.LSKolaje.Shortcut.ThisShortcut;
-        tsmiTPhysical.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.LSTPhysicals.Shortcut.ThisShortcut;
-        tsmiTLogical.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.LSTLogicals.Shortcut.ThisShortcut;
-        tsmiTCatalog.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.LSTCatalogs.Shortcut.ThisShortcut;
-        tsmiTabTab.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.LSTabTab.Shortcut.ThisShortcut;
-        tsmiTTexts.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.LSTTexts.Shortcut.ThisShortcut;
-        tsmiTFonts.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.LSTFonts.Shortcut.ThisShortcut;
-        tsmiTabTabEditor.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.LSTabTabEditor.Shortcut.ThisShortcut;
+        tsmiGrafikon.ShortcutKeys = (Keys)sc.LSGvd.Shortcut.Value;
+        tsmiStanice.ShortcutKeys = (Keys)sc.LSStations.Shortcut.Value;
+        tsmiDopravcovia.ShortcutKeys = (Keys)sc.LSOperators.Shortcut.Value;
+        tsmiPlatforms.ShortcutKeys = (Keys)sc.LSPlatforms.Shortcut.Value;
+        tsmiKolaje.ShortcutKeys = (Keys)sc.LSTracks.Shortcut.Value;
+        tsmiTPhysical.ShortcutKeys = (Keys)sc.LSPhysicalTables.Shortcut.Value;
+        tsmiTLogical.ShortcutKeys = (Keys)sc.LSLogicalsTables.Shortcut.Value;
+        tsmiTCatalog.ShortcutKeys = (Keys)sc.LSCatalogTables.Shortcut.Value;
+        tsmiTabTab.ShortcutKeys = (Keys)sc.LSTabTab.Shortcut.Value;
+        tsmiTTexts.ShortcutKeys = (Keys)sc.LSTTexts.Shortcut.Value;
+        tsmiTFonts.ShortcutKeys = (Keys)sc.LSTFonts.Shortcut.Value;
+        tsmiTabTabEditor.ShortcutKeys = (Keys)sc.LSTabTabEditor.Shortcut.Value;
 
-        tsmiGrafikony.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.GSGrafikony.Shortcut.ThisShortcut;
-        tsmiLanguages.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.GSLanguages.Shortcut.ThisShortcut;
-        tsmiMeskania.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.GSMeskania.Shortcut.ThisShortcut;
-        tsmiTypyVlakov.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.GSTrainTypes.Shortcut.ThisShortcut;
-        tsmiAudio.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.GSAudio.Shortcut.ThisShortcut;
+        tsmiGrafikony.ShortcutKeys = (Keys)sc.GSGvds.Shortcut.Value;
+        tsmiLanguages.ShortcutKeys = (Keys)sc.GSLanguages.Shortcut.Value;
+        tsmiMeskania.ShortcutKeys = (Keys)sc.GSDelays.Shortcut.Value;
+        tsmiTypyVlakov.ShortcutKeys = (Keys)sc.GSTrainTypes.Shortcut.Value;
+        tsmiAudio.ShortcutKeys = (Keys)sc.GSAudio.Shortcut.Value;
 
-        tsmiDatObm.ShortcutKeys = (Keys)GlobData.Config.Shortcuts.DatObm.Shortcut.ThisShortcut;
+        tsmiDatObm.ShortcutKeys = (Keys)sc.DateLimit.Shortcut.Value;
     }
 
     private static void CheckAutoTrainVariants(int index)
@@ -1589,7 +1612,7 @@ public partial class FMain : Form
     {
         var data = (SendData)e.Argument;
 
-        if (GlobData.Config.DebugModeGUI != Config.DebugMode.AppCrash)
+        if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
             try
             {
                 e.Result = CallELISParser(data);
@@ -1598,9 +1621,9 @@ public partial class FMain : Form
             {
                 Log.Exception(exception);
 
-                if (GlobData.Config.DebugModeGUI == Config.DebugMode.OnlyMessage)
+                if (GlobData.Config.DebugModeGUI == DebugMode.OnlyMessage)
                     Utils.ShowError(exception.Message);
-                if (GlobData.Config.DebugModeGUI == Config.DebugMode.DetailedInfo)
+                if (GlobData.Config.DebugModeGUI == DebugMode.DetailInfo)
                     Utils.ShowError(exception.ToString());
 
                 _error = true;

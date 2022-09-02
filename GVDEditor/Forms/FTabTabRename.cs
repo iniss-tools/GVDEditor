@@ -13,9 +13,7 @@ internal partial class FTabTabRename : Form
     public FTabTabRename()
     {
         InitializeComponent();
-
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
     }
 
     public string NewTabName { get; private set; }

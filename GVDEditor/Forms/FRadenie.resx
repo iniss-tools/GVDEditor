@@ -123,17 +123,17 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>382, 516</value>
+    <value>286, 419</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="bSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 33</value>
+    <value>56, 27</value>
   </data>
   <data name="bSave.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>17</value>
   </data>
   <data name="bSave.Text" xml:space="preserve">
     <value>Uložiť</value>
@@ -142,7 +142,7 @@
     <value>bSave</value>
   </data>
   <data name="&gt;&gt;bSave.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bSave.Parent" xml:space="preserve">
     <value>$this</value>
@@ -154,16 +154,16 @@
     <value>True</value>
   </data>
   <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>514, 516</value>
+    <value>386, 419</value>
   </data>
   <data name="bStorno.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 33</value>
+    <value>56, 27</value>
   </data>
   <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>18</value>
   </data>
   <data name="bStorno.Text" xml:space="preserve">
     <value>Zrušiť</value>
@@ -172,7 +172,7 @@
     <value>bStorno</value>
   </data>
   <data name="&gt;&gt;bStorno.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bStorno.Parent" xml:space="preserve">
     <value>$this</value>
@@ -181,22 +181,19 @@
     <value>17</value>
   </data>
   <data name="cbSoundDir.Location" type="System.Drawing.Point, System.Drawing">
-    <value>298, 21</value>
-  </data>
-  <data name="cbSoundDir.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>224, 17</value>
   </data>
   <data name="cbSoundDir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>655, 24</value>
+    <value>492, 21</value>
   </data>
   <data name="cbSoundDir.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;cbSoundDir.Name" xml:space="preserve">
     <value>cbSoundDir</value>
   </data>
   <data name="&gt;&gt;cbSoundDir.Type" xml:space="preserve">
-    <value>GVDEditor.Controls.DynamicComboBox, GVDEditor, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbSoundDir.Parent" xml:space="preserve">
     <value>$this</value>
@@ -208,16 +205,13 @@
     <value>True</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 24</value>
-  </data>
-  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>165, 20</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 17</value>
+    <value>54, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Priečinok:</value>
@@ -234,20 +228,14 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
-  <data name="listAllSounds.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
   <data name="listAllSounds.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 79</value>
-  </data>
-  <data name="listAllSounds.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>14, 64</value>
   </data>
   <data name="listAllSounds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>382, 324</value>
+    <value>288, 264</value>
   </data>
   <data name="listAllSounds.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;listAllSounds.Name" xml:space="preserve">
     <value>listAllSounds</value>
@@ -265,16 +253,13 @@
     <value>True</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 58</value>
-  </data>
-  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>13, 47</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 17</value>
+    <value>142, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Dostupné zvuky v priečinku:</value>
@@ -292,16 +277,13 @@
     <value>13</value>
   </data>
   <data name="bAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>436, 124</value>
-  </data>
-  <data name="bAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>327, 101</value>
   </data>
   <data name="bAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 28</value>
+    <value>75, 23</value>
   </data>
   <data name="bAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="bAdd.Text" xml:space="preserve">
     <value>Pridať</value>
@@ -310,7 +292,7 @@
     <value>bAdd</value>
   </data>
   <data name="&gt;&gt;bAdd.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bAdd.Parent" xml:space="preserve">
     <value>$this</value>
@@ -319,16 +301,13 @@
     <value>12</value>
   </data>
   <data name="bDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>436, 160</value>
-  </data>
-  <data name="bDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>327, 130</value>
   </data>
   <data name="bDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 28</value>
+    <value>75, 23</value>
   </data>
   <data name="bDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="bDelete.Text" xml:space="preserve">
     <value>Odstrániť</value>
@@ -337,7 +316,7 @@
     <value>bDelete</value>
   </data>
   <data name="&gt;&gt;bDelete.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bDelete.Parent" xml:space="preserve">
     <value>$this</value>
@@ -346,16 +325,13 @@
     <value>11</value>
   </data>
   <data name="bSkor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>436, 246</value>
-  </data>
-  <data name="bSkor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>327, 200</value>
   </data>
   <data name="bSkor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 28</value>
+    <value>75, 23</value>
   </data>
   <data name="bSkor.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="bSkor.Text" xml:space="preserve">
     <value>Skôr</value>
@@ -364,7 +340,7 @@
     <value>bSkor</value>
   </data>
   <data name="&gt;&gt;bSkor.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bSkor.Parent" xml:space="preserve">
     <value>$this</value>
@@ -373,16 +349,13 @@
     <value>10</value>
   </data>
   <data name="bNeskor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>436, 282</value>
-  </data>
-  <data name="bNeskor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>327, 229</value>
   </data>
   <data name="bNeskor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 28</value>
+    <value>75, 23</value>
   </data>
   <data name="bNeskor.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="bNeskor.Text" xml:space="preserve">
     <value>Neskôr</value>
@@ -391,7 +364,7 @@
     <value>bNeskor</value>
   </data>
   <data name="&gt;&gt;bNeskor.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bNeskor.Parent" xml:space="preserve">
     <value>$this</value>
@@ -399,20 +372,14 @@
   <data name="&gt;&gt;bNeskor.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="listRadenie.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
   <data name="listRadenie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>571, 79</value>
-  </data>
-  <data name="listRadenie.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>428, 64</value>
   </data>
   <data name="listRadenie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>382, 324</value>
+    <value>288, 264</value>
   </data>
   <data name="listRadenie.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;listRadenie.Name" xml:space="preserve">
     <value>listRadenie</value>
@@ -430,16 +397,13 @@
     <value>True</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>568, 58</value>
-  </data>
-  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>426, 47</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 17</value>
+    <value>132, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>6</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Poradie použitých zvukov:</value>
@@ -460,13 +424,16 @@
     <value>True</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 24</value>
+    <value>13, 20</value>
+  </data>
+  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 17</value>
+    <value>37, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>0</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Jazyk:</value>
@@ -484,19 +451,22 @@
     <value>6</value>
   </data>
   <data name="cbLanguage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 21</value>
+    <value>53, 17</value>
+  </data>
+  <data name="cbLanguage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
+    <value>108, 21</value>
   </data>
   <data name="cbLanguage.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;cbLanguage.Name" xml:space="preserve">
     <value>cbLanguage</value>
   </data>
   <data name="&gt;&gt;cbLanguage.Type" xml:space="preserve">
-    <value>GVDEditor.Controls.DynamicComboBox, GVDEditor, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbLanguage.Parent" xml:space="preserve">
     <value>$this</value>
@@ -505,13 +475,16 @@
     <value>5</value>
   </data>
   <data name="tbTextSound.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 438</value>
+    <value>15, 356</value>
+  </data>
+  <data name="tbTextSound.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbTextSound.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="tbTextSound.Size" type="System.Drawing.Size, System.Drawing">
-    <value>381, 72</value>
+    <value>286, 59</value>
   </data>
   <data name="tbTextSound.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -520,7 +493,7 @@
     <value>tbTextSound</value>
   </data>
   <data name="&gt;&gt;tbTextSound.Type" xml:space="preserve">
-    <value>GVDEditor.Controls.DynamicTextBox, GVDEditor, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbTextSound.Parent" xml:space="preserve">
     <value>$this</value>
@@ -532,13 +505,16 @@
     <value>True</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 418</value>
+    <value>13, 340</value>
+  </data>
+  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 17</value>
+    <value>167, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>13</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Text hlásenia označeného zvuku:</value>
@@ -559,13 +535,16 @@
     <value>True</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>422, 418</value>
+    <value>316, 340</value>
+  </data>
+  <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 17</value>
+    <value>114, 13</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>15</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Úplné znenie hlásenia:</value>
@@ -583,22 +562,25 @@
     <value>2</value>
   </data>
   <data name="tbTextRadenie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>425, 438</value>
+    <value>319, 356</value>
+  </data>
+  <data name="tbTextRadenie.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbTextRadenie.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="tbTextRadenie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>528, 72</value>
+    <value>396, 59</value>
   </data>
   <data name="tbTextRadenie.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>16</value>
   </data>
   <data name="&gt;&gt;tbTextRadenie.Name" xml:space="preserve">
     <value>tbTextRadenie</value>
   </data>
   <data name="&gt;&gt;tbTextRadenie.Type" xml:space="preserve">
-    <value>GVDEditor.Controls.DynamicTextBox, GVDEditor, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbTextRadenie.Parent" xml:space="preserve">
     <value>$this</value>
@@ -610,13 +592,16 @@
     <value>True</value>
   </data>
   <data name="bPlay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>436, 376</value>
+    <value>327, 306</value>
+  </data>
+  <data name="bPlay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bPlay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bPlay.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>12</value>
   </data>
   <data name="bPlay.Text" xml:space="preserve">
     <value>Prehrať</value>
@@ -625,7 +610,7 @@
     <value>bPlay</value>
   </data>
   <data name="&gt;&gt;bPlay.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bPlay.Parent" xml:space="preserve">
     <value>$this</value>
@@ -637,13 +622,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>972, 560</value>
+    <value>729, 455</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Úprava radenia vlaku</value>

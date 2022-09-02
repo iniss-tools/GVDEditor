@@ -34,9 +34,6 @@ internal static class FileConsts
     public const string FILE_FYZZVUK = "FYZZVUK.dat";
     public const string FILE_FYZBANK = "FYZBANK.dat";
 
-    public const string FILE_CONFIG = "CONFIG.xml";
-    public const string FILE_STYLES = "STYLES.xml";
-
     public const string DIR_DATA = "DATA";
     public const string DIR_RAWBANK = "RAWBANK";
 }

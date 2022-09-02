@@ -61,7 +61,6 @@ public partial class FEditTrain : Form
     public FEditTrain(Train train, int row, GVDInfo gvd, bool copy = false)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
 
         ThisTrain = train;
         Row = row;
@@ -141,7 +140,7 @@ public partial class FEditTrain : Form
             bDoplnkyDelete.Enabled = false;
         }
 
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         initialization = false;
     }
@@ -1110,7 +1109,7 @@ public partial class FEditTrain : Form
                 soundsS.Add(GlobData.RawBankDir + "\\" + fyzZvuk.Language.RelativePath +
                             fyzZvuk.Group.RelativePath + fyzZvuk.FileName);
 
-        var player = new WAVPlayer(soundsS.ToArray(), GlobData.Config.PlayerWordPause);
+        var player = new WavPlayer(soundsS.ToArray(), GlobData.Config.PlayerWordPause);
         player.StartPlay();
     }
 

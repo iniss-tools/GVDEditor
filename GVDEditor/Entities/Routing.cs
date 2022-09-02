@@ -1,4 +1,4 @@
-﻿using GVDEditor.Properties;
+﻿using ToolsCore;
 
 namespace GVDEditor.Entities;
 
@@ -84,17 +84,17 @@ public sealed class Routing
     /// <summary>
     ///     Vlak končí v stanici
     /// </summary>
-    public static readonly Routing Konciaci = new("Končiaci", "->|", Resources.konecna_st, "K");
+    public static readonly Routing Konciaci = new("Končiaci", "->|", GlobalResources.konecna_st, "K");
 
     /// <summary>
     ///     Vlak prechádza stanicou
     /// </summary>
-    public static readonly Routing Prechadzajuci = new("Prechádzajúci", "<->", Resources.prechadza_st, "P");
+    public static readonly Routing Prechadzajuci = new("Prechádzajúci", "<->", GlobalResources.prechadza_st, "P");
 
     /// <summary>
     ///     Vlak vychádza zo stanice
     /// </summary>
-    public static readonly Routing Vychadzajuci = new("Vychadzajúci", "|->", Resources.vychodzia_st, "V");
+    public static readonly Routing Vychadzajuci = new("Vychadzajúci", "|->", GlobalResources.vychodzia_st, "V");
 
     #endregion
 }

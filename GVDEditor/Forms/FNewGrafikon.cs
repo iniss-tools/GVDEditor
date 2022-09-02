@@ -1,6 +1,5 @@
 ﻿using GVDEditor.Entities;
 using GVDEditor.Properties;
-using GVDEditor.Tools;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
 
@@ -29,8 +28,7 @@ public partial class FNewGrafikon : Form
     public FNewGrafikon()
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         if (!string.IsNullOrEmpty(GlobData.INISSDir)) 
             tbDirIniss.Text = GlobData.INISSDir;

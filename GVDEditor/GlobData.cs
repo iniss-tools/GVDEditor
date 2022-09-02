@@ -54,9 +54,10 @@ internal static class GlobData
 
     public static List<Radenie> Radenia { get; set; }
 
-    public static GVDEditorConfig Config { get; set; }
-    public static Styles<GVDEditorStyle> Styles { get; set; }
-    public static GVDEditorStyle UsingStyle { get; set; }
+    public static GVDEditorConfig Config;
+    public static Styles<GVDEditorStyle> Styles;
+    public static GVDEditorStyle UsingStyle;
+
     public static bool PrivateFeatures { get; set; }
 
     public static void PrepareGlobalData(string pathtoiniss)
@@ -93,7 +94,7 @@ internal static class GlobData
         INISSDir = pathtoiniss;
         DataDir = Utils.CombinePath(pathtoiniss, FileConsts.DIR_DATA);
         RawBankDir = Utils.CombinePath(pathtoiniss, FileConsts.DIR_RAWBANK);
-        GVDDirs = TXTParser.ReadDirList();
+        GVDDirs = TxtParser.ReadDirList();
 
         INISSExeFiles = new List<string>();
         var di = new DirectoryInfo(INISSDir);
@@ -101,13 +102,13 @@ internal static class GlobData
         foreach (var file in subFiles) INISSExeFiles.Add(file.Name);
 
         var langs = RawBankParser.ReadFyzBankFile(RawBankDir, out var maxLangs);
-        Languages = new ExBindingList<FyzLanguage>(TXTParser.ReadGlobalCategori(DataDir, langs, maxLangs));
+        Languages = new ExBindingList<FyzLanguage>(TxtParser.ReadGlobalCategori(DataDir, langs, maxLangs));
 
         LocalLanguages = new List<FyzLanguage>();
         Sounds = RawBankParser.ReadFyzZvukFile(RawBankDir, FyzLanguage.GetBasicLanguage(Languages));
         try
         {
-            TrainsTypes = new ExBindingList<TrainType>(TXTParser.ReadTrainTypes());
+            TrainsTypes = new ExBindingList<TrainType>(TxtParser.ReadTrainTypes());
         }
         catch (FileNotFoundException)
         {
@@ -115,11 +116,11 @@ internal static class GlobData
 
         TrainNames = Train.GetTrainNames();
         Stations = Station.GetStations();
-        Delays = new ExBindingList<int>(TXTParser.ReadZpozdeni());
+        Delays = new ExBindingList<int>(TxtParser.ReadZpozdeni());
 
         try
         {
-            Audios = new ExBindingList<Audio>(TXTParser.ReadAudio());
+            Audios = new ExBindingList<Audio>(TxtParser.ReadAudio());
         }
         catch (FileNotFoundException)
         {

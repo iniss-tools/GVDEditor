@@ -3,7 +3,6 @@ using GVDEditor.Entities;
 using GVDEditor.Properties;
 using System.Collections;
 using System.Text.RegularExpressions;
-using ToolsCore;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
 using ToolsCore.XML;
@@ -17,7 +16,7 @@ namespace GVDEditor.Tools;
 /// <summary>
 ///     Trieda obsahujuca funkcie pre citanie a zapisovanie dat do .TXT suborov.
 /// </summary>
-internal static class TXTParser
+internal static class TxtParser
 {
     private const string FORMAT_EX = "Chyba v súbore {0} na riadku {1}. ";
     private const string FORMAT_EX_AREA = "{0}: Nezadefinované pole {1}.";
@@ -44,13 +43,13 @@ internal static class TXTParser
     /// <param name="lang">jazyk generovania komentara</param>
     /// <param name="toAnsi">true (default) ak ma pouyit ANSI kodovanie, false pre pouzitie UTF-8</param>
     /// <returns></returns>
-    private static IEnumerable<string> GenerateComment(string path, string filename, GVDInfo gvd, Config.AppLanguage lang, bool toAnsi = true)
+    private static IEnumerable<string> GenerateComment(string path, string filename, GVDInfo gvd, AppLanguage lang, bool toAnsi = true)
     {
         var rows = new List<string>();
 
         switch (lang)
         {
-            case Config.AppLanguage.Slovak:
+            case AppLanguage.Slovak:
                 rows.Add(CombinePath(path, filename));
                 rows.Add(
                     $"Vygenerované programom {Application.ProductName}, verzia {Application.ProductVersion} dňa {DateTime.Today:dd.MM.yyyy} v {DateTime.Now:HH:mm}");
@@ -60,7 +59,7 @@ internal static class TXTParser
                 rows.Add($"Dáta vytvorené: {gvd.CreateData:dd.MM.yyyy}");
                 rows.Add("=============================================================================================");
                 break;
-            case Config.AppLanguage.Czech:
+            case AppLanguage.Czech:
                 rows.Add(CombinePath(path, filename));
                 rows.Add(
                     $"Vygenerované programem {Application.ProductName}, verze {Application.ProductVersion} dne {DateTime.Today:dd.MM.yyyy} v {DateTime.Now:HH:mm}");
@@ -113,9 +112,9 @@ internal static class TXTParser
 
         var dirs = new List<DirList>();
 
-        using var dirlistF = new CSVFileReader(fileDirList);
+        using var dirlistF = new CsvFileReader(fileDirList);
         var riadok = 1;
-        var row = new CSVRow();
+        var row = new CsvRow();
         while (true)
         {
             var status = dirlistF.ReadRow(row);
@@ -137,7 +136,7 @@ internal static class TXTParser
 
                 dirList.TablePort = ParseIntOrNull(row.ElementAtOrDefault(1));
                 dirList.ReportPort = ParseIntOrNull(row.ElementAtOrDefault(2));
-                dirList.BackColor = TryParseHEX(row.ElementAtOrDefault(4));
+                dirList.BackColor = TryParseHex(row.ElementAtOrDefault(4));
 
                 dirs.Add(dirList);
             }
@@ -160,10 +159,10 @@ internal static class TXTParser
     {
         var fileDirList = CombinePath(GlobData.DataDir, FILE_DIRLIST);
 
-        using var dirlistF = new CSVFileWriter(fileDirList);
+        using var dirlistF = new CsvFileWriter(fileDirList);
         foreach (var dir in dirs)
         {
-            var row = new CSVRow();
+            var row = new CsvRow();
             row.Insert(0, dir.DirName);
             if (dir.TablePort.HasValue && dir.TablePort != 0)
                 row.Insert(1, dir.TablePort.ToString());
@@ -176,7 +175,7 @@ internal static class TXTParser
                 row.Insert(2, "");
 
             row.Insert(3, "");
-            row.Insert(4, dir.BackColor.HasValue ? dir.BackColor.Value.ToHEX() : "");
+            row.Insert(4, dir.BackColor.HasValue ? dir.BackColor.Value.ToHex() : "");
 
             dirlistF.WriteRow(row);
         }
@@ -197,7 +196,7 @@ internal static class TXTParser
 
         var gvd = new GVDInfo();
 
-        var config = new TXTProps(fileGrafikon);
+        var config = new TxtProps(fileGrafikon);
 
         gvd.Category = int.Parse(config.Get("CATEGORY", "1"));
         gvd.Subcat = int.Parse(config.Get("SUBCAT", "0"));
@@ -229,7 +228,7 @@ internal static class TXTParser
     {
         var fileGrafikon = CombinePath(path, FILE_GRAFIKON);
 
-        var config = new TXTProps(fileGrafikon, true);
+        var config = new TxtProps(fileGrafikon, true);
 
         config.Set("CATEGORY", gvd.Category);
         config.Set("SUBCAT", gvd.Subcat);
@@ -264,9 +263,9 @@ internal static class TXTParser
 
         var audios = new List<Audio>();
 
-        using var audioF = new CSVFileReader(fileAudio);
+        using var audioF = new CsvFileReader(fileAudio);
         var riadok = 1;
-        var row = new CSVRow();
+        var row = new CsvRow();
         while (true)
         {
             var status = audioF.ReadRow(row);
@@ -312,10 +311,10 @@ internal static class TXTParser
     {
         var fileAudio = CombinePath(GlobData.DataDir, FILE_AUDIO);
 
-        using var audioF = new CSVFileWriter(fileAudio);
+        using var audioF = new CsvFileWriter(fileAudio);
         foreach (var a in audios)
         {
-            var row = new CSVRow();
+            var row = new CsvRow();
 
             row.Insert(0, a.Station.ID);
             row.Insert(1, a.Name);
@@ -342,9 +341,9 @@ internal static class TXTParser
 
         var meskania = new List<int>();
 
-        using var zpozdeniF = new CSVFileReader(file);
+        using var zpozdeniF = new CsvFileReader(file);
         var riadok = 1;
-        var row = new CSVRow();
+        var row = new CsvRow();
         while (true)
         {
             var status = zpozdeniF.ReadRow(row);
@@ -382,10 +381,10 @@ internal static class TXTParser
     {
         var file = CombinePath(GlobData.DataDir, FILE_ZPOZDENI);
 
-        using var zpozdeniF = new CSVFileWriter(file);
+        using var zpozdeniF = new CsvFileWriter(file);
         for (var i = 5; i <= 480; i += 5)
         {
-            var row = new CSVRow();
+            var row = new CsvRow();
             row.Insert(0, i.ToString());
 
             zpozdeniF.WriteRow(row);
@@ -400,10 +399,10 @@ internal static class TXTParser
     {
         var file = CombinePath(GlobData.DataDir, FILE_ZPOZDENI);
 
-        using var zpozdeniF = new CSVFileWriter(file);
+        using var zpozdeniF = new CsvFileWriter(file);
         foreach (var meskanie in meskania)
         {
-            var row = new CSVRow();
+            var row = new CsvRow();
             row.Insert(0, meskanie.ToString());
 
             zpozdeniF.WriteRow(row);
@@ -424,9 +423,9 @@ internal static class TXTParser
 
         var typy = new List<TrainType>();
 
-        using var trtypesF = new CSVFileReader(fileTrTypes);
+        using var trtypesF = new CsvFileReader(fileTrTypes);
         var riadok = 1;
-        var row = new CSVRow();
+        var row = new CsvRow();
         while (true)
         {
             var status = trtypesF.ReadRow(row);
@@ -483,10 +482,10 @@ internal static class TXTParser
     {
         var fileTrTypes = CombinePath(GlobData.DataDir, FILE_TRTYPES);
 
-        using var trtypesF = new CSVFileWriter(fileTrTypes);
+        using var trtypesF = new CsvFileWriter(fileTrTypes);
         foreach (var typ in typy)
         {
-            var row = new CSVRow();
+            var row = new CsvRow();
             if (typ.IsCustom)
             {
                 row.Add(typ.CategoryTrain);
@@ -518,10 +517,10 @@ internal static class TXTParser
 
         string[] types = { "Os", "Zr", "R", "Ex", "EC", "IC", "EN", "ER", "REX", "Bus", "SC" };
 
-        using var trtypes = new CSVFileWriter(file);
+        using var trtypes = new CsvFileWriter(file);
         foreach (var typ in types)
         {
-            var row = new CSVRow { typ };
+            var row = new CsvRow { typ };
             trtypes.WriteRow(row);
         }
     }
@@ -543,7 +542,7 @@ internal static class TXTParser
 
         var jazyky = new List<FyzLanguage>();
 
-        var categoriF = new TXTPropsAreasFields(file);
+        var categoriF = new TxtPropsAreasFields(file);
 
         var count = int.Parse(categoriF.Get("MAIN", "COUNT_LANGUAGES"));
 
@@ -585,7 +584,7 @@ internal static class TXTParser
     {
         var file = CombinePath(GlobData.DataDir, FILE_CATEGORI);
 
-        var categoriF = new TXTPropsAreasFields(file, true);
+        var categoriF = new TxtPropsAreasFields(file, true);
 
         categoriF.Set("MAIN", "COUNT_LANGUAGES", jazyky.Count);
         for (var i = 1; i <= jazyky.Count; i++)
@@ -616,7 +615,7 @@ internal static class TXTParser
         var types = new List<ReportType>();
         var languages = new List<FyzLanguage>();
 
-        var categoriF = new TXTPropsAreasFields(file);
+        var categoriF = new TxtPropsAreasFields(file);
 
         var countV = int.Parse(categoriF.Get("MAIN", "COUNT_BASIC_REPORT_VARIANT"));
         for (var i = 1; i <= countV; i++)
@@ -679,7 +678,7 @@ internal static class TXTParser
     {
         var file = CombinePath(path, FILE_CATEGORI);
 
-        var categoriF = new TXTPropsAreasFields(file, true);
+        var categoriF = new TxtPropsAreasFields(file, true);
 
         categoriF.Set("MAIN", "COUNT_BASIC_REPORT_VARIANT", varianty.Count);
         categoriF.Set("MAIN", "COUNT_TYPE_BASIC_REPORT", types.Count);
@@ -750,10 +749,10 @@ internal static class TXTParser
 
         var vlaky = new List<Train>();
 
-        using (var export3AF = new CSVFileReader(fileEXP3A))
+        using (var export3AF = new CsvFileReader(fileEXP3A))
         {
             var riadok = 1;
-            var row = new CSVRow();
+            var row = new CsvRow();
 
             while (true)
             {
@@ -825,10 +824,10 @@ internal static class TXTParser
             }
         }
 
-        using (var export3BF = new CSVFileReader(fileEXP3B))
+        using (var export3BF = new CsvFileReader(fileEXP3B))
         {
             var riadok = 1;
-            var row = new CSVRow();
+            var row = new CsvRow();
             while (true)
             {
                 var status = export3BF.ReadRow(row);
@@ -858,10 +857,10 @@ internal static class TXTParser
             }
         }
 
-        using (var export3CF = new CSVFileReader(fileEXP3C))
+        using (var export3CF = new CsvFileReader(fileEXP3C))
         {
             var riadok = 1;
-            var row = new CSVRow();
+            var row = new CsvRow();
             while (true)
             {
                 var status = export3CF.ReadRow(row);
@@ -891,10 +890,10 @@ internal static class TXTParser
         }
 
         var vzoryList = new List<Template>();
-        using (var vzoryF = new CSVFileReader(fileVzory))
+        using (var vzoryF = new CsvFileReader(fileVzory))
         {
             var riadok = 1;
-            var row = new CSVRow();
+            var row = new CsvRow();
             while (true)
             {
                 var status = vzoryF.ReadRow(row);
@@ -932,10 +931,10 @@ internal static class TXTParser
             }
         }
 
-        using (var stahlasbF = new CSVFileReader(fileStaHlasB))
+        using (var stahlasbF = new CsvFileReader(fileStaHlasB))
         {
             var riadok = 1;
-            var row = new CSVRow();
+            var row = new CsvRow();
             while (true)
             {
                 var status = stahlasbF.ReadRow(row);
@@ -969,10 +968,10 @@ internal static class TXTParser
             }
         }
 
-        using (var stahlascF = new CSVFileReader(fileStaHlasC))
+        using (var stahlascF = new CsvFileReader(fileStaHlasC))
         {
             var riadok = 1;
-            var row = new CSVRow();
+            var row = new CsvRow();
             while (true)
             {
                 var status = stahlascF.ReadRow(row);
@@ -1006,10 +1005,10 @@ internal static class TXTParser
             }
         }
 
-        using (var vlakyF = new CSVFileReader(fileVlaky))
+        using (var vlakyF = new CsvFileReader(fileVlaky))
         {
             var riadok = 1;
-            var row = new CSVRow();
+            var row = new CsvRow();
 
             var gvd = ReadInfoGVD(path);
 
@@ -1075,10 +1074,10 @@ internal static class TXTParser
             }
         }
 
-        using (var poziceF = new CSVFileReader(filePozice))
+        using (var poziceF = new CsvFileReader(filePozice))
         {
             var riadok = 1;
-            var row = new CSVRow();
+            var row = new CsvRow();
             while (true)
             {
                 var status = poziceF.ReadRow(row);
@@ -1110,9 +1109,9 @@ internal static class TXTParser
 
         if (File.Exists(fileDoplnky))
         {
-            using var doplnkyF = new CSVFileReader(fileDoplnky);
+            using var doplnkyF = new CsvFileReader(fileDoplnky);
             var rowNumber = 1;
-            var row = new CSVRow();
+            var row = new CsvRow();
             while (true)
             {
                 var status = doplnkyF.ReadRow(row);
@@ -1158,9 +1157,9 @@ internal static class TXTParser
 
         try
         {
-            using var foreignF = new CSVFileReader(fileForeign);
+            using var foreignF = new CsvFileReader(fileForeign);
             var rowNumber = 1;
-            var row = new CSVRow();
+            var row = new CsvRow();
             while (true)
             {
                 var status = foreignF.ReadRow(row);
@@ -1198,12 +1197,15 @@ internal static class TXTParser
         }
         catch (FileNotFoundException)
         {
+            // ignored
         }
 
         foreach (var vlak in vlaky)
-        foreach (var rad in GlobData.Radenia)
-            if (vlak.Number == rad.CisloVlaku)
-                vlak.Radenia.Add(rad);
+        {
+            foreach (var rad in GlobData.Radenia)
+                if (vlak.Number == rad.CisloVlaku)
+                    vlak.Radenia.Add(rad);
+        }
 
         return vlaky;
     }
@@ -1230,7 +1232,7 @@ internal static class TXTParser
         var fileStanice = CombinePath(path, FILE_STANICE);
 
         //EXPORT3A.TXT
-        using (var export3aF = new CSVFileWriter(fileEXP3A))
+        using (var export3aF = new CsvFileWriter(fileEXP3A))
         {
             var comments = GenerateComment(path, FILE_EXPORT3A, gvd, GlobData.Config.Language);
             foreach (var comment in comments) export3aF.WriteComment(comment);
@@ -1238,7 +1240,7 @@ internal static class TXTParser
             var vlakId = 0;
             foreach (var train in trains)
             {
-                var row = new CSVRow();
+                var row = new CsvRow();
                 row.Insert(0, (vlakId + 1).ToString());
                 row.Insert(1, train.Number.Quote());
                 row.Insert(2, (train.Name ?? "").UTFtoANSI().Quote());
@@ -1293,7 +1295,7 @@ internal static class TXTParser
         }
 
         //EXPORT3B.TXT
-        using (var export3bF = new CSVFileWriter(fileEXP3B))
+        using (var export3bF = new CsvFileWriter(fileEXP3B))
         {
             var comments = GenerateComment(path, FILE_EXPORT3B, gvd, GlobData.Config.Language);
             foreach (var comment in comments) export3bF.WriteComment(comment);
@@ -1301,7 +1303,7 @@ internal static class TXTParser
             var trainId = 0;
             foreach (var train in trains)
             {
-                var row = new CSVRow();
+                var row = new CsvRow();
                 row.Insert(0, (trainId + 1).ToString());
                 row.Insert(1, train.ZaciatokPlatnosti.ToString("dd.MM.yyyy"));
                 row.Insert(2, train.KoniecPlatnosti.ToString("dd.MM.yyyy"));
@@ -1316,7 +1318,7 @@ internal static class TXTParser
         }
 
         //EXPORT3C.TXT
-        using (var export3cF = new CSVFileWriter(fileEXP3C))
+        using (var export3cF = new CsvFileWriter(fileEXP3C))
         {
             var comments = GenerateComment(path, FILE_EXPORT3C, gvd, GlobData.Config.Language);
             foreach (var comment in comments) export3cF.WriteComment(comment);
@@ -1324,7 +1326,7 @@ internal static class TXTParser
             var vlakId = 0;
             foreach (var train in trains)
             {
-                var row = new CSVRow();
+                var row = new CsvRow();
                 row.Insert(0, (vlakId + 1).ToString());
                 row.Insert(1, "1");
                 row.Insert(2, train.DateLimitText.Quote());
@@ -1354,24 +1356,26 @@ internal static class TXTParser
         foreach (var pair in vlakTrasaDictionary) znameTrasy.Add(new EquatableCollection<Station>(pair.Value));
 
         foreach (var trasa in znameTrasy)
-        foreach (var train in trains)
         {
-            var stanice = new List<Station>();
-            stanice.AddRange(train.StaniceZoSmeru);
-            stanice.Add(gvd.ThisStation);
-            stanice.AddRange(train.StaniceDoSmeru);
-
-            if (Station.SequencesEqual(stanice, trasa.ToList()))
+            foreach (var train in trains)
             {
-                var staniceCL = new EquatableCollection<Station>(stanice);
-                if (zoradene.ContainsKey(staniceCL))
+                var stanice = new List<Station>();
+                stanice.AddRange(train.StaniceZoSmeru);
+                stanice.Add(gvd.ThisStation);
+                stanice.AddRange(train.StaniceDoSmeru);
+
+                if (Station.SequencesEqual(stanice, trasa.ToList()))
                 {
-                    zoradene[staniceCL].Add(train);
-                }
-                else
-                {
-                    zoradene.Add(staniceCL, new HashSet<Train>());
-                    zoradene[staniceCL].Add(train);
+                    var staniceCL = new EquatableCollection<Station>(stanice);
+                    if (zoradene.ContainsKey(staniceCL))
+                    {
+                        zoradene[staniceCL].Add(train);
+                    }
+                    else
+                    {
+                        zoradene.Add(staniceCL, new HashSet<Train>());
+                        zoradene[staniceCL].Add(train);
+                    }
                 }
             }
         }
@@ -1384,14 +1388,14 @@ internal static class TXTParser
         }
 
         //VZORY.TXT
-        using (var vzoryF = new CSVFileWriter(fileVzory))
+        using (var vzoryF = new CsvFileWriter(fileVzory))
         {
             var comments = GenerateComment(path, FILE_VZORY, gvd, GlobData.Config.Language);
             foreach (var comment in comments) vzoryF.WriteComment(comment);
 
             foreach (var vzor in templates)
             {
-                var row = new CSVRow();
+                var row = new CsvRow();
                 row.Insert(0, vzor.ID.ToString());
                 row.Insert(1, vzor.Stations.Count.ToString());
                 var i = 0;
@@ -1406,14 +1410,14 @@ internal static class TXTParser
         }
 
         //VLAKY.TXT
-        using (var vlakyF = new CSVFileWriter(fileVlaky))
+        using (var vlakyF = new CsvFileWriter(fileVlaky))
         {
             var comments = GenerateComment(path, FILE_VLAKY, gvd, GlobData.Config.Language);
             foreach (var comment in comments) vlakyF.WriteComment(comment);
 
             foreach (var vzor in templates)
             {
-                var row = new CSVRow();
+                var row = new CsvRow();
                 row.Insert(0, vzor.ID.ToString());
                 row.Insert(1, vzor.Trains.Count.ToString());
                 var i = 0;
@@ -1431,14 +1435,14 @@ internal static class TXTParser
         }
 
         //STAHlasB.TXT
-        using (var stahlasBF = new CSVFileWriter(fileStaHlasB))
+        using (var stahlasBF = new CsvFileWriter(fileStaHlasB))
         {
             var comments = GenerateComment(path, FILE_STAHLASB, gvd, GlobData.Config.Language);
             foreach (var comment in comments) stahlasBF.WriteComment(comment);
 
             foreach (var vzor in templates)
             {
-                var row = new CSVRow();
+                var row = new CsvRow();
                 row.Insert(0, vzor.ID.ToString());
 
                 var stanice = vzor.Stations.Where(stanica => stanica.IsInShortReport && stanica.ID != gvd.ThisStation.ID).ToList();
@@ -1452,14 +1456,14 @@ internal static class TXTParser
         }
 
         //STAHlasC.TXT
-        using (var stahlasCF = new CSVFileWriter(fileStaHlasC))
+        using (var stahlasCF = new CsvFileWriter(fileStaHlasC))
         {
             var comments = GenerateComment(path, FILE_STAHLASC, gvd, GlobData.Config.Language);
             foreach (var comment in comments) stahlasCF.WriteComment(comment);
 
             foreach (var vzor in templates)
             {
-                var row = new CSVRow();
+                var row = new CsvRow();
                 row.Insert(0, vzor.ID.ToString());
 
                 var stanice = vzor.Stations.Where(stanica => stanica.IsInLongReport && stanica.ID != gvd.ThisStation.ID).ToList();
@@ -1473,7 +1477,7 @@ internal static class TXTParser
         }
 
         //POZICE.TXT
-        using (var poziceF = new CSVFileWriter(filePozice))
+        using (var poziceF = new CsvFileWriter(filePozice))
         {
             var comments = GenerateComment(path, FILE_POZICE, gvd, GlobData.Config.Language);
 
@@ -1482,7 +1486,7 @@ internal static class TXTParser
             var vlakId = 0;
             foreach (var vlak in trains)
             {
-                var row = new CSVRow();
+                var row = new CsvRow();
                 row.Insert(0, (vlakId + 1).ToString());
                 row.Insert(1, vlak.Track.Key.Quote());
 
@@ -1492,7 +1496,7 @@ internal static class TXTParser
         }
 
         //DOPLNKY.TXT
-        using (var doplnkyF = new CSVFileWriter(fileDoplnky))
+        using (var doplnkyF = new CsvFileWriter(fileDoplnky))
         {
             var comments = GenerateComment(path, FILE_DOPLNKY, gvd, GlobData.Config.Language);
             foreach (var comment in comments) doplnkyF.WriteComment(comment);
@@ -1500,7 +1504,7 @@ internal static class TXTParser
             var vlakId = 0;
             foreach (var vlak in trains)
             {
-                var row = new CSVRow();
+                var row = new CsvRow();
                 row.Insert(0, (vlakId + 1).ToString());
                 if (vlak.Doplnky.Count == 0)
                 {
@@ -1533,27 +1537,23 @@ internal static class TXTParser
         }
 
         //FOREIGN.TXT
-        using (var foreignF = new CSVFileWriter(fileForeign))
+        using (var foreignF = new CsvFileWriter(fileForeign))
         {
             var comments = GenerateComment(path, FILE_FOREIGN, gvd, GlobData.Config.Language);
             foreach (var comment in comments) foreignF.WriteComment(comment);
 
             var vlakId = 0;
-            foreach (var vlak in trains)
+            foreach (var lang in trains.Select(train => train.Languages))
             {
-                var row = new CSVRow();
+                var row = new CsvRow();
                 row.Insert(0, (vlakId + 1).ToString());
 
-                if (vlak.Languages.Count == 0)
+                if (lang.Count == 0)
                     row.Insert(1, "-1");
-                else if (vlak.Languages.Count == GlobData.Languages.Count)
+                else if (lang.Count == GlobData.Languages.Count)
                     row.Insert(1, "1");
                 else
-                    foreach (var t in vlak.Languages.Where(t => !t.IsBasic))
-                    {
-                        row.Add(t.Key.Quote());
-                        break;
-                    }
+                    row.AddRange(lang.Where(t => !t.IsBasic).Select(t => t.Key.Quote()));
 
                 foreignF.WriteRow(row);
                 vlakId++;
@@ -1561,7 +1561,7 @@ internal static class TXTParser
         }
 
         //STANICE.TXT
-        using (var staniceF = new CSVFileWriter(fileStanice))
+        using (var staniceF = new CsvFileWriter(fileStanice))
         {
             var comments = GenerateComment(path, FILE_STANICE, gvd, GlobData.Config.Language);
             foreach (var comment in comments)
@@ -1583,7 +1583,7 @@ internal static class TXTParser
 
             foreach (var st in allStations)
             {
-                var row = new CSVRow();
+                var row = new CsvRow();
                 row.Insert(0, st.ID);
                 row.Insert(1, st.Name.UTFtoANSI().Quote());
                 staniceF.WriteRow(row);
@@ -1605,9 +1605,9 @@ internal static class TXTParser
 
         var tracks = new List<Track>();
 
-        using var poziceAF = new CSVFileReader(file);
+        using var poziceAF = new CsvFileReader(file);
         var riadok = 1;
-        var row = new CSVRow();
+        var row = new CsvRow();
         while (true)
         {
             var status = poziceAF.ReadRow(row);
@@ -1664,14 +1664,14 @@ internal static class TXTParser
     {
         var file = CombinePath(path, FILE_POZICE_A);
 
-        using var poziceAF = new CSVFileWriter(file);
+        using var poziceAF = new CsvFileWriter(file);
 
         foreach (var track in tracks)
         {
             if (track == Track.None) continue;
 
             var tabcount = track.Tables.Count;
-            var row = new CSVRow(9 + 2 * tabcount)
+            var row = new CsvRow(9 + 2 * tabcount)
             {
                 track.Key.Quote().UTFtoANSI(),
                 track.Name.Quote().UTFtoANSI(),
@@ -1710,9 +1710,9 @@ internal static class TXTParser
 
         try
         {
-            using var vlastnikF = new CSVFileReader(file);
+            using var vlastnikF = new CsvFileReader(file);
             var riadok = 1;
-            var row = new CSVRow();
+            var row = new CsvRow();
             while (true)
             {
                 var status = vlastnikF.ReadRow(row);
@@ -1741,6 +1741,7 @@ internal static class TXTParser
         }
         catch (FileNotFoundException)
         {
+            //ignored
         }
 
         return operators.ToList();
@@ -1755,11 +1756,11 @@ internal static class TXTParser
     {
         var file = CombinePath(path, FILE_VLASTNIK);
 
-        using var vlastnikF = new CSVFileWriter(file);
+        using var vlastnikF = new CsvFileWriter(file);
         foreach (var operatorV in operators)
             if (operatorV != Operator.None)
             {
-                var row = new CSVRow(2)
+                var row = new CsvRow(2)
                 {
                     operatorV.Id.ToString(),
                     operatorV.Name.Quote().UTFtoANSI()
@@ -1785,9 +1786,9 @@ internal static class TXTParser
 
         var stanice = new List<Station>();
 
-        using var staniceF = new CSVFileReader(fileStanice);
+        using var staniceF = new CsvFileReader(fileStanice);
         var riadok = 1;
-        var row = new CSVRow();
+        var row = new CsvRow();
         while (true)
         {
             var status = staniceF.ReadRow(row);
@@ -1838,14 +1839,14 @@ internal static class TXTParser
     {
         var fileStations = CombinePath(path, FILE_STANICE);
 
-        using var staniceF = new CSVFileWriter(fileStations);
+        using var staniceF = new CsvFileWriter(fileStations);
 
         var comments = GenerateComment(path, FILE_STANICE, gvd, GlobData.Config.Language);
         foreach (var comment in comments) staniceF.WriteComment(comment);
 
         foreach (var cs in cstations)
         {
-            var row = new CSVRow(2)
+            var row = new CsvRow(2)
             {
                 cs.ID,
                 cs.Name.UTFtoANSI().Quote()
@@ -1871,9 +1872,9 @@ internal static class TXTParser
 
         var radeniaList = new List<Radenie>();
 
-        using var razeni1F = new CSVFileReader(fileRazeni1);
+        using var razeni1F = new CsvFileReader(fileRazeni1);
         var riadok = 1;
-        var row = new CSVRow();
+        var row = new CsvRow();
 
         Radenie radenie = null;
 
@@ -1987,7 +1988,7 @@ internal static class TXTParser
     {
         var fileRazeni1 = CombinePath(path, FILE_RAZENI1);
 
-        using var razeni1F = new CSVFileWriter(fileRazeni1);
+        using var razeni1F = new CsvFileWriter(fileRazeni1);
         var otherLangs = new List<FyzLanguage>(2);
         foreach (var lang in languages)
             if (!lang.IsBasic)
@@ -1995,7 +1996,7 @@ internal static class TXTParser
 
         foreach (var radenie in radenia)
         {
-            var row = new CSVRow();
+            var row = new CsvRow();
             row.Insert(0,
                 radenie.DestStation != null
                     ? $"#{radenie.CisloVlaku}:{radenie.DestStation.ID}"
@@ -2003,8 +2004,10 @@ internal static class TXTParser
             var sb = new StringBuilder();
 
             foreach (var reportType in radenie.ChosenReports)
-            foreach (var variant in reportType.Variants)
-                sb.Append(variant.Key == 0 ? reportType.Type.Char : reportType.Type.Char.ToLower());
+            {
+                foreach (var variant in reportType.Variants)
+                    sb.Append(variant.Key == 0 ? reportType.Type.Char : reportType.Type.Char.ToLower());
+            }
 
             row.Insert(1, sb.ToString());
             row.Insert(2, radenie.ZacPlatnosti.ToString("dd.MM.yyyy"));
@@ -2021,7 +2024,7 @@ internal static class TXTParser
 
             foreach (var sound in radenie.Sounds)
             {
-                var rowsound = new CSVRow();
+                var rowsound = new CsvRow();
                 rowsound.Insert(0, $"{sound.Language.Key}/{sound.Group.Name}/{sound.Name}");
                 razeni1F.WriteRow(rowsound);
                 if (sound.Language.IsBasic)
@@ -2050,7 +2053,7 @@ internal static class TXTParser
                 }
             }
 
-            var rowcomment = new CSVRow();
+            var rowcomment = new CsvRow();
             rowcomment.Insert(0, $";{radenie.DatObm.Quote().UTFtoANSI()}");
             rowcomment.Insert(1, sbL1.ToString().Trim().Quote().UTFtoANSI());
             rowcomment.Insert(2, sbZvuk.ToString().Trim().Quote().UTFtoANSI());
@@ -2089,7 +2092,7 @@ internal static class TXTParser
         var tlogicals = new List<TableLogical>();
 
         //TABTABS
-        var tabtabF = new TXTPropsAreas(fileTabTab);
+        var tabtabF = new TxtPropsAreas(fileTabTab);
         var p = 1;
         foreach (var area in tabtabF.GetAreas())
         {
@@ -2104,7 +2107,7 @@ internal static class TXTParser
         }
 
         //TCATALOGS
-        var catalogF = new TXTPropsAreasFields(fileTCatalog);
+        var catalogF = new TxtPropsAreasFields(fileTCatalog);
         var count = int.Parse(catalogF.Get("MAIN", "COUNT"));
         for (var i = 0; i < count; i++)
         {
@@ -2256,7 +2259,7 @@ internal static class TXTParser
         }
 
         //TPHYSIC
-        var tphysicF = new TXTPropsAreasFields(fileTPhysical);
+        var tphysicF = new TxtPropsAreasFields(fileTPhysical);
         var countp = int.Parse(tphysicF.Get("MAIN", "COUNT"));
         for (var i = 0; i < countp; i++)
         {
@@ -2284,7 +2287,7 @@ internal static class TXTParser
         }
 
         //TLOGICAL
-        var tlogicF = new TXTPropsAreasFields(fileTLogical);
+        var tlogicF = new TxtPropsAreasFields(fileTLogical);
         var countl = int.Parse(tlogicF.Get("MAIN", "COUNT"));
         for (var i = 0; i < countl; i++)
         {
@@ -2396,7 +2399,7 @@ internal static class TXTParser
         var fileTLogical = CombinePath(path, FILE_TLOGICAL);
 
         //TABTABS
-        var tabtabF = new TXTPropsAreas(fileTabTab, true);
+        var tabtabF = new TxtPropsAreas(fileTabTab, true);
         foreach (var tabTab in tabTabs)
         {
             tabtabF.Set(tabTab.Key, tabTab.Text);
@@ -2404,7 +2407,7 @@ internal static class TXTParser
         tabtabF.Save();
 
         //TCATALOG
-        var catalogF = new TXTPropsAreasFields(fileTCatalog, true);
+        var catalogF = new TxtPropsAreasFields(fileTCatalog, true);
         catalogF.Set("MAIN", "COUNT", catalogs.Count);
         for (var i = 0; i < catalogs.Count; i++)
         {
@@ -2440,13 +2443,13 @@ internal static class TXTParser
 
                 catalogF.Set(area, $"TYPE_ITEMS_KEY_{tj.PadZeros()}", item.Key, WriteType.WriteStringANSI);
                 catalogF.Set(area, $"TYPE_ITEMS_NAME_{tj.PadZeros()}", item.Name, WriteType.WriteStringANSI);
-                catalogF.Set(area, $"TYPE_ITEMS_IDX_{tj.PadZeros()}", item.FillSection.ID);
+                catalogF.Set(area, $"TYPE_ITEMS_IDX_{tj.PadZeros()}", item.FillSection.Id);
                 catalogF.Set(area, $"TYPE_ITEMS_LINE_{tj.PadZeros()}", item.Line);
                 catalogF.Set(area, $"TYPE_ITEMS_START_{tj.PadZeros()}", item.Start);
                 catalogF.Set(area, $"TYPE_ITEMS_END_{tj.PadZeros()}", item.End);
                 catalogF.Set(area, $"TYPE_ITEMS_FONT_IDX_{tj.PadZeros()}", item.FontIDX);
-                catalogF.Set(area, $"TYPE_ITEMS_ALIGN_{tj.PadZeros()}", item.Align.ID);
-                catalogF.Set(area, $"TYPE_ITEMS_DIVTYPE_{tj.PadZeros()}", item.DivType.ID);
+                catalogF.Set(area, $"TYPE_ITEMS_ALIGN_{tj.PadZeros()}", item.Align.Id);
+                catalogF.Set(area, $"TYPE_ITEMS_DIVTYPE_{tj.PadZeros()}", item.DivType.Id);
                 catalogF.Set(area, $"TYPE_ITEMS_TAB1_{tj.PadZeros()}", item.Tab1 == TableTabTab.Empty ? "" : item.Tab1.Key,
                     WriteType.WriteStringANSI);
                 catalogF.Set(area, $"TYPE_ITEMS_TAB2_{tj.PadZeros()}", item.Tab2 == TableTabTab.Empty ? "" : item.Tab2.Key,
@@ -2481,7 +2484,7 @@ internal static class TXTParser
         catalogF.Save();
 
         //TPHYSIC
-        var tphysicF = new TXTPropsAreasFields(fileTPhysical, true);
+        var tphysicF = new TxtPropsAreasFields(fileTPhysical, true);
         tphysicF.Set("MAIN", "COUNT", physicals.Count);
         for (var i = 0; i < physicals.Count; i++)
         {
@@ -2504,7 +2507,7 @@ internal static class TXTParser
         tphysicF.Save();
 
         //TLOGICAL
-        var tlogicF = new TXTPropsAreasFields(fileTLogical, true);
+        var tlogicF = new TxtPropsAreasFields(fileTLogical, true);
         tlogicF.Set("MAIN", "COUNT", logicals.Count);
         for (var i = 0; i < logicals.Count; i++)
         {
@@ -2557,7 +2560,7 @@ internal static class TXTParser
 
         var ttexts = new List<TableText>();
 
-        var ttextsF = new TXTPropsAreasFields(fileTTexts);
+        var ttextsF = new TxtPropsAreasFields(fileTTexts);
 
         var countt = int.Parse(ttextsF.Get("MAIN", "COUNT"));
 
@@ -2637,7 +2640,7 @@ internal static class TXTParser
     {
         var fileTTexts = CombinePath(path, FILE_TTEXTS);
 
-        var ttextsF = new TXTPropsAreasFields(fileTTexts, true);
+        var ttextsF = new TxtPropsAreasFields(fileTTexts, true);
 
         ttextsF.Set("MAIN", "COUNT", ttexts.Count);
 
@@ -2692,7 +2695,7 @@ internal static class TXTParser
 
         var fonts = new List<TableFont>();
 
-        var modetabsF = new TXTPropsAreasFields(fileModeTabs);
+        var modetabsF = new TxtPropsAreasFields(fileModeTabs);
 
         const string area = "FONT";
 
@@ -2742,7 +2745,7 @@ internal static class TXTParser
     {
         var fileModeTabs = CombinePath(path, FILE_MODETABS);
 
-        var modetabsF = new TXTPropsAreasFields(fileModeTabs, true);
+        var modetabsF = new TxtPropsAreasFields(fileModeTabs, true);
 
         const string areaMode = "VIEW_MODE";
         const string areatType = "VIEW_TYPE";
@@ -2782,7 +2785,7 @@ internal static class TXTParser
             var fill = sections[i];
             var ti = i + 1;
 
-            modetabsF.Set(areaFillSection, $"IDX_{ti.PadZeros()}", fill.ID);
+            modetabsF.Set(areaFillSection, $"IDX_{ti.PadZeros()}", fill.Id);
             modetabsF.Set(areaFillSection, $"NAME_{ti.PadZeros()}", fill.Name, WriteType.WriteStringANSI);
         }
 
@@ -2832,7 +2835,7 @@ internal static class TXTParser
             var align = aligns[i];
             var ti = i + 1;
 
-            modetabsF.Set(areaAlign, $"IDX_{ti.PadZeros()}", align.ID);
+            modetabsF.Set(areaAlign, $"IDX_{ti.PadZeros()}", align.Id);
             modetabsF.Set(areaAlign, $"NAME_{ti.PadZeros()}", align.Name, WriteType.WriteStringANSI);
         }
 

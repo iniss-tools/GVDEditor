@@ -1,10 +1,11 @@
 ﻿using System.Xml.Serialization;
 using ToolsCore.XML;
+// ReSharper disable UnusedMember.Global
 
 namespace GVDEditor.XML;
 
 /// <inheritdoc />
-public class GVDEditorStyle : Style
+public record GVDEditorStyle : Style
 {
     /// <summary>
     ///     Farebna schema pre druh vlaku zobrazujuceho sa v tabulke na pracovnej ploche programu
@@ -28,94 +29,8 @@ public class GVDEditorStyle : Style
     {
     }
 
-    /// <summary>
-    ///     Nastavi nastavenia farieb pre editor TabTab na predvolene hodnoty
-    /// </summary>
-    public static TabTabEditorScheme SetTabTabEditorSchemeDefault()
-    {
-        return new TabTabEditorScheme
-        {
-            Default = new ColorSetting
-            {
-                ForeColor = Color.Black,
-                Bold = false,
-                DisableBackColorEdit = true
-            },
-            Function = new ColorSetting
-            {
-                ForeColor = Color.Blue,
-                Bold = false,
-                DisableBackColorEdit = true
-            },
-            Identifier = new ColorSetting
-            {
-                ForeColor = Color.Teal,
-                Bold = false,
-                DisableBackColorEdit = true
-            },
-            Number = new ColorSetting
-            {
-                ForeColor = Color.Purple,
-                Bold = false,
-                DisableBackColorEdit = true
-            },
-            String = new ColorSetting
-            {
-                ForeColor = Color.Red,
-                Bold = false,
-                DisableBackColorEdit = true
-            },
-            Comment = new ColorSetting
-            {
-                ForeColor = Color.Green,
-                Bold = false,
-                DisableBackColorEdit = true
-            },
-            Var = new ColorSetting
-            {
-                ForeColor = Color.DarkSlateGray,
-                Bold = false,
-                DisableBackColorEdit = true
-            },
-            Event = new ColorSetting
-            {
-                ForeColor = Color.SaddleBrown,
-                Bold = false,
-                DisableBackColorEdit = true
-            },
-            OnNewLine = new ColorSetting
-            {
-                ForeColor = Color.OrangeRed,
-                Bold = false,
-                DisableBackColorEdit = true
-            },
-            Operator = new ColorSetting
-            {
-                ForeColor = Color.Black,
-                Bold = false,
-                DisableBackColorEdit = true
-            },
-            Constant = new ColorSetting
-            {
-                ForeColor = Color.DimGray,
-                Bold = false,
-                DisableBackColorEdit = true
-            },
-            SelBraces = new ColorSetting
-            {
-                ForeColor = Color.LightGray,
-                BackColor = Color.BlueViolet,
-                Bold = false
-            },
-            SelBraceBad = new ColorSetting
-            {
-                ForeColor = Color.Red,
-                BackColor = Color.LightGray,
-                Bold = false
-            },
-            Font = new Font("Consolas", 10f)
-        };
-    }
+    /// <inheritdoc />
+    public override string ToString() => Name;
 
     /// <summary>
     ///     Nastavi nastavenia farieb pre editor TabTab na predvolene hodnoty (Dark mode)

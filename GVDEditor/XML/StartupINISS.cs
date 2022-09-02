@@ -5,7 +5,7 @@ namespace GVDEditor.XML;
 /// <summary>
 ///     Konfiguracia spustania programu INISS pomocou tohto programu.
 /// </summary>
-public class StartupINISS
+public record StartupINISS
 {
     /// <summary>
     ///     Ci ma program zapnut ako Administrator.

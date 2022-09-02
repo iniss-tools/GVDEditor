@@ -7,21 +7,21 @@ namespace GVDEditor.Tools;
 ///     Trieda umoznujuca prehravanie zvukovych suborov .WAV.
 /// </summary>
 //TODO Trieda prehrava zvuky s pauzami.
-internal class WAVPlayer
+internal class WavPlayer
 {
-    private readonly BackgroundWorker worker = new();
+    private readonly BackgroundWorker _worker = new();
 
     /// <summary>
-    ///     Vytvori novu instanciu triedy <see cref="WAVPlayer"/>.
+    ///     Vytvori novu instanciu triedy <see cref="WavPlayer"/>.
     /// </summary>
     /// <param name="sounds">zoznam zvukov, ktore sa maju prehrat</param>
     /// <param name="wordPause">pauza medzi zvukmi</param>
-    public WAVPlayer(string[] sounds, int wordPause)
+    public WavPlayer(string[] sounds, int wordPause)
     {
         Sounds = sounds;
         WordPause = wordPause;
 
-        worker.DoWork += PlayingSoundsDoWork;
+        _worker.DoWork += PlayingSoundsDoWork;
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ internal class WAVPlayer
     /// <summary>
     ///     Zacne prehravanie zvukovych suborov (asynchronne).
     /// </summary>
-    public void StartPlay() => worker.RunWorkerAsync();
+    public void StartPlay() => _worker.RunWorkerAsync();
 
     private void PlayingSoundsDoWork(object sender, DoWorkEventArgs e)
     {

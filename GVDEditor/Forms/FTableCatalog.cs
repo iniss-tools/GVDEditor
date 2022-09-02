@@ -34,8 +34,7 @@ public partial class FTableCatalog : Form
     public FTableCatalog(TableCatalog table, IList<TableTabTab> tabtabs, bool copy = false)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         ThisTable = table;
         this.copy = copy;

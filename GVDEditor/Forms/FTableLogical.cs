@@ -26,8 +26,7 @@ public partial class FTableLogical : Form
     public FTableLogical(TableLogical table, IReadOnlyCollection<TablePhysical> tables, bool copy = false)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         ThisTable = table;
         this.copy = copy;

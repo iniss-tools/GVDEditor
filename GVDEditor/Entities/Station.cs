@@ -56,13 +56,13 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
         if (string.IsNullOrEmpty(id))
             return None;
 
-        var stationsWithSameId = GlobData.Stations.Where(station => station.ID == id);
-        foreach (var st in stationsWithSameId) 
-            return new Station(st.ID, st.Name);
+        var stationWithSameId = GlobData.Stations.FirstOrDefault(station => station.ID == id);
+        if (stationWithSameId is not null)
+            return new Station(stationWithSameId.ID, stationWithSameId.Name);
 
-        stationsWithSameId = GlobData.CustomStations.Where(customStation => customStation.ID == id);
-        foreach (var cst in stationsWithSameId)
-            return new Station(cst.ID, cst.Name);
+        stationWithSameId = GlobData.CustomStations.FirstOrDefault(customStation => customStation.ID == id);
+        if (stationWithSameId is not null)
+            return new Station(stationWithSameId.ID, stationWithSameId.Name);
 
         return new Station(id, id);
     }
@@ -84,14 +84,16 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
         {
             var ns = st.Name.Replace(".", "").Replace("-", "").ToLower();
             ns = Utils.RemoveDiacritics(ns);
-            if (ns == name) return new Station(st.ID, st.Name);
+            if (ns == name) 
+                return new Station(st.ID, st.Name);
         }
 
         foreach (var cst in GlobData.CustomStations)
         {
             var ns = cst.Name.Replace(".", "").Replace("-", "").ToLower();
             ns = Utils.RemoveDiacritics(ns);
-            if (ns == name) return new Station(cst.ID, cst.Name);
+            if (ns == name) 
+                return new Station(cst.ID, cst.Name);
         }
 
         return null;
@@ -103,12 +105,10 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
     /// <returns>list staníc.</returns>
     public static List<Station> GetStations()
     {
-        return (
-            from soundE 
-                in GlobData.Sounds 
-            where soundE.Group.Name == "R1" 
-            select new Station(soundE.Name, soundE.Text.Replace(",", ""))
-        ).ToList();
+        return GlobData.Sounds
+            .Where(soundE => soundE.Group.Name == "R1")
+            .Select(soundE => new Station(soundE.Name, soundE.Text.Replace(",", "")))
+            .ToList();
     }
 
     /// <summary>

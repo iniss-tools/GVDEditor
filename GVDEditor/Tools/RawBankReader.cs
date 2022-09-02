@@ -1,9 +1,4 @@
-﻿using GVDEditor.Annotations;
-using GVDEditor.Entities;
-using ToolsCore;
-using ToolsCore.Tools;
-
-namespace GVDEditor.Tools;
+﻿namespace GVDEditor.Tools;
 
 /*internal static class RawBankReader
 {

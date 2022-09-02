@@ -32,8 +32,7 @@ public partial class FLocalSettings : Form
     public FLocalSettings(GVDDirectory dir, int openIndex = -1)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         _defaultBorderColor = nudFontID.BorderColor;
 
@@ -242,7 +241,7 @@ public partial class FLocalSettings : Form
         Directory.Delete(oldFullPath);
 
         var dirlist = FMain.ObdobiaList.Select(gvd => gvd.Dir).ToList();
-        TXTParser.WriteDirList(dirlist);
+        TxtParser.WriteDirList(dirlist);
 
         tbDir.Text = fullpath;
     }

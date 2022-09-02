@@ -126,10 +126,14 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>702, 3</value>
+    <value>527, 2</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bStorno.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 33</value>
+    <value>73, 27</value>
   </data>
   <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -141,7 +145,7 @@
     <value>bStorno</value>
   </data>
   <data name="&gt;&gt;bStorno.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bStorno.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -153,10 +157,13 @@
     <value>True</value>
   </data>
   <data name="bImport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>599, 3</value>
+    <value>450, 2</value>
+  </data>
+  <data name="bImport.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 33</value>
+    <value>73, 27</value>
   </data>
   <data name="bImport.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -168,7 +175,7 @@
     <value>bImport</value>
   </data>
   <data name="&gt;&gt;bImport.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bImport.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -176,7 +183,6 @@
   <data name="&gt;&gt;bImport.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="flowLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
@@ -184,19 +190,22 @@
     <value>RightToLeft</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 406</value>
+    <value>0, 337</value>
+  </data>
+  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="flowLayoutPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 10, 5</value>
+    <value>8, 0, 8, 4</value>
   </data>
   <data name="flowLayoutPanel1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>822, 44</value>
+    <value>618, 35</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -223,10 +232,13 @@
     <value>Fill</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 0</value>
+    <value>10, 0</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 1</value>
+    <value>212, 1</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -256,10 +268,13 @@
     <value>Fill</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 0</value>
+    <value>10, 0</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 36</value>
+    <value>212, 29</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -292,10 +307,13 @@
     <value>Windows 1250</value>
   </data>
   <data name="cbEncoding.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 3</value>
+    <value>266, 2</value>
+  </data>
+  <data name="cbEncoding.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbEncoding.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 24</value>
+    <value>114, 21</value>
   </data>
   <data name="cbEncoding.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -304,7 +322,7 @@
     <value>cbEncoding</value>
   </data>
   <data name="&gt;&gt;cbEncoding.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbEncoding.Parent" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -319,10 +337,13 @@
     <value>True</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>272, 0</value>
+    <value>201, 0</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 30</value>
+    <value>61, 25</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -352,13 +373,16 @@
     <value>RightToLeft</value>
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 3</value>
+    <value>226, 2</value>
+  </data>
+  <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 30</value>
+    <value>382, 25</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
     <value>flowLayoutPanel2</value>
@@ -385,10 +409,13 @@
     <value>Vlaky</value>
   </data>
   <data name="cbDataType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 3</value>
+    <value>266, 2</value>
+  </data>
+  <data name="cbDataType.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbDataType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 24</value>
+    <value>114, 21</value>
   </data>
   <data name="cbDataType.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -397,7 +424,7 @@
     <value>cbDataType</value>
   </data>
   <data name="&gt;&gt;cbDataType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDataType.Parent" xml:space="preserve">
     <value>flowLayoutPanel5</value>
@@ -412,10 +439,13 @@
     <value>RightToLeft</value>
   </data>
   <data name="flowLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 3</value>
+    <value>226, 2</value>
+  </data>
+  <data name="flowLayoutPanel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 1</value>
+    <value>382, 1</value>
   </data>
   <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -438,17 +468,20 @@
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
   <data name="tableLayoutPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 10, 0</value>
+    <value>8, 0, 8, 0</value>
   </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>822, 36</value>
+    <value>618, 29</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -475,13 +508,16 @@
     <value>True</value>
   </data>
   <data name="bClipboard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>2, 2</value>
+  </data>
+  <data name="bClipboard.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bClipboard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 27</value>
+    <value>114, 23</value>
   </data>
   <data name="bClipboard.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="bClipboard.Text" xml:space="preserve">
     <value>Načítať zo schránky</value>
@@ -490,7 +526,7 @@
     <value>bClipboard</value>
   </data>
   <data name="&gt;&gt;bClipboard.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bClipboard.Parent" xml:space="preserve">
     <value>flowLayoutPanel3</value>
@@ -502,13 +538,16 @@
     <value>True</value>
   </data>
   <data name="bCSV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 3</value>
+    <value>120, 2</value>
+  </data>
+  <data name="bCSV.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bCSV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 27</value>
+    <value>130, 23</value>
   </data>
   <data name="bCSV.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="bCSV.Text" xml:space="preserve">
     <value>Načítať z CSV súboru...</value>
@@ -517,7 +556,7 @@
     <value>bCSV</value>
   </data>
   <data name="&gt;&gt;bCSV.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bCSV.Parent" xml:space="preserve">
     <value>flowLayoutPanel3</value>
@@ -529,13 +568,16 @@
     <value>True</value>
   </data>
   <data name="bXLS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>323, 3</value>
+    <value>254, 2</value>
+  </data>
+  <data name="bXLS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bXLS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 27</value>
+    <value>135, 23</value>
   </data>
   <data name="bXLS.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="bXLS.Text" xml:space="preserve">
     <value>Načítať zo XLS súboru...</value>
@@ -544,7 +586,7 @@
     <value>bXLS</value>
   </data>
   <data name="&gt;&gt;bXLS.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bXLS.Parent" xml:space="preserve">
     <value>flowLayoutPanel3</value>
@@ -556,13 +598,16 @@
     <value>True</value>
   </data>
   <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>501, 3</value>
+    <value>393, 2</value>
+  </data>
+  <data name="flowLayoutPanel6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel6.Name" xml:space="preserve">
     <value>flowLayoutPanel6</value>
@@ -580,13 +625,16 @@
     <value>Fill</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 249</value>
+    <value>10, 210</value>
+  </data>
+  <data name="flowLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>545, 33</value>
+    <value>404, 27</value>
   </data>
   <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel3.Name" xml:space="preserve">
     <value>flowLayoutPanel3</value>
@@ -604,13 +652,16 @@
     <value>Fill</value>
   </data>
   <data name="dgvData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 3</value>
+    <value>10, 2</value>
+  </data>
+  <data name="dgvData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="dgvData.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
   <data name="dgvData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>796, 240</value>
+    <value>598, 204</value>
   </data>
   <data name="dgvData.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -637,10 +688,13 @@
     <value>True</value>
   </data>
   <data name="rbRemoveAndInsert.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>2, 2</value>
+  </data>
+  <data name="rbRemoveAndInsert.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="rbRemoveAndInsert.Size" type="System.Drawing.Size, System.Drawing">
-    <value>433, 21</value>
+    <value>330, 17</value>
   </data>
   <data name="rbRemoveAndInsert.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -652,7 +706,7 @@
     <value>rbRemoveAndInsert</value>
   </data>
   <data name="&gt;&gt;rbRemoveAndInsert.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbRemoveAndInsert.Parent" xml:space="preserve">
     <value>flowLayoutPanel4</value>
@@ -664,13 +718,16 @@
     <value>True</value>
   </data>
   <data name="rbAppend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 30</value>
+    <value>2, 23</value>
+  </data>
+  <data name="rbAppend.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="rbAppend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 21</value>
+    <value>108, 17</value>
   </data>
   <data name="rbAppend.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="rbAppend.Text" xml:space="preserve">
     <value>Doplnenie údajov</value>
@@ -679,7 +736,7 @@
     <value>rbAppend</value>
   </data>
   <data name="&gt;&gt;rbAppend.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbAppend.Parent" xml:space="preserve">
     <value>flowLayoutPanel4</value>
@@ -694,10 +751,13 @@
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 18</value>
+    <value>2, 15</value>
+  </data>
+  <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 58</value>
+    <value>594, 48</value>
   </data>
   <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -718,13 +778,19 @@
     <value>Fill</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 288</value>
+    <value>10, 241</value>
+  </data>
+  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>796, 79</value>
+    <value>598, 65</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Spôsob narábania s importovanými údajmi</value>
@@ -733,7 +799,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -748,10 +814,13 @@
     <value>Fill</value>
   </data>
   <data name="cboxFirstHeader.Location" type="System.Drawing.Point, System.Drawing">
-    <value>564, 249</value>
+    <value>418, 210</value>
+  </data>
+  <data name="cboxFirstHeader.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cboxFirstHeader.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 33</value>
+    <value>190, 27</value>
   </data>
   <data name="cboxFirstHeader.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -763,7 +832,7 @@
     <value>cboxFirstHeader</value>
   </data>
   <data name="&gt;&gt;cboxFirstHeader.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cboxFirstHeader.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -775,19 +844,22 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 36</value>
+    <value>0, 29</value>
+  </data>
+  <data name="tableLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tableLayoutPanel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 10, 0</value>
+    <value>8, 0, 8, 0</value>
   </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>822, 370</value>
+    <value>618, 308</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -802,7 +874,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="flowLayoutPanel3" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="dgvData" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="groupBox1" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="cboxFirstHeader" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100,AutoSize,0,Absolute,85" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="flowLayoutPanel3" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="dgvData" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="groupBox1" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="cboxFirstHeader" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100,AutoSize,0,Absolute,69" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="ofDialogCSV.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -823,13 +895,16 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>822, 450</value>
+    <value>618, 372</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>840, 497</value>
+    <value>634, 411</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Importovanie dát</value>

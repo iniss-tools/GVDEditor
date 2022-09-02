@@ -508,4 +508,7 @@ Mám ji nuceně vypnout? </value>
   <data name="FTableCatalog_Definované_stĺpce_nie_sú_zotriedené_podľa_pozície" xml:space="preserve">
     <value>Definované sloupce nejsou setříděny podle pozice: "{0}" - End: {1} -&gt; "{2}" - End: {3}</value>
   </data>
+  <data name="AboutAppDescription" xml:space="preserve">
+    <value>Tento program slouží pro úpravu textových souborů, které používá program INISS. Program GEditor není oficiální aplikace společnosti CHAPS ani společnosti INPROP.</value>
+  </data>
 </root>

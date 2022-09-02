@@ -16,8 +16,7 @@ public partial class FColumnTypeSelect : Form
     public FColumnTypeSelect()
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         listColumnTypes.DataSource = columnTypes;
     }

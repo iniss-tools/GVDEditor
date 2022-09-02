@@ -30,24 +30,23 @@ namespace GVDEditor.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.bSave = new ExControls.ExButton();
             this.bStorno = new ExControls.ExButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbDateRemNew = new ExTextBox();
+            this.tbDateRemNew = new ExControls.ExTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbDateRemOrig = new ExTextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.tbDateRemOrig = new ExControls.ExTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(334, 3);
+            this.bSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bSave.Location = new System.Drawing.Point(293, 63);
+            this.bSave.Margin = new System.Windows.Forms.Padding(2);
             this.bSave.Name = "bSave";
-            this.bSave.Size = new System.Drawing.Size(75, 33);
+            this.bSave.Size = new System.Drawing.Size(56, 27);
             this.bSave.TabIndex = 0;
             this.bSave.Text = "Upraviť";
             this.bSave.UseVisualStyleBackColor = true;
@@ -55,10 +54,12 @@ namespace GVDEditor.Forms
             // 
             // bStorno
             // 
+            this.bStorno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bStorno.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bStorno.Location = new System.Drawing.Point(415, 3);
+            this.bStorno.Location = new System.Drawing.Point(353, 63);
+            this.bStorno.Margin = new System.Windows.Forms.Padding(2);
             this.bStorno.Name = "bStorno";
-            this.bStorno.Size = new System.Drawing.Size(75, 33);
+            this.bStorno.Size = new System.Drawing.Size(56, 27);
             this.bStorno.TabIndex = 1;
             this.bStorno.Text = "Zrušiť";
             this.bStorno.UseVisualStyleBackColor = true;
@@ -67,101 +68,95 @@ namespace GVDEditor.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(13, 10);
+            this.label1.Location = new System.Drawing.Point(5, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 28);
-            this.label1.TabIndex = 2;
+            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.TabIndex = 0;
             this.label1.Text = "Pôvodné dát. obm.:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbDateRemNew
             // 
+            this.tbDateRemNew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDateRemNew.BorderColor = System.Drawing.Color.DimGray;
+            this.tbDateRemNew.DisabledBackColor = System.Drawing.SystemColors.Control;
             this.tbDateRemNew.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tbDateRemNew.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbDateRemNew.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.tbDateRemNew.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.tbDateRemNew.Location = new System.Drawing.Point(150, 41);
+            this.tbDateRemNew.HintForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbDateRemNew.HintText = null;
+            this.tbDateRemNew.Location = new System.Drawing.Point(115, 29);
+            this.tbDateRemNew.Margin = new System.Windows.Forms.Padding(2);
             this.tbDateRemNew.Name = "tbDateRemNew";
-            this.tbDateRemNew.Size = new System.Drawing.Size(356, 22);
+            this.tbDateRemNew.Size = new System.Drawing.Size(293, 20);
             this.tbDateRemNew.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(13, 38);
+            this.label2.Location = new System.Drawing.Point(5, 36);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 28);
-            this.label2.TabIndex = 5;
+            this.label2.Size = new System.Drawing.Size(83, 13);
+            this.label2.TabIndex = 2;
             this.label2.Text = "Nové dát. obm.:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbDateRemOrig
             // 
+            this.tbDateRemOrig.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDateRemOrig.BorderColor = System.Drawing.Color.DimGray;
+            this.tbDateRemOrig.DisabledBackColor = System.Drawing.SystemColors.Control;
             this.tbDateRemOrig.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tbDateRemOrig.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbDateRemOrig.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.tbDateRemOrig.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.tbDateRemOrig.Location = new System.Drawing.Point(150, 13);
+            this.tbDateRemOrig.HintForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbDateRemOrig.HintText = null;
+            this.tbDateRemOrig.Location = new System.Drawing.Point(115, 5);
+            this.tbDateRemOrig.Margin = new System.Windows.Forms.Padding(2);
             this.tbDateRemOrig.Name = "tbDateRemOrig";
             this.tbDateRemOrig.ReadOnly = true;
-            this.tbDateRemOrig.Size = new System.Drawing.Size(356, 22);
-            this.tbDateRemOrig.TabIndex = 6;
+            this.tbDateRemOrig.Size = new System.Drawing.Size(293, 20);
+            this.tbDateRemOrig.TabIndex = 1;
             // 
-            // tableLayoutPanel1
+            // panel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tbDateRemNew, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tbDateRemOrig, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(519, 121);
-            this.tableLayoutPanel1.TabIndex = 7;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.flowLayoutPanel1, 2);
-            this.flowLayoutPanel1.Controls.Add(this.bStorno);
-            this.flowLayoutPanel1.Controls.Add(this.bSave);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 69);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(493, 39);
-            this.flowLayoutPanel1.TabIndex = 7;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.bStorno);
+            this.panel1.Controls.Add(this.tbDateRemOrig);
+            this.panel1.Controls.Add(this.bSave);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.tbDateRemNew);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(3);
+            this.panel1.Size = new System.Drawing.Size(420, 101);
+            this.panel1.TabIndex = 4;
             // 
             // FDateLimitEdit
             // 
             this.AcceptButton = this.bSave;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bStorno;
-            this.ClientSize = new System.Drawing.Size(519, 121);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.ClientSize = new System.Drawing.Size(420, 101);
+            this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1920, 168);
+            this.MaximumSize = new System.Drawing.Size(1444, 140);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(380, 168);
+            this.MinimumSize = new System.Drawing.Size(289, 140);
             this.Name = "FDateLimitEdit";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Úprava dátumového obmedzenia vlaku";
             this.Load += new System.EventHandler(this.FDateRemEdit_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -174,7 +169,6 @@ namespace GVDEditor.Forms
         private ExTextBox tbDateRemNew;
         private System.Windows.Forms.Label label2;
         private ExTextBox tbDateRemOrig;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Panel panel1;
     }
 }

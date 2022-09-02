@@ -1,8 +1,6 @@
-﻿using GVDEditor.Properties;
+﻿namespace GVDEditor.XML;
 
-namespace GVDEditor.XML;
-
-internal static class GVDEditorSettingsNaming
+/*internal static class GVDEditorSettingsNaming
 {
     /// <summary>
     ///     Nazve nastavenia farieb podla aktualnej lokalizacie.
@@ -150,4 +148,4 @@ internal static class GVDEditorSettingsNaming
 
         shortcuts.DatObm.Name = "Generátor dátum. obm.";
     }
-}
+}*/

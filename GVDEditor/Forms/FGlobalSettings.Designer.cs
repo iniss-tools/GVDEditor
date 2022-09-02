@@ -56,9 +56,6 @@ namespace GVDEditor.Forms
             this.label7 = new System.Windows.Forms.Label();
             this.tpJazyky = new System.Windows.Forms.TabPage();
             this.dgvLanguagesRawBank = new System.Windows.Forms.DataGridView();
-            this.keyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fyzBankNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.languageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label19 = new System.Windows.Forms.Label();
             this.listLanguages = new System.Windows.Forms.ListBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -121,6 +118,9 @@ namespace GVDEditor.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.bSave = new ExControls.ExButton();
             this.colorDialogFarba = new System.Windows.Forms.ColorDialog();
+            this.keyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fyzBankNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.languageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl.SuspendLayout();
             this.tpGrafikony.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -129,7 +129,6 @@ namespace GVDEditor.Forms
             ((System.ComponentModel.ISupportInitialize)(this.nudTabPort)).BeginInit();
             this.tpJazyky.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLanguagesRawBank)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.languageBindingSource)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.tpMeskania.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -139,6 +138,7 @@ namespace GVDEditor.Forms
             this.groupBox3.SuspendLayout();
             this.tpAudio.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.languageBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -349,25 +349,6 @@ namespace GVDEditor.Forms
             this.dgvLanguagesRawBank.ReadOnly = true;
             this.dgvLanguagesRawBank.RowHeadersVisible = false;
             this.dgvLanguagesRawBank.RowTemplate.Height = 24;
-            // 
-            // keyDataGridViewTextBoxColumn
-            // 
-            this.keyDataGridViewTextBoxColumn.DataPropertyName = "Key";
-            resources.ApplyResources(this.keyDataGridViewTextBoxColumn, "keyDataGridViewTextBoxColumn");
-            this.keyDataGridViewTextBoxColumn.Name = "keyDataGridViewTextBoxColumn";
-            this.keyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fyzBankNameDataGridViewTextBoxColumn
-            // 
-            this.fyzBankNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.fyzBankNameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            resources.ApplyResources(this.fyzBankNameDataGridViewTextBoxColumn, "fyzBankNameDataGridViewTextBoxColumn");
-            this.fyzBankNameDataGridViewTextBoxColumn.Name = "fyzBankNameDataGridViewTextBoxColumn";
-            this.fyzBankNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // languageBindingSource
-            // 
-            this.languageBindingSource.DataSource = typeof(FyzLanguage);
             // 
             // label19
             // 
@@ -971,6 +952,25 @@ namespace GVDEditor.Forms
             this.bSave.UseVisualStyleBackColor = true;
             this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
+            // keyDataGridViewTextBoxColumn
+            // 
+            this.keyDataGridViewTextBoxColumn.DataPropertyName = "Key";
+            resources.ApplyResources(this.keyDataGridViewTextBoxColumn, "keyDataGridViewTextBoxColumn");
+            this.keyDataGridViewTextBoxColumn.Name = "keyDataGridViewTextBoxColumn";
+            this.keyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fyzBankNameDataGridViewTextBoxColumn
+            // 
+            this.fyzBankNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fyzBankNameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            resources.ApplyResources(this.fyzBankNameDataGridViewTextBoxColumn, "fyzBankNameDataGridViewTextBoxColumn");
+            this.fyzBankNameDataGridViewTextBoxColumn.Name = "fyzBankNameDataGridViewTextBoxColumn";
+            this.fyzBankNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // languageBindingSource
+            // 
+            this.languageBindingSource.DataSource = typeof(ToolsCore.Entities.FyzLanguage);
+            // 
             // FGlobalSettings
             // 
             this.AcceptButton = this.bSave;
@@ -998,7 +998,6 @@ namespace GVDEditor.Forms
             this.tpJazyky.ResumeLayout(false);
             this.tpJazyky.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLanguagesRawBank)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.languageBindingSource)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.tpMeskania.ResumeLayout(false);
@@ -1016,6 +1015,7 @@ namespace GVDEditor.Forms
             this.tpAudio.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.languageBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -38,10 +38,10 @@ namespace GVDEditor.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cbEncoding = new ExComboBox();
+            this.cbEncoding = new ExControls.ExComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cbDataType = new ExComboBox();
+            this.cbDataType = new ExControls.ExComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.bClipboard = new ExControls.ExButton();
@@ -49,11 +49,11 @@ namespace GVDEditor.Forms
             this.bXLS = new ExControls.ExButton();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new ExGroupBox();
+            this.groupBox1 = new ExControls.ExGroupBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.rbRemoveAndInsert = new ExRadioButton();
-            this.rbAppend = new ExRadioButton();
-            this.cboxFirstHeader = new ExCheckBox();
+            this.rbRemoveAndInsert = new ExControls.ExRadioButton();
+            this.rbAppend = new ExControls.ExRadioButton();
+            this.cboxFirstHeader = new ExControls.ExCheckBox();
             this.ofDialogCSV = new System.Windows.Forms.OpenFileDialog();
             this.ofDialogXLS = new System.Windows.Forms.OpenFileDialog();
             this.flowLayoutPanel1.SuspendLayout();
@@ -117,6 +117,7 @@ namespace GVDEditor.Forms
             // 
             // cbEncoding
             // 
+            this.cbEncoding.DropDownSelectedRowBackColor = System.Drawing.SystemColors.Highlight;
             this.cbEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEncoding.FormattingEnabled = true;
             this.cbEncoding.Items.AddRange(new object[] {
@@ -124,6 +125,7 @@ namespace GVDEditor.Forms
             resources.GetString("cbEncoding.Items1")});
             resources.ApplyResources(this.cbEncoding, "cbEncoding");
             this.cbEncoding.Name = "cbEncoding";
+            this.cbEncoding.UseDarkScrollBar = false;
             this.cbEncoding.SelectedIndexChanged += new System.EventHandler(this.cbEncoding_SelectedIndexChanged);
             // 
             // label3
@@ -140,11 +142,13 @@ namespace GVDEditor.Forms
             // cbDataType
             // 
             resources.ApplyResources(this.cbDataType, "cbDataType");
+            this.cbDataType.DropDownSelectedRowBackColor = System.Drawing.SystemColors.Highlight;
             this.cbDataType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDataType.FormattingEnabled = true;
             this.cbDataType.Items.AddRange(new object[] {
             resources.GetString("cbDataType.Items")});
             this.cbDataType.Name = "cbDataType";
+            this.cbDataType.UseDarkScrollBar = false;
             this.cbDataType.SelectedIndexChanged += new System.EventHandler(this.cbDataType_SelectedIndexChanged);
             // 
             // tableLayoutPanel2
@@ -219,6 +223,7 @@ namespace GVDEditor.Forms
             // 
             resources.ApplyResources(this.rbRemoveAndInsert, "rbRemoveAndInsert");
             this.rbRemoveAndInsert.Checked = true;
+            this.rbRemoveAndInsert.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.rbRemoveAndInsert.Name = "rbRemoveAndInsert";
             this.rbRemoveAndInsert.TabStop = true;
             this.rbRemoveAndInsert.UseVisualStyleBackColor = true;
@@ -226,12 +231,15 @@ namespace GVDEditor.Forms
             // rbAppend
             // 
             resources.ApplyResources(this.rbAppend, "rbAppend");
+            this.rbAppend.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.rbAppend.Name = "rbAppend";
             this.rbAppend.UseVisualStyleBackColor = true;
             // 
             // cboxFirstHeader
             // 
             resources.ApplyResources(this.cboxFirstHeader, "cboxFirstHeader");
+            this.cboxFirstHeader.BoxBackColor = System.Drawing.Color.White;
+            this.cboxFirstHeader.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxFirstHeader.Name = "cboxFirstHeader";
             this.cboxFirstHeader.UseVisualStyleBackColor = true;
             this.cboxFirstHeader.CheckedChanged += new System.EventHandler(this.cboxFirstHeader_CheckedChanged);

@@ -36,6 +36,12 @@ namespace GVDEditor.Forms
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.scText = new GVDEditor.Controls.MyScintilla();
+            this.lbTabTabs = new System.Windows.Forms.ListBox();
+            this.conMenuLbTabs = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiAddTabTab = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDeleteTabTab = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiRenameTabTab = new System.Windows.Forms.ToolStripMenuItem();
             this.conMenuScText = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiSave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSaveAll = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,12 +55,6 @@ namespace GVDEditor.Forms
             this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiSelectAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbTabTabs = new System.Windows.Forms.ListBox();
-            this.conMenuLbTabs = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmiAddTabTab = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDeleteTabTab = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiRenameTabTab = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.tsbSaveAll = new System.Windows.Forms.ToolStripButton();
@@ -89,8 +89,8 @@ namespace GVDEditor.Forms
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.conMenuScText.SuspendLayout();
             this.conMenuLbTabs.SuspendLayout();
+            this.conMenuScText.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -129,7 +129,48 @@ namespace GVDEditor.Forms
             this.scText.TextChanged += new System.EventHandler(this.scText_TextChanged);
             this.scText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.scText_KeyPress);
             this.scText.MouseDown += new System.Windows.Forms.MouseEventHandler(this.scText_MouseDown);
-            this.scText.Scintilla.ContextMenuStrip = conMenuScText;
+            // 
+            // lbTabTabs
+            // 
+            this.lbTabTabs.ContextMenuStrip = this.conMenuLbTabs;
+            resources.ApplyResources(this.lbTabTabs, "lbTabTabs");
+            this.lbTabTabs.FormattingEnabled = true;
+            this.lbTabTabs.Name = "lbTabTabs";
+            this.lbTabTabs.SelectedIndexChanged += new System.EventHandler(this.lbTabTabs_SelectedIndexChanged);
+            // 
+            // conMenuLbTabs
+            // 
+            this.conMenuLbTabs.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.conMenuLbTabs.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAddTabTab,
+            this.tsmiDeleteTabTab,
+            this.toolStripSeparator8,
+            this.tsmiRenameTabTab});
+            this.conMenuLbTabs.Name = "conMenuLbTabs";
+            resources.ApplyResources(this.conMenuLbTabs, "conMenuLbTabs");
+            // 
+            // tsmiAddTabTab
+            // 
+            resources.ApplyResources(this.tsmiAddTabTab, "tsmiAddTabTab");
+            this.tsmiAddTabTab.Name = "tsmiAddTabTab";
+            this.tsmiAddTabTab.Click += new System.EventHandler(this.tsmiAddTabTab_Click);
+            // 
+            // tsmiDeleteTabTab
+            // 
+            resources.ApplyResources(this.tsmiDeleteTabTab, "tsmiDeleteTabTab");
+            this.tsmiDeleteTabTab.Name = "tsmiDeleteTabTab";
+            this.tsmiDeleteTabTab.Click += new System.EventHandler(this.tsmiDeleteTabTab_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
+            // 
+            // tsmiRenameTabTab
+            // 
+            resources.ApplyResources(this.tsmiRenameTabTab, "tsmiRenameTabTab");
+            this.tsmiRenameTabTab.Name = "tsmiRenameTabTab";
+            this.tsmiRenameTabTab.Click += new System.EventHandler(this.tsmiRenameTabTab_Click);
             // 
             // conMenuScText
             // 
@@ -220,48 +261,6 @@ namespace GVDEditor.Forms
             resources.ApplyResources(this.tsmiSelectAll, "tsmiSelectAll");
             this.tsmiSelectAll.Click += new System.EventHandler(this.tsmiSelectAll_Click);
             // 
-            // lbTabTabs
-            // 
-            this.lbTabTabs.ContextMenuStrip = this.conMenuLbTabs;
-            resources.ApplyResources(this.lbTabTabs, "lbTabTabs");
-            this.lbTabTabs.FormattingEnabled = true;
-            this.lbTabTabs.Name = "lbTabTabs";
-            this.lbTabTabs.SelectedIndexChanged += new System.EventHandler(this.lbTabTabs_SelectedIndexChanged);
-            // 
-            // conMenuLbTabs
-            // 
-            this.conMenuLbTabs.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.conMenuLbTabs.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiAddTabTab,
-            this.tsmiDeleteTabTab,
-            this.toolStripSeparator8,
-            this.tsmiRenameTabTab});
-            this.conMenuLbTabs.Name = "conMenuLbTabs";
-            resources.ApplyResources(this.conMenuLbTabs, "conMenuLbTabs");
-            // 
-            // tsmiAddTabTab
-            // 
-            resources.ApplyResources(this.tsmiAddTabTab, "tsmiAddTabTab");
-            this.tsmiAddTabTab.Name = "tsmiAddTabTab";
-            this.tsmiAddTabTab.Click += new System.EventHandler(this.tsmiAddTabTab_Click);
-            // 
-            // tsmiDeleteTabTab
-            // 
-            resources.ApplyResources(this.tsmiDeleteTabTab, "tsmiDeleteTabTab");
-            this.tsmiDeleteTabTab.Name = "tsmiDeleteTabTab";
-            this.tsmiDeleteTabTab.Click += new System.EventHandler(this.tsmiDeleteTabTab_Click);
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
-            // 
-            // tsmiRenameTabTab
-            // 
-            resources.ApplyResources(this.tsmiRenameTabTab, "tsmiRenameTabTab");
-            this.tsmiRenameTabTab.Name = "tsmiRenameTabTab";
-            this.tsmiRenameTabTab.Click += new System.EventHandler(this.tsmiRenameTabTab_Click);
-            // 
             // toolStrip
             // 
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -285,6 +284,7 @@ namespace GVDEditor.Forms
             // tsbSave
             // 
             this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSave.Image = global::ToolsCore.GlobalResources.save;
             resources.ApplyResources(this.tsbSave, "tsbSave");
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
@@ -292,6 +292,7 @@ namespace GVDEditor.Forms
             // tsbSaveAll
             // 
             this.tsbSaveAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSaveAll.Image = global::ToolsCore.GlobalResources.save_all;
             resources.ApplyResources(this.tsbSaveAll, "tsbSaveAll");
             this.tsbSaveAll.Name = "tsbSaveAll";
             this.tsbSaveAll.Click += new System.EventHandler(this.tsbSaveAll_Click);
@@ -299,6 +300,7 @@ namespace GVDEditor.Forms
             // tsbStorno
             // 
             this.tsbStorno.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbStorno.Image = global::ToolsCore.GlobalResources.export;
             resources.ApplyResources(this.tsbStorno, "tsbStorno");
             this.tsbStorno.Name = "tsbStorno";
             this.tsbStorno.Click += new System.EventHandler(this.tsbStorno_Click);
@@ -311,6 +313,7 @@ namespace GVDEditor.Forms
             // tsbUndo
             // 
             this.tsbUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbUndo.Image = global::ToolsCore.GlobalResources.undo;
             resources.ApplyResources(this.tsbUndo, "tsbUndo");
             this.tsbUndo.Name = "tsbUndo";
             this.tsbUndo.Click += new System.EventHandler(this.tsbUndo_Click);
@@ -318,6 +321,7 @@ namespace GVDEditor.Forms
             // tsbRedo
             // 
             this.tsbRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRedo.Image = global::ToolsCore.GlobalResources.redo;
             resources.ApplyResources(this.tsbRedo, "tsbRedo");
             this.tsbRedo.Name = "tsbRedo";
             this.tsbRedo.Click += new System.EventHandler(this.tsbRedo_Click);
@@ -330,6 +334,7 @@ namespace GVDEditor.Forms
             // tsbAddTab
             // 
             this.tsbAddTab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbAddTab.Image = global::ToolsCore.GlobalResources.add;
             resources.ApplyResources(this.tsbAddTab, "tsbAddTab");
             this.tsbAddTab.Name = "tsbAddTab";
             this.tsbAddTab.Click += new System.EventHandler(this.tsbAddTab_Click);
@@ -337,6 +342,7 @@ namespace GVDEditor.Forms
             // tsbRemoveTab
             // 
             this.tsbRemoveTab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRemoveTab.Image = global::ToolsCore.GlobalResources.delete;
             resources.ApplyResources(this.tsbRemoveTab, "tsbRemoveTab");
             this.tsbRemoveTab.Name = "tsbRemoveTab";
             this.tsbRemoveTab.Click += new System.EventHandler(this.tsbRemoveTab_Click);
@@ -349,6 +355,7 @@ namespace GVDEditor.Forms
             // tsbRename
             // 
             this.tsbRename.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRename.Image = global::ToolsCore.GlobalResources.rename;
             resources.ApplyResources(this.tsbRename, "tsbRename");
             this.tsbRename.Name = "tsbRename";
             this.tsbRename.Click += new System.EventHandler(this.tsbRename_Click);
@@ -356,6 +363,7 @@ namespace GVDEditor.Forms
             // tsbFindReplace
             // 
             this.tsbFindReplace.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbFindReplace.Image = global::ToolsCore.GlobalResources.find_replace;
             resources.ApplyResources(this.tsbFindReplace, "tsbFindReplace");
             this.tsbFindReplace.Name = "tsbFindReplace";
             this.tsbFindReplace.Click += new System.EventHandler(this.tsbFindReplace_Click);
@@ -363,6 +371,7 @@ namespace GVDEditor.Forms
             // tsbReformat
             // 
             this.tsbReformat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbReformat.Image = global::ToolsCore.GlobalResources.wrench;
             resources.ApplyResources(this.tsbReformat, "tsbReformat");
             this.tsbReformat.Name = "tsbReformat";
             this.tsbReformat.Click += new System.EventHandler(this.tsbReformat_Click);
@@ -495,8 +504,8 @@ namespace GVDEditor.Forms
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.conMenuScText.ResumeLayout(false);
             this.conMenuLbTabs.ResumeLayout(false);
+            this.conMenuScText.ResumeLayout(false);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);

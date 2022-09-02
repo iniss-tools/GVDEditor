@@ -127,16 +127,16 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>517, 424</value>
+    <value>388, 344</value>
   </data>
   <data name="bSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 33</value>
+    <value>56, 27</value>
   </data>
   <data name="bSave.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="bSave.Text" xml:space="preserve">
     <value>Uložiť</value>
@@ -145,7 +145,7 @@
     <value>bSave</value>
   </data>
   <data name="&gt;&gt;bSave.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bSave.Parent" xml:space="preserve">
     <value>$this</value>
@@ -160,16 +160,16 @@
     <value>NoControl</value>
   </data>
   <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>688, 424</value>
+    <value>516, 344</value>
   </data>
   <data name="bStorno.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 33</value>
+    <value>56, 27</value>
   </data>
   <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="bStorno.Text" xml:space="preserve">
     <value>Zrušiť</value>
@@ -178,7 +178,7 @@
     <value>bStorno</value>
   </data>
   <data name="&gt;&gt;bStorno.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bStorno.Parent" xml:space="preserve">
     <value>$this</value>
@@ -193,13 +193,16 @@
     <value>NoControl</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 32</value>
+    <value>14, 26</value>
+  </data>
+  <data name="label15.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 17</value>
+    <value>88, 13</value>
   </data>
   <data name="label15.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>Nastaviť poradie:</value>
@@ -223,16 +226,16 @@
     <value>NoControl</value>
   </data>
   <data name="bSetColumnOrder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 27</value>
+    <value>116, 22</value>
   </data>
   <data name="bSetColumnOrder.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bSetColumnOrder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 27</value>
+    <value>66, 23</value>
   </data>
   <data name="bSetColumnOrder.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="bSetColumnOrder.Text" xml:space="preserve">
     <value>Nastaviť...</value>
@@ -241,7 +244,7 @@
     <value>bSetColumnOrder</value>
   </data>
   <data name="&gt;&gt;bSetColumnOrder.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bSetColumnOrder.Parent" xml:space="preserve">
     <value>groupBox5</value>
@@ -250,19 +253,19 @@
     <value>1</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1012, 12</value>
+    <value>759, 10</value>
   </data>
   <data name="groupBox5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 68</value>
+    <value>188, 55</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
+    <value>1</value>
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
     <value>Poradie stĺpcov</value>
@@ -271,7 +274,7 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
     <value>$this</value>
@@ -283,16 +286,16 @@
     <value>Fill</value>
   </data>
   <data name="tbComment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 17</value>
+    <value>2, 15</value>
   </data>
   <data name="tbComment.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbComment.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="tbComment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>455, 84</value>
+    <value>342, 67</value>
   </data>
   <data name="tbComment.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -301,7 +304,7 @@
     <value>tbComment</value>
   </data>
   <data name="&gt;&gt;tbComment.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbComment.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -310,19 +313,19 @@
     <value>0</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>804, 316</value>
+    <value>603, 257</value>
   </data>
   <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>461, 103</value>
+    <value>346, 84</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
+    <value>4</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Komentár:</value>
@@ -331,7 +334,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
     <value>$this</value>
@@ -340,22 +343,22 @@
     <value>1</value>
   </data>
   <data name="nudMinHeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 20</value>
+    <value>262, 16</value>
   </data>
   <data name="nudMinHeight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudMinHeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 22</value>
+    <value>72, 20</value>
   </data>
   <data name="nudMinHeight.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;nudMinHeight.Name" xml:space="preserve">
     <value>nudMinHeight</value>
   </data>
   <data name="&gt;&gt;nudMinHeight.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudMinHeight.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -370,13 +373,16 @@
     <value>NoControl</value>
   </data>
   <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 22</value>
+    <value>199, 18</value>
+  </data>
+  <data name="label20.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 17</value>
+    <value>61, 13</value>
   </data>
   <data name="label20.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>2</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>Min. výška:</value>
@@ -394,22 +400,22 @@
     <value>1</value>
   </data>
   <data name="nudMaxRecCount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 20</value>
+    <value>111, 16</value>
   </data>
   <data name="nudMaxRecCount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudMaxRecCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
+    <value>74, 20</value>
   </data>
   <data name="nudMaxRecCount.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;nudMaxRecCount.Name" xml:space="preserve">
     <value>nudMaxRecCount</value>
   </data>
   <data name="&gt;&gt;nudMaxRecCount.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudMaxRecCount.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -424,16 +430,16 @@
     <value>NoControl</value>
   </data>
   <data name="bSetAll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 184</value>
+    <value>241, 150</value>
   </data>
   <data name="bSetAll.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bSetAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 27</value>
+    <value>99, 23</value>
   </data>
   <data name="bSetAll.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="bSetAll.Text" xml:space="preserve">
     <value>Nastaviť všetkým</value>
@@ -442,7 +448,7 @@
     <value>bSetAll</value>
   </data>
   <data name="&gt;&gt;bSetAll.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bSetAll.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -451,22 +457,22 @@
     <value>3</value>
   </data>
   <data name="nudSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>310, 139</value>
+    <value>232, 113</value>
   </data>
   <data name="nudSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 22</value>
+    <value>67, 20</value>
   </data>
   <data name="nudSize.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;nudSize.Name" xml:space="preserve">
     <value>nudSize</value>
   </data>
   <data name="&gt;&gt;nudSize.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudSize.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -481,13 +487,16 @@
     <value>NoControl</value>
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 21</value>
+    <value>9, 17</value>
+  </data>
+  <data name="label16.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 17</value>
+    <value>101, 13</value>
   </data>
   <data name="label16.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
     <value>Max. počet riadkov:</value>
@@ -505,13 +514,13 @@
     <value>5</value>
   </data>
   <data name="nudWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>310, 98</value>
+    <value>232, 80</value>
   </data>
   <data name="nudWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 22</value>
+    <value>67, 20</value>
   </data>
   <data name="nudWidth.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -520,7 +529,7 @@
     <value>nudWidth</value>
   </data>
   <data name="&gt;&gt;nudWidth.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudWidth.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -529,22 +538,22 @@
     <value>6</value>
   </data>
   <data name="nudHeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>310, 59</value>
+    <value>232, 48</value>
   </data>
   <data name="nudHeight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudHeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 22</value>
+    <value>67, 20</value>
   </data>
   <data name="nudHeight.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;nudHeight.Name" xml:space="preserve">
     <value>nudHeight</value>
   </data>
   <data name="&gt;&gt;nudHeight.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudHeight.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -559,13 +568,16 @@
     <value>NoControl</value>
   </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 142</value>
+    <value>170, 115</value>
+  </data>
+  <data name="label19.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 17</value>
+    <value>48, 13</value>
   </data>
   <data name="label19.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Veľkosť:</value>
@@ -589,13 +601,16 @@
     <value>NoControl</value>
   </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 101</value>
+    <value>170, 82</value>
+  </data>
+  <data name="label18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 17</value>
+    <value>36, 13</value>
   </data>
   <data name="label18.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>Šírka:</value>
@@ -619,13 +634,16 @@
     <value>NoControl</value>
   </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 62</value>
+    <value>170, 50</value>
+  </data>
+  <data name="label17.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 17</value>
+    <value>39, 13</value>
   </data>
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Výška:</value>
@@ -649,16 +667,16 @@
     <value>NoControl</value>
   </data>
   <data name="bRowEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>230, 184</value>
+    <value>172, 150</value>
   </data>
   <data name="bRowEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bRowEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 27</value>
+    <value>64, 23</value>
   </data>
   <data name="bRowEdit.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>11</value>
   </data>
   <data name="bRowEdit.Text" xml:space="preserve">
     <value>Upraviť</value>
@@ -667,7 +685,7 @@
     <value>bRowEdit</value>
   </data>
   <data name="&gt;&gt;bRowEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bRowEdit.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -675,20 +693,17 @@
   <data name="&gt;&gt;bRowEdit.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="listRows.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
   <data name="listRows.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 47</value>
+    <value>11, 38</value>
   </data>
   <data name="listRows.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="listRows.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 164</value>
+    <value>141, 134</value>
   </data>
   <data name="listRows.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;listRows.Name" xml:space="preserve">
     <value>listRows</value>
@@ -703,19 +718,19 @@
     <value>12</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>804, 86</value>
+    <value>603, 70</value>
   </data>
   <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>461, 224</value>
+    <value>346, 182</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+    <value>3</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Riadky</value>
@@ -724,7 +739,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
     <value>$this</value>
@@ -733,13 +748,16 @@
     <value>2</value>
   </data>
   <data name="exLineSeparator2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>232, 238</value>
+    <value>174, 193</value>
+  </data>
+  <data name="exLineSeparator2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="exLineSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 1</value>
+    <value>65, 1</value>
   </data>
   <data name="exLineSeparator2.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
+    <value>25</value>
   </data>
   <data name="exLineSeparator2.Text" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -748,7 +766,7 @@
     <value>exLineSeparator2</value>
   </data>
   <data name="&gt;&gt;exLineSeparator2.Type" xml:space="preserve">
-    <value>ExControls.ExLineSeparator, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExLineSeparator, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;exLineSeparator2.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -757,13 +775,16 @@
     <value>0</value>
   </data>
   <data name="exLineSeparator1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>319, 238</value>
+    <value>239, 193</value>
+  </data>
+  <data name="exLineSeparator1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="exLineSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>2, 91</value>
+    <value>2, 74</value>
   </data>
   <data name="exLineSeparator1.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
+    <value>28</value>
   </data>
   <data name="exLineSeparator1.Text" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -772,7 +793,7 @@
     <value>exLineSeparator1</value>
   </data>
   <data name="&gt;&gt;exLineSeparator1.Type" xml:space="preserve">
-    <value>ExControls.ExLineSeparator, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExLineSeparator, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;exLineSeparator1.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -787,13 +808,16 @@
     <value>NoControl</value>
   </data>
   <data name="bDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>238, 287</value>
+    <value>178, 233</value>
+  </data>
+  <data name="bDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 27</value>
+    <value>56, 23</value>
   </data>
   <data name="bDown.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
+    <value>27</value>
   </data>
   <data name="bDown.Text" xml:space="preserve">
     <value>Dole</value>
@@ -802,7 +826,7 @@
     <value>bDown</value>
   </data>
   <data name="&gt;&gt;bDown.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bDown.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -817,10 +841,13 @@
     <value>NoControl</value>
   </data>
   <data name="bUp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>238, 247</value>
+    <value>178, 201</value>
+  </data>
+  <data name="bUp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 27</value>
+    <value>56, 23</value>
   </data>
   <data name="bUp.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -832,7 +859,7 @@
     <value>bUp</value>
   </data>
   <data name="&gt;&gt;bUp.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bUp.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -841,22 +868,22 @@
     <value>3</value>
   </data>
   <data name="cbDivType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 84</value>
+    <value>224, 68</value>
   </data>
   <data name="cbDivType.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbDivType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>473, 24</value>
+    <value>356, 21</value>
   </data>
   <data name="cbDivType.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;cbDivType.Name" xml:space="preserve">
     <value>cbDivType</value>
   </data>
   <data name="&gt;&gt;cbDivType.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbDivType.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -865,22 +892,22 @@
     <value>4</value>
   </data>
   <data name="nudFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>615, 215</value>
+    <value>461, 175</value>
   </data>
   <data name="nudFont.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>93, 20</value>
   </data>
   <data name="nudFont.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
+    <value>24</value>
   </data>
   <data name="&gt;&gt;nudFont.Name" xml:space="preserve">
     <value>nudFont</value>
   </data>
   <data name="&gt;&gt;nudFont.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudFont.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -889,22 +916,22 @@
     <value>5</value>
   </data>
   <data name="nudLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>396, 215</value>
+    <value>297, 175</value>
   </data>
   <data name="nudLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 22</value>
+    <value>72, 20</value>
   </data>
   <data name="nudLine.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
+    <value>22</value>
   </data>
   <data name="&gt;&gt;nudLine.Name" xml:space="preserve">
     <value>nudLine</value>
   </data>
   <data name="&gt;&gt;nudLine.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudLine.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -919,13 +946,16 @@
     <value>NoControl</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 87</value>
+    <value>176, 71</value>
+  </data>
+  <data name="label12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 17</value>
+    <value>46, 13</value>
   </data>
   <data name="label12.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
+    <value>7</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>Divtype:</value>
@@ -949,13 +979,16 @@
     <value>NoControl</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 217</value>
+    <value>176, 176</value>
+  </data>
+  <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 17</value>
+    <value>112, 13</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
+    <value>21</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Zobrazovať na riadku:</value>
@@ -979,10 +1012,13 @@
     <value>NoControl</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>554, 217</value>
+    <value>416, 176</value>
+  </data>
+  <data name="label13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 17</value>
+    <value>40, 13</value>
   </data>
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -1003,22 +1039,22 @@
     <value>9</value>
   </data>
   <data name="cbTab2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>557, 117</value>
+    <value>418, 95</value>
   </data>
   <data name="cbTab2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbTab2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 24</value>
+    <value>162, 21</value>
   </data>
   <data name="cbTab2.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;cbTab2.Name" xml:space="preserve">
     <value>cbTab2</value>
   </data>
   <data name="&gt;&gt;cbTab2.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbTab2.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1033,13 +1069,16 @@
     <value>NoControl</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>502, 121</value>
+    <value>376, 98</value>
+  </data>
+  <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 17</value>
+    <value>37, 13</value>
   </data>
   <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
+    <value>11</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>TAB2:</value>
@@ -1057,22 +1096,22 @@
     <value>11</value>
   </data>
   <data name="cbTab1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 117</value>
+    <value>224, 95</value>
   </data>
   <data name="cbTab1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbTab1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 24</value>
+    <value>146, 21</value>
   </data>
   <data name="cbTab1.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;cbTab1.Name" xml:space="preserve">
     <value>cbTab1</value>
   </data>
   <data name="&gt;&gt;cbTab1.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbTab1.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1087,13 +1126,16 @@
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 121</value>
+    <value>176, 98</value>
+  </data>
+  <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 17</value>
+    <value>37, 13</value>
   </data>
   <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>9</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>TAB1:</value>
@@ -1117,16 +1159,16 @@
     <value>NoControl</value>
   </data>
   <data name="rbRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>645, 183</value>
+    <value>484, 149</value>
   </data>
   <data name="rbRight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="rbRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 21</value>
+    <value>59, 17</value>
   </data>
   <data name="rbRight.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>20</value>
   </data>
   <data name="rbRight.Text" xml:space="preserve">
     <value>Vpravo</value>
@@ -1135,7 +1177,7 @@
     <value>rbRight</value>
   </data>
   <data name="&gt;&gt;rbRight.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbRight.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1150,16 +1192,16 @@
     <value>NoControl</value>
   </data>
   <data name="rbCenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>523, 183</value>
+    <value>392, 149</value>
   </data>
   <data name="rbCenter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="rbCenter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 21</value>
+    <value>50, 17</value>
   </data>
   <data name="rbCenter.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>19</value>
   </data>
   <data name="rbCenter.Text" xml:space="preserve">
     <value>Stred</value>
@@ -1168,7 +1210,7 @@
     <value>rbCenter</value>
   </data>
   <data name="&gt;&gt;rbCenter.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbCenter.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1183,16 +1225,16 @@
     <value>NoControl</value>
   </data>
   <data name="rbLeft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>396, 183</value>
+    <value>297, 149</value>
   </data>
   <data name="rbLeft.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="rbLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 21</value>
+    <value>54, 17</value>
   </data>
   <data name="rbLeft.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>18</value>
   </data>
   <data name="rbLeft.Text" xml:space="preserve">
     <value>Vľavo</value>
@@ -1201,7 +1243,7 @@
     <value>rbLeft</value>
   </data>
   <data name="&gt;&gt;rbLeft.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbLeft.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1216,13 +1258,16 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 183</value>
+    <value>176, 149</value>
+  </data>
+  <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 17</value>
+    <value>90, 13</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>17</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Zarovnanie textu:</value>
@@ -1240,22 +1285,22 @@
     <value>17</value>
   </data>
   <data name="nudEnd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>615, 151</value>
+    <value>461, 123</value>
   </data>
   <data name="nudEnd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudEnd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 22</value>
+    <value>72, 20</value>
   </data>
   <data name="nudEnd.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="&gt;&gt;nudEnd.Name" xml:space="preserve">
     <value>nudEnd</value>
   </data>
   <data name="&gt;&gt;nudEnd.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudEnd.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1270,13 +1315,16 @@
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>502, 153</value>
+    <value>376, 124</value>
+  </data>
+  <data name="label8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 17</value>
+    <value>77, 13</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Posledný pixel:</value>
@@ -1294,22 +1342,22 @@
     <value>19</value>
   </data>
   <data name="nudStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>353, 151</value>
+    <value>265, 123</value>
   </data>
   <data name="nudStart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="nudStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
+    <value>74, 20</value>
   </data>
   <data name="nudStart.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="&gt;&gt;nudStart.Name" xml:space="preserve">
     <value>nudStart</value>
   </data>
   <data name="&gt;&gt;nudStart.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudStart.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1324,13 +1372,16 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 153</value>
+    <value>176, 124</value>
+  </data>
+  <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 17</value>
+    <value>87, 13</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Počiatočný pixel:</value>
@@ -1348,22 +1399,22 @@
     <value>21</value>
   </data>
   <data name="cbColumnFill.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 49</value>
+    <value>224, 40</value>
   </data>
   <data name="cbColumnFill.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbColumnFill.Size" type="System.Drawing.Size, System.Drawing">
-    <value>473, 24</value>
+    <value>356, 21</value>
   </data>
   <data name="cbColumnFill.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;cbColumnFill.Name" xml:space="preserve">
     <value>cbColumnFill</value>
   </data>
   <data name="&gt;&gt;cbColumnFill.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbColumnFill.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1372,22 +1423,22 @@
     <value>22</value>
   </data>
   <data name="tbColumnKey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>557, 18</value>
+    <value>418, 15</value>
   </data>
   <data name="tbColumnKey.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbColumnKey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 22</value>
+    <value>162, 20</value>
   </data>
   <data name="tbColumnKey.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;tbColumnKey.Name" xml:space="preserve">
     <value>tbColumnKey</value>
   </data>
   <data name="&gt;&gt;tbColumnKey.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbColumnKey.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1396,22 +1447,22 @@
     <value>23</value>
   </data>
   <data name="tbColumnName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 18</value>
+    <value>224, 15</value>
   </data>
   <data name="tbColumnName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbColumnName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 22</value>
+    <value>146, 20</value>
   </data>
   <data name="tbColumnName.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;tbColumnName.Name" xml:space="preserve">
     <value>tbColumnName</value>
   </data>
   <data name="&gt;&gt;tbColumnName.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbColumnName.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1426,13 +1477,16 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 52</value>
+    <value>176, 42</value>
+  </data>
+  <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 17</value>
+    <value>41, 13</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Obsah:</value>
@@ -1456,13 +1510,16 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>510, 23</value>
+    <value>382, 19</value>
+  </data>
+  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 17</value>
+    <value>33, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Kľúč:</value>
@@ -1486,13 +1543,16 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 22</value>
+    <value>176, 18</value>
+  </data>
+  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 17</value>
+    <value>41, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Názov:</value>
@@ -1516,16 +1576,16 @@
     <value>NoControl</value>
   </data>
   <data name="bColumnDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>658, 247</value>
+    <value>494, 201</value>
   </data>
   <data name="bColumnDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bColumnDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 27</value>
+    <value>77, 23</value>
   </data>
   <data name="bColumnDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>31</value>
   </data>
   <data name="bColumnDelete.Text" xml:space="preserve">
     <value>Odstrániť</value>
@@ -1534,7 +1594,7 @@
     <value>bColumnDelete</value>
   </data>
   <data name="&gt;&gt;bColumnDelete.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bColumnDelete.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1549,16 +1609,16 @@
     <value>NoControl</value>
   </data>
   <data name="bColumnEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>513, 247</value>
+    <value>385, 201</value>
   </data>
   <data name="bColumnEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bColumnEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 27</value>
+    <value>64, 23</value>
   </data>
   <data name="bColumnEdit.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>30</value>
   </data>
   <data name="bColumnEdit.Text" xml:space="preserve">
     <value>Upraviť</value>
@@ -1567,7 +1627,7 @@
     <value>bColumnEdit</value>
   </data>
   <data name="&gt;&gt;bColumnEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bColumnEdit.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1582,16 +1642,16 @@
     <value>NoControl</value>
   </data>
   <data name="bColumnAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 247</value>
+    <value>283, 201</value>
   </data>
   <data name="bColumnAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bColumnAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 27</value>
+    <value>56, 23</value>
   </data>
   <data name="bColumnAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>29</value>
   </data>
   <data name="bColumnAdd.Text" xml:space="preserve">
     <value>Pridať</value>
@@ -1600,7 +1660,7 @@
     <value>bColumnAdd</value>
   </data>
   <data name="&gt;&gt;bColumnAdd.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bColumnAdd.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1608,17 +1668,14 @@
   <data name="&gt;&gt;bColumnAdd.ZOrder" xml:space="preserve">
     <value>30</value>
   </data>
-  <data name="listColumns.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
   <data name="listColumns.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 22</value>
+    <value>5, 18</value>
   </data>
   <data name="listColumns.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="listColumns.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 292</value>
+    <value>165, 238</value>
   </data>
   <data name="listColumns.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1636,19 +1693,19 @@
     <value>31</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 86</value>
+    <value>9, 70</value>
   </data>
   <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>787, 334</value>
+    <value>590, 271</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Dieliky</value>
@@ -1657,7 +1714,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1666,13 +1723,13 @@
     <value>3</value>
   </data>
   <data name="cbManufacturer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>773, 27</value>
+    <value>580, 22</value>
   </data>
   <data name="cbManufacturer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cbManufacturer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 24</value>
+    <value>156, 21</value>
   </data>
   <data name="cbManufacturer.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1681,7 +1738,7 @@
     <value>cbManufacturer</value>
   </data>
   <data name="&gt;&gt;cbManufacturer.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbManufacturer.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1696,13 +1753,16 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>384, 30</value>
+    <value>288, 24</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 17</value>
+    <value>33, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Kľúč:</value>
@@ -1720,22 +1780,22 @@
     <value>1</value>
   </data>
   <data name="tbKey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>443, 27</value>
+    <value>332, 22</value>
   </data>
   <data name="tbKey.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbKey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
+    <value>156, 20</value>
   </data>
   <data name="tbKey.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;tbKey.Name" xml:space="preserve">
     <value>tbKey</value>
   </data>
   <data name="&gt;&gt;tbKey.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbKey.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1750,10 +1810,13 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>687, 30</value>
+    <value>515, 24</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 17</value>
+    <value>49, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1774,13 +1837,13 @@
     <value>3</value>
   </data>
   <data name="tbName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 27</value>
+    <value>88, 22</value>
   </data>
   <data name="tbName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tbName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
+    <value>156, 20</value>
   </data>
   <data name="tbName.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1789,7 +1852,7 @@
     <value>tbName</value>
   </data>
   <data name="&gt;&gt;tbName.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbName.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1804,10 +1867,13 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 30</value>
+    <value>35, 24</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 17</value>
+    <value>41, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1828,16 +1894,16 @@
     <value>5</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>9, 10</value>
   </data>
   <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>995, 68</value>
+    <value>746, 55</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1849,7 +1915,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1861,16 +1927,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1277, 468</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+    <value>958, 380</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 3, 2</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Úprava katalógovej tabule</value>

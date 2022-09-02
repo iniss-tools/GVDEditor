@@ -1,7 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
-using GVDEditor.Tools;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
 
@@ -37,8 +36,7 @@ public partial class FGlobalSettings : Form
     public FGlobalSettings(IList<GVDDirectory> gvds, int openIndex = -1)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         Grafikony = new BindingList<GVDDirectory>(gvds);
 

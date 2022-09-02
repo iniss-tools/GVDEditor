@@ -123,13 +123,17 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 6</value>
+    <value>7, 5</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 17</value>
+    <value>82, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Spustiť analýzu:</value>
@@ -156,13 +160,16 @@
     <value>True</value>
   </data>
   <data name="bAnalyze.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 1</value>
+    <value>93, 1</value>
+  </data>
+  <data name="bAnalyze.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bAnalyze.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 27</value>
+    <value>70, 23</value>
   </data>
   <data name="bAnalyze.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="bAnalyze.Text" xml:space="preserve">
     <value>Analyzovať</value>
@@ -171,7 +178,7 @@
     <value>bAnalyze</value>
   </data>
   <data name="&gt;&gt;bAnalyze.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bAnalyze.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -180,13 +187,16 @@
     <value>0</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 8</value>
+    <value>6, 6</value>
+  </data>
+  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 31</value>
+    <value>165, 26</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;panel1.Name" xml:space="preserve">
     <value>panel1</value>
@@ -200,7 +210,6 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pbStatus.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -208,16 +217,16 @@
     <value>False</value>
   </data>
   <data name="pbStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 12</value>
+    <value>178, 10</value>
   </data>
   <data name="pbStatus.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>7, 7, 7, 7</value>
+    <value>5, 6, 5, 6</value>
   </data>
   <data name="pbStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 23</value>
+    <value>353, 19</value>
   </data>
   <data name="pbStatus.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;pbStatus.Name" xml:space="preserve">
     <value>pbStatus</value>
@@ -238,13 +247,16 @@
     <value>Fill</value>
   </data>
   <data name="lStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>717, 5</value>
+    <value>538, 4</value>
+  </data>
+  <data name="lStatus.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 37</value>
+    <value>56, 31</value>
   </data>
   <data name="lStatus.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>2</value>
   </data>
   <data name="lStatus.Text" xml:space="preserve">
     <value>0%</value>
@@ -268,10 +280,13 @@
     <value>True</value>
   </data>
   <data name="bOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>717, 409</value>
+    <value>538, 333</value>
+  </data>
+  <data name="bOK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 33</value>
+    <value>56, 27</value>
   </data>
   <data name="bOK.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -283,7 +298,7 @@
     <value>bOK</value>
   </data>
   <data name="&gt;&gt;bOK.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bOK.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -298,13 +313,16 @@
     <value>True</value>
   </data>
   <data name="bFixSelected.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>2, 2</value>
+  </data>
+  <data name="bFixSelected.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="bFixSelected.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 27</value>
+    <value>102, 23</value>
   </data>
   <data name="bFixSelected.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>0</value>
   </data>
   <data name="bFixSelected.Text" xml:space="preserve">
     <value>Opraviť označené</value>
@@ -313,7 +331,7 @@
     <value>bFixSelected</value>
   </data>
   <data name="&gt;&gt;bFixSelected.Type" xml:space="preserve">
-    <value>ExControls.ExButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bFixSelected.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -325,13 +343,16 @@
     <value>Fill</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 409</value>
+    <value>6, 333</value>
+  </data>
+  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>703, 33</value>
+    <value>528, 27</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -364,7 +385,7 @@
     <value>6</value>
   </data>
   <data name="textDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>89</value>
+    <value>70</value>
   </data>
   <metadata name="FixType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -391,16 +412,19 @@
     <value>Fill</value>
   </data>
   <data name="dgvResults.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 45</value>
+    <value>6, 37</value>
+  </data>
+  <data name="dgvResults.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="dgvResults.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
   <data name="dgvResults.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 358</value>
+    <value>588, 292</value>
   </data>
   <data name="dgvResults.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;dgvResults.Name" xml:space="preserve">
     <value>dgvResults</value>
@@ -420,17 +444,20 @@
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
   <data name="tableLayoutPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>800, 450</value>
+    <value>600, 366</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -445,7 +472,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pbStatus" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lStatus" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="bOK" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="flowLayoutPanel1" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="dgvResults" Row="1" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100,AutoSize,0,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pbStatus" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lStatus" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="bOK" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="flowLayoutPanel1" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="dgvResults" Row="1" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100,AutoSize,0,Absolute,16,Absolute,16" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="bgWorkAnalyze.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>324, 17</value>
@@ -454,10 +481,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 450</value>
+    <value>600, 366</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Analyzátor grafikonu</value>

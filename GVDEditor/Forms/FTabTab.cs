@@ -37,7 +37,6 @@ public partial class FTabTab : Form
     public FTabTab(TableTabTab tab = null)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
 
         if (GlobData.UsingStyle.DarkTitleBar) ExTools.SetImmersiveDarkMode(Handle, true);
 
@@ -84,7 +83,7 @@ public partial class FTabTab : Form
             scText.HScrollBarControl.SetTheme(WindowsTheme.DarkExplorer);
         }
 
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         FormUtils.ChangeColorContextMenu(GlobData.UsingStyle, conMenuScText);
 
@@ -267,9 +266,9 @@ public partial class FTabTab : Form
         }
     }
 
-    private void DoFindReplace()
+    private void DoFindReplace(bool showReplace = false)
     {
-        var ffar = new FTabTabFindReplace(sc);
+        var ffar = new FTabTabFindReplace(sc, showReplace);
         ffar.Show();
     }
 
@@ -387,10 +386,17 @@ public partial class FTabTab : Form
 
     private void FTabTab_KeyDown(object sender, KeyEventArgs e)
     {
+        e.Handled = true;
         if (e.Control && e.Shift && e.KeyCode == Keys.S)
             DoSaveAll();
-        if (e.Control && e.KeyCode == Keys.S)
+        else if (e.Control && e.KeyCode == Keys.S)
             DoSave();
+        else if (e.Control && e.KeyCode is Keys.F)
+            DoFindReplace();
+        else if (e.Control && e.KeyCode is Keys.H)
+            DoFindReplace(true);
+        else
+            e.Handled = false;
     }
 
     private void scText_CharAdded(object sender, CharAddedEventArgs e) => InsertMatchedChars(e);

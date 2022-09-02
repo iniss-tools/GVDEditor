@@ -9,8 +9,7 @@ public partial class FDatObm : Form
     public FDatObm()
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
     }
 
     private void bCopy_Click(object sender, EventArgs e)

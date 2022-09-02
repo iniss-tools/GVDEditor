@@ -1,5 +1,4 @@
-﻿using GVDEditor.Entities;
-using GVDEditor.Tools;
+﻿using GVDEditor.Tools;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
 
@@ -26,8 +25,7 @@ public partial class FRadenie : Form
     public FRadenie(List<FyzSound> sounds)
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
 
         SelSounds = sounds;
 
@@ -248,7 +246,7 @@ public partial class FRadenie : Form
         foreach (var fyzZvuk in _selectedSounds)
             soundsS.Add(GlobData.RawBankDir + "\\" + fyzZvuk.Language.RelativePath + fyzZvuk.Group.RelativePath + fyzZvuk.FileName);
 
-        var player = new WAVPlayer(soundsS.ToArray(), GlobData.Config.PlayerWordPause);
+        var player = new WavPlayer(soundsS.ToArray(), GlobData.Config.PlayerWordPause);
         player.StartPlay();
     }
 
