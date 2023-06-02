@@ -36,9 +36,6 @@ namespace GVDEditor.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FMain));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle9 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle10 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle11 = new ExControls.ExComboBoxStyle();
@@ -47,14 +44,6 @@ namespace GVDEditor.Forms
             ExControls.ExComboBoxStyle exComboBoxStyle14 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle15 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle16 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle1 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle2 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle3 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle4 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle5 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle6 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle7 = new ExControls.ExComboBoxStyle();
-            ExControls.ExComboBoxStyle exComboBoxStyle8 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle17 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle18 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle19 = new ExControls.ExComboBoxStyle();
@@ -111,6 +100,17 @@ namespace GVDEditor.Forms
             ExControls.ExComboBoxStyle exComboBoxStyle70 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle71 = new ExControls.ExComboBoxStyle();
             ExControls.ExComboBoxStyle exComboBoxStyle72 = new ExControls.ExComboBoxStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle1 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle2 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle3 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle4 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle5 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle6 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle7 = new ExControls.ExComboBoxStyle();
+            ExControls.ExComboBoxStyle exComboBoxStyle8 = new ExControls.ExComboBoxStyle();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.tsmiSubor = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -194,7 +194,9 @@ namespace GVDEditor.Forms
             this.tsbInformation = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.tscbStanica = new ExControls.ExToolStripComboBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.tscbObdobie = new ExControls.ExToolStripComboBox();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.tssbStartINISS = new System.Windows.Forms.ToolStripSplitButton();
             this.tsmiStartupSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -204,24 +206,13 @@ namespace GVDEditor.Forms
             this.tsbRestartINISS = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbDatObm = new System.Windows.Forms.ToolStripButton();
-            this.timerTimeAndDate = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.dgvTrains = new System.Windows.Forms.DataGridView();
-            this.cisloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LinkaPrichod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.smerovanieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.prichodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.odchodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcVychodziaStanica = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcKonecnaStanica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumoveObmedzenieText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LinkaOdchod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trackBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.operatorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Ostatne = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.vlakBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -237,8 +228,6 @@ namespace GVDEditor.Forms
             this.dOpenELIS = new System.Windows.Forms.OpenFileDialog();
             this.bWorkerELIS = new System.ComponentModel.BackgroundWorker();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.tsslDate = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsslTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslTrainCountWithVariants = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslTrainCount = new System.Windows.Forms.ToolStripStatusLabel();
@@ -260,13 +249,9 @@ namespace GVDEditor.Forms
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelMain = new System.Windows.Forms.Panel();
             this.dataGridViewExComboBoxColumn1 = new ExControls.DataGridViewExComboBoxColumn();
             this.dataGridViewExComboBoxColumn2 = new ExControls.DataGridViewExComboBoxColumn();
-            this.tscbStanica = new ExControls.ExToolStripComboBox();
-            this.tscbObdobie = new ExControls.ExToolStripComboBox();
-            this.Kolaj = new ExControls.DataGridViewExComboBoxColumn();
-            this.Dopravca = new ExControls.DataGridViewExComboBoxColumn();
             this.dataGridViewExComboBoxColumn3 = new ExControls.DataGridViewExComboBoxColumn();
             this.dataGridViewExComboBoxColumn4 = new ExControls.DataGridViewExComboBoxColumn();
             this.dataGridViewExComboBoxColumn5 = new ExControls.DataGridViewExComboBoxColumn();
@@ -291,14 +276,26 @@ namespace GVDEditor.Forms
             this.dataGridViewExComboBoxColumn14 = new ExControls.DataGridViewExComboBoxColumn();
             this.dataGridViewExComboBoxColumn15 = new ExControls.DataGridViewExComboBoxColumn();
             this.dataGridViewExComboBoxColumn16 = new ExControls.DataGridViewExComboBoxColumn();
+            this.cisloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.smerovanieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.prichodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.odchodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcVychodziaStanica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcKonecnaStanica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kolaj = new ExControls.DataGridViewExComboBoxColumn();
+            this.trackBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Dopravca = new ExControls.DataGridViewExComboBoxColumn();
+            this.operatorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vlakBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainMenu.SuspendLayout();
             this.toolMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrains)).BeginInit();
+            this.statusStrip.SuspendLayout();
+            this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.operatorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vlakBindingSource)).BeginInit();
-            this.statusStrip.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -354,7 +351,6 @@ namespace GVDEditor.Forms
             // 
             // tsmiRecent
             // 
-            this.tsmiRecent.Image = global::ToolsCore.GlobalResources.recent_gvds;
             this.tsmiRecent.Name = "tsmiRecent";
             resources.ApplyResources(this.tsmiRecent, "tsmiRecent");
             // 
@@ -928,11 +924,29 @@ namespace GVDEditor.Forms
             this.toolStripLabel1.Name = "toolStripLabel1";
             resources.ApplyResources(this.toolStripLabel1, "toolStripLabel1");
             // 
+            // tscbStanica
+            // 
+            this.tscbStanica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tscbStanica.DropDownWidth = 200;
+            resources.ApplyResources(this.tscbStanica, "tscbStanica");
+            this.tscbStanica.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
+            this.tscbStanica.Name = "tscbStanica";
+            this.tscbStanica.SelectedIndexChanged += new System.EventHandler(this.tscbStanica_SelectedIndexChanged);
+            // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Margin = new System.Windows.Forms.Padding(0);
             this.toolStripLabel2.Name = "toolStripLabel2";
             resources.ApplyResources(this.toolStripLabel2, "toolStripLabel2");
+            // 
+            // tscbObdobie
+            // 
+            this.tscbObdobie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tscbObdobie.DropDownWidth = 150;
+            resources.ApplyResources(this.tscbObdobie, "tscbObdobie");
+            this.tscbObdobie.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.tscbObdobie.Name = "tscbObdobie";
+            this.tscbObdobie.SelectedIndexChanged += new System.EventHandler(this.tscbObdobie_SelectedIndexChanged);
             // 
             // toolStripSeparator7
             // 
@@ -998,12 +1012,6 @@ namespace GVDEditor.Forms
             this.tsbDatObm.Name = "tsbDatObm";
             this.tsbDatObm.Click += new System.EventHandler(this.tsbDatObm_Click);
             // 
-            // timerTimeAndDate
-            // 
-            this.timerTimeAndDate.Enabled = true;
-            this.timerTimeAndDate.Interval = 1000;
-            this.timerTimeAndDate.Tick += new System.EventHandler(this.timerTimeAndDate_Tick);
-            // 
             // dgvTrains
             // 
             this.dgvTrains.AllowUserToAddRows = false;
@@ -1033,9 +1041,9 @@ namespace GVDEditor.Forms
             this.dgvcVychodziaStanica,
             this.dgvcKonecnaStanica,
             this.DatumoveObmedzenieText,
-            this.LinkaOdchod,
             this.Kolaj,
             this.Dopravca,
+            this.LinkaOdchod,
             this.Ostatne});
             this.dgvTrains.DataSource = this.vlakBindingSource;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1059,13 +1067,6 @@ namespace GVDEditor.Forms
             this.dgvTrains.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvTrains_RowsRemoved);
             this.dgvTrains.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvTrains_KeyDown);
             // 
-            // cisloDataGridViewTextBoxColumn
-            // 
-            this.cisloDataGridViewTextBoxColumn.DataPropertyName = "NumberVariant";
-            resources.ApplyResources(this.cisloDataGridViewTextBoxColumn, "cisloDataGridViewTextBoxColumn");
-            this.cisloDataGridViewTextBoxColumn.Name = "cisloDataGridViewTextBoxColumn";
-            this.cisloDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
@@ -1073,60 +1074,11 @@ namespace GVDEditor.Forms
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // typDataGridViewTextBoxColumn
-            // 
-            this.typDataGridViewTextBoxColumn.DataPropertyName = "Type";
-            resources.ApplyResources(this.typDataGridViewTextBoxColumn, "typDataGridViewTextBoxColumn");
-            this.typDataGridViewTextBoxColumn.Name = "typDataGridViewTextBoxColumn";
-            this.typDataGridViewTextBoxColumn.ReadOnly = true;
-            this.typDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // LinkaPrichod
             // 
             this.LinkaPrichod.DataPropertyName = "LineArrival";
             resources.ApplyResources(this.LinkaPrichod, "LinkaPrichod");
             this.LinkaPrichod.Name = "LinkaPrichod";
-            // 
-            // smerovanieDataGridViewTextBoxColumn
-            // 
-            this.smerovanieDataGridViewTextBoxColumn.DataPropertyName = "RoutingImage";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle2.NullValue")));
-            this.smerovanieDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.smerovanieDataGridViewTextBoxColumn, "smerovanieDataGridViewTextBoxColumn");
-            this.smerovanieDataGridViewTextBoxColumn.Name = "smerovanieDataGridViewTextBoxColumn";
-            this.smerovanieDataGridViewTextBoxColumn.ReadOnly = true;
-            this.smerovanieDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // prichodDataGridViewTextBoxColumn
-            // 
-            this.prichodDataGridViewTextBoxColumn.DataPropertyName = "Arrival";
-            dataGridViewCellStyle3.Format = "HH:mm";
-            this.prichodDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.prichodDataGridViewTextBoxColumn, "prichodDataGridViewTextBoxColumn");
-            this.prichodDataGridViewTextBoxColumn.Name = "prichodDataGridViewTextBoxColumn";
-            // 
-            // odchodDataGridViewTextBoxColumn
-            // 
-            this.odchodDataGridViewTextBoxColumn.DataPropertyName = "Departure";
-            dataGridViewCellStyle4.Format = "HH:mm";
-            this.odchodDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.odchodDataGridViewTextBoxColumn, "odchodDataGridViewTextBoxColumn");
-            this.odchodDataGridViewTextBoxColumn.Name = "odchodDataGridViewTextBoxColumn";
-            // 
-            // dgvcVychodziaStanica
-            // 
-            this.dgvcVychodziaStanica.DataPropertyName = "StartingStation";
-            resources.ApplyResources(this.dgvcVychodziaStanica, "dgvcVychodziaStanica");
-            this.dgvcVychodziaStanica.Name = "dgvcVychodziaStanica";
-            this.dgvcVychodziaStanica.ReadOnly = true;
-            // 
-            // dgvcKonecnaStanica
-            // 
-            this.dgvcKonecnaStanica.DataPropertyName = "EndingStation";
-            resources.ApplyResources(this.dgvcKonecnaStanica, "dgvcKonecnaStanica");
-            this.dgvcKonecnaStanica.Name = "dgvcKonecnaStanica";
-            this.dgvcKonecnaStanica.ReadOnly = true;
             // 
             // DatumoveObmedzenieText
             // 
@@ -1140,14 +1092,6 @@ namespace GVDEditor.Forms
             resources.ApplyResources(this.LinkaOdchod, "LinkaOdchod");
             this.LinkaOdchod.Name = "LinkaOdchod";
             // 
-            // trackBindingSource
-            // 
-            this.trackBindingSource.DataSource = typeof(GVDEditor.Entities.Track);
-            // 
-            // operatorBindingSource
-            // 
-            this.operatorBindingSource.DataSource = typeof(GVDEditor.Entities.Operator);
-            // 
             // Ostatne
             // 
             this.Ostatne.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -1155,10 +1099,6 @@ namespace GVDEditor.Forms
             this.Ostatne.Name = "Ostatne";
             this.Ostatne.Text = "Upraviť";
             this.Ostatne.UseColumnTextForButtonValue = true;
-            // 
-            // vlakBindingSource
-            // 
-            this.vlakBindingSource.DataSource = typeof(GVDEditor.Entities.Train);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1259,8 +1199,6 @@ namespace GVDEditor.Forms
             // 
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsslDate,
-            this.tsslTime,
             this.toolStripStatusLabel1,
             this.tsslTrainCountWithVariants,
             this.tsslTrainCount,
@@ -1269,17 +1207,6 @@ namespace GVDEditor.Forms
             resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.SizingGrip = false;
-            // 
-            // tsslDate
-            // 
-            this.tsslDate.Margin = new System.Windows.Forms.Padding(0, 4, 10, 2);
-            this.tsslDate.Name = "tsslDate";
-            resources.ApplyResources(this.tsslDate, "tsslDate");
-            // 
-            // tsslTime
-            // 
-            this.tsslTime.Name = "tsslTime";
-            resources.ApplyResources(this.tsslTime, "tsslTime");
             // 
             // toolStripStatusLabel1
             // 
@@ -1420,11 +1347,11 @@ namespace GVDEditor.Forms
             this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
             this.dataGridViewTextBoxColumn28.ReadOnly = true;
             // 
-            // panel1
+            // panelMain
             // 
-            this.panel1.Controls.Add(this.dgvTrains);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
+            this.panelMain.Controls.Add(this.dgvTrains);
+            resources.ApplyResources(this.panelMain, "panelMain");
+            this.panelMain.Name = "panelMain";
             // 
             // dataGridViewExComboBoxColumn1
             // 
@@ -1509,108 +1436,6 @@ namespace GVDEditor.Forms
             exComboBoxStyle16.ForeColor = null;
             this.dataGridViewExComboBoxColumn2.StyleSelected = exComboBoxStyle16;
             this.dataGridViewExComboBoxColumn2.ValueMember = "This";
-            // 
-            // tscbStanica
-            // 
-            this.tscbStanica.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tscbStanica.DropDownWidth = 200;
-            resources.ApplyResources(this.tscbStanica, "tscbStanica");
-            this.tscbStanica.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
-            this.tscbStanica.Name = "tscbStanica";
-            this.tscbStanica.SelectedIndexChanged += new System.EventHandler(this.tscbStanica_SelectedIndexChanged);
-            // 
-            // tscbObdobie
-            // 
-            this.tscbObdobie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tscbObdobie.DropDownWidth = 150;
-            resources.ApplyResources(this.tscbObdobie, "tscbObdobie");
-            this.tscbObdobie.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.tscbObdobie.Name = "tscbObdobie";
-            this.tscbObdobie.SelectedIndexChanged += new System.EventHandler(this.tscbObdobie_SelectedIndexChanged);
-            // 
-            // Kolaj
-            // 
-            this.Kolaj.DataPropertyName = "Track";
-            this.Kolaj.DataSource = this.trackBindingSource;
-            this.Kolaj.DisplayMember = "Key";
-            this.Kolaj.DropDownSelectedBackColor = System.Drawing.SystemColors.Highlight;
-            resources.ApplyResources(this.Kolaj, "Kolaj");
-            this.Kolaj.Name = "Kolaj";
-            exComboBoxStyle1.ArrowColor = null;
-            exComboBoxStyle1.BackColor = null;
-            exComboBoxStyle1.BorderColor = null;
-            exComboBoxStyle1.ButtonBackColor = null;
-            exComboBoxStyle1.ButtonBorderColor = null;
-            exComboBoxStyle1.ButtonRenderFirst = null;
-            exComboBoxStyle1.ForeColor = null;
-            this.Kolaj.StyleDisabled = exComboBoxStyle1;
-            exComboBoxStyle2.ArrowColor = null;
-            exComboBoxStyle2.BackColor = null;
-            exComboBoxStyle2.BorderColor = null;
-            exComboBoxStyle2.ButtonBackColor = null;
-            exComboBoxStyle2.ButtonBorderColor = null;
-            exComboBoxStyle2.ButtonRenderFirst = null;
-            exComboBoxStyle2.ForeColor = null;
-            this.Kolaj.StyleHighlight = exComboBoxStyle2;
-            exComboBoxStyle3.ArrowColor = null;
-            exComboBoxStyle3.BackColor = null;
-            exComboBoxStyle3.BorderColor = null;
-            exComboBoxStyle3.ButtonBackColor = null;
-            exComboBoxStyle3.ButtonBorderColor = System.Drawing.Color.White;
-            exComboBoxStyle3.ButtonRenderFirst = true;
-            exComboBoxStyle3.ForeColor = null;
-            this.Kolaj.StyleNormal = exComboBoxStyle3;
-            exComboBoxStyle4.ArrowColor = null;
-            exComboBoxStyle4.BackColor = null;
-            exComboBoxStyle4.BorderColor = null;
-            exComboBoxStyle4.ButtonBackColor = null;
-            exComboBoxStyle4.ButtonBorderColor = null;
-            exComboBoxStyle4.ButtonRenderFirst = null;
-            exComboBoxStyle4.ForeColor = null;
-            this.Kolaj.StyleSelected = exComboBoxStyle4;
-            this.Kolaj.ValueMember = "This";
-            // 
-            // Dopravca
-            // 
-            this.Dopravca.DataPropertyName = "Operator";
-            this.Dopravca.DataSource = this.operatorBindingSource;
-            this.Dopravca.DisplayMember = "Name";
-            this.Dopravca.DropDownSelectedBackColor = System.Drawing.SystemColors.Highlight;
-            resources.ApplyResources(this.Dopravca, "Dopravca");
-            this.Dopravca.Name = "Dopravca";
-            exComboBoxStyle5.ArrowColor = null;
-            exComboBoxStyle5.BackColor = null;
-            exComboBoxStyle5.BorderColor = null;
-            exComboBoxStyle5.ButtonBackColor = null;
-            exComboBoxStyle5.ButtonBorderColor = null;
-            exComboBoxStyle5.ButtonRenderFirst = null;
-            exComboBoxStyle5.ForeColor = null;
-            this.Dopravca.StyleDisabled = exComboBoxStyle5;
-            exComboBoxStyle6.ArrowColor = null;
-            exComboBoxStyle6.BackColor = null;
-            exComboBoxStyle6.BorderColor = null;
-            exComboBoxStyle6.ButtonBackColor = null;
-            exComboBoxStyle6.ButtonBorderColor = null;
-            exComboBoxStyle6.ButtonRenderFirst = null;
-            exComboBoxStyle6.ForeColor = null;
-            this.Dopravca.StyleHighlight = exComboBoxStyle6;
-            exComboBoxStyle7.ArrowColor = null;
-            exComboBoxStyle7.BackColor = null;
-            exComboBoxStyle7.BorderColor = null;
-            exComboBoxStyle7.ButtonBackColor = null;
-            exComboBoxStyle7.ButtonBorderColor = System.Drawing.Color.White;
-            exComboBoxStyle7.ButtonRenderFirst = true;
-            exComboBoxStyle7.ForeColor = null;
-            this.Dopravca.StyleNormal = exComboBoxStyle7;
-            exComboBoxStyle8.ArrowColor = null;
-            exComboBoxStyle8.BackColor = null;
-            exComboBoxStyle8.BorderColor = null;
-            exComboBoxStyle8.ButtonBackColor = null;
-            exComboBoxStyle8.ButtonBorderColor = null;
-            exComboBoxStyle8.ButtonRenderFirst = null;
-            exComboBoxStyle8.ForeColor = null;
-            this.Dopravca.StyleSelected = exComboBoxStyle8;
-            this.Dopravca.ValueMember = "This";
             // 
             // dataGridViewExComboBoxColumn3
             // 
@@ -2238,11 +2063,163 @@ namespace GVDEditor.Forms
             exComboBoxStyle72.ForeColor = null;
             this.dataGridViewExComboBoxColumn16.StyleSelected = exComboBoxStyle72;
             // 
+            // cisloDataGridViewTextBoxColumn
+            // 
+            this.cisloDataGridViewTextBoxColumn.DataPropertyName = "NumberVariant";
+            resources.ApplyResources(this.cisloDataGridViewTextBoxColumn, "cisloDataGridViewTextBoxColumn");
+            this.cisloDataGridViewTextBoxColumn.Name = "cisloDataGridViewTextBoxColumn";
+            this.cisloDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typDataGridViewTextBoxColumn
+            // 
+            this.typDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            resources.ApplyResources(this.typDataGridViewTextBoxColumn, "typDataGridViewTextBoxColumn");
+            this.typDataGridViewTextBoxColumn.Name = "typDataGridViewTextBoxColumn";
+            this.typDataGridViewTextBoxColumn.ReadOnly = true;
+            this.typDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // smerovanieDataGridViewTextBoxColumn
+            // 
+            this.smerovanieDataGridViewTextBoxColumn.DataPropertyName = "RoutingImage";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle2.NullValue")));
+            this.smerovanieDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.smerovanieDataGridViewTextBoxColumn, "smerovanieDataGridViewTextBoxColumn");
+            this.smerovanieDataGridViewTextBoxColumn.Name = "smerovanieDataGridViewTextBoxColumn";
+            this.smerovanieDataGridViewTextBoxColumn.ReadOnly = true;
+            this.smerovanieDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // prichodDataGridViewTextBoxColumn
+            // 
+            this.prichodDataGridViewTextBoxColumn.DataPropertyName = "Arrival";
+            dataGridViewCellStyle3.Format = "HH:mm";
+            this.prichodDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.prichodDataGridViewTextBoxColumn, "prichodDataGridViewTextBoxColumn");
+            this.prichodDataGridViewTextBoxColumn.Name = "prichodDataGridViewTextBoxColumn";
+            // 
+            // odchodDataGridViewTextBoxColumn
+            // 
+            this.odchodDataGridViewTextBoxColumn.DataPropertyName = "Departure";
+            dataGridViewCellStyle4.Format = "HH:mm";
+            this.odchodDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.odchodDataGridViewTextBoxColumn, "odchodDataGridViewTextBoxColumn");
+            this.odchodDataGridViewTextBoxColumn.Name = "odchodDataGridViewTextBoxColumn";
+            // 
+            // dgvcVychodziaStanica
+            // 
+            this.dgvcVychodziaStanica.DataPropertyName = "StartingStation";
+            resources.ApplyResources(this.dgvcVychodziaStanica, "dgvcVychodziaStanica");
+            this.dgvcVychodziaStanica.Name = "dgvcVychodziaStanica";
+            this.dgvcVychodziaStanica.ReadOnly = true;
+            // 
+            // dgvcKonecnaStanica
+            // 
+            this.dgvcKonecnaStanica.DataPropertyName = "EndingStation";
+            resources.ApplyResources(this.dgvcKonecnaStanica, "dgvcKonecnaStanica");
+            this.dgvcKonecnaStanica.Name = "dgvcKonecnaStanica";
+            this.dgvcKonecnaStanica.ReadOnly = true;
+            // 
+            // Kolaj
+            // 
+            this.Kolaj.DataPropertyName = "Track";
+            this.Kolaj.DataSource = this.trackBindingSource;
+            this.Kolaj.DisplayMember = "Key";
+            this.Kolaj.DropDownSelectedBackColor = System.Drawing.SystemColors.Highlight;
+            resources.ApplyResources(this.Kolaj, "Kolaj");
+            this.Kolaj.Name = "Kolaj";
+            exComboBoxStyle1.ArrowColor = null;
+            exComboBoxStyle1.BackColor = null;
+            exComboBoxStyle1.BorderColor = null;
+            exComboBoxStyle1.ButtonBackColor = null;
+            exComboBoxStyle1.ButtonBorderColor = null;
+            exComboBoxStyle1.ButtonRenderFirst = null;
+            exComboBoxStyle1.ForeColor = null;
+            this.Kolaj.StyleDisabled = exComboBoxStyle1;
+            exComboBoxStyle2.ArrowColor = null;
+            exComboBoxStyle2.BackColor = null;
+            exComboBoxStyle2.BorderColor = null;
+            exComboBoxStyle2.ButtonBackColor = null;
+            exComboBoxStyle2.ButtonBorderColor = null;
+            exComboBoxStyle2.ButtonRenderFirst = null;
+            exComboBoxStyle2.ForeColor = null;
+            this.Kolaj.StyleHighlight = exComboBoxStyle2;
+            exComboBoxStyle3.ArrowColor = null;
+            exComboBoxStyle3.BackColor = null;
+            exComboBoxStyle3.BorderColor = null;
+            exComboBoxStyle3.ButtonBackColor = null;
+            exComboBoxStyle3.ButtonBorderColor = System.Drawing.Color.White;
+            exComboBoxStyle3.ButtonRenderFirst = true;
+            exComboBoxStyle3.ForeColor = null;
+            this.Kolaj.StyleNormal = exComboBoxStyle3;
+            exComboBoxStyle4.ArrowColor = null;
+            exComboBoxStyle4.BackColor = null;
+            exComboBoxStyle4.BorderColor = null;
+            exComboBoxStyle4.ButtonBackColor = null;
+            exComboBoxStyle4.ButtonBorderColor = null;
+            exComboBoxStyle4.ButtonRenderFirst = null;
+            exComboBoxStyle4.ForeColor = null;
+            this.Kolaj.StyleSelected = exComboBoxStyle4;
+            this.Kolaj.ValueMember = "This";
+            // 
+            // trackBindingSource
+            // 
+            this.trackBindingSource.DataSource = typeof(GVDEditor.Entities.Track);
+            // 
+            // Dopravca
+            // 
+            this.Dopravca.DataPropertyName = "Operator";
+            this.Dopravca.DataSource = this.operatorBindingSource;
+            this.Dopravca.DisplayMember = "Name";
+            this.Dopravca.DropDownSelectedBackColor = System.Drawing.SystemColors.Highlight;
+            resources.ApplyResources(this.Dopravca, "Dopravca");
+            this.Dopravca.Name = "Dopravca";
+            exComboBoxStyle5.ArrowColor = null;
+            exComboBoxStyle5.BackColor = null;
+            exComboBoxStyle5.BorderColor = null;
+            exComboBoxStyle5.ButtonBackColor = null;
+            exComboBoxStyle5.ButtonBorderColor = null;
+            exComboBoxStyle5.ButtonRenderFirst = null;
+            exComboBoxStyle5.ForeColor = null;
+            this.Dopravca.StyleDisabled = exComboBoxStyle5;
+            exComboBoxStyle6.ArrowColor = null;
+            exComboBoxStyle6.BackColor = null;
+            exComboBoxStyle6.BorderColor = null;
+            exComboBoxStyle6.ButtonBackColor = null;
+            exComboBoxStyle6.ButtonBorderColor = null;
+            exComboBoxStyle6.ButtonRenderFirst = null;
+            exComboBoxStyle6.ForeColor = null;
+            this.Dopravca.StyleHighlight = exComboBoxStyle6;
+            exComboBoxStyle7.ArrowColor = null;
+            exComboBoxStyle7.BackColor = null;
+            exComboBoxStyle7.BorderColor = null;
+            exComboBoxStyle7.ButtonBackColor = null;
+            exComboBoxStyle7.ButtonBorderColor = System.Drawing.Color.White;
+            exComboBoxStyle7.ButtonRenderFirst = true;
+            exComboBoxStyle7.ForeColor = null;
+            this.Dopravca.StyleNormal = exComboBoxStyle7;
+            exComboBoxStyle8.ArrowColor = null;
+            exComboBoxStyle8.BackColor = null;
+            exComboBoxStyle8.BorderColor = null;
+            exComboBoxStyle8.ButtonBackColor = null;
+            exComboBoxStyle8.ButtonBorderColor = null;
+            exComboBoxStyle8.ButtonRenderFirst = null;
+            exComboBoxStyle8.ForeColor = null;
+            this.Dopravca.StyleSelected = exComboBoxStyle8;
+            this.Dopravca.ValueMember = "This";
+            // 
+            // operatorBindingSource
+            // 
+            this.operatorBindingSource.DataSource = typeof(GVDEditor.Entities.Operator);
+            // 
+            // vlakBindingSource
+            // 
+            this.vlakBindingSource.DataSource = typeof(GVDEditor.Entities.Train);
+            // 
             // FMain
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelMain);
             this.Controls.Add(this.toolMenu);
             this.Controls.Add(this.mainMenu);
             this.Controls.Add(this.statusStrip);
@@ -2256,12 +2233,12 @@ namespace GVDEditor.Forms
             this.toolMenu.ResumeLayout(false);
             this.toolMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrains)).EndInit();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
+            this.panelMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.operatorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vlakBindingSource)).EndInit();
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2291,7 +2268,6 @@ namespace GVDEditor.Forms
         private ToolStripSeparator toolStripSeparator11;
         private ToolStripButton tsbInformation;
         private ToolStripSeparator toolStripSeparator12;
-        private Timer timerTimeAndDate;
         private ExToolStripComboBox tscbStanica;
         private ExToolStripComboBox tscbObdobie;
         private ToolStripSeparator toolStripSeparator13;
@@ -2352,8 +2328,6 @@ namespace GVDEditor.Forms
         private OpenFileDialog dOpenELIS;
         private BackgroundWorker bWorkerELIS;
         private StatusStrip statusStrip;
-        private ToolStripStatusLabel tsslDate;
-        private ToolStripStatusLabel tsslTime;
         private ToolStripStatusLabel tsslTrainCountWithVariants;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripStatusLabel tsslTrainCount;
@@ -2447,7 +2421,7 @@ namespace GVDEditor.Forms
         private ToolStripMenuItem tsmiDatObm;
         private ToolStripSeparator toolStripSeparator19;
         private ToolStripButton tsbDatObm;
-        private Panel panel1;
+        private Panel panelMain;
     }
 }
 

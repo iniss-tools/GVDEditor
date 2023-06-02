@@ -22,7 +22,8 @@ public partial class FELISOptions : Form
     private void bBrowse_Click(object sender, EventArgs e)
     {
         var result = dOpenELIS.ShowDialog();
-        if (result == DialogResult.OK) tbPath.Text = dOpenELIS.FileName;
+        if (result == DialogResult.OK) 
+            tbPath.Text = dOpenELIS.FileName;
     }
 
     private void bImport_Click(object sender, EventArgs e)

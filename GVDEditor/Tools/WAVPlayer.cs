@@ -1,27 +1,25 @@
-﻿using System.Media;
-using System.Threading;
+﻿using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 
 namespace GVDEditor.Tools;
 
 /// <summary>
 ///     Trieda umoznujuca prehravanie zvukovych suborov .WAV.
 /// </summary>
-//TODO Trieda prehrava zvuky s pauzami.
-internal class WavPlayer
+internal sealed class WavPlayer : IDisposable
 {
-    private readonly BackgroundWorker _worker = new();
+    private WaveOutEvent _outputDevice;
+    private AudioFileReader[] _audios;
 
     /// <summary>
     ///     Vytvori novu instanciu triedy <see cref="WavPlayer"/>.
     /// </summary>
     /// <param name="sounds">zoznam zvukov, ktore sa maju prehrat</param>
-    /// <param name="wordPause">pauza medzi zvukmi</param>
-    public WavPlayer(string[] sounds, int wordPause)
+    /// <param name="soundsOffset">pauza medzi zvukmi</param>
+    public WavPlayer(string[] sounds, int soundsOffset)
     {
         Sounds = sounds;
-        WordPause = wordPause;
-
-        _worker.DoWork += PlayingSoundsDoWork;
+        SoundsOffset = soundsOffset;
     }
 
     /// <summary>
@@ -32,27 +30,55 @@ internal class WavPlayer
     /// <summary>
     ///    Pauza medzi zvukmi v milisekundach.
     /// </summary>
-    public int WordPause { get; }
+    public int SoundsOffset { get; }
 
     /// <summary>
     ///     Zacne prehravanie zvukovych suborov (asynchronne).
     /// </summary>
-    public void StartPlay() => _worker.RunWorkerAsync();
-
-    private void PlayingSoundsDoWork(object sender, DoWorkEventArgs e)
+    public void StartPlay()
     {
-        var soundps = new List<SoundPlayer>();
-        foreach (var sound in Sounds)
+        try
         {
-            var p = new SoundPlayer(sound);
-            p.Load();
-            soundps.Add(p);
-        }
+            var readers = new ISampleProvider[Sounds.Length];
+            _audios = new AudioFileReader[Sounds.Length];
+            for (var i = 0; i < readers.Length; i++)
+            {
+                _audios[i] = new AudioFileReader(Sounds[i]);
+                readers[i] = new WdlResamplingSampleProvider(_audios[i], 352000);
 
-        foreach (var p in soundps)
+                if (i == readers.Length - 1)
+                    break;
+
+                switch (SoundsOffset)
+                {
+                    case < 0:
+                        readers[i] = new OffsetSampleProvider(readers[i]) { Take = TimeSpan.FromMilliseconds(_audios[i].TotalTime.TotalMilliseconds - (-SoundsOffset)) };
+                        break;
+                    case > 0:
+                        readers[i] = new OffsetSampleProvider(readers[i]) { LeadOut = TimeSpan.FromMilliseconds(SoundsOffset) };
+                        break;
+                }
+            }
+
+            var playlist = new ConcatenatingSampleProvider(readers);
+            _outputDevice = new WaveOutEvent();
+            _outputDevice.PlaybackStopped += (_, _) => Dispose();
+            _outputDevice.Init(playlist);
+            _outputDevice.Play();
+        }
+        catch
         {
-            p.PlaySync();
-            if (WordPause > 0) Thread.Sleep(WordPause);
+            //ignored (Napr. ak sa ma prehrat .EWA subor)
+            Dispose();
+        }
+    }
+
+    public void Dispose()
+    {
+        _outputDevice?.Dispose();
+        foreach (var audio in _audios)
+        {
+            audio.Dispose();
         }
     }
 }

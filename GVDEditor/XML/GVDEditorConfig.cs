@@ -29,28 +29,16 @@ public record GVDEditorConfig() : ConfigBase
     public bool DisableVariantCheck { get; set; }
 
     /// <summary>
-    ///     Povolit pouzivanie automatickej spravy variant vlaku.
-    /// </summary>
-    [XmlElement("CheckUpdate"), DefaultValue(true)]
-    public bool CheckUpdate { get; set; } = true;
-
-    /// <summary>
     ///     Automaticky generovat texty do tabul pri ukladani do suborov.
     /// </summary>
     [XmlElement("AutoTableText"), DefaultValue(false)]
     public bool AutoTableText { get; set; }
 
     /// <summary>
-    ///     Ci sa ma zobrazovat datum v stavovom riadku na pracovnej ploche programu.
+    ///     Nastavi cas v milisekundach medzi zvukmi pri prehravani.
     /// </summary>
-    [XmlElement("ShowDateTimeInStateRow"), DefaultValue(true)]
-    public bool ShowDateTimeInStateRow { get; set; } = true;
-
-    /// <summary>
-    ///     Nastavi cas medzi zvukmi pri prehravani.
-    /// </summary>
-    [XmlElement("PlayerWordPause"), DefaultValue(0)]
-    public int PlayerWordPause { get; set; }
+    [XmlElement("PlayerSoundsOffset"), DefaultValue(0)]
+    public int PlayerSoundsOffset { get; set; }
 
     /// <summary>
     ///     Stlpce zobrazujuce sa v tabulke na pracovnej ploche programu.
@@ -78,10 +66,8 @@ public record GVDEditorConfig() : ConfigBase
         AutoVariant = original.AutoVariant;
         DateLimitLocate = original.DateLimitLocate;
         DisableVariantCheck = original.DisableVariantCheck;
-        CheckUpdate = original.CheckUpdate;
         AutoTableText = original.AutoTableText;
-        ShowDateTimeInStateRow = original.ShowDateTimeInStateRow;
-        PlayerWordPause = original.PlayerWordPause;
+        PlayerSoundsOffset = original.PlayerSoundsOffset;
         DesktopCols = original.DesktopCols with { };
         Shortcuts = original.Shortcuts with { };
         StartupINISSConfig = original.StartupINISSConfig with { };

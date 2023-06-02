@@ -604,7 +604,7 @@
     <value>2</value>
   </data>
   <metadata name="toolMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>245, 13</value>
+    <value>270, 13</value>
   </metadata>
   <data name="tsbSave.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -841,7 +841,7 @@
     <value>Standard</value>
   </data>
   <data name="tscbStanica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 21</value>
+    <value>151, 24</value>
   </data>
   <data name="toolStripLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 27</value>
@@ -856,7 +856,7 @@
     <value>Standard</value>
   </data>
   <data name="tscbObdobie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 21</value>
+    <value>114, 24</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
@@ -957,11 +957,8 @@
   <data name="&gt;&gt;toolMenu.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="timerTimeAndDate.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>455, 11</value>
-  </metadata>
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>328, 10</value>
+    <value>375, 13</value>
   </metadata>
   <data name="dgvTrains.ColumnHeadersHeight" type="System.Int32, mscorlib">
     <value>29</value>
@@ -1074,23 +1071,11 @@
   <data name="DatumoveObmedzenieText.Width" type="System.Int32, mscorlib">
     <value>300</value>
   </data>
-  <metadata name="LinkaOdchod.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="LinkaOdchod.HeaderText" xml:space="preserve">
-    <value>Linka - Odchod</value>
-  </data>
-  <data name="LinkaOdchod.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="LinkaOdchod.Width" type="System.Int32, mscorlib">
-    <value>114</value>
-  </data>
   <metadata name="Kolaj.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="trackBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>610, 11</value>
+    <value>539, 13</value>
   </metadata>
   <data name="Kolaj.HeaderText" xml:space="preserve">
     <value>Koľaj</value>
@@ -1102,7 +1087,7 @@
     <value>True</value>
   </metadata>
   <metadata name="operatorBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>767, 11</value>
+    <value>696, 13</value>
   </metadata>
   <data name="Dopravca.HeaderText" xml:space="preserve">
     <value>Dopravca</value>
@@ -1112,6 +1097,18 @@
   </data>
   <data name="Dopravca.Width" type="System.Int32, mscorlib">
     <value>63</value>
+  </data>
+  <metadata name="LinkaOdchod.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="LinkaOdchod.HeaderText" xml:space="preserve">
+    <value>Linka - Odchod</value>
+  </data>
+  <data name="LinkaOdchod.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="LinkaOdchod.Width" type="System.Int32, mscorlib">
+    <value>114</value>
   </data>
   <metadata name="Ostatne.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1135,7 +1132,7 @@
     <value>51</value>
   </data>
   <data name="dgvTrains.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1034, 489</value>
+    <value>1034, 484</value>
   </data>
   <data name="dgvTrains.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1147,7 +1144,7 @@
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dgvTrains.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelMain</value>
   </data>
   <data name="&gt;&gt;dgvTrains.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1255,7 +1252,7 @@
     <value>142</value>
   </data>
   <metadata name="dOpenELIS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>981, 11</value>
+    <value>874, 13</value>
   </metadata>
   <data name="dOpenELIS.Filter" xml:space="preserve">
     <value>Textové súbory (*.txt)|*.txt</value>
@@ -1264,25 +1261,13 @@
     <value>Otvorte textový súbor z exportovanými údajmi z programu ELIS</value>
   </data>
   <metadata name="bWorkerELIS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1112, 11</value>
+    <value>985, 13</value>
   </metadata>
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1446, 11</value>
+    <value>1106, 13</value>
   </metadata>
-  <data name="tsslDate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 18</value>
-  </data>
-  <data name="tsslDate.Text" xml:space="preserve">
-    <value>1.1.1970</value>
-  </data>
-  <data name="tsslTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 19</value>
-  </data>
-  <data name="tsslTime.Text" xml:space="preserve">
-    <value>00:00:00</value>
-  </data>
   <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>887, 19</value>
+    <value>995, 19</value>
   </data>
   <data name="toolStripStatusLabel1.Text" xml:space="preserve">
     <value> </value>
@@ -1494,31 +1479,31 @@
   <data name="dataGridViewTextBoxColumn28.Width" type="System.Int32, mscorlib">
     <value>145</value>
   </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panelMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panelMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 54</value>
   </data>
-  <data name="panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 5, 0</value>
+  <data name="panelMain.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 5, 5</value>
   </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>1044, 489</value>
   </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+  <data name="panelMain.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
+  <data name="&gt;&gt;panelMain.Name" xml:space="preserve">
+    <value>panelMain</value>
   </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;panelMain.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panelMain.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panelMain.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="dataGridViewExComboBoxColumn1.HeaderText" xml:space="preserve">
@@ -2408,9 +2393,6 @@
         X/g/g1KMu1R0dqcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
@@ -2906,11 +2888,23 @@
   <data name="&gt;&gt;toolStripLabel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;tscbStanica.Name" xml:space="preserve">
+    <value>tscbStanica</value>
+  </data>
+  <data name="&gt;&gt;tscbStanica.Type" xml:space="preserve">
+    <value>ExControls.ExToolStripComboBox, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;toolStripLabel2.Name" xml:space="preserve">
     <value>toolStripLabel2</value>
   </data>
   <data name="&gt;&gt;toolStripLabel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tscbObdobie.Name" xml:space="preserve">
+    <value>tscbObdobie</value>
+  </data>
+  <data name="&gt;&gt;tscbObdobie.Type" xml:space="preserve">
+    <value>ExControls.ExToolStripComboBox, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
     <value>toolStripSeparator7</value>
@@ -2966,23 +2960,11 @@
   <data name="&gt;&gt;tsbDatObm.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;timerTimeAndDate.Name" xml:space="preserve">
-    <value>timerTimeAndDate</value>
-  </data>
-  <data name="&gt;&gt;timerTimeAndDate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;backgroundWorker1.Name" xml:space="preserve">
     <value>backgroundWorker1</value>
   </data>
   <data name="&gt;&gt;backgroundWorker1.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cisloDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>cisloDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;cisloDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>nameDataGridViewTextBoxColumn</value>
@@ -2990,46 +2972,10 @@
   <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;typDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>typDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;typDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;LinkaPrichod.Name" xml:space="preserve">
     <value>LinkaPrichod</value>
   </data>
   <data name="&gt;&gt;LinkaPrichod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;smerovanieDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>smerovanieDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;smerovanieDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;prichodDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>prichodDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;prichodDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;odchodDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>odchodDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;odchodDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvcVychodziaStanica.Name" xml:space="preserve">
-    <value>dgvcVychodziaStanica</value>
-  </data>
-  <data name="&gt;&gt;dgvcVychodziaStanica.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvcKonecnaStanica.Name" xml:space="preserve">
-    <value>dgvcKonecnaStanica</value>
-  </data>
-  <data name="&gt;&gt;dgvcKonecnaStanica.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;DatumoveObmedzenieText.Name" xml:space="preserve">
@@ -3044,29 +2990,11 @@
   <data name="&gt;&gt;LinkaOdchod.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;trackBindingSource.Name" xml:space="preserve">
-    <value>trackBindingSource</value>
-  </data>
-  <data name="&gt;&gt;trackBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;operatorBindingSource.Name" xml:space="preserve">
-    <value>operatorBindingSource</value>
-  </data>
-  <data name="&gt;&gt;operatorBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;Ostatne.Name" xml:space="preserve">
     <value>Ostatne</value>
   </data>
   <data name="&gt;&gt;Ostatne.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vlakBindingSource.Name" xml:space="preserve">
-    <value>vlakBindingSource</value>
-  </data>
-  <data name="&gt;&gt;vlakBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
     <value>dataGridViewTextBoxColumn1</value>
@@ -3151,18 +3079,6 @@
   </data>
   <data name="&gt;&gt;bWorkerELIS.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsslDate.Name" xml:space="preserve">
-    <value>tsslDate</value>
-  </data>
-  <data name="&gt;&gt;tsslDate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsslTime.Name" xml:space="preserve">
-    <value>tsslTime</value>
-  </data>
-  <data name="&gt;&gt;tsslTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
     <value>toolStripStatusLabel1</value>
@@ -3294,73 +3210,49 @@
     <value>dataGridViewExComboBoxColumn1</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn1.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn2.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn2</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn2.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tscbStanica.Name" xml:space="preserve">
-    <value>tscbStanica</value>
-  </data>
-  <data name="&gt;&gt;tscbStanica.Type" xml:space="preserve">
-    <value>ExControls.ExToolStripComboBox, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tscbObdobie.Name" xml:space="preserve">
-    <value>tscbObdobie</value>
-  </data>
-  <data name="&gt;&gt;tscbObdobie.Type" xml:space="preserve">
-    <value>ExControls.ExToolStripComboBox, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Kolaj.Name" xml:space="preserve">
-    <value>Kolaj</value>
-  </data>
-  <data name="&gt;&gt;Kolaj.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;Dopravca.Name" xml:space="preserve">
-    <value>Dopravca</value>
-  </data>
-  <data name="&gt;&gt;Dopravca.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn3.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn3</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn3.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn4.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn4</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn4.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn5.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn5</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn5.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn6.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn6</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn6.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn7.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn7</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn7.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn8.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn8</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn8.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewComboBoxColumn1.Name" xml:space="preserve">
     <value>dataGridViewComboBoxColumn1</value>
@@ -3426,49 +3318,121 @@
     <value>dataGridViewExComboBoxColumn9</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn9.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn10.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn10</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn10.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn11.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn11</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn11.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn12.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn12</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn12.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn13.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn13</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn13.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn14.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn14</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn14.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn15.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn15</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn15.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn16.Name" xml:space="preserve">
     <value>dataGridViewExComboBoxColumn16</value>
   </data>
   <data name="&gt;&gt;dataGridViewExComboBoxColumn16.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8278.29932, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cisloDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>cisloDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;cisloDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;typDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>typDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;typDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;smerovanieDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>smerovanieDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;smerovanieDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;prichodDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>prichodDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;prichodDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;odchodDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>odchodDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;odchodDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvcVychodziaStanica.Name" xml:space="preserve">
+    <value>dgvcVychodziaStanica</value>
+  </data>
+  <data name="&gt;&gt;dgvcVychodziaStanica.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvcKonecnaStanica.Name" xml:space="preserve">
+    <value>dgvcKonecnaStanica</value>
+  </data>
+  <data name="&gt;&gt;dgvcKonecnaStanica.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Kolaj.Name" xml:space="preserve">
+    <value>Kolaj</value>
+  </data>
+  <data name="&gt;&gt;Kolaj.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trackBindingSource.Name" xml:space="preserve">
+    <value>trackBindingSource</value>
+  </data>
+  <data name="&gt;&gt;trackBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Dopravca.Name" xml:space="preserve">
+    <value>Dopravca</value>
+  </data>
+  <data name="&gt;&gt;Dopravca.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;operatorBindingSource.Name" xml:space="preserve">
+    <value>operatorBindingSource</value>
+  </data>
+  <data name="&gt;&gt;operatorBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vlakBindingSource.Name" xml:space="preserve">
+    <value>vlakBindingSource</value>
+  </data>
+  <data name="&gt;&gt;vlakBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FMain</value>

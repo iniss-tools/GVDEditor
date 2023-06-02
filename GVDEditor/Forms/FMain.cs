@@ -21,12 +21,12 @@ public partial class FMain : Form
     /// <summary>
     ///     Dostupné stanice.
     /// </summary>
-    public static readonly BindingList<string> Stanice = new();
+    public static BindingList<string> Stanice { get; } = new();
 
     /// <summary>
     ///     Všetky dostupne priečinky s grafikonmi.
     /// </summary>
-    public static readonly BindingList<GVDDirectory> ObdobiaList = new();
+    public static BindingList<GVDDirectory> ObdobiaList { get; } = new();
 
     private readonly List<GVDDirectory> _gvdDirs = new();
     private Process _actualINISSProcess;
@@ -46,22 +46,14 @@ public partial class FMain : Form
     {
         InitializeComponent();
 
-        if (GlobData.Config.CheckUpdate && AutoUpdater.UpdateAvailable(Application.ProductVersion, out var version))
-        {
-            var res = Utils.ShowInfo(string.Format(Resources.RUpdateInfo, version), Resources.RUpdate, MessageBoxButtons.YesNo);
-            if (res == DialogResult.Yes)
-                Process.Start(LinkConsts.LINK_DOWNLOAD);
-        }
-
         mainMenu.Renderer = new ToolStripProfessionalRenderer(new FormUtils.LightColorTable());
 
-        tsslDate.Font = GlobData.Config.Fonts.StateRow.Font;
-        tsslTime.Font = GlobData.Config.Fonts.StateRow.Font;
-        statusStrip.Visible = GlobData.Config.ShowStateRow;
+        tsslSelTrainName.Font = GlobData.Config.Fonts.StateRow.Font;
+        tsslSelTrainVariants.Font = GlobData.Config.Fonts.StateRow.Font;
+        tsslTrainCount.Font = GlobData.Config.Fonts.StateRow.Font;
+        tsslTrainCountWithVariants.Font = GlobData.Config.Fonts.StateRow.Font;
+
         dgvTrains.RowHeadersVisible = GlobData.Config.ShowRowsHeader;
-        tsslDate.Visible = GlobData.Config.ShowDateTimeInStateRow;
-        tsslTime.Visible = GlobData.Config.ShowDateTimeInStateRow;
-        timerTimeAndDate.Enabled = GlobData.Config.ShowStateRow && GlobData.Config.ShowDateTimeInStateRow;
 
         if (!GlobData.PrivateFeatures)
         {
@@ -99,12 +91,12 @@ public partial class FMain : Form
         backgroundWorker1.DoWork += BackgroundWorker1_DoWork;
         backgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
 
-        var recentDirs = AppRegistry.GetOpenedProjects(Application.ProductName);
+        var recentDirs = AppRegistry.GetOpenedProjects();
 
         foreach (var dir in recentDirs)
         {
-            var itemA = new ToolStripMenuItem(dir);
-            var itemB = new ToolStripMenuItem(dir);
+            var itemA = new ToolStripMenuItem(dir.Path);
+            var itemB = new ToolStripMenuItem(dir.Path);
 
             itemA.Click += RecentDirsClick;
             itemB.Click += RecentDirsClick;
@@ -112,7 +104,7 @@ public partial class FMain : Form
             tssbRecentDirs.DropDownItems.Add(itemB);
         }
 
-        if (recentDirs.Count == 0 || recentDirs[0] == "")
+        if (recentDirs.Length == 0 || recentDirs[0].Path == "")
         {
             tsmiRecent.Enabled = false;
             tssbRecentDirs.Enabled = false;
@@ -127,13 +119,21 @@ public partial class FMain : Form
         if (tscbObdobie.ComboBox != null) tscbObdobie.ComboBox.DataSource = ObdobiaList;
 
         this.ApplyThemeAndFonts();
+        if (GlobData.UsingStyle.HighlightStatusBar)
+        {
+            statusStrip.BackColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor;
+            tsslSelTrainName.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+            tsslSelTrainVariants.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+            tsslTrainCount.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+            tsslTrainCountWithVariants.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+        }
     }
 
     private void FMain_Load(object sender, EventArgs e)
     {
         if (GlobData.Config.Startup == StartupType.LastProject)
         {
-            var path = AppRegistry.GetLastProject(Application.ProductName);
+            var path = AppRegistry.GetLastProject();
             if (!string.IsNullOrWhiteSpace(path)) 
                 OpenRecentProject(path);
         }
@@ -178,9 +178,9 @@ public partial class FMain : Form
                 Program.MainForm.Invoke(delegate()
                 {
                     if (GlobData.Config.DebugModeGUI == DebugMode.OnlyMessage)
-                        FOpenGvdError.ShowError(exception.Message);
+                        FError.ShowError(exception.Message);
                     if (GlobData.Config.DebugModeGUI == DebugMode.DetailInfo)
-                        FOpenGvdError.ShowError(exception.ToString());
+                        FError.ShowError(exception.ToString());
                 }
                 );
 
@@ -442,10 +442,11 @@ public partial class FMain : Form
 
     private void ShowImportGVD()
     {
-        var dialog = new ExFolderBrowserDialog { Title = "Vyberte priečinok obsahujúci grafikon" };
-        if (!dialog.Show(Handle)) return;
+        var dialog = new ExFolderBrowserDialog { Description = "Vyberte priečinok obsahujúci grafikon" };
+        if (dialog.ShowDialog(this) == DialogResult.Cancel) 
+            return;
 
-        var selectedPath = dialog.FileName;
+        var selectedPath = dialog.SelectedPath;
 
         var dirname = Utils.GetDirectoryName(selectedPath);
 
@@ -508,17 +509,22 @@ public partial class FMain : Form
         var menu = GlobData.Config.DesktopMenuMode;
         mainMenu.Visible = menu is DesktopMenu.MsTs or DesktopMenu.MsOnly;
         toolMenu.Visible = menu is DesktopMenu.MsTs or DesktopMenu.TsOnly;
-        statusStrip.Visible = GlobData.Config.ShowStateRow;
-        tsslDate.Visible = GlobData.Config.ShowDateTimeInStateRow;
-        tsslTime.Visible = GlobData.Config.ShowDateTimeInStateRow;
-        timerTimeAndDate.Enabled = GlobData.Config.ShowStateRow && GlobData.Config.ShowDateTimeInStateRow;
         dgvTrains.RowHeadersVisible = GlobData.Config.ShowRowsHeader;
 
+        this.ApplyThemeAndFonts();
         SetColumns();
         SetColumnsAutoWidth();
         SetShortcuts();
         Refresh();
         AppInit.MsgBoxStyleInit(GlobData.UsingStyle, GlobData.Config);
+        if (GlobData.UsingStyle.HighlightStatusBar)
+        {
+            statusStrip.BackColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor;
+            tsslSelTrainName.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+            tsslSelTrainVariants.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+            tsslTrainCount.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+            tsslTrainCountWithVariants.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+        }
     }
 
     private void ShowInfoApp()
@@ -645,10 +651,11 @@ public partial class FMain : Form
 
     private void ShowOpenDir()
     {
-        var dialog = new ExFolderBrowserDialog { Title = "Vyberte priečinok s INISS.exe" };
-        if (!dialog.Show(Handle)) return;
+        var dialog = new ExFolderBrowserDialog { Description = "Vyberte priečinok s INISS.exe" };
+        if (dialog.ShowDialog(this) == DialogResult.Cancel) 
+            return;
 
-        var selectedPath = dialog.FileName;
+        var selectedPath = dialog.SelectedPath;
 
         _prechod = true;
         GlobData.Trains.Clear();
@@ -666,10 +673,10 @@ public partial class FMain : Form
                 switch (GlobData.Config.DebugModeGUI)
                 {
                     case DebugMode.OnlyMessage:
-                        FOpenGvdError.ShowError(e.Message);
+                        FError.ShowError(e.Message);
                         break;
                     case DebugMode.DetailInfo:
-                        FOpenGvdError.ShowError(e.ToString());
+                        FError.ShowError(e.ToString());
                         break;
                 }
 
@@ -677,8 +684,6 @@ public partial class FMain : Form
             }
         else
             GlobData.PrepareGlobalData(selectedPath);
-
-        AppRegistry.AddNewOpenedProject(Application.ProductName, selectedPath);
 
         if (InitializeDataList()) InitializeGUI();
     }
@@ -738,7 +743,7 @@ public partial class FMain : Form
                     }
                     catch (Exception e)
                     {
-                        FOpenGvdError.ShowError(GlobData.Config.DebugModeGUI == DebugMode.DetailInfo ? e.ToString() : e.Message);
+                        FError.ShowError(GlobData.Config.DebugModeGUI == DebugMode.DetailInfo ? e.ToString() : e.Message);
                         Log.Exception(e);
                     }
                 }
@@ -756,7 +761,8 @@ public partial class FMain : Form
             return false;
         }
 
-        AppRegistry.SetLastProject(Application.ProductName, GlobData.INISSDir);
+        AppRegistry.SetUsageOfProject(GlobData.INISSDir);
+        AppRegistry.SetLastProject(GlobData.INISSDir);
         return true;
     }
 
@@ -912,10 +918,10 @@ public partial class FMain : Form
                 switch (GlobData.Config.DebugModeGUI)
                 {
                     case DebugMode.OnlyMessage:
-                        FOpenGvdError.ShowError(exception.Message);
+                        FError.ShowError(exception.Message);
                         break;
                     case DebugMode.DetailInfo:
-                        FOpenGvdError.ShowError(exception.ToString());
+                        FError.ShowError(exception.ToString());
                         break;
                 }
 
@@ -926,12 +932,6 @@ public partial class FMain : Form
 
         if (InitializeDataList()) 
             InitializeGUI();
-    }
-
-    private void timerTimeAndDate_Tick(object sender, EventArgs e)
-    {
-        tsslDate.Text = DateTime.Now.ToString("dd.MM.yyyy");
-        tsslTime.Text = DateTime.Now.ToString("HH:mm:ss");
     }
 
     private void tsbInformation_Click(object sender, EventArgs e)
@@ -1207,21 +1207,22 @@ public partial class FMain : Form
             var i = 0;
             foreach (var train in GlobData.Trains)
             {
-                if (Train.IsSameVariant(train, thistrain) && i != e.RowIndex)
-                    if (train.ZaciatokPlatnosti == thistrain.ZaciatokPlatnosti && train.KoniecPlatnosti == thistrain.KoniecPlatnosti)
-                        if (dateRemThis.Overlap(thistrain.DateLimitText, train.DateLimitText))
-                        {
-                            var obmand = dateRemThis.TextAnd(train.DateLimitText, thistrain.DateLimitText);
-                            var result = MessageBox.Show(string.Format(Resources.FEditTrain_DateRem_zasahuje_do_ineho_vlaku, train.Type,
-                                train.Number, train.Name, obmand), Resources.RWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                            if (result == DialogResult.Yes)
-                            {
-                                var fDateRemEdit = new FDateLimitEdit(train, train.DateLimitText, thistrain.ZaciatokPlatnosti,
-                                    thistrain.KoniecPlatnosti);
-                                var result2 = fDateRemEdit.ShowDialog();
-                                if (result2 == DialogResult.OK) train.DateLimitText = fDateRemEdit.DateRemEdited;
-                            }
-                        }
+                if (Train.IsSameVariant(train, thistrain) && i != e.RowIndex && 
+                    train.ZaciatokPlatnosti == thistrain.ZaciatokPlatnosti && 
+                    train.KoniecPlatnosti == thistrain.KoniecPlatnosti && 
+                    dateRemThis.Overlap(thistrain.DateLimitText, train.DateLimitText))
+                {
+                    var obmand = dateRemThis.TextAnd(train.DateLimitText, thistrain.DateLimitText);
+                    var result = MessageBox.Show(string.Format(Resources.FEditTrain_DateRem_zasahuje_do_ineho_vlaku, train.Type,
+                        train.Number, train.Name, obmand), Resources.RWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        var result2 = FDateLimitEdit.SetDateLimit(this, thistrain.ZaciatokPlatnosti, thistrain.KoniecPlatnosti, train,
+                            true, train.DateLimitText);
+                        if (result2 == DialogResult.OK) 
+                            train.DateLimitText = FDateLimitEdit.Result;
+                    }
+                }
 
                 i++;
             }

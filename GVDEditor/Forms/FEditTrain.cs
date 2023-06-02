@@ -451,41 +451,44 @@ public partial class FEditTrain : Form
         }
 
         foreach (var seltrain in seltrains)
-            if (seltrain.ZaciatokPlatnosti == train.ZaciatokPlatnosti && seltrain.KoniecPlatnosti == train.KoniecPlatnosti)
-                if (dateRem.Overlap(seltrain.DateLimitText, train.DateLimitText))
-                {
-                    var obmand = dateRem.TextAnd(seltrain.DateLimitText, train.DateLimitText);
-
-                    var result = Utils.ShowQuestion(string.Format(Resources.FEditTrain_DateRem_zasahuje_do_ineho_vlaku, train.Type,
-                        train.Number, train.Name, obmand));
-
-                    if (result == DialogResult.Yes)
-                    {
-                        var fDateRemEdit = new FDateLimitEdit(train, seltrain.DateLimitText, platnostOd, platnostDo);
-                        var result2 = fDateRemEdit.ShowDialog();
-                        if (result2 == DialogResult.OK)
-                            seltrain.DateLimitText = fDateRemEdit.DateRemEdited;
-                    }
-                }
-
-        if (GlobData.Config.AutoVariant)
-            if (copy || ThisTrain == null)
+        {
+            if (seltrain.ZaciatokPlatnosti == train.ZaciatokPlatnosti && 
+                seltrain.KoniecPlatnosti == train.KoniecPlatnosti && 
+                dateRem.Overlap(seltrain.DateLimitText, train.DateLimitText))
             {
-                if (seltrains.Count == 0)
-                {
-                    train.Variant = -1;
-                }
-                else
-                {
-                    int i;
-                    for (i = 0; i < seltrains.Count; i++) seltrains[i].Variant = i + 1;
+                var obmand = dateRem.TextAnd(seltrain.DateLimitText, train.DateLimitText);
 
-                    train.Variant = i + 1;
+                var result = Utils.ShowQuestion(string.Format(Resources.FEditTrain_DateRem_zasahuje_do_ineho_vlaku, train.Type,
+                    train.Number, train.Name, obmand));
+
+                if (result == DialogResult.Yes)
+                {
+                    var result2 = FDateLimitEdit.SetDateLimit(this, platnostOd, platnostDo, train, true, seltrain.DateLimitText);
+                    if (result2 == DialogResult.OK)
+                        seltrain.DateLimitText = FDateLimitEdit.Result;
                 }
             }
+        }
+
+        if (GlobData.Config.AutoVariant && (copy || ThisTrain == null))
+        {
+            if (seltrains.Count == 0)
+            {
+                train.Variant = -1;
+            }
+            else
+            {
+                int i;
+                for (i = 0; i < seltrains.Count; i++) 
+                    seltrains[i].Variant = i + 1;
+
+                train.Variant = i + 1;
+            }
+        }
 
         var newrads = new List<Radenie>();
         foreach (var rad in Radenia)
+        {
             if (!GlobData.Radenia.Contains(rad))
             {
                 rad.CisloVlaku = train.Number;
@@ -495,16 +498,19 @@ public partial class FEditTrain : Form
             {
                 rad.CisloVlaku = train.Number;
             }
+        }
 
         GlobData.Radenia.AddRange(newrads);
 
         foreach (var vlak in GlobData.Trains)
+        {
             if (train.Number == vlak.Number)
             {
                 vlak.Radenia.AddRange(newrads);
 
                 foreach (var r in RemovedRadenia) vlak.Radenia.Remove(r);
             }
+        }
 
         foreach (var r in RemovedRadenia) GlobData.Radenia.Remove(r);
 
@@ -1109,7 +1115,7 @@ public partial class FEditTrain : Form
                 soundsS.Add(GlobData.RawBankDir + "\\" + fyzZvuk.Language.RelativePath +
                             fyzZvuk.Group.RelativePath + fyzZvuk.FileName);
 
-        var player = new WavPlayer(soundsS.ToArray(), GlobData.Config.PlayerWordPause);
+        var player = new WavPlayer(soundsS.ToArray(), GlobData.Config.PlayerSoundsOffset);
         player.StartPlay();
     }
 
@@ -1213,6 +1219,24 @@ public partial class FEditTrain : Form
     private void FEditTrain_HelpButtonClicked(object sender, CancelEventArgs e)
     {
         Process.Start(LinkConsts.LINK_EDIT_TRAIN);
+    }
+
+    private void BEditLimit_Click(object sender, EventArgs e)
+    {
+        var result = FDateLimitEdit.SetDateLimit(this, dtpPlatnostOd.Value, dtpPlatnostDo.Value, defaultValue: tDatumoveObmedzenie.Text);
+        if (result is DialogResult.OK)
+        {
+            tDatumoveObmedzenie.Text = FDateLimitEdit.Result;
+        }
+    }
+
+    private void BEditLimitRadenie_Click(object sender, EventArgs e)
+    {
+        var result = FDateLimitEdit.SetDateLimit(this, dtpRadenieOd.Value, dtpRadenieDo.Value, defaultValue: tbDateRemRadenie.Text);
+        if (result is DialogResult.OK)
+        {
+            tbDateRemRadenie.Text = FDateLimitEdit.Result;
+        }
     }
 
     private void FillRadenieSet()

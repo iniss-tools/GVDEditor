@@ -44,8 +44,7 @@ public partial class FAppSettings : FAppSettingsBase
         cboxAutoVariant.Checked = Config.AutoVariant;
         cboxTabTextAutoGenerate.Checked = Config.AutoTableText;
         cboxDontCheckTrainIndex.Checked = Config.DisableVariantCheck;
-        cboxShowDateTimeInStateRow.Checked = Config.ShowDateTimeInStateRow;
-        nudPlayerWordPause.Value = Config.PlayerWordPause;
+        nudPlayerWordPause.Value = Config.PlayerSoundsOffset;
         cboxRunAsAdmin.Checked = Config.StartupINISSConfig.RunAsAdmin;
         tbCmdArguments.Text = Config.StartupINISSConfig.CmdArgs;
 
@@ -66,8 +65,7 @@ public partial class FAppSettings : FAppSettingsBase
         Config.AutoVariant = cboxAutoVariant.Checked;
         Config.AutoTableText = cboxTabTextAutoGenerate.Checked;
         Config.DisableVariantCheck = cboxDontCheckTrainIndex.Checked;
-        Config.ShowDateTimeInStateRow = cboxShowDateTimeInStateRow.Checked;
-        Config.PlayerWordPause = decimal.ToInt32(nudPlayerWordPause.Value);
+        Config.PlayerSoundsOffset = decimal.ToInt32(nudPlayerWordPause.Value);
         return true;
     }
 

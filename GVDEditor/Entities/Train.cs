@@ -1,4 +1,5 @@
-﻿using GVDEditor.Tools;
+﻿using System.Collections;
+using GVDEditor.Tools;
 using ToolsCore.Entities;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
@@ -210,21 +211,20 @@ public sealed record Train
     /// <summary>
     ///     Vrati vlak zo zoznamu variant, ktory je hlavna varianta vlaku (ma najdlhsiu trasu poctom stanic).
     /// </summary>
-    /// <param name="allvariants">Varianty vlaku.</param>
-    /// <returns>hlavna varianta vlaku.</returns>
-    public static void ReorderVariants(List<Train> allvariants)
+    /// <param name="allVariants">Varianty vlaku.</param>
+    public static void ReorderVariants(List<Train> allVariants)
     {
-        switch (allvariants.Count)
+        switch (allVariants.Count)
         {
             case 0:
                 return;
             case 1:
-                allvariants[0].Variant = -1;
+                allVariants[0].Variant = -1;
                 return;
         }
 
         //P1: reordering
-        allvariants.Sort((t1, t2) =>
+        allVariants.Sort((t1, t2) =>
         {
             var stcount1 = t1.StaniceZoSmeru.Count + t1.StaniceDoSmeru.Count;
             var stcount2 = t2.StaniceZoSmeru.Count + t2.StaniceDoSmeru.Count;
@@ -232,13 +232,32 @@ public sealed record Train
         });
 
         //P2: changing datelimits
-        //rovnaky limit pre vsetky varianty
-        var limit = new DateLimit(allvariants[0].ZaciatokPlatnosti, allvariants[0].KoniecPlatnosti, insertMarks: false);
-        for (var i = 0; i < allvariants.Count; i++) //prechadzam kazdym variantom vlaku
+        //vytvorenie bitovych poli obmedzeni a nastavenie variant
+        var limits = new BitArray[allVariants.Count];
+        var baseLimit = new DateLimit(allVariants[0].ZaciatokPlatnosti, allVariants[0].KoniecPlatnosti, insertMarks: false);
+        for (var i = 0; i < allVariants.Count; i++) //prechadzam kazdym variantom vlaku
         {
-            allvariants[i].Variant = i + 1; // nastavenie vlastnosti Variant kazdemu vlaku (zacina 1, lebo variant 0 nie je)
-            if (i + 1 != allvariants.Count) //ak nie je tento variant posledny, urobi sa op. XOR medzi tymto a nasledujucim variantom
-                allvariants[i].DateLimitText = limit.TextXor(allvariants[i].DateLimitText, allvariants[i + 1].DateLimitText);
+            limits[i] = baseLimit.TextToBitArray(allVariants[i].DateLimitText);
+            allVariants[i].Variant = i + 1; // nastavenie vlastnosti Variant kazdemu vlaku (zacina 1, lebo variant 0 nie je)
+        }
+
+        //prepocitavanie bitovych poli
+        for (var i = 0; i < baseLimit.TotalDays; i++)
+        {
+            var oneFound = false;
+            for (var j = allVariants.Count - 1; j >= 0; j--)
+            {
+                if (!oneFound && limits[j][i]) //nasla sa 1
+                    oneFound = true;
+                else
+                    limits[j][i] = false;
+            }
+        }
+
+        // finalne vytvorenie obmedzeni a bitovych poli
+        for (var i = 0; i < allVariants.Count; i++)
+        {
+            allVariants[i].DateLimitText = baseLimit.BitArrayToText(limits[i]);
         }
     }
 

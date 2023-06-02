@@ -1,4 +1,5 @@
 ﻿using GVDEditor.Entities;
+using Microsoft.Office.Interop.Excel;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Tools;
@@ -121,18 +122,13 @@ public class ELISParser
         //ci sa maju zoradit vlaky podla variant
         if (ReorderTrains)
             //zotriedenie vlakov podla variant
-            for (var i = 0; i < trains.Count; i++)
+        {
+            var variants = trains.GroupBy(k => new { k.Number, k.Name, k.Type});
+            foreach (var variant in variants)
             {
-                var t1 = trains[i];
-                if (t1.Variant != NotSet)
-                    continue;
-
-                var variants = trains.Where((t2, j) => i != j && Train.IsSameVariant(t1, t2)).ToList();
-
-                variants.Add(t1);
-
-                Train.ReorderVariants(variants);
+                Train.ReorderVariants(variant.ToList());
             }
+        }
 
         //vratenie vysledku (a vymazanie duplicitnych vlakov, ktore prisli s argumentom deftrains)
         trains.RemoveRange(0, countdef);
@@ -268,7 +264,7 @@ public class ELISParser
                 else if (train.StaniceDoSmeru.Count == 0)
                     train.Routing = Routing.Konciaci;
 
-                //citanie poznamok (dopravca, daterem)
+                //citanie poznamok (dopravca, datelimit)
                 if (DefinedOperators)
                 {
                     var lineOp = line;

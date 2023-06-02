@@ -53,7 +53,7 @@ namespace GVDEditor.Forms
             this.cbOperators.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbOperators.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cbOperators.Location = new System.Drawing.Point(4, 17);
-            this.cbOperators.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbOperators.Margin = new System.Windows.Forms.Padding(2);
             this.cbOperators.Name = "cbOperators";
             this.cbOperators.Size = new System.Drawing.Size(198, 17);
             this.cbOperators.TabIndex = 0;
@@ -68,7 +68,7 @@ namespace GVDEditor.Forms
             this.cbDateRems.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbDateRems.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cbDateRems.Location = new System.Drawing.Point(4, 37);
-            this.cbDateRems.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbDateRems.Margin = new System.Windows.Forms.Padding(2);
             this.cbDateRems.Name = "cbDateRems";
             this.cbDateRems.Size = new System.Drawing.Size(248, 17);
             this.cbDateRems.TabIndex = 2;
@@ -81,7 +81,7 @@ namespace GVDEditor.Forms
             this.cbSkipPassingTrains.BoxBackColor = System.Drawing.Color.White;
             this.cbSkipPassingTrains.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cbSkipPassingTrains.Location = new System.Drawing.Point(4, 67);
-            this.cbSkipPassingTrains.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSkipPassingTrains.Margin = new System.Windows.Forms.Padding(2);
             this.cbSkipPassingTrains.Name = "cbSkipPassingTrains";
             this.cbSkipPassingTrains.Size = new System.Drawing.Size(188, 17);
             this.cbSkipPassingTrains.TabIndex = 4;
@@ -92,7 +92,7 @@ namespace GVDEditor.Forms
             // 
             this.bImport.AutoSize = true;
             this.bImport.Location = new System.Drawing.Point(149, 161);
-            this.bImport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bImport.Margin = new System.Windows.Forms.Padding(2);
             this.bImport.Name = "bImport";
             this.bImport.Size = new System.Drawing.Size(56, 25);
             this.bImport.TabIndex = 4;
@@ -105,7 +105,7 @@ namespace GVDEditor.Forms
             this.bStorno.AutoSize = true;
             this.bStorno.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.bStorno.Location = new System.Drawing.Point(251, 161);
-            this.bStorno.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bStorno.Margin = new System.Windows.Forms.Padding(2);
             this.bStorno.Name = "bStorno";
             this.bStorno.Size = new System.Drawing.Size(56, 25);
             this.bStorno.TabIndex = 5;
@@ -123,7 +123,7 @@ namespace GVDEditor.Forms
             this.tbPath.HintForeColor = System.Drawing.SystemColors.GrayText;
             this.tbPath.HintText = null;
             this.tbPath.Location = new System.Drawing.Point(9, 25);
-            this.tbPath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbPath.Margin = new System.Windows.Forms.Padding(2);
             this.tbPath.Name = "tbPath";
             this.tbPath.Size = new System.Drawing.Size(348, 20);
             this.tbPath.TabIndex = 1;
@@ -136,10 +136,11 @@ namespace GVDEditor.Forms
             this.exGroupBox1.Controls.Add(this.exLineSeparator1);
             this.exGroupBox1.Controls.Add(this.cbOperators);
             this.exGroupBox1.Controls.Add(this.cbDateRems);
+            this.exGroupBox1.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.exGroupBox1.Location = new System.Drawing.Point(9, 55);
-            this.exGroupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.exGroupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.exGroupBox1.Name = "exGroupBox1";
-            this.exGroupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.exGroupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.exGroupBox1.Size = new System.Drawing.Size(441, 93);
             this.exGroupBox1.TabIndex = 3;
             this.exGroupBox1.TabStop = false;
@@ -153,7 +154,7 @@ namespace GVDEditor.Forms
             this.cbNewFormat.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbNewFormat.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cbNewFormat.Location = new System.Drawing.Point(242, 17);
-            this.cbNewFormat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbNewFormat.Margin = new System.Windows.Forms.Padding(2);
             this.cbNewFormat.Name = "cbNewFormat";
             this.cbNewFormat.Size = new System.Drawing.Size(114, 17);
             this.cbNewFormat.TabIndex = 1;
@@ -166,7 +167,7 @@ namespace GVDEditor.Forms
             this.cbReorder.BoxBackColor = System.Drawing.Color.White;
             this.cbReorder.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cbReorder.Location = new System.Drawing.Point(242, 67);
-            this.cbReorder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbReorder.Margin = new System.Windows.Forms.Padding(2);
             this.cbReorder.Name = "cbReorder";
             this.cbReorder.Size = new System.Drawing.Size(190, 17);
             this.cbReorder.TabIndex = 5;
@@ -175,8 +176,8 @@ namespace GVDEditor.Forms
             // 
             // exLineSeparator1
             // 
-            this.exLineSeparator1.Location = new System.Drawing.Point(4, 59);
-            this.exLineSeparator1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.exLineSeparator1.Location = new System.Drawing.Point(3, 55);
+            this.exLineSeparator1.Margin = new System.Windows.Forms.Padding(2);
             this.exLineSeparator1.Name = "exLineSeparator1";
             this.exLineSeparator1.Size = new System.Drawing.Size(432, 8);
             this.exLineSeparator1.TabIndex = 3;
@@ -185,7 +186,7 @@ namespace GVDEditor.Forms
             // bBrowse
             // 
             this.bBrowse.Location = new System.Drawing.Point(362, 21);
-            this.bBrowse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bBrowse.Margin = new System.Windows.Forms.Padding(2);
             this.bBrowse.Name = "bBrowse";
             this.bBrowse.Size = new System.Drawing.Size(88, 26);
             this.bBrowse.TabIndex = 2;
@@ -221,7 +222,7 @@ namespace GVDEditor.Forms
             this.Controls.Add(this.bStorno);
             this.Controls.Add(this.bImport);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FELISOptions";

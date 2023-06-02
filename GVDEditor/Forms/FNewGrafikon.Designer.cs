@@ -87,6 +87,7 @@ namespace GVDEditor.Forms
             // 
             this.groupBox1.Controls.Add(this.tbDirIniss);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
@@ -121,6 +122,7 @@ namespace GVDEditor.Forms
             this.Grafikon.Controls.Add(this.dtpDataOd);
             this.Grafikon.Controls.Add(this.label3);
             this.Grafikon.Controls.Add(this.label2);
+            this.Grafikon.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             resources.ApplyResources(this.Grafikon, "Grafikon");
             this.Grafikon.Name = "Grafikon";
             this.Grafikon.TabStop = false;
@@ -249,6 +251,7 @@ namespace GVDEditor.Forms
             // 
             this.groupBox2.Controls.Add(this.rbNewObd);
             this.groupBox2.Controls.Add(this.rbNewStation);
+            this.groupBox2.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
@@ -282,6 +285,7 @@ namespace GVDEditor.Forms
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.nudTabPort);
+            this.groupBox3.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
@@ -404,6 +408,7 @@ namespace GVDEditor.Forms
             this.groupBox4.Controls.Add(this.nudIDStation);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.cbStationName);
+            this.groupBox4.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;

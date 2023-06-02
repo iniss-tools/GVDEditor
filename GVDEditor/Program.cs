@@ -3,6 +3,7 @@ using GVDEditor.Tools;
 using ToolsCore;
 using ToolsCore.XML;
 using ToolsCore.Tools;
+using ToolsCore.Forms;
 
 namespace GVDEditor;
 
@@ -21,10 +22,26 @@ internal static class Program
 
         if (args.Length == 1 && (args[0] == "-unlock" || args[0] == "/unlock")) 
             GlobData.PrivateFeatures = true;
-        DateLimit.Loc = GlobData.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.CZ : DateLimit.Locale.SK;
+        DateLimit.Loc = GlobData.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
 
         MainForm = new FMain();
-        Application.Run(MainForm);
+
+        if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
+        {
+            try
+            {
+                Application.Run(MainForm);
+            }
+            catch (Exception exception)
+            {
+                Log.Exception(exception);
+                FError.ShowError(GlobData.Config.DebugModeGUI == DebugMode.OnlyMessage ? exception.Message : exception.ToString());
+            }
+        }
+        else
+        {
+            Application.Run(MainForm);
+        }
 
         Log.Info("Program sa ukončuje\r\n");
     }

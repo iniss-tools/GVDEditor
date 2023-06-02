@@ -31,7 +31,7 @@ namespace GVDEditor.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            ExControls.OptionsNode optionsNode1 = new ExControls.OptionsNode();
+            ExControls.OptionsNode optionsNode2 = new ExControls.OptionsNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FAppSettings));
             this.exGroupBox2 = new ExControls.ExGroupBox();
             this.cboxDontCheckTrainIndex = new ExControls.ExCheckBox();
@@ -45,7 +45,7 @@ namespace GVDEditor.Forms
             this.tbCmdArguments = new ExControls.ExTextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.groupArguments = new ExControls.ExGroupBox();
-            this.label4 = new ExLabel();
+            this.label4 = new ExControls.ExLabel();
             this.label19 = new System.Windows.Forms.Label();
             this.cbArgRegister = new ExControls.ExComboBox();
             this.cboxArgExportTableTexts = new ExControls.ExCheckBox();
@@ -55,7 +55,6 @@ namespace GVDEditor.Forms
             this.cboxArgMoreInstances = new ExControls.ExCheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbDateLimitLanguage = new ExControls.ExComboBox();
-            this.cboxShowDateTimeInStateRow = new ExControls.ExCheckBox();
             this.exGroupBox4 = new ExControls.ExGroupBox();
             this.nudPlayerWordPause = new ExControls.ExNumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
@@ -65,7 +64,6 @@ namespace GVDEditor.Forms
             this.pDesktopComponents.SuspendLayout();
             this.pLocalization.SuspendLayout();
             this.pConcreteLocalization.SuspendLayout();
-            this.pConcreteDesktopComponents.SuspendLayout();
             this.exGroupBox2.SuspendLayout();
             this.pStartupIniss.SuspendLayout();
             this.ppStartupIniss.SuspendLayout();
@@ -107,10 +105,6 @@ namespace GVDEditor.Forms
             this.pConcreteLocalization.Controls.Add(this.cbDateLimitLanguage);
             this.pConcreteLocalization.Controls.Add(this.label5);
             // 
-            // pConcreteDesktopComponents
-            // 
-            this.pConcreteDesktopComponents.Controls.Add(this.cboxShowDateTimeInStateRow);
-            // 
             // exGroupBox2
             // 
             this.exGroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -119,9 +113,10 @@ namespace GVDEditor.Forms
             this.exGroupBox2.Controls.Add(this.cboxDontCheckTrainIndex);
             this.exGroupBox2.Controls.Add(this.cboxAutoVariant);
             this.exGroupBox2.Controls.Add(this.cboxTabTextAutoGenerate);
+            this.exGroupBox2.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.exGroupBox2.Location = new System.Drawing.Point(0, 3);
             this.exGroupBox2.Name = "exGroupBox2";
-            this.exGroupBox2.Size = new System.Drawing.Size(521, 107);
+            this.exGroupBox2.Size = new System.Drawing.Size(521, 101);
             this.exGroupBox2.TabIndex = 0;
             this.exGroupBox2.TabStop = false;
             this.exGroupBox2.Text = "Grafikon";
@@ -131,7 +126,7 @@ namespace GVDEditor.Forms
             this.cboxDontCheckTrainIndex.AutoSize = true;
             this.cboxDontCheckTrainIndex.BoxBackColor = System.Drawing.Color.White;
             this.cboxDontCheckTrainIndex.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.cboxDontCheckTrainIndex.Location = new System.Drawing.Point(7, 71);
+            this.cboxDontCheckTrainIndex.Location = new System.Drawing.Point(7, 65);
             this.cboxDontCheckTrainIndex.Margin = new System.Windows.Forms.Padding(7, 3, 7, 3);
             this.cboxDontCheckTrainIndex.Name = "cboxDontCheckTrainIndex";
             this.cboxDontCheckTrainIndex.Size = new System.Drawing.Size(212, 17);
@@ -143,7 +138,7 @@ namespace GVDEditor.Forms
             this.cboxAutoVariant.AutoSize = true;
             this.cboxAutoVariant.BoxBackColor = System.Drawing.Color.White;
             this.cboxAutoVariant.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.cboxAutoVariant.Location = new System.Drawing.Point(7, 45);
+            this.cboxAutoVariant.Location = new System.Drawing.Point(7, 42);
             this.cboxAutoVariant.Name = "cboxAutoVariant";
             this.cboxAutoVariant.Size = new System.Drawing.Size(190, 17);
             this.cboxAutoVariant.TabIndex = 1;
@@ -164,11 +159,11 @@ namespace GVDEditor.Forms
             // 
             this.pStartupIniss.Controls.Add(this.ppStartupIniss);
             this.pStartupIniss.Name = "pStartupIniss";
-            optionsNode1.ImageKey = "start.png";
-            optionsNode1.Name = "";
-            optionsNode1.SelectedImageKey = "start.png";
-            optionsNode1.Text = "Spúšťanie INISS";
-            this.pStartupIniss.Node = optionsNode1;
+            optionsNode2.ImageKey = "start.png";
+            optionsNode2.Name = "";
+            optionsNode2.SelectedImageKey = "start.png";
+            optionsNode2.Text = "Spúšťanie INISS";
+            this.pStartupIniss.Node = optionsNode2;
             this.pStartupIniss.NodeText = "Spúšťanie INISS";
             this.pStartupIniss.ParentNode = null;
             // 
@@ -263,6 +258,7 @@ namespace GVDEditor.Forms
             this.groupArguments.Controls.Add(this.cboxArgExportHlasTexts);
             this.groupArguments.Controls.Add(this.cboxArgMinimize);
             this.groupArguments.Controls.Add(this.cboxArgMoreInstances);
+            this.groupArguments.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.groupArguments.Enabled = false;
             this.groupArguments.Location = new System.Drawing.Point(9, 88);
             this.groupArguments.Margin = new System.Windows.Forms.Padding(0);
@@ -342,7 +338,7 @@ namespace GVDEditor.Forms
             this.cboxArgExportTableTexts.BoxBackColor = System.Drawing.Color.White;
             this.cboxArgExportTableTexts.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxArgExportTableTexts.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cboxArgExportTableTexts.Location = new System.Drawing.Point(16, 119);
+            this.cboxArgExportTableTexts.Location = new System.Drawing.Point(16, 106);
             this.cboxArgExportTableTexts.Margin = new System.Windows.Forms.Padding(2);
             this.cboxArgExportTableTexts.Name = "cboxArgExportTableTexts";
             this.cboxArgExportTableTexts.Size = new System.Drawing.Size(315, 17);
@@ -357,7 +353,7 @@ namespace GVDEditor.Forms
             this.cboxArgAsClient.BoxBackColor = System.Drawing.Color.White;
             this.cboxArgAsClient.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxArgAsClient.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cboxArgAsClient.Location = new System.Drawing.Point(16, 96);
+            this.cboxArgAsClient.Location = new System.Drawing.Point(16, 85);
             this.cboxArgAsClient.Margin = new System.Windows.Forms.Padding(2);
             this.cboxArgAsClient.Name = "cboxArgAsClient";
             this.cboxArgAsClient.Size = new System.Drawing.Size(149, 17);
@@ -372,7 +368,7 @@ namespace GVDEditor.Forms
             this.cboxArgExportHlasTexts.BoxBackColor = System.Drawing.Color.White;
             this.cboxArgExportHlasTexts.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxArgExportHlasTexts.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cboxArgExportHlasTexts.Location = new System.Drawing.Point(16, 73);
+            this.cboxArgExportHlasTexts.Location = new System.Drawing.Point(16, 64);
             this.cboxArgExportHlasTexts.Margin = new System.Windows.Forms.Padding(2);
             this.cboxArgExportHlasTexts.Name = "cboxArgExportHlasTexts";
             this.cboxArgExportHlasTexts.Size = new System.Drawing.Size(285, 17);
@@ -387,7 +383,7 @@ namespace GVDEditor.Forms
             this.cboxArgMinimize.BoxBackColor = System.Drawing.Color.White;
             this.cboxArgMinimize.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxArgMinimize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cboxArgMinimize.Location = new System.Drawing.Point(16, 52);
+            this.cboxArgMinimize.Location = new System.Drawing.Point(16, 43);
             this.cboxArgMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.cboxArgMinimize.Name = "cboxArgMinimize";
             this.cboxArgMinimize.Size = new System.Drawing.Size(222, 17);
@@ -402,7 +398,7 @@ namespace GVDEditor.Forms
             this.cboxArgMoreInstances.BoxBackColor = System.Drawing.Color.White;
             this.cboxArgMoreInstances.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxArgMoreInstances.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cboxArgMoreInstances.Location = new System.Drawing.Point(16, 27);
+            this.cboxArgMoreInstances.Location = new System.Drawing.Point(16, 22);
             this.cboxArgMoreInstances.Margin = new System.Windows.Forms.Padding(2);
             this.cboxArgMoreInstances.Name = "cboxArgMoreInstances";
             this.cboxArgMoreInstances.Size = new System.Drawing.Size(199, 17);
@@ -459,17 +455,6 @@ namespace GVDEditor.Forms
             this.cbDateLimitLanguage.TabIndex = 1;
             this.cbDateLimitLanguage.UseDarkScrollBar = false;
             // 
-            // cboxShowDateTimeInStateRow
-            // 
-            this.cboxShowDateTimeInStateRow.AutoSize = true;
-            this.cboxShowDateTimeInStateRow.BoxBackColor = System.Drawing.Color.White;
-            this.cboxShowDateTimeInStateRow.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.cboxShowDateTimeInStateRow.Location = new System.Drawing.Point(16, 3);
-            this.cboxShowDateTimeInStateRow.Name = "cboxShowDateTimeInStateRow";
-            this.cboxShowDateTimeInStateRow.Size = new System.Drawing.Size(191, 17);
-            this.cboxShowDateTimeInStateRow.TabIndex = 0;
-            this.cboxShowDateTimeInStateRow.Text = "Zobrazovať čas v stavovom riadku";
-            // 
             // exGroupBox4
             // 
             this.exGroupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -477,7 +462,8 @@ namespace GVDEditor.Forms
             this.exGroupBox4.AutoSize = true;
             this.exGroupBox4.Controls.Add(this.nudPlayerWordPause);
             this.exGroupBox4.Controls.Add(this.label7);
-            this.exGroupBox4.Location = new System.Drawing.Point(0, 116);
+            this.exGroupBox4.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.exGroupBox4.Location = new System.Drawing.Point(0, 110);
             this.exGroupBox4.Name = "exGroupBox4";
             this.exGroupBox4.Size = new System.Drawing.Size(521, 67);
             this.exGroupBox4.TabIndex = 1;
@@ -487,12 +473,22 @@ namespace GVDEditor.Forms
             // nudPlayerWordPause
             // 
             this.nudPlayerWordPause.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.nudPlayerWordPause.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.nudPlayerWordPause.Location = new System.Drawing.Point(218, 28);
             this.nudPlayerWordPause.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
+            this.nudPlayerWordPause.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
             this.nudPlayerWordPause.Name = "nudPlayerWordPause";
             this.nudPlayerWordPause.SelectedButtonColor = System.Drawing.SystemColors.Highlight;
             this.nudPlayerWordPause.Size = new System.Drawing.Size(82, 20);
@@ -525,8 +521,6 @@ namespace GVDEditor.Forms
             this.pLocalization.PerformLayout();
             this.pConcreteLocalization.ResumeLayout(false);
             this.pConcreteLocalization.PerformLayout();
-            this.pConcreteDesktopComponents.ResumeLayout(false);
-            this.pConcreteDesktopComponents.PerformLayout();
             this.exGroupBox2.ResumeLayout(false);
             this.exGroupBox2.PerformLayout();
             this.pStartupIniss.ResumeLayout(false);
@@ -565,7 +559,6 @@ namespace GVDEditor.Forms
         private Label label5;
         private ExControls.ExCheckBox cboxManualCmdArgs;
         private Label label6;
-        private ExControls.ExCheckBox cboxShowDateTimeInStateRow;
         private ExControls.ExGroupBox exGroupBox4;
         private ExControls.ExNumericUpDown nudPlayerWordPause;
         private Label label7;

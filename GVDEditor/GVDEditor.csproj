@@ -30,7 +30,7 @@
     <InstallUrl>http://iniss.6f.sk/apps/GVDEditor/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.8.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -65,16 +65,16 @@
     <ApplicationIcon>gvd.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>3BC6C6AC057F7C3923D84017879174BFF4667082</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>B97ABAA6C3D241E476C79AE2D5335E05C1E4C140</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>GVDEditor_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>iniss6f.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>GVDEditor.Program</StartupObject>
@@ -104,6 +104,30 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NAudio.2.1.0\lib\net472\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Asio, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NAudio.Asio.2.1.0\lib\netstandard2.0\NAudio.Asio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Core, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NAudio.Core.2.1.0\lib\netstandard2.0\NAudio.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Midi, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NAudio.Midi.2.1.0\lib\netstandard2.0\NAudio.Midi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Wasapi, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NAudio.Wasapi.2.1.0\lib\netstandard2.0\NAudio.Wasapi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinForms, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NAudio.WinForms.2.1.0\lib\net472\NAudio.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinMM, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NAudio.WinMM.2.1.0\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="ScintillaNET, Version=3.6.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
@@ -112,6 +136,9 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Security.AccessControl.4.7.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xaml" />
     <Reference Include="Microsoft.CSharp" />
@@ -143,17 +170,17 @@
     <Compile Include="Forms\FAppSettings.Designer.cs">
       <DependentUpon>FAppSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FDateLimitEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FDateLimitEdit.Designer.cs">
+      <DependentUpon>FDateLimitEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FDatObm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FDatObm.Designer.cs">
       <DependentUpon>FDatObm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FOpenGvdError.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FOpenGvdError.Designer.cs">
-      <DependentUpon>FOpenGvdError.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobUsings.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -189,12 +216,6 @@
     </Compile>
     <Compile Include="Forms\FRadenie.Designer.cs">
       <DependentUpon>FRadenie.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FDateLimitEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FDateLimitEdit.Designer.cs">
-      <DependentUpon>FDateLimitEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FTabTabFindReplace.cs">
       <SubType>Form</SubType>
@@ -344,6 +365,9 @@
     <EmbeddedResource Include="Forms\FAppSettings.resx">
       <DependentUpon>FAppSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FDateLimitEdit.resx">
+      <DependentUpon>FDateLimitEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -365,9 +389,6 @@
     <EmbeddedResource Include="Forms\FColumnTypeSelect.resx">
       <DependentUpon>FColumnTypeSelect.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FDateLimitEdit.resx">
-      <DependentUpon>FDateLimitEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FDatObm.resx">
       <DependentUpon>FDatObm.cs</DependentUpon>
@@ -402,9 +423,6 @@
     <EmbeddedResource Include="Forms\FNewGrafikon.cs.resx">
       <DependentUpon>FNewGrafikon.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FOpenGvdError.resx">
-      <DependentUpon>FOpenGvdError.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FRadenie.cs.resx">
       <DependentUpon>FRadenie.cs</DependentUpon>
@@ -487,6 +505,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="iniss6f.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\GVDEditor.Entities.Language.datasource" />
     <None Include="Properties\DataSources\GVDEditor.Entities.Operator.datasource" />

@@ -31,18 +31,16 @@ namespace GVDEditor.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FTabTab));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.scText = new GVDEditor.Controls.MyScintilla();
             this.lbTabTabs = new System.Windows.Forms.ListBox();
-            this.conMenuLbTabs = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.conMenuLbTabs = new System.Windows.Forms.ContextMenuStrip();
             this.tsmiAddTabTab = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDeleteTabTab = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiRenameTabTab = new System.Windows.Forms.ToolStripMenuItem();
-            this.conMenuScText = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.conMenuScText = new System.Windows.Forms.ContextMenuStrip();
             this.tsmiSave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSaveAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
@@ -70,7 +68,7 @@ namespace GVDEditor.Forms
             this.tsbFindReplace = new System.Windows.Forms.ToolStripButton();
             this.tsbReformat = new System.Windows.Forms.ToolStripButton();
             this.acMenu = new AutocompleteMenuNS.AutocompleteMenu();
-            this.acImages = new System.Windows.Forms.ImageList(this.components);
+            this.acImages = new System.Windows.Forms.ImageList();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.tsslTabTabName = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -84,6 +82,7 @@ namespace GVDEditor.Forms
             this.tsslCol = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslPosText = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslPos = new System.Windows.Forms.ToolStripStatusLabel();
+            this.scText = new GVDEditor.Controls.MyScintilla();
             this.toolStripContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -118,17 +117,6 @@ namespace GVDEditor.Forms
             // 
             this.splitContainer1.Panel2.Controls.Add(this.lbTabTabs);
             resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
-            // 
-            // scText
-            // 
-            resources.ApplyResources(this.scText, "scText");
-            this.scText.Name = "scText";
-            this.scText.CharAdded += new System.EventHandler<ScintillaNET.CharAddedEventArgs>(this.scText_CharAdded);
-            this.scText.StyleNeeded += new System.EventHandler<ScintillaNET.StyleNeededEventArgs>(this.scText_StyleNeeded);
-            this.scText.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.scText_UpdateUI);
-            this.scText.TextChanged += new System.EventHandler(this.scText_TextChanged);
-            this.scText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.scText_KeyPress);
-            this.scText.MouseDown += new System.Windows.Forms.MouseEventHandler(this.scText_MouseDown);
             // 
             // lbTabTabs
             // 
@@ -482,6 +470,17 @@ namespace GVDEditor.Forms
             // 
             this.tsslPos.Name = "tsslPos";
             resources.ApplyResources(this.tsslPos, "tsslPos");
+            // 
+            // scText
+            // 
+            resources.ApplyResources(this.scText, "scText");
+            this.scText.Name = "scText";
+            this.scText.CharAdded += new System.EventHandler<ScintillaNET.CharAddedEventArgs>(this.scText_CharAdded);
+            this.scText.StyleNeeded += new System.EventHandler<ScintillaNET.StyleNeededEventArgs>(this.scText_StyleNeeded);
+            this.scText.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.scText_UpdateUI);
+            this.scText.TextChanged += new System.EventHandler(this.scText_TextChanged);
+            this.scText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.scText_KeyPress);
+            this.scText.MouseDown += new System.Windows.Forms.MouseEventHandler(this.scText_MouseDown);
             // 
             // FTabTab
             // 

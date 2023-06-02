@@ -136,7 +136,7 @@
     <value>tbDirIniss</value>
   </data>
   <data name="&gt;&gt;tbDirIniss.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbDirIniss.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -196,7 +196,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -442,7 +442,7 @@
     <value>Grafikon</value>
   </data>
   <data name="&gt;&gt;Grafikon.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Grafikon.Parent" xml:space="preserve">
     <value>$this</value>
@@ -466,7 +466,7 @@
     <value>tbDirName</value>
   </data>
   <data name="&gt;&gt;tbDirName.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbDirName.Parent" xml:space="preserve">
     <value>$this</value>
@@ -523,7 +523,7 @@
     <value>cbStationName</value>
   </data>
   <data name="&gt;&gt;cbStationName.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbStationName.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -583,7 +583,7 @@
     <value>bCreate</value>
   </data>
   <data name="&gt;&gt;bCreate.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bCreate.Parent" xml:space="preserve">
     <value>$this</value>
@@ -613,7 +613,7 @@
     <value>bZrusit</value>
   </data>
   <data name="&gt;&gt;bZrusit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bZrusit.Parent" xml:space="preserve">
     <value>$this</value>
@@ -643,7 +643,7 @@
     <value>rbNewObd</value>
   </data>
   <data name="&gt;&gt;rbNewObd.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbNewObd.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -673,7 +673,7 @@
     <value>rbNewStation</value>
   </data>
   <data name="&gt;&gt;rbNewStation.Type" xml:space="preserve">
-    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;rbNewStation.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -703,7 +703,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
     <value>$this</value>
@@ -727,7 +727,7 @@
     <value>bEditColor</value>
   </data>
   <data name="&gt;&gt;bEditColor.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExButton, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bEditColor.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -775,7 +775,7 @@
     <value>nudHlaseniePort</value>
   </data>
   <data name="&gt;&gt;nudHlaseniePort.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudHlaseniePort.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -877,7 +877,7 @@
     <value>nudTabPort</value>
   </data>
   <data name="&gt;&gt;nudTabPort.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudTabPort.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -901,7 +901,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
     <value>$this</value>
@@ -934,7 +934,7 @@
     <value>cbCustomStation</value>
   </data>
   <data name="&gt;&gt;cbCustomStation.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbCustomStation.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -958,7 +958,7 @@
     <value>nudIDStation</value>
   </data>
   <data name="&gt;&gt;nudIDStation.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nudIDStation.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -1042,7 +1042,7 @@
     <value>tbStationName</value>
   </data>
   <data name="&gt;&gt;tbStationName.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbStationName.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -1069,7 +1069,7 @@
     <value>dynamicLineSeparator1</value>
   </data>
   <data name="&gt;&gt;dynamicLineSeparator1.Type" xml:space="preserve">
-    <value>ExControls.ExLineSeparator, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExLineSeparator, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dynamicLineSeparator1.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -1099,7 +1099,7 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
     <value>$this</value>

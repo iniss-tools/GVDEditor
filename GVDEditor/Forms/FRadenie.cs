@@ -246,7 +246,7 @@ public partial class FRadenie : Form
         foreach (var fyzZvuk in _selectedSounds)
             soundsS.Add(GlobData.RawBankDir + "\\" + fyzZvuk.Language.RelativePath + fyzZvuk.Group.RelativePath + fyzZvuk.FileName);
 
-        var player = new WavPlayer(soundsS.ToArray(), GlobData.Config.PlayerWordPause);
+        var player = new WavPlayer(soundsS.ToArray(), GlobData.Config.PlayerSoundsOffset);
         player.StartPlay();
     }
 

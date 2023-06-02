@@ -277,10 +277,10 @@ public partial class FTabTab : Form
         sc.BeginUndoAction();
 
         foreach (var f in TabTabACItems.GetFunctionItems().Select(item => item.FunctionName))
-            sc.Text = sc.Text.ExReplace(f, f, StringComparison.CurrentCultureIgnoreCase);
+            sc.Text = sc.Text.Replace(f, f, StringComparison.CurrentCultureIgnoreCase);
 
         foreach (var c in TabTabACItems.GetConstantItems().Select(item => item.ConstName))
-            sc.Text = sc.Text.ExReplace(c, c, StringComparison.CurrentCultureIgnoreCase);
+            sc.Text = sc.Text.Replace(c, c, StringComparison.CurrentCultureIgnoreCase);
 
         AddSpaces("=");
         AddSpaces(@"\|\|");
