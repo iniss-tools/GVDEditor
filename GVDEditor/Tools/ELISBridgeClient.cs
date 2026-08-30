@@ -225,7 +225,9 @@ public sealed class ELISBridgeClient
 
         var validFrom = result.ValidFromDate;
         var validTo = result.ValidToDate;
-        var dateLimit = new DateLimit(validFrom, validTo);
+        
+        var dateLimit = new DateLimit(validFrom, validTo, insertMarks: false);
+        var saveCheck = new DateLimit(validFrom, validTo);
 
         foreach (var source in result.Trains)
         {
@@ -256,6 +258,8 @@ public sealed class ELISBridgeClient
                 Departure = ToTime(source.DepartureMinutes),
                 DateLimitText = dateLimit.BitArrayToText(ToBitArray(source.RunsBits, dateLimit.TotalDays))
             };
+
+            VerifyDateLimit(train, saveCheck);
 
             AddStations(source.StationsBefore, train.StaniceZoSmeru);
             AddStations(source.StationsAfter, train.StaniceDoSmeru);
@@ -314,6 +318,29 @@ public sealed class ELISBridgeClient
             else
                 for (var i = 0; i < variants.Count; i++)
                     variants[i].Variant = i + 1;
+        }
+    }
+
+    /// <summary>
+    ///     Overi, ze vygenerovane datumove obmedzenie sa da rozparsovat spat.
+    /// </summary>
+    /// <remarks>
+    ///     Ukladanie grafikonu (<c>TxtParser.WriteTrains</c>) prevadza <see cref="Train.DateLimitText" />
+    ///     spat na bitove pole. Ked to zlyha, spadne az ulozenie - teda dlho po importe a s chybou,
+    ///     ktora o vlaku nic nepovie. Radsej to zistime hned tu.
+    /// </remarks>
+    /// <exception cref="FormatException">ak sa text neda rozparsovat spat</exception>
+    private static void VerifyDateLimit(Train train, DateLimit saveCheck)
+    {
+        try
+        {
+            saveCheck.TextToBitArray(train.DateLimitText);
+        }
+        catch (Exception e)
+        {
+            throw new FormatException(
+                $"Vlak {train.Type} {train.Number} {train.Name} má dátumové obmedzenie, " +
+                $"ktoré sa nedá spracovať: \"{train.DateLimitText}\".", e);
         }
     }
 

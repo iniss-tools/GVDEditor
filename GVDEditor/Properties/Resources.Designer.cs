@@ -521,7 +521,36 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("FLocalSettings_Názov_priečinka_grafikonu_je_prázdny", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Názov priečinka grafikonu obsahuje nepovolený znak {0}..
+        /// </summary>
+        internal static string FLocalSettings_Názov_priečinka_grafikonu_obsahuje_nepovolený_znak {
+            get {
+                return ResourceManager.GetString("FLocalSettings_Názov_priečinka_grafikonu_obsahuje_nepovolený_znak", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Názov priečinka grafikonu nesmie končiť bodkou..
+        /// </summary>
+        internal static string FLocalSettings_Názov_priečinka_grafikonu_nesmie_končiť_bodkou {
+            get {
+                return ResourceManager.GetString("FLocalSettings_Názov_priečinka_grafikonu_nesmie_končiť_bodkou", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Priečinok grafikonu sa nepodarilo premenovať na {0}.
+        ///
+        ///{1}.
+        /// </summary>
+        internal static string FLocalSettings_Priečinok_grafikonu_sa_nepodarilo_premenovať {
+            get {
+                return ResourceManager.GetString("FLocalSettings_Priečinok_grafikonu_sa_nepodarilo_premenovať", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Nezadaný názov písma..
         /// </summary>

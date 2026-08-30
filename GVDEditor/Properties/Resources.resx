@@ -351,6 +351,17 @@ Pravdepodobne ste zabudli upraviť poradie stĺpcov.</value>
   <data name="FLocalSettings_Názov_priečinka_grafikonu_je_prázdny" xml:space="preserve">
     <value>Názov priečinka grafikonu je prázdny.</value>
   </data>
+  <data name="FLocalSettings_Názov_priečinka_grafikonu_obsahuje_nepovolený_znak" xml:space="preserve">
+    <value>Názov priečinka grafikonu obsahuje nepovolený znak {0}.</value>
+  </data>
+  <data name="FLocalSettings_Názov_priečinka_grafikonu_nesmie_končiť_bodkou" xml:space="preserve">
+    <value>Názov priečinka grafikonu nesmie končiť bodkou.</value>
+  </data>
+  <data name="FLocalSettings_Priečinok_grafikonu_sa_nepodarilo_premenovať" xml:space="preserve">
+    <value>Priečinok grafikonu sa nepodarilo premenovať na {0}.
+
+{1}</value>
+  </data>
   <data name="FMain_Priečinok_neobsahuje_všetky_potrebné_dáta" xml:space="preserve">
     <value>Priečinok neobsahuje všetky potrebné dáta.</value>
   </data>
