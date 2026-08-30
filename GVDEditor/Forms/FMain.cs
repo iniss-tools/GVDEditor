@@ -3,6 +3,7 @@ using ExControls;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
+using Iniss.Elis;
 using Microsoft.VisualBasic.FileIO;
 using ToolsCore;
 using ToolsCore.Entities;
@@ -35,6 +36,7 @@ public partial class FMain : Form
     private string _lastINISSStart;
     private GVDDirectory _newDir;
     private bool _prechod;
+    private bool _replaceTrainsOnImport;
     private GVDDirectory _previousSelectedGVD;
     private bool _removingGVD;
     private FWait _waitForm;
@@ -54,12 +56,6 @@ public partial class FMain : Form
         tsslTrainCountWithVariants.Font = GlobData.Config.Fonts.StateRow.Font;
 
         dgvTrains.RowHeadersVisible = GlobData.Config.ShowRowsHeader;
-
-        if (!GlobData.PrivateFeatures)
-        {
-            tsmiImportELIS.Visible = false;
-            tsmimImportELIS.Visible = false;
-        }
 
         SetShortcuts();
         SetColumns();
@@ -131,11 +127,26 @@ public partial class FMain : Form
 
     private void FMain_Load(object sender, EventArgs e)
     {
-        if (GlobData.Config.Startup == StartupType.LastProject)
+        AppRegistry.RegisterJumpList();
+        var args = Environment.GetCommandLineArgs().Skip(1);
+        string path = null;
+        foreach (var arg in args)
         {
-            var path = AppRegistry.GetLastProject();
-            if (!string.IsNullOrWhiteSpace(path)) 
-                OpenRecentProject(path);
+            if (!arg.StartsWith("/") && !arg.StartsWith("-"))
+            {
+                path = arg;
+            }
+        }
+
+        if (path != null)
+        {
+            OpenRecentProject(path);
+        }
+        else if (GlobData.Config.Startup == StartupType.LastProject)
+        {
+            var p = AppRegistry.GetLastProject();
+            if (!string.IsNullOrWhiteSpace(p)) 
+                OpenRecentProject(p);
         }
     }
 
@@ -424,20 +435,26 @@ public partial class FMain : Form
 
     private void ShowImportELIS()
     {
-        var fimport = new FELISOptions();
-        var result = fimport.ShowDialog();
-        if (result == DialogResult.OK)
-        {
-            var data = fimport.ResultOptions;
-            data.GVDInfo = ((GVDDirectory)tscbObdobie.ComboBox.SelectedItem).GVD;
-            data.Track = GlobData.Tracks.FirstOrDefault();
-            data.DefTrains = GlobData.Trains.ToList();
+        var gvdDir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem;
+        var gvd = gvdDir.GVD;
 
-            _error = false;
-            _waitForm = new FWait("Prebieha importovanie údajov...");
-            _waitForm.Show(this);
-            if (!bWorkerELIS.IsBusy) bWorkerELIS.RunWorkerAsync(data);
-        }
+        var fimport = new FELISImport(gvd.ThisStation.Name, GlobData.Trains.Count);
+        if (fimport.ShowDialog() != DialogResult.OK)
+            return;
+
+        var data = fimport.ResultOptions;
+        data.GVDInfo = gvd;
+        data.GVDPath = gvdDir.Dir.FullPath;
+        data.Track = GlobData.Tracks.FirstOrDefault();
+
+        //pri nahradeni sa existujuce vlaky zahodia, takze do cislovania variant nevstupuju
+        data.DefTrains = data.ReplaceTrains ? new List<Train>() : GlobData.Trains.ToList();
+
+        _replaceTrainsOnImport = data.ReplaceTrains;
+        _error = false;
+        _waitForm = new FWait("Prebieha importovanie údajov...");
+        _waitForm.Show(this);
+        if (!bWorkerELIS.IsBusy) bWorkerELIS.RunWorkerAsync(data);
     }
 
     private void ShowImportGVD()
@@ -1616,7 +1633,7 @@ public partial class FMain : Form
         if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
             try
             {
-                e.Result = CallELISParser(data);
+                e.Result = CallELISBridge(data);
             }
             catch (Exception exception)
             {
@@ -1631,22 +1648,49 @@ public partial class FMain : Form
                 return;
             }
         else
-            e.Result = CallELISParser(data);
+            e.Result = CallELISBridge(data);
 
         _error = false;
     }
 
-    private static List<Train> CallELISParser(SendData data)
+    /// <summary>
+    ///     Prva faza importu - nacita data z ELIS a zisti, ktore stanice sa nepodarilo priradit.
+    ///     Bezi na pozadi, takze sa tu nesmie nic pytat pouzivatela; priradenie stanic
+    ///     dokoncuje az <see cref="bWorkerELIS_RunWorkerCompleted" />.
+    /// </summary>
+    private static ElisImport CallELISBridge(SendData data)
     {
-        var parser = new ELISParser(data.Path, data.DefTrains, GlobData.TrainsTypes.ToList(), GlobData.Operators.ToList(), data.GVDInfo, data.Track)
+        var client = new ELISBridgeClient(GlobData.TrainsTypes.ToList(), GlobData.Operators.ToList(), data.GVDInfo, data.Track)
         {
+            AppDirectory = data.AppDirectory,
+            RegistrationNumber = data.RegistrationNumber,
+            DefinedTrains = data.DefTrains,
             OmitPassingTrains = data.OmitPassingTrains,
-            DefinedOperators = data.DefinedOperators,
-            DefinedDateLimits = data.DefinedDateLimits,
             ReorderTrains = data.ReorderTrains,
-            NewFormat = data.NewFormat
+            StationMap = TxtParser.ReadElisStationMap(data.GVDPath)
         };
-        return parser.ReadELISFile();
+
+        var elisData = client.LoadData();
+        return new ElisImport
+        {
+            Client = client,
+            Data = elisData,
+            Unresolved = client.FindUnresolvedStations(elisData),
+            GVDPath = data.GVDPath,
+            GVDInfo = data.GVDInfo
+        };
+    }
+
+    /// <summary>
+    ///     Medzivysledok importu z ELIS medzi vlaknom na pozadi a dokoncenim v GUI.
+    /// </summary>
+    internal sealed class ElisImport
+    {
+        public ELISBridgeClient Client { get; set; }
+        public ElisResult Data { get; set; }
+        public List<string> Unresolved { get; set; }
+        public string GVDPath { get; set; }
+        public GVDInfo GVDInfo { get; set; }
     }
 
     private void bWorkerELIS_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -1656,11 +1700,79 @@ public partial class FMain : Form
 
         if (!_error)
         {
-            var imported = (List<Train>)e.Result;
+            var import = (ElisImport)e.Result;
+
+            //stanice, ktore ELIS pomenuva inak, doriesi pouzivatel - a volba sa zapamata
+            if (import.Unresolved.Count != 0 && !ResolveStations(import))
+            {
+                _replaceTrainsOnImport = false;
+                return;
+            }
+
+            List<Train> imported;
+            try
+            {
+                imported = import.Client.Convert(import.Data);
+            }
+            catch (Exception exception)
+            {
+                Log.Exception(exception);
+                Utils.ShowError(exception.Message);
+                _replaceTrainsOnImport = false;
+                return;
+            }
+
+            if (_replaceTrainsOnImport)
+                RemoveAllTrains();
+
             foreach (var train in imported) GlobData.Trains.Add(train);
+            GlobData.Trains.ResetBindings();
 
             DataSaved = false;
         }
+
+        _replaceTrainsOnImport = false;
+    }
+
+    /// <summary>
+    ///     Necha pouzivatela priradit stanice, ktore sa nepodarilo rozpoznat automaticky,
+    ///     a priradenie ulozi do grafikonu.
+    /// </summary>
+    /// <returns><see langword="false" />, ak pouzivatel import zrusil.</returns>
+    private bool ResolveStations(ElisImport import)
+    {
+        var dialog = new FELISStations(import.Unresolved);
+        if (dialog.ShowDialog(this) != DialogResult.OK)
+            return false;
+
+        foreach (var pair in dialog.Result)
+            import.Client.StationMap[pair.Key] = pair.Value;
+
+        try
+        {
+            TxtParser.WriteElisStationMap(import.GVDPath, import.Client.StationMap, import.GVDInfo);
+        }
+        catch (Exception e)
+        {
+            //ulozenie priradenia nie je kriticke - import moze pokracovat, len sa nabuduce spyta znova
+            Log.Exception(e);
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    ///     Odstrani vsetky vlaky grafikonu aj texty tabul, ktore sa na ne odvolavaju.
+    /// </summary>
+    private void RemoveAllTrains()
+    {
+        if (!GlobData.Config.AutoTableText)
+            foreach (var train in GlobData.Trains)
+                DeleteTTexts(train);
+
+        _prechod = true;
+        GlobData.Trains.Clear();
+        _prechod = false;
     }
 
     private static void DeleteTTexts(Train vlak)
@@ -1852,14 +1964,19 @@ public partial class FMain : Form
 
     internal class SendData
     {
-        public string Path { get; set; }
+        /// <summary>
+        ///     Predvolene umiestnenie aplikacie Cestovne poriadky.
+        /// </summary>
+        public const string DefaultElisDirectory = @"C:\Program Files (x86)\Cestovné poriadky";
+
+        public string AppDirectory { get; set; }
+        public string RegistrationNumber { get; set; }
+        public string GVDPath { get; set; }
         public List<Train> DefTrains { get; set; }
         public GVDInfo GVDInfo { get; set; }
         public Track Track { get; set; }
         public bool OmitPassingTrains { get; set; }
         public bool ReorderTrains { get; set; }
-        public bool DefinedOperators { get; set; }
-        public bool DefinedDateLimits { get; set; }
-        public bool NewFormat { get; set; }
+        public bool ReplaceTrains { get; set; }
     }
 }

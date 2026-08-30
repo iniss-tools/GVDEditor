@@ -45,6 +45,7 @@ Source: "{#SourcePath}\bin\Release\ExControls.dll"; DestDir: "{app}"; Flags: ign
 Source: "{#SourcePath}\bin\Release\ExControls.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SourcePath}\bin\Release\GVDEditor.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SourcePath}\bin\Release\GVDEditor.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourcePath}\bin\Release\ELISBridge.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SourcePath}\bin\Release\ScintillaNET.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SourcePath}\bin\Release\ToolsCore.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#SourcePath}\bin\Release\ToolsCore.pdb"; DestDir: "{app}"; Flags: ignoreversion

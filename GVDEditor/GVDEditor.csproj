@@ -99,6 +99,9 @@
     <Reference Include="AutocompleteMenu-ScintillaNET, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoCompleteMenu-ScintillaNET.1.6.2\lib\net461\AutocompleteMenu-ScintillaNET.dll</HintPath>
     </Reference>
+    <Reference Include="JetBrains.Annotations, Version=4242.42.42.42, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\JetBrains.Annotations.2026.2.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -199,11 +202,17 @@
     <Compile Include="Forms\FColumnTypeSelect.Designer.cs">
       <DependentUpon>FColumnTypeSelect.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FELISOptions.cs">
+    <Compile Include="Forms\FELISImport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FELISOptions.Designer.cs">
-      <DependentUpon>FELISOptions.cs</DependentUpon>
+    <Compile Include="Forms\FELISImport.Designer.cs">
+      <DependentUpon>FELISImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FELISStations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FELISStations.Designer.cs">
+      <DependentUpon>FELISStations.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FImportData.cs">
       <SubType>Form</SubType>
@@ -235,7 +244,6 @@
     <Compile Include="XML\StartupINISS.cs" />
     <Compile Include="XML\GVDEditorStyle.cs" />
     <Compile Include="XML\TrainTypeColumnScheme.cs" />
-    <Compile Include="Tools\ElisParser.cs" />
     <Compile Include="Tools\DateLimit.cs" />
     <Compile Include="LinkConsts.cs" />
     <Compile Include="Tools\TabTabACItems.cs" />
@@ -325,6 +333,10 @@
       <DependentUpon>FWait.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\TxtParser.cs" />
+    <Compile Include="Tools\ELISBridgeClient.cs" />
+    <Compile Include="..\ELISBridge\ElisData.cs">
+      <Link>Tools\ElisData.cs</Link>
+    </Compile>
     <Compile Include="Entities\Operator.cs" />
     <Compile Include="Entities\TrainType.cs" />
     <Compile Include="Entities\Track.cs" />
@@ -396,9 +408,6 @@
     <EmbeddedResource Include="Forms\FEditTrain.cs.resx">
       <DependentUpon>FEditTrain.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FELISOptions.resx">
-      <DependentUpon>FELISOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FGlobalSettings.cs.resx">
       <DependentUpon>FGlobalSettings.cs</DependentUpon>
@@ -575,4 +584,16 @@ move *.xml ".\lib"
 rmdir "lib\cs\" /s /q
 move cs ".\lib"</PostBuildEvent>
   </PropertyGroup>
+  <!-- ELISBridge je samostatny x86 proces (TT.dll je 32-bitova), preto sa nelinkuje
+       ako referencia, ale iba zostavi a skopiruje vedla GVDEditor.exe. -->
+  <Target Name="BuildELISBridge" BeforeTargets="Build">
+    <MSBuild Projects="..\ELISBridge\ELISBridge.csproj" Targets="Build" Properties="Configuration=$(Configuration)" />
+  </Target>
+  <Target Name="CopyELISBridge" AfterTargets="Build">
+    <ItemGroup>
+      <ELISBridgeOutput Include="..\ELISBridge\bin\$(Configuration)\ELISBridge.exe" />
+      <ELISBridgeOutput Include="..\ELISBridge\bin\$(Configuration)\ELISBridge.pdb" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ELISBridgeOutput)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" ContinueOnError="true" />
+  </Target>
 </Project>

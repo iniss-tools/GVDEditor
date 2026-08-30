@@ -103,8 +103,8 @@ internal partial class FDateLimitEdit : Form
 
         dgvCalendar.RowTemplate.Height = TextRenderer.MeasureText("Čý", dgvCalendar.Font).Height + 3;
         dgvCalendar.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-        for (var i = 1; i <= 37; i++)
+        
+        for (var i = 1; i <= 38; i++)
         {
             var dayofweek = (DayOfWeek)(i % 7);
             var dayCol = new CalendarCellColumn();
