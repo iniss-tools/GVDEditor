@@ -207,9 +207,12 @@ public partial class FLocalSettings : Form
 
     private void bDirChange_Click(object sender, EventArgs e)
     {
-        var dirname = tbDirName.Text;
+        //názov ide priamo do cesty, takže sa musí overiť skôr, než sa s ním čokoľvek spraví
+        var dirname = tbDirName.Text.Trim();
+        tbDirName.Text = dirname;
+
         var oldFullPath = ThisDir.Dir.FullPath;
-        var fullpath = GlobData.DataDir + Path.DirectorySeparatorChar + tbDirName.Text;
+        var fullpath = GlobData.DataDir + Path.DirectorySeparatorChar + dirname;
 
         if (string.IsNullOrEmpty(dirname))
         {
@@ -218,27 +221,54 @@ public partial class FLocalSettings : Form
             return;
         }
 
-        if (Directory.Exists(fullpath))
+        var invalidIndex = dirname.IndexOfAny(Path.GetInvalidFileNameChars());
+        if (invalidIndex != -1)
+        {
+            Utils.ShowError(string.Format(Resources.FLocalSettings_Názov_priečinka_grafikonu_obsahuje_nepovolený_znak,
+                $"'{dirname[invalidIndex]}'"));
+            DialogResult = DialogResult.None;
+            return;
+        }
+
+        //Windows koncovú bodku z názvu priečinka ticho zahodí - priečinok na disku by sa potom
+        //volal inak, než čo je zapísané v DIRLIST.txt, a grafikon by sa nabudúce nenašiel
+        if (dirname.EndsWith(".", StringComparison.Ordinal))
+        {
+            Utils.ShowError(Resources.FLocalSettings_Názov_priečinka_grafikonu_nesmie_končiť_bodkou);
+            DialogResult = DialogResult.None;
+            return;
+        }
+
+        //nezmenený názov - nie je čo presúvať
+        if (string.Equals(fullpath, oldFullPath, StringComparison.Ordinal))
+            return;
+
+        //zmena len vo veľkosti písmen je na Windowse platné premenovanie,
+        //hoci Directory.Exists na taký názov vráti true
+        var onlyCaseChanged = string.Equals(fullpath, oldFullPath, StringComparison.OrdinalIgnoreCase);
+
+        if (!onlyCaseChanged && Directory.Exists(fullpath))
         {
             Utils.ShowError(Resources.Priečinok_s_týmto_názvom_už_existuje__Zmeňte_jeho_názov);
             DialogResult = DialogResult.None;
             return;
         }
 
+        try
+        {
+            Directory.Move(oldFullPath, fullpath);
+        }
+        catch (Exception exception)
+        {
+            Log.Exception(exception);
+            Utils.ShowError(string.Format(Resources.FLocalSettings_Priečinok_grafikonu_sa_nepodarilo_premenovať,
+                dirname, exception.Message));
+            DialogResult = DialogResult.None;
+            return;
+        }
+        
         ThisDir.Dir.DirName = dirname;
         ThisDir.Dir.FullPath = fullpath;
-
-        Directory.CreateDirectory(fullpath);
-
-        var files = Directory.GetFiles(oldFullPath, "*.*", SearchOption.AllDirectories).ToList();
-
-        foreach (var file in files)
-        {
-            var mFile = new FileInfo(file);
-            mFile.MoveTo(Utils.CombinePath(fullpath, mFile.Name));
-        }
-
-        Directory.Delete(oldFullPath);
 
         var dirlist = FMain.ObdobiaList.Select(gvd => gvd.Dir).ToList();
         TxtParser.WriteDirList(dirlist);
