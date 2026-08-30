@@ -475,9 +475,6 @@ Pravděpodobně jste zapomněli upravit pořadí sloupců. </value>
 
 Mám ji nuceně vypnout? </value>
   </data>
-  <data name="FELISOptions_Zadaný_súbor_neexistuje" xml:space="preserve">
-    <value>Zadaný soubor neexistuje.</value>
-  </data>
   <data name="FRenameStyle_Neplatný_nový_názov_štýlu" xml:space="preserve">
     <value>Neplatný nový název stylu.</value>
   </data>
@@ -510,5 +507,11 @@ Mám ji nuceně vypnout? </value>
   </data>
   <data name="AboutAppDescription" xml:space="preserve">
     <value>Tento program slouží pro úpravu textových souborů, které používá program INISS. Program GEditor není oficiální aplikace společnosti CHAPS ani společnosti INPROP.</value>
+  </data>
+  <data name="FELISStations_bCreate_Click_Najprv_vyberte_riadky__pre_ktoré_sa_má_založiť_nová_stanica_" xml:space="preserve">
+    <value>Nejprve vyberte řádky, pro které se má založit nová stanice.</value>
+  </data>
+  <data name="FELISStations_FELISStations_Týchto__0__staníc_z_programu_ELIS_sa_nepodarilo_priradiť_automaticky" xml:space="preserve">
+    <value>Těchto {0} stanic z programu ELIS se nepodařilo přiřadit automaticky. Přiřaďte je ke stávajícím stanicím, nebo je vynechejte. Volba se uloží a při dalším importu stejných stanic se již program ptát nebude.</value>
   </data>
 </root>

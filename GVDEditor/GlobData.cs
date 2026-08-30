@@ -58,8 +58,6 @@ internal static class GlobData
     public static Styles<GVDEditorStyle> Styles;
     public static GVDEditorStyle UsingStyle;
 
-    public static bool PrivateFeatures { get; set; }
-
     public static void PrepareGlobalData(string pathtoiniss)
     {
         Trains.FireEventOnSort = true;

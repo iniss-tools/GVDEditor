@@ -19,9 +19,7 @@ internal static class Program
     {
         GlobSettings.LinkUpdater = "http://iniss.6f.sk/gvdeditor-updater/update.txt";
         AppInit.Initialization(out GlobData.Config, out GlobData.Styles, out GlobData.UsingStyle);
-
-        if (args.Length == 1 && (args[0] == "-unlock" || args[0] == "/unlock")) 
-            GlobData.PrivateFeatures = true;
+        
         DateLimit.Loc = GlobData.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
 
         MainForm = new FMain();

@@ -452,9 +452,6 @@ Upraviť dátumové obmedzenie popísaného vlaku?</value>
 
 Mám ju nútene vypnúť ?</value>
   </data>
-  <data name="FELISOptions_Zadaný_súbor_neexistuje" xml:space="preserve">
-    <value>Zadaný súbor neexistuje.</value>
-  </data>
   <data name="FEditTrain_Číslo_vlaku_sa_zhoduje_s_iným_vlakom_a_preto_bude_aj_jeho_radenie_priradené_k_tomuto_vlaku" xml:space="preserve">
     <value>Číslo vlaku sa zhoduje s iným vlakom a preto bude aj jeho radenie priradené k tomuto vlaku (Doteraz upravené radenie sa vymaže).</value>
   </data>
@@ -536,5 +533,11 @@ Mám ju nútene vypnúť ?</value>
   <data name="AboutAppDescription" xml:space="preserve">
     <value>Tento program slúži na úpravu textových súborov, ktoré používa program INISS. 
 Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnosti INPROP.</value>
+  </data>
+  <data name="FELISStations_bCreate_Click_Najprv_vyberte_riadky__pre_ktoré_sa_má_založiť_nová_stanica_" xml:space="preserve">
+    <value>Najprv vyberte riadky, pre ktoré sa má založiť nová stanica.</value>
+  </data>
+  <data name="FELISStations_FELISStations_Týchto__0__staníc_z_programu_ELIS_sa_nepodarilo_priradiť_automaticky" xml:space="preserve">
+    <value>Týchto {0} staníc z programu ELIS sa nepodarilo priradiť automaticky. Priraďte ich k existujúcim staniciam, alebo ich vynechajte. Voľba sa uloží a pri ďalšom importe rovnakých staníc sa už program pýtať nebude.</value>
   </data>
 </root>
