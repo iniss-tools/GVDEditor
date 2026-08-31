@@ -36,7 +36,6 @@ public partial class FMain : Form
     private string _lastINISSStart;
     private GVDDirectory _newDir;
     private bool _prechod;
-    private bool _replaceTrainsOnImport;
     private GVDDirectory _previousSelectedGVD;
     private bool _removingGVD;
     private FWait _waitForm;
@@ -339,21 +338,39 @@ public partial class FMain : Form
         {
             var dir = _previousSelectedGVD;
 
-            if (GlobData.Config.AutoTableText) 
+            if (GlobData.Config.AutoTableText)
                 GenerateTableTextWhileSaving(dir);
 
-            TxtParser.WriteTrains(dir.Dir.FullPath, GlobData.Trains, dir.GVD, GlobData.ReportVariants);
-            TxtParser.WriteRazeni1(dir.Dir.FullPath, GlobData.Radenia, GlobData.LocalLanguages);
-            
-            TxtParser.WriteTables(dir.Dir.FullPath, GlobData.TabTabs, GlobData.TableCatalogs, GlobData.TablePhysicals, GlobData.TableLogicals);
-            TxtParser.WriteTTexts(dir.Dir.FullPath, GlobData.TableTexts);
-            TxtParser.WriteTracks(dir.Dir.FullPath, GlobData.Tracks);
-            TxtParser.WriteInfoGVD(dir.Dir.FullPath, dir.GVD);
-            TxtParser.WriteOperators(dir.Dir.FullPath, GlobData.Operators);
-            TxtParser.WriteModeTabs(dir.Dir.FullPath, GlobData.TableFonts, GlobData.TableFontDir);
-            TxtParser.WriteLocalCategori(dir.Dir.FullPath, GlobData.ReportVariants, GlobData.ReportTypes, GlobData.LocalLanguages);
-            TxtParser.WriteCustomStations(dir.Dir.FullPath, GlobData.CustomStations, dir.GVD);
+            //ukladanie zapisuje pätnásť súborov po sebe; keby niektorý zápis zlyhal, zvyšok
+            //by ostal v pôvodnom stave a grafikon by sa pri ďalšom otvorení hlásil ako chybný
+            var transaction = new FileTransaction(dir.Dir.FullPath);
+            try
+            {
+                TxtParser.WriteTrains(dir.Dir.FullPath, GlobData.Trains, dir.GVD, GlobData.ReportVariants);
+                TxtParser.WriteRazeni1(dir.Dir.FullPath, GlobData.Radenia, GlobData.LocalLanguages);
 
+                TxtParser.WriteTables(dir.Dir.FullPath, GlobData.TabTabs, GlobData.TableCatalogs, GlobData.TablePhysicals, GlobData.TableLogicals);
+                TxtParser.WriteTTexts(dir.Dir.FullPath, GlobData.TableTexts);
+                TxtParser.WriteTracks(dir.Dir.FullPath, GlobData.Tracks);
+                TxtParser.WriteInfoGVD(dir.Dir.FullPath, dir.GVD);
+                TxtParser.WriteOperators(dir.Dir.FullPath, GlobData.Operators);
+                TxtParser.WriteModeTabs(dir.Dir.FullPath, GlobData.TableFonts, GlobData.TableFontDir);
+                TxtParser.WriteLocalCategori(dir.Dir.FullPath, GlobData.ReportVariants, GlobData.ReportTypes, GlobData.LocalLanguages);
+                TxtParser.WriteCustomStations(dir.Dir.FullPath, GlobData.CustomStations, dir.GVD);
+            }
+            catch (Exception exception)
+            {
+                Log.Exception(exception);
+
+                var message = transaction.TryRollback()
+                    ? string.Format(Resources.FMain_Uloženie_grafikonu_zlyhalo_zmeny_boli_vrátené, exception.Message)
+                    : string.Format(Resources.FMain_Uloženie_grafikonu_zlyhalo_a_nepodarilo_sa_obnoviť, exception.Message,
+                        transaction.BackupPath);
+
+                throw new InvalidOperationException(message, exception);
+            }
+
+            transaction.Commit();
             DataSaved = true;
         }
     }
@@ -450,7 +467,6 @@ public partial class FMain : Form
         //pri nahradeni sa existujuce vlaky zahodia, takze do cislovania variant nevstupuju
         data.DefTrains = data.ReplaceTrains ? new List<Train>() : GlobData.Trains.ToList();
 
-        _replaceTrainsOnImport = data.ReplaceTrains;
         _error = false;
         _waitForm = new FWait("Prebieha importovanie údajov...");
         _waitForm.Show(this);
@@ -1677,7 +1693,8 @@ public partial class FMain : Form
             Data = elisData,
             Unresolved = client.FindUnresolvedStations(elisData),
             GVDPath = data.GVDPath,
-            GVDInfo = data.GVDInfo
+            GVDInfo = data.GVDInfo,
+            ReplaceTrains = data.ReplaceTrains
         };
     }
 
@@ -1691,6 +1708,13 @@ public partial class FMain : Form
         public List<string> Unresolved { get; set; }
         public string GVDPath { get; set; }
         public GVDInfo GVDInfo { get; set; }
+
+        /// <summary>
+        ///     Ci sa maju povodne vlaky pred pridanim naimportovanych odstranit. Nesie sa
+        ///     spolu s vysledkom, nie v poli formulara - stav okolo asynchronneho behu
+        ///     sa lahko stratí a chyba by sa prejavila az tichym nenahradenim vlakov.
+        /// </summary>
+        public bool ReplaceTrains { get; set; }
     }
 
     private void bWorkerELIS_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -1704,10 +1728,7 @@ public partial class FMain : Form
 
             //stanice, ktore ELIS pomenuva inak, doriesi pouzivatel - a volba sa zapamata
             if (import.Unresolved.Count != 0 && !ResolveStations(import))
-            {
-                _replaceTrainsOnImport = false;
                 return;
-            }
 
             List<Train> imported;
             try
@@ -1718,20 +1739,23 @@ public partial class FMain : Form
             {
                 Log.Exception(exception);
                 Utils.ShowError(exception.Message);
-                _replaceTrainsOnImport = false;
                 return;
             }
 
-            if (_replaceTrainsOnImport)
+            var removed = 0;
+            if (import.ReplaceTrains)
+            {
+                removed = GlobData.Trains.Count;
                 RemoveAllTrains();
+            }
 
             foreach (var train in imported) GlobData.Trains.Add(train);
             GlobData.Trains.ResetBindings();
 
             DataSaved = false;
-        }
 
-        _replaceTrainsOnImport = false;
+            Utils.ShowInfo(string.Format(Resources.FMain_Import_z_ELIS_dokončený, removed, imported.Count));
+        }
     }
 
     /// <summary>

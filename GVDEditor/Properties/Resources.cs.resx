@@ -426,6 +426,24 @@ Opravdu chcete provést tuto akci? </value>
 
 {1}</value>
   </data>
+  <data name="FMain_Uloženie_grafikonu_zlyhalo_zmeny_boli_vrátené" xml:space="preserve">
+    <value>Uložení grafikonu selhalo, žádné změny se neuložily. Grafikon zůstal v původním stavu.
+
+{0}</value>
+  </data>
+  <data name="FMain_Uloženie_grafikonu_zlyhalo_a_nepodarilo_sa_obnoviť" xml:space="preserve">
+    <value>Uložení grafikonu selhalo a původní stav se nepodařilo obnovit. Data ve složce grafikonu mohou být nekonzistentní.
+
+Záloha původních souborů: {1}
+
+{0}</value>
+  </data>
+  <data name="FMain_Import_z_ELIS_dokončený" xml:space="preserve">
+    <value>Import z programu ELIS dokončen.
+
+Odstraněných původních vlaků: {0}
+Naimportovaných vlaků: {1}</value>
+  </data>
   <data name="FGlobalSettings_Naozaj_chcete_odstrániť_tento_grafikon" xml:space="preserve">
     <value>Opravdu chcete odstranit tento grafikon?</value>
   </data>

@@ -362,6 +362,24 @@ Pravdepodobne ste zabudli upraviť poradie stĺpcov.</value>
 
 {1}</value>
   </data>
+  <data name="FMain_Uloženie_grafikonu_zlyhalo_zmeny_boli_vrátené" xml:space="preserve">
+    <value>Uloženie grafikonu zlyhalo, žiadne zmeny sa neuložili. Grafikon zostal v pôvodnom stave.
+
+{0}</value>
+  </data>
+  <data name="FMain_Uloženie_grafikonu_zlyhalo_a_nepodarilo_sa_obnoviť" xml:space="preserve">
+    <value>Uloženie grafikonu zlyhalo a pôvodný stav sa nepodarilo obnoviť. Dáta v priečinku grafikonu môžu byť nekonzistentné.
+
+Záloha pôvodných súborov: {1}
+
+{0}</value>
+  </data>
+  <data name="FMain_Import_z_ELIS_dokončený" xml:space="preserve">
+    <value>Import z programu ELIS dokončený.
+
+Odstránených pôvodných vlakov: {0}
+Naimportovaných vlakov: {1}</value>
+  </data>
   <data name="FMain_Priečinok_neobsahuje_všetky_potrebné_dáta" xml:space="preserve">
     <value>Priečinok neobsahuje všetky potrebné dáta.</value>
   </data>

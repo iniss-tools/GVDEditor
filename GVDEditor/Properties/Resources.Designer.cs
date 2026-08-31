@@ -552,6 +552,36 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Import z programu ELIS dokončený.
+        ///
+        ///Odstránených pôvodných vlakov: {0}
+        ///Naimportovaných vlakov: {1}.
+        /// </summary>
+        internal static string FMain_Uloženie_grafikonu_zlyhalo_zmeny_boli_vrátené {
+            get {
+                return ResourceManager.GetString("FMain_Uloženie_grafikonu_zlyhalo_zmeny_boli_vrátené", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Uloženie grafikonu zlyhalo a pôvodný stav sa nepodarilo obnoviť....
+        /// </summary>
+        internal static string FMain_Uloženie_grafikonu_zlyhalo_a_nepodarilo_sa_obnoviť {
+            get {
+                return ResourceManager.GetString("FMain_Uloženie_grafikonu_zlyhalo_a_nepodarilo_sa_obnoviť", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Import z programu ELIS dokončený....
+        /// </summary>
+        internal static string FMain_Import_z_ELIS_dokončený {
+            get {
+                return ResourceManager.GetString("FMain_Import_z_ELIS_dokončený", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Nezadaný názov písma..
         /// </summary>
         internal static string FLocalSettings_Nezadaný_názov_písma {
