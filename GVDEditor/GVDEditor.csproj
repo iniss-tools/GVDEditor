@@ -334,6 +334,7 @@
     </Compile>
     <Compile Include="Tools\TxtParser.cs" />
     <Compile Include="Tools\ELISBridgeClient.cs" />
+    <Compile Include="Tools\FileTransaction.cs" />
     <Compile Include="..\ELISBridge\ElisData.cs">
       <Link>Tools\ElisData.cs</Link>
     </Compile>
