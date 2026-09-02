@@ -44,48 +44,48 @@ namespace GVDEditor.Forms
             this.tbReg = new ExControls.ExTextBox();
             this.exGroupBox1.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // cbSkipPassingTrains
-            //
+            // 
             resources.ApplyResources(this.cbSkipPassingTrains, "cbSkipPassingTrains");
             this.cbSkipPassingTrains.BoxBackColor = System.Drawing.Color.White;
             this.cbSkipPassingTrains.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cbSkipPassingTrains.Name = "cbSkipPassingTrains";
             this.cbSkipPassingTrains.UseVisualStyleBackColor = true;
-            //
+            // 
             // cbReorder
-            //
+            // 
             resources.ApplyResources(this.cbReorder, "cbReorder");
             this.cbReorder.BoxBackColor = System.Drawing.Color.White;
             this.cbReorder.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cbReorder.Name = "cbReorder";
             this.cbReorder.UseVisualStyleBackColor = true;
-            //
+            // 
             // cbReplace
-            //
+            // 
             resources.ApplyResources(this.cbReplace, "cbReplace");
             this.cbReplace.BoxBackColor = System.Drawing.Color.White;
             this.cbReplace.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cbReplace.Name = "cbReplace";
             this.cbReplace.UseVisualStyleBackColor = true;
-            //
+            // 
             // bImport
-            //
+            // 
             resources.ApplyResources(this.bImport, "bImport");
             this.bImport.Name = "bImport";
             this.bImport.UseVisualStyleBackColor = true;
             this.bImport.Click += new System.EventHandler(this.bImport_Click);
-            //
+            // 
             // bStorno
-            //
+            // 
             resources.ApplyResources(this.bStorno, "bStorno");
             this.bStorno.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.bStorno.Name = "bStorno";
             this.bStorno.UseVisualStyleBackColor = true;
             this.bStorno.Click += new System.EventHandler(this.bStorno_Click);
-            //
+            // 
             // tbAppPath
-            //
+            // 
             resources.ApplyResources(this.tbAppPath, "tbAppPath");
             this.tbAppPath.BorderColor = System.Drawing.Color.DimGray;
             this.tbAppPath.DisabledBackColor = System.Drawing.SystemColors.Control;
@@ -95,9 +95,9 @@ namespace GVDEditor.Forms
             this.tbAppPath.HintForeColor = System.Drawing.SystemColors.GrayText;
             this.tbAppPath.HintText = null;
             this.tbAppPath.Name = "tbAppPath";
-            //
+            // 
             // exGroupBox1
-            //
+            // 
             resources.ApplyResources(this.exGroupBox1, "exGroupBox1");
             this.exGroupBox1.Controls.Add(this.cbReplace);
             this.exGroupBox1.Controls.Add(this.cbReorder);
@@ -105,31 +105,31 @@ namespace GVDEditor.Forms
             this.exGroupBox1.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.exGroupBox1.Name = "exGroupBox1";
             this.exGroupBox1.TabStop = false;
-            //
+            // 
             // bBrowse
-            //
+            // 
             resources.ApplyResources(this.bBrowse, "bBrowse");
             this.bBrowse.Name = "bBrowse";
             this.bBrowse.UseVisualStyleBackColor = true;
             this.bBrowse.Click += new System.EventHandler(this.bBrowse_Click);
-            //
+            // 
             // label1
-            //
+            // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            //
+            // 
             // lStation
-            //
+            // 
             resources.ApplyResources(this.lStation, "lStation");
             this.lStation.Name = "lStation";
-            //
+            // 
             // lReg
-            //
+            // 
             resources.ApplyResources(this.lReg, "lReg");
             this.lReg.Name = "lReg";
-            //
+            // 
             // tbReg
-            //
+            // 
             resources.ApplyResources(this.tbReg, "tbReg");
             this.tbReg.BorderColor = System.Drawing.Color.DimGray;
             this.tbReg.DisabledBackColor = System.Drawing.SystemColors.Control;
@@ -139,11 +139,11 @@ namespace GVDEditor.Forms
             this.tbReg.HintForeColor = System.Drawing.SystemColors.GrayText;
             this.tbReg.HintText = null;
             this.tbReg.Name = "tbReg";
-            //
+            // 
             // FELISImport
-            //
-            resources.ApplyResources(this, "$this");
+            // 
             this.AcceptButton = this.bImport;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bStorno;
             this.Controls.Add(this.tbReg);
@@ -164,7 +164,6 @@ namespace GVDEditor.Forms
             this.exGroupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

@@ -118,107 +118,246 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 9</value>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>829, 493</value>
   </data>
-  <data name="lInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 46</value>
+  <data name="&gt;&gt;bSkipAll.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dgvStations.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bStorno.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dgvStations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 89</value>
+  </data>
+  <data name="&gt;&gt;dgvStations.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="lInfo.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="lInfo.Text" xml:space="preserve">
-    <value>Stanice z programu ELIS</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bSkipAll.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
   </data>
-  <data name="dgvStations.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 58</value>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
   </data>
-  <data name="dgvStations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 320</value>
+  <data name="&gt;&gt;dgvStations.Name" xml:space="preserve">
+    <value>dgvStations</value>
   </data>
-  <data name="dgvStations.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="colElis.HeaderText" xml:space="preserve">
-    <value>Názov v programe ELIS</value>
-  </data>
-  <data name="colElis.Width" type="System.Int32, mscorlib">
-    <value>250</value>
-  </data>
-  <data name="colStation.HeaderText" xml:space="preserve">
-    <value>Priradiť k stanici grafikonu</value>
-  </data>
-  <data name="colStation.Width" type="System.Int32, mscorlib">
-    <value>320</value>
-  </data>
-  <data name="bCreate.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bCreate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 388</value>
-  </data>
-  <data name="bCreate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 25</value>
-  </data>
-  <data name="bCreate.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="bCreate.Text" xml:space="preserve">
-    <value>Založiť nové stanice z označených</value>
-  </data>
-  <data name="bSkipAll.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bSkipAll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 388</value>
-  </data>
-  <data name="bSkipAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 25</value>
-  </data>
-  <data name="bSkipAll.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="lInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>900, 71</value>
   </data>
   <data name="bSkipAll.Text" xml:space="preserve">
     <value>Vynechať všetky</value>
   </data>
-  <data name="bOK.AutoSize" type="System.Boolean, mscorlib">
+  <data name="bOK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="bSkipAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 597</value>
+  </data>
+  <data name="bCreate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="bOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>454, 388</value>
+    <value>681, 597</value>
   </data>
-  <data name="bOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>9, 20</value>
   </data>
-  <data name="bOK.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="&gt;&gt;bSkipAll.Name" xml:space="preserve">
+    <value>bSkipAll</value>
   </data>
-  <data name="bOK.Text" xml:space="preserve">
-    <value>Pokračovať</value>
+  <data name="dgvStations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>900, 492</value>
   </data>
-  <data name="bStorno.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="bCreate.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>537, 388</value>
+  <data name="colStation.HeaderText" xml:space="preserve">
+    <value>Priradiť k stanici grafikonu</value>
+  </data>
+  <data name="&gt;&gt;lInfo.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;bOK.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>112, 38</value>
+  </data>
+  <data name="lInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 14</value>
+  </data>
+  <data name="&gt;&gt;bOK.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <data name="bSkipAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 38</value>
+  </data>
+  <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
+    <value>806, 597</value>
+  </data>
+  <data name="&gt;&gt;dgvStations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colElis.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bOK.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="bStorno.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="&gt;&gt;bSkipAll.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bStorno.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="colElis.HeaderText" xml:space="preserve">
+    <value>Názov v programe ELIS</value>
+  </data>
+  <data name="bCreate.Text" xml:space="preserve">
+    <value>Založiť nové stanice z označených</value>
+  </data>
+  <data name="&gt;&gt;bCreate.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bCreate.Name" xml:space="preserve">
+    <value>bCreate</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bSkipAll.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;bCreate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bStorno.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;bStorno.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="bOK.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bOK.Text" xml:space="preserve">
+    <value>Pokračovať</value>
+  </data>
+  <data name="lInfo.Text" xml:space="preserve">
+    <value>Stanice z programu ELIS</value>
+  </data>
+  <data name="bSkipAll.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 38</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="dgvStations.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
   <data name="bStorno.Text" xml:space="preserve">
     <value>Zrušiť import</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="&gt;&gt;lInfo.Name" xml:space="preserve">
+    <value>lInfo</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>624, 425</value>
+  <data name="bOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="lInfo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="&gt;&gt;colStation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FELISStations</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Priradenie staníc z programu ELIS</value>
   </data>
+  <data name="bCreate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="dgvStations.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;bOK.Name" xml:space="preserve">
+    <value>bOK</value>
+  </data>
+  <data name="&gt;&gt;colElis.Name" xml:space="preserve">
+    <value>colElis</value>
+  </data>
+  <data name="colElis.Width" type="System.Int32, mscorlib">
+    <value>250</value>
+  </data>
+  <data name="bSkipAll.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="bOK.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="dgvStations.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="bStorno.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="&gt;&gt;colStation.Name" xml:space="preserve">
+    <value>colStation</value>
+  </data>
+  <data name="&gt;&gt;lInfo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="bCreate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 597</value>
+  </data>
+  <data name="&gt;&gt;bCreate.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>936, 654</value>
+  </data>
+  <data name="bCreate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="colStation.Width" type="System.Int32, mscorlib">
+    <value>320</value>
+  </data>
+  <data name="&gt;&gt;lInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bCreate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>285, 38</value>
+  </data>
+  <data name="&gt;&gt;bSkipAll.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;bStorno.Name" xml:space="preserve">
+    <value>bStorno</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>cs</value>
+  </metadata>
 </root>
