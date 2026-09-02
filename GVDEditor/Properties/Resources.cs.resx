@@ -426,6 +426,25 @@ Opravdu chcete provést tuto akci? </value>
 
 {1}</value>
   </data>
+  <data name="FELISImport_Zadaný_priečinok_neexistuje" xml:space="preserve">
+    <value>Zadaná složka neexistuje.</value>
+  </data>
+  <data name="FELISImport_V_zadanom_priečinku_sa_nenachádza_knižnica_TT_dll" xml:space="preserve">
+    <value>V zadané složce se nenachází knihovna TT.dll.
+
+Vyberte složku, do které je nainstalována aplikace Cestovní řády.</value>
+  </data>
+  <data name="FELISImport_Vlaky_sa_načítajú_pre_stanicu" xml:space="preserve">
+    <value>Vlaky se načtou pro stanici: {0}</value>
+  </data>
+  <data name="FELISImport_Nahradiť_všetky_vlaky_otázka" xml:space="preserve">
+    <value>Grafikon obsahuje {0} vlaků. Všechny se před importem odstraní a nahradí vlaky z programu ELIS.
+
+Chcete pokračovat?</value>
+  </data>
+  <data name="FELISStations_vynechať" xml:space="preserve">
+    <value>— vynechat —</value>
+  </data>
   <data name="FMain_Uloženie_grafikonu_zlyhalo_zmeny_boli_vrátené" xml:space="preserve">
     <value>Uložení grafikonu selhalo, žádné změny se neuložily. Grafikon zůstal v původním stavu.
 
