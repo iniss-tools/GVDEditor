@@ -117,53 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 13</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cbSkipPassingTrains.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Složka s aplikací Cestovní řády:</value>
+  <data name="cbReorder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="bBrowse.Text" xml:space="preserve">
-    <value>Procházet...</value>
+  <data name="cbReplace.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="lReg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>262, 13</value>
+  <data name="bImport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="lReg.Text" xml:space="preserve">
-    <value>Registrační číslo (volně dostupná data ho nepotřebují):</value>
+  <data name="bStorno.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="lStation.Text" xml:space="preserve">
-    <value>Vlaky se načtou pro stanici:</value>
+  <data name="bBrowse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="exGroupBox1.Text" xml:space="preserve">
-    <value>Možnosti</value>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="cbSkipPassingTrains.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 17</value>
+  <data name="lStation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="cbSkipPassingTrains.Text" xml:space="preserve">
-    <value>Přeskakovat projíždějící vlaky</value>
-  </data>
-  <data name="cbReorder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 17</value>
-  </data>
-  <data name="cbReorder.Text" xml:space="preserve">
-    <value>Seřadit vlaky a přepočítat varianty</value>
-  </data>
-  <data name="cbReplace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>228, 17</value>
-  </data>
-  <data name="cbReplace.Text" xml:space="preserve">
-    <value>Nahradit všechny vlaky v grafikonu</value>
-  </data>
-  <data name="bImport.Text" xml:space="preserve">
-    <value>Import</value>
-  </data>
-  <data name="bStorno.Text" xml:space="preserve">
-    <value>Zrušit</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Import vlaků z programu ELIS</value>
+  <data name="lReg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
 </root>
