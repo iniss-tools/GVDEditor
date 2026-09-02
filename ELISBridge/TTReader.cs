@@ -40,12 +40,12 @@ internal sealed class TTReader
         _client = client;
     }
 
-    /// <summary>Zavedie cestovne poriadky. Vrati pocet nacitanych poriadkov.</summary>
+    /// <summary>Zavedie cestovne poriadky.</summary>
     /// <exception cref="InvalidOperationException">
     ///     ak sa nenacital ziadny cestovny poriadok - vratane pripadu, ked platene data
     ///     vyzaduju registraciu a ta zlyhala (chybne/chybajuce cislo).
     /// </exception>
-    public int Open()
+    public void Open()
     {
         // registracia MUSI byt pred TTInit - overenie prebieha pocas nacitania kazdeho .tt
         TTNative.Register(_registrationNumber, _client);
@@ -68,8 +68,6 @@ internal sealed class TTReader
         if (TTNative.IsRegistrationError(error))
             Console.Error.WriteLine("Upozornenie: niektoré cestovné poriadky boli vynechané, " +
                                     "lebo vyžadujú platné registračné číslo.");
-
-        return count;
     }
 
     /// <summary>Vrati nazvy vsetkych stanic vo vsetkych nacitanych poriadkoch.</summary>
@@ -165,8 +163,10 @@ internal sealed class TTReader
 
         var builder = new StringBuilder(decomposed.Length);
         foreach (var c in decomposed)
+        {
             if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
                 builder.Append(c);
+        }
 
         return builder.ToString();
     }

@@ -2,139 +2,137 @@
 using System.IO;
 using System.Text;
 
-namespace Iniss.Elis
+namespace Iniss.Elis;
+
+/// <summary>
+///     x86 host nad TT.dll. GVDEditor bezi ako 64-bitovy proces a 32-bitovu TT.dll
+///     zavolat priamo nemoze, preto s nou hovori cez tento pomocny program.
+/// </summary>
+internal static class Program
 {
-    /// <summary>
-    ///     x86 host nad TT.dll. GVDEditor bezi ako 64-bitovy proces a 32-bitovu TT.dll
-    ///     zavolat priamo nemoze, preto s nou hovori cez tento pomocny program.
-    /// </summary>
-    internal static class Program
+    private const string DefaultApp = @"C:\Program Files (x86)\Cestovné poriadky";
+
+    private const string Usage =
+        "ELISBridge - vycitanie grafikonu z dat programu ELIS (Cestovne poriadky, CHAPS)\n" +
+        "\n" +
+        "  ELISBridge.exe --station <nazov> [--app <priecinok>] [--data <priecinok>] [--out <subor>]\n" +
+        "  ELISBridge.exe --list-stations [--app <priecinok>] [--data <priecinok>]\n" +
+        "\n" +
+        "  --station        nazov stanice, pre ktoru sa vlaky vycitaju\n" +
+        "  --app            priecinok s TT.dll (predvolene \"" + DefaultApp + "\")\n" +
+        "  --data           priecinok s .tt datami (predvolene <app>\\Data1)\n" +
+        "  --out            subor pre vysledne XML (bez neho ide na standardny vystup)\n" +
+        "  --reg            registracne cislo pre platene cestovne poriadky\n" +
+        "  --client         identifikacia klienta, ak ju platene data vyzaduju\n" +
+        "  --list-stations  vypise nazvy vsetkych stanic v datach\n" +
+        "\n" +
+        "Navratove kody: 0 = ok, 1 = chyba, 2 = ziadny cestovny poriadok,\n" +
+        "                3 = stanica nenajdena, 4 = chybne/chybajuce registracne cislo\n";
+
+    private static int Main(string[] args)
     {
-        private const string DefaultApp = @"C:\Program Files (x86)\Cestovné poriadky";
+        Console.OutputEncoding = Encoding.UTF8;
 
-        private const string Usage =
-            "ELISBridge - vycitanie grafikonu z dat programu ELIS (Cestovne poriadky, CHAPS)\n" +
-            "\n" +
-            "  ELISBridge.exe --station <nazov> [--app <priecinok>] [--data <priecinok>] [--out <subor>]\n" +
-            "  ELISBridge.exe --list-stations [--app <priecinok>] [--data <priecinok>]\n" +
-            "\n" +
-            "  --station        nazov stanice, pre ktoru sa vlaky vycitaju\n" +
-            "  --app            priecinok s TT.dll (predvolene \"" + DefaultApp + "\")\n" +
-            "  --data           priecinok s .tt datami (predvolene <app>\\Data1)\n" +
-            "  --out            subor pre vysledne XML (bez neho ide na standardny vystup)\n" +
-            "  --reg            registracne cislo pre platene cestovne poriadky\n" +
-            "  --client         identifikacia klienta, ak ju platene data vyzaduju\n" +
-            "  --list-stations  vypise nazvy vsetkych stanic v datach\n" +
-            "\n" +
-            "Navratove kody: 0 = ok, 1 = chyba, 2 = ziadny cestovny poriadok,\n" +
-            "                3 = stanica nenajdena, 4 = chybne/chybajuce registracne cislo\n";
+        string app = null, data = null, station = null, output = null, reg = null, client = null;
+        var listStations = false;
 
-        private static int Main(string[] args)
-        {
-            Console.OutputEncoding = Encoding.UTF8;
-
-            string app = null, data = null, station = null, output = null, reg = null, client = null;
-            var listStations = false;
-
-            for (var i = 0; i < args.Length; i++)
-                switch (args[i])
-                {
-                    case "--app": app = Next(args, ref i); break;
-                    case "--data": data = Next(args, ref i); break;
-                    case "--station": station = Next(args, ref i); break;
-                    case "--out": output = Next(args, ref i); break;
-                    case "--reg": reg = Next(args, ref i); break;
-                    case "--client": client = Next(args, ref i); break;
-                    case "--list-stations": listStations = true; break;
-                    case "--help":
-                    case "-h":
-                        Console.WriteLine(Usage);
-                        return 0;
-                    default:
-                        Console.Error.WriteLine($"Neznámy prepínač: {args[i]}");
-                        Console.Error.WriteLine(Usage);
-                        return 1;
-                }
-
-            if (string.IsNullOrEmpty(app))
-                app = DefaultApp;
-            if (string.IsNullOrEmpty(data))
-                data = Path.Combine(app, "Data1");
-
-            if (!listStations && string.IsNullOrEmpty(station))
+        for (var i = 0; i < args.Length; i++)
+            switch (args[i])
             {
-                Console.Error.WriteLine("Chýba parameter --station.");
-                Console.Error.WriteLine(Usage);
-                return 1;
+                case "--app": app = Next(args, ref i); break;
+                case "--data": data = Next(args, ref i); break;
+                case "--station": station = Next(args, ref i); break;
+                case "--out": output = Next(args, ref i); break;
+                case "--reg": reg = Next(args, ref i); break;
+                case "--client": client = Next(args, ref i); break;
+                case "--list-stations": listStations = true; break;
+                case "--help":
+                case "-h":
+                    Console.WriteLine(Usage);
+                    return 0;
+                default:
+                    Console.Error.WriteLine($"Neznámy prepínač: {args[i]}");
+                    Console.Error.WriteLine(Usage);
+                    return 1;
             }
 
-            try
+        if (string.IsNullOrEmpty(app))
+            app = DefaultApp;
+        if (string.IsNullOrEmpty(data))
+            data = Path.Combine(app, "Data1");
+
+        if (!listStations && string.IsNullOrEmpty(station))
+        {
+            Console.Error.WriteLine("Chýba parameter --station.");
+            Console.Error.WriteLine(Usage);
+            return 1;
+        }
+
+        try
+        {
+            TTNative.LoadFrom(app);
+            var reader = new TTReader(data, reg, client);
+            reader.Open();
+
+            if (listStations)
             {
-                TTNative.LoadFrom(app);
-                var reader = new TTReader(data, reg, client);
-                reader.Open();
+                foreach (var name in reader.GetAllStationNames())
+                    Console.WriteLine(name);
 
-                if (listStations)
-                {
-                    foreach (var name in reader.GetAllStationNames())
-                        Console.WriteLine(name);
-
-                    return 0;
-                }
-
-                var result = reader.Read(station);
-
-                if (string.IsNullOrEmpty(output))
-                    WriteToConsole(result);
-                else
-                    result.Save(output);
-
-                Console.Error.WriteLine($"Vlakov v stanici {result.StationName}: {result.Trains.Count}" +
-                                        $" (platnosť {result.ValidFrom} - {result.ValidTo})");
                 return 0;
             }
-            catch (RegistrationException e)
-            {
-                Console.Error.WriteLine(e.Message);
-                return 4;
-            }
-            catch (InvalidOperationException e)
-            {
-                Console.Error.WriteLine(e.Message);
-                return 2;
-            }
-            catch (ArgumentException e)
-            {
-                Console.Error.WriteLine(e.Message);
-                return 3;
-            }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine(e.ToString());
-                return 1;
-            }
-        }
 
-        private static void WriteToConsole(ElisResult result)
+            var result = reader.Read(station);
+
+            if (string.IsNullOrEmpty(output))
+                WriteToConsole(result);
+            else
+                result.Save(output);
+
+            Console.Error.WriteLine($"Vlakov v stanici {result.StationName}: {result.Trains.Count}" +
+                                    $" (platnosť {result.ValidFrom} - {result.ValidTo})");
+            return 0;
+        }
+        catch (RegistrationException e)
         {
-            var temp = Path.GetTempFileName();
-            try
-            {
-                result.Save(temp);
-                Console.Out.Write(File.ReadAllText(temp, Encoding.UTF8));
-            }
-            finally
-            {
-                File.Delete(temp);
-            }
+            Console.Error.WriteLine(e.Message);
+            return 4;
         }
-
-        private static string Next(string[] args, ref int i)
+        catch (InvalidOperationException e)
         {
-            if (i + 1 >= args.Length)
-                throw new ArgumentException($"Prepínač {args[i]} vyžaduje hodnotu.");
-
-            return args[++i];
+            Console.Error.WriteLine(e.Message);
+            return 2;
         }
+        catch (ArgumentException e)
+        {
+            Console.Error.WriteLine(e.Message);
+            return 3;
+        }
+        catch (Exception e)
+        {
+            Console.Error.WriteLine(e.ToString());
+            return 1;
+        }
+    }
+
+    private static void WriteToConsole(ElisResult result)
+    {
+        var temp = Path.GetTempFileName();
+        try
+        {
+            result.Save(temp);
+            Console.Out.Write(File.ReadAllText(temp, Encoding.UTF8));
+        }
+        finally
+        {
+            File.Delete(temp);
+        }
+    }
+
+    private static string Next(string[] args, ref int i)
+    {
+        return i + 1 >= args.Length 
+            ? throw new ArgumentException($"Prepínač {args[i]} vyžaduje hodnotu.") 
+            : args[++i];
     }
 }

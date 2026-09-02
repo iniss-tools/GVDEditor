@@ -45,16 +45,16 @@ public sealed class ElisResult
     public void Save(string path)
     {
         var serializer = new XmlSerializer(typeof(ElisResult));
-        using (var writer = new StreamWriter(path, false, new UTF8Encoding(false)))
-            serializer.Serialize(writer, this);
+        using var writer = new StreamWriter(path, false, new UTF8Encoding(false));
+        serializer.Serialize(writer, this);
     }
 
     /// <summary>Nacita vysledok zo suboru zapisaneho metodou <see cref="Save" />.</summary>
     public static ElisResult Load(string path)
     {
         var serializer = new XmlSerializer(typeof(ElisResult));
-        using (var reader = new StreamReader(path, Encoding.UTF8))
-            return (ElisResult)serializer.Deserialize(reader);
+        using var reader = new StreamReader(path, Encoding.UTF8);
+        return (ElisResult)serializer.Deserialize(reader);
     }
 }
 
@@ -82,10 +82,10 @@ public sealed class ElisTrain
     public int DepartureMinutes { get; set; } = NoTime;
 
     /// <summary>Stanice pred domovskou stanicou, v poradi jazdy.</summary>
-    public List<string> StationsBefore { get; set; } = new List<string>();
+    public List<string> StationsBefore { get; set; } = new();
 
     /// <summary>Stanice za domovskou stanicou, v poradi jazdy.</summary>
-    public List<string> StationsAfter { get; set; } = new List<string>();
+    public List<string> StationsAfter { get; set; } = new();
 
     /// <summary>Nazov dopravcu (pole ON), alebo prazdne.</summary>
     public string OperatorName { get; set; }
