@@ -381,6 +381,9 @@
     <EmbeddedResource Include="Forms\FDateLimitEdit.resx">
       <DependentUpon>FDateLimitEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FELISImport.resx">
+      <DependentUpon>FELISImport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
