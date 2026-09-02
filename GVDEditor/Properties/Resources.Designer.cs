@@ -557,6 +557,51 @@ namespace GVDEditor.Properties {
         ///Odstránených pôvodných vlakov: {0}
         ///Naimportovaných vlakov: {1}.
         /// </summary>
+        internal static string FELISImport_Zadaný_priečinok_neexistuje {
+            get {
+                return ResourceManager.GetString("FELISImport_Zadaný_priečinok_neexistuje", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to V zadanom priečinku sa nenachádza knižnica TT.dll....
+        /// </summary>
+        internal static string FELISImport_V_zadanom_priečinku_sa_nenachádza_knižnica_TT_dll {
+            get {
+                return ResourceManager.GetString("FELISImport_V_zadanom_priečinku_sa_nenachádza_knižnica_TT_dll", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Vlaky sa načítajú pre stanicu: {0}.
+        /// </summary>
+        internal static string FELISImport_Vlaky_sa_načítajú_pre_stanicu {
+            get {
+                return ResourceManager.GetString("FELISImport_Vlaky_sa_načítajú_pre_stanicu", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon obsahuje {0} vlakov....
+        /// </summary>
+        internal static string FELISImport_Nahradiť_všetky_vlaky_otázka {
+            get {
+                return ResourceManager.GetString("FELISImport_Nahradiť_všetky_vlaky_otázka", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to — vynechať —.
+        /// </summary>
+        internal static string FELISStations_vynechať {
+            get {
+                return ResourceManager.GetString("FELISStations_vynechať", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Uloženie grafikonu zlyhalo, žiadne zmeny sa neuložili....
+        /// </summary>
         internal static string FMain_Uloženie_grafikonu_zlyhalo_zmeny_boli_vrátené {
             get {
                 return ResourceManager.GetString("FMain_Uloženie_grafikonu_zlyhalo_zmeny_boli_vrátené", resourceCulture);

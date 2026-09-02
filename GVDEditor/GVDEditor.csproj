@@ -413,6 +413,15 @@
       <DependentUpon>FEditTrain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FELISImport.cs.resx">
+      <DependentUpon>FELISImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FELISStations.resx">
+      <DependentUpon>FELISStations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FELISStations.cs.resx">
+      <DependentUpon>FELISStations.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FGlobalSettings.cs.resx">
       <DependentUpon>FGlobalSettings.cs</DependentUpon>
       <SubType>Designer</SubType>

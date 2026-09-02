@@ -362,6 +362,25 @@ Pravdepodobne ste zabudli upraviť poradie stĺpcov.</value>
 
 {1}</value>
   </data>
+  <data name="FELISImport_Zadaný_priečinok_neexistuje" xml:space="preserve">
+    <value>Zadaný priečinok neexistuje.</value>
+  </data>
+  <data name="FELISImport_V_zadanom_priečinku_sa_nenachádza_knižnica_TT_dll" xml:space="preserve">
+    <value>V zadanom priečinku sa nenachádza knižnica TT.dll.
+
+Vyberte priečinok, do ktorého je nainštalovaná aplikácia Cestovné poriadky.</value>
+  </data>
+  <data name="FELISImport_Vlaky_sa_načítajú_pre_stanicu" xml:space="preserve">
+    <value>Vlaky sa načítajú pre stanicu: {0}</value>
+  </data>
+  <data name="FELISImport_Nahradiť_všetky_vlaky_otázka" xml:space="preserve">
+    <value>Grafikon obsahuje {0} vlakov. Všetky sa pred importom odstránia a nahradia vlakmi z programu ELIS.
+
+Chcete pokračovať?</value>
+  </data>
+  <data name="FELISStations_vynechať" xml:space="preserve">
+    <value>— vynechať —</value>
+  </data>
   <data name="FMain_Uloženie_grafikonu_zlyhalo_zmeny_boli_vrátené" xml:space="preserve">
     <value>Uloženie grafikonu zlyhalo, žiadne zmeny sa neuložili. Grafikon zostal v pôvodnom stave.
 

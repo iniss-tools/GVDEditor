@@ -1,4 +1,5 @@
 ﻿using ExControls;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
@@ -24,7 +25,7 @@ public partial class FELISImport : Form
 
         _existingTrainCount = existingTrainCount;
 
-        lStation.Text = $"Vlaky sa načítajú pre stanicu: {stationName}";
+        lStation.Text = string.Format(Resources.FELISImport_Vlaky_sa_načítajú_pre_stanicu, stationName);
         tbAppPath.Text = FMain.SendData.DefaultElisDirectory;
 
         //ak grafikon este ziadne vlaky nema, nie je co nahradzat
@@ -44,15 +45,14 @@ public partial class FELISImport : Form
     {
         if (!Directory.Exists(tbAppPath.Text))
         {
-            Utils.ShowError("Zadaný priečinok neexistuje.");
+            Utils.ShowError(Resources.FELISImport_Zadaný_priečinok_neexistuje);
             DialogResult = DialogResult.None;
             return;
         }
 
         if (!File.Exists(Path.Combine(tbAppPath.Text, "TT.dll")))
         {
-            Utils.ShowError("V zadanom priečinku sa nenachádza knižnica TT.dll.\r\n" +
-                            "Vyberte priečinok, do ktorého je nainštalovaná aplikácia Cestovné poriadky.");
+            Utils.ShowError(Resources.FELISImport_V_zadanom_priečinku_sa_nenachádza_knižnica_TT_dll);
             DialogResult = DialogResult.None;
             return;
         }
@@ -61,8 +61,7 @@ public partial class FELISImport : Form
         if (replace)
         {
             var answer = Utils.ShowQuestion(
-                $"Grafikon obsahuje {_existingTrainCount} vlakov. Všetky sa pred importom odstránia " +
-                "a nahradia vlakmi z programu ELIS.\r\n\r\nChcete pokračovať?");
+                string.Format(Resources.FELISImport_Nahradiť_všetky_vlaky_otázka, _existingTrainCount));
 
             if (answer != DialogResult.Yes)
             {

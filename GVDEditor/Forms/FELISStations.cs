@@ -17,7 +17,7 @@ namespace GVDEditor.Forms;
 public partial class FELISStations : Form
 {
     /// <summary>Polozka v zozname, ktora znamena vynechanie stanice z trasy.</summary>
-    private const string SkipItem = "— vynechať —";
+    private static readonly string SkipItem = Resources.FELISStations_vynechať;
 
     private readonly List<string> _names;
     private readonly List<Station> _stations;
