@@ -86,7 +86,6 @@ namespace GVDEditor.Forms
             // 
             // tbAppPath
             // 
-            resources.ApplyResources(this.tbAppPath, "tbAppPath");
             this.tbAppPath.BorderColor = System.Drawing.Color.DimGray;
             this.tbAppPath.DisabledBackColor = System.Drawing.SystemColors.Control;
             this.tbAppPath.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
@@ -94,15 +93,16 @@ namespace GVDEditor.Forms
             this.tbAppPath.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.tbAppPath.HintForeColor = System.Drawing.SystemColors.GrayText;
             this.tbAppPath.HintText = null;
+            resources.ApplyResources(this.tbAppPath, "tbAppPath");
             this.tbAppPath.Name = "tbAppPath";
             // 
             // exGroupBox1
             // 
-            resources.ApplyResources(this.exGroupBox1, "exGroupBox1");
             this.exGroupBox1.Controls.Add(this.cbReplace);
             this.exGroupBox1.Controls.Add(this.cbReorder);
             this.exGroupBox1.Controls.Add(this.cbSkipPassingTrains);
             this.exGroupBox1.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            resources.ApplyResources(this.exGroupBox1, "exGroupBox1");
             this.exGroupBox1.Name = "exGroupBox1";
             this.exGroupBox1.TabStop = false;
             // 
@@ -130,7 +130,6 @@ namespace GVDEditor.Forms
             // 
             // tbReg
             // 
-            resources.ApplyResources(this.tbReg, "tbReg");
             this.tbReg.BorderColor = System.Drawing.Color.DimGray;
             this.tbReg.DisabledBackColor = System.Drawing.SystemColors.Control;
             this.tbReg.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
@@ -138,6 +137,7 @@ namespace GVDEditor.Forms
             this.tbReg.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.tbReg.HintForeColor = System.Drawing.SystemColors.GrayText;
             this.tbReg.HintText = null;
+            resources.ApplyResources(this.tbReg, "tbReg");
             this.tbReg.Name = "tbReg";
             // 
             // FELISImport

@@ -43,10 +43,10 @@ namespace GVDEditor.Forms
             // 
             // dgvStations
             // 
-            resources.ApplyResources(this.dgvStations, "dgvStations");
             this.dgvStations.AllowUserToAddRows = false;
             this.dgvStations.AllowUserToDeleteRows = false;
             this.dgvStations.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.dgvStations, "dgvStations");
             this.dgvStations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.colElis, this.colStation });
             this.dgvStations.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
