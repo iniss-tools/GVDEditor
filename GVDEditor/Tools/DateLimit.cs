@@ -14,13 +14,40 @@ namespace GVDEditor.Tools;
 /// </summary>
 internal class DateLimit
 {
-    private const int MINCOUNT3 = 80;
-    private const int MINCOUNT4 = 14;
-    private const int MINCOUNT5 = 30;
-    private const int MINWEEKDAYS = 8;
-    private const string DAY_TYPE_SIGNS = "1234567X+";
+    /// <summary>
+    ///     Pevne kody dni tak, ako sa zapisuju v poznamke. Poradie znakov zodpoveda poradiu bitov
+    ///     v <see cref="DayType"/>, teda '1' je pondelok, 'X' pracovny den a '+' sviatok.
+    /// </summary>
+    private const string WeekDaySigns = "1234567";
 
-    private BitArray _bits;
+    private const string DayTypeSigns = WeekDaySigns + "X+";
+
+    /// <summary>Pocet poloziek <see cref="DayIndex"/> (pondelok az sviatok).</summary>
+    private const int DayIndexCount = (int)DayIndex.Holiday + 1;
+
+    /// <summary>Minimalna dlzka useku, s ktorou zacina delenie celeho grafikonu.</summary>
+    private const int InitialMinRunLength = 80;
+
+    /// <summary>Minimalna dlzka suvisleho useku na zaciatku/konci intervalu, ktory sa oddeli samostatne.</summary>
+    private const int MinEdgeRunLength = 14;
+
+    /// <summary>Minimalna dlzka suvisleho useku vnutri intervalu, okolo ktoreho sa interval rozdeli.</summary>
+    private const int MinInnerRunLength = 30;
+
+    /// <summary>Najvyssi pocet dni jedneho typu, ktore smu vybocovat z tyzdenneho vzoru.</summary>
+    private const int MaxBadDays = 8;
+
+    /// <summary>Najvyssi pocet vynimiek z tyzdenneho vzoru.</summary>
+    private const int MaxExceptions = 13;
+
+    /// <summary>Najvyssi pocet vynimiek z tyzdenneho vzoru pre obdobie dlhsie ako <see cref="LongPeriodDays"/>.</summary>
+    private const int MaxExceptionsLongPeriod = 19;
+
+    private const int LongPeriodDays = 350;
+
+    /// <summary>Najvacsia medzera medzi dvoma useky, ktore este mozno spojit do jedneho.</summary>
+    private const int MaxMergeGap = 60;
+
     private readonly StringBuilder _builder;
     private readonly List<ParseData> _parsedData;
 
@@ -31,8 +58,14 @@ internal class DateLimit
     private readonly bool _skipDateRangeCheck;
     private readonly bool _specDays;
 
-    private int _decorLength;
+    private BitArray _bits;
+
+    /// <summary>Dlzka znaciek {}, ktore sa nepocitaju do dlzky vyslednej poznamky.</summary>
+    private int _marksLength;
+
+    /// <summary>Naposledy vypisany mesiac - sluzi na potlacenie jeho opakovania.</summary>
     private string _lastMonth;
+
     private int _position;
     private string _text;
 
@@ -94,119 +127,59 @@ internal class DateLimit
 
     private static readonly string[] MessagesCz =
     {
-        "chyba",
-        "",
-        "jede denně",
-        "t.č. nejede",
-        "nikdy",
-        "zatím nejede",
-        "nejede ",
-        "kromě ",
-        "jede ",
-        "včetně ",
-        "od ",
-        "do ",
-        " a ",
-        "v ",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "X",
-        "+",
-        "I",
-        "II",
-        "III",
-        "IV",
-        "V",
-        "VI",
-        "VII",
-        "VIII",
-        "IX",
-        "X",
-        "XI",
-        "XII"
+        // Error, Empty
+        "chyba", "",
+        // RunsDaily .. RunsAlt
+        "jede denně", "t.č. nejede", "nikdy", "zatím nejede", "nejede ", "kromě ", "jede ", "včetně ",
+        // From, To, And, On
+        "od ", "do ", " a ", "v ",
+        // Monday .. Holiday
+        "1", "2", "3", "4", "5", "6", "7", "X", "+",
+        // Jan .. Dec
+        "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"
     };
 
     private static readonly string[] MessagesSk =
     {
-        "chyba",
-        "",
-        "ide denne",
-        "t.č. nejde",
-        "nikdy",
-        "zatiaľ nejde",
-        "nejde ",
-        "okrem ",
-        "ide ",
-        "vrátane ",
-        "od ",
-        "do ",
-        " a ",
-        "v ",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "X",
-        "+",
-        "I",
-        "II",
-        "III",
-        "IV",
-        "V",
-        "VI",
-        "VII",
-        "VIII",
-        "IX",
-        "X",
-        "XI",
-        "XII"
+        // Error, Empty
+        "chyba", "",
+        // RunsDaily .. RunsAlt
+        "ide denne", "t.č. nejde", "nikdy", "zatiaľ nejde", "nejde ", "okrem ", "ide ", "vrátane ",
+        // From, To, And, On
+        "od ", "do ", " a ", "v ",
+        // Monday .. Holiday
+        "1", "2", "3", "4", "5", "6", "7", "X", "+",
+        // Jan .. Dec
+        "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"
     };
 
-    private static readonly string[] MessagesRegex =
+    /// <summary>
+    ///     Vzory, ktorymi sa pri parsovani rozpoznavaju sprAvy aj v skratenom alebo inojazycnom tvare.
+    ///     Spravy, ktore v zozname nie su, sa porovnavaju len na presnu zhodu.
+    /// </summary>
+    private static readonly Dictionary<Message, string> MessagePatterns = new()
     {
-        "",
-        "",
-        "^jede denně|^ide denne",
-        "^t\\.č\\. ne",
-        "",
-        "^zat",
-        "^n",
-        "^kr|^ok",
-        "^j|^i",
-        "^vč|^vr",
-        "^o",
-        "^d",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        { Message.RunsDaily, "^jede denně|^ide denne" },
+        { Message.RunsNever, @"^t\.č\. ne" },
+        { Message.RunsNext, "^zat" },
+        { Message.RunsNot, "^n" },
+        { Message.RunsNotAlt, "^kr|^ok" },
+        { Message.Runs, "^j|^i" },
+        { Message.RunsAlt, "^vč|^vr" },
+        { Message.From, "^o" },
+        { Message.To, "^d" }
+    };
+
+    /// <summary>Statne sviatky s pevnym datumom v tvare MMDD.</summary>
+    private static readonly int[] FixedHolidaysCz =
+    {
+        101, 501, 508, 705, 706, 928, 1028, 1117, 1224, 1225, 1226
+    };
+
+    /// <summary>Statne sviatky s pevnym datumom v tvare MMDD.</summary>
+    private static readonly int[] FixedHolidaysSk =
+    {
+        101, 106, 501, 508, 705, 829, 901, 915, 1101, 1117, 1224, 1225, 1226
     };
 
     /// <summary>
@@ -223,13 +196,16 @@ internal class DateLimit
     /// <param name="skipDateRangeCheck">Preskakovat u datumu chyby pre datum mimo grafikonu.</param>
     /// <param name="altForm">Pouzit zkrateny tvar poznamky.</param>
     /// <param name="today">Ktory datum pouzit ako dnesok (ak sa neuvedie, pouzije sa skutocny dnesok).</param>
-    public DateLimit(DateTime from, DateTime to, 
+    public DateLimit(DateTime from, DateTime to,
         bool specDays = true, bool allowRunsDaily = false,
-        bool fromToday = false, bool insertMarks = true, 
+        bool fromToday = false, bool insertMarks = true,
         int maxDays = 0, bool monthRoman = true,
-        bool skipDateRangeCheck = false, bool altForm = false, 
+        bool skipDateRangeCheck = false, bool altForm = false,
         DateTime? today = null)
     {
+        if (to < from)
+            throw new ArgumentException($"Dátum do {to} je menší ako dátum od {from}.");
+
         DateFrom = from;
         DateTo = to;
         AltForm = altForm;
@@ -245,16 +221,16 @@ internal class DateLimit
         _maxDays = maxDays;
         _monthRoman = monthRoman;
         _skipDateRangeCheck = skipDateRangeCheck;
-
-        if (DateTo < DateFrom)
-            throw new ArgumentException($"Dátum do {to} je menší ako dátum od {from}.");
     }
 
     /// <summary>
-    ///     Vrati jazyk generovanych poznamok.
+    ///     Jazyk generovanych poznamok.
     /// </summary>
     public static Locale Loc { get; set; } = Locale.Sk;
 
+    /// <summary>
+    ///     Urcuje, ci sa nazvy typov dni obalia znackami {}.
+    /// </summary>
     public bool InsertMarks { get; set; }
 
     /// <summary>
@@ -312,7 +288,7 @@ internal class DateLimit
     /// </summary>
     /// <param name="bits">Bitove pole.</param>
     /// <param name="cycle">Posunutie vzhladom k bitovemu polu.</param>
-    /// <param name="validBits"></param>
+    /// <param name="validBits">Dni, ktore ma zmysel v poznamke uvadzat.</param>
     /// <returns>
     ///     Text poznamky.
     /// </returns>
@@ -321,22 +297,22 @@ internal class DateLimit
         if (bits == null || bits.Length != TotalDays)
             throw new ArgumentException(@"Bitové pole na vstupe chýba alebo neodpovedá jeho dĺžka.", nameof(bits));
 
-        var dateFrom = DateFrom;
-        var dateTo = DateTo;
+        var originalFrom = DateFrom;
+        var originalTo = DateTo;
 
         try
         {
             DateFrom = DateFrom.AddDays(cycle);
             DateTo = DateTo.AddDays(cycle);
 
-            var maxIndex = MaxDay;
             var minIndex = 0;
+            var maxIndex = MaxDay;
 
             if (_maxDays > 0 && DateTo > Today.AddDays(_maxDays))
             {
                 DateTo = Today.AddDays(_maxDays);
 
-                if (DateTo < DateFrom) 
+                if (DateTo < DateFrom)
                     return MsgText(Message.RunsNext);
 
                 maxIndex = DateDiff(DateFrom, DateTo);
@@ -344,7 +320,7 @@ internal class DateLimit
 
             if (_fromToday)
             {
-                if (Today > DateTo) 
+                if (Today > DateTo)
                     return AltMsgText(Message.RunsNever, Message.RunsNeverAlt);
 
                 if (Today > DateFrom)
@@ -354,62 +330,30 @@ internal class DateLimit
                 }
             }
 
-            var hasData = false;
+            if (!HasMixedBits(bits, minIndex, maxIndex))
+                return bits[minIndex]
+                    ? MsgText(_allowRunsDaily ? Message.RunsDaily : Message.Empty)
+                    : AltMsgText(Message.RunsNever, Message.RunsNeverAlt);
 
-            for (var i = minIndex + 1; i <= maxIndex; i++)
+            if (minIndex > 0 || maxIndex != bits.Length - 1)
             {
-                if (bits[i] == bits[minIndex]) 
-                    continue;
+                if (validBits != null && validBits.Count == bits.Count)
+                    validBits = Slice(validBits, minIndex, maxIndex);
 
-                hasData = true;
-                break;
+                bits = Slice(bits, minIndex, maxIndex);
             }
 
-            if (!hasData)
-            {
-                return !bits[minIndex] ? AltMsgText(Message.RunsNever, Message.RunsNeverAlt) : MsgText(_allowRunsDaily ? Message.RunsDaily : Message.Empty);
-            }
-            else
-            {
-                var valitBitsAlt = validBits;
+            _bits = bits;
 
-                if (minIndex > 0 || maxIndex != bits.Length - 1)
-                {
-                    int j;
-                    if (validBits != null && validBits.Count == bits.Count)
-                    {
-                        valitBitsAlt = new BitArray(maxIndex - minIndex + 1);
+            var positive = FormatBits(false, out var positiveCount, out var positiveLength, validBits);
+            var negative = FormatBits(true, out var negativeCount, out var negativeLength, validBits);
 
-                        j = 0;
-                        for (var k = minIndex; k <= maxIndex; k++)
-                        {
-                            valitBitsAlt[j] = validBits[k];
-                            j++;
-                        }
-                    }
+            // negativny tvar sa uprednostni len ak je vyrazne kratsi, alebo kratsi a zaroven jednoduchsi
+            var negativeIsBetter =
+                negativeLength + (positiveLength > 40 ? 20 : 25) < positiveLength ||
+                negativeLength < positiveLength && negativeCount < positiveCount;
 
-                    var bitArray = new BitArray(maxIndex - minIndex + 1);
-                    j = 0;
-
-                    for (var l = minIndex; l <= maxIndex; l++)
-                    {
-                        bitArray[j] = bits[l];
-                        j++;
-                    }
-
-                    bits = bitArray;
-                }
-
-                _bits = bits;
-
-                var positive = BitArrayToTextInternal(false, out var infosCountPos, out var lenPos, valitBitsAlt);
-                var negative = BitArrayToTextInternal(true, out var infosCountNeg, out var lenNeg, valitBitsAlt);
-
-                if (lenNeg + (lenPos > 40 ? 20 : 25) < lenPos || lenNeg < lenPos && infosCountNeg < infosCountPos)
-                    return negative;
-
-                return positive;
-            }
+            return negativeIsBetter ? negative : positive;
         }
         catch (Exception)
         {
@@ -417,8 +361,8 @@ internal class DateLimit
         }
         finally
         {
-            DateFrom = dateFrom;
-            DateTo = dateTo;
+            DateFrom = originalFrom;
+            DateTo = originalTo;
             _bits = null;
         }
 
@@ -464,7 +408,6 @@ internal class DateLimit
     /// </summary>
     /// <param name="dl1">Text datumoveho obmedenia.</param>
     /// <param name="dl2">Text datumoveho obmedenia.</param>
-    /// <returns></returns>
     public bool Overlap(string dl1, string dl2)
     {
         var limit = TextAnd(dl1, dl2);
@@ -474,71 +417,17 @@ internal class DateLimit
     /// <summary>
     ///     Logicka operacia AND medzi textami.
     /// </summary>
-    public string TextAnd(params string[] texts)
-    {
-        BitArray arr;
-        switch (texts.Length)
-        {
-            case > 1:
-                arr = TextToBitArray(texts[0]);
-                break;
-            case 1:
-                return texts[0];
-            default:
-                return "";
-        }
-
-        for (var i = 1; i < texts.Length; i++)
-            arr = arr.And(TextToBitArray(texts[i]));
-
-        return BitArrayToText(arr);
-    }
+    public string TextAnd(params string[] texts) => Combine((first, second) => first.And(second), texts);
 
     /// <summary>
     ///     Logicka operacia OR medzi textami.
     /// </summary>
-    public string TextOr(params string[] texts)
-    {
-        BitArray arr;
-        switch (texts.Length)
-        {
-            case > 1:
-                arr = TextToBitArray(texts[0]);
-                break;
-            case 1:
-                return texts[0];
-            default:
-                return "";
-        }
-
-        for (var i = 1; i < texts.Length; i++)
-            arr = arr.Or(TextToBitArray(texts[i]));
-
-        return BitArrayToText(arr);
-    }
+    public string TextOr(params string[] texts) => Combine((first, second) => first.Or(second), texts);
 
     /// <summary>
     ///     Logicka operacia XOR medzi textami.
     /// </summary>
-    public string TextXor(params string[] texts)
-    {
-        BitArray arr;
-        switch (texts.Length)
-        {
-            case > 1:
-                arr = TextToBitArray(texts[0]);
-                break;
-            case 1:
-                return texts[0];
-            default:
-                return "";
-        }
-
-        for (var i = 1; i < texts.Length; i++)
-            arr = arr.Xor(TextToBitArray(texts[i]));
-
-        return BitArrayToText(arr);
-    }
+    public string TextXor(params string[] texts) => Combine((first, second) => first.Xor(second), texts);
 
     /// <summary>
     ///     Logicka operacia NOT podla textu.
@@ -563,11 +452,93 @@ internal class DateLimit
     /// </summary>
     public string AltMsgText(Message msg1, Message msg2) => MsgText(AltForm ? msg2 : msg1);
 
-    private static void ReduceDates(IList<DateLimitInfo> dateLimit, BitArray validBits)
+    /// <summary>
+    ///     Vrati, ci je zadany datum sviatok alebo nedela.
+    /// </summary>
+    public static bool IsHoliday(DateTime date)
     {
-        for (var i = dateLimit.Count - 1; i >= 0; i--)
+        if (date.DayOfWeek == DayOfWeek.Sunday)
+            return true;
+
+        var fixedHolidays = Loc switch
         {
-            var info = dateLimit[i];
+            Locale.Cz => FixedHolidaysCz,
+            Locale.Sk => FixedHolidaysSk,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+
+        if (Array.IndexOf(fixedHolidays, date.Month * 100 + date.Day) >= 0)
+            return true;
+
+        // pohyblive sviatky (Velky piatok a Velkonocny pondelok) mozu pripadnut len na marec alebo april
+        if (date.Month is not (3 or 4))
+            return false;
+
+        var easterMonday = GetEasterMonday(date.Year);
+
+        return date.DayOfWeek switch
+        {
+            DayOfWeek.Friday => date.AddDays(3).Date == easterMonday,
+            DayOfWeek.Monday => date.Date == easterMonday,
+            _ => false
+        };
+    }
+
+    /// <summary>
+    ///     Vykona logicku operaciu <paramref name="operation"/> nad bitovymi polami vsetkych textov
+    ///     a vysledok prevedie spat na text.
+    /// </summary>
+    private string Combine(Func<BitArray, BitArray, BitArray> operation, IReadOnlyList<string> texts)
+    {
+        switch (texts.Count)
+        {
+            case 0:
+                return "";
+            case 1:
+                return texts[0];
+        }
+
+        var bits = TextToBitArray(texts[0]);
+
+        for (var i = 1; i < texts.Count; i++)
+            bits = operation(bits, TextToBitArray(texts[i]));
+
+        return BitArrayToText(bits);
+    }
+
+    /// <summary>
+    ///     Vrati, ci sa v rozsahu <paramref name="from"/>-<paramref name="to"/> vyskytuju obe hodnoty bitov.
+    /// </summary>
+    private static bool HasMixedBits(BitArray bits, int from, int to)
+    {
+        for (var i = from + 1; i <= to; i++)
+            if (bits[i] != bits[from])
+                return true;
+
+        return false;
+    }
+
+    /// <summary>
+    ///     Vrati novu kopiu bitoveho pola orezanu na rozsah <paramref name="from"/>-<paramref name="to"/>.
+    /// </summary>
+    private static BitArray Slice(BitArray bits, int from, int to)
+    {
+        var result = new BitArray(to - from + 1);
+
+        for (var i = from; i <= to; i++)
+            result[i - from] = bits[i];
+
+        return result;
+    }
+
+    /// <summary>
+    ///     Odstrani z obmedzenia jednotlive dni, ktore nepatria medzi platne dni.
+    /// </summary>
+    private static void ReduceDates(IList<DateLimitInfo> limits, BitArray validBits)
+    {
+        for (var i = limits.Count - 1; i >= 0; i--)
+        {
+            var info = limits[i];
 
             if (info.ListRuns is { Count: > 0 })
                 ReduceDates(info.ListRuns, validBits);
@@ -576,11 +547,18 @@ internal class DateLimit
                 ReduceDates(info.ListRunsNot, validBits);
 
             if (info.Type == DayType.None && info.From > 0 && info.From == info.To && !validBits[info.From])
-                dateLimit.RemoveAt(i);
+                limits.RemoveAt(i);
         }
     }
 
-    private string BitArrayToTextInternal(bool isNot, out int infosCount, out int length, BitArray validBits)
+    /// <summary>
+    ///     Vytvori text pre aktualne bitove pole <see cref="_bits"/>.
+    /// </summary>
+    /// <param name="isNot">Spracovat negovane bitove pole, teda vytvorit zapis v tvare "nejde ...".</param>
+    /// <param name="infosCount">Pocet useku vysledneho obmedzenia - mensi pocet znamena jednoduchsi zapis.</param>
+    /// <param name="length">Dlzka vysledneho textu bez znaciek {}.</param>
+    /// <param name="validBits">Dni, ktore ma zmysel v poznamke uvadzat.</param>
+    private string FormatBits(bool isNot, out int infosCount, out int length, BitArray validBits)
     {
         infosCount = 0;
         length = 0;
@@ -590,420 +568,466 @@ internal class DateLimit
 
         try
         {
-            var limitInfos = ProcessInterval(MINCOUNT3, 0, MaxDay);
+            var limits = ProcessInterval(InitialMinRunLength, 0, MaxDay);
 
-            if (validBits != null && validBits.Length == _bits.Length && limitInfos is { Count: > 0 })
-                ReduceDates(limitInfos, validBits);
+            if (limits == null)
+                return null;
 
-            if (limitInfos != null)
-            {
-                infosCount = limitInfos.Count;
-                _decorLength = 0;
-                var formatted = Format(limitInfos, isNot);
+            if (validBits != null && validBits.Length == _bits.Length && limits.Count > 0)
+                ReduceDates(limits, validBits);
 
-                if (string.IsNullOrEmpty(formatted))
-                    length = 0;
-                else
-                {
-                    if (AltForm)
-                    {
-                        if (formatted.StartsWith(MsgText(Message.RunsAlt)))
-                            formatted = formatted.Substring(MsgText(Message.RunsAlt).Length);
+            infosCount = limits.Count;
+            _marksLength = 0;
 
-                        formatted = formatted.Replace(MsgText(Message.RunsAlt) + MsgText(Message.On), MsgText(Message.RunsAlt));
-                        formatted = formatted.Replace(MsgText(Message.RunsNotAlt) + MsgText(Message.On), MsgText(Message.RunsNotAlt));
-                    }
+            var formatted = Format(limits, isNot);
 
-                    length = formatted.Length - _decorLength;
-                }
-
+            if (string.IsNullOrEmpty(formatted))
                 return formatted;
+
+            if (AltForm)
+            {
+                // v skratenom tvare sa uvodne "ide" vypusta a pred zoznamom dni sa neopakuje predlozka
+                if (formatted.StartsWith(MsgText(Message.RunsAlt)))
+                    formatted = formatted.Substring(MsgText(Message.RunsAlt).Length);
+
+                formatted = formatted.Replace(MsgText(Message.RunsAlt) + MsgText(Message.On), MsgText(Message.RunsAlt));
+                formatted = formatted.Replace(MsgText(Message.RunsNotAlt) + MsgText(Message.On), MsgText(Message.RunsNotAlt));
             }
+
+            length = formatted.Length - _marksLength;
+
+            return formatted;
         }
         finally
         {
             if (isNot)
                 _bits = _bits.Not();
         }
-
-        return null;
     }
 
+    /// <summary>
+    ///     Rozlozi interval <paramref name="from"/>-<paramref name="to"/> na useky datumoveho obmedzenia.
+    /// </summary>
+    /// <param name="minCount">Minimalna dlzka useku, ktory sa este oplati oddelit.</param>
+    /// <param name="from">Zaciatok intervalu.</param>
+    /// <param name="to">Koniec intervalu.</param>
     private List<DateLimitInfo> ProcessInterval(int minCount, int from, int to)
     {
         ReduceInterval(ref from, ref to);
-        var datelimit = GetSingleDays(from, to);
 
-        if (datelimit != null)
-            return datelimit;
+        var limits = GetSingleDays(from, to);
 
-        var okCount = new int[9];
-        var badCount = new int[9];
+        if (limits != null)
+            return limits;
 
-        var isFc = 0;
-        var scanWeekDaysOK = false;
+        var okCount = new DayCounter();
+        var badCount = new DayCounter();
+        var grouping = DayGrouping.None;
 
-        if (ScanDays(from, to, okCount, badCount, ref isFc) && !AllSet(okCount) && !NoBad(badCount) && to - from > 6)
-            scanWeekDaysOK = true;
-        else
+        // interval sa oplati skusit popisat tyzdennym vzorom len ak dni v tyzdni nie su vsetky rovnake
+        var weekPattern = ScanDays(from, to, okCount, badCount, ref grouping) &&
+                          !AllSet(okCount) && !badCount.AllZero && to - from > 6;
+
+        if (!weekPattern)
         {
-            datelimit = GetIntervals(from, to);
+            limits = GetIntervals(from, to);
 
-            if (datelimit != null)
-                return datelimit;
+            if (limits != null)
+                return limits;
 
-            datelimit = Recurse1(minCount, from, to) ?? Recurse2(minCount, from, to) ?? Recurse3(minCount, from, to) ?? Recurse4(minCount, from, to);
-            if (datelimit != null)
-                return datelimit;
+            limits = SplitInterval(minCount, from, to);
+
+            if (limits != null)
+                return limits;
         }
 
-        while (datelimit == null)
+        while (limits == null)
         {
-            datelimit = ScanWeekDays(minCount, from, to);
+            limits = ScanWeekDays(minCount, from, to);
             minCount -= Math.Max(minCount >> 1, 1);
 
-            if (!scanWeekDaysOK)
+            if (!weekPattern)
             {
-                datelimit = Recurse1(minCount, from, to) ?? Recurse2(minCount, from, to) ?? Recurse3(minCount, from, to) ?? Recurse4(minCount, from, to);
-                if (datelimit != null)
-                    return datelimit;
+                // pozn.: pripadny vysledok zo ScanWeekDays sa tu zahadzuje - povodne spravanie
+                limits = SplitInterval(minCount, from, to);
+
+                if (limits != null)
+                    return limits;
             }
         }
 
-        return datelimit;
+        return limits;
     }
 
-    private List<DateLimitInfo> Recurse1(int minCount, int from, int to)
+    /// <summary>
+    ///     Postupne skusi vsetky sposoby rozdelenia intervalu na kratsie useky.
+    /// </summary>
+    private List<DateLimitInfo> SplitInterval(int minCount, int from, int to) =>
+        SplitAtRunBlocks(minCount, from, to) ??
+        SplitAtLongRun(minCount, from, to) ??
+        SplitLeadingRun(minCount, from, to) ??
+        SplitTrailingRun(minCount, from, to);
+
+    /// <summary>
+    ///     Rozdeli interval na useky ohranicene dnami, kedy vlak nejde.
+    /// </summary>
+    /// <remarks>
+    ///     Povodny kod tu porovnaval dlzku jedineho dna s <paramref name="minCount"/>, takze usek
+    ///     vznikne az vtedy, ked <paramref name="minCount"/> klesne na 1 alebo nizsie.
+    /// </remarks>
+    private List<DateLimitInfo> SplitAtRunBlocks(int minCount, int from, int to)
     {
-        List<DateLimitInfo> limitsInfo = null;
-        var i = -1;
+        List<DateLimitInfo> limits = null;
+        var blockFrom = -1;
 
-        for (var j = from; j <= to; j++)
-        {
-            if (Runs(j))
+        for (var day = from; day <= to; day++)
+            if (Runs(day))
             {
-                if (i < 0)
-                    i = j;
+                if (blockFrom < 0)
+                    blockFrom = day;
             }
-            else
+            else if (minCount <= 1 && blockFrom >= 0)
             {
-                var l = 0;
-                l++;
-
-                if (l < minCount || i < 0) 
-                    continue;
-
-                AppendIntervals(ref limitsInfo, ProcessInterval(minCount, i, 0));
-                i = -1;
+                AddIntervals(ref limits, ProcessInterval(minCount, blockFrom, 0));
+                blockFrom = -1;
             }
-        }
 
-        if (i > from && limitsInfo != null)
-            AppendIntervals(ref limitsInfo, ProcessInterval(minCount, i, to));
+        if (blockFrom > from && limits != null)
+            AddIntervals(ref limits, ProcessInterval(minCount, blockFrom, to));
 
-        return limitsInfo;
+        return limits;
     }
 
-    private List<DateLimitInfo> Recurse2(int minCount, int from, int to)
+    /// <summary>
+    ///     Najde vnutri intervalu dostatocne dlhy suvisly usek a rozdeli interval na cast pred nim,
+    ///     samotny usek a cast za nim.
+    /// </summary>
+    private List<DateLimitInfo> SplitAtLongRun(int minCount, int from, int to)
     {
-        List<DateLimitInfo> limitInfo = null;
-        var i = -1;
-        var k = 0;
+        List<DateLimitInfo> limits = null;
+        var runFrom = -1;
+        var runLength = 0;
 
-        for (var j = from; j <= to; j++)
+        for (var day = from; day <= to; day++)
         {
-            if (Runs(j))
+            if (Runs(day))
             {
-                k++;
-                if (i < 0)
-                    i = j;
+                runLength++;
+
+                if (runFrom < 0)
+                    runFrom = day;
+
+                continue;
             }
-            else
+
+            if (runLength >= MinInnerRunLength)
             {
-                if (k >= MINCOUNT5)
-                {
-                    if (i > from)
-                        limitInfo = ProcessInterval(minCount, from, i - 1);
+                if (runFrom > from)
+                    limits = ProcessInterval(minCount, from, runFrom - 1);
 
-                    AppendInterval(ref limitInfo, new DateLimitInfo(i, j - 1));
-                    AppendIntervals(ref limitInfo, ProcessInterval(minCount, j, to));
+                AddInterval(ref limits, new DateLimitInfo(runFrom, day - 1));
+                AddIntervals(ref limits, ProcessInterval(minCount, day, to));
 
-                    return limitInfo;
-                }
-
-                k = 0;
-                i = -1;
+                return limits;
             }
+
+            runLength = 0;
+            runFrom = -1;
         }
 
         return null;
     }
 
-    private List<DateLimitInfo> Recurse3(int minCount, int from, int to)
+    /// <summary>
+    ///     Oddeli dostatocne dlhy suvisly usek na zaciatku intervalu.
+    /// </summary>
+    private List<DateLimitInfo> SplitLeadingRun(int minCount, int from, int to)
     {
-        List<DateLimitInfo> limitsInfo = null;
-        var i = from;
-        var j = 0;
+        var day = from;
+        var runLength = 0;
 
-        while (i <= to && Runs(i))
+        while (day <= to && Runs(day))
         {
-            j++;
-            i++;
+            runLength++;
+            day++;
         }
 
-        if (j < MINCOUNT4) 
+        if (runLength < MinEdgeRunLength)
             return null;
 
-        AppendInterval(ref limitsInfo, new DateLimitInfo(from, from + j - 1));
-        AppendIntervals(ref limitsInfo, ProcessInterval(minCount, from + j, to));
+        List<DateLimitInfo> limits = null;
 
-        return limitsInfo;
+        AddInterval(ref limits, new DateLimitInfo(from, from + runLength - 1));
+        AddIntervals(ref limits, ProcessInterval(minCount, from + runLength, to));
 
+        return limits;
     }
 
-    private List<DateLimitInfo> Recurse4(int minCount, int from, int to)
+    /// <summary>
+    ///     Oddeli dostatocne dlhy suvisly usek na konci intervalu.
+    /// </summary>
+    private List<DateLimitInfo> SplitTrailingRun(int minCount, int from, int to)
     {
-        var i = to;
-        var j = 0;
+        var day = to;
+        var runLength = 0;
 
-        while (i >= from && Runs(i))
+        while (day >= from && Runs(day))
         {
-            j++;
-            i--;
+            runLength++;
+            day--;
         }
 
-        if (j < MINCOUNT4) 
+        if (runLength < MinEdgeRunLength)
             return null;
 
-        var datelimit = ProcessInterval(minCount, from, to - j);
-        AppendInterval(ref datelimit, new DateLimitInfo(to - j + 1, to));
-        return datelimit;
+        var limits = ProcessInterval(minCount, from, to - runLength);
+        AddInterval(ref limits, new DateLimitInfo(to - runLength + 1, to));
 
+        return limits;
     }
 
+    /// <summary>
+    ///     Hlada najdlhsi usek, ktory sa da popisat tyzdennym vzorom (napr. "ide 1-5") spolu so zoznamom
+    ///     vynimiek z neho. Zvysok intervalu spracuje rekurzivne.
+    /// </summary>
     private List<DateLimitInfo> ScanWeekDays(int minCount, int from, int to)
     {
-        List<DateLimitInfo> limitsInfo = null;
-        var okCount = new int[9];
-        var badCount = new int[9];
+        List<DateLimitInfo> limits = null;
+        var okCount = new DayCounter();
+        var badCount = new DayCounter();
 
-        for (var t = to; t >= from + 7; t--)
+        for (var lastDay = to; lastDay >= from + 7; lastDay--)
         {
-            if (t < to && RunsNot(t)) 
+            if (lastDay < to && RunsNot(lastDay))
                 continue;
 
-            var isFc = 0;
+            var grouping = DayGrouping.None;
+            ScanDays(from, lastDay, okCount, badCount, ref grouping);
 
-            ScanDays(from, t, okCount, badCount, ref isFc);
+            // do vzoru sa dostanu len tie typy dni, ktore v useku vyrazne prevazuju
+            var hasPattern = false;
 
-            var i = 0;
-            var isOK = false;
-
-            do
-            {
-                if (okCount[i] > badCount[i] * 2 && badCount[i] <= 8)
+            for (var index = DayIndex.Monday; index <= DayIndex.Holiday; index++)
+                if (okCount[index] > badCount[index] * 2 && badCount[index] <= MaxBadDays)
                 {
-                    okCount[i] = 1;
-                    isOK = true;
+                    okCount[index] = 1;
+                    hasPattern = true;
                 }
                 else
-                    okCount[i] = 0;
+                    okCount[index] = 0;
 
-                i++;
-            } while (i <= 8);
-
-            if (isOK)
+            if (hasPattern)
             {
-                var j = 0;
+                // useky, ktore idu nad ramec vzoru
+                var extraRuns = 0;
 
-                for (i = from; i <= t; i++)
-                    if (Runs(i) && okCount[(int)GetDayIndex(i, isFc)] == 0 && (i == from || RunsNot(i - 1) || okCount[(int)GetDayIndex(i - 1, isFc)] != 0))
-                        j++;
+                for (var day = from; day <= lastDay; day++)
+                    if (Runs(day) && okCount[GetDayIndex(day, grouping)] == 0 &&
+                        (day == from || RunsNot(day - 1) || okCount[GetDayIndex(day - 1, grouping)] != 0))
+                        extraRuns++;
 
-                var k = 0;
-                i = from;
+                // useky dni vzoru, v ktorych vlak nejde
+                var missingRuns = 0;
+                var scan = from;
 
-                while (i <= t)
-                {
-                    if (okCount[(int)GetDayIndex(i, isFc)] != 0 && RunsNot(i))
+                while (scan <= lastDay)
+                    if (okCount[GetDayIndex(scan, grouping)] != 0 && RunsNot(scan))
                     {
-                        k++;
-                        while (i <= t)
-                        {
-                            if (!RunsNot(i)) 
-                                break;
-                            i++;
-                        }
+                        missingRuns++;
+
+                        while (scan <= lastDay && RunsNot(scan))
+                            scan++;
                     }
                     else
-                        i++;
-                }
+                        scan++;
 
-                if (j + k <= 13 || t - from > 350 && j + k <= 19)
+                var exceptions = extraRuns + missingRuns;
+
+                if (exceptions <= MaxExceptions ||
+                    lastDay - from > LongPeriodDays && exceptions <= MaxExceptionsLongPeriod)
                 {
-                    if (k > 0)
+                    if (missingRuns > 0)
                     {
-                        i = t;
+                        // usek nesmie koncit dnom vzoru, v ktorom vlak nejde
+                        var day = lastDay;
 
-                        while (okCount[(int)GetDayIndex(i, isFc)] == 0) 
-                            i--;
+                        while (okCount[GetDayIndex(day, grouping)] == 0)
+                            day--;
 
-                        if (RunsNot(i)) 
+                        if (RunsNot(day))
                             continue;
                     }
 
-                    if (t < to || GetBetterDayTo(t, okCount, isFc) < MaxDay)
-                    {
-                        i = 0;
-                        while (!((okCount[(int)GetDayIndex(t - i, isFc)] != 0) ^ Runs(t - i)))
-                        {
-                            i++;
-                            if (i > 6)
-                                break;
-                        }
-
-                        if (limitsInfo != null)
-                        {
-                            if (t < to)
-                                AppendIntervals(ref limitsInfo, ProcessInterval(minCount, t + 1, to));
-                            break;
-                        }
-                    }
-
-                    if ((j != 0 || k != 0) && t < to - 21 && t > 13 &&
-                        (EqualPattern(t - 6, t + 1) && EqualPattern(t - 6, t + 8) &&
-                         EqualPattern(t - 6, t + 15) ||
-                         EqualPattern(t - 13, t + 1) && EqualPattern(t - 13, t + 8) &&
-                         EqualPattern(t - 13, t + 15)))
+                    // ak sa vzor opakuje aj v nasledujucich tyzdnoch, usek este nekonci tu
+                    if (exceptions > 0 && lastDay < to - 21 && lastDay > 13 &&
+                        (EqualPattern(lastDay - 6, lastDay + 1) && EqualPattern(lastDay - 6, lastDay + 8) &&
+                         EqualPattern(lastDay - 6, lastDay + 15) ||
+                         EqualPattern(lastDay - 13, lastDay + 1) && EqualPattern(lastDay - 13, lastDay + 8) &&
+                         EqualPattern(lastDay - 13, lastDay + 15)))
                         continue;
 
-                    if (j + k > 3 && t - from > 35)
+                    if (exceptions > 3 && lastDay - from > 35)
                     {
-                        var aiOKCount2 = new int[9];
-                        var aiBadCount2 = new int[9];
-                        var iIsFc2 = 0;
+                        var startOkCount = new DayCounter();
+                        var startBadCount = new DayCounter();
+                        var startGrouping = DayGrouping.None;
 
-                        if (ScanDays(from, from + 20, aiOKCount2, aiBadCount2, ref iIsFc2) &&
-                            GetDayType(okCount) != GetDayType(aiOKCount2))
+                        // ak ma zaciatok intervalu iny vzor, spracuje sa samostatne
+                        if (ScanDays(from, from + 20, startOkCount, startBadCount, ref startGrouping) &&
+                            GetDayType(okCount) != GetDayType(startOkCount))
                         {
-                            i = from + 20;
-                            while (i <= t - 1 && ScanDays(from, i, aiOKCount2, aiBadCount2, ref iIsFc2))
-                                i++;
-                            t = i - 1;
-                            AppendIntervals(ref limitsInfo, ProcessInterval(minCount, from, t));
+                            var day = from + 20;
 
-                            if (limitsInfo != null)
+                            while (day <= lastDay - 1 && ScanDays(from, day, startOkCount, startBadCount, ref startGrouping))
+                                day++;
+
+                            lastDay = day - 1;
+                            AddIntervals(ref limits, ProcessInterval(minCount, from, lastDay));
+
+                            if (limits != null)
                             {
-                                if (t < to)
-                                    AppendIntervals(ref limitsInfo, ProcessInterval(minCount, t + 1, to));
+                                if (lastDay < to)
+                                    AddIntervals(ref limits, ProcessInterval(minCount, lastDay + 1, to));
+
                                 break;
                             }
                         }
                     }
 
-                    var dayFrom = GetBetterDayFrom(from, okCount, isFc);
-                    var dayTo = GetBetterDayTo(t, okCount, isFc);
+                    var dayFrom = GetBetterDayFrom(from, okCount, grouping);
+                    var dayTo = GetBetterDayTo(lastDay, okCount, grouping);
 
-                    if (dayFrom > 0 && okCount[(int)GetDayIndex(dayFrom, isFc)] == 0)
+                    if (dayFrom > 0 && okCount[GetDayIndex(dayFrom, grouping)] == 0)
                     {
-                        i = dayFrom;
-                        while (Runs(dayFrom)) dayFrom++;
-                        if (dayFrom > i)
+                        // usek zacina mimo vzoru - jeho zaciatok sa oddeli
+                        var start = dayFrom;
+
+                        while (Runs(dayFrom))
+                            dayFrom++;
+
+                        if (dayFrom > start)
                         {
-                            AppendIntervals(ref limitsInfo, ProcessInterval(minCount, i, dayFrom - 1));
-                            while (RunsNot(dayFrom)) 
+                            AddIntervals(ref limits, ProcessInterval(minCount, start, dayFrom - 1));
+
+                            while (RunsNot(dayFrom))
                                 dayFrom++;
+
                             from = dayFrom;
                         }
                     }
 
-                    var limitInfo = new DateLimitInfo(dayFrom, dayTo);
+                    var limit = new DateLimitInfo(dayFrom, dayTo);
+
                     if (dayFrom != dayTo)
-                        limitInfo.Type = CheckDayType(dayFrom, dayTo, GetDayType(okCount));
+                        limit.Type = CheckDayType(dayFrom, dayTo, GetDayType(okCount));
 
-                    AppendInterval(ref limitsInfo, limitInfo);
+                    AddInterval(ref limits, limit);
 
-                    if (j > 0)
-                    {
-                        i = from;
-                        while (i <= t)
-                        {
-                            if (okCount[(int)GetDayIndex(i, isFc)] == 0 && Runs(i))
-                            {
-                                j = i;
-                                while (i <= t && Runs(i)) 
-                                    i++;
-                                var l = i - 1;
-                                while (okCount[(int)GetDayIndex(l, isFc)] != 0) 
-                                    l--;
-                                AppendPeriod(ref limitsInfo[limitsInfo.Count - 1].ListRuns, j, l);
-                            }
-                            else
-                                i++;
-                        }
-                    }
+                    if (extraRuns > 0)
+                        AddExtraRuns(limits[limits.Count - 1], from, lastDay, okCount, grouping);
 
-                    if (k > 0)
-                    {
-                        i = from;
-
-                        while (i <= t)
-                        {
-                            if (okCount[(int)GetDayIndex(i, isFc)] != 0 && RunsNot(i))
-                            {
-                                j = i;
-                                k = i;
-                                var pocetOKDni = 0;
-                                var aiOKDen = new int[4];
-                                while (i <= t && RunsNot(i))
-                                {
-                                    if (okCount[(int)GetDayIndex(i, isFc)] != 0)
-                                    {
-                                        k = i;
-                                        if (pocetOKDni < 2)
-                                            aiOKDen[pocetOKDni] = k;
-
-                                        pocetOKDni++;
-                                    }
-
-                                    i++;
-                                }
-
-                                if (pocetOKDni < 3)
-                                {
-                                    var num6 = pocetOKDni - 1;
-                                    for (k = 0; k <= num6; k++)
-                                        AppendDay(ref limitsInfo[limitsInfo.Count - 1].ListRunsNot, aiOKDen[k]);
-                                }
-                                else
-                                {
-                                    while (j >= dayFrom && RunsNot(j)) j--;
-                                    j++;
-                                    while (k <= dayTo && RunsNot(k)) k++;
-                                    k--;
-                                    AppendPeriod(ref limitsInfo[limitsInfo.Count - 1].ListRunsNot, j, k);
-                                    if (k > i)
-                                        i = k;
-                                }
-                            }
-                            else
-                            {
-                                i++;
-                            }
-                        }
-                    }
+                    if (missingRuns > 0)
+                        AddMissingRuns(limits[limits.Count - 1], from, lastDay, dayFrom, dayTo, okCount, grouping);
                 }
             }
 
-            if (limitsInfo != null)
+            if (limits != null)
             {
-                if (t < to)
-                    AppendIntervals(ref limitsInfo, ProcessInterval(minCount, t + 1, to));
+                if (lastDay < to)
+                    AddIntervals(ref limits, ProcessInterval(minCount, lastDay + 1, to));
+
                 break;
             }
         }
 
-        return limitsInfo;
+        return limits;
+    }
+
+    /// <summary>
+    ///     Doplni do obmedzenia useky, v ktorych vlak ide nad ramec tyzdenneho vzoru.
+    /// </summary>
+    private void AddExtraRuns(DateLimitInfo limit, int from, int lastDay, DayCounter okCount, DayGrouping grouping)
+    {
+        var day = from;
+
+        while (day <= lastDay)
+            if (okCount[GetDayIndex(day, grouping)] == 0 && Runs(day))
+            {
+                var blockFrom = day;
+
+                while (day <= lastDay && Runs(day))
+                    day++;
+
+                // dni, ktore uz pokryva vzor, sa na konci useku neuvadzaju
+                var blockTo = day - 1;
+
+                while (okCount[GetDayIndex(blockTo, grouping)] != 0)
+                    blockTo--;
+
+                AddPeriod(limit.ListRuns, blockFrom, blockTo);
+            }
+            else
+                day++;
+    }
+
+    /// <summary>
+    ///     Doplni do obmedzenia useky dni tyzdenneho vzoru, v ktorych vlak nejde.
+    /// </summary>
+    private void AddMissingRuns(DateLimitInfo limit, int from, int lastDay, int dayFrom, int dayTo,
+        DayCounter okCount, DayGrouping grouping)
+    {
+        var day = from;
+
+        while (day <= lastDay)
+            if (okCount[GetDayIndex(day, grouping)] != 0 && RunsNot(day))
+            {
+                var gapFrom = day;
+                var gapTo = day;
+                var patternDayCount = 0;
+                var patternDays = new int[2];
+
+                while (day <= lastDay && RunsNot(day))
+                {
+                    if (okCount[GetDayIndex(day, grouping)] != 0)
+                    {
+                        gapTo = day;
+
+                        if (patternDayCount < patternDays.Length)
+                            patternDays[patternDayCount] = gapTo;
+
+                        patternDayCount++;
+                    }
+
+                    day++;
+                }
+
+                if (patternDayCount < 3)
+                {
+                    // jeden alebo dva dni sa vypisu ako samostatne datumy
+                    for (var i = 0; i < patternDayCount; i++)
+                        AddDay(limit.ListRunsNot, patternDays[i]);
+                }
+                else
+                {
+                    // tri a viac dni sa zapisu ako obdobie roztiahnute na cele okolie bez jazdy
+                    while (gapFrom >= dayFrom && RunsNot(gapFrom))
+                        gapFrom--;
+
+                    gapFrom++;
+
+                    while (gapTo <= dayTo && RunsNot(gapTo))
+                        gapTo++;
+
+                    gapTo--;
+
+                    AddPeriod(limit.ListRunsNot, gapFrom, gapTo);
+
+                    if (gapTo > day)
+                        day = gapTo;
+                }
+            }
+            else
+                day++;
     }
 
     /// <summary>
@@ -1013,13 +1037,8 @@ internal class DateLimit
     /// <param name="to">koniec intervalu</param>
     private void ReduceInterval(ref int from, ref int to)
     {
-        while (from < to)
-        {
-            if (!RunsNot(from))
-                break;
-
+        while (from < to && RunsNot(from))
             from++;
-        }
 
         while (from < to && RunsNot(to))
             to--;
@@ -1030,87 +1049,89 @@ internal class DateLimit
     /// </summary>
     /// <param name="from">zaciatok intervalu</param>
     /// <param name="to">koniec intervalu</param>
-    /// <returns></returns>
     private List<DateLimitInfo> GetIntervals(int from, int to)
     {
-        var count1 = 0;
-        var count2 = 0;
+        var runEnds = 0;
+        var runStarts = 0;
 
-        for (var i = from; i < to; i++)
-            if (Runs(i) && RunsNot(i + 1))
-                count1++;
-            else if (Runs(i + 1) && RunsNot(i))
-                count2++;
+        for (var day = from; day < to; day++)
+            if (Runs(day) && RunsNot(day + 1))
+                runEnds++;
+            else if (Runs(day + 1) && RunsNot(day))
+                runStarts++;
 
         if (Runs(to))
-            count1++;
+            runEnds++;
         else
-            count2++;
+            runStarts++;
 
-        if (count1 <= 2 && count1 <= count2 || count1 == 1 && count2 == 0)
-        {
-            var info = new DateLimitInfo();
-            var j = -1;
-
-            for (var k = from; k <= to; k++)
-                if (Runs(k))
-                {
-                    if (j < 0) 
-                        j = k;
-                }
-                else if (j >= 0)
-                {
-                    AppendPeriod(ref info.ListRuns, j, k - 1);
-                    j = -1;
-                }
-
-            if (j >= 0)
-                AppendPeriod(ref info.ListRuns, j, to);
-
-            return new List<DateLimitInfo> { info };
-        }
-
-        return null;
-    }
-
-    private List<DateLimitInfo> GetSingleDays(int from, int to)
-    {
-        var j = 0;
-
-        for (var i = from; i <= to; i++)
-            if (Runs(i))
-                j++;
-
-        if (j == 0) 
+        // vypis obdobi ma zmysel len ak je useku, kedy vlak ide, malo
+        if (!(runEnds <= 2 && runEnds <= runStarts || runEnds == 1 && runStarts == 0))
             return null;
 
-        var okCount = new int[9];
-        var badCount = new int[9];
-        var isFc = 0;
+        var info = new DateLimitInfo();
+        var blockFrom = -1;
 
-        var daysOK = ScanDays(from, to, okCount, badCount, ref isFc);
+        for (var day = from; day <= to; day++)
+            if (Runs(day))
+            {
+                if (blockFrom < 0)
+                    blockFrom = day;
+            }
+            else if (blockFrom >= 0)
+            {
+                AddPeriod(info.ListRuns, blockFrom, day - 1);
+                blockFrom = -1;
+            }
 
-        if (daysOK || j <= 6 && (j == to - from + 1 || j <= to - from + 2 - j))
+        if (blockFrom >= 0)
+            AddPeriod(info.ListRuns, blockFrom, to);
+
+        return [info];
+    }
+
+    /// <summary>
+    ///     Vrati obmedzenie zapisane tyzdennym vzorom alebo vypisom jednotlivych dni, ak je takyto
+    ///     zapis mozny. Inak vrati <see langword="null"/>.
+    /// </summary>
+    private List<DateLimitInfo> GetSingleDays(int from, int to)
+    {
+        var runDays = 0;
+
+        for (var day = from; day <= to; day++)
+            if (Runs(day))
+                runDays++;
+
+        if (runDays == 0)
+            return null;
+
+        var okCount = new DayCounter();
+        var badCount = new DayCounter();
+        var grouping = DayGrouping.None;
+
+        var weekPattern = ScanDays(from, to, okCount, badCount, ref grouping);
+        var totalDays = to - from + 1;
+
+        // bez tyzdenneho vzoru sa jednotlive dni vypisu len ak ich je malo
+        if (!weekPattern && !(runDays <= 6 && (runDays == totalDays || runDays <= totalDays + 1 - runDays)))
+            return null;
+
+        var info = new DateLimitInfo();
+
+        if (weekPattern && to - from > 8)
         {
-            var limitInfo = new DateLimitInfo();
-
-            if (daysOK && to - from > 8)
-            {
-                limitInfo.From = GetBetterDayFrom(from, okCount, isFc);
-                limitInfo.To = GetBetterDayTo(to, okCount, isFc);
-                limitInfo.Type = GetDayType(okCount);
-            }
-            else
-            {
-                for (var i = from; i <= to; i++)
-                    if (Runs(i))
-                        AppendDay(ref limitInfo.ListRuns, i);
-            }
-
-            return new List<DateLimitInfo> { limitInfo };
+            info.From = GetBetterDayFrom(from, okCount, grouping);
+            info.To = GetBetterDayTo(to, okCount, grouping);
+            info.Type = GetDayType(okCount);
+        }
+        else
+        {
+            for (var day = from; day <= to; day++)
+                if (Runs(day))
+                    AddDay(info.ListRuns, day);
         }
 
-        return null;
+        return [info];
     }
 
     /// <summary>
@@ -1119,7 +1140,7 @@ internal class DateLimit
     /// </summary>
     /// <param name="baseIntervals">zakladny zoznam</param>
     /// <param name="appendIntervals">zoznam na priradenie do zakladneho zoznamu</param>
-    private static void AppendIntervals(ref List<DateLimitInfo> baseIntervals, List<DateLimitInfo> appendIntervals)
+    private static void AddIntervals(ref List<DateLimitInfo> baseIntervals, List<DateLimitInfo> appendIntervals)
     {
         if (baseIntervals == null)
         {
@@ -1134,23 +1155,26 @@ internal class DateLimit
     ///     Prida prvok <paramref name="interval"/> do zoznamu <paramref name="baseIntervals"/>.<br></br>
     ///     Ak <paramref name="baseIntervals"/> je <see langword="null"/>, vytvori sa nova instancia triedy <see cref="List{DateLimitInfo}"/>.
     /// </summary>
-    /// <param name="baseIntervals"></param>
-    /// <param name="interval"></param>
-    private static void AppendInterval(ref List<DateLimitInfo> baseIntervals, DateLimitInfo interval)
+    /// <param name="baseIntervals">zakladny zoznam</param>
+    /// <param name="interval">interval na pridanie</param>
+    private static void AddInterval(ref List<DateLimitInfo> baseIntervals, DateLimitInfo interval)
     {
         baseIntervals ??= new List<DateLimitInfo>();
         baseIntervals.Add(interval);
     }
 
-    private static void AppendDay(ref List<DateLimitInfo> runs, int day) => AppendPeriod(ref runs, day, day);
+    /// <summary>
+    ///     Prida jeden den ako periodu s rovnakym zaciatkom aj koncom.
+    /// </summary>
+    private static void AddDay(List<DateLimitInfo> runs, int day) => AddPeriod(runs, day, day);
 
     /// <summary>
-    ///     Prida periodu.
+    ///     Prida periodu. Ak nadvazuje na poslednu periodu v zozname, obe sa spoja do jednej.
     /// </summary>
     /// <param name="runs">intervaly</param>
     /// <param name="from">ide od</param>
     /// <param name="to">ide do</param>
-    private static void AppendPeriod(ref List<DateLimitInfo> runs, int from, int to)
+    private static void AddPeriod(List<DateLimitInfo> runs, int from, int to)
     {
         if (from > 0 && runs.Count > 0 && runs[runs.Count - 1].To == from - 1)
         {
@@ -1165,14 +1189,12 @@ internal class DateLimit
     ///     Vrati, ci v zadany den vlak IDE.
     /// </summary>
     /// <param name="day">Den na posudenie.</param>
-    /// <returns></returns>
     private bool Runs(int day) => _bits[day];
 
     /// <summary>
     ///     Vrati, ci v zadany den vlak NEJDE.
     /// </summary>
     /// <param name="day">Den na posudenie.</param>
-    /// <returns></returns>
     private bool RunsNot(int day) => !Runs(day);
 
     /// <summary>
@@ -1186,7 +1208,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Sformatuje zadany den.
+    ///     Sformatuje zadany den. Ak ma rovnaky mesiac ako naposledy vypisany den, mesiac sa
+    ///     z predchadzajuceho datumu v builderi odstrani (zapise sa teda len raz, napr. "1.,5.I.").
     /// </summary>
     /// <param name="day">Den, ktory sa ma sformatovat.</param>
     /// <returns>sformatovany den ako retazec.</returns>
@@ -1195,13 +1218,13 @@ internal class DateLimit
         var date = DateFrom.AddDays(day);
         var month = MsgMonth(date.Month) + ".";
 
-        if (!DateUnique(date)) 
+        if (!DateUnique(date))
             month += date.Year;
 
         if (!string.IsNullOrEmpty(_lastMonth) && _lastMonth == month)
         {
-            var i = _builder.ToString().LastIndexOf(_lastMonth, StringComparison.Ordinal);
-            _builder.Remove(i, _lastMonth.Length);
+            var index = _builder.ToString().LastIndexOf(_lastMonth, StringComparison.Ordinal);
+            _builder.Remove(index, _lastMonth.Length);
         }
         else
             _lastMonth = month;
@@ -1215,6 +1238,7 @@ internal class DateLimit
     private void AppendComma()
     {
         var last = _builder.Length - 1;
+
         if (last > 0 && _builder[last] != ' ' && _builder[last] != ',')
             _builder.Append(',');
     }
@@ -1225,389 +1249,365 @@ internal class DateLimit
     private void AppendSpace()
     {
         var last = _builder.Length - 1;
+
         if (last > 0 && _builder[last] > ' ')
             _builder.Append(' ');
     }
-    
-    private bool ScanDays(int from, int to, int[] okCount, int[] badCount, ref int isFc)
+
+    /// <summary>
+    ///     Spocita, kolkokrat vlak v intervale ide a nejde v jednotlivych typoch dni. Ak prevazuje
+    ///     jazda podla pracovnych dni a sviatkov, prepne <paramref name="grouping"/> na toto zlucenie
+    ///     a pocitadla dni v tyzdni vynuluje.
+    /// </summary>
+    /// <returns>
+    ///     <see langword="true"/>, ak sa jazda da uplne popisat typmi dni, teda ziadny typ dna nie je
+    ///     zaroven jazdny aj nejazdny.
+    /// </returns>
+    private bool ScanDays(int from, int to, DayCounter okCount, DayCounter badCount, ref DayGrouping grouping)
     {
-        Array.Clear(okCount, 0, okCount.Length);
-        Array.Clear(badCount, 0, badCount.Length);
+        okCount.Clear();
+        badCount.Clear();
 
-        var dayIndex = GetDayIndex(from, 0);
-
+        var dayIndex = GetDayIndex(from, DayGrouping.None);
         var saturdays = 0;
         var totalBad = 0;
 
-        for (var i = from; i <= to; i++)
+        for (var day = from; day <= to; day++)
         {
-            if (Runs(i))
+            var counter = Runs(day) ? okCount : badCount;
+
+            if (_specDays)
             {
-                if (_specDays)
+                var type = GetDayType(day);
+
+                if ((type & DayType.Workday) != DayType.None)
+                    counter[DayIndex.Workday]++;
+                else if ((type & DayType.Holiday) != DayType.None)
                 {
-                    var type = GetDayType(i);
-                    if ((type & DayType.Workday) != DayType.None)
-                        okCount[7]++;
-                    else if ((type & DayType.Holiday) != DayType.None)
-                    {
-                        okCount[8]++;
+                    counter[DayIndex.Holiday]++;
 
-                        if (dayIndex == DayIndex.Saturday)
-                            saturdays++;
-                    }
+                    if (dayIndex == DayIndex.Saturday && Runs(day))
+                        saturdays++;
                 }
-
-                okCount[(int)dayIndex]++;
             }
-            else
-            {
-                if (_specDays)
-                {
-                    var type = GetDayType(i);
-                    if ((type & DayType.Workday) != DayType.None)
-                    {
-                        badCount[7]++;
-                    }
-                    else if ((type & DayType.Holiday) != DayType.None)
-                    {
-                        badCount[8]++;
-                    }
-                }
 
-                badCount[(int)dayIndex]++;
+            counter[dayIndex]++;
+
+            if (RunsNot(day))
                 totalBad++;
-            }
 
             dayIndex = GetNextDayIndex(dayIndex);
         }
 
-        if (totalBad == 0) 
+        if (totalBad == 0)
             return false;
 
         if (_specDays)
-        {
-            if (okCount[5] > 2 * badCount[5] && okCount[8] < 2 * badCount[8]) 
-                okCount[8] -= saturdays;
+            ApplySpecDays(okCount, badCount, saturdays, ref grouping);
 
-            var j = DayIndex.Monday;
-            var count = 0;
-            var count2 = 0;
-            do
-            {
-                if (okCount[(int)j] > 0 && okCount[(int)j] > badCount[(int)j])
-                {
-                    if (j <= DayIndex.Sunday) 
-                        count += okCount[(int)j] - badCount[(int)j];
+        for (var index = DayIndex.Monday; index <= DayIndex.Holiday; index++)
+            if (okCount[index] != 0 && badCount[index] != 0)
+                return false;
 
-                    if (j is DayIndex.Saturday or DayIndex.Workday or DayIndex.Holiday)
-                        count2 += okCount[(int)j] - badCount[(int)j];
-                }
-
-                j++;
-            } while (j <= DayIndex.Holiday);
-
-            if (count2 > count)
-            {
-                isFc = 1;
-                var k = DayIndex.Monday;
-
-                do
-                {
-                    if (k != DayIndex.Saturday)
-                    {
-                        okCount[(int)k] = 0;
-                        badCount[(int)k] = 0;
-                    }
-
-                    k++;
-                } while (k <= DayIndex.Sunday);
-
-                if (okCount[8] > 2 * badCount[8] && okCount[5] < 2 * badCount[5])
-                    okCount[5] -= saturdays;
-                else
-                    isFc |= 32;
-            }
-            else
-            {
-                okCount[7] = 0;
-                okCount[8] = 0;
-                badCount[7] = 0;
-                badCount[8] = 0;
-            }
-        }
-
-        var l = DayIndex.Monday;
-        while (okCount[(int)l] == 0 || badCount[(int)l] == 0)
-        {
-            l++;
-            if (l > DayIndex.Holiday)
-                return true;
-        }
-
-        return false;
+        return true;
     }
 
-    private int GetBetterDayFrom(int from, IReadOnlyList<int> okCount, int isFc)
+    /// <summary>
+    ///     Rozhodne, ci sa jazda lepsie popise dnami v tyzdni, alebo pracovnymi dnami a sviatkami,
+    ///     a pocitadla nepouziteho popisu vynuluje.
+    /// </summary>
+    private static void ApplySpecDays(DayCounter okCount, DayCounter badCount, int saturdays, ref DayGrouping grouping)
     {
-        var fromSave = from;
+        // sobota, ktora je zaroven sviatkom, sa nepocita do sviatkov, ak sa jazda riadi sobotami
+        if (okCount[DayIndex.Saturday] > 2 * badCount[DayIndex.Saturday] &&
+            okCount[DayIndex.Holiday] < 2 * badCount[DayIndex.Holiday])
+            okCount[DayIndex.Holiday] -= saturdays;
 
-        if (from >= 7) 
+        var weekDayScore = 0;
+        var specDayScore = 0;
+
+        for (var index = DayIndex.Monday; index <= DayIndex.Holiday; index++)
+        {
+            if (okCount[index] <= 0 || okCount[index] <= badCount[index])
+                continue;
+
+            if (index <= DayIndex.Sunday)
+                weekDayScore += okCount[index] - badCount[index];
+
+            if (index is DayIndex.Saturday or DayIndex.Workday or DayIndex.Holiday)
+                specDayScore += okCount[index] - badCount[index];
+        }
+
+        if (specDayScore <= weekDayScore)
+        {
+            // jazda sa popise dnami v tyzdni - pracovne dni a sviatky sa nepouziju
+            okCount[DayIndex.Workday] = 0;
+            okCount[DayIndex.Holiday] = 0;
+            badCount[DayIndex.Workday] = 0;
+            badCount[DayIndex.Holiday] = 0;
+            return;
+        }
+
+        grouping = DayGrouping.WorkdayHoliday;
+
+        for (var index = DayIndex.Monday; index <= DayIndex.Sunday; index++)
+            if (index != DayIndex.Saturday)
+            {
+                okCount[index] = 0;
+                badCount[index] = 0;
+            }
+
+        if (okCount[DayIndex.Holiday] > 2 * badCount[DayIndex.Holiday] &&
+            okCount[DayIndex.Saturday] < 2 * badCount[DayIndex.Saturday])
+            okCount[DayIndex.Saturday] -= saturdays;
+        else
+            grouping |= DayGrouping.KeepSaturday;
+    }
+
+    /// <summary>
+    ///     Posunie zaciatok useku na prvy den patriaci do tyzdenneho vzoru. Ak vzor siaha az na
+    ///     zaciatok grafikonu, vrati 0 - zaciatok sa potom v poznamke neuvadza.
+    /// </summary>
+    private int GetBetterDayFrom(int from, DayCounter okCount, DayGrouping grouping)
+    {
+        if (from >= 7)
             return from;
 
-        while (from >= 0 && (Runs(from) || okCount[(int)GetDayIndex(from, isFc)] == 0))
-            from--;
+        var day = from;
 
-        if (from < 0)
-            from = 0;
-        else
-        {
-            from = fromSave;
-            while (okCount[(int)GetDayIndex(from, isFc)] == 0)
-                from++;
-        }
+        while (day >= 0 && (Runs(day) || okCount[GetDayIndex(day, grouping)] == 0))
+            day--;
 
-        return from;
+        if (day < 0)
+            return 0;
+
+        day = from;
+
+        while (okCount[GetDayIndex(day, grouping)] == 0)
+            day++;
+
+        return day;
     }
 
-    private int GetBetterDayTo(int to, IReadOnlyList<int> okCount, int isFc)
+    /// <summary>
+    ///     Posunie koniec useku na posledny den patriaci do tyzdenneho vzoru. Ak vzor siaha az na
+    ///     koniec grafikonu, vrati <see cref="MaxDay"/> - koniec sa potom v poznamke neuvadza.
+    /// </summary>
+    private int GetBetterDayTo(int to, DayCounter okCount, DayGrouping grouping)
     {
-        var toBackup = to;
-
-        if (to <= MaxDay - 7) 
+        if (to <= MaxDay - 7)
             return to;
 
-        while (to <= MaxDay && (Runs(to) || okCount[(int)GetDayIndex(to, isFc)] == 0))
-            to++;
+        var day = to;
 
-        if (to > MaxDay)
-            to = MaxDay;
-        else
-        {
-            to = toBackup;
-            while (okCount[(int)GetDayIndex(to, isFc)] == 0)
-                to--;
-        }
+        while (day <= MaxDay && (Runs(day) || okCount[GetDayIndex(day, grouping)] == 0))
+            day++;
 
-        return to;
+        if (day > MaxDay)
+            return MaxDay;
+
+        day = to;
+
+        while (okCount[GetDayIndex(day, grouping)] == 0)
+            day--;
+
+        return day;
     }
 
-    private static bool AllSet(IReadOnlyList<int> count)
+    /// <summary>
+    ///     Vrati, ci su nastavene vsetky dni v tyzdni, alebo vsetky pracovne dni spolu so sviatkami.
+    /// </summary>
+    private static bool AllSet(DayCounter count)
     {
         var dayType = GetDayType(count);
         return (dayType & DayType.All1) == DayType.All1 || (dayType & DayType.All2) == DayType.All2;
     }
-    
-    private static bool NoBad(IEnumerable<int> count) => count.All(t => t == 0);
 
+    /// <summary>
+    ///     Vrati, ci sa tyzdenny vzor od dna <paramref name="from"/> zhoduje so vzorom od dna <paramref name="to"/>.
+    /// </summary>
     private bool EqualPattern(int from, int to)
     {
-        var i = 0; 
-        while (Runs(from + i) == Runs(to + i)) 
-        {
-            i++;
+        for (var offset = 0; offset <= 6; offset++)
+            if (Runs(from + offset) != Runs(to + offset))
+                return false;
 
-            if (i > 6)
-                return true;
-        }
-
-        return false; 
+        return true;
     }
 
-    private string Format(IList<DateLimitInfo> datelimit, bool isNot)
+    /// <summary>
+    ///     Sformatuje vsetky useky obmedzenia do vysledneho textu poznamky.
+    /// </summary>
+    private string Format(IList<DateLimitInfo> limits, bool isNot)
     {
-        if (datelimit == null || datelimit.Count == 0) 
+        if (limits == null || limits.Count == 0)
             return MsgText(Message.Empty);
 
-        Merge(datelimit);
+        Merge(limits);
         _builder.Length = 0;
         var level = Level.Undefined;
 
-        for (var i = 0; i < datelimit.Count; i++)
-        {
-            if (i + 1 < datelimit.Count)
-                Format(datelimit[i], datelimit[i + 1], isNot, ref level);
-            else
-                Format(datelimit[i], null, isNot, ref level);
-        }
+        for (var i = 0; i < limits.Count; i++)
+            FormatInfo(limits[i], i + 1 < limits.Count ? limits[i + 1] : null, isNot, ref level);
 
         return _builder.ToString();
     }
 
-    private void Format(DateLimitInfo datelimit, DateLimitInfo info, bool isNot, ref Level level)
+    /// <summary>
+    ///     Sformatuje jeden usek obmedzenia.
+    /// </summary>
+    /// <param name="info">Usek na sformatovanie.</param>
+    /// <param name="next">Nasledujuci usek, alebo <see langword="null"/> pri poslednom useku.</param>
+    /// <param name="isNot">Text sa tvori z negovaneho bitoveho pola.</param>
+    /// <param name="level">Naposledy vypisana uvodna spojka - opakovane sa nevypisuje.</param>
+    private void FormatInfo(DateLimitInfo info, DateLimitInfo next, bool isNot, ref Level level)
     {
         AppendComma();
         _lastMonth = null;
 
-        if (datelimit.AllIsSet && datelimit.From == 0 && datelimit.To == MaxDay && !datelimit.RunsNot)
+        if (info.AllIsSet && info.From == 0 && info.To == MaxDay && !info.RunsNot)
         {
             _builder.Append(MsgText(Message.RunsDaily));
             return;
         }
 
+        // pri negovanom poli maju vyznamy "ide" a "nejde" opacny vyznam
+        var mainLevel = isNot ? Level.RunsNot : Level.Runs;
+        var mainText = isNot ? AltMsgText(Message.RunsNot, Message.RunsNotAlt) : AltMsgText(Message.Runs, Message.RunsAlt);
+        var exceptionLevel = isNot ? Level.Runs : Level.RunsNot;
+        var exceptionText = isNot ? AltMsgText(Message.Runs, Message.RunsAlt) : AltMsgText(Message.RunsNot, Message.RunsNotAlt);
+
         var baseLength = _builder.Length;
-        checked
+
+        if (info.HaveDays || info.From != 0 || info.To != 0)
         {
-            if (datelimit.HaveDays || datelimit.From != 0 || datelimit.To != 0)
+            AppendPeriod(info.From, info.To);
+
+            if (info.HaveDays && next != null && next.Type == info.Type && !info.Runs && !info.RunsNot)
+                _builder.Append(MsgText(Message.And));
+            else if (info.HaveDays)
+                AppendDays(info.Type);
+
+            if (_builder.Length > baseLength)
             {
-                AppendPeriod(datelimit.From, datelimit.To);
-
-                if (datelimit.HaveDays && info != null && info.Type == datelimit.Type && !datelimit.Runs && !datelimit.RunsNot)
-                    _builder.Append(MsgText(Message.And));
-
-                else if (datelimit.HaveDays)
-                    AppendDays(datelimit.Type);
-
-                if (_builder.Length > baseLength)
+                if (level != mainLevel)
                 {
-                    if (isNot)
-                    {
-                        if (level != Level.RunsNot)
-                        {
-                            _builder.Insert(baseLength, AltMsgText(Message.RunsNot, Message.RunsNotAlt));
-                            level = Level.RunsNot;
-                        }
-                        else if (info == null && baseLength > 0 && _builder[baseLength - 1] == ',' && !datelimit.HaveDays)
-                        {
-                            baseLength--;
-                            _builder.Remove(baseLength, 1);
-                            _builder.Insert(baseLength, MsgText(Message.And));
-                        }
-                    }
-                    else if (level != Level.Runs)
-                    {
-                        _builder.Insert(baseLength, AltMsgText(Message.Runs, Message.RunsAlt));
-                        level = Level.Runs;
-                    }
-                    else if (info == null && baseLength > 0 && _builder[baseLength - 1] == ',' && !datelimit.HaveDays)
-                    {
-                        baseLength--;
-                        _builder.Remove(baseLength, 1);
-                        _builder.Insert(baseLength, MsgText(Message.And));
-                    }
+                    _builder.Insert(baseLength, mainText);
+                    level = mainLevel;
+                }
+                else if (next == null && baseLength > 0 && _builder[baseLength - 1] == ',' && !info.HaveDays)
+                {
+                    // posledny usek sa k predchadzajucemu pripoji spojkou namiesto ciarky
+                    baseLength--;
+                    _builder.Remove(baseLength, 1);
+                    _builder.Insert(baseLength, MsgText(Message.And));
                 }
             }
+        }
 
-            foreach (var t in datelimit.ListRuns)
+        foreach (var run in info.ListRuns)
+        {
+            if (_builder.Length == baseLength && level != mainLevel)
             {
-                if (_builder.Length == baseLength)
-                {
-                    if (isNot)
-                    {
-                        if (level != Level.RunsNot)
-                        {
-                            _builder.Append(AltMsgText(Message.RunsNot, Message.RunsNotAlt));
-                            level = Level.RunsNot;
-                        }
-                    }
-                    else if (level != Level.Runs)
-                    {
-                        _builder.Append(AltMsgText(Message.Runs, Message.RunsAlt));
-                        level = Level.Runs;
-                    }
-                }
-
-                AppendPeriod(t.From, t.To);
+                _builder.Append(mainText);
+                level = mainLevel;
             }
 
-            _lastMonth = null;
-            for (var j = 0; j < datelimit.ListRunsNot.Count; j++)
-            {
-                AppendComma();
-                if (j == 0)
-                {
-                    if (isNot)
-                    {
-                        if (level != Level.Runs)
-                        {
-                            _builder.Append(AltMsgText(Message.Runs, Message.RunsAlt));
-                            level = Level.Runs;
-                        }
-                    }
-                    else if (level != Level.RunsNot)
-                    {
-                        _builder.Append(AltMsgText(Message.RunsNot, Message.RunsNotAlt));
-                        level = Level.RunsNot;
-                    }
-                }
+            AppendPeriod(run.From, run.To);
+        }
 
-                AppendPeriod(datelimit.ListRunsNot[j].From, datelimit.ListRunsNot[j].To);
+        _lastMonth = null;
+
+        for (var i = 0; i < info.ListRunsNot.Count; i++)
+        {
+            AppendComma();
+
+            if (i == 0 && level != exceptionLevel)
+            {
+                _builder.Append(exceptionText);
+                level = exceptionLevel;
             }
+
+            AppendPeriod(info.ListRunsNot[i].From, info.ListRunsNot[i].To);
         }
     }
 
+    /// <summary>
+    ///     Spoji susedne useky obmedzenia, ktore sa daju zapisat spolocne.
+    /// </summary>
     private static void Merge(IList<DateLimitInfo> limits)
     {
         var i = 0;
 
         while (i + 1 < limits.Count)
-        {
             if (limits[i].Merge(limits[i + 1]))
                 limits.RemoveAt(i + 1);
             else
                 i++;
-        }
     }
 
+    /// <summary>
+    ///     Pripoji zoznam typov dni, napr. "v 1-5,7". Tri a viac dni po sebe sa zapisu ako rozsah.
+    /// </summary>
     private void AppendDays(DayType dayType)
     {
         AppendSpace();
         _builder.Append(MsgText(Message.On));
 
-        if ((dayType & DayType.Workday) == DayType.Workday) 
+        if ((dayType & DayType.Workday) == DayType.Workday)
             _builder.Append(MsgDayType(Message.Workday));
 
-        var i = 0;
-        while (true)
-            if (i > 6 || (dayType & (DayType)(1 << i)) != DayType.None)
+        var day = 0;
+
+        while (day <= 6)
+        {
+            if ((dayType & (DayType)(1 << day)) == DayType.None)
             {
-                if (i > 6)
-                    break;
+                day++;
+                continue;
+            }
 
-                var j = i;
+            var last = day;
 
-                while (j < 6 && (dayType & (DayType)(1 << (j + 1))) != DayType.None) 
-                    j++;
+            while (last < 6 && (dayType & (DayType)(1 << (last + 1))) != DayType.None)
+                last++;
 
-                if (j - i > 1)
-                {
-                    AppendComma();
-                    _builder.Append(MsgDayType(Message.Monday + i)).Append("-").Append(MsgDayType(Message.Monday + j));
-                }
-                else
-                {
-                    while (i <= j)
-                    {
-                        AppendComma();
-                        _builder.Append(MsgDayType(Message.Monday + i));
-                        i++;
-                    }
-                }
-
-                i = j + 1;
-                if (i > 6)
-                    break;
+            if (last - day > 1)
+            {
+                AppendComma();
+                _builder.Append(MsgDayType(Message.Monday + day)).Append("-").Append(MsgDayType(Message.Monday + last));
             }
             else
-            {
-                i++;
-            }
+                while (day <= last)
+                {
+                    AppendComma();
+                    _builder.Append(MsgDayType(Message.Monday + day));
+                    day++;
+                }
 
-        if ((dayType & DayType.Holiday) != DayType.Holiday) 
+            day = last + 1;
+        }
+
+        if ((dayType & DayType.Holiday) != DayType.Holiday)
             return;
 
         AppendComma();
         _builder.Append(MsgDayType(Message.Holiday));
     }
 
+    /// <summary>
+    ///     Pripoji obdobie. Hranice zhodne s hranicami grafikonu sa neuvadzaju, kratke obdobia sa
+    ///     vypisu ako jednotlive datumy.
+    /// </summary>
     private void AppendPeriod(int dayFrom, int dayTo)
     {
-        if (dayFrom == 0 && dayTo == MaxDay) 
+        if (dayFrom == 0 && dayTo == MaxDay)
             return;
 
         if (dayTo - dayFrom <= 1)
         {
-            for (var i = dayFrom; i <= dayTo; i++)
-                AppendDay(i);
+            for (var day = dayFrom; day <= dayTo; day++)
+                AppendDay(day);
 
             return;
         }
@@ -1625,195 +1625,197 @@ internal class DateLimit
 
         _lastMonth = null;
     }
-    
+
+    /// <summary>
+    ///     Vrati, ci den a mesiac zadaneho datumu pripadnu do platnosti grafikonu najviac raz,
+    ///     teda ci netreba k datumu uvadzat aj rok.
+    /// </summary>
     private bool DateUnique(DateTime date)
     {
         var count = 0;
 
-        for (var i = DateFrom.Year; i <= DateTo.Year; i++)
+        for (var year = DateFrom.Year; year <= DateTo.Year; year++)
         {
-            try
-            {
-                date = new DateTime(i, date.Month, date.Day);
+            // 29.2. v nepriestupnom roku neexistuje
+            if (date.Day > DateTime.DaysInMonth(year, date.Month))
+                continue;
 
-                if (date >= DateFrom && date <= DateTo)
-                    count++;
-            }
-            catch (Exception)
-            {
-                /* ignored*/
-            }
+            var candidate = new DateTime(year, date.Month, date.Day);
+
+            if (candidate >= DateFrom && candidate <= DateTo)
+                count++;
         }
 
         return count <= 1;
     }
 
+    /// <summary>
+    ///     Rozlozi text poznamky na useky a vysledok zapise do bitoveho pola.
+    /// </summary>
     private void ParseText()
     {
-        var from = new DateTime();
-        var to = new DateTime();
-        DayType days = 0;
-        var level = Level.Runs;
-        var dateLevel = DateLevel.Date;
+        var state = new ParseState();
 
         while (SkipWhiteSpace())
         {
             var token = ExtractToken();
-            var exit = false;
-            var changePosition = true;
 
-            if (token != ",")
+            if (token != "," && TryReadToken(token, state))
             {
-                if (TokenIsMsg(token, Message.And))
-                {
-                    FlushData(level, ref from, ref to, ref days, ref dateLevel, true);
-                }
-                else if (TokenIsMsg(token, Message.Runs, Message.RunsAlt))
-                {
-                    FlushData(level, ref from, ref to, ref days, ref dateLevel, false);
-                    level = Level.Runs;
-                    dateLevel = DateLevel.Date;
-                }
-                else if (TokenIsMsg(token, Message.RunsNot, Message.RunsNotAlt))
-                {
-                    FlushData(level, ref from, ref to, ref days, ref dateLevel, false);
-                    level = Level.RunsNot;
-                    dateLevel = DateLevel.Date;
-                }
-                else if (TokenIsMsg(token, Message.From))
-                {
-                    dateLevel = DateLevel.From;
-                }
-                else if (TokenIsMsg(token, Message.To))
-                {
-                    dateLevel = DateLevel.To;
-                }
-                else if (TokenIsMsg(token, Message.On))
-                {
-                    dateLevel = DateLevel.On;
-                    days = DayType.None;
-                }
-                else if (dateLevel == DateLevel.On)
-                {
-                    days |= GetDayType(token);
-                }
-                else
-                {
-                    var lastDate = new DateTime();
-                    if (IsDayType(token) || IsDayRange(token))
-                    {
-                        dateLevel = DateLevel.On;
-                        days = DayType.None;
-                        changePosition = false;
-                    }
-                    else
-                    {
-                        lastDate = GetDate(token, lastDate, dateLevel == DateLevel.To);
-                        if (dateLevel != DateLevel.From)
-                        {
-                            if (dateLevel != DateLevel.To)
-                            {
-                                from = lastDate;
-                                to = lastDate;
-                            }
-                            else
-                                to = lastDate;
-                        }
-                        else
-                            from = lastDate;
-                    }
-                }
-
-                if (changePosition)
-                {
-                    _position += token.Length;
-                    exit = true;
-                }
-            }
-
-            if (exit)
-                continue;
-
-            if (dateLevel != DateLevel.On)
-            {
-                FlushData(level, ref from, ref to, ref days, ref dateLevel, false);
                 _position += token.Length;
                 continue;
             }
 
-            var s = "??";
-            var i = _position;
-            _position += token.Length;
-
-            if (SkipWhiteSpace()) 
-                s = ExtractToken();
-
-            _position = i;
-            if (s.Length > 1 && (s.IndexOf('-') < 0 || s.Length != 3))
+            // ciarka mimo zoznamu dni ukoncuje usek
+            if (state.DateLevel != DateLevel.On)
             {
-                FlushData(level, ref from, ref to, ref days, ref dateLevel, false);
+                FlushData(state, false);
                 _position += token.Length;
                 continue;
             }
+
+            // v zozname dni sa usek ukonci az vtedy, ked dalsi token uz nie je pevny kod dna
+            if (!NextTokenIsDayCode(token))
+                FlushData(state, false);
 
             _position += token.Length;
         }
 
-        FlushData(level, ref from, ref to, ref days, ref dateLevel, false);
-        FlushData(level);
+        FlushData(state, false);
+        ApplyParsedData(state.Level);
     }
 
-    private void FlushData(Level level, ref DateTime from, ref DateTime to, ref DayType days, ref DateLevel dateLevel, bool and)
+    /// <summary>
+    ///     Spracuje jeden token textu poznamky.
+    /// </summary>
+    /// <returns>
+    ///     <see langword="false"/>, ak token len prepol parser do rezimu zoznamu dni a este sa ma
+    ///     posudit v kontexte nasledujuceho tokenu.
+    /// </returns>
+    private bool TryReadToken(string token, ParseState state)
     {
-        if (from == DateTime.MinValue && to == DateTime.MinValue && days == DayType.None) 
+        if (TokenIsMsg(token, Message.And))
+            FlushData(state, true);
+        else if (TokenIsMsg(token, Message.Runs, Message.RunsAlt))
+        {
+            FlushData(state, false);
+            state.Level = Level.Runs;
+            state.DateLevel = DateLevel.Date;
+        }
+        else if (TokenIsMsg(token, Message.RunsNot, Message.RunsNotAlt))
+        {
+            FlushData(state, false);
+            state.Level = Level.RunsNot;
+            state.DateLevel = DateLevel.Date;
+        }
+        else if (TokenIsMsg(token, Message.From))
+            state.DateLevel = DateLevel.From;
+        else if (TokenIsMsg(token, Message.To))
+            state.DateLevel = DateLevel.To;
+        else if (TokenIsMsg(token, Message.On))
+        {
+            state.DateLevel = DateLevel.On;
+            state.Days = DayType.None;
+        }
+        else if (state.DateLevel == DateLevel.On)
+            state.Days |= GetDayType(token);
+        else if (IsDayType(token) || IsDayRange(token))
+        {
+            // pevny kod dna bez uvodnej predlozky
+            state.DateLevel = DateLevel.On;
+            state.Days = DayType.None;
+            return false;
+        }
+        else
+            ReadDate(token, state);
+
+        return true;
+    }
+
+    /// <summary>
+    ///     Zapise datum z tokenu do stavu parsera podla toho, ci ide o "od", "do", alebo o jeden den.
+    /// </summary>
+    private void ReadDate(string token, ParseState state)
+    {
+        var date = GetDate(token, state.DateLevel == DateLevel.To);
+
+        switch (state.DateLevel)
+        {
+            case DateLevel.From:
+                state.From = date;
+                break;
+            case DateLevel.To:
+                state.To = date;
+                break;
+            default:
+                state.From = date;
+                state.To = date;
+                break;
+        }
+    }
+
+    /// <summary>
+    ///     Nazrie za zadany token bez posunutia pozicie a vrati, ci nasledujuci token este patri do
+    ///     zoznamu pevnych kodov dni (jednoznakovy kod alebo rozsah tvaru "1-5").
+    /// </summary>
+    private bool NextTokenIsDayCode(string token)
+    {
+        var position = _position;
+        _position += token.Length;
+
+        var next = SkipWhiteSpace() ? ExtractToken() : "??";
+        _position = position;
+
+        return next.Length <= 1 || next.IndexOf('-') >= 0 && next.Length == 3;
+    }
+
+    /// <summary>
+    ///     Ulozi rozparsovany usek a pripravi stav parsera na dalsi usek.
+    /// </summary>
+    /// <param name="state">Stav parsera.</param>
+    /// <param name="and">Usek je s nasledujucim usekom spojeny spojkou "a".</param>
+    private void FlushData(ParseState state, bool and)
+    {
+        if (state.From == DateTime.MinValue && state.To == DateTime.MinValue && state.Days == DayType.None)
             return;
 
-        var o = new ParseData
+        var data = new ParseData
         {
-            From = from,
-            To = to,
-            Level = level,
-            Days = days,
+            From = state.From,
+            To = state.To,
+            Level = state.Level,
+            Days = state.Days,
             And = and
         };
 
-        if (days != DayType.None)
-        {
-            var i = _parsedData.Count - 1;
-            while (i >= 0 && _parsedData[i].And && _parsedData[i].Days == DayType.None)
-            {
-                _parsedData[i].Days = days;
-                i--;
-            }
-        }
+        // pevne kody dni sa uvadzaju az za poslednym usekom, plati vsak pre vsetky useky spojene spojkou "a"
+        if (state.Days != DayType.None)
+            for (var i = _parsedData.Count - 1; i >= 0 && _parsedData[i].And && _parsedData[i].Days == DayType.None; i--)
+                _parsedData[i].Days = state.Days;
 
-        _parsedData.Add(o);
+        _parsedData.Add(data);
 
-        from = DateTime.MinValue;
-        to = DateTime.MinValue;
-        days = DayType.None;
-        dateLevel = DateLevel.Date;
+        state.From = DateTime.MinValue;
+        state.To = DateTime.MinValue;
+        state.Days = DayType.None;
+        state.DateLevel = DateLevel.Date;
     }
 
-    private void FlushData(Level level)
+    /// <summary>
+    ///     Prenesie vsetky rozparsovane useky do bitoveho pola.
+    /// </summary>
+    private void ApplyParsedData(Level level)
     {
         if (_parsedData.Count == 0)
-        {
-            var from = DateFrom;
-            var to = new DateTime();
-            DayType days = 0;
-            DateLevel dateLevel = 0;
-
-            FlushData(level, ref from, ref to, ref days, ref dateLevel, false);
-        }
+            FlushData(new ParseState { Level = level, From = DateFrom }, false);
 
         for (var i = 0; i < _parsedData.Count; i++)
         {
             var parseData = _parsedData[i];
 
+            // poznamka zacinajuca "nejde" znamena, ze vlak inak ide kazdy den
             if (i == 0 && parseData.Level == Level.RunsNot)
-                for (var j = 0; j <= MaxDay; j++)
-                    _bits[j] = true;
+                _bits.SetAll(true);
 
             if (parseData.From == DateTime.MinValue)
                 parseData.From = DateFrom;
@@ -1821,12 +1823,19 @@ internal class DateLimit
             if (parseData.To == DateTime.MinValue)
                 parseData.To = DateTo;
 
-            for (var k = DateDiff(DateFrom, parseData.From); k <= DateDiff(DateFrom, parseData.To); k++)
-                if (k >= 0 && k <= MaxDay && (parseData.Days == DayType.None || (GetDayType(k, true) & parseData.Days) != DayType.None))
-                    _bits[k] = parseData.Level == Level.Runs;
+            var lastDay = DateDiff(DateFrom, parseData.To);
+
+            for (var day = DateDiff(DateFrom, parseData.From); day <= lastDay; day++)
+                if (day >= 0 && day <= MaxDay &&
+                    (parseData.Days == DayType.None || (GetDayType(day, true) & parseData.Days) != DayType.None))
+                    _bits[day] = parseData.Level == Level.Runs;
         }
     }
 
+    /// <summary>
+    ///     Posunie poziciu na najblizsi neprazdny znak.
+    /// </summary>
+    /// <returns><see langword="true"/>, ak v texte este nejaky znak zostal.</returns>
     private bool SkipWhiteSpace()
     {
         while (_position < _text.Length && _text[_position] <= ' ')
@@ -1835,6 +1844,10 @@ internal class DateLimit
         return _position < _text.Length;
     }
 
+    /// <summary>
+    ///     Vrati token na aktualnej pozicii bez toho, aby poziciu posunul. Tokenom je bud samotna
+    ///     ciarka, alebo znaky az po najblizsiu medzeru ci ciarku.
+    /// </summary>
     private string ExtractToken()
     {
         var pos = _position + 1;
@@ -1845,125 +1858,119 @@ internal class DateLimit
         return _text.Substring(_position, pos - _position);
     }
 
+    /// <summary>
+    ///     Vrati, ci token zodpoveda niektorej zo zadanych sprav.
+    /// </summary>
     private static bool TokenIsMsg(string token, params Message[] msgs)
     {
-        var i = 0;
-
-        while (i < msgs.Length)
+        foreach (var msg in msgs)
         {
-            if (string.Equals(token, MsgText(msgs[i]).Trim(), StringComparison.OrdinalIgnoreCase)) 
+            if (string.Equals(token, MsgText(msg).Trim(), StringComparison.OrdinalIgnoreCase))
                 return true;
 
-            var pattern = MessagesRegex[(int)msgs[i]];
-            if (string.IsNullOrEmpty(pattern) || token.Contains(" ") && !pattern.Contains(" ") || !Regex.Match(token, pattern).Success)
-            {
-                i++;
+            if (!MessagePatterns.TryGetValue(msg, out var pattern))
                 continue;
-            }
 
-            return true;
+            // jednoslovny vzor nesmie zabrat viacslovny token
+            if (token.Contains(" ") && !pattern.Contains(" "))
+                continue;
+
+            if (Regex.IsMatch(token, pattern))
+                return true;
         }
 
         return false;
     }
 
-    private static bool IsDayType(string token) => token.ToUpper().TrimEnd(DAY_TYPE_SIGNS.ToCharArray()).Length == 0;
+    /// <summary>
+    ///     Vrati, ci je token zlozeny len z pevnych kodov dni.
+    /// </summary>
+    private static bool IsDayType(string token) => token.ToUpper().All(c => DayTypeSigns.IndexOf(c) >= 0);
 
-    private static bool IsDayRange(string token) => token.Length == 3 && token[1] == '-' && char.IsDigit(token[0]) && char.IsDigit(token[2]);
+    /// <summary>
+    ///     Vrati, ci je token rozsah dni v tvare "1-5".
+    /// </summary>
+    private static bool IsDayRange(string token) =>
+        token.Length == 3 && token[1] == '-' && char.IsDigit(token[0]) && char.IsDigit(token[2]);
 
+    /// <summary>
+    ///     Prevedie pevny kod dni ("1", "X+", "1-5") na priznaky typov dni.
+    /// </summary>
     private DayType GetDayType(string token)
     {
         token = token.ToUpper();
 
         if (IsDayType(token))
-            return token.Aggregate(DayType.None, (current, c) => current | (DayType) (1 << DAY_TYPE_SIGNS.IndexOf(c)));
-        var i = DAY_TYPE_SIGNS.IndexOf(token[0]);
+            return token.Aggregate(DayType.None, (current, c) => current | (DayType)(1 << DayTypeSigns.IndexOf(c)));
 
-        switch (token.Length)
+        var first = DayTypeSigns.IndexOf(token[0]);
+
+        // rozsah dni - jeho zaciatok musi lezat pred nedelou
+        if (token.Length == 3 && token[1] == '-' && first < 6)
         {
-            case 1 when i >= 0:
-                return (DayType)(1 << i);
-            case 3 when token[1] == '-' && i < 6:
+            var last = WeekDaySigns.IndexOf(token[2]);
+
+            if (last > first)
             {
-                var j = "1234567".IndexOf(token[2]);
-                if (j > i)
-                {
-                    DayType dayType = 0;
-                    while (i <= j)
-                    {
-                        dayType |= (DayType)(1 << i);
-                        i++;
-                    }
+                var range = DayType.None;
 
-                    return dayType;
-                }
+                for (var i = first; i <= last; i++)
+                    range |= (DayType)(1 << i);
 
-                break;
+                return range;
             }
         }
 
         throw new ParseException($"Chybný pevný kód dňa {token}.", _position);
     }
 
-    // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
-    private DateTime GetDate(string token, DateTime lastDate, bool checkLast)
+    /// <summary>
+    ///     Prevedie token na datum. Rok sa v poznamke uvadzat nemusi - vtedy sa odvodi z platnosti grafikonu.
+    /// </summary>
+    /// <param name="token">Token s datumom.</param>
+    /// <param name="checkLast">Token je koncovym datumom obdobia.</param>
+    private DateTime GetDate(string token, bool checkLast)
     {
         if (token.IndexOf('-') >= 0)
             throw new ParseException("Pre interval dát použite od ... do ..., nie -.", _position);
 
-        var i = token.IndexOf('.');
+        var dotIndex = token.IndexOf('.');
 
-        if (i < 0 || !int.TryParse(token.Substring(0, i), out var day) || day is <= 0 or > 31)
+        if (dotIndex < 0 || !int.TryParse(token.Substring(0, dotIndex), out var day) || day is <= 0 or > 31)
             throw new ParseException($"Chybný dátum {token}.", _position);
 
-        string s;
-        if (i + 1 < token.Length)
-        {
-            s = token.Substring(i + 1);
-        }
+        string rest;
+
+        if (dotIndex + 1 < token.Length)
+            rest = token.Substring(dotIndex + 1);
         else
         {
-            s = _text.Substring(_position + token.Length);
+            // den je uvedeny samostatne (napr. "1.,5.I."), mesiac sa hlada v zvysku textu
+            rest = _text.Substring(_position + token.Length);
+            var match = Regex.Match(rest, "\\.[0-9IXV]+\\.");
 
-            var oMatch = Regex.Match(s, "\\.[0-9IXV]+\\.");
-
-            if (oMatch.Success)
-                s = oMatch.Index + oMatch.Value.Length + 4 > s.Length
-                    ? oMatch.Value.Substring(1)
-                    : s.Substring(oMatch.Index + 1, oMatch.Value.Length + 3);
+            if (!match.Success)
+                rest = "";
             else
-                s = "";
+                rest = match.Index + match.Value.Length + 4 > rest.Length
+                    ? match.Value.Substring(1)
+                    : rest.Substring(match.Index + 1, match.Value.Length + 3);
         }
 
-        var j = s.IndexOf('.');
+        var monthEnd = rest.IndexOf('.');
 
-        if (j < 0) 
+        if (monthEnd < 0)
             throw new ParseException($"Chybný dátum {token}.", _position);
 
-        var lastDateOrig = lastDate;
-        var month = GetMonth(s.Substring(0, j));
-        var yearSet = int.TryParse(s.Substring(j + 1), out var year) && year is >= 2000 and < 2100;
+        var month = GetMonth(rest.Substring(0, monthEnd));
+        var yearSet = int.TryParse(rest.Substring(monthEnd + 1), out var year) && year is >= 2000 and < 2100;
 
         if (!yearSet)
-        {
-            if (lastDate == DateTime.MinValue)
-                lastDate = DateFrom;
+            year = month < DateFrom.Month || month == DateFrom.Month && day < DateFrom.Day
+                ? DateFrom.Year + 1
+                : DateFrom.Year;
 
-            if (month < lastDate.Month || month == lastDate.Month && day < lastDate.Day)
-                year = lastDate.Year + 1;
-            else
-                year = lastDate.Year;
-        }
-
-        DateTime date;
-        try
-        {
-            date = new DateTime(year, month, day);
-        }
-        catch (Exception)
-        {
-            throw new ParseException($"Chybný dátum {token}.", _position);
-        }
+        var date = CreateDate(year, month, day, token);
 
         if (date > DateTo && !yearSet)
         {
@@ -1975,113 +1982,143 @@ internal class DateLimit
                 throw new ParseException($"Koncový dátum {FormatDate(date)} je mimo rozsahu platnosti grafikonu.", _position);
             }
 
-            try
-            {
-                date = new DateTime(year - 1, month, day);
-            }
-            catch (Exception)
-            {
-                throw new ParseException($"Chybný dátum {token}.", _position);
-            }
+            date = CreateDate(year - 1, month, day, token);
         }
 
-        if (date < DateFrom || date > DateTo)
-        {
-            if (!_skipDateRangeCheck)
-                throw new ParseException($"Dátum {FormatDate(date)} je mimo rozsahu platnosti grafikonu.", _position);
+        if (date >= DateFrom && date <= DateTo)
+            return date;
 
-            if (lastDateOrig == DateTime.MinValue && !yearSet && date < DateFrom &&
-                DateFrom.Subtract(date).TotalDays > date.AddYears(1).Subtract(DateTo).TotalDays)
-            {
-                date = date.AddYears(1);
-            }
-        }
+        if (!_skipDateRangeCheck)
+            throw new ParseException($"Dátum {FormatDate(date)} je mimo rozsahu platnosti grafikonu.", _position);
+
+        // datum bez roku sa posunie o rok dopredu, ak tak lezi blizsie k platnosti grafikonu
+        if (!yearSet && date < DateFrom &&
+            DateFrom.Subtract(date).TotalDays > date.AddYears(1).Subtract(DateTo).TotalDays)
+            date = date.AddYears(1);
 
         return date;
-
     }
 
+    /// <summary>
+    ///     Vytvori datum a neplatnu kombinaciu prevedie na <see cref="ParseException"/>.
+    /// </summary>
+    private DateTime CreateDate(int year, int month, int day, string token)
+    {
+        try
+        {
+            return new DateTime(year, month, day);
+        }
+        catch (Exception)
+        {
+            throw new ParseException($"Chybný dátum {token}.", _position);
+        }
+    }
+
+    /// <summary>
+    ///     Prevedie cislo mesiaca alebo jeho rimsku cislicu na cislo mesiaca.
+    /// </summary>
     private int GetMonth(string month)
     {
-        if (int.TryParse(month, out var monthIndex))
-            return monthIndex;
+        if (int.TryParse(month, out var number))
+            return number;
 
-        var i = Array.IndexOf(MessagesCz, month.ToUpper(), 23);
+        // rimske cislice mesiacov su na konci pola sprav, hlada sa az od nich (znak "X" je aj kodom pracovneho dna)
+        var index = Array.IndexOf(MessagesCz, month.ToUpper(), (int)Message.Jan);
 
-        if (i is < 23 or > 34)
+        if (index is < (int)Message.Jan or > (int)Message.Dec)
             throw new ParseException($"Neplatný mesiac {month}.", _position);
 
-        return i - 23 + 1;
+        return index - (int)Message.Jan + 1;
     }
 
+    /// <summary>
+    ///     Vrati cislo mesiaca ako rimsku cislicu alebo ako cislo podla nastavenia.
+    /// </summary>
     private string MsgMonth(int month) => _monthRoman ? MsgText(Message.Jan + month - 1) : month.ToString();
 
+    /// <summary>
+    ///     Vrati nazov typu dna, pripadne obaleny znackami {}. Dlzka znaciek sa pripocita
+    ///     k <see cref="_marksLength"/>, aby sa nezapocitala do dlzky poznamky.
+    /// </summary>
     private string MsgDayType(Message message)
     {
-        if (!InsertMarks) 
+        if (!InsertMarks)
             return MsgText(message);
 
-        _decorLength += 2;
+        _marksLength += 2;
         return "{" + MsgText(message) + "}";
     }
 
+    /// <summary>
+    ///     Vrati typ zadaneho dna - den v tyzdni a pripadne aj priznak pracovneho dna alebo sviatku.
+    /// </summary>
     private DayType GetDayType(DateTime date, bool forceSpecDays = false)
     {
         var dayType = (DayType)(1 << (int)GetDayIndex(date));
 
-        if (!_specDays && !forceSpecDays) 
+        if (!_specDays && !forceSpecDays)
             return dayType;
 
         if (IsHoliday(date))
             dayType |= DayType.Holiday;
-
         else if (dayType <= DayType.Friday)
             dayType |= DayType.Workday;
 
         return dayType;
     }
 
+    /// <inheritdoc cref="GetDayType(DateTime,bool)"/>
     private DayType GetDayType(int day, bool forceSpecDays = false) => GetDayType(DateFrom.AddDays(day), forceSpecDays);
 
-    private static DayType GetDayType(IReadOnlyList<int> okCount)
+    /// <summary>
+    ///     Vrati typy dni, ktore maju v pocitadle nenulovu hodnotu.
+    /// </summary>
+    private static DayType GetDayType(DayCounter okCount)
     {
-        var i = DayIndex.Monday;
-        DayType dayType = 0;
+        var dayType = DayType.None;
 
-        do
-        {
-            if (okCount[(int)i] != 0)
-                dayType |= (DayType)(1 << (int)i);
-
-            i++;
-        } while (i <= DayIndex.Holiday);
+        for (var index = DayIndex.Monday; index <= DayIndex.Holiday; index++)
+            if (okCount[index] != 0)
+                dayType |= (DayType)(1 << (int)index);
 
         return dayType;
     }
 
+    /// <summary>
+    ///     Vrati <paramref name="dayType"/>, ak sa v obdobi vyskytuje aspon jeden den mimo tychto typov,
+    ///     inak <see cref="DayType.None"/> - typy dni potom netreba v poznamke uvadzat.
+    /// </summary>
     private DayType CheckDayType(int dayFrom, int dayTo, DayType dayType)
     {
         while (dayFrom <= dayTo)
         {
             if ((GetDayType(dayFrom) & dayType) == DayType.None)
                 return dayType;
+
             dayFrom++;
         }
 
         return DayType.None;
     }
 
+    /// <summary>
+    ///     Prevedie datum na index dna v tyzdni, kde pondelok je 0.
+    /// </summary>
     private static DayIndex GetDayIndex(DateTime date) => (DayIndex)date.AddDays(-1).DayOfWeek;
 
-    private DayIndex GetDayIndex(int day, int isFc)
+    /// <summary>
+    ///     Vrati index dna pouzity pri porovnavani. Pri zluceni na pracovne dni a sviatky vrati
+    ///     <see cref="DayIndex.Workday"/> alebo <see cref="DayIndex.Holiday"/> namiesto dna v tyzdni.
+    /// </summary>
+    private DayIndex GetDayIndex(int day, DayGrouping grouping)
     {
         var date = DateFrom.AddDays(day);
         var index = GetDayIndex(date);
 
-        if (isFc == 0 || !_specDays)
+        if (grouping == DayGrouping.None || !_specDays)
             return index;
 
-        if (index == DayIndex.Saturday && (isFc & 32) != 0)
+        if (index == DayIndex.Saturday && (grouping & DayGrouping.KeepSaturday) != 0)
             return index;
 
         if (IsHoliday(date))
@@ -2096,82 +2133,12 @@ internal class DateLimit
     /// </summary>
     /// <param name="day">Index dna.</param>
     /// <returns>Index nasledujuceho dna.</returns>
-    private static DayIndex GetNextDayIndex(DayIndex day)
-    {
-        if (day >= DayIndex.Sunday)
-            return DayIndex.Monday;
-
-        return day + 1;
-    }
-
-    public static bool IsHoliday(DateTime date)
-    {
-        if (date.DayOfWeek == DayOfWeek.Sunday)
-            return true;
-
-        var d = date.Day;
-        var m = date.Month;
-        switch (Loc)
-        {
-            case Locale.Cz:
-                if (d == 1  && m == 1  || // 1.1.
-                    d == 1  && m == 5  || // 1.5.
-                    d == 8  && m == 5  || // 8.5.
-                    d == 5  && m == 7  || // 5.7.
-                    d == 6  && m == 7  || // 6.7.
-                    d == 28 && m == 9  || // 28.9.
-                    d == 28 && m == 10 || // 28.10.
-                    d == 17 && m == 11 || // 17.11.
-                    d == 24 && m == 12 || // 24.12.
-                    d == 25 && m == 12 || // 25.12.
-                    d == 26 && m == 12)   // 26.12.
-                    return true;
-                break;
-            case Locale.Sk:
-                if (d == 1  && m == 1  || // 1.1.
-                    d == 6  && m == 1  || // 6.1.
-                    d == 1  && m == 5  || // 1.5.
-                    d == 8  && m == 5  || // 8.5.
-                    d == 5  && m == 7  || // 5.7. 
-                    d == 29 && m == 8  || // 29.8.
-                    d == 1  && m == 9  || // 1.9. 
-                    d == 15 && m == 9  || // 15.9.
-                    d == 1  && m == 11 || // 1.11.
-                    d == 17 && m == 11 || // 17.11.
-                    d == 24 && m == 12 || // 24.12.
-                    d == 25 && m == 12 || // 25.12.
-                    d == 26 && m == 12)   // 26.12.
-                    return true;
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-
-        //ak mesiac nie je marec alebo april (kvoli velkej noci)
-        if (m is not (3 or 4)) 
-            return false;
-
-        switch (date.DayOfWeek)
-        {
-            case DayOfWeek.Friday:
-            {
-                GetEasterMonday(date.Year, out var day, out var month);
-                return date.AddDays(3).Day == day && date.AddDays(3).Month == month;
-            }
-            case DayOfWeek.Monday:
-            {
-                GetEasterMonday(date.Year, out var day, out var month);
-                return d == day && m == month;
-            }
-            default:
-                return false;
-        }
-    }
+    private static DayIndex GetNextDayIndex(DayIndex day) => day >= DayIndex.Sunday ? DayIndex.Monday : day + 1;
 
     /// <summary>
-    ///     Vrati mesiac a den velkonocneho pondelka v roku <paramref name="year"/>.
+    ///     Vrati datum Velkonocneho pondelka v zadanom roku (Gaussov velkonocny algoritmus).
     /// </summary>
-    private static void GetEasterMonday(int year, out int month, out int day)
+    private static DateTime GetEasterMonday(int year)
     {
         var a = year % 19;
         var b = year / 100;
@@ -2184,10 +2151,16 @@ internal class DateLimit
         var i = (19 * a + b - d - h + 15) % 30;
         var j = (a + 11 * i) / 319;
         var k = (2 * e + 2 * f - g - i + j + 32) % 7;
-        month = (i - j + k + 91) / 25;
-        day = (i - j + k + 20 + month) % 32;
+
+        var month = (i - j + k + 91) / 25;
+        var day = (i - j + k + 20 + month) % 32;
+
+        return new DateTime(year, month, day);
     }
 
+    /// <summary>
+    ///     Chyba pri parsovani textu poznamky.
+    /// </summary>
     public class ParseException : Exception
     {
         public ParseException(string message, int pos) : base(message) => Position = pos;
@@ -2213,6 +2186,9 @@ internal class DateLimit
         RunsNot
     }
 
+    /// <summary>
+    ///     Cast poznamky, ku ktorej sa vztahuje prave spracovany token.
+    /// </summary>
     private enum DateLevel
     {
         Date,
@@ -2221,13 +2197,63 @@ internal class DateLimit
         On
     }
 
+    /// <summary>
+    ///     Sposob, akym sa dni zlucuju pri hladani tyzdenneho vzoru.
+    /// </summary>
+    [Flags]
+    private enum DayGrouping
+    {
+        /// <summary>
+        ///     Dni sa posudzuju podla dna v tyzdni.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        ///     Dni sa zlucuju na pracovne dni a sviatky.
+        /// </summary>
+        WorkdayHoliday = 1,
+
+        /// <summary>
+        ///     Sobota sa aj napriek zluceniu posudzuje samostatne.
+        /// </summary>
+        KeepSaturday = 32
+    }
+
+    /// <summary>
+    ///     Pocitadlo dni pre kazdu polozku <see cref="DayIndex"/>.
+    /// </summary>
+    private sealed class DayCounter
+    {
+        private readonly int[] _counts = new int[DayIndexCount];
+
+        public int this[DayIndex index]
+        {
+            get => _counts[(int)index];
+            set => _counts[(int)index] = value;
+        }
+
+        /// <summary>
+        ///     Vrati, ci su vsetky pocitadla nulove.
+        /// </summary>
+        public bool AllZero => _counts.All(count => count == 0);
+
+        public void Clear() => Array.Clear(_counts, 0, _counts.Length);
+    }
+
+    /// <summary>
+    ///     Jeden usek datumoveho obmedzenia - obdobie, typy dni a vynimky z nich.
+    /// </summary>
     private class DateLimitInfo
     {
+        /// <summary>Zoznam obdobi, kedy vlak navyse ide.</summary>
+        public List<DateLimitInfo> ListRuns;
+
+        /// <summary>Zoznam obdobi, kedy vlak nejde.</summary>
+        public List<DateLimitInfo> ListRunsNot;
+
         public int From;
         public int To;
         public DayType Type;
-        public List<DateLimitInfo> ListRuns;
-        public List<DateLimitInfo> ListRunsNot;
 
         public DateLimitInfo()
         {
@@ -2241,25 +2267,36 @@ internal class DateLimit
             To = dayTo;
         }
 
+        /// <summary>Su nastavene vsetky dni v tyzdni, alebo pracovne dni spolu so sviatkami.</summary>
         public bool AllIsSet => (Type & DayType.All1) == DayType.All1 || (Type & DayType.All2) == DayType.All2;
 
+        /// <summary>Typy dni treba v poznamke uviest.</summary>
         public bool HaveDays => !AllIsSet && Type > DayType.None;
 
         public bool Runs => ListRuns.Count > 0;
 
         public bool RunsNot => ListRunsNot.Count > 0;
 
+        /// <summary>
+        ///     Pokusi sa pripojit nasledujuci usek k tomuto useku.
+        /// </summary>
+        /// <returns><see langword="true"/>, ak sa useky podarilo spojit.</returns>
         public bool Merge(DateLimitInfo info)
         {
-            if ((!HaveDays || Type != info.Type || To + 60 <= info.From || !Runs && !info.Runs && !RunsNot && !info.RunsNot) &&
-                (info.HaveDays || info.From != 0 || info.To != 0)) 
+            // useky sa spoja bud ak maju rovnake typy dni a lezia dostatocne blizko pri sebe,
+            // alebo ak pripojeny usek neurcuje ziadne vlastne obdobie
+            var compatible = HaveDays && Type == info.Type && To + MaxMergeGap > info.From &&
+                             (Runs || info.Runs || RunsNot || info.RunsNot);
+            var isEmpty = !info.HaveDays && info.From == 0 && info.To == 0;
+
+            if (!compatible && !isEmpty)
                 return false;
 
             if (info.To != 0 || info.From != 0)
             {
-                if (Runs)
-                    if (ListRuns.Any(o => o.From > To && o.From < info.From || o.To > To && o.To < info.From))
-                        return false;
+                // medzera medzi usekmi sa zapise ako obdobie, kedy vlak nejde
+                if (Runs && ListRuns.Any(run => run.From > To && run.From < info.From || run.To > To && run.To < info.From))
+                    return false;
 
                 ListRunsNot.Add(new DateLimitInfo(To + 1, info.From - 1));
                 To = info.To;
@@ -2285,6 +2322,21 @@ internal class DateLimit
         }
     }
 
+    /// <summary>
+    ///     Priebezny stav parsera textovej poznamky.
+    /// </summary>
+    private sealed class ParseState
+    {
+        public DayType Days;
+        public DateLevel DateLevel = DateLevel.Date;
+        public DateTime From;
+        public Level Level = Level.Runs;
+        public DateTime To;
+    }
+
+    /// <summary>
+    ///     Jeden rozparsovany usek poznamky.
+    /// </summary>
     private class ParseData
     {
         public bool And;
@@ -2307,7 +2359,11 @@ internal class DateLimit
         Sunday = 64,
         Workday = 128,
         Holiday = 256,
+
+        /// <summary>Vsetky dni v tyzdni.</summary>
         All1 = 127,
+
+        /// <summary>Sobota, pracovne dni a sviatky.</summary>
         All2 = 416
     }
 
@@ -2321,7 +2377,6 @@ internal class DateLimit
         Saturday,
         Sunday,
         Workday,
-        Holiday,
-        Max = MINWEEKDAYS
+        Holiday
     }
 }
