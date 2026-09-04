@@ -127,26 +127,13 @@ public partial class FMain : Form
     private void FMain_Load(object sender, EventArgs e)
     {
         AppRegistry.RegisterJumpList();
-        var args = Environment.GetCommandLineArgs().Skip(1);
-        string path = null;
-        foreach (var arg in args)
-        {
-            if (!arg.StartsWith("/") && !arg.StartsWith("-"))
-            {
-                path = arg;
-            }
-        }
 
-        if (path != null)
-        {
+        var path = Utils.GetProjectPathFromArgs();
+        if (path is null && GlobData.Config.Startup == StartupType.LastProject)
+            path = AppRegistry.GetLastProject();
+
+        if (!string.IsNullOrWhiteSpace(path))
             OpenRecentProject(path);
-        }
-        else if (GlobData.Config.Startup == StartupType.LastProject)
-        {
-            var p = AppRegistry.GetLastProject();
-            if (!string.IsNullOrWhiteSpace(p)) 
-                OpenRecentProject(p);
-        }
     }
 
     private bool DataSaved
