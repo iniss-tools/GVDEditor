@@ -126,7 +126,7 @@ internal class DateLimit
     }
 
     private static readonly string[] MessagesCz =
-    {
+    [
         // Error, Empty
         "chyba", "",
         // RunsDaily .. RunsAlt
@@ -137,10 +137,10 @@ internal class DateLimit
         "1", "2", "3", "4", "5", "6", "7", "X", "+",
         // Jan .. Dec
         "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"
-    };
+    ];
 
     private static readonly string[] MessagesSk =
-    {
+    [
         // Error, Empty
         "chyba", "",
         // RunsDaily .. RunsAlt
@@ -151,7 +151,7 @@ internal class DateLimit
         "1", "2", "3", "4", "5", "6", "7", "X", "+",
         // Jan .. Dec
         "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"
-    };
+    ];
 
     /// <summary>
     ///     Vzory, ktorymi sa pri parsovani rozpoznavaju sprAvy aj v skratenom alebo inojazycnom tvare.
@@ -172,15 +172,15 @@ internal class DateLimit
 
     /// <summary>Statne sviatky s pevnym datumom v tvare MMDD.</summary>
     private static readonly int[] FixedHolidaysCz =
-    {
+    [
         101, 501, 508, 705, 706, 928, 1028, 1117, 1224, 1225, 1226
-    };
+    ];
 
     /// <summary>Statne sviatky s pevnym datumom v tvare MMDD.</summary>
     private static readonly int[] FixedHolidaysSk =
-    {
+    [
         101, 106, 501, 508, 705, 829, 901, 915, 1101, 1117, 1224, 1225, 1226
-    };
+    ];
 
     /// <summary>
     ///     Vytvori novu instanciu triedy <see cref="DateLimit"/>.
