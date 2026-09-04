@@ -86,29 +86,7 @@ public partial class FMain : Form
         backgroundWorker1.DoWork += BackgroundWorker1_DoWork;
         backgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
 
-        var recentDirs = AppRegistry.GetOpenedProjects();
-
-        foreach (var dir in recentDirs)
-        {
-            var itemA = new ToolStripMenuItem(dir.Path);
-            var itemB = new ToolStripMenuItem(dir.Path);
-
-            itemA.Click += RecentDirsClick;
-            itemB.Click += RecentDirsClick;
-            tsmiRecent.DropDownItems.Add(itemA);
-            tssbRecentDirs.DropDownItems.Add(itemB);
-        }
-
-        if (recentDirs.Length == 0 || recentDirs[0].Path == "")
-        {
-            tsmiRecent.Enabled = false;
-            tssbRecentDirs.Enabled = false;
-        }
-        else
-        {
-            tsmiRecent.Enabled = true;
-            tssbRecentDirs.Enabled = true;
-        }
+        SetRecentProjects();
 
         if (tscbStanica.ComboBox != null) tscbStanica.ComboBox.DataSource = Stanice;
         if (tscbObdobie.ComboBox != null) tscbObdobie.ComboBox.DataSource = ObdobiaList;
@@ -888,6 +866,9 @@ public partial class FMain : Form
         foreach (ToolStripItem item in tssbStartINISS.DropDownItems) item.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Button.ForeColor;
 
         foreach (ToolStripItem item in tsmiRun.DropDownItems) item.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Button.ForeColor;
+
+        //otvoreny projekt sa presunul na zaciatok zoznamu poslednych projektov
+        SetRecentProjects();
     }
 
     private void InissStartItemOnClick(object sender, EventArgs e)
@@ -912,6 +893,34 @@ public partial class FMain : Form
                 if (result == DialogResult.Yes) _actualINISSProcess.Kill();
             }
         }
+    }
+
+    /// <summary>
+    ///     Naplní menu naposledy otvorenými projektmi zoradenými od naposledy otvoreného.
+    /// </summary>
+    private void SetRecentProjects()
+    {
+        tsmiRecent.DropDownItems.Clear();
+        tssbRecentDirs.DropDownItems.Clear();
+
+        var recentDirs = AppRegistry.GetOpenedProjects();
+
+        foreach (var dir in recentDirs)
+        {
+            var itemA = new ToolStripMenuItem(dir.Path);
+            var itemB = new ToolStripMenuItem(dir.Path);
+
+            itemA.Click += RecentDirsClick;
+            itemB.Click += RecentDirsClick;
+            itemA.ApplyThemeAndFont();
+            itemB.ApplyThemeAndFont();
+            tsmiRecent.DropDownItems.Add(itemA);
+            tssbRecentDirs.DropDownItems.Add(itemB);
+        }
+
+        var enabled = recentDirs.Length != 0 && recentDirs[0].Path != "";
+        tsmiRecent.Enabled = enabled;
+        tssbRecentDirs.Enabled = enabled;
     }
 
     private void RecentDirsClick(object sender, EventArgs e)
