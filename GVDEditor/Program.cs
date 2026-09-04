@@ -15,7 +15,7 @@ internal static class Program
     ///     The main entry point for the application.
     /// </summary>
     [STAThread]
-    private static void Main(string[] args)
+    private static void Main()
     {
         GlobSettings.LinkUpdater = "http://iniss.6f.sk/gvdeditor-updater/update.txt";
         AppInit.Initialization(out GlobData.Config, out GlobData.Styles, out GlobData.UsingStyle);
