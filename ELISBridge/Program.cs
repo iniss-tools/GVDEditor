@@ -13,21 +13,23 @@ internal static class Program
     private const string DefaultApp = @"C:\Program Files (x86)\Cestovné poriadky";
 
     private const string Usage =
-        "ELISBridge - vycitanie grafikonu z dat programu ELIS (Cestovne poriadky, CHAPS)\n" +
-        "\n" +
-        "  ELISBridge.exe --station <nazov> [--app <priecinok>] [--data <priecinok>] [--out <subor>]\n" +
-        "  ELISBridge.exe --list-stations [--app <priecinok>] [--data <priecinok>]\n" +
-        "\n" +
-        "  --station        nazov stanice, pre ktoru sa vlaky vycitaju\n" +
-        "  --app            priecinok s TT.dll (predvolene \"" + DefaultApp + "\")\n" +
-        "  --data           priecinok s .tt datami (predvolene <app>\\Data1)\n" +
-        "  --out            subor pre vysledne XML (bez neho ide na standardny vystup)\n" +
-        "  --reg            registracne cislo pre platene cestovne poriadky\n" +
-        "  --client         identifikacia klienta, ak ju platene data vyzaduju\n" +
-        "  --list-stations  vypise nazvy vsetkych stanic v datach\n" +
-        "\n" +
-        "Navratove kody: 0 = ok, 1 = chyba, 2 = ziadny cestovny poriadok,\n" +
-        "                3 = stanica nenajdena, 4 = chybne/chybajuce registracne cislo\n";
+        $"""
+         ELISBridge - vycitanie grafikonu z dat programu ELIS (Cestovne poriadky, CHAPS)
+                                    
+           ELISBridge.exe --station <nazov> [--app <priecinok>] [--data <priecinok>] [--out <subor>]
+           ELISBridge.exe --list-stations [--app <priecinok>] [--data <priecinok>]
+           
+         --station        nazov stanice, pre ktoru sa vlaky vycitaju
+         --app            priecinok s TT.dll (predvolene \"{DefaultApp}\")
+         --data           priecinok s .tt datami (predvolene <app>\\Data1)
+         --out            subor pre vysledne XML (bez neho ide na standardny vystup)
+         --reg            registracne cislo pre platene cestovne poriadky
+         --client         identifikacia klienta, ak ju platene data vyzaduju
+         --list-stations  vypise nazvy vsetkych stanic v datach
+         
+         Navratove kody: 0 = ok, 1 = chyba, 2 = ziadny cestovny poriadok,
+                         3 = stanica nenajdena, 4 = chybne/chybajuce registracne cislo
+         """;
 
     private static int Main(string[] args)
     {
