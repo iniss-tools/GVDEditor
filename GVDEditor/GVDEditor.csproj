@@ -12,6 +12,7 @@
 		<!-- Zodpovedá pôvodnému app.manifest dpiAware=true + App.config EnableWindowsFormsHighDpiAutoResizing=true
 		     (system-aware, nie PerMonitorV2 - zachovaná pôvodná škálovacia logika, pozri MIGRATION_PROGRESS.md). -->
 		<ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
+		<LangVersion>default</LangVersion>
 	</PropertyGroup>
 	<!-- ClickOnce publish nastavenia (pôvodne pre .NET Framework) - zachované pre kontinuitu,
 	     ale `dotnet publish` ClickOnce flow pre SDK-style .NET treba pred použitím overiť samostatne. -->

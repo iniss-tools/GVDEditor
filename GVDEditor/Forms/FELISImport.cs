@@ -1,5 +1,4 @@
-﻿using ExControls;
-using GVDEditor.Properties;
+﻿using GVDEditor.Properties;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
