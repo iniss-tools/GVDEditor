@@ -85,7 +85,7 @@ public partial class FTablePhysical : Form
         table.ID = decimal.ToInt32(nudID.Value);
         table.CommunicationPort = decimal.ToInt32(nudComPort.Value);
         table.RecCount = decimal.ToInt32(nudRecCount.Value);
-        table.TableCatalog = (TableCatalog)cbCatalogTable.SelectedItem;
+        table.TableCatalog = (TableCatalog)cbCatalogTable.SelectedItem!;
         table.Comment = tbComment.Text;
         var xml = tbXMLName.Text;
         table.SaveXML = string.IsNullOrEmpty(xml) ? "" : xml;

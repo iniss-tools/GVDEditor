@@ -17,5 +17,5 @@ public record StartupINISS
     ///     Argumenty prikazoveho riadka ako vstup pre program.
     /// </summary>
     [XmlElement("CmdArgs"), DefaultValue("")]
-    public string CmdArgs;
+    public string CmdArgs = "";
 }

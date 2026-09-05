@@ -208,28 +208,28 @@ internal static class TabTabACItems
     {
         var fields = typeof(TabTabACItems).GetFields(BindingFlags.Static | BindingFlags.Public);
 
-        return fields.Select(field => field.GetValue(null) as AutocompleteItem).ToList();
+        return fields.Select(field => (AutocompleteItem)field.GetValue(null)!).ToList();
     }
 
     public static IEnumerable<FunctionItem> GetFunctionItems()
     {
         var fields = typeof(TabTabACItems).GetFields(BindingFlags.Static | BindingFlags.Public);
 
-        return fields.Where(field => field.GetValue(null) is FunctionItem).Select(field => field.GetValue(null) as FunctionItem).ToList();
+        return fields.Where(field => field.GetValue(null) is FunctionItem).Select(field => (FunctionItem)field.GetValue(null)!).ToList();
     }
 
     public static IEnumerable<ConstantItem> GetConstantItems()
     {
         var fields = typeof(TabTabACItems).GetFields(BindingFlags.Static | BindingFlags.Public);
 
-        return fields.Where(field => field.GetValue(null) is ConstantItem).Select(field => field.GetValue(null) as ConstantItem).ToList();
+        return fields.Where(field => field.GetValue(null) is ConstantItem).Select(field => (ConstantItem)field.GetValue(null)!).ToList();
     }
 
     public static IEnumerable<EventItem> GetEventItems()
     {
         var fields = typeof(TabTabACItems).GetFields(BindingFlags.Static | BindingFlags.Public);
 
-        return fields.Where(field => field.GetValue(null) is EventItem).Select(field => field.GetValue(null) as EventItem).ToList();
+        return fields.Where(field => field.GetValue(null) is EventItem).Select(field => (EventItem)field.GetValue(null)!).ToList();
     }
 }
 

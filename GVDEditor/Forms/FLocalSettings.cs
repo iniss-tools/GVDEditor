@@ -167,7 +167,7 @@ public partial class FLocalSettings : Form
         }
         else
         {
-            gvdInfo.ThisStation = (Station)cbStationName.SelectedItem;
+            gvdInfo.ThisStation = (Station)cbStationName.SelectedItem!;
         }
 
         DialogResult = DialogResult.OK;
@@ -280,7 +280,7 @@ public partial class FLocalSettings : Form
     {
         if (listDopravcovia.SelectedIndex != -1)
         {
-            var dopravca = (Operator)listDopravcovia.SelectedItem;
+            var dopravca = (Operator)listDopravcovia.SelectedItem!;
             if (dopravca == Operator.None)
             {
                 bDopravcaEdit.Enabled = false;
@@ -356,7 +356,7 @@ public partial class FLocalSettings : Form
     {
         if (listNastupistia.SelectedIndex != -1)
         {
-            var nastupiste = (Platform)listNastupistia.SelectedItem;
+            var nastupiste = (Platform)listNastupistia.SelectedItem!;
 
             if (nastupiste == Platform.None)
             {
@@ -461,7 +461,7 @@ public partial class FLocalSettings : Form
     {
         if (listKolaje.SelectedIndex != -1)
         {
-            var kolaj = (Track)listKolaje.SelectedItem;
+            var kolaj = (Track)listKolaje.SelectedItem!;
 
             if (kolaj == Track.None)
             {
@@ -507,7 +507,7 @@ public partial class FLocalSettings : Form
             Key = tbKolajOznacenie.Text,
             FullName = tbKolajFullName.Text,
             SoundName = tbKolajSound.Text,
-            Platform = (Platform)cbNastupistia.SelectedItem
+            Platform = (Platform)cbNastupistia.SelectedItem!
         };
 
         foreach (var test in GlobData.Tracks)
@@ -518,7 +518,7 @@ public partial class FLocalSettings : Form
             }
 
         foreach (var item in clbKolajTables.CheckedItems) 
-            track.Tables.Add(item as TableLogical);
+            track.Tables.Add((TableLogical)item);
 
         GlobData.Tracks.Add(track);
 
@@ -547,11 +547,11 @@ public partial class FLocalSettings : Form
             track.Key = tbKolajOznacenie.Text;
             track.FullName = tbKolajFullName.Text;
             track.SoundName = tbKolajSound.Text;
-            track.Platform = (Platform)cbNastupistia.SelectedItem;
+            track.Platform = (Platform)cbNastupistia.SelectedItem!;
 
             track.Tables.Clear();
             foreach (var item in clbKolajTables.CheckedItems) 
-                track.Tables.Add(item as TableLogical);
+                track.Tables.Add((TableLogical)item);
 
             GlobData.Tracks.ResetBindings();
         }
@@ -921,7 +921,7 @@ public partial class FLocalSettings : Form
     {
         if (listFonts.SelectedIndex != -1)
         {
-            var tfont = (TableFont)listFonts.SelectedItem;
+            var tfont = (TableFont)listFonts.SelectedItem!;
             tbFontName.Text = tfont.Name;
             nudFontID.Value = tfont.FontID;
             tbFontFile.Text = tfont.FileName;
@@ -948,7 +948,7 @@ public partial class FLocalSettings : Form
         {
             Name = tbFontName.Text,
             FontID = decimal.ToInt32(nudFontID.Value),
-            Type = (TableFontType)cbFontType.SelectedItem,
+            Type = (TableFontType)cbFontType.SelectedItem!,
             Width = decimal.ToInt32(nudFontWidth.Value),
             Size = decimal.ToInt32(nudFontSize.Value),
             FileName = tbFontFile.Text,
@@ -981,7 +981,7 @@ public partial class FLocalSettings : Form
         var tfont = GlobData.TableFonts[index];
         tfont.Name = tbFontName.Text;
         tfont.FontID = decimal.ToInt32(nudFontID.Value);
-        tfont.Type = (TableFontType)cbFontType.SelectedItem;
+        tfont.Type = (TableFontType)cbFontType.SelectedItem!;
         tfont.Width = decimal.ToInt32(nudFontWidth.Value);
         tfont.Size = decimal.ToInt32(nudFontSize.Value);
         tfont.FileName = tbFontFile.Text;

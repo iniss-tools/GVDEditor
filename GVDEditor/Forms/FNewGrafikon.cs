@@ -13,12 +13,12 @@ public partial class FNewGrafikon : Form
     /// <summary>
     ///     Novy grafikon.
     /// </summary>
-    public GVDInfo GvdInfo { get; private set; }
+    public GVDInfo GvdInfo { get; private set; } = null!;
 
     /// <summary>
     ///     Novy priecinok s grafikonom.
     /// </summary>
-    public DirList NewDir { get; private set; }
+    public DirList NewDir { get; private set; } = null!;
 
     private Color selectedColor = Color.White;
 
@@ -92,8 +92,8 @@ public partial class FNewGrafikon : Form
                 return;
             }
 
-            gvd.ThisStation = new Station(((Station)cbStationName.SelectedItem).ID,
-                ((Station)cbStationName.SelectedItem).Name);
+            gvd.ThisStation = new Station(((Station)cbStationName.SelectedItem!).ID,
+                ((Station)cbStationName.SelectedItem!).Name);
         }
 
         gvd.StartValidData = odD;
@@ -181,7 +181,7 @@ public partial class FNewGrafikon : Form
         try
         {
             var path = tbDirIniss.Text + Path.DirectorySeparatorChar + "RAWBANK";
-            RawBankParser.ReadFyzZvukFile(path, FyzLanguage.GetBasicLanguage(GlobData.Languages));
+            RawBankParser.ReadFyzZvukFile(path, FyzLanguage.GetBasicLanguage(GlobData.Languages)!);
             GlobData.Stations = Station.GetStations();
             GlobData.Stations.Sort();
             cbStationName.DataSource = GlobData.Stations;

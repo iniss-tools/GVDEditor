@@ -18,7 +18,7 @@ public sealed class TableCatalog : ITable
     /// <summary>
     ///     Vyrobca a typ tabule.
     /// </summary>
-    public TableManufacturer Manufacturer { get; set; }
+    public TableManufacturer Manufacturer { get; set; } = null!;
 
     /// <summary>
     ///     Segmenty katalogovej tabule.
@@ -53,17 +53,17 @@ public sealed class TableCatalog : ITable
     /// <summary>
     ///     Kluc katalogovej tabule.
     /// </summary>
-    public string Key { get; set; }
+    public string Key { get; set; } = null!;
 
     /// <summary>
     ///     Nazov katalogovej tabule.
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <summary>
     ///     Textovy komentar ku tabuli.
     /// </summary>
-    public string Comment { get; set; }
+    public string Comment { get; set; } = null!;
 
     /// <inheritdoc/>
     public string TypeName => "Katalógová tabuľa";

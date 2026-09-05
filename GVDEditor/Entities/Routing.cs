@@ -1,4 +1,5 @@
-﻿using ToolsCore;
+﻿using System.Diagnostics.CodeAnalysis;
+using ToolsCore;
 
 namespace GVDEditor.Entities;
 
@@ -40,7 +41,7 @@ public sealed class Routing
     /// </summary>
     /// <param name="s">označenie smerovania</param>
     /// <returns><see cref="Routing" />, ak nenájde zhodu, vráti <see langword="null" /></returns>
-    public static Routing Parse(string s)
+    public static Routing? Parse(string s)
     {
         return s switch
         {
@@ -57,7 +58,7 @@ public sealed class Routing
     /// <param name="s">označenie smerovania</param>
     /// <param name="routing">výsledné smerovanie</param>
     /// <returns><see langword="true" /> ak sa operácia podarila, inak vráti <see langword="false" /></returns>
-    public static bool TryParse(string s, out Routing routing)
+    public static bool TryParse(string s, [NotNullWhen(true)] out Routing? routing)
     {
         switch (s)
         {

@@ -87,7 +87,7 @@ public partial class FTableCatalog : Form
     {
         if (Columns.Count != 0)
         {
-            var item = (TableItem)listColumns.SelectedItem;
+            var item = (TableItem)listColumns.SelectedItem!;
             tbColumnKey.Text = item.Key;
             tbColumnName.Text = item.Name;
             cbColumnFill.SelectedItem = item.FillSection;
@@ -148,14 +148,14 @@ public partial class FTableCatalog : Form
         item.End = end;
         item.Line = line;
 
-        item.DivType = (TableDivType)cbDivType.SelectedItem;
+        item.DivType = (TableDivType)cbDivType.SelectedItem!;
 
-        item.FillSection = (TableFillSection)cbColumnFill.SelectedItem;
+        item.FillSection = (TableFillSection)cbColumnFill.SelectedItem!;
 
         item.FontIDX = decimal.ToInt32(nudFont.Value);
 
-        item.Tab1 = (TableTabTab)cbTab1.SelectedItem;
-        item.Tab2 = (TableTabTab)cbTab2.SelectedItem;
+        item.Tab1 = (TableTabTab)cbTab1.SelectedItem!;
+        item.Tab2 = (TableTabTab)cbTab2.SelectedItem!;
 
         if (CheckDivType(item.DivType, item.Tab1, item.Tab2)) Columns.Add(item);
     }
@@ -177,9 +177,9 @@ public partial class FTableCatalog : Form
                     return;
                 }
 
-            var div = (TableDivType)cbDivType.SelectedItem;
-            var tab1 = (TableTabTab)cbTab1.SelectedItem;
-            var tab2 = (TableTabTab)cbTab2.SelectedItem;
+            var div = (TableDivType)cbDivType.SelectedItem!;
+            var tab1 = (TableTabTab)cbTab1.SelectedItem!;
+            var tab2 = (TableTabTab)cbTab2.SelectedItem!;
 
             if (!CheckDivType(div, tab1, tab2))
                 return;
@@ -211,7 +211,7 @@ public partial class FTableCatalog : Form
 
             item.DivType = div;
 
-            item.FillSection = (TableFillSection)cbColumnFill.SelectedItem;
+            item.FillSection = (TableFillSection)cbColumnFill.SelectedItem!;
 
             item.FontIDX = decimal.ToInt32(nudFont.Value);
 
@@ -299,7 +299,7 @@ public partial class FTableCatalog : Form
 
     private void listRows_Format(object sender, ListControlConvertEventArgs e)
     {
-        var segment = (TableSegment)e.ListItem;
+        var segment = (TableSegment)e.ListItem!;
         e.Value = "W:" + segment.Width + "; H:" + segment.Height + "; S:" + segment.Size;
     }
 
@@ -389,7 +389,7 @@ public partial class FTableCatalog : Form
             end = Columns[i].End;
         }
 
-        var manufacturer = cbManufacturer.SelectedItem as TableManufacturer;
+        var manufacturer = (TableManufacturer)cbManufacturer.SelectedItem!;
         if (manufacturer == TableManufacturer.ELEN && end > 512)
         {
             Utils.ShowError(Resources.FTableCatalog_Tabula_ELEN_moze_mat_max_poziciu_512);

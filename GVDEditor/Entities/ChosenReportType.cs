@@ -16,7 +16,7 @@ public sealed class ChosenReportType
     /// <summary>
     ///     Typ reportu
     /// </summary>
-    public ReportType Type { get; set; }
+    public ReportType Type { get; set; } = null!;
 
     /// <summary>
     ///     Varianty reportu

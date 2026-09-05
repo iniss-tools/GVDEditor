@@ -10,7 +10,7 @@ namespace GVDEditor.Forms;
 public partial class FAnalyzer : Form
 {
     private readonly GVDDirectory GVD;
-    private BindingList<IProblem> Problems;
+    private BindingList<IProblem> Problems = new();
 
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FAnalyzer"/>.
@@ -83,18 +83,18 @@ public partial class FAnalyzer : Form
 
     private void dgvResults_DoubleClick(object sender, EventArgs e)
     {
-        if (dgvResults.SelectedRows.Count != 0) Repair(dgvResults.SelectedRows[0].DataBoundItem as IProblem);
+        if (dgvResults.SelectedRows.Count != 0) Repair((IProblem)dgvResults.SelectedRows[0].DataBoundItem!);
     }
 
     private void bFixSelected_Click(object sender, EventArgs e)
     {
-        if (dgvResults.SelectedRows.Count != 0) Repair(dgvResults.SelectedRows[0].DataBoundItem as IProblem);
+        if (dgvResults.SelectedRows.Count != 0) Repair((IProblem)dgvResults.SelectedRows[0].DataBoundItem!);
     }
 
     private void Repair(IProblem problem)
     {
         FixResult res;
-        Exception error = null;
+        Exception? error = null;
         try
         {
             res = problem.FixProblem();

@@ -8,7 +8,7 @@ public sealed class TableFont
     /// <summary>
     ///     Názov písma.
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <summary>
     ///     Identifikator písma.
@@ -18,7 +18,7 @@ public sealed class TableFont
     /// <summary>
     ///     Typ písma.
     /// </summary>
-    public TableFontType Type { get; set; }
+    public TableFontType? Type { get; set; }
 
     /// <summary>
     ///     Veľkosť písma.
@@ -68,7 +68,7 @@ public sealed class TableFont
     /// <summary>
     ///     Názov súboru s týmto písmom.
     /// </summary>
-    public string FileName { get; set; }
+    public string FileName { get; set; } = null!;
 
     /// <inheritdoc />
     public override string ToString() => Name;

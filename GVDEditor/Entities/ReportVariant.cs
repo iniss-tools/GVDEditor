@@ -13,7 +13,7 @@ public sealed class ReportVariant
     /// <summary>
     ///     Nazov varianty reportu
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <inheritdoc />
     public override string ToString() => Name;
@@ -36,7 +36,7 @@ public sealed class ReportVariant
     ///     <see langword="true" /> if the specified object  is equal to the current object; otherwise,
     ///     <see langword="false" />.
     /// </returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         return ReferenceEquals(this, obj) || obj is ReportVariant other && Equals(other);
     }

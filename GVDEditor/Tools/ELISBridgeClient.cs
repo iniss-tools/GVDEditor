@@ -14,7 +14,7 @@ namespace GVDEditor.Tools;
 ///     Nahradzuje povodne parsovanie textu rucne exportovaneho z programu ELIS;
 ///     datumove obmedzenia berie priamo z kniznice namiesto parsovania poznamok.
 /// </remarks>
-public sealed class ELISBridgeClient
+public sealed partial class ELISBridgeClient
 {
     /// <summary>Nazov pomocneho programu, ktory sa hlada vedla GVDEditor.exe.</summary>
     public const string BridgeExeName = "ELISBridge.exe";
@@ -65,18 +65,18 @@ public sealed class ELISBridgeClient
     ///     Uz definovane vlaky. Do vysledku sa nevracaju, ale vstupuju do cislovania variant,
     ///     aby import nepridelil variantu, ktoru uz iny vlak pouziva.
     /// </summary>
-    public List<Train> DefinedTrains { get; set; }
+    public List<Train> DefinedTrains { get; set; } = new();
 
     /// <summary>
     ///     Priecinok s instalaciou aplikacie Cestovne poriadky (obsahuje TT.dll).
     ///     Ak je prazdny, pouzije sa predvolena cesta zabudovana v ELISBridge.
     /// </summary>
-    public string AppDirectory { get; set; }
+    public string AppDirectory { get; set; } = "";
 
     /// <summary>
     ///     Priecinok s datami (.tt subory). Ak je prazdny, pouzije sa podpriecinok Data1.
     /// </summary>
-    public string DataDirectory { get; set; }
+    public string DataDirectory { get; set; } = "";
 
     /// <summary>
     ///     Ci sa maju preskocit vlaky, ktore su prechadzajuce.
@@ -91,12 +91,12 @@ public sealed class ELISBridgeClient
     /// <summary>
     ///     Registracne cislo pre platene cestovne poriadky. Voľne stiahnuteľné dáta ho nepotrebujú.
     /// </summary>
-    public string RegistrationNumber { get; set; }
+    public string RegistrationNumber { get; set; } = "";
 
     /// <summary>
     ///     Identifikacia klienta, ak ju platene data vyzaduju.
     /// </summary>
-    public string ClientString { get; set; }
+    public string ClientString { get; set; } = "";
 
     /// <summary>
     ///     Priradenie nazvov stanic z ELIS k staniciam grafikonu: nazov -> ID stanice,
@@ -359,7 +359,7 @@ public sealed class ELISBridgeClient
     /// </summary>
     private void AddStations(IEnumerable<string> names, ICollection<Station> target)
     {
-        Station previous = null;
+        Station? previous = null;
 
         foreach (var name in names)
         {
@@ -380,7 +380,7 @@ public sealed class ELISBridgeClient
     ///     Najde stanicu pre nazov z ELIS - najprv podla ulozeneho priradenia, potom automaticky.
     /// </summary>
     /// <returns><see langword="null" />, ak sa stanica nenasla alebo sa ma vynechat.</returns>
-    private Station ResolveMapped(string name)
+    private Station? ResolveMapped(string name)
     {
         if (StationMap.TryGetValue(name, out var mapped))
             return mapped == TxtParser.ELIS_MAP_SKIP ? null : Station.GetFromID(mapped);
@@ -397,7 +397,7 @@ public sealed class ELISBridgeClient
     ///     (spravanie zvysku aplikacie), az potom porovnanie v kanonickom tvare.
     /// </remarks>
     /// <returns><see langword="null" />, ak sa stanica nenasla.</returns>
-    public static Station Resolve(string name)
+    public static Station? Resolve(string name)
     {
         var exact = Station.GetFromName(name);
         if (exact is not null)
@@ -418,7 +418,7 @@ public sealed class ELISBridgeClient
     ///     Navrhne najblizsiu stanicu k nazvu z ELIS - pouziva sa ako predvolba v dialogu priradenia.
     /// </summary>
     /// <returns><see langword="null" />, ak sa nenaslo nic dost podobne.</returns>
-    public static Station Suggest(string name)
+    public static Station? Suggest(string name)
     {
         var wanted = Canonical(name);
         if (wanted.Length < 4)
@@ -428,7 +428,7 @@ public sealed class ELISBridgeClient
         if (IsBorderPoint(name))
             return null;
 
-        Station best = null;
+        Station? best = null;
         var bestLength = 0;
 
         foreach (var station in AllStations())
@@ -469,10 +469,10 @@ public sealed class ELISBridgeClient
             return string.Empty;
 
         //"Český Těšín (Czeski Cieszyn)" -> "Český Těšín"
-        var text = Regex.Replace(name, @"\s*\([^)]*\)", string.Empty);
+        var text = RegexRemoveTextInBrackets().Replace(name, string.Empty);
 
         //"Krásna n.Hornádom" -> "Krásna nad Hornádom"; "Ostrava hl.n." zostava nedotknute
-        text = Regex.Replace(text, @"\bn\.\s*(?=\p{L})", "nad ");
+        text = RegexTransformNad().Replace(text, "nad ");
 
         text = text.Replace(".", string.Empty).Replace("-", string.Empty).Replace(" ", string.Empty);
         return Utils.RemoveDiacritics(text).ToLowerInvariant();
@@ -523,4 +523,9 @@ public sealed class ELISBridgeClient
 
         return result;
     }
+
+    [GeneratedRegex(@"\bn\.\s*(?=\p{L})")]
+    private static partial Regex RegexTransformNad();
+    [GeneratedRegex(@"\s*\([^)]*\)")]
+    private static partial Regex RegexRemoveTextInBrackets();
 }

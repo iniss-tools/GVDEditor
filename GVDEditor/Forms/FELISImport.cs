@@ -8,7 +8,7 @@ namespace GVDEditor.Forms;
 /// </summary>
 public partial class FELISImport : Form
 {
-    internal FMain.SendData ResultOptions;
+    internal FMain.SendData ResultOptions = null!;
 
     private readonly int _existingTrainCount;
 

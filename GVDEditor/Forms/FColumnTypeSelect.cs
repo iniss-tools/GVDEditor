@@ -24,11 +24,11 @@ public partial class FColumnTypeSelect : Form
     /// <summary>
     ///     Vracia stlpec vybrany pouzivatelom.
     /// </summary>
-    public ImportTrainColumnType SelectedType { get; private set; }
+    public ImportTrainColumnType SelectedType { get; private set; } = null!;
 
     private void bOK_Click(object sender, EventArgs e)
     {
-        SelectedType = (ImportTrainColumnType)listColumnTypes.SelectedItem;
+        SelectedType = (ImportTrainColumnType)listColumnTypes.SelectedItem!;
         DialogResult = DialogResult.OK;
     }
 

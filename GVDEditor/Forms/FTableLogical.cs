@@ -88,7 +88,7 @@ public partial class FTableLogical : Form
 
         table.Key = tbKey.Text;
         table.Name = tbName.Text;
-        table.ViewType = (TableViewType)cbTypeView.SelectedItem;
+        table.ViewType = (TableViewType)cbTypeView.SelectedItem!;
 
         var records = new List<TableRecord>();
 
@@ -100,7 +100,7 @@ public partial class FTableLogical : Form
                     positions.Add(new TablePosition
                     {
                         Table = zostava.Table, Position = i,
-                        TypeView = (TableViewType)cbTypeView.SelectedItem
+                        TypeView = (TableViewType)cbTypeView.SelectedItem!
                     });
 
             records.Add(new TableRecord { Positions = positions });
@@ -121,7 +121,7 @@ public partial class FTableLogical : Form
     {
         if (listFyzTab.SelectedIndex != -1)
         {
-            var fyztab = (TablePhysical)listFyzTab.SelectedItem;
+            var fyztab = (TablePhysical)listFyzTab.SelectedItem!;
             var found = false;
             foreach (var zostava in TVybrane)
                 if (zostava.Table.Equals(fyztab))
@@ -142,7 +142,7 @@ public partial class FTableLogical : Form
     {
         if (listFyzTab.SelectedIndex != -1)
         {
-            var fyztab = (TablePhysical)listFyzTab.SelectedItem;
+            var fyztab = (TablePhysical)listFyzTab.SelectedItem!;
             var found = false;
             foreach (var zostava in TVybrane)
                 if (zostava.Table.Equals(fyztab))
@@ -161,14 +161,14 @@ public partial class FTableLogical : Form
             {
                 case 0:
                 {
-                    var num = int.Parse((string)e.FormattedValue);
+                    var num = int.Parse((string)e.FormattedValue!);
                     if (num < 1) e.Cancel = true;
 
                     break;
                 }
                 case 1:
                 {
-                    var num = int.Parse((string)e.FormattedValue);
+                    var num = int.Parse((string)e.FormattedValue!);
                     if (num > nudCountRecords.Value) e.Cancel = true;
 
                     break;
@@ -183,7 +183,7 @@ public partial class FTableLogical : Form
 
     private class TableLogicalZostava
     {
-        public TablePhysical Table { get; set; }
+        public TablePhysical Table { get; set; } = null!;
         public int StartRow { get; set; }
         public int EndRow { get; set; }
     }

@@ -16,7 +16,7 @@ public sealed class TableAlign : Enumeration<TableAlign>
     /// </summary>
     /// <param name="s"></param>
     /// <returns><see cref="TableAlign" /> alebo <see langword="null" /> ak sa nenašla žiadna zhoda</returns>
-    public static TableAlign Parse(int s)
+    public static TableAlign? Parse(int s)
     {
         return s switch
         {

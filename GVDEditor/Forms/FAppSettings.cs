@@ -9,8 +9,8 @@ namespace GVDEditor.Forms;
 
 public partial class FAppSettings : FAppSettingsBase
 {
-    private new GVDEditorConfig Config => base.Config as GVDEditorConfig;
-    private new Styles<GVDEditorStyle> Styles => base.Styles as Styles<GVDEditorStyle>;
+    private new GVDEditorConfig Config => (GVDEditorConfig)base.Config;
+    private new Styles<GVDEditorStyle> Styles => (Styles<GVDEditorStyle>)base.Styles;
 
     protected override IList<CmdShortcut> DefaultShortcuts => new AppShortcuts().GetValues();
     
@@ -60,7 +60,7 @@ public partial class FAppSettings : FAppSettingsBase
         Config.Shortcuts.SetValues(Shortcuts);
         Config.DesktopCols.SetValues(Columns);
 
-        Config.DateLimitLocate = (AppLanguage) cbDateLimitLanguage.SelectedValue;
+        Config.DateLimitLocate = (AppLanguage)cbDateLimitLanguage.SelectedValue!;
 
         Config.AutoVariant = cboxAutoVariant.Checked;
         Config.AutoTableText = cboxTabTextAutoGenerate.Checked;
@@ -73,16 +73,16 @@ public partial class FAppSettings : FAppSettingsBase
     protected override void SaveData()
     {
         GlobData.Config = Config;
-        GlobData.UsingStyle = UsingStyle as GVDEditorStyle;
+        GlobData.UsingStyle = (GVDEditorStyle)UsingStyle;
         GlobSettings.UsingStyle = UsingStyle;
         GlobData.Styles = Styles;
         
-        var configsDir = Utils.CombinePath(Application.StartupPath, ToolsCore.FileConsts.CONFIG_PATH);
+        var configsDir = Utils.CombinePath(Application.StartupPath, ToolsCore.FileConsts.CONFIG_PATH)!;
         if (!Directory.Exists(configsDir))
             Directory.CreateDirectory(configsDir);
 
-        Styles<GVDEditorStyle>.WriteData(Utils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_STYLES), GlobData.Styles);
-        XmlSerialization.WriteData(Utils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG), GlobData.Config);
+        Styles<GVDEditorStyle>.WriteData(Utils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_STYLES)!, GlobData.Styles);
+        XmlSerialization.WriteData(Utils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG)!, GlobData.Config);
     }
 
     /// <inheritdoc />

@@ -33,16 +33,16 @@ public sealed record Operator(int Id, string Name)
     /// <param name="operators">list dopravcov</param>
     /// <param name="id">identifikátor dopravcu</param>
     /// <returns>dopravcu, ak ho nenájde, vráti <see langword="null" /></returns>
-    public static Operator GetFromID(IEnumerable<Operator> operators, int id) => 
+    public static Operator? GetFromID(IEnumerable<Operator> operators, int id) => 
         operators.FirstOrDefault(dopravca => dopravca.Id == id);
 
     /// <summary>
-    ///     Vráti dopravcu zo zadaného listu podľa názvu dopravcu
+    ///     Vráti dopravcu zo zadaného listu podľa názvu dopravcu.
     /// </summary>
     /// <param name="operators">list dopravcov</param>
     /// <param name="name">názov dopravcu</param>
     /// <returns>dopravcu, ak ho nenájde, vráti <see langword="null" /></returns>
-    public static Operator GetFromName(IEnumerable<Operator> operators, string name) => 
+    public static Operator? GetFromName(IEnumerable<Operator> operators, string name) => 
         operators.FirstOrDefault(dopravca => dopravca.Name == name);
 
     /// <inheritdoc />

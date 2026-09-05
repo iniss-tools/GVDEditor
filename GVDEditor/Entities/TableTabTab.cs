@@ -13,12 +13,12 @@ public sealed record TableTabTab
     /// <summary>
     ///     Kluc TabTab.
     /// </summary>
-    public string Key { get; set; }
+    public string Key { get; set; } = null!;
 
     /// <summary>
     ///     Obsah TabTab ako text.
     /// </summary>
-    public string Text { get; set; }
+    public string Text { get; set; } = null!;
 
     /// <inheritdoc />
     public override string ToString() => Key;

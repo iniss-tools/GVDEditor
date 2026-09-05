@@ -19,14 +19,14 @@ internal sealed class RegistrationException : Exception
 internal sealed class TTReader
 {
     private readonly string _dataPath;
-    private readonly string _registrationNumber;
-    private readonly string _client;
+    private readonly string? _registrationNumber;
+    private readonly string? _client;
 
     /// <summary>Inicializuje citac nad priecinkom s datami (.tt subormi).</summary>
     /// <param name="dataPath">Priecinok s datami, typicky <c>&lt;instalacia&gt;\Data1</c>.</param>
     /// <param name="registrationNumber">Registracne cislo pre platene poriadky, alebo <see langword="null" />.</param>
     /// <param name="client">Identifikacia klienta, ak ju platene data vyzaduju, alebo <see langword="null" />.</param>
-    public TTReader(string dataPath, string registrationNumber = null, string client = null)
+    public TTReader(string dataPath, string? registrationNumber = null, string? client = null)
     {
         if (!Directory.Exists(dataPath))
             throw new DirectoryNotFoundException($"Priečinok s dátami neexistuje: {dataPath}");

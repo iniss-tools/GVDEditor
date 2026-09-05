@@ -24,7 +24,7 @@ public partial class FTabTab : Form
 
     internal readonly BindingList<TabTabDoc> documents = new();
 
-    private readonly TableTabTab SelectedTab;
+    private readonly TableTabTab? SelectedTab;
 
     private int lastCaretPos;
     private int maxLineNumberCharLength;
@@ -35,7 +35,7 @@ public partial class FTabTab : Form
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FTabTab"/>.
     /// </summary>
-    public FTabTab(TableTabTab tab = null)
+    public FTabTab(TableTabTab? tab = null)
     {
         InitializeComponent();
 
@@ -595,7 +595,7 @@ public partial class FTabTab : Form
 
     internal class TabTabDoc
     {
-        public TableTabTab TabTab { get; set; }
+        public TableTabTab TabTab { get; set; } = null!;
         public Document Document { get; set; }
         public bool Unsaved { get; set; }
 

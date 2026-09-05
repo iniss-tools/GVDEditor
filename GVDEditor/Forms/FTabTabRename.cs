@@ -16,7 +16,7 @@ internal partial class FTabTabRename : Form
         this.ApplyThemeAndFonts();
     }
 
-    public string NewTabName { get; private set; }
+    public string NewTabName { get; private set; } = "";
 
     private void bEdit_Click(object sender, EventArgs e)
     {
