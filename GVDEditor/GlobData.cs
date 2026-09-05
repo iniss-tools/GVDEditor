@@ -10,53 +10,53 @@ namespace GVDEditor;
 
 internal static class GlobData
 {
-    public static string INISSDir { get; private set; }
-    public static string DataDir { get; private set; }
-    public static string RawBankDir { get; private set; }
+    public static string INISSDir { get; private set; } = null!;
+    public static string DataDir { get; private set; } = null!;
+    public static string RawBankDir { get; private set; } = null!;
 
-    public static List<string> INISSExeFiles { get; private set; }
+    public static List<string> INISSExeFiles { get; private set; } = null!;
 
-    public static List<DirList> GVDDirs { get; set; }
-    public static ExBindingList<Audio> Audios { get; private set; }
+    public static List<DirList> GVDDirs { get; set; } = null!;
+    public static ExBindingList<Audio> Audios { get; private set; } = null!;
 
-    public static List<FyzSound> Sounds { get; private set; }
-    public static ExBindingList<FyzLanguage> Languages { get; private set; }
-    public static List<FyzLanguage> LocalLanguages { get; set; }
-    public static List<Station> Stations { get; set; }
-    public static ExBindingList<Station> CustomStations { get; set; }
+    public static List<FyzSound> Sounds { get; private set; } = null!;
+    public static ExBindingList<FyzLanguage> Languages { get; private set; } = null!;
+    public static List<FyzLanguage> LocalLanguages { get; set; } = null!;
+    public static List<Station> Stations { get; set; } = null!;
+    public static ExBindingList<Station> CustomStations { get; set; } = null!;
 
-    public static ExBindingList<Operator> Operators { get; set; }
+    public static ExBindingList<Operator> Operators { get; set; } = null!;
 
     public static ExBindingList<Train> Trains { get; set; } = new();
-    public static ExBindingList<Track> Tracks { get; set; }
-    public static ExBindingList<Platform> Platforms { get; set; }
+    public static ExBindingList<Track> Tracks { get; set; } = null!;
+    public static ExBindingList<Platform> Platforms { get; set; } = null!;
 
-    public static ExBindingList<int> Delays { get; private set; }
+    public static ExBindingList<int> Delays { get; private set; } = null!;
 
-    public static ExBindingList<TrainType> TrainsTypes { get; private set; }
+    public static ExBindingList<TrainType> TrainsTypes { get; private set; } = null!;
 
-    public static List<string> TrainNames { get; private set; }
+    public static List<string> TrainNames { get; private set; } = null!;
 
-    public static ExBindingList<TableTabTab> TabTabs { get; set; }
-    public static ExBindingList<TableCatalog> TableCatalogs { get; set; }
-    public static ExBindingList<TablePhysical> TablePhysicals { get; set; }
-    public static ExBindingList<TableLogical> TableLogicals { get; set; }
-    public static ExBindingList<TableText> TableTexts { get; set; }
-    public static ExBindingList<TableFont> TableFonts { get; set; }
-    public static string TableFontDir { get; set; }
+    public static ExBindingList<TableTabTab> TabTabs { get; set; } = null!;
+    public static ExBindingList<TableCatalog> TableCatalogs { get; set; } = null!;
+    public static ExBindingList<TablePhysical> TablePhysicals { get; set; } = null!;
+    public static ExBindingList<TableLogical> TableLogicals { get; set; } = null!;
+    public static ExBindingList<TableText> TableTexts { get; set; } = null!;
+    public static ExBindingList<TableFont> TableFonts { get; set; } = null!;
+    public static string TableFontDir { get; set; } = null!;
 
-    public static List<ReportVariant> ReportVariants { get; set; }
-    public static List<ReportType> ReportTypes { get; set; }
+    public static List<ReportVariant> ReportVariants { get; set; } = null!;
+    public static List<ReportType> ReportTypes { get; set; } = null!;
 
-    public static List<ReportType> ReportTypesV { get; private set; }
-    public static List<ReportType> ReportTypesP { get; private set; }
-    public static List<ReportType> ReportTypesK { get; private set; }
+    public static List<ReportType> ReportTypesV { get; private set; } = null!;
+    public static List<ReportType> ReportTypesP { get; private set; } = null!;
+    public static List<ReportType> ReportTypesK { get; private set; } = null!;
 
-    public static List<Radenie> Radenia { get; set; }
+    public static List<Radenie> Radenia { get; set; } = null!;
 
-    public static GVDEditorConfig Config;
-    public static Styles<GVDEditorStyle> Styles;
-    public static GVDEditorStyle UsingStyle;
+    public static GVDEditorConfig Config = null!;
+    public static Styles<GVDEditorStyle> Styles = null!;
+    public static GVDEditorStyle UsingStyle = null!;
 
     public static void PrepareGlobalData(string pathtoiniss)
     {
@@ -90,8 +90,8 @@ internal static class GlobData
         Radenia = new List<Radenie>();
 
         INISSDir = pathtoiniss;
-        DataDir = Utils.CombinePath(pathtoiniss, FileConsts.DIR_DATA);
-        RawBankDir = Utils.CombinePath(pathtoiniss, FileConsts.DIR_RAWBANK);
+        DataDir = Utils.CombinePath(pathtoiniss, FileConsts.DIR_DATA)!;
+        RawBankDir = Utils.CombinePath(pathtoiniss, FileConsts.DIR_RAWBANK)!;
         GVDDirs = TxtParser.ReadDirList();
 
         INISSExeFiles = new List<string>();
@@ -103,7 +103,7 @@ internal static class GlobData
         Languages = new ExBindingList<FyzLanguage>(TxtParser.ReadGlobalCategori(DataDir, langs, maxLangs));
 
         LocalLanguages = new List<FyzLanguage>();
-        Sounds = RawBankParser.ReadFyzZvukFile(RawBankDir, FyzLanguage.GetBasicLanguage(Languages));
+        Sounds = RawBankParser.ReadFyzZvukFile(RawBankDir, FyzLanguage.GetBasicLanguage(Languages)!);
         try
         {
             TrainsTypes = new ExBindingList<TrainType>(TxtParser.ReadTrainTypes());

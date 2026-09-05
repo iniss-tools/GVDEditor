@@ -16,9 +16,9 @@ public partial class FTableColumnOrder : Form
     /// </summary>
     public BindingList<TableViewTypeTab> ItemsTypeTabs;
 
-    private TableViewMode selectedMode;
+    private TableViewMode selectedMode = null!;
 
-    private TableViewType selectedType;
+    private TableViewType selectedType = null!;
 
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FTableColumnOrder"/>.
@@ -66,8 +66,8 @@ public partial class FTableColumnOrder : Form
                                 OrderedItems.Add(i);
             }
 
-        selectedType = cbViewType.SelectedItem as TableViewType;
-        selectedMode = cbViewMode.SelectedItem as TableViewMode;
+        selectedType = (TableViewType)cbViewType.SelectedItem!;
+        selectedMode = (TableViewMode)cbViewMode.SelectedItem!;
     }
 
     private void cbViewMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,20 +88,20 @@ public partial class FTableColumnOrder : Form
                                 OrderedItems.Add(i);
             }
 
-        selectedType = cbViewType.SelectedItem as TableViewType;
-        selectedMode = cbViewMode.SelectedItem as TableViewMode;
+        selectedType = (TableViewType)cbViewType.SelectedItem!;
+        selectedMode = (TableViewMode)cbViewMode.SelectedItem!;
     }
 
     private void bAdd_Click(object sender, EventArgs e)
     {
         if (listColumns.SelectedIndex != -1) 
-            OrderedItems.Add((TableItem)listColumns.SelectedItem);
+            OrderedItems.Add((TableItem)listColumns.SelectedItem!);
     }
 
     private void listColumns_DoubleClick(object sender, EventArgs e)
     {
         if (listColumns.SelectedIndex != -1) 
-            OrderedItems.Add((TableItem)listColumns.SelectedItem);
+            OrderedItems.Add((TableItem)listColumns.SelectedItem!);
     }
 
     private void listOrder_DoubleClick(object sender, EventArgs e)
@@ -168,7 +168,7 @@ public partial class FTableColumnOrder : Form
         var point = listOrder.PointToClient(new Point(e.X, e.Y));
         var index = listOrder.IndexFromPoint(point);
         if (index < 0) index = listOrder.Items.Count - 1;
-        var data = (TableItem)e.Data.GetData(typeof(TableItem));
+        var data = (TableItem)e.Data!.GetData(typeof(TableItem))!;
         OrderedItems.Remove(data);
         OrderedItems.Insert(index, data);
         listOrder.SelectedItem = data;

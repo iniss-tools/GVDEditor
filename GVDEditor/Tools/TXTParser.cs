@@ -1,7 +1,8 @@
-﻿using ExControls;
+using ExControls;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using System.Collections;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
@@ -50,7 +51,7 @@ internal static class TxtParser
         switch (lang)
         {
             case AppLanguage.Slovak:
-                rows.Add(CombinePath(path, filename));
+                rows.Add(CombinePath(path, filename)!);
                 rows.Add(
                     $"Vygenerované programom {Application.ProductName}, verzia {Application.ProductVersion} dňa {DateTime.Today:dd.MM.yyyy} v {DateTime.Now:HH:mm}");
                 rows.Add($"Názov stanice: {gvd.ThisStation.Name} ({gvd.ThisStation.ID})");
@@ -60,7 +61,7 @@ internal static class TxtParser
                 rows.Add("=============================================================================================");
                 break;
             case AppLanguage.Czech:
-                rows.Add(CombinePath(path, filename));
+                rows.Add(CombinePath(path, filename)!);
                 rows.Add(
                     $"Vygenerované programem {Application.ProductName}, verze {Application.ProductVersion} dne {DateTime.Today:dd.MM.yyyy} v {DateTime.Now:HH:mm}");
                 rows.Add($"Název stanice: {gvd.ThisStation.Name} ({gvd.ThisStation.ID})");
@@ -93,9 +94,9 @@ internal static class TxtParser
     public static void WriteStateDgm(string path, bool skversion = true)
     {
         if (skversion)
-            File.WriteAllText(CombinePath(path, FILE_STATEDGM), Resources.statedgmSK, Encodings.Win1250);
+            File.WriteAllText(CombinePath(path, FILE_STATEDGM)!, Resources.statedgmSK, Encodings.Win1250);
         else
-            File.WriteAllText(CombinePath(path, FILE_STATEDGM), Resources.statedgmSK, Encodings.Win1250); //TODO cz version
+            File.WriteAllText(CombinePath(path, FILE_STATEDGM)!, Resources.statedgmSK, Encodings.Win1250); //TODO cz version
     }
 
     #endregion
@@ -108,7 +109,7 @@ internal static class TxtParser
     /// <returns>priecinky s GVD</returns>
     public static List<DirList> ReadDirList()
     {
-        var fileDirList = CombinePath(GlobData.DataDir, FILE_DIRLIST);
+        var fileDirList = CombinePath(GlobData.DataDir, FILE_DIRLIST)!;
 
         var dirs = new List<DirList>();
 
@@ -157,7 +158,7 @@ internal static class TxtParser
     /// <param name="dirs">priecinky s GVD</param>
     public static void WriteDirList(IEnumerable<DirList> dirs)
     {
-        var fileDirList = CombinePath(GlobData.DataDir, FILE_DIRLIST);
+        var fileDirList = CombinePath(GlobData.DataDir, FILE_DIRLIST)!;
 
         using var dirlistF = new CsvFileWriter(fileDirList);
         foreach (var dir in dirs)
@@ -165,12 +166,12 @@ internal static class TxtParser
             var row = new CsvRow();
             row.Insert(0, dir.DirName);
             if (dir.TablePort.HasValue && dir.TablePort != 0)
-                row.Insert(1, dir.TablePort.ToString());
+                row.Insert(1, dir.TablePort.ToString() ?? "");
             else
                 row.Insert(1, "");
 
             if (dir.ReportPort.HasValue && dir.ReportPort != 0)
-                row.Insert(2, dir.TablePort.ToString());
+                row.Insert(2, dir.ReportPort.ToString() ?? "");
             else
                 row.Insert(2, "");
 
@@ -192,29 +193,29 @@ internal static class TxtParser
     /// <returns>informacie o grafikone</returns>
     public static GVDInfo ReadInfoGVD(string path)
     {
-        var fileGrafikon = CombinePath(path, FILE_GRAFIKON);
+        var fileGrafikon = CombinePath(path, FILE_GRAFIKON)!;
 
         var gvd = new GVDInfo();
 
         var config = new TxtProps(fileGrafikon);
 
-        gvd.Category = int.Parse(config.Get("CATEGORY", "1"));
-        gvd.Subcat = int.Parse(config.Get("SUBCAT", "0"));
-        var id = int.Parse(config.Get("IDSTATION"));
+        gvd.Category = int.Parse(config.Get("CATEGORY", "1"), CultureInfo.InvariantCulture);
+        gvd.Subcat = int.Parse(config.Get("SUBCAT", "0"), CultureInfo.InvariantCulture);
+        var id = int.Parse(config.Get("IDSTATION"), CultureInfo.InvariantCulture);
         var name = config.Get("NAMESTATION");
         gvd.ThisStation = new Station(id.ToString(), name);
-        gvd.TrainCount = int.Parse(config.Get("TRAINCOUNT", "0"));
+        gvd.TrainCount = int.Parse(config.Get("TRAINCOUNT", "0"), CultureInfo.InvariantCulture);
         gvd.StartValidTimeTable = ParseDateAlts(config.Get("START_VALID_TIMETABLE"));
         gvd.EndValidTimeTable = ParseDateAlts(config.Get("END_VALID_TIMETABLE"));
         gvd.StartValidData = ParseDateAlts(config.Get("START_VALID_DATA"));
         gvd.EndValidData = ParseDateAlts(config.Get("END_VALID_DATA"));
         gvd.CreateData = ParseDateAlts(config.Get("CREATE_DATA"));
-        gvd.TTIndex = int.Parse(config.Get("TT_INDEX", "0"));
-        gvd.VLIndex = int.Parse(config.Get("VL_INDEX", "-1"));
-        gvd.STIndex = int.Parse(config.Get("ST_INDEX", "0"));
+        gvd.TTIndex = int.Parse(config.Get("TT_INDEX", "0"), CultureInfo.InvariantCulture);
+        gvd.VLIndex = int.Parse(config.Get("VL_INDEX", "-1"), CultureInfo.InvariantCulture);
+        gvd.STIndex = int.Parse(config.Get("ST_INDEX", "0"), CultureInfo.InvariantCulture);
         var isRegionText = config.Get("IS_REGION_TEXT", "1");
         gvd.IsRegionText = isRegionText == "1";
-        gvd.OnlyCityVLIndex = int.Parse(config.Get("ONLY_CITY_VL_INDEX", "-999"));
+        gvd.OnlyCityVLIndex = int.Parse(config.Get("ONLY_CITY_VL_INDEX", "-999"), CultureInfo.InvariantCulture);
 
         return gvd;
     }
@@ -226,7 +227,7 @@ internal static class TxtParser
     /// <param name="gvd">informacie o grafikone</param>
     public static void WriteInfoGVD(string path, GVDInfo gvd)
     {
-        var fileGrafikon = CombinePath(path, FILE_GRAFIKON);
+        var fileGrafikon = CombinePath(path, FILE_GRAFIKON)!;
 
         var config = new TxtProps(fileGrafikon, true);
 
@@ -235,11 +236,11 @@ internal static class TxtParser
         config.Set("IDSTATION", gvd.ThisStation.ID);
         config.Set("NAMESTATION", gvd.ThisStation.Name);
         config.Set("TRAINCOUNT", gvd.TrainCount);
-        config.Set("START_VALID_TIMETABLE", gvd.StartValidTimeTable.ToString("dd.MM.yyyy"));
-        config.Set("END_VALID_TIMETABLE", gvd.EndValidTimeTable.ToString("dd.MM.yyyy"));
-        config.Set("START_VALID_DATA", gvd.StartValidData.ToString("dd.MM.yyyy"));
-        config.Set("END_VALID_DATA", gvd.EndValidData.ToString("dd.MM.yyyy"));
-        config.Set("CREATE_DATA", gvd.CreateData.ToString("dd.MM.yyyy"));
+        config.Set("START_VALID_TIMETABLE", gvd.StartValidTimeTable.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
+        config.Set("END_VALID_TIMETABLE", gvd.EndValidTimeTable.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
+        config.Set("START_VALID_DATA", gvd.StartValidData.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
+        config.Set("END_VALID_DATA", gvd.EndValidData.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
+        config.Set("CREATE_DATA", gvd.CreateData.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
         config.Set("TT_INDEX", gvd.TTIndex);
         config.Set("VL_INDEX", gvd.VLIndex);
         config.Set("ST_INDEX", gvd.STIndex);
@@ -259,7 +260,7 @@ internal static class TxtParser
     /// <returns>audio linky</returns>
     public static List<Audio> ReadAudio()
     {
-        var fileAudio = CombinePath(GlobData.DataDir, FILE_AUDIO);
+        var fileAudio = CombinePath(GlobData.DataDir, FILE_AUDIO)!;
 
         var audios = new List<Audio>();
 
@@ -309,7 +310,7 @@ internal static class TxtParser
     /// <param name="audios">audio linky</param>
     public static void WriteAudio(IEnumerable<Audio> audios)
     {
-        var fileAudio = CombinePath(GlobData.DataDir, FILE_AUDIO);
+        var fileAudio = CombinePath(GlobData.DataDir, FILE_AUDIO)!;
 
         using var audioF = new CsvFileWriter(fileAudio);
         foreach (var a in audios)
@@ -337,7 +338,7 @@ internal static class TxtParser
     /// <returns>meskania</returns>
     public static List<int> ReadZpozdeni()
     {
-        var file = CombinePath(GlobData.DataDir, FILE_ZPOZDENI);
+        var file = CombinePath(GlobData.DataDir, FILE_ZPOZDENI)!;
 
         var meskania = new List<int>();
 
@@ -358,7 +359,7 @@ internal static class TxtParser
 
             try
             {
-                var num = int.Parse(row[0]);
+                var num = int.Parse(row[0], CultureInfo.InvariantCulture);
                 if (num is < 0 or > 480)
                     throw new FormatException($"Číslo {num} nie je v intervale X >= 0 a zároveň X <= 480.");
                 meskania.Add(num);
@@ -379,7 +380,7 @@ internal static class TxtParser
     /// </summary>
     public static void WriteZpozdeniDefault()
     {
-        var file = CombinePath(GlobData.DataDir, FILE_ZPOZDENI);
+        var file = CombinePath(GlobData.DataDir, FILE_ZPOZDENI)!;
 
         using var zpozdeniF = new CsvFileWriter(file);
         for (var i = 5; i <= 480; i += 5)
@@ -397,13 +398,13 @@ internal static class TxtParser
     /// <param name="meskania">meskania</param>
     public static void WriteZpozdeni(IEnumerable<int> meskania)
     {
-        var file = CombinePath(GlobData.DataDir, FILE_ZPOZDENI);
+        var file = CombinePath(GlobData.DataDir, FILE_ZPOZDENI)!;
 
         using var zpozdeniF = new CsvFileWriter(file);
         foreach (var meskanie in meskania)
         {
             var row = new CsvRow();
-            row.Insert(0, meskanie.ToString());
+            row.Insert(0, meskanie.ToString(CultureInfo.InvariantCulture));
 
             zpozdeniF.WriteRow(row);
         }
@@ -419,7 +420,7 @@ internal static class TxtParser
     /// <returns>kategorie vlakov</returns>
     public static List<TrainType> ReadTrainTypes()
     {
-        var fileTrTypes = CombinePath(GlobData.DataDir, FILE_TRTYPES);
+        var fileTrTypes = CombinePath(GlobData.DataDir, FILE_TRTYPES)!;
 
         var typy = new List<TrainType>();
 
@@ -453,9 +454,11 @@ internal static class TxtParser
                 {
                     if (TrainType.Validate(s))
                     {
-                        typ = new TrainType(s);
-                        typ.Key = row.Count > 1 ? row[1] : s;
-                        typ.TextInTable =  row.Count > 2 ? row[2] : s;
+                        typ = new TrainType(s)
+                        {
+                            Key = row.Count > 1 ? row[1] : s,
+                            TextInTable = row.Count > 2 ? row[2] : s
+                        };
                     }
                     else
                         throw new ArgumentException($"Neznámy typ vlaku {s}");
@@ -465,7 +468,7 @@ internal static class TxtParser
             }
             catch (Exception e)
             {
-                throw new FormatException(string.Format(FORMAT_EX, FILE_TRTYPES, riadok) + e.Message, e);
+                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FORMAT_EX, FILE_TRTYPES, riadok) + e.Message, e);
             }
 
             riadok++;
@@ -480,7 +483,7 @@ internal static class TxtParser
     /// <param name="typy">kategorie vlakov</param>
     public static void WriteTrainTypes(IEnumerable<TrainType> typy)
     {
-        var fileTrTypes = CombinePath(GlobData.DataDir, FILE_TRTYPES);
+        var fileTrTypes = CombinePath(GlobData.DataDir, FILE_TRTYPES)!;
 
         using var trtypesF = new CsvFileWriter(fileTrTypes);
         foreach (var typ in typy)
@@ -513,7 +516,7 @@ internal static class TxtParser
     /// </summary>
     public static void WriteTrainTypesDefaults()
     {
-        var file = CombinePath(GlobData.DataDir, FILE_TRTYPES);
+        var file = CombinePath(GlobData.DataDir, FILE_TRTYPES)!;
 
         string[] types = { "Os", "Zr", "R", "Ex", "EC", "IC", "EN", "ER", "REX", "Bus", "SC" };
 
@@ -538,7 +541,7 @@ internal static class TxtParser
     /// <returns>jazyky</returns>
     public static List<FyzLanguage> ReadGlobalCategori(string path, IList<FyzLanguage> jazykyFromBank, int maxLangs)
     {
-        var file = CombinePath(path, FILE_CATEGORI);
+        var file = CombinePath(path, FILE_CATEGORI)!;
 
         var jazyky = new List<FyzLanguage>();
 
@@ -582,7 +585,7 @@ internal static class TxtParser
     /// <param name="jazyky">jazyky</param>
     public static void WriteLanguages(List<FyzLanguage> jazyky)
     {
-        var file = CombinePath(GlobData.DataDir, FILE_CATEGORI);
+        var file = CombinePath(GlobData.DataDir, FILE_CATEGORI)!;
 
         var categoriF = new TxtPropsAreasFields(file, true);
 
@@ -609,7 +612,7 @@ internal static class TxtParser
     /// <param name="path">cesta do priecinka s datami</param>
     public static (List<ReportVariant>,List<ReportType>,List<FyzLanguage>) ReadLocalCategori(string path)
     {
-        var file = CombinePath(path, FILE_CATEGORI);
+        var file = CombinePath(path, FILE_CATEGORI)!;
 
         var variants = new List<ReportVariant>();
         var types = new List<ReportType>();
@@ -676,7 +679,7 @@ internal static class TxtParser
     /// <param name="languages">jazyky</param>
     public static void WriteLocalCategori(string path, List<ReportVariant> varianty, List<ReportType> types, IList<FyzLanguage> languages)
     {
-        var file = CombinePath(path, FILE_CATEGORI);
+        var file = CombinePath(path, FILE_CATEGORI)!;
 
         var categoriF = new TxtPropsAreasFields(file, true);
 
@@ -736,16 +739,16 @@ internal static class TxtParser
     /// <returns>vlaky</returns>
     public static List<Train> ReadTrains(string path)
     {
-        var fileEXP3A = CombinePath(path, FILE_EXPORT3A);
-        var fileEXP3B = CombinePath(path, FILE_EXPORT3B);
-        var fileEXP3C = CombinePath(path, FILE_EXPORT3C);
-        var fileVlaky = CombinePath(path, FILE_VLAKY);
-        var fileVzory = CombinePath(path, FILE_VZORY);
-        var fileStaHlasB = CombinePath(path, FILE_STAHLASB);
-        var fileStaHlasC = CombinePath(path, FILE_STAHLASC);
-        var filePozice = CombinePath(path, FILE_POZICE);
-        var fileForeign = CombinePath(path, FILE_FOREIGN);
-        var fileDoplnky = CombinePath(path, FILE_DOPLNKY);
+        var fileEXP3A = CombinePath(path, FILE_EXPORT3A)!;
+        var fileEXP3B = CombinePath(path, FILE_EXPORT3B)!;
+        var fileEXP3C = CombinePath(path, FILE_EXPORT3C)!;
+        var fileVlaky = CombinePath(path, FILE_VLAKY)!;
+        var fileVzory = CombinePath(path, FILE_VZORY)!;
+        var fileStaHlasB = CombinePath(path, FILE_STAHLASB)!;
+        var fileStaHlasC = CombinePath(path, FILE_STAHLASC)!;
+        var filePozice = CombinePath(path, FILE_POZICE)!;
+        var fileForeign = CombinePath(path, FILE_FOREIGN)!;
+        var fileDoplnky = CombinePath(path, FILE_DOPLNKY)!;
 
         var vlaky = new List<Train>();
 
@@ -781,7 +784,15 @@ internal static class TxtParser
                     }
 
                     train.Variant = int.Parse(row[4]);
-                    train.Routing = Routing.Parse(row[5]);
+
+                    var routing = Routing.Parse(row[5]);
+                    if (routing == null)
+                    {
+                        var err = $"Neexistujúce smerovanie vlaku {row[5]}";
+                        throw new FormatException(err);
+                    }
+
+                    train.Routing = routing;
                     train.IsMedzistatny = row[6].Contains("M");
                     train.IsMiestenkovy = row[6].Contains("R");
                     train.IsMimoriadny = row[6].Contains("X");
@@ -808,7 +819,7 @@ internal static class TxtParser
                     }
 
                     var idOperator = ParseIntOrDefault(row.ElementAtOrDefault(12), -1);
-                    train.Operator = Operator.GetFromID(GlobData.Operators, idOperator);
+                    train.Operator = Operator.GetFromID(GlobData.Operators, idOperator) ?? Operator.None;
 
                     train.LineArrival = row.ElementAtOrDefault(13);
                     train.LineDeparture = row.ElementAtOrDefault(14);
@@ -1096,6 +1107,9 @@ internal static class TxtParser
                     var train = vlaky[id - 1];
 
                     var kolaj = Track.GetFromID(GlobData.Tracks, row[1]);
+                    if (kolaj == null)
+                        throw new FormatException($"Neexistujúca koľaj {row[1]}");
+
                     train.Track = kolaj;
                 }
                 catch (Exception e)
@@ -1219,17 +1233,17 @@ internal static class TxtParser
     /// <param name="reportVariants">varianty reportov</param>
     public static void WriteTrains(string path, IList<Train> trains, GVDInfo gvd, IList<ReportVariant> reportVariants)
     {
-        var fileEXP3A = CombinePath(path, FILE_EXPORT3A);
-        var fileEXP3B = CombinePath(path, FILE_EXPORT3B);
-        var fileEXP3C = CombinePath(path, FILE_EXPORT3C);
-        var fileVlaky = CombinePath(path, FILE_VLAKY);
-        var fileVzory = CombinePath(path, FILE_VZORY);
-        var fileStaHlasB = CombinePath(path, FILE_STAHLASB);
-        var fileStaHlasC = CombinePath(path, FILE_STAHLASC);
-        var filePozice = CombinePath(path, FILE_POZICE);
-        var fileForeign = CombinePath(path, FILE_FOREIGN);
-        var fileDoplnky = CombinePath(path, FILE_DOPLNKY);
-        var fileStanice = CombinePath(path, FILE_STANICE);
+        var fileEXP3A = CombinePath(path, FILE_EXPORT3A)!;
+        var fileEXP3B = CombinePath(path, FILE_EXPORT3B)!;
+        var fileEXP3C = CombinePath(path, FILE_EXPORT3C)!;
+        var fileVlaky = CombinePath(path, FILE_VLAKY)!;
+        var fileVzory = CombinePath(path, FILE_VZORY)!;
+        var fileStaHlasB = CombinePath(path, FILE_STAHLASB)!;
+        var fileStaHlasC = CombinePath(path, FILE_STAHLASC)!;
+        var filePozice = CombinePath(path, FILE_POZICE)!;
+        var fileForeign = CombinePath(path, FILE_FOREIGN)!;
+        var fileDoplnky = CombinePath(path, FILE_DOPLNKY)!;
+        var fileStanice = CombinePath(path, FILE_STANICE)!;
 
         //EXPORT3A.TXT
         using (var export3aF = new CsvFileWriter(fileEXP3A))
@@ -1261,13 +1275,13 @@ internal static class TxtParser
                 if (train.Routing == Routing.Vychadzajuci)
                 {
                     row.Insert(7, "");
-                    row.Insert(8, train.Departure?.ToString("HH:mm"));
+                    row.Insert(8, train.Departure?.ToString("HH:mm") ?? "");
                     row.Insert(9, gvd.ThisStation.ID);
                     row.Insert(10, train.StaniceDoSmeru.Last().ID);
                 }
                 else if (train.Routing == Routing.Konciaci)
                 {
-                    row.Insert(7, train.Arrival?.ToString("HH:mm"));
+                    row.Insert(7, train.Arrival?.ToString("HH:mm") ?? "");
                     row.Insert(8, "");
                     row.Insert(9, train.StaniceZoSmeru.First().ID);
                     row.Insert(10, gvd.ThisStation.ID);
@@ -1601,7 +1615,7 @@ internal static class TxtParser
     /// <param name="path">cesta do priecinka s datami</param>
     public static List<Track> ReadTracks(string path)
     {
-        var file = CombinePath(path, FILE_POZICE_A);
+        var file = CombinePath(path, FILE_POZICE_A)!;
 
         var tracks = new List<Track>();
 
@@ -1662,7 +1676,7 @@ internal static class TxtParser
     /// <param name="tracks">kolaje</param>
     public static void WriteTracks(string path, IEnumerable<Track> tracks)
     {
-        var file = CombinePath(path, FILE_POZICE_A);
+        var file = CombinePath(path, FILE_POZICE_A)!;
 
         using var poziceAF = new CsvFileWriter(file);
 
@@ -1704,7 +1718,7 @@ internal static class TxtParser
     /// <param name="path">cesta do priecinka s datami</param>
     public static List<Operator> ReadOperators(string path)
     {
-        var file = CombinePath(path, FILE_VLASTNIK);
+        var file = CombinePath(path, FILE_VLASTNIK)!;
 
         var operators = new HashSet<Operator> { Operator.None };
 
@@ -1754,7 +1768,7 @@ internal static class TxtParser
     /// <param name="operators">dopravcovia</param>
     public static void WriteOperators(string path, IEnumerable<Operator> operators)
     {
-        var file = CombinePath(path, FILE_VLASTNIK);
+        var file = CombinePath(path, FILE_VLASTNIK)!;
 
         using var vlastnikF = new CsvFileWriter(file);
         foreach (var operatorV in operators)
@@ -1782,7 +1796,7 @@ internal static class TxtParser
     /// <returns>vlastne stanice</returns>
     public static List<Station> ReadCustomStations(string path, GVDInfo gvd)
     {
-        var fileStanice = CombinePath(path, FILE_STANICE);
+        var fileStanice = CombinePath(path, FILE_STANICE)!;
 
         var stanice = new List<Station>();
 
@@ -1837,7 +1851,7 @@ internal static class TxtParser
     /// <param name="gvd">informacie o grafikone</param>
     public static void WriteCustomStations(string path, IEnumerable<Station> cstations, GVDInfo gvd)
     {
-        var fileStations = CombinePath(path, FILE_STANICE);
+        var fileStations = CombinePath(path, FILE_STANICE)!;
 
         using var staniceF = new CsvFileWriter(fileStations);
 
@@ -1877,7 +1891,7 @@ internal static class TxtParser
     {
         var map = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
-        var fileMap = CombinePath(path, FILE_ELISMAP);
+        var fileMap = CombinePath(path, FILE_ELISMAP)!;
         if (!File.Exists(fileMap))
             return map;
 
@@ -1920,7 +1934,7 @@ internal static class TxtParser
     /// <param name="gvd">informacie o grafikone</param>
     public static void WriteElisStationMap(string path, Dictionary<string, string> map, GVDInfo gvd)
     {
-        var fileMap = CombinePath(path, FILE_ELISMAP);
+        var fileMap = CombinePath(path, FILE_ELISMAP)!;
 
         using var mapF = new CsvFileWriter(fileMap);
 
@@ -1951,7 +1965,7 @@ internal static class TxtParser
     /// <returns>radenia vlakov</returns>
     public static List<Radenie> ReadRazeni1(string path, List<FyzSound> sounds)
     {
-        var fileRazeni1 = CombinePath(path, FILE_RAZENI1);
+        var fileRazeni1 = CombinePath(path, FILE_RAZENI1)!;
 
         var radeniaList = new List<Radenie>();
 
@@ -1959,7 +1973,7 @@ internal static class TxtParser
         var riadok = 1;
         var row = new CsvRow();
 
-        Radenie radenie = null;
+        Radenie? radenie = null;
 
         while (true)
         {
@@ -2025,7 +2039,7 @@ internal static class TxtParser
                     var file = row[0];
                     var array = file.Split('/');
 
-                    FyzLanguage lang = null;
+                    FyzLanguage? lang = null;
                     foreach (var jazyk in GlobData.LocalLanguages)
                         if (jazyk.Key == array[0])
                             lang = jazyk;
@@ -2033,7 +2047,7 @@ internal static class TxtParser
                     if (lang == null) 
                         throw new FormatException($"Jazyk {array[0]} neexistuje.");
 
-                    FyzSound zvuk = null;
+                    FyzSound? zvuk = null;
                     var formated = array[1];
                     foreach (var sound in sounds)
                         if (formated.EqualsIgnoreCase(sound.Group.Name) && array[2].EqualsIgnoreCase(sound.Name) && lang == sound.Group.Language)
@@ -2059,7 +2073,7 @@ internal static class TxtParser
     ///     Vytvori novy subor, ktory bude sluzit na ukladanie informacii o radeniach vlakov
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
-    public static void WriteRazeni1Default(string path) => File.Create(CombinePath(path, FILE_RAZENI1));
+    public static void WriteRazeni1Default(string path) => File.Create(CombinePath(path, FILE_RAZENI1)!);
 
     /// <summary>
     ///     Zapise informacie o radeniach vlakov
@@ -2069,7 +2083,7 @@ internal static class TxtParser
     /// <param name="languages">jazykove mutacie hlaseni</param>
     public static void WriteRazeni1(string path, IEnumerable<Radenie> radenia, IEnumerable<FyzLanguage> languages)
     {
-        var fileRazeni1 = CombinePath(path, FILE_RAZENI1);
+        var fileRazeni1 = CombinePath(path, FILE_RAZENI1)!;
 
         using var razeni1F = new CsvFileWriter(fileRazeni1);
         var otherLangs = new List<FyzLanguage>(2);
@@ -2152,7 +2166,7 @@ internal static class TxtParser
     ///     Vytvori novy subor, ktory bude sluzit na ukladanie informacii o radeniach vlakov
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
-    public static void WriteRazeniDefault(string path) => File.Create(CombinePath(path, FILE_RAZENI));
+    public static void WriteRazeniDefault(string path) => File.Create(CombinePath(path, FILE_RAZENI)!);
 
     #endregion
 
@@ -2164,10 +2178,10 @@ internal static class TxtParser
     /// <param name="path">cesta do priecinka s dátami.</param>
     public static (List<TableTabTab>, List<TableCatalog>, List<TablePhysical>, List<TableLogical>) ReadTables(string path)
     {
-        var fileTabTab = CombinePath(path, FILE_TABTAB);
-        var fileTCatalog = CombinePath(path, FILE_TKATALOG);
-        var fileTPhysical = CombinePath(path, FILE_TPHYSIC);
-        var fileTLogical = CombinePath(path, FILE_TLOGICAL);
+        var fileTabTab = CombinePath(path, FILE_TABTAB)!;
+        var fileTCatalog = CombinePath(path, FILE_TKATALOG)!;
+        var fileTPhysical = CombinePath(path, FILE_TPHYSIC)!;
+        var fileTLogical = CombinePath(path, FILE_TLOGICAL)!;
 
         var tabtabs = new List<TableTabTab>();
         var tcatalogs = new List<TableCatalog>();
@@ -2184,7 +2198,7 @@ internal static class TxtParser
                 throw new FormatException($"TabTab č. {p} má neplatný názov (prázdny alebo obsahujúci iba biele znaky).");
             }
 
-            var tabTab = new TableTabTab { Key = area, Text = tabtabF.Get(area) };
+            var tabTab = new TableTabTab { Key = area, Text = tabtabF.Get(area) ?? "" };
             tabtabs.Add(tabTab);
             p++;
         }
@@ -2203,12 +2217,14 @@ internal static class TxtParser
             tcatalog.Name = catalogF.Get(area, "NAME").ANSItoUTF();
             tcatalog.Key = tcatalog.CheckKey(catalogF.Get(area, "KEY").ANSItoUTF(), tcatalog.Name, tcatalogs);
             var manufacturer = catalogF.Get(area, "MANUFACTURER_KEY");
-            tcatalog.Manufacturer = TableManufacturer.Parse(manufacturer);
-            if (tcatalog.Manufacturer == null)
+            var parsedManufacturer = TableManufacturer.Parse(manufacturer);
+            if (parsedManufacturer == null)
             {
                 throw new FormatException(
                     $"Katalógová tabuľa {tcatalog.Key} má zadaný neplatný kľúč výrobcu (MANUFACTURER_KEY): {manufacturer}.");
             }
+
+            tcatalog.Manufacturer = parsedManufacturer;
 
             tcatalog.MaxRecCount = ParseIntOrDefault(catalogF.Get(area, "MAX_REC_COUNT", false));
             tcatalog.MinHeight = ParseIntOrDefault(catalogF.Get(area, "MIN_HEIGHT", false));
@@ -2243,31 +2259,35 @@ internal static class TxtParser
                 };
 
                 var fillSection = catalogF.Get(area, $"TYPE_ITEMS_IDX_{padded}", false);
-                item.FillSection = TableFillSection.Parse(ParseIntOrDefault(fillSection));
+                var parsedFillSection = TableFillSection.Parse(ParseIntOrDefault(fillSection));
 
                 var align = catalogF.Get(area, $"TYPE_ITEMS_ALIGN_{padded}", false);
-                item.Align = TableAlign.Parse(ParseIntOrDefault(align));
+                var parsedAlign = TableAlign.Parse(ParseIntOrDefault(align));
 
                 var divType = catalogF.Get(area, $"TYPE_ITEMS_DIVTYPE_{padded}", false);
-                item.DivType = TableDivType.Parse(ParseIntOrDefault(divType));
+                var parsedDivType = TableDivType.Parse(ParseIntOrDefault(divType));
 
-                if (item.FillSection == null)
+                if (parsedFillSection == null)
                 {
                     throw new FormatException(
                         $"Katalógová tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neplatnú hodnotu TYPE_ITEMS_IDX: {fillSection}.");
                 }
 
-                if (item.Align == null)
+                if (parsedAlign == null)
                 {
                     throw new FormatException(
                         $"Katalógová tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neplatnú hodnotu TYPE_ITEMS_ALIGN: {align}.");
                 }
 
-                if (item.DivType == null)
+                if (parsedDivType == null)
                 {
                     throw new FormatException(
                         $"Katalógová tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neplatnú hodnotu TYPE_ITEMS_DIVTYPE: {align}.");
                 }
+
+                item.FillSection = parsedFillSection;
+                item.Align = parsedAlign;
+                item.DivType = parsedDivType;
 
                 var tab1 = catalogF.Get(area, $"TYPE_ITEMS_TAB1_{padded}").ANSItoUTF();
                 var tab2 = catalogF.Get(area, $"TYPE_ITEMS_TAB2_{padded}").ANSItoUTF();
@@ -2284,13 +2304,15 @@ internal static class TxtParser
                 var typetab = new TableViewTypeTab();
 
                 var viewType = catalogF.Get(area, $"TYPE_VIEW_TAB_KEY_{tj.PadZeros()}").ANSItoUTF();
-                typetab.ViewType = TableViewType.Parse(viewType);
+                var parsedViewType = TableViewType.Parse(viewType);
 
-                if (typetab.ViewType == null)
+                if (parsedViewType == null)
                 {
                     throw new FormatException(
                         $"Katalógová tabuľa {tcatalog.Key} obsahuje neplatný typ zobrazenia (TYPE_VIEW_TAB_KEY): {viewType}.");
                 }
+
+                typetab.ViewType = parsedViewType;
 
                 typetab.CountLinesRecord = catalogF.Get(area, $"TYPE_VIEW_TAB_COUNT_LINES_RECORD_{tj.PadZeros()}");
                 if (!IsInt(typetab.CountLinesRecord))
@@ -2306,13 +2328,15 @@ internal static class TxtParser
                     var ttmi = new TableTypeModeItem();
 
                     var viewMode = catalogF.Get(area, $"TYPE_MODE_KEY_{tj.PadZeros()}_{tk.PadZeros()}").ANSItoUTF();
-                    ttmi.ViewMode = TableViewMode.Parse(viewMode);
+                    var parsedViewMode = TableViewMode.Parse(viewMode);
 
-                    if (ttmi.ViewMode == null)
+                    if (parsedViewMode == null)
                     {
                         throw new FormatException(
                             $"Katalógová tabuľa {tcatalog.Key} obsahuje neplatný typ zobrazenia (TYPE_VIEW_TAB_KEY): {viewMode}.");
                     }
+
+                    ttmi.ViewMode = parsedViewMode;
 
                     var cl = ParseIntOrDefault(catalogF.Get(area, $"TYPE_MODE_COUNT_TYPE_ITEM_{tj.PadZeros()}_{tk.PadZeros()}", false));
                     for (var l = 0; l < cl; l++)
@@ -2320,7 +2344,7 @@ internal static class TxtParser
                         var tl = l + 1;
                         var itemKey = catalogF.Get(area, $"TYPE_ITEM_{tj.PadZeros()}_{tk.PadZeros()}_{tl.PadZeros(2)}").ANSItoUTF();
 
-                        string tolist = null;
+                        string? tolist = null;
                         foreach (var item in tcatalog.Items)
                             if (item.Key == itemKey)
                                 tolist = itemKey;
@@ -2384,11 +2408,13 @@ internal static class TxtParser
             tlLogical.Key = tlLogical.CheckKey(tlogicF.Get(area, "KEY").ANSItoUTF(), tlLogical.Name, tlogicals);
             tlLogical.TypeViewFlags = tlogicF.Get(area, "TYPE_VIEW_FLAGS").ANSItoUTF();
             var viewtype = tlogicF.Get(area, "TYPE_VIEW").ANSItoUTF();
-            tlLogical.ViewType = TableViewType.Parse(viewtype);
-            if (tlLogical.ViewType == null)
+            var parsedViewType = TableViewType.Parse(viewtype);
+            if (parsedViewType == null)
             {
                 throw new FormatException($"Logická tabuľa {tlLogical.Key} obsahuje neplatný typ zobrazenia (TYPE_VIEW): {viewtype}.");
             }
+
+            tlLogical.ViewType = parsedViewType;
 
             for (var j = 0; j < ParseIntOrDefault(tlogicF.Get(area, "COUNT_REC", false)); j++)
             {
@@ -2402,11 +2428,13 @@ internal static class TxtParser
 
                     tposition.Position = int.Parse(tlogicF.Get(area, $"POSITION_{tj.PadZeros()}_{tk.PadZeros()}"));
                     var tv = tlogicF.Get(area, $"TYPE_VIEW_KEY_{tj.PadZeros()}_{tk.PadZeros()}").ANSItoUTF();
-                    tposition.TypeView = TableViewType.Parse(tv);
-                    if (tposition.TypeView == null)
+                    var parsedTypeView = TableViewType.Parse(tv);
+                    if (parsedTypeView == null)
                     {
                         throw new FormatException($"Logická tabuľa {tlLogical.Key} obsahuje pre neplatný kľúč typu zobrazenia (TYPE_VIEW_KEY_{tj.PadZeros()}_{tk.PadZeros()}): {tv}.");
                     }
+
+                    tposition.TypeView = parsedTypeView;
 
                     var fyzname = tlogicF.Get(area, $"PHYSICAL_KEY_{tj.PadZeros()}_{tk.PadZeros()}").ANSItoUTF();
                     AssignPhysicalToPosition(tphysicals, tposition, fyzname);
@@ -2476,10 +2504,10 @@ internal static class TxtParser
     /// <param name="logicals">Logicke tabule.</param>
     public static void WriteTables(string path, IEnumerable<TableTabTab> tabTabs, IList<TableCatalog> catalogs, IList<TablePhysical> physicals, IList<TableLogical> logicals)
     {
-        var fileTabTab = CombinePath(path, FILE_TABTAB);
-        var fileTCatalog = CombinePath(path, FILE_TKATALOG);
-        var fileTPhysical = CombinePath(path, FILE_TPHYSIC);
-        var fileTLogical = CombinePath(path, FILE_TLOGICAL);
+        var fileTabTab = CombinePath(path, FILE_TABTAB)!;
+        var fileTCatalog = CombinePath(path, FILE_TKATALOG)!;
+        var fileTPhysical = CombinePath(path, FILE_TPHYSIC)!;
+        var fileTLogical = CombinePath(path, FILE_TLOGICAL)!;
 
         //TABTABS
         var tabtabF = new TxtPropsAreas(fileTabTab, true);
@@ -2639,7 +2667,7 @@ internal static class TxtParser
     /// <param name="trains">vlaky</param>
     public static List<TableText> ReadTTexts(string path, IList<Train> trains)
     {
-        var fileTTexts = CombinePath(path, FILE_TTEXTS);
+        var fileTTexts = CombinePath(path, FILE_TTEXTS)!;
 
         var ttexts = new List<TableText>();
 
@@ -2721,7 +2749,7 @@ internal static class TxtParser
     /// <param name="ttexts">texty do tabul</param>
     public static void WriteTTexts(string path, IList<TableText> ttexts)
     {
-        var fileTTexts = CombinePath(path, FILE_TTEXTS);
+        var fileTTexts = CombinePath(path, FILE_TTEXTS)!;
 
         var ttextsF = new TxtPropsAreasFields(fileTTexts, true);
 
@@ -2774,7 +2802,7 @@ internal static class TxtParser
     /// <param name="path">cesta do priecinka s datami</param>
     public static List<TableFont> ReadTableFonts(string path)
     {
-        var fileModeTabs = CombinePath(path, FILE_MODETABS);
+        var fileModeTabs = CombinePath(path, FILE_MODETABS)!;
 
         var fonts = new List<TableFont>();
 
@@ -2782,7 +2810,7 @@ internal static class TxtParser
 
         const string area = "FONT";
 
-        var count = int.Parse(modetabsF.Get(area, "COUNT"));
+        var count = int.Parse(modetabsF.Get(area, "COUNT"), CultureInfo.InvariantCulture);
         GlobData.TableFontDir = ParseStringOrDefault(modetabsF.Get(area, "PATH", false));
 
         for (var i = 0; i < count; i++)
@@ -2806,11 +2834,13 @@ internal static class TxtParser
             };
 
             var type = ParseStringOrDefault(modetabsF.Get(area, $"BOLD_FACE_{pad}", false)).ANSItoUTF();
-            font.Type = TableFontType.Parse(type);
-            if (font.Type == null)
+            var parsedType = TableFontType.Parse(type);
+            if (parsedType == null)
             {
                 throw new FormatException($"Písmo tabule {font.Name} má neplatný typ (BOLD_FACE_{pad}): {type}.");
             }
+
+            font.Type = parsedType;
 
             fonts.Add(font);
         }
@@ -2826,7 +2856,7 @@ internal static class TxtParser
     /// <param name="fontdir">priecinok v ktorom sa nachadzaju binarne subory s fontami</param>
     public static void WriteModeTabs(string path, IList<TableFont> fonts, string fontdir)
     {
-        var fileModeTabs = CombinePath(path, FILE_MODETABS);
+        var fileModeTabs = CombinePath(path, FILE_MODETABS)!;
 
         var modetabsF = new TxtPropsAreasFields(fileModeTabs, true);
 
@@ -2896,11 +2926,14 @@ internal static class TxtParser
             if (!string.IsNullOrEmpty(font.FileName))
                 modetabsF.Set(areaFont, $"FILE_NAME_{ti.PadZeros()}", font.Name, WriteType.WriteStringANSI);
 
-            if (font.Type != null) modetabsF.Set(areaFont, $"BOLD_FACE_{ti.PadZeros()}", font.Type.Key, WriteType.WriteStringANSI);
+            if (font.Type != null) 
+                modetabsF.Set(areaFont, $"BOLD_FACE_{ti.PadZeros()}", font.Type.Key, WriteType.WriteStringANSI);
 
-            if (font.Size != 0) modetabsF.Set(areaFont, $"SIZE_{ti.PadZeros()}", font.Size);
+            if (font.Size != 0) 
+                modetabsF.Set(areaFont, $"SIZE_{ti.PadZeros()}", font.Size);
 
-            if (font.Width != 0) modetabsF.Set(areaFont, $"WIDTH_{ti.PadZeros()}", font.Width);
+            if (font.Width != 0) 
+                modetabsF.Set(areaFont, $"WIDTH_{ti.PadZeros()}", font.Width);
 
             modetabsF.Set(areaFont, $"PROPORTIONAL_{ti.PadZeros()}", font.IsProportional.ToNumber());
             modetabsF.Set(areaFont, $"IS_DIA_{ti.PadZeros()}", font.IsDia.ToNumber());

@@ -8,8 +8,8 @@ namespace GVDEditor.Tools;
 /// </summary>
 internal sealed class WavPlayer : IDisposable
 {
-    private WaveOutEvent _outputDevice;
-    private AudioFileReader[] _audios;
+    private WaveOutEvent? _outputDevice;
+    private AudioFileReader[]? _audios;
 
     /// <summary>
     ///     Vytvori novu instanciu triedy <see cref="WavPlayer"/>.
@@ -76,6 +76,9 @@ internal sealed class WavPlayer : IDisposable
     public void Dispose()
     {
         _outputDevice?.Dispose();
+        if (_audios == null)
+            return;
+
         foreach (var audio in _audios)
         {
             audio.Dispose();

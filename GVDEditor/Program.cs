@@ -9,7 +9,7 @@ namespace GVDEditor;
 
 internal static class Program
 {
-    public static FMain MainForm { get; private set; }
+    public static FMain MainForm { get; private set; } = null!;
 
     /// <summary>
     ///     The main entry point for the application.

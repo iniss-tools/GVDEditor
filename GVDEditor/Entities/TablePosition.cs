@@ -13,10 +13,10 @@ public sealed class TablePosition
     /// <summary>
     ///     Druh zaznamu.
     /// </summary>
-    public TableViewType TypeView { get; set; }
+    public TableViewType TypeView { get; set; } = null!;
 
     /// <summary>
     ///     Fyzicka tabula, na ktorej sa zaznam zobrazuje.
     /// </summary>
-    public TablePhysical Table { get; set; }
+    public TablePhysical Table { get; set; } = null!;
 }

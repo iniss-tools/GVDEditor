@@ -8,32 +8,32 @@ public sealed class Audio
     /// <summary>
     ///     Vrati alebo nastavi stanicu audio linky (použije sa len identifikátor stanice).
     /// </summary>
-    public Station Station { get; set; }
+    public Station Station { get; set; } = null!;
 
     /// <summary>
     ///     Vrati alebo nastavi názov audio linky.
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <summary>
     ///     Vrati alebo nastavi skrátený názov.
     /// </summary>
-    public string ShortName { get; set; }
+    public string ShortName { get; set; } = null!;
 
     /// <summary>
     ///     Vrati alebo nastavi názov fronty.
     /// </summary>
-    public string QueueName { get; set; }
+    public string QueueName { get; set; } = null!;
 
     /// <summary>
     ///     Vrati alebo nastavi mixer.
     /// </summary>
-    public string Mixer { get; set; }
+    public string Mixer { get; set; } = null!;
 
     /// <summary>
     ///     Vrati alebo nastavi identifikator zvukovej karty.
     /// </summary>
-    public string SoundCard { get; set; }
+    public string SoundCard { get; set; } = null!;
 
     /// <inheritdoc />
     public override string ToString() => Name;

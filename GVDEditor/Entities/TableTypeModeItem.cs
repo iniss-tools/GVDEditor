@@ -17,7 +17,7 @@ public sealed class TableTypeModeItem : IEnumerable
     /// <summary>
     ///     Mod zobrazenia polozky.
     /// </summary>
-    public TableViewMode ViewMode { get; set; }
+    public TableViewMode ViewMode { get; set; } = null!;
 
     /// <summary>
     /// </summary>

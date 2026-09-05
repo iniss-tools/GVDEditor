@@ -18,7 +18,7 @@ public sealed record GVDInfo
     /// <summary>
     ///     Reprezentuje stanicu, pre ktorú bol grafikon robený
     /// </summary>
-    public Station ThisStation { get; set; }
+    public Station ThisStation { get; set; } = null!;
 
     /// <summary>
     ///     Počet vlakov

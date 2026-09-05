@@ -96,7 +96,7 @@ public sealed class ReportType
                 var found = false;
                 foreach (var chosenReportType in reports.Where(chosenReportType => reportType.Equals(chosenReportType.Type)))
                 {
-                    chosenReportType.Variants.Add(GlobData.ReportVariants.ElementAtOrDefault(0));
+                    chosenReportType.Variants.Add(GlobData.ReportVariants.ElementAtOrDefault(0)!);
                     found = true;
                 }
 
@@ -104,7 +104,7 @@ public sealed class ReportType
                     reports.Add(new ChosenReportType
                     {
                         Type = reportType,
-                        Variants = new List<ReportVariant> { GlobData.ReportVariants.ElementAtOrDefault(0) }
+                        Variants = new List<ReportVariant> { GlobData.ReportVariants.ElementAtOrDefault(0)! }
                     });
             }
 
@@ -113,7 +113,7 @@ public sealed class ReportType
                 var found = false;
                 foreach (var chosenReportType in reports.Where(chosenReportType => reportType.Equals(chosenReportType.Type)))
                 {
-                    chosenReportType.Variants.Add(GlobData.ReportVariants.ElementAtOrDefault(1));
+                    chosenReportType.Variants.Add(GlobData.ReportVariants.ElementAtOrDefault(1)!);
                     found = true;
                 }
 
@@ -121,7 +121,7 @@ public sealed class ReportType
                     reports.Add(new ChosenReportType
                     {
                         Type = reportType,
-                        Variants = new List<ReportVariant> { GlobData.ReportVariants.ElementAtOrDefault(1) }
+                        Variants = new List<ReportVariant> { GlobData.ReportVariants.ElementAtOrDefault(1)! }
                     });
             }
         }
@@ -137,7 +137,7 @@ public sealed class ReportType
     }
 
     /// <inheritdoc />
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (ReferenceEquals(null, obj)) return false;
         if (ReferenceEquals(this, obj)) return true;

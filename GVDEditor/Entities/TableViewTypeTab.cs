@@ -18,12 +18,12 @@ public sealed class TableViewTypeTab : IEnumerable
     /// <summary>
     ///     Typ zobrazenia.
     /// </summary>
-    public TableViewType ViewType { get; set; }
+    public TableViewType ViewType { get; set; } = null!;
 
     /// <summary>
     ///     Pocet riadkov, kolko ma 1 zaznam na tabuli.
     /// </summary>
-    public string CountLinesRecord { get; set; }
+    public string CountLinesRecord { get; set; } = null!;
 
     /// <summary>
     ///     Mody zobrazenia zaznamu.

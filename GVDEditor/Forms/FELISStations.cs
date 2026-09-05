@@ -84,7 +84,7 @@ public partial class FELISStations : Form
         var created = new List<string>();
         foreach (DataGridViewRow row in dgvStations.SelectedRows)
         {
-            var elisName = (string)row.Cells[0].Value;
+            var elisName = (string)row.Cells[0].Value!;
 
             //ak uz stanica s tym nazvom existuje, nezakladame druhu - iba ju priradime
             var existing = _stations.FirstOrDefault(s => s.Name == elisName);
@@ -110,7 +110,7 @@ public partial class FELISStations : Form
     private void RefreshComboItems()
     {
         //zapamatame si aktualne hodnoty, lebo zmena poloziek ich vymaze
-        var current = new string[dgvStations.Rows.Count];
+        var current = new string?[dgvStations.Rows.Count];
         for (var i = 0; i < dgvStations.Rows.Count; i++)
             current[i] = dgvStations.Rows[i].Cells[1].Value as string;
 
@@ -155,7 +155,7 @@ public partial class FELISStations : Form
 
         foreach (DataGridViewRow row in dgvStations.Rows)
         {
-            var elisName = (string)row.Cells[0].Value;
+            var elisName = (string)row.Cells[0].Value!;
             var chosen = row.Cells[1].Value as string;
 
             if (string.IsNullOrEmpty(chosen) || chosen == SkipItem)

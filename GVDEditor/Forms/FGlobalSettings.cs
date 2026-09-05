@@ -86,7 +86,7 @@ public partial class FGlobalSettings : Form
 
     private void listLanguages_SelectedIndexChanged(object sender, EventArgs e)
     {
-        var jazyk = (FyzLanguage)listLanguages.SelectedItem;
+        var jazyk = (FyzLanguage)listLanguages.SelectedItem!;
         tbLanguageName.Text = jazyk.Name;
         tbLanguageSkratka.Text = jazyk.Key;
         cbIsBasic.Checked = jazyk.IsBasic;
@@ -187,7 +187,7 @@ public partial class FGlobalSettings : Form
     {
         if (listGrafikony.SelectedIndex != -1)
         {
-            var dir = (GVDDirectory)listGrafikony.SelectedItem;
+            var dir = (GVDDirectory)listGrafikony.SelectedItem!;
             tbGrafikonStanica.Text = dir.GVD.ThisStation.Name;
             tbGrafikonObdobie.Text = dir.GVD.StartValidTimeTable.ToString("dd.MM.yyyy") + @" - " +
                                      dir.GVD.EndValidTimeTable.ToString("dd.MM.yyyy");
@@ -224,7 +224,7 @@ public partial class FGlobalSettings : Form
     {
         if (listGrafikony.SelectedIndex != -1)
         {
-            var dir = (GVDDirectory)listGrafikony.SelectedItem;
+            var dir = (GVDDirectory)listGrafikony.SelectedItem!;
             var portTab = decimal.ToInt32(nudTabPort.Value);
             var portHlas = decimal.ToInt32(nudHlaseniePort.Value);
             dir.Dir.TablePort = portTab == 0 ? null : portTab;
@@ -242,7 +242,7 @@ public partial class FGlobalSettings : Form
 
             if (result == DialogResult.Yes)
             {
-                RemovedGVDs.Add(listGrafikony.SelectedItem as GVDDirectory);
+                RemovedGVDs.Add((GVDDirectory)listGrafikony.SelectedItem!);
                 Grafikony.RemoveAt(listGrafikony.SelectedIndex);
             }
         }
@@ -312,7 +312,7 @@ public partial class FGlobalSettings : Form
         if (listTrainTypes.SelectedIndex == -1) 
             return;
 
-        var typ = (TrainType)listTrainTypes.SelectedItem;
+        var typ = (TrainType)listTrainTypes.SelectedItem!;
 
         if (!typ.IsCustom)
         {
@@ -348,7 +348,7 @@ public partial class FGlobalSettings : Form
 
     private void bDefTrainTypAdd_Click(object sender, EventArgs e)
     {
-        var typ = (TrainType)cbDefTrainTypSkratka.SelectedItem;
+        var typ = (TrainType)cbDefTrainTypSkratka.SelectedItem!;
 
         if (GlobData.TrainsTypes.Any(trainType => tbDefaultTrainTypSkratka.Text == trainType.Key))
         {
@@ -356,7 +356,7 @@ public partial class FGlobalSettings : Form
             return;
         }
 
-        typ.CategoryTrain = ((TrainType) cbDefTrainTypSkratka.SelectedItem).CategoryTrain;
+        typ.CategoryTrain = ((TrainType)cbDefTrainTypSkratka.SelectedItem!).CategoryTrain;
         typ.Key = tbDefaultTrainTypSkratka.Text;
         typ.TextInTable = tbDefaultTrainTypText.Text;
 
@@ -378,7 +378,7 @@ public partial class FGlobalSettings : Form
             return;
         }
 
-        typ.CategoryTrain = ((TrainType) cbDefTrainTypSkratka.SelectedItem).CategoryTrain;
+        typ.CategoryTrain = ((TrainType)cbDefTrainTypSkratka.SelectedItem!).CategoryTrain;
         typ.Key = tbDefaultTrainTypSkratka.Text;
         typ.TextInTable = tbDefaultTrainTypText.Text;
         GlobData.TrainsTypes.ResetBindings();
@@ -503,7 +503,7 @@ public partial class FGlobalSettings : Form
         if (listTrainTypes.SelectedIndex != -1)
         {
             foreach (var trainType in GlobData.TrainsTypes)
-                if (tbCustomTrainTypSkratka.Text == trainType.Key && ((TrainType)listTrainTypes.SelectedItem).Key != tbCustomTrainTypSkratka.Text)
+                if (tbCustomTrainTypSkratka.Text == trainType.Key && ((TrainType)listTrainTypes.SelectedItem!).Key != tbCustomTrainTypSkratka.Text)
                 {
                     Utils.ShowError(Resources.FGlobalSettings_Click_Zadaný_typ_vlaku_sa_už_v_zozname_nachádza);
                     return;
@@ -658,7 +658,7 @@ public partial class FGlobalSettings : Form
 
         var audio = new Audio
         {
-            Station = cbAudioStanica.SelectedItem as Station,
+            Station = (Station)cbAudioStanica.SelectedItem!,
             Name = tbAudioName.Text,
             ShortName = tbAudioNazovSkratka.Text,
             QueueName = tbAudioNazovFronta.Text
@@ -691,7 +691,7 @@ public partial class FGlobalSettings : Form
             }
 
             var audio = GlobData.Audios[listAudio.SelectedIndex];
-            audio.Station = cbAudioStanica.SelectedItem as Station;
+            audio.Station = (Station)cbAudioStanica.SelectedItem!;
             audio.Name = tbAudioName.Text;
             audio.ShortName = tbAudioNazovSkratka.Text;
             audio.QueueName = tbAudioNazovFronta.Text;

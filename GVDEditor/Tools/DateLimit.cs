@@ -58,16 +58,16 @@ internal class DateLimit
     private readonly bool _skipDateRangeCheck;
     private readonly bool _specDays;
 
-    private BitArray _bits;
+    private BitArray? _bits;
 
     /// <summary>Dlzka znaciek {}, ktore sa nepocitaju do dlzky vyslednej poznamky.</summary>
     private int _marksLength;
 
     /// <summary>Naposledy vypisany mesiac - sluzi na potlacenie jeho opakovania.</summary>
-    private string _lastMonth;
+    private string? _lastMonth;
 
     private int _position;
-    private string _text;
+    private string _text = null!;
 
     /// <summary>
     ///     Jazyk generovaných datumových obmedzeni.
@@ -292,7 +292,7 @@ internal class DateLimit
     /// <returns>
     ///     Text poznamky.
     /// </returns>
-    public string BitArrayToText(BitArray bits, int cycle = 0, BitArray validBits = null)
+    public string BitArrayToText(BitArray? bits, int cycle = 0, BitArray? validBits = null)
     {
         if (bits == null || bits.Length != TotalDays)
             throw new ArgumentException(@"Bitové pole na vstupe chýba alebo neodpovedá jeho dĺžka.", nameof(bits));
@@ -558,22 +558,19 @@ internal class DateLimit
     /// <param name="infosCount">Pocet useku vysledneho obmedzenia - mensi pocet znamena jednoduchsi zapis.</param>
     /// <param name="length">Dlzka vysledneho textu bez znaciek {}.</param>
     /// <param name="validBits">Dni, ktore ma zmysel v poznamke uvadzat.</param>
-    private string FormatBits(bool isNot, out int infosCount, out int length, BitArray validBits)
+    private string FormatBits(bool isNot, out int infosCount, out int length, BitArray? validBits)
     {
         infosCount = 0;
         length = 0;
 
         if (isNot)
-            _bits = _bits.Not();
+            _bits = _bits!.Not();
 
         try
         {
             var limits = ProcessInterval(InitialMinRunLength, 0, MaxDay);
 
-            if (limits == null)
-                return null;
-
-            if (validBits != null && validBits.Length == _bits.Length && limits.Count > 0)
+            if (validBits != null && validBits.Length == _bits!.Length && limits.Count > 0)
                 ReduceDates(limits, validBits);
 
             infosCount = limits.Count;
@@ -601,7 +598,7 @@ internal class DateLimit
         finally
         {
             if (isNot)
-                _bits = _bits.Not();
+                _bits = _bits!.Not();
         }
     }
 
@@ -662,7 +659,7 @@ internal class DateLimit
     /// <summary>
     ///     Postupne skusi vsetky sposoby rozdelenia intervalu na kratsie useky.
     /// </summary>
-    private List<DateLimitInfo> SplitInterval(int minCount, int from, int to) =>
+    private List<DateLimitInfo>? SplitInterval(int minCount, int from, int to) =>
         SplitAtRunBlocks(minCount, from, to) ??
         SplitAtLongRun(minCount, from, to) ??
         SplitLeadingRun(minCount, from, to) ??
@@ -675,9 +672,9 @@ internal class DateLimit
     ///     Povodny kod tu porovnaval dlzku jedineho dna s <paramref name="minCount"/>, takze usek
     ///     vznikne az vtedy, ked <paramref name="minCount"/> klesne na 1 alebo nizsie.
     /// </remarks>
-    private List<DateLimitInfo> SplitAtRunBlocks(int minCount, int from, int to)
+    private List<DateLimitInfo>? SplitAtRunBlocks(int minCount, int from, int to)
     {
-        List<DateLimitInfo> limits = null;
+        List<DateLimitInfo>? limits = null;
         var blockFrom = -1;
 
         for (var day = from; day <= to; day++)
@@ -702,9 +699,9 @@ internal class DateLimit
     ///     Najde vnutri intervalu dostatocne dlhy suvisly usek a rozdeli interval na cast pred nim,
     ///     samotny usek a cast za nim.
     /// </summary>
-    private List<DateLimitInfo> SplitAtLongRun(int minCount, int from, int to)
+    private List<DateLimitInfo>? SplitAtLongRun(int minCount, int from, int to)
     {
-        List<DateLimitInfo> limits = null;
+        List<DateLimitInfo>? limits = null;
         var runFrom = -1;
         var runLength = 0;
 
@@ -741,7 +738,7 @@ internal class DateLimit
     /// <summary>
     ///     Oddeli dostatocne dlhy suvisly usek na zaciatku intervalu.
     /// </summary>
-    private List<DateLimitInfo> SplitLeadingRun(int minCount, int from, int to)
+    private List<DateLimitInfo>? SplitLeadingRun(int minCount, int from, int to)
     {
         var day = from;
         var runLength = 0;
@@ -755,7 +752,7 @@ internal class DateLimit
         if (runLength < MinEdgeRunLength)
             return null;
 
-        List<DateLimitInfo> limits = null;
+        List<DateLimitInfo>? limits = null;
 
         AddInterval(ref limits, new DateLimitInfo(from, from + runLength - 1));
         AddIntervals(ref limits, ProcessInterval(minCount, from + runLength, to));
@@ -766,7 +763,7 @@ internal class DateLimit
     /// <summary>
     ///     Oddeli dostatocne dlhy suvisly usek na konci intervalu.
     /// </summary>
-    private List<DateLimitInfo> SplitTrailingRun(int minCount, int from, int to)
+    private List<DateLimitInfo>? SplitTrailingRun(int minCount, int from, int to)
     {
         var day = to;
         var runLength = 0;
@@ -790,9 +787,9 @@ internal class DateLimit
     ///     Hlada najdlhsi usek, ktory sa da popisat tyzdennym vzorom (napr. "ide 1-5") spolu so zoznamom
     ///     vynimiek z neho. Zvysok intervalu spracuje rekurzivne.
     /// </summary>
-    private List<DateLimitInfo> ScanWeekDays(int minCount, int from, int to)
+    private List<DateLimitInfo>? ScanWeekDays(int minCount, int from, int to)
     {
-        List<DateLimitInfo> limits = null;
+        List<DateLimitInfo>? limits = null;
         var okCount = new DayCounter();
         var badCount = new DayCounter();
 
@@ -1049,7 +1046,7 @@ internal class DateLimit
     /// </summary>
     /// <param name="from">zaciatok intervalu</param>
     /// <param name="to">koniec intervalu</param>
-    private List<DateLimitInfo> GetIntervals(int from, int to)
+    private List<DateLimitInfo>? GetIntervals(int from, int to)
     {
         var runEnds = 0;
         var runStarts = 0;
@@ -1094,7 +1091,7 @@ internal class DateLimit
     ///     Vrati obmedzenie zapisane tyzdennym vzorom alebo vypisom jednotlivych dni, ak je takyto
     ///     zapis mozny. Inak vrati <see langword="null"/>.
     /// </summary>
-    private List<DateLimitInfo> GetSingleDays(int from, int to)
+    private List<DateLimitInfo>? GetSingleDays(int from, int to)
     {
         var runDays = 0;
 
@@ -1140,7 +1137,7 @@ internal class DateLimit
     /// </summary>
     /// <param name="baseIntervals">zakladny zoznam</param>
     /// <param name="appendIntervals">zoznam na priradenie do zakladneho zoznamu</param>
-    private static void AddIntervals(ref List<DateLimitInfo> baseIntervals, List<DateLimitInfo> appendIntervals)
+    private static void AddIntervals(ref List<DateLimitInfo>? baseIntervals, List<DateLimitInfo> appendIntervals)
     {
         if (baseIntervals == null)
         {
@@ -1157,7 +1154,7 @@ internal class DateLimit
     /// </summary>
     /// <param name="baseIntervals">zakladny zoznam</param>
     /// <param name="interval">interval na pridanie</param>
-    private static void AddInterval(ref List<DateLimitInfo> baseIntervals, DateLimitInfo interval)
+    private static void AddInterval([System.Diagnostics.CodeAnalysis.NotNull] ref List<DateLimitInfo>? baseIntervals, DateLimitInfo interval)
     {
         baseIntervals ??= new List<DateLimitInfo>();
         baseIntervals.Add(interval);
@@ -1189,7 +1186,7 @@ internal class DateLimit
     ///     Vrati, ci v zadany den vlak IDE.
     /// </summary>
     /// <param name="day">Den na posudenie.</param>
-    private bool Runs(int day) => _bits[day];
+    private bool Runs(int day) => _bits![day];
 
     /// <summary>
     ///     Vrati, ci v zadany den vlak NEJDE.
@@ -1460,7 +1457,7 @@ internal class DateLimit
     /// <param name="next">Nasledujuci usek, alebo <see langword="null"/> pri poslednom useku.</param>
     /// <param name="isNot">Text sa tvori z negovaneho bitoveho pola.</param>
     /// <param name="level">Naposledy vypisana uvodna spojka - opakovane sa nevypisuje.</param>
-    private void FormatInfo(DateLimitInfo info, DateLimitInfo next, bool isNot, ref Level level)
+    private void FormatInfo(DateLimitInfo info, DateLimitInfo? next, bool isNot, ref Level level)
     {
         AppendComma();
         _lastMonth = null;
@@ -1815,7 +1812,7 @@ internal class DateLimit
 
             // poznamka zacinajuca "nejde" znamena, ze vlak inak ide kazdy den
             if (i == 0 && parseData.Level == Level.RunsNot)
-                _bits.SetAll(true);
+                _bits!.SetAll(true);
 
             if (parseData.From == DateTime.MinValue)
                 parseData.From = DateFrom;
@@ -1828,7 +1825,7 @@ internal class DateLimit
             for (var day = DateDiff(DateFrom, parseData.From); day <= lastDay; day++)
                 if (day >= 0 && day <= MaxDay &&
                     (parseData.Days == DayType.None || (GetDayType(day, true) & parseData.Days) != DayType.None))
-                    _bits[day] = parseData.Level == Level.Runs;
+                    _bits![day] = parseData.Level == Level.Runs;
         }
     }
 

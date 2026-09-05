@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
@@ -28,7 +29,7 @@ public partial class FEditTrain : Form
     private readonly BindingList<string> TrainNames = new();
 
     private DateTime _lastKeyPressZo, _lastKeyPressDo;
-    private string _searchStringZo, _searchStringDo;
+    private string _searchStringZo = "", _searchStringDo = "";
     private bool ignoreSelectedIndexChanged = true;
 
     private bool initialization;
@@ -40,16 +41,16 @@ public partial class FEditTrain : Form
     /// </summary>
     public int Row;
 
-    private List<FyzSound> selSounds;
+    private List<FyzSound>? selSounds;
 
     private string tbCisloOldValue = "";
 
     /// <summary>
     ///     Vlak, s ktorym tento dialog pracuje.
     /// </summary>
-    public Train ThisTrain;
+    public Train? ThisTrain;
 
-    private List<ReportType> VybraneReporty;
+    private List<ReportType> VybraneReporty = new(1);
 
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FEditTrain"/>.
@@ -58,7 +59,7 @@ public partial class FEditTrain : Form
     /// <param name="row">Index riadku na prac. ploche.</param>
     /// <param name="gvd">Vybrane GVD.</param>
     /// <param name="copy">Ci sa jedna o kopiu vlaku.</param>
-    public FEditTrain(Train train, int row, GVDInfo gvd, bool copy = false)
+    public FEditTrain(Train? train, int row, GVDInfo gvd, bool copy = false)
     {
         InitializeComponent();
 
@@ -123,7 +124,7 @@ public partial class FEditTrain : Form
                 bSave.Text = Resources.FEditTrain_FEditTrain_Pridať;
             }
 
-            InitializeData();
+            InitializeData(ThisTrain);
         }
         else
         {
@@ -148,6 +149,7 @@ public partial class FEditTrain : Form
     /// <summary>
     ///     Uprava textu Formu
     /// </summary>
+    [AllowNull]
     public sealed override string Text
     {
         get => base.Text;
@@ -164,50 +166,50 @@ public partial class FEditTrain : Form
         }
     }
 
-    private void InitializeData()
+    private void InitializeData(Train train)
     {
         //initialization = true;
-        tbCislo.Text = ThisTrain.Number;
+        tbCislo.Text = train.Number;
         //initialization = false;
-        tbCisloOldValue = ThisTrain.Number;
+        tbCisloOldValue = train.Number;
 
-        cbTyp.SelectedItem = ThisTrain.Type;
+        cbTyp.SelectedItem = train.Type;
 
-        if (!string.IsNullOrEmpty(ThisTrain.Name)) cbNazov.Text = ThisTrain.Name;
+        if (!string.IsNullOrEmpty(train.Name)) cbNazov.Text = train.Name;
 
-        cbDopravca.SelectedItem = ThisTrain.Operator;
-
-
-        if (ThisTrain.Arrival != null) 
-            mtPrichod.Text = ThisTrain.Arrival?.ToString("HH:mm");
-
-        if (ThisTrain.Departure != null) 
-            mtOdchod.Text = ThisTrain.Departure?.ToString("HH:mm");
+        cbDopravca.SelectedItem = train.Operator;
 
 
-        cbKolajPrichod.SelectedItem = ThisTrain.Track;
+        if (train.Arrival != null)
+            mtPrichod.Text = train.Arrival?.ToString("HH:mm");
 
-        cbKolajOdchod.SelectedItem = ThisTrain.Track;
+        if (train.Departure != null)
+            mtOdchod.Text = train.Departure?.ToString("HH:mm");
 
-        tDatumoveObmedzenie.Text = ThisTrain.DateLimitText;
 
-        dtpPlatnostOd.Value = ThisTrain.ZaciatokPlatnosti;
-        dtpPlatnostDo.Value = ThisTrain.KoniecPlatnosti;
+        cbKolajPrichod.SelectedItem = train.Track;
 
-        boxMedzistatny.Checked = ThisTrain.IsMedzistatny;
-        boxMimoriadny.Checked = ThisTrain.IsMimoriadny;
-        boxMiestenkovy.Checked = ThisTrain.IsMiestenkovy;
-        boxDialkovy.Checked = ThisTrain.IsDialkovy;
-        boxNizkopodlazny.Checked = ThisTrain.IsNizkopodlazny;
-        boxLozkovy.Checked = ThisTrain.IsIbaLozkovy;
+        cbKolajOdchod.SelectedItem = train.Track;
 
-        tbLinkaPrichod.Text = ThisTrain.LineArrival;
-        tbLinkaOdchod.Text = ThisTrain.LineDeparture;
+        tDatumoveObmedzenie.Text = train.DateLimitText;
 
-        nudVarianta.Value = ThisTrain.Variant;
+        dtpPlatnostOd.Value = train.ZaciatokPlatnosti;
+        dtpPlatnostDo.Value = train.KoniecPlatnosti;
 
-        foreach (var st in ThisTrain.StaniceZoSmeru) StaniceZo.Add(st);
-        foreach (var st in ThisTrain.StaniceDoSmeru) StaniceDo.Add(st);
+        boxMedzistatny.Checked = train.IsMedzistatny;
+        boxMimoriadny.Checked = train.IsMimoriadny;
+        boxMiestenkovy.Checked = train.IsMiestenkovy;
+        boxDialkovy.Checked = train.IsDialkovy;
+        boxNizkopodlazny.Checked = train.IsNizkopodlazny;
+        boxLozkovy.Checked = train.IsIbaLozkovy;
+
+        tbLinkaPrichod.Text = train.LineArrival;
+        tbLinkaOdchod.Text = train.LineDeparture;
+
+        nudVarianta.Value = train.Variant;
+
+        foreach (var st in train.StaniceZoSmeru) StaniceZo.Add(st);
+        foreach (var st in train.StaniceDoSmeru) StaniceDo.Add(st);
 
         StaniceZo.RaiseListChangedEvents = true;
         StaniceDo.RaiseListChangedEvents = true;
@@ -216,13 +218,13 @@ public partial class FEditTrain : Form
         StaniceCountChanged();
         initialization = true;
 
-        foreach (var jazyk in ThisTrain.Languages)
+        foreach (var jazyk in train.Languages)
             if (!jazyk.IsBasic)
                 clbJazyky.SetItemChecked(clbJazyky.Items.IndexOf(jazyk), true);
 
-        foreach (var doplnok in ThisTrain.Doplnky) Doplnky.Add(doplnok);
+        foreach (var doplnok in train.Doplnky) Doplnky.Add(doplnok);
 
-        foreach (var radenie in ThisTrain.Radenia) Radenia.Add(radenie);
+        foreach (var radenie in train.Radenia) Radenia.Add(radenie);
 
         if (StaniceZo.Count == 0) mtPrichod.Enabled = false;
 
@@ -261,9 +263,9 @@ public partial class FEditTrain : Form
             return;
         }
 
-        train.Type = (TrainType)cbTyp.SelectedItem;
+        train.Type = (TrainType)cbTyp.SelectedItem!;
         train.Name = cbNazov.Text;
-        train.Operator = (Operator)cbDopravca.SelectedItem;
+        train.Operator = (Operator)cbDopravca.SelectedItem!;
 
         if (StaniceZo.Count != 0 && StaniceDo.Count != 0)
         {
@@ -340,7 +342,7 @@ public partial class FEditTrain : Form
             return;
         }
 
-        train.Track = (Track)cbKolajPrichod.SelectedItem;
+        train.Track = (Track)cbKolajPrichod.SelectedItem!;
 
         train.DateLimitText = tDatumoveObmedzenie.Text;
 
@@ -357,7 +359,7 @@ public partial class FEditTrain : Form
         for (var index = 0; index < dgvTrasaZo.Rows.Count; index++)
         {
             var selectedRow = dgvTrasaZo.Rows[index];
-            var st = (Station)selectedRow.DataBoundItem;
+            var st = (Station)selectedRow.DataBoundItem!;
 
             train.StaniceZoSmeru.Add(st);
         }
@@ -365,7 +367,7 @@ public partial class FEditTrain : Form
         for (var index = 0; index < dgvTrasaDo.Rows.Count; index++)
         {
             var selectedRow = dgvTrasaDo.Rows[index];
-            var st = (Station)selectedRow.DataBoundItem;
+            var st = (Station)selectedRow.DataBoundItem!;
 
             train.StaniceDoSmeru.Add(st);
         }
@@ -616,7 +618,7 @@ public partial class FEditTrain : Form
     {
         if (listStaniceZo.SelectedIndex != -1)
         {
-            var st = (Station)listStaniceZo.SelectedItem;
+            var st = (Station)listStaniceZo.SelectedItem!;
             StaniceZo.Add(new Station(st.ID, st.Name, IsInLongReport: true));
             dgvTrasaZo.Rows[StaniceZo.Count - 1].Cells[0].Value = true;
         }
@@ -624,7 +626,7 @@ public partial class FEditTrain : Form
 
     private void bDeleteZo_Click(object sender, EventArgs e)
     {
-        if (dgvTrasaZo.SelectedRows.Count > 0) StaniceZo.RemoveAt(dgvTrasaZo.CurrentCell.RowIndex);
+        if (dgvTrasaZo.SelectedRows.Count > 0) StaniceZo.RemoveAt(dgvTrasaZo.CurrentCell!.RowIndex);
     }
 
     private void bSkorDo_Click(object sender, EventArgs e)
@@ -665,7 +667,7 @@ public partial class FEditTrain : Form
     {
         if (listStaniceDo.SelectedIndex != -1)
         {
-            var st = (Station)listStaniceDo.SelectedItem;
+            var st = (Station)listStaniceDo.SelectedItem!;
             StaniceDo.Add(new Station(st.ID, st.Name, IsInLongReport: true));
             dgvTrasaDo.Rows[StaniceDo.Count - 1].Cells[0].Value = true;
         }
@@ -673,14 +675,14 @@ public partial class FEditTrain : Form
 
     private void bDeleteDo_Click(object sender, EventArgs e)
     {
-        if (dgvTrasaDo.SelectedRows.Count > 0) StaniceDo.RemoveAt(dgvTrasaDo.CurrentCell.RowIndex);
+        if (dgvTrasaDo.SelectedRows.Count > 0) StaniceDo.RemoveAt(dgvTrasaDo.CurrentCell!.RowIndex);
     }
 
     private void listStaniceZo_DoubleClick(object sender, EventArgs e)
     {
         if (listStaniceZo.SelectedIndex != -1)
         {
-            var st = (Station)listStaniceZo.SelectedItem;
+            var st = (Station)listStaniceZo.SelectedItem!;
             StaniceZo.Add(new Station(st.ID, st.Name, IsInLongReport: true));
         }
     }
@@ -689,7 +691,7 @@ public partial class FEditTrain : Form
     {
         if (listStaniceDo.SelectedIndex != -1)
         {
-            var st = (Station)listStaniceDo.SelectedItem;
+            var st = (Station)listStaniceDo.SelectedItem!;
             StaniceDo.Add(new Station(st.ID, st.Name, IsInLongReport: true));
         }
     }
@@ -714,10 +716,11 @@ public partial class FEditTrain : Form
     {
         if (listAllDoplnky.SelectedIndex != -1)
         {
+            var selSound = (FyzSound)listAllDoplnky.SelectedItem!;
             var doplnok = new Dodatok
             {
-                Sound = listAllDoplnky.SelectedItem as FyzSound,
-                Name = ((FyzSound)listAllDoplnky.SelectedItem).Name.Replace("D", "")
+                Sound = selSound,
+                Name = selSound.Name.Replace("D", "")
             };
             Doplnky.Add(doplnok);
         }
@@ -727,10 +730,11 @@ public partial class FEditTrain : Form
     {
         if (listAllDoplnky.SelectedIndex != -1)
         {
+            var selSound = (FyzSound)listAllDoplnky.SelectedItem!;
             var doplnok = new Dodatok
             {
-                Sound = listAllDoplnky.SelectedItem as FyzSound,
-                Name = ((FyzSound)listAllDoplnky.SelectedItem).Name.Replace("D", "")
+                Sound = selSound,
+                Name = selSound.Name.Replace("D", "")
             };
             Doplnky.Add(doplnok);
 
@@ -801,7 +805,7 @@ public partial class FEditTrain : Form
                 }
     }
 
-    private void StaniceZoOnListChanged(object sender, ListChangedEventArgs e)
+    private void StaniceZoOnListChanged(object? sender, ListChangedEventArgs e)
     {
         if (!initialization)
         {
@@ -824,7 +828,7 @@ public partial class FEditTrain : Form
         }
     }
 
-    private void StaniceDoOnListChanged(object sender, ListChangedEventArgs e)
+    private void StaniceDoOnListChanged(object? sender, ListChangedEventArgs e)
     {
         if (!initialization)
         {
@@ -1262,14 +1266,14 @@ public partial class FEditTrain : Form
         dgvRadenieSet.DataSource = dt;
 
         var cheader = dgvRadenieSet.Columns[0];
-        cheader.HeaderText = dt.Columns[cheader.HeaderText].Caption;
+        cheader.HeaderText = dt.Columns[cheader.HeaderText]!.Caption;
         cheader.SortMode = DataGridViewColumnSortMode.NotSortable;
         cheader.Width = 120;
 
         for (var i = 1; i < dgvRadenieSet.Columns.Count; i++)
         {
             var column = (DataGridViewCheckBoxColumn)dgvRadenieSet.Columns[i];
-            column.HeaderText = dt.Columns[column.HeaderText].Caption;
+            column.HeaderText = dt.Columns[column.HeaderText]!.Caption;
             column.Width = 80;
             if (i == dgvRadenieSet.Columns.Count - 1) column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }

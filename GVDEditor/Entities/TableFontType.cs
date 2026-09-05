@@ -20,7 +20,7 @@ public sealed class TableFontType : Enumeration<TableFontType>
     /// </summary>
     /// <param name="type"></param>
     /// <returns></returns>
-    public new static TableFontType Parse(string type)
+    public new static TableFontType? Parse(string type)
     {
         return type.ToLower() switch
         {

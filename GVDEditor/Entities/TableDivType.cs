@@ -16,7 +16,7 @@ public sealed class TableDivType : Enumeration<TableDivType>
     /// </summary>
     /// <param name="s"></param>
     /// <returns></returns>
-    public static TableDivType Parse(int s)
+    public static TableDivType? Parse(int s)
     {
         return s switch
         {

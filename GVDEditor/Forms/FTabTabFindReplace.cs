@@ -22,7 +22,7 @@ public partial class FTabTabFindReplace : Form
     /// <summary>
     /// 
     /// </summary>
-    public event EventHandler<SearchingEventArgs> Searching;
+    public event EventHandler<SearchingEventArgs>? Searching;
 
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FTabTabFindReplace"/>.
@@ -42,7 +42,7 @@ public partial class FTabTabFindReplace : Form
         _showReplace = showReplace;
     }
 
-    private void ScintillaOnTextChanged(object sender, EventArgs e) => ResetTarget();
+    private void ScintillaOnTextChanged(object? sender, EventArgs e) => ResetTarget();
 
     private void FTabTabFindReplace_Load(object sender, EventArgs e) => tabControl.SelectedIndex = _showReplace ? 1 : 0;
 
@@ -311,7 +311,7 @@ public partial class FTabTabFindReplace : Form
         if (rbRegExSearching.Checked) _scintilla.SearchFlags |= SearchFlags.Regex;
     }
 
-    private void SetStatus(string text = null, Color textColor = default)
+    private void SetStatus(string? text = null, Color textColor = default)
     {
         tsslStatus.Text = text ?? "Pripravený";
         tsslStatus.ForeColor = textColor == default ? _defaultStatusTextColor : textColor;
@@ -347,7 +347,7 @@ public class SearchingEventArgs : EventArgs
     /// <summary>
     ///     Nahradzany text.
     /// </summary>
-    public string NewText { get; }
+    public string? NewText { get; }
 
     /// <summary>
     ///     Pozicia zaciatku najdeneho vyrazu.
@@ -367,7 +367,7 @@ public class SearchingEventArgs : EventArgs
     ///     Konstuktor
     /// </summary>
     /// <param name="startPosition"></param>
-    public SearchingEventArgs(string text, int startPosition, int endPosition, string newText)
+    public SearchingEventArgs(string text, int startPosition, int endPosition, string? newText)
     {
         Text = text;
         StartPosition = startPosition;

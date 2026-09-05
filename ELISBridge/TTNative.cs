@@ -143,7 +143,7 @@ internal static class TTNative
     /// </summary>
     /// <param name="registrationNumber">Zakupene registracne cislo; ak je prazdne, nerobi sa nic.</param>
     /// <param name="client">Identifikacia klienta, ak ju dataset vyzaduje (inak <see langword="null" />).</param>
-    public static void Register(string registrationNumber, string client)
+    public static void Register(string? registrationNumber, string? client)
     {
         if (!string.IsNullOrWhiteSpace(client))
             TTRegisterClient(client);

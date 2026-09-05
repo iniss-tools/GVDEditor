@@ -27,15 +27,15 @@ internal sealed class FileTransaction
     public FileTransaction(string path)
     {
         _path = path;
-        BackupPath = Utils.CombinePath(Path.GetTempPath(), "GVDEditor", "save-" + Guid.NewGuid().ToString("N"));
+        BackupPath = Utils.CombinePath(Path.GetTempPath(), "GVDEditor", "save-" + Guid.NewGuid().ToString("N"))!;
 
         Directory.CreateDirectory(BackupPath);
 
         var files = Directory.GetFiles(_path);
-        _originalFiles = new HashSet<string>(files.Select(Path.GetFileName), StringComparer.OrdinalIgnoreCase);
+        _originalFiles = new HashSet<string>(files.Select(f => Path.GetFileName(f)!), StringComparer.OrdinalIgnoreCase);
 
         foreach (var file in files)
-            File.Copy(file, Utils.CombinePath(BackupPath, Path.GetFileName(file)), true);
+            File.Copy(file, Utils.CombinePath(BackupPath, Path.GetFileName(file))!, true);
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ internal sealed class FileTransaction
         try
         {
             foreach (var backup in Directory.GetFiles(BackupPath))
-                File.Copy(backup, Utils.CombinePath(_path, Path.GetFileName(backup)), true);
+                File.Copy(backup, Utils.CombinePath(_path, Path.GetFileName(backup))!, true);
 
             //súbory, ktoré vznikli až počas neúspešného ukladania, tam pôvodne neboli
             foreach (var file in Directory.GetFiles(_path))

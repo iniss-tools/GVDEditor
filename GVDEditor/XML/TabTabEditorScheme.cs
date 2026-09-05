@@ -259,7 +259,7 @@ public record TabTabEditorScheme() : IColorScheme
     private static void AssignProperty(ref ColorSetting prop, string propname)
     {
         if (prop is null)
-            InitProperty(propname);
+            prop = InitProperty(propname);
         else
         {
             prop.Name = props[propname].Name;
@@ -268,6 +268,12 @@ public record TabTabEditorScheme() : IColorScheme
         }
     }
 
+    // Every property setter below unconditionally assigns its backing field before this constructor
+    // exits (see the "set" accessors above), but Roslyn's per-constructor flow analysis doesn't credit
+    // assignment performed indirectly through a property setter call - it only sees `this` escaping into
+    // a method call and forgets the field's null-state. All backing fields (and Font, via its own
+    // declaration-site initializer) are genuinely never null here.
+#pragma warning disable CS8618
     protected TabTabEditorScheme(TabTabEditorScheme original)
     {
         Number = original.Number with { };
@@ -284,4 +290,5 @@ public record TabTabEditorScheme() : IColorScheme
         SelBraces = original.SelBraces with { };
         SelBraceBad = original.SelBraceBad with { };
     }
+#pragma warning restore CS8618
 }

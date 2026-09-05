@@ -26,32 +26,32 @@ public sealed record Track()
     /// <summary>
     ///     Identifikátor kolaje.
     /// </summary>
-    public string Key { get; set; }
+    public string Key { get; set; } = null!;
 
     /// <summary>
     ///     Názov kolaje.
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <summary>
     ///     Cely názov kolaje.
     /// </summary>
-    public string FullName { get; set; }
+    public string FullName { get; set; } = null!;
 
     /// <summary>
     ///     Nastupiste kolaje.
     /// </summary>
-    public Platform Platform { get; set; }
+    public Platform Platform { get; set; } = null!;
 
     /// <summary>
     ///     Názov kolaje.
     /// </summary>
-    public string TrackName { get; set; }
+    public string TrackName { get; set; } = null!;
 
     /// <summary>
     ///     Nazov zvuku kolaje.
     /// </summary>
-    public string SoundName { get; set; }
+    public string SoundName { get; set; } = null!;
 
     /// <summary>
     ///     Logicke tabule nachadzajuce sa na tejto kolaji.
@@ -69,7 +69,7 @@ public sealed record Track()
     /// <param name="tracks"></param>
     /// <param name="id"></param>
     /// <returns></returns>
-    public static Track GetFromID(IEnumerable<Track> tracks, string id) => tracks.FirstOrDefault(kolaj => kolaj.Key == id);
+    public static Track? GetFromID(IEnumerable<Track> tracks, string id) => tracks.FirstOrDefault(kolaj => kolaj.Key == id);
 
     /// <summary>
     ///     Porovna identifikatory kolaji

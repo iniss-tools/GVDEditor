@@ -8,17 +8,17 @@ public sealed class TableItem : ITable
     /// <summary>
     ///     Kluc polozky.
     /// </summary>
-    public string Key { get; set; }
+    public string Key { get; set; } = null!;
 
     /// <summary>
     ///     Nazov stlpca.
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <summary>
     ///     Typ obsahu stlpca (aky typ dat ma stlpec obsahovat).
     /// </summary>
-    public TableFillSection FillSection { get; set; }
+    public TableFillSection FillSection { get; set; } = null!;
 
     /// <summary>
     ///     Riadok zaznamu, na ktorom sa tento stlpec zobrazuje (zero-based).
@@ -43,22 +43,22 @@ public sealed class TableItem : ITable
     /// <summary>
     ///     Zarovnanie pisma.
     /// </summary>
-    public TableAlign Align { get; set; }
+    public TableAlign Align { get; set; } = null!;
 
     /// <summary>
     ///     Typ zadavania udajov do polozky.
     /// </summary>
-    public TableDivType DivType { get; set; }
+    public TableDivType DivType { get; set; } = null!;
 
     /// <summary>
     ///     Referencia na TabTab1.
     /// </summary>
-    public TableTabTab Tab1 { get; set; }
+    public TableTabTab Tab1 { get; set; } = null!;
 
     /// <summary>
     ///     Referencia na TabTab2.
     /// </summary>
-    public TableTabTab Tab2 { get; set; }
+    public TableTabTab Tab2 { get; set; } = null!;
 
     /// <inheritdoc/>
     public string TypeName => "Riadok tabule";

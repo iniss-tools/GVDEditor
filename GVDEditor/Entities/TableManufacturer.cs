@@ -22,7 +22,7 @@ public sealed class TableManufacturer : Enumeration<TableManufacturer>
     /// </summary>
     /// <param name="s">Vstupny retazec.</param>
     /// <returns></returns>
-    public new static TableManufacturer Parse(string s)
+    public new static TableManufacturer? Parse(string s)
     {
         return s switch
         {

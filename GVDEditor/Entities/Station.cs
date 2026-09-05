@@ -43,7 +43,7 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
     public bool IsCustom { get; set; } = IsCustom;
 
     /// <inheritdoc />
-    public int CompareTo(object obj) => string.Compare(Name, obj.ToString(), StringComparison.Ordinal);
+    public int CompareTo(object? obj) => string.Compare(Name, obj?.ToString(), StringComparison.Ordinal);
 
     /// <summary>
     ///     Vráti stanicu z <see cref="GlobData.Stations" /> alebo <see cref="GlobData.CustomStations" />
@@ -51,7 +51,7 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
     /// </summary>
     /// <param name="id">Identifikátor stanice.</param>
     /// <returns><see cref="Station" />. Ak nenašlo žiadnu zhodu, vrati stanicu s nazvom zadaneho ID.</returns>
-    public static Station GetFromID(string id)
+    public static Station GetFromID(string? id)
     {
         if (string.IsNullOrEmpty(id))
             return None;
@@ -72,7 +72,7 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
     /// </summary>
     /// <param name="name">názov stanice</param>
     /// <returns><see cref="Station" /> alebo <see langword="null" /> ak nenašlo žiadnu zhodu</returns>
-    public static Station GetFromName(string name)
+    public static Station? GetFromName(string name)
     {
         if (string.IsNullOrEmpty(name))
             return None;
@@ -188,4 +188,24 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
 
     /// <inheritdoc />
     public override string ToString() => Name;
+
+    public static bool operator <(Station left, Station right)
+    {
+        return ReferenceEquals(left, null) ? !ReferenceEquals(right, null) : left.CompareTo(right) < 0;
+    }
+
+    public static bool operator <=(Station left, Station right)
+    {
+        return ReferenceEquals(left, null) || left.CompareTo(right) <= 0;
+    }
+
+    public static bool operator >(Station left, Station right)
+    {
+        return !ReferenceEquals(left, null) && left.CompareTo(right) > 0;
+    }
+
+    public static bool operator >=(Station left, Station right)
+    {
+        return ReferenceEquals(left, null) ? ReferenceEquals(right, null) : left.CompareTo(right) >= 0;
+    }
 }

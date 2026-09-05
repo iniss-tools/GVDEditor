@@ -58,7 +58,7 @@ public partial class FRadenie : Form
     {
         if (cbLanguage.SelectedIndex != -1 && cbSoundDir.SelectedIndex != -1)
         {
-            var list = new List<FyzSound>(_allSoundsLangs[(FyzLanguage)cbLanguage.SelectedItem]);
+            var list = new List<FyzSound>(_allSoundsLangs[(FyzLanguage)cbLanguage.SelectedItem!]);
             _soundInDir = new BindingList<FyzSound>();
             foreach (var zvuk in list.Where(zvuk => zvuk.Group.Type.Equals(cbSoundDir.SelectedItem)))
                 _soundInDir.Add(zvuk);
@@ -71,7 +71,7 @@ public partial class FRadenie : Form
     {
         if (cbLanguage.SelectedIndex != -1 && cbSoundDir.SelectedIndex != -1)
         {
-            var list = new List<FyzSound>(_allSoundsLangs[(FyzLanguage)cbLanguage.SelectedItem]);
+            var list = new List<FyzSound>(_allSoundsLangs[(FyzLanguage)cbLanguage.SelectedItem!]);
             _soundInDir = new BindingList<FyzSound>();
             foreach (var zvuk in list.Where(zvuk => zvuk.Group.Type.Equals(cbSoundDir.SelectedItem)))
                 _soundInDir.Add(zvuk);
@@ -147,7 +147,7 @@ public partial class FRadenie : Form
         }
     }
 
-    private void SelectedSounds_ListChanged(object sender, ListChangedEventArgs e)
+    private void SelectedSounds_ListChanged(object? sender, ListChangedEventArgs e)
     {
         var sb = new StringBuilder();
         foreach (var zvuk in _selectedSounds) sb.Append(zvuk.Text + " ");
@@ -168,9 +168,9 @@ public partial class FRadenie : Form
         var point = listRadenie.PointToClient(new Point(e.X, e.Y));
         var index = listRadenie.IndexFromPoint(point);
         if (index < 0) index = listRadenie.Items.Count - 1;
-        var data = e.Data.GetData(typeof(FyzSound));
-        _selectedSounds.Remove(data as FyzSound);
-        _selectedSounds.Insert(index, data as FyzSound);
+        var data = (FyzSound)e.Data!.GetData(typeof(FyzSound))!;
+        _selectedSounds.Remove(data);
+        _selectedSounds.Insert(index, data);
         listRadenie.SelectedItem = data;
     }
 

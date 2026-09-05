@@ -10,9 +10,9 @@ namespace GVDEditor.Forms;
 /// </summary>
 internal partial class FDateLimitEdit : Form
 {
-    private DateLimit _dateLimit;
-    private Train _train;
-    private CalendarCell _lastSelectedCell;
+    private DateLimit _dateLimit = null!;
+    private Train? _train;
+    private CalendarCell? _lastSelectedCell;
     private int _previousSelectedRow;
     private int _previousSelectedCol;
     private bool _needUpdateText;
@@ -26,9 +26,9 @@ internal partial class FDateLimitEdit : Form
         InitColumns();
     }
 
-    public static string Result { get; private set; }
+    public static string Result { get; private set; } = "";
 
-    public static DialogResult SetDateLimit(Form owner, DateTime dateFrom, DateTime dateTo, Train train = null, bool textNot = false, string defaultValue = "")
+    public static DialogResult SetDateLimit(Form owner, DateTime dateFrom, DateTime dateTo, Train? train = null, bool textNot = false, string defaultValue = "")
     {
         using var form = new FDateLimitEdit();
         form.Owner = owner;
@@ -277,7 +277,7 @@ internal partial class FDateLimitEdit : Form
         }
         else
         {
-            CalendarCell oToCell = null;
+            CalendarCell? oToCell = null;
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0) 
                 oToCell = (CalendarCell)dgvCalendar[e.ColumnIndex, e.RowIndex];
 
@@ -292,7 +292,7 @@ internal partial class FDateLimitEdit : Form
 
         _previousSelectedRow = e.RowIndex;
         _previousSelectedCol = e.ColumnIndex;
-        CalendarCell toCell = null;
+        CalendarCell? toCell = null;
         if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
         {
             toCell = (CalendarCell)dgvCalendar[e.ColumnIndex, e.RowIndex];
@@ -357,7 +357,7 @@ internal partial class FDateLimitEdit : Form
         }
     }
 
-    private void PaintSelection(CalendarCell fromCell, CalendarCell toCell)
+    private void PaintSelection(CalendarCell? fromCell, CalendarCell? toCell)
     {
         int fromCellAbsIndex;
         bool doSelection;
@@ -489,7 +489,7 @@ public class CalendarCell : DataGridViewTextBoxCell
     public CalendarCellAction Action { get; set; }
 
     protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex,
-        DataGridViewElementStates cellState, object value, object formattedValue, string errorText,
+        DataGridViewElementStates cellState, object? value, object? formattedValue, string? errorText,
         DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle,
         DataGridViewPaintParts paintParts)
     {

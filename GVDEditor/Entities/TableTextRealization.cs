@@ -8,10 +8,10 @@ public class TableTextRealization
     /// <summary>
     ///     Katalogova tabula, na ktorej sa dany typ textu zobrazuje.
     /// </summary>
-    public TableCatalog Table { get; set; }
+    public TableCatalog Table { get; set; } = null!;
 
     /// <summary>
     ///     Konkretny item (polozka) na katalogovej tabuli, na ktorej sa dany typ textu zobrazuje.
     /// </summary>
-    public TableItem Item { get; set; }
+    public TableItem Item { get; set; } = null!;
 }

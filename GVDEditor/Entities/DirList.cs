@@ -8,12 +8,12 @@ public sealed class DirList
     /// <summary>
     ///     Vrati alebo nastavi názov priečinka.
     /// </summary>
-    public string DirName { get; set; }
+    public string DirName { get; set; } = null!;
 
     /// <summary>
     ///     Vrati alebo nastavi celá cestu k priečinku s grafikonom.
     /// </summary>
-    public string FullPath { get; set; }
+    public string FullPath { get; set; } = null!;
 
     /// <summary>
     ///     Vrati alebo nastavi port pre vzdialené ovládanie tabúľ.

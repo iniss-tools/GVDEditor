@@ -21,7 +21,7 @@ public sealed class TableViewMode : Enumeration<TableViewMode>
     /// </summary>
     /// <param name="s"></param>
     /// <returns></returns>
-    public new static TableViewMode Parse(string s)
+    public new static TableViewMode? Parse(string s)
     {
         return s switch
         {

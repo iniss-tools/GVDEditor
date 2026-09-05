@@ -169,7 +169,7 @@ public partial class FTableText : Form
     {
         var realization = new TableTextRealization
         {
-            Table = (TableCatalog)cbCatalogTable.SelectedItem, Item = (TableItem)cbCatalogItem.SelectedItem
+            Table = (TableCatalog)cbCatalogTable.SelectedItem!, Item = (TableItem)cbCatalogItem.SelectedItem!
         };
 
         TRealizations.Add(realization);
@@ -180,8 +180,8 @@ public partial class FTableText : Form
         if (listRealisations.SelectedIndex != -1)
         {
             var realization = TRealizations[listRealisations.SelectedIndex];
-            realization.Table = (TableCatalog)cbCatalogTable.SelectedItem;
-            realization.Item = (TableItem)cbCatalogItem.SelectedItem;
+            realization.Table = (TableCatalog)cbCatalogTable.SelectedItem!;
+            realization.Item = (TableItem)cbCatalogItem.SelectedItem!;
 
             TRealizations.ResetBindings();
         }
@@ -196,7 +196,7 @@ public partial class FTableText : Form
     {
         if (listTrains.SelectedIndex != -1)
         {
-            var tableTrain = (TableTrain)listTrains.SelectedItem;
+            var tableTrain = (TableTrain)listTrains.SelectedItem!;
             tableTrain.Text = tbTrainText.Text;
             tableTrain.FontID = decimal.ToInt32(nudFont.Value);
         }

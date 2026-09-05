@@ -131,7 +131,7 @@ public sealed class TrainType
     /// <param name="t1"></param>
     /// <param name="t2"></param>
     /// <returns></returns>
-    public static bool Equals(TrainType t1, TrainType t2)
+    public static bool Equals(TrainType? t1, TrainType? t2)
     {
         if (t1 is null && t2 is null)
             return true;
@@ -140,7 +140,7 @@ public sealed class TrainType
     }
 
     /// <inheritdoc />
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         return obj is TrainType t1 && t1.Key == Key && t1.IsCustom == IsCustom &&
                t1.CategoryTrain == CategoryTrain && t1.TextInTable == TextInTable;
@@ -169,7 +169,7 @@ public sealed class TrainType
     ///     true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise,
     ///     false.
     /// </returns>
-    public static bool operator ==(TrainType left, TrainType right)
+    public static bool operator ==(TrainType? left, TrainType? right)
     {
         return Equals(left, right);
     }
@@ -181,7 +181,7 @@ public sealed class TrainType
     /// <param name="left">The first value to compare.</param>
     /// <param name="right">The second value to compare.</param>
     /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>
-    public static bool operator !=(TrainType left, TrainType right)
+    public static bool operator !=(TrainType? left, TrainType? right)
     {
         return !Equals(left, right);
     }

@@ -16,12 +16,12 @@ public sealed class Dodatok
     /// <summary>
     ///     Vrati alebo nastavi fyzický zvuk dodatku.
     /// </summary>
-    public FyzSound Sound { get; set; }
+    public FyzSound Sound { get; set; } = null!;
 
     /// <summary>
     ///     Vrati alebo nastavi názov dodatkového hlásenia (zvyčajne Dxxxx, kde x - 0-9).
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <summary>
     ///     Vrati alebo nastavi v akých reportoch sa má dodatok hlásiť.

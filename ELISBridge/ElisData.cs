@@ -12,16 +12,16 @@ namespace Iniss.Elis;
 public sealed class ElisResult
 {
     /// <summary>Priecinok s datami (.tt subormi), z ktoreho sa citalo.</summary>
-    public string DataPath { get; set; }
+    public string DataPath { get; set; } = null!;
 
     /// <summary>Nazov stanice tak, ako ho pozna ELIS.</summary>
-    public string StationName { get; set; }
+    public string StationName { get; set; } = null!;
 
     /// <summary>Zaciatok platnosti cestovneho poriadku (yyyy-MM-dd).</summary>
-    public string ValidFrom { get; set; }
+    public string ValidFrom { get; set; } = null!;
 
     /// <summary>Koniec platnosti cestovneho poriadku (yyyy-MM-dd).</summary>
-    public string ValidTo { get; set; }
+    public string ValidTo { get; set; } = null!;
 
     /// <summary>Pocet dni platnosti - dlzka retazca <see cref="ElisTrain.RunsBits" />.</summary>
     [UsedImplicitly]
@@ -51,7 +51,7 @@ public sealed class ElisResult
     {
         var serializer = new XmlSerializer(typeof(ElisResult));
         using var reader = new StreamReader(path, Encoding.UTF8);
-        return (ElisResult)serializer.Deserialize(reader);
+        return (ElisResult)serializer.Deserialize(reader)!;
     }
 }
 
@@ -64,13 +64,13 @@ public sealed class ElisTrain
     public const int NoTime = -1;
 
     /// <summary>Typ (kategoria) vlaku, napr. "EC", "Os".</summary>
-    public string Type { get; set; }
+    public string Type { get; set; } = null!;
 
     /// <summary>Cislo vlaku.</summary>
-    public string Number { get; set; }
+    public string Number { get; set; } = null!;
 
     /// <summary>Nazov vlaku (moze byt prazdny).</summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <summary>Prichod do stanice v minutach od polnoci, alebo <see cref="NoTime" />.</summary>
     public int ArrivalMinutes { get; set; } = NoTime;
@@ -85,17 +85,17 @@ public sealed class ElisTrain
     public List<string> StationsAfter { get; set; } = new();
 
     /// <summary>Nazov dopravcu (pole ON), alebo prazdne.</summary>
-    public string OperatorName { get; set; }
+    public string OperatorName { get; set; } = null!;
 
     /// <summary>Cislo dopravcu (pole ONo) - stabilnejsi kluc nez nazov.</summary>
-    public string OperatorNumber { get; set; }
+    public string OperatorNumber { get; set; } = null!;
 
     /// <summary>Cislo linky, ak ho dataset obsahuje (inak prazdne).</summary>
-    public string Line { get; set; }
+    public string Line { get; set; } = null!;
 
     /// <summary>
     ///     Datumove obmedzenie ako retazec '0'/'1' dlzky <see cref="ElisResult.TotalDays" />,
     ///     kde index 0 zodpoveda <see cref="ElisResult.ValidFrom" />.
     /// </summary>
-    public string RunsBits { get; set; }
+    public string RunsBits { get; set; } = null!;
 }

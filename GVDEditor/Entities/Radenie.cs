@@ -29,7 +29,7 @@ public sealed class Radenie
     /// <summary>
     ///     Dátumové obmedzenie ako text
     /// </summary>
-    public string DatObm { get; set; }
+    public string DatObm { get; set; } = null!;
 
     /// <summary>
     ///     Fyzické zvuky, ktoré tvoria hlásenie radenia vlaku
@@ -44,17 +44,17 @@ public sealed class Radenie
     /// <summary>
     ///     Text hlásenia vlaku
     /// </summary>
-    public string Text { get; set; }
+    public string Text { get; set; } = null!;
 
     /// <summary>
     ///     Cieľová stanica vlaku s radením
     /// </summary>
-    public Station DestStation { get; set; }
+    public Station DestStation { get; set; } = null!;
 
     /// <summary>
     ///     Číslo vlaku, ktorému patrí toto radenie
     /// </summary>
-    public string CisloVlaku { get; set; }
+    public string CisloVlaku { get; set; } = null!;
 
     /// <summary>
     ///     Konveruje list fyzických zvukov radenia do reťazca  - text hlasenia

@@ -23,37 +23,37 @@ public sealed class TablePhysical : ITable
     /// <summary>
     ///     ?
     /// </summary>
-    public string ReverseArrows { get; set; }
+    public string ReverseArrows { get; set; } = null!;
 
     /// <summary>
     ///     ?
     /// </summary>
-    public string Rem { get; set; }
+    public string Rem { get; set; } = null!;
 
     /// <summary>
     ///     Nazov XML suboru, ktory bude generovat INISS. Tento subor obsahuje aktualny obsah tejto tabule.
     /// </summary>
-    public string SaveXML { get; set; }
+    public string SaveXML { get; set; } = null!;
 
     /// <summary>
     ///     Katalogova tabula definujuca obsah tejto fyzickej tabule.
     /// </summary>
-    public TableCatalog TableCatalog { get; set; }
+    public TableCatalog TableCatalog { get; set; } = null!;
 
     /// <summary>
     ///     Nazov fyzickej tatule.
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <summary>
     ///     Kluc fyzickej tatule.
     /// </summary>
-    public string Key { get; set; }
+    public string Key { get; set; } = null!;
 
     /// <summary>
     ///     Textovy komentar ku tabuli.
     /// </summary>
-    public string Comment { get; set; }
+    public string Comment { get; set; } = null!;
 
     /// <inheritdoc/>
     public string TypeName => "Fyzická tabuľa";

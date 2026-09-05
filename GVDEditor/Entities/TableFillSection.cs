@@ -21,7 +21,7 @@ public sealed class TableFillSection : Enumeration<TableFillSection>
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public static TableFillSection Parse(int id)
+    public static TableFillSection? Parse(int id)
     {
         return id switch
         {

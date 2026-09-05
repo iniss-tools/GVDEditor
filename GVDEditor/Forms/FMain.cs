@@ -30,15 +30,15 @@ public partial class FMain : Form
     public static BindingList<GVDDirectory> ObdobiaList { get; } = new();
 
     private readonly List<GVDDirectory> _gvdDirs = new();
-    private Process _actualINISSProcess;
+    private Process? _actualINISSProcess;
     private bool _error;
     private bool _dataSaved = true;
-    private string _lastINISSStart;
-    private GVDDirectory _newDir;
+    private string? _lastINISSStart;
+    private GVDDirectory? _newDir;
     private bool _prechod;
-    private GVDDirectory _previousSelectedGVD;
+    private GVDDirectory? _previousSelectedGVD;
     private bool _removingGVD;
-    private FWait _waitForm;
+    private FWait? _waitForm;
 
     /// <summary>
     ///     Vytvori nový formulár typu <see cref="FMain"/>.
@@ -140,12 +140,12 @@ public partial class FMain : Form
         }
     }
 
-    private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+    private void BackgroundWorker1_DoWork(object? sender, DoWorkEventArgs e)
     {
         if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
             try
             {
-                ProccessData((PathAndGVD)e.Argument);
+                ProccessData((PathAndGVD)e.Argument!);
             }
             catch (Exception exception)
             {
@@ -163,7 +163,7 @@ public partial class FMain : Form
                 return;
             }
         else
-            ProccessData((PathAndGVD)e.Argument);
+            ProccessData((PathAndGVD)e.Argument!);
 
         _error = false;
     }
@@ -210,9 +210,9 @@ public partial class FMain : Form
         GlobData.TableFonts = new ExBindingList<TableFont>(TxtParser.ReadTableFonts(pathgvd.Path));
     }
 
-    private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    private void BackgroundWorker1_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
     {
-        _waitForm.Close();
+        _waitForm!.Close();
 
         if (!_error)
         {
@@ -301,7 +301,7 @@ public partial class FMain : Form
 
         void DoSaveInternal()
         {
-            var dir = _previousSelectedGVD;
+            var dir = _previousSelectedGVD!;
 
             if (GlobData.Config.AutoTableText)
                 GenerateTableTextWhileSaving(dir);
@@ -342,7 +342,7 @@ public partial class FMain : Form
 
     private void ShowAnalyzeGVD()
     {
-        var fan = new FAnalyzer(tscbObdobie.SelectedItem as GVDDirectory);
+        var fan = new FAnalyzer((tscbObdobie.SelectedItem as GVDDirectory)!);
         fan.ShowDialog();
     }
 
@@ -390,7 +390,7 @@ public partial class FMain : Form
 
             if (!Stanice.Contains(gvd.ThisStation.Name)) Stanice.Add(gvd.ThisStation.Name);
 
-            if ((string)tscbStanica.ComboBox.SelectedItem == gvd.ThisStation.Name)
+            if ((string)tscbStanica.ComboBox.SelectedItem! == gvd.ThisStation.Name)
                 ObdobiaList.Add(new GVDDirectory(dir, gvd));
 
             var dirs = TxtParser.ReadDirList();
@@ -410,14 +410,14 @@ public partial class FMain : Form
 
     private void ShowImportData()
     {
-        var fid = new FImportData(((GVDDirectory)tscbObdobie.ComboBox.SelectedItem).GVD);
+        var fid = new FImportData(((GVDDirectory)tscbObdobie.ComboBox.SelectedItem!).GVD);
         var result = fid.ShowDialog();
         if (result == DialogResult.OK) GlobData.Trains.ResetBindings();
     }
 
     private void ShowImportELIS()
     {
-        var gvdDir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem;
+        var gvdDir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
         var gvd = gvdDir.GVD;
 
         var fimport = new FELISImport(gvd.ThisStation.Name, GlobData.Trains.Count);
@@ -427,7 +427,7 @@ public partial class FMain : Form
         var data = fimport.ResultOptions;
         data.GVDInfo = gvd;
         data.GVDPath = gvdDir.Dir.FullPath;
-        data.Track = GlobData.Tracks.FirstOrDefault();
+        data.Track = GlobData.Tracks.FirstOrDefault()!;
 
         //pri nahradeni sa existujuce vlaky zahodia, takze do cislovania variant nevstupuju
         data.DefTrains = data.ReplaceTrains ? new List<Train>() : GlobData.Trains.ToList();
@@ -448,14 +448,14 @@ public partial class FMain : Form
 
         var dirname = Utils.GetDirectoryName(selectedPath);
 
-        var newDirPath = Utils.CombinePath(GlobData.DataDir, dirname);
-
         if (string.IsNullOrEmpty(dirname))
         {
             Utils.ShowError(Resources.FMain_Názov_priečinka_je_prázdny);
             DialogResult = DialogResult.None;
             return;
         }
+
+        var newDirPath = Utils.CombinePath(GlobData.DataDir, dirname)!;
 
         if (Directory.Exists(newDirPath) || GlobData.GVDDirs.Count(d => d.DirName == dirname) != 0)
         {
@@ -480,7 +480,7 @@ public partial class FMain : Form
 
             if (!Stanice.Contains(gvd.ThisStation.Name)) Stanice.Add(gvd.ThisStation.Name);
 
-            if ((string)tscbStanica.ComboBox.SelectedItem == gvd.ThisStation.Name) ObdobiaList.Add(dgyv);
+            if ((string)tscbStanica.ComboBox.SelectedItem! == gvd.ThisStation.Name) ObdobiaList.Add(dgyv);
 
             _gvdDirs.Add(dgyv);
             GlobData.GVDDirs.Add(dgyv.Dir);
@@ -534,7 +534,7 @@ public partial class FMain : Form
     //TODO prerobiť
     private void ShowLocalSettings(int startIndex = -1)
     {
-        var dir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem;
+        var dir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
         var svform = new FLocalSettings(dir, startIndex);
         var result = svform.ShowDialog();
         if (result == DialogResult.OK)
@@ -628,15 +628,15 @@ public partial class FMain : Form
         }
     }
 
-    private void ShowEditTrain(Train train, int row, bool copy = false)
+    private void ShowEditTrain(Train? train, int row, bool copy = false)
     {
-        var eform = new FEditTrain(train, row, ((GVDDirectory)tscbObdobie.ComboBox.SelectedItem).GVD, copy);
+        var eform = new FEditTrain(train, row, ((GVDDirectory)tscbObdobie.ComboBox.SelectedItem!).GVD, copy);
         var result = eform.ShowDialog();
         if (result == DialogResult.OK)
         {
             if (train == null || row == GlobData.Trains.Count)
             {
-                GlobData.Trains.Add(eform.ThisTrain);
+                GlobData.Trains.Add(eform.ThisTrain!);
                 DataSaved = false;
             }
             else
@@ -704,7 +704,7 @@ public partial class FMain : Form
             {
                 CheckAutoTrainVariants(row.Index);
                 if (!GlobData.Config.AutoTableText)
-                    DeleteTTexts(row.DataBoundItem as Train);
+                    DeleteTTexts((row.DataBoundItem as Train)!);
 
                 GlobData.Trains.RemoveAt(row.Index);
             }
@@ -871,7 +871,7 @@ public partial class FMain : Form
         SetRecentProjects();
     }
 
-    private void InissStartItemOnClick(object sender, EventArgs e)
+    private void InissStartItemOnClick(object? sender, EventArgs e)
     {
         if (sender is ToolStripItem tsmi)
         {
@@ -883,7 +883,7 @@ public partial class FMain : Form
 
             if (_actualINISSProcess == null)
             {
-                var path = Utils.CombinePath(GlobData.INISSDir, tsmi.Text);
+                var path = Utils.CombinePath(GlobData.INISSDir, tsmi.Text!)!;
                 ExecuteINISS(path);
                 _lastINISSStart = path;
             }
@@ -923,10 +923,10 @@ public partial class FMain : Form
         tssbRecentDirs.Enabled = enabled;
     }
 
-    private void RecentDirsClick(object sender, EventArgs e)
+    private void RecentDirsClick(object? sender, EventArgs e)
     {
-        var menuItem = (ToolStripMenuItem)sender;
-        OpenRecentProject(menuItem.Text);
+        var menuItem = (ToolStripMenuItem)sender!;
+        OpenRecentProject(menuItem.Text!);
     }
 
     private void OpenRecentProject(string fullPath)
@@ -991,7 +991,7 @@ public partial class FMain : Form
                 tscbObdobie.ComboBox.SelectedItem = _newDir;
             }
 
-            _previousSelectedGVD ??= (GVDDirectory)tscbObdobie.ComboBox.SelectedItem;
+            _previousSelectedGVD ??= (GVDDirectory?)tscbObdobie.ComboBox.SelectedItem;
         }
     }
 
@@ -1000,7 +1000,7 @@ public partial class FMain : Form
         if (_removingGVD)
             return;
 
-        var dir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem;
+        var dir = (GVDDirectory?)tscbObdobie.ComboBox.SelectedItem;
 
         if (dir == null) return;
 
@@ -1130,7 +1130,7 @@ public partial class FMain : Form
                  e.RowIndex < GlobData.Trains.Count)
             GlobData.Trains[e.RowIndex].Operator = GlobData.Operators[0];
         else
-            Utils.ShowError(Resources.FMain_dgvTrains_DataError_Tabuľka_obsahuje_nesprávny_údaj + e.Exception.Message);
+            Utils.ShowError(Resources.FMain_dgvTrains_DataError_Tabuľka_obsahuje_nesprávny_údaj + e.Exception!.Message);
     }
 
     private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -1206,14 +1206,14 @@ public partial class FMain : Form
     private void dgvTrains_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
     {
         if (dgvTrains.Columns[e.ColumnIndex].Name == @"cisloDataGridViewTextBoxColumn" &&
-            (string)e.FormattedValue == "") e.Cancel = true;
+            (string)e.FormattedValue! == "") e.Cancel = true;
 
         if (dgvTrains.Columns[e.ColumnIndex].Name == @"odchodDataGridViewTextBoxColumn" &&
-            (string)e.FormattedValue == "" &&
+            (string)e.FormattedValue! == "" &&
             dgvTrains.Rows[e.RowIndex].Cells[@"prichodDataGridViewTextBoxColumn"].Value == null)
             e.Cancel = true;
         else if (dgvTrains.Columns[e.ColumnIndex].Name == @"prichodDataGridViewTextBoxColumn" &&
-                 (string)e.FormattedValue == "" &&
+                 (string)e.FormattedValue! == "" &&
                  dgvTrains.Rows[e.RowIndex].Cells[@"odchodDataGridViewTextBoxColumn"].Value == null) e.Cancel = true;
 
         if (dgvTrains.Columns[e.ColumnIndex].Name == @"DatumoveObmedzenieText")
@@ -1224,7 +1224,7 @@ public partial class FMain : Form
                 insertMarks: false);
             try
             {
-                dateRemThis.TextToBitArray(value);
+                dateRemThis.TextToBitArray(value!);
             }
             catch (Exception exception)
             {
@@ -1385,7 +1385,8 @@ public partial class FMain : Form
                 : GlobData.UsingStyle.TrainTypeColumnScheme.Font;
         }
 
-        if (dgvTrains.Columns["typDataGridViewTextBoxColumn"] != null && e.ColumnIndex == dgvTrains.Columns["typDataGridViewTextBoxColumn"].Index)
+        var typColumn = dgvTrains.Columns["typDataGridViewTextBoxColumn"];
+        if (typColumn != null && e.ColumnIndex == typColumn.Index)
             if (e.RowIndex < GlobData.Trains.Count)
             {
                 var type = GlobData.Trains[e.RowIndex].Type;
@@ -1640,7 +1641,7 @@ public partial class FMain : Form
 
     private void bWorkerELIS_DoWork(object sender, DoWorkEventArgs e)
     {
-        var data = (SendData)e.Argument;
+        var data = (SendData)e.Argument!;
 
         if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
             try
@@ -1699,11 +1700,11 @@ public partial class FMain : Form
     /// </summary>
     internal sealed class ElisImport
     {
-        public ELISBridgeClient Client { get; set; }
-        public ElisResult Data { get; set; }
-        public List<string> Unresolved { get; set; }
-        public string GVDPath { get; set; }
-        public GVDInfo GVDInfo { get; set; }
+        public ELISBridgeClient Client { get; set; } = null!;
+        public ElisResult Data { get; set; } = null!;
+        public List<string> Unresolved { get; set; } = null!;
+        public string GVDPath { get; set; } = null!;
+        public GVDInfo GVDInfo { get; set; } = null!;
 
         /// <summary>
         ///     Ci sa maju povodne vlaky pred pridanim naimportovanych odstranit. Nesie sa
@@ -1715,12 +1716,12 @@ public partial class FMain : Form
 
     private void bWorkerELIS_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
-        _waitForm.Close();
+        _waitForm!.Close();
         Cursor.Current = Cursors.AppStarting;
 
         if (!_error)
         {
-            var import = (ElisImport)e.Result;
+            var import = (ElisImport)e.Result!;
 
             //stanice, ktore ELIS pomenuva inak, doriesi pouzivatel - a volba sa zapamata
             if (import.Unresolved.Count != 0 && !ResolveStations(import))
@@ -1827,7 +1828,7 @@ public partial class FMain : Form
         }
     }
 
-    private void ProcOnExited(object sender, EventArgs e)
+    private void ProcOnExited(object? sender, EventArgs e)
     {
         _actualINISSProcess?.Dispose();
         _actualINISSProcess = null;
@@ -1889,7 +1890,8 @@ public partial class FMain : Form
     private void RestartINISS()
     {
         _actualINISSProcess?.Kill();
-        ExecuteINISS(_lastINISSStart);
+        if (_lastINISSStart != null)
+            ExecuteINISS(_lastINISSStart);
     }
 
     private void tsbKillINISS_Click(object sender, EventArgs e) => KillINISS();
@@ -1978,8 +1980,8 @@ public partial class FMain : Form
 
     private class PathAndGVD
     {
-        public string Path { get; set; }
-        public GVDInfo Gvd { get; set; }
+        public string Path { get; set; } = null!;
+        public GVDInfo Gvd { get; set; } = null!;
     }
 
     internal class SendData
@@ -1989,12 +1991,12 @@ public partial class FMain : Form
         /// </summary>
         public const string DefaultElisDirectory = @"C:\Program Files (x86)\Cestovné poriadky";
 
-        public string AppDirectory { get; set; }
-        public string RegistrationNumber { get; set; }
-        public string GVDPath { get; set; }
-        public List<Train> DefTrains { get; set; }
-        public GVDInfo GVDInfo { get; set; }
-        public Track Track { get; set; }
+        public string AppDirectory { get; set; } = null!;
+        public string RegistrationNumber { get; set; } = null!;
+        public string GVDPath { get; set; } = null!;
+        public List<Train> DefTrains { get; set; } = null!;
+        public GVDInfo GVDInfo { get; set; } = null!;
+        public Track Track { get; set; } = null!;
         public bool OmitPassingTrains { get; set; }
         public bool ReorderTrains { get; set; }
         public bool ReplaceTrains { get; set; }
