@@ -1,612 +1,143 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8E65518D-7C2C-48EF-9FC7-11B2F46F3AEB}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>GVDEditor</RootNamespace>
-    <AssemblyName>GVDEditor</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-    <IsWebBootstrapper>true</IsWebBootstrapper>
-    <LangVersion>latest</LangVersion>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
-    <PublishUrl>ftp://endora.endora.cz/iniss.6f.sk/web/apps/GVDEditor/</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Web</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://iniss.6f.sk/apps/GVDEditor/</InstallUrl>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
-    <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>1.8.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <CreateDesktopShortcut>true</CreateDesktopShortcut>
-    <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;GVDEDITOR</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>2</WarningLevel>
-    <DocumentationFile>bin\Debug\GVDEditor.xml</DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>gvd.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>B97ABAA6C3D241E476C79AE2D5335E05C1E4C140</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>iniss6f.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>GVDEditor.Program</StartupObject>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
-  <PropertyGroup>
-    <TargetZone>LocalIntranet</TargetZone>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DelaySign>false</DelaySign>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="AutocompleteMenu-ScintillaNET, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoCompleteMenu-ScintillaNET.1.6.2\lib\net461\AutocompleteMenu-ScintillaNET.dll</HintPath>
-    </Reference>
-    <Reference Include="JetBrains.Annotations, Version=4242.42.42.42, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\JetBrains.Annotations.2026.2.0\lib\net20\JetBrains.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NAudio.2.1.0\lib\net472\NAudio.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.Asio, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NAudio.Asio.2.1.0\lib\netstandard2.0\NAudio.Asio.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.Core, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NAudio.Core.2.1.0\lib\netstandard2.0\NAudio.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.Midi, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NAudio.Midi.2.1.0\lib\netstandard2.0\NAudio.Midi.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.Wasapi, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NAudio.Wasapi.2.1.0\lib\netstandard2.0\NAudio.Wasapi.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.WinForms, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NAudio.WinForms.2.1.0\lib\net472\NAudio.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.WinMM, Version=2.1.0.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NAudio.WinMM.2.1.0\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="ScintillaNET, Version=3.6.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Security.AccessControl, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Security.AccessControl.4.7.0\lib\net461\System.Security.AccessControl.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Controls\MyScintilla.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\MyScintilla.Designer.cs">
-      <DependentUpon>MyScintilla.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Audio.cs" />
-    <Compile Include="Entities\ChosenReportType.cs" />
-    <Compile Include="Entities\ITable.cs" />
-    <Compile Include="Forms\FAnalyzer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FAnalyzer.Designer.cs">
-      <DependentUpon>FAnalyzer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FAppSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FAppSettings.Designer.cs">
-      <DependentUpon>FAppSettings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FDateLimitEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FDateLimitEdit.Designer.cs">
-      <DependentUpon>FDateLimitEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FDatObm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FDatObm.Designer.cs">
-      <DependentUpon>FDatObm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GlobUsings.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Tools\Analyzer.cs" />
-    <Compile Include="Entities\Dodatok.cs" />
-    <Compile Include="Entities\ImportTrainColumnType.cs" />
-    <Compile Include="Entities\NumberVariant.cs" />
-    <Compile Include="FileConsts.cs" />
-    <Compile Include="Forms\FColumnTypeSelect.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FColumnTypeSelect.Designer.cs">
-      <DependentUpon>FColumnTypeSelect.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FELISImport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FELISImport.Designer.cs">
-      <DependentUpon>FELISImport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FELISStations.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FELISStations.Designer.cs">
-      <DependentUpon>FELISStations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FImportData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FImportData.Designer.cs">
-      <DependentUpon>FImportData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FRadenie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FRadenie.Designer.cs">
-      <DependentUpon>FRadenie.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FTabTabFindReplace.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FTabTabFindReplace.Designer.cs">
-      <DependentUpon>FTabTabFindReplace.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FTabTabRename.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FTabTabRename.Designer.cs">
-      <DependentUpon>FTabTabRename.cs</DependentUpon>
-    </Compile>
-    <Compile Include="XML\AppShortcuts.cs" />
-    <Compile Include="XML\DesktopColumns.cs" />
-    <Compile Include="XML\GVDEditorSettingsNaming.cs" />
-    <Compile Include="XML\StartupINISS.cs" />
-    <Compile Include="XML\GVDEditorStyle.cs" />
-    <Compile Include="XML\TrainTypeColumnScheme.cs" />
-    <Compile Include="Tools\DateLimit.cs" />
-    <Compile Include="LinkConsts.cs" />
-    <Compile Include="Tools\TabTabACItems.cs" />
-    <Compile Include="XML\TabTabEditorScheme.cs" />
-    <Compile Include="XML\GVDEditorConfig.cs" />
-    <Compile Include="Tools\AppRegistry.cs" />
-    <Compile Include="GlobData.cs" />
-    <Compile Include="Entities\GVDDirectory.cs" />
-    <Compile Include="Entities\DirList.cs" />
-    <Compile Include="Entities\GVDInfo.cs" />
-    <Compile Include="Entities\Radenie.cs" />
-    <Compile Include="Entities\ReportType.cs" />
-    <Compile Include="Entities\ReportVariant.cs" />
-    <Compile Include="Entities\TableAlign.cs" />
-    <Compile Include="Entities\TableCatalog.cs" />
-    <Compile Include="Entities\TableDivType.cs" />
-    <Compile Include="Entities\TableFillSection.cs" />
-    <Compile Include="Entities\TableFont.cs" />
-    <Compile Include="Entities\TableFontType.cs" />
-    <Compile Include="Entities\TableItem.cs" />
-    <Compile Include="Entities\TableLogical.cs" />
-    <Compile Include="Entities\TableManufacturer.cs" />
-    <Compile Include="Entities\TablePosition.cs" />
-    <Compile Include="Entities\TableRecord.cs" />
-    <Compile Include="Entities\TableSegment.cs" />
-    <Compile Include="Entities\TableTabTab.cs" />
-    <Compile Include="Entities\TableText.cs" />
-    <Compile Include="Entities\TableTextRealization.cs" />
-    <Compile Include="Entities\TableTrain.cs" />
-    <Compile Include="Entities\TableTypeModeItem.cs" />
-    <Compile Include="Entities\TableViewMode.cs" />
-    <Compile Include="Entities\TableViewType.cs" />
-    <Compile Include="Entities\TableViewTypeTab.cs" />
-    <Compile Include="Entities\Template.cs" />
-    <Compile Include="Forms\FTableLogical.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FTableLogical.Designer.cs">
-      <DependentUpon>FTableLogical.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FTablePhysical.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FTablePhysical.Designer.cs">
-      <DependentUpon>FTablePhysical.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FTableColumnOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FTableColumnOrder.Designer.cs">
-      <DependentUpon>FTableColumnOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FTableCatalog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FTableCatalog.Designer.cs">
-      <DependentUpon>FTableCatalog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FTableText.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FTableText.Designer.cs">
-      <DependentUpon>FTableText.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FTabTab.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FTabTab.Designer.cs">
-      <DependentUpon>FTabTab.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FEditTrain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FEditTrain.Designer.cs">
-      <DependentUpon>FEditTrain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FGlobalSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FGlobalSettings.Designer.cs">
-      <DependentUpon>FGlobalSettings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FWait.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FWait.Designer.cs">
-      <DependentUpon>FWait.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tools\TxtParser.cs" />
-    <Compile Include="Tools\ELISBridgeClient.cs" />
-    <Compile Include="Tools\FileTransaction.cs" />
-    <Compile Include="..\ELISBridge\ElisData.cs">
-      <Link>Tools\ElisData.cs</Link>
-    </Compile>
-    <Compile Include="Entities\Operator.cs" />
-    <Compile Include="Entities\TrainType.cs" />
-    <Compile Include="Entities\Track.cs" />
-    <Compile Include="Entities\Platform.cs" />
-    <Compile Include="Entities\Station.cs" />
-    <Compile Include="Entities\TablePhysical.cs" />
-    <Compile Include="Entities\Routing.cs" />
-    <Compile Include="Entities\Train.cs" />
-    <Compile Include="Forms\FMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FMain.Designer.cs">
-      <DependentUpon>FMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FNewGrafikon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FNewGrafikon.Designer.cs">
-      <DependentUpon>FNewGrafikon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\FLocalSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FLocalSettings.Designer.cs">
-      <DependentUpon>FLocalSettings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tools\RawBankReader.cs" />
-    <Compile Include="Tools\TabTabLexer.cs" />
-    <Compile Include="Tools\WavPlayer.cs" />
-    <None Include="..\..\ToolsCore\ToolsCore\GlobalResources.resx">
-      <Link>GlobalResources.resx</Link>
-      <Generator>None</Generator>
-      <CustomToolNamespace>ToolsCore</CustomToolNamespace>
-    </None>
-    <EmbeddedResource Include="Forms\FAppSettings.resx">
-      <DependentUpon>FAppSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FDateLimitEdit.resx">
-      <DependentUpon>FDateLimitEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FELISImport.resx">
-      <DependentUpon>FELISImport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\MyScintilla.resx">
-      <DependentUpon>MyScintilla.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FAnalyzer.cs.resx">
-      <DependentUpon>FAnalyzer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FAnalyzer.resx">
-      <DependentUpon>FAnalyzer.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FColumnTypeSelect.cs.resx">
-      <DependentUpon>FColumnTypeSelect.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FColumnTypeSelect.resx">
-      <DependentUpon>FColumnTypeSelect.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FDatObm.resx">
-      <DependentUpon>FDatObm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FEditTrain.cs.resx">
-      <DependentUpon>FEditTrain.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FELISImport.cs.resx">
-      <DependentUpon>FELISImport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FELISStations.resx">
-      <DependentUpon>FELISStations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FELISStations.cs.resx">
-      <DependentUpon>FELISStations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FGlobalSettings.cs.resx">
-      <DependentUpon>FGlobalSettings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FImportData.cs.resx">
-      <DependentUpon>FImportData.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FImportData.resx">
-      <DependentUpon>FImportData.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FLocalSettings.cs.resx">
-      <DependentUpon>FLocalSettings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FMain.cs.resx">
-      <DependentUpon>FMain.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FNewGrafikon.cs.resx">
-      <DependentUpon>FNewGrafikon.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FRadenie.cs.resx">
-      <DependentUpon>FRadenie.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTableCatalog.cs.resx">
-      <DependentUpon>FTableCatalog.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTableColumnOrder.cs.resx">
-      <DependentUpon>FTableColumnOrder.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTableLogical.cs.resx">
-      <DependentUpon>FTableLogical.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTableLogical.resx">
-      <DependentUpon>FTableLogical.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTablePhysical.cs.resx">
-      <DependentUpon>FTablePhysical.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTablePhysical.resx">
-      <DependentUpon>FTablePhysical.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTableColumnOrder.resx">
-      <DependentUpon>FTableColumnOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTableCatalog.resx">
-      <DependentUpon>FTableCatalog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTableText.cs.resx">
-      <DependentUpon>FTableText.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTableText.resx">
-      <DependentUpon>FTableText.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTabTab.cs.resx">
-      <DependentUpon>FTabTab.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTabTab.resx">
-      <DependentUpon>FTabTab.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FEditTrain.resx">
-      <DependentUpon>FEditTrain.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FRadenie.resx">
-      <DependentUpon>FRadenie.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FGlobalSettings.resx">
-      <DependentUpon>FGlobalSettings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FMain.resx">
-      <DependentUpon>FMain.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FNewGrafikon.resx">
-      <DependentUpon>FNewGrafikon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTabTabFindReplace.resx">
-      <DependentUpon>FTabTabFindReplace.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FTabTabRename.resx">
-      <DependentUpon>FTabTabRename.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FWait.cs.resx">
-      <DependentUpon>FWait.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FWait.resx">
-      <DependentUpon>FWait.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.cs.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FLocalSettings.resx">
-      <DependentUpon>FLocalSettings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <None Include="app.manifest" />
-    <None Include="iniss6f.pfx" />
-    <None Include="packages.config" />
-    <None Include="Properties\DataSources\GVDEditor.Entities.Language.datasource" />
-    <None Include="Properties\DataSources\GVDEditor.Entities.Operator.datasource" />
-    <None Include="Properties\DataSources\GVDEditor.Entities.Track.datasource" />
-    <None Include="Properties\DataSources\GVDEditor.Entities.Train.datasource" />
-    <None Include="Properties\DataSources\GVDEditor.Forms.FDateRemEdit+DateRemVariant.datasource" />
-    <None Include="Properties\DataSources\GVDEditor.Forms.FTableLogical+TableLogicalZostava.datasource" />
-    <None Include="Properties\DataSources\GVDEditor.Tools.AppFont.datasource" />
-    <None Include="Properties\DataSources\GVDEditor.Tools.CommandShortcut.datasource" />
-    <None Include="Properties\DataSources\GVDEditor.Tools.DesktopColumn.datasource" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="gvd.ico" />
-    <Content Include="Licences\GPLv3.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CustomToolNamespace>\Licences</CustomToolNamespace>
-    </Content>
-    <Content Include="Licences\LICENCE.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CustomToolNamespace>\Licences</CustomToolNamespace>
-    </Content>
-    <None Include="Resources\gvd.png" />
-    <None Include="Properties\DataSources\GVDEditor.XML.AppShortcuts.datasource" />
-    <None Include="Properties\DataSources\GVDEditor.XML.DesktopColumns.datasource" />
-    <None Include="Properties\DataSources\GVDEditor.XML.GVDEditorConfig.datasource" />
-    <None Include="Properties\DataSources\ToolsCore.XML.AppFont.datasource" />
-    <None Include="Properties\DataSources\ToolsCore.XML.CommandShortcut.datasource" />
-    <None Include="Properties\DataSources\ToolsCore.XML.Config+AppLanguage.datasource" />
-    <None Include="Properties\DataSources\ToolsCore.XML.ControlFonts.datasource" />
-    <None Include="Properties\DataSources\ToolsCore.XML.DesktopColumn.datasource" />
-    <None Include="Properties\DataSources\GVDEditor.Tools.IFix.datasource" />
-    <None Include="Resources\statedgm.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\ExControls\ExControls\ExControls.csproj">
-      <Project>{e2064a91-6132-498f-9f22-8c3e7c5941bc}</Project>
-      <Name>ExControls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ToolsCore\ToolsCore\ToolsCore.csproj">
-      <Project>{15b32c49-7b00-4849-9685-2f7d7438db54}</Project>
-      <Name>ToolsCore</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>cd $(OutDir)
-mkdir lib
-move *.dll ".\lib"
-move *.pdb ".\lib"
-move *.xml ".\lib"
-rmdir "lib\cs\" /s /q
-move cs ".\lib"</PostBuildEvent>
-  </PropertyGroup>
-  <!-- ELISBridge je samostatny x86 proces (TT.dll je 32-bitova), preto sa nelinkuje
-       ako referencia, ale iba zostavi a skopiruje vedla GVDEditor.exe. -->
-  <Target Name="BuildELISBridge" BeforeTargets="Build">
-    <MSBuild Projects="..\ELISBridge\ELISBridge.csproj" Targets="Build" Properties="Configuration=$(Configuration)" />
-  </Target>
-  <Target Name="CopyELISBridge" AfterTargets="Build">
-    <ItemGroup>
-      <ELISBridgeOutput Include="..\ELISBridge\bin\$(Configuration)\ELISBridge.exe" />
-      <ELISBridgeOutput Include="..\ELISBridge\bin\$(Configuration)\ELISBridge.pdb" />
-    </ItemGroup>
-    <Copy SourceFiles="@(ELISBridgeOutput)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" ContinueOnError="true" />
-  </Target>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<RootNamespace>GVDEditor</RootNamespace>
+		<AssemblyName>GVDEditor</AssemblyName>
+		<UseWindowsForms>true</UseWindowsForms>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<StartupObject>GVDEditor.Program</StartupObject>
+		<ApplicationIcon>gvd.ico</ApplicationIcon>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<!-- Zodpovedá pôvodnému app.manifest dpiAware=true + App.config EnableWindowsFormsHighDpiAutoResizing=true
+		     (system-aware, nie PerMonitorV2 - zachovaná pôvodná škálovacia logika, pozri MIGRATION_PROGRESS.md). -->
+		<ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
+	</PropertyGroup>
+	<!-- ClickOnce publish nastavenia (pôvodne pre .NET Framework) - zachované pre kontinuitu,
+	     ale `dotnet publish` ClickOnce flow pre SDK-style .NET treba pred použitím overiť samostatne. -->
+	<PropertyGroup>
+		<PublishUrl>ftp://endora.endora.cz/iniss.6f.sk/web/apps/GVDEditor/</PublishUrl>
+		<Install>true</Install>
+		<InstallFrom>Web</InstallFrom>
+		<UpdateEnabled>true</UpdateEnabled>
+		<UpdateMode>Foreground</UpdateMode>
+		<UpdateInterval>7</UpdateInterval>
+		<UpdateIntervalUnits>Days</UpdateIntervalUnits>
+		<UpdatePeriodically>false</UpdatePeriodically>
+		<UpdateRequired>false</UpdateRequired>
+		<MapFileExtensions>true</MapFileExtensions>
+		<InstallUrl>http://iniss.6f.sk/apps/GVDEditor/</InstallUrl>
+		<CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+		<WebPage>publish.htm</WebPage>
+		<ApplicationRevision>2</ApplicationRevision>
+		<ApplicationVersion>1.8.0.*</ApplicationVersion>
+		<UseApplicationTrust>false</UseApplicationTrust>
+		<CreateDesktopShortcut>true</CreateDesktopShortcut>
+		<ManifestCertificateThumbprint>B97ABAA6C3D241E476C79AE2D5335E05C1E4C140</ManifestCertificateThumbprint>
+		<ManifestKeyFile>iniss6f.pfx</ManifestKeyFile>
+		<!-- GenerateManifests/SignManifests vypnuté: úloha GenerateTrustInfo (ClickOnce) nie je podporovaná
+		     .NET Core MSBuildom (MSB4803, rovnaký limit ako ResolveComReference). ClickOnce `dotnet publish`
+		     flow pre SDK-style .NET treba overiť/zapnúť samostatne (viď MIGRATION_PROGRESS.md), mimo dotnet build. -->
+		<GenerateManifests>false</GenerateManifests>
+		<SignManifests>false</SignManifests>
+		<TargetZone>LocalIntranet</TargetZone>
+		<SignAssembly>false</SignAssembly>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoCompleteMenu-ScintillaNET" Version="2.1.1" />
+		<PackageReference Include="JetBrains.Annotations" Version="2026.2.0" />
+		<PackageReference Include="Microsoft.Office.Interop.Excel" Version="16.0.18925.20022" />
+		<PackageReference Include="NAudio" Version="2.2.1" />
+		<PackageReference Include="NAudio.WinForms" Version="2.2.1" />
+		<!-- Balík "Scintilla5.NET" (bez bodky) je silne pomenovaný s iným PublicKeyToken ako to, proti čomu je
+		     skompilovaný AutoCompleteMenu-ScintillaNET 2.1.1 (referencuje "Scintilla.NET" bez silného mena) -
+		     s ním by autocomplete zlyhal pri runtime type-loade. Balík "Scintilla.NET" (s bodkou, VPKSoft)
+		     je nepomenovane-silný fork zo stejnej vetvy, kompatibilný s AutoCompleteMenu. -->
+		<PackageReference Include="Scintilla.NET" Version="5.3.2.9" />
+	</ItemGroup>
+	<ItemGroup>
+		<!-- ElisData.cs je zdieľaný medzi GVDEditor (tento proces) a ELISBridge (samostatný x86 proces) -->
+		<Compile Include="..\ELISBridge\ElisData.cs" Link="Tools\ElisData.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="gvd.ico" />
+		<Content Include="Licences\GPLv3.txt">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Licences\LICENCE.txt">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\ExControls\ExControls\ExControls.csproj" />
+		<ProjectReference Include="..\..\ToolsCore\ToolsCore\ToolsCore.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Forms\FColumnTypeSelect.cs.resx">
+	    <DependentUpon>FColumnTypeSelect.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FAnalyzer.cs.resx">
+	    <DependentUpon>FAnalyzer.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FEditTrain.cs.resx">
+	    <DependentUpon>FEditTrain.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FELISImport.cs.resx">
+	    <DependentUpon>FELISImport.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FELISStations.cs.resx">
+	    <DependentUpon>FELISStations.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FGlobalSettings.cs.resx">
+	    <DependentUpon>FGlobalSettings.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FImportData.cs.resx">
+	    <DependentUpon>FImportData.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FLocalSettings.cs.resx">
+	    <DependentUpon>FLocalSettings.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FMain.cs.resx">
+	    <DependentUpon>FMain.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FNewGrafikon.cs.resx">
+	    <DependentUpon>FNewGrafikon.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FRadenie.cs.resx">
+	    <DependentUpon>FRadenie.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FTableCatalog.cs.resx">
+	    <DependentUpon>FTableCatalog.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FTableColumnOrder.cs.resx">
+	    <DependentUpon>FTableColumnOrder.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FTableLogical.cs.resx">
+	    <DependentUpon>FTableLogical.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FTablePhysical.cs.resx">
+	    <DependentUpon>FTablePhysical.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FTableText.cs.resx">
+	    <DependentUpon>FTableText.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FTabTab.cs.resx">
+	    <DependentUpon>FTabTab.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FWait.cs.resx">
+	    <DependentUpon>FWait.cs</DependentUpon>
+	  </EmbeddedResource>
+	</ItemGroup>
+	<!-- ELISBridge je samostatny x86 proces (TT.dll je 32-bitova), preto sa nelinkuje
+	     ako referencia, ale iba zostavi a skopiruje vedla GVDEditor.exe. -->
+	<Target Name="BuildELISBridge" BeforeTargets="Build">
+		<MSBuild Projects="..\ELISBridge\ELISBridge.csproj" Targets="Build" Properties="Configuration=$(Configuration)" />
+	</Target>
+	<Target Name="CopyELISBridge" AfterTargets="Build">
+		<ItemGroup>
+			<ELISBridgeOutput Include="..\ELISBridge\bin\$(Configuration)\net10.0-windows\ELISBridge.exe" />
+			<ELISBridgeOutput Include="..\ELISBridge\bin\$(Configuration)\net10.0-windows\ELISBridge.pdb" />
+		</ItemGroup>
+		<Copy SourceFiles="@(ELISBridgeOutput)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" ContinueOnError="true" />
+	</Target>
 </Project>

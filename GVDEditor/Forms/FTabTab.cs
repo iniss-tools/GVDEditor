@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using AutocompleteMenuNS;
 using ExControls;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
@@ -75,7 +76,7 @@ public partial class FTabTab : Form
         sc.SetSelectionBackColor(true, GlobData.UsingStyle.ControlsColorScheme.Border.ForeColor);
 
         if (!GlobData.UsingStyle.ControlsDefaultStyle)
-            sc.BorderStyle = BorderStyle.None;
+            sc.BorderStyle = ScintillaNET.BorderStyle.None;
 
         if (GlobData.UsingStyle.DarkScrollBar)
         {

@@ -466,7 +466,7 @@ public partial class FTableCatalog : Form
 
     private void FTableCatalog_HelpButtonClicked(object sender, CancelEventArgs e)
     {
-        Process.Start(LinkConsts.LINK_TCATALOG);
+        Utils.OpenShell(LinkConsts.LINK_TCATALOG);
     }
 
     private void bUp_Click(object sender, EventArgs e)

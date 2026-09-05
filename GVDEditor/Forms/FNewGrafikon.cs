@@ -248,6 +248,6 @@ public partial class FNewGrafikon : Form
 
     private void FNewGrafikon_HelpButtonClicked(object sender, CancelEventArgs e)
     {
-        Process.Start(LinkConsts.LINK_NEW_GVD);
+        Utils.OpenShell(LinkConsts.LINK_NEW_GVD);
     }
 }

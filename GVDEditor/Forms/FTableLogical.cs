@@ -178,7 +178,7 @@ public partial class FTableLogical : Form
 
     private void FTableLogical_HelpButtonClicked(object sender, CancelEventArgs e)
     {
-        Process.Start(LinkConsts.LINK_TLOGICAL);
+        Utils.OpenShell(LinkConsts.LINK_TLOGICAL);
     }
 
     private class TableLogicalZostava

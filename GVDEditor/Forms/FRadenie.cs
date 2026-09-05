@@ -252,6 +252,6 @@ public partial class FRadenie : Form
 
     private void FRadenie_HelpButtonClicked(object sender, CancelEventArgs e)
     {
-        Process.Start(LinkConsts.LINK_EDIT_TRAIN_RADENIE);
+        Utils.OpenShell(LinkConsts.LINK_EDIT_TRAIN_RADENIE);
     }
 }

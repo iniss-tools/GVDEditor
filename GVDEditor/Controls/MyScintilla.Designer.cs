@@ -42,7 +42,7 @@ namespace GVDEditor.Controls
             // 
             // Scintilla
             // 
-            this.scintilla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.scintilla.BorderStyle = ScintillaNET.BorderStyle.FixedSingle;
             this.scintilla.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scintilla.HScrollBar = false;
             this.scintilla.Location = new System.Drawing.Point(0, 0);
