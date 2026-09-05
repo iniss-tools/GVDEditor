@@ -713,7 +713,7 @@ public partial class FGlobalSettings : Form
 
     private void FGlobalSettings_HelpButtonClicked(object sender, CancelEventArgs e)
     {
-        Process.Start(LinkConsts.LINK_GLOBAL_SETTINGS);
+        Utils.OpenShell(LinkConsts.LINK_GLOBAL_SETTINGS);
     }
 
     private void EnableEvents(bool enable)

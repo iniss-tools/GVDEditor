@@ -173,7 +173,7 @@ public partial class FLocalSettings : Form
         DialogResult = DialogResult.OK;
     }
 
-    private void bOpenDir_Click(object sender, EventArgs e) => Process.Start(ThisDir.Dir.FullPath);
+    private void bOpenDir_Click(object sender, EventArgs e) => Utils.OpenShell(ThisDir.Dir.FullPath);
 
     private void cbCustomStation_CheckedChanged(object sender, EventArgs e)
     {
@@ -1145,7 +1145,7 @@ public partial class FLocalSettings : Form
 
     private void FLocalSettings_HelpButtonClicked(object sender, CancelEventArgs e)
     {
-        Process.Start(LinkConsts.LINK_LOCAL_SETTINGS);
+        Utils.OpenShell(LinkConsts.LINK_LOCAL_SETTINGS);
     }
 
     private void FLocalSettings_Load(object sender, EventArgs e)

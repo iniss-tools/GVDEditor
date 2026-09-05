@@ -222,5 +222,5 @@ public partial class FTableColumnOrder : Form
     }
 
     private void FTableColumnOrder_HelpButtonClicked(object sender, CancelEventArgs e) => 
-        Process.Start(LinkConsts.LINK_TCOLUMN_ORDER);
+        Utils.OpenShell(LinkConsts.LINK_TCOLUMN_ORDER);
 }

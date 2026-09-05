@@ -34,7 +34,7 @@ public partial class FELISImport : Form
 
     private void bBrowse_Click(object sender, EventArgs e)
     {
-        var dialog = new ExFolderBrowserDialog { Description = "Vyberte priečinok s aplikáciou Cestovné poriadky" };
+        var dialog = new FolderBrowserDialog { Description = "Vyberte priečinok s aplikáciou Cestovné poriadky" };
         if (dialog.ShowDialog(this) == DialogResult.Cancel)
             return;
 

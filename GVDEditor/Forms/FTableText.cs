@@ -345,5 +345,5 @@ public partial class FTableText : Form
         }
     }
 
-    private void FTableText_HelpButtonClicked(object sender, CancelEventArgs e) => Process.Start(LinkConsts.LINK_TTEXTS);
+    private void FTableText_HelpButtonClicked(object sender, CancelEventArgs e) => Utils.OpenShell(LinkConsts.LINK_TTEXTS);
 }

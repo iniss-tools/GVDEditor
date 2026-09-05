@@ -129,6 +129,6 @@ public partial class FTablePhysical : Form
 
     private void FTablePhysical_HelpButtonClicked(object sender, CancelEventArgs e)
     {
-        Process.Start(LinkConsts.LINK_TPHYSICAL);
+        Utils.OpenShell(LinkConsts.LINK_TPHYSICAL);
     }
 }

@@ -1218,7 +1218,7 @@ public partial class FEditTrain : Form
 
     private void FEditTrain_HelpButtonClicked(object sender, CancelEventArgs e)
     {
-        Process.Start(LinkConsts.LINK_EDIT_TRAIN);
+        Utils.OpenShell(LinkConsts.LINK_EDIT_TRAIN);
     }
 
     private void BEditLimit_Click(object sender, EventArgs e)

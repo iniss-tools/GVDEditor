@@ -440,7 +440,7 @@ public partial class FMain : Form
 
     private void ShowImportGVD()
     {
-        var dialog = new ExFolderBrowserDialog { Description = "Vyberte priečinok obsahujúci grafikon" };
+        var dialog = new FolderBrowserDialog { Description = "Vyberte priečinok obsahujúci grafikon" };
         if (dialog.ShowDialog(this) == DialogResult.Cancel) 
             return;
 
@@ -649,7 +649,7 @@ public partial class FMain : Form
 
     private void ShowOpenDir()
     {
-        var dialog = new ExFolderBrowserDialog { Description = "Vyberte priečinok s INISS.exe" };
+        var dialog = new FolderBrowserDialog { Description = "Vyberte priečinok s INISS.exe" };
         if (dialog.ShowDialog(this) == DialogResult.Cancel) 
             return;
 
@@ -1298,7 +1298,7 @@ public partial class FMain : Form
 
     private void tsmiInformation_Click(object sender, EventArgs e) => ShowInfoApp();
 
-    private void tsmiChangelog_Click(object sender, EventArgs e) => Process.Start(LinkConsts.LINK_NEWS);
+    private void tsmiChangelog_Click(object sender, EventArgs e) => Utils.OpenShell(LinkConsts.LINK_NEWS);
 
     private void dgvTrains_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
     {
