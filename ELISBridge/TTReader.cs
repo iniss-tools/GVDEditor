@@ -14,6 +14,13 @@ internal sealed class RegistrationException : Exception
 }
 
 /// <summary>
+///     Stanica aj s jej cislom v ciselniku dopravcu (pre zeleznicu kod SR70).
+/// </summary>
+/// <param name="Code">Cislo stanice, napr. 5613600.</param>
+/// <param name="Name">Nazov stanice tak, ako ho uvadza ELIS.</param>
+internal readonly record struct ElisStationCode(int Code, string Name);
+
+/// <summary>
 ///     Vycita z dat ELIS vsetky vlaky prechadzajuce zadanou stanicou.
 /// </summary>
 internal sealed class TTReader
@@ -77,6 +84,38 @@ internal sealed class TTReader
 
         names.Sort(StringComparer.CurrentCulture);
         return names;
+    }
+
+    /// <summary>
+    ///     Vrati stanice aj s ich cislom v ciselniku (pre zeleznicne poriadky kod SR70),
+    ///     zoradene podla nazvu. Stanice bez cisla vynechava.
+    /// </summary>
+    /// <param name="skipped">Pocet stanic, ktore ziadne cislo nemaju.</param>
+    public List<ElisStationCode> GetStationCodes(out int skipped)
+    {
+        skipped = 0;
+        var codes = new List<ElisStationCode>();
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        for (var tt = 0; tt < TTNative.TTTTCount(); tt++)
+        for (var st = 0; st < TTNative.TTStCount(tt); st++)
+        {
+            var name = TTNative.Str(TTNative.TTStName(tt, st));
+            if (string.IsNullOrWhiteSpace(name) || !seen.Add(name))
+                continue;
+
+            var code = TTNative.TTStKey(tt, st);
+            if (code == 0)
+            {
+                skipped++;
+                continue;
+            }
+
+            codes.Add(new ElisStationCode(code, name));
+        }
+
+        codes.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.CurrentCulture));
+        return codes;
     }
 
     /// <summary>

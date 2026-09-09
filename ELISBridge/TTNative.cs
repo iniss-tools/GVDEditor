@@ -70,6 +70,14 @@ internal static class TTNative
     [DllImport(Dll)]
     public static extern IntPtr TTStName(int tt, int st);
 
+    /// <summary>Cislo stanice v ciselniku dopravcu - pre zeleznicne poriadky je to kod SR70.</summary>
+    /// <remarks>
+    ///     Kniznica ho drzi ako int a do textu ho prevadza cez "%d" (<c>TTStKeyChar</c>).
+    ///     Vracia 0, ak stanica ziadne cislo nema.
+    /// </remarks>
+    [DllImport(Dll)]
+    public static extern int TTStKey(int tt, int st);
+
     /// <summary>Poradie vystupov je cislo / nazov / typ.</summary>
     [DllImport(Dll)]
     public static extern void TTTrainInfo(int tt, int lang, int tr,

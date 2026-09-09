@@ -16,15 +16,18 @@ internal static class Program
                                     
            ELISBridge.exe --station <nazov> [--app <priecinok>] [--data <priecinok>] [--out <subor>]
            ELISBridge.exe --list-stations [--app <priecinok>] [--data <priecinok>]
-           
+           ELISBridge.exe --station-codes [--out <subor>] [--app <priecinok>] [--data <priecinok>]
+
          --station        nazov stanice, pre ktoru sa vlaky vycitaju
          --app            priecinok s TT.dll (predvolene \"{DefaultApp}\")
          --data           priecinok s .tt datami (predvolene <app>\\Data1)
-         --out            subor pre vysledne XML (bez neho ide na standardny vystup)
+         --out            subor pre vystup (bez neho ide na standardny vystup)
          --reg            registracne cislo pre platene cestovne poriadky
          --client         identifikacia klienta, ak ju platene data vyzaduju
          --list-stations  vypise nazvy vsetkych stanic v datach
-         
+         --station-codes  vypise stanice ako <kod SR70>,"<nazov>", zoradene podla nazvu;
+                          do suboru (--out) sa zapisu v kodovani Windows-1250
+
          Navratove kody: 0 = ok, 1 = chyba, 2 = ziadny cestovny poriadok,
                          3 = stanica nenajdena, 4 = chybne/chybajuce registracne cislo
          """;
@@ -35,6 +38,7 @@ internal static class Program
 
         string? app = null, data = null, station = null, output = null, reg = null, client = null;
         var listStations = false;
+        var stationCodes = false;
 
         for (var i = 0; i < args.Length; i++)
             switch (args[i])
@@ -46,6 +50,7 @@ internal static class Program
                 case "--reg": reg = Next(args, ref i); break;
                 case "--client": client = Next(args, ref i); break;
                 case "--list-stations": listStations = true; break;
+                case "--station-codes": stationCodes = true; break;
                 case "--help":
                 case "-h":
                     Console.WriteLine(Usage);
@@ -61,7 +66,7 @@ internal static class Program
         if (string.IsNullOrEmpty(data))
             data = Path.Combine(app, "Data1");
 
-        if (!listStations && string.IsNullOrEmpty(station))
+        if (!listStations && !stationCodes && string.IsNullOrEmpty(station))
         {
             Console.Error.WriteLine("Chýba parameter --station.");
             Console.Error.WriteLine(Usage);
@@ -79,6 +84,12 @@ internal static class Program
                 foreach (var name in reader.GetAllStationNames())
                     Console.WriteLine(name);
 
+                return 0;
+            }
+
+            if (stationCodes)
+            {
+                WriteStationCodes(reader, output);
                 return 0;
             }
 
@@ -113,6 +124,35 @@ internal static class Program
             Console.Error.WriteLine(e.ToString());
             return 1;
         }
+    }
+
+    /// <summary>
+    ///     Zapise ciselnik stanic vo formate <c>5613600,"Košice"</c> - jedna stanica na riadok.
+    /// </summary>
+    /// <param name="output">Cielovy subor, alebo <see langword="null" /> pre standardny vystup.</param>
+    private static void WriteStationCodes(TTReader reader, string? output)
+    {
+        var stations = reader.GetStationCodes(out var skipped);
+        var lines = stations.Select(s => $"{s.Code},\"{s.Name.Replace("\"", "\"\"")}\"");
+
+        if (string.IsNullOrEmpty(output))
+        {
+            foreach (var line in lines)
+                Console.WriteLine(line);
+        }
+        else
+        {
+            var cp1250 = Encoding.GetEncoding(1250);
+            File.WriteAllLines(output, lines, cp1250);
+
+            //co sa do Windows-1250 nezmesti, ulozi sa ako '?' - nech to nezostane nepovsimnute
+            foreach (var name in stations.Select(s => s.Name)
+                         .Where(n => cp1250.GetString(cp1250.GetBytes(n)) != n))
+                Console.Error.WriteLine($"Upozornenie: názov \"{name}\" sa v kódovaní Windows-1250 zapísať nedá.");
+        }
+
+        Console.Error.WriteLine($"Staníc s kódom: {stations.Count}" +
+                                (skipped != 0 ? $", bez kódu vynechaných: {skipped}" : string.Empty));
     }
 
     private static void WriteToConsole(ElisResult result)

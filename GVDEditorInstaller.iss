@@ -2,15 +2,17 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "GVDEditor"
-#define MyAppVersion "1.8.0"
 #define MyAppPublisher "iniss.6f.sk"
 #define MyAppURL "https://iniss.6f.sk/"
 #define MyAppExeName "GVDEditor.exe"
+#define MyAppDir SourcePath + "\GVDEditor\bin\Release\net10.0-windows"
+; Verzia sa číta zo zostaveného .exe, aby bola na jednom mieste - v Properties\AssemblyInfo.cs.
+; Preto musí byť Release build hotový skôr, než sa inštalátor kompiluje (inak ISPP ohlási chybu).
+#define MyAppVersion GetVersionNumbersString(MyAppDir + "\" + MyAppExeName)
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{1A545C85-7A92-4524-89CA-83B756289F5C}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -29,6 +31,7 @@ SolidCompression=yes
 WizardStyle=modern
 CreateUninstallRegKey=no
 UpdateUninstallLogAppName=no
+UsePreviousLanguage=no
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -39,18 +42,8 @@ Name: "slovak"; MessagesFile: "compiler:Languages\Slovak.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "{#SourcePath}\bin\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#SourcePath}\bin\Release\AutocompleteMenu-ScintillaNET.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#SourcePath}\bin\Release\ExControls.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#SourcePath}\bin\Release\ExControls.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#SourcePath}\bin\Release\GVDEditor.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#SourcePath}\bin\Release\GVDEditor.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#SourcePath}\bin\Release\ELISBridge.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#SourcePath}\bin\Release\ScintillaNET.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#SourcePath}\bin\Release\ToolsCore.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#SourcePath}\bin\Release\ToolsCore.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#SourcePath}\bin\Release\cs\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SourcePath}\bin\Release\Licences\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+; config a logs vytvára program až za behu - s ignoreversion by aktualizácia prepísala nastavenia
+Source: "{#MyAppDir}\*"; DestDir: "{app}"; Excludes: "\config,\logs"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -58,5 +51,6 @@ Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"
+; Flags: nowait postinstall skipifsilent
 

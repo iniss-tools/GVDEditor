@@ -13,6 +13,17 @@
 		     (system-aware, nie PerMonitorV2 - zachovaná pôvodná škálovacia logika, pozri MIGRATION_PROGRESS.md). -->
 		<ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
 		<LangVersion>default</LangVersion>
+		<!-- Bez RID kopiruje SDK do runtimes\ aj natívne knižnice pre Android, Linux a macOS
+		     (ťahá ich System.IO.Ports). Pripnutie win-x64 nechá len tie windowsové.
+		     SelfContained=false: RID sám o sebe od .NET 8 self-contained neznamená, ale nech je to zjavné.
+		     AppendRuntimeIdentifierToOutputPath=false: inak by výstup skončil v podpriečinku win-x64
+		     a rozbil by cesty v gvdinstaller.iss aj v cieli CopyELISBridge. -->
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<SelfContained>false</SelfContained>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<!-- Slovenčina je v hlavnej zostave, preložená je len čeština. Ostatné jazyky sú
+		     satelity balíčkov (System.ServiceModel a spol.), ktoré program nikdy nezobrazí. -->
+		<SatelliteResourceLanguages>cs</SatelliteResourceLanguages>
 	</PropertyGroup>
 	<!-- ClickOnce publish nastavenia (pôvodne pre .NET Framework) - zachované pre kontinuitu,
 	     ale `dotnet publish` ClickOnce flow pre SDK-style .NET treba pred použitím overiť samostatne. -->
@@ -62,10 +73,12 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Content Include="gvd.ico" />
-		<Content Include="Licences\GPLv3.txt">
+		<!-- Licencie sú v koreni repozitára, spoločné pre celý projekt.
+		     Link určuje, kam sa skopírujú vo výstupe - bez neho by skončili v jeho koreni. -->
+		<Content Include="..\Licences\GPLv3.txt" Link="Licences\GPLv3.txt">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-		<Content Include="Licences\LICENCE.txt">
+		<Content Include="..\Licences\LICENCE.txt" Link="Licences\LICENCE.txt">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
@@ -136,8 +149,10 @@
 	</Target>
 	<Target Name="CopyELISBridge" AfterTargets="Build">
 		<ItemGroup>
-			<ELISBridgeOutput Include="..\ELISBridge\bin\$(Configuration)\net10.0-windows\ELISBridge.exe" />
-			<ELISBridgeOutput Include="..\ELISBridge\bin\$(Configuration)\net10.0-windows\ELISBridge.pdb" />
+			<!-- nielen .exe: apphost potrebuje vedla seba aj ELISBridge.dll, .runtimeconfig.json
+			     a .deps.json, inak sa nespusti. Glob az za behu targetu, aby zachytil to,
+			     co prave vyrobil BuildELISBridge. -->
+			<ELISBridgeOutput Include="..\ELISBridge\bin\$(Configuration)\net10.0-windows\*.*" />
 		</ItemGroup>
 		<Copy SourceFiles="@(ELISBridgeOutput)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" ContinueOnError="true" />
 	</Target>
