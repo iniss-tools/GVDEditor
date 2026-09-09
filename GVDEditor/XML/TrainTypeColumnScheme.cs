@@ -115,7 +115,7 @@ public record TrainTypeColumnScheme() : IColorScheme
     private static void AssignProperty(ref ColorSetting prop, string propname)
     {
         if (prop is null)
-            InitProperty(propname);
+            prop = InitProperty(propname);
         else
         {
             prop.Name = props[propname].Name;
@@ -124,6 +124,11 @@ public record TrainTypeColumnScheme() : IColorScheme
         }
     }
 
+    // Every property setter below unconditionally assigns its backing field before this constructor
+    // exits (see the "set" accessors above), but Roslyn's per-constructor flow analysis doesn't credit
+    // assignment performed indirectly through a property setter call - it only sees `this` escaping into
+    // a method call and forgets the field's null-state. All backing fields are genuinely never null here.
+#pragma warning disable CS8618
     protected TrainTypeColumnScheme(TrainTypeColumnScheme original)
     {
         Os = original.Os with { };
@@ -132,4 +137,5 @@ public record TrainTypeColumnScheme() : IColorScheme
         Sl = original.Sl with { };
         Font = (Font) original.Font.Clone();
     }
+#pragma warning restore CS8618
 }

@@ -17,17 +17,17 @@ public sealed class TableText : ITable
     /// <summary>
     ///     Vrati alebo nastavi kluc typu textu na tabuliach.
     /// </summary>
-    public string Key { get; set; }
+    public string Key { get; set; } = null!;
 
     /// <summary>
     ///     Vrati alebo nastavi nazov typu textu na tabuliach.
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <summary>
     ///     Vrati alebo nastavi komentar ku danemu typu textu na tabuliach.
     /// </summary>
-    public string Comment { get; set; }
+    public string Comment { get; set; } = null!;
 
     /// <summary>
     ///     Vrati alebo nastavi realizacie tohto typu textu na tabuliach.

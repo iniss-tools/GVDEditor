@@ -13,12 +13,12 @@ public sealed class TableLogical : ITable
     /// <summary>
     ///     Typ pouzitia logickej tabule.
     /// </summary>
-    public TableViewType ViewType { get; set; }
+    public TableViewType ViewType { get; set; } = null!;
 
     /// <summary>
     ///     Dalsie data ohladom pouzitia tejto logickej tabule.
     /// </summary>
-    public string TypeViewFlags { get; set; }
+    public string TypeViewFlags { get; set; } = null!;
 
     /// <summary>
     ///     Zaznamy logickej tabule.
@@ -33,17 +33,17 @@ public sealed class TableLogical : ITable
     /// <summary>
     ///     Nazov logickej tatule.
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <summary>
     ///     Kluc logickej tatule.
     /// </summary>
-    public string Key { get; set; }
+    public string Key { get; set; } = null!;
 
     /// <summary>
     ///     Textovy komentar ku tabuli.
     /// </summary>
-    public string Comment { get; set; }
+    public string Comment { get; set; } = null!;
 
     /// <inheritdoc/>
     public string TypeName => "Logická tabuľa";

@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using AutocompleteMenuNS;
 using ExControls;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
@@ -23,7 +24,7 @@ public partial class FTabTab : Form
 
     internal readonly BindingList<TabTabDoc> documents = new();
 
-    private readonly TableTabTab SelectedTab;
+    private readonly TableTabTab? SelectedTab;
 
     private int lastCaretPos;
     private int maxLineNumberCharLength;
@@ -34,7 +35,7 @@ public partial class FTabTab : Form
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FTabTab"/>.
     /// </summary>
-    public FTabTab(TableTabTab tab = null)
+    public FTabTab(TableTabTab? tab = null)
     {
         InitializeComponent();
 
@@ -75,7 +76,7 @@ public partial class FTabTab : Form
         sc.SetSelectionBackColor(true, GlobData.UsingStyle.ControlsColorScheme.Border.ForeColor);
 
         if (!GlobData.UsingStyle.ControlsDefaultStyle)
-            sc.BorderStyle = BorderStyle.None;
+            sc.BorderStyle = ScintillaNET.BorderStyle.None;
 
         if (GlobData.UsingStyle.DarkScrollBar)
         {
@@ -594,7 +595,7 @@ public partial class FTabTab : Form
 
     internal class TabTabDoc
     {
-        public TableTabTab TabTab { get; set; }
+        public TableTabTab TabTab { get; set; } = null!;
         public Document Document { get; set; }
         public bool Unsaved { get; set; }
 

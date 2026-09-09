@@ -259,6 +259,6 @@
         private ExControls.ExLabel exLabel2;
         private ExControls.ExTextBox tbOldDateLimit;
         private ExControls.ExButton bCheck;
-        private Timer timer;
+        private System.Windows.Forms.Timer timer;
     }
 }

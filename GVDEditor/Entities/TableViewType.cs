@@ -21,7 +21,7 @@ public sealed class TableViewType : Enumeration<TableViewType>
     /// </summary>
     /// <param name="s">kľúč druhu tabule</param>
     /// <returns>druh tabule alebo <see langword="null" /> ak sa nenašla zhoda</returns>
-    public new static TableViewType Parse(string s)
+    public new static TableViewType? Parse(string s)
     {
         return s switch
         {

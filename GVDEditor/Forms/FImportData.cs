@@ -15,10 +15,10 @@ namespace GVDEditor.Forms;
 public partial class FImportData : Form
 {
     private readonly GVDInfo Gvd;
-    private DataTable DataTable;
-    private object[] firstRow;
+    private DataTable? DataTable;
+    private object?[]? firstRow;
 
-    private List<ImportTrainColumnType> selectedColumnTypes;
+    private List<ImportTrainColumnType> selectedColumnTypes = new();
 
 
     /// <summary>
@@ -100,7 +100,7 @@ public partial class FImportData : Form
 
                 for (var j = 0; j < selectedColumnTypes.Count; j++)
                 {
-                    var data = DataTable.Rows[i][j].ToString();
+                    var data = DataTable.Rows[i][j].ToString()!;
 
                     if (selectedColumnTypes[j] == ImportTrainColumnType.Number)
                     {
@@ -210,7 +210,7 @@ public partial class FImportData : Form
                 if (selectedColumnTypes.Contains(ImportTrainColumnType.AllStationsID))
                 {
                     var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.AllStationsID);
-                    var data = DataTable.Rows[i][index].ToString();
+                    var data = DataTable.Rows[i][index].ToString()!;
 
                     var allStations = Station.GetStationsFromIDListString(data);
 
@@ -232,7 +232,7 @@ public partial class FImportData : Form
                     if (selectedColumnTypes.Contains(ImportTrainColumnType.StationsShortID))
                     {
                         var indexS = selectedColumnTypes.IndexOf(ImportTrainColumnType.StationsShortID);
-                        var dataS = DataTable.Rows[i][indexS].ToString();
+                        var dataS = DataTable.Rows[i][indexS].ToString()!;
 
                         var stationsS = Station.GetStationsFromIDListString(dataS);
 
@@ -246,7 +246,7 @@ public partial class FImportData : Form
                     if (selectedColumnTypes.Contains(ImportTrainColumnType.StationsLongID))
                     {
                         var indexL = selectedColumnTypes.IndexOf(ImportTrainColumnType.StationsLongID);
-                        var dataL = DataTable.Rows[i][indexL].ToString();
+                        var dataL = DataTable.Rows[i][indexL].ToString()!;
 
                         var stationsL = Station.GetStationsFromIDListString(dataL);
 
@@ -262,7 +262,7 @@ public partial class FImportData : Form
                 else if (selectedColumnTypes.Contains(ImportTrainColumnType.AllStationsName))
                 {
                     var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.AllStationsName);
-                    var data = DataTable.Rows[i][index].ToString();
+                    var data = DataTable.Rows[i][index].ToString()!;
 
                     List<Station> allStations;
                     try
@@ -294,7 +294,7 @@ public partial class FImportData : Form
                     if (selectedColumnTypes.Contains(ImportTrainColumnType.StationsShortName))
                     {
                         var indexS = selectedColumnTypes.IndexOf(ImportTrainColumnType.StationsShortName);
-                        var dataS = DataTable.Rows[i][indexS].ToString();
+                        var dataS = DataTable.Rows[i][indexS].ToString()!;
 
                         List<Station> stationsS;
                         try
@@ -318,7 +318,7 @@ public partial class FImportData : Form
                     if (selectedColumnTypes.Contains(ImportTrainColumnType.StationsLongName))
                     {
                         var indexL = selectedColumnTypes.IndexOf(ImportTrainColumnType.StationsLongName);
-                        var dataL = DataTable.Rows[i][indexL].ToString();
+                        var dataL = DataTable.Rows[i][indexL].ToString()!;
 
                         var stationsL = Station.GetStationsFromIDListString(dataL);
 
@@ -332,7 +332,7 @@ public partial class FImportData : Form
                     if (selectedColumnTypes.Contains(ImportTrainColumnType.StationsShortName))
                     {
                         var indexS = selectedColumnTypes.IndexOf(ImportTrainColumnType.StationsShortName);
-                        var dataS = DataTable.Rows[i][indexS].ToString();
+                        var dataS = DataTable.Rows[i][indexS].ToString()!;
 
                         var stationsS = Station.GetStationsFromIDListString(dataS);
 
@@ -348,7 +348,7 @@ public partial class FImportData : Form
                 else if (selectedColumnTypes.Contains(ImportTrainColumnType.Routing))
                 {
                     var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.Routing);
-                    var data = DataTable.Rows[i][index].ToString();
+                    var data = DataTable.Rows[i][index].ToString()!;
 
                     if (!Routing.TryParse(data, out var routing))
                         throw new ArgumentException(string.Format(fmtException, data, i + 1, index,
@@ -371,9 +371,9 @@ public partial class FImportData : Form
                 }
 
                 var iPrichod = selectedColumnTypes.IndexOf(ImportTrainColumnType.Prichod);
-                var dataPrichod = DataTable.Rows[i][iPrichod].ToString();
+                var dataPrichod = DataTable.Rows[i][iPrichod].ToString()!;
                 var iOdchod = selectedColumnTypes.IndexOf(ImportTrainColumnType.Odchod);
-                var dataOdchod = DataTable.Rows[i][iOdchod].ToString();
+                var dataOdchod = DataTable.Rows[i][iOdchod].ToString()!;
 
                 if (train.Routing == Routing.Prechadzajuci)
                 {
@@ -408,7 +408,7 @@ public partial class FImportData : Form
                 if (selectedColumnTypes.Contains(ImportTrainColumnType.PlatnostOd))
                 {
                     var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.PlatnostOd);
-                    var data = DataTable.Rows[i][index].ToString();
+                    var data = DataTable.Rows[i][index].ToString()!;
 
                     if (!Utils.TryParseDateAlts(data, out var date))
                         throw new ArgumentException(string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index],
@@ -420,7 +420,7 @@ public partial class FImportData : Form
                 if (selectedColumnTypes.Contains(ImportTrainColumnType.PlatnostDo))
                 {
                     var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.PlatnostDo);
-                    var data = DataTable.Rows[i][index].ToString();
+                    var data = DataTable.Rows[i][index].ToString()!;
 
                     if (!Utils.TryParseDateAlts(data, out var date))
                         throw new ArgumentException(string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index],
@@ -440,7 +440,7 @@ public partial class FImportData : Form
                 if (selectedColumnTypes.Contains(ImportTrainColumnType.DateRemText))
                 {
                     var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.DateRemText);
-                    var data = DataTable.Rows[i][index].ToString();
+                    var data = DataTable.Rows[i][index].ToString()!;
 
                     try
                     {
@@ -460,7 +460,7 @@ public partial class FImportData : Form
                 if (selectedColumnTypes.Contains(ImportTrainColumnType.DateRemBitArray))
                 {
                     var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.DateRemBitArray);
-                    var data = DataTable.Rows[i][index].ToString();
+                    var data = DataTable.Rows[i][index].ToString()!;
 
                     string dateRemText;
                     try
@@ -571,7 +571,7 @@ public partial class FImportData : Form
 
                 for (var i = 0; i < dgvData.Columns.Count; i++)
                 {
-                    var type = ImportTrainColumnType.ParseColumnName((string)firstRow[i]);
+                    var type = ImportTrainColumnType.ParseColumnName((string)firstRow[i]!);
                     dgvData.Columns[i].HeaderText = type.Name;
                     selectedColumnTypes.Add(type);
                 }
@@ -668,7 +668,9 @@ public partial class FImportData : Form
 
     private void FImportData_DragDrop(object sender, DragEventArgs e)
     {
-        var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+        if (e.Data == null) return;
+
+        var files = (string[])e.Data.GetData(DataFormats.FileDrop)!;
         switch (Path.GetExtension(files[0]).ToLower())
         {
             case ".xls":
@@ -697,6 +699,6 @@ public partial class FImportData : Form
 
     private void FImportData_DragEnter(object sender, DragEventArgs e)
     {
-        e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.All : DragDropEffects.None;
+        e.Effect = e.Data != null && e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.All : DragDropEffects.None;
     }
 }

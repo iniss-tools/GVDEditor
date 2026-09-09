@@ -1,5 +1,4 @@
-﻿using ExControls;
-using GVDEditor.Properties;
+﻿using GVDEditor.Properties;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
@@ -9,7 +8,7 @@ namespace GVDEditor.Forms;
 /// </summary>
 public partial class FELISImport : Form
 {
-    internal FMain.SendData ResultOptions;
+    internal FMain.SendData ResultOptions = null!;
 
     private readonly int _existingTrainCount;
 
@@ -34,7 +33,7 @@ public partial class FELISImport : Form
 
     private void bBrowse_Click(object sender, EventArgs e)
     {
-        var dialog = new ExFolderBrowserDialog { Description = "Vyberte priečinok s aplikáciou Cestovné poriadky" };
+        var dialog = new FolderBrowserDialog { Description = "Vyberte priečinok s aplikáciou Cestovné poriadky" };
         if (dialog.ShowDialog(this) == DialogResult.Cancel)
             return;
 

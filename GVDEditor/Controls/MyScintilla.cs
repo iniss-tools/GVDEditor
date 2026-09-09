@@ -18,12 +18,12 @@ public partial class MyScintilla : UserControl
         HScrollBarControl.Scroll += HScrollBarControlOnScroll;
     }
 
-    private void VScrollBarControlOnScroll(object sender, ScrollEventArgs e)
+    private void VScrollBarControlOnScroll(object? sender, ScrollEventArgs e)
     {
         scintilla.FirstVisibleLine = e.NewValue;
     }
 
-    private void HScrollBarControlOnScroll(object sender, ScrollEventArgs e)
+    private void HScrollBarControlOnScroll(object? sender, ScrollEventArgs e)
     {
         scintilla.XOffset = e.NewValue;
     }

@@ -10,7 +10,7 @@ public partial class FWait : Form
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FWait"/>.
     /// </summary>
-    public FWait(string text = null)
+    public FWait(string? text = null)
     {
         InitializeComponent();
         this.ApplyThemeAndFonts();

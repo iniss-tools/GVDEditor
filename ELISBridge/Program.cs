@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Text;
+﻿using System.Text;
 
 namespace Iniss.Elis;
 
@@ -35,7 +33,7 @@ internal static class Program
     {
         Console.OutputEncoding = Encoding.UTF8;
 
-        string app = null, data = null, station = null, output = null, reg = null, client = null;
+        string? app = null, data = null, station = null, output = null, reg = null, client = null;
         var listStations = false;
 
         for (var i = 0; i < args.Length; i++)
@@ -84,7 +82,7 @@ internal static class Program
                 return 0;
             }
 
-            var result = reader.Read(station);
+            var result = reader.Read(station!);
 
             if (string.IsNullOrEmpty(output))
                 WriteToConsole(result);

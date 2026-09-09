@@ -2,6 +2,9 @@
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
+
+[assembly: SupportedOSPlatform("windows7.0")]
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
@@ -37,6 +40,5 @@ using System.Runtime.InteropServices;
 [assembly: NeutralResourcesLanguage("sk")]
 [assembly: AssemblyFileVersion("1.8.0.0")]
 
-[assembly: InternalsVisibleTo("GVDEditorTests")]
 [assembly: InternalsVisibleTo("GVDEditor.Tests")]
 [assembly: InternalsVisibleTo("GVDEditor.Explorables")]

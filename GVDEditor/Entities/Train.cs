@@ -12,7 +12,7 @@ namespace GVDEditor.Entities;
 public sealed record Train
 {
     private NumberVariant _numberVariant;
-    private Routing _routing;
+    private Routing _routing = null!;
 
     /// <summary>
     ///     Identifikator vlaku.
@@ -45,12 +45,12 @@ public sealed record Train
     /// <summary>
     ///     Typ vlaku.
     /// </summary>
-    public TrainType Type { get; set; }
+    public TrainType Type { get; set; } = null!;
 
     /// <summary>
     ///     Nazov vlaku.
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <summary>
     ///     Smerovanie vlaku.
@@ -68,7 +68,7 @@ public sealed record Train
     /// <summary>
     ///     Smerovanie vlaku vo forme obrazku.
     /// </summary>
-    public Bitmap RoutingImage { get; set; }
+    public Bitmap RoutingImage { get; set; } = null!;
 
     /// <summary>
     ///     Stanice zo smeru.
@@ -93,27 +93,27 @@ public sealed record Train
     /// <summary>
     ///     Vychodzia stanica.
     /// </summary>
-    public Station StartingStation { get; set; }
+    public Station? StartingStation { get; set; }
 
     /// <summary>
     ///     Konecna stanica.
     /// </summary>
-    public Station EndingStation { get; set; }
+    public Station? EndingStation { get; set; }
 
     /// <summary>
     ///     Kolaj na stanici v ktorej stoji vlak.
     /// </summary>
-    public Track Track { get; set; }
+    public Track Track { get; set; } = null!;
 
     /// <summary>
     ///     Dopravca vlaku.
     /// </summary>
-    public Operator Operator { get; set; }
+    public Operator Operator { get; set; } = null!;
 
     /// <summary>
     ///     Datumove obmedzenie v textovej forme.
     /// </summary>
-    public string DateLimitText { get; set; }
+    public string DateLimitText { get; set; } = null!;
 
     /// <summary>
     ///     Jazykove mutacie hlasenia vlaku.
@@ -163,12 +163,12 @@ public sealed record Train
     /// <summary>
     ///     Linka na prichode.
     /// </summary>
-    public string LineArrival { get; set; }
+    public string? LineArrival { get; set; }
 
     /// <summary>
     ///     Linka na odchode.
     /// </summary>
-    public string LineDeparture { get; set; }
+    public string? LineDeparture { get; set; }
 
     /// <summary>
     ///     Dodatkove hlasenia vlaku.
@@ -198,7 +198,7 @@ public sealed record Train
     /// <param name="trainType">typ vlaku</param>
     /// <param name="variant">variant vlaku</param>
     /// <returns></returns>
-    public static Train GetTrain(IEnumerable<Train> trains, string trainNum, string trainName, TrainType trainType, int variant) 
+    public static Train? GetTrain(IEnumerable<Train> trains, string trainNum, string trainName, TrainType trainType, int variant)
         => trains.FirstOrDefault(train =>
             train.Number == trainNum && train.Name == trainName && train.Type == trainType && train.Variant == variant);
 
