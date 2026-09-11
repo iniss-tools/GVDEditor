@@ -23,3 +23,6 @@
 - Upravené odkazy na stránky (ZMAZAŤ PôVODNÉ)
 - Male zmeny vo vizuale niektorych ovladacich prvkov
 - Opravena chyba pri vybere skupiny stylov v nastaveniach programu
+
+1.9.0.0
+- Pri ukladaní DirList.TXT sa strácali príznaky priečinka (4. stĺpec) - program ich nenačítaval a zapisoval prázdny stĺpec

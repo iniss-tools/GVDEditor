@@ -42,7 +42,7 @@
 		<CreateWebPageOnPublish>true</CreateWebPageOnPublish>
 		<WebPage>publish.htm</WebPage>
 		<ApplicationRevision>2</ApplicationRevision>
-		<ApplicationVersion>1.8.0.*</ApplicationVersion>
+		<ApplicationVersion>1.9.0.*</ApplicationVersion>
 		<UseApplicationTrust>false</UseApplicationTrust>
 		<CreateDesktopShortcut>true</CreateDesktopShortcut>
 		<ManifestCertificateThumbprint>B97ABAA6C3D241E476C79AE2D5335E05C1E4C140</ManifestCertificateThumbprint>

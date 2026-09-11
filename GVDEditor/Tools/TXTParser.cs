@@ -137,6 +137,7 @@ internal static class TxtParser
 
                 dirList.TablePort = ParseIntOrNull(row.ElementAtOrDefault(1));
                 dirList.ReportPort = ParseIntOrNull(row.ElementAtOrDefault(2));
+                dirList.Flags = row.ElementAtOrDefault(3);
                 dirList.BackColor = TryParseHex(row.ElementAtOrDefault(4));
 
                 dirs.Add(dirList);
@@ -175,7 +176,7 @@ internal static class TxtParser
             else
                 row.Insert(2, "");
 
-            row.Insert(3, "");
+            row.Insert(3, dir.Flags ?? "");
             row.Insert(4, dir.BackColor.HasValue ? dir.BackColor.Value.ToHex() : "");
 
             dirlistF.WriteRow(row);
