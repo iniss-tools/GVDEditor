@@ -130,7 +130,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 388</value>
+    <value>182, 414</value>
   </data>
   <data name="bSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -166,7 +166,7 @@
     <value>NoControl</value>
   </data>
   <data name="bZrusit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>323, 388</value>
+    <value>323, 414</value>
   </data>
   <data name="bZrusit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -215,6 +215,18 @@
   </data>
   <data name="&gt;&gt;boxNizkopodlazny.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;boxPrestup.Name" xml:space="preserve">
+    <value>boxPrestup</value>
+  </data>
+  <data name="&gt;&gt;boxPrestup.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8303.31039, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;boxPrestup.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;boxPrestup.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;boxMiestenkovy.Name" xml:space="preserve">
     <value>boxMiestenkovy</value>
@@ -274,7 +286,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>304, 73</value>
+    <value>304, 75</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -328,13 +340,13 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 50</value>
+    <value>215, 76</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
-    <value>Varianta vlaku</value>
+    <value>Varianta a výluka vlaku</value>
   </data>
   <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
     <value>groupBox5</value>
@@ -559,7 +571,7 @@
     <value>5</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 262</value>
+    <value>6, 288</value>
   </data>
   <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -736,7 +748,7 @@
     <value>11</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 180</value>
+    <value>6, 206</value>
   </data>
   <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -904,7 +916,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 344</value>
+    <value>546, 370</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1042,7 +1054,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 344</value>
+    <value>546, 370</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1177,7 +1189,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 344</value>
+    <value>546, 370</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1336,7 +1348,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 344</value>
+    <value>546, 370</value>
   </data>
   <data name="tabPage5.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1591,7 +1603,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>546, 344</value>
+    <value>546, 370</value>
   </data>
   <data name="tabPage4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1618,7 +1630,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>554, 370</value>
+    <value>554, 396</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1642,7 +1654,7 @@
     <value>NoControl</value>
   </data>
   <data name="boxDialkovy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 45</value>
+    <value>217, 36</value>
   </data>
   <data name="boxDialkovy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
@@ -1675,7 +1687,7 @@
     <value>NoControl</value>
   </data>
   <data name="boxNizkopodlazny.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 45</value>
+    <value>112, 36</value>
   </data>
   <data name="boxNizkopodlazny.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
@@ -1701,6 +1713,39 @@
   <data name="&gt;&gt;boxNizkopodlazny.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="boxPrestup.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="boxPrestup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="boxPrestup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 55</value>
+  </data>
+  <data name="boxPrestup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="boxPrestup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="boxPrestup.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="boxPrestup.Text" xml:space="preserve">
+    <value>Prestup</value>
+  </data>
+  <data name="&gt;&gt;boxPrestup.Name" xml:space="preserve">
+    <value>boxPrestup</value>
+  </data>
+  <data name="&gt;&gt;boxPrestup.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8303.31039, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;boxPrestup.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;boxPrestup.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <data name="boxMiestenkovy.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1708,7 +1753,7 @@
     <value>NoControl</value>
   </data>
   <data name="boxMiestenkovy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 23</value>
+    <value>15, 17</value>
   </data>
   <data name="boxMiestenkovy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1741,7 +1786,7 @@
     <value>NoControl</value>
   </data>
   <data name="boxMimoriadny.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 45</value>
+    <value>15, 36</value>
   </data>
   <data name="boxMimoriadny.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
@@ -1774,7 +1819,7 @@
     <value>NoControl</value>
   </data>
   <data name="boxMedzistatny.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 23</value>
+    <value>112, 17</value>
   </data>
   <data name="boxMedzistatny.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1807,7 +1852,7 @@
     <value>NoControl</value>
   </data>
   <data name="boxLozkovy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 23</value>
+    <value>217, 17</value>
   </data>
   <data name="boxLozkovy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -4027,7 +4072,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>570, 423</value>
+    <value>570, 449</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -4082,5 +4127,116 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="boxMotorovy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 55</value>
+  </data>
+  <data name="boxMotorovy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 17</value>
+  </data>
+  <data name="boxMotorovy.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="boxMotorovy.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="boxMotorovy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="boxMotorovy.Text" xml:space="preserve">
+    <value>Motorový</value>
+  </data>
+  <data name="&gt;&gt;boxMotorovy.Name" xml:space="preserve">
+    <value>boxMotorovy</value>
+  </data>
+  <data name="&gt;&gt;boxMotorovy.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8303.31039, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;boxMotorovy.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;boxMotorovy.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="lVyluka.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 50</value>
+  </data>
+  <data name="lVyluka.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lVyluka.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lVyluka.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lVyluka.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lVyluka.Text" xml:space="preserve">
+    <value>Výluka:</value>
+  </data>
+  <data name="&gt;&gt;lVyluka.Name" xml:space="preserve">
+    <value>lVyluka</value>
+  </data>
+  <data name="&gt;&gt;lVyluka.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lVyluka.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;lVyluka.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="nudVyluka.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 47</value>
+  </data>
+  <data name="nudVyluka.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 20</value>
+  </data>
+  <data name="nudVyluka.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;nudVyluka.Name" xml:space="preserve">
+    <value>nudVyluka</value>
+  </data>
+  <data name="&gt;&gt;nudVyluka.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8303.31039, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudVyluka.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;nudVyluka.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lVylukaHelp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 50</value>
+  </data>
+  <data name="lVylukaHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 13</value>
+  </data>
+  <data name="lVylukaHelp.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lVylukaHelp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lVylukaHelp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lVylukaHelp.Text" xml:space="preserve">
+    <value>(0 = žiadna)</value>
+  </data>
+  <data name="&gt;&gt;lVylukaHelp.Name" xml:space="preserve">
+    <value>lVylukaHelp</value>
+  </data>
+  <data name="&gt;&gt;lVylukaHelp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lVylukaHelp.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;lVylukaHelp.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
 </root>

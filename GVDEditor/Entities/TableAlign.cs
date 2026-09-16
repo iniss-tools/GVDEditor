@@ -16,13 +16,17 @@ public sealed class TableAlign : Enumeration<TableAlign>
     /// </summary>
     /// <param name="s"></param>
     /// <returns><see cref="TableAlign" /> alebo <see langword="null" /> ak sa nenašla žiadna zhoda</returns>
+    /// <remarks>
+    ///     Cisla zodpovedaju sekcii [ALIGN] v ModeTabs.TXT tak, ako ju pozna INISS:
+    ///     0 = vlavo, 1 = vpravo, 2 = doprostred.
+    /// </remarks>
     public static TableAlign? Parse(int s)
     {
         return s switch
         {
             0 => Left,
-            1 => Center,
-            2 => Right,
+            1 => Right,
+            2 => Center,
             _ => null
         };
     }
@@ -35,14 +39,14 @@ public sealed class TableAlign : Enumeration<TableAlign>
     public static readonly TableAlign Left = new(0, "Vľavo");
 
     /// <summary>
-    ///     Zarovnanie na stred
-    /// </summary>
-    public static readonly TableAlign Center = new(1, "V strede");
-
-    /// <summary>
     ///     Zarovnanie vpravo
     /// </summary>
-    public static readonly TableAlign Right = new(2, "Vpravo");
+    public static readonly TableAlign Right = new(1, "Vpravo");
+
+    /// <summary>
+    ///     Zarovnanie na stred
+    /// </summary>
+    public static readonly TableAlign Center = new(2, "V strede");
 
     #endregion
 }

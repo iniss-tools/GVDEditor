@@ -53,13 +53,18 @@ namespace GVDEditor.Forms
             this.groupBox6 = new ExControls.ExGroupBox();
             this.boxDialkovy = new ExControls.ExCheckBox();
             this.boxNizkopodlazny = new ExControls.ExCheckBox();
+            this.boxPrestup = new ExControls.ExCheckBox();
+            this.boxMotorovy = new ExControls.ExCheckBox();
             this.boxMiestenkovy = new ExControls.ExCheckBox();
             this.boxMimoriadny = new ExControls.ExCheckBox();
             this.boxMedzistatny = new ExControls.ExCheckBox();
             this.boxLozkovy = new ExControls.ExCheckBox();
             this.groupBox5 = new ExControls.ExGroupBox();
             this.lVariantHelp = new System.Windows.Forms.Label();
+            this.lVylukaHelp = new System.Windows.Forms.Label();
+            this.lVyluka = new System.Windows.Forms.Label();
             this.nudVarianta = new ExControls.ExNumericUpDown();
+            this.nudVyluka = new ExControls.ExNumericUpDown();
             this.groupBox4 = new ExControls.ExGroupBox();
             this.clbJazyky = new ExControls.ExCheckedListBox();
             this.groupBox3 = new ExControls.ExGroupBox();
@@ -213,12 +218,14 @@ namespace GVDEditor.Forms
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.boxPrestup);
             this.groupBox6.Controls.Add(this.boxDialkovy);
             this.groupBox6.Controls.Add(this.boxNizkopodlazny);
             this.groupBox6.Controls.Add(this.boxMiestenkovy);
             this.groupBox6.Controls.Add(this.boxMimoriadny);
             this.groupBox6.Controls.Add(this.boxMedzistatny);
             this.groupBox6.Controls.Add(this.boxLozkovy);
+            this.groupBox6.Controls.Add(this.boxMotorovy);
             this.groupBox6.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
@@ -231,6 +238,14 @@ namespace GVDEditor.Forms
             this.boxDialkovy.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.boxDialkovy.Name = "boxDialkovy";
             this.boxDialkovy.UseVisualStyleBackColor = true;
+            // 
+            // boxPrestup
+            // 
+            resources.ApplyResources(this.boxPrestup, "boxPrestup");
+            this.boxPrestup.BoxBackColor = System.Drawing.Color.White;
+            this.boxPrestup.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.boxPrestup.Name = "boxPrestup";
+            this.boxPrestup.UseVisualStyleBackColor = true;
             // 
             // boxNizkopodlazny
             // 
@@ -276,6 +291,9 @@ namespace GVDEditor.Forms
             // 
             this.groupBox5.Controls.Add(this.lVariantHelp);
             this.groupBox5.Controls.Add(this.nudVarianta);
+            this.groupBox5.Controls.Add(this.lVyluka);
+            this.groupBox5.Controls.Add(this.lVylukaHelp);
+            this.groupBox5.Controls.Add(this.nudVyluka);
             this.groupBox5.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
@@ -1287,6 +1305,34 @@ namespace GVDEditor.Forms
             resources.ApplyResources(this.label21, "label21");
             this.label21.Name = "label21";
             // 
+            // boxMotorovy
+            // 
+            resources.ApplyResources(this.boxMotorovy, "boxMotorovy");
+            this.boxMotorovy.BoxBackColor = System.Drawing.Color.White;
+            this.boxMotorovy.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.boxMotorovy.UseVisualStyleBackColor = true;
+            this.boxMotorovy.Name = "boxMotorovy";
+            // 
+            // lVyluka
+            // 
+            resources.ApplyResources(this.lVyluka, "lVyluka");
+            this.lVyluka.Name = "lVyluka";
+            // 
+            // lVylukaHelp
+            // 
+            resources.ApplyResources(this.lVylukaHelp, "lVylukaHelp");
+            this.lVylukaHelp.Name = "lVylukaHelp";
+            // 
+            // nudVyluka
+            // 
+            resources.ApplyResources(this.nudVyluka, "nudVyluka");
+            this.nudVyluka.ArrowsColor = System.Drawing.Color.Empty;
+            this.nudVyluka.BorderColor = System.Drawing.Color.Empty;
+            this.nudVyluka.HighlightColor = System.Drawing.Color.Empty;
+            this.nudVyluka.SelectedButtonColor = System.Drawing.Color.Empty;
+            this.nudVyluka.Maximum = new decimal(new int[] { 2147483647, 0, 0, 0});
+            this.nudVyluka.Name = "nudVyluka";
+            // 
             // FEditTrain
             // 
             resources.ApplyResources(this, "$this");
@@ -1385,6 +1431,8 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.BindingSource stanicaBindingSource;
         private ExGroupBox groupBox4;
         private ExCheckBox boxNizkopodlazny;
+        private ExCheckBox boxPrestup;
+        private ExControls.ExCheckBox boxMotorovy;
         private ExCheckBox boxDialkovy;
         private ExCheckBox boxMimoriadny;
         private System.Windows.Forms.Label label8;
@@ -1425,6 +1473,7 @@ namespace GVDEditor.Forms
         private ExControls.ExButton bPlay;
         private ExGroupBox groupBox5;
         private ExNumericUpDown nudVarianta;
+        private ExControls.ExNumericUpDown nudVyluka;
         private DataGridViewExCheckBoxColumn isVDlhomHlaseniDataGridViewCheckBoxColumn2;
         private DataGridViewExCheckBoxColumn isVKratkomHlaseniDataGridViewCheckBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
@@ -1434,6 +1483,8 @@ namespace GVDEditor.Forms
         private ExGroupBox groupBox6;
         private System.Windows.Forms.Label label26;
         private Label lVariantHelp;
+        private System.Windows.Forms.Label lVylukaHelp;
+        private System.Windows.Forms.Label lVyluka;
         private DataGridViewExCheckBoxColumn isVDlhomHlaseniDataGridViewCheckBoxColumn3;
         private DataGridViewExCheckBoxColumn isVKratkomHlaseniDataGridViewCheckBoxColumn3;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn3;

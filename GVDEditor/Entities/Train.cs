@@ -106,6 +106,12 @@ public sealed record Train
     public Track Track { get; set; } = null!;
 
     /// <summary>
+    ///     Kolaj pri odchode, ak sa lisi od kolaje prichodu (tretie pole v Pozice.txt). <see langword="null" /> = rovnaka
+    ///     ako <see cref="Track" />.
+    /// </summary>
+    public Track? TrackDeparture { get; set; }
+
+    /// <summary>
     ///     Dopravca vlaku.
     /// </summary>
     public Operator Operator { get; set; } = null!;
@@ -149,6 +155,30 @@ public sealed record Train
     ///     Ci ma vlak priznak nizkopodlazny.
     /// </summary>
     public bool IsNizkopodlazny { get; set; }
+
+    /// <summary>
+    ///     Ci ma vlak priznak prestupovy (pismeno P v Export3A.TXT). INISS taky vlak v zozname podfarbuje a
+    ///     kontroluje priznak pri spracovani externych sprav o kolaji.
+    /// </summary>
+    public bool IsPrestupovy { get; set; }
+
+    /// <summary>
+    ///     Ci ma vlak priznak O (pismeno O v Export3A.TXT). INISS ho nacita, ale nikde nepouziva; zachovava sa,
+    ///     aby sa pri ulozeni nestratil.
+    /// </summary>
+    public bool IsPriznakO { get; set; }
+
+    /// <summary>
+    ///     Cislo vyluky priradenej vlaku priamo v grafikone (Vyluka.TXT); 0 = bez vyluky. Je to kluc V&lt;N&gt; textu
+    ///     vyluky v logickej zvukovej banke (1 = zabudovana "Obecna vyluka v stanici").
+    /// </summary>
+    public int LockoutNumber { get; set; }
+
+    /// <summary>
+    ///     Ci je vlak uvedeny v Mos.txt - INISS mu pri nacitani zmeni druh na MOs bez ohladu na druh v Export3A.TXT.
+    ///     Druh v <see cref="Type" /> sa tym nemeni, priznak sa len zachovava.
+    /// </summary>
+    public bool IsMotorovy { get; set; }
 
     /// <summary>
     ///     Zaciatok platnosti datumoveho obmedzenia.

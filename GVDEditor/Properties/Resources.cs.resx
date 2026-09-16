@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -561,5 +561,25 @@ Mám ji nuceně vypnout? </value>
   </data>
   <data name="FELISStations_FELISStations_Týchto__0__staníc_z_programu_ELIS_sa_nepodarilo_priradiť_automaticky" xml:space="preserve">
     <value>Těchto {0} stanic z programu ELIS se nepodařilo přiřadit automaticky. Přiřaďte je ke stávajícím stanicím, nebo je vynechejte. Volba se uloží a při dalším importu stejných stanic se již program ptát nebude.</value>
+  </data>
+  <data name="LoadWarnings_Header" xml:space="preserve">
+    <value>Při načítání grafikonu se vyskytlo {0} varování. Data jsou načtena, ale některé položky byly přeskočeny:</value>
+  </data>
+  <data name="LoadWarnings_More" xml:space="preserve">
+    <value>… a dalších {0} varování.</value>
+  </data>
+  <data name="LoadWarnings_Footer" xml:space="preserve">
+    <value>Podrobnosti jsou v souboru logs\info.log. Přeskočené položky se při uložení grafikonu do souborů nezapíší.</value>
+  </data>
+  <data name="FTablePhysical_IDOutOfRange" xml:space="preserve">
+    <value>Adresa tabule {0} je mimo rozsah {1}–{2}, který INISS povoluje pro výrobce {3}. INISS takovou tabuli nezaloží.
+
+Přesto uložit?</value>
+  </data>
+  <data name="FTableLogical_Neplatné_číslo_stanice" xml:space="preserve">
+    <value>Číslo stanice (IDSTATION) musí být celé číslo nebo prázdné.</value>
+  </data>
+  <data name="FEditTrain_Vyluka_Hint" xml:space="preserve">
+    <value>Číslo výluky z Vyluka.TXT: 0 = bez výluky, 1 = zabudovaná „Obecná výluka ve stanici“, vyšší čísla = vlastní texty výluk (klíč V&lt;číslo&gt; v LogZvuk.usr).</value>
   </data>
 </root>

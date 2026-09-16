@@ -21,6 +21,12 @@ public sealed class TableLogical : ITable
     public string TypeViewFlags { get; set; } = null!;
 
     /// <summary>
+    ///     Cislo stanice, na ktoru je logicka tabula viazana (kluc IDSTATION v TLogical.TXT); 0 = neuvedene.
+    ///     INISS hodnotu nacita, GVDEditor ju len zachovava.
+    /// </summary>
+    public int IdStation { get; set; }
+
+    /// <summary>
     ///     Zaznamy logickej tabule.
     /// </summary>
     public List<TableRecord> Records { get; set; }

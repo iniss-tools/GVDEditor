@@ -202,6 +202,8 @@ public partial class FImportData : Form
                         train.IsDialkovy = data.Contains("D");
                         train.IsIbaLozkovy = data.Contains("L");
                         train.IsNizkopodlazny = data.Contains("N");
+                        train.IsPrestupovy = data.Contains("P");
+                        train.IsPriznakO = data.Contains("O");
                     }
                 }
 

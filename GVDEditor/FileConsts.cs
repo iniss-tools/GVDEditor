@@ -28,6 +28,8 @@ internal static class FileConsts
     public const string FILE_VLAKY = "VLAKY.txt";
     public const string FILE_VLASTNIK = "VLASTNIK.txt";
     public const string FILE_VYLUKA = "VYLUKA.txt";
+    public const string FILE_MOS = "MOS.txt";
+    public const string FILE_ZPOZDENI_DAT = "ZPOZDENI.dat";
     public const string FILE_VZORY = "VZORY.txt";
     public const string FILE_ZPOZDENI = "ZPOZDENI.txt";
     public const string FILE_DIRLIST = "DIRLIST.txt";

@@ -122,7 +122,7 @@ public partial class FLocalSettings : Form
             bKatTabDelete.Enabled = false;
         }
 
-        if (GlobData.TabTabs.Count == 0) 
+        if (GlobData.TabTabs.Count == 0)
             bTabTabDelete.Enabled = false;
 
         if (GlobData.TableFonts.Count == 0)
@@ -266,7 +266,7 @@ public partial class FLocalSettings : Form
             DialogResult = DialogResult.None;
             return;
         }
-        
+
         ThisDir.Dir.DirName = dirname;
         ThisDir.Dir.FullPath = fullpath;
 
@@ -478,6 +478,8 @@ public partial class FLocalSettings : Form
             tbKolajFullName.Text = kolaj.FullName;
             tbKolajSound.Text = kolaj.SoundName;
             cbNastupistia.SelectedItem = kolaj.Platform;
+            tbNastupisteKolaj.Text = kolaj.PlatformTrackText;
+            tbKolajAlt.Text = kolaj.AltTrackText;
 
             if (clbKolajTables.Items.Count != 0)
                 for (var i = 0; i < GlobData.TableLogicals.Count; i++)
@@ -517,8 +519,11 @@ public partial class FLocalSettings : Form
                 return;
             }
 
-        foreach (var item in clbKolajTables.CheckedItems) 
+        foreach (var item in clbKolajTables.CheckedItems)
             track.Tables.Add((TableLogical)item);
+
+        track.PlatformTrackText = tbNastupisteKolaj.Text.Trim();
+        track.AltTrackText = tbKolajAlt.Text.Trim();
 
         GlobData.Tracks.Add(track);
 
@@ -547,10 +552,12 @@ public partial class FLocalSettings : Form
             track.Key = tbKolajOznacenie.Text;
             track.FullName = tbKolajFullName.Text;
             track.SoundName = tbKolajSound.Text;
+            track.PlatformTrackText = tbNastupisteKolaj.Text.Trim();
+            track.AltTrackText = tbKolajAlt.Text.Trim();
             track.Platform = (Platform)cbNastupistia.SelectedItem!;
 
             track.Tables.Clear();
-            foreach (var item in clbKolajTables.CheckedItems) 
+            foreach (var item in clbKolajTables.CheckedItems)
                 track.Tables.Add((TableLogical)item);
 
             GlobData.Tracks.ResetBindings();
@@ -660,7 +667,7 @@ public partial class FLocalSettings : Form
 
     private void bLogTabAdd_Click(object sender, EventArgs e)
     {
-        var eltf = new FTableLogical(new TableLogical(), GlobData.TablePhysicals);
+        var eltf = new FTableLogical(new TableLogical(), GlobData.TablePhysicals, thisStation: ThisDir.GVD.ThisStation);
         var result = eltf.ShowDialog();
         if (result == DialogResult.OK)
         {
@@ -676,7 +683,7 @@ public partial class FLocalSettings : Form
     {
         if (listLogTabule.SelectedIndex != -1)
         {
-            var eltf = new FTableLogical(GlobData.TableLogicals[listLogTabule.SelectedIndex], GlobData.TablePhysicals, true);
+            var eltf = new FTableLogical(GlobData.TableLogicals[listLogTabule.SelectedIndex], GlobData.TablePhysicals, true, ThisDir.GVD.ThisStation);
             var result = eltf.ShowDialog();
             if (result == DialogResult.OK) GlobData.TableLogicals.Add(eltf.ThisTable);
         }
@@ -686,7 +693,7 @@ public partial class FLocalSettings : Form
     {
         if (listLogTabule.SelectedIndex != -1)
         {
-            var eltf = new FTableLogical(GlobData.TableLogicals[listLogTabule.SelectedIndex], GlobData.TablePhysicals);
+            var eltf = new FTableLogical(GlobData.TableLogicals[listLogTabule.SelectedIndex], GlobData.TablePhysicals, thisStation: ThisDir.GVD.ThisStation);
             var result = eltf.ShowDialog();
             if (result == DialogResult.OK) GlobData.TableLogicals.ResetBindings();
         }
@@ -706,7 +713,7 @@ public partial class FLocalSettings : Form
                 foreach (var logical in tr.Tables)
                     if (logical == tlog)
                     {
-                        delete = false; 
+                        delete = false;
                         where += $"Koľaj {tr.Name}";
                         break;
                     }
@@ -1176,7 +1183,7 @@ public partial class FLocalSettings : Form
 
     private void FLocalSettings_FormClosed(object sender, FormClosedEventArgs e)
     {
-       EnableEvents(false);
+        EnableEvents(false);
     }
 
     private void EnableEvents(bool enable)

@@ -1414,5 +1414,59 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("Tables_Zadaný_kľúč_tabule_už_existuje", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Pri načítaní grafikonu sa vyskytlo {0} varovaní. Dáta sú načítané, ale niektoré .
+        /// </summary>
+        internal static string LoadWarnings_Header {
+            get {
+                return ResourceManager.GetString("LoadWarnings_Header", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to … a ďalších {0} varovaní..
+        /// </summary>
+        internal static string LoadWarnings_More {
+            get {
+                return ResourceManager.GetString("LoadWarnings_More", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Podrobnosti sú v súbore logs\info.log. Preskočené položky sa pri uložení grafiko.
+        /// </summary>
+        internal static string LoadWarnings_Footer {
+            get {
+                return ResourceManager.GetString("LoadWarnings_Footer", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Adresa tabule {0} je mimo rozsahu {1}–{2}, ktorý INISS povoľuje pre výrobcu {3}..
+        /// </summary>
+        internal static string FTablePhysical_IDOutOfRange {
+            get {
+                return ResourceManager.GetString("FTablePhysical_IDOutOfRange", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo stanice (IDSTATION) musí byť celé číslo alebo prázdne..
+        /// </summary>
+        internal static string FTableLogical_Neplatné_číslo_stanice {
+            get {
+                return ResourceManager.GetString("FTableLogical_Neplatné_číslo_stanice", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo výluky z Vyluka.TXT: 0 = bez výluky, 1 = zabudovaná „Obecná výluka v stani.
+        /// </summary>
+        internal static string FEditTrain_Vyluka_Hint {
+            get {
+                return ResourceManager.GetString("FEditTrain_Vyluka_Hint", resourceCulture);
+            }
+        }
     }
 }

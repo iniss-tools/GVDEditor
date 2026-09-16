@@ -1,5 +1,6 @@
 ﻿using GVDEditor.Entities;
 using GVDEditor.Properties;
+using GVDEditor.Tools;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
@@ -23,13 +24,15 @@ public partial class FTableLogical : Form
     /// <param name="table">Upravujuca tabula.</param>
     /// <param name="tables">Dostupne fyzicke tabule.</param>
     /// <param name="copy">Ci sa jedna o kopiu.</param>
-    public FTableLogical(TableLogical table, IReadOnlyCollection<TablePhysical> tables, bool copy = false)
+    public FTableLogical(TableLogical table, IReadOnlyCollection<TablePhysical> tables, bool copy = false, Station? thisStation = null)
     {
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
         ThisTable = table;
         this.copy = copy;
+
+        FillStations(thisStation);
 
         var vybrane = new HashSet<TablePhysical>();
         var zostava = new List<TableLogicalZostava>();
@@ -65,11 +68,87 @@ public partial class FTableLogical : Form
         tbComment.Text = table.Comment;
 
         nudCountRecords.Value = ThisTable.Records.Count;
+
+        // IDSTATION: 0 = neuvedene (prazdne pole), inak stanica zo zoznamu alebo vlastne cislo
+        if (ThisTable.IdStation != 0)
+        {
+            var match = cbIdStation.Items.Cast<StationItem>().FirstOrDefault(item => item.Id == ThisTable.IdStation);
+            if (match != null)
+                cbIdStation.SelectedItem = match;
+            else
+                cbIdStation.Text = ThisTable.IdStation.ToString();
+        }
+    }
+
+    /// <summary>
+    ///     Polozka ponuky stanic pre IDSTATION - cislo a nazov.
+    /// </summary>
+    private sealed record StationItem(int Id, string Name)
+    {
+        public override string ToString() => $"{Id} – {Name}";
+    }
+
+    /// <summary>
+    ///     Naplni ponuku stanic: najprv stanica tohto grafikonu, potom stanice ostatnych grafikonov z DirList.TXT.
+    ///     Pole je editovatelne, takze sa da zadat aj ine cislo.
+    /// </summary>
+    private void FillStations(Station? thisStation)
+    {
+        var items = new List<StationItem>();
+
+        void AddStation(Station? station)
+        {
+            if (station == null || !int.TryParse(station.ID, out var id) || id == 0 || items.Any(item => item.Id == id))
+                return;
+            items.Add(new StationItem(id, station.Name));
+        }
+
+        AddStation(thisStation);
+        foreach (var dir in GlobData.GVDDirs)
+        {
+            try
+            {
+                AddStation(TxtParser.ReadInfoGVD(dir.FullPath).ThisStation);
+            }
+            catch (Exception)
+            {
+                // priecinok bez citatelneho Grafikon.txt - do ponuky sa nedostane
+            }
+        }
+
+        cbIdStation.Items.Clear();
+        foreach (var item in items)
+            cbIdStation.Items.Add(item);
+    }
+
+    /// <summary>
+    ///     Precita IDSTATION z pola - vybrata polozka alebo rucne zadane cislo (aj v tvare "5613600 – Nazov").
+    /// </summary>
+    /// <returns>Cislo stanice, 0 ak je pole prazdne, alebo <see langword="null" /> pri neplatnom zadani.</returns>
+    private int? ReadIdStation()
+    {
+        if (cbIdStation.SelectedItem is StationItem selected)
+            return selected.Id;
+
+        var text = cbIdStation.Text.Trim();
+        if (text.Length == 0)
+            return 0;
+
+        var digits = new string(text.TakeWhile(char.IsDigit).ToArray());
+        return digits.Length > 0 && int.TryParse(digits, out var id) ? id : null;
     }
 
     private void bSave_Click(object sender, EventArgs e)
     {
         var table = copy ? new TableLogical() : ThisTable;
+
+        var idStation = ReadIdStation();
+        if (idStation == null)
+        {
+            Utils.ShowError(Resources.FTableLogical_Neplatné_číslo_stanice);
+            DialogResult = DialogResult.None;
+            return;
+        }
 
         if (string.IsNullOrEmpty(tbName.Text) || string.IsNullOrEmpty(tbKey.Text))
         {
@@ -109,6 +188,8 @@ public partial class FTableLogical : Form
         table.Records = records;
 
         table.Comment = tbComment.Text;
+
+        table.IdStation = idStation.Value;
 
         if (copy) ThisTable = table;
 

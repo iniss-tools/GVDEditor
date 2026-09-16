@@ -6,9 +6,10 @@
 public sealed record Track()
 {
     /// <summary>
-    ///     Predvolená koľaj - ziadna.
+    ///     Neznama kolaj - prvy riadok Pozice_A.TXT s klucom N. INISS na nu posadi vlak, ktoremu sa kolaj nepodarilo
+    ///     urcit, preto sa do suboru vzdy zapisuje ako prva.
     /// </summary>
-    public static readonly Track None = new("K", "K", "Nedefinovaná", Platform.None, "", "Nedefinovaná");
+    public static readonly Track None = new("N", "-", "Neznáma", Platform.None, "", "");
 
     /// <summary>
     ///     Vytvori novu instanciu triedy typu <see cref="Track"/> so zadanymi vlastnostami.
@@ -57,6 +58,24 @@ public sealed record Track()
     ///     Logicke tabule nachadzajuce sa na tejto kolaji.
     /// </summary>
     public List<TableLogical> Tables { get; } = new();
+
+    /// <summary>
+    ///     Priority logickych tabul podla kluca tabule (Pozice_A.TXT, polia za klucmi tabul). Tabula bez zaznamu ma
+    ///     prioritu 0. INISS hodnotu nacita, GVDEditor ju len zachovava.
+    /// </summary>
+    public Dictionary<string, int> TablePriorities { get; } = new();
+
+    /// <summary>
+    ///     Spojeny text nastupista a kolaje pre tabulove funkcie NastKolejPrijezd/NastKolejOdjezd (FILL_SECTION 30/31)
+    ///     - prve nepovinne pole za prioritami v Pozice_A.TXT.
+    /// </summary>
+    public string PlatformTrackText { get; set; } = "";
+
+    /// <summary>
+    ///     Alternativny text kolaje pre tabulove funkcie KolejAltPrijezd/KolejAltOdjezd (FILL_SECTION 32/33)
+    ///     - druhe nepovinne pole za prioritami v Pozice_A.TXT.
+    /// </summary>
+    public string AltTrackText { get; set; } = "";
 
     /// <summary>
     ///     Odkaz na seba, pouzite pre DataSource.

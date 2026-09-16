@@ -88,6 +88,9 @@ public sealed class TrainType
             case "ICE":
             case "Sl":
             case "SPR":
+            case "Loď":
+            case "Lan":
+            case "TGV":
                 return true;
             default:
                 return false;

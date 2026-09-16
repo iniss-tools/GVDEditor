@@ -31,6 +31,7 @@ public partial class FEditTrain : Form
     private DateTime _lastKeyPressZo, _lastKeyPressDo;
     private string _searchStringZo = "", _searchStringDo = "";
     private bool ignoreSelectedIndexChanged = true;
+    private readonly ToolTip _toolTip = new();
 
     private bool initialization;
 
@@ -189,7 +190,8 @@ public partial class FEditTrain : Form
 
         cbKolajPrichod.SelectedItem = train.Track;
 
-        cbKolajOdchod.SelectedItem = train.Track;
+        // kolaj pri odchode sa lisi len pri vlaku, ktory v stanici prechadza na inu kolaj (tretie pole Pozice.txt)
+        cbKolajOdchod.SelectedItem = train.TrackDeparture ?? train.Track;
 
         tDatumoveObmedzenie.Text = train.DateLimitText;
 
@@ -201,6 +203,10 @@ public partial class FEditTrain : Form
         boxMiestenkovy.Checked = train.IsMiestenkovy;
         boxDialkovy.Checked = train.IsDialkovy;
         boxNizkopodlazny.Checked = train.IsNizkopodlazny;
+        boxPrestup.Checked = train.IsPrestupovy;
+        boxMotorovy.Checked = train.IsMotorovy;
+        nudVyluka.Value = train.LockoutNumber;
+        _toolTip.SetToolTip(nudVyluka, Resources.FEditTrain_Vyluka_Hint);
         boxLozkovy.Checked = train.IsIbaLozkovy;
 
         tbLinkaPrichod.Text = train.LineArrival;
@@ -343,6 +349,8 @@ public partial class FEditTrain : Form
         }
 
         train.Track = (Track)cbKolajPrichod.SelectedItem!;
+        var trackDeparture = cbKolajOdchod.SelectedItem as Track;
+        train.TrackDeparture = trackDeparture != null && !trackDeparture.EqualsKeys(train.Track) ? trackDeparture : null;
 
         train.DateLimitText = tDatumoveObmedzenie.Text;
 
@@ -351,6 +359,9 @@ public partial class FEditTrain : Form
         train.IsMiestenkovy = boxMiestenkovy.Checked;
         train.IsDialkovy = boxDialkovy.Checked;
         train.IsNizkopodlazny = boxNizkopodlazny.Checked;
+        train.IsPrestupovy = boxPrestup.Checked;
+        train.IsMotorovy = boxMotorovy.Checked;
+        train.LockoutNumber = decimal.ToInt32(nudVyluka.Value);
         train.IsIbaLozkovy = boxLozkovy.Checked;
 
         train.StaniceZoSmeru.Clear();
@@ -538,12 +549,8 @@ public partial class FEditTrain : Form
 
     private void cbKolajOdchod_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (!ignoreSelectedIndexChanged)
-        {
-            ignoreSelectedIndexChanged = true;
-            cbKolajPrichod.SelectedIndex = cbKolajOdchod.SelectedIndex;
-            ignoreSelectedIndexChanged = false;
-        }
+        // zmena kolaje odchodu kolaj prichodu nemeni - vlak moze v stanici prejst na inu kolaj;
+        // opacny smer (prichod -> odchod) ostava ako pohodlna predvolba
     }
 
     private void tbCislo_TextChanged(object sender, EventArgs e)
@@ -1209,7 +1216,7 @@ public partial class FEditTrain : Form
         var cheader = dgvDoplnokSet.Columns[0];
         cheader.HeaderText = dt.Columns[0].Caption;
         cheader.SortMode = DataGridViewColumnSortMode.NotSortable;
-        cheader.Width = 120;
+        cheader.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
         for (var i = 1; i < dgvDoplnokSet.Columns.Count; i++)
         {
@@ -1268,7 +1275,7 @@ public partial class FEditTrain : Form
         var cheader = dgvRadenieSet.Columns[0];
         cheader.HeaderText = dt.Columns[cheader.HeaderText]!.Caption;
         cheader.SortMode = DataGridViewColumnSortMode.NotSortable;
-        cheader.Width = 120;
+        cheader.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
         for (var i = 1; i < dgvRadenieSet.Columns.Count; i++)
         {

@@ -80,9 +80,23 @@ public partial class FTablePhysical : Form
                 return;
             }
 
+        var catalog = (TableCatalog)cbCatalogTable.SelectedItem!;
+        var address = decimal.ToInt32(nudID.Value);
+        if (!catalog.Manufacturer.IsAddressValid(address))
+        {
+            var answer = Utils.ShowWarning(
+                string.Format(Resources.FTablePhysical_IDOutOfRange, address, catalog.Manufacturer.MinAddress,
+                    catalog.Manufacturer.MaxAddress, catalog.Manufacturer.Name), MessageBoxButtons.YesNo);
+            if (answer != DialogResult.Yes)
+            {
+                DialogResult = DialogResult.None;
+                return;
+            }
+        }
+
         table.Key = tbKey.Text;
         table.Name = tbName.Text;
-        table.ID = decimal.ToInt32(nudID.Value);
+        table.ID = address;
         table.CommunicationPort = decimal.ToInt32(nudComPort.Value);
         table.RecCount = decimal.ToInt32(nudRecCount.Value);
         table.TableCatalog = (TableCatalog)cbCatalogTable.SelectedItem!;

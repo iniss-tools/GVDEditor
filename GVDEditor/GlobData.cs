@@ -45,6 +45,13 @@ internal static class GlobData
     public static ExBindingList<TableFont> TableFonts { get; set; } = null!;
     public static string TableFontDir { get; set; } = null!;
 
+    /// <summary>
+    ///     Ciselniky z ModeTabs.TXT mimo sekcii MAIN a FONT ([VIEW_MODE], [VIEW_TYPE], [FILL_SECTION], [MANUFACTURER],
+    ///     [ALIGN]...), tak ako boli v subore. Pri ulozeni sa zapisu spat nezmenene, aby sa nestratili polozky,
+    ///     ktore GVDEditor nepozna (napr. FILL_SECTION 30-33 alebo vyrobcovia tabul).
+    /// </summary>
+    public static Dictionary<string, Dictionary<string, string>> ModeTabsSections { get; set; } = new();
+
     public static List<ReportVariant> ReportVariants { get; set; } = null!;
     public static List<ReportType> ReportTypes { get; set; } = null!;
 
@@ -77,6 +84,7 @@ internal static class GlobData
         TableLogicals = new ExBindingList<TableLogical>();
         TableTexts = new ExBindingList<TableText>();
         TableFonts = new ExBindingList<TableFont>();
+        ModeTabsSections = new Dictionary<string, Dictionary<string, string>>();
 
         ReportVariants = new List<ReportVariant>();
         ReportTypes = new List<ReportType>();

@@ -1,5 +1,6 @@
 ﻿using GVDEditor.Entities;
 using GVDEditor.Forms;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Tools;
 
@@ -193,9 +194,55 @@ internal static class Analyzer
             }
         }
 
+        bw.ReportProgress(90);
+
+        //7. Check Zpozdeni.DAT cache - INISS Zpozdeni.TXT necita, kym existuje .DAT (nekontroluje ani cas suborov)
+        var zpozdeniTxt = Utils.CombinePath(GlobData.DataDir, FileConsts.FILE_ZPOZDENI)!;
+        var zpozdeniDat = Utils.CombinePath(GlobData.DataDir, FileConsts.FILE_ZPOZDENI_DAT)!;
+        if (File.Exists(zpozdeniTxt) && File.Exists(zpozdeniDat) &&
+            File.GetLastWriteTimeUtc(zpozdeniTxt) > File.GetLastWriteTimeUtc(zpozdeniDat))
+        {
+            var problem = new StaleZpozdeniCache(zpozdeniDat);
+            problems.Add(problem);
+        }
+
         bw.ReportProgress(100);
 
         return problems;
+    }
+}
+
+internal class StaleZpozdeniCache : IProblem
+{
+    /// <summary>Initializes a new instance of the <see cref="StaleZpozdeniCache" /> class.</summary>
+    public StaleZpozdeniCache(string cachePath)
+    {
+        CachePath = cachePath;
+    }
+
+    private string CachePath { get; }
+
+    public string Text =>
+        $"{FileConsts.FILE_ZPOZDENI} je novší než vyrovnávacia pamäť {FileConsts.FILE_ZPOZDENI_DAT}; INISS bude ďalej používať starý zoznam meškaní.";
+
+    public string Solution => $"Zmazať {FileConsts.FILE_ZPOZDENI_DAT} (INISS si ho pri štarte vytvorí znova)";
+
+    public ProblemType ProblemType => ProblemType.Warning;
+
+    public FixType FixType => FixType.Auto;
+
+    public FixResult FixProblem()
+    {
+        try
+        {
+            File.Delete(CachePath);
+            return FixResult.Done;
+        }
+        catch (Exception e)
+        {
+            Log.Exception(e, $"Nepodarilo sa zmazať {CachePath}");
+            return FixResult.Error;
+        }
     }
 }
 
@@ -207,7 +254,7 @@ internal class UnusedTable : IProblem
         Table = table;
     }
 
-    public ITable Table { get; }
+    private ITable Table { get; }
 
     public string Text
     {
@@ -250,7 +297,7 @@ internal class UnusedTabTab : IProblem
         TabTab = table;
     }
 
-    public TableTabTab TabTab { get; }
+    private TableTabTab TabTab { get; }
 
     public string Text => $"TabTab {TabTab.Key} sa nikde nepoužíva.";
 
@@ -274,7 +321,7 @@ internal class TableWithoutSegments : IProblem
         Table = table;
     }
 
-    public TableCatalog Table { get; }
+    private TableCatalog Table { get; }
 
     public string Text => $"Katalógova tabuľa {Table.Key} nemá nastavené žiadne riadky (segmenty).";
 
@@ -304,11 +351,11 @@ internal class TableTextWithoutRealization : IProblem
         Row = row;
     }
 
-    public TableText TText { get; }
+    private TableText TText { get; }
 
-    public GVDDirectory GVDDir { get; }
+    private GVDDirectory GVDDir { get; }
 
-    public int Row { get; }
+    private int Row { get; }
 
     public string Text => $"Table Text je \"{TText.Key}\" nemá žiadnu realizáciu.";
 
@@ -338,11 +385,11 @@ internal class TableTextWithoutTrains : IProblem
         Row = row;
     }
 
-    public TableText TText { get; }
+    private TableText TText { get; }
 
-    public GVDDirectory GVDDir { get; }
+    private GVDDirectory GVDDir { get; }
 
-    public int Row { get; }
+    private int Row { get; }
 
     public string Text => $"Table Text je \"{TText.Key}\" nemá nastavené žiadne texty vlakov.";
 
@@ -370,7 +417,7 @@ internal class EmptyTabTab : IProblem
         TabTab = tabTab;
     }
 
-    public TableTabTab TabTab { get; }
+    private TableTabTab TabTab { get; }
 
     public string Text => $"TabTab {TabTab.Key} je prázdny";
 
@@ -398,7 +445,7 @@ internal class GVDOutOfValidity : IProblem
         GVDDir = gvdDir;
     }
 
-    public GVDDirectory GVDDir { get; }
+    private GVDDirectory GVDDir { get; }
 
     public string Text => $"Grafikon {GVDDir.PeriodFormatted} je po platnosti";
 

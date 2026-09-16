@@ -172,4 +172,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Úprava logické tabule</value>
   </data>
+  <data name="labelStation.Text" xml:space="preserve">
+    <value>Stanice:</value>
+  </data>
 </root>

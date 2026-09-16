@@ -1,4 +1,4 @@
-using ExControls;
+﻿using ExControls;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using System.Collections;
@@ -289,7 +289,11 @@ internal static class TxtParser
                     ShortName = row[2],
                     QueueName = row[3],
                     Mixer = row.ElementAtOrDefaultStr(4),
-                    SoundCard = row.ElementAtOrDefaultStr(5)
+                    SoundCard = row.ElementAtOrDefaultStr(5),
+                    InputLine = row.ElementAtOrDefaultStr(6),
+                    AmplifierPort = row.ElementAtOrDefaultStr(7),
+                    ExchangeParameter = row.ElementAtOrDefaultStr(8),
+                    Node = row.ElementAtOrDefaultStr(9)
                 };
 
                 audios.Add(audio);
@@ -324,6 +328,17 @@ internal static class TxtParser
             row.Insert(3, a.QueueName);
             row.Insert(4, ParseStringOrDefault(a.Mixer));
             row.Insert(5, ParseStringOrDefault(a.SoundCard));
+
+            // stlpce 7-10 INISS pouziva na mixer, spinanie zosilnovaca a uzol; zapisu sa, len ak su vyplnene,
+            // aby sa bezny riadok s piatimi poliami nepredlzoval
+            var tail = new[]
+            {
+                ParseStringOrDefault(a.InputLine), ParseStringOrDefault(a.AmplifierPort),
+                ParseStringOrDefault(a.ExchangeParameter), ParseStringOrDefault(a.Node)
+            };
+            var last = Array.FindLastIndex(tail, s => !string.IsNullOrEmpty(s));
+            for (var i = 0; i <= last; i++)
+                row.Insert(6 + i, tail[i]);
 
             audioF.WriteRow(row);
         }
@@ -360,9 +375,8 @@ internal static class TxtParser
 
             try
             {
+                // INISS rozsah nekontroluje - berie kazde cele cislo
                 var num = int.Parse(row[0], CultureInfo.InvariantCulture);
-                if (num is < 0 or > 480)
-                    throw new FormatException($"Číslo {num} nie je v intervale X >= 0 a zároveň X <= 480.");
                 meskania.Add(num);
             }
             catch (Exception e)
@@ -377,11 +391,23 @@ internal static class TxtParser
     }
 
     /// <summary>
+    ///     Zmaze vyrovnavaciu pamat Zpozdeni.DAT. INISS textovy Zpozdeni.TXT cita, len ked .DAT chyba alebo je spusteny
+    ///     s parametrom /Import - bez zmazania by dalej pouzival stary zoznam.
+    /// </summary>
+    private static void DeleteZpozdeniCache()
+    {
+        var cache = CombinePath(GlobData.DataDir, FILE_ZPOZDENI_DAT)!;
+        if (File.Exists(cache))
+            File.Delete(cache);
+    }
+
+    /// <summary>
     ///     Zapise predvolene casy meskani.
     /// </summary>
     public static void WriteZpozdeniDefault()
     {
         var file = CombinePath(GlobData.DataDir, FILE_ZPOZDENI)!;
+        DeleteZpozdeniCache();
 
         using var zpozdeniF = new CsvFileWriter(file);
         for (var i = 5; i <= 480; i += 5)
@@ -400,6 +426,7 @@ internal static class TxtParser
     public static void WriteZpozdeni(IEnumerable<int> meskania)
     {
         var file = CombinePath(GlobData.DataDir, FILE_ZPOZDENI)!;
+        DeleteZpozdeniCache();
 
         using var zpozdeniF = new CsvFileWriter(file);
         foreach (var meskanie in meskania)
@@ -455,10 +482,12 @@ internal static class TxtParser
                 {
                     if (TrainType.Validate(s))
                     {
+                        // pri dvoch poliach INISS pouzije ako text na tabuli druhy stlpec (kluc), nie prvy
+                        var key = row.Count > 1 ? row[1] : s;
                         typ = new TrainType(s)
                         {
-                            Key = row.Count > 1 ? row[1] : s,
-                            TextInTable = row.Count > 2 ? row[2] : s
+                            Key = key,
+                            TextInTable = row.Count > 2 ? row[2] : key
                         };
                     }
                     else
@@ -551,8 +580,7 @@ internal static class TxtParser
         var count = int.Parse(categoriF.Get("MAIN", "COUNT_LANGUAGES"));
 
         if (count > maxLangs)
-            throw new ArgumentException(
-                $"V globálnom súbore CATEGORI.TXT sa nachádza viac definícií jazykov ({count}) ako je definované vo zvukovej banke ({maxLangs}).");
+            LoadWarnings.Add($"{file}: COUNT_LANGUAGES ({count}) je väčší než počet jazykov vo zvukovej banke ({maxLangs}); jazyky bez nahrávok sa preskočia.");
 
         for (var i = 1; i <= count; i++)
         {
@@ -563,7 +591,15 @@ internal static class TxtParser
 
             var key = categoriF.Get(area, "KEY").ANSItoUTF();
             var isBasic = ParseIntOrDefault(categoriF.Get(area, "IS_BASIC", false)).ToBool();
-            var name = categoriF.Get(area, "NAME").ANSItoUTF();
+            // NAME je nepovinne - INISS ma pre styri zname kluce zabudovane nazvy
+            var name = categoriF.Get(area, "NAME", false)?.ANSItoUTF() ?? FyzLanguage.BuiltInName(key);
+
+            if (!FyzLanguage.ContainsKey(jazykyFromBank, key))
+            {
+                // INISS neznamy kluc preskoci s varovanim; rovnako sa spravame aj my
+                LoadWarnings.Add($"{file}: jazyk {key} sa nenachádza v zvukovej banke, preskakuje sa.");
+                continue;
+            }
 
             foreach (var language in jazykyFromBank)
                 if (language.Key == key)
@@ -572,9 +608,6 @@ internal static class TxtParser
                     language.IsBasic = isBasic;
                     jazyky.Add(language);
                 }
-
-            if (!FyzLanguage.ContainsKey(jazykyFromBank, key))
-                throw new ArgumentException($"Neplatný kľúč jazyka {key} v súbore {file} (Nenachádza sa v zvukovej banke).");
         }
 
         return jazyky;
@@ -643,7 +676,13 @@ internal static class TxtParser
             var pt = int.Parse(categoriF.Get(area, "PASS_THROUGH")).ToBool();
             var tt = int.Parse(categoriF.Get(area, "TERMINATE_TRAIN")).ToBool();
             var comp = int.Parse(categoriF.Get(area, "COMPLEMENT")).ToBool();
-            var typ = new ReportType(key, name, @char, bt, pt, tt, comp);
+            var typ = new ReportType(key, name, @char, bt, pt, tt, comp)
+            {
+                // INISS ich nacita, hoci nepouzije - zachovavame ich
+                LockoutBase = ParseIntOrDefault(categoriF.Get(area, "LOCKOUT_BASE", false)).ToBool(),
+                LockoutThrough = ParseIntOrDefault(categoriF.Get(area, "LOCKOUT_THROUGH", false)).ToBool(),
+                LockoutTerminate = ParseIntOrDefault(categoriF.Get(area, "LOCKOUT_TERMINATE", false)).ToBool()
+            };
             types.Add(typ);
         }
 
@@ -712,6 +751,12 @@ internal static class TxtParser
             categoriF.Set(area, "PASS_THROUGH", typ.PassThrough.ToNumber());
             categoriF.Set(area, "TERMINATE_TRAIN", typ.TerminateTrain.ToNumber());
             categoriF.Set(area, "COMPLEMENT", typ.Complement.ToNumber());
+            if (typ.LockoutBase || typ.LockoutThrough || typ.LockoutTerminate)
+            {
+                categoriF.Set(area, "LOCKOUT_BASE", typ.LockoutBase.ToNumber());
+                categoriF.Set(area, "LOCKOUT_THROUGH", typ.LockoutThrough.ToNumber());
+                categoriF.Set(area, "LOCKOUT_TERMINATE", typ.LockoutTerminate.ToNumber());
+            }
         }
 
 
@@ -800,6 +845,8 @@ internal static class TxtParser
                     train.IsDialkovy = row[6].Contains("D");
                     train.IsIbaLozkovy = row[6].Contains("L");
                     train.IsNizkopodlazny = row[6].Contains("N");
+                    train.IsPrestupovy = row[6].Contains("P");
+                    train.IsPriznakO = row[6].Contains("O");
                     if (train.Routing == Routing.Vychadzajuci)
                     {
                         train.Departure = ParseTime(row[8]);
@@ -890,7 +937,16 @@ internal static class TxtParser
                     var id = int.Parse(row[0]);
                     var train = vlaky[id - 1];
 
-                    train.DateLimitText = int.Parse(row[1]) == 1 ? row[2] : "ide denne";
+                    // INISS spoji vsetky poznamky ciarkou a medzerou; 0 alebo prazdne = bez obmedzenia
+                    var noteCount = ParseIntOrDefault(row.ElementAtOrDefault(1));
+                    var notes = new List<string>();
+                    for (var k = 0; k < noteCount; k++)
+                    {
+                        var note = row.ElementAtOrDefaultStr(2 + k);
+                        if (!string.IsNullOrWhiteSpace(note))
+                            notes.Add(note);
+                    }
+                    train.DateLimitText = notes.Count > 0 ? string.Join(", ", notes) : "ide denne";
                 }
                 catch (Exception e)
                 {
@@ -1052,12 +1108,20 @@ internal static class TxtParser
                         var vlakTypS = ParseStringOrDefault(row[4 + i * 4]);
                         var varianta = int.Parse(row[5 + i * 4]);
 
+                        // INISS pri chybe v udajoch vlaku zahodi len zvysok riadka - rovnako to len zalogujeme
                         var vlakTyp = GlobData.TrainsTypes.FirstOrDefault(t => t.Key == vlakTypS);
-                        if (vlakTyp == null) throw new FormatException($"Neznámy typ vlaku {vlakTypS}.");
+                        if (vlakTyp == null)
+                        {
+                            LoadWarnings.Add($"{FILE_VLAKY}, riadok {riadok}: neznámy druh vlaku \"{vlakTypS}\" pri vlaku {cisloVlaku}; zvyšok riadka sa preskakuje.");
+                            break;
+                        }
 
                         var vlak = Train.GetTrain(vlaky, cisloVlaku, vlakNazov, vlakTyp, varianta);
                         if (vlak == null)
-                            throw new FormatException($"Neznámy vlak {cisloVlaku} {vlakTyp.Key} (nemá definíciu v EXPORT3A.txt).");
+                        {
+                            LoadWarnings.Add($"{FILE_VLAKY}, riadok {riadok}: vlak {cisloVlaku} {vlakTyp.Key} nemá definíciu v {FILE_EXPORT3A}; zvyšok riadka sa preskakuje.");
+                            break;
+                        }
 
                         var skok = 0;
 
@@ -1112,6 +1176,17 @@ internal static class TxtParser
                         throw new FormatException($"Neexistujúca koľaj {row[1]}");
 
                     train.Track = kolaj;
+
+                    // nepovinne tretie pole: kolaj pri odchode, ak vlak v stanici prechadza na inu kolaj
+                    var odchodKey = row.ElementAtOrDefault(2);
+                    if (!string.IsNullOrEmpty(odchodKey))
+                    {
+                        var kolajOdchod = Track.GetFromID(GlobData.Tracks, odchodKey);
+                        if (kolajOdchod == null)
+                            throw new FormatException($"Neexistujúca koľaj pri odchode {odchodKey}");
+
+                        train.TrackDeparture = kolajOdchod.EqualsKeys(kolaj) ? null : kolajOdchod;
+                    }
                 }
                 catch (Exception e)
                 {
@@ -1147,19 +1222,27 @@ internal static class TxtParser
                     var count = int.Parse(row[1]);
                     if (count != -1)
                         for (var i = 0; i < count; i++)
-                            foreach (var sound in GlobData.Sounds)
+                        {
+                            var code = row[i * 2 + 2];
+                            var sound = GlobData.Sounds.FirstOrDefault(snd =>
+                                snd.Group.Name.EqualsIgnoreCase("DODATKY") && snd.Name.Replace("D", "") == code);
+
+                            if (sound == null)
                             {
-                                var sndName = sound.Name.Replace("D", "");
-                                if (sound.Group.Name.EqualsIgnoreCase("DODATKY") && sndName == row[i * 2 + 2])
-                                    try
-                                    {
-                                        train.Doplnky.Add(Dodatok.NumsToDodatok(sound, row[i * 2 + 3], GlobData.ReportTypes, GlobData.ReportVariants, train.Routing));
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        throw new FormatException($"Doplnok vlaku [{id},{i}]: " + e.Message, e);
-                                    }
+                                // kod bez nahravky v banke: nezahadzujeme ho ticho, ale aspon zalogujeme
+                                LoadWarnings.Add($"{FILE_DOPLNKY}, riadok {rowNumber}: doplnok {code} vlaku {train.Number} nemá zvuk v skupine DODATKY; pri uložení sa stratí.");
+                                continue;
                             }
+
+                            try
+                            {
+                                train.Doplnky.Add(Dodatok.NumsToDodatok(sound, row[i * 2 + 3], GlobData.ReportTypes, GlobData.ReportVariants, train.Routing));
+                            }
+                            catch (Exception e)
+                            {
+                                throw new FormatException($"Doplnok vlaku [{id},{i}]: " + e.Message, e);
+                            }
+                        }
                 }
                 catch (Exception e)
                 {
@@ -1192,14 +1275,24 @@ internal static class TxtParser
                     var id = int.Parse(row[0]);
                     var train = vlaky[id - 1];
 
-                    if (!IsInt(row[1]))
+                    // INISS spracuje vsetky polia za indexom - vlak moze mat viac jazykov naraz
+                    for (var k = 1; k < row.Count; k++)
                     {
-                        var j = FyzLanguage.GetLanguageFromKey(GlobData.Languages, row[1]);
-                        if (j != null) train.Languages.Add(j);
-                    }
-                    else if (IsInt(row[1]) && int.Parse(row[1]) == 1)
-                    {
-                        train.Languages.AddRange(GlobData.Languages);
+                        var field = row[k];
+                        if (string.IsNullOrWhiteSpace(field))
+                            continue;
+
+                        if (!IsInt(field))
+                        {
+                            var j = FyzLanguage.GetLanguageFromKey(GlobData.Languages, field);
+                            if (j != null && !train.Languages.Contains(j)) train.Languages.Add(j);
+                        }
+                        else if (int.Parse(field) == 1)
+                        {
+                            foreach (var lang in GlobData.Languages)
+                                if (!train.Languages.Contains(lang))
+                                    train.Languages.Add(lang);
+                        }
                     }
                 }
                 catch (Exception e)
@@ -1213,6 +1306,80 @@ internal static class TxtParser
         catch (FileNotFoundException)
         {
             // ignored
+        }
+
+        // VYLUKA.TXT - nepovinny; riadok pre kazdy vlak: index,0 alebo index,1,<cislo vyluky>
+        var fileVyluka = CombinePath(path, FILE_VYLUKA)!;
+        if (File.Exists(fileVyluka))
+        {
+            using var vylukaF = new CsvFileReader(fileVyluka);
+            var rowNumber = 1;
+            var row = new CsvRow();
+            while (true)
+            {
+                var status = vylukaF.ReadRow(row);
+                if (LineIsEmpty(status))
+                {
+                    rowNumber++;
+                    continue;
+                }
+
+                if (LineIsEOF(status))
+                    break;
+
+                try
+                {
+                    var id = int.Parse(row[0]);
+                    var train = vlaky[id - 1];
+                    var count = ParseIntOrDefault(row.ElementAtOrDefault(1));
+                    if (count > 1)
+                        throw new FormatException("Vlak nemôže mať v grafikone viac než jednu výluku.");
+
+                    train.LockoutNumber = count == 1 ? int.Parse(row[2]) : 0;
+                }
+                catch (Exception e)
+                {
+                    throw new FormatException(string.Format(FORMAT_EX, FILE_VYLUKA, rowNumber) + e.Message, e);
+                }
+
+                rowNumber++;
+            }
+        }
+
+        // MOS.TXT - nepovinny; indexy vlakov, ktore su motorove (v lubovolnom poradi)
+        var fileMos = CombinePath(path, FILE_MOS)!;
+        if (File.Exists(fileMos))
+        {
+            using var mosF = new CsvFileReader(fileMos);
+            var rowNumber = 1;
+            var row = new CsvRow();
+            while (true)
+            {
+                var status = mosF.ReadRow(row);
+                if (LineIsEmpty(status))
+                {
+                    rowNumber++;
+                    continue;
+                }
+
+                if (LineIsEOF(status))
+                    break;
+
+                try
+                {
+                    var id = int.Parse(row[0]);
+                    if (id < 1 || id > vlaky.Count)
+                        throw new FormatException($"Vlak s indexom {id} neexistuje.");
+
+                    vlaky[id - 1].IsMotorovy = true;
+                }
+                catch (Exception e)
+                {
+                    throw new FormatException(string.Format(FORMAT_EX, FILE_MOS, rowNumber) + e.Message, e);
+                }
+
+                rowNumber++;
+            }
         }
 
         foreach (var vlak in vlaky)
@@ -1245,6 +1412,8 @@ internal static class TxtParser
         var fileForeign = CombinePath(path, FILE_FOREIGN)!;
         var fileDoplnky = CombinePath(path, FILE_DOPLNKY)!;
         var fileStanice = CombinePath(path, FILE_STANICE)!;
+        var fileVyluka = CombinePath(path, FILE_VYLUKA)!;
+        var fileMos = CombinePath(path, FILE_MOS)!;
 
         //EXPORT3A.TXT
         using (var export3aF = new CsvFileWriter(fileEXP3A))
@@ -1270,6 +1439,8 @@ internal static class TxtParser
                 if (train.IsMedzistatny) flags += "M";
                 if (train.IsNizkopodlazny) flags += "N";
                 if (train.IsDialkovy) flags += "D";
+                if (train.IsPrestupovy) flags += "P";
+                if (train.IsPriznakO) flags += "O";
 
                 row.Insert(6, flags);
 
@@ -1504,6 +1675,8 @@ internal static class TxtParser
                 var row = new CsvRow();
                 row.Insert(0, (vlakId + 1).ToString());
                 row.Insert(1, vlak.Track.Key.Quote());
+                if (vlak.TrackDeparture != null && !vlak.TrackDeparture.EqualsKeys(vlak.Track))
+                    row.Insert(2, vlak.TrackDeparture.Key.Quote());
 
                 poziceF.WriteRow(row);
                 vlakId++;
@@ -1572,6 +1745,51 @@ internal static class TxtParser
 
                 foreignF.WriteRow(row);
                 vlakId++;
+            }
+        }
+
+        //VYLUKA.TXT
+        using (var vylukaF = new CsvFileWriter(fileVyluka))
+        {
+            var comments = GenerateComment(path, FILE_VYLUKA, gvd, GlobData.Config.Language);
+            foreach (var comment in comments) vylukaF.WriteComment(comment);
+
+            var vlakId = 0;
+            foreach (var vlak in trains)
+            {
+                var row = new CsvRow();
+                row.Insert(0, (vlakId + 1).ToString());
+                if (vlak.LockoutNumber == 0)
+                {
+                    row.Insert(1, "0");
+                }
+                else
+                {
+                    row.Insert(1, "1");
+                    row.Insert(2, vlak.LockoutNumber.ToString(CultureInfo.InvariantCulture));
+                }
+
+                vylukaF.WriteRow(row);
+                vlakId++;
+            }
+        }
+
+        //MOS.TXT
+        using (var mosF = new CsvFileWriter(fileMos))
+        {
+            var comments = GenerateComment(path, FILE_MOS, gvd, GlobData.Config.Language);
+            foreach (var comment in comments) mosF.WriteComment(comment);
+
+            var vlakId = 0;
+            foreach (var vlak in trains)
+            {
+                vlakId++;
+                if (!vlak.IsMotorovy)
+                    continue;
+
+                var row = new CsvRow();
+                row.Insert(0, vlakId.ToString());
+                mosF.WriteRow(row);
             }
         }
 
@@ -1647,13 +1865,20 @@ internal static class TxtParser
                     Platform = new Platform(row[5], row[3].ANSItoUTF(), row[7])
                 };
 
-                for (var i = 0; i < ParseIntOrDefault(row[8]); i++)
+                var tableCount = ParseIntOrDefault(row[8]);
+                for (var i = 0; i < tableCount; i++)
                     foreach (var table in GlobData.TableLogicals)
                         if (table.Key == row[i + 9])
                         {
                             track.Tables.Add(table);
+                            // za klucmi tabul nasleduje rovnaky pocet priorit
+                            track.TablePriorities[table.Key] = ParseIntOrDefault(row.ElementAtOrDefault(9 + tableCount + i));
                             break;
                         }
+
+                // dve nepovinne textove polia za prioritami (FILL_SECTION 30-33)
+                track.PlatformTrackText = row.ElementAtOrDefaultStr(9 + 2 * tableCount).ANSItoUTF();
+                track.AltTrackText = row.ElementAtOrDefaultStr(10 + 2 * tableCount).ANSItoUTF();
 
                 tracks.Add(track);
             }
@@ -1665,7 +1890,9 @@ internal static class TxtParser
             riadok++;
         }
 
-        if (!tracks.Contains(Track.None)) tracks.Insert(0, Track.None);
+        // riadok s klucom N (neznama kolaj) zastupuje Track.None - v zozname je vzdy prvy a zapisuje sa naspat
+        tracks.RemoveAll(track => track.Key == Track.None.Key);
+        tracks.Insert(0, Track.None);
 
         return tracks;
     }
@@ -1681,10 +1908,12 @@ internal static class TxtParser
 
         using var poziceAF = new CsvFileWriter(file);
 
-        foreach (var track in tracks)
-        {
-            if (track == Track.None) continue;
+        var allTracks = tracks.ToList();
+        if (!allTracks.Contains(Track.None))
+            allTracks.Insert(0, Track.None);
 
+        foreach (var track in allTracks)
+        {
             var tabcount = track.Tables.Count;
             var row = new CsvRow(9 + 2 * tabcount)
             {
@@ -1699,10 +1928,17 @@ internal static class TxtParser
                 track.Tables.Count.ToString()
             };
 
+            // najprv vsetky kluce tabul, az potom vsetky priority
             for (var i = 0; i < tabcount; i++)
+                row.Add(track.Tables[i].Key.Quote().UTFtoANSI());
+            for (var i = 0; i < tabcount; i++)
+                row.Add(track.TablePriorities.TryGetValue(track.Tables[i].Key, out var priority) ? priority.ToString(CultureInfo.InvariantCulture) : "0");
+
+            // nepovinne texty na konci sa zapisu, len ak je aspon jeden vyplneny
+            if (!string.IsNullOrEmpty(track.PlatformTrackText) || !string.IsNullOrEmpty(track.AltTrackText))
             {
-                row.Insert(9 + i, track.Tables[i].Key.Quote().UTFtoANSI());
-                row.Insert(10 + i, "0"); //TODO priority (nie su prioritne) :D
+                row.Add(track.PlatformTrackText.Quote().UTFtoANSI());
+                row.Add(track.AltTrackText.Quote().UTFtoANSI());
             }
 
             poziceAF.WriteRow(row);
@@ -2040,22 +2276,34 @@ internal static class TxtParser
                     var file = row[0];
                     var array = file.Split('/');
 
-                    FyzLanguage? lang = null;
-                    foreach (var jazyk in GlobData.LocalLanguages)
-                        if (jazyk.Key == array[0])
-                            lang = jazyk;
-
-                    if (lang == null) 
-                        throw new FormatException($"Jazyk {array[0]} neexistuje.");
-
                     FyzSound? zvuk = null;
-                    var formated = array[1];
-                    foreach (var sound in sounds)
-                        if (formated.EqualsIgnoreCase(sound.Group.Name) && array[2].EqualsIgnoreCase(sound.Name) && lang == sound.Group.Language)
-                            zvuk = sound;
+                    if (array.Length >= 3)
+                    {
+                        var lang = GlobData.LocalLanguages.FirstOrDefault(jazyk => jazyk.Key == array[0]);
+                        if (lang == null)
+                            throw new FormatException($"Jazyk {array[0]} neexistuje.");
+
+                        zvuk = sounds.FirstOrDefault(sound =>
+                            array[1].EqualsIgnoreCase(sound.Group.Name) && array[2].EqualsIgnoreCase(sound.Name) && lang == sound.Group.Language);
+                    }
+                    else if (array.Length == 2)
+                    {
+                        // starsi dvojdielny zapis bez jazyka (Skupina/meno) - INISS ho pouzije pri kazdom jazyku;
+                        // my ho priradime k zakladnemu jazyku, pripadne k prvemu, kde nahravka existuje
+                        var candidates = sounds.Where(sound =>
+                            array[0].EqualsIgnoreCase(sound.Group.Name) && array[1].EqualsIgnoreCase(sound.Name)).ToList();
+                        zvuk = candidates.FirstOrDefault(sound => sound.Group.Language.IsBasic) ?? candidates.FirstOrDefault();
+                    }
+                    else
+                        throw new FormatException($"Neplatný odkaz na nahrávku \"{file}\".");
 
                     if (zvuk == null)
-                        throw new FormatException($"Zvuk {formated}\\{array[2]} sa v zvukovej banke nenachádza.");
+                    {
+                        // chybajuca nahravka nezhodi cely grafikon - INISS ju tiez len preskoci
+                        LoadWarnings.Add($"{FILE_RAZENI1}, riadok {riadok}: nahrávka {file} sa v zvukovej banke nenachádza, preskakuje sa.");
+                        continue;
+                    }
+
                     radenie.Sounds.Add(zvuk);
                 }
             }
@@ -2074,7 +2322,7 @@ internal static class TxtParser
     ///     Vytvori novy subor, ktory bude sluzit na ukladanie informacii o radeniach vlakov
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
-    public static void WriteRazeni1Default(string path) => File.Create(CombinePath(path, FILE_RAZENI1)!);
+    public static void WriteRazeni1Default(string path) => File.Create(CombinePath(path, FILE_RAZENI1)!).Dispose();
 
     /// <summary>
     ///     Zapise informacie o radeniach vlakov
@@ -2167,7 +2415,7 @@ internal static class TxtParser
     ///     Vytvori novy subor, ktory bude sluzit na ukladanie informacii o radeniach vlakov
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
-    public static void WriteRazeniDefault(string path) => File.Create(CombinePath(path, FILE_RAZENI)!);
+    public static void WriteRazeniDefault(string path) => File.Create(CombinePath(path, FILE_RAZENI)!).Dispose();
 
     #endregion
 
@@ -2408,6 +2656,7 @@ internal static class TxtParser
             tlLogical.Name = tlogicF.Get(area, "NAME").ANSItoUTF();
             tlLogical.Key = tlLogical.CheckKey(tlogicF.Get(area, "KEY").ANSItoUTF(), tlLogical.Name, tlogicals);
             tlLogical.TypeViewFlags = tlogicF.Get(area, "TYPE_VIEW_FLAGS").ANSItoUTF();
+            tlLogical.IdStation = ParseIntOrDefault(tlogicF.Get(area, "IDSTATION", false));
             var viewtype = tlogicF.Get(area, "TYPE_VIEW").ANSItoUTF();
             var parsedViewType = TableViewType.Parse(viewtype);
             if (parsedViewType == null)
@@ -2633,6 +2882,8 @@ internal static class TxtParser
             tlogicF.Set(area, "NAME", tlLogical.Name, WriteType.WriteStringANSI);
             tlogicF.Set(area, "TYPE_VIEW", tlLogical.ViewType.Key, WriteType.WriteStringANSI);
             tlogicF.Set(area, "TYPE_VIEW_FLAGS", tlLogical.TypeViewFlags, WriteType.WriteStringANSINullable);
+            if (tlLogical.IdStation != 0)
+                tlogicF.Set(area, "IDSTATION", tlLogical.IdStation);
             tlogicF.Set(area, "COUNT_REC", tlLogical.Records.Count);
 
             for (var j = 0; j < tlLogical.Records.Count; j++)
@@ -2811,7 +3062,8 @@ internal static class TxtParser
 
         const string area = "FONT";
 
-        var count = int.Parse(modetabsF.Get(area, "COUNT"), CultureInfo.InvariantCulture);
+        // INISS sekciu [FONT] necita vobec, preto chybajuci COUNT nie je chyba
+        var count = ParseIntOrDefault(modetabsF.Get(area, "COUNT", false));
         GlobData.TableFontDir = ParseStringOrDefault(modetabsF.Get(area, "PATH", false));
 
         for (var i = 0; i < count; i++)
@@ -2846,7 +3098,43 @@ internal static class TxtParser
             fonts.Add(font);
         }
 
+        // ostatne sekcie (ciselniky) si odlozime tak, ako su v subore - INISS ma ich hodnoty zabudovane a subor mu
+        // len dava mena, takze ich GVDEditor nesmie nahradzat vlastnym zoznamom
+        GlobData.ModeTabsSections = new Dictionary<string, Dictionary<string, string>>();
+        foreach (var otherArea in modetabsF.GetAreas())
+        {
+            if (string.IsNullOrWhiteSpace(otherArea) || otherArea is "MAIN" or "FONT")
+                continue;
+
+            GlobData.ModeTabsSections[otherArea] = modetabsF.Get(otherArea)!
+                .ToDictionary(pair => pair.Key, pair => pair.Value.ANSItoUTF());
+        }
+
         return fonts;
+    }
+
+    /// <summary>
+    ///     Zapise sekciu ciselnika do ModeTabs.TXT: ak bola v povodnom subore, zapise ju nezmenenu, inak z predvolenych
+    ///     hodnot GVDEditora.
+    /// </summary>
+    /// <param name="modetabsF">Zapisovany subor.</param>
+    /// <param name="area">Nazov sekcie.</param>
+    /// <param name="writeDefaults">Zapis predvolenych hodnot, ak sekcia v povodnom subore nebola.</param>
+    private static void WriteModeTabsSection(TxtPropsAreasFields modetabsF, string area, Action writeDefaults)
+    {
+        if (GlobData.ModeTabsSections.TryGetValue(area, out var fields) && fields.Count > 0)
+        {
+            foreach (var pair in fields)
+            {
+                // COUNT a IDX_nnn su cisla, KEY_nnn a NAME_nnn retazce v uvodzovkach
+                var isNumber = pair.Key == "COUNT" || pair.Key.StartsWith("IDX_", StringComparison.Ordinal);
+                modetabsF.Set(area, pair.Key, pair.Value, isNumber ? WriteType.WriteNumber : WriteType.WriteStringANSI);
+            }
+
+            return;
+        }
+
+        writeDefaults();
     }
 
     /// <summary>
@@ -2870,49 +3158,54 @@ internal static class TxtParser
 
         modetabsF.Set("MAIN", "BREAK_CHAR", "#", WriteType.WriteStringANSI);
 
-        var modes = TableViewMode.GetValues();
-        modetabsF.Set(areaMode, "COUNT", modes.Count);
-        for (var i = 0; i < modes.Count; i++)
+        WriteModeTabsSection(modetabsF, areaMode, () =>
         {
-            var mode = modes[i];
-            var ti = i + 1;
+            var modes = TableViewMode.GetValues();
+            modetabsF.Set(areaMode, "COUNT", modes.Count);
+            for (var i = 0; i < modes.Count; i++)
+            {
+                var ti = i + 1;
+                modetabsF.Set(areaMode, $"KEY_{ti.PadZeros()}", modes[i].Key, WriteType.WriteStringANSI);
+                modetabsF.Set(areaMode, $"NAME_{ti.PadZeros()}", modes[i].Name, WriteType.WriteStringANSI);
+            }
+        });
 
-            modetabsF.Set(areaMode, $"KEY_{ti.PadZeros()}", mode.Key, WriteType.WriteStringANSI);
-            modetabsF.Set(areaMode, $"NAME_{ti.PadZeros()}", mode.Name, WriteType.WriteStringANSI);
-        }
-
-        var views = TableViewType.GetValues();
-        modetabsF.Set(areatType, "COUNT", views.Count);
-        for (var i = 0; i < views.Count; i++)
+        WriteModeTabsSection(modetabsF, areatType, () =>
         {
-            var type = views[i];
-            var ti = i + 1;
+            var views = TableViewType.GetValues();
+            modetabsF.Set(areatType, "COUNT", views.Count);
+            for (var i = 0; i < views.Count; i++)
+            {
+                var ti = i + 1;
+                modetabsF.Set(areatType, $"KEY_{ti.PadZeros()}", views[i].Key, WriteType.WriteStringANSI);
+                modetabsF.Set(areatType, $"NAME_{ti.PadZeros()}", views[i].Name, WriteType.WriteStringANSI);
+            }
+        });
 
-            modetabsF.Set(areatType, $"KEY_{ti.PadZeros()}", type.Key, WriteType.WriteStringANSI);
-            modetabsF.Set(areatType, $"NAME_{ti.PadZeros()}", type.Name, WriteType.WriteStringANSI);
-        }
-
-        var sections = TableFillSection.GetValues();
-        modetabsF.Set(areaFillSection, "COUNT", sections.Count);
-        for (var i = 0; i < sections.Count; i++)
+        WriteModeTabsSection(modetabsF, areaFillSection, () =>
         {
-            var fill = sections[i];
-            var ti = i + 1;
+            var sections = TableFillSection.GetValues();
+            modetabsF.Set(areaFillSection, "COUNT", sections.Count);
+            for (var i = 0; i < sections.Count; i++)
+            {
+                var ti = i + 1;
+                modetabsF.Set(areaFillSection, $"IDX_{ti.PadZeros()}", sections[i].Id);
+                modetabsF.Set(areaFillSection, $"NAME_{ti.PadZeros()}", sections[i].Name, WriteType.WriteStringANSI);
+            }
+        });
 
-            modetabsF.Set(areaFillSection, $"IDX_{ti.PadZeros()}", fill.Id);
-            modetabsF.Set(areaFillSection, $"NAME_{ti.PadZeros()}", fill.Name, WriteType.WriteStringANSI);
-        }
-
-        var manufactures = TableManufacturer.GetValues();
-        modetabsF.Set(areaManufacturer, "COUNT", manufactures.Count);
-        for (var i = 0; i < manufactures.Count; i++)
+        WriteModeTabsSection(modetabsF, areaManufacturer, () =>
         {
-            var manufacturer = manufactures[i];
-            var ti = i + 1;
-
-            modetabsF.Set(areaManufacturer, $"KEY_{ti.PadZeros()}", manufacturer.Name, WriteType.WriteStringANSI);
-            modetabsF.Set(areaManufacturer, $"NAME_{ti.PadZeros()}", manufacturer.Name, WriteType.WriteStringANSI);
-        }
+            // do noveho suboru idu len vyrobcovia, ktorych pozna INISS
+            var manufactures = TableManufacturer.GetValues().Where(manufacturer => manufacturer.IsKnownToIniss).ToList();
+            modetabsF.Set(areaManufacturer, "COUNT", manufactures.Count);
+            for (var i = 0; i < manufactures.Count; i++)
+            {
+                var ti = i + 1;
+                modetabsF.Set(areaManufacturer, $"KEY_{ti.PadZeros()}", manufactures[i].Name, WriteType.WriteStringANSI);
+                modetabsF.Set(areaManufacturer, $"NAME_{ti.PadZeros()}", manufactures[i].Description, WriteType.WriteStringANSI);
+            }
+        });
 
         modetabsF.Set(areaFont, "COUNT", fonts.Count);
         if (!string.IsNullOrEmpty(fontdir)) 
@@ -2925,7 +3218,7 @@ internal static class TxtParser
             modetabsF.Set(areaFont, $"IDX_{ti.PadZeros()}", font.FontID);
             modetabsF.Set(areaFont, $"NAME_{ti.PadZeros()}", font.Name, WriteType.WriteStringANSI);
             if (!string.IsNullOrEmpty(font.FileName))
-                modetabsF.Set(areaFont, $"FILE_NAME_{ti.PadZeros()}", font.Name, WriteType.WriteStringANSI);
+                modetabsF.Set(areaFont, $"FILE_NAME_{ti.PadZeros()}", font.FileName, WriteType.WriteStringANSI);
 
             if (font.Type != null) 
                 modetabsF.Set(areaFont, $"BOLD_FACE_{ti.PadZeros()}", font.Type.Key, WriteType.WriteStringANSI);
@@ -2938,23 +3231,29 @@ internal static class TxtParser
 
             modetabsF.Set(areaFont, $"PROPORTIONAL_{ti.PadZeros()}", font.IsProportional.ToNumber());
             modetabsF.Set(areaFont, $"IS_DIA_{ti.PadZeros()}", font.IsDia.ToNumber());
-            modetabsF.Set(areaFont, $"IS_LOWER{ti.PadZeros()}", font.IsLower.ToNumber());
+            modetabsF.Set(areaFont, $"IS_LOWER_{ti.PadZeros()}", font.IsLower.ToNumber());
             modetabsF.Set(areaFont, $"IS_UPPER_{ti.PadZeros()}", font.IsUpper.ToNumber());
             modetabsF.Set(areaFont, $"IS_NUMBER_{ti.PadZeros()}", font.IsNumber.ToNumber());
             modetabsF.Set(areaFont, $"IS_SPEC_CHAR_{ti.PadZeros()}", font.IsSpecChars.ToNumber());
-            modetabsF.Set(areaFont, $"IS_SPECIAL_ASSIGNMENT_{(i + 1).PadZeros()}", font.IsSpecAssigment.ToNumber());
+            modetabsF.Set(areaFont, $"IS_SPECIAL_ASSIGNMENT_{ti.PadZeros()}", font.IsSpecAssigment.ToNumber());
         }
 
-        var aligns = TableAlign.GetValues();
-        modetabsF.Set(areaAlign, "COUNT", aligns.Count);
-        for (var i = 0; i < aligns.Count; i++)
+        WriteModeTabsSection(modetabsF, areaAlign, () =>
         {
-            var align = aligns[i];
-            var ti = i + 1;
+            var aligns = TableAlign.GetValues();
+            modetabsF.Set(areaAlign, "COUNT", aligns.Count);
+            for (var i = 0; i < aligns.Count; i++)
+            {
+                var ti = i + 1;
+                modetabsF.Set(areaAlign, $"IDX_{ti.PadZeros()}", aligns[i].Id);
+                modetabsF.Set(areaAlign, $"NAME_{ti.PadZeros()}", aligns[i].Name, WriteType.WriteStringANSI);
+            }
+        });
 
-            modetabsF.Set(areaAlign, $"IDX_{ti.PadZeros()}", align.Id);
-            modetabsF.Set(areaAlign, $"NAME_{ti.PadZeros()}", align.Name, WriteType.WriteStringANSI);
-        }
+        // pripadne dalsie sekcie, ktore GVDEditor nepozna, prejdu nezmenene
+        foreach (var otherArea in GlobData.ModeTabsSections.Keys)
+            if (otherArea is not (areaMode or areatType or areaFillSection or areaManufacturer or areaAlign))
+                WriteModeTabsSection(modetabsF, otherArea, () => { });
 
         modetabsF.Save();
     }

@@ -31,341 +31,431 @@ namespace GVDEditor.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FTableLogical));
-            this.bSave = new ExControls.ExButton();
-            this.bStorno = new ExControls.ExButton();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLogicalZostavaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox4 = new ExControls.ExGroupBox();
-            this.tbComment = new ExControls.ExTextBox();
-            this.gboxSimple = new ExControls.ExGroupBox();
-            this.dgvZostava = new System.Windows.Forms.DataGridView();
-            this.startRowDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endRowDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bRemoveTab = new ExControls.ExButton();
-            this.bAddTab = new ExControls.ExButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.listFyzTab = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new ExControls.ExGroupBox();
-            this.nudCountRecords = new ExControls.ExNumericUpDown();
-            this.cbTypeView = new ExControls.ExComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbKey = new ExControls.ExTextBox();
-            this.tbName = new ExControls.ExTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tablePhysicalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.tableLogicalZostavaBindingSource)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            this.gboxSimple.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvZostava)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCountRecords)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablePhysicalBindingSource)).BeginInit();
-            this.SuspendLayout();
+            components = new Container();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(FTableLogical));
+            ExComboBoxStyle exComboBoxStyle1 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle2 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle3 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle4 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle5 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle6 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle7 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle8 = new ExComboBoxStyle();
+            bSave = new ExButton();
+            bStorno = new ExButton();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            tableLogicalZostavaBindingSource = new BindingSource(components);
+            groupBox4 = new ExGroupBox();
+            tbComment = new ExTextBox();
+            gboxSimple = new ExGroupBox();
+            dgvZostava = new DataGridView();
+            startRowDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            endRowDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            tableDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            bRemoveTab = new ExButton();
+            bAddTab = new ExButton();
+            label5 = new Label();
+            label4 = new Label();
+            listFyzTab = new ListBox();
+            groupBox1 = new ExGroupBox();
+            nudCountRecords = new ExNumericUpDown();
+            cbTypeView = new ExComboBox();
+            label7 = new Label();
+            tbKey = new ExTextBox();
+            tbName = new ExTextBox();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            labelStation = new Label();
+            cbIdStation = new ExComboBox();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            tablePhysicalBindingSource = new BindingSource(components);
+            ((ISupportInitialize)tableLogicalZostavaBindingSource).BeginInit();
+            groupBox4.SuspendLayout();
+            gboxSimple.SuspendLayout();
+            ((ISupportInitialize)dgvZostava).BeginInit();
+            groupBox1.SuspendLayout();
+            ((ISupportInitialize)nudCountRecords).BeginInit();
+            ((ISupportInitialize)tablePhysicalBindingSource).BeginInit();
+            SuspendLayout();
             // 
             // bSave
             // 
-            resources.ApplyResources(this.bSave, "bSave");
-            this.bSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bSave.Name = "bSave";
-            this.bSave.UseVisualStyleBackColor = true;
-            this.bSave.Click += new System.EventHandler(this.bSave_Click);
+            resources.ApplyResources(bSave, "bSave");
+            bSave.DefaultStyle = true;
+            bSave.DialogResult = DialogResult.Cancel;
+            bSave.Name = "bSave";
+            bSave.UseVisualStyleBackColor = true;
+            bSave.Click += bSave_Click;
             // 
             // bStorno
             // 
-            resources.ApplyResources(this.bStorno, "bStorno");
-            this.bStorno.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bStorno.Name = "bStorno";
-            this.bStorno.UseVisualStyleBackColor = true;
-            this.bStorno.Click += new System.EventHandler(this.bStorno_Click);
+            resources.ApplyResources(bStorno, "bStorno");
+            bStorno.DefaultStyle = true;
+            bStorno.DialogResult = DialogResult.Cancel;
+            bStorno.Name = "bStorno";
+            bStorno.UseVisualStyleBackColor = true;
+            bStorno.Click += bStorno_Click;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Table";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.DataPropertyName = "Table";
+            resources.ApplyResources(dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // tableLogicalZostavaBindingSource
             // 
-            this.tableLogicalZostavaBindingSource.DataSource = typeof(GVDEditor.Forms.FTableLogical.TableLogicalZostava);
+            tableLogicalZostavaBindingSource.DataSource = typeof(TableLogicalZostava);
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.tbComment);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
+            groupBox4.BorderColor = Color.LightGray;
+            groupBox4.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            groupBox4.BorderThickness = 1;
+            groupBox4.Controls.Add(tbComment);
+            groupBox4.DefaultStyle = true;
+            groupBox4.DisabledForeColor = SystemColors.GrayText;
+            resources.ApplyResources(groupBox4, "groupBox4");
+            groupBox4.Name = "groupBox4";
+            groupBox4.TabStop = false;
             // 
             // tbComment
             // 
-            this.tbComment.AcceptsReturn = true;
-            this.tbComment.AcceptsTab = true;
-            this.tbComment.BorderColor = System.Drawing.Color.DimGray;
-            this.tbComment.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.tbComment.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tbComment.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            resources.ApplyResources(this.tbComment, "tbComment");
-            this.tbComment.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.tbComment.HintForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbComment.HintText = null;
-            this.tbComment.Name = "tbComment";
+            tbComment.AcceptsReturn = true;
+            tbComment.AcceptsTab = true;
+            tbComment.BorderColor = Color.DimGray;
+            tbComment.BorderThickness = 1;
+            tbComment.DefaultStyle = true;
+            tbComment.DisabledBackColor = SystemColors.Control;
+            tbComment.DisabledBorderColor = SystemColors.InactiveBorder;
+            tbComment.DisabledForeColor = SystemColors.GrayText;
+            resources.ApplyResources(tbComment, "tbComment");
+            tbComment.HighlightColor = SystemColors.Highlight;
+            tbComment.HintForeColor = SystemColors.GrayText;
+            tbComment.HintText = null;
+            tbComment.Name = "tbComment";
             // 
             // gboxSimple
             // 
-            this.gboxSimple.Controls.Add(this.dgvZostava);
-            this.gboxSimple.Controls.Add(this.bRemoveTab);
-            this.gboxSimple.Controls.Add(this.bAddTab);
-            this.gboxSimple.Controls.Add(this.label5);
-            this.gboxSimple.Controls.Add(this.label4);
-            this.gboxSimple.Controls.Add(this.listFyzTab);
-            resources.ApplyResources(this.gboxSimple, "gboxSimple");
-            this.gboxSimple.Name = "gboxSimple";
-            this.gboxSimple.TabStop = false;
+            gboxSimple.BorderColor = Color.LightGray;
+            gboxSimple.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            gboxSimple.BorderThickness = 1;
+            gboxSimple.Controls.Add(dgvZostava);
+            gboxSimple.Controls.Add(bRemoveTab);
+            gboxSimple.Controls.Add(bAddTab);
+            gboxSimple.Controls.Add(label5);
+            gboxSimple.Controls.Add(label4);
+            gboxSimple.Controls.Add(listFyzTab);
+            gboxSimple.DefaultStyle = true;
+            gboxSimple.DisabledForeColor = SystemColors.GrayText;
+            resources.ApplyResources(gboxSimple, "gboxSimple");
+            gboxSimple.Name = "gboxSimple";
+            gboxSimple.TabStop = false;
             // 
             // dgvZostava
             // 
-            this.dgvZostava.AllowUserToAddRows = false;
-            this.dgvZostava.AllowUserToDeleteRows = false;
-            this.dgvZostava.AllowUserToResizeColumns = false;
-            this.dgvZostava.AllowUserToResizeRows = false;
-            this.dgvZostava.AutoGenerateColumns = false;
-            this.dgvZostava.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvZostava.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvZostava.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.startRowDataGridViewTextBoxColumn,
-            this.endRowDataGridViewTextBoxColumn,
-            this.tableDataGridViewTextBoxColumn});
-            this.dgvZostava.DataSource = this.tableLogicalZostavaBindingSource;
-            resources.ApplyResources(this.dgvZostava, "dgvZostava");
-            this.dgvZostava.Name = "dgvZostava";
-            this.dgvZostava.RowHeadersVisible = false;
-            this.dgvZostava.RowTemplate.Height = 24;
-            this.dgvZostava.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvZostava.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvZostava_CellValidating);
+            dgvZostava.AllowUserToAddRows = false;
+            dgvZostava.AllowUserToDeleteRows = false;
+            dgvZostava.AllowUserToResizeColumns = false;
+            dgvZostava.AllowUserToResizeRows = false;
+            dgvZostava.AutoGenerateColumns = false;
+            dgvZostava.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvZostava.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvZostava.Columns.AddRange(new DataGridViewColumn[] { startRowDataGridViewTextBoxColumn, endRowDataGridViewTextBoxColumn, tableDataGridViewTextBoxColumn });
+            dgvZostava.DataSource = tableLogicalZostavaBindingSource;
+            resources.ApplyResources(dgvZostava, "dgvZostava");
+            dgvZostava.Name = "dgvZostava";
+            dgvZostava.RowHeadersVisible = false;
+            dgvZostava.RowTemplate.Height = 24;
+            dgvZostava.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvZostava.CellValidating += dgvZostava_CellValidating;
             // 
             // startRowDataGridViewTextBoxColumn
             // 
-            this.startRowDataGridViewTextBoxColumn.DataPropertyName = "StartRow";
-            resources.ApplyResources(this.startRowDataGridViewTextBoxColumn, "startRowDataGridViewTextBoxColumn");
-            this.startRowDataGridViewTextBoxColumn.Name = "startRowDataGridViewTextBoxColumn";
+            startRowDataGridViewTextBoxColumn.DataPropertyName = "StartRow";
+            resources.ApplyResources(startRowDataGridViewTextBoxColumn, "startRowDataGridViewTextBoxColumn");
+            startRowDataGridViewTextBoxColumn.Name = "startRowDataGridViewTextBoxColumn";
             // 
             // endRowDataGridViewTextBoxColumn
             // 
-            this.endRowDataGridViewTextBoxColumn.DataPropertyName = "EndRow";
-            resources.ApplyResources(this.endRowDataGridViewTextBoxColumn, "endRowDataGridViewTextBoxColumn");
-            this.endRowDataGridViewTextBoxColumn.Name = "endRowDataGridViewTextBoxColumn";
+            endRowDataGridViewTextBoxColumn.DataPropertyName = "EndRow";
+            resources.ApplyResources(endRowDataGridViewTextBoxColumn, "endRowDataGridViewTextBoxColumn");
+            endRowDataGridViewTextBoxColumn.Name = "endRowDataGridViewTextBoxColumn";
             // 
             // tableDataGridViewTextBoxColumn
             // 
-            this.tableDataGridViewTextBoxColumn.DataPropertyName = "Table";
-            resources.ApplyResources(this.tableDataGridViewTextBoxColumn, "tableDataGridViewTextBoxColumn");
-            this.tableDataGridViewTextBoxColumn.Name = "tableDataGridViewTextBoxColumn";
-            this.tableDataGridViewTextBoxColumn.ReadOnly = true;
+            tableDataGridViewTextBoxColumn.DataPropertyName = "Table";
+            resources.ApplyResources(tableDataGridViewTextBoxColumn, "tableDataGridViewTextBoxColumn");
+            tableDataGridViewTextBoxColumn.Name = "tableDataGridViewTextBoxColumn";
+            tableDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bRemoveTab
             // 
-            resources.ApplyResources(this.bRemoveTab, "bRemoveTab");
-            this.bRemoveTab.Name = "bRemoveTab";
-            this.bRemoveTab.UseVisualStyleBackColor = true;
-            this.bRemoveTab.Click += new System.EventHandler(this.bRemoveTab_Click);
+            resources.ApplyResources(bRemoveTab, "bRemoveTab");
+            bRemoveTab.DefaultStyle = true;
+            bRemoveTab.Name = "bRemoveTab";
+            bRemoveTab.UseVisualStyleBackColor = true;
+            bRemoveTab.Click += bRemoveTab_Click;
             // 
             // bAddTab
             // 
-            resources.ApplyResources(this.bAddTab, "bAddTab");
-            this.bAddTab.Name = "bAddTab";
-            this.bAddTab.UseVisualStyleBackColor = true;
-            this.bAddTab.Click += new System.EventHandler(this.bAddTab_Click);
+            resources.ApplyResources(bAddTab, "bAddTab");
+            bAddTab.DefaultStyle = true;
+            bAddTab.Name = "bAddTab";
+            bAddTab.UseVisualStyleBackColor = true;
+            bAddTab.Click += bAddTab_Click;
             // 
             // label5
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            resources.ApplyResources(label5, "label5");
+            label5.Name = "label5";
             // 
             // label4
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            resources.ApplyResources(label4, "label4");
+            label4.Name = "label4";
             // 
             // listFyzTab
             // 
-            this.listFyzTab.FormattingEnabled = true;
-            resources.ApplyResources(this.listFyzTab, "listFyzTab");
-            this.listFyzTab.Name = "listFyzTab";
-            this.listFyzTab.DoubleClick += new System.EventHandler(this.listFyzTab_DoubleClick);
+            listFyzTab.FormattingEnabled = true;
+            resources.ApplyResources(listFyzTab, "listFyzTab");
+            listFyzTab.Name = "listFyzTab";
+            listFyzTab.DoubleClick += listFyzTab_DoubleClick;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.nudCountRecords);
-            this.groupBox1.Controls.Add(this.cbTypeView);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.tbKey);
-            this.groupBox1.Controls.Add(this.tbName);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            groupBox1.BorderColor = Color.LightGray;
+            groupBox1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            groupBox1.BorderThickness = 1;
+            groupBox1.Controls.Add(nudCountRecords);
+            groupBox1.Controls.Add(cbTypeView);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(tbKey);
+            groupBox1.Controls.Add(tbName);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(labelStation);
+            groupBox1.Controls.Add(cbIdStation);
+            groupBox1.DefaultStyle = true;
+            groupBox1.DisabledForeColor = SystemColors.GrayText;
+            resources.ApplyResources(groupBox1, "groupBox1");
+            groupBox1.Name = "groupBox1";
+            groupBox1.TabStop = false;
             // 
             // nudCountRecords
             // 
-            this.nudCountRecords.HighlightColor = System.Drawing.SystemColors.Highlight;
-            resources.ApplyResources(this.nudCountRecords, "nudCountRecords");
-            this.nudCountRecords.Name = "nudCountRecords";
-            this.nudCountRecords.SelectedButtonColor = System.Drawing.SystemColors.Highlight;
+            nudCountRecords.ArrowsColor = Color.Black;
+            nudCountRecords.BorderColor = Color.Gainsboro;
+            nudCountRecords.DefaultStyle = true;
+            nudCountRecords.HighlightColor = SystemColors.Highlight;
+            resources.ApplyResources(nudCountRecords, "nudCountRecords");
+            nudCountRecords.Name = "nudCountRecords";
+            nudCountRecords.SelectedButtonColor = SystemColors.Highlight;
             // 
             // cbTypeView
             // 
-            this.cbTypeView.DropDownSelectedRowBackColor = System.Drawing.SystemColors.Highlight;
-            this.cbTypeView.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTypeView.FormattingEnabled = true;
-            resources.ApplyResources(this.cbTypeView, "cbTypeView");
-            this.cbTypeView.Name = "cbTypeView";
-            this.cbTypeView.StyleDisabled.ArrowColor = null;
-            this.cbTypeView.StyleDisabled.BackColor = null;
-            this.cbTypeView.StyleDisabled.BorderColor = null;
-            this.cbTypeView.StyleDisabled.ButtonBackColor = null;
-            this.cbTypeView.StyleDisabled.ButtonBorderColor = null;
-            this.cbTypeView.StyleDisabled.ButtonRenderFirst = null;
-            this.cbTypeView.StyleDisabled.ForeColor = null;
-            this.cbTypeView.StyleHighlight.ArrowColor = null;
-            this.cbTypeView.StyleHighlight.BackColor = null;
-            this.cbTypeView.StyleHighlight.BorderColor = null;
-            this.cbTypeView.StyleHighlight.ButtonBackColor = null;
-            this.cbTypeView.StyleHighlight.ButtonBorderColor = null;
-            this.cbTypeView.StyleHighlight.ButtonRenderFirst = null;
-            this.cbTypeView.StyleHighlight.ForeColor = null;
-            this.cbTypeView.StyleNormal.ArrowColor = null;
-            this.cbTypeView.StyleNormal.BackColor = null;
-            this.cbTypeView.StyleNormal.BorderColor = null;
-            this.cbTypeView.StyleNormal.ButtonBackColor = null;
-            this.cbTypeView.StyleNormal.ButtonBorderColor = null;
-            this.cbTypeView.StyleNormal.ButtonRenderFirst = null;
-            this.cbTypeView.StyleNormal.ForeColor = null;
-            this.cbTypeView.StyleSelected.ArrowColor = null;
-            this.cbTypeView.StyleSelected.BackColor = null;
-            this.cbTypeView.StyleSelected.BorderColor = null;
-            this.cbTypeView.StyleSelected.ButtonBackColor = null;
-            this.cbTypeView.StyleSelected.ButtonBorderColor = null;
-            this.cbTypeView.StyleSelected.ButtonRenderFirst = null;
-            this.cbTypeView.StyleSelected.ForeColor = null;
-            this.cbTypeView.UseDarkScrollBar = false;
+            cbTypeView.DefaultStyle = true;
+            cbTypeView.DropDownBackColor = Color.White;
+            cbTypeView.DropDownSelectedRowBackColor = SystemColors.Highlight;
+            cbTypeView.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbTypeView.FormattingEnabled = true;
+            resources.ApplyResources(cbTypeView, "cbTypeView");
+            cbTypeView.Name = "cbTypeView";
+            exComboBoxStyle1.ArrowColor = null;
+            exComboBoxStyle1.BackColor = null;
+            exComboBoxStyle1.BorderColor = null;
+            exComboBoxStyle1.ButtonBackColor = null;
+            exComboBoxStyle1.ButtonBorderColor = null;
+            exComboBoxStyle1.ButtonRenderFirst = null;
+            exComboBoxStyle1.ForeColor = null;
+            cbTypeView.StyleDisabled = exComboBoxStyle1;
+            exComboBoxStyle2.ArrowColor = null;
+            exComboBoxStyle2.BackColor = null;
+            exComboBoxStyle2.BorderColor = null;
+            exComboBoxStyle2.ButtonBackColor = null;
+            exComboBoxStyle2.ButtonBorderColor = null;
+            exComboBoxStyle2.ButtonRenderFirst = null;
+            exComboBoxStyle2.ForeColor = null;
+            cbTypeView.StyleHighlight = exComboBoxStyle2;
+            exComboBoxStyle3.ArrowColor = null;
+            exComboBoxStyle3.BackColor = null;
+            exComboBoxStyle3.BorderColor = null;
+            exComboBoxStyle3.ButtonBackColor = null;
+            exComboBoxStyle3.ButtonBorderColor = null;
+            exComboBoxStyle3.ButtonRenderFirst = null;
+            exComboBoxStyle3.ForeColor = null;
+            cbTypeView.StyleNormal = exComboBoxStyle3;
+            exComboBoxStyle4.ArrowColor = null;
+            exComboBoxStyle4.BackColor = null;
+            exComboBoxStyle4.BorderColor = null;
+            exComboBoxStyle4.ButtonBackColor = null;
+            exComboBoxStyle4.ButtonBorderColor = null;
+            exComboBoxStyle4.ButtonRenderFirst = null;
+            exComboBoxStyle4.ForeColor = null;
+            cbTypeView.StyleSelected = exComboBoxStyle4;
+            cbTypeView.UseDarkScrollBar = false;
             // 
             // label7
             // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
+            resources.ApplyResources(label7, "label7");
+            label7.Name = "label7";
             // 
             // tbKey
             // 
-            this.tbKey.BorderColor = System.Drawing.Color.DimGray;
-            this.tbKey.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.tbKey.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tbKey.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbKey.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.tbKey.HintForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbKey.HintText = null;
-            resources.ApplyResources(this.tbKey, "tbKey");
-            this.tbKey.Name = "tbKey";
+            tbKey.BorderColor = Color.DimGray;
+            tbKey.BorderThickness = 1;
+            tbKey.DefaultStyle = true;
+            tbKey.DisabledBackColor = SystemColors.Control;
+            tbKey.DisabledBorderColor = SystemColors.InactiveBorder;
+            tbKey.DisabledForeColor = SystemColors.GrayText;
+            tbKey.HighlightColor = SystemColors.Highlight;
+            tbKey.HintForeColor = SystemColors.GrayText;
+            tbKey.HintText = null;
+            resources.ApplyResources(tbKey, "tbKey");
+            tbKey.Name = "tbKey";
             // 
             // tbName
             // 
-            this.tbName.BorderColor = System.Drawing.Color.DimGray;
-            this.tbName.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.tbName.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tbName.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbName.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.tbName.HintForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbName.HintText = null;
-            resources.ApplyResources(this.tbName, "tbName");
-            this.tbName.Name = "tbName";
+            tbName.BorderColor = Color.DimGray;
+            tbName.BorderThickness = 1;
+            tbName.DefaultStyle = true;
+            tbName.DisabledBackColor = SystemColors.Control;
+            tbName.DisabledBorderColor = SystemColors.InactiveBorder;
+            tbName.DisabledForeColor = SystemColors.GrayText;
+            tbName.HighlightColor = SystemColors.Highlight;
+            tbName.HintForeColor = SystemColors.GrayText;
+            tbName.HintText = null;
+            resources.ApplyResources(tbName, "tbName");
+            tbName.Name = "tbName";
             // 
             // label3
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
             // 
             // label2
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            // 
+            // labelStation
+            // 
+            resources.ApplyResources(labelStation, "labelStation");
+            labelStation.Name = "labelStation";
+            // 
+            // cbIdStation
+            // 
+            cbIdStation.DefaultStyle = true;
+            cbIdStation.DropDownBackColor = Color.White;
+            cbIdStation.DropDownSelectedRowBackColor = SystemColors.Highlight;
+            cbIdStation.FormattingEnabled = true;
+            resources.ApplyResources(cbIdStation, "cbIdStation");
+            cbIdStation.Name = "cbIdStation";
+            exComboBoxStyle5.ArrowColor = null;
+            exComboBoxStyle5.BackColor = null;
+            exComboBoxStyle5.BorderColor = null;
+            exComboBoxStyle5.ButtonBackColor = null;
+            exComboBoxStyle5.ButtonBorderColor = null;
+            exComboBoxStyle5.ButtonRenderFirst = null;
+            exComboBoxStyle5.ForeColor = null;
+            cbIdStation.StyleDisabled = exComboBoxStyle5;
+            exComboBoxStyle6.ArrowColor = null;
+            exComboBoxStyle6.BackColor = null;
+            exComboBoxStyle6.BorderColor = null;
+            exComboBoxStyle6.ButtonBackColor = null;
+            exComboBoxStyle6.ButtonBorderColor = null;
+            exComboBoxStyle6.ButtonRenderFirst = null;
+            exComboBoxStyle6.ForeColor = null;
+            cbIdStation.StyleHighlight = exComboBoxStyle6;
+            exComboBoxStyle7.ArrowColor = null;
+            exComboBoxStyle7.BackColor = null;
+            exComboBoxStyle7.BorderColor = null;
+            exComboBoxStyle7.ButtonBackColor = null;
+            exComboBoxStyle7.ButtonBorderColor = null;
+            exComboBoxStyle7.ButtonRenderFirst = null;
+            exComboBoxStyle7.ForeColor = null;
+            cbIdStation.StyleNormal = exComboBoxStyle7;
+            exComboBoxStyle8.ArrowColor = null;
+            exComboBoxStyle8.BackColor = null;
+            exComboBoxStyle8.BorderColor = null;
+            exComboBoxStyle8.ButtonBackColor = null;
+            exComboBoxStyle8.ButtonBorderColor = null;
+            exComboBoxStyle8.ButtonRenderFirst = null;
+            exComboBoxStyle8.ForeColor = null;
+            cbIdStation.StyleSelected = exComboBoxStyle8;
+            cbIdStation.UseDarkScrollBar = false;
             // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Table";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            dataGridViewTextBoxColumn2.DataPropertyName = "Table";
+            resources.ApplyResources(dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Table";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            dataGridViewTextBoxColumn3.DataPropertyName = "Table";
+            resources.ApplyResources(dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Table";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            dataGridViewTextBoxColumn4.DataPropertyName = "Table";
+            resources.ApplyResources(dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Table";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            dataGridViewTextBoxColumn5.DataPropertyName = "Table";
+            resources.ApplyResources(dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // tablePhysicalBindingSource
             // 
-            this.tablePhysicalBindingSource.DataSource = typeof(GVDEditor.Entities.TablePhysical);
+            tablePhysicalBindingSource.DataSource = typeof(TablePhysical);
             // 
             // FTableLogical
             // 
-            this.AcceptButton = this.bSave;
+            AcceptButton = bSave;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.bStorno;
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.gboxSimple);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.bStorno);
-            this.Controls.Add(this.bSave);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.HelpButton = true;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FTableLogical";
-            this.ShowInTaskbar = false;
-            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.FTableLogical_HelpButtonClicked);
-            ((System.ComponentModel.ISupportInitialize)(this.tableLogicalZostavaBindingSource)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.gboxSimple.ResumeLayout(false);
-            this.gboxSimple.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvZostava)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCountRecords)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablePhysicalBindingSource)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = bStorno;
+            Controls.Add(groupBox4);
+            Controls.Add(gboxSimple);
+            Controls.Add(groupBox1);
+            Controls.Add(bStorno);
+            Controls.Add(bSave);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            HelpButton = true;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FTableLogical";
+            ShowInTaskbar = false;
+            HelpButtonClicked += FTableLogical_HelpButtonClicked;
+            ((ISupportInitialize)tableLogicalZostavaBindingSource).EndInit();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
+            gboxSimple.ResumeLayout(false);
+            gboxSimple.PerformLayout();
+            ((ISupportInitialize)dgvZostava).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((ISupportInitialize)nudCountRecords).EndInit();
+            ((ISupportInitialize)tablePhysicalBindingSource).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -377,9 +467,11 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private ExComboBox cbTypeView;
+        private ExControls.ExComboBox cbIdStation;
         private ExTextBox tbKey;
         private ExTextBox tbName;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelStation;
         private ExGroupBox gboxSimple;
         private ExControls.ExButton bRemoveTab;
         private ExControls.ExButton bAddTab;

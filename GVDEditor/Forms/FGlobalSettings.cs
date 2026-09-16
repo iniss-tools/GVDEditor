@@ -25,8 +25,8 @@ public partial class FGlobalSettings : Form
     public readonly List<GVDDirectory> RemovedGVDs = new();
 
 
-    private Color selectedColor = Color.White;
-    private List<TrainType> predefinedTrainTypes;
+    private Color _selectedColor = Color.White;
+    private readonly List<TrainType> _predefinedTrainTypes;
 
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FGlobalSettings"/>.
@@ -45,8 +45,8 @@ public partial class FGlobalSettings : Form
         listMeskania.DataSource = GlobData.Delays;
         listGrafikony.DisplayMember = "PeriodFormatted";
 
-        predefinedTrainTypes = TrainType.GetDefaultValues();
-        cbDefTrainTypSkratka.DataSource = predefinedTrainTypes;
+        _predefinedTrainTypes = TrainType.GetDefaultValues();
+        cbDefTrainTypSkratka.DataSource = _predefinedTrainTypes;
         listTrainTypes.DataSource = GlobData.TrainsTypes;
 
         var st = new List<Station>(GlobData.Stations);
@@ -199,12 +199,12 @@ public partial class FGlobalSettings : Form
 
             if (dir.Dir.BackColor.HasValue)
             {
-                selectedColor = dir.Dir.BackColor.Value;
-                pbColor.BackColor = selectedColor;
+                _selectedColor = dir.Dir.BackColor.Value;
+                pbColor.BackColor = _selectedColor;
             }
             else
             {
-                selectedColor = Color.White;
+                _selectedColor = Color.White;
                 pbColor.BackColor = Color.White;
             }
         }
@@ -215,8 +215,8 @@ public partial class FGlobalSettings : Form
         var result = colorDialogFarba.ShowDialog();
         if (result == DialogResult.OK)
         {
-            selectedColor = colorDialogFarba.Color;
-            pbColor.BackColor = selectedColor;
+            _selectedColor = colorDialogFarba.Color;
+            pbColor.BackColor = _selectedColor;
         }
     }
 
@@ -229,7 +229,7 @@ public partial class FGlobalSettings : Form
             var portHlas = decimal.ToInt32(nudHlaseniePort.Value);
             dir.Dir.TablePort = portTab == 0 ? null : portTab;
             dir.Dir.ReportPort = portHlas == 0 ? null : portHlas;
-            dir.Dir.BackColor = selectedColor;
+            dir.Dir.BackColor = _selectedColor;
         }
     }
 
@@ -316,7 +316,7 @@ public partial class FGlobalSettings : Form
 
         if (!typ.IsCustom)
         {
-            cbDefTrainTypSkratka.SelectedItem = predefinedTrainTypes.FirstOrDefault(t => t.CategoryTrain == typ.CategoryTrain);
+            cbDefTrainTypSkratka.SelectedItem = _predefinedTrainTypes.FirstOrDefault(t => t.CategoryTrain == typ.CategoryTrain);
 
             tbDefaultTrainTypSkratka.Text = typ.Key;
             tbDefaultTrainTypText.Text = typ.TextInTable;
@@ -627,6 +627,11 @@ public partial class FGlobalSettings : Form
             tbAudioName.Text = audio.Name;
             tbAudioNazovSkratka.Text = audio.ShortName;
             tbAudioNazovFronta.Text = audio.QueueName;
+            tbSoundCard.Text = audio.SoundCard;
+            tbInputLine.Text = audio.InputLine;
+            tbAmplifier.Text = audio.AmplifierPort;
+            tbExchange.Text = audio.ExchangeParameter;
+            tbNode.Text = audio.Node;
         }
     }
 
@@ -661,7 +666,13 @@ public partial class FGlobalSettings : Form
             Station = (Station)cbAudioStanica.SelectedItem!,
             Name = tbAudioName.Text,
             ShortName = tbAudioNazovSkratka.Text,
-            QueueName = tbAudioNazovFronta.Text
+            QueueName = tbAudioNazovFronta.Text,
+            Mixer = "",
+            SoundCard = tbSoundCard.Text.Trim(),
+            InputLine = tbInputLine.Text.Trim(),
+            AmplifierPort = tbAmplifier.Text.Trim(),
+            ExchangeParameter = tbExchange.Text.Trim(),
+            Node = tbNode.Text.Trim()
         };
 
         GlobData.Audios.Add(audio);
@@ -695,6 +706,11 @@ public partial class FGlobalSettings : Form
             audio.Name = tbAudioName.Text;
             audio.ShortName = tbAudioNazovSkratka.Text;
             audio.QueueName = tbAudioNazovFronta.Text;
+            audio.SoundCard = tbSoundCard.Text.Trim();
+            audio.InputLine = tbInputLine.Text.Trim();
+            audio.AmplifierPort = tbAmplifier.Text.Trim();
+            audio.ExchangeParameter = tbExchange.Text.Trim();
+            audio.Node = tbNode.Text.Trim();
 
             GlobData.Audios.ResetBindings();
         }

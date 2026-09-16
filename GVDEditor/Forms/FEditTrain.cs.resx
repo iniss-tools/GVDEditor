@@ -340,10 +340,25 @@
   <data name="boxNizkopodlazny.Text" xml:space="preserve">
     <value>Nízkopodlažní</value>
   </data>
+  <data name="boxPrestup.Text" xml:space="preserve">
+    <value>Přestup</value>
+  </data>
   <data name="boxMedzistatny.Text" xml:space="preserve">
     <value>Mezistátní</value>
   </data>
   <data name="boxDialkovy.Text" xml:space="preserve">
     <value>Dálkový</value>
+  </data>
+  <data name="boxMotorovy.Text" xml:space="preserve">
+    <value>Motorový</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Varianta a výluka vlaku</value>
+  </data>
+  <data name="lVyluka.Text" xml:space="preserve">
+    <value>Výluka:</value>
+  </data>
+  <data name="lVylukaHelp.Text" xml:space="preserve">
+    <value>(0 = žádná)</value>
   </data>
 </root>

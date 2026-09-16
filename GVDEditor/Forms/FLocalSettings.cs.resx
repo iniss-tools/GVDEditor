@@ -463,4 +463,7 @@
   <data name="button3.Text" xml:space="preserve">
     <value>Přidat</value>
   </data>
+  <data name="bSave.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

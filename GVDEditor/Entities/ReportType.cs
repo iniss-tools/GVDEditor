@@ -59,6 +59,21 @@ public sealed class ReportType
     /// </summary>
     public bool Complement { get; }
 
+    /// <summary>
+    ///     Priznak LOCKOUT_BASE z Categori.TXT. INISS ho nacita, ale nikde nepouzije; zachovava sa.
+    /// </summary>
+    public bool LockoutBase { get; set; }
+
+    /// <summary>
+    ///     Priznak LOCKOUT_THROUGH z Categori.TXT. INISS ho nacita, ale nikde nepouzije; zachovava sa.
+    /// </summary>
+    public bool LockoutThrough { get; set; }
+
+    /// <summary>
+    ///     Priznak LOCKOUT_TERMINATE z Categori.TXT. INISS ho nacita, ale nikde nepouzije; zachovava sa.
+    /// </summary>
+    public bool LockoutTerminate { get; set; }
+
     /// <inheritdoc />
     public override string ToString() => Name;
 

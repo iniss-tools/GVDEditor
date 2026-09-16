@@ -216,6 +216,9 @@ public partial class FMain : Form
 
         if (!_error)
         {
+            // preskocene riadky a chybajuce nahravky - pouzivatel by o nich mal vediet skor, nez grafikon ulozi
+            LoadWarnings.ShowSummary();
+
             Kolaj.DataSource = GlobData.Tracks;
             Dopravca.DataSource = GlobData.Operators;
 
@@ -1036,6 +1039,7 @@ public partial class FMain : Form
             GlobData.TableLogicals = new ExBindingList<TableLogical>();
             GlobData.TableTexts = new ExBindingList<TableText>();
             GlobData.TableFonts = new ExBindingList<TableFont>();
+            GlobData.ModeTabsSections = new Dictionary<string, Dictionary<string, string>>();
 
             GlobData.CustomStations = new ExBindingList<Station>();
 
