@@ -98,7 +98,7 @@ public sealed class TrainType
     }
 
     /// <summary>
-    ///     Vrati vsetky predvolene typy vlakov.
+    ///     Vrati vsetky zabudovane typy vlakov (tabulka INISSu bez volnych miest X1-X9, R1-R9, Os1-Os9, Sl1-Sl9).
     /// </summary>
     /// <returns></returns>
     public static List<TrainType> GetDefaultValues()
@@ -106,26 +106,28 @@ public sealed class TrainType
         var types = new List<TrainType>
         {
             new("Os"),
-            new("R"),
+            new("MOs"),
+            new("Sp"),
             new("Zr"),
-            new("IC"),
-            new("EC"),
-            new("ER"),
-            new("EN"),
-            new("Bus"),
+            new("SPR"),
+            new("R"),
             new("Ex"),
             new("REX"),
-            new("Sp"),
-            new("Rn"),
-            new("Rp"),
-            new("Nákl"),
-            new("NZ"),
+            new("ER"),
+            new("EC"),
+            new("IC"),
+            new("SC"),
             new("ICE"),
-            new("Sl"),
-            new("SPR"),
+            new("EN"),
+            new("NZ"),
+            new("TGV"),
+            new("Bus"),
             new("Loď"),
             new("Lan"),
-            new("TGV"),
+            new("Nákl"),
+            new("Sl"),
+            new("Rn"),
+            new("Rp"),
         };
 
         return types;

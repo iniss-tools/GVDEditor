@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 9</value>
+  </data>
+  <data name="lInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>640, 58</value>
+  </data>
+  <data name="lInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lInfo.Text" xml:space="preserve">
+    <value>Priečinok obsahuje viac grafikonov zapísaných za sebou (starší zápis s hlavičkami /číslo stanice). INISS ich číta ako samostatné grafikony; GVDEditor ich musí najprv rozdeliť do samostatných priečinkov. Skontrolujte navrhnuté názvy priečinkov, prípadne ich upravte.</value>
+  </data>
+  <data name="&gt;&gt;lInfo.Name" xml:space="preserve">
+    <value>lInfo</value>
+  </data>
+  <data name="&gt;&gt;lInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lInfo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lInfo.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="dgvBlocks.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="colIndex.HeaderText" xml:space="preserve">
+    <value>Blok</value>
+  </data>
+  <data name="colIndex.Width" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="colStation.HeaderText" xml:space="preserve">
+    <value>Stanica</value>
+  </data>
+  <data name="colStation.Width" type="System.Int32, mscorlib">
+    <value>170</value>
+  </data>
+  <data name="colTrains.HeaderText" xml:space="preserve">
+    <value>Vlakov</value>
+  </data>
+  <data name="colTrains.Width" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="colFrom.HeaderText" xml:space="preserve">
+    <value>Platnosť od</value>
+  </data>
+  <data name="colFrom.Width" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="colTo.HeaderText" xml:space="preserve">
+    <value>Platnosť do</value>
+  </data>
+  <data name="colTo.Width" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="colDir.HeaderText" xml:space="preserve">
+    <value>Nový priečinok</value>
+  </data>
+  <data name="dgvBlocks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 70</value>
+  </data>
+  <data name="dgvBlocks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>640, 190</value>
+  </data>
+  <data name="dgvBlocks.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;dgvBlocks.Name" xml:space="preserve">
+    <value>dgvBlocks</value>
+  </data>
+  <data name="&gt;&gt;dgvBlocks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvBlocks.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;dgvBlocks.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lNote.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="lNote.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 266</value>
+  </data>
+  <data name="lNote.Size" type="System.Drawing.Size, System.Drawing">
+    <value>640, 30</value>
+  </data>
+  <data name="lNote.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lNote.Text" xml:space="preserve">
+    <value>Nové priečinky vzniknú v priečinku DATA a zapíšu sa do DirList.txt namiesto pôvodného. Pôvodný priečinok ostane na disku nezmenený; po kontrole ho môžete zmazať.</value>
+  </data>
+  <data name="&gt;&gt;lNote.Name" xml:space="preserve">
+    <value>lNote</value>
+  </data>
+  <data name="&gt;&gt;lNote.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lNote.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lNote.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="bOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="bOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>496, 303</value>
+  </data>
+  <data name="bOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="bOK.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="bOK.Text" xml:space="preserve">
+    <value>Rozdeliť</value>
+  </data>
+  <data name="&gt;&gt;bOK.Name" xml:space="preserve">
+    <value>bOK</value>
+  </data>
+  <data name="&gt;&gt;bOK.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bOK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bOK.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="bStorno.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
+    <value>577, 303</value>
+  </data>
+  <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="bStorno.Text" xml:space="preserve">
+    <value>Zrušiť</value>
+  </data>
+  <data name="&gt;&gt;bStorno.Name" xml:space="preserve">
+    <value>bStorno</value>
+  </data>
+  <data name="&gt;&gt;bStorno.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bStorno.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bStorno.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>664, 340</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>560, 300</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Rozdelenie grafikonu na samostatné priečinky</value>
+  </data>
+  <data name="&gt;&gt;colIndex.Name" xml:space="preserve">
+    <value>colIndex</value>
+  </data>
+  <data name="&gt;&gt;colIndex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colStation.Name" xml:space="preserve">
+    <value>colStation</value>
+  </data>
+  <data name="&gt;&gt;colStation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colTrains.Name" xml:space="preserve">
+    <value>colTrains</value>
+  </data>
+  <data name="&gt;&gt;colTrains.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colFrom.Name" xml:space="preserve">
+    <value>colFrom</value>
+  </data>
+  <data name="&gt;&gt;colFrom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colTo.Name" xml:space="preserve">
+    <value>colTo</value>
+  </data>
+  <data name="&gt;&gt;colTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colDir.Name" xml:space="preserve">
+    <value>colDir</value>
+  </data>
+  <data name="&gt;&gt;colDir.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FBlockMigration</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

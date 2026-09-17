@@ -113,6 +113,14 @@ internal static class TxtParser
 
         var dirs = new List<DirList>();
 
+        // bez DirList.TXT berie INISS ako jediny GVD samotny priecinok DATA (starsi zapis s jednym grafikonom)
+        if (!File.Exists(fileDirList))
+        {
+            if (File.Exists(CombinePath(GlobData.DataDir, FILE_GRAFIKON)))
+                dirs.Add(new DirList { DirName = "", FullPath = GlobData.DataDir });
+            return dirs;
+        }
+
         using var dirlistF = new CsvFileReader(fileDirList);
         var riadok = 1;
         var row = new CsvRow();
@@ -164,6 +172,14 @@ internal static class TxtParser
         using var dirlistF = new CsvFileWriter(fileDirList);
         foreach (var dir in dirs)
         {
+            // grafikon priamo v DATA sa v DirList.TXT zapisat neda - INISS ho vidi len bez tohto suboru;
+            // GVDEditor ho pri otvoreni ponuka presunut do vlastneho priecinka
+            if (dir.IsDataRoot)
+            {
+                Log.Warning("DirList.TXT: grafikon priamo v priečinku DATA sa do zoznamu nezapisuje – INISS ho po zápise DirList.TXT prestane vidieť.");
+                continue;
+            }
+
             var row = new CsvRow();
             row.Insert(0, dir.DirName);
             if (dir.TablePort.HasValue && dir.TablePort != 0)
@@ -449,6 +465,14 @@ internal static class TxtParser
         var fileTrTypes = CombinePath(GlobData.DataDir, FILE_TRTYPES)!;
 
         var typy = new List<TrainType>();
+
+        // bez suboru INISS druhy vlakov z Export3A dalej prijima podla zabudovanej tabulky (len ich neponuka v dialogu);
+        // GVDEditor preto ponukne celu zabudovanu tabulku, aby sa taky grafikon dal otvorit a upravovat
+        if (!File.Exists(fileTrTypes))
+        {
+            LoadWarnings.Add(string.Format(Properties.Resources.TxtParser_TrTypes_chyba_pouzite_zabudovane, fileTrTypes));
+            return TrainType.GetDefaultValues();
+        }
 
         using var trtypesF = new CsvFileReader(fileTrTypes);
         var riadok = 1;

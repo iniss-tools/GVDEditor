@@ -621,4 +621,43 @@ Uložiť napriek tomu?</value>
     <value>Predloha: {0}
 Stanice: {1}</value>
   </data>
+  <data name="BlockMigrator_Pocet_blokov_nesedi" xml:space="preserve">
+    <value>Súbor {0} má {1} blokov, Export3A.TXT ich má {2}. Priečinok sa nedá rozdeliť automaticky.</value>
+  </data>
+  <data name="BlockMigrator_Neplatny_nazov_priecinka" xml:space="preserve">
+    <value>Názov priečinka „{0}“ je prázdny alebo obsahuje nepovolené znaky.</value>
+  </data>
+  <data name="BlockMigrator_Duplicitny_nazov_priecinka" xml:space="preserve">
+    <value>Názov priečinka „{0}“ je použitý pre viac blokov.</value>
+  </data>
+  <data name="FMain_Grafikon_obsahuje_bloky_otazka" xml:space="preserve">
+    <value>Priečinok {0} obsahuje {1} grafikonov zapísaných za sebou (starší zápis s hlavičkami /číslo stanice). GVDEditor s takým zápisom nevie pracovať – druhý blok by prepísal prvý.
+
+Rozdeliť ich teraz do samostatných priečinkov?</value>
+  </data>
+  <data name="FMain_Grafikon_rozdeleny" xml:space="preserve">
+    <value>Grafikon bol rozdelený do priečinkov: {0}.
+
+Pôvodný priečinok {1} ostal na disku, v DirList.txt už nie je – po kontrole ho môžete zmazať.</value>
+  </data>
+  <data name="FMain_Rozdelenie_zlyhalo" xml:space="preserve">
+    <value>Rozdelenie grafikonu zlyhalo, nové priečinky boli odstránené: {0}</value>
+  </data>
+  <data name="FMain_Grafikon_s_blokmi_nenacitany" xml:space="preserve">
+    <value>Grafikon obsahuje viac blokov a nebol rozdelený – nie je načítaný. Vyberte iný grafikon alebo ho znova otvorte a rozdeľte.</value>
+  </data>
+  <data name="FMain_Grafikon_v_koreni_otazka" xml:space="preserve">
+    <value>Grafikon leží priamo v priečinku {0} bez DirList.txt (starší zápis). GVDEditor s ním pracuje len v samostatnom priečinku zapísanom v DirList.txt.
+
+Presunúť ho teraz do vlastného priečinka ({1} grafikon/y)?</value>
+  </data>
+  <data name="FBlockMigration_Info_DataRoot" xml:space="preserve">
+    <value>Grafikon leží priamo v priečinku DATA bez DirList.txt. Presunie sa do samostatného priečinka a zapíše do DirList.txt, tak ako to robí dnešný INISS. Skontrolujte navrhnutý názov priečinka, prípadne ho upravte.</value>
+  </data>
+  <data name="FBlockMigration_Note_DataRoot" xml:space="preserve">
+    <value>Nový priečinok vznikne v priečinku DATA a založí sa DirList.txt. Pôvodné súbory v koreni DATA ostanú nezmenené (INISS ich po vzniku DirList.txt už nečíta); po kontrole ich môžete zmazať.</value>
+  </data>
+  <data name="TxtParser_TrTypes_chyba_pouzite_zabudovane" xml:space="preserve">
+    <value>Súbor {0} neexistuje – ponuka druhov vlakov je zostavená zo zabudovanej tabuľky INISSu. Pri uložení nastavení sa súbor založí.</value>
+  </data>
 </root>

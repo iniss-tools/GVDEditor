@@ -142,6 +142,14 @@ public partial class FMain : Form
 
     private void BackgroundWorker1_DoWork(object? sender, DoWorkEventArgs e)
     {
+        // druhy blok by pri nacitani prepisal prvy a pri ulozeni by sa stary zapis znicil - radsej nenacitat nic
+        if (((PathAndGVD)e.Argument!).BlocksDeclined)
+        {
+            Program.MainForm.Invoke(() => Utils.ShowWarning(Resources.FMain_Grafikon_s_blokmi_nenacitany));
+            _error = true;
+            return;
+        }
+
         if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
             try
             {
@@ -1081,11 +1089,84 @@ public partial class FMain : Form
         GlobData.Trains.Clear();
         _prechod = false;
 
+        //starsi zapis - viac grafikonov v jednom priecinku; po rozdeleni sa zoznam obdobi nacita znova a vyberie prvy novy
+        var blocks = AnalyzeBlocks(dir);
+        if (blocks.Count > 0 && MigrateBlocks(dir, blocks))
+            return;
+
         _error = false;
         _waitForm = new FWait();
         _waitForm.Show(this);
         if (!backgroundWorker1.IsBusy)
-            backgroundWorker1.RunWorkerAsync(new PathAndGVD { Path = dir.Dir.FullPath, Gvd = dir.GVD });
+            backgroundWorker1.RunWorkerAsync(new PathAndGVD { Path = dir.Dir.FullPath, Gvd = dir.GVD, BlocksDeclined = blocks.Count > 0 });
+    }
+
+    private static List<GvdBlock> AnalyzeBlocks(GVDDirectory dir)
+    {
+        try
+        {
+            //grafikon priamo v DATA (bez DirList.TXT) sa presuva do vlastneho priecinka vzdy, aj ked ma jediny blok
+            return BlockMigrator.Analyze(dir.Dir.FullPath, dir.GVD, dir.Dir.DirName, dir.Dir.IsDataRoot);
+        }
+        catch (Exception e)
+        {
+            //chybny Export3A ohlasi az nacitanie grafikonu
+            Log.Exception(e);
+            return new List<GvdBlock>();
+        }
+    }
+
+    /// <summary>
+    ///     Ponukne rozdelenie priecinka s blokmi <c>/stanica</c> do samostatnych priecinkov.
+    /// </summary>
+    /// <returns><see langword="true" />, ak sa grafikon rozdelil a zoznam obdobi bol nacitany znova.</returns>
+    private bool MigrateBlocks(GVDDirectory dir, List<GvdBlock> blocks)
+    {
+        var question = dir.Dir.IsDataRoot
+            ? string.Format(Resources.FMain_Grafikon_v_koreni_otazka, dir.Dir.FullPath, blocks.Count)
+            : string.Format(Resources.FMain_Grafikon_obsahuje_bloky_otazka, dir.Dir.FullPath, blocks.Count);
+        if (Utils.ShowQuestion(question) != DialogResult.Yes)
+            return false;
+
+        using var form = new FBlockMigration(dir.Dir.FullPath, blocks, dir.Dir.IsDataRoot);
+        if (form.ShowDialog(this) != DialogResult.OK)
+            return false;
+
+        List<DirList> newDirs;
+        try
+        {
+            newDirs = BlockMigrator.Migrate(dir.Dir.FullPath, dir.Dir, dir.GVD, blocks);
+        }
+        catch (Exception e)
+        {
+            Log.Exception(e);
+            Utils.ShowError(string.Format(Resources.FMain_Rozdelenie_zlyhalo, e.Message));
+            return false;
+        }
+
+        Utils.ShowInfo(string.Format(Resources.FMain_Grafikon_rozdeleny, string.Join(", ", newDirs.Select(d => d.DirName)), dir.Dir.FullPath));
+
+        GlobData.GVDDirs = TxtParser.ReadDirList();
+        DataSaved = true;
+        _previousSelectedGVD = null;
+
+        if (!InitializeDataList())
+            return true;
+
+        _gvdDirs.Clear();
+        _gvdDirs.AddRange(ObdobiaList);
+
+        var first = _gvdDirs.FirstOrDefault(o => o.Dir.DirName.Equals(newDirs[0].DirName, StringComparison.OrdinalIgnoreCase));
+
+        //zmena stanice by sama vybrala prve obdobie a spustila nacitanie - vybrat treba az prvy novy priecinok
+        _removingGVD = true;
+        tscbStanica.ComboBox.SelectedItem = null;
+        tscbStanica.ComboBox.SelectedItem = first?.GVD.ThisStation.Name ?? Stanice.FirstOrDefault();
+        tscbObdobie.ComboBox.SelectedItem = null;
+        _removingGVD = false;
+
+        tscbObdobie.ComboBox.SelectedItem = first ?? ObdobiaList.FirstOrDefault();
+        return true;
     }
 
     private static void InitDruhyReportov()
@@ -1986,6 +2067,9 @@ public partial class FMain : Form
     {
         public string Path { get; set; } = null!;
         public GVDInfo Gvd { get; set; } = null!;
+
+        /// <summary>Priecinok obsahuje bloky /stanica a pouzivatel ich odmietol rozdelit - grafikon sa nesmie nacitat.</summary>
+        public bool BlocksDeclined { get; set; }
     }
 
     internal class SendData

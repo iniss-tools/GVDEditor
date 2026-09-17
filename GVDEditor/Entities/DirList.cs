@@ -16,6 +16,12 @@ public sealed class DirList
     public string FullPath { get; set; } = null!;
 
     /// <summary>
+    ///     Grafikon leží priamo v priečinku DATA – starší zápis bez <c>DirList.TXT</c>, keď INISS berie
+    ///     dátový priečinok ako jedinú položku zoznamu. Taký záznam sa do <c>DirList.TXT</c> nezapisuje.
+    /// </summary>
+    public bool IsDataRoot => string.IsNullOrEmpty(DirName);
+
+    /// <summary>
     ///     Vrati alebo nastavi port pre vzdialené ovládanie tabúľ.
     /// </summary>
     public int? TablePort { get; set; }

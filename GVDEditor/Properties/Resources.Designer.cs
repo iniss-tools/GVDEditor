@@ -1505,5 +1505,104 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("FEditTrain_Vyluka_ItemHint", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor {0} má {1} blokov, Export3A.TXT ich má {2}. Priečinok sa nedá rozdeliť automaticky..
+        /// </summary>
+        internal static string BlockMigrator_Pocet_blokov_nesedi {
+            get {
+                return ResourceManager.GetString("BlockMigrator_Pocet_blokov_nesedi", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Názov priečinka „{0}“ je prázdny alebo obsahuje nepovolené znaky..
+        /// </summary>
+        internal static string BlockMigrator_Neplatny_nazov_priecinka {
+            get {
+                return ResourceManager.GetString("BlockMigrator_Neplatny_nazov_priecinka", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Názov priečinka „{0}“ je použitý pre viac blokov..
+        /// </summary>
+        internal static string BlockMigrator_Duplicitny_nazov_priecinka {
+            get {
+                return ResourceManager.GetString("BlockMigrator_Duplicitny_nazov_priecinka", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Priečinok {0} obsahuje {1} grafikonov zapísaných za sebou ... Rozdeliť ich teraz do samostatných priečinkov?.
+        /// </summary>
+        internal static string FMain_Grafikon_obsahuje_bloky_otazka {
+            get {
+                return ResourceManager.GetString("FMain_Grafikon_obsahuje_bloky_otazka", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon bol rozdelený do priečinkov: {0}. Pôvodný priečinok {1} ostal na disku ....
+        /// </summary>
+        internal static string FMain_Grafikon_rozdeleny {
+            get {
+                return ResourceManager.GetString("FMain_Grafikon_rozdeleny", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Rozdelenie grafikonu zlyhalo, nové priečinky boli odstránené: {0}.
+        /// </summary>
+        internal static string FMain_Rozdelenie_zlyhalo {
+            get {
+                return ResourceManager.GetString("FMain_Rozdelenie_zlyhalo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon obsahuje viac blokov a nebol rozdelený – nie je načítaný. ....
+        /// </summary>
+        internal static string FMain_Grafikon_s_blokmi_nenacitany {
+            get {
+                return ResourceManager.GetString("FMain_Grafikon_s_blokmi_nenacitany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon leží priamo v priečinku {0} bez DirList.txt (starší zápis). GVDEditor s.
+        /// </summary>
+        internal static string FMain_Grafikon_v_koreni_otazka {
+            get {
+                return ResourceManager.GetString("FMain_Grafikon_v_koreni_otazka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon leží priamo v priečinku DATA bez DirList.txt. Presunie sa do samostatné.
+        /// </summary>
+        internal static string FBlockMigration_Info_DataRoot {
+            get {
+                return ResourceManager.GetString("FBlockMigration_Info_DataRoot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nový priečinok vznikne v priečinku DATA a založí sa DirList.txt. Pôvodné súbory .
+        /// </summary>
+        internal static string FBlockMigration_Note_DataRoot {
+            get {
+                return ResourceManager.GetString("FBlockMigration_Note_DataRoot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor {0} neexistuje – ponuka druhov vlakov je zostavená zo zabudovanej tabuľky .
+        /// </summary>
+        internal static string TxtParser_TrTypes_chyba_pouzite_zabudovane {
+            get {
+                return ResourceManager.GetString("TxtParser_TrTypes_chyba_pouzite_zabudovane", resourceCulture);
+            }
+        }
     }
 }
