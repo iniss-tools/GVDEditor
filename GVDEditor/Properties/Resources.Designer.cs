@@ -1468,5 +1468,42 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("FEditTrain_Vyluka_Hint", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to (žiadna).
+        /// </summary>
+        internal static string FEditTrain_Vyluka_None {
+            get {
+                return ResourceManager.GetString("FEditTrain_Vyluka_None", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Obecná výluka v stanici.
+        /// </summary>
+        internal static string FEditTrain_Vyluka_BuiltIn {
+            get {
+                return ResourceManager.GetString("FEditTrain_Vyluka_BuiltIn", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to (neznáma výluka – nie je v LogZvuk.usr).
+        /// </summary>
+        internal static string FEditTrain_Vyluka_Unknown {
+            get {
+                return ResourceManager.GetString("FEditTrain_Vyluka_Unknown", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Predloha: {0}
+        ///Stanice: {1}.
+        /// </summary>
+        internal static string FEditTrain_Vyluka_ItemHint {
+            get {
+                return ResourceManager.GetString("FEditTrain_Vyluka_ItemHint", resourceCulture);
+            }
+        }
     }
 }

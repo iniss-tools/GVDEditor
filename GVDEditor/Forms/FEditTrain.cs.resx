@@ -358,7 +358,4 @@
   <data name="lVyluka.Text" xml:space="preserve">
     <value>Výluka:</value>
   </data>
-  <data name="lVylukaHelp.Text" xml:space="preserve">
-    <value>(0 = žádná)</value>
-  </data>
 </root>

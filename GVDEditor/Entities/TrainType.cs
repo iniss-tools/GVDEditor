@@ -122,7 +122,10 @@ public sealed class TrainType
             new("NZ"),
             new("ICE"),
             new("Sl"),
-            new("SPR")
+            new("SPR"),
+            new("Loď"),
+            new("Lan"),
+            new("TGV"),
         };
 
         return types;

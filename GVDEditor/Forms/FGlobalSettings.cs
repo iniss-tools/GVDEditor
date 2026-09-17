@@ -250,45 +250,31 @@ public partial class FGlobalSettings : Form
 
     private void bMeskanieAdd_Click(object sender, EventArgs e)
     {
-        var num = decimal.ToInt32(nudMeskanie.Value);
-
-        if (num is < 0 or > 480)
-        {
-            Utils.ShowError(string.Format(Resources.FGlobalSettings_Meskanie_CisloNieJeVIntervale, num));
-            return;
-        }
-
         foreach (var meskanie in GlobData.Delays)
-            if (meskanie == num)
+        {
+            if (meskanie == tbMeskanie.Text)
             {
                 Utils.ShowError(Resources.FGlobalSettings_Táto_hodnota_sa_už_v_zozname_nachádza);
                 return;
             }
+        }
 
-        GlobData.Delays.Add(num);
+        GlobData.Delays.Add(tbMeskanie.Text);
     }
 
     private void bMeskanieEdit_Click(object sender, EventArgs e)
     {
         var index = listMeskania.SelectedIndex;
         if (index == -1) return;
-
-        var num = decimal.ToInt32(nudMeskanie.Value);
-
-        if (num is < 0 or > 480)
-        {
-            Utils.ShowError(string.Format(Resources.FGlobalSettings_Meskanie_CisloNieJeVIntervale, num));
-            return;
-        }
-
-        if (GlobData.Delays.Where((t, i) => t == num && i != index).Any())
+        
+        if (GlobData.Delays.Where((t, i) => t == tbMeskanie.Text && i != index).Any())
         {
             Utils.ShowError(Resources.FGlobalSettings_Táto_hodnota_sa_už_v_zozname_nachádza);
             return;
         }
 
         GlobData.Delays.RemoveAt(index);
-        GlobData.Delays.Insert(index, decimal.ToInt32(nudMeskanie.Value));
+        GlobData.Delays.Insert(index, tbMeskanie.Text);
     }
 
     private void bMeskanieDelete_Click(object sender, EventArgs e)
@@ -304,12 +290,13 @@ public partial class FGlobalSettings : Form
 
     private void listMeskania_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (listMeskania.SelectedItem != null) nudMeskanie.Value = (int)listMeskania.SelectedItem;
+        if (listMeskania.SelectedItem != null) 
+            tbMeskanie.Text = listMeskania.SelectedItem.ToString();
     }
 
     private void listTrainTypes_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (listTrainTypes.SelectedIndex == -1) 
+        if (listTrainTypes.SelectedIndex == -1)
             return;
 
         var typ = (TrainType)listTrainTypes.SelectedItem!;
@@ -368,7 +355,7 @@ public partial class FGlobalSettings : Form
 
     private void bDefTrainTypEdit_Click(object sender, EventArgs e)
     {
-        if (listTrainTypes.SelectedIndex == -1) 
+        if (listTrainTypes.SelectedIndex == -1)
             return;
 
         var typ = GlobData.TrainsTypes[listTrainTypes.SelectedIndex];
@@ -386,7 +373,7 @@ public partial class FGlobalSettings : Form
 
     private void bDefTrainTypDelete_Click(object sender, EventArgs e)
     {
-        if (listTrainTypes.SelectedIndex != -1) 
+        if (listTrainTypes.SelectedIndex != -1)
             GlobData.TrainsTypes.RemoveAt(listTrainTypes.SelectedIndex);
 
         if (GlobData.TrainsTypes.Count == 0)
@@ -523,81 +510,81 @@ public partial class FGlobalSettings : Form
             switch (cbCustomTrainTypDruh.SelectedIndex)
             {
                 case 0:
-                {
-                    foreach (var trainType in GlobData.TrainsTypes)
-                        if (trainType.IsCustom)
-                            if (Regex.IsMatch(trainType.CategoryTrain, "^Os[1-9]$"))
-                            {
-                                trainType.CategoryTrain = "Os" + num;
-                                num++;
-                            }
-
-                    if (num > 9)
                     {
-                        Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
-                        return;
-                    }
+                        foreach (var trainType in GlobData.TrainsTypes)
+                            if (trainType.IsCustom)
+                                if (Regex.IsMatch(trainType.CategoryTrain, "^Os[1-9]$"))
+                                {
+                                    trainType.CategoryTrain = "Os" + num;
+                                    num++;
+                                }
 
-                    category = "Os" + num;
-                    break;
-                }
+                        if (num > 9)
+                        {
+                            Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
+                            return;
+                        }
+
+                        category = "Os" + num;
+                        break;
+                    }
                 case 1:
-                {
-                    foreach (var trainType in GlobData.TrainsTypes)
-                        if (trainType.IsCustom)
-                            if (Regex.IsMatch(trainType.CategoryTrain, "^R[1-9]$"))
-                            {
-                                trainType.CategoryTrain = "R" + num;
-                                num++;
-                            }
-
-                    if (num > 9)
                     {
-                        Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
-                        return;
-                    }
+                        foreach (var trainType in GlobData.TrainsTypes)
+                            if (trainType.IsCustom)
+                                if (Regex.IsMatch(trainType.CategoryTrain, "^R[1-9]$"))
+                                {
+                                    trainType.CategoryTrain = "R" + num;
+                                    num++;
+                                }
 
-                    category = "R" + num;
-                    break;
-                }
+                        if (num > 9)
+                        {
+                            Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
+                            return;
+                        }
+
+                        category = "R" + num;
+                        break;
+                    }
                 case 2:
-                {
-                    foreach (var trainType in GlobData.TrainsTypes)
-                        if (trainType.IsCustom)
-                            if (Regex.IsMatch(trainType.CategoryTrain, "^X[1-9]$"))
-                            {
-                                trainType.CategoryTrain = "X" + num;
-                                num++;
-                            }
-
-                    if (num > 9)
                     {
-                        Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
-                        return;
-                    }
+                        foreach (var trainType in GlobData.TrainsTypes)
+                            if (trainType.IsCustom)
+                                if (Regex.IsMatch(trainType.CategoryTrain, "^X[1-9]$"))
+                                {
+                                    trainType.CategoryTrain = "X" + num;
+                                    num++;
+                                }
 
-                    category = "X" + num;
-                    break;
-                }
+                        if (num > 9)
+                        {
+                            Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
+                            return;
+                        }
+
+                        category = "X" + num;
+                        break;
+                    }
                 case 3:
-                {
-                    foreach (var trainType in GlobData.TrainsTypes)
-                        if (trainType.IsCustom)
-                            if (Regex.IsMatch(trainType.CategoryTrain, "^Sl[1-9]$"))
-                            {
-                                trainType.CategoryTrain = "Sl" + num;
-                                num++;
-                            }
-
-                    if (num > 9)
                     {
-                        Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
-                        return;
-                    }
+                        foreach (var trainType in GlobData.TrainsTypes)
+                            if (trainType.IsCustom)
+                                if (Regex.IsMatch(trainType.CategoryTrain, "^Sl[1-9]$"))
+                                {
+                                    trainType.CategoryTrain = "Sl" + num;
+                                    num++;
+                                }
 
-                    category = "Sl" + num;
-                    break;
-                }
+                        if (num > 9)
+                        {
+                            Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
+                            return;
+                        }
+
+                        category = "Sl" + num;
+                        break;
+                    }
             }
 
             GlobData.TrainsTypes[listTrainTypes.SelectedIndex] = new TrainType(category, key, table);
@@ -748,5 +735,11 @@ public partial class FGlobalSettings : Form
     private void FGlobalSettings_FormClosed(object sender, FormClosedEventArgs e)
     {
         EnableEvents(false);
+    }
+
+    private void tbMeskanie_TextChanged(object sender, EventArgs e)
+    {
+        bMeskanieAdd.Enabled = !string.IsNullOrEmpty(tbMeskanie.Text);
+        bMeskanieEdit.Enabled = !string.IsNullOrEmpty(tbMeskanie.Text) && listMeskania.SelectedIndex != -1;
     }
 }

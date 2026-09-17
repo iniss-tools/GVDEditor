@@ -352,11 +352,11 @@ internal static class TxtParser
     ///     Vrati mozne casy meskani.
     /// </summary>
     /// <returns>meskania</returns>
-    public static List<int> ReadZpozdeni()
+    public static List<string> ReadZpozdeni()
     {
         var file = CombinePath(GlobData.DataDir, FILE_ZPOZDENI)!;
 
-        var meskania = new List<int>();
+        var meskania = new List<string>();
 
         using var zpozdeniF = new CsvFileReader(file);
         var riadok = 1;
@@ -375,9 +375,7 @@ internal static class TxtParser
 
             try
             {
-                // INISS rozsah nekontroluje - berie kazde cele cislo
-                var num = int.Parse(row[0], CultureInfo.InvariantCulture);
-                meskania.Add(num);
+                meskania.Add(row[0]);
             }
             catch (Exception e)
             {
@@ -423,7 +421,7 @@ internal static class TxtParser
     ///     Zapise mozne casy meskani do suboru.
     /// </summary>
     /// <param name="meskania">meskania</param>
-    public static void WriteZpozdeni(IEnumerable<int> meskania)
+    public static void WriteZpozdeni(IEnumerable<string> meskania)
     {
         var file = CombinePath(GlobData.DataDir, FILE_ZPOZDENI)!;
         DeleteZpozdeniCache();

@@ -114,6 +114,7 @@ public partial class FEditTrain : Form
         listVybrateDoplnky.DataSource = Doplnky;
 
         FillRadenieSet();
+        FillLockouts(ThisTrain?.LockoutNumber ?? 0);
 
         cbNazov.SelectedItem = null;
 
@@ -205,8 +206,7 @@ public partial class FEditTrain : Form
         boxNizkopodlazny.Checked = train.IsNizkopodlazny;
         boxPrestup.Checked = train.IsPrestupovy;
         boxMotorovy.Checked = train.IsMotorovy;
-        nudVyluka.Value = train.LockoutNumber;
-        _toolTip.SetToolTip(nudVyluka, Resources.FEditTrain_Vyluka_Hint);
+        SelectLockout(train.LockoutNumber);
         boxLozkovy.Checked = train.IsIbaLozkovy;
 
         tbLinkaPrichod.Text = train.LineArrival;
@@ -361,7 +361,7 @@ public partial class FEditTrain : Form
         train.IsNizkopodlazny = boxNizkopodlazny.Checked;
         train.IsPrestupovy = boxPrestup.Checked;
         train.IsMotorovy = boxMotorovy.Checked;
-        train.LockoutNumber = decimal.ToInt32(nudVyluka.Value);
+        train.LockoutNumber = cbVyluka.SelectedItem is LockoutItem lockout ? lockout.Code : 0;
         train.IsIbaLozkovy = boxLozkovy.Checked;
 
         train.StaniceZoSmeru.Clear();
@@ -551,6 +551,57 @@ public partial class FEditTrain : Form
     {
         // zmena kolaje odchodu kolaj prichodu nemeni - vlak moze v stanici prejst na inu kolaj;
         // opacny smer (prichod -> odchod) ostava ako pohodlna predvolba
+    }
+
+    /// <summary>
+    ///     Polozka ponuky vyluk: kod zapisovany do Vyluka.TXT a text zobrazeny v ponuke.
+    ///     <paramref name="Source"/> je polozka z LogZvuk.usr, ak ide o vyluku zalozenu obsluhou.
+    /// </summary>
+    private sealed record LockoutItem(int Code, string Text, LogZvukText? Source = null)
+    {
+        public override string ToString() => Text;
+    }
+
+    /// <summary>
+    ///     Naplni ponuku vyluk: ziadna (0), zabudovana obecna vyluka (1) a vyluky zalozene obsluhou v INISSe (RAWBANK\LogZvuk.usr).
+    ///     Ak vlak odkazuje na kod, ktory v banke nie je, prida sa ako neznama polozka, aby sa hodnota pri ulozeni nestratila.
+    /// </summary>
+    private void FillLockouts(int currentCode)
+    {
+        var items = new List<LockoutItem>
+        {
+            new(0, Resources.FEditTrain_Vyluka_None),
+            new(1, $"1 – {Resources.FEditTrain_Vyluka_BuiltIn}")
+        };
+
+        foreach (var text in GlobData.LogZvukTexts)
+            if (text.IsLockout && text.Code > 1 && items.All(item => item.Code != text.Code))
+                items.Add(new LockoutItem(text.Code, text.ToString(), text));
+
+        if (currentCode != 0 && items.All(item => item.Code != currentCode))
+            items.Add(new LockoutItem(currentCode, $"{currentCode} – {Resources.FEditTrain_Vyluka_Unknown}"));
+
+        cbVyluka.Items.Clear();
+        foreach (var item in items)
+            cbVyluka.Items.Add(item);
+
+        cbVyluka.DropDownWidth = Math.Max(cbVyluka.Width, 320);
+        SelectLockout(currentCode);
+    }
+
+    private void SelectLockout(int code)
+    {
+        var match = cbVyluka.Items.Cast<LockoutItem>().FirstOrDefault(item => item.Code == code);
+        cbVyluka.SelectedItem = match ?? cbVyluka.Items[0];
+    }
+
+    private void cbVyluka_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        // tooltip ukaze predlohu a stanice vybranej vyluky z LogZvuk.usr
+        if (cbVyluka.SelectedItem is LockoutItem { Source: { } source })
+            _toolTip.SetToolTip(cbVyluka, string.Format(Resources.FEditTrain_Vyluka_ItemHint, source.Template, string.Join(", ", source.StationNames)));
+        else
+            _toolTip.SetToolTip(cbVyluka, Resources.FEditTrain_Vyluka_Hint);
     }
 
     private void tbCislo_TextChanged(object sender, EventArgs e)

@@ -606,6 +606,19 @@ Uložiť napriek tomu?</value>
     <value>Číslo stanice (IDSTATION) musí byť celé číslo alebo prázdne.</value>
   </data>
   <data name="FEditTrain_Vyluka_Hint" xml:space="preserve">
-    <value>Číslo výluky z Vyluka.TXT: 0 = bez výluky, 1 = zabudovaná „Obecná výluka v stanici“, vyššie čísla = vlastné texty výluk (kľúč V&lt;číslo&gt; v LogZvuk.usr).</value>
+    <value>Výluka vlaku (Vyluka.TXT). Okrem zabudovanej „Obecnej výluky v stanici“ sú v ponuke výluky založené obsluhou v INISSe (RAWBANK\LogZvuk.usr).</value>
+  </data>
+  <data name="FEditTrain_Vyluka_None" xml:space="preserve">
+    <value>(žiadna)</value>
+  </data>
+  <data name="FEditTrain_Vyluka_BuiltIn" xml:space="preserve">
+    <value>Obecná výluka v stanici</value>
+  </data>
+  <data name="FEditTrain_Vyluka_Unknown" xml:space="preserve">
+    <value>(neznáma výluka – nie je v LogZvuk.usr)</value>
+  </data>
+  <data name="FEditTrain_Vyluka_ItemHint" xml:space="preserve">
+    <value>Predloha: {0}
+Stanice: {1}</value>
   </data>
 </root>

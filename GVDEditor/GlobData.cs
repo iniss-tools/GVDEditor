@@ -20,6 +20,11 @@ internal static class GlobData
     public static ExBindingList<Audio> Audios { get; private set; } = null!;
 
     public static List<FyzSound> Sounds { get; private set; } = null!;
+
+    /// <summary>
+    ///     Texty vyluk, odklonov a dodatkov zalozene obsluhou v INISSe (RAWBANK\LogZvuk.usr).
+    /// </summary>
+    public static List<LogZvukText> LogZvukTexts { get; private set; } = new();
     public static ExBindingList<FyzLanguage> Languages { get; private set; } = null!;
     public static List<FyzLanguage> LocalLanguages { get; set; } = null!;
     public static List<Station> Stations { get; set; } = null!;
@@ -31,7 +36,7 @@ internal static class GlobData
     public static ExBindingList<Track> Tracks { get; set; } = null!;
     public static ExBindingList<Platform> Platforms { get; set; } = null!;
 
-    public static ExBindingList<int> Delays { get; private set; } = null!;
+    public static ExBindingList<string> Delays { get; private set; } = null!;
 
     public static ExBindingList<TrainType> TrainsTypes { get; private set; } = null!;
 
@@ -112,6 +117,7 @@ internal static class GlobData
 
         LocalLanguages = new List<FyzLanguage>();
         Sounds = RawBankParser.ReadFyzZvukFile(RawBankDir, FyzLanguage.GetBasicLanguage(Languages)!);
+        LogZvukTexts = LogZvukParser.ReadLogZvukUsr(RawBankDir);
         try
         {
             TrainsTypes = new ExBindingList<TrainType>(TxtParser.ReadTrainTypes());
@@ -122,7 +128,7 @@ internal static class GlobData
 
         TrainNames = Train.GetTrainNames();
         Stations = Station.GetStations();
-        Delays = new ExBindingList<int>(TxtParser.ReadZpozdeni());
+        Delays = new ExBindingList<string>(TxtParser.ReadZpozdeni());
 
         try
         {

@@ -36,6 +36,7 @@ internal static class FileConsts
     public const string FILE_TRTYPES = "TRTYPES.txt";
     public const string FILE_FYZZVUK = "FYZZVUK.dat";
     public const string FILE_FYZBANK = "FYZBANK.dat";
+    public const string FILE_LOGZVUK_USR = "LogZvuk.usr";
 
     public const string DIR_DATA = "DATA";
     public const string DIR_RAWBANK = "RAWBANK";

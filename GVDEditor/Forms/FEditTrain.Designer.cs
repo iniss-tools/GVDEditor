@@ -61,10 +61,9 @@ namespace GVDEditor.Forms
             this.boxLozkovy = new ExControls.ExCheckBox();
             this.groupBox5 = new ExControls.ExGroupBox();
             this.lVariantHelp = new System.Windows.Forms.Label();
-            this.lVylukaHelp = new System.Windows.Forms.Label();
             this.lVyluka = new System.Windows.Forms.Label();
             this.nudVarianta = new ExControls.ExNumericUpDown();
-            this.nudVyluka = new ExControls.ExNumericUpDown();
+            this.cbVyluka = new ExControls.ExComboBox();
             this.groupBox4 = new ExControls.ExGroupBox();
             this.clbJazyky = new ExControls.ExCheckedListBox();
             this.groupBox3 = new ExControls.ExGroupBox();
@@ -292,8 +291,7 @@ namespace GVDEditor.Forms
             this.groupBox5.Controls.Add(this.lVariantHelp);
             this.groupBox5.Controls.Add(this.nudVarianta);
             this.groupBox5.Controls.Add(this.lVyluka);
-            this.groupBox5.Controls.Add(this.lVylukaHelp);
-            this.groupBox5.Controls.Add(this.nudVyluka);
+            this.groupBox5.Controls.Add(this.cbVyluka);
             this.groupBox5.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
@@ -1317,21 +1315,45 @@ namespace GVDEditor.Forms
             // 
             resources.ApplyResources(this.lVyluka, "lVyluka");
             this.lVyluka.Name = "lVyluka";
-            // 
-            // lVylukaHelp
-            // 
-            resources.ApplyResources(this.lVylukaHelp, "lVylukaHelp");
-            this.lVylukaHelp.Name = "lVylukaHelp";
-            // 
-            // nudVyluka
-            // 
-            resources.ApplyResources(this.nudVyluka, "nudVyluka");
-            this.nudVyluka.ArrowsColor = System.Drawing.Color.Empty;
-            this.nudVyluka.BorderColor = System.Drawing.Color.Empty;
-            this.nudVyluka.HighlightColor = System.Drawing.Color.Empty;
-            this.nudVyluka.SelectedButtonColor = System.Drawing.Color.Empty;
-            this.nudVyluka.Maximum = new decimal(new int[] { 2147483647, 0, 0, 0});
-            this.nudVyluka.Name = "nudVyluka";
+            //
+            // cbVyluka
+            //
+            this.cbVyluka.DropDownSelectedRowBackColor = System.Drawing.Color.Empty;
+            this.cbVyluka.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbVyluka.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.cbVyluka.FormattingEnabled = true;
+            resources.ApplyResources(this.cbVyluka, "cbVyluka");
+            this.cbVyluka.Name = "cbVyluka";
+            this.cbVyluka.StyleDisabled.ArrowColor = null;
+            this.cbVyluka.StyleDisabled.BackColor = null;
+            this.cbVyluka.StyleDisabled.BorderColor = null;
+            this.cbVyluka.StyleDisabled.ButtonBackColor = null;
+            this.cbVyluka.StyleDisabled.ButtonBorderColor = null;
+            this.cbVyluka.StyleDisabled.ButtonRenderFirst = null;
+            this.cbVyluka.StyleDisabled.ForeColor = null;
+            this.cbVyluka.StyleHighlight.ArrowColor = null;
+            this.cbVyluka.StyleHighlight.BackColor = null;
+            this.cbVyluka.StyleHighlight.BorderColor = null;
+            this.cbVyluka.StyleHighlight.ButtonBackColor = null;
+            this.cbVyluka.StyleHighlight.ButtonBorderColor = null;
+            this.cbVyluka.StyleHighlight.ButtonRenderFirst = null;
+            this.cbVyluka.StyleHighlight.ForeColor = null;
+            this.cbVyluka.StyleNormal.ArrowColor = null;
+            this.cbVyluka.StyleNormal.BackColor = null;
+            this.cbVyluka.StyleNormal.BorderColor = null;
+            this.cbVyluka.StyleNormal.ButtonBackColor = null;
+            this.cbVyluka.StyleNormal.ButtonBorderColor = null;
+            this.cbVyluka.StyleNormal.ButtonRenderFirst = null;
+            this.cbVyluka.StyleNormal.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.cbVyluka.StyleSelected.ArrowColor = null;
+            this.cbVyluka.StyleSelected.BackColor = null;
+            this.cbVyluka.StyleSelected.BorderColor = null;
+            this.cbVyluka.StyleSelected.ButtonBackColor = null;
+            this.cbVyluka.StyleSelected.ButtonBorderColor = null;
+            this.cbVyluka.StyleSelected.ButtonRenderFirst = null;
+            this.cbVyluka.StyleSelected.ForeColor = null;
+            this.cbVyluka.UseDarkScrollBar = false;
+            this.cbVyluka.SelectedIndexChanged += new System.EventHandler(this.cbVyluka_SelectedIndexChanged);
             // 
             // FEditTrain
             // 
@@ -1473,7 +1495,7 @@ namespace GVDEditor.Forms
         private ExControls.ExButton bPlay;
         private ExGroupBox groupBox5;
         private ExNumericUpDown nudVarianta;
-        private ExControls.ExNumericUpDown nudVyluka;
+        private ExControls.ExComboBox cbVyluka;
         private DataGridViewExCheckBoxColumn isVDlhomHlaseniDataGridViewCheckBoxColumn2;
         private DataGridViewExCheckBoxColumn isVKratkomHlaseniDataGridViewCheckBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
@@ -1483,7 +1505,6 @@ namespace GVDEditor.Forms
         private ExGroupBox groupBox6;
         private System.Windows.Forms.Label label26;
         private Label lVariantHelp;
-        private System.Windows.Forms.Label lVylukaHelp;
         private System.Windows.Forms.Label lVyluka;
         private DataGridViewExCheckBoxColumn isVDlhomHlaseniDataGridViewCheckBoxColumn3;
         private DataGridViewExCheckBoxColumn isVKratkomHlaseniDataGridViewCheckBoxColumn3;

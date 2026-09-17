@@ -4188,55 +4188,25 @@
   <data name="&gt;&gt;lVyluka.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="nudVyluka.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 47</value>
+  <data name="cbVyluka.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 46</value>
   </data>
-  <data name="nudVyluka.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 20</value>
+  <data name="cbVyluka.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 21</value>
   </data>
-  <data name="nudVyluka.TabIndex" type="System.Int32, mscorlib">
+  <data name="cbVyluka.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;nudVyluka.Name" xml:space="preserve">
-    <value>nudVyluka</value>
+  <data name="&gt;&gt;cbVyluka.Name" xml:space="preserve">
+    <value>cbVyluka</value>
   </data>
-  <data name="&gt;&gt;nudVyluka.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8303.31039, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;cbVyluka.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8303.31039, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;nudVyluka.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cbVyluka.Parent" xml:space="preserve">
     <value>groupBox5</value>
   </data>
-  <data name="&gt;&gt;nudVyluka.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cbVyluka.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="lVylukaHelp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>142, 50</value>
-  </data>
-  <data name="lVylukaHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 13</value>
-  </data>
-  <data name="lVylukaHelp.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="lVylukaHelp.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lVylukaHelp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lVylukaHelp.Text" xml:space="preserve">
-    <value>(0 = žiadna)</value>
-  </data>
-  <data name="&gt;&gt;lVylukaHelp.Name" xml:space="preserve">
-    <value>lVylukaHelp</value>
-  </data>
-  <data name="&gt;&gt;lVylukaHelp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lVylukaHelp.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;lVylukaHelp.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
 </root>
