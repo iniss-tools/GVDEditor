@@ -68,6 +68,7 @@ namespace GVDEditor.Forms
             //
             // tlpMain
             //
+            resources.ApplyResources(this.tlpMain, "tlpMain");
             this.tlpMain.ColumnCount = 1;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.Controls.Add(this.flpTop, 0, 0);
@@ -80,6 +81,7 @@ namespace GVDEditor.Forms
             //
             // flpTop
             //
+            resources.ApplyResources(this.flpTop, "flpTop");
             this.flpTop.AutoSize = true;
             this.flpTop.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flpTop.Controls.Add(this.lTrain);
@@ -107,6 +109,7 @@ namespace GVDEditor.Forms
             //
             // cbTrain
             //
+            resources.ApplyResources(this.cbTrain, "cbTrain");
             this.cbTrain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTrain.Margin = new System.Windows.Forms.Padding(3, 3, 12, 3);
             this.cbTrain.Name = "cbTrain";
@@ -122,6 +125,7 @@ namespace GVDEditor.Forms
             //
             // nudDelayArr
             //
+            resources.ApplyResources(this.nudDelayArr, "nudDelayArr");
             this.nudDelayArr.Margin = new System.Windows.Forms.Padding(3, 3, 12, 3);
             this.nudDelayArr.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
             this.nudDelayArr.Name = "nudDelayArr";
@@ -137,6 +141,7 @@ namespace GVDEditor.Forms
             //
             // nudDelayDep
             //
+            resources.ApplyResources(this.nudDelayDep, "nudDelayDep");
             this.nudDelayDep.Margin = new System.Windows.Forms.Padding(3, 3, 12, 3);
             this.nudDelayDep.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
             this.nudDelayDep.Name = "nudDelayDep";
@@ -190,25 +195,28 @@ namespace GVDEditor.Forms
             //
             // splitMain
             //
+            resources.ApplyResources(this.splitMain, "splitMain");
             this.splitMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitMain.Name = "splitMain";
             this.splitMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
             //
             // splitMain.Panel1
             //
+            resources.ApplyResources(this.splitMain.Panel1, "splitMain.Panel1");
             this.splitMain.Panel1.Controls.Add(this.dgvResult);
             //
             // splitMain.Panel2
             //
+            resources.ApplyResources(this.splitMain.Panel2, "splitMain.Panel2");
             this.splitMain.Panel2.Controls.Add(this.tbSteps);
             this.splitMain.SplitterDistance = 300;
             //
             // dgvResult
             //
+            resources.ApplyResources(this.dgvResult, "dgvResult");
             this.dgvResult.AllowUserToAddRows = false;
             this.dgvResult.AllowUserToDeleteRows = false;
             this.dgvResult.AllowUserToResizeRows = false;
-            this.dgvResult.AutoGenerateColumns = false;
             this.dgvResult.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -230,63 +238,88 @@ namespace GVDEditor.Forms
             this.dgvResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResult.SelectionChanged += new System.EventHandler(this.dgvResult_SelectionChanged);
             //
-            // columns
-            //
-            this.cTable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cTable.DataPropertyName = "Table";
-            this.cTable.Name = "cTable";
-            this.cTable.ReadOnly = true;
-            resources.ApplyResources(this.cTable, "cTable");
-            this.cColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cColumn.DataPropertyName = "Column";
-            this.cColumn.Name = "cColumn";
-            this.cColumn.ReadOnly = true;
-            resources.ApplyResources(this.cColumn, "cColumn");
-            this.cKind.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cKind.DataPropertyName = "Kind";
-            this.cKind.Name = "cKind";
-            this.cKind.ReadOnly = true;
-            resources.ApplyResources(this.cKind, "cKind");
-            this.cDivType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cDivType.DataPropertyName = "DivType";
-            this.cDivType.Name = "cDivType";
-            this.cDivType.ReadOnly = true;
-            resources.ApplyResources(this.cDivType, "cDivType");
-            this.cTab1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cTab1.DataPropertyName = "Tab1";
-            this.cTab1.Name = "cTab1";
-            this.cTab1.ReadOnly = true;
-            resources.ApplyResources(this.cTab1, "cTab1");
-            this.cTab2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cTab2.DataPropertyName = "Tab2";
-            this.cTab2.Name = "cTab2";
-            this.cTab2.ReadOnly = true;
-            resources.ApplyResources(this.cTab2, "cTab2");
-            this.cOwn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cOwn.DataPropertyName = "Own";
-            this.cOwn.Name = "cOwn";
-            this.cOwn.ReadOnly = true;
-            resources.ApplyResources(this.cOwn, "cOwn");
-            this.cResult.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cResult.DataPropertyName = "Result";
-            this.cResult.MinimumWidth = 150;
-            this.cResult.Name = "cResult";
-            this.cResult.ReadOnly = true;
-            resources.ApplyResources(this.cResult, "cResult");
-            this.cFont.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cFont.DataPropertyName = "Font";
-            this.cFont.Name = "cFont";
-            this.cFont.ReadOnly = true;
-            resources.ApplyResources(this.cFont, "cFont");
-            //
             // tbSteps
             //
+            resources.ApplyResources(this.tbSteps, "tbSteps");
             this.tbSteps.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbSteps.Multiline = true;
             this.tbSteps.Name = "tbSteps";
             this.tbSteps.ReadOnly = true;
             this.tbSteps.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.tbSteps.WordWrap = false;
+            //
+            // cTable
+            //
+            this.cTable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cTable.DataPropertyName = "Table";
+            this.cTable.Name = "cTable";
+            this.cTable.ReadOnly = true;
+            resources.ApplyResources(this.cTable, "cTable");
+            //
+            // cColumn
+            //
+            this.cColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cColumn.DataPropertyName = "Column";
+            this.cColumn.Name = "cColumn";
+            this.cColumn.ReadOnly = true;
+            resources.ApplyResources(this.cColumn, "cColumn");
+            //
+            // cKind
+            //
+            this.cKind.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cKind.DataPropertyName = "Kind";
+            this.cKind.Name = "cKind";
+            this.cKind.ReadOnly = true;
+            resources.ApplyResources(this.cKind, "cKind");
+            //
+            // cDivType
+            //
+            this.cDivType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cDivType.DataPropertyName = "DivType";
+            this.cDivType.Name = "cDivType";
+            this.cDivType.ReadOnly = true;
+            resources.ApplyResources(this.cDivType, "cDivType");
+            //
+            // cTab1
+            //
+            this.cTab1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cTab1.DataPropertyName = "Tab1";
+            this.cTab1.Name = "cTab1";
+            this.cTab1.ReadOnly = true;
+            resources.ApplyResources(this.cTab1, "cTab1");
+            //
+            // cTab2
+            //
+            this.cTab2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cTab2.DataPropertyName = "Tab2";
+            this.cTab2.Name = "cTab2";
+            this.cTab2.ReadOnly = true;
+            resources.ApplyResources(this.cTab2, "cTab2");
+            //
+            // cOwn
+            //
+            this.cOwn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cOwn.DataPropertyName = "Own";
+            this.cOwn.Name = "cOwn";
+            this.cOwn.ReadOnly = true;
+            resources.ApplyResources(this.cOwn, "cOwn");
+            //
+            // cResult
+            //
+            this.cResult.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cResult.DataPropertyName = "Result";
+            this.cResult.MinimumWidth = 150;
+            this.cResult.Name = "cResult";
+            this.cResult.ReadOnly = true;
+            resources.ApplyResources(this.cResult, "cResult");
+            //
+            // cFont
+            //
+            this.cFont.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cFont.DataPropertyName = "Font";
+            this.cFont.Name = "cFont";
+            this.cFont.ReadOnly = true;
+            resources.ApplyResources(this.cFont, "cFont");
             //
             // FTabTabPreview
             //

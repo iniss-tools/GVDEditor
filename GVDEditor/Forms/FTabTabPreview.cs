@@ -48,6 +48,7 @@ public partial class FTabTabPreview : Form
             cbTrain.Items.Add(new TrainItem(t));
         if (cbTrain.Items.Count > 0) cbTrain.SelectedIndex = 0;
 
+        dgvResult.AutoGenerateColumns = false; // navrhar tuto vlastnost neserializuje
         dgvResult.DataSource = _rows;
         _loading = false;
         Recompute();

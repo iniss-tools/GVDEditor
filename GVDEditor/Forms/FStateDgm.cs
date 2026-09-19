@@ -101,6 +101,8 @@ public partial class FStateDgm : Form
             ed.Changed += Editor_Changed;
         }
 
+        // stlpce su v navrhu; AutoGenerateColumns navrhar neserializuje
+        dgvEvents.AutoGenerateColumns = dgvStarters.AutoGenerateColumns = dgvProblems.AutoGenerateColumns = false;
         dgvEvents.DataSource = _eventRows;
         dgvStarters.DataSource = _starterRows;
         dgvProblems.DataSource = _problems;

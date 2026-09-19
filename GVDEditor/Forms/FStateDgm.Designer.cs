@@ -1,4 +1,4 @@
-namespace GVDEditor.Forms
+﻿namespace GVDEditor.Forms
 {
     partial class FStateDgm
     {
@@ -244,7 +244,6 @@ namespace GVDEditor.Forms
             dgvEvents.AllowUserToAddRows = false;
             dgvEvents.AllowUserToDeleteRows = false;
             dgvEvents.AllowUserToResizeRows = false;
-            dgvEvents.AutoGenerateColumns = false;
             dgvEvents.BackgroundColor = SystemColors.Control;
             dgvEvents.BorderStyle = BorderStyle.None;
             dgvEvents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -257,62 +256,6 @@ namespace GVDEditor.Forms
             dgvEvents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEvents.CellDoubleClick += dgvEvents_CellDoubleClick;
             dgvEvents.SelectionChanged += dgvEvents_SelectionChanged;
-            // 
-            // cEvCtrl
-            // 
-            cEvCtrl.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            cEvCtrl.DataPropertyName = "CtrlId";
-            resources.ApplyResources(cEvCtrl, "cEvCtrl");
-            cEvCtrl.Name = "cEvCtrl";
-            cEvCtrl.ReadOnly = true;
-            // 
-            // cEvDesign
-            // 
-            cEvDesign.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            cEvDesign.DataPropertyName = "Design";
-            resources.ApplyResources(cEvDesign, "cEvDesign");
-            cEvDesign.Name = "cEvDesign";
-            cEvDesign.ReadOnly = true;
-            // 
-            // cEvKey
-            // 
-            cEvKey.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            cEvKey.DataPropertyName = "Key";
-            resources.ApplyResources(cEvKey, "cEvKey");
-            cEvKey.Name = "cEvKey";
-            cEvKey.ReadOnly = true;
-            // 
-            // cEvClass
-            // 
-            cEvClass.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            cEvClass.DataPropertyName = "Class";
-            resources.ApplyResources(cEvClass, "cEvClass");
-            cEvClass.Name = "cEvClass";
-            cEvClass.ReadOnly = true;
-            // 
-            // cEvNext
-            // 
-            cEvNext.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            cEvNext.DataPropertyName = "NextState";
-            resources.ApplyResources(cEvNext, "cEvNext");
-            cEvNext.Name = "cEvNext";
-            cEvNext.ReadOnly = true;
-            // 
-            // cEvReport
-            // 
-            cEvReport.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            cEvReport.DataPropertyName = "ReportKey";
-            resources.ApplyResources(cEvReport, "cEvReport");
-            cEvReport.Name = "cEvReport";
-            cEvReport.ReadOnly = true;
-            // 
-            // cEvDialog
-            // 
-            cEvDialog.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            cEvDialog.DataPropertyName = "Dialog";
-            resources.ApplyResources(cEvDialog, "cEvDialog");
-            cEvDialog.Name = "cEvDialog";
-            cEvDialog.ReadOnly = true;
             // 
             // tsEvents
             // 
@@ -366,7 +309,6 @@ namespace GVDEditor.Forms
             dgvStarters.AllowUserToAddRows = false;
             dgvStarters.AllowUserToDeleteRows = false;
             dgvStarters.AllowUserToResizeRows = false;
-            dgvStarters.AutoGenerateColumns = false;
             dgvStarters.BackgroundColor = SystemColors.Control;
             dgvStarters.BorderStyle = BorderStyle.None;
             dgvStarters.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -379,30 +321,6 @@ namespace GVDEditor.Forms
             dgvStarters.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvStarters.CellDoubleClick += dgvStarters_CellDoubleClick;
             dgvStarters.SelectionChanged += dgvStarters_SelectionChanged;
-            // 
-            // cStKey
-            // 
-            cStKey.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            cStKey.DataPropertyName = "Key";
-            resources.ApplyResources(cStKey, "cStKey");
-            cStKey.Name = "cStKey";
-            cStKey.ReadOnly = true;
-            // 
-            // cStEvent
-            // 
-            cStEvent.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            cStEvent.DataPropertyName = "EventKey";
-            resources.ApplyResources(cStEvent, "cStEvent");
-            cStEvent.Name = "cStEvent";
-            cStEvent.ReadOnly = true;
-            // 
-            // cStText
-            // 
-            cStText.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            cStText.DataPropertyName = "Text";
-            resources.ApplyResources(cStText, "cStText");
-            cStText.Name = "cStText";
-            cStText.ReadOnly = true;
             // 
             // tsStarters
             // 
@@ -441,7 +359,6 @@ namespace GVDEditor.Forms
             dgvProblems.AllowUserToAddRows = false;
             dgvProblems.AllowUserToDeleteRows = false;
             dgvProblems.AllowUserToResizeRows = false;
-            dgvProblems.AutoGenerateColumns = false;
             dgvProblems.BackgroundColor = SystemColors.Control;
             dgvProblems.BorderStyle = BorderStyle.None;
             dgvProblems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -455,39 +372,6 @@ namespace GVDEditor.Forms
             dgvProblems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProblems.CellDoubleClick += dgvProblems_CellDoubleClick;
             dgvProblems.CellFormatting += dgvProblems_CellFormatting;
-            // 
-            // cProbType
-            // 
-            cProbType.DataPropertyName = "Severity";
-            cProbType.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            resources.ApplyResources(cProbType, "cProbType");
-            cProbType.Name = "cProbType";
-            cProbType.ReadOnly = true;
-            cProbType.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // cProbCode
-            // 
-            cProbCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            cProbCode.DataPropertyName = "Code";
-            resources.ApplyResources(cProbCode, "cProbCode");
-            cProbCode.Name = "cProbCode";
-            cProbCode.ReadOnly = true;
-            // 
-            // cProbPath
-            // 
-            cProbPath.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            cProbPath.DataPropertyName = "Path";
-            resources.ApplyResources(cProbPath, "cProbPath");
-            cProbPath.Name = "cProbPath";
-            cProbPath.ReadOnly = true;
-            // 
-            // cProbMessage
-            // 
-            cProbMessage.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            cProbMessage.DataPropertyName = "Message";
-            resources.ApplyResources(cProbMessage, "cProbMessage");
-            cProbMessage.Name = "cProbMessage";
-            cProbMessage.ReadOnly = true;
             // 
             // tsMain
             // 
@@ -615,6 +499,119 @@ namespace GVDEditor.Forms
             resources.ApplyResources(tsslStatus, "tsslStatus");
             tsslStatus.Spring = true;
             // 
+            // cEvCtrl
+            // 
+            cEvCtrl.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cEvCtrl.DataPropertyName = "CtrlId";
+            resources.ApplyResources(cEvCtrl, "cEvCtrl");
+            cEvCtrl.Name = "cEvCtrl";
+            cEvCtrl.ReadOnly = true;
+            // 
+            // cEvDesign
+            // 
+            cEvDesign.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cEvDesign.DataPropertyName = "Design";
+            resources.ApplyResources(cEvDesign, "cEvDesign");
+            cEvDesign.Name = "cEvDesign";
+            cEvDesign.ReadOnly = true;
+            // 
+            // cEvKey
+            // 
+            cEvKey.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cEvKey.DataPropertyName = "Key";
+            resources.ApplyResources(cEvKey, "cEvKey");
+            cEvKey.Name = "cEvKey";
+            cEvKey.ReadOnly = true;
+            // 
+            // cEvClass
+            // 
+            cEvClass.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cEvClass.DataPropertyName = "Class";
+            resources.ApplyResources(cEvClass, "cEvClass");
+            cEvClass.Name = "cEvClass";
+            cEvClass.ReadOnly = true;
+            // 
+            // cEvNext
+            // 
+            cEvNext.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cEvNext.DataPropertyName = "NextState";
+            resources.ApplyResources(cEvNext, "cEvNext");
+            cEvNext.Name = "cEvNext";
+            cEvNext.ReadOnly = true;
+            // 
+            // cEvReport
+            // 
+            cEvReport.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cEvReport.DataPropertyName = "ReportKey";
+            resources.ApplyResources(cEvReport, "cEvReport");
+            cEvReport.Name = "cEvReport";
+            cEvReport.ReadOnly = true;
+            // 
+            // cEvDialog
+            // 
+            cEvDialog.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            cEvDialog.DataPropertyName = "Dialog";
+            resources.ApplyResources(cEvDialog, "cEvDialog");
+            cEvDialog.Name = "cEvDialog";
+            cEvDialog.ReadOnly = true;
+            // 
+            // cStKey
+            // 
+            cStKey.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cStKey.DataPropertyName = "Key";
+            resources.ApplyResources(cStKey, "cStKey");
+            cStKey.Name = "cStKey";
+            cStKey.ReadOnly = true;
+            // 
+            // cStEvent
+            // 
+            cStEvent.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cStEvent.DataPropertyName = "EventKey";
+            resources.ApplyResources(cStEvent, "cStEvent");
+            cStEvent.Name = "cStEvent";
+            cStEvent.ReadOnly = true;
+            // 
+            // cStText
+            // 
+            cStText.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            cStText.DataPropertyName = "Text";
+            resources.ApplyResources(cStText, "cStText");
+            cStText.Name = "cStText";
+            cStText.ReadOnly = true;
+            // 
+            // cProbType
+            // 
+            cProbType.DataPropertyName = "Severity";
+            cProbType.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            resources.ApplyResources(cProbType, "cProbType");
+            cProbType.Name = "cProbType";
+            cProbType.ReadOnly = true;
+            cProbType.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // cProbCode
+            // 
+            cProbCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cProbCode.DataPropertyName = "Code";
+            resources.ApplyResources(cProbCode, "cProbCode");
+            cProbCode.Name = "cProbCode";
+            cProbCode.ReadOnly = true;
+            // 
+            // cProbPath
+            // 
+            cProbPath.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cProbPath.DataPropertyName = "Path";
+            resources.ApplyResources(cProbPath, "cProbPath");
+            cProbPath.Name = "cProbPath";
+            cProbPath.ReadOnly = true;
+            // 
+            // cProbMessage
+            // 
+            cProbMessage.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            cProbMessage.DataPropertyName = "Message";
+            resources.ApplyResources(cProbMessage, "cProbMessage");
+            cProbMessage.Name = "cProbMessage";
+            cProbMessage.ReadOnly = true;
+            // 
             // FStateDgm
             // 
             resources.ApplyResources(this, "$this");
@@ -625,6 +622,7 @@ namespace GVDEditor.Forms
             KeyPreview = true;
             Name = "FStateDgm";
             ShowIcon = false;
+            WindowState = FormWindowState.Maximized;
             FormClosing += FStateDgm_FormClosing;
             Load += FStateDgm_Load;
             KeyDown += FStateDgm_KeyDown;
@@ -643,7 +641,6 @@ namespace GVDEditor.Forms
             tcCenter.ResumeLayout(false);
             tpGraph.ResumeLayout(false);
             tpText.ResumeLayout(false);
-            tpText.PerformLayout();
             tcBottom.ResumeLayout(false);
             tpEvents.ResumeLayout(false);
             tpEvents.PerformLayout();

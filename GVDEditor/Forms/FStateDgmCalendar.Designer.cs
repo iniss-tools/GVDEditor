@@ -156,7 +156,6 @@ namespace GVDEditor.Forms
             this.dgvCalendar.AllowUserToAddRows = false;
             this.dgvCalendar.AllowUserToDeleteRows = false;
             this.dgvCalendar.AllowUserToResizeRows = false;
-            this.dgvCalendar.AutoGenerateColumns = false;
             this.dgvCalendar.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvCalendar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCalendar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -177,6 +176,11 @@ namespace GVDEditor.Forms
             this.dgvCalendar.RowHeadersVisible = false;
             this.dgvCalendar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCalendar.SelectionChanged += new System.EventHandler(this.dgvCalendar_SelectionChanged);
+            //
+            // lInfo
+            //
+            resources.ApplyResources(this.lInfo, "lInfo");
+            this.lInfo.Name = "lInfo";
             //
             // cEvent
             //
@@ -257,11 +261,6 @@ namespace GVDEditor.Forms
             resources.ApplyResources(this.cNote, "cNote");
             this.cNote.Name = "cNote";
             this.cNote.ReadOnly = true;
-            //
-            // lInfo
-            //
-            resources.ApplyResources(this.lInfo, "lInfo");
-            this.lInfo.Name = "lInfo";
             //
             // FStateDgmCalendar
             //

@@ -44,6 +44,7 @@ public partial class FStateDgmCalendar : Form
         if (cbTrain.Items.Count > 0)
             cbTrain.SelectedIndex = Math.Max(0, cbTrain.Items.Cast<TrainItem>().ToList().FindIndex(i => i.Train == train));
 
+        dgvCalendar.AutoGenerateColumns = false; // navrhar tuto vlastnost neserializuje
         dgvCalendar.DataSource = _rows;
         _loading = false;
         Recompute();

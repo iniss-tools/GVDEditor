@@ -190,51 +190,6 @@
   <data name="scRight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
-  <data name="pnlGraph.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="pnlGraph.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 3</value>
-  </data>
-  <data name="pnlGraph.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="pnlGraph.Size" type="System.Drawing.Size, System.Drawing">
-    <value>543, 524</value>
-  </data>
-  <data name="pnlGraph.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;pnlGraph.Name" xml:space="preserve">
-    <value>pnlGraph</value>
-  </data>
-  <data name="&gt;&gt;pnlGraph.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlGraph.Parent" xml:space="preserve">
-    <value>tpGraph</value>
-  </data>
-  <data name="&gt;&gt;pnlGraph.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tpGraph.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="tpGraph.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="tpGraph.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="tpGraph.Size" type="System.Drawing.Size, System.Drawing">
-    <value>551, 530</value>
-  </data>
-  <data name="tpGraph.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tpGraph.Text" xml:space="preserve">
-    <value>Graf</value>
-  </data>
   <data name="&gt;&gt;tpGraph.Name" xml:space="preserve">
     <value>tpGraph</value>
   </data>
@@ -246,51 +201,6 @@
   </data>
   <data name="&gt;&gt;tpGraph.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="scText.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="scText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 3</value>
-  </data>
-  <data name="scText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="scText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>543, 524</value>
-  </data>
-  <data name="scText.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;scText.Name" xml:space="preserve">
-    <value>scText</value>
-  </data>
-  <data name="&gt;&gt;scText.Type" xml:space="preserve">
-    <value>GVDEditor.Controls.MyScintilla, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;scText.Parent" xml:space="preserve">
-    <value>tpText</value>
-  </data>
-  <data name="&gt;&gt;scText.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tpText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="tpText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="tpText.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="tpText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>551, 530</value>
-  </data>
-  <data name="tpText.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tpText.Text" xml:space="preserve">
-    <value>Text súboru</value>
   </data>
   <data name="&gt;&gt;tpText.Name" xml:space="preserve">
     <value>tpText</value>
@@ -454,158 +364,6 @@
   <data name="&gt;&gt;scOuter.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="dgvEvents.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="dgvEvents.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="dgvEvents.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="dgvEvents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1485, 260</value>
-  </data>
-  <data name="dgvEvents.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;dgvEvents.Name" xml:space="preserve">
-    <value>dgvEvents</value>
-  </data>
-  <data name="&gt;&gt;dgvEvents.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvEvents.Parent" xml:space="preserve">
-    <value>tpEvents</value>
-  </data>
-  <data name="&gt;&gt;dgvEvents.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="tsEvents.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="tsbEvAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAe5JREFUSEvt
-        lrtKA0EUhgP6BF5ewcYbVl6qdGJ2JntGCKK+gGDlpRF8E4nXLuCcVdughW9gJagRaxW0T4j8IRvi2THZ
-        3QRs8sMHw84552d3ZudMJjNQB2XvssNe4C8pazZ14O8AjJU1i5iT8T1LWTOrrDlTTJ+Kqf4HH4jJX+Vn
-        ZH5i6Rs9ppjOFVPNYfQXNc10aqwZlfViybNmSjFVHIXj8oIasm5HNU2/HcUSoZm+9LWelPWdwifSTM+y
-        SFo8pteVUmFc+kSkmS5kcq9gzaXPL2FHxtlIW+XtevnttgHGct5BLX+Vn5N+LTV/GZkU4eD+sB4KYznv
-        wmM6kX4N4QBo/IuOJEkaY9R2HjKNEyka7CSlcV1fri5IX3zmTRkYgnWEQcjRQ7FljHH7XKc110zr0jej
-        A39fBoZgE8UVYmV+iMe0J30zeCgD+22srNmVvnjjjUhgk359ahX4a9L3/zZXoVQYUkzvMthFSmP37wTh
-        aHMkREhlbM2x9GspF/jTiqkaSRKkODKrXVtk3LdOSFH6RLRcKowopidHcloquMlIH6fQvNHEHUUSkegi
-        ECpnzYRiepTF4oLLRGLTUM3bCNa8a49uo4odjCWT9RILux39tEvbfEdM192bRjhkcPqgy4QXeoxzgT+P
-        ORk/ULt+AKeN9QnoFCnOAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="tsbEvAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 22</value>
-  </data>
-  <data name="tsbEvAdd.Text" xml:space="preserve">
-    <value>Pridať</value>
-  </data>
-  <data name="tsbEvEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAP9JREFUSEtj
-        YBgFUPCkqMj5SUmJJbo4VcCx+YsDnhYX/3laXPzjeXGxJ7o8RWD9viNhG/Yd/b1/5brDT4uL/4MsoZpP
-        /s9kCL2/PODkhn1Hf23Yd/Q/1JI/T0pKnNDVkgxAhv+fwfD7/wyG/w9W+J+BWvIbFFzoakkG/6czRPyf
-        wfAHZDgM318RdHTj/qMR6GpJBsguR8Igy2LQ1ZIMRg3HCkYNxwqGsOELGPzQcyiYP52B8hwKAv8PsO/6
-        v4L5FNVdDgJLGlT43m3n+f7/IPsPqCXUMxwEemuN88Kjnf+/3sr74/9+9h3/5zP4oquhCEys1Q8DWbKq
-        Q4kfXW5kAwCzWSgWANLyLQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="tsbEvEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
-  </data>
-  <data name="tsbEvEdit.Text" xml:space="preserve">
-    <value>Upraviť</value>
-  </data>
-  <data name="tsbEvDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAORJREFUSEvt
-        lrEOgjAQhlkUH4TNkVBX4rHwAD6ML6U4KA/WOtdcQ4meBVrCwdIvYer997VNG5okkcja6DpLFZyu+nLc
-        07EpMGOydZbSsVEwKKvioUBoVYlnSAOd5zsJ4m6yIFpdlgdaMwjOtguaT4JofFZuJgyi+c5iL1o3SDfr
-        20+DiZWTlXplnITIF5NafOSLSy1jcjapxSmH4tWffA6pxS1nllo6ObkuKC1aNilixGeyvdxi50Hi3mqX
-        9M19uFxS9uvk09inJoiQhiG1o8xpNCfzx3a/xa0eAgjKVn/6RCJL8AFJ8NPKaf1BCQAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
-  <data name="tsbEvDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 22</value>
-  </data>
-  <data name="tsbEvDelete.Text" xml:space="preserve">
-    <value>Odstrániť</value>
-  </data>
-  <data name="tsbEvUp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAARpJREFUWEftlLFKA0EURTeCWIlVwMq8WYN+QJrUNn6DlR9hIKVfYBHc9yCQwk7w
-        C6z8gxSWFtYJCYi5swERdGQloLyNYZLsKsIcOM3uvHu7G0WBQCDwn9mXaSNTf/8V9uQ5JsaQ2I7N5eRA
-        /y+VegdVEvtgxLqZj7Uk3dXvSuGwN942gv638k9JcB93n3b0+0JpdN2mYdzq8i9xV++4LX1XDM5VDOMq
-        X6pkXEfnbkOfrw0JLnJlP0iMRN+vBXHa0iUenumclYgTe2IEb3MKFst4J0lPdd5SxGKPSPCSC/eUGK8k
-        6bHO9SJbOGILHbq0jGlNJk2dv5Bs5YxgkAtbURI78l7LOStXlH5rSYK2EXtThlm27gsEAoE/5wPB598h
-        BPvmVAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="tsbEvUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="tsbEvUp.Text" xml:space="preserve">
-    <value>▲</value>
-  </data>
-  <data name="tsbEvDown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAR5JREFUWEft1LFKA0EQBuBLQAQhnaI2uRkNsbMwT2DlK9j5AHY2lj5A0oQ4A0dS
-        pLLwCWys0/gCFqkFbeLMCSLoSgoFZ6NJLncQYT/4m2X3/7uNoiAIgmUDLOfIel1Ext12z1NPZB1Y75HV
-        5ZwhdnXT7k1U5dEOsjxMKMkUYH3EznPd7vwJSfeBdGTL5g2QSrWTHtj+mcSkh8DyaktnDZC8AadHtncu
-        Mesxsrzb8qkh+QBOT2xfJsh66g1MC+mZ7VkIkLS8kV8jTft+cc6VkKTvj/0MsFxFF65sn+eikbgVJLmx
-        o9/jJLe1tlu173K1nbg1JB144yx3e72nir1fiFpbNsxvOYwv0y17r1Bfv2WmXy4vu/zSGMeeB0EQ/Cuf
-        +a3e9pYGznsAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="tsbEvDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="tsbEvDown.Text" xml:space="preserve">
-    <value>▼</value>
-  </data>
-  <data name="tsEvents.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tsEvents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1485, 25</value>
-  </data>
-  <data name="tsEvents.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tsEvents.Name" xml:space="preserve">
-    <value>tsEvents</value>
-  </data>
-  <data name="&gt;&gt;tsEvents.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsEvents.Parent" xml:space="preserve">
-    <value>tpEvents</value>
-  </data>
-  <data name="&gt;&gt;tsEvents.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tpEvents.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="tpEvents.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="tpEvents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1485, 285</value>
-  </data>
-  <data name="tpEvents.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tpEvents.Text" xml:space="preserve">
-    <value>Akcie a tlačidlá</value>
-  </data>
   <data name="&gt;&gt;tpEvents.Name" xml:space="preserve">
     <value>tpEvents</value>
   </data>
@@ -618,124 +376,6 @@
   <data name="&gt;&gt;tpEvents.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="dgvStarters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="dgvStarters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="dgvStarters.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="dgvStarters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1485, 260</value>
-  </data>
-  <data name="dgvStarters.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;dgvStarters.Name" xml:space="preserve">
-    <value>dgvStarters</value>
-  </data>
-  <data name="&gt;&gt;dgvStarters.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvStarters.Parent" xml:space="preserve">
-    <value>tpStarters</value>
-  </data>
-  <data name="&gt;&gt;dgvStarters.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="tsStarters.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>114, 17</value>
-  </metadata>
-  <data name="tsbStAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAe5JREFUSEvt
-        lrtKA0EUhgP6BF5ewcYbVl6qdGJ2JntGCKK+gGDlpRF8E4nXLuCcVdughW9gJagRaxW0T4j8IRvi2THZ
-        3QRs8sMHw84552d3ZudMJjNQB2XvssNe4C8pazZ14O8AjJU1i5iT8T1LWTOrrDlTTJ+Kqf4HH4jJX+Vn
-        ZH5i6Rs9ppjOFVPNYfQXNc10aqwZlfViybNmSjFVHIXj8oIasm5HNU2/HcUSoZm+9LWelPWdwifSTM+y
-        SFo8pteVUmFc+kSkmS5kcq9gzaXPL2FHxtlIW+XtevnttgHGct5BLX+Vn5N+LTV/GZkU4eD+sB4KYznv
-        wmM6kX4N4QBo/IuOJEkaY9R2HjKNEyka7CSlcV1fri5IX3zmTRkYgnWEQcjRQ7FljHH7XKc110zr0jej
-        A39fBoZgE8UVYmV+iMe0J30zeCgD+22srNmVvnjjjUhgk359ahX4a9L3/zZXoVQYUkzvMthFSmP37wTh
-        aHMkREhlbM2x9GspF/jTiqkaSRKkODKrXVtk3LdOSFH6RLRcKowopidHcloquMlIH6fQvNHEHUUSkegi
-        ECpnzYRiepTF4oLLRGLTUM3bCNa8a49uo4odjCWT9RILux39tEvbfEdM192bRjhkcPqgy4QXeoxzgT+P
-        ORk/ULt+AKeN9QnoFCnOAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="tsbStAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 22</value>
-  </data>
-  <data name="tsbStAdd.Text" xml:space="preserve">
-    <value>Pridať</value>
-  </data>
-  <data name="tsbStEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAP9JREFUSEtj
-        YBgFUPCkqMj5SUmJJbo4VcCx+YsDnhYX/3laXPzjeXGxJ7o8RWD9viNhG/Yd/b1/5brDT4uL/4MsoZpP
-        /s9kCL2/PODkhn1Hf23Yd/Q/1JI/T0pKnNDVkgxAhv+fwfD7/wyG/w9W+J+BWvIbFFzoakkG/6czRPyf
-        wfAHZDgM318RdHTj/qMR6GpJBsguR8Igy2LQ1ZIMRg3HCkYNxwqGsOELGPzQcyiYP52B8hwKAv8PsO/6
-        v4L5FNVdDgJLGlT43m3n+f7/IPsPqCXUMxwEemuN88Kjnf+/3sr74/9+9h3/5zP4oquhCEys1Q8DWbKq
-        Q4kfXW5kAwCzWSgWANLyLQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="tsbStEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
-  </data>
-  <data name="tsbStEdit.Text" xml:space="preserve">
-    <value>Upraviť</value>
-  </data>
-  <data name="tsbStDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAORJREFUSEvt
-        lrEOgjAQhlkUH4TNkVBX4rHwAD6ML6U4KA/WOtdcQ4meBVrCwdIvYer997VNG5okkcja6DpLFZyu+nLc
-        07EpMGOydZbSsVEwKKvioUBoVYlnSAOd5zsJ4m6yIFpdlgdaMwjOtguaT4JofFZuJgyi+c5iL1o3SDfr
-        20+DiZWTlXplnITIF5NafOSLSy1jcjapxSmH4tWffA6pxS1nllo6ObkuKC1aNilixGeyvdxi50Hi3mqX
-        9M19uFxS9uvk09inJoiQhiG1o8xpNCfzx3a/xa0eAgjKVn/6RCJL8AFJ8NPKaf1BCQAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
-  <data name="tsbStDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 22</value>
-  </data>
-  <data name="tsbStDelete.Text" xml:space="preserve">
-    <value>Odstrániť</value>
-  </data>
-  <data name="tsStarters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tsStarters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1485, 25</value>
-  </data>
-  <data name="tsStarters.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tsStarters.Name" xml:space="preserve">
-    <value>tsStarters</value>
-  </data>
-  <data name="&gt;&gt;tsStarters.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsStarters.Parent" xml:space="preserve">
-    <value>tpStarters</value>
-  </data>
-  <data name="&gt;&gt;tsStarters.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tpStarters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="tpStarters.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="tpStarters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1485, 285</value>
-  </data>
-  <data name="tpStarters.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tpStarters.Text" xml:space="preserve">
-    <value>Štartéry</value>
-  </data>
   <data name="&gt;&gt;tpStarters.Name" xml:space="preserve">
     <value>tpStarters</value>
   </data>
@@ -747,48 +387,6 @@
   </data>
   <data name="&gt;&gt;tpStarters.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="dgvProblems.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="dgvProblems.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="dgvProblems.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="dgvProblems.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1485, 285</value>
-  </data>
-  <data name="dgvProblems.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;dgvProblems.Name" xml:space="preserve">
-    <value>dgvProblems</value>
-  </data>
-  <data name="&gt;&gt;dgvProblems.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvProblems.Parent" xml:space="preserve">
-    <value>tpProblems</value>
-  </data>
-  <data name="&gt;&gt;dgvProblems.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tpProblems.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="tpProblems.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="tpProblems.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1485, 285</value>
-  </data>
-  <data name="tpProblems.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tpProblems.Text" xml:space="preserve">
-    <value>Problémy</value>
   </data>
   <data name="&gt;&gt;tpProblems.Name" xml:space="preserve">
     <value>tpProblems</value>
@@ -865,9 +463,582 @@
   <data name="&gt;&gt;scOuter.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;pnlGraph.Name" xml:space="preserve">
+    <value>pnlGraph</value>
+  </data>
+  <data name="&gt;&gt;pnlGraph.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlGraph.Parent" xml:space="preserve">
+    <value>tpGraph</value>
+  </data>
+  <data name="&gt;&gt;pnlGraph.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tpGraph.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="tpGraph.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="tpGraph.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="tpGraph.Size" type="System.Drawing.Size, System.Drawing">
+    <value>551, 530</value>
+  </data>
+  <data name="tpGraph.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tpGraph.Text" xml:space="preserve">
+    <value>Graf</value>
+  </data>
+  <data name="&gt;&gt;tpGraph.Name" xml:space="preserve">
+    <value>tpGraph</value>
+  </data>
+  <data name="&gt;&gt;tpGraph.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpGraph.Parent" xml:space="preserve">
+    <value>tcCenter</value>
+  </data>
+  <data name="&gt;&gt;tpGraph.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnlGraph.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlGraph.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 3</value>
+  </data>
+  <data name="pnlGraph.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="pnlGraph.Size" type="System.Drawing.Size, System.Drawing">
+    <value>543, 524</value>
+  </data>
+  <data name="pnlGraph.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pnlGraph.Name" xml:space="preserve">
+    <value>pnlGraph</value>
+  </data>
+  <data name="&gt;&gt;pnlGraph.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlGraph.Parent" xml:space="preserve">
+    <value>tpGraph</value>
+  </data>
+  <data name="&gt;&gt;pnlGraph.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;scText.Name" xml:space="preserve">
+    <value>scText</value>
+  </data>
+  <data name="&gt;&gt;scText.Type" xml:space="preserve">
+    <value>GVDEditor.Controls.MyScintilla, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;scText.Parent" xml:space="preserve">
+    <value>tpText</value>
+  </data>
+  <data name="&gt;&gt;scText.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tpText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="tpText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="tpText.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="tpText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>551, 530</value>
+  </data>
+  <data name="tpText.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tpText.Text" xml:space="preserve">
+    <value>Text súboru</value>
+  </data>
+  <data name="&gt;&gt;tpText.Name" xml:space="preserve">
+    <value>tpText</value>
+  </data>
+  <data name="&gt;&gt;tpText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpText.Parent" xml:space="preserve">
+    <value>tcCenter</value>
+  </data>
+  <data name="&gt;&gt;tpText.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="scText.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="scText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 3</value>
+  </data>
+  <data name="scText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="scText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>543, 524</value>
+  </data>
+  <data name="scText.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;scText.Name" xml:space="preserve">
+    <value>scText</value>
+  </data>
+  <data name="&gt;&gt;scText.Type" xml:space="preserve">
+    <value>GVDEditor.Controls.MyScintilla, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;scText.Parent" xml:space="preserve">
+    <value>tpText</value>
+  </data>
+  <data name="&gt;&gt;scText.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="tsEvents.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="&gt;&gt;dgvEvents.Name" xml:space="preserve">
+    <value>dgvEvents</value>
+  </data>
+  <data name="&gt;&gt;dgvEvents.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvEvents.Parent" xml:space="preserve">
+    <value>tpEvents</value>
+  </data>
+  <data name="&gt;&gt;dgvEvents.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tsEvents.Name" xml:space="preserve">
+    <value>tsEvents</value>
+  </data>
+  <data name="&gt;&gt;tsEvents.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsEvents.Parent" xml:space="preserve">
+    <value>tpEvents</value>
+  </data>
+  <data name="&gt;&gt;tsEvents.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tpEvents.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="tpEvents.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="tpEvents.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1485, 285</value>
+  </data>
+  <data name="tpEvents.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tpEvents.Text" xml:space="preserve">
+    <value>Akcie a tlačidlá</value>
+  </data>
+  <data name="&gt;&gt;tpEvents.Name" xml:space="preserve">
+    <value>tpEvents</value>
+  </data>
+  <data name="&gt;&gt;tpEvents.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpEvents.Parent" xml:space="preserve">
+    <value>tcBottom</value>
+  </data>
+  <data name="&gt;&gt;tpEvents.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dgvEvents.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dgvEvents.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="dgvEvents.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="dgvEvents.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1485, 260</value>
+  </data>
+  <data name="dgvEvents.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dgvEvents.Name" xml:space="preserve">
+    <value>dgvEvents</value>
+  </data>
+  <data name="&gt;&gt;dgvEvents.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvEvents.Parent" xml:space="preserve">
+    <value>tpEvents</value>
+  </data>
+  <data name="&gt;&gt;dgvEvents.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="tsEvents.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="tsEvents.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tsEvents.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1485, 25</value>
+  </data>
+  <data name="tsEvents.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tsEvents.Name" xml:space="preserve">
+    <value>tsEvents</value>
+  </data>
+  <data name="&gt;&gt;tsEvents.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsEvents.Parent" xml:space="preserve">
+    <value>tpEvents</value>
+  </data>
+  <data name="&gt;&gt;tsEvents.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tsbEvAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAe5JREFUSEvt
+        lrtKA0EUhgP6BF5ewcYbVl6qdGJ2JntGCKK+gGDlpRF8E4nXLuCcVdughW9gJagRaxW0T4j8IRvi2THZ
+        3QRs8sMHw84552d3ZudMJjNQB2XvssNe4C8pazZ14O8AjJU1i5iT8T1LWTOrrDlTTJ+Kqf4HH4jJX+Vn
+        ZH5i6Rs9ppjOFVPNYfQXNc10aqwZlfViybNmSjFVHIXj8oIasm5HNU2/HcUSoZm+9LWelPWdwifSTM+y
+        SFo8pteVUmFc+kSkmS5kcq9gzaXPL2FHxtlIW+XtevnttgHGct5BLX+Vn5N+LTV/GZkU4eD+sB4KYznv
+        wmM6kX4N4QBo/IuOJEkaY9R2HjKNEyka7CSlcV1fri5IX3zmTRkYgnWEQcjRQ7FljHH7XKc110zr0jej
+        A39fBoZgE8UVYmV+iMe0J30zeCgD+22srNmVvnjjjUhgk359ahX4a9L3/zZXoVQYUkzvMthFSmP37wTh
+        aHMkREhlbM2x9GspF/jTiqkaSRKkODKrXVtk3LdOSFH6RLRcKowopidHcloquMlIH6fQvNHEHUUSkegi
+        ECpnzYRiepTF4oLLRGLTUM3bCNa8a49uo4odjCWT9RILux39tEvbfEdM192bRjhkcPqgy4QXeoxzgT+P
+        ORk/ULt+AKeN9QnoFCnOAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="tsbEvAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 22</value>
+  </data>
+  <data name="tsbEvAdd.Text" xml:space="preserve">
+    <value>Pridať</value>
+  </data>
+  <data name="tsbEvEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAP9JREFUSEtj
+        YBgFUPCkqMj5SUmJJbo4VcCx+YsDnhYX/3laXPzjeXGxJ7o8RWD9viNhG/Yd/b1/5brDT4uL/4MsoZpP
+        /s9kCL2/PODkhn1Hf23Yd/Q/1JI/T0pKnNDVkgxAhv+fwfD7/wyG/w9W+J+BWvIbFFzoakkG/6czRPyf
+        wfAHZDgM318RdHTj/qMR6GpJBsguR8Igy2LQ1ZIMRg3HCkYNxwqGsOELGPzQcyiYP52B8hwKAv8PsO/6
+        v4L5FNVdDgJLGlT43m3n+f7/IPsPqCXUMxwEemuN88Kjnf+/3sr74/9+9h3/5zP4oquhCEys1Q8DWbKq
+        Q4kfXW5kAwCzWSgWANLyLQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="tsbEvEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 22</value>
+  </data>
+  <data name="tsbEvEdit.Text" xml:space="preserve">
+    <value>Upraviť</value>
+  </data>
+  <data name="tsbEvDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAORJREFUSEvt
+        lrEOgjAQhlkUH4TNkVBX4rHwAD6ML6U4KA/WOtdcQ4meBVrCwdIvYer997VNG5okkcja6DpLFZyu+nLc
+        07EpMGOydZbSsVEwKKvioUBoVYlnSAOd5zsJ4m6yIFpdlgdaMwjOtguaT4JofFZuJgyi+c5iL1o3SDfr
+        20+DiZWTlXplnITIF5NafOSLSy1jcjapxSmH4tWffA6pxS1nllo6ObkuKC1aNilixGeyvdxi50Hi3mqX
+        9M19uFxS9uvk09inJoiQhiG1o8xpNCfzx3a/xa0eAgjKVn/6RCJL8AFJ8NPKaf1BCQAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
+  <data name="tsbEvDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 22</value>
+  </data>
+  <data name="tsbEvDelete.Text" xml:space="preserve">
+    <value>Odstrániť</value>
+  </data>
+  <data name="tsbEvUp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EAAACxABrSO9dQAAARpJREFUWEftlLFKA0EURTeCWIlVwMq8WYN+QJrUNn6DlR9hIKVfYBHc9yCQwk7w
+        C6z8gxSWFtYJCYi5swERdGQloLyNYZLsKsIcOM3uvHu7G0WBQCDwn9mXaSNTf/8V9uQ5JsaQ2I7N5eRA
+        /y+VegdVEvtgxLqZj7Uk3dXvSuGwN942gv638k9JcB93n3b0+0JpdN2mYdzq8i9xV++4LX1XDM5VDOMq
+        X6pkXEfnbkOfrw0JLnJlP0iMRN+vBXHa0iUenumclYgTe2IEb3MKFst4J0lPdd5SxGKPSPCSC/eUGK8k
+        6bHO9SJbOGILHbq0jGlNJk2dv5Bs5YxgkAtbURI78l7LOStXlH5rSYK2EXtThlm27gsEAoE/5wPB598h
+        BPvmVAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="tsbEvUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="tsbEvUp.Text" xml:space="preserve">
+    <value>▲</value>
+  </data>
+  <data name="tsbEvDown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EAAACxABrSO9dQAAAR5JREFUWEft1LFKA0EQBuBLQAQhnaI2uRkNsbMwT2DlK9j5AHY2lj5A0oQ4A0dS
+        pLLwCWys0/gCFqkFbeLMCSLoSgoFZ6NJLncQYT/4m2X3/7uNoiAIgmUDLOfIel1Ext12z1NPZB1Y75HV
+        5ZwhdnXT7k1U5dEOsjxMKMkUYH3EznPd7vwJSfeBdGTL5g2QSrWTHtj+mcSkh8DyaktnDZC8AadHtncu
+        Mesxsrzb8qkh+QBOT2xfJsh66g1MC+mZ7VkIkLS8kV8jTft+cc6VkKTvj/0MsFxFF65sn+eikbgVJLmx
+        o9/jJLe1tlu173K1nbg1JB144yx3e72nir1fiFpbNsxvOYwv0y17r1Bfv2WmXy4vu/zSGMeeB0EQ/Cuf
+        +a3e9pYGznsAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="tsbEvDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="tsbEvDown.Text" xml:space="preserve">
+    <value>▼</value>
+  </data>
+  <metadata name="tsStarters.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>114, 17</value>
+  </metadata>
+  <data name="&gt;&gt;dgvStarters.Name" xml:space="preserve">
+    <value>dgvStarters</value>
+  </data>
+  <data name="&gt;&gt;dgvStarters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvStarters.Parent" xml:space="preserve">
+    <value>tpStarters</value>
+  </data>
+  <data name="&gt;&gt;dgvStarters.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tsStarters.Name" xml:space="preserve">
+    <value>tsStarters</value>
+  </data>
+  <data name="&gt;&gt;tsStarters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsStarters.Parent" xml:space="preserve">
+    <value>tpStarters</value>
+  </data>
+  <data name="&gt;&gt;tsStarters.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tpStarters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="tpStarters.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="tpStarters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1485, 285</value>
+  </data>
+  <data name="tpStarters.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tpStarters.Text" xml:space="preserve">
+    <value>Štartéry</value>
+  </data>
+  <data name="&gt;&gt;tpStarters.Name" xml:space="preserve">
+    <value>tpStarters</value>
+  </data>
+  <data name="&gt;&gt;tpStarters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpStarters.Parent" xml:space="preserve">
+    <value>tcBottom</value>
+  </data>
+  <data name="&gt;&gt;tpStarters.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="dgvStarters.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dgvStarters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="dgvStarters.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="dgvStarters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1485, 260</value>
+  </data>
+  <data name="dgvStarters.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dgvStarters.Name" xml:space="preserve">
+    <value>dgvStarters</value>
+  </data>
+  <data name="&gt;&gt;dgvStarters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvStarters.Parent" xml:space="preserve">
+    <value>tpStarters</value>
+  </data>
+  <data name="&gt;&gt;dgvStarters.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="tsStarters.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>114, 17</value>
+  </metadata>
+  <data name="tsStarters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tsStarters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1485, 25</value>
+  </data>
+  <data name="tsStarters.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tsStarters.Name" xml:space="preserve">
+    <value>tsStarters</value>
+  </data>
+  <data name="&gt;&gt;tsStarters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsStarters.Parent" xml:space="preserve">
+    <value>tpStarters</value>
+  </data>
+  <data name="&gt;&gt;tsStarters.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tsbStAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAe5JREFUSEvt
+        lrtKA0EUhgP6BF5ewcYbVl6qdGJ2JntGCKK+gGDlpRF8E4nXLuCcVdughW9gJagRaxW0T4j8IRvi2THZ
+        3QRs8sMHw84552d3ZudMJjNQB2XvssNe4C8pazZ14O8AjJU1i5iT8T1LWTOrrDlTTJ+Kqf4HH4jJX+Vn
+        ZH5i6Rs9ppjOFVPNYfQXNc10aqwZlfViybNmSjFVHIXj8oIasm5HNU2/HcUSoZm+9LWelPWdwifSTM+y
+        SFo8pteVUmFc+kSkmS5kcq9gzaXPL2FHxtlIW+XtevnttgHGct5BLX+Vn5N+LTV/GZkU4eD+sB4KYznv
+        wmM6kX4N4QBo/IuOJEkaY9R2HjKNEyka7CSlcV1fri5IX3zmTRkYgnWEQcjRQ7FljHH7XKc110zr0jej
+        A39fBoZgE8UVYmV+iMe0J30zeCgD+22srNmVvnjjjUhgk359ahX4a9L3/zZXoVQYUkzvMthFSmP37wTh
+        aHMkREhlbM2x9GspF/jTiqkaSRKkODKrXVtk3LdOSFH6RLRcKowopidHcloquMlIH6fQvNHEHUUSkegi
+        ECpnzYRiepTF4oLLRGLTUM3bCNa8a49uo4odjCWT9RILux39tEvbfEdM192bRjhkcPqgy4QXeoxzgT+P
+        ORk/ULt+AKeN9QnoFCnOAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="tsbStAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 22</value>
+  </data>
+  <data name="tsbStAdd.Text" xml:space="preserve">
+    <value>Pridať</value>
+  </data>
+  <data name="tsbStEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAP9JREFUSEtj
+        YBgFUPCkqMj5SUmJJbo4VcCx+YsDnhYX/3laXPzjeXGxJ7o8RWD9viNhG/Yd/b1/5brDT4uL/4MsoZpP
+        /s9kCL2/PODkhn1Hf23Yd/Q/1JI/T0pKnNDVkgxAhv+fwfD7/wyG/w9W+J+BWvIbFFzoakkG/6czRPyf
+        wfAHZDgM318RdHTj/qMR6GpJBsguR8Igy2LQ1ZIMRg3HCkYNxwqGsOELGPzQcyiYP52B8hwKAv8PsO/6
+        v4L5FNVdDgJLGlT43m3n+f7/IPsPqCXUMxwEemuN88Kjnf+/3sr74/9+9h3/5zP4oquhCEys1Q8DWbKq
+        Q4kfXW5kAwCzWSgWANLyLQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="tsbStEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 22</value>
+  </data>
+  <data name="tsbStEdit.Text" xml:space="preserve">
+    <value>Upraviť</value>
+  </data>
+  <data name="tsbStDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAORJREFUSEvt
+        lrEOgjAQhlkUH4TNkVBX4rHwAD6ML6U4KA/WOtdcQ4meBVrCwdIvYer997VNG5okkcja6DpLFZyu+nLc
+        07EpMGOydZbSsVEwKKvioUBoVYlnSAOd5zsJ4m6yIFpdlgdaMwjOtguaT4JofFZuJgyi+c5iL1o3SDfr
+        20+DiZWTlXplnITIF5NafOSLSy1jcjapxSmH4tWffA6pxS1nllo6ObkuKC1aNilixGeyvdxi50Hi3mqX
+        9M19uFxS9uvk09inJoiQhiG1o8xpNCfzx3a/xa0eAgjKVn/6RCJL8AFJ8NPKaf1BCQAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
+  <data name="tsbStDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 22</value>
+  </data>
+  <data name="tsbStDelete.Text" xml:space="preserve">
+    <value>Odstrániť</value>
+  </data>
+  <data name="&gt;&gt;dgvProblems.Name" xml:space="preserve">
+    <value>dgvProblems</value>
+  </data>
+  <data name="&gt;&gt;dgvProblems.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvProblems.Parent" xml:space="preserve">
+    <value>tpProblems</value>
+  </data>
+  <data name="&gt;&gt;dgvProblems.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tpProblems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="tpProblems.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="tpProblems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1485, 285</value>
+  </data>
+  <data name="tpProblems.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tpProblems.Text" xml:space="preserve">
+    <value>Problémy</value>
+  </data>
+  <data name="&gt;&gt;tpProblems.Name" xml:space="preserve">
+    <value>tpProblems</value>
+  </data>
+  <data name="&gt;&gt;tpProblems.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpProblems.Parent" xml:space="preserve">
+    <value>tcBottom</value>
+  </data>
+  <data name="&gt;&gt;tpProblems.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="dgvProblems.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dgvProblems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dgvProblems.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="dgvProblems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1485, 285</value>
+  </data>
+  <data name="dgvProblems.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dgvProblems.Name" xml:space="preserve">
+    <value>dgvProblems</value>
+  </data>
+  <data name="&gt;&gt;dgvProblems.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvProblems.Parent" xml:space="preserve">
+    <value>tpProblems</value>
+  </data>
+  <data name="&gt;&gt;dgvProblems.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="tsMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>216, 17</value>
   </metadata>
+  <data name="tsMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tsMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1493, 25</value>
+  </data>
+  <data name="tsMain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tsMain.Name" xml:space="preserve">
+    <value>tsMain</value>
+  </data>
+  <data name="&gt;&gt;tsMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tsMain.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="tsbSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAALZJREFUSEtj
@@ -909,6 +1080,26 @@
   <data name="tss1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
+  <data name="tsddNew.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAe5JREFUSEvt
+        lrtKA0EUhgP6BF5ewcYbVl6qdGJ2JntGCKK+gGDlpRF8E4nXLuCcVdughW9gJagRaxW0T4j8IRvi2THZ
+        3QRs8sMHw84552d3ZudMJjNQB2XvssNe4C8pazZ14O8AjJU1i5iT8T1LWTOrrDlTTJ+Kqf4HH4jJX+Vn
+        ZH5i6Rs9ppjOFVPNYfQXNc10aqwZlfViybNmSjFVHIXj8oIasm5HNU2/HcUSoZm+9LWelPWdwifSTM+y
+        SFo8pteVUmFc+kSkmS5kcq9gzaXPL2FHxtlIW+XtevnttgHGct5BLX+Vn5N+LTV/GZkU4eD+sB4KYznv
+        wmM6kX4N4QBo/IuOJEkaY9R2HjKNEyka7CSlcV1fri5IX3zmTRkYgnWEQcjRQ7FljHH7XKc110zr0jej
+        A39fBoZgE8UVYmV+iMe0J30zeCgD+22srNmVvnjjjUhgk359ahX4a9L3/zZXoVQYUkzvMthFSmP37wTh
+        aHMkREhlbM2x9GspF/jTiqkaSRKkODKrXVtk3LdOSFH6RLRcKowopidHcloquMlIH6fQvNHEHUUSkegi
+        ECpnzYRiepTF4oLLRGLTUM3bCNa8a49uo4odjCWT9RILux39tEvbfEdM192bRjhkcPqgy4QXeoxzgT+P
+        ORk/ULt+AKeN9QnoFCnOAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="tsddNew.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 22</value>
+  </data>
+  <data name="tsddNew.Text" xml:space="preserve">
+    <value>Nový</value>
+  </data>
   <data name="tsmiNewCategory.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 22</value>
   </data>
@@ -933,26 +1124,6 @@
   <data name="tsmiNewTimePoint.Text" xml:space="preserve">
     <value>Časový bod</value>
   </data>
-  <data name="tsddNew.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAe5JREFUSEvt
-        lrtKA0EUhgP6BF5ewcYbVl6qdGJ2JntGCKK+gGDlpRF8E4nXLuCcVdughW9gJagRaxW0T4j8IRvi2THZ
-        3QRs8sMHw84552d3ZudMJjNQB2XvssNe4C8pazZ14O8AjJU1i5iT8T1LWTOrrDlTTJ+Kqf4HH4jJX+Vn
-        ZH5i6Rs9ppjOFVPNYfQXNc10aqwZlfViybNmSjFVHIXj8oIasm5HNU2/HcUSoZm+9LWelPWdwifSTM+y
-        SFo8pteVUmFc+kSkmS5kcq9gzaXPL2FHxtlIW+XtevnttgHGct5BLX+Vn5N+LTV/GZkU4eD+sB4KYznv
-        wmM6kX4N4QBo/IuOJEkaY9R2HjKNEyka7CSlcV1fri5IX3zmTRkYgnWEQcjRQ7FljHH7XKc110zr0jej
-        A39fBoZgE8UVYmV+iMe0J30zeCgD+22srNmVvnjjjUhgk359ahX4a9L3/zZXoVQYUkzvMthFSmP37wTh
-        aHMkREhlbM2x9GspF/jTiqkaSRKkODKrXVtk3LdOSFH6RLRcKowopidHcloquMlIH6fQvNHEHUUSkegi
-        ECpnzYRiepTF4oLLRGLTUM3bCNa8a49uo4odjCWT9RILux39tEvbfEdM192bRjhkcPqgy4QXeoxzgT+P
-        ORk/ULt+AKeN9QnoFCnOAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="tsddNew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 22</value>
-  </data>
-  <data name="tsddNew.Text" xml:space="preserve">
-    <value>Nový</value>
-  </data>
   <data name="tsbDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAORJREFUSEvt
@@ -972,7 +1143,7 @@
   <data name="tsbUp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAARpJREFUWEftlLFKA0EURTeCWIlVwMq8WYN+QJrUNn6DlR9hIKVfYBHc9yCQwk7w
+        EAAACxABrSO9dQAAARpJREFUWEftlLFKA0EURTeCWIlVwMq8WYN+QJrUNn6DlR9hIKVfYBHc9yCQwk7w
         C6z8gxSWFtYJCYi5swERdGQloLyNYZLsKsIcOM3uvHu7G0WBQCDwn9mXaSNTf/8V9uQ5JsaQ2I7N5eRA
         /y+VegdVEvtgxLqZj7Uk3dXvSuGwN942gv638k9JcB93n3b0+0JpdN2mYdzq8i9xV++4LX1XDM5VDOMq
         X6pkXEfnbkOfrw0JLnJlP0iMRN+vBXHa0iUenumclYgTe2IEb3MKFst4J0lPdd5SxGKPSPCSC/eUGK8k
@@ -992,7 +1163,7 @@
   <data name="tsbDown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAR5JREFUWEft1LFKA0EQBuBLQAQhnaI2uRkNsbMwT2DlK9j5AHY2lj5A0oQ4A0dS
+        EAAACxABrSO9dQAAAR5JREFUWEft1LFKA0EQBuBLQAQhnaI2uRkNsbMwT2DlK9j5AHY2lj5A0oQ4A0dS
         pLLwCWys0/gCFqkFbeLMCSLoSgoFZ6NJLncQYT/4m2X3/7uNoiAIgmUDLOfIel1Ext12z1NPZB1Y75HV
         5ZwhdnXT7k1U5dEOsjxMKMkUYH3EznPd7vwJSfeBdGTL5g2QSrWTHtj+mcSkh8DyaktnDZC8AadHtncu
         Mesxsrzb8qkh+QBOT2xfJsh66g1MC+mZ7VkIkLS8kV8jTft+cc6VkKTvj/0MsFxFF65sn+eikbgVJLmx
@@ -1012,6 +1183,21 @@
   <data name="tss2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
+  <data name="tsddTemplate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAOJJREFUWEdj
+        YBhsoLhnpkhFz+w0cnBVz+zpRb2z1NDNJAlU9Mw2nrx4w+eTF6//JxV3z171v3Xakl8UOQLkgOWb97/+
+        TwaYvGjD/3uPn/9vmbrkd0n3Qj10s4kClDoABChyBDUcAAJkO4JaDgABshxBTQeAAMmOoNQBT168xsAH
+        Tl783zR58e/q3qmy6PZhAEocsO/4+f/rdh7BiifMX/ejvHumN7p9GIASB+ADIDNBZqPbhwFGHTDqgFEH
+        jDpg1AGjDhh1wKgDRh0AUkRu1wwfBplJlAMo6ZwSwiCz0e0bcAAAh9CeoLltlNwAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="tsddTemplate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 22</value>
+  </data>
+  <data name="tsddTemplate.Text" xml:space="preserve">
+    <value>Predloha</value>
+  </data>
   <data name="tsmiTplSK.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 22</value>
   </data>
@@ -1030,21 +1216,6 @@
   <data name="tsmiTplILTIS.Text" xml:space="preserve">
     <value>Slovenská s automatikou ILTIS</value>
   </data>
-  <data name="tsddTemplate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAOJJREFUWEdj
-        YBhsoLhnpkhFz+w0cnBVz+zpRb2z1NDNJAlU9Mw2nrx4w+eTF6//JxV3z171v3Xakl8UOQLkgOWb97/+
-        TwaYvGjD/3uPn/9vmbrkd0n3Qj10s4kClDoABChyBDUcAAJkO4JaDgABshxBTQeAAMmOoNQBT168xsAH
-        Tl783zR58e/q3qmy6PZhAEocsO/4+f/rdh7BiifMX/ejvHumN7p9GIASB+ADIDNBZqPbhwFGHTDqgFEH
-        jDpg1AGjDhh1wKgDRh0AUkRu1wwfBplJlAMo6ZwSwiCz0e0bcAAAh9CeoLltlNwAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="tsddTemplate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 22</value>
-  </data>
-  <data name="tsddTemplate.Text" xml:space="preserve">
-    <value>Predloha</value>
-  </data>
   <data name="tss3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
@@ -1062,36 +1233,9 @@
   <data name="tsbCalendar.Text" xml:space="preserve">
     <value>Kalendár akcií</value>
   </data>
-  <data name="tsMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tsMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1493, 25</value>
-  </data>
-  <data name="tsMain.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tsMain.Name" xml:space="preserve">
-    <value>tsMain</value>
-  </data>
-  <data name="&gt;&gt;tsMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsMain.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tsMain.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <metadata name="ssMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>306, 17</value>
   </metadata>
-  <data name="tsslStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1476, 17</value>
-  </data>
-  <data name="tsslStatus.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
   <data name="ssMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 901</value>
   </data>
@@ -1115,6 +1259,183 @@
   </data>
   <data name="&gt;&gt;ssMain.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="tsslStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1476, 17</value>
+  </data>
+  <data name="tsslStatus.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <metadata name="cEvCtrl.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cEvCtrl.HeaderText" xml:space="preserve">
+    <value>Tlačidlo</value>
+  </data>
+  <data name="&gt;&gt;cEvCtrl.Name" xml:space="preserve">
+    <value>cEvCtrl</value>
+  </data>
+  <data name="&gt;&gt;cEvCtrl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cEvDesign.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cEvDesign.HeaderText" xml:space="preserve">
+    <value>Vzhľad</value>
+  </data>
+  <data name="&gt;&gt;cEvDesign.Name" xml:space="preserve">
+    <value>cEvDesign</value>
+  </data>
+  <data name="&gt;&gt;cEvDesign.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cEvKey.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cEvKey.HeaderText" xml:space="preserve">
+    <value>Akcia</value>
+  </data>
+  <data name="&gt;&gt;cEvKey.Name" xml:space="preserve">
+    <value>cEvKey</value>
+  </data>
+  <data name="&gt;&gt;cEvKey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cEvClass.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cEvClass.HeaderText" xml:space="preserve">
+    <value>Trieda</value>
+  </data>
+  <data name="&gt;&gt;cEvClass.Name" xml:space="preserve">
+    <value>cEvClass</value>
+  </data>
+  <data name="&gt;&gt;cEvClass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cEvNext.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cEvNext.HeaderText" xml:space="preserve">
+    <value>Ďalší stav</value>
+  </data>
+  <data name="&gt;&gt;cEvNext.Name" xml:space="preserve">
+    <value>cEvNext</value>
+  </data>
+  <data name="&gt;&gt;cEvNext.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cEvReport.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cEvReport.HeaderText" xml:space="preserve">
+    <value>Typ hlásenia</value>
+  </data>
+  <data name="&gt;&gt;cEvReport.Name" xml:space="preserve">
+    <value>cEvReport</value>
+  </data>
+  <data name="&gt;&gt;cEvReport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cEvDialog.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cEvDialog.HeaderText" xml:space="preserve">
+    <value>Dialóg</value>
+  </data>
+  <data name="&gt;&gt;cEvDialog.Name" xml:space="preserve">
+    <value>cEvDialog</value>
+  </data>
+  <data name="&gt;&gt;cEvDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cStKey.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cStKey.HeaderText" xml:space="preserve">
+    <value>Kľúč</value>
+  </data>
+  <data name="&gt;&gt;cStKey.Name" xml:space="preserve">
+    <value>cStKey</value>
+  </data>
+  <data name="&gt;&gt;cStKey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cStEvent.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cStEvent.HeaderText" xml:space="preserve">
+    <value>Akcia</value>
+  </data>
+  <data name="&gt;&gt;cStEvent.Name" xml:space="preserve">
+    <value>cStEvent</value>
+  </data>
+  <data name="&gt;&gt;cStEvent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cStText.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cStText.HeaderText" xml:space="preserve">
+    <value>Popis</value>
+  </data>
+  <data name="&gt;&gt;cStText.Name" xml:space="preserve">
+    <value>cStText</value>
+  </data>
+  <data name="&gt;&gt;cStText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cProbType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cProbType.HeaderText" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="cProbType.Width" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="&gt;&gt;cProbType.Name" xml:space="preserve">
+    <value>cProbType</value>
+  </data>
+  <data name="&gt;&gt;cProbType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cProbCode.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cProbCode.HeaderText" xml:space="preserve">
+    <value>Kód</value>
+  </data>
+  <data name="&gt;&gt;cProbCode.Name" xml:space="preserve">
+    <value>cProbCode</value>
+  </data>
+  <data name="&gt;&gt;cProbCode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cProbPath.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cProbPath.HeaderText" xml:space="preserve">
+    <value>Prvok</value>
+  </data>
+  <data name="&gt;&gt;cProbPath.Name" xml:space="preserve">
+    <value>cProbPath</value>
+  </data>
+  <data name="&gt;&gt;cProbPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cProbMessage.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cProbMessage.HeaderText" xml:space="preserve">
+    <value>Hlásenie</value>
+  </data>
+  <data name="&gt;&gt;cProbMessage.Name" xml:space="preserve">
+    <value>cProbMessage</value>
+  </data>
+  <data name="&gt;&gt;cProbMessage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

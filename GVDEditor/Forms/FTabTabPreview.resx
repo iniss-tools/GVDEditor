@@ -184,6 +184,615 @@
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>700, 400</value>
   </data>
+  <data name="tlpMain.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tlpMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tlpMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tlpMain.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tlpMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 560</value>
+  </data>
+  <data name="tlpMain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tlpMain.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="flpTop" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="splitMain" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="&gt;&gt;tlpMain.Name" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;tlpMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tlpMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flpTop.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flpTop.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flpTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flpTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="flpTop.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="flpTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>994, 36</value>
+  </data>
+  <data name="flpTop.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;flpTop.Name" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;flpTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flpTop.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;flpTop.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lTrain.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lTrain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lTrain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 7</value>
+  </data>
+  <data name="lTrain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="lTrain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="lTrain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lTrain.Name" xml:space="preserve">
+    <value>lTrain</value>
+  </data>
+  <data name="&gt;&gt;lTrain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lTrain.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;lTrain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbTrain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="cbTrain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 7</value>
+  </data>
+  <data name="cbTrain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 12, 3</value>
+  </data>
+  <data name="cbTrain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 21</value>
+  </data>
+  <data name="cbTrain.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbTrain.Name" xml:space="preserve">
+    <value>cbTrain</value>
+  </data>
+  <data name="&gt;&gt;cbTrain.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbTrain.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;cbTrain.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lDelayArr.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lDelayArr.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lDelayArr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>187, 7</value>
+  </data>
+  <data name="lDelayArr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="lDelayArr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 13</value>
+  </data>
+  <data name="lDelayArr.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lDelayArr.Name" xml:space="preserve">
+    <value>lDelayArr</value>
+  </data>
+  <data name="&gt;&gt;lDelayArr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lDelayArr.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;lDelayArr.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="nudDelayArr.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="nudDelayArr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>277, 7</value>
+  </data>
+  <data name="nudDelayArr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 12, 3</value>
+  </data>
+  <data name="nudDelayArr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 20</value>
+  </data>
+  <data name="nudDelayArr.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;nudDelayArr.Name" xml:space="preserve">
+    <value>nudDelayArr</value>
+  </data>
+  <data name="&gt;&gt;nudDelayArr.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudDelayArr.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;nudDelayArr.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lDelayDep.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lDelayDep.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lDelayDep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 7</value>
+  </data>
+  <data name="lDelayDep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="lDelayDep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 13</value>
+  </data>
+  <data name="lDelayDep.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lDelayDep.Name" xml:space="preserve">
+    <value>lDelayDep</value>
+  </data>
+  <data name="&gt;&gt;lDelayDep.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lDelayDep.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;lDelayDep.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="nudDelayDep.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="nudDelayDep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>457, 7</value>
+  </data>
+  <data name="nudDelayDep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 12, 3</value>
+  </data>
+  <data name="nudDelayDep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 20</value>
+  </data>
+  <data name="nudDelayDep.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;nudDelayDep.Name" xml:space="preserve">
+    <value>nudDelayDep</value>
+  </data>
+  <data name="&gt;&gt;nudDelayDep.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudDelayDep.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;nudDelayDep.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="chkStanding.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkStanding.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="chkStanding.Location" type="System.Drawing.Point, System.Drawing">
+    <value>547, 7</value>
+  </data>
+  <data name="chkStanding.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="chkStanding.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 17</value>
+  </data>
+  <data name="chkStanding.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;chkStanding.Name" xml:space="preserve">
+    <value>chkStanding</value>
+  </data>
+  <data name="&gt;&gt;chkStanding.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;chkStanding.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;chkStanding.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="chkDispatched.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkDispatched.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="chkDispatched.Location" type="System.Drawing.Point, System.Drawing">
+    <value>637, 7</value>
+  </data>
+  <data name="chkDispatched.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="chkDispatched.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 17</value>
+  </data>
+  <data name="chkDispatched.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;chkDispatched.Name" xml:space="preserve">
+    <value>chkDispatched</value>
+  </data>
+  <data name="&gt;&gt;chkDispatched.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;chkDispatched.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;chkDispatched.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="chkLockArr.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkLockArr.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="chkLockArr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>727, 7</value>
+  </data>
+  <data name="chkLockArr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="chkLockArr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 17</value>
+  </data>
+  <data name="chkLockArr.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;chkLockArr.Name" xml:space="preserve">
+    <value>chkLockArr</value>
+  </data>
+  <data name="&gt;&gt;chkLockArr.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;chkLockArr.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;chkLockArr.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="chkLockDep.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkLockDep.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="chkLockDep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>817, 7</value>
+  </data>
+  <data name="chkLockDep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="chkLockDep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 17</value>
+  </data>
+  <data name="chkLockDep.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;chkLockDep.Name" xml:space="preserve">
+    <value>chkLockDep</value>
+  </data>
+  <data name="&gt;&gt;chkLockDep.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;chkLockDep.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;chkLockDep.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="chkDeflected.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkDeflected.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="chkDeflected.Location" type="System.Drawing.Point, System.Drawing">
+    <value>907, 7</value>
+  </data>
+  <data name="chkDeflected.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="chkDeflected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 17</value>
+  </data>
+  <data name="chkDeflected.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;chkDeflected.Name" xml:space="preserve">
+    <value>chkDeflected</value>
+  </data>
+  <data name="&gt;&gt;chkDeflected.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;chkDeflected.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;chkDeflected.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="chkOnlySection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkOnlySection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="chkOnlySection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>997, 7</value>
+  </data>
+  <data name="chkOnlySection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>12, 3, 3, 3</value>
+  </data>
+  <data name="chkOnlySection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 17</value>
+  </data>
+  <data name="chkOnlySection.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;chkOnlySection.Name" xml:space="preserve">
+    <value>chkOnlySection</value>
+  </data>
+  <data name="&gt;&gt;chkOnlySection.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;chkOnlySection.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;chkOnlySection.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="splitMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splitMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 45</value>
+  </data>
+  <data name="splitMain.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="splitMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>994, 512</value>
+  </data>
+  <data name="splitMain.SplitterDistance" type="System.Int32, mscorlib">
+    <value>300</value>
+  </data>
+  <data name="splitMain.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;splitMain.Name" xml:space="preserve">
+    <value>splitMain</value>
+  </data>
+  <data name="&gt;&gt;splitMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitMain.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;splitMain.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;splitMain.Panel1.Name" xml:space="preserve">
+    <value>splitMain.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitMain.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitMain.Panel1.Parent" xml:space="preserve">
+    <value>splitMain</value>
+  </data>
+  <data name="&gt;&gt;splitMain.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitMain.Panel2.Name" xml:space="preserve">
+    <value>splitMain.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitMain.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitMain.Panel2.Parent" xml:space="preserve">
+    <value>splitMain</value>
+  </data>
+  <data name="&gt;&gt;splitMain.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="dgvResult.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dgvResult.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dgvResult.Size" type="System.Drawing.Size, System.Drawing">
+    <value>994, 300</value>
+  </data>
+  <data name="dgvResult.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dgvResult.Name" xml:space="preserve">
+    <value>dgvResult</value>
+  </data>
+  <data name="&gt;&gt;dgvResult.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvResult.Parent" xml:space="preserve">
+    <value>splitMain.Panel1</value>
+  </data>
+  <data name="&gt;&gt;dgvResult.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbSteps.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tbSteps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tbSteps.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tbSteps.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
+  </data>
+  <data name="tbSteps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>994, 208</value>
+  </data>
+  <data name="tbSteps.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tbSteps.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;tbSteps.Name" xml:space="preserve">
+    <value>tbSteps</value>
+  </data>
+  <data name="&gt;&gt;tbSteps.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbSteps.Parent" xml:space="preserve">
+    <value>splitMain.Panel2</value>
+  </data>
+  <data name="&gt;&gt;tbSteps.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="cTable.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cTable.Name" xml:space="preserve">
+    <value>cTable</value>
+  </data>
+  <data name="&gt;&gt;cTable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cColumn.Name" xml:space="preserve">
+    <value>cColumn</value>
+  </data>
+  <data name="&gt;&gt;cColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cKind.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cKind.Name" xml:space="preserve">
+    <value>cKind</value>
+  </data>
+  <data name="&gt;&gt;cKind.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cDivType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cDivType.Name" xml:space="preserve">
+    <value>cDivType</value>
+  </data>
+  <data name="&gt;&gt;cDivType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cTab1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cTab1.Name" xml:space="preserve">
+    <value>cTab1</value>
+  </data>
+  <data name="&gt;&gt;cTab1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cTab2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cTab2.Name" xml:space="preserve">
+    <value>cTab2</value>
+  </data>
+  <data name="&gt;&gt;cTab2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cOwn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cOwn.Name" xml:space="preserve">
+    <value>cOwn</value>
+  </data>
+  <data name="&gt;&gt;cOwn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cResult.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cResult.Name" xml:space="preserve">
+    <value>cResult</value>
+  </data>
+  <data name="&gt;&gt;cResult.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="cFont.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cFont.Name" xml:space="preserve">
+    <value>cFont</value>
+  </data>
+  <data name="&gt;&gt;cFont.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
