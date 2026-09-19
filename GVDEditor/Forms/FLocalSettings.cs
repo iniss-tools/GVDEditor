@@ -1,6 +1,8 @@
-﻿using GVDEditor.Entities;
+﻿using ExControls;
+using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
+using ToolsCore.StateDgm;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
@@ -23,6 +25,8 @@ public partial class FLocalSettings : Form
     public string FontDir;
 
     private readonly Color _defaultBorderColor;
+    private readonly bool _openStateDgmEditor;
+    private Label _lStateDgmStatus = null!;
 
     /// <summary>
     ///     Vytvori novy formulár typu <see cref="FLocalSettings"/>.
@@ -137,6 +141,8 @@ public partial class FLocalSettings : Form
             bCStationDelete.Enabled = false;
         }
 
+        BuildStateDgmTab();
+
         if (openIndex != -1)
         {
             if (openIndex == -2)
@@ -144,11 +150,76 @@ public partial class FLocalSettings : Form
                 tabControl.SelectTab(8);
                 _openTabTabEditor = true;
             }
+            else if (openIndex == -3)
+            {
+                tabControl.SelectTab(tpStateDgm);
+                _openStateDgmEditor = true;
+            }
             else
             {
                 tabControl.SelectTab(openIndex);
             }
         }
+    }
+
+    /// <summary>
+    ///     Zalozka Stavovy diagram - stav suboru a tlacidlo na otvorenie editora (editor je samostatne okno).
+    /// </summary>
+    private void BuildStateDgmTab()
+    {
+        var table = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, AutoSize = true, Padding = new Padding(10) };
+        table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+        table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+        table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+        var info = new Label { Text = Resources.FLocalSettings_SD_Info, AutoSize = true, MaximumSize = new Size(600, 0), Margin = new Padding(3, 3, 3, 12) };
+        _lStateDgmStatus = new Label { AutoSize = true, MaximumSize = new Size(600, 0), Margin = new Padding(3, 3, 3, 12) };
+        var open = new ExButton { Text = Resources.FLocalSettings_SD_Otvorit, AutoSize = true, Padding = new Padding(8, 2, 8, 2) };
+        open.Click += (_, _) => OpenStateDgmEditor();
+        table.Controls.Add(info, 0, 0);
+        table.Controls.Add(_lStateDgmStatus, 0, 1);
+        table.Controls.Add(open, 0, 2);
+        tpStateDgm.Controls.Add(table);
+        table.ApplyTheme();
+        // zalamovanie podla sirky zalozky
+        void FitWidth() => info.MaximumSize = _lStateDgmStatus.MaximumSize = new Size(Math.Max(200, tpStateDgm.ClientSize.Width - 30), 0);
+        tpStateDgm.SizeChanged += (_, _) => FitWidth();
+        FitWidth();
+        RefreshStateDgmStatus();
+    }
+
+    private void RefreshStateDgmStatus()
+    {
+        try
+        {
+            var d = TxtParser.ReadStateDgm(ThisDir.Dir.FullPath);
+            if (d == null)
+            {
+                _lStateDgmStatus.Text = Resources.FLocalSettings_SD_Chyba_Nie;
+                return;
+            }
+
+            var diags = StateDgmValidator.Validate(d, new StateDgmValidationOptions
+            {
+                ReportKeys = GlobData.ReportTypes?.Count > 0 ? GlobData.ReportTypes.Select(r => r.Key).ToList() : null,
+                Symbols = new GvdExprSymbols()
+            });
+            var errors = diags.Count(x => x.IsError);
+            var warnings = diags.Count(x => x.Severity == ToolsCore.Expressions.ExprSeverity.Warning);
+            var check = diags.Count == 0 ? Resources.FStateDgm_BezProblemov : string.Format(Resources.FStateDgm_PocetProblemov, errors, warnings, diags.Count - errors - warnings);
+            _lStateDgmStatus.Text = string.Format(Resources.FLocalSettings_SD_Stav, Path.GetFileName(TxtParser.StateDgmPath(ThisDir.Dir.FullPath)), d.Categories.Count, d.Categories.Sum(c => c.States.Count))
+                                    + Environment.NewLine + string.Format(Resources.FLocalSettings_SD_Problemy, check);
+        }
+        catch (StateDgmParseException e)
+        {
+            _lStateDgmStatus.Text = string.Format(Resources.FLocalSettings_SD_Chyba, $"({e.Line + 1}) {e.Message}");
+        }
+    }
+
+    private void OpenStateDgmEditor()
+    {
+        using var f = new FStateDgm(ThisDir);
+        f.ShowDialog(this);
+        RefreshStateDgmStatus();
     }
 
     private void bSave_Click(object sender, EventArgs e)
@@ -1158,6 +1229,7 @@ public partial class FLocalSettings : Form
     private void FLocalSettings_Load(object sender, EventArgs e)
     {
         if (_openTabTabEditor) bOpenEditorTab.PerformClick();
+        if (_openStateDgmEditor) BeginInvoke(OpenStateDgmEditor);
         EnableEvents(true);
     }
 

@@ -61,6 +61,8 @@ namespace GVDEditor.Forms
             this.nudHlaseniePort = new ExControls.ExNumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.lStateDgmTemplate = new System.Windows.Forms.Label();
+            this.cbStateDgmTemplate = new ExControls.ExComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.nudTabPort = new ExControls.ExNumericUpDown();
             this.colorDialogFarba = new System.Windows.Forms.ColorDialog();
@@ -278,6 +280,8 @@ namespace GVDEditor.Forms
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cbStateDgmTemplate);
+            this.groupBox3.Controls.Add(this.lStateDgmTemplate);
             this.groupBox3.Controls.Add(this.bEditColor);
             this.groupBox3.Controls.Add(this.pbColor);
             this.groupBox3.Controls.Add(this.nudHlaseniePort);
@@ -326,6 +330,17 @@ namespace GVDEditor.Forms
             // 
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
+            // 
+            // lStateDgmTemplate
+            // 
+            resources.ApplyResources(this.lStateDgmTemplate, "lStateDgmTemplate");
+            this.lStateDgmTemplate.Name = "lStateDgmTemplate";
+            // 
+            // cbStateDgmTemplate
+            // 
+            this.cbStateDgmTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbStateDgmTemplate, "cbStateDgmTemplate");
+            this.cbStateDgmTemplate.Name = "cbStateDgmTemplate";
             // 
             // label8
             // 
@@ -492,6 +507,8 @@ namespace GVDEditor.Forms
         private ExNumericUpDown nudHlaseniePort;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lStateDgmTemplate;
+        private ExComboBox cbStateDgmTemplate;
         private System.Windows.Forms.Label label8;
         private ExNumericUpDown nudTabPort;
         private System.Windows.Forms.ColorDialog colorDialogFarba;

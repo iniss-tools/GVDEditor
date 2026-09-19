@@ -35,6 +35,7 @@ public partial class FMain : Form
     private bool _dataSaved = true;
     private string? _lastINISSStart;
     private GVDDirectory? _newDir;
+    private StateDgmTemplate _newDirTemplate = StateDgmTemplate.Slovak;
     private bool _prechod;
     private GVDDirectory? _previousSelectedGVD;
     private bool _removingGVD;
@@ -365,6 +366,7 @@ public partial class FMain : Form
         {
             var gvd = nsf.GvdInfo;
             var dir = nsf.NewDir;
+            _newDirTemplate = nsf.Template;
 
             if (Stanice.Count == 0 || ObdobiaList.Count == 0)
             {
@@ -1073,7 +1075,7 @@ public partial class FMain : Form
 
             TxtParser.WriteModeTabs(dir.Dir.FullPath, GlobData.TableFonts, GlobData.TableFontDir);
 
-            TxtParser.WriteStateDgm(dir.Dir.FullPath);
+            TxtParser.WriteStateDgm(dir.Dir.FullPath, _newDirTemplate);
 
             TxtParser.WriteLocalCategori(dir.Dir.FullPath, GlobData.ReportVariants, GlobData.ReportTypes, GlobData.Languages);
 
@@ -2030,6 +2032,18 @@ public partial class FMain : Form
     //DATE LIMIT
     private void tsmiDatObm_Click(object sender, EventArgs e) => ShowDatObm();
 
+    private void tsmiStateDgm_Click(object sender, EventArgs e) => ShowStateDgm();
+
+    /// <summary>
+    ///     Otvori editor stavoveho diagramu aktualneho grafikonu.
+    /// </summary>
+    private void ShowStateDgm()
+    {
+        if (tscbObdobie.ComboBox.SelectedItem is not GVDDirectory dir) return;
+        using var f = new FStateDgm(dir);
+        f.ShowDialog(this);
+    }
+
     private void tsbDatObm_Click(object sender, EventArgs e) => ShowDatObm();
 
     private static void ShowDatObm()
@@ -2052,6 +2066,7 @@ public partial class FMain : Form
         tsmiTTexts.Enabled = enabled;
         tsmiTFonts.Enabled = enabled;
         tsmiTabTabEditor.Enabled = enabled;
+        tsmiStateDgm.Enabled = enabled;
     }
 
     private void ChangeEnableMenuItemsGSettings(bool enabled)

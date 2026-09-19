@@ -204,6 +204,7 @@ namespace GVDEditor.Forms
             bTextEdit = new ExButton();
             bTextAdd = new ExButton();
             tpFonts = new TabPage();
+            tpStateDgm = new TabPage();
             bOpenFontDir = new ExButton();
             tbFontDir = new ExTextBox();
             label37 = new Label();
@@ -485,6 +486,7 @@ namespace GVDEditor.Forms
             tabControl.Controls.Add(tpTabTab);
             tabControl.Controls.Add(tpTTexts);
             tabControl.Controls.Add(tpFonts);
+            tabControl.Controls.Add(tpStateDgm);
             tabControl.DefaultStyle = true;
             tabControl.HeaderBackColor = SystemColors.Control;
             tabControl.HeaderForeColor = Color.Black;
@@ -1688,6 +1690,12 @@ namespace GVDEditor.Forms
             tpFonts.Controls.Add(groupBox9);
             resources.ApplyResources(tpFonts, "tpFonts");
             tpFonts.Name = "tpFonts";
+            //
+            // tpStateDgm
+            //
+            tpStateDgm.BackColor = Color.Transparent;
+            resources.ApplyResources(tpStateDgm, "tpStateDgm");
+            tpStateDgm.Name = "tpStateDgm";
             // 
             // bOpenFontDir
             // 
@@ -2309,6 +2317,7 @@ namespace GVDEditor.Forms
         private ExControls.ExButton bTextEdit;
         private ExControls.ExButton bTextAdd;
         private System.Windows.Forms.TabPage tpFonts;
+        private System.Windows.Forms.TabPage tpStateDgm;
         private System.Windows.Forms.ListBox listFonts;
         private System.Windows.Forms.Label label29;
         private ExGroupBox groupBox9;

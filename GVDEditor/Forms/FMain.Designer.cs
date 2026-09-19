@@ -160,6 +160,7 @@ namespace GVDEditor.Forms
             this.tsmiAppSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTools = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDatObm = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiStateDgm = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRun = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimStartupSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
@@ -639,7 +640,8 @@ namespace GVDEditor.Forms
             // tsmiTools
             // 
             this.tsmiTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiDatObm});
+            this.tsmiDatObm,
+            this.tsmiStateDgm});
             this.tsmiTools.Name = "tsmiTools";
             resources.ApplyResources(this.tsmiTools, "tsmiTools");
             // 
@@ -649,6 +651,13 @@ namespace GVDEditor.Forms
             this.tsmiDatObm.Name = "tsmiDatObm";
             resources.ApplyResources(this.tsmiDatObm, "tsmiDatObm");
             this.tsmiDatObm.Click += new System.EventHandler(this.tsmiDatObm_Click);
+            // 
+            // tsmiStateDgm
+            // 
+            this.tsmiStateDgm.Image = global::ToolsCore.GlobalResources.edit;
+            this.tsmiStateDgm.Name = "tsmiStateDgm";
+            resources.ApplyResources(this.tsmiStateDgm, "tsmiStateDgm");
+            this.tsmiStateDgm.Click += new System.EventHandler(this.tsmiStateDgm_Click);
             // 
             // tsmiRun
             // 
@@ -2419,6 +2428,7 @@ namespace GVDEditor.Forms
         private ToolStripMenuItem tsmimShutdownINISS;
         private ToolStripMenuItem tsmiTools;
         private ToolStripMenuItem tsmiDatObm;
+        private ToolStripMenuItem tsmiStateDgm;
         private ToolStripSeparator toolStripSeparator19;
         private ToolStripButton tsbDatObm;
         private Panel panelMain;

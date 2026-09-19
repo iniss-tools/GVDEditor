@@ -117,95 +117,143 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 17</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tsbSave.Text" xml:space="preserve">
+    <value>Uložit</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Umístění složky s INISSem:</value>
+  <data name="tsbSave.ToolTipText" xml:space="preserve">
+    <value>Uložit StateDgm.txt (Ctrl+S)</value>
   </data>
-  <data name="Grafikon.Text" xml:space="preserve">
-    <value>Platnost grafikonu:</value>
+  <data name="tsbCheck.Text" xml:space="preserve">
+    <value>Zkontrolovat</value>
   </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 17</value>
+  <data name="tsddNew.Text" xml:space="preserve">
+    <value>Nový</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Konec platnosti grafikonu:</value>
+  <data name="tsmiNewCategory.Text" xml:space="preserve">
+    <value>Kategorie vlaků</value>
   </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 17</value>
+  <data name="tsmiNewState.Text" xml:space="preserve">
+    <value>Stav</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Začátek platnosti grafikonu:</value>
+  <data name="tsmiNewDesign.Text" xml:space="preserve">
+    <value>Vzhled tlačítka</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 17</value>
+  <data name="tsmiNewTimePoint.Text" xml:space="preserve">
+    <value>Časový bod</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Konec platnosti dat:</value>
+  <data name="tsbDelete.Text" xml:space="preserve">
+    <value>Odstranit</value>
   </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 17</value>
+  <data name="tsbUp.Text" xml:space="preserve">
+    <value>▲</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Začátek platnosti dat:</value>
+  <data name="tsbUp.ToolTipText" xml:space="preserve">
+    <value>Posunout nahoru</value>
   </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 17</value>
+  <data name="tsbDown.Text" xml:space="preserve">
+    <value>▼</value>
   </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Název vytvoř. složky:</value>
+  <data name="tsbDown.ToolTipText" xml:space="preserve">
+    <value>Posunout dolů</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Název stanice:</value>
+  <data name="tsddTemplate.Text" xml:space="preserve">
+    <value>Předloha</value>
   </data>
-  <data name="bCreate.Text" xml:space="preserve">
-    <value>Vytvořit</value>
+  <data name="tsmiTplSK.Text" xml:space="preserve">
+    <value>Slovenská (poloautomat)</value>
   </data>
-  <data name="bZrusit.Text" xml:space="preserve">
-    <value>Zrušit</value>
+  <data name="tsmiTplCZ.Text" xml:space="preserve">
+    <value>Česká (poloautomat)</value>
   </data>
-  <data name="rbNewObd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>329, 21</value>
+  <data name="tsmiTplILTIS.Text" xml:space="preserve">
+    <value>Slovenská s automatikou ILTIS</value>
   </data>
-  <data name="rbNewObd.Text" xml:space="preserve">
-    <value>Vytvořit nové období platnosti exisujúcej stanice</value>
+  <data name="tsbCalendar.Text" xml:space="preserve">
+    <value>Kalendář akcí</value>
   </data>
-  <data name="rbNewStation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 21</value>
+  <data name="tpGraph.Text" xml:space="preserve">
+    <value>Graf</value>
   </data>
-  <data name="rbNewStation.Text" xml:space="preserve">
-    <value>Vytvořit novou stanici</value>
+  <data name="tpText.Text" xml:space="preserve">
+    <value>Text souboru</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Nepovinní vlastnosti:</value>
+  <data name="tpEvents.Text" xml:space="preserve">
+    <value>Akce a tlačítka</value>
   </data>
-  <data name="bEditColor.Text" xml:space="preserve">
-    <value>Upravit farbu...</value>
+  <data name="tpStarters.Text" xml:space="preserve">
+    <value>Startéry</value>
   </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 17</value>
+  <data name="tpProblems.Text" xml:space="preserve">
+    <value>Problémy</value>
   </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Port pro vzdálené hlášení:</value>
+  <data name="cEvCtrl.HeaderText" xml:space="preserve">
+    <value>Tlačítko</value>
   </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Port pro tabule:</value>
+  <data name="cEvDesign.HeaderText" xml:space="preserve">
+    <value>Vzhled</value>
   </data>
-  <data name="cbCustomStation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 21</value>
+  <data name="cEvKey.HeaderText" xml:space="preserve">
+    <value>Akce</value>
   </data>
-  <data name="cbCustomStation.Text" xml:space="preserve">
-    <value>Vlastní název stanice</value>
+  <data name="cEvClass.HeaderText" xml:space="preserve">
+    <value>Třída</value>
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Název stanice:</value>
+  <data name="cEvNext.HeaderText" xml:space="preserve">
+    <value>Další stav</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Stanice:</value>
+  <data name="cEvReport.HeaderText" xml:space="preserve">
+    <value>Typ hlášení</value>
   </data>
-  <data name="lStateDgmTemplate.Text" xml:space="preserve">
-    <value>Předloha stavového diagramu:</value>
+  <data name="cEvDialog.HeaderText" xml:space="preserve">
+    <value>Dialog</value>
+  </data>
+  <data name="tsbEvAdd.Text" xml:space="preserve">
+    <value>Přidat</value>
+  </data>
+  <data name="tsbEvEdit.Text" xml:space="preserve">
+    <value>Upravit</value>
+  </data>
+  <data name="tsbEvDelete.Text" xml:space="preserve">
+    <value>Odstranit</value>
+  </data>
+  <data name="tsbEvUp.Text" xml:space="preserve">
+    <value>▲</value>
+  </data>
+  <data name="tsbEvDown.Text" xml:space="preserve">
+    <value>▼</value>
+  </data>
+  <data name="cStKey.HeaderText" xml:space="preserve">
+    <value>Klíč</value>
+  </data>
+  <data name="cStEvent.HeaderText" xml:space="preserve">
+    <value>Akce</value>
+  </data>
+  <data name="cStText.HeaderText" xml:space="preserve">
+    <value>Popis</value>
+  </data>
+  <data name="tsbStAdd.Text" xml:space="preserve">
+    <value>Přidat</value>
+  </data>
+  <data name="tsbStEdit.Text" xml:space="preserve">
+    <value>Upravit</value>
+  </data>
+  <data name="tsbStDelete.Text" xml:space="preserve">
+    <value>Odstranit</value>
+  </data>
+  <data name="cProbType.HeaderText" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="cProbCode.HeaderText" xml:space="preserve">
+    <value>Kód</value>
+  </data>
+  <data name="cProbPath.HeaderText" xml:space="preserve">
+    <value>Prvek</value>
+  </data>
+  <data name="cProbMessage.HeaderText" xml:space="preserve">
+    <value>Hlášení</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Stavový diagram</value>
   </data>
 </root>

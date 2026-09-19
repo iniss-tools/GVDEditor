@@ -732,4 +732,558 @@ Presunúť ho teraz do vlastného priečinka ({1} grafikon/y)?</value>
   <data name="FTabTab_Nahlad" xml:space="preserve">
     <value>Náhľad na tabuli</value>
   </data>
+  <data name="FStateDgm_Title" xml:space="preserve">
+    <value>Stavový diagram – {0}</value>
+  </data>
+  <data name="FStateDgm_Diagram" xml:space="preserve">
+    <value>Diagram</value>
+  </data>
+  <data name="FStateDgm_Vzhlady" xml:space="preserve">
+    <value>Vzhľady tlačidiel</value>
+  </data>
+  <data name="FStateDgm_CasoveBody" xml:space="preserve">
+    <value>Časové body</value>
+  </data>
+  <data name="FStateDgm_Kategorie" xml:space="preserve">
+    <value>Kategórie vlakov</value>
+  </data>
+  <data name="FStateDgm_Zabudovany" xml:space="preserve">
+    <value>(zabudovaný)</value>
+  </data>
+  <data name="FStateDgm_Ulozit" xml:space="preserve">
+    <value>Uložiť</value>
+  </data>
+  <data name="FStateDgm_Skontrolovat" xml:space="preserve">
+    <value>Skontrolovať</value>
+  </data>
+  <data name="FStateDgm_NovaKategoria" xml:space="preserve">
+    <value>Nová kategória</value>
+  </data>
+  <data name="FStateDgm_NovyStav" xml:space="preserve">
+    <value>Nový stav</value>
+  </data>
+  <data name="FStateDgm_NovyVzhlad" xml:space="preserve">
+    <value>Nový vzhľad</value>
+  </data>
+  <data name="FStateDgm_NovyCasovyBod" xml:space="preserve">
+    <value>Nový časový bod</value>
+  </data>
+  <data name="FStateDgm_Odstranit" xml:space="preserve">
+    <value>Odstrániť</value>
+  </data>
+  <data name="FStateDgm_Hore" xml:space="preserve">
+    <value>Posunúť hore</value>
+  </data>
+  <data name="FStateDgm_Dole" xml:space="preserve">
+    <value>Posunúť dole</value>
+  </data>
+  <data name="FStateDgm_Predloha" xml:space="preserve">
+    <value>Predloha</value>
+  </data>
+  <data name="FStateDgm_PredlohaSK" xml:space="preserve">
+    <value>Slovenská (poloautomat)</value>
+  </data>
+  <data name="FStateDgm_PredlohaCZ" xml:space="preserve">
+    <value>Česká (poloautomat)</value>
+  </data>
+  <data name="FStateDgm_PredlohaILTIS" xml:space="preserve">
+    <value>Slovenská s automatikou ILTIS</value>
+  </data>
+  <data name="FStateDgm_PredlohaOtazka" xml:space="preserve">
+    <value>Nahradiť celý diagram predlohou „{0}“? Všetky úpravy sa stratia.</value>
+  </data>
+  <data name="FStateDgm_SuborChyba" xml:space="preserve">
+    <value>Súbor {0} sa nedá načítať (riadok {1}): {2}
+
+Otvorí sa slovenská predloha; pôvodný súbor sa prepíše až pri uložení.</value>
+  </data>
+  <data name="FStateDgm_SuborChyba_Nadpis" xml:space="preserve">
+    <value>Chyba v súbore StateDgm.txt</value>
+  </data>
+  <data name="FStateDgm_UlozitSChybami" xml:space="preserve">
+    <value>Diagram má {0} chýb, INISS ho pravdepodobne nenačíta. Uložiť aj tak?</value>
+  </data>
+  <data name="FStateDgm_NeulozeneZmeny" xml:space="preserve">
+    <value>Diagram má neuložené zmeny. Uložiť?</value>
+  </data>
+  <data name="FStateDgm_Ulozene" xml:space="preserve">
+    <value>Uložené: {0}</value>
+  </data>
+  <data name="FStateDgm_OdstranitOtazka" xml:space="preserve">
+    <value>Odstrániť „{0}“?</value>
+  </data>
+  <data name="FStateDgm_Problemy" xml:space="preserve">
+    <value>Problémy</value>
+  </data>
+  <data name="FStateDgm_AkcieTlacidla" xml:space="preserve">
+    <value>Akcie a tlačidlá</value>
+  </data>
+  <data name="FStateDgm_Startery" xml:space="preserve">
+    <value>Štartéry</value>
+  </data>
+  <data name="FStateDgm_Graf" xml:space="preserve">
+    <value>Graf</value>
+  </data>
+  <data name="FStateDgm_TextSuboru" xml:space="preserve">
+    <value>Text súboru</value>
+  </data>
+  <data name="FStateDgm_Pridat" xml:space="preserve">
+    <value>Pridať</value>
+  </data>
+  <data name="FStateDgm_Upravit" xml:space="preserve">
+    <value>Upraviť</value>
+  </data>
+  <data name="FStateDgm_BezProblemov" xml:space="preserve">
+    <value>Diagram je bez problémov</value>
+  </data>
+  <data name="FStateDgm_PocetProblemov" xml:space="preserve">
+    <value>{0} chýb, {1} varovaní, {2} správ</value>
+  </data>
+  <data name="FStateDgm_GrafNeskor" xml:space="preserve">
+    <value>Graf kategórie bude v ďalšej verzii.</value>
+  </data>
+  <data name="FStateDgm_Kalendar" xml:space="preserve">
+    <value>Kalendár akcií…</value>
+  </data>
+  <data name="FStateDgm_Col_Typ" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="FStateDgm_Col_Kod" xml:space="preserve">
+    <value>Kód</value>
+  </data>
+  <data name="FStateDgm_Col_Prvok" xml:space="preserve">
+    <value>Prvok</value>
+  </data>
+  <data name="FStateDgm_Col_Hlasenie" xml:space="preserve">
+    <value>Hlásenie</value>
+  </data>
+  <data name="FStateDgm_Col_CtrlID" xml:space="preserve">
+    <value>Tlačidlo</value>
+  </data>
+  <data name="FStateDgm_Col_Vzhlad" xml:space="preserve">
+    <value>Vzhľad</value>
+  </data>
+  <data name="FStateDgm_Col_Akcia" xml:space="preserve">
+    <value>Akcia</value>
+  </data>
+  <data name="FStateDgm_Col_Trieda" xml:space="preserve">
+    <value>Trieda</value>
+  </data>
+  <data name="FStateDgm_Col_DalsiStav" xml:space="preserve">
+    <value>Ďalší stav</value>
+  </data>
+  <data name="FStateDgm_Col_Hlasenie2" xml:space="preserve">
+    <value>Typ hlásenia</value>
+  </data>
+  <data name="FStateDgm_Col_Dialog" xml:space="preserve">
+    <value>Dialóg</value>
+  </data>
+  <data name="FStateDgm_Col_Kluc" xml:space="preserve">
+    <value>Kľúč</value>
+  </data>
+  <data name="FStateDgm_Col_Popis" xml:space="preserve">
+    <value>Popis</value>
+  </data>
+  <data name="FStateDgm_BezTlacidla" xml:space="preserve">
+    <value>(bez tlačidla)</value>
+  </data>
+  <data name="FStateDgm_Kluc" xml:space="preserve">
+    <value>Kľúč:</value>
+  </data>
+  <data name="FStateDgm_Nazov" xml:space="preserve">
+    <value>Názov pre obsluhu:</value>
+  </data>
+  <data name="FStateDgm_Komentar" xml:space="preserve">
+    <value>Komentár:</value>
+  </data>
+  <data name="FStateDgm_Ikona" xml:space="preserve">
+    <value>Ikona:</value>
+  </data>
+  <data name="FStateDgm_Trieda" xml:space="preserve">
+    <value>Trieda:</value>
+  </data>
+  <data name="FStateDgm_Vyraz" xml:space="preserve">
+    <value>ƒ</value>
+  </data>
+  <data name="FStateDgm_VyrazTip" xml:space="preserve">
+    <value>Zadať ako výraz jazyka INISS (vyhodnocuje sa pre každý vlak)</value>
+  </data>
+  <data name="FStateDgm_Nenastavene" xml:space="preserve">
+    <value>(nenastavené)</value>
+  </data>
+  <data name="FStateDgm_IndCat" xml:space="preserve">
+    <value>Výraz kategórie (IndCat):</value>
+  </data>
+  <data name="FStateDgm_IndCatPredvoleny" xml:space="preserve">
+    <value>Predvolený (INDCAT6)</value>
+  </data>
+  <data name="FStateDgm_IndCatVlastny" xml:space="preserve">
+    <value>Vlastný výraz</value>
+  </data>
+  <data name="FStateDgm_IndCatInfo" xml:space="preserve">
+    <value>Výsledok výrazu je číslo kategórie od 1 do {0}. INDCAT6 a INDCAT8 sú zabudované rozdelenia podľa polohy vlaku a výluk.</value>
+  </data>
+  <data name="FStateDgm_HlavickoveKomentare" xml:space="preserve">
+    <value>Popis súboru (komentáre v hlavičke):</value>
+  </data>
+  <data name="FStateDgm_IkonaKat0" xml:space="preserve">
+    <value>0 – vychádzajúci vlak</value>
+  </data>
+  <data name="FStateDgm_IkonaKat1" xml:space="preserve">
+    <value>1 – prechádzajúci vlak</value>
+  </data>
+  <data name="FStateDgm_IkonaKat2" xml:space="preserve">
+    <value>2 – končiaci vlak</value>
+  </data>
+  <data name="FStateDgm_KatInfo" xml:space="preserve">
+    <value>Poradie kategórie zodpovedá číslu, ktoré vracia výraz IndCat. Prvý stav v poradí je počiatočný.</value>
+  </data>
+  <data name="FStateDgm_IkonaStav0" xml:space="preserve">
+    <value>0 – prázdne nástupište</value>
+  </data>
+  <data name="FStateDgm_IkonaStav1" xml:space="preserve">
+    <value>1 – vlak sa blíži</value>
+  </data>
+  <data name="FStateDgm_IkonaStav2" xml:space="preserve">
+    <value>2 – vlak vchádza</value>
+  </data>
+  <data name="FStateDgm_IkonaStav3" xml:space="preserve">
+    <value>3 – vlak stojí</value>
+  </data>
+  <data name="FStateDgm_IkonaStav4" xml:space="preserve">
+    <value>4 – vlak odchádza</value>
+  </data>
+  <data name="FStateDgm_IkonaStav5" xml:space="preserve">
+    <value>5 – vlak odbavený</value>
+  </data>
+  <data name="FStateDgm_Priznaky" xml:space="preserve">
+    <value>Príznaky stavu (Attr)</value>
+  </data>
+  <data name="FStateDgm_Attr_Stoji" xml:space="preserve">
+    <value>Stojí v stanici</value>
+  </data>
+  <data name="FStateDgm_Attr_PotvrzenaKolej" xml:space="preserve">
+    <value>Potvrdená koľaj</value>
+  </data>
+  <data name="FStateDgm_Attr_Odbaven" xml:space="preserve">
+    <value>Odbavený</value>
+  </data>
+  <data name="FStateDgm_Attr_Shadow" xml:space="preserve">
+    <value>V tieni (už sa nezobrazuje)</value>
+  </data>
+  <data name="FStateDgm_Attr_NyniStoji" xml:space="preserve">
+    <value>Práve teraz stojí</value>
+  </data>
+  <data name="FStateDgm_PredvoleneTlacidlo" xml:space="preserve">
+    <value>Predvolené tlačidlo:</value>
+  </data>
+  <data name="FStateDgm_BezPredvoleneho" xml:space="preserve">
+    <value>(žiadne)</value>
+  </data>
+  <data name="FStateDgm_Automatika" xml:space="preserve">
+    <value>Automatika – kedy vlak do stavu vstúpi sám</value>
+  </data>
+  <data name="FStateDgm_AutoMode" xml:space="preserve">
+    <value>Režim:</value>
+  </data>
+  <data name="FStateDgm_AutoMode0" xml:space="preserve">
+    <value>0 – ručne</value>
+  </data>
+  <data name="FStateDgm_AutoMode1" xml:space="preserve">
+    <value>1 – poloautomat (obsluha potvrdí)</value>
+  </data>
+  <data name="FStateDgm_AutoMode2" xml:space="preserve">
+    <value>2 – automat</value>
+  </data>
+  <data name="FStateDgm_AutoTimePoint" xml:space="preserve">
+    <value>Od času:</value>
+  </data>
+  <data name="FStateDgm_AutoTimePoint1" xml:space="preserve">
+    <value>1 – príchodu</value>
+  </data>
+  <data name="FStateDgm_AutoTimePoint2" xml:space="preserve">
+    <value>2 – odchodu</value>
+  </data>
+  <data name="FStateDgm_AutoTimePointAdd" xml:space="preserve">
+    <value>Posun (s):</value>
+  </data>
+  <data name="FStateDgm_AutoTimePointAddTip" xml:space="preserve">
+    <value>Kladný = po čase, záporný = pred časom; 300 = 5 minút po</value>
+  </data>
+  <data name="FStateDgm_AutoModif" xml:space="preserve">
+    <value>Hlásenie:</value>
+  </data>
+  <data name="FStateDgm_AutoModif1" xml:space="preserve">
+    <value>1 – krátke</value>
+  </data>
+  <data name="FStateDgm_AutoModif2" xml:space="preserve">
+    <value>2 – dlhé</value>
+  </data>
+  <data name="FStateDgm_Wait" xml:space="preserve">
+    <value>Čakať na ILTIS:</value>
+  </data>
+  <data name="FStateDgm_Wait_VVC" xml:space="preserve">
+    <value>VVC – vchodová vlaková cesta</value>
+  </data>
+  <data name="FStateDgm_Wait_OVC" xml:space="preserve">
+    <value>OVC – odchodová vlaková cesta</value>
+  </data>
+  <data name="FStateDgm_Wait_ZCV" xml:space="preserve">
+    <value>ZCV – zavedenie čísla vlaku</value>
+  </data>
+  <data name="FStateDgm_Wait_Vj" xml:space="preserve">
+    <value>Vj – vchod vlaku</value>
+  </data>
+  <data name="FStateDgm_Wait_Odj" xml:space="preserve">
+    <value>Odj – odchod vlaku</value>
+  </data>
+  <data name="FStateDgm_AutoCondition" xml:space="preserve">
+    <value>Podmienka:</value>
+  </data>
+  <data name="FStateDgm_AutoConditionTip" xml:space="preserve">
+    <value>Výraz; ak pre vlak neplatí, automatický prechod sa nenaplánuje</value>
+  </data>
+  <data name="FStateDgm_Tabule" xml:space="preserve">
+    <value>Tabule (DoState)</value>
+  </data>
+  <data name="FStateDgm_TabuleZapnut" xml:space="preserve">
+    <value>Stav mení zobrazenie na tabuliach</value>
+  </data>
+  <data name="FStateDgm_JeNaOdjezdove" xml:space="preserve">
+    <value>Je na odchodovej tabuli</value>
+  </data>
+  <data name="FStateDgm_JeNaPrijezdove" xml:space="preserve">
+    <value>Je na príchodovej tabuli</value>
+  </data>
+  <data name="FStateDgm_JeNaSmerovych" xml:space="preserve">
+    <value>Je na smerových (nástupištných) tabuliach</value>
+  </data>
+  <data name="FStateDgm_JeZobrazenaPozice" xml:space="preserve">
+    <value>Zobrazuje sa nástupište</value>
+  </data>
+  <data name="FStateDgm_JeZobrazenaKolej" xml:space="preserve">
+    <value>Zobrazuje sa koľaj</value>
+  </data>
+  <data name="FStateDgm_Rozsirene" xml:space="preserve">
+    <value>Rozšírené</value>
+  </data>
+  <data name="FStateDgm_UndoState" xml:space="preserve">
+    <value>Pri vrátení späť (UndoState)</value>
+  </data>
+  <data name="FStateDgm_UndoStateZapnut" xml:space="preserve">
+    <value>Zvlášť nastaviť tabule pri vrátení späť</value>
+  </data>
+  <data name="FStateDgm_Bitmaps" xml:space="preserve">
+    <value>Obrázky (posun-normálny,zameranie,stlačený):</value>
+  </data>
+  <data name="FStateDgm_BitmapsInfo" xml:space="preserve">
+    <value>Prvé číslo je posun v páse obrázkov INISSu, ďalšie tri vyberajú obrázok pre bežný stav, zameranie a stlačenie. Rovnaké tri čísla = tlačidlo sa nedá stlačiť.</value>
+  </data>
+  <data name="FStateDgm_DefPushBtn" xml:space="preserve">
+    <value>Predvolené tlačidlo (reaguje na Enter)</value>
+  </data>
+  <data name="FStateDgm_TP_Key1" xml:space="preserve">
+    <value>Prvý zdrojový bod:</value>
+  </data>
+  <data name="FStateDgm_TP_Offset1" xml:space="preserve">
+    <value>Posun prvého (s):</value>
+  </data>
+  <data name="FStateDgm_TP_Key2" xml:space="preserve">
+    <value>Druhý zdrojový bod:</value>
+  </data>
+  <data name="FStateDgm_TP_Offset2" xml:space="preserve">
+    <value>Posun druhého (s):</value>
+  </data>
+  <data name="FStateDgm_TP_Operator" xml:space="preserve">
+    <value>Výber:</value>
+  </data>
+  <data name="FStateDgm_TP_Min" xml:space="preserve">
+    <value>min – skorší z dvojice</value>
+  </data>
+  <data name="FStateDgm_TP_Max" xml:space="preserve">
+    <value>max – neskorší z dvojice</value>
+  </data>
+  <data name="FStateDgm_TP_Info" xml:space="preserve">
+    <value>Bod bez zdrojov je nastaviteľný časový bod – #StartTime v stave INISS nastaví na čas vstupu vlaku do stavu.</value>
+  </data>
+  <data name="FStateDgm_TP_Zabudovane" xml:space="preserve">
+    <value>Zabudované časové body: {0}</value>
+  </data>
+  <data name="FStateDgm_TP_Stavu" xml:space="preserve">
+    <value>Časové body stavu</value>
+  </data>
+  <data name="FStateDgm_Akcia_Titul" xml:space="preserve">
+    <value>Akcia stavu</value>
+  </data>
+  <data name="FStateDgm_Akcia_Tlacidlo" xml:space="preserve">
+    <value>Tlačidlo v paneli</value>
+  </data>
+  <data name="FStateDgm_Akcia_MaTlacidlo" xml:space="preserve">
+    <value>Akcia má tlačidlo</value>
+  </data>
+  <data name="FStateDgm_Akcia_CtrlID" xml:space="preserve">
+    <value>Poradie v paneli (CtrlID):</value>
+  </data>
+  <data name="FStateDgm_Akcia_Vzhlad" xml:space="preserve">
+    <value>Vzhľad tlačidla:</value>
+  </data>
+  <data name="FStateDgm_Akcia_NextState" xml:space="preserve">
+    <value>Prepnúť do stavu:</value>
+  </data>
+  <data name="FStateDgm_Akcia_BezZmeny" xml:space="preserve">
+    <value>(bez zmeny stavu)</value>
+  </data>
+  <data name="FStateDgm_Akcia_ReportKey" xml:space="preserve">
+    <value>Vyhlásiť hlásenie:</value>
+  </data>
+  <data name="FStateDgm_Akcia_BezHlasenia" xml:space="preserve">
+    <value>(bez hlásenia)</value>
+  </data>
+  <data name="FStateDgm_Akcia_Dialog" xml:space="preserve">
+    <value>Dialóg:</value>
+  </data>
+  <data name="FStateDgm_Akcia_Dlg_Kolej" xml:space="preserve">
+    <value>SDDlgKolej – zadanie koľaje</value>
+  </data>
+  <data name="FStateDgm_Akcia_Dlg_Zpozdeni" xml:space="preserve">
+    <value>SDDlgZpozdeni – meškanie v stanici</value>
+  </data>
+  <data name="FStateDgm_Akcia_Dlg_ZpozdeniG" xml:space="preserve">
+    <value>SDDlgZpozdeniG – meškanie po staniciach</value>
+  </data>
+  <data name="FStateDgm_Akcia_Rozsirene" xml:space="preserve">
+    <value>Rozšírené voľby hlásenia a pozície</value>
+  </data>
+  <data name="FStateDgm_Akcia_PosArr" xml:space="preserve">
+    <value>Pozícia pre príchod</value>
+  </data>
+  <data name="FStateDgm_Akcia_PosDep" xml:space="preserve">
+    <value>Pozícia pre odchod</value>
+  </data>
+  <data name="FStateDgm_Akcia_CopyPos" xml:space="preserve">
+    <value>Kopírovať pozíciu</value>
+  </data>
+  <data name="FStateDgm_Akcia_ModifReport" xml:space="preserve">
+    <value>Povoliť úpravu hlásenia</value>
+  </data>
+  <data name="FStateDgm_Akcia_AskReport" xml:space="preserve">
+    <value>Pred hlásením sa opýtať</value>
+  </data>
+  <data name="FStateDgm_Akcia_HideShow" xml:space="preserve">
+    <value>Skryť/odkryť vlak</value>
+  </data>
+  <data name="FStateDgm_Akcia_DelayArr" xml:space="preserve">
+    <value>Meškanie na príchode</value>
+  </data>
+  <data name="FStateDgm_Akcia_DelayDep" xml:space="preserve">
+    <value>Meškanie na odchode</value>
+  </data>
+  <data name="FStateDgm_Akcia_Class_UniPos" xml:space="preserve">
+    <value>SDEventUniPos – prechod stavu a hlásenie</value>
+  </data>
+  <data name="FStateDgm_Akcia_Class_Dialog" xml:space="preserve">
+    <value>SDEventWithDialog – otvorí dialóg</value>
+  </data>
+  <data name="FStateDgm_Akcia_Class_Change" xml:space="preserve">
+    <value>SDEventChangeState – len prechod stavu</value>
+  </data>
+  <data name="FStateDgm_Akcia_Class_Report" xml:space="preserve">
+    <value>SDEventReportAboutState – hlásenie o stave</value>
+  </data>
+  <data name="FStateDgm_Akcia_Class_VlakAttr" xml:space="preserve">
+    <value>SDEventVlakAttr – zmena meškania</value>
+  </data>
+  <data name="FStateDgm_Starter_Titul" xml:space="preserve">
+    <value>Štartér</value>
+  </data>
+  <data name="FStateDgm_Starter_Akcia" xml:space="preserve">
+    <value>Spúšťa akciu:</value>
+  </data>
+  <data name="FStateDgm_Starter_TimePoint" xml:space="preserve">
+    <value>Prvýkrát od:</value>
+  </data>
+  <data name="FStateDgm_Starter_Offset" xml:space="preserve">
+    <value>Posun prvého spustenia (s):</value>
+  </data>
+  <data name="FStateDgm_Starter_Step" xml:space="preserve">
+    <value>Opakovať každých (s):</value>
+  </data>
+  <data name="FStateDgm_Starter_Opakovat" xml:space="preserve">
+    <value>Opakovať</value>
+  </data>
+  <data name="FStateDgm_Starter_Last" xml:space="preserve">
+    <value>Naposledy od:</value>
+  </data>
+  <data name="FStateDgm_Starter_OffsetLast" xml:space="preserve">
+    <value>Posun posledného (s):</value>
+  </data>
+  <data name="FStateDgm_Starter_Later" xml:space="preserve">
+    <value>Spustiť hneď, keď prvý termín už uplynul</value>
+  </data>
+  <data name="FStateDgm_Starter_Veta" xml:space="preserve">
+    <value>Spustí „{0}“ prvýkrát {1} {2}{3}{4}.</value>
+  </data>
+  <data name="FStateDgm_Starter_VetaKrok" xml:space="preserve">
+    <value>, potom každých {0}</value>
+  </data>
+  <data name="FStateDgm_Starter_VetaLast" xml:space="preserve">
+    <value>, naposledy {0} {1}</value>
+  </data>
+  <data name="FStateDgm_Pred" xml:space="preserve">
+    <value>pred</value>
+  </data>
+  <data name="FStateDgm_Po" xml:space="preserve">
+    <value>po</value>
+  </data>
+  <data name="FStateDgm_V_case" xml:space="preserve">
+    <value>v čase</value>
+  </data>
+  <data name="FStateDgm_Min" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="FStateDgm_Sek" xml:space="preserve">
+    <value>{0} s</value>
+  </data>
+  <data name="FLocalSettings_StavovyDiagram" xml:space="preserve">
+    <value>Stavový diagram</value>
+  </data>
+  <data name="FLocalSettings_SD_Info" xml:space="preserve">
+    <value>Stavový diagram určuje, akými stavmi vlak v stanici prechádza, aké tlačidlá má obsluha a čo sa automaticky vyhlási.</value>
+  </data>
+  <data name="FLocalSettings_SD_Otvorit" xml:space="preserve">
+    <value>Otvoriť editor stavového diagramu…</value>
+  </data>
+  <data name="FLocalSettings_SD_Stav" xml:space="preserve">
+    <value>Súbor: {0}, kategórií: {1}, stavov: {2}</value>
+  </data>
+  <data name="FLocalSettings_SD_Chyba" xml:space="preserve">
+    <value>Súbor sa nedá načítať: {0}</value>
+  </data>
+  <data name="FLocalSettings_SD_Chyba_Nie" xml:space="preserve">
+    <value>Súbor StateDgm.txt v priečinku grafikonu nie je – INISS vlaky tohto grafikonu nedokáže obsluhovať.</value>
+  </data>
+  <data name="FLocalSettings_SD_Problemy" xml:space="preserve">
+    <value>Kontrola: {0}</value>
+  </data>
+  <data name="FNewGrafikon_Predloha" xml:space="preserve">
+    <value>Predloha stavového diagramu:</value>
+  </data>
+  <data name="FMain_StavovyDiagram" xml:space="preserve">
+    <value>Stavový diagram…</value>
+  </data>
+  <data name="FEditTrain_Kalendar" xml:space="preserve">
+    <value>Kalendár akcií…</value>
+  </data>
+  <data name="FStateDgm_Stav" xml:space="preserve">
+    <value>Stav</value>
+  </data>
+  <data name="FStateDgm_Kategoria" xml:space="preserve">
+    <value>Kategória vlakov</value>
+  </data>
+  <data name="FStateDgm_Vzhlad" xml:space="preserve">
+    <value>Vzhľad tlačidla</value>
+  </data>
+  <data name="FStateDgm_CasovyBod" xml:space="preserve">
+    <value>Časový bod</value>
+  </data>
 </root>

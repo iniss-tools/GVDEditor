@@ -5908,6 +5908,24 @@
   <data name="tpFonts.Text" xml:space="preserve">
     <value>Písma</value>
   </data>
+  <data name="tpStateDgm.Text" xml:space="preserve">
+    <value>Stavový diagram</value>
+  </data>
+  <data name="tpStateDgm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="&gt;&gt;tpStateDgm.Name" xml:space="preserve">
+    <value>tpStateDgm</value>
+  </data>
+  <data name="&gt;&gt;tpStateDgm.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpStateDgm.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tpStateDgm.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
   <data name="&gt;&gt;tpFonts.Name" xml:space="preserve">
     <value>tpFonts</value>
   </data>

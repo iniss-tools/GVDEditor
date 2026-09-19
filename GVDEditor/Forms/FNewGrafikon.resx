@@ -451,7 +451,7 @@
     <value>7</value>
   </data>
   <data name="tbDirName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>252, 388</value>
+    <value>252, 414</value>
   </data>
   <data name="tbDirName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -478,7 +478,7 @@
     <value>True</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 390</value>
+    <value>128, 416</value>
   </data>
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -565,7 +565,7 @@
     <value>True</value>
   </data>
   <data name="bCreate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 421</value>
+    <value>165, 447</value>
   </data>
   <data name="bCreate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -595,7 +595,7 @@
     <value>True</value>
   </data>
   <data name="bZrusit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>320, 421</value>
+    <value>320, 447</value>
   </data>
   <data name="bZrusit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -733,7 +733,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;bEditColor.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="pbColor.ErrorImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -760,7 +760,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;pbColor.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="nudHlaseniePort.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 47</value>
@@ -781,7 +781,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;nudHlaseniePort.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -808,7 +808,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -835,7 +835,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -862,7 +862,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="nudTabPort.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 21</value>
@@ -883,13 +883,13 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;nudTabPort.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 301</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>520, 80</value>
+    <value>520, 106</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1114,7 +1114,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>538, 457</value>
+    <value>538, 483</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1139,5 +1139,53 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lStateDgmTemplate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lStateDgmTemplate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 75</value>
+  </data>
+  <data name="lStateDgmTemplate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 13</value>
+  </data>
+  <data name="lStateDgmTemplate.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lStateDgmTemplate.Text" xml:space="preserve">
+    <value>Predloha stavového diagramu:</value>
+  </data>
+  <data name="&gt;&gt;lStateDgmTemplate.Name" xml:space="preserve">
+    <value>lStateDgmTemplate</value>
+  </data>
+  <data name="&gt;&gt;lStateDgmTemplate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lStateDgmTemplate.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;lStateDgmTemplate.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbStateDgmTemplate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 73</value>
+  </data>
+  <data name="cbStateDgmTemplate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 21</value>
+  </data>
+  <data name="cbStateDgmTemplate.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;cbStateDgmTemplate.Name" xml:space="preserve">
+    <value>cbStateDgmTemplate</value>
+  </data>
+  <data name="&gt;&gt;cbStateDgmTemplate.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbStateDgmTemplate.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;cbStateDgmTemplate.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
 </root>

@@ -23,6 +23,16 @@ public partial class FNewGrafikon : Form
     private Color selectedColor = Color.White;
 
     /// <summary>
+    ///     Predloha stavoveho diagramu, ktora sa zapise do noveho grafikonu.
+    /// </summary>
+    public StateDgmTemplate Template => cbStateDgmTemplate.SelectedIndex switch
+    {
+        1 => StateDgmTemplate.Czech,
+        2 => StateDgmTemplate.SlovakIltis,
+        _ => StateDgmTemplate.Slovak
+    };
+
+    /// <summary>
     ///     Vytvori novy formular typu <see cref="FNewGrafikon"/>.
     /// </summary>
     public FNewGrafikon()
@@ -37,6 +47,9 @@ public partial class FNewGrafikon : Form
 
         nudIDStation.Enabled = false;
         tbStationName.Enabled = false;
+
+        cbStateDgmTemplate.Items.AddRange([Resources.FStateDgm_PredlohaSK, Resources.FStateDgm_PredlohaCZ, Resources.FStateDgm_PredlohaILTIS]);
+        cbStateDgmTemplate.SelectedIndex = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs" ? 1 : 0;
     }
 
     private void bCreate_Click(object sender, EventArgs e)

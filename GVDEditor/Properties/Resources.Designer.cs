@@ -1820,5 +1820,1661 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("FTabTab_Nahlad", resourceCulture);
             }
         }
-    }
+            
+        /// <summary>
+        ///   Looks up a localized string similar to Stavový diagram – {0}.
+        /// </summary>
+        internal static string FStateDgm_Title {
+            get {
+                return ResourceManager.GetString("FStateDgm_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram.
+        /// </summary>
+        internal static string FStateDgm_Diagram {
+            get {
+                return ResourceManager.GetString("FStateDgm_Diagram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vzhľady tlačidiel.
+        /// </summary>
+        internal static string FStateDgm_Vzhlady {
+            get {
+                return ResourceManager.GetString("FStateDgm_Vzhlady", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Časové body.
+        /// </summary>
+        internal static string FStateDgm_CasoveBody {
+            get {
+                return ResourceManager.GetString("FStateDgm_CasoveBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kategórie vlakov.
+        /// </summary>
+        internal static string FStateDgm_Kategorie {
+            get {
+                return ResourceManager.GetString("FStateDgm_Kategorie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (zabudovaný).
+        /// </summary>
+        internal static string FStateDgm_Zabudovany {
+            get {
+                return ResourceManager.GetString("FStateDgm_Zabudovany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uložiť.
+        /// </summary>
+        internal static string FStateDgm_Ulozit {
+            get {
+                return ResourceManager.GetString("FStateDgm_Ulozit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skontrolovať.
+        /// </summary>
+        internal static string FStateDgm_Skontrolovat {
+            get {
+                return ResourceManager.GetString("FStateDgm_Skontrolovat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nová kategória.
+        /// </summary>
+        internal static string FStateDgm_NovaKategoria {
+            get {
+                return ResourceManager.GetString("FStateDgm_NovaKategoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nový stav.
+        /// </summary>
+        internal static string FStateDgm_NovyStav {
+            get {
+                return ResourceManager.GetString("FStateDgm_NovyStav", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nový vzhľad.
+        /// </summary>
+        internal static string FStateDgm_NovyVzhlad {
+            get {
+                return ResourceManager.GetString("FStateDgm_NovyVzhlad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nový časový bod.
+        /// </summary>
+        internal static string FStateDgm_NovyCasovyBod {
+            get {
+                return ResourceManager.GetString("FStateDgm_NovyCasovyBod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odstrániť.
+        /// </summary>
+        internal static string FStateDgm_Odstranit {
+            get {
+                return ResourceManager.GetString("FStateDgm_Odstranit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posunúť hore.
+        /// </summary>
+        internal static string FStateDgm_Hore {
+            get {
+                return ResourceManager.GetString("FStateDgm_Hore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posunúť dole.
+        /// </summary>
+        internal static string FStateDgm_Dole {
+            get {
+                return ResourceManager.GetString("FStateDgm_Dole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Predloha.
+        /// </summary>
+        internal static string FStateDgm_Predloha {
+            get {
+                return ResourceManager.GetString("FStateDgm_Predloha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slovenská (poloautomat).
+        /// </summary>
+        internal static string FStateDgm_PredlohaSK {
+            get {
+                return ResourceManager.GetString("FStateDgm_PredlohaSK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Česká (poloautomat).
+        /// </summary>
+        internal static string FStateDgm_PredlohaCZ {
+            get {
+                return ResourceManager.GetString("FStateDgm_PredlohaCZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slovenská s automatikou ILTIS.
+        /// </summary>
+        internal static string FStateDgm_PredlohaILTIS {
+            get {
+                return ResourceManager.GetString("FStateDgm_PredlohaILTIS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nahradiť celý diagram predlohou „{0}“? Všetky úpravy sa stratia..
+        /// </summary>
+        internal static string FStateDgm_PredlohaOtazka {
+            get {
+                return ResourceManager.GetString("FStateDgm_PredlohaOtazka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor {0} sa nedá načítať (riadok {1}): {2}  Otvorí sa slovenská predloha; pôvodný súbor sa prepíše až pri uložení..
+        /// </summary>
+        internal static string FStateDgm_SuborChyba {
+            get {
+                return ResourceManager.GetString("FStateDgm_SuborChyba", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chyba v súbore StateDgm.txt.
+        /// </summary>
+        internal static string FStateDgm_SuborChyba_Nadpis {
+            get {
+                return ResourceManager.GetString("FStateDgm_SuborChyba_Nadpis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram má {0} chýb, INISS ho pravdepodobne nenačíta. Uložiť aj tak?.
+        /// </summary>
+        internal static string FStateDgm_UlozitSChybami {
+            get {
+                return ResourceManager.GetString("FStateDgm_UlozitSChybami", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram má neuložené zmeny. Uložiť?.
+        /// </summary>
+        internal static string FStateDgm_NeulozeneZmeny {
+            get {
+                return ResourceManager.GetString("FStateDgm_NeulozeneZmeny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uložené: {0}.
+        /// </summary>
+        internal static string FStateDgm_Ulozene {
+            get {
+                return ResourceManager.GetString("FStateDgm_Ulozene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odstrániť „{0}“?.
+        /// </summary>
+        internal static string FStateDgm_OdstranitOtazka {
+            get {
+                return ResourceManager.GetString("FStateDgm_OdstranitOtazka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problémy.
+        /// </summary>
+        internal static string FStateDgm_Problemy {
+            get {
+                return ResourceManager.GetString("FStateDgm_Problemy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Akcie a tlačidlá.
+        /// </summary>
+        internal static string FStateDgm_AkcieTlacidla {
+            get {
+                return ResourceManager.GetString("FStateDgm_AkcieTlacidla", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Štartéry.
+        /// </summary>
+        internal static string FStateDgm_Startery {
+            get {
+                return ResourceManager.GetString("FStateDgm_Startery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graf.
+        /// </summary>
+        internal static string FStateDgm_Graf {
+            get {
+                return ResourceManager.GetString("FStateDgm_Graf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text súboru.
+        /// </summary>
+        internal static string FStateDgm_TextSuboru {
+            get {
+                return ResourceManager.GetString("FStateDgm_TextSuboru", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pridať.
+        /// </summary>
+        internal static string FStateDgm_Pridat {
+            get {
+                return ResourceManager.GetString("FStateDgm_Pridat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upraviť.
+        /// </summary>
+        internal static string FStateDgm_Upravit {
+            get {
+                return ResourceManager.GetString("FStateDgm_Upravit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagram je bez problémov.
+        /// </summary>
+        internal static string FStateDgm_BezProblemov {
+            get {
+                return ResourceManager.GetString("FStateDgm_BezProblemov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} chýb, {1} varovaní, {2} správ.
+        /// </summary>
+        internal static string FStateDgm_PocetProblemov {
+            get {
+                return ResourceManager.GetString("FStateDgm_PocetProblemov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Graf kategórie bude v ďalšej verzii..
+        /// </summary>
+        internal static string FStateDgm_GrafNeskor {
+            get {
+                return ResourceManager.GetString("FStateDgm_GrafNeskor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kalendár akcií….
+        /// </summary>
+        internal static string FStateDgm_Kalendar {
+            get {
+                return ResourceManager.GetString("FStateDgm_Kalendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ.
+        /// </summary>
+        internal static string FStateDgm_Col_Typ {
+            get {
+                return ResourceManager.GetString("FStateDgm_Col_Typ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kód.
+        /// </summary>
+        internal static string FStateDgm_Col_Kod {
+            get {
+                return ResourceManager.GetString("FStateDgm_Col_Kod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prvok.
+        /// </summary>
+        internal static string FStateDgm_Col_Prvok {
+            get {
+                return ResourceManager.GetString("FStateDgm_Col_Prvok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hlásenie.
+        /// </summary>
+        internal static string FStateDgm_Col_Hlasenie {
+            get {
+                return ResourceManager.GetString("FStateDgm_Col_Hlasenie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tlačidlo.
+        /// </summary>
+        internal static string FStateDgm_Col_CtrlID {
+            get {
+                return ResourceManager.GetString("FStateDgm_Col_CtrlID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vzhľad.
+        /// </summary>
+        internal static string FStateDgm_Col_Vzhlad {
+            get {
+                return ResourceManager.GetString("FStateDgm_Col_Vzhlad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Akcia.
+        /// </summary>
+        internal static string FStateDgm_Col_Akcia {
+            get {
+                return ResourceManager.GetString("FStateDgm_Col_Akcia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trieda.
+        /// </summary>
+        internal static string FStateDgm_Col_Trieda {
+            get {
+                return ResourceManager.GetString("FStateDgm_Col_Trieda", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ďalší stav.
+        /// </summary>
+        internal static string FStateDgm_Col_DalsiStav {
+            get {
+                return ResourceManager.GetString("FStateDgm_Col_DalsiStav", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ hlásenia.
+        /// </summary>
+        internal static string FStateDgm_Col_Hlasenie2 {
+            get {
+                return ResourceManager.GetString("FStateDgm_Col_Hlasenie2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dialóg.
+        /// </summary>
+        internal static string FStateDgm_Col_Dialog {
+            get {
+                return ResourceManager.GetString("FStateDgm_Col_Dialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kľúč.
+        /// </summary>
+        internal static string FStateDgm_Col_Kluc {
+            get {
+                return ResourceManager.GetString("FStateDgm_Col_Kluc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Popis.
+        /// </summary>
+        internal static string FStateDgm_Col_Popis {
+            get {
+                return ResourceManager.GetString("FStateDgm_Col_Popis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (bez tlačidla).
+        /// </summary>
+        internal static string FStateDgm_BezTlacidla {
+            get {
+                return ResourceManager.GetString("FStateDgm_BezTlacidla", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kľúč:.
+        /// </summary>
+        internal static string FStateDgm_Kluc {
+            get {
+                return ResourceManager.GetString("FStateDgm_Kluc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov pre obsluhu:.
+        /// </summary>
+        internal static string FStateDgm_Nazov {
+            get {
+                return ResourceManager.GetString("FStateDgm_Nazov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Komentár:.
+        /// </summary>
+        internal static string FStateDgm_Komentar {
+            get {
+                return ResourceManager.GetString("FStateDgm_Komentar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ikona:.
+        /// </summary>
+        internal static string FStateDgm_Ikona {
+            get {
+                return ResourceManager.GetString("FStateDgm_Ikona", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trieda:.
+        /// </summary>
+        internal static string FStateDgm_Trieda {
+            get {
+                return ResourceManager.GetString("FStateDgm_Trieda", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ƒ.
+        /// </summary>
+        internal static string FStateDgm_Vyraz {
+            get {
+                return ResourceManager.GetString("FStateDgm_Vyraz", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadať ako výraz jazyka INISS (vyhodnocuje sa pre každý vlak).
+        /// </summary>
+        internal static string FStateDgm_VyrazTip {
+            get {
+                return ResourceManager.GetString("FStateDgm_VyrazTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (nenastavené).
+        /// </summary>
+        internal static string FStateDgm_Nenastavene {
+            get {
+                return ResourceManager.GetString("FStateDgm_Nenastavene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Výraz kategórie (IndCat):.
+        /// </summary>
+        internal static string FStateDgm_IndCat {
+            get {
+                return ResourceManager.GetString("FStateDgm_IndCat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Predvolený (INDCAT6).
+        /// </summary>
+        internal static string FStateDgm_IndCatPredvoleny {
+            get {
+                return ResourceManager.GetString("FStateDgm_IndCatPredvoleny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlastný výraz.
+        /// </summary>
+        internal static string FStateDgm_IndCatVlastny {
+            get {
+                return ResourceManager.GetString("FStateDgm_IndCatVlastny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Výsledok výrazu je číslo kategórie od 1 do {0}. INDCAT6 a INDCAT8 sú zabudované rozdelenia podľa polohy vlaku a výluk..
+        /// </summary>
+        internal static string FStateDgm_IndCatInfo {
+            get {
+                return ResourceManager.GetString("FStateDgm_IndCatInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Popis súboru (komentáre v hlavičke):.
+        /// </summary>
+        internal static string FStateDgm_HlavickoveKomentare {
+            get {
+                return ResourceManager.GetString("FStateDgm_HlavickoveKomentare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0 – vychádzajúci vlak.
+        /// </summary>
+        internal static string FStateDgm_IkonaKat0 {
+            get {
+                return ResourceManager.GetString("FStateDgm_IkonaKat0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 – prechádzajúci vlak.
+        /// </summary>
+        internal static string FStateDgm_IkonaKat1 {
+            get {
+                return ResourceManager.GetString("FStateDgm_IkonaKat1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2 – končiaci vlak.
+        /// </summary>
+        internal static string FStateDgm_IkonaKat2 {
+            get {
+                return ResourceManager.GetString("FStateDgm_IkonaKat2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poradie kategórie zodpovedá číslu, ktoré vracia výraz IndCat. Prvý stav v poradí je počiatočný..
+        /// </summary>
+        internal static string FStateDgm_KatInfo {
+            get {
+                return ResourceManager.GetString("FStateDgm_KatInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0 – prázdne nástupište.
+        /// </summary>
+        internal static string FStateDgm_IkonaStav0 {
+            get {
+                return ResourceManager.GetString("FStateDgm_IkonaStav0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 – vlak sa blíži.
+        /// </summary>
+        internal static string FStateDgm_IkonaStav1 {
+            get {
+                return ResourceManager.GetString("FStateDgm_IkonaStav1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2 – vlak vchádza.
+        /// </summary>
+        internal static string FStateDgm_IkonaStav2 {
+            get {
+                return ResourceManager.GetString("FStateDgm_IkonaStav2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3 – vlak stojí.
+        /// </summary>
+        internal static string FStateDgm_IkonaStav3 {
+            get {
+                return ResourceManager.GetString("FStateDgm_IkonaStav3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4 – vlak odchádza.
+        /// </summary>
+        internal static string FStateDgm_IkonaStav4 {
+            get {
+                return ResourceManager.GetString("FStateDgm_IkonaStav4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 5 – vlak odbavený.
+        /// </summary>
+        internal static string FStateDgm_IkonaStav5 {
+            get {
+                return ResourceManager.GetString("FStateDgm_IkonaStav5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Príznaky stavu (Attr).
+        /// </summary>
+        internal static string FStateDgm_Priznaky {
+            get {
+                return ResourceManager.GetString("FStateDgm_Priznaky", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stojí v stanici.
+        /// </summary>
+        internal static string FStateDgm_Attr_Stoji {
+            get {
+                return ResourceManager.GetString("FStateDgm_Attr_Stoji", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Potvrdená koľaj.
+        /// </summary>
+        internal static string FStateDgm_Attr_PotvrzenaKolej {
+            get {
+                return ResourceManager.GetString("FStateDgm_Attr_PotvrzenaKolej", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odbavený.
+        /// </summary>
+        internal static string FStateDgm_Attr_Odbaven {
+            get {
+                return ResourceManager.GetString("FStateDgm_Attr_Odbaven", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V tieni (už sa nezobrazuje).
+        /// </summary>
+        internal static string FStateDgm_Attr_Shadow {
+            get {
+                return ResourceManager.GetString("FStateDgm_Attr_Shadow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Práve teraz stojí.
+        /// </summary>
+        internal static string FStateDgm_Attr_NyniStoji {
+            get {
+                return ResourceManager.GetString("FStateDgm_Attr_NyniStoji", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Predvolené tlačidlo:.
+        /// </summary>
+        internal static string FStateDgm_PredvoleneTlacidlo {
+            get {
+                return ResourceManager.GetString("FStateDgm_PredvoleneTlacidlo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (žiadne).
+        /// </summary>
+        internal static string FStateDgm_BezPredvoleneho {
+            get {
+                return ResourceManager.GetString("FStateDgm_BezPredvoleneho", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatika – kedy vlak do stavu vstúpi sám.
+        /// </summary>
+        internal static string FStateDgm_Automatika {
+            get {
+                return ResourceManager.GetString("FStateDgm_Automatika", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Režim:.
+        /// </summary>
+        internal static string FStateDgm_AutoMode {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0 – ručne.
+        /// </summary>
+        internal static string FStateDgm_AutoMode0 {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoMode0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 – poloautomat (obsluha potvrdí).
+        /// </summary>
+        internal static string FStateDgm_AutoMode1 {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoMode1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2 – automat.
+        /// </summary>
+        internal static string FStateDgm_AutoMode2 {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoMode2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Od času:.
+        /// </summary>
+        internal static string FStateDgm_AutoTimePoint {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoTimePoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 – príchodu.
+        /// </summary>
+        internal static string FStateDgm_AutoTimePoint1 {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoTimePoint1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2 – odchodu.
+        /// </summary>
+        internal static string FStateDgm_AutoTimePoint2 {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoTimePoint2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posun (s):.
+        /// </summary>
+        internal static string FStateDgm_AutoTimePointAdd {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoTimePointAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kladný = po čase, záporný = pred časom; 300 = 5 minút po.
+        /// </summary>
+        internal static string FStateDgm_AutoTimePointAddTip {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoTimePointAddTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hlásenie:.
+        /// </summary>
+        internal static string FStateDgm_AutoModif {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoModif", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 – krátke.
+        /// </summary>
+        internal static string FStateDgm_AutoModif1 {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoModif1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2 – dlhé.
+        /// </summary>
+        internal static string FStateDgm_AutoModif2 {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoModif2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Čakať na ILTIS:.
+        /// </summary>
+        internal static string FStateDgm_Wait {
+            get {
+                return ResourceManager.GetString("FStateDgm_Wait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VVC – vchodová vlaková cesta.
+        /// </summary>
+        internal static string FStateDgm_Wait_VVC {
+            get {
+                return ResourceManager.GetString("FStateDgm_Wait_VVC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OVC – odchodová vlaková cesta.
+        /// </summary>
+        internal static string FStateDgm_Wait_OVC {
+            get {
+                return ResourceManager.GetString("FStateDgm_Wait_OVC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ZCV – zavedenie čísla vlaku.
+        /// </summary>
+        internal static string FStateDgm_Wait_ZCV {
+            get {
+                return ResourceManager.GetString("FStateDgm_Wait_ZCV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vj – vchod vlaku.
+        /// </summary>
+        internal static string FStateDgm_Wait_Vj {
+            get {
+                return ResourceManager.GetString("FStateDgm_Wait_Vj", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odj – odchod vlaku.
+        /// </summary>
+        internal static string FStateDgm_Wait_Odj {
+            get {
+                return ResourceManager.GetString("FStateDgm_Wait_Odj", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podmienka:.
+        /// </summary>
+        internal static string FStateDgm_AutoCondition {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoCondition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Výraz; ak pre vlak neplatí, automatický prechod sa nenaplánuje.
+        /// </summary>
+        internal static string FStateDgm_AutoConditionTip {
+            get {
+                return ResourceManager.GetString("FStateDgm_AutoConditionTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabule (DoState).
+        /// </summary>
+        internal static string FStateDgm_Tabule {
+            get {
+                return ResourceManager.GetString("FStateDgm_Tabule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stav mení zobrazenie na tabuliach.
+        /// </summary>
+        internal static string FStateDgm_TabuleZapnut {
+            get {
+                return ResourceManager.GetString("FStateDgm_TabuleZapnut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Je na odchodovej tabuli.
+        /// </summary>
+        internal static string FStateDgm_JeNaOdjezdove {
+            get {
+                return ResourceManager.GetString("FStateDgm_JeNaOdjezdove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Je na príchodovej tabuli.
+        /// </summary>
+        internal static string FStateDgm_JeNaPrijezdove {
+            get {
+                return ResourceManager.GetString("FStateDgm_JeNaPrijezdove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Je na smerových (nástupištných) tabuliach.
+        /// </summary>
+        internal static string FStateDgm_JeNaSmerovych {
+            get {
+                return ResourceManager.GetString("FStateDgm_JeNaSmerovych", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zobrazuje sa nástupište.
+        /// </summary>
+        internal static string FStateDgm_JeZobrazenaPozice {
+            get {
+                return ResourceManager.GetString("FStateDgm_JeZobrazenaPozice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zobrazuje sa koľaj.
+        /// </summary>
+        internal static string FStateDgm_JeZobrazenaKolej {
+            get {
+                return ResourceManager.GetString("FStateDgm_JeZobrazenaKolej", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rozšírené.
+        /// </summary>
+        internal static string FStateDgm_Rozsirene {
+            get {
+                return ResourceManager.GetString("FStateDgm_Rozsirene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pri vrátení späť (UndoState).
+        /// </summary>
+        internal static string FStateDgm_UndoState {
+            get {
+                return ResourceManager.GetString("FStateDgm_UndoState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zvlášť nastaviť tabule pri vrátení späť.
+        /// </summary>
+        internal static string FStateDgm_UndoStateZapnut {
+            get {
+                return ResourceManager.GetString("FStateDgm_UndoStateZapnut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obrázky (posun-normálny,zameranie,stlačený):.
+        /// </summary>
+        internal static string FStateDgm_Bitmaps {
+            get {
+                return ResourceManager.GetString("FStateDgm_Bitmaps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prvé číslo je posun v páse obrázkov INISSu, ďalšie tri vyberajú obrázok pre bežný stav, zameranie a stlačenie. Rovnaké tri čísla = tlačidlo sa nedá stlačiť..
+        /// </summary>
+        internal static string FStateDgm_BitmapsInfo {
+            get {
+                return ResourceManager.GetString("FStateDgm_BitmapsInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Predvolené tlačidlo (reaguje na Enter).
+        /// </summary>
+        internal static string FStateDgm_DefPushBtn {
+            get {
+                return ResourceManager.GetString("FStateDgm_DefPushBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prvý zdrojový bod:.
+        /// </summary>
+        internal static string FStateDgm_TP_Key1 {
+            get {
+                return ResourceManager.GetString("FStateDgm_TP_Key1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posun prvého (s):.
+        /// </summary>
+        internal static string FStateDgm_TP_Offset1 {
+            get {
+                return ResourceManager.GetString("FStateDgm_TP_Offset1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Druhý zdrojový bod:.
+        /// </summary>
+        internal static string FStateDgm_TP_Key2 {
+            get {
+                return ResourceManager.GetString("FStateDgm_TP_Key2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posun druhého (s):.
+        /// </summary>
+        internal static string FStateDgm_TP_Offset2 {
+            get {
+                return ResourceManager.GetString("FStateDgm_TP_Offset2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Výber:.
+        /// </summary>
+        internal static string FStateDgm_TP_Operator {
+            get {
+                return ResourceManager.GetString("FStateDgm_TP_Operator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to min – skorší z dvojice.
+        /// </summary>
+        internal static string FStateDgm_TP_Min {
+            get {
+                return ResourceManager.GetString("FStateDgm_TP_Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to max – neskorší z dvojice.
+        /// </summary>
+        internal static string FStateDgm_TP_Max {
+            get {
+                return ResourceManager.GetString("FStateDgm_TP_Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bod bez zdrojov je nastaviteľný časový bod – #StartTime v stave INISS nastaví na čas vstupu vlaku do stavu..
+        /// </summary>
+        internal static string FStateDgm_TP_Info {
+            get {
+                return ResourceManager.GetString("FStateDgm_TP_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zabudované časové body: {0}.
+        /// </summary>
+        internal static string FStateDgm_TP_Zabudovane {
+            get {
+                return ResourceManager.GetString("FStateDgm_TP_Zabudovane", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Časové body stavu.
+        /// </summary>
+        internal static string FStateDgm_TP_Stavu {
+            get {
+                return ResourceManager.GetString("FStateDgm_TP_Stavu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Akcia stavu.
+        /// </summary>
+        internal static string FStateDgm_Akcia_Titul {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_Titul", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tlačidlo v paneli.
+        /// </summary>
+        internal static string FStateDgm_Akcia_Tlacidlo {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_Tlacidlo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Akcia má tlačidlo.
+        /// </summary>
+        internal static string FStateDgm_Akcia_MaTlacidlo {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_MaTlacidlo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poradie v paneli (CtrlID):.
+        /// </summary>
+        internal static string FStateDgm_Akcia_CtrlID {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_CtrlID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vzhľad tlačidla:.
+        /// </summary>
+        internal static string FStateDgm_Akcia_Vzhlad {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_Vzhlad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prepnúť do stavu:.
+        /// </summary>
+        internal static string FStateDgm_Akcia_NextState {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_NextState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (bez zmeny stavu).
+        /// </summary>
+        internal static string FStateDgm_Akcia_BezZmeny {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_BezZmeny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyhlásiť hlásenie:.
+        /// </summary>
+        internal static string FStateDgm_Akcia_ReportKey {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_ReportKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (bez hlásenia).
+        /// </summary>
+        internal static string FStateDgm_Akcia_BezHlasenia {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_BezHlasenia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dialóg:.
+        /// </summary>
+        internal static string FStateDgm_Akcia_Dialog {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_Dialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SDDlgKolej – zadanie koľaje.
+        /// </summary>
+        internal static string FStateDgm_Akcia_Dlg_Kolej {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_Dlg_Kolej", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SDDlgZpozdeni – meškanie v stanici.
+        /// </summary>
+        internal static string FStateDgm_Akcia_Dlg_Zpozdeni {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_Dlg_Zpozdeni", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SDDlgZpozdeniG – meškanie po staniciach.
+        /// </summary>
+        internal static string FStateDgm_Akcia_Dlg_ZpozdeniG {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_Dlg_ZpozdeniG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rozšírené voľby hlásenia a pozície.
+        /// </summary>
+        internal static string FStateDgm_Akcia_Rozsirene {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_Rozsirene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pozícia pre príchod.
+        /// </summary>
+        internal static string FStateDgm_Akcia_PosArr {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_PosArr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pozícia pre odchod.
+        /// </summary>
+        internal static string FStateDgm_Akcia_PosDep {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_PosDep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kopírovať pozíciu.
+        /// </summary>
+        internal static string FStateDgm_Akcia_CopyPos {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_CopyPos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Povoliť úpravu hlásenia.
+        /// </summary>
+        internal static string FStateDgm_Akcia_ModifReport {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_ModifReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pred hlásením sa opýtať.
+        /// </summary>
+        internal static string FStateDgm_Akcia_AskReport {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_AskReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skryť/odkryť vlak.
+        /// </summary>
+        internal static string FStateDgm_Akcia_HideShow {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_HideShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meškanie na príchode.
+        /// </summary>
+        internal static string FStateDgm_Akcia_DelayArr {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_DelayArr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meškanie na odchode.
+        /// </summary>
+        internal static string FStateDgm_Akcia_DelayDep {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_DelayDep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SDEventUniPos – prechod stavu a hlásenie.
+        /// </summary>
+        internal static string FStateDgm_Akcia_Class_UniPos {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_Class_UniPos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SDEventWithDialog – otvorí dialóg.
+        /// </summary>
+        internal static string FStateDgm_Akcia_Class_Dialog {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_Class_Dialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SDEventChangeState – len prechod stavu.
+        /// </summary>
+        internal static string FStateDgm_Akcia_Class_Change {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_Class_Change", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SDEventReportAboutState – hlásenie o stave.
+        /// </summary>
+        internal static string FStateDgm_Akcia_Class_Report {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_Class_Report", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SDEventVlakAttr – zmena meškania.
+        /// </summary>
+        internal static string FStateDgm_Akcia_Class_VlakAttr {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_Class_VlakAttr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Štartér.
+        /// </summary>
+        internal static string FStateDgm_Starter_Titul {
+            get {
+                return ResourceManager.GetString("FStateDgm_Starter_Titul", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spúšťa akciu:.
+        /// </summary>
+        internal static string FStateDgm_Starter_Akcia {
+            get {
+                return ResourceManager.GetString("FStateDgm_Starter_Akcia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prvýkrát od:.
+        /// </summary>
+        internal static string FStateDgm_Starter_TimePoint {
+            get {
+                return ResourceManager.GetString("FStateDgm_Starter_TimePoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posun prvého spustenia (s):.
+        /// </summary>
+        internal static string FStateDgm_Starter_Offset {
+            get {
+                return ResourceManager.GetString("FStateDgm_Starter_Offset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opakovať každých (s):.
+        /// </summary>
+        internal static string FStateDgm_Starter_Step {
+            get {
+                return ResourceManager.GetString("FStateDgm_Starter_Step", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opakovať.
+        /// </summary>
+        internal static string FStateDgm_Starter_Opakovat {
+            get {
+                return ResourceManager.GetString("FStateDgm_Starter_Opakovat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naposledy od:.
+        /// </summary>
+        internal static string FStateDgm_Starter_Last {
+            get {
+                return ResourceManager.GetString("FStateDgm_Starter_Last", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posun posledného (s):.
+        /// </summary>
+        internal static string FStateDgm_Starter_OffsetLast {
+            get {
+                return ResourceManager.GetString("FStateDgm_Starter_OffsetLast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spustiť hneď, keď prvý termín už uplynul.
+        /// </summary>
+        internal static string FStateDgm_Starter_Later {
+            get {
+                return ResourceManager.GetString("FStateDgm_Starter_Later", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spustí „{0}“ prvýkrát {1} {2}{3}{4}..
+        /// </summary>
+        internal static string FStateDgm_Starter_Veta {
+            get {
+                return ResourceManager.GetString("FStateDgm_Starter_Veta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to , potom každých {0}.
+        /// </summary>
+        internal static string FStateDgm_Starter_VetaKrok {
+            get {
+                return ResourceManager.GetString("FStateDgm_Starter_VetaKrok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to , naposledy {0} {1}.
+        /// </summary>
+        internal static string FStateDgm_Starter_VetaLast {
+            get {
+                return ResourceManager.GetString("FStateDgm_Starter_VetaLast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to pred.
+        /// </summary>
+        internal static string FStateDgm_Pred {
+            get {
+                return ResourceManager.GetString("FStateDgm_Pred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to po.
+        /// </summary>
+        internal static string FStateDgm_Po {
+            get {
+                return ResourceManager.GetString("FStateDgm_Po", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to v čase.
+        /// </summary>
+        internal static string FStateDgm_V_case {
+            get {
+                return ResourceManager.GetString("FStateDgm_V_case", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} min.
+        /// </summary>
+        internal static string FStateDgm_Min {
+            get {
+                return ResourceManager.GetString("FStateDgm_Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} s.
+        /// </summary>
+        internal static string FStateDgm_Sek {
+            get {
+                return ResourceManager.GetString("FStateDgm_Sek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stavový diagram.
+        /// </summary>
+        internal static string FLocalSettings_StavovyDiagram {
+            get {
+                return ResourceManager.GetString("FLocalSettings_StavovyDiagram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stavový diagram určuje, akými stavmi vlak v stanici prechádza, aké tlačidlá má obsluha a čo sa automaticky vyhlási..
+        /// </summary>
+        internal static string FLocalSettings_SD_Info {
+            get {
+                return ResourceManager.GetString("FLocalSettings_SD_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Otvoriť editor stavového diagramu….
+        /// </summary>
+        internal static string FLocalSettings_SD_Otvorit {
+            get {
+                return ResourceManager.GetString("FLocalSettings_SD_Otvorit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor: {0}, kategórií: {1}, stavov: {2}.
+        /// </summary>
+        internal static string FLocalSettings_SD_Stav {
+            get {
+                return ResourceManager.GetString("FLocalSettings_SD_Stav", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor sa nedá načítať: {0}.
+        /// </summary>
+        internal static string FLocalSettings_SD_Chyba {
+            get {
+                return ResourceManager.GetString("FLocalSettings_SD_Chyba", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor StateDgm.txt v priečinku grafikonu nie je – INISS vlaky tohto grafikonu nedokáže obsluhovať..
+        /// </summary>
+        internal static string FLocalSettings_SD_Chyba_Nie {
+            get {
+                return ResourceManager.GetString("FLocalSettings_SD_Chyba_Nie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kontrola: {0}.
+        /// </summary>
+        internal static string FLocalSettings_SD_Problemy {
+            get {
+                return ResourceManager.GetString("FLocalSettings_SD_Problemy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Predloha stavového diagramu:.
+        /// </summary>
+        internal static string FNewGrafikon_Predloha {
+            get {
+                return ResourceManager.GetString("FNewGrafikon_Predloha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stavový diagram….
+        /// </summary>
+        internal static string FMain_StavovyDiagram {
+            get {
+                return ResourceManager.GetString("FMain_StavovyDiagram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kalendár akcií….
+        /// </summary>
+        internal static string FEditTrain_Kalendar {
+            get {
+                return ResourceManager.GetString("FEditTrain_Kalendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stav.
+        /// </summary>
+        internal static string FStateDgm_Stav {
+            get {
+                return ResourceManager.GetString("FStateDgm_Stav", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kategória vlakov.
+        /// </summary>
+        internal static string FStateDgm_Kategoria {
+            get {
+                return ResourceManager.GetString("FStateDgm_Kategoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vzhľad tlačidla.
+        /// </summary>
+        internal static string FStateDgm_Vzhlad {
+            get {
+                return ResourceManager.GetString("FStateDgm_Vzhlad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Časový bod.
+        /// </summary>
+        internal static string FStateDgm_CasovyBod {
+            get {
+                return ResourceManager.GetString("FStateDgm_CasovyBod", resourceCulture);
+            }
+        }
+}
 }
