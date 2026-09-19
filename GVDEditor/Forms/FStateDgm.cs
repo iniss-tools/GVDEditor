@@ -25,6 +25,7 @@ public partial class FStateDgm : Form
 
     private readonly string _dir;
     private readonly string _stationName;
+    private readonly string _homeStationId;
     private StateDgmDiagram _d;
     private bool _dirty;
     private bool _textStale = true;
@@ -49,12 +50,17 @@ public partial class FStateDgm : Form
     private StateDgmState? _selState;
     private bool _suppressTree;
     private readonly Scintilla _sc;
+    private readonly StateDgmGraphPanel _graph = new() { Dock = DockStyle.Fill };
+    private readonly ToolStrip _graphBar = new() { GripStyle = ToolStripGripStyle.Hidden, Dock = DockStyle.Top };
+    private readonly ToolStripButton _tsbAllEdges = new() { CheckOnClick = true, Checked = true, DisplayStyle = ToolStripItemDisplayStyle.Text };
+    private readonly ToolStripLabel _graphLegend = new();
+    private FStateDgmCalendar? _calendar;
 
     /// <summary>
     ///     Otvori editor diagramu grafikonu.
     /// </summary>
     /// <param name="dir">Priecinok grafikonu.</param>
-    internal FStateDgm(GVDDirectory dir) : this(dir.Dir.FullPath, dir.GVD.ThisStation?.Name ?? dir.Dir.DirName)
+    internal FStateDgm(GVDDirectory dir) : this(dir.Dir.FullPath, dir.GVD.ThisStation?.Name ?? dir.Dir.DirName, dir.GVD.ThisStation?.ID)
     {
     }
 
@@ -63,7 +69,7 @@ public partial class FStateDgm : Form
     /// </summary>
     /// <param name="dirPath">Priecinok grafikonu so suborom StateDgm.txt.</param>
     /// <param name="stationName">Meno stanice do titulku.</param>
-    internal FStateDgm(string dirPath, string stationName)
+    internal FStateDgm(string dirPath, string stationName, string? homeStationId = null)
     {
         InitializeComponent();
         this.ApplyThemeAndFonts();
@@ -71,6 +77,7 @@ public partial class FStateDgm : Form
 
         _dir = dirPath;
         _stationName = stationName;
+        _homeStationId = homeStationId ?? "";
         _sc = scText.Scintilla;
         SetupTextView();
 
@@ -104,8 +111,7 @@ public partial class FStateDgm : Form
         };
 
         _d = LoadDiagram();
-        pnlGraph.Controls.Add(new Label { Dock = DockStyle.Fill, Text = Resources.FStateDgm_GrafNeskor, TextAlign = ContentAlignment.MiddleCenter, ForeColor = SystemColors.GrayText });
-        tsbCalendar.Enabled = false;
+        SetupGraph();
     }
 
     /// <summary>
@@ -140,6 +146,52 @@ public partial class FStateDgm : Form
         }
     }
 
+    /// <summary>
+    ///     Zalozka Graf: panel grafu kategorie s listou (prepinac vsetkych prechodov, legenda).
+    /// </summary>
+    private void SetupGraph()
+    {
+        _tsbAllEdges.Text = Resources.FStateDgm_Graf_VsetkyPrechody;
+        _tsbAllEdges.ToolTipText = Resources.FStateDgm_Graf_VsetkyPrechodyTip;
+        _tsbAllEdges.CheckedChanged += (_, _) =>
+        {
+            _graph.ShowAllEdges = _tsbAllEdges.Checked;
+            _graph.Invalidate();
+        };
+        _graphLegend.Text = Resources.FStateDgm_Graf_Legenda;
+        _graphLegend.ForeColor = SystemColors.GrayText;
+        _graphBar.Items.Add(_tsbAllEdges);
+        _graphBar.Items.Add(new ToolStripSeparator());
+        _graphBar.Items.Add(_graphLegend);
+        _graph.Scheme = GlobData.UsingStyle.ControlsColorScheme;
+        _graph.DarkScrollBar = GlobData.UsingStyle.DarkScrollBar;
+        _graph.Font = Font;
+        pnlGraph.Controls.Add(_graph);
+        pnlGraph.Controls.Add(_graphBar);
+        FormUtils.ChangeStyleOfControls(GlobData.UsingStyle, new Control[] { _graphBar });
+
+        _graph.StateSelected += (_, st) =>
+        {
+            if (FindNode(st) is { } n && tvNav.SelectedNode != n) tvNav.SelectedNode = n;
+        };
+        _graph.TransitionRequested += (_, t) =>
+        {
+            if (FindNode(t.From) is { } n) tvNav.SelectedNode = n;
+            EditEvent(null, t.To.Key);
+        };
+        _graph.EventActivated += (_, ev) =>
+        {
+            tcBottom.SelectedTab = tpEvents;
+            SelectEventRow(ev);
+            EditEvent(SelectedEventRow);
+        };
+    }
+
+    private void RefreshGraph()
+    {
+        _graph.ShowCategory(_d, _selCategory, _selState);
+    }
+
     private IEnumerable<SdEditorBase> Editors => [_headerEditor, _categoryEditor, _stateEditor, _designEditor, _timePointEditor];
 
     private StateDgmDiagram LoadDiagram()
@@ -153,7 +205,7 @@ public partial class FStateDgm : Form
         }
         catch (StateDgmParseException e)
         {
-            MessageBox.Show(this, string.Format(Resources.FStateDgm_SuborChyba, TxtParser.StateDgmPath(_dir), e.Line + 1, e.Message), Resources.FStateDgm_SuborChyba_Nadpis,
+            ExMessageBox.Show(string.Format(Resources.FStateDgm_SuborChyba, TxtParser.StateDgmPath(_dir), e.Line + 1, e.Message), Resources.FStateDgm_SuborChyba_Nadpis,
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             _dirty = true;
             return StateDgmDiagram.Parse(TxtParser.StateDgmTemplateText(StateDgmTemplate.Slovak));
@@ -344,6 +396,7 @@ public partial class FStateDgm : Form
         tsbEvAdd.Enabled = tsbStAdd.Enabled = _selState != null;
         dgvEvents_SelectionChanged(this, EventArgs.Empty);
         dgvStarters_SelectionChanged(this, EventArgs.Empty);
+        RefreshGraph();
     }
 
     #endregion
@@ -354,6 +407,7 @@ public partial class FStateDgm : Form
     {
         MarkDirty();
         RefreshSelectedNodeText();
+        _graph.Rebuild(_selState);
     }
 
     private void MarkDirty()
@@ -390,6 +444,7 @@ public partial class FStateDgm : Form
         tpProblems.Text = diags.Count == 0 ? Resources.FStateDgm_Problemy : $"{Resources.FStateDgm_Problemy} ({diags.Count})";
 
         if (tcCenter.SelectedTab == tpText) RefreshText();
+        _calendar?.RefreshPreview();
     }
 
     private void RefreshText()
@@ -420,7 +475,7 @@ public partial class FStateDgm : Form
     {
         ValidateDiagram();
         var errors = _problems.Count(p => p.Diagnostic.IsError);
-        if (errors > 0 && MessageBox.Show(this, string.Format(Resources.FStateDgm_UlozitSChybami, errors), Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+        if (errors > 0 && Utils.ShowWarning(string.Format(Resources.FStateDgm_UlozitSChybami, errors), MessageBoxButtons.YesNo) != DialogResult.Yes)
         {
             tcBottom.SelectedTab = tpProblems;
             return false;
@@ -432,7 +487,7 @@ public partial class FStateDgm : Form
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException)
         {
-            MessageBox.Show(this, e.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Utils.ShowError(e.Message);
             return false;
         }
 
@@ -456,7 +511,7 @@ public partial class FStateDgm : Form
     private void FStateDgm_FormClosing(object sender, FormClosingEventArgs e)
     {
         if (!_dirty) return;
-        switch (MessageBox.Show(this, Resources.FStateDgm_NeulozeneZmeny, Text, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+        switch (Utils.ShowQuestion(Resources.FStateDgm_NeulozeneZmeny, MessageBoxButtons.YesNoCancel))
         {
             case DialogResult.Yes:
                 if (!Save()) e.Cancel = true;
@@ -545,7 +600,7 @@ public partial class FStateDgm : Form
             _ => null
         };
         if (name == null) return;
-        if (MessageBox.Show(this, string.Format(Resources.FStateDgm_OdstranitOtazka, name), Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+        if (Utils.ShowQuestion(string.Format(Resources.FStateDgm_OdstranitOtazka, name)) != DialogResult.Yes) return;
 
         object? select = null;
         switch (tag)
@@ -614,7 +669,7 @@ public partial class FStateDgm : Form
         var (template, name) = sender == tsmiTplCZ ? (StateDgmTemplate.Czech, Resources.FStateDgm_PredlohaCZ)
             : sender == tsmiTplILTIS ? (StateDgmTemplate.SlovakIltis, Resources.FStateDgm_PredlohaILTIS)
             : (StateDgmTemplate.Slovak, Resources.FStateDgm_PredlohaSK);
-        if (MessageBox.Show(this, string.Format(Resources.FStateDgm_PredlohaOtazka, name), Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+        if (Utils.ShowQuestion(string.Format(Resources.FStateDgm_PredlohaOtazka, name)) != DialogResult.Yes) return;
         _d = StateDgmDiagram.Parse(TxtParser.StateDgmTemplateText(template));
         MarkDirty();
         BuildTree();
@@ -686,10 +741,15 @@ public partial class FStateDgm : Form
 
     private void tsbEvEdit_Click(object sender, EventArgs e) => EditEvent(SelectedEventRow);
 
-    private void EditEvent(EventRow? row)
+    private void EditEvent(EventRow? row, string? nextState = null)
     {
         if (_selState == null || _selCategory == null) return;
-        var ev = row?.Event ?? new StateDgmEvent { Key = UniqueKey(_selState.Events.Select(x => x.Key), "#Akcia"), Class = "SDEventUniPos" };
+        var ev = row?.Event ?? new StateDgmEvent
+        {
+            Key = UniqueKey(_selState.Events.Select(x => x.Key), nextState != null ? "#GoTo" + nextState.TrimStart('#') : "#Akcia"),
+            Class = "SDEventUniPos",
+            NextState = nextState
+        };
         var control = row?.Control;
         var isNew = row?.Event == null;
 
@@ -726,7 +786,7 @@ public partial class FStateDgm : Form
     {
         var row = SelectedEventRow;
         if (row == null || _selState == null) return;
-        if (MessageBox.Show(this, string.Format(Resources.FStateDgm_OdstranitOtazka, row.Key), Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+        if (Utils.ShowQuestion(string.Format(Resources.FStateDgm_OdstranitOtazka, row.Key)) != DialogResult.Yes) return;
         if (row.Event != null) _selState.Events.Remove(row.Event);
         if (row.Control != null) _selState.Controls.Remove(row.Control);
         MarkDirty();
@@ -795,7 +855,7 @@ public partial class FStateDgm : Form
     {
         var row = SelectedStarterRow;
         if (row == null || _selState == null) return;
-        if (MessageBox.Show(this, string.Format(Resources.FStateDgm_OdstranitOtazka, row.Key), Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+        if (Utils.ShowQuestion(string.Format(Resources.FStateDgm_OdstranitOtazka, row.Key)) != DialogResult.Yes) return;
         _selState.Starters.Remove(row.Starter);
         MarkDirty();
         FillStateGrids();
@@ -870,8 +930,22 @@ public partial class FStateDgm : Form
 
     private void tsbCalendar_Click(object sender, EventArgs e)
     {
-        // Kalendar akcii vlaku - dalsi krok
+        if (_calendar is { IsDisposed: false })
+        {
+            _calendar.Activate();
+            return;
+        }
+
+        _calendar = new FStateDgmCalendar(() => _d, HomeStationId());
+        _calendar.StateSelected += (_, st) =>
+        {
+            if (FindNode(st) is { } n && tvNav.SelectedNode != n) tvNav.SelectedNode = n;
+        };
+        _calendar.FormClosed += (_, _) => _calendar = null;
+        _calendar.Show(this);
     }
+
+    private int HomeStationId() => int.TryParse(_homeStationId, out var id) ? id : 0;
 
     #endregion
 

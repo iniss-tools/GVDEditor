@@ -358,4 +358,7 @@
   <data name="lVyluka.Text" xml:space="preserve">
     <value>Výluka:</value>
   </data>
+  <data name="llCalendar.Text" xml:space="preserve">
+    <value>Kalendář akcí…</value>
+  </data>
 </root>

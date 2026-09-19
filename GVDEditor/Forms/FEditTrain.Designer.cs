@@ -48,6 +48,7 @@ namespace GVDEditor.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bSave = new ExControls.ExButton();
             this.bZrusit = new ExControls.ExButton();
+            this.llCalendar = new System.Windows.Forms.LinkLabel();
             this.tabControl1 = new ExControls.ExTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new ExControls.ExGroupBox();
@@ -188,6 +189,13 @@ namespace GVDEditor.Forms
             this.bZrusit.Name = "bZrusit";
             this.bZrusit.UseVisualStyleBackColor = true;
             this.bZrusit.Click += new System.EventHandler(this.bZrusit_Click);
+            // 
+            // llCalendar
+            // 
+            resources.ApplyResources(this.llCalendar, "llCalendar");
+            this.llCalendar.Name = "llCalendar";
+            this.llCalendar.TabStop = true;
+            this.llCalendar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llCalendar_LinkClicked);
             // 
             // tabControl1
             // 
@@ -1360,6 +1368,7 @@ namespace GVDEditor.Forms
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.bSave);
+            this.Controls.Add(this.llCalendar);
             this.Controls.Add(this.bZrusit);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -1448,6 +1457,7 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.TabPage tabPage4;
         private ExControls.ExButton bSave;
         private ExControls.ExButton bZrusit;
+        private System.Windows.Forms.LinkLabel llCalendar;
         private ExCheckedListBox clbJazyky;
         private ExComboBox cbNazov;
         private System.Windows.Forms.BindingSource stanicaBindingSource;

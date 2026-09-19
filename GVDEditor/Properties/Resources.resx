@@ -1286,4 +1286,52 @@ Otvorí sa slovenská predloha; pôvodný súbor sa prepíše až pri uložení.
   <data name="FStateDgm_CasovyBod" xml:space="preserve">
     <value>Časový bod</value>
   </data>
+  <data name="FStateDgm_GrafPrazdny" xml:space="preserve">
+    <value>Vyber kategóriu alebo stav – graf ukáže stavy kategórie a prechody medzi nimi.</value>
+  </data>
+  <data name="FStateDgm_Graf_Automat" xml:space="preserve">
+    <value>automat</value>
+  </data>
+  <data name="FStateDgm_Graf_Poloautomat" xml:space="preserve">
+    <value>poloautomat</value>
+  </data>
+  <data name="FStateDgm_Graf_Prichod" xml:space="preserve">
+    <value>príchod</value>
+  </data>
+  <data name="FStateDgm_Graf_Odchod" xml:space="preserve">
+    <value>odchod</value>
+  </data>
+  <data name="FStateDgm_Graf_Nedosiahnutelny" xml:space="preserve">
+    <value>Nedosiahnuteľný z počiatočného stavu</value>
+  </data>
+  <data name="FStateDgm_Graf_Slepy" xml:space="preserve">
+    <value>Slepý stav – žiadna akcia z neho nevedie</value>
+  </data>
+  <data name="FStateDgm_Graf_VsetkyPrechody" xml:space="preserve">
+    <value>Všetky prechody</value>
+  </data>
+  <data name="FStateDgm_Graf_VsetkyPrechodyTip" xml:space="preserve">
+    <value>Zobraziť všetky prechody kategórie, nielen prechody vybraného stavu</value>
+  </data>
+  <data name="FStateDgm_Graf_Legenda" xml:space="preserve">
+    <value>▶ počiatočný stav   ⏱ automatika   ↻ štartér   sivý = nedosiahnuteľný   oranžový = slepý   červená čiarkovaná = chýbajúci stav   ♪ = s hlásením</value>
+  </data>
+  <data name="FStateDgmCalendar_Kategoria" xml:space="preserve">
+    <value>Kategória vlaku: {0} (IndCat = {1})</value>
+  </data>
+  <data name="FStateDgmCalendar_MimoRozsahu" xml:space="preserve">
+    <value>výsledok mimo rozsahu, INISS vlak zaradí do poslednej kategórie a zapíše chybu</value>
+  </data>
+  <data name="FStateDgmCalendar_ChybaVyrazu" xml:space="preserve">
+    <value>výraz „{0}“: {1}</value>
+  </data>
+  <data name="FStateDgmCalendar_Manualny" xml:space="preserve">
+    <value>Manuálny</value>
+  </data>
+  <data name="FStateDgmCalendar_Poloautomat" xml:space="preserve">
+    <value>Poloautomat</value>
+  </data>
+  <data name="FStateDgmCalendar_Automat" xml:space="preserve">
+    <value>Automat</value>
+  </data>
 </root>

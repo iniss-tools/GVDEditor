@@ -141,6 +141,21 @@
 	  <EmbeddedResource Update="Forms\FWait.cs.resx">
 	    <DependentUpon>FWait.cs</DependentUpon>
 	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FStateDgm.cs.resx">
+	    <DependentUpon>FStateDgm.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FStateDgmItem.cs.resx">
+	    <DependentUpon>FStateDgmItem.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FTabTabPreview.cs.resx">
+	    <DependentUpon>FTabTabPreview.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FBlockMigration.cs.resx">
+	    <DependentUpon>FBlockMigration.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FStateDgmCalendar.cs.resx">
+	    <DependentUpon>FStateDgmCalendar.cs</DependentUpon>
+	  </EmbeddedResource>
 	</ItemGroup>
 	<!-- ELISBridge je samostatny x86 proces (TT.dll je 32-bitova), preto sa nelinkuje
 	     ako referencia, ale iba zostavi a skopiruje vedla GVDEditor.exe. -->

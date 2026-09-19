@@ -3476,5 +3476,149 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("FStateDgm_CasovyBod", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyber kategóriu alebo stav – graf ukáže stavy kategórie a prechody medzi nimi..
+        /// </summary>
+        internal static string FStateDgm_GrafPrazdny {
+            get {
+                return ResourceManager.GetString("FStateDgm_GrafPrazdny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to automat.
+        /// </summary>
+        internal static string FStateDgm_Graf_Automat {
+            get {
+                return ResourceManager.GetString("FStateDgm_Graf_Automat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to poloautomat.
+        /// </summary>
+        internal static string FStateDgm_Graf_Poloautomat {
+            get {
+                return ResourceManager.GetString("FStateDgm_Graf_Poloautomat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to príchod.
+        /// </summary>
+        internal static string FStateDgm_Graf_Prichod {
+            get {
+                return ResourceManager.GetString("FStateDgm_Graf_Prichod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to odchod.
+        /// </summary>
+        internal static string FStateDgm_Graf_Odchod {
+            get {
+                return ResourceManager.GetString("FStateDgm_Graf_Odchod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nedosiahnuteľný z počiatočného stavu.
+        /// </summary>
+        internal static string FStateDgm_Graf_Nedosiahnutelny {
+            get {
+                return ResourceManager.GetString("FStateDgm_Graf_Nedosiahnutelny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slepý stav – žiadna akcia z neho nevedie.
+        /// </summary>
+        internal static string FStateDgm_Graf_Slepy {
+            get {
+                return ResourceManager.GetString("FStateDgm_Graf_Slepy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Všetky prechody.
+        /// </summary>
+        internal static string FStateDgm_Graf_VsetkyPrechody {
+            get {
+                return ResourceManager.GetString("FStateDgm_Graf_VsetkyPrechody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zobraziť všetky prechody kategórie, nielen prechody vybraného stavu.
+        /// </summary>
+        internal static string FStateDgm_Graf_VsetkyPrechodyTip {
+            get {
+                return ResourceManager.GetString("FStateDgm_Graf_VsetkyPrechodyTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ▶ počiatočný stav   ⏱ automatika   ↻ štartér   sivý = nedosiahnuteľný   oranžový = slepý   červená čiarkovaná = chýbajúci stav   ♪ = s hlásením.
+        /// </summary>
+        internal static string FStateDgm_Graf_Legenda {
+            get {
+                return ResourceManager.GetString("FStateDgm_Graf_Legenda", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kategória vlaku: {0} (IndCat = {1}).
+        /// </summary>
+        internal static string FStateDgmCalendar_Kategoria {
+            get {
+                return ResourceManager.GetString("FStateDgmCalendar_Kategoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to výsledok mimo rozsahu, INISS vlak zaradí do poslednej kategórie a zapíše chybu.
+        /// </summary>
+        internal static string FStateDgmCalendar_MimoRozsahu {
+            get {
+                return ResourceManager.GetString("FStateDgmCalendar_MimoRozsahu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to výraz „{0}“: {1}.
+        /// </summary>
+        internal static string FStateDgmCalendar_ChybaVyrazu {
+            get {
+                return ResourceManager.GetString("FStateDgmCalendar_ChybaVyrazu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manuálny.
+        /// </summary>
+        internal static string FStateDgmCalendar_Manualny {
+            get {
+                return ResourceManager.GetString("FStateDgmCalendar_Manualny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poloautomat.
+        /// </summary>
+        internal static string FStateDgmCalendar_Poloautomat {
+            get {
+                return ResourceManager.GetString("FStateDgmCalendar_Poloautomat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automat.
+        /// </summary>
+        internal static string FStateDgmCalendar_Automat {
+            get {
+                return ResourceManager.GetString("FStateDgmCalendar_Automat", resourceCulture);
+            }
+        }
 }
 }

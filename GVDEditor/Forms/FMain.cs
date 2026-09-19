@@ -643,7 +643,8 @@ public partial class FMain : Form
 
     private void ShowEditTrain(Train? train, int row, bool copy = false)
     {
-        var eform = new FEditTrain(train, row, ((GVDDirectory)tscbObdobie.ComboBox.SelectedItem!).GVD, copy);
+        var gvdDir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
+        var eform = new FEditTrain(train, row, gvdDir.GVD, copy, gvdDir.Dir.FullPath);
         var result = eform.ShowDialog();
         if (result == DialogResult.OK)
         {

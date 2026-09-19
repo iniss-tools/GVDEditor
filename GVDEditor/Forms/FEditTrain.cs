@@ -60,9 +60,12 @@ public partial class FEditTrain : Form
     /// <param name="row">Index riadku na prac. ploche.</param>
     /// <param name="gvd">Vybrane GVD.</param>
     /// <param name="copy">Ci sa jedna o kopiu vlaku.</param>
-    public FEditTrain(Train? train, int row, GVDInfo gvd, bool copy = false)
+    public FEditTrain(Train? train, int row, GVDInfo gvd, bool copy = false, string? gvdDir = null)
     {
         InitializeComponent();
+        _gvdDir = gvdDir;
+        _homeStationId = int.TryParse(gvd.ThisStation?.ID, out var stationId) ? stationId : 0;
+        llCalendar.Enabled = gvdDir != null;
 
         ThisTrain = train;
         Row = row;
@@ -1366,5 +1369,29 @@ public partial class FEditTrain : Form
             }
 
         return reportTypes;
+    }
+
+    private readonly string? _gvdDir;
+    private readonly int _homeStationId;
+
+    /// <summary>
+    ///     Nahlad Kalendara akcii vlaku pre upravovany vlak podla stavoveho diagramu grafikonu (subor sa cita z disku).
+    /// </summary>
+    private void llCalendar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        if (_gvdDir == null) return;
+        var dir = _gvdDir;
+        var f = new FStateDgmCalendar(() =>
+        {
+            try
+            {
+                return TxtParser.ReadStateDgm(dir);
+            }
+            catch (ToolsCore.StateDgm.StateDgmParseException)
+            {
+                return null;
+            }
+        }, _homeStationId, ThisTrain);
+        f.Show(this);
     }
 }
