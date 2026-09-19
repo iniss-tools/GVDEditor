@@ -469,6 +469,12 @@ Naozaj chcete vykonať túto akciu?</value>
   <data name="statedgmSK" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\statedgm.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
   </data>
+  <data name="statedgmCZ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\statedgmCZ.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
+  <data name="statedgmILTIS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\statedgmILTIS.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
   <data name="FLocalSettings_Všetky_parametre_sú_povinné" xml:space="preserve">
     <value>Všetky parametre sú povinné.</value>
   </data>
@@ -716,5 +722,14 @@ Presunúť ho teraz do vlastného priečinka ({1} grafikon/y)?</value>
   </data>
   <data name="FTabTab_Problems_Informacia" xml:space="preserve">
     <value>Informácia</value>
+  </data>
+  <data name="FTabTabPreview_Len_sekcia" xml:space="preserve">
+    <value>Len stĺpce so sekciou {0}</value>
+  </data>
+  <data name="FTabTabPreview_Chyba_vyhodnotenia" xml:space="preserve">
+    <value>Chyba vyhodnotenia:</value>
+  </data>
+  <data name="FTabTab_Nahlad" xml:space="preserve">
+    <value>Náhľad na tabuli</value>
   </data>
 </root>

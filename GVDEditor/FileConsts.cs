@@ -20,6 +20,7 @@ internal static class FileConsts
     public const string FILE_STANICE = "STANICE.txt";
     public const string FILE_ELISMAP = "ELISMAP.txt";
     public const string FILE_STATEDGM = "STATEDGM.txt";
+    public const string FILE_STATEDGM_DAT = "STATEDGM.dat";
     public const string FILE_TABTAB = "TABTAB.txt";
     public const string FILE_TKATALOG = "TKATALOG.txt";
     public const string FILE_TLOGICAL = "TLOGICAL.txt";

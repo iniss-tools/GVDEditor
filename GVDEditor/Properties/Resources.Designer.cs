@@ -1396,6 +1396,24 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("statedgmSK", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to 0001 (česká predloha StateDgm.txt).
+        /// </summary>
+        internal static string statedgmCZ {
+            get {
+                return ResourceManager.GetString("statedgmCZ", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to 0001 (slovenská predloha StateDgm.txt s automatikou ILTIS).
+        /// </summary>
+        internal static string statedgmILTIS {
+            get {
+                return ResourceManager.GetString("statedgmILTIS", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Nie sú vyplnené všetky povinné polia..
@@ -1773,6 +1791,33 @@ namespace GVDEditor.Properties {
         internal static string FTabTab_Problems_Informacia {
             get {
                 return ResourceManager.GetString("FTabTab_Problems_Informacia", resourceCulture);
+            }
+        }
+            
+        /// <summary>
+        ///   Looks up a localized string similar to Len stĺpce so sekciou {0}.
+        /// </summary>
+        internal static string FTabTabPreview_Len_sekcia {
+            get {
+                return ResourceManager.GetString("FTabTabPreview_Len_sekcia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chyba vyhodnotenia:.
+        /// </summary>
+        internal static string FTabTabPreview_Chyba_vyhodnotenia {
+            get {
+                return ResourceManager.GetString("FTabTabPreview_Chyba_vyhodnotenia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Náhľad na tabuli.
+        /// </summary>
+        internal static string FTabTab_Nahlad {
+            get {
+                return ResourceManager.GetString("FTabTab_Nahlad", resourceCulture);
             }
         }
     }

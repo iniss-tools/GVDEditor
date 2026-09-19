@@ -5,6 +5,7 @@ using System.Collections;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using ToolsCore.Entities;
+using ToolsCore.StateDgm;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 using static GVDEditor.FileConsts;
@@ -87,16 +88,73 @@ internal static class TxtParser
     #region STATEDGM
 
     /// <summary>
-    ///     Zapise subor StateGVD do konkretneho priecinka.
+    ///     Zapise predlohu stavoveho diagramu do priecinka grafikonu.
     /// </summary>
-    /// <param name="path">cesta do priecinka s datami</param>
-    /// <param name="skversion">true ak ma zapisat slovenku verziu, false pre cesku verziu (zatial je funkcna iba SK verzia)</param>
-    public static void WriteStateDgm(string path, bool skversion = true)
+    /// <param name="path">cesta do priecinka grafikonu</param>
+    /// <param name="template">predloha</param>
+    public static void WriteStateDgm(string path, StateDgmTemplate template = StateDgmTemplate.Slovak)
     {
-        if (skversion)
-            File.WriteAllText(CombinePath(path, FILE_STATEDGM)!, Resources.statedgmSK, Encodings.Win1250);
-        else
-            File.WriteAllText(CombinePath(path, FILE_STATEDGM)!, Resources.statedgmSK, Encodings.Win1250); //TODO cz version
+        var text = template switch
+        {
+            StateDgmTemplate.Czech => Resources.statedgmCZ,
+            StateDgmTemplate.SlovakIltis => Resources.statedgmILTIS,
+            _ => Resources.statedgmSK
+        };
+        File.WriteAllText(CombinePath(path, FILE_STATEDGM)!, text, Encodings.Win1250);
+        DeleteStateDgmCache();
+    }
+
+    /// <summary>
+    ///     Text predlohy stavoveho diagramu (na nahlad alebo na porovnanie).
+    /// </summary>
+    public static string StateDgmTemplateText(StateDgmTemplate template) => template switch
+    {
+        StateDgmTemplate.Czech => Resources.statedgmCZ,
+        StateDgmTemplate.SlovakIltis => Resources.statedgmILTIS,
+        _ => Resources.statedgmSK
+    };
+
+    /// <summary>
+    ///     Cesta k suboru StateDgm.txt v priecinku grafikonu (INISS meno suboru nerozlisuje velkostou pismen,
+    ///     preto sa pouzije existujuci subor, ak tam je).
+    /// </summary>
+    public static string StateDgmPath(string dir)
+    {
+        var existing = Directory.Exists(dir)
+            ? Directory.EnumerateFiles(dir).FirstOrDefault(f => string.Equals(Path.GetFileName(f), FILE_STATEDGM, StringComparison.OrdinalIgnoreCase))
+            : null;
+        return existing ?? CombinePath(dir, FILE_STATEDGM)!;
+    }
+
+    /// <summary>
+    ///     Nacita stavovy diagram grafikonu; null, ak subor neexistuje. Chyby syntaxe vyhadzuje
+    ///     <see cref="StateDgmParseException" />.
+    /// </summary>
+    public static StateDgmDiagram? ReadStateDgm(string dir)
+    {
+        var file = StateDgmPath(dir);
+        return File.Exists(file) ? StateDgmDiagram.Load(file) : null;
+    }
+
+    /// <summary>
+    ///     Zapise stavovy diagram do priecinka grafikonu a zmaze vyrovnavaciu pamat StateDgm.dat.
+    /// </summary>
+    public static void WriteStateDgm(string dir, StateDgmDiagram diagram)
+    {
+        diagram.Save(StateDgmPath(dir));
+        DeleteStateDgmCache();
+    }
+
+    /// <summary>
+    ///     Zmaze StateDgm.dat v koreni datoveho adresara. INISS textove diagramy cita znova, len ked .dat chyba
+    ///     alebo je starsi nez niektory StateDgm.txt - po kopii suborov so starym casom by inak dalej pouzival
+    ///     stary diagram.
+    /// </summary>
+    public static void DeleteStateDgmCache()
+    {
+        if (string.IsNullOrEmpty(GlobData.DataDir) || !Directory.Exists(GlobData.DataDir)) return;
+        foreach (var f in Directory.EnumerateFiles(GlobData.DataDir).Where(f => string.Equals(Path.GetFileName(f), FILE_STATEDGM_DAT, StringComparison.OrdinalIgnoreCase)))
+            File.Delete(f);
     }
 
     #endregion

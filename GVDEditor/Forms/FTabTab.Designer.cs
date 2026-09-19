@@ -67,6 +67,8 @@ namespace GVDEditor.Forms
             this.tsbRename = new System.Windows.Forms.ToolStripButton();
             this.tsbFindReplace = new System.Windows.Forms.ToolStripButton();
             this.tsbReformat = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbPreview = new System.Windows.Forms.ToolStripButton();
             this.acMenu = new AutocompleteMenuNS.AutocompleteMenu();
             this.acImages = new System.Windows.Forms.ImageList();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -290,7 +292,9 @@ namespace GVDEditor.Forms
             this.toolStripSeparator3,
             this.tsbRename,
             this.tsbFindReplace,
-            this.tsbReformat});
+            this.tsbReformat,
+            this.toolStripSeparator10,
+            this.tsbPreview});
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Name = "toolStrip";
             // 
@@ -388,6 +392,16 @@ namespace GVDEditor.Forms
             resources.ApplyResources(this.tsbReformat, "tsbReformat");
             this.tsbReformat.Name = "tsbReformat";
             this.tsbReformat.Click += new System.EventHandler(this.tsbReformat_Click);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            // 
+            // tsbPreview
+            // 
+            this.tsbPreview.Image = global::ToolsCore.GlobalResources.desktop;
+            this.tsbPreview.Name = "tsbPreview";
+            this.tsbPreview.Click += new System.EventHandler(this.tsbPreview_Click);
             // 
             // acMenu
             // 
@@ -741,6 +755,8 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.ToolStripButton tsbRemoveTab;
         private System.Windows.Forms.ToolStripButton tsbSaveAll;
         private System.Windows.Forms.ToolStripButton tsbReformat;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripButton tsbPreview;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbRename;
         private System.Windows.Forms.ToolStripButton tsbFindReplace;

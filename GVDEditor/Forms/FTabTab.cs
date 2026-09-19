@@ -29,6 +29,8 @@ public partial class FTabTab : Form
     internal readonly BindingList<TabTabDoc> documents = new();
 
     private readonly TableTabTab? SelectedTab;
+    private readonly int homeStationId;
+    private FTabTabPreview? preview;
 
     private int lastCaretPos;
     private int maxLineNumberCharLength;
@@ -40,6 +42,7 @@ public partial class FTabTab : Form
     private const int IndicatorError = 8;
     private const int IndicatorWarning = 9;
     private const int IndicatorInfo = 10;
+    private const int IndicatorGoTo = 11;
 
     private readonly GvdExprSymbols symbols = new();
     private readonly System.Windows.Forms.Timer validateTimer = new() { Interval = 400 };
@@ -54,7 +57,9 @@ public partial class FTabTab : Form
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FTabTab"/>.
     /// </summary>
-    public FTabTab(TableTabTab? tab = null)
+    /// <param name="tab">Sekcia, ktora sa ma otvorit.</param>
+    /// <param name="station">Stanica grafikonu - pre nahlad (ZAJMSTANICE, MISTNI); moze byt <see langword="null"/>.</param>
+    public FTabTab(TableTabTab? tab = null, Station? station = null)
     {
         InitializeComponent();
 
@@ -78,6 +83,8 @@ public partial class FTabTab : Form
         ShowNumberLines();
 
         SelectedTab = tab;
+        homeStationId = station is not null && int.TryParse(station.ID, out var sid) ? sid : 0;
+        tsbPreview.Text = tsbPreview.ToolTipText = Resources.FTabTab_Nahlad;
 
         validateTimer.Tick += (_, _) =>
         {
@@ -120,7 +127,12 @@ public partial class FTabTab : Form
         sc.Styles[Style.LineNumber].BackColor = GlobData.UsingStyle.ControlsColorScheme.Button.BackColor;
         sc.Styles[Style.LineNumber].ForeColor = GlobData.UsingStyle.ControlsColorScheme.Button.ForeColor;
         sc.CaretForeColor = GlobData.UsingStyle.ControlsColorScheme.Box.ForeColor;
-        sc.SetSelectionBackColor(true, GlobData.UsingStyle.ControlsColorScheme.Border.ForeColor);
+        // vyber textu vo farbe zvyraznenia temy (svetla: systemova modra, tmava: podla stylu), nie farbou ramika
+        var highlight = GlobData.UsingStyle.ControlsColorScheme.Highlight;
+        sc.SetSelectionBackColor(true, highlight.BackColor);
+        sc.SetSelectionForeColor(true, highlight.ForeColor);
+        sc.SetAdditionalSelBack(highlight.BackColor);
+        sc.SetAdditionalSelFore(highlight.ForeColor);
 
         if (!GlobData.UsingStyle.ControlsDefaultStyle)
             sc.BorderStyle = ScintillaNET.BorderStyle.None;
@@ -193,6 +205,11 @@ public partial class FTabTab : Form
         sc.Indicators[IndicatorWarning].ForeColor = Color.DarkOrange;
         sc.Indicators[IndicatorInfo].Style = IndicatorStyle.Dots;
         sc.Indicators[IndicatorInfo].ForeColor = Color.Gray;
+        sc.Indicators[IndicatorGoTo].Style = IndicatorStyle.RoundBox;
+        sc.Indicators[IndicatorGoTo].ForeColor = Color.Gold;
+        sc.Indicators[IndicatorGoTo].Alpha = 70;
+        sc.Indicators[IndicatorGoTo].OutlineAlpha = 160;
+        sc.Indicators[IndicatorGoTo].Under = true;
         sc.MouseDwellTime = 500;
 
         var box = GlobData.UsingStyle.ControlsColorScheme.Box;
@@ -257,7 +274,7 @@ public partial class FTabTab : Form
         var result = TabTabValidator.Validate(text, symbols.OptionsFor(tab));
         diagnostics = result.Diagnostics;
 
-        foreach (var ind in new[] { IndicatorError, IndicatorWarning, IndicatorInfo })
+        foreach (var ind in new[] { IndicatorError, IndicatorWarning, IndicatorInfo, IndicatorGoTo })
         {
             sc.IndicatorCurrent = ind;
             sc.IndicatorClearRange(0, sc.TextLength);
@@ -267,7 +284,7 @@ public partial class FTabTab : Form
         problemRows.Clear();
         foreach (var d in diagnostics)
         {
-            var (start, end) = ByteRange(text, d);
+            var (start, end) = CharRange(text, d);
             sc.IndicatorCurrent = d.Severity switch
             {
                 ExprSeverity.Error => IndicatorError,
@@ -282,6 +299,40 @@ public partial class FTabTab : Form
 
         UpdateProblemCounts(result.ErrorCount, result.WarningCount, diagnostics.Count - result.ErrorCount - result.WarningCount);
         ApplyProblemFilter();
+
+        if (preview is { IsDisposed: false })
+            preview.RefreshPreview();
+    }
+
+    /// <summary>
+    ///     Text sekcie podla mena - z editora (aj neulozeny), nie z GlobData.
+    /// </summary>
+    private string? SectionText(string name)
+    {
+        var doc = documents.FirstOrDefault(d => d.TabTab.Key == name);
+        if (doc is null) return null;
+        if (lbTabTabs.SelectedIndex != -1 && documents[lbTabTabs.SelectedIndex] == doc)
+            return sc.Text;
+
+        // text ineho dokumentu Scintilly: docasne prepnut a precitat
+        var current = sc.Document;
+        sc.AddRefDocument(current);
+        sc.Document = doc.Document;
+        var text = sc.Text;
+        sc.Document = current;
+        sc.ReleaseDocument(current);
+        return text;
+    }
+
+    private void tsbPreview_Click(object sender, EventArgs e)
+    {
+        var section = lbTabTabs.SelectedIndex == -1 ? null : documents[lbTabTabs.SelectedIndex].TabTab.Key;
+        if (preview is { IsDisposed: false })
+        {
+            preview.Close();
+        }
+        preview = new FTabTabPreview(SectionText, section, homeStationId) { Owner = this };
+        preview.Show(this);
     }
 
     private void UpdateProblemCounts(int errors, int warnings, int infos)
@@ -330,10 +381,10 @@ public partial class FTabTab : Form
         dgvProblems.SelectedRows.Count > 0 ? dgvProblems.SelectedRows[0].DataBoundItem as ProblemRow : null;
 
     /// <summary>
-    ///     Prevod znakovych pozicii hlasenia na bajtove pozicie Scintilly (UTF-8). Bodove hlasenie
-    ///     zvyrazni jeden znak; na konci textu znak pred nim.
+    ///     Rozsah hlasenia v znakoch (ScintillaNET pracuje so znakovymi poziciami a na bajty prevadza sam).
+    ///     Bodove hlasenie zvyrazni jeden znak; na konci textu znak pred nim.
     /// </summary>
-    private static (int Start, int End) ByteRange(string text, TabTabDiagnostic d)
+    private static (int Start, int End) CharRange(string text, TabTabDiagnostic d)
     {
         var s = Math.Clamp(d.Start, 0, text.Length);
         var e = Math.Clamp(d.End, s, text.Length);
@@ -342,13 +393,8 @@ public partial class FTabTab : Form
             if (s < text.Length) e = s + 1;
             else if (s > 0) s--;
         }
-        var bs = Encoding.UTF8.GetByteCount(text.AsSpan(0, s));
-        var be = bs + Encoding.UTF8.GetByteCount(text.AsSpan(s, e - s));
-        return (bs, be);
+        return (s, e);
     }
-
-    private static int BytePos(string text, int charIndex) =>
-        Encoding.UTF8.GetByteCount(text.AsSpan(0, Math.Clamp(charIndex, 0, text.Length)));
 
     private void sc_DwellStart(object? sender, DwellEventArgs e)
     {
@@ -359,7 +405,7 @@ public partial class FTabTab : Form
         var hits = new List<string>();
         foreach (var d in diagnostics)
         {
-            var (start, end) = ByteRange(text, d);
+            var (start, end) = CharRange(text, d);
             if (e.Position >= start && e.Position < end)
                 hits.Add(d.Suggestion is null ? d.Message : $"{d.Message}\n→ {d.Suggestion}");
         }
@@ -371,9 +417,16 @@ public partial class FTabTab : Form
     private void GoToDiagnostic(TabTabDiagnostic d)
     {
         if (validatedText != sc.Text) ValidateDocument();
-        var (start, end) = ByteRange(validatedText, d);
+        var (start, end) = CharRange(validatedText, d);
+
+        // zvyraznenie miesta problemu - nie vyberom (jeho farba je v svetlej teme prilis tmava),
+        // ale docasnym indikatorom, ktory zmizne pri dalsej kontrole alebo skoku
+        sc.IndicatorCurrent = IndicatorGoTo;
+        sc.IndicatorClearRange(0, sc.TextLength);
+        sc.IndicatorFillRange(start, Math.Max(1, end - start));
+
         sc.GotoPosition(start);
-        sc.SetSelection(end, start);
+        sc.ScrollCaret();
         sc.Focus();
     }
 
@@ -394,10 +447,8 @@ public partial class FTabTab : Form
         sc.BeginUndoAction();
         foreach (var edit in d.Fix.Edits.OrderByDescending(x => x.Start))
         {
-            var bs = BytePos(text, edit.Start);
-            var be = BytePos(text, edit.Start + edit.Length);
-            sc.DeleteRange(bs, be - bs);
-            sc.InsertText(bs, edit.NewText);
+            sc.DeleteRange(edit.Start, edit.Length);
+            sc.InsertText(edit.Start, edit.NewText);
         }
         sc.EndUndoAction();
 

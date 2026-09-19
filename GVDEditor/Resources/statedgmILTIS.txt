@@ -1,0 +1,1335 @@
+0001
+C:"Slovenskı stav. diagram"
+C:"verze s pøistavením u vıchozích
+C:"s tabulemi"
+C:"automatika riadená udalosami ILTIS (VVC, OVC, Vj, Odj)"
+
+;
+; Defnice Designù tlaèítek
+;
+P:"StateDgmCtrls\\CtrlDesign"
+{	;Bitmaps="Offset-Normal,NormalFokus,Pushed"
+	G:"Design1" {S:"Key"="MeškanieN"	S:"Bitmaps"="0-0,1,2"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design2" {S:"Key"="Ko¾ajN"		S:"Bitmaps"="3-0,1,2"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design3" {S:"Key"="SkryN"		S:"Bitmaps"="76-0,1,2"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design4" {S:"Key"="VypíšD"		S:"Bitmaps"="6-0,0,0"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design5" {S:"Key"="Vypíš1"		S:"Bitmaps"="6-7,8,9"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design6" {S:"Key"="Vypíš2"		S:"Bitmaps"="6-4,5,6"	I:"DefPushBtn"=1	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design7" {S:"Key"="Vypíš3"		S:"Bitmaps"="6-1,2,3"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design8" {S:"Key"="PrídeD"		S:"Bitmaps"="16-0,0,0"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design9" {S:"Key"="Príde1"		S:"Bitmaps"="16-7,8,9"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design10"{S:"Key"="Príde2"		S:"Bitmaps"="16-4,5,6"	I:"DefPushBtn"=1	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design11"{S:"Key"="Príde3"		S:"Bitmaps"="16-1,2,3"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design12"{S:"Key"="PrichádzaD"	S:"Bitmaps"="66-0,0,0"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design13"{S:"Key"="Prichádza1"	S:"Bitmaps"="66-7,8,9"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design14"{S:"Key"="Prichádza2"	S:"Bitmaps"="66-4,5,6"	I:"DefPushBtn"=1	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design15"{S:"Key"="Prichádza3"	S:"Bitmaps"="66-1,2,3"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design16"{S:"Key"="PrišielD"		S:"Bitmaps"="26-0,0,0"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design17"{S:"Key"="Prišiel1"		S:"Bitmaps"="26-7,8,9"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design18"{S:"Key"="Prišiel2"		S:"Bitmaps"="26-4,5,6"	I:"DefPushBtn"=1	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design19"{S:"Key"="Prišiel3"		S:"Bitmaps"="26-1,2,3"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design20"{S:"Key"="StojíD"		S:"Bitmaps"="46-0,0,0"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design21"{S:"Key"="Stojí1"		S:"Bitmaps"="46-7,8,9"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design22"{S:"Key"="Stojí2"		S:"Bitmaps"="46-4,5,6"	I:"DefPushBtn"=1	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design23"{S:"Key"="Stojí3"		S:"Bitmaps"="46-1,2,3"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design24"{S:"Key"="OdídeD"		S:"Bitmaps"="36-0,0,0"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design25"{S:"Key"="Odíde1"		S:"Bitmaps"="36-7,8,9"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design26"{S:"Key"="Odíde2"		S:"Bitmaps"="36-4,5,6"	I:"DefPushBtn"=1	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design27"{S:"Key"="Odíde3"		S:"Bitmaps"="36-1,2,3"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design28"{S:"Key"="ZmaD"		S:"Bitmaps"="56-0,0,0"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design29"{S:"Key"="Zma1"		S:"Bitmaps"="56-7,8,9"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design30"{S:"Key"="Zma2"		S:"Bitmaps"="56-4,5,6"	I:"DefPushBtn"=1	S:"Class"="SDCCtrlDesignBtn"}
+	G:"Design31"{S:"Key"="Zma3"		S:"Bitmaps"="56-1,2,3"	I:"DefPushBtn"=0	S:"Class"="SDCCtrlDesignBtn"}
+	I:"NumDesigns"=31
+}
+
+P:"StateDgmCtrls\\StateDgm"
+{
+	I:"NumTimePoints"=0
+	I:"NumCategories"=6
+}
+
+	
+P:"StateDgmCtrls\\StateDgm\\Categorie1"
+{
+	S:"Key"="#Vıchozí vlak"
+	S:"Name"="Vıchozí vlak"
+	S:"Comment"="Vlak je vytvoøen ve stanici."
+	I:"Icon"=0
+	G:"State1"
+	{
+		S:"Key"="#Start"
+		I:"Icon"=0
+		I:"Attr"=0x08  ; SVSA_Stoji=stoji ve stanici
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ne
+			B:"JeZobrazenaKolej"=Ne
+		}
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš2"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde1"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza1"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel1"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí1"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde1"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State2"
+	{
+		S:"Key"="Vypiš"
+		S:"Name"="Vypíš"
+		I:"Icon"=0
+		I:"Attr"=0x18	;SVSA_PotvrzenaKolej, SVSA_Stoji=stoji ve stanici
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ano
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		; automatika - 15 min pred odchodom - potvrdenie ko¾aje
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=2		; èas odchodu
+		I:"AutoTimePointAdd"=-900	; -15 min
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde2"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza1"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel1"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí1"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde1"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State3"
+	{
+		S:"Key"="Pøijídí"
+		S:"Name"="Príde"
+		I:"Icon"=1
+		I:"Attr"=0x18	;SVSA_PotvrzenaKolej, SVSA_Stoji=stoji ve stanici
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ano
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza2"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel1"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí1"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde1"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State4"
+	{
+		S:"Key"="Vjídí"
+		S:"Name"="Prichádza"
+		I:"Icon"=2
+		I:"Attr"=0x18	;SVSA_PotvrzenaKolej, SVSA_Stoji=stoji ve stanici
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ano
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza3"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel2"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí1"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde1"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State5"
+	{
+		S:"Key"="Zastavil"
+		S:"Name"="Prišiel"
+		I:"Icon"=3
+		I:"Attr"=0x98	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ano
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza3"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel3"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí2"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde1"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State6"
+	{
+		S:"Key"="Pobytové"
+		S:"Name"="Stojí"
+		I:"Icon"=3
+		I:"Attr"=0x98	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ano
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza3"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel3"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí3"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde2"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State7"
+	{
+		S:"Key"="Odjede"
+		S:"Name"="Odíde"
+		I:"Icon"=4
+		I:"Attr"=0x98	; SVSA_PotvrzenaKolej, SVSA_Stoji, SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ano
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		; automatika - najskôr 10 min pred odchodom - rozhoduje odchodová vlaková cesta
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=2		; èas odchodu
+		I:"AutoTimePointAdd"=-600	; -10 min
+		S:"Wait"="OVC"
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza3"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel3"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí3"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde3"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma2"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State8"
+	{
+		S:"Key"="Odbaven"
+		S:"Name"="Zma"
+		I:"Icon"=5
+		I:"Attr"=0x68	;SVSA_Stoji | SVSA_Odbaven | SVSA_Shadow 
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ne
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ne
+			B:"JeZobrazenaKolej"=Ne
+		}
+		;
+		; automatika - 2 min po odchode - rozhoduje odchod vlaku z ILTISu
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=2		; èas odchodu
+		I:"AutoTimePointAdd"=120	; +2 min
+		S:"Wait"="Odj"
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza3"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel3"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí3"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde3"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma3"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	I:"NumStates"=8
+}
+P:"StateDgmCtrls\\StateDgm\\Categorie2"
+{
+	S:"Key"="#Projídìjící vlak"
+	S:"Name"="Projídìjící vlak"
+	S:"Comment"="Vlak stanicí projídí."
+	I:"Icon"=1
+	G:"State1"
+	{
+		S:"Key"="#Start"
+		I:"Icon"=0
+		I:"Attr"=0x0	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ano
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ne
+			B:"JeZobrazenaKolej"=Ne
+		}
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš2"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde1"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza1"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel1"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí1"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde1"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State2"
+	{
+		S:"Key"="Vypiš"
+		S:"Name"="Vypíš"
+		I:"Icon"=0
+		I:"Attr"=0x10	;SVSA_PotvrzenaKolej 
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ano
+			B:"JeNaSmìrovıch"=Ano
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		; automatika - 15 min pred odchodom - potvrdenie ko¾aje
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=2		; èas odchodu
+		I:"AutoTimePointAdd"=-900	; -15 min
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde2"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza1"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel1"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí1"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde1"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State3"
+	{
+		S:"Key"="Pøijídí"
+		S:"Name"="Príde"
+		I:"Icon"=1
+		I:"Attr"=0x10	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ano
+			B:"JeNaSmìrovıch"=Ano
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		; automatika - najskôr 10 min pred príchodom - rozhoduje vchodová vlaková cesta
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=1		; èas príchodu
+		I:"AutoTimePointAdd"=-600	; -10 min
+		S:"Wait"="VVC"
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza2"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel1"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí1"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde1"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State4"
+	{
+		S:"Key"="Vjídí"
+		S:"Name"="Prichádza"
+		I:"Icon"=2
+		I:"Attr"=0x10	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ano
+			B:"JeNaSmìrovıch"=Ano
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza3"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel2"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí1"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde1"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State5"
+	{
+		S:"Key"="Zastavil"
+		S:"Name"="Prišiel"
+		I:"Icon"=3
+		I:"Attr"=0x98	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ano
+			B:"JeNaSmìrovıch"=Ano
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		; automatika - v èase príchodu - rozhoduje vchod vlaku z ILTISu
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=1		; èas príchodu
+		I:"AutoTimePointAdd"=0	; +0 min
+		S:"Wait"="Vj"
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza3"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel3"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí2"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde1"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State6"
+	{
+		S:"Key"="Pobytové"
+		S:"Name"="Stojí"
+		I:"Icon"=3
+		I:"Attr"=0x98	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ano
+			B:"JeNaSmìrovıch"=Ano
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza3"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel3"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí3"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde2"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State7"
+	{
+		S:"Key"="Odjede"
+		S:"Name"="Odíde"
+		I:"Icon"=4
+		I:"Attr"=0x98	;SVSA_Stoji | SVSA_PotvrzenaKolej | SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ano
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		; automatika - najskôr 10 min pred odchodom - rozhoduje odchodová vlaková cesta
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=2		; èas odchodu
+		I:"AutoTimePointAdd"=-600	; -10 min
+		S:"Wait"="OVC"
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza3"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel3"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí3"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde3"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma2"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State8"
+	{
+		S:"Key"="Odbaven"
+		S:"Name"="Zma"
+		I:"Icon"=5
+		I:"Attr"=0x68	;SVSA_Stoji | SVSA_Odbaven | SVSA_Shadow
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ne
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ne
+			B:"JeZobrazenaKolej"=Ne
+		}
+		;
+		; automatika - 2 min po odchode
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=2		; èas odchodu
+		I:"AutoTimePointAdd"=120	; +2 min
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event8" {S:"Key"="#GoToOdíde"	S:"NextState"="Odjede"		S:"ReportKey"="Odjede"		S:"Class"="SDEventUniPos"}
+		G:"Event9" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=9
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza3"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel3"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí3"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="Odíde3"		S:"EventKey"="#GoToOdíde"}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma3"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	I:"NumStates"=8
+}
+P:"StateDgmCtrls\\StateDgm\\Categorie3"
+{
+	S:"Key"="#Konèící vlak"
+	S:"Name"="Konèící vlak"
+	S:"Comment"="Vlak ve stanici konèí."
+	I:"Icon"=2
+	G:"State1"
+	{
+		S:"Key"="Vypiš"
+		S:"Name"="Vypíš"
+		I:"Icon"=0
+		I:"Attr"=0x10	;SVSA_PotvrzenaKolej
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ne
+			B:"JeNaPøíjezdové"=Ano
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ne
+			B:"JeZobrazenaKolej"=Ne
+		}
+		; automatika - 15 min pred príchodom - potvrdenie ko¾aje
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=1		; èas príchodu
+		I:"AutoTimePointAdd"=-900	; -15 min
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=7
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde2"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza1"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel1"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="StojíD"		S:"EventKey"=""}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="OdídeD"		S:"EventKey"=""}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State2"
+	{
+		S:"Key"="Pøijídí"
+		S:"Name"="Príde"
+		I:"Icon"=1
+		I:"Attr"=0x10	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ne
+			B:"JeNaPøíjezdové"=Ano
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		; automatika - najskôr 10 min pred príchodom - rozhoduje vchodová vlaková cesta
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=1		; èas príchodu
+		I:"AutoTimePointAdd"=-600	; -10 min
+		S:"Wait"="VVC"
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=7
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza2"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel1"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="StojíD"		S:"EventKey"=""}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="OdídeD"		S:"EventKey"=""}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State3"
+	{
+		S:"Key"="Vjídí"
+		S:"Name"="Prichádza"
+		I:"Icon"=2
+		I:"Attr"=0x10	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ne
+			B:"JeNaPøíjezdové"=Ano
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=7
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza3"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel2"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="StojíD"		S:"EventKey"=""}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="OdídeD"		S:"EventKey"=""}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State4"
+	{
+		S:"Key"="Zastavil"
+		S:"Name"="Prišiel"
+		I:"Icon"=3
+		I:"Attr"=0x10	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ne
+			B:"JeNaPøíjezdové"=Ano
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ano
+			B:"JeZobrazenaKolej"=Ano
+		}
+		; automatika - v èase príchodu - rozhoduje vchod vlaku z ILTISu
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=1		; èas príchodu
+		I:"AutoTimePointAdd"=0	; +0 min
+		S:"Wait"="Vj"
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=7
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza3"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel3"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="StojíD"		S:"EventKey"=""}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="OdídeD"		S:"EventKey"=""}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma2"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State5"
+	{
+		S:"Key"="Odbaven"
+		S:"Name"="Zma"
+		I:"Icon"=5
+		I:"Attr"=0x60	;SVSA_Odbaven | SVSA_Shadow 
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ne
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ne
+			B:"JeZobrazenaKolej"=Ne
+		}
+		; automatika - 2 min po príchode
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=1		; èas príchodu
+		I:"AutoTimePointAdd"=120	; +2 min
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="Vypiš"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPøijídí"	S:"NextState"="Pøijídí"	S:"ReportKey"="Pøijídí"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToVjídí"	S:"NextState"="Vjídí"		S:"ReportKey"="Vjídí"		S:"Class"="SDEventUniPos"}
+		G:"Event6" {S:"Key"="#GoToZastavil"	S:"NextState"="Zastavil"	S:"ReportKey"="Zastavil"	S:"Class"="SDEventUniPos"}
+		G:"Event7" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=7
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="Príde3"		S:"EventKey"="#GoToPøijídí"}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="Prichádza3"	S:"EventKey"="#GoToVjídí"}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="Prišiel3"	S:"EventKey"="#GoToZastavil"}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="StojíD"		S:"EventKey"=""}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="OdídeD"		S:"EventKey"=""}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma3"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	I:"NumStates"=5
+}
+P:"StateDgmCtrls\\StateDgm\\Categorie4"
+{
+	S:"Key"="#VılukaVychozi"
+	S:"Name"="Vlak vyjídìjící ve vıluce"
+	S:"Comment"="Vlak, kterı je stanicí vytváøen je pøímo z ní ve vıluce."
+	I:"Icon"=0
+	G:"State1"
+	{
+		S:"Key"="#Start"
+		I:"Icon"=0
+		I:"Attr"=0x8   ; SVSA_Stoji 
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ne
+			B:"JeZobrazenaKolej"=Ne
+		}
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="#Start"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=5
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="PrídeD"		S:"EventKey"=""}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="PrichádzaD"	S:"EventKey"=""}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="PrišielD"	S:"EventKey"=""}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí2"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="OdídeD"		S:"EventKey"=""}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State2"
+	{
+		S:"Key"="Pobytové"
+		S:"Name"="Stojí"
+		I:"Icon"=0
+		I:"Attr"=0x8   ; SVSA_Stoji 
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ne
+			B:"JeZobrazenaKolej"=Ne
+		}
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="#Start"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=5
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="PrídeD"		S:"EventKey"=""}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="PrichádzaD"	S:"EventKey"=""}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="PrišielD"	S:"EventKey"=""}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí3"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="OdídeD"		S:"EventKey"=""}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma2"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State3"
+	{
+		S:"Key"="Odbaven"
+		S:"Name"="Zma"
+		I:"Icon"=5
+		I:"Attr"=0x68	;SVSA_Odbaven | SVSA_Shadow |SVSA_Stoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ne
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ne
+			B:"JeZobrazenaKolej"=Ne
+		}
+		; automatika - 2 min po odchode - rozhoduje odchod vlaku z ILTISu
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=2		; èas odchodu
+		I:"AutoTimePointAdd"=120	; +2 min
+		S:"Wait"="Odj"
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="#Start"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=5
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="PrídeD"		S:"EventKey"=""}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="PrichádzaD"	S:"EventKey"=""}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="PrišielD"	S:"EventKey"=""}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí3"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="OdídeD"		S:"EventKey"=""}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma3"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	I:"NumStates"=3
+}
+P:"StateDgmCtrls\\StateDgm\\Categorie5"
+{
+	S:"Key"="#VılukaProjizdi"
+	S:"Name"="Vlak projídìjící ve vıluce"
+	S:"Comment"="Projídìjící vlak je ve stanici ve vıluce."
+	I:"Icon"=1
+	G:"State1"
+	{
+		S:"Key"="#Start"
+		I:"Icon"=0
+		I:"Attr"=0x0	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ano
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ne
+			B:"JeZobrazenaKolej"=Ne
+		}
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="#Start"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=5
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="PrídeD"		S:"EventKey"=""}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="PrichádzaD"	S:"EventKey"=""}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="PrišielD"	S:"EventKey"=""}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí2"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="OdídeD"		S:"EventKey"=""}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma1"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State2"
+	{
+		S:"Key"="Pobytové"
+		S:"Name"="Stojí"
+		I:"Icon"=0
+		I:"Attr"=0x0	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ano
+			B:"JeNaPøíjezdové"=Ano
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ne
+			B:"JeZobrazenaKolej"=Ne
+		}
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="#Start"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=5
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="PrídeD"		S:"EventKey"=""}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="PrichádzaD"	S:"EventKey"=""}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="PrišielD"	S:"EventKey"=""}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí3"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="OdídeD"		S:"EventKey"=""}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma2"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	G:"State3"
+	{
+		S:"Key"="Odbaven"
+		S:"Name"="Zma"
+		I:"Icon"=5
+		I:"Attr"=0x68	;SVSA_Odbaven | SVSA_Shadow |SVSA_Stoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ne
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ne
+			B:"JeZobrazenaKolej"=Ne
+		}
+		; automatika - 2 min po odchode
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=2		; èas odchodu
+		I:"AutoTimePointAdd"=120	; +2 min
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="#Start"		S:"Class"="SDEventUniPos"}
+		G:"Event4" {S:"Key"="#GoToPobytové"	S:"NextState"="Pobytové"	S:"ReportKey"="Pobytové"	S:"Class"="SDEventUniPos"}
+		G:"Event5" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+		I:"NumEvents"=5
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="PrídeD"		S:"EventKey"=""}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="PrichádzaD"	S:"EventKey"=""}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="PrišielD"	S:"EventKey"=""}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="Stojí3"		S:"EventKey"="#GoToPobytové"}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="OdídeD"		S:"EventKey"=""}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma3"		S:"EventKey"="#GoToOdbaven"}
+		I:"NumControls"=9
+	}
+	I:"NumStates"=3
+}
+P:"StateDgmCtrls\\StateDgm\\Categorie6"
+{
+	S:"Key"="#VılukaKoncova"
+	I:"Icon"=2
+;	G:"State1"
+;	{
+;		S:"Key"="#Start"
+;		I:"Icon"=0
+;		I:"Attr"=0x0	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+;		G:"DoState"
+;		{
+;			S:"Class"="SVFTableSet"
+;			B:"JeNaOdjezdové"=Ne
+;			B:"JeNaPøíjezdové"=Ano
+;			B:"JeNaSmìrovıch"=Ne
+;			B:"JeZobrazenaPozice"=Ne
+;			B:"JeZobrazenaKolej"=Ne
+;		}
+;		;
+;		; Akce
+;		;
+;		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+;		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+;		G:"Event3" {S:"Key"="#GoToVypiš"	S:"NextState"="#Start"		S:"Class"="SDEventUniPos"}
+;		G:"Event4" {S:"Key"="#GoToOdbaven"	S:"NextState"="Odbaven"		S:"Class"="SDEventUniPos"}
+;		I:"NumEvents"=4
+;		;
+;		; Ovladaèe
+;		;
+;		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+;		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+;		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="Vypíš3"		S:"EventKey"="#GoToVypiš"}
+;		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="PrídeD"		S:"EventKey"=""}
+;		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="PrichádzaD"	S:"EventKey"=""}
+;		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="PrišielD"	S:"EventKey"=""}
+;		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="StojíD"		S:"EventKey"=""}
+;		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="OdídeD"		S:"EventKey"=""}
+;		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="Zma2"		S:"EventKey"="#GoToOdbaven"}
+;		I:"NumControls"=9
+;	}
+	G:"State1"
+	{
+		S:"Key"="Odbaven"
+		S:"Name"="Zma"
+		I:"Icon"=5
+		I:"Attr"=0x60	;0x8=SVSA_Stoji | 0x10=SVSA_PotvrzenaKolej | 0x20=SVSA_Odbaven | 0x40=SVSA_Shadow | 0x80=SVSA_NyniStoji
+		G:"DoState"
+		{
+			S:"Class"="SVFTableSet"
+			B:"JeNaOdjezdové"=Ne
+			B:"JeNaPøíjezdové"=Ne
+			B:"JeNaSmìrovıch"=Ne
+			B:"JeZobrazenaPozice"=Ne
+			B:"JeZobrazenaKolej"=Ne
+		}
+		; automatika - 2 min po príchode
+		I:"AutoMode"=2		; automat
+		I:"AutoTimePoint"=1		; èas príchodu
+		I:"AutoTimePointAdd"=120	; +2 min
+		;
+		; Akce
+		;
+		G:"Event1" {S:"Key"="#SetKolej"		S:"Dialog"="SDDlgKolej"		S:"Class"="SDEventWithDialog"}
+		G:"Event2" {S:"Key"="#SetZpodìní"	S:"Dialog"="SDDlgZpozdeni"	S:"Class"="SDEventWithDialog"}
+		I:"NumEvents"=2
+		;
+		; Ovladaèe
+		;
+		G:"Control1" {I:"CtrlID"=0	S:"DesignKey"="Ko¾ajN"		S:"EventKey"="#SetKolej"}
+		G:"Control2" {I:"CtrlID"=1	S:"DesignKey"="MeškanieN"	S:"EventKey"="#SetZpodìní"}
+		G:"Control3" {I:"CtrlID"=3	S:"DesignKey"="VypíšD"		S:"EventKey"=""}
+		G:"Control4" {I:"CtrlID"=4	S:"DesignKey"="PrídeD"		S:"EventKey"=""}
+		G:"Control5" {I:"CtrlID"=5	S:"DesignKey"="PrichádzaD"	S:"EventKey"=""}
+		G:"Control6" {I:"CtrlID"=6	S:"DesignKey"="PrišielD"	S:"EventKey"=""}
+		G:"Control7" {I:"CtrlID"=7	S:"DesignKey"="StojíD"		S:"EventKey"=""}
+		G:"Control8" {I:"CtrlID"=8	S:"DesignKey"="OdídeD"		S:"EventKey"=""}
+		G:"Control9" {I:"CtrlID"=9	S:"DesignKey"="ZmaD"		S:"EventKey"=""}
+		I:"NumControls"=9
+	}
+	I:"NumStates"=1
+}

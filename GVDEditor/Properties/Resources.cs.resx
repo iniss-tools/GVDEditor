@@ -691,4 +691,13 @@ Přesunout jej nyní do vlastní složky ({1} grafikon/y)?</value>
   <data name="FTabTab_Problems_Informacia" xml:space="preserve">
     <value>Informace</value>
   </data>
+  <data name="FTabTabPreview_Len_sekcia" xml:space="preserve">
+    <value>Jen sloupce se sekcí {0}</value>
+  </data>
+  <data name="FTabTabPreview_Chyba_vyhodnotenia" xml:space="preserve">
+    <value>Chyba vyhodnocení:</value>
+  </data>
+  <data name="FTabTab_Nahlad" xml:space="preserve">
+    <value>Náhled na tabuli</value>
+  </data>
 </root>
