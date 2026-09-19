@@ -28,656 +28,641 @@ namespace GVDEditor.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FStateDgm));
-            this.tsMain = new System.Windows.Forms.ToolStrip();
-            this.tsbSave = new System.Windows.Forms.ToolStripButton();
-            this.tsbCheck = new System.Windows.Forms.ToolStripButton();
-            this.tss1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsddNew = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsmiNewCategory = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNewState = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNewDesign = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiNewTimePoint = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.tsbUp = new System.Windows.Forms.ToolStripButton();
-            this.tsbDown = new System.Windows.Forms.ToolStripButton();
-            this.tss2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsddTemplate = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsmiTplSK = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiTplCZ = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiTplILTIS = new System.Windows.Forms.ToolStripMenuItem();
-            this.tss3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbCalendar = new System.Windows.Forms.ToolStripButton();
-            this.scOuter = new System.Windows.Forms.SplitContainer();
-            this.scMain = new System.Windows.Forms.SplitContainer();
-            this.tvNav = new System.Windows.Forms.TreeView();
-            this.scRight = new System.Windows.Forms.SplitContainer();
-            this.tcCenter = new ExControls.ExTabControl();
-            this.tpGraph = new System.Windows.Forms.TabPage();
-            this.pnlGraph = new System.Windows.Forms.Panel();
-            this.tpText = new System.Windows.Forms.TabPage();
-            this.tbText = new ExControls.ExTextBox();
-            this.pnlProps = new System.Windows.Forms.Panel();
-            this.tcBottom = new ExControls.ExTabControl();
-            this.tpEvents = new System.Windows.Forms.TabPage();
-            this.dgvEvents = new System.Windows.Forms.DataGridView();
-            this.cEvCtrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEvDesign = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEvKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEvClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEvNext = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEvReport = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEvDialog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tsEvents = new System.Windows.Forms.ToolStrip();
-            this.tsbEvAdd = new System.Windows.Forms.ToolStripButton();
-            this.tsbEvEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbEvDelete = new System.Windows.Forms.ToolStripButton();
-            this.tsbEvUp = new System.Windows.Forms.ToolStripButton();
-            this.tsbEvDown = new System.Windows.Forms.ToolStripButton();
-            this.tpStarters = new System.Windows.Forms.TabPage();
-            this.dgvStarters = new System.Windows.Forms.DataGridView();
-            this.cStKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cStEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cStText = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tsStarters = new System.Windows.Forms.ToolStrip();
-            this.tsbStAdd = new System.Windows.Forms.ToolStripButton();
-            this.tsbStEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbStDelete = new System.Windows.Forms.ToolStripButton();
-            this.tpProblems = new System.Windows.Forms.TabPage();
-            this.dgvProblems = new System.Windows.Forms.DataGridView();
-            this.cProbType = new System.Windows.Forms.DataGridViewImageColumn();
-            this.cProbCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProbPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cProbMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ssMain = new System.Windows.Forms.StatusStrip();
-            this.tsslStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scOuter)).BeginInit();
-            this.scOuter.Panel1.SuspendLayout();
-            this.scOuter.Panel2.SuspendLayout();
-            this.scOuter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
-            this.scMain.Panel1.SuspendLayout();
-            this.scMain.Panel2.SuspendLayout();
-            this.scMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scRight)).BeginInit();
-            this.scRight.Panel1.SuspendLayout();
-            this.scRight.Panel2.SuspendLayout();
-            this.scRight.SuspendLayout();
-            this.tcCenter.SuspendLayout();
-            this.tpGraph.SuspendLayout();
-            this.tpText.SuspendLayout();
-            this.tcBottom.SuspendLayout();
-            this.tpEvents.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEvents)).BeginInit();
-            this.tsEvents.SuspendLayout();
-            this.tpStarters.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStarters)).BeginInit();
-            this.tsStarters.SuspendLayout();
-            this.tpProblems.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProblems)).BeginInit();
-            this.ssMain.SuspendLayout();
-            this.SuspendLayout();
-            //
-            // tsMain
-            //
-            this.tsMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbSave,
-            this.tsbCheck,
-            this.tss1,
-            this.tsddNew,
-            this.tsbDelete,
-            this.tsbUp,
-            this.tsbDown,
-            this.tss2,
-            this.tsddTemplate,
-            this.tss3,
-            this.tsbCalendar});
-            this.tsMain.Name = "tsMain";
-            resources.ApplyResources(this.tsMain, "tsMain");
-            //
-            // tsbSave
-            //
-            this.tsbSave.Image = global::ToolsCore.GlobalResources.save;
-            this.tsbSave.Name = "tsbSave";
-            resources.ApplyResources(this.tsbSave, "tsbSave");
-            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
-            //
-            // tsbCheck
-            //
-            this.tsbCheck.Image = global::ToolsCore.GlobalResources.analyze;
-            this.tsbCheck.Name = "tsbCheck";
-            resources.ApplyResources(this.tsbCheck, "tsbCheck");
-            this.tsbCheck.Click += new System.EventHandler(this.tsbCheck_Click);
-            //
-            // tss1
-            //
-            this.tss1.Name = "tss1";
-            //
-            // tsddNew
-            //
-            this.tsddNew.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiNewCategory,
-            this.tsmiNewState,
-            this.tsmiNewDesign,
-            this.tsmiNewTimePoint});
-            this.tsddNew.Image = global::ToolsCore.GlobalResources.add;
-            this.tsddNew.Name = "tsddNew";
-            resources.ApplyResources(this.tsddNew, "tsddNew");
-            //
-            // tsmiNewCategory
-            //
-            this.tsmiNewCategory.Name = "tsmiNewCategory";
-            resources.ApplyResources(this.tsmiNewCategory, "tsmiNewCategory");
-            this.tsmiNewCategory.Click += new System.EventHandler(this.tsmiNewCategory_Click);
-            //
-            // tsmiNewState
-            //
-            this.tsmiNewState.Name = "tsmiNewState";
-            resources.ApplyResources(this.tsmiNewState, "tsmiNewState");
-            this.tsmiNewState.Click += new System.EventHandler(this.tsmiNewState_Click);
-            //
-            // tsmiNewDesign
-            //
-            this.tsmiNewDesign.Name = "tsmiNewDesign";
-            resources.ApplyResources(this.tsmiNewDesign, "tsmiNewDesign");
-            this.tsmiNewDesign.Click += new System.EventHandler(this.tsmiNewDesign_Click);
-            //
-            // tsmiNewTimePoint
-            //
-            this.tsmiNewTimePoint.Name = "tsmiNewTimePoint";
-            resources.ApplyResources(this.tsmiNewTimePoint, "tsmiNewTimePoint");
-            this.tsmiNewTimePoint.Click += new System.EventHandler(this.tsmiNewTimePoint_Click);
-            //
-            // tsbDelete
-            //
-            this.tsbDelete.Image = global::ToolsCore.GlobalResources.delete;
-            this.tsbDelete.Name = "tsbDelete";
-            resources.ApplyResources(this.tsbDelete, "tsbDelete");
-            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
-            //
-            // tsbUp
-            //
-            this.tsbUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbUp.Image = global::ToolsCore.GlobalResources.sort_up;
-            this.tsbUp.Name = "tsbUp";
-            resources.ApplyResources(this.tsbUp, "tsbUp");
-            this.tsbUp.Click += new System.EventHandler(this.tsbUp_Click);
-            //
-            // tsbDown
-            //
-            this.tsbDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbDown.Image = global::ToolsCore.GlobalResources.sort_down;
-            this.tsbDown.Name = "tsbDown";
-            resources.ApplyResources(this.tsbDown, "tsbDown");
-            this.tsbDown.Click += new System.EventHandler(this.tsbDown_Click);
-            //
-            // tss2
-            //
-            this.tss2.Name = "tss2";
-            //
-            // tsddTemplate
-            //
-            this.tsddTemplate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiTplSK,
-            this.tsmiTplCZ,
-            this.tsmiTplILTIS});
-            this.tsddTemplate.Image = global::ToolsCore.GlobalResources.file;
-            this.tsddTemplate.Name = "tsddTemplate";
-            resources.ApplyResources(this.tsddTemplate, "tsddTemplate");
-            //
-            // tsmiTplSK
-            //
-            this.tsmiTplSK.Name = "tsmiTplSK";
-            resources.ApplyResources(this.tsmiTplSK, "tsmiTplSK");
-            this.tsmiTplSK.Click += new System.EventHandler(this.tsmiTpl_Click);
-            //
-            // tsmiTplCZ
-            //
-            this.tsmiTplCZ.Name = "tsmiTplCZ";
-            resources.ApplyResources(this.tsmiTplCZ, "tsmiTplCZ");
-            this.tsmiTplCZ.Click += new System.EventHandler(this.tsmiTpl_Click);
-            //
-            // tsmiTplILTIS
-            //
-            this.tsmiTplILTIS.Name = "tsmiTplILTIS";
-            resources.ApplyResources(this.tsmiTplILTIS, "tsmiTplILTIS");
-            this.tsmiTplILTIS.Click += new System.EventHandler(this.tsmiTpl_Click);
-            //
-            // tss3
-            //
-            this.tss3.Name = "tss3";
-            //
-            // tsbCalendar
-            //
-            this.tsbCalendar.Image = global::ToolsCore.GlobalResources.calendar;
-            this.tsbCalendar.Name = "tsbCalendar";
-            resources.ApplyResources(this.tsbCalendar, "tsbCalendar");
-            this.tsbCalendar.Click += new System.EventHandler(this.tsbCalendar_Click);
-            //
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(FStateDgm));
+            scOuter = new SplitContainer();
+            scMain = new SplitContainer();
+            tvNav = new TreeView();
+            scRight = new SplitContainer();
+            tcCenter = new ExControls.ExTabControl();
+            tpGraph = new TabPage();
+            pnlGraph = new Panel();
+            tpText = new TabPage();
+            scText = new GVDEditor.Controls.MyScintilla();
+            pnlProps = new Panel();
+            tcBottom = new ExControls.ExTabControl();
+            tpEvents = new TabPage();
+            dgvEvents = new DataGridView();
+            cEvCtrl = new DataGridViewTextBoxColumn();
+            cEvDesign = new DataGridViewTextBoxColumn();
+            cEvKey = new DataGridViewTextBoxColumn();
+            cEvClass = new DataGridViewTextBoxColumn();
+            cEvNext = new DataGridViewTextBoxColumn();
+            cEvReport = new DataGridViewTextBoxColumn();
+            cEvDialog = new DataGridViewTextBoxColumn();
+            tsEvents = new ToolStrip();
+            tsbEvAdd = new ToolStripButton();
+            tsbEvEdit = new ToolStripButton();
+            tsbEvDelete = new ToolStripButton();
+            tsbEvUp = new ToolStripButton();
+            tsbEvDown = new ToolStripButton();
+            tpStarters = new TabPage();
+            dgvStarters = new DataGridView();
+            cStKey = new DataGridViewTextBoxColumn();
+            cStEvent = new DataGridViewTextBoxColumn();
+            cStText = new DataGridViewTextBoxColumn();
+            tsStarters = new ToolStrip();
+            tsbStAdd = new ToolStripButton();
+            tsbStEdit = new ToolStripButton();
+            tsbStDelete = new ToolStripButton();
+            tpProblems = new TabPage();
+            dgvProblems = new DataGridView();
+            cProbType = new DataGridViewImageColumn();
+            cProbCode = new DataGridViewTextBoxColumn();
+            cProbPath = new DataGridViewTextBoxColumn();
+            cProbMessage = new DataGridViewTextBoxColumn();
+            tsMain = new ToolStrip();
+            tsbSave = new ToolStripButton();
+            tsbCheck = new ToolStripButton();
+            tss1 = new ToolStripSeparator();
+            tsddNew = new ToolStripDropDownButton();
+            tsmiNewCategory = new ToolStripMenuItem();
+            tsmiNewState = new ToolStripMenuItem();
+            tsmiNewDesign = new ToolStripMenuItem();
+            tsmiNewTimePoint = new ToolStripMenuItem();
+            tsbDelete = new ToolStripButton();
+            tsbUp = new ToolStripButton();
+            tsbDown = new ToolStripButton();
+            tss2 = new ToolStripSeparator();
+            tsddTemplate = new ToolStripDropDownButton();
+            tsmiTplSK = new ToolStripMenuItem();
+            tsmiTplCZ = new ToolStripMenuItem();
+            tsmiTplILTIS = new ToolStripMenuItem();
+            tss3 = new ToolStripSeparator();
+            tsbCalendar = new ToolStripButton();
+            ssMain = new StatusStrip();
+            tsslStatus = new ToolStripStatusLabel();
+            ((ISupportInitialize)scOuter).BeginInit();
+            scOuter.Panel1.SuspendLayout();
+            scOuter.Panel2.SuspendLayout();
+            scOuter.SuspendLayout();
+            ((ISupportInitialize)scMain).BeginInit();
+            scMain.Panel1.SuspendLayout();
+            scMain.Panel2.SuspendLayout();
+            scMain.SuspendLayout();
+            ((ISupportInitialize)scRight).BeginInit();
+            scRight.Panel1.SuspendLayout();
+            scRight.Panel2.SuspendLayout();
+            scRight.SuspendLayout();
+            tcCenter.SuspendLayout();
+            tpGraph.SuspendLayout();
+            tpText.SuspendLayout();
+            tcBottom.SuspendLayout();
+            tpEvents.SuspendLayout();
+            ((ISupportInitialize)dgvEvents).BeginInit();
+            tsEvents.SuspendLayout();
+            tpStarters.SuspendLayout();
+            ((ISupportInitialize)dgvStarters).BeginInit();
+            tsStarters.SuspendLayout();
+            tpProblems.SuspendLayout();
+            ((ISupportInitialize)dgvProblems).BeginInit();
+            tsMain.SuspendLayout();
+            ssMain.SuspendLayout();
+            SuspendLayout();
+            // 
             // scOuter
-            //
-            this.scOuter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scOuter.Name = "scOuter";
-            this.scOuter.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            //
+            // 
+            resources.ApplyResources(scOuter, "scOuter");
+            scOuter.Name = "scOuter";
+            // 
             // scOuter.Panel1
-            //
-            this.scOuter.Panel1.Controls.Add(this.scMain);
-            //
+            // 
+            scOuter.Panel1.Controls.Add(scMain);
+            // 
             // scOuter.Panel2
-            //
-            this.scOuter.Panel2.Controls.Add(this.tcBottom);
-            this.scOuter.SplitterDistance = 480;
-            //
+            // 
+            scOuter.Panel2.Controls.Add(tcBottom);
+            // 
             // scMain
-            //
-            this.scMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scMain.Name = "scMain";
-            //
+            // 
+            resources.ApplyResources(scMain, "scMain");
+            scMain.Name = "scMain";
+            // 
             // scMain.Panel1
-            //
-            this.scMain.Panel1.Controls.Add(this.tvNav);
-            //
+            // 
+            scMain.Panel1.Controls.Add(tvNav);
+            // 
             // scMain.Panel2
-            //
-            this.scMain.Panel2.Controls.Add(this.scRight);
-            this.scMain.SplitterDistance = 260;
-            //
+            // 
+            scMain.Panel2.Controls.Add(scRight);
+            // 
             // tvNav
-            //
-            this.tvNav.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvNav.HideSelection = false;
-            this.tvNav.Name = "tvNav";
-            this.tvNav.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvNav_AfterSelect);
-            //
+            // 
+            resources.ApplyResources(tvNav, "tvNav");
+            tvNav.HideSelection = false;
+            tvNav.ItemHeight = 24;
+            tvNav.Name = "tvNav";
+            tvNav.AfterSelect += tvNav_AfterSelect;
+            // 
             // scRight
-            //
-            this.scRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scRight.Name = "scRight";
-            //
+            // 
+            resources.ApplyResources(scRight, "scRight");
+            scRight.Name = "scRight";
+            // 
             // scRight.Panel1
-            //
-            this.scRight.Panel1.Controls.Add(this.tcCenter);
-            //
+            // 
+            scRight.Panel1.Controls.Add(tcCenter);
+            // 
             // scRight.Panel2
-            //
-            this.scRight.Panel2.Controls.Add(this.pnlProps);
-            this.scRight.SplitterDistance = 480;
-            //
+            // 
+            scRight.Panel2.Controls.Add(pnlProps);
+            // 
             // tcCenter
-            //
-            this.tcCenter.Controls.Add(this.tpGraph);
-            this.tcCenter.Controls.Add(this.tpText);
-            this.tcCenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tcCenter.Name = "tcCenter";
-            this.tcCenter.SelectedIndex = 0;
-            this.tcCenter.SelectedIndexChanged += new System.EventHandler(this.tcCenter_SelectedIndexChanged);
-            //
+            // 
+            tcCenter.ActiveHeaderBackColor = Color.White;
+            tcCenter.ActiveHeaderForeColor = Color.Black;
+            tcCenter.BorderColor = Color.LightGray;
+            tcCenter.BorderThickness = 1;
+            tcCenter.Controls.Add(tpGraph);
+            tcCenter.Controls.Add(tpText);
+            tcCenter.DefaultStyle = true;
+            resources.ApplyResources(tcCenter, "tcCenter");
+            tcCenter.HeaderBackColor = SystemColors.Control;
+            tcCenter.HeaderForeColor = Color.Black;
+            tcCenter.HighlightBackColor = SystemColors.GradientInactiveCaption;
+            tcCenter.HighlightForeColor = Color.Black;
+            tcCenter.Name = "tcCenter";
+            tcCenter.SelectedIndex = 0;
+            tcCenter.SelectedIndexChanged += tcCenter_SelectedIndexChanged;
+            // 
             // tpGraph
-            //
-            this.tpGraph.Controls.Add(this.pnlGraph);
-            this.tpGraph.Name = "tpGraph";
-            this.tpGraph.Padding = new System.Windows.Forms.Padding(3);
-            resources.ApplyResources(this.tpGraph, "tpGraph");
-            this.tpGraph.UseVisualStyleBackColor = true;
-            //
+            // 
+            tpGraph.Controls.Add(pnlGraph);
+            resources.ApplyResources(tpGraph, "tpGraph");
+            tpGraph.Name = "tpGraph";
+            tpGraph.UseVisualStyleBackColor = true;
+            // 
             // pnlGraph
-            //
-            this.pnlGraph.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlGraph.Name = "pnlGraph";
-            //
+            // 
+            resources.ApplyResources(pnlGraph, "pnlGraph");
+            pnlGraph.Name = "pnlGraph";
+            // 
             // tpText
-            //
-            this.tpText.Controls.Add(this.tbText);
-            this.tpText.Name = "tpText";
-            this.tpText.Padding = new System.Windows.Forms.Padding(3);
-            resources.ApplyResources(this.tpText, "tpText");
-            this.tpText.UseVisualStyleBackColor = true;
-            //
-            // tbText
-            //
-            this.tbText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbText.Font = new System.Drawing.Font("Consolas", 9F);
-            this.tbText.Multiline = true;
-            this.tbText.Name = "tbText";
-            this.tbText.ReadOnly = true;
-            this.tbText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbText.WordWrap = false;
-            //
+            // 
+            tpText.Controls.Add(scText);
+            resources.ApplyResources(tpText, "tpText");
+            tpText.Name = "tpText";
+            tpText.UseVisualStyleBackColor = true;
+            // 
+            // scText
+            // 
+            resources.ApplyResources(scText, "scText");
+            scText.Name = "scText";
+            // 
             // pnlProps
-            //
-            this.pnlProps.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlProps.Name = "pnlProps";
-            //
+            // 
+            resources.ApplyResources(pnlProps, "pnlProps");
+            pnlProps.Name = "pnlProps";
+            // 
             // tcBottom
-            //
-            this.tcBottom.Controls.Add(this.tpEvents);
-            this.tcBottom.Controls.Add(this.tpStarters);
-            this.tcBottom.Controls.Add(this.tpProblems);
-            this.tcBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tcBottom.Name = "tcBottom";
-            this.tcBottom.SelectedIndex = 0;
-            //
+            // 
+            tcBottom.ActiveHeaderBackColor = Color.White;
+            tcBottom.ActiveHeaderForeColor = Color.Black;
+            tcBottom.BorderColor = Color.LightGray;
+            tcBottom.BorderThickness = 1;
+            tcBottom.Controls.Add(tpEvents);
+            tcBottom.Controls.Add(tpStarters);
+            tcBottom.Controls.Add(tpProblems);
+            tcBottom.DefaultStyle = true;
+            resources.ApplyResources(tcBottom, "tcBottom");
+            tcBottom.HeaderBackColor = SystemColors.Control;
+            tcBottom.HeaderForeColor = Color.Black;
+            tcBottom.HighlightBackColor = SystemColors.GradientInactiveCaption;
+            tcBottom.HighlightForeColor = Color.Black;
+            tcBottom.Name = "tcBottom";
+            tcBottom.SelectedIndex = 0;
+            // 
             // tpEvents
-            //
-            this.tpEvents.Controls.Add(this.dgvEvents);
-            this.tpEvents.Controls.Add(this.tsEvents);
-            this.tpEvents.Name = "tpEvents";
-            resources.ApplyResources(this.tpEvents, "tpEvents");
-            this.tpEvents.UseVisualStyleBackColor = true;
-            //
+            // 
+            tpEvents.Controls.Add(dgvEvents);
+            tpEvents.Controls.Add(tsEvents);
+            resources.ApplyResources(tpEvents, "tpEvents");
+            tpEvents.Name = "tpEvents";
+            tpEvents.UseVisualStyleBackColor = true;
+            // 
             // dgvEvents
-            //
-            this.dgvEvents.AllowUserToAddRows = false;
-            this.dgvEvents.AllowUserToDeleteRows = false;
-            this.dgvEvents.AllowUserToResizeRows = false;
-            this.dgvEvents.AutoGenerateColumns = false;
-            this.dgvEvents.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvEvents.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEvents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cEvCtrl,
-            this.cEvDesign,
-            this.cEvKey,
-            this.cEvClass,
-            this.cEvNext,
-            this.cEvReport,
-            this.cEvDialog});
-            this.dgvEvents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvEvents.MultiSelect = false;
-            this.dgvEvents.Name = "dgvEvents";
-            this.dgvEvents.ReadOnly = true;
-            this.dgvEvents.RowHeadersVisible = false;
-            this.dgvEvents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEvents.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEvents_CellDoubleClick);
-            this.dgvEvents.SelectionChanged += new System.EventHandler(this.dgvEvents_SelectionChanged);
-            //
-            // event columns
-            //
-            this.cEvCtrl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cEvCtrl.DataPropertyName = "CtrlId";
-            this.cEvCtrl.Name = "cEvCtrl";
-            this.cEvCtrl.ReadOnly = true;
-            resources.ApplyResources(this.cEvCtrl, "cEvCtrl");
-            this.cEvDesign.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cEvDesign.DataPropertyName = "Design";
-            this.cEvDesign.Name = "cEvDesign";
-            this.cEvDesign.ReadOnly = true;
-            resources.ApplyResources(this.cEvDesign, "cEvDesign");
-            this.cEvKey.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cEvKey.DataPropertyName = "Key";
-            this.cEvKey.Name = "cEvKey";
-            this.cEvKey.ReadOnly = true;
-            resources.ApplyResources(this.cEvKey, "cEvKey");
-            this.cEvClass.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cEvClass.DataPropertyName = "Class";
-            this.cEvClass.Name = "cEvClass";
-            this.cEvClass.ReadOnly = true;
-            resources.ApplyResources(this.cEvClass, "cEvClass");
-            this.cEvNext.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cEvNext.DataPropertyName = "NextState";
-            this.cEvNext.Name = "cEvNext";
-            this.cEvNext.ReadOnly = true;
-            resources.ApplyResources(this.cEvNext, "cEvNext");
-            this.cEvReport.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cEvReport.DataPropertyName = "ReportKey";
-            this.cEvReport.Name = "cEvReport";
-            this.cEvReport.ReadOnly = true;
-            resources.ApplyResources(this.cEvReport, "cEvReport");
-            this.cEvDialog.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cEvDialog.DataPropertyName = "Dialog";
-            this.cEvDialog.Name = "cEvDialog";
-            this.cEvDialog.ReadOnly = true;
-            resources.ApplyResources(this.cEvDialog, "cEvDialog");
-            //
+            // 
+            dgvEvents.AllowUserToAddRows = false;
+            dgvEvents.AllowUserToDeleteRows = false;
+            dgvEvents.AllowUserToResizeRows = false;
+            dgvEvents.AutoGenerateColumns = false;
+            dgvEvents.BackgroundColor = SystemColors.Control;
+            dgvEvents.BorderStyle = BorderStyle.None;
+            dgvEvents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEvents.Columns.AddRange(new DataGridViewColumn[] { cEvCtrl, cEvDesign, cEvKey, cEvClass, cEvNext, cEvReport, cEvDialog });
+            resources.ApplyResources(dgvEvents, "dgvEvents");
+            dgvEvents.MultiSelect = false;
+            dgvEvents.Name = "dgvEvents";
+            dgvEvents.ReadOnly = true;
+            dgvEvents.RowHeadersVisible = false;
+            dgvEvents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEvents.CellDoubleClick += dgvEvents_CellDoubleClick;
+            dgvEvents.SelectionChanged += dgvEvents_SelectionChanged;
+            // 
+            // cEvCtrl
+            // 
+            cEvCtrl.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cEvCtrl.DataPropertyName = "CtrlId";
+            resources.ApplyResources(cEvCtrl, "cEvCtrl");
+            cEvCtrl.Name = "cEvCtrl";
+            cEvCtrl.ReadOnly = true;
+            // 
+            // cEvDesign
+            // 
+            cEvDesign.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cEvDesign.DataPropertyName = "Design";
+            resources.ApplyResources(cEvDesign, "cEvDesign");
+            cEvDesign.Name = "cEvDesign";
+            cEvDesign.ReadOnly = true;
+            // 
+            // cEvKey
+            // 
+            cEvKey.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cEvKey.DataPropertyName = "Key";
+            resources.ApplyResources(cEvKey, "cEvKey");
+            cEvKey.Name = "cEvKey";
+            cEvKey.ReadOnly = true;
+            // 
+            // cEvClass
+            // 
+            cEvClass.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cEvClass.DataPropertyName = "Class";
+            resources.ApplyResources(cEvClass, "cEvClass");
+            cEvClass.Name = "cEvClass";
+            cEvClass.ReadOnly = true;
+            // 
+            // cEvNext
+            // 
+            cEvNext.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cEvNext.DataPropertyName = "NextState";
+            resources.ApplyResources(cEvNext, "cEvNext");
+            cEvNext.Name = "cEvNext";
+            cEvNext.ReadOnly = true;
+            // 
+            // cEvReport
+            // 
+            cEvReport.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cEvReport.DataPropertyName = "ReportKey";
+            resources.ApplyResources(cEvReport, "cEvReport");
+            cEvReport.Name = "cEvReport";
+            cEvReport.ReadOnly = true;
+            // 
+            // cEvDialog
+            // 
+            cEvDialog.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            cEvDialog.DataPropertyName = "Dialog";
+            resources.ApplyResources(cEvDialog, "cEvDialog");
+            cEvDialog.Name = "cEvDialog";
+            cEvDialog.ReadOnly = true;
+            // 
             // tsEvents
-            //
-            this.tsEvents.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tsEvents.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbEvAdd,
-            this.tsbEvEdit,
-            this.tsbEvDelete,
-            this.tsbEvUp,
-            this.tsbEvDown});
-            this.tsEvents.Name = "tsEvents";
-            resources.ApplyResources(this.tsEvents, "tsEvents");
-            //
+            // 
+            tsEvents.GripStyle = ToolStripGripStyle.Hidden;
+            tsEvents.Items.AddRange(new ToolStripItem[] { tsbEvAdd, tsbEvEdit, tsbEvDelete, tsbEvUp, tsbEvDown });
+            resources.ApplyResources(tsEvents, "tsEvents");
+            tsEvents.Name = "tsEvents";
+            // 
             // tsbEvAdd
-            //
-            this.tsbEvAdd.Image = global::ToolsCore.GlobalResources.add;
-            this.tsbEvAdd.Name = "tsbEvAdd";
-            resources.ApplyResources(this.tsbEvAdd, "tsbEvAdd");
-            this.tsbEvAdd.Click += new System.EventHandler(this.tsbEvAdd_Click);
-            //
+            // 
+            resources.ApplyResources(tsbEvAdd, "tsbEvAdd");
+            tsbEvAdd.Name = "tsbEvAdd";
+            tsbEvAdd.Click += tsbEvAdd_Click;
+            // 
             // tsbEvEdit
-            //
-            this.tsbEvEdit.Image = global::ToolsCore.GlobalResources.edit;
-            this.tsbEvEdit.Name = "tsbEvEdit";
-            resources.ApplyResources(this.tsbEvEdit, "tsbEvEdit");
-            this.tsbEvEdit.Click += new System.EventHandler(this.tsbEvEdit_Click);
-            //
+            // 
+            resources.ApplyResources(tsbEvEdit, "tsbEvEdit");
+            tsbEvEdit.Name = "tsbEvEdit";
+            tsbEvEdit.Click += tsbEvEdit_Click;
+            // 
             // tsbEvDelete
-            //
-            this.tsbEvDelete.Image = global::ToolsCore.GlobalResources.delete;
-            this.tsbEvDelete.Name = "tsbEvDelete";
-            resources.ApplyResources(this.tsbEvDelete, "tsbEvDelete");
-            this.tsbEvDelete.Click += new System.EventHandler(this.tsbEvDelete_Click);
-            //
+            // 
+            resources.ApplyResources(tsbEvDelete, "tsbEvDelete");
+            tsbEvDelete.Name = "tsbEvDelete";
+            tsbEvDelete.Click += tsbEvDelete_Click;
+            // 
             // tsbEvUp
-            //
-            this.tsbEvUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEvUp.Image = global::ToolsCore.GlobalResources.sort_up;
-            this.tsbEvUp.Name = "tsbEvUp";
-            resources.ApplyResources(this.tsbEvUp, "tsbEvUp");
-            this.tsbEvUp.Click += new System.EventHandler(this.tsbEvUp_Click);
-            //
+            // 
+            tsbEvUp.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(tsbEvUp, "tsbEvUp");
+            tsbEvUp.Name = "tsbEvUp";
+            tsbEvUp.Click += tsbEvUp_Click;
+            // 
             // tsbEvDown
-            //
-            this.tsbEvDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEvDown.Image = global::ToolsCore.GlobalResources.sort_down;
-            this.tsbEvDown.Name = "tsbEvDown";
-            resources.ApplyResources(this.tsbEvDown, "tsbEvDown");
-            this.tsbEvDown.Click += new System.EventHandler(this.tsbEvDown_Click);
-            //
+            // 
+            tsbEvDown.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(tsbEvDown, "tsbEvDown");
+            tsbEvDown.Name = "tsbEvDown";
+            tsbEvDown.Click += tsbEvDown_Click;
+            // 
             // tpStarters
-            //
-            this.tpStarters.Controls.Add(this.dgvStarters);
-            this.tpStarters.Controls.Add(this.tsStarters);
-            this.tpStarters.Name = "tpStarters";
-            resources.ApplyResources(this.tpStarters, "tpStarters");
-            this.tpStarters.UseVisualStyleBackColor = true;
-            //
+            // 
+            tpStarters.Controls.Add(dgvStarters);
+            tpStarters.Controls.Add(tsStarters);
+            resources.ApplyResources(tpStarters, "tpStarters");
+            tpStarters.Name = "tpStarters";
+            tpStarters.UseVisualStyleBackColor = true;
+            // 
             // dgvStarters
-            //
-            this.dgvStarters.AllowUserToAddRows = false;
-            this.dgvStarters.AllowUserToDeleteRows = false;
-            this.dgvStarters.AllowUserToResizeRows = false;
-            this.dgvStarters.AutoGenerateColumns = false;
-            this.dgvStarters.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvStarters.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvStarters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStarters.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cStKey,
-            this.cStEvent,
-            this.cStText});
-            this.dgvStarters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStarters.MultiSelect = false;
-            this.dgvStarters.Name = "dgvStarters";
-            this.dgvStarters.ReadOnly = true;
-            this.dgvStarters.RowHeadersVisible = false;
-            this.dgvStarters.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStarters.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStarters_CellDoubleClick);
-            this.dgvStarters.SelectionChanged += new System.EventHandler(this.dgvStarters_SelectionChanged);
-            //
-            // starter columns
-            //
-            this.cStKey.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cStKey.DataPropertyName = "Key";
-            this.cStKey.Name = "cStKey";
-            this.cStKey.ReadOnly = true;
-            resources.ApplyResources(this.cStKey, "cStKey");
-            this.cStEvent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cStEvent.DataPropertyName = "EventKey";
-            this.cStEvent.Name = "cStEvent";
-            this.cStEvent.ReadOnly = true;
-            resources.ApplyResources(this.cStEvent, "cStEvent");
-            this.cStText.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cStText.DataPropertyName = "Text";
-            this.cStText.Name = "cStText";
-            this.cStText.ReadOnly = true;
-            resources.ApplyResources(this.cStText, "cStText");
-            //
+            // 
+            dgvStarters.AllowUserToAddRows = false;
+            dgvStarters.AllowUserToDeleteRows = false;
+            dgvStarters.AllowUserToResizeRows = false;
+            dgvStarters.AutoGenerateColumns = false;
+            dgvStarters.BackgroundColor = SystemColors.Control;
+            dgvStarters.BorderStyle = BorderStyle.None;
+            dgvStarters.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvStarters.Columns.AddRange(new DataGridViewColumn[] { cStKey, cStEvent, cStText });
+            resources.ApplyResources(dgvStarters, "dgvStarters");
+            dgvStarters.MultiSelect = false;
+            dgvStarters.Name = "dgvStarters";
+            dgvStarters.ReadOnly = true;
+            dgvStarters.RowHeadersVisible = false;
+            dgvStarters.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvStarters.CellDoubleClick += dgvStarters_CellDoubleClick;
+            dgvStarters.SelectionChanged += dgvStarters_SelectionChanged;
+            // 
+            // cStKey
+            // 
+            cStKey.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cStKey.DataPropertyName = "Key";
+            resources.ApplyResources(cStKey, "cStKey");
+            cStKey.Name = "cStKey";
+            cStKey.ReadOnly = true;
+            // 
+            // cStEvent
+            // 
+            cStEvent.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cStEvent.DataPropertyName = "EventKey";
+            resources.ApplyResources(cStEvent, "cStEvent");
+            cStEvent.Name = "cStEvent";
+            cStEvent.ReadOnly = true;
+            // 
+            // cStText
+            // 
+            cStText.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            cStText.DataPropertyName = "Text";
+            resources.ApplyResources(cStText, "cStText");
+            cStText.Name = "cStText";
+            cStText.ReadOnly = true;
+            // 
             // tsStarters
-            //
-            this.tsStarters.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tsStarters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbStAdd,
-            this.tsbStEdit,
-            this.tsbStDelete});
-            this.tsStarters.Name = "tsStarters";
-            resources.ApplyResources(this.tsStarters, "tsStarters");
-            //
+            // 
+            tsStarters.GripStyle = ToolStripGripStyle.Hidden;
+            tsStarters.Items.AddRange(new ToolStripItem[] { tsbStAdd, tsbStEdit, tsbStDelete });
+            resources.ApplyResources(tsStarters, "tsStarters");
+            tsStarters.Name = "tsStarters";
+            // 
             // tsbStAdd
-            //
-            this.tsbStAdd.Image = global::ToolsCore.GlobalResources.add;
-            this.tsbStAdd.Name = "tsbStAdd";
-            resources.ApplyResources(this.tsbStAdd, "tsbStAdd");
-            this.tsbStAdd.Click += new System.EventHandler(this.tsbStAdd_Click);
-            //
+            // 
+            resources.ApplyResources(tsbStAdd, "tsbStAdd");
+            tsbStAdd.Name = "tsbStAdd";
+            tsbStAdd.Click += tsbStAdd_Click;
+            // 
             // tsbStEdit
-            //
-            this.tsbStEdit.Image = global::ToolsCore.GlobalResources.edit;
-            this.tsbStEdit.Name = "tsbStEdit";
-            resources.ApplyResources(this.tsbStEdit, "tsbStEdit");
-            this.tsbStEdit.Click += new System.EventHandler(this.tsbStEdit_Click);
-            //
+            // 
+            resources.ApplyResources(tsbStEdit, "tsbStEdit");
+            tsbStEdit.Name = "tsbStEdit";
+            tsbStEdit.Click += tsbStEdit_Click;
+            // 
             // tsbStDelete
-            //
-            this.tsbStDelete.Image = global::ToolsCore.GlobalResources.delete;
-            this.tsbStDelete.Name = "tsbStDelete";
-            resources.ApplyResources(this.tsbStDelete, "tsbStDelete");
-            this.tsbStDelete.Click += new System.EventHandler(this.tsbStDelete_Click);
-            //
+            // 
+            resources.ApplyResources(tsbStDelete, "tsbStDelete");
+            tsbStDelete.Name = "tsbStDelete";
+            tsbStDelete.Click += tsbStDelete_Click;
+            // 
             // tpProblems
-            //
-            this.tpProblems.Controls.Add(this.dgvProblems);
-            this.tpProblems.Name = "tpProblems";
-            resources.ApplyResources(this.tpProblems, "tpProblems");
-            this.tpProblems.UseVisualStyleBackColor = true;
-            //
+            // 
+            tpProblems.Controls.Add(dgvProblems);
+            resources.ApplyResources(tpProblems, "tpProblems");
+            tpProblems.Name = "tpProblems";
+            tpProblems.UseVisualStyleBackColor = true;
+            // 
             // dgvProblems
-            //
-            this.dgvProblems.AllowUserToAddRows = false;
-            this.dgvProblems.AllowUserToDeleteRows = false;
-            this.dgvProblems.AllowUserToResizeRows = false;
-            this.dgvProblems.AutoGenerateColumns = false;
-            this.dgvProblems.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvProblems.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvProblems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProblems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cProbType,
-            this.cProbCode,
-            this.cProbPath,
-            this.cProbMessage});
-            this.dgvProblems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProblems.MultiSelect = false;
-            this.dgvProblems.Name = "dgvProblems";
-            this.dgvProblems.ReadOnly = true;
-            this.dgvProblems.RowHeadersVisible = false;
-            this.dgvProblems.RowTemplate.Height = 22;
-            this.dgvProblems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProblems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProblems_CellDoubleClick);
-            this.dgvProblems.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProblems_CellFormatting);
-            //
-            // problem columns
-            //
-            this.cProbType.DataPropertyName = "Severity";
-            this.cProbType.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.cProbType.Name = "cProbType";
-            this.cProbType.ReadOnly = true;
-            this.cProbType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.cProbType.Width = 40;
-            resources.ApplyResources(this.cProbType, "cProbType");
-            this.cProbCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cProbCode.DataPropertyName = "Code";
-            this.cProbCode.Name = "cProbCode";
-            this.cProbCode.ReadOnly = true;
-            resources.ApplyResources(this.cProbCode, "cProbCode");
-            this.cProbPath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cProbPath.DataPropertyName = "Path";
-            this.cProbPath.Name = "cProbPath";
-            this.cProbPath.ReadOnly = true;
-            resources.ApplyResources(this.cProbPath, "cProbPath");
-            this.cProbMessage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cProbMessage.DataPropertyName = "Message";
-            this.cProbMessage.Name = "cProbMessage";
-            this.cProbMessage.ReadOnly = true;
-            resources.ApplyResources(this.cProbMessage, "cProbMessage");
-            //
+            // 
+            dgvProblems.AllowUserToAddRows = false;
+            dgvProblems.AllowUserToDeleteRows = false;
+            dgvProblems.AllowUserToResizeRows = false;
+            dgvProblems.AutoGenerateColumns = false;
+            dgvProblems.BackgroundColor = SystemColors.Control;
+            dgvProblems.BorderStyle = BorderStyle.None;
+            dgvProblems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProblems.Columns.AddRange(new DataGridViewColumn[] { cProbType, cProbCode, cProbPath, cProbMessage });
+            resources.ApplyResources(dgvProblems, "dgvProblems");
+            dgvProblems.MultiSelect = false;
+            dgvProblems.Name = "dgvProblems";
+            dgvProblems.ReadOnly = true;
+            dgvProblems.RowHeadersVisible = false;
+            dgvProblems.RowTemplate.Height = 22;
+            dgvProblems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProblems.CellDoubleClick += dgvProblems_CellDoubleClick;
+            dgvProblems.CellFormatting += dgvProblems_CellFormatting;
+            // 
+            // cProbType
+            // 
+            cProbType.DataPropertyName = "Severity";
+            cProbType.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            resources.ApplyResources(cProbType, "cProbType");
+            cProbType.Name = "cProbType";
+            cProbType.ReadOnly = true;
+            cProbType.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // cProbCode
+            // 
+            cProbCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cProbCode.DataPropertyName = "Code";
+            resources.ApplyResources(cProbCode, "cProbCode");
+            cProbCode.Name = "cProbCode";
+            cProbCode.ReadOnly = true;
+            // 
+            // cProbPath
+            // 
+            cProbPath.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cProbPath.DataPropertyName = "Path";
+            resources.ApplyResources(cProbPath, "cProbPath");
+            cProbPath.Name = "cProbPath";
+            cProbPath.ReadOnly = true;
+            // 
+            // cProbMessage
+            // 
+            cProbMessage.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            cProbMessage.DataPropertyName = "Message";
+            resources.ApplyResources(cProbMessage, "cProbMessage");
+            cProbMessage.Name = "cProbMessage";
+            cProbMessage.ReadOnly = true;
+            // 
+            // tsMain
+            // 
+            tsMain.GripStyle = ToolStripGripStyle.Hidden;
+            tsMain.Items.AddRange(new ToolStripItem[] { tsbSave, tsbCheck, tss1, tsddNew, tsbDelete, tsbUp, tsbDown, tss2, tsddTemplate, tss3, tsbCalendar });
+            resources.ApplyResources(tsMain, "tsMain");
+            tsMain.Name = "tsMain";
+            // 
+            // tsbSave
+            // 
+            resources.ApplyResources(tsbSave, "tsbSave");
+            tsbSave.Name = "tsbSave";
+            tsbSave.Click += tsbSave_Click;
+            // 
+            // tsbCheck
+            // 
+            resources.ApplyResources(tsbCheck, "tsbCheck");
+            tsbCheck.Name = "tsbCheck";
+            tsbCheck.Click += tsbCheck_Click;
+            // 
+            // tss1
+            // 
+            tss1.Name = "tss1";
+            resources.ApplyResources(tss1, "tss1");
+            // 
+            // tsddNew
+            // 
+            tsddNew.DropDownItems.AddRange(new ToolStripItem[] { tsmiNewCategory, tsmiNewState, tsmiNewDesign, tsmiNewTimePoint });
+            resources.ApplyResources(tsddNew, "tsddNew");
+            tsddNew.Name = "tsddNew";
+            // 
+            // tsmiNewCategory
+            // 
+            tsmiNewCategory.Name = "tsmiNewCategory";
+            resources.ApplyResources(tsmiNewCategory, "tsmiNewCategory");
+            tsmiNewCategory.Click += tsmiNewCategory_Click;
+            // 
+            // tsmiNewState
+            // 
+            tsmiNewState.Name = "tsmiNewState";
+            resources.ApplyResources(tsmiNewState, "tsmiNewState");
+            tsmiNewState.Click += tsmiNewState_Click;
+            // 
+            // tsmiNewDesign
+            // 
+            tsmiNewDesign.Name = "tsmiNewDesign";
+            resources.ApplyResources(tsmiNewDesign, "tsmiNewDesign");
+            tsmiNewDesign.Click += tsmiNewDesign_Click;
+            // 
+            // tsmiNewTimePoint
+            // 
+            tsmiNewTimePoint.Name = "tsmiNewTimePoint";
+            resources.ApplyResources(tsmiNewTimePoint, "tsmiNewTimePoint");
+            tsmiNewTimePoint.Click += tsmiNewTimePoint_Click;
+            // 
+            // tsbDelete
+            // 
+            resources.ApplyResources(tsbDelete, "tsbDelete");
+            tsbDelete.Name = "tsbDelete";
+            tsbDelete.Click += tsbDelete_Click;
+            // 
+            // tsbUp
+            // 
+            tsbUp.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(tsbUp, "tsbUp");
+            tsbUp.Name = "tsbUp";
+            tsbUp.Click += tsbUp_Click;
+            // 
+            // tsbDown
+            // 
+            tsbDown.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(tsbDown, "tsbDown");
+            tsbDown.Name = "tsbDown";
+            tsbDown.Click += tsbDown_Click;
+            // 
+            // tss2
+            // 
+            tss2.Name = "tss2";
+            resources.ApplyResources(tss2, "tss2");
+            // 
+            // tsddTemplate
+            // 
+            tsddTemplate.DropDownItems.AddRange(new ToolStripItem[] { tsmiTplSK, tsmiTplCZ, tsmiTplILTIS });
+            resources.ApplyResources(tsddTemplate, "tsddTemplate");
+            tsddTemplate.Name = "tsddTemplate";
+            // 
+            // tsmiTplSK
+            // 
+            tsmiTplSK.Name = "tsmiTplSK";
+            resources.ApplyResources(tsmiTplSK, "tsmiTplSK");
+            tsmiTplSK.Click += tsmiTpl_Click;
+            // 
+            // tsmiTplCZ
+            // 
+            tsmiTplCZ.Name = "tsmiTplCZ";
+            resources.ApplyResources(tsmiTplCZ, "tsmiTplCZ");
+            tsmiTplCZ.Click += tsmiTpl_Click;
+            // 
+            // tsmiTplILTIS
+            // 
+            tsmiTplILTIS.Name = "tsmiTplILTIS";
+            resources.ApplyResources(tsmiTplILTIS, "tsmiTplILTIS");
+            tsmiTplILTIS.Click += tsmiTpl_Click;
+            // 
+            // tss3
+            // 
+            tss3.Name = "tss3";
+            resources.ApplyResources(tss3, "tss3");
+            // 
+            // tsbCalendar
+            // 
+            resources.ApplyResources(tsbCalendar, "tsbCalendar");
+            tsbCalendar.Name = "tsbCalendar";
+            tsbCalendar.Click += tsbCalendar_Click;
+            // 
             // ssMain
-            //
-            this.ssMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsslStatus});
-            this.ssMain.Name = "ssMain";
-            resources.ApplyResources(this.ssMain, "ssMain");
-            //
+            // 
+            ssMain.Items.AddRange(new ToolStripItem[] { tsslStatus });
+            resources.ApplyResources(ssMain, "ssMain");
+            ssMain.Name = "ssMain";
+            // 
             // tsslStatus
-            //
-            this.tsslStatus.Name = "tsslStatus";
-            this.tsslStatus.Spring = true;
-            this.tsslStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            //
+            // 
+            tsslStatus.Name = "tsslStatus";
+            resources.ApplyResources(tsslStatus, "tsslStatus");
+            tsslStatus.Spring = true;
+            // 
             // FStateDgm
-            //
+            // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.scOuter);
-            this.Controls.Add(this.ssMain);
-            this.Controls.Add(this.tsMain);
-            this.KeyPreview = true;
-            this.Name = "FStateDgm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FStateDgm_FormClosing);
-            this.Load += new System.EventHandler(this.FStateDgm_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FStateDgm_KeyDown);
-            this.tsMain.ResumeLayout(false);
-            this.tsMain.PerformLayout();
-            this.scOuter.Panel1.ResumeLayout(false);
-            this.scOuter.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.scOuter)).EndInit();
-            this.scOuter.ResumeLayout(false);
-            this.scMain.Panel1.ResumeLayout(false);
-            this.scMain.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.scMain)).EndInit();
-            this.scMain.ResumeLayout(false);
-            this.scRight.Panel1.ResumeLayout(false);
-            this.scRight.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.scRight)).EndInit();
-            this.scRight.ResumeLayout(false);
-            this.tcCenter.ResumeLayout(false);
-            this.tpGraph.ResumeLayout(false);
-            this.tpText.ResumeLayout(false);
-            this.tpText.PerformLayout();
-            this.tcBottom.ResumeLayout(false);
-            this.tpEvents.ResumeLayout(false);
-            this.tpEvents.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEvents)).EndInit();
-            this.tsEvents.ResumeLayout(false);
-            this.tsEvents.PerformLayout();
-            this.tpStarters.ResumeLayout(false);
-            this.tpStarters.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStarters)).EndInit();
-            this.tsStarters.ResumeLayout(false);
-            this.tsStarters.PerformLayout();
-            this.tpProblems.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProblems)).EndInit();
-            this.ssMain.ResumeLayout(false);
-            this.ssMain.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(scOuter);
+            Controls.Add(ssMain);
+            Controls.Add(tsMain);
+            KeyPreview = true;
+            Name = "FStateDgm";
+            ShowIcon = false;
+            FormClosing += FStateDgm_FormClosing;
+            Load += FStateDgm_Load;
+            KeyDown += FStateDgm_KeyDown;
+            scOuter.Panel1.ResumeLayout(false);
+            scOuter.Panel2.ResumeLayout(false);
+            ((ISupportInitialize)scOuter).EndInit();
+            scOuter.ResumeLayout(false);
+            scMain.Panel1.ResumeLayout(false);
+            scMain.Panel2.ResumeLayout(false);
+            ((ISupportInitialize)scMain).EndInit();
+            scMain.ResumeLayout(false);
+            scRight.Panel1.ResumeLayout(false);
+            scRight.Panel2.ResumeLayout(false);
+            ((ISupportInitialize)scRight).EndInit();
+            scRight.ResumeLayout(false);
+            tcCenter.ResumeLayout(false);
+            tpGraph.ResumeLayout(false);
+            tpText.ResumeLayout(false);
+            tpText.PerformLayout();
+            tcBottom.ResumeLayout(false);
+            tpEvents.ResumeLayout(false);
+            tpEvents.PerformLayout();
+            ((ISupportInitialize)dgvEvents).EndInit();
+            tsEvents.ResumeLayout(false);
+            tsEvents.PerformLayout();
+            tpStarters.ResumeLayout(false);
+            tpStarters.PerformLayout();
+            ((ISupportInitialize)dgvStarters).EndInit();
+            tsStarters.ResumeLayout(false);
+            tsStarters.PerformLayout();
+            tpProblems.ResumeLayout(false);
+            ((ISupportInitialize)dgvProblems).EndInit();
+            tsMain.ResumeLayout(false);
+            tsMain.PerformLayout();
+            ssMain.ResumeLayout(false);
+            ssMain.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -709,7 +694,7 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.TabPage tpGraph;
         private System.Windows.Forms.Panel pnlGraph;
         private System.Windows.Forms.TabPage tpText;
-        private ExControls.ExTextBox tbText;
+        private GVDEditor.Controls.MyScintilla scText;
         private System.Windows.Forms.Panel pnlProps;
         private ExControls.ExTabControl tcBottom;
         private System.Windows.Forms.TabPage tpEvents;

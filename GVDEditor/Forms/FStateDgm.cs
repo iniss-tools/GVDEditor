@@ -4,6 +4,7 @@ using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
 using JetBrains.Annotations;
+using ScintillaNET;
 using ToolsCore;
 using ToolsCore.Expressions;
 using ToolsCore.StateDgm;
@@ -47,6 +48,7 @@ public partial class FStateDgm : Form
     private StateDgmCategory? _selCategory;
     private StateDgmState? _selState;
     private bool _suppressTree;
+    private readonly Scintilla _sc;
 
     /// <summary>
     ///     Otvori editor diagramu grafikonu.
@@ -69,6 +71,8 @@ public partial class FStateDgm : Form
 
         _dir = dirPath;
         _stationName = stationName;
+        _sc = scText.Scintilla;
+        SetupTextView();
 
         SdEditorContext.Symbols = new GvdExprSymbols();
         SdEditorContext.ReportKeys = (GlobData.ReportTypes ?? []).Select(r => r.Key).ToList();
@@ -102,6 +106,38 @@ public partial class FStateDgm : Form
         _d = LoadDiagram();
         pnlGraph.Controls.Add(new Label { Dock = DockStyle.Fill, Text = Resources.FStateDgm_GrafNeskor, TextAlign = ContentAlignment.MiddleCenter, ForeColor = SystemColors.GrayText });
         tsbCalendar.Enabled = false;
+    }
+
+    /// <summary>
+    ///     Zalozka Text suboru: Scintilla len na citanie, bez lexera, s cislami riadkov a farbami temy.
+    /// </summary>
+    private void SetupTextView()
+    {
+        const int SCI_SETILEXER = 4033;
+        var style = GlobData.UsingStyle;
+        _sc.DirectMessage(SCI_SETILEXER, IntPtr.Zero, IntPtr.Zero);
+        _sc.StyleResetDefault();
+        _sc.Styles[Style.Default].Font = style.TabTabEditorScheme.Font.Name;
+        _sc.Styles[Style.Default].SizeF = style.TabTabEditorScheme.Font.Size;
+        _sc.Styles[Style.Default].BackColor = style.ControlsColorScheme.Box.BackColor;
+        _sc.Styles[Style.Default].ForeColor = style.ControlsColorScheme.Box.ForeColor;
+        _sc.StyleClearAll();
+        _sc.Styles[Style.LineNumber].BackColor = style.ControlsColorScheme.Button.BackColor;
+        _sc.Styles[Style.LineNumber].ForeColor = style.ControlsColorScheme.Button.ForeColor;
+        _sc.CaretForeColor = style.ControlsColorScheme.Box.ForeColor;
+        var highlight = style.ControlsColorScheme.Highlight;
+        _sc.SetSelectionBackColor(true, highlight.BackColor);
+        _sc.SetSelectionForeColor(true, highlight.ForeColor);
+        _sc.Margins[0].Width = _sc.TextWidth(Style.LineNumber, "99999");
+        _sc.Margins[1].Width = 0;
+        _sc.WrapMode = WrapMode.None;
+        _sc.ReadOnly = true;
+        if (!style.ControlsDefaultStyle) _sc.BorderStyle = ScintillaNET.BorderStyle.None;
+        if (style.DarkScrollBar)
+        {
+            scText.VScrollBarControl.SetTheme(WindowsTheme.DarkExplorer);
+            scText.HScrollBarControl.SetTheme(WindowsTheme.DarkExplorer);
+        }
     }
 
     private IEnumerable<SdEditorBase> Editors => [_headerEditor, _categoryEditor, _stateEditor, _designEditor, _timePointEditor];
@@ -359,7 +395,9 @@ public partial class FStateDgm : Form
     private void RefreshText()
     {
         if (!_textStale) return;
-        tbText.Text = _d.ToText();
+        _sc.ReadOnly = false;
+        _sc.Text = _d.ToText();
+        _sc.ReadOnly = true;
         _textStale = false;
     }
 
