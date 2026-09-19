@@ -83,7 +83,30 @@ namespace GVDEditor.Forms
             this.tsslPosText = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslPos = new System.Windows.Forms.ToolStripStatusLabel();
             this.scText = new GVDEditor.Controls.MyScintilla();
+            this.pProblems = new System.Windows.Forms.Panel();
+            this.dgvProblems = new System.Windows.Forms.DataGridView();
+            this.cProbType = new System.Windows.Forms.DataGridViewImageColumn();
+            this.cProbCode = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.cProbLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProbMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cProbSolution = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tsProblems = new System.Windows.Forms.ToolStrip();
+            this.tsbProbErrors = new System.Windows.Forms.ToolStripButton();
+            this.tsbProbWarnings = new System.Windows.Forms.ToolStripButton();
+            this.tsbProbInfos = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbProbGoTo = new System.Windows.Forms.ToolStripButton();
+            this.tsbProbFix = new System.Windows.Forms.ToolStripButton();
+            this.conMenuProblems = new System.Windows.Forms.ContextMenuStrip();
+            this.tsmiProbGoTo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiProbFix = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitterProblems = new System.Windows.Forms.Splitter();
+            this.tsslProblems = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1.SuspendLayout();
+            this.pProblems.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProblems)).BeginInit();
+            this.tsProblems.SuspendLayout();
+            this.conMenuProblems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -111,6 +134,8 @@ namespace GVDEditor.Forms
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.scText);
+            this.splitContainer1.Panel1.Controls.Add(this.splitterProblems);
+            this.splitContainer1.Panel1.Controls.Add(this.pProblems);
             resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             // 
             // splitContainer1.Panel2
@@ -390,6 +415,7 @@ namespace GVDEditor.Forms
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslTabTabName,
+            this.tsslProblems,
             this.toolStripStatusLabel3,
             this.tsslLenText,
             this.tsslLen,
@@ -471,6 +497,183 @@ namespace GVDEditor.Forms
             this.tsslPos.Name = "tsslPos";
             resources.ApplyResources(this.tsslPos, "tsslPos");
             // 
+            // tsslProblems
+            // 
+            this.tsslProblems.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.tsslProblems.Name = "tsslProblems";
+            this.tsslProblems.Size = new System.Drawing.Size(4, 17);
+            //
+            // pProblems
+            //
+            this.pProblems.Controls.Add(this.dgvProblems);
+            this.pProblems.Controls.Add(this.tsProblems);
+            this.pProblems.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pProblems.Name = "pProblems";
+            this.pProblems.Size = new System.Drawing.Size(600, 150);
+            this.pProblems.TabIndex = 2;
+            //
+            // dgvProblems
+            //
+            this.dgvProblems.AllowUserToAddRows = false;
+            this.dgvProblems.AllowUserToDeleteRows = false;
+            this.dgvProblems.AllowUserToResizeRows = false;
+            this.dgvProblems.AutoGenerateColumns = false;
+            this.dgvProblems.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvProblems.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProblems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProblems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cProbType,
+            this.cProbCode,
+            this.cProbLine,
+            this.cProbMessage,
+            this.cProbSolution});
+            this.dgvProblems.ContextMenuStrip = this.conMenuProblems;
+            this.dgvProblems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvProblems.MultiSelect = false;
+            this.dgvProblems.Name = "dgvProblems";
+            this.dgvProblems.ReadOnly = true;
+            this.dgvProblems.RowHeadersVisible = false;
+            this.dgvProblems.RowTemplate.Height = 22;
+            this.dgvProblems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProblems.TabIndex = 1;
+            this.dgvProblems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProblems_CellContentClick);
+            this.dgvProblems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProblems_CellDoubleClick);
+            this.dgvProblems.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProblems_CellFormatting);
+            this.dgvProblems.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProblems_CellMouseDown);
+            this.dgvProblems.SelectionChanged += new System.EventHandler(this.dgvProblems_SelectionChanged);
+            this.dgvProblems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvProblems_KeyDown);
+            //
+            // cProbType
+            //
+            this.cProbType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.cProbType.DataPropertyName = "Severity";
+            this.cProbType.HeaderText = "Typ";
+            this.cProbType.Name = "cProbType";
+            this.cProbType.ReadOnly = true;
+            this.cProbType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cProbType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cProbType.Width = 50;
+            //
+            // cProbCode
+            //
+            this.cProbCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cProbCode.DataPropertyName = "Code";
+            this.cProbCode.HeaderText = "Kód";
+            this.cProbCode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.cProbCode.Name = "cProbCode";
+            this.cProbCode.ReadOnly = true;
+            this.cProbCode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cProbCode.TrackVisitedState = false;
+            //
+            // cProbLine
+            //
+            this.cProbLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cProbLine.DataPropertyName = "Line";
+            this.cProbLine.HeaderText = "Riadok";
+            this.cProbLine.Name = "cProbLine";
+            this.cProbLine.ReadOnly = true;
+            //
+            // cProbMessage
+            //
+            this.cProbMessage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cProbMessage.DataPropertyName = "Message";
+            this.cProbMessage.FillWeight = 60F;
+            this.cProbMessage.HeaderText = "Správa";
+            this.cProbMessage.MinimumWidth = 300;
+            this.cProbMessage.Name = "cProbMessage";
+            this.cProbMessage.ReadOnly = true;
+            //
+            // cProbSolution
+            //
+            this.cProbSolution.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cProbSolution.DataPropertyName = "Solution";
+            this.cProbSolution.FillWeight = 40F;
+            this.cProbSolution.HeaderText = "Riešenie";
+            this.cProbSolution.MinimumWidth = 200;
+            this.cProbSolution.Name = "cProbSolution";
+            this.cProbSolution.ReadOnly = true;
+            //
+            // tsProblems
+            //
+            this.tsProblems.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tsProblems.ImageScalingSize = new System.Drawing.Size(16, 16);
+            this.tsProblems.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbProbErrors,
+            this.tsbProbWarnings,
+            this.tsbProbInfos,
+            this.toolStripSeparator9,
+            this.tsbProbGoTo,
+            this.tsbProbFix});
+            this.tsProblems.Name = "tsProblems";
+            this.tsProblems.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            //
+            // tsbProbErrors
+            //
+            this.tsbProbErrors.Checked = true;
+            this.tsbProbErrors.CheckOnClick = true;
+            this.tsbProbErrors.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsbProbErrors.Name = "tsbProbErrors";
+            this.tsbProbErrors.CheckedChanged += new System.EventHandler(this.tsbProbFilter_CheckedChanged);
+            //
+            // tsbProbWarnings
+            //
+            this.tsbProbWarnings.Checked = true;
+            this.tsbProbWarnings.CheckOnClick = true;
+            this.tsbProbWarnings.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsbProbWarnings.Name = "tsbProbWarnings";
+            this.tsbProbWarnings.CheckedChanged += new System.EventHandler(this.tsbProbFilter_CheckedChanged);
+            //
+            // tsbProbInfos
+            //
+            this.tsbProbInfos.Checked = true;
+            this.tsbProbInfos.CheckOnClick = true;
+            this.tsbProbInfos.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsbProbInfos.Name = "tsbProbInfos";
+            this.tsbProbInfos.CheckedChanged += new System.EventHandler(this.tsbProbFilter_CheckedChanged);
+            //
+            // toolStripSeparator9
+            //
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            //
+            // tsbProbGoTo
+            //
+            this.tsbProbGoTo.Image = global::ToolsCore.GlobalResources.search;
+            this.tsbProbGoTo.Name = "tsbProbGoTo";
+            this.tsbProbGoTo.Click += new System.EventHandler(this.tsbProbGoTo_Click);
+            //
+            // tsbProbFix
+            //
+            this.tsbProbFix.Image = global::ToolsCore.GlobalResources.wrench;
+            this.tsbProbFix.Name = "tsbProbFix";
+            this.tsbProbFix.Click += new System.EventHandler(this.tsbProbFix_Click);
+            //
+            // conMenuProblems
+            //
+            this.conMenuProblems.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiProbGoTo,
+            this.tsmiProbFix});
+            this.conMenuProblems.Name = "conMenuProblems";
+            //
+            // tsmiProbGoTo
+            //
+            this.tsmiProbGoTo.Image = global::ToolsCore.GlobalResources.search;
+            this.tsmiProbGoTo.Name = "tsmiProbGoTo";
+            this.tsmiProbGoTo.Click += new System.EventHandler(this.tsbProbGoTo_Click);
+            //
+            // tsmiProbFix
+            //
+            this.tsmiProbFix.Image = global::ToolsCore.GlobalResources.wrench;
+            this.tsmiProbFix.Name = "tsmiProbFix";
+            this.tsmiProbFix.Click += new System.EventHandler(this.tsbProbFix_Click);
+            // 
+            // splitterProblems
+            // 
+            this.splitterProblems.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitterProblems.Name = "splitterProblems";
+            this.splitterProblems.Size = new System.Drawing.Size(600, 4);
+            this.splitterProblems.TabIndex = 3;
+            this.splitterProblems.TabStop = false;
+            // 
             // scText
             // 
             resources.ApplyResources(this.scText, "scText");
@@ -499,6 +702,12 @@ namespace GVDEditor.Forms
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FTabTab_KeyDown);
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            this.pProblems.ResumeLayout(false);
+            this.pProblems.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProblems)).EndInit();
+            this.tsProblems.ResumeLayout(false);
+            this.tsProblems.PerformLayout();
+            this.conMenuProblems.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -566,5 +775,24 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.ToolStripStatusLabel tsslPosText;
         private System.Windows.Forms.ToolStripStatusLabel tsslPos;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.Panel pProblems;
+        private System.Windows.Forms.DataGridView dgvProblems;
+        private System.Windows.Forms.DataGridViewImageColumn cProbType;
+        private System.Windows.Forms.DataGridViewLinkColumn cProbCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProbLine;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProbMessage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cProbSolution;
+        private System.Windows.Forms.ToolStrip tsProblems;
+        private System.Windows.Forms.ToolStripButton tsbProbErrors;
+        private System.Windows.Forms.ToolStripButton tsbProbWarnings;
+        private System.Windows.Forms.ToolStripButton tsbProbInfos;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripButton tsbProbGoTo;
+        private System.Windows.Forms.ToolStripButton tsbProbFix;
+        private System.Windows.Forms.ContextMenuStrip conMenuProblems;
+        private System.Windows.Forms.ToolStripMenuItem tsmiProbGoTo;
+        private System.Windows.Forms.ToolStripMenuItem tsmiProbFix;
+        private System.Windows.Forms.Splitter splitterProblems;
+        private System.Windows.Forms.ToolStripStatusLabel tsslProblems;
     }
 }

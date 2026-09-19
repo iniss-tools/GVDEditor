@@ -660,4 +660,61 @@ Presunúť ho teraz do vlastného priečinka ({1} grafikon/y)?</value>
   <data name="TxtParser_TrTypes_chyba_pouzite_zabudovane" xml:space="preserve">
     <value>Súbor {0} neexistuje – ponuka druhov vlakov je zostavená zo zabudovanej tabuľky INISSu. Pri uložení nastavení sa súbor založí.</value>
   </data>
+  <data name="Analyzer_TabTab_pocet_chyb" xml:space="preserve">
+    <value>{0} chýb, {1} varovaní</value>
+  </data>
+  <data name="Analyzer_TabTab_pocet_varovani" xml:space="preserve">
+    <value>{0} varovaní</value>
+  </data>
+  <data name="Analyzer_Upravit_TabTab" xml:space="preserve">
+    <value>Upraviť TabTab</value>
+  </data>
+  <data name="FTabTab_Problems_Riadok" xml:space="preserve">
+    <value>Riadok</value>
+  </data>
+  <data name="FTabTab_Problems_Hlasenie" xml:space="preserve">
+    <value>Hlásenie</value>
+  </data>
+  <data name="FTabTab_Stav_kontroly" xml:space="preserve">
+    <value>Chyby: {0}, varovania: {1}</value>
+  </data>
+  <data name="FTabTab_Bez_problemov" xml:space="preserve">
+    <value>Bez chýb a varovaní</value>
+  </data>
+  <data name="FTabTab_Problems_Header" xml:space="preserve">
+    <value>Problémy</value>
+  </data>
+  <data name="FTabTab_Problems_Typ" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="FTabTab_Problems_Kod" xml:space="preserve">
+    <value>Kód</value>
+  </data>
+  <data name="FTabTab_Problems_Riesenie" xml:space="preserve">
+    <value>Riešenie</value>
+  </data>
+  <data name="FTabTab_Problems_Zobrazit" xml:space="preserve">
+    <value>Zobraziť v texte</value>
+  </data>
+  <data name="FTabTab_Problems_Opravit" xml:space="preserve">
+    <value>Opraviť</value>
+  </data>
+  <data name="FTabTab_Problems_Chyby" xml:space="preserve">
+    <value>{0} chýb</value>
+  </data>
+  <data name="FTabTab_Problems_Varovania" xml:space="preserve">
+    <value>{0} varovaní</value>
+  </data>
+  <data name="FTabTab_Problems_Spravy" xml:space="preserve">
+    <value>{0} správ</value>
+  </data>
+  <data name="FTabTab_Problems_Chyba" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="FTabTab_Problems_Varovanie" xml:space="preserve">
+    <value>Varovanie</value>
+  </data>
+  <data name="FTabTab_Problems_Informacia" xml:space="preserve">
+    <value>Informácia</value>
+  </data>
 </root>

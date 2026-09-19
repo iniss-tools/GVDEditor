@@ -17,4 +17,6 @@ internal static class LinkConsts
     public const string LINK_GLOBAL_SETTINGS = "http://iniss.6f.sk/docs/gvdeditor/nastavenia-vsetkych-grafikonov-globalne/";
     public const string LINK_NEW_GVD = "http://iniss.6f.sk/docs/gvdeditor/zakladne-vlastnosti-programu/pridanie-noveho-grafikonu/";
     public const string LINK_NEWS = "http://iniss.6f.sk/docs/gvdeditor/novinky/";
+    public const string LINK_DOC_TABTAB = "http://iniss.6f.sk/docs/iniss/formaty-suborov/local/tabtab/";
+    public const string LINK_DOC_VYRAZY = "http://iniss.6f.sk/docs/iniss/formaty-suborov/local/vyrazy/";
 }

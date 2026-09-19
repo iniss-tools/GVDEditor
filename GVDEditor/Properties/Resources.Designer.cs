@@ -1604,5 +1604,176 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("TxtParser_TrTypes_chyba_pouzite_zabudovane", resourceCulture);
             }
         }
+            
+        /// <summary>
+        ///   Looks up a localized string similar to {0} chýb, {1} varovaní.
+        /// </summary>
+        internal static string Analyzer_TabTab_pocet_chyb {
+            get {
+                return ResourceManager.GetString("Analyzer_TabTab_pocet_chyb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} varovaní.
+        /// </summary>
+        internal static string Analyzer_TabTab_pocet_varovani {
+            get {
+                return ResourceManager.GetString("Analyzer_TabTab_pocet_varovani", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upraviť TabTab.
+        /// </summary>
+        internal static string Analyzer_Upravit_TabTab {
+            get {
+                return ResourceManager.GetString("Analyzer_Upravit_TabTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Riadok.
+        /// </summary>
+        internal static string FTabTab_Problems_Riadok {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Riadok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hlásenie.
+        /// </summary>
+        internal static string FTabTab_Problems_Hlasenie {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Hlasenie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chyby: {0}, varovania: {1}.
+        /// </summary>
+        internal static string FTabTab_Stav_kontroly {
+            get {
+                return ResourceManager.GetString("FTabTab_Stav_kontroly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bez chýb a varovaní.
+        /// </summary>
+        internal static string FTabTab_Bez_problemov {
+            get {
+                return ResourceManager.GetString("FTabTab_Bez_problemov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problémy.
+        /// </summary>
+        internal static string FTabTab_Problems_Header {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Header", resourceCulture);
+            }
+        }
+            
+        /// <summary>
+        ///   Looks up a localized string similar to Typ.
+        /// </summary>
+        internal static string FTabTab_Problems_Typ {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Typ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kód.
+        /// </summary>
+        internal static string FTabTab_Problems_Kod {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Kod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Riešenie.
+        /// </summary>
+        internal static string FTabTab_Problems_Riesenie {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Riesenie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zobraziť v texte.
+        /// </summary>
+        internal static string FTabTab_Problems_Zobrazit {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Zobrazit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opraviť.
+        /// </summary>
+        internal static string FTabTab_Problems_Opravit {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Opravit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} chýb.
+        /// </summary>
+        internal static string FTabTab_Problems_Chyby {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Chyby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} varovaní.
+        /// </summary>
+        internal static string FTabTab_Problems_Varovania {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Varovania", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} správ.
+        /// </summary>
+        internal static string FTabTab_Problems_Spravy {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Spravy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chyba.
+        /// </summary>
+        internal static string FTabTab_Problems_Chyba {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Chyba", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Varovanie.
+        /// </summary>
+        internal static string FTabTab_Problems_Varovanie {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Varovanie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informácia.
+        /// </summary>
+        internal static string FTabTab_Problems_Informacia {
+            get {
+                return ResourceManager.GetString("FTabTab_Problems_Informacia", resourceCulture);
+            }
+        }
     }
 }

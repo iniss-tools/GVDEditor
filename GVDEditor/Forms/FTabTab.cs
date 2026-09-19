@@ -1,10 +1,14 @@
 ﻿using System.Text.RegularExpressions;
 using AutocompleteMenuNS;
+using JetBrains.Annotations;
 using ExControls;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
 using ScintillaNET;
+using ToolsCore;
+using ToolsCore.Expressions;
+using ToolsCore.TabTab;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
@@ -30,6 +34,21 @@ public partial class FTabTab : Form
     private int maxLineNumberCharLength;
 
     private readonly Scintilla sc;
+
+    // kontrola pravidiel a podmienok (ToolsCore.TabTab) - indikatory v editore a zoznam problemov
+    private const int SCI_SETILEXER = 4033;
+    private const int IndicatorError = 8;
+    private const int IndicatorWarning = 9;
+    private const int IndicatorInfo = 10;
+
+    private readonly GvdExprSymbols symbols = new();
+    private readonly System.Windows.Forms.Timer validateTimer = new() { Interval = 400 };
+    private IReadOnlyList<TabTabDiagnostic> diagnostics = [];
+    private string validatedText = "";
+    private readonly ExBindingList<ProblemRow> problemRows = new() { Sortable = true };
+    private readonly ShellIcon iconError = new(ShellIconType.Error, ShellIconSize.Small);
+    private readonly ShellIcon iconWarning = new(ShellIconType.Warning, ShellIconSize.Small);
+    private readonly ShellIcon iconInfo = new(ShellIconType.Info, ShellIconSize.Small);
 
 
     /// <summary>
@@ -59,6 +78,34 @@ public partial class FTabTab : Form
         ShowNumberLines();
 
         SelectedTab = tab;
+
+        validateTimer.Tick += (_, _) =>
+        {
+            validateTimer.Stop();
+            ValidateDocument();
+        };
+        sc.DwellStart += sc_DwellStart;
+        sc.DwellEnd += (_, _) => sc.CallTipCancel();
+
+        cProbType.HeaderText = Resources.FTabTab_Problems_Typ;
+        cProbCode.HeaderText = Resources.FTabTab_Problems_Kod;
+        cProbLine.HeaderText = Resources.FTabTab_Problems_Riadok;
+        cProbMessage.HeaderText = Resources.FTabTab_Problems_Hlasenie;
+        cProbSolution.HeaderText = Resources.FTabTab_Problems_Riesenie;
+        tsbProbGoTo.Text = tsmiProbGoTo.Text = Resources.FTabTab_Problems_Zobrazit;
+        tsbProbFix.Text = tsmiProbFix.Text = Resources.FTabTab_Problems_Opravit;
+        tsbProbErrors.Image = iconError.ToBitmap();
+        tsbProbWarnings.Image = iconWarning.ToBitmap();
+        tsbProbInfos.Image = iconInfo.ToBitmap();
+        dgvProblems.DataSource = problemRows;
+        dgvProblems.Sort(cProbLine, ListSortDirection.Ascending);
+        dgvProblems_SelectionChanged(this, EventArgs.Empty);
+        FormClosed += (_, _) =>
+        {
+            iconError.Dispose();
+            iconWarning.Dispose();
+            iconInfo.Dispose();
+        };
     }
 
     private void FTabTab_Load(object sender, EventArgs e)
@@ -125,7 +172,9 @@ public partial class FTabTab : Form
         sc.Styles[TabTabStyle.Constant].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.Constant.ForeColor;
         sc.Styles[TabTabStyle.Constant].Bold = GlobData.UsingStyle.TabTabEditorScheme.Constant.Bold;
 
-        sc.Lexer = Lexer.Container;
+        // Scintilla 5: SCI_SETILEXER s NULL = ziadny lexer, stylovanie robi kontajner (StyleNeeded).
+        // sc.Lexer = Lexer.Container v Scintilla.NET 5.3 vyhodi "No lexer name was found".
+        sc.DirectMessage(SCI_SETILEXER, IntPtr.Zero, IntPtr.Zero);
 
         //highlight active braces
         sc.IndentationGuides = IndentView.LookBoth;
@@ -138,10 +187,300 @@ public partial class FTabTab : Form
         sc.Styles[Style.BraceBad].BackColor = GlobData.UsingStyle.TabTabEditorScheme.SelBraceBad.BackColor;
         sc.Styles[Style.BraceBad].Bold = GlobData.UsingStyle.TabTabEditorScheme.SelBraceBad.Bold;
 
+        sc.Indicators[IndicatorError].Style = IndicatorStyle.Squiggle;
+        sc.Indicators[IndicatorError].ForeColor = Color.Red;
+        sc.Indicators[IndicatorWarning].Style = IndicatorStyle.Squiggle;
+        sc.Indicators[IndicatorWarning].ForeColor = Color.DarkOrange;
+        sc.Indicators[IndicatorInfo].Style = IndicatorStyle.Dots;
+        sc.Indicators[IndicatorInfo].ForeColor = Color.Gray;
+        sc.MouseDwellTime = 500;
+
+        var box = GlobData.UsingStyle.ControlsColorScheme.Box;
+        dgvProblems.BackgroundColor = box.BackColor;
+        dgvProblems.DefaultCellStyle.BackColor = box.BackColor;
+        dgvProblems.DefaultCellStyle.ForeColor = box.ForeColor;
+        dgvProblems.EnableHeadersVisualStyles = GlobData.UsingStyle.ControlsDefaultStyle;
+        if (!GlobData.UsingStyle.ControlsDefaultStyle)
+        {
+            dgvProblems.ColumnHeadersDefaultCellStyle.BackColor = GlobData.UsingStyle.ControlsColorScheme.Button.BackColor;
+            dgvProblems.ColumnHeadersDefaultCellStyle.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Button.ForeColor;
+        }
+        FormUtils.ChangeColorContextMenu(GlobData.UsingStyle, conMenuProblems);
+
         if (SelectedTab is not null)
             for (var i = 0; i < documents.Count; i++)
                 if (documents[i].TabTab == SelectedTab)
                     lbTabTabs.SelectedIndex = i;
+
+        ValidateDocument();
+    }
+
+    /// <summary>
+    ///     Riadok v zozname problemov. Vlastnosti cita <see cref="dgvProblems"/> cez data binding
+    ///     (<c>DataPropertyName</c> stlpcov), nie kod.
+    /// </summary>
+    [UsedImplicitly(ImplicitUseTargetFlags.Members)]
+    internal sealed class ProblemRow(TabTabDiagnostic diagnostic)
+    {
+        public TabTabDiagnostic Diagnostic { get; } = diagnostic;
+
+        /// <summary>Poradie pre triedenie: chyba 0, varovanie 1, informacia 2.</summary>
+        public int Severity => diagnostic.Severity switch
+        {
+            ExprSeverity.Error => 0,
+            ExprSeverity.Warning => 1,
+            _ => 2
+        };
+
+        public string Code => diagnostic.CodeName;
+        public int Line => diagnostic.LineIndex + 1;
+        public string Message => diagnostic.Message;
+        public string Solution => diagnostic.Suggestion ?? "";
+    }
+
+    /// <summary>
+    ///     Skontroluje text aktualnej sekcie, podciarkne problemy v editore a naplni zoznam problemov.
+    /// </summary>
+    private void ValidateDocument()
+    {
+        if (lbTabTabs.SelectedIndex == -1)
+        {
+            diagnostics = [];
+            problemRows.Clear();
+            UpdateProblemCounts(0, 0, 0);
+            return;
+        }
+
+        var tab = documents[lbTabTabs.SelectedIndex].TabTab;
+        var text = sc.Text;
+        validatedText = text;
+        var result = TabTabValidator.Validate(text, symbols.OptionsFor(tab));
+        diagnostics = result.Diagnostics;
+
+        foreach (var ind in new[] { IndicatorError, IndicatorWarning, IndicatorInfo })
+        {
+            sc.IndicatorCurrent = ind;
+            sc.IndicatorClearRange(0, sc.TextLength);
+        }
+
+        problemRows.RaiseListChangedEvents = false;
+        problemRows.Clear();
+        foreach (var d in diagnostics)
+        {
+            var (start, end) = ByteRange(text, d);
+            sc.IndicatorCurrent = d.Severity switch
+            {
+                ExprSeverity.Error => IndicatorError,
+                ExprSeverity.Warning => IndicatorWarning,
+                _ => IndicatorInfo
+            };
+            sc.IndicatorFillRange(start, Math.Max(1, end - start));
+            problemRows.Add(new ProblemRow(d));
+        }
+        problemRows.RaiseListChangedEvents = true;
+        problemRows.ResetBindings();
+
+        UpdateProblemCounts(result.ErrorCount, result.WarningCount, diagnostics.Count - result.ErrorCount - result.WarningCount);
+        ApplyProblemFilter();
+    }
+
+    private void UpdateProblemCounts(int errors, int warnings, int infos)
+    {
+        tsbProbErrors.Text = string.Format(Resources.FTabTab_Problems_Chyby, errors);
+        tsbProbWarnings.Text = string.Format(Resources.FTabTab_Problems_Varovania, warnings);
+        tsbProbInfos.Text = string.Format(Resources.FTabTab_Problems_Spravy, infos);
+
+        if (errors + warnings == 0)
+        {
+            tsslProblems.Image = GlobalResources.correct;
+            tsslProblems.Text = Resources.FTabTab_Bez_problemov;
+            tsslProblems.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Panel.ForeColor;
+        }
+        else
+        {
+            tsslProblems.Image = errors > 0 ? iconError.ToBitmap() : iconWarning.ToBitmap();
+            tsslProblems.Text = string.Format(Resources.FTabTab_Stav_kontroly, errors, warnings);
+            tsslProblems.ForeColor = errors > 0 ? Color.Red : GlobData.UsingStyle.ControlsColorScheme.Panel.ForeColor;
+        }
+    }
+
+    /// <summary>
+    ///     Skryje riadky podla prepinacov Chyby / Varovania / Spravy.
+    /// </summary>
+    private void ApplyProblemFilter()
+    {
+        if (dgvProblems.DataSource is null || !IsHandleCreated) return;
+
+        var cm = (CurrencyManager?)BindingContext?[dgvProblems.DataSource];
+        cm?.SuspendBinding();
+        foreach (DataGridViewRow row in dgvProblems.Rows)
+        {
+            if (row.DataBoundItem is not ProblemRow pr) continue;
+            row.Visible = pr.Diagnostic.Severity switch
+            {
+                ExprSeverity.Error => tsbProbErrors.Checked,
+                ExprSeverity.Warning => tsbProbWarnings.Checked,
+                _ => tsbProbInfos.Checked
+            };
+        }
+        cm?.ResumeBinding();
+    }
+
+    private ProblemRow? SelectedProblem =>
+        dgvProblems.SelectedRows.Count > 0 ? dgvProblems.SelectedRows[0].DataBoundItem as ProblemRow : null;
+
+    /// <summary>
+    ///     Prevod znakovych pozicii hlasenia na bajtove pozicie Scintilly (UTF-8). Bodove hlasenie
+    ///     zvyrazni jeden znak; na konci textu znak pred nim.
+    /// </summary>
+    private static (int Start, int End) ByteRange(string text, TabTabDiagnostic d)
+    {
+        var s = Math.Clamp(d.Start, 0, text.Length);
+        var e = Math.Clamp(d.End, s, text.Length);
+        if (e == s)
+        {
+            if (s < text.Length) e = s + 1;
+            else if (s > 0) s--;
+        }
+        var bs = Encoding.UTF8.GetByteCount(text.AsSpan(0, s));
+        var be = bs + Encoding.UTF8.GetByteCount(text.AsSpan(s, e - s));
+        return (bs, be);
+    }
+
+    private static int BytePos(string text, int charIndex) =>
+        Encoding.UTF8.GetByteCount(text.AsSpan(0, Math.Clamp(charIndex, 0, text.Length)));
+
+    private void sc_DwellStart(object? sender, DwellEventArgs e)
+    {
+        if (e.Position < 0 || diagnostics.Count == 0 || validatedText != sc.Text)
+            return;
+
+        var text = validatedText;
+        var hits = new List<string>();
+        foreach (var d in diagnostics)
+        {
+            var (start, end) = ByteRange(text, d);
+            if (e.Position >= start && e.Position < end)
+                hits.Add(d.Suggestion is null ? d.Message : $"{d.Message}\n→ {d.Suggestion}");
+        }
+
+        if (hits.Count > 0)
+            sc.CallTipShow(e.Position, string.Join("\n", hits));
+    }
+
+    private void GoToDiagnostic(TabTabDiagnostic d)
+    {
+        if (validatedText != sc.Text) ValidateDocument();
+        var (start, end) = ByteRange(validatedText, d);
+        sc.GotoPosition(start);
+        sc.SetSelection(end, start);
+        sc.Focus();
+    }
+
+    /// <summary>
+    ///     Pouzije navrhovanu opravu na text v editore (ako jednu akciu pre Undo) a znova skontroluje.
+    /// </summary>
+    private void ApplyFix(TabTabDiagnostic d)
+    {
+        if (d.Fix is null) return;
+        if (validatedText != sc.Text)
+        {
+            // text sa medzitym zmenil - pozicie opravy uz nemusia sediet
+            ValidateDocument();
+            return;
+        }
+
+        var text = validatedText;
+        sc.BeginUndoAction();
+        foreach (var edit in d.Fix.Edits.OrderByDescending(x => x.Start))
+        {
+            var bs = BytePos(text, edit.Start);
+            var be = BytePos(text, edit.Start + edit.Length);
+            sc.DeleteRange(bs, be - bs);
+            sc.InsertText(bs, edit.NewText);
+        }
+        sc.EndUndoAction();
+
+        validateTimer.Stop();
+        ValidateDocument();
+    }
+
+    private void tsbProbFilter_CheckedChanged(object sender, EventArgs e) => ApplyProblemFilter();
+
+    private void tsbProbGoTo_Click(object sender, EventArgs e)
+    {
+        if (SelectedProblem is { } p) GoToDiagnostic(p.Diagnostic);
+    }
+
+    private void tsbProbFix_Click(object sender, EventArgs e)
+    {
+        if (SelectedProblem is { } p) ApplyFix(p.Diagnostic);
+    }
+
+    private void dgvProblems_SelectionChanged(object sender, EventArgs e)
+    {
+        var p = SelectedProblem;
+        tsbProbGoTo.Enabled = tsmiProbGoTo.Enabled = p is not null;
+        tsbProbFix.Enabled = tsmiProbFix.Enabled = p?.Diagnostic.Fix is not null;
+        tsbProbFix.ToolTipText = tsmiProbFix.ToolTipText = p?.Diagnostic.Fix?.Title ?? Resources.FTabTab_Problems_Opravit;
+    }
+
+    private void dgvProblems_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    {
+        if (e.ColumnIndex != cProbType.Index || e.RowIndex < 0) return;
+        if (dgvProblems.Rows[e.RowIndex].DataBoundItem is not ProblemRow pr) return;
+
+        var cell = dgvProblems.Rows[e.RowIndex].Cells[e.ColumnIndex];
+        switch (pr.Diagnostic.Severity)
+        {
+            case ExprSeverity.Error:
+                e.Value = iconError.ToBitmap();
+                cell.ToolTipText = Resources.FTabTab_Problems_Chyba;
+                break;
+            case ExprSeverity.Warning:
+                e.Value = iconWarning.ToBitmap();
+                cell.ToolTipText = Resources.FTabTab_Problems_Varovanie;
+                break;
+            default:
+                e.Value = iconInfo.ToBitmap();
+                cell.ToolTipText = Resources.FTabTab_Problems_Informacia;
+                break;
+        }
+        e.FormattingApplied = true;
+    }
+
+    private void dgvProblems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex >= 0 && dgvProblems.Rows[e.RowIndex].DataBoundItem is ProblemRow pr)
+            GoToDiagnostic(pr.Diagnostic);
+    }
+
+    private void dgvProblems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+        // klik na kod otvori dokumentaciu jazyka / TabTab
+        if (e.RowIndex < 0 || e.ColumnIndex != cProbCode.Index) return;
+        if (dgvProblems.Rows[e.RowIndex].DataBoundItem is not ProblemRow pr) return;
+
+        Utils.OpenShell(pr.Diagnostic.ExprCode is not null ? LinkConsts.LINK_DOC_VYRAZY : LinkConsts.LINK_DOC_TABTAB);
+    }
+
+    private void dgvProblems_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+    {
+        if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+        {
+            dgvProblems.ClearSelection();
+            dgvProblems.Rows[e.RowIndex].Selected = true;
+        }
+    }
+
+    private void dgvProblems_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.Enter && SelectedProblem is { } p)
+        {
+            e.Handled = true;
+            e.SuppressKeyPress = true;
+            GoToDiagnostic(p.Diagnostic);
+        }
     }
 
     private void FTabTab_FormClosing(object sender, FormClosingEventArgs e)
@@ -372,6 +711,9 @@ public partial class FTabTab : Form
         }
 
         ShowNumberLines();
+
+        validateTimer.Stop();
+        validateTimer.Start();
     }
 
     private void ShowNumberLines()
@@ -569,6 +911,9 @@ public partial class FTabTab : Form
             tsslTabTabName.Text = documents[lbTabTabs.SelectedIndex].TabTab.Key;
             tsslLen.Text = sc.Text.Length.ToString();
             tsslLines.Text = sc.Lines.Count.ToString();
+
+            validateTimer.Stop();
+            ValidateDocument();
         }
     }
 

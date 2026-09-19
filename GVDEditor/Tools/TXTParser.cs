@@ -2781,8 +2781,10 @@ internal static class TxtParser
         var fileTPhysical = CombinePath(path, FILE_TPHYSIC)!;
         var fileTLogical = CombinePath(path, FILE_TLOGICAL)!;
 
-        //TABTABS
+        //TABTABS - uvodne komentare suboru (pred prvou sekciou) sa zachovaju
         var tabtabF = new TxtPropsAreas(fileTabTab, true);
+        if (File.Exists(fileTabTab))
+            tabtabF.Preamble = new TxtPropsAreas(fileTabTab).Preamble;
         foreach (var tabTab in tabTabs)
         {
             tabtabF.Set(tabTab.Key, tabTab.Text);

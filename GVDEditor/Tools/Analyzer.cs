@@ -1,5 +1,8 @@
 ﻿using GVDEditor.Entities;
 using GVDEditor.Forms;
+using GVDEditor.Properties;
+using ToolsCore.Expressions;
+using ToolsCore.TabTab;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Tools;
@@ -173,6 +176,16 @@ internal static class Analyzer
                 var problem = new UnusedTabTab(tab);
                 problems.Add(problem);
             }
+        }
+
+        //5b. Check TabTab rules and conditions (what INISS logs at load + GVDEditor warnings)
+        var symbols = new GvdExprSymbols();
+        foreach (var tab in GlobData.TabTabs)
+        {
+            if (string.IsNullOrEmpty(tab.Text)) continue;
+            var result = TabTabValidator.Validate(tab.Text, symbols.OptionsFor(tab));
+            if (result.Diagnostics.Any(d => d.Severity != ExprSeverity.Info))
+                problems.Add(new TabTabProblems(tab, result));
         }
 
         bw.ReportProgress(75);
@@ -434,6 +447,47 @@ internal class EmptyTabTab : IProblem
 
         //Check if the problem was solved
         return string.IsNullOrEmpty(TabTab.Text) ? FixResult.NotSolved : FixResult.Done;
+    }
+}
+
+internal class TabTabProblems : IProblem
+{
+    /// <summary>Initializes a new instance of the <see cref="TabTabProblems" /> class.</summary>
+    public TabTabProblems(TableTabTab tabTab, TabTabValidationResult result)
+    {
+        TabTab = tabTab;
+        Result = result;
+    }
+
+    private TableTabTab TabTab { get; }
+
+    private TabTabValidationResult Result { get; }
+
+    public string Text
+    {
+        get
+        {
+            var first = Result.Diagnostics.First(d => d.Severity != ExprSeverity.Info);
+            var counts = Result.ErrorCount > 0
+                ? string.Format(Resources.Analyzer_TabTab_pocet_chyb, Result.ErrorCount, Result.WarningCount)
+                : string.Format(Resources.Analyzer_TabTab_pocet_varovani, Result.WarningCount);
+            return $"TabTab {TabTab.Key}: {counts} – r. {first.LineIndex + 1}: {first.Message}";
+        }
+    }
+
+    public string Solution => Resources.Analyzer_Upravit_TabTab;
+
+    public ProblemType ProblemType => Result.ErrorCount > 0 ? ProblemType.Error : ProblemType.Warning;
+
+    public FixType FixType => FixType.Manual;
+
+    public FixResult FixProblem()
+    {
+        var form = new FTabTab(TabTab);
+        form.ShowDialog();
+
+        var again = TabTabValidator.Validate(TabTab.Text, new GvdExprSymbols().OptionsFor(TabTab));
+        return again.Diagnostics.Any(d => d.Severity != ExprSeverity.Info) ? FixResult.NotSolved : FixResult.Done;
     }
 }
 
