@@ -237,29 +237,29 @@ public partial class FStateDgm : Form
         tvNav.BeginUpdate();
         tvNav.Nodes.Clear();
 
-        tvNav.Nodes.Add(new TreeNode(Resources.FStateDgm_Diagram) { ImageKey = "file", SelectedImageKey = "file", Tag = TAG_HEADER });
+        tvNav.Nodes.Add(new TreeNode(Resources.FStateDgm_Diagram) { ImageKey = @"file", SelectedImageKey = @"file", Tag = TAG_HEADER });
 
-        var designs = new TreeNode(Resources.FStateDgm_Vzhlady) { ImageKey = "designs", SelectedImageKey = "designs", Tag = TAG_DESIGNS };
+        var designs = new TreeNode(Resources.FStateDgm_Vzhlady) { ImageKey = @"designs", SelectedImageKey = @"designs", Tag = TAG_DESIGNS };
         foreach (var d in _d.Designs)
-            designs.Nodes.Add(new TreeNode(d.Key) { ImageKey = "design", SelectedImageKey = "design", Tag = d });
+            designs.Nodes.Add(new TreeNode(d.Key) { ImageKey = @"design", SelectedImageKey = @"design", Tag = d });
         tvNav.Nodes.Add(designs);
 
-        var tps = new TreeNode(Resources.FStateDgm_CasoveBody) { ImageKey = "timepoint", SelectedImageKey = "timepoint", Tag = TAG_TIMEPOINTS };
+        var tps = new TreeNode(Resources.FStateDgm_CasoveBody) { ImageKey = @"timepoint", SelectedImageKey = @"timepoint", Tag = TAG_TIMEPOINTS };
         foreach (var k in StateDgmKeys.BuiltInTimePoints)
-            tps.Nodes.Add(new TreeNode($"{k} {Resources.FStateDgm_Zabudovany}") { ImageKey = "timepoint", SelectedImageKey = "timepoint", Tag = k, ForeColor = SystemColors.GrayText });
+            tps.Nodes.Add(new TreeNode($"{k} {Resources.FStateDgm_Zabudovany}") { ImageKey = @"timepoint", SelectedImageKey = @"timepoint", Tag = k, ForeColor = SystemColors.GrayText });
         foreach (var t in _d.TimePoints)
-            tps.Nodes.Add(new TreeNode(TimePointText(t)) { ImageKey = "timepoint", SelectedImageKey = "timepoint", Tag = t });
+            tps.Nodes.Add(new TreeNode(TimePointText(t)) { ImageKey = @"timepoint", SelectedImageKey = @"timepoint", Tag = t });
         tvNav.Nodes.Add(tps);
 
-        var cats = new TreeNode(Resources.FStateDgm_Kategorie) { ImageKey = "categories", SelectedImageKey = "categories", Tag = TAG_CATEGORIES };
+        var cats = new TreeNode(Resources.FStateDgm_Kategorie) { ImageKey = @"categories", SelectedImageKey = @"categories", Tag = TAG_CATEGORIES };
         foreach (var c in _d.Categories)
         {
             var cn = new TreeNode(CategoryText(c)) { ImageKey = CategoryImage(c), SelectedImageKey = CategoryImage(c), Tag = c };
             foreach (var s in c.States)
             {
-                var sn = new TreeNode(StateText(s)) { ImageKey = "state", SelectedImageKey = "state", Tag = s };
+                var sn = new TreeNode(StateText(s)) { ImageKey = @"state", SelectedImageKey = @"state", Tag = s };
                 foreach (var t in s.TimePoints)
-                    sn.Nodes.Add(new TreeNode(TimePointText(t)) { ImageKey = "timepoint", SelectedImageKey = "timepoint", Tag = t });
+                    sn.Nodes.Add(new TreeNode(TimePointText(t)) { ImageKey = @"timepoint", SelectedImageKey = @"timepoint", Tag = t });
                 cn.Nodes.Add(sn);
             }
 
@@ -641,7 +641,7 @@ public partial class FStateDgm : Form
 
     private void tsbDown_Click(object sender, EventArgs e) => Move(1);
 
-    private void Move(int delta)
+    private new void Move(int delta)
     {
         var tag = tvNav.SelectedNode?.Tag;
         var moved = tag switch

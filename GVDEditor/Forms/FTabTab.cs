@@ -44,14 +44,14 @@ public partial class FTabTab : Form
     private const int IndicatorInfo = 10;
     private const int IndicatorGoTo = 11;
 
-    private readonly GvdExprSymbols symbols = new();
-    private readonly System.Windows.Forms.Timer validateTimer = new() { Interval = 400 };
-    private IReadOnlyList<TabTabDiagnostic> diagnostics = [];
-    private string validatedText = "";
-    private readonly ExBindingList<ProblemRow> problemRows = new() { Sortable = true };
-    private readonly ShellIcon iconError = new(ShellIconType.Error, ShellIconSize.Small);
-    private readonly ShellIcon iconWarning = new(ShellIconType.Warning, ShellIconSize.Small);
-    private readonly ShellIcon iconInfo = new(ShellIconType.Info, ShellIconSize.Small);
+    private readonly GvdExprSymbols _symbols = new();
+    private readonly System.Windows.Forms.Timer _validateTimer = new() { Interval = 400 };
+    private IReadOnlyList<TabTabDiagnostic> _diagnostics = [];
+    private string _validatedText = "";
+    private readonly ExBindingList<ProblemRow> _problemRows = new() { Sortable = true };
+    private readonly ShellIcon _iconError = new(ShellIconType.Error, ShellIconSize.Small);
+    private readonly ShellIcon _iconWarning = new(ShellIconType.Warning, ShellIconSize.Small);
+    private readonly ShellIcon _iconInfo = new(ShellIconType.Info, ShellIconSize.Small);
 
 
     /// <summary>
@@ -86,9 +86,9 @@ public partial class FTabTab : Form
         homeStationId = station is not null && int.TryParse(station.ID, out var sid) ? sid : 0;
         tsbPreview.Text = tsbPreview.ToolTipText = Resources.FTabTab_Nahlad;
 
-        validateTimer.Tick += (_, _) =>
+        _validateTimer.Tick += (_, _) =>
         {
-            validateTimer.Stop();
+            _validateTimer.Stop();
             ValidateDocument();
         };
         sc.DwellStart += sc_DwellStart;
@@ -101,17 +101,17 @@ public partial class FTabTab : Form
         cProbSolution.HeaderText = Resources.FTabTab_Problems_Riesenie;
         tsbProbGoTo.Text = tsmiProbGoTo.Text = Resources.FTabTab_Problems_Zobrazit;
         tsbProbFix.Text = tsmiProbFix.Text = Resources.FTabTab_Problems_Opravit;
-        tsbProbErrors.Image = iconError.ToBitmap();
-        tsbProbWarnings.Image = iconWarning.ToBitmap();
-        tsbProbInfos.Image = iconInfo.ToBitmap();
-        dgvProblems.DataSource = problemRows;
+        tsbProbErrors.Image = _iconError.ToBitmap();
+        tsbProbWarnings.Image = _iconWarning.ToBitmap();
+        tsbProbInfos.Image = _iconInfo.ToBitmap();
+        dgvProblems.DataSource = _problemRows;
         dgvProblems.Sort(cProbLine, ListSortDirection.Ascending);
         dgvProblems_SelectionChanged(this, EventArgs.Empty);
         FormClosed += (_, _) =>
         {
-            iconError.Dispose();
-            iconWarning.Dispose();
-            iconInfo.Dispose();
+            _iconError.Dispose();
+            _iconWarning.Dispose();
+            _iconInfo.Dispose();
         };
     }
 
@@ -262,17 +262,17 @@ public partial class FTabTab : Form
     {
         if (lbTabTabs.SelectedIndex == -1)
         {
-            diagnostics = [];
-            problemRows.Clear();
+            _diagnostics = [];
+            _problemRows.Clear();
             UpdateProblemCounts(0, 0, 0);
             return;
         }
 
         var tab = documents[lbTabTabs.SelectedIndex].TabTab;
         var text = sc.Text;
-        validatedText = text;
-        var result = TabTabValidator.Validate(text, symbols.OptionsFor(tab));
-        diagnostics = result.Diagnostics;
+        _validatedText = text;
+        var result = TabTabValidator.Validate(text, _symbols.OptionsFor(tab));
+        _diagnostics = result.Diagnostics;
 
         foreach (var ind in new[] { IndicatorError, IndicatorWarning, IndicatorInfo, IndicatorGoTo })
         {
@@ -280,9 +280,9 @@ public partial class FTabTab : Form
             sc.IndicatorClearRange(0, sc.TextLength);
         }
 
-        problemRows.RaiseListChangedEvents = false;
-        problemRows.Clear();
-        foreach (var d in diagnostics)
+        _problemRows.RaiseListChangedEvents = false;
+        _problemRows.Clear();
+        foreach (var d in _diagnostics)
         {
             var (start, end) = CharRange(text, d);
             sc.IndicatorCurrent = d.Severity switch
@@ -292,12 +292,12 @@ public partial class FTabTab : Form
                 _ => IndicatorInfo
             };
             sc.IndicatorFillRange(start, Math.Max(1, end - start));
-            problemRows.Add(new ProblemRow(d));
+            _problemRows.Add(new ProblemRow(d));
         }
-        problemRows.RaiseListChangedEvents = true;
-        problemRows.ResetBindings();
+        _problemRows.RaiseListChangedEvents = true;
+        _problemRows.ResetBindings();
 
-        UpdateProblemCounts(result.ErrorCount, result.WarningCount, diagnostics.Count - result.ErrorCount - result.WarningCount);
+        UpdateProblemCounts(result.ErrorCount, result.WarningCount, _diagnostics.Count - result.ErrorCount - result.WarningCount);
         ApplyProblemFilter();
 
         if (preview is { IsDisposed: false })
@@ -349,7 +349,7 @@ public partial class FTabTab : Form
         }
         else
         {
-            tsslProblems.Image = errors > 0 ? iconError.ToBitmap() : iconWarning.ToBitmap();
+            tsslProblems.Image = errors > 0 ? _iconError.ToBitmap() : _iconWarning.ToBitmap();
             tsslProblems.Text = string.Format(Resources.FTabTab_Stav_kontroly, errors, warnings);
             tsslProblems.ForeColor = errors > 0 ? Color.Red : GlobData.UsingStyle.ControlsColorScheme.Panel.ForeColor;
         }
@@ -398,12 +398,12 @@ public partial class FTabTab : Form
 
     private void sc_DwellStart(object? sender, DwellEventArgs e)
     {
-        if (e.Position < 0 || diagnostics.Count == 0 || validatedText != sc.Text)
+        if (e.Position < 0 || _diagnostics.Count == 0 || _validatedText != sc.Text)
             return;
 
-        var text = validatedText;
+        var text = _validatedText;
         var hits = new List<string>();
-        foreach (var d in diagnostics)
+        foreach (var d in _diagnostics)
         {
             var (start, end) = CharRange(text, d);
             if (e.Position >= start && e.Position < end)
@@ -416,8 +416,8 @@ public partial class FTabTab : Form
 
     private void GoToDiagnostic(TabTabDiagnostic d)
     {
-        if (validatedText != sc.Text) ValidateDocument();
-        var (start, end) = CharRange(validatedText, d);
+        if (_validatedText != sc.Text) ValidateDocument();
+        var (start, end) = CharRange(_validatedText, d);
 
         // zvyraznenie miesta problemu - nie vyberom (jeho farba je v svetlej teme prilis tmava),
         // ale docasnym indikatorom, ktory zmizne pri dalsej kontrole alebo skoku
@@ -436,14 +436,14 @@ public partial class FTabTab : Form
     private void ApplyFix(TabTabDiagnostic d)
     {
         if (d.Fix is null) return;
-        if (validatedText != sc.Text)
+        if (_validatedText != sc.Text)
         {
             // text sa medzitym zmenil - pozicie opravy uz nemusia sediet
             ValidateDocument();
             return;
         }
 
-        var text = validatedText;
+        var text = _validatedText;
         sc.BeginUndoAction();
         foreach (var edit in d.Fix.Edits.OrderByDescending(x => x.Start))
         {
@@ -452,7 +452,7 @@ public partial class FTabTab : Form
         }
         sc.EndUndoAction();
 
-        validateTimer.Stop();
+        _validateTimer.Stop();
         ValidateDocument();
     }
 
@@ -485,15 +485,15 @@ public partial class FTabTab : Form
         switch (pr.Diagnostic.Severity)
         {
             case ExprSeverity.Error:
-                e.Value = iconError.ToBitmap();
+                e.Value = _iconError.ToBitmap();
                 cell.ToolTipText = Resources.FTabTab_Problems_Chyba;
                 break;
             case ExprSeverity.Warning:
-                e.Value = iconWarning.ToBitmap();
+                e.Value = _iconWarning.ToBitmap();
                 cell.ToolTipText = Resources.FTabTab_Problems_Varovanie;
                 break;
             default:
-                e.Value = iconInfo.ToBitmap();
+                e.Value = _iconInfo.ToBitmap();
                 cell.ToolTipText = Resources.FTabTab_Problems_Informacia;
                 break;
         }
@@ -763,8 +763,8 @@ public partial class FTabTab : Form
 
         ShowNumberLines();
 
-        validateTimer.Stop();
-        validateTimer.Start();
+        _validateTimer.Stop();
+        _validateTimer.Start();
     }
 
     private void ShowNumberLines()
@@ -963,7 +963,7 @@ public partial class FTabTab : Form
             tsslLen.Text = sc.Text.Length.ToString();
             tsslLines.Text = sc.Lines.Count.ToString();
 
-            validateTimer.Stop();
+            _validateTimer.Stop();
             ValidateDocument();
         }
     }
