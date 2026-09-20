@@ -175,4 +175,19 @@
   <data name="tsmiSelectAll.Text" xml:space="preserve">
     <value>Označit vše</value>
   </data>
+  <data name="cProbType.HeaderText" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="cProbCode.HeaderText" xml:space="preserve">
+    <value>Kód</value>
+  </data>
+  <data name="cProbLine.HeaderText" xml:space="preserve">
+    <value>Řádek</value>
+  </data>
+  <data name="cProbMessage.HeaderText" xml:space="preserve">
+    <value>Hlášení</value>
+  </data>
+  <data name="cProbSolution.HeaderText" xml:space="preserve">
+    <value>Řešení</value>
+  </data>
 </root>

@@ -557,56 +557,6 @@ namespace GVDEditor.Forms
             this.dgvProblems.SelectionChanged += new System.EventHandler(this.dgvProblems_SelectionChanged);
             this.dgvProblems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvProblems_KeyDown);
             //
-            // cProbType
-            //
-            this.cProbType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.cProbType.DataPropertyName = "Severity";
-            this.cProbType.HeaderText = "Typ";
-            this.cProbType.Name = "cProbType";
-            this.cProbType.ReadOnly = true;
-            this.cProbType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cProbType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.cProbType.Width = 50;
-            //
-            // cProbCode
-            //
-            this.cProbCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cProbCode.DataPropertyName = "Code";
-            this.cProbCode.HeaderText = "Kód";
-            this.cProbCode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.cProbCode.Name = "cProbCode";
-            this.cProbCode.ReadOnly = true;
-            this.cProbCode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.cProbCode.TrackVisitedState = false;
-            //
-            // cProbLine
-            //
-            this.cProbLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cProbLine.DataPropertyName = "Line";
-            this.cProbLine.HeaderText = "Riadok";
-            this.cProbLine.Name = "cProbLine";
-            this.cProbLine.ReadOnly = true;
-            //
-            // cProbMessage
-            //
-            this.cProbMessage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cProbMessage.DataPropertyName = "Message";
-            this.cProbMessage.FillWeight = 60F;
-            this.cProbMessage.HeaderText = "Správa";
-            this.cProbMessage.MinimumWidth = 300;
-            this.cProbMessage.Name = "cProbMessage";
-            this.cProbMessage.ReadOnly = true;
-            //
-            // cProbSolution
-            //
-            this.cProbSolution.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cProbSolution.DataPropertyName = "Solution";
-            this.cProbSolution.FillWeight = 40F;
-            this.cProbSolution.HeaderText = "Riešenie";
-            this.cProbSolution.MinimumWidth = 200;
-            this.cProbSolution.Name = "cProbSolution";
-            this.cProbSolution.ReadOnly = true;
-            //
             // tsProblems
             //
             this.tsProblems.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -698,9 +648,59 @@ namespace GVDEditor.Forms
             this.scText.TextChanged += new System.EventHandler(this.scText_TextChanged);
             this.scText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.scText_KeyPress);
             this.scText.MouseDown += new System.Windows.Forms.MouseEventHandler(this.scText_MouseDown);
-            // 
+            //
+            // cProbType
+            //
+            this.cProbType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.cProbType.DataPropertyName = "Severity";
+            this.cProbType.Name = "cProbType";
+            this.cProbType.ReadOnly = true;
+            this.cProbType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cProbType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cProbType.Width = 50;
+            resources.ApplyResources(this.cProbType, "cProbType");
+            //
+            // cProbCode
+            //
+            this.cProbCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cProbCode.DataPropertyName = "Code";
+            this.cProbCode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.cProbCode.Name = "cProbCode";
+            this.cProbCode.ReadOnly = true;
+            this.cProbCode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cProbCode.TrackVisitedState = false;
+            resources.ApplyResources(this.cProbCode, "cProbCode");
+            //
+            // cProbLine
+            //
+            this.cProbLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cProbLine.DataPropertyName = "Line";
+            this.cProbLine.Name = "cProbLine";
+            this.cProbLine.ReadOnly = true;
+            resources.ApplyResources(this.cProbLine, "cProbLine");
+            //
+            // cProbMessage
+            //
+            this.cProbMessage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cProbMessage.DataPropertyName = "Message";
+            this.cProbMessage.FillWeight = 60F;
+            this.cProbMessage.MinimumWidth = 300;
+            this.cProbMessage.Name = "cProbMessage";
+            this.cProbMessage.ReadOnly = true;
+            resources.ApplyResources(this.cProbMessage, "cProbMessage");
+            //
+            // cProbSolution
+            //
+            this.cProbSolution.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cProbSolution.DataPropertyName = "Solution";
+            this.cProbSolution.FillWeight = 40F;
+            this.cProbSolution.MinimumWidth = 200;
+            this.cProbSolution.Name = "cProbSolution";
+            this.cProbSolution.ReadOnly = true;
+            resources.ApplyResources(this.cProbSolution, "cProbSolution");
+            //
             // FTabTab
-            // 
+            //
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);

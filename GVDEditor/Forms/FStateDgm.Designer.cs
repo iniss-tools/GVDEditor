@@ -582,7 +582,6 @@
             // cProbType
             // 
             cProbType.DataPropertyName = "Severity";
-            cProbType.ImageLayout = DataGridViewImageCellLayout.Zoom;
             resources.ApplyResources(cProbType, "cProbType");
             cProbType.Name = "cProbType";
             cProbType.ReadOnly = true;

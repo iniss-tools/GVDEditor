@@ -1180,6 +1180,66 @@
   <data name="&gt;&gt;tsslPos.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="cProbType.HeaderText" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <metadata name="cProbType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cProbType.Name" xml:space="preserve">
+    <value>cProbType</value>
+  </data>
+  <data name="&gt;&gt;cProbType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cProbCode.HeaderText" xml:space="preserve">
+    <value>Kód</value>
+  </data>
+  <metadata name="cProbCode.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cProbCode.Name" xml:space="preserve">
+    <value>cProbCode</value>
+  </data>
+  <data name="&gt;&gt;cProbCode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewLinkColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cProbLine.HeaderText" xml:space="preserve">
+    <value>Riadok</value>
+  </data>
+  <metadata name="cProbLine.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cProbLine.Name" xml:space="preserve">
+    <value>cProbLine</value>
+  </data>
+  <data name="&gt;&gt;cProbLine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cProbMessage.HeaderText" xml:space="preserve">
+    <value>Hlásenie</value>
+  </data>
+  <metadata name="cProbMessage.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cProbMessage.Name" xml:space="preserve">
+    <value>cProbMessage</value>
+  </data>
+  <data name="&gt;&gt;cProbMessage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cProbSolution.HeaderText" xml:space="preserve">
+    <value>Riešenie</value>
+  </data>
+  <metadata name="cProbSolution.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="&gt;&gt;cProbSolution.Name" xml:space="preserve">
+    <value>cProbSolution</value>
+  </data>
+  <data name="&gt;&gt;cProbSolution.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FTabTab</value>
   </data>

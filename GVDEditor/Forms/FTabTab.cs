@@ -52,8 +52,7 @@ public partial class FTabTab : Form
     private readonly ShellIcon _iconError = new(ShellIconType.Error, ShellIconSize.Small);
     private readonly ShellIcon _iconWarning = new(ShellIconType.Warning, ShellIconSize.Small);
     private readonly ShellIcon _iconInfo = new(ShellIconType.Info, ShellIconSize.Small);
-
-
+    
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FTabTab"/>.
     /// </summary>
@@ -94,11 +93,6 @@ public partial class FTabTab : Form
         sc.DwellStart += sc_DwellStart;
         sc.DwellEnd += (_, _) => sc.CallTipCancel();
 
-        cProbType.HeaderText = Resources.FTabTab_Problems_Typ;
-        cProbCode.HeaderText = Resources.FTabTab_Problems_Kod;
-        cProbLine.HeaderText = Resources.FTabTab_Problems_Riadok;
-        cProbMessage.HeaderText = Resources.FTabTab_Problems_Hlasenie;
-        cProbSolution.HeaderText = Resources.FTabTab_Problems_Riesenie;
         tsbProbGoTo.Text = tsmiProbGoTo.Text = Resources.FTabTab_Problems_Zobrazit;
         tsbProbFix.Text = tsmiProbFix.Text = Resources.FTabTab_Problems_Opravit;
         tsbProbErrors.Image = _iconError.ToBitmap();
