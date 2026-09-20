@@ -33,26 +33,26 @@ namespace GVDEditor.Forms
         private void InitializeComponent()
         {
             ComponentResourceManager resources = new ComponentResourceManager(typeof(FLocalSettings));
-            ExComboBoxStyle exComboBoxStyle21 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle22 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle23 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle24 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle25 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle26 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle27 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle28 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle29 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle30 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle31 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle32 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle33 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle34 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle35 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle36 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle37 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle38 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle39 = new ExComboBoxStyle();
-            ExComboBoxStyle exComboBoxStyle40 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle1 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle2 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle3 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle4 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle5 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle6 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle7 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle8 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle9 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle10 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle11 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle12 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle13 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle14 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle15 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle16 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle17 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle18 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle19 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle20 = new ExComboBoxStyle();
             bSave = new ExButton();
             label16 = new Label();
             button3 = new ExButton();
@@ -144,6 +144,9 @@ namespace GVDEditor.Forms
             listKolaje = new ListBox();
             label15 = new Label();
             groupBox3 = new ExGroupBox();
+            tbKolajAlt = new ExTextBox();
+            label53 = new Label();
+            tbNastupisteKolaj = new ExTextBox();
             label52 = new Label();
             tbKolajSound = new ExTextBox();
             label27 = new Label();
@@ -204,7 +207,6 @@ namespace GVDEditor.Forms
             bTextEdit = new ExButton();
             bTextAdd = new ExButton();
             tpFonts = new TabPage();
-            tpStateDgm = new TabPage();
             bOpenFontDir = new ExButton();
             tbFontDir = new ExTextBox();
             label37 = new Label();
@@ -234,12 +236,14 @@ namespace GVDEditor.Forms
             bFontDelete = new ExButton();
             bFontEdit = new ExButton();
             bFontAdd = new ExButton();
+            tpStateDgm = new TabPage();
+            flpStateDgm = new FlowLayoutPanel();
+            lStateDgmInfo = new Label();
+            lStateDgmStatus = new Label();
+            bStateDgmOpen = new ExButton();
             checkBox1 = new ExCheckBox();
             cbCustomTrainTypDruh = new ExComboBox();
             cbDefTrainTypSkratka = new ExComboBox();
-            tbNastupisteKolaj = new ExTextBox();
-            label53 = new Label();
-            tbKolajAlt = new ExTextBox();
             tabControl.SuspendLayout();
             tpGrafikon.SuspendLayout();
             groupBox15.SuspendLayout();
@@ -267,6 +271,8 @@ namespace GVDEditor.Forms
             groupBox8.SuspendLayout();
             tpFonts.SuspendLayout();
             groupBox9.SuspendLayout();
+            tpStateDgm.SuspendLayout();
+            flpStateDgm.SuspendLayout();
             ((ISupportInitialize)nudFontWidth).BeginInit();
             ((ISupportInitialize)nudFontSize).BeginInit();
             ((ISupportInitialize)nudFontID).BeginInit();
@@ -674,38 +680,38 @@ namespace GVDEditor.Forms
             cbStationName.FormattingEnabled = true;
             resources.ApplyResources(cbStationName, "cbStationName");
             cbStationName.Name = "cbStationName";
-            exComboBoxStyle21.ArrowColor = null;
-            exComboBoxStyle21.BackColor = null;
-            exComboBoxStyle21.BorderColor = null;
-            exComboBoxStyle21.ButtonBackColor = null;
-            exComboBoxStyle21.ButtonBorderColor = null;
-            exComboBoxStyle21.ButtonRenderFirst = null;
-            exComboBoxStyle21.ForeColor = null;
-            cbStationName.StyleDisabled = exComboBoxStyle21;
-            exComboBoxStyle22.ArrowColor = null;
-            exComboBoxStyle22.BackColor = null;
-            exComboBoxStyle22.BorderColor = null;
-            exComboBoxStyle22.ButtonBackColor = null;
-            exComboBoxStyle22.ButtonBorderColor = null;
-            exComboBoxStyle22.ButtonRenderFirst = null;
-            exComboBoxStyle22.ForeColor = null;
-            cbStationName.StyleHighlight = exComboBoxStyle22;
-            exComboBoxStyle23.ArrowColor = null;
-            exComboBoxStyle23.BackColor = null;
-            exComboBoxStyle23.BorderColor = null;
-            exComboBoxStyle23.ButtonBackColor = null;
-            exComboBoxStyle23.ButtonBorderColor = null;
-            exComboBoxStyle23.ButtonRenderFirst = null;
-            exComboBoxStyle23.ForeColor = null;
-            cbStationName.StyleNormal = exComboBoxStyle23;
-            exComboBoxStyle24.ArrowColor = null;
-            exComboBoxStyle24.BackColor = null;
-            exComboBoxStyle24.BorderColor = null;
-            exComboBoxStyle24.ButtonBackColor = null;
-            exComboBoxStyle24.ButtonBorderColor = null;
-            exComboBoxStyle24.ButtonRenderFirst = null;
-            exComboBoxStyle24.ForeColor = null;
-            cbStationName.StyleSelected = exComboBoxStyle24;
+            exComboBoxStyle1.ArrowColor = null;
+            exComboBoxStyle1.BackColor = null;
+            exComboBoxStyle1.BorderColor = null;
+            exComboBoxStyle1.ButtonBackColor = null;
+            exComboBoxStyle1.ButtonBorderColor = null;
+            exComboBoxStyle1.ButtonRenderFirst = null;
+            exComboBoxStyle1.ForeColor = null;
+            cbStationName.StyleDisabled = exComboBoxStyle1;
+            exComboBoxStyle2.ArrowColor = null;
+            exComboBoxStyle2.BackColor = null;
+            exComboBoxStyle2.BorderColor = null;
+            exComboBoxStyle2.ButtonBackColor = null;
+            exComboBoxStyle2.ButtonBorderColor = null;
+            exComboBoxStyle2.ButtonRenderFirst = null;
+            exComboBoxStyle2.ForeColor = null;
+            cbStationName.StyleHighlight = exComboBoxStyle2;
+            exComboBoxStyle3.ArrowColor = null;
+            exComboBoxStyle3.BackColor = null;
+            exComboBoxStyle3.BorderColor = null;
+            exComboBoxStyle3.ButtonBackColor = null;
+            exComboBoxStyle3.ButtonBorderColor = null;
+            exComboBoxStyle3.ButtonRenderFirst = null;
+            exComboBoxStyle3.ForeColor = null;
+            cbStationName.StyleNormal = exComboBoxStyle3;
+            exComboBoxStyle4.ArrowColor = null;
+            exComboBoxStyle4.BackColor = null;
+            exComboBoxStyle4.BorderColor = null;
+            exComboBoxStyle4.ButtonBackColor = null;
+            exComboBoxStyle4.ButtonBorderColor = null;
+            exComboBoxStyle4.ButtonRenderFirst = null;
+            exComboBoxStyle4.ForeColor = null;
+            cbStationName.StyleSelected = exComboBoxStyle4;
             cbStationName.UseDarkScrollBar = false;
             // 
             // groupBox13
@@ -1124,6 +1130,39 @@ namespace GVDEditor.Forms
             groupBox3.Name = "groupBox3";
             groupBox3.TabStop = false;
             // 
+            // tbKolajAlt
+            // 
+            tbKolajAlt.BorderColor = Color.DimGray;
+            tbKolajAlt.BorderThickness = 1;
+            tbKolajAlt.DefaultStyle = true;
+            tbKolajAlt.DisabledBackColor = SystemColors.Control;
+            tbKolajAlt.DisabledBorderColor = SystemColors.InactiveBorder;
+            tbKolajAlt.DisabledForeColor = SystemColors.GrayText;
+            tbKolajAlt.HighlightColor = SystemColors.Highlight;
+            tbKolajAlt.HintForeColor = SystemColors.GrayText;
+            tbKolajAlt.HintText = null;
+            resources.ApplyResources(tbKolajAlt, "tbKolajAlt");
+            tbKolajAlt.Name = "tbKolajAlt";
+            // 
+            // label53
+            // 
+            resources.ApplyResources(label53, "label53");
+            label53.Name = "label53";
+            // 
+            // tbNastupisteKolaj
+            // 
+            tbNastupisteKolaj.BorderColor = Color.DimGray;
+            tbNastupisteKolaj.BorderThickness = 1;
+            tbNastupisteKolaj.DefaultStyle = true;
+            tbNastupisteKolaj.DisabledBackColor = SystemColors.Control;
+            tbNastupisteKolaj.DisabledBorderColor = SystemColors.InactiveBorder;
+            tbNastupisteKolaj.DisabledForeColor = SystemColors.GrayText;
+            tbNastupisteKolaj.HighlightColor = SystemColors.Highlight;
+            tbNastupisteKolaj.HintForeColor = SystemColors.GrayText;
+            tbNastupisteKolaj.HintText = null;
+            resources.ApplyResources(tbNastupisteKolaj, "tbNastupisteKolaj");
+            tbNastupisteKolaj.Name = "tbNastupisteKolaj";
+            // 
             // label52
             // 
             resources.ApplyResources(label52, "label52");
@@ -1157,38 +1196,38 @@ namespace GVDEditor.Forms
             cbNastupistia.FormattingEnabled = true;
             resources.ApplyResources(cbNastupistia, "cbNastupistia");
             cbNastupistia.Name = "cbNastupistia";
-            exComboBoxStyle25.ArrowColor = null;
-            exComboBoxStyle25.BackColor = null;
-            exComboBoxStyle25.BorderColor = null;
-            exComboBoxStyle25.ButtonBackColor = null;
-            exComboBoxStyle25.ButtonBorderColor = null;
-            exComboBoxStyle25.ButtonRenderFirst = null;
-            exComboBoxStyle25.ForeColor = null;
-            cbNastupistia.StyleDisabled = exComboBoxStyle25;
-            exComboBoxStyle26.ArrowColor = null;
-            exComboBoxStyle26.BackColor = null;
-            exComboBoxStyle26.BorderColor = null;
-            exComboBoxStyle26.ButtonBackColor = null;
-            exComboBoxStyle26.ButtonBorderColor = null;
-            exComboBoxStyle26.ButtonRenderFirst = null;
-            exComboBoxStyle26.ForeColor = null;
-            cbNastupistia.StyleHighlight = exComboBoxStyle26;
-            exComboBoxStyle27.ArrowColor = null;
-            exComboBoxStyle27.BackColor = null;
-            exComboBoxStyle27.BorderColor = null;
-            exComboBoxStyle27.ButtonBackColor = null;
-            exComboBoxStyle27.ButtonBorderColor = null;
-            exComboBoxStyle27.ButtonRenderFirst = null;
-            exComboBoxStyle27.ForeColor = null;
-            cbNastupistia.StyleNormal = exComboBoxStyle27;
-            exComboBoxStyle28.ArrowColor = null;
-            exComboBoxStyle28.BackColor = null;
-            exComboBoxStyle28.BorderColor = null;
-            exComboBoxStyle28.ButtonBackColor = null;
-            exComboBoxStyle28.ButtonBorderColor = null;
-            exComboBoxStyle28.ButtonRenderFirst = null;
-            exComboBoxStyle28.ForeColor = null;
-            cbNastupistia.StyleSelected = exComboBoxStyle28;
+            exComboBoxStyle5.ArrowColor = null;
+            exComboBoxStyle5.BackColor = null;
+            exComboBoxStyle5.BorderColor = null;
+            exComboBoxStyle5.ButtonBackColor = null;
+            exComboBoxStyle5.ButtonBorderColor = null;
+            exComboBoxStyle5.ButtonRenderFirst = null;
+            exComboBoxStyle5.ForeColor = null;
+            cbNastupistia.StyleDisabled = exComboBoxStyle5;
+            exComboBoxStyle6.ArrowColor = null;
+            exComboBoxStyle6.BackColor = null;
+            exComboBoxStyle6.BorderColor = null;
+            exComboBoxStyle6.ButtonBackColor = null;
+            exComboBoxStyle6.ButtonBorderColor = null;
+            exComboBoxStyle6.ButtonRenderFirst = null;
+            exComboBoxStyle6.ForeColor = null;
+            cbNastupistia.StyleHighlight = exComboBoxStyle6;
+            exComboBoxStyle7.ArrowColor = null;
+            exComboBoxStyle7.BackColor = null;
+            exComboBoxStyle7.BorderColor = null;
+            exComboBoxStyle7.ButtonBackColor = null;
+            exComboBoxStyle7.ButtonBorderColor = null;
+            exComboBoxStyle7.ButtonRenderFirst = null;
+            exComboBoxStyle7.ForeColor = null;
+            cbNastupistia.StyleNormal = exComboBoxStyle7;
+            exComboBoxStyle8.ArrowColor = null;
+            exComboBoxStyle8.BackColor = null;
+            exComboBoxStyle8.BorderColor = null;
+            exComboBoxStyle8.ButtonBackColor = null;
+            exComboBoxStyle8.ButtonBorderColor = null;
+            exComboBoxStyle8.ButtonRenderFirst = null;
+            exComboBoxStyle8.ForeColor = null;
+            cbNastupistia.StyleSelected = exComboBoxStyle8;
             cbNastupistia.UseDarkScrollBar = false;
             // 
             // label21
@@ -1690,12 +1729,6 @@ namespace GVDEditor.Forms
             tpFonts.Controls.Add(groupBox9);
             resources.ApplyResources(tpFonts, "tpFonts");
             tpFonts.Name = "tpFonts";
-            //
-            // tpStateDgm
-            //
-            tpStateDgm.BackColor = Color.Transparent;
-            resources.ApplyResources(tpStateDgm, "tpStateDgm");
-            tpStateDgm.Name = "tpStateDgm";
             // 
             // bOpenFontDir
             // 
@@ -1888,38 +1921,38 @@ namespace GVDEditor.Forms
             cbFontType.FormattingEnabled = true;
             resources.ApplyResources(cbFontType, "cbFontType");
             cbFontType.Name = "cbFontType";
-            exComboBoxStyle29.ArrowColor = null;
-            exComboBoxStyle29.BackColor = null;
-            exComboBoxStyle29.BorderColor = null;
-            exComboBoxStyle29.ButtonBackColor = null;
-            exComboBoxStyle29.ButtonBorderColor = null;
-            exComboBoxStyle29.ButtonRenderFirst = null;
-            exComboBoxStyle29.ForeColor = null;
-            cbFontType.StyleDisabled = exComboBoxStyle29;
-            exComboBoxStyle30.ArrowColor = null;
-            exComboBoxStyle30.BackColor = null;
-            exComboBoxStyle30.BorderColor = null;
-            exComboBoxStyle30.ButtonBackColor = null;
-            exComboBoxStyle30.ButtonBorderColor = null;
-            exComboBoxStyle30.ButtonRenderFirst = null;
-            exComboBoxStyle30.ForeColor = null;
-            cbFontType.StyleHighlight = exComboBoxStyle30;
-            exComboBoxStyle31.ArrowColor = null;
-            exComboBoxStyle31.BackColor = null;
-            exComboBoxStyle31.BorderColor = null;
-            exComboBoxStyle31.ButtonBackColor = null;
-            exComboBoxStyle31.ButtonBorderColor = null;
-            exComboBoxStyle31.ButtonRenderFirst = null;
-            exComboBoxStyle31.ForeColor = null;
-            cbFontType.StyleNormal = exComboBoxStyle31;
-            exComboBoxStyle32.ArrowColor = null;
-            exComboBoxStyle32.BackColor = null;
-            exComboBoxStyle32.BorderColor = null;
-            exComboBoxStyle32.ButtonBackColor = null;
-            exComboBoxStyle32.ButtonBorderColor = null;
-            exComboBoxStyle32.ButtonRenderFirst = null;
-            exComboBoxStyle32.ForeColor = null;
-            cbFontType.StyleSelected = exComboBoxStyle32;
+            exComboBoxStyle9.ArrowColor = null;
+            exComboBoxStyle9.BackColor = null;
+            exComboBoxStyle9.BorderColor = null;
+            exComboBoxStyle9.ButtonBackColor = null;
+            exComboBoxStyle9.ButtonBorderColor = null;
+            exComboBoxStyle9.ButtonRenderFirst = null;
+            exComboBoxStyle9.ForeColor = null;
+            cbFontType.StyleDisabled = exComboBoxStyle9;
+            exComboBoxStyle10.ArrowColor = null;
+            exComboBoxStyle10.BackColor = null;
+            exComboBoxStyle10.BorderColor = null;
+            exComboBoxStyle10.ButtonBackColor = null;
+            exComboBoxStyle10.ButtonBorderColor = null;
+            exComboBoxStyle10.ButtonRenderFirst = null;
+            exComboBoxStyle10.ForeColor = null;
+            cbFontType.StyleHighlight = exComboBoxStyle10;
+            exComboBoxStyle11.ArrowColor = null;
+            exComboBoxStyle11.BackColor = null;
+            exComboBoxStyle11.BorderColor = null;
+            exComboBoxStyle11.ButtonBackColor = null;
+            exComboBoxStyle11.ButtonBorderColor = null;
+            exComboBoxStyle11.ButtonRenderFirst = null;
+            exComboBoxStyle11.ForeColor = null;
+            cbFontType.StyleNormal = exComboBoxStyle11;
+            exComboBoxStyle12.ArrowColor = null;
+            exComboBoxStyle12.BackColor = null;
+            exComboBoxStyle12.BorderColor = null;
+            exComboBoxStyle12.ButtonBackColor = null;
+            exComboBoxStyle12.ButtonBorderColor = null;
+            exComboBoxStyle12.ButtonRenderFirst = null;
+            exComboBoxStyle12.ForeColor = null;
+            cbFontType.StyleSelected = exComboBoxStyle12;
             cbFontType.UseDarkScrollBar = false;
             // 
             // label35
@@ -2017,6 +2050,40 @@ namespace GVDEditor.Forms
             bFontAdd.UseVisualStyleBackColor = true;
             bFontAdd.Click += bFontAdd_Click;
             // 
+            // tpStateDgm
+            // 
+            tpStateDgm.BackColor = Color.Transparent;
+            tpStateDgm.Controls.Add(flpStateDgm);
+            resources.ApplyResources(tpStateDgm, "tpStateDgm");
+            tpStateDgm.Name = "tpStateDgm";
+            // 
+            // flpStateDgm
+            // 
+            flpStateDgm.Controls.Add(lStateDgmInfo);
+            flpStateDgm.Controls.Add(lStateDgmStatus);
+            flpStateDgm.Controls.Add(bStateDgmOpen);
+            resources.ApplyResources(flpStateDgm, "flpStateDgm");
+            flpStateDgm.Name = "flpStateDgm";
+            flpStateDgm.SizeChanged += flpStateDgm_SizeChanged;
+            // 
+            // lStateDgmInfo
+            // 
+            resources.ApplyResources(lStateDgmInfo, "lStateDgmInfo");
+            lStateDgmInfo.Name = "lStateDgmInfo";
+            // 
+            // lStateDgmStatus
+            // 
+            resources.ApplyResources(lStateDgmStatus, "lStateDgmStatus");
+            lStateDgmStatus.Name = "lStateDgmStatus";
+            // 
+            // bStateDgmOpen
+            // 
+            resources.ApplyResources(bStateDgmOpen, "bStateDgmOpen");
+            bStateDgmOpen.DefaultStyle = true;
+            bStateDgmOpen.Name = "bStateDgmOpen";
+            bStateDgmOpen.UseVisualStyleBackColor = true;
+            bStateDgmOpen.Click += bStateDgmOpen_Click;
+            // 
             // checkBox1
             // 
             resources.ApplyResources(checkBox1, "checkBox1");
@@ -2036,38 +2103,38 @@ namespace GVDEditor.Forms
             cbCustomTrainTypDruh.DropDownSelectedRowBackColor = Color.Empty;
             resources.ApplyResources(cbCustomTrainTypDruh, "cbCustomTrainTypDruh");
             cbCustomTrainTypDruh.Name = "cbCustomTrainTypDruh";
-            exComboBoxStyle33.ArrowColor = null;
-            exComboBoxStyle33.BackColor = null;
-            exComboBoxStyle33.BorderColor = null;
-            exComboBoxStyle33.ButtonBackColor = null;
-            exComboBoxStyle33.ButtonBorderColor = null;
-            exComboBoxStyle33.ButtonRenderFirst = null;
-            exComboBoxStyle33.ForeColor = null;
-            cbCustomTrainTypDruh.StyleDisabled = exComboBoxStyle33;
-            exComboBoxStyle34.ArrowColor = null;
-            exComboBoxStyle34.BackColor = null;
-            exComboBoxStyle34.BorderColor = null;
-            exComboBoxStyle34.ButtonBackColor = null;
-            exComboBoxStyle34.ButtonBorderColor = null;
-            exComboBoxStyle34.ButtonRenderFirst = null;
-            exComboBoxStyle34.ForeColor = null;
-            cbCustomTrainTypDruh.StyleHighlight = exComboBoxStyle34;
-            exComboBoxStyle35.ArrowColor = null;
-            exComboBoxStyle35.BackColor = null;
-            exComboBoxStyle35.BorderColor = null;
-            exComboBoxStyle35.ButtonBackColor = null;
-            exComboBoxStyle35.ButtonBorderColor = null;
-            exComboBoxStyle35.ButtonRenderFirst = null;
-            exComboBoxStyle35.ForeColor = null;
-            cbCustomTrainTypDruh.StyleNormal = exComboBoxStyle35;
-            exComboBoxStyle36.ArrowColor = null;
-            exComboBoxStyle36.BackColor = null;
-            exComboBoxStyle36.BorderColor = null;
-            exComboBoxStyle36.ButtonBackColor = null;
-            exComboBoxStyle36.ButtonBorderColor = null;
-            exComboBoxStyle36.ButtonRenderFirst = null;
-            exComboBoxStyle36.ForeColor = null;
-            cbCustomTrainTypDruh.StyleSelected = exComboBoxStyle36;
+            exComboBoxStyle13.ArrowColor = null;
+            exComboBoxStyle13.BackColor = null;
+            exComboBoxStyle13.BorderColor = null;
+            exComboBoxStyle13.ButtonBackColor = null;
+            exComboBoxStyle13.ButtonBorderColor = null;
+            exComboBoxStyle13.ButtonRenderFirst = null;
+            exComboBoxStyle13.ForeColor = null;
+            cbCustomTrainTypDruh.StyleDisabled = exComboBoxStyle13;
+            exComboBoxStyle14.ArrowColor = null;
+            exComboBoxStyle14.BackColor = null;
+            exComboBoxStyle14.BorderColor = null;
+            exComboBoxStyle14.ButtonBackColor = null;
+            exComboBoxStyle14.ButtonBorderColor = null;
+            exComboBoxStyle14.ButtonRenderFirst = null;
+            exComboBoxStyle14.ForeColor = null;
+            cbCustomTrainTypDruh.StyleHighlight = exComboBoxStyle14;
+            exComboBoxStyle15.ArrowColor = null;
+            exComboBoxStyle15.BackColor = null;
+            exComboBoxStyle15.BorderColor = null;
+            exComboBoxStyle15.ButtonBackColor = null;
+            exComboBoxStyle15.ButtonBorderColor = null;
+            exComboBoxStyle15.ButtonRenderFirst = null;
+            exComboBoxStyle15.ForeColor = null;
+            cbCustomTrainTypDruh.StyleNormal = exComboBoxStyle15;
+            exComboBoxStyle16.ArrowColor = null;
+            exComboBoxStyle16.BackColor = null;
+            exComboBoxStyle16.BorderColor = null;
+            exComboBoxStyle16.ButtonBackColor = null;
+            exComboBoxStyle16.ButtonBorderColor = null;
+            exComboBoxStyle16.ButtonRenderFirst = null;
+            exComboBoxStyle16.ForeColor = null;
+            cbCustomTrainTypDruh.StyleSelected = exComboBoxStyle16;
             cbCustomTrainTypDruh.UseDarkScrollBar = false;
             // 
             // cbDefTrainTypSkratka
@@ -2077,72 +2144,39 @@ namespace GVDEditor.Forms
             cbDefTrainTypSkratka.DropDownSelectedRowBackColor = Color.Empty;
             resources.ApplyResources(cbDefTrainTypSkratka, "cbDefTrainTypSkratka");
             cbDefTrainTypSkratka.Name = "cbDefTrainTypSkratka";
-            exComboBoxStyle37.ArrowColor = null;
-            exComboBoxStyle37.BackColor = null;
-            exComboBoxStyle37.BorderColor = null;
-            exComboBoxStyle37.ButtonBackColor = null;
-            exComboBoxStyle37.ButtonBorderColor = null;
-            exComboBoxStyle37.ButtonRenderFirst = null;
-            exComboBoxStyle37.ForeColor = null;
-            cbDefTrainTypSkratka.StyleDisabled = exComboBoxStyle37;
-            exComboBoxStyle38.ArrowColor = null;
-            exComboBoxStyle38.BackColor = null;
-            exComboBoxStyle38.BorderColor = null;
-            exComboBoxStyle38.ButtonBackColor = null;
-            exComboBoxStyle38.ButtonBorderColor = null;
-            exComboBoxStyle38.ButtonRenderFirst = null;
-            exComboBoxStyle38.ForeColor = null;
-            cbDefTrainTypSkratka.StyleHighlight = exComboBoxStyle38;
-            exComboBoxStyle39.ArrowColor = null;
-            exComboBoxStyle39.BackColor = null;
-            exComboBoxStyle39.BorderColor = null;
-            exComboBoxStyle39.ButtonBackColor = null;
-            exComboBoxStyle39.ButtonBorderColor = null;
-            exComboBoxStyle39.ButtonRenderFirst = null;
-            exComboBoxStyle39.ForeColor = null;
-            cbDefTrainTypSkratka.StyleNormal = exComboBoxStyle39;
-            exComboBoxStyle40.ArrowColor = null;
-            exComboBoxStyle40.BackColor = null;
-            exComboBoxStyle40.BorderColor = null;
-            exComboBoxStyle40.ButtonBackColor = null;
-            exComboBoxStyle40.ButtonBorderColor = null;
-            exComboBoxStyle40.ButtonRenderFirst = null;
-            exComboBoxStyle40.ForeColor = null;
-            cbDefTrainTypSkratka.StyleSelected = exComboBoxStyle40;
+            exComboBoxStyle17.ArrowColor = null;
+            exComboBoxStyle17.BackColor = null;
+            exComboBoxStyle17.BorderColor = null;
+            exComboBoxStyle17.ButtonBackColor = null;
+            exComboBoxStyle17.ButtonBorderColor = null;
+            exComboBoxStyle17.ButtonRenderFirst = null;
+            exComboBoxStyle17.ForeColor = null;
+            cbDefTrainTypSkratka.StyleDisabled = exComboBoxStyle17;
+            exComboBoxStyle18.ArrowColor = null;
+            exComboBoxStyle18.BackColor = null;
+            exComboBoxStyle18.BorderColor = null;
+            exComboBoxStyle18.ButtonBackColor = null;
+            exComboBoxStyle18.ButtonBorderColor = null;
+            exComboBoxStyle18.ButtonRenderFirst = null;
+            exComboBoxStyle18.ForeColor = null;
+            cbDefTrainTypSkratka.StyleHighlight = exComboBoxStyle18;
+            exComboBoxStyle19.ArrowColor = null;
+            exComboBoxStyle19.BackColor = null;
+            exComboBoxStyle19.BorderColor = null;
+            exComboBoxStyle19.ButtonBackColor = null;
+            exComboBoxStyle19.ButtonBorderColor = null;
+            exComboBoxStyle19.ButtonRenderFirst = null;
+            exComboBoxStyle19.ForeColor = null;
+            cbDefTrainTypSkratka.StyleNormal = exComboBoxStyle19;
+            exComboBoxStyle20.ArrowColor = null;
+            exComboBoxStyle20.BackColor = null;
+            exComboBoxStyle20.BorderColor = null;
+            exComboBoxStyle20.ButtonBackColor = null;
+            exComboBoxStyle20.ButtonBorderColor = null;
+            exComboBoxStyle20.ButtonRenderFirst = null;
+            exComboBoxStyle20.ForeColor = null;
+            cbDefTrainTypSkratka.StyleSelected = exComboBoxStyle20;
             cbDefTrainTypSkratka.UseDarkScrollBar = false;
-            // 
-            // tbNastupisteKolaj
-            // 
-            tbNastupisteKolaj.BorderColor = Color.DimGray;
-            tbNastupisteKolaj.BorderThickness = 1;
-            tbNastupisteKolaj.DefaultStyle = true;
-            tbNastupisteKolaj.DisabledBackColor = SystemColors.Control;
-            tbNastupisteKolaj.DisabledBorderColor = SystemColors.InactiveBorder;
-            tbNastupisteKolaj.DisabledForeColor = SystemColors.GrayText;
-            tbNastupisteKolaj.HighlightColor = SystemColors.Highlight;
-            tbNastupisteKolaj.HintForeColor = SystemColors.GrayText;
-            tbNastupisteKolaj.HintText = null;
-            resources.ApplyResources(tbNastupisteKolaj, "tbNastupisteKolaj");
-            tbNastupisteKolaj.Name = "tbNastupisteKolaj";
-            // 
-            // label53
-            // 
-            resources.ApplyResources(label53, "label53");
-            label53.Name = "label53";
-            // 
-            // tbKolajAlt
-            // 
-            tbKolajAlt.BorderColor = Color.DimGray;
-            tbKolajAlt.BorderThickness = 1;
-            tbKolajAlt.DefaultStyle = true;
-            tbKolajAlt.DisabledBackColor = SystemColors.Control;
-            tbKolajAlt.DisabledBorderColor = SystemColors.InactiveBorder;
-            tbKolajAlt.DisabledForeColor = SystemColors.GrayText;
-            tbKolajAlt.HighlightColor = SystemColors.Highlight;
-            tbKolajAlt.HintForeColor = SystemColors.GrayText;
-            tbKolajAlt.HintText = null;
-            resources.ApplyResources(tbKolajAlt, "tbKolajAlt");
-            tbKolajAlt.Name = "tbKolajAlt";
             // 
             // FLocalSettings
             // 
@@ -2210,6 +2244,9 @@ namespace GVDEditor.Forms
             tpFonts.PerformLayout();
             groupBox9.ResumeLayout(false);
             groupBox9.PerformLayout();
+            tpStateDgm.ResumeLayout(false);
+            flpStateDgm.ResumeLayout(false);
+            flpStateDgm.PerformLayout();
             ((ISupportInitialize)nudFontWidth).EndInit();
             ((ISupportInitialize)nudFontSize).EndInit();
             ((ISupportInitialize)nudFontID).EndInit();
@@ -2318,6 +2355,10 @@ namespace GVDEditor.Forms
         private ExControls.ExButton bTextAdd;
         private System.Windows.Forms.TabPage tpFonts;
         private System.Windows.Forms.TabPage tpStateDgm;
+        private System.Windows.Forms.FlowLayoutPanel flpStateDgm;
+        private System.Windows.Forms.Label lStateDgmInfo;
+        private System.Windows.Forms.Label lStateDgmStatus;
+        private ExControls.ExButton bStateDgmOpen;
         private System.Windows.Forms.ListBox listFonts;
         private System.Windows.Forms.Label label29;
         private ExGroupBox groupBox9;

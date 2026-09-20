@@ -466,4 +466,13 @@
   <data name="bSave.Text" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="lStateDgmInfo.Text" xml:space="preserve">
+    <value>Stavový diagram určuje, jakými stavy vlak ve stanici prochází, jaká tlačítka má obsluha a co se automaticky vyhlásí.</value>
+  </data>
+  <data name="bStateDgmOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>245, 33</value>
+  </data>
+  <data name="bStateDgmOpen.Text" xml:space="preserve">
+    <value>Otevřít editor stavového diagramu…</value>
+  </data>
 </root>

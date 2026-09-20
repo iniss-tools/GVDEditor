@@ -3361,24 +3361,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stavový diagram určuje, akými stavmi vlak v stanici prechádza, aké tlačidlá má obsluha a čo sa automaticky vyhlási..
-        /// </summary>
-        internal static string FLocalSettings_SD_Info {
-            get {
-                return ResourceManager.GetString("FLocalSettings_SD_Info", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Otvoriť editor stavového diagramu….
-        /// </summary>
-        internal static string FLocalSettings_SD_Otvorit {
-            get {
-                return ResourceManager.GetString("FLocalSettings_SD_Otvorit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Súbor: {0}, kategórií: {1}, stavov: {2}.
         /// </summary>
         internal static string FLocalSettings_SD_Stav {

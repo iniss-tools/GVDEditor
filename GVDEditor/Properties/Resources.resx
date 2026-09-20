@@ -1247,12 +1247,6 @@ Otvorí sa slovenská predloha; pôvodný súbor sa prepíše až pri uložení.
   <data name="FLocalSettings_StavovyDiagram" xml:space="preserve">
     <value>Stavový diagram</value>
   </data>
-  <data name="FLocalSettings_SD_Info" xml:space="preserve">
-    <value>Stavový diagram určuje, akými stavmi vlak v stanici prechádza, aké tlačidlá má obsluha a čo sa automaticky vyhlási.</value>
-  </data>
-  <data name="FLocalSettings_SD_Otvorit" xml:space="preserve">
-    <value>Otvoriť editor stavového diagramu…</value>
-  </data>
   <data name="FLocalSettings_SD_Stav" xml:space="preserve">
     <value>Súbor: {0}, kategórií: {1}, stavov: {2}</value>
   </data>

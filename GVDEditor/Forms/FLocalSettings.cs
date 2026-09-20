@@ -26,7 +26,6 @@ public partial class FLocalSettings : Form
 
     private readonly Color _defaultBorderColor;
     private readonly bool _openStateDgmEditor;
-    private Label _lStateDgmStatus = null!;
 
     /// <summary>
     ///     Vytvori novy formulár typu <see cref="FLocalSettings"/>.
@@ -141,7 +140,8 @@ public partial class FLocalSettings : Form
             bCStationDelete.Enabled = false;
         }
 
-        BuildStateDgmTab();
+        FitStateDgmWidth();
+        RefreshStateDgmStatus();
 
         if (openIndex != -1)
         {
@@ -163,29 +163,14 @@ public partial class FLocalSettings : Form
     }
 
     /// <summary>
-    ///     Zalozka Stavovy diagram - stav suboru a tlacidlo na otvorenie editora (editor je samostatne okno).
+    ///     Zalamovanie textov na zalozke Stavovy diagram podla sirky zalozky (editor je samostatne okno).
     /// </summary>
-    private void BuildStateDgmTab()
-    {
-        var table = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, AutoSize = true, Padding = new Padding(10) };
-        table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-        table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-        table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-        var info = new Label { Text = Resources.FLocalSettings_SD_Info, AutoSize = true, MaximumSize = new Size(600, 0), Margin = new Padding(3, 3, 3, 12) };
-        _lStateDgmStatus = new Label { AutoSize = true, MaximumSize = new Size(600, 0), Margin = new Padding(3, 3, 3, 12) };
-        var open = new ExButton { Text = Resources.FLocalSettings_SD_Otvorit, AutoSize = true, Padding = new Padding(8, 2, 8, 2) };
-        open.Click += (_, _) => OpenStateDgmEditor();
-        table.Controls.Add(info, 0, 0);
-        table.Controls.Add(_lStateDgmStatus, 0, 1);
-        table.Controls.Add(open, 0, 2);
-        tpStateDgm.Controls.Add(table);
-        table.ApplyTheme();
-        // zalamovanie podla sirky zalozky
-        void FitWidth() => info.MaximumSize = _lStateDgmStatus.MaximumSize = new Size(Math.Max(200, tpStateDgm.ClientSize.Width - 30), 0);
-        tpStateDgm.SizeChanged += (_, _) => FitWidth();
-        FitWidth();
-        RefreshStateDgmStatus();
-    }
+    private void FitStateDgmWidth() =>
+        lStateDgmInfo.MaximumSize = lStateDgmStatus.MaximumSize = new Size(Math.Max(200, flpStateDgm.ClientSize.Width - 30), 0);
+
+    private void flpStateDgm_SizeChanged(object sender, EventArgs e) => FitStateDgmWidth();
+
+    private void bStateDgmOpen_Click(object sender, EventArgs e) => OpenStateDgmEditor();
 
     private void RefreshStateDgmStatus()
     {
@@ -194,7 +179,7 @@ public partial class FLocalSettings : Form
             var d = TxtParser.ReadStateDgm(ThisDir.Dir.FullPath);
             if (d == null)
             {
-                _lStateDgmStatus.Text = Resources.FLocalSettings_SD_Chyba_Nie;
+                lStateDgmStatus.Text = Resources.FLocalSettings_SD_Chyba_Nie;
                 return;
             }
 
@@ -206,12 +191,12 @@ public partial class FLocalSettings : Form
             var errors = diags.Count(x => x.IsError);
             var warnings = diags.Count(x => x.Severity == ToolsCore.Expressions.ExprSeverity.Warning);
             var check = diags.Count == 0 ? Resources.FStateDgm_BezProblemov : string.Format(Resources.FStateDgm_PocetProblemov, errors, warnings, diags.Count - errors - warnings);
-            _lStateDgmStatus.Text = string.Format(Resources.FLocalSettings_SD_Stav, Path.GetFileName(TxtParser.StateDgmPath(ThisDir.Dir.FullPath)), d.Categories.Count, d.Categories.Sum(c => c.States.Count))
+            lStateDgmStatus.Text = string.Format(Resources.FLocalSettings_SD_Stav, Path.GetFileName(TxtParser.StateDgmPath(ThisDir.Dir.FullPath)), d.Categories.Count, d.Categories.Sum(c => c.States.Count))
                                     + Environment.NewLine + string.Format(Resources.FLocalSettings_SD_Problemy, check);
         }
         catch (StateDgmParseException e)
         {
-            _lStateDgmStatus.Text = string.Format(Resources.FLocalSettings_SD_Chyba, $"({e.Line + 1}) {e.Message}");
+            lStateDgmStatus.Text = string.Format(Resources.FLocalSettings_SD_Chyba, $"({e.Line + 1}) {e.Message}");
         }
     }
 
