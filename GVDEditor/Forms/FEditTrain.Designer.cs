@@ -71,8 +71,8 @@ namespace GVDEditor.Forms
             this.bEditLimit = new ExControls.ExButton();
             this.label16 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.dtpPlatnostDo = new System.Windows.Forms.DateTimePicker();
-            this.dtpPlatnostOd = new System.Windows.Forms.DateTimePicker();
+            this.dtpPlatnostDo = new ExControls.ExDateTimePicker();
+            this.dtpPlatnostOd = new ExControls.ExDateTimePicker();
             this.tDatumoveObmedzenie = new ExControls.ExTextBox();
             this.groupBox2 = new ExControls.ExGroupBox();
             this.mtOdchod = new ExControls.ExMaskedTextBox();
@@ -141,8 +141,8 @@ namespace GVDEditor.Forms
             this.dgvRadenieSet = new System.Windows.Forms.DataGridView();
             this.bPlay = new ExControls.ExButton();
             this.bEditRadenie = new ExControls.ExButton();
-            this.dtpRadenieDo = new System.Windows.Forms.DateTimePicker();
-            this.dtpRadenieOd = new System.Windows.Forms.DateTimePicker();
+            this.dtpRadenieDo = new ExControls.ExDateTimePicker();
+            this.dtpRadenieOd = new ExControls.ExDateTimePicker();
             this.label27 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.tbDateRemRadenie = new ExControls.ExTextBox();
@@ -384,7 +384,6 @@ namespace GVDEditor.Forms
             // 
             // dtpPlatnostOd
             // 
-            this.dtpPlatnostOd.CalendarMonthBackground = System.Drawing.SystemColors.ScrollBar;
             this.dtpPlatnostOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             resources.ApplyResources(this.dtpPlatnostOd, "dtpPlatnostOd");
             this.dtpPlatnostOd.Name = "dtpPlatnostOd";
@@ -1471,8 +1470,8 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker dtpPlatnostDo;
-        private DateTimePicker dtpPlatnostOd;
+        private ExControls.ExDateTimePicker dtpPlatnostDo;
+        private ExControls.ExDateTimePicker dtpPlatnostOd;
         private ExTextBox tbLinkaOdchod;
         private ExTextBox tbLinkaPrichod;
         private System.Windows.Forms.TabPage tabPage5;
@@ -1492,8 +1491,8 @@ namespace GVDEditor.Forms
         private ExControls.ExButton bRadenieEdit;
         private ExTextBox tbRadenie;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.DateTimePicker dtpRadenieDo;
-        private System.Windows.Forms.DateTimePicker dtpRadenieOd;
+        private ExControls.ExDateTimePicker dtpRadenieDo;
+        private ExControls.ExDateTimePicker dtpRadenieOd;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label25;
         private ExTextBox tbDateRemRadenie;

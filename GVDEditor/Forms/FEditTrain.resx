@@ -541,7 +541,7 @@
     <value>dtpPlatnostDo</value>
   </data>
   <data name="&gt;&gt;dtpPlatnostDo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExDateTimePicker, ExControls, Version=1.1.8303.31039, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dtpPlatnostDo.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -565,7 +565,7 @@
     <value>dtpPlatnostOd</value>
   </data>
   <data name="&gt;&gt;dtpPlatnostOd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExDateTimePicker, ExControls, Version=1.1.8303.31039, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dtpPlatnostOd.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1459,7 +1459,7 @@
     <value>dtpRadenieDo</value>
   </data>
   <data name="&gt;&gt;dtpRadenieDo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExDateTimePicker, ExControls, Version=1.1.8303.31039, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dtpRadenieDo.Parent" xml:space="preserve">
     <value>tabPage4</value>
@@ -1471,7 +1471,7 @@
     <value>dtpRadenieOd</value>
   </data>
   <data name="&gt;&gt;dtpRadenieOd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExDateTimePicker, ExControls, Version=1.1.8303.31039, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dtpRadenieOd.Parent" xml:space="preserve">
     <value>tabPage4</value>
@@ -3688,7 +3688,7 @@
     <value>dtpRadenieDo</value>
   </data>
   <data name="&gt;&gt;dtpRadenieDo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExDateTimePicker, ExControls, Version=1.1.8303.31039, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dtpRadenieDo.Parent" xml:space="preserve">
     <value>tabPage4</value>
@@ -3712,7 +3712,7 @@
     <value>dtpRadenieOd</value>
   </data>
   <data name="&gt;&gt;dtpRadenieOd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExDateTimePicker, ExControls, Version=1.1.8303.31039, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dtpRadenieOd.Parent" xml:space="preserve">
     <value>tabPage4</value>

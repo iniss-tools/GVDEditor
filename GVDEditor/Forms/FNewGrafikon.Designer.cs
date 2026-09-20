@@ -38,11 +38,11 @@ namespace GVDEditor.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.Grafikon = new ExControls.ExGroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.dtpGVDDo = new System.Windows.Forms.DateTimePicker();
-            this.dtpGVDOd = new System.Windows.Forms.DateTimePicker();
+            this.dtpGVDDo = new ExControls.ExDateTimePicker();
+            this.dtpGVDOd = new ExControls.ExDateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
-            this.dtpDataDo = new System.Windows.Forms.DateTimePicker();
-            this.dtpDataOd = new System.Windows.Forms.DateTimePicker();
+            this.dtpDataDo = new ExControls.ExDateTimePicker();
+            this.dtpDataOd = new ExControls.ExDateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbDirName = new ExControls.ExTextBox();
@@ -483,8 +483,8 @@ namespace GVDEditor.Forms
         private ExTextBox tbDirIniss;
         private System.Windows.Forms.Label label1;
         private ExGroupBox Grafikon;
-        private System.Windows.Forms.DateTimePicker dtpDataDo;
-        private System.Windows.Forms.DateTimePicker dtpDataOd;
+        private ExControls.ExDateTimePicker dtpDataDo;
+        private ExControls.ExDateTimePicker dtpDataOd;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -498,8 +498,8 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.BindingSource stanicaBindingSource;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker dtpGVDDo;
-        private System.Windows.Forms.DateTimePicker dtpGVDOd;
+        private ExControls.ExDateTimePicker dtpGVDDo;
+        private ExControls.ExDateTimePicker dtpGVDOd;
         private System.Windows.Forms.Label label6;
         private ExGroupBox groupBox3;
         private ExControls.ExButton bEditColor;

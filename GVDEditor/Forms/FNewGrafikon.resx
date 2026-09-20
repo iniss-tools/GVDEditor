@@ -250,7 +250,7 @@
     <value>dtpGVDDo</value>
   </data>
   <data name="&gt;&gt;dtpGVDDo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExDateTimePicker, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dtpGVDDo.Parent" xml:space="preserve">
     <value>Grafikon</value>
@@ -274,7 +274,7 @@
     <value>dtpGVDOd</value>
   </data>
   <data name="&gt;&gt;dtpGVDOd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExDateTimePicker, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dtpGVDOd.Parent" xml:space="preserve">
     <value>Grafikon</value>
@@ -328,7 +328,7 @@
     <value>dtpDataDo</value>
   </data>
   <data name="&gt;&gt;dtpDataDo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExDateTimePicker, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dtpDataDo.Parent" xml:space="preserve">
     <value>Grafikon</value>
@@ -352,7 +352,7 @@
     <value>dtpDataOd</value>
   </data>
   <data name="&gt;&gt;dtpDataOd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExDateTimePicker, ExControls, Version=1.1.8292.34152, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dtpDataOd.Parent" xml:space="preserve">
     <value>Grafikon</value>

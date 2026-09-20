@@ -43,8 +43,8 @@ namespace GVDEditor.Forms
             this.groupBox1 = new ExControls.ExGroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dpStart = new System.Windows.Forms.DateTimePicker();
-            this.dpEnd = new System.Windows.Forms.DateTimePicker();
+            this.dpStart = new ExControls.ExDateTimePicker();
+            this.dpEnd = new ExControls.ExDateTimePicker();
             this.bGenerate = new ExControls.ExButton();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -297,8 +297,8 @@ namespace GVDEditor.Forms
         private ExGroupBox groupBox1;
         private Label label1;
         private Label label2;
-        private DateTimePicker dpStart;
-        private DateTimePicker dpEnd;
+        private ExControls.ExDateTimePicker dpStart;
+        private ExControls.ExDateTimePicker dpEnd;
         private ExControls.ExButton bGenerate;
     }
 }
