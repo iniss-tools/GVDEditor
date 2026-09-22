@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 using JetBrains.Annotations;
 
@@ -9,6 +10,7 @@ namespace Iniss.Elis;
 ///     Tento subor je zdielany medzi projektom ELISBridge (x86 host nad TT.dll)
 ///     a GVDEditorom, ktory ho linkuje - preto nesmie zavisiet na niecom z GVDEditora.
 /// </summary>
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public sealed class ElisResult
 {
     /// <summary>Priecinok s datami (.tt subormi), z ktoreho sa citalo.</summary>
@@ -27,18 +29,15 @@ public sealed class ElisResult
     public string ValidTo { get; set; } = null!;
 
     /// <summary>Pocet dni platnosti - dlzka retazca <see cref="ElisTrain.RunsBits" />.</summary>
-    [UsedImplicitly]
     public int TotalDays { get; set; }
 
     /// <summary>Vlaky prechadzajuce zadanou stanicou.</summary>
-    public List<ElisTrain> Trains { get; set; } = new();
+    public List<ElisTrain> Trains { get; set; } = [];
 
     /// <summary>Zaciatok platnosti ako <see cref="DateTime" />.</summary>
-    [UsedImplicitly]
     public DateTime ValidFromDate => DateTime.ParseExact(ValidFrom, "yyyy-MM-dd", null);
 
     /// <summary>Koniec platnosti ako <see cref="DateTime" />.</summary>
-    [UsedImplicitly]
     public DateTime ValidToDate => DateTime.ParseExact(ValidTo, "yyyy-MM-dd", null);
 
     /// <summary>Zapise vysledok do suboru ako XML v kodovani UTF-8.</summary>
@@ -54,7 +53,7 @@ public sealed class ElisResult
     {
         var serializer = new XmlSerializer(typeof(ElisResult));
         using var reader = new StreamReader(path, Encoding.UTF8);
-        return (ElisResult)serializer.Deserialize(reader)!;
+        return (ElisResult)serializer.Deserialize(XmlReader.Create(reader))!;
     }
 }
 
@@ -83,10 +82,10 @@ public sealed class ElisTrain
     public int DepartureMinutes { get; set; } = NoTime;
 
     /// <summary>Stanice pred domovskou stanicou, v poradi jazdy.</summary>
-    public List<ElisStop> StationsBefore { get; set; } = new();
+    public List<ElisStop> StationsBefore { get; set; } = [];
 
     /// <summary>Stanice za domovskou stanicou, v poradi jazdy.</summary>
-    public List<ElisStop> StationsAfter { get; set; } = new();
+    public List<ElisStop> StationsAfter { get; set; } = [];
 
     /// <summary>Nazov dopravcu (pole ON), alebo prazdne.</summary>
     public string OperatorName { get; set; } = null!;
@@ -125,6 +124,7 @@ public sealed class ElisTrain
 /// <summary>
 ///     Zastavka na trase vlaku.
 /// </summary>
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public sealed class ElisStop
 {
     /// <summary>
