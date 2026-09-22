@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 
 namespace Iniss.Elis;
 
@@ -14,11 +15,12 @@ internal static class Program
         $"""
          ELISBridge - vycitanie grafikonu z dat programu ELIS (Cestovne poriadky, CHAPS)
                                     
-           ELISBridge.exe --station <nazov> [--app <priecinok>] [--data <priecinok>] [--out <subor>]
+           ELISBridge.exe (--code <SR70> | --station <nazov>) [--app <priecinok>] [--data <priecinok>] [--out <subor>]
            ELISBridge.exe --list-stations [--app <priecinok>] [--data <priecinok>]
            ELISBridge.exe --station-codes [--out <subor>] [--app <priecinok>] [--data <priecinok>]
 
-         --station        nazov stanice, pre ktoru sa vlaky vycitaju
+         --code           cislo stanice (SR70), pre ktoru sa vlaky vycitaju - jednoznacne
+         --station        nazov stanice; pouzije sa, ak --code chyba alebo sa v datach nenasiel
          --app            priecinok s TT.dll (predvolene \"{DefaultApp}\")
          --data           priecinok s .tt datami (predvolene <app>\\Data1)
          --out            subor pre vystup (bez neho ide na standardny vystup)
@@ -27,6 +29,7 @@ internal static class Program
          --list-stations  vypise nazvy vsetkych stanic v datach
          --station-codes  vypise stanice ako <kod SR70>,"<nazov>", zoradene podla nazvu;
                           do suboru (--out) sa zapisu v kodovani Windows-1250
+         --version        vypise verziu TT.dll a ELISBridge.exe
 
          Navratove kody: 0 = ok, 1 = chyba, 2 = ziadny cestovny poriadok,
                          3 = stanica nenajdena, 4 = chybne/chybajuce registracne cislo
@@ -37,20 +40,49 @@ internal static class Program
         Console.OutputEncoding = Encoding.UTF8;
 
         string? app = null, data = null, station = null, output = null, reg = null, client = null;
+        var code = 0;
         var listStations = false;
         var stationCodes = false;
+        var showVersion = false;
 
         for (var i = 0; i < args.Length; i++)
             switch (args[i])
             {
-                case "--app": app = Next(args, ref i); break;
-                case "--data": data = Next(args, ref i); break;
-                case "--station": station = Next(args, ref i); break;
-                case "--out": output = Next(args, ref i); break;
-                case "--reg": reg = Next(args, ref i); break;
-                case "--client": client = Next(args, ref i); break;
-                case "--list-stations": listStations = true; break;
-                case "--station-codes": stationCodes = true; break;
+                case "--app": 
+                    app = Next(args, ref i); 
+                    break;
+                case "--data": 
+                    data = Next(args, ref i); 
+                    break;
+                case "--station":
+                    station = Next(args, ref i);
+                    break;
+                case "--code":
+                    var text = Next(args, ref i);
+                    if (!int.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out code) || code <= 0)
+                    {
+                        Console.Error.WriteLine($"Prepínač --code vyžaduje kladné celé číslo, nie \"{text}\".");
+                        return 1;
+                    }
+                    break;
+                case "--out": 
+                    output = Next(args, ref i); 
+                    break;
+                case "--reg": 
+                    reg = Next(args, ref i); 
+                    break;
+                case "--client": 
+                    client = Next(args, ref i); 
+                    break;
+                case "--list-stations": 
+                    listStations = true; 
+                    break;
+                case "--station-codes": 
+                    stationCodes = true; 
+                    break;
+                case "--version":
+                    showVersion = true;
+                    break;
                 case "--help":
                 case "-h":
                     Console.WriteLine(Usage);
@@ -66,9 +98,12 @@ internal static class Program
         if (string.IsNullOrEmpty(data))
             data = Path.Combine(app, "Data1");
 
-        if (!listStations && !stationCodes && string.IsNullOrEmpty(station))
+        if (showVersion)
+            return WriteVersion(app);
+
+        if (!listStations && !stationCodes && code == 0 && string.IsNullOrEmpty(station))
         {
-            Console.Error.WriteLine("Chýba parameter --station.");
+            Console.Error.WriteLine("Chýba parameter --code alebo --station.");
             Console.Error.WriteLine(Usage);
             return 1;
         }
@@ -93,7 +128,7 @@ internal static class Program
                 return 0;
             }
 
-            var result = reader.Read(station!);
+            var result = reader.Read(code, station);
 
             if (string.IsNullOrEmpty(output))
                 WriteToConsole(result);
@@ -122,6 +157,27 @@ internal static class Program
         catch (Exception e)
         {
             Console.Error.WriteLine(e.ToString());
+            return 1;
+        }
+    }
+
+    /// <summary>
+    ///     Vypise verziu ELISBridge a TT.dll. Kniznica sa musi najprv zaviest cez
+    ///     <see cref="TTNative.LoadFrom" /> - bez toho ju P/Invoke hlada len vedla .exe a v PATH.
+    /// </summary>
+    private static int WriteVersion(string app)
+    {
+        Console.WriteLine($"ELISBridge.exe: {typeof(Program).Assembly.GetName().Version}");
+
+        try
+        {
+            TTNative.LoadFrom(app);
+            Console.WriteLine($"TT.dll: {TTNative.Str(TTNative.TTVer())} ({Path.Combine(app, "TT.dll")})");
+            return 0;
+        }
+        catch (Exception e) when (e is DirectoryNotFoundException or FileNotFoundException or DllNotFoundException)
+        {
+            Console.Error.WriteLine(e.Message);
             return 1;
         }
     }

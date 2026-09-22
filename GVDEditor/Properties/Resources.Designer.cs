@@ -3602,5 +3602,77 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("FStateDgmCalendar_Automat", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Program {0} sa nepodarilo spustiť..
+        /// </summary>
+        internal static string ELISBridgeClient_Program_sa_nepodarilo_spustiť {
+            get {
+                return ResourceManager.GetString("ELISBridgeClient_Program_sa_nepodarilo_spustiť", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to V dátach ELIS sa nenašiel žiadny cestovný poriadok..
+        /// </summary>
+        internal static string ELISBridgeClient_V_dátach_ELIS_sa_nenašiel_žiadny_cestovný_poriadok {
+            get {
+                return ResourceManager.GetString("ELISBridgeClient_V_dátach_ELIS_sa_nenašiel_žiadny_cestovný_poriadok", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Stanica {0} sa v dátach ELIS nenachádza..
+        /// </summary>
+        internal static string ELISBridgeClient_Stanica_sa_v_dátach_ELIS_nenachádza {
+            get {
+                return ResourceManager.GetString("ELISBridgeClient_Stanica_sa_v_dátach_ELIS_nenachádza", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cestovný poriadok vyžaduje platné registračné číslo..
+        /// </summary>
+        internal static string ELISBridgeClient_Cestovný_poriadok_vyžaduje_platné_registračné_číslo {
+            get {
+                return ResourceManager.GetString("ELISBridgeClient_Cestovný_poriadok_vyžaduje_platné_registračné_číslo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Načítanie dát ELIS zlyhalo..
+        /// </summary>
+        internal static string ELISBridgeClient_Načítanie_dát_ELIS_zlyhalo {
+            get {
+                return ResourceManager.GetString("ELISBridgeClient_Načítanie_dát_ELIS_zlyhalo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Pomocný program {0} sa nenašiel v priečinku {1}. Bez neho sa dáta z programu ELIS načítať nedajú..
+        /// </summary>
+        internal static string ELISBridgeClient_Pomocný_program_sa_nenašiel {
+            get {
+                return ResourceManager.GetString("ELISBridgeClient_Pomocný_program_sa_nenašiel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Nasledujúce typy vlakov nie sú definované:.
+        /// </summary>
+        internal static string ELISBridgeClient_Nasledujúce_typy_vlakov_nie_sú_definované {
+            get {
+                return ResourceManager.GetString("ELISBridgeClient_Nasledujúce_typy_vlakov_nie_sú_definované", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak {0} {1} {2} má dátumové obmedzenie, ktoré sa nedá spracovať: &quot;{3}&quot;..
+        /// </summary>
+        internal static string ELISBridgeClient_Vlak_má_dátumové_obmedzenie_ktoré_sa_nedá_spracovať {
+            get {
+                return ResourceManager.GetString("ELISBridgeClient_Vlak_má_dátumové_obmedzenie_ktoré_sa_nedá_spracovať", resourceCulture);
+            }
+        }
 }
 }

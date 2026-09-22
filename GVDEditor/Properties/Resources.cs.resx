@@ -1296,4 +1296,28 @@ Otevře se slovenská předloha; původní soubor se přepíše až při uložen
   <data name="FStateDgmCalendar_Automat" xml:space="preserve">
     <value>Automat</value>
   </data>
+  <data name="ELISBridgeClient_Program_sa_nepodarilo_spustiť" xml:space="preserve">
+    <value>Program {0} se nepodařilo spustit.</value>
+  </data>
+  <data name="ELISBridgeClient_V_dátach_ELIS_sa_nenašiel_žiadny_cestovný_poriadok" xml:space="preserve">
+    <value>V datech ELIS nebyl nalezen žádný jízdní řád.</value>
+  </data>
+  <data name="ELISBridgeClient_Stanica_sa_v_dátach_ELIS_nenachádza" xml:space="preserve">
+    <value>Stanice {0} se v datech ELIS nenachází.</value>
+  </data>
+  <data name="ELISBridgeClient_Cestovný_poriadok_vyžaduje_platné_registračné_číslo" xml:space="preserve">
+    <value>Jízdní řád vyžaduje platné registrační číslo.</value>
+  </data>
+  <data name="ELISBridgeClient_Načítanie_dát_ELIS_zlyhalo" xml:space="preserve">
+    <value>Načtení dat ELIS selhalo.</value>
+  </data>
+  <data name="ELISBridgeClient_Pomocný_program_sa_nenašiel" xml:space="preserve">
+    <value>Pomocný program {0} nebyl nalezen ve složce {1}. Bez něj nelze data z programu ELIS načíst.</value>
+  </data>
+  <data name="ELISBridgeClient_Nasledujúce_typy_vlakov_nie_sú_definované" xml:space="preserve">
+    <value>Následující typy vlaků nejsou definovány:</value>
+  </data>
+  <data name="ELISBridgeClient_Vlak_má_dátumové_obmedzenie_ktoré_sa_nedá_spracovať" xml:space="preserve">
+    <value>Vlak {0} {1} {2} má datové omezení, které nelze zpracovat: "{3}".</value>
+  </data>
 </root>

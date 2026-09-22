@@ -1,6 +1,8 @@
 ﻿using System.Collections;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using GVDEditor.Entities;
+using GVDEditor.Properties;
 using Iniss.Elis;
 using ToolsCore.Tools;
 
@@ -121,9 +123,9 @@ public sealed partial class ELISBridgeClient
         var unresolved = new List<string>();
 
         foreach (var train in result.Trains)
-        foreach (var name in train.StationsBefore.Concat(train.StationsAfter))
-            if (!unresolved.Contains(name) && !StationMap.ContainsKey(name) && Resolve(name) is null)
-                unresolved.Add(name);
+        foreach (var stop in train.StationsBefore.Concat(train.StationsAfter))
+            if (!unresolved.Contains(stop.Name) && !StationMap.ContainsKey(stop.Name) && Resolve(stop) is null)
+                unresolved.Add(stop.Name);
 
         unresolved.Sort(StringComparer.CurrentCulture);
         return unresolved;
@@ -149,6 +151,11 @@ public sealed partial class ELISBridgeClient
         try
         {
             var arguments = new StringBuilder();
+
+            //ID stanice v zvukovej banke je jej cislo SR70 - to iste, ktorym stanice
+            //oznacuje ELIS. Nazov ide s nim ako zaloha pre pripad, ze by cislo v datach nebolo.
+            if (TryGetCode(GVD.ThisStation, out var code))
+                arguments.Append("--code ").Append(code).Append(' ');
             arguments.Append("--station \"").Append(GVD.ThisStation.Name).Append("\" ");
             arguments.Append("--out \"").Append(output).Append('"');
             if (!string.IsNullOrEmpty(AppDirectory))
@@ -173,7 +180,8 @@ public sealed partial class ELISBridgeClient
             using (var process = Process.Start(info))
             {
                 if (process is null)
-                    throw new InvalidOperationException($"Program {BridgeExeName} sa nepodarilo spustiť.");
+                    throw new InvalidOperationException(
+                        string.Format(Resources.ELISBridgeClient_Program_sa_nepodarilo_spustiť, BridgeExeName));
 
                 error = process.StandardError.ReadToEnd();
                 process.WaitForExit();
@@ -183,12 +191,13 @@ public sealed partial class ELISBridgeClient
             if (exitCode != 0)
                 throw new InvalidOperationException(exitCode switch
                 {
-                    ExitNoTimetable => $"V dátach ELIS sa nenašiel žiadny cestovný poriadok.\r\n{error}",
-                    ExitStationNotFound => $"Stanica {GVD.ThisStation.Name} sa v dátach ELIS nenachádza.\r\n{error}",
+                    ExitNoTimetable => WithDetail(Resources.ELISBridgeClient_V_dátach_ELIS_sa_nenašiel_žiadny_cestovný_poriadok, error),
+                    ExitStationNotFound => WithDetail(
+                        string.Format(Resources.ELISBridgeClient_Stanica_sa_v_dátach_ELIS_nenachádza, GVD.ThisStation.Name), error),
                     ExitRegistrationFailed => string.IsNullOrEmpty(error)
-                        ? "Cestovný poriadok vyžaduje platné registračné číslo."
+                        ? Resources.ELISBridgeClient_Cestovný_poriadok_vyžaduje_platné_registračné_číslo
                         : error,
-                    _ => $"Načítanie dát ELIS zlyhalo.\r\n{error}"
+                    _ => WithDetail(Resources.ELISBridgeClient_Načítanie_dát_ELIS_zlyhalo, error)
                 });
 
             return ElisResult.Load(output);
@@ -211,9 +220,14 @@ public sealed partial class ELISBridgeClient
             return exe;
 
         throw new FileNotFoundException(
-            $"Pomocný program {BridgeExeName} sa nenašiel v priečinku {directory}. " +
-            "Bez neho sa dáta z programu ELIS načítať nedajú.", exe);
+            string.Format(Resources.ELISBridgeClient_Pomocný_program_sa_nenašiel, BridgeExeName, directory), exe);
     }
+
+    /// <summary>
+    ///     Pripoji k hlaseniu podrobnosti z chyboveho vystupu pomocneho programu, ak nejake su.
+    /// </summary>
+    private static string WithDetail(string message, string detail) =>
+        string.IsNullOrWhiteSpace(detail) ? message : $"{message}\r\n{detail.Trim()}";
 
     /// <summary>
     ///     Prevedie vystup pomocneho programu na entity GVDEditora.
@@ -282,8 +296,8 @@ public sealed partial class ELISBridgeClient
         }
 
         if (invalidTypes.Count != 0)
-            throw new FormatException("Nasledujúce typy vlakov nie sú definované:\r\n    " +
-                                      string.Join("\r\n    ", invalidTypes));
+            throw new FormatException(Resources.ELISBridgeClient_Nasledujúce_typy_vlakov_nie_sú_definované +
+                                      "\r\n    " + string.Join("\r\n    ", invalidTypes));
 
         SetVariants(trains);
         return trains;
@@ -339,8 +353,8 @@ public sealed partial class ELISBridgeClient
         catch (Exception e)
         {
             throw new FormatException(
-                $"Vlak {train.Type} {train.Number} {train.Name} má dátumové obmedzenie, " +
-                $"ktoré sa nedá spracovať: \"{train.DateLimitText}\".", e);
+                string.Format(Resources.ELISBridgeClient_Vlak_má_dátumové_obmedzenie_ktoré_sa_nedá_spracovať,
+                    train.Type, train.Number, train.Name, train.DateLimitText), e);
         }
     }
 
@@ -357,13 +371,13 @@ public sealed partial class ELISBridgeClient
     ///     rovnako ako opakovanie tej istej stanice bezprostredne za sebou - to vznika,
     ///     ked sa hranicny bod priradi k stanici, ktora uz v trase je.
     /// </summary>
-    private void AddStations(IEnumerable<string> names, ICollection<Station> target)
+    private void AddStations(IEnumerable<ElisStop> stops, ICollection<Station> target)
     {
         Station? previous = null;
 
-        foreach (var name in names)
+        foreach (var stop in stops)
         {
-            var station = ResolveMapped(name);
+            var station = ResolveMapped(stop);
             if (station is null)
                 continue;
 
@@ -377,16 +391,41 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    ///     Najde stanicu pre nazov z ELIS - najprv podla ulozeneho priradenia, potom automaticky.
+    ///     Najde stanicu pre zastavku z ELIS - najprv podla ulozeneho priradenia, potom automaticky.
     /// </summary>
     /// <returns><see langword="null" />, ak sa stanica nenasla alebo sa ma vynechat.</returns>
-    private Station? ResolveMapped(string name)
+    private Station? ResolveMapped(ElisStop stop)
     {
-        if (StationMap.TryGetValue(name, out var mapped))
+        if (StationMap.TryGetValue(stop.Name, out var mapped))
             return mapped == TxtParser.ELIS_MAP_SKIP ? null : Station.GetFromID(mapped);
 
-        return Resolve(name);
+        return Resolve(stop);
     }
+
+    /// <summary>
+    ///     Automaticky priradi zastavku z ELIS k stanici grafikonu - najprv podla cisla SR70,
+    ///     ktore je zaroven ID stanice v zvukovej banke, az potom podla nazvu.
+    /// </summary>
+    /// <returns><see langword="null" />, ak sa stanica nenasla.</returns>
+    public static Station? Resolve(ElisStop stop)
+    {
+        if (stop.Code > 0)
+        {
+            var id = stop.Code.ToString(CultureInfo.InvariantCulture);
+            var byCode = AllStations().FirstOrDefault(s => s.ID == id);
+            if (byCode is not null)
+                return new Station(byCode.ID, byCode.Name);
+        }
+
+        return Resolve(stop.Name);
+    }
+
+    /// <summary>
+    ///     Ci je ID stanice cislo SR70. Stanice zo zvukovej banky ho maju vzdy; pouzivatelom
+    ///     definovane (STANICE.TXT) mozu mat cokolvek, typicky 9000001 a vyssie pre hranicne body.
+    /// </summary>
+    private static bool TryGetCode(Station station, out int code) =>
+        int.TryParse(station.ID, NumberStyles.None, CultureInfo.InvariantCulture, out code) && code > 0;
 
     /// <summary>
     ///     Automaticky priradi nazov z ELIS k stanici grafikonu.

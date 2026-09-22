@@ -65,13 +65,22 @@ internal sealed class TTReader
                     ? "Dáta vyžadujú registračné číslo, ktoré nebolo zadané."
                     : "Zadané registračné číslo nie je pre tieto dáta platné.");
 
-            throw new InvalidOperationException($"V priečinku {_dataPath} sa nenašiel žiadny použiteľný cestovný poriadok.");
+            var detail = error != 0 ? $" (TT.dll: {ErrorText(error)})" : string.Empty;
+            throw new InvalidOperationException(
+                $"V priečinku {_dataPath} sa nenašiel žiadny použiteľný cestovný poriadok{detail}.");
         }
 
         // nacital sa aspon jeden poriadok, ale niektory iny bol kvoli registracii zahodeny
         if (TTNative.IsRegistrationError(error))
             Console.Error.WriteLine("Upozornenie: niektoré cestovné poriadky boli vynechané, " +
                                     "lebo vyžadujú platné registračné číslo.");
+    }
+
+    /// <summary>Text chyby TT.dll; ak kniznica k danemu kodu text nema, vrati aspon kod.</summary>
+    private static string ErrorText(int error)
+    {
+        var text = TTNative.Str(TTNative.TTErrorText(error, TTNative.DefaultLang));
+        return string.IsNullOrWhiteSpace(text) ? $"kód {error}" : $"{text} [{error}]";
     }
 
     /// <summary>Vrati nazvy vsetkych stanic vo vsetkych nacitanych poriadkoch.</summary>
@@ -119,11 +128,17 @@ internal sealed class TTReader
     }
 
     /// <summary>
-    ///     Vycita vsetky vlaky prechadzajuce stanicou <paramref name="stationName" />.
+    ///     Vycita vsetky vlaky prechadzajuce zadanou stanicou.
     /// </summary>
-    /// <param name="stationName">Nazov stanice; porovnava sa bez diakritiky, bodiek a pomlciek.</param>
+    /// <param name="stationCode">
+    ///     Cislo stanice (SR70) - ak je kladne, hlada sa najprv podla neho a je to jednoznacne.
+    /// </param>
+    /// <param name="stationName">
+    ///     Nazov stanice; pouzije sa, ak sa podla cisla nic nenaslo. Porovnava sa bez
+    ///     diakritiky, bodiek a pomlciek.
+    /// </param>
     /// <exception cref="ArgumentException">ak sa stanica v datach nenajde</exception>
-    public ElisResult Read(string stationName)
+    public ElisResult Read(int stationCode, string? stationName)
     {
         GetValidity(out var validFrom, out var validTo);
         var totalDays = (validTo - validFrom).Days + 1;
@@ -131,7 +146,7 @@ internal sealed class TTReader
         var result = new ElisResult
         {
             DataPath = _dataPath,
-            StationName = stationName,
+            StationName = stationName ?? string.Empty,
             ValidFrom = validFrom.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
             ValidTo = validTo.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
             TotalDays = totalDays
@@ -141,17 +156,29 @@ internal sealed class TTReader
         for (var tt = 0; tt < TTNative.TTTTCount(); tt++)
         {
             var stations = ReadStationNames(tt);
-            var myStation = IndexOfStation(stations, stationName);
+
+            var myStation = stationCode > 0 ? TTNative.TTSearchStKey(tt, stationCode) : -1;
+            if (myStation < 0 && !string.IsNullOrEmpty(stationName))
+                myStation = IndexOfStation(stations, stationName);
             if (myStation < 0)
                 continue;
 
             found = true;
             result.StationName = stations[myStation];
+            result.StationCode = TTNative.TTStKey(tt, myStation);
             ReadTrains(tt, myStation, stations, validFrom, totalDays, result.Trains);
         }
 
         if (!found)
-            throw new ArgumentException($"Stanica \"{stationName}\" sa v dátach ELIS nenachádza.", nameof(stationName));
+        {
+            var wanted = (stationCode > 0, string.IsNullOrEmpty(stationName)) switch
+            {
+                (true, true) => $"s číslom {stationCode}",
+                (true, false) => $"\"{stationName}\" ({stationCode})",
+                _ => $"\"{stationName}\""
+            };
+            throw new ArgumentException($"Stanica {wanted} sa v dátach ELIS nenachádza.", nameof(stationName));
+        }
 
         return result;
     }
@@ -249,7 +276,9 @@ internal sealed class TTReader
         List<string> stations, IList<OwnerInfo> owners, int myStation,
         DateTime validFrom, int totalDays)
     {
-        TTNative.TTTrainInfo(tt, TTNative.DefaultLang, tr,
+        //cislo/nazov/typ platne prave v nasej stanici - nie globalne (medzistatne vlaky
+        //maju v kazdej sieti ine cislo, niektore menia po trase nazov ci typ)
+        TTNative.TTTrainStationInfo(tt, TTNative.DefaultLang, tr, myStation,
             out var pNumber, out var pName, out var pType, out _);
 
         var train = new ElisTrain
@@ -262,9 +291,9 @@ internal sealed class TTReader
         };
 
         for (var i = 0; i < position; i++)
-            train.StationsBefore.Add(NameOf(stations, stopStation[i]));
+            train.StationsBefore.Add(StopOf(tt, stations, stopStation[i]));
         for (var i = position + 1; i < count; i++)
-            train.StationsAfter.Add(NameOf(stations, stopStation[i]));
+            train.StationsAfter.Add(StopOf(tt, stations, stopStation[i]));
 
         var owner = TTNative.TTTrOwner(tt, tr);
         if (owner >= 0 && owner < owners.Count)
@@ -294,6 +323,13 @@ internal sealed class TTReader
         TTNative.TTError(); // vycistenie pripadneho kodu 18 (datum mimo rozsahu)
         return bits.ToString();
     }
+
+    /// <summary>Zastavka trasy aj s cislom stanice (0, ak ho ELIS nema).</summary>
+    private static ElisStop StopOf(int tt, List<string> stations, int index) => new()
+    {
+        Name = NameOf(stations, index),
+        Code = index >= 0 && index < stations.Count ? TTNative.TTStKey(tt, index) : 0
+    };
 
     private static string NameOf(List<string> stations, int index)
         => index >= 0 && index < stations.Count ? stations[index] : index.ToString(CultureInfo.InvariantCulture);

@@ -17,6 +17,9 @@ public sealed class ElisResult
     /// <summary>Nazov stanice tak, ako ho pozna ELIS.</summary>
     public string StationName { get; set; } = null!;
 
+    /// <summary>Cislo stanice (SR70) podla ELIS; 0, ak ho nema.</summary>
+    public int StationCode { get; set; }
+
     /// <summary>Zaciatok platnosti cestovneho poriadku (yyyy-MM-dd).</summary>
     public string ValidFrom { get; set; } = null!;
 
@@ -79,10 +82,10 @@ public sealed class ElisTrain
     public int DepartureMinutes { get; set; } = NoTime;
 
     /// <summary>Stanice pred domovskou stanicou, v poradi jazdy.</summary>
-    public List<string> StationsBefore { get; set; } = new();
+    public List<ElisStop> StationsBefore { get; set; } = new();
 
     /// <summary>Stanice za domovskou stanicou, v poradi jazdy.</summary>
-    public List<string> StationsAfter { get; set; } = new();
+    public List<ElisStop> StationsAfter { get; set; } = new();
 
     /// <summary>Nazov dopravcu (pole ON), alebo prazdne.</summary>
     public string OperatorName { get; set; } = null!;
@@ -98,4 +101,22 @@ public sealed class ElisTrain
     ///     kde index 0 zodpoveda <see cref="ElisResult.ValidFrom" />.
     /// </summary>
     public string RunsBits { get; set; } = null!;
+}
+
+/// <summary>
+///     Zastavka na trase vlaku.
+/// </summary>
+public sealed class ElisStop
+{
+    /// <summary>
+    ///     Cislo stanice (SR70), ktore je zaroven ID stanice v zvukovej banke INISS - jednoznacny
+    ///     kluc na parovanie. 0, ak ho ELIS pre danu zastavku nema.
+    /// </summary>
+    public int Code { get; set; }
+
+    /// <summary>Nazov tak, ako ho pise ELIS (skratky "n.", druhy jazyk v zatvorke).</summary>
+    public string Name { get; set; } = null!;
+
+    /// <inheritdoc />
+    public override string ToString() => Name;
 }

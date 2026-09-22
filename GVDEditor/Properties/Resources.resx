@@ -1328,4 +1328,28 @@ Otvorí sa slovenská predloha; pôvodný súbor sa prepíše až pri uložení.
   <data name="FStateDgmCalendar_Automat" xml:space="preserve">
     <value>Automat</value>
   </data>
+  <data name="ELISBridgeClient_Program_sa_nepodarilo_spustiť" xml:space="preserve">
+    <value>Program {0} sa nepodarilo spustiť.</value>
+  </data>
+  <data name="ELISBridgeClient_V_dátach_ELIS_sa_nenašiel_žiadny_cestovný_poriadok" xml:space="preserve">
+    <value>V dátach ELIS sa nenašiel žiadny cestovný poriadok.</value>
+  </data>
+  <data name="ELISBridgeClient_Stanica_sa_v_dátach_ELIS_nenachádza" xml:space="preserve">
+    <value>Stanica {0} sa v dátach ELIS nenachádza.</value>
+  </data>
+  <data name="ELISBridgeClient_Cestovný_poriadok_vyžaduje_platné_registračné_číslo" xml:space="preserve">
+    <value>Cestovný poriadok vyžaduje platné registračné číslo.</value>
+  </data>
+  <data name="ELISBridgeClient_Načítanie_dát_ELIS_zlyhalo" xml:space="preserve">
+    <value>Načítanie dát ELIS zlyhalo.</value>
+  </data>
+  <data name="ELISBridgeClient_Pomocný_program_sa_nenašiel" xml:space="preserve">
+    <value>Pomocný program {0} sa nenašiel v priečinku {1}. Bez neho sa dáta z programu ELIS načítať nedajú.</value>
+  </data>
+  <data name="ELISBridgeClient_Nasledujúce_typy_vlakov_nie_sú_definované" xml:space="preserve">
+    <value>Nasledujúce typy vlakov nie sú definované:</value>
+  </data>
+  <data name="ELISBridgeClient_Vlak_má_dátumové_obmedzenie_ktoré_sa_nedá_spracovať" xml:space="preserve">
+    <value>Vlak {0} {1} {2} má dátumové obmedzenie, ktoré sa nedá spracovať: "{3}".</value>
+  </data>
 </root>

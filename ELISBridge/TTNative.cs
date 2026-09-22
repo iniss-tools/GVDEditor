@@ -61,6 +61,10 @@ internal static class TTNative
     [DllImport(Dll)]
     public static extern int TTError();
 
+    /// <summary>Text k chybovemu kodu z <see cref="TTError" /> (tabulka v kniznici, kody od -47).</summary>
+    [DllImport(Dll)]
+    public static extern IntPtr TTErrorText(int code, int lang);
+
     [DllImport(Dll)]
     public static extern int TTStCount(int tt);
 
@@ -83,12 +87,32 @@ internal static class TTNative
     public static extern void TTTrainInfo(int tt, int lang, int tr,
         out IntPtr number, out IntPtr name, out IntPtr type, out uint flags);
 
+    /// <summary>
+    ///     Ako <see cref="TTTrainInfo" />, ale cislo, nazov a typ su tie, ktore platia
+    ///     v stanici <paramref name="st" />. Medzistatne vlaky maju v kazdej sieti ine cislo,
+    ///     niektore menia po trase nazov (oddelene '/') alebo typ.
+    /// </summary>
+    [DllImport(Dll)]
+    public static extern void TTTrainStationInfo(int tt, int lang, int tr, int st,
+        out IntPtr number, out IntPtr name, out IntPtr type, out uint flags);
+
     /// <summary>Vrati pocet zaznamov trasy; <paramref name="route" /> ukazuje na ZDIELANY globalny buffer.</summary>
     [DllImport(Dll)]
     public static extern int TTTrainRouteExt(int tt, int tr, out IntPtr route, int flags);
 
+    /// <summary>Ci vlak v dany den prechadza stanicou <paramref name="st" /> (0 = nie).</summary>
+    /// <remarks>
+    ///     Vola sa po dnoch. Kniznica ma aj <c>TTGetTrainDateRem</c>, ktora vrati cely kalendar
+    ///     jednym volanim, ale to pole je pracovny buffer generatora textu (po volani byva
+    ///     vynulovane) a pre koncovu stanicu vlaku sa nevytvori vobec - overene porovnanim.
+    ///     Preto sa nepouziva.
+    /// </remarks>
     [DllImport(Dll)]
     public static extern int TTTrainRuns(int tt, int tr, int day, int month, int year, int st, int flag);
+
+    /// <summary>Index stanice podla jej cisla (SR70), alebo -1.</summary>
+    [DllImport(Dll)]
+    public static extern int TTSearchStKey(int tt, int key);
 
     [DllImport(Dll)]
     public static extern int TTTrOwner(int tt, int tr);
