@@ -116,7 +116,7 @@ internal static class Program
 
             if (listStations)
             {
-                foreach (var name in reader.GetAllStationNames())
+                foreach (var name in TTReader.GetAllStationNames())
                     Console.WriteLine(name);
 
                 return 0;
@@ -124,7 +124,7 @@ internal static class Program
 
             if (stationCodes)
             {
-                WriteStationCodes(reader, output);
+                WriteStationCodes(output);
                 return 0;
             }
 
@@ -186,9 +186,9 @@ internal static class Program
     ///     Zapise ciselnik stanic vo formate <c>5613600,"Košice"</c> - jedna stanica na riadok.
     /// </summary>
     /// <param name="output">Cielovy subor, alebo <see langword="null" /> pre standardny vystup.</param>
-    private static void WriteStationCodes(TTReader reader, string? output)
+    private static void WriteStationCodes(string? output)
     {
-        var stations = reader.GetStationCodes(out var skipped);
+        var stations = TTReader.GetStationCodes(out var skipped);
         var lines = stations.Select(s => $"{s.Code},\"{s.Name.Replace("\"", "\"\"")}\"");
 
         if (string.IsNullOrEmpty(output))

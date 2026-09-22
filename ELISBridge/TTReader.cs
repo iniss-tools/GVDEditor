@@ -1,6 +1,8 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Iniss.Elis;
 
@@ -23,8 +25,17 @@ internal readonly record struct ElisStationCode(int Code, string Name);
 /// <summary>
 ///     Vycita z dat ELIS vsetky vlaky prechadzajuce zadanou stanicou.
 /// </summary>
-internal sealed class TTReader
+internal sealed partial class TTReader
 {
+    /// <summary>
+    ///     Poznamka vlaku s linkou integrovaneho dopravneho systemu, napr.
+    ///     <c>linka R2 [IDS PLUS] (Žilina-&gt;Čadca)</c>.
+    /// </summary>
+    [GeneratedRegex(@"^linka (\S+) \[([^\]]+)\] \((.+)->(.+)\)$")]
+    private static partial Regex IdsLineRegex();
+
+    private static Regex IdsLine => IdsLineRegex();
+
     private readonly string _dataPath;
     private readonly string? _registrationNumber;
     private readonly string? _client;
@@ -39,7 +50,7 @@ internal sealed class TTReader
             throw new DirectoryNotFoundException($"Priečinok s dátami neexistuje: {dataPath}");
 
         // TTInit vnutri iba zretazi cestu s maskou *.tt, oddelovac nedoplna
-        _dataPath = dataPath.EndsWith("\\", StringComparison.Ordinal) ? dataPath : dataPath + "\\";
+        _dataPath = dataPath.EndsWith('\\') ? dataPath : dataPath + "\\";
         _registrationNumber = registrationNumber;
         _client = client;
     }
@@ -84,7 +95,7 @@ internal sealed class TTReader
     }
 
     /// <summary>Vrati nazvy vsetkych stanic vo vsetkych nacitanych poriadkoch.</summary>
-    public List<string> GetAllStationNames()
+    public static List<string> GetAllStationNames()
     {
         var names = new List<string>();
         for (var tt = 0; tt < TTNative.TTTTCount(); tt++)
@@ -100,7 +111,7 @@ internal sealed class TTReader
     ///     zoradene podla nazvu. Stanice bez cisla vynechava.
     /// </summary>
     /// <param name="skipped">Pocet stanic, ktore ziadne cislo nemaju.</param>
-    public List<ElisStationCode> GetStationCodes(out int skipped)
+    public static List<ElisStationCode> GetStationCodes(out int skipped)
     {
         skipped = 0;
         var codes = new List<ElisStationCode>();
@@ -123,7 +134,7 @@ internal sealed class TTReader
             codes.Add(new ElisStationCode(code, name));
         }
 
-        codes.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.CurrentCulture));
+        codes.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.Ordinal));
         return codes;
     }
 
@@ -235,7 +246,7 @@ internal sealed class TTReader
     }
 
     private static void ReadTrains(int tt, int myStation, List<string> stations,
-        DateTime validFrom, int totalDays, ICollection<ElisTrain> output)
+        DateTime validFrom, int totalDays, List<ElisTrain> output)
     {
         var owners = ReadOwners(tt);
         var trainCount = TTNative.TTTrCount(tt);
@@ -302,14 +313,95 @@ internal sealed class TTReader
             train.OperatorNumber = owners[owner].Number;
         }
 
-        var line = TTNative.TTTrLine(tt, tr);
-        train.Line = line >= 0 ? TTNative.Str(TTNative.TTLineDesc(tt, TTNative.DefaultLang, line)) : string.Empty;
+        ReadLines(tt, tr, position, count, stopStation, stations, train);
 
         train.RunsBits = ReadRunsBits(tt, tr, myStation, validFrom, totalDays);
         return train;
     }
 
+    /// <summary>
+    ///     Doplni vlaku linku IDS a traťové číslo, oddelene pre prichod a odchod - vlak moze
+    ///     do stanice prist po jednej trati a odist po inej.
+    /// </summary>
+    private static void ReadLines(int tt, int tr, int position, int count,
+        int[] stopStation, List<string> stations, ElisTrain train)
+    {
+        //traťové čísla: retazec trojic "cislo:odKodu:doKodu"
+        var parts = TTNative.Str(TTNative.TTTrLines(tt, tr, -1, -1, 0)).Split(':');
+        for (var i = 0; i + 2 < parts.Length; i += 3)
+        {
+            var from = IndexOfCode(tt, stopStation, count, parts[i + 1]);
+            var to = IndexOfCode(tt, stopStation, count, parts[i + 2]);
+            Assign(parts[i], from, to, position,
+                v => train.RailLineArrival = v, v => train.RailLineDeparture = v);
+        }
+
+        //linka IDS: hotovy text poznamky, napr. "linka R2 [IDS PLUS] (Žilina->Čadca)"
+        for (var r = 0; r < TTNative.TTTrRem1Count(tt, tr); r++)
+        {
+            var match = IdsLine.Match(TTNative.Str(TTNative.TTTrRem1(tt, TTNative.DefaultLang, tr, r)));
+            if (!match.Success)
+                continue;
+
+            var from = IndexOfName(stopStation, count, stations, match.Groups[3].Value);
+            var to = IndexOfName(stopStation, count, stations, match.Groups[4].Value);
+            var applied = Assign(match.Groups[1].Value, from, to, position,
+                v => train.LineArrival = v, v => train.LineDeparture = v);
+
+            if (applied)
+                train.LineSystem = match.Groups[2].Value;
+        }
+    }
+
+    /// <summary>
+    ///     Priradi linku prichodu a/alebo odchodu podla toho, kde na useku
+    ///     &lt;<paramref name="from" />, <paramref name="to" />&gt; lezi nasa stanica.
+    /// </summary>
+    /// <returns><see langword="true" />, ak sa linka niekam priradila.</returns>
+    private static bool Assign(string line, int from, int to, int position,
+        Action<string> setArrival, Action<string> setDeparture)
+    {
+        if (string.IsNullOrEmpty(line) || from < 0 || to < 0 || from >= to)
+            return false;
+
+        //do stanice sa po tejto trati prichadza, ak usek v nej alebo za nou konci
+        var arrival = position > from && position <= to;
+        var departure = position >= from && position < to;
+
+        if (arrival)
+            setArrival(line);
+        if (departure)
+            setDeparture(line);
+
+        return arrival || departure;
+    }
+
+    /// <summary>Poradie zastavky s danym cislom stanice (SR70) na trase vlaku, alebo -1.</summary>
+    private static int IndexOfCode(int tt, int[] stopStation, int count, string code)
+    {
+        if (!int.TryParse(code, NumberStyles.None, CultureInfo.InvariantCulture, out var key) || key <= 0)
+            return -1;
+
+        for (var i = 0; i < count; i++)
+            if (TTNative.TTStKey(tt, stopStation[i]) == key)
+                return i;
+
+        return -1;
+    }
+
+    /// <summary>Poradie zastavky s danym nazvom na trase vlaku, alebo -1.</summary>
+    private static int IndexOfName(int[] stopStation, int count, List<string> stations, string name)
+    {
+        var wanted = Normalize(name);
+        for (var i = 0; i < count; i++)
+            if (Normalize(NameOf(stations, stopStation[i])) == wanted)
+                return i;
+
+        return -1;
+    }
+
     /// <summary>Zostavi datumove obmedzenie priamo z TT.dll - bez parsovania textovej poznamky.</summary>
+    [SuppressMessage("Performance", "CA1806:Do not ignore method results")]
     private static string ReadRunsBits(int tt, int tr, int myStation, DateTime validFrom, int totalDays)
     {
         var bits = new StringBuilder(totalDays);
@@ -321,6 +413,7 @@ internal sealed class TTReader
         }
 
         TTNative.TTError(); // vycistenie pripadneho kodu 18 (datum mimo rozsahu)
+        
         return bits.ToString();
     }
 

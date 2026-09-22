@@ -266,6 +266,8 @@ public sealed partial class ELISBridgeClient
                 Variant = VariantNotSet,
                 Track = DefaultTrack,
                 Operator = GetOperator(source),
+                LineArrival = Line(source.LineArrival),
+                LineDeparture = Line(source.LineDeparture),
                 ZaciatokPlatnosti = validFrom,
                 KoniecPlatnosti = validTo,
                 Arrival = ToTime(source.ArrivalMinutes),
@@ -365,6 +367,23 @@ public sealed partial class ELISBridgeClient
 
         return train.StationsAfter.Count == 0 ? Routing.Konciaci : Routing.Prechadzajuci;
     }
+
+    /// <summary>
+    ///     Linka pre pole <see cref="Train.LineArrival" />/<see cref="Train.LineDeparture" />.
+    /// </summary>
+    /// <remarks>
+    ///     Berie sa linka integrovaneho dopravneho systemu ("R50", "S2"), nie traťové číslo -
+    ///     to je interne cislo trate a na tabuliach sa nezobrazuje. ELIS ho posiela tiez,
+    ///     v <see cref="ElisTrain.RailLineArrival" />, keby sa niekedy zislo.
+    ///     <para>
+    ///         Formular detailu vlaku povoluje len alfanumericke znaky, najviac 20 - co
+    ///         neprejde, radsej vynechame, nez by sa do grafikonu ulozila neplatna hodnota.
+    ///     </para>
+    /// </remarks>
+    private static string Line(string line) => LineFormat().IsMatch(line) ? line : string.Empty;
+
+    [GeneratedRegex(@"^[a-zA-Z0-9]{1,20}$")]
+    private static partial Regex LineFormat();
 
     /// <summary>
     ///     Prida stanice do trasy. Nerozpoznane a vedome vynechane stanice sa preskocia,

@@ -118,13 +118,31 @@ internal static class TTNative
     public static extern int TTTrOwner(int tt, int tr);
 
     [DllImport(Dll)]
-    public static extern int TTTrLine(int tt, int tr);
-
-    [DllImport(Dll)]
     public static extern IntPtr TTOwnerDesc(int tt, int lang, int owner);
 
+    /// <summary>
+    ///     Trate, po ktorych vlak ide, ako retazec trojic <c>cislo:odKodu:doKodu</c> zretazenych
+    ///     dvojbodkou, napr. <c>190:5616640:5613600:180:5613600:5617915</c>. Kody su SR70.
+    /// </summary>
+    /// <param name="stFrom">Index stanice, od ktorej filtrovat, alebo -1 pre celu trasu.</param>
+    /// <param name="stTo">Index stanice, po ktoru filtrovat, alebo -1 pre celu trasu.</param>
+    /// <remarks>
+    ///     Cislo trate je traťové číslo (KCP), nie linka IDS - tu drzia data ako poznamku vlaku,
+    ///     pozri <see cref="TTTrRem1" />. Vracia ukazovatel do zdielaneho buffera.
+    /// </remarks>
     [DllImport(Dll)]
-    public static extern IntPtr TTLineDesc(int tt, int lang, int line);
+    public static extern IntPtr TTTrLines(int tt, int tr, int stFrom, int stTo, int flags);
+
+    /// <summary>Pocet vseobecnych poznamok vlaku.</summary>
+    [DllImport(Dll)]
+    public static extern int TTTrRem1Count(int tt, int tr);
+
+    /// <summary>
+    ///     Jedna vseobecna poznamka vlaku ako hotovy text, presne tak, ako ju zobrazuje TT.exe
+    ///     (napr. <c>linka R2 [IDS PLUS] (Žilina-&gt;Čadca)</c>).
+    /// </summary>
+    [DllImport(Dll)]
+    public static extern IntPtr TTTrRem1(int tt, int lang, int tr, int idx);
 
     [DllImport(Dll)]
     public static extern int TTGetOwnersCount(int tt);

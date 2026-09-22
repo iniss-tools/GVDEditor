@@ -59,8 +59,9 @@ public sealed class ElisResult
 }
 
 /// <summary>
-///     Jeden vlak tak, ako ho vracia TT.dll - este bez naviazania na entity GVDEditora.
+///     Jeden vlak tak, ako ho vracia TT.dll - bez naviazania na entity GVDEditora.
 /// </summary>
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public sealed class ElisTrain
 {
     /// <summary>Hodnota <see cref="ArrivalMinutes" />/<see cref="DepartureMinutes" />, ked cas nie je uvedeny.</summary>
@@ -93,8 +94,26 @@ public sealed class ElisTrain
     /// <summary>Cislo dopravcu (pole ONo) - stabilnejsi kluc nez nazov.</summary>
     public string OperatorNumber { get; set; } = null!;
 
-    /// <summary>Cislo linky, ak ho dataset obsahuje (inak prazdne).</summary>
-    public string Line { get; set; } = null!;
+    /// <summary>
+    ///     Linka integrovaneho dopravneho systemu, na ktorej vlak do stanice PRICHADZA
+    ///     (napr. "R2"). Prazdne, ak stanica do ziadneho IDS nepatri alebo vlak tam linku nema.
+    /// </summary>
+    public string LineArrival { get; set; } = "";
+
+    /// <summary>Linka IDS, na ktorej vlak zo stanice ODCHADZA. Pozri <see cref="LineArrival" />.</summary>
+    public string LineDeparture { get; set; } = "";
+
+    /// <summary>Nazov dopravneho systemu liniek vyssie, napr. "IDS BK". Prazdne, ak linka nie je.</summary>
+    public string LineSystem { get; set; } = "";
+
+    /// <summary>
+    ///     Traťové číslo (podla knizneho cestovneho poriadku), po ktorom vlak do stanice
+    ///     prichadza - napr. "190". Na rozdiel od <see cref="LineArrival" /> ho maju vsetky vlaky.
+    /// </summary>
+    public string RailLineArrival { get; set; } = "";
+
+    /// <summary>Traťové číslo, po ktorom vlak zo stanice odchadza. Pozri <see cref="RailLineArrival" />.</summary>
+    public string RailLineDeparture { get; set; } = "";
 
     /// <summary>
     ///     Datumove obmedzenie ako retazec '0'/'1' dlzky <see cref="ElisResult.TotalDays" />,
