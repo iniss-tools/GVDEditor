@@ -226,7 +226,7 @@ internal sealed class SdDynamicField : UserControl
 
         // [ zoznam / cislo / vyraz (jeden z nich viditelny) ][ ƒ ]
         var basic = (Control?)combo ?? number!;
-        _expr = new ExTextBox { Visible = false, HintText = Resources.FStateDgm_VyrazTip };
+        _expr = new ExTextBox { Visible = false, HintText = Resources.FStateDgm_VyrazTip, Font = GlobData.UsingStyle.TabTabEditorScheme.Font };
         _fx = new ExButton { Text = Resources.FStateDgm_Vyraz, Width = 28, Margin = new Padding(3), Font = new Font(Font.FontFamily, Font.Size, FontStyle.Italic | FontStyle.Bold) };
         new ToolTip().SetToolTip(_fx, Resources.FStateDgm_VyrazTip);
 
@@ -588,6 +588,7 @@ internal sealed class SdStateEditor : SdEditorBase
             new SdEditorContext.Item(Resources.FStateDgm_Wait_Odj, (int)StateDgmWaitEvent.Odj),
             new SdEditorContext.Item(Resources.FStateDgm_Wait_ZCV, (int)StateDgmWaitEvent.ZCV));
         AddRow(Resources.FStateDgm_Wait, _wait);
+        _condition.Font = GlobData.UsingStyle.TabTabEditorScheme.Font;
         AddRow(Resources.FStateDgm_AutoCondition, _condition, Resources.FStateDgm_AutoConditionTip);
         _errors.SetIconAlignment(_condition, ErrorIconAlignment.MiddleLeft);
 
