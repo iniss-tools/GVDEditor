@@ -227,7 +227,7 @@ internal sealed class SdDynamicField : UserControl
         // [ zoznam / cislo / vyraz (jeden z nich viditelny) ][ ƒ ]
         var basic = (Control?)combo ?? number!;
         _expr = new ExTextBox { Visible = false, HintText = Resources.FStateDgm_VyrazTip };
-        _fx = new ExButton { Text = Resources.FStateDgm_Vyraz, Width = 28, Height = 23, Margin = new Padding(3), Font = new Font(Font.FontFamily, Font.Size, FontStyle.Italic | FontStyle.Bold) };
+        _fx = new ExButton { Text = Resources.FStateDgm_Vyraz, Width = 28, Margin = new Padding(3), Font = new Font(Font.FontFamily, Font.Size, FontStyle.Italic | FontStyle.Bold) };
         new ToolTip().SetToolTip(_fx, Resources.FStateDgm_VyrazTip);
 
         var flow = new TableLayoutPanel { ColumnCount = 2, RowCount = 1, Dock = DockStyle.Fill, Margin = new Padding(0) };
@@ -243,7 +243,9 @@ internal sealed class SdDynamicField : UserControl
         flow.Controls.Add(host, 0, 0);
         flow.Controls.Add(_fx, 1, 0);
         Controls.Add(flow);
-        Height = Math.Max(basic.Height, _expr.Height) + 8;
+        basic.SizeChanged += (_, _) => UpdateHeight();
+        _expr.SizeChanged += (_, _) => UpdateHeight();
+        UpdateHeight();
 
         _fx.Click += (_, _) => SetExpressionMode(!_isExpr);
         SetExpressionMode(false);
@@ -259,6 +261,13 @@ internal sealed class SdDynamicField : UserControl
 
     /// <summary>Hodnota sa zmenila.</summary>
     public event EventHandler? ValueChanged;
+
+    private void UpdateHeight()
+    {
+        var h = Math.Max(((Control?)_combo ?? _number!).Height, _expr.Height);
+        _fx.Height = h;
+        Height = h + 8;
+    }
 
     /// <summary>Prepne medzi vyberom/cislom a volnym vyrazom; tlacidlo [ƒ] je v rezime vyrazu zvyraznene.</summary>
     private void SetExpressionMode(bool expr)

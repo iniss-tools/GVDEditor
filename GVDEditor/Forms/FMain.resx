@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -125,6 +125,22 @@
     <value>False</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tsmiNew.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAJRSURBVEhL7ZTda5JRAMZH/RHdd9PfEV3kV7TFbAWjaMUqd7Goi7UxwW7CUrLVEpq+LnMTs9Gg
+        RZu+Np2aiZY5Suf8YKWwkV8YS3MVPvFKSh4lLT/oYg/8Lt5z3sPv8HDO6eraTSdzcUzGHRJOpAZHZWgn
+        jOP8+ASnLB4S3kktmN1wrobaysKyG4Lxu8mymNkN+VO7YFwV4k5SFl+VKNGpMK5dcUfSkJgZ/32u9N0o
+        tdKQuB35v8VkZWSV9aiVhsTtSNvF4ddqBBz3UCgUKsYbEpOVkVWWkCj02MmlEXKpEFt7jvVXcth1J+B4
+        3A8vfQ0RjxY+6y1spzcwKqXqi/8miagbNu1xvHl6Ds65fmSjcnzbUsL/Yhgh2wicc6eKm7Kthlsrjnhm
+        sGa+BKQ1NQmuXME78w34osn64npVR6Kb+JKJwWsUwqI5hlRAUiUssf1hEq75M7DoBrBEHT74R3EjiX90
+        wjrLx/f4dJWsmodYmeHDqGCdbFoMFOB8cgGZiKyGqJKEXwyjum9Hr+fvbYEY8CyOIO4TV4lIUgEpaNXR
+        LZFItKdp8edEsFg1UyMpIikk1bBouvMGJbu7aXFq0wv7o9NwzQ8UDxApK5EJ34ZttverRdNjXqRYB8ri
+        f2FMSsEdiMEf/YSXS+LilSGFJdbNwz9oiiP6dZFaF+MUq8eh78sGrZdzPlqQYx4PhrfPzubfGwV5m7Y3
+        b5his8l1Tcek4u6nFRyaVrDu0xTXZNfxswzLD47IDQr2oIni3TQpDu0j17U0zKk1TfMmTSredXKulJ9B
+        fnIy1WMb3wAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="tsmiNew.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
@@ -134,7 +150,17 @@
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 6</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tsmiOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAADrSURBVEhLY2AYBYMG/J/P4PV/AcPj/wsY/mPg+QwN6OpJBjgNp5YlGAaShx//X8jgiW42GGBR
+        TC5+hG42GGBRSDZGNxsM0BX93yH+//9J9f//T2mQg1/8P6UejduCVVzoGkjHJzU+/9/vwILdgs1CmBpI
+        x3/+X9Vmw27Bbil0xeTg63DDMSw4pIiumAysuRK7BQsZKYlcJKxeg92CFexYFJOBT6v7YbdgPT+mYnLw
+        SXVF7BZsF8NUTDr+9P8/AyO6BZDCbp8sumJy8G4Uw8EWLGTwBJUj/4+poCsmDR9Vef3/pJo+uvmjYOAA
+        AK1KUnbu0/3HAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tsmiOpen.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+O</value>
   </data>
@@ -177,6 +203,15 @@
   <data name="tsmiImport.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsmiImport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAADJSURBVEhLY2AYBQwMDNOqXP5TE6ObjxOAFH8910oVPGoxXjBqMSWYJhZ/Odvyf/+8BAxxmlr8
+        4VTT/82Tw8EGo8uhY3TzcQJChr0+Wvd/ZXcgvIBAl0fH6ObjBPgMe7K/8v/CFh+UkgldDTpGNx8nwGXY
+        7e3F/2fXuaNYSipGtwsFYLP4/Nrs/zOqXTEMIhWj24UCQAoGjcUDFtQw/ORAFf0TFwwPSHaCYXABMiWC
+        /haD8IAUmcTiUYvxglGLKcEkW0xNjG7+yAQAPyAzydhLsPoAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="tsmiImport.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
@@ -188,6 +223,15 @@
   </data>
   <data name="tsmiSave.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="tsmiSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAC2SURBVEhLY2AYBaQAkxm3/+v3nPqv2bATjHPm7/+/Yd9Rghikz2TG7Yem024poZuJAoi1QM3I
+        AozRLCBsCRUs+G884859dHPhgBoWgDC6uXBAFwsMJ178r9mwC2xB4KS9/9fsxbQAGU/aeoo0C6iB0c2F
+        A3SF5GJ0c+EAXSG5GN1cOABJdh959Z9cANJL0IJZZ96CFX/++u3/89dvicIgtSAA0jtqAVY8wiygeTKl
+        BkY3dxTgBQDyH/J6Nr1Y2gAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="tsmiSave.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+S</value>
@@ -204,6 +248,20 @@
   <data name="tsmiAnalyze.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsmiAnalyze.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAHgSURBVEhL7ZRNSwJhEID3N/Tj6mdEt1Ay6OuiaKZkB1MRV2PVIATTciHKDoGueNHqolAHk8q2
+        D8yvJmbCWF9d0d3tEj4wLKzzzsPMvCvHzeA4btnqBS2xsu3PsbWmAotMC56xeoUvizNwxdabGK3i948m
+        2FDu8OfZmhOhVYzokusRI5rlesWIJjlbZBLYG64Mtr4qWsRqzMRjYcXB8+pQ7J+WwRpMw6qLB5PNB5ue
+        CMTTWXh+eR04q0vMclO5gzU3D2FRgmxFhkK9R09elOj9beX+N9cwMXaExcXrByg+wVBkyjX6vSG/Ub4u
+        sXLEOF4+kweh2ICFnRzMK6Iv58U8jV23WAnuEse6GCoNSJXibFWGrb0DyjdMbLL7aKfsiJUh1btgtvsp
+        X5dYOWqLi//pmC+rd1z5g45jqSzd3ui4HWfycHhySfmGifu3Gm8vO2IMsVQDizMIjw2Z8nE1bH1VWDH7
+        5+FJSGBxhiCUydFFou+4KlOnKMXz+9FjaHe6EEhcaBePAr9T/GRwl2a7j544XuzUF0uR3BNOgCDmjBWP
+        o9vtgVdIknx9NwJLdu8c6xiJXjHSanfAHToiudnhL7COkRghRpqfLdigVQSKrGMkRomR+Flhuh0bFS4+
+        Obn4X/MNifr6PKRpj3kAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="tsmiAnalyze.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
@@ -219,11 +277,25 @@
   <data name="tsmimAddTrain.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsmimAddTrain.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAHuSURBVEhL7Za7SgNBFIYD+gReXsHGG1ZeqnRidiZ7RgiivoBg5aURfBOJ1y7gnFXboIVvYCWo
+        EWsVtE+I/CEb4tkx2d0EbPLDB8POOednd2bnTCYzUAdl77LDXuAvKWs2deDvAIyVNYuYk/E9S1kzq6w5
+        U0yfiqn+Bx+IyV/lZ2R+YukbPaaYzhVTzWH0FzXNdGqsGZX1YsmzZkoxVRyF4/KCGrJuRzVNvx3FEqGZ
+        vvS1npT1ncIn0kzPskhaPKbXlVJhXPpEpJkuZHKvYM2lzy9hR8bZSFvl7Xr57bYBxnLeQS1/lZ+Tfi01
+        fxmZFOHg/rAeCmM578JjOpF+DeEAaPyLjiRJGmPUdh4yjRMpGuwkpXFdX64uSF985k0ZGIJ1hEHI0UOx
+        ZYxx+1ynNddM69I3owN/XwaGYBPFFWJlfojHtCd9M3goA/ttrKzZlb54441IYJN+fWoV+GvS9/82V6FU
+        GFJM7zLYRUpj9+8E4WhzJERIZWzNsfRrKRf404qpGkkSpDgyq11bZNy3TkhR+kS0XCqMKKYnR3JaKrjJ
+        SB+n0LzRxB1FEpHoIhAqZ82EYnqUxeKCy0Ri01DN2wjWvGuPbqOKHYwlk/USC7sd/bRL23xHTNfdm0Y4
+        ZHD6oMuEF3qMc4E/jzkZP1C7fgCnjfUJ6BQpzgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="tsmimAddTrain.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Insert</value>
   </data>
   <data name="tsmimAddTrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+    <value>214, 22</value>
   </data>
   <data name="tsmimAddTrain.Text" xml:space="preserve">
     <value>Pridať vlak...</value>
@@ -231,41 +303,70 @@
   <data name="tsmimEditTrain.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsmimEditTrain.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAD/SURBVEhLY2AYBVDwpKjI+UlJiSW6OFXAsfmLA54WF/95Wlz843lxsSe6PEVg/b4jYRv2Hf29
+        f+W6w0+Li/+DLKGaT/7PZAi9vzzg5IZ9R39t2Hf0P9SSP09KSpzQ1ZIMQIb/n8Hw+/8Mhv8PVvifgVry
+        GxRc6GpJBv+nM0T8n8HwB2Q4DN9fEXR04/6jEehqSQbILkfCIMti0NWSDEYNxwpGDccKhrDhCxj80HMo
+        mD+dgfIcCgL/D7Dv+r+C+RTVXQ4CSxpU+N5t5/n+/yD7D6gl1DMcBHprjfPCo53/v97K++P/fvYd/+cz
+        +KKroQhMrNUPA1myqkOJH11uZAMAs1koFgDS8i0AAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="tsmimEditTrain.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Shift+Insert</value>
   </data>
   <data name="tsmimEditTrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+    <value>214, 22</value>
   </data>
   <data name="tsmimEditTrain.Text" xml:space="preserve">
     <value>Upraviť vlak...</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 6</value>
+    <value>211, 6</value>
   </data>
   <data name="tsmiDeleteTrain.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsmiDeleteTrain.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAADkSURBVEhL7ZaxDoIwEIZZFB+EzZFQV+Kx8AA+jC+lOCgP1jrXXEOJngVawsHSL2Hq/fe1TRua
+        JJHI2ug6SxWcrvpy3NOxKTBjsnWW0rFRMCir4qFAaFWJZ0gDnec7CeJusiBaXZYHWjMIzrYLmk+CaHxW
+        biYMovnOYi9aN0g369tPg4mVk5V6ZZyEyBeTWnzki0stY3I2qcUph+LVn3wOqcUtZ5ZaOjm5LigtWjYp
+        YsRnsr3cYudB4t5ql/TNfbhcUvbr5NPYpyaIkIYhtaPMaTQn88d2v8WtHgIIylZ/+kQiS/ABSfDTymn9
+        QQkAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="tsmiDeleteTrain.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Delete</value>
+    <value>Del</value>
   </data>
   <data name="tsmiDeleteTrain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+    <value>214, 22</value>
   </data>
   <data name="tsmiDeleteTrain.Text" xml:space="preserve">
     <value>Odstrániť označené</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 6</value>
+    <value>211, 6</value>
   </data>
   <data name="tsmiDuplikovat.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="tsmiDuplikovat.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAADBSURBVEhL7ZGxCsIwFEX72Q7qD0RQQVws1EWEjOJPCPozoggOTbmDUm6TNC/NoDQHzva4hzZF
+        8Q9MVGkkzlbVlTeiwNj9bYLErSp1PV/vL7wjRhp+PF9mUep6uqxuvCVCGgbeOL9Nn5vDqRNiP2FvvH3U
+        B27VTpvt8dyJucLAGucjH7jFCOK+L+e/1DY6DELiNgeHQUw8SRhI44PCLjliMzrsIodd5jDviMlhlznM
+        O2LGGQ41efg7GMo4wynk3Z+kAThO2dpxBPMJAAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="tsmiDuplikovat.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+D</value>
   </data>
   <data name="tsmiDuplikovat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+    <value>214, 22</value>
   </data>
   <data name="tsmiDuplikovat.Text" xml:space="preserve">
     <value>Duplikovať</value>
@@ -402,6 +503,24 @@
   <data name="tsmiVlastnostiStanice.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsmiVlastnostiStanice.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAALASURBVEhL7ZZNTxNRFIaJujAx/gBX/gaX/gjdKCYYohtdGROrxkKh0ytYQNrCDEYUO7QzhcRQ
+        FsVULZUP0xqECBg1RajQKEgUmhKhFGwRe8y52obeK0z5iIaEk7yb3nOfZ87cmWYKCnZLEUL26S3yCdLQ
+        8k6QXGP62uZzhJADbN+O1Y3bzYcNVoeuXFRmRMWzMDj6CTCS6lkUJDVaZnNexR5235bLUN90RJCUqvJ6
+        JdHk9i29n5yB+ArkZHw6Bq6O3mVjvbIsiOr9Mqt8lOXkXSU2+ZhJUtsR5vb3JafnFjkhmy/flsAbGEoJ
+        orosSGp3qaX5OMv9a2XO7+Yd10DF3dbFzpdvVqPxZA48EJqFYnM3nDQ8oSmu6oYXI9GcnlhiBQKvR9Pm
+        xocJQfz9HBS63ftZXwEhzoOlVsd50qBO1crt8b634zCf/MlNhEGRsW0KLL55mvK2z/Q3tg+zkErDcHgS
+        RHwORDVqqHPorltch7LiMpsjLrf7E+z5fYx9B6IMwWmTPzshJiPNZO0a9grKIIS/JnJYyEYHurLiEovM
+        XS1Kz97qAp19BMwdUU62XrD3ihyCosouymC56NpQjJMigAXnG509BMQ1zHE1xXjLNjMpG9xbaPJzXE3x
+        2nPbTlhuXuLgDGwre+I98brinQjLzUvMvpubze4VD0SSsLKahv5IkoNv1LMl8SmhE2oez1EAArFSP9Kc
+        MBO2p8Y7R/92Wa6mWNfYDyWtEQrBKeg0E+tPzPboWyJw7V4/x9UU0y+Nql6o9sY4iVZwT7H5OQRDsxxX
+        U4x58HQMzlQ8A33LBFT/ue0bBXtw0qLKHrD7whwvb/GH6RhcMDnhkhSkZ86+o2yw57IUhIsmJ93L8vIS
+        4websU6Fjp5X3JpWcA/uRQa7pim2t/mhzuGhH2zsmlYWUgCS8ogy2DVO/C+TFf+P+gVh6DWLT+ewogAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
   <data name="tsmiVlastnostiStanice.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+L</value>
   </data>
@@ -415,7 +534,7 @@
     <value>False</value>
   </data>
   <data name="tsmiGrafikony.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>136, 22</value>
   </data>
   <data name="tsmiGrafikony.Text" xml:space="preserve">
     <value>Grafikony</value>
@@ -424,7 +543,7 @@
     <value>False</value>
   </data>
   <data name="tsmiLanguages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>136, 22</value>
   </data>
   <data name="tsmiLanguages.Text" xml:space="preserve">
     <value>Jazyky</value>
@@ -433,7 +552,7 @@
     <value>False</value>
   </data>
   <data name="tsmiMeskania.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>136, 22</value>
   </data>
   <data name="tsmiMeskania.Text" xml:space="preserve">
     <value>Meškania</value>
@@ -442,7 +561,7 @@
     <value>False</value>
   </data>
   <data name="tsmiTypyVlakov.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>136, 22</value>
   </data>
   <data name="tsmiTypyVlakov.Text" xml:space="preserve">
     <value>Typy vlakov</value>
@@ -451,13 +570,36 @@
     <value>False</value>
   </data>
   <data name="tsmiAudio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>136, 22</value>
   </data>
   <data name="tsmiAudio.Text" xml:space="preserve">
     <value>Audio</value>
   </data>
   <data name="tsmiGlobalSettings.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="tsmiGlobalSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAQESURBVEhL1VdbTxtHGEVCVR7TvvYl/SV56i+oxEPfWiXNUypVAtzdtdU8JIGktnfNUqnYEsTe
+        SwxOwbm0gE1IuatUYIppSMMtUjF3Ag5eE4UmmugM2mV31raSyG2VI33SaHbOOZ6Zb2Y+19S8L2jmbnzi
+        b4wRe6CPHVd1+D3RL/XWdGHp4QFBaHK68H2j8gU7ruoIeeOJgZ5ZaopId/9BZG88wY6rGpo5/SN/g/KV
+        xGmFmYl1y3hmYo2gL9AYOy99c+NDlvfOkL+WTwU5rUni1KIup42R3keWqRnDvzwiqpw2RF4zRF69Cg6r
+        UxGB+ujZIK/I/obYpyAjaST+5rIqp4rZ37dchmxkJ7eIIqeKIUFfCtTrZ6ABrSCntUCb9aNI1CVqRUFf
+        SUSGXkWak/kgpz4PcqqR+inz0hTOjK2SnugYiTQliSToNNBGX2YsZ/2A/luZl1h+aEALmlS7LlHL+taI
+        nHqx3X/Xytb5zC6ZGv6bthey+6S7Y5T8cKmLPLgzTRYfbpDt9QKNxT83aB++9XSMkoW5POWACw1Tr8N/
+        z4CHwzR8IfxBkFPzwyX2D6YxsZfcigySrbUDsrfzvGRs5Q5IInKfxKRey9we0IYHvBzmgUb185BPL06P
+        Hs/SjO72EWq6t+02Y+Pp9iE1x8ztGtCENjwcpiYCHuUzSdCLUyOrlIA9xRLaZ7q6/JR0tg0YIqcdITp/
+        TBWfPN62vm/mnlFOZvx4z6EFTWizfg6EfPFfh36epyQkDfbPbtriu3ko8qpw3dP+MUISNC/6Vlf2rHGD
+        t6dJMjpBNaDV4osPsT4uSIK2O/vbBiWFm3rI0vyGJYiZwqgEx9sVHjDMcUi4SHOSakBLEvQdluNCwKP+
+        8zi7T0khQXcss8ipR5gly0GfKGgvzHHggAsNaEGT5bhQ2Vgrayzx+olx7sT4r+w+CXqUI5bjguTVd+xL
+        jTNrCsbb0iWXWuR1X6dtqRfeZamRCPbkQqKYgsheJBLMnckVP3yycJLZ95NTjuRCwrI+DriPU+74OOVs
+        x2lljyCRsKeIrrZ00W6K49T6XSeZGV97s+NU7gLBZYBLAZeDKV4uMKYrPECS0TGHRtkLpOKVOZcnMamP
+        mmM2rJl9pvTKDPWRxbe5Mis+EnN5OnMsIfYcyYMHAhmPNvrwDTM1TdlHor3UIwHYn8VwU/IZnjSR1wr9
+        iemTZ3E8R5MGGSvxGg20b8cmrD1FgAPuGz2LAFsI4DEXeX1ZDaUMPPLs8rExO7lJlJb+osQWArwily0E
+        ygFkidOuoKzRWtMFlDmsIfpQbYqcaoR4/fJblz6VgELO36Cccxd767TYw7dr34ZPs7yqgS1v0f5Xy1sT
+        roK+9T8q6P+3vzDVwmsXVRwUI9MgYwAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="tsmiGlobalSettings.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+G</value>
@@ -470,6 +612,16 @@
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
     <value>235, 6</value>
+  </data>
+  <data name="tsmiAppSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAADjSURBVEhL7ZExCsIwFIZ7PgWPoWhXBy3tCRxiFJwED6CLFFeF0kHoYmcv4GDPEInwHvTZlwwl
+        ASEf/EPz8vMlTRQFfDJNxDDOZDNeCuUy2jFJ5QDFcbZp8lul7vXTafJrpWbp9o1ifRq6yVW0qyX2GRQv
+        VnvlC+0K4h8O54IutTDNudl/isXxoea7ErM+1XQL2+0l1rLipTD6m8J1e4npjaWvGwOj5EKXEK7rTEz/
+        Bn1/o9hWBrrEtvc3im1loEtMD03f3yi2lYEuMcDNjGKAKwOmOTcLYjp3RhB/F3wFxQEffADw51GaNBY0
+        6wAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="tsmiAppSettings.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+P</value>
@@ -486,14 +638,35 @@
   <data name="tsmiStanica.Text" xml:space="preserve">
     <value>Vlastnosti</value>
   </data>
+  <data name="tsmiDatObm.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAABySURBVEhLY2AYseC4s/N/emB0e8EWf+/vpyketXjgLaYHRreXoaJ7zn9aA5Ad6PaOWowBjl65
+        B8bk8kFgaFlMDTC4LUYPKkr5IDC4LaYFGNwWowcVqXxsYHBbTAswavHAW/zw9Sea4sFnMT0wur0jBwAA
+        mNtLMI4x6v8AAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="tsmiDatObm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>202, 26</value>
   </data>
   <data name="tsmiDatObm.Text" xml:space="preserve">
     <value>Generátor dátum. obm.</value>
   </data>
+  <data name="tsmiStateDgm.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tsmiStateDgm.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAD/SURBVEhLY2AYBVDwpKjI+UlJiSW6OFXAsfmLA54WF/95Wlz843lxsSe6PEVg/b4jYRv2Hf29
+        f+W6w0+Li/+DLKGaT/7PZAi9vzzg5IZ9R39t2Hf0P9SSP09KSpzQ1ZIMQIb/n8Hw+/8Mhv8PVvifgVry
+        GxRc6GpJBv+nM0T8n8HwB2Q4DN9fEXR04/6jEehqSQbILkfCIMti0NWSDEYNxwpGDccKhrDhCxj80HMo
+        mD+dgfIcCgL/D7Dv+r+C+RTVXQ4CSxpU+N5t5/n+/yD7D6gl1DMcBHprjfPCo53/v97K++P/fvYd/+cz
+        +KKroQhMrNUPA1myqkOJH11uZAMAs1koFgDS8i0AAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="tsmiStateDgm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>202, 26</value>
   </data>
   <data name="tsmiStateDgm.Text" xml:space="preserve">
     <value>Stavový diagram…</value>
@@ -504,20 +677,58 @@
   <data name="tsmiTools.Text" xml:space="preserve">
     <value>Nástroje</value>
   </data>
+  <data name="tsmimStartupSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAQxSURBVEhL1ZbJUxtHFMbJvldlq8ohcU75Q3JKLrnkkFx8Tm6pCg6WND3CNTEJRGg001LZImLR
+        NjOtxREgmTVhE5aIkCHYliwEuIJTzsWpGLNoQMZ2deopRkgNNrLh4q/qXaZfv9983a+np67uaZUgjD9v
+        bfB8LHFqE+YDYbs52C+jgLP1pO8z19euF9j8QwuAkslfL3Pqiqu5ezWqTN0bjWbpxPkcbWuK3BeNSl78
+        jrzLzjuUoCBG5KJH7C/MJm7Qa1fXy9HjTd7BiCw2c7532HmHEjjF5kC625PYXsquVUM9ANXyUn3n2+y8
+        Q0s0eI93WKIbe6DuRBEjMt9i0t5i5xyJHObA9IXBhV1odp1G3BcAevUgqCC4XhWE8Ivs85okmRQ9N/tv
+        GZyO/0VtJqUgf+t5k82tFEBtJiVpbfB9zo7VJNGg3F28crsMXsqsUYzIpmRSPmJzd2Rt8L8mIy195lTo
+        HubVNna8JslIW8lcvFm1v5HOyaJkVE+xuaCzQvh1mddmQq7xzZHeDHU0BofYnJqEzYG/4325KnB64jqV
+        ee06mwtQjLTZkGt8C5pxLJaldj4YY/MeKVpHn5GR4jwjhIqKfagKDA3mbIpsyiiwLBoV9JPR/6HF0PWG
+        jMhcuH1iC8ZLne+dui8a1Ra29kMFUAlpba7mnkJm5h/q/P4cnR79cw88NbZMASQhdctmUlfPdcTLUIif
+        f+xeaz3p/YStv68eOHUBNDd3q1QAjpPz9C8098dud1fGYmaVpuDFKqAzkzeojVNu13ScSk450t7e0ruR
+        n1upKh71p2iX9fxD4ZUB++u29ukypxpYxh7971TraG+JbuQvVUNLkV2nUSVVcj49vrx3vDLPN3UX8yR7
+        4G0lCMKzEiJKZ2ussHB598zuF5OD+dKeK45hGu+fp1k4atl1Ci879ds1cFqQOXIFI/Iey6lSySlHvJ2W
+        WGFfp/sE5HW2RrexObguIRUaiIpG5Y69MXDJZvR/VZNTmdOCXZaDne4EfLkCztFNzJOkVB9+ha15oMJf
+        hJ+TODXUYYnpjwPVzo7oGJG4IHheZmvWJIxIwC32PYbTVdhXHfNkzPGN4yW2Xk0SDcrxth8iG/Nzt2iP
+        J1HEZk3HfEDv9SSLcCb3g/rtw7qE1JEnhoKwmWSTw0u0x5soypw6LtX73rcY1A8kpE30epPFSii8iM8+
+        pGOk/VrTx+BRshn827DE4BSg5ecn3MfAeRUUD+iYUwcP7NRaZDP4i7DMmNd0cFp+fsJ9zP4ADHewVx7Q
+        JU7rPxIoyM6TabjqYFlheQFecotIPOr9vbgAUGmgIPMkBj977Pwnlmj0f+poDBWy6ZsUGgqWF5wCFFYC
+        fmNlXus9UuiOJE5rAvhEX44CDPY8MbxE205HNuCowTln5xyZwDlGJGUz+os2+OTx5LK1wfslm/dU6z+0
+        4YLWhUTGUgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="tsmimStartupSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+    <value>205, 26</value>
   </data>
   <data name="tsmimStartupSettings.Text" xml:space="preserve">
     <value>Nastavenia spúšťania...</value>
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 6</value>
+    <value>202, 6</value>
   </data>
   <data name="tsmimStartINISS.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsmimStartINISS.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAHNSURBVGhD7Zm7S8NQFIeLgrj4GNRNqVPRJjctHQRBHAX3ro5uJTlpsWv+BUdXx67FqaCLgyb3
+        tnRQnAUnH5OLBa0YLMjpsbTN617IB9+Sx/n9Am25uc1kUlJSRsIEtAwX8vi4MjAOfcahZ3hwVuLVFXxe
+        en4fYOAr42CWG+VZfJ20oAcYeG8I8wBfKyVE+b822W1tE98jFURp7AfjcJq7PlnA90oBUfgfrSddwHGm
+        78zgGYkyXHS0urBdzbV38ZzEwAXH9Mvg0MhzcwPPix2i3CS+M892slfOPJ4bG0SpaXxknn2EZ8cCUSaI
+        l5owGc6IFKJEUD+ZgHPWra3hrEggCoTlm87tev7OmcOZoUIEh+2D7tmHODc0iMBoFNAqtqvbOD8wQ0HR
+        2vtZlpR4fQn3mBoiJA5fQlu2E8PjVDABe7jTRBBDk7BZ6FhZ3G0siGFJqOwDKPsRelb1S+z/jO7cVBZx
+        j6khQqJRQEsT1hbOD8xQUPgqu5RQdjHnL6eL7coqzooEokAQlX2hUfaVUtmXen9bRXPtdTwvdohyI1V4
+        Y0vdrUWlN3eV3V7v6C7s42ulBBVX9i8mf5lb6FjL+Lz0MA4XzDNz+HhKSoocfANTA9LmtHuZLAAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
   <data name="tsmimStartINISS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+    <value>205, 26</value>
   </data>
   <data name="tsmimStartINISS.Text" xml:space="preserve">
     <value>Spustiť INISS</value>
@@ -525,8 +736,30 @@
   <data name="tsmimShutdownINISS.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsmimShutdownINISS.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAPPSURBVEhLrVdLTxNRFG70T/ha+PgH6g+oDe290wbQUhZspEmJRov1BxgFFbdqXLggad0bBVE3
+        sFQewsxU0oIKbjTRtlhQY1Bb2pkx3y0zMmemTJvwJR+5mfP4mDvnnHvr87WJx729+6eDwUNvzpw5BWKN
+        Z9RvTyB3dByXOR/Ocr6cDYeLy93dhdVYrAxivRgOF2Gb53wYvjS+bbzx+4+ojE3kOztLpXhc+51MGn+v
+        XHElbPCBr8rY+GwgcJjmawkyY8nFSKS0nkjoVMSLiEGsEgpdonmbAt9LZizzoadn48/goCNpq0TsSjT6
+        U5WkTEs1oDKW+dzXt0kT7WTl2jVD+/hREGtq30nkkhlLUx0bZM4vrsRiGzSYsjI0ZJjAmtopV6LRHwrn
+        KaongELCd2lle9sVRs7FcLjkWnAy58/WEwmNBv29etWoPnjQsnDl1i0RQ/OsDwzoiiSN20RnAoET+a6u
+        EnUG63NzhqFpRvXhQ09hiOq/fhn12VlHHhCtNh8KHbOEFxi7WYzHHW+79eiRJVB7+dJTuDY2Zj3fSqcd
+        wujzBcZuWMIqY+8cwyGVMvRyWSTRcjmbrZkwqOXz4rm+tiZy7LRtJpOGwvmSEEWPvY1ECvS/q96/38is
+        60bl9u2WhSsjI5ateveuzQa+DYcLoq9RactnzzqEa8+fN3S/fHEE7yYM6oWCsNUmJhw2aCmMHfTNB4On
+        V3t7y9ShPj0tguuq6gj2Eq5ns43YV68cNmjhVPPhj6vwzExTYS9awq9fO2yrsdi3uUDgpA/nKY426lB7
+        8UIE61+/OoK9iBjAbauXursLC37/AVFcOGOpQ/XevcZeorhGRhwJmlEUl66LULfiyprFBSiS9G7z8mW7
+        E9ppbU0koO20Gz3bSZJyVh/LodBQKR6v0yRbmUzjrbFtk5MOERtTKaM2NWX5uw2Q4vnz9YVg8Pp/4Y6O
+        4xhn1BEUI3MbeHO3ba/cuWO9KYDCpD5grqvLPjIBlfOx9YEBx9jEwMfstaDrok9RuaDZsyaEqMshUU4k
+        NJmxpzZRAINkt2MRW2d+czfA5ra9oDgWI5EiOojqCsiSdOH9uXPfaaDFVEpUKqYahgOINTqAFtJOrvb0
+        fJcZG6R6NqiMpb2uPu3wU1/fpsLYKNVxYPuyl17Zg8veh2h0Q5Gk0ZYueyZwNcV1xfVW4kEUEr4pPh3N
+        2xJQcApj4+JC39+vYQBQEZOwlfr767nOzqLK2JOmhdQO0HtKMHg9y/kSzlPMW/MnDNYYuYok5TEc5vz+
+        ozR+T2AMD+/DeWr+aMMaz6ifF/4Bh6ybWLhJj3sAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="tsmimShutdownINISS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+    <value>205, 26</value>
   </data>
   <data name="tsmimShutdownINISS.Text" xml:space="preserve">
     <value>Ukončiť INISS</value>
@@ -534,8 +767,17 @@
   <data name="tsmimKillINISS.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsmimKillINISS.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAADHSURBVGhD7c6hDUIBFMVQBmME9l+BMcAfc2W/eE1qm75ex3Ecj+T7ef+epH8TA7X+TQzU+jcx
+        UOvfxECtfxMDtf5NDNT6NzFQ69/EQK1/EwO1/k0M1Po3MVDr38RArX8TA7X+TQzU+jcxUOvfxECtfxMD
+        tf5NDNT6NzFQ69/EQK1/EwO1/k0M1Po3MVDr38RArX8TA7X+TQzU+jcxUOvfxECtfxMDtf5NDNT6NzFQ
+        69/EQK1/EwO1/k0M1Po3MVDr33EcxzP4A5aFTZWc/hxEAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="tsmimKillINISS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+    <value>205, 26</value>
   </data>
   <data name="tsmimKillINISS.Text" xml:space="preserve">
     <value>Vynútiť ukončenie INISS</value>
@@ -543,20 +785,63 @@
   <data name="tsmimRestartINISS.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsmimRestartINISS.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAVESURBVGhD7VlZbxxFEF7uR0DiFJBsV68iJBD3IU6Fh0T8AU4hIXEpEscLkARbXdMcr4QjEYh/
+        BFKIOBI7joOI8Xa1QwhP2LG9u15UPbPGrulZzx5jQMonlWSNv+ru6q6re2u1i/gPg2z9dkrUN4OIM/ox
+        OU4Pcwd3XDs/uesW+b1SeKv3E0K3pLScgVfkGD04VHsyXpMMfM3Gdmu1SyRv7GAjPMJqZMFS/iphwDJz
+        vYFVSlTHI8x61C93n6ldJvljRUkjyhhwIa+nWw7hlLeN3VJnbOi+cf8VDuEoIXTyCxjVAOg6A2sedcuj
+        OjL7duMqqTsSFqy+gQx86womH4cB64YgrBCqY2cn1I1Sfyg0beNWhzCfDpyfcAgD2hG9TZK56mmyu66T
+        YwyE3239JkKYo3KL39IATqNk4CAZOEMIqx5VoTHZSUz9auvXyHFKgX2eEL7fYuf5f62yBmwEWfUkIfzk
+        TJqVCoTHP3rC3nGl1N8SDtURl6W8vKg2x4ND9apDOLAhO5U2gNG1tUt5DEK94k2ha12gBD6Tun1BFh4v
+        PN5E864scJXu8XtGsAxiQA9kG/cRwlkyuiBNq46z+lGpFwUXFI8wzUpyIJ8Ed/FuUt8m9dgI5gxjAMPb
+        ep1Q/xEP8lDwTvKJSb0cyKiXetUyIksLVt8pdXpwRu8f1gCGM417i1K1R73qjH5e6uTgUU0RwpocgIOZ
+        /VXyJf48AFfLb4PAGfUWFQa2mpb8TeDmisu6VPQIbZ/Ad9vReLGbcPajaFCrzoKpPyx11sHR7kwsbXKJ
+        109JflUgq/YSN3tyHem3Q5K/jtDmSiWWZIujGzP4pAnVL7l1pDIv+QGh38mTWRa5ekp+1SCjJsjAUmQ9
+        XV6r5G/q1TcK+z9nB8mvGk3TeCTWvofKbfXTkl8jo99xqBalArcK3FZIftXgOf3mNqUnix7Vm5LPhcjG
+        Wl2PyknudoEQzsn1pP2R/kRymXyI3SWicFxytwtk4GRkPZ1ob8Qfo7etRP8sudsF3jy5nmyT86mUEvVx
+        Qd8/J7nbBU6ZkfUsE6qPJDcEcUiZeYtXK38xiKBrd19eFMTcbkh+jVMTJfkg5vI9b9Vdkl81mrZ+T6wj
+        DncUq/ZKfo1fzCQ5M4DT1ruSXzW4sy0qZOcmdt4s+QE+ifocGzEluVWDMJqBWIpj0iN8RZi/FflEt6LH
+        VhGCO0dSukO94ow6LPnr4FY13sZC26M+XupGNCKydnqGTP5OEtp6Aw9KnU0gA6elYip8F1avS/64QQb2
+        FaTzNTJwSvJzIAMvFt2IOKX2vVCMCG7gxDPNRll2qJ+TOjlwzncIs7Gq7BPoOITzZGGH1BsVNKl2Eo8d
+        SZ3Zt5nS9YiMeqKgL2IjVtiIcZ5EtvPnC1yHpV36WaUHb/s9bIUAa5FRr40S2CFgDexLK25s54MsU6K+
+        kLpbgp/zHMKPfXYlBDZnp2FSbJYqZyjpN376Uj30fSS7ZnJxKwosvi+0Q51ANe2Neq9p1N0xX+XehtsD
+        j/r9rEixi+ZS5T/jhjnn/AeN6+VYAyF9MYPf+p/Euixlr2g8ORt+IpP5dTcpaA+E8FxzHNhyPUOBT8Ih
+        /BC7M1cg3C4fG3nnJUJMJOpwlp2KAm5o8WkQt5sInw/t82XAr3ceYSb73aDQhwcQHmOZH5Q5ncr5KkFW
+        7F7g0p72TuHJXS6sr3BjlvVdM96oZ0dJxyPBW/UQd4jZT1HphYN/6EhTYCe87aenxd96MXTGofqSLDwg
+        x/tXwRcNfiDjdxuXwIeUwKcs/Hf4hmoP/+4m9S7i/4y/AYcjAZtReo7kAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="tsmimRestartINISS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+    <value>205, 26</value>
   </data>
   <data name="tsmimRestartINISS.Text" xml:space="preserve">
     <value>Reštartovať INISS</value>
   </data>
   <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 6</value>
+    <value>202, 6</value>
   </data>
   <data name="tsmiRun.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 19</value>
   </data>
   <data name="tsmiRun.Text" xml:space="preserve">
     <value>Spustiť</value>
+  </data>
+  <data name="tsmiInformation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAIgSURBVEhL7ZbNThRBEMcngSdQOWnC9EC4KB+eBBON8SXIijG+AsgD8AiAOzWYyMcK4cCJgI+g
+        J84mJioeOAKJ2127CWSWNjXLbrC6mp0ZPPJPfslk6uOf3e7p6iC41TV6sWD7h2L9NEpwJopxNiPBmcEV
+        PUUxnn9jqRUcV6BrCsypAmM9nLRzcIzXF9bIB31Pgf6kwLQEIx8tBXrjflXf5f1yaSgxjxTgodA4L7+o
+        B+97rdqmpi40K8qf4ap5yPuLor8oBPNTaFIS/D28bAa4jyMFetMtdnm+1bDPNhvOexm9wX3+Ee3IPBvp
+        7eemTS9sxpv9phMXaA0mjcfcr6vLT4YXOSwdnNmOFg/OnLhElOA698tEB0D7W3SLOFM1tF+PUvvlKLWT
+        NXTiHk7EQ4ZOJCH5vxJCfZL7BnT08UQfE6toX+81M+iZx31EMVa4b6BinOeJPiq7ze4a0zOPe0nwHfcN
+        6KWT6KGscQQ4x32DCPAVT/RR1jiMzTT3LbS5ShtLmyvYsX0KzDFPlihpLH9OJDrahAKHMsYh4Br36yp6
+        j6MKTMqLOC+3G3b723kGPfO4QNpzROb91UUIY1zlPo4efKzfUWB+8OLy4CHdZLiPKBreNMTdJoXJfxHo
+        KKrqEQXmu9AsF3SZKGzaEd1GLte854y+Qko7mJaM9yss2u00T3uMzWPK6bl7S2nH9tHpQ1Ome6GPsRJW
+        608oxtNvdVV/AX8Jice0Qya9AAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="tsmiInformation.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>F6</value>
@@ -585,11 +870,12 @@
   <data name="mainMenu.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="mainMenu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 2, 0, 2</value>
+    <value>5, 2, 0, 2</value>
   </data>
   <data name="mainMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 23</value>
+    <value>1218, 23</value>
   </data>
   <data name="mainMenu.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -601,7 +887,7 @@
     <value>mainMenu</value>
   </data>
   <data name="&gt;&gt;mainMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mainMenu.Parent" xml:space="preserve">
     <value>$this</value>
@@ -615,6 +901,15 @@
   <data name="tsbSave.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsbSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC5SURBVEhLY2AYBaQAkxm3/+v3nPqv2bATjHPm7/+/Yd9R
+        ghikz2T6rYcm024qoZuJAoi1QM3IAoxRLCDGEootmHH7v/GM2/fRzYUDalgAwujmwgFdLDCcePG/ZsMu
+        sAWBk/b+X7MX0wJkPGnrKdIsoAZGNxcO0BWSi9HNhQN0heRidHPhACTZfeTVf3IBSC9BC2adeQtW/Pnr
+        t//PX78lCoPUggBI76gFWPEIs4DmyZQaGN3cUYAXAACvjfJxrcFl0gAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="tsbSave.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -626,6 +921,17 @@
   </data>
   <data name="tsbSave.ToolTipText" xml:space="preserve">
     <value>Uložiť (Ctrl+S)</value>
+  </data>
+  <data name="tsbOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEFSURBVEhL7ZSxSsNQFIZPQCy4CB0UBIfQ6r108RGc4+AL
+        +CoOfRKTbtWlg4NCoILQknvngrsuQre6yjklGQK552Y4t0Id8sO3/ef/AoEL0OXfBB/gBlP4ogyIkcLY
+        7YvTOv5XEjYYQPmRmEHibldxy6FgBp/udhW3uAvudhW3RK+nREYRWS0GrfpGo+7aBU9H7EgKGvVDb9cH
+        fsFznx1IQat/aTU69AvyM3YgBY3+qMeZ4D1mB1LQ6ke/YBIF/9yGwKh7v2DaY+UQ0Kpbv2B2zMohYHEZ
+        +wUvJ6wsBa3eEEHUENSP3fycHUhBo/LGeCXIICnfEVoO2YEEXAzWWFxcuftd9pct76lSSPbQFgoAAAAA
+        SUVORK5CYII=
+</value>
   </data>
   <data name="tsbOpen.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -663,6 +969,16 @@
   <data name="tsbImport.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsbImport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADJSURBVEhLY2AYBQwMDNOqXP5TE6ObjxOAFH8910oVPGox
+        XjBqMSWYJhZ/Odvyf/+8BAxxmlr84VTT/82Tw8EGo8uhY3TzcQJChr0+Wvd/ZXcgvIBAl0fH6ObjBPgM
+        e7K/8v/CFh+UkgldDTpGNx8nwGXY7e3F/2fXuaNYSipGtwsFYLP4/Nrs/zOqXTEMIhWj24UCQAoGjcUD
+        FtQw/ORAFf0TFwwPSHaCYXABMiWC/haD8IAUmcTiUYvxglGLKcEkW0xNjG7+yAQAPyAzydhLsPoAAAAA
+        SUVORK5CYII=
+</value>
+  </data>
   <data name="tsbImport.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -674,6 +990,29 @@
   </data>
   <data name="tsbImport.ToolTipText" xml:space="preserve">
     <value>Importovať</value>
+  </data>
+  <data name="tssbRecentDirs.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPSSURBVEhL7ZVPTBRXGMAnkWjCTVMPJnjqpdrKsUpnQDCV
+        gzOLeFDkoK1IbESosWpXRBarQUJi0ihSTfwXTWgq1dg2TUlj7KExsMYjl2VnldnZmTdb9g/Kv0V3933N
+        m2VmmW8XWNTe+kve5f37zfvme9/juHdAl7Z+YIh8L+7/TzHE8k+JyI+yhsfeOwD9K+TwkzKt/au7xFWe
+        MiQBSG3lhHq59SD0d6zE89+ZQGxwkxzz3n4+NhgNtR8CJsRN31NNNXeDP/j9yRq8ftmoLwfXMKEcHUoH
+        Yl5g7cWzn4F86coR262mHELuAyPy+cPr8X4FMRId2hCIeWVLGIh608bESHLydQRm42GInT1hiv7ZvxPi
+        jx4AOXeUktqt2QjskxKkZttGvO+i+MnfG+WoN25JyYQv9SaVAAeUwvSv/TB2aK/d9Tr0AojnCM1GgI+T
+        HRUb8P550R5eXK811yVGvfdAjg7R8YTu8GGS6qizg1J49dNNSqRy8wOIxPvV6i1rsCcHrfWg3/zaXZUQ
+        k59S564AU1NTuCsvk/fu2CcnknATexwEr7bvNFwVmTB1NFP29fPxeDxQVVXl6FsQSiH23beZKyfyKUMs
+        +wT7bLRTmdOyJJkNq3gr8Pl8UFRUBAMDA3goLyk9BKSmIj0nv4V9Jv4/Lq0iez7P/JcLx3NCbNHY2Ail
+        paWQTqfxUF7ina1JM4IiH4Hdu1dgL6f0nG60/sn444d4vY2u61BcXAx9fX14KC8zf/1pX7Gwi9+CvVyo
+        +9gP1oRZHWUqwu12Q0lJCQQCATyUQ1ILZouLKOzFXk493/K7NSGVWDxzh4eHoWrtati+bi2oam4uzIcm
+        ZmwxEfnj2Mupnc2/2eLpCbzeQUtLS+Hi6amsWBK+wV4udPFEjzUhEfTj9TZtbW3AHqr6+npQFAUP55AM
+        KdlQS5/VYS+n9Ljt5Io/uo/Xm3R3d5vSpqYmoOiOL8T85DJ2CJuxl2PvKanbnrlz577Ou6thGNDV1VWw
+        lLHkdWJo7gOyKWYFRF06Y5eioALCUHvP1LL31JzoOZJTMpeFWTJPmqc1S6aL/xj7HGinGjKPhCRA5Mfe
+        tzY7HgmRv449OQSvtX2ofeF6Yy5yVUCk78ryTk6pKZ3/LAZFYTX25EXpbRetum2FvZB/zv6pFd5M4+O6
+        VPYR3n9RmNw++VzCsWxnVy2h+CA1M2lWpaSqmFeGZa+VSNZJly21YGEPtTaMWAlXSGOJREThRsHhXQyW
+        7SzprHuet4l8hF2ZJbP3bWBFRr10uoGVV7Xz6C9EEo6FXUI9q0gLFof/meNf3wfVVoGIRA0AAAAASUVO
+        RK5CYII=
+</value>
   </data>
   <data name="tssbRecentDirs.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -690,6 +1029,20 @@
   <data name="tsbAnalyze.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsbAnalyze.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHjSURBVEhL7ZRbSwJREID3N/Tj6mdEb6Fo0O0h0y5KBtYa
+        4nbxEoRgWi5E2UPgBV+0elGoB5PKtguWWhMzYazHXVl3t5fwg2FhnTMfM3NWjhvCcdykYwP0hG2Jz7C1
+        BgKLDAqeWfDtfdmW/RdsPc3oFb++NcCB8iV/lq2pCb1ixJDciBjRLTcqRnTJ2SJaYG+4PNj6qugRqzEU
+        94UVB04rPbF5XAJHIAlTbgEsizzMeXcgmkzD49Nz11lDYpar8g1MewTYFnOQLkuQr33SUxBz9P66fPub
+        a5oYO8Li4uUdFB6gJ1KlKv1el14o35BYPmIcr5DKQqhQh7HVDIzKoiMXxCyN3bBYDu4SxzoeLHZJ5eJ0
+        RYL59V3KN01scfG0U3bE8sjV2mB1+SnfkFg+artb+OlYKKl3XP6DjiOJNN3ecL8dp7Kwf3RO+aaJO7ca
+        by87YgyxWAX7SgDu6xLl42rY+qqwYvbPwxvLgX0lCMFUhi4SfccViTpFKZ7fDB9Cs9WGrdiZfrES+J3i
+        J4O7tLp4euJ4sVM+kiC5dzsGITFjrrgf7fYnbITiJJ9Z24EJp2+EdShiVIx8NFvgCR6Q3Ori86xDETPE
+        SOP9A2ZxFU5/gXUoYpYYiZ7kB9uxWeEW4trF/5pvYwX6HiGMcJAAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="tsbAnalyze.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -701,6 +1054,22 @@
   </data>
   <data name="tsbAddGVD.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="tsbAddGVD.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJSSURBVEhL7ZTfT1JRAMdd/RG999LfUQ8h4pZWZG2ulmsW
+        vtjqwXQ06qVRMDVnbAJXU8SUXG6xJVxIQNQYFMMZiAIrYdPFr9EMwmp822VdFgcWt/ixHvxun4d7zj37
+        nH13zmlqOkwjIxoYFPSIHye6+4dQTxjHdfFwS0HcIx5J6C0uONYDdUW/5IJIPBIviJndkD/VC8ZVJG4k
+        BfEdmRqNCuM6FDcknMTM+O9z7DdXyoWTuB75v8VkZWSVlSgXTuJ6pO7i4NtJ+NeeIJfLFY1zEpOVkVWy
+        yFQ6HGSSCDjHEdl8ha03CqzMXsTa8054TPcRcs/AuzyI/eQH9MupyuK/SSzsgn3mAt69vAbHfCfSYQW+
+        7anhe92LgL0PjvnL+U3Z14O1FYfc09i03ASSmrJs225jw/IQ3nC8srhS1aHwLr6kIvDQd2HVnEXCLysR
+        sux/HIVz4Sqss10wqE+f/KOYS6I7DixrhfgenSiRlTIF27QQtJJ3qWoxkIPjxQ2kQkNlRMXEfFLQTzsO
+        dDrh0RqIAfdiH6JeaYmIJOGXg6bO7EkkkiNViz/HtvNVMzWSIpJcfBJWTVvWoOa3VS1O7HqwMncFzoWu
+        /AEiZSyp4DDs2nNfrVPtlkU170RB/C8MyCm4/BH4wp+wapDmrwwpZPFben+YKP69XxepdjEqm9tX5zrS
+        W7Zbmfe0KMM8HgxufVd2gxZl7drzWeMYn0+uqzomSnCcVvFNtJI3ZqJazPZnwjTD0kSrwqhq7jZTgkdm
+        1alj5Lqahjm1pnHBqJlqfUDOsfkJfGhx8EOC5VcAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="tsbAddGVD.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -720,6 +1089,21 @@
   <data name="tsbAddTrain.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsbAddTrain.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH3SURBVEhL7ZbBShxBEIYXkidQ8wpejIonk1y8hWj3bNWC
+        EowvEPCk5hLwTUTd6Elhq1fPooe8QU6BaILnGNC7svKP9mL+mV1nRsGLP3zQbFfVz+zUVHet9qw+mjqa
+        ejkT5J1rNRZ8u74E0rXpW+xx/IPlWo1xb/rNB/nng3bycEHOEJPsJWOcX1p+3w850y0X5IqNenETK001
+        HeR6heRajdfO9DcXLo6coAbX7SskeNOLbLGyyHmyl4xw/VzhL/JBjrNFquFM/3zYmX3FPhn5INuc/HCk
+        yT7/CR1ZpJE+Hyx2Dk4PU7DmfQY16+36BPt1dfPJZBOZr99XO1FY834eznST/VJhAKTfYk4SU8k4yFnu
+        kMFE4uBeVDEGSavxhn3xCS1wYATvEQaRtR/rXWOs7+71e+eJ6Tz7opu/cGAETVRUiOX8iAuywr41/MiB
+        j23sTZfZF0/8KRN4y2P91T7IR/Z9uuaa25174Uz/cnAeVYx7fk4QRhsn5FHJ2HSD/bqaDjLqglxyElNh
+        ZF7ee0QWfepyyDr7ZPR+Z3bAmf7KJlcjvUzs+yH2yRUObxziXKQ8JS4CUdOmw870Z7ZYUeS4tGnU7W2k
+        WeSMjqSNZLqBV8b1SivtdtPNfscmZkAac1/3VhGGDKYPTpl4ocd6pl2fxB7HP+uurgH1F/RjSSwVcgAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
   <data name="tsbAddTrain.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -731,6 +1115,17 @@
   </data>
   <data name="tsbEditTrain.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="tsbEditTrain.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEGSURBVEhLY2AYBVDwpKjI+UlJiSW6OFXA0fmLAp4UF/95
+        Wlz841lxsSe6PEVg3d7DYev3Hv29b8Xaw0+Li/+DLKGaT/7PZAi9v9z/5Ia9R35t2Hf0P8gSkE8eFxc7
+        oaslGYAM/zeD4ff/GQz/7y/3OwOyBOQTUHChqyUZ/JvGEPFvOsMfkOEwfG9F4NEN+49GoKslGSC7HIZB
+        lv2bwRCDrpZkMGo4VjBqOFYwdA3/t4DBDz2Hgg2fxkB5DgWBf/vZdv1bznSK6i4HgcX1KnzvtvF8/3eQ
+        /QfIEqoaDgK9tUZ54dHO/19v4f3xbz/bjn/zGHzR1VAEJtboh4EsWdWhxI8uN7IBAMlfJ6lRW8luAAAA
+        AElFTkSuQmCC
+</value>
   </data>
   <data name="tsbEditTrain.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -744,6 +1139,16 @@
   <data name="tsbDeleteTrain.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsbDeleteTrain.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADjSURBVEhL7ZZNDoMgEEbd9OcgXXVrYWsCXXiBHqaXau2i
+        9WDYbWmGdhJFUDCObniJK+abBwQiWZZILM2nPOwaya/6ctzaY2NABrLQwx4bBIJKskcjuVaSPWMa6Dzf
+        KMnuJit4rYtib9d4gdlCED8lWBWycjNhwap2FnrZdV5+s+a3jnxk5e2VhmacxMhnkyIh8tmlyJCcTIp4
+        5C88+SRSxCUnlyJG3r8uWp1PNZkU+Is720sudh0k8q12Sd/Uh8slJb9OIY1DaqKIaRhTO8iURlMyPdb7
+        La71EABAtvjTJ5GYgy9F4dMTYoae4wAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="tsbDeleteTrain.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -755,6 +1160,15 @@
   </data>
   <data name="tsbCopyTrain.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="tsbCopyTrain.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADBSURBVEhL7ZGxCsIwFEX72Q72B8zQDuISsZNIOxZ/QtCf
+        EUVwaOQhSrnNS/PSDEpz4GyPe2iTZf/AQm2NxLzYnXEjCBq7Po2XdLvSdZeX1Ql3xEjDt/vDKF13y6K6
+        4JYIaZhwxvFtxlzv20EI/YSd8f7RGHSrdGM2h+MgxoUJaxyPXNDte6Rxfjn+pb7BYcInbnNymAiJRwkT
+        0vikMCdGbAaHOVKYM4VxR0wKc6Yw7oiZZ9jX6OHvoC/zDMcQd3+SF0So2cZGk064AAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="tsbCopyTrain.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -774,6 +1188,24 @@
   <data name="tsbStanica.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsbStanica.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAK/SURBVEhL7ZbvS1NRGMelehFEf0Cv+ht62R9Rb8rAkHpT
+        ryJoSWz+2D2iTm3XtnuDTLrb7q4GMYU0rOZyli1skgkV0zQdpY2aY5Ju0zazPfGc2nDnpHf+oBB84Ptm
+        5zmfz33uuXfckpLdUoSQfUZROUHk9neCrE0Yrc5zhJADbN+O1bXrjsOVotNQY3dH7er9xZH3nwAjubuT
+        gqTFqltcV7GH3bflqrK1HTFLamONXU21ebxL4zNRSKxAQaYicdB6BpbNdnXZLGlt1aLjKMspuowtjmOC
+        pHUhzOMbSkfmk5yQzZdvS9A7OJIRJPeyIGt+k9VxnOX+tXLnV3tTG6671ZHse/lmNZZIF8Cfh+ag3OKH
+        k1WPaMob/fBiLFbQE0+twODoeLah9V5KkH4/B6WdnftZXwkh6kGT6DpPZG3WqnQmht5OwUL6JzcRBkVm
+        zyyI3gWaGs9n+hvbh1nMZGF0cgbs+BzYtVilzWmoENsP5cXVN1wJpasvxZ7fx/h3qHW/htPEl58Qk5Pm
+        snYNewX3CEx+TRWwkI0OdOXFJtHBXS1Kzzb0g0EZA0tPjJOtF+y94ghBWX0/ZbBcdG0oxkkRwIKLjUEJ
+        QW37KMfVFeMt28ykbHBvKfFxXF3x2nPbTlhuUeJAFLaVPfGeeF3xToTlFiVm383NZveKh8NpWFnNQjCc
+        5uAb9WxJfErog+aH8xSAQKzMjywnzIXtae6dp3+7LFdXbGgNgulumEJwCjrN9PoTsz3GjjBU3A5yXF0x
+        /dJofApNvXFOohfcU255BoHQHMfVFWPuPJ6AM3VPwNgxDU1/bvtGwR6ctKx+ABTvJMcrWvwhEocLRIVL
+        coCeOfuOssGey3IALhKV7mV5RYnxg81s06Bn4BW3phfcg3uRwa7pihWPD2yubvrBxq7pZTEDILsfUAa7
+        xon/ZfLi/1G/AGvgNThOsBBBAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="tsbStanica.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -788,6 +1220,29 @@
   </data>
   <data name="tsbGlobalSettings.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="tsbGlobalSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQISURBVEhL1VfPbxNHGI2EKo60117av6Sn/gWVOPRGRdsT
+        FYfE8a4dtQeKQ23vrtetmtoiYO/sOolpbEAlxA405KdKlThNUkLJL6TGSUgCwcR2UFPQoDdhN7uzsQXI
+        bdUnfdJodt57nplvZj43Nf1f0O69+H7Ik6T2QB8/ruEItSY+0aO58uKdHYogaq4cbNFO8OMajog/lR7I
+        TDNTRL73N6r6U2l+XMPQLhjvBFuSn8leUp4aX7OMp8ZXKfrCnsSnyumLb/O8N4b6hXo07CUB2UuqRjRf
+        Ge67a5maMXTtLiXRfEUW9YokaGfB4XXqItSc+EAStGiwJfkhyEgaRUwtETVXnfl1w2XIx8ztDaqpuaoi
+        6ouhZv09aEAr7CUqtHk/hvTx9BFZNJbT8cHn8UC2JHnJU0kgldyPhWemcGF0hWYSozQeyFLFZ7BAG32F
+        0aL1A/ovFZ5h+aEBLWgy7ePpI7xvkyRopzqDV61snSs8pBNDf7L2/Mxj2nthhH73VQ/9+cokXbizTjfX
+        yiwWfl9nffiWuTBC52dLjAMuNEy9zuBVbMMph2ns89hbkqCVhg7ZP5gm5T56KX6Tbqzu0O2tp4fGRnGH
+        puM3aFLps8ztAW14wMthHvaQjxW/UZ0c2Z+lGb2dw8x0e9NtxsejzV1mjpnbNaAJbXg4TE2EWpMfyaJR
+        nRheYQTsKZbQPtOVpUe0u2OgIgn6HqLr+1z1/r1N6/uD4hPGKYzt7zm0oAlt3s+BSFtq8NZPc4yEpMH+
+        2U3VNmNXFonvG8/5dxGKj/jRt7K8bY27eXmSZhPjTANaEX/XLd7HBdmnP5z+ZZ2RYoEMXZxbtwQxUxjx
+        HPT1/DBQMcch4eLtWaYBLUXUt3iOC2GP9ve9mceMFPEZjmWWBLKHWfIc9Mki+cscBw640IAWNHmOC/WN
+        9ZrGiqAfGBcPjP+Acau2x3NcUHz6ln2pcWZNwa6O/KFLLYl6W7dtqeffZKmRCPbkQqKYgsheJBLMncmV
+        2r0/f5DZN7ITzuRqSw3yPg64j1Nx/zgVbcdpeZsikbCniO6OfNVuiuP07ZfddGps9dWOU60LBJcBLgVc
+        DqZ4rcCYntgAzSZGHRo1L5C6V+ZsiSaV68wcs+HN7DNlV2bkOl14nSuz7iMxW2IzxxJiz5E8eCCQ8Wij
+        D98wU9OUfyTOH/ZIAPZnMRbIPHn5LJb7eyYPnsWxIksaZKwi6izQvpwct/YUAQ64r/QsAnwhgMdcEvUl
+        Eumv4JHnl4+P6dsPqBbpr8pcIQDNmoVALYAse/WvUdaQaK6MMoc3ZKWPmivLAqlEBOPMa5c+9YBCLtSs
+        nXQXe2us2MO3c97YMZ7XMPDlLdr/aHlrwlXQR/+lgv4/+wvTKLwARv0bGpXc5vAAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="tsbGlobalSettings.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -807,6 +1262,16 @@
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 26</value>
   </data>
+  <data name="tsbAppSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADiSURBVEhL7ZE/CsIwFId7PgWPobSzg5bcQLB/BifBA+gi
+        xVWhOBS62NkLONgzRCK8B33mJUNJQMgHv6F5+fElTRQFfBKn22kiin6+zqTLKMdC5BMUJ6Lsq1srm+7p
+        NNW1lbEo3yhWp6GbXEW5BmKfQfFqs5e+UK4g/uFwrunSANOcm/2nODs+5HJ3x+Snjm5hu6PESla/JEZ9
+        U7juKDG9ceHrxsAsvdAlhOs6E9O/Qd/fKLaVAZ3Y9v5Gsa0M6MT00PT9jWJbGdCJAW5mFANcGTDNuVkQ
+        07kzgvi74CsoDvjgA3WEUZASZGbFAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="tsbAppSettings.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -815,6 +1280,21 @@
   </data>
   <data name="tsbAppSettings.ToolTipText" xml:space="preserve">
     <value>Nastavenia programu</value>
+  </data>
+  <data name="tsbInformation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIhSURBVEhL7ZbNThRBEMcngScAuRCT7QbDBfw6ASZq4ksY
+        hBBeAfXuK0h2q1djcFkxHDgZ9RH0xJmEBIUDRyBhumY3wczaphp2o1U9uzODR/7JL+lMffyzOzXdHUXX
+        6qPHr9zwJMQPdB0XdQ1XPXVcrLyJ5ynG868sVU/uamObGvBUG3QZnFzm3OH1hTX11t7QYD9oYzsBowxs
+        R4PdGK/Go7xfLk0YnNEGD2TjnAD+pB68b19RgTIYi2YFUYBnkzWc5v2Dor9IAf7gTUoDeHhrzY5xHyFl
+        7KYoDvDoY8s93GyJ50HAbnCff0QTmWeQVr62XfrbeZa/tEVcYjsVk9znfj35z0EUSdZ2zl1Xr3fORTyD
+        Bvfzog3g4lsUBYL5ZuK+H6Xu21Hq5pqJiGdwEtxk/I4kk/8rFRPPcd/Ib4OB5BD31hO39LntoTWPZzFR
+        wwXuGylIXvLELBY+tXvvmNY83ocX3Deih4HEIKWNAZ9zXzJ+JhIzKGusAJ9y30LDVdY4OFzRthtSgMc8
+        OURJ4/DnRKKtLVAgKGOsDL7nfj3pKt7WYFNexHmy1XJbu788tOZxAdh04BGZ91cXQQGucx+hm+/ORpTB
+        fV58BQ7oJsN9gqLDmw7xQJNCFLoIdKWr8ZQG3OPN8kKXicKmXdFt5OKdDz6je4BNaYLplfF+heWn3WCj
+        37F5uQc0Bk5vKW27Idp96JTpXuhprWrxLMV4+rX+1h9/CIk1qMVe/wAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="tsbInformation.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -847,7 +1327,7 @@
     <value>Standard</value>
   </data>
   <data name="tscbStanica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 24</value>
+    <value>176, 24</value>
   </data>
   <data name="toolStripLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 27</value>
@@ -862,10 +1342,34 @@
     <value>Standard</value>
   </data>
   <data name="tscbObdobie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 24</value>
+    <value>132, 24</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
+  </data>
+  <data name="tsmiStartupSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAQxSURBVEhL1ZbJUxtHFMbJvldlq8ohcU75Q3JKLrnkkFx8Tm6pCg6WND3CNTEJRGg001LZImLR
+        NjOtxREgmTVhE5aIkCHYliwEuIJTzsWpGLNoQMZ2deopRkgNNrLh4q/qXaZfv9983a+np67uaZUgjD9v
+        bfB8LHFqE+YDYbs52C+jgLP1pO8z19euF9j8QwuAkslfL3Pqiqu5ezWqTN0bjWbpxPkcbWuK3BeNSl78
+        jrzLzjuUoCBG5KJH7C/MJm7Qa1fXy9HjTd7BiCw2c7532HmHEjjF5kC625PYXsquVUM9ANXyUn3n2+y8
+        Q0s0eI93WKIbe6DuRBEjMt9i0t5i5xyJHObA9IXBhV1odp1G3BcAevUgqCC4XhWE8Ivs85okmRQ9N/tv
+        GZyO/0VtJqUgf+t5k82tFEBtJiVpbfB9zo7VJNGg3F28crsMXsqsUYzIpmRSPmJzd2Rt8L8mIy195lTo
+        HubVNna8JslIW8lcvFm1v5HOyaJkVE+xuaCzQvh1mddmQq7xzZHeDHU0BofYnJqEzYG/4325KnB64jqV
+        ee06mwtQjLTZkGt8C5pxLJaldj4YY/MeKVpHn5GR4jwjhIqKfagKDA3mbIpsyiiwLBoV9JPR/6HF0PWG
+        jMhcuH1iC8ZLne+dui8a1Ra29kMFUAlpba7mnkJm5h/q/P4cnR79cw88NbZMASQhdctmUlfPdcTLUIif
+        f+xeaz3p/YStv68eOHUBNDd3q1QAjpPz9C8098dud1fGYmaVpuDFKqAzkzeojVNu13ScSk450t7e0ruR
+        n1upKh71p2iX9fxD4ZUB++u29ukypxpYxh7971TraG+JbuQvVUNLkV2nUSVVcj49vrx3vDLPN3UX8yR7
+        4G0lCMKzEiJKZ2ussHB598zuF5OD+dKeK45hGu+fp1k4atl1Ci879ds1cFqQOXIFI/Iey6lSySlHvJ2W
+        WGFfp/sE5HW2RrexObguIRUaiIpG5Y69MXDJZvR/VZNTmdOCXZaDne4EfLkCztFNzJOkVB9+ha15oMJf
+        hJ+TODXUYYnpjwPVzo7oGJG4IHheZmvWJIxIwC32PYbTVdhXHfNkzPGN4yW2Xk0SDcrxth8iG/Nzt2iP
+        J1HEZk3HfEDv9SSLcCb3g/rtw7qE1JEnhoKwmWSTw0u0x5soypw6LtX73rcY1A8kpE30epPFSii8iM8+
+        pGOk/VrTx+BRshn827DE4BSg5ecn3MfAeRUUD+iYUwcP7NRaZDP4i7DMmNd0cFp+fsJ9zP4ADHewVx7Q
+        JU7rPxIoyM6TabjqYFlheQFecotIPOr9vbgAUGmgIPMkBj977Pwnlmj0f+poDBWy6ZsUGgqWF5wCFFYC
+        fmNlXus9UuiOJE5rAvhEX44CDPY8MbxE205HNuCowTln5xyZwDlGJGUz+os2+OTx5LK1wfslm/dU6z+0
+        4YLWhUTGUgAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="tsmiStartupSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 22</value>
@@ -879,6 +1383,20 @@
   <data name="tssbStartINISS.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tssbStartINISS.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHiSURBVGhD7Zk7SwNBFIWDgtj4KNTOVyVmM5OAYCGIpWCf
+        1tLO7J0EsYx/wdLWMq1YBbSx0L2TxELEWrDyUdkoaCSQoDkTX8nuZgf2g9Pszt5zBrLLnZtEIiYm5kek
+        VuX0BTl43RqkVnXB6lWyOljS+Qm8H3kaG/gUPQpNbraUHcR1kaV9A02xupbaXce1kcQI/0WC6UieF+bx
+        mUiBoQ0xvQim/YWznRF8NhIYgb+RYLoTFdpK1IsDWKOvYNDfJLTyHC+/gnX6Bgb8k1i9S02lpM7NYL3Q
+        McL9Q4LpWbDamz0tDmPd0MBQ3YluJatNrB0KZpjuJZhOUpWcRI9AwRA9i+lNaHUoLwtT6BUIRgC/xPSU
+        YrWbvCoOoaevGMb+6ybFagN9faODYVAqZ6qFJPr3TAejwNRo2xttyZLeHcMcXYMmIenBt7a9Q/HwxKoi
+        NK1ipn9hFO2DGm17uubOYbY/gcX6IXs3YOtPSDDdW/kStz6jy+fbo5ija9AkQJWdiruI/j3TwchvWdpK
+        WNvMNdvpTHV7Er0CwQjQgyw+0Fh6pLT3UN8cqzhefhrrhY4R7hdZO9iyd7Ro83DX2vG60KqW8tQaro0k
+        7eEt/Yup1eama+443o88UtOx8NwFvB4TExMNPgBa+NI7AU2QzAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="tssbStartINISS.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -890,6 +1408,16 @@
   </data>
   <data name="tsbKillINISS.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="tsbKillINISS.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADHSURBVGhD7c6hDUIBFMVQBmME9l+BMcAfc2W/eE1qm75e
+        x3Ecj+T7ef+epH8TA7X+TQzU+jcxUOvfxECtfxMDtf5NDNT6NzFQ69/EQK1/EwO1/k0M1Po3MVDr38RA
+        rX8TA7X+TQzU+jcxUOvfxECtfxMDtf5NDNT6NzFQ69/EQK1/EwO1/k0M1Po3MVDr38RArX8TA7X+TQzU
+        +jcxUOvfxECtfxMDtf5NDNT6NzFQ69/EQK1/EwO1/k0M1Po3MVDr33EcxzP4A5aFTZWc/hxEAAAAAElF
+        TkSuQmCC
+</value>
   </data>
   <data name="tsbKillINISS.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -903,6 +1431,28 @@
   <data name="tsbShutdownINISS.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsbShutdownINISS.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPISURBVEhLrVdLTxNRFG70T/ha+PgH6r7h0Tm3oDW0mrii
+        BohGi/UHGK0P3KphwcKkdW8URN3oUnm109JIUUEXutAWbFBjUFvamTHfrTMyZ6ZMm/AlH7mZ8/iYO+ec
+        e+vztYkHp07tnOru3jPX0XEExBrPuN+2INPVdVAlupYjejMfDJYWQ6Hi+0ikDGKdDwZLsKWJrsGXx7eN
+        Ob9/X1ZRJgvHjq2UolHtVyxm/Ll40ZWwwQe+OaKJmc7OvTxfS8gQxfI9PSvlwUGdi3gRMYhVFeU8z9sU
+        +F4qUWopHF77PTzsSNoqEbvU1/cjK0SqpRrIEqU+nT69zhNtZuXyZUP78EESa27fTORSiZJcxwaV6Nxy
+        JLLGgzkriYRhAmtu51wKh7+rRHGuJ4FCwndpZXvbFUbOfDC44lpwGSEelwcGNB7059Ilozo62rJw5cYN
+        GcPzlIeGdFWICZvoVEfHoUIotMKdwfrsrGFomlEdG/MUhqj+86dRn5lx5AHRanOBwAFLOE10vRiNOt52
+        4/59S6D27JmncG183Hq+kUw6hNHnGUW5aglnid46hkM8bujlskyiLSzYbM2EQa1QkM/11VWZY7NtPRYz
+        skIsSlH0WL63t8j/u+rdu43Mum5Ubt5sWbgyMmLZqrdv22xgvqenKPsalbZ44oRDuPbkSUP382dH8FbC
+        oF4sSlttctJhg5ZKtNuX7u4++v7kyTJ3qE9NyeB6LucI9hKuz883Yl++dNighVPNhz+uwtPTTYW9aAm/
+        euWwLUciX2c6Ow/7cJ7iaOMOtadPZbD+5Ysj2IuIAdy2uhAKFdN+/y5ZXDhjuUP1zp3GXqK4RkYcCZpR
+        Fpeuy1C34po3iwtQhXi7fuGC3QnttLoqE/B22ope7aQKsWD1cUZREqUzZ+o8yUYq1XhrbNvz5w4RG+Nx
+        o/biheXvNkCK/f31dCBw5b9wV9dBjDPuCMqR+Q94c7dtr9y6Zb0pgMLkPuDrUMg+MoEc0Xh5cNAxNjHw
+        MXst6LrsU1QuaPasCSnqckh8HRjQVEV5ZBMFMEi2OhaxdeY3dwNsbtsLymOxt7eEDuK6Ehkhzr7r6/vG
+        Ay3G47JSMdUwHECs0QG8kDZzORz+pirKMNezIUuU9Lr6tMOPjavPPa7jwL/LXnJ5ey57a6oQ91q67JnA
+        1RTXFddbiQdRSPim+HQ8b0tAwalEE/JC39+vYQBwEZOwlaLR+uvjx0tZoodNC6kdoPfUQOBKTohFnKeY
+        t+ZPGKwxcrNCFDAcZv3+/Tx+W2AkEjtwnpo/2rDGM+7nhb8qfJpUP9kO4AAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="tsbShutdownINISS.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -915,6 +1465,35 @@
   <data name="tsbRestartINISS.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="tsbRestartINISS.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVXSURBVGhD7VlZbxxFEF7uR0DiFOCdqjUIIcR9iBsegvgD
+        nEJCIgEhcbwAOeypbgK8Eo5EIP4RSCHiME7sBBHHUz0JYJ5s4931elH17C52Tc96TwNSPqleVlU1Vd11
+        dW2pdB7/YbAt38oGvu6LCB/RetpY2D9x5Zmpm2/Qv48VqcW9zmCzF2KCehLDq1pHG0ywK+OFhGP4Spxt
+        lkoXaL6RI3MCatpgTWxweXsHYM3zE9TYQMMRnHQGX2k+W7pI848UvTjRkwOEf+XkCOtsYD61lSe1zMjQ
+        fP3eSxIDR5mwoQ0Y1gGhhHDDEdYdRUfm3568TMsOhdTiNRzjN1zw8VE40NFBUHUGjp09ANdq+YGwaCdv
+        ZILFTHH+g/06wAbXtVyefH6cYnvLVVpHXzhny9c5ggXXg/FC2zkgZZQJ9zPhafb5BIXOyIGxgdlfbfkK
+        racnSMw7gu+6nrx8hKDeqwOb4Wz0OBv4kalVlUKUhdPRGXvbpVp+WzBFR7hd8hSxgXXJBzawmw3ua1en
+        fhwQNG3pQtHhCKuOCkLL5wx8qmW7gi0+2uV6q2zwrHTpDn/HCaj140AbbCv3MME5JgyWaSZoJLbysJYL
+        QhpKSnhchLQiZ6DOhGkyXblJy2VOYHMQBwSpLUfO4B+hJBdbUoMn5Ma0XA4uhpc73TJPq6nF27VMG0y4
+        d1AHBEk8eXeXUl1LYnxBy+SQGphlgxtaQasq7Nb8Gn/uw8v1b/2ACd5yRYlNcFzzb4EMV9LWc4LZtX67
+        E4OXhElW/QpCiaIHtUwHku0c58umOJVS5SnNPy6wjZ5mys9d8hsTHtL8HciYq4Uy2ubqRgy5aSb4JW+H
+        D6NFze8h806O2QvginRPzT9uMMGUI1zN2WOwKbZq/q2z+lZal+qg+ceNhCoPhcZ337lt5RnNLwn8TkKw
+        EhCoy1ih+ceN1iiTLyiEK6mBNzW/3MAHwVGXgDXvTsER/B6wp8qEH2teuYFDrXK59QYMzGjenYIjPJGz
+        xz+oArORL6GB1xabyk+ad6cgh6ftkUMOllI28FFw7idY0Lw7BSmZOXsMrDHBh5rXJ7EkSECgNvaNQQBN
+        +8TFRUks44bmL0lpciafxNK+Fy3cofnHjcSW7wpNxPJGkU6t+UuyMdPMmcdSWuFdzT9uyGRb1Mh+m5q4
+        XvN7pCYUc97rWc07bjiTr0CtAy3OyZTgSzbBV1E9eG1jgoRz+GGD1SSODmv+DmRUDY6xmbKZnl5EQyIb
+        p3GOZdGVP8h1R3C/ltkCJjgVEJTsr7KJXtP8o4YjfCNUzv0ji2Be8+fAMbxU+CIyUOv6oBgSMsBtXtOo
+        b68lpvK8lslBaj4TnAx1ZWewwYRLbHFCyw0LNx2VnegOlU75jXCu537EBI+F5iKh1PhhammUN+FHZ8Kl
+        UOh4B2Sk73Wt0oaz3RZbuCFXzTHsGSaxWwkrMV8PnXxGYgN8rmW3hazzmPCHolPxJBs1gzODlFjf+Qnn
+        nOmmP9tUD/we8c/MbDNdkFj+hCTU6rLycBS9txhHd4ZiVWYbGQ9Sg+9Lk5KwCK1vNhkvOhfcgcmrta6+
+        kG3M4EzXm/iHVrOE8x8Xx38W8lNlO0wKxgNlfNUbPx2VtT0Dwf/BYfD7gjfziMnH/LGhT15DciIx0eHW
+        g6Ig4YYggoavNgSfDRzzvUC2d6lv9bJq7BLDPVKmA9ZkoSzlVH9vLPDNzuCL0tr97JRVo5xx3UgGs5bs
+        XBpHzw1TjodCauEBmRB90rUfHAaX/Q1JWGQkt7Xc7its8HRC8IWzeJ/W969CHhqyIJO9DRs4yAY/yQgO
+        +t8Idsn/blruPP7P+Btf6f7wNg8yiAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="tsbRestartINISS.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -926,6 +1505,14 @@
   </data>
   <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
+  </data>
+  <data name="tsbDatObm.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABySURBVEhLY2AYseC4s/N/emB0e8EWf+/vpyketXjgLaYH
+        RreXoaJ7zn9aA5Ad6PaOWowBjl65B8bk8kFgaFlMDTC4LUYPKkr5IDC4LaYFGNwWowcVqXxsYHBbTAsw
+        avHAW/zw9Sea4sFnMT0wur0jBwAAmNtLMI4x6v8AAAAASUVORK5CYII=
+</value>
   </data>
   <data name="tsbDatObm.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -943,7 +1530,7 @@
     <value>0, 2, 1, 2</value>
   </data>
   <data name="toolMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 31</value>
+    <value>1218, 31</value>
   </data>
   <data name="toolMenu.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -955,7 +1542,7 @@
     <value>toolMenu</value>
   </data>
   <data name="&gt;&gt;toolMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolMenu.Parent" xml:space="preserve">
     <value>$this</value>
@@ -997,7 +1584,7 @@
     <value>40</value>
   </data>
   <data name="typDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>51</value>
   </data>
   <metadata name="LinkaPrichod.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1014,7 +1601,7 @@
   <data name="dataGridViewCellStyle2.NullValue" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAA1JREFUGFdjYGBgYAAAAAUAAYoz4wAAAAAASUVORK5CYII=
+        vAAADrwBlbxySQAAAAtJREFUGFdjYAACAAAFAAGq1chRAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="smerovanieDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
@@ -1132,13 +1719,16 @@
     <value>Fill</value>
   </data>
   <data name="dgvTrains.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 0</value>
+    <value>6, 0</value>
+  </data>
+  <data name="dgvTrains.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="dgvTrains.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
   <data name="dgvTrains.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1034, 484</value>
+    <value>1206, 570</value>
   </data>
   <data name="dgvTrains.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1147,7 +1737,7 @@
     <value>dgvTrains</value>
   </data>
   <data name="&gt;&gt;dgvTrains.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dgvTrains.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1273,7 +1863,7 @@
     <value>1106, 13</value>
   </metadata>
   <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>995, 19</value>
+    <value>1167, 19</value>
   </data>
   <data name="toolStripStatusLabel1.Text" xml:space="preserve">
     <value> </value>
@@ -1315,13 +1905,13 @@
     <value>False</value>
   </data>
   <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 543</value>
+    <value>0, 630</value>
   </data>
   <data name="statusStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 10, 0</value>
+    <value>1, 0, 12, 0</value>
   </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 24</value>
+    <value>1218, 24</value>
   </data>
   <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1333,7 +1923,7 @@
     <value>statusStrip</value>
   </data>
   <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1491,11 +2081,14 @@
   <data name="panelMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 54</value>
   </data>
+  <data name="panelMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
   <data name="panelMain.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 5, 5</value>
+    <value>6, 0, 6, 6</value>
   </data>
   <data name="panelMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 489</value>
+    <value>1218, 576</value>
   </data>
   <data name="panelMain.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1504,7 +2097,7 @@
     <value>panelMain</value>
   </data>
   <data name="&gt;&gt;panelMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panelMain.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1747,10 +2340,10 @@
     <value>63</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 567</value>
+    <value>1218, 654</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2403,7 +2996,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>866, 505</value>
+    <value>1008, 577</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>GVDEditor</value>
@@ -2412,1044 +3005,1044 @@
     <value>tsmiSubor</value>
   </data>
   <data name="&gt;&gt;tsmiSubor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiNew.Name" xml:space="preserve">
     <value>tsmiNew</value>
   </data>
   <data name="&gt;&gt;tsmiNew.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
     <value>toolStripSeparator6</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiOpen.Name" xml:space="preserve">
     <value>tsmiOpen</value>
   </data>
   <data name="&gt;&gt;tsmiOpen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiRecent.Name" xml:space="preserve">
     <value>tsmiRecent</value>
   </data>
   <data name="&gt;&gt;tsmiRecent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
     <value>toolStripSeparator4</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiImport.Name" xml:space="preserve">
     <value>tsmiImport</value>
   </data>
   <data name="&gt;&gt;tsmiImport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiImportData.Name" xml:space="preserve">
     <value>tsmiImportData</value>
   </data>
   <data name="&gt;&gt;tsmiImportData.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiImportGVD.Name" xml:space="preserve">
     <value>tsmiImportGVD</value>
   </data>
   <data name="&gt;&gt;tsmiImportGVD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiImportELIS.Name" xml:space="preserve">
     <value>tsmiImportELIS</value>
   </data>
   <data name="&gt;&gt;tsmiImportELIS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
     <value>toolStripSeparator3</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiSave.Name" xml:space="preserve">
     <value>tsmiSave</value>
   </data>
   <data name="&gt;&gt;tsmiSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator18.Name" xml:space="preserve">
     <value>toolStripSeparator18</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiAnalyze.Name" xml:space="preserve">
     <value>tsmiAnalyze</value>
   </data>
   <data name="&gt;&gt;tsmiAnalyze.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiUpravit.Name" xml:space="preserve">
     <value>tsmiUpravit</value>
   </data>
   <data name="&gt;&gt;tsmiUpravit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmimAddTrain.Name" xml:space="preserve">
     <value>tsmimAddTrain</value>
   </data>
   <data name="&gt;&gt;tsmimAddTrain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmimEditTrain.Name" xml:space="preserve">
     <value>tsmimEditTrain</value>
   </data>
   <data name="&gt;&gt;tsmimEditTrain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
     <value>toolStripSeparator2</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiDeleteTrain.Name" xml:space="preserve">
     <value>tsmiDeleteTrain</value>
   </data>
   <data name="&gt;&gt;tsmiDeleteTrain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
     <value>toolStripSeparator1</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiDuplikovat.Name" xml:space="preserve">
     <value>tsmiDuplikovat</value>
   </data>
   <data name="&gt;&gt;tsmiDuplikovat.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiStanica.Name" xml:space="preserve">
     <value>tsmiStanica</value>
   </data>
   <data name="&gt;&gt;tsmiStanica.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiVlastnostiStanice.Name" xml:space="preserve">
     <value>tsmiVlastnostiStanice</value>
   </data>
   <data name="&gt;&gt;tsmiVlastnostiStanice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiGrafikon.Name" xml:space="preserve">
     <value>tsmiGrafikon</value>
   </data>
   <data name="&gt;&gt;tsmiGrafikon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiStanice.Name" xml:space="preserve">
     <value>tsmiStanice</value>
   </data>
   <data name="&gt;&gt;tsmiStanice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiDopravcovia.Name" xml:space="preserve">
     <value>tsmiDopravcovia</value>
   </data>
   <data name="&gt;&gt;tsmiDopravcovia.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator16.Name" xml:space="preserve">
     <value>toolStripSeparator16</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiPlatforms.Name" xml:space="preserve">
     <value>tsmiPlatforms</value>
   </data>
   <data name="&gt;&gt;tsmiPlatforms.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiKolaje.Name" xml:space="preserve">
     <value>tsmiKolaje</value>
   </data>
   <data name="&gt;&gt;tsmiKolaje.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator15.Name" xml:space="preserve">
     <value>toolStripSeparator15</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiTPhysical.Name" xml:space="preserve">
     <value>tsmiTPhysical</value>
   </data>
   <data name="&gt;&gt;tsmiTPhysical.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiTLogical.Name" xml:space="preserve">
     <value>tsmiTLogical</value>
   </data>
   <data name="&gt;&gt;tsmiTLogical.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiTCatalog.Name" xml:space="preserve">
     <value>tsmiTCatalog</value>
   </data>
   <data name="&gt;&gt;tsmiTCatalog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiTabTab.Name" xml:space="preserve">
     <value>tsmiTabTab</value>
   </data>
   <data name="&gt;&gt;tsmiTabTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiTTexts.Name" xml:space="preserve">
     <value>tsmiTTexts</value>
   </data>
   <data name="&gt;&gt;tsmiTTexts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiTFonts.Name" xml:space="preserve">
     <value>tsmiTFonts</value>
   </data>
   <data name="&gt;&gt;tsmiTFonts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator17.Name" xml:space="preserve">
     <value>toolStripSeparator17</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiTabTabEditor.Name" xml:space="preserve">
     <value>tsmiTabTabEditor</value>
   </data>
   <data name="&gt;&gt;tsmiTabTabEditor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiGlobalSettings.Name" xml:space="preserve">
     <value>tsmiGlobalSettings</value>
   </data>
   <data name="&gt;&gt;tsmiGlobalSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiGrafikony.Name" xml:space="preserve">
     <value>tsmiGrafikony</value>
   </data>
   <data name="&gt;&gt;tsmiGrafikony.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiLanguages.Name" xml:space="preserve">
     <value>tsmiLanguages</value>
   </data>
   <data name="&gt;&gt;tsmiLanguages.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiMeskania.Name" xml:space="preserve">
     <value>tsmiMeskania</value>
   </data>
   <data name="&gt;&gt;tsmiMeskania.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiTypyVlakov.Name" xml:space="preserve">
     <value>tsmiTypyVlakov</value>
   </data>
   <data name="&gt;&gt;tsmiTypyVlakov.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiAudio.Name" xml:space="preserve">
     <value>tsmiAudio</value>
   </data>
   <data name="&gt;&gt;tsmiAudio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
     <value>toolStripSeparator5</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiAppSettings.Name" xml:space="preserve">
     <value>tsmiAppSettings</value>
   </data>
   <data name="&gt;&gt;tsmiAppSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiTools.Name" xml:space="preserve">
     <value>tsmiTools</value>
   </data>
   <data name="&gt;&gt;tsmiTools.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiDatObm.Name" xml:space="preserve">
     <value>tsmiDatObm</value>
   </data>
   <data name="&gt;&gt;tsmiDatObm.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiStateDgm.Name" xml:space="preserve">
     <value>tsmiStateDgm</value>
   </data>
   <data name="&gt;&gt;tsmiStateDgm.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiRun.Name" xml:space="preserve">
     <value>tsmiRun</value>
   </data>
   <data name="&gt;&gt;tsmiRun.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmimStartupSettings.Name" xml:space="preserve">
     <value>tsmimStartupSettings</value>
   </data>
   <data name="&gt;&gt;tsmimStartupSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator9.Name" xml:space="preserve">
     <value>toolStripSeparator9</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmimStartINISS.Name" xml:space="preserve">
     <value>tsmimStartINISS</value>
   </data>
   <data name="&gt;&gt;tsmimStartINISS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmimShutdownINISS.Name" xml:space="preserve">
     <value>tsmimShutdownINISS</value>
   </data>
   <data name="&gt;&gt;tsmimShutdownINISS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmimKillINISS.Name" xml:space="preserve">
     <value>tsmimKillINISS</value>
   </data>
   <data name="&gt;&gt;tsmimKillINISS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmimRestartINISS.Name" xml:space="preserve">
     <value>tsmimRestartINISS</value>
   </data>
   <data name="&gt;&gt;tsmimRestartINISS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator14.Name" xml:space="preserve">
     <value>toolStripSeparator14</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiNastavenia.Name" xml:space="preserve">
     <value>tsmiNastavenia</value>
   </data>
   <data name="&gt;&gt;tsmiNastavenia.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiInformation.Name" xml:space="preserve">
     <value>tsmiInformation</value>
   </data>
   <data name="&gt;&gt;tsmiInformation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiChangelog.Name" xml:space="preserve">
     <value>tsmiChangelog</value>
   </data>
   <data name="&gt;&gt;tsmiChangelog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbSave.Name" xml:space="preserve">
     <value>tsbSave</value>
   </data>
   <data name="&gt;&gt;tsbSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbOpen.Name" xml:space="preserve">
     <value>tsbOpen</value>
   </data>
   <data name="&gt;&gt;tsbOpen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbImport.Name" xml:space="preserve">
     <value>tsbImport</value>
   </data>
   <data name="&gt;&gt;tsbImport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSplitButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSplitButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmimImportData.Name" xml:space="preserve">
     <value>tsmimImportData</value>
   </data>
   <data name="&gt;&gt;tsmimImportData.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmimImportGVD.Name" xml:space="preserve">
     <value>tsmimImportGVD</value>
   </data>
   <data name="&gt;&gt;tsmimImportGVD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmimImportELIS.Name" xml:space="preserve">
     <value>tsmimImportELIS</value>
   </data>
   <data name="&gt;&gt;tsmimImportELIS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tssbRecentDirs.Name" xml:space="preserve">
     <value>tssbRecentDirs</value>
   </data>
   <data name="&gt;&gt;tssbRecentDirs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSplitButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSplitButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbAnalyze.Name" xml:space="preserve">
     <value>tsbAnalyze</value>
   </data>
   <data name="&gt;&gt;tsbAnalyze.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbAddGVD.Name" xml:space="preserve">
     <value>tsbAddGVD</value>
   </data>
   <data name="&gt;&gt;tsbAddGVD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator12.Name" xml:space="preserve">
     <value>toolStripSeparator12</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbAddTrain.Name" xml:space="preserve">
     <value>tsbAddTrain</value>
   </data>
   <data name="&gt;&gt;tsbAddTrain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbEditTrain.Name" xml:space="preserve">
     <value>tsbEditTrain</value>
   </data>
   <data name="&gt;&gt;tsbEditTrain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbDeleteTrain.Name" xml:space="preserve">
     <value>tsbDeleteTrain</value>
   </data>
   <data name="&gt;&gt;tsbDeleteTrain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbCopyTrain.Name" xml:space="preserve">
     <value>tsbCopyTrain</value>
   </data>
   <data name="&gt;&gt;tsbCopyTrain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator10.Name" xml:space="preserve">
     <value>toolStripSeparator10</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbStanica.Name" xml:space="preserve">
     <value>tsbStanica</value>
   </data>
   <data name="&gt;&gt;tsbStanica.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbGlobalSettings.Name" xml:space="preserve">
     <value>tsbGlobalSettings</value>
   </data>
   <data name="&gt;&gt;tsbGlobalSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator11.Name" xml:space="preserve">
     <value>toolStripSeparator11</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbAppSettings.Name" xml:space="preserve">
     <value>tsbAppSettings</value>
   </data>
   <data name="&gt;&gt;tsbAppSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbInformation.Name" xml:space="preserve">
     <value>tsbInformation</value>
   </data>
   <data name="&gt;&gt;tsbInformation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator13.Name" xml:space="preserve">
     <value>toolStripSeparator13</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripLabel1.Name" xml:space="preserve">
     <value>toolStripLabel1</value>
   </data>
   <data name="&gt;&gt;toolStripLabel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tscbStanica.Name" xml:space="preserve">
     <value>tscbStanica</value>
   </data>
   <data name="&gt;&gt;tscbStanica.Type" xml:space="preserve">
-    <value>ExControls.ExToolStripComboBox, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExToolStripComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toolStripLabel2.Name" xml:space="preserve">
     <value>toolStripLabel2</value>
   </data>
   <data name="&gt;&gt;toolStripLabel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tscbObdobie.Name" xml:space="preserve">
     <value>tscbObdobie</value>
   </data>
   <data name="&gt;&gt;tscbObdobie.Type" xml:space="preserve">
-    <value>ExControls.ExToolStripComboBox, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.ExToolStripComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
     <value>toolStripSeparator7</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tssbStartINISS.Name" xml:space="preserve">
     <value>tssbStartINISS</value>
   </data>
   <data name="&gt;&gt;tssbStartINISS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSplitButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSplitButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiStartupSettings.Name" xml:space="preserve">
     <value>tsmiStartupSettings</value>
   </data>
   <data name="&gt;&gt;tsmiStartupSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator8.Name" xml:space="preserve">
     <value>toolStripSeparator8</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbKillINISS.Name" xml:space="preserve">
     <value>tsbKillINISS</value>
   </data>
   <data name="&gt;&gt;tsbKillINISS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbShutdownINISS.Name" xml:space="preserve">
     <value>tsbShutdownINISS</value>
   </data>
   <data name="&gt;&gt;tsbShutdownINISS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbRestartINISS.Name" xml:space="preserve">
     <value>tsbRestartINISS</value>
   </data>
   <data name="&gt;&gt;tsbRestartINISS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator19.Name" xml:space="preserve">
     <value>toolStripSeparator19</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator19.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbDatObm.Name" xml:space="preserve">
     <value>tsbDatObm</value>
   </data>
   <data name="&gt;&gt;tsbDatObm.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;backgroundWorker1.Name" xml:space="preserve">
     <value>backgroundWorker1</value>
   </data>
   <data name="&gt;&gt;backgroundWorker1.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>nameDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LinkaPrichod.Name" xml:space="preserve">
-    <value>LinkaPrichod</value>
-  </data>
-  <data name="&gt;&gt;LinkaPrichod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DatumoveObmedzenieText.Name" xml:space="preserve">
-    <value>DatumoveObmedzenieText</value>
-  </data>
-  <data name="&gt;&gt;DatumoveObmedzenieText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LinkaOdchod.Name" xml:space="preserve">
-    <value>LinkaOdchod</value>
-  </data>
-  <data name="&gt;&gt;LinkaOdchod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Ostatne.Name" xml:space="preserve">
-    <value>Ostatne</value>
-  </data>
-  <data name="&gt;&gt;Ostatne.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn2</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn3</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn4</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn5.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn5</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn6.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn6</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn7.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn7</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn8.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn8</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn9.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn9</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn10.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn10</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn11.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn11</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn12.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn12</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dOpenELIS.Name" xml:space="preserve">
-    <value>dOpenELIS</value>
-  </data>
-  <data name="&gt;&gt;dOpenELIS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bWorkerELIS.Name" xml:space="preserve">
-    <value>bWorkerELIS</value>
-  </data>
-  <data name="&gt;&gt;bWorkerELIS.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
-    <value>toolStripStatusLabel1</value>
-  </data>
-  <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsslTrainCountWithVariants.Name" xml:space="preserve">
-    <value>tsslTrainCountWithVariants</value>
-  </data>
-  <data name="&gt;&gt;tsslTrainCountWithVariants.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsslTrainCount.Name" xml:space="preserve">
-    <value>tsslTrainCount</value>
-  </data>
-  <data name="&gt;&gt;tsslTrainCount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsslSelTrainName.Name" xml:space="preserve">
-    <value>tsslSelTrainName</value>
-  </data>
-  <data name="&gt;&gt;tsslSelTrainName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsslSelTrainVariants.Name" xml:space="preserve">
-    <value>tsslSelTrainVariants</value>
-  </data>
-  <data name="&gt;&gt;tsslSelTrainVariants.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn13.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn13</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn14.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn14</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn15.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn15</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn16.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn16</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn17.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn17</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn18.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn18</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn19.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn19</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn19.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn20.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn20</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn21.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn21</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn21.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn22.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn22</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn22.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn23.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn23</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn23.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn24.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn24</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn24.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn25.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn25</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn25.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn26.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn26</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn26.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn27.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn27</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn27.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn28.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn28</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn28.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn1.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn1.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn2.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn2</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn2.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn3.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn3</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn3.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn4.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn4</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn4.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn5.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn5</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn5.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn6.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn6</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn6.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn7.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn7</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn7.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn8.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn8</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn8.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn1.Name" xml:space="preserve">
-    <value>dataGridViewComboBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn2.Name" xml:space="preserve">
-    <value>dataGridViewComboBoxColumn2</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn3.Name" xml:space="preserve">
-    <value>dataGridViewComboBoxColumn3</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn4.Name" xml:space="preserve">
-    <value>dataGridViewComboBoxColumn4</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn5.Name" xml:space="preserve">
-    <value>dataGridViewComboBoxColumn5</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn6.Name" xml:space="preserve">
-    <value>dataGridViewComboBoxColumn6</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn7.Name" xml:space="preserve">
-    <value>dataGridViewComboBoxColumn7</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn8.Name" xml:space="preserve">
-    <value>dataGridViewComboBoxColumn8</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn9.Name" xml:space="preserve">
-    <value>dataGridViewComboBoxColumn9</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn10.Name" xml:space="preserve">
-    <value>dataGridViewComboBoxColumn10</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewComboBoxColumn10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn9.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn9</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn9.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn10.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn10</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn10.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn11.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn11</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn11.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn12.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn12</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn12.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn13.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn13</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn13.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn14.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn14</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn14.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn15.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn15</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn15.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn16.Name" xml:space="preserve">
-    <value>dataGridViewExComboBoxColumn16</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewExComboBoxColumn16.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.ComponentModel.BackgroundWorker, System.ComponentModel.EventBasedAsync, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="&gt;&gt;cisloDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>cisloDataGridViewTextBoxColumn</value>
   </data>
   <data name="&gt;&gt;cisloDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>nameDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;nameDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;typDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>typDataGridViewTextBoxColumn</value>
   </data>
   <data name="&gt;&gt;typDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LinkaPrichod.Name" xml:space="preserve">
+    <value>LinkaPrichod</value>
+  </data>
+  <data name="&gt;&gt;LinkaPrichod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;smerovanieDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>smerovanieDataGridViewTextBoxColumn</value>
   </data>
   <data name="&gt;&gt;smerovanieDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;prichodDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>prichodDataGridViewTextBoxColumn</value>
   </data>
   <data name="&gt;&gt;prichodDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;odchodDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>odchodDataGridViewTextBoxColumn</value>
   </data>
   <data name="&gt;&gt;odchodDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dgvcVychodziaStanica.Name" xml:space="preserve">
     <value>dgvcVychodziaStanica</value>
   </data>
   <data name="&gt;&gt;dgvcVychodziaStanica.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dgvcKonecnaStanica.Name" xml:space="preserve">
     <value>dgvcKonecnaStanica</value>
   </data>
   <data name="&gt;&gt;dgvcKonecnaStanica.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DatumoveObmedzenieText.Name" xml:space="preserve">
+    <value>DatumoveObmedzenieText</value>
+  </data>
+  <data name="&gt;&gt;DatumoveObmedzenieText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Kolaj.Name" xml:space="preserve">
     <value>Kolaj</value>
   </data>
   <data name="&gt;&gt;Kolaj.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trackBindingSource.Name" xml:space="preserve">
     <value>trackBindingSource</value>
   </data>
   <data name="&gt;&gt;trackBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Dopravca.Name" xml:space="preserve">
     <value>Dopravca</value>
   </data>
   <data name="&gt;&gt;Dopravca.Type" xml:space="preserve">
-    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.8294.18516, Culture=neutral, PublicKeyToken=null</value>
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;operatorBindingSource.Name" xml:space="preserve">
     <value>operatorBindingSource</value>
   </data>
   <data name="&gt;&gt;operatorBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LinkaOdchod.Name" xml:space="preserve">
+    <value>LinkaOdchod</value>
+  </data>
+  <data name="&gt;&gt;LinkaOdchod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Ostatne.Name" xml:space="preserve">
+    <value>Ostatne</value>
+  </data>
+  <data name="&gt;&gt;Ostatne.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;vlakBindingSource.Name" xml:space="preserve">
     <value>vlakBindingSource</value>
   </data>
   <data name="&gt;&gt;vlakBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn3</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn4</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn5.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn5</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn6.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn6</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn7.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn7</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn8.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn8</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn9.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn9</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn10.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn10</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn11.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn11</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn12.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn12</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dOpenELIS.Name" xml:space="preserve">
+    <value>dOpenELIS</value>
+  </data>
+  <data name="&gt;&gt;dOpenELIS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bWorkerELIS.Name" xml:space="preserve">
+    <value>bWorkerELIS</value>
+  </data>
+  <data name="&gt;&gt;bWorkerELIS.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System.ComponentModel.EventBasedAsync, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
+    <value>toolStripStatusLabel1</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsslTrainCountWithVariants.Name" xml:space="preserve">
+    <value>tsslTrainCountWithVariants</value>
+  </data>
+  <data name="&gt;&gt;tsslTrainCountWithVariants.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsslTrainCount.Name" xml:space="preserve">
+    <value>tsslTrainCount</value>
+  </data>
+  <data name="&gt;&gt;tsslTrainCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsslSelTrainName.Name" xml:space="preserve">
+    <value>tsslSelTrainName</value>
+  </data>
+  <data name="&gt;&gt;tsslSelTrainName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsslSelTrainVariants.Name" xml:space="preserve">
+    <value>tsslSelTrainVariants</value>
+  </data>
+  <data name="&gt;&gt;tsslSelTrainVariants.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn13.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn13</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn14.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn14</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn15.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn15</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn16.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn16</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn17.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn17</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn18.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn18</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn19.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn19</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn20.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn20</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn21.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn21</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn22.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn22</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn23.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn23</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn24.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn24</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn25.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn25</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn26.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn26</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn26.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn27.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn27</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn27.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn28.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn28</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn28.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn1.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn1.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn2.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn2.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn3.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn3</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn3.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn4.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn4</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn4.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn5.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn5</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn5.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn6.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn6</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn6.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn7.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn7</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn7.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn8.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn8</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn8.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn1.Name" xml:space="preserve">
+    <value>dataGridViewComboBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn2.Name" xml:space="preserve">
+    <value>dataGridViewComboBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn3.Name" xml:space="preserve">
+    <value>dataGridViewComboBoxColumn3</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn4.Name" xml:space="preserve">
+    <value>dataGridViewComboBoxColumn4</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn5.Name" xml:space="preserve">
+    <value>dataGridViewComboBoxColumn5</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn6.Name" xml:space="preserve">
+    <value>dataGridViewComboBoxColumn6</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn7.Name" xml:space="preserve">
+    <value>dataGridViewComboBoxColumn7</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn8.Name" xml:space="preserve">
+    <value>dataGridViewComboBoxColumn8</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn9.Name" xml:space="preserve">
+    <value>dataGridViewComboBoxColumn9</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn10.Name" xml:space="preserve">
+    <value>dataGridViewComboBoxColumn10</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewComboBoxColumn10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn9.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn9</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn9.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn10.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn10</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn10.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn11.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn11</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn11.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn12.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn12</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn12.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn13.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn13</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn13.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn14.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn14</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn14.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn15.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn15</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn15.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn16.Name" xml:space="preserve">
+    <value>dataGridViewExComboBoxColumn16</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewExComboBoxColumn16.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FMain</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

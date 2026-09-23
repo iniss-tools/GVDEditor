@@ -171,4 +171,6 @@
 		</ItemGroup>
 		<Copy SourceFiles="@(ELISBridgeOutput)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" ContinueOnError="true" />
 	</Target>
+	<!-- Rozsirenie navrhara ExControls pre VS (editor kolekcie ExOptionsView.Panels) -->
+	<Import Project="..\..\ExControls\ExControls.Designer.targets" />
 </Project>

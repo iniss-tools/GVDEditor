@@ -32,7 +32,6 @@ public partial class FMain : Form
     private readonly List<GVDDirectory> _gvdDirs = new();
     private Process? _actualINISSProcess;
     private bool _error;
-    private bool _dataSaved = true;
     private string? _lastINISSStart;
     private GVDDirectory? _newDir;
     private StateDgmTemplate _newDirTemplate = StateDgmTemplate.Slovak;
@@ -117,19 +116,19 @@ public partial class FMain : Form
 
     private bool DataSaved
     {
-        get => _dataSaved;
+        get;
         set
         {
-            if(value == _dataSaved)
+            if (value == field)
                 return;
 
-            _dataSaved = value;
-            if (_dataSaved)
+            field = value;
+            if (field)
                 Text = Text.Replace("*", "");
             else
                 Text = Application.ProductName + @" - *" + GlobData.INISSDir;
-        } 
-    }
+        }
+    } = true;
 
     protected override CreateParams CreateParams
     {
@@ -177,7 +176,7 @@ public partial class FMain : Form
         _error = false;
     }
 
-    private void ProccessData(PathAndGVD pathgvd)
+    private static void ProccessData(PathAndGVD pathgvd)
     {
         GlobData.CustomStations = new ExBindingList<Station>(TxtParser.ReadCustomStations(pathgvd.Path, pathgvd.Gvd));
 
@@ -259,6 +258,7 @@ public partial class FMain : Form
             tsmiNew.Enabled = true;
             tsmiImport.Enabled = true;
             tsbImport.Enabled = true;
+            tsmiStateDgm.Enabled = true;
             ChangeEnableMenuItemsGSettings(true);
             ChangeEnableMenuItemsLSettings(true);
         }
