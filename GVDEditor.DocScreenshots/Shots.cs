@@ -42,7 +42,11 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("datumove-obmedzenia/generator", () => new FDatObm());
             // editory tabúľ nad ukážkovými tabuľami (DemoTables)
             var station = gvdDir.GVD.ThisStation;
-            Shot("tabule/katalogova-tabula", () => new FTableCatalog(GlobData.TableCatalogs[0], GlobData.TabTabs), tabs: true);
+            var catalog = GlobData.TableCatalogs[0];
+            Shot("tabule/katalogova-tabula", () => new FTableCatalog(catalog, GlobData.TabTabs.ToList()),
+                form => SelectListItem(form, "listColumns", catalog.Items.FindIndex(i => i.Key == "Smer")));
+            Shot("tabule/poradie-stlpcov", () => new FTableColumnOrder(catalog.Items, catalog.ViewTypeTabs),
+                form => SelectCombo(form, "cbViewMode", 1));
             Shot("tabule/fyzicka-tabula", () => new FTablePhysical(GlobData.TablePhysicals[0], GlobData.TableCatalogs));
             Shot("tabule/logicka-tabula", () => new FTableLogical(GlobData.TableLogicals[0], GlobData.TablePhysicals, false, station));
             Shot("tabule/text-na-tabuli", () => new FTableText(GlobData.TableTexts[0], GlobData.TableCatalogs, gvdDir.GVD, 0));
@@ -173,6 +177,12 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
         validate.Invoke(form, null);
         log.Add($"  TabTab: skontrolovaných {list.Items.Count} sekcií, vybraná {selected.Key}");
     }
+
+    private static void SelectListItem(Form form, string name, int index) =>
+        ((ListBox)form.Controls.Find(name, true).Single()).SelectedIndex = index;
+
+    private static void SelectCombo(Form form, string name, int index) =>
+        ((ComboBox)form.Controls.Find(name, true).Single()).SelectedIndex = index;
 
     private static void SelectTrain(Form main, int index)
     {

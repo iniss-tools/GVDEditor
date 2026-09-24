@@ -339,6 +339,14 @@ Otvoriť stránku pre stiahnutie programu?</value>
     <value>V type tabule {0} je nesprávny počet módov {1}. (Správny počet: {2})
 Pravdepodobne ste zabudli upraviť poradie stĺpcov.</value>
   </data>
+  <data name="FTableCatalog_bSave_NeznamyStlpec" xml:space="preserve">
+    <value>Poradie stĺpcov obsahuje v type {0} v móde {1} stĺpec {2}, ktorý v tabuli neexistuje.
+Upravte poradie stĺpcov.</value>
+  </data>
+  <data name="FTableCatalog_bColumnDelete_StlpecPouzity" xml:space="preserve">
+    <value>Stĺpec {0} je použitý v poradí stĺpcov. Ak ho odstránite, odoberie sa aj zo všetkých módov poradia stĺpcov.
+Naozaj ho chcete odstrániť?</value>
+  </data>
   <data name="NameColorSettings_Mark" xml:space="preserve">
     <value>Značky v CheckBox a v RadioButton</value>
   </data>

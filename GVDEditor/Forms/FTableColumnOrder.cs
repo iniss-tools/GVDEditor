@@ -1,4 +1,5 @@
 ﻿using GVDEditor.Entities;
+using GVDEditor.Tools;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
@@ -118,35 +119,18 @@ public partial class FTableColumnOrder : Form
 
     private void bSetForAll_Click(object sender, EventArgs e)
     {
-        var items = new List<string>();
-        foreach (var i in OrderedItems) items.Add(i.Key);
+        var keys = OrderedItems.Select(i => i.Key);
+        var tab = ItemsTypeTabs.FirstOrDefault(tt => tt.ViewType == selectedType);
 
-        var types = ItemsTypeTabs.Select(tt => tt.ViewType).ToList();
-
-        if (types.Contains(selectedType))
+        if (tab == null)
         {
-            var indexT = types.IndexOf(selectedType);
-            ItemsTypeTabs[indexT].TypeModeItems.Clear();
-
-            foreach (var tableViewMode in TableViewMode.GetValues())
-            {
-                var ti = new TableTypeModeItem { ViewMode = tableViewMode, ItemsKeys = items };
-                ItemsTypeTabs[indexT].TypeModeItems.Add(ti);
-            }
+            tab = new TableViewTypeTab { ViewType = selectedType };
+            ItemsTypeTabs.Add(tab);
         }
-        else
-        {
-            var tmi = new TableTypeModeItem { ItemsKeys = items, ViewMode = selectedMode };
 
-            var tvtt = new TableViewTypeTab
-            {
-                ViewType = selectedType,
-                CountLinesRecord = decimal.ToInt32(nudTypeCountLines.Value).ToString()
-            };
-            tvtt.TypeModeItems.Add(tmi);
-
-            ItemsTypeTabs.Add(tvtt);
-        }
+        tab.CountLinesRecord = decimal.ToInt32(nudTypeCountLines.Value).ToString();
+        // vsetky mody (kazdy s vlastnou kopiou zoznamu klucov)
+        TableCatalogEditing.SetAllModes(tab, keys);
     }
 
     private void bSave_Click(object sender, EventArgs e)

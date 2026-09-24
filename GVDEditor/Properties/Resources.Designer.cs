@@ -889,7 +889,27 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("FTableCatalog_bSave_NespravnyPocetModov", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Poradie stĺpcov obsahuje v type {0} v móde {1} stĺpec {2}, ktorý v tabuli neexistuje.
+        ///Upravte poradie stĺpcov..
+        /// </summary>
+        internal static string FTableCatalog_bSave_NeznamyStlpec {
+            get {
+                return ResourceManager.GetString("FTableCatalog_bSave_NeznamyStlpec", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Stĺpec {0} je použitý v poradí stĺpcov. Ak ho odstránite, odoberie sa aj zo všetkých módov poradia stĺpcov.
+        ///Naozaj ho chcete odstrániť?.
+        /// </summary>
+        internal static string FTableCatalog_bColumnDelete_StlpecPouzity {
+            get {
+                return ResourceManager.GetString("FTableCatalog_bColumnDelete_StlpecPouzity", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Definované stĺpce nie sú zotriedené podľa pozície: &quot;{0}&quot;-End:{1} -&gt; &quot;{2}&quot;-End:{3}.
         /// </summary>

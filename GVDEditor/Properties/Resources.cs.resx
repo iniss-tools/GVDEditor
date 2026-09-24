@@ -512,6 +512,14 @@ I tak pokračovat? </value>
     <value>V type tabule {0} je nesprávný počet módů {1}. (Správný počet: {2})
 Pravděpodobně jste zapomněli upravit pořadí sloupců. </value>
   </data>
+  <data name="FTableCatalog_bSave_NeznamyStlpec" xml:space="preserve">
+    <value>Pořadí sloupců obsahuje v typu {0} v módu {1} sloupec {2}, který v tabuli neexistuje.
+Upravte pořadí sloupců.</value>
+  </data>
+  <data name="FTableCatalog_bColumnDelete_StlpecPouzity" xml:space="preserve">
+    <value>Sloupec {0} je použitý v pořadí sloupců. Pokud ho odstraníte, odebere se i ze všech módů pořadí sloupců.
+Opravdu ho chcete odstranit?</value>
+  </data>
   <data name="FTableCatalog_Posledný_pixel_stĺpca_je_menší_alebo_rovný_ako_počiatočný" xml:space="preserve">
     <value>Poslední pixel sloupce je menší nebo roven než počáteční.</value>
   </data>

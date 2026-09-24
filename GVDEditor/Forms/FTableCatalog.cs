@@ -1,5 +1,6 @@
 ﻿using GVDEditor.Entities;
 using GVDEditor.Properties;
+using GVDEditor.Tools;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
@@ -10,6 +11,9 @@ namespace GVDEditor.Forms;
 public partial class FTableCatalog : Form
 {
     private readonly BindingList<TableItem> Columns;
+
+    // pracovna kopia stlpca -> povodny stlpec tabule
+    private readonly Dictionary<TableItem, TableItem> originalColumns = new(ReferenceEqualityComparer.Instance);
 
     private readonly bool copy;
     private readonly Color defaultBorderColor;
@@ -29,9 +33,9 @@ public partial class FTableCatalog : Form
     ///     Vytvori novy formular typu <see cref="FTableCatalog"/>.
     /// </summary>
     /// <param name="table">Tato tabula.</param>
-    /// <param name="tabtabs">Tabtabs.</param>
+    /// <param name="tabtabs">Tabtabs (zoznam sa nemeni, polozka „Ziadny“ sa prida len do vyberu v okne).</param>
     /// <param name="copy">Ci sa jedna o kopiu.</param>
-    public FTableCatalog(TableCatalog table, IList<TableTabTab> tabtabs, bool copy = false)
+    public FTableCatalog(TableCatalog table, IEnumerable<TableTabTab> tabtabs, bool copy = false)
     {
         InitializeComponent();
         this.ApplyThemeAndFonts();
@@ -41,13 +45,12 @@ public partial class FTableCatalog : Form
 
         defaultBorderColor = nudFont.BorderColor;
 
-        ViewTypeTabs = new BindingList<TableViewTypeTab>(ThisTable.ViewTypeTabs);
+        // okno pracuje nad kopiami – tabula sa zmeni az pri Ulozit (pri Duplikovat sa originalna tabula nezmeni vobec)
+        ViewTypeTabs = new BindingList<TableViewTypeTab>(ThisTable.ViewTypeTabs.Select(TableCatalogEditing.Clone).ToList());
 
-        tabtabs.Insert(0, TableTabTab.Empty);
+        TabTabs1 = new BindingList<TableTabTab>(TableCatalogEditing.WithEmptyTabTab(tabtabs));
 
-        TabTabs1 = new BindingList<TableTabTab>(tabtabs);
-
-        TabTabs2 = new BindingList<TableTabTab>(tabtabs);
+        TabTabs2 = new BindingList<TableTabTab>(TableCatalogEditing.WithEmptyTabTab(tabtabs));
 
         cbManufacturer.DataSource = TableManufacturer.GetValues();
         cbColumnFill.DataSource = TableFillSection.GetValues();
@@ -56,10 +59,16 @@ public partial class FTableCatalog : Form
         cbTab1.DataSource = TabTabs1;
         cbTab2.DataSource = TabTabs2;
 
-        Columns = new BindingList<TableItem>(table.Items);
+        Columns = new BindingList<TableItem>();
+        foreach (var item in table.Items)
+        {
+            var clone = TableCatalogEditing.Clone(item);
+            originalColumns[clone] = item;
+            Columns.Add(clone);
+        }
         listColumns.DataSource = Columns;
 
-        Rows = new BindingList<TableSegment>(table.Segments);
+        Rows = new BindingList<TableSegment>(table.Segments.Select(TableCatalogEditing.Clone).ToList());
         listRows.DataSource = Rows;
 
         ThisTable = table;
@@ -73,8 +82,8 @@ public partial class FTableCatalog : Form
         else
             cbManufacturer.SelectedItem = table.Manufacturer;
 
-        nudMaxRecCount.Value = table.MaxRecCount;
         nudMinHeight.Value = table.MinHeight;
+        nudMaxRecCount.Value = table.MaxRecCount;
 
         if (Columns.Count == 0)
         {
@@ -135,14 +144,7 @@ public partial class FTableCatalog : Form
             return;
         }
 
-        var item = new TableItem { Key = tbColumnKey.Text, Name = tbColumnName.Text };
-
-        if (rbCenter.Checked)
-            item.Align = TableAlign.Center;
-        else if (rbLeft.Checked)
-            item.Align = TableAlign.Left;
-        else if (rbLeft.Checked)
-            item.Align = TableAlign.Right;
+        var item = new TableItem { Key = tbColumnKey.Text, Name = tbColumnName.Text, Align = SelectedAlign() };
 
         item.Start = start;
         item.End = end;
@@ -195,15 +197,12 @@ public partial class FTableCatalog : Form
             }
 
             var item = Columns[listColumns.SelectedIndex];
+            // poradie stlpcov odkazuje na stlpec klucom – pri premenovani sa musi premenovat aj tam
+            if (item.Key != tbColumnKey.Text)
+                TableCatalogEditing.RenameKey(ViewTypeTabs, item.Key, tbColumnKey.Text);
             item.Key = tbColumnKey.Text;
             item.Name = tbColumnName.Text;
-
-            if (rbCenter.Checked)
-                item.Align = TableAlign.Center;
-            else if (rbLeft.Checked)
-                item.Align = TableAlign.Left;
-            else if (rbLeft.Checked)
-                item.Align = TableAlign.Right;
+            item.Align = SelectedAlign();
 
             item.Start = start;
             item.End = end;
@@ -268,9 +267,26 @@ public partial class FTableCatalog : Form
         Utils.ShowError(string.Format(Resources.FTableCatalog_ShowErrorUnDefTab, tab1 ? "TAB1" : "TAB2"));
     }
 
+    private TableAlign SelectedAlign()
+    {
+        if (rbCenter.Checked) return TableAlign.Center;
+        if (rbRight.Checked) return TableAlign.Right;
+        return TableAlign.Left;
+    }
+
     private void bColumnDelete_Click(object sender, EventArgs e)
     {
-        if (listColumns.SelectedIndex != -1) Columns.RemoveAt(listColumns.SelectedIndex);
+        if (listColumns.SelectedIndex == -1) return;
+
+        var item = Columns[listColumns.SelectedIndex];
+        if (TableCatalogEditing.CountKeyUsages(ViewTypeTabs, item.Key) > 0)
+        {
+            if (Utils.ShowQuestion(string.Format(Resources.FTableCatalog_bColumnDelete_StlpecPouzity, item.Key)) != DialogResult.Yes)
+                return;
+            TableCatalogEditing.RemoveKey(ViewTypeTabs, item.Key);
+        }
+
+        Columns.Remove(item);
     }
 
     private void listRows_SelectedIndexChanged(object sender, EventArgs e)
@@ -305,34 +321,28 @@ public partial class FTableCatalog : Form
 
     private void nudMaxRecCount_ValueChanged(object sender, EventArgs e)
     {
-        if (Rows.Count > nudMaxRecCount.Value)
-        {
-            for (var i = 0; i < Rows.Count; i++)
-                if (i > nudMaxRecCount.Value)
-                    Rows.RemoveAt(i);
-        }
-        else if (Rows.Count < nudMaxRecCount.Value)
-        {
-            for (var i = Rows.Count; i < nudMaxRecCount.Value; i++)
-                Rows.Add(new TableSegment { Height = 0, Size = 0, Width = 0 });
-        }
+        TableCatalogEditing.ResizeRows(Rows, decimal.ToInt32(nudMaxRecCount.Value),
+            () => new TableSegment { Height = decimal.ToInt32(nudMinHeight.Value), Size = 0, Width = 0 });
     }
 
     private void bSetAll_Click(object sender, EventArgs e)
     {
-        var segment = new TableSegment
+        // kazdy riadok dostane vlastnu instanciu – inak by Upravit jedneho riadku zmenilo vsetky
+        for (var i = 0; i < Rows.Count; i++)
         {
-            Size = decimal.ToInt32(nudSize.Value),
-            Width = decimal.ToInt32(nudWidth.Value),
-            Height = decimal.ToInt32(nudHeight.Value)
-        };
-
-        for (var i = 0; i < Rows.Count; i++) Rows[i] = segment;
+            Rows[i] = new TableSegment
+            {
+                Size = decimal.ToInt32(nudSize.Value),
+                Width = decimal.ToInt32(nudWidth.Value),
+                Height = decimal.ToInt32(nudHeight.Value)
+            };
+        }
     }
 
     private void bSetColumnOrder_Click(object sender, EventArgs e)
     {
-        var etcof = new FTableColumnOrder(Columns.ToList(), ViewTypeTabs.ToList());
+        // okno poradia dostane kopie – pri Storno sa poradie nezmeni
+        var etcof = new FTableColumnOrder(Columns.ToList(), ViewTypeTabs.Select(TableCatalogEditing.Clone).ToList());
         var result = etcof.ShowDialog();
         if (result.Equals(DialogResult.OK))
         {
@@ -353,7 +363,7 @@ public partial class FTableCatalog : Form
         }
 
         foreach (var t in GlobData.TableCatalogs)
-            if (t.Key == tbName.Text && !table.Equals(t))
+            if (t.Key == tbKey.Text && !table.Equals(t))
             {
                 Utils.ShowError(Resources.Tables_Zadaný_kľúč_tabule_už_existuje);
                 DialogResult = DialogResult.None;
@@ -409,9 +419,23 @@ public partial class FTableCatalog : Form
             }
         }
 
+        // ReadTables odmietne tabulu, ktorej poradie stlpcov odkazuje na neexistujuci stlpec
+        if (TableCatalogEditing.FindUnknownKey(ViewTypeTabs, Columns) is { } unknown)
+        {
+            Utils.ShowError(string.Format(Resources.FTableCatalog_bSave_NeznamyStlpec, unknown.Tab.ViewType, unknown.Mode.ViewMode, unknown.Key));
+            DialogResult = DialogResult.None;
+            return;
+        }
+
         table.Key = tbKey.Text;
         table.Name = tbName.Text;
-        table.Items = Columns.ToList();
+        // pri uprave sa zachovaju povodne instancie stlpcov (odkazuju na ne realizacie textov na tabuli)
+        table.Items = Columns.Select(column =>
+        {
+            if (copy || !originalColumns.TryGetValue(column, out var original)) return column;
+            TableCatalogEditing.CopyTo(column, original);
+            return original;
+        }).ToList();
         table.Manufacturer = manufacturer;
         table.MaxRecCount = decimal.ToInt32(nudMaxRecCount.Value);
         table.Segments = Rows.ToList();
@@ -429,8 +453,9 @@ public partial class FTableCatalog : Form
 
     private void nudHeight_Validating(object sender, CancelEventArgs e)
     {
-        if (nudHeight.Value > nudMinHeight.Value) 
-            e.Cancel = true;
+        // Min. vyska je najmensia vyska riadka (TKatalog.txt MIN_HEIGHT) – mensiu hodnotu zvysi, vacsia je v poriadku
+        if (nudHeight.Value < nudMinHeight.Value)
+            nudHeight.Value = nudMinHeight.Value;
     }
 
     private void nudFont_ValueChanged(object sender, EventArgs e)

@@ -2528,8 +2528,12 @@ internal static class TxtParser
             }
 
             var tabTab = new TableTabTab { Key = area, Text = tabtabF.Get(area) ?? "" };
-            tabtabs.Add(tabTab);
             p++;
+
+            // prazdna sekcia [Ziadny] je pozostatok starsich verzii FTableCatalog (vkladal polozku Ziadny do zoznamu TabTab)
+            if (tabTab.Key == TableTabTab.Empty.Key && string.IsNullOrWhiteSpace(tabTab.Text)) continue;
+
+            tabtabs.Add(tabTab);
         }
 
         //TCATALOGS
@@ -2845,6 +2849,8 @@ internal static class TxtParser
             tabtabF.Preamble = new TxtPropsAreas(fileTabTab).Preamble;
         foreach (var tabTab in tabTabs)
         {
+            // polozka Ziadny patri len do vyberu v okne, nie do suboru
+            if (tabTab == TableTabTab.Empty) continue;
             tabtabF.Set(tabTab.Key, tabTab.Text);
         }
         tabtabF.Save();
