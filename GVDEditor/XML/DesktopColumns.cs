@@ -9,7 +9,7 @@ namespace GVDEditor.XML;
 /// </summary>
 public record DesktopColumns()
 {
-    private static readonly Type classType = typeof(DesktopColumns);
+    private static readonly Type ClassType = typeof(DesktopColumns);
 
     [XmlIgnore]
     private static readonly Dictionary<string, (string name, int order, int minWidth, bool visible)> props = new()
@@ -19,35 +19,16 @@ public record DesktopColumns()
         [nameof(Name)] = ("Názov", 2, 100, true),
         [nameof(LinkaPrichod)] = ("Linka príchod", 3, 50, false),
         [nameof(LinkaOdchod)] = ("Linka odchod", 4, 50, false),
-        [nameof(Routing)] = ("Linka odchod", 5, 100, true),
-        [nameof(Prichod)] = ("Linka odchod", 6, 60, true),
+        [nameof(Routing)] = ("Smerovanie", 5, 100, true),
+        [nameof(Prichod)] = ("Príchod", 6, 60, true),
         [nameof(Odchod)] = ("Odchod", 7, 60, true),
         [nameof(VychodziaStanica)] = ("Východzia stanica", 8, 120, true),
         [nameof(KonecnaStanica)] = ("Konečná stanica", 9, 120, true),
         [nameof(DateLimit)] = ("Dátumové obmedzenie", 10, 300, true),
         [nameof(Track)] = ("Koľaj", 11, 100, true),
-        [nameof(Operator)] = ("Operátor", 12, 50, true),
+        [nameof(Operator)] = ("Dopravca", 12, 50, true),
         [nameof(OtherBtn)] = ("Ostatné", 13, 50, true),
     };
-
-    #region Fields
-
-    private DesktopColumn _number = InitColumn(nameof(Number));
-    private DesktopColumn _type = InitColumn(nameof(Type));
-    private DesktopColumn _name = InitColumn(nameof(Name));
-    private DesktopColumn _linkaPrichod = InitColumn(nameof(LinkaPrichod));
-    private DesktopColumn _linkaOdchod = InitColumn(nameof(LinkaOdchod));
-    private DesktopColumn _routing = InitColumn(nameof(Routing));
-    private DesktopColumn _prichod = InitColumn(nameof(Prichod));
-    private DesktopColumn _odchod = InitColumn(nameof(Odchod));
-    private DesktopColumn _vychodziaStanica = InitColumn(nameof(VychodziaStanica));
-    private DesktopColumn _konecnaStanica = InitColumn(nameof(KonecnaStanica));
-    private DesktopColumn _dateLimit = InitColumn(nameof(DateLimit));
-    private DesktopColumn _track = InitColumn(nameof(Track));
-    private DesktopColumn _operator = InitColumn(nameof(Operator));
-    private DesktopColumn _otherBtn = InitColumn(nameof(OtherBtn));
-
-    #endregion
 
     #region Properties
 
@@ -57,13 +38,13 @@ public record DesktopColumns()
     [XmlElement("Number")]
     public DesktopColumn Number
     {
-        get => _number ??= InitColumn(nameof(Number));
+        get => field ??= InitColumn(nameof(Number));
         set
         {
-            _number = value;
-            AssignColumnProps(ref _number, nameof(Number));
+            field = value;
+            AssignColumnProps(ref field, nameof(Number));
         }
-    }
+    } = InitColumn(nameof(Number));
 
     /// <summary>
     ///     Stĺpec Typ.
@@ -71,13 +52,13 @@ public record DesktopColumns()
     [XmlElement("Type")]
     public DesktopColumn Type
     {
-        get => _type ??= InitColumn(nameof(Type));
+        get => field ??= InitColumn(nameof(Type));
         set
         {
-            _type = value;
-            AssignColumnProps(ref _type, nameof(Type));
+            field = value;
+            AssignColumnProps(ref field, nameof(Type));
         }
-    }
+    } = InitColumn(nameof(Type));
 
     /// <summary>
     ///     Stĺpec Názov.
@@ -85,13 +66,13 @@ public record DesktopColumns()
     [XmlElement("Name")]
     public DesktopColumn Name
     {
-        get => _name ??= InitColumn(nameof(Name));
+        get => field ??= InitColumn(nameof(Name));
         set
         {
-            _name = value;
-            AssignColumnProps(ref _name, nameof(Name));
+            field = value;
+            AssignColumnProps(ref field, nameof(Name));
         }
-    }
+    } = InitColumn(nameof(Name));
 
     /// <summary>
     ///     Stĺpec Linka-Príchod.
@@ -99,27 +80,27 @@ public record DesktopColumns()
     [XmlElement("LinkaPrichod")]
     public DesktopColumn LinkaPrichod
     {
-        get => _linkaPrichod ??= InitColumn(nameof(LinkaPrichod));
+        get => field ??= InitColumn(nameof(LinkaPrichod));
         set
         {
-            _linkaPrichod = value;
-            AssignColumnProps(ref _linkaPrichod, nameof(LinkaPrichod));
+            field = value;
+            AssignColumnProps(ref field, nameof(LinkaPrichod));
         }
-    }
+    } = InitColumn(nameof(LinkaPrichod));
 
     /// <summary>
-    ///     Stĺpec Linka-Príchod.
+    ///     Stĺpec Linka-Odchod.
     /// </summary>
     [XmlElement("LinkaOdchod")]
     public DesktopColumn LinkaOdchod
     {
-        get => _linkaOdchod ??= InitColumn(nameof(LinkaOdchod));
+        get => field ??= InitColumn(nameof(LinkaOdchod));
         set
         {
-            _linkaOdchod = value;
-            AssignColumnProps(ref _linkaOdchod, nameof(LinkaOdchod));
+            field = value;
+            AssignColumnProps(ref field, nameof(LinkaOdchod));
         }
-    }
+    } = InitColumn(nameof(LinkaOdchod));
 
     /// <summary>
     ///     Stĺpec Smerovanie.
@@ -127,13 +108,13 @@ public record DesktopColumns()
     [XmlElement("Routing")]
     public DesktopColumn Routing
     {
-        get => _routing ??= InitColumn(nameof(Routing));
+        get => field ??= InitColumn(nameof(Routing));
         set
         {
-            _routing = value;
-            AssignColumnProps(ref _routing, nameof(Routing));
+            field = value;
+            AssignColumnProps(ref field, nameof(Routing));
         }
-    }
+    } = InitColumn(nameof(Routing));
 
     /// <summary>
     ///     Stĺpec Príchod.
@@ -141,13 +122,13 @@ public record DesktopColumns()
     [XmlElement("Prichod")]
     public DesktopColumn Prichod
     {
-        get => _prichod ??= InitColumn(nameof(Prichod));
+        get => field ??= InitColumn(nameof(Prichod));
         set
         {
-            _prichod = value;
-            AssignColumnProps(ref _prichod, nameof(Prichod));
+            field = value;
+            AssignColumnProps(ref field, nameof(Prichod));
         }
-    }
+    } = InitColumn(nameof(Prichod));
 
     /// <summary>
     ///     Stĺpec Odchod.
@@ -155,13 +136,13 @@ public record DesktopColumns()
     [XmlElement("Odchod")]
     public DesktopColumn Odchod
     {
-        get => _odchod ??= InitColumn(nameof(Odchod));
+        get => field ??= InitColumn(nameof(Odchod));
         set
         {
-            _odchod = value;
-            AssignColumnProps(ref _odchod, nameof(Odchod));
+            field = value;
+            AssignColumnProps(ref field, nameof(Odchod));
         }
-    }
+    } = InitColumn(nameof(Odchod));
 
     /// <summary>
     ///     Stĺpec Východzia stanica.
@@ -169,13 +150,13 @@ public record DesktopColumns()
     [XmlElement("StartStation")]
     public DesktopColumn VychodziaStanica
     {
-        get => _vychodziaStanica ??= InitColumn(nameof(VychodziaStanica));
+        get => field ??= InitColumn(nameof(VychodziaStanica));
         set
         {
-            _vychodziaStanica = value;
-            AssignColumnProps(ref _vychodziaStanica, nameof(VychodziaStanica));
+            field = value;
+            AssignColumnProps(ref field, nameof(VychodziaStanica));
         }
-    }
+    } = InitColumn(nameof(VychodziaStanica));
 
     /// <summary>
     ///     Stĺpec Konečná stanica.
@@ -183,13 +164,13 @@ public record DesktopColumns()
     [XmlElement("EndStation")]
     public DesktopColumn KonecnaStanica
     {
-        get => _konecnaStanica ??= InitColumn(nameof(KonecnaStanica));
+        get => field ??= InitColumn(nameof(KonecnaStanica));
         set
         {
-            _konecnaStanica = value;
-            AssignColumnProps(ref _konecnaStanica, nameof(KonecnaStanica));
+            field = value;
+            AssignColumnProps(ref field, nameof(KonecnaStanica));
         }
-    }
+    } = InitColumn(nameof(KonecnaStanica));
 
     /// <summary>
     ///     Stĺpec Dátumové obmedzenie.
@@ -197,13 +178,13 @@ public record DesktopColumns()
     [XmlElement("DateLimit")]
     public DesktopColumn DateLimit
     {
-        get => _dateLimit ??= InitColumn(nameof(DateLimit));
+        get => field ??= InitColumn(nameof(DateLimit));
         set
         {
-            _dateLimit = value;
-            AssignColumnProps(ref _dateLimit, nameof(DateLimit));
+            field = value;
+            AssignColumnProps(ref field, nameof(DateLimit));
         }
-    }
+    } = InitColumn(nameof(DateLimit));
 
     /// <summary>
     ///     Stĺpec Koľaj.
@@ -211,27 +192,27 @@ public record DesktopColumns()
     [XmlElement("Track")]
     public DesktopColumn Track
     {
-        get => _track ??= InitColumn(nameof(Track));
+        get => field ??= InitColumn(nameof(Track));
         set
         {
-            _track = value;
-            AssignColumnProps(ref _track, nameof(Track));
+            field = value;
+            AssignColumnProps(ref field, nameof(Track));
         }
-    }
+    } = InitColumn(nameof(Track));
 
     /// <summary>
-    ///     Stĺpec Linka-Príchod.
+    ///     Stĺpec Dopravca.
     /// </summary>
     [XmlElement("Operator")]
     public DesktopColumn Operator
     {
-        get => _operator ??= InitColumn(nameof(Operator));
+        get => field ??= InitColumn(nameof(Operator));
         set
         {
-            _operator = value;
-            AssignColumnProps(ref _operator, nameof(Operator));
+            field = value;
+            AssignColumnProps(ref field, nameof(Operator));
         }
-    }
+    } = InitColumn(nameof(Operator));
 
     /// <summary>
     ///     Stĺpec Ostatné.
@@ -239,13 +220,13 @@ public record DesktopColumns()
     [XmlElement("OtherBtn")]
     public DesktopColumn OtherBtn
     {
-        get => _otherBtn ??= InitColumn(nameof(OtherBtn));
+        get => field ??= InitColumn(nameof(OtherBtn));
         set
         {
-            _otherBtn = value;
-            AssignColumnProps(ref _otherBtn, nameof(OtherBtn));
+            field = value;
+            AssignColumnProps(ref field, nameof(OtherBtn));
         }
-    }
+    } = InitColumn(nameof(OtherBtn));
 
     #endregion
 
@@ -255,7 +236,7 @@ public record DesktopColumns()
     /// <returns></returns>
     public IList<DesktopColumn> GetValues()
     {
-        var properties = classType.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+        var properties = ClassType.GetProperties(BindingFlags.Instance | BindingFlags.Public);
         var ordered = properties.Select(prop => (DesktopColumn)prop.GetValue(this)!).ToList();
         return ordered.OrderBy(i => i.Order).ToList();
     }
@@ -266,7 +247,7 @@ public record DesktopColumns()
         foreach (var column in columns)
         {
             column.Order = index++;
-            classType.GetProperty(column.PropertyName)?.SetValue(this, column);
+            ClassType.GetProperty(column.PropertyName)?.SetValue(this, column);
         }
     }
 
