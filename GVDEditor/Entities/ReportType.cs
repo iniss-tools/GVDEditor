@@ -207,6 +207,6 @@ public sealed class ReportType
     public static readonly ReportType Vchadza = new("Vjíždí", "Vjíždí", "I");
     public static readonly ReportType Zastavil = new("Zastavil", "Zastavil", "L");
     public static readonly ReportType Stoji = new("Pobytové", "Pobytové", "N", terminateTrain: false);
-    public static readonly ReportType Odchadza = new("Ukončit nástup", "Odjede", "O", terminateTrain: false);
+    public static readonly ReportType Odchadza = new("Odjede", "Ukončit nástup", "O", terminateTrain: false);
 #pragma warning restore 1591
 }

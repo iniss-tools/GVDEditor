@@ -987,6 +987,8 @@ public partial class FLocalSettings : Form
             var tfont = (TableFont)listFonts.SelectedItem!;
             tbFontName.Text = tfont.Name;
             nudFontID.Value = tfont.FontID;
+            nudFontSize.Value = Math.Clamp(tfont.Size, nudFontSize.Minimum, nudFontSize.Maximum);
+            nudFontWidth.Value = Math.Clamp(tfont.Width, nudFontWidth.Minimum, nudFontWidth.Maximum);
             tbFontFile.Text = tfont.FileName;
             cbFontType.SelectedItem = tfont.Type;
             cbFontDia.Checked = tfont.IsDia;
