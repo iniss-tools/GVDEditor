@@ -1,5 +1,4 @@
 ﻿using ExControls;
-using GVDEditor.Entities;
 
 namespace GVDEditor.Forms
 {
@@ -43,15 +42,15 @@ namespace GVDEditor.Forms
             ExComboBoxStyle exComboBoxStyle8 = new ExComboBoxStyle();
             bSave = new ExButton();
             bStorno = new ExButton();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            tableLogicalZostavaBindingSource = new BindingSource(components);
             groupBox4 = new ExGroupBox();
             tbComment = new ExTextBox();
             gboxSimple = new ExGroupBox();
             dgvZostava = new DataGridView();
-            startRowDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            endRowDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            tableDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            colTable = new DataGridViewTextBoxColumn();
+            colFirstRecord = new DataGridViewTextBoxColumn();
+            colLastRecord = new DataGridViewTextBoxColumn();
+            colStartRow = new DataGridViewTextBoxColumn();
+            colTypeView = new DataGridViewExComboBoxColumn();
             bRemoveTab = new ExButton();
             bAddTab = new ExButton();
             label5 = new Label();
@@ -68,18 +67,11 @@ namespace GVDEditor.Forms
             label1 = new Label();
             labelStation = new Label();
             cbIdStation = new ExComboBox();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            tablePhysicalBindingSource = new BindingSource(components);
-            ((ISupportInitialize)tableLogicalZostavaBindingSource).BeginInit();
             groupBox4.SuspendLayout();
             gboxSimple.SuspendLayout();
             ((ISupportInitialize)dgvZostava).BeginInit();
             groupBox1.SuspendLayout();
             ((ISupportInitialize)nudCountRecords).BeginInit();
-            ((ISupportInitialize)tablePhysicalBindingSource).BeginInit();
             SuspendLayout();
             // 
             // bSave
@@ -99,16 +91,6 @@ namespace GVDEditor.Forms
             bStorno.Name = "bStorno";
             bStorno.UseVisualStyleBackColor = true;
             bStorno.Click += bStorno_Click;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "Table";
-            resources.ApplyResources(dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // tableLogicalZostavaBindingSource
-            // 
-            tableLogicalZostavaBindingSource.DataSource = typeof(TableLogicalZostava);
             // 
             // groupBox4
             // 
@@ -164,33 +146,16 @@ namespace GVDEditor.Forms
             dgvZostava.AutoGenerateColumns = false;
             dgvZostava.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvZostava.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvZostava.Columns.AddRange(new DataGridViewColumn[] { startRowDataGridViewTextBoxColumn, endRowDataGridViewTextBoxColumn, tableDataGridViewTextBoxColumn });
-            dgvZostava.DataSource = tableLogicalZostavaBindingSource;
+            dgvZostava.Columns.AddRange(new DataGridViewColumn[] { colTable, colFirstRecord, colLastRecord, colStartRow, colTypeView });
             resources.ApplyResources(dgvZostava, "dgvZostava");
             dgvZostava.Name = "dgvZostava";
             dgvZostava.RowHeadersVisible = false;
             dgvZostava.RowTemplate.Height = 24;
             dgvZostava.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvZostava.CellValidating += dgvZostava_CellValidating;
-            // 
-            // startRowDataGridViewTextBoxColumn
-            // 
-            startRowDataGridViewTextBoxColumn.DataPropertyName = "StartRow";
-            resources.ApplyResources(startRowDataGridViewTextBoxColumn, "startRowDataGridViewTextBoxColumn");
-            startRowDataGridViewTextBoxColumn.Name = "startRowDataGridViewTextBoxColumn";
-            // 
-            // endRowDataGridViewTextBoxColumn
-            // 
-            endRowDataGridViewTextBoxColumn.DataPropertyName = "EndRow";
-            resources.ApplyResources(endRowDataGridViewTextBoxColumn, "endRowDataGridViewTextBoxColumn");
-            endRowDataGridViewTextBoxColumn.Name = "endRowDataGridViewTextBoxColumn";
-            // 
-            // tableDataGridViewTextBoxColumn
-            // 
-            tableDataGridViewTextBoxColumn.DataPropertyName = "Table";
-            resources.ApplyResources(tableDataGridViewTextBoxColumn, "tableDataGridViewTextBoxColumn");
-            tableDataGridViewTextBoxColumn.Name = "tableDataGridViewTextBoxColumn";
-            tableDataGridViewTextBoxColumn.ReadOnly = true;
+            dgvZostava.CellValueChanged += dgvZostava_CellValueChanged;
+            dgvZostava.CurrentCellDirtyStateChanged += dgvZostava_CurrentCellDirtyStateChanged;
+            dgvZostava.DataError += dgvZostava_DataError;
             // 
             // bRemoveTab
             // 
@@ -255,6 +220,7 @@ namespace GVDEditor.Forms
             resources.ApplyResources(nudCountRecords, "nudCountRecords");
             nudCountRecords.Name = "nudCountRecords";
             nudCountRecords.SelectedButtonColor = SystemColors.Highlight;
+            nudCountRecords.ValueChanged += nudCountRecords_ValueChanged;
             // 
             // cbTypeView
             // 
@@ -265,6 +231,7 @@ namespace GVDEditor.Forms
             cbTypeView.FormattingEnabled = true;
             resources.ApplyResources(cbTypeView, "cbTypeView");
             cbTypeView.Name = "cbTypeView";
+            cbTypeView.SelectedIndexChanged += cbTypeView_SelectedIndexChanged;
             exComboBoxStyle1.ArrowColor = null;
             exComboBoxStyle1.BackColor = null;
             exComboBoxStyle1.BorderColor = null;
@@ -394,37 +361,43 @@ namespace GVDEditor.Forms
             cbIdStation.StyleSelected = exComboBoxStyle8;
             cbIdStation.UseDarkScrollBar = false;
             // 
-            // dataGridViewTextBoxColumn2
+            // colTable
             // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "Table";
-            resources.ApplyResources(dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
+            colTable.DataPropertyName = "Table";
+            colTable.FillWeight = 180F;
+            resources.ApplyResources(colTable, "colTable");
+            colTable.Name = "colTable";
+            colTable.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn3
+            // colFirstRecord
             // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "Table";
-            resources.ApplyResources(dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
+            colFirstRecord.DataPropertyName = "FirstRecord";
+            colFirstRecord.FillWeight = 70F;
+            resources.ApplyResources(colFirstRecord, "colFirstRecord");
+            colFirstRecord.Name = "colFirstRecord";
             // 
-            // dataGridViewTextBoxColumn4
+            // colLastRecord
             // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "Table";
-            resources.ApplyResources(dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
+            colLastRecord.DataPropertyName = "LastRecord";
+            colLastRecord.FillWeight = 70F;
+            resources.ApplyResources(colLastRecord, "colLastRecord");
+            colLastRecord.Name = "colLastRecord";
             // 
-            // dataGridViewTextBoxColumn5
+            // colStartRow
             // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "Table";
-            resources.ApplyResources(dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
+            colStartRow.DataPropertyName = "StartRow";
+            colStartRow.FillWeight = 70F;
+            resources.ApplyResources(colStartRow, "colStartRow");
+            colStartRow.Name = "colStartRow";
             // 
-            // tablePhysicalBindingSource
+            // colTypeView
             // 
-            tablePhysicalBindingSource.DataSource = typeof(TablePhysical);
+            colTypeView.DataPropertyName = "TypeView";
+            colTypeView.DisplayMember = "Name";
+            colTypeView.FillWeight = 130F;
+            resources.ApplyResources(colTypeView, "colTypeView");
+            colTypeView.Name = "colTypeView";
+            colTypeView.ValueMember = "This";
             // 
             // FTableLogical
             // 
@@ -444,7 +417,7 @@ namespace GVDEditor.Forms
             Name = "FTableLogical";
             ShowInTaskbar = false;
             HelpButtonClicked += FTableLogical_HelpButtonClicked;
-            ((ISupportInitialize)tableLogicalZostavaBindingSource).EndInit();
+            Shown += FTableLogical_Shown;
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             gboxSimple.ResumeLayout(false);
@@ -453,7 +426,6 @@ namespace GVDEditor.Forms
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((ISupportInitialize)nudCountRecords).EndInit();
-            ((ISupportInitialize)tablePhysicalBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
 
@@ -482,16 +454,11 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.Label label7;
         private ExGroupBox groupBox4;
         private ExTextBox tbComment;
-        private System.Windows.Forms.BindingSource tablePhysicalBindingSource;
         private System.Windows.Forms.DataGridView dgvZostava;
-        private System.Windows.Forms.BindingSource tableLogicalZostavaBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn startRowDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn endRowDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tableDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFirstRecord;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLastRecord;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStartRow;
+        private ExControls.DataGridViewExComboBoxColumn colTypeView;
     }
 }

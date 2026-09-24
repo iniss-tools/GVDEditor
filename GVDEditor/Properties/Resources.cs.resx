@@ -576,8 +576,42 @@ Mám ji nuceně vypnout? </value>
 
 Přesto uložit?</value>
   </data>
+  <data name="FTablePhysical_NoCatalog" xml:space="preserve">
+    <value>Vyberte katalogovou tabuli. Pokud žádná neexistuje, založte ji nejprve na záložce Katalog tabulí.</value>
+  </data>
   <data name="FTableLogical_Neplatné_číslo_stanice" xml:space="preserve">
     <value>Číslo stanice (IDSTATION) musí být celé číslo nebo prázdné.</value>
+  </data>
+  <data name="FTableLogical_Zostava_nevyjadriteľná" xml:space="preserve">
+    <value>Zapojení této logické tabule nelze zobrazit v sestavě (některé umístění má záporný řádek fyzické tabule). Sestavu ani počet záznamů proto nelze upravit; při uložení se zapojení zachová beze změny.</value>
+  </data>
+  <data name="FTableLogical_Bez_záznamov" xml:space="preserve">
+    <value>Logická tabule musí mít alespoň 1 záznam – tabuli bez záznamů INISS při startu odmítne.</value>
+  </data>
+  <data name="FTableLogical_Neplatný_riadok_zostavy" xml:space="preserve">
+    <value>{0}. řádek sestavy ({1}) je neplatný: záznamy musí být v rozsahu 1 až {2} (od ≤ do) a řádek fyzické tabule alespoň 1.</value>
+  </data>
+  <data name="FTableLogical_Tabuľa_už_v_zostave" xml:space="preserve">
+    <value>Fyzická tabule {0} už v sestavě je. Přidat další řádek (například pro jiný rozsah záznamů)?</value>
+  </data>
+  <data name="FTableLogical_Upozornenia_zostavy" xml:space="preserve">
+    <value>Sestava logické tabule má tyto nedostatky:
+
+{0}
+
+Přesto uložit?</value>
+  </data>
+  <data name="FTableLogical_Typ_nepodporovaný" xml:space="preserve">
+    <value>• {0}: typ „{1}“ katalogová tabule nepodporuje (INISS zapíše do logu „does not support physical view mode“).</value>
+  </data>
+  <data name="FTableLogical_Mimo_tabule" xml:space="preserve">
+    <value>• {0}: řádky {1}–{2} přesahují počet záznamů fyzické tabule ({3}).</value>
+  </data>
+  <data name="FTableLogical_Kolízia_riadku" xml:space="preserve">
+    <value>• {0}: na řádek {1} jde více záznamů ({2}).</value>
+  </data>
+  <data name="FTableLogical_Najprv_počet_záznamov" xml:space="preserve">
+    <value>Nejprve nastavte počet záznamů.</value>
   </data>
   <data name="FEditTrain_Vyluka_Hint" xml:space="preserve">
     <value>Výluka vlaku (Vyluka.TXT). Kromě zabudované „Obecné výluky ve stanici“ jsou v nabídce výluky založené obsluhou v INISSu (RAWBANK\LogZvuk.usr).</value>

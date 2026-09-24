@@ -80,7 +80,13 @@ public partial class FTablePhysical : Form
                 return;
             }
 
-        var catalog = (TableCatalog)cbCatalogTable.SelectedItem!;
+        if (cbCatalogTable.SelectedItem is not TableCatalog catalog)
+        {
+            Utils.ShowError(Resources.FTablePhysical_NoCatalog);
+            DialogResult = DialogResult.None;
+            return;
+        }
+
         var address = decimal.ToInt32(nudID.Value);
         if (!catalog.Manufacturer.IsAddressValid(address))
         {
@@ -99,7 +105,7 @@ public partial class FTablePhysical : Form
         table.ID = address;
         table.CommunicationPort = decimal.ToInt32(nudComPort.Value);
         table.RecCount = decimal.ToInt32(nudRecCount.Value);
-        table.TableCatalog = (TableCatalog)cbCatalogTable.SelectedItem!;
+        table.TableCatalog = catalog;
         table.Comment = tbComment.Text;
         var xml = tbXMLName.Text;
         table.SaveXML = string.IsNullOrEmpty(xml) ? "" : xml;

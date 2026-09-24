@@ -642,6 +642,12 @@ public partial class FLocalSettings : Form
 
     private void bFyzTabAdd_Click(object sender, EventArgs e)
     {
+        if (GlobData.TableCatalogs.Count == 0)
+        {
+            Utils.ShowError(Resources.FTablePhysical_NoCatalog);
+            return;
+        }
+
         var eptf = new FTablePhysical(new TablePhysical(), GlobData.TableCatalogs);
         var result = eptf.ShowDialog();
         if (result == DialogResult.OK)

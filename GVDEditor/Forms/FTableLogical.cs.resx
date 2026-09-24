@@ -160,14 +160,32 @@
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Komentář:</value>
   </data>
-  <data name="startRowDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Počáteční řádek</value>
-  </data>
-  <data name="endRowDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Poslední řádek</value>
-  </data>
-  <data name="tableDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+  <data name="colTable.HeaderText" xml:space="preserve">
     <value>Fyzická tabule</value>
+  </data>
+  <data name="colFirstRecord.HeaderText" xml:space="preserve">
+    <value>Od záznamu</value>
+  </data>
+  <data name="colFirstRecord.ToolTipText" xml:space="preserve">
+    <value>První záznam logické tabule, který jde na tuto fyzickou tabuli.</value>
+  </data>
+  <data name="colLastRecord.HeaderText" xml:space="preserve">
+    <value>Do záznamu</value>
+  </data>
+  <data name="colLastRecord.ToolTipText" xml:space="preserve">
+    <value>Poslední záznam logické tabule, který jde na tuto fyzickou tabuli.</value>
+  </data>
+  <data name="colStartRow.HeaderText" xml:space="preserve">
+    <value>Od řádku</value>
+  </data>
+  <data name="colStartRow.ToolTipText" xml:space="preserve">
+    <value>Řádek fyzické tabule, na který jde první záznam rozsahu (1 = první řádek); další záznamy jdou na následující řádky.</value>
+  </data>
+  <data name="colTypeView.HeaderText" xml:space="preserve">
+    <value>Typ zobrazení</value>
+  </data>
+  <data name="colTypeView.ToolTipText" xml:space="preserve">
+    <value>Typ zobrazení na této fyzické tabuli – nabízejí se typy, které podporuje její katalogová tabule.</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Úprava logické tabule</value>

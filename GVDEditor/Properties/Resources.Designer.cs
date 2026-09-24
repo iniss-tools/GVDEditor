@@ -1470,11 +1470,101 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Vyberte katalógovú tabuľu. Ak žiadna neexistuje, založte ju najprv na záložke Katalóg tabúľ..
+        /// </summary>
+        internal static string FTablePhysical_NoCatalog {
+            get {
+                return ResourceManager.GetString("FTablePhysical_NoCatalog", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Číslo stanice (IDSTATION) musí byť celé číslo alebo prázdne..
         /// </summary>
         internal static string FTableLogical_Neplatné_číslo_stanice {
             get {
                 return ResourceManager.GetString("FTableLogical_Neplatné_číslo_stanice", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Zapojenie tejto logickej tabule sa nedá zobraziť v zostave (niektoré umiestnenie má záporný riadok fyzickej tabule)..
+        /// </summary>
+        internal static string FTableLogical_Zostava_nevyjadriteľná {
+            get {
+                return ResourceManager.GetString("FTableLogical_Zostava_nevyjadriteľná", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Logická tabuľa musí mať aspoň 1 záznam – tabuľu bez záznamov INISS pri štarte odmietne..
+        /// </summary>
+        internal static string FTableLogical_Bez_záznamov {
+            get {
+                return ResourceManager.GetString("FTableLogical_Bez_záznamov", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0}. riadok zostavy ({1}) je neplatný: záznamy musia byť v rozsahu 1 až {2} (od ≤ do) a riadok fyzickej tabule aspoň 1..
+        /// </summary>
+        internal static string FTableLogical_Neplatný_riadok_zostavy {
+            get {
+                return ResourceManager.GetString("FTableLogical_Neplatný_riadok_zostavy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Fyzická tabuľa {0} už v zostave je. Pridať ďalší riadok (napríklad pre iný rozsah záznamov)?.
+        /// </summary>
+        internal static string FTableLogical_Tabuľa_už_v_zostave {
+            get {
+                return ResourceManager.GetString("FTableLogical_Tabuľa_už_v_zostave", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Zostava logickej tabule má tieto nedostatky: {0} Uložiť aj tak?.
+        /// </summary>
+        internal static string FTableLogical_Upozornenia_zostavy {
+            get {
+                return ResourceManager.GetString("FTableLogical_Upozornenia_zostavy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to • {0}: typ „{1}“ katalógová tabuľa nepodporuje (INISS zapíše do logu „does not support physical view mode“)..
+        /// </summary>
+        internal static string FTableLogical_Typ_nepodporovaný {
+            get {
+                return ResourceManager.GetString("FTableLogical_Typ_nepodporovaný", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to • {0}: riadky {1}–{2} presahujú počet záznamov fyzickej tabule ({3})..
+        /// </summary>
+        internal static string FTableLogical_Mimo_tabule {
+            get {
+                return ResourceManager.GetString("FTableLogical_Mimo_tabule", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to • {0}: na riadok {1} idú viaceré záznamy ({2})..
+        /// </summary>
+        internal static string FTableLogical_Kolízia_riadku {
+            get {
+                return ResourceManager.GetString("FTableLogical_Kolízia_riadku", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Najprv nastavte počet záznamov..
+        /// </summary>
+        internal static string FTableLogical_Najprv_počet_záznamov {
+            get {
+                return ResourceManager.GetString("FTableLogical_Najprv_počet_záznamov", resourceCulture);
             }
         }
 

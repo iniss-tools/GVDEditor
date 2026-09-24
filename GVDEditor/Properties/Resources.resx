@@ -608,8 +608,42 @@ Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnos
 
 Uložiť napriek tomu?</value>
   </data>
+  <data name="FTablePhysical_NoCatalog" xml:space="preserve">
+    <value>Vyberte katalógovú tabuľu. Ak žiadna neexistuje, založte ju najprv na záložke Katalóg tabúľ.</value>
+  </data>
   <data name="FTableLogical_Neplatné_číslo_stanice" xml:space="preserve">
     <value>Číslo stanice (IDSTATION) musí byť celé číslo alebo prázdne.</value>
+  </data>
+  <data name="FTableLogical_Zostava_nevyjadriteľná" xml:space="preserve">
+    <value>Zapojenie tejto logickej tabule sa nedá zobraziť v zostave (niektoré umiestnenie má záporný riadok fyzickej tabule). Zostavu ani počet záznamov preto nemožno upraviť; pri uložení sa zapojenie zachová bezo zmeny.</value>
+  </data>
+  <data name="FTableLogical_Bez_záznamov" xml:space="preserve">
+    <value>Logická tabuľa musí mať aspoň 1 záznam – tabuľu bez záznamov INISS pri štarte odmietne.</value>
+  </data>
+  <data name="FTableLogical_Neplatný_riadok_zostavy" xml:space="preserve">
+    <value>{0}. riadok zostavy ({1}) je neplatný: záznamy musia byť v rozsahu 1 až {2} (od ≤ do) a riadok fyzickej tabule aspoň 1.</value>
+  </data>
+  <data name="FTableLogical_Tabuľa_už_v_zostave" xml:space="preserve">
+    <value>Fyzická tabuľa {0} už v zostave je. Pridať ďalší riadok (napríklad pre iný rozsah záznamov)?</value>
+  </data>
+  <data name="FTableLogical_Upozornenia_zostavy" xml:space="preserve">
+    <value>Zostava logickej tabule má tieto nedostatky:
+
+{0}
+
+Uložiť aj tak?</value>
+  </data>
+  <data name="FTableLogical_Typ_nepodporovaný" xml:space="preserve">
+    <value>• {0}: typ „{1}“ katalógová tabuľa nepodporuje (INISS zapíše do logu „does not support physical view mode“).</value>
+  </data>
+  <data name="FTableLogical_Mimo_tabule" xml:space="preserve">
+    <value>• {0}: riadky {1}–{2} presahujú počet záznamov fyzickej tabule ({3}).</value>
+  </data>
+  <data name="FTableLogical_Kolízia_riadku" xml:space="preserve">
+    <value>• {0}: na riadok {1} idú viaceré záznamy ({2}).</value>
+  </data>
+  <data name="FTableLogical_Najprv_počet_záznamov" xml:space="preserve">
+    <value>Najprv nastavte počet záznamov.</value>
   </data>
   <data name="FEditTrain_Vyluka_Hint" xml:space="preserve">
     <value>Výluka vlaku (Vyluka.TXT). Okrem zabudovanej „Obecnej výluky v stanici“ sú v ponuke výluky založené obsluhou v INISSe (RAWBANK\LogZvuk.usr).</value>
