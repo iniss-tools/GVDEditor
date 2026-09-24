@@ -634,7 +634,7 @@ public partial class FMain : Form
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
+                    Utils.ShowError(e.Message);
                 }
             }
             _removingGVD = false;
@@ -1330,8 +1330,8 @@ public partial class FMain : Form
                     dateRemThis.Overlap(thistrain.DateLimitText, train.DateLimitText))
                 {
                     var obmand = dateRemThis.TextAnd(train.DateLimitText, thistrain.DateLimitText);
-                    var result = MessageBox.Show(string.Format(Resources.FEditTrain_DateRem_zasahuje_do_ineho_vlaku, train.Type,
-                        train.Number, train.Name, obmand), Resources.RWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var result = Utils.ShowQuestion(string.Format(Resources.FEditTrain_DateRem_zasahuje_do_ineho_vlaku, train.Type,
+                        train.Number, train.Name, obmand));
                     if (result == DialogResult.Yes)
                     {
                         var result2 = FDateLimitEdit.SetDateLimit(this, thistrain.ZaciatokPlatnosti, thistrain.KoniecPlatnosti, train,
