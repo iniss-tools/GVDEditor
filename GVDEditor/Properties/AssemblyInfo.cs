@@ -42,3 +42,4 @@ using System.Runtime.Versioning;
 
 [assembly: InternalsVisibleTo("GVDEditor.Tests")]
 [assembly: InternalsVisibleTo("GVDEditor.Explorables")]
+[assembly: InternalsVisibleTo("GVDEditor.DocScreenshots")]

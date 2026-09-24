@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="ELISBridge/ELISBridge.csproj" />
   <Project Path="GVDEditor/GVDEditor.csproj" />
+  <Project Path="GVDEditor.DocScreenshots/GVDEditor.DocScreenshots.csproj" />
+  <Project Path="GVDEditor.Tests/GVDEditor.Tests.csproj" />
 </Solution>

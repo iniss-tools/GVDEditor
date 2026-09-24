@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<RootNamespace>GVDEditor.Tests</RootNamespace>
+		<AssemblyName>GVDEditor.Tests</AssemblyName>
+		<IsPackable>false</IsPackable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<!-- GVDEditor je pripnuty na win-x64 -->
+		<PlatformTarget>x64</PlatformTarget>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.9.0" />
+		<PackageReference Include="MSTest.TestAdapter" Version="4.4.0" />
+		<PackageReference Include="MSTest.TestFramework" Version="4.4.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\GVDEditor\GVDEditor.csproj" />
+	</ItemGroup>
+</Project>
