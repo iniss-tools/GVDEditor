@@ -37,7 +37,17 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             }, dispose: false);
 
             Shot("novy-grafikon/novy-grafikon", () => new FNewGrafikon());
-            Shot("uprava-vlaku", () => new FEditTrain(express, trains.IndexOf(express), gvdDir.GVD, false, gvdDir.Dir.FullPath), tabs: true);
+            // na záložke Radenie vybrané radenie v pracovné dni
+            Shot("uprava-vlaku", () => new FEditTrain(express, trains.IndexOf(express), gvdDir.GVD, false, gvdDir.Dir.FullPath),
+                form => SelectListItem(form, "listRadenia", 0), tabs: true);
+
+            // skladanie radenia: vybraná druhá nahrávka „číslo“ a priečinok s vlastnosťami vozňov
+            Shot("radenie/uprava-radenia", () => new FRadenie([.. express.Radenia[0].Sounds]), form =>
+            {
+                SelectCombo(form, "cbSoundDir", ((ComboBox)Field(form, "cbSoundDir")).Items.IndexOf(ToolsCore.Entities.FyzGroupType.VOZY1));
+                SelectListItem(form, "listAllSounds", 0);
+                SelectListItem(form, "listRadenie", 5);
+            });
             // na záložkách Nástupištia a Koľaje vybrať skutočné nástupište a koľaj, nie zástupné "N"
             Shot("lokalne-nastavenia", () => new FLocalSettings(gvdDir), form =>
             {

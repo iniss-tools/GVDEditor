@@ -33,6 +33,7 @@ public partial class FRadenie : Form
             _allSoundsLangs.Add(lang, lang.IsBasic ? GlobData.Sounds : RawBankParser.ReadFyzZvukFile(GlobData.RawBankDir, lang));
 
         _selectedSounds.ListChanged += SelectedSounds_ListChanged;
+        listRadenie.MouseMove += listRadenie_MouseMove;
 
         listAllSounds.DataSource = _soundInDir;
         listRadenie.DataSource = _selectedSounds;
@@ -155,23 +156,45 @@ public partial class FRadenie : Form
         tbTextRadenie.Text = sb.ToString().Trim();
     }
 
+    // tahanie sa zacne az pohybom mysi - DoDragDrop v MouseDown by pohltil klik aj dvojklik;
+    // presuva sa podla indexu, lebo ta ista nahravka (napr. "cislo") byva v radeni viackrat
+    private int _dragIndex = -1;
+    private Point _dragStart;
+
     private void listRadenie_MouseDown(object sender, MouseEventArgs e)
     {
-        if (listRadenie.SelectedItem == null) return;
-        listRadenie.DoDragDrop(listRadenie.SelectedItem, DragDropEffects.Move);
+        _dragIndex = e.Button == MouseButtons.Left ? listRadenie.IndexFromPoint(e.Location) : -1;
+        _dragStart = e.Location;
     }
 
-    private void listRadenie_DragOver(object sender, DragEventArgs e) => e.Effect = DragDropEffects.Move;
+    private void listRadenie_MouseMove(object? sender, MouseEventArgs e)
+    {
+        if (_dragIndex < 0 || e.Button != MouseButtons.Left) return;
+
+        var size = SystemInformation.DragSize;
+        if (Math.Abs(e.X - _dragStart.X) < size.Width && Math.Abs(e.Y - _dragStart.Y) < size.Height) return;
+
+        var from = _dragIndex;
+        _dragIndex = -1;
+        listRadenie.DoDragDrop(from, DragDropEffects.Move);
+    }
+
+    private void listRadenie_DragOver(object sender, DragEventArgs e) =>
+        e.Effect = e.Data?.GetDataPresent(typeof(int)) == true ? DragDropEffects.Move : DragDropEffects.None;
 
     private void listRadenie_DragDrop(object sender, DragEventArgs e)
     {
+        if (e.Data?.GetData(typeof(int)) is not int from || from < 0 || from >= _selectedSounds.Count) return;
+
         var point = listRadenie.PointToClient(new Point(e.X, e.Y));
-        var index = listRadenie.IndexFromPoint(point);
-        if (index < 0) index = listRadenie.Items.Count - 1;
-        var data = (FyzSound)e.Data!.GetData(typeof(FyzSound))!;
-        _selectedSounds.Remove(data);
-        _selectedSounds.Insert(index, data);
-        listRadenie.SelectedItem = data;
+        var to = listRadenie.IndexFromPoint(point);
+        if (to < 0) to = _selectedSounds.Count - 1;
+        if (to == from) return;
+
+        var sound = _selectedSounds[from];
+        _selectedSounds.RemoveAt(from);
+        _selectedSounds.Insert(to, sound);
+        listRadenie.SelectedIndex = to;
     }
 
     private void listAllSounds_Format(object sender, ListControlConvertEventArgs e) => Format(e);

@@ -27,6 +27,12 @@ public sealed class Radenie
     public DateTime KonPlatnosti { get; set; }
 
     /// <summary>
+    ///     Ci ma radenie zadane obdobie platnosti. Zaznam s prazdnymi datumami v Razeni1.txt plati bez obmedzenia -
+    ///     INISS pri nom datum vobec nekontroluje (<see cref="ZacPlatnosti" /> je vtedy <see cref="DateTime.MinValue" />).
+    /// </summary>
+    public bool HasValidity => ZacPlatnosti != DateTime.MinValue;
+
+    /// <summary>
     ///     Dátumové obmedzenie ako text
     /// </summary>
     public string DatObm { get; set; } = null!;

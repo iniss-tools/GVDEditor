@@ -20,9 +20,10 @@ public partial class FEditTrain : Form
 
     private readonly BindingList<Operator> Operators = new(GlobData.Operators);
 
-    private readonly BindingList<Radenie> Radenia = new();
+    // kopie radeni - Upravit ich meni len v okne, do grafikonu sa zapisu az v bSave_Click
+    private readonly RadeniaEditing RadeniaEditing = new();
 
-    private readonly List<Radenie> RemovedRadenia = new();
+    private BindingList<Radenie> Radenia => RadeniaEditing.Items;
     private readonly BindingList<Station> StaniceDo = new();
     private readonly BindingList<Station> StaniceZo = new();
 
@@ -43,6 +44,9 @@ public partial class FEditTrain : Form
     public int Row;
 
     private List<FyzSound>? selSounds;
+
+    // obdobie grafikonu - ukaze sa pri radeni bez obdobia platnosti (DateTimePicker DateTime.MinValue nevie zobrazit)
+    private readonly DateTime _gvdStart, _gvdEnd;
 
     private string tbCisloOldValue = "";
 
@@ -84,6 +88,11 @@ public partial class FEditTrain : Form
 
         cbDopravca.DataSource = Operators;
 
+        // rovnaky zoznam v jednom BindingContext zdiela poziciu - vyber v jednom poli by prepisal druhe
+        // (kolaj odchodu by sa nedala nastavit inak nez kolaj prichodu)
+        cbKolajOdchod.BindingContext = new BindingContext();
+        listStaniceDo.BindingContext = new BindingContext();
+
         cbKolajPrichod.DataSource = GlobData.Tracks;
         cbKolajOdchod.DataSource = GlobData.Tracks;
 
@@ -103,6 +112,8 @@ public partial class FEditTrain : Form
 
         dtpRadenieOd.Value = gvd.StartValidTimeTable.Date;
         dtpRadenieDo.Value = gvd.EndValidTimeTable.Date;
+        _gvdStart = gvd.StartValidTimeTable.Date;
+        _gvdEnd = gvd.EndValidTimeTable.Date;
 
         foreach (var jazyk in GlobData.Languages)
             if (!jazyk.IsBasic)
@@ -149,6 +160,9 @@ public partial class FEditTrain : Form
         this.ApplyThemeAndFonts();
 
         initialization = false;
+        // az po zobrazeni (vytvorenie handle comboboxov tiez vyvola SelectedIndexChanged) predvyplni
+        // zmena kolaje prichodu aj kolaj odchodu
+        Shown += (_, _) => ignoreSelectedIndexChanged = false;
     }
 
     /// <summary>
@@ -231,9 +245,17 @@ public partial class FEditTrain : Form
             if (!jazyk.IsBasic)
                 clbJazyky.SetItemChecked(clbJazyky.Items.IndexOf(jazyk), true);
 
-        foreach (var doplnok in train.Doplnky) Doplnky.Add(doplnok);
+        // kopie - Upravit v zalozke Dodatky meni ChosenReports a Zrusit ich nesmie nechat vo vlaku
+        foreach (var doplnok in train.Doplnky)
+            Doplnky.Add(new Dodatok
+            {
+                Sound = doplnok.Sound,
+                Name = doplnok.Name,
+                ChosenReports = doplnok.ChosenReports
+                    .Select(chosen => new ChosenReportType { Type = chosen.Type, Variants = [.. chosen.Variants] }).ToList()
+            });
 
-        foreach (var radenie in train.Radenia) Radenia.Add(radenie);
+        RadeniaEditing.LoadOwn(train.Radenia);
 
         if (StaniceZo.Count == 0) mtPrichod.Enabled = false;
 
@@ -259,101 +281,27 @@ public partial class FEditTrain : Form
 
     private void bSave_Click(object sender, EventArgs e)
     {
+        // poistka, ak by tbCislo_Validated neprebehol - prevzate radenie si musi pouzivatel pred ulozenim pozriet
+        if (SyncRadeniaWithNumber() || !TryReadForm(out var values))
+        {
+            DialogResult = DialogResult.None;
+            return;
+        }
+
         var train = (copy ? new Train() : ThisTrain) ?? new Train();
 
-        if (!string.IsNullOrEmpty(tbCislo.Text))
-        {
-            train.Number = tbCislo.Text;
-        }
-        else
-        {
-            Utils.ShowError(Resources.FEditTrain_bSave_Click_Zadajte_číslo_vlaku);
-            DialogResult = DialogResult.None;
-            return;
-        }
+        train.Number = values.Number;
+        train.Type = values.Type;
+        train.Name = values.Name;
+        train.Operator = values.Operator;
+        train.Arrival = values.Arrival;
+        train.Departure = values.Departure;
+        train.Routing = values.Routing;
+        train.StartingStation = values.StartingStation;
+        train.EndingStation = values.EndingStation;
 
-        train.Type = (TrainType)cbTyp.SelectedItem!;
-        train.Name = cbNazov.Text;
-        train.Operator = (Operator)cbDopravca.SelectedItem!;
-
-        if (StaniceZo.Count != 0 && StaniceDo.Count != 0)
-        {
-            if (!Utils.IsTime(mtPrichod.Text))
-            {
-                Utils.ShowError(Resources.FEditTrain_bSave_Click_Nesprávny_formát_času_príchodu);
-                DialogResult = DialogResult.None;
-                return;
-            }
-
-            if (!Utils.IsTime(mtOdchod.Text))
-            {
-                Utils.ShowError(Resources.FEditTrain_bSave_Click_Nesprávny_formát_času_odchodu);
-                DialogResult = DialogResult.None;
-                return;
-            }
-
-            var pr = DateTime.Parse(mtPrichod.Text);
-            var od = DateTime.Parse(mtOdchod.Text);
-            if (od.CompareTo(pr) < 0)
-            {
-                Utils.ShowError(Resources.FEditTrain_bSave_Click_Čas_príchodu_je_neskôr_ako_čas_odchodu);
-                DialogResult = DialogResult.None;
-                return;
-            }
-
-            train.Arrival = pr;
-            train.Departure = od;
-            train.Routing = Routing.Prechadzajuci;
-            train.StartingStation = StaniceZo.First();
-            train.EndingStation = StaniceDo.Last();
-        }
-        else if (StaniceZo.Count != 0)
-        {
-            if (!Utils.IsTime(mtPrichod.Text))
-            {
-                Utils.ShowError(Resources.FEditTrain_bSave_Click_Nesprávny_formát_času_príchodu);
-                DialogResult = DialogResult.None;
-                return;
-            }
-
-            train.Arrival = DateTime.Parse(mtPrichod.Text);
-            train.Departure = null;
-            train.Routing = Routing.Konciaci;
-            train.StartingStation = StaniceZo.First();
-            train.EndingStation = null;
-        }
-        else if (StaniceDo.Count != 0)
-        {
-            if (!Utils.IsTime(mtOdchod.Text))
-            {
-                Utils.ShowError(Resources.FEditTrain_bSave_Click_Nesprávny_formát_času_odchodu);
-                DialogResult = DialogResult.None;
-                return;
-            }
-
-            train.Arrival = null;
-            train.Departure = DateTime.Parse(mtOdchod.Text);
-            train.Routing = Routing.Vychadzajuci;
-            train.StartingStation = null;
-            train.EndingStation = StaniceDo.Last();
-        }
-        else
-        {
-            Utils.ShowError(Resources.FEditTrain_bSave_Click_Vlak_nemá_zadanú_žiadnu_stanicu);
-            DialogResult = DialogResult.None;
-            return;
-        }
-
-        if (cbKolajPrichod.SelectedIndex == -1 && cbKolajOdchod.SelectedIndex == -1)
-        {
-            Utils.ShowError(Resources.FEditTrain_bSave_Click_Nie_je_vybratá_koľaj);
-            DialogResult = DialogResult.None;
-            return;
-        }
-
-        train.Track = (Track)cbKolajPrichod.SelectedItem!;
-        var trackDeparture = cbKolajOdchod.SelectedItem as Track;
-        train.TrackDeparture = trackDeparture != null && !trackDeparture.EqualsKeys(train.Track) ? trackDeparture : null;
+        train.Track = values.Track;
+        train.TrackDeparture = values.TrackDeparture;
 
         train.DateLimitText = tDatumoveObmedzenie.Text;
 
@@ -390,30 +338,11 @@ public partial class FEditTrain : Form
 
         foreach (var item in clbJazyky.CheckedItems.OfType<FyzLanguage>()) train.Languages.Add(item);
 
-        var platnostOd = dtpPlatnostOd.Value;
-        var platnostDo = dtpPlatnostDo.Value;
-
-        if (platnostOd.CompareTo(platnostDo) > 0)
-        {
-            Utils.ShowError(Resources.FEditTrain_bSave_Click_Začiatok_platnosti_musí_skôr_ako_koniec_platnosti);
-            DialogResult = DialogResult.None;
-            return;
-        }
+        var platnostOd = values.ValidFrom;
+        var platnostDo = values.ValidTo;
 
         train.ZaciatokPlatnosti = platnostOd;
         train.KoniecPlatnosti = platnostDo;
-
-        try
-        {
-            var dom = new DateLimit(platnostOd.Date, platnostDo.Date);
-            dom.TextToBitArray(train.DateLimitText);
-        }
-        catch (Exception ex)
-        {
-            Utils.ShowError(ex.Message);
-            DialogResult = DialogResult.None;
-            return;
-        }
 
         train.LineArrival = linkaPrichod;
         train.LineDeparture = linkaOdchod;
@@ -422,36 +351,8 @@ public partial class FEditTrain : Form
 
         var dateRem = new DateLimit(platnostOd.Date, platnostDo.Date, true, true, false, false);
 
-        var varianta = decimal.ToInt32(nudVarianta.Value);
-
-        var id = 0;
-        var seltrains = new List<Train>();
-        foreach (var vlak in GlobData.Trains)
-        {
-            if (Train.IsSameVariant(train, vlak) && Row != id)
-            {
-                if (!GlobData.Config.AutoVariant)
-                {
-                    if (varianta == -1)
-                    {
-                        Utils.ShowError(Resources.FEditTrain_bSave_Click_Varianta_tohto_vlaku_nemôže_byť_Minus_1);
-                        DialogResult = DialogResult.None;
-                        return;
-                    }
-
-                    if (varianta == vlak.Variant)
-                    {
-                        Utils.ShowError(Resources.FEditTrain_bSave_Click_Vybraná_varianta_vlaku_sa_už_používa_pri_inom_vlaku);
-                        DialogResult = DialogResult.None;
-                        return;
-                    }
-                }
-
-                seltrains.Add(vlak);
-            }
-
-            id++;
-        }
+        var varianta = values.Variant;
+        var seltrains = values.OtherVariants;
 
         if (!GlobData.Config.AutoVariant)
         {
@@ -502,37 +403,157 @@ public partial class FEditTrain : Form
             }
         }
 
-        var newrads = new List<Radenie>();
-        foreach (var rad in Radenia)
-        {
-            if (!GlobData.Radenia.Contains(rad))
-            {
-                rad.CisloVlaku = train.Number;
-                newrads.Add(rad);
-            }
-            else
-            {
-                rad.CisloVlaku = train.Number;
-            }
-        }
-
-        GlobData.Radenia.AddRange(newrads);
-
-        foreach (var vlak in GlobData.Trains)
-        {
-            if (train.Number == vlak.Number)
-            {
-                vlak.Radenia.AddRange(newrads);
-
-                foreach (var r in RemovedRadenia) vlak.Radenia.Remove(r);
-            }
-        }
-
-        foreach (var r in RemovedRadenia) GlobData.Radenia.Remove(r);
+        RadeniaEditing.Commit(train, GlobData.Radenia, GlobData.Trains);
 
         if (copy || ThisTrain == null) ThisTrain = train;
 
         DialogResult = DialogResult.OK;
+    }
+
+    /// <summary>
+    ///     Hodnoty formulara overene pred zapisom do vlaku.
+    /// </summary>
+    private sealed record FormValues(
+        string Number,
+        TrainType Type,
+        string Name,
+        Operator Operator,
+        DateTime? Arrival,
+        DateTime? Departure,
+        Routing Routing,
+        Station? StartingStation,
+        Station? EndingStation,
+        Track Track,
+        Track? TrackDeparture,
+        DateTime ValidFrom,
+        DateTime ValidTo,
+        int Variant,
+        List<Train> OtherVariants);
+
+    /// <summary>
+    ///     Overi formular bez zmeny vlaku; pri chybe ju ukaze a vrati false.
+    /// </summary>
+    private bool TryReadForm([NotNullWhen(true)] out FormValues? values)
+    {
+        values = null;
+
+        var number = tbCislo.Text;
+        if (string.IsNullOrEmpty(number))
+        {
+            Utils.ShowError(Resources.FEditTrain_bSave_Click_Zadajte_číslo_vlaku);
+            return false;
+        }
+
+        var type = (TrainType)cbTyp.SelectedItem!;
+        var name = cbNazov.Text;
+
+        DateTime? arrival = null, departure = null;
+        Routing routing;
+        Station? starting = null, ending = null;
+
+        if (StaniceZo.Count != 0)
+        {
+            if (!Utils.IsTime(mtPrichod.Text))
+            {
+                Utils.ShowError(Resources.FEditTrain_bSave_Click_Nesprávny_formát_času_príchodu);
+                return false;
+            }
+
+            arrival = DateTime.Parse(mtPrichod.Text);
+            starting = StaniceZo.First();
+        }
+
+        if (StaniceDo.Count != 0)
+        {
+            if (!Utils.IsTime(mtOdchod.Text))
+            {
+                Utils.ShowError(Resources.FEditTrain_bSave_Click_Nesprávny_formát_času_odchodu);
+                return false;
+            }
+
+            departure = DateTime.Parse(mtOdchod.Text);
+            ending = StaniceDo.Last();
+        }
+
+        // odchod skor ako prichod = vlak stoji v stanici cez polnoc (odchod je nasledujuci den)
+        if (arrival != null && departure != null)
+            routing = Routing.Prechadzajuci;
+        else if (arrival != null)
+        {
+            routing = Routing.Konciaci;
+        }
+        else if (departure != null)
+        {
+            routing = Routing.Vychadzajuci;
+        }
+        else
+        {
+            Utils.ShowError(Resources.FEditTrain_bSave_Click_Vlak_nemá_zadanú_žiadnu_stanicu);
+            return false;
+        }
+
+        if (cbKolajPrichod.SelectedItem is not Track track)
+        {
+            Utils.ShowError(Resources.FEditTrain_bSave_Click_Nie_je_vybratá_koľaj);
+            return false;
+        }
+
+        var trackDeparture = cbKolajOdchod.SelectedItem as Track;
+
+        var platnostOd = dtpPlatnostOd.Value;
+        var platnostDo = dtpPlatnostDo.Value;
+
+        if (platnostOd.CompareTo(platnostDo) > 0)
+        {
+            Utils.ShowError(Resources.FEditTrain_bSave_Click_Začiatok_platnosti_musí_skôr_ako_koniec_platnosti);
+            return false;
+        }
+
+        try
+        {
+            var dom = new DateLimit(platnostOd.Date, platnostDo.Date);
+            dom.TextToBitArray(tDatumoveObmedzenie.Text);
+        }
+        catch (Exception ex)
+        {
+            Utils.ShowError(ex.Message);
+            return false;
+        }
+
+        var varianta = decimal.ToInt32(nudVarianta.Value);
+        var probe = new Train { Number = number, Name = name, Type = type };
+
+        var id = 0;
+        var seltrains = new List<Train>();
+        foreach (var vlak in GlobData.Trains)
+        {
+            if (Train.IsSameVariant(probe, vlak) && Row != id)
+            {
+                if (!GlobData.Config.AutoVariant)
+                {
+                    if (varianta == -1)
+                    {
+                        Utils.ShowError(Resources.FEditTrain_bSave_Click_Varianta_tohto_vlaku_nemôže_byť_Minus_1);
+                        return false;
+                    }
+
+                    if (varianta == vlak.Variant)
+                    {
+                        Utils.ShowError(Resources.FEditTrain_bSave_Click_Vybraná_varianta_vlaku_sa_už_používa_pri_inom_vlaku);
+                        return false;
+                    }
+                }
+
+                seltrains.Add(vlak);
+            }
+
+            id++;
+        }
+
+        values = new FormValues(number, type, name, (Operator)cbDopravca.SelectedItem!, arrival, departure, routing, starting, ending,
+            track, trackDeparture != null && !trackDeparture.EqualsKeys(track) ? trackDeparture : null,
+            platnostOd, platnostDo, varianta, seltrains);
+        return true;
     }
 
     private void bZrusit_Click(object sender, EventArgs e)
@@ -618,27 +639,44 @@ public partial class FEditTrain : Form
         else
         {
             tbCisloOldValue = tbCislo.Text;
-
-            if (!string.IsNullOrEmpty(tbCislo.Text))
-            {
-                var i = 0;
-                foreach (var train in GlobData.Trains)
-                {
-                    var cislo = tbCislo.Text;
-                    if (train.Number == cislo && train.Radenia.Count != 0 && Row != i && !copy && !initialization)
-                    {
-                        Utils.ShowWarning(Resources
-                            .FEditTrain_Číslo_vlaku_sa_zhoduje_s_iným_vlakom_a_preto_bude_aj_jeho_radenie_priradené_k_tomuto_vlaku);
-
-                        Radenia.Clear();
-                        foreach (var rad in train.Radenia) Radenia.Add(rad);
-                        break;
-                    }
-
-                    i++;
-                }
-            }
         }
+    }
+
+    // radenia sa zosuladia s cislom az po dopisani - pri kazdom znaku by prevzali radenie vlaku s medzicislom (1, 10, ...)
+    private void tbCislo_Validated(object sender, EventArgs e)
+    {
+        SyncRadeniaWithNumber();
+    }
+
+    /// <summary>
+    ///     Radenie patri cislu vlaku: ak ma rovnake cislo iny vlak s radenim, okno prevezme jeho radenie; ak uz nie,
+    ///     vrati radenie vlaku, s ktorym sa okno otvorilo.
+    /// </summary>
+    /// <returns>true, ak okno prevzalo radenie ineho vlaku</returns>
+    private bool SyncRadeniaWithNumber()
+    {
+        var cislo = tbCislo.Text;
+        if (initialization || string.IsNullOrEmpty(cislo))
+            return false;
+
+        // pri kopii je Row novy riadok, takze sem patri aj zdrojovy vlak - Shows ho vsak vynecha
+        var other = GlobData.Trains.Where((train, i) => train.Number == cislo && train.Radenia.Count != 0 && Row != i).FirstOrDefault();
+        if (other == null)
+        {
+            RadeniaEditing.RestoreOwn();
+            return false;
+        }
+
+        // okno uz zobrazuje radenia tohto cisla (varianta, zdroj kopie) - netreba ich preberat a zahodit upravy
+        if (RadeniaEditing.Shows(other.Radenia))
+            return false;
+
+        Utils.ShowWarning(copy
+            ? Resources.FEditTrain_Cislo_kopie_sa_zhoduje_s_inym_vlakom
+            : Resources.FEditTrain_Číslo_vlaku_sa_zhoduje_s_iným_vlakom_a_preto_bude_aj_jeho_radenie_priradené_k_tomuto_vlaku);
+
+        RadeniaEditing.Load(other.Radenia);
+        return true;
     }
 
     private void bSkorZo_Click(object sender, EventArgs e)
@@ -956,10 +994,9 @@ public partial class FEditTrain : Form
             if (listVybrateDoplnky.SelectedIndex != -1)
                 DoplnkyIndexChanged(Doplnky[listVybrateDoplnky.SelectedIndex]);
 
+            // RemoveAt v cykle dopredu by preskocil hlasenie hned za odstranenym
             foreach (var dodatok in Doplnky)
-                for (var i = 0; i < dodatok.ChosenReports.Count; i++)
-                    if (!VybraneReporty.Contains(dodatok.ChosenReports[i].Type))
-                        dodatok.ChosenReports.RemoveAt(i);
+                dodatok.ChosenReports.RemoveAll(chosen => !VybraneReporty.Contains(chosen.Type));
         }
     }
 
@@ -979,8 +1016,8 @@ public partial class FEditTrain : Form
         {
             var radenie = Radenia[listRadenia.SelectedIndex];
             tbRadenie.Text = radenie.Text;
-            dtpRadenieOd.Value = radenie.ZacPlatnosti;
-            dtpRadenieDo.Value = radenie.KonPlatnosti;
+            dtpRadenieOd.Value = radenie.HasValidity ? radenie.ZacPlatnosti : _gvdStart;
+            dtpRadenieDo.Value = radenie.HasValidity ? radenie.KonPlatnosti : _gvdEnd;
             tbDateRemRadenie.Text = radenie.DatObm;
             selSounds = radenie.Sounds;
 
@@ -1066,6 +1103,23 @@ public partial class FEditTrain : Form
             var odP = dtpRadenieOd.Value.Date;
             var doP = dtpRadenieDo.Value.Date;
 
+            // radenie bez obdobia platnosti ho nedostane, kym pouzivatel nezmeni zobrazene obdobie ani nezada dni
+            if (!radenie.HasValidity && odP == _gvdStart && doP == _gvdEnd && string.IsNullOrWhiteSpace(tbDateRemRadenie.Text))
+            {
+                if (selSounds == null)
+                {
+                    Utils.ShowError(Resources.FEditTrain_Nebolo_zadané_radenie_vlaku);
+                    return;
+                }
+
+                radenie.DatObm = "";
+                radenie.Text = tbRadenie.Text;
+                radenie.Sounds = selSounds;
+                radenie.ChosenReports = GetFromTable(dgvRadenieSet, GlobData.ReportTypes);
+                Radenia.ResetBindings();
+                return;
+            }
+
             if (doP.CompareTo(odP) <= 0)
             {
                 Utils.ShowError(Resources.FEditTrain_Začiatok_platnosti_radenia_je_neskôr_ako_jeho_koniec);
@@ -1120,7 +1174,6 @@ public partial class FEditTrain : Form
     {
         if (listRadenia.SelectedIndex != -1)
         {
-            RemovedRadenia.Add(Radenia[listRadenia.SelectedIndex]);
             Radenia.RemoveAt(listRadenia.SelectedIndex);
 
             if (Radenia.Count == 0)
@@ -1160,11 +1213,12 @@ public partial class FEditTrain : Form
     {
         if (e.ListItem is Radenie radenie)
         {
-            if (radenie.ZacPlatnosti == DateTime.MinValue)
-                e.Value = "Nezadaná platnosť";
-            else
-                e.Value = radenie.ZacPlatnosti.Date.ToString("dd.MM.yyyy") + " - " +
-                          radenie.KonPlatnosti.Date.ToString("dd.MM.yyyy");
+            var text = !radenie.HasValidity
+                ? Resources.FEditTrain_Radenie_BezPlatnosti
+                : radenie.ZacPlatnosti.Date.ToString("dd.MM.yyyy") + " - " + radenie.KonPlatnosti.Date.ToString("dd.MM.yyyy");
+
+            // radenia s rovnakym obdobim sa lisia len datumovym obmedzenim
+            e.Value = string.IsNullOrWhiteSpace(radenie.DatObm) ? text : $"{text} ({radenie.DatObm})";
         }
     }
 
@@ -1193,6 +1247,11 @@ public partial class FEditTrain : Form
             else
                 tbLinkaPrichod.Text = linkaPrichod;
         }
+        else
+        {
+            // vymazane pole = vlak bez linky
+            linkaPrichod = "";
+        }
     }
 
     private void tbLinkaOdchod_TextChanged(object sender, EventArgs e)
@@ -1203,6 +1262,10 @@ public partial class FEditTrain : Form
                 linkaOdchod = tbLinkaOdchod.Text;
             else
                 tbLinkaOdchod.Text = linkaOdchod;
+        }
+        else
+        {
+            linkaOdchod = "";
         }
     }
 

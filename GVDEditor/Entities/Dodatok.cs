@@ -81,7 +81,8 @@ public sealed class Dodatok
                 ch++;
             }
 
-            dodatok.ChosenReports.Add(new ChosenReportType { Type = reportTypes[i], Variants = vars });
+            // mapa obsahuje len typy hlaseni platne pre smerovanie vlaku (tak ju zapisuje DodatokToNums)
+            dodatok.ChosenReports.Add(new ChosenReportType { Type = rightTypes[i], Variants = vars });
         }
 
         return dodatok;

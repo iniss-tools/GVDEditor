@@ -1213,6 +1213,12 @@
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="dtpGVDOd.Calendar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dtpGVDOd.Calendar.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="dtpGVDOd.Location" type="System.Drawing.Point, System.Drawing">
     <value>172, 22</value>
   </data>
@@ -1236,6 +1242,12 @@
   </data>
   <data name="&gt;&gt;dtpGVDOd.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="dtpGVDDo.Calendar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dtpGVDDo.Calendar.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="dtpGVDDo.Location" type="System.Drawing.Point, System.Drawing">
     <value>514, 22</value>
@@ -1294,6 +1306,12 @@
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="dtpDataDo.Calendar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dtpDataDo.Calendar.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="dtpDataDo.Location" type="System.Drawing.Point, System.Drawing">
     <value>514, 46</value>
   </data>
@@ -1350,6 +1368,12 @@
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="dtpDataOd.Calendar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dtpDataOd.Calendar.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="dtpDataOd.Location" type="System.Drawing.Point, System.Drawing">
     <value>172, 46</value>
@@ -1556,7 +1580,7 @@
     <value>NoControl</value>
   </data>
   <data name="bCStationDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>292, 106</value>
+    <value>332, 106</value>
   </data>
   <data name="bCStationDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1589,7 +1613,7 @@
     <value>NoControl</value>
   </data>
   <data name="bCStationEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 106</value>
+    <value>179, 106</value>
   </data>
   <data name="bCStationEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1655,7 +1679,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tbStationName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 23</value>
+    <value>277, 23</value>
   </data>
   <data name="tbStationName.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1715,7 +1739,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>380, 158</value>
+    <value>423, 158</value>
   </data>
   <data name="groupBox12.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2744,7 +2768,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="clbKolajTables.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 77</value>
+    <value>194, 76</value>
   </data>
   <data name="clbKolajTables.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -3011,7 +3035,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label54.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 15</value>
+    <value>131, 15</value>
   </data>
   <data name="label54.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3068,7 +3092,7 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label55.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 15</value>
+    <value>137, 15</value>
   </data>
   <data name="label55.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>

@@ -709,6 +709,7 @@ namespace GVDEditor.Forms
             resources.ApplyResources(this.tbCislo, "tbCislo");
             this.tbCislo.Name = "tbCislo";
             this.tbCislo.TextChanged += new System.EventHandler(this.tbCislo_TextChanged);
+            this.tbCislo.Validated += new System.EventHandler(this.tbCislo_Validated);
             // 
             // label6
             // 

@@ -129,6 +129,9 @@
   <data name="FEditTrain_Nebolo_zadané_radenie_vlaku" xml:space="preserve">
     <value>Nebolo zadané radenie vlaku.</value>
   </data>
+  <data name="FEditTrain_Radenie_BezPlatnosti" xml:space="preserve">
+    <value>Platí stále (bez obdobia platnosti)</value>
+  </data>
   <data name="FTableCatalog_Nie_sú_vyplnené_všetky_povinné_parametre" xml:space="preserve">
     <value>Nie sú vyplnené všetky povinné parametre.</value>
   </data>
@@ -537,6 +540,9 @@ Mám ju nútene vypnúť ?</value>
   <data name="FEditTrain_Číslo_vlaku_sa_zhoduje_s_iným_vlakom_a_preto_bude_aj_jeho_radenie_priradené_k_tomuto_vlaku" xml:space="preserve">
     <value>Číslo vlaku sa zhoduje s iným vlakom a preto bude aj jeho radenie priradené k tomuto vlaku (Doteraz upravené radenie sa vymaže).</value>
   </data>
+  <data name="FEditTrain_Cislo_kopie_sa_zhoduje_s_inym_vlakom" xml:space="preserve">
+    <value>Číslo vlaku sa zhoduje s iným vlakom, ktorý má radenie. Radenie patrí číslu vlaku, preto kópia dostane radenie toho vlaku namiesto radenia pôvodného vlaku (doteraz upravené radenie sa zahodí).</value>
+  </data>
   <data name="SetDesktopTTSl" xml:space="preserve">
     <value>Služobný vlak</value>
   </data>
@@ -563,9 +569,6 @@ Mám ju nútene vypnúť ?</value>
   </data>
   <data name="FGlobalSettings_Click_Zadaný_typ_vlaku_sa_už_v_zozname_nachádza" xml:space="preserve">
     <value>Zadaný typ vlaku sa už v zozname nachádza.</value>
-  </data>
-  <data name="FEditTrain_bSave_Click_Čas_príchodu_je_neskôr_ako_čas_odchodu" xml:space="preserve">
-    <value>Čas príchodu je neskôr ako čas odchodu.</value>
   </data>
   <data name="SetTEOperator" xml:space="preserve">
     <value>Operátor</value>

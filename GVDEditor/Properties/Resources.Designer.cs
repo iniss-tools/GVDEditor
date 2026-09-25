@@ -164,15 +164,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Čas príchodu je neskôr ako čas odchodu..
-        /// </summary>
-        internal static string FEditTrain_bSave_Click_Čas_príchodu_je_neskôr_ako_čas_odchodu {
-            get {
-                return ResourceManager.GetString("FEditTrain_bSave_Click_Čas_príchodu_je_neskôr_ako_čas_odchodu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Nesprávny formát času odchodu..
         /// </summary>
         internal static string FEditTrain_bSave_Click_Nesprávny_formát_času_odchodu {
@@ -253,6 +244,15 @@ namespace GVDEditor.Properties {
                         "adené_k_tomuto_vlaku"), resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo vlaku sa zhoduje s iným vlakom, ktorý má radenie. Radenie patrí číslu vlaku, preto kópia dostane radenie toho vlaku namiesto radenia pôvodného vlaku (doteraz upravené radenie sa zahodí)..
+        /// </summary>
+        internal static string FEditTrain_Cislo_kopie_sa_zhoduje_s_inym_vlakom {
+            get {
+                return ResourceManager.GetString("FEditTrain_Cislo_kopie_sa_zhoduje_s_inym_vlakom", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Dátumové obmedzenie radenia obsahuje chybu: .
@@ -308,6 +308,15 @@ namespace GVDEditor.Properties {
         internal static string FEditTrain_Nebolo_zadané_radenie_vlaku {
             get {
                 return ResourceManager.GetString("FEditTrain_Nebolo_zadané_radenie_vlaku", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Platí stále (bez obdobia platnosti).
+        /// </summary>
+        internal static string FEditTrain_Radenie_BezPlatnosti {
+            get {
+                return ResourceManager.GetString("FEditTrain_Radenie_BezPlatnosti", resourceCulture);
             }
         }
         

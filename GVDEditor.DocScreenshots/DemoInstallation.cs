@@ -130,7 +130,13 @@ internal static class DemoInstallation
             Group(sk, "Poz1", [("0100", "koľaj 1"), ("0200", "koľaj 2"), ("0300", "koľaj 3"), ("0400", "koľaj 4")]),
             // nahrávky dopravcov sa volajú presne ako dopravca vo Vlastnik.txt
             Group(sk, "Dopravca", [("Regionálna železnica, a.s.", "Regionálna železnica"), ("Expres Línia, s.r.o.", "Expres Línia")]),
-            Group(sk, "Slova", [("prich", "príde"), ("odch", "odíde"), ("kolaj", "na koľaj")]),
+            Group(sk, "Slova", [("prich", "príde"), ("odch", "odíde"), ("kolaj", "na koľaj"), ("cislo", "číslo")]),
+            // radenie: „Za rušňom sú radené: vozeň prvej triedy číslo jeden a vozne druhej triedy číslo dva až šesť.“
+            Group(sk, "Poz7", [("zalok", "Za rušňom sú radené:"), ("nakonci", "Na konci vlaku je radený")]),
+            Group(sk, "VOZY1", [("v1", "vozeň prvej triedy"), ("rest", "reštauračný vozeň")]),
+            Group(sk, "VOZY4M", [("v2", "a vozne druhej triedy")]),
+            Group(sk, "CISLO1", [("1", "jeden"), ("2", "dva")]),
+            Group(sk, "CISLO9", [("6", "až šesť."), ("8", "až osem.")]),
         ];
         gb.Groups =
         [
@@ -250,6 +256,43 @@ internal static class DemoInstallation
         TxtParser.WriteOperators(path, operators);
         TxtParser.WriteInfoGVD(path, gvd);
         TxtParser.WriteCustomStations(path, GlobData.CustomStations, gvd);
+        TxtParser.WriteRazeni1(path, DemoRadenia(), GlobData.Languages);
+    }
+
+    /// <summary>
+    ///     Radenie Ex 521: v pracovné dni šesť vozňov, cez víkend osem, hlási sa pri príchode a zastavení.
+    /// </summary>
+    private static List<Radenie> DemoRadenia()
+    {
+        FyzSound Snd(string group, string name) => GlobData.Sounds.First(s => s.Group.Name == group && s.Name == name);
+
+        var types = ReportType.GetDefaultValuesSK();
+        List<ChosenReportType> Reports() =>
+        [
+            new() { Type = types[0], Variants = ReportVariant.GetDefaultValues() },
+            new() { Type = types[2], Variants = [ReportVariant.GetDefaultValues()[1]] }
+        ];
+
+        Radenie Rad(string dateLimit, string last)
+        {
+            List<FyzSound> sounds =
+            [
+                Snd("Poz7", "zalok"), Snd("VOZY1", "v1"), Snd("Slova", "cislo"), Snd("CISLO1", "1"),
+                Snd("VOZY4M", "v2"), Snd("Slova", "cislo"), Snd("CISLO1", "2"), Snd("CISLO9", last)
+            ];
+            return new Radenie
+            {
+                CisloVlaku = "521",
+                ZacPlatnosti = ValidFrom,
+                KonPlatnosti = ValidTo,
+                DatObm = dateLimit,
+                Sounds = sounds,
+                Text = Radenie.SoundsToString(sounds),
+                ChosenReports = Reports()
+            };
+        }
+
+        return [Rad("ide v 1-5", "6"), Rad("ide v 6,7", "8")];
     }
 
     private static Train Tr(string type, string number, string name, Routing routing, string? arrival, string? departure,
@@ -315,6 +358,8 @@ internal static class DemoInstallation
         var texts = TxtParser.ReadTTexts(path, trains);
         var fonts = TxtParser.ReadTableFonts(path);
         var tracksWithTables = GlobData.Tracks.Count(t => t.Tables.Count > 0);
+        var radenia = TxtParser.ReadRazeni1(path, GlobData.Sounds);
+        log.Add($"demo: radenia {radenia.Count} ({string.Join("; ", radenia.Select(r => $"{r.CisloVlaku} {r.DatObm}: {r.Text}"))})");
 
         log.Add($"demo: {trains.Count} vlakov, {GlobData.Tracks.Count - 1} koľají ({tracksWithTables} s tabuľou), " +
                 $"{GlobData.Operators.Count - 1} dopravcov, tabule fyz/log/kat/TabTab {physicals.Count}/{logicals.Count}/" +

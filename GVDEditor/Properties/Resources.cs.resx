@@ -173,9 +173,6 @@ Opravdu chcete použít tento typ debugování?</value>
   <data name="FEditTrain_bSave_Click_Začiatok_platnosti_musí_skôr_ako_koniec_platnosti" xml:space="preserve">
     <value>Začátek platnosti musí dříve než konec platnosti.</value>
   </data>
-  <data name="FEditTrain_bSave_Click_Čas_príchodu_je_neskôr_ako_čas_odchodu" xml:space="preserve">
-    <value>Čas příjezdu je později než čas odjezdu.</value>
-  </data>
   <data name="FEditTrain_DateRem_radenia_obsahuje_chybu" xml:space="preserve">
     <value>Datumové omezení řazení obsahuje chybu:</value>
   </data>
@@ -197,6 +194,9 @@ Upravit datumové omezení popsaného vlaku? </value>
   <data name="FEditTrain_Nebolo_zadané_radenie_vlaku" xml:space="preserve">
     <value>Nebylo zadáno řazení vlaku.</value>
   </data>
+  <data name="FEditTrain_Radenie_BezPlatnosti" xml:space="preserve">
+    <value>Platí stále (bez období platnosti)</value>
+  </data>
   <data name="FEditTrain_Nezadaný_čas_odchodu" xml:space="preserve">
     <value>Nezadaný čas odjezdu.</value>
   </data>
@@ -205,6 +205,9 @@ Upravit datumové omezení popsaného vlaku? </value>
   </data>
   <data name="FEditTrain_Číslo_vlaku_sa_zhoduje_s_iným_vlakom_a_preto_bude_aj_jeho_radenie_priradené_k_tomuto_vlaku" xml:space="preserve">
     <value>Číslo vlaku se shoduje s jiným vlakem a proto bude i jeho řazení přiřazeny k tomuto vlaku (Dosud upravené řazení se vymaže).</value>
+  </data>
+  <data name="FEditTrain_Cislo_kopie_sa_zhoduje_s_inym_vlakom" xml:space="preserve">
+    <value>Číslo vlaku se shoduje s jiným vlakem, který má řazení. Řazení patří číslu vlaku, proto kopie dostane řazení toho vlaku místo řazení původního vlaku (dosud upravené řazení se zahodí).</value>
   </data>
   <data name="FEditTrain_Zadané_dátumové_obmedzenie_radenia_sa_prekrýva_s_iným_v_období" xml:space="preserve">
     <value>Zadané datumové omezení řazení se překrývá s jiným v období {0}.</value>
