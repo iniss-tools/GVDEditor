@@ -137,6 +137,28 @@ public class TrackEditingTests
     }
 
     [TestMethod]
+    public void NahladTabule_NastupisteZoStlpca5KolajZoStlpca6()
+    {
+        // INISS 3.39: funkcie 19/20 (Nastupiste...) citaju stlpec 5, 21/22 (Kolej...) stlpec 6 Pozice_A
+        var arrival = NewTrack("6V", Platform1, "6");
+        var departure = NewTrack("5", Platform2);
+        var train = new Train { Track = arrival, TrackDeparture = departure, Arrival = DateTime.Today, Departure = DateTime.Today };
+        var context = new GvdTrainContext(train, new TrainRuntime(), 0);
+
+        string Value(TableFillSection section) => context.OwnValue(new TableItem { FillSection = section }).Text;
+
+        Assert.AreEqual("6", Value(TableFillSection.KolajPrichod));
+        Assert.AreEqual("5", Value(TableFillSection.KolajOdchod));
+        Assert.AreEqual("1", Value(TableFillSection.NastupistePrichod));
+        Assert.AreEqual("2", Value(TableFillSection.NastupisteOdchod));
+
+        train.Track = Track.None;
+        train.TrackDeparture = null;
+        Assert.AreEqual("", Value(TableFillSection.KolajPrichod));
+        Assert.AreEqual("", Value(TableFillSection.NastupisteOdchod));
+    }
+
+    [TestMethod]
     public void Nastupistia_BezKolajeSaHlasia()
     {
         var platform3 = new Platform("3", "Nástupište 3", "03");
@@ -145,5 +167,70 @@ public class TrackEditingTests
         var without = TrackEditing.PlatformsWithoutTracks([Platform.None, Platform1, Platform2, platform3], tracks);
 
         CollectionAssert.AreEqual(new[] { platform3 }, without);
+    }
+
+    /// <summary>
+    ///     Zapise Pozice_A.txt z riadkov, nacita ho a vrati kolaje (bez Track.None).
+    /// </summary>
+    private static List<Track> ReadPoziceA(params string[] lines)
+    {
+        var dir = Directory.CreateTempSubdirectory("gvdtracks");
+        var oldLogicals = GlobData.TableLogicals;
+        try
+        {
+            GlobData.TableLogicals = new ExBindingList<TableLogical>();
+            File.WriteAllLines(Path.Combine(dir.FullName, FileConsts.FILE_POZICE_A), lines, ToolsCore.Tools.Encodings.Win1250);
+            return TxtParser.ReadTracks(dir.FullName).Skip(1).ToList();
+        }
+        finally
+        {
+            GlobData.TableLogicals = oldLogicals;
+            dir.Delete(true);
+        }
+    }
+
+    [TestMethod]
+    public void Nastupiste_KolajeJednehoNastupistaZdielajuInstanciu()
+    {
+        var tracks = ReadPoziceA(
+            "\"5V\",\"5V\",\"Kolej 5V\",\"Nástupiště 3\",\"5V\",\"3\",\"0501\",\"03\",0",
+            "\"7\",\"7\",\"Kolej 7\",\"Nástupiště 2\",\"7\",\"2\",\"0700\",\"02\",0",
+            "\"5Z\",\"5Z\",\"Kolej 5Z\",\"Nástupiště 3\",\"5Z\",\"3\",\"0502\",\"03\",0");
+
+        Assert.AreSame(tracks[0].Platform, tracks[2].Platform);
+        Assert.AreNotSame(tracks[0].Platform, tracks[1].Platform);
+
+        // uprava nastupista (FLocalSettings.bNastEdit_Click) sa prejavi na oboch kolajach
+        tracks[0].Platform.Key = "3A";
+        Assert.AreEqual("3A", tracks[2].Platform.Key);
+    }
+
+    [TestMethod]
+    public void Nastupiste_RozneUdajeVRiadkochVyhraNajcastejsia()
+    {
+        LoadWarnings.Clear();
+        var tracks = ReadPoziceA(
+            "\"1\",\"1\",\"koľaj 1\",\"nástupište \",\"1\",\"3\",\"0100\",\"03\",0",
+            "\"3A\",\"3A\",\"koľaj 3A\",\"nástupište 3\",\"3A\",\"3\",\"0303\",\"03\",0",
+            "\"4\",\"4\",\"koľaj 4\",\"nástupište 3\",\"4\",\"3\",\"0400\",\"03\",0");
+
+        Assert.IsTrue(tracks.All(track => ReferenceEquals(track.Platform, tracks[1].Platform)));
+        Assert.AreEqual("nástupište 3", tracks[0].Platform.FullName);
+        Assert.HasCount(1, LoadWarnings.Items);
+        StringAssert.Contains(LoadWarnings.Items[0], "nástupište 3");
+        LoadWarnings.Clear();
+    }
+
+    [TestMethod]
+    public void Nastupiste_KlucNJeVzdyPlatformNone()
+    {
+        LoadWarnings.Clear();
+        var tracks = ReadPoziceA(
+            "\"N\",\"-\",\"Neznámá\",\"Neznámé\",\"\",\"\",\"\",\"\",0",
+            "\"BUS\",\"BUS\",\"koľaj BUS\",\"Nedefinované\",\"BUS\",\"N\",\"0\",\"\",0",
+            "\"3V\",\"3V\",\"koľaj 3V\",\"Nedefinované\",\"3V\",\"N\",\"0301\",\"\",0");
+
+        Assert.IsTrue(tracks.All(track => ReferenceEquals(track.Platform, Platform.None)));
+        Assert.HasCount(0, LoadWarnings.Items);
     }
 }

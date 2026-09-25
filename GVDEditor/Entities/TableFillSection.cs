@@ -46,10 +46,10 @@ public sealed class TableFillSection : Enumeration<TableFillSection>
     public static readonly TableFillSection CisloVlaku = new(16, "Číslo vlaku (R-121)");
     public static readonly TableFillSection TypCisloVlaku = new(17, "Typ a číslo vlaku");
     public static readonly TableFillSection NazovVlaku = new(18, "Názov vlaku (Košičan)");
-    public static readonly TableFillSection NastupistePrichod = new(19, "Číslo nástupišťa na príchode");
-    public static readonly TableFillSection NastupisteOdchod = new(20, "Číslo nástupišťa na odchode");
-    public static readonly TableFillSection KolajPrichod = new(21, "Číslo koľaje na príchode");
-    public static readonly TableFillSection KolajOdchod = new(22, "Číslo koľaje na odchode");
+    public static readonly TableFillSection KolajPrichod = new(19, "Text koľaje na príchode (z Pozice_A)");
+    public static readonly TableFillSection KolajOdchod = new(20, "Text koľaje na odchode (z Pozice_A)");
+    public static readonly TableFillSection NastupistePrichod = new(21, "Označenie nástupišťa na príchode (z Pozice_A)");
+    public static readonly TableFillSection NastupisteOdchod = new(22, "Označenie nástupišťa na odchode (z Pozice_A)");
     public static readonly TableFillSection VlakStojiVStanici = new(23, "Vlak stojí v stanici");
     public static readonly TableFillSection TextLine1 = new(24, "Text 1. riadok");
     public static readonly TableFillSection TextLine2 = new(25, "Text 2. riadok");

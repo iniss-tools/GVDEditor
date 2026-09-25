@@ -1992,7 +1992,38 @@ internal static class TxtParser
         tracks.RemoveAll(track => track.Key == Track.None.Key);
         tracks.Insert(0, Track.None);
 
+        ShareTrackPlatforms(tracks);
+
         return tracks;
+    }
+
+    /// <summary>
+    ///     Kazdy riadok Pozice_A.txt nesie vlastnu kopiu udajov nastupista. Kolaje s rovnakym klucom nastupista musia
+    ///     zdielat jednu instanciu <see cref="Platform" />, inak by sa uprava nastupista (Lokalne nastavenia) prejavila
+    ///     len na jednej z nich. Ked sa udaje medzi riadkami lisia, pouzije sa najcastejsia varianta (pri zhode prva)
+    ///     a do <see cref="LoadWarnings" /> sa zapise upozornenie. Nastupiste s klucom N je vzdy <see cref="Platform.None" />.
+    /// </summary>
+    /// <param name="tracks">nacitane kolaje</param>
+    private static void ShareTrackPlatforms(List<Track> tracks)
+    {
+        foreach (var group in tracks.GroupBy(track => track.Platform.Key, StringComparer.Ordinal))
+        {
+            // GroupBy zachovava poradie prveho vyskytu a OrderByDescending je stabilne
+            var variants = group.GroupBy(track => track.Platform).OrderByDescending(variant => variant.Count()).ToList();
+            var shared = group.Key == Platform.None.Key ? Platform.None : variants[0].Key;
+
+            var different = variants.Where(variant => !variant.Key.Equals(shared)).ToList();
+            if (different.Count > 0)
+            {
+                var descriptions = variants.Select(variant =>
+                    $"„{variant.Key.FullName}“/{variant.Key.SoundName} ({string.Join(", ", variant.Select(track => track.Key))})");
+                LoadWarnings.Add($"{FILE_POZICE_A}: nástupište {group.Key} má pri koľajach rôzne údaje: {string.Join("; ", descriptions)}. " +
+                                 $"Použije sa „{shared.FullName}“/{shared.SoundName}, pri uložení sa zapíše ku všetkým jeho koľajam.");
+            }
+
+            foreach (var track in group)
+                track.Platform = shared;
+        }
     }
 
     /// <summary>

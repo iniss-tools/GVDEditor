@@ -145,10 +145,10 @@ internal sealed class GvdTrainContext : IExprTrainContext
         else if (s == TableFillSection.TypMedzeraCisloVlaku) text = $"{t.Type.TextInTable} {t.Number}";
         else if (s == TableFillSection.NazovVlaku) text = t.Name ?? "";
         else if (s == TableFillSection.TypNazovOrCislo) text = string.IsNullOrEmpty(t.Name) ? $"{t.Type.TextInTable} {t.Number}" : $"{t.Type.TextInTable} {t.Name}";
-        else if (s == TableFillSection.NastupistePrichod) text = t.Arrival is null ? "" : t.Track.Platform.Key;
-        else if (s == TableFillSection.NastupisteOdchod) text = t.Departure is null ? "" : (t.TrackDeparture ?? t.Track).Platform.Key;
-        else if (s == TableFillSection.KolajPrichod) text = ArrivalTrack;
-        else if (s == TableFillSection.KolajOdchod) text = DepartureTrack;
+        else if (s == TableFillSection.KolajPrichod) text = t.Arrival is null ? "" : Column5(t.Track);
+        else if (s == TableFillSection.KolajOdchod) text = t.Departure is null ? "" : Column5(t.TrackDeparture ?? t.Track);
+        else if (s == TableFillSection.NastupistePrichod) text = t.Arrival is null ? "" : Column6(t.Track);
+        else if (s == TableFillSection.NastupisteOdchod) text = t.Departure is null ? "" : Column6(t.TrackDeparture ?? t.Track);
         else if (s == TableFillSection.NastupisteKolajPrichod) text = t.Arrival is null ? "" : t.Track.PlatformTrackText;
         else if (s == TableFillSection.NastupisteKolajOdchod) text = t.Departure is null ? "" : (t.TrackDeparture ?? t.Track).PlatformTrackText;
         else if (s == TableFillSection.KolajAltPrichod) text = t.Arrival is null ? "" : t.Track.AltTrackText;
@@ -161,4 +161,10 @@ internal sealed class GvdTrainContext : IExprTrainContext
 
         return new TabTabValue(text, item.FontIDX);
     }
+
+    /// <summary>Stlpec 5 Pozice_A (text na tabule); vlak bez kolaje nema nic.</summary>
+    private static string Column5(Track? track) => track is null || track.EqualsKeys(Track.None) ? "" : track.TrackName ?? "";
+
+    /// <summary>Stlpec 6 Pozice_A (kluc nastupista); vlak bez kolaje nema nic.</summary>
+    private static string Column6(Track? track) => track is null || track.EqualsKeys(Track.None) ? "" : track.Platform?.Key ?? "";
 }
