@@ -1,4 +1,5 @@
-﻿using ExControls;
+﻿using System.Globalization;
+using ExControls;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
@@ -26,6 +27,11 @@ public partial class FLocalSettings : Form
 
     private readonly Color _defaultBorderColor;
     private readonly bool _openStateDgmEditor;
+
+    /// <summary>
+    ///     Oznacenie kolaje, ktore je prave v poli Oznacenie - kratky nazov a text na tabule sa s nim menia, kym su zhodne.
+    /// </summary>
+    private string _shownTrackKey = "";
 
     /// <summary>
     ///     Vytvori novy formulár typu <see cref="FLocalSettings"/>.
@@ -71,7 +77,8 @@ public partial class FLocalSettings : Form
         listKolaje.DataSource = GlobData.Tracks;
         cbNastupistia.DataSource = GlobData.Platforms;
 
-        foreach (var logical in GlobData.TableLogicals) clbKolajTables.Items.Add(logical);
+        RefreshKolajTables();
+        GlobData.TableLogicals.ListChanged += TableLogicals_ListChanged;
         cbFontType.DataSource = TableFontType.GetValues();
 
         listFyzTabule.DataSource = GlobData.TablePhysicals;
@@ -209,6 +216,17 @@ public partial class FLocalSettings : Form
 
     private void bSave_Click(object sender, EventArgs e)
     {
+        // Pozice_A.txt nema riadky nastupist - nastupiste bez kolaje sa nezapise a po opatovnom otvoreni zmizne
+        var withoutTracks = TrackEditing.PlatformsWithoutTracks(GlobData.Platforms, GlobData.Tracks);
+        if (withoutTracks.Count > 0 &&
+            Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Nastupistia_Bez_Kolaje,
+                string.Join(", ", withoutTracks.Select(platform => platform.Key)))) != DialogResult.Yes)
+        {
+            DialogResult = DialogResult.None;
+            tabControl.SelectedTab = tpNastupistia;
+            return;
+        }
+
         var gvdInfo = ThisDir.GVD;
         gvdInfo.StartValidData = dtpDataOd.Value.Date;
         gvdInfo.EndValidData = dtpDataDo.Value.Date;
@@ -438,6 +456,13 @@ public partial class FLocalSettings : Form
 
     private void bNastAdd_Click(object sender, EventArgs e)
     {
+        if (string.IsNullOrEmpty(tbNastOznacenie.Text) || string.IsNullOrEmpty(tbNastFullName.Text) ||
+            string.IsNullOrEmpty(tbNastSound.Text))
+        {
+            Utils.ShowError(Resources.FLocalSettings_Všetky_parametre_sú_povinné);
+            return;
+        }
+
         var nastupiste = new Platform(tbNastOznacenie.Text, tbNastFullName.Text, tbNastSound.Text);
         foreach (var test in GlobData.Platforms)
             if (nastupiste.EqualsKeys(test))
@@ -531,39 +556,75 @@ public partial class FLocalSettings : Form
             }
 
             tbKolajOznacenie.Text = kolaj.Key;
+            tbKolajName.Text = kolaj.Name ?? "";
             tbKolajFullName.Text = kolaj.FullName;
+            tbKolajText.Text = kolaj.TrackName ?? "";
             tbKolajSound.Text = kolaj.SoundName;
             cbNastupistia.SelectedItem = kolaj.Platform;
             tbNastupisteKolaj.Text = kolaj.PlatformTrackText;
             tbKolajAlt.Text = kolaj.AltTrackText;
 
-            if (clbKolajTables.Items.Count != 0)
-                for (var i = 0; i < GlobData.TableLogicals.Count; i++)
-                    clbKolajTables.SetItemChecked(i, false);
-
-            foreach (var table in kolaj.Tables)
-                clbKolajTables.SetItemChecked(clbKolajTables.Items.IndexOf(table), true);
+            for (var i = 0; i < clbKolajTables.Items.Count; i++)
+                clbKolajTables.SetItemChecked(i, kolaj.Tables.Any(table => ReferenceEquals(table, clbKolajTables.Items[i])));
         }
     }
 
+    /// <summary>
+    ///     Naplni zoznam Tabule na kolaji podla GlobData.TableLogicals; zaskrtnute tabule ostanu zaskrtnute.
+    /// </summary>
+    private void RefreshKolajTables()
+    {
+        var checkedTables = clbKolajTables.CheckedItems.Cast<object>().ToList();
+
+        clbKolajTables.BeginUpdate();
+        clbKolajTables.Items.Clear();
+        foreach (var logical in GlobData.TableLogicals)
+            clbKolajTables.Items.Add(logical, checkedTables.Any(table => ReferenceEquals(table, logical)));
+        clbKolajTables.EndUpdate();
+    }
+
+    // logicke tabule sa pridavaju, premenuvaju a mazu na inej zalozke toho isteho okna
+    private void TableLogicals_ListChanged(object? sender, ListChangedEventArgs e) => RefreshKolajTables();
+
     private void tbKolajOznacenie_TextChanged(object sender, EventArgs e)
     {
-        tbKolajFullName.Text = Resources.FLocalSettings_Koľaj_ + tbKolajOznacenie.Text;
+        var key = tbKolajOznacenie.Text;
+        tbKolajFullName.Text = Resources.FLocalSettings_Koľaj_ + key;
+
+        // kratky nazov a text na tabule byvaju zhodne s oznacenim - kym ich pouzivatel neprepise, menia sa s nim
+        if (tbKolajName.Text.Length == 0 || tbKolajName.Text == _shownTrackKey)
+            tbKolajName.Text = key;
+        if (tbKolajText.Text.Length == 0 || tbKolajText.Text == _shownTrackKey)
+            tbKolajText.Text = key;
+
+        _shownTrackKey = key;
+    }
+
+    /// <summary>
+    ///     Overi povinne polia kolaje; ak niektore chyba, zobrazi chybu.
+    /// </summary>
+    private bool CheckTrackFields()
+    {
+        if (!string.IsNullOrEmpty(tbKolajOznacenie.Text) && !string.IsNullOrEmpty(tbKolajName.Text) &&
+            !string.IsNullOrEmpty(tbKolajFullName.Text) && !string.IsNullOrEmpty(tbKolajText.Text) &&
+            !string.IsNullOrEmpty(tbKolajSound.Text))
+            return true;
+
+        Utils.ShowError(Resources.FLocalSettings_Všetky_parametre_sú_povinné);
+        return false;
     }
 
     private void bKolajAdd_Click(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(tbKolajOznacenie.Text) || string.IsNullOrEmpty(tbKolajFullName.Text) ||
-            string.IsNullOrEmpty(tbKolajSound.Text))
-        {
-            Utils.ShowError(Resources.FLocalSettings_Všetky_parametre_sú_povinné);
+        if (!CheckTrackFields())
             return;
-        }
 
         var track = new Track
         {
             Key = tbKolajOznacenie.Text,
+            Name = tbKolajName.Text,
             FullName = tbKolajFullName.Text,
+            TrackName = tbKolajText.Text,
             SoundName = tbKolajSound.Text,
             Platform = (Platform)cbNastupistia.SelectedItem!
         };
@@ -591,11 +652,8 @@ public partial class FLocalSettings : Form
     {
         if (listKolaje.SelectedIndex != -1)
         {
-            if (string.IsNullOrEmpty(tbKolajOznacenie.Text) || string.IsNullOrEmpty(tbKolajFullName.Text) || string.IsNullOrEmpty(tbKolajSound.Text))
-            {
-                Utils.ShowError(Resources.FLocalSettings_Všetky_parametre_sú_povinné);
+            if (!CheckTrackFields())
                 return;
-            }
 
             for (var i = 0; i < GlobData.Tracks.Count; i++)
                 if (tbKolajOznacenie.Text == GlobData.Tracks[i].Key && i != listKolaje.SelectedIndex)
@@ -606,7 +664,9 @@ public partial class FLocalSettings : Form
 
             var track = GlobData.Tracks[listKolaje.SelectedIndex];
             track.Key = tbKolajOznacenie.Text;
+            track.Name = tbKolajName.Text;
             track.FullName = tbKolajFullName.Text;
+            track.TrackName = tbKolajText.Text;
             track.SoundName = tbKolajSound.Text;
             track.PlatformTrackText = tbNastupisteKolaj.Text.Trim();
             track.AltTrackText = tbKolajAlt.Text.Trim();
@@ -624,13 +684,15 @@ public partial class FLocalSettings : Form
     {
         if (listKolaje.SelectedIndex != -1)
         {
-            var index = listKolaje.SelectedIndex;
-            var kolaj = GlobData.Tracks[index];
-            foreach (var train in GlobData.Trains)
-                if (train.Track == kolaj)
-                    train.Track = Track.None;
+            var kolaj = GlobData.Tracks[listKolaje.SelectedIndex];
+            var (arrival, departure) = TrackEditing.CountUsage(kolaj, GlobData.Trains);
+            var question = arrival + departure == 0
+                ? string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Kolaj_Odstranit_Nepouzita, kolaj.Key)
+                : string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Kolaj_Odstranit, kolaj.Key, arrival, departure);
+            if (Utils.ShowQuestion(question) != DialogResult.Yes)
+                return;
 
-            GlobData.Tracks.RemoveAt(index);
+            TrackEditing.Remove(kolaj, GlobData.Tracks, GlobData.Trains);
 
             if (GlobData.Tracks.Count == 0)
             {
@@ -888,62 +950,22 @@ public partial class FLocalSettings : Form
 
     private void bOpenEditorTab_Click(object sender, EventArgs e)
     {
-        var ettf = new FTabTab();
-        var result = ettf.ShowDialog();
-        if (result == DialogResult.OK)
-        {
-            GlobData.TabTabs.Clear();
-            foreach (var doc in ettf.documents) GlobData.TabTabs.Add(doc.TabTab);
-            GlobData.TabTabs.ResetBindings();
-        }
+        using (var ettf = new FTabTab())
+            ettf.ShowDialog(this);
 
-        if (GlobData.TabTabs.Count == 0) bTabTabDelete.Enabled = false;
+        bTabTabDelete.Enabled = GlobData.TabTabs.Count > 0;
     }
 
     private void bTabTabDelete_Click(object sender, EventArgs e)
     {
-        if (listTabTabs.SelectedIndex != -1)
-        {
-            var delete = true;
-            var where = " ";
-            var index = listLogTabule.SelectedIndex;
-            var tab = GlobData.TabTabs[index];
+        var index = listTabTabs.SelectedIndex;
+        if (index == -1 || !TabTabSections.CheckCanRemove(GlobData.TabTabs[index], GlobData.TableCatalogs))
+            return;
 
-            foreach (var tc in GlobData.TableCatalogs)
-            {
-                foreach (var ti in tc.Items)
-                {
-                    if (ti.Tab1 == tab)
-                    {
-                        delete = false;
-                        where += $"Katalógová tabuľa {tc.Name}, položka {ti.Name}, TAB1";
-                        break;
-                    }
+        GlobData.TabTabs.RemoveAt(index);
 
-                    if (ti.Tab2 == tab)
-                    {
-                        delete = false;
-                        where += $"Katalógová tabuľa {tc.Name}, položka {ti.Name}, TAB2";
-                        break;
-                    }
-                }
-
-                if (!delete)
-                    break;
-            }
-
-            if (delete)
-            {
-                GlobData.TabTabs.RemoveAt(listTabTabs.SelectedIndex);
-
-                if (GlobData.TabTabs.Count == 0)
-                    bTabTabDelete.Enabled = false;
-            }
-            else
-            {
-                Utils.ShowError(Resources.SelectedItemRemoveCancel + where);
-            }
-        }
+        if (GlobData.TabTabs.Count == 0)
+            bTabTabDelete.Enabled = false;
     }
 
     private void bTextAdd_Click(object sender, EventArgs e)
@@ -1015,10 +1037,14 @@ public partial class FLocalSettings : Form
             return;
         }
 
+        var newId = decimal.ToInt32(nudFontID.Value);
+        if (!CheckFontIdFree(newId, null))
+            return;
+
         var tfont = new TableFont
         {
             Name = tbFontName.Text,
-            FontID = decimal.ToInt32(nudFontID.Value),
+            FontID = newId,
             Type = (TableFontType)cbFontType.SelectedItem!,
             Width = decimal.ToInt32(nudFontWidth.Value),
             Size = decimal.ToInt32(nudFontSize.Value),
@@ -1050,8 +1076,37 @@ public partial class FLocalSettings : Form
         }
 
         var tfont = GlobData.TableFonts[index];
+        var newId = decimal.ToInt32(nudFontID.Value);
+        if (!CheckFontIdFree(newId, tfont))
+            return;
+
+        // stĺpce katalógových tabúľ a texty vlakov obsahujú priamo číslo písma - pri zmene ID ich treba preniesť
+        if (newId != tfont.FontID)
+        {
+            var usage = TableFontUsage.Find(tfont.FontID, GlobData.TableCatalogs, GlobData.TableTexts, GlobData.TabTabs);
+            if (usage.IsUsed)
+            {
+                var description = DescribeFontUsage(tfont.FontID, usage);
+                if (usage.HasReplaceable)
+                {
+                    var answer = Utils.ShowQuestion(
+                        string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_Zmena_ID, tfont.FontID, description, newId),
+                        MessageBoxButtons.YesNoCancel);
+                    if (answer == DialogResult.Cancel)
+                        return;
+                    if (answer == DialogResult.Yes)
+                        TableFontUsage.Replace(tfont.FontID, newId, GlobData.TableCatalogs, GlobData.TableTexts);
+                }
+                else if (Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_Zmena_ID_TabTab,
+                             tfont.FontID, description, newId)) != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+        }
+
         tfont.Name = tbFontName.Text;
-        tfont.FontID = decimal.ToInt32(nudFontID.Value);
+        tfont.FontID = newId;
         tfont.Type = (TableFontType)cbFontType.SelectedItem!;
         tfont.Width = decimal.ToInt32(nudFontWidth.Value);
         tfont.Size = decimal.ToInt32(nudFontSize.Value);
@@ -1069,13 +1124,53 @@ public partial class FLocalSettings : Form
 
     private void bFontDelete_Click(object sender, EventArgs e)
     {
-        if (listFonts.SelectedIndex != -1) GlobData.TableFonts.RemoveAt(listFonts.SelectedIndex);
+        if (listFonts.SelectedIndex != -1)
+        {
+            var tfont = GlobData.TableFonts[listFonts.SelectedIndex];
+            var usage = TableFontUsage.Find(tfont.FontID, GlobData.TableCatalogs, GlobData.TableTexts, GlobData.TabTabs);
+            if (usage.IsUsed && Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_Odstranit,
+                    tfont.FontID, DescribeFontUsage(tfont.FontID, usage))) != DialogResult.Yes)
+                return;
+
+            GlobData.TableFonts.RemoveAt(listFonts.SelectedIndex);
+        }
 
         if (GlobData.TableFonts.Count == 0)
         {
             bFontEdit.Enabled = false;
             bFontDelete.Enabled = false;
         }
+    }
+
+    /// <summary>
+    ///     Overí, že žiadne iné písmo v zozname nemá rovnaké ID; ak má, zobrazí chybu.
+    /// </summary>
+    /// <param name="id">Overované ID.</param>
+    /// <param name="self">Upravované písmo (pri pridaní <see langword="null" />).</param>
+    private static bool CheckFontIdFree(int id, TableFont? self)
+    {
+        var other = GlobData.TableFonts.FirstOrDefault(font => font.FontID == id && !ReferenceEquals(font, self));
+        if (other == null)
+            return true;
+
+        Utils.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_ID_existuje, id, other.Name));
+        return false;
+    }
+
+    /// <summary>
+    ///     Zoznam miest, kde sa písmo používa, po riadkoch pre hlásenie.
+    /// </summary>
+    private static string DescribeFontUsage(int id, TableFontUsage usage)
+    {
+        var lines = new List<string>();
+        if (usage.CatalogColumns > 0)
+            lines.Add("– " + string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_Stlpce, usage.CatalogColumns));
+        if (usage.TrainTexts > 0)
+            lines.Add("– " + string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_Texty, usage.TrainTexts));
+        if (usage.TabTabSections.Count > 0)
+            lines.Add("– " + string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_TabTab,
+                string.Join(", ", usage.TabTabSections), id));
+        return string.Join(Environment.NewLine, lines);
     }
 
     private void nudFontID_ValueChanged(object sender, EventArgs e)
@@ -1248,6 +1343,7 @@ public partial class FLocalSettings : Form
 
     private void FLocalSettings_FormClosed(object sender, FormClosedEventArgs e)
     {
+        GlobData.TableLogicals.ListChanged -= TableLogicals_ListChanged;
         EnableEvents(false);
     }
 

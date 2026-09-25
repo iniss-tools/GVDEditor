@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using AutocompleteMenuNS;
+﻿using AutocompleteMenuNS;
 using JetBrains.Annotations;
 using ExControls;
 using GVDEditor.Entities;
@@ -26,7 +25,7 @@ public partial class FTabTab : Form
         TabTabACItems.GetConstantItems().Select(item => item.ConstName),
         operatory);
 
-    internal readonly BindingList<TabTabDoc> documents = new();
+    private readonly BindingList<TabTabDoc> documents = new();
 
     private readonly TableTabTab? SelectedTab;
     private readonly int homeStationId;
@@ -68,7 +67,7 @@ public partial class FTabTab : Form
         acMenu.TargetControlWrapper = new ScintillaWrapper(sc);
 
         foreach (var tabTab in GlobData.TabTabs) 
-            documents.Add(new TabTabDoc { Document = CreateDocument(tabTab.Text), TabTab = tabTab });
+            documents.Add(new TabTabDoc { Document = CreateDocument(tabTab.Text), TabTab = tabTab, Key = tabTab.Key });
 
         lbTabTabs.DataSource = documents;
 
@@ -88,8 +87,12 @@ public partial class FTabTab : Form
         _validateTimer.Tick += (_, _) =>
         {
             _validateTimer.Stop();
+            // kontrola naplanovana tesne pred zatvorenim okna by siahla na zruseny editor Scintilla (pad programu)
+            if (IsDisposed || sc.IsDisposed || !sc.IsHandleCreated)
+                return;
             ValidateDocument();
         };
+        Disposed += (_, _) => _validateTimer.Dispose();
         sc.DwellStart += sc_DwellStart;
         sc.DwellEnd += (_, _) => sc.CallTipCancel();
 
@@ -103,6 +106,7 @@ public partial class FTabTab : Form
         dgvProblems_SelectionChanged(this, EventArgs.Empty);
         FormClosed += (_, _) =>
         {
+            _validateTimer.Stop();
             _iconError.Dispose();
             _iconWarning.Dispose();
             _iconInfo.Dispose();
@@ -528,9 +532,39 @@ public partial class FTabTab : Form
         }
     }
 
+    /// <summary>
+    ///     Zoznam sekcii v editore sa lisi od ulozeneho (pridana, odstranena alebo premenovana sekcia).
+    /// </summary>
+    private bool SectionsUnsaved =>
+        documents.Any(doc => doc.KeyUnsaved) || !documents.Select(doc => doc.TabTab).SequenceEqual(GlobData.TabTabs);
+
+    /// <summary>
+    ///     Prenesie zoznam sekcii (pridane, odstranene, premenovane) do <see cref="GlobData.TabTabs"/>.
+    ///     Vola sa pri kazdom ulozeni - text sekcii sa uklada zvlast (<see cref="DoSave"/>, <see cref="DoSaveAll"/>).
+    ///     Objekty sekcii ostavaju tie iste, aby odkazy TAB1/TAB2 katalogovych tabul ostali platne.
+    /// </summary>
+    private void SaveSections()
+    {
+        foreach (var doc in documents)
+        {
+            doc.TabTab.Key = doc.Key;
+            doc.KeyUnsaved = false;
+        }
+
+        if (!documents.Select(doc => doc.TabTab).SequenceEqual(GlobData.TabTabs))
+        {
+            GlobData.TabTabs.Clear();
+            foreach (var doc in documents)
+                GlobData.TabTabs.Add(doc.TabTab);
+        }
+
+        GlobData.TabTabs.ResetBindings();
+    }
+
     private void FTabTab_FormClosing(object sender, FormClosingEventArgs e)
     {
-        var unsaved = documents.Any(doc => doc.Unsaved);
+        // pri zatvoreni bez ulozenia sa neulozene texty aj zmeny zoznamu sekcii zahodia - GlobData drzi posledny ulozeny stav
+        var unsaved = documents.Any(doc => doc.Unsaved) || SectionsUnsaved;
 
         if (unsaved)
         {
@@ -559,8 +593,11 @@ public partial class FTabTab : Form
         {
             documents[lbTabTabs.SelectedIndex].TabTab.Text = sc.Text;
             documents[lbTabTabs.SelectedIndex].Unsaved = false;
-            documents.ResetBindings();
         }
+
+        SaveSections();
+        documents.ResetBindings();
+        tsbSave.Enabled = false;
     }
 
     private void DoSaveAll()
@@ -575,7 +612,9 @@ public partial class FTabTab : Form
         }
 
         sc.Document = current;
+        SaveSections();
         documents.ResetBindings();
+        tsbSave.Enabled = false;
     }
 
     private void DoUndo()
@@ -593,60 +632,48 @@ public partial class FTabTab : Form
 
     private void DoAddTab()
     {
-        var frtt = new FTabTabRename();
-        if (frtt.ShowDialog() == DialogResult.OK)
+        using var frtt = new FTabTabRename(null, documents.Select(doc => doc.Key));
+        if (frtt.ShowDialog(this) == DialogResult.OK)
         {
+            // do GlobData.TabTabs sa sekcia dostane az pri ulozeni (SaveSections)
             documents.Add(new TabTabDoc
-                { Unsaved = true, Document = CreateDocument(""), TabTab = new TableTabTab { Key = frtt.NewTabName, Text = "" } });
+            {
+                KeyUnsaved = true, Key = frtt.NewTabName, Document = CreateDocument(""),
+                TabTab = new TableTabTab { Key = frtt.NewTabName, Text = "" }
+            });
             lbTabTabs.SelectedIndex = documents.Count - 1;
+            tsbSave.Enabled = true;
         }
     }
 
     private void DoRemoveTab()
     {
-        if (lbTabTabs.SelectedIndex != -1)
-        {
-            var delete = true;
-            var where = " ";
-            var index = lbTabTabs.SelectedIndex;
-            var tab = GlobData.TabTabs[index];
+        if (lbTabTabs.SelectedIndex == -1)
+            return;
 
-            foreach (var tc in GlobData.TableCatalogs)
-            {
-                foreach (var ti in tc.Items)
-                {
-                    if (ti.Tab1 == tab)
-                    {
-                        delete = false;
-                        where += $"Katalógová tabuľa {tc.Name}, položka {ti.Name}, TAB1";
-                        break;
-                    }
+        // index v editore sa po pridani/odstraneni sekcie nezhoduje s GlobData.TabTabs - kontroluje sa objekt dokumentu
+        var index = lbTabTabs.SelectedIndex;
+        if (!TabTabSections.CheckCanRemove(documents[index].TabTab, GlobData.TableCatalogs))
+            return;
 
-                    if (ti.Tab2 == tab)
-                    {
-                        delete = false;
-                        where += $"Katalógová tabuľa {tc.Name}, položka {ti.Name}, TAB2";
-                        break;
-                    }
-                }
-
-                if (!delete)
-                    break;
-            }
-
-            if (delete)
-                documents.RemoveAt(index);
-            else
-                Utils.ShowError(Resources.SelectedItemRemoveCancel + where);
-        }
+        documents.RemoveAt(index);
+        tsbSave.Enabled = true;
     }
 
     private void DoRenameTab()
     {
-        var frtt = new FTabTabRename();
-        if (frtt.ShowDialog() == DialogResult.OK && lbTabTabs.SelectedIndex != -1)
+        if (lbTabTabs.SelectedIndex == -1)
+            return;
+
+        var doc = documents[lbTabTabs.SelectedIndex];
+        using var frtt = new FTabTabRename(doc.Key, documents.Where(d => d != doc).Select(d => d.Key));
+        if (frtt.ShowDialog(this) == DialogResult.OK && frtt.NewTabName != doc.Key)
         {
-            documents[lbTabTabs.SelectedIndex].TabTab.Key = frtt.NewTabName;
+            // TabTab.Key sa zmeni az pri ulozeni (SaveSections), aby Odist bez ulozenia vratilo povodny nazov
+            doc.Key = frtt.NewTabName;
+            doc.KeyUnsaved = true;
+            tsslTabTabName.Text = doc.Key;
+            tsbSave.Enabled = true;
             documents.ResetBindings();
         }
     }
@@ -659,36 +686,21 @@ public partial class FTabTab : Form
 
     private void DoReformat()
     {
+        // formatuju sa len podmienky pravidiel #SWITCH/#MERGE - texty pre tabulu (aj v uvodzovkach) ostanu, ako su
+        var text = sc.Text;
+        var formatted = TabTabFormatter.Format(text);
+        if (formatted == text)
+            return;
+
+        var pos = sc.CurrentPosition;
+        var firstLine = sc.FirstVisibleLine;
+
         sc.BeginUndoAction();
-
-        foreach (var f in TabTabACItems.GetFunctionItems().Select(item => item.FunctionName))
-            sc.Text = sc.Text.Replace(f, f, StringComparison.CurrentCultureIgnoreCase);
-
-        foreach (var c in TabTabACItems.GetConstantItems().Select(item => item.ConstName))
-            sc.Text = sc.Text.Replace(c, c, StringComparison.CurrentCultureIgnoreCase);
-
-        AddSpaces("=");
-        AddSpaces(@"\|\|");
-        AddSpaces("&&");
-
+        sc.Text = formatted;
         sc.EndUndoAction();
-    }
 
-    private void AddSpaces(string replc)
-    {
-        var fc = replc[0];
-        var lc = replc[replc.Length - 1];
-
-        sc.Text = Regex.Replace(sc.Text, $@"[^ ]{replc}[^ \r\n]|[^ ]{replc}.?|.?{replc}[^ \r\n]", delegate(Match match)
-        {
-            var fmc = match.Value[0];
-            var lmc = match.Value[match.Value.Length - 1];
-
-            var first = fmc != fc && fmc != ' ' ? fmc.ToString() : "";
-            var last = lmc != lc && lmc != ' ' ? lmc.ToString() : "";
-
-            return $"{first} {replc} {last}".Replace("\\", "");
-        });
+        sc.GotoPosition(Math.Min(pos, sc.TextLength));
+        sc.FirstVisibleLine = firstLine;
     }
 
     private void tsbSave_Click(object sender, EventArgs e) => DoSave();
@@ -953,7 +965,7 @@ public partial class FTabTab : Form
             tsbSave.Enabled = documents[lbTabTabs.SelectedIndex].Unsaved;
             tsbUndo.Enabled = sc.CanUndo;
             tsbRedo.Enabled = sc.CanRedo;
-            tsslTabTabName.Text = documents[lbTabTabs.SelectedIndex].TabTab.Key;
+            tsslTabTabName.Text = documents[lbTabTabs.SelectedIndex].Key;
             tsslLen.Text = sc.Text.Length.ToString();
             tsslLines.Text = sc.Lines.Count.ToString();
 
@@ -985,15 +997,25 @@ public partial class FTabTab : Form
 
     internal class TabTabDoc
     {
-        public TableTabTab TabTab { get; set; } = null!;
+        /// <summary>Sekcia v GlobData (pri novej sekcii objekt, ktory sa tam prida pri ulozeni).</summary>
+        public TableTabTab TabTab { get; init; } = null!;
+
+        /// <summary>Nazov sekcie v editore; do <see cref="TableTabTab.Key"/> sa zapise pri ulozeni.</summary>
+        public string Key { get; set; } = "";
+
         public Document Document { get; set; }
+
+        /// <summary>Text sekcie nie je ulozeny.</summary>
         public bool Unsaved { get; set; }
+
+        /// <summary>Sekcia je nova alebo premenovana a zoznam sekcii este nebol ulozeny.</summary>
+        public bool KeyUnsaved { get; set; }
 
         /// <summary>Returns a string that represents the current object.</summary>
         /// <returns>A string that represents the current object.</returns>
         public override string ToString()
         {
-            return Unsaved ? "* " + TabTab.Key : TabTab.Key;
+            return Unsaved || KeyUnsaved ? "* " + Key : Key;
         }
     }
 }

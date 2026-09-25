@@ -1,4 +1,5 @@
-﻿using ToolsCore.Tools;
+using GVDEditor.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
 
@@ -7,27 +8,37 @@ namespace GVDEditor.Forms;
 /// </summary>
 internal partial class FTabTabRename : Form
 {
+    private readonly List<string> _otherNames;
+
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FTabTabRename"/>.
     /// </summary>
-    public FTabTabRename()
+    /// <param name="currentName">Aktualny nazov sekcie (pri premenovani); pri pridani <see langword="null"/>.</param>
+    /// <param name="otherNames">Nazvy ostatnych sekcii - novy nazov sa s nimi nesmie zhodovat.</param>
+    public FTabTabRename(string? currentName, IEnumerable<string> otherNames)
     {
         InitializeComponent();
         this.ApplyThemeAndFonts();
+
+        _otherNames = otherNames.ToList();
+        tbName.Text = currentName ?? "";
+        tbName.SelectAll();
     }
 
     public string NewTabName { get; private set; } = "";
 
     private void bEdit_Click(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(tbName.Text))
+        var error = TabTabSections.ValidateName(tbName.Text, _otherNames, out var name);
+        if (error is not null)
         {
-            Utils.ShowError(@"Nezadaný názov TabTab");
+            Utils.ShowError(error);
             DialogResult = DialogResult.None;
+            tbName.Focus();
             return;
         }
 
-        NewTabName = tbName.Text;
+        NewTabName = name;
         DialogResult = DialogResult.OK;
     }
 }

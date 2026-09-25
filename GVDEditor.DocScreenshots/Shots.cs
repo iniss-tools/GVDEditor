@@ -35,7 +35,12 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
 
             Shot("novy-grafikon/novy-grafikon", () => new FNewGrafikon());
             Shot("uprava-vlaku", () => new FEditTrain(express, trains.IndexOf(express), gvdDir.GVD, false, gvdDir.Dir.FullPath), tabs: true);
-            Shot("lokalne-nastavenia", () => new FLocalSettings(gvdDir), tabs: true);
+            // na záložkách Nástupištia a Koľaje vybrať skutočné nástupište a koľaj, nie zástupné "N"
+            Shot("lokalne-nastavenia", () => new FLocalSettings(gvdDir), form =>
+            {
+                SelectListItem(form, "listNastupistia", 1);
+                SelectListItem(form, "listKolaje", 1);
+            }, tabs: true);
             Shot("globalne-nastavenia", () => new FGlobalSettings(FMain.ObdobiaList.ToList()), tabs: true);
             Shot("nastavenia-programu/nastavenia-programu", () => new FAppSettings(GlobData.Config, GlobData.Styles));
             Shot("analyza-grafikonu/analyza-grafikonu", () => new FAnalyzer(gvdDir));
@@ -57,6 +62,50 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 Resize(form, 1100, 620);
                 LogTabTabProblems(form, druh);
             });
+
+            // editor s chybou v pravidle (neuložená úprava) - ukážka podčiarknutia a zoznamu problémov s opravou
+            var smer = GlobData.TabTabs.First(t => t.Key == "Smer");
+            Shot("tabule/editor-tabtab-problemy", () => new FTabTab(smer, station), form =>
+            {
+                Resize(form, 1100, 620);
+                var scintilla = ((GVDEditor.Controls.MyScintilla)Field(form, "scText")).Scintilla;
+                scintilla.Text = smer.Text + "\r\nTyp(Typ_RR), \"R\" = #SWITCH";
+                form.GetType().GetMethod("ValidateDocument", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(form, null);
+                Pump.Events();
+                var problems = (DataGridView)Field(form, "dgvProblems");
+                if (problems.Rows.Count > 0)
+                {
+                    problems.ClearSelection();
+                    problems.Rows[0].Selected = true;
+                }
+            });
+
+            // náhľad textu na tabuli pre Ex 521 s meškaním na odchode
+            Shot("tabule/nahlad-na-tabuli",
+                () => new FTabTabPreview(name => GlobData.TabTabs.FirstOrDefault(t => t.Key == name)?.Text, "Druh",
+                    int.Parse(station.ID, CultureInfo.InvariantCulture)),
+                form =>
+                {
+                    var trainBox = (ComboBox)Field(form, "cbTrain");
+                    for (var i = 0; i < trainBox.Items.Count; i++)
+                        if (trainBox.GetItemText(trainBox.Items[i]).Contains("521", StringComparison.Ordinal))
+                            trainBox.SelectedIndex = i;
+                    ((NumericUpDown)Field(form, "nudDelayDep")).Value = 5;
+                    ((CheckBox)Field(form, "chkOnlySection")).Checked = false;
+                    Resize(form, 1180, 600);
+                    Pump.Events();
+
+                    // riadok Smer - spodný panel ukáže postup vyhodnotenia vrátane textu z TTexts
+                    var grid = (DataGridView)Field(form, "dgvResult");
+                    var row = grid.Rows.Cast<DataGridViewRow>().FirstOrDefault(r => Equals(r.Cells["cColumn"].Value, "Smer"));
+                    if (row != null)
+                    {
+                        grid.ClearSelection();
+                        row.Selected = true;
+                        grid.CurrentCell = row.Cells["cColumn"];
+                    }
+                    grid.FirstDisplayedScrollingColumnIndex = 0;
+                });
 
             Shot("stavovy-diagram/stavovy-diagram", () => new FStateDgm(gvdDir), form =>
             {
@@ -103,6 +152,9 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             foreach (TabPage page in tabControl.TabPages)
             {
                 tabControl.SelectedTab = page;
+                Pump.Events();
+                // prepnutie záložky občas nestihne prekresliť hlavičky - vynútiť pred zachytením
+                form.Refresh();
                 Pump.Events();
                 Save($"{name}/{Slug(page.Text)}", form);
             }
@@ -180,6 +232,9 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
 
     private static void SelectListItem(Form form, string name, int index) =>
         ((ListBox)form.Controls.Find(name, true).Single()).SelectedIndex = index;
+
+    private static object Field(Form form, string name) =>
+        form.GetType().GetField(name, BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(form)!;
 
     private static void SelectCombo(Form form, string name, int index) =>
         ((ComboBox)form.Controls.Find(name, true).Single()).SelectedIndex = index;

@@ -679,6 +679,33 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("FLocalSettings_Zadaný_kľúč_koľaje_už_existuje", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaj {0} používa {1} vlakov ako koľaj príchodu a {2} vlakov ako koľaj odchodu..
+        /// </summary>
+        internal static string FLocalSettings_Kolaj_Odstranit {
+            get {
+                return ResourceManager.GetString("FLocalSettings_Kolaj_Odstranit", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Odstrániť koľaj {0}? Žiadny vlak ju nepoužíva..
+        /// </summary>
+        internal static string FLocalSettings_Kolaj_Odstranit_Nepouzita {
+            get {
+                return ResourceManager.GetString("FLocalSettings_Kolaj_Odstranit_Nepouzita", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Na týchto nástupištiach neleží žiadna koľaj: {0}..
+        /// </summary>
+        internal static string FLocalSettings_Nastupistia_Bez_Kolaje {
+            get {
+                return ResourceManager.GetString("FLocalSettings_Nastupistia_Bez_Kolaje", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Zadaný kľúč nástupišťa už existuje..
@@ -3791,6 +3818,123 @@ namespace GVDEditor.Properties {
         internal static string ELISBridgeClient_Vlak_má_dátumové_obmedzenie_ktoré_sa_nedá_spracovať {
             get {
                 return ResourceManager.GetString("ELISBridgeClient_Vlak_má_dátumové_obmedzenie_ktoré_sa_nedá_spracovať", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo s ID {0} už v zozname je ({1}). Zvoľte iné ID..
+        /// </summary>
+        internal static string FLocalSettings_Pismo_ID_existuje {
+            get {
+                return ResourceManager.GetString("FLocalSettings_Pismo_ID_existuje", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to stĺpce katalógových tabúľ: {0}.
+        /// </summary>
+        internal static string FLocalSettings_Pismo_Stlpce {
+            get {
+                return ResourceManager.GetString("FLocalSettings_Pismo_Stlpce", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to texty vlakov: {0}.
+        /// </summary>
+        internal static string FLocalSettings_Pismo_Texty {
+            get {
+                return ResourceManager.GetString("FLocalSettings_Pismo_Texty", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TabTab, sekcie {0} – kód {{{1}}} sa nemení automaticky, upravte ho v editore TabTab.
+        /// </summary>
+        internal static string FLocalSettings_Pismo_TabTab {
+            get {
+                return ResourceManager.GetString("FLocalSettings_Pismo_TabTab", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo s ID {0} sa používa:.
+        /// </summary>
+        internal static string FLocalSettings_Pismo_Zmena_ID {
+            get {
+                return ResourceManager.GetString("FLocalSettings_Pismo_Zmena_ID", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo s ID {0} sa používa:.
+        /// </summary>
+        internal static string FLocalSettings_Pismo_Zmena_ID_TabTab {
+            get {
+                return ResourceManager.GetString("FLocalSettings_Pismo_Zmena_ID_TabTab", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo s ID {0} sa používa:.
+        /// </summary>
+        internal static string FLocalSettings_Pismo_Odstranit {
+            get {
+                return ResourceManager.GetString("FLocalSettings_Pismo_Odstranit", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Názov sekcie TabTab nesmie byť prázdny..
+        /// </summary>
+        internal static string TabTab_Nazov_prazdny {
+            get {
+                return ResourceManager.GetString("TabTab_Nazov_prazdny", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Názov sekcie TabTab nesmie obsahovať znak „]“ ani riadiace znaky (koniec riadka, tabulátor)..
+        /// </summary>
+        internal static string TabTab_Nazov_neplatny_znak {
+            get {
+                return ResourceManager.GetString("TabTab_Nazov_neplatny_znak", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Názov sekcie TabTab obsahuje znak, ktorý sa nedá zapísať v kódovaní Windows-1250..
+        /// </summary>
+        internal static string TabTab_Nazov_kodovanie {
+            get {
+                return ResourceManager.GetString("TabTab_Nazov_kodovanie", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Názov „{0}“ je vyhradený pre stĺpec katalógovej tabule bez TabTab..
+        /// </summary>
+        internal static string TabTab_Nazov_rezervovany {
+            get {
+                return ResourceManager.GetString("TabTab_Nazov_rezervovany", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sekcia TabTab s názvom „{0}“ už existuje..
+        /// </summary>
+        internal static string TabTab_Nazov_existuje {
+            get {
+                return ResourceManager.GetString("TabTab_Nazov_existuje", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to katalógová tabuľa {0}, stĺpec {1}, {2}.
+        /// </summary>
+        internal static string TabTab_Pouzitie {
+            get {
+                return ResourceManager.GetString("TabTab_Pouzitie", resourceCulture);
             }
         }
 }

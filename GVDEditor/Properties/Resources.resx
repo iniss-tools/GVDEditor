@@ -452,6 +452,23 @@ Naozaj chcete vykonať túto akciu?</value>
   <data name="FLocalSettings_Zadaný_kľúč_koľaje_už_existuje" xml:space="preserve">
     <value>Zadaný kľúč koľaje už existuje.</value>
   </data>
+  <data name="FLocalSettings_Kolaj_Odstranit" xml:space="preserve">
+    <value>Koľaj {0} používa {1} vlakov ako koľaj príchodu a {2} vlakov ako koľaj odchodu.
+
+Vlaky, ktoré na nej stoja, sa presunú na koľaj N (neznáma). Vlakom, ktoré z nej odchádzajú, sa koľaj odchodu zruší – budú odchádzať z koľaje príchodu.
+
+Naozaj odstrániť koľaj {0}?</value>
+  </data>
+  <data name="FLocalSettings_Kolaj_Odstranit_Nepouzita" xml:space="preserve">
+    <value>Odstrániť koľaj {0}? Žiadny vlak ju nepoužíva.</value>
+  </data>
+  <data name="FLocalSettings_Nastupistia_Bez_Kolaje" xml:space="preserve">
+    <value>Na týchto nástupištiach neleží žiadna koľaj: {0}.
+
+Nástupištia sa ukladajú len spolu s koľajami (Pozice_A.txt), takže sa pri uložení grafikonu nezapíšu a pri ďalšom otvorení zmiznú. Priraďte ich niektorej koľaji na záložke Koľaje.
+
+Zavrieť okno aj tak?</value>
+  </data>
   <data name="FEditTrain_Nezadaný_čas_príchodu" xml:space="preserve">
     <value>Nezadaný čas príchodu.</value>
   </data>
@@ -1396,5 +1413,55 @@ Otvorí sa slovenská predloha; pôvodný súbor sa prepíše až pri uložení.
   </data>
   <data name="ELISBridgeClient_Vlak_má_dátumové_obmedzenie_ktoré_sa_nedá_spracovať" xml:space="preserve">
     <value>Vlak {0} {1} {2} má dátumové obmedzenie, ktoré sa nedá spracovať: "{3}".</value>
+  </data>
+  <data name="FLocalSettings_Pismo_ID_existuje" xml:space="preserve">
+    <value>Písmo s ID {0} už v zozname je ({1}). Zvoľte iné ID.</value>
+  </data>
+  <data name="FLocalSettings_Pismo_Stlpce" xml:space="preserve">
+    <value>stĺpce katalógových tabúľ: {0}</value>
+  </data>
+  <data name="FLocalSettings_Pismo_Texty" xml:space="preserve">
+    <value>texty vlakov: {0}</value>
+  </data>
+  <data name="FLocalSettings_Pismo_TabTab" xml:space="preserve">
+    <value>TabTab, sekcie {0} – kód {{{1}}} sa nemení automaticky, upravte ho v editore TabTab</value>
+  </data>
+  <data name="FLocalSettings_Pismo_Zmena_ID" xml:space="preserve">
+    <value>Písmo s ID {0} sa používa:
+{1}
+
+Zmeniť ID na {2} aj v stĺpcoch katalógových tabúľ a v textoch vlakov?
+
+Áno – zmeniť aj tam, Nie – zmeniť len v zozname písiem, Zrušiť – nemeniť nič.</value>
+  </data>
+  <data name="FLocalSettings_Pismo_Zmena_ID_TabTab" xml:space="preserve">
+    <value>Písmo s ID {0} sa používa:
+{1}
+
+Zmeniť ID písma v zozname na {2}?</value>
+  </data>
+  <data name="FLocalSettings_Pismo_Odstranit" xml:space="preserve">
+    <value>Písmo s ID {0} sa používa:
+{1}
+
+Odstránenie zo zoznamu tieto miesta nezmení – ostane v nich pôvodné číslo. Naozaj odstrániť?</value>
+  </data>
+  <data name="TabTab_Nazov_prazdny" xml:space="preserve">
+    <value>Názov sekcie TabTab nesmie byť prázdny.</value>
+  </data>
+  <data name="TabTab_Nazov_neplatny_znak" xml:space="preserve">
+    <value>Názov sekcie TabTab nesmie obsahovať znak „]“ ani riadiace znaky (koniec riadka, tabulátor).</value>
+  </data>
+  <data name="TabTab_Nazov_kodovanie" xml:space="preserve">
+    <value>Názov sekcie TabTab obsahuje znak, ktorý sa nedá zapísať v kódovaní Windows-1250.</value>
+  </data>
+  <data name="TabTab_Nazov_rezervovany" xml:space="preserve">
+    <value>Názov „{0}“ je vyhradený pre stĺpec katalógovej tabule bez TabTab.</value>
+  </data>
+  <data name="TabTab_Nazov_existuje" xml:space="preserve">
+    <value>Sekcia TabTab s názvom „{0}“ už existuje.</value>
+  </data>
+  <data name="TabTab_Pouzitie" xml:space="preserve">
+    <value>katalógová tabuľa {0}, stĺpec {1}, {2}</value>
   </data>
 </root>
