@@ -146,6 +146,15 @@ internal static class TxtParser
     }
 
     /// <summary>
+    ///     Zapise text stavoveho diagramu tak, ako je (aj s chybou syntaxe), a zmaze vyrovnavaciu pamat StateDgm.dat.
+    /// </summary>
+    public static void WriteStateDgmText(string dir, string text)
+    {
+        File.WriteAllText(StateDgmPath(dir), text, Encodings.Win1250);
+        DeleteStateDgmCache();
+    }
+
+    /// <summary>
     ///     Zmaze StateDgm.dat v koreni datoveho adresara. INISS textove diagramy cita znova, len ked .dat chyba
     ///     alebo je starsi nez niektory StateDgm.txt - po kopii suborov so starym casom by inak dalej pouzival
     ///     stary diagram.
