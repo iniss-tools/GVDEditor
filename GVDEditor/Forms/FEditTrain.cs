@@ -79,7 +79,7 @@ public partial class FEditTrain : Form
 
         cbTyp.DataSource = GlobData.TrainsTypes;
 
-        foreach (var name in GlobData.TrainNames) 
+        foreach (var name in GlobData.TrainNames)
             TrainNames.Add(name);
 
         if (GlobData.Config.AutoVariant) nudVarianta.Enabled = false;
@@ -128,6 +128,7 @@ public partial class FEditTrain : Form
         listVybrateDoplnky.DataSource = Doplnky;
 
         FillRadenieSet();
+        FillRadenieEndStations();
         FillLockouts(ThisTrain?.LockoutNumber ?? 0);
 
         cbNazov.SelectedItem = null;
@@ -369,8 +370,8 @@ public partial class FEditTrain : Form
 
         foreach (var seltrain in seltrains)
         {
-            if (seltrain.ZaciatokPlatnosti == train.ZaciatokPlatnosti && 
-                seltrain.KoniecPlatnosti == train.KoniecPlatnosti && 
+            if (seltrain.ZaciatokPlatnosti == train.ZaciatokPlatnosti &&
+                seltrain.KoniecPlatnosti == train.KoniecPlatnosti &&
                 dateRem.Overlap(seltrain.DateLimitText, train.DateLimitText))
             {
                 var obmand = dateRem.TextAnd(seltrain.DateLimitText, train.DateLimitText);
@@ -396,7 +397,7 @@ public partial class FEditTrain : Form
             else
             {
                 int i;
-                for (i = 0; i < seltrains.Count; i++) 
+                for (i = 0; i < seltrains.Count; i++)
                     seltrains[i].Variant = i + 1;
 
                 train.Variant = i + 1;
@@ -888,20 +889,20 @@ public partial class FEditTrain : Form
         TruncateTable(dgvDoplnokSet);
 
         for (var i = 0; i < dgvDoplnokSet.Rows.Count; i++)
-        for (var j = 0; j < GlobData.ReportVariants.Count; j++)
-            foreach (var reportType in doplnok.ChosenReports)
-                if (reportType.Type == VybraneReporty[i])
-                {
-                    var found = false;
-                    foreach (var variant in reportType.Variants)
-                        if (variant == GlobData.ReportVariants[j])
-                        {
-                            dgvDoplnokSet.Rows[i].Cells[j + 1].Value = true;
-                            found = true;
-                        }
+            for (var j = 0; j < GlobData.ReportVariants.Count; j++)
+                foreach (var reportType in doplnok.ChosenReports)
+                    if (reportType.Type == VybraneReporty[i])
+                    {
+                        var found = false;
+                        foreach (var variant in reportType.Variants)
+                            if (variant == GlobData.ReportVariants[j])
+                            {
+                                dgvDoplnokSet.Rows[i].Cells[j + 1].Value = true;
+                                found = true;
+                            }
 
-                    if (!found) dgvDoplnokSet.Rows[i].Cells[j + 1].Value = false;
-                }
+                        if (!found) dgvDoplnokSet.Rows[i].Cells[j + 1].Value = false;
+                    }
     }
 
     private void StaniceZoOnListChanged(object? sender, ListChangedEventArgs e)
@@ -1019,25 +1020,26 @@ public partial class FEditTrain : Form
             dtpRadenieOd.Value = radenie.HasValidity ? radenie.ZacPlatnosti : _gvdStart;
             dtpRadenieDo.Value = radenie.HasValidity ? radenie.KonPlatnosti : _gvdEnd;
             tbDateRemRadenie.Text = radenie.DatObm;
+            SelectRadenieEndStation(radenie.DestStation);
             selSounds = radenie.Sounds;
 
             TruncateTable(dgvRadenieSet);
 
             for (var i = 0; i < dgvRadenieSet.Rows.Count; i++)
-            for (var j = 0; j < GlobData.ReportVariants.Count; j++)
-                foreach (var reportType in radenie.ChosenReports)
-                    if (reportType.Type == GlobData.ReportTypes[i])
-                    {
-                        var found = false;
-                        foreach (var variant in reportType.Variants)
-                            if (variant == GlobData.ReportVariants[j])
-                            {
-                                dgvRadenieSet.Rows[i].Cells[j + 1].Value = true;
-                                found = true;
-                            }
+                for (var j = 0; j < GlobData.ReportVariants.Count; j++)
+                    foreach (var reportType in radenie.ChosenReports)
+                        if (reportType.Type == GlobData.ReportTypes[i])
+                        {
+                            var found = false;
+                            foreach (var variant in reportType.Variants)
+                                if (variant == GlobData.ReportVariants[j])
+                                {
+                                    dgvRadenieSet.Rows[i].Cells[j + 1].Value = true;
+                                    found = true;
+                                }
 
-                        if (!found) dgvRadenieSet.Rows[i].Cells[j + 1].Value = false;
-                    }
+                            if (!found) dgvRadenieSet.Rows[i].Cells[j + 1].Value = false;
+                        }
         }
     }
 
@@ -1068,7 +1070,8 @@ public partial class FEditTrain : Form
         {
             var rem = new DateLimit(rad.ZacPlatnosti, rad.KonPlatnosti, insertMarks: false);
             var and = rem.TextAnd(rad.DatObm, tbDateRemRadenie.Text);
-            if (rad.ZacPlatnosti == odP && rad.KonPlatnosti == doP && and != "t.č. nejde" && and != "t.č. nejede")
+            if (rad.ZacPlatnosti == odP && rad.KonPlatnosti == doP && SameEndStation(rad.DestStation, SelectedRadenieEndStation) &&
+                and != "t.č. nejde" && and != "t.č. nejede")
             {
                 Utils.ShowError(string.Format(Resources.FEditTrain_Zadané_dátumové_obmedzenie_radenia_sa_prekrýva_s_iným_v_období, and));
                 return;
@@ -1088,6 +1091,7 @@ public partial class FEditTrain : Form
         radenie.Sounds = selSounds;
 
         radenie.ChosenReports = GetFromTable(dgvRadenieSet, GlobData.ReportTypes);
+        radenie.DestStation = SelectedRadenieEndStation!;
 
         Radenia.Add(radenie);
 
@@ -1116,6 +1120,7 @@ public partial class FEditTrain : Form
                 radenie.Text = tbRadenie.Text;
                 radenie.Sounds = selSounds;
                 radenie.ChosenReports = GetFromTable(dgvRadenieSet, GlobData.ReportTypes);
+                radenie.DestStation = SelectedRadenieEndStation!;
                 Radenia.ResetBindings();
                 return;
             }
@@ -1142,7 +1147,8 @@ public partial class FEditTrain : Form
             {
                 var rem = new DateLimit(rad.ZacPlatnosti, rad.KonPlatnosti, insertMarks: false);
                 var and = rem.TextAnd(rad.DatObm, tbDateRemRadenie.Text);
-                if (rad.ZacPlatnosti == odP && rad.KonPlatnosti == doP && and != "t.č. nejde" && and != "t.č. nejede" &&
+                if (rad.ZacPlatnosti == odP && rad.KonPlatnosti == doP && SameEndStation(rad.DestStation, SelectedRadenieEndStation) &&
+                    and != "t.č. nejde" && and != "t.č. nejede" &&
                     listRadenia.SelectedIndex != j)
                 {
                     Utils.ShowError(string.Format(Resources.FEditTrain_Zadané_dátumové_obmedzenie_radenia_sa_prekrýva_s_iným_v_období, and));
@@ -1165,6 +1171,7 @@ public partial class FEditTrain : Form
             radenie.Sounds = selSounds;
 
             radenie.ChosenReports = GetFromTable(dgvRadenieSet, GlobData.ReportTypes);
+            radenie.DestStation = SelectedRadenieEndStation!;
 
             Radenia.ResetBindings();
         }
@@ -1209,6 +1216,51 @@ public partial class FEditTrain : Form
         }
     }
 
+    /// <summary>
+    ///     Polozka ponuky cielovej stanice radenia; <see cref="Station" /> null = radenie pre vlak do akejkolvek stanice.
+    /// </summary>
+    private sealed record EndStationItem(Station? Station, string Text)
+    {
+        public override string ToString() => Text;
+    }
+
+    /// <summary>
+    ///     Naplni ponuku cielovej stanice radenia: ziadne obmedzenie, stanice zo zvukovej banky a vlastne stanice.
+    ///     Radenie patri cislu vlaku - obmedzenie na ciel rozlisi varianty toho isteho vlaku do roznych stanic.
+    /// </summary>
+    private void FillRadenieEndStations()
+    {
+        cbRadenieEndStation.DropDownStyle = ComboBoxStyle.DropDownList;
+        cbRadenieEndStation.Items.Clear();
+        cbRadenieEndStation.Items.Add(new EndStationItem(null, Resources.FEditTrain_Radenie_LubovolnyCiel));
+        foreach (var station in GlobData.Stations.Concat(GlobData.CustomStations).DistinctBy(s => s.ID).OrderBy(s => s.Name))
+            cbRadenieEndStation.Items.Add(new EndStationItem(station, station.Name));
+        cbRadenieEndStation.SelectedIndex = 0;
+    }
+
+    private void SelectRadenieEndStation(Station? station)
+    {
+        if (station == null)
+        {
+            cbRadenieEndStation.SelectedIndex = 0;
+            return;
+        }
+
+        var item = cbRadenieEndStation.Items.Cast<EndStationItem>().FirstOrDefault(i => i.Station?.ID == station.ID);
+        if (item == null)
+        {
+            // stanica zo suboru, ktora nie je v banke ani medzi vlastnymi stanicami - ponecha sa
+            item = new EndStationItem(station, station.Name == station.ID ? station.ID : $"{station.Name} ({station.ID})");
+            cbRadenieEndStation.Items.Add(item);
+        }
+
+        cbRadenieEndStation.SelectedItem = item;
+    }
+
+    private Station? SelectedRadenieEndStation => (cbRadenieEndStation.SelectedItem as EndStationItem)?.Station;
+
+    private static bool SameEndStation(Station? a, Station? b) => a?.ID == b?.ID;
+
     private void listRadenia_Format(object sender, ListControlConvertEventArgs e)
     {
         if (e.ListItem is Radenie radenie)
@@ -1218,7 +1270,9 @@ public partial class FEditTrain : Form
                 : radenie.ZacPlatnosti.Date.ToString("dd.MM.yyyy") + " - " + radenie.KonPlatnosti.Date.ToString("dd.MM.yyyy");
 
             // radenia s rovnakym obdobim sa lisia len datumovym obmedzenim
-            e.Value = string.IsNullOrWhiteSpace(radenie.DatObm) ? text : $"{text} ({radenie.DatObm})";
+            if (!string.IsNullOrWhiteSpace(radenie.DatObm)) text += $" ({radenie.DatObm})";
+            if (radenie.DestStation != null) text += " → " + radenie.DestStation.Name;
+            e.Value = text;
         }
     }
 
@@ -1406,8 +1460,8 @@ public partial class FEditTrain : Form
     private static void TruncateTable(DataGridView dgv)
     {
         for (var i = 0; i < dgv.Rows.Count; i++)
-        for (var j = 1; j <= GlobData.ReportVariants.Count; j++)
-            dgv.Rows[i].Cells[j].Value = false;
+            for (var j = 1; j <= GlobData.ReportVariants.Count; j++)
+                dgv.Rows[i].Cells[j].Value = false;
     }
 
     private static List<ChosenReportType> GetFromTable(DataGridView dgv, IReadOnlyList<ReportType> allReportTypes)
@@ -1415,21 +1469,21 @@ public partial class FEditTrain : Form
         var reportTypes = new List<ChosenReportType>();
 
         for (var i = 0; i < dgv.Rows.Count; i++)
-        for (var j = 0; j < GlobData.ReportVariants.Count; j++)
-            if (dgv.Rows[i].Cells[j + 1].Value is true)
-            {
-                var found = false;
-                foreach (var t in reportTypes)
-                    if (t.Type == allReportTypes[i])
-                    {
-                        t.Variants.Add(GlobData.ReportVariants[j]);
-                        found = true;
-                    }
+            for (var j = 0; j < GlobData.ReportVariants.Count; j++)
+                if (dgv.Rows[i].Cells[j + 1].Value is true)
+                {
+                    var found = false;
+                    foreach (var t in reportTypes)
+                        if (t.Type == allReportTypes[i])
+                        {
+                            t.Variants.Add(GlobData.ReportVariants[j]);
+                            found = true;
+                        }
 
-                if (!found)
-                    reportTypes.Add(new ChosenReportType
+                    if (!found)
+                        reportTypes.Add(new ChosenReportType
                         { Type = allReportTypes[i], Variants = new List<ReportVariant> { GlobData.ReportVariants[j] } });
-            }
+                }
 
         return reportTypes;
     }

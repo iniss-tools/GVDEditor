@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -117,33 +117,60 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="bSave.Text" xml:space="preserve">
+    <value>Upravit</value>
+  </data>
+  <data name="bZrusit.Text" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="llCalendar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 15</value>
+  </data>
+  <data name="llCalendar.Text" xml:space="preserve">
+    <value>Kalendář akcí…</value>
+  </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Základní</value>
-  </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>Ze směru</value>
-  </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>Do směru</value>
-  </data>
-  <data name="tabPage4.Text" xml:space="preserve">
-    <value>Řazení</value>
   </data>
   <data name="groupBox6.Text" xml:space="preserve">
     <value>Příznaky vlaku</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="boxPrestup.Text" xml:space="preserve">
+    <value>Přestup</value>
+  </data>
+  <data name="boxDialkovy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 19</value>
+  </data>
+  <data name="boxDialkovy.Text" xml:space="preserve">
+    <value>Dálkový</value>
+  </data>
+  <data name="boxNizkopodlazny.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 19</value>
+  </data>
+  <data name="boxNizkopodlazny.Text" xml:space="preserve">
+    <value>Nízkopodlažní</value>
+  </data>
   <data name="boxMiestenkovy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 21</value>
+    <value>87, 19</value>
   </data>
   <data name="boxMiestenkovy.Text" xml:space="preserve">
     <value>Místenkový</value>
   </data>
+  <data name="boxMimoriadny.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 19</value>
+  </data>
+  <data name="boxMimoriadny.Text" xml:space="preserve">
+    <value>Mimořádný</value>
+  </data>
+  <data name="boxMedzistatny.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 19</value>
+  </data>
+  <data name="boxMedzistatny.Text" xml:space="preserve">
+    <value>Mezistátní</value>
+  </data>
   <data name="boxLozkovy.Text" xml:space="preserve">
     <value>Iba lůž./leh.</value>
-  </data>
-  <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 17</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Jazykové mutace</value>
@@ -152,40 +179,114 @@
     <value>Datumové omezení</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 17</value>
+    <value>70, 15</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
     <value>Platnost do:</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 17</value>
+    <value>70, 15</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Platnost od:</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dtpPlatnostDo.Calendar.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpPlatnostDo.Calendar.AccessibleName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpPlatnostDo.Calendar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dtpPlatnostDo.Calendar.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dtpPlatnostDo.Calendar.BackgroundImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpPlatnostDo.Calendar.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Tile</value>
+  </data>
+  <data name="dtpPlatnostDo.Calendar.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="dtpPlatnostDo.Calendar.Font" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpPlatnostDo.Calendar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="dtpPlatnostDo.Calendar.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dtpPlatnostDo.Calendar.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="dtpPlatnostDo.Calendar.TodayText" xml:space="preserve">
+    <value>Today:</value>
+  </data>
+  <data name="dtpPlatnostOd.Calendar.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpPlatnostOd.Calendar.AccessibleName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpPlatnostOd.Calendar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="dtpPlatnostOd.Calendar.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dtpPlatnostOd.Calendar.BackgroundImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpPlatnostOd.Calendar.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Tile</value>
+  </data>
+  <data name="dtpPlatnostOd.Calendar.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="dtpPlatnostOd.Calendar.Font" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpPlatnostOd.Calendar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="dtpPlatnostOd.Calendar.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dtpPlatnostOd.Calendar.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="dtpPlatnostOd.Calendar.TodayText" xml:space="preserve">
+    <value>Today:</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Stanice</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 17</value>
+    <value>32, 15</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>kolej</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 17</value>
+    <value>32, 15</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>kolej</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 17</value>
+    <value>136, 15</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Čas příjezdu (přistavení):</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 17</value>
+    <value>136, 15</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Čas odjezdu (odstavení):</value>
@@ -193,11 +294,17 @@
   <data name="label6.Text" xml:space="preserve">
     <value>Dopravce:</value>
   </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 15</value>
+  </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Název:</value>
   </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Ze směru</value>
+  </data>
   <data name="cbZoSmeruCustom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 21</value>
+    <value>165, 19</value>
   </data>
   <data name="cbZoSmeruCustom.Text" xml:space="preserve">
     <value>Zobrazit jen vlastní stanice</value>
@@ -217,8 +324,11 @@
   <data name="bSkorZo.Text" xml:space="preserve">
     <value>Dříve</value>
   </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Do směru</value>
+  </data>
   <data name="cbDoSmeruCustom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 21</value>
+    <value>165, 19</value>
   </data>
   <data name="cbDoSmeruCustom.Text" xml:space="preserve">
     <value>Zobrazit jen vlastní stanice</value>
@@ -239,7 +349,7 @@
     <value>Dříve</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 17</value>
+    <value>98, 15</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>Dostupní stanice:</value>
@@ -248,49 +358,127 @@
     <value>Upravit</value>
   </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 17</value>
+    <value>61, 15</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>Kdy hlásit:</value>
+  </data>
+  <data name="bDoplnkyEdit.Text" xml:space="preserve">
+    <value>Upravit</value>
   </data>
   <data name="bDoplnkyAdd.Text" xml:space="preserve">
     <value>Přidat</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 17</value>
+    <value>71, 15</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>Text hlášení:</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 17</value>
+    <value>98, 15</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Seznam dodatků:</value>
   </data>
+  <data name="tabPage4.Text" xml:space="preserve">
+    <value>Řazení</value>
+  </data>
   <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 17</value>
+    <value>83, 15</value>
   </data>
   <data name="label26.Text" xml:space="preserve">
-    <value>Nastavení řízení:</value>
+    <value>Cílová stanice:</value>
   </data>
   <data name="bPlay.Text" xml:space="preserve">
     <value>Prehrát</value>
   </data>
   <data name="bEditRadenie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 27</value>
+    <value>115, 27</value>
   </data>
   <data name="bEditRadenie.Text" xml:space="preserve">
-    <value>Řazení...</value>
+    <value>Nastavení řazení...</value>
+  </data>
+  <data name="dtpRadenieDo.Calendar.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpRadenieDo.Calendar.AccessibleName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpRadenieDo.Calendar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="dtpRadenieDo.Calendar.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dtpRadenieDo.Calendar.BackgroundImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpRadenieDo.Calendar.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Tile</value>
+  </data>
+  <data name="dtpRadenieDo.Calendar.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="dtpRadenieDo.Calendar.Font" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpRadenieDo.Calendar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="dtpRadenieDo.Calendar.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dtpRadenieDo.Calendar.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="dtpRadenieDo.Calendar.TodayText" xml:space="preserve">
+    <value>Today:</value>
+  </data>
+  <data name="dtpRadenieOd.Calendar.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpRadenieOd.Calendar.AccessibleName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpRadenieOd.Calendar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="dtpRadenieOd.Calendar.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dtpRadenieOd.Calendar.BackgroundImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpRadenieOd.Calendar.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Tile</value>
+  </data>
+  <data name="dtpRadenieOd.Calendar.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="dtpRadenieOd.Calendar.Font" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="dtpRadenieOd.Calendar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="dtpRadenieOd.Calendar.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dtpRadenieOd.Calendar.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="dtpRadenieOd.Calendar.TodayText" xml:space="preserve">
+    <value>Today:</value>
   </data>
   <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 17</value>
+    <value>87, 15</value>
   </data>
   <data name="label25.Text" xml:space="preserve">
     <value>Platnost řazení:</value>
   </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 17</value>
+    <value>186, 15</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>Datumové omezení tohoto řazení:</value>
@@ -299,13 +487,13 @@
     <value>Pridat</value>
   </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 17</value>
+    <value>126, 15</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
     <value>Dostupné řazení vlaku:</value>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 17</value>
+    <value>61, 15</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
     <value>Kdy hlásit:</value>
@@ -317,48 +505,12 @@
     <value>Upravit</value>
   </data>
   <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 17</value>
+    <value>105, 15</value>
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>Znění řazení vlaku:</value>
   </data>
-  <data name="bSave.Text" xml:space="preserve">
-    <value>Upravit</value>
-  </data>
-  <data name="bZrusit.Text" xml:space="preserve">
-    <value>Zrušit</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Upravit vlak</value>
-  </data>
-  <data name="bDoplnkyEdit.Text" xml:space="preserve">
-    <value>Upravit</value>
-  </data>
-  <data name="boxMimoriadny.Text" xml:space="preserve">
-    <value>Mimořádný</value>
-  </data>
-  <data name="boxNizkopodlazny.Text" xml:space="preserve">
-    <value>Nízkopodlažní</value>
-  </data>
-  <data name="boxPrestup.Text" xml:space="preserve">
-    <value>Přestup</value>
-  </data>
-  <data name="boxMedzistatny.Text" xml:space="preserve">
-    <value>Mezistátní</value>
-  </data>
-  <data name="boxDialkovy.Text" xml:space="preserve">
-    <value>Dálkový</value>
-  </data>
-  <data name="boxMotorovy.Text" xml:space="preserve">
-    <value>Motorový</value>
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Varianta a výluka vlaku</value>
-  </data>
-  <data name="lVyluka.Text" xml:space="preserve">
-    <value>Výluka:</value>
-  </data>
-  <data name="llCalendar.Text" xml:space="preserve">
-    <value>Kalendář akcí…</value>
   </data>
 </root>

@@ -197,6 +197,9 @@ Upravit datumové omezení popsaného vlaku? </value>
   <data name="FEditTrain_Radenie_BezPlatnosti" xml:space="preserve">
     <value>Platí stále (bez období platnosti)</value>
   </data>
+  <data name="FEditTrain_Radenie_LubovolnyCiel" xml:space="preserve">
+    <value>(libovolná)</value>
+  </data>
   <data name="FEditTrain_Nezadaný_čas_odchodu" xml:space="preserve">
     <value>Nezadaný čas odjezdu.</value>
   </data>

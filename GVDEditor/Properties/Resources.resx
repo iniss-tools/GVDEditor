@@ -132,6 +132,9 @@
   <data name="FEditTrain_Radenie_BezPlatnosti" xml:space="preserve">
     <value>Platí stále (bez obdobia platnosti)</value>
   </data>
+  <data name="FEditTrain_Radenie_LubovolnyCiel" xml:space="preserve">
+    <value>(ľubovoľná)</value>
+  </data>
   <data name="FTableCatalog_Nie_sú_vyplnené_všetky_povinné_parametre" xml:space="preserve">
     <value>Nie sú vyplnené všetky povinné parametre.</value>
   </data>

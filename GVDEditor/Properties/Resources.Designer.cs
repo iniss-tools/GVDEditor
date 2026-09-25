@@ -321,6 +321,15 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (ľubovoľná).
+        /// </summary>
+        internal static string FEditTrain_Radenie_LubovolnyCiel {
+            get {
+                return ResourceManager.GetString("FEditTrain_Radenie_LubovolnyCiel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nezadaný čas odchodu..
         /// </summary>
         internal static string FEditTrain_Nezadaný_čas_odchodu {

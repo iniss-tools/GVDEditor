@@ -32,1383 +32,1471 @@ namespace GVDEditor.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FEditTrain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.bSave = new ExControls.ExButton();
-            this.bZrusit = new ExControls.ExButton();
-            this.llCalendar = new System.Windows.Forms.LinkLabel();
-            this.tabControl1 = new ExControls.ExTabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox6 = new ExControls.ExGroupBox();
-            this.boxDialkovy = new ExControls.ExCheckBox();
-            this.boxNizkopodlazny = new ExControls.ExCheckBox();
-            this.boxPrestup = new ExControls.ExCheckBox();
-            this.boxMotorovy = new ExControls.ExCheckBox();
-            this.boxMiestenkovy = new ExControls.ExCheckBox();
-            this.boxMimoriadny = new ExControls.ExCheckBox();
-            this.boxMedzistatny = new ExControls.ExCheckBox();
-            this.boxLozkovy = new ExControls.ExCheckBox();
-            this.groupBox5 = new ExControls.ExGroupBox();
-            this.lVariantHelp = new System.Windows.Forms.Label();
-            this.lVyluka = new System.Windows.Forms.Label();
-            this.nudVarianta = new ExControls.ExNumericUpDown();
-            this.cbVyluka = new ExControls.ExComboBox();
-            this.groupBox4 = new ExControls.ExGroupBox();
-            this.clbJazyky = new ExControls.ExCheckedListBox();
-            this.groupBox3 = new ExControls.ExGroupBox();
-            this.bEditLimit = new ExControls.ExButton();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dtpPlatnostDo = new ExControls.ExDateTimePicker();
-            this.dtpPlatnostOd = new ExControls.ExDateTimePicker();
-            this.tDatumoveObmedzenie = new ExControls.ExTextBox();
-            this.groupBox2 = new ExControls.ExGroupBox();
-            this.mtOdchod = new ExControls.ExMaskedTextBox();
-            this.mtPrichod = new ExControls.ExMaskedTextBox();
-            this.tbLinkaOdchod = new ExControls.ExTextBox();
-            this.tbLinkaPrichod = new ExControls.ExTextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cbKolajOdchod = new ExControls.ExComboBox();
-            this.cbKolajPrichod = new ExControls.ExComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.groupBox1 = new ExControls.ExGroupBox();
-            this.cbNazov = new ExControls.ExComboBox();
-            this.cbDopravca = new ExControls.ExComboBox();
-            this.cbTyp = new ExControls.ExComboBox();
-            this.tbCislo = new ExControls.ExTextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.cbZoSmeruCustom = new ExControls.ExCheckBox();
-            this.dgvTrasaZo = new System.Windows.Forms.DataGridView();
-            this.isVDlhomHlaseniDataGridViewCheckBoxColumn2 = new ExControls.DataGridViewExCheckBoxColumn();
-            this.isVKratkomHlaseniDataGridViewCheckBoxColumn2 = new ExControls.DataGridViewExCheckBoxColumn();
-            this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stanicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bDeleteZo = new ExControls.ExButton();
-            this.bAddZo = new ExControls.ExButton();
-            this.bNeskorZo = new ExControls.ExButton();
-            this.bSkorZo = new ExControls.ExButton();
-            this.listStaniceZo = new System.Windows.Forms.ListBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.cbDoSmeruCustom = new ExControls.ExCheckBox();
-            this.dgvTrasaDo = new System.Windows.Forms.DataGridView();
-            this.isVDlhomHlaseniDataGridViewCheckBoxColumn3 = new ExControls.DataGridViewExCheckBoxColumn();
-            this.isVKratkomHlaseniDataGridViewCheckBoxColumn3 = new ExControls.DataGridViewExCheckBoxColumn();
-            this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bDeleteDo = new ExControls.ExButton();
-            this.bAddDo = new ExControls.ExButton();
-            this.bNeskorDo = new ExControls.ExButton();
-            this.bSkorDo = new ExControls.ExButton();
-            this.listStaniceDo = new System.Windows.Forms.ListBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.dgvDoplnokSet = new System.Windows.Forms.DataGridView();
-            this.bDoplnkyDelete = new ExControls.ExButton();
-            this.label20 = new System.Windows.Forms.Label();
-            this.bDoplnkyEdit = new ExControls.ExButton();
-            this.bDoplnkyAdd = new ExControls.ExButton();
-            this.listVybrateDoplnky = new System.Windows.Forms.ListBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.tbTextDoplnku = new ExControls.ExTextBox();
-            this.listAllDoplnky = new System.Windows.Forms.ListBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.bEditLimitRadenie = new ExControls.ExButton();
-            this.label26 = new System.Windows.Forms.Label();
-            this.dgvRadenieSet = new System.Windows.Forms.DataGridView();
-            this.bPlay = new ExControls.ExButton();
-            this.bEditRadenie = new ExControls.ExButton();
-            this.dtpRadenieDo = new ExControls.ExDateTimePicker();
-            this.dtpRadenieOd = new ExControls.ExDateTimePicker();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.tbDateRemRadenie = new ExControls.ExTextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.bRadenieAdd = new ExControls.ExButton();
-            this.label23 = new System.Windows.Forms.Label();
-            this.listRadenia = new System.Windows.Forms.ListBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.bRadenieDelete = new ExControls.ExButton();
-            this.bRadenieEdit = new ExControls.ExButton();
-            this.tbRadenie = new ExControls.ExTextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudVarianta)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTrasaZo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stanicaBindingSource)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTrasaDo)).BeginInit();
-            this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDoplnokSet)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRadenieSet)).BeginInit();
-            this.SuspendLayout();
+            components = new Container();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(FEditTrain));
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle23 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            bSave = new ExButton();
+            bZrusit = new ExButton();
+            llCalendar = new LinkLabel();
+            tabControl1 = new ExTabControl();
+            tabPage1 = new TabPage();
+            groupBox6 = new ExGroupBox();
+            boxPrestup = new ExCheckBox();
+            boxDialkovy = new ExCheckBox();
+            boxNizkopodlazny = new ExCheckBox();
+            boxMiestenkovy = new ExCheckBox();
+            boxMimoriadny = new ExCheckBox();
+            boxMedzistatny = new ExCheckBox();
+            boxLozkovy = new ExCheckBox();
+            boxMotorovy = new ExCheckBox();
+            groupBox5 = new ExGroupBox();
+            lVariantHelp = new Label();
+            nudVarianta = new ExNumericUpDown();
+            lVyluka = new Label();
+            cbVyluka = new ExComboBox();
+            groupBox4 = new ExGroupBox();
+            clbJazyky = new ExCheckedListBox();
+            groupBox3 = new ExGroupBox();
+            bEditLimit = new ExButton();
+            label16 = new Label();
+            label11 = new Label();
+            dtpPlatnostDo = new ExDateTimePicker();
+            dtpPlatnostOd = new ExDateTimePicker();
+            tDatumoveObmedzenie = new ExTextBox();
+            groupBox2 = new ExGroupBox();
+            mtOdchod = new ExMaskedTextBox();
+            mtPrichod = new ExMaskedTextBox();
+            tbLinkaOdchod = new ExTextBox();
+            tbLinkaPrichod = new ExTextBox();
+            label8 = new Label();
+            label7 = new Label();
+            label10 = new Label();
+            label9 = new Label();
+            cbKolajOdchod = new ExComboBox();
+            cbKolajPrichod = new ExComboBox();
+            label4 = new Label();
+            label5 = new Label();
+            groupBox1 = new ExGroupBox();
+            cbNazov = new ExComboBox();
+            cbDopravca = new ExComboBox();
+            cbTyp = new ExComboBox();
+            tbCislo = new ExTextBox();
+            label6 = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            tabPage2 = new TabPage();
+            cbZoSmeruCustom = new ExCheckBox();
+            dgvTrasaZo = new DataGridView();
+            isVDlhomHlaseniDataGridViewCheckBoxColumn2 = new DataGridViewExCheckBoxColumn();
+            isVKratkomHlaseniDataGridViewCheckBoxColumn2 = new DataGridViewExCheckBoxColumn();
+            nameDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            stanicaBindingSource = new BindingSource(components);
+            bDeleteZo = new ExButton();
+            bAddZo = new ExButton();
+            bNeskorZo = new ExButton();
+            bSkorZo = new ExButton();
+            listStaniceZo = new ListBox();
+            label13 = new Label();
+            label12 = new Label();
+            tabPage3 = new TabPage();
+            cbDoSmeruCustom = new ExCheckBox();
+            dgvTrasaDo = new DataGridView();
+            isVDlhomHlaseniDataGridViewCheckBoxColumn3 = new DataGridViewExCheckBoxColumn();
+            isVKratkomHlaseniDataGridViewCheckBoxColumn3 = new DataGridViewExCheckBoxColumn();
+            nameDataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            bDeleteDo = new ExButton();
+            bAddDo = new ExButton();
+            bNeskorDo = new ExButton();
+            bSkorDo = new ExButton();
+            listStaniceDo = new ListBox();
+            label14 = new Label();
+            label15 = new Label();
+            tabPage5 = new TabPage();
+            dgvDoplnokSet = new DataGridView();
+            bDoplnkyDelete = new ExButton();
+            label20 = new Label();
+            bDoplnkyEdit = new ExButton();
+            bDoplnkyAdd = new ExButton();
+            listVybrateDoplnky = new ListBox();
+            label19 = new Label();
+            label18 = new Label();
+            tbTextDoplnku = new ExTextBox();
+            listAllDoplnky = new ListBox();
+            label17 = new Label();
+            tabPage4 = new TabPage();
+            cbRadenieEndStation = new ExComboBox();
+            bEditLimitRadenie = new ExButton();
+            label26 = new Label();
+            dgvRadenieSet = new DataGridView();
+            bPlay = new ExButton();
+            bEditRadenie = new ExButton();
+            dtpRadenieDo = new ExDateTimePicker();
+            dtpRadenieOd = new ExDateTimePicker();
+            label27 = new Label();
+            label25 = new Label();
+            tbDateRemRadenie = new ExTextBox();
+            label24 = new Label();
+            bRadenieAdd = new ExButton();
+            label23 = new Label();
+            listRadenia = new ListBox();
+            label22 = new Label();
+            bRadenieDelete = new ExButton();
+            bRadenieEdit = new ExButton();
+            tbRadenie = new ExTextBox();
+            label21 = new Label();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            groupBox6.SuspendLayout();
+            groupBox5.SuspendLayout();
+            ((ISupportInitialize)nudVarianta).BeginInit();
+            groupBox4.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            ((ISupportInitialize)dgvTrasaZo).BeginInit();
+            ((ISupportInitialize)stanicaBindingSource).BeginInit();
+            tabPage3.SuspendLayout();
+            ((ISupportInitialize)dgvTrasaDo).BeginInit();
+            tabPage5.SuspendLayout();
+            ((ISupportInitialize)dgvDoplnokSet).BeginInit();
+            tabPage4.SuspendLayout();
+            ((ISupportInitialize)dgvRadenieSet).BeginInit();
+            SuspendLayout();
             // 
             // bSave
             // 
-            resources.ApplyResources(this.bSave, "bSave");
-            this.bSave.Name = "bSave";
-            this.bSave.UseVisualStyleBackColor = true;
-            this.bSave.Click += new System.EventHandler(this.bSave_Click);
+            resources.ApplyResources(bSave, "bSave");
+            bSave.Name = "bSave";
+            bSave.UseVisualStyleBackColor = true;
+            bSave.Click += bSave_Click;
             // 
             // bZrusit
             // 
-            resources.ApplyResources(this.bZrusit, "bZrusit");
-            this.bZrusit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bZrusit.Name = "bZrusit";
-            this.bZrusit.UseVisualStyleBackColor = true;
-            this.bZrusit.Click += new System.EventHandler(this.bZrusit_Click);
+            resources.ApplyResources(bZrusit, "bZrusit");
+            bZrusit.DialogResult = DialogResult.Cancel;
+            bZrusit.Name = "bZrusit";
+            bZrusit.UseVisualStyleBackColor = true;
+            bZrusit.Click += bZrusit_Click;
             // 
             // llCalendar
             // 
-            resources.ApplyResources(this.llCalendar, "llCalendar");
-            this.llCalendar.Name = "llCalendar";
-            this.llCalendar.TabStop = true;
-            this.llCalendar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llCalendar_LinkClicked);
+            resources.ApplyResources(llCalendar, "llCalendar");
+            llCalendar.Name = "llCalendar";
+            llCalendar.TabStop = true;
+            llCalendar.LinkClicked += llCalendar_LinkClicked;
             // 
             // tabControl1
             // 
-            this.tabControl1.BorderColor = System.Drawing.Color.DarkGray;
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.HeaderBackColor = System.Drawing.Color.Gainsboro;
-            this.tabControl1.HighlightBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
+            tabControl1.BorderColor = Color.DarkGray;
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
+            tabControl1.Controls.Add(tabPage5);
+            tabControl1.Controls.Add(tabPage4);
+            tabControl1.HeaderBackColor = Color.Gainsboro;
+            tabControl1.HighlightBackColor = SystemColors.GradientInactiveCaption;
+            resources.ApplyResources(tabControl1, "tabControl1");
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage1.Controls.Add(this.groupBox6);
-            this.tabPage1.Controls.Add(this.groupBox5);
-            this.tabPage1.Controls.Add(this.groupBox4);
-            this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.Name = "tabPage1";
+            tabPage1.BackColor = Color.Transparent;
+            tabPage1.Controls.Add(groupBox6);
+            tabPage1.Controls.Add(groupBox5);
+            tabPage1.Controls.Add(groupBox4);
+            tabPage1.Controls.Add(groupBox3);
+            tabPage1.Controls.Add(groupBox2);
+            tabPage1.Controls.Add(groupBox1);
+            resources.ApplyResources(tabPage1, "tabPage1");
+            tabPage1.Name = "tabPage1";
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.boxPrestup);
-            this.groupBox6.Controls.Add(this.boxDialkovy);
-            this.groupBox6.Controls.Add(this.boxNizkopodlazny);
-            this.groupBox6.Controls.Add(this.boxMiestenkovy);
-            this.groupBox6.Controls.Add(this.boxMimoriadny);
-            this.groupBox6.Controls.Add(this.boxMedzistatny);
-            this.groupBox6.Controls.Add(this.boxLozkovy);
-            this.groupBox6.Controls.Add(this.boxMotorovy);
-            this.groupBox6.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            resources.ApplyResources(this.groupBox6, "groupBox6");
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.TabStop = false;
-            // 
-            // boxDialkovy
-            // 
-            resources.ApplyResources(this.boxDialkovy, "boxDialkovy");
-            this.boxDialkovy.BoxBackColor = System.Drawing.Color.White;
-            this.boxDialkovy.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.boxDialkovy.Name = "boxDialkovy";
-            this.boxDialkovy.UseVisualStyleBackColor = true;
+            groupBox6.Controls.Add(boxPrestup);
+            groupBox6.Controls.Add(boxDialkovy);
+            groupBox6.Controls.Add(boxNizkopodlazny);
+            groupBox6.Controls.Add(boxMiestenkovy);
+            groupBox6.Controls.Add(boxMimoriadny);
+            groupBox6.Controls.Add(boxMedzistatny);
+            groupBox6.Controls.Add(boxLozkovy);
+            groupBox6.Controls.Add(boxMotorovy);
+            groupBox6.DisabledForeColor = SystemColors.GrayText;
+            resources.ApplyResources(groupBox6, "groupBox6");
+            groupBox6.Name = "groupBox6";
+            groupBox6.TabStop = false;
             // 
             // boxPrestup
             // 
-            resources.ApplyResources(this.boxPrestup, "boxPrestup");
-            this.boxPrestup.BoxBackColor = System.Drawing.Color.White;
-            this.boxPrestup.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.boxPrestup.Name = "boxPrestup";
-            this.boxPrestup.UseVisualStyleBackColor = true;
+            resources.ApplyResources(boxPrestup, "boxPrestup");
+            boxPrestup.BoxBackColor = Color.White;
+            boxPrestup.HighlightColor = SystemColors.Highlight;
+            boxPrestup.Name = "boxPrestup";
+            boxPrestup.UseVisualStyleBackColor = true;
+            // 
+            // boxDialkovy
+            // 
+            resources.ApplyResources(boxDialkovy, "boxDialkovy");
+            boxDialkovy.BoxBackColor = Color.White;
+            boxDialkovy.HighlightColor = SystemColors.Highlight;
+            boxDialkovy.Name = "boxDialkovy";
+            boxDialkovy.UseVisualStyleBackColor = true;
             // 
             // boxNizkopodlazny
             // 
-            resources.ApplyResources(this.boxNizkopodlazny, "boxNizkopodlazny");
-            this.boxNizkopodlazny.BoxBackColor = System.Drawing.Color.White;
-            this.boxNizkopodlazny.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.boxNizkopodlazny.Name = "boxNizkopodlazny";
-            this.boxNizkopodlazny.UseVisualStyleBackColor = true;
+            resources.ApplyResources(boxNizkopodlazny, "boxNizkopodlazny");
+            boxNizkopodlazny.BoxBackColor = Color.White;
+            boxNizkopodlazny.HighlightColor = SystemColors.Highlight;
+            boxNizkopodlazny.Name = "boxNizkopodlazny";
+            boxNizkopodlazny.UseVisualStyleBackColor = true;
             // 
             // boxMiestenkovy
             // 
-            resources.ApplyResources(this.boxMiestenkovy, "boxMiestenkovy");
-            this.boxMiestenkovy.BoxBackColor = System.Drawing.Color.White;
-            this.boxMiestenkovy.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.boxMiestenkovy.Name = "boxMiestenkovy";
-            this.boxMiestenkovy.UseVisualStyleBackColor = true;
+            resources.ApplyResources(boxMiestenkovy, "boxMiestenkovy");
+            boxMiestenkovy.BoxBackColor = Color.White;
+            boxMiestenkovy.HighlightColor = SystemColors.Highlight;
+            boxMiestenkovy.Name = "boxMiestenkovy";
+            boxMiestenkovy.UseVisualStyleBackColor = true;
             // 
             // boxMimoriadny
             // 
-            resources.ApplyResources(this.boxMimoriadny, "boxMimoriadny");
-            this.boxMimoriadny.BoxBackColor = System.Drawing.Color.White;
-            this.boxMimoriadny.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.boxMimoriadny.Name = "boxMimoriadny";
-            this.boxMimoriadny.UseVisualStyleBackColor = true;
+            resources.ApplyResources(boxMimoriadny, "boxMimoriadny");
+            boxMimoriadny.BoxBackColor = Color.White;
+            boxMimoriadny.HighlightColor = SystemColors.Highlight;
+            boxMimoriadny.Name = "boxMimoriadny";
+            boxMimoriadny.UseVisualStyleBackColor = true;
             // 
             // boxMedzistatny
             // 
-            resources.ApplyResources(this.boxMedzistatny, "boxMedzistatny");
-            this.boxMedzistatny.BoxBackColor = System.Drawing.Color.White;
-            this.boxMedzistatny.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.boxMedzistatny.Name = "boxMedzistatny";
-            this.boxMedzistatny.UseVisualStyleBackColor = true;
+            resources.ApplyResources(boxMedzistatny, "boxMedzistatny");
+            boxMedzistatny.BoxBackColor = Color.White;
+            boxMedzistatny.HighlightColor = SystemColors.Highlight;
+            boxMedzistatny.Name = "boxMedzistatny";
+            boxMedzistatny.UseVisualStyleBackColor = true;
             // 
             // boxLozkovy
             // 
-            resources.ApplyResources(this.boxLozkovy, "boxLozkovy");
-            this.boxLozkovy.BoxBackColor = System.Drawing.Color.White;
-            this.boxLozkovy.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.boxLozkovy.Name = "boxLozkovy";
-            this.boxLozkovy.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.lVariantHelp);
-            this.groupBox5.Controls.Add(this.nudVarianta);
-            this.groupBox5.Controls.Add(this.lVyluka);
-            this.groupBox5.Controls.Add(this.cbVyluka);
-            this.groupBox5.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            resources.ApplyResources(this.groupBox5, "groupBox5");
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.TabStop = false;
-            // 
-            // lVariantHelp
-            // 
-            resources.ApplyResources(this.lVariantHelp, "lVariantHelp");
-            this.lVariantHelp.Name = "lVariantHelp";
-            // 
-            // nudVarianta
-            // 
-            this.nudVarianta.ArrowsColor = System.Drawing.Color.Empty;
-            this.nudVarianta.BorderColor = System.Drawing.Color.Empty;
-            this.nudVarianta.HighlightColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.nudVarianta, "nudVarianta");
-            this.nudVarianta.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.nudVarianta.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.nudVarianta.Name = "nudVarianta";
-            this.nudVarianta.SelectedButtonColor = System.Drawing.Color.Empty;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.clbJazyky);
-            this.groupBox4.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
-            // 
-            // clbJazyky
-            // 
-            this.clbJazyky.FormattingEnabled = true;
-            this.clbJazyky.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            resources.ApplyResources(this.clbJazyky, "clbJazyky");
-            this.clbJazyky.MultiColumn = true;
-            this.clbJazyky.Name = "clbJazyky";
-            this.clbJazyky.SquareBackColor = System.Drawing.Color.White;
-            // 
-            // groupBox3
-            // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Controls.Add(this.bEditLimit);
-            this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.dtpPlatnostDo);
-            this.groupBox3.Controls.Add(this.dtpPlatnostOd);
-            this.groupBox3.Controls.Add(this.tDatumoveObmedzenie);
-            this.groupBox3.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
-            // 
-            // bEditLimit
-            // 
-            resources.ApplyResources(this.bEditLimit, "bEditLimit");
-            this.bEditLimit.Name = "bEditLimit";
-            this.bEditLimit.UseVisualStyleBackColor = true;
-            this.bEditLimit.Click += new System.EventHandler(this.BEditLimit_Click);
-            // 
-            // label16
-            // 
-            resources.ApplyResources(this.label16, "label16");
-            this.label16.Name = "label16";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
-            // 
-            // dtpPlatnostDo
-            // 
-            this.dtpPlatnostDo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            resources.ApplyResources(this.dtpPlatnostDo, "dtpPlatnostDo");
-            this.dtpPlatnostDo.Name = "dtpPlatnostDo";
-            // 
-            // dtpPlatnostOd
-            // 
-            this.dtpPlatnostOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            resources.ApplyResources(this.dtpPlatnostOd, "dtpPlatnostOd");
-            this.dtpPlatnostOd.Name = "dtpPlatnostOd";
-            // 
-            // tDatumoveObmedzenie
-            // 
-            this.tDatumoveObmedzenie.BorderColor = System.Drawing.Color.DimGray;
-            this.tDatumoveObmedzenie.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.tDatumoveObmedzenie.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tDatumoveObmedzenie.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.tDatumoveObmedzenie.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.tDatumoveObmedzenie.HintForeColor = System.Drawing.SystemColors.GrayText;
-            this.tDatumoveObmedzenie.HintText = null;
-            resources.ApplyResources(this.tDatumoveObmedzenie, "tDatumoveObmedzenie");
-            this.tDatumoveObmedzenie.Name = "tDatumoveObmedzenie";
-            // 
-            // groupBox2
-            // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.mtOdchod);
-            this.groupBox2.Controls.Add(this.mtPrichod);
-            this.groupBox2.Controls.Add(this.tbLinkaOdchod);
-            this.groupBox2.Controls.Add(this.tbLinkaPrichod);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.cbKolajOdchod);
-            this.groupBox2.Controls.Add(this.cbKolajPrichod);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
-            // 
-            // mtOdchod
-            // 
-            this.mtOdchod.BeepOnError = true;
-            this.mtOdchod.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.mtOdchod.HighlightColor = System.Drawing.SystemColors.Highlight;
-            resources.ApplyResources(this.mtOdchod, "mtOdchod");
-            this.mtOdchod.Name = "mtOdchod";
-            this.mtOdchod.ValidatingType = typeof(System.DateTime);
-            // 
-            // mtPrichod
-            // 
-            this.mtPrichod.BeepOnError = true;
-            this.mtPrichod.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.mtPrichod.HighlightColor = System.Drawing.SystemColors.Highlight;
-            resources.ApplyResources(this.mtPrichod, "mtPrichod");
-            this.mtPrichod.Name = "mtPrichod";
-            this.mtPrichod.ValidatingType = typeof(System.DateTime);
-            // 
-            // tbLinkaOdchod
-            // 
-            this.tbLinkaOdchod.BorderColor = System.Drawing.Color.DimGray;
-            this.tbLinkaOdchod.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.tbLinkaOdchod.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tbLinkaOdchod.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbLinkaOdchod.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.tbLinkaOdchod.HintForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbLinkaOdchod.HintText = null;
-            resources.ApplyResources(this.tbLinkaOdchod, "tbLinkaOdchod");
-            this.tbLinkaOdchod.Name = "tbLinkaOdchod";
-            this.tbLinkaOdchod.TextChanged += new System.EventHandler(this.tbLinkaOdchod_TextChanged);
-            // 
-            // tbLinkaPrichod
-            // 
-            this.tbLinkaPrichod.BorderColor = System.Drawing.Color.DimGray;
-            this.tbLinkaPrichod.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbLinkaPrichod.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.tbLinkaPrichod.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tbLinkaPrichod.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbLinkaPrichod.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.tbLinkaPrichod.HintForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbLinkaPrichod.HintText = "";
-            resources.ApplyResources(this.tbLinkaPrichod, "tbLinkaPrichod");
-            this.tbLinkaPrichod.Name = "tbLinkaPrichod";
-            this.tbLinkaPrichod.TextChanged += new System.EventHandler(this.tbLinkaPrichod_TextChanged);
-            // 
-            // label8
-            // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
-            // 
-            // cbKolajOdchod
-            // 
-            this.cbKolajOdchod.DropDownSelectedRowBackColor = System.Drawing.Color.Empty;
-            this.cbKolajOdchod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbKolajOdchod.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.cbKolajOdchod.FormattingEnabled = true;
-            resources.ApplyResources(this.cbKolajOdchod, "cbKolajOdchod");
-            this.cbKolajOdchod.Name = "cbKolajOdchod";
-            this.cbKolajOdchod.StyleDisabled.ArrowColor = null;
-            this.cbKolajOdchod.StyleDisabled.BackColor = null;
-            this.cbKolajOdchod.StyleDisabled.BorderColor = null;
-            this.cbKolajOdchod.StyleDisabled.ButtonBackColor = null;
-            this.cbKolajOdchod.StyleDisabled.ButtonBorderColor = null;
-            this.cbKolajOdchod.StyleDisabled.ButtonRenderFirst = null;
-            this.cbKolajOdchod.StyleDisabled.ForeColor = null;
-            this.cbKolajOdchod.StyleHighlight.ArrowColor = null;
-            this.cbKolajOdchod.StyleHighlight.BackColor = null;
-            this.cbKolajOdchod.StyleHighlight.BorderColor = null;
-            this.cbKolajOdchod.StyleHighlight.ButtonBackColor = null;
-            this.cbKolajOdchod.StyleHighlight.ButtonBorderColor = null;
-            this.cbKolajOdchod.StyleHighlight.ButtonRenderFirst = null;
-            this.cbKolajOdchod.StyleHighlight.ForeColor = null;
-            this.cbKolajOdchod.StyleNormal.ArrowColor = null;
-            this.cbKolajOdchod.StyleNormal.BackColor = null;
-            this.cbKolajOdchod.StyleNormal.BorderColor = null;
-            this.cbKolajOdchod.StyleNormal.ButtonBackColor = null;
-            this.cbKolajOdchod.StyleNormal.ButtonBorderColor = null;
-            this.cbKolajOdchod.StyleNormal.ButtonRenderFirst = null;
-            this.cbKolajOdchod.StyleNormal.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.cbKolajOdchod.StyleSelected.ArrowColor = null;
-            this.cbKolajOdchod.StyleSelected.BackColor = null;
-            this.cbKolajOdchod.StyleSelected.BorderColor = null;
-            this.cbKolajOdchod.StyleSelected.ButtonBackColor = null;
-            this.cbKolajOdchod.StyleSelected.ButtonBorderColor = null;
-            this.cbKolajOdchod.StyleSelected.ButtonRenderFirst = null;
-            this.cbKolajOdchod.StyleSelected.ForeColor = null;
-            this.cbKolajOdchod.UseDarkScrollBar = false;
-            this.cbKolajOdchod.SelectedIndexChanged += new System.EventHandler(this.cbKolajOdchod_SelectedIndexChanged);
-            // 
-            // cbKolajPrichod
-            // 
-            this.cbKolajPrichod.DropDownSelectedRowBackColor = System.Drawing.Color.Empty;
-            this.cbKolajPrichod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbKolajPrichod.FormattingEnabled = true;
-            resources.ApplyResources(this.cbKolajPrichod, "cbKolajPrichod");
-            this.cbKolajPrichod.Name = "cbKolajPrichod";
-            this.cbKolajPrichod.StyleDisabled.ArrowColor = null;
-            this.cbKolajPrichod.StyleDisabled.BackColor = null;
-            this.cbKolajPrichod.StyleDisabled.BorderColor = null;
-            this.cbKolajPrichod.StyleDisabled.ButtonBackColor = null;
-            this.cbKolajPrichod.StyleDisabled.ButtonBorderColor = null;
-            this.cbKolajPrichod.StyleDisabled.ButtonRenderFirst = null;
-            this.cbKolajPrichod.StyleDisabled.ForeColor = null;
-            this.cbKolajPrichod.StyleHighlight.ArrowColor = null;
-            this.cbKolajPrichod.StyleHighlight.BackColor = null;
-            this.cbKolajPrichod.StyleHighlight.BorderColor = null;
-            this.cbKolajPrichod.StyleHighlight.ButtonBackColor = null;
-            this.cbKolajPrichod.StyleHighlight.ButtonBorderColor = null;
-            this.cbKolajPrichod.StyleHighlight.ButtonRenderFirst = null;
-            this.cbKolajPrichod.StyleHighlight.ForeColor = null;
-            this.cbKolajPrichod.StyleNormal.ArrowColor = null;
-            this.cbKolajPrichod.StyleNormal.BackColor = null;
-            this.cbKolajPrichod.StyleNormal.BorderColor = null;
-            this.cbKolajPrichod.StyleNormal.ButtonBackColor = null;
-            this.cbKolajPrichod.StyleNormal.ButtonBorderColor = null;
-            this.cbKolajPrichod.StyleNormal.ButtonRenderFirst = null;
-            this.cbKolajPrichod.StyleNormal.ForeColor = null;
-            this.cbKolajPrichod.StyleSelected.ArrowColor = null;
-            this.cbKolajPrichod.StyleSelected.BackColor = null;
-            this.cbKolajPrichod.StyleSelected.BorderColor = null;
-            this.cbKolajPrichod.StyleSelected.ButtonBackColor = null;
-            this.cbKolajPrichod.StyleSelected.ButtonBorderColor = null;
-            this.cbKolajPrichod.StyleSelected.ButtonRenderFirst = null;
-            this.cbKolajPrichod.StyleSelected.ForeColor = null;
-            this.cbKolajPrichod.UseDarkScrollBar = false;
-            this.cbKolajPrichod.SelectedIndexChanged += new System.EventHandler(this.cbKolajPrichod_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // groupBox1
-            // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.cbNazov);
-            this.groupBox1.Controls.Add(this.cbDopravca);
-            this.groupBox1.Controls.Add(this.cbTyp);
-            this.groupBox1.Controls.Add(this.tbCislo);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
-            // cbNazov
-            // 
-            this.cbNazov.DropDownSelectedRowBackColor = System.Drawing.Color.Empty;
-            this.cbNazov.FormattingEnabled = true;
-            resources.ApplyResources(this.cbNazov, "cbNazov");
-            this.cbNazov.Name = "cbNazov";
-            this.cbNazov.StyleDisabled.ArrowColor = null;
-            this.cbNazov.StyleDisabled.BackColor = null;
-            this.cbNazov.StyleDisabled.BorderColor = null;
-            this.cbNazov.StyleDisabled.ButtonBackColor = null;
-            this.cbNazov.StyleDisabled.ButtonBorderColor = null;
-            this.cbNazov.StyleDisabled.ButtonRenderFirst = null;
-            this.cbNazov.StyleDisabled.ForeColor = null;
-            this.cbNazov.StyleHighlight.ArrowColor = null;
-            this.cbNazov.StyleHighlight.BackColor = null;
-            this.cbNazov.StyleHighlight.BorderColor = null;
-            this.cbNazov.StyleHighlight.ButtonBackColor = null;
-            this.cbNazov.StyleHighlight.ButtonBorderColor = null;
-            this.cbNazov.StyleHighlight.ButtonRenderFirst = null;
-            this.cbNazov.StyleHighlight.ForeColor = null;
-            this.cbNazov.StyleNormal.ArrowColor = null;
-            this.cbNazov.StyleNormal.BackColor = null;
-            this.cbNazov.StyleNormal.BorderColor = null;
-            this.cbNazov.StyleNormal.ButtonBackColor = null;
-            this.cbNazov.StyleNormal.ButtonBorderColor = null;
-            this.cbNazov.StyleNormal.ButtonRenderFirst = null;
-            this.cbNazov.StyleNormal.ForeColor = null;
-            this.cbNazov.StyleSelected.ArrowColor = null;
-            this.cbNazov.StyleSelected.BackColor = null;
-            this.cbNazov.StyleSelected.BorderColor = null;
-            this.cbNazov.StyleSelected.ButtonBackColor = null;
-            this.cbNazov.StyleSelected.ButtonBorderColor = null;
-            this.cbNazov.StyleSelected.ButtonRenderFirst = null;
-            this.cbNazov.StyleSelected.ForeColor = null;
-            this.cbNazov.UseDarkScrollBar = false;
-            // 
-            // cbDopravca
-            // 
-            this.cbDopravca.DropDownSelectedRowBackColor = System.Drawing.Color.Empty;
-            this.cbDopravca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDopravca.FormattingEnabled = true;
-            resources.ApplyResources(this.cbDopravca, "cbDopravca");
-            this.cbDopravca.Name = "cbDopravca";
-            this.cbDopravca.StyleDisabled.ArrowColor = null;
-            this.cbDopravca.StyleDisabled.BackColor = null;
-            this.cbDopravca.StyleDisabled.BorderColor = null;
-            this.cbDopravca.StyleDisabled.ButtonBackColor = null;
-            this.cbDopravca.StyleDisabled.ButtonBorderColor = null;
-            this.cbDopravca.StyleDisabled.ButtonRenderFirst = null;
-            this.cbDopravca.StyleDisabled.ForeColor = null;
-            this.cbDopravca.StyleHighlight.ArrowColor = null;
-            this.cbDopravca.StyleHighlight.BackColor = null;
-            this.cbDopravca.StyleHighlight.BorderColor = null;
-            this.cbDopravca.StyleHighlight.ButtonBackColor = null;
-            this.cbDopravca.StyleHighlight.ButtonBorderColor = null;
-            this.cbDopravca.StyleHighlight.ButtonRenderFirst = null;
-            this.cbDopravca.StyleHighlight.ForeColor = null;
-            this.cbDopravca.StyleNormal.ArrowColor = null;
-            this.cbDopravca.StyleNormal.BackColor = null;
-            this.cbDopravca.StyleNormal.BorderColor = null;
-            this.cbDopravca.StyleNormal.ButtonBackColor = null;
-            this.cbDopravca.StyleNormal.ButtonBorderColor = null;
-            this.cbDopravca.StyleNormal.ButtonRenderFirst = null;
-            this.cbDopravca.StyleNormal.ForeColor = null;
-            this.cbDopravca.StyleSelected.ArrowColor = null;
-            this.cbDopravca.StyleSelected.BackColor = null;
-            this.cbDopravca.StyleSelected.BorderColor = null;
-            this.cbDopravca.StyleSelected.ButtonBackColor = null;
-            this.cbDopravca.StyleSelected.ButtonBorderColor = null;
-            this.cbDopravca.StyleSelected.ButtonRenderFirst = null;
-            this.cbDopravca.StyleSelected.ForeColor = null;
-            this.cbDopravca.UseDarkScrollBar = false;
-            // 
-            // cbTyp
-            // 
-            this.cbTyp.DropDownSelectedRowBackColor = System.Drawing.Color.Empty;
-            this.cbTyp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTyp.FormattingEnabled = true;
-            resources.ApplyResources(this.cbTyp, "cbTyp");
-            this.cbTyp.Name = "cbTyp";
-            this.cbTyp.StyleDisabled.ArrowColor = null;
-            this.cbTyp.StyleDisabled.BackColor = null;
-            this.cbTyp.StyleDisabled.BorderColor = null;
-            this.cbTyp.StyleDisabled.ButtonBackColor = null;
-            this.cbTyp.StyleDisabled.ButtonBorderColor = null;
-            this.cbTyp.StyleDisabled.ButtonRenderFirst = null;
-            this.cbTyp.StyleDisabled.ForeColor = null;
-            this.cbTyp.StyleHighlight.ArrowColor = null;
-            this.cbTyp.StyleHighlight.BackColor = null;
-            this.cbTyp.StyleHighlight.BorderColor = null;
-            this.cbTyp.StyleHighlight.ButtonBackColor = null;
-            this.cbTyp.StyleHighlight.ButtonBorderColor = null;
-            this.cbTyp.StyleHighlight.ButtonRenderFirst = null;
-            this.cbTyp.StyleHighlight.ForeColor = null;
-            this.cbTyp.StyleNormal.ArrowColor = null;
-            this.cbTyp.StyleNormal.BackColor = null;
-            this.cbTyp.StyleNormal.BorderColor = null;
-            this.cbTyp.StyleNormal.ButtonBackColor = null;
-            this.cbTyp.StyleNormal.ButtonBorderColor = null;
-            this.cbTyp.StyleNormal.ButtonRenderFirst = null;
-            this.cbTyp.StyleNormal.ForeColor = null;
-            this.cbTyp.StyleSelected.ArrowColor = null;
-            this.cbTyp.StyleSelected.BackColor = null;
-            this.cbTyp.StyleSelected.BorderColor = null;
-            this.cbTyp.StyleSelected.ButtonBackColor = null;
-            this.cbTyp.StyleSelected.ButtonBorderColor = null;
-            this.cbTyp.StyleSelected.ButtonRenderFirst = null;
-            this.cbTyp.StyleSelected.ForeColor = null;
-            this.cbTyp.UseDarkScrollBar = false;
-            // 
-            // tbCislo
-            // 
-            this.tbCislo.BackColor = System.Drawing.SystemColors.Window;
-            this.tbCislo.BorderColor = System.Drawing.Color.DimGray;
-            this.tbCislo.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.tbCislo.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tbCislo.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbCislo.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.tbCislo.HintForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbCislo.HintText = "";
-            resources.ApplyResources(this.tbCislo, "tbCislo");
-            this.tbCislo.Name = "tbCislo";
-            this.tbCislo.TextChanged += new System.EventHandler(this.tbCislo_TextChanged);
-            this.tbCislo.Validated += new System.EventHandler(this.tbCislo_Validated);
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage2.Controls.Add(this.cbZoSmeruCustom);
-            this.tabPage2.Controls.Add(this.dgvTrasaZo);
-            this.tabPage2.Controls.Add(this.bDeleteZo);
-            this.tabPage2.Controls.Add(this.bAddZo);
-            this.tabPage2.Controls.Add(this.bNeskorZo);
-            this.tabPage2.Controls.Add(this.bSkorZo);
-            this.tabPage2.Controls.Add(this.listStaniceZo);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.label12);
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
-            // 
-            // cbZoSmeruCustom
-            // 
-            resources.ApplyResources(this.cbZoSmeruCustom, "cbZoSmeruCustom");
-            this.cbZoSmeruCustom.BoxBackColor = System.Drawing.Color.White;
-            this.cbZoSmeruCustom.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.cbZoSmeruCustom.Name = "cbZoSmeruCustom";
-            this.cbZoSmeruCustom.UseVisualStyleBackColor = true;
-            this.cbZoSmeruCustom.CheckedChanged += new System.EventHandler(this.cbZoSmeruCustom_CheckedChanged);
-            // 
-            // dgvTrasaZo
-            // 
-            this.dgvTrasaZo.AllowUserToAddRows = false;
-            this.dgvTrasaZo.AllowUserToResizeRows = false;
-            this.dgvTrasaZo.AutoGenerateColumns = false;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTrasaZo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.dgvTrasaZo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTrasaZo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.isVDlhomHlaseniDataGridViewCheckBoxColumn2,
-            this.isVKratkomHlaseniDataGridViewCheckBoxColumn2,
-            this.nameDataGridViewTextBoxColumn2});
-            this.dgvTrasaZo.DataSource = this.stanicaBindingSource;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTrasaZo.DefaultCellStyle = dataGridViewCellStyle14;
-            resources.ApplyResources(this.dgvTrasaZo, "dgvTrasaZo");
-            this.dgvTrasaZo.MultiSelect = false;
-            this.dgvTrasaZo.Name = "dgvTrasaZo";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTrasaZo.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            this.dgvTrasaZo.RowHeadersVisible = false;
-            this.dgvTrasaZo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTrasaZo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTrasaZo_CellDoubleClick);
-            // 
-            // isVDlhomHlaseniDataGridViewCheckBoxColumn2
-            // 
-            this.isVDlhomHlaseniDataGridViewCheckBoxColumn2.DataPropertyName = "IsInLongReport";
-            resources.ApplyResources(this.isVDlhomHlaseniDataGridViewCheckBoxColumn2, "isVDlhomHlaseniDataGridViewCheckBoxColumn2");
-            this.isVDlhomHlaseniDataGridViewCheckBoxColumn2.Name = "isVDlhomHlaseniDataGridViewCheckBoxColumn2";
-            this.isVDlhomHlaseniDataGridViewCheckBoxColumn2.SquareBackColor = System.Drawing.Color.White;
-            // 
-            // isVKratkomHlaseniDataGridViewCheckBoxColumn2
-            // 
-            this.isVKratkomHlaseniDataGridViewCheckBoxColumn2.DataPropertyName = "IsInShortReport";
-            resources.ApplyResources(this.isVKratkomHlaseniDataGridViewCheckBoxColumn2, "isVKratkomHlaseniDataGridViewCheckBoxColumn2");
-            this.isVKratkomHlaseniDataGridViewCheckBoxColumn2.Name = "isVKratkomHlaseniDataGridViewCheckBoxColumn2";
-            this.isVKratkomHlaseniDataGridViewCheckBoxColumn2.SquareBackColor = System.Drawing.Color.White;
-            // 
-            // nameDataGridViewTextBoxColumn2
-            // 
-            this.nameDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "Name";
-            resources.ApplyResources(this.nameDataGridViewTextBoxColumn2, "nameDataGridViewTextBoxColumn2");
-            this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
-            this.nameDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // stanicaBindingSource
-            // 
-            this.stanicaBindingSource.DataSource = typeof(GVDEditor.Entities.Station);
-            // 
-            // bDeleteZo
-            // 
-            resources.ApplyResources(this.bDeleteZo, "bDeleteZo");
-            this.bDeleteZo.Name = "bDeleteZo";
-            this.bDeleteZo.UseVisualStyleBackColor = true;
-            this.bDeleteZo.Click += new System.EventHandler(this.bDeleteZo_Click);
-            // 
-            // bAddZo
-            // 
-            resources.ApplyResources(this.bAddZo, "bAddZo");
-            this.bAddZo.Name = "bAddZo";
-            this.bAddZo.UseVisualStyleBackColor = true;
-            this.bAddZo.Click += new System.EventHandler(this.bAddZo_Click);
-            // 
-            // bNeskorZo
-            // 
-            resources.ApplyResources(this.bNeskorZo, "bNeskorZo");
-            this.bNeskorZo.Name = "bNeskorZo";
-            this.bNeskorZo.UseVisualStyleBackColor = true;
-            this.bNeskorZo.Click += new System.EventHandler(this.bNeskorZo_Click);
-            // 
-            // bSkorZo
-            // 
-            resources.ApplyResources(this.bSkorZo, "bSkorZo");
-            this.bSkorZo.Name = "bSkorZo";
-            this.bSkorZo.UseVisualStyleBackColor = true;
-            this.bSkorZo.Click += new System.EventHandler(this.bSkorZo_Click);
-            // 
-            // listStaniceZo
-            // 
-            this.listStaniceZo.FormattingEnabled = true;
-            resources.ApplyResources(this.listStaniceZo, "listStaniceZo");
-            this.listStaniceZo.Name = "listStaniceZo";
-            this.listStaniceZo.Sorted = true;
-            this.listStaniceZo.DoubleClick += new System.EventHandler(this.listStaniceZo_DoubleClick);
-            this.listStaniceZo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listStaniceZo_KeyPress);
-            // 
-            // label13
-            // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
-            // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage3.Controls.Add(this.cbDoSmeruCustom);
-            this.tabPage3.Controls.Add(this.dgvTrasaDo);
-            this.tabPage3.Controls.Add(this.bDeleteDo);
-            this.tabPage3.Controls.Add(this.bAddDo);
-            this.tabPage3.Controls.Add(this.bNeskorDo);
-            this.tabPage3.Controls.Add(this.bSkorDo);
-            this.tabPage3.Controls.Add(this.listStaniceDo);
-            this.tabPage3.Controls.Add(this.label14);
-            this.tabPage3.Controls.Add(this.label15);
-            resources.ApplyResources(this.tabPage3, "tabPage3");
-            this.tabPage3.Name = "tabPage3";
-            // 
-            // cbDoSmeruCustom
-            // 
-            resources.ApplyResources(this.cbDoSmeruCustom, "cbDoSmeruCustom");
-            this.cbDoSmeruCustom.BoxBackColor = System.Drawing.Color.White;
-            this.cbDoSmeruCustom.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.cbDoSmeruCustom.Name = "cbDoSmeruCustom";
-            this.cbDoSmeruCustom.UseVisualStyleBackColor = true;
-            this.cbDoSmeruCustom.CheckedChanged += new System.EventHandler(this.cbDoSmeruCustom_CheckedChanged);
-            // 
-            // dgvTrasaDo
-            // 
-            this.dgvTrasaDo.AllowUserToAddRows = false;
-            this.dgvTrasaDo.AllowUserToResizeRows = false;
-            this.dgvTrasaDo.AutoGenerateColumns = false;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTrasaDo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
-            this.dgvTrasaDo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTrasaDo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.isVDlhomHlaseniDataGridViewCheckBoxColumn3,
-            this.isVKratkomHlaseniDataGridViewCheckBoxColumn3,
-            this.nameDataGridViewTextBoxColumn3});
-            this.dgvTrasaDo.DataSource = this.stanicaBindingSource;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTrasaDo.DefaultCellStyle = dataGridViewCellStyle17;
-            resources.ApplyResources(this.dgvTrasaDo, "dgvTrasaDo");
-            this.dgvTrasaDo.MultiSelect = false;
-            this.dgvTrasaDo.Name = "dgvTrasaDo";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTrasaDo.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
-            this.dgvTrasaDo.RowHeadersVisible = false;
-            this.dgvTrasaDo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTrasaDo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTrasaDo_CellDoubleClick);
-            // 
-            // isVDlhomHlaseniDataGridViewCheckBoxColumn3
-            // 
-            this.isVDlhomHlaseniDataGridViewCheckBoxColumn3.DataPropertyName = "IsInLongReport";
-            resources.ApplyResources(this.isVDlhomHlaseniDataGridViewCheckBoxColumn3, "isVDlhomHlaseniDataGridViewCheckBoxColumn3");
-            this.isVDlhomHlaseniDataGridViewCheckBoxColumn3.Name = "isVDlhomHlaseniDataGridViewCheckBoxColumn3";
-            this.isVDlhomHlaseniDataGridViewCheckBoxColumn3.SquareBackColor = System.Drawing.Color.White;
-            // 
-            // isVKratkomHlaseniDataGridViewCheckBoxColumn3
-            // 
-            this.isVKratkomHlaseniDataGridViewCheckBoxColumn3.DataPropertyName = "IsInShortReport";
-            resources.ApplyResources(this.isVKratkomHlaseniDataGridViewCheckBoxColumn3, "isVKratkomHlaseniDataGridViewCheckBoxColumn3");
-            this.isVKratkomHlaseniDataGridViewCheckBoxColumn3.Name = "isVKratkomHlaseniDataGridViewCheckBoxColumn3";
-            this.isVKratkomHlaseniDataGridViewCheckBoxColumn3.SquareBackColor = System.Drawing.Color.White;
-            // 
-            // nameDataGridViewTextBoxColumn3
-            // 
-            this.nameDataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameDataGridViewTextBoxColumn3.DataPropertyName = "Name";
-            resources.ApplyResources(this.nameDataGridViewTextBoxColumn3, "nameDataGridViewTextBoxColumn3");
-            this.nameDataGridViewTextBoxColumn3.Name = "nameDataGridViewTextBoxColumn3";
-            this.nameDataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // bDeleteDo
-            // 
-            resources.ApplyResources(this.bDeleteDo, "bDeleteDo");
-            this.bDeleteDo.Name = "bDeleteDo";
-            this.bDeleteDo.UseVisualStyleBackColor = true;
-            this.bDeleteDo.Click += new System.EventHandler(this.bDeleteDo_Click);
-            // 
-            // bAddDo
-            // 
-            resources.ApplyResources(this.bAddDo, "bAddDo");
-            this.bAddDo.Name = "bAddDo";
-            this.bAddDo.UseVisualStyleBackColor = true;
-            this.bAddDo.Click += new System.EventHandler(this.bAddDo_Click);
-            // 
-            // bNeskorDo
-            // 
-            resources.ApplyResources(this.bNeskorDo, "bNeskorDo");
-            this.bNeskorDo.Name = "bNeskorDo";
-            this.bNeskorDo.UseVisualStyleBackColor = true;
-            this.bNeskorDo.Click += new System.EventHandler(this.bNeskorDo_Click);
-            // 
-            // bSkorDo
-            // 
-            resources.ApplyResources(this.bSkorDo, "bSkorDo");
-            this.bSkorDo.Name = "bSkorDo";
-            this.bSkorDo.UseVisualStyleBackColor = true;
-            this.bSkorDo.Click += new System.EventHandler(this.bSkorDo_Click);
-            // 
-            // listStaniceDo
-            // 
-            this.listStaniceDo.FormattingEnabled = true;
-            resources.ApplyResources(this.listStaniceDo, "listStaniceDo");
-            this.listStaniceDo.Name = "listStaniceDo";
-            this.listStaniceDo.Sorted = true;
-            this.listStaniceDo.DoubleClick += new System.EventHandler(this.listStaniceDo_DoubleClick);
-            this.listStaniceDo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listStaniceDo_KeyPress);
-            // 
-            // label14
-            // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
-            // 
-            // label15
-            // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage5.Controls.Add(this.dgvDoplnokSet);
-            this.tabPage5.Controls.Add(this.bDoplnkyDelete);
-            this.tabPage5.Controls.Add(this.label20);
-            this.tabPage5.Controls.Add(this.bDoplnkyEdit);
-            this.tabPage5.Controls.Add(this.bDoplnkyAdd);
-            this.tabPage5.Controls.Add(this.listVybrateDoplnky);
-            this.tabPage5.Controls.Add(this.label19);
-            this.tabPage5.Controls.Add(this.label18);
-            this.tabPage5.Controls.Add(this.tbTextDoplnku);
-            this.tabPage5.Controls.Add(this.listAllDoplnky);
-            this.tabPage5.Controls.Add(this.label17);
-            resources.ApplyResources(this.tabPage5, "tabPage5");
-            this.tabPage5.Name = "tabPage5";
-            // 
-            // dgvDoplnokSet
-            // 
-            this.dgvDoplnokSet.AllowUserToAddRows = false;
-            this.dgvDoplnokSet.AllowUserToDeleteRows = false;
-            this.dgvDoplnokSet.AllowUserToResizeRows = false;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDoplnokSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            this.dgvDoplnokSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDoplnokSet.DefaultCellStyle = dataGridViewCellStyle20;
-            resources.ApplyResources(this.dgvDoplnokSet, "dgvDoplnokSet");
-            this.dgvDoplnokSet.Name = "dgvDoplnokSet";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDoplnokSet.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
-            this.dgvDoplnokSet.RowHeadersVisible = false;
-            this.dgvDoplnokSet.RowTemplate.Height = 24;
-            // 
-            // bDoplnkyDelete
-            // 
-            resources.ApplyResources(this.bDoplnkyDelete, "bDoplnkyDelete");
-            this.bDoplnkyDelete.Name = "bDoplnkyDelete";
-            this.bDoplnkyDelete.UseVisualStyleBackColor = true;
-            this.bDoplnkyDelete.Click += new System.EventHandler(this.bDoplnkyDelete_Click);
-            // 
-            // label20
-            // 
-            resources.ApplyResources(this.label20, "label20");
-            this.label20.Name = "label20";
-            // 
-            // bDoplnkyEdit
-            // 
-            resources.ApplyResources(this.bDoplnkyEdit, "bDoplnkyEdit");
-            this.bDoplnkyEdit.Name = "bDoplnkyEdit";
-            this.bDoplnkyEdit.UseVisualStyleBackColor = true;
-            this.bDoplnkyEdit.Click += new System.EventHandler(this.bDoplnkyEdit_Click);
-            // 
-            // bDoplnkyAdd
-            // 
-            resources.ApplyResources(this.bDoplnkyAdd, "bDoplnkyAdd");
-            this.bDoplnkyAdd.Name = "bDoplnkyAdd";
-            this.bDoplnkyAdd.UseVisualStyleBackColor = true;
-            this.bDoplnkyAdd.Click += new System.EventHandler(this.bDoplnkyAdd_Click);
-            // 
-            // listVybrateDoplnky
-            // 
-            this.listVybrateDoplnky.FormattingEnabled = true;
-            resources.ApplyResources(this.listVybrateDoplnky, "listVybrateDoplnky");
-            this.listVybrateDoplnky.Name = "listVybrateDoplnky";
-            this.listVybrateDoplnky.SelectedIndexChanged += new System.EventHandler(this.listVybrateDoplnky_SelectedIndexChanged);
-            this.listVybrateDoplnky.DoubleClick += new System.EventHandler(this.listVybrateDoplnky_DoubleClick);
-            // 
-            // label19
-            // 
-            resources.ApplyResources(this.label19, "label19");
-            this.label19.Name = "label19";
-            // 
-            // label18
-            // 
-            resources.ApplyResources(this.label18, "label18");
-            this.label18.Name = "label18";
-            // 
-            // tbTextDoplnku
-            // 
-            this.tbTextDoplnku.BorderColor = System.Drawing.Color.DimGray;
-            this.tbTextDoplnku.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbTextDoplnku.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.tbTextDoplnku.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tbTextDoplnku.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbTextDoplnku.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.tbTextDoplnku.HintForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbTextDoplnku.HintText = null;
-            resources.ApplyResources(this.tbTextDoplnku, "tbTextDoplnku");
-            this.tbTextDoplnku.Name = "tbTextDoplnku";
-            this.tbTextDoplnku.ReadOnly = true;
-            // 
-            // listAllDoplnky
-            // 
-            this.listAllDoplnky.FormattingEnabled = true;
-            resources.ApplyResources(this.listAllDoplnky, "listAllDoplnky");
-            this.listAllDoplnky.Name = "listAllDoplnky";
-            this.listAllDoplnky.SelectedIndexChanged += new System.EventHandler(this.listAllDoplnky_SelectedIndexChanged);
-            this.listAllDoplnky.DoubleClick += new System.EventHandler(this.listAllDoplnky_DoubleClick);
-            // 
-            // label17
-            // 
-            resources.ApplyResources(this.label17, "label17");
-            this.label17.Name = "label17";
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage4.Controls.Add(this.bEditLimitRadenie);
-            this.tabPage4.Controls.Add(this.label26);
-            this.tabPage4.Controls.Add(this.dgvRadenieSet);
-            this.tabPage4.Controls.Add(this.bPlay);
-            this.tabPage4.Controls.Add(this.bEditRadenie);
-            this.tabPage4.Controls.Add(this.dtpRadenieDo);
-            this.tabPage4.Controls.Add(this.dtpRadenieOd);
-            this.tabPage4.Controls.Add(this.label27);
-            this.tabPage4.Controls.Add(this.label25);
-            this.tabPage4.Controls.Add(this.tbDateRemRadenie);
-            this.tabPage4.Controls.Add(this.label24);
-            this.tabPage4.Controls.Add(this.bRadenieAdd);
-            this.tabPage4.Controls.Add(this.label23);
-            this.tabPage4.Controls.Add(this.listRadenia);
-            this.tabPage4.Controls.Add(this.label22);
-            this.tabPage4.Controls.Add(this.bRadenieDelete);
-            this.tabPage4.Controls.Add(this.bRadenieEdit);
-            this.tabPage4.Controls.Add(this.tbRadenie);
-            this.tabPage4.Controls.Add(this.label21);
-            resources.ApplyResources(this.tabPage4, "tabPage4");
-            this.tabPage4.Name = "tabPage4";
-            // 
-            // bEditLimitRadenie
-            // 
-            resources.ApplyResources(this.bEditLimitRadenie, "bEditLimitRadenie");
-            this.bEditLimitRadenie.Name = "bEditLimitRadenie";
-            this.bEditLimitRadenie.UseVisualStyleBackColor = true;
-            this.bEditLimitRadenie.Click += new System.EventHandler(this.BEditLimitRadenie_Click);
-            // 
-            // label26
-            // 
-            resources.ApplyResources(this.label26, "label26");
-            this.label26.Name = "label26";
-            // 
-            // dgvRadenieSet
-            // 
-            this.dgvRadenieSet.AllowUserToAddRows = false;
-            this.dgvRadenieSet.AllowUserToDeleteRows = false;
-            this.dgvRadenieSet.AllowUserToResizeRows = false;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRadenieSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
-            this.dgvRadenieSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRadenieSet.DefaultCellStyle = dataGridViewCellStyle23;
-            resources.ApplyResources(this.dgvRadenieSet, "dgvRadenieSet");
-            this.dgvRadenieSet.Name = "dgvRadenieSet";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRadenieSet.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
-            this.dgvRadenieSet.RowHeadersVisible = false;
-            this.dgvRadenieSet.RowTemplate.Height = 24;
-            // 
-            // bPlay
-            // 
-            resources.ApplyResources(this.bPlay, "bPlay");
-            this.bPlay.Name = "bPlay";
-            this.bPlay.UseVisualStyleBackColor = true;
-            this.bPlay.Click += new System.EventHandler(this.bPlay_Click);
-            // 
-            // bEditRadenie
-            // 
-            resources.ApplyResources(this.bEditRadenie, "bEditRadenie");
-            this.bEditRadenie.Name = "bEditRadenie";
-            this.bEditRadenie.UseVisualStyleBackColor = true;
-            this.bEditRadenie.Click += new System.EventHandler(this.bEditRadenie_Click);
-            // 
-            // dtpRadenieDo
-            // 
-            this.dtpRadenieDo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            resources.ApplyResources(this.dtpRadenieDo, "dtpRadenieDo");
-            this.dtpRadenieDo.Name = "dtpRadenieDo";
-            // 
-            // dtpRadenieOd
-            // 
-            this.dtpRadenieOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            resources.ApplyResources(this.dtpRadenieOd, "dtpRadenieOd");
-            this.dtpRadenieOd.Name = "dtpRadenieOd";
-            // 
-            // label27
-            // 
-            resources.ApplyResources(this.label27, "label27");
-            this.label27.Name = "label27";
-            // 
-            // label25
-            // 
-            resources.ApplyResources(this.label25, "label25");
-            this.label25.Name = "label25";
-            // 
-            // tbDateRemRadenie
-            // 
-            this.tbDateRemRadenie.BorderColor = System.Drawing.Color.DimGray;
-            this.tbDateRemRadenie.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.tbDateRemRadenie.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tbDateRemRadenie.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbDateRemRadenie.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.tbDateRemRadenie.HintForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbDateRemRadenie.HintText = null;
-            resources.ApplyResources(this.tbDateRemRadenie, "tbDateRemRadenie");
-            this.tbDateRemRadenie.Name = "tbDateRemRadenie";
-            // 
-            // label24
-            // 
-            resources.ApplyResources(this.label24, "label24");
-            this.label24.Name = "label24";
-            // 
-            // bRadenieAdd
-            // 
-            resources.ApplyResources(this.bRadenieAdd, "bRadenieAdd");
-            this.bRadenieAdd.Name = "bRadenieAdd";
-            this.bRadenieAdd.UseVisualStyleBackColor = true;
-            this.bRadenieAdd.Click += new System.EventHandler(this.bRadenieAdd_Click);
-            // 
-            // label23
-            // 
-            resources.ApplyResources(this.label23, "label23");
-            this.label23.Name = "label23";
-            // 
-            // listRadenia
-            // 
-            this.listRadenia.FormattingEnabled = true;
-            resources.ApplyResources(this.listRadenia, "listRadenia");
-            this.listRadenia.Name = "listRadenia";
-            this.listRadenia.SelectedIndexChanged += new System.EventHandler(this.listRadenia_SelectedIndexChanged);
-            this.listRadenia.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.listRadenia_Format);
-            // 
-            // label22
-            // 
-            resources.ApplyResources(this.label22, "label22");
-            this.label22.Name = "label22";
-            // 
-            // bRadenieDelete
-            // 
-            resources.ApplyResources(this.bRadenieDelete, "bRadenieDelete");
-            this.bRadenieDelete.Name = "bRadenieDelete";
-            this.bRadenieDelete.UseVisualStyleBackColor = true;
-            this.bRadenieDelete.Click += new System.EventHandler(this.bRadenieDelete_Click);
-            // 
-            // bRadenieEdit
-            // 
-            resources.ApplyResources(this.bRadenieEdit, "bRadenieEdit");
-            this.bRadenieEdit.Name = "bRadenieEdit";
-            this.bRadenieEdit.UseVisualStyleBackColor = true;
-            this.bRadenieEdit.Click += new System.EventHandler(this.bRadenieEdit_Click);
-            // 
-            // tbRadenie
-            // 
-            this.tbRadenie.BorderColor = System.Drawing.Color.DimGray;
-            this.tbRadenie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbRadenie.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.tbRadenie.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tbRadenie.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbRadenie.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.tbRadenie.HintForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbRadenie.HintText = null;
-            resources.ApplyResources(this.tbRadenie, "tbRadenie");
-            this.tbRadenie.Name = "tbRadenie";
-            this.tbRadenie.ReadOnly = true;
-            // 
-            // label21
-            // 
-            resources.ApplyResources(this.label21, "label21");
-            this.label21.Name = "label21";
+            resources.ApplyResources(boxLozkovy, "boxLozkovy");
+            boxLozkovy.BoxBackColor = Color.White;
+            boxLozkovy.HighlightColor = SystemColors.Highlight;
+            boxLozkovy.Name = "boxLozkovy";
+            boxLozkovy.UseVisualStyleBackColor = true;
             // 
             // boxMotorovy
             // 
-            resources.ApplyResources(this.boxMotorovy, "boxMotorovy");
-            this.boxMotorovy.BoxBackColor = System.Drawing.Color.White;
-            this.boxMotorovy.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.boxMotorovy.UseVisualStyleBackColor = true;
-            this.boxMotorovy.Name = "boxMotorovy";
+            resources.ApplyResources(boxMotorovy, "boxMotorovy");
+            boxMotorovy.BoxBackColor = Color.White;
+            boxMotorovy.HighlightColor = SystemColors.Highlight;
+            boxMotorovy.Name = "boxMotorovy";
+            boxMotorovy.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(lVariantHelp);
+            groupBox5.Controls.Add(nudVarianta);
+            groupBox5.Controls.Add(lVyluka);
+            groupBox5.Controls.Add(cbVyluka);
+            groupBox5.DisabledForeColor = SystemColors.GrayText;
+            resources.ApplyResources(groupBox5, "groupBox5");
+            groupBox5.Name = "groupBox5";
+            groupBox5.TabStop = false;
+            // 
+            // lVariantHelp
+            // 
+            resources.ApplyResources(lVariantHelp, "lVariantHelp");
+            lVariantHelp.Name = "lVariantHelp";
+            // 
+            // nudVarianta
+            // 
+            nudVarianta.ArrowsColor = Color.Empty;
+            nudVarianta.BorderColor = Color.Empty;
+            nudVarianta.HighlightColor = Color.Empty;
+            resources.ApplyResources(nudVarianta, "nudVarianta");
+            nudVarianta.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
+            nudVarianta.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
+            nudVarianta.Name = "nudVarianta";
+            nudVarianta.SelectedButtonColor = Color.Empty;
             // 
             // lVyluka
             // 
-            resources.ApplyResources(this.lVyluka, "lVyluka");
-            this.lVyluka.Name = "lVyluka";
-            //
+            resources.ApplyResources(lVyluka, "lVyluka");
+            lVyluka.Name = "lVyluka";
+            // 
             // cbVyluka
-            //
-            this.cbVyluka.DropDownSelectedRowBackColor = System.Drawing.Color.Empty;
-            this.cbVyluka.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbVyluka.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.cbVyluka.FormattingEnabled = true;
-            resources.ApplyResources(this.cbVyluka, "cbVyluka");
-            this.cbVyluka.Name = "cbVyluka";
-            this.cbVyluka.StyleDisabled.ArrowColor = null;
-            this.cbVyluka.StyleDisabled.BackColor = null;
-            this.cbVyluka.StyleDisabled.BorderColor = null;
-            this.cbVyluka.StyleDisabled.ButtonBackColor = null;
-            this.cbVyluka.StyleDisabled.ButtonBorderColor = null;
-            this.cbVyluka.StyleDisabled.ButtonRenderFirst = null;
-            this.cbVyluka.StyleDisabled.ForeColor = null;
-            this.cbVyluka.StyleHighlight.ArrowColor = null;
-            this.cbVyluka.StyleHighlight.BackColor = null;
-            this.cbVyluka.StyleHighlight.BorderColor = null;
-            this.cbVyluka.StyleHighlight.ButtonBackColor = null;
-            this.cbVyluka.StyleHighlight.ButtonBorderColor = null;
-            this.cbVyluka.StyleHighlight.ButtonRenderFirst = null;
-            this.cbVyluka.StyleHighlight.ForeColor = null;
-            this.cbVyluka.StyleNormal.ArrowColor = null;
-            this.cbVyluka.StyleNormal.BackColor = null;
-            this.cbVyluka.StyleNormal.BorderColor = null;
-            this.cbVyluka.StyleNormal.ButtonBackColor = null;
-            this.cbVyluka.StyleNormal.ButtonBorderColor = null;
-            this.cbVyluka.StyleNormal.ButtonRenderFirst = null;
-            this.cbVyluka.StyleNormal.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.cbVyluka.StyleSelected.ArrowColor = null;
-            this.cbVyluka.StyleSelected.BackColor = null;
-            this.cbVyluka.StyleSelected.BorderColor = null;
-            this.cbVyluka.StyleSelected.ButtonBackColor = null;
-            this.cbVyluka.StyleSelected.ButtonBorderColor = null;
-            this.cbVyluka.StyleSelected.ButtonRenderFirst = null;
-            this.cbVyluka.StyleSelected.ForeColor = null;
-            this.cbVyluka.UseDarkScrollBar = false;
-            this.cbVyluka.SelectedIndexChanged += new System.EventHandler(this.cbVyluka_SelectedIndexChanged);
+            // 
+            cbVyluka.DropDownSelectedRowBackColor = Color.Empty;
+            cbVyluka.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbVyluka.ForeColor = SystemColors.WindowText;
+            cbVyluka.FormattingEnabled = true;
+            resources.ApplyResources(cbVyluka, "cbVyluka");
+            cbVyluka.Name = "cbVyluka";
+            cbVyluka.StyleDisabled.ArrowColor = null;
+            cbVyluka.StyleDisabled.BackColor = null;
+            cbVyluka.StyleDisabled.BorderColor = null;
+            cbVyluka.StyleDisabled.ButtonBackColor = null;
+            cbVyluka.StyleDisabled.ButtonBorderColor = null;
+            cbVyluka.StyleDisabled.ButtonRenderFirst = null;
+            cbVyluka.StyleDisabled.ForeColor = null;
+            cbVyluka.StyleHighlight.ArrowColor = null;
+            cbVyluka.StyleHighlight.BackColor = null;
+            cbVyluka.StyleHighlight.BorderColor = null;
+            cbVyluka.StyleHighlight.ButtonBackColor = null;
+            cbVyluka.StyleHighlight.ButtonBorderColor = null;
+            cbVyluka.StyleHighlight.ButtonRenderFirst = null;
+            cbVyluka.StyleHighlight.ForeColor = null;
+            cbVyluka.StyleNormal.ArrowColor = null;
+            cbVyluka.StyleNormal.BackColor = null;
+            cbVyluka.StyleNormal.BorderColor = null;
+            cbVyluka.StyleNormal.ButtonBackColor = null;
+            cbVyluka.StyleNormal.ButtonBorderColor = null;
+            cbVyluka.StyleNormal.ButtonRenderFirst = null;
+            cbVyluka.StyleNormal.ForeColor = SystemColors.WindowText;
+            cbVyluka.StyleSelected.ArrowColor = null;
+            cbVyluka.StyleSelected.BackColor = null;
+            cbVyluka.StyleSelected.BorderColor = null;
+            cbVyluka.StyleSelected.ButtonBackColor = null;
+            cbVyluka.StyleSelected.ButtonBorderColor = null;
+            cbVyluka.StyleSelected.ButtonRenderFirst = null;
+            cbVyluka.StyleSelected.ForeColor = null;
+            cbVyluka.UseDarkScrollBar = false;
+            cbVyluka.SelectedIndexChanged += cbVyluka_SelectedIndexChanged;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(clbJazyky);
+            groupBox4.DisabledForeColor = SystemColors.GrayText;
+            resources.ApplyResources(groupBox4, "groupBox4");
+            groupBox4.Name = "groupBox4";
+            groupBox4.TabStop = false;
+            // 
+            // clbJazyky
+            // 
+            clbJazyky.FormattingEnabled = true;
+            clbJazyky.HighlightColor = Color.FromArgb(0, 120, 215);
+            resources.ApplyResources(clbJazyky, "clbJazyky");
+            clbJazyky.MultiColumn = true;
+            clbJazyky.Name = "clbJazyky";
+            clbJazyky.SquareBackColor = Color.White;
+            // 
+            // groupBox3
+            // 
+            resources.ApplyResources(groupBox3, "groupBox3");
+            groupBox3.Controls.Add(bEditLimit);
+            groupBox3.Controls.Add(label16);
+            groupBox3.Controls.Add(label11);
+            groupBox3.Controls.Add(dtpPlatnostDo);
+            groupBox3.Controls.Add(dtpPlatnostOd);
+            groupBox3.Controls.Add(tDatumoveObmedzenie);
+            groupBox3.DisabledForeColor = SystemColors.GrayText;
+            groupBox3.Name = "groupBox3";
+            groupBox3.TabStop = false;
+            // 
+            // bEditLimit
+            // 
+            resources.ApplyResources(bEditLimit, "bEditLimit");
+            bEditLimit.Name = "bEditLimit";
+            bEditLimit.UseVisualStyleBackColor = true;
+            bEditLimit.Click += BEditLimit_Click;
+            // 
+            // label16
+            // 
+            resources.ApplyResources(label16, "label16");
+            label16.Name = "label16";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(label11, "label11");
+            label11.Name = "label11";
+            // 
+            // dtpPlatnostDo
+            // 
+            // 
+            // 
+            // 
+            dtpPlatnostDo.Calendar.HighlightColor = Color.Empty;
+            dtpPlatnostDo.Calendar.HighlightForeColor = Color.Empty;
+            dtpPlatnostDo.Calendar.Location = (Point)resources.GetObject("dtpPlatnostDo.Calendar.Location");
+            dtpPlatnostDo.Calendar.Name = "";
+            dtpPlatnostDo.Calendar.Size = (Size)resources.GetObject("dtpPlatnostDo.Calendar.Size");
+            dtpPlatnostDo.Calendar.TabIndex = (int)resources.GetObject("dtpPlatnostDo.Calendar.TabIndex");
+            dtpPlatnostDo.Calendar.TodayBorderColor = Color.Empty;
+            dtpPlatnostDo.DisabledBackColor = SystemColors.Control;
+            dtpPlatnostDo.DisabledForeColor = SystemColors.GrayText;
+            dtpPlatnostDo.Format = DateTimePickerFormat.Short;
+            dtpPlatnostDo.HighlightColor = SystemColors.Highlight;
+            resources.ApplyResources(dtpPlatnostDo, "dtpPlatnostDo");
+            dtpPlatnostDo.Name = "dtpPlatnostDo";
+            dtpPlatnostDo.SelectedFieldBackColor = SystemColors.Highlight;
+            dtpPlatnostDo.SelectedFieldForeColor = SystemColors.HighlightText;
+            // 
+            // dtpPlatnostOd
+            // 
+            // 
+            // 
+            // 
+            dtpPlatnostOd.Calendar.HighlightColor = Color.Empty;
+            dtpPlatnostOd.Calendar.HighlightForeColor = Color.Empty;
+            dtpPlatnostOd.Calendar.Location = (Point)resources.GetObject("dtpPlatnostOd.Calendar.Location");
+            dtpPlatnostOd.Calendar.Name = "";
+            dtpPlatnostOd.Calendar.Size = (Size)resources.GetObject("dtpPlatnostOd.Calendar.Size");
+            dtpPlatnostOd.Calendar.TabIndex = (int)resources.GetObject("dtpPlatnostOd.Calendar.TabIndex");
+            dtpPlatnostOd.Calendar.TodayBorderColor = Color.Empty;
+            dtpPlatnostOd.DisabledBackColor = SystemColors.Control;
+            dtpPlatnostOd.DisabledForeColor = SystemColors.GrayText;
+            dtpPlatnostOd.Format = DateTimePickerFormat.Short;
+            dtpPlatnostOd.HighlightColor = SystemColors.Highlight;
+            resources.ApplyResources(dtpPlatnostOd, "dtpPlatnostOd");
+            dtpPlatnostOd.Name = "dtpPlatnostOd";
+            dtpPlatnostOd.SelectedFieldBackColor = SystemColors.Highlight;
+            dtpPlatnostOd.SelectedFieldForeColor = SystemColors.HighlightText;
+            // 
+            // tDatumoveObmedzenie
+            // 
+            tDatumoveObmedzenie.BorderColor = Color.DimGray;
+            tDatumoveObmedzenie.DisabledBackColor = SystemColors.Control;
+            tDatumoveObmedzenie.DisabledBorderColor = SystemColors.InactiveBorder;
+            tDatumoveObmedzenie.DisabledForeColor = SystemColors.GrayText;
+            tDatumoveObmedzenie.HighlightColor = SystemColors.Highlight;
+            tDatumoveObmedzenie.HintForeColor = SystemColors.GrayText;
+            tDatumoveObmedzenie.HintText = null;
+            resources.ApplyResources(tDatumoveObmedzenie, "tDatumoveObmedzenie");
+            tDatumoveObmedzenie.Name = "tDatumoveObmedzenie";
+            // 
+            // groupBox2
+            // 
+            resources.ApplyResources(groupBox2, "groupBox2");
+            groupBox2.Controls.Add(mtOdchod);
+            groupBox2.Controls.Add(mtPrichod);
+            groupBox2.Controls.Add(tbLinkaOdchod);
+            groupBox2.Controls.Add(tbLinkaPrichod);
+            groupBox2.Controls.Add(label8);
+            groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(label10);
+            groupBox2.Controls.Add(label9);
+            groupBox2.Controls.Add(cbKolajOdchod);
+            groupBox2.Controls.Add(cbKolajPrichod);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(label5);
+            groupBox2.DisabledForeColor = SystemColors.GrayText;
+            groupBox2.Name = "groupBox2";
+            groupBox2.TabStop = false;
+            // 
+            // mtOdchod
+            // 
+            mtOdchod.BeepOnError = true;
+            mtOdchod.DisabledBorderColor = SystemColors.InactiveBorder;
+            mtOdchod.HighlightColor = SystemColors.Highlight;
+            resources.ApplyResources(mtOdchod, "mtOdchod");
+            mtOdchod.Name = "mtOdchod";
+            mtOdchod.ValidatingType = typeof(DateTime);
+            // 
+            // mtPrichod
+            // 
+            mtPrichod.BeepOnError = true;
+            mtPrichod.DisabledBorderColor = SystemColors.InactiveBorder;
+            mtPrichod.HighlightColor = SystemColors.Highlight;
+            resources.ApplyResources(mtPrichod, "mtPrichod");
+            mtPrichod.Name = "mtPrichod";
+            mtPrichod.ValidatingType = typeof(DateTime);
+            // 
+            // tbLinkaOdchod
+            // 
+            tbLinkaOdchod.BorderColor = Color.DimGray;
+            tbLinkaOdchod.DisabledBackColor = SystemColors.Control;
+            tbLinkaOdchod.DisabledBorderColor = SystemColors.InactiveBorder;
+            tbLinkaOdchod.DisabledForeColor = SystemColors.GrayText;
+            tbLinkaOdchod.HighlightColor = SystemColors.Highlight;
+            tbLinkaOdchod.HintForeColor = SystemColors.GrayText;
+            tbLinkaOdchod.HintText = null;
+            resources.ApplyResources(tbLinkaOdchod, "tbLinkaOdchod");
+            tbLinkaOdchod.Name = "tbLinkaOdchod";
+            tbLinkaOdchod.TextChanged += tbLinkaOdchod_TextChanged;
+            // 
+            // tbLinkaPrichod
+            // 
+            tbLinkaPrichod.BorderColor = Color.DimGray;
+            tbLinkaPrichod.Cursor = Cursors.IBeam;
+            tbLinkaPrichod.DisabledBackColor = SystemColors.Control;
+            tbLinkaPrichod.DisabledBorderColor = SystemColors.InactiveBorder;
+            tbLinkaPrichod.DisabledForeColor = SystemColors.GrayText;
+            tbLinkaPrichod.HighlightColor = SystemColors.Highlight;
+            tbLinkaPrichod.HintForeColor = SystemColors.GrayText;
+            tbLinkaPrichod.HintText = "";
+            resources.ApplyResources(tbLinkaPrichod, "tbLinkaPrichod");
+            tbLinkaPrichod.Name = "tbLinkaPrichod";
+            tbLinkaPrichod.TextChanged += tbLinkaPrichod_TextChanged;
+            // 
+            // label8
+            // 
+            resources.ApplyResources(label8, "label8");
+            label8.Name = "label8";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(label7, "label7");
+            label7.Name = "label7";
+            // 
+            // label10
+            // 
+            resources.ApplyResources(label10, "label10");
+            label10.Name = "label10";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(label9, "label9");
+            label9.Name = "label9";
+            // 
+            // cbKolajOdchod
+            // 
+            cbKolajOdchod.DropDownSelectedRowBackColor = Color.Empty;
+            cbKolajOdchod.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbKolajOdchod.ForeColor = SystemColors.WindowText;
+            cbKolajOdchod.FormattingEnabled = true;
+            resources.ApplyResources(cbKolajOdchod, "cbKolajOdchod");
+            cbKolajOdchod.Name = "cbKolajOdchod";
+            cbKolajOdchod.StyleDisabled.ArrowColor = null;
+            cbKolajOdchod.StyleDisabled.BackColor = null;
+            cbKolajOdchod.StyleDisabled.BorderColor = null;
+            cbKolajOdchod.StyleDisabled.ButtonBackColor = null;
+            cbKolajOdchod.StyleDisabled.ButtonBorderColor = null;
+            cbKolajOdchod.StyleDisabled.ButtonRenderFirst = null;
+            cbKolajOdchod.StyleDisabled.ForeColor = null;
+            cbKolajOdchod.StyleHighlight.ArrowColor = null;
+            cbKolajOdchod.StyleHighlight.BackColor = null;
+            cbKolajOdchod.StyleHighlight.BorderColor = null;
+            cbKolajOdchod.StyleHighlight.ButtonBackColor = null;
+            cbKolajOdchod.StyleHighlight.ButtonBorderColor = null;
+            cbKolajOdchod.StyleHighlight.ButtonRenderFirst = null;
+            cbKolajOdchod.StyleHighlight.ForeColor = null;
+            cbKolajOdchod.StyleNormal.ArrowColor = null;
+            cbKolajOdchod.StyleNormal.BackColor = null;
+            cbKolajOdchod.StyleNormal.BorderColor = null;
+            cbKolajOdchod.StyleNormal.ButtonBackColor = null;
+            cbKolajOdchod.StyleNormal.ButtonBorderColor = null;
+            cbKolajOdchod.StyleNormal.ButtonRenderFirst = null;
+            cbKolajOdchod.StyleNormal.ForeColor = SystemColors.WindowText;
+            cbKolajOdchod.StyleSelected.ArrowColor = null;
+            cbKolajOdchod.StyleSelected.BackColor = null;
+            cbKolajOdchod.StyleSelected.BorderColor = null;
+            cbKolajOdchod.StyleSelected.ButtonBackColor = null;
+            cbKolajOdchod.StyleSelected.ButtonBorderColor = null;
+            cbKolajOdchod.StyleSelected.ButtonRenderFirst = null;
+            cbKolajOdchod.StyleSelected.ForeColor = null;
+            cbKolajOdchod.UseDarkScrollBar = false;
+            cbKolajOdchod.SelectedIndexChanged += cbKolajOdchod_SelectedIndexChanged;
+            // 
+            // cbKolajPrichod
+            // 
+            cbKolajPrichod.DropDownSelectedRowBackColor = Color.Empty;
+            cbKolajPrichod.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbKolajPrichod.FormattingEnabled = true;
+            resources.ApplyResources(cbKolajPrichod, "cbKolajPrichod");
+            cbKolajPrichod.Name = "cbKolajPrichod";
+            cbKolajPrichod.StyleDisabled.ArrowColor = null;
+            cbKolajPrichod.StyleDisabled.BackColor = null;
+            cbKolajPrichod.StyleDisabled.BorderColor = null;
+            cbKolajPrichod.StyleDisabled.ButtonBackColor = null;
+            cbKolajPrichod.StyleDisabled.ButtonBorderColor = null;
+            cbKolajPrichod.StyleDisabled.ButtonRenderFirst = null;
+            cbKolajPrichod.StyleDisabled.ForeColor = null;
+            cbKolajPrichod.StyleHighlight.ArrowColor = null;
+            cbKolajPrichod.StyleHighlight.BackColor = null;
+            cbKolajPrichod.StyleHighlight.BorderColor = null;
+            cbKolajPrichod.StyleHighlight.ButtonBackColor = null;
+            cbKolajPrichod.StyleHighlight.ButtonBorderColor = null;
+            cbKolajPrichod.StyleHighlight.ButtonRenderFirst = null;
+            cbKolajPrichod.StyleHighlight.ForeColor = null;
+            cbKolajPrichod.StyleNormal.ArrowColor = null;
+            cbKolajPrichod.StyleNormal.BackColor = null;
+            cbKolajPrichod.StyleNormal.BorderColor = null;
+            cbKolajPrichod.StyleNormal.ButtonBackColor = null;
+            cbKolajPrichod.StyleNormal.ButtonBorderColor = null;
+            cbKolajPrichod.StyleNormal.ButtonRenderFirst = null;
+            cbKolajPrichod.StyleNormal.ForeColor = null;
+            cbKolajPrichod.StyleSelected.ArrowColor = null;
+            cbKolajPrichod.StyleSelected.BackColor = null;
+            cbKolajPrichod.StyleSelected.BorderColor = null;
+            cbKolajPrichod.StyleSelected.ButtonBackColor = null;
+            cbKolajPrichod.StyleSelected.ButtonBorderColor = null;
+            cbKolajPrichod.StyleSelected.ButtonRenderFirst = null;
+            cbKolajPrichod.StyleSelected.ForeColor = null;
+            cbKolajPrichod.UseDarkScrollBar = false;
+            cbKolajPrichod.SelectedIndexChanged += cbKolajPrichod_SelectedIndexChanged;
+            // 
+            // label4
+            // 
+            resources.ApplyResources(label4, "label4");
+            label4.Name = "label4";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(label5, "label5");
+            label5.Name = "label5";
+            // 
+            // groupBox1
+            // 
+            resources.ApplyResources(groupBox1, "groupBox1");
+            groupBox1.Controls.Add(cbNazov);
+            groupBox1.Controls.Add(cbDopravca);
+            groupBox1.Controls.Add(cbTyp);
+            groupBox1.Controls.Add(tbCislo);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label3);
+            groupBox1.DisabledForeColor = SystemColors.GrayText;
+            groupBox1.Name = "groupBox1";
+            groupBox1.TabStop = false;
+            // 
+            // cbNazov
+            // 
+            cbNazov.DropDownSelectedRowBackColor = Color.Empty;
+            cbNazov.FormattingEnabled = true;
+            resources.ApplyResources(cbNazov, "cbNazov");
+            cbNazov.Name = "cbNazov";
+            cbNazov.StyleDisabled.ArrowColor = null;
+            cbNazov.StyleDisabled.BackColor = null;
+            cbNazov.StyleDisabled.BorderColor = null;
+            cbNazov.StyleDisabled.ButtonBackColor = null;
+            cbNazov.StyleDisabled.ButtonBorderColor = null;
+            cbNazov.StyleDisabled.ButtonRenderFirst = null;
+            cbNazov.StyleDisabled.ForeColor = null;
+            cbNazov.StyleHighlight.ArrowColor = null;
+            cbNazov.StyleHighlight.BackColor = null;
+            cbNazov.StyleHighlight.BorderColor = null;
+            cbNazov.StyleHighlight.ButtonBackColor = null;
+            cbNazov.StyleHighlight.ButtonBorderColor = null;
+            cbNazov.StyleHighlight.ButtonRenderFirst = null;
+            cbNazov.StyleHighlight.ForeColor = null;
+            cbNazov.StyleNormal.ArrowColor = null;
+            cbNazov.StyleNormal.BackColor = null;
+            cbNazov.StyleNormal.BorderColor = null;
+            cbNazov.StyleNormal.ButtonBackColor = null;
+            cbNazov.StyleNormal.ButtonBorderColor = null;
+            cbNazov.StyleNormal.ButtonRenderFirst = null;
+            cbNazov.StyleNormal.ForeColor = null;
+            cbNazov.StyleSelected.ArrowColor = null;
+            cbNazov.StyleSelected.BackColor = null;
+            cbNazov.StyleSelected.BorderColor = null;
+            cbNazov.StyleSelected.ButtonBackColor = null;
+            cbNazov.StyleSelected.ButtonBorderColor = null;
+            cbNazov.StyleSelected.ButtonRenderFirst = null;
+            cbNazov.StyleSelected.ForeColor = null;
+            cbNazov.UseDarkScrollBar = false;
+            // 
+            // cbDopravca
+            // 
+            cbDopravca.DropDownSelectedRowBackColor = Color.Empty;
+            cbDopravca.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbDopravca.FormattingEnabled = true;
+            resources.ApplyResources(cbDopravca, "cbDopravca");
+            cbDopravca.Name = "cbDopravca";
+            cbDopravca.StyleDisabled.ArrowColor = null;
+            cbDopravca.StyleDisabled.BackColor = null;
+            cbDopravca.StyleDisabled.BorderColor = null;
+            cbDopravca.StyleDisabled.ButtonBackColor = null;
+            cbDopravca.StyleDisabled.ButtonBorderColor = null;
+            cbDopravca.StyleDisabled.ButtonRenderFirst = null;
+            cbDopravca.StyleDisabled.ForeColor = null;
+            cbDopravca.StyleHighlight.ArrowColor = null;
+            cbDopravca.StyleHighlight.BackColor = null;
+            cbDopravca.StyleHighlight.BorderColor = null;
+            cbDopravca.StyleHighlight.ButtonBackColor = null;
+            cbDopravca.StyleHighlight.ButtonBorderColor = null;
+            cbDopravca.StyleHighlight.ButtonRenderFirst = null;
+            cbDopravca.StyleHighlight.ForeColor = null;
+            cbDopravca.StyleNormal.ArrowColor = null;
+            cbDopravca.StyleNormal.BackColor = null;
+            cbDopravca.StyleNormal.BorderColor = null;
+            cbDopravca.StyleNormal.ButtonBackColor = null;
+            cbDopravca.StyleNormal.ButtonBorderColor = null;
+            cbDopravca.StyleNormal.ButtonRenderFirst = null;
+            cbDopravca.StyleNormal.ForeColor = null;
+            cbDopravca.StyleSelected.ArrowColor = null;
+            cbDopravca.StyleSelected.BackColor = null;
+            cbDopravca.StyleSelected.BorderColor = null;
+            cbDopravca.StyleSelected.ButtonBackColor = null;
+            cbDopravca.StyleSelected.ButtonBorderColor = null;
+            cbDopravca.StyleSelected.ButtonRenderFirst = null;
+            cbDopravca.StyleSelected.ForeColor = null;
+            cbDopravca.UseDarkScrollBar = false;
+            // 
+            // cbTyp
+            // 
+            cbTyp.DropDownSelectedRowBackColor = Color.Empty;
+            cbTyp.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbTyp.FormattingEnabled = true;
+            resources.ApplyResources(cbTyp, "cbTyp");
+            cbTyp.Name = "cbTyp";
+            cbTyp.StyleDisabled.ArrowColor = null;
+            cbTyp.StyleDisabled.BackColor = null;
+            cbTyp.StyleDisabled.BorderColor = null;
+            cbTyp.StyleDisabled.ButtonBackColor = null;
+            cbTyp.StyleDisabled.ButtonBorderColor = null;
+            cbTyp.StyleDisabled.ButtonRenderFirst = null;
+            cbTyp.StyleDisabled.ForeColor = null;
+            cbTyp.StyleHighlight.ArrowColor = null;
+            cbTyp.StyleHighlight.BackColor = null;
+            cbTyp.StyleHighlight.BorderColor = null;
+            cbTyp.StyleHighlight.ButtonBackColor = null;
+            cbTyp.StyleHighlight.ButtonBorderColor = null;
+            cbTyp.StyleHighlight.ButtonRenderFirst = null;
+            cbTyp.StyleHighlight.ForeColor = null;
+            cbTyp.StyleNormal.ArrowColor = null;
+            cbTyp.StyleNormal.BackColor = null;
+            cbTyp.StyleNormal.BorderColor = null;
+            cbTyp.StyleNormal.ButtonBackColor = null;
+            cbTyp.StyleNormal.ButtonBorderColor = null;
+            cbTyp.StyleNormal.ButtonRenderFirst = null;
+            cbTyp.StyleNormal.ForeColor = null;
+            cbTyp.StyleSelected.ArrowColor = null;
+            cbTyp.StyleSelected.BackColor = null;
+            cbTyp.StyleSelected.BorderColor = null;
+            cbTyp.StyleSelected.ButtonBackColor = null;
+            cbTyp.StyleSelected.ButtonBorderColor = null;
+            cbTyp.StyleSelected.ButtonRenderFirst = null;
+            cbTyp.StyleSelected.ForeColor = null;
+            cbTyp.UseDarkScrollBar = false;
+            // 
+            // tbCislo
+            // 
+            tbCislo.BackColor = SystemColors.Window;
+            tbCislo.BorderColor = Color.DimGray;
+            tbCislo.DisabledBackColor = SystemColors.Control;
+            tbCislo.DisabledBorderColor = SystemColors.InactiveBorder;
+            tbCislo.DisabledForeColor = SystemColors.GrayText;
+            tbCislo.HighlightColor = SystemColors.Highlight;
+            tbCislo.HintForeColor = SystemColors.GrayText;
+            tbCislo.HintText = "";
+            resources.ApplyResources(tbCislo, "tbCislo");
+            tbCislo.Name = "tbCislo";
+            tbCislo.TextChanged += tbCislo_TextChanged;
+            tbCislo.Validated += tbCislo_Validated;
+            // 
+            // label6
+            // 
+            resources.ApplyResources(label6, "label6");
+            label6.Name = "label6";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
+            // 
+            // tabPage2
+            // 
+            tabPage2.BackColor = Color.Transparent;
+            tabPage2.Controls.Add(cbZoSmeruCustom);
+            tabPage2.Controls.Add(dgvTrasaZo);
+            tabPage2.Controls.Add(bDeleteZo);
+            tabPage2.Controls.Add(bAddZo);
+            tabPage2.Controls.Add(bNeskorZo);
+            tabPage2.Controls.Add(bSkorZo);
+            tabPage2.Controls.Add(listStaniceZo);
+            tabPage2.Controls.Add(label13);
+            tabPage2.Controls.Add(label12);
+            resources.ApplyResources(tabPage2, "tabPage2");
+            tabPage2.Name = "tabPage2";
+            // 
+            // cbZoSmeruCustom
+            // 
+            resources.ApplyResources(cbZoSmeruCustom, "cbZoSmeruCustom");
+            cbZoSmeruCustom.BoxBackColor = Color.White;
+            cbZoSmeruCustom.HighlightColor = SystemColors.Highlight;
+            cbZoSmeruCustom.Name = "cbZoSmeruCustom";
+            cbZoSmeruCustom.UseVisualStyleBackColor = true;
+            cbZoSmeruCustom.CheckedChanged += cbZoSmeruCustom_CheckedChanged;
+            // 
+            // dgvTrasaZo
+            // 
+            dgvTrasaZo.AllowUserToAddRows = false;
+            dgvTrasaZo.AllowUserToResizeRows = false;
+            dgvTrasaZo.AutoGenerateColumns = false;
+            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = SystemColors.Control;
+            dataGridViewCellStyle16.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle16.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.True;
+            dgvTrasaZo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dgvTrasaZo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTrasaZo.Columns.AddRange(new DataGridViewColumn[] { isVDlhomHlaseniDataGridViewCheckBoxColumn2, isVKratkomHlaseniDataGridViewCheckBoxColumn2, nameDataGridViewTextBoxColumn2 });
+            dgvTrasaZo.DataSource = stanicaBindingSource;
+            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = SystemColors.Window;
+            dataGridViewCellStyle17.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle17.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.False;
+            dgvTrasaZo.DefaultCellStyle = dataGridViewCellStyle17;
+            resources.ApplyResources(dgvTrasaZo, "dgvTrasaZo");
+            dgvTrasaZo.MultiSelect = false;
+            dgvTrasaZo.Name = "dgvTrasaZo";
+            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = SystemColors.Control;
+            dataGridViewCellStyle18.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle18.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.True;
+            dgvTrasaZo.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dgvTrasaZo.RowHeadersVisible = false;
+            dgvTrasaZo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTrasaZo.CellDoubleClick += dgvTrasaZo_CellDoubleClick;
+            // 
+            // isVDlhomHlaseniDataGridViewCheckBoxColumn2
+            // 
+            isVDlhomHlaseniDataGridViewCheckBoxColumn2.DataPropertyName = "IsInLongReport";
+            resources.ApplyResources(isVDlhomHlaseniDataGridViewCheckBoxColumn2, "isVDlhomHlaseniDataGridViewCheckBoxColumn2");
+            isVDlhomHlaseniDataGridViewCheckBoxColumn2.HighlightColor = Color.FromArgb(0, 120, 215);
+            isVDlhomHlaseniDataGridViewCheckBoxColumn2.Name = "isVDlhomHlaseniDataGridViewCheckBoxColumn2";
+            isVDlhomHlaseniDataGridViewCheckBoxColumn2.SquareBackColor = Color.White;
+            // 
+            // isVKratkomHlaseniDataGridViewCheckBoxColumn2
+            // 
+            isVKratkomHlaseniDataGridViewCheckBoxColumn2.DataPropertyName = "IsInShortReport";
+            resources.ApplyResources(isVKratkomHlaseniDataGridViewCheckBoxColumn2, "isVKratkomHlaseniDataGridViewCheckBoxColumn2");
+            isVKratkomHlaseniDataGridViewCheckBoxColumn2.HighlightColor = Color.FromArgb(0, 120, 215);
+            isVKratkomHlaseniDataGridViewCheckBoxColumn2.Name = "isVKratkomHlaseniDataGridViewCheckBoxColumn2";
+            isVKratkomHlaseniDataGridViewCheckBoxColumn2.SquareBackColor = Color.White;
+            // 
+            // nameDataGridViewTextBoxColumn2
+            // 
+            nameDataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nameDataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            resources.ApplyResources(nameDataGridViewTextBoxColumn2, "nameDataGridViewTextBoxColumn2");
+            nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
+            nameDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // stanicaBindingSource
+            // 
+            stanicaBindingSource.DataSource = typeof(Station);
+            // 
+            // bDeleteZo
+            // 
+            resources.ApplyResources(bDeleteZo, "bDeleteZo");
+            bDeleteZo.Name = "bDeleteZo";
+            bDeleteZo.UseVisualStyleBackColor = true;
+            bDeleteZo.Click += bDeleteZo_Click;
+            // 
+            // bAddZo
+            // 
+            resources.ApplyResources(bAddZo, "bAddZo");
+            bAddZo.Name = "bAddZo";
+            bAddZo.UseVisualStyleBackColor = true;
+            bAddZo.Click += bAddZo_Click;
+            // 
+            // bNeskorZo
+            // 
+            resources.ApplyResources(bNeskorZo, "bNeskorZo");
+            bNeskorZo.Name = "bNeskorZo";
+            bNeskorZo.UseVisualStyleBackColor = true;
+            bNeskorZo.Click += bNeskorZo_Click;
+            // 
+            // bSkorZo
+            // 
+            resources.ApplyResources(bSkorZo, "bSkorZo");
+            bSkorZo.Name = "bSkorZo";
+            bSkorZo.UseVisualStyleBackColor = true;
+            bSkorZo.Click += bSkorZo_Click;
+            // 
+            // listStaniceZo
+            // 
+            listStaniceZo.FormattingEnabled = true;
+            resources.ApplyResources(listStaniceZo, "listStaniceZo");
+            listStaniceZo.Name = "listStaniceZo";
+            listStaniceZo.Sorted = true;
+            listStaniceZo.DoubleClick += listStaniceZo_DoubleClick;
+            listStaniceZo.KeyPress += listStaniceZo_KeyPress;
+            // 
+            // label13
+            // 
+            resources.ApplyResources(label13, "label13");
+            label13.Name = "label13";
+            // 
+            // label12
+            // 
+            resources.ApplyResources(label12, "label12");
+            label12.Name = "label12";
+            // 
+            // tabPage3
+            // 
+            tabPage3.BackColor = Color.Transparent;
+            tabPage3.Controls.Add(cbDoSmeruCustom);
+            tabPage3.Controls.Add(dgvTrasaDo);
+            tabPage3.Controls.Add(bDeleteDo);
+            tabPage3.Controls.Add(bAddDo);
+            tabPage3.Controls.Add(bNeskorDo);
+            tabPage3.Controls.Add(bSkorDo);
+            tabPage3.Controls.Add(listStaniceDo);
+            tabPage3.Controls.Add(label14);
+            tabPage3.Controls.Add(label15);
+            resources.ApplyResources(tabPage3, "tabPage3");
+            tabPage3.Name = "tabPage3";
+            // 
+            // cbDoSmeruCustom
+            // 
+            resources.ApplyResources(cbDoSmeruCustom, "cbDoSmeruCustom");
+            cbDoSmeruCustom.BoxBackColor = Color.White;
+            cbDoSmeruCustom.HighlightColor = SystemColors.Highlight;
+            cbDoSmeruCustom.Name = "cbDoSmeruCustom";
+            cbDoSmeruCustom.UseVisualStyleBackColor = true;
+            cbDoSmeruCustom.CheckedChanged += cbDoSmeruCustom_CheckedChanged;
+            // 
+            // dgvTrasaDo
+            // 
+            dgvTrasaDo.AllowUserToAddRows = false;
+            dgvTrasaDo.AllowUserToResizeRows = false;
+            dgvTrasaDo.AutoGenerateColumns = false;
+            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = SystemColors.Control;
+            dataGridViewCellStyle19.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle19.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = DataGridViewTriState.True;
+            dgvTrasaDo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dgvTrasaDo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTrasaDo.Columns.AddRange(new DataGridViewColumn[] { isVDlhomHlaseniDataGridViewCheckBoxColumn3, isVKratkomHlaseniDataGridViewCheckBoxColumn3, nameDataGridViewTextBoxColumn3 });
+            dgvTrasaDo.DataSource = stanicaBindingSource;
+            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = SystemColors.Window;
+            dataGridViewCellStyle20.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle20.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = DataGridViewTriState.False;
+            dgvTrasaDo.DefaultCellStyle = dataGridViewCellStyle20;
+            resources.ApplyResources(dgvTrasaDo, "dgvTrasaDo");
+            dgvTrasaDo.MultiSelect = false;
+            dgvTrasaDo.Name = "dgvTrasaDo";
+            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = SystemColors.Control;
+            dataGridViewCellStyle21.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle21.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.True;
+            dgvTrasaDo.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dgvTrasaDo.RowHeadersVisible = false;
+            dgvTrasaDo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTrasaDo.CellDoubleClick += dgvTrasaDo_CellDoubleClick;
+            // 
+            // isVDlhomHlaseniDataGridViewCheckBoxColumn3
+            // 
+            isVDlhomHlaseniDataGridViewCheckBoxColumn3.DataPropertyName = "IsInLongReport";
+            resources.ApplyResources(isVDlhomHlaseniDataGridViewCheckBoxColumn3, "isVDlhomHlaseniDataGridViewCheckBoxColumn3");
+            isVDlhomHlaseniDataGridViewCheckBoxColumn3.HighlightColor = Color.FromArgb(0, 120, 215);
+            isVDlhomHlaseniDataGridViewCheckBoxColumn3.Name = "isVDlhomHlaseniDataGridViewCheckBoxColumn3";
+            isVDlhomHlaseniDataGridViewCheckBoxColumn3.SquareBackColor = Color.White;
+            // 
+            // isVKratkomHlaseniDataGridViewCheckBoxColumn3
+            // 
+            isVKratkomHlaseniDataGridViewCheckBoxColumn3.DataPropertyName = "IsInShortReport";
+            resources.ApplyResources(isVKratkomHlaseniDataGridViewCheckBoxColumn3, "isVKratkomHlaseniDataGridViewCheckBoxColumn3");
+            isVKratkomHlaseniDataGridViewCheckBoxColumn3.HighlightColor = Color.FromArgb(0, 120, 215);
+            isVKratkomHlaseniDataGridViewCheckBoxColumn3.Name = "isVKratkomHlaseniDataGridViewCheckBoxColumn3";
+            isVKratkomHlaseniDataGridViewCheckBoxColumn3.SquareBackColor = Color.White;
+            // 
+            // nameDataGridViewTextBoxColumn3
+            // 
+            nameDataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nameDataGridViewTextBoxColumn3.DataPropertyName = "Name";
+            resources.ApplyResources(nameDataGridViewTextBoxColumn3, "nameDataGridViewTextBoxColumn3");
+            nameDataGridViewTextBoxColumn3.Name = "nameDataGridViewTextBoxColumn3";
+            nameDataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // bDeleteDo
+            // 
+            resources.ApplyResources(bDeleteDo, "bDeleteDo");
+            bDeleteDo.Name = "bDeleteDo";
+            bDeleteDo.UseVisualStyleBackColor = true;
+            bDeleteDo.Click += bDeleteDo_Click;
+            // 
+            // bAddDo
+            // 
+            resources.ApplyResources(bAddDo, "bAddDo");
+            bAddDo.Name = "bAddDo";
+            bAddDo.UseVisualStyleBackColor = true;
+            bAddDo.Click += bAddDo_Click;
+            // 
+            // bNeskorDo
+            // 
+            resources.ApplyResources(bNeskorDo, "bNeskorDo");
+            bNeskorDo.Name = "bNeskorDo";
+            bNeskorDo.UseVisualStyleBackColor = true;
+            bNeskorDo.Click += bNeskorDo_Click;
+            // 
+            // bSkorDo
+            // 
+            resources.ApplyResources(bSkorDo, "bSkorDo");
+            bSkorDo.Name = "bSkorDo";
+            bSkorDo.UseVisualStyleBackColor = true;
+            bSkorDo.Click += bSkorDo_Click;
+            // 
+            // listStaniceDo
+            // 
+            listStaniceDo.FormattingEnabled = true;
+            resources.ApplyResources(listStaniceDo, "listStaniceDo");
+            listStaniceDo.Name = "listStaniceDo";
+            listStaniceDo.Sorted = true;
+            listStaniceDo.DoubleClick += listStaniceDo_DoubleClick;
+            listStaniceDo.KeyPress += listStaniceDo_KeyPress;
+            // 
+            // label14
+            // 
+            resources.ApplyResources(label14, "label14");
+            label14.Name = "label14";
+            // 
+            // label15
+            // 
+            resources.ApplyResources(label15, "label15");
+            label15.Name = "label15";
+            // 
+            // tabPage5
+            // 
+            tabPage5.BackColor = Color.Transparent;
+            tabPage5.Controls.Add(dgvDoplnokSet);
+            tabPage5.Controls.Add(bDoplnkyDelete);
+            tabPage5.Controls.Add(label20);
+            tabPage5.Controls.Add(bDoplnkyEdit);
+            tabPage5.Controls.Add(bDoplnkyAdd);
+            tabPage5.Controls.Add(listVybrateDoplnky);
+            tabPage5.Controls.Add(label19);
+            tabPage5.Controls.Add(label18);
+            tabPage5.Controls.Add(tbTextDoplnku);
+            tabPage5.Controls.Add(listAllDoplnky);
+            tabPage5.Controls.Add(label17);
+            resources.ApplyResources(tabPage5, "tabPage5");
+            tabPage5.Name = "tabPage5";
+            // 
+            // dgvDoplnokSet
+            // 
+            dgvDoplnokSet.AllowUserToAddRows = false;
+            dgvDoplnokSet.AllowUserToDeleteRows = false;
+            dgvDoplnokSet.AllowUserToResizeRows = false;
+            dataGridViewCellStyle22.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = SystemColors.Control;
+            dataGridViewCellStyle22.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle22.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = DataGridViewTriState.True;
+            dgvDoplnokSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dgvDoplnokSet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle23.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = SystemColors.Window;
+            dataGridViewCellStyle23.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle23.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = DataGridViewTriState.False;
+            dgvDoplnokSet.DefaultCellStyle = dataGridViewCellStyle23;
+            resources.ApplyResources(dgvDoplnokSet, "dgvDoplnokSet");
+            dgvDoplnokSet.Name = "dgvDoplnokSet";
+            dataGridViewCellStyle24.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = SystemColors.Control;
+            dataGridViewCellStyle24.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle24.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = DataGridViewTriState.True;
+            dgvDoplnokSet.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dgvDoplnokSet.RowHeadersVisible = false;
+            dgvDoplnokSet.RowTemplate.Height = 24;
+            // 
+            // bDoplnkyDelete
+            // 
+            resources.ApplyResources(bDoplnkyDelete, "bDoplnkyDelete");
+            bDoplnkyDelete.Name = "bDoplnkyDelete";
+            bDoplnkyDelete.UseVisualStyleBackColor = true;
+            bDoplnkyDelete.Click += bDoplnkyDelete_Click;
+            // 
+            // label20
+            // 
+            resources.ApplyResources(label20, "label20");
+            label20.Name = "label20";
+            // 
+            // bDoplnkyEdit
+            // 
+            resources.ApplyResources(bDoplnkyEdit, "bDoplnkyEdit");
+            bDoplnkyEdit.Name = "bDoplnkyEdit";
+            bDoplnkyEdit.UseVisualStyleBackColor = true;
+            bDoplnkyEdit.Click += bDoplnkyEdit_Click;
+            // 
+            // bDoplnkyAdd
+            // 
+            resources.ApplyResources(bDoplnkyAdd, "bDoplnkyAdd");
+            bDoplnkyAdd.Name = "bDoplnkyAdd";
+            bDoplnkyAdd.UseVisualStyleBackColor = true;
+            bDoplnkyAdd.Click += bDoplnkyAdd_Click;
+            // 
+            // listVybrateDoplnky
+            // 
+            listVybrateDoplnky.FormattingEnabled = true;
+            resources.ApplyResources(listVybrateDoplnky, "listVybrateDoplnky");
+            listVybrateDoplnky.Name = "listVybrateDoplnky";
+            listVybrateDoplnky.SelectedIndexChanged += listVybrateDoplnky_SelectedIndexChanged;
+            listVybrateDoplnky.DoubleClick += listVybrateDoplnky_DoubleClick;
+            // 
+            // label19
+            // 
+            resources.ApplyResources(label19, "label19");
+            label19.Name = "label19";
+            // 
+            // label18
+            // 
+            resources.ApplyResources(label18, "label18");
+            label18.Name = "label18";
+            // 
+            // tbTextDoplnku
+            // 
+            tbTextDoplnku.BorderColor = Color.DimGray;
+            tbTextDoplnku.BorderStyle = BorderStyle.FixedSingle;
+            tbTextDoplnku.DisabledBackColor = SystemColors.Control;
+            tbTextDoplnku.DisabledBorderColor = SystemColors.InactiveBorder;
+            tbTextDoplnku.DisabledForeColor = SystemColors.GrayText;
+            tbTextDoplnku.HighlightColor = SystemColors.Highlight;
+            tbTextDoplnku.HintForeColor = SystemColors.GrayText;
+            tbTextDoplnku.HintText = null;
+            resources.ApplyResources(tbTextDoplnku, "tbTextDoplnku");
+            tbTextDoplnku.Name = "tbTextDoplnku";
+            tbTextDoplnku.ReadOnly = true;
+            // 
+            // listAllDoplnky
+            // 
+            listAllDoplnky.FormattingEnabled = true;
+            resources.ApplyResources(listAllDoplnky, "listAllDoplnky");
+            listAllDoplnky.Name = "listAllDoplnky";
+            listAllDoplnky.SelectedIndexChanged += listAllDoplnky_SelectedIndexChanged;
+            listAllDoplnky.DoubleClick += listAllDoplnky_DoubleClick;
+            // 
+            // label17
+            // 
+            resources.ApplyResources(label17, "label17");
+            label17.Name = "label17";
+            // 
+            // tabPage4
+            // 
+            tabPage4.BackColor = Color.Transparent;
+            tabPage4.Controls.Add(cbRadenieEndStation);
+            tabPage4.Controls.Add(bEditLimitRadenie);
+            tabPage4.Controls.Add(label26);
+            tabPage4.Controls.Add(dgvRadenieSet);
+            tabPage4.Controls.Add(bPlay);
+            tabPage4.Controls.Add(bEditRadenie);
+            tabPage4.Controls.Add(dtpRadenieDo);
+            tabPage4.Controls.Add(dtpRadenieOd);
+            tabPage4.Controls.Add(label27);
+            tabPage4.Controls.Add(label25);
+            tabPage4.Controls.Add(tbDateRemRadenie);
+            tabPage4.Controls.Add(label24);
+            tabPage4.Controls.Add(bRadenieAdd);
+            tabPage4.Controls.Add(label23);
+            tabPage4.Controls.Add(listRadenia);
+            tabPage4.Controls.Add(label22);
+            tabPage4.Controls.Add(bRadenieDelete);
+            tabPage4.Controls.Add(bRadenieEdit);
+            tabPage4.Controls.Add(tbRadenie);
+            tabPage4.Controls.Add(label21);
+            resources.ApplyResources(tabPage4, "tabPage4");
+            tabPage4.Name = "tabPage4";
+            // 
+            // cbRadenieEndStation
+            // 
+            cbRadenieEndStation.DropDownSelectedRowBackColor = SystemColors.Highlight;
+            cbRadenieEndStation.FormattingEnabled = true;
+            resources.ApplyResources(cbRadenieEndStation, "cbRadenieEndStation");
+            cbRadenieEndStation.Name = "cbRadenieEndStation";
+            cbRadenieEndStation.StyleDisabled.ArrowColor = null;
+            cbRadenieEndStation.StyleDisabled.BackColor = null;
+            cbRadenieEndStation.StyleDisabled.BorderColor = null;
+            cbRadenieEndStation.StyleDisabled.ButtonBackColor = null;
+            cbRadenieEndStation.StyleDisabled.ButtonBorderColor = null;
+            cbRadenieEndStation.StyleDisabled.ButtonRenderFirst = null;
+            cbRadenieEndStation.StyleDisabled.ForeColor = null;
+            cbRadenieEndStation.StyleHighlight.ArrowColor = null;
+            cbRadenieEndStation.StyleHighlight.BackColor = null;
+            cbRadenieEndStation.StyleHighlight.BorderColor = null;
+            cbRadenieEndStation.StyleHighlight.ButtonBackColor = null;
+            cbRadenieEndStation.StyleHighlight.ButtonBorderColor = null;
+            cbRadenieEndStation.StyleHighlight.ButtonRenderFirst = null;
+            cbRadenieEndStation.StyleHighlight.ForeColor = null;
+            cbRadenieEndStation.StyleNormal.ArrowColor = null;
+            cbRadenieEndStation.StyleNormal.BackColor = null;
+            cbRadenieEndStation.StyleNormal.BorderColor = null;
+            cbRadenieEndStation.StyleNormal.ButtonBackColor = null;
+            cbRadenieEndStation.StyleNormal.ButtonBorderColor = null;
+            cbRadenieEndStation.StyleNormal.ButtonRenderFirst = null;
+            cbRadenieEndStation.StyleNormal.ForeColor = null;
+            cbRadenieEndStation.StyleSelected.ArrowColor = null;
+            cbRadenieEndStation.StyleSelected.BackColor = null;
+            cbRadenieEndStation.StyleSelected.BorderColor = null;
+            cbRadenieEndStation.StyleSelected.ButtonBackColor = null;
+            cbRadenieEndStation.StyleSelected.ButtonBorderColor = null;
+            cbRadenieEndStation.StyleSelected.ButtonRenderFirst = null;
+            cbRadenieEndStation.StyleSelected.ForeColor = null;
+            cbRadenieEndStation.UseDarkScrollBar = false;
+            // 
+            // bEditLimitRadenie
+            // 
+            resources.ApplyResources(bEditLimitRadenie, "bEditLimitRadenie");
+            bEditLimitRadenie.Name = "bEditLimitRadenie";
+            bEditLimitRadenie.UseVisualStyleBackColor = true;
+            bEditLimitRadenie.Click += BEditLimitRadenie_Click;
+            // 
+            // label26
+            // 
+            resources.ApplyResources(label26, "label26");
+            label26.Name = "label26";
+            // 
+            // dgvRadenieSet
+            // 
+            dgvRadenieSet.AllowUserToAddRows = false;
+            dgvRadenieSet.AllowUserToDeleteRows = false;
+            dgvRadenieSet.AllowUserToResizeRows = false;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = SystemColors.Control;
+            dataGridViewCellStyle13.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle13.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
+            dgvRadenieSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dgvRadenieSet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = SystemColors.Window;
+            dataGridViewCellStyle14.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle14.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.False;
+            dgvRadenieSet.DefaultCellStyle = dataGridViewCellStyle14;
+            resources.ApplyResources(dgvRadenieSet, "dgvRadenieSet");
+            dgvRadenieSet.Name = "dgvRadenieSet";
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = SystemColors.Control;
+            dataGridViewCellStyle15.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle15.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
+            dgvRadenieSet.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dgvRadenieSet.RowHeadersVisible = false;
+            dgvRadenieSet.RowTemplate.Height = 24;
+            // 
+            // bPlay
+            // 
+            resources.ApplyResources(bPlay, "bPlay");
+            bPlay.Name = "bPlay";
+            bPlay.UseVisualStyleBackColor = true;
+            bPlay.Click += bPlay_Click;
+            // 
+            // bEditRadenie
+            // 
+            resources.ApplyResources(bEditRadenie, "bEditRadenie");
+            bEditRadenie.Name = "bEditRadenie";
+            bEditRadenie.UseVisualStyleBackColor = true;
+            bEditRadenie.Click += bEditRadenie_Click;
+            // 
+            // dtpRadenieDo
+            // 
+            // 
+            // 
+            // 
+            dtpRadenieDo.Calendar.HighlightColor = Color.Empty;
+            dtpRadenieDo.Calendar.HighlightForeColor = Color.Empty;
+            dtpRadenieDo.Calendar.Location = (Point)resources.GetObject("dtpRadenieDo.Calendar.Location");
+            dtpRadenieDo.Calendar.Name = "";
+            dtpRadenieDo.Calendar.Size = (Size)resources.GetObject("dtpRadenieDo.Calendar.Size");
+            dtpRadenieDo.Calendar.TabIndex = (int)resources.GetObject("dtpRadenieDo.Calendar.TabIndex");
+            dtpRadenieDo.Calendar.TodayBorderColor = Color.Empty;
+            dtpRadenieDo.DisabledBackColor = SystemColors.Control;
+            dtpRadenieDo.DisabledForeColor = SystemColors.GrayText;
+            dtpRadenieDo.Format = DateTimePickerFormat.Short;
+            dtpRadenieDo.HighlightColor = SystemColors.Highlight;
+            resources.ApplyResources(dtpRadenieDo, "dtpRadenieDo");
+            dtpRadenieDo.Name = "dtpRadenieDo";
+            dtpRadenieDo.SelectedFieldBackColor = SystemColors.Highlight;
+            dtpRadenieDo.SelectedFieldForeColor = SystemColors.HighlightText;
+            // 
+            // dtpRadenieOd
+            // 
+            // 
+            // 
+            // 
+            dtpRadenieOd.Calendar.HighlightColor = Color.Empty;
+            dtpRadenieOd.Calendar.HighlightForeColor = Color.Empty;
+            dtpRadenieOd.Calendar.Location = (Point)resources.GetObject("dtpRadenieOd.Calendar.Location");
+            dtpRadenieOd.Calendar.Name = "";
+            dtpRadenieOd.Calendar.Size = (Size)resources.GetObject("dtpRadenieOd.Calendar.Size");
+            dtpRadenieOd.Calendar.TabIndex = (int)resources.GetObject("dtpRadenieOd.Calendar.TabIndex");
+            dtpRadenieOd.Calendar.TodayBorderColor = Color.Empty;
+            dtpRadenieOd.DisabledBackColor = SystemColors.Control;
+            dtpRadenieOd.DisabledForeColor = SystemColors.GrayText;
+            dtpRadenieOd.Format = DateTimePickerFormat.Short;
+            dtpRadenieOd.HighlightColor = SystemColors.Highlight;
+            resources.ApplyResources(dtpRadenieOd, "dtpRadenieOd");
+            dtpRadenieOd.Name = "dtpRadenieOd";
+            dtpRadenieOd.SelectedFieldBackColor = SystemColors.Highlight;
+            dtpRadenieOd.SelectedFieldForeColor = SystemColors.HighlightText;
+            // 
+            // label27
+            // 
+            resources.ApplyResources(label27, "label27");
+            label27.Name = "label27";
+            // 
+            // label25
+            // 
+            resources.ApplyResources(label25, "label25");
+            label25.Name = "label25";
+            // 
+            // tbDateRemRadenie
+            // 
+            tbDateRemRadenie.BorderColor = Color.DimGray;
+            tbDateRemRadenie.DisabledBackColor = SystemColors.Control;
+            tbDateRemRadenie.DisabledBorderColor = SystemColors.InactiveBorder;
+            tbDateRemRadenie.DisabledForeColor = SystemColors.GrayText;
+            tbDateRemRadenie.HighlightColor = SystemColors.Highlight;
+            tbDateRemRadenie.HintForeColor = SystemColors.GrayText;
+            tbDateRemRadenie.HintText = null;
+            resources.ApplyResources(tbDateRemRadenie, "tbDateRemRadenie");
+            tbDateRemRadenie.Name = "tbDateRemRadenie";
+            // 
+            // label24
+            // 
+            resources.ApplyResources(label24, "label24");
+            label24.Name = "label24";
+            // 
+            // bRadenieAdd
+            // 
+            resources.ApplyResources(bRadenieAdd, "bRadenieAdd");
+            bRadenieAdd.Name = "bRadenieAdd";
+            bRadenieAdd.UseVisualStyleBackColor = true;
+            bRadenieAdd.Click += bRadenieAdd_Click;
+            // 
+            // label23
+            // 
+            resources.ApplyResources(label23, "label23");
+            label23.Name = "label23";
+            // 
+            // listRadenia
+            // 
+            listRadenia.FormattingEnabled = true;
+            resources.ApplyResources(listRadenia, "listRadenia");
+            listRadenia.Name = "listRadenia";
+            listRadenia.SelectedIndexChanged += listRadenia_SelectedIndexChanged;
+            listRadenia.Format += listRadenia_Format;
+            // 
+            // label22
+            // 
+            resources.ApplyResources(label22, "label22");
+            label22.Name = "label22";
+            // 
+            // bRadenieDelete
+            // 
+            resources.ApplyResources(bRadenieDelete, "bRadenieDelete");
+            bRadenieDelete.Name = "bRadenieDelete";
+            bRadenieDelete.UseVisualStyleBackColor = true;
+            bRadenieDelete.Click += bRadenieDelete_Click;
+            // 
+            // bRadenieEdit
+            // 
+            resources.ApplyResources(bRadenieEdit, "bRadenieEdit");
+            bRadenieEdit.Name = "bRadenieEdit";
+            bRadenieEdit.UseVisualStyleBackColor = true;
+            bRadenieEdit.Click += bRadenieEdit_Click;
+            // 
+            // tbRadenie
+            // 
+            tbRadenie.BorderColor = Color.DimGray;
+            tbRadenie.BorderStyle = BorderStyle.FixedSingle;
+            tbRadenie.DisabledBackColor = SystemColors.Control;
+            tbRadenie.DisabledBorderColor = SystemColors.InactiveBorder;
+            tbRadenie.DisabledForeColor = SystemColors.GrayText;
+            tbRadenie.HighlightColor = SystemColors.Highlight;
+            tbRadenie.HintForeColor = SystemColors.GrayText;
+            tbRadenie.HintText = null;
+            resources.ApplyResources(tbRadenie, "tbRadenie");
+            tbRadenie.Name = "tbRadenie";
+            tbRadenie.ReadOnly = true;
+            // 
+            // label21
+            // 
+            resources.ApplyResources(label21, "label21");
+            label21.Name = "label21";
             // 
             // FEditTrain
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.bSave);
-            this.Controls.Add(this.llCalendar);
-            this.Controls.Add(this.bZrusit);
-            this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.HelpButton = true;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FEditTrain";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.FEditTrain_HelpButtonClicked);
-            this.Load += new System.EventHandler(this.FEditTrain_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudVarianta)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTrasaZo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stanicaBindingSource)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTrasaDo)).EndInit();
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDoplnokSet)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRadenieSet)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(bSave);
+            Controls.Add(llCalendar);
+            Controls.Add(bZrusit);
+            Controls.Add(tabControl1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            HelpButton = true;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FEditTrain";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            HelpButtonClicked += FEditTrain_HelpButtonClicked;
+            Load += FEditTrain_Load;
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
+            ((ISupportInitialize)nudVarianta).EndInit();
+            groupBox4.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            ((ISupportInitialize)dgvTrasaZo).EndInit();
+            ((ISupportInitialize)stanicaBindingSource).EndInit();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
+            ((ISupportInitialize)dgvTrasaDo).EndInit();
+            tabPage5.ResumeLayout(false);
+            tabPage5.PerformLayout();
+            ((ISupportInitialize)dgvDoplnokSet).EndInit();
+            tabPage4.ResumeLayout(false);
+            tabPage4.PerformLayout();
+            ((ISupportInitialize)dgvRadenieSet).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -1523,5 +1611,6 @@ namespace GVDEditor.Forms
         private ExMaskedTextBox mtOdchod;
         private ExButton bEditLimit;
         private ExButton bEditLimitRadenie;
+        private ExComboBox cbRadenieEndStation;
     }
 }

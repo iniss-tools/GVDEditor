@@ -2395,6 +2395,7 @@ internal static class TxtParser
                         if (id == -1)
                         {
                             radenie = null;
+                            riadok++;
                             continue;
                         }
 
@@ -2402,11 +2403,24 @@ internal static class TxtParser
                     }
 
                     radenie.ChosenReports = ReportType.Parse(GlobData.ReportTypes, row[1]);
-                    radenie.ZacPlatnosti = ParseDateAlts(row[2]);
-                    radenie.KonPlatnosti = ParseDateAlts(row[3]);
-                    var dateLimit = new DateLimit(radenie.ZacPlatnosti, radenie.KonPlatnosti, insertMarks: false);
-                    var bit = new BitArray(row[4].Select(c => c == '1').ToArray());
-                    radenie.DatObm = dateLimit.BitArrayToText(bit);
+
+                    // prazdne datumy = radenie plati bez obmedzenia (INISS datum nekontroluje)
+                    var from = row.Count > 2 ? row[2].Trim() : "";
+                    var to = row.Count > 3 ? row[3].Trim() : "";
+                    if (from.Length == 0 && to.Length == 0)
+                    {
+                        radenie.ZacPlatnosti = DateTime.MinValue;
+                        radenie.KonPlatnosti = DateTime.MinValue;
+                        radenie.DatObm = "";
+                    }
+                    else
+                    {
+                        radenie.ZacPlatnosti = ParseDateAlts(from);
+                        radenie.KonPlatnosti = ParseDateAlts(to);
+                        var dateLimit = new DateLimit(radenie.ZacPlatnosti, radenie.KonPlatnosti, insertMarks: false);
+                        var bit = new BitArray((row.Count > 4 ? row[4] : "").Select(c => c == '1').ToArray());
+                        radenie.DatObm = dateLimit.BitArrayToText(bit);
+                    }
                 }
                 else
                 {
@@ -2439,6 +2453,7 @@ internal static class TxtParser
                     {
                         // chybajuca nahravka nezhodi cely grafikon - INISS ju tiez len preskoci
                         LoadWarnings.Add($"{FILE_RAZENI1}, riadok {riadok}: nahrávka {file} sa v zvukovej banke nenachádza, preskakuje sa.");
+                        riadok++; // continue obchadza pocitadlo na konci cyklu - dalsie hlasenia by mali zle cislo riadka
                         continue;
                     }
 
@@ -2494,11 +2509,21 @@ internal static class TxtParser
             }
 
             row.Insert(1, sb.ToString());
-            row.Insert(2, radenie.ZacPlatnosti.ToString("dd.MM.yyyy"));
-            row.Insert(3, radenie.KonPlatnosti.ToString("dd.MM.yyyy"));
-            var dateRem = new DateLimit(radenie.ZacPlatnosti.Date, radenie.KonPlatnosti.Date, insertMarks: false);
-            var bits = dateRem.TextToBitArray(radenie.DatObm);
-            row.Insert(4, BitArrayToString(bits));
+            if (radenie.HasValidity)
+            {
+                row.Insert(2, radenie.ZacPlatnosti.ToString("dd.MM.yyyy"));
+                row.Insert(3, radenie.KonPlatnosti.ToString("dd.MM.yyyy"));
+                var dateRem = new DateLimit(radenie.ZacPlatnosti.Date, radenie.KonPlatnosti.Date, insertMarks: false);
+                var bits = dateRem.TextToBitArray(radenie.DatObm);
+                row.Insert(4, BitArrayToString(bits));
+            }
+            else
+            {
+                // bez obdobia platnosti - zapise sa tak, ako bolo nacitane (prazdne polia)
+                row.Insert(2, "");
+                row.Insert(3, "");
+                row.Insert(4, "");
+            }
             razeni1F.WriteRow(row);
 
             var sbZvuk = new StringBuilder();
