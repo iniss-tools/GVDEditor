@@ -470,7 +470,10 @@
     <value>Přidat</value>
   </data>
   <data name="bSave.Text" xml:space="preserve">
-    <value>OK</value>
+    <value>Uložit</value>
+  </data>
+  <data name="bStorno.Text" xml:space="preserve">
+    <value>Zrušit</value>
   </data>
   <data name="lStateDgmInfo.Text" xml:space="preserve">
     <value>Stavový diagram určuje, jakými stavy vlak ve stanici prochází, jaká tlačítka má obsluha a co se automaticky vyhlásí.</value>

@@ -34,12 +34,25 @@ public partial class FLocalSettings : Form
     private string _shownTrackKey = "";
 
     /// <summary>
+    ///     Novy nazov priecinka grafikonu, ktory tlacidlo Zmenit overilo; priecinok sa premenuje az tlacidlom Ulozit.
+    /// </summary>
+    private string? _pendingDirName;
+
+    /// <summary>
+    ///     Stav dat pred otvorenim okna; ak sa okno nezavrie tlacidlom Ulozit, data sa don vratia.
+    /// </summary>
+    private readonly LocalSettingsSnapshot _snapshot;
+
+    /// <summary>
     ///     Vytvori novy formulár typu <see cref="FLocalSettings"/>.
     /// </summary>
     /// <param name="dir">Aktualny priecinok s grafikonom.</param>
     /// <param name="openIndex">Index TabPage, ktory sa ma otvorit po otvoreni dialogu.</param>
     public FLocalSettings(GVDDirectory dir, int openIndex = -1)
     {
+        // zalozky menia data priamo v GlobData - Zrusit ich vracia z tejto snimky
+        _snapshot = LocalSettingsSnapshot.Capture();
+
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
@@ -227,6 +240,20 @@ public partial class FLocalSettings : Form
             return;
         }
 
+        if (!ValidateGrafikonTab())
+        {
+            DialogResult = DialogResult.None;
+            tabControl.SelectedTab = tpGrafikon;
+            return;
+        }
+
+        if (!RenamePendingDir())
+        {
+            DialogResult = DialogResult.None;
+            tabControl.SelectedTab = tpGrafikon;
+            return;
+        }
+
         var gvdInfo = ThisDir.GVD;
         gvdInfo.StartValidData = dtpDataOd.Value.Date;
         gvdInfo.EndValidData = dtpDataDo.Value.Date;
@@ -245,6 +272,47 @@ public partial class FLocalSettings : Form
         }
 
         DialogResult = DialogResult.OK;
+    }
+
+    /// <summary>
+    ///     Overi obdobia platnosti a vlastnu stanicu na zalozke Grafikon (rovnake pravidla ako pri novom grafikone).
+    /// </summary>
+    private bool ValidateGrafikonTab()
+    {
+        if (dtpDataDo.Value.Date <= dtpDataOd.Value.Date)
+        {
+            Utils.ShowError(Resources.FNewGrafikon_Čas_konca_platnosti_dát_má_byť_neskôr_ako_začiatok_platnosti);
+            return false;
+        }
+
+        if (dtpGVDDo.Value.Date <= dtpGVDOd.Value.Date)
+        {
+            Utils.ShowError(Resources.FNewGrafikon_Čas_konca_platnosti_grafikonu_má_byť_neskôr_ako_začiatok_platnosti);
+            return false;
+        }
+
+        if (!cbCustomStation.Checked)
+        {
+            if (cbStationName.SelectedItem is Station) return true;
+
+            Utils.ShowError(Resources.FNewGrafikon_Nie_je_vybratá_stanica);
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(tbGVDStationName.Text))
+        {
+            Utils.ShowError(Resources.FNewGrafikon_Nie_je_zadaná_žiadna_stanica);
+            return false;
+        }
+
+        var id = decimal.ToInt32(nudIDStation.Value).ToString(CultureInfo.InvariantCulture);
+        if (GlobData.Stations.Concat(GlobData.CustomStations).Any(station => station.ID == id))
+        {
+            Utils.ShowError(Resources.FNewGrafikon_Zadané_ID_vlastnej_stanice_už_patrí_inej_stanici);
+            return false;
+        }
+
+        return true;
     }
 
     private void bOpenDir_Click(object sender, EventArgs e) => Utils.OpenShell(ThisDir.Dir.FullPath);
@@ -281,73 +349,62 @@ public partial class FLocalSettings : Form
 
     private void bDirChange_Click(object sender, EventArgs e)
     {
-        //názov ide priamo do cesty, takže sa musí overiť skôr, než sa s ním čokoľvek spraví
         var dirname = tbDirName.Text.Trim();
         tbDirName.Text = dirname;
 
-        var oldFullPath = ThisDir.Dir.FullPath;
-        var fullpath = GlobData.DataDir + Path.DirectorySeparatorChar + dirname;
-
-        if (string.IsNullOrEmpty(dirname))
+        var error = GVDDirRename.Validate(dirname, ThisDir.Dir.FullPath, GlobData.DataDir, out var fullpath);
+        if (error != null)
         {
-            Utils.ShowError(Resources.FLocalSettings_Názov_priečinka_grafikonu_je_prázdny);
-            DialogResult = DialogResult.None;
+            Utils.ShowError(error);
             return;
         }
 
-        var invalidIndex = dirname.IndexOfAny(Path.GetInvalidFileNameChars());
-        if (invalidIndex != -1)
-        {
-            Utils.ShowError(string.Format(Resources.FLocalSettings_Názov_priečinka_grafikonu_obsahuje_nepovolený_znak,
-                $"'{dirname[invalidIndex]}'"));
-            DialogResult = DialogResult.None;
-            return;
-        }
-
-        //Windows koncovú bodku z názvu priečinka ticho zahodí - priečinok na disku by sa potom
-        //volal inak, než čo je zapísané v DIRLIST.txt, a grafikon by sa nabudúce nenašiel
-        if (dirname.EndsWith(".", StringComparison.Ordinal))
-        {
-            Utils.ShowError(Resources.FLocalSettings_Názov_priečinka_grafikonu_nesmie_končiť_bodkou);
-            DialogResult = DialogResult.None;
-            return;
-        }
-
-        //nezmenený názov - nie je čo presúvať
-        if (string.Equals(fullpath, oldFullPath, StringComparison.Ordinal))
-            return;
-
-        //zmena len vo veľkosti písmen je na Windowse platné premenovanie,
-        //hoci Directory.Exists na taký názov vráti true
-        var onlyCaseChanged = string.Equals(fullpath, oldFullPath, StringComparison.OrdinalIgnoreCase);
-
-        if (!onlyCaseChanged && Directory.Exists(fullpath))
-        {
-            Utils.ShowError(Resources.Priečinok_s_týmto_názvom_už_existuje__Zmeňte_jeho_názov);
-            DialogResult = DialogResult.None;
-            return;
-        }
-
-        try
-        {
-            Directory.Move(oldFullPath, fullpath);
-        }
-        catch (Exception exception)
-        {
-            Log.Exception(exception);
-            Utils.ShowError(string.Format(Resources.FLocalSettings_Priečinok_grafikonu_sa_nepodarilo_premenovať,
-                dirname, exception.Message));
-            DialogResult = DialogResult.None;
-            return;
-        }
-
-        ThisDir.Dir.DirName = dirname;
-        ThisDir.Dir.FullPath = fullpath;
-
-        var dirlist = FMain.ObdobiaList.Select(gvd => gvd.Dir).ToList();
-        TxtParser.WriteDirList(dirlist);
-
+        //nezmenený názov - nie je čo presúvať, prípadné skoršie naplánovanie sa ruší
+        _pendingDirName = string.Equals(fullpath, ThisDir.Dir.FullPath, StringComparison.Ordinal) ? null : dirname;
         tbDir.Text = fullpath;
+    }
+
+    /// <summary>
+    ///     Premenuje priecinok grafikonu na nazov naplanovany tlacidlom Zmenit a zapise <c>DirList.TXT</c>.
+    /// </summary>
+    /// <returns><see langword="false" />, ak sa premenovanie nepodarilo a dialog ma ostat otvoreny.</returns>
+    private bool RenamePendingDir()
+    {
+        if (_pendingDirName == null) return true;
+
+        var dirname = _pendingDirName;
+        var oldFullPath = ThisDir.Dir.FullPath;
+
+        //od kliknutia na Zmenit mohol na disku vzniknut priecinok s rovnakym nazvom
+        var error = GVDDirRename.Validate(dirname, oldFullPath, GlobData.DataDir, out var fullpath);
+        if (error != null)
+        {
+            Utils.ShowError(error);
+            return false;
+        }
+
+        if (!string.Equals(fullpath, oldFullPath, StringComparison.Ordinal))
+        {
+            try
+            {
+                Directory.Move(oldFullPath, fullpath);
+            }
+            catch (Exception exception)
+            {
+                Log.Exception(exception);
+                Utils.ShowError(string.Format(Resources.FLocalSettings_Priečinok_grafikonu_sa_nepodarilo_premenovať,
+                    dirname, exception.Message));
+                return false;
+            }
+
+            //GlobData.GVDDirs obsahuje vsetky zaznamy DirList.TXT (aj grafikony inych stanic a necitatelne),
+            //FMain.ObdobiaList len obdobia prave vybratej stanice
+            GVDDirRename.UpdateEntries(ThisDir.Dir, GlobData.GVDDirs, dirname, fullpath);
+            TxtParser.WriteDirList(GlobData.GVDDirs);
+        }
+
+        _pendingDirName = null;
+        return true;
     }
 
     private void listDopravcovia_SelectedIndexChanged(object sender, EventArgs e)
@@ -372,7 +429,16 @@ public partial class FLocalSettings : Form
 
     private void bDopravcaAdd_Click(object sender, EventArgs e)
     {
-        var dopravca = new Operator(GlobData.Operators.Count, tbDopravca.Text);
+        if (string.IsNullOrWhiteSpace(tbDopravca.Text))
+        {
+            Utils.ShowError(Resources.FLocalSettings_Všetky_parametre_sú_povinné);
+            return;
+        }
+
+        // cislo o jedno vyssie nez najvyssie pouzite - podla poctu by po zmazani dopravcu
+        // alebo pri cislovani s medzerami vzniklo cislo, ktore uz ma iny dopravca
+        var id = Math.Max(1, GlobData.Operators.Max(op => op.Id) + 1);
+        var dopravca = new Operator(id, tbDopravca.Text);
         foreach (var dop in GlobData.Operators)
             if (dop.Name == dopravca.Name)
             {
@@ -390,12 +456,16 @@ public partial class FLocalSettings : Form
     {
         if (listDopravcovia.SelectedIndex != -1)
         {
-            var dopravca = GlobData.Operators[listDopravcovia.SelectedIndex];
-            dopravca.Name = tbDopravca.Text;
+            if (string.IsNullOrWhiteSpace(tbDopravca.Text))
+            {
+                Utils.ShowError(Resources.FLocalSettings_Všetky_parametre_sú_povinné);
+                return;
+            }
+            
             var i = 0;
             foreach (var test in GlobData.Operators)
             {
-                if (dopravca.Name == test.Name && i != listDopravcovia.SelectedIndex)
+                if (tbDopravca.Text == test.Name && i != listDopravcovia.SelectedIndex)
                 {
                     Utils.ShowError(Resources.FLocalSettings_Zadaný_dopravca_už_existuje);
                     return;
@@ -403,6 +473,9 @@ public partial class FLocalSettings : Form
 
                 i++;
             }
+
+            GlobData.Operators[listDopravcovia.SelectedIndex].Name = tbDopravca.Text;
+            GlobData.Operators.ResetBindings();
         }
     }
 
@@ -1266,14 +1339,16 @@ public partial class FLocalSettings : Form
         {
             var err = false;
 
-            var id = decimal.ToInt32(nudFontID.Value);
+            // ID z pola stanice (nie z pola ID písma) a upravovaná stanica sa s vlastným ID nekoliduje
+            var id = decimal.ToInt32(nudIDStanice.Value);
+            var edited = GlobData.CustomStations[listCustomStations.SelectedIndex];
 
             foreach (var station in GlobData.Stations)
                 if (station.ID == id.ToString())
                     err = true;
 
             foreach (var station in GlobData.CustomStations)
-                if (station.ID == id.ToString())
+                if (station.ID == id.ToString() && !ReferenceEquals(station, edited))
                     err = true;
 
             if (err)
@@ -1345,6 +1420,10 @@ public partial class FLocalSettings : Form
     {
         GlobData.TableLogicals.ListChanged -= TableLogicals_ListChanged;
         EnableEvents(false);
+
+        // Zrusit, krizik aj Esc - vratia sa zmeny na vsetkych zalozkach
+        if (DialogResult != DialogResult.OK)
+            _snapshot.Restore();
     }
 
     private void EnableEvents(bool enable)

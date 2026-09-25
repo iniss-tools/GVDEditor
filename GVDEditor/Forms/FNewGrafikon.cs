@@ -65,8 +65,8 @@ public partial class FNewGrafikon : Form
             return;
         }
 
-        var odG = dtpDataOd.Value.Date;
-        var doG = dtpDataDo.Value.Date;
+        var odG = dtpGVDOd.Value.Date;
+        var doG = dtpGVDDo.Value.Date;
         if (doG.CompareTo(odG) <= 0)
         {
             Utils.ShowError(Resources.FNewGrafikon_Čas_konca_platnosti_grafikonu_má_byť_neskôr_ako_začiatok_platnosti);

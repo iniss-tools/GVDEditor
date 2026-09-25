@@ -54,6 +54,7 @@ namespace GVDEditor.Forms
             ExComboBoxStyle exComboBoxStyle19 = new ExComboBoxStyle();
             ExComboBoxStyle exComboBoxStyle20 = new ExComboBoxStyle();
             bSave = new ExButton();
+            bStorno = new ExButton();
             label16 = new Label();
             button3 = new ExButton();
             button2 = new ExButton();
@@ -289,7 +290,15 @@ namespace GVDEditor.Forms
             bSave.Name = "bSave";
             bSave.UseVisualStyleBackColor = true;
             bSave.Click += bSave_Click;
-            // 
+            //
+            // bStorno
+            //
+            resources.ApplyResources(bStorno, "bStorno");
+            bStorno.DefaultStyle = true;
+            bStorno.DialogResult = DialogResult.Cancel;
+            bStorno.Name = "bStorno";
+            bStorno.UseVisualStyleBackColor = true;
+            //
             // label16
             // 
             resources.ApplyResources(label16, "label16");
@@ -2255,6 +2264,8 @@ namespace GVDEditor.Forms
             AcceptButton = bSave;
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = bStorno;
+            Controls.Add(bStorno);
             Controls.Add(bSave);
             Controls.Add(tabControl);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -2329,6 +2340,7 @@ namespace GVDEditor.Forms
 
         #endregion
         private ExControls.ExButton bSave;
+        private ExControls.ExButton bStorno;
         private System.Windows.Forms.Label label16;
         private ExControls.ExButton button3;
         private ExControls.ExButton button2;

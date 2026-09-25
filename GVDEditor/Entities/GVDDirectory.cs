@@ -13,7 +13,6 @@ public sealed class GVDDirectory
     /// <param name="gvd">Informácie grafiku.</param>
     public GVDDirectory(DirList dir, GVDInfo gvd)
     {
-        Period = gvd.StartValidTimeTable.Year + "/" + gvd.EndValidTimeTable.Year;
         Dir = dir;
         GVD = gvd;
     }
@@ -21,7 +20,7 @@ public sealed class GVDDirectory
     /// <summary>
     ///     Vrati obdobie platnosti ako text (napr. 2020/2021).
     /// </summary>
-    public string Period { get; }
+    public string Period => GVD.StartValidTimeTable.Year + "/" + GVD.EndValidTimeTable.Year;
 
     /// <summary>
     ///     Formátovaný reťazec obdobia (názov stanice + obdobie).

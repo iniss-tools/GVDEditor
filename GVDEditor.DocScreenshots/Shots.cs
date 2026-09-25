@@ -39,6 +39,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("lokalne-nastavenia", () => new FLocalSettings(gvdDir), form =>
             {
                 SelectListItem(form, "listNastupistia", 1);
+                SelectListItem(form, "listDopravcovia", 1);
                 SelectListItem(form, "listKolaje", 1);
             }, tabs: true);
             Shot("globalne-nastavenia", () => new FGlobalSettings(FMain.ObdobiaList.ToList()), tabs: true);
@@ -68,7 +69,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("tabule/editor-tabtab-problemy", () => new FTabTab(smer, station), form =>
             {
                 Resize(form, 1100, 620);
-                var scintilla = ((GVDEditor.Controls.MyScintilla)Field(form, "scText")).Scintilla;
+                var scintilla = ((Controls.MyScintilla)Field(form, "scText")).Scintilla;
                 scintilla.Text = smer.Text + "\r\nTyp(Typ_RR), \"R\" = #SWITCH";
                 form.GetType().GetMethod("ValidateDocument", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(form, null);
                 Pump.Events();

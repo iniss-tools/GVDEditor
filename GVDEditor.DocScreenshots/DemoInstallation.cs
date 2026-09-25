@@ -36,7 +36,13 @@ internal static class DemoInstallation
         ("9900050", "Nové Záhorie"),
     ];
 
-    private static readonly string[] TrainNames = ["Brezovan", "Lipovan", "Podhradčan"];
+    // vlastná stanica - zastávka, pre ktorú zvuková banka nemá nahrávku (Stanice.txt)
+    private static readonly (string Id, string Name)[] CustomStationList =
+    [
+        ("9900115", "Lesná zastávka"),
+    ];
+
+    private static readonly string[] TrainNames =["Brezovan", "Lipovan", "Podhradčan"];
 
     /// <summary>
     ///     Zostaví inštaláciu do <paramref name="root" /> (existujúci obsah zmaže) a vráti cestu k priečinku grafikonu.
@@ -99,7 +105,7 @@ internal static class DemoInstallation
         Directory.CreateDirectory(dir.FullPath);
         WriteNewGvd(dir.FullPath, gvd);
         FillGvd(dir.FullPath, gvd);
-        Verify(dir.FullPath, log);
+        Verify(dir.FullPath, gvd, log);
 
         return dir.FullPath;
     }
@@ -122,6 +128,8 @@ internal static class DemoInstallation
                 ("D1002", "Na nástupišti prosíme dodržiavať bezpečnú vzdialenosť."),
             ]),
             Group(sk, "Poz1", [("0100", "koľaj 1"), ("0200", "koľaj 2"), ("0300", "koľaj 3"), ("0400", "koľaj 4")]),
+            // nahrávky dopravcov sa volajú presne ako dopravca vo Vlastnik.txt
+            Group(sk, "Dopravca", [("Regionálna železnica, a.s.", "Regionálna železnica"), ("Expres Línia, s.r.o.", "Expres Línia")]),
             Group(sk, "Slova", [("prich", "príde"), ("odch", "odíde"), ("kolaj", "na koľaj")]),
         ];
         gb.Groups =
@@ -193,14 +201,16 @@ internal static class DemoInstallation
         string[] west = ["9900010", "9900020", "9900030"];
         string[] east = ["9900110", "9900120", "9900130", "9900140"];
         string[] south = ["9900040", "9900050"];
+        // osobné vlaky do Podhradia zastavujú aj na vlastnej zastávke Lesná
+        string[] local = ["9900110", "9900115", "9900120"];
 
         var trains = new List<Train>
         {
             Tr("Os", "3601", "", Routing.Vychadzajuci, null, "05:12", [], south, tracks[2], regional, "ide v 1-5", skOnly),
-            Tr("Os", "4201", "", Routing.Vychadzajuci, null, "05:50", [], east[..2], tracks[4], regional, "ide denne", skOnly),
+            Tr("Os", "4201", "", Routing.Vychadzajuci, null, "05:50", [], local, tracks[4], regional, "ide denne", skOnly),
             Tr("R", "811", "Brezovan", Routing.Prechadzajuci, "06:02", "06:04", west, east, tracks[1], regional, "ide denne", all),
             Tr("Os", "3602", "", Routing.Konciaci, "06:40", null, south.Reverse().ToArray(), [], tracks[2], regional, "ide v 1-5", skOnly),
-            Tr("Os", "4202", "", Routing.Konciaci, "07:05", null, east[..2].Reverse().ToArray(), [], tracks[4], regional, "ide denne", skOnly),
+            Tr("Os", "4202", "", Routing.Konciaci, "07:05", null, local.Reverse().ToArray(), [], tracks[4], regional, "ide denne", skOnly),
             Tr("Os", "3603", "", Routing.Vychadzajuci, null, "07:15", [], south, tracks[2], regional, "ide denne", skOnly),
             Tr("REX", "1911", "", Routing.Prechadzajuci, "07:48", "07:50", west, east[..3], tracks[1], regional, "ide v 1-5", skOnly),
             Tr("Ex", "521", "Lipovan", Routing.Prechadzajuci, "09:10", "09:12", west, east, tracks[1], express, "ide denne", all,
@@ -221,7 +231,8 @@ internal static class DemoInstallation
 
         GlobData.Tracks = new ExControls.ExBindingList<Track>(tracks);
         GlobData.Operators = new ExControls.ExBindingList<Operator>(operators);
-        GlobData.CustomStations = [];
+        GlobData.CustomStations = new ExControls.ExBindingList<Station>(
+            CustomStationList.Select(s => new Station(s.Id, s.Name, IsCustom: true)).ToList());
 
         // ID vlaku je jeho poradie v Export3A.TXT - odkazujú naň texty tabúľ
         for (var i = 0; i < trains.Count; i++)
@@ -238,7 +249,7 @@ internal static class DemoInstallation
         TxtParser.WriteTracks(path, tracks);
         TxtParser.WriteOperators(path, operators);
         TxtParser.WriteInfoGVD(path, gvd);
-        TxtParser.WriteCustomStations(path, [], gvd);
+        TxtParser.WriteCustomStations(path, GlobData.CustomStations, gvd);
     }
 
     private static Train Tr(string type, string number, string name, Routing routing, string? arrival, string? departure,
@@ -282,15 +293,16 @@ internal static class DemoInstallation
         return new Station(station.ID, station.Name, IsInShortReport: isEnd, IsInLongReport: true);
     }
 
-    private static (string ID, string Name) Station(string id) => StationList.First(s => s.Id == id);
+    private static (string ID, string Name) Station(string id) => StationList.Concat(CustomStationList).First(s => s.Id == id);
 
     /// <summary>
     ///     Načíta grafikon späť tými istými čítačmi ako GVDEditor a zapíše varovania do logu.
     /// </summary>
-    private static void Verify(string path, List<string> log)
+    private static void Verify(string path, GVDInfo gvd, List<string> log)
     {
-        // poradie ako vo FMain.ProccessData: koľaje sa odkazujú na logické tabule
+        // poradie ako vo FMain.ProccessData: vlastné stanice pred trasami, koľaje sa odkazujú na logické tabule
         LoadWarnings.Clear();
+        GlobData.CustomStations = new ExControls.ExBindingList<Station>(TxtParser.ReadCustomStations(path, gvd));
         var (tabtabs, catalogs, physicals, logicals) = TxtParser.ReadTables(path);
         GlobData.TabTabs = new ExControls.ExBindingList<TableTabTab>(tabtabs);
         GlobData.TableCatalogs = new ExControls.ExBindingList<TableCatalog>(catalogs);
@@ -306,7 +318,7 @@ internal static class DemoInstallation
 
         log.Add($"demo: {trains.Count} vlakov, {GlobData.Tracks.Count - 1} koľají ({tracksWithTables} s tabuľou), " +
                 $"{GlobData.Operators.Count - 1} dopravcov, tabule fyz/log/kat/TabTab {physicals.Count}/{logicals.Count}/" +
-                $"{catalogs.Count}/{tabtabs.Count}, texty {texts.Count}, písma {fonts.Count}");
+                $"{catalogs.Count}/{tabtabs.Count}, texty {texts.Count}, písma {fonts.Count}, vlastné stanice {GlobData.CustomStations.Count}");
         foreach (var warning in LoadWarnings.Items)
             log.Add("demo varovanie: " + warning);
     }

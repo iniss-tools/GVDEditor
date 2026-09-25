@@ -547,16 +547,56 @@ public partial class FMain : Form
     private void ShowLocalSettings(int startIndex = -1)
     {
         var dir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
+        // FLocalSettings meni dir.GVD priamo, povodne hodnoty treba zapamatat vopred
+        var oldStation = dir.GVD.ThisStation.Name;
+        var oldPeriod = dir.Period;
         var svform = new FLocalSettings(dir, startIndex);
         var result = svform.ShowDialog();
         if (result == DialogResult.OK)
         {
-            if (dir.GVD != svform.ThisDir.GVD) 
-                Stanice.ResetBindings();
+            RefreshStationAndPeriod(dir, oldStation, oldPeriod);
 
             GlobData.TableFontDir = svform.FontDir;
             DataSaved = false;
             GlobData.Trains.ResetBindings();
+        }
+    }
+
+    /// <summary>
+    ///     Po zmene stanice alebo obdobia platnosti grafikonu v lokalnych nastaveniach aktualizuje comboboxy
+    ///     Stanica a Obdobie tak, aby grafikon <paramref name="dir" /> ostal vybraty.
+    /// </summary>
+    private void RefreshStationAndPeriod(GVDDirectory dir, string oldStation, string oldPeriod)
+    {
+        var newStation = dir.GVD.ThisStation.Name;
+        if (newStation == oldStation && dir.Period == oldPeriod) return;
+
+        // zmena zdrojov comboboxov by cez SelectedIndexChanged znovu nacitala grafikon zo suborov
+        // a zahodila neulozene zmeny (vratane tych z lokalnych nastaveni)
+        tscbStanica.SelectedIndexChanged -= tscbStanica_SelectedIndexChanged;
+        tscbObdobie.SelectedIndexChanged -= tscbObdobie_SelectedIndexChanged;
+        try
+        {
+            if (newStation != oldStation)
+            {
+                GVDSelectionLists.RenameStation(Stanice, _gvdDirs, oldStation, newStation);
+
+                ObdobiaList.Clear();
+                foreach (var gvdDir in GVDSelectionLists.PeriodsOf(_gvdDirs, newStation)) ObdobiaList.Add(gvdDir);
+
+                tscbStanica.ComboBox.SelectedItem = newStation;
+            }
+            else
+            {
+                ObdobiaList.ResetBindings();
+            }
+
+            tscbObdobie.ComboBox.SelectedItem = dir;
+        }
+        finally
+        {
+            tscbStanica.SelectedIndexChanged += tscbStanica_SelectedIndexChanged;
+            tscbObdobie.SelectedIndexChanged += tscbObdobie_SelectedIndexChanged;
         }
     }
 
