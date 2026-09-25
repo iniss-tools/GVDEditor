@@ -803,7 +803,7 @@
     <value>43, 15</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Písmo:</value>
@@ -830,7 +830,7 @@
     <value>96, 23</value>
   </data>
   <data name="nudFont.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;nudFont.Name" xml:space="preserve">
     <value>nudFont</value>
@@ -851,7 +851,7 @@
     <value>NoControl</value>
   </data>
   <data name="bGenerate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>303, 247</value>
+    <value>378, 247</value>
   </data>
   <data name="bGenerate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -860,7 +860,7 @@
     <value>98, 29</value>
   </data>
   <data name="bGenerate.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="bGenerate.Text" xml:space="preserve">
     <value>Vygenerovať</value>
@@ -893,7 +893,7 @@
     <value>75, 29</value>
   </data>
   <data name="bTextEdit.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="bTextEdit.Text" xml:space="preserve">
     <value>Upraviť</value>
@@ -923,7 +923,7 @@
     <value>275, 64</value>
   </data>
   <data name="tbTrainText.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;tbTrainText.Name" xml:space="preserve">
     <value>tbTrainText</value>
@@ -953,7 +953,7 @@
     <value>31, 15</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Text:</value>
@@ -983,13 +983,13 @@
     <value>2, 0, 2, 0</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 15</value>
+    <value>92, 15</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Dostupné vlaky:</value>
+    <value>Vlaky s textom:</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
@@ -1010,7 +1010,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="listTrains.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 229</value>
+    <value>167, 199</value>
   </data>
   <data name="listTrains.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1026,6 +1026,129 @@
   </data>
   <data name="&gt;&gt;listTrains.ZOrder" xml:space="preserve">
     <value>7</value>
+  </data>
+  <data name="bTrainRemove.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bTrainRemove.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bTrainRemove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 247</value>
+  </data>
+  <data name="bTrainRemove.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="bTrainRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 29</value>
+  </data>
+  <data name="bTrainRemove.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="bTrainRemove.Text" xml:space="preserve">
+    <value>Odobrať</value>
+  </data>
+  <data name="&gt;&gt;bTrainRemove.Name" xml:space="preserve">
+    <value>bTrainRemove</value>
+  </data>
+  <data name="&gt;&gt;bTrainRemove.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bTrainRemove.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;bTrainRemove.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="bTrainAdd.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bTrainAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bTrainAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>401, 197</value>
+  </data>
+  <data name="bTrainAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="bTrainAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 29</value>
+  </data>
+  <data name="bTrainAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="bTrainAdd.Text" xml:space="preserve">
+    <value>Pridať</value>
+  </data>
+  <data name="&gt;&gt;bTrainAdd.Name" xml:space="preserve">
+    <value>bTrainAdd</value>
+  </data>
+  <data name="&gt;&gt;bTrainAdd.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bTrainAdd.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;bTrainAdd.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="cbAddTrain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 200</value>
+  </data>
+  <data name="cbAddTrain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="cbAddTrain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 23</value>
+  </data>
+  <data name="cbAddTrain.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;cbAddTrain.Name" xml:space="preserve">
+    <value>cbAddTrain</value>
+  </data>
+  <data name="&gt;&gt;cbAddTrain.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbAddTrain.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;cbAddTrain.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 181</value>
+  </data>
+  <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 15</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Pridať vlak:</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>505, 90</value>

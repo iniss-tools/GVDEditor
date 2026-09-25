@@ -432,10 +432,13 @@ Naimportovaných vlakov: {1}</value>
     <value>Tabuľa ELEN môže mať max. pozíciu 512.</value>
   </data>
   <data name="FTableText_Generate_TTexts_Info" xml:space="preserve">
-    <value>Texty do tabúľ sa automaticky vygenerujú podľa vlakov.
-Všetky zapísané texty sa zmažú.
+    <value>Texty všetkých vlakov grafikonu sa vygenerujú podľa stĺpca „{1}“ tabule „{0}“.
+Všetky zapísané texty tohto typu sa zmažú.
 
 Naozaj chcete vykonať túto akciu?</value>
+  </data>
+  <data name="FTableText_Generate_TTexts_No_Item" xml:space="preserve">
+    <value>Nie je vybraný stĺpec tabule. V časti Realizácia vyberte tabuľu a stĺpec, podľa ktorého sa majú texty vygenerovať.</value>
   </data>
   <data name="FMain_Mám_preskočiť_prechádzajúce_vlaky" xml:space="preserve">
     <value>Mám preskočiť prechádzajúce vlaky?</value>

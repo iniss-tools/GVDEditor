@@ -179,7 +179,16 @@
     <value>104, 17</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Dostupní vlaky:</value>
+    <value>Vlaky s textem:</value>
+  </data>
+  <data name="bTrainRemove.Text" xml:space="preserve">
+    <value>Odebrat</value>
+  </data>
+  <data name="bTrainAdd.Text" xml:space="preserve">
+    <value>Přidat</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Přidat vlak:</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Komentář:</value>

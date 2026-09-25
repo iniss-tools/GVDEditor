@@ -279,9 +279,13 @@ Upravit datumové omezení popsaného vlaku? </value>
     <value>Byl vybrán nepodporovaný typ obsahu tabule. Vyberte jiný.</value>
   </data>
   <data name="FTableText_Generate_TTexts_Info" xml:space="preserve">
-    <value>Texty do tabulí se automaticky vygenerují podle vlaků.
-Všechny zapsané texty se smažou.
-Opravdu chcete provést tuto akci? </value>
+    <value>Texty všech vlaků grafikonu se vygenerují podle sloupce „{1}“ tabule „{0}“.
+Všechny zapsané texty tohoto typu se smažou.
+
+Opravdu chcete provést tuto akci?</value>
+  </data>
+  <data name="FTableText_Generate_TTexts_No_Item" xml:space="preserve">
+    <value>Není vybrán sloupec tabule. V části Realizace vyberte tabuli a sloupec, podle kterého se mají texty vygenerovat.</value>
   </data>
   <data name="FTableCatalog_Zadaný_kľúč_stĺpca_už_existuje" xml:space="preserve">
     <value>Zadaný klíč sloupce již existuje.</value>

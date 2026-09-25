@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
+using GVDEditor.Tools;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
@@ -14,11 +15,13 @@ public partial class FTableText : Form
     private readonly int row;
     private readonly BindingList<TableItem> TableItems;
     private readonly BindingList<TableTrain> TextTrains;
+    private readonly BindingList<Train> TrainsWithoutText;
 
     private readonly BindingList<TableTextRealization> TRealizations;
 
     /// <summary>
-    ///     Tieto texty do tabul.
+    ///     Tieto texty do tabul. Po <see cref="DialogResult.OK"/> novy objekt s upravenymi hodnotami; povodny objekt
+    ///     (vratane zoznamov realizacii a vlakov) okno nemeni.
     /// </summary>
     public TableText ThisTableText;
 
@@ -38,8 +41,10 @@ public partial class FTableText : Form
         this.gvd = gvd;
         this.row = row;
 
-        TRealizations = new BindingList<TableTextRealization>(tableText.Realizations);
-        TextTrains = new BindingList<TableTrain>(tableText.Trains);
+        //okno pracuje nad kopiami – Zrusit nesmie zmenit povodny text
+        TRealizations = new BindingList<TableTextRealization>(tableText.Realizations.Select(TableTextGenerating.Clone).ToList());
+        TextTrains = new BindingList<TableTrain>(tableText.Trains.Select(TableTextGenerating.Clone).ToList());
+        TrainsWithoutText = new BindingList<Train>();
         TableItems = new BindingList<TableItem>();
 
         cbCatalogItem.DataSource = TableItems;
@@ -47,6 +52,9 @@ public partial class FTableText : Form
 
         listRealisations.DataSource = TRealizations;
         listTrains.DataSource = TextTrains;
+        cbAddTrain.DataSource = TrainsWithoutText;
+        RefreshTrainsWithoutText();
+        UpdateTrainButtons();
 
         tbKey.Text = tableText.Key;
         tbName.Text = tableText.Name;
@@ -121,14 +129,23 @@ public partial class FTableText : Form
         }
     }
 
-    private void listTrains_SelectedIndexChanged(object sender, EventArgs e)
+    private void listTrains_SelectedIndexChanged(object sender, EventArgs e) => ShowSelectedTrain();
+
+    //po pridani/odobrati sa index vyberu nemusi zmenit (SelectedIndexChanged nepride) – polia sa obnovia rucne
+    private void ShowSelectedTrain()
     {
-        if (listTrains.SelectedIndex != -1)
-            if (listTrains.SelectedItem is TableTrain tableTrain)
-            {
-                tbTrainText.Text = tableTrain.Text;
-                nudFont.Value = tableTrain.FontID;
-            }
+        if (listTrains.SelectedItem is TableTrain tableTrain)
+        {
+            tbTrainText.Text = tableTrain.Text;
+            nudFont.Value = tableTrain.FontID;
+        }
+        else
+        {
+            tbTrainText.Text = "";
+            nudFont.Value = -1;
+        }
+
+        UpdateTrainButtons();
     }
 
     private void listRealisations_Format(object sender, ListControlConvertEventArgs e)
@@ -140,9 +157,17 @@ public partial class FTableText : Form
     private void listTrains_Format(object sender, ListControlConvertEventArgs e)
     {
         if (e.ListItem is TableTrain train)
-            e.Value = train.Train.ID + ". " + train.Train.Number + " " + train.Train.Type + " " +
-                      (!string.IsNullOrEmpty(train.Train.Name) ? train.Train.Name : "");
+            e.Value = FormatTrain(train.Train);
     }
+
+    private void cbAddTrain_Format(object sender, ListControlConvertEventArgs e)
+    {
+        if (e.ListItem is Train train)
+            e.Value = FormatTrain(train);
+    }
+
+    private static string FormatTrain(Train train) =>
+        train.ID + ". " + train.Number + " " + train.Type + " " + (!string.IsNullOrEmpty(train.Name) ? train.Name : "");
 
     private void cbCatalogTable_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -167,6 +192,8 @@ public partial class FTableText : Form
 
     private void bReAdd_Click(object sender, EventArgs e)
     {
+        if (cbCatalogTable.SelectedItem == null || cbCatalogItem.SelectedItem == null) return;
+
         var realization = new TableTextRealization
         {
             Table = (TableCatalog)cbCatalogTable.SelectedItem!, Item = (TableItem)cbCatalogItem.SelectedItem!
@@ -177,7 +204,7 @@ public partial class FTableText : Form
 
     private void bReEdit_Click(object sender, EventArgs e)
     {
-        if (listRealisations.SelectedIndex != -1)
+        if (listRealisations.SelectedIndex != -1 && cbCatalogTable.SelectedItem != null && cbCatalogItem.SelectedItem != null)
         {
             var realization = TRealizations[listRealisations.SelectedIndex];
             realization.Table = (TableCatalog)cbCatalogTable.SelectedItem!;
@@ -194,132 +221,87 @@ public partial class FTableText : Form
 
     private void bTextEdit_Click(object sender, EventArgs e)
     {
-        if (listTrains.SelectedIndex != -1)
+        if (listTrains.SelectedItem is TableTrain tableTrain)
         {
-            var tableTrain = (TableTrain)listTrains.SelectedItem!;
             tableTrain.Text = tbTrainText.Text;
             tableTrain.FontID = decimal.ToInt32(nudFont.Value);
+            TextTrains.ResetItem(listTrains.SelectedIndex);
         }
+    }
+
+    private void bTrainAdd_Click(object sender, EventArgs e)
+    {
+        if (cbAddTrain.SelectedItem is not Train train) return;
+
+        //text sa predvyplni podla stlpca vybraneho v casti Realizacia (ak ho generovanie podporuje)
+        var tableTrain = TableTextGenerating.CreateFor(train, (cbCatalogItem.SelectedItem as TableItem)?.FillSection, gvd.ThisStation);
+
+        //zoznam drzi poradie vlakov v grafikone
+        var index = 0;
+        while (index < TextTrains.Count && TextTrains[index].Train.ID <= train.ID) index++;
+        TextTrains.Insert(index, tableTrain);
+
+        RefreshTrainsWithoutText();
+        listTrains.SelectedIndex = index;
+        ShowSelectedTrain();
+    }
+
+    private void bTrainRemove_Click(object sender, EventArgs e)
+    {
+        var index = listTrains.SelectedIndex;
+        if (index == -1) return;
+
+        TextTrains.RemoveAt(index);
+        RefreshTrainsWithoutText();
+        if (TextTrains.Count != 0) listTrains.SelectedIndex = Math.Min(index, TextTrains.Count - 1);
+        ShowSelectedTrain();
     }
 
     private void bGenerate_Click(object sender, EventArgs e)
     {
-        var result = Utils.ShowQuestion(Resources.FTableText_Generate_TTexts_Info);
-        if (result == DialogResult.Yes)
+        if (cbCatalogTable.SelectedItem is not TableCatalog table || cbCatalogItem.SelectedItem is not TableItem item)
         {
-            TableItem item;
-            if (cbCatalogItem.SelectedItem != null)
-            {
-                item = (TableItem)cbCatalogItem.SelectedItem;
-
-                if (item.FillSection != TableFillSection.CielovaStanica
-                    && item.FillSection != TableFillSection.CielovaStanicaNastupiste
-                    && item.FillSection != TableFillSection.CielovaStanicaPodchod
-                    && item.FillSection != TableFillSection.VychadzajucaStanica
-                    && item.FillSection != TableFillSection.StaniceDoSmeru
-                    && item.FillSection != TableFillSection.StaniceDoSmeruNastupiste
-                    && item.FillSection != TableFillSection.StaniceZoSmeru)
-                {
-                    Utils.ShowError(Resources.FTableText_Generate_TTexts_Wrong_Item);
-                    return;
-                }
-            }
-            else
-            {
-                return; //TODO
-            }
-
-            TextTrains.Clear();
-
-            foreach (var vlak in GlobData.Trains)
-            {
-                var tableTrain = new TableTrain { FontID = -1, Train = vlak };
-
-                if (item.FillSection == TableFillSection.CielovaStanica || item.FillSection == TableFillSection.CielovaStanicaNastupiste ||
-                    item.FillSection == TableFillSection.CielovaStanicaPodchod)
-                {
-                    if (vlak.Routing == Routing.Prechadzajuci || vlak.Routing == Routing.Vychadzajuci)
-                        tableTrain.Text = vlak.StaniceDoSmeru.Last().Name;
-                    else
-                        tableTrain.Text = gvd.ThisStation.Name;
-                }
-                else if (item.FillSection == TableFillSection.VychadzajucaStanica)
-                {
-                    if (vlak.Routing == Routing.Prechadzajuci || vlak.Routing == Routing.Konciaci)
-                        tableTrain.Text = vlak.StaniceZoSmeru.First().Name;
-                    else
-                        tableTrain.Text = gvd.ThisStation.Name;
-                }
-                else if (item.FillSection == TableFillSection.StaniceDoSmeru || item.FillSection == TableFillSection.StaniceDoSmeruNastupiste)
-                {
-                    var sb = new StringBuilder();
-
-                    if (vlak.Routing == Routing.Prechadzajuci || vlak.Routing == Routing.Vychadzajuci)
-                    {
-                        var staniceDo = new List<Station>();
-
-                        foreach (var t in vlak.StaniceDoSmeru)
-                            if (t.IsInShortReport)
-                                staniceDo.Add(t);
-
-                        if (staniceDo.Count != 0) staniceDo.RemoveAt(staniceDo.Count - 1);
-
-                        for (var i = 0; i < staniceDo.Count; i++)
-                            if (i < staniceDo.Count - 1)
-                            {
-                                sb.AppendLine(staniceDo[i].Name);
-                                sb.Append('#');
-                            }
-                            else if (i == staniceDo.Count - 1)
-                            {
-                                sb.AppendLine(staniceDo[i].Name);
-                            }
-
-                        tableTrain.Text = sb.ToString();
-                    }
-                    else
-                    {
-                        tableTrain.Text = "";
-                    }
-                }
-                else if (item.FillSection == TableFillSection.StaniceZoSmeru)
-                {
-                    var sb = new StringBuilder();
-
-                    if (vlak.Routing == Routing.Prechadzajuci || vlak.Routing == Routing.Konciaci)
-                    {
-                        var staniceZo = new List<Station>();
-
-                        foreach (var t in vlak.StaniceZoSmeru)
-                            if (t.IsInShortReport)
-                                staniceZo.Add(t);
-
-                        for (var i = 1; i < staniceZo.Count; i++)
-                            if (i < staniceZo.Count - 1)
-                            {
-                                sb.AppendLine(staniceZo[i].Name);
-                                sb.Append('#');
-                            }
-                            else if (i == staniceZo.Count - 1)
-                            {
-                                sb.AppendLine(staniceZo[i].Name);
-                            }
-
-                        tableTrain.Text = sb.ToString();
-                    }
-                    else
-                    {
-                        tableTrain.Text = "";
-                    }
-                }
-                else
-                {
-                    return;
-                }
-
-                TextTrains.Add(tableTrain);
-            }
+            Utils.ShowError(Resources.FTableText_Generate_TTexts_No_Item);
+            return;
         }
+
+        if (!TableTextGenerating.IsSupported(item.FillSection))
+        {
+            Utils.ShowError(Resources.FTableText_Generate_TTexts_Wrong_Item);
+            return;
+        }
+
+        var result = Utils.ShowQuestion(string.Format(Resources.FTableText_Generate_TTexts_Info, table.Name, item.Name));
+        if (result != DialogResult.Yes) return;
+
+        var generated = TableTextGenerating.Generate(GlobData.Trains, item.FillSection, gvd.ThisStation);
+
+        TextTrains.RaiseListChangedEvents = false;
+        TextTrains.Clear();
+        foreach (var tableTrain in generated) TextTrains.Add(tableTrain);
+        TextTrains.RaiseListChangedEvents = true;
+        TextTrains.ResetBindings();
+
+        RefreshTrainsWithoutText();
+        ShowSelectedTrain();
+    }
+
+    private void RefreshTrainsWithoutText()
+    {
+        TrainsWithoutText.RaiseListChangedEvents = false;
+        TrainsWithoutText.Clear();
+        foreach (var train in TableTextGenerating.TrainsWithoutText(GlobData.Trains, TextTrains)) TrainsWithoutText.Add(train);
+        TrainsWithoutText.RaiseListChangedEvents = true;
+        TrainsWithoutText.ResetBindings();
+    }
+
+    private void UpdateTrainButtons()
+    {
+        var selected = listTrains.SelectedIndex != -1;
+        bTextEdit.Enabled = selected;
+        bTrainRemove.Enabled = selected;
+        bTrainAdd.Enabled = TrainsWithoutText.Count != 0;
+        cbAddTrain.Enabled = TrainsWithoutText.Count != 0;
     }
 
     private void nudFont_ValueChanged(object sender, EventArgs e)

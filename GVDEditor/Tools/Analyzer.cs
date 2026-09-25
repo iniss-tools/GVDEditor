@@ -381,10 +381,14 @@ internal class TableTextWithoutRealization : IProblem
     public FixResult FixProblem()
     {
         var form = new FTableText(TText, GlobData.TableCatalogs, GVDDir.GVD, Row);
-        form.ShowDialog();
+        if (form.ShowDialog() != DialogResult.OK) return FixResult.NotSolved;
+
+        //okno meni len svoju kopiu – vysledok sa zapise na miesto povodneho textu
+        var index = GlobData.TableTexts.IndexOf(TText);
+        if (index != -1) GlobData.TableTexts[index] = form.ThisTableText;
 
         //Check if the problem was solved
-        return TText.Realizations.Count == 0 ? FixResult.NotSolved : FixResult.Done;
+        return form.ThisTableText.Realizations.Count == 0 ? FixResult.NotSolved : FixResult.Done;
     }
 }
 
@@ -415,10 +419,14 @@ internal class TableTextWithoutTrains : IProblem
     public FixResult FixProblem()
     {
         var form = new FTableText(TText, GlobData.TableCatalogs, GVDDir.GVD, Row);
-        form.ShowDialog();
+        if (form.ShowDialog() != DialogResult.OK) return FixResult.NotSolved;
+
+        //okno meni len svoju kopiu – vysledok sa zapise na miesto povodneho textu
+        var index = GlobData.TableTexts.IndexOf(TText);
+        if (index != -1) GlobData.TableTexts[index] = form.ThisTableText;
 
         //Check if the problem was solved
-        return TText.Trains.Count == 0 ? FixResult.NotSolved : FixResult.Done;
+        return form.ThisTableText.Trains.Count == 0 ? FixResult.NotSolved : FixResult.Done;
     }
 }
 

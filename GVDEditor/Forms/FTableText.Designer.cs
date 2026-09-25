@@ -41,6 +41,10 @@ namespace GVDEditor.Forms
             ExComboBoxStyle exComboBoxStyle14 = new ExComboBoxStyle();
             ExComboBoxStyle exComboBoxStyle15 = new ExComboBoxStyle();
             ExComboBoxStyle exComboBoxStyle16 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle17 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle18 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle19 = new ExComboBoxStyle();
+            ExComboBoxStyle exComboBoxStyle20 = new ExComboBoxStyle();
             bSave = new ExButton();
             bStorno = new ExButton();
             groupBox1 = new ExGroupBox();
@@ -67,6 +71,10 @@ namespace GVDEditor.Forms
             label7 = new Label();
             label6 = new Label();
             listTrains = new ListBox();
+            bTrainRemove = new ExButton();
+            bTrainAdd = new ExButton();
+            cbAddTrain = new ExComboBox();
+            label9 = new Label();
             groupBox4 = new ExGroupBox();
             tbComment = new ExTextBox();
             tableTextRealizationBindingSource = new BindingSource(components);
@@ -315,6 +323,10 @@ namespace GVDEditor.Forms
             groupBox3.Controls.Add(label7);
             groupBox3.Controls.Add(label6);
             groupBox3.Controls.Add(listTrains);
+            groupBox3.Controls.Add(bTrainRemove);
+            groupBox3.Controls.Add(bTrainAdd);
+            groupBox3.Controls.Add(cbAddTrain);
+            groupBox3.Controls.Add(label9);
             groupBox3.DefaultStyle = true;
             groupBox3.DisabledForeColor = SystemColors.GrayText;
             resources.ApplyResources(groupBox3, "groupBox3");
@@ -387,6 +399,71 @@ namespace GVDEditor.Forms
             listTrains.Name = "listTrains";
             listTrains.SelectedIndexChanged += listTrains_SelectedIndexChanged;
             listTrains.Format += listTrains_Format;
+            // 
+            // bTrainRemove
+            // 
+            resources.ApplyResources(bTrainRemove, "bTrainRemove");
+            bTrainRemove.DefaultStyle = true;
+            bTrainRemove.Name = "bTrainRemove";
+            bTrainRemove.UseVisualStyleBackColor = true;
+            bTrainRemove.Click += bTrainRemove_Click;
+            // 
+            // bTrainAdd
+            // 
+            resources.ApplyResources(bTrainAdd, "bTrainAdd");
+            bTrainAdd.DefaultStyle = true;
+            bTrainAdd.Name = "bTrainAdd";
+            bTrainAdd.UseVisualStyleBackColor = true;
+            bTrainAdd.Click += bTrainAdd_Click;
+            // 
+            // cbAddTrain
+            // 
+            cbAddTrain.DefaultStyle = true;
+            cbAddTrain.DropDownBackColor = Color.White;
+            cbAddTrain.DropDownSelectedRowBackColor = SystemColors.Highlight;
+            cbAddTrain.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbAddTrain.FormattingEnabled = true;
+            resources.ApplyResources(cbAddTrain, "cbAddTrain");
+            cbAddTrain.Name = "cbAddTrain";
+            exComboBoxStyle17.ArrowColor = null;
+            exComboBoxStyle17.BackColor = null;
+            exComboBoxStyle17.BorderColor = null;
+            exComboBoxStyle17.ButtonBackColor = null;
+            exComboBoxStyle17.ButtonBorderColor = null;
+            exComboBoxStyle17.ButtonRenderFirst = null;
+            exComboBoxStyle17.ForeColor = null;
+            cbAddTrain.StyleDisabled = exComboBoxStyle17;
+            exComboBoxStyle18.ArrowColor = null;
+            exComboBoxStyle18.BackColor = null;
+            exComboBoxStyle18.BorderColor = null;
+            exComboBoxStyle18.ButtonBackColor = null;
+            exComboBoxStyle18.ButtonBorderColor = null;
+            exComboBoxStyle18.ButtonRenderFirst = null;
+            exComboBoxStyle18.ForeColor = null;
+            cbAddTrain.StyleHighlight = exComboBoxStyle18;
+            exComboBoxStyle19.ArrowColor = null;
+            exComboBoxStyle19.BackColor = null;
+            exComboBoxStyle19.BorderColor = null;
+            exComboBoxStyle19.ButtonBackColor = null;
+            exComboBoxStyle19.ButtonBorderColor = null;
+            exComboBoxStyle19.ButtonRenderFirst = null;
+            exComboBoxStyle19.ForeColor = null;
+            cbAddTrain.StyleNormal = exComboBoxStyle19;
+            exComboBoxStyle20.ArrowColor = null;
+            exComboBoxStyle20.BackColor = null;
+            exComboBoxStyle20.BorderColor = null;
+            exComboBoxStyle20.ButtonBackColor = null;
+            exComboBoxStyle20.ButtonBorderColor = null;
+            exComboBoxStyle20.ButtonRenderFirst = null;
+            exComboBoxStyle20.ForeColor = null;
+            cbAddTrain.StyleSelected = exComboBoxStyle20;
+            cbAddTrain.UseDarkScrollBar = false;
+            cbAddTrain.Format += cbAddTrain_Format;
+            // 
+            // label9
+            // 
+            resources.ApplyResources(label9, "label9");
+            label9.Name = "label9";
             // 
             // groupBox4
             // 
@@ -483,5 +560,9 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.BindingSource tableTextRealizationBindingSource;
         private System.Windows.Forms.Label label8;
         private ExNumericUpDown nudFont;
+        private ExControls.ExButton bTrainRemove;
+        private ExControls.ExButton bTrainAdd;
+        private ExComboBox cbAddTrain;
+        private System.Windows.Forms.Label label9;
     }
 }

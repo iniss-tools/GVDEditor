@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using ExControls;
+﻿using ExControls;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
@@ -1513,107 +1512,8 @@ public partial class FMain : Form
             }
     }
 
-    private static void GenerateTableTextWhileSaving(GVDDirectory dir)
-    {
-        foreach (var ttext in GlobData.TableTexts)
-        foreach (var tableTextRealization in ttext.Realizations)
-        {
-            var item = tableTextRealization.Item;
-            ttext.Trains.Clear();
-
-            foreach (var vlak in GlobData.Trains)
-            {
-                var tableTrain = new TableTrain { FontID = -1, Train = vlak };
-
-                if (item.FillSection == TableFillSection.CielovaStanica ||
-                    item.FillSection == TableFillSection.CielovaStanicaNastupiste ||
-                    item.FillSection == TableFillSection.CielovaStanicaPodchod)
-                {
-                    if (vlak.Routing == Routing.Prechadzajuci || vlak.Routing == Routing.Vychadzajuci)
-                        tableTrain.Text = vlak.StaniceDoSmeru.Last().Name;
-                    else
-                        tableTrain.Text = dir.GVD.ThisStation.Name;
-                }
-                else if (item.FillSection == TableFillSection.VychadzajucaStanica)
-                {
-                    if (vlak.Routing == Routing.Prechadzajuci || vlak.Routing == Routing.Konciaci)
-                        tableTrain.Text = vlak.StaniceZoSmeru.First().Name;
-                    else
-                        tableTrain.Text = dir.GVD.ThisStation.Name;
-                }
-                else if (item.FillSection == TableFillSection.StaniceDoSmeru || item.FillSection == TableFillSection.StaniceDoSmeruNastupiste)
-                {
-                    var sb = new StringBuilder();
-
-                    if (vlak.Routing == Routing.Prechadzajuci || vlak.Routing == Routing.Vychadzajuci)
-                    {
-                        var staniceDo = new List<Station>();
-
-                        foreach (var t in vlak.StaniceDoSmeru)
-                            if (t.IsInShortReport)
-                                staniceDo.Add(t);
-
-                        staniceDo.RemoveAt(staniceDo.Count - 1);
-
-                        for (var i = 0; i < staniceDo.Count; i++)
-                            if (i < staniceDo.Count - 1)
-                            {
-                                sb.AppendLine(staniceDo[i].Name);
-                                sb.Append('#');
-                            }
-                            else if (i == staniceDo.Count - 1)
-                            {
-                                sb.AppendLine(staniceDo[i].Name);
-                            }
-
-                        tableTrain.Text = sb.ToString();
-                    }
-                    else
-                    {
-                        tableTrain.Text = "";
-                    }
-                }
-                else if (item.FillSection == TableFillSection.StaniceZoSmeru)
-                {
-                    var sb = new StringBuilder();
-
-                    if (vlak.Routing == Routing.Prechadzajuci || vlak.Routing == Routing.Konciaci)
-                    {
-                        var staniceZo = new List<Station>();
-
-                        foreach (var t in vlak.StaniceZoSmeru)
-                            if (t.IsInShortReport)
-                                staniceZo.Add(t);
-
-                        for (var i = 1; i < staniceZo.Count; i++)
-                            if (i < staniceZo.Count - 1)
-                            {
-                                sb.AppendLine(staniceZo[i].Name);
-                                sb.Append('#');
-                            }
-                            else if (i == staniceZo.Count - 1)
-                            {
-                                sb.AppendLine(staniceZo[i].Name);
-                            }
-
-                        tableTrain.Text = sb.ToString();
-                    }
-                    else
-                    {
-                        tableTrain.Text = "";
-                    }
-                }
-                else
-                {
-                    return;
-                }
-
-                tableTrain.Text = Regex.Replace(tableTrain.Text, @"\t|\n|\r", "");
-
-                ttext.Trains.Add(tableTrain);
-            }
-        }
-    }
+    private static void GenerateTableTextWhileSaving(GVDDirectory dir) =>
+        TableTextGenerating.RegenerateAll(GlobData.TableTexts, GlobData.Trains, dir.GVD.ThisStation);
 
     private void SetColumns()
     {

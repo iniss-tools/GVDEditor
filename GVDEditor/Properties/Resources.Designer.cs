@@ -994,14 +994,23 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Texty do tabúľ sa automaticky vygenerujú podľa vlakov.
-        ///Všetky zapísané texty sa zmažú.
+        ///   Looks up a localized string similar to Texty všetkých vlakov grafikonu sa vygenerujú podľa stĺpca „{1}“ tabule „{0}“.
+        ///Všetky zapísané texty tohto typu sa zmažú.
         ///
         ///Naozaj chcete vykonať túto akciu?.
         /// </summary>
         internal static string FTableText_Generate_TTexts_Info {
             get {
                 return ResourceManager.GetString("FTableText_Generate_TTexts_Info", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Nie je vybraný stĺpec tabule. V časti Realizácia vyberte tabuľu a stĺpec, podľa ktorého sa majú texty vygenerovať..
+        /// </summary>
+        internal static string FTableText_Generate_TTexts_No_Item {
+            get {
+                return ResourceManager.GetString("FTableText_Generate_TTexts_No_Item", resourceCulture);
             }
         }
         
