@@ -1,8 +1,11 @@
 using System.Globalization;
 using System.Reflection;
 using System.Text;
+using GVDEditor.Controls;
 using GVDEditor.Entities;
 using GVDEditor.Forms;
+using GVDEditor.Tools;
+using ToolsCore.StateDgm;
 
 namespace GVDEditor.DocScreenshots;
 
@@ -108,11 +111,46 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                     grid.FirstDisplayedScrollingColumnIndex = 0;
                 });
 
+            // editor s vybraným stavom „Zastavil“ prechádzajúceho vlaku; graf len s prechodmi vybraného stavu
+            var diagram = TxtParser.ReadStateDgm(gvdDir.Dir.FullPath)!;
+            var passing = diagram.Categories[1];
+            var arrived = passing.States.First(s => s.Key == "Zastavil");
             Shot("stavovy-diagram/stavovy-diagram", () => new FStateDgm(gvdDir), form =>
             {
-                Resize(form, 1280, 760);
+                Resize(form, 1360, 820);
                 LogStateDgmProblems(form);
+                ((ToolStripButton)Field(form, "_tsbAllEdges")).Checked = false;
+                var own = (StateDgmDiagram)Field(form, "_d");
+                SelectStateDgmNode(form, own.Categories[1], own.Categories[1].States.First(s => s.Key == arrived.Key));
             });
+
+            // dialóg akcie - prechod do stavu Odjede s hlásením a tlačidlom
+            var departs = arrived.Events.First(e => e.NextState == "Odjede");
+            Shot("stavovy-diagram/akcia", () =>
+            {
+                var editor = new SdEventEditor();
+                editor.Bind(departs, arrived.Controls.FirstOrDefault(c => c.EventKey == departs.Key),
+                    passing.States.Select(s => s.Key), diagram.Designs.Select(d => d.Key), 0);
+                return new FStateDgmItem(Properties.Resources.FStateDgm_Akcia_Titul, editor, 520, 380);
+            }, form =>
+            {
+                // bez zvýrazneného textu v rozbaľovacích poliach a v kľúči
+                foreach (var box in Descendants(form).OfType<ComboBox>().Where(c => c.DropDownStyle == ComboBoxStyle.DropDown))
+                    box.SelectionLength = 0;
+                foreach (var box in Descendants(form).OfType<TextBox>())
+                    box.SelectionLength = 0;
+                form.ActiveControl = form.AcceptButton as Control ?? Descendants(form).OfType<Button>().First();
+            });
+
+            // kalendár akcií pre rýchlik s meškaním
+            Shot("stavovy-diagram/kalendar-akcii",
+                () => new FStateDgmCalendar(() => diagram, int.Parse(station.ID, CultureInfo.InvariantCulture), express),
+                form =>
+                {
+                    ((NumericUpDown)Field(form, "nudDelayArr")).Value = 5;
+                    ((NumericUpDown)Field(form, "nudDelayDep")).Value = 5;
+                    Resize(form, 1200, 400);
+                });
         }
         finally
         {
@@ -229,6 +267,45 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
         list.SelectedIndex = keep;
         validate.Invoke(form, null);
         log.Add($"  TabTab: skontrolovaných {list.Items.Count} sekcií, vybraná {selected.Key}");
+    }
+
+    /// <summary>
+    ///     V navigátore editora stavového diagramu zbalí vzhľady, časové body a ostatné kategórie a vyberie stav.
+    /// </summary>
+    private static void SelectStateDgmNode(Form form, StateDgmCategory category, StateDgmState state)
+    {
+        var tree = (TreeView)Field(form, "tvNav");
+        foreach (TreeNode root in tree.Nodes)
+        {
+            if (root.Nodes.Count == 0) continue;
+            var hasCategory = root.Nodes.Cast<TreeNode>().Any(n => n.Tag == category);
+            if (!hasCategory)
+            {
+                root.Collapse();
+                continue;
+            }
+
+            foreach (TreeNode cat in root.Nodes)
+                if (cat.Tag == category)
+                    cat.Expand();
+                else
+                    cat.Collapse();
+        }
+
+        var node = Descend(tree.Nodes).First(n => n.Tag == state);
+        tree.SelectedNode = node;
+        tree.Nodes[0].EnsureVisible();
+        node.EnsureVisible();
+
+        static IEnumerable<TreeNode> Descend(TreeNodeCollection nodes)
+        {
+            foreach (TreeNode n in nodes)
+            {
+                yield return n;
+                foreach (var c in Descend(n.Nodes))
+                    yield return c;
+            }
+        }
     }
 
     private static void SelectListItem(Form form, string name, int index) =>

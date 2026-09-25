@@ -550,9 +550,15 @@ public partial class FMain : Form
         // FLocalSettings meni dir.GVD priamo, povodne hodnoty treba zapamatat vopred
         var oldStation = dir.GVD.ThisStation.Name;
         var oldPeriod = dir.Period;
+        var wasSaved = DataSaved;
         var svform = new FLocalSettings(dir, startIndex);
         var result = svform.ShowDialog();
-        if (result == DialogResult.OK)
+        if (result != DialogResult.OK)
+        {
+            // Zrusit/krizik vratil vsetky data - obnova zoznamov nesmie grafikon oznacit ako zmeneny
+            DataSaved = wasSaved;
+        }
+        else
         {
             RefreshStationAndPeriod(dir, oldStation, oldPeriod);
 

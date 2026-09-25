@@ -74,6 +74,12 @@ internal abstract class SdEditorBase : UserControl
     /// <summary>Prebieha plnenie z modelu - zmeny sa nehlasia.</summary>
     protected bool Loading;
 
+    /// <summary>Diagram upravovaneho prvku (pre prenos premenovaneho kluca do odkazov).</summary>
+    private StateDgmDiagram? _diagram;
+
+    /// <summary>Kluc, na ktory v diagrame ukazuju odkazy na prvok (z Bind, posuva sa po kazdom prenose).</summary>
+    private string? _refKey;
+
     protected SdEditorBase()
     {
         AutoScroll = true;
@@ -93,10 +99,32 @@ internal abstract class SdEditorBase : UserControl
     /// <summary>Nastala zmena v modeli.</summary>
     public event EventHandler? Changed;
 
+    /// <summary>Premenovanim prvku sa prepisali odkazy nan v inych prvkoch diagramu.</summary>
+    public event EventHandler? ReferencesRenamed;
+
     /// <summary>Ohlasi zmenu (mimo plnenia).</summary>
     protected void RaiseChanged()
     {
         if (!Loading) Changed?.Invoke(this, EventArgs.Empty);
+    }
+
+    /// <summary>Zapamata si diagram a kluc, na ktory ukazuju odkazy na naviazany prvok.</summary>
+    protected void BindKey(StateDgmDiagram d, string key)
+    {
+        _diagram = d;
+        _refKey = key;
+    }
+
+    /// <summary>
+    ///     Prenesie novy kluc prvku do odkazov (vola sa pri kazdej zmene kluca). Ked sa prenos odmietne - napr. medzikrok
+    ///     pisania sa zhoduje s klucom ineho prvku - odkazy ostanu na poslednom prenesenom kluci a presunu sa pri dalsej
+    ///     zmene; ak kluc ostane kolidujuci, duplicitu ohlasi kontrola diagramu.
+    /// </summary>
+    protected void RenameReferences(StateDgmElement element, string newKey)
+    {
+        if (_diagram == null || _refKey == null || !StateDgmRename.TryRename(_diagram, element, _refKey, out var changed)) return;
+        _refKey = newKey;
+        if (changed > 0) ReferencesRenamed?.Invoke(this, EventArgs.Empty);
     }
 
     /// <summary>
@@ -607,7 +635,11 @@ internal sealed class SdStateEditor : SdEditorBase
         AddFull(_undo);
         _undoOn.Visible = _undo.Visible = false;
 
-        _key.TextChanged += (_, _) => Set(s => s.Key = _key.Text.Trim());
+        _key.TextChanged += (_, _) => Set(s =>
+        {
+            s.Key = _key.Text.Trim();
+            RenameReferences(s, s.Key);
+        });
         _name.TextChanged += (_, _) => Set(s => s.Name = _name.Text.Trim());
         _icon.SelectedIndexChanged += (_, _) => Set(s => s.Icon = SdEditorContext.Value(_icon) as int? ?? 0);
         _defaultControl.SelectedIndexChanged += (_, _) => Set(s => s.DefaultControl = SdEditorContext.Value(_defaultControl) as int? ?? 0);
@@ -688,12 +720,13 @@ internal sealed class SdStateEditor : SdEditorBase
         }
     }
 
-    public void Bind(StateDgmState s)
+    public void Bind(StateDgmDiagram d, StateDgmState s)
     {
         Loading = true;
         try
         {
             _s = s;
+            BindKey(d, s.Key);
             _key.Text = s.Key;
             _name.Text = s.Name;
             if (s.Icon is >= 0 and <= StateDgmKeys.MAX_ICON) SdEditorContext.Select(_icon, s.Icon);
@@ -814,7 +847,11 @@ internal sealed class SdDesignEditor : SdEditorBase
         AddInfo(Resources.FStateDgm_BitmapsInfo);
         _errors.SetIconAlignment(_bitmaps, ErrorIconAlignment.MiddleLeft);
 
-        _key.TextChanged += (_, _) => Set(d => d.Key = _key.Text.Trim());
+        _key.TextChanged += (_, _) => Set(d =>
+        {
+            d.Key = _key.Text.Trim();
+            RenameReferences(d, d.Key);
+        });
         _bitmaps.TextChanged += (_, _) =>
         {
             _errors.SetError(_bitmaps, StateDgmBitmaps.TryParse(_bitmaps.Text, out _) ? "" : Resources.FStateDgm_Bitmaps);
@@ -831,12 +868,13 @@ internal sealed class SdDesignEditor : SdEditorBase
         RaiseChanged();
     }
 
-    public void Bind(StateDgmDesign d)
+    public void Bind(StateDgmDiagram diagram, StateDgmDesign d)
     {
         Loading = true;
         try
         {
             _d = d;
+            BindKey(diagram, d.Key);
             _key.Text = d.Key;
             _bitmaps.Text = d.Bitmaps;
             _def.Checked = d.DefaultPushButton;
@@ -877,7 +915,11 @@ internal sealed class SdTimePointEditor : SdEditorBase
         AddInfo(Resources.FStateDgm_TP_Info);
         AddInfo(string.Format(Resources.FStateDgm_TP_Zabudovane, string.Join(", ", StateDgmKeys.BuiltInTimePoints)));
 
-        _key.TextChanged += (_, _) => Set(t => t.Key = _key.Text.Trim());
+        _key.TextChanged += (_, _) => Set(t =>
+        {
+            t.Key = _key.Text.Trim();
+            RenameReferences(t, t.Key);
+        });
         _name.TextChanged += (_, _) => Set(t => t.Name = _name.Text.Trim());
         _key1.TextChanged += (_, _) => Set(t => t.TimePointKey1 = _key1.Text.Trim());
         _key2.TextChanged += (_, _) => Set(t => t.TimePointKey2 = _key2.Text.Trim());
@@ -893,12 +935,13 @@ internal sealed class SdTimePointEditor : SdEditorBase
         RaiseChanged();
     }
 
-    public void Bind(StateDgmTimePoint t, IEnumerable<string> availableKeys)
+    public void Bind(StateDgmDiagram d, StateDgmTimePoint t, IEnumerable<string> availableKeys)
     {
         Loading = true;
         try
         {
             _t = t;
+            BindKey(d, t.Key);
             var keys = availableKeys.Where(k => k != t.Key).Cast<object>().ToArray();
             _key1.Items.Clear();
             _key1.Items.AddRange(keys);

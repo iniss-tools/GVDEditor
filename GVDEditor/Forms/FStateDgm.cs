@@ -56,6 +56,26 @@ public partial class FStateDgm : Form
     private readonly ToolStripLabel _graphLegend = new();
     private FStateDgmCalendar? _calendar;
 
+    /// <summary>Znacka riadka s chybou syntaxe v rezime upravy textu.</summary>
+    private const int ERROR_MARKER = 1;
+
+    /// <summary>
+    ///     Rezim upravy textu: subor sa nedal rozlozit, zalozka Text je editovatelna a ostatne casti su vypnute,
+    ///     kym sa text neopravi (Nacitat text) alebo nenahradi predlohou.
+    /// </summary>
+    private bool _rawMode;
+
+    /// <summary>Text suboru, ktory sa pri otvoreni nedal rozlozit (do FStateDgm_Load).</summary>
+    private string? _rawText;
+
+    /// <summary>Posledna chyba syntaxe textu v rezime upravy textu.</summary>
+    private StateDgmParseException? _rawError;
+
+    private bool _settingText;
+    private readonly ToolStrip _rawBar = new() { GripStyle = ToolStripGripStyle.Hidden, Dock = DockStyle.Top, Visible = false };
+    private readonly ToolStripButton _tsbRawApply = new() { DisplayStyle = ToolStripItemDisplayStyle.ImageAndText };
+    private readonly ToolStripLabel _rawInfo = new();
+
     /// <summary>
     ///     Otvori editor diagramu grafikonu.
     /// </summary>
@@ -99,6 +119,7 @@ public partial class FStateDgm : Form
         {
             ed.Dock = DockStyle.Fill;
             ed.Changed += Editor_Changed;
+            ed.ReferencesRenamed += (_, _) => FillStateGrids();
         }
 
         // stlpce su v navrhu; AutoGenerateColumns navrhar neserializuje
@@ -146,6 +167,28 @@ public partial class FStateDgm : Form
             scText.VScrollBarControl.SetTheme(WindowsTheme.DarkExplorer);
             scText.HScrollBarControl.SetTheme(WindowsTheme.DarkExplorer);
         }
+
+        // rezim upravy textu: podfarbenie riadka s chybou a lista s tlacidlom Nacitat text
+        var dark = style.ControlsColorScheme.Box.BackColor.GetBrightness() < 0.5f;
+        _sc.Markers[ERROR_MARKER].Symbol = MarkerSymbol.Background;
+        _sc.Markers[ERROR_MARKER].SetBackColor(dark ? Color.FromArgb(0x6A, 0x24, 0x24) : Color.FromArgb(0xFF, 0xD0, 0xD0));
+        _sc.TextChanged += (_, _) =>
+        {
+            if (!_rawMode || _settingText) return;
+            _dirty = true;
+            UpdateTitle();
+        };
+        _tsbRawApply.Text = Resources.FStateDgm_Text_Nacitat;
+        _tsbRawApply.ToolTipText = Resources.FStateDgm_Text_NacitatTip;
+        _tsbRawApply.Image = GlobalResources.correct;
+        _tsbRawApply.Click += (_, _) => ApplyRawText();
+        _rawInfo.Image = _iconError.ToBitmap();
+        _rawInfo.Click += (_, _) => GoToRawError();
+        _rawBar.Items.Add(_tsbRawApply);
+        _rawBar.Items.Add(new ToolStripSeparator());
+        _rawBar.Items.Add(_rawInfo);
+        tpText.Controls.Add(_rawBar);
+        FormUtils.ChangeStyleOfControls(style, new Control[] { _rawBar });
     }
 
     /// <summary>
@@ -207,12 +250,113 @@ public partial class FStateDgm : Form
         }
         catch (StateDgmParseException e)
         {
-            ExMessageBox.Show(string.Format(Resources.FStateDgm_SuborChyba, TxtParser.StateDgmPath(_dir), e.Line + 1, e.Message), Resources.FStateDgm_SuborChyba_Nadpis,
+            // text sa otvori na opravu (FStateDgm_Load); model je dovtedy prazdny
+            var path = TxtParser.StateDgmPath(_dir);
+            ExMessageBox.Show(string.Format(Resources.FStateDgm_SuborChyba, path, e.Line + 1, e.Message), Resources.FStateDgm_SuborChyba_Nadpis,
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            _dirty = true;
-            return StateDgmDiagram.Parse(TxtParser.StateDgmTemplateText(StateDgmTemplate.Slovak));
+            _rawText = File.ReadAllText(path, Encodings.Win1250);
+            _rawError = e;
+            return new StateDgmDiagram();
         }
     }
+
+    #region Rezim upravy textu
+
+    /// <summary>Otvori text, ktory sa nedal rozlozit, na upravu; ostatne casti editora vypne.</summary>
+    private void EnterRawMode(string text)
+    {
+        tvNav.SelectedNode = null;
+        ShowSelection(null);
+        SetRawMode(true);
+        _settingText = true;
+        _sc.ReadOnly = false;
+        _sc.Text = text;
+        _sc.EmptyUndoBuffer();
+        _settingText = false;
+        _textStale = false;
+        tcCenter.SelectedTab = tpText;
+        ShowRawError();
+    }
+
+    private void SetRawMode(bool raw)
+    {
+        _rawMode = raw;
+        _rawBar.Visible = raw;
+        _sc.ReadOnly = !raw;
+        if (!raw)
+        {
+            _rawError = null;
+            _sc.MarkerDeleteAll(ERROR_MARKER);
+        }
+
+        // zoznam problemov ostava (chyba syntaxe), zvysok pracuje nad modelom
+        tvNav.Enabled = pnlProps.Enabled = tpGraph.Enabled = tpEvents.Enabled = tpStarters.Enabled = !raw;
+        tsddNew.Enabled = tsbCalendar.Enabled = !raw;
+        if (raw) tcBottom.SelectedTab = tpProblems;
+    }
+
+    /// <summary>Oznaci riadok s chybou, vypise ju v liste, stavovom riadku a zozname problemov.</summary>
+    private void ShowRawError()
+    {
+        _sc.MarkerDeleteAll(ERROR_MARKER);
+        _problems.RaiseListChangedEvents = false;
+        _problems.Clear();
+        if (_rawError != null)
+        {
+            var line = Math.Clamp(_rawError.Line, 0, Math.Max(0, _sc.Lines.Count - 1));
+            _sc.Lines[line].MarkerAdd(ERROR_MARKER);
+            _rawInfo.Text = string.Format(Resources.FStateDgm_Text_Chyba, line + 1, _rawError.Message);
+            _problems.Add(new ProblemRow(new StateDgmDiagnostic(ExprSeverity.Error, StateDgmDiagnosticCode.Syntax, _rawError.Message, StateDgmLocation.Root)
+            {
+                Path = string.Format(Resources.FStateDgm_Text_Riadok, line + 1)
+            }));
+            GoToRawError();
+        }
+
+        _problems.RaiseListChangedEvents = true;
+        _problems.ResetBindings();
+        tpProblems.Text = $"{Resources.FStateDgm_Problemy} ({_problems.Count})";
+        tsslStatus.Text = Resources.FStateDgm_Text_Rezim;
+    }
+
+    private void GoToRawError()
+    {
+        if (_rawError == null) return;
+        tcCenter.SelectedTab = tpText;
+        var line = Math.Clamp(_rawError.Line, 0, Math.Max(0, _sc.Lines.Count - 1));
+        _sc.Lines[line].Goto();
+        _sc.Lines[line].EnsureVisible();
+        _sc.Focus();
+    }
+
+    /// <summary>
+    ///     Rozlozi upraveny text; ak je bez chyby syntaxe, prepne editor do bezneho rezimu nad modelom.
+    /// </summary>
+    /// <returns>true, ked sa text rozlozil.</returns>
+    private bool ApplyRawText()
+    {
+        StateDgmDiagram d;
+        try
+        {
+            d = StateDgmDiagram.Parse(_sc.Text);
+        }
+        catch (StateDgmParseException e)
+        {
+            _rawError = e;
+            ShowRawError();
+            return false;
+        }
+
+        _d = d;
+        SetRawMode(false);
+        _textStale = true;
+        BuildTree();
+        tvNav.SelectedNode = FirstStateNode() ?? tvNav.Nodes[0];
+        ValidateDiagram();
+        return true;
+    }
+
+    #endregion
 
     private void FStateDgm_Load(object sender, EventArgs e)
     {
@@ -226,7 +370,15 @@ public partial class FStateDgm : Form
         UpdateTitle();
         BuildTree();
         if (tvNav.Nodes.Count > 0) tvNav.SelectedNode = FirstStateNode() ?? tvNav.Nodes[0];
-        ValidateDiagram();
+        if (_rawText != null)
+        {
+            EnterRawMode(_rawText);
+            _rawText = null;
+        }
+        else
+        {
+            ValidateDiagram();
+        }
     }
 
     #region Strom
@@ -348,17 +500,17 @@ public partial class FStateDgm : Form
             case StateDgmState s:
                 _selState = s;
                 _selCategory = _d.Categories.FirstOrDefault(c => c.States.Contains(s));
-                _stateEditor.Bind(s);
+                _stateEditor.Bind(_d, s);
                 editor = _stateEditor;
                 break;
             case StateDgmDesign d:
-                _designEditor.Bind(d);
+                _designEditor.Bind(_d, d);
                 editor = _designEditor;
                 break;
             case StateDgmTimePoint t:
                 var owner = _d.Categories.SelectMany(c => c.States).FirstOrDefault(s => s.TimePoints.Contains(t));
                 _selState = owner;
-                _timePointEditor.Bind(t, _d.AllTimePointKeys.Concat(owner?.TimePoints.Select(x => x.Key) ?? []));
+                _timePointEditor.Bind(_d, t,_d.AllTimePointKeys.Concat(owner?.TimePoints.Select(x => x.Key) ?? []));
                 editor = _timePointEditor;
                 break;
             case string str when str == TAG_HEADER:
@@ -428,6 +580,12 @@ public partial class FStateDgm : Form
 
     private void ValidateDiagram()
     {
+        if (_rawMode)
+        {
+            ShowRawError();
+            return;
+        }
+
         var diags = StateDgmValidator.Validate(_d, new StateDgmValidationOptions
         {
             ReportKeys = SdEditorContext.ReportKeys.Count > 0 ? SdEditorContext.ReportKeys : null,
@@ -451,7 +609,7 @@ public partial class FStateDgm : Form
 
     private void RefreshText()
     {
-        if (!_textStale) return;
+        if (!_textStale || _rawMode) return;
         _sc.ReadOnly = false;
         _sc.Text = _d.ToText();
         _sc.ReadOnly = true;
@@ -465,7 +623,8 @@ public partial class FStateDgm : Form
 
     private void tsbCheck_Click(object sender, EventArgs e)
     {
-        ValidateDiagram();
+        if (_rawMode) ApplyRawText();
+        else ValidateDiagram();
         tcBottom.SelectedTab = tpProblems;
     }
 
@@ -475,6 +634,27 @@ public partial class FStateDgm : Form
 
     private bool Save()
     {
+        // text s chybou syntaxe sa po potvrdeni ulozi tak, ako je; opraveny text sa ulozi cez model
+        if (_rawMode && !ApplyRawText())
+        {
+            if (Utils.ShowWarning(string.Format(Resources.FStateDgm_UlozitText, _rawError!.Line + 1, _rawError.Message), MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return false;
+            try
+            {
+                TxtParser.WriteStateDgmText(_dir, _sc.Text);
+            }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+            {
+                Utils.ShowError(e.Message);
+                return false;
+            }
+
+            _dirty = false;
+            UpdateTitle();
+            tsslStatus.Text = string.Format(Resources.FStateDgm_Ulozene, DateTime.Now.ToShortTimeString()) + "  –  " + Resources.FStateDgm_Text_Rezim;
+            return true;
+        }
+
         ValidateDiagram();
         var errors = _problems.Count(p => p.Diagnostic.IsError);
         if (errors > 0 && Utils.ShowWarning(string.Format(Resources.FStateDgm_UlozitSChybami, errors), MessageBoxButtons.YesNo) != DialogResult.Yes)
@@ -507,6 +687,11 @@ public partial class FStateDgm : Form
         {
             e.Handled = true;
             Save();
+        }
+        else if (_rawMode && e.Control && e.KeyCode == Keys.Enter)
+        {
+            e.Handled = e.SuppressKeyPress = true;
+            ApplyRawText();
         }
     }
 
@@ -673,6 +858,7 @@ public partial class FStateDgm : Form
             : (StateDgmTemplate.Slovak, Resources.FStateDgm_PredlohaSK);
         if (Utils.ShowQuestion(string.Format(Resources.FStateDgm_PredlohaOtazka, name)) != DialogResult.Yes) return;
         _d = StateDgmDiagram.Parse(TxtParser.StateDgmTemplateText(template));
+        if (_rawMode) SetRawMode(false);
         MarkDirty();
         BuildTree();
         tvNav.SelectedNode = FirstStateNode() ?? tvNav.Nodes[0];
@@ -761,12 +947,19 @@ public partial class FStateDgm : Form
         using var dlg = new FStateDgmItem(Resources.FStateDgm_Akcia_Titul, editor, 520, 640);
         if (dlg.ShowDialog(this) != DialogResult.OK) return;
 
+        var oldKey = ev.Key;
         var newControl = editor.Apply(ev, control);
         if (isNew) _selState.Events.Add(ev);
         if (control != null && newControl == null) _selState.Controls.Remove(control);
         if (control == null && newControl != null) _selState.Controls.Add(newControl);
-        // tlacidla ostatnych akcii, ktore ukazovali na stary kluc
-        if (row?.Event != null && control != null && control.EventKey != ev.Key) control.EventKey = ev.Key;
+        if (!isNew && oldKey != ev.Key)
+        {
+            // dalsie tlacidla a startery stavu so starym klucom; tlacidlo riadka uz ma novy kluc z Apply - pocas
+            // prenosu patri medzi odkazy stareho kluca (inak by ho prenos bral ako cudzi odkaz na novy kluc)
+            if (newControl != null) newControl.EventKey = oldKey;
+            StateDgmRename.TryRenameEvent(_d, ev, oldKey, out _);
+            if (newControl != null) newControl.EventKey = ev.Key;
+        }
 
         MarkDirty();
         FillStateGrids();
@@ -882,8 +1075,9 @@ public partial class FStateDgm : Form
 
     private void dgvProblems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
-        if (e.RowIndex >= 0 && dgvProblems.Rows[e.RowIndex].DataBoundItem is ProblemRow pr)
-            GoTo(pr.Diagnostic.Location);
+        if (e.RowIndex < 0 || dgvProblems.Rows[e.RowIndex].DataBoundItem is not ProblemRow pr) return;
+        if (pr.Diagnostic.Code == StateDgmDiagnosticCode.Syntax) GoToRawError();
+        else GoTo(pr.Diagnostic.Location);
     }
 
     private void GoTo(StateDgmLocation loc)

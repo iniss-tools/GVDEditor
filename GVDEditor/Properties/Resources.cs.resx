@@ -826,13 +826,33 @@ Přesunout jej nyní do vlastní složky ({1} grafikon/y)?</value>
   <data name="FStateDgm_SuborChyba" xml:space="preserve">
     <value>Soubor {0} nelze načíst (řádek {1}): {2}
 
-Otevře se slovenská předloha; původní soubor se přepíše až při uložení.</value>
+Jeho text se otevře na záložce Text – opravte chybu a klikněte na Načíst text. Uložit lze i text s chybou.</value>
   </data>
   <data name="FStateDgm_SuborChyba_Nadpis" xml:space="preserve">
     <value>Chyba v souboru StateDgm.txt</value>
   </data>
   <data name="FStateDgm_UlozitSChybami" xml:space="preserve">
     <value>Diagram má {0} chyb, INISS jej pravděpodobně nenačte. Uložit i tak?</value>
+  </data>
+  <data name="FStateDgm_UlozitText" xml:space="preserve">
+    <value>Text má chybu syntaxe na řádku {0}: {1}
+
+INISS takový soubor nenačte. Uložit jej i tak?</value>
+  </data>
+  <data name="FStateDgm_Text_Nacitat" xml:space="preserve">
+    <value>Načíst text</value>
+  </data>
+  <data name="FStateDgm_Text_NacitatTip" xml:space="preserve">
+    <value>Rozloží upravený text (Ctrl+Enter); pokud je bez chyby syntaxe, otevře diagram v editoru</value>
+  </data>
+  <data name="FStateDgm_Text_Chyba" xml:space="preserve">
+    <value>Řádek {0}: {1}</value>
+  </data>
+  <data name="FStateDgm_Text_Riadok" xml:space="preserve">
+    <value>Řádek {0}</value>
+  </data>
+  <data name="FStateDgm_Text_Rezim" xml:space="preserve">
+    <value>Soubor nelze načíst – opravte text na záložce Text a klikněte na Načíst text</value>
   </data>
   <data name="FStateDgm_NeulozeneZmeny" xml:space="preserve">
     <value>Diagram má neuložené změny. Uložit?</value>

@@ -2148,7 +2148,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Súbor {0} sa nedá načítať (riadok {1}): {2}  Otvorí sa slovenská predloha; pôvodný súbor sa prepíše až pri uložení..
+        ///   Looks up a localized string similar to Súbor {0} sa nedá načítať (riadok {1}): {2}  Jeho text sa otvorí na záložke Text – opravte chybu a kliknite na Načítať text. Uložiť sa dá aj text s chybou..
         /// </summary>
         internal static string FStateDgm_SuborChyba {
             get {
@@ -2173,7 +2173,61 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("FStateDgm_UlozitSChybami", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Text má chybu syntaxe na riadku {0}: {1}  INISS taký súbor nenačíta. Uložiť ho aj tak?.
+        /// </summary>
+        internal static string FStateDgm_UlozitText {
+            get {
+                return ResourceManager.GetString("FStateDgm_UlozitText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Načítať text.
+        /// </summary>
+        internal static string FStateDgm_Text_Nacitat {
+            get {
+                return ResourceManager.GetString("FStateDgm_Text_Nacitat", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Rozloží upravený text (Ctrl+Enter); ak je bez chyby syntaxe, otvorí diagram v editore.
+        /// </summary>
+        internal static string FStateDgm_Text_NacitatTip {
+            get {
+                return ResourceManager.GetString("FStateDgm_Text_NacitatTip", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Riadok {0}: {1}.
+        /// </summary>
+        internal static string FStateDgm_Text_Chyba {
+            get {
+                return ResourceManager.GetString("FStateDgm_Text_Chyba", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Riadok {0}.
+        /// </summary>
+        internal static string FStateDgm_Text_Riadok {
+            get {
+                return ResourceManager.GetString("FStateDgm_Text_Riadok", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor sa nedá načítať – opravte text na záložke Text a kliknite na Načítať text.
+        /// </summary>
+        internal static string FStateDgm_Text_Rezim {
+            get {
+                return ResourceManager.GetString("FStateDgm_Text_Rezim", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Diagram má neuložené zmeny. Uložiť?.
         /// </summary>

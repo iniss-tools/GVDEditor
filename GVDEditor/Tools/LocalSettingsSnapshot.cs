@@ -22,7 +22,7 @@ internal sealed class LocalSettingsSnapshot
     {
         (object List, Action Reset)?[] lists =
         [
-            Item(GlobData.Operators), Item(GlobData.Platforms), Item(GlobData.Tracks), Item(GlobData.Trains),
+            Item(GlobData.Operators), Item(GlobData.Platforms), Item(GlobData.Tracks), TrainsItem(GlobData.Trains),
             Item(GlobData.TablePhysicals), Item(GlobData.TableLogicals), Item(GlobData.TableCatalogs), Item(GlobData.TabTabs),
             Item(GlobData.TableTexts), Item(GlobData.TableFonts), Item(GlobData.CustomStations)
         ];
@@ -45,6 +45,17 @@ internal sealed class LocalSettingsSnapshot
 
     private static (object List, Action Reset)? Item<T>(BindingList<T>? list) =>
         list == null ? null : (list, list.ResetBindings);
+
+    /// <summary>
+    ///     Okno vlaky nepridava ani nemaze, meni len ich odkazy (kolaj, dopravca). Staci preto prekreslit riadky -
+    ///     ResetBindings by v hlavnom okne prestaval riadky tabulky vlakov a ta by grafikon oznacila ako zmeneny (*).
+    /// </summary>
+    private static (object List, Action Reset)? TrainsItem<T>(BindingList<T>? trains) =>
+        trains == null ? null : (trains, () =>
+        {
+            for (var i = 0; i < trains.Count; i++)
+                trains.ResetItem(i);
+        });
 
     /// <summary>
     ///     Sleduju sa len entity GVDEditora; zvukova banka, obrazky a pod. sa oknom nemenia.

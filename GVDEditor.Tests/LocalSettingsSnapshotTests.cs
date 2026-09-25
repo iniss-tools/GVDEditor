@@ -113,6 +113,19 @@ public class LocalSettingsSnapshotTests
     }
 
     [TestMethod]
+    public void Zrusit_VlakyLenPrekresliBezPrestavaniaZoznamu()
+    {
+        var types = new List<ListChangedType>();
+        GlobData.Trains.ListChanged += (_, e) => types.Add(e.ListChangedType);
+        var snapshot = LocalSettingsSnapshot.Capture();
+
+        snapshot.Restore();
+
+        // Reset by v hlavnom okne prestavil riadky tabulky vlakov a grafikon by sa oznacil ako zmeneny
+        CollectionAssert.AreEqual(new[] { ListChangedType.ItemChanged }, types);
+    }
+
+    [TestMethod]
     public void Snimka_NesledujeRetazceAniNeznameTypy()
     {
         var bitmap = new object();
