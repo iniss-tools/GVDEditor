@@ -241,6 +241,12 @@
   <data name="label19.Text" xml:space="preserve">
     <value>Označení (např. 2):</value>
   </data>
+  <data name="label54.Text" xml:space="preserve">
+    <value>Krátký název (např. 5V):</value>
+  </data>
+  <data name="label55.Text" xml:space="preserve">
+    <value>Text na tabule (např. 5V):</value>
+  </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 17</value>
   </data>

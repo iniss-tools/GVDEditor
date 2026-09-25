@@ -161,6 +161,10 @@ namespace GVDEditor.Forms
             bKolajAdd = new ExButton();
             tbKolajOznacenie = new ExTextBox();
             label19 = new Label();
+            tbKolajName = new ExTextBox();
+            label54 = new Label();
+            tbKolajText = new ExTextBox();
+            label55 = new Label();
             tpFyzTab = new TabPage();
             label14 = new Label();
             tbCommentFyz = new ExTextBox();
@@ -1136,6 +1140,10 @@ namespace GVDEditor.Forms
             groupBox3.Controls.Add(bKolajAdd);
             groupBox3.Controls.Add(tbKolajOznacenie);
             groupBox3.Controls.Add(label19);
+            groupBox3.Controls.Add(tbKolajName);
+            groupBox3.Controls.Add(label54);
+            groupBox3.Controls.Add(tbKolajText);
+            groupBox3.Controls.Add(label55);
             groupBox3.DefaultStyle = true;
             groupBox3.DisabledForeColor = SystemColors.GrayText;
             resources.ApplyResources(groupBox3, "groupBox3");
@@ -1334,7 +1342,47 @@ namespace GVDEditor.Forms
             // 
             resources.ApplyResources(label19, "label19");
             label19.Name = "label19";
-            // 
+            //
+            // tbKolajName
+            //
+            tbKolajName.BorderColor = Color.DimGray;
+            tbKolajName.BorderThickness = 1;
+            tbKolajName.DefaultStyle = true;
+            tbKolajName.DisabledBackColor = SystemColors.Control;
+            tbKolajName.DisabledBorderColor = SystemColors.InactiveBorder;
+            tbKolajName.DisabledForeColor = SystemColors.GrayText;
+            tbKolajName.HighlightColor = SystemColors.Highlight;
+            tbKolajName.HintForeColor = SystemColors.GrayText;
+            tbKolajName.HintText = null;
+            resources.ApplyResources(tbKolajName, "tbKolajName");
+            tbKolajName.Name = "tbKolajName";
+            tbKolajName.UseDarkScrollBar = false;
+            //
+            // label54
+            //
+            resources.ApplyResources(label54, "label54");
+            label54.Name = "label54";
+            //
+            // tbKolajText
+            //
+            tbKolajText.BorderColor = Color.DimGray;
+            tbKolajText.BorderThickness = 1;
+            tbKolajText.DefaultStyle = true;
+            tbKolajText.DisabledBackColor = SystemColors.Control;
+            tbKolajText.DisabledBorderColor = SystemColors.InactiveBorder;
+            tbKolajText.DisabledForeColor = SystemColors.GrayText;
+            tbKolajText.HighlightColor = SystemColors.Highlight;
+            tbKolajText.HintForeColor = SystemColors.GrayText;
+            tbKolajText.HintText = null;
+            resources.ApplyResources(tbKolajText, "tbKolajText");
+            tbKolajText.Name = "tbKolajText";
+            tbKolajText.UseDarkScrollBar = false;
+            //
+            // label55
+            //
+            resources.ApplyResources(label55, "label55");
+            label55.Name = "label55";
+            //
             // tpFyzTab
             // 
             tpFyzTab.BackColor = Color.Transparent;
@@ -2471,5 +2519,9 @@ namespace GVDEditor.Forms
         private ExTextBox tbKolajAlt;
         private Label label53;
         private ExTextBox tbNastupisteKolaj;
+        private ExTextBox tbKolajName;
+        private Label label54;
+        private ExTextBox tbKolajText;
+        private Label label55;
     }
 }

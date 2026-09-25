@@ -859,6 +859,87 @@ internal static class TxtParser
     #region TRAINS
 
     /// <summary>
+    ///     Nacita Pozice.txt - priradi vlakom kolaj prichodu a pripadne kolaj odchodu.
+    /// </summary>
+    /// <param name="file">cesta k suboru Pozice.txt</param>
+    /// <param name="trains">vlaky v poradi podla ID (riadok s ID n patri vlaku na indexe n - 1)</param>
+    /// <param name="tracks">kolaje stanice (Pozice_A.txt)</param>
+    /// <exception cref="FormatException">riadok odkazuje na neexistujucu kolaj alebo vlak</exception>
+    internal static void ReadPositions(string file, IList<Train> trains, IEnumerable<Track> tracks)
+    {
+        using var poziceF = new CsvFileReader(file);
+        var riadok = 1;
+        var row = new CsvRow();
+        while (true)
+        {
+            var status = poziceF.ReadRow(row);
+            if (LineIsEmpty(status))
+            {
+                riadok++;
+                continue;
+            }
+
+            if (LineIsEOF(status))
+                break;
+
+            try
+            {
+                var id = int.Parse(row[0]);
+                var train = trains[id - 1];
+
+                var kolaj = Track.GetFromID(tracks, row[1]);
+                if (kolaj == null)
+                    throw new FormatException($"Neexistujúca koľaj {row[1]}");
+
+                train.Track = kolaj;
+
+                // nepovinne tretie pole: kolaj pri odchode, ak vlak v stanici prechadza na inu kolaj
+                var odchodKey = row.ElementAtOrDefault(2);
+                if (!string.IsNullOrEmpty(odchodKey))
+                {
+                    var kolajOdchod = Track.GetFromID(tracks, odchodKey);
+                    if (kolajOdchod == null)
+                        throw new FormatException($"Neexistujúca koľaj pri odchode {odchodKey}");
+
+                    train.TrackDeparture = kolajOdchod.EqualsKeys(kolaj) ? null : kolajOdchod;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new FormatException(string.Format(FORMAT_EX, FILE_POZICE, riadok) + e.Message, e);
+            }
+
+            riadok++;
+        }
+    }
+
+    /// <summary>
+    ///     Zapise Pozice.txt - kolaj prichodu a (ak sa lisi) kolaj odchodu kazdeho vlaku.
+    /// </summary>
+    /// <param name="file">cesta k suboru Pozice.txt</param>
+    /// <param name="trains">vlaky v poradi podla ID</param>
+    /// <param name="comments">komentare na zaciatok suboru</param>
+    internal static void WritePositions(string file, IEnumerable<Train> trains, IEnumerable<string> comments)
+    {
+        using var poziceF = new CsvFileWriter(file);
+
+        foreach (var comment in comments) poziceF.WriteComment(comment);
+
+        var vlakId = 0;
+        foreach (var vlak in trains)
+        {
+            var row = new CsvRow();
+            row.Insert(0, (vlakId + 1).ToString());
+            row.Insert(1, vlak.Track.Key.Quote());
+            if (vlak.TrackDeparture != null && !vlak.TrackDeparture.EqualsKeys(vlak.Track))
+                row.Insert(2, vlak.TrackDeparture.Key.Quote());
+
+            poziceF.WriteRow(row);
+            vlakId++;
+        }
+    }
+
+    /// <summary>
     ///     Vrati informacie a data o vlakoch.
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
@@ -1230,52 +1311,7 @@ internal static class TxtParser
             }
         }
 
-        using (var poziceF = new CsvFileReader(filePozice))
-        {
-            var riadok = 1;
-            var row = new CsvRow();
-            while (true)
-            {
-                var status = poziceF.ReadRow(row);
-                if (LineIsEmpty(status))
-                {
-                    riadok++;
-                    continue;
-                }
-
-                if (LineIsEOF(status))
-                    break;
-
-                try
-                {
-                    var id = int.Parse(row[0]);
-                    var train = vlaky[id - 1];
-
-                    var kolaj = Track.GetFromID(GlobData.Tracks, row[1]);
-                    if (kolaj == null)
-                        throw new FormatException($"Neexistujúca koľaj {row[1]}");
-
-                    train.Track = kolaj;
-
-                    // nepovinne tretie pole: kolaj pri odchode, ak vlak v stanici prechadza na inu kolaj
-                    var odchodKey = row.ElementAtOrDefault(2);
-                    if (!string.IsNullOrEmpty(odchodKey))
-                    {
-                        var kolajOdchod = Track.GetFromID(GlobData.Tracks, odchodKey);
-                        if (kolajOdchod == null)
-                            throw new FormatException($"Neexistujúca koľaj pri odchode {odchodKey}");
-
-                        train.TrackDeparture = kolajOdchod.EqualsKeys(kolaj) ? null : kolajOdchod;
-                    }
-                }
-                catch (Exception e)
-                {
-                    throw new FormatException(string.Format(FORMAT_EX, FILE_POZICE, riadok) + e.Message, e);
-                }
-
-                riadok++;
-            }
-        }
+        ReadPositions(filePozice, vlaky, GlobData.Tracks);
 
         if (File.Exists(fileDoplnky))
         {
@@ -1743,25 +1779,7 @@ internal static class TxtParser
         }
 
         //POZICE.TXT
-        using (var poziceF = new CsvFileWriter(filePozice))
-        {
-            var comments = GenerateComment(path, FILE_POZICE, gvd, GlobData.Config.Language);
-
-            foreach (var comment in comments) poziceF.WriteComment(comment);
-
-            var vlakId = 0;
-            foreach (var vlak in trains)
-            {
-                var row = new CsvRow();
-                row.Insert(0, (vlakId + 1).ToString());
-                row.Insert(1, vlak.Track.Key.Quote());
-                if (vlak.TrackDeparture != null && !vlak.TrackDeparture.EqualsKeys(vlak.Track))
-                    row.Insert(2, vlak.TrackDeparture.Key.Quote());
-
-                poziceF.WriteRow(row);
-                vlakId++;
-            }
-        }
+        WritePositions(filePozice, trains, GenerateComment(path, FILE_POZICE, gvd, GlobData.Config.Language));
 
         //DOPLNKY.TXT
         using (var doplnkyF = new CsvFileWriter(fileDoplnky))

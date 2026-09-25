@@ -2444,7 +2444,7 @@
     <value>1</value>
   </data>
   <data name="tbKolajAlt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 186</value>
+    <value>199, 215</value>
   </data>
   <data name="tbKolajAlt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2453,7 +2453,7 @@
     <value>206, 23</value>
   </data>
   <data name="tbKolajAlt.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>15</value>
   </data>
   <data name="&gt;&gt;tbKolajAlt.Name" xml:space="preserve">
     <value>tbKolajAlt</value>
@@ -2474,7 +2474,7 @@
     <value>NoControl</value>
   </data>
   <data name="label53.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 194</value>
+    <value>23, 223</value>
   </data>
   <data name="label53.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -2483,7 +2483,7 @@
     <value>127, 15</value>
   </data>
   <data name="label53.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>14</value>
   </data>
   <data name="label53.Text" xml:space="preserve">
     <value>Alernatívny text koľaje:</value>
@@ -2501,7 +2501,7 @@
     <value>1</value>
   </data>
   <data name="tbNastupisteKolaj.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 150</value>
+    <value>199, 187</value>
   </data>
   <data name="tbNastupisteKolaj.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2510,7 +2510,7 @@
     <value>206, 23</value>
   </data>
   <data name="tbNastupisteKolaj.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="&gt;&gt;tbNastupisteKolaj.Name" xml:space="preserve">
     <value>tbNastupisteKolaj</value>
@@ -2531,7 +2531,7 @@
     <value>NoControl</value>
   </data>
   <data name="label52.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 158</value>
+    <value>23, 195</value>
   </data>
   <data name="label52.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -2540,7 +2540,7 @@
     <value>165, 15</value>
   </data>
   <data name="label52.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="label52.Text" xml:space="preserve">
     <value>Nástupište+koľaj (napr. 3/5V):</value>
@@ -2558,7 +2558,7 @@
     <value>3</value>
   </data>
   <data name="tbKolajSound.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 84</value>
+    <value>199, 131</value>
   </data>
   <data name="tbKolajSound.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2567,7 +2567,7 @@
     <value>206, 23</value>
   </data>
   <data name="tbKolajSound.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;tbKolajSound.Name" xml:space="preserve">
     <value>tbKolajSound</value>
@@ -2588,7 +2588,7 @@
     <value>NoControl</value>
   </data>
   <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 92</value>
+    <value>23, 139</value>
   </data>
   <data name="label27.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -2597,7 +2597,7 @@
     <value>142, 15</value>
   </data>
   <data name="label27.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="label27.Text" xml:space="preserve">
     <value>Názov zvuku (napr. 0002):</value>
@@ -2615,7 +2615,7 @@
     <value>5</value>
   </data>
   <data name="cbNastupistia.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 119</value>
+    <value>199, 159</value>
   </data>
   <data name="cbNastupistia.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2624,7 +2624,7 @@
     <value>206, 23</value>
   </data>
   <data name="cbNastupistia.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="&gt;&gt;cbNastupistia.Name" xml:space="preserve">
     <value>cbNastupistia</value>
@@ -2645,7 +2645,7 @@
     <value>NoControl</value>
   </data>
   <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 127</value>
+    <value>23, 167</value>
   </data>
   <data name="label21.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -2654,7 +2654,7 @@
     <value>66, 15</value>
   </data>
   <data name="label21.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>Nástupište:</value>
@@ -2678,7 +2678,7 @@
     <value>NoControl</value>
   </data>
   <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 228</value>
+    <value>23, 245</value>
   </data>
   <data name="label20.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -2687,7 +2687,7 @@
     <value>93, 15</value>
   </data>
   <data name="label20.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>16</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>Tabule na koľaji:</value>
@@ -2705,16 +2705,16 @@
     <value>8</value>
   </data>
   <data name="clbKolajTables.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 245</value>
+    <value>23, 262</value>
   </data>
   <data name="clbKolajTables.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="clbKolajTables.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 94</value>
+    <value>194, 77</value>
   </data>
   <data name="clbKolajTables.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>17</value>
   </data>
   <data name="&gt;&gt;clbKolajTables.Name" xml:space="preserve">
     <value>clbKolajTables</value>
@@ -2729,7 +2729,7 @@
     <value>9</value>
   </data>
   <data name="tbKolajFullName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 50</value>
+    <value>199, 75</value>
   </data>
   <data name="tbKolajFullName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2738,7 +2738,7 @@
     <value>206, 23</value>
   </data>
   <data name="tbKolajFullName.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;tbKolajFullName.Name" xml:space="preserve">
     <value>tbKolajFullName</value>
@@ -2759,7 +2759,7 @@
     <value>NoControl</value>
   </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 58</value>
+    <value>23, 83</value>
   </data>
   <data name="label18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -2768,7 +2768,7 @@
     <value>144, 15</value>
   </data>
   <data name="label18.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>Celý názov (napr. Koľaj 2):</value>
@@ -2792,7 +2792,7 @@
     <value>NoControl</value>
   </data>
   <data name="bKolajDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 300</value>
+    <value>282, 310</value>
   </data>
   <data name="bKolajDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2801,7 +2801,7 @@
     <value>78, 29</value>
   </data>
   <data name="bKolajDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>20</value>
   </data>
   <data name="bKolajDelete.Text" xml:space="preserve">
     <value>Odstrániť</value>
@@ -2825,7 +2825,7 @@
     <value>NoControl</value>
   </data>
   <data name="bKolajEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 267</value>
+    <value>282, 280</value>
   </data>
   <data name="bKolajEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2834,7 +2834,7 @@
     <value>76, 29</value>
   </data>
   <data name="bKolajEdit.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>19</value>
   </data>
   <data name="bKolajEdit.Text" xml:space="preserve">
     <value>Upraviť</value>
@@ -2858,7 +2858,7 @@
     <value>NoControl</value>
   </data>
   <data name="bKolajAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 234</value>
+    <value>282, 250</value>
   </data>
   <data name="bKolajAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -2867,7 +2867,7 @@
     <value>76, 29</value>
   </data>
   <data name="bKolajAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>18</value>
   </data>
   <data name="bKolajAdd.Text" xml:space="preserve">
     <value>Pridať</value>
@@ -2940,6 +2940,120 @@
   </data>
   <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
     <value>16</value>
+  </data>
+  <data name="tbKolajName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>199, 47</value>
+  </data>
+  <data name="tbKolajName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbKolajName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 23</value>
+  </data>
+  <data name="tbKolajName.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tbKolajName.Name" xml:space="preserve">
+    <value>tbKolajName</value>
+  </data>
+  <data name="&gt;&gt;tbKolajName.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbKolajName.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;tbKolajName.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="label54.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label54.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label54.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 55</value>
+  </data>
+  <data name="label54.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label54.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 15</value>
+  </data>
+  <data name="label54.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label54.Text" xml:space="preserve">
+    <value>Krátky názov (napr. 5V):</value>
+  </data>
+  <data name="&gt;&gt;label54.Name" xml:space="preserve">
+    <value>label54</value>
+  </data>
+  <data name="&gt;&gt;label54.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label54.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label54.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="tbKolajText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>199, 103</value>
+  </data>
+  <data name="tbKolajText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tbKolajText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 23</value>
+  </data>
+  <data name="tbKolajText.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;tbKolajText.Name" xml:space="preserve">
+    <value>tbKolajText</value>
+  </data>
+  <data name="&gt;&gt;tbKolajText.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbKolajText.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;tbKolajText.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="label55.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label55.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label55.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 111</value>
+  </data>
+  <data name="label55.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label55.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 15</value>
+  </data>
+  <data name="label55.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label55.Text" xml:space="preserve">
+    <value>Text na tabule (napr. 5V):</value>
+  </data>
+  <data name="&gt;&gt;label55.Name" xml:space="preserve">
+    <value>label55</value>
+  </data>
+  <data name="&gt;&gt;label55.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label55.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label55.ZOrder" xml:space="preserve">
+    <value>20</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>224, 7</value>
