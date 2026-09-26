@@ -36,7 +36,7 @@ public record AppShortcuts()
         [nameof(GSAudio)] = (Shortcut.Ctrl4, "Globálne nastavenia - Audio"),
 
         [nameof(LSGvd)] = (Shortcut.CtrlShiftG, "Lokálne nastavenia - Grafikon"),
-        [nameof(LSStations)] = (Shortcut.CtrlShiftS, "Lokálne nastavenia - Jazyky"),
+        [nameof(LSStations)] = (Shortcut.CtrlShiftS, "Lokálne nastavenia - Stanice"),
         [nameof(LSOperators)] = (Shortcut.CtrlShiftO, "Lokálne nastavenia - Dopravcovia"),
         [nameof(LSPlatforms)] = (Shortcut.CtrlShiftN, "Lokálne nastavenia - Nástupištia"),
         [nameof(LSTracks)] = (Shortcut.CtrlShiftK, "Lokálne nastavenia - Koľaje"),
@@ -50,12 +50,12 @@ public record AppShortcuts()
 
         [nameof(RunINISS)] = (Shortcut.F5, "Spustiť INISS"),
         [nameof(ShutdownINISS)] = (Shortcut.ShiftF5, "Ukončiť INISS"),
-        [nameof(KillINISS)] = (Shortcut.F10, "Nútene vypnúť INISS"),
+        [nameof(KillINISS)] = (Shortcut.F10, "Vynútiť ukončenie INISS"),
         [nameof(RestartINISS)] = (Shortcut.CtrlShiftF5, "Reštartovať INISS"),
 
         [nameof(InfoApp)] = (Shortcut.F6, "Informácie o programe"),
         [nameof(UpdateNotes)] = (Shortcut.None, "Poznámky k aktualizácií"),
-        [nameof(DateLimit)] = (Shortcut.F7, "Dátumové obmedzenie")
+        [nameof(DateLimit)] = (Shortcut.F7, "Generátor dátumových obmedzení")
     };
 
     #region Fields

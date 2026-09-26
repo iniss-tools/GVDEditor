@@ -50,7 +50,8 @@ public partial class FBlockMigration : Form
         {
             var name = (dgvBlocks.Rows[i].Cells[colDir.Index].Value?.ToString() ?? "").Trim();
 
-            if (name.Length == 0 || name.IndexOfAny(invalid) >= 0 || name is "." or "..")
+            // ciarka by rozbila DirList.TXT (zapisuje sa bez uvodzoviek), bodku na konci Windows z nazvu odstrani
+            if (name.Length == 0 || name.IndexOfAny(invalid) >= 0 || name.Contains(',') || name.EndsWith('.'))
             {
                 Utils.ShowError(string.Format(Properties.Resources.BlockMigrator_Neplatny_nazov_priecinka, name));
                 return;

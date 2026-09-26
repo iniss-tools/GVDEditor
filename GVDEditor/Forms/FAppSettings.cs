@@ -1,4 +1,5 @@
-﻿using ExControls;
+﻿using GVDEditor.Tools;
+using ExControls;
 using GVDEditor.XML;
 using ToolsCore;
 using ToolsCore.Forms;
@@ -46,17 +47,20 @@ public partial class FAppSettings : FAppSettingsBase
         cboxDontCheckTrainIndex.Checked = Config.DisableVariantCheck;
         nudPlayerWordPause.Value = Config.PlayerSoundsOffset;
         cboxRunAsAdmin.Checked = Config.StartupINISSConfig.RunAsAdmin;
-        tbCmdArguments.Text = Config.StartupINISSConfig.CmdArgs;
 
+        // zdroj registrov najprv - jeho vyber by inak prepisal nacitane argumenty
+        _argsinit = true;
         cbArgRegister.DataSource = Tools.AppRegistry.GetINISSRegisters();
+        cbArgRegister.SelectedIndex = -1;
+        _argsinit = false;
+
+        tbCmdArguments.Text = Config.StartupINISSConfig.CmdArgs;
         FormatArgs(Config.StartupINISSConfig.CmdArgs);
     }
 
     /// <inheritdoc />
     protected override bool OnSaving()
     {
-        base.OnSaving();
-
         Config.Shortcuts.SetValues(Shortcuts);
         Config.DesktopCols.SetValues(Columns);
 
@@ -66,7 +70,12 @@ public partial class FAppSettings : FAppSettingsBase
         Config.AutoTableText = cboxTabTextAutoGenerate.Checked;
         Config.DisableVariantCheck = cboxDontCheckTrainIndex.Checked;
         Config.PlayerSoundsOffset = decimal.ToInt32(nudPlayerWordPause.Value);
-        return true;
+        Config.StartupINISSConfig = new StartupINISS
+        {
+            RunAsAdmin = cboxRunAsAdmin.Checked,
+            CmdArgs = tbCmdArguments.Text.Trim()
+        };
+        return base.OnSaving();
     }
 
     /// <inheritdoc />
@@ -131,23 +140,29 @@ public partial class FAppSettings : FAppSettingsBase
 
     private void ArgsUpdate(object sender, EventArgs e)
     {
-        if (_argsinit)
+        // v rucnom rezime su argumenty v textovom poli - zaskrtavacie polia ich nemenia
+        if (_argsinit || cboxManualCmdArgs.Checked)
             return;
 
-        var str = new StringBuilder();
+        var args = new List<string>();
+        if (cboxArgMoreInstances.Checked) args.Add("/Multiuse");
+        if (cboxArgMinimize.Checked) args.Add("/Minimize");
+        if (cboxArgExportHlasTexts.Checked) args.Add("/ExportHlas");
+        if (cboxArgAsClient.Checked) args.Add("/Remote");
+        if (cboxArgExportTableTexts.Checked) args.Add("/Export");
+        if (!string.IsNullOrWhiteSpace(cbArgRegister.Text))
+            args.Add("/Reg:\"" + cbArgRegister.Text.Trim() + "\"");
 
-        if (cboxArgMoreInstances.Checked) str.Append("/multiuse ");
-        if (cboxArgMinimize.Checked) str.Append("/Minimize ");
-        if (cboxArgExportHlasTexts.Checked) str.Append("/ExportHlas ");
-        if (cboxArgAsClient.Checked) str.Append("/remote ");
-        if (cboxArgExportTableTexts.Checked) str.Append("/Export ");
+        // parametre bez zaskrtavacieho pola (napr. /NoRestore, /1) zostanu zachovane
+        string[] managed = ["Multiuse", "Minimize", "ExportHlas", "Remote", "Export"];
+        foreach (var token in INISSArgs.Tokens(tbCmdArguments.Text))
+        {
+            var isManaged = managed.Any(m => INISSArgs.Has(token, m)) || INISSArgs.Registry(token) != null;
+            if (!isManaged)
+                args.Add(token.Contains(' ') ? "\"" + token + "\"" : token);
+        }
 
-        if (!string.IsNullOrEmpty(cbArgRegister.Text))
-            str.Append("/reg:\"" + cbArgRegister.Text + "\" ");
-        else if (cbArgRegister.SelectedIndex != -1 && !string.IsNullOrEmpty(cbArgRegister.SelectedText))
-            str.Append("/reg:\"" + cbArgRegister.SelectedText + "\" ");
-
-        tbCmdArguments.Text = str.ToString();
+        tbCmdArguments.Text = string.Join(" ", args);
     }
 
     private void FormatArgs(string text)
@@ -157,27 +172,13 @@ public partial class FAppSettings : FAppSettingsBase
 
         _argsinit = true;
 
-        if (text.Contains("/multiuse")) cboxArgMoreInstances.Checked = true;
-        if (text.Contains("/Minimize")) cboxArgMinimize.Checked = true;
-        if (text.Contains("/ExportHlas")) cboxArgExportHlasTexts.Checked = true;
-        if (text.Contains("/remote")) cboxArgAsClient.Checked = true;
-        if (text.Contains("/Export")) cboxArgExportTableTexts.Checked = true;
-
-        if (text.Contains("/reg:"))
-        {
-            var start = text.IndexOf("/reg:\"", StringComparison.Ordinal) + 6;
-            if (start == -1) 
-                start = text.IndexOf("/reg:", StringComparison.Ordinal) + 5;
-            var end = text.IndexOf("\"", start, StringComparison.Ordinal);
-            if (end == -1) 
-                end = text.IndexOf(" ", start, StringComparison.Ordinal);
-
-            end -= start;
-            var t = text.Substring(start, end);
-
-            t = t.Replace("\"", "");
-            cbArgRegister.Text = t.Trim();
-        }
+        // parametre po jednom - /Export nesmie zaskrtnut aj /ExportHlas a na velkosti pismen INISSu nezalezi
+        cboxArgMoreInstances.Checked = INISSArgs.Has(text, "Multiuse");
+        cboxArgMinimize.Checked = INISSArgs.Has(text, "Minimize");
+        cboxArgExportHlasTexts.Checked = INISSArgs.Has(text, "ExportHlas");
+        cboxArgAsClient.Checked = INISSArgs.Has(text, "Remote");
+        cboxArgExportTableTexts.Checked = INISSArgs.Has(text, "Export");
+        cbArgRegister.Text = INISSArgs.Registry(text) ?? "";
 
         _argsinit = false;
     }

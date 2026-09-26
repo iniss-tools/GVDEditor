@@ -86,6 +86,63 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             }, tabs: true);
             Shot("globalne-nastavenia", () => new FGlobalSettings(FMain.ObdobiaList.ToList()), tabs: true);
             Shot("nastavenia-programu/nastavenia-programu", () => new FAppSettings(GlobData.Config, GlobData.Styles));
+            Shot("nastavenia-programu/komponenty", () =>
+            {
+                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                form.PreselectMenuItem("pDesktopComponents");
+                return form;
+            });
+            Shot("nastavenia-programu/stlpce", () =>
+            {
+                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                form.PreselectMenuItem("pDesktopColumns");
+                return form;
+            });
+            Shot("nastavenia-programu/lokalizacia", () =>
+            {
+                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                form.PreselectMenuItem("pLocalization");
+                return form;
+            });
+            Shot("nastavenia-programu/klavesove-skratky", () =>
+            {
+                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                form.PreselectMenuItem("pShortcuts");
+                return form;
+            });
+            Shot("nastavenia-programu/styly", () =>
+            {
+                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                form.PreselectMenuItem("pStyles");
+                return form;
+            });
+            Shot("nastavenia-programu/pisma", () =>
+            {
+                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                form.PreselectMenuItem("pFonts");
+                return form;
+            });
+            Shot("nastavenia-programu/logovanie", () =>
+            {
+                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                form.PreselectMenuItem("pLogging");
+                return form;
+            });
+            // stránka Spúšťanie INISS s argumentmi zadanými zaškrtnutím
+            Shot("spustanie-iniss/nastavenia-spustania", () =>
+            {
+                var config = GlobData.Config with { StartupINISSConfig = new GVDEditor.XML.StartupINISS { CmdArgs = "/Minimize /NoRestore" } };
+                var form = new FAppSettings(config, GlobData.Styles);
+                form.PreselectMenuItem("pStartupIniss");
+                return form;
+            });
+            // rozdelenie staršieho zápisu: jeden priečinok s dvoma obdobiami stanice (bloky /9900100)
+            Shot("migracia-blokov/rozdelenie", () => new FBlockMigration(@"C:\INISS\DATA\DolneMesto",
+            [
+                new GvdBlock(1, 9900100, "Dolné Mesto", 118, new DateTime(2025, 12, 14), new DateTime(2026, 12, 12)) { DirName = "DolneMesto.2026" },
+                new GvdBlock(2, 9900100, "Dolné Mesto", 124, new DateTime(2026, 12, 13), new DateTime(2027, 12, 11)) { DirName = "DolneMesto.2027_2" }
+            ]), form => Resize(form, 760, 330));
+
             // import dát z CSV s hlavičkou: tri nové vlaky s trasou podľa čísel staníc
             const string importSample =
                 "Číslo;Typ;Príchod;Odchod;Koľaj;Dátumové obmedzenie;Všetky stanice\n" +

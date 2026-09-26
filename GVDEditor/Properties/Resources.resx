@@ -1382,6 +1382,25 @@ Pridať ju aj tak?</value>
   <data name="FGlobalSettings_Testovaci_okruh_uz_je" xml:space="preserve">
     <value>Testovací okruh (TEST) už v zozname je. INISS používa jeden testovací okruh.</value>
   </data>
+  <data name="FMain_Ulozit_pred_spustenim_INISS" xml:space="preserve">
+    <value>Grafikon má neuložené zmeny. INISS načíta dáta grafikonu pri štarte, takže by v ňom tieto zmeny chýbali.
+
+Uložiť grafikon pred spustením INISSu?</value>
+  </data>
+  <data name="FMain_INISS_neda_ukoncit" xml:space="preserve">
+    <value>INISS sa nepodarilo ukončiť: {0}</value>
+  </data>
+  <data name="FMain_INISS_sa_neukoncil" xml:space="preserve">
+    <value>INISS sa ani po 30 sekundách neukončil – možno čaká na potvrdenie ukončenia.
+
+Vynútiť jeho ukončenie a spustiť ho znova?</value>
+  </data>
+  <data name="FMain_Nastavenia_po_restarte" xml:space="preserve">
+    <value>Jazyk používateľského rozhrania a klasický dizajn ovládacích prvkov sa prejavia až po reštartovaní GVDEditora.</value>
+  </data>
+  <data name="FMain_Vynutit_ukoncenie_INISS" xml:space="preserve">
+    <value>Vynútiť ukončenie INISSu? INISS sa ukončí okamžite, bez otázok a bez riadneho ukončenia.</value>
+  </data>
   <data name="LanguageRules_Najviac_jazykov" xml:space="preserve">
     <value>INISS zvládne najviac {0} jazyky – s viacerými sa nespustí.</value>
   </data>

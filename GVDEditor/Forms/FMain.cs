@@ -537,14 +537,23 @@ public partial class FMain : Form
         }
     }
 
-    private void ShowAppSettings()
+    private void ShowAppSettings(string? page = null)
     {
+        var old = GlobData.Config;
         var form = new FAppSettings(GlobData.Config, GlobData.Styles);
-        var result = form.ShowDialog();
-        if (result == DialogResult.OK)
-        {
-            UpdateMainUI();
-        }
+        if (page != null) form.PreselectMenuItem(page);
+        if (form.ShowDialog() != DialogResult.OK)
+            return;
+
+        UpdateMainUI();
+
+        // tieto nastavenia sa inak nacitaju len pri starte programu
+        DateLimit.Loc = GlobData.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
+        Log.DoAppLogs = GlobData.Config.LoggingInfo;
+        Log.DoErrorLogs = GlobData.Config.LoggingError;
+
+        if (old.Language != GlobData.Config.Language || old.ClassicGUI != GlobData.Config.ClassicGUI)
+            Utils.ShowInfo(Resources.FMain_Nastavenia_po_restarte);
     }
 
     /// <summary>
@@ -805,15 +814,7 @@ public partial class FMain : Form
         if (InitializeDataList()) InitializeGUI();
     }
 
-    private void ShowStartupINISSSettings()
-    {
-        var form = new FAppSettings(GlobData.Config, GlobData.Styles);
-        form.PreselectMenuItem("pStartupIniss");
-        if (form.ShowDialog() == DialogResult.OK)
-        {
-            UpdateMainUI();
-        }
-    }
+    private void ShowStartupINISSSettings() => ShowAppSettings("pStartupIniss");
 
     private void DoDeleteTrains()
     {
@@ -1006,25 +1007,66 @@ public partial class FMain : Form
     private void InissStartItemOnClick(object? sender, EventArgs e)
     {
         if (sender is ToolStripItem tsmi)
-        {
-            if (_actualINISSProcess is not null && _actualINISSProcess.HasExited)
-            {
-                _actualINISSProcess.Close();
-                _actualINISSProcess = null;
-            }
+            StartINISS(Utils.CombinePath(GlobData.INISSDir, tsmi.Text!)!, tsmiRun);
+    }
 
-            if (_actualINISSProcess == null)
+    /// <summary>
+    ///     Ci bezi INISS spusteny z GVDEditora.
+    /// </summary>
+    private bool IsINISSRunning
+    {
+        get
+        {
+            try
             {
-                var path = Utils.CombinePath(GlobData.INISSDir, tsmi.Text!)!;
-                ExecuteINISS(path);
-                _lastINISSStart = path;
+                return _actualINISSProcess is { HasExited: false };
             }
-            else
+            catch (InvalidOperationException)
             {
-                var result = Utils.ShowQuestion(Resources.FMain_InissStartItemOnClick);
-                if (result == DialogResult.Yes) _actualINISSProcess.Kill();
+                return false;
             }
         }
+    }
+
+    /// <summary>
+    ///     Spusti program <paramref name="path" /> (null = naposledy spusteny, inak rozbali ponuku
+    ///     <paramref name="dropDown" />). Ak INISS uz bezi, ponukne jeho nutene ukoncenie.
+    /// </summary>
+    private void StartINISS(string? path, ToolStripDropDownItem dropDown)
+    {
+        if (IsINISSRunning)
+        {
+            if (Utils.ShowQuestion(Resources.FMain_InissStartItemOnClick) == DialogResult.Yes)
+                KillINISS();
+            return;
+        }
+
+        path ??= _lastINISSStart;
+        if (path == null)
+        {
+            dropDown.ShowDropDown();
+            return;
+        }
+
+        if (ConfirmSaveBeforeINISS() && ExecuteINISS(path))
+            _lastINISSStart = path;
+    }
+
+    /// <summary>
+    ///     INISS cita data grafikonu pri starte - neulozene zmeny by v nom chybali.
+    /// </summary>
+    /// <returns><see langword="false" />, ak pouzivatel spustenie zrusil alebo sa grafikon nepodarilo ulozit.</returns>
+    private bool ConfirmSaveBeforeINISS()
+    {
+        if (DataSaved || string.IsNullOrEmpty(GlobData.INISSDir))
+            return true;
+
+        return Utils.ShowQuestion(Resources.FMain_Ulozit_pred_spustenim_INISS, MessageBoxButtons.YesNoCancel) switch
+        {
+            DialogResult.Yes => DoSave(),
+            DialogResult.No => true,
+            _ => false
+        };
     }
 
     /// <summary>
@@ -1940,99 +1982,146 @@ public partial class FMain : Form
                     tt.Trains.RemoveAt(i);
     }
 
-    private void ExecuteINISS(string fileName)
+    private bool ExecuteINISS(string fileName)
     {
-        _actualINISSProcess = new Process { StartInfo = { FileName = fileName, UseShellExecute = true } };
-        if (GlobData.Config.StartupINISSConfig.RunAsAdmin) _actualINISSProcess.StartInfo.Verb = "runas";
-        _actualINISSProcess.StartInfo.Arguments = GlobData.Config.StartupINISSConfig.CmdArgs;
-        _actualINISSProcess.EnableRaisingEvents = true;
-        _actualINISSProcess.Exited += ProcOnExited;
+        var process = new Process { StartInfo = { FileName = fileName, UseShellExecute = true } };
+        if (GlobData.Config.StartupINISSConfig.RunAsAdmin) process.StartInfo.Verb = "runas";
+        process.StartInfo.Arguments = GlobData.Config.StartupINISSConfig.CmdArgs;
+        process.EnableRaisingEvents = true;
+        process.Exited += ProcOnExited;
         try
         {
-            _actualINISSProcess.Start();
-
-            tsbShutdownINISS.Enabled = true;
-            tsmimShutdownINISS.Enabled = true;
-            tsbKillINISS.Enabled = true;
-            tsmimKillINISS.Enabled = true;
-            tsbRestartINISS.Enabled = true;
-            tsmimRestartINISS.Enabled = true;
+            process.Start();
         }
         catch (Exception e)
         {
+            // napr. zamietnute spustenie ako administrator - proces nebezi, nesmie ostat ako "beziaci"
+            process.Dispose();
             Utils.ShowError(string.Format(Resources.FMain_Nepodarilo_sa_spustiť_vybraný_program, e.Message));
+            return false;
         }
+
+        _actualINISSProcess = process;
+        SetINISSControlsEnabled(true);
+        return true;
+    }
+
+    private void SetINISSControlsEnabled(bool running)
+    {
+        tsbShutdownINISS.Enabled = running;
+        tsmimShutdownINISS.Enabled = running;
+        tsbKillINISS.Enabled = running;
+        tsmimKillINISS.Enabled = running;
+        tsbRestartINISS.Enabled = running;
+        tsmimRestartINISS.Enabled = running;
     }
 
     private void ProcOnExited(object? sender, EventArgs e)
     {
-        _actualINISSProcess?.Dispose();
-        _actualINISSProcess = null;
-
-        Invoke(new Action(() =>
+        // pri restarte uz moze bezat novy proces - ukoncenie stareho ho nesmie prestat sledovat
+        if (!ReferenceEquals(sender, _actualINISSProcess))
         {
-            tsbShutdownINISS.Enabled = false;
-            tsmimShutdownINISS.Enabled = false;
-            tsbKillINISS.Enabled = false;
-            tsmimKillINISS.Enabled = false;
-            tsbRestartINISS.Enabled = false;
-            tsmimRestartINISS.Enabled = false;
-        }));
+            (sender as Process)?.Dispose();
+            return;
+        }
+
+        if (IsDisposed || !IsHandleCreated) return;
+
+        BeginInvoke(() =>
+        {
+            if (!ReferenceEquals(sender, _actualINISSProcess)) return;
+
+            _actualINISSProcess?.Dispose();
+            _actualINISSProcess = null;
+            SetINISSControlsEnabled(false);
+        });
     }
 
-    private void tssbStartINISS_ButtonClick(object sender, EventArgs e)
-    {
-        if (_actualINISSProcess != null)
-        {
-            var result = Utils.ShowQuestion(Resources.FMain_InissStartItemOnClick);
-            if (result == DialogResult.Yes) _actualINISSProcess.Kill();
-        }
-        else
-        {
-            if (_lastINISSStart != null)
-                ExecuteINISS(_lastINISSStart);
-            else
-                tssbStartINISS.ShowDropDown();
-        }
-    }
+    private void tssbStartINISS_ButtonClick(object sender, EventArgs e) => StartINISS(null, tssbStartINISS);
 
-    private void tsmimStartINISS_Click(object sender, EventArgs e)
-    {
-        if (_actualINISSProcess != null)
-        {
-            var result = Utils.ShowQuestion(Resources.FMain_InissStartItemOnClick);
-            if (result == DialogResult.Yes) _actualINISSProcess.Kill();
-        }
-        else
-        {
-            if (_lastINISSStart != null)
-                ExecuteINISS(_lastINISSStart);
-            else
-                tsmiRun.ShowDropDown();
-        }
-    }
+    private void tsmimStartINISS_Click(object sender, EventArgs e) => StartINISS(null, tsmiRun);
 
     private void KillINISS()
     {
-        _actualINISSProcess?.Kill();
+        try
+        {
+            _actualINISSProcess?.Kill();
+        }
+        catch (Exception e)
+        {
+            // napr. INISS spusteny ako administrator a GVDEditor bez opravneni
+            Utils.ShowError(string.Format(Resources.FMain_INISS_neda_ukoncit, e.Message));
+        }
     }
 
+    /// <summary>
+    ///     Zavrie okno INISSu rovnako ako krizik - INISS sa ukonci riadne (a moze sa opytat na potvrdenie).
+    /// </summary>
     private void ShutDownINISS()
     {
-        //https://docs.microsoft.com/en-us/windows/win32/menurc/wm-syscommand
-        _actualINISSProcess?.SendMessage(0x0112, (IntPtr)0xF060, IntPtr.Zero);
+        try
+        {
+            if (IsINISSRunning)
+                _actualINISSProcess!.CloseMainWindow();
+        }
+        catch (InvalidOperationException)
+        {
+        }
     }
 
-    private void RestartINISS()
+    /// <summary>
+    ///     Riadne ukonci INISS a spusti ho znova. Ak sa INISS do casoveho limitu neukonci (napr. caka na potvrdenie),
+    ///     ponukne nutene ukoncenie.
+    /// </summary>
+    private async void RestartINISS()
     {
-        _actualINISSProcess?.Kill();
-        if (_lastINISSStart != null)
-            ExecuteINISS(_lastINISSStart);
+        var process = _actualINISSProcess;
+        var path = _lastINISSStart;
+        if (process == null || path == null || !ConfirmSaveBeforeINISS())
+            return;
+
+        ShutDownINISS();
+        using (var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(30)))
+        {
+            try
+            {
+                await process.WaitForExitAsync(timeout.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                if (Utils.ShowQuestion(Resources.FMain_INISS_sa_neukoncil) != DialogResult.Yes)
+                    return;
+
+                KillINISS();
+                try
+                {
+                    await process.WaitForExitAsync();
+                }
+                catch (InvalidOperationException)
+                {
+                }
+            }
+            catch (InvalidOperationException)
+            {
+            }
+        }
+
+        if (!IsINISSRunning)
+            ExecuteINISS(path);
     }
 
-    private void tsbKillINISS_Click(object sender, EventArgs e) => KillINISS();
+    private void tsbKillINISS_Click(object sender, EventArgs e) => AskKillINISS();
 
-    private void tsmimKillINISS_Click(object sender, EventArgs e) => KillINISS();
+    private void tsmimKillINISS_Click(object sender, EventArgs e) => AskKillINISS();
+
+    /// <summary>
+    ///     Nutene ukoncenie na priamy prikaz - s potvrdenim, predvolena skratka F10 sa lahko stlaci omylom.
+    /// </summary>
+    private void AskKillINISS()
+    {
+        if (IsINISSRunning && Utils.ShowQuestion(Resources.FMain_Vynutit_ukoncenie_INISS) == DialogResult.Yes)
+            KillINISS();
+    }
 
     private void tsbShutdownINISS_Click(object sender, EventArgs e) => ShutDownINISS();
 

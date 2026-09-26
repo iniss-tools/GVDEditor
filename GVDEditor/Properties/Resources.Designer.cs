@@ -3714,6 +3714,51 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Grafikon má neuložené zmeny. INISS načíta dáta grafikonu pri.
+        /// </summary>
+        internal static string FMain_Ulozit_pred_spustenim_INISS {
+            get {
+                return ResourceManager.GetString("FMain_Ulozit_pred_spustenim_INISS", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to INISS sa nepodarilo ukončiť: {0}.
+        /// </summary>
+        internal static string FMain_INISS_neda_ukoncit {
+            get {
+                return ResourceManager.GetString("FMain_INISS_neda_ukoncit", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to INISS sa ani po 30 sekundách neukončil – možno čaká na potvr.
+        /// </summary>
+        internal static string FMain_INISS_sa_neukoncil {
+            get {
+                return ResourceManager.GetString("FMain_INISS_sa_neukoncil", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Jazyk používateľského rozhrania a klasický dizajn sa prejavia až po reštarte.
+        /// </summary>
+        internal static string FMain_Nastavenia_po_restarte {
+            get {
+                return ResourceManager.GetString("FMain_Nastavenia_po_restarte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vynútiť ukončenie INISSu?.
+        /// </summary>
+        internal static string FMain_Vynutit_ukoncenie_INISS {
+            get {
+                return ResourceManager.GetString("FMain_Vynutit_ukoncenie_INISS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to INISS zvládne najviac {0} jazyky.
         /// </summary>
         internal static string LanguageRules_Najviac_jazykov {
