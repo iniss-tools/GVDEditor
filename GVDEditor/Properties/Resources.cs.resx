@@ -604,7 +604,7 @@ Mám ji nuceně vypnout? </value>
     <value>… a dalších {0} varování.</value>
   </data>
   <data name="LoadWarnings_Footer" xml:space="preserve">
-    <value>Podrobnosti jsou v souboru logs\info.log. Přeskočené položky se při uložení grafikonu do souborů nezapíší.</value>
+    <value>Podrobnosti jsou v souboru %LocalAppData%\GVDEditor\logs\info.log (pokud je v nastavení programu zapnuté logování). Přeskočené položky se při uložení grafikonu do souborů nezapíší.</value>
   </data>
   <data name="FTablePhysical_IDOutOfRange" xml:space="preserve">
     <value>Adresa tabule {0} je mimo rozsah {1}–{2}, který INISS povoluje pro výrobce {3}. INISS takovou tabuli nezaloží.

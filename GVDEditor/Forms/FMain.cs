@@ -37,6 +37,9 @@ public partial class FMain : Form
     private bool _prechod;
     private GVDDirectory? _previousSelectedGVD;
     private bool _removingGVD;
+
+    // ci je vybrany grafikon nacitany - pri chybe nacitania sa v globalnych nastaveniach berie z disku
+    private bool _grafikonLoaded;
     private FWait? _waitForm;
 
     /// <summary>
@@ -226,10 +229,13 @@ public partial class FMain : Form
     {
         _waitForm!.Close();
 
+        // preskocene riadky a chybajuce nahravky - pouzivatel by o nich mal vediet skor, nez grafikon ulozi
+        // pri chybe nacitania by inak ostali v zozname a ukazali sa pri dalsom grafikone
+        LoadWarnings.ShowSummary();
+        _grafikonLoaded = !_error;
+
         if (!_error)
         {
-            // preskocene riadky a chybajuce nahravky - pouzivatel by o nich mal vediet skor, nez grafikon ulozi
-            LoadWarnings.ShowSummary();
 
             Kolaj.DataSource = GlobData.Tracks;
             Dopravca.DataSource = GlobData.Operators;
@@ -278,23 +284,26 @@ public partial class FMain : Form
             tsbDeleteTrain.Enabled = false;
             tsbSave.Enabled = false;
             tsbStanica.Enabled = false;
-            tsbGlobalSettings.Enabled = false;
             tsmiUpravit.Enabled = false;
             tsmimAddTrain.Enabled = false;
             tsmimEditTrain.Enabled = false;
             tsmiDeleteTrain.Enabled = false;
             tsmiDuplikovat.Enabled = false;
             tsmiVlastnostiStanice.Enabled = false;
-            tsmiGlobalSettings.Enabled = false;
             tsmiSave.Enabled = false;
             tsbSave.Enabled = false;
             tsmiAnalyze.Enabled = false;
             tsbAnalyze.Enabled = false;
-            tsbAddGVD.Enabled = false;
-            tsmiNew.Enabled = false;
             SetImportEnabled(false);
-            ChangeEnableMenuItemsGSettings(false);
             ChangeEnableMenuItemsLSettings(false);
+
+            // globalne nastavenia a novy grafikon nepotrebuju otvoreny grafikon - napr. chybajuci typ vlaku sa da doplnit
+            // a grafikon potom nacitat znova
+            tsbGlobalSettings.Enabled = true;
+            tsmiGlobalSettings.Enabled = true;
+            ChangeEnableMenuItemsGSettings(true);
+            tsbAddGVD.Enabled = true;
+            tsmiNew.Enabled = true;
         }
     }
 
@@ -673,7 +682,7 @@ public partial class FMain : Form
 
     private void ShowGlobalSettings(int startIndex = -1)
     {
-        var gf = new FGlobalSettings(_gvdDirs.ToList(), startIndex, _previousSelectedGVD);
+        var gf = new FGlobalSettings(_gvdDirs.ToList(), startIndex, _grafikonLoaded ? _previousSelectedGVD : null);
         var result = gf.ShowDialog();
         if (result == DialogResult.OK)
         {
@@ -695,6 +704,13 @@ public partial class FMain : Form
 
             if (gf.RemovedGVDs.Count != 0)
                 RemoveGrafikony(gf.RemovedGVDs);
+
+            // grafikon, ktory sa predtym nenacital (napr. pre chybajuci typ vlaku), skusit nacitat znova
+            if (!_grafikonLoaded && tscbObdobie.ComboBox.SelectedItem is GVDDirectory dir && _gvdDirs.Contains(dir))
+            {
+                tscbObdobie.ComboBox.SelectedItem = null;
+                tscbObdobie.ComboBox.SelectedItem = dir;
+            }
         }
     }
 
@@ -1245,6 +1261,7 @@ public partial class FMain : Form
             TxtParser.WriteRazeni1Default(dir.Dir.FullPath);
 
             _newDir = null;
+            _grafikonLoaded = true;
             return;
         }
 

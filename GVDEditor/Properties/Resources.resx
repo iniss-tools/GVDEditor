@@ -635,7 +635,7 @@ Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnos
     <value>… a ďalších {0} varovaní.</value>
   </data>
   <data name="LoadWarnings_Footer" xml:space="preserve">
-    <value>Podrobnosti sú v súbore logs\info.log. Preskočené položky sa pri uložení grafikonu do súborov nezapíšu.</value>
+    <value>Podrobnosti sú v súbore %LocalAppData%\GVDEditor\logs\info.log (ak je v nastaveniach programu zapnuté logovanie). Preskočené položky sa pri uložení grafikonu do súborov nezapíšu.</value>
   </data>
   <data name="FTablePhysical_IDOutOfRange" xml:space="preserve">
     <value>Adresa tabule {0} je mimo rozsahu {1}–{2}, ktorý INISS povoľuje pre výrobcu {3}. INISS takú tabuľu nezaloží.
