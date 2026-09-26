@@ -1,4 +1,5 @@
-﻿using GVDEditor.Entities;
+﻿using ExControls;
+using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
 using ToolsCore.Tools;
@@ -22,6 +23,9 @@ public partial class FELISStations : Form
     private readonly List<string> _names;
     private readonly List<Station> _stations;
 
+    // stanice zalozene v tomto okne - pri zruseni importu sa z grafikonu zase odstrania
+    private readonly List<Station> _created = new();
+
     /// <summary>
     ///     Vysledne priradenie: nazov z ELIS -> ID stanice, alebo
     ///     <see cref="TxtParser.ELIS_MAP_SKIP" /> ak sa ma stanica vynechat.
@@ -36,6 +40,9 @@ public partial class FELISStations : Form
     {
         InitializeComponent();
         this.ApplyThemeAndFonts();
+
+        // systemove kreslenie (svetla tema) farbu textu ignoruje - navrhy by neboli vidno
+        colStation.DefaultStyle = false;
 
         _names = unresolvedNames;
         _stations = GlobData.Stations.Concat(GlobData.CustomStations)
@@ -69,7 +76,7 @@ public partial class FELISStations : Form
 
             //navrhnute priradenie zvyraznime, nech je vidiet, co program odporučil
             if (value != SkipItem)
-                dgvStations.Rows[index].Cells[1].Style.ForeColor = Color.SteelBlue;
+                SetStationColor(dgvStations.Rows[index].Cells[1], Color.SteelBlue);
         }
     }
 
@@ -93,11 +100,12 @@ public partial class FELISStations : Form
                 var station = new Station(NextFreeId(), elisName) { IsCustom = true };
                 GlobData.CustomStations.Add(station);
                 _stations.Add(station);
+                _created.Add(station);
                 created.Add(elisName);
             }
 
             row.Cells[1].Value = elisName;
-            row.Cells[1].Style.ForeColor = Color.SeaGreen;
+            SetStationColor(row.Cells[1], Color.SeaGreen);
         }
 
         if (created.Count != 0)
@@ -140,12 +148,28 @@ public partial class FELISStations : Form
         return id.ToString();
     }
 
+    /// <summary>
+    ///     Zvyrazni bunku s priradenou stanicou; <see langword="null" /> vrati farbu temy.
+    ///     Bunka z ExControls kresli text podla svojho stylu, nie podla DataGridViewCellStyle.
+    /// </summary>
+    private void SetStationColor(DataGridViewCell cell, Color? color)
+    {
+        if (cell is not DataGridViewExComboBoxCell exCell)
+            return;
+
+        var style = (ExComboBoxStyle)colStation.StyleNormal.Clone();
+        if (color is not null)
+            style.ForeColor = color;
+        exCell.StyleNormal = style;
+        dgvStations.InvalidateCell(cell);
+    }
+
     private void bSkipAll_Click(object sender, EventArgs e)
     {
         foreach (DataGridViewRow row in dgvStations.Rows)
         {
             row.Cells[1].Value = SkipItem;
-            row.Cells[1].Style.ForeColor = dgvStations.DefaultCellStyle.ForeColor;
+            SetStationColor(row.Cells[1], null);
         }
     }
 
@@ -172,4 +196,15 @@ public partial class FELISStations : Form
     }
 
     private void bStorno_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
+
+    /// <inheritdoc />
+    protected override void OnFormClosed(FormClosedEventArgs e)
+    {
+        // Zrusit import aj krizik - import sa nevykona, zalozene stanice by v grafikone ostali navyse
+        if (DialogResult != DialogResult.OK)
+            foreach (var station in _created)
+                GlobData.CustomStations.Remove(station);
+
+        base.OnFormClosed(e);
+    }
 }

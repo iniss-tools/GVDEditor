@@ -32,7 +32,7 @@ namespace GVDEditor.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FELISStations));
             this.dgvStations = new System.Windows.Forms.DataGridView();
             this.colElis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStation = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colStation = new ExControls.DataGridViewExComboBoxColumn();
             this.lInfo = new System.Windows.Forms.Label();
             this.bOK = new ExControls.ExButton();
             this.bStorno = new ExControls.ExButton();
@@ -123,7 +123,7 @@ namespace GVDEditor.Forms
 
         private System.Windows.Forms.DataGridView dgvStations;
         private System.Windows.Forms.DataGridViewTextBoxColumn colElis;
-        private System.Windows.Forms.DataGridViewComboBoxColumn colStation;
+        private ExControls.DataGridViewExComboBoxColumn colStation;
         private System.Windows.Forms.Label lInfo;
         private ExControls.ExButton bOK;
         private ExControls.ExButton bStorno;

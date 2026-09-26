@@ -103,6 +103,13 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("import-dat/import-dat", ImportForm, form => Resize(form, 900, 520));
             Shot("import-dat/typ-stlpca", () => new FColumnTypeSelect(), form => SelectListItem(form, "listColumnTypes", 5));
 
+            // import z ELIS: voľby importu a priradenie staníc, ktoré ELIS pomenúva inak
+            Shot("import-z-elis/import-z-elis", () => new FELISImport(gvdDir.GVD.ThisStation.Name, trains.Count),
+                form => ((TextBoxBase)Field(form, "tbAppPath")).Select(0, 0));
+            Shot("import-z-elis/priradenie-stanic",
+                () => new FELISStations(["Hraničná št.hr.", "Lipová zastávka", "Nová Obec", "Podhradie mesto"]),
+                form => Resize(form, 720, 420));
+
             // analýza s nájdenými problémami: prázdny a nepoužitý TabTab a uplynutá platnosť dát (po snímke sa vráti)
             var emptyTab = new TableTabTab { Key = "Rezerva", Text = "" };
             var endValidData = gvdDir.GVD.EndValidData;

@@ -260,8 +260,7 @@ public partial class FMain : Form
             tsmiGlobalSettings.Enabled = true;
             tsbAddGVD.Enabled = true;
             tsmiNew.Enabled = true;
-            tsmiImport.Enabled = true;
-            tsbImport.Enabled = true;
+            SetImportEnabled(true);
             tsmiStateDgm.Enabled = true;
             ChangeEnableMenuItemsGSettings(true);
             ChangeEnableMenuItemsLSettings(true);
@@ -293,8 +292,7 @@ public partial class FMain : Form
             tsbAnalyze.Enabled = false;
             tsbAddGVD.Enabled = false;
             tsmiNew.Enabled = false;
-            tsmiImport.Enabled = false;
-            tsbImport.Enabled = false;
+            SetImportEnabled(false);
             ChangeEnableMenuItemsGSettings(false);
             ChangeEnableMenuItemsLSettings(false);
         }
@@ -401,8 +399,7 @@ public partial class FMain : Form
                 tscbObdobie.Enabled = true;
                 tsbGlobalSettings.Enabled = true;
                 tsmiNew.Enabled = true;
-                tsmiImport.Enabled = true;
-                tsbImport.Enabled = true;
+                SetImportEnabled(true);
                 tsmiUpravit.Enabled = true;
                 tsmimAddTrain.Enabled = true;
                 tsmimEditTrain.Enabled = true;
@@ -487,30 +484,34 @@ public partial class FMain : Form
 
         var selectedPath = dialog.SelectedPath;
 
-        var dirname = Utils.GetDirectoryName(selectedPath);
-
-        if (string.IsNullOrEmpty(dirname))
+        // hlavicka sa cita zo zdroja - neplatny grafikon sa do DATA vobec neskopiruje
+        GVDInfo gvd;
+        try
         {
-            Utils.ShowError(Resources.FMain_Názov_priečinka_je_prázdny);
-            DialogResult = DialogResult.None;
+            gvd = TxtParser.ReadInfoGVD(selectedPath);
+        }
+        catch (Exception e)
+        {
+            Utils.ShowError($@"{Resources.FMain_Priečinok_neobsahuje_všetky_potrebné_dáta} {e.Message}");
+            Log.Exception(e);
             return;
         }
 
-        var newDirPath = Utils.CombinePath(GlobData.DataDir, dirname)!;
-
-        if (Directory.Exists(newDirPath) || GlobData.GVDDirs.Count(d => d.DirName == dirname) != 0)
+        var error = GVDImport.Check(selectedPath, GlobData.DataDir, gvd, _gvdDirs, out var newDirPath);
+        if (error != null)
         {
-            Utils.ShowError(Resources.Priečinok_s_týmto_názvom_už_existuje__Zmeňte_jeho_názov);
-            DialogResult = DialogResult.None;
+            Utils.ShowError(error);
             return;
         }
-
-        if (selectedPath != newDirPath) Utils.CopyDirectory(selectedPath, newDirPath);
 
         try
         {
-            var gvd = TxtParser.ReadInfoGVD(newDirPath);
-            var dirList = new DirList { DirName = dirname, FullPath = selectedPath };
+            if (!string.Equals(Path.GetFullPath(selectedPath).TrimEnd(Path.DirectorySeparatorChar), Path.GetFullPath(newDirPath),
+                    StringComparison.OrdinalIgnoreCase))
+                Utils.CopyDirectory(selectedPath, newDirPath);
+
+            // grafikon sa dalej upravuje a uklada v kopii v DATA, nie v povodnom priecinku
+            var dirList = new DirList { DirName = Path.GetFileName(newDirPath), FullPath = newDirPath };
             var dgyv = new GVDDirectory(dirList, gvd);
 
             var dirs = TxtParser.ReadDirList();
@@ -518,17 +519,20 @@ public partial class FMain : Form
             TxtParser.WriteDirList(dirs);
 
             GlobData.GVDDirs.Add(dirList);
+            _gvdDirs.Add(dgyv);
 
             if (!Stanice.Contains(gvd.ThisStation.Name)) Stanice.Add(gvd.ThisStation.Name);
+            if ((string?)tscbStanica.ComboBox.SelectedItem == gvd.ThisStation.Name) ObdobiaList.Add(dgyv);
 
-            if ((string)tscbStanica.ComboBox.SelectedItem! == gvd.ThisStation.Name) ObdobiaList.Add(dgyv);
+            Utils.ShowInfo(string.Format(Resources.FMain_Import_grafikonu_hotovy, dgyv.PeriodFormatted, newDirPath));
 
-            _gvdDirs.Add(dgyv);
-            GlobData.GVDDirs.Add(dgyv.Dir);
+            // prvy grafikon instalacie - hlavne okno ho rovno otvori a spristupni prikazy
+            if (_gvdDirs.Count == 1 && InitializeDataList())
+                InitializeGUI();
         }
         catch (Exception e)
         {
-            Utils.ShowError($@"{Resources.FMain_Priečinok_neobsahuje_všetky_potrebné_dáta} {e.Message}");
+            Utils.ShowError(e.Message);
             Log.Exception(e);
         }
     }
@@ -695,8 +699,7 @@ public partial class FMain : Form
                     tsbStanica.Enabled = false;
                     tsbGlobalSettings.Enabled = false;
                     tsmiNew.Enabled = true;
-                    tsmiImport.Enabled = false;
-                    tsbImport.Enabled = false;
+                    SetImportEnabled(false);
                     tsmiUpravit.Enabled = false;
                     tsmimAddTrain.Enabled = false;
                     tsmimEditTrain.Enabled = false;
@@ -907,8 +910,7 @@ public partial class FMain : Form
             tsbStanica.Enabled = false;
             tsbGlobalSettings.Enabled = false;
             tsmiNew.Enabled = true;
-            tsmiImport.Enabled = false;
-            tsbImport.Enabled = false;
+            SetImportEnabled(false);
             tsmiUpravit.Enabled = false;
             tsmimAddTrain.Enabled = false;
             tsmimEditTrain.Enabled = false;
@@ -943,8 +945,7 @@ public partial class FMain : Form
             tscbObdobie.Enabled = true;
             tsbGlobalSettings.Enabled = true;
             tsmiNew.Enabled = true;
-            tsmiImport.Enabled = true;
-            tsbImport.Enabled = true;
+            SetImportEnabled(true);
             tsmiUpravit.Enabled = true;
             tsmiUpravit.Enabled = true;
             tsmimAddTrain.Enabled = true;
@@ -2094,6 +2095,22 @@ public partial class FMain : Form
         var gvd = (tscbObdobie.ComboBox?.SelectedItem as GVDDirectory)?.GVD;
         using var fobm = new FDatObm(gvd?.StartValidTimeTable, gvd?.EndValidTimeTable);
         fobm.ShowDialog(this);
+    }
+
+    /// <summary>
+    ///     Import grafikonu je dostupny vzdy, ked je otvorena instalacia - aj bez grafikonu; import dat a z ELIS
+    ///     potrebuju otvoreny grafikon.
+    /// </summary>
+    private void SetImportEnabled(bool grafikonOpen)
+    {
+        tsmiImport.Enabled = true;
+        tsbImport.Enabled = true;
+        tsmiImportGVD.Enabled = true;
+        tsmimImportGVD.Enabled = true;
+        tsmiImportData.Enabled = grafikonOpen;
+        tsmimImportData.Enabled = grafikonOpen;
+        tsmiImportELIS.Enabled = grafikonOpen;
+        tsmimImportELIS.Enabled = grafikonOpen;
     }
 
     private void ChangeEnableMenuItemsLSettings(bool enabled)

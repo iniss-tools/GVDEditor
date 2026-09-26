@@ -1322,6 +1322,12 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
   <data name="FNewGrafikon_Predloha" xml:space="preserve">
     <value>Předloha stavového diagramu:</value>
   </data>
+  <data name="FMain_Import_grafikonu_do_seba" xml:space="preserve">
+    <value>Vybraná složka obsahuje složku DATA této instalace – grafikon by se kopíroval sám do sebe. Vyberte složku s jedním grafikonem.</value>
+  </data>
+  <data name="FMain_Import_grafikonu_hotovy" xml:space="preserve">
+    <value>Grafikon {0} byl přidán do instalace ({1}). Otevřete ho výběrem stanice a období v hlavním okně.</value>
+  </data>
   <data name="FNewGrafikon_Neplatny_nazov_priecinka" xml:space="preserve">
     <value>Název složky je prázdný nebo obsahuje nepovolené znaky (\ / : * ? " &lt; &gt; | ,).</value>
   </data>

@@ -1353,6 +1353,12 @@ INISS taký súbor nenačíta. Uložiť ho aj tak?</value>
   <data name="FNewGrafikon_Predloha" xml:space="preserve">
     <value>Predloha stavového diagramu:</value>
   </data>
+  <data name="FMain_Import_grafikonu_do_seba" xml:space="preserve">
+    <value>Vybraný priečinok obsahuje priečinok DATA tejto inštalácie – grafikon by sa kopíroval sám do seba. Vyberte priečinok s jedným grafikonom.</value>
+  </data>
+  <data name="FMain_Import_grafikonu_hotovy" xml:space="preserve">
+    <value>Grafikon {0} bol pridaný do inštalácie ({1}). Otvoríte ho výberom stanice a obdobia v hlavnom okne.</value>
+  </data>
   <data name="FNewGrafikon_Neplatny_nazov_priecinka" xml:space="preserve">
     <value>Názov priečinka je prázdny alebo obsahuje nepovolené znaky (\ / : * ? " &lt; &gt; | ,).</value>
   </data>

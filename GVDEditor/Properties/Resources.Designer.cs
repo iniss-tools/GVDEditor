@@ -3633,6 +3633,24 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vybraný priečinok obsahuje priečinok DATA tejto inštalácie.
+        /// </summary>
+        internal static string FMain_Import_grafikonu_do_seba {
+            get {
+                return ResourceManager.GetString("FMain_Import_grafikonu_do_seba", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon {0} bol pridaný do inštalácie ({1})..
+        /// </summary>
+        internal static string FMain_Import_grafikonu_hotovy {
+            get {
+                return ResourceManager.GetString("FMain_Import_grafikonu_hotovy", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Názov priečinka je prázdny alebo obsahuje nepovolené znaky.
         /// </summary>
         internal static string FNewGrafikon_Neplatny_nazov_priecinka {
