@@ -677,67 +677,72 @@ public partial class FMain : Form
             TxtParser.WriteAudio(GlobData.Audios);
             TxtParser.WriteLanguages(GlobData.Languages.ToList());
             GlobData.LocalLanguages = GlobData.Languages.ToList(); //TODO prerobit
+
+            // odstraneny jazyk nesmie ostat pri vlakoch - zapisal by sa do Foreign.txt
+            foreach (var train in GlobData.Trains)
+                train.Languages.RemoveAll(l => !GlobData.Languages.Contains(l));
             
             GlobData.Trains.ResetBindings();
 
-            _removingGVD = true;
-            foreach (var gvd in gf.RemovedGVDs)
+            if (gf.RemovedGVDs.Count != 0)
+                RemoveGrafikony(gf.RemovedGVDs);
+        }
+    }
+
+    /// <summary>
+    ///     Presunie odstranene grafikony do kosa a prisposobi im vyber stanice a obdobia.
+    ///     DirList.TXT uz je zapisany bez nich.
+    /// </summary>
+    private void RemoveGrafikony(IReadOnlyCollection<GVDDirectory> removed)
+    {
+        var currentRemoved = _previousSelectedGVD is not null && removed.Contains(_previousSelectedGVD);
+
+        foreach (var gvd in removed)
+        {
+            _gvdDirs.Remove(gvd);
+
+            try
             {
-                if (_gvdDirs.Count == 1)
-                {
-                    tscbObdobie.ComboBox.SelectedItem = null;
+                FileSystem.DeleteDirectory(gvd.Dir.FullPath, UIOption.AllDialogs, RecycleOption.SendToRecycleBin);
+            }
+            catch (Exception e)
+            {
+                Utils.ShowError(e.Message);
+            }
+        }
 
-                    //znefunkcnit niektore tlacidla tlacidla v toolstripe kvoli nevybratemu ziadnemu grafikonu
-                    tsbAddGVD.Enabled = true;
-                    tssbStartINISS.Enabled = true;
-                    tsmimStartINISS.Enabled = true;
-                    tsbAddTrain.Enabled = false;
-                    tsbCopyTrain.Enabled = false;
-                    tsbEditTrain.Enabled = false;
-                    tsbDeleteTrain.Enabled = false;
-                    tsbSave.Enabled = false;
-                    tsbStanica.Enabled = false;
-                    tsbGlobalSettings.Enabled = false;
-                    tsmiNew.Enabled = true;
-                    SetImportEnabled(false);
-                    tsmiUpravit.Enabled = false;
-                    tsmimAddTrain.Enabled = false;
-                    tsmimEditTrain.Enabled = false;
-                    tsmiDeleteTrain.Enabled = false;
-                    tsmiDuplikovat.Enabled = false;
-                    tsmiVlastnostiStanice.Enabled = false;
-                    tsmiGlobalSettings.Enabled = false;
-                    tsmiSave.Enabled = false;
-                    tsbSave.Enabled = false;
-                    tsmiAnalyze.Enabled = false;
-                    tsbAnalyze.Enabled = false;
-                    tscbStanica.Enabled = false;
-                    tscbObdobie.Enabled = false;
-                    ChangeEnableMenuItemsGSettings(false);
-                    ChangeEnableMenuItemsLSettings(false);
+        if (currentRemoved)
+        {
+            // otvoreny grafikon uz neexistuje - jeho vlaky nesmu ostat v zozname a zmeny v nom sa nemaju ukladat
+            DataSaved = true;
+            _previousSelectedGVD = null;
+            _prechod = true;
+            GlobData.Trains.Clear();
+            _prechod = false;
 
-                    _prechod = true;
-                    GlobData.Trains.Clear();
-                    _prechod = false;
-                }
+            if (InitializeDataList())
+                InitializeGUI();
+            return;
+        }
 
-                _gvdDirs.Remove(gvd);
+        // otvoreny grafikon ostava - len zo zoznamov zmiznu odstranene obdobia a stanice bez grafikonu
+        tscbStanica.SelectedIndexChanged -= tscbStanica_SelectedIndexChanged;
+        tscbObdobie.SelectedIndexChanged -= tscbObdobie_SelectedIndexChanged;
+        try
+        {
+            foreach (var gvd in removed)
                 ObdobiaList.Remove(gvd);
 
-                GlobData.GVDDirs.Remove(gvd.Dir);
+            foreach (var station in Stanice.Where(s => _gvdDirs.All(d => d.GVD.ThisStation.Name != s)).ToList())
+                Stanice.Remove(station);
 
-                TxtParser.WriteDirList(GlobData.GVDDirs);
-
-                try
-                {
-                    FileSystem.DeleteDirectory(gvd.Dir.FullPath, UIOption.AllDialogs, RecycleOption.SendToRecycleBin);
-                }
-                catch (Exception e)
-                {
-                    Utils.ShowError(e.Message);
-                }
-            }
-            _removingGVD = false;
+            tscbStanica.ComboBox.SelectedItem = _previousSelectedGVD?.GVD.ThisStation.Name;
+            tscbObdobie.ComboBox.SelectedItem = _previousSelectedGVD;
+        }
+        finally
+        {
+            tscbStanica.SelectedIndexChanged += tscbStanica_SelectedIndexChanged;
+            tscbObdobie.SelectedIndexChanged += tscbObdobie_SelectedIndexChanged;
         }
     }
 

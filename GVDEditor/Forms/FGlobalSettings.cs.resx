@@ -262,6 +262,9 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Stanice:</value>
   </data>
+  <data name="bStorno.Text" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Globální nastavení</value>
   </data>

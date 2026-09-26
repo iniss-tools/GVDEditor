@@ -17,7 +17,7 @@ internal static class GlobData
     public static List<string> INISSExeFiles { get; private set; } = null!;
 
     public static List<DirList> GVDDirs { get; set; } = null!;
-    public static ExBindingList<Audio> Audios { get; private set; } = null!;
+    public static ExBindingList<Audio> Audios { get; internal set; } = null!;
 
     public static List<FyzSound> Sounds { get; private set; } = null!;
 
@@ -25,7 +25,7 @@ internal static class GlobData
     ///     Texty vyluk, odklonov a dodatkov zalozene obsluhou v INISSe (RAWBANK\LogZvuk.usr).
     /// </summary>
     public static List<LogZvukText> LogZvukTexts { get; private set; } = new();
-    public static ExBindingList<FyzLanguage> Languages { get; private set; } = null!;
+    public static ExBindingList<FyzLanguage> Languages { get; internal set; } = null!;
     public static List<FyzLanguage> LocalLanguages { get; set; } = null!;
     public static List<Station> Stations { get; set; } = null!;
     public static ExBindingList<Station> CustomStations { get; set; } = null!;
@@ -36,9 +36,9 @@ internal static class GlobData
     public static ExBindingList<Track> Tracks { get; set; } = null!;
     public static ExBindingList<Platform> Platforms { get; set; } = null!;
 
-    public static ExBindingList<string> Delays { get; private set; } = null!;
+    public static ExBindingList<string> Delays { get; internal set; } = null!;
 
-    public static ExBindingList<TrainType> TrainsTypes { get; private set; } = null!;
+    public static ExBindingList<TrainType> TrainsTypes { get; internal set; } = null!;
 
     public static List<string> TrainNames { get; private set; } = null!;
 

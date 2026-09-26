@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
+using GVDEditor.Tools;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
 
@@ -29,6 +30,12 @@ public partial class FGlobalSettings : Form
     private Color? _selectedColor;
     private readonly List<TrainType> _predefinedTrainTypes;
 
+    // porty a farby grafikonov pred upravou - Upravit ich meni priamo, zatvorenie bez OK ich musi vratit
+    private readonly List<(DirList dir, int? tablePort, int? reportPort, Color? color)> _dirSnapshot;
+
+    // jazyky, meskania, typy vlakov a audio linky pred upravou - zalozky ich menia priamo v GlobData
+    private readonly GlobalSettingsSnapshot _globalSnapshot;
+
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FGlobalSettings"/>.
     /// </summary>
@@ -40,6 +47,8 @@ public partial class FGlobalSettings : Form
         this.ApplyThemeAndFonts();
 
         Grafikony = new BindingList<GVDDirectory>(gvds);
+        _dirSnapshot = gvds.Select(g => (g.Dir, g.Dir.TablePort, g.Dir.ReportPort, g.Dir.BackColor)).ToList();
+        _globalSnapshot = GlobalSettingsSnapshot.Capture();
 
         listLanguages.DataSource = GlobData.Languages;
         listGrafikony.DataSource = Grafikony;
@@ -85,6 +94,24 @@ public partial class FGlobalSettings : Form
 
     private void bSave_Click(object sender, EventArgs e) => DialogResult = DialogResult.OK;
 
+    /// <inheritdoc />
+    protected override void OnFormClosed(FormClosedEventArgs e)
+    {
+        if (DialogResult != DialogResult.OK)
+        {
+            foreach (var (dir, tablePort, reportPort, color) in _dirSnapshot)
+            {
+                dir.TablePort = tablePort;
+                dir.ReportPort = reportPort;
+                dir.BackColor = color;
+            }
+
+            _globalSnapshot.Restore();
+        }
+
+        base.OnFormClosed(e);
+    }
+
     private void listLanguages_SelectedIndexChanged(object sender, EventArgs e)
     {
         var jazyk = (FyzLanguage)listLanguages.SelectedItem!;
@@ -95,93 +122,78 @@ public partial class FGlobalSettings : Form
 
     private void bLanguageAdd_Click(object sender, EventArgs e)
     {
-        var basic = false;
-        foreach (var lang in GlobData.Languages)
-            if (lang.IsBasic)
-                basic = true;
+        var language = new FyzLanguage(tbLanguageSkratka.Text.Trim(), tbLanguageName.Text.Trim()) { IsBasic = cbIsBasic.Checked };
 
-        if (cbIsBasic.Checked && basic)
-        {
-            Utils.ShowError(Resources.FGlobalSettings_bLanguageAdd_Click_Iba_1_jazyk_môže_byť_hlavný);
+        if (!CheckLanguages(AfterChange(GlobData.Languages.Count, language)))
             return;
-        }
 
-        var language = new FyzLanguage(tbLanguageSkratka.Text, tbLanguageName.Text) { IsBasic = cbIsBasic.Checked };
-
-        foreach (var lang in GlobData.Languages)
-            if (lang.Key == language.Key)
-            {
-                Utils.ShowError(Resources.FGlobalSettings_Zadaný_jazyk_sa_sa_už_v_zozname_nachádza);
-                return;
-            }
-
-        var keys = RBLangs.Select(lang => lang.Key).ToList();
-
-        if (!keys.Contains(language.Key))
-        {
-            Utils.ShowError(Resources.FGlobalSettings_Kľúč_jazyka_sa_nezhoduje_so_žiadnym_jazykom_nacházajúci_sa_v_zvukovej_banke);
-            return;
-        }
-
+        if (language.IsBasic) ClearOtherBasic(-1);
         GlobData.Languages.Add(language);
     }
 
     private void bLanguageEdit_Click(object sender, EventArgs e)
     {
         var pos = listLanguages.SelectedIndex;
-
         if (pos == -1) return;
 
-        var j = 0;
-        var basic = false;
-        foreach (var l in GlobData.Languages)
-        {
-            if (l.IsBasic)
-            {
-                basic = true;
-                break;
-            }
-
-            j++;
-        }
-
-        if (cbIsBasic.Checked && basic && pos != j)
-        {
-            Utils.ShowError(Resources.FGlobalSettings_bLanguageAdd_Click_Iba_1_jazyk_môže_byť_hlavný);
+        // kontrola nad kopiou - jazyk sa zmeni az ked je vysledok v poriadku
+        var edited = new FyzLanguage(tbLanguageSkratka.Text.Trim(), tbLanguageName.Text.Trim()) { IsBasic = cbIsBasic.Checked };
+        if (!CheckLanguages(AfterChange(pos, edited)))
             return;
-        }
 
-        var keys = RBLangs.Select(lang => lang.Key).ToList();
-
-        if (!keys.Contains(tbLanguageSkratka.Text))
-        {
-            Utils.ShowError(Resources.FGlobalSettings_Kľúč_jazyka_sa_nezhoduje_so_žiadnym_jazykom_nacházajúci_sa_v_zvukovej_banke);
-            return;
-        }
-
-        var i = 0;
-        foreach (var lang in GlobData.Languages)
-        {
-            if (lang.Key == tbLanguageSkratka.Text && pos != i)
-            {
-                Utils.ShowError(Resources.FGlobalSettings_Zadaný_jazyk_sa_sa_už_v_zozname_nachádza);
-                return;
-            }
-
-            i++;
-        }
-
+        if (edited.IsBasic) ClearOtherBasic(pos);
         var language = GlobData.Languages[pos];
-        language.Name = tbLanguageName.Text;
-        language.Key = tbLanguageSkratka.Text;
-        language.IsBasic = cbIsBasic.Checked;
+        language.Name = edited.Name;
+        language.Key = edited.Key;
+        language.IsBasic = edited.IsBasic;
 
         GlobData.Languages.ResetBindings();
     }
 
     private void bLanguageRemove_Click(object sender, EventArgs e)
     {
-        GlobData.Languages.RemoveAt(listLanguages.SelectedIndex);
+        var pos = listLanguages.SelectedIndex;
+        if (pos == -1) return;
+
+        if (!CheckLanguages(GlobData.Languages.Where((_, i) => i != pos).ToList()))
+            return;
+
+        GlobData.Languages.RemoveAt(pos);
+    }
+
+    /// <summary>
+    ///     Jazyky tak, ako budu po pridani (<paramref name="pos" /> = pocet) alebo uprave jazyka na pozicii
+    ///     <paramref name="pos" />. Zaskrtnuty hlavny jazyk presuva oznacenie - ostatne jazyky prestanu byt hlavne.
+    /// </summary>
+    private static List<FyzLanguage> AfterChange(int pos, FyzLanguage changed)
+    {
+        var after = GlobData.Languages
+            .Select(l => changed.IsBasic ? new FyzLanguage(l.Key, l.Name) { IsBasic = false } : l)
+            .ToList();
+
+        if (pos < after.Count) after[pos] = changed;
+        else after.Add(changed);
+        return after;
+    }
+
+    private static void ClearOtherBasic(int pos)
+    {
+        for (var i = 0; i < GlobData.Languages.Count; i++)
+            if (i != pos)
+                GlobData.Languages[i].IsBasic = false;
+    }
+
+    /// <summary>
+    ///     Skontroluje jazyky po zmene podla pravidiel INISSu; pri chybe ju ohlasi.
+    /// </summary>
+    private bool CheckLanguages(IReadOnlyList<FyzLanguage> languages)
+    {
+        var error = LanguageRules.Check(languages, RBLangs.Select(l => l.Key));
+        if (error == null)
+            return true;
+
+        Utils.ShowError(error);
+        return false;
     }
 
     private void listGrafikony_SelectedIndexChanged(object sender, EventArgs e)
@@ -241,33 +253,41 @@ public partial class FGlobalSettings : Form
         }
     }
 
-    private void bMeskanieAdd_Click(object sender, EventArgs e)
-    {
-        foreach (var meskanie in GlobData.Delays)
-        {
-            if (meskanie == tbMeskanie.Text)
-            {
-                Utils.ShowError(Resources.FGlobalSettings_Táto_hodnota_sa_už_v_zozname_nachádza);
-                return;
-            }
-        }
-
-        GlobData.Delays.Add(tbMeskanie.Text);
-    }
+    private void bMeskanieAdd_Click(object sender, EventArgs e) => SetDelay(-1);
 
     private void bMeskanieEdit_Click(object sender, EventArgs e)
     {
         var index = listMeskania.SelectedIndex;
-        if (index == -1) return;
-        
-        if (GlobData.Delays.Where((t, i) => t == tbMeskanie.Text && i != index).Any())
+        if (index != -1) SetDelay(index);
+    }
+
+    /// <summary>
+    ///     Prida cas meskania (<paramref name="index" /> = -1) alebo nahradi cas na pozicii <paramref name="index" />.
+    ///     Cas sa zaradi podla velkosti - INISS ponuka casy v poradi zo suboru.
+    /// </summary>
+    private void SetDelay(int index)
+    {
+        var value = tbMeskanie.Text.Trim();
+        if (value.Length == 0) return;
+
+        if (GlobData.Delays.Where((t, i) => t == value && i != index).Any())
         {
             Utils.ShowError(Resources.FGlobalSettings_Táto_hodnota_sa_už_v_zozname_nachádza);
             return;
         }
 
-        GlobData.Delays.RemoveAt(index);
-        GlobData.Delays.Insert(index, tbMeskanie.Text);
+        // INISS necislenu hodnotu preskoci - ponechat ju je volba pouzivatela (napr. "VICE480" zo starsich dat)
+        if (!DelayRules.IsAcceptedByIniss(value) &&
+            Utils.ShowQuestion(string.Format(Resources.FGlobalSettings_Cas_meskania_necislo, value)) != DialogResult.Yes)
+            return;
+
+        if (index != -1) GlobData.Delays.RemoveAt(index);
+        var position = DelayRules.InsertIndex(GlobData.Delays, value);
+        GlobData.Delays.Insert(position, value);
+        listMeskania.SelectedIndex = position;
+
+        bMeskanieEdit.Enabled = true;
+        bMeskanieDelete.Enabled = true;
     }
 
     private void bMeskanieDelete_Click(object sender, EventArgs e)

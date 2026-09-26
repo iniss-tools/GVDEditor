@@ -87,7 +87,7 @@ namespace GVDEditor.Forms
             listMeskania = new ListBox();
             label38 = new Label();
             groupBox10 = new ExGroupBox();
-            tbMeskanie = new TextBox();
+            tbMeskanie = new ExTextBox();
             bMeskanieDelete = new ExButton();
             bMeskanieEdit = new ExButton();
             bMeskanieAdd = new ExButton();
@@ -142,6 +142,7 @@ namespace GVDEditor.Forms
             bAudioAdd = new ExButton();
             label2 = new Label();
             bSave = new ExButton();
+            bStorno = new ExButton();
             colorDialogFarba = new ColorDialog();
             tabControl.SuspendLayout();
             tpGrafikony.SuspendLayout();
@@ -1178,11 +1179,20 @@ namespace GVDEditor.Forms
             bSave.UseVisualStyleBackColor = true;
             bSave.Click += bSave_Click;
             // 
+            // bStorno
+            // 
+            resources.ApplyResources(bStorno, "bStorno");
+            bStorno.DialogResult = DialogResult.Cancel;
+            bStorno.Name = "bStorno";
+            bStorno.UseVisualStyleBackColor = true;
+            // 
             // FGlobalSettings
             // 
             AcceptButton = bSave;
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = bStorno;
+            Controls.Add(bStorno);
             Controls.Add(bSave);
             Controls.Add(tabControl);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -1232,6 +1242,7 @@ namespace GVDEditor.Forms
         private ExTabControl tabControl;
         private System.Windows.Forms.TabPage tpJazyky;
         private ExControls.ExButton bSave;
+        private ExControls.ExButton bStorno;
         private System.Windows.Forms.ListBox listLanguages;
         private System.Windows.Forms.Label label15;
         private ExGroupBox groupBox4;
@@ -1326,6 +1337,6 @@ namespace GVDEditor.Forms
         private ExTextBox tbInputLine;
         private Label label24;
         private Label label23;
-        private TextBox tbMeskanie;
+        private ExTextBox tbMeskanie;
     }
 }

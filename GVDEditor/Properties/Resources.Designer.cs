@@ -3651,6 +3651,42 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Hodnota „{0}“ nie je celé číslo minút.
+        /// </summary>
+        internal static string FGlobalSettings_Cas_meskania_necislo {
+            get {
+                return ResourceManager.GetString("FGlobalSettings_Cas_meskania_necislo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to INISS zvládne najviac {0} jazyky.
+        /// </summary>
+        internal static string LanguageRules_Najviac_jazykov {
+            get {
+                return ResourceManager.GetString("LanguageRules_Najviac_jazykov", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Jazyk s kľúčom „{0}“ INISS nepozná.
+        /// </summary>
+        internal static string LanguageRules_Neznamy_kluc {
+            get {
+                return ResourceManager.GetString("LanguageRules_Neznamy_kluc", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Jeden jazyk musí byť hlavný.
+        /// </summary>
+        internal static string LanguageRules_Chyba_hlavny_jazyk {
+            get {
+                return ResourceManager.GetString("LanguageRules_Chyba_hlavny_jazyk", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Názov priečinka je prázdny alebo obsahuje nepovolené znaky.
         /// </summary>
         internal static string FNewGrafikon_Neplatny_nazov_priecinka {

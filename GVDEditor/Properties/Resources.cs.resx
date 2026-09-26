@@ -1328,6 +1328,20 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
   <data name="FMain_Import_grafikonu_hotovy" xml:space="preserve">
     <value>Grafikon {0} byl přidán do instalace ({1}). Otevřete ho výběrem stanice a období v hlavním okně.</value>
   </data>
+  <data name="FGlobalSettings_Cas_meskania_necislo" xml:space="preserve">
+    <value>Hodnota „{0}“ není celé číslo minut. INISS ji při startu přeskočí a operátorovi ji nenabídne.
+
+Přidat ji i tak?</value>
+  </data>
+  <data name="LanguageRules_Najviac_jazykov" xml:space="preserve">
+    <value>INISS zvládne nejvýše {0} jazyky – s více se nespustí.</value>
+  </data>
+  <data name="LanguageRules_Neznamy_kluc" xml:space="preserve">
+    <value>Jazyk s klíčem „{0}“ INISS nezná a při startu ho přeskočí. Použijte jeden z klíčů {1}.</value>
+  </data>
+  <data name="LanguageRules_Chyba_hlavny_jazyk" xml:space="preserve">
+    <value>Jeden jazyk musí být hlavní – v něm se hlásí vždy.</value>
+  </data>
   <data name="FNewGrafikon_Neplatny_nazov_priecinka" xml:space="preserve">
     <value>Název složky je prázdný nebo obsahuje nepovolené znaky (\ / : * ? " &lt; &gt; | ,).</value>
   </data>
