@@ -3660,6 +3660,60 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Kategória {0} už v zozname je. INISS má pre každú kategóriu .
+        /// </summary>
+        internal static string FGlobalSettings_Kategoria_typu_obsadena {
+            get {
+                return ResourceManager.GetString("FGlobalSettings_Kategoria_typu_obsadena", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Typ vlaku „{0}“ používajú vlaky v grafikonoch: {1}. {2} by i.
+        /// </summary>
+        internal static string FGlobalSettings_Typ_vlaku_pouzivaju {
+            get {
+                return ResourceManager.GetString("FGlobalSettings_Typ_vlaku_pouzivaju", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Odstránenie typu.
+        /// </summary>
+        internal static string FGlobalSettings_Typ_vlaku_odstranenie {
+            get {
+                return ResourceManager.GetString("FGlobalSettings_Typ_vlaku_odstranenie", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Zmena skratky.
+        /// </summary>
+        internal static string FGlobalSettings_Typ_vlaku_premenovanie {
+            get {
+                return ResourceManager.GetString("FGlobalSettings_Typ_vlaku_premenovanie", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TEST – testovací okruh.
+        /// </summary>
+        internal static string FGlobalSettings_Testovaci_okruh {
+            get {
+                return ResourceManager.GetString("FGlobalSettings_Testovaci_okruh", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Testovací okruh (TEST) už v zozname je. INISS používa jeden testovací okruh..
+        /// </summary>
+        internal static string FGlobalSettings_Testovaci_okruh_uz_je {
+            get {
+                return ResourceManager.GetString("FGlobalSettings_Testovaci_okruh_uz_je", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to INISS zvládne najviac {0} jazyky.
         /// </summary>
         internal static string LanguageRules_Najviac_jazykov {

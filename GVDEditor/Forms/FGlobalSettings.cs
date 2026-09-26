@@ -29,6 +29,7 @@ public partial class FGlobalSettings : Form
     // null = grafikon nema vlastnu farbu, INISS pouzije farbu zo svojej palety
     private Color? _selectedColor;
     private readonly List<TrainType> _predefinedTrainTypes;
+    private readonly GVDDirectory? _openGrafikon;
 
     // porty a farby grafikonov pred upravou - Upravit ich meni priamo, zatvorenie bez OK ich musi vratit
     private readonly List<(DirList dir, int? tablePort, int? reportPort, Color? color)> _dirSnapshot;
@@ -41,8 +42,10 @@ public partial class FGlobalSettings : Form
     /// </summary>
     /// <param name="gvds">Vsetky grafikony v priecinku.</param>
     /// <param name="openIndex">Index TabPage, ktory sa ma otvorit po otvoreni dialogu.</param>
-    public FGlobalSettings(IList<GVDDirectory> gvds, int openIndex = -1)
+    /// <param name="openGrafikon">Otvoreny grafikon - jeho vlaky sa pri kontrole pouzitia typu vlaku beru z pamate.</param>
+    public FGlobalSettings(IList<GVDDirectory> gvds, int openIndex = -1, GVDDirectory? openGrafikon = null)
     {
+        _openGrafikon = openGrafikon;
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
@@ -57,11 +60,16 @@ public partial class FGlobalSettings : Form
 
         _predefinedTrainTypes = TrainType.GetDefaultValues();
         cbDefTrainTypSkratka.DataSource = _predefinedTrainTypes;
+        // vyber druhu predvyplni skratku a text na tabuli - inak by ostali z predchadzajuceho typu
+        cbDefTrainTypSkratka.SelectionChangeCommitted += (_, _) =>
+        {
+            if (cbDefTrainTypSkratka.SelectedItem is not TrainType template) return;
+            tbDefaultTrainTypSkratka.Text = template.CategoryTrain;
+            tbDefaultTrainTypText.Text = template.CategoryTrain;
+        };
         listTrainTypes.DataSource = GlobData.TrainsTypes;
 
-        var st = new List<Station>(GlobData.Stations);
-        st.Sort();
-        cbAudioStanica.DataSource = st;
+        FillAudioStations(null);
         listAudio.DataSource = GlobData.Audios;
 
         if (GlobData.Delays.Count == 0)
@@ -348,266 +356,155 @@ public partial class FGlobalSettings : Form
 
     private void bDefTrainTypAdd_Click(object sender, EventArgs e)
     {
-        var typ = (TrainType)cbDefTrainTypSkratka.SelectedItem!;
-
-        if (GlobData.TrainsTypes.Any(trainType => tbDefaultTrainTypSkratka.Text == trainType.Key))
-        {
-            Utils.ShowError(Resources.FGlobalSettings_Vybraný_typ_vlaku_sa_už_v_zozname_nachádza);
+        if (cbDefTrainTypSkratka.SelectedItem is not TrainType template)
             return;
-        }
 
-        typ.CategoryTrain = ((TrainType)cbDefTrainTypSkratka.SelectedItem!).CategoryTrain;
-        typ.Key = tbDefaultTrainTypSkratka.Text;
-        typ.TextInTable = tbDefaultTrainTypText.Text;
+        // novy objekt - polozka zoznamu predvolenych typov je len vzor a nesmie sa dostat do zoznamu
+        var typ = new TrainType(template.CategoryTrain)
+        {
+            Key = tbDefaultTrainTypSkratka.Text.Trim(),
+            TextInTable = tbDefaultTrainTypText.Text.Trim()
+        };
+        if (!CheckTrainType(typ, null))
+            return;
 
         GlobData.TrainsTypes.Add(typ);
-
-        bDefTrainTypEdit.Enabled = true;
-        bDefTrainTypDelete.Enabled = true;
+        listTrainTypes.SelectedItem = typ;
     }
 
     private void bDefTrainTypEdit_Click(object sender, EventArgs e)
     {
-        if (listTrainTypes.SelectedIndex == -1)
+        if (listTrainTypes.SelectedItem is not TrainType typ || typ.IsCustom || cbDefTrainTypSkratka.SelectedItem is not TrainType template)
             return;
 
-        var typ = GlobData.TrainsTypes[listTrainTypes.SelectedIndex];
-        if (GlobData.TrainsTypes.Where((t, i) => tbDefaultTrainTypSkratka.Text == t.Key && listTrainTypes.SelectedIndex != i).Any())
+        var edited = new TrainType(template.CategoryTrain)
         {
-            Utils.ShowError(Resources.FGlobalSettings_Vybraný_typ_vlaku_sa_už_v_zozname_nachádza);
+            Key = tbDefaultTrainTypSkratka.Text.Trim(),
+            TextInTable = tbDefaultTrainTypText.Text.Trim()
+        };
+        if (!CheckTrainType(edited, typ))
             return;
-        }
 
-        typ.CategoryTrain = ((TrainType)cbDefTrainTypSkratka.SelectedItem!).CategoryTrain;
-        typ.Key = tbDefaultTrainTypSkratka.Text;
-        typ.TextInTable = tbDefaultTrainTypText.Text;
+        // uprava na mieste - vlaky otvoreneho grafikonu sa odkazuju na tento objekt
+        typ.CategoryTrain = edited.CategoryTrain;
+        typ.Key = edited.Key;
+        typ.TextInTable = edited.TextInTable;
         GlobData.TrainsTypes.ResetBindings();
     }
 
-    private void bDefTrainTypDelete_Click(object sender, EventArgs e)
-    {
-        if (listTrainTypes.SelectedIndex != -1)
-            GlobData.TrainsTypes.RemoveAt(listTrainTypes.SelectedIndex);
-
-        if (GlobData.TrainsTypes.Count == 0)
-        {
-            bDefTrainTypEdit.Enabled = false;
-            bDefTrainTypDelete.Enabled = false;
-            bCustomTrainTypEdit.Enabled = false;
-            bCustomTrainTypDelete.Enabled = false;
-        }
-    }
+    private void bDefTrainTypDelete_Click(object sender, EventArgs e) => DeleteTrainType();
 
     private void bCustomTrainTypAdd_Click(object sender, EventArgs e)
     {
-        foreach (var trainType in GlobData.TrainsTypes)
-            if (tbCustomTrainTypSkratka.Text == trainType.Key)
-            {
-                Utils.ShowError(Resources.FGlobalSettings_Click_Zadaný_typ_vlaku_sa_už_v_zozname_nachádza);
-                return;
-            }
-
-        if (string.IsNullOrEmpty(tbCustomTrainTypSkratka.Text))
-        {
-            Utils.ShowError(Resources.FGlobalSettings_Nebola_zadaná_skratka_typu_vlaku);
+        var typ = new TrainType("", tbCustomTrainTypSkratka.Text.Trim(), tbCustomTrainTypText.Text.Trim());
+        var category = FreeCustomCategory(CustomPrefix, null);
+        if (category == null)
             return;
-        }
 
-        var key = tbCustomTrainTypSkratka.Text;
-        var table = tbCustomTrainTypText.Text;
-        var category = "";
-        var num = 1;
+        typ.CategoryTrain = category;
+        if (!CheckTrainType(typ, null))
+            return;
 
-        if (cbCustomTrainTypDruh.SelectedIndex == 0)
-        {
-            foreach (var trainType in GlobData.TrainsTypes)
-                if (trainType.IsCustom)
-                    if (Regex.IsMatch(trainType.CategoryTrain, "^Os[1-9]$"))
-                    {
-                        trainType.CategoryTrain = "Os" + num;
-                        num++;
-                    }
-
-            if (num > 9)
-            {
-                Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
-                return;
-            }
-
-            category = "Os" + num;
-        }
-        else if (cbCustomTrainTypDruh.SelectedIndex == 1)
-        {
-            foreach (var trainType in GlobData.TrainsTypes)
-                if (trainType.IsCustom)
-                    if (Regex.IsMatch(trainType.CategoryTrain, "^R[1-9]$"))
-                    {
-                        trainType.CategoryTrain = "R" + num;
-                        num++;
-                    }
-
-            if (num > 9)
-            {
-                Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
-                return;
-            }
-
-            category = "R" + num;
-        }
-        else if (cbCustomTrainTypDruh.SelectedIndex == 2)
-        {
-            foreach (var trainType in GlobData.TrainsTypes)
-                if (trainType.IsCustom)
-                    if (Regex.IsMatch(trainType.CategoryTrain, "^X[1-9]$"))
-                    {
-                        trainType.CategoryTrain = "X" + num;
-                        num++;
-                    }
-
-            if (num > 9)
-            {
-                Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
-                return;
-            }
-
-            category = "X" + num;
-        }
-        else if (cbCustomTrainTypDruh.SelectedIndex == 3)
-        {
-            foreach (var trainType in GlobData.TrainsTypes)
-                if (trainType.IsCustom)
-                    if (Regex.IsMatch(trainType.CategoryTrain, "^Sl[1-9]$"))
-                    {
-                        trainType.CategoryTrain = "Sl" + num;
-                        num++;
-                    }
-
-            if (num > 9)
-            {
-                Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
-                return;
-            }
-
-            category = "Sl" + num;
-        }
-
-        var typ = new TrainType(category, key, table);
         GlobData.TrainsTypes.Add(typ);
-
-        bCustomTrainTypEdit.Enabled = false;
-        bCustomTrainTypDelete.Enabled = false;
+        listTrainTypes.SelectedItem = typ;
     }
 
     private void bCustomTrainTypEdit_Click(object sender, EventArgs e)
     {
-        if (listTrainTypes.SelectedIndex != -1)
-        {
-            foreach (var trainType in GlobData.TrainsTypes)
-                if (tbCustomTrainTypSkratka.Text == trainType.Key && ((TrainType)listTrainTypes.SelectedItem!).Key != tbCustomTrainTypSkratka.Text)
-                {
-                    Utils.ShowError(Resources.FGlobalSettings_Click_Zadaný_typ_vlaku_sa_už_v_zozname_nachádza);
-                    return;
-                }
+        if (listTrainTypes.SelectedItem is not TrainType typ || !typ.IsCustom)
+            return;
 
-            if (string.IsNullOrEmpty(tbCustomTrainTypSkratka.Text))
-            {
-                Utils.ShowError(Resources.FGlobalSettings_Nebola_zadaná_skratka_typu_vlaku);
-                return;
-            }
+        // v tej istej skupine ostava miesto (napr. R2); pri zmene skupiny sa hlada volne miesto v novej
+        var category = typ.CategoryTrain.StartsWith(CustomPrefix, StringComparison.Ordinal) &&
+                       Regex.IsMatch(typ.CategoryTrain, "^" + CustomPrefix + "[1-9]$")
+            ? typ.CategoryTrain
+            : FreeCustomCategory(CustomPrefix, typ);
+        if (category == null)
+            return;
 
-            var key = tbCustomTrainTypSkratka.Text;
-            var table = tbCustomTrainTypText.Text;
-            var category = "";
-            var num = 1;
+        var edited = new TrainType(category, tbCustomTrainTypSkratka.Text.Trim(), tbCustomTrainTypText.Text.Trim());
+        if (!CheckTrainType(edited, typ))
+            return;
 
-            switch (cbCustomTrainTypDruh.SelectedIndex)
-            {
-                case 0:
-                    {
-                        foreach (var trainType in GlobData.TrainsTypes)
-                            if (trainType.IsCustom)
-                                if (Regex.IsMatch(trainType.CategoryTrain, "^Os[1-9]$"))
-                                {
-                                    trainType.CategoryTrain = "Os" + num;
-                                    num++;
-                                }
-
-                        if (num > 9)
-                        {
-                            Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
-                            return;
-                        }
-
-                        category = "Os" + num;
-                        break;
-                    }
-                case 1:
-                    {
-                        foreach (var trainType in GlobData.TrainsTypes)
-                            if (trainType.IsCustom)
-                                if (Regex.IsMatch(trainType.CategoryTrain, "^R[1-9]$"))
-                                {
-                                    trainType.CategoryTrain = "R" + num;
-                                    num++;
-                                }
-
-                        if (num > 9)
-                        {
-                            Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
-                            return;
-                        }
-
-                        category = "R" + num;
-                        break;
-                    }
-                case 2:
-                    {
-                        foreach (var trainType in GlobData.TrainsTypes)
-                            if (trainType.IsCustom)
-                                if (Regex.IsMatch(trainType.CategoryTrain, "^X[1-9]$"))
-                                {
-                                    trainType.CategoryTrain = "X" + num;
-                                    num++;
-                                }
-
-                        if (num > 9)
-                        {
-                            Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
-                            return;
-                        }
-
-                        category = "X" + num;
-                        break;
-                    }
-                case 3:
-                    {
-                        foreach (var trainType in GlobData.TrainsTypes)
-                            if (trainType.IsCustom)
-                                if (Regex.IsMatch(trainType.CategoryTrain, "^Sl[1-9]$"))
-                                {
-                                    trainType.CategoryTrain = "Sl" + num;
-                                    num++;
-                                }
-
-                        if (num > 9)
-                        {
-                            Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
-                            return;
-                        }
-
-                        category = "Sl" + num;
-                        break;
-                    }
-            }
-
-            GlobData.TrainsTypes[listTrainTypes.SelectedIndex] = new TrainType(category, key, table);
-        }
+        // uprava na mieste - vlaky otvoreneho grafikonu sa odkazuju na tento objekt
+        typ.CategoryTrain = edited.CategoryTrain;
+        typ.Key = edited.Key;
+        typ.TextInTable = edited.TextInTable;
+        GlobData.TrainsTypes.ResetBindings();
     }
 
-    private void bCustomTrainTypDelete_Click(object sender, EventArgs e)
-    {
-        if (listTrainTypes.SelectedIndex != -1) GlobData.TrainsTypes.RemoveAt(listTrainTypes.SelectedIndex);
+    private void bCustomTrainTypDelete_Click(object sender, EventArgs e) => DeleteTrainType();
 
+    /// <summary>
+    ///     Skupina vlastnych typov vybrata v poli Farba / druh (Os, R, X, Sl).
+    /// </summary>
+    private string CustomPrefix => cbCustomTrainTypDruh.SelectedIndex switch
+    {
+        1 => "R",
+        2 => "X",
+        3 => "Sl",
+        _ => "Os"
+    };
+
+    /// <summary>
+    ///     Volne miesto vlastneho typu v skupine <paramref name="prefix" /> (napr. R3). Obsadene miesta sa
+    ///     precisluju od 1 - vlaky sa odkazuju na kluc, nie na miesto, takze sa ich to netyka.
+    /// </summary>
+    /// <returns><see langword="null" />, ak je skupina plna (9 miest).</returns>
+    private static string? FreeCustomCategory(string prefix, TrainType? exclude)
+    {
+        var num = 1;
+        foreach (var trainType in GlobData.TrainsTypes)
+            if (trainType.IsCustom && !ReferenceEquals(trainType, exclude) && Regex.IsMatch(trainType.CategoryTrain, "^" + prefix + "[1-9]$"))
+                trainType.CategoryTrain = prefix + num++;
+
+        if (num <= 9)
+            return prefix + num;
+
+        Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
+        return null;
+    }
+
+    /// <summary>
+    ///     Skontroluje pridavany alebo upraveny typ vlaku (<paramref name="original" /> = upravovany typ).
+    /// </summary>
+    private bool CheckTrainType(TrainType typ, TrainType? original)
+    {
+        if (string.IsNullOrEmpty(typ.Key))
+        {
+            Utils.ShowError(Resources.FGlobalSettings_Nebola_zadaná_skratka_typu_vlaku);
+            return false;
+        }
+
+        var others = GlobData.TrainsTypes.Where(t => !ReferenceEquals(t, original)).ToList();
+        if (others.Any(t => t.Key == typ.Key))
+        {
+            Utils.ShowError(Resources.FGlobalSettings_Vybraný_typ_vlaku_sa_už_v_zozname_nachádza);
+            return false;
+        }
+
+        // INISS uklada typ na miesto jeho kategorie - druhy riadok tej istej kategorie by prvy prepisal
+        if (others.Any(t => t.CategoryTrain == typ.CategoryTrain))
+        {
+            Utils.ShowError(string.Format(Resources.FGlobalSettings_Kategoria_typu_obsadena, typ.CategoryTrain));
+            return false;
+        }
+
+        if (original != null && original.Key != typ.Key)
+            return CheckTrainTypeUnused(original, Resources.FGlobalSettings_Typ_vlaku_premenovanie);
+
+        return true;
+    }
+
+    private void DeleteTrainType()
+    {
+        if (listTrainTypes.SelectedItem is not TrainType typ)
+            return;
+
+        if (!CheckTrainTypeUnused(typ, Resources.FGlobalSettings_Typ_vlaku_odstranenie))
+            return;
+
+        GlobData.TrainsTypes.Remove(typ);
         if (GlobData.TrainsTypes.Count == 0)
         {
             bDefTrainTypEdit.Enabled = false;
@@ -615,6 +512,20 @@ public partial class FGlobalSettings : Form
             bCustomTrainTypEdit.Enabled = false;
             bCustomTrainTypDelete.Enabled = false;
         }
+    }
+
+    /// <summary>
+    ///     Typ, ktory pouzivaju vlaky niektoreho grafikonu, sa nesmie odstranit ani premenovat - grafikon by sa
+    ///     potom nedal otvorit (neznamy typ vlaku v Export3A.TXT).
+    /// </summary>
+    private bool CheckTrainTypeUnused(TrainType typ, string action)
+    {
+        var used = TrainTypeUsage.Find(typ.Key, Grafikony, _openGrafikon, GlobData.Trains);
+        if (used.Count == 0)
+            return true;
+
+        Utils.ShowError(string.Format(Resources.FGlobalSettings_Typ_vlaku_pouzivaju, typ.Key, string.Join(", ", used), action));
+        return false;
     }
 
     private void listAudio_SelectedIndexChanged(object sender, EventArgs e)
@@ -622,8 +533,8 @@ public partial class FGlobalSettings : Form
         if (listAudio.SelectedIndex != -1)
         {
             var audio = GlobData.Audios[listAudio.SelectedIndex];
-            cbCustomOnly.Checked = audio.Station.IsCustom;
-            cbAudioStanica.SelectedItem = audio.Station;
+            cbCustomOnly.Checked = GlobData.CustomStations.Any(s => s.ID == audio.Station.ID);
+            FillAudioStations(audio.Station);
             tbAudioName.Text = audio.Name;
             tbAudioNazovSkratka.Text = audio.ShortName;
             tbAudioNazovFronta.Text = audio.QueueName;
@@ -635,14 +546,50 @@ public partial class FGlobalSettings : Form
         }
     }
 
-    private void cbCustomOnly_CheckedChanged(object sender, EventArgs e)
+    private void cbCustomOnly_CheckedChanged(object sender, EventArgs e) => FillAudioStations(cbAudioStanica.SelectedItem as Station);
+
+    /// <summary>
+    ///     Kluc testovacieho okruhu v stlpci 1 Audio.txt.
+    /// </summary>
+    private const string AudioTestKey = "TEST";
+
+    /// <summary>
+    ///     Naplni zoznam stanic audio linky: testovaci okruh, potom stanice zvukovej banky alebo vlastne stanice.
+    ///     Stanica <paramref name="select" /> sa vyberie podla cisla - ak v zozname nie je (napr. neznama stanica
+    ///     zo suboru), prida sa, aby ju Upravit potichu nezmenilo na inu.
+    /// </summary>
+    private void FillAudioStations(Station? select)
     {
         var st = cbCustomOnly.Checked
             ? new List<Station>(GlobData.CustomStations)
             : new List<Station>(GlobData.Stations);
-
         st.Sort();
+        st.Insert(0, new Station(AudioTestKey, Resources.FGlobalSettings_Testovaci_okruh));
+
+        var index = select == null ? -1 : st.FindIndex(s => string.Equals(s.ID, select.ID, StringComparison.OrdinalIgnoreCase));
+        if (select != null && index == -1)
+        {
+            st.Add(select);
+            index = st.Count - 1;
+        }
+
         cbAudioStanica.DataSource = st;
+        if (index != -1) cbAudioStanica.SelectedIndex = index;
+    }
+
+    /// <summary>
+    ///     Skontroluje, ci je okruh TEST najviac jeden (<paramref name="index" /> = upravovana linka).
+    /// </summary>
+    private bool CheckAudioTest(Station station, int index)
+    {
+        if (!string.Equals(station.ID, AudioTestKey, StringComparison.OrdinalIgnoreCase))
+            return true;
+
+        if (!GlobData.Audios.Where((a, i) => i != index && string.Equals(a.Station.ID, AudioTestKey, StringComparison.OrdinalIgnoreCase)).Any())
+            return true;
+
+        Utils.ShowError(Resources.FGlobalSettings_Testovaci_okruh_uz_je);
+        return false;
     }
 
     private void bAudioAdd_Click(object sender, EventArgs e)
@@ -660,6 +607,9 @@ public partial class FGlobalSettings : Form
                 Utils.ShowError(Resources.FGlobalSettings_Názov_tejto_audio_linky_už_existuje);
                 return;
             }
+
+        if (!CheckAudioTest((Station)cbAudioStanica.SelectedItem!, -1))
+            return;
 
         var audio = new Audio
         {
@@ -701,6 +651,9 @@ public partial class FGlobalSettings : Form
                 i++;
             }
 
+            if (!CheckAudioTest((Station)cbAudioStanica.SelectedItem!, listAudio.SelectedIndex))
+                return;
+
             var audio = GlobData.Audios[listAudio.SelectedIndex];
             audio.Station = (Station)cbAudioStanica.SelectedItem!;
             audio.Name = tbAudioName.Text;
@@ -721,10 +674,16 @@ public partial class FGlobalSettings : Form
         if (listAudio.SelectedIndex != -1) GlobData.Audios.RemoveAt(listAudio.SelectedIndex);
     }
 
+    // posledny nazov linky - protokolovy nazov a fronta ho nasleduju, len kym sa s nim zhoduju
+    private string _lastAudioName = "";
+
     private void tbAudioName_TextChanged(object sender, EventArgs e)
     {
-        tbAudioNazovSkratka.Text = tbAudioName.Text;
-        tbAudioNazovFronta.Text = tbAudioName.Text;
+        if (tbAudioNazovSkratka.Text.Length == 0 || tbAudioNazovSkratka.Text == _lastAudioName)
+            tbAudioNazovSkratka.Text = tbAudioName.Text;
+        if (tbAudioNazovFronta.Text.Length == 0 || tbAudioNazovFronta.Text == _lastAudioName)
+            tbAudioNazovFronta.Text = tbAudioName.Text;
+        _lastAudioName = tbAudioName.Text;
     }
 
     private void FGlobalSettings_HelpButtonClicked(object sender, CancelEventArgs e)

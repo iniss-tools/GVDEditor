@@ -82,6 +82,13 @@ internal static class DemoInstallation
         TxtParser.WriteTrainTypesDefaults();
         TxtParser.WriteZpozdeniDefault();
 
+        // zvukový okruh stanice a testovací okruh TEST (sprístupní v INISSe tlačidlo Test/stop)
+        File.WriteAllLines(Path.Combine(dataDir, FileConsts.FILE_AUDIO),
+        [
+            "9900100,Dolné Mesto,Dolné Mesto,Hlásenie,",
+            "TEST,Test,Test,TestHlas,"
+        ], ToolsCore.Tools.Encodings.Win1250);
+
         var dir = new DirList { DirName = GvdDirName, FullPath = Path.Combine(dataDir, GvdDirName), TablePort = 2, ReportPort = 3 };
         TxtParser.WriteDirList([dir]);
 

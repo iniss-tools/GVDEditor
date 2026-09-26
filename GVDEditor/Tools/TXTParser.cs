@@ -347,6 +347,7 @@ internal static class TxtParser
         var fileAudio = CombinePath(GlobData.DataDir, FILE_AUDIO)!;
 
         var audios = new List<Audio>();
+        AudioTrailer = new List<string>();
 
         using var audioF = new CsvFileReader(fileAudio);
         var riadok = 1;
@@ -354,6 +355,16 @@ internal static class TxtParser
         while (true)
         {
             var status = audioF.ReadRow(row);
+
+            // INISS okruhy cita len po prvy riadok zacinajuci '/' - zvysok suboru sa nesmie stat okruhmi
+            if (status == ReadStartChar.Slash)
+            {
+                AudioTrailer.Add(row.LineText!);
+                while (audioF.ReadLine() is { } line)
+                    AudioTrailer.Add(line);
+                break;
+            }
+
             if (LineIsEmpty(status))
             {
                 riadok++;
@@ -398,8 +409,19 @@ internal static class TxtParser
     /// <param name="audios">audio linky</param>
     public static void WriteAudio(IEnumerable<Audio> audios)
     {
-        var fileAudio = CombinePath(GlobData.DataDir, FILE_AUDIO)!;
+        WriteAudio(CombinePath(GlobData.DataDir, FILE_AUDIO)!, audios, AudioTrailer);
+    }
 
+    /// <summary>
+    ///     Riadky Audio.txt od prveho riadka zacinajuceho '/' - INISS ich ako okruhy necita, zapisu sa spat bez zmeny.
+    /// </summary>
+    public static List<string> AudioTrailer { get; private set; } = new();
+
+    /// <summary>
+    ///     Zapise audio linky a za ne riadky <paramref name="trailer" /> do suboru <paramref name="fileAudio" />.
+    /// </summary>
+    internal static void WriteAudio(string fileAudio, IEnumerable<Audio> audios, IEnumerable<string> trailer)
+    {
         using var audioF = new CsvFileWriter(fileAudio);
         foreach (var a in audios)
         {
@@ -425,6 +447,9 @@ internal static class TxtParser
 
             audioF.WriteRow(row);
         }
+
+        foreach (var line in trailer)
+            audioF.WriteLine(line);
     }
 
     #endregion

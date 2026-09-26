@@ -664,7 +664,7 @@ public partial class FMain : Form
 
     private void ShowGlobalSettings(int startIndex = -1)
     {
-        var gf = new FGlobalSettings(_gvdDirs.ToList(), startIndex);
+        var gf = new FGlobalSettings(_gvdDirs.ToList(), startIndex, _previousSelectedGVD);
         var result = gf.ShowDialog();
         if (result == DialogResult.OK)
         {

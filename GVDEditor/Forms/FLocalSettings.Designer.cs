@@ -302,11 +302,11 @@ namespace GVDEditor.Forms
             // 
             // textBox1
             // 
+            resources.ApplyResources(textBox1, "textBox1");
             textBox1.BorderColor = Color.DimGray;
             textBox1.DisabledBackColor = SystemColors.Control;
             textBox1.DisabledBorderColor = SystemColors.InactiveBorder;
             textBox1.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(textBox1, "textBox1");
             textBox1.HighlightColor = SystemColors.Highlight;
             textBox1.HintForeColor = SystemColors.GrayText;
             textBox1.HintText = null;
@@ -319,6 +319,7 @@ namespace GVDEditor.Forms
             // 
             // textBox2
             // 
+            resources.ApplyResources(textBox2, "textBox2");
             textBox2.BorderColor = Color.DimGray;
             textBox2.DisabledBackColor = SystemColors.Control;
             textBox2.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -326,7 +327,6 @@ namespace GVDEditor.Forms
             textBox2.HighlightColor = SystemColors.Highlight;
             textBox2.HintForeColor = SystemColors.GrayText;
             textBox2.HintText = null;
-            resources.ApplyResources(textBox2, "textBox2");
             textBox2.Name = "textBox2";
             // 
             // label6
@@ -341,8 +341,8 @@ namespace GVDEditor.Forms
             // 
             // groupBox11
             // 
-            groupBox11.DisabledForeColor = SystemColors.GrayText;
             resources.ApplyResources(groupBox11, "groupBox11");
+            groupBox11.DisabledForeColor = SystemColors.GrayText;
             groupBox11.Name = "groupBox11";
             groupBox11.TabStop = false;
             // 
@@ -353,6 +353,7 @@ namespace GVDEditor.Forms
             // 
             // tbCustomTrainTypText
             // 
+            resources.ApplyResources(tbCustomTrainTypText, "tbCustomTrainTypText");
             tbCustomTrainTypText.BorderColor = Color.DimGray;
             tbCustomTrainTypText.DisabledBackColor = SystemColors.Control;
             tbCustomTrainTypText.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -360,11 +361,11 @@ namespace GVDEditor.Forms
             tbCustomTrainTypText.HighlightColor = SystemColors.Highlight;
             tbCustomTrainTypText.HintForeColor = SystemColors.GrayText;
             tbCustomTrainTypText.HintText = null;
-            resources.ApplyResources(tbCustomTrainTypText, "tbCustomTrainTypText");
             tbCustomTrainTypText.Name = "tbCustomTrainTypText";
             // 
             // tbCustomTrainTypSkratka
             // 
+            resources.ApplyResources(tbCustomTrainTypSkratka, "tbCustomTrainTypSkratka");
             tbCustomTrainTypSkratka.BorderColor = Color.DimGray;
             tbCustomTrainTypSkratka.DisabledBackColor = SystemColors.Control;
             tbCustomTrainTypSkratka.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -372,7 +373,6 @@ namespace GVDEditor.Forms
             tbCustomTrainTypSkratka.HighlightColor = SystemColors.Highlight;
             tbCustomTrainTypSkratka.HintForeColor = SystemColors.GrayText;
             tbCustomTrainTypSkratka.HintText = null;
-            resources.ApplyResources(tbCustomTrainTypSkratka, "tbCustomTrainTypSkratka");
             tbCustomTrainTypSkratka.Name = "tbCustomTrainTypSkratka";
             // 
             // label41
@@ -412,8 +412,8 @@ namespace GVDEditor.Forms
             // 
             // groupBox10
             // 
-            groupBox10.DisabledForeColor = SystemColors.GrayText;
             resources.ApplyResources(groupBox10, "groupBox10");
+            groupBox10.DisabledForeColor = SystemColors.GrayText;
             groupBox10.Name = "groupBox10";
             groupBox10.TabStop = false;
             // 
@@ -443,6 +443,7 @@ namespace GVDEditor.Forms
             // 
             // tabControl
             // 
+            resources.ApplyResources(tabControl, "tabControl");
             tabControl.Controls.Add(tpGrafikon);
             tabControl.Controls.Add(tpStanice);
             tabControl.Controls.Add(tpDopravcovia);
@@ -457,7 +458,6 @@ namespace GVDEditor.Forms
             tabControl.Controls.Add(tpStateDgm);
             tabControl.HeaderBackColor = SystemColors.Control;
             tabControl.HighlightBackColor = SystemColors.GradientInactiveCaption;
-            resources.ApplyResources(tabControl, "tabControl");
             tabControl.Multiline = true;
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
@@ -465,15 +465,16 @@ namespace GVDEditor.Forms
             // 
             // tpGrafikon
             // 
+            resources.ApplyResources(tpGrafikon, "tpGrafikon");
             tpGrafikon.BackColor = Color.Transparent;
             tpGrafikon.Controls.Add(groupBox15);
             tpGrafikon.Controls.Add(groupBox14);
             tpGrafikon.Controls.Add(groupBox13);
-            resources.ApplyResources(tpGrafikon, "tpGrafikon");
             tpGrafikon.Name = "tpGrafikon";
             // 
             // groupBox15
             // 
+            resources.ApplyResources(groupBox15, "groupBox15");
             groupBox15.Controls.Add(bDirChange);
             groupBox15.Controls.Add(tbDir);
             groupBox15.Controls.Add(tbDirName);
@@ -481,7 +482,6 @@ namespace GVDEditor.Forms
             groupBox15.Controls.Add(label4);
             groupBox15.Controls.Add(bOpenDir);
             groupBox15.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(groupBox15, "groupBox15");
             groupBox15.Name = "groupBox15";
             groupBox15.TabStop = false;
             // 
@@ -494,6 +494,7 @@ namespace GVDEditor.Forms
             // 
             // tbDir
             // 
+            resources.ApplyResources(tbDir, "tbDir");
             tbDir.BorderColor = Color.DimGray;
             tbDir.BorderStyle = BorderStyle.FixedSingle;
             tbDir.DisabledBackColor = SystemColors.Control;
@@ -502,12 +503,12 @@ namespace GVDEditor.Forms
             tbDir.HighlightColor = SystemColors.Highlight;
             tbDir.HintForeColor = SystemColors.GrayText;
             tbDir.HintText = null;
-            resources.ApplyResources(tbDir, "tbDir");
             tbDir.Name = "tbDir";
             tbDir.ReadOnly = true;
             // 
             // tbDirName
             // 
+            resources.ApplyResources(tbDirName, "tbDirName");
             tbDirName.BorderColor = Color.DimGray;
             tbDirName.DisabledBackColor = SystemColors.Control;
             tbDirName.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -515,7 +516,6 @@ namespace GVDEditor.Forms
             tbDirName.HighlightColor = SystemColors.Highlight;
             tbDirName.HintForeColor = SystemColors.GrayText;
             tbDirName.HintText = null;
-            resources.ApplyResources(tbDirName, "tbDirName");
             tbDirName.Name = "tbDirName";
             // 
             // label9
@@ -537,6 +537,7 @@ namespace GVDEditor.Forms
             // 
             // groupBox14
             // 
+            resources.ApplyResources(groupBox14, "groupBox14");
             groupBox14.Controls.Add(dynamicLineSeparator1);
             groupBox14.Controls.Add(tbGVDStationName);
             groupBox14.Controls.Add(cbCustomStation);
@@ -546,23 +547,22 @@ namespace GVDEditor.Forms
             groupBox14.Controls.Add(label49);
             groupBox14.Controls.Add(cbStationName);
             groupBox14.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(groupBox14, "groupBox14");
             groupBox14.Name = "groupBox14";
             groupBox14.TabStop = false;
             // 
             // dynamicLineSeparator1
             // 
-            dynamicLineSeparator1.LineOrientation = LineOrientation.Vertical;
             resources.ApplyResources(dynamicLineSeparator1, "dynamicLineSeparator1");
+            dynamicLineSeparator1.LineOrientation = LineOrientation.Vertical;
             dynamicLineSeparator1.Name = "dynamicLineSeparator1";
             // 
             // tbGVDStationName
             // 
+            resources.ApplyResources(tbGVDStationName, "tbGVDStationName");
             tbGVDStationName.BorderColor = Color.DimGray;
             tbGVDStationName.DisabledBackColor = SystemColors.Control;
             tbGVDStationName.DisabledBorderColor = SystemColors.InactiveBorder;
             tbGVDStationName.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(tbGVDStationName, "tbGVDStationName");
             tbGVDStationName.HighlightColor = SystemColors.Highlight;
             tbGVDStationName.HintForeColor = SystemColors.GrayText;
             tbGVDStationName.HintText = null;
@@ -605,11 +605,11 @@ namespace GVDEditor.Forms
             // 
             // cbStationName
             // 
+            resources.ApplyResources(cbStationName, "cbStationName");
             cbStationName.DisplayMember = "Name";
             cbStationName.DropDownSelectedRowBackColor = Color.Empty;
             cbStationName.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStationName.FormattingEnabled = true;
-            resources.ApplyResources(cbStationName, "cbStationName");
             cbStationName.Name = "cbStationName";
             cbStationName.StyleDisabled.ArrowColor = null;
             cbStationName.StyleDisabled.BackColor = null;
@@ -643,6 +643,7 @@ namespace GVDEditor.Forms
             // 
             // groupBox13
             // 
+            resources.ApplyResources(groupBox13, "groupBox13");
             groupBox13.Controls.Add(label2);
             groupBox13.Controls.Add(label3);
             groupBox13.Controls.Add(dtpGVDOd);
@@ -652,7 +653,6 @@ namespace GVDEditor.Forms
             groupBox13.Controls.Add(label11);
             groupBox13.Controls.Add(dtpDataOd);
             groupBox13.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(groupBox13, "groupBox13");
             groupBox13.Name = "groupBox13";
             groupBox13.TabStop = false;
             // 
@@ -668,40 +668,64 @@ namespace GVDEditor.Forms
             // 
             // dtpGVDOd
             // 
+            resources.ApplyResources(dtpGVDOd, "dtpGVDOd");
             // 
             // 
             // 
+            dtpGVDOd.Calendar.AccessibleDescription = resources.GetString("dtpGVDOd.Calendar.AccessibleDescription");
+            dtpGVDOd.Calendar.AccessibleName = resources.GetString("dtpGVDOd.Calendar.AccessibleName");
+            dtpGVDOd.Calendar.Anchor = (AnchorStyles)resources.GetObject("dtpGVDOd.Calendar.Anchor");
+            dtpGVDOd.Calendar.AutoSize = (bool)resources.GetObject("dtpGVDOd.Calendar.AutoSize");
+            dtpGVDOd.Calendar.BackgroundImage = (Image)resources.GetObject("dtpGVDOd.Calendar.BackgroundImage");
+            dtpGVDOd.Calendar.BackgroundImageLayout = (ImageLayout)resources.GetObject("dtpGVDOd.Calendar.BackgroundImageLayout");
+            dtpGVDOd.Calendar.Dock = (DockStyle)resources.GetObject("dtpGVDOd.Calendar.Dock");
+            dtpGVDOd.Calendar.Font = (Font)resources.GetObject("dtpGVDOd.Calendar.Font");
             dtpGVDOd.Calendar.HighlightColor = Color.Empty;
             dtpGVDOd.Calendar.HighlightForeColor = Color.Empty;
+            dtpGVDOd.Calendar.ImeMode = (ImeMode)resources.GetObject("dtpGVDOd.Calendar.ImeMode");
             dtpGVDOd.Calendar.Location = (Point)resources.GetObject("dtpGVDOd.Calendar.Location");
+            dtpGVDOd.Calendar.MaximumSize = (Size)resources.GetObject("dtpGVDOd.Calendar.MaximumSize");
             dtpGVDOd.Calendar.Name = "";
+            dtpGVDOd.Calendar.RightToLeft = (RightToLeft)resources.GetObject("dtpGVDOd.Calendar.RightToLeft");
             dtpGVDOd.Calendar.TabIndex = (int)resources.GetObject("dtpGVDOd.Calendar.TabIndex");
             dtpGVDOd.Calendar.TodayBorderColor = Color.Empty;
+            dtpGVDOd.Calendar.TodayText = resources.GetString("dtpGVDOd.Calendar.TodayText");
             dtpGVDOd.DisabledBackColor = SystemColors.Control;
             dtpGVDOd.DisabledForeColor = SystemColors.GrayText;
             dtpGVDOd.Format = DateTimePickerFormat.Short;
             dtpGVDOd.HighlightColor = SystemColors.Highlight;
-            resources.ApplyResources(dtpGVDOd, "dtpGVDOd");
             dtpGVDOd.Name = "dtpGVDOd";
             dtpGVDOd.SelectedFieldBackColor = SystemColors.Highlight;
             dtpGVDOd.SelectedFieldForeColor = SystemColors.HighlightText;
             // 
             // dtpGVDDo
             // 
+            resources.ApplyResources(dtpGVDDo, "dtpGVDDo");
             // 
             // 
             // 
+            dtpGVDDo.Calendar.AccessibleDescription = resources.GetString("dtpGVDDo.Calendar.AccessibleDescription");
+            dtpGVDDo.Calendar.AccessibleName = resources.GetString("dtpGVDDo.Calendar.AccessibleName");
+            dtpGVDDo.Calendar.Anchor = (AnchorStyles)resources.GetObject("dtpGVDDo.Calendar.Anchor");
+            dtpGVDDo.Calendar.AutoSize = (bool)resources.GetObject("dtpGVDDo.Calendar.AutoSize");
+            dtpGVDDo.Calendar.BackgroundImage = (Image)resources.GetObject("dtpGVDDo.Calendar.BackgroundImage");
+            dtpGVDDo.Calendar.BackgroundImageLayout = (ImageLayout)resources.GetObject("dtpGVDDo.Calendar.BackgroundImageLayout");
+            dtpGVDDo.Calendar.Dock = (DockStyle)resources.GetObject("dtpGVDDo.Calendar.Dock");
+            dtpGVDDo.Calendar.Font = (Font)resources.GetObject("dtpGVDDo.Calendar.Font");
             dtpGVDDo.Calendar.HighlightColor = Color.Empty;
             dtpGVDDo.Calendar.HighlightForeColor = Color.Empty;
+            dtpGVDDo.Calendar.ImeMode = (ImeMode)resources.GetObject("dtpGVDDo.Calendar.ImeMode");
             dtpGVDDo.Calendar.Location = (Point)resources.GetObject("dtpGVDDo.Calendar.Location");
+            dtpGVDDo.Calendar.MaximumSize = (Size)resources.GetObject("dtpGVDDo.Calendar.MaximumSize");
             dtpGVDDo.Calendar.Name = "";
+            dtpGVDDo.Calendar.RightToLeft = (RightToLeft)resources.GetObject("dtpGVDDo.Calendar.RightToLeft");
             dtpGVDDo.Calendar.TabIndex = (int)resources.GetObject("dtpGVDDo.Calendar.TabIndex");
             dtpGVDDo.Calendar.TodayBorderColor = Color.Empty;
+            dtpGVDDo.Calendar.TodayText = resources.GetString("dtpGVDDo.Calendar.TodayText");
             dtpGVDDo.DisabledBackColor = SystemColors.Control;
             dtpGVDDo.DisabledForeColor = SystemColors.GrayText;
             dtpGVDDo.Format = DateTimePickerFormat.Short;
             dtpGVDDo.HighlightColor = SystemColors.Highlight;
-            resources.ApplyResources(dtpGVDDo, "dtpGVDDo");
             dtpGVDDo.Name = "dtpGVDDo";
             dtpGVDDo.SelectedFieldBackColor = SystemColors.Highlight;
             dtpGVDDo.SelectedFieldForeColor = SystemColors.HighlightText;
@@ -713,20 +737,32 @@ namespace GVDEditor.Forms
             // 
             // dtpDataDo
             // 
+            resources.ApplyResources(dtpDataDo, "dtpDataDo");
             // 
             // 
             // 
+            dtpDataDo.Calendar.AccessibleDescription = resources.GetString("dtpDataDo.Calendar.AccessibleDescription");
+            dtpDataDo.Calendar.AccessibleName = resources.GetString("dtpDataDo.Calendar.AccessibleName");
+            dtpDataDo.Calendar.Anchor = (AnchorStyles)resources.GetObject("dtpDataDo.Calendar.Anchor");
+            dtpDataDo.Calendar.AutoSize = (bool)resources.GetObject("dtpDataDo.Calendar.AutoSize");
+            dtpDataDo.Calendar.BackgroundImage = (Image)resources.GetObject("dtpDataDo.Calendar.BackgroundImage");
+            dtpDataDo.Calendar.BackgroundImageLayout = (ImageLayout)resources.GetObject("dtpDataDo.Calendar.BackgroundImageLayout");
+            dtpDataDo.Calendar.Dock = (DockStyle)resources.GetObject("dtpDataDo.Calendar.Dock");
+            dtpDataDo.Calendar.Font = (Font)resources.GetObject("dtpDataDo.Calendar.Font");
             dtpDataDo.Calendar.HighlightColor = Color.Empty;
             dtpDataDo.Calendar.HighlightForeColor = Color.Empty;
+            dtpDataDo.Calendar.ImeMode = (ImeMode)resources.GetObject("dtpDataDo.Calendar.ImeMode");
             dtpDataDo.Calendar.Location = (Point)resources.GetObject("dtpDataDo.Calendar.Location");
+            dtpDataDo.Calendar.MaximumSize = (Size)resources.GetObject("dtpDataDo.Calendar.MaximumSize");
             dtpDataDo.Calendar.Name = "";
+            dtpDataDo.Calendar.RightToLeft = (RightToLeft)resources.GetObject("dtpDataDo.Calendar.RightToLeft");
             dtpDataDo.Calendar.TabIndex = (int)resources.GetObject("dtpDataDo.Calendar.TabIndex");
             dtpDataDo.Calendar.TodayBorderColor = Color.Empty;
+            dtpDataDo.Calendar.TodayText = resources.GetString("dtpDataDo.Calendar.TodayText");
             dtpDataDo.DisabledBackColor = SystemColors.Control;
             dtpDataDo.DisabledForeColor = SystemColors.GrayText;
             dtpDataDo.Format = DateTimePickerFormat.Short;
             dtpDataDo.HighlightColor = SystemColors.Highlight;
-            resources.ApplyResources(dtpDataDo, "dtpDataDo");
             dtpDataDo.Name = "dtpDataDo";
             dtpDataDo.SelectedFieldBackColor = SystemColors.Highlight;
             dtpDataDo.SelectedFieldForeColor = SystemColors.HighlightText;
@@ -738,20 +774,32 @@ namespace GVDEditor.Forms
             // 
             // dtpDataOd
             // 
+            resources.ApplyResources(dtpDataOd, "dtpDataOd");
             // 
             // 
             // 
+            dtpDataOd.Calendar.AccessibleDescription = resources.GetString("dtpDataOd.Calendar.AccessibleDescription");
+            dtpDataOd.Calendar.AccessibleName = resources.GetString("dtpDataOd.Calendar.AccessibleName");
+            dtpDataOd.Calendar.Anchor = (AnchorStyles)resources.GetObject("dtpDataOd.Calendar.Anchor");
+            dtpDataOd.Calendar.AutoSize = (bool)resources.GetObject("dtpDataOd.Calendar.AutoSize");
+            dtpDataOd.Calendar.BackgroundImage = (Image)resources.GetObject("dtpDataOd.Calendar.BackgroundImage");
+            dtpDataOd.Calendar.BackgroundImageLayout = (ImageLayout)resources.GetObject("dtpDataOd.Calendar.BackgroundImageLayout");
+            dtpDataOd.Calendar.Dock = (DockStyle)resources.GetObject("dtpDataOd.Calendar.Dock");
+            dtpDataOd.Calendar.Font = (Font)resources.GetObject("dtpDataOd.Calendar.Font");
             dtpDataOd.Calendar.HighlightColor = Color.Empty;
             dtpDataOd.Calendar.HighlightForeColor = Color.Empty;
+            dtpDataOd.Calendar.ImeMode = (ImeMode)resources.GetObject("dtpDataOd.Calendar.ImeMode");
             dtpDataOd.Calendar.Location = (Point)resources.GetObject("dtpDataOd.Calendar.Location");
+            dtpDataOd.Calendar.MaximumSize = (Size)resources.GetObject("dtpDataOd.Calendar.MaximumSize");
             dtpDataOd.Calendar.Name = "";
+            dtpDataOd.Calendar.RightToLeft = (RightToLeft)resources.GetObject("dtpDataOd.Calendar.RightToLeft");
             dtpDataOd.Calendar.TabIndex = (int)resources.GetObject("dtpDataOd.Calendar.TabIndex");
             dtpDataOd.Calendar.TodayBorderColor = Color.Empty;
+            dtpDataOd.Calendar.TodayText = resources.GetString("dtpDataOd.Calendar.TodayText");
             dtpDataOd.DisabledBackColor = SystemColors.Control;
             dtpDataOd.DisabledForeColor = SystemColors.GrayText;
             dtpDataOd.Format = DateTimePickerFormat.Short;
             dtpDataOd.HighlightColor = SystemColors.Highlight;
-            resources.ApplyResources(dtpDataOd, "dtpDataOd");
             dtpDataOd.Name = "dtpDataOd";
             dtpDataOd.SelectedFieldBackColor = SystemColors.Highlight;
             dtpDataOd.SelectedFieldForeColor = SystemColors.HighlightText;
@@ -759,17 +807,17 @@ namespace GVDEditor.Forms
             // 
             // tpStanice
             // 
+            resources.ApplyResources(tpStanice, "tpStanice");
             tpStanice.BackColor = Color.Transparent;
             tpStanice.Controls.Add(listCustomStations);
             tpStanice.Controls.Add(label43);
             tpStanice.Controls.Add(groupBox12);
-            resources.ApplyResources(tpStanice, "tpStanice");
             tpStanice.Name = "tpStanice";
             // 
             // listCustomStations
             // 
-            listCustomStations.FormattingEnabled = true;
             resources.ApplyResources(listCustomStations, "listCustomStations");
+            listCustomStations.FormattingEnabled = true;
             listCustomStations.Name = "listCustomStations";
             listCustomStations.SelectedIndexChanged += listCustomStations_SelectedIndexChanged;
             // 
@@ -780,6 +828,7 @@ namespace GVDEditor.Forms
             // 
             // groupBox12
             // 
+            resources.ApplyResources(groupBox12, "groupBox12");
             groupBox12.Controls.Add(label45);
             groupBox12.Controls.Add(nudIDStanice);
             groupBox12.Controls.Add(bCStationDelete);
@@ -788,7 +837,6 @@ namespace GVDEditor.Forms
             groupBox12.Controls.Add(tbStationName);
             groupBox12.Controls.Add(label44);
             groupBox12.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(groupBox12, "groupBox12");
             groupBox12.Name = "groupBox12";
             groupBox12.TabStop = false;
             // 
@@ -799,8 +847,8 @@ namespace GVDEditor.Forms
             // 
             // nudIDStanice
             // 
-            nudIDStanice.HighlightColor = SystemColors.Highlight;
             resources.ApplyResources(nudIDStanice, "nudIDStanice");
+            nudIDStanice.HighlightColor = SystemColors.Highlight;
             nudIDStanice.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             nudIDStanice.Minimum = new decimal(new int[] { 1000000, 0, 0, 0 });
             nudIDStanice.Name = "nudIDStanice";
@@ -830,6 +878,7 @@ namespace GVDEditor.Forms
             // 
             // tbStationName
             // 
+            resources.ApplyResources(tbStationName, "tbStationName");
             tbStationName.BorderColor = Color.DimGray;
             tbStationName.DisabledBackColor = SystemColors.Control;
             tbStationName.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -837,7 +886,6 @@ namespace GVDEditor.Forms
             tbStationName.HighlightColor = SystemColors.Highlight;
             tbStationName.HintForeColor = SystemColors.GrayText;
             tbStationName.HintText = null;
-            resources.ApplyResources(tbStationName, "tbStationName");
             tbStationName.Name = "tbStationName";
             // 
             // label44
@@ -847,17 +895,17 @@ namespace GVDEditor.Forms
             // 
             // tpDopravcovia
             // 
+            resources.ApplyResources(tpDopravcovia, "tpDopravcovia");
             tpDopravcovia.BackColor = Color.Transparent;
             tpDopravcovia.Controls.Add(listDopravcovia);
             tpDopravcovia.Controls.Add(label7);
             tpDopravcovia.Controls.Add(groupBox1);
-            resources.ApplyResources(tpDopravcovia, "tpDopravcovia");
             tpDopravcovia.Name = "tpDopravcovia";
             // 
             // listDopravcovia
             // 
-            listDopravcovia.FormattingEnabled = true;
             resources.ApplyResources(listDopravcovia, "listDopravcovia");
+            listDopravcovia.FormattingEnabled = true;
             listDopravcovia.Name = "listDopravcovia";
             listDopravcovia.SelectedIndexChanged += listDopravcovia_SelectedIndexChanged;
             // 
@@ -868,13 +916,13 @@ namespace GVDEditor.Forms
             // 
             // groupBox1
             // 
+            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Controls.Add(bDopravcaDelete);
             groupBox1.Controls.Add(bDopravcaEdit);
             groupBox1.Controls.Add(bDopravcaAdd);
             groupBox1.Controls.Add(tbDopravca);
             groupBox1.Controls.Add(label1);
             groupBox1.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Name = "groupBox1";
             groupBox1.TabStop = false;
             // 
@@ -901,6 +949,7 @@ namespace GVDEditor.Forms
             // 
             // tbDopravca
             // 
+            resources.ApplyResources(tbDopravca, "tbDopravca");
             tbDopravca.BorderColor = Color.DimGray;
             tbDopravca.DisabledBackColor = SystemColors.Control;
             tbDopravca.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -908,7 +957,6 @@ namespace GVDEditor.Forms
             tbDopravca.HighlightColor = SystemColors.Highlight;
             tbDopravca.HintForeColor = SystemColors.GrayText;
             tbDopravca.HintText = null;
-            resources.ApplyResources(tbDopravca, "tbDopravca");
             tbDopravca.Name = "tbDopravca";
             // 
             // label1
@@ -918,17 +966,17 @@ namespace GVDEditor.Forms
             // 
             // tpNastupistia
             // 
+            resources.ApplyResources(tpNastupistia, "tpNastupistia");
             tpNastupistia.BackColor = Color.Transparent;
             tpNastupistia.Controls.Add(listNastupistia);
             tpNastupistia.Controls.Add(label8);
             tpNastupistia.Controls.Add(groupBox2);
-            resources.ApplyResources(tpNastupistia, "tpNastupistia");
             tpNastupistia.Name = "tpNastupistia";
             // 
             // listNastupistia
             // 
-            listNastupistia.FormattingEnabled = true;
             resources.ApplyResources(listNastupistia, "listNastupistia");
+            listNastupistia.FormattingEnabled = true;
             listNastupistia.Name = "listNastupistia";
             listNastupistia.SelectedIndexChanged += listNastupistia_SelectedIndexChanged;
             // 
@@ -939,6 +987,7 @@ namespace GVDEditor.Forms
             // 
             // groupBox2
             // 
+            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Controls.Add(label26);
             groupBox2.Controls.Add(tbNastSound);
             groupBox2.Controls.Add(tbNastFullName);
@@ -949,7 +998,6 @@ namespace GVDEditor.Forms
             groupBox2.Controls.Add(tbNastOznacenie);
             groupBox2.Controls.Add(label10);
             groupBox2.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Name = "groupBox2";
             groupBox2.TabStop = false;
             // 
@@ -960,6 +1008,7 @@ namespace GVDEditor.Forms
             // 
             // tbNastSound
             // 
+            resources.ApplyResources(tbNastSound, "tbNastSound");
             tbNastSound.BorderColor = Color.DimGray;
             tbNastSound.DisabledBackColor = SystemColors.Control;
             tbNastSound.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -967,11 +1016,11 @@ namespace GVDEditor.Forms
             tbNastSound.HighlightColor = SystemColors.Highlight;
             tbNastSound.HintForeColor = SystemColors.GrayText;
             tbNastSound.HintText = null;
-            resources.ApplyResources(tbNastSound, "tbNastSound");
             tbNastSound.Name = "tbNastSound";
             // 
             // tbNastFullName
             // 
+            resources.ApplyResources(tbNastFullName, "tbNastFullName");
             tbNastFullName.BorderColor = Color.DimGray;
             tbNastFullName.DisabledBackColor = SystemColors.Control;
             tbNastFullName.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -979,7 +1028,6 @@ namespace GVDEditor.Forms
             tbNastFullName.HighlightColor = SystemColors.Highlight;
             tbNastFullName.HintForeColor = SystemColors.GrayText;
             tbNastFullName.HintText = null;
-            resources.ApplyResources(tbNastFullName, "tbNastFullName");
             tbNastFullName.Name = "tbNastFullName";
             // 
             // label12
@@ -1010,6 +1058,7 @@ namespace GVDEditor.Forms
             // 
             // tbNastOznacenie
             // 
+            resources.ApplyResources(tbNastOznacenie, "tbNastOznacenie");
             tbNastOznacenie.BorderColor = Color.DimGray;
             tbNastOznacenie.DisabledBackColor = SystemColors.Control;
             tbNastOznacenie.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1017,7 +1066,6 @@ namespace GVDEditor.Forms
             tbNastOznacenie.HighlightColor = SystemColors.Highlight;
             tbNastOznacenie.HintForeColor = SystemColors.GrayText;
             tbNastOznacenie.HintText = null;
-            resources.ApplyResources(tbNastOznacenie, "tbNastOznacenie");
             tbNastOznacenie.Name = "tbNastOznacenie";
             tbNastOznacenie.TextChanged += tbNastOznacenie_TextChanged;
             // 
@@ -1028,17 +1076,17 @@ namespace GVDEditor.Forms
             // 
             // tpKolaje
             // 
+            resources.ApplyResources(tpKolaje, "tpKolaje");
             tpKolaje.BackColor = Color.Transparent;
             tpKolaje.Controls.Add(listKolaje);
             tpKolaje.Controls.Add(label15);
             tpKolaje.Controls.Add(groupBox3);
-            resources.ApplyResources(tpKolaje, "tpKolaje");
             tpKolaje.Name = "tpKolaje";
             // 
             // listKolaje
             // 
-            listKolaje.FormattingEnabled = true;
             resources.ApplyResources(listKolaje, "listKolaje");
+            listKolaje.FormattingEnabled = true;
             listKolaje.Name = "listKolaje";
             listKolaje.SelectedIndexChanged += listKolaje_SelectedIndexChanged;
             // 
@@ -1049,6 +1097,7 @@ namespace GVDEditor.Forms
             // 
             // groupBox3
             // 
+            resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Controls.Add(tbKolajAlt);
             groupBox3.Controls.Add(label53);
             groupBox3.Controls.Add(tbNastupisteKolaj);
@@ -1071,12 +1120,12 @@ namespace GVDEditor.Forms
             groupBox3.Controls.Add(tbKolajText);
             groupBox3.Controls.Add(label55);
             groupBox3.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Name = "groupBox3";
             groupBox3.TabStop = false;
             // 
             // tbKolajAlt
             // 
+            resources.ApplyResources(tbKolajAlt, "tbKolajAlt");
             tbKolajAlt.BorderColor = Color.DimGray;
             tbKolajAlt.DisabledBackColor = SystemColors.Control;
             tbKolajAlt.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1084,7 +1133,6 @@ namespace GVDEditor.Forms
             tbKolajAlt.HighlightColor = SystemColors.Highlight;
             tbKolajAlt.HintForeColor = SystemColors.GrayText;
             tbKolajAlt.HintText = null;
-            resources.ApplyResources(tbKolajAlt, "tbKolajAlt");
             tbKolajAlt.Name = "tbKolajAlt";
             // 
             // label53
@@ -1094,6 +1142,7 @@ namespace GVDEditor.Forms
             // 
             // tbNastupisteKolaj
             // 
+            resources.ApplyResources(tbNastupisteKolaj, "tbNastupisteKolaj");
             tbNastupisteKolaj.BorderColor = Color.DimGray;
             tbNastupisteKolaj.DisabledBackColor = SystemColors.Control;
             tbNastupisteKolaj.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1101,7 +1150,6 @@ namespace GVDEditor.Forms
             tbNastupisteKolaj.HighlightColor = SystemColors.Highlight;
             tbNastupisteKolaj.HintForeColor = SystemColors.GrayText;
             tbNastupisteKolaj.HintText = null;
-            resources.ApplyResources(tbNastupisteKolaj, "tbNastupisteKolaj");
             tbNastupisteKolaj.Name = "tbNastupisteKolaj";
             // 
             // label52
@@ -1111,6 +1159,7 @@ namespace GVDEditor.Forms
             // 
             // tbKolajSound
             // 
+            resources.ApplyResources(tbKolajSound, "tbKolajSound");
             tbKolajSound.BorderColor = Color.DimGray;
             tbKolajSound.DisabledBackColor = SystemColors.Control;
             tbKolajSound.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1118,7 +1167,6 @@ namespace GVDEditor.Forms
             tbKolajSound.HighlightColor = SystemColors.Highlight;
             tbKolajSound.HintForeColor = SystemColors.GrayText;
             tbKolajSound.HintText = null;
-            resources.ApplyResources(tbKolajSound, "tbKolajSound");
             tbKolajSound.Name = "tbKolajSound";
             // 
             // label27
@@ -1128,10 +1176,10 @@ namespace GVDEditor.Forms
             // 
             // cbNastupistia
             // 
+            resources.ApplyResources(cbNastupistia, "cbNastupistia");
             cbNastupistia.DropDownSelectedRowBackColor = Color.Empty;
             cbNastupistia.DropDownStyle = ComboBoxStyle.DropDownList;
             cbNastupistia.FormattingEnabled = true;
-            resources.ApplyResources(cbNastupistia, "cbNastupistia");
             cbNastupistia.Name = "cbNastupistia";
             cbNastupistia.StyleDisabled.ArrowColor = null;
             cbNastupistia.StyleDisabled.BackColor = null;
@@ -1175,16 +1223,17 @@ namespace GVDEditor.Forms
             // 
             // clbKolajTables
             // 
+            resources.ApplyResources(clbKolajTables, "clbKolajTables");
             clbKolajTables.DisplayMember = "This";
             clbKolajTables.FormattingEnabled = true;
             clbKolajTables.HighlightColor = Color.FromArgb(0, 120, 215);
-            resources.ApplyResources(clbKolajTables, "clbKolajTables");
             clbKolajTables.Name = "clbKolajTables";
             clbKolajTables.SquareBackColor = Color.White;
             clbKolajTables.ValueMember = "This";
             // 
             // tbKolajFullName
             // 
+            resources.ApplyResources(tbKolajFullName, "tbKolajFullName");
             tbKolajFullName.BorderColor = Color.DimGray;
             tbKolajFullName.DisabledBackColor = SystemColors.Control;
             tbKolajFullName.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1192,7 +1241,6 @@ namespace GVDEditor.Forms
             tbKolajFullName.HighlightColor = SystemColors.Highlight;
             tbKolajFullName.HintForeColor = SystemColors.GrayText;
             tbKolajFullName.HintText = null;
-            resources.ApplyResources(tbKolajFullName, "tbKolajFullName");
             tbKolajFullName.Name = "tbKolajFullName";
             // 
             // label18
@@ -1223,6 +1271,7 @@ namespace GVDEditor.Forms
             // 
             // tbKolajOznacenie
             // 
+            resources.ApplyResources(tbKolajOznacenie, "tbKolajOznacenie");
             tbKolajOznacenie.BorderColor = Color.DimGray;
             tbKolajOznacenie.DisabledBackColor = SystemColors.Control;
             tbKolajOznacenie.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1230,7 +1279,6 @@ namespace GVDEditor.Forms
             tbKolajOznacenie.HighlightColor = SystemColors.Highlight;
             tbKolajOznacenie.HintForeColor = SystemColors.GrayText;
             tbKolajOznacenie.HintText = null;
-            resources.ApplyResources(tbKolajOznacenie, "tbKolajOznacenie");
             tbKolajOznacenie.Name = "tbKolajOznacenie";
             tbKolajOznacenie.TextChanged += tbKolajOznacenie_TextChanged;
             // 
@@ -1241,6 +1289,7 @@ namespace GVDEditor.Forms
             // 
             // tbKolajName
             // 
+            resources.ApplyResources(tbKolajName, "tbKolajName");
             tbKolajName.BorderColor = Color.DimGray;
             tbKolajName.DisabledBackColor = SystemColors.Control;
             tbKolajName.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1248,7 +1297,6 @@ namespace GVDEditor.Forms
             tbKolajName.HighlightColor = SystemColors.Highlight;
             tbKolajName.HintForeColor = SystemColors.GrayText;
             tbKolajName.HintText = null;
-            resources.ApplyResources(tbKolajName, "tbKolajName");
             tbKolajName.Name = "tbKolajName";
             // 
             // label54
@@ -1258,6 +1306,7 @@ namespace GVDEditor.Forms
             // 
             // tbKolajText
             // 
+            resources.ApplyResources(tbKolajText, "tbKolajText");
             tbKolajText.BorderColor = Color.DimGray;
             tbKolajText.DisabledBackColor = SystemColors.Control;
             tbKolajText.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1265,7 +1314,6 @@ namespace GVDEditor.Forms
             tbKolajText.HighlightColor = SystemColors.Highlight;
             tbKolajText.HintForeColor = SystemColors.GrayText;
             tbKolajText.HintText = null;
-            resources.ApplyResources(tbKolajText, "tbKolajText");
             tbKolajText.Name = "tbKolajText";
             // 
             // label55
@@ -1275,13 +1323,13 @@ namespace GVDEditor.Forms
             // 
             // tpFyzTab
             // 
+            resources.ApplyResources(tpFyzTab, "tpFyzTab");
             tpFyzTab.BackColor = Color.Transparent;
             tpFyzTab.Controls.Add(label14);
             tpFyzTab.Controls.Add(tbCommentFyz);
             tpFyzTab.Controls.Add(listFyzTabule);
             tpFyzTab.Controls.Add(label22);
             tpFyzTab.Controls.Add(groupBox4);
-            resources.ApplyResources(tpFyzTab, "tpFyzTab");
             tpFyzTab.Name = "tpFyzTab";
             // 
             // label14
@@ -1291,6 +1339,7 @@ namespace GVDEditor.Forms
             // 
             // tbCommentFyz
             // 
+            resources.ApplyResources(tbCommentFyz, "tbCommentFyz");
             tbCommentFyz.BorderColor = Color.DimGray;
             tbCommentFyz.DisabledBackColor = SystemColors.Control;
             tbCommentFyz.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1298,14 +1347,13 @@ namespace GVDEditor.Forms
             tbCommentFyz.HighlightColor = SystemColors.Highlight;
             tbCommentFyz.HintForeColor = SystemColors.GrayText;
             tbCommentFyz.HintText = null;
-            resources.ApplyResources(tbCommentFyz, "tbCommentFyz");
             tbCommentFyz.Name = "tbCommentFyz";
             tbCommentFyz.ReadOnly = true;
             // 
             // listFyzTabule
             // 
-            listFyzTabule.FormattingEnabled = true;
             resources.ApplyResources(listFyzTabule, "listFyzTabule");
+            listFyzTabule.FormattingEnabled = true;
             listFyzTabule.Name = "listFyzTabule";
             listFyzTabule.SelectedIndexChanged += listFyzTabule_SelectedIndexChanged;
             // 
@@ -1316,12 +1364,12 @@ namespace GVDEditor.Forms
             // 
             // groupBox4
             // 
+            resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.Controls.Add(bFyzTabCopy);
             groupBox4.Controls.Add(bFyzTabDelete);
             groupBox4.Controls.Add(bFyzTabEdit);
             groupBox4.Controls.Add(bFyzTabAdd);
             groupBox4.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.Name = "groupBox4";
             groupBox4.TabStop = false;
             // 
@@ -1355,13 +1403,13 @@ namespace GVDEditor.Forms
             // 
             // tpLogTab
             // 
+            resources.ApplyResources(tpLogTab, "tpLogTab");
             tpLogTab.BackColor = Color.Transparent;
             tpLogTab.Controls.Add(label46);
             tpLogTab.Controls.Add(tbCommentLog);
             tpLogTab.Controls.Add(listLogTabule);
             tpLogTab.Controls.Add(label23);
             tpLogTab.Controls.Add(groupBox5);
-            resources.ApplyResources(tpLogTab, "tpLogTab");
             tpLogTab.Name = "tpLogTab";
             // 
             // label46
@@ -1371,6 +1419,7 @@ namespace GVDEditor.Forms
             // 
             // tbCommentLog
             // 
+            resources.ApplyResources(tbCommentLog, "tbCommentLog");
             tbCommentLog.BorderColor = Color.DimGray;
             tbCommentLog.DisabledBackColor = SystemColors.Control;
             tbCommentLog.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1378,14 +1427,13 @@ namespace GVDEditor.Forms
             tbCommentLog.HighlightColor = SystemColors.Highlight;
             tbCommentLog.HintForeColor = SystemColors.GrayText;
             tbCommentLog.HintText = null;
-            resources.ApplyResources(tbCommentLog, "tbCommentLog");
             tbCommentLog.Name = "tbCommentLog";
             tbCommentLog.ReadOnly = true;
             // 
             // listLogTabule
             // 
-            listLogTabule.FormattingEnabled = true;
             resources.ApplyResources(listLogTabule, "listLogTabule");
+            listLogTabule.FormattingEnabled = true;
             listLogTabule.Name = "listLogTabule";
             listLogTabule.SelectedIndexChanged += listLogTabule_SelectedIndexChanged;
             // 
@@ -1396,12 +1444,12 @@ namespace GVDEditor.Forms
             // 
             // groupBox5
             // 
+            resources.ApplyResources(groupBox5, "groupBox5");
             groupBox5.Controls.Add(bLogTabCopy);
             groupBox5.Controls.Add(bLogTabDelete);
             groupBox5.Controls.Add(bLogTabEdit);
             groupBox5.Controls.Add(bLogTabAdd);
             groupBox5.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(groupBox5, "groupBox5");
             groupBox5.Name = "groupBox5";
             groupBox5.TabStop = false;
             // 
@@ -1435,13 +1483,13 @@ namespace GVDEditor.Forms
             // 
             // tpKatTab
             // 
+            resources.ApplyResources(tpKatTab, "tpKatTab");
             tpKatTab.BackColor = Color.Transparent;
             tpKatTab.Controls.Add(label51);
             tpKatTab.Controls.Add(tbCommentKat);
             tpKatTab.Controls.Add(listKatTabule);
             tpKatTab.Controls.Add(label24);
             tpKatTab.Controls.Add(groupBox6);
-            resources.ApplyResources(tpKatTab, "tpKatTab");
             tpKatTab.Name = "tpKatTab";
             // 
             // label51
@@ -1451,6 +1499,7 @@ namespace GVDEditor.Forms
             // 
             // tbCommentKat
             // 
+            resources.ApplyResources(tbCommentKat, "tbCommentKat");
             tbCommentKat.BorderColor = Color.DimGray;
             tbCommentKat.DisabledBackColor = SystemColors.Control;
             tbCommentKat.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1458,14 +1507,13 @@ namespace GVDEditor.Forms
             tbCommentKat.HighlightColor = SystemColors.Highlight;
             tbCommentKat.HintForeColor = SystemColors.GrayText;
             tbCommentKat.HintText = null;
-            resources.ApplyResources(tbCommentKat, "tbCommentKat");
             tbCommentKat.Name = "tbCommentKat";
             tbCommentKat.ReadOnly = true;
             // 
             // listKatTabule
             // 
-            listKatTabule.FormattingEnabled = true;
             resources.ApplyResources(listKatTabule, "listKatTabule");
+            listKatTabule.FormattingEnabled = true;
             listKatTabule.Name = "listKatTabule";
             listKatTabule.SelectedIndexChanged += listKatTabule_SelectedIndexChanged;
             // 
@@ -1476,12 +1524,12 @@ namespace GVDEditor.Forms
             // 
             // groupBox6
             // 
+            resources.ApplyResources(groupBox6, "groupBox6");
             groupBox6.Controls.Add(bKatTabCopy);
             groupBox6.Controls.Add(bKatTabDelete);
             groupBox6.Controls.Add(bKatTabEdit);
             groupBox6.Controls.Add(bKatTabAdd);
             groupBox6.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(groupBox6, "groupBox6");
             groupBox6.Name = "groupBox6";
             groupBox6.TabStop = false;
             // 
@@ -1515,17 +1563,17 @@ namespace GVDEditor.Forms
             // 
             // tpTabTab
             // 
+            resources.ApplyResources(tpTabTab, "tpTabTab");
             tpTabTab.BackColor = Color.Transparent;
             tpTabTab.Controls.Add(listTabTabs);
             tpTabTab.Controls.Add(label25);
             tpTabTab.Controls.Add(groupBox7);
-            resources.ApplyResources(tpTabTab, "tpTabTab");
             tpTabTab.Name = "tpTabTab";
             // 
             // listTabTabs
             // 
-            listTabTabs.FormattingEnabled = true;
             resources.ApplyResources(listTabTabs, "listTabTabs");
+            listTabTabs.FormattingEnabled = true;
             listTabTabs.Name = "listTabTabs";
             // 
             // label25
@@ -1535,10 +1583,10 @@ namespace GVDEditor.Forms
             // 
             // groupBox7
             // 
+            resources.ApplyResources(groupBox7, "groupBox7");
             groupBox7.Controls.Add(bOpenEditorTab);
             groupBox7.Controls.Add(bTabTabDelete);
             groupBox7.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(groupBox7, "groupBox7");
             groupBox7.Name = "groupBox7";
             groupBox7.TabStop = false;
             // 
@@ -1558,13 +1606,13 @@ namespace GVDEditor.Forms
             // 
             // tpTTexts
             // 
+            resources.ApplyResources(tpTTexts, "tpTTexts");
             tpTTexts.BackColor = Color.Transparent;
             tpTTexts.Controls.Add(label50);
             tpTTexts.Controls.Add(tbCommentTText);
             tpTTexts.Controls.Add(listTexty);
             tpTTexts.Controls.Add(label28);
             tpTTexts.Controls.Add(groupBox8);
-            resources.ApplyResources(tpTTexts, "tpTTexts");
             tpTTexts.Name = "tpTTexts";
             // 
             // label50
@@ -1574,6 +1622,7 @@ namespace GVDEditor.Forms
             // 
             // tbCommentTText
             // 
+            resources.ApplyResources(tbCommentTText, "tbCommentTText");
             tbCommentTText.BorderColor = Color.DimGray;
             tbCommentTText.DisabledBackColor = SystemColors.Control;
             tbCommentTText.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1581,14 +1630,13 @@ namespace GVDEditor.Forms
             tbCommentTText.HighlightColor = SystemColors.Highlight;
             tbCommentTText.HintForeColor = SystemColors.GrayText;
             tbCommentTText.HintText = null;
-            resources.ApplyResources(tbCommentTText, "tbCommentTText");
             tbCommentTText.Name = "tbCommentTText";
             tbCommentTText.ReadOnly = true;
             // 
             // listTexty
             // 
-            listTexty.FormattingEnabled = true;
             resources.ApplyResources(listTexty, "listTexty");
+            listTexty.FormattingEnabled = true;
             listTexty.Name = "listTexty";
             listTexty.SelectedIndexChanged += listTexty_SelectedIndexChanged;
             // 
@@ -1599,11 +1647,11 @@ namespace GVDEditor.Forms
             // 
             // groupBox8
             // 
+            resources.ApplyResources(groupBox8, "groupBox8");
             groupBox8.Controls.Add(bTextDelete);
             groupBox8.Controls.Add(bTextEdit);
             groupBox8.Controls.Add(bTextAdd);
             groupBox8.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(groupBox8, "groupBox8");
             groupBox8.Name = "groupBox8";
             groupBox8.TabStop = false;
             // 
@@ -1630,6 +1678,7 @@ namespace GVDEditor.Forms
             // 
             // tpFonts
             // 
+            resources.ApplyResources(tpFonts, "tpFonts");
             tpFonts.BackColor = Color.Transparent;
             tpFonts.Controls.Add(bOpenFontDir);
             tpFonts.Controls.Add(tbFontDir);
@@ -1637,7 +1686,6 @@ namespace GVDEditor.Forms
             tpFonts.Controls.Add(listFonts);
             tpFonts.Controls.Add(label29);
             tpFonts.Controls.Add(groupBox9);
-            resources.ApplyResources(tpFonts, "tpFonts");
             tpFonts.Name = "tpFonts";
             // 
             // bOpenFontDir
@@ -1649,6 +1697,7 @@ namespace GVDEditor.Forms
             // 
             // tbFontDir
             // 
+            resources.ApplyResources(tbFontDir, "tbFontDir");
             tbFontDir.BorderColor = Color.DimGray;
             tbFontDir.DisabledBackColor = SystemColors.Control;
             tbFontDir.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1656,7 +1705,6 @@ namespace GVDEditor.Forms
             tbFontDir.HighlightColor = SystemColors.Highlight;
             tbFontDir.HintForeColor = SystemColors.GrayText;
             tbFontDir.HintText = null;
-            resources.ApplyResources(tbFontDir, "tbFontDir");
             tbFontDir.Name = "tbFontDir";
             tbFontDir.ReadOnly = true;
             // 
@@ -1667,8 +1715,8 @@ namespace GVDEditor.Forms
             // 
             // listFonts
             // 
-            listFonts.FormattingEnabled = true;
             resources.ApplyResources(listFonts, "listFonts");
+            listFonts.FormattingEnabled = true;
             listFonts.Name = "listFonts";
             listFonts.SelectedIndexChanged += listFonts_SelectedIndexChanged;
             // 
@@ -1679,6 +1727,7 @@ namespace GVDEditor.Forms
             // 
             // groupBox9
             // 
+            resources.ApplyResources(groupBox9, "groupBox9");
             groupBox9.Controls.Add(label32);
             groupBox9.Controls.Add(cbFontIsNumber);
             groupBox9.Controls.Add(tbFontFile);
@@ -1703,7 +1752,6 @@ namespace GVDEditor.Forms
             groupBox9.Controls.Add(bFontEdit);
             groupBox9.Controls.Add(bFontAdd);
             groupBox9.DisabledForeColor = SystemColors.GrayText;
-            resources.ApplyResources(groupBox9, "groupBox9");
             groupBox9.Name = "groupBox9";
             groupBox9.TabStop = false;
             // 
@@ -1722,6 +1770,7 @@ namespace GVDEditor.Forms
             // 
             // tbFontFile
             // 
+            resources.ApplyResources(tbFontFile, "tbFontFile");
             tbFontFile.BorderColor = Color.DimGray;
             tbFontFile.DisabledBackColor = SystemColors.Control;
             tbFontFile.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1729,7 +1778,6 @@ namespace GVDEditor.Forms
             tbFontFile.HighlightColor = SystemColors.Highlight;
             tbFontFile.HintForeColor = SystemColors.GrayText;
             tbFontFile.HintText = null;
-            resources.ApplyResources(tbFontFile, "tbFontFile");
             tbFontFile.Name = "tbFontFile";
             // 
             // cbFontSpecAssigments
@@ -1787,10 +1835,10 @@ namespace GVDEditor.Forms
             // 
             // cbFontType
             // 
+            resources.ApplyResources(cbFontType, "cbFontType");
             cbFontType.DropDownSelectedRowBackColor = Color.Empty;
             cbFontType.DropDownStyle = ComboBoxStyle.DropDownList;
             cbFontType.FormattingEnabled = true;
-            resources.ApplyResources(cbFontType, "cbFontType");
             cbFontType.Name = "cbFontType";
             cbFontType.StyleDisabled.ArrowColor = null;
             cbFontType.StyleDisabled.BackColor = null;
@@ -1829,8 +1877,8 @@ namespace GVDEditor.Forms
             // 
             // nudFontWidth
             // 
-            nudFontWidth.HighlightColor = SystemColors.Highlight;
             resources.ApplyResources(nudFontWidth, "nudFontWidth");
+            nudFontWidth.HighlightColor = SystemColors.Highlight;
             nudFontWidth.Name = "nudFontWidth";
             nudFontWidth.SelectedButtonColor = Color.Empty;
             // 
@@ -1841,8 +1889,8 @@ namespace GVDEditor.Forms
             // 
             // nudFontSize
             // 
-            nudFontSize.HighlightColor = SystemColors.Highlight;
             resources.ApplyResources(nudFontSize, "nudFontSize");
+            nudFontSize.HighlightColor = SystemColors.Highlight;
             nudFontSize.Name = "nudFontSize";
             nudFontSize.SelectedButtonColor = Color.Empty;
             // 
@@ -1853,6 +1901,7 @@ namespace GVDEditor.Forms
             // 
             // tbFontName
             // 
+            resources.ApplyResources(tbFontName, "tbFontName");
             tbFontName.BorderColor = Color.DimGray;
             tbFontName.DisabledBackColor = SystemColors.Control;
             tbFontName.DisabledBorderColor = SystemColors.InactiveBorder;
@@ -1860,7 +1909,6 @@ namespace GVDEditor.Forms
             tbFontName.HighlightColor = SystemColors.Highlight;
             tbFontName.HintForeColor = SystemColors.GrayText;
             tbFontName.HintText = null;
-            resources.ApplyResources(tbFontName, "tbFontName");
             tbFontName.Name = "tbFontName";
             // 
             // label31
@@ -1870,8 +1918,8 @@ namespace GVDEditor.Forms
             // 
             // nudFontID
             // 
-            nudFontID.HighlightColor = SystemColors.Highlight;
             resources.ApplyResources(nudFontID, "nudFontID");
+            nudFontID.HighlightColor = SystemColors.Highlight;
             nudFontID.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             nudFontID.Name = "nudFontID";
             nudFontID.SelectedButtonColor = Color.Empty;
@@ -1905,17 +1953,17 @@ namespace GVDEditor.Forms
             // 
             // tpStateDgm
             // 
+            resources.ApplyResources(tpStateDgm, "tpStateDgm");
             tpStateDgm.BackColor = Color.Transparent;
             tpStateDgm.Controls.Add(flpStateDgm);
-            resources.ApplyResources(tpStateDgm, "tpStateDgm");
             tpStateDgm.Name = "tpStateDgm";
             // 
             // flpStateDgm
             // 
+            resources.ApplyResources(flpStateDgm, "flpStateDgm");
             flpStateDgm.Controls.Add(lStateDgmInfo);
             flpStateDgm.Controls.Add(lStateDgmStatus);
             flpStateDgm.Controls.Add(bStateDgmOpen);
-            resources.ApplyResources(flpStateDgm, "flpStateDgm");
             flpStateDgm.Name = "flpStateDgm";
             flpStateDgm.SizeChanged += flpStateDgm_SizeChanged;
             // 
@@ -1946,8 +1994,8 @@ namespace GVDEditor.Forms
             // 
             // cbCustomTrainTypDruh
             // 
-            cbCustomTrainTypDruh.DropDownSelectedRowBackColor = Color.Empty;
             resources.ApplyResources(cbCustomTrainTypDruh, "cbCustomTrainTypDruh");
+            cbCustomTrainTypDruh.DropDownSelectedRowBackColor = Color.Empty;
             cbCustomTrainTypDruh.Name = "cbCustomTrainTypDruh";
             cbCustomTrainTypDruh.StyleDisabled.ArrowColor = null;
             cbCustomTrainTypDruh.StyleDisabled.BackColor = null;
@@ -1981,8 +2029,8 @@ namespace GVDEditor.Forms
             // 
             // cbDefTrainTypSkratka
             // 
-            cbDefTrainTypSkratka.DropDownSelectedRowBackColor = Color.Empty;
             resources.ApplyResources(cbDefTrainTypSkratka, "cbDefTrainTypSkratka");
+            cbDefTrainTypSkratka.DropDownSelectedRowBackColor = Color.Empty;
             cbDefTrainTypSkratka.Name = "cbDefTrainTypSkratka";
             cbDefTrainTypSkratka.StyleDisabled.ArrowColor = null;
             cbDefTrainTypSkratka.StyleDisabled.BackColor = null;

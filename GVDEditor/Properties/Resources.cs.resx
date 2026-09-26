@@ -1333,6 +1333,24 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
 
 Přidat ji i tak?</value>
   </data>
+  <data name="FGlobalSettings_Kategoria_typu_obsadena" xml:space="preserve">
+    <value>Kategorie {0} už v seznamu je. INISS má pro každou kategorii jedno místo – druhý typ stejné kategorie by první přepsal. Pro další typ použijte vlastní typ vlaku.</value>
+  </data>
+  <data name="FGlobalSettings_Typ_vlaku_pouzivaju" xml:space="preserve">
+    <value>Typ vlaku „{0}“ používají vlaky v grafikonech: {1}. {2} by je poškodilo – grafikon by nešel otevřít. Nejdřív vlakům nastavte jiný typ.</value>
+  </data>
+  <data name="FGlobalSettings_Typ_vlaku_odstranenie" xml:space="preserve">
+    <value>Odstranění typu</value>
+  </data>
+  <data name="FGlobalSettings_Typ_vlaku_premenovanie" xml:space="preserve">
+    <value>Změna zkratky</value>
+  </data>
+  <data name="FGlobalSettings_Testovaci_okruh" xml:space="preserve">
+    <value>TEST – testovací okruh</value>
+  </data>
+  <data name="FGlobalSettings_Testovaci_okruh_uz_je" xml:space="preserve">
+    <value>Testovací okruh (TEST) už v seznamu je. INISS používá jeden testovací okruh.</value>
+  </data>
   <data name="LanguageRules_Najviac_jazykov" xml:space="preserve">
     <value>INISS zvládne nejvýše {0} jazyky – s více se nespustí.</value>
   </data>
