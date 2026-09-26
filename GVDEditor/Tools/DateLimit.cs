@@ -646,11 +646,11 @@ internal class DateLimit
 
             if (!weekPattern)
             {
-                // pozn.: pripadny vysledok zo ScanWeekDays sa tu zahadzuje - povodne spravanie
-                limits = SplitInterval(minCount, from, to);
+                // rozdelenie ma prednost, ale ked sa nepodari, nesmie zahodit vysledok zo ScanWeekDays
+                var split = SplitInterval(minCount, from, to);
 
-                if (limits != null)
-                    return limits;
+                if (split != null)
+                    return split;
             }
         }
 
@@ -686,11 +686,11 @@ internal class DateLimit
             }
             else if (minCount <= 1 && blockFrom >= 0)
             {
-                AddIntervals(ref limits, ProcessInterval(minCount, blockFrom, 0));
+                AddIntervals(ref limits, ProcessInterval(minCount, blockFrom, day - 1));
                 blockFrom = -1;
             }
 
-        if (blockFrom > from && limits != null)
+        if (blockFrom >= 0 && limits != null)
             AddIntervals(ref limits, ProcessInterval(minCount, blockFrom, to));
 
         return limits;
@@ -1698,7 +1698,11 @@ internal class DateLimit
     private bool TryReadToken(string token, ParseState state)
     {
         if (TokenIsMsg(token, Message.And))
-            FlushData(state, true);
+        {
+            // "v 6 a 7" - spojka v zozname dni ho len predlzuje, usek ukonci az pred datumom
+            if (state.DateLevel != DateLevel.On || !NextTokenIsDayCode(token))
+                FlushData(state, true);
+        }
         else if (TokenIsMsg(token, Message.Runs, Message.RunsAlt))
         {
             FlushData(state, false);

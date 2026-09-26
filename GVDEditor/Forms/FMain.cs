@@ -1993,10 +1993,11 @@ public partial class FMain : Form
 
     private void tsbDatObm_Click(object sender, EventArgs e) => ShowDatObm();
 
-    private static void ShowDatObm()
+    private void ShowDatObm()
     {
-        var fobm = new FDatObm();
-        fobm.ShowDialog();
+        var gvd = (tscbObdobie.ComboBox?.SelectedItem as GVDDirectory)?.GVD;
+        using var fobm = new FDatObm(gvd?.StartValidTimeTable, gvd?.EndValidTimeTable);
+        fobm.ShowDialog(this);
     }
 
     private void ChangeEnableMenuItemsLSettings(bool enabled)

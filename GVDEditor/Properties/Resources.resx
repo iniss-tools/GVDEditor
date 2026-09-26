@@ -734,6 +734,9 @@ Presunúť ho teraz do vlastného priečinka ({1} grafikon/y)?</value>
   <data name="TxtParser_TrTypes_chyba_pouzite_zabudovane" xml:space="preserve">
     <value>Súbor {0} neexistuje – ponuka druhov vlakov je zostavená zo zabudovanej tabuľky INISSu. Pri uložení nastavení sa súbor založí.</value>
   </data>
+  <data name="TxtParser_Categori_prehodene_nazvy_variantov" xml:space="preserve">
+    <value>{0}: varianty hlásenia mali prehodené názvy (VARIANT_01 = „Krátke hlásenie“). INISS veľkým písmenom typu hlási dlhé hlásenie, preto sa názvy opravili na VARIANT_01 = „Dlhé hlásenie“ a VARIANT_02 = „Krátke hlásenie“; zapíšu sa pri ďalšom uložení grafikonu. Hlásenia, dodatky a radenia vlakov sa nezmenili – skontrolujte, či sú priradené k variantu, ktorý ste zamýšľali.</value>
+  </data>
   <data name="Analyzer_TabTab_pocet_chyb" xml:space="preserve">
     <value>{0} chýb, {1} varovaní</value>
   </data>

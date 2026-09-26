@@ -24,7 +24,7 @@ public class DodatokMapTests
     [TestMethod]
     public void Dodatok_MapaPrechadzajucehoVlaku_PriradiTypyPlatnePreSmerovanie()
     {
-        // prechadzajuci vlak: Prijizdi (kratke), Odjede (dlhe)
+        // prechadzajuci vlak: Prijizdi (dlhe), Odjede (kratke)
         var dodatok = Dodatok.NumsToDodatok(Sound, "1001", Types, Variants, Routing.Prechadzajuci);
 
         Assert.HasCount(2, dodatok.ChosenReports);

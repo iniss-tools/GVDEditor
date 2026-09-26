@@ -6,10 +6,19 @@ namespace GVDEditor.Forms;
 
 public partial class FDatObm : Form
 {
-    public FDatObm()
+    /// <summary>
+    ///     Vytvori generator; obdobie sa predvyplni platnostou grafikonu (bez neho dnesnym dnom).
+    /// </summary>
+    public FDatObm(DateTime? from = null, DateTime? to = null)
     {
         InitializeComponent();
         this.ApplyThemeAndFonts();
+
+        if (from != null && to != null && from <= to)
+        {
+            dpStart.Value = from.Value.Date;
+            dpEnd.Value = to.Value.Date;
+        }
     }
 
     private void bCopy_Click(object sender, EventArgs e)

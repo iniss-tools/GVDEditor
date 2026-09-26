@@ -39,7 +39,25 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("novy-grafikon/novy-grafikon", () => new FNewGrafikon());
             // na záložke Radenie vybrané radenie v pracovné dni
             Shot("uprava-vlaku", () => new FEditTrain(express, trains.IndexOf(express), gvdDir.GVD, false, gvdDir.Dir.FullPath),
-                form => SelectListItem(form, "listRadenia", 0), tabs: true);
+                form =>
+                {
+                    SelectListItem(form, "listRadenia", 0);
+
+                    // dodatok D1002 hlásený pri Přijíždí (obe podoby) a pri Zastavil (dlhé) - pridaný tlačidlom Pridať
+                    var table = (DataGridView)Field(form, "dgvDoplnokSet");
+                    foreach (DataGridViewRow row in table.Rows)
+                    {
+                        var type = row.Cells[0].Value as string;
+                        if (type == "Přijíždí")
+                            row.Cells[1].Value = row.Cells[2].Value = true;
+                        else if (type == "Zastavil")
+                            row.Cells[2].Value = true;
+                    }
+
+                    SelectListItem(form, "listAllDoplnky", 1);
+                    form.GetType().GetMethod("bDoplnkyAdd_Click", BindingFlags.NonPublic | BindingFlags.Instance)!
+                        .Invoke(form, [form, EventArgs.Empty]);
+                }, tabs: true);
 
             // skladanie radenia: vybraná druhá nahrávka „číslo“ a priečinok s vlastnosťami vozňov
             Shot("radenie/uprava-radenia", () => new FRadenie([.. express.Radenia[0].Sounds]), form =>
@@ -58,7 +76,40 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("globalne-nastavenia", () => new FGlobalSettings(FMain.ObdobiaList.ToList()), tabs: true);
             Shot("nastavenia-programu/nastavenia-programu", () => new FAppSettings(GlobData.Config, GlobData.Styles));
             Shot("analyza-grafikonu/analyza-grafikonu", () => new FAnalyzer(gvdDir));
-            Shot("datumove-obmedzenia/generator", () => new FDatObm());
+            // generátor s obdobím grafikonu a vygenerovaným poľom bitov
+            var gvdInfo = gvdDir.GVD;
+            const string sampleLimit = "ide v 1-5, nejde 24.XII., 31.XII.";
+            Shot("datumove-obmedzenia/generator", () => new FDatObm(gvdInfo.StartValidTimeTable, gvdInfo.EndValidTimeTable), form =>
+            {
+                ((TextBox)Field(form, "tbDatObm")).Text = sampleLimit;
+                form.GetType().GetMethod("bGenerate_Click", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(form, [form, EventArgs.Empty]);
+                var bits = (TextBox)Field(form, "tbBitArray");
+                bits.SelectionStart = 0;
+                bits.SelectionLength = 0;
+            });
+
+            // editor dátumového obmedzenia s kalendárom pre Ex 521 (normálne sa otvára modálne cez SetDateLimit)
+            Shot("datumove-obmedzenia/editor", () =>
+            {
+                var form = (Form)Activator.CreateInstance(typeof(FDateLimitEdit), nonPublic: true)!;
+                var type = form.GetType();
+                var flags = BindingFlags.NonPublic | BindingFlags.Instance;
+                type.GetField("_train", flags)!.SetValue(form, express);
+                type.GetField("_dateLimit", flags)!.SetValue(form,
+                    new Tools.DateLimit(gvdInfo.StartValidTimeTable, gvdInfo.EndValidTimeTable, insertMarks: false));
+                type.GetField("_textChanging", flags)!.SetValue(form, true);
+                ((TextBox)Field(form, "tbDateLimit")).Text = sampleLimit;
+                ((TextBox)Field(form, "tbOldDateLimit")).Text = express.DateLimitText;
+                type.GetMethod("InitCalendar", flags)!.Invoke(form, [gvdInfo.StartValidTimeTable, gvdInfo.EndValidTimeTable]);
+                type.GetMethod("TextToGrid", flags)!.Invoke(form, null);
+                type.GetField("_textChanging", flags)!.SetValue(form, false);
+                return form;
+            }, form =>
+            {
+                foreach (var box in Descendants(form).OfType<TextBox>())
+                    box.SelectionLength = 0;
+                form.ActiveControl = null;
+            });
             // editory tabúľ nad ukážkovými tabuľami (DemoTables)
             var station = gvdDir.GVD.ThisStation;
             var catalog = GlobData.TableCatalogs[0];

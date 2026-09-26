@@ -270,7 +270,7 @@ internal static class DemoInstallation
         List<ChosenReportType> Reports() =>
         [
             new() { Type = types[0], Variants = ReportVariant.GetDefaultValues() },
-            new() { Type = types[2], Variants = [ReportVariant.GetDefaultValues()[1]] }
+            new() { Type = types[2], Variants = [ReportVariant.DlheHlasenie] }
         ];
 
         Radenie Rad(string dateLimit, string last)

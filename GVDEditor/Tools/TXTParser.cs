@@ -754,6 +754,9 @@ internal static class TxtParser
             variants.Add(variant);
         }
 
+        if (ReportVariant.FixSwappedDefaultNames(variants))
+            LoadWarnings.Add(string.Format(Resources.TxtParser_Categori_prehodene_nazvy_variantov, file));
+
         var countT = int.Parse(categoriF.Get("MAIN", "COUNT_TYPE_BASIC_REPORT"));
         for (var i = 1; i <= countT; i++)
         {
@@ -2502,10 +2505,15 @@ internal static class TxtParser
                     : $"#{radenie.CisloVlaku}");
             var sb = new StringBuilder();
 
+            // INISS berie variant podla poradia sekcii VARIANT_nn (KEY necita): prvy = velke pismeno, dalsi = male
             foreach (var reportType in radenie.ChosenReports)
             {
                 foreach (var variant in reportType.Variants)
-                    sb.Append(variant.Key == 0 ? reportType.Type.Char : reportType.Type.Char.ToLower());
+                {
+                    var index = GlobData.ReportVariants.IndexOf(variant);
+                    var first = index < 0 ? variant.Key == 0 : index == 0;
+                    sb.Append(first ? reportType.Type.Char : reportType.Type.Char.ToLower());
+                }
             }
 
             row.Insert(1, sb.ToString());

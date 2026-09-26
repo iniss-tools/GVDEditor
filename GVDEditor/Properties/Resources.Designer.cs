@@ -1786,7 +1786,16 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("TxtParser_TrTypes_chyba_pouzite_zabudovane", resourceCulture);
             }
         }
-            
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: varianty hlásenia mali prehodené názvy.
+        /// </summary>
+        internal static string TxtParser_Categori_prehodene_nazvy_variantov {
+            get {
+                return ResourceManager.GetString("TxtParser_Categori_prehodene_nazvy_variantov", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to {0} chýb, {1} varovaní.
         /// </summary>

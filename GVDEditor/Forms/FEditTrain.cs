@@ -817,29 +817,33 @@ public partial class FEditTrain : Form
         if (listAllDoplnky.SelectedIndex != -1)
         {
             var selSound = (FyzSound)listAllDoplnky.SelectedItem!;
-            var doplnok = new Dodatok
-            {
-                Sound = selSound,
-                Name = selSound.Name.Replace("D", "")
-            };
-            Doplnky.Add(doplnok);
+            AddDodatok(selSound);
         }
+    }
+
+    /// <summary>
+    ///     Prida dodatok s hlaseniami zaskrtnutymi v tabulke Kedy hlasit - inak by mal prazdnu mapu a nikdy by nezaznel.
+    /// </summary>
+    private void AddDodatok(FyzSound sound)
+    {
+        var doplnok = new Dodatok
+        {
+            Sound = sound,
+            Name = sound.Name.Replace("D", ""),
+            ChosenReports = GetFromTable(dgvDoplnokSet, VybraneReporty)
+        };
+        Doplnky.Add(doplnok);
+        listVybrateDoplnky.SelectedItem = doplnok;
+
+        bDoplnkyEdit.Enabled = true;
+        bDoplnkyDelete.Enabled = true;
     }
 
     private void bDoplnkyAdd_Click(object sender, EventArgs e)
     {
         if (listAllDoplnky.SelectedIndex != -1)
         {
-            var selSound = (FyzSound)listAllDoplnky.SelectedItem!;
-            var doplnok = new Dodatok
-            {
-                Sound = selSound,
-                Name = selSound.Name.Replace("D", "")
-            };
-            Doplnky.Add(doplnok);
-
-            bDoplnkyEdit.Enabled = true;
-            bDoplnkyDelete.Enabled = true;
+            AddDodatok((FyzSound)listAllDoplnky.SelectedItem!);
         }
     }
 
