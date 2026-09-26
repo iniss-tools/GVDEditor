@@ -20,7 +20,11 @@ public partial class FNewGrafikon : Form
     /// </summary>
     public DirList NewDir { get; private set; } = null!;
 
-    private Color selectedColor = Color.White;
+    // bez vybranej farby sa do DirList.TXT nezapise ziadna a INISS pouzije farbu zo svojej palety
+    private Color? selectedColor;
+
+    // vsetky grafikony instalacie - FMain.ObdobiaList obsahuje len obdobia prave vybranej stanice
+    private readonly IReadOnlyList<GVDDirectory> _grafikony;
 
     /// <summary>
     ///     Predloha stavoveho diagramu, ktora sa zapise do noveho grafikonu.
@@ -35,11 +39,16 @@ public partial class FNewGrafikon : Form
     /// <summary>
     ///     Vytvori novy formular typu <see cref="FNewGrafikon"/>.
     /// </summary>
-    public FNewGrafikon()
+    /// <param name="grafikony">Všetky grafikony otvorenej inštalácie INISSu.</param>
+    public FNewGrafikon(IReadOnlyList<GVDDirectory> grafikony)
     {
+        _grafikony = grafikony;
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
+        // grafikon sa vzdy zaklada v otvorenej instalacii, cesta sa len zobrazuje
+        tbDirIniss.ReadOnly = true;
+        pbColor.BackColor = Color.Transparent;
         if (!string.IsNullOrEmpty(GlobData.INISSDir)) 
             tbDirIniss.Text = GlobData.INISSDir;
 
@@ -120,6 +129,14 @@ public partial class FNewGrafikon : Form
         gvd.VLIndex = -1;
         gvd.OnlyCityVLIndex = -999;
 
+        var dirError = CheckDirName(tbDirName.Text, _grafikony.Select(g => g.Dir.DirName));
+        if (dirError != null)
+        {
+            Utils.ShowError(dirError);
+            DialogResult = DialogResult.None;
+            return;
+        }
+
         NewDir = new DirList
         {
             DirName = tbDirName.Text,
@@ -136,7 +153,7 @@ public partial class FNewGrafikon : Form
             var o = false;
             var interval = new Interval(odG, doG);
 
-            foreach (var obd in FMain.ObdobiaList)
+            foreach (var obd in _grafikony)
             {
                 var compare = new Interval(obd.GVD.StartValidTimeTable, obd.GVD.EndValidTimeTable);
 
@@ -152,7 +169,7 @@ public partial class FNewGrafikon : Form
         }
         else
         {
-            foreach (var obd in FMain.ObdobiaList)
+            foreach (var obd in _grafikony)
                 if (obd.GVD.ThisStation.Name == gvd.ThisStation.Name)
                 {
                     Utils.ShowError(Resources.FNewGrafikon_Zadaná_stanica_pre_tento_INISS_už_existuje);
@@ -169,6 +186,22 @@ public partial class FNewGrafikon : Form
         }
 
         DialogResult = DialogResult.OK;
+    }
+
+    /// <summary>
+    ///     Skontroluje nazov priecinka noveho grafikonu.
+    /// </summary>
+    /// <returns>Text chyby, alebo <see langword="null" />, ak je nazov v poriadku.</returns>
+    internal static string? CheckDirName(string name, IEnumerable<string> existingDirs)
+    {
+        if (string.IsNullOrWhiteSpace(name) || name != name.Trim() || name.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0 ||
+            name.Contains(',') || name.EndsWith('.'))
+            return Resources.FNewGrafikon_Neplatny_nazov_priecinka;
+
+        if (existingDirs.Any(d => string.Equals(d, name, StringComparison.OrdinalIgnoreCase)))
+            return Resources.Priečinok_s_týmto_názvom_už_existuje__Zmeňte_jeho_názov;
+
+        return null;
     }
 
     private void bZrusit_Click(object sender, EventArgs e)
@@ -233,7 +266,7 @@ public partial class FNewGrafikon : Form
         if (result == DialogResult.OK)
         {
             selectedColor = colorDialogFarba.Color;
-            pbColor.BackColor = selectedColor;
+            pbColor.BackColor = colorDialogFarba.Color;
         }
     }
 

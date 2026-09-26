@@ -39,6 +39,11 @@ public class DateLimitTests
     [DataRow("ide od 1.VI. do 30.VI. a od 1.IX. do 30.IX. v 6,7", 16, "ide od 5. do 27.VI. a od 4. do 26.IX. v 6,7")]
     [DataRow("jede v 1-5", 260, "ide v 1-5")]
     [DataRow("ide v 1-5 vrátane 26.XII.", 261, "ide v 1-5,26.XII.")]
+    // Export3: dni za spojkou "a" samostatny datum pred nou neobmedzuju
+    [DataRow("ide 26.XII. a od 26.III. v 7", 38, "ide 26.XII.,od 28.III. v 7")]
+    [DataRow("ide 23.XII.,5.I.,24.III. a od 17.VI. v 5", 29, "ide 23.XII.,5.I.,24.III.,od 18.VI. v 5")]
+    // Export3: jednotlivy datum ma prednost pred obdobim vo vynimkach
+    [DataRow("ide v 7,1.IX.,nejde od 23.VIII. do 4.IX.", 52, "ide v 7,1.IX.,nejde 29.VIII.")]
     public void DatumoveObmedzenie_Zapis_DaDniAText(string text, int days, string normalized)
     {
         var bits = Limit().TextToBitArray(text);

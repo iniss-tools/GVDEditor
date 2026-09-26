@@ -25,7 +25,8 @@ public partial class FGlobalSettings : Form
     public readonly List<GVDDirectory> RemovedGVDs = new();
 
 
-    private Color _selectedColor = Color.White;
+    // null = grafikon nema vlastnu farbu, INISS pouzije farbu zo svojej palety
+    private Color? _selectedColor;
     private readonly List<TrainType> _predefinedTrainTypes;
 
     /// <summary>
@@ -197,16 +198,8 @@ public partial class FGlobalSettings : Form
 
             nudHlaseniePort.Value = dir.Dir.ReportPort ?? 0;
 
-            if (dir.Dir.BackColor.HasValue)
-            {
-                _selectedColor = dir.Dir.BackColor.Value;
-                pbColor.BackColor = _selectedColor;
-            }
-            else
-            {
-                _selectedColor = Color.White;
-                pbColor.BackColor = Color.White;
-            }
+            _selectedColor = dir.Dir.BackColor;
+            pbColor.BackColor = _selectedColor ?? Color.Transparent;
         }
     }
 
@@ -216,7 +209,7 @@ public partial class FGlobalSettings : Form
         if (result == DialogResult.OK)
         {
             _selectedColor = colorDialogFarba.Color;
-            pbColor.BackColor = _selectedColor;
+            pbColor.BackColor = colorDialogFarba.Color;
         }
     }
 

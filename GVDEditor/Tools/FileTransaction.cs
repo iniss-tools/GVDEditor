@@ -61,7 +61,14 @@ internal sealed class FileTransaction
         try
         {
             foreach (var backup in Directory.GetFiles(BackupPath))
-                File.Copy(backup, Utils.CombinePath(_path, Path.GetFileName(backup))!, true);
+            {
+                // nezmeneny subor netreba vracat - moze byt napr. len na citanie a prave preto zapis zlyhal
+                var target = Utils.CombinePath(_path, Path.GetFileName(backup))!;
+                if (File.Exists(target) && SameContent(backup, target))
+                    continue;
+
+                File.Copy(backup, target, true);
+            }
 
             //súbory, ktoré vznikli až počas neúspešného ukladania, tam pôvodne neboli
             foreach (var file in Directory.GetFiles(_path))
@@ -77,6 +84,9 @@ internal sealed class FileTransaction
         TryDeleteBackup();
         return true;
     }
+
+    private static bool SameContent(string a, string b) =>
+        new FileInfo(a).Length == new FileInfo(b).Length && File.ReadAllBytes(a).AsSpan().SequenceEqual(File.ReadAllBytes(b));
 
     private void TryDeleteBackup()
     {

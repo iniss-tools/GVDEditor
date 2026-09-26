@@ -3633,6 +3633,15 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Názov priečinka je prázdny alebo obsahuje nepovolené znaky.
+        /// </summary>
+        internal static string FNewGrafikon_Neplatny_nazov_priecinka {
+            get {
+                return ResourceManager.GetString("FNewGrafikon_Neplatny_nazov_priecinka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stavový diagram….
         /// </summary>
         internal static string FMain_StavovyDiagram {

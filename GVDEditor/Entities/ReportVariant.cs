@@ -70,7 +70,7 @@ public sealed class ReportVariant
     }
 
     /// <summary>
-    ///     Returns a value that indicates whether the values of two <see cref="T:GVDEditor.Entities.ReportVariant" />
+    ///     Returns a value that indicates whether the values of two <see cref="GVDEditor.Entities.ReportVariant" />
     ///     objects are equal.
     /// </summary>
     /// <param name="left">The first value to compare.</param>
@@ -82,7 +82,7 @@ public sealed class ReportVariant
     public static bool operator ==(ReportVariant left, ReportVariant right) => Equals(left, right);
 
     /// <summary>
-    ///     Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.ReportVariant" /> objects have
+    ///     Returns a value that indicates whether two <see cref="GVDEditor.Entities.ReportVariant" /> objects have
     ///     different values.
     /// </summary>
     /// <param name="left">The first value to compare.</param>

@@ -46,6 +46,12 @@ internal class DateLimit
 
     private const int LongPeriodDays = 350;
 
+    /// <summary>Najvyssi pocet jednotlivych dni na okraji intervalu, ktore sa oddelia od zvysku.</summary>
+    private const int MaxIsolatedDays = 6;
+
+    /// <summary>Najkratsia medzera bez jazdy, za ktorou sa jednotlive dni na okraji intervalu oddelia.</summary>
+    private const int MinIsolationGap = 28;
+
     /// <summary>Najvacsia medzera medzi dvoma useky, ktore este mozno spojit do jedneho.</summary>
     private const int MaxMergeGap = 60;
 
@@ -613,7 +619,7 @@ internal class DateLimit
     {
         ReduceInterval(ref from, ref to);
 
-        var limits = GetSingleDays(from, to);
+        var limits = GetSingleDays(from, to) ?? SplitIsolatedDays(minCount, from, to);
 
         if (limits != null)
             return limits;
@@ -655,6 +661,110 @@ internal class DateLimit
         }
 
         return limits;
+    }
+
+    /// <summary>
+    ///     Oddeli jednotlive dni na zaciatku alebo konci intervalu, ktore od zvysku deli dlha medzera,
+    ///     aby nerozbili tyzdenny vzor zvysku (napr. "ide 26.XII.,od 28.III. v 7").
+    /// </summary>
+    /// <returns><see langword="null"/>, ak take dni v intervale nie su.</returns>
+    private List<DateLimitInfo>? SplitIsolatedDays(int minCount, int from, int to)
+    {
+        // najdlhsi zaciatok s najviac MaxIsolatedDays dnami jazdy, za ktorym nasleduje dlha medzera
+        var leadingTo = -1;
+        var runDays = 0;
+
+        for (var day = from; day <= to && runDays < MaxIsolatedDays; day++)
+        {
+            if (RunsNot(day))
+                continue;
+
+            runDays++;
+            var next = day + 1;
+
+            while (next <= to && RunsNot(next))
+                next++;
+
+            if (next <= to && next - day - 1 >= MinIsolationGap)
+                leadingTo = day;
+        }
+
+        // to iste od konca intervalu
+        var trailingFrom = -1;
+        runDays = 0;
+
+        for (var day = to; day >= from && runDays < MaxIsolatedDays; day--)
+        {
+            if (RunsNot(day))
+                continue;
+
+            runDays++;
+            var prev = day - 1;
+
+            while (prev >= from && RunsNot(prev))
+                prev--;
+
+            if (prev >= from && day - prev - 1 >= MinIsolationGap)
+                trailingFrom = day;
+        }
+
+        if (leadingTo < 0 && trailingFrom < 0)
+            return null;
+
+        var restFrom = leadingTo < 0 ? from : leadingTo + 1;
+        var restTo = trailingFrom < 0 ? to : trailingFrom - 1;
+
+        // okraje sa prekryvaju, alebo zvysok nema tyzdenny vzor, ktory by oddelenie okrajov zachranilo
+        if (restFrom > restTo || !HasRuns(restFrom, restTo) || !HasWeekPattern(restFrom, restTo))
+            return null;
+
+        List<DateLimitInfo>? limits = null;
+
+        if (leadingTo >= 0)
+            AddIntervals(ref limits, ProcessInterval(minCount, from, leadingTo));
+
+        AddIntervals(ref limits, ProcessInterval(minCount, restFrom, restTo));
+
+        if (trailingFrom >= 0)
+            AddIntervals(ref limits, ProcessInterval(minCount, trailingFrom, to));
+
+        return limits;
+    }
+
+    /// <summary>
+    ///     Vrati, ci vlak v rozsahu <paramref name="from"/>-<paramref name="to"/> aspon raz ide.
+    /// </summary>
+    private bool HasRuns(int from, int to)
+    {
+        for (var day = from; day <= to; day++)
+            if (Runs(day))
+                return true;
+
+        return false;
+    }
+
+    /// <summary>
+    ///     Vrati, ci sa jazda v rozsahu <paramref name="from"/>-<paramref name="to"/> riadi dnami v tyzdni -
+    ///     niektore typy dni su prevazne jazdne a ine prevazne nejazdne.
+    /// </summary>
+    private bool HasWeekPattern(int from, int to)
+    {
+        var okCount = new DayCounter();
+        var badCount = new DayCounter();
+        var grouping = DayGrouping.None;
+
+        ReduceInterval(ref from, ref to);
+        ScanDays(from, to, okCount, badCount, ref grouping);
+
+        bool running = false, notRunning = false;
+
+        for (var index = DayIndex.Monday; index <= DayIndex.Holiday; index++)
+        {
+            running |= okCount[index] > badCount[index] * 2;
+            notRunning |= badCount[index] > okCount[index] * 2;
+        }
+
+        return running && notRunning;
     }
 
     /// <summary>
@@ -1750,13 +1860,16 @@ internal class DateLimit
         {
             case DateLevel.From:
                 state.From = date;
+                state.SingleDate = false;
                 break;
             case DateLevel.To:
                 state.To = date;
+                state.SingleDate = false;
                 break;
             default:
                 state.From = date;
                 state.To = date;
+                state.SingleDate = true;
                 break;
         }
     }
@@ -1792,13 +1905,16 @@ internal class DateLimit
             To = state.To,
             Level = state.Level,
             Days = state.Days,
-            And = and
+            And = and,
+            SingleDate = state.SingleDate
         };
 
-        // pevne kody dni sa uvadzaju az za poslednym usekom, plati vsak pre vsetky useky spojene spojkou "a"
+        // pevne kody dni sa uvadzaju az za poslednym usekom, plati vsak pre vsetky obdobia spojene spojkou "a".
+        // samostatny datum pred "a" (Export3: "ide 26.XII. a od 26.III. v 7") nimi obmedzeny nie je
         if (state.Days != DayType.None)
             for (var i = _parsedData.Count - 1; i >= 0 && _parsedData[i].And && _parsedData[i].Days == DayType.None; i--)
-                _parsedData[i].Days = state.Days;
+                if (!_parsedData[i].SingleDate)
+                    _parsedData[i].Days = state.Days;
 
         _parsedData.Add(data);
 
@@ -1806,6 +1922,7 @@ internal class DateLimit
         state.To = DateTime.MinValue;
         state.Days = DayType.None;
         state.DateLevel = DateLevel.Date;
+        state.SingleDate = false;
     }
 
     /// <summary>
@@ -1816,14 +1933,14 @@ internal class DateLimit
         if (_parsedData.Count == 0)
             FlushData(new ParseState { Level = level, From = DateFrom }, false);
 
-        for (var i = 0; i < _parsedData.Count; i++)
+        // poznamka zacinajuca "nejde" znamena, ze vlak inak ide kazdy den
+        if (_parsedData[0].Level == Level.RunsNot)
+            _bits!.SetAll(true);
+
+        // jednotlive datumy maju prednost pred obdobiami, aj ked su zapisane skor
+        // (Export3: "ide v 7,1.IX.,nejde od 25.VIII. do 6.IX." - 1.IX. ide)
+        foreach (var parseData in _parsedData.Where(d => !d.SingleDate).Concat(_parsedData.Where(d => d.SingleDate)))
         {
-            var parseData = _parsedData[i];
-
-            // poznamka zacinajuca "nejde" znamena, ze vlak inak ide kazdy den
-            if (i == 0 && parseData.Level == Level.RunsNot)
-                _bits!.SetAll(true);
-
             if (parseData.From == DateTime.MinValue)
                 parseData.From = DateFrom;
 
@@ -2338,6 +2455,7 @@ internal class DateLimit
         public DateLevel DateLevel = DateLevel.Date;
         public DateTime From;
         public Level Level = Level.Runs;
+        public bool SingleDate;
         public DateTime To;
     }
 
@@ -2350,6 +2468,10 @@ internal class DateLimit
         public DayType Days;
         public DateTime From;
         public Level Level = Level.Runs;
+
+        /// <summary>Usek je jeden datum zapisany bez "od"/"do".</summary>
+        public bool SingleDate;
+
         public DateTime To;
     }
 

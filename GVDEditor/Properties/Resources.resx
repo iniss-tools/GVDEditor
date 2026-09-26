@@ -1353,6 +1353,9 @@ INISS taký súbor nenačíta. Uložiť ho aj tak?</value>
   <data name="FNewGrafikon_Predloha" xml:space="preserve">
     <value>Predloha stavového diagramu:</value>
   </data>
+  <data name="FNewGrafikon_Neplatny_nazov_priecinka" xml:space="preserve">
+    <value>Názov priečinka je prázdny alebo obsahuje nepovolené znaky (\ / : * ? " &lt; &gt; | ,).</value>
+  </data>
   <data name="FMain_StavovyDiagram" xml:space="preserve">
     <value>Stavový diagram…</value>
   </data>

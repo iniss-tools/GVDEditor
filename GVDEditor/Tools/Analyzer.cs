@@ -72,6 +72,12 @@ internal interface IProblem
     public FixType FixType { get; }
 
     public FixResult FixProblem();
+
+    /// <summary>
+    ///     Ci oprava meni grafikon v pamati (a treba ho potom ulozit). Oprava mimo grafikonu, napr. zmazanie
+    ///     vyrovnavacej pamate INISSu, sa zapise hned.
+    /// </summary>
+    public bool ChangesGrafikon => true;
 }
 
 /// <summary>
@@ -240,6 +246,8 @@ internal class StaleZpozdeniCache : IProblem
 
     public string Solution => $"Zmazať {FileConsts.FILE_ZPOZDENI_DAT} (INISS si ho pri štarte vytvorí znova)";
 
+    public bool ChangesGrafikon => false;
+
     public ProblemType ProblemType => ProblemType.Warning;
 
     public FixType FixType => FixType.Auto;
@@ -336,7 +344,7 @@ internal class TableWithoutSegments : IProblem
 
     private TableCatalog Table { get; }
 
-    public string Text => $"Katalógova tabuľa {Table.Key} nemá nastavené žiadne riadky (segmenty).";
+    public string Text => $"Katalógová tabuľa {Table.Key} nemá nastavené žiadne riadky (segmenty).";
 
     public string Solution => "Upraviť segmenty katalógovej tabule";
 
@@ -370,7 +378,7 @@ internal class TableTextWithoutRealization : IProblem
 
     private int Row { get; }
 
-    public string Text => $"Table Text je \"{TText.Key}\" nemá žiadnu realizáciu.";
+    public string Text => $"Text na tabuli „{TText.Key}“ nemá žiadnu realizáciu.";
 
     public string Solution => "Pridať realizácie textu";
 
@@ -408,9 +416,9 @@ internal class TableTextWithoutTrains : IProblem
 
     private int Row { get; }
 
-    public string Text => $"Table Text je \"{TText.Key}\" nemá nastavené žiadne texty vlakov.";
+    public string Text => $"Text na tabuli „{TText.Key}“ nemá priradené žiadne vlaky.";
 
-    public string Solution => "Pridať realizácie textu";
+    public string Solution => "Pridať vlaky k textu";
 
     public ProblemType ProblemType => ProblemType.Warning;
 
@@ -440,7 +448,7 @@ internal class EmptyTabTab : IProblem
 
     private TableTabTab TabTab { get; }
 
-    public string Text => $"TabTab {TabTab.Key} je prázdny";
+    public string Text => $"TabTab {TabTab.Key} je prázdny.";
 
     public string Solution => "Upraviť TabTab";
 
@@ -509,9 +517,9 @@ internal class GVDOutOfValidity : IProblem
 
     private GVDDirectory GVDDir { get; }
 
-    public string Text => $"Grafikon {GVDDir.PeriodFormatted} je po platnosti";
+    public string Text => $"Grafikonu {GVDDir.PeriodFormatted} uplynula platnosť dát ({GVDDir.GVD.EndValidData:dd.MM.yyyy}).";
 
-    public string Solution => "Zmeniť platnosť grafikonu";
+    public string Solution => "Zmeniť platnosť dát";
 
     public ProblemType ProblemType => ProblemType.Warning;
 
@@ -519,8 +527,8 @@ internal class GVDOutOfValidity : IProblem
 
     public FixResult FixProblem()
     {
-        var form = new FLocalSettings(GVDDir, 0);
-        form.ShowDialog();
+        // cez hlavne okno - po zmene obdobia obnovi vyber obdobia a oznaci grafikon ako neulozeny
+        Program.MainForm.ShowLocalSettings(0);
 
         //Check if the problem was solved
         return GVDDir.GVD.EndValidData < DateTime.Now ? FixResult.NotSolved : FixResult.Done;

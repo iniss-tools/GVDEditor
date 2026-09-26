@@ -952,6 +952,27 @@ internal static class TxtParser
     }
 
     /// <summary>
+    ///     Vrati textove obmedzenie vlaku bez poznamky v Export3C podla mapy dni z Export3B.
+    ///     Ak mapa chyba, nesedi dlzkou na obdobie platnosti alebo ide kazdy den, vrati "ide denne".
+    /// </summary>
+    /// <param name="train">vlak s nacitanym obdobim platnosti</param>
+    /// <param name="map">mapa dni ('0'/'1' za kazdy den obdobia) alebo <see langword="null"/></param>
+    /// <returns>text obmedzenia</returns>
+    internal static string DateLimitTextFromMap(Train train, string? map)
+    {
+        const string DAILY = "ide denne";
+
+        if (string.IsNullOrEmpty(map) || train.KoniecPlatnosti < train.ZaciatokPlatnosti)
+            return DAILY;
+
+        var limit = new DateLimit(train.ZaciatokPlatnosti, train.KoniecPlatnosti, insertMarks: false);
+        if (map.Length != limit.TotalDays || map.Any(c => c != '0' && c != '1') || map.All(c => c == '1'))
+            return DAILY;
+
+        return limit.BitArrayToText(StringToBitArray(map));
+    }
+
+    /// <summary>
     ///     Vrati informacie a data o vlakoch.
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
@@ -1056,6 +1077,7 @@ internal static class TxtParser
             }
         }
 
+        var dayMaps = new Dictionary<Train, string>();
         using (var export3BF = new CsvFileReader(fileEXP3B))
         {
             var riadok = 1;
@@ -1078,6 +1100,11 @@ internal static class TxtParser
                     var train = vlaky[id - 1];
                     train.ZaciatokPlatnosti = ParseDateAlts(row[1]);
                     train.KoniecPlatnosti = ParseDateAlts(row[2]);
+
+                    // mapa sa pouzije len pre vlaky bez poznamky v Export3C (Export3 ju niekedy nevypise)
+                    var map = row.ElementAtOrDefaultStr(3).Trim();
+                    if (map.Length > 0)
+                        dayMaps[train] = map;
                 }
                 catch (Exception e)
                 {
@@ -1119,7 +1146,9 @@ internal static class TxtParser
                         if (!string.IsNullOrWhiteSpace(note))
                             notes.Add(note);
                     }
-                    train.DateLimitText = notes.Count > 0 ? string.Join(", ", notes) : "ide denne";
+                    train.DateLimitText = notes.Count > 0
+                        ? string.Join(", ", notes)
+                        : DateLimitTextFromMap(train, dayMaps.GetValueOrDefault(train));
                 }
                 catch (Exception e)
                 {

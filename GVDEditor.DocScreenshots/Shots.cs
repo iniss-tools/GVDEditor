@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Globalization;
 using System.Reflection;
 using System.Text;
@@ -32,11 +33,21 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             // hlavné okno s vybraným rýchlikom
             Shot("hlavne-okno/hlavne-okno", main, form =>
             {
-                Resize(form, 1360, 600);
+                Resize(form, 1420, 600);
                 SelectTrain(form, trains.IndexOf(express));
             }, dispose: false);
 
-            Shot("novy-grafikon/novy-grafikon", () => new FNewGrafikon());
+            // nový grafikon pre ďalšiu stanicu na obdobie 2026/2027
+            Shot("novy-grafikon/novy-grafikon", () => new FNewGrafikon(FMain.ObdobiaList.ToList()), form =>
+            {
+                foreach (var name in new[] { "dtpDataOd", "dtpGVDOd" })
+                    ((ExControls.ExDateTimePicker)Field(form, name)).Value = new DateTime(2026, 12, 13);
+                foreach (var name in new[] { "dtpDataDo", "dtpGVDDo" })
+                    ((ExControls.ExDateTimePicker)Field(form, name)).Value = new DateTime(2027, 12, 11);
+                var station = (ComboBox)Field(form, "cbStationName");
+                station.SelectedIndex = station.Items.Cast<object>().ToList().FindIndex(o => o.ToString() == "Veľká Ves");
+                ((TextBoxBase)Field(form, "tbDirIniss")).Select(0, 0);
+            });
             // na záložke Radenie vybrané radenie v pracovné dni
             Shot("uprava-vlaku", () => new FEditTrain(express, trains.IndexOf(express), gvdDir.GVD, false, gvdDir.Dir.FullPath),
                 form =>
@@ -75,7 +86,24 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             }, tabs: true);
             Shot("globalne-nastavenia", () => new FGlobalSettings(FMain.ObdobiaList.ToList()), tabs: true);
             Shot("nastavenia-programu/nastavenia-programu", () => new FAppSettings(GlobData.Config, GlobData.Styles));
-            Shot("analyza-grafikonu/analyza-grafikonu", () => new FAnalyzer(gvdDir));
+            // analýza s nájdenými problémami: prázdny a nepoužitý TabTab a uplynutá platnosť dát (po snímke sa vráti)
+            var emptyTab = new TableTabTab { Key = "Rezerva", Text = "" };
+            var endValidData = gvdDir.GVD.EndValidData;
+            GlobData.TabTabs.Add(emptyTab);
+            gvdDir.GVD.EndValidData = new DateTime(2026, 6, 30);
+            Shot("analyza-grafikonu/analyza-grafikonu", () => new FAnalyzer(gvdDir), form =>
+            {
+                Resize(form, 820, 360);
+                form.GetType().GetMethod("bAnalyze_Click", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(form, [form, EventArgs.Empty]);
+                var worker = (BackgroundWorker)Field(form, "bgWorkAnalyze");
+                Pump.Until(() => !worker.IsBusy);
+                Pump.Events();
+                var grid = (DataGridView)Field(form, "dgvResults");
+                grid.ClearSelection();
+                if (grid.Rows.Count > 0) grid.Rows[0].Selected = true;
+            });
+            GlobData.TabTabs.Remove(emptyTab);
+            gvdDir.GVD.EndValidData = endValidData;
             // generátor s obdobím grafikonu a vygenerovaným poľom bitov
             var gvdInfo = gvdDir.GVD;
             const string sampleLimit = "ide v 1-5, nejde 24.XII., 31.XII.";
@@ -384,6 +412,10 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
         grid.ClearSelection();
         grid.Rows[index].Selected = true;
         grid.CurrentCell = grid.Rows[index].Cells.Cast<DataGridViewCell>().First(c => c.Visible);
+
+        // klik na riadok ukáže vybraný vlak a počet jeho variantov v stavovom riadku
+        main.GetType().GetMethod("dgvTrains_CellClick", BindingFlags.NonPublic | BindingFlags.Instance)?
+            .Invoke(main, [grid, new DataGridViewCellEventArgs(grid.CurrentCell.ColumnIndex, index)]);
     }
 
     /// <summary>

@@ -13,6 +13,11 @@ public partial class FAnalyzer : Form
     private BindingList<IProblem> Problems = new();
 
     /// <summary>
+    ///     Ci niektora oprava zmenila grafikon v pamati - hlavne okno ho potom oznaci ako neulozeny.
+    /// </summary>
+    public bool DataChanged { get; private set; }
+
+    /// <summary>
     ///     Vytvori novy formular typu <see cref="FAnalyzer"/>.
     /// </summary>
     /// <param name="gvd">Aktualne vybrany grafikon na analyzovanie.</param>
@@ -116,6 +121,7 @@ public partial class FAnalyzer : Form
             case FixResult.Done:
                 Utils.ShowInfo(@"Problém bol opravený.");
                 Problems.Remove(problem);
+                if (problem.ChangesGrafikon) DataChanged = true;
                 break;
         }
     }

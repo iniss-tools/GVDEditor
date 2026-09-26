@@ -59,27 +59,7 @@ public partial class FMain : Form
         SetColumns();
         SetColumnsAutoWidth();
 
-        switch (GlobData.Config.DesktopMenuMode)
-        {
-            case DesktopMenu.MsTs:
-                mainMenu.Visible = true;
-                toolMenu.Visible = true;
-                mainMenu.Items.Remove(tscbObdobie);
-                mainMenu.Items.Remove(tscbStanica);
-                break;
-            case DesktopMenu.MsOnly:
-                mainMenu.Visible = true;
-                toolMenu.Visible = false;
-                mainMenu.Items.Add(tscbObdobie);
-                mainMenu.Items.Add(tscbStanica);
-                break;
-            case DesktopMenu.TsOnly:
-                mainMenu.Visible = false;
-                toolMenu.Visible = true;
-                mainMenu.Items.Remove(tscbObdobie);
-                mainMenu.Items.Remove(tscbStanica);
-                break;
-        }
+        ApplyMenuMode();
 
         smerovanieDataGridViewTextBoxColumn.DefaultCellStyle.NullValue = new Bitmap(1, 1);
         backgroundWorker1.DoWork += BackgroundWorker1_DoWork;
@@ -138,6 +118,31 @@ public partial class FMain : Form
             return handleParam;
         }
     }
+
+    protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+    {
+        // pri pisani do bunky patria Delete a Insert textovemu polu - skratka Odstranit oznacene by inak zmazala cely vlak
+        if (dgvTrains.EditingControl is TextBoxBase && IsTextEditingKey(keyData))
+            return false;
+
+        // polozka ponuky s podponukou svoju skratku nespracuje - Lokalne a Globalne nastavenia treba otvorit tu
+        if (keyData != Keys.None && keyData == tsmiVlastnostiStanice.ShortcutKeys && tsmiVlastnostiStanice.Enabled)
+        {
+            ShowLocalSettings();
+            return true;
+        }
+
+        if (keyData != Keys.None && keyData == tsmiGlobalSettings.ShortcutKeys && tsmiGlobalSettings.Enabled)
+        {
+            ShowGlobalSettings();
+            return true;
+        }
+
+        return base.ProcessCmdKey(ref msg, keyData);
+    }
+
+    private static bool IsTextEditingKey(Keys keyData)
+        => (keyData & Keys.KeyCode) is Keys.Delete or Keys.Insert or Keys.Back && (keyData & Keys.Alt) == 0;
 
     private void BackgroundWorker1_DoWork(object? sender, DoWorkEventArgs e)
     {
@@ -295,7 +300,8 @@ public partial class FMain : Form
         }
     }
 
-    private void DoSave()
+    /// <returns><see langword="false" />, ak sa grafikon nepodarilo ulozit.</returns>
+    private bool DoSave()
     {
         if (GlobData.Config.DebugModeGUI == DebugMode.AppCrash)
             DoSaveInternal();
@@ -308,7 +314,10 @@ public partial class FMain : Form
             {
                 var monly = GlobData.Config.DebugModeGUI == DebugMode.OnlyMessage;
                 Utils.ShowError(monly ? e.Message : e.ToString());
+                return false;
             }
+
+        return true;
 
         void DoSaveInternal()
         {
@@ -319,6 +328,10 @@ public partial class FMain : Form
 
             //ukladanie zapisuje pätnásť súborov po sebe; keby niektorý zápis zlyhal, zvyšok
             //by ostal v pôvodnom stave a grafikon by sa pri ďalšom otvorení hlásil ako chybný
+            // hlavicka nesie pocet vlakov a datum poslednej upravy
+            dir.GVD.TrainCount = GlobData.Trains.Count;
+            dir.GVD.CreateData = DateTime.Today;
+
             var transaction = new FileTransaction(dir.Dir.FullPath);
             try
             {
@@ -355,11 +368,18 @@ public partial class FMain : Form
     {
         var fan = new FAnalyzer((tscbObdobie.SelectedItem as GVDDirectory)!);
         fan.ShowDialog();
+
+        // opravy menia grafikon v pamati - bez oznacenia by sa pri zatvoreni bez otazky stratili
+        if (fan.DataChanged)
+        {
+            DataSaved = false;
+            GlobData.Trains.ResetBindings();
+        }
     }
 
     private void ShowNewGVD()
     {
-        var nsf = new FNewGrafikon();
+        var nsf = new FNewGrafikon(_gvdDirs);
         var result = nsf.ShowDialog();
         if (result == DialogResult.OK)
         {
@@ -408,6 +428,7 @@ public partial class FMain : Form
             var dirs = TxtParser.ReadDirList();
             dirs.Add(dir);
             TxtParser.WriteDirList(dirs);
+            GlobData.GVDDirs.Add(dir);
             Directory.CreateDirectory(dir.FullPath);
             TxtParser.WriteInfoGVD(dir.FullPath, gvd);
 
@@ -514,11 +535,34 @@ public partial class FMain : Form
         }
     }
 
-    private void UpdateMainUI()
+    /// <summary>
+    ///     Zobrazi ponuku a panel nastrojov podla nastaveni. Bez panela nastrojov sa vyber stanice a obdobia presunie do ponuky.
+    /// </summary>
+    private void ApplyMenuMode()
     {
         var menu = GlobData.Config.DesktopMenuMode;
         mainMenu.Visible = menu is DesktopMenu.MsTs or DesktopMenu.MsOnly;
         toolMenu.Visible = menu is DesktopMenu.MsTs or DesktopMenu.TsOnly;
+
+        // polozka moze byt len v jednom ToolStripe - pridanie do jedneho ju z druheho odoberie
+        if (menu == DesktopMenu.MsOnly)
+        {
+            if (!mainMenu.Items.Contains(tscbStanica))
+                mainMenu.Items.AddRange(new ToolStripItem[] { toolStripLabel1, tscbStanica, toolStripLabel2, tscbObdobie });
+        }
+        else if (!toolMenu.Items.Contains(tscbStanica))
+        {
+            var index = toolMenu.Items.IndexOf(toolStripSeparator13) + 1;
+            toolMenu.Items.Insert(index++, toolStripLabel1);
+            toolMenu.Items.Insert(index++, tscbStanica);
+            toolMenu.Items.Insert(index++, toolStripLabel2);
+            toolMenu.Items.Insert(index, tscbObdobie);
+        }
+    }
+
+    private void UpdateMainUI()
+    {
+        ApplyMenuMode();
         dgvTrains.RowHeadersVisible = GlobData.Config.ShowRowsHeader;
 
         this.ApplyThemeAndFonts();
@@ -543,8 +587,8 @@ public partial class FMain : Form
         form.ShowDialog(this);
     }
 
-    //TODO prerobiť
-    private void ShowLocalSettings(int startIndex = -1)
+    /// <returns><see langword="true" />, ak pouzivatel nastavenia ulozil.</returns>
+    internal bool ShowLocalSettings(int startIndex = -1)
     {
         var dir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
         // FLocalSettings meni dir.GVD priamo, povodne hodnoty treba zapamatat vopred
@@ -557,15 +601,15 @@ public partial class FMain : Form
         {
             // Zrusit/krizik vratil vsetky data - obnova zoznamov nesmie grafikon oznacit ako zmeneny
             DataSaved = wasSaved;
+            return false;
         }
-        else
-        {
-            RefreshStationAndPeriod(dir, oldStation, oldPeriod);
 
-            GlobData.TableFontDir = svform.FontDir;
-            DataSaved = false;
-            GlobData.Trains.ResetBindings();
-        }
+        RefreshStationAndPeriod(dir, oldStation, oldPeriod);
+
+        GlobData.TableFontDir = svform.FontDir;
+        DataSaved = false;
+        GlobData.Trains.ResetBindings();
+        return true;
     }
 
     /// <summary>
@@ -909,6 +953,10 @@ public partial class FMain : Form
 
         DataSaved = true;
 
+        // programy z predtym otvorenej instalacie - nechat len polozky pred oddelovacom
+        RemoveItemsAfter(tssbStartINISS.DropDownItems, toolStripSeparator8);
+        RemoveItemsAfter(tsmiRun.DropDownItems, toolStripSeparator14);
+
         foreach (var file in GlobData.INISSExeFiles)
         {
             ToolStripItem item1 = new ToolStripMenuItem(file);
@@ -928,6 +976,17 @@ public partial class FMain : Form
 
         //otvoreny projekt sa presunul na zaciatok zoznamu poslednych projektov
         SetRecentProjects();
+    }
+
+    private static void RemoveItemsAfter(ToolStripItemCollection items, ToolStripItem separator)
+    {
+        var index = items.IndexOf(separator);
+        while (items.Count > index + 1)
+        {
+            var item = items[items.Count - 1];
+            items.Remove(item);
+            item.Dispose();
+        }
     }
 
     private void InissStartItemOnClick(object? sender, EventArgs e)
@@ -1068,13 +1127,14 @@ public partial class FMain : Form
             var result = Utils.ShowQuestion(Resources.FMain_Save_Changes, MessageBoxButtons.YesNoCancel);
             switch (result)
             {
-                case DialogResult.Yes:
-                    DoSave();
+                case DialogResult.Yes when DoSave():
                     break;
                 case DialogResult.No:
                     DataSaved = true;
                     break;
                 default:
+                    // zrusene alebo neulozene - ostava otvoreny povodny grafikon, vyber sa k nemu musi vratit
+                    RestoreSelection(_previousSelectedGVD);
                     return;
             }
         }
@@ -1147,6 +1207,34 @@ public partial class FMain : Form
         _waitForm.Show(this);
         if (!backgroundWorker1.IsBusy)
             backgroundWorker1.RunWorkerAsync(new PathAndGVD { Path = dir.Dir.FullPath, Gvd = dir.GVD, BlocksDeclined = blocks.Count > 0 });
+    }
+
+    /// <summary>
+    ///     Vrati vyber stanice a obdobia na grafikon <paramref name="dir" /> bez jeho opatovneho nacitania.
+    /// </summary>
+    private void RestoreSelection(GVDDirectory? dir)
+    {
+        if (dir == null) return;
+
+        tscbStanica.SelectedIndexChanged -= tscbStanica_SelectedIndexChanged;
+        tscbObdobie.SelectedIndexChanged -= tscbObdobie_SelectedIndexChanged;
+        try
+        {
+            var station = dir.GVD.ThisStation.Name;
+            if (!ObdobiaList.Contains(dir))
+            {
+                ObdobiaList.Clear();
+                foreach (var gvdDir in GVDSelectionLists.PeriodsOf(_gvdDirs, station)) ObdobiaList.Add(gvdDir);
+            }
+
+            tscbStanica.ComboBox.SelectedItem = station;
+            tscbObdobie.ComboBox.SelectedItem = dir;
+        }
+        finally
+        {
+            tscbStanica.SelectedIndexChanged += tscbStanica_SelectedIndexChanged;
+            tscbObdobie.SelectedIndexChanged += tscbObdobie_SelectedIndexChanged;
+        }
     }
 
     private static List<GvdBlock> AnalyzeBlocks(GVDDirectory dir)
@@ -1274,8 +1362,8 @@ public partial class FMain : Form
             switch (result)
             {
                 case DialogResult.Yes:
-                    DoSave();
-                    e.Cancel = false;
+                    // pri neuspesnom ulozeni okno nezatvorit, zmeny by sa stratili
+                    e.Cancel = !DoSave();
                     break;
                 case DialogResult.No:
                     e.Cancel = false;
