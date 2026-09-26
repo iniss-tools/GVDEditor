@@ -199,6 +199,8 @@ namespace GVDEditor.Forms
             label29 = new Label();
             groupBox9 = new ExGroupBox();
             label32 = new Label();
+            lFontDecoded = new Label();
+            bFontFromId = new ExButton();
             cbFontIsNumber = new ExCheckBox();
             tbFontFile = new ExTextBox();
             cbFontSpecAssigments = new ExCheckBox();
@@ -1728,6 +1730,8 @@ namespace GVDEditor.Forms
             // groupBox9
             // 
             resources.ApplyResources(groupBox9, "groupBox9");
+            groupBox9.Controls.Add(lFontDecoded);
+            groupBox9.Controls.Add(bFontFromId);
             groupBox9.Controls.Add(label32);
             groupBox9.Controls.Add(cbFontIsNumber);
             groupBox9.Controls.Add(tbFontFile);
@@ -1754,6 +1758,19 @@ namespace GVDEditor.Forms
             groupBox9.DisabledForeColor = SystemColors.GrayText;
             groupBox9.Name = "groupBox9";
             groupBox9.TabStop = false;
+            // 
+            // lFontDecoded
+            // 
+            resources.ApplyResources(lFontDecoded, "lFontDecoded");
+            lFontDecoded.AutoEllipsis = true;
+            lFontDecoded.Name = "lFontDecoded";
+            // 
+            // bFontFromId
+            // 
+            resources.ApplyResources(bFontFromId, "bFontFromId");
+            bFontFromId.Name = "bFontFromId";
+            bFontFromId.UseVisualStyleBackColor = true;
+            bFontFromId.Click += bFontFromId_Click;
             // 
             // label32
             // 
@@ -2261,6 +2278,8 @@ namespace GVDEditor.Forms
         private ExControls.ExButton bFontEdit;
         private ExControls.ExButton bFontAdd;
         private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label lFontDecoded;
+        private ExControls.ExButton bFontFromId;
         private ExTextBox tbFontFile;
         private ExCheckBox cbFontSpecAssigments;
         private ExCheckBox cbFontSpecChar;

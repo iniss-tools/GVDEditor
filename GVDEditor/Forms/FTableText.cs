@@ -19,6 +19,10 @@ public partial class FTableText : Form
 
     private readonly BindingList<TableTextRealization> TRealizations;
 
+    private readonly Color defaultBorderColor;
+    // popis vyznamu cisla pisma pri poli s cislom pisma
+    private readonly ToolTip fontTip = new();
+
     /// <summary>
     ///     Tieto texty do tabul. Po <see cref="DialogResult.OK"/> novy objekt s upravenymi hodnotami; povodny objekt
     ///     (vratane zoznamov realizacii a vlakov) okno nemeni.
@@ -36,6 +40,9 @@ public partial class FTableText : Form
     {
         InitializeComponent();
         this.ApplyThemeAndFonts();
+
+        defaultBorderColor = nudFont.BorderColor;
+        (components ??= new Container()).Add(fontTip);
 
         ThisTableText = tableText;
         this.gvd = gvd;
@@ -306,25 +313,7 @@ public partial class FTableText : Form
 
     private void nudFont_ValueChanged(object sender, EventArgs e)
     {
-        switch (nudFont.Value % 4)
-        {
-            case 1:
-                nudFont.BackColor = Color.Red;
-                nudFont.ForeColor = Color.White;
-                break;
-            case 2:
-                nudFont.BackColor = Color.Green;
-                nudFont.ForeColor = Color.White;
-                break;
-            case 3:
-                nudFont.BackColor = Color.Yellow;
-                nudFont.ForeColor = Color.Black;
-                break;
-            default:
-                nudFont.BackColor = Color.White;
-                nudFont.ForeColor = Color.Black;
-                break;
-        }
+        FontIdHint.Apply(nudFont, fontTip, defaultBorderColor);
     }
 
     private void FTableText_HelpButtonClicked(object sender, CancelEventArgs e) => Utils.OpenShell(LinkConsts.LINK_TTEXTS);

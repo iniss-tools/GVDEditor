@@ -4180,5 +4180,140 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("TabTab_Pouzitie", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to písmo stĺpca.
+        /// </summary>
+        internal static string ElenFont_PismoStlpca {
+            get {
+                return ResourceManager.GetString("ElenFont_PismoStlpca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to rozšírené písmo {0}.
+        /// </summary>
+        internal static string ElenFont_Rozsirene {
+            get {
+                return ResourceManager.GetString("ElenFont_Rozsirene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tenké.
+        /// </summary>
+        internal static string ElenFont_Tenke {
+            get {
+                return ResourceManager.GetString("ElenFont_Tenke", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tučné.
+        /// </summary>
+        internal static string ElenFont_Tucne {
+            get {
+                return ResourceManager.GetString("ElenFont_Tucne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to len číslice.
+        /// </summary>
+        internal static string ElenFont_LenCislice {
+            get {
+                return ResourceManager.GetString("ElenFont_LenCislice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to neproporcionálne.
+        /// </summary>
+        internal static string ElenFont_Neproporcionalne {
+            get {
+                return ResourceManager.GetString("ElenFont_Neproporcionalne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to červené.
+        /// </summary>
+        internal static string ElenFont_Cervene {
+            get {
+                return ResourceManager.GetString("ElenFont_Cervene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to zelené.
+        /// </summary>
+        internal static string ElenFont_Zelene {
+            get {
+                return ResourceManager.GetString("ElenFont_Zelene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to žlté.
+        /// </summary>
+        internal static string ElenFont_Zlte {
+            get {
+                return ResourceManager.GetString("ElenFont_Zlte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bliká.
+        /// </summary>
+        internal static string ElenFont_Blika {
+            get {
+                return ResourceManager.GetString("ElenFont_Blika", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to vysoké číslice.
+        /// </summary>
+        internal static string ElenFont_VysokeCislice {
+            get {
+                return ResourceManager.GetString("ElenFont_VysokeCislice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bity nad 255 sa neposielajú.
+        /// </summary>
+        internal static string ElenFont_HornyBajt {
+            get {
+                return ResourceManager.GetString("ElenFont_HornyBajt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabule ELEN: {0}.
+        /// </summary>
+        internal static string ElenFont_Popis {
+            get {
+                return ResourceManager.GetString("ElenFont_Popis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Výrobca {0} číslo písma nekóduje ako ELEN – význam určuje tabuľa..
+        /// </summary>
+        internal static string ElenFont_InyVyrobca {
+            get {
+                return ResourceManager.GetString("ElenFont_InyVyrobca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastaví typ, proporcionálnosť a šírku podľa ID písma (kódovanie tabúľ ELEN)..
+        /// </summary>
+        internal static string ElenFont_Doplnit_Tip {
+            get {
+                return ResourceManager.GetString("ElenFont_Doplnit_Tip", resourceCulture);
+            }
+        }
 }
 }

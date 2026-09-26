@@ -17,6 +17,8 @@ public partial class FTableCatalog : Form
 
     private readonly bool copy;
     private readonly Color defaultBorderColor;
+    // popis vyznamu cisla pisma pri poli s cislom pisma
+    private readonly ToolTip fontTip = new();
     private readonly BindingList<TableSegment> Rows;
 
     private readonly BindingList<TableTabTab> TabTabs1;
@@ -44,6 +46,7 @@ public partial class FTableCatalog : Form
         this.copy = copy;
 
         defaultBorderColor = nudFont.BorderColor;
+        (components ??= new Container()).Add(fontTip);
 
         // okno pracuje nad kopiami – tabula sa zmeni az pri Ulozit (pri Duplikovat sa originalna tabula nezmeni vobec)
         ViewTypeTabs = new BindingList<TableViewTypeTab>(ThisTable.ViewTypeTabs.Select(TableCatalogEditing.Clone).ToList());
@@ -53,6 +56,8 @@ public partial class FTableCatalog : Form
         TabTabs2 = new BindingList<TableTabTab>(TableCatalogEditing.WithEmptyTabTab(tabtabs));
 
         cbManufacturer.DataSource = TableManufacturer.GetValues();
+        // vyznam cisla pisma zavisi od vyrobcu
+        cbManufacturer.SelectedIndexChanged += (_, _) => nudFont_ValueChanged(nudFont, EventArgs.Empty);
         cbColumnFill.DataSource = TableFillSection.GetValues();
         cbDivType.DataSource = TableDivType.GetValues();
 
@@ -460,33 +465,7 @@ public partial class FTableCatalog : Form
 
     private void nudFont_ValueChanged(object sender, EventArgs e)
     {
-        switch (nudFont.Value % 4)
-        {
-            case 1:
-                nudFont.BorderColor = defaultBorderColor;
-                nudFont.ArrowsColor = Color.White;
-                nudFont.BackColor = Color.Red;
-                nudFont.ForeColor = Color.White;
-                break;
-            case 2:
-                nudFont.BorderColor = defaultBorderColor;
-                nudFont.ArrowsColor = Color.White;
-                nudFont.BackColor = Color.Green;
-                nudFont.ForeColor = Color.White;
-                break;
-            case 3:
-                nudFont.BorderColor = defaultBorderColor;
-                nudFont.ArrowsColor = Color.Black;
-                nudFont.BackColor = Color.Yellow;
-                nudFont.ForeColor = Color.Black;
-                break;
-            default:
-                nudFont.BorderColor = Color.DimGray;
-                nudFont.ArrowsColor = Color.Black;
-                nudFont.BackColor = Color.White;
-                nudFont.ForeColor = Color.Black;
-                break;
-        }
+        FontIdHint.Apply(nudFont, fontTip, defaultBorderColor, cbManufacturer.SelectedItem as TableManufacturer);
     }
 
     private void FTableCatalog_HelpButtonClicked(object sender, CancelEventArgs e)

@@ -26,6 +26,8 @@ public partial class FLocalSettings : Form
     public string FontDir;
 
     private readonly Color _defaultBorderColor;
+    // popis vyznamu cisla pisma pri poli s cislom pisma
+    private readonly ToolTip _fontTip = new();
     private readonly bool _openStateDgmEditor;
 
     /// <summary>
@@ -57,6 +59,9 @@ public partial class FLocalSettings : Form
         this.ApplyThemeAndFonts();
 
         _defaultBorderColor = nudFontID.BorderColor;
+        (components ??= new Container()).Add(_fontTip);
+        _fontTip.SetToolTip(bFontFromId, Resources.ElenFont_Doplnit_Tip);
+        nudFontID_ValueChanged(nudFontID, EventArgs.Empty);
 
         ThisDir = dir;
 
@@ -1248,33 +1253,18 @@ public partial class FLocalSettings : Form
 
     private void nudFontID_ValueChanged(object sender, EventArgs e)
     {
-        switch (nudFontID.Value % 4)
-        {
-            case 1:
-                nudFontID.BorderColor = _defaultBorderColor;
-                nudFontID.ArrowsColor = Color.White;
-                nudFontID.BackColor = Color.Red;
-                nudFontID.ForeColor = Color.White;
-                break;
-            case 2:
-                nudFontID.BorderColor = _defaultBorderColor;
-                nudFontID.ArrowsColor = Color.White;
-                nudFontID.BackColor = Color.Green;
-                nudFontID.ForeColor = Color.White;
-                break;
-            case 3:
-                nudFontID.BorderColor = _defaultBorderColor;
-                nudFontID.ArrowsColor = Color.Black;
-                nudFontID.BackColor = Color.Yellow;
-                nudFontID.ForeColor = Color.Black;
-                break;
-            default:
-                nudFontID.BorderColor = Color.DimGray;
-                nudFontID.ArrowsColor = Color.Black;
-                nudFontID.BackColor = Color.White;
-                nudFontID.ForeColor = Color.Black;
-                break;
-        }
+        FontIdHint.Apply(nudFontID, _fontTip, _defaultBorderColor);
+        lFontDecoded.Text = string.Format(CultureInfo.CurrentCulture, Resources.ElenFont_Popis,
+            new ElenFontCode(decimal.ToInt32(nudFontID.Value)).Describe());
+    }
+
+    private void bFontFromId_Click(object sender, EventArgs e)
+    {
+        // typ, proporcionalnost a sirka podla rezu v cisle pisma ELEN; ostatne polia ostavaju
+        var code = new ElenFontCode(decimal.ToInt32(nudFontID.Value));
+        cbFontType.SelectedItem = code.SuggestedType;
+        cbFontProportional.Checked = code.SuggestedProportional;
+        nudFontWidth.Value = Math.Clamp(code.SuggestedWidth, nudFontWidth.Minimum, nudFontWidth.Maximum);
     }
 
     private void bOpenFontDir_Click(object sender, EventArgs e)

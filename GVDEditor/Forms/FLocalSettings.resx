@@ -521,7 +521,7 @@
     <value>14, 50</value>
   </data>
   <data name="&gt;&gt;label32.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 15</value>
@@ -1103,7 +1103,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="&gt;&gt;bCStationEdit.Type" xml:space="preserve">
     <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
@@ -1118,7 +1118,7 @@
     <value>Priečinok s dátami:</value>
   </data>
   <data name="&gt;&gt;bFontDelete.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>22</value>
   </data>
   <data name="label46.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1625,7 +1625,7 @@
     <value>172, 259</value>
   </data>
   <data name="&gt;&gt;nudFontID.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
@@ -1754,7 +1754,7 @@
     <value>317, 78</value>
   </data>
   <data name="&gt;&gt;cbFontType.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;groupBox11.Type" xml:space="preserve">
     <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
@@ -1799,7 +1799,7 @@
     <value>205, 319</value>
   </data>
   <data name="&gt;&gt;bFontEdit.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>23</value>
   </data>
   <data name="tbDopravca.Location" type="System.Drawing.Point, System.Drawing">
     <value>132, 47</value>
@@ -1880,7 +1880,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>21</value>
   </data>
   <data name="bKatTabCopy.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2033,7 +2033,7 @@
     <value>tpFyzTab</value>
   </data>
   <data name="&gt;&gt;cbFontProportional.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;bKolajDelete.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -2381,7 +2381,7 @@
     <value>8</value>
   </data>
   <data name="&gt;&gt;cbFontUpper.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;bNastDelete.Name" xml:space="preserve">
     <value>bNastDelete</value>
@@ -2648,7 +2648,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="&gt;&gt;tbFontFile.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;tbFontFile.Name" xml:space="preserve">
     <value>tbFontFile</value>
@@ -3125,7 +3125,7 @@
     <value>190, 15</value>
   </data>
   <data name="&gt;&gt;nudFontSize.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="groupBox14.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -3641,7 +3641,7 @@
     <value>138, 15</value>
   </data>
   <data name="&gt;&gt;cbFontLower.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="tpStanice.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -3815,10 +3815,10 @@
     <value>2</value>
   </data>
   <data name="&gt;&gt;tbFontName.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="&gt;&gt;cbFontSpecChar.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label44.Text" xml:space="preserve">
     <value>Názov stanice:</value>
@@ -3857,7 +3857,7 @@
     <value>cbFontIsNumber</value>
   </data>
   <data name="&gt;&gt;label36.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="bNastAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -3926,7 +3926,7 @@
     <value>2</value>
   </data>
   <data name="&gt;&gt;label31.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="bOpenEditorTab.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -4562,7 +4562,7 @@
     <value>label35</value>
   </data>
   <data name="&gt;&gt;cbFontSpecAssigments.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;tpStanice.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -4922,7 +4922,7 @@
     <value>Stanica</value>
   </data>
   <data name="&gt;&gt;nudFontWidth.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="tbDir.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 65</value>
@@ -4937,7 +4937,7 @@
     <value>bFontEdit</value>
   </data>
   <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="bSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 31</value>
@@ -5336,7 +5336,7 @@
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;cbFontIsNumber.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;cbFontIsNumber.Type" xml:space="preserve">
     <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
@@ -5462,7 +5462,7 @@
     <value>True</value>
   </data>
   <data name="&gt;&gt;bFontAdd.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>24</value>
   </data>
   <data name="bLogTabEdit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5471,7 +5471,7 @@
     <value>16, 46</value>
   </data>
   <data name="&gt;&gt;cbFontDia.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5786,7 +5786,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="&gt;&gt;bCustomTrainTypEdit.Type" xml:space="preserve">
     <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
@@ -5872,4 +5872,52 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="lFontDecoded.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="lFontDecoded.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 233</value>
+  </data>
+  <data name="lFontDecoded.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 15</value>
+  </data>
+  <data name="lFontDecoded.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;lFontDecoded.Name" xml:space="preserve">
+    <value>lFontDecoded</value>
+  </data>
+  <data name="&gt;&gt;lFontDecoded.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lFontDecoded.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;lFontDecoded.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="bFontFromId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>322, 226</value>
+  </data>
+  <data name="bFontFromId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 27</value>
+  </data>
+  <data name="bFontFromId.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="bFontFromId.Text" xml:space="preserve">
+    <value>Doplniť</value>
+  </data>
+  <data name="&gt;&gt;bFontFromId.Name" xml:space="preserve">
+    <value>bFontFromId</value>
+  </data>
+  <data name="&gt;&gt;bFontFromId.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bFontFromId.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;bFontFromId.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
 </root>

@@ -651,4 +651,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Lokální nastavení</value>
   </data>
+  <data name="bFontFromId.Text" xml:space="preserve">
+    <value>Doplnit</value>
+  </data>
 </root>

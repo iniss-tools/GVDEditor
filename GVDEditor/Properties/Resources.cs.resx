@@ -1522,4 +1522,49 @@ Odstranění ze seznamu tato místa nezmění – zůstane v nich původní čí
   <data name="TabTab_Pouzitie" xml:space="preserve">
     <value>katalogová tabule {0}, sloupec {1}, {2}</value>
   </data>
+  <data name="ElenFont_PismoStlpca" xml:space="preserve">
+    <value>písmo sloupce</value>
+  </data>
+  <data name="ElenFont_Rozsirene" xml:space="preserve">
+    <value>rozšířené písmo {0}</value>
+  </data>
+  <data name="ElenFont_Tenke" xml:space="preserve">
+    <value>tenké</value>
+  </data>
+  <data name="ElenFont_Tucne" xml:space="preserve">
+    <value>tučné</value>
+  </data>
+  <data name="ElenFont_LenCislice" xml:space="preserve">
+    <value>jen číslice</value>
+  </data>
+  <data name="ElenFont_Neproporcionalne" xml:space="preserve">
+    <value>neproporcionální</value>
+  </data>
+  <data name="ElenFont_Cervene" xml:space="preserve">
+    <value>červené</value>
+  </data>
+  <data name="ElenFont_Zelene" xml:space="preserve">
+    <value>zelené</value>
+  </data>
+  <data name="ElenFont_Zlte" xml:space="preserve">
+    <value>žluté</value>
+  </data>
+  <data name="ElenFont_Blika" xml:space="preserve">
+    <value>bliká</value>
+  </data>
+  <data name="ElenFont_VysokeCislice" xml:space="preserve">
+    <value>vysoké číslice</value>
+  </data>
+  <data name="ElenFont_HornyBajt" xml:space="preserve">
+    <value>bity nad 255 se neposílají</value>
+  </data>
+  <data name="ElenFont_Popis" xml:space="preserve">
+    <value>Tabule ELEN: {0}</value>
+  </data>
+  <data name="ElenFont_InyVyrobca" xml:space="preserve">
+    <value>Výrobce {0} číslo písma nekóduje jako ELEN – význam určuje tabule.</value>
+  </data>
+  <data name="ElenFont_Doplnit_Tip" xml:space="preserve">
+    <value>Nastaví typ, proporcionalitu a šířku podle ID písma (kódování tabulí ELEN).</value>
+  </data>
 </root>
