@@ -27,7 +27,7 @@ public partial class FEditTrain : Form
     private readonly BindingList<Station> StaniceDo = new();
     private readonly BindingList<Station> StaniceZo = new();
 
-    private readonly BindingList<string> TrainNames = new();
+    private readonly BindingList<TrainName> TrainNames = new();
 
     private DateTime _lastKeyPressZo, _lastKeyPressDo;
     private string _searchStringZo = "", _searchStringDo = "";
@@ -121,7 +121,7 @@ public partial class FEditTrain : Form
 
         var lenDoplnky = new List<FyzSound>();
         foreach (var snd in GlobData.Sounds)
-            if (snd.Group.Name.EqualsIgnoreCase("DODATKY"))
+            if (snd.Group.Key.EqualsIgnoreCase("DODATKY"))
                 lenDoplnky.Add(snd);
 
         listAllDoplnky.DataSource = lenDoplnky;
@@ -195,7 +195,8 @@ public partial class FEditTrain : Form
 
         cbTyp.SelectedItem = train.Type;
 
-        if (!string.IsNullOrEmpty(train.Name)) cbNazov.Text = train.Name;
+        // v grafikone je kluc zvuku, v zozname sa zobrazuje jeho nazov
+        if (!string.IsNullOrEmpty(train.Name)) cbNazov.Text = TrainName.ToDisplay(TrainNames, train.Name);
 
         cbDopravca.SelectedItem = train.Operator;
 
@@ -446,7 +447,7 @@ public partial class FEditTrain : Form
         }
 
         var type = (TrainType)cbTyp.SelectedItem!;
-        var name = cbNazov.Text;
+        var name = TrainName.ToStored(TrainNames, cbNazov.Text);
 
         DateTime? arrival = null, departure = null;
         Routing routing;
@@ -829,7 +830,7 @@ public partial class FEditTrain : Form
         var doplnok = new Dodatok
         {
             Sound = sound,
-            Name = sound.Name.Replace("D", ""),
+            Name = Dodatok.CodeFromKey(sound.Key),
             ChosenReports = GetFromTable(dgvDoplnokSet, VybraneReporty)
         };
         Doplnky.Add(doplnok);

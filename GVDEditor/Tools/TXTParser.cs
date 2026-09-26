@@ -1407,7 +1407,7 @@ internal static class TxtParser
                         {
                             var code = row[i * 2 + 2];
                             var sound = GlobData.Sounds.FirstOrDefault(snd =>
-                                snd.Group.Name.EqualsIgnoreCase("DODATKY") && snd.Name.Replace("D", "") == code);
+                                snd.Group.Key.EqualsIgnoreCase("DODATKY") && Dodatok.CodeFromKey(snd.Key).EqualsIgnoreCase(code));
 
                             if (sound == null)
                             {
@@ -2488,19 +2488,20 @@ internal static class TxtParser
                     FyzSound? zvuk = null;
                     if (array.Length >= 3)
                     {
-                        var lang = GlobData.LocalLanguages.FirstOrDefault(jazyk => jazyk.Key == array[0]);
+                        var lang = GlobData.LocalLanguages.FirstOrDefault(jazyk => jazyk.Key.EqualsIgnoreCase(array[0]));
                         if (lang == null)
                             throw new FormatException($"Jazyk {array[0]} neexistuje.");
 
+                        // INISS odkaz rozlisuje podla klucov skupiny a zvuku (nie nazvov), bez ohladu na velkost pismen
                         zvuk = sounds.FirstOrDefault(sound =>
-                            array[1].EqualsIgnoreCase(sound.Group.Name) && array[2].EqualsIgnoreCase(sound.Name) && lang == sound.Group.Language);
+                            array[1].EqualsIgnoreCase(sound.Group.Key) && array[2].EqualsIgnoreCase(sound.Key) && lang == sound.Group.Language);
                     }
                     else if (array.Length == 2)
                     {
                         // starsi dvojdielny zapis bez jazyka (Skupina/meno) - INISS ho pouzije pri kazdom jazyku;
                         // my ho priradime k zakladnemu jazyku, pripadne k prvemu, kde nahravka existuje
                         var candidates = sounds.Where(sound =>
-                            array[0].EqualsIgnoreCase(sound.Group.Name) && array[1].EqualsIgnoreCase(sound.Name)).ToList();
+                            array[0].EqualsIgnoreCase(sound.Group.Key) && array[1].EqualsIgnoreCase(sound.Key)).ToList();
                         zvuk = candidates.FirstOrDefault(sound => sound.Group.Language.IsBasic) ?? candidates.FirstOrDefault();
                     }
                     else
@@ -2596,7 +2597,7 @@ internal static class TxtParser
             foreach (var sound in radenie.Sounds)
             {
                 var rowsound = new CsvRow();
-                rowsound.Insert(0, $"{sound.Language.Key}/{sound.Group.Name}/{sound.Name}");
+                rowsound.Insert(0, $"{sound.Language.Key}/{sound.Group.Key}/{sound.Key}");
                 razeni1F.WriteRow(rowsound);
                 if (sound.Language.IsBasic)
                 {

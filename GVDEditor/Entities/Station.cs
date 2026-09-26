@@ -100,14 +100,15 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
     }
 
     /// <summary>
-    ///     Vráti stanice dostupné zo zvukovej banky (prehľadáva sa priečinok R1).
+    ///     Vráti stanice dostupné zo zvukovej banky (prehľadáva sa skupina s kľúčom R1).
     /// </summary>
+    /// <remarks>Číslo stanice je kľúč zvuku - INISS hľadá zvuky v skupine podľa kľúča, nie podľa názvu.</remarks>
     /// <returns>list staníc.</returns>
     public static List<Station> GetStations()
     {
         return GlobData.Sounds
-            .Where(soundE => soundE.Group.Name == "R1")
-            .Select(soundE => new Station(soundE.Name, soundE.Text.Replace(",", "")))
+            .Where(soundE => soundE.Group.Key.EqualsIgnoreCase("R1"))
+            .Select(soundE => new Station(soundE.Key, soundE.Text.Replace(",", "")))
             .ToList();
     }
 

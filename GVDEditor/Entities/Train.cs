@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using GVDEditor.Tools;
 using ToolsCore.Entities;
+using ToolsCore.Tools;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
@@ -233,10 +234,12 @@ public sealed record Train
             train.Number == trainNum && train.Name == trainName && train.Type == trainType && train.Variant == variant);
 
     /// <summary>
-    ///     Vráti všetky názvy vlakov zo zvukovej banky (priečinok V8).
+    ///     Vráti všetky názvy vlakov zo zvukovej banky (zvuky skupiny s kľúčom V8).
     /// </summary>
+    /// <remarks>Do grafikonu sa zapisuje kľúč zvuku - INISS podľa neho hľadá nahrávku názvu vlaku; v zozname je vidno názov.</remarks>
     /// <returns></returns>
-    public static List<string> GetTrainNames() => GlobData.Sounds.Where(soundE => soundE.Group.Name == "V8").Select(soundE => soundE.Name).ToList();
+    public static List<TrainName> GetTrainNames() =>
+        GlobData.Sounds.Where(soundE => soundE.Group.Key.EqualsIgnoreCase("V8")).Select(soundE => new TrainName(soundE.Key, soundE.Name)).ToList();
 
     /// <summary>
     ///     Vrati vlak zo zoznamu variant, ktory je hlavna varianta vlaku (ma najdlhsiu trasu poctom stanic).

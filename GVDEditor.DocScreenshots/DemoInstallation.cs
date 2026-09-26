@@ -271,7 +271,7 @@ internal static class DemoInstallation
     /// </summary>
     private static List<Radenie> DemoRadenia()
     {
-        FyzSound Snd(string group, string name) => GlobData.Sounds.First(s => s.Group.Name == group && s.Name == name);
+        FyzSound Snd(string group, string key) => GlobData.Sounds.First(s => s.Group.Key == group && s.Key == key);
 
         var types = ReportType.GetDefaultValuesSK();
         List<ChosenReportType> Reports() =>

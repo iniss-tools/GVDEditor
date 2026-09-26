@@ -19,7 +19,7 @@ public class DodatokMapTests
     private static readonly List<ReportType> Types = [Nastup, Prijizdi, Odjede];
     private static readonly List<ReportVariant> Variants = ReportVariant.GetDefaultValues();
 
-    private static readonly FyzSound Sound = new() { Name = "D1001" };
+    private static readonly FyzSound Sound = new() { Key = "D1001", Name = "D1001" };
 
     [TestMethod]
     public void Dodatok_MapaPrechadzajucehoVlaku_PriradiTypyPlatnePreSmerovanie()

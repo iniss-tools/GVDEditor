@@ -219,7 +219,7 @@ public partial class FMain : Form
 
         try { GlobData.Radenia = TxtParser.ReadRazeni1(pathgvd.Path, allSounds); }catch (FileNotFoundException) { }
 
-        GlobData.Trains = new ExBindingList<Train>(TxtParser.ReadTrains(pathgvd.Path));
+        GlobData.Trains = new TrainBindingList(TxtParser.ReadTrains(pathgvd.Path));
 
         GlobData.TableTexts = new ExBindingList<TableText>(TxtParser.ReadTTexts(pathgvd.Path, GlobData.Trains));
         GlobData.TableFonts = new ExBindingList<TableFont>(TxtParser.ReadTableFonts(pathgvd.Path));
@@ -1537,7 +1537,7 @@ public partial class FMain : Form
                 {
                     var obmand = dateRemThis.TextAnd(train.DateLimitText, thistrain.DateLimitText);
                     var result = Utils.ShowQuestion(string.Format(Resources.FEditTrain_DateRem_zasahuje_do_ineho_vlaku, train.Type,
-                        train.Number, train.Name, obmand));
+                        train.Number, TrainName.ToDisplay(GlobData.TrainNames, train.Name), obmand));
                     if (result == DialogResult.Yes)
                     {
                         var result2 = FDateLimitEdit.SetDateLimit(this, thistrain.ZaciatokPlatnosti, thistrain.KoniecPlatnosti, train,
@@ -1606,7 +1606,7 @@ public partial class FMain : Form
                 {
                     var vlak = GlobData.Trains[i];
                     throw new ArgumentNullException(
-                        $"Vlak {vlak.Type} {vlak.NumberVariant} {vlak.Name} nemá definované smerovanie.");
+                        $"Vlak {vlak.Type} {vlak.NumberVariant} {TrainName.ToDisplay(GlobData.TrainNames, vlak.Name)} nemá definované smerovanie.");
                 }
 
                 if (GlobData.Trains[i].Routing == Routing.Prechadzajuci)
@@ -1677,6 +1677,13 @@ public partial class FMain : Form
             e.CellStyle.Font = sett.Bold
                 ? new Font(GlobData.UsingStyle.TrainTypeColumnScheme.Font, FontStyle.Bold)
                 : GlobData.UsingStyle.TrainTypeColumnScheme.Font;
+        }
+
+        // v grafikone je kluc zvuku nazvu vlaku, v tabulke sa zobrazuje jeho nazov
+        if (e.ColumnIndex == nameDataGridViewTextBoxColumn.Index && e.Value is string { Length: > 0 } trainName)
+        {
+            e.Value = TrainName.ToDisplay(GlobData.TrainNames, trainName);
+            e.FormattingApplied = true;
         }
 
         var typColumn = dgvTrains.Columns["typDataGridViewTextBoxColumn"];

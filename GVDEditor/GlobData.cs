@@ -32,7 +32,7 @@ internal static class GlobData
 
     public static ExBindingList<Operator> Operators { get; set; } = null!;
 
-    public static ExBindingList<Train> Trains { get; set; } = new();
+    public static ExBindingList<Train> Trains { get; set; } = new TrainBindingList();
     public static ExBindingList<Track> Tracks { get; set; } = null!;
     public static ExBindingList<Platform> Platforms { get; set; } = null!;
 
@@ -40,7 +40,7 @@ internal static class GlobData
 
     public static ExBindingList<TrainType> TrainsTypes { get; internal set; } = null!;
 
-    public static List<string> TrainNames { get; private set; } = null!;
+    public static List<TrainName> TrainNames { get; private set; } = null!;
 
     public static ExBindingList<TableTabTab> TabTabs { get; set; } = null!;
     public static ExBindingList<TableCatalog> TableCatalogs { get; set; } = null!;

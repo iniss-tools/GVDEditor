@@ -19,9 +19,17 @@ public sealed class Dodatok
     public FyzSound Sound { get; set; } = null!;
 
     /// <summary>
-    ///     Vrati alebo nastavi názov dodatkového hlásenia (zvyčajne Dxxxx, kde x - 0-9).
+    ///     Vrati alebo nastavi kód dodatkového hlásenia - kľúč zvuku Dxxxx bez predpony D (x - 0-9).
     /// </summary>
     public string Name { get; set; } = null!;
+
+    /// <summary>
+    ///     Prevedie kľúč zvuku zo skupiny DODATKY na kód doplnku zapisovaný do grafikonu (bez predpony D).
+    /// </summary>
+    /// <param name="key">kľúč zvuku, napr. D1003.</param>
+    /// <returns>kód doplnku, napr. 1003.</returns>
+    public static string CodeFromKey(string key) =>
+        key.StartsWith('D') || key.StartsWith('d') ? key[1..] : key;
 
     /// <summary>
     ///     Vrati alebo nastavi v akých reportoch sa má dodatok hlásiť.
@@ -44,7 +52,7 @@ public sealed class Dodatok
     public static Dodatok NumsToDodatok(FyzSound sound, string nums, List<ReportType> reportTypes, List<ReportVariant> reportVariants,
         Routing smerovanie)
     {
-        var dodatok = new Dodatok { Sound = sound, Name = sound.Name.Replace("D", "") };
+        var dodatok = new Dodatok { Sound = sound, Name = Dodatok.CodeFromKey(sound.Key) };
 
         if (!Utils.IsInt(nums)) 
             throw new FormatException("Pole dodatku neobsahuje iba čísla.");
