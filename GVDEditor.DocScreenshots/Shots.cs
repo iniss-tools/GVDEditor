@@ -86,6 +86,23 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             }, tabs: true);
             Shot("globalne-nastavenia", () => new FGlobalSettings(FMain.ObdobiaList.ToList()), tabs: true);
             Shot("nastavenia-programu/nastavenia-programu", () => new FAppSettings(GlobData.Config, GlobData.Styles));
+            // import dát z CSV s hlavičkou: tri nové vlaky s trasou podľa čísel staníc
+            const string importSample =
+                "Číslo;Typ;Príchod;Odchod;Koľaj;Dátumové obmedzenie;Všetky stanice\n" +
+                "3611;Os;;06:20;2;ide v 1-5;9900100,9900110,9900120\n" +
+                "3612;Os;19:40;;2;ide v 6,7;9900120,9900110,9900100\n" +
+                "1921;REX;08:48;08:50;1;ide denne;9900130,9900100,9900140\n";
+            FImportData ImportForm()
+            {
+                var form = new FImportData(gvdDir.GVD);
+                ((CheckBox)Field(form, "cboxFirstHeader")).Checked = true;
+                form.GetType().GetMethod("LoadText", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(form, [importSample]);
+                return form;
+            }
+
+            Shot("import-dat/import-dat", ImportForm, form => Resize(form, 900, 520));
+            Shot("import-dat/typ-stlpca", () => new FColumnTypeSelect(), form => SelectListItem(form, "listColumnTypes", 5));
+
             // analýza s nájdenými problémami: prázdny a nepoužitý TabTab a uplynutá platnosť dát (po snímke sa vráti)
             var emptyTab = new TableTabTab { Key = "Rezerva", Text = "" };
             var endValidData = gvdDir.GVD.EndValidData;

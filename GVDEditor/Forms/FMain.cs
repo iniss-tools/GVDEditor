@@ -444,8 +444,16 @@ public partial class FMain : Form
     private void ShowImportData()
     {
         var fid = new FImportData(((GVDDirectory)tscbObdobie.ComboBox.SelectedItem!).GVD);
-        var result = fid.ShowDialog();
-        if (result == DialogResult.OK) GlobData.Trains.ResetBindings();
+        if (fid.ShowDialog() != DialogResult.OK)
+            return;
+
+        // rovnako ako import z ELIS - pri nahradeni odstranit aj texty tabul odkazujuce na povodne vlaky
+        if (fid.ReplaceTrains)
+            RemoveAllTrains();
+
+        foreach (var train in fid.ImportedTrains) GlobData.Trains.Add(train);
+        GlobData.Trains.ResetBindings();
+        DataSaved = false;
     }
 
     private void ShowImportELIS()

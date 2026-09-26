@@ -119,9 +119,8 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
     /// <exception cref="ArgumentException">ak stanica neexistuje</exception>
     public static List<Station> GetStationsFromIDListString(string stations)
     {
-        stations = stations.Trim().Replace(" ", "");
-        var langsSplitted = stations.Split(',');
-        return langsSplitted.Select(GetFromID).ToList();
+        return stations.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .Select(GetFromID).ToList();
     }
 
     /// <summary>
@@ -134,8 +133,8 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
     {
         var stationsList = new List<Station>();
 
-        stations = stations.Trim().Replace(" ", "");
-        var stationsStringArr = stations.Split(',');
+        // nazvy mozu obsahovat medzery (Velka Ves) - orezavaju sa az jednotlive polozky
+        var stationsStringArr = stations.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 
         foreach (var s in stationsStringArr)
         {

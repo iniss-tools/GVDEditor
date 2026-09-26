@@ -22,7 +22,6 @@ public sealed class ImportTrainColumnType : Enumeration<ImportTrainColumnType>
         {
             Number,
             Type,
-            Variant,
             Prichod, Odchod,
             Track
         };
@@ -36,7 +35,16 @@ public sealed class ImportTrainColumnType : Enumeration<ImportTrainColumnType>
     public static ImportTrainColumnType ParseColumnName(string name)
     {
         if (string.IsNullOrEmpty(name)) return None;
-        return name.ToLower().Replace("-", "") switch
+
+        // hlavicky sa porovnavaju bez ohladu na velkost pismen, pomlcky a diakritiku (Kolaj = Koľaj)
+        var normalized = string.Join(' ', name.ToLower().Replace("-", " ").Split(' ', StringSplitOptions.RemoveEmptyEntries));
+        var type = ParseNormalized(normalized);
+        return type != None ? type : ParseNormalized(Utils.RemoveDiacritics(normalized));
+    }
+
+    private static ImportTrainColumnType ParseNormalized(string name)
+    {
+        return name switch
         {
             "číslo" => Number,
             "cislo" => Number,
@@ -149,7 +157,7 @@ public sealed class ImportTrainColumnType : Enumeration<ImportTrainColumnType>
     public static readonly ImportTrainColumnType AllStationsID = new(18, "Všetky stanice (ID stanice)");
     public static readonly ImportTrainColumnType StationsShortID = new(19, "Stanice (krátke hlásenie) (ID stanice)");
     public static readonly ImportTrainColumnType StationsLongID = new(20, "Stanice (dlhé hlásenie) (ID stanice)");
-    public static readonly ImportTrainColumnType AllStationsName = new(21, "Všetky stanice (stanice stanice)");
+    public static readonly ImportTrainColumnType AllStationsName = new(21, "Všetky stanice (názov stanice)");
     public static readonly ImportTrainColumnType StationsShortName = new(22, "Stanice (krátke hlásenie) (názov stanice)");
     public static readonly ImportTrainColumnType StationsLongName = new(23, "Stanice (dlhé hlásenie) (názov stanice)");
     public static readonly ImportTrainColumnType Attributes = new(24, "Vlastnosti vlaku");
