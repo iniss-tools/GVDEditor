@@ -84,6 +84,14 @@ internal static class Program
 
         AppInit.Initialization(out GlobData.Config, out GlobData.Styles, out GlobData.UsingStyle);
 
+        // harness nebezi v Application.Run: modalne okno (ShowDialog) by pri skonceni svojej slucky odinstalovalo
+        // synchronizacny kontext WinForms a BackgroundWorker spusteny potom by volal ProgressChanged/RunWorkerCompleted
+        // na vlakne z thread poolu - prvky okna by sa menili z cudzieho vlakna a UI by na niekolko sekund zamrzlo
+        WindowsFormsSynchronizationContext.AutoInstall = false;
+        SynchronizationContext.SetSynchronizationContext(new WindowsFormsSynchronizationContext());
+        // pristup k prvkom z cudzieho vlakna ma skoncit vynimkou, nie zamrznutim
+        Control.CheckForIllegalCrossThreadCalls = true;
+
         var culture = CultureInfo.CreateSpecificCulture("sk");
         Thread.CurrentThread.CurrentUICulture = culture;
         Thread.CurrentThread.CurrentCulture = culture;
