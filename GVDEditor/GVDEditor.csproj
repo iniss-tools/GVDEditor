@@ -165,6 +165,27 @@
 	  <EmbeddedResource Update="Forms\Settings\TrainTypesPage.cs.resx">
 	    <DependentUpon>TrainTypesPage.cs</DependentUpon>
 	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\EditTrain\TrainBasicsPage.cs.resx">
+	    <DependentUpon>TrainBasicsPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\EditTrain\TrainValidityPage.cs.resx">
+	    <DependentUpon>TrainValidityPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\EditTrain\TrainLanguagesPage.cs.resx">
+	    <DependentUpon>TrainLanguagesPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\EditTrain\RouteEditor.cs.resx">
+	    <DependentUpon>RouteEditor.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\EditTrain\TrainRoutePage.cs.resx">
+	    <DependentUpon>TrainRoutePage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\EditTrain\TrainDodatkyPage.cs.resx">
+	    <DependentUpon>TrainDodatkyPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\EditTrain\TrainRadeniePage.cs.resx">
+	    <DependentUpon>TrainRadeniePage.cs</DependentUpon>
+	  </EmbeddedResource>
 	  <EmbeddedResource Update="Forms\Settings\PlatformsTracksPage.cs.resx">
 	    <DependentUpon>PlatformsTracksPage.cs</DependentUpon>
 	  </EmbeddedResource>

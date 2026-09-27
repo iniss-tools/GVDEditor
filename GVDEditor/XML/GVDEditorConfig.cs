@@ -70,6 +70,12 @@ public record GVDEditorConfig() : ConfigBase
     [XmlElement("GlobalSettingsWindow")]
     public WindowPlacement? GlobalSettingsWindow { get; set; }
 
+    /// <summary>
+    ///     Velkost okna uprava vlaku; <see langword="null" /> = predvolena z navrhu.
+    /// </summary>
+    [XmlElement("EditTrainWindow")]
+    public WindowPlacement? EditTrainWindow { get; set; }
+
     /// <inheritdoc />
     public override string LinkAppSettingsGuide => LinkConsts.LINK_APP_SETTINGS;
 
@@ -85,5 +91,6 @@ public record GVDEditorConfig() : ConfigBase
         StartupINISSConfig = original.StartupINISSConfig with { };
         LocalSettingsWindow = original.LocalSettingsWindow?.Clone();
         GlobalSettingsWindow = original.GlobalSettingsWindow?.Clone();
+        EditTrainWindow = original.EditTrainWindow?.Clone();
     }
 }

@@ -435,9 +435,6 @@ Nástupištia sa ukladajú len spolu s koľajami, takže sa pri uložení grafik
 
 Zavrieť okno aj tak?</value>
   </data>
-  <data name="FEditTrain_Nezadaný_čas_príchodu" xml:space="preserve">
-    <value>Nezadaný čas príchodu.</value>
-  </data>
   <data name="RError" xml:space="preserve">
     <value>Chyba</value>
   </data>
@@ -485,12 +482,6 @@ Upraviť dátumové obmedzenie popísaného vlaku?</value>
 
 Mám ju nútene vypnúť ?</value>
   </data>
-  <data name="FEditTrain_Číslo_vlaku_sa_zhoduje_s_iným_vlakom_a_preto_bude_aj_jeho_radenie_priradené_k_tomuto_vlaku" xml:space="preserve">
-    <value>Číslo vlaku sa zhoduje s iným vlakom a preto bude aj jeho radenie priradené k tomuto vlaku (Doteraz upravené radenie sa vymaže).</value>
-  </data>
-  <data name="FEditTrain_Cislo_kopie_sa_zhoduje_s_inym_vlakom" xml:space="preserve">
-    <value>Číslo vlaku sa zhoduje s iným vlakom, ktorý má radenie. Radenie patrí číslu vlaku, preto kópia dostane radenie toho vlaku namiesto radenia pôvodného vlaku (doteraz upravené radenie sa zahodí).</value>
-  </data>
   <data name="SetDesktopTTSl" xml:space="preserve">
     <value>Služobný vlak</value>
   </data>
@@ -508,9 +499,6 @@ Mám ju nútene vypnúť ?</value>
   </data>
   <data name="FTableText_Generate_TTexts_Wrong_Item" xml:space="preserve">
     <value>Bol vybratý nepodporovaný typ obsahu tabule. Vyberte iný.</value>
-  </data>
-  <data name="FEditTrain_Nezadaný_čas_odchodu" xml:space="preserve">
-    <value>Nezadaný čas odchodu.</value>
   </data>
   <data name="SetTEOperator" xml:space="preserve">
     <value>Operátor</value>
@@ -599,9 +587,6 @@ Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnos
   </data>
   <data name="FTableLogical_Najprv_počet_záznamov" xml:space="preserve">
     <value>Najprv nastavte počet záznamov.</value>
-  </data>
-  <data name="FEditTrain_Vyluka_Hint" xml:space="preserve">
-    <value>Výluka vlaku (Vyluka.TXT). Okrem zabudovanej „Obecnej výluky v stanici“ sú v ponuke výluky založené obsluhou v INISSe (RAWBANK\LogZvuk.usr).</value>
   </data>
   <data name="FEditTrain_Vyluka_None" xml:space="preserve">
     <value>(žiadna)</value>
@@ -1320,9 +1305,6 @@ Vynútiť jeho ukončenie a spustiť ho znova?</value>
   <data name="FMain_StavovyDiagram" xml:space="preserve">
     <value>Stavový diagram…</value>
   </data>
-  <data name="FEditTrain_Kalendar" xml:space="preserve">
-    <value>Kalendár akcií…</value>
-  </data>
   <data name="FStateDgm_Stav" xml:space="preserve">
     <value>Stav</value>
   </data>
@@ -1895,5 +1877,83 @@ Pokračovať?</value>
   </data>
   <data name="CatalogTablesPage_Dole" xml:space="preserve">
     <value>Posunúť stĺpec nižšie v zozname</value>
+  </data>
+  <data name="TrainRules_Typ" xml:space="preserve">
+    <value>Vyberte typ vlaku.</value>
+  </data>
+  <data name="TrainRules_Dopravca" xml:space="preserve">
+    <value>Vyberte dopravcu.</value>
+  </data>
+  <data name="TrainRules_CisloZnaky" xml:space="preserve">
+    <value>Číslo vlaku nesmie obsahovať medzeru, tabulátor ani bodkočiarku.</value>
+  </data>
+  <data name="TrainRules_Linka" xml:space="preserve">
+    <value>Linka môže mať najviac 20 písmen bez diakritiky a číslic.</value>
+  </data>
+  <data name="TrainRules_Prekrytie" xml:space="preserve">
+    <value>Dátumové obmedzenie sa prekrýva s vlakom {0} (varianta {1}) v dňoch „{2}“.</value>
+  </data>
+  <data name="TrainRules_CezPolnoc" xml:space="preserve">
+    <value>Odchod je skôr ako príchod – vlak stojí v stanici cez polnoc.</value>
+  </data>
+  <data name="TrainRules_DodatokBezHlaseni" xml:space="preserve">
+    <value>Dodatok {0} nemá zaškrtnuté žiadne hlásenie, preto nikdy nezaznie.</value>
+  </data>
+  <data name="TrainBasicsPage_Vyluka_Info" xml:space="preserve">
+    <value>Výluka, ktorú INISS pri vlaku hlási. Okrem zabudovanej obecnej výluky ponuka obsahuje výluky, ktoré obsluha založila v INISSe.</value>
+  </data>
+  <data name="TrainBasicsPage_Radenie_Prevzate" xml:space="preserve">
+    <value>Radenie patrí číslu vlaku a číslo {0} má aj vlak {1} s radením – okno preto zobrazuje jeho radenie. Radenie upravené v tomto okne sa zahodilo.</value>
+  </data>
+  <data name="TrainValidityPage_Automaticky" xml:space="preserve">
+    <value>Varianty prideľuje GVDEditor sám (Nastavenia programu).</value>
+  </data>
+  <data name="TrainValidityPage_BezVariantov" xml:space="preserve">
+    <value>(-1 = vlak bez variantov)</value>
+  </data>
+  <data name="TrainValidityPage_ZiadneVarianty" xml:space="preserve">
+    <value>V grafikone nie je iný vlak s rovnakým číslom, názvom a typom.</value>
+  </data>
+  <data name="TrainValidityPage_DalsieVarianty" xml:space="preserve">
+    <value>Ďalšie varianty v grafikone:</value>
+  </data>
+  <data name="TrainValidityPage_ZmeniSaPoOK" xml:space="preserve">
+    <value>{0} (zmení sa po uložení vlaku)</value>
+  </data>
+  <data name="TrainRoutePage_TatoStanica" xml:space="preserve">
+    <value>Táto stanica: {0}</value>
+  </data>
+  <data name="TrainRoutePage_Prechadzajuci" xml:space="preserve">
+    <value>Prechádzajúci vlak – má príchod aj odchod.</value>
+  </data>
+  <data name="TrainRoutePage_Konciaci" xml:space="preserve">
+    <value>Končiaci vlak – má len príchod.</value>
+  </data>
+  <data name="TrainRoutePage_Vychadzajuci" xml:space="preserve">
+    <value>Východzí vlak – má len odchod.</value>
+  </data>
+  <data name="TrainRoutePage_BezTrasy" xml:space="preserve">
+    <value>Vlak zatiaľ nemá trasu – pridajte stanice zo smeru, do smeru alebo oboje.</value>
+  </data>
+  <data name="TrainRules_TrasaSToutoStanicou" xml:space="preserve">
+    <value>Trasa obsahuje aj stanicu grafikonu – tá sa do trasy nepíše.</value>
+  </data>
+  <data name="TrainPageHint_Upozornenie" xml:space="preserve">
+    <value>Upozornenie: {0}</value>
+  </data>
+  <data name="TrainRules_Radenie" xml:space="preserve">
+    <value>{0}. radenie: {1}</value>
+  </data>
+  <data name="TrainDodatkyPage_Info" xml:space="preserve">
+    <value>Dodatok zaznie pri zaškrtnutých hláseniach. Typy hlásení sa riadia smerovaním vlaku (trasou).</value>
+  </data>
+  <data name="TrainDodatkyPage_BezTrasy" xml:space="preserve">
+    <value>Vlak nemá trasu, preto zatiaľ nemá ani typy hlásení – najprv zadajte trasu.</value>
+  </data>
+  <data name="TrainRadeniePage_Info" xml:space="preserve">
+    <value>Radenie zaznie pri zaškrtnutých hláseniach; ak nie je zaškrtnuté nič, INISS ho prehrá pri všetkých.</value>
+  </data>
+  <data name="TrainRadeniePage_Nove" xml:space="preserve">
+    <value>(nové radenie)</value>
   </data>
 </root>

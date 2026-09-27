@@ -132,7 +132,10 @@ internal sealed class RadeniaEditing
         }
     }
 
-    private static Radenie Clone(Radenie source)
+    /// <summary>
+    ///     Kopia radenia s vlastnymi zoznamami nahravok a hlaseni.
+    /// </summary>
+    public static Radenie Clone(Radenie source)
     {
         var copy = new Radenie();
         CopyTo(source, copy);

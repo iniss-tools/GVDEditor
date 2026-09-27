@@ -53,23 +53,33 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("uprava-vlaku", () => new FEditTrain(express, trains.IndexOf(express), gvdDir.GVD, false, gvdDir.Dir.FullPath),
                 form =>
                 {
+                    Resize(form, 960, 680);
                     SelectListItem(form, "listRadenia", 0);
 
                     // dodatok D1002 hlásený pri Přijíždí (obe podoby) a pri Zastavil (dlhé) - pridaný tlačidlom Pridať
-                    var table = (DataGridView)Field(form, "dgvDoplnokSet");
+                    var dodatky = (Control)Field(form, "dodatkyPage");
+                    SelectCombo(form, "cbAdd", 1);
+                    dodatky.GetType().GetMethod("bAdd_Click", BindingFlags.NonPublic | BindingFlags.Instance)!
+                        .Invoke(dodatky, [dodatky, EventArgs.Empty]);
+                    var table = dodatky.Controls.Find("matrix", true).Single().Controls.OfType<DataGridView>().Single();
                     foreach (DataGridViewRow row in table.Rows)
                     {
                         var type = row.Cells[0].Value as string;
                         if (type == "Přijíždí")
                             row.Cells[1].Value = row.Cells[2].Value = true;
                         else if (type == "Zastavil")
-                            row.Cells[2].Value = true;
+                            row.Cells[1].Value = true;
                     }
-
-                    SelectListItem(form, "listAllDoplnky", 1);
-                    form.GetType().GetMethod("bDoplnkyAdd_Click", BindingFlags.NonPublic | BindingFlags.Instance)!
-                        .Invoke(form, [form, EventArgs.Empty]);
                 }, tabs: true);
+
+            // kópia rýchlika ako varianta 2 - tabuľka variant s prekrytím dátumového obmedzenia
+            Shot("uprava-vlaku/varianty", () => new FEditTrain(express, trains.Count, gvdDir.GVD, true, gvdDir.Dir.FullPath), form =>
+            {
+                Resize(form, 960, 680);
+                var validity = (Control)Field(form, "validityPage");
+                ((NumericUpDown)validity.Controls.Find("nudVariant", true).Single()).Value = 2;
+                ((ExOptionsView)Descendants(form).OfType<ExOptionsView>().Single()).SelectedPanel = (ExOptionsPanel)Field(form, "pPlatnost");
+            });
 
             // skladanie radenia: vybraná druhá nahrávka „číslo“ a priečinok s vlastnosťami vozňov
             Shot("radenie/uprava-radenia", () => new FRadenie([.. express.Radenia[0].Sounds]), form =>

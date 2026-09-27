@@ -200,18 +200,6 @@ Upravit datumové omezení popsaného vlaku? </value>
   <data name="FEditTrain_Radenie_LubovolnyCiel" xml:space="preserve">
     <value>(libovolná)</value>
   </data>
-  <data name="FEditTrain_Nezadaný_čas_odchodu" xml:space="preserve">
-    <value>Nezadaný čas odjezdu.</value>
-  </data>
-  <data name="FEditTrain_Nezadaný_čas_príchodu" xml:space="preserve">
-    <value>Nezadaný čas příjezdu.</value>
-  </data>
-  <data name="FEditTrain_Číslo_vlaku_sa_zhoduje_s_iným_vlakom_a_preto_bude_aj_jeho_radenie_priradené_k_tomuto_vlaku" xml:space="preserve">
-    <value>Číslo vlaku se shoduje s jiným vlakem a proto bude i jeho řazení přiřazeny k tomuto vlaku (Dosud upravené řazení se vymaže).</value>
-  </data>
-  <data name="FEditTrain_Cislo_kopie_sa_zhoduje_s_inym_vlakom" xml:space="preserve">
-    <value>Číslo vlaku se shoduje s jiným vlakem, který má řazení. Řazení patří číslu vlaku, proto kopie dostane řazení toho vlaku místo řazení původního vlaku (dosud upravené řazení se zahodí).</value>
-  </data>
   <data name="FEditTrain_Zadané_dátumové_obmedzenie_radenia_sa_prekrýva_s_iným_v_období" xml:space="preserve">
     <value>Zadané datumové omezení řazení se překrývá s jiným v období {0}.</value>
   </data>
@@ -571,9 +559,6 @@ Mám ji nuceně vypnout? </value>
   </data>
   <data name="FTableLogical_Najprv_počet_záznamov" xml:space="preserve">
     <value>Nejprve nastavte počet záznamů.</value>
-  </data>
-  <data name="FEditTrain_Vyluka_Hint" xml:space="preserve">
-    <value>Výluka vlaku (Vyluka.TXT). Kromě zabudované „Obecné výluky ve stanici“ jsou v nabídce výluky založené obsluhou v INISSu (RAWBANK\LogZvuk.usr).</value>
   </data>
   <data name="FEditTrain_Vyluka_None" xml:space="preserve">
     <value>(žádná)</value>
@@ -1292,9 +1277,6 @@ Vynutit jeho ukončení a spustit ho znovu?</value>
   <data name="FMain_StavovyDiagram" xml:space="preserve">
     <value>Stavový diagram…</value>
   </data>
-  <data name="FEditTrain_Kalendar" xml:space="preserve">
-    <value>Kalendář akcí…</value>
-  </data>
   <data name="FStateDgm_Stav" xml:space="preserve">
     <value>Stav</value>
   </data>
@@ -1867,5 +1849,83 @@ Pokračovat?</value>
   </data>
   <data name="CatalogTablesPage_Dole" xml:space="preserve">
     <value>Posunout sloupec níž v seznamu</value>
+  </data>
+  <data name="TrainRules_Typ" xml:space="preserve">
+    <value>Vyberte typ vlaku.</value>
+  </data>
+  <data name="TrainRules_Dopravca" xml:space="preserve">
+    <value>Vyberte dopravce.</value>
+  </data>
+  <data name="TrainRules_CisloZnaky" xml:space="preserve">
+    <value>Číslo vlaku nesmí obsahovat mezeru, tabulátor ani středník.</value>
+  </data>
+  <data name="TrainRules_Linka" xml:space="preserve">
+    <value>Linka může mít nejvýše 20 písmen bez diakritiky a číslic.</value>
+  </data>
+  <data name="TrainRules_Prekrytie" xml:space="preserve">
+    <value>Datumové omezení se překrývá s vlakem {0} (varianta {1}) ve dnech „{2}“.</value>
+  </data>
+  <data name="TrainRules_CezPolnoc" xml:space="preserve">
+    <value>Odjezd je dříve než příjezd – vlak stojí ve stanici přes půlnoc.</value>
+  </data>
+  <data name="TrainRules_DodatokBezHlaseni" xml:space="preserve">
+    <value>Dodatek {0} nemá zaškrtnuté žádné hlášení, proto nikdy nezazní.</value>
+  </data>
+  <data name="TrainBasicsPage_Vyluka_Info" xml:space="preserve">
+    <value>Výluka, kterou INISS u vlaku hlásí. Kromě vestavěné obecné výluky nabídka obsahuje výluky, které obsluha založila v INISSu.</value>
+  </data>
+  <data name="TrainBasicsPage_Radenie_Prevzate" xml:space="preserve">
+    <value>Řazení patří číslu vlaku a číslo {0} má i vlak {1} s řazením – okno proto zobrazuje jeho řazení. Řazení upravené v tomto okně bylo zahozeno.</value>
+  </data>
+  <data name="TrainValidityPage_Automaticky" xml:space="preserve">
+    <value>Varianty přiděluje GVDEditor sám (Nastavení programu).</value>
+  </data>
+  <data name="TrainValidityPage_BezVariantov" xml:space="preserve">
+    <value>(-1 = vlak bez variant)</value>
+  </data>
+  <data name="TrainValidityPage_ZiadneVarianty" xml:space="preserve">
+    <value>V grafikonu není jiný vlak se stejným číslem, názvem a typem.</value>
+  </data>
+  <data name="TrainValidityPage_DalsieVarianty" xml:space="preserve">
+    <value>Další varianty v grafikonu:</value>
+  </data>
+  <data name="TrainValidityPage_ZmeniSaPoOK" xml:space="preserve">
+    <value>{0} (změní se po uložení vlaku)</value>
+  </data>
+  <data name="TrainRoutePage_TatoStanica" xml:space="preserve">
+    <value>Tato stanice: {0}</value>
+  </data>
+  <data name="TrainRoutePage_Prechadzajuci" xml:space="preserve">
+    <value>Projíždějící vlak – má příjezd i odjezd.</value>
+  </data>
+  <data name="TrainRoutePage_Konciaci" xml:space="preserve">
+    <value>Končící vlak – má jen příjezd.</value>
+  </data>
+  <data name="TrainRoutePage_Vychadzajuci" xml:space="preserve">
+    <value>Výchozí vlak – má jen odjezd.</value>
+  </data>
+  <data name="TrainRoutePage_BezTrasy" xml:space="preserve">
+    <value>Vlak zatím nemá trasu – přidejte stanice ze směru, do směru nebo obojí.</value>
+  </data>
+  <data name="TrainRules_TrasaSToutoStanicou" xml:space="preserve">
+    <value>Trasa obsahuje i stanici grafikonu – ta se do trasy nepíše.</value>
+  </data>
+  <data name="TrainPageHint_Upozornenie" xml:space="preserve">
+    <value>Upozornění: {0}</value>
+  </data>
+  <data name="TrainRules_Radenie" xml:space="preserve">
+    <value>{0}. řazení: {1}</value>
+  </data>
+  <data name="TrainDodatkyPage_Info" xml:space="preserve">
+    <value>Dodatek zazní u zaškrtnutých hlášení. Typy hlášení se řídí směrováním vlaku (trasou).</value>
+  </data>
+  <data name="TrainDodatkyPage_BezTrasy" xml:space="preserve">
+    <value>Vlak nemá trasu, proto zatím nemá ani typy hlášení – nejprve zadejte trasu.</value>
+  </data>
+  <data name="TrainRadeniePage_Info" xml:space="preserve">
+    <value>Řazení zazní u zaškrtnutých hlášení; pokud není zaškrtnuto nic, INISS ho přehraje u všech.</value>
+  </data>
+  <data name="TrainRadeniePage_Nove" xml:space="preserve">
+    <value>(nové řazení)</value>
   </data>
 </root>

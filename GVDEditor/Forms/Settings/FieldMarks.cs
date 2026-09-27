@@ -34,6 +34,7 @@ internal sealed class FieldMarks
     {
         ExTextBox tb => tb.BorderColor,
         ExNumericUpDown nud => nud.BorderColor,
+        ExMaskedTextBox mtb => mtb.BorderColor,
         _ => null
     };
 
@@ -46,6 +47,9 @@ internal sealed class FieldMarks
                 break;
             case ExNumericUpDown nud:
                 nud.BorderColor = color;
+                break;
+            case ExMaskedTextBox mtb:
+                mtb.BorderColor = color;
                 break;
         }
     }

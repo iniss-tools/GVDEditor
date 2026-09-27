@@ -236,25 +236,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Číslo vlaku sa zhoduje s iným vlakom a preto bude aj jeho radenie priradené k tomuto vlaku (Doteraz upravené radenie sa vymaže)..
-        /// </summary>
-        internal static string FEditTrain_Číslo_vlaku_sa_zhoduje_s_iným_vlakom_a_preto_bude_aj_jeho_radenie_priradené_k_tomuto_vlaku {
-            get {
-                return ResourceManager.GetString(("FEditTrain_Číslo_vlaku_sa_zhoduje_s_iným_vlakom_a_preto_bude_aj_jeho_radenie_prir" +
-                        "adené_k_tomuto_vlaku"), resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Číslo vlaku sa zhoduje s iným vlakom, ktorý má radenie. Radenie patrí číslu vlaku, preto kópia dostane radenie toho vlaku namiesto radenia pôvodného vlaku (doteraz upravené radenie sa zahodí)..
-        /// </summary>
-        internal static string FEditTrain_Cislo_kopie_sa_zhoduje_s_inym_vlakom {
-            get {
-                return ResourceManager.GetString("FEditTrain_Cislo_kopie_sa_zhoduje_s_inym_vlakom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Dátumové obmedzenie radenia obsahuje chybu: .
         /// </summary>
         internal static string FEditTrain_DateRem_radenia_obsahuje_chybu {
@@ -326,24 +307,6 @@ namespace GVDEditor.Properties {
         internal static string FEditTrain_Radenie_LubovolnyCiel {
             get {
                 return ResourceManager.GetString("FEditTrain_Radenie_LubovolnyCiel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nezadaný čas odchodu..
-        /// </summary>
-        internal static string FEditTrain_Nezadaný_čas_odchodu {
-            get {
-                return ResourceManager.GetString("FEditTrain_Nezadaný_čas_odchodu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nezadaný čas príchodu..
-        /// </summary>
-        internal static string FEditTrain_Nezadaný_čas_príchodu {
-            get {
-                return ResourceManager.GetString("FEditTrain_Nezadaný_čas_príchodu", resourceCulture);
             }
         }
         
@@ -1421,15 +1384,6 @@ namespace GVDEditor.Properties {
         internal static string FTableLogical_Najprv_počet_záznamov {
             get {
                 return ResourceManager.GetString("FTableLogical_Najprv_počet_záznamov", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Číslo výluky z Vyluka.TXT: 0 = bez výluky, 1 = zabudovaná „Obecná výluka v stani.
-        /// </summary>
-        internal static string FEditTrain_Vyluka_Hint {
-            get {
-                return ResourceManager.GetString("FEditTrain_Vyluka_Hint", resourceCulture);
             }
         }
 
@@ -3541,15 +3495,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kalendár akcií….
-        /// </summary>
-        internal static string FEditTrain_Kalendar {
-            get {
-                return ResourceManager.GetString("FEditTrain_Kalendar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Stav.
         /// </summary>
         internal static string FStateDgm_Stav {
@@ -5238,6 +5183,240 @@ namespace GVDEditor.Properties {
         internal static string CatalogTablesPage_Dole {
             get {
                 return ResourceManager.GetString("CatalogTablesPage_Dole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte typ vlaku..
+        /// </summary>
+        internal static string TrainRules_Typ {
+            get {
+                return ResourceManager.GetString("TrainRules_Typ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte dopravcu..
+        /// </summary>
+        internal static string TrainRules_Dopravca {
+            get {
+                return ResourceManager.GetString("TrainRules_Dopravca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo vlaku nesmie obsahovať medzeru, tabulátor ani bodkočiarku..
+        /// </summary>
+        internal static string TrainRules_CisloZnaky {
+            get {
+                return ResourceManager.GetString("TrainRules_CisloZnaky", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linka môže mať najviac 20 písmen bez diakritiky a číslic..
+        /// </summary>
+        internal static string TrainRules_Linka {
+            get {
+                return ResourceManager.GetString("TrainRules_Linka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dátumové obmedzenie sa prekrýva s vlakom {0} (varianta {1}) v dňoch „{2}“..
+        /// </summary>
+        internal static string TrainRules_Prekrytie {
+            get {
+                return ResourceManager.GetString("TrainRules_Prekrytie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odchod je skôr ako príchod – vlak stojí v stanici cez polnoc..
+        /// </summary>
+        internal static string TrainRules_CezPolnoc {
+            get {
+                return ResourceManager.GetString("TrainRules_CezPolnoc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dodatok {0} nemá zaškrtnuté žiadne hlásenie, preto nikdy nezaznie..
+        /// </summary>
+        internal static string TrainRules_DodatokBezHlaseni {
+            get {
+                return ResourceManager.GetString("TrainRules_DodatokBezHlaseni", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Výluka, ktorú INISS pri vlaku hlási. Okrem zabudovanej obecnej výluky ponuka obsahuje výluky, ktoré obsluha založila v INISSe..
+        /// </summary>
+        internal static string TrainBasicsPage_Vyluka_Info {
+            get {
+                return ResourceManager.GetString("TrainBasicsPage_Vyluka_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Radenie patrí číslu vlaku a číslo {0} má aj vlak {1} s radením – okno preto zobrazuje jeho radenie. Radenie upravené v tomto okne sa zahodilo..
+        /// </summary>
+        internal static string TrainBasicsPage_Radenie_Prevzate {
+            get {
+                return ResourceManager.GetString("TrainBasicsPage_Radenie_Prevzate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Varianty prideľuje GVDEditor sám (Nastavenia programu)..
+        /// </summary>
+        internal static string TrainValidityPage_Automaticky {
+            get {
+                return ResourceManager.GetString("TrainValidityPage_Automaticky", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (-1 = vlak bez variantov).
+        /// </summary>
+        internal static string TrainValidityPage_BezVariantov {
+            get {
+                return ResourceManager.GetString("TrainValidityPage_BezVariantov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V grafikone nie je iný vlak s rovnakým číslom, názvom a typom..
+        /// </summary>
+        internal static string TrainValidityPage_ZiadneVarianty {
+            get {
+                return ResourceManager.GetString("TrainValidityPage_ZiadneVarianty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ďalšie varianty v grafikone:.
+        /// </summary>
+        internal static string TrainValidityPage_DalsieVarianty {
+            get {
+                return ResourceManager.GetString("TrainValidityPage_DalsieVarianty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} (zmení sa po uložení vlaku).
+        /// </summary>
+        internal static string TrainValidityPage_ZmeniSaPoOK {
+            get {
+                return ResourceManager.GetString("TrainValidityPage_ZmeniSaPoOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Táto stanica: {0}.
+        /// </summary>
+        internal static string TrainRoutePage_TatoStanica {
+            get {
+                return ResourceManager.GetString("TrainRoutePage_TatoStanica", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prechádzajúci vlak – má príchod aj odchod..
+        /// </summary>
+        internal static string TrainRoutePage_Prechadzajuci {
+            get {
+                return ResourceManager.GetString("TrainRoutePage_Prechadzajuci", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Končiaci vlak – má len príchod..
+        /// </summary>
+        internal static string TrainRoutePage_Konciaci {
+            get {
+                return ResourceManager.GetString("TrainRoutePage_Konciaci", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Východzí vlak – má len odchod..
+        /// </summary>
+        internal static string TrainRoutePage_Vychadzajuci {
+            get {
+                return ResourceManager.GetString("TrainRoutePage_Vychadzajuci", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak zatiaľ nemá trasu – pridajte stanice zo smeru, do smeru alebo oboje..
+        /// </summary>
+        internal static string TrainRoutePage_BezTrasy {
+            get {
+                return ResourceManager.GetString("TrainRoutePage_BezTrasy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trasa obsahuje aj stanicu grafikonu – tá sa do trasy nepíše..
+        /// </summary>
+        internal static string TrainRules_TrasaSToutoStanicou {
+            get {
+                return ResourceManager.GetString("TrainRules_TrasaSToutoStanicou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upozornenie: {0}.
+        /// </summary>
+        internal static string TrainPageHint_Upozornenie {
+            get {
+                return ResourceManager.GetString("TrainPageHint_Upozornenie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}. radenie: {1}.
+        /// </summary>
+        internal static string TrainRules_Radenie {
+            get {
+                return ResourceManager.GetString("TrainRules_Radenie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dodatok zaznie pri zaškrtnutých hláseniach. Typy hlásení sa riadia smerovaním vlaku (trasou)..
+        /// </summary>
+        internal static string TrainDodatkyPage_Info {
+            get {
+                return ResourceManager.GetString("TrainDodatkyPage_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak nemá trasu, preto zatiaľ nemá ani typy hlásení – najprv zadajte trasu..
+        /// </summary>
+        internal static string TrainDodatkyPage_BezTrasy {
+            get {
+                return ResourceManager.GetString("TrainDodatkyPage_BezTrasy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Radenie zaznie pri zaškrtnutých hláseniach; ak nie je zaškrtnuté nič, INISS ho prehrá pri všetkých..
+        /// </summary>
+        internal static string TrainRadeniePage_Info {
+            get {
+                return ResourceManager.GetString("TrainRadeniePage_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (nové radenie).
+        /// </summary>
+        internal static string TrainRadeniePage_Nove {
+            get {
+                return ResourceManager.GetString("TrainRadeniePage_Nove", resourceCulture);
             }
         }
 }

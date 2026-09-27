@@ -28,7 +28,8 @@ internal partial class FDateLimitEdit : Form
 
     public static string Result { get; private set; } = "";
 
-    public static DialogResult SetDateLimit(Form owner, DateTime dateFrom, DateTime dateTo, Train? train = null, bool textNot = false, string defaultValue = "")
+    public static DialogResult SetDateLimit(Form owner, DateTime dateFrom, DateTime dateTo, Train? train = null, bool textNot = false, string defaultValue = "",
+        string? proposal = null)
     {
         using var form = new FDateLimitEdit();
         form.Owner = owner;
@@ -40,6 +41,9 @@ internal partial class FDateLimitEdit : Form
         form.tbOldDateLimit.Text = defaultValue;
         if (textNot)
             form.tbDateLimit.Text = form._dateLimit.TextNot(defaultValue);
+        // navrhovane obmedzenie - povodne ostava v poli s povodnym obmedzenim na porovnanie
+        if (proposal != null)
+            form.tbDateLimit.Text = proposal;
         form.InitCalendar(dateFrom, dateTo);
         form.TextToGrid();
         form.tbDateLimit.Select();
