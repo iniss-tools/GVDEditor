@@ -32,6 +32,69 @@ public class ElenFontCodeTests
     }
 
     [TestMethod]
+    public void PismoElen_SkladanieZCastiVratiRovnakeCislo()
+    {
+        // vyber pisma sklada cislo z casti - kazde cislo musi prejst tam a spat bez zmeny (vratane bitov bez ovladaca)
+        for (var id = -1; id <= 0xFFFF; id++)
+        {
+            var code = new ElenFontCode(id);
+            if (id < 0)
+                continue;
+
+            var composed = ElenFontCode.Compose(code.KeptBits, code.Face, code.Color, code.Blinks, code.TallDigits, code.ExtendedFont);
+            Assert.AreEqual(id, composed.Id, $"cislo {id} (0x{id:X})");
+        }
+    }
+
+    [TestMethod]
+    [DataRow(1, 1, false, false, 0, 81)] // tenke cervene
+    [DataRow(2, 1, true, false, 0, 101)] // tucne cervene blikajuce
+    [DataRow(1, 2, false, true, 0, 90)] // tenke zelene s vysokymi cislicami
+    [DataRow(3, 3, false, false, 0, 115)] // len cislice zlte
+    [DataRow(0, 2, false, false, 6, 34370)] // ELEN16 rozsirene pismo 6 zelene
+    public void PismoElen_NovePismoMaBit0x40(int face, int color, bool blinks, bool tall, int extended, int expected)
+    {
+        Assert.AreEqual(expected,
+            ElenFontCode.Compose(ElenFontCode.DefaultKeptBits, face, color, blinks, tall, extended).Id);
+    }
+
+    [TestMethod]
+    public void PismoElen_ZmenaRezuZachovaBityBezOvladaca()
+    {
+        // 0x215: bity nad dolnym bajtom bez 0x8000 - tabuli sa neposielaju, ale v cisle ostanu
+        var code = new ElenFontCode(0x215);
+        var changed = ElenFontCode.Compose(code.KeptBits, 2, code.Color, code.Blinks, code.TallDigits, 0);
+
+        Assert.AreEqual(0x225, changed.Id);
+    }
+
+    [TestMethod]
+    public void PismoElen_RozsirenePismaPodlaVyrobcu()
+    {
+        Assert.AreEqual(9, ElenFontCode.MaxExtendedFont(null));
+        Assert.AreEqual(9, ElenFontCode.MaxExtendedFont(TableManufacturer.ELEN16));
+        Assert.AreEqual(4, ElenFontCode.MaxExtendedFont(TableManufacturer.ELEN10));
+        Assert.AreEqual(0, ElenFontCode.MaxExtendedFont(TableManufacturer.ELEN));
+    }
+
+    [TestMethod]
+    public void PismoElen_NazovPodlaVzhladu()
+    {
+        var old = Resources.Culture;
+        Resources.Culture = new CultureInfo("sk-SK");
+        try
+        {
+            Assert.AreEqual("Tučné červené blikajúce", new ElenFontCode(101).SuggestedName());
+            Assert.AreEqual("Tenké zelené s vysokými číslicami", new ElenFontCode(90).SuggestedName());
+            Assert.AreEqual("Rozšírené písmo 6 zelené", new ElenFontCode(34370).SuggestedName());
+        }
+        finally
+        {
+            Resources.Culture = old;
+        }
+    }
+
+    [TestMethod]
     public void PismoElen_BityNad255BezRozsirenia()
     {
         Assert.IsTrue(new ElenFontCode(533).HasIgnoredHighBits);

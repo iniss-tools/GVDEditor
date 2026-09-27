@@ -153,6 +153,48 @@
 	  <EmbeddedResource Update="Forms\FBlockMigration.cs.resx">
 	    <DependentUpon>FBlockMigration.cs</DependentUpon>
 	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\OperatorsPage.cs.resx">
+	    <DependentUpon>OperatorsPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\CustomStationsPage.cs.resx">
+	    <DependentUpon>CustomStationsPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\DelaysPage.cs.resx">
+	    <DependentUpon>DelaysPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\LanguagesPage.cs.resx">
+	    <DependentUpon>LanguagesPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\FontsPage.cs.resx">
+	    <DependentUpon>FontsPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\FTableFontPicker.cs.resx">
+	    <DependentUpon>FTableFontPicker.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Controls\TableFontPicker.cs.resx">
+	    <DependentUpon>TableFontPicker.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\TrainTypesPage.cs.resx">
+	    <DependentUpon>TrainTypesPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\TablesPage.cs.resx">
+	    <DependentUpon>TablesPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\PlatformsTracksPage.cs.resx">
+	    <DependentUpon>PlatformsTracksPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\GrafikonPage.cs.resx">
+	    <DependentUpon>GrafikonPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\StateDgmPage.cs.resx">
+	    <DependentUpon>StateDgmPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\GrafikonyPage.cs.resx">
+	    <DependentUpon>GrafikonyPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\AudioPage.cs.resx">
+	    <DependentUpon>AudioPage.cs</DependentUpon>
+	  </EmbeddedResource>
 	  <EmbeddedResource Update="Forms\FStateDgmCalendar.cs.resx">
 	    <DependentUpon>FStateDgmCalendar.cs</DependentUpon>
 	  </EmbeddedResource>

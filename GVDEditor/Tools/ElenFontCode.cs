@@ -1,4 +1,4 @@
-using System.Globalization;
+﻿using System.Globalization;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 
@@ -38,6 +38,83 @@ internal readonly record struct ElenFontCode(int Id)
     ///     Cislo rozsireneho pisma ELEN10/ELEN16 (bity 8-11 pri bite 0x8000); 0 = ziadne, rozhoduje <see cref="Face" />.
     /// </summary>
     public int ExtendedFont => Id >= 0 && (Id & ExtendedFlag) != 0 ? (Id >> 8) & 0x0F : 0;
+
+    /// <summary>
+    ///     Bity cisla, ktore nie su farba, blikanie, vysoke cislice, rez ani rozsirene pismo (napr. 0x40, ktory
+    ///     v datach byva vzdy). Pri skladani cisla v <see cref="Compose" /> sa ponechaju, aby sa cislo nezmenilo.
+    /// </summary>
+    public int KeptBits => Id < 0 ? DefaultKeptBits : Id & ~(0x3F | (ExtendedFont > 0 ? ExtendedFlag | 0x0F00 : 0));
+
+    /// <summary>
+    ///     Bity noveho pisma - bit 0x40 ako v datach INISSu.
+    /// </summary>
+    public const int DefaultKeptBits = 0x40;
+
+    /// <summary>
+    ///     Najvacsie cislo rozsireneho pisma, ktore vyrobca pozna (0 = rozsirene pisma nema).
+    ///     Bez vyrobcu (zoznam pisiem) sa pripusta ELEN16.
+    /// </summary>
+    public static int MaxExtendedFont(TableManufacturer? manufacturer)
+    {
+        if (manufacturer == null || manufacturer == TableManufacturer.ELEN16 || manufacturer == TableManufacturer.ELEN16Kam)
+            return 9;
+        return manufacturer == TableManufacturer.ELEN10 ? 4 : 0;
+    }
+
+    /// <summary>
+    ///     Zlozi cislo pisma z jeho casti - opak vlastnosti tejto struktury.
+    /// </summary>
+    /// <param name="keptBits">ostatne bity (<see cref="KeptBits" />)</param>
+    /// <param name="face">rez 0-3</param>
+    /// <param name="color">farba 0-3</param>
+    /// <param name="blinks">pismo blika</param>
+    /// <param name="tallDigits">vysoke cislice</param>
+    /// <param name="extendedFont">rozsirene pismo 1-15; 0 = ziadne</param>
+    public static ElenFontCode Compose(int keptBits, int face, int color, bool blinks, bool tallDigits, int extendedFont)
+    {
+        var id = keptBits | (color & 0x03) | (blinks ? 0x04 : 0) | (tallDigits ? 0x08 : 0) | ((face & 0x03) << 4);
+        if (extendedFont > 0)
+            id |= ExtendedFlag | ((extendedFont & 0x0F) << 8);
+        return new ElenFontCode(id);
+    }
+
+    /// <summary>
+    ///     Nazov pisma podla vzhladu, napr. "Tucne cervene blikajuce".
+    /// </summary>
+    public string SuggestedName()
+    {
+        if (Id < 0)
+            return Resources.ElenFont_PismoStlpca;
+
+        var parts = new List<string>
+        {
+            ExtendedFont > 0
+                ? string.Format(CultureInfo.CurrentCulture, Resources.ElenFont_Rozsirene, ExtendedFont)
+                : FaceName(Face)
+        };
+        switch (Color)
+        {
+            case 1: parts.Add(Resources.ElenFont_Cervene); break;
+            case 2: parts.Add(Resources.ElenFont_Zelene); break;
+            case 3: parts.Add(Resources.ElenFont_Zlte); break;
+        }
+
+        if (Blinks)
+            parts.Add(Resources.ElenFont_Nazov_Blikajuce);
+        if (TallDigits)
+            parts.Add(Resources.ElenFont_Nazov_VysokeCislice);
+
+        var name = string.Join(" ", parts);
+        return char.ToUpper(name[0], CultureInfo.CurrentCulture) + name[1..];
+    }
+
+    private static string FaceName(int face) => face switch
+    {
+        1 => Resources.ElenFont_Tenke,
+        2 => Resources.ElenFont_Tucne,
+        3 => Resources.ElenFont_LenCislice,
+        _ => Resources.ElenFont_Neproporcionalne
+    };
 
     /// <summary>
     ///     Cislo ma nastavene bity nad dolnym bajtom, ktore sa bez bitu 0x8000 tabuli neposielaju.
@@ -89,13 +166,7 @@ internal readonly record struct ElenFontCode(int Id)
         {
             ExtendedFont > 0
                 ? string.Format(CultureInfo.CurrentCulture, Resources.ElenFont_Rozsirene, ExtendedFont)
-                : Face switch
-                {
-                    1 => Resources.ElenFont_Tenke,
-                    2 => Resources.ElenFont_Tucne,
-                    3 => Resources.ElenFont_LenCislice,
-                    _ => Resources.ElenFont_Neproporcionalne
-                }
+                : FaceName(Face)
         };
 
         switch (Color)

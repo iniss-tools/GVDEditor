@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using GVDEditor.Controls;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
@@ -19,9 +20,9 @@ public partial class FTableText : Form
 
     private readonly BindingList<TableTextRealization> TRealizations;
 
-    private readonly Color defaultBorderColor;
     // popis vyznamu cisla pisma pri poli s cislom pisma
     private readonly ToolTip fontTip = new();
+    private readonly TableFontChoice fontChoice;
 
     /// <summary>
     ///     Tieto texty do tabul. Po <see cref="DialogResult.OK"/> novy objekt s upravenymi hodnotami; povodny objekt
@@ -41,8 +42,8 @@ public partial class FTableText : Form
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
-        defaultBorderColor = nudFont.BorderColor;
         (components ??= new Container()).Add(fontTip);
+        fontChoice = new TableFontChoice(cbFont, fontTip, allowColumnDefault: true);
 
         ThisTableText = tableText;
         this.gvd = gvd;
@@ -144,12 +145,12 @@ public partial class FTableText : Form
         if (listTrains.SelectedItem is TableTrain tableTrain)
         {
             tbTrainText.Text = tableTrain.Text;
-            nudFont.Value = tableTrain.FontID;
+            fontChoice.Value = tableTrain.FontID;
         }
         else
         {
             tbTrainText.Text = "";
-            nudFont.Value = -1;
+            fontChoice.Value = -1;
         }
 
         UpdateTrainButtons();
@@ -231,7 +232,7 @@ public partial class FTableText : Form
         if (listTrains.SelectedItem is TableTrain tableTrain)
         {
             tableTrain.Text = tbTrainText.Text;
-            tableTrain.FontID = decimal.ToInt32(nudFont.Value);
+            tableTrain.FontID = fontChoice.Value;
             TextTrains.ResetItem(listTrains.SelectedIndex);
         }
     }
@@ -309,11 +310,6 @@ public partial class FTableText : Form
         bTrainRemove.Enabled = selected;
         bTrainAdd.Enabled = TrainsWithoutText.Count != 0;
         cbAddTrain.Enabled = TrainsWithoutText.Count != 0;
-    }
-
-    private void nudFont_ValueChanged(object sender, EventArgs e)
-    {
-        FontIdHint.Apply(nudFont, fontTip, defaultBorderColor);
     }
 
     private void FTableText_HelpButtonClicked(object sender, CancelEventArgs e) => Utils.OpenShell(LinkConsts.LINK_TTEXTS);

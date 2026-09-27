@@ -58,7 +58,7 @@ namespace GVDEditor.Forms
             this.bDown = new ExControls.ExButton();
             this.bUp = new ExControls.ExButton();
             this.cbDivType = new ExControls.ExComboBox();
-            this.nudFont = new ExControls.ExNumericUpDown();
+            this.cbFont = new ExControls.ExComboBox();
             this.nudLine = new ExControls.ExNumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -101,7 +101,6 @@ namespace GVDEditor.Forms
             ((System.ComponentModel.ISupportInitialize)(this.nudWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudFont)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStart)).BeginInit();
@@ -294,7 +293,7 @@ namespace GVDEditor.Forms
             this.groupBox2.Controls.Add(this.bDown);
             this.groupBox2.Controls.Add(this.bUp);
             this.groupBox2.Controls.Add(this.cbDivType);
-            this.groupBox2.Controls.Add(this.nudFont);
+            this.groupBox2.Controls.Add(this.cbFont);
             this.groupBox2.Controls.Add(this.nudLine);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label14);
@@ -387,18 +386,13 @@ namespace GVDEditor.Forms
             this.cbDivType.StyleSelected.ForeColor = null;
             this.cbDivType.UseDarkScrollBar = false;
             // 
-            // nudFont
+            // cbFont
             // 
-            this.nudFont.HighlightColor = System.Drawing.SystemColors.Highlight;
-            resources.ApplyResources(this.nudFont, "nudFont");
-            this.nudFont.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-            this.nudFont.Name = "nudFont";
-            this.nudFont.SelectedButtonColor = System.Drawing.SystemColors.Highlight;
-            this.nudFont.ValueChanged += new System.EventHandler(this.nudFont_ValueChanged);
+            resources.ApplyResources(this.cbFont, "cbFont");
+            this.cbFont.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFont.DropDownWidth = 260;
+            this.cbFont.FormattingEnabled = true;
+            this.cbFont.Name = "cbFont";
             // 
             // nudLine
             // 
@@ -798,7 +792,6 @@ namespace GVDEditor.Forms
             ((System.ComponentModel.ISupportInitialize)(this.nudHeight)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudFont)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudEnd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStart)).EndInit();
@@ -860,7 +853,7 @@ namespace GVDEditor.Forms
         private System.Windows.Forms.ListBox listRows;
         private ExGroupBox groupBox4;
         private ExTextBox tbComment;
-        private ExNumericUpDown nudFont;
+        private ExControls.ExComboBox cbFont;
         private ExComboBox cbDivType;
         private ExControls.ExButton bSetAll;
         private ExGroupBox groupBox5;

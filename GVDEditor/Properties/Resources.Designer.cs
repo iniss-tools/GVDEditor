@@ -442,15 +442,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Naozaj chcete odstrániť tento grafikon ?.
-        /// </summary>
-        internal static string FGlobalSettings_Naozaj_chcete_odstrániť_tento_grafikon {
-            get {
-                return ResourceManager.GetString("FGlobalSettings_Naozaj_chcete_odstrániť_tento_grafikon", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Názov tejto audio linky už existuje..
         /// </summary>
         internal static string FGlobalSettings_Názov_tejto_audio_linky_už_existuje {
@@ -465,15 +456,6 @@ namespace GVDEditor.Properties {
         internal static string FGlobalSettings_Nebola_zadaná_skratka_typu_vlaku {
             get {
                 return ResourceManager.GetString("FGlobalSettings_Nebola_zadaná_skratka_typu_vlaku", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Neboli vyplnené všetky polia..
-        /// </summary>
-        internal static string FGlobalSettings_Neboli_vyplnené_všetky_polia {
-            get {
-                return ResourceManager.GetString("FGlobalSettings_Neboli_vyplnené_všetky_polia", resourceCulture);
             }
         }
         
@@ -4313,6 +4295,1005 @@ namespace GVDEditor.Properties {
         internal static string ElenFont_Doplnit_Tip {
             get {
                 return ResourceManager.GetString("ElenFont_Doplnit_Tip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov nesmie obsahovať úvodzovky (")..
+        /// </summary>
+        internal static string SettingsRules_Uvodzovky {
+            get {
+                return ResourceManager.GetString("SettingsRules_Uvodzovky", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte názov dopravcu..
+        /// </summary>
+        internal static string OperatorRules_Nazov_prazdny {
+            get {
+                return ResourceManager.GetString("OperatorRules_Nazov_prazdny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dopravca „{0}“ už v zozname je..
+        /// </summary>
+        internal static string OperatorRules_Nazov_existuje {
+            get {
+                return ResourceManager.GetString("OperatorRules_Nazov_existuje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dopravcu „{0}“ používajú vlaky grafikonu (počet vlakov: {1}). Po odstránení nebudú mať dopravcu..
+        /// </summary>
+        internal static string OperatorsPage_Odstranit_pouzity {
+            get {
+                return ResourceManager.GetString("OperatorsPage_Odstranit_pouzity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo stanice musí byť kladné celé číslo..
+        /// </summary>
+        internal static string CustomStationRules_Cislo_zle {
+            get {
+                return ResourceManager.GetString("CustomStationRules_Cislo_zle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo {0} má stanica zvukovej banky {1}..
+        /// </summary>
+        internal static string CustomStationRules_Cislo_banka {
+            get {
+                return ResourceManager.GetString("CustomStationRules_Cislo_banka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo {0} má už iná vlastná stanica..
+        /// </summary>
+        internal static string CustomStationRules_Cislo_existuje {
+            get {
+                return ResourceManager.GetString("CustomStationRules_Cislo_existuje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte názov stanice..
+        /// </summary>
+        internal static string CustomStationRules_Nazov_prazdny {
+            get {
+                return ResourceManager.GetString("CustomStationRules_Nazov_prazdny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanica „{0}“ je v zvukovej banke – vlastnú stanicu s týmto názvom by GVDEditor pri ďalšom otvorení grafikonu vynechal..
+        /// </summary>
+        internal static string CustomStationRules_Nazov_banka {
+            get {
+                return ResourceManager.GetString("CustomStationRules_Nazov_banka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to „{0}“ je stanica tohto grafikonu – vlastnú stanicu s týmto názvom by GVDEditor pri ďalšom otvorení grafikonu vynechal..
+        /// </summary>
+        internal static string CustomStationRules_Nazov_grafikon {
+            get {
+                return ResourceManager.GetString("CustomStationRules_Nazov_grafikon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanica „{0}“ už v zozname je..
+        /// </summary>
+        internal static string CustomStationRules_Nazov_existuje {
+            get {
+                return ResourceManager.GetString("CustomStationRules_Nazov_existuje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo stanice sa nedá zmeniť – používajú ju vlaky grafikonu (počet vlakov: {0})..
+        /// </summary>
+        internal static string CustomStationsPage_Cislo_zamknute {
+            get {
+                return ResourceManager.GetString("CustomStationsPage_Cislo_zamknute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanicu „{0}“ majú v trase vlaky grafikonu (počet vlakov: {1}). Po odstránení v trasách ostane len jej číslo..
+        /// </summary>
+        internal static string CustomStationsPage_Odstranit_pouzitu {
+            get {
+                return ResourceManager.GetString("CustomStationsPage_Odstranit_pouzitu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte čas meškania..
+        /// </summary>
+        internal static string DelayRules_Prazdne {
+            get {
+                return ResourceManager.GetString("DelayRules_Prazdne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Čas „{0}“ už v zozname je..
+        /// </summary>
+        internal static string DelayRules_Existuje {
+            get {
+                return ResourceManager.GetString("DelayRules_Existuje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hodnota nie je číslo minút – INISS ju pri štarte preskočí a operátorovi ju neponúkne..
+        /// </summary>
+        internal static string DelaysPage_Necislo {
+            get {
+                return ResourceManager.GetString("DelaysPage_Necislo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to nie je v zvukovej banke.
+        /// </summary>
+        internal static string LanguagesPage_Nie_v_banke {
+            get {
+                return ResourceManager.GetString("LanguagesPage_Nie_v_banke", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jazyky zvukovej banky: {0}..
+        /// </summary>
+        internal static string LanguagesPage_Banka {
+            get {
+                return ResourceManager.GetString("LanguagesPage_Banka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nápoveda: {0}.
+        /// </summary>
+        internal static string SettingsForm_Napoveda {
+            get {
+                return ResourceManager.GetString("SettingsForm_Napoveda", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to blikajúce.
+        /// </summary>
+        internal static string ElenFont_Nazov_Blikajuce {
+            get {
+                return ResourceManager.GetString("ElenFont_Nazov_Blikajuce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to s vysokými číslicami.
+        /// </summary>
+        internal static string ElenFont_Nazov_VysokeCislice {
+            get {
+                return ResourceManager.GetString("ElenFont_Nazov_VysokeCislice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo písma {0}{1} – {2}.
+        /// </summary>
+        internal static string FontPicker_Vysledok {
+            get {
+                return ResourceManager.GetString("FontPicker_Vysledok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadať číslo ručne.
+        /// </summary>
+        internal static string FontPicker_Zadat_cislo {
+            get {
+                return ResourceManager.GetString("FontPicker_Zadat_cislo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skryť zadanie čísla.
+        /// </summary>
+        internal static string FontPicker_Skryt_cislo {
+            get {
+                return ResourceManager.GetString("FontPicker_Skryt_cislo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bity 0x{0:X} nemajú ovládač – GVDEditor ich v čísle ponechá..
+        /// </summary>
+        internal static string FontPicker_Ponechane_bity {
+            get {
+                return ResourceManager.GetString("FontPicker_Ponechane_bity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Výrobca {0} rozšírené písmo {1} nepozná – tabuľa použije rez..
+        /// </summary>
+        internal static string FontPicker_Rozsirene_nepozna {
+            get {
+                return ResourceManager.GetString("FontPicker_Rozsirene_nepozna", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toto písmo je v zozname ako „{0}“..
+        /// </summary>
+        internal static string FontPicker_Uz_v_zozname {
+            get {
+                return ResourceManager.GetString("FontPicker_Uz_v_zozname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo stĺpca.
+        /// </summary>
+        internal static string FontChoice_Stlpec {
+            get {
+                return ResourceManager.GetString("FontChoice_Stlpec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} ({1}).
+        /// </summary>
+        internal static string FontChoice_Pismo {
+            get {
+                return ResourceManager.GetString("FontChoice_Pismo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlastné písmo ({0}).
+        /// </summary>
+        internal static string FontChoice_Vlastne {
+            get {
+                return ResourceManager.GetString("FontChoice_Vlastne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iné písmo….
+        /// </summary>
+        internal static string FontChoice_Ine {
+            get {
+                return ResourceManager.GetString("FontChoice_Ine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rovnaký vzhľad (číslo {0}) má už písmo „{1}“ – zmeňte rez, farbu alebo efekty..
+        /// </summary>
+        internal static string FontRules_Cislo_existuje {
+            get {
+                return ResourceManager.GetString("FontRules_Cislo_existuje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nikde – písmo sa dá odstrániť bez následkov..
+        /// </summary>
+        internal static string FontsPage_Nepouziva {
+            get {
+                return ResourceManager.GetString("FontsPage_Nepouziva", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stĺpce a texty sa pri zmene vzhľadu prečíslujú spolu s písmom..
+        /// </summary>
+        internal static string FontsPage_Precisluju {
+            get {
+                return ResourceManager.GetString("FontsPage_Precisluju", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} (kópia).
+        /// </summary>
+        internal static string FontsPage_Kopia {
+            get {
+                return ResourceManager.GetString("FontsPage_Kopia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (bez názvu).
+        /// </summary>
+        internal static string FontsPage_Bez_nazvu {
+            get {
+                return ResourceManager.GetString("FontsPage_Bez_nazvu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skratka ani text na tabuli nesmú obsahovať čiarku ani úvodzovky..
+        /// </summary>
+        internal static string TrainTypeRules_Znaky {
+            get {
+                return ResourceManager.GetString("TrainTypeRules_Znaky", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zabudovaný druh {0}.
+        /// </summary>
+        internal static string TrainTypesPage_Zabudovany {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Zabudovany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlastný – {0} ({1}1–{1}9, voľné {2}).
+        /// </summary>
+        internal static string TrainTypesPage_Vlastny {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Vlastny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ako osobný vlak.
+        /// </summary>
+        internal static string TrainTypesPage_Skupina_Os {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Skupina_Os", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ako rýchlik.
+        /// </summary>
+        internal static string TrainTypesPage_Skupina_R {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Skupina_R", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ako vlak vyššej kvality.
+        /// </summary>
+        internal static string TrainTypesPage_Skupina_X {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Skupina_X", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ako služobný vlak.
+        /// </summary>
+        internal static string TrainTypesPage_Skupina_Sl {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Skupina_Sl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to predvolená farba.
+        /// </summary>
+        internal static string TrainTypesPage_Vzhlad_Def {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Vzhlad_Def", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to modrý text.
+        /// </summary>
+        internal static string TrainTypesPage_Vzhlad_Blue {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Vzhlad_Blue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to svetložlté pozadie.
+        /// </summary>
+        internal static string TrainTypesPage_Vzhlad_Bus {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Vzhlad_Bus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to červený text, rýchlikový druh.
+        /// </summary>
+        internal static string TrainTypesPage_Vzhlad_Red {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Vzhlad_Red", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to modrý text na sivom pozadí, rýchlikový druh.
+        /// </summary>
+        internal static string TrainTypesPage_Vzhlad_BlueGray {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Vzhlad_BlueGray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to zelený text na sivom pozadí, rýchlikový druh.
+        /// </summary>
+        internal static string TrainTypesPage_Vzhlad_GreenGray {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Vzhlad_GreenGray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to svetlozelené pozadie, služobný druh.
+        /// </summary>
+        internal static string TrainTypesPage_Vzhlad_Service {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Vzhlad_Service", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} – zabudovaný druh {1}..
+        /// </summary>
+        internal static string TrainTypesPage_Detail_Zabudovany {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Detail_Zabudovany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} – vlastný typ na mieste {1} ({2})..
+        /// </summary>
+        internal static string TrainTypesPage_Detail_Vlastny {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Detail_Vlastny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V zozname vlakov INISSu: {0}..
+        /// </summary>
+        internal static string TrainTypesPage_Detail_Vzhlad {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Detail_Vzhlad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Používajú ho vlaky: {0}..
+        /// </summary>
+        internal static string TrainTypesPage_Pouzivaju {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Pouzivaju", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Žiadny vlak ho nepoužíva – dá sa premenovať aj odstrániť..
+        /// </summary>
+        internal static string TrainTypesPage_Nepouziva {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Nepouziva", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skratka je zamknutá, kým ju vlaky používajú. Text na tabuli a druh môžete meniť..
+        /// </summary>
+        internal static string TrainTypesPage_Zamknuta {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Zamknuta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obsadené miesta vlastných typov:.
+        /// </summary>
+        internal static string TrainTypesPage_Sloty {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Sloty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}1–{0}9  {1}  {2}/{3}.
+        /// </summary>
+        internal static string TrainTypesPage_Slot {
+            get {
+                return ResourceManager.GetString("TrainTypesPage_Slot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upraviť….
+        /// </summary>
+        internal static string TablesPage_Upravit {
+            get {
+                return ResourceManager.GetString("TablesPage_Upravit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nikde – dá sa odstrániť..
+        /// </summary>
+        internal static string TablesPage_Nepouziva {
+            get {
+                return ResourceManager.GetString("TablesPage_Nepouziva", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kým sa používa, nedá sa odstrániť..
+        /// </summary>
+        internal static string TablesPage_Pouzivana_neodstranit {
+            get {
+                return ResourceManager.GetString("TablesPage_Pouzivana_neodstranit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nová tabuľa….
+        /// </summary>
+        internal static string TablesPage_Nova_tabula {
+            get {
+                return ResourceManager.GetString("TablesPage_Nova_tabula", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nový text….
+        /// </summary>
+        internal static string TablesPage_Novy_text {
+            get {
+                return ResourceManager.GetString("TablesPage_Novy_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa.
+        /// </summary>
+        internal static string TablesPage_Stlpec_Katalog {
+            get {
+                return ResourceManager.GetString("TablesPage_Stlpec_Katalog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Režim.
+        /// </summary>
+        internal static string TablesPage_Stlpec_Rezim {
+            get {
+                return ResourceManager.GetString("TablesPage_Stlpec_Rezim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Výrobca.
+        /// </summary>
+        internal static string TablesPage_Stlpec_Vyrobca {
+            get {
+                return ResourceManager.GetString("TablesPage_Stlpec_Vyrobca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlakov s textom.
+        /// </summary>
+        internal static string TablesPage_Stlpec_Vlakov {
+            get {
+                return ResourceManager.GetString("TablesPage_Stlpec_Vlakov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Riadkov pravidiel.
+        /// </summary>
+        internal static string TablesPage_Stlpec_Riadkov {
+            get {
+                return ResourceManager.GetString("TablesPage_Stlpec_Riadkov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logická tabuľa {0}, pozícia {1}.
+        /// </summary>
+        internal static string TablesPage_Pouzitie_Logicka {
+            get {
+                return ResourceManager.GetString("TablesPage_Pouzitie_Logicka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaj {0}.
+        /// </summary>
+        internal static string TablesPage_Pouzitie_Kolaj {
+            get {
+                return ResourceManager.GetString("TablesPage_Pouzitie_Kolaj", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fyzická tabuľa {0}.
+        /// </summary>
+        internal static string TablesPage_Pouzitie_Fyzicka {
+            get {
+                return ResourceManager.GetString("TablesPage_Pouzitie_Fyzicka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text na tabuli {0}, stĺpec {1}.
+        /// </summary>
+        internal static string TablesPage_Pouzitie_Text {
+            get {
+                return ResourceManager.GetString("TablesPage_Pouzitie_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabuľa {0}, stĺpec {1}.
+        /// </summary>
+        internal static string TablesPage_Realizacia {
+            get {
+                return ResourceManager.GetString("TablesPage_Realizacia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text nemá žiadnu realizáciu – na tabuliach sa nezobrazí..
+        /// </summary>
+        internal static string TablesPage_Texty_Bez_realizacie {
+            get {
+                return ResourceManager.GetString("TablesPage_Texty_Bez_realizacie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Otvoriť editor TabTab….
+        /// </summary>
+        internal static string TablesPage_TabTab_Editor {
+            get {
+                return ResourceManager.GetString("TablesPage_TabTab_Editor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upraviť v editore….
+        /// </summary>
+        internal static string TablesPage_TabTab_Upravit {
+            get {
+                return ResourceManager.GetString("TablesPage_TabTab_Upravit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fyzické tabule sú skutočné zariadenia v stanici. Každá vychádza z katalógovej tabule. Dvojklik otvorí tabuľu na úpravu..
+        /// </summary>
+        internal static string TablesPage_Fyzicke_Info {
+            get {
+                return ResourceManager.GetString("TablesPage_Fyzicke_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logické tabule určujú, čo sa na fyzických tabuliach zobrazuje. Koľajám sa priraďujú na stránke Nástupištia a koľaje..
+        /// </summary>
+        internal static string TablesPage_Logicke_Info {
+            get {
+                return ResourceManager.GetString("TablesPage_Logicke_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógové tabule sú predlohy vzhľadu tabule – výrobca, stĺpce a riadky. Používajú ich fyzické tabule a texty na tabuliach..
+        /// </summary>
+        internal static string TablesPage_Katalogove_Info {
+            get {
+                return ResourceManager.GetString("TablesPage_Katalogove_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typy textov, ktoré sa zobrazujú v stĺpcoch tabúľ namiesto údajov z grafikonu, a texty jednotlivých vlakov..
+        /// </summary>
+        internal static string TablesPage_Texty_Info {
+            get {
+                return ResourceManager.GetString("TablesPage_Texty_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sekcie TabTab prekladajú hodnoty stĺpcov na text tabule (napr. druh vlaku na skratku s písmom). Upravujú sa v editore TabTab..
+        /// </summary>
+        internal static string TablesPage_TabTab_Info {
+            get {
+                return ResourceManager.GetString("TablesPage_TabTab_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte označenie nástupišťa..
+        /// </summary>
+        internal static string PlatformRules_Oznacenie {
+            get {
+                return ResourceManager.GetString("PlatformRules_Oznacenie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte celý názov nástupišťa..
+        /// </summary>
+        internal static string PlatformRules_Nazov {
+            get {
+                return ResourceManager.GetString("PlatformRules_Nazov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte názov zvuku nástupišťa..
+        /// </summary>
+        internal static string PlatformRules_Zvuk {
+            get {
+                return ResourceManager.GetString("PlatformRules_Zvuk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte označenie koľaje..
+        /// </summary>
+        internal static string TrackRules_Oznacenie {
+            get {
+                return ResourceManager.GetString("TrackRules_Oznacenie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte krátky názov koľaje..
+        /// </summary>
+        internal static string TrackRules_Kratky_nazov {
+            get {
+                return ResourceManager.GetString("TrackRules_Kratky_nazov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte celý názov koľaje..
+        /// </summary>
+        internal static string TrackRules_Nazov {
+            get {
+                return ResourceManager.GetString("TrackRules_Nazov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte text koľaje na tabuli..
+        /// </summary>
+        internal static string TrackRules_Text {
+            get {
+                return ResourceManager.GetString("TrackRules_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte názov zvuku koľaje..
+        /// </summary>
+        internal static string TrackRules_Zvuk {
+            get {
+                return ResourceManager.GetString("TrackRules_Zvuk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaje bez nástupišťa.
+        /// </summary>
+        internal static string PlatformsTracksPage_Bez_nastupista {
+            get {
+                return ResourceManager.GetString("PlatformsTracksPage_Bez_nastupista", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Na nástupišti neleží žiadna koľaj – nástupište sa nezapíše a pri ďalšom otvorení grafikonu zmizne..
+        /// </summary>
+        internal static string PlatformsTracksPage_Bez_kolaje {
+            get {
+                return ResourceManager.GetString("PlatformsTracksPage_Bez_kolaje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľají na nástupišti: {0}..
+        /// </summary>
+        internal static string PlatformsTracksPage_Kolaji {
+            get {
+                return ResourceManager.GetString("PlatformsTracksPage_Kolaji", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlaky: {0} s príchodom na túto koľaj, {1} s odchodom z nej..
+        /// </summary>
+        internal static string PlatformsTracksPage_Vlaky {
+            get {
+                return ResourceManager.GetString("PlatformsTracksPage_Vlaky", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nástupište s koľajami sa nedá odstrániť – najprv koľaje presuňte na iné nástupište alebo ich odstráňte..
+        /// </summary>
+        internal static string PlatformsTracksPage_Najprv_kolaje {
+            get {
+                return ResourceManager.GetString("PlatformsTracksPage_Najprv_kolaje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov priečinka sa nemení..
+        /// </summary>
+        internal static string GrafikonPage_Priecinok_bez_zmeny {
+            get {
+                return ResourceManager.GetString("GrafikonPage_Priecinok_bez_zmeny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priečinok sa premenuje na „{0}“ po kliknutí na OK..
+        /// </summary>
+        internal static string GrafikonPage_Priecinok_po_OK {
+            get {
+                return ResourceManager.GetString("GrafikonPage_Priecinok_po_OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to – a ďalšie miesta: {0}.
+        /// </summary>
+        internal static string TablesPage_Dalsie {
+            get {
+                return ResourceManager.GetString("TablesPage_Dalsie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte číslo od 1 do {0}, alebo pole nechajte prázdne – grafikon potom vlastnú linku nemá..
+        /// </summary>
+        internal static string DirListRules_Port {
+            get {
+                return ResourceManager.GetString("DirListRules_Port", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte názov linky – pod ním ju operátor vidí v INISSe..
+        /// </summary>
+        internal static string AudioRules_Nazov {
+            get {
+                return ResourceManager.GetString("AudioRules_Nazov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte protokolový názov – podľa neho linku adresuje nadradený systém..
+        /// </summary>
+        internal static string AudioRules_Protokol {
+            get {
+                return ResourceManager.GetString("AudioRules_Protokol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte názov fronty – linka bez fronty nemá zvukový výstup a nič neprehrá..
+        /// </summary>
+        internal static string AudioRules_Fronta {
+            get {
+                return ResourceManager.GetString("AudioRules_Fronta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frontu „{0}“ má aj linka „{1}“, ale s iným uzlom. Linky s rovnakou frontou zdieľajú jeden výstup, preto musia hrať na rovnakom uzle..
+        /// </summary>
+        internal static string AudioRules_Fronta_Uzol {
+            get {
+                return ResourceManager.GetString("AudioRules_Fronta_Uzol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spínanie zosilňovača: zadajte číslo výstupu ústredne 0 – 63 alebo E1 – E99 pre port spínacej jednotky ELSVO, alebo pole nechajte prázdne..
+        /// </summary>
+        internal static string AudioRules_Zosilnovac {
+            get {
+                return ResourceManager.GetString("AudioRules_Zosilnovac", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter ústredne musí byť celé číslo od 0 do 65535, alebo pole nechajte prázdne..
+        /// </summary>
+        internal static string AudioRules_Ustredna {
+            get {
+                return ResourceManager.GetString("AudioRules_Ustredna", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uzol musí byť číslo počítača (prázdne alebo 0 = tento počítač) alebo sériový port v tvare COM3..
+        /// </summary>
+        internal static string AudioRules_Uzol {
+            get {
+                return ResourceManager.GetString("AudioRules_Uzol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon {0} ({1}) sa po kliknutí na OK odstráni a jeho priečinok „{2}“ sa presunie do Koša..
+        /// </summary>
+        internal static string GrafikonyPage_Odstranit {
+            get {
+                return ResourceManager.GetString("GrafikonyPage_Odstranit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon leží priamo v dátovom priečinku INISSu (starší zápis s jediným grafikonom). Porty ani farbu mu nemožno nastaviť a nedá sa odstrániť – najprv ho presuňte do vlastného priečinka (GVDEditor to ponúkne pri jeho otvorení)..
+        /// </summary>
+        internal static string GrafikonyPage_DataRoot {
+            get {
+                return ResourceManager.GetString("GrafikonyPage_DataRoot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to z palety.
+        /// </summary>
+        internal static string GrafikonyPage_Z_palety {
+            get {
+                return ResourceManager.GetString("GrafikonyPage_Z_palety", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priečinok grafikonu: {0}.
+        /// </summary>
+        internal static string GrafikonyPage_Priecinok {
+            get {
+                return ResourceManager.GetString("GrafikonyPage_Priecinok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon stanice {0} má port hlásenia {1} – INISS ho použije ako uzol namiesto poľa Uzol..
+        /// </summary>
+        internal static string AudioPage_Uzol_Z_Grafikonu {
+            get {
+                return ResourceManager.GetString("AudioPage_Uzol_Z_Grafikonu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Testovací okruh sa operátorovi v zozname okruhov neponúka – sprístupní tlačidlo Test/stop v dialógoch hlásení..
+        /// </summary>
+        internal static string AudioPage_Test {
+            get {
+                return ResourceManager.GetString("AudioPage_Test", resourceCulture);
             }
         }
 }

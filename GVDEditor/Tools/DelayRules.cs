@@ -1,4 +1,5 @@
 using System.Globalization;
+using GVDEditor.Properties;
 
 namespace GVDEditor.Tools;
 
@@ -15,6 +16,24 @@ internal static class DelayRules
 
     private static bool TryGetMinutes(string value, out int minutes) =>
         int.TryParse(value.Trim(' ', '\t'), NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out minutes);
+
+    /// <summary>
+    ///     Chyba casu na pozicii <paramref name="index" /> - prazdna hodnota alebo cas, ktory je v zozname dvakrat.
+    ///     Necislena hodnota chybou nie je (INISS ju len preskoci), na tu upozornuje <see cref="IsAcceptedByIniss" />.
+    /// </summary>
+    /// <returns>Text chyby, alebo <see langword="null" />, ak je cas v poriadku.</returns>
+    public static string? CheckValue(IReadOnlyList<string> delays, int index)
+    {
+        var value = delays[index].Trim();
+        if (value.Length == 0)
+            return Resources.DelayRules_Prazdne;
+
+        for (var i = 0; i < delays.Count; i++)
+            if (i != index && delays[i].Trim() == value)
+                return string.Format(CultureInfo.CurrentCulture, Resources.DelayRules_Existuje, value);
+
+        return null;
+    }
 
     /// <summary>
     ///     Pozicia, na ktoru patri <paramref name="value" />: cislo pred prvy vacsi cas, necislena hodnota na koniec.

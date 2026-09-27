@@ -1,19 +1,21 @@
 ﻿using System.Globalization;
 using ExControls;
 using GVDEditor.Entities;
+using GVDEditor.Forms.Settings;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
-using ToolsCore.StateDgm;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Forms;
 
 /// <summary>
-///     Dialog - Lokálne nastavenia konkrétneho GVD.
+///     Dialog - Lokálne nastavenia konkrétneho GVD. Stránky sú v strome vľavo; každá je samostatný prvok
+///     v <c>Forms/Settings</c>, okno ich len hostí, zbiera ich chyby a pri OK zapíše grafikon.
 /// </summary>
 public partial class FLocalSettings : Form
 {
     private readonly bool _openTabTabEditor;
+    private readonly bool _openStateDgmEditor;
 
     /// <summary>
     ///     Tento priečinok.
@@ -23,1395 +25,242 @@ public partial class FLocalSettings : Form
     /// <summary>
     ///     Priečinok s písmami pre tabule.
     /// </summary>
-    public string FontDir;
-
-    private readonly Color _defaultBorderColor;
-    // popis vyznamu cisla pisma pri poli s cislom pisma
-    private readonly ToolTip _fontTip = new();
-    private readonly bool _openStateDgmEditor;
+    public string FontDir => fontsPage.FontDir;
 
     /// <summary>
-    ///     Oznacenie kolaje, ktore je prave v poli Oznacenie - kratky nazov a text na tabule sa s nim menia, kym su zhodne.
-    /// </summary>
-    private string _shownTrackKey = "";
-
-    /// <summary>
-    ///     Novy nazov priecinka grafikonu, ktory tlacidlo Zmenit overilo; priecinok sa premenuje az tlacidlom Ulozit.
-    /// </summary>
-    private string? _pendingDirName;
-
-    /// <summary>
-    ///     Stav dat pred otvorenim okna; ak sa okno nezavrie tlacidlom Ulozit, data sa don vratia.
+    ///     Stav dat pred otvorenim okna; ak sa okno nezavrie tlacidlom OK, data sa don vratia.
     /// </summary>
     private readonly LocalSettingsSnapshot _snapshot;
+
+    /// <summary>
+    ///     Stranka, ktora sa ma vybrat po otvoreni okna.
+    /// </summary>
+    private readonly LocalSettingsPage _startPage;
+
+    /// <summary>
+    ///     Stranky, ktore samy kontroluju svoje udaje, s panelom, v ktorom su.
+    /// </summary>
+    private readonly (ExOptionsPanel Panel, ISettingsPage Page)[] _checkedPages;
+
+    /// <summary>
+    ///     Plnenie stranok - az pri prvom zobrazeni, zvysne postupne po otvoreni okna.
+    /// </summary>
+    private readonly PageLoader _pages;
+
+    /// <summary>
+    ///     Clanok dokumentacie ku kazdej stranke okna.
+    /// </summary>
+    private readonly Dictionary<ExOptionsPanel, string> _helpLinks;
 
     /// <summary>
     ///     Vytvori novy formulár typu <see cref="FLocalSettings"/>.
     /// </summary>
     /// <param name="dir">Aktualny priecinok s grafikonom.</param>
-    /// <param name="openIndex">Index TabPage, ktory sa ma otvorit po otvoreni dialogu.</param>
-    public FLocalSettings(GVDDirectory dir, int openIndex = -1)
+    /// <param name="page">Stranka, ktora sa ma otvorit po otvoreni dialogu.</param>
+    /// <param name="action">Editor, ktory sa ma otvorit hned po otvoreni dialogu.</param>
+    public FLocalSettings(GVDDirectory dir, LocalSettingsPage page = LocalSettingsPage.Grafikon,
+        LocalSettingsAction action = LocalSettingsAction.None)
     {
-        // zalozky menia data priamo v GlobData - Zrusit ich vracia z tejto snimky
+        // stranky menia data priamo v GlobData - Zrusit ich vracia z tejto snimky
         _snapshot = LocalSettingsSnapshot.Capture();
 
         InitializeComponent();
         this.ApplyThemeAndFonts();
-
-        _defaultBorderColor = nudFontID.BorderColor;
-        (components ??= new Container()).Add(_fontTip);
-        _fontTip.SetToolTip(bFontFromId, Resources.ElenFont_Doplnit_Tip);
-        nudFontID_ValueChanged(nudFontID, EventArgs.Empty);
+        // SetFormFont zapina AutoSize - okno s menitelnou velkostou by sa nedalo zmensit
+        AutoSize = false;
+        // nazov stranky nad nou tucne ako v nastaveniach programu
+        optionsView.HeaderNodeNameFont = new Font(optionsView.HeaderNodeNameFont, FontStyle.Bold);
+        SettingsWindow.ApplyPlacement(this, GlobData.Config.LocalSettingsWindow);
+        pGroupStanica.GenerateLinksToChildren = true;
+        pGroupTabule.GenerateLinksToChildren = true;
 
         ThisDir = dir;
+        _startPage = page;
+        // zobrazi sa len stranka, ktorou sa okno otvara - ostatne sa vytvoria az pri prvom zobrazeni
+        optionsView.SelectedPanel = PanelOf(page);
+        _openTabTabEditor = action == LocalSettingsAction.OpenTabTabEditor;
+        _openStateDgmEditor = action == LocalSettingsAction.OpenStateDgmEditor;
 
-        tbDir.Text = dir.Dir.FullPath;
-
-        dtpGVDOd.Value = dir.GVD.StartValidTimeTable;
-        dtpGVDDo.Value = dir.GVD.EndValidTimeTable;
-
-        dtpDataOd.Value = dir.GVD.StartValidData;
-        dtpDataDo.Value = dir.GVD.EndValidData;
-
-        cbStationName.DataSource = GlobData.Stations;
-
-        cbCustomStation.Checked = dir.GVD.ThisStation.IsCustom;
-
-        if (cbCustomStation.Checked)
+        _helpLinks = new Dictionary<ExOptionsPanel, string>
         {
-            nudIDStation.Value = int.Parse(dir.GVD.ThisStation.ID);
-            tbGVDStationName.Text = dir.GVD.ThisStation.Name;
-        }
-        else
-        {
-            cbStationName.SelectedItem = dir.GVD.ThisStation;
-        }
+            [pGrafikon] = LinkConsts.LINK_LOCAL_GRAFIKON,
+            [pStanice] = LinkConsts.LINK_LOCAL_STANICE,
+            [pDopravcovia] = LinkConsts.LINK_LOCAL_DOPRAVCOVIA,
+            [pNastupistia] = LinkConsts.LINK_LOCAL_NASTUPISTIA_KOLAJE,
+            [pFonts] = LinkConsts.LINK_TFONTS,
+            [pTabTab] = LinkConsts.LINK_TABTAB_EDITOR,
+            [pKatTab] = LinkConsts.LINK_TCATALOG,
+            [pFyzTab] = LinkConsts.LINK_TPHYSICAL,
+            [pLogTab] = LinkConsts.LINK_TLOGICAL,
+            [pTTexts] = LinkConsts.LINK_TTEXTS,
+            [pStateDgm] = LinkConsts.LINK_LOCAL_STATEDGM
+        };
+        optionsView.SelectedPanelChanged += (_, _) => UpdateHelpLink();
 
-        tbDirName.Text = dir.Dir.DirName;
+        _checkedPages =
+        [
+            (pGrafikon, grafikonPage), (pStanice, customStationsPage), (pDopravcovia, operatorsPage),
+            (pNastupistia, platformsTracksPage), (pFonts, fontsPage)
+        ];
+        foreach (var (_, checkedPage) in _checkedPages)
+            checkedPage.ProblemsChanged += (_, _) => UpdateProblems();
 
-        listDopravcovia.DataSource = GlobData.Operators;
+        // stranky s kontrolou chyb idu prve, aby sa chyby v strome ukazali co najskor
+        var station = dir.GVD.ThisStation;
+        _pages = new PageLoader(this, optionsView);
+        _pages.Add(pGrafikon, () => grafikonPage.LoadData(dir));
+        _pages.Add(pStanice, () => customStationsPage.LoadData(station.Name));
+        _pages.Add(pDopravcovia, operatorsPage.LoadData);
+        _pages.Add(pNastupistia, platformsTracksPage.LoadData);
+        _pages.Add(pFonts, () => fontsPage.LoadData(Utils.ParseStringOrDefault(GlobData.TableFontDir)));
+        _pages.Add(pTabTab, () => tabTabPage.LoadData(new TabTabKind(station)));
+        _pages.Add(pKatTab, () => catalogTablesPage.LoadData(new CatalogTablesKind()));
+        _pages.Add(pFyzTab, () => physicalTablesPage.LoadData(new PhysicalTablesKind()));
+        _pages.Add(pLogTab, () => logicalTablesPage.LoadData(new LogicalTablesKind(station)));
+        _pages.Add(pTTexts, () => textsPage.LoadData(new TableTextsKind(dir.GVD)));
+        _pages.Add(pStateDgm, () => stateDgmPage.LoadData(dir));
+        _pages.Load(PanelOf(page));
+        UpdateProblems();
+    }
 
-        listNastupistia.DataSource = GlobData.Platforms;
-        listKolaje.DataSource = GlobData.Tracks;
-        cbNastupistia.DataSource = GlobData.Platforms;
+    private ExOptionsPanel PanelOf(LocalSettingsPage page) => page switch
+    {
+        LocalSettingsPage.VlastneStanice => pStanice,
+        LocalSettingsPage.Dopravcovia => pDopravcovia,
+        LocalSettingsPage.Nastupistia or LocalSettingsPage.Kolaje => pNastupistia,
+        LocalSettingsPage.FyzickeTabule => pFyzTab,
+        LocalSettingsPage.LogickeTabule => pLogTab,
+        LocalSettingsPage.KatalogoveTabule => pKatTab,
+        LocalSettingsPage.TabTab => pTabTab,
+        LocalSettingsPage.Texty => pTTexts,
+        LocalSettingsPage.Pisma => pFonts,
+        LocalSettingsPage.StavovyDiagram => pStateDgm,
+        _ => pGrafikon
+    };
 
-        RefreshKolajTables();
-        GlobData.TableLogicals.ListChanged += TableLogicals_ListChanged;
-        cbFontType.DataSource = TableFontType.GetValues();
+    private void UpdateHelpLink()
+    {
+        var panel = optionsView.SelectedPanel;
+        llHelp.Text = string.Format(CultureInfo.CurrentCulture, Resources.SettingsForm_Napoveda, panel?.NodeText);
+        llHelp.Enabled = panel is not null && _helpLinks.ContainsKey(panel);
+    }
 
-        listFyzTabule.DataSource = GlobData.TablePhysicals;
-        listLogTabule.DataSource = GlobData.TableLogicals;
-        listKatTabule.DataSource = GlobData.TableCatalogs;
-        listTabTabs.DataSource = GlobData.TabTabs;
-        listTexty.DataSource = GlobData.TableTexts;
-        listFonts.DataSource = GlobData.TableFonts;
+    private void llHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => OpenHelp();
 
-        listCustomStations.DataSource = GlobData.CustomStations;
+    private void FLocalSettings_HelpRequested(object sender, HelpEventArgs hlpevent)
+    {
+        hlpevent.Handled = true;
+        OpenHelp();
+    }
 
-        FontDir = Utils.ParseStringOrDefault(GlobData.TableFontDir);
-        tbFontDir.Text = Utils.ParseStringOrDefault(GlobData.TableFontDir);
-
-        if (GlobData.Operators.Count == 0)
-        {
-            bDopravcaEdit.Enabled = false;
-            bDopravcaDelete.Enabled = false;
-        }
-
-        if (GlobData.Platforms.Count == 0)
-        {
-            bNastEdit.Enabled = false;
-            bNastDelete.Enabled = false;
-        }
-
-        if (GlobData.Tracks.Count == 0)
-        {
-            bKolajEdit.Enabled = false;
-            bKolajDelete.Enabled = false;
-        }
-
-        if (GlobData.TablePhysicals.Count == 0)
-        {
-            bFyzTabEdit.Enabled = false;
-            bFyzTabCopy.Enabled = false;
-            bFyzTabDelete.Enabled = false;
-        }
-
-        if (GlobData.TableLogicals.Count == 0)
-        {
-            bLogTabEdit.Enabled = false;
-            bLogTabCopy.Enabled = false;
-            bLogTabDelete.Enabled = false;
-        }
-
-        if (GlobData.TableCatalogs.Count == 0)
-        {
-            bKatTabEdit.Enabled = false;
-            bKatTabCopy.Enabled = false;
-            bKatTabDelete.Enabled = false;
-        }
-
-        if (GlobData.TabTabs.Count == 0)
-            bTabTabDelete.Enabled = false;
-
-        if (GlobData.TableFonts.Count == 0)
-        {
-            bFontEdit.Enabled = false;
-            bFontDelete.Enabled = false;
-        }
-
-        if (GlobData.CustomStations.Count == 0)
-        {
-            bCStationEdit.Enabled = false;
-            bCStationDelete.Enabled = false;
-        }
-
-        FitStateDgmWidth();
-        RefreshStateDgmStatus();
-
-        if (openIndex != -1)
-        {
-            if (openIndex == -2)
-            {
-                tabControl.SelectTab(8);
-                _openTabTabEditor = true;
-            }
-            else if (openIndex == -3)
-            {
-                tabControl.SelectTab(tpStateDgm);
-                _openStateDgmEditor = true;
-            }
-            else
-            {
-                tabControl.SelectTab(openIndex);
-            }
-        }
+    private void OpenHelp()
+    {
+        if (optionsView.SelectedPanel is { } panel && _helpLinks.TryGetValue(panel, out var link))
+            Utils.OpenShell(link);
     }
 
     /// <summary>
-    ///     Zalamovanie textov na zalozke Stavovy diagram podla sirky zalozky (editor je samostatne okno).
+    ///     V spodnom riadku ukaze prvu chybu stranok a stranky s chybou oznaci v strome.
     /// </summary>
-    private void FitStateDgmWidth() =>
-        lStateDgmInfo.MaximumSize = lStateDgmStatus.MaximumSize = new Size(Math.Max(200, flpStateDgm.ClientSize.Width - 30), 0);
-
-    private void flpStateDgm_SizeChanged(object sender, EventArgs e) => FitStateDgmWidth();
-
-    private void bStateDgmOpen_Click(object sender, EventArgs e) => OpenStateDgmEditor();
-
-    private void RefreshStateDgmStatus()
+    private void UpdateProblems()
     {
-        try
+        string? first = null;
+        foreach (var (panel, page) in _checkedPages)
         {
-            var d = TxtParser.ReadStateDgm(ThisDir.Dir.FullPath);
-            if (d == null)
-            {
-                lStateDgmStatus.Text = Resources.FLocalSettings_SD_Chyba_Nie;
-                return;
-            }
+            var problem = page.FirstProblem;
+            panel.Node.ForeColor = problem is null ? Color.Empty : SettingsWindow.ProblemColor(optionsView.TreeView);
+            panel.Node.ToolTipText = problem ?? "";
+            if (problem is not null && first is null)
+                first = $"{panel.NodeText}: {problem}";
+        }
 
-            var diags = StateDgmValidator.Validate(d, new StateDgmValidationOptions
-            {
-                ReportKeys = GlobData.ReportTypes?.Count > 0 ? GlobData.ReportTypes.Select(r => r.Key).ToList() : null,
-                Symbols = new GvdExprSymbols()
-            });
-            var errors = diags.Count(x => x.IsError);
-            var warnings = diags.Count(x => x.Severity == ToolsCore.Expressions.ExprSeverity.Warning);
-            var check = diags.Count == 0 ? Resources.FStateDgm_BezProblemov : string.Format(Resources.FStateDgm_PocetProblemov, errors, warnings, diags.Count - errors - warnings);
-            lStateDgmStatus.Text = string.Format(Resources.FLocalSettings_SD_Stav, Path.GetFileName(TxtParser.StateDgmPath(ThisDir.Dir.FullPath)), d.Categories.Count, d.Categories.Sum(c => c.States.Count))
-                                    + Environment.NewLine + string.Format(Resources.FLocalSettings_SD_Problemy, check);
-        }
-        catch (StateDgmParseException e)
-        {
-            lStateDgmStatus.Text = string.Format(Resources.FLocalSettings_SD_Chyba, $"({e.Line + 1}) {e.Message}");
-        }
+        lProblem.Text = first ?? "";
+        lProblem.ForeColor = SettingsWindow.ProblemColor(lProblem);
     }
 
-    private void OpenStateDgmEditor()
+    /// <summary>
+    ///     Ak niektora stranka hlasi chybu, prepne na nu a oznaci chybne pole.
+    /// </summary>
+    private bool CheckPages()
     {
-        using var f = new FStateDgm(ThisDir);
-        f.ShowDialog(this);
-        RefreshStateDgmStatus();
+        foreach (var (panel, page) in _checkedPages)
+        {
+            if (page.FirstProblem is null)
+                continue;
+
+            optionsView.SelectedPanel = panel;
+            page.FocusFirstProblem();
+            return false;
+        }
+
+        return true;
     }
 
     private void bSave_Click(object sender, EventArgs e)
     {
+        // kontrola a zapis potrebuju vsetky stranky
+        _pages.LoadAll();
+        if (!CheckPages())
+        {
+            DialogResult = DialogResult.None;
+            return;
+        }
+
         // Pozice_A.txt nema riadky nastupist - nastupiste bez kolaje sa nezapise a po opatovnom otvoreni zmizne
-        var withoutTracks = TrackEditing.PlatformsWithoutTracks(GlobData.Platforms, GlobData.Tracks);
+        var withoutTracks = TrackEditing.PlatformsWithoutTracks(GlobData.Platforms.Where(p => p != Platform.None), GlobData.Tracks);
         if (withoutTracks.Count > 0 &&
             Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Nastupistia_Bez_Kolaje,
                 string.Join(", ", withoutTracks.Select(platform => platform.Key)))) != DialogResult.Yes)
         {
             DialogResult = DialogResult.None;
-            tabControl.SelectedTab = tpNastupistia;
+            optionsView.SelectedPanel = pNastupistia;
             return;
         }
 
-        if (!ValidateGrafikonTab())
+        if (!grafikonPage.RenamePendingDir())
         {
             DialogResult = DialogResult.None;
-            tabControl.SelectedTab = tpGrafikon;
+            optionsView.SelectedPanel = pGrafikon;
             return;
         }
 
-        if (!RenamePendingDir())
-        {
-            DialogResult = DialogResult.None;
-            tabControl.SelectedTab = tpGrafikon;
-            return;
-        }
-
-        var gvdInfo = ThisDir.GVD;
-        gvdInfo.StartValidData = dtpDataOd.Value.Date;
-        gvdInfo.EndValidData = dtpDataDo.Value.Date;
-        gvdInfo.StartValidTimeTable = dtpGVDOd.Value.Date;
-        gvdInfo.EndValidTimeTable = dtpGVDDo.Value.Date;
-
-        if (cbCustomStation.Checked)
-        {
-            var id = decimal.ToInt32(nudIDStation.Value).ToString();
-            var name = tbGVDStationName.Text;
-            gvdInfo.ThisStation = new Station(id, name, IsCustom: true);
-        }
-        else
-        {
-            gvdInfo.ThisStation = (Station)cbStationName.SelectedItem!;
-        }
-
+        grafikonPage.Apply();
         DialogResult = DialogResult.OK;
-    }
-
-    /// <summary>
-    ///     Overi obdobia platnosti a vlastnu stanicu na zalozke Grafikon (rovnake pravidla ako pri novom grafikone).
-    /// </summary>
-    private bool ValidateGrafikonTab()
-    {
-        if (dtpDataDo.Value.Date <= dtpDataOd.Value.Date)
-        {
-            Utils.ShowError(Resources.FNewGrafikon_Čas_konca_platnosti_dát_má_byť_neskôr_ako_začiatok_platnosti);
-            return false;
-        }
-
-        if (dtpGVDDo.Value.Date <= dtpGVDOd.Value.Date)
-        {
-            Utils.ShowError(Resources.FNewGrafikon_Čas_konca_platnosti_grafikonu_má_byť_neskôr_ako_začiatok_platnosti);
-            return false;
-        }
-
-        if (!cbCustomStation.Checked)
-        {
-            if (cbStationName.SelectedItem is Station) return true;
-
-            Utils.ShowError(Resources.FNewGrafikon_Nie_je_vybratá_stanica);
-            return false;
-        }
-
-        if (string.IsNullOrWhiteSpace(tbGVDStationName.Text))
-        {
-            Utils.ShowError(Resources.FNewGrafikon_Nie_je_zadaná_žiadna_stanica);
-            return false;
-        }
-
-        var id = decimal.ToInt32(nudIDStation.Value).ToString(CultureInfo.InvariantCulture);
-        if (GlobData.Stations.Concat(GlobData.CustomStations).Any(station => station.ID == id))
-        {
-            Utils.ShowError(Resources.FNewGrafikon_Zadané_ID_vlastnej_stanice_už_patrí_inej_stanici);
-            return false;
-        }
-
-        return true;
-    }
-
-    private void bOpenDir_Click(object sender, EventArgs e) => Utils.OpenShell(ThisDir.Dir.FullPath);
-
-    private void cbCustomStation_CheckedChanged(object sender, EventArgs e)
-    {
-        if (cbCustomStation.Checked)
-        {
-            cbStationName.Enabled = false;
-            nudIDStation.Enabled = true;
-            tbGVDStationName.Enabled = true;
-        }
-        else
-        {
-            cbStationName.Enabled = true;
-            nudIDStation.Enabled = false;
-            tbGVDStationName.Enabled = false;
-            tbDirName.Text = cbStationName.SelectedItem + @"." + dtpDataOd.Value.Year;
-        }
-    }
-
-    private void dtpDataOd_ValueChanged(object sender, EventArgs e)
-    {
-        if (cbCustomStation.Checked)
-            tbDirName.Text = tbGVDStationName.Text + @"." + dtpDataOd.Value.Year;
-        else
-            tbDirName.Text = cbStationName.SelectedItem + @"." + dtpDataOd.Value.Year;
-    }
-
-    private void tbGVDStationName_TextChanged(object sender, EventArgs e)
-    {
-        tbDirName.Text = tbGVDStationName.Text + @"." + dtpDataOd.Value.Year;
-    }
-
-    private void bDirChange_Click(object sender, EventArgs e)
-    {
-        var dirname = tbDirName.Text.Trim();
-        tbDirName.Text = dirname;
-
-        var error = GVDDirRename.Validate(dirname, ThisDir.Dir.FullPath, GlobData.DataDir, out var fullpath);
-        if (error != null)
-        {
-            Utils.ShowError(error);
-            return;
-        }
-
-        //nezmenený názov - nie je čo presúvať, prípadné skoršie naplánovanie sa ruší
-        _pendingDirName = string.Equals(fullpath, ThisDir.Dir.FullPath, StringComparison.Ordinal) ? null : dirname;
-        tbDir.Text = fullpath;
-    }
-
-    /// <summary>
-    ///     Premenuje priecinok grafikonu na nazov naplanovany tlacidlom Zmenit a zapise <c>DirList.TXT</c>.
-    /// </summary>
-    /// <returns><see langword="false" />, ak sa premenovanie nepodarilo a dialog ma ostat otvoreny.</returns>
-    private bool RenamePendingDir()
-    {
-        if (_pendingDirName == null) return true;
-
-        var dirname = _pendingDirName;
-        var oldFullPath = ThisDir.Dir.FullPath;
-
-        //od kliknutia na Zmenit mohol na disku vzniknut priecinok s rovnakym nazvom
-        var error = GVDDirRename.Validate(dirname, oldFullPath, GlobData.DataDir, out var fullpath);
-        if (error != null)
-        {
-            Utils.ShowError(error);
-            return false;
-        }
-
-        if (!string.Equals(fullpath, oldFullPath, StringComparison.Ordinal))
-        {
-            try
-            {
-                Directory.Move(oldFullPath, fullpath);
-            }
-            catch (Exception exception)
-            {
-                Log.Exception(exception);
-                Utils.ShowError(string.Format(Resources.FLocalSettings_Priečinok_grafikonu_sa_nepodarilo_premenovať,
-                    dirname, exception.Message));
-                return false;
-            }
-
-            //GlobData.GVDDirs obsahuje vsetky zaznamy DirList.TXT (aj grafikony inych stanic a necitatelne),
-            //FMain.ObdobiaList len obdobia prave vybratej stanice
-            GVDDirRename.UpdateEntries(ThisDir.Dir, GlobData.GVDDirs, dirname, fullpath);
-            TxtParser.WriteDirList(GlobData.GVDDirs);
-        }
-
-        _pendingDirName = null;
-        return true;
-    }
-
-    private void listDopravcovia_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (listDopravcovia.SelectedIndex != -1)
-        {
-            var dopravca = (Operator)listDopravcovia.SelectedItem!;
-            if (dopravca == Operator.None)
-            {
-                bDopravcaEdit.Enabled = false;
-                bDopravcaDelete.Enabled = false;
-            }
-            else
-            {
-                bDopravcaEdit.Enabled = true;
-                bDopravcaDelete.Enabled = true;
-            }
-
-            tbDopravca.Text = dopravca.Name;
-        }
-    }
-
-    private void bDopravcaAdd_Click(object sender, EventArgs e)
-    {
-        if (string.IsNullOrWhiteSpace(tbDopravca.Text))
-        {
-            Utils.ShowError(Resources.FLocalSettings_Všetky_parametre_sú_povinné);
-            return;
-        }
-
-        // cislo o jedno vyssie nez najvyssie pouzite - podla poctu by po zmazani dopravcu
-        // alebo pri cislovani s medzerami vzniklo cislo, ktore uz ma iny dopravca
-        var id = Math.Max(1, GlobData.Operators.Max(op => op.Id) + 1);
-        var dopravca = new Operator(id, tbDopravca.Text);
-        foreach (var dop in GlobData.Operators)
-            if (dop.Name == dopravca.Name)
-            {
-                Utils.ShowError(Resources.FLocalSettings_Zadaný_dopravca_už_existuje);
-                return;
-            }
-
-        GlobData.Operators.Add(dopravca);
-
-        bDopravcaEdit.Enabled = true;
-        bDopravcaDelete.Enabled = true;
-    }
-
-    private void bDopravcaEdit_Click(object sender, EventArgs e)
-    {
-        if (listDopravcovia.SelectedIndex != -1)
-        {
-            if (string.IsNullOrWhiteSpace(tbDopravca.Text))
-            {
-                Utils.ShowError(Resources.FLocalSettings_Všetky_parametre_sú_povinné);
-                return;
-            }
-            
-            var i = 0;
-            foreach (var test in GlobData.Operators)
-            {
-                if (tbDopravca.Text == test.Name && i != listDopravcovia.SelectedIndex)
-                {
-                    Utils.ShowError(Resources.FLocalSettings_Zadaný_dopravca_už_existuje);
-                    return;
-                }
-
-                i++;
-            }
-
-            GlobData.Operators[listDopravcovia.SelectedIndex].Name = tbDopravca.Text;
-            GlobData.Operators.ResetBindings();
-        }
-    }
-
-    private void bDopravcaDelete_Click(object sender, EventArgs e)
-    {
-        if (listDopravcovia.SelectedIndex != -1)
-        {
-            var index = listDopravcovia.SelectedIndex;
-            var op = GlobData.Operators[index];
-            foreach (var train in GlobData.Trains)
-                if (train.Operator == op)
-                    train.Operator = Operator.None;
-
-            GlobData.Operators.RemoveAt(index);
-
-            if (GlobData.Operators.Count == 0)
-            {
-                bDopravcaEdit.Enabled = false;
-                bDopravcaDelete.Enabled = false;
-            }
-        }
-    }
-
-    private void listNastupistia_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (listNastupistia.SelectedIndex != -1)
-        {
-            var nastupiste = (Platform)listNastupistia.SelectedItem!;
-
-            if (nastupiste == Platform.None)
-            {
-                bNastEdit.Enabled = false;
-                bNastDelete.Enabled = false;
-            }
-            else
-            {
-                bNastEdit.Enabled = true;
-                bNastDelete.Enabled = true;
-            }
-
-            tbNastOznacenie.Text = nastupiste.Key;
-            tbNastFullName.Text = nastupiste.FullName;
-            tbNastSound.Text = nastupiste.SoundName;
-        }
-    }
-
-    private void tbNastOznacenie_TextChanged(object sender, EventArgs e)
-    {
-        tbNastFullName.Text = Resources.FLocalSettings_Nástupište_ + tbNastOznacenie.Text;
-    }
-
-    private void bNastAdd_Click(object sender, EventArgs e)
-    {
-        if (string.IsNullOrEmpty(tbNastOznacenie.Text) || string.IsNullOrEmpty(tbNastFullName.Text) ||
-            string.IsNullOrEmpty(tbNastSound.Text))
-        {
-            Utils.ShowError(Resources.FLocalSettings_Všetky_parametre_sú_povinné);
-            return;
-        }
-
-        var nastupiste = new Platform(tbNastOznacenie.Text, tbNastFullName.Text, tbNastSound.Text);
-        foreach (var test in GlobData.Platforms)
-            if (nastupiste.EqualsKeys(test))
-            {
-                Utils.ShowError(Resources.FLocalSettings_Zadaný_kľúč_nástupišťa_už_existuje);
-                return;
-            }
-
-        GlobData.Platforms.Add(nastupiste);
-
-        bNastEdit.Enabled = true;
-        bNastDelete.Enabled = true;
-    }
-
-    private void bNastEdit_Click(object sender, EventArgs e)
-    {
-        if (listNastupistia.SelectedIndex != -1)
-        {
-            if (string.IsNullOrEmpty(tbNastOznacenie.Text) || string.IsNullOrEmpty(tbNastFullName.Text) ||
-                string.IsNullOrEmpty(tbNastSound.Text))
-            {
-                Utils.ShowError(Resources.FLocalSettings_Všetky_parametre_sú_povinné);
-                return;
-            }
-
-            for (var i = 0; i < GlobData.Platforms.Count; i++)
-                if (tbNastOznacenie.Text == GlobData.Platforms[i].Key && i != listNastupistia.SelectedIndex)
-                {
-                    Utils.ShowError(Resources.FLocalSettings_Zadaný_kľúč_nástupišťa_už_existuje);
-                    return;
-                }
-
-            var platform = GlobData.Platforms[listNastupistia.SelectedIndex];
-            platform.Key = tbNastOznacenie.Text;
-            platform.FullName = tbNastFullName.Text;
-            platform.SoundName = tbNastSound.Text;
-
-            GlobData.Platforms.ResetBindings();
-        }
-    }
-
-    private void bNastDelete_Click(object sender, EventArgs e)
-    {
-        if (listNastupistia.SelectedIndex != -1)
-        {
-            var delete = true;
-            var where = " ";
-            var index = listNastupistia.SelectedIndex;
-            var nast = GlobData.Platforms[index];
-
-            foreach (var tr in GlobData.Tracks)
-                if (tr.Platform == nast)
-                {
-                    delete = false;
-                    where += $"Koľaj {tr.Name}";
-                    break;
-                }
-
-            if (delete)
-            {
-                GlobData.Platforms.RemoveAt(index);
-
-                if (GlobData.Platforms.Count == 0)
-                {
-                    bNastEdit.Enabled = false;
-                    bNastDelete.Enabled = false;
-                }
-            }
-            else
-            {
-                Utils.ShowError(Resources.SelectedItemRemoveCancel + where);
-            }
-        }
-    }
-
-    private void listKolaje_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (listKolaje.SelectedIndex != -1)
-        {
-            var kolaj = (Track)listKolaje.SelectedItem!;
-
-            if (kolaj == Track.None)
-            {
-                bKolajEdit.Enabled = false;
-                bKolajDelete.Enabled = false;
-            }
-            else
-            {
-                bKolajEdit.Enabled = true;
-                bKolajDelete.Enabled = true;
-            }
-
-            tbKolajOznacenie.Text = kolaj.Key;
-            tbKolajName.Text = kolaj.Name ?? "";
-            tbKolajFullName.Text = kolaj.FullName;
-            tbKolajText.Text = kolaj.TrackName ?? "";
-            tbKolajSound.Text = kolaj.SoundName;
-            cbNastupistia.SelectedItem = kolaj.Platform;
-            tbNastupisteKolaj.Text = kolaj.PlatformTrackText;
-            tbKolajAlt.Text = kolaj.AltTrackText;
-
-            for (var i = 0; i < clbKolajTables.Items.Count; i++)
-                clbKolajTables.SetItemChecked(i, kolaj.Tables.Any(table => ReferenceEquals(table, clbKolajTables.Items[i])));
-        }
-    }
-
-    /// <summary>
-    ///     Naplni zoznam Tabule na kolaji podla GlobData.TableLogicals; zaskrtnute tabule ostanu zaskrtnute.
-    /// </summary>
-    private void RefreshKolajTables()
-    {
-        var checkedTables = clbKolajTables.CheckedItems.Cast<object>().ToList();
-
-        clbKolajTables.BeginUpdate();
-        clbKolajTables.Items.Clear();
-        foreach (var logical in GlobData.TableLogicals)
-            clbKolajTables.Items.Add(logical, checkedTables.Any(table => ReferenceEquals(table, logical)));
-        clbKolajTables.EndUpdate();
-    }
-
-    // logicke tabule sa pridavaju, premenuvaju a mazu na inej zalozke toho isteho okna
-    private void TableLogicals_ListChanged(object? sender, ListChangedEventArgs e) => RefreshKolajTables();
-
-    private void tbKolajOznacenie_TextChanged(object sender, EventArgs e)
-    {
-        var key = tbKolajOznacenie.Text;
-        tbKolajFullName.Text = Resources.FLocalSettings_Koľaj_ + key;
-
-        // kratky nazov a text na tabule byvaju zhodne s oznacenim - kym ich pouzivatel neprepise, menia sa s nim
-        if (tbKolajName.Text.Length == 0 || tbKolajName.Text == _shownTrackKey)
-            tbKolajName.Text = key;
-        if (tbKolajText.Text.Length == 0 || tbKolajText.Text == _shownTrackKey)
-            tbKolajText.Text = key;
-
-        _shownTrackKey = key;
-    }
-
-    /// <summary>
-    ///     Overi povinne polia kolaje; ak niektore chyba, zobrazi chybu.
-    /// </summary>
-    private bool CheckTrackFields()
-    {
-        if (!string.IsNullOrEmpty(tbKolajOznacenie.Text) && !string.IsNullOrEmpty(tbKolajName.Text) &&
-            !string.IsNullOrEmpty(tbKolajFullName.Text) && !string.IsNullOrEmpty(tbKolajText.Text) &&
-            !string.IsNullOrEmpty(tbKolajSound.Text))
-            return true;
-
-        Utils.ShowError(Resources.FLocalSettings_Všetky_parametre_sú_povinné);
-        return false;
-    }
-
-    private void bKolajAdd_Click(object sender, EventArgs e)
-    {
-        if (!CheckTrackFields())
-            return;
-
-        var track = new Track
-        {
-            Key = tbKolajOznacenie.Text,
-            Name = tbKolajName.Text,
-            FullName = tbKolajFullName.Text,
-            TrackName = tbKolajText.Text,
-            SoundName = tbKolajSound.Text,
-            Platform = (Platform)cbNastupistia.SelectedItem!
-        };
-
-        foreach (var test in GlobData.Tracks)
-            if (track.EqualsKeys(test))
-            {
-                Utils.ShowError(Resources.FLocalSettings_Zadaný_kľúč_koľaje_už_existuje);
-                return;
-            }
-
-        foreach (var item in clbKolajTables.CheckedItems)
-            track.Tables.Add((TableLogical)item);
-
-        track.PlatformTrackText = tbNastupisteKolaj.Text.Trim();
-        track.AltTrackText = tbKolajAlt.Text.Trim();
-
-        GlobData.Tracks.Add(track);
-
-        bKolajEdit.Enabled = true;
-        bKolajDelete.Enabled = true;
-    }
-
-    private void bKolajEdit_Click(object sender, EventArgs e)
-    {
-        if (listKolaje.SelectedIndex != -1)
-        {
-            if (!CheckTrackFields())
-                return;
-
-            for (var i = 0; i < GlobData.Tracks.Count; i++)
-                if (tbKolajOznacenie.Text == GlobData.Tracks[i].Key && i != listKolaje.SelectedIndex)
-                {
-                    Utils.ShowError(Resources.FLocalSettings_Zadaný_kľúč_koľaje_už_existuje);
-                    return;
-                }
-
-            var track = GlobData.Tracks[listKolaje.SelectedIndex];
-            track.Key = tbKolajOznacenie.Text;
-            track.Name = tbKolajName.Text;
-            track.FullName = tbKolajFullName.Text;
-            track.TrackName = tbKolajText.Text;
-            track.SoundName = tbKolajSound.Text;
-            track.PlatformTrackText = tbNastupisteKolaj.Text.Trim();
-            track.AltTrackText = tbKolajAlt.Text.Trim();
-            track.Platform = (Platform)cbNastupistia.SelectedItem!;
-
-            track.Tables.Clear();
-            foreach (var item in clbKolajTables.CheckedItems)
-                track.Tables.Add((TableLogical)item);
-
-            GlobData.Tracks.ResetBindings();
-        }
-    }
-
-    private void bKolajDelete_Click(object sender, EventArgs e)
-    {
-        if (listKolaje.SelectedIndex != -1)
-        {
-            var kolaj = GlobData.Tracks[listKolaje.SelectedIndex];
-            var (arrival, departure) = TrackEditing.CountUsage(kolaj, GlobData.Trains);
-            var question = arrival + departure == 0
-                ? string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Kolaj_Odstranit_Nepouzita, kolaj.Key)
-                : string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Kolaj_Odstranit, kolaj.Key, arrival, departure);
-            if (Utils.ShowQuestion(question) != DialogResult.Yes)
-                return;
-
-            TrackEditing.Remove(kolaj, GlobData.Tracks, GlobData.Trains);
-
-            if (GlobData.Tracks.Count == 0)
-            {
-                bKolajEdit.Enabled = false;
-                bKolajDelete.Enabled = false;
-            }
-        }
-    }
-
-    private void bFyzTabAdd_Click(object sender, EventArgs e)
-    {
-        if (GlobData.TableCatalogs.Count == 0)
-        {
-            Utils.ShowError(Resources.FTablePhysical_NoCatalog);
-            return;
-        }
-
-        var eptf = new FTablePhysical(new TablePhysical(), GlobData.TableCatalogs);
-        var result = eptf.ShowDialog();
-        if (result == DialogResult.OK)
-        {
-            GlobData.TablePhysicals.Add(eptf.ThisTable);
-
-            bFyzTabEdit.Enabled = true;
-            bFyzTabCopy.Enabled = true;
-            bFyzTabDelete.Enabled = true;
-        }
-    }
-
-    private void bFyzTabCopy_Click(object sender, EventArgs e)
-    {
-        if (listFyzTabule.SelectedIndex != -1)
-        {
-            var eptf = new FTablePhysical(GlobData.TablePhysicals[listFyzTabule.SelectedIndex], GlobData.TableCatalogs, true);
-            var result = eptf.ShowDialog();
-            if (result == DialogResult.OK) GlobData.TablePhysicals.Add(eptf.ThisTable);
-        }
-    }
-
-    private void bFyzTabEdit_Click(object sender, EventArgs e)
-    {
-        if (listFyzTabule.SelectedIndex != -1)
-        {
-            var eptf = new FTablePhysical(GlobData.TablePhysicals[listFyzTabule.SelectedIndex], GlobData.TableCatalogs);
-            var result = eptf.ShowDialog();
-            if (result == DialogResult.OK) GlobData.TablePhysicals.ResetBindings();
-        }
-    }
-
-    private void bFyzTabDelete_Click(object sender, EventArgs e)
-    {
-        if (listFyzTabule.SelectedIndex != -1)
-        {
-            var delete = true;
-            var where = " ";
-            var index = listFyzTabule.SelectedIndex;
-            var tp = GlobData.TablePhysicals[index];
-
-            foreach (var tl in GlobData.TableLogicals)
-            {
-                foreach (var trecord in tl.Records)
-                {
-                    foreach (TablePosition position in trecord)
-                        if (position.Table == tp)
-                        {
-                            delete = false;
-                            where += $"Logická tabuľa {tl.Name}, pozícia {position.Position}.";
-                            break;
-                        }
-
-                    if (!delete)
-                        break;
-                }
-
-                if (!delete)
-                    break;
-            }
-
-            if (delete)
-            {
-                GlobData.TablePhysicals.RemoveAt(index);
-
-                if (GlobData.TablePhysicals.Count == 0)
-                {
-                    bFyzTabEdit.Enabled = false;
-                    bFyzTabCopy.Enabled = false;
-                    bFyzTabDelete.Enabled = false;
-                }
-            }
-            else
-            {
-                Utils.ShowError(Resources.SelectedItemRemoveCancel + where);
-            }
-        }
-    }
-
-    private void bLogTabAdd_Click(object sender, EventArgs e)
-    {
-        var eltf = new FTableLogical(new TableLogical(), GlobData.TablePhysicals, thisStation: ThisDir.GVD.ThisStation);
-        var result = eltf.ShowDialog();
-        if (result == DialogResult.OK)
-        {
-            GlobData.TableLogicals.Add(eltf.ThisTable);
-
-            bLogTabEdit.Enabled = true;
-            bLogTabCopy.Enabled = true;
-            bLogTabDelete.Enabled = true;
-        }
-    }
-
-    private void bLogTabCopy_Click(object sender, EventArgs e)
-    {
-        if (listLogTabule.SelectedIndex != -1)
-        {
-            var eltf = new FTableLogical(GlobData.TableLogicals[listLogTabule.SelectedIndex], GlobData.TablePhysicals, true, ThisDir.GVD.ThisStation);
-            var result = eltf.ShowDialog();
-            if (result == DialogResult.OK) GlobData.TableLogicals.Add(eltf.ThisTable);
-        }
-    }
-
-    private void bLogTabEdit_Click(object sender, EventArgs e)
-    {
-        if (listLogTabule.SelectedIndex != -1)
-        {
-            var eltf = new FTableLogical(GlobData.TableLogicals[listLogTabule.SelectedIndex], GlobData.TablePhysicals, thisStation: ThisDir.GVD.ThisStation);
-            var result = eltf.ShowDialog();
-            if (result == DialogResult.OK) GlobData.TableLogicals.ResetBindings();
-        }
-    }
-
-    private void bLogTabDelete_Click(object sender, EventArgs e)
-    {
-        if (listLogTabule.SelectedIndex != -1)
-        {
-            var delete = true;
-            var where = " ";
-            var index = listLogTabule.SelectedIndex;
-            var tlog = GlobData.TableLogicals[index];
-
-            foreach (var tr in GlobData.Tracks)
-            {
-                foreach (var logical in tr.Tables)
-                    if (logical == tlog)
-                    {
-                        delete = false;
-                        where += $"Koľaj {tr.Name}";
-                        break;
-                    }
-
-                if (!delete)
-                    break;
-            }
-
-            if (delete)
-            {
-                GlobData.TableLogicals.RemoveAt(index);
-
-                if (GlobData.TableLogicals.Count == 0)
-                {
-                    bLogTabEdit.Enabled = false;
-                    bLogTabCopy.Enabled = false;
-                    bLogTabDelete.Enabled = false;
-                }
-            }
-            else
-            {
-                Utils.ShowError(Resources.SelectedItemRemoveCancel + where);
-            }
-        }
-    }
-
-    private void bKatTabAdd_Click(object sender, EventArgs e)
-    {
-        var ectf = new FTableCatalog(new TableCatalog(), GlobData.TabTabs.ToList());
-        var result = ectf.ShowDialog();
-        if (result == DialogResult.OK)
-        {
-            GlobData.TableCatalogs.Add(ectf.ThisTable);
-
-            bKatTabEdit.Enabled = true;
-            bKatTabCopy.Enabled = true;
-            bKatTabDelete.Enabled = true;
-        }
-    }
-
-    private void bKatTabCopy_Click(object sender, EventArgs e)
-    {
-        if (listKatTabule.SelectedIndex != -1)
-        {
-            var ectf = new FTableCatalog(GlobData.TableCatalogs[listKatTabule.SelectedIndex], GlobData.TabTabs, true);
-            var result = ectf.ShowDialog();
-            if (result == DialogResult.OK) GlobData.TableCatalogs.Add(ectf.ThisTable);
-        }
-    }
-
-    private void bKatTabEdit_Click(object sender, EventArgs e)
-    {
-        if (listKatTabule.SelectedIndex != -1)
-        {
-            var ectf = new FTableCatalog(GlobData.TableCatalogs[listKatTabule.SelectedIndex], GlobData.TabTabs);
-            var result = ectf.ShowDialog();
-            if (result == DialogResult.OK) GlobData.TableCatalogs.ResetBindings();
-        }
-    }
-
-    private void bKatTabDelete_Click(object sender, EventArgs e)
-    {
-        if (listKatTabule.SelectedIndex != -1)
-        {
-            var delete = true;
-            var where = " ";
-            var index = listKatTabule.SelectedIndex;
-            var tcat = GlobData.TableCatalogs[index];
-
-            foreach (var ph in GlobData.TablePhysicals)
-                if (ph.TableCatalog == tcat)
-                {
-                    delete = false;
-                    where += $"Fyzická tabuľa {ph.Name}";
-                    break;
-                }
-
-            if (delete)
-                foreach (var tt in GlobData.TableTexts)
-                {
-                    foreach (var realization in tt.Realizations)
-                        if (realization.Table == tcat)
-                        {
-                            delete = false;
-                            where += $"Text do tabule {tt.Name}, realizácia {realization.Item.Name}";
-                            break;
-                        }
-
-                    if (!delete)
-                        break;
-                }
-
-            if (delete)
-            {
-                GlobData.TableCatalogs.RemoveAt(listKatTabule.SelectedIndex);
-
-                if (GlobData.TableCatalogs.Count == 0)
-                {
-                    bKatTabEdit.Enabled = false;
-                    bKatTabCopy.Enabled = false;
-                    bKatTabDelete.Enabled = false;
-                }
-            }
-            else
-            {
-                Utils.ShowError(Resources.SelectedItemRemoveCancel + where);
-            }
-        }
-    }
-
-    private void bOpenEditorTab_Click(object sender, EventArgs e)
-    {
-        using (var ettf = new FTabTab())
-            ettf.ShowDialog(this);
-
-        bTabTabDelete.Enabled = GlobData.TabTabs.Count > 0;
-    }
-
-    private void bTabTabDelete_Click(object sender, EventArgs e)
-    {
-        var index = listTabTabs.SelectedIndex;
-        if (index == -1 || !TabTabSections.CheckCanRemove(GlobData.TabTabs[index], GlobData.TableCatalogs))
-            return;
-
-        GlobData.TabTabs.RemoveAt(index);
-
-        if (GlobData.TabTabs.Count == 0)
-            bTabTabDelete.Enabled = false;
-    }
-
-    private void bTextAdd_Click(object sender, EventArgs e)
-    {
-        var ettf = new FTableText(new TableText(), GlobData.TableCatalogs, ThisDir.GVD, -1);
-        var result = ettf.ShowDialog();
-        if (result == DialogResult.OK)
-        {
-            GlobData.TableTexts.Add(ettf.ThisTableText);
-
-            bTextEdit.Enabled = true;
-            bTextDelete.Enabled = true;
-        }
-    }
-
-    private void bTextEdit_Click(object sender, EventArgs e)
-    {
-        if (listTexty.SelectedIndex != -1)
-        {
-            var index = listTexty.SelectedIndex;
-            var ettf = new FTableText(GlobData.TableTexts[index], GlobData.TableCatalogs, ThisDir.GVD, index);
-            var result = ettf.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                GlobData.TableTexts.RemoveAt(index);
-                GlobData.TableTexts.Insert(index, ettf.ThisTableText);
-                listTexty.SelectedIndex = index;
-            }
-        }
-    }
-
-    private void bTextDelete_Click(object sender, EventArgs e)
-    {
-        if (listTexty.SelectedIndex != -1) GlobData.TableTexts.RemoveAt(listTexty.SelectedIndex);
-
-        if (GlobData.TableTexts.Count == 0)
-        {
-            bTextEdit.Enabled = false;
-            bTextDelete.Enabled = false;
-        }
-    }
-
-    private void listFonts_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (listFonts.SelectedIndex != -1)
-        {
-            var tfont = (TableFont)listFonts.SelectedItem!;
-            tbFontName.Text = tfont.Name;
-            nudFontID.Value = tfont.FontID;
-            nudFontSize.Value = Math.Clamp(tfont.Size, nudFontSize.Minimum, nudFontSize.Maximum);
-            nudFontWidth.Value = Math.Clamp(tfont.Width, nudFontWidth.Minimum, nudFontWidth.Maximum);
-            tbFontFile.Text = tfont.FileName;
-            cbFontType.SelectedItem = tfont.Type;
-            cbFontDia.Checked = tfont.IsDia;
-            cbFontProportional.Checked = tfont.IsProportional;
-            cbFontLower.Checked = tfont.IsLower;
-            cbFontUpper.Checked = tfont.IsUpper;
-            cbFontIsNumber.Checked = tfont.IsNumber;
-            cbFontSpecChar.Checked = tfont.IsSpecChars;
-            cbFontSpecAssigments.Checked = tfont.IsSpecAssigment;
-        }
-    }
-
-    private void bFontAdd_Click(object sender, EventArgs e)
-    {
-        if (string.IsNullOrEmpty(tbFontName.Text))
-        {
-            Utils.ShowError(Resources.FLocalSettings_Nezadaný_názov_písma);
-            return;
-        }
-
-        var newId = decimal.ToInt32(nudFontID.Value);
-        if (!CheckFontIdFree(newId, null))
-            return;
-
-        var tfont = new TableFont
-        {
-            Name = tbFontName.Text,
-            FontID = newId,
-            Type = (TableFontType)cbFontType.SelectedItem!,
-            Width = decimal.ToInt32(nudFontWidth.Value),
-            Size = decimal.ToInt32(nudFontSize.Value),
-            FileName = tbFontFile.Text,
-            IsDia = cbFontDia.Checked,
-            IsProportional = cbFontProportional.Checked,
-            IsLower = cbFontLower.Checked,
-            IsUpper = cbFontUpper.Checked,
-            IsNumber = cbFontIsNumber.Checked,
-            IsSpecChars = cbFontSpecChar.Checked,
-            IsSpecAssigment = cbFontSpecAssigments.Checked
-        };
-
-        GlobData.TableFonts.Add(tfont);
-
-        bFontEdit.Enabled = true;
-        bFontDelete.Enabled = true;
-    }
-
-    private void bFontEdit_Click(object sender, EventArgs e)
-    {
-        var index = listFonts.SelectedIndex;
-        if (index == -1) return;
-
-        if (string.IsNullOrEmpty(tbFontName.Text))
-        {
-            Utils.ShowError(Resources.FLocalSettings_Nezadaný_názov_písma);
-            return;
-        }
-
-        var tfont = GlobData.TableFonts[index];
-        var newId = decimal.ToInt32(nudFontID.Value);
-        if (!CheckFontIdFree(newId, tfont))
-            return;
-
-        // stĺpce katalógových tabúľ a texty vlakov obsahujú priamo číslo písma - pri zmene ID ich treba preniesť
-        if (newId != tfont.FontID)
-        {
-            var usage = TableFontUsage.Find(tfont.FontID, GlobData.TableCatalogs, GlobData.TableTexts, GlobData.TabTabs);
-            if (usage.IsUsed)
-            {
-                var description = DescribeFontUsage(tfont.FontID, usage);
-                if (usage.HasReplaceable)
-                {
-                    var answer = Utils.ShowQuestion(
-                        string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_Zmena_ID, tfont.FontID, description, newId),
-                        MessageBoxButtons.YesNoCancel);
-                    if (answer == DialogResult.Cancel)
-                        return;
-                    if (answer == DialogResult.Yes)
-                        TableFontUsage.Replace(tfont.FontID, newId, GlobData.TableCatalogs, GlobData.TableTexts);
-                }
-                else if (Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_Zmena_ID_TabTab,
-                             tfont.FontID, description, newId)) != DialogResult.Yes)
-                {
-                    return;
-                }
-            }
-        }
-
-        tfont.Name = tbFontName.Text;
-        tfont.FontID = newId;
-        tfont.Type = (TableFontType)cbFontType.SelectedItem!;
-        tfont.Width = decimal.ToInt32(nudFontWidth.Value);
-        tfont.Size = decimal.ToInt32(nudFontSize.Value);
-        tfont.FileName = tbFontFile.Text;
-        tfont.IsDia = cbFontDia.Checked;
-        tfont.IsProportional = cbFontProportional.Checked;
-        tfont.IsLower = cbFontLower.Checked;
-        tfont.IsUpper = cbFontUpper.Checked;
-        tfont.IsNumber = cbFontIsNumber.Checked;
-        tfont.IsSpecChars = cbFontSpecChar.Checked;
-        tfont.IsSpecAssigment = cbFontSpecAssigments.Checked;
-
-        GlobData.TableFonts.ResetBindings();
-    }
-
-    private void bFontDelete_Click(object sender, EventArgs e)
-    {
-        if (listFonts.SelectedIndex != -1)
-        {
-            var tfont = GlobData.TableFonts[listFonts.SelectedIndex];
-            var usage = TableFontUsage.Find(tfont.FontID, GlobData.TableCatalogs, GlobData.TableTexts, GlobData.TabTabs);
-            if (usage.IsUsed && Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_Odstranit,
-                    tfont.FontID, DescribeFontUsage(tfont.FontID, usage))) != DialogResult.Yes)
-                return;
-
-            GlobData.TableFonts.RemoveAt(listFonts.SelectedIndex);
-        }
-
-        if (GlobData.TableFonts.Count == 0)
-        {
-            bFontEdit.Enabled = false;
-            bFontDelete.Enabled = false;
-        }
-    }
-
-    /// <summary>
-    ///     Overí, že žiadne iné písmo v zozname nemá rovnaké ID; ak má, zobrazí chybu.
-    /// </summary>
-    /// <param name="id">Overované ID.</param>
-    /// <param name="self">Upravované písmo (pri pridaní <see langword="null" />).</param>
-    private static bool CheckFontIdFree(int id, TableFont? self)
-    {
-        var other = GlobData.TableFonts.FirstOrDefault(font => font.FontID == id && !ReferenceEquals(font, self));
-        if (other == null)
-            return true;
-
-        Utils.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_ID_existuje, id, other.Name));
-        return false;
-    }
-
-    /// <summary>
-    ///     Zoznam miest, kde sa písmo používa, po riadkoch pre hlásenie.
-    /// </summary>
-    private static string DescribeFontUsage(int id, TableFontUsage usage)
-    {
-        var lines = new List<string>();
-        if (usage.CatalogColumns > 0)
-            lines.Add("– " + string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_Stlpce, usage.CatalogColumns));
-        if (usage.TrainTexts > 0)
-            lines.Add("– " + string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_Texty, usage.TrainTexts));
-        if (usage.TabTabSections.Count > 0)
-            lines.Add("– " + string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Pismo_TabTab,
-                string.Join(", ", usage.TabTabSections), id));
-        return string.Join(Environment.NewLine, lines);
-    }
-
-    private void nudFontID_ValueChanged(object sender, EventArgs e)
-    {
-        FontIdHint.Apply(nudFontID, _fontTip, _defaultBorderColor);
-        lFontDecoded.Text = string.Format(CultureInfo.CurrentCulture, Resources.ElenFont_Popis,
-            new ElenFontCode(decimal.ToInt32(nudFontID.Value)).Describe());
-    }
-
-    private void bFontFromId_Click(object sender, EventArgs e)
-    {
-        // typ, proporcionalnost a sirka podla rezu v cisle pisma ELEN; ostatne polia ostavaju
-        var code = new ElenFontCode(decimal.ToInt32(nudFontID.Value));
-        cbFontType.SelectedItem = code.SuggestedType;
-        cbFontProportional.Checked = code.SuggestedProportional;
-        nudFontWidth.Value = Math.Clamp(code.SuggestedWidth, nudFontWidth.Minimum, nudFontWidth.Maximum);
-    }
-
-    private void bOpenFontDir_Click(object sender, EventArgs e)
-    {
-        if (!string.IsNullOrEmpty(tbFontDir.Text)) fdbFontsDir.SelectedPath = fdbFontsDir.SelectedPath;
-        var result = fdbFontsDir.ShowDialog();
-        if (result == DialogResult.OK)
-        {
-            tbFontDir.Text = fdbFontsDir.SelectedPath;
-            FontDir = fdbFontsDir.SelectedPath;
-        }
-    }
-
-    private void listCustomStations_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (listCustomStations.SelectedIndex != -1)
-        {
-            var st = GlobData.CustomStations[listCustomStations.SelectedIndex];
-            nudIDStanice.Value = int.Parse(st.ID);
-            tbStationName.Text = st.Name;
-        }
-    }
-
-    private void bCStationAdd_Click(object sender, EventArgs e)
-    {
-        var err = false;
-
-        var id = decimal.ToInt32(nudIDStanice.Value);
-
-        foreach (var station in GlobData.Stations)
-            if (station.ID == id.ToString())
-                err = true;
-
-        foreach (var station in GlobData.CustomStations)
-            if (station.ID == id.ToString())
-                err = true;
-
-        if (err)
-        {
-            Utils.ShowError(Resources.FLocalSettings_Zadané_ID_stanice_už_má_iná_stanica);
-            return;
-        }
-
-        if (string.IsNullOrEmpty(tbStationName.Text))
-        {
-            Utils.ShowError(Resources.FLocalSettings_Nezadaný_názov_stanice);
-            return;
-        }
-
-        var name = tbStationName.Text;
-
-        var st = new Station(id.ToString(), name) { IsCustom = true };
-        GlobData.CustomStations.Add(st);
-
-        bCStationEdit.Enabled = true;
-        bCStationDelete.Enabled = true;
-    }
-
-    private void bCStationEdit_Click(object sender, EventArgs e)
-    {
-        if (listCustomStations.SelectedIndex != -1)
-        {
-            var err = false;
-
-            // ID z pola stanice (nie z pola ID písma) a upravovaná stanica sa s vlastným ID nekoliduje
-            var id = decimal.ToInt32(nudIDStanice.Value);
-            var edited = GlobData.CustomStations[listCustomStations.SelectedIndex];
-
-            foreach (var station in GlobData.Stations)
-                if (station.ID == id.ToString())
-                    err = true;
-
-            foreach (var station in GlobData.CustomStations)
-                if (station.ID == id.ToString() && !ReferenceEquals(station, edited))
-                    err = true;
-
-            if (err)
-            {
-                Utils.ShowError(Resources.FLocalSettings_Zadané_ID_stanice_už_má_iná_stanica);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(tbStationName.Text))
-            {
-                Utils.ShowError(Resources.FLocalSettings_Nezadaný_názov_stanice);
-                return;
-            }
-
-            var name = tbStationName.Text;
-
-            var st = GlobData.CustomStations[listCustomStations.SelectedIndex];
-            st.ID = id.ToString();
-            st.Name = name;
-            st.IsCustom = true;
-            GlobData.CustomStations.ResetBindings();
-        }
-    }
-
-    private void bCStationDelete_Click(object sender, EventArgs e)
-    {
-        if (listCustomStations.SelectedIndex != -1) GlobData.CustomStations.RemoveAt(listCustomStations.SelectedIndex);
-
-        if (GlobData.CustomStations.Count == 0)
-        {
-            bCStationEdit.Enabled = false;
-            bCStationDelete.Enabled = false;
-        }
-    }
-
-    private void FLocalSettings_HelpButtonClicked(object sender, CancelEventArgs e)
-    {
-        Utils.OpenShell(LinkConsts.LINK_LOCAL_SETTINGS);
     }
 
     private void FLocalSettings_Load(object sender, EventArgs e)
     {
-        if (_openTabTabEditor) bOpenEditorTab.PerformClick();
-        if (_openStateDgmEditor) BeginInvoke(OpenStateDgmEditor);
+        optionsView.TreeView.ExpandAll();
+        optionsView.SelectedPanel = PanelOf(_startPage);
+        if (_startPage == LocalSettingsPage.Kolaje)
+        {
+            _pages.Load(pNastupistia);
+            platformsTracksPage.SelectFirstTrack();
+        }
+        UpdateHelpLink();
+
+        if (_openTabTabEditor)
+        {
+            _pages.Load(pTabTab);
+            BeginInvoke(tabTabPage.OpenAdd);
+        }
+
+        if (_openStateDgmEditor)
+        {
+            _pages.Load(pStateDgm);
+            BeginInvoke(stateDgmPage.OpenEditor);
+        }
         EnableEvents(true);
-    }
-
-    private void listKatTabule_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        tbCommentKat.Text = listKatTabule.SelectedIndex != -1 ? GlobData.TableCatalogs[listKatTabule.SelectedIndex].Comment : "";
-    }
-
-    private void listTexty_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        tbCommentTText.Text = listTexty.SelectedIndex != -1 ? GlobData.TableTexts[listTexty.SelectedIndex].Comment : "";
-    }
-
-    private void listFyzTabule_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        tbCommentFyz.Text = listFyzTabule.SelectedIndex != -1 ? GlobData.TablePhysicals[listFyzTabule.SelectedIndex].Comment : "";
-    }
-
-    private void listLogTabule_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        tbCommentLog.Text = listLogTabule.SelectedIndex != -1 ? GlobData.TableLogicals[listLogTabule.SelectedIndex].Comment : "";
     }
 
     private void FLocalSettings_FormClosed(object sender, FormClosedEventArgs e)
     {
-        GlobData.TableLogicals.ListChanged -= TableLogicals_ListChanged;
         EnableEvents(false);
 
-        // Zrusit, krizik aj Esc - vratia sa zmeny na vsetkych zalozkach
+        GlobData.Config.LocalSettingsWindow = SettingsWindow.CapturePlacement(this);
+        SettingsWindow.SaveConfig();
+
+        // Zrusit, krizik aj Esc - vratia sa zmeny na vsetkych strankach
         if (DialogResult != DialogResult.OK)
             _snapshot.Restore();
     }

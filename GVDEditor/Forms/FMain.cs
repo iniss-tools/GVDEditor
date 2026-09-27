@@ -1,5 +1,6 @@
 ﻿using ExControls;
 using GVDEditor.Entities;
+using GVDEditor.Forms.Settings;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
 using Iniss.Elis;
@@ -618,14 +619,17 @@ public partial class FMain : Form
     }
 
     /// <returns><see langword="true" />, ak pouzivatel nastavenia ulozil.</returns>
-    internal bool ShowLocalSettings(int startIndex = -1)
+    internal bool ShowLocalSettings(LocalSettingsPage page = LocalSettingsPage.Grafikon,
+        LocalSettingsAction action = LocalSettingsAction.None)
     {
         var dir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
         // FLocalSettings meni dir.GVD priamo, povodne hodnoty treba zapamatat vopred
         var oldStation = dir.GVD.ThisStation.Name;
         var oldPeriod = dir.Period;
         var wasSaved = DataSaved;
-        var svform = new FLocalSettings(dir, startIndex);
+        // okno sa chvilu zostavuje - kurzor ukaze, ze klik zabral (po zobrazeni okna sa vrati sam)
+        Cursor.Current = Cursors.WaitCursor;
+        var svform = new FLocalSettings(dir, page, action);
         var result = svform.ShowDialog();
         if (result != DialogResult.OK)
         {
@@ -680,9 +684,11 @@ public partial class FMain : Form
         }
     }
 
-    private void ShowGlobalSettings(int startIndex = -1)
+    private void ShowGlobalSettings(GlobalSettingsPage page = GlobalSettingsPage.Grafikony)
     {
-        var gf = new FGlobalSettings(_gvdDirs.ToList(), startIndex, _grafikonLoaded ? _previousSelectedGVD : null);
+        // okno sa chvilu zostavuje - kurzor ukaze, ze klik zabral (po zobrazeni okna sa vrati sam)
+        Cursor.Current = Cursors.WaitCursor;
+        var gf = new FGlobalSettings(_gvdDirs.ToList(), page, _grafikonLoaded ? _previousSelectedGVD : null);
         var result = gf.ShowDialog();
         if (result == DialogResult.OK)
         {
@@ -2156,40 +2162,40 @@ public partial class FMain : Form
     private void tsmimRestartINISS_Click(object sender, EventArgs e) => RestartINISS();
 
     //LOCAL SETTINGS
-    private void tsmiGrafikon_Click(object sender, EventArgs e) => ShowLocalSettings(0);
+    private void tsmiGrafikon_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.Grafikon);
 
-    private void tsmiStanice_Click(object sender, EventArgs e) => ShowLocalSettings(1);
+    private void tsmiStanice_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.VlastneStanice);
 
-    private void tsmiDopravcovia_Click(object sender, EventArgs e) => ShowLocalSettings(2);
+    private void tsmiDopravcovia_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.Dopravcovia);
 
-    private void tsmiPlatforms_Click(object sender, EventArgs e) => ShowLocalSettings(3);
+    private void tsmiPlatforms_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.Nastupistia);
 
-    private void tsmiKolaje_Click(object sender, EventArgs e) => ShowLocalSettings(4);
+    private void tsmiKolaje_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.Kolaje);
 
-    private void tsmiTPhysical_Click(object sender, EventArgs e) => ShowLocalSettings(5);
+    private void tsmiTPhysical_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.FyzickeTabule);
 
-    private void tsmiTLogical_Click(object sender, EventArgs e) => ShowLocalSettings(6);
+    private void tsmiTLogical_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.LogickeTabule);
 
-    private void tsmiTCatalog_Click(object sender, EventArgs e) => ShowLocalSettings(7);
+    private void tsmiTCatalog_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.KatalogoveTabule);
 
-    private void tsmiTabTab_Click(object sender, EventArgs e) => ShowLocalSettings(8);
+    private void tsmiTabTab_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.TabTab);
 
-    private void tsmiTTexts_Click(object sender, EventArgs e) => ShowLocalSettings(9);
+    private void tsmiTTexts_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.Texty);
 
-    private void tsmiTFonts_Click(object sender, EventArgs e) => ShowLocalSettings(10);
+    private void tsmiTFonts_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.Pisma);
 
-    private void tsmiTabTabEditor_Click(object sender, EventArgs e) => ShowLocalSettings(-2);
+    private void tsmiTabTabEditor_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.TabTab, LocalSettingsAction.OpenTabTabEditor);
 
     //GLOBAL SETTINGS
-    private void tsmiGrafikony_Click(object sender, EventArgs e) => ShowGlobalSettings(0);
+    private void tsmiGrafikony_Click(object sender, EventArgs e) => ShowGlobalSettings(GlobalSettingsPage.Grafikony);
 
-    private void tsmiLanguages_Click(object sender, EventArgs e) => ShowGlobalSettings(1);
+    private void tsmiLanguages_Click(object sender, EventArgs e) => ShowGlobalSettings(GlobalSettingsPage.Jazyky);
 
-    private void tsmiMeskania_Click(object sender, EventArgs e) => ShowGlobalSettings(2);
+    private void tsmiMeskania_Click(object sender, EventArgs e) => ShowGlobalSettings(GlobalSettingsPage.Meskania);
 
-    private void tsmiTypyVlakov_Click(object sender, EventArgs e) => ShowGlobalSettings(3);
+    private void tsmiTypyVlakov_Click(object sender, EventArgs e) => ShowGlobalSettings(GlobalSettingsPage.TypyVlakov);
 
-    private void tsmiAudio_Click(object sender, EventArgs e) => ShowGlobalSettings(4);
+    private void tsmiAudio_Click(object sender, EventArgs e) => ShowGlobalSettings(GlobalSettingsPage.Audio);
 
     //DATE LIMIT
     private void tsmiDatObm_Click(object sender, EventArgs e) => ShowDatObm();

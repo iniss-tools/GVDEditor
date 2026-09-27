@@ -118,2813 +118,146 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 287</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>375, 15</value>
-  </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Ostatné nastavenia sa nachádzajú po otvorení konkrétneho grafikonu.</value>
-  </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
-  </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>tpGrafikony</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="listGrafikony.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 27</value>
-  </data>
-  <data name="listGrafikony.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="listGrafikony.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 304</value>
-  </data>
-  <data name="listGrafikony.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;listGrafikony.Name" xml:space="preserve">
-    <value>listGrafikony</value>
-  </data>
-  <data name="&gt;&gt;listGrafikony.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listGrafikony.Parent" xml:space="preserve">
-    <value>tpGrafikony</value>
-  </data>
-  <data name="&gt;&gt;listGrafikony.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 2</value>
-  </data>
-  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 15</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Zoznam grafikonov:</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>tpGrafikony</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="bGrafikonEdit.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bGrafikonEdit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bGrafikonEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 222</value>
-  </data>
-  <data name="bGrafikonEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="bGrafikonEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 30</value>
-  </data>
-  <data name="bGrafikonEdit.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="bGrafikonEdit.Text" xml:space="preserve">
-    <value>Upraviť</value>
-  </data>
-  <data name="&gt;&gt;bGrafikonEdit.Name" xml:space="preserve">
-    <value>bGrafikonEdit</value>
-  </data>
-  <data name="&gt;&gt;bGrafikonEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bGrafikonEdit.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;bGrafikonEdit.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="bEditColor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bEditColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bEditColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 167</value>
-  </data>
-  <data name="bEditColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="bEditColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 30</value>
-  </data>
-  <data name="bEditColor.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="bEditColor.Text" xml:space="preserve">
-    <value>Upraviť farbu...</value>
-  </data>
-  <data name="&gt;&gt;bEditColor.Name" xml:space="preserve">
-    <value>bEditColor</value>
-  </data>
-  <data name="&gt;&gt;bEditColor.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bEditColor.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;bEditColor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pbColor.ErrorImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="pbColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pbColor.InitialImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="pbColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 167</value>
-  </data>
-  <data name="pbColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="pbColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 25</value>
-  </data>
-  <data name="pbColor.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
-  </data>
-  <data name="&gt;&gt;pbColor.Name" xml:space="preserve">
-    <value>pbColor</value>
-  </data>
-  <data name="&gt;&gt;pbColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pbColor.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;pbColor.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 172</value>
-  </data>
-  <data name="label12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 15</value>
-  </data>
-  <data name="label12.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Farba stanice:</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="nudHlaseniePort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 138</value>
-  </data>
-  <data name="nudHlaseniePort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="nudHlaseniePort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 23</value>
-  </data>
-  <data name="nudHlaseniePort.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;nudHlaseniePort.Name" xml:space="preserve">
-    <value>nudHlaseniePort</value>
-  </data>
-  <data name="&gt;&gt;nudHlaseniePort.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;nudHlaseniePort.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;nudHlaseniePort.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="nudTabPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 111</value>
-  </data>
-  <data name="nudTabPort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="nudTabPort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 23</value>
-  </data>
-  <data name="nudTabPort.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;nudTabPort.Name" xml:space="preserve">
-    <value>nudTabPort</value>
-  </data>
-  <data name="&gt;&gt;nudTabPort.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;nudTabPort.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;nudTabPort.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 141</value>
-  </data>
-  <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 15</value>
-  </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Port pre diaľ. hlásenie:</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 113</value>
-  </data>
-  <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 15</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Port pre tabule:</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="tbGrafikonPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 81</value>
-  </data>
-  <data name="tbGrafikonPath.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbGrafikonPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 23</value>
-  </data>
-  <data name="tbGrafikonPath.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;tbGrafikonPath.Name" xml:space="preserve">
-    <value>tbGrafikonPath</value>
-  </data>
-  <data name="&gt;&gt;tbGrafikonPath.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbGrafikonPath.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;tbGrafikonPath.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 83</value>
-  </data>
-  <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 15</value>
-  </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Priečinok:</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="tbGrafikonObdobie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 53</value>
-  </data>
-  <data name="tbGrafikonObdobie.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbGrafikonObdobie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 23</value>
-  </data>
-  <data name="tbGrafikonObdobie.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tbGrafikonObdobie.Name" xml:space="preserve">
-    <value>tbGrafikonObdobie</value>
-  </data>
-  <data name="&gt;&gt;tbGrafikonObdobie.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbGrafikonObdobie.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;tbGrafikonObdobie.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 55</value>
-  </data>
-  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 15</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Obdobie:</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="tbGrafikonStanica.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 25</value>
-  </data>
-  <data name="tbGrafikonStanica.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbGrafikonStanica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 23</value>
-  </data>
-  <data name="tbGrafikonStanica.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tbGrafikonStanica.Name" xml:space="preserve">
-    <value>tbGrafikonStanica</value>
-  </data>
-  <data name="&gt;&gt;tbGrafikonStanica.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbGrafikonStanica.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;tbGrafikonStanica.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="bGrafikonDelete.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bGrafikonDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bGrafikonDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>230, 222</value>
-  </data>
-  <data name="bGrafikonDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bGrafikonDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 30</value>
-  </data>
-  <data name="bGrafikonDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="bGrafikonDelete.Text" xml:space="preserve">
-    <value>Odstrániť</value>
-  </data>
-  <data name="&gt;&gt;bGrafikonDelete.Name" xml:space="preserve">
-    <value>bGrafikonDelete</value>
-  </data>
-  <data name="&gt;&gt;bGrafikonDelete.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bGrafikonDelete.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;bGrafikonDelete.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 28</value>
-  </data>
-  <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 15</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Stanica:</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 23</value>
-  </data>
-  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 257</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Grafikon</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>tpGrafikony</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tpGrafikony.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="pGrafikony.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="tpGrafikony.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="pGrafikony.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="tpGrafikony.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pGrafikony.Size" type="System.Drawing.Size, System.Drawing">
     <value>638, 340</value>
   </data>
-  <data name="tpGrafikony.TabIndex" type="System.Int32, mscorlib">
+  <data name="pGrafikony.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="tpGrafikony.Text" xml:space="preserve">
-    <value>Grafikony</value>
+  <data name="&gt;&gt;pGrafikony.Name" xml:space="preserve">
+    <value>pGrafikony</value>
   </data>
-  <data name="&gt;&gt;tpGrafikony.Name" xml:space="preserve">
-    <value>tpGrafikony</value>
+  <data name="&gt;&gt;pGrafikony.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tpGrafikony.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;pGrafikony.Parent" xml:space="preserve">
+    <value>optionsView</value>
   </data>
-  <data name="&gt;&gt;tpGrafikony.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tpGrafikony.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pGrafikony.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="keyDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Kľúč</value>
-  </data>
-  <data name="keyDataGridViewTextBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="keyDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <data name="fyzBankNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Názov zo zvukovej banky</value>
-  </data>
-  <data name="fyzBankNameDataGridViewTextBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <metadata name="languageBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>190, 17</value>
-  </metadata>
-  <data name="dgvLanguagesRawBank.Location" type="System.Drawing.Point, System.Drawing">
-    <value>229, 203</value>
-  </data>
-  <data name="dgvLanguagesRawBank.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="dgvLanguagesRawBank.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="dgvLanguagesRawBank.Size" type="System.Drawing.Size, System.Drawing">
-    <value>399, 127</value>
-  </data>
-  <data name="dgvLanguagesRawBank.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;dgvLanguagesRawBank.Name" xml:space="preserve">
-    <value>dgvLanguagesRawBank</value>
-  </data>
-  <data name="&gt;&gt;dgvLanguagesRawBank.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dgvLanguagesRawBank.Parent" xml:space="preserve">
-    <value>tpJazyky</value>
-  </data>
-  <data name="&gt;&gt;dgvLanguagesRawBank.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label19.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 178</value>
-  </data>
-  <data name="label19.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 15</value>
-  </data>
-  <data name="label19.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Dostupné jazyky zo zvukovej banky:</value>
-  </data>
-  <data name="&gt;&gt;label19.Name" xml:space="preserve">
-    <value>label19</value>
-  </data>
-  <data name="&gt;&gt;label19.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
-    <value>tpJazyky</value>
-  </data>
-  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="listLanguages.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 27</value>
-  </data>
-  <data name="listLanguages.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="listLanguages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 304</value>
-  </data>
-  <data name="listLanguages.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;listLanguages.Name" xml:space="preserve">
-    <value>listLanguages</value>
-  </data>
-  <data name="&gt;&gt;listLanguages.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listLanguages.Parent" xml:space="preserve">
-    <value>tpJazyky</value>
-  </data>
-  <data name="&gt;&gt;listLanguages.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 2</value>
-  </data>
-  <data name="label15.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 15</value>
-  </data>
-  <data name="label15.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Zoznam jazykov:</value>
-  </data>
-  <data name="&gt;&gt;label15.Name" xml:space="preserve">
-    <value>label15</value>
-  </data>
-  <data name="&gt;&gt;label15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
-    <value>tpJazyky</value>
-  </data>
-  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tbLanguageSkratka.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 58</value>
-  </data>
-  <data name="tbLanguageSkratka.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbLanguageSkratka.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 23</value>
-  </data>
-  <data name="tbLanguageSkratka.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tbLanguageSkratka.Name" xml:space="preserve">
-    <value>tbLanguageSkratka</value>
-  </data>
-  <data name="&gt;&gt;tbLanguageSkratka.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbLanguageSkratka.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;tbLanguageSkratka.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 61</value>
-  </data>
-  <data name="label17.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 15</value>
-  </data>
-  <data name="label17.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>Skratka:</value>
-  </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
-  </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cbIsBasic.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbIsBasic.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbIsBasic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>232, 58</value>
-  </data>
-  <data name="cbIsBasic.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="cbIsBasic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 19</value>
-  </data>
-  <data name="cbIsBasic.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="cbIsBasic.Text" xml:space="preserve">
-    <value>Hlavný jazyk</value>
-  </data>
-  <data name="&gt;&gt;cbIsBasic.Name" xml:space="preserve">
-    <value>cbIsBasic</value>
-  </data>
-  <data name="&gt;&gt;cbIsBasic.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cbIsBasic.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;cbIsBasic.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tbLanguageName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 24</value>
-  </data>
-  <data name="tbLanguageName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbLanguageName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 23</value>
-  </data>
-  <data name="tbLanguageName.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tbLanguageName.Name" xml:space="preserve">
-    <value>tbLanguageName</value>
-  </data>
-  <data name="&gt;&gt;tbLanguageName.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbLanguageName.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;tbLanguageName.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="bLanguageRemove.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bLanguageRemove.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bLanguageRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>298, 102</value>
-  </data>
-  <data name="bLanguageRemove.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bLanguageRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 30</value>
-  </data>
-  <data name="bLanguageRemove.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="bLanguageRemove.Text" xml:space="preserve">
-    <value>Odstrániť</value>
-  </data>
-  <data name="&gt;&gt;bLanguageRemove.Name" xml:space="preserve">
-    <value>bLanguageRemove</value>
-  </data>
-  <data name="&gt;&gt;bLanguageRemove.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bLanguageRemove.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;bLanguageRemove.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="bLanguageEdit.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bLanguageEdit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bLanguageEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>167, 102</value>
-  </data>
-  <data name="bLanguageEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bLanguageEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 30</value>
-  </data>
-  <data name="bLanguageEdit.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="bLanguageEdit.Text" xml:space="preserve">
-    <value>Upraviť</value>
-  </data>
-  <data name="&gt;&gt;bLanguageEdit.Name" xml:space="preserve">
-    <value>bLanguageEdit</value>
-  </data>
-  <data name="&gt;&gt;bLanguageEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bLanguageEdit.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;bLanguageEdit.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="bLanguageAdd.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bLanguageAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bLanguageAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 102</value>
-  </data>
-  <data name="bLanguageAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bLanguageAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 30</value>
-  </data>
-  <data name="bLanguageAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="bLanguageAdd.Text" xml:space="preserve">
-    <value>Pridať</value>
-  </data>
-  <data name="&gt;&gt;bLanguageAdd.Name" xml:space="preserve">
-    <value>bLanguageAdd</value>
-  </data>
-  <data name="&gt;&gt;bLanguageAdd.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bLanguageAdd.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;bLanguageAdd.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 29</value>
-  </data>
-  <data name="label16.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 15</value>
-  </data>
-  <data name="label16.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Názov:</value>
-  </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 23</value>
-  </data>
-  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 148</value>
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Jazyk</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>tpJazyky</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tpJazyky.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="pJazyky.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="tpJazyky.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="pJazyky.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
-  <data name="tpJazyky.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="pJazyky.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
-  <data name="tpJazyky.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pJazyky.Size" type="System.Drawing.Size, System.Drawing">
     <value>638, 340</value>
   </data>
-  <data name="tpJazyky.TabIndex" type="System.Int32, mscorlib">
+  <data name="pJazyky.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tpJazyky.Text" xml:space="preserve">
-    <value>Jazyky</value>
+  <data name="&gt;&gt;pJazyky.Name" xml:space="preserve">
+    <value>pJazyky</value>
   </data>
-  <data name="&gt;&gt;tpJazyky.Name" xml:space="preserve">
-    <value>tpJazyky</value>
+  <data name="&gt;&gt;pJazyky.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tpJazyky.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;pJazyky.Parent" xml:space="preserve">
+    <value>optionsView</value>
   </data>
-  <data name="&gt;&gt;tpJazyky.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tpJazyky.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pJazyky.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="listMeskania.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 27</value>
-  </data>
-  <data name="listMeskania.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="listMeskania.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 304</value>
-  </data>
-  <data name="listMeskania.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;listMeskania.Name" xml:space="preserve">
-    <value>listMeskania</value>
-  </data>
-  <data name="&gt;&gt;listMeskania.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listMeskania.Parent" xml:space="preserve">
-    <value>tpMeskania</value>
-  </data>
-  <data name="&gt;&gt;listMeskania.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label38.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label38.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 2</value>
-  </data>
-  <data name="label38.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 15</value>
-  </data>
-  <data name="label38.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label38.Text" xml:space="preserve">
-    <value>Zoznam časov meškania:</value>
-  </data>
-  <data name="&gt;&gt;label38.Name" xml:space="preserve">
-    <value>label38</value>
-  </data>
-  <data name="&gt;&gt;label38.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label38.Parent" xml:space="preserve">
-    <value>tpMeskania</value>
-  </data>
-  <data name="&gt;&gt;label38.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tbMeskanie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 48</value>
-  </data>
-  <data name="tbMeskanie.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
-  <data name="tbMeskanie.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;tbMeskanie.Name" xml:space="preserve">
-    <value>tbMeskanie</value>
-  </data>
-  <data name="&gt;&gt;tbMeskanie.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbMeskanie.Parent" xml:space="preserve">
-    <value>groupBox10</value>
-  </data>
-  <data name="&gt;&gt;tbMeskanie.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="bMeskanieDelete.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bMeskanieDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bMeskanieDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>292, 106</value>
-  </data>
-  <data name="bMeskanieDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bMeskanieDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 30</value>
-  </data>
-  <data name="bMeskanieDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="bMeskanieDelete.Text" xml:space="preserve">
-    <value>Odstrániť</value>
-  </data>
-  <data name="&gt;&gt;bMeskanieDelete.Name" xml:space="preserve">
-    <value>bMeskanieDelete</value>
-  </data>
-  <data name="&gt;&gt;bMeskanieDelete.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bMeskanieDelete.Parent" xml:space="preserve">
-    <value>groupBox10</value>
-  </data>
-  <data name="&gt;&gt;bMeskanieDelete.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="bMeskanieEdit.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bMeskanieEdit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bMeskanieEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 106</value>
-  </data>
-  <data name="bMeskanieEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bMeskanieEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 30</value>
-  </data>
-  <data name="bMeskanieEdit.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="bMeskanieEdit.Text" xml:space="preserve">
-    <value>Upraviť</value>
-  </data>
-  <data name="&gt;&gt;bMeskanieEdit.Name" xml:space="preserve">
-    <value>bMeskanieEdit</value>
-  </data>
-  <data name="&gt;&gt;bMeskanieEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bMeskanieEdit.Parent" xml:space="preserve">
-    <value>groupBox10</value>
-  </data>
-  <data name="&gt;&gt;bMeskanieEdit.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="bMeskanieAdd.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bMeskanieAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bMeskanieAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 106</value>
-  </data>
-  <data name="bMeskanieAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bMeskanieAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 30</value>
-  </data>
-  <data name="bMeskanieAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="bMeskanieAdd.Text" xml:space="preserve">
-    <value>Pridať</value>
-  </data>
-  <data name="&gt;&gt;bMeskanieAdd.Name" xml:space="preserve">
-    <value>bMeskanieAdd</value>
-  </data>
-  <data name="&gt;&gt;bMeskanieAdd.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bMeskanieAdd.Parent" xml:space="preserve">
-    <value>groupBox10</value>
-  </data>
-  <data name="&gt;&gt;bMeskanieAdd.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label39.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label39.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label39.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 51</value>
-  </data>
-  <data name="label39.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label39.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 15</value>
-  </data>
-  <data name="label39.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label39.Text" xml:space="preserve">
-    <value>Čas meškania:</value>
-  </data>
-  <data name="&gt;&gt;label39.Name" xml:space="preserve">
-    <value>label39</value>
-  </data>
-  <data name="&gt;&gt;label39.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label39.Parent" xml:space="preserve">
-    <value>groupBox10</value>
-  </data>
-  <data name="&gt;&gt;label39.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="groupBox10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 23</value>
-  </data>
-  <data name="groupBox10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBox10.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBox10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>380, 158</value>
-  </data>
-  <data name="groupBox10.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="groupBox10.Text" xml:space="preserve">
-    <value>Čas meškania</value>
-  </data>
-  <data name="&gt;&gt;groupBox10.Name" xml:space="preserve">
-    <value>groupBox10</value>
-  </data>
-  <data name="&gt;&gt;groupBox10.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;groupBox10.Parent" xml:space="preserve">
-    <value>tpMeskania</value>
-  </data>
-  <data name="&gt;&gt;groupBox10.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tpMeskania.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="pMeskania.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="tpMeskania.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="pMeskania.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
-  <data name="tpMeskania.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="pMeskania.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
-  <data name="tpMeskania.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pMeskania.Size" type="System.Drawing.Size, System.Drawing">
     <value>638, 340</value>
   </data>
-  <data name="tpMeskania.TabIndex" type="System.Int32, mscorlib">
+  <data name="pMeskania.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="tpMeskania.Text" xml:space="preserve">
-    <value>Meškania</value>
+  <data name="&gt;&gt;pMeskania.Name" xml:space="preserve">
+    <value>pMeskania</value>
   </data>
-  <data name="&gt;&gt;tpMeskania.Name" xml:space="preserve">
-    <value>tpMeskania</value>
+  <data name="&gt;&gt;pMeskania.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tpMeskania.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;pMeskania.Parent" xml:space="preserve">
+    <value>optionsView</value>
   </data>
-  <data name="&gt;&gt;tpMeskania.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tpMeskania.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pMeskania.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="label42.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label42.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label42.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 91</value>
-  </data>
-  <data name="label42.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label42.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 15</value>
-  </data>
-  <data name="label42.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="label42.Text" xml:space="preserve">
-    <value>Text na tabuli:</value>
-  </data>
-  <data name="&gt;&gt;label42.Name" xml:space="preserve">
-    <value>label42</value>
-  </data>
-  <data name="&gt;&gt;label42.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label42.Parent" xml:space="preserve">
-    <value>groupBox11</value>
-  </data>
-  <data name="&gt;&gt;label42.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tbCustomTrainTypText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 88</value>
-  </data>
-  <data name="tbCustomTrainTypText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbCustomTrainTypText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 23</value>
-  </data>
-  <data name="tbCustomTrainTypText.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;tbCustomTrainTypText.Name" xml:space="preserve">
-    <value>tbCustomTrainTypText</value>
-  </data>
-  <data name="&gt;&gt;tbCustomTrainTypText.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbCustomTrainTypText.Parent" xml:space="preserve">
-    <value>groupBox11</value>
-  </data>
-  <data name="&gt;&gt;tbCustomTrainTypText.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tbCustomTrainTypSkratka.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 59</value>
-  </data>
-  <data name="tbCustomTrainTypSkratka.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbCustomTrainTypSkratka.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="tbCustomTrainTypSkratka.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tbCustomTrainTypSkratka.Name" xml:space="preserve">
-    <value>tbCustomTrainTypSkratka</value>
-  </data>
-  <data name="&gt;&gt;tbCustomTrainTypSkratka.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbCustomTrainTypSkratka.Parent" xml:space="preserve">
-    <value>groupBox11</value>
-  </data>
-  <data name="&gt;&gt;tbCustomTrainTypSkratka.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label41.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label41.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label41.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 62</value>
-  </data>
-  <data name="label41.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label41.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 15</value>
-  </data>
-  <data name="label41.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label41.Text" xml:space="preserve">
-    <value>Skratka:</value>
-  </data>
-  <data name="&gt;&gt;label41.Name" xml:space="preserve">
-    <value>label41</value>
-  </data>
-  <data name="&gt;&gt;label41.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label41.Parent" xml:space="preserve">
-    <value>groupBox11</value>
-  </data>
-  <data name="&gt;&gt;label41.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cbCustomTrainTypDruh.Items" xml:space="preserve">
-    <value>Normálne písmo (čierne)</value>
-  </data>
-  <data name="cbCustomTrainTypDruh.Items1" xml:space="preserve">
-    <value>Červené písmo</value>
-  </data>
-  <data name="cbCustomTrainTypDruh.Items2" xml:space="preserve">
-    <value>Zelené písmo</value>
-  </data>
-  <data name="cbCustomTrainTypDruh.Items3" xml:space="preserve">
-    <value>Pre služobné vlaky</value>
-  </data>
-  <data name="cbCustomTrainTypDruh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 29</value>
-  </data>
-  <data name="cbCustomTrainTypDruh.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="cbCustomTrainTypDruh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 23</value>
-  </data>
-  <data name="cbCustomTrainTypDruh.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cbCustomTrainTypDruh.Name" xml:space="preserve">
-    <value>cbCustomTrainTypDruh</value>
-  </data>
-  <data name="&gt;&gt;cbCustomTrainTypDruh.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cbCustomTrainTypDruh.Parent" xml:space="preserve">
-    <value>groupBox11</value>
-  </data>
-  <data name="&gt;&gt;cbCustomTrainTypDruh.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label40.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label40.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label40.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 32</value>
-  </data>
-  <data name="label40.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label40.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 15</value>
-  </data>
-  <data name="label40.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label40.Text" xml:space="preserve">
-    <value>Farba / druh:</value>
-  </data>
-  <data name="&gt;&gt;label40.Name" xml:space="preserve">
-    <value>label40</value>
-  </data>
-  <data name="&gt;&gt;label40.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label40.Parent" xml:space="preserve">
-    <value>groupBox11</value>
-  </data>
-  <data name="&gt;&gt;label40.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="bCustomTrainTypDelete.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bCustomTrainTypDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bCustomTrainTypDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>289, 127</value>
-  </data>
-  <data name="bCustomTrainTypDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bCustomTrainTypDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 30</value>
-  </data>
-  <data name="bCustomTrainTypDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="bCustomTrainTypDelete.Text" xml:space="preserve">
-    <value>Odstrániť</value>
-  </data>
-  <data name="&gt;&gt;bCustomTrainTypDelete.Name" xml:space="preserve">
-    <value>bCustomTrainTypDelete</value>
-  </data>
-  <data name="&gt;&gt;bCustomTrainTypDelete.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bCustomTrainTypDelete.Parent" xml:space="preserve">
-    <value>groupBox11</value>
-  </data>
-  <data name="&gt;&gt;bCustomTrainTypDelete.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="bCustomTrainTypAdd.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bCustomTrainTypAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bCustomTrainTypAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 127</value>
-  </data>
-  <data name="bCustomTrainTypAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bCustomTrainTypAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 30</value>
-  </data>
-  <data name="bCustomTrainTypAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="bCustomTrainTypAdd.Text" xml:space="preserve">
-    <value>Pridať</value>
-  </data>
-  <data name="&gt;&gt;bCustomTrainTypAdd.Name" xml:space="preserve">
-    <value>bCustomTrainTypAdd</value>
-  </data>
-  <data name="&gt;&gt;bCustomTrainTypAdd.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bCustomTrainTypAdd.Parent" xml:space="preserve">
-    <value>groupBox11</value>
-  </data>
-  <data name="&gt;&gt;bCustomTrainTypAdd.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="bCustomTrainTypEdit.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bCustomTrainTypEdit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bCustomTrainTypEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 127</value>
-  </data>
-  <data name="bCustomTrainTypEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bCustomTrainTypEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 30</value>
-  </data>
-  <data name="bCustomTrainTypEdit.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="bCustomTrainTypEdit.Text" xml:space="preserve">
-    <value>Upraviť</value>
-  </data>
-  <data name="&gt;&gt;bCustomTrainTypEdit.Name" xml:space="preserve">
-    <value>bCustomTrainTypEdit</value>
-  </data>
-  <data name="&gt;&gt;bCustomTrainTypEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bCustomTrainTypEdit.Parent" xml:space="preserve">
-    <value>groupBox11</value>
-  </data>
-  <data name="&gt;&gt;bCustomTrainTypEdit.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="groupBox11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 158</value>
-  </data>
-  <data name="groupBox11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBox11.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBox11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>380, 172</value>
-  </data>
-  <data name="groupBox11.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="groupBox11.Text" xml:space="preserve">
-    <value>Typ vlaku (používateľom definované)</value>
-  </data>
-  <data name="&gt;&gt;groupBox11.Name" xml:space="preserve">
-    <value>groupBox11</value>
-  </data>
-  <data name="&gt;&gt;groupBox11.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;groupBox11.Parent" xml:space="preserve">
-    <value>tpTrainTypes</value>
-  </data>
-  <data name="&gt;&gt;groupBox11.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="listTrainTypes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 27</value>
-  </data>
-  <data name="listTrainTypes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="listTrainTypes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 304</value>
-  </data>
-  <data name="listTrainTypes.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;listTrainTypes.Name" xml:space="preserve">
-    <value>listTrainTypes</value>
-  </data>
-  <data name="&gt;&gt;listTrainTypes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listTrainTypes.Parent" xml:space="preserve">
-    <value>tpTrainTypes</value>
-  </data>
-  <data name="&gt;&gt;listTrainTypes.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 2</value>
-  </data>
-  <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 15</value>
-  </data>
-  <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Zoznam typov vlakov:</value>
-  </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>tpTrainTypes</value>
-  </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label20.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 58</value>
-  </data>
-  <data name="label20.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 15</value>
-  </data>
-  <data name="label20.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Text na tabuli:</value>
-  </data>
-  <data name="&gt;&gt;label20.Name" xml:space="preserve">
-    <value>label20</value>
-  </data>
-  <data name="&gt;&gt;label20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tbDefaultTrainTypText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 58</value>
-  </data>
-  <data name="tbDefaultTrainTypText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbDefaultTrainTypText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 23</value>
-  </data>
-  <data name="tbDefaultTrainTypText.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;tbDefaultTrainTypText.Name" xml:space="preserve">
-    <value>tbDefaultTrainTypText</value>
-  </data>
-  <data name="&gt;&gt;tbDefaultTrainTypText.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbDefaultTrainTypText.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;tbDefaultTrainTypText.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tbDefaultTrainTypSkratka.Location" type="System.Drawing.Point, System.Drawing">
-    <value>288, 28</value>
-  </data>
-  <data name="tbDefaultTrainTypSkratka.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbDefaultTrainTypSkratka.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="tbDefaultTrainTypSkratka.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tbDefaultTrainTypSkratka.Name" xml:space="preserve">
-    <value>tbDefaultTrainTypSkratka</value>
-  </data>
-  <data name="&gt;&gt;tbDefaultTrainTypSkratka.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbDefaultTrainTypSkratka.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;tbDefaultTrainTypSkratka.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 29</value>
-  </data>
-  <data name="label21.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 15</value>
-  </data>
-  <data name="label21.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>Skratka:</value>
-  </data>
-  <data name="&gt;&gt;label21.Name" xml:space="preserve">
-    <value>label21</value>
-  </data>
-  <data name="&gt;&gt;label21.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cbDefTrainTypSkratka.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 27</value>
-  </data>
-  <data name="cbDefTrainTypSkratka.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="cbDefTrainTypSkratka.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="cbDefTrainTypSkratka.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cbDefTrainTypSkratka.Name" xml:space="preserve">
-    <value>cbDefTrainTypSkratka</value>
-  </data>
-  <data name="&gt;&gt;cbDefTrainTypSkratka.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cbDefTrainTypSkratka.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;cbDefTrainTypSkratka.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="bDefTrainTypDelete.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bDefTrainTypDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bDefTrainTypDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>292, 88</value>
-  </data>
-  <data name="bDefTrainTypDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bDefTrainTypDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 30</value>
-  </data>
-  <data name="bDefTrainTypDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="bDefTrainTypDelete.Text" xml:space="preserve">
-    <value>Odstrániť</value>
-  </data>
-  <data name="&gt;&gt;bDefTrainTypDelete.Name" xml:space="preserve">
-    <value>bDefTrainTypDelete</value>
-  </data>
-  <data name="&gt;&gt;bDefTrainTypDelete.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bDefTrainTypDelete.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;bDefTrainTypDelete.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="bDefTrainTypEdit.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bDefTrainTypEdit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bDefTrainTypEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 88</value>
-  </data>
-  <data name="bDefTrainTypEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bDefTrainTypEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 30</value>
-  </data>
-  <data name="bDefTrainTypEdit.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="bDefTrainTypEdit.Text" xml:space="preserve">
-    <value>Upraviť</value>
-  </data>
-  <data name="&gt;&gt;bDefTrainTypEdit.Name" xml:space="preserve">
-    <value>bDefTrainTypEdit</value>
-  </data>
-  <data name="&gt;&gt;bDefTrainTypEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bDefTrainTypEdit.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;bDefTrainTypEdit.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="bDefTrainTypAdd.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bDefTrainTypAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bDefTrainTypAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 88</value>
-  </data>
-  <data name="bDefTrainTypAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bDefTrainTypAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 30</value>
-  </data>
-  <data name="bDefTrainTypAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="bDefTrainTypAdd.Text" xml:space="preserve">
-    <value>Pridať</value>
-  </data>
-  <data name="&gt;&gt;bDefTrainTypAdd.Name" xml:space="preserve">
-    <value>bDefTrainTypAdd</value>
-  </data>
-  <data name="&gt;&gt;bDefTrainTypAdd.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bDefTrainTypAdd.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;bDefTrainTypAdd.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 29</value>
-  </data>
-  <data name="label18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 15</value>
-  </data>
-  <data name="label18.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Druh:</value>
-  </data>
-  <data name="&gt;&gt;label18.Name" xml:space="preserve">
-    <value>label18</value>
-  </data>
-  <data name="&gt;&gt;label18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 23</value>
-  </data>
-  <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>380, 132</value>
-  </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Typ vlaku (predvolené)</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>tpTrainTypes</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tpTrainTypes.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="pTrainTypes.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="tpTrainTypes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="pTrainTypes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="tpTrainTypes.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="pTrainTypes.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="tpTrainTypes.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pTrainTypes.Size" type="System.Drawing.Size, System.Drawing">
     <value>638, 340</value>
   </data>
-  <data name="tpTrainTypes.TabIndex" type="System.Int32, mscorlib">
+  <data name="pTrainTypes.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="tpTrainTypes.Text" xml:space="preserve">
-    <value>Typy vlakov</value>
+  <data name="&gt;&gt;pTrainTypes.Name" xml:space="preserve">
+    <value>pTrainTypes</value>
   </data>
-  <data name="&gt;&gt;tpTrainTypes.Name" xml:space="preserve">
-    <value>tpTrainTypes</value>
+  <data name="&gt;&gt;pTrainTypes.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tpTrainTypes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;pTrainTypes.Parent" xml:space="preserve">
+    <value>optionsView</value>
   </data>
-  <data name="&gt;&gt;tpTrainTypes.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tpTrainTypes.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pTrainTypes.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="listAudio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 27</value>
-  </data>
-  <data name="listAudio.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="listAudio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 304</value>
-  </data>
-  <data name="listAudio.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;listAudio.Name" xml:space="preserve">
-    <value>listAudio</value>
-  </data>
-  <data name="&gt;&gt;listAudio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listAudio.Parent" xml:space="preserve">
-    <value>tpAudio</value>
-  </data>
-  <data name="&gt;&gt;listAudio.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 2</value>
-  </data>
-  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 15</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Zoznam audio liniek:</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>tpAudio</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label26.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label26.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 256</value>
-  </data>
-  <data name="label26.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 15</value>
-  </data>
-  <data name="label26.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="label26.Text" xml:space="preserve">
-    <value>Uzol (počítač):</value>
-  </data>
-  <data name="&gt;&gt;label26.Name" xml:space="preserve">
-    <value>label26</value>
-  </data>
-  <data name="&gt;&gt;label26.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label25.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label25.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 229</value>
-  </data>
-  <data name="label25.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 15</value>
-  </data>
-  <data name="label25.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="label25.Text" xml:space="preserve">
-    <value>Parameter ústredne:</value>
-  </data>
-  <data name="&gt;&gt;label25.Name" xml:space="preserve">
-    <value>label25</value>
-  </data>
-  <data name="&gt;&gt;label25.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label25.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tbNode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 248</value>
-  </data>
-  <data name="tbNode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbNode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 23</value>
-  </data>
-  <data name="tbNode.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;tbNode.Name" xml:space="preserve">
-    <value>tbNode</value>
-  </data>
-  <data name="&gt;&gt;tbNode.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbNode.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;tbNode.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tbExchange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 221</value>
-  </data>
-  <data name="tbExchange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbExchange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 23</value>
-  </data>
-  <data name="tbExchange.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;tbExchange.Name" xml:space="preserve">
-    <value>tbExchange</value>
-  </data>
-  <data name="&gt;&gt;tbExchange.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbExchange.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;tbExchange.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tbAmplifier.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 194</value>
-  </data>
-  <data name="tbAmplifier.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbAmplifier.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 23</value>
-  </data>
-  <data name="tbAmplifier.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;tbAmplifier.Name" xml:space="preserve">
-    <value>tbAmplifier</value>
-  </data>
-  <data name="&gt;&gt;tbAmplifier.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbAmplifier.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;tbAmplifier.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tbInputLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 167</value>
-  </data>
-  <data name="tbInputLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbInputLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 23</value>
-  </data>
-  <data name="tbInputLine.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;tbInputLine.Name" xml:space="preserve">
-    <value>tbInputLine</value>
-  </data>
-  <data name="&gt;&gt;tbInputLine.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbInputLine.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;tbInputLine.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label24.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 202</value>
-  </data>
-  <data name="label24.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 15</value>
-  </data>
-  <data name="label24.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>Spínanie zosilňovača:</value>
-  </data>
-  <data name="&gt;&gt;label24.Name" xml:space="preserve">
-    <value>label24</value>
-  </data>
-  <data name="&gt;&gt;label24.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label23.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 175</value>
-  </data>
-  <data name="label23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 15</value>
-  </data>
-  <data name="label23.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="label23.Text" xml:space="preserve">
-    <value>Vstupná linka mixéra:</value>
-  </data>
-  <data name="&gt;&gt;label23.Name" xml:space="preserve">
-    <value>label23</value>
-  </data>
-  <data name="&gt;&gt;label23.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="label22.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 148</value>
-  </data>
-  <data name="label22.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 15</value>
-  </data>
-  <data name="label22.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="label22.Text" xml:space="preserve">
-    <value>Zvukové zariadenie[:linka]:</value>
-  </data>
-  <data name="&gt;&gt;label22.Name" xml:space="preserve">
-    <value>label22</value>
-  </data>
-  <data name="&gt;&gt;label22.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="tbSoundCard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 140</value>
-  </data>
-  <data name="tbSoundCard.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbSoundCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 23</value>
-  </data>
-  <data name="tbSoundCard.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;tbSoundCard.Name" xml:space="preserve">
-    <value>tbSoundCard</value>
-  </data>
-  <data name="&gt;&gt;tbSoundCard.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbSoundCard.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;tbSoundCard.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="tbAudioName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 57</value>
-  </data>
-  <data name="tbAudioName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="tbAudioName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 23</value>
-  </data>
-  <data name="tbAudioName.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;tbAudioName.Name" xml:space="preserve">
-    <value>tbAudioName</value>
-  </data>
-  <data name="&gt;&gt;tbAudioName.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbAudioName.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;tbAudioName.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 65</value>
-  </data>
-  <data name="label8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 15</value>
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Názov linky:</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 120</value>
-  </data>
-  <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 15</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Názov fronty:</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="tbAudioNazovFronta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 112</value>
-  </data>
-  <data name="tbAudioNazovFronta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbAudioNazovFronta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 23</value>
-  </data>
-  <data name="tbAudioNazovFronta.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;tbAudioNazovFronta.Name" xml:space="preserve">
-    <value>tbAudioNazovFronta</value>
-  </data>
-  <data name="&gt;&gt;tbAudioNazovFronta.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbAudioNazovFronta.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;tbAudioNazovFronta.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="tbAudioNazovSkratka.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 85</value>
-  </data>
-  <data name="tbAudioNazovSkratka.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tbAudioNazovSkratka.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 23</value>
-  </data>
-  <data name="tbAudioNazovSkratka.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;tbAudioNazovSkratka.Name" xml:space="preserve">
-    <value>tbAudioNazovSkratka</value>
-  </data>
-  <data name="&gt;&gt;tbAudioNazovSkratka.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbAudioNazovSkratka.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;tbAudioNazovSkratka.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 93</value>
-  </data>
-  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 15</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Názov v skratke:</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="cbCustomOnly.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cbCustomOnly.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbCustomOnly.Location" type="System.Drawing.Point, System.Drawing">
-    <value>310, 29</value>
-  </data>
-  <data name="cbCustomOnly.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="cbCustomOnly.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 19</value>
-  </data>
-  <data name="cbCustomOnly.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="cbCustomOnly.Text" xml:space="preserve">
-    <value>Iba vlastné</value>
-  </data>
-  <data name="&gt;&gt;cbCustomOnly.Name" xml:space="preserve">
-    <value>cbCustomOnly</value>
-  </data>
-  <data name="&gt;&gt;cbCustomOnly.Type" xml:space="preserve">
-    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cbCustomOnly.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;cbCustomOnly.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="cbAudioStanica.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 27</value>
-  </data>
-  <data name="cbAudioStanica.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="cbAudioStanica.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 23</value>
-  </data>
-  <data name="cbAudioStanica.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cbAudioStanica.Name" xml:space="preserve">
-    <value>cbAudioStanica</value>
-  </data>
-  <data name="&gt;&gt;cbAudioStanica.Type" xml:space="preserve">
-    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cbAudioStanica.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;cbAudioStanica.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="bAudioDelete.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bAudioDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bAudioDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>312, 274</value>
-  </data>
-  <data name="bAudioDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bAudioDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 30</value>
-  </data>
-  <data name="bAudioDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="bAudioDelete.Text" xml:space="preserve">
-    <value>Odstrániť</value>
-  </data>
-  <data name="&gt;&gt;bAudioDelete.Name" xml:space="preserve">
-    <value>bAudioDelete</value>
-  </data>
-  <data name="&gt;&gt;bAudioDelete.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bAudioDelete.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;bAudioDelete.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="bAudioEdit.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bAudioEdit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bAudioEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>175, 274</value>
-  </data>
-  <data name="bAudioEdit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bAudioEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 30</value>
-  </data>
-  <data name="bAudioEdit.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="bAudioEdit.Text" xml:space="preserve">
-    <value>Upraviť</value>
-  </data>
-  <data name="&gt;&gt;bAudioEdit.Name" xml:space="preserve">
-    <value>bAudioEdit</value>
-  </data>
-  <data name="&gt;&gt;bAudioEdit.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bAudioEdit.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;bAudioEdit.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="bAudioAdd.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bAudioAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bAudioAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 274</value>
-  </data>
-  <data name="bAudioAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="bAudioAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 30</value>
-  </data>
-  <data name="bAudioAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="bAudioAdd.Text" xml:space="preserve">
-    <value>Pridať</value>
-  </data>
-  <data name="&gt;&gt;bAudioAdd.Name" xml:space="preserve">
-    <value>bAudioAdd</value>
-  </data>
-  <data name="&gt;&gt;bAudioAdd.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bAudioAdd.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;bAudioAdd.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 33</value>
-  </data>
-  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 15</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Stanica:</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 23</value>
-  </data>
-  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 308</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Audio linka</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>tpAudio</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tpAudio.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="pAudio.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="tpAudio.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="pAudio.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="tpAudio.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="pAudio.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="tpAudio.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pAudio.Size" type="System.Drawing.Size, System.Drawing">
     <value>638, 340</value>
   </data>
-  <data name="tpAudio.TabIndex" type="System.Int32, mscorlib">
+  <data name="pAudio.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="tpAudio.Text" xml:space="preserve">
-    <value>Audio</value>
+  <data name="&gt;&gt;pAudio.Name" xml:space="preserve">
+    <value>pAudio</value>
   </data>
-  <data name="&gt;&gt;tpAudio.Name" xml:space="preserve">
-    <value>tpAudio</value>
+  <data name="&gt;&gt;pAudio.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tpAudio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;pAudio.Parent" xml:space="preserve">
+    <value>optionsView</value>
   </data>
-  <data name="&gt;&gt;tpAudio.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tpAudio.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pAudio.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 6</value>
-  </data>
-  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>646, 368</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>ExControls.ExTabControl, ExControls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="bSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
   </data>
   <data name="bSave.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="bSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="bSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>252, 382</value>
   </data>
   <data name="bSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
@@ -2933,7 +266,7 @@
     <value>80, 31</value>
   </data>
   <data name="bSave.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="bSave.Text" xml:space="preserve">
     <value>OK</value>
@@ -2945,19 +278,16 @@
     <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bSave.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>tlpBottom</value>
   </data>
   <data name="&gt;&gt;bSave.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="bStorno.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="bStorno.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>338, 382</value>
   </data>
   <data name="bStorno.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
@@ -2966,7 +296,7 @@
     <value>80, 31</value>
   </data>
   <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="bStorno.Text" xml:space="preserve">
     <value>Zrušiť</value>
@@ -2978,14 +308,11 @@
     <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bStorno.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>tlpBottom</value>
   </data>
   <data name="&gt;&gt;bStorno.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
-  <metadata name="colorDialogFarba.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -2993,7 +320,7 @@
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>670, 420</value>
+    <value>860, 500</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
@@ -3001,34 +328,268 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Globálne nastavenia</value>
   </data>
-  <data name="&gt;&gt;keyDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>keyDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;keyDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fyzBankNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>fyzBankNameDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;fyzBankNameDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;languageBindingSource.Name" xml:space="preserve">
-    <value>languageBindingSource</value>
-  </data>
-  <data name="&gt;&gt;languageBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colorDialogFarba.Name" xml:space="preserve">
-    <value>colorDialogFarba</value>
-  </data>
-  <data name="&gt;&gt;colorDialogFarba.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColorDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FGlobalSettings</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pGrafikony.NodeText" xml:space="preserve">
+    <value>Grafikony</value>
+  </data>
+  <data name="pJazyky.NodeText" xml:space="preserve">
+    <value>Jazyky</value>
+  </data>
+  <data name="pMeskania.NodeText" xml:space="preserve">
+    <value>Meškania</value>
+  </data>
+  <data name="pTrainTypes.NodeText" xml:space="preserve">
+    <value>Typy vlakov</value>
+  </data>
+  <data name="pAudio.NodeText" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="languagesPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="languagesPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="languagesPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>660, 420</value>
+  </data>
+  <data name="languagesPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;languagesPage.Name" xml:space="preserve">
+    <value>languagesPage</value>
+  </data>
+  <data name="&gt;&gt;languagesPage.Type" xml:space="preserve">
+    <value>GVDEditor.Forms.Settings.LanguagesPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;languagesPage.Parent" xml:space="preserve">
+    <value>pJazyky</value>
+  </data>
+  <data name="&gt;&gt;languagesPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="delaysPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="delaysPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="delaysPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>660, 420</value>
+  </data>
+  <data name="delaysPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;delaysPage.Name" xml:space="preserve">
+    <value>delaysPage</value>
+  </data>
+  <data name="&gt;&gt;delaysPage.Type" xml:space="preserve">
+    <value>GVDEditor.Forms.Settings.DelaysPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;delaysPage.Parent" xml:space="preserve">
+    <value>pMeskania</value>
+  </data>
+  <data name="&gt;&gt;delaysPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="optionsView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="optionsView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="optionsView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>860, 460</value>
+  </data>
+  <data name="optionsView.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;optionsView.Name" xml:space="preserve">
+    <value>optionsView</value>
+  </data>
+  <data name="&gt;&gt;optionsView.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsView, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;optionsView.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;optionsView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tlpBottom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tlpBottom.ColumnCount" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tlpBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="tlpBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 460</value>
+  </data>
+  <data name="tlpBottom.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 4, 6, 4</value>
+  </data>
+  <data name="tlpBottom.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tlpBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>860, 40</value>
+  </data>
+  <data name="tlpBottom.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tlpBottom.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="llHelp" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lProblem" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="bSave" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="bStorno" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="&gt;&gt;tlpBottom.Name" xml:space="preserve">
+    <value>tlpBottom</value>
+  </data>
+  <data name="&gt;&gt;tlpBottom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tlpBottom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="llHelp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="llHelp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="llHelp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 12</value>
+  </data>
+  <data name="llHelp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 12, 0</value>
+  </data>
+  <data name="llHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="llHelp.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="llHelp.Text" xml:space="preserve">
+    <value>Nápoveda</value>
+  </data>
+  <data name="&gt;&gt;llHelp.Name" xml:space="preserve">
+    <value>llHelp</value>
+  </data>
+  <data name="&gt;&gt;llHelp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;llHelp.Parent" xml:space="preserve">
+    <value>tlpBottom</value>
+  </data>
+  <data name="&gt;&gt;llHelp.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lProblem.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="lProblem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>76, 4</value>
+  </data>
+  <data name="lProblem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>600, 32</value>
+  </data>
+  <data name="lProblem.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lProblem.Name" xml:space="preserve">
+    <value>lProblem</value>
+  </data>
+  <data name="&gt;&gt;lProblem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lProblem.Parent" xml:space="preserve">
+    <value>tlpBottom</value>
+  </data>
+  <data name="&gt;&gt;lProblem.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>760, 440</value>
+  </data>
+  <data name="trainTypesPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="trainTypesPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="trainTypesPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>660, 420</value>
+  </data>
+  <data name="trainTypesPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;trainTypesPage.Name" xml:space="preserve">
+    <value>trainTypesPage</value>
+  </data>
+  <data name="&gt;&gt;trainTypesPage.Type" xml:space="preserve">
+    <value>GVDEditor.Forms.Settings.TrainTypesPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trainTypesPage.Parent" xml:space="preserve">
+    <value>pTrainTypes</value>
+  </data>
+  <data name="&gt;&gt;trainTypesPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="grafikonyPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="grafikonyPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="grafikonyPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>660, 420</value>
+  </data>
+  <data name="grafikonyPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;grafikonyPage.Name" xml:space="preserve">
+    <value>grafikonyPage</value>
+  </data>
+  <data name="&gt;&gt;grafikonyPage.Type" xml:space="preserve">
+    <value>GVDEditor.Forms.Settings.GrafikonyPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;grafikonyPage.Parent" xml:space="preserve">
+    <value>pGrafikony</value>
+  </data>
+  <data name="&gt;&gt;grafikonyPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="audioPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="audioPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="audioPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>660, 420</value>
+  </data>
+  <data name="audioPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;audioPage.Name" xml:space="preserve">
+    <value>audioPage</value>
+  </data>
+  <data name="&gt;&gt;audioPage.Type" xml:space="preserve">
+    <value>GVDEditor.Forms.Settings.AudioPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;audioPage.Parent" xml:space="preserve">
+    <value>pAudio</value>
+  </data>
+  <data name="&gt;&gt;audioPage.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
 </root>

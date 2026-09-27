@@ -31,23 +31,46 @@ internal static class LanguageRules
             return string.Format(Resources.LanguageRules_Najviac_jazykov, MaxLanguages);
 
         var bank = bankKeys.ToList();
-        foreach (var language in languages)
+        for (var i = 0; i < languages.Count; i++)
         {
-            if (!InissKeys.Contains(language.Key))
-                return string.Format(Resources.LanguageRules_Neznamy_kluc, language.Key, string.Join(", ", InissKeys));
-
-            if (!bank.Contains(language.Key))
-                return Resources.FGlobalSettings_Kľúč_jazyka_sa_nezhoduje_so_žiadnym_jazykom_nacházajúci_sa_v_zvukovej_banke;
+            var error = CheckLanguage(languages, i, bank);
+            if (error != null)
+                return error;
         }
 
-        if (languages.GroupBy(l => l.Key).Any(g => g.Count() > 1))
-            return Resources.FGlobalSettings_Zadaný_jazyk_sa_sa_už_v_zozname_nachádza;
+        return CheckBasic(languages);
+    }
 
-        return languages.Count(l => l.IsBasic) switch
+    /// <summary>
+    ///     Chyba kluca jazyka na pozicii <paramref name="index" /> - kluc, ktory INISS nepozna, chyba v zvukovej banke
+    ///     alebo ho ma aj iny jazyk.
+    /// </summary>
+    /// <returns>Text chyby, alebo <see langword="null" />, ak je kluc v poriadku.</returns>
+    public static string? CheckLanguage(IReadOnlyList<FyzLanguage> languages, int index, IReadOnlyCollection<string> bankKeys)
+    {
+        var key = languages[index].Key;
+        if (!InissKeys.Contains(key))
+            return string.Format(Resources.LanguageRules_Neznamy_kluc, key, string.Join(", ", InissKeys));
+
+        if (!bankKeys.Contains(key))
+            return Resources.FGlobalSettings_Kľúč_jazyka_sa_nezhoduje_so_žiadnym_jazykom_nacházajúci_sa_v_zvukovej_banke;
+
+        for (var i = 0; i < languages.Count; i++)
+            if (i != index && languages[i].Key == key)
+                return Resources.FGlobalSettings_Zadaný_jazyk_sa_sa_už_v_zozname_nachádza;
+
+        return null;
+    }
+
+    /// <summary>
+    ///     Chyba vyberu hlavneho jazyka - hlavny musi byt prave jeden.
+    /// </summary>
+    /// <returns>Text chyby, alebo <see langword="null" />, ak je hlavny prave jeden.</returns>
+    public static string? CheckBasic(IReadOnlyList<FyzLanguage> languages) =>
+        languages.Count(l => l.IsBasic) switch
         {
             0 => Resources.LanguageRules_Chyba_hlavny_jazyk,
             > 1 => Resources.FGlobalSettings_bLanguageAdd_Click_Iba_1_jazyk_môže_byť_hlavný,
             _ => null
         };
-    }
 }

@@ -118,166 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>421, 17</value>
-  </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Ostatní nastavení se nacházejí po otevření konkrétního grafikonu.</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 17</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Seznam grafikon:</value>
-  </data>
-  <data name="bGrafikonEdit.Text" xml:space="preserve">
-    <value>Upravit</value>
-  </data>
-  <data name="bEditColor.Text" xml:space="preserve">
-    <value>Upravit farbu...</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 17</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Port pro dál. hlásení:</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Port pro tabule:</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 17</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Složka:</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 17</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Období:</value>
-  </data>
-  <data name="bGrafikonDelete.Text" xml:space="preserve">
-    <value>Odstranit</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Stanice:</value>
-  </data>
-  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 17</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Seznam jazyků:</value>
-  </data>
-  <data name="cbIsBasic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 21</value>
-  </data>
-  <data name="cbIsBasic.Text" xml:space="preserve">
-    <value>Hlavní jazyk</value>
-  </data>
-  <data name="bLanguageRemove.Text" xml:space="preserve">
-    <value>Odstránit</value>
-  </data>
-  <data name="bLanguageEdit.Text" xml:space="preserve">
-    <value>Upravit</value>
-  </data>
-  <data name="bLanguageAdd.Text" xml:space="preserve">
-    <value>Pridat</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Název:</value>
-  </data>
-  <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 17</value>
-  </data>
-  <data name="label38.Text" xml:space="preserve">
-    <value>Seznam časů meškání:</value>
-  </data>
-  <data name="groupBox10.Text" xml:space="preserve">
-    <value>Čas meškání</value>
-  </data>
-  <data name="bMeskanieDelete.Text" xml:space="preserve">
-    <value>Odstránit</value>
-  </data>
-  <data name="bMeskanieEdit.Text" xml:space="preserve">
-    <value>Upravit</value>
-  </data>
-  <data name="bMeskanieAdd.Text" xml:space="preserve">
-    <value>Pridat</value>
-  </data>
-  <data name="label39.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 17</value>
-  </data>
-  <data name="label39.Text" xml:space="preserve">
-    <value>Čas meškání:</value>
-  </data>
-  <data name="groupBox11.Text" xml:space="preserve">
-    <value>Typ vlaku (užívatelem definované)</value>
-  </data>
-  <data name="bCustomTrainTypDelete.Text" xml:space="preserve">
-    <value>Odstránit</value>
-  </data>
-  <data name="bCustomTrainTypAdd.Text" xml:space="preserve">
-    <value>Pridat</value>
-  </data>
-  <data name="bCustomTrainTypEdit.Text" xml:space="preserve">
-    <value>Upravit</value>
-  </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 17</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Seznam typů vlaků:</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Typ vlaku (výchozí)</value>
-  </data>
-  <data name="bDefTrainTypDelete.Text" xml:space="preserve">
-    <value>Odstránit</value>
-  </data>
-  <data name="bDefTrainTypEdit.Text" xml:space="preserve">
-    <value>Upravit</value>
-  </data>
-  <data name="bDefTrainTypAdd.Text" xml:space="preserve">
-    <value>Pridat</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 17</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Seznam audio linek:</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Název fronty:</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Název v skratke:</value>
-  </data>
-  <data name="cbCustomOnly.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 21</value>
-  </data>
-  <data name="cbCustomOnly.Text" xml:space="preserve">
-    <value>Iba vlastní</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Stanice:</value>
-  </data>
   <data name="bStorno.Text" xml:space="preserve">
     <value>Zrušit</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Globální nastavení</value>
   </data>
-  <data name="bAudioAdd.Text" xml:space="preserve">
-    <value>Přidat</value>
+  <data name="pGrafikony.NodeText" xml:space="preserve">
+    <value>Grafikony</value>
   </data>
-  <data name="bAudioDelete.Text" xml:space="preserve">
-    <value>Odstranit</value>
+  <data name="pJazyky.NodeText" xml:space="preserve">
+    <value>Jazyky</value>
   </data>
-  <data name="bAudioEdit.Text" xml:space="preserve">
-    <value>Upravit</value>
+  <data name="pMeskania.NodeText" xml:space="preserve">
+    <value>Zpoždění</value>
   </data>
-  <data name="fyzBankNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Název ze zvukové banky</value>
+  <data name="pTrainTypes.NodeText" xml:space="preserve">
+    <value>Typy vlaků</value>
+  </data>
+  <data name="pAudio.NodeText" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="llHelp.Text" xml:space="preserve">
+    <value>Nápověda</value>
   </data>
 </root>

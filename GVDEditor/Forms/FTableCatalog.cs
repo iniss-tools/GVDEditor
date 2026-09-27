@@ -1,4 +1,5 @@
-﻿using GVDEditor.Entities;
+﻿using GVDEditor.Controls;
+using GVDEditor.Entities;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
 using ToolsCore.Tools;
@@ -16,9 +17,9 @@ public partial class FTableCatalog : Form
     private readonly Dictionary<TableItem, TableItem> originalColumns = new(ReferenceEqualityComparer.Instance);
 
     private readonly bool copy;
-    private readonly Color defaultBorderColor;
-    // popis vyznamu cisla pisma pri poli s cislom pisma
+    // popis vyznamu cisla pisma pri vybere pisma
     private readonly ToolTip fontTip = new();
+    private readonly TableFontChoice fontChoice;
     private readonly BindingList<TableSegment> Rows;
 
     private readonly BindingList<TableTabTab> TabTabs1;
@@ -45,8 +46,8 @@ public partial class FTableCatalog : Form
         ThisTable = table;
         this.copy = copy;
 
-        defaultBorderColor = nudFont.BorderColor;
         (components ??= new Container()).Add(fontTip);
+        fontChoice = new TableFontChoice(cbFont, fontTip, allowColumnDefault: false);
 
         // okno pracuje nad kopiami – tabula sa zmeni az pri Ulozit (pri Duplikovat sa originalna tabula nezmeni vobec)
         ViewTypeTabs = new BindingList<TableViewTypeTab>(ThisTable.ViewTypeTabs.Select(TableCatalogEditing.Clone).ToList());
@@ -57,7 +58,7 @@ public partial class FTableCatalog : Form
 
         cbManufacturer.DataSource = TableManufacturer.GetValues();
         // vyznam cisla pisma zavisi od vyrobcu
-        cbManufacturer.SelectedIndexChanged += (_, _) => nudFont_ValueChanged(nudFont, EventArgs.Empty);
+        cbManufacturer.SelectedIndexChanged += (_, _) => fontChoice.Manufacturer = cbManufacturer.SelectedItem as TableManufacturer;
         cbColumnFill.DataSource = TableFillSection.GetValues();
         cbDivType.DataSource = TableDivType.GetValues();
 
@@ -120,7 +121,7 @@ public partial class FTableCatalog : Form
             nudStart.Value = item.Start;
             nudEnd.Value = item.End;
             nudLine.Value = item.Line;
-            nudFont.Value = item.FontIDX;
+            fontChoice.Value = item.FontIDX;
         }
     }
 
@@ -159,7 +160,7 @@ public partial class FTableCatalog : Form
 
         item.FillSection = (TableFillSection)cbColumnFill.SelectedItem!;
 
-        item.FontIDX = decimal.ToInt32(nudFont.Value);
+        item.FontIDX = fontChoice.Value;
 
         item.Tab1 = (TableTabTab)cbTab1.SelectedItem!;
         item.Tab2 = (TableTabTab)cbTab2.SelectedItem!;
@@ -217,7 +218,7 @@ public partial class FTableCatalog : Form
 
             item.FillSection = (TableFillSection)cbColumnFill.SelectedItem!;
 
-            item.FontIDX = decimal.ToInt32(nudFont.Value);
+            item.FontIDX = fontChoice.Value;
 
             item.Tab1 = tab1;
             item.Tab2 = tab2;
@@ -463,10 +464,6 @@ public partial class FTableCatalog : Form
             nudHeight.Value = nudMinHeight.Value;
     }
 
-    private void nudFont_ValueChanged(object sender, EventArgs e)
-    {
-        FontIdHint.Apply(nudFont, fontTip, defaultBorderColor, cbManufacturer.SelectedItem as TableManufacturer);
-    }
 
     private void FTableCatalog_HelpButtonClicked(object sender, CancelEventArgs e)
     {

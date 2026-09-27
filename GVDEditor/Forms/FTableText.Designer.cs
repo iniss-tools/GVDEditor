@@ -64,7 +64,7 @@ namespace GVDEditor.Forms
             listRealisations = new ListBox();
             groupBox3 = new ExGroupBox();
             label8 = new Label();
-            nudFont = new ExNumericUpDown();
+            cbFont = new ExComboBox();
             bGenerate = new ExButton();
             bTextEdit = new ExButton();
             tbTrainText = new ExTextBox();
@@ -81,7 +81,6 @@ namespace GVDEditor.Forms
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
-            ((ISupportInitialize)nudFont).BeginInit();
             groupBox4.SuspendLayout();
             ((ISupportInitialize)tableTextRealizationBindingSource).BeginInit();
             SuspendLayout();
@@ -316,7 +315,7 @@ namespace GVDEditor.Forms
             groupBox3.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
             groupBox3.BorderThickness = 1;
             groupBox3.Controls.Add(label8);
-            groupBox3.Controls.Add(nudFont);
+            groupBox3.Controls.Add(cbFont);
             groupBox3.Controls.Add(bGenerate);
             groupBox3.Controls.Add(bTextEdit);
             groupBox3.Controls.Add(tbTrainText);
@@ -338,19 +337,13 @@ namespace GVDEditor.Forms
             resources.ApplyResources(label8, "label8");
             label8.Name = "label8";
             // 
-            // nudFont
+            // cbFont
             // 
-            nudFont.ArrowsColor = Color.Black;
-            nudFont.BorderColor = Color.Gainsboro;
-            nudFont.DefaultStyle = true;
-            nudFont.HighlightColor = SystemColors.Highlight;
-            resources.ApplyResources(nudFont, "nudFont");
-            nudFont.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
-            nudFont.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
-            nudFont.Name = "nudFont";
-            nudFont.SelectedButtonColor = SystemColors.Highlight;
-            nudFont.Value = new decimal(new int[] { 1, 0, 0, int.MinValue });
-            nudFont.ValueChanged += nudFont_ValueChanged;
+            resources.ApplyResources(cbFont, "cbFont");
+            cbFont.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cbFont.DropDownWidth = 260;
+            cbFont.FormattingEnabled = true;
+            cbFont.Name = "cbFont";
             // 
             // bGenerate
             // 
@@ -520,7 +513,6 @@ namespace GVDEditor.Forms
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
-            ((ISupportInitialize)nudFont).EndInit();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             ((ISupportInitialize)tableTextRealizationBindingSource).EndInit();
@@ -559,7 +551,7 @@ namespace GVDEditor.Forms
         private ExControls.ExButton bGenerate;
         private System.Windows.Forms.BindingSource tableTextRealizationBindingSource;
         private System.Windows.Forms.Label label8;
-        private ExNumericUpDown nudFont;
+        private ExControls.ExComboBox cbFont;
         private ExControls.ExButton bTrainRemove;
         private ExControls.ExButton bTrainAdd;
         private ExComboBox cbAddTrain;

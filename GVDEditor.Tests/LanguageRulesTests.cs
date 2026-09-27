@@ -57,4 +57,24 @@ public class LanguageRulesTests
     {
         Assert.IsNotNull(LanguageRules.Check([L("SK", true), L("GB"), L("GB")], Bank));
     }
+
+    [TestMethod]
+    public void Jazyk_ChybaSaOznaciPriRiadkuSKlucom()
+    {
+        // stranka Jazyky oznaci chybu pri konkretnom riadku, hlavny jazyk kontroluje zvlast
+        FyzLanguage[] languages = [L("SK", true), L("PL"), L("GB"), L("GB")];
+
+        Assert.IsNull(LanguageRules.CheckLanguage(languages, 0, Bank));
+        Assert.IsNotNull(LanguageRules.CheckLanguage(languages, 1, Bank));
+        Assert.IsNotNull(LanguageRules.CheckLanguage(languages, 2, Bank));
+        Assert.IsNotNull(LanguageRules.CheckLanguage(languages, 3, Bank));
+    }
+
+    [TestMethod]
+    public void Jazyky_HlavnyPraveJeden()
+    {
+        Assert.IsNull(LanguageRules.CheckBasic([L("SK", true), L("GB")]));
+        Assert.IsNotNull(LanguageRules.CheckBasic([L("SK"), L("GB")]));
+        Assert.IsNotNull(LanguageRules.CheckBasic([]));
+    }
 }

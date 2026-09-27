@@ -58,6 +58,18 @@ public record GVDEditorConfig() : ConfigBase
     [XmlElement("StartupINISSConfig")] 
     public StartupINISS StartupINISSConfig { get; set; } = new() { CmdArgs = "", RunAsAdmin = false };
 
+    /// <summary>
+    ///     Velkost okna Lokalne nastavenia; <see langword="null" /> = predvolena z navrhu.
+    /// </summary>
+    [XmlElement("LocalSettingsWindow")]
+    public WindowPlacement? LocalSettingsWindow { get; set; }
+
+    /// <summary>
+    ///     Velkost okna Globalne nastavenia; <see langword="null" /> = predvolena z navrhu.
+    /// </summary>
+    [XmlElement("GlobalSettingsWindow")]
+    public WindowPlacement? GlobalSettingsWindow { get; set; }
+
     /// <inheritdoc />
     public override string LinkAppSettingsGuide => LinkConsts.LINK_APP_SETTINGS;
 
@@ -71,5 +83,7 @@ public record GVDEditorConfig() : ConfigBase
         DesktopCols = original.DesktopCols with { };
         Shortcuts = original.Shortcuts with { };
         StartupINISSConfig = original.StartupINISSConfig with { };
+        LocalSettingsWindow = original.LocalSettingsWindow?.Clone();
+        GlobalSettingsWindow = original.GlobalSettingsWindow?.Clone();
     }
 }

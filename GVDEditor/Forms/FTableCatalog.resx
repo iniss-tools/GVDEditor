@@ -891,28 +891,28 @@
   <data name="&gt;&gt;cbDivType.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="nudFont.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="cbFont.Location" type="System.Drawing.Point, System.Drawing">
     <value>461, 175</value>
   </data>
-  <data name="nudFont.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="cbFont.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="nudFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 20</value>
+  <data name="cbFont.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 20</value>
   </data>
-  <data name="nudFont.TabIndex" type="System.Int32, mscorlib">
+  <data name="cbFont.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
   </data>
-  <data name="&gt;&gt;nudFont.Name" xml:space="preserve">
-    <value>nudFont</value>
+  <data name="&gt;&gt;cbFont.Name" xml:space="preserve">
+    <value>cbFont</value>
   </data>
-  <data name="&gt;&gt;nudFont.Type" xml:space="preserve">
-    <value>ExControls.ExNumericUpDown, ExControls, Version=1.1.8259.31583, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;cbFont.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;nudFont.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cbFont.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;nudFont.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cbFont.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="nudLine.Location" type="System.Drawing.Point, System.Drawing">

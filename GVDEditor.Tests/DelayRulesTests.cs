@@ -35,4 +35,27 @@ public class DelayRulesTests
 
         Assert.AreEqual(expected, DelayRules.InsertIndex(delays, value));
     }
+
+    [TestMethod]
+    public void Meskanie_NecislenaHodnota_NieJeChyba()
+    {
+        // INISS ju len preskoci - pouzivatel ju moze ponechat (upozornenie, nie chyba)
+        Assert.IsNull(DelayRules.CheckValue(["10", "VICE480"], 1));
+    }
+
+    [TestMethod]
+    public void Meskanie_Prazdne_JeChyba()
+    {
+        Assert.IsNotNull(DelayRules.CheckValue(["10", " "], 1));
+    }
+
+    [TestMethod]
+    public void Meskanie_RovnakyCas_JeChybaPriObochRiadkoch()
+    {
+        string[] delays = ["10", "20", " 20"];
+
+        Assert.IsNull(DelayRules.CheckValue(delays, 0));
+        Assert.IsNotNull(DelayRules.CheckValue(delays, 1));
+        Assert.IsNotNull(DelayRules.CheckValue(delays, 2));
+    }
 }

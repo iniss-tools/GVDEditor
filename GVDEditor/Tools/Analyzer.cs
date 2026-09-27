@@ -528,7 +528,7 @@ internal class GVDOutOfValidity : IProblem
     public FixResult FixProblem()
     {
         // cez hlavne okno - po zmene obdobia obnovi vyber obdobia a oznaci grafikon ako neulozeny
-        Program.MainForm.ShowLocalSettings(0);
+        Program.MainForm.ShowLocalSettings();
 
         //Check if the problem was solved
         return GVDDir.GVD.EndValidData < DateTime.Now ? FixResult.NotSolved : FixResult.Done;

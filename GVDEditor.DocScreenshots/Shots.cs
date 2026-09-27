@@ -1,7 +1,8 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Globalization;
 using System.Reflection;
 using System.Text;
+using ExControls;
 using GVDEditor.Controls;
 using GVDEditor.Entities;
 using GVDEditor.Forms;
@@ -77,13 +78,9 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 SelectListItem(form, "listAllSounds", 0);
                 SelectListItem(form, "listRadenie", 5);
             });
-            // na záložkách Nástupištia a Koľaje vybrať skutočné nástupište a koľaj, nie zástupné "N"
+            // na stránke Nástupištia a koľaje vybrať koľaj (údaje koľaje sú zaujímavejšie ako nástupište)
             Shot("lokalne-nastavenia", () => new FLocalSettings(gvdDir), form =>
-            {
-                SelectListItem(form, "listNastupistia", 1);
-                SelectListItem(form, "listDopravcovia", 1);
-                SelectListItem(form, "listKolaje", 1);
-            }, tabs: true);
+                Descendants(form).OfType<GVDEditor.Forms.Settings.PlatformsTracksPage>().Single().SelectFirstTrack(), tabs: true);
             Shot("globalne-nastavenia", () => new FGlobalSettings(FMain.ObdobiaList.ToList()), tabs: true);
             Shot("nastavenia-programu/nastavenia-programu", () => new FAppSettings(GlobData.Config, GlobData.Styles));
             Shot("nastavenia-programu/komponenty", () =>
@@ -350,6 +347,25 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Pump.Events();
             setup?.Invoke(form);
             Pump.Events();
+
+            // okná nastavení majú stránky v strome (ExOptionsView), ostatné záložky
+            if (tabs && Descendants(form).OfType<ExOptionsView>().FirstOrDefault() is { } optionsView)
+            {
+                foreach (var panel in optionsView.Panels.OfType<ExOptionsPanel>())
+                {
+                    // skupina (Stanica, Tabule) obsahuje len odkazy na svoje stránky
+                    if (panel.GenerateLinksToChildren)
+                        continue;
+
+                    optionsView.SelectedPanel = panel;
+                    Pump.Events();
+                    form.Refresh();
+                    Pump.Events();
+                    Save($"{name}/{Slug(panel.NodeText)}", form);
+                }
+
+                return;
+            }
 
             var tabControl = tabs ? MainTabControl(form) : null;
             if (tabControl is null)

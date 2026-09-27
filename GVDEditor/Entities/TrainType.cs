@@ -1,9 +1,11 @@
-﻿namespace GVDEditor.Entities;
+﻿using System.Text.RegularExpressions;
+
+namespace GVDEditor.Entities;
 
 /// <summary>
 ///     Reprezentuje typ vlaku.
 /// </summary>
-public sealed class TrainType
+public sealed partial class TrainType
 {
     /// <summary>
     ///     Konstruktor pre definovanie predvoleneho typu vlaku.
@@ -12,7 +14,6 @@ public sealed class TrainType
     public TrainType(string key)
     {
         Key = key;
-        IsCustom = false;
         CategoryTrain = key;
         TextInTable = key;
     }
@@ -26,7 +27,6 @@ public sealed class TrainType
     public TrainType(string categoryTrain, string key, string textInTable)
     {
         Key = key;
-        IsCustom = true;
         CategoryTrain = categoryTrain;
         TextInTable = textInTable;
     }
@@ -37,9 +37,17 @@ public sealed class TrainType
     public string Key { get; set; }
 
     /// <summary>
-    ///     Ci je pouzivatelom definovany.
+    ///     Ci je pouzivatelom definovany - ma kategoriu z volnych miest INISSu (Os1-Os9, R1-R9, X1-X9, Sl1-Sl9).
+    ///     Odvodzuje sa z kategorie, aby typ mohol na mieste zmenit zabudovany druh na vlastny a naopak
+    ///     (vlaky otvoreneho grafikonu sa odkazuju na tento objekt).
     /// </summary>
-    public bool IsCustom { get; }
+    public bool IsCustom => IsCustomCategory(CategoryTrain);
+
+    /// <summary>
+    ///     Ci je kategoria volne miesto pre vlastny typ (napr. R3).
+    /// </summary>
+    public static bool IsCustomCategory(string? category) =>
+        category is not null && CustomTrainType().IsMatch(category);
 
     /// <summary>
     ///     Vrati text na tabuli, ktory sa ma zobrazovat na mieste typu vlaku.
@@ -193,4 +201,7 @@ public sealed class TrainType
     {
         return !Equals(left, right);
     }
+
+    [GeneratedRegex("^(Os|R|X|Sl)[1-9]$")]
+    private static partial Regex CustomTrainType();
 }

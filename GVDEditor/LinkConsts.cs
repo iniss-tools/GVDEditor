@@ -5,18 +5,35 @@
 /// </summary>
 internal static class LinkConsts
 {
-    public const string LINK_EDIT_TRAIN = "http://iniss.6f.sk/docs/gvdeditor/zakladne-vlastnosti-programu/uprava-pridanie-vlaku/";
-    public const string LINK_EDIT_TRAIN_RADENIE = "http://iniss.6f.sk/docs/gvdeditor/zakladne-vlastnosti-programu/uprava-pridanie-vlaku/#radenie";
-    public const string LINK_TCATALOG = "http://iniss.6f.sk/docs/gvdeditor/nastavenie-grafikonu-lokalne/katalogove-tabule/";
-    public const string LINK_TCOLUMN_ORDER = "http://iniss.6f.sk/docs/gvdeditor/nastavenie-grafikonu-lokalne/katalogove-tabule/#corder";
-    public const string LINK_TPHYSICAL = "http://iniss.6f.sk/docs/gvdeditor/nastavenie-grafikonu-lokalne/fyzicke-tabule/";
-    public const string LINK_TLOGICAL = "http://iniss.6f.sk/docs/gvdeditor/nastavenie-grafikonu-lokalne/logicke-tabule/";
-    public const string LINK_TTEXTS = "http://iniss.6f.sk/docs/gvdeditor/nastavenie-grafikonu-lokalne/texty-na-tabuliach/";
-    public const string LINK_APP_SETTINGS = "http://iniss.6f.sk/docs/gvdeditor/zakladne-vlastnosti-programu/nastavenia-programu/";
-    public const string LINK_LOCAL_SETTINGS = "http://iniss.6f.sk/docs/gvdeditor/nastavenie-grafikonu-lokalne/";
-    public const string LINK_GLOBAL_SETTINGS = "http://iniss.6f.sk/docs/gvdeditor/nastavenia-vsetkych-grafikonov-globalne/";
-    public const string LINK_NEW_GVD = "http://iniss.6f.sk/docs/gvdeditor/zakladne-vlastnosti-programu/pridanie-noveho-grafikonu/";
-    public const string LINK_NEWS = "http://iniss.6f.sk/docs/gvdeditor/novinky/";
+    private const string DOCS = "http://iniss.6f.sk/docs/gvdeditor/";
+
+    public const string LINK_EDIT_TRAIN = DOCS + "vlaky/uprava-vlaku/";
+    public const string LINK_EDIT_TRAIN_RADENIE = DOCS + "vlaky/radenie/";
+    public const string LINK_TCATALOG = DOCS + "tabule/katalogove-tabule/";
+    public const string LINK_TCOLUMN_ORDER = DOCS + "tabule/katalogove-tabule/#poradie-stĺpcov";
+    public const string LINK_TPHYSICAL = DOCS + "tabule/fyzicke-tabule/";
+    public const string LINK_TLOGICAL = DOCS + "tabule/logicke-tabule/";
+    public const string LINK_TTEXTS = DOCS + "tabule/texty-na-tabuliach/";
+    public const string LINK_TFONTS = DOCS + "tabule/pisma-tabul/";
+    public const string LINK_TABTAB_EDITOR = DOCS + "tabule/editor-tabtab/";
+    public const string LINK_APP_SETTINGS = DOCS + "nastroje/nastavenia-programu/";
+    public const string LINK_NEW_GVD = DOCS + "prve-kroky/novy-grafikon/";
+    public const string LINK_NEWS = DOCS + "novinky/";
+
+    // Lokalne nastavenia - stranky okna
+    public const string LINK_LOCAL_GRAFIKON = DOCS + "lokalne-nastavenia/grafikon/";
+    public const string LINK_LOCAL_STANICE = DOCS + "lokalne-nastavenia/stanice/";
+    public const string LINK_LOCAL_DOPRAVCOVIA = DOCS + "lokalne-nastavenia/dopravcovia/";
+    public const string LINK_LOCAL_NASTUPISTIA_KOLAJE = DOCS + "lokalne-nastavenia/nastupistia-a-kolaje/";
+    public const string LINK_LOCAL_STATEDGM = DOCS + "lokalne-nastavenia/stavovy-diagram/";
+
+    // Globalne nastavenia - stranky okna
+    public const string LINK_GLOBAL_GRAFIKONY = DOCS + "globalne-nastavenia/grafikony/";
+    public const string LINK_GLOBAL_JAZYKY = DOCS + "globalne-nastavenia/jazyky/";
+    public const string LINK_GLOBAL_MESKANIA = DOCS + "globalne-nastavenia/meskania/";
+    public const string LINK_GLOBAL_TYPY_VLAKOV = DOCS + "globalne-nastavenia/typy-vlakov/";
+    public const string LINK_GLOBAL_AUDIO = DOCS + "globalne-nastavenia/audio/";
+
     public const string LINK_DOC_TABTAB = "http://iniss.6f.sk/docs/iniss/formaty-suborov/local/tabtab/";
     public const string LINK_DOC_VYRAZY = "http://iniss.6f.sk/docs/iniss/formaty-suborov/local/vyrazy/";
 }

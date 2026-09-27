@@ -471,7 +471,7 @@ Naozaj odstrániť koľaj {0}?</value>
   <data name="FLocalSettings_Nastupistia_Bez_Kolaje" xml:space="preserve">
     <value>Na týchto nástupištiach neleží žiadna koľaj: {0}.
 
-Nástupištia sa ukladajú len spolu s koľajami (Pozice_A.txt), takže sa pri uložení grafikonu nezapíšu a pri ďalšom otvorení zmiznú. Priraďte ich niektorej koľaji na záložke Koľaje.
+Nástupištia sa ukladajú len spolu s koľajami, takže sa pri uložení grafikonu nezapíšu a pri ďalšom otvorení zmiznú. Presuňte na ne niektorú koľaj na stránke Nástupištia a koľaje.
 
 Zavrieť okno aj tak?</value>
   </data>
@@ -529,9 +529,6 @@ Upraviť dátumové obmedzenie popísaného vlaku?</value>
   <data name="FLocalSettings_Zadaný_kľúč_nástupišťa_už_existuje" xml:space="preserve">
     <value>Zadaný kľúč nástupišťa už existuje.</value>
   </data>
-  <data name="FGlobalSettings_Neboli_vyplnené_všetky_polia" xml:space="preserve">
-    <value>Neboli vyplnené všetky polia.</value>
-  </data>
   <data name="FAppSettings_Bolo_zadané_neplatné_číslo" xml:space="preserve">
     <value>Bolo zadané neplatné číslo.</value>
   </data>
@@ -563,9 +560,6 @@ Mám ju nútene vypnúť ?</value>
   </data>
   <data name="FTableText_Generate_TTexts_Wrong_Item" xml:space="preserve">
     <value>Bol vybratý nepodporovaný typ obsahu tabule. Vyberte iný.</value>
-  </data>
-  <data name="FGlobalSettings_Naozaj_chcete_odstrániť_tento_grafikon" xml:space="preserve">
-    <value>Naozaj chcete odstrániť tento grafikon ?</value>
   </data>
   <data name="FEditTrain_Nezadaný_čas_odchodu" xml:space="preserve">
     <value>Nezadaný čas odchodu.</value>
@@ -1597,5 +1591,344 @@ Odstránenie zo zoznamu tieto miesta nezmení – ostane v nich pôvodné čísl
   </data>
   <data name="ElenFont_Doplnit_Tip" xml:space="preserve">
     <value>Nastaví typ, proporcionálnosť a šírku podľa ID písma (kódovanie tabúľ ELEN).</value>
+  </data>
+  <data name="SettingsRules_Uvodzovky" xml:space="preserve">
+    <value>Názov nesmie obsahovať úvodzovky (").</value>
+  </data>
+  <data name="OperatorRules_Nazov_prazdny" xml:space="preserve">
+    <value>Zadajte názov dopravcu.</value>
+  </data>
+  <data name="OperatorRules_Nazov_existuje" xml:space="preserve">
+    <value>Dopravca „{0}“ už v zozname je.</value>
+  </data>
+  <data name="OperatorsPage_Odstranit_pouzity" xml:space="preserve">
+    <value>Dopravcu „{0}“ používajú vlaky grafikonu (počet vlakov: {1}). Po odstránení nebudú mať dopravcu.
+
+Odstrániť dopravcu?</value>
+  </data>
+  <data name="CustomStationRules_Cislo_zle" xml:space="preserve">
+    <value>Číslo stanice musí byť kladné celé číslo.</value>
+  </data>
+  <data name="CustomStationRules_Cislo_banka" xml:space="preserve">
+    <value>Číslo {0} má stanica zvukovej banky {1}.</value>
+  </data>
+  <data name="CustomStationRules_Cislo_existuje" xml:space="preserve">
+    <value>Číslo {0} má už iná vlastná stanica.</value>
+  </data>
+  <data name="CustomStationRules_Nazov_prazdny" xml:space="preserve">
+    <value>Zadajte názov stanice.</value>
+  </data>
+  <data name="CustomStationRules_Nazov_banka" xml:space="preserve">
+    <value>Stanica „{0}“ je v zvukovej banke – vlastnú stanicu s týmto názvom by GVDEditor pri ďalšom otvorení grafikonu vynechal.</value>
+  </data>
+  <data name="CustomStationRules_Nazov_grafikon" xml:space="preserve">
+    <value>„{0}“ je stanica tohto grafikonu – vlastnú stanicu s týmto názvom by GVDEditor pri ďalšom otvorení grafikonu vynechal.</value>
+  </data>
+  <data name="CustomStationRules_Nazov_existuje" xml:space="preserve">
+    <value>Stanica „{0}“ už v zozname je.</value>
+  </data>
+  <data name="CustomStationsPage_Cislo_zamknute" xml:space="preserve">
+    <value>Číslo stanice sa nedá zmeniť – používajú ju vlaky grafikonu (počet vlakov: {0}).</value>
+  </data>
+  <data name="CustomStationsPage_Odstranit_pouzitu" xml:space="preserve">
+    <value>Stanicu „{0}“ majú v trase vlaky grafikonu (počet vlakov: {1}). Po odstránení v trasách ostane len jej číslo.
+
+Odstrániť stanicu?</value>
+  </data>
+  <data name="DelayRules_Prazdne" xml:space="preserve">
+    <value>Zadajte čas meškania.</value>
+  </data>
+  <data name="DelayRules_Existuje" xml:space="preserve">
+    <value>Čas „{0}“ už v zozname je.</value>
+  </data>
+  <data name="DelaysPage_Necislo" xml:space="preserve">
+    <value>Hodnota nie je číslo minút – INISS ju pri štarte preskočí a operátorovi ju neponúkne.</value>
+  </data>
+  <data name="LanguagesPage_Nie_v_banke" xml:space="preserve">
+    <value>nie je v zvukovej banke</value>
+  </data>
+  <data name="LanguagesPage_Banka" xml:space="preserve">
+    <value>Jazyky zvukovej banky: {0}.</value>
+  </data>
+  <data name="SettingsForm_Napoveda" xml:space="preserve">
+    <value>Nápoveda: {0}</value>
+  </data>
+  <data name="ElenFont_Nazov_Blikajuce" xml:space="preserve">
+    <value>blikajúce</value>
+  </data>
+  <data name="ElenFont_Nazov_VysokeCislice" xml:space="preserve">
+    <value>s vysokými číslicami</value>
+  </data>
+  <data name="FontPicker_Vysledok" xml:space="preserve">
+    <value>Číslo písma {0}{1} – {2}</value>
+  </data>
+  <data name="FontPicker_Zadat_cislo" xml:space="preserve">
+    <value>Zadať číslo ručne</value>
+  </data>
+  <data name="FontPicker_Skryt_cislo" xml:space="preserve">
+    <value>Skryť zadanie čísla</value>
+  </data>
+  <data name="FontPicker_Ponechane_bity" xml:space="preserve">
+    <value>Bity 0x{0:X} nemajú ovládač – GVDEditor ich v čísle ponechá.</value>
+  </data>
+  <data name="FontPicker_Rozsirene_nepozna" xml:space="preserve">
+    <value>Výrobca {0} rozšírené písmo {1} nepozná – tabuľa použije rez.</value>
+  </data>
+  <data name="FontPicker_Uz_v_zozname" xml:space="preserve">
+    <value>Toto písmo je v zozname ako „{0}“.</value>
+  </data>
+  <data name="FontChoice_Stlpec" xml:space="preserve">
+    <value>Písmo stĺpca</value>
+  </data>
+  <data name="FontChoice_Pismo" xml:space="preserve">
+    <value>{0} ({1})</value>
+  </data>
+  <data name="FontChoice_Vlastne" xml:space="preserve">
+    <value>Vlastné písmo ({0})</value>
+  </data>
+  <data name="FontChoice_Ine" xml:space="preserve">
+    <value>Iné písmo…</value>
+  </data>
+  <data name="FontRules_Cislo_existuje" xml:space="preserve">
+    <value>Rovnaký vzhľad (číslo {0}) má už písmo „{1}“ – zmeňte rez, farbu alebo efekty.</value>
+  </data>
+  <data name="FontsPage_Nepouziva" xml:space="preserve">
+    <value>Nikde – písmo sa dá odstrániť bez následkov.</value>
+  </data>
+  <data name="FontsPage_Precisluju" xml:space="preserve">
+    <value>Stĺpce a texty sa pri zmene vzhľadu prečíslujú spolu s písmom.</value>
+  </data>
+  <data name="FontsPage_Kopia" xml:space="preserve">
+    <value>{0} (kópia)</value>
+  </data>
+  <data name="FontsPage_Bez_nazvu" xml:space="preserve">
+    <value>(bez názvu)</value>
+  </data>
+  <data name="TrainTypeRules_Znaky" xml:space="preserve">
+    <value>Skratka ani text na tabuli nesmú obsahovať čiarku ani úvodzovky.</value>
+  </data>
+  <data name="TrainTypesPage_Zabudovany" xml:space="preserve">
+    <value>Zabudovaný druh {0}</value>
+  </data>
+  <data name="TrainTypesPage_Vlastny" xml:space="preserve">
+    <value>Vlastný – {0} ({1}1–{1}9, voľné {2})</value>
+  </data>
+  <data name="TrainTypesPage_Skupina_Os" xml:space="preserve">
+    <value>ako osobný vlak</value>
+  </data>
+  <data name="TrainTypesPage_Skupina_R" xml:space="preserve">
+    <value>ako rýchlik</value>
+  </data>
+  <data name="TrainTypesPage_Skupina_X" xml:space="preserve">
+    <value>ako vlak vyššej kvality</value>
+  </data>
+  <data name="TrainTypesPage_Skupina_Sl" xml:space="preserve">
+    <value>ako služobný vlak</value>
+  </data>
+  <data name="TrainTypesPage_Vzhlad_Def" xml:space="preserve">
+    <value>predvolená farba</value>
+  </data>
+  <data name="TrainTypesPage_Vzhlad_Blue" xml:space="preserve">
+    <value>modrý text</value>
+  </data>
+  <data name="TrainTypesPage_Vzhlad_Bus" xml:space="preserve">
+    <value>svetložlté pozadie</value>
+  </data>
+  <data name="TrainTypesPage_Vzhlad_Red" xml:space="preserve">
+    <value>červený text, rýchlikový druh</value>
+  </data>
+  <data name="TrainTypesPage_Vzhlad_BlueGray" xml:space="preserve">
+    <value>modrý text na sivom pozadí, rýchlikový druh</value>
+  </data>
+  <data name="TrainTypesPage_Vzhlad_GreenGray" xml:space="preserve">
+    <value>zelený text na sivom pozadí, rýchlikový druh</value>
+  </data>
+  <data name="TrainTypesPage_Vzhlad_Service" xml:space="preserve">
+    <value>svetlozelené pozadie, služobný druh</value>
+  </data>
+  <data name="TrainTypesPage_Detail_Zabudovany" xml:space="preserve">
+    <value>{0} – zabudovaný druh {1}.</value>
+  </data>
+  <data name="TrainTypesPage_Detail_Vlastny" xml:space="preserve">
+    <value>{0} – vlastný typ na mieste {1} ({2}).</value>
+  </data>
+  <data name="TrainTypesPage_Detail_Vzhlad" xml:space="preserve">
+    <value>V zozname vlakov INISSu: {0}.</value>
+  </data>
+  <data name="TrainTypesPage_Pouzivaju" xml:space="preserve">
+    <value>Používajú ho vlaky: {0}.</value>
+  </data>
+  <data name="TrainTypesPage_Nepouziva" xml:space="preserve">
+    <value>Žiadny vlak ho nepoužíva – dá sa premenovať aj odstrániť.</value>
+  </data>
+  <data name="TrainTypesPage_Zamknuta" xml:space="preserve">
+    <value>Skratka je zamknutá, kým ju vlaky používajú. Text na tabuli a druh môžete meniť.</value>
+  </data>
+  <data name="TrainTypesPage_Sloty" xml:space="preserve">
+    <value>Obsadené miesta vlastných typov:</value>
+  </data>
+  <data name="TrainTypesPage_Slot" xml:space="preserve">
+    <value>{0}1–{0}9  {1}  {2}/{3}</value>
+  </data>
+  <data name="TablesPage_Upravit" xml:space="preserve">
+    <value>Upraviť…</value>
+  </data>
+  <data name="TablesPage_Nepouziva" xml:space="preserve">
+    <value>Nikde – dá sa odstrániť.</value>
+  </data>
+  <data name="TablesPage_Pouzivana_neodstranit" xml:space="preserve">
+    <value>Kým sa používa, nedá sa odstrániť.</value>
+  </data>
+  <data name="TablesPage_Nova_tabula" xml:space="preserve">
+    <value>Nová tabuľa…</value>
+  </data>
+  <data name="TablesPage_Novy_text" xml:space="preserve">
+    <value>Nový text…</value>
+  </data>
+  <data name="TablesPage_Stlpec_Katalog" xml:space="preserve">
+    <value>Katalógová tabuľa</value>
+  </data>
+  <data name="TablesPage_Stlpec_Rezim" xml:space="preserve">
+    <value>Režim</value>
+  </data>
+  <data name="TablesPage_Stlpec_Vyrobca" xml:space="preserve">
+    <value>Výrobca</value>
+  </data>
+  <data name="TablesPage_Stlpec_Vlakov" xml:space="preserve">
+    <value>Vlakov s textom</value>
+  </data>
+  <data name="TablesPage_Stlpec_Riadkov" xml:space="preserve">
+    <value>Riadkov pravidiel</value>
+  </data>
+  <data name="TablesPage_Pouzitie_Logicka" xml:space="preserve">
+    <value>Logická tabuľa {0}, pozícia {1}</value>
+  </data>
+  <data name="TablesPage_Pouzitie_Kolaj" xml:space="preserve">
+    <value>Koľaj {0}</value>
+  </data>
+  <data name="TablesPage_Pouzitie_Fyzicka" xml:space="preserve">
+    <value>Fyzická tabuľa {0}</value>
+  </data>
+  <data name="TablesPage_Pouzitie_Text" xml:space="preserve">
+    <value>Text na tabuli {0}, stĺpec {1}</value>
+  </data>
+  <data name="TablesPage_Realizacia" xml:space="preserve">
+    <value>Tabuľa {0}, stĺpec {1}</value>
+  </data>
+  <data name="TablesPage_Texty_Bez_realizacie" xml:space="preserve">
+    <value>Text nemá žiadnu realizáciu – na tabuliach sa nezobrazí.</value>
+  </data>
+  <data name="TablesPage_TabTab_Editor" xml:space="preserve">
+    <value>Otvoriť editor TabTab…</value>
+  </data>
+  <data name="TablesPage_TabTab_Upravit" xml:space="preserve">
+    <value>Upraviť v editore…</value>
+  </data>
+  <data name="TablesPage_Fyzicke_Info" xml:space="preserve">
+    <value>Fyzické tabule sú skutočné zariadenia v stanici. Každá vychádza z katalógovej tabule. Dvojklik otvorí tabuľu na úpravu.</value>
+  </data>
+  <data name="TablesPage_Logicke_Info" xml:space="preserve">
+    <value>Logické tabule určujú, čo sa na fyzických tabuliach zobrazuje. Koľajám sa priraďujú na stránke Nástupištia a koľaje.</value>
+  </data>
+  <data name="TablesPage_Katalogove_Info" xml:space="preserve">
+    <value>Katalógové tabule sú predlohy vzhľadu tabule – výrobca, stĺpce a riadky. Používajú ich fyzické tabule a texty na tabuliach.</value>
+  </data>
+  <data name="TablesPage_Texty_Info" xml:space="preserve">
+    <value>Typy textov, ktoré sa zobrazujú v stĺpcoch tabúľ namiesto údajov z grafikonu, a texty jednotlivých vlakov.</value>
+  </data>
+  <data name="TablesPage_TabTab_Info" xml:space="preserve">
+    <value>Sekcie TabTab prekladajú hodnoty stĺpcov na text tabule (napr. druh vlaku na skratku s písmom). Upravujú sa v editore TabTab.</value>
+  </data>
+  <data name="PlatformRules_Oznacenie" xml:space="preserve">
+    <value>Zadajte označenie nástupišťa.</value>
+  </data>
+  <data name="PlatformRules_Nazov" xml:space="preserve">
+    <value>Zadajte celý názov nástupišťa.</value>
+  </data>
+  <data name="PlatformRules_Zvuk" xml:space="preserve">
+    <value>Zadajte názov zvuku nástupišťa.</value>
+  </data>
+  <data name="TrackRules_Oznacenie" xml:space="preserve">
+    <value>Zadajte označenie koľaje.</value>
+  </data>
+  <data name="TrackRules_Kratky_nazov" xml:space="preserve">
+    <value>Zadajte krátky názov koľaje.</value>
+  </data>
+  <data name="TrackRules_Nazov" xml:space="preserve">
+    <value>Zadajte celý názov koľaje.</value>
+  </data>
+  <data name="TrackRules_Text" xml:space="preserve">
+    <value>Zadajte text koľaje na tabuli.</value>
+  </data>
+  <data name="TrackRules_Zvuk" xml:space="preserve">
+    <value>Zadajte názov zvuku koľaje.</value>
+  </data>
+  <data name="PlatformsTracksPage_Bez_nastupista" xml:space="preserve">
+    <value>Koľaje bez nástupišťa</value>
+  </data>
+  <data name="PlatformsTracksPage_Bez_kolaje" xml:space="preserve">
+    <value>Na nástupišti neleží žiadna koľaj – nástupište sa nezapíše a pri ďalšom otvorení grafikonu zmizne.</value>
+  </data>
+  <data name="PlatformsTracksPage_Kolaji" xml:space="preserve">
+    <value>Koľají na nástupišti: {0}.</value>
+  </data>
+  <data name="PlatformsTracksPage_Vlaky" xml:space="preserve">
+    <value>Vlaky: {0} s príchodom na túto koľaj, {1} s odchodom z nej.</value>
+  </data>
+  <data name="PlatformsTracksPage_Najprv_kolaje" xml:space="preserve">
+    <value>Nástupište s koľajami sa nedá odstrániť – najprv koľaje presuňte na iné nástupište alebo ich odstráňte.</value>
+  </data>
+  <data name="GrafikonPage_Priecinok_bez_zmeny" xml:space="preserve">
+    <value>Názov priečinka sa nemení.</value>
+  </data>
+  <data name="GrafikonPage_Priecinok_po_OK" xml:space="preserve">
+    <value>Priečinok sa premenuje na „{0}“ po kliknutí na OK.</value>
+  </data>
+  <data name="TablesPage_Dalsie" xml:space="preserve">
+    <value>– a ďalšie miesta: {0}</value>
+  </data>
+  <data name="DirListRules_Port" xml:space="preserve">
+    <value>Zadajte číslo od 1 do {0}, alebo pole nechajte prázdne – grafikon potom vlastnú linku nemá.</value>
+  </data>
+  <data name="AudioRules_Nazov" xml:space="preserve">
+    <value>Zadajte názov linky – pod ním ju operátor vidí v INISSe.</value>
+  </data>
+  <data name="AudioRules_Protokol" xml:space="preserve">
+    <value>Zadajte protokolový názov – podľa neho linku adresuje nadradený systém.</value>
+  </data>
+  <data name="AudioRules_Fronta" xml:space="preserve">
+    <value>Zadajte názov fronty – linka bez fronty nemá zvukový výstup a nič neprehrá.</value>
+  </data>
+  <data name="AudioRules_Fronta_Uzol" xml:space="preserve">
+    <value>Frontu „{0}“ má aj linka „{1}“, ale s iným uzlom. Linky s rovnakou frontou zdieľajú jeden výstup, preto musia hrať na rovnakom uzle.</value>
+  </data>
+  <data name="AudioRules_Zosilnovac" xml:space="preserve">
+    <value>Spínanie zosilňovača: zadajte číslo výstupu ústredne 0 – 63 alebo E1 – E99 pre port spínacej jednotky ELSVO, alebo pole nechajte prázdne.</value>
+  </data>
+  <data name="AudioRules_Ustredna" xml:space="preserve">
+    <value>Parameter ústredne musí byť celé číslo od 0 do 65535, alebo pole nechajte prázdne.</value>
+  </data>
+  <data name="AudioRules_Uzol" xml:space="preserve">
+    <value>Uzol musí byť číslo počítača (prázdne alebo 0 = tento počítač) alebo sériový port v tvare COM3.</value>
+  </data>
+  <data name="GrafikonyPage_Odstranit" xml:space="preserve">
+    <value>Grafikon {0} ({1}) sa po kliknutí na OK odstráni a jeho priečinok „{2}“ sa presunie do Koša.
+
+Pokračovať?</value>
+  </data>
+  <data name="GrafikonyPage_DataRoot" xml:space="preserve">
+    <value>Grafikon leží priamo v dátovom priečinku INISSu (starší zápis s jediným grafikonom). Porty ani farbu mu nemožno nastaviť a nedá sa odstrániť – najprv ho presuňte do vlastného priečinka (GVDEditor to ponúkne pri jeho otvorení).</value>
+  </data>
+  <data name="GrafikonyPage_Z_palety" xml:space="preserve">
+    <value>z palety</value>
+  </data>
+  <data name="GrafikonyPage_Priecinok" xml:space="preserve">
+    <value>Priečinok grafikonu: {0}</value>
+  </data>
+  <data name="AudioPage_Uzol_Z_Grafikonu" xml:space="preserve">
+    <value>Grafikon stanice {0} má port hlásenia {1} – INISS ho použije ako uzol namiesto poľa Uzol.</value>
+  </data>
+  <data name="AudioPage_Test" xml:space="preserve">
+    <value>Testovací okruh sa operátorovi v zozname okruhov neponúka – sprístupní tlačidlo Test/stop v dialógoch hlásení.</value>
   </data>
 </root>

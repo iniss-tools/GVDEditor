@@ -1,0 +1,139 @@
+using System.Globalization;
+using GVDEditor.Entities;
+using GVDEditor.Properties;
+using GVDEditor.Tools;
+using ToolsCore.Tools;
+
+namespace GVDEditor.Forms.Settings;
+
+/// <summary>
+///     Stranka Dopravcovia v okne Lokalne nastavenia - ciselnik dopravcov grafikonu (Vlastnik.txt) s upravou
+///     priamo v tabulke. Zmeny idu rovno do <see cref="GlobData.Operators" />, Zrusit okna ich vrati.
+/// </summary>
+public partial class OperatorsPage : UserControl, ISettingsPage
+{
+    private readonly GridPageSupport _grid;
+
+    // naplnanie tabulky kodom nema spustat zapis do dopravcov
+    private bool _loading;
+
+    /// <summary>
+    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// </summary>
+    public OperatorsPage()
+    {
+        InitializeComponent();
+        dgv.AutoGenerateColumns = false;
+        _grid = new GridPageSupport(dgv, lHint);
+    }
+
+    /// <inheritdoc />
+    public event EventHandler? ProblemsChanged;
+
+    /// <inheritdoc />
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public string? FirstProblem => _grid.FirstProblem;
+
+    /// <inheritdoc />
+    public void FocusFirstProblem() => _grid.FocusFirstProblem();
+
+    /// <summary>
+    ///     Naplni tabulku dopravcami grafikonu - volat az po nastaveni temy okna.
+    /// </summary>
+    public void LoadData()
+    {
+        _grid.CaptureColors();
+        _loading = true;
+        dgv.Rows.Clear();
+        foreach (var op in GlobData.Operators)
+            if (op != Operator.None)
+                AddRow(op);
+        _loading = false;
+
+        Check();
+    }
+
+    private int AddRow(Operator op)
+    {
+        var index = dgv.Rows.Add(op.Id.ToString(CultureInfo.InvariantCulture), op.Name, CountTrains(op));
+        dgv.Rows[index].Tag = op;
+        return index;
+    }
+
+    private static int CountTrains(Operator op) => GlobData.Trains.Count(train => train.Operator == op);
+
+    private Operator? CurrentOperator => dgv.CurrentRow?.Tag as Operator;
+
+    private void Check()
+    {
+        _grid.BeginCheck();
+        var names = dgv.Rows.Cast<DataGridViewRow>().Select(row => ((Operator)row.Tag!).Name).ToList();
+        for (var i = 0; i < dgv.Rows.Count; i++)
+            _grid.Report(dgv.Rows[i].Cells[colName.Index], OperatorRules.CheckName(names, i));
+
+        _grid.Defer(UpdateSelection);
+        ProblemsChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void bAdd_Click(object sender, EventArgs e)
+    {
+        var op = new Operator(OperatorRules.NextId(GlobData.Operators.Select(o => o.Id)), "");
+        GlobData.Operators.Add(op);
+
+        _loading = true;
+        var index = AddRow(op);
+        _loading = false;
+
+        Check();
+        _grid.Edit(index, colName);
+    }
+
+    private void bDelete_Click(object sender, EventArgs e)
+    {
+        var op = CurrentOperator;
+        if (op is null)
+            return;
+
+        var trains = GlobData.Trains.Where(train => train.Operator == op).ToList();
+        if (trains.Count > 0 && Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture,
+                Resources.OperatorsPage_Odstranit_pouzity, op.Name, trains.Count)) != DialogResult.Yes)
+            return;
+
+        foreach (var train in trains)
+            train.Operator = Operator.None;
+
+        GlobData.Operators.Remove(op);
+        dgv.Rows.RemoveAt(dgv.CurrentRow!.Index);
+        Check();
+    }
+
+    private void dgv_CellValueChanged(object? sender, DataGridViewCellEventArgs e)
+    {
+        if (_loading || e.RowIndex < 0 || e.ColumnIndex != colName.Index)
+            return;
+
+        var row = dgv.Rows[e.RowIndex];
+        var op = (Operator)row.Tag!;
+        op.Name = (row.Cells[e.ColumnIndex].Value as string ?? "").Trim();
+        GlobData.Operators.ResetItem(GlobData.Operators.IndexOf(op));
+        Check();
+    }
+
+    private void dgv_CurrentCellChanged(object? sender, EventArgs e) => _grid.Defer(UpdateSelection);
+
+    private void UpdateSelection()
+    {
+        bDelete.Enabled = CurrentOperator is not null;
+        _grid.ShowHint(null);
+    }
+
+    private void dgv_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex >= 0 && !dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly)
+            dgv.BeginEdit(true);
+    }
+
+    private void dgv_KeyDown(object? sender, KeyEventArgs e) =>
+        GridPageSupport.HandleKeys(e, () => bAdd_Click(this, EventArgs.Empty), () => bDelete_Click(this, EventArgs.Empty));
+}
