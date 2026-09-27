@@ -190,6 +190,14 @@ public partial class TrainValidityPage : UserControl, ITrainPage
 
     private void UpdateButtons()
     {
+        // riadok vybranej varianty je v pruhu kalendara oramovany
+        strip.SelectedPosition = SelectedRow() switch
+        {
+            Train train => TrainVariants.PositionOf(train, _draft, _others),
+            null => 0,
+            _ => TrainVariants.PositionOf(_draft, _others).Position
+        };
+
         var other = SelectedOther();
         bEditOther.Enabled = other != null;
         bGiveThis.Enabled = bGiveOther.Enabled = other != null && _overlaps.ContainsKey(other);
