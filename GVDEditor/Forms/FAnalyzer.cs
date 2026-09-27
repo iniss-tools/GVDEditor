@@ -1,4 +1,5 @@
-﻿using GVDEditor.Entities;
+﻿using ExControls;
+using GVDEditor.Entities;
 using GVDEditor.Tools;
 using ToolsCore.Tools;
 
@@ -9,6 +10,11 @@ namespace GVDEditor.Forms;
 /// </summary>
 public partial class FAnalyzer : Form
 {
+    // moderne ikony systemu (rovnake ako zoznam chyb v RawBankEditore), nie stare SystemIcons
+    private static readonly Bitmap InfoIcon = StockIcon(ShellIconType.Info);
+    private static readonly Bitmap WarningIcon = StockIcon(ShellIconType.Warning);
+    private static readonly Bitmap ErrorIcon = StockIcon(ShellIconType.Error);
+
     private readonly GVDDirectory GVD;
     private BindingList<IProblem> Problems = new();
 
@@ -28,6 +34,12 @@ public partial class FAnalyzer : Form
         GVD = gvd;
     }
 
+    private static Bitmap StockIcon(ShellIconType type)
+    {
+        using var icon = new ShellIcon(type, ShellIconSize.Small);
+        return icon.ToBitmap();
+    }
+
     private void bOK_Click(object sender, EventArgs e) => DialogResult = DialogResult.OK;
 
     private void bAnalyze_Click(object sender, EventArgs e) => bgWorkAnalyze.RunWorkerAsync();
@@ -39,15 +51,15 @@ public partial class FAnalyzer : Form
             switch (Problems[e.RowIndex].ProblemType)
             {
                 case Tools.ProblemType.Hint:
-                    e.Value = SystemIcons.Information;
+                    e.Value = InfoIcon;
                     cell.ToolTipText = "Informácia";
                     break;
                 case Tools.ProblemType.Warning:
-                    e.Value = SystemIcons.Warning;
+                    e.Value = WarningIcon;
                     cell.ToolTipText = "Upozornenie";
                     break;
                 case Tools.ProblemType.Error:
-                    e.Value = SystemIcons.Error;
+                    e.Value = ErrorIcon;
                     cell.ToolTipText = "Chyba";
                     break;
             }
