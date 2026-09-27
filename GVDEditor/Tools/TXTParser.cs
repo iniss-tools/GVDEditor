@@ -234,19 +234,33 @@ internal static class TxtParser
     /// <param name="dirs">priecinky s GVD</param>
     public static void WriteDirList(IEnumerable<DirList> dirs)
     {
-        var fileDirList = CombinePath(GlobData.DataDir, FILE_DIRLIST)!;
+        WriteDirList(CombinePath(GlobData.DataDir, FILE_DIRLIST)!, dirs);
+    }
+
+    /// <summary>
+    ///     Zapise zoznam priecinkov s GVD do daneho suboru. Subor nezalozi ani neprepise, ked by v nom neostal
+    ///     ziadny riadok a zaroven existuje grafikon priamo v DATA alebo subor este neexistuje.
+    /// </summary>
+    /// <param name="fileDirList">cesta k DirList.TXT</param>
+    /// <param name="dirs">priecinky s GVD</param>
+    /// <returns>true, ak sa subor zapisal</returns>
+    internal static bool WriteDirList(string fileDirList, IEnumerable<DirList> dirs)
+    {
+        var all = dirs.ToList();
+        // grafikon priamo v DATA sa v DirList.TXT zapisat neda - INISS ho vidi len vtedy, ked sa subor neda otvorit.
+        // GVDEditor taky grafikon pri otvoreni ponuka presunut do vlastneho priecinka
+        var toWrite = all.Where(d => !d.IsDataRoot).ToList();
+        var hasDataRoot = toWrite.Count != all.Count;
+
+        if (toWrite.Count == 0 && (hasDataRoot || !File.Exists(fileDirList)))
+            return false;
+
+        if (hasDataRoot)
+            Log.Warning("DirList.TXT: grafikon priamo v priečinku DATA sa do zoznamu nezapisuje – INISS ho po zápise DirList.TXT prestane vidieť.");
 
         using var dirlistF = new CsvFileWriter(fileDirList);
-        foreach (var dir in dirs)
+        foreach (var dir in toWrite)
         {
-            // grafikon priamo v DATA sa v DirList.TXT zapisat neda - INISS ho vidi len bez tohto suboru;
-            // GVDEditor ho pri otvoreni ponuka presunut do vlastneho priecinka
-            if (dir.IsDataRoot)
-            {
-                Log.Warning("DirList.TXT: grafikon priamo v priečinku DATA sa do zoznamu nezapisuje – INISS ho po zápise DirList.TXT prestane vidieť.");
-                continue;
-            }
-
             var row = new CsvRow();
             row.Insert(0, dir.DirName);
             if (dir.TablePort.HasValue && dir.TablePort != 0)
@@ -264,6 +278,8 @@ internal static class TxtParser
 
             dirlistF.WriteRow(row);
         }
+
+        return true;
     }
 
     #endregion
