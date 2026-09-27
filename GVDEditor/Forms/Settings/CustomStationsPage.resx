@@ -153,7 +153,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Stanice, ktoré sú v trasách vlakov, ale v zvukovej banke pre ne nie je nahrávka Číslo stanice nesmie patriť stanici zvukovej banky a kým stanicu používajú vlaky, nedá sa zmeniť.</value>
+    <value>Stanice, ktoré sú v trasách vlakov, ale v zvukovej banke pre ne nie je nahrávka. Číslo stanice nesmie patriť stanici zvukovej banky a kým stanicu používajú vlaky, nedá sa zmeniť.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

@@ -5,7 +5,7 @@ using GVDEditor.Tools;
 namespace GVDEditor.Tests;
 
 /// <summary>
-///     Generovanie textov na tabuliach (TTexts.txt) – spolocne pre okno FTableText aj automaticke generovanie pri
+///     Generovanie textov na tabuliach (TTexts.txt) – spolocne pre stranku Texty na tabuliach aj automaticke generovanie pri
 ///     ukladani grafikonu (FMain).
 /// </summary>
 [TestClass]

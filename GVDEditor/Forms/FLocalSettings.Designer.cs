@@ -50,11 +50,11 @@ namespace GVDEditor.Forms
             optionsView = new ExOptionsView();
             grafikonPage = new GrafikonPage();
             platformsTracksPage = new PlatformsTracksPage();
-            physicalTablesPage = new TablesPage();
-            logicalTablesPage = new TablesPage();
-            catalogTablesPage = new TablesPage();
-            tabTabPage = new TablesPage();
-            textsPage = new TablesPage();
+            physicalTablesPage = new PhysicalTablesPage();
+            logicalTablesPage = new LogicalTablesPage();
+            catalogTablesPage = new CatalogTablesPage();
+            tabTabPage = new TabTabPage();
+            textsPage = new TableTextsPage();
             stateDgmPage = new StateDgmPage();
             fontsPage = new FontsPage();
             pGroupStanica = new ExOptionsPanel(optionsView);
@@ -398,11 +398,11 @@ namespace GVDEditor.Forms
         private FontsPage fontsPage;
         private GrafikonPage grafikonPage;
         private PlatformsTracksPage platformsTracksPage;
-        private TablesPage physicalTablesPage;
-        private TablesPage logicalTablesPage;
-        private TablesPage catalogTablesPage;
-        private TablesPage tabTabPage;
-        private TablesPage textsPage;
+        private PhysicalTablesPage physicalTablesPage;
+        private LogicalTablesPage logicalTablesPage;
+        private CatalogTablesPage catalogTablesPage;
+        private TabTabPage tabTabPage;
+        private TableTextsPage textsPage;
         private StateDgmPage stateDgmPage;
     }
 }

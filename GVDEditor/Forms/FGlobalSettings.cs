@@ -58,6 +58,8 @@ public partial class FGlobalSettings : Form
         _openGrafikon = openGrafikon;
         InitializeComponent();
         this.ApplyThemeAndFonts();
+        // koliesko posuva stranku, nie hodnotu zoznamu alebo pola pod kurzorom
+        WheelScroll.Attach(this);
         // SetFormFont zapina AutoSize - okno s menitelnou velkostou by sa nedalo zmensit
         AutoSize = false;
         // nazov stranky nad nou tucne ako v nastaveniach programu

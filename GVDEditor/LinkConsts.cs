@@ -10,7 +10,7 @@ internal static class LinkConsts
     public const string LINK_EDIT_TRAIN = DOCS + "vlaky/uprava-vlaku/";
     public const string LINK_EDIT_TRAIN_RADENIE = DOCS + "vlaky/radenie/";
     public const string LINK_TCATALOG = DOCS + "tabule/katalogove-tabule/";
-    public const string LINK_TCOLUMN_ORDER = DOCS + "tabule/katalogove-tabule/#poradie-stĺpcov";
+    public const string LINK_TCOLUMN_ORDER = DOCS + "tabule/katalogove-tabule/#poradie-stĺpcov-v-režimoch";
     public const string LINK_TPHYSICAL = DOCS + "tabule/fyzicke-tabule/";
     public const string LINK_TLOGICAL = DOCS + "tabule/logicke-tabule/";
     public const string LINK_TTEXTS = DOCS + "tabule/texty-na-tabuliach/";

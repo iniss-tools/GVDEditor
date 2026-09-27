@@ -1,4 +1,4 @@
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
 using GVDEditor.Entities;
 using GVDEditor.Properties;
@@ -131,22 +131,8 @@ internal static partial class AudioRules
     private static partial Regex ComPort();
 
     /// <summary>
-    ///     Nazov novej linky, ktory este v zozname nie je: <paramref name="name" />, potom „name 2“, „name 3“…
-    ///     Cislo na konci sa neopakuje - duplikat linky „name 2“ dostane „name 3“, nie „name 2 2“.
+    ///     Nazov novej linky, ktory este v zozname nie je (<see cref="TableRules.Unique" />).
     /// </summary>
-    public static string UniqueName(IEnumerable<Audio> audios, string name)
-    {
-        var used = audios.Select(a => a.Name.Trim()).ToHashSet();
-        if (!used.Contains(name))
-            return name;
-
-        var numbered = NumberedName().Match(name);
-        var baseName = numbered.Success ? numbered.Groups[1].Value : name;
-        for (var i = 2; ; i++)
-            if (!used.Contains($"{baseName} {i}"))
-                return $"{baseName} {i}";
-    }
-
-    [GeneratedRegex(@"^(.*\S) \d+$")]
-    private static partial Regex NumberedName();
+    public static string UniqueName(IEnumerable<Audio> audios, string name) =>
+        TableRules.Unique(audios.Select(a => a.Name), name);
 }

@@ -3,7 +3,7 @@ using GVDEditor.Entities;
 namespace GVDEditor.Tools;
 
 /// <summary>
-///     Generovanie textov na tabuliach (TTexts.txt) z grafikonu a pracovne kopie pre okno FTableText. Spolocne pre
+///     Generovanie textov na tabuliach (TTexts.txt) z grafikonu a kopie pre stranku Texty na tabuliach. Spolocne pre
 ///     tlacidlo Vygenerovat v okne aj automaticke generovanie pri ukladani grafikonu.
 /// </summary>
 public static class TableTextGenerating

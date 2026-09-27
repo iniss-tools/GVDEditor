@@ -32,29 +32,29 @@ public sealed class TableDivType : Enumeration<TableDivType>
     #region VALUES
 
     /// <summary>
-    ///     Zadanie ľub. textu (bez TAB1 a TAB2)
+    ///     Text ide na tabulu bez prekodovania; TAB1 a TAB2 sa nepouziju.
     /// </summary>
-    public static readonly TableDivType Free = new(0, "0: Zadanie ľub. textu (bez TAB1 a TAB2)");
+    public static readonly TableDivType Free = new(0, "0: Text bez prekódovania");
 
     /// <summary>
-    ///     Výber z TabTab (TAB1 povinné)
+    ///     Text sa cely hlada v TAB1 a pouzije sa len najdeny preklad - inak stlpec ostane prazdny.
     /// </summary>
-    public static readonly TableDivType Table = new(1, "1: Výber z TabTab (TAB1 povinné)");
+    public static readonly TableDivType Table = new(1, "1: Len hodnoty z TAB1 (inak prázdne)");
 
     /// <summary>
-    ///     ? (TAB1 a TAB2 povinné)
+    ///     Cas HH:MM po castiach: hodiny v TAB1, desiatky a jednotky minut v TAB2.
     /// </summary>
-    public static readonly TableDivType TableTime = new(2, "2: ? (TAB1 a TAB2 povinné)");
+    public static readonly TableDivType TableTime = new(2, "2: Čas HH:MM po častiach (TAB1 a TAB2)");
 
     /// <summary>
-    ///     Zadanie ľub. textu (TAB1 povinné)
+    ///     Text sa hlada v TAB1; ak sa nenajde, posle sa nezmeneny.
     /// </summary>
-    public static readonly TableDivType Translate = new(3, "3: Zadanie ľub. textu (TAB1 povinné)");
+    public static readonly TableDivType Translate = new(3, "3: Prekódovať podľa TAB1, ak sa dá");
 
     /// <summary>
-    ///     ? (TAB1 povinné)
+    ///     Text sa prekoduje znak po znaku podla TAB1; neznamy znak nahradi medzera.
     /// </summary>
-    public static readonly TableDivType Char = new(4, "4: ? (TAB1 povinné)");
+    public static readonly TableDivType Char = new(4, "4: Znak po znaku podľa TAB1");
 
     #endregion
 }

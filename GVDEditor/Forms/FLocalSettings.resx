@@ -800,7 +800,7 @@
     <value>physicalTablesPage</value>
   </data>
   <data name="&gt;&gt;physicalTablesPage.Type" xml:space="preserve">
-    <value>GVDEditor.Forms.Settings.TablesPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+    <value>GVDEditor.Forms.Settings.PhysicalTablesPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;physicalTablesPage.Parent" xml:space="preserve">
     <value>pFyzTab</value>
@@ -824,7 +824,7 @@
     <value>logicalTablesPage</value>
   </data>
   <data name="&gt;&gt;logicalTablesPage.Type" xml:space="preserve">
-    <value>GVDEditor.Forms.Settings.TablesPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+    <value>GVDEditor.Forms.Settings.LogicalTablesPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;logicalTablesPage.Parent" xml:space="preserve">
     <value>pLogTab</value>
@@ -848,7 +848,7 @@
     <value>catalogTablesPage</value>
   </data>
   <data name="&gt;&gt;catalogTablesPage.Type" xml:space="preserve">
-    <value>GVDEditor.Forms.Settings.TablesPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+    <value>GVDEditor.Forms.Settings.CatalogTablesPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;catalogTablesPage.Parent" xml:space="preserve">
     <value>pKatTab</value>
@@ -872,7 +872,7 @@
     <value>tabTabPage</value>
   </data>
   <data name="&gt;&gt;tabTabPage.Type" xml:space="preserve">
-    <value>GVDEditor.Forms.Settings.TablesPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+    <value>GVDEditor.Forms.Settings.TabTabPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabTabPage.Parent" xml:space="preserve">
     <value>pTabTab</value>
@@ -896,7 +896,7 @@
     <value>textsPage</value>
   </data>
   <data name="&gt;&gt;textsPage.Type" xml:space="preserve">
-    <value>GVDEditor.Forms.Settings.TablesPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+    <value>GVDEditor.Forms.Settings.TableTextsPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;textsPage.Parent" xml:space="preserve">
     <value>pTTexts</value>

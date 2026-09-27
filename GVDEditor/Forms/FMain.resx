@@ -399,7 +399,7 @@
     <value>169, 22</value>
   </data>
   <data name="tsmiStanice.Text" xml:space="preserve">
-    <value>Stanice</value>
+    <value>Vlastné stanice</value>
   </data>
   <data name="tsmiDopravcovia.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -459,7 +459,7 @@
     <value>169, 22</value>
   </data>
   <data name="tsmiTCatalog.Text" xml:space="preserve">
-    <value>Katalóg tabúľ</value>
+    <value>Katalógové tabule</value>
   </data>
   <data name="tsmiTabTab.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -486,7 +486,7 @@
     <value>169, 22</value>
   </data>
   <data name="tsmiTFonts.Text" xml:space="preserve">
-    <value>Písma tabúľ</value>
+    <value>Písma</value>
   </data>
   <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 6</value>

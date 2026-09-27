@@ -221,9 +221,6 @@ Upravit datumové omezení popsaného vlaku? </value>
   <data name="FGlobalSettings_bLanguageAdd_Click_Iba_1_jazyk_môže_byť_hlavný" xml:space="preserve">
     <value>Pouze jeden jazyk může být hlavní.</value>
   </data>
-  <data name="FGlobalSettings_Click_Zadaný_typ_vlaku_sa_už_v_zozname_nachádza" xml:space="preserve">
-    <value>Zadaný typ vlaku se již v seznamu nachází.</value>
-  </data>
   <data name="FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9" xml:space="preserve">
     <value>Maximální počet typů vlaků tohoto druhu je 9.</value>
   </data>
@@ -232,9 +229,6 @@ Upravit datumové omezení popsaného vlaku? </value>
   </data>
   <data name="FGlobalSettings_Názov_tejto_audio_linky_už_existuje" xml:space="preserve">
     <value>Název této audio linky již existuje.</value>
-  </data>
-  <data name="FGlobalSettings_Táto_hodnota_sa_už_v_zozname_nachádza" xml:space="preserve">
-    <value>Tato hodnota se již v seznamu nachází.</value>
   </data>
   <data name="FGlobalSettings_Vybraný_typ_vlaku_sa_už_v_zozname_nachádza" xml:space="preserve">
     <value>Vybraný typ vlaku se již v seznamu nachází.</value>
@@ -248,20 +242,8 @@ Upravit datumové omezení popsaného vlaku? </value>
   <data name="FLocalSettings_Nezadaný_názov_písma" xml:space="preserve">
     <value>Nezadaný název písma.</value>
   </data>
-  <data name="FLocalSettings_Nezadaný_názov_stanice" xml:space="preserve">
-    <value>Nezadaný název stanice.</value>
-  </data>
   <data name="FLocalSettings_Nástupište_" xml:space="preserve">
     <value>Nástupiště </value>
-  </data>
-  <data name="FLocalSettings_Všetky_parametre_sú_povinné" xml:space="preserve">
-    <value>Všechny parametry jsou povinné.</value>
-  </data>
-  <data name="FLocalSettings_Zadané_ID_stanice_už_má_iná_stanica" xml:space="preserve">
-    <value>Zadané ID stanice již má jiná stanice.</value>
-  </data>
-  <data name="FLocalSettings_Zadaný_dopravca_už_existuje" xml:space="preserve">
-    <value>Zadaný dopravce již existuje.</value>
   </data>
   <data name="FLocalSettings_Zadaný_kľúč_koľaje_už_existuje" xml:space="preserve">
     <value>Zadaný klíč koleje již existuje.</value>
@@ -286,12 +268,6 @@ Přesto zavřít okno?</value>
   <data name="FLocalSettings_Zadaný_kľúč_nástupišťa_už_existuje" xml:space="preserve">
     <value>Zadaný klíč nástupiště již existuje.</value>
   </data>
-  <data name="Tables_Nie_sú_vyplnené_všetky_povinné_polia" xml:space="preserve">
-    <value>Nejsou vyplněny všechna povinná pole.</value>
-  </data>
-  <data name="Tables_Zadaný_kľúč_tabule_už_existuje" xml:space="preserve">
-    <value>Zadaný klíč tabule již existuje.</value>
-  </data>
   <data name="FTabTab_Zadajte_názov" xml:space="preserve">
     <value>Zadejte název.</value>
   </data>
@@ -303,15 +279,6 @@ Přesto zavřít okno?</value>
 Všechny zapsané texty tohoto typu se smažou.
 
 Opravdu chcete provést tuto akci?</value>
-  </data>
-  <data name="FTableText_Generate_TTexts_No_Item" xml:space="preserve">
-    <value>Není vybrán sloupec tabule. V části Realizace vyberte tabuli a sloupec, podle kterého se mají texty vygenerovat.</value>
-  </data>
-  <data name="FTableCatalog_Zadaný_kľúč_stĺpca_už_existuje" xml:space="preserve">
-    <value>Zadaný klíč sloupce již existuje.</value>
-  </data>
-  <data name="FTableCatalog_Nie_sú_vyplnené_všetky_povinné_parametre" xml:space="preserve">
-    <value>Nejsou vyplněny všechny povinné parametry.</value>
   </data>
   <data name="FRegistration_Registrácia_prebehla_úspešne" xml:space="preserve">
     <value>Registrace proběhla úspěšně. Změny se projeví po restartu programu. Restartovat nyní?</value>
@@ -522,13 +489,6 @@ Otevřít stránku pro stažení programu? </value>
   <data name="FMain_Názov_priečinka_je_prázdny" xml:space="preserve">
     <value>Název složky je prázdný.</value>
   </data>
-  <data name="FTableCatalog_ShowWarningDefTab" xml:space="preserve">
-    <value>Vybraný DivType nevyžaduje mít definovaný {0}.
-I tak pokračovat? </value>
-  </data>
-  <data name="FTableCatalog_ShowErrorUnDefTab" xml:space="preserve">
-    <value>Vybraný DivType vyžaduje mít definovaný {0}.</value>
-  </data>
   <data name="FTableCatalog_bSave_NespravnyPocetModov" xml:space="preserve">
     <value>V type tabule {0} je nesprávný počet módů {1}. (Správný počet: {2})
 Pravděpodobně jste zapomněli upravit pořadí sloupců. </value>
@@ -540,12 +500,6 @@ Upravte pořadí sloupců.</value>
   <data name="FTableCatalog_bColumnDelete_StlpecPouzity" xml:space="preserve">
     <value>Sloupec {0} je použitý v pořadí sloupců. Pokud ho odstraníte, odebere se i ze všech módů pořadí sloupců.
 Opravdu ho chcete odstranit?</value>
-  </data>
-  <data name="FTableCatalog_Posledný_pixel_stĺpca_je_menší_alebo_rovný_ako_počiatočný" xml:space="preserve">
-    <value>Poslední pixel sloupce je menší nebo roven než počáteční.</value>
-  </data>
-  <data name="FTableCatalog_Tento_stĺpec_sa_prekrekrýva_so_stĺpcom" xml:space="preserve">
-    <value>Tento sloupec se prekrekrýva se sloupcem {0}.</value>
   </data>
   <data name="FMain_InissStartItemOnClick" xml:space="preserve">
     <value>Jedna instance programu INISS již běží.
@@ -573,15 +527,6 @@ Mám ji nuceně vypnout? </value>
   <data name="FAppSettings_Zmeny_sa_prejavia_po_reštarte_programu" xml:space="preserve">
     <value>Změny se projeví po restartu programu.</value>
   </data>
-  <data name="FTableCatalog_Tabula_ELEN_moze_mat_max_poziciu_512" xml:space="preserve">
-    <value>Tabule ELEN může mít max. pozici 512.</value>
-  </data>
-  <data name="FTableCatalog_Definované_stĺpce_nie_sú_zotriedené_podľa_zobrazovaného_riadka_záznamu" xml:space="preserve">
-    <value>Definované sloupce nejsou setříděny podle zobrazovaného řádku záznamu: "{0}" - Line: {1} -&gt; "{2}" - Line: {3}</value>
-  </data>
-  <data name="FTableCatalog_Definované_stĺpce_nie_sú_zotriedené_podľa_pozície" xml:space="preserve">
-    <value>Definované sloupce nejsou setříděny podle pozice: "{0}" - End: {1} -&gt; "{2}" - End: {3}</value>
-  </data>
   <data name="AboutAppDescription" xml:space="preserve">
     <value>Tento program slouží pro úpravu textových souborů, které používá program INISS. Program GEditor není oficiální aplikace společnosti CHAPS ani společnosti INPROP.</value>
   </data>
@@ -600,14 +545,6 @@ Mám ji nuceně vypnout? </value>
   <data name="LoadWarnings_Footer" xml:space="preserve">
     <value>Podrobnosti jsou v souboru %LocalAppData%\GVDEditor\logs\info.log (pokud je v nastavení programu zapnuté logování). Přeskočené položky se při uložení grafikonu do souborů nezapíší.</value>
   </data>
-  <data name="FTablePhysical_IDOutOfRange" xml:space="preserve">
-    <value>Adresa tabule {0} je mimo rozsah {1}–{2}, který INISS povoluje pro výrobce {3}. INISS takovou tabuli nezaloží.
-
-Přesto uložit?</value>
-  </data>
-  <data name="FTablePhysical_NoCatalog" xml:space="preserve">
-    <value>Vyberte katalogovou tabuli. Pokud žádná neexistuje, založte ji nejprve na záložce Katalog tabulí.</value>
-  </data>
   <data name="FTableLogical_Neplatné_číslo_stanice" xml:space="preserve">
     <value>Číslo stanice (IDSTATION) musí být celé číslo nebo prázdné.</value>
   </data>
@@ -622,13 +559,6 @@ Přesto uložit?</value>
   </data>
   <data name="FTableLogical_Tabuľa_už_v_zostave" xml:space="preserve">
     <value>Fyzická tabule {0} už v sestavě je. Přidat další řádek (například pro jiný rozsah záznamů)?</value>
-  </data>
-  <data name="FTableLogical_Upozornenia_zostavy" xml:space="preserve">
-    <value>Sestava logické tabule má tyto nedostatky:
-
-{0}
-
-Přesto uložit?</value>
   </data>
   <data name="FTableLogical_Typ_nepodporovaný" xml:space="preserve">
     <value>• {0}: typ „{1}“ katalogová tabule nepodporuje (INISS zapíše do logu „does not support physical view mode“).</value>
@@ -1298,9 +1228,6 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
   <data name="FStateDgm_Sek" xml:space="preserve">
     <value>{0} s</value>
   </data>
-  <data name="FLocalSettings_StavovyDiagram" xml:space="preserve">
-    <value>Stavový diagram</value>
-  </data>
   <data name="FLocalSettings_SD_Stav" xml:space="preserve">
     <value>Soubor: {0}, kategorií: {1}, stavů: {2}</value>
   </data>
@@ -1322,22 +1249,8 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
   <data name="FMain_Import_grafikonu_hotovy" xml:space="preserve">
     <value>Grafikon {0} byl přidán do instalace ({1}). Otevřete ho výběrem stanice a období v hlavním okně.</value>
   </data>
-  <data name="FGlobalSettings_Cas_meskania_necislo" xml:space="preserve">
-    <value>Hodnota „{0}“ není celé číslo minut. INISS ji při startu přeskočí a operátorovi ji nenabídne.
-
-Přidat ji i tak?</value>
-  </data>
   <data name="FGlobalSettings_Kategoria_typu_obsadena" xml:space="preserve">
     <value>Kategorie {0} už v seznamu je. INISS má pro každou kategorii jedno místo – druhý typ stejné kategorie by první přepsal. Pro další typ použijte vlastní typ vlaku.</value>
-  </data>
-  <data name="FGlobalSettings_Typ_vlaku_pouzivaju" xml:space="preserve">
-    <value>Typ vlaku „{0}“ používají vlaky v grafikonech: {1}. {2} by je poškodilo – grafikon by nešel otevřít. Nejdřív vlakům nastavte jiný typ.</value>
-  </data>
-  <data name="FGlobalSettings_Typ_vlaku_odstranenie" xml:space="preserve">
-    <value>Odstranění typu</value>
-  </data>
-  <data name="FGlobalSettings_Typ_vlaku_premenovanie" xml:space="preserve">
-    <value>Změna zkratky</value>
   </data>
   <data name="FGlobalSettings_Testovaci_okruh" xml:space="preserve">
     <value>TEST – testovací okruh</value>
@@ -1466,9 +1379,6 @@ Vynutit jeho ukončení a spustit ho znovu?</value>
   <data name="ELISBridgeClient_Vlak_má_dátumové_obmedzenie_ktoré_sa_nedá_spracovať" xml:space="preserve">
     <value>Vlak {0} {1} {2} má datové omezení, které nelze zpracovat: "{3}".</value>
   </data>
-  <data name="FLocalSettings_Pismo_ID_existuje" xml:space="preserve">
-    <value>Písmo s ID {0} už v seznamu je ({1}). Zvolte jiné ID.</value>
-  </data>
   <data name="FLocalSettings_Pismo_Stlpce" xml:space="preserve">
     <value>sloupce katalogových tabulí: {0}</value>
   </data>
@@ -1477,20 +1387,6 @@ Vynutit jeho ukončení a spustit ho znovu?</value>
   </data>
   <data name="FLocalSettings_Pismo_TabTab" xml:space="preserve">
     <value>TabTab, sekce {0} – kód {{{1}}} se nemění automaticky, upravte ho v editoru TabTab</value>
-  </data>
-  <data name="FLocalSettings_Pismo_Zmena_ID" xml:space="preserve">
-    <value>Písmo s ID {0} se používá:
-{1}
-
-Změnit ID na {2} i ve sloupcích katalogových tabulí a v textech vlaků?
-
-Ano – změnit i tam, Ne – změnit jen v seznamu písem, Storno – neměnit nic.</value>
-  </data>
-  <data name="FLocalSettings_Pismo_Zmena_ID_TabTab" xml:space="preserve">
-    <value>Písmo s ID {0} se používá:
-{1}
-
-Změnit ID písma v seznamu na {2}?</value>
   </data>
   <data name="FLocalSettings_Pismo_Odstranit" xml:space="preserve">
     <value>Písmo s ID {0} se používá:
@@ -1739,9 +1635,6 @@ Odstranit stanici?</value>
   <data name="TrainTypesPage_Slot" xml:space="preserve">
     <value>{0}1–{0}9  {1}  {2}/{3}</value>
   </data>
-  <data name="TablesPage_Upravit" xml:space="preserve">
-    <value>Upravit…</value>
-  </data>
   <data name="TablesPage_Nepouziva" xml:space="preserve">
     <value>Nikde – lze odstranit.</value>
   </data>
@@ -1754,21 +1647,6 @@ Odstranit stanici?</value>
   <data name="TablesPage_Novy_text" xml:space="preserve">
     <value>Nový text…</value>
   </data>
-  <data name="TablesPage_Stlpec_Katalog" xml:space="preserve">
-    <value>Katalogová tabule</value>
-  </data>
-  <data name="TablesPage_Stlpec_Rezim" xml:space="preserve">
-    <value>Režim</value>
-  </data>
-  <data name="TablesPage_Stlpec_Vyrobca" xml:space="preserve">
-    <value>Výrobce</value>
-  </data>
-  <data name="TablesPage_Stlpec_Vlakov" xml:space="preserve">
-    <value>Vlaků s textem</value>
-  </data>
-  <data name="TablesPage_Stlpec_Riadkov" xml:space="preserve">
-    <value>Řádků pravidel</value>
-  </data>
   <data name="TablesPage_Pouzitie_Logicka" xml:space="preserve">
     <value>Logická tabule {0}, pozice {1}</value>
   </data>
@@ -1780,33 +1658,6 @@ Odstranit stanici?</value>
   </data>
   <data name="TablesPage_Pouzitie_Text" xml:space="preserve">
     <value>Text na tabuli {0}, sloupec {1}</value>
-  </data>
-  <data name="TablesPage_Realizacia" xml:space="preserve">
-    <value>Tabule {0}, sloupec {1}</value>
-  </data>
-  <data name="TablesPage_Texty_Bez_realizacie" xml:space="preserve">
-    <value>Text nemá žádnou realizaci – na tabulích se nezobrazí.</value>
-  </data>
-  <data name="TablesPage_TabTab_Editor" xml:space="preserve">
-    <value>Otevřít editor TabTab…</value>
-  </data>
-  <data name="TablesPage_TabTab_Upravit" xml:space="preserve">
-    <value>Upravit v editoru…</value>
-  </data>
-  <data name="TablesPage_Fyzicke_Info" xml:space="preserve">
-    <value>Fyzické tabule jsou skutečná zařízení ve stanici. Každá vychází z katalogové tabule. Dvojklik otevře tabuli k úpravě.</value>
-  </data>
-  <data name="TablesPage_Logicke_Info" xml:space="preserve">
-    <value>Logické tabule určují, co se na fyzických tabulích zobrazuje. Kolejím se přiřazují na stránce Nástupiště a koleje.</value>
-  </data>
-  <data name="TablesPage_Katalogove_Info" xml:space="preserve">
-    <value>Katalogové tabule jsou předlohy vzhledu tabule – výrobce, sloupce a řádky. Používají je fyzické tabule a texty na tabulích.</value>
-  </data>
-  <data name="TablesPage_Texty_Info" xml:space="preserve">
-    <value>Typy textů, které se zobrazují ve sloupcích tabulí místo údajů z grafikonu, a texty jednotlivých vlaků.</value>
-  </data>
-  <data name="TablesPage_TabTab_Info" xml:space="preserve">
-    <value>Sekce TabTab převádějí hodnoty sloupců na text tabule (např. druh vlaku na zkratku s písmem). Upravují se v editoru TabTab.</value>
   </data>
   <data name="PlatformRules_Oznacenie" xml:space="preserve">
     <value>Zadejte označení nástupiště.</value>
@@ -1899,5 +1750,122 @@ Pokračovat?</value>
   </data>
   <data name="AudioPage_Test" xml:space="preserve">
     <value>Testovací okruh se operátorovi v seznamu okruhů nenabízí – zpřístupní tlačítko Test/stop v dialozích hlášení.</value>
+  </data>
+  <data name="TableRules_Nazov" xml:space="preserve">
+    <value>Zadejte název – pod ním položku vidí obsluha a nabízejí ji další stránky.</value>
+  </data>
+  <data name="TableRules_Kluc" xml:space="preserve">
+    <value>Zadejte klíč – podle něj se na položku odkazují ostatní tabule.</value>
+  </data>
+  <data name="TableRules_Kluc_Existuje" xml:space="preserve">
+    <value>Klíč „{0}“ už má jiná položka seznamu.</value>
+  </data>
+  <data name="TablePhysicalRules_Katalog" xml:space="preserve">
+    <value>Vyberte katalogovou tabuli – určuje rozložení tabule a jejího výrobce.</value>
+  </data>
+  <data name="TablePhysicalRules_Adresa" xml:space="preserve">
+    <value>Adresa {0} je mimo rozsah výrobce {1} ({2} – {3}) – INISS takovou tabuli nezaloží. Tabule bez adresy má −1.</value>
+  </data>
+  <data name="TableTextRules_Realizacia" xml:space="preserve">
+    <value>Realizace {0}: {1}</value>
+  </data>
+  <data name="TableTextRules_Nevybrana" xml:space="preserve">
+    <value>vyberte katalogovou tabuli i sloupec.</value>
+  </data>
+  <data name="TableTextRules_Bez_tabule" xml:space="preserve">
+    <value>katalogová tabule „{0}“ už v seznamu není.</value>
+  </data>
+  <data name="TableTextRules_Bez_stlpca" xml:space="preserve">
+    <value>sloupec „{0}“ už v katalogové tabuli „{1}“ není.</value>
+  </data>
+  <data name="PhysicalTablesPage_Adresa" xml:space="preserve">
+    <value>Rozsah adres výrobce {0}: {1} – {2}. −1 = tabule bez adresy (např. jen export do XML).</value>
+  </data>
+  <data name="PhysicalTablesPage_Adresa_Bez_kontroly" xml:space="preserve">
+    <value>U výrobce {0} se adresa nekontroluje. −1 = tabule bez adresy.</value>
+  </data>
+  <data name="PhysicalTablesPage_Bez_katalogu" xml:space="preserve">
+    <value>Nejdřív založte katalogovou tabuli (stránka Katalogové tabule) – fyzická tabule bez ní nemůže být.</value>
+  </data>
+  <data name="TableTextsPage_Generovat_Bez" xml:space="preserve">
+    <value>Vyberte v seznamu realizací řádek se sloupcem, podle kterého se mají texty vygenerovat.</value>
+  </data>
+  <data name="TableTextsPage_Bez_vlakov" xml:space="preserve">
+    <value>Všechny vlaky grafikonu už text mají.</value>
+  </data>
+  <data name="LogicalTablesPage_Zostava" xml:space="preserve">
+    <value>Každý řádek pošle rozsah záznamů logické tabule na fyzickou tabuli od zadaného řádku. Jeden záznam může jít na více tabulí najednou.</value>
+  </data>
+  <data name="LogicalTablesPage_Upozornenia" xml:space="preserve">
+    <value>Upozornění (INISS je snese, zapíše je jen do logu):</value>
+  </data>
+  <data name="TableCatalogRules_Vyrobca" xml:space="preserve">
+    <value>Vyberte výrobce tabule – určuje rozsah adres a význam čísla písma.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec" xml:space="preserve">
+    <value>Sloupec {0}: {1}</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_Nazov" xml:space="preserve">
+    <value>zadejte název.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_Kluc" xml:space="preserve">
+    <value>zadejte klíč – odkazuje na něj pořadí sloupců a texty na tabulích.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_Kluc_Existuje" xml:space="preserve">
+    <value>klíč „{0}“ už má jiný sloupec.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_Sirka" xml:space="preserve">
+    <value>konec ({1}) musí být za začátkem ({0}) – INISS sloupec bez šířky odmítne.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_Tab1" xml:space="preserve">
+    <value>způsob plnění {0} vyžaduje tabulku TAB1.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_Tab2" xml:space="preserve">
+    <value>způsob plnění 2 vyžaduje i tabulku TAB2.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_ELEN" xml:space="preserve">
+    <value>tabule ELEN má nejvýše {0} bodů, sloupec končí na {1}.</value>
+  </data>
+  <data name="TableCatalogRules_Nasobok" xml:space="preserve">
+    <value>• Sloupec {0}: začátek a konec mají být násobkem {1} (hranice znaků tabule {2}) – INISS to zapíše do logu.</value>
+  </data>
+  <data name="TableCatalogRules_Tab_Navyse" xml:space="preserve">
+    <value>• Sloupec {0}: {1} se při způsobu plnění {2} nepoužije.</value>
+  </data>
+  <data name="CatalogTablesPage_Div0" xml:space="preserve">
+    <value>Text jde na tabuli bez překódování; TAB1 a TAB2 se nepoužijí.</value>
+  </data>
+  <data name="CatalogTablesPage_Div1" xml:space="preserve">
+    <value>Text se celý hledá v TAB1 a použije se jen to, co se najde – jinak sloupec zůstane prázdný.</value>
+  </data>
+  <data name="CatalogTablesPage_Div2" xml:space="preserve">
+    <value>Čas HH:MM po částech: hodiny se hledají v TAB1, desítky a jednotky minut v TAB2.</value>
+  </data>
+  <data name="CatalogTablesPage_Div3" xml:space="preserve">
+    <value>Text se hledá v TAB1; pokud se nenajde, pošle se nezměněný.</value>
+  </data>
+  <data name="CatalogTablesPage_Div4" xml:space="preserve">
+    <value>Text se překóduje znak po znaku podle TAB1; znak, který v ní není, nahradí mezera.</value>
+  </data>
+  <data name="CatalogTablesPage_Poradie" xml:space="preserve">
+    <value>Pořadí sloupců je nastaveno pro typy zobrazení: {0}.</value>
+  </data>
+  <data name="CatalogTablesPage_Poradie_Ziadne" xml:space="preserve">
+    <value>Pořadí sloupců zatím není nastaveno pro žádný typ zobrazení – tabule s touto předlohou nebude co zobrazit.</value>
+  </data>
+  <data name="CatalogTablesPage_Novy_stlpec" xml:space="preserve">
+    <value>Sloupec</value>
+  </data>
+  <data name="CatalogTablesPage_Stlpec_V_Textoch" xml:space="preserve">
+    <value>Sloupec {0} používají texty na tabulích: {1}. Nejdřív jim změňte realizaci.</value>
+  </data>
+  <data name="CatalogTablesPage_Kluc_Neplatny" xml:space="preserve">
+    <value>Klíč sloupce „{0}“ se nezměnil – je prázdný nebo ho už má jiný sloupec.</value>
+  </data>
+  <data name="CatalogTablesPage_Hore" xml:space="preserve">
+    <value>Posunout sloupec výš v seznamu</value>
+  </data>
+  <data name="CatalogTablesPage_Dole" xml:space="preserve">
+    <value>Posunout sloupec níž v seznamu</value>
   </data>
 </root>

@@ -1,5 +1,6 @@
 ﻿using GVDEditor.Entities;
 using GVDEditor.Forms;
+using GVDEditor.Forms.Settings;
 using GVDEditor.Properties;
 using ToolsCore.Expressions;
 using ToolsCore.TabTab;
@@ -202,13 +203,13 @@ internal static class Analyzer
             var tableText = GlobData.TableTexts[i];
             if (tableText.Realizations.Count == 0)
             {
-                var problem = new TableTextWithoutRealization(tableText, gvd, i);
+                var problem = new TableTextWithoutRealization(tableText);
                 problems.Add(problem);
             }
 
             if (tableText.Trains.Count == 0)
             {
-                var problem = new TableTextWithoutTrains(tableText, gvd, i);
+                var problem = new TableTextWithoutTrains(tableText);
                 problems.Add(problem);
             }
         }
@@ -354,8 +355,8 @@ internal class TableWithoutSegments : IProblem
 
     public FixResult FixProblem()
     {
-        var form = new FTableCatalog(Table, GlobData.TabTabs);
-        form.ShowDialog();
+        // riadky pribudnu s poctom zaznamov na stranke Katalogove tabule - okno sa otvori s touto tabulou
+        Program.MainForm.ShowLocalSettings(LocalSettingsPage.KatalogoveTabule, select: Table);
 
         //Check if the problem was solved
         return Table.Segments.Count == 0 ? FixResult.NotSolved : FixResult.Done;
@@ -365,18 +366,12 @@ internal class TableWithoutSegments : IProblem
 internal class TableTextWithoutRealization : IProblem
 {
     /// <summary>Initializes a new instance of the <see cref="TableTextWithoutRealization" /> class.</summary>
-    public TableTextWithoutRealization(TableText text, GVDDirectory gvdDir, int row)
+    public TableTextWithoutRealization(TableText text)
     {
         TText = text;
-        GVDDir = gvdDir;
-        Row = row;
     }
 
     private TableText TText { get; }
-
-    private GVDDirectory GVDDir { get; }
-
-    private int Row { get; }
 
     public string Text => $"Text na tabuli „{TText.Key}“ nemá žiadnu realizáciu.";
 
@@ -388,33 +383,23 @@ internal class TableTextWithoutRealization : IProblem
 
     public FixResult FixProblem()
     {
-        var form = new FTableText(TText, GlobData.TableCatalogs, GVDDir.GVD, Row);
-        if (form.ShowDialog() != DialogResult.OK) return FixResult.NotSolved;
-
-        //okno meni len svoju kopiu – vysledok sa zapise na miesto povodneho textu
-        var index = GlobData.TableTexts.IndexOf(TText);
-        if (index != -1) GlobData.TableTexts[index] = form.ThisTableText;
+        // text sa upravuje na stranke Texty na tabuliach - okno sa otvori s tymto textom
+        Program.MainForm.ShowLocalSettings(LocalSettingsPage.Texty, select: TText);
 
         //Check if the problem was solved
-        return form.ThisTableText.Realizations.Count == 0 ? FixResult.NotSolved : FixResult.Done;
+        return TText.Realizations.Count == 0 ? FixResult.NotSolved : FixResult.Done;
     }
 }
 
 internal class TableTextWithoutTrains : IProblem
 {
     /// <summary>Initializes a new instance of the <see cref="TableTextWithoutTrains" /> class.</summary>
-    public TableTextWithoutTrains(TableText text, GVDDirectory gvdDir, int row)
+    public TableTextWithoutTrains(TableText text)
     {
         TText = text;
-        GVDDir = gvdDir;
-        Row = row;
     }
 
     private TableText TText { get; }
-
-    private GVDDirectory GVDDir { get; }
-
-    private int Row { get; }
 
     public string Text => $"Text na tabuli „{TText.Key}“ nemá priradené žiadne vlaky.";
 
@@ -426,15 +411,11 @@ internal class TableTextWithoutTrains : IProblem
 
     public FixResult FixProblem()
     {
-        var form = new FTableText(TText, GlobData.TableCatalogs, GVDDir.GVD, Row);
-        if (form.ShowDialog() != DialogResult.OK) return FixResult.NotSolved;
-
-        //okno meni len svoju kopiu – vysledok sa zapise na miesto povodneho textu
-        var index = GlobData.TableTexts.IndexOf(TText);
-        if (index != -1) GlobData.TableTexts[index] = form.ThisTableText;
+        // text sa upravuje na stranke Texty na tabuliach - okno sa otvori s tymto textom
+        Program.MainForm.ShowLocalSettings(LocalSettingsPage.Texty, select: TText);
 
         //Check if the problem was solved
-        return form.ThisTableText.Trains.Count == 0 ? FixResult.NotSolved : FixResult.Done;
+        return TText.Trains.Count == 0 ? FixResult.NotSolved : FixResult.Done;
     }
 }
 

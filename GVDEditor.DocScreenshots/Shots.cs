@@ -79,9 +79,38 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 SelectListItem(form, "listRadenie", 5);
             });
             // na stránke Nástupištia a koľaje vybrať koľaj (údaje koľaje sú zaujímavejšie ako nástupište)
+            // okná nastavení väčšie ako predvolené, nech je na snímke viac údajov vybranej položky
             Shot("lokalne-nastavenia", () => new FLocalSettings(gvdDir), form =>
-                Descendants(form).OfType<GVDEditor.Forms.Settings.PlatformsTracksPage>().Single().SelectFirstTrack(), tabs: true);
-            Shot("globalne-nastavenia", () => new FGlobalSettings(FMain.ObdobiaList.ToList()), tabs: true);
+            {
+                Resize(form, 980, 700);
+                Descendants(form).OfType<GVDEditor.Forms.Settings.PlatformsTracksPage>().Single().SelectFirstTrack();
+            }, tabs: true);
+            Shot("globalne-nastavenia", () => new FGlobalSettings(FMain.ObdobiaList.ToList()), form => Resize(form, 900, 620), tabs: true);
+
+            // chyba na stránke: dopravca bez názvu - okno sa zavrie bez OK, takže Zrušiť zmenu vráti
+            var errorForm = new FLocalSettings(gvdDir, GVDEditor.Forms.Settings.LocalSettingsPage.Dopravcovia);
+            Shot("okna-nastaveni/chyba", errorForm, form =>
+            {
+                Resize(form, 900, 560);
+                // druha chyba na inej stranke - v strome je vidno cervenu stranku (vybrana by ju prekryla)
+                var view = Descendants(form).OfType<ExOptionsView>().Single();
+                var stations = Descendants(form).OfType<GVDEditor.Forms.Settings.CustomStationsPage>().Single();
+                var operatorsPanel = view.SelectedPanel;
+                view.SelectedPanel = (ExOptionsPanel)stations.Parent!;
+                Pump.Events();
+                var stationGrid = Descendants(stations).OfType<DataGridView>().Single();
+                if (stationGrid.Rows.Count > 0)
+                    stationGrid.Rows[0].Cells[1].Value = "";
+                view.SelectedPanel = operatorsPanel;
+                Pump.Events();
+
+                var grid = Descendants(Descendants(form).OfType<GVDEditor.Forms.Settings.OperatorsPage>().Single())
+                    .OfType<DataGridView>().Single();
+                grid.Rows[1].Cells[1].Value = "";
+                grid.CurrentCell = grid.Rows[1].Cells[0];
+            }, dispose: false);
+            errorForm.Close();
+            errorForm.Dispose();
             Shot("nastavenia-programu/nastavenia-programu", () => new FAppSettings(GlobData.Config, GlobData.Styles));
             Shot("nastavenia-programu/komponenty", () =>
             {
@@ -219,13 +248,8 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             // editory tabúľ nad ukážkovými tabuľami (DemoTables)
             var station = gvdDir.GVD.ThisStation;
             var catalog = GlobData.TableCatalogs[0];
-            Shot("tabule/katalogova-tabula", () => new FTableCatalog(catalog, GlobData.TabTabs.ToList()),
-                form => SelectListItem(form, "listColumns", catalog.Items.FindIndex(i => i.Key == "Smer")));
             Shot("tabule/poradie-stlpcov", () => new FTableColumnOrder(catalog.Items, catalog.ViewTypeTabs),
                 form => SelectCombo(form, "cbViewMode", 1));
-            Shot("tabule/fyzicka-tabula", () => new FTablePhysical(GlobData.TablePhysicals[0], GlobData.TableCatalogs));
-            Shot("tabule/logicka-tabula", () => new FTableLogical(GlobData.TableLogicals[0], GlobData.TablePhysicals, false, station));
-            Shot("tabule/text-na-tabuli", () => new FTableText(GlobData.TableTexts[0], GlobData.TableCatalogs, gvdDir.GVD, 0));
             // prvá položka zoznamu je zabudovaná prázdna "Žiadny"
             var druh = GlobData.TabTabs.First(t => t.Key == "Druh");
             Shot("tabule/editor-tabtab", () => new FTabTab(druh, station), form =>
@@ -362,6 +386,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                     form.Refresh();
                     Pump.Events();
                     Save($"{name}/{Slug(panel.NodeText)}", form);
+                    WriteBounds($"{name}/{Slug(panel.NodeText)}", form, panel);
                 }
 
                 return;
@@ -404,6 +429,39 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
         WindowCapture.Save(form, file);
         _count++;
     }
+
+    /// <summary>
+    ///     Pre značky v článkoch: polohy prvkov stránky v percentách snímky (ľavý okraj, stred, horný okraj). Zapíše sa,
+    ///     len ak premenná prostredia <c>DOCSHOTS_BOUNDS</c> určuje súbor.
+    /// </summary>
+    private void WriteBounds(string shot, Form form, Control panel)
+    {
+        if (Environment.GetEnvironmentVariable("DOCSHOTS_BOUNDS") is not { Length: > 0 } file || theme != "light")
+            return;
+
+        var frame = WindowCapture.FrameBounds(form);
+        var lines = new List<string>();
+        foreach (var control in Descendants(panel).Where(c => c.Visible && c.Name.Length > 0 && c.Width > 0))
+        {
+            if (control is not (ButtonBase or DataGridView or TextBoxBase or ComboBox or UpDownBase or TreeView or ListBox or Label
+                or GVDEditor.Controls.CatalogRuler or GVDEditor.Controls.LedPreview or Panel))
+                continue;
+
+            var r = control.RectangleToScreen(control.ClientRectangle);
+            if (!control.IsHandleCreated || r.Bottom < frame.Top || r.Top > frame.Bottom)
+                continue;
+
+            string P(int v, int from, int size) => (100.0 * (v - from) / size).ToString("0.0", CultureInfo.InvariantCulture);
+            lines.Add($"{shot} {control.Name} {control.GetType().Name} left={P(r.Left, frame.Left, frame.Width)} " +
+                      $"cx={P(r.Left + r.Width / 2, frame.Left, frame.Width)} top={P(r.Top, frame.Top, frame.Height)} " +
+                      $"cy={P(r.Top + r.Height / 2, frame.Top, frame.Height)} \"{FirstLine(control)}\"");
+        }
+
+        File.AppendAllLines(file, lines);
+    }
+
+    private static string FirstLine(Control control) =>
+        control is Label or ButtonBase ? control.Text.Split(Environment.NewLine[^1])[0].TrimEnd() : "";
 
     /// <summary>
     ///     Okná, ktoré sa otvárajú maximalizované, by mali na snímke šírku celej obrazovky.

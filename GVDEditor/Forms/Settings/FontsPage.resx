@@ -1347,7 +1347,7 @@
     <value>3, 6</value>
   </data>
   <data name="lDir.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 7, 3, 0</value>
+    <value>3, 0, 3, 0</value>
   </data>
   <data name="lDir.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 15</value>
@@ -1432,5 +1432,8 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tbDir.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
 </root>

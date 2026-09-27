@@ -620,7 +620,7 @@ public partial class FMain : Form
 
     /// <returns><see langword="true" />, ak pouzivatel nastavenia ulozil.</returns>
     internal bool ShowLocalSettings(LocalSettingsPage page = LocalSettingsPage.Grafikon,
-        LocalSettingsAction action = LocalSettingsAction.None)
+        LocalSettingsAction action = LocalSettingsAction.None, object? select = null)
     {
         var dir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
         // FLocalSettings meni dir.GVD priamo, povodne hodnoty treba zapamatat vopred
@@ -629,7 +629,7 @@ public partial class FMain : Form
         var wasSaved = DataSaved;
         // okno sa chvilu zostavuje - kurzor ukaze, ze klik zabral (po zobrazeni okna sa vrati sam)
         Cursor.Current = Cursors.WaitCursor;
-        var svform = new FLocalSettings(dir, page, action);
+        var svform = new FLocalSettings(dir, page, action, select);
         var result = svform.ShowDialog();
         if (result != DialogResult.OK)
         {

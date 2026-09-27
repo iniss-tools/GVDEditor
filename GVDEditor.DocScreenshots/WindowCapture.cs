@@ -1,4 +1,4 @@
-using System.Drawing.Imaging;
+﻿using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 
 namespace GVDEditor.DocScreenshots;
@@ -19,6 +19,17 @@ internal static partial class WindowCapture
         Directory.CreateDirectory(Path.GetDirectoryName(file)!);
         using var bitmap = Capture(form);
         bitmap.Save(file, ImageFormat.Png);
+    }
+
+    /// <summary>
+    ///     Viditeľný rám okna na obrazovke - to, čo zachytí <see cref="Save" />.
+    /// </summary>
+    public static Rectangle FrameBounds(Form form)
+    {
+        GetWindowRect(form.Handle, out var window);
+        if (DwmGetWindowAttribute(form.Handle, DwmwaExtendedFrameBounds, out var frame, Marshal.SizeOf<Rect>()) != 0)
+            frame = window;
+        return new Rectangle(frame.Left, frame.Top, frame.Width, frame.Height);
     }
 
     private static Bitmap Capture(Form form)

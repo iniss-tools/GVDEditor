@@ -1130,4 +1130,13 @@
         X/g/g1KMu1R0dqcAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="tsmiStanice.Text" xml:space="preserve">
+    <value>Vlastní stanice</value>
+  </data>
+  <data name="tsmiTCatalog.Text" xml:space="preserve">
+    <value>Katalogové tabule</value>
+  </data>
+  <data name="tsmiTFonts.Text" xml:space="preserve">
+    <value>Písma</value>
+  </data>
 </root>

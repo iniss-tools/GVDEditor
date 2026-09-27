@@ -184,6 +184,73 @@ public static class TableLogicalLayout
     public static List<TableViewType> SupportedViewTypes(TablePhysical table) =>
         table.TableCatalog?.ViewTypeTabs.Select(tab => tab.ViewType).Distinct().ToList() ?? new List<TableViewType>();
 
+    /// <summary>
+    ///     Zmena poctu zaznamov z <paramref name="oldCount" /> na <paramref name="newCount" />: rozsahy za novym koncom
+    ///     sa skratia alebo odstrania, rozsahy konciace na povodnom poslednom zazname sa predlzia na novy posledny.
+    /// </summary>
+    public static void Resize(List<TableLogicalSegment> segments, int oldCount, int newCount)
+    {
+        if (newCount == oldCount)
+            return;
+
+        for (var i = segments.Count - 1; i >= 0; i--)
+        {
+            var s = segments[i];
+            if (newCount < oldCount)
+            {
+                if (s.FirstRecord > newCount)
+                    segments.RemoveAt(i);
+                else if (s.LastRecord > newCount)
+                    s.LastRecord = newCount;
+            }
+            else if (s.LastRecord == oldCount)
+            {
+                s.LastRecord = newCount;
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Zmena typu logickej tabule prenesie novy typ na riadky zostavy, ktore mali doterajsi typ a ktorych fyzicka
+    ///     tabula novy typ podporuje.
+    /// </summary>
+    /// <returns>Ci sa niektory riadok zmenil.</returns>
+    public static bool ChangeViewType(IEnumerable<TableLogicalSegment> segments, TableViewType? oldType, TableViewType newType)
+    {
+        if (oldType == null || oldType == newType)
+            return false;
+
+        var changed = false;
+        foreach (var s in segments)
+        {
+            var supported = SupportedViewTypes(s.Table);
+            if (s.TypeView == oldType && (supported.Count == 0 || supported.Contains(newType)))
+            {
+                s.TypeView = newType;
+                changed = true;
+            }
+        }
+
+        return changed;
+    }
+
+    /// <summary>
+    ///     Novy riadok zostavy pre fyzicku tabulu: vsetky zaznamy od 1. riadku, s typom logickej tabule, ak ho katalog
+    ///     fyzickej tabule podporuje, inak s prvym podporovanym.
+    /// </summary>
+    public static TableLogicalSegment NewSegment(TablePhysical table, int recordCount, TableViewType? tableType)
+    {
+        var supported = SupportedViewTypes(table);
+        var typeView = tableType != null && (supported.Count == 0 || supported.Contains(tableType))
+            ? tableType
+            : supported.FirstOrDefault() ?? tableType ?? TableViewType.Odchodova;
+
+        return new TableLogicalSegment
+        {
+            Table = table, FirstRecord = 1, LastRecord = Math.Max(1, recordCount), StartRow = 1, TypeView = typeView
+        };
+    }
+
     private static string Describe(TablePosition position) =>
         $"{position.Table?.Key}/{position.Position}/{position.TypeView?.Key}";
 }

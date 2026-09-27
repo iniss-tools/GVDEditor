@@ -1,9 +1,9 @@
-using GVDEditor.Entities;
+﻿using GVDEditor.Entities;
 
 namespace GVDEditor.Tools;
 
 /// <summary>
-///     Logika okna katalogovej tabule nezavisla od GUI (FTableCatalog, FTableColumnOrder): pracovne kopie,
+///     Logika katalogovej tabule nezavisla od GUI (stranka Katalogove tabule, FTableColumnOrder): kopie, novy stlpec,
 ///     udrzanie klucov stlpcov v poradi stlpcov a pocet riadkov.
 /// </summary>
 public static class TableCatalogEditing
@@ -132,4 +132,55 @@ public static class TableCatalogEditing
         while (rows.Count > count) rows.RemoveAt(rows.Count - 1);
         while (rows.Count < count) rows.Add(create());
     }
+    /// <summary>
+    ///     Hlboka kopia katalogovej tabule (stlpce, riadky, poradie stlpcov; TabTab a vyrobca su zdielane).
+    /// </summary>
+    public static TableCatalog Clone(TableCatalog source) => new()
+    {
+        Key = source.Key,
+        Name = source.Name,
+        Comment = source.Comment,
+        Manufacturer = source.Manufacturer,
+        MaxRecCount = source.MaxRecCount,
+        MinHeight = source.MinHeight,
+        NumSegments = source.NumSegments,
+        Items = source.Items.Select(Clone).ToList(),
+        Segments = source.Segments.Select(Clone).ToList(),
+        ViewTypeTabs = source.ViewTypeTabs.Select(Clone).ToList()
+    };
+
+    /// <summary>
+    ///     Novy stlpec za poslednym stlpcom: na jeho riadku, od jeho konca, siroky 64 bodov (zarovnane na sirku znaku
+    ///     tabule), s jeho pismom; kluc a nazov su volne.
+    /// </summary>
+    /// <param name="table">katalogova tabula</param>
+    /// <param name="name">zaklad nazvu noveho stlpca</param>
+    /// <param name="cellWidth">sirka znakovej bunky tabule (START a END maju byt jej nasobkom)</param>
+    public static TableItem NewColumn(TableCatalog table, string name, int cellWidth)
+    {
+        var last = table.Items.LastOrDefault();
+        var cell = Math.Max(1, cellWidth);
+        var start = last is null ? 0 : (last.End + cell - 1) / cell * cell;
+        var unique = TableRules.Unique(table.Items.Select(i => i.Name), name);
+        return new TableItem
+        {
+            Key = TableRules.Unique(table.Items.Select(i => i.Key), unique),
+            Name = unique,
+            FillSection = TableFillSection.Free,
+            Line = last?.Line ?? 0,
+            Start = start,
+            End = start + (64 + cell - 1) / cell * cell,
+            FontIDX = last?.FontIDX ?? 0,
+            Align = TableAlign.Left,
+            DivType = TableDivType.Free,
+            Tab1 = TableTabTab.Empty,
+            Tab2 = TableTabTab.Empty
+        };
+    }
+
+    /// <summary>
+    ///     Texty na tabuliach, ktore sa zobrazuju v stlpci <paramref name="item" />.
+    /// </summary>
+    public static List<TableText> TextsUsing(TableItem item, IEnumerable<TableText> texts) =>
+        texts.Where(text => text.Realizations.Any(r => ReferenceEquals(r.Item, item))).ToList();
 }

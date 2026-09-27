@@ -405,15 +405,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zadaný typ vlaku sa už v zozname nachádza..
-        /// </summary>
-        internal static string FGlobalSettings_Click_Zadaný_typ_vlaku_sa_už_v_zozname_nachádza {
-            get {
-                return ResourceManager.GetString("FGlobalSettings_Click_Zadaný_typ_vlaku_sa_už_v_zozname_nachádza", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Kľúč jazyka sa nezhoduje so žiadnym jazykom nachádzajúci sa v zvukovej banke..
         /// </summary>
         internal static string FGlobalSettings_Kľúč_jazyka_sa_nezhoduje_so_žiadnym_jazykom_nacházajúci_sa_v_zvukovej_banke {
@@ -433,15 +424,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Číslo {0} nie je v intervale X &gt;= 0 a zároveň X &lt;= 480..
-        /// </summary>
-        internal static string FGlobalSettings_Meskanie_CisloNieJeVIntervale {
-            get {
-                return ResourceManager.GetString("FGlobalSettings_Meskanie_CisloNieJeVIntervale", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Názov tejto audio linky už existuje..
         /// </summary>
         internal static string FGlobalSettings_Názov_tejto_audio_linky_už_existuje {
@@ -456,15 +438,6 @@ namespace GVDEditor.Properties {
         internal static string FGlobalSettings_Nebola_zadaná_skratka_typu_vlaku {
             get {
                 return ResourceManager.GetString("FGlobalSettings_Nebola_zadaná_skratka_typu_vlaku", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Táto hodnota sa už v zozname nachádza..
-        /// </summary>
-        internal static string FGlobalSettings_Táto_hodnota_sa_už_v_zozname_nachádza {
-            get {
-                return ResourceManager.GetString("FGlobalSettings_Táto_hodnota_sa_už_v_zozname_nachádza", resourceCulture);
             }
         }
         
@@ -632,42 +605,6 @@ namespace GVDEditor.Properties {
         internal static string FLocalSettings_Nezadaný_názov_písma {
             get {
                 return ResourceManager.GetString("FLocalSettings_Nezadaný_názov_písma", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nezadaný názov stanice..
-        /// </summary>
-        internal static string FLocalSettings_Nezadaný_názov_stanice {
-            get {
-                return ResourceManager.GetString("FLocalSettings_Nezadaný_názov_stanice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Všetky parametre sú povinné..
-        /// </summary>
-        internal static string FLocalSettings_Všetky_parametre_sú_povinné {
-            get {
-                return ResourceManager.GetString("FLocalSettings_Všetky_parametre_sú_povinné", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zadané ID stanice už má iná stanica..
-        /// </summary>
-        internal static string FLocalSettings_Zadané_ID_stanice_už_má_iná_stanica {
-            get {
-                return ResourceManager.GetString("FLocalSettings_Zadané_ID_stanice_už_má_iná_stanica", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zadaný dopravca už existuje..
-        /// </summary>
-        internal static string FLocalSettings_Zadaný_dopravca_už_existuje {
-            get {
-                return ResourceManager.GetString("FLocalSettings_Zadaný_dopravca_už_existuje", resourceCulture);
             }
         }
         
@@ -936,89 +873,6 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("FTableCatalog_bColumnDelete_StlpecPouzity", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Definované stĺpce nie sú zotriedené podľa pozície: &quot;{0}&quot;-End:{1} -&gt; &quot;{2}&quot;-End:{3}.
-        /// </summary>
-        internal static string FTableCatalog_Definované_stĺpce_nie_sú_zotriedené_podľa_pozície {
-            get {
-                return ResourceManager.GetString("FTableCatalog_Definované_stĺpce_nie_sú_zotriedené_podľa_pozície", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Definované stĺpce nie sú zotriedené podľa zobrazovaného riadka záznamu: &quot;{0}&quot;-Line:{1} -&gt; &quot;{2}&quot;-Line:{3}.
-        /// </summary>
-        internal static string FTableCatalog_Definované_stĺpce_nie_sú_zotriedené_podľa_zobrazovaného_riadka_záznamu {
-            get {
-                return ResourceManager.GetString(("FTableCatalog_Definované_stĺpce_nie_sú_zotriedené_podľa_zobrazovaného_riadka_zázn" +
-                        "amu"), resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nie sú vyplnené všetky povinné parametre..
-        /// </summary>
-        internal static string FTableCatalog_Nie_sú_vyplnené_všetky_povinné_parametre {
-            get {
-                return ResourceManager.GetString("FTableCatalog_Nie_sú_vyplnené_všetky_povinné_parametre", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Posledný pixel stĺpca je menší alebo rovný ako počiatočný..
-        /// </summary>
-        internal static string FTableCatalog_Posledný_pixel_stĺpca_je_menší_alebo_rovný_ako_počiatočný {
-            get {
-                return ResourceManager.GetString("FTableCatalog_Posledný_pixel_stĺpca_je_menší_alebo_rovný_ako_počiatočný", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vybraný DivType vyžaduje mať zadefinovaný {0}..
-        /// </summary>
-        internal static string FTableCatalog_ShowErrorUnDefTab {
-            get {
-                return ResourceManager.GetString("FTableCatalog_ShowErrorUnDefTab", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vybraný DivType nevyžaduje mať zadefinovaný {0}.
-        ///Aj tak pokračovať ?.
-        /// </summary>
-        internal static string FTableCatalog_ShowWarningDefTab {
-            get {
-                return ResourceManager.GetString("FTableCatalog_ShowWarningDefTab", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tabuľa ELEN môže mať max. pozíciu 512..
-        /// </summary>
-        internal static string FTableCatalog_Tabula_ELEN_moze_mat_max_poziciu_512 {
-            get {
-                return ResourceManager.GetString("FTableCatalog_Tabula_ELEN_moze_mat_max_poziciu_512", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tento stĺpec sa prekrekrýva so stĺpcom {0}..
-        /// </summary>
-        internal static string FTableCatalog_Tento_stĺpec_sa_prekrekrýva_so_stĺpcom {
-            get {
-                return ResourceManager.GetString("FTableCatalog_Tento_stĺpec_sa_prekrekrýva_so_stĺpcom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zadaný kľúč stĺpca už existuje..
-        /// </summary>
-        internal static string FTableCatalog_Zadaný_kľúč_stĺpca_už_existuje {
-            get {
-                return ResourceManager.GetString("FTableCatalog_Zadaný_kľúč_stĺpca_už_existuje", resourceCulture);
-            }
-        }
         
         /// <summary>
         ///   Looks up a localized string similar to Texty všetkých vlakov grafikonu sa vygenerujú podľa stĺpca „{1}“ tabule „{0}“.
@@ -1029,15 +883,6 @@ namespace GVDEditor.Properties {
         internal static string FTableText_Generate_TTexts_Info {
             get {
                 return ResourceManager.GetString("FTableText_Generate_TTexts_Info", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Nie je vybraný stĺpec tabule. V časti Realizácia vyberte tabuľu a stĺpec, podľa ktorého sa majú texty vygenerovať..
-        /// </summary>
-        internal static string FTableText_Generate_TTexts_No_Item {
-            get {
-                return ResourceManager.GetString("FTableText_Generate_TTexts_No_Item", resourceCulture);
             }
         }
         
@@ -1470,24 +1315,6 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("statedgmILTIS", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nie sú vyplnené všetky povinné polia..
-        /// </summary>
-        internal static string Tables_Nie_sú_vyplnené_všetky_povinné_polia {
-            get {
-                return ResourceManager.GetString("Tables_Nie_sú_vyplnené_všetky_povinné_polia", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zadaný kľúč tabule už existuje..
-        /// </summary>
-        internal static string Tables_Zadaný_kľúč_tabule_už_existuje {
-            get {
-                return ResourceManager.GetString("Tables_Zadaný_kľúč_tabule_už_existuje", resourceCulture);
-            }
-        }
 
         /// <summary>
         ///   Looks up a localized string similar to Pri načítaní grafikonu sa vyskytlo {0} varovaní. Dáta sú načítané, ale niektoré .
@@ -1513,24 +1340,6 @@ namespace GVDEditor.Properties {
         internal static string LoadWarnings_Footer {
             get {
                 return ResourceManager.GetString("LoadWarnings_Footer", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Adresa tabule {0} je mimo rozsahu {1}–{2}, ktorý INISS povoľuje pre výrobcu {3}..
-        /// </summary>
-        internal static string FTablePhysical_IDOutOfRange {
-            get {
-                return ResourceManager.GetString("FTablePhysical_IDOutOfRange", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Vyberte katalógovú tabuľu. Ak žiadna neexistuje, založte ju najprv na záložke Katalóg tabúľ..
-        /// </summary>
-        internal static string FTablePhysical_NoCatalog {
-            get {
-                return ResourceManager.GetString("FTablePhysical_NoCatalog", resourceCulture);
             }
         }
 
@@ -1576,15 +1385,6 @@ namespace GVDEditor.Properties {
         internal static string FTableLogical_Tabuľa_už_v_zostave {
             get {
                 return ResourceManager.GetString("FTableLogical_Tabuľa_už_v_zostave", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Zostava logickej tabule má tieto nedostatky: {0} Uložiť aj tak?.
-        /// </summary>
-        internal static string FTableLogical_Upozornenia_zostavy {
-            get {
-                return ResourceManager.GetString("FTableLogical_Upozornenia_zostavy", resourceCulture);
             }
         }
 
@@ -3561,15 +3361,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stavový diagram.
-        /// </summary>
-        internal static string FLocalSettings_StavovyDiagram {
-            get {
-                return ResourceManager.GetString("FLocalSettings_StavovyDiagram", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Súbor: {0}, kategórií: {1}, stavov: {2}.
         /// </summary>
         internal static string FLocalSettings_SD_Stav {
@@ -3633,47 +3424,11 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Hodnota „{0}“ nie je celé číslo minút.
-        /// </summary>
-        internal static string FGlobalSettings_Cas_meskania_necislo {
-            get {
-                return ResourceManager.GetString("FGlobalSettings_Cas_meskania_necislo", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Kategória {0} už v zozname je. INISS má pre každú kategóriu .
         /// </summary>
         internal static string FGlobalSettings_Kategoria_typu_obsadena {
             get {
                 return ResourceManager.GetString("FGlobalSettings_Kategoria_typu_obsadena", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Typ vlaku „{0}“ používajú vlaky v grafikonoch: {1}. {2} by i.
-        /// </summary>
-        internal static string FGlobalSettings_Typ_vlaku_pouzivaju {
-            get {
-                return ResourceManager.GetString("FGlobalSettings_Typ_vlaku_pouzivaju", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Odstránenie typu.
-        /// </summary>
-        internal static string FGlobalSettings_Typ_vlaku_odstranenie {
-            get {
-                return ResourceManager.GetString("FGlobalSettings_Typ_vlaku_odstranenie", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Zmena skratky.
-        /// </summary>
-        internal static string FGlobalSettings_Typ_vlaku_premenovanie {
-            get {
-                return ResourceManager.GetString("FGlobalSettings_Typ_vlaku_premenovanie", resourceCulture);
             }
         }
 
@@ -4047,15 +3802,6 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Písmo s ID {0} už v zozname je ({1}). Zvoľte iné ID..
-        /// </summary>
-        internal static string FLocalSettings_Pismo_ID_existuje {
-            get {
-                return ResourceManager.GetString("FLocalSettings_Pismo_ID_existuje", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to stĺpce katalógových tabúľ: {0}.
         /// </summary>
         internal static string FLocalSettings_Pismo_Stlpce {
@@ -4079,24 +3825,6 @@ namespace GVDEditor.Properties {
         internal static string FLocalSettings_Pismo_TabTab {
             get {
                 return ResourceManager.GetString("FLocalSettings_Pismo_TabTab", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Písmo s ID {0} sa používa:.
-        /// </summary>
-        internal static string FLocalSettings_Pismo_Zmena_ID {
-            get {
-                return ResourceManager.GetString("FLocalSettings_Pismo_Zmena_ID", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Písmo s ID {0} sa používa:.
-        /// </summary>
-        internal static string FLocalSettings_Pismo_Zmena_ID_TabTab {
-            get {
-                return ResourceManager.GetString("FLocalSettings_Pismo_Zmena_ID_TabTab", resourceCulture);
             }
         }
 
@@ -4821,15 +4549,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Upraviť….
-        /// </summary>
-        internal static string TablesPage_Upravit {
-            get {
-                return ResourceManager.GetString("TablesPage_Upravit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Nikde – dá sa odstrániť..
         /// </summary>
         internal static string TablesPage_Nepouziva {
@@ -4866,51 +4585,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Katalógová tabuľa.
-        /// </summary>
-        internal static string TablesPage_Stlpec_Katalog {
-            get {
-                return ResourceManager.GetString("TablesPage_Stlpec_Katalog", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Režim.
-        /// </summary>
-        internal static string TablesPage_Stlpec_Rezim {
-            get {
-                return ResourceManager.GetString("TablesPage_Stlpec_Rezim", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Výrobca.
-        /// </summary>
-        internal static string TablesPage_Stlpec_Vyrobca {
-            get {
-                return ResourceManager.GetString("TablesPage_Stlpec_Vyrobca", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vlakov s textom.
-        /// </summary>
-        internal static string TablesPage_Stlpec_Vlakov {
-            get {
-                return ResourceManager.GetString("TablesPage_Stlpec_Vlakov", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Riadkov pravidiel.
-        /// </summary>
-        internal static string TablesPage_Stlpec_Riadkov {
-            get {
-                return ResourceManager.GetString("TablesPage_Stlpec_Riadkov", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Logická tabuľa {0}, pozícia {1}.
         /// </summary>
         internal static string TablesPage_Pouzitie_Logicka {
@@ -4943,87 +4617,6 @@ namespace GVDEditor.Properties {
         internal static string TablesPage_Pouzitie_Text {
             get {
                 return ResourceManager.GetString("TablesPage_Pouzitie_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tabuľa {0}, stĺpec {1}.
-        /// </summary>
-        internal static string TablesPage_Realizacia {
-            get {
-                return ResourceManager.GetString("TablesPage_Realizacia", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Text nemá žiadnu realizáciu – na tabuliach sa nezobrazí..
-        /// </summary>
-        internal static string TablesPage_Texty_Bez_realizacie {
-            get {
-                return ResourceManager.GetString("TablesPage_Texty_Bez_realizacie", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Otvoriť editor TabTab….
-        /// </summary>
-        internal static string TablesPage_TabTab_Editor {
-            get {
-                return ResourceManager.GetString("TablesPage_TabTab_Editor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Upraviť v editore….
-        /// </summary>
-        internal static string TablesPage_TabTab_Upravit {
-            get {
-                return ResourceManager.GetString("TablesPage_TabTab_Upravit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fyzické tabule sú skutočné zariadenia v stanici. Každá vychádza z katalógovej tabule. Dvojklik otvorí tabuľu na úpravu..
-        /// </summary>
-        internal static string TablesPage_Fyzicke_Info {
-            get {
-                return ResourceManager.GetString("TablesPage_Fyzicke_Info", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Logické tabule určujú, čo sa na fyzických tabuliach zobrazuje. Koľajám sa priraďujú na stránke Nástupištia a koľaje..
-        /// </summary>
-        internal static string TablesPage_Logicke_Info {
-            get {
-                return ResourceManager.GetString("TablesPage_Logicke_Info", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Katalógové tabule sú predlohy vzhľadu tabule – výrobca, stĺpce a riadky. Používajú ich fyzické tabule a texty na tabuliach..
-        /// </summary>
-        internal static string TablesPage_Katalogove_Info {
-            get {
-                return ResourceManager.GetString("TablesPage_Katalogove_Info", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Typy textov, ktoré sa zobrazujú v stĺpcoch tabúľ namiesto údajov z grafikonu, a texty jednotlivých vlakov..
-        /// </summary>
-        internal static string TablesPage_Texty_Info {
-            get {
-                return ResourceManager.GetString("TablesPage_Texty_Info", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sekcie TabTab prekladajú hodnoty stĺpcov na text tabule (napr. druh vlaku na skratku s písmom). Upravujú sa v editore TabTab..
-        /// </summary>
-        internal static string TablesPage_TabTab_Info {
-            get {
-                return ResourceManager.GetString("TablesPage_TabTab_Info", resourceCulture);
             }
         }
         
@@ -5294,6 +4887,357 @@ namespace GVDEditor.Properties {
         internal static string AudioPage_Test {
             get {
                 return ResourceManager.GetString("AudioPage_Test", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte názov – pod ním položku vidí obsluha a ponúkajú ju ďalšie stránky..
+        /// </summary>
+        internal static string TableRules_Nazov {
+            get {
+                return ResourceManager.GetString("TableRules_Nazov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte kľúč – podľa neho sa na položku odkazujú ostatné tabule..
+        /// </summary>
+        internal static string TableRules_Kluc {
+            get {
+                return ResourceManager.GetString("TableRules_Kluc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kľúč „{0}“ už má iná položka zoznamu..
+        /// </summary>
+        internal static string TableRules_Kluc_Existuje {
+            get {
+                return ResourceManager.GetString("TableRules_Kluc_Existuje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte katalógovú tabuľu – určuje rozloženie tabule a jej výrobcu..
+        /// </summary>
+        internal static string TablePhysicalRules_Katalog {
+            get {
+                return ResourceManager.GetString("TablePhysicalRules_Katalog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adresa {0} je mimo rozsahu výrobcu {1} ({2} – {3}) – INISS takú tabuľu nezaloží. Tabuľa bez adresy má −1..
+        /// </summary>
+        internal static string TablePhysicalRules_Adresa {
+            get {
+                return ResourceManager.GetString("TablePhysicalRules_Adresa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Realizácia {0}: {1}.
+        /// </summary>
+        internal static string TableTextRules_Realizacia {
+            get {
+                return ResourceManager.GetString("TableTextRules_Realizacia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to vyberte katalógovú tabuľu aj stĺpec..
+        /// </summary>
+        internal static string TableTextRules_Nevybrana {
+            get {
+                return ResourceManager.GetString("TableTextRules_Nevybrana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to katalógová tabuľa „{0}“ už v zozname nie je..
+        /// </summary>
+        internal static string TableTextRules_Bez_tabule {
+            get {
+                return ResourceManager.GetString("TableTextRules_Bez_tabule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to stĺpec „{0}“ už v katalógovej tabuli „{1}“ nie je..
+        /// </summary>
+        internal static string TableTextRules_Bez_stlpca {
+            get {
+                return ResourceManager.GetString("TableTextRules_Bez_stlpca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rozsah adries výrobcu {0}: {1} – {2}. −1 = tabuľa bez adresy (napr. len export do XML)..
+        /// </summary>
+        internal static string PhysicalTablesPage_Adresa {
+            get {
+                return ResourceManager.GetString("PhysicalTablesPage_Adresa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pri výrobcovi {0} sa adresa nekontroluje. −1 = tabuľa bez adresy..
+        /// </summary>
+        internal static string PhysicalTablesPage_Adresa_Bez_kontroly {
+            get {
+                return ResourceManager.GetString("PhysicalTablesPage_Adresa_Bez_kontroly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Najprv založte katalógovú tabuľu (stránka Katalógové tabule) – fyzická tabuľa bez nej nemôže byť..
+        /// </summary>
+        internal static string PhysicalTablesPage_Bez_katalogu {
+            get {
+                return ResourceManager.GetString("PhysicalTablesPage_Bez_katalogu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte v zozname realizácií riadok so stĺpcom, podľa ktorého sa majú texty vygenerovať..
+        /// </summary>
+        internal static string TableTextsPage_Generovat_Bez {
+            get {
+                return ResourceManager.GetString("TableTextsPage_Generovat_Bez", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Všetky vlaky grafikonu už text majú..
+        /// </summary>
+        internal static string TableTextsPage_Bez_vlakov {
+            get {
+                return ResourceManager.GetString("TableTextsPage_Bez_vlakov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Každý riadok pošle rozsah záznamov logickej tabule na fyzickú tabuľu od zadaného riadka. Jeden záznam môže ísť na viac tabúľ naraz..
+        /// </summary>
+        internal static string LogicalTablesPage_Zostava {
+            get {
+                return ResourceManager.GetString("LogicalTablesPage_Zostava", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upozornenia (INISS ich znesie, zapíše ich len do logu):.
+        /// </summary>
+        internal static string LogicalTablesPage_Upozornenia {
+            get {
+                return ResourceManager.GetString("LogicalTablesPage_Upozornenia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte výrobcu tabule – určuje rozsah adries a význam čísla písma..
+        /// </summary>
+        internal static string TableCatalogRules_Vyrobca {
+            get {
+                return ResourceManager.GetString("TableCatalogRules_Vyrobca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stĺpec {0}: {1}.
+        /// </summary>
+        internal static string TableCatalogRules_Stlpec {
+            get {
+                return ResourceManager.GetString("TableCatalogRules_Stlpec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to zadajte názov..
+        /// </summary>
+        internal static string TableCatalogRules_Stlpec_Nazov {
+            get {
+                return ResourceManager.GetString("TableCatalogRules_Stlpec_Nazov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to zadajte kľúč – odkazuje naň poradie stĺpcov a texty na tabuliach..
+        /// </summary>
+        internal static string TableCatalogRules_Stlpec_Kluc {
+            get {
+                return ResourceManager.GetString("TableCatalogRules_Stlpec_Kluc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to kľúč „{0}“ už má iný stĺpec..
+        /// </summary>
+        internal static string TableCatalogRules_Stlpec_Kluc_Existuje {
+            get {
+                return ResourceManager.GetString("TableCatalogRules_Stlpec_Kluc_Existuje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to koniec ({1}) musí byť za začiatkom ({0}) – INISS stĺpec bez šírky odmietne..
+        /// </summary>
+        internal static string TableCatalogRules_Stlpec_Sirka {
+            get {
+                return ResourceManager.GetString("TableCatalogRules_Stlpec_Sirka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to spôsob plnenia {0} vyžaduje tabuľku TAB1..
+        /// </summary>
+        internal static string TableCatalogRules_Stlpec_Tab1 {
+            get {
+                return ResourceManager.GetString("TableCatalogRules_Stlpec_Tab1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to spôsob plnenia 2 vyžaduje aj tabuľku TAB2..
+        /// </summary>
+        internal static string TableCatalogRules_Stlpec_Tab2 {
+            get {
+                return ResourceManager.GetString("TableCatalogRules_Stlpec_Tab2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tabuľa ELEN má najviac {0} bodov, stĺpec končí na {1}..
+        /// </summary>
+        internal static string TableCatalogRules_Stlpec_ELEN {
+            get {
+                return ResourceManager.GetString("TableCatalogRules_Stlpec_ELEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Stĺpec {0}: začiatok a koniec majú byť násobkom {1} (hranice znakov tabule {2}) – INISS to zapíše do logu..
+        /// </summary>
+        internal static string TableCatalogRules_Nasobok {
+            get {
+                return ResourceManager.GetString("TableCatalogRules_Nasobok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Stĺpec {0}: {1} sa pri spôsobe plnenia {2} nepoužije..
+        /// </summary>
+        internal static string TableCatalogRules_Tab_Navyse {
+            get {
+                return ResourceManager.GetString("TableCatalogRules_Tab_Navyse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text ide na tabuľu bez prekódovania; TAB1 a TAB2 sa nepoužijú..
+        /// </summary>
+        internal static string CatalogTablesPage_Div0 {
+            get {
+                return ResourceManager.GetString("CatalogTablesPage_Div0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text sa celý hľadá v TAB1 a použije sa len to, čo sa nájde – inak stĺpec ostane prázdny..
+        /// </summary>
+        internal static string CatalogTablesPage_Div1 {
+            get {
+                return ResourceManager.GetString("CatalogTablesPage_Div1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Čas HH:MM po častiach: hodiny sa hľadajú v TAB1, desiatky a jednotky minút v TAB2..
+        /// </summary>
+        internal static string CatalogTablesPage_Div2 {
+            get {
+                return ResourceManager.GetString("CatalogTablesPage_Div2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text sa hľadá v TAB1; ak sa nenájde, pošle sa nezmenený..
+        /// </summary>
+        internal static string CatalogTablesPage_Div3 {
+            get {
+                return ResourceManager.GetString("CatalogTablesPage_Div3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text sa prekóduje znak po znaku podľa TAB1; znak, ktorý v nej nie je, nahradí medzera..
+        /// </summary>
+        internal static string CatalogTablesPage_Div4 {
+            get {
+                return ResourceManager.GetString("CatalogTablesPage_Div4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poradie stĺpcov je nastavené pre typy zobrazenia: {0}..
+        /// </summary>
+        internal static string CatalogTablesPage_Poradie {
+            get {
+                return ResourceManager.GetString("CatalogTablesPage_Poradie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poradie stĺpcov zatiaľ nie je nastavené pre žiadny typ zobrazenia – tabuľa s touto predlohou nebude čo zobraziť..
+        /// </summary>
+        internal static string CatalogTablesPage_Poradie_Ziadne {
+            get {
+                return ResourceManager.GetString("CatalogTablesPage_Poradie_Ziadne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stĺpec.
+        /// </summary>
+        internal static string CatalogTablesPage_Novy_stlpec {
+            get {
+                return ResourceManager.GetString("CatalogTablesPage_Novy_stlpec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stĺpec {0} používajú texty na tabuliach: {1}. Najprv im zmeňte realizáciu..
+        /// </summary>
+        internal static string CatalogTablesPage_Stlpec_V_Textoch {
+            get {
+                return ResourceManager.GetString("CatalogTablesPage_Stlpec_V_Textoch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kľúč stĺpca „{0}“ sa nezmenil – je prázdny alebo ho už má iný stĺpec..
+        /// </summary>
+        internal static string CatalogTablesPage_Kluc_Neplatny {
+            get {
+                return ResourceManager.GetString("CatalogTablesPage_Kluc_Neplatny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posunúť stĺpec vyššie v zozname.
+        /// </summary>
+        internal static string CatalogTablesPage_Hore {
+            get {
+                return ResourceManager.GetString("CatalogTablesPage_Hore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posunúť stĺpec nižšie v zozname.
+        /// </summary>
+        internal static string CatalogTablesPage_Dole {
+            get {
+                return ResourceManager.GetString("CatalogTablesPage_Dole", resourceCulture);
             }
         }
 }

@@ -135,14 +135,8 @@
   <data name="FEditTrain_Radenie_LubovolnyCiel" xml:space="preserve">
     <value>(ľubovoľná)</value>
   </data>
-  <data name="FTableCatalog_Nie_sú_vyplnené_všetky_povinné_parametre" xml:space="preserve">
-    <value>Nie sú vyplnené všetky povinné parametre.</value>
-  </data>
   <data name="FEditTrain_FEditTrain_Duplikovať_vlak" xml:space="preserve">
     <value>Duplikovať vlak</value>
-  </data>
-  <data name="FTableCatalog_ShowErrorUnDefTab" xml:space="preserve">
-    <value>Vybraný DivType vyžaduje mať zadefinovaný {0}.</value>
   </data>
   <data name="FMain_dgvTrains_DataError_Tabuľka_obsahuje_nesprávny_údaj" xml:space="preserve">
     <value>Tabuľka obsahuje nesprávny údaj: </value>
@@ -157,9 +151,6 @@ Reštartovať program teraz?</value>
   </data>
   <data name="Global_Cancel" xml:space="preserve">
     <value>&amp;Zrušiť</value>
-  </data>
-  <data name="FLocalSettings_Nezadaný_názov_stanice" xml:space="preserve">
-    <value>Nezadaný názov stanice.</value>
   </data>
   <data name="REdit" xml:space="preserve">
     <value>Upraviť</value>
@@ -181,9 +172,6 @@ Reštartovať program teraz?</value>
   </data>
   <data name="FRegistration_Registračný_kľúč_nebol_zadaný" xml:space="preserve">
     <value>Registračný kľúč nebol zadaný.</value>
-  </data>
-  <data name="FTableCatalog_Definované_stĺpce_nie_sú_zotriedené_podľa_zobrazovaného_riadka_záznamu" xml:space="preserve">
-    <value>Definované stĺpce nie sú zotriedené podľa zobrazovaného riadka záznamu: "{0}"-Line:{1} -&gt; "{2}"-Line:{3}</value>
   </data>
   <data name="SetTEBraceBad" xml:space="preserve">
     <value>Zvýraznenie nedokončeného páru zátvoriek</value>
@@ -236,12 +224,6 @@ Reštartovať program teraz?</value>
   <data name="FEditTrain_FEditTrain_Pridať" xml:space="preserve">
     <value>Pridať</value>
   </data>
-  <data name="FTableCatalog_Posledný_pixel_stĺpca_je_menší_alebo_rovný_ako_počiatočný" xml:space="preserve">
-    <value>Posledný pixel stĺpca je menší alebo rovný ako počiatočný.</value>
-  </data>
-  <data name="FGlobalSettings_Meskanie_CisloNieJeVIntervale" xml:space="preserve">
-    <value>Číslo {0} nie je v intervale X &gt;= 0 a zároveň X &lt;= 480.</value>
-  </data>
   <data name="Global_Abort" xml:space="preserve">
     <value>&amp;Prerušiť</value>
   </data>
@@ -281,27 +263,14 @@ Reštartovať program teraz?</value>
   <data name="FRegistration_Registrácia_prebehla_úspešne" xml:space="preserve">
     <value>Registrácia prebehla úspešne. Zmeny sa prejavia po reštarte programu. Reštarovať teraz? </value>
   </data>
-  <data name="FLocalSettings_Zadané_ID_stanice_už_má_iná_stanica" xml:space="preserve">
-    <value>Zadané ID stanice už má iná stanica.</value>
-  </data>
   <data name="RQuestion" xml:space="preserve">
     <value>Otázka</value>
-  </data>
-  <data name="Tables_Zadaný_kľúč_tabule_už_existuje" xml:space="preserve">
-    <value>Zadaný kľúč tabule už existuje.</value>
   </data>
   <data name="FMain_V_uloženom_zozname_grafikonov_sa_žiaden_grafikon_nenachádza" xml:space="preserve">
     <value>V uloženom zozname grafikonov sa žiaden grafikon nenachádza.</value>
   </data>
   <data name="FBugReport_E_mail_sa_nepodarilo_odoslať" xml:space="preserve">
     <value>E-mail sa nepodarilo odoslať: </value>
-  </data>
-  <data name="FTableCatalog_ShowWarningDefTab" xml:space="preserve">
-    <value>Vybraný DivType nevyžaduje mať zadefinovaný {0}.
-Aj tak pokračovať ?</value>
-  </data>
-  <data name="FGlobalSettings_Táto_hodnota_sa_už_v_zozname_nachádza" xml:space="preserve">
-    <value>Táto hodnota sa už v zozname nachádza.</value>
   </data>
   <data name="FLocalSettings_Nezadaný_názov_písma" xml:space="preserve">
     <value>Nezadaný názov písma.</value>
@@ -434,23 +403,14 @@ Naimportovaných vlakov: {1}</value>
   <data name="FNewGrafikon_Zadaná_stanica_pre_tento_INISS_už_existuje" xml:space="preserve">
     <value>Zadaná stanica pre tento INISS už existuje.</value>
   </data>
-  <data name="FTableCatalog_Tabula_ELEN_moze_mat_max_poziciu_512" xml:space="preserve">
-    <value>Tabuľa ELEN môže mať max. pozíciu 512.</value>
-  </data>
   <data name="FTableText_Generate_TTexts_Info" xml:space="preserve">
     <value>Texty všetkých vlakov grafikonu sa vygenerujú podľa stĺpca „{1}“ tabule „{0}“.
 Všetky zapísané texty tohto typu sa zmažú.
 
 Naozaj chcete vykonať túto akciu?</value>
   </data>
-  <data name="FTableText_Generate_TTexts_No_Item" xml:space="preserve">
-    <value>Nie je vybraný stĺpec tabule. V časti Realizácia vyberte tabuľu a stĺpec, podľa ktorého sa majú texty vygenerovať.</value>
-  </data>
   <data name="FMain_Mám_preskočiť_prechádzajúce_vlaky" xml:space="preserve">
     <value>Mám preskočiť prechádzajúce vlaky?</value>
-  </data>
-  <data name="FLocalSettings_Zadaný_dopravca_už_existuje" xml:space="preserve">
-    <value>Zadaný dopravca už existuje.</value>
   </data>
   <data name="FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9" xml:space="preserve">
     <value>Maximálny počet typov vlakov tohto druhu je 9.</value>
@@ -481,12 +441,6 @@ Zavrieť okno aj tak?</value>
   <data name="RError" xml:space="preserve">
     <value>Chyba</value>
   </data>
-  <data name="FTableCatalog_Zadaný_kľúč_stĺpca_už_existuje" xml:space="preserve">
-    <value>Zadaný kľúč stĺpca už existuje.</value>
-  </data>
-  <data name="FTableCatalog_Tento_stĺpec_sa_prekrekrýva_so_stĺpcom" xml:space="preserve">
-    <value>Tento stĺpec sa prekrekrýva so stĺpcom {0}.</value>
-  </data>
   <data name="RInfo" xml:space="preserve">
     <value>Informácia</value>
   </data>
@@ -508,12 +462,6 @@ Zavrieť okno aj tak?</value>
   </data>
   <data name="statedgmILTIS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\statedgmILTIS.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
-  </data>
-  <data name="FLocalSettings_Všetky_parametre_sú_povinné" xml:space="preserve">
-    <value>Všetky parametre sú povinné.</value>
-  </data>
-  <data name="FTableCatalog_Definované_stĺpce_nie_sú_zotriedené_podľa_pozície" xml:space="preserve">
-    <value>Definované stĺpce nie sú zotriedené podľa pozície: "{0}"-End:{1} -&gt; "{2}"-End:{3}</value>
   </data>
   <data name="FAppSettings_cbDebugModeGUI_SelectedIndexChanged_Not_For_All_Users" xml:space="preserve">
     <value>Vybrali ste typ debugovania, ktorý nie je určený pre bežných používateľov.  To môže viesť k neočakávaným následkom.
@@ -564,14 +512,8 @@ Mám ju nútene vypnúť ?</value>
   <data name="FEditTrain_Nezadaný_čas_odchodu" xml:space="preserve">
     <value>Nezadaný čas odchodu.</value>
   </data>
-  <data name="FGlobalSettings_Click_Zadaný_typ_vlaku_sa_už_v_zozname_nachádza" xml:space="preserve">
-    <value>Zadaný typ vlaku sa už v zozname nachádza.</value>
-  </data>
   <data name="SetTEOperator" xml:space="preserve">
     <value>Operátor</value>
-  </data>
-  <data name="Tables_Nie_sú_vyplnené_všetky_povinné_polia" xml:space="preserve">
-    <value>Nie sú vyplnené všetky povinné polia.</value>
   </data>
   <data name="NameColorSettings_Highlight" xml:space="preserve">
     <value>Zvýraznenie ovládacieho prvku alebo jeho časti</value>
@@ -631,14 +573,6 @@ Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnos
   <data name="LoadWarnings_Footer" xml:space="preserve">
     <value>Podrobnosti sú v súbore %LocalAppData%\GVDEditor\logs\info.log (ak je v nastaveniach programu zapnuté logovanie). Preskočené položky sa pri uložení grafikonu do súborov nezapíšu.</value>
   </data>
-  <data name="FTablePhysical_IDOutOfRange" xml:space="preserve">
-    <value>Adresa tabule {0} je mimo rozsahu {1}–{2}, ktorý INISS povoľuje pre výrobcu {3}. INISS takú tabuľu nezaloží.
-
-Uložiť napriek tomu?</value>
-  </data>
-  <data name="FTablePhysical_NoCatalog" xml:space="preserve">
-    <value>Vyberte katalógovú tabuľu. Ak žiadna neexistuje, založte ju najprv na záložke Katalóg tabúľ.</value>
-  </data>
   <data name="FTableLogical_Neplatné_číslo_stanice" xml:space="preserve">
     <value>Číslo stanice (IDSTATION) musí byť celé číslo alebo prázdne.</value>
   </data>
@@ -653,13 +587,6 @@ Uložiť napriek tomu?</value>
   </data>
   <data name="FTableLogical_Tabuľa_už_v_zostave" xml:space="preserve">
     <value>Fyzická tabuľa {0} už v zostave je. Pridať ďalší riadok (napríklad pre iný rozsah záznamov)?</value>
-  </data>
-  <data name="FTableLogical_Upozornenia_zostavy" xml:space="preserve">
-    <value>Zostava logickej tabule má tieto nedostatky:
-
-{0}
-
-Uložiť aj tak?</value>
   </data>
   <data name="FTableLogical_Typ_nepodporovaný" xml:space="preserve">
     <value>• {0}: typ „{1}“ katalógová tabuľa nepodporuje (INISS zapíše do logu „does not support physical view mode“).</value>
@@ -1329,9 +1256,6 @@ INISS taký súbor nenačíta. Uložiť ho aj tak?</value>
   <data name="FStateDgm_Sek" xml:space="preserve">
     <value>{0} s</value>
   </data>
-  <data name="FLocalSettings_StavovyDiagram" xml:space="preserve">
-    <value>Stavový diagram</value>
-  </data>
   <data name="FLocalSettings_SD_Stav" xml:space="preserve">
     <value>Súbor: {0}, kategórií: {1}, stavov: {2}</value>
   </data>
@@ -1353,22 +1277,8 @@ INISS taký súbor nenačíta. Uložiť ho aj tak?</value>
   <data name="FMain_Import_grafikonu_hotovy" xml:space="preserve">
     <value>Grafikon {0} bol pridaný do inštalácie ({1}). Otvoríte ho výberom stanice a obdobia v hlavnom okne.</value>
   </data>
-  <data name="FGlobalSettings_Cas_meskania_necislo" xml:space="preserve">
-    <value>Hodnota „{0}“ nie je celé číslo minút. INISS ju pri štarte preskočí a operátorovi ju neponúkne.
-
-Pridať ju aj tak?</value>
-  </data>
   <data name="FGlobalSettings_Kategoria_typu_obsadena" xml:space="preserve">
     <value>Kategória {0} už v zozname je. INISS má pre každú kategóriu jedno miesto – druhý typ tej istej kategórie by prvý prepísal. Pre ďalší typ použite vlastný typ vlaku.</value>
-  </data>
-  <data name="FGlobalSettings_Typ_vlaku_pouzivaju" xml:space="preserve">
-    <value>Typ vlaku „{0}“ používajú vlaky v grafikonoch: {1}. {2} by ich poškodilo – grafikon by sa nedal otvoriť. Najprv vlakom nastavte iný typ.</value>
-  </data>
-  <data name="FGlobalSettings_Typ_vlaku_odstranenie" xml:space="preserve">
-    <value>Odstránenie typu</value>
-  </data>
-  <data name="FGlobalSettings_Typ_vlaku_premenovanie" xml:space="preserve">
-    <value>Zmena skratky</value>
   </data>
   <data name="FGlobalSettings_Testovaci_okruh" xml:space="preserve">
     <value>TEST – testovací okruh</value>
@@ -1497,9 +1407,6 @@ Vynútiť jeho ukončenie a spustiť ho znova?</value>
   <data name="ELISBridgeClient_Vlak_má_dátumové_obmedzenie_ktoré_sa_nedá_spracovať" xml:space="preserve">
     <value>Vlak {0} {1} {2} má dátumové obmedzenie, ktoré sa nedá spracovať: "{3}".</value>
   </data>
-  <data name="FLocalSettings_Pismo_ID_existuje" xml:space="preserve">
-    <value>Písmo s ID {0} už v zozname je ({1}). Zvoľte iné ID.</value>
-  </data>
   <data name="FLocalSettings_Pismo_Stlpce" xml:space="preserve">
     <value>stĺpce katalógových tabúľ: {0}</value>
   </data>
@@ -1508,20 +1415,6 @@ Vynútiť jeho ukončenie a spustiť ho znova?</value>
   </data>
   <data name="FLocalSettings_Pismo_TabTab" xml:space="preserve">
     <value>TabTab, sekcie {0} – kód {{{1}}} sa nemení automaticky, upravte ho v editore TabTab</value>
-  </data>
-  <data name="FLocalSettings_Pismo_Zmena_ID" xml:space="preserve">
-    <value>Písmo s ID {0} sa používa:
-{1}
-
-Zmeniť ID na {2} aj v stĺpcoch katalógových tabúľ a v textoch vlakov?
-
-Áno – zmeniť aj tam, Nie – zmeniť len v zozname písiem, Zrušiť – nemeniť nič.</value>
-  </data>
-  <data name="FLocalSettings_Pismo_Zmena_ID_TabTab" xml:space="preserve">
-    <value>Písmo s ID {0} sa používa:
-{1}
-
-Zmeniť ID písma v zozname na {2}?</value>
   </data>
   <data name="FLocalSettings_Pismo_Odstranit" xml:space="preserve">
     <value>Písmo s ID {0} sa používa:
@@ -1770,9 +1663,6 @@ Odstrániť stanicu?</value>
   <data name="TrainTypesPage_Slot" xml:space="preserve">
     <value>{0}1–{0}9  {1}  {2}/{3}</value>
   </data>
-  <data name="TablesPage_Upravit" xml:space="preserve">
-    <value>Upraviť…</value>
-  </data>
   <data name="TablesPage_Nepouziva" xml:space="preserve">
     <value>Nikde – dá sa odstrániť.</value>
   </data>
@@ -1785,21 +1675,6 @@ Odstrániť stanicu?</value>
   <data name="TablesPage_Novy_text" xml:space="preserve">
     <value>Nový text…</value>
   </data>
-  <data name="TablesPage_Stlpec_Katalog" xml:space="preserve">
-    <value>Katalógová tabuľa</value>
-  </data>
-  <data name="TablesPage_Stlpec_Rezim" xml:space="preserve">
-    <value>Režim</value>
-  </data>
-  <data name="TablesPage_Stlpec_Vyrobca" xml:space="preserve">
-    <value>Výrobca</value>
-  </data>
-  <data name="TablesPage_Stlpec_Vlakov" xml:space="preserve">
-    <value>Vlakov s textom</value>
-  </data>
-  <data name="TablesPage_Stlpec_Riadkov" xml:space="preserve">
-    <value>Riadkov pravidiel</value>
-  </data>
   <data name="TablesPage_Pouzitie_Logicka" xml:space="preserve">
     <value>Logická tabuľa {0}, pozícia {1}</value>
   </data>
@@ -1811,33 +1686,6 @@ Odstrániť stanicu?</value>
   </data>
   <data name="TablesPage_Pouzitie_Text" xml:space="preserve">
     <value>Text na tabuli {0}, stĺpec {1}</value>
-  </data>
-  <data name="TablesPage_Realizacia" xml:space="preserve">
-    <value>Tabuľa {0}, stĺpec {1}</value>
-  </data>
-  <data name="TablesPage_Texty_Bez_realizacie" xml:space="preserve">
-    <value>Text nemá žiadnu realizáciu – na tabuliach sa nezobrazí.</value>
-  </data>
-  <data name="TablesPage_TabTab_Editor" xml:space="preserve">
-    <value>Otvoriť editor TabTab…</value>
-  </data>
-  <data name="TablesPage_TabTab_Upravit" xml:space="preserve">
-    <value>Upraviť v editore…</value>
-  </data>
-  <data name="TablesPage_Fyzicke_Info" xml:space="preserve">
-    <value>Fyzické tabule sú skutočné zariadenia v stanici. Každá vychádza z katalógovej tabule. Dvojklik otvorí tabuľu na úpravu.</value>
-  </data>
-  <data name="TablesPage_Logicke_Info" xml:space="preserve">
-    <value>Logické tabule určujú, čo sa na fyzických tabuliach zobrazuje. Koľajám sa priraďujú na stránke Nástupištia a koľaje.</value>
-  </data>
-  <data name="TablesPage_Katalogove_Info" xml:space="preserve">
-    <value>Katalógové tabule sú predlohy vzhľadu tabule – výrobca, stĺpce a riadky. Používajú ich fyzické tabule a texty na tabuliach.</value>
-  </data>
-  <data name="TablesPage_Texty_Info" xml:space="preserve">
-    <value>Typy textov, ktoré sa zobrazujú v stĺpcoch tabúľ namiesto údajov z grafikonu, a texty jednotlivých vlakov.</value>
-  </data>
-  <data name="TablesPage_TabTab_Info" xml:space="preserve">
-    <value>Sekcie TabTab prekladajú hodnoty stĺpcov na text tabule (napr. druh vlaku na skratku s písmom). Upravujú sa v editore TabTab.</value>
   </data>
   <data name="PlatformRules_Oznacenie" xml:space="preserve">
     <value>Zadajte označenie nástupišťa.</value>
@@ -1930,5 +1778,122 @@ Pokračovať?</value>
   </data>
   <data name="AudioPage_Test" xml:space="preserve">
     <value>Testovací okruh sa operátorovi v zozname okruhov neponúka – sprístupní tlačidlo Test/stop v dialógoch hlásení.</value>
+  </data>
+  <data name="TableRules_Nazov" xml:space="preserve">
+    <value>Zadajte názov – pod ním položku vidí obsluha a ponúkajú ju ďalšie stránky.</value>
+  </data>
+  <data name="TableRules_Kluc" xml:space="preserve">
+    <value>Zadajte kľúč – podľa neho sa na položku odkazujú ostatné tabule.</value>
+  </data>
+  <data name="TableRules_Kluc_Existuje" xml:space="preserve">
+    <value>Kľúč „{0}“ už má iná položka zoznamu.</value>
+  </data>
+  <data name="TablePhysicalRules_Katalog" xml:space="preserve">
+    <value>Vyberte katalógovú tabuľu – určuje rozloženie tabule a jej výrobcu.</value>
+  </data>
+  <data name="TablePhysicalRules_Adresa" xml:space="preserve">
+    <value>Adresa {0} je mimo rozsahu výrobcu {1} ({2} – {3}) – INISS takú tabuľu nezaloží. Tabuľa bez adresy má −1.</value>
+  </data>
+  <data name="TableTextRules_Realizacia" xml:space="preserve">
+    <value>Realizácia {0}: {1}</value>
+  </data>
+  <data name="TableTextRules_Nevybrana" xml:space="preserve">
+    <value>vyberte katalógovú tabuľu aj stĺpec.</value>
+  </data>
+  <data name="TableTextRules_Bez_tabule" xml:space="preserve">
+    <value>katalógová tabuľa „{0}“ už v zozname nie je.</value>
+  </data>
+  <data name="TableTextRules_Bez_stlpca" xml:space="preserve">
+    <value>stĺpec „{0}“ už v katalógovej tabuli „{1}“ nie je.</value>
+  </data>
+  <data name="PhysicalTablesPage_Adresa" xml:space="preserve">
+    <value>Rozsah adries výrobcu {0}: {1} – {2}. −1 = tabuľa bez adresy (napr. len export do XML).</value>
+  </data>
+  <data name="PhysicalTablesPage_Adresa_Bez_kontroly" xml:space="preserve">
+    <value>Pri výrobcovi {0} sa adresa nekontroluje. −1 = tabuľa bez adresy.</value>
+  </data>
+  <data name="PhysicalTablesPage_Bez_katalogu" xml:space="preserve">
+    <value>Najprv založte katalógovú tabuľu (stránka Katalógové tabule) – fyzická tabuľa bez nej nemôže byť.</value>
+  </data>
+  <data name="TableTextsPage_Generovat_Bez" xml:space="preserve">
+    <value>Vyberte v zozname realizácií riadok so stĺpcom, podľa ktorého sa majú texty vygenerovať.</value>
+  </data>
+  <data name="TableTextsPage_Bez_vlakov" xml:space="preserve">
+    <value>Všetky vlaky grafikonu už text majú.</value>
+  </data>
+  <data name="LogicalTablesPage_Zostava" xml:space="preserve">
+    <value>Každý riadok pošle rozsah záznamov logickej tabule na fyzickú tabuľu od zadaného riadka. Jeden záznam môže ísť na viac tabúľ naraz.</value>
+  </data>
+  <data name="LogicalTablesPage_Upozornenia" xml:space="preserve">
+    <value>Upozornenia (INISS ich znesie, zapíše ich len do logu):</value>
+  </data>
+  <data name="TableCatalogRules_Vyrobca" xml:space="preserve">
+    <value>Vyberte výrobcu tabule – určuje rozsah adries a význam čísla písma.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec" xml:space="preserve">
+    <value>Stĺpec {0}: {1}</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_Nazov" xml:space="preserve">
+    <value>zadajte názov.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_Kluc" xml:space="preserve">
+    <value>zadajte kľúč – odkazuje naň poradie stĺpcov a texty na tabuliach.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_Kluc_Existuje" xml:space="preserve">
+    <value>kľúč „{0}“ už má iný stĺpec.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_Sirka" xml:space="preserve">
+    <value>koniec ({1}) musí byť za začiatkom ({0}) – INISS stĺpec bez šírky odmietne.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_Tab1" xml:space="preserve">
+    <value>spôsob plnenia {0} vyžaduje tabuľku TAB1.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_Tab2" xml:space="preserve">
+    <value>spôsob plnenia 2 vyžaduje aj tabuľku TAB2.</value>
+  </data>
+  <data name="TableCatalogRules_Stlpec_ELEN" xml:space="preserve">
+    <value>tabuľa ELEN má najviac {0} bodov, stĺpec končí na {1}.</value>
+  </data>
+  <data name="TableCatalogRules_Nasobok" xml:space="preserve">
+    <value>• Stĺpec {0}: začiatok a koniec majú byť násobkom {1} (hranice znakov tabule {2}) – INISS to zapíše do logu.</value>
+  </data>
+  <data name="TableCatalogRules_Tab_Navyse" xml:space="preserve">
+    <value>• Stĺpec {0}: {1} sa pri spôsobe plnenia {2} nepoužije.</value>
+  </data>
+  <data name="CatalogTablesPage_Div0" xml:space="preserve">
+    <value>Text ide na tabuľu bez prekódovania; TAB1 a TAB2 sa nepoužijú.</value>
+  </data>
+  <data name="CatalogTablesPage_Div1" xml:space="preserve">
+    <value>Text sa celý hľadá v TAB1 a použije sa len to, čo sa nájde – inak stĺpec ostane prázdny.</value>
+  </data>
+  <data name="CatalogTablesPage_Div2" xml:space="preserve">
+    <value>Čas HH:MM po častiach: hodiny sa hľadajú v TAB1, desiatky a jednotky minút v TAB2.</value>
+  </data>
+  <data name="CatalogTablesPage_Div3" xml:space="preserve">
+    <value>Text sa hľadá v TAB1; ak sa nenájde, pošle sa nezmenený.</value>
+  </data>
+  <data name="CatalogTablesPage_Div4" xml:space="preserve">
+    <value>Text sa prekóduje znak po znaku podľa TAB1; znak, ktorý v nej nie je, nahradí medzera.</value>
+  </data>
+  <data name="CatalogTablesPage_Poradie" xml:space="preserve">
+    <value>Poradie stĺpcov je nastavené pre typy zobrazenia: {0}.</value>
+  </data>
+  <data name="CatalogTablesPage_Poradie_Ziadne" xml:space="preserve">
+    <value>Poradie stĺpcov zatiaľ nie je nastavené pre žiadny typ zobrazenia – tabuľa s touto predlohou nebude čo zobraziť.</value>
+  </data>
+  <data name="CatalogTablesPage_Novy_stlpec" xml:space="preserve">
+    <value>Stĺpec</value>
+  </data>
+  <data name="CatalogTablesPage_Stlpec_V_Textoch" xml:space="preserve">
+    <value>Stĺpec {0} používajú texty na tabuliach: {1}. Najprv im zmeňte realizáciu.</value>
+  </data>
+  <data name="CatalogTablesPage_Kluc_Neplatny" xml:space="preserve">
+    <value>Kľúč stĺpca „{0}“ sa nezmenil – je prázdny alebo ho už má iný stĺpec.</value>
+  </data>
+  <data name="CatalogTablesPage_Hore" xml:space="preserve">
+    <value>Posunúť stĺpec vyššie v zozname</value>
+  </data>
+  <data name="CatalogTablesPage_Dole" xml:space="preserve">
+    <value>Posunúť stĺpec nižšie v zozname</value>
   </data>
 </root>

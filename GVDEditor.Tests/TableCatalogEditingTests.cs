@@ -6,7 +6,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Tests;
 
 /// <summary>
-///     Okno katalogovej tabule (FTableCatalog, FTableColumnOrder): poradie stlpcov musi po premenovani ci zmazani
+///     Katalogova tabula (stranka Katalogove tabule, FTableColumnOrder): poradie stlpcov musi po premenovani ci zmazani
 ///     stlpca ostat citatelne, polozka „Ziadny“ sa nesmie dostat do TabTab.txt.
 /// </summary>
 [TestClass]

@@ -5,7 +5,7 @@ using GVDEditor.Tools;
 namespace GVDEditor.Tests;
 
 /// <summary>
-///     Zostava logickej tabule (okno FTableLogical): umiestnenia zaznamov sa po prevode na zostavu a spat nesmu zmenit.
+///     Zostava logickej tabule (stranka Logicke tabule): umiestnenia zaznamov sa po prevode na zostavu a spat nesmu zmenit.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

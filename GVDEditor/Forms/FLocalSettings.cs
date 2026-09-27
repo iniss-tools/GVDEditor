@@ -43,6 +43,11 @@ public partial class FLocalSettings : Form
     private readonly (ExOptionsPanel Panel, ISettingsPage Page)[] _checkedPages;
 
     /// <summary>
+    ///     Polozka, ktora sa ma po otvoreni okna vybrat.
+    /// </summary>
+    private readonly object? _select;
+
+    /// <summary>
     ///     Plnenie stranok - az pri prvom zobrazeni, zvysne postupne po otvoreni okna.
     /// </summary>
     private readonly PageLoader _pages;
@@ -58,14 +63,17 @@ public partial class FLocalSettings : Form
     /// <param name="dir">Aktualny priecinok s grafikonom.</param>
     /// <param name="page">Stranka, ktora sa ma otvorit po otvoreni dialogu.</param>
     /// <param name="action">Editor, ktory sa ma otvorit hned po otvoreni dialogu.</param>
+    /// <param name="select">Polozka, ktora sa ma na stranke vybrat (napr. text na tabuli z analyzy grafikonu).</param>
     public FLocalSettings(GVDDirectory dir, LocalSettingsPage page = LocalSettingsPage.Grafikon,
-        LocalSettingsAction action = LocalSettingsAction.None)
+        LocalSettingsAction action = LocalSettingsAction.None, object? select = null)
     {
         // stranky menia data priamo v GlobData - Zrusit ich vracia z tejto snimky
         _snapshot = LocalSettingsSnapshot.Capture();
 
         InitializeComponent();
         this.ApplyThemeAndFonts();
+        // koliesko posuva stranku, nie hodnotu zoznamu alebo pola pod kurzorom
+        WheelScroll.Attach(this);
         // SetFormFont zapina AutoSize - okno s menitelnou velkostou by sa nedalo zmensit
         AutoSize = false;
         // nazov stranky nad nou tucne ako v nastaveniach programu
@@ -80,6 +88,7 @@ public partial class FLocalSettings : Form
         optionsView.SelectedPanel = PanelOf(page);
         _openTabTabEditor = action == LocalSettingsAction.OpenTabTabEditor;
         _openStateDgmEditor = action == LocalSettingsAction.OpenStateDgmEditor;
+        _select = select;
 
         _helpLinks = new Dictionary<ExOptionsPanel, string>
         {
@@ -100,7 +109,8 @@ public partial class FLocalSettings : Form
         _checkedPages =
         [
             (pGrafikon, grafikonPage), (pStanice, customStationsPage), (pDopravcovia, operatorsPage),
-            (pNastupistia, platformsTracksPage), (pFonts, fontsPage)
+            (pNastupistia, platformsTracksPage), (pFonts, fontsPage), (pFyzTab, physicalTablesPage), (pTTexts, textsPage),
+            (pLogTab, logicalTablesPage), (pKatTab, catalogTablesPage)
         ];
         foreach (var (_, checkedPage) in _checkedPages)
             checkedPage.ProblemsChanged += (_, _) => UpdateProblems();
@@ -113,11 +123,11 @@ public partial class FLocalSettings : Form
         _pages.Add(pDopravcovia, operatorsPage.LoadData);
         _pages.Add(pNastupistia, platformsTracksPage.LoadData);
         _pages.Add(pFonts, () => fontsPage.LoadData(Utils.ParseStringOrDefault(GlobData.TableFontDir)));
-        _pages.Add(pTabTab, () => tabTabPage.LoadData(new TabTabKind(station)));
-        _pages.Add(pKatTab, () => catalogTablesPage.LoadData(new CatalogTablesKind()));
-        _pages.Add(pFyzTab, () => physicalTablesPage.LoadData(new PhysicalTablesKind()));
-        _pages.Add(pLogTab, () => logicalTablesPage.LoadData(new LogicalTablesKind(station)));
-        _pages.Add(pTTexts, () => textsPage.LoadData(new TableTextsKind(dir.GVD)));
+        _pages.Add(pFyzTab, physicalTablesPage.LoadData);
+        _pages.Add(pTTexts, () => textsPage.LoadData(dir.GVD));
+        _pages.Add(pLogTab, () => logicalTablesPage.LoadData(station));
+        _pages.Add(pKatTab, catalogTablesPage.LoadData);
+        _pages.Add(pTabTab, () => tabTabPage.LoadData(station));
         _pages.Add(pStateDgm, () => stateDgmPage.LoadData(dir));
         _pages.Load(PanelOf(page));
         UpdateProblems();
@@ -237,12 +247,16 @@ public partial class FLocalSettings : Form
             _pages.Load(pNastupistia);
             platformsTracksPage.SelectFirstTrack();
         }
+        if (_select is TableText text)
+            textsPage.SelectText(text);
+        else if (_select is TableCatalog catalog)
+            catalogTablesPage.SelectTable(catalog);
         UpdateHelpLink();
 
         if (_openTabTabEditor)
         {
             _pages.Load(pTabTab);
-            BeginInvoke(tabTabPage.OpenAdd);
+            BeginInvoke(tabTabPage.OpenEditor);
         }
 
         if (_openStateDgmEditor)

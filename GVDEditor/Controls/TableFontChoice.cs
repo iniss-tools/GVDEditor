@@ -77,6 +77,20 @@ internal sealed class TableFontChoice
         }
     }
 
+    /// <summary>
+    ///     Text pisma pre obsluhu tak, ako ho ponuka vyber - napr. v tabulke bez rozbalovacieho zoznamu.
+    /// </summary>
+    public static string Describe(int id)
+    {
+        if (id == -1)
+            return Resources.FontChoice_Stlpec;
+
+        var font = GlobData.TableFonts.FirstOrDefault(f => f.FontID == id);
+        return font is null
+            ? string.Format(CultureInfo.CurrentCulture, Resources.FontChoice_Vlastne, id)
+            : string.Format(CultureInfo.CurrentCulture, Resources.FontChoice_Pismo, font.Name, font.FontID);
+    }
+
     private void Fill()
     {
         var items = new List<Item>();

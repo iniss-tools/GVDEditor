@@ -120,20 +120,8 @@
 	  <EmbeddedResource Update="Forms\FRadenie.cs.resx">
 	    <DependentUpon>FRadenie.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FTableCatalog.cs.resx">
-	    <DependentUpon>FTableCatalog.cs</DependentUpon>
-	  </EmbeddedResource>
 	  <EmbeddedResource Update="Forms\FTableColumnOrder.cs.resx">
 	    <DependentUpon>FTableColumnOrder.cs</DependentUpon>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FTableLogical.cs.resx">
-	    <DependentUpon>FTableLogical.cs</DependentUpon>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FTablePhysical.cs.resx">
-	    <DependentUpon>FTablePhysical.cs</DependentUpon>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FTableText.cs.resx">
-	    <DependentUpon>FTableText.cs</DependentUpon>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Forms\FTabTab.cs.resx">
 	    <DependentUpon>FTabTab.cs</DependentUpon>
@@ -177,9 +165,6 @@
 	  <EmbeddedResource Update="Forms\Settings\TrainTypesPage.cs.resx">
 	    <DependentUpon>TrainTypesPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\TablesPage.cs.resx">
-	    <DependentUpon>TablesPage.cs</DependentUpon>
-	  </EmbeddedResource>
 	  <EmbeddedResource Update="Forms\Settings\PlatformsTracksPage.cs.resx">
 	    <DependentUpon>PlatformsTracksPage.cs</DependentUpon>
 	  </EmbeddedResource>
@@ -191,6 +176,21 @@
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Forms\Settings\GrafikonyPage.cs.resx">
 	    <DependentUpon>GrafikonyPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\PhysicalTablesPage.cs.resx">
+	    <DependentUpon>PhysicalTablesPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\TableTextsPage.cs.resx">
+	    <DependentUpon>TableTextsPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\LogicalTablesPage.cs.resx">
+	    <DependentUpon>LogicalTablesPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\CatalogTablesPage.cs.resx">
+	    <DependentUpon>CatalogTablesPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\TabTabPage.cs.resx">
+	    <DependentUpon>TabTabPage.cs</DependentUpon>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Forms\Settings\AudioPage.cs.resx">
 	    <DependentUpon>AudioPage.cs</DependentUpon>
