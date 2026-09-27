@@ -191,9 +191,6 @@ Reštartovať program teraz?</value>
   <data name="FAppSettings_Zmeny_sa_prejavia_po_reštarte_programu" xml:space="preserve">
     <value>Zmeny sa prejavia po reštarte programu.</value>
   </data>
-  <data name="FEditTrain_bSave_Click_Vybraná_varianta_vlaku_sa_už_používa_pri_inom_vlaku" xml:space="preserve">
-    <value>Vybraná varianta vlaku sa už používa pri inom vlaku.</value>
-  </data>
   <data name="Priečinok_s_týmto_názvom_už_existuje__Zmeňte_jeho_názov" xml:space="preserve">
     <value>Priečinok s týmto názvom už existuje. Zmeňte jeho názov.</value>
   </data>
@@ -306,9 +303,6 @@ Otvoriť stránku pre stiahnutie programu?</value>
   </data>
   <data name="SelectedItemRemoveCancel" xml:space="preserve">
     <value>Vybranú položku nie je možné vymazať, pretože sa používa. Konflikt s:</value>
-  </data>
-  <data name="FEditTrain_bSave_Click_Varianta_tohto_vlaku_nemôže_byť_Minus_1" xml:space="preserve">
-    <value>Varianta tohto vlaku nemôže byť -1, pretože sa v zozname vlakov nachádza vlak/y s podobnými vlastnosťami.</value>
   </data>
   <data name="FTableCatalog_bSave_NespravnyPocetModov" xml:space="preserve">
     <value>V type tabule {0} je nesprávny počet módov {1}. (Správny počet: {2})
@@ -520,9 +514,6 @@ Mám ju nútene vypnúť ?</value>
   </data>
   <data name="SetTEComment" xml:space="preserve">
     <value>Komentár</value>
-  </data>
-  <data name="FEditTrain_Tento_vlak_nemá_iné_varianty_a_preto_mu_bude_varianta_nastavená_na_hodnotu_Minus_1" xml:space="preserve">
-    <value>Tento vlak nemá iné varianty a preto mu bude varianta nastavená na hodnotu -1.</value>
   </data>
   <data name="SetTEBraces" xml:space="preserve">
     <value>Zvýraznenie aktívnych zátvoriek</value>
@@ -1905,17 +1896,8 @@ Pokračovať?</value>
   <data name="TrainBasicsPage_Radenie_Prevzate" xml:space="preserve">
     <value>Radenie patrí číslu vlaku a číslo {0} má aj vlak {1} s radením – okno preto zobrazuje jeho radenie. Radenie upravené v tomto okne sa zahodilo.</value>
   </data>
-  <data name="TrainValidityPage_Automaticky" xml:space="preserve">
-    <value>Varianty prideľuje GVDEditor sám (Nastavenia programu).</value>
-  </data>
-  <data name="TrainValidityPage_BezVariantov" xml:space="preserve">
-    <value>(-1 = vlak bez variantov)</value>
-  </data>
   <data name="TrainValidityPage_ZiadneVarianty" xml:space="preserve">
-    <value>V grafikone nie je iný vlak s rovnakým číslom, názvom a typom.</value>
-  </data>
-  <data name="TrainValidityPage_DalsieVarianty" xml:space="preserve">
-    <value>Ďalšie varianty v grafikone:</value>
+    <value>V grafikone nie je iný vlak s rovnakým číslom, názvom a typom – vlak nemá varianty.</value>
   </data>
   <data name="TrainValidityPage_ZmeniSaPoOK" xml:space="preserve">
     <value>{0} (zmení sa po uložení vlaku)</value>
@@ -1955,5 +1937,35 @@ Pokračovať?</value>
   </data>
   <data name="TrainRadeniePage_Nove" xml:space="preserve">
     <value>(nové radenie)</value>
+  </data>
+  <data name="TrainValidityPage_Skupina" xml:space="preserve">
+    <value>Tento vlak je {0}. z {1} variant vlaku {2}. Varianty sa líšia dňami, v ktoré idú – čísla variant prideľuje GVDEditor sám.</value>
+  </data>
+  <data name="TrainValidityPage_TentoVlak" xml:space="preserve">
+    <value>{0} (tento vlak)</value>
+  </data>
+  <data name="TrainValidityPage_DniSaNedajuPrecitat" xml:space="preserve">
+    <value>Dni jedného z vlakov sa nedajú prečítať – najprv ich opravte.</value>
+  </data>
+  <data name="TrainBasicsPage_ZmenitVarianty" xml:space="preserve">
+    <value>Zmeniť aj ostatné varianty ({0})</value>
+  </data>
+  <data name="FMain_Variant_Pridat" xml:space="preserve">
+    <value>Pridať variantu</value>
+  </data>
+  <data name="FMain_Variant_Varianty" xml:space="preserve">
+    <value>Varianty vlaku…</value>
+  </data>
+  <data name="FMain_Variant_Usporiadat" xml:space="preserve">
+    <value>Usporiadať varianty…</value>
+  </data>
+  <data name="FMain_Variant_UsporiadatOtazka" xml:space="preserve">
+    <value>Varianty vlaku {0} sa zoradia podľa dĺžky trasy (najkratšia je prvá) a v dňoch, keď by išlo viac variant naraz, ostane len varianta s najdlhšou trasou – ostatným sa tie dni z dátumového obmedzenia odoberú. Pokračovať?</value>
+  </data>
+  <data name="FMain_Variant_Zoznam" xml:space="preserve">
+    <value>Varianty vlaku {0}:</value>
+  </data>
+  <data name="FMain_Variant_Prekrytie" xml:space="preserve">
+    <value>Prekrýva sa s variantou {0} v dňoch „{1}“.</value>
   </data>
 </root>

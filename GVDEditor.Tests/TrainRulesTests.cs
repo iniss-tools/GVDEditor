@@ -20,8 +20,8 @@ public class TrainRulesTests
     private static readonly DateTime From = new(2026, 12, 13);
     private static readonly DateTime To = new(2027, 12, 11);
 
-    private static TrainContext Context(IReadOnlyList<Train>? trains = null, int row = -1, bool auto = false, bool disable = false) =>
-        new(trains ?? [], row < 0 ? trains?.Count ?? 0 : row, auto, disable);
+    private static TrainContext Context(IReadOnlyList<Train>? trains = null, int row = -1) =>
+        new(trains ?? [], row < 0 ? trains?.Count ?? 0 : row);
 
     // platny koncept prechadzajuceho vlaku Os 3001
     private static TrainDraft Draft()
@@ -236,24 +236,6 @@ public class TrainRulesTests
     }
 
     [TestMethod]
-    [DataRow(-1, false, false, false, null)]
-    [DataRow(2, false, false, false, true)]
-    [DataRow(2, false, true, false, null)]
-    [DataRow(2, false, false, true, null)]
-    [DataRow(-1, true, false, false, false)]
-    [DataRow(1, true, false, false, false)]
-    [DataRow(2, true, false, false, null)]
-    [DataRow(-1, true, false, true, null)]
-    public void Varianta_PodlaOstatnychVariant(int variant, bool hasOthers, bool disableCheck, bool auto, bool? isWarning)
-    {
-        List<Train> others = hasOthers ? [Variant(1, "ide v 6,7")] : [];
-
-        var problem = TrainRules.CheckVariant(variant, others, Context(auto: auto, disable: disableCheck));
-
-        Assert.AreEqual(isWarning, problem?.IsWarning);
-    }
-
-    [TestMethod]
     public void Varianty_PrekrytieObmedzenia_JeUpozornenieSoSpolocnymiDnami()
     {
         var draft = Draft();
@@ -269,6 +251,7 @@ public class TrainRulesTests
         Assert.AreEqual("ide v 6", overlaps[0].Days);
         Assert.IsTrue(problems.Single() is { Field: TrainRules.Field.DateLimit, IsWarning: true });
         StringAssert.Contains(problems[0].Message, "Os 3001");
+        StringAssert.Contains(problems[0].Message, "1/3", "poradie varianty v skupine, nie jej cislo");
     }
 
     [TestMethod]
@@ -300,38 +283,6 @@ public class TrainRulesTests
     }
 
     [TestMethod]
-    public void Varianta_BezAutomatiky_JedinyVlakDostaneMinusJedna()
-    {
-        var train = new Train();
-
-        TrainVariants.Assign(train, 3, [], true, Context());
-        Assert.AreEqual(-1, train.Variant);
-
-        TrainVariants.Assign(train, 3, [], true, Context(disable: true));
-        Assert.AreEqual(3, train.Variant);
-
-        TrainVariants.Assign(train, 2, [Variant(1, "")], false, Context());
-        Assert.AreEqual(2, train.Variant);
-    }
-
-    [TestMethod]
-    public void Varianta_Automaticky_NovyVlakPrecislujeVarianty_UpravenyNie()
-    {
-        List<Train> others = [Variant(5, ""), Variant(7, "")];
-        var train = new Train { Variant = 9 };
-
-        TrainVariants.Assign(train, -1, others, false, Context(auto: true));
-        Assert.AreEqual(9, train.Variant);
-
-        TrainVariants.Assign(train, -1, others, true, Context(auto: true));
-        Assert.AreEqual(3, train.Variant);
-        CollectionAssert.AreEqual(new[] { 1, 2 }, others.Select(t => t.Variant).ToArray());
-
-        TrainVariants.Assign(train, 4, [], true, Context(auto: true));
-        Assert.AreEqual(-1, train.Variant);
-    }
-
-    [TestMethod]
     public void TypyHlaseni_PodlaSmerovania_ZmenaOdstraniNeplatneZDodatkov()
     {
         var both = new ReportType("A", "A", "A");
@@ -360,11 +311,10 @@ public class TrainRulesTests
         draft.Number = "";
         draft.ArrivalText = "";
         draft.Track = null;
-        draft.Variant = -1;
 
-        var problems = TrainRules.Check(draft, Context([Variant(1, "ide v 6,7", number: "")]));
+        var problems = TrainRules.Check(draft, Context());
 
-        CollectionAssert.AreEqual(new[] { TrainRules.Field.Number, TrainRules.Field.Arrival, TrainRules.Field.Track, TrainRules.Field.Variant },
+        CollectionAssert.AreEqual(new[] { TrainRules.Field.Number, TrainRules.Field.Arrival, TrainRules.Field.Track },
             problems.Select(p => p.Field).ToArray());
         Assert.AreEqual(Resources.FEditTrain_bSave_Click_Zadajte_číslo_vlaku, problems[0].Message);
     }

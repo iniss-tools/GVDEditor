@@ -132,6 +132,9 @@
   <data name="lOperator.Text" xml:space="preserve">
     <value>Dopravce:</value>
   </data>
+  <data name="cbRenameSiblings.Text" xml:space="preserve">
+    <value>Změnit i ostatní varianty</value>
+  </data>
   <data name="lFlagsHeader.Text" xml:space="preserve">
     <value>Příznaky vlaku</value>
   </data>

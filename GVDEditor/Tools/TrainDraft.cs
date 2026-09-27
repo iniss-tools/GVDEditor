@@ -53,6 +53,10 @@ internal sealed class TrainDraft
 
     public DateTime ValidTo { get; set; }
 
+    /// <summary>
+    ///     Cislo varianty vlaku pri otvoreni okna - len na urcenie poradia medzi variantmi; cisla prideluje
+    ///     <see cref="TrainVariants.Normalize" />.
+    /// </summary>
     public int Variant { get; set; } = -1;
 
     public int LockoutNumber { get; set; }
@@ -101,6 +105,30 @@ internal sealed class TrainDraft
     public RadeniaEditing Radenia { get; } = new();
 
     /// <summary>
+    ///     Ostatne varianty upravovaneho vlaku v case otvorenia okna (pri novom vlaku a kopii prazdne).
+    /// </summary>
+    public List<Train> Siblings { get; } = [];
+
+    /// <summary>
+    ///     Zmena cisla, nazvu alebo typu sa prenesie aj na <see cref="Siblings" /> - vlak so vsetkymi variantmi
+    ///     ostane jednou skupinou. Bez nej vlak zo skupiny odide.
+    /// </summary>
+    public bool RenameSiblings { get; set; } = true;
+
+    // cislo, nazov a typ vlaku pri otvoreni okna
+    private (string Number, string Name, TrainType? Type) _originalKey;
+
+    /// <summary>
+    ///     Cislo, nazov alebo typ sa zmenili oproti vlaku pri otvoreni okna.
+    /// </summary>
+    public bool KeyChanged => Number != _originalKey.Number || Name != _originalKey.Name || Type != _originalKey.Type;
+
+    /// <summary>
+    ///     Pri ulozeni sa zmena cisla, nazvu alebo typu prenesie aj na ostatne varianty.
+    /// </summary>
+    public bool RenamesSiblings => RenameSiblings && KeyChanged && Siblings.Count != 0;
+
+    /// <summary>
     ///     Datumove obmedzenia inych variant zmenene v okne (kvoli prekrytiu); do vlakov sa zapisu az
     ///     <see cref="ApplyVariantLimits" />.
     /// </summary>
@@ -110,6 +138,35 @@ internal sealed class TrainDraft
     ///     Datumove obmedzenie inej varianty - zmenene v okne alebo zo vlaku.
     /// </summary>
     public string LimitOf(Train other) => VariantLimits.TryGetValue(other, out var limit) ? limit : other.DateLimitText ?? "";
+
+    /// <summary>
+    ///     Zapamata si ostatne varianty upravovaneho vlaku (vlaky s rovnakym cislom, nazvom a typom okrem riadku
+    ///     <paramref name="row" />) - pri zmene cisla, nazvu alebo typu sa mozu zmenit s nim.
+    /// </summary>
+    public void LoadSiblings(IReadOnlyList<Train> trains, int row)
+    {
+        Siblings.Clear();
+        for (var i = 0; i < trains.Count; i++)
+            if (i != row && trains[i].Number == _originalKey.Number && trains[i].Name == _originalKey.Name &&
+                trains[i].Type == _originalKey.Type)
+                Siblings.Add(trains[i]);
+    }
+
+    /// <summary>
+    ///     Prenesie nove cislo, nazov a typ na ostatne varianty (<see cref="RenamesSiblings" />).
+    /// </summary>
+    public void ApplyToSiblings()
+    {
+        if (!RenamesSiblings)
+            return;
+
+        foreach (var sibling in Siblings)
+        {
+            sibling.Number = Number;
+            sibling.Name = Name;
+            sibling.Type = Type!;
+        }
+    }
 
     /// <summary>
     ///     Zapise zmenene datumove obmedzenia inych variant do ich vlakov.
@@ -168,6 +225,7 @@ internal sealed class TrainDraft
         draft.Languages.AddRange(train.Languages.Where(language => !language.IsBasic));
         draft.Doplnky.AddRange(train.Doplnky.Select(CopyDodatok));
         draft.Radenia.LoadOwn(train.Radenia);
+        draft._originalKey = (draft.Number, draft.Name, draft.Type);
         return draft;
     }
 
@@ -183,7 +241,7 @@ internal sealed class TrainDraft
     };
 
     /// <summary>
-    ///     Zapise koncept do vlaku okrem varianty (tu urci <see cref="TrainVariants.Assign" />) a radeni.
+    ///     Zapise koncept do vlaku okrem cisla varianty (prideli ho <see cref="TrainVariants.Normalize" />) a radeni.
     ///     Koncept musi byt bez chyb podla <see cref="TrainRules.Check" />.
     /// </summary>
     /// <exception cref="InvalidOperationException">koncept ma chybu, ktora sa neda zapisat</exception>

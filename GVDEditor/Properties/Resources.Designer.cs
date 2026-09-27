@@ -191,29 +191,11 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Varianta tohto vlaku nemôže byť -1, pretože sa v zozname vlakov nachádza vlak/y s podobnými vlastnosťami..
-        /// </summary>
-        internal static string FEditTrain_bSave_Click_Varianta_tohto_vlaku_nemôže_byť_Minus_1 {
-            get {
-                return ResourceManager.GetString("FEditTrain_bSave_Click_Varianta_tohto_vlaku_nemôže_byť_Minus_1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Vlak nemá zadanú žiadnu stanicu..
         /// </summary>
         internal static string FEditTrain_bSave_Click_Vlak_nemá_zadanú_žiadnu_stanicu {
             get {
                 return ResourceManager.GetString("FEditTrain_bSave_Click_Vlak_nemá_zadanú_žiadnu_stanicu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vybraná varianta vlaku sa už používa pri inom vlaku..
-        /// </summary>
-        internal static string FEditTrain_bSave_Click_Vybraná_varianta_vlaku_sa_už_používa_pri_inom_vlaku {
-            get {
-                return ResourceManager.GetString("FEditTrain_bSave_Click_Vybraná_varianta_vlaku_sa_už_používa_pri_inom_vlaku", resourceCulture);
             }
         }
         
@@ -307,16 +289,6 @@ namespace GVDEditor.Properties {
         internal static string FEditTrain_Radenie_LubovolnyCiel {
             get {
                 return ResourceManager.GetString("FEditTrain_Radenie_LubovolnyCiel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tento vlak nemá iné varianty a preto mu bude varianta nastavená na hodnotu -1..
-        /// </summary>
-        internal static string FEditTrain_Tento_vlak_nemá_iné_varianty_a_preto_mu_bude_varianta_nastavená_na_hodnotu_Minus_1 {
-            get {
-                return ResourceManager.GetString(("FEditTrain_Tento_vlak_nemá_iné_varianty_a_preto_mu_bude_varianta_nastavená_na_hod" +
-                        "notu_Minus_1"), resourceCulture);
             }
         }
         
@@ -5268,38 +5240,11 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Varianty prideľuje GVDEditor sám (Nastavenia programu)..
-        /// </summary>
-        internal static string TrainValidityPage_Automaticky {
-            get {
-                return ResourceManager.GetString("TrainValidityPage_Automaticky", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to (-1 = vlak bez variantov).
-        /// </summary>
-        internal static string TrainValidityPage_BezVariantov {
-            get {
-                return ResourceManager.GetString("TrainValidityPage_BezVariantov", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to V grafikone nie je iný vlak s rovnakým číslom, názvom a typom..
         /// </summary>
         internal static string TrainValidityPage_ZiadneVarianty {
             get {
                 return ResourceManager.GetString("TrainValidityPage_ZiadneVarianty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ďalšie varianty v grafikone:.
-        /// </summary>
-        internal static string TrainValidityPage_DalsieVarianty {
-            get {
-                return ResourceManager.GetString("TrainValidityPage_DalsieVarianty", resourceCulture);
             }
         }
         
@@ -5417,6 +5362,96 @@ namespace GVDEditor.Properties {
         internal static string TrainRadeniePage_Nove {
             get {
                 return ResourceManager.GetString("TrainRadeniePage_Nove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tento vlak je {0}. z {1} variant vlaku {2}. Varianty sa líšia dňami, v ktoré idú – čísla variant prideľuje GVDEditor sám..
+        /// </summary>
+        internal static string TrainValidityPage_Skupina {
+            get {
+                return ResourceManager.GetString("TrainValidityPage_Skupina", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} (tento vlak).
+        /// </summary>
+        internal static string TrainValidityPage_TentoVlak {
+            get {
+                return ResourceManager.GetString("TrainValidityPage_TentoVlak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dni jedného z vlakov sa nedajú prečítať – najprv ich opravte..
+        /// </summary>
+        internal static string TrainValidityPage_DniSaNedajuPrecitat {
+            get {
+                return ResourceManager.GetString("TrainValidityPage_DniSaNedajuPrecitat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmeniť aj ostatné varianty ({0}).
+        /// </summary>
+        internal static string TrainBasicsPage_ZmenitVarianty {
+            get {
+                return ResourceManager.GetString("TrainBasicsPage_ZmenitVarianty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pridať variantu.
+        /// </summary>
+        internal static string FMain_Variant_Pridat {
+            get {
+                return ResourceManager.GetString("FMain_Variant_Pridat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Varianty vlaku….
+        /// </summary>
+        internal static string FMain_Variant_Varianty {
+            get {
+                return ResourceManager.GetString("FMain_Variant_Varianty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usporiadať varianty….
+        /// </summary>
+        internal static string FMain_Variant_Usporiadat {
+            get {
+                return ResourceManager.GetString("FMain_Variant_Usporiadat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Varianty vlaku {0} sa zoradia podľa dĺžky trasy (najkratšia je prvá) a v dňoch, keď by išlo viac variant naraz, ostane len varianta s najdlhšou trasou – ostatným sa tie dni z dátumového obmedzenia odoberú. Pokračovať?.
+        /// </summary>
+        internal static string FMain_Variant_UsporiadatOtazka {
+            get {
+                return ResourceManager.GetString("FMain_Variant_UsporiadatOtazka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Varianty vlaku {0}:.
+        /// </summary>
+        internal static string FMain_Variant_Zoznam {
+            get {
+                return ResourceManager.GetString("FMain_Variant_Zoznam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prekrýva sa s variantou {0} v dňoch „{1}“..
+        /// </summary>
+        internal static string FMain_Variant_Prekrytie {
+            get {
+                return ResourceManager.GetString("FMain_Variant_Prekrytie", resourceCulture);
             }
         }
 }

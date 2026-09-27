@@ -30,6 +30,9 @@ public partial class FEditTrain : Form
     // clanok dokumentacie ku kazdej stranke okna
     private readonly Dictionary<ExOptionsPanel, string> _helpLinks;
 
+    // stranka, na ktorej sa okno otvara
+    private readonly ExOptionsPanel _startPanel;
+
     private readonly string? _gvdDir;
     private readonly int _homeStationId;
 
@@ -59,13 +62,17 @@ public partial class FEditTrain : Form
     /// <param name="gvd">Vybrane GVD.</param>
     /// <param name="copy">Ci sa jedna o kopiu vlaku.</param>
     /// <param name="gvdDir">Priecinok grafikonu (pre Kalendar akcii); <see langword="null" />, ak nie je.</param>
-    public FEditTrain(Train? train, int row, GVDInfo gvd, bool copy = false, string? gvdDir = null)
+    /// <param name="startPage">Stranka, na ktorej sa okno otvori.</param>
+    public FEditTrain(Train? train, int row, GVDInfo gvd, bool copy = false, string? gvdDir = null,
+        EditTrainPage startPage = EditTrainPage.Vlak)
     {
         InitializeComponent();
         _draft = train != null ? TrainDraft.From(train) : NewDraft(gvd);
         _routing = _draft.Routing;
-        _context = new TrainContext(GlobData.Trains, row, GlobData.Config.AutoVariant, GlobData.Config.DisableVariantCheck,
-            gvd.ThisStation?.ID);
+        _context = new TrainContext(GlobData.Trains, row, gvd.ThisStation?.ID);
+        // ostatne varianty upraveneho vlaku - pri zmene cisla, nazvu alebo typu sa mozu zmenit s nim
+        if (train != null && !copy)
+            _draft.LoadSiblings(GlobData.Trains, row);
         _gvdDir = gvdDir;
         _homeStationId = int.TryParse(gvd.ThisStation?.ID, out var stationId) ? stationId : 0;
 
@@ -92,12 +99,21 @@ public partial class FEditTrain : Form
         pGroupHlasenia.GenerateLinksToChildren = true;
         SettingsWindow.ApplyPlacement(this, GlobData.Config.EditTrainWindow);
         // zobrazi sa len stranka, ktorou sa okno otvara - ostatne sa vytvoria az pri prvom zobrazeni
-        optionsView.SelectedPanel = pVlak;
+        _startPanel = startPage switch
+        {
+            EditTrainPage.Trasa => pTrasa,
+            EditTrainPage.Platnost => pPlatnost,
+            EditTrainPage.Jazyky => pJazyky,
+            EditTrainPage.Dodatky => pDodatky,
+            EditTrainPage.Radenie => pRadenie,
+            _ => pVlak
+        };
+        optionsView.SelectedPanel = _startPanel;
 
         // stranky plnit az po teme okna (nastavuju si pisma a farby)
         trainPage.LoadData(_draft, GlobData.TrainNames);
         routePage.LoadData(_draft, gvd.ThisStation);
-        validityPage.LoadData(_draft, _context, gvdDir != null ? OpenCalendar : null);
+        validityPage.LoadData(_draft, _context, gvd.ThisStation?.Name, gvdDir != null ? OpenCalendar : null);
         languagesPage.LoadData(_draft, GlobData.Languages);
         dodatkyPage.LoadData(_draft, GlobData.Sounds.Where(sound => sound.Group.Key.EqualsIgnoreCase("DODATKY")));
         radeniePage.LoadData(_draft, gvd.StartValidTimeTable, gvd.EndValidTimeTable);
@@ -150,7 +166,7 @@ public partial class FEditTrain : Form
     private void FEditTrain_Load(object sender, EventArgs e)
     {
         optionsView.TreeView.ExpandAll();
-        optionsView.SelectedPanel = pVlak;
+        optionsView.SelectedPanel = _startPanel;
         UpdateHelpLink();
     }
 
@@ -176,10 +192,13 @@ public partial class FEditTrain : Form
 
         var isNew = copy || ThisTrain == null;
         var train = isNew ? new Train() : ThisTrain!;
-        var others = TrainVariants.Others(_draft, _context);
+        // vlak, ktory odide do inej skupiny variant, dostane v nej nove cislo (TrainVariants.Normalize po ulozeni) -
+        // vlakom, ktore uz v skupine su, cisla ostanu
+        if (!isNew && _draft.KeyChanged && !_draft.RenamesSiblings)
+            train.Variant = -1;
 
         _draft.ApplyTo(train);
-        TrainVariants.Assign(train, _draft.Variant, others, isNew, _context);
+        _draft.ApplyToSiblings();
         _draft.ApplyVariantLimits();
         _draft.Radenia.Commit(train, GlobData.Radenia, GlobData.Trains);
 
@@ -232,7 +251,7 @@ public partial class FEditTrain : Form
     {
         TrainRules.Field.Arrival or TrainRules.Field.Departure or TrainRules.Field.Track or TrainRules.Field.LineArrival
             or TrainRules.Field.LineDeparture or TrainRules.Field.Route => pTrasa,
-        TrainRules.Field.Validity or TrainRules.Field.DateLimit or TrainRules.Field.Variant => pPlatnost,
+        TrainRules.Field.Validity or TrainRules.Field.DateLimit => pPlatnost,
         TrainRules.Field.Dodatok => pDodatky,
         TrainRules.Field.Radenie => pRadenie,
         _ => pVlak

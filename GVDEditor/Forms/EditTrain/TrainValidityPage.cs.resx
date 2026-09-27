@@ -138,26 +138,26 @@
   <data name="lVariantHeader.Text" xml:space="preserve">
     <value>Varianty vlaku</value>
   </data>
-  <data name="lVariantInfo.Text" xml:space="preserve">
-    <value>Vlaky se stejným číslem, názvem a typem se rozlišují variantou. Jediný takový vlak má variantu -1, ostatní 1, 2, … a jejich datumová omezení by se neměla překrývat.</value>
-  </data>
-  <data name="lVariant.Text" xml:space="preserve">
-    <value>Varianta:</value>
-  </data>
-  <data name="lOthers.Text" xml:space="preserve">
-    <value>Další varianty v grafikonu:</value>
-  </data>
   <data name="bEditOther.Text" xml:space="preserve">
-    <value>Upravit omezení vybraného vlaku…</value>
+    <value>Upravit dny vybraného vlaku…</value>
   </data>
-  <data name="colVariant.HeaderText" xml:space="preserve">
+  <data name="bGiveThis.Text" xml:space="preserve">
+    <value>Společné dny patří tomuto vlaku</value>
+  </data>
+  <data name="bGiveOther.Text" xml:space="preserve">
+    <value>Společné dny patří vybranému vlaku</value>
+  </data>
+  <data name="colPosition.HeaderText" xml:space="preserve">
     <value>Varianta</value>
+  </data>
+  <data name="colRoute.HeaderText" xml:space="preserve">
+    <value>Trasa</value>
   </data>
   <data name="colPeriod.HeaderText" xml:space="preserve">
     <value>Platnost</value>
   </data>
   <data name="colLimit.HeaderText" xml:space="preserve">
-    <value>Datumové omezení</value>
+    <value>Dny</value>
   </data>
   <data name="colCommon.HeaderText" xml:space="preserve">
     <value>Společné dny</value>

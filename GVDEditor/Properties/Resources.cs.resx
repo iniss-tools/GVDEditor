@@ -155,17 +155,8 @@ Opravdu chcete použít tento typ debugování?</value>
   <data name="FEditTrain_bSave_Click_Nie_je_vybratá_koľaj" xml:space="preserve">
     <value>Není vybrána kolej.</value>
   </data>
-  <data name="FEditTrain_Tento_vlak_nemá_iné_varianty_a_preto_mu_bude_varianta_nastavená_na_hodnotu_Minus_1" xml:space="preserve">
-    <value>Tento vlak nemá jiné varianty a proto mu bude varianta nastavena na hodnotu -1.</value>
-  </data>
-  <data name="FEditTrain_bSave_Click_Varianta_tohto_vlaku_nemôže_byť_Minus_1" xml:space="preserve">
-    <value>Varianta tohoto vlaku nemůže být -1, protože se v seznamu vlaků nachází vlak / y s podobnými vlastnostmi.</value>
-  </data>
   <data name="FEditTrain_bSave_Click_Vlak_nemá_zadanú_žiadnu_stanicu" xml:space="preserve">
     <value>Vlak nemá zadanou žádnou stanici.</value>
-  </data>
-  <data name="FEditTrain_bSave_Click_Vybraná_varianta_vlaku_sa_už_používa_pri_inom_vlaku" xml:space="preserve">
-    <value>Vybraná varianta vlaku se již používá při jiném vlaku.</value>
   </data>
   <data name="FEditTrain_bSave_Click_Zadajte_číslo_vlaku" xml:space="preserve">
     <value>Zadejte číslo vlaku.</value>
@@ -1877,17 +1868,8 @@ Pokračovat?</value>
   <data name="TrainBasicsPage_Radenie_Prevzate" xml:space="preserve">
     <value>Řazení patří číslu vlaku a číslo {0} má i vlak {1} s řazením – okno proto zobrazuje jeho řazení. Řazení upravené v tomto okně bylo zahozeno.</value>
   </data>
-  <data name="TrainValidityPage_Automaticky" xml:space="preserve">
-    <value>Varianty přiděluje GVDEditor sám (Nastavení programu).</value>
-  </data>
-  <data name="TrainValidityPage_BezVariantov" xml:space="preserve">
-    <value>(-1 = vlak bez variant)</value>
-  </data>
   <data name="TrainValidityPage_ZiadneVarianty" xml:space="preserve">
-    <value>V grafikonu není jiný vlak se stejným číslem, názvem a typem.</value>
-  </data>
-  <data name="TrainValidityPage_DalsieVarianty" xml:space="preserve">
-    <value>Další varianty v grafikonu:</value>
+    <value>V grafikonu není jiný vlak se stejným číslem, názvem a typem – vlak nemá varianty.</value>
   </data>
   <data name="TrainValidityPage_ZmeniSaPoOK" xml:space="preserve">
     <value>{0} (změní se po uložení vlaku)</value>
@@ -1927,5 +1909,35 @@ Pokračovat?</value>
   </data>
   <data name="TrainRadeniePage_Nove" xml:space="preserve">
     <value>(nové řazení)</value>
+  </data>
+  <data name="TrainValidityPage_Skupina" xml:space="preserve">
+    <value>Tento vlak je {0}. z {1} variant vlaku {2}. Varianty se liší dny, ve které jedou – čísla variant přiděluje GVDEditor sám.</value>
+  </data>
+  <data name="TrainValidityPage_TentoVlak" xml:space="preserve">
+    <value>{0} (tento vlak)</value>
+  </data>
+  <data name="TrainValidityPage_DniSaNedajuPrecitat" xml:space="preserve">
+    <value>Dny jednoho z vlaků nelze přečíst – nejprve je opravte.</value>
+  </data>
+  <data name="TrainBasicsPage_ZmenitVarianty" xml:space="preserve">
+    <value>Změnit i ostatní varianty ({0})</value>
+  </data>
+  <data name="FMain_Variant_Pridat" xml:space="preserve">
+    <value>Přidat variantu</value>
+  </data>
+  <data name="FMain_Variant_Varianty" xml:space="preserve">
+    <value>Varianty vlaku…</value>
+  </data>
+  <data name="FMain_Variant_Usporiadat" xml:space="preserve">
+    <value>Uspořádat varianty…</value>
+  </data>
+  <data name="FMain_Variant_UsporiadatOtazka" xml:space="preserve">
+    <value>Varianty vlaku {0} se seřadí podle délky trasy (nejkratší je první) a ve dnech, kdy by jelo více variant najednou, zůstane jen varianta s nejdelší trasou – ostatním se tyto dny z datumového omezení odeberou. Pokračovat?</value>
+  </data>
+  <data name="FMain_Variant_Zoznam" xml:space="preserve">
+    <value>Varianty vlaku {0}:</value>
+  </data>
+  <data name="FMain_Variant_Prekrytie" xml:space="preserve">
+    <value>Překrývá se s variantou {0} ve dnech „{1}“.</value>
   </data>
 </root>

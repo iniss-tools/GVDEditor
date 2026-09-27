@@ -72,14 +72,9 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                     }
                 }, tabs: true);
 
-            // kópia rýchlika ako varianta 2 - tabuľka variant s prekrytím dátumového obmedzenia
-            Shot("uprava-vlaku/varianty", () => new FEditTrain(express, trains.Count, gvdDir.GVD, true, gvdDir.Dir.FullPath), form =>
-            {
-                Resize(form, 960, 680);
-                var validity = (Control)Field(form, "validityPage");
-                ((NumericUpDown)validity.Controls.Find("nudVariant", true).Single()).Value = 2;
-                ((ExOptionsView)Descendants(form).OfType<ExOptionsView>().Single()).SelectedPanel = (ExOptionsPanel)Field(form, "pPlatnost");
-            });
+            // kópia rýchlika je jeho druhou variantou - skupina variant s prekrytím dní na stránke Platnosť
+            Shot("uprava-vlaku/varianty", () => new FEditTrain(express, trains.Count, gvdDir.GVD, true, gvdDir.Dir.FullPath,
+                GVDEditor.Forms.EditTrain.EditTrainPage.Platnost), form => Resize(form, 960, 680));
 
             // skladanie radenia: vybraná druhá nahrávka „číslo“ a priečinok s vlastnosťami vozňov
             Shot("radenie/uprava-radenia", () => new FRadenie([.. express.Radenia[0].Sounds]), form =>

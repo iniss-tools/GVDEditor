@@ -1,5 +1,7 @@
-﻿using ExControls;
+﻿using System.Globalization;
+using ExControls;
 using GVDEditor.Entities;
+using GVDEditor.Forms.EditTrain;
 using GVDEditor.Forms.Settings;
 using GVDEditor.Properties;
 using GVDEditor.Tools;
@@ -56,6 +58,7 @@ public partial class FMain : Form
         tsslSelTrainVariants.Font = GlobData.Config.Fonts.StateRow.Font;
         tsslTrainCount.Font = GlobData.Config.Fonts.StateRow.Font;
         tsslTrainCountWithVariants.Font = GlobData.Config.Fonts.StateRow.Font;
+        CreateVariantMenu();
 
         dgvTrains.RowHeadersVisible = GlobData.Config.ShowRowsHeader;
 
@@ -244,6 +247,8 @@ public partial class FMain : Form
             _prechod = true;
             dgvTrains.DataSource = GlobData.Trains;
             _prechod = false;
+            GlobData.Trains.ListChanged += (_, _) => InvalidateVariants();
+            InvalidateVariants();
 
             SetColumnsAutoWidth();
 
@@ -330,6 +335,9 @@ public partial class FMain : Form
         void DoSaveInternal()
         {
             var dir = _previousSelectedGVD!;
+
+            // dva vlaky s rovnakym cislom, nazvom, typom a variantou by INISS nerozlisil (trasu by dostal len prvy)
+            NormalizeVariants();
 
             if (GlobData.Config.AutoTableText)
                 GenerateTableTextWhileSaving(dir);
@@ -459,6 +467,7 @@ public partial class FMain : Form
             RemoveAllTrains();
 
         foreach (var train in fid.ImportedTrains) GlobData.Trains.Add(train);
+        NormalizeVariants();
         GlobData.Trains.ResetBindings();
         DataSaved = false;
     }
@@ -777,24 +786,178 @@ public partial class FMain : Form
         }
     }
 
-    private void ShowEditTrain(Train? train, int row, bool copy = false)
+    private void ShowEditTrain(Train? train, int row, bool copy = false, EditTrainPage startPage = EditTrainPage.Vlak)
     {
         var gvdDir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
-        var eform = new FEditTrain(train, row, gvdDir.GVD, copy, gvdDir.Dir.FullPath);
+        var eform = new FEditTrain(train, row, gvdDir.GVD, copy, gvdDir.Dir.FullPath, startPage);
         var result = eform.ShowDialog();
         if (result == DialogResult.OK)
         {
             if (train == null || row == GlobData.Trains.Count)
-            {
                 GlobData.Trains.Add(eform.ThisTrain!);
-                DataSaved = false;
-            }
             else
-            {
                 GlobData.Trains.ResetBindings();
-                DataSaved = false;
-            }
+
+            // novy vlak, kopia alebo zmena cisla, nazvu ci typu - cisla variant prideli GVDEditor
+            NormalizeVariants();
+            DataSaved = false;
         }
+    }
+
+    // ---------------------------------------------------------------- varianty vlakov
+
+    // prehlad variant pre zoznam vlakov - postavi sa znova az pri kresleni po zmene zoznamu
+    private VariantIndex? _variantIndex;
+
+    // riadok, ktoreho varianty su v zozname zvyraznene
+    private int _variantRow = -1;
+
+    private VariantIndex Variants => _variantIndex ??= VariantIndex.Build(GlobData.Trains);
+
+    private void InvalidateVariants()
+    {
+        _variantIndex = null;
+        dgvTrains.Invalidate();
+    }
+
+    /// <summary>
+    ///     Prideli cisla variant (<see cref="TrainVariants.Normalize" />) a obnovi zoznam, ak sa niektore zmenilo.
+    /// </summary>
+    private void NormalizeVariants()
+    {
+        if (TrainVariants.Normalize(GlobData.Trains).Count != 0)
+            GlobData.Trains.ResetBindings();
+        InvalidateVariants();
+        FitNumberColumn();
+    }
+
+    /// <summary>
+    ///     Rozsiri stlpec Cislo, aby sa zmestilo poradie varianty aj s upozornenim (napr. „4327  1/2  ⚠“).
+    /// </summary>
+    private void FitNumberColumn()
+    {
+        var column = cisloDataGridViewTextBoxColumn;
+        if (dgvTrains.DataSource == null || column.AutoSizeMode != DataGridViewAutoSizeColumnMode.None)
+            return;
+
+        var preferred = column.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true);
+        if (preferred > column.Width)
+            column.Width = preferred;
+    }
+
+    private Train? CurrentTrain =>
+        dgvTrains.CurrentRow is { Index: var index } && index >= 0 && index < GlobData.Trains.Count ? GlobData.Trains[index] : null;
+
+    /// <summary>
+    ///     Kontextove menu zoznamu vlakov s prikazmi pre varianty.
+    /// </summary>
+    private void CreateVariantMenu()
+    {
+        var add = new ToolStripMenuItem(Resources.FMain_Variant_Pridat);
+        var show = new ToolStripMenuItem(Resources.FMain_Variant_Varianty);
+        var reorder = new ToolStripMenuItem(Resources.FMain_Variant_Usporiadat);
+        var menu = new ContextMenuStrip();
+        menu.Items.AddRange([add, show, reorder]);
+        menu.Opening += (_, e) =>
+        {
+            // tema sa mohla zmenit v nastaveniach programu
+            FormUtils.ChangeColorContextMenu(GlobSettings.UsingStyle, menu);
+            var train = CurrentTrain;
+            e.Cancel = train == null || !_grafikonLoaded;
+            reorder.Enabled = train != null && Variants.Of(train).Count > 1;
+        };
+        add.Click += (_, _) =>
+        {
+            // kopia s rovnakym cislom, nazvom a typom je dalsou variantou - dni sa rozdelia na stranke Platnost
+            if (CurrentTrain is { } train)
+                ShowEditTrain(train, GlobData.Trains.Count, true, EditTrainPage.Platnost);
+        };
+        show.Click += (_, _) =>
+        {
+            if (CurrentTrain is { } train)
+                ShowEditTrain(train, GlobData.Trains.IndexOf(train), false, EditTrainPage.Platnost);
+        };
+        reorder.Click += (_, _) => ReorderVariants();
+        dgvTrains.ContextMenuStrip = menu;
+        dgvTrains.CellMouseDown += (_, e) =>
+        {
+            // pravy klik vyberie riadok, na ktory sa menu vztahuje
+            if (e.Button != MouseButtons.Right || e.RowIndex < 0)
+                return;
+
+            dgvTrains.ClearSelection();
+            dgvTrains.CurrentCell = dgvTrains.Rows[e.RowIndex].Cells[Math.Max(0, e.ColumnIndex)];
+            dgvTrains.Rows[e.RowIndex].Selected = true;
+        };
+        dgvTrains.CurrentCellChanged += (_, _) =>
+        {
+            var row = dgvTrains.CurrentRow?.Index ?? -1;
+            if (row == _variantRow)
+                return;
+
+            _variantRow = row;
+            dgvTrains.Invalidate();
+        };
+        dgvTrains.CellToolTipTextNeeded += (_, e) =>
+        {
+            if (e.ColumnIndex == cisloDataGridViewTextBoxColumn.Index && e.RowIndex >= 0 && e.RowIndex < GlobData.Trains.Count)
+                e.ToolTipText = VariantToolTip(GlobData.Trains[e.RowIndex]);
+        };
+    }
+
+    /// <summary>
+    ///     Bublina cisla vlaku s variantmi: zoznam variant s trasou a dnami, prekrytie s inymi variantmi.
+    /// </summary>
+    private string VariantToolTip(Train train)
+    {
+        var info = Variants.Of(train);
+        if (info.Count < 2)
+            return "";
+
+        var home = _previousSelectedGVD?.GVD.ThisStation?.Name ?? "";
+        var lines = new List<string> { string.Format(CultureInfo.CurrentCulture, Resources.FMain_Variant_Zoznam, TrainRules.Label(train)) };
+        for (var i = 0; i < info.Group.Count; i++)
+        {
+            var member = info.Group[i];
+            lines.Add($"{i + 1}/{info.Count}  {member.StartingStation?.Name ?? home} → {member.EndingStation?.Name ?? home}  " +
+                      $"{member.DateLimitText}");
+        }
+
+        foreach (var (other, days) in info.Overlaps)
+            lines.Add(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Variant_Prekrytie,
+                $"{Variants.Of(other).Position}/{info.Count}", days));
+
+        return string.Join(Environment.NewLine, lines);
+    }
+
+    /// <summary>
+    ///     Zoradi varianty vybraneho vlaku podla dlzky trasy a dni, v ktore by islo viac variant naraz, necha len
+    ///     variante s najdlhsou trasou.
+    /// </summary>
+    private void ReorderVariants()
+    {
+        if (CurrentTrain is not { } train)
+            return;
+
+        var group = Variants.Of(train).Group.ToList();
+        if (group.Count < 2 ||
+            Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Variant_UsporiadatOtazka, TrainRules.Label(train)))
+            != DialogResult.Yes)
+            return;
+
+        try
+        {
+            Train.ReorderVariants(group);
+        }
+        catch (DateLimit.ParseException exception)
+        {
+            Utils.ShowError(exception.Message);
+            return;
+        }
+
+        GlobData.Trains.ResetBindings();
+        InvalidateVariants();
+        DataSaved = false;
     }
 
     private void ShowOpenDir()
@@ -844,13 +1007,14 @@ public partial class FMain : Form
         {
             foreach (DataGridViewRow row in dgvTrains.SelectedRows)
             {
-                CheckAutoTrainVariants(row.Index);
                 if (!GlobData.Config.AutoTableText)
                     DeleteTTexts((row.DataBoundItem as Train)!);
 
                 GlobData.Trains.RemoveAt(row.Index);
             }
 
+            // varianta, ktora ostala sama, dostane -1
+            NormalizeVariants();
             GlobData.Trains.ResetBindings();
 
             DataSaved = false;
@@ -1413,14 +1577,7 @@ public partial class FMain : Form
         }
     }
 
-    private static int CountSelTrainVariants(Train train)
-    {
-        var count = 0;
-        foreach (var t in GlobData.Trains)
-            if (t.NumberVariant.Number == train.Number)
-                count++;
-        return count;
-    }
+    private int CountSelTrainVariants(Train train) => Variants.Of(train).Count;
 
     private void dgvTrains_DataError(object sender, DataGridViewDataErrorEventArgs e)
     {
@@ -1665,6 +1822,7 @@ public partial class FMain : Form
     private void dgvTrains_CellValueChanged(object sender, DataGridViewCellEventArgs e)
     {
         if (e.RowIndex != -1) DataSaved = false;
+        InvalidateVariants();
     }
 
     private void tsbAppSettings_Click(object sender, EventArgs e) => ShowAppSettings();
@@ -1672,6 +1830,14 @@ public partial class FMain : Form
     private void tsmiStartupSettings_Click(object sender, EventArgs e) => ShowStartupINISSSettings();
 
     private void tsmimStartupSettings_Click(object sender, EventArgs e) => ShowStartupINISSSettings();
+
+    // podfarbenie variant vybraneho vlaku - zmes pozadia tabulky a farby vyberu
+    private Color SiblingColor()
+    {
+        var back = dgvTrains.DefaultCellStyle.BackColor;
+        var mark = GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor;
+        return Color.FromArgb((back.R * 4 + mark.R) / 5, (back.G * 4 + mark.G) / 5, (back.B * 4 + mark.B) / 5);
+    }
 
     private void dgvTrains_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
@@ -1683,6 +1849,22 @@ public partial class FMain : Form
             e.CellStyle.Font = sett.Bold
                 ? new Font(GlobData.UsingStyle.TrainTypeColumnScheme.Font, FontStyle.Bold)
                 : GlobData.UsingStyle.TrainTypeColumnScheme.Font;
+        }
+
+        if (e.RowIndex >= 0 && e.RowIndex < GlobData.Trains.Count)
+        {
+            var rowTrain = GlobData.Trains[e.RowIndex];
+
+            // varianty vybraneho vlaku su podfarbene
+            if (CurrentTrain is { } current && Variants.AreSiblings(current, rowTrain))
+                e.CellStyle.BackColor = SiblingColor();
+
+            // cislo vlaku s variantmi: poradie v skupine, pri prekryti dni s inou variantou upozornenie
+            if (e.ColumnIndex == cisloDataGridViewTextBoxColumn.Index && Variants.Of(rowTrain) is { Count: > 1 } info)
+            {
+                e.Value = $"{rowTrain.Number}  {info.Position}/{info.Count}" + (info.Overlaps.Count != 0 ? "  \u26A0" : "");
+                e.FormattingApplied = true;
+            }
         }
 
         // v grafikone je kluc zvuku nazvu vlaku, v tabulke sa zobrazuje jeho nazov
@@ -1773,6 +1955,9 @@ public partial class FMain : Form
             dgvTrains.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvTrains.Columns[i].Width = widthCol;
         }
+
+        // varianty mozu byt aj v riadkoch mimo obrazovky
+        FitNumberColumn();
     }
 
     private void SetShortcuts()
@@ -1822,29 +2007,6 @@ public partial class FMain : Form
         tsmiAudio.ShortcutKeys = (Keys)sc.GSAudio.Shortcut.Value;
 
         tsmiDatObm.ShortcutKeys = (Keys)sc.DateLimit.Shortcut.Value;
-    }
-
-    private static void CheckAutoTrainVariants(int index)
-    {
-        if (!GlobData.Config.AutoVariant) return;
-
-        var id = 0;
-        var seltrains = new List<Train>();
-        var dtrain = GlobData.Trains[index];
-
-        foreach (var train in GlobData.Trains)
-        {
-            if (train.Number == dtrain.Number && string.Equals(train.Name, dtrain.Name) &&
-                Equals(train.Type, dtrain.Type) && index != id) seltrains.Add(train);
-
-            id++;
-        }
-
-        if (seltrains.Count == 1)
-            seltrains[0].Variant = -1;
-        else if (seltrains.Count != 0)
-            for (var i = 0; i < seltrains.Count; i++)
-                seltrains[i].Variant = i + 1;
     }
 
     private void bWorkerELIS_DoWork(object sender, DoWorkEventArgs e)
@@ -1955,6 +2117,7 @@ public partial class FMain : Form
             }
 
             foreach (var train in imported) GlobData.Trains.Add(train);
+            NormalizeVariants();
             GlobData.Trains.ResetBindings();
 
             DataSaved = false;

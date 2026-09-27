@@ -43,6 +43,7 @@ namespace GVDEditor.Forms.EditTrain
             cbName = new ExComboBox();
             lOperator = new Label();
             cbOperator = new ExComboBox();
+            cbRenameSiblings = new ExCheckBox();
             lFlagsHeader = new Label();
             tlpFlags = new TableLayoutPanel();
             boxMiestenkovy = new ExCheckBox();
@@ -81,13 +82,14 @@ namespace GVDEditor.Forms.EditTrain
             tlpMain.Controls.Add(cbName, 1, 4);
             tlpMain.Controls.Add(lOperator, 0, 5);
             tlpMain.Controls.Add(cbOperator, 1, 5);
-            tlpMain.Controls.Add(lFlagsHeader, 0, 6);
-            tlpMain.Controls.Add(tlpFlags, 0, 7);
-            tlpMain.Controls.Add(lLockoutHeader, 0, 8);
-            tlpMain.Controls.Add(lLockout, 0, 9);
-            tlpMain.Controls.Add(cbLockout, 1, 9);
-            tlpMain.Controls.Add(lLockoutInfo, 1, 10);
-            tlpMain.Controls.Add(lHint, 0, 11);
+            tlpMain.Controls.Add(cbRenameSiblings, 1, 6);
+            tlpMain.Controls.Add(lFlagsHeader, 0, 7);
+            tlpMain.Controls.Add(tlpFlags, 0, 8);
+            tlpMain.Controls.Add(lLockoutHeader, 0, 9);
+            tlpMain.Controls.Add(lLockout, 0, 10);
+            tlpMain.Controls.Add(cbLockout, 1, 10);
+            tlpMain.Controls.Add(lLockoutInfo, 1, 11);
+            tlpMain.Controls.Add(lHint, 0, 12);
             tlpMain.Name = "tlpMain";
             tlpMain.SetColumnSpan(lBanner, 2);
             tlpMain.SetColumnSpan(lTrainHeader, 2);
@@ -156,6 +158,13 @@ namespace GVDEditor.Forms.EditTrain
             cbOperator.FormattingEnabled = true;
             cbOperator.Name = "cbOperator";
             cbOperator.SelectionChangeCommitted += cbOperator_SelectionChangeCommitted;
+            // 
+            // cbRenameSiblings
+            // 
+            resources.ApplyResources(cbRenameSiblings, "cbRenameSiblings");
+            cbRenameSiblings.Name = "cbRenameSiblings";
+            cbRenameSiblings.UseVisualStyleBackColor = true;
+            cbRenameSiblings.CheckedChanged += cbRenameSiblings_CheckedChanged;
             // 
             // lFlagsHeader
             // 
@@ -287,6 +296,7 @@ namespace GVDEditor.Forms.EditTrain
         private ExComboBox cbName;
         private Label lOperator;
         private ExComboBox cbOperator;
+        private ExCheckBox cbRenameSiblings;
         private Label lFlagsHeader;
         private TableLayoutPanel tlpFlags;
         private ExCheckBox boxMiestenkovy;

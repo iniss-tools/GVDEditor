@@ -42,9 +42,7 @@ public partial class FAppSettings : FAppSettingsBase
     protected override void OnLoad()
     {
         base.OnLoad();
-        cboxAutoVariant.Checked = Config.AutoVariant;
         cboxTabTextAutoGenerate.Checked = Config.AutoTableText;
-        cboxDontCheckTrainIndex.Checked = Config.DisableVariantCheck;
         nudPlayerWordPause.Value = Config.PlayerSoundsOffset;
         cboxRunAsAdmin.Checked = Config.StartupINISSConfig.RunAsAdmin;
 
@@ -66,9 +64,7 @@ public partial class FAppSettings : FAppSettingsBase
 
         Config.DateLimitLocate = (AppLanguage)cbDateLimitLanguage.SelectedValue!;
 
-        Config.AutoVariant = cboxAutoVariant.Checked;
         Config.AutoTableText = cboxTabTextAutoGenerate.Checked;
-        Config.DisableVariantCheck = cboxDontCheckTrainIndex.Checked;
         Config.PlayerSoundsOffset = decimal.ToInt32(nudPlayerWordPause.Value);
         Config.StartupINISSConfig = new StartupINISS
         {

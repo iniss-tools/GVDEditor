@@ -10,23 +10,11 @@ namespace GVDEditor.XML;
 public record GVDEditorConfig() : ConfigBase
 {
     /// <summary>
-    ///     Povolit pouzivanie automatickej spravy variant vlaku.
-    /// </summary>
-    [XmlElement("AutoVariant"), DefaultValue(false)]
-    public bool AutoVariant { get; set; }
-
-    /// <summary>
     ///     Nastavi jazyk generovania datumovych obmedzeni.
     /// </summary>
     [XmlElement("DateRemLocate"), DefaultValue(0)] 
     [Description("Nastavi jazyk generovania datumovych obmedzeni.")]
     public AppLanguage DateLimitLocate { get; set; } = AppLanguage.Slovak;
-
-    /// <summary>
-    ///     Povoli/zakaze kontrolovanie ci je aktualizacia programu dostupna.
-    /// </summary>
-    [XmlElement("DisableVariantChk"), DefaultValue(false)]
-    public bool DisableVariantCheck { get; set; }
 
     /// <summary>
     ///     Automaticky generovat texty do tabul pri ukladani do suborov.
@@ -81,9 +69,7 @@ public record GVDEditorConfig() : ConfigBase
 
     protected GVDEditorConfig(GVDEditorConfig original) : base(original)
     {
-        AutoVariant = original.AutoVariant;
         DateLimitLocate = original.DateLimitLocate;
-        DisableVariantCheck = original.DisableVariantCheck;
         AutoTableText = original.AutoTableText;
         PlayerSoundsOffset = original.PlayerSoundsOffset;
         DesktopCols = original.DesktopCols with { };

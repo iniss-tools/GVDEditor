@@ -153,13 +153,13 @@
     <value>2</value>
   </data>
   <data name="tlpMain.RowCount" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="tlpMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="tlpMain.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lBanner" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="lTrainHeader" Row="1" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="lNumber" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbNumber" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lType" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbType" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lName" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbName" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lOperator" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbOperator" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lFlagsHeader" Row="6" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="tlpFlags" Row="7" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="boxMiestenkovy" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="boxMedzistatny" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="boxDialkovy" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="boxMimoriadny" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="boxNizkopodlazny" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="boxLozkovy" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="boxPrestup" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="boxMotorovy" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="lLockoutHeader" Row="8" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="lLockout" Row="9" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbLockout" Row="9" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lLockoutInfo" Row="10" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lHint" Row="11" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lBanner" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="lTrainHeader" Row="1" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="lNumber" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbNumber" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lType" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbType" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lName" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbName" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lOperator" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbOperator" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="cbRenameSiblings" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lFlagsHeader" Row="7" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="tlpFlags" Row="8" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="boxMiestenkovy" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="boxMedzistatny" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="boxDialkovy" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="boxMimoriadny" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="boxNizkopodlazny" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="boxLozkovy" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="boxPrestup" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="boxMotorovy" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="lLockoutHeader" Row="9" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="lLockout" Row="10" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbLockout" Row="10" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lLockoutInfo" Row="11" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lHint" Row="12" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tlpMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -473,6 +473,36 @@
   <data name="&gt;&gt;cbOperator.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="cbRenameSiblings.Text" xml:space="preserve">
+    <value>Zmeniť aj ostatné varianty</value>
+  </data>
+  <data name="cbRenameSiblings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="cbRenameSiblings.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbRenameSiblings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 3</value>
+  </data>
+  <data name="cbRenameSiblings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 19</value>
+  </data>
+  <data name="cbRenameSiblings.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;cbRenameSiblings.Name" xml:space="preserve">
+    <value>cbRenameSiblings</value>
+  </data>
+  <data name="&gt;&gt;cbRenameSiblings.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbRenameSiblings.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;cbRenameSiblings.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
   <data name="lFlagsHeader.Text" xml:space="preserve">
     <value>Príznaky vlaku</value>
   </data>
@@ -504,7 +534,7 @@
     <value>tlpMain</value>
   </data>
   <data name="&gt;&gt;lFlagsHeader.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="tlpFlags.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -543,7 +573,7 @@
     <value>tlpMain</value>
   </data>
   <data name="&gt;&gt;tlpFlags.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="boxMiestenkovy.Text" xml:space="preserve">
     <value>Miestenkový</value>
@@ -816,7 +846,7 @@
     <value>tlpMain</value>
   </data>
   <data name="&gt;&gt;lLockoutHeader.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="lLockout.Text" xml:space="preserve">
     <value>Výluka:</value>
@@ -849,7 +879,7 @@
     <value>tlpMain</value>
   </data>
   <data name="&gt;&gt;lLockout.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="cbLockout.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -861,7 +891,7 @@
     <value>320, 23</value>
   </data>
   <data name="cbLockout.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;cbLockout.Name" xml:space="preserve">
     <value>cbLockout</value>
@@ -873,7 +903,7 @@
     <value>tlpMain</value>
   </data>
   <data name="&gt;&gt;cbLockout.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="lLockoutInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -903,7 +933,7 @@
     <value>tlpMain</value>
   </data>
   <data name="&gt;&gt;lLockoutInfo.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="lHint.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -933,7 +963,7 @@
     <value>tlpMain</value>
   </data>
   <data name="&gt;&gt;lHint.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

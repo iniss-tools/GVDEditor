@@ -34,8 +34,6 @@ namespace GVDEditor.Forms
             ExControls.OptionsNode optionsNode2 = new ExControls.OptionsNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FAppSettings));
             this.exGroupBox2 = new ExControls.ExGroupBox();
-            this.cboxDontCheckTrainIndex = new ExControls.ExCheckBox();
-            this.cboxAutoVariant = new ExControls.ExCheckBox();
             this.cboxTabTextAutoGenerate = new ExControls.ExCheckBox();
             this.pStartupIniss = new ExControls.ExOptionsPanel(this.optionsView);
             this.ppStartupIniss = new System.Windows.Forms.Panel();
@@ -110,39 +108,14 @@ namespace GVDEditor.Forms
             this.exGroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.exGroupBox2.AutoSize = true;
-            this.exGroupBox2.Controls.Add(this.cboxDontCheckTrainIndex);
-            this.exGroupBox2.Controls.Add(this.cboxAutoVariant);
             this.exGroupBox2.Controls.Add(this.cboxTabTextAutoGenerate);
             this.exGroupBox2.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.exGroupBox2.Location = new System.Drawing.Point(0, 3);
             this.exGroupBox2.Name = "exGroupBox2";
-            this.exGroupBox2.Size = new System.Drawing.Size(521, 101);
+            this.exGroupBox2.Size = new System.Drawing.Size(521, 47);
             this.exGroupBox2.TabIndex = 0;
             this.exGroupBox2.TabStop = false;
             this.exGroupBox2.Text = "Grafikon";
-            // 
-            // cboxDontCheckTrainIndex
-            // 
-            this.cboxDontCheckTrainIndex.AutoSize = true;
-            this.cboxDontCheckTrainIndex.BoxBackColor = System.Drawing.Color.White;
-            this.cboxDontCheckTrainIndex.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.cboxDontCheckTrainIndex.Location = new System.Drawing.Point(7, 65);
-            this.cboxDontCheckTrainIndex.Margin = new System.Windows.Forms.Padding(7, 3, 7, 3);
-            this.cboxDontCheckTrainIndex.Name = "cboxDontCheckTrainIndex";
-            this.cboxDontCheckTrainIndex.Size = new System.Drawing.Size(212, 17);
-            this.cboxDontCheckTrainIndex.TabIndex = 2;
-            this.cboxDontCheckTrainIndex.Text = "Nekontrolovať indexy vlakov pri úprave";
-            // 
-            // cboxAutoVariant
-            // 
-            this.cboxAutoVariant.AutoSize = true;
-            this.cboxAutoVariant.BoxBackColor = System.Drawing.Color.White;
-            this.cboxAutoVariant.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.cboxAutoVariant.Location = new System.Drawing.Point(7, 42);
-            this.cboxAutoVariant.Name = "cboxAutoVariant";
-            this.cboxAutoVariant.Size = new System.Drawing.Size(190, 17);
-            this.cboxAutoVariant.TabIndex = 1;
-            this.cboxAutoVariant.Text = "Automatická správa variant vlakov";
             // 
             // cboxTabTextAutoGenerate
             // 
@@ -463,7 +436,7 @@ namespace GVDEditor.Forms
             this.exGroupBox4.Controls.Add(this.nudPlayerWordPause);
             this.exGroupBox4.Controls.Add(this.label7);
             this.exGroupBox4.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.exGroupBox4.Location = new System.Drawing.Point(0, 110);
+            this.exGroupBox4.Location = new System.Drawing.Point(0, 60);
             this.exGroupBox4.Name = "exGroupBox4";
             this.exGroupBox4.Size = new System.Drawing.Size(521, 67);
             this.exGroupBox4.TabIndex = 1;
@@ -539,8 +512,6 @@ namespace GVDEditor.Forms
 
         private ExControls.ExGroupBox exGroupBox2;
         private ExControls.ExOptionsPanel pStartupIniss;
-        private ExControls.ExCheckBox cboxDontCheckTrainIndex;
-        private ExControls.ExCheckBox cboxAutoVariant;
         private ExControls.ExCheckBox cboxTabTextAutoGenerate;
         private Label label18;
         private ExControls.ExCheckBox cboxRunAsAdmin;

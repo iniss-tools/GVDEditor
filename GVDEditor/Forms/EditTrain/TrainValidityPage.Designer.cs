@@ -1,4 +1,5 @@
 ﻿using ExControls;
+using GVDEditor.Controls;
 
 namespace GVDEditor.Forms.EditTrain
 {
@@ -45,23 +46,22 @@ namespace GVDEditor.Forms.EditTrain
             llCalendar = new LinkLabel();
             lVariantHeader = new Label();
             lVariantInfo = new Label();
-            lVariant = new Label();
-            flpVariant = new FlowLayoutPanel();
-            nudVariant = new ExNumericUpDown();
-            lVariantNote = new Label();
-            lOthers = new Label();
+            strip = new VariantCalendarStrip();
             dgvVariants = new DataGridView();
+            flpOther = new FlowLayoutPanel();
             bEditOther = new ExButton();
+            bGiveThis = new ExButton();
+            bGiveOther = new ExButton();
             lHint = new Label();
-            colVariant = new DataGridViewTextBoxColumn();
+            colPosition = new DataGridViewTextBoxColumn();
+            colRoute = new DataGridViewTextBoxColumn();
             colPeriod = new DataGridViewTextBoxColumn();
             colLimit = new DataGridViewTextBoxColumn();
             colCommon = new DataGridViewTextBoxColumn();
-            ((ISupportInitialize)nudVariant).BeginInit();
             ((ISupportInitialize)dgvVariants).BeginInit();
             tlpMain.SuspendLayout();
             flpLimit.SuspendLayout();
-            flpVariant.SuspendLayout();
+            flpOther.SuspendLayout();
             SuspendLayout();
             // 
             // pScroll
@@ -83,19 +83,17 @@ namespace GVDEditor.Forms.EditTrain
             tlpMain.Controls.Add(llCalendar, 1, 4);
             tlpMain.Controls.Add(lVariantHeader, 0, 5);
             tlpMain.Controls.Add(lVariantInfo, 0, 6);
-            tlpMain.Controls.Add(lVariant, 0, 7);
-            tlpMain.Controls.Add(flpVariant, 1, 7);
-            tlpMain.Controls.Add(lOthers, 0, 8);
-            tlpMain.Controls.Add(dgvVariants, 0, 9);
-            tlpMain.Controls.Add(bEditOther, 0, 10);
-            tlpMain.Controls.Add(lHint, 0, 11);
+            tlpMain.Controls.Add(strip, 0, 7);
+            tlpMain.Controls.Add(dgvVariants, 0, 8);
+            tlpMain.Controls.Add(flpOther, 0, 9);
+            tlpMain.Controls.Add(lHint, 0, 10);
             tlpMain.Name = "tlpMain";
             tlpMain.SetColumnSpan(lLimitHeader, 2);
             tlpMain.SetColumnSpan(lVariantHeader, 2);
             tlpMain.SetColumnSpan(lVariantInfo, 2);
-            tlpMain.SetColumnSpan(lOthers, 2);
+            tlpMain.SetColumnSpan(strip, 2);
             tlpMain.SetColumnSpan(dgvVariants, 2);
-            tlpMain.SetColumnSpan(bEditOther, 2);
+            tlpMain.SetColumnSpan(flpOther, 2);
             tlpMain.SetColumnSpan(lHint, 2);
             // 
             // lLimitHeader
@@ -167,36 +165,10 @@ namespace GVDEditor.Forms.EditTrain
             resources.ApplyResources(lVariantInfo, "lVariantInfo");
             lVariantInfo.Name = "lVariantInfo";
             // 
-            // lVariant
+            // strip
             // 
-            resources.ApplyResources(lVariant, "lVariant");
-            lVariant.Name = "lVariant";
-            // 
-            // flpVariant
-            // 
-            resources.ApplyResources(flpVariant, "flpVariant");
-            flpVariant.Controls.Add(nudVariant);
-            flpVariant.Controls.Add(lVariantNote);
-            flpVariant.Name = "flpVariant";
-            // 
-            // nudVariant
-            // 
-            resources.ApplyResources(nudVariant, "nudVariant");
-            nudVariant.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
-            nudVariant.Minimum = new decimal(new int[] { 1, 0, 0, int.MinValue });
-            nudVariant.Name = "nudVariant";
-            nudVariant.Value = new decimal(new int[] { 1, 0, 0, int.MinValue });
-            nudVariant.ValueChanged += nudVariant_ValueChanged;
-            // 
-            // lVariantNote
-            // 
-            resources.ApplyResources(lVariantNote, "lVariantNote");
-            lVariantNote.Name = "lVariantNote";
-            // 
-            // lOthers
-            // 
-            resources.ApplyResources(lOthers, "lOthers");
-            lOthers.Name = "lOthers";
+            resources.ApplyResources(strip, "strip");
+            strip.Name = "strip";
             // 
             // dgvVariants
             // 
@@ -205,7 +177,7 @@ namespace GVDEditor.Forms.EditTrain
             dgvVariants.AllowUserToDeleteRows = false;
             dgvVariants.AllowUserToResizeRows = false;
             dgvVariants.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvVariants.Columns.AddRange(new DataGridViewColumn[] { colVariant, colPeriod, colLimit, colCommon });
+            dgvVariants.Columns.AddRange(new DataGridViewColumn[] { colPosition, colRoute, colPeriod, colLimit, colCommon });
             dgvVariants.MultiSelect = false;
             dgvVariants.Name = "dgvVariants";
             dgvVariants.ReadOnly = true;
@@ -214,6 +186,14 @@ namespace GVDEditor.Forms.EditTrain
             dgvVariants.CellDoubleClick += dgvVariants_CellDoubleClick;
             dgvVariants.SelectionChanged += dgvVariants_SelectionChanged;
             // 
+            // flpOther
+            // 
+            resources.ApplyResources(flpOther, "flpOther");
+            flpOther.Controls.Add(bEditOther);
+            flpOther.Controls.Add(bGiveThis);
+            flpOther.Controls.Add(bGiveOther);
+            flpOther.Name = "flpOther";
+            // 
             // bEditOther
             // 
             resources.ApplyResources(bEditOther, "bEditOther");
@@ -221,17 +201,39 @@ namespace GVDEditor.Forms.EditTrain
             bEditOther.UseVisualStyleBackColor = true;
             bEditOther.Click += bEditOther_Click;
             // 
+            // bGiveThis
+            // 
+            resources.ApplyResources(bGiveThis, "bGiveThis");
+            bGiveThis.Name = "bGiveThis";
+            bGiveThis.UseVisualStyleBackColor = true;
+            bGiveThis.Click += bGiveThis_Click;
+            // 
+            // bGiveOther
+            // 
+            resources.ApplyResources(bGiveOther, "bGiveOther");
+            bGiveOther.Name = "bGiveOther";
+            bGiveOther.UseVisualStyleBackColor = true;
+            bGiveOther.Click += bGiveOther_Click;
+            // 
             // lHint
             // 
             resources.ApplyResources(lHint, "lHint");
             lHint.Name = "lHint";
             // 
-            // colVariant
+            // colPosition
             // 
-            resources.ApplyResources(colVariant, "colVariant");
-            colVariant.Name = "colVariant";
-            colVariant.ReadOnly = true;
-            colVariant.SortMode = DataGridViewColumnSortMode.NotSortable;
+            resources.ApplyResources(colPosition, "colPosition");
+            colPosition.Name = "colPosition";
+            colPosition.ReadOnly = true;
+            colPosition.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colRoute
+            // 
+            resources.ApplyResources(colRoute, "colRoute");
+            colRoute.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colRoute.Name = "colRoute";
+            colRoute.ReadOnly = true;
+            colRoute.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // colPeriod
             // 
@@ -243,7 +245,6 @@ namespace GVDEditor.Forms.EditTrain
             // colLimit
             // 
             resources.ApplyResources(colLimit, "colLimit");
-            colLimit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colLimit.Name = "colLimit";
             colLimit.ReadOnly = true;
             colLimit.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -261,10 +262,9 @@ namespace GVDEditor.Forms.EditTrain
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(pScroll);
             Name = "TrainValidityPage";
-            ((ISupportInitialize)nudVariant).EndInit();
             ((ISupportInitialize)dgvVariants).EndInit();
-            flpVariant.ResumeLayout(false);
-            flpVariant.PerformLayout();
+            flpOther.ResumeLayout(false);
+            flpOther.PerformLayout();
             flpLimit.ResumeLayout(false);
             flpLimit.PerformLayout();
             tlpMain.ResumeLayout(false);
@@ -289,15 +289,15 @@ namespace GVDEditor.Forms.EditTrain
         private LinkLabel llCalendar;
         private Label lVariantHeader;
         private Label lVariantInfo;
-        private Label lVariant;
-        private FlowLayoutPanel flpVariant;
-        private ExNumericUpDown nudVariant;
-        private Label lVariantNote;
-        private Label lOthers;
+        private VariantCalendarStrip strip;
         private DataGridView dgvVariants;
+        private FlowLayoutPanel flpOther;
         private ExButton bEditOther;
+        private ExButton bGiveThis;
+        private ExButton bGiveOther;
         private Label lHint;
-        private DataGridViewTextBoxColumn colVariant;
+        private DataGridViewTextBoxColumn colPosition;
+        private DataGridViewTextBoxColumn colRoute;
         private DataGridViewTextBoxColumn colPeriod;
         private DataGridViewTextBoxColumn colLimit;
         private DataGridViewTextBoxColumn colCommon;

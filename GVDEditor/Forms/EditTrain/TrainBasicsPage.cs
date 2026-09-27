@@ -77,6 +77,9 @@ public partial class TrainBasicsPage : UserControl, ITrainPage
         boxMotorovy.Checked = draft.IsMotorovy;
 
         FillLockouts(draft.LockoutNumber);
+        cbRenameSiblings.Checked = draft.RenameSiblings;
+        cbRenameSiblings.Text = string.Format(CultureInfo.CurrentCulture, Resources.TrainBasicsPage_ZmenitVarianty, draft.Siblings.Count);
+        cbRenameSiblings.Visible = false;
         _loading = false;
     }
 
@@ -92,6 +95,9 @@ public partial class TrainBasicsPage : UserControl, ITrainPage
         var mine = problems.Where(problem => IsMine(problem.Field)).ToList();
         _marks.Mark(mine.Where(problem => !problem.IsWarning && problem.Field == TrainRules.Field.Number).Select(_ => (Control)tbNumber));
         TrainPageHint.Show(lHint, mine, _hintColor);
+
+        // pole ma zmysel, len kym sa cislo, nazov alebo typ vlaku s variantmi lisi od povodneho
+        cbRenameSiblings.Visible = _draft.Siblings.Count != 0 && _draft.KeyChanged;
     }
 
     /// <inheritdoc />
@@ -156,6 +162,15 @@ public partial class TrainBasicsPage : UserControl, ITrainPage
     private void cbOperator_SelectionChangeCommitted(object? sender, EventArgs e)
     {
         _draft.Operator = cbOperator.SelectedItem as Operator;
+        OnChanged();
+    }
+
+    private void cbRenameSiblings_CheckedChanged(object? sender, EventArgs e)
+    {
+        if (_loading)
+            return;
+
+        _draft.RenameSiblings = cbRenameSiblings.Checked;
         OnChanged();
     }
 

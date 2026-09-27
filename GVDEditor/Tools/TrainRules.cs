@@ -11,11 +11,8 @@ namespace GVDEditor.Tools;
 /// </summary>
 /// <param name="Trains">vsetky vlaky grafikonu</param>
 /// <param name="Row">riadok upravovaneho vlaku v <paramref name="Trains" />; pri novom vlaku a kopii pocet vlakov</param>
-/// <param name="AutoVariant">varianty prideluje GVDEditor sam</param>
-/// <param name="DisableVariantCheck">varianta jedineho vlaku nemusi byt -1</param>
 /// <param name="HomeStationId">stanica grafikonu - do trasy sa nepise; <see langword="null" />, ak nie je znama</param>
-internal sealed record TrainContext(IReadOnlyList<Train> Trains, int Row, bool AutoVariant, bool DisableVariantCheck,
-    string? HomeStationId = null);
+internal sealed record TrainContext(IReadOnlyList<Train> Trains, int Row, string? HomeStationId = null);
 
 /// <summary>
 ///     Kontrola vlaku upravovaneho v okne vlaku. Chyby brania ulozeniu, upozornenia nie.
@@ -38,7 +35,6 @@ internal static partial class TrainRules
         LineDeparture,
         Validity,
         DateLimit,
-        Variant,
         Dodatok,
         Radenie
     }
@@ -105,13 +101,10 @@ internal static partial class TrainRules
             problems.Add(new Problem(Field.DateLimit, limitError));
 
         var others = TrainVariants.Others(draft, context);
-        if (CheckVariant(draft.Variant, others, context) is { } variant)
-            problems.Add(variant);
-
         if (validPeriod && limitError == null)
             foreach (var (other, days) in TrainVariants.Overlaps(draft, others))
                 problems.Add(new Problem(Field.DateLimit, string.Format(CultureInfo.CurrentCulture, Resources.TrainRules_Prekrytie,
-                    Label(other), other.Variant, days), true));
+                    Label(other), $"{TrainVariants.PositionOf(other, draft, others)}/{others.Count + 1}", days), true));
 
         for (var i = 0; i < draft.Doplnky.Count; i++)
             if (draft.Doplnky[i].ChosenReports.All(chosen => chosen.Variants.Count == 0))
@@ -170,28 +163,6 @@ internal static partial class TrainRules
     }
 
     /// <summary>
-    ///     Chyba alebo upozornenie varianty podla ostatnych vlakov s rovnakym cislom, nazvom a typom.
-    ///     Pri automatickej sprave variant ich prideluje GVDEditor, takze sa nekontroluju.
-    /// </summary>
-    public static Problem? CheckVariant(int variant, IReadOnlyCollection<Train> others, TrainContext context)
-    {
-        if (context.AutoVariant)
-            return null;
-
-        if (others.Count == 0)
-            return variant != -1 && !context.DisableVariantCheck
-                ? new Problem(Field.Variant, Resources.FEditTrain_Tento_vlak_nemá_iné_varianty_a_preto_mu_bude_varianta_nastavená_na_hodnotu_Minus_1, true)
-                : null;
-
-        if (variant == -1)
-            return new Problem(Field.Variant, Resources.FEditTrain_bSave_Click_Varianta_tohto_vlaku_nemôže_byť_Minus_1);
-
-        return others.Any(other => other.Variant == variant)
-            ? new Problem(Field.Variant, Resources.FEditTrain_bSave_Click_Vybraná_varianta_vlaku_sa_už_používa_pri_inom_vlaku)
-            : null;
-    }
-
-    /// <summary>
     ///     Cas v tvare HH:mm; prazdne pole nie je cas (<see cref="Utils.ParseTime" /> by vratil polnoc).
     /// </summary>
     public static bool TryParseTime(string? text, out DateTime time)
@@ -231,104 +202,4 @@ internal static partial class TrainRules
 
     [GeneratedRegex("^[a-zA-Z0-9]{1,20}$")]
     private static partial Regex LinePattern();
-}
-
-/// <summary>
-///     Varianty vlaku - vlaky s rovnakym cislom, nazvom a typom v jednom grafikone.
-/// </summary>
-internal static class TrainVariants
-{
-    /// <summary>
-    ///     Ostatne vlaky s rovnakym cislom, nazvom a typom ako koncept (bez upravovaneho riadku).
-    /// </summary>
-    public static List<Train> Others(TrainDraft draft, TrainContext context)
-    {
-        var others = new List<Train>();
-        for (var i = 0; i < context.Trains.Count; i++)
-        {
-            var train = context.Trains[i];
-            if (i != context.Row && train.Number == draft.Number && train.Name == draft.Name && train.Type == draft.Type)
-                others.Add(train);
-        }
-
-        return others;
-    }
-
-    /// <summary>
-    ///     Varianty s rovnakym obdobim platnosti, ktorych datumove obmedzenie ma s konceptom spolocne dni;
-    ///     <c>Days</c> je obmedzenie spolocnych dni. Variant s necitatelnym obmedzenim sa preskoci.
-    /// </summary>
-    public static List<(Train Train, string Days)> Overlaps(TrainDraft draft, IEnumerable<Train> others)
-    {
-        var result = new List<(Train, string)>();
-        if (draft.ValidTo.Date < draft.ValidFrom.Date)
-            return result;
-
-        var limit = new DateLimit(draft.ValidFrom.Date, draft.ValidTo.Date, true, true, false, false);
-        foreach (var other in others)
-        {
-            if (other.ZaciatokPlatnosti.Date != draft.ValidFrom.Date || other.KoniecPlatnosti.Date != draft.ValidTo.Date)
-                continue;
-
-            try
-            {
-                var otherLimit = draft.LimitOf(other);
-                if (limit.Overlap(otherLimit, draft.DateLimitText))
-                    result.Add((other, limit.TextAnd(otherLimit, draft.DateLimitText)));
-            }
-            catch (DateLimit.ParseException)
-            {
-                // obmedzenie inej varianty sa neda precitat - prekrytie sa neda zistit
-            }
-        }
-
-        return result;
-    }
-
-    /// <summary>
-    ///     Navrh obmedzenia inej varianty bez dni, v ktore ide upravovany vlak; <see langword="null" />, ak sa
-    ///     obmedzenia nedaju precitat.
-    /// </summary>
-    public static string? WithoutCommonDays(TrainDraft draft, Train other)
-    {
-        if (draft.ValidTo.Date < draft.ValidFrom.Date)
-            return null;
-
-        var limit = new DateLimit(draft.ValidFrom.Date, draft.ValidTo.Date, true, true, false, false);
-        try
-        {
-            return limit.TextAnd(draft.LimitOf(other), limit.TextNot(draft.DateLimitText));
-        }
-        catch (DateLimit.ParseException)
-        {
-            return null;
-        }
-    }
-
-    /// <summary>
-    ///     Nastavi variantu ulozeneho vlaku. Bez automatickej spravy dostane jediny vlak -1 (ak to nie je vypnute),
-    ///     inak zvolenu variantu. Pri automatickej sprave dostane novy vlak a jeho varianty poradie 1, 2, …
-    ///     a jediny vlak -1; upraveny vlak variantu nemeni.
-    /// </summary>
-    /// <param name="train">ukladany vlak</param>
-    /// <param name="variant">varianta zvolena v okne</param>
-    /// <param name="others">ostatne varianty (<see cref="Others" />)</param>
-    /// <param name="isNew">novy vlak alebo kopia</param>
-    /// <param name="context">nastavenia variant</param>
-    public static void Assign(Train train, int variant, IReadOnlyList<Train> others, bool isNew, TrainContext context)
-    {
-        if (!context.AutoVariant)
-        {
-            train.Variant = others.Count == 0 && variant != -1 && !context.DisableVariantCheck ? -1 : variant;
-            return;
-        }
-
-        if (!isNew)
-            return;
-
-        for (var i = 0; i < others.Count; i++)
-            others[i].Variant = i + 1;
-
-        train.Variant = others.Count == 0 ? -1 : others.Count + 1;
-    }
 }
