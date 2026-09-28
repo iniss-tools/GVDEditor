@@ -39,9 +39,9 @@ internal class FunctionItem : AutocompleteItem
 
     public override CompareResult Compare(string fragmentText)
     {
-        if (Text.StartsWith(fragmentText.ToUpper()))
+        if (Text.StartsWith(fragmentText.ToUpperInvariant(), StringComparison.Ordinal))
             return CompareResult.VisibleAndSelected;
-        if (Text.Contains(fragmentText.ToUpper()))
+        if (Text.Contains(fragmentText.ToUpperInvariant()))
             return CompareResult.Visible;
         return CompareResult.Hidden;
     }
@@ -62,9 +62,9 @@ internal class ConstantItem : AutocompleteItem
 
     public override CompareResult Compare(string fragmentText)
     {
-        if (Text.StartsWith(fragmentText.ToUpper()))
+        if (Text.StartsWith(fragmentText.ToUpperInvariant(), StringComparison.Ordinal))
             return CompareResult.VisibleAndSelected;
-        if (Text.Contains(fragmentText.ToUpper()))
+        if (Text.Contains(fragmentText.ToUpperInvariant()))
             return CompareResult.Visible;
 
         return CompareResult.Hidden;
@@ -83,7 +83,7 @@ internal class EventItem : AutocompleteItem
 
     public override CompareResult Compare(string fragmentText)
     {
-        if (Text.StartsWith(fragmentText.ToUpper()))
+        if (Text.StartsWith(fragmentText.ToUpperInvariant(), StringComparison.Ordinal))
             return CompareResult.VisibleAndSelected;
         return CompareResult.Hidden;
     }

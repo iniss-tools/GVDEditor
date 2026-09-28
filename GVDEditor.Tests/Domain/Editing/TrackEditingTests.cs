@@ -75,13 +75,13 @@ public class TrackEditingTests
 
             TrackEditing.Remove(t1, tracks, trains);
 
-            TxtParser.WriteTracks(dir.FullName, tracks);
+            TracksFile.Write(dir.FullName, tracks);
             var pozice = Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE);
-            TxtParser.WritePositions(pozice, trains, []);
+            PoziceFile.Write(pozice, trains, []);
 
-            var readTracks = TxtParser.ReadTracks(dir.FullName);
+            var readTracks = TracksFile.Read(dir.FullName, []);
             List<Train> readTrains = [new(), new(), new(), new()];
-            TxtParser.ReadPositions(pozice, readTrains, readTracks);
+            PoziceFile.Read(pozice, readTrains, readTracks);
 
             CollectionAssert.AreEqual(new[] { "N", "2", "3" }, readTracks.Select(t => t.Key).ToArray());
             CollectionAssert.AreEqual(new[] { "N", "2", "N", "3" }, readTrains.Select(t => t.Track.Key).ToArray());
@@ -103,10 +103,10 @@ public class TrackEditingTests
         {
             var tracks = Tracks();
             var pozice = Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE);
-            TxtParser.WritePositions(pozice, [NewTrain(tracks[2], tracks[1])], []);
+            PoziceFile.Write(pozice, [NewTrain(tracks[2], tracks[1])], []);
             tracks.RemoveAt(1);
 
-            Assert.ThrowsExactly<FormatException>(() => TxtParser.ReadPositions(pozice, [new Train()], tracks));
+            Assert.ThrowsExactly<FormatException>(() => PoziceFile.Read(pozice, [new Train()], tracks));
         }
         finally
         {
@@ -123,12 +123,12 @@ public class TrackEditingTests
         {
             GlobData.TableLogicals = new ExBindingList<TableLogical>();
 
-            TxtParser.WriteTracks(dir.FullName, [Track.None, NewTrack("6V", Platform1, "6")]);
+            TracksFile.Write(dir.FullName, [Track.None, NewTrack("6V", Platform1, "6")]);
 
             var line = File.ReadAllLines(Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE_A), ToolsCore.Tools.Encodings.Win1250)[1];
             StringAssert.StartsWith(line, "\"6V\",\"6V\",\"Koľaj 6V\",\"Nástupište 1\",\"6\",\"1\",");
 
-            var read = TxtParser.ReadTracks(dir.FullName)[1];
+            var read = TracksFile.Read(dir.FullName, [])[1];
             Assert.AreEqual("6V", read.Name);
             Assert.AreEqual("6", read.TrackName);
         }
@@ -145,7 +145,7 @@ public class TrackEditingTests
         // INISS 3.39: funkcie 19/20 (Nastupiste...) citaju stlpec 5, 21/22 (Kolej...) stlpec 6 Pozice_A
         var arrival = NewTrack("6V", Platform1, "6");
         var departure = NewTrack("5", Platform2);
-        var train = new Train { Track = arrival, TrackDeparture = departure, Arrival = DateTime.Today, Departure = DateTime.Today };
+        var train = new Train { Track = arrival, TrackDeparture = departure, Arrival = TimeOnly.MinValue, Departure = TimeOnly.MinValue };
         var context = new GvdTrainContext(train, new TrainRuntime(), 0);
 
         string Value(TableFillSection section) => context.OwnValue(new TableItem { FillSection = section }).Text;
@@ -183,7 +183,7 @@ public class TrackEditingTests
         {
             GlobData.TableLogicals = new ExBindingList<TableLogical>();
             File.WriteAllLines(Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE_A), lines, ToolsCore.Tools.Encodings.Win1250);
-            return TxtParser.ReadTracks(dir.FullName).Skip(1).ToList();
+            return TracksFile.Read(dir.FullName, []).Skip(1).ToList();
         }
         finally
         {

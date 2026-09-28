@@ -31,9 +31,9 @@ internal static class RadenieRules
     {
         var problems = new List<(Field, string)>();
 
-        if (radenie.HasValidity)
+        if (radenie.Validity is { } validity)
         {
-            if (radenie.KonPlatnosti.Date <= radenie.ZacPlatnosti.Date)
+            if (validity.To <= validity.From)
             {
                 problems.Add((Field.Validity, Resources.FEditTrain_Začiatok_platnosti_radenia_je_neskôr_ako_jeho_koniec));
             }
@@ -58,7 +58,7 @@ internal static class RadenieRules
     {
         try
         {
-            new DateLimit(radenie.ZacPlatnosti.Date, radenie.KonPlatnosti.Date).TextToBitArray(radenie.DatObm ?? "");
+            new DateLimit(radenie.Validity!.Value.From, radenie.Validity.Value.To).TextToBitArray(radenie.DatObm ?? "");
             return null;
         }
         catch (Exception ex)
@@ -76,11 +76,11 @@ internal static class RadenieRules
         {
             var other = radenia[i];
             // dvojica sa hlasi len pri neskorsom radeni - pridane radenie neoznaci chybou radenie, ktore uz bolo v poriadku
-            if (i == index || (index >= 0 && i > index) || other.ZacPlatnosti.Date != radenie.ZacPlatnosti.Date ||
-                other.KonPlatnosti.Date != radenie.KonPlatnosti.Date || other.DestStation?.ID != radenie.DestStation?.ID)
+            if (i == index || (index >= 0 && i > index) || other.Validity != radenie.Validity ||
+                other.Validity is not { } validity || other.DestStation?.ID != radenie.DestStation?.ID)
                 continue;
 
-            var limit = new DateLimit(other.ZacPlatnosti.Date, other.KonPlatnosti.Date, insertMarks: false);
+            var limit = new DateLimit(validity.From, validity.To, insertMarks: false);
             try
             {
                 if (limit.Overlap(other.DatObm ?? "", radenie.DatObm ?? ""))

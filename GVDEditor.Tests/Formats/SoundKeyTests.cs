@@ -51,19 +51,19 @@ public class SoundKeyTests
             // male pismena, dvojdielny zapis a odkaz podla nazvov (ten INISS nenajde)
             File.WriteAllLines(file, ["#721,P,,,", "sk/vlaknum/nmen", "CZ/POZ7/ZALOK", "Poz7/zalok", "SK/Číslovky/NFMEN"], Encodings.Win1250);
 
-            var radenia = TxtParser.ReadRazeni1(dir.FullName, Sounds);
+            var radenia = RazeniFile.Read(dir.FullName, Sounds, GrafikonContext.Current);
 
             Assert.HasCount(1, radenia);
             CollectionAssert.AreEqual(new[] { Nmen, CzZalok, SkZalok }, radenia[0].Sounds);
             Assert.HasCount(1, LoadWarnings.Items);
             StringAssert.Contains(LoadWarnings.Items[0], "SK/Číslovky/NFMEN");
 
-            TxtParser.WriteRazeni1(dir.FullName, radenia, [Sk, Cz]);
+            RazeniFile.Write(dir.FullName, radenia, [Sk, Cz], GlobData.ReportVariants);
             var refs = File.ReadAllLines(file, Encodings.Win1250).Where(line => !line.StartsWith('#') && !line.StartsWith(';')).ToList();
 
             CollectionAssert.AreEqual(new[] { "SK/VlakNum/NMEN", "CZ/Poz7/zalok", "SK/Poz7/zalok" }, refs);
 
-            var again = TxtParser.ReadRazeni1(dir.FullName, Sounds);
+            var again = RazeniFile.Read(dir.FullName, Sounds, GrafikonContext.Current);
             CollectionAssert.AreEqual(radenia[0].Sounds, again[0].Sounds);
         }
         finally

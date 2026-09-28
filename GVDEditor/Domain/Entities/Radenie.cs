@@ -17,20 +17,15 @@ public sealed class Radenie
     }
 
     /// <summary>
-    /// Začiatok platnosti radenia vlaku
+    /// Obdobie platnosti radenia vlaku; <see langword="null" /> = plati bez obmedzenia. Zaznam s prazdnymi datumami
+    /// v Razeni1.txt INISS pri datume vobec nekontroluje.
     /// </summary>
-    public DateTime ZacPlatnosti { get; set; }
+    public ValidityPeriod? Validity { get; set; }
 
     /// <summary>
-    /// Koniec platnosti radenia vlaku
+    /// Ci ma radenie zadane obdobie platnosti.
     /// </summary>
-    public DateTime KonPlatnosti { get; set; }
-
-    /// <summary>
-    /// Ci ma radenie zadane obdobie platnosti. Zaznam s prazdnymi datumami v Razeni1.txt plati bez obmedzenia -
-    /// INISS pri nom datum vobec nekontroluje (<see cref="ZacPlatnosti" /> je vtedy <see cref="DateTime.MinValue" />).
-    /// </summary>
-    public bool HasValidity => ZacPlatnosti != DateTime.MinValue;
+    public bool HasValidity => Validity is not null;
 
     /// <summary>
     /// Dátumové obmedzenie ako text

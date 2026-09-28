@@ -5,7 +5,7 @@ using ToolsCore.Entities;
 namespace GVDEditor.Tests.Domain.Documents;
 
 /// <summary>
-/// Otvoreny grafikon: nacitanie do noveho dokumentu a jeho vymena naraz (hlavne okno pocas nacitania vidi povodny).
+/// Otvoreny grafikon: vyprazdnenie, novy grafikon a odvodene typy hlaseni.
 /// </summary>
 [TestClass]
 public class GrafikonDocumentTests
@@ -17,59 +17,6 @@ public class GrafikonDocumentTests
 
     [TestCleanup]
     public void Cleanup() => GlobData.OpenDocument(_original);
-
-    [TestMethod]
-    public void Nacitanie_ZapisujeDoNovehoDokumentu_OtvorenyOstavaNezmeneny()
-    {
-        var open = new GrafikonDocument { Operators = [Operator.None] };
-        GlobData.OpenDocument(open);
-        var loaded = GlobData.LoadDocument(() =>
-        {
-            GlobData.Operators = [Operator.None, new Operator(1, "ZSSK")];
-            // parser pocas nacitania cita uz nove data (napr. dopravcov pre vlaky)
-            Assert.HasCount(2, GlobData.Operators);
-        });
-
-        Assert.AreSame(open, GlobData.Document);
-        Assert.HasCount(1, GlobData.Operators);
-        Assert.HasCount(2, loaded.Operators);
-
-        GlobData.OpenDocument(loaded);
-        Assert.AreEqual("ZSSK", GlobData.Operators[1].Name);
-    }
-
-    [TestMethod]
-    public void Nacitanie_InyVlakno_VidiOtvorenyDokument()
-    {
-        var open = new GrafikonDocument();
-        GlobData.OpenDocument(open);
-        GrafikonDocument? seenFromOtherThread = null;
-
-        GlobData.LoadDocument(() =>
-        {
-            var thread = new Thread(() => seenFromOtherThread = GlobData.Document);
-            thread.Start();
-            thread.Join();
-        });
-
-        Assert.AreSame(open, seenFromOtherThread);
-    }
-
-    [TestMethod]
-    public void Nacitanie_Chyba_OtvorenyDokumentOstane()
-    {
-        var open = new GrafikonDocument();
-        GlobData.OpenDocument(open);
-
-        Assert.ThrowsExactly<FormatException>(() => GlobData.LoadDocument(() =>
-        {
-            GlobData.Tracks = [Track.None];
-            throw new FormatException("chyba v polovici nacitania");
-        }));
-
-        Assert.AreSame(open, GlobData.Document);
-        Assert.IsEmpty(GlobData.Tracks);
-    }
 
     [TestMethod]
     public void Vyprazdnenie_ZachovaZoznamVlakov()

@@ -124,7 +124,7 @@ internal sealed class RadeniaEditing
             if (!result.Contains(r) && !KeptByOthers(r))
                 globalRadenia.Remove(r);
 
-        // rovnako ako pri nacitani grafikonu (TxtParser.ReadTrains)
+        // rovnako ako pri nacitani grafikonu (TrainsFile.Read)
         foreach (var vlak in all.Where(t => numbers.Contains(t.Number)))
         {
             vlak.Radenia.Clear();
@@ -144,8 +144,7 @@ internal sealed class RadeniaEditing
 
     private static void CopyTo(Radenie source, Radenie target)
     {
-        target.ZacPlatnosti = source.ZacPlatnosti;
-        target.KonPlatnosti = source.KonPlatnosti;
+        target.Validity = source.Validity;
         target.DatObm = source.DatObm;
         target.Text = source.Text;
         target.DestStation = source.DestStation;

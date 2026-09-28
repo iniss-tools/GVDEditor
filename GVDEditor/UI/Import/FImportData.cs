@@ -279,8 +279,8 @@ public partial class FImportData : Form
                         throw new ArgumentException(string.Format(fmtException, dataOdchod, i + 1, iOdchod,
                             selectedColumnTypes[iOdchod], typeof(DateTime)));
 
-                    train.Arrival = timePrichod;
-                    train.Departure = timeOdchod;
+                    train.Arrival = TimeOnly.FromDateTime(timePrichod);
+                    train.Departure = TimeOnly.FromDateTime(timeOdchod);
                 }
                 else if (train.Routing == Routing.Vychadzajuci)
                 {
@@ -288,7 +288,7 @@ public partial class FImportData : Form
                         throw new ArgumentException(string.Format(fmtException, dataOdchod, i + 1, iOdchod,
                             selectedColumnTypes[iOdchod], typeof(DateTime)));
 
-                    train.Departure = timeOdchod;
+                    train.Departure = TimeOnly.FromDateTime(timeOdchod);
                 }
                 else
                 {
@@ -296,7 +296,7 @@ public partial class FImportData : Form
                         throw new ArgumentException(string.Format(fmtException, dataPrichod, i + 1, iPrichod,
                             selectedColumnTypes[iPrichod], typeof(DateTime)));
 
-                    train.Arrival = timePrichod;
+                    train.Arrival = TimeOnly.FromDateTime(timePrichod);
                 }
 
                 if (selectedColumnTypes.Contains(ImportTrainColumnType.PlatnostOd))
@@ -308,7 +308,7 @@ public partial class FImportData : Form
                         throw new ArgumentException(string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index],
                             typeof(DateTime)));
 
-                    train.ZaciatokPlatnosti = date;
+                    train.ZaciatokPlatnosti = DateOnly.FromDateTime(date);
                 }
 
                 if (selectedColumnTypes.Contains(ImportTrainColumnType.PlatnostDo))
@@ -320,7 +320,7 @@ public partial class FImportData : Form
                         throw new ArgumentException(string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index],
                             typeof(DateTime)));
 
-                    train.KoniecPlatnosti = date;
+                    train.KoniecPlatnosti = DateOnly.FromDateTime(date);
                 }
 
                 train.Operator ??= Operator.None;

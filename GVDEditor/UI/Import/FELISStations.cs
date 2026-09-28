@@ -29,7 +29,7 @@ public partial class FELISStations : Form
 
     /// <summary>
     /// Vysledne priradenie: nazov z ELIS -> ID stanice, alebo
-    /// <see cref="TxtParser.ELIS_MAP_SKIP" /> ak sa ma stanica vynechat.
+    /// <see cref="ElisMapFile.ELIS_MAP_SKIP" /> ak sa ma stanica vynechat.
     /// </summary>
     internal Dictionary<string, string> Result { get; } = new(StringComparer.OrdinalIgnoreCase);
 
@@ -185,12 +185,12 @@ public partial class FELISStations : Form
 
             if (string.IsNullOrEmpty(chosen) || chosen == SkipItem)
             {
-                Result[elisName] = TxtParser.ELIS_MAP_SKIP;
+                Result[elisName] = ElisMapFile.ELIS_MAP_SKIP;
                 continue;
             }
 
             var station = _stations.FirstOrDefault(s => s.Name == chosen);
-            Result[elisName] = station is null ? TxtParser.ELIS_MAP_SKIP : station.ID;
+            Result[elisName] = station is null ? ElisMapFile.ELIS_MAP_SKIP : station.ID;
         }
 
         DialogResult = DialogResult.OK;

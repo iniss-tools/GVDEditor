@@ -60,7 +60,7 @@ internal static partial class TrainRules
         if (draft.Operator is null)
             problems.Add(new Problem(Field.Operator, Resources.TrainRules_Dopravca));
 
-        DateTime? arrival = null, departure = null;
+        TimeOnly? arrival = null, departure = null;
         if (draft.RouteFrom.Count != 0)
         {
             if (TryParseTime(draft.ArrivalText, out var time))
@@ -84,7 +84,7 @@ internal static partial class TrainRules
             problems.Add(new Problem(Field.Route, Resources.TrainRules_TrasaSToutoStanicou, true));
 
         // odchod skor ako prichod = vlak stoji v stanici cez polnoc (odchod je nasledujuci den)
-        if (arrival is { } a && departure is { } d && d.TimeOfDay < a.TimeOfDay)
+        if (arrival is { } a && departure is { } d && d < a)
             problems.Add(new Problem(Field.Departure, Resources.TrainRules_CezPolnoc, true));
 
         if (draft.Track is null)
@@ -94,7 +94,7 @@ internal static partial class TrainRules
         if (CheckLine(draft.LineDeparture) is { } lineDeparture)
             problems.Add(new Problem(Field.LineDeparture, lineDeparture));
 
-        var validPeriod = draft.ValidFrom.Date <= draft.ValidTo.Date;
+        var validPeriod = draft.ValidFrom <= draft.ValidTo;
         if (!validPeriod)
             problems.Add(new Problem(Field.Validity, Resources.FEditTrain_bSave_Click_Začiatok_platnosti_musí_skôr_ako_koniec_platnosti));
 
@@ -148,14 +148,14 @@ internal static partial class TrainRules
     /// <summary>
     /// Chyba datumoveho obmedzenia v obdobi platnosti; <see langword="null" />, ak sa da precitat.
     /// </summary>
-    public static string? CheckDateLimit(string? text, DateTime from, DateTime to)
+    public static string? CheckDateLimit(string? text, DateOnly from, DateOnly to)
     {
-        if (to.Date < from.Date)
+        if (to < from)
             return Resources.FEditTrain_bSave_Click_Začiatok_platnosti_musí_skôr_ako_koniec_platnosti;
 
         try
         {
-            new DateLimit(from.Date, to.Date).TextToBitArray(text ?? "");
+            new DateLimit(from, to).TextToBitArray(text ?? "");
             return null;
         }
         catch (Exception ex)
@@ -167,10 +167,14 @@ internal static partial class TrainRules
     /// <summary>
     /// Cas v tvare HH:mm; prazdne pole nie je cas (<see cref="Utils.ParseTime" /> by vratil polnoc).
     /// </summary>
-    public static bool TryParseTime(string? text, out DateTime time)
+    public static bool TryParseTime(string? text, out TimeOnly time)
     {
         time = default;
-        return !string.IsNullOrWhiteSpace(text) && Utils.TryParseTime(text.Trim(), out time);
+        if (string.IsNullOrWhiteSpace(text) || !Utils.TryParseTime(text.Trim(), out var parsed))
+            return false;
+
+        time = TimeOnly.FromDateTime(parsed);
+        return true;
     }
 
     /// <summary>

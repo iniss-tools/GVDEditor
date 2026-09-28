@@ -120,7 +120,7 @@ public partial class FEditTrain : Form
         // INISS jazyk, ktory grafikon nepouziva, u vlaku preskoci - ponukaju sa len jazyky grafikonu
         languagesPage.LoadData(_draft, GrafikonLanguageRules.Offered(GlobData.Languages, GlobData.LocalLanguages, _draft.Languages));
         dodatkyPage.LoadData(_draft, GlobData.Sounds.Where(sound => sound.Group.Key.EqualsIgnoreCase("DODATKY")));
-        radeniePage.LoadData(_draft, gvd.StartValidTimeTable, gvd.EndValidTimeTable);
+        radeniePage.LoadData(_draft, gvd.StartValidTimeTable.ToDateTime(), gvd.EndValidTimeTable.ToDateTime());
         _pages = [trainPage, routePage, validityPage, languagesPage, dodatkyPage, radeniePage];
         foreach (var page in _pages)
             page.Changed += (_, _) => Recheck();
@@ -336,7 +336,7 @@ public partial class FEditTrain : Form
         {
             try
             {
-                return TxtParser.ReadStateDgm(dir);
+                return StateDgmFile.Read(dir);
             }
             catch (ToolsCore.StateDgm.StateDgmParseException)
             {

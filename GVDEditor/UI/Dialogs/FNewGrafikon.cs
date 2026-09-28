@@ -119,11 +119,11 @@ public partial class FNewGrafikon : Form
                 ((Station)cbStationName.SelectedItem!).Name);
         }
 
-        gvd.StartValidData = odD;
-        gvd.EndValidData = doD;
-        gvd.StartValidTimeTable = odG;
-        gvd.EndValidTimeTable = doG;
-        gvd.CreateData = DateTime.Today;
+        gvd.StartValidData = DateOnly.FromDateTime(odD);
+        gvd.EndValidData = DateOnly.FromDateTime(doD);
+        gvd.StartValidTimeTable = DateOnly.FromDateTime(odG);
+        gvd.EndValidTimeTable = DateOnly.FromDateTime(doG);
+        gvd.CreateData = DateOnly.FromDateTime(DateTime.Today);
 
         gvd.IsRegionText = true;
         gvd.Category = 1;
@@ -156,7 +156,7 @@ public partial class FNewGrafikon : Form
 
             foreach (var obd in _grafikony)
             {
-                var compare = new Interval(obd.GVD.StartValidTimeTable, obd.GVD.EndValidTimeTable);
+                var compare = new Interval(obd.GVD.StartValidTimeTable.ToDateTime(), obd.GVD.EndValidTimeTable.ToDateTime());
 
                 if (obd.GVD.ThisStation.Name == gvd.ThisStation.Name && interval.Overlaps(compare)) o = true;
             }

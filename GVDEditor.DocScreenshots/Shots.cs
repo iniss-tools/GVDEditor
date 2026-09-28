@@ -17,6 +17,7 @@ using GVDEditor.UI.Settings;
 using GVDEditor.UI.StateDgm;
 using GVDEditor.UI.TabTab;
 using ToolsCore.StateDgm;
+using ToolsCore.Tools;
 
 namespace GVDEditor.DocScreenshots;
 
@@ -220,7 +221,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             var emptyTab = new TableTabTab { Key = "Rezerva", Text = "" };
             var endValidData = gvdDir.GVD.EndValidData;
             GlobData.TabTabs.Add(emptyTab);
-            gvdDir.GVD.EndValidData = new DateTime(2026, 6, 30);
+            gvdDir.GVD.EndValidData = new DateOnly(2026, 6, 30);
             Shot("analyza-grafikonu/analyza-grafikonu", () => new FAnalyzer(gvdDir), form =>
             {
                 Resize(form, 820, 360);
@@ -237,7 +238,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             // generátor s obdobím grafikonu a vygenerovaným poľom bitov
             var gvdInfo = gvdDir.GVD;
             const string sampleLimit = "ide v 1-5, nejde 24.XII., 31.XII.";
-            Shot("datumove-obmedzenia/generator", () => new FDatObm(gvdInfo.StartValidTimeTable, gvdInfo.EndValidTimeTable), form =>
+            Shot("datumove-obmedzenia/generator", () => new FDatObm(gvdInfo.StartValidTimeTable.ToDateTime(), gvdInfo.EndValidTimeTable.ToDateTime()), form =>
             {
                 ((TextBox)Field(form, "tbDatObm")).Text = sampleLimit;
                 form.GetType().GetMethod("bGenerate_Click", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(form, [form, EventArgs.Empty]);
@@ -258,7 +259,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 type.GetField("_textChanging", flags)!.SetValue(form, true);
                 ((TextBox)Field(form, "tbDateLimit")).Text = sampleLimit;
                 ((TextBox)Field(form, "tbOldDateLimit")).Text = express.DateLimitText;
-                type.GetMethod("InitCalendar", flags)!.Invoke(form, [gvdInfo.StartValidTimeTable, gvdInfo.EndValidTimeTable]);
+                type.GetMethod("InitCalendar", flags)!.Invoke(form, [gvdInfo.StartValidTimeTable.ToDateTime(), gvdInfo.EndValidTimeTable.ToDateTime()]);
                 type.GetMethod("TextToGrid", flags)!.Invoke(form, null);
                 type.GetField("_textChanging", flags)!.SetValue(form, false);
                 return form;
@@ -326,7 +327,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 });
 
             // editor s vybraným stavom „Zastavil“ prechádzajúceho vlaku; graf len s prechodmi vybraného stavu
-            var diagram = TxtParser.ReadStateDgm(gvdDir.Dir.FullPath)!;
+            var diagram = StateDgmFile.Read(gvdDir.Dir.FullPath)!;
             var passing = diagram.Categories[1];
             var arrived = passing.States.First(s => s.Key == "Zastavil");
             Shot("stavovy-diagram/stavovy-diagram", () => new FStateDgm(gvdDir), form =>

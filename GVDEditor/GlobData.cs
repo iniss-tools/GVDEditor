@@ -20,8 +20,6 @@ namespace GVDEditor;
 /// </remarks>
 internal static class GlobData
 {
-    // dokument, ktory prave naplna nacitanie grafikonu na pozadi; ostatne vlakna vidia otvoreny dokument
-    [ThreadStatic] private static GrafikonDocument? _loadingDocument;
     private static GrafikonDocument _document = new();
 
     /// <summary>
@@ -35,32 +33,10 @@ internal static class GlobData
     public static InissWorkspace Workspace { get; private set; } = new();
 
     /// <summary>
-    /// Otvoreny grafikon. Vo vlakne, ktore prave nacitava grafikon (<see cref="LoadDocument" />), je to nacitavany
-    /// dokument - parser tak cita kolaje, dopravcov a stanice noveho grafikonu, nie otvoreneho.
+    /// Otvoreny grafikon. Nacitava ho <see cref="Formats.GrafikonRepository.Load" /> do noveho dokumentu, ktory sa
+    /// potom otvori cez <see cref="OpenDocument" />.
     /// </summary>
-    public static GrafikonDocument Document => _loadingDocument ?? _document;
-
-    /// <summary>
-    /// Nacita grafikon do noveho dokumentu. Otvoreny dokument sa nemeni - hlavne okno ho vymeni az po uspesnom
-    /// nacitani cez <see cref="OpenDocument" />.
-    /// </summary>
-    /// <param name="load">nacitanie, ktore zapisuje do <see cref="Document" /> (v tomto vlakne je to novy dokument)</param>
-    /// <returns>nacitany dokument</returns>
-    public static GrafikonDocument LoadDocument(Action load)
-    {
-        var document = new GrafikonDocument();
-        _loadingDocument = document;
-        try
-        {
-            load();
-        }
-        finally
-        {
-            _loadingDocument = null;
-        }
-
-        return document;
-    }
+    public static GrafikonDocument Document => _document;
 
     /// <summary>
     /// Otvori grafikon - vsetky jeho data sa vymenia naraz.
@@ -152,18 +128,18 @@ internal static class GlobData
         INISSDir = pathtoiniss;
         DataDir = Utils.CombinePath(pathtoiniss, GvdFileConsts.DIR_DATA)!;
         RawBankDir = Utils.CombinePath(pathtoiniss, GvdFileConsts.DIR_RAWBANK)!;
-        GVDDirs = TxtParser.ReadDirList();
+        GVDDirs = DirListFile.Read(DataDir);
 
         INISSExeFiles = new DirectoryInfo(INISSDir).GetFiles("*.exe").Select(file => file.Name).ToList();
 
         var langs = RawBankParser.ReadFyzBankFile(RawBankDir, out var maxLangs);
-        Languages = new ExBindingList<FyzLanguage>(TxtParser.ReadGlobalCategori(DataDir, langs, maxLangs));
+        Languages = new ExBindingList<FyzLanguage>(CategoriFile.ReadGlobal(DataDir, langs, maxLangs));
 
         Sounds = RawBankParser.ReadFyzZvukFile(RawBankDir, FyzLanguage.GetBasicLanguage(Languages)!);
         LogZvukTexts = LogZvukParser.ReadLogZvukUsr(RawBankDir);
         try
         {
-            TrainsTypes = new ExBindingList<TrainType>(TxtParser.ReadTrainTypes());
+            TrainsTypes = new ExBindingList<TrainType>(TrTypesFile.Read(DataDir));
         }
         catch (FileNotFoundException)
         {
@@ -171,11 +147,11 @@ internal static class GlobData
 
         TrainNames = Train.GetTrainNames();
         Stations = Station.GetStations();
-        Delays = new ExBindingList<string>(TxtParser.ReadZpozdeni());
+        Delays = new ExBindingList<string>(ZpozdeniFile.Read(DataDir));
 
         try
         {
-            Audios = new ExBindingList<Audio>(TxtParser.ReadAudio());
+            Audios = new ExBindingList<Audio>(AudioFile.Read(DataDir));
         }
         catch (FileNotFoundException)
         {

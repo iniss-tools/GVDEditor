@@ -22,7 +22,7 @@ public sealed class TableFontType : Enumeration<TableFontType>
     /// <returns></returns>
     public new static TableFontType? Parse(string type)
     {
-        return type.ToLower() switch
+        return type.ToLowerInvariant() switch
         {
             "" => None,
             "tenký" => None,

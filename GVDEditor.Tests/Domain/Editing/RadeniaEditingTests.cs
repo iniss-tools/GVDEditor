@@ -22,8 +22,7 @@ public class RadeniaEditingTests
     private static Radenie NewRadenie(string number, string datObm) => new()
     {
         CisloVlaku = number,
-        ZacPlatnosti = new DateTime(2026, 1, 1),
-        KonPlatnosti = new DateTime(2026, 12, 31),
+        Validity = new ValidityPeriod(new DateOnly(2026, 1, 1), new DateOnly(2026, 12, 31)),
         DatObm = datObm,
         Text = "A",
         Sounds = [SoundA],
@@ -59,7 +58,7 @@ public class RadeniaEditingTests
     private static void Edit(Radenie radenie)
     {
         radenie.DatObm = "jede v 7";
-        radenie.ZacPlatnosti = new DateTime(2026, 2, 1);
+        radenie.Validity = radenie.Validity!.Value with { From = new DateOnly(2026, 2, 1) };
         radenie.Text = "B";
         radenie.Sounds = [SoundB];
         radenie.ChosenReports = [new ChosenReportType { Type = Odjede, Variants = [Variants[1]] }];
@@ -108,7 +107,7 @@ public class RadeniaEditingTests
         CollectionAssert.AreEqual(new[] { r1, g.R2 }, g.B.Radenia);
 
         Assert.AreEqual("jede v 7", r1.DatObm);
-        Assert.AreEqual(new DateTime(2026, 2, 1), r1.ZacPlatnosti);
+        Assert.AreEqual(new DateOnly(2026, 2, 1), r1.Validity!.Value.From);
         Assert.AreEqual("B", r1.Text);
         CollectionAssert.AreEqual(new[] { SoundB }, r1.Sounds);
         CollectionAssert.AreEqual(new[] { Variants[1] }, r1.ChosenReports.Single().Variants);

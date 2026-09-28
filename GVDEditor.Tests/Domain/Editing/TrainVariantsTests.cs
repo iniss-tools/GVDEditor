@@ -1,3 +1,4 @@
+using ToolsCore.Tools;
 using System.Diagnostics.CodeAnalysis;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
@@ -15,8 +16,8 @@ public class TrainVariantsTests
 {
     private static readonly TrainType Os = new("Os");
     private static readonly TrainType R = new("R");
-    private static readonly DateTime From = new(2026, 12, 13);
-    private static readonly DateTime To = new(2027, 12, 11);
+    private static readonly DateOnly From = new(2026, 12, 13);
+    private static readonly DateOnly To = new(2027, 12, 11);
 
     private static Train T(string number, int variant, string limit = "", string name = "", TrainType? type = null) => new()
     {
@@ -136,8 +137,8 @@ public class TrainVariantsTests
         Assert.HasCount(2, calendar.Rows);
         Assert.IsNull(calendar.Rows[0].Train, "upravovany vlak je prvou variantou");
         Assert.AreSame(trains[1], calendar.Rows[1].Train);
-        Assert.AreEqual(From, calendar.From);
-        Assert.AreEqual(To, calendar.To);
+        Assert.AreEqual(From.ToDateTime(), calendar.From);
+        Assert.AreEqual(To.ToDateTime(), calendar.To);
         Assert.AreEqual(52, calendar.OverlapDays, "soboty obdobia");
         Assert.IsFalse(calendar.IsOverlap(0), "13.12.2026 je nedela");
         Assert.IsTrue(calendar.IsOverlap(6), "19.12.2026 je sobota");
@@ -154,7 +155,7 @@ public class TrainVariantsTests
 
         var calendar = VariantCalendar.Build(draft, TrainVariants.Others(draft, new TrainContext(trains, 0)));
 
-        Assert.AreEqual(To.AddDays(10), calendar.To);
+        Assert.AreEqual(To.AddDays(10).ToDateTime(), calendar.To);
         Assert.IsTrue(calendar.Rows[2].Invalid);
         Assert.IsFalse(calendar.Rows[2].Runs.Any(run => run));
         Assert.IsFalse(calendar.Rows[0].Runs[^1], "upravovany vlak po konci platnosti nejde");

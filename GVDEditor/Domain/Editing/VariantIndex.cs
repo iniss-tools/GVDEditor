@@ -71,11 +71,11 @@ internal sealed class VariantIndex
     /// </summary>
     public static string? CommonDays(Train a, Train b)
     {
-        if (a.ZaciatokPlatnosti.Date != b.ZaciatokPlatnosti.Date || a.KoniecPlatnosti.Date != b.KoniecPlatnosti.Date ||
-            a.KoniecPlatnosti.Date < a.ZaciatokPlatnosti.Date)
+        if (a.ZaciatokPlatnosti != b.ZaciatokPlatnosti || a.KoniecPlatnosti != b.KoniecPlatnosti ||
+            a.KoniecPlatnosti < a.ZaciatokPlatnosti)
             return null;
 
-        var limit = new DateLimit(a.ZaciatokPlatnosti.Date, a.KoniecPlatnosti.Date, true, true, false, false);
+        var limit = new DateLimit(a.ZaciatokPlatnosti, a.KoniecPlatnosti, true, true, false, false);
         try
         {
             return limit.Overlap(a.DateLimitText ?? "", b.DateLimitText ?? "")

@@ -100,18 +100,19 @@ public sealed record ReportType
     /// <param name="allTypes"></param>
     /// <param name="toparse"></param>
     /// <returns></returns>
-    public static List<ChosenReportType> Parse(IEnumerable<ReportType> allTypes, string toparse)
+    /// <param name="variants">varianty hlaseni grafikonu (prvy = velke pismeno, druhy = male)</param>
+    public static List<ChosenReportType> Parse(IEnumerable<ReportType> allTypes, string toparse, IList<ReportVariant> variants)
     {
         var reports = new List<ChosenReportType>();
 
         foreach (var reportType in allTypes)
         {
-            if (toparse.Contains(reportType.Char.ToUpper()))
+            if (toparse.Contains(reportType.Char.ToUpperInvariant()))
             {
                 var found = false;
                 foreach (var chosenReportType in reports.Where(chosenReportType => reportType.Equals(chosenReportType.Type)))
                 {
-                    chosenReportType.Variants.Add(GlobData.ReportVariants.ElementAtOrDefault(0)!);
+                    chosenReportType.Variants.Add(variants.ElementAtOrDefault(0)!);
                     found = true;
                 }
 
@@ -119,16 +120,16 @@ public sealed record ReportType
                     reports.Add(new ChosenReportType
                     {
                         Type = reportType,
-                        Variants = new List<ReportVariant> { GlobData.ReportVariants.ElementAtOrDefault(0)! }
+                        Variants = new List<ReportVariant> { variants.ElementAtOrDefault(0)! }
                     });
             }
 
-            if (toparse.Contains(reportType.Char.ToLower()))
+            if (toparse.Contains(reportType.Char.ToLowerInvariant()))
             {
                 var found = false;
                 foreach (var chosenReportType in reports.Where(chosenReportType => reportType.Equals(chosenReportType.Type)))
                 {
-                    chosenReportType.Variants.Add(GlobData.ReportVariants.ElementAtOrDefault(1)!);
+                    chosenReportType.Variants.Add(variants.ElementAtOrDefault(1)!);
                     found = true;
                 }
 
@@ -136,7 +137,7 @@ public sealed record ReportType
                     reports.Add(new ChosenReportType
                     {
                         Type = reportType,
-                        Variants = new List<ReportVariant> { GlobData.ReportVariants.ElementAtOrDefault(1)! }
+                        Variants = new List<ReportVariant> { variants.ElementAtOrDefault(1)! }
                     });
             }
         }

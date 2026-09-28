@@ -50,9 +50,9 @@ internal sealed class TrainDraft
 
     public string DateLimitText { get; set; } = "";
 
-    public DateTime ValidFrom { get; set; }
+    public DateOnly ValidFrom { get; set; }
 
-    public DateTime ValidTo { get; set; }
+    public DateOnly ValidTo { get; set; }
 
     /// <summary>
     /// Cislo varianty vlaku pri otvoreni okna - len na urcenie poradia medzi variantmi; cisla prideluje
@@ -186,7 +186,7 @@ internal sealed class TrainDraft
     /// <summary>
     /// Koncept noveho vlaku - platnost ma obdobie grafikonu.
     /// </summary>
-    public static TrainDraft New(DateTime gvdStart, DateTime gvdEnd) => new() { ValidFrom = gvdStart.Date, ValidTo = gvdEnd.Date };
+    public static TrainDraft New(DateOnly gvdStart, DateOnly gvdEnd) => new() { ValidFrom = gvdStart, ValidTo = gvdEnd };
 
     /// <summary>
     /// Koncept s udajmi vlaku (aj pri kopii - ta sa lisi az tym, do ktoreho vlaku sa koncept zapise).

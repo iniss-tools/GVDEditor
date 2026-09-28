@@ -192,7 +192,8 @@ public partial class FStateDgmCalendar : Form
             planned = cond is not 0 && cond != null;
         }
 
-        DateTime? baseTime = tp == 1 ? train.Arrival : tp == 2 ? train.Departure : null;
+        var time = tp == 1 ? train.Arrival : tp == 2 ? train.Departure : null;
+        DateTime? baseTime = time is { } t ? DateTime.Today.Add(t.ToTimeSpan()) : null;
         var delay = tp == 1 ? runtime.ArrivalDelayMinutes : tp == 2 ? runtime.DepartureDelayMinutes : 0;
         var result = baseTime?.AddSeconds(add ?? 0).AddMinutes(delay);
         var waitNames = wait is { } w && w != 0 ? StateDgmDynamic.WaitName((StateDgmWaitEvent)unchecked((uint)w)) : "";

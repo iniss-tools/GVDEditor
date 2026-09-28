@@ -1,3 +1,4 @@
+using System.Globalization;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
 
@@ -27,7 +28,7 @@ internal static class GVDDirRename
 
         var invalidIndex = dirname.IndexOfAny(Path.GetInvalidFileNameChars());
         if (invalidIndex != -1)
-            return string.Format(Resources.FLocalSettings_Názov_priečinka_grafikonu_obsahuje_nepovolený_znak,
+            return string.Format(CultureInfo.InvariantCulture, Resources.FLocalSettings_Názov_priečinka_grafikonu_obsahuje_nepovolený_znak,
                 $"'{dirname[invalidIndex]}'");
 
         //Windows koncovú bodku z názvu priečinka ticho zahodí - priečinok na disku by sa potom

@@ -203,6 +203,18 @@ internal class DateLimit
     /// <param name="skipDateRangeCheck">Preskakovat u datumu chyby pre datum mimo grafikonu.</param>
     /// <param name="altForm">Pouzit zkrateny tvar poznamky.</param>
     /// <param name="today">Ktory datum pouzit ako dnesok (ak sa neuvedie, pouzije sa skutocny dnesok).</param>
+    public DateLimit(DateOnly from, DateOnly to,
+        bool specDays = true, bool allowRunsDaily = false,
+        bool fromToday = false, bool insertMarks = true,
+        int maxDays = 0, bool monthRoman = true,
+        bool skipDateRangeCheck = false, bool altForm = false,
+        DateTime? today = null)
+        : this(from.ToDateTime(TimeOnly.MinValue), to.ToDateTime(TimeOnly.MinValue), specDays, allowRunsDaily, fromToday, insertMarks, maxDays, monthRoman,
+            skipDateRangeCheck, altForm, today)
+    {
+    }
+
+    /// <inheritdoc cref="DateLimit(DateOnly, DateOnly, bool, bool, bool, bool, int, bool, bool, bool, DateTime?)" />
     public DateLimit(DateTime from, DateTime to,
         bool specDays = true, bool allowRunsDaily = false,
         bool fromToday = false, bool insertMarks = true,

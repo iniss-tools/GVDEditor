@@ -48,7 +48,7 @@ public partial class StateDgmPage : UserControl
     {
         try
         {
-            var d = TxtParser.ReadStateDgm(_dir.Dir.FullPath);
+            var d = StateDgmFile.Read(_dir.Dir.FullPath);
             if (d == null)
             {
                 lStatus.Text = Resources.FLocalSettings_SD_Chyba_Nie;
@@ -66,7 +66,7 @@ public partial class StateDgmPage : UserControl
                 ? Resources.FStateDgm_BezProblemov
                 : string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_PocetProblemov, errors, warnings, diags.Count - errors - warnings);
             lStatus.Text = string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_SD_Stav,
-                               Path.GetFileName(TxtParser.StateDgmPath(_dir.Dir.FullPath)), d.Categories.Count, d.Categories.Sum(c => c.States.Count))
+                               Path.GetFileName(StateDgmFile.PathOf(_dir.Dir.FullPath)), d.Categories.Count, d.Categories.Sum(c => c.States.Count))
                            + Environment.NewLine + string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_SD_Problemy, check);
         }
         catch (StateDgmParseException e)

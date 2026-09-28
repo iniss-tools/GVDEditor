@@ -104,7 +104,7 @@ public sealed partial class ELISBridgeClient
 
     /// <summary>
     /// Priradenie nazvov stanic z ELIS k staniciam grafikonu: nazov -> ID stanice,
-    /// alebo <see cref="TxtParser.ELIS_MAP_SKIP" /> ak sa ma stanica z trasy vynechat.
+    /// alebo <see cref="ElisMapFile.ELIS_MAP_SKIP" /> ak sa ma stanica z trasy vynechat.
     /// Pouzije sa este pred automatickym rozpoznavanim nazvu.
     /// </summary>
     public Dictionary<string, string> StationMap { get; set; } = new(StringComparer.OrdinalIgnoreCase);
@@ -183,7 +183,7 @@ public sealed partial class ELISBridgeClient
             {
                 if (process is null)
                     throw new InvalidOperationException(
-                        string.Format(Resources.ELISBridgeClient_Program_sa_nepodarilo_spustiť, BridgeExeName));
+                        string.Format(CultureInfo.InvariantCulture, Resources.ELISBridgeClient_Program_sa_nepodarilo_spustiť, BridgeExeName));
 
                 error = process.StandardError.ReadToEnd();
                 process.WaitForExit();
@@ -195,7 +195,7 @@ public sealed partial class ELISBridgeClient
                 {
                     ExitNoTimetable => WithDetail(Resources.ELISBridgeClient_V_dátach_ELIS_sa_nenašiel_žiadny_cestovný_poriadok, error),
                     ExitStationNotFound => WithDetail(
-                        string.Format(Resources.ELISBridgeClient_Stanica_sa_v_dátach_ELIS_nenachádza, GVD.ThisStation.Name), error),
+                        string.Format(CultureInfo.InvariantCulture, Resources.ELISBridgeClient_Stanica_sa_v_dátach_ELIS_nenachádza, GVD.ThisStation.Name), error),
                     ExitRegistrationFailed => string.IsNullOrEmpty(error)
                         ? Resources.ELISBridgeClient_Cestovný_poriadok_vyžaduje_platné_registračné_číslo
                         : error,
@@ -222,7 +222,7 @@ public sealed partial class ELISBridgeClient
             return exe;
 
         throw new FileNotFoundException(
-            string.Format(Resources.ELISBridgeClient_Pomocný_program_sa_nenašiel, BridgeExeName, directory), exe);
+            string.Format(CultureInfo.InvariantCulture, Resources.ELISBridgeClient_Pomocný_program_sa_nenašiel, BridgeExeName, directory), exe);
     }
 
     /// <summary>
@@ -270,8 +270,8 @@ public sealed partial class ELISBridgeClient
                 Operator = GetOperator(source),
                 LineArrival = Line(source.LineArrival),
                 LineDeparture = Line(source.LineDeparture),
-                ZaciatokPlatnosti = validFrom,
-                KoniecPlatnosti = validTo,
+                ZaciatokPlatnosti = DateOnly.FromDateTime(validFrom),
+                KoniecPlatnosti = DateOnly.FromDateTime(validTo),
                 Arrival = ToTime(source.ArrivalMinutes),
                 Departure = ToTime(source.DepartureMinutes),
                 DateLimitText = dateLimit.BitArrayToText(ToBitArray(source.RunsBits, dateLimit.TotalDays))
@@ -343,7 +343,7 @@ public sealed partial class ELISBridgeClient
     /// Overi, ze vygenerovane datumove obmedzenie sa da rozparsovat spat.
     /// </summary>
     /// <remarks>
-    /// Ukladanie grafikonu (<c>TxtParser.WriteTrains</c>) prevadza <see cref="Train.DateLimitText" />
+    /// Ukladanie grafikonu (<c>TrainsFile.Write</c>) prevadza <see cref="Train.DateLimitText" />
     /// spat na bitove pole. Ked to zlyha, spadne az ulozenie - teda dlho po importe a s chybou,
     /// ktora o vlaku nic nepovie. Radsej to zistime hned tu.
     /// </remarks>
@@ -357,7 +357,7 @@ public sealed partial class ELISBridgeClient
         catch (Exception e)
         {
             throw new FormatException(
-                string.Format(Resources.ELISBridgeClient_Vlak_má_dátumové_obmedzenie_ktoré_sa_nedá_spracovať,
+                string.Format(CultureInfo.InvariantCulture, Resources.ELISBridgeClient_Vlak_má_dátumové_obmedzenie_ktoré_sa_nedá_spracovať,
                     train.Type, train.Number, train.Name, train.DateLimitText), e);
         }
     }
@@ -418,7 +418,7 @@ public sealed partial class ELISBridgeClient
     private Station? ResolveMapped(ElisStop stop)
     {
         if (StationMap.TryGetValue(stop.Name, out var mapped))
-            return mapped == TxtParser.ELIS_MAP_SKIP ? null : Station.GetFromID(mapped);
+            return mapped == ElisMapFile.ELIS_MAP_SKIP ? null : Station.GetFromID(mapped);
 
         return Resolve(stop);
     }
@@ -561,15 +561,15 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    /// Prevedie cas v minutach od polnoci na <see cref="DateTime" /> rovnako, ako to robi textovy parser.
+    /// Prevedie cas v minutach od polnoci na cas dna.
     /// </summary>
-    private static DateTime? ToTime(int minutes)
+    private static TimeOnly? ToTime(int minutes)
     {
         if (minutes == ElisTrain.NoTime)
             return null;
 
         var inDay = minutes % (24 * 60);
-        return Utils.ParseTime($"{inDay / 60:00}:{inDay % 60:00}");
+        return new TimeOnly(inDay / 60, inDay % 60);
     }
 
     private static BitArray ToBitArray(string bits, int totalDays)

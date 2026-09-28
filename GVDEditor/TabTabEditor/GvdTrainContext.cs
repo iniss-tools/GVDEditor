@@ -1,3 +1,4 @@
+using System.Globalization;
 using GVDEditor.Domain.Entities;
 using ToolsCore.Expressions;
 using ToolsCore.TabTab;
@@ -75,7 +76,7 @@ internal sealed class GvdTrainContext : IExprTrainContext
     public int StayTimeSeconds => PlannedStayTimeSeconds + Math.Max(0, DepartureDelaySeconds - ArrivalDelaySeconds);
 
     public int PlannedStayTimeSeconds =>
-        _train.Arrival is { } a && _train.Departure is { } d ? (int)Math.Max(0, (d.TimeOfDay - a.TimeOfDay).TotalSeconds) : 0;
+        _train.Arrival is { } a && _train.Departure is { } d ? (int)Math.Max(0, (d.ToTimeSpan() - a.ToTimeSpan()).TotalSeconds) : 0;
 
     public int HomeStationId => _homeStationId;
 
@@ -102,13 +103,14 @@ internal sealed class GvdTrainContext : IExprTrainContext
         }
     }
 
-    public DateOnly ArrivalDate => DateOnly.FromDateTime(_train.Arrival ?? _runtime.Now);
+    // grafikon ma len cas dna - datum prichodu aj odchodu je den nahladu
+    public DateOnly ArrivalDate => DateOnly.FromDateTime(_runtime.Now);
 
-    public DateOnly DepartureDate => DateOnly.FromDateTime(_train.Departure ?? _runtime.Now);
+    public DateOnly DepartureDate => DateOnly.FromDateTime(_runtime.Now);
 
-    public TimeOnly ArrivalTime => TimeOnly.FromDateTime(_train.Arrival ?? _train.Departure ?? _runtime.Now);
+    public TimeOnly ArrivalTime => _train.Arrival ?? _train.Departure ?? TimeOnly.FromDateTime(_runtime.Now);
 
-    public TimeOnly DepartureTime => TimeOnly.FromDateTime(_train.Departure ?? _train.Arrival ?? _runtime.Now);
+    public TimeOnly DepartureTime => _train.Departure ?? _train.Arrival ?? TimeOnly.FromDateTime(_runtime.Now);
 
     public string OperatorName => _train.Operator?.Name ?? "";
 
@@ -133,10 +135,10 @@ internal sealed class GvdTrainContext : IExprTrainContext
         else if (s == TableFillSection.StaniceZoSmeru) text = string.Join(", ", t.StaniceZoSmeru.Select(x => x.Name));
         else if (s == TableFillSection.StaniceDoSmeru || s == TableFillSection.StaniceDoSmeruNastupiste) text = string.Join(", ", t.StaniceDoSmeru.Select(x => x.Name));
         else if (s == TableFillSection.CielovaStanica || s == TableFillSection.CielovaStanicaNastupiste || s == TableFillSection.CielovaStanicaPodchod) text = t.EndingStation?.Name ?? "";
-        else if (s == TableFillSection.CasOdchodu) text = t.Departure?.ToString("HH:mm") ?? "";
-        else if (s == TableFillSection.CasPrichodu) text = t.Arrival?.ToString("HH:mm") ?? "";
-        else if (s == TableFillSection.MeskaniePrichod) text = _runtime.ArrivalDelayMinutes > 0 ? _runtime.ArrivalDelayMinutes.ToString() : "";
-        else if (s == TableFillSection.MeskanieOdchod) text = _runtime.DepartureDelayMinutes > 0 ? _runtime.DepartureDelayMinutes.ToString() : "";
+        else if (s == TableFillSection.CasOdchodu) text = t.Departure?.ToString("HH:mm", CultureInfo.InvariantCulture) ?? "";
+        else if (s == TableFillSection.CasPrichodu) text = t.Arrival?.ToString("HH:mm", CultureInfo.InvariantCulture) ?? "";
+        else if (s == TableFillSection.MeskaniePrichod) text = _runtime.ArrivalDelayMinutes > 0 ? _runtime.ArrivalDelayMinutes.ToString(CultureInfo.InvariantCulture) : "";
+        else if (s == TableFillSection.MeskanieOdchod) text = _runtime.DepartureDelayMinutes > 0 ? _runtime.DepartureDelayMinutes.ToString(CultureInfo.InvariantCulture) : "";
         else if (s == TableFillSection.MeskaniePrichodPopis) text = _runtime.ArrivalDelayMinutes > 0 ? $"Mešká {_runtime.ArrivalDelayMinutes} min." : "";
         else if (s == TableFillSection.MeskanieOdchodPopis) text = _runtime.DepartureDelayMinutes > 0 ? $"Mešká {_runtime.DepartureDelayMinutes} min." : "";
         else if (s == TableFillSection.TypVlaku || s == TableFillSection.HexTypVlaku) text = t.Type.TextInTable;

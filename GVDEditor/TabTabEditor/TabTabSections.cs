@@ -21,7 +21,7 @@ internal static class TabTabSections
     {
         var trimmed = normalized = (name ?? "").Trim();
 
-        // TxtParser.ReadTables prazdny nazov odmietne a grafikon sa nenacita
+        // TablesFile.Read prazdny nazov odmietne a grafikon sa nenacita
         if (normalized.Length == 0)
             return Resources.TabTab_Nazov_prazdny;
 

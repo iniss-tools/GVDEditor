@@ -108,7 +108,7 @@ public class GrafikonLanguageRulesTests
                 "[LANGUAGE_01]\r\nKEY=\"SK\"\r\nIS_BASIC=0\r\nNAME=\"SK\"\r\n\r\n" +
                 "[LANGUAGE_02]\r\nKEY=\"GB\"\r\nIS_BASIC=1\r\nNAME=\"EN\"\r\n");
 
-            var (_, _, languages) = TxtParser.ReadLocalCategori(dir);
+            var (_, _, languages) = CategoriFile.ReadLocal(dir, GlobData.Languages);
 
             CollectionAssert.AreEqual(new[] { _sk, _gb }, languages);
             Assert.AreEqual("Slovensky", _sk.Name);

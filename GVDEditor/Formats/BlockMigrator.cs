@@ -46,12 +46,13 @@ internal static class BlockMigrator
     /// Zisti, ci priecinok GVD obsahuje bloky, ktore treba rozdelit: viac hlaviciek <c>/</c> v Export3A,
     /// alebo jedinu hlavicku s inou stanicou, nez je IDSTATION grafikonu.
     /// </summary>
+    /// <param name="dataDir">Priecinok DATA instalacie INISS - nove priecinky nesmu kolidovat s existujucimi.</param>
     /// <param name="gvdPath">Priecinok grafikonu.</param>
     /// <param name="gvd">Grafikon.txt priecinka.</param>
     /// <param name="dirName">Nazov priecinka v DirList (zaklad pre nazvy novych priecinkov); prazdny pre grafikon priamo v DATA.</param>
     /// <param name="always">Vratit bloky aj pri jedinom bloku bez hlavicky - grafikon priamo v DATA sa presuva vzdy.</param>
     /// <returns>Zoznam blokov s predvyplnenymi nazvami priecinkov, alebo prazdny zoznam, ak migracia nie je potrebna.</returns>
-    public static List<GvdBlock> Analyze(string gvdPath, GVDInfo gvd, string dirName, bool always = false)
+    public static List<GvdBlock> Analyze(string dataDir, string gvdPath, GVDInfo gvd, string dirName, bool always = false)
     {
         var export3A = Utils.CombinePath(gvdPath, GvdFileConsts.FILE_EXPORT3A)!;
         var export3B = Utils.CombinePath(gvdPath, GvdFileConsts.FILE_EXPORT3B)!;
@@ -76,8 +77,8 @@ internal static class BlockMigrator
             var (start, end) = ValidityOf(i < blocksB.Count ? blocksB[i].Lines : new List<string>());
             if (start == DateTime.MinValue)
             {
-                start = gvd.StartValidTimeTable;
-                end = gvd.EndValidTimeTable;
+                start = gvd.StartValidTimeTable.ToDateTime();
+                end = gvd.EndValidTimeTable.ToDateTime();
             }
 
             var stationId = a.StationId ?? idStation;
@@ -97,7 +98,7 @@ internal static class BlockMigrator
             var name = $"{baseName}.{block.EndValid.Year}";
             var candidate = name;
             var n = 2;
-            while (used.Contains(candidate) || Directory.Exists(Utils.CombinePath(GlobData.DataDir, candidate)!))
+            while (used.Contains(candidate) || Directory.Exists(Utils.CombinePath(dataDir, candidate)!))
                 candidate = $"{name}_{n++}";
             used.Add(candidate);
             block.DirName = candidate;
@@ -110,16 +111,17 @@ internal static class BlockMigrator
     /// Rozdeli priecinok GVD podla blokov do novych priecinkov v DATA a zapise ich do DirList.TXT
     /// namiesto povodneho zaznamu. Povodny priecinok ostava na disku nedotknuty.
     /// </summary>
+    /// <param name="dataDir">Priecinok DATA instalacie INISS (nove priecinky a DirList.txt).</param>
     /// <param name="gvdPath">Priecinok so starym zapisom.</param>
     /// <param name="sourceDir">Zaznam DirList povodneho priecinka (porty a priznaky sa prenesu na nove zaznamy); null, ak v DirList nebol.</param>
     /// <param name="gvd">Grafikon.txt povodneho priecinka.</param>
     /// <param name="blocks">Bloky z <see cref="Analyze"/> s nazvami cielovych priecinkov.</param>
     /// <returns>Nove zaznamy DirList v poradi blokov.</returns>
-    public static List<DirList> Migrate(string gvdPath, DirList? sourceDir, GVDInfo gvd, IReadOnlyList<GvdBlock> blocks)
+    public static List<DirList> Migrate(string dataDir, string gvdPath, DirList? sourceDir, GVDInfo gvd, IReadOnlyList<GvdBlock> blocks)
     {
-        ValidateNames(blocks);
+        ValidateNames(blocks, dataDir);
 
-        var targets = blocks.Select(b => Utils.CombinePath(GlobData.DataDir, b.DirName)!).ToList();
+        var targets = blocks.Select(b => Utils.CombinePath(dataDir, b.DirName)!).ToList();
         var created = new List<string>();
 
         try
@@ -161,7 +163,7 @@ internal static class BlockMigrator
                 }
 
                 if (raw.Count != blocks.Count)
-                    throw new InvalidDataException(string.Format(Properties.Resources.BlockMigrator_Pocet_blokov_nesedi, name, raw.Count, blocks.Count));
+                    throw new InvalidDataException(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BlockMigrator_Pocet_blokov_nesedi, name, raw.Count, blocks.Count));
 
                 for (var i = 0; i < blocks.Count; i++)
                     WriteLines(Utils.CombinePath(targets[i], name)!, raw[i].Lines);
@@ -187,13 +189,13 @@ internal static class BlockMigrator
                 {
                     ThisStation = new Station(block.StationId.ToString(CultureInfo.InvariantCulture), block.StationName),
                     TrainCount = block.TrainCount,
-                    StartValidTimeTable = block.StartValid,
-                    EndValidTimeTable = block.EndValid,
-                    StartValidData = block.StartValid,
-                    EndValidData = block.EndValid,
-                    CreateData = block.StartValid
+                    StartValidTimeTable = DateOnly.FromDateTime(block.StartValid),
+                    EndValidTimeTable = DateOnly.FromDateTime(block.EndValid),
+                    StartValidData = DateOnly.FromDateTime(block.StartValid),
+                    EndValidData = DateOnly.FromDateTime(block.EndValid),
+                    CreateData = DateOnly.FromDateTime(block.StartValid)
                 };
-                TxtParser.WriteInfoGVD(targets[i], info);
+                InfoGvdFile.Write(targets[i], info);
             }
         }
         catch
@@ -207,27 +209,27 @@ internal static class BlockMigrator
         var newDirs = blocks.Select(b => new DirList
         {
             DirName = b.DirName,
-            FullPath = Utils.CombinePath(GlobData.DataDir, b.DirName)!,
+            FullPath = Utils.CombinePath(dataDir, b.DirName)!,
             TablePort = sourceDir?.TablePort,
             ReportPort = sourceDir?.ReportPort,
             Flags = sourceDir?.Flags,
             BackColor = sourceDir?.BackColor
         }).ToList();
 
-        var dirList = File.Exists(Utils.CombinePath(GlobData.DataDir, GvdFileConsts.FILE_DIRLIST)) ? TxtParser.ReadDirList() : new List<DirList>();
+        var dirList = File.Exists(Utils.CombinePath(dataDir, GvdFileConsts.FILE_DIRLIST)) ? DirListFile.Read(dataDir) : new List<DirList>();
         var position = sourceDir is null ? -1 : dirList.FindIndex(d => d.DirName.Equals(sourceDir.DirName, StringComparison.OrdinalIgnoreCase));
         if (position >= 0)
             dirList.RemoveAt(position);
         else
             position = dirList.Count;
         dirList.InsertRange(position, newDirs);
-        TxtParser.WriteDirList(dirList);
+        DirListFile.Write(dataDir, dirList);
 
         Log.Info($"Grafikon {gvdPath} rozdelený na {blocks.Count} priečinkov: {string.Join(", ", blocks.Select(b => b.DirName))}");
         return newDirs;
     }
 
-    private static void ValidateNames(IReadOnlyList<GvdBlock> blocks)
+    private static void ValidateNames(IReadOnlyList<GvdBlock> blocks, string dataDir)
     {
         var invalid = Path.GetInvalidFileNameChars();
         var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
@@ -236,10 +238,10 @@ internal static class BlockMigrator
             var name = block.DirName.Trim();
             // ciarka by rozbila DirList.TXT (zapisuje sa bez uvodzoviek), bodku na konci Windows z nazvu odstrani
             if (name.Length == 0 || name.IndexOfAny(invalid) >= 0 || name.Contains(',') || name.EndsWith('.'))
-                throw new ArgumentException(string.Format(Properties.Resources.BlockMigrator_Neplatny_nazov_priecinka, block.DirName));
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BlockMigrator_Neplatny_nazov_priecinka, block.DirName));
             if (!seen.Add(name))
-                throw new ArgumentException(string.Format(Properties.Resources.BlockMigrator_Duplicitny_nazov_priecinka, name));
-            if (Directory.Exists(Utils.CombinePath(GlobData.DataDir, name)!))
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BlockMigrator_Duplicitny_nazov_priecinka, name));
+            if (Directory.Exists(Utils.CombinePath(dataDir, name)!))
                 throw new ArgumentException($"{name}: {Properties.Resources.Priečinok_s_týmto_názvom_už_existuje__Zmeňte_jeho_názov}");
             block.DirName = name;
         }
@@ -356,9 +358,9 @@ internal static class BlockMigrator
 
             var output = outputs[b];
             for (var i = 0; i < others.Count; i++)
-                output.Add(i == countLine ? $"COUNT={selected.Count}" : others[i]);
+                output.Add(i == countLine ? string.Create(CultureInfo.InvariantCulture, $"COUNT={selected.Count}") : others[i]);
             if (countLine < 0)
-                output.Add($"COUNT={selected.Count}");
+                output.Add(string.Create(CultureInfo.InvariantCulture, $"COUNT={selected.Count}"));
 
             for (var i = 0; i < selected.Count; i++)
                 foreach (var (key, value) in selected[i])

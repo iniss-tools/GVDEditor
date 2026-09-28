@@ -1,3 +1,4 @@
+using ToolsCore.Tools;
 using System.Diagnostics.CodeAnalysis;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Editing;
@@ -19,8 +20,8 @@ public class TrainRulesTests
     private static readonly TrainType R = new("R");
     private static readonly Operator Zssk = new(1, "ZSSK");
     private static readonly Track Track1 = new("1", "1", "Koľaj 1", Platform.None, "", "1");
-    private static readonly DateTime From = new(2026, 12, 13);
-    private static readonly DateTime To = new(2027, 12, 11);
+    private static readonly DateOnly From = new(2026, 12, 13);
+    private static readonly DateOnly To = new(2027, 12, 11);
 
     private static TrainContext Context(IReadOnlyList<Train>? trains = null, int row = -1) =>
         new(trains ?? [], row < 0 ? trains?.Count ?? 0 : row);
@@ -144,8 +145,8 @@ public class TrainRulesTests
     public void Radenia_ChybyRadeniaSuChybamiVlakuSPoradim()
     {
         var draft = Draft();
-        draft.Radenia.Items.Add(new Radenie { ZacPlatnosti = From, KonPlatnosti = To, DatObm = "", Text = "A", Sounds = [new FyzSound()] });
-        draft.Radenia.Items.Add(new Radenie { ZacPlatnosti = From, KonPlatnosti = To, DatObm = "", Text = "" });
+        draft.Radenia.Items.Add(new Radenie { Validity = new ValidityPeriod(From, To), DatObm = "", Text = "A", Sounds = [new FyzSound()] });
+        draft.Radenia.Items.Add(new Radenie { Validity = new ValidityPeriod(From, To), DatObm = "", Text = "" });
 
         var problem = TrainRules.Check(draft, Context()).Single();
 

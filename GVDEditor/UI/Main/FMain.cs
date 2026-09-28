@@ -176,7 +176,7 @@ public partial class FMain : Form
         if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
             try
             {
-                e.Result = GlobData.LoadDocument(() => ProccessData(pathgvd));
+                e.Result = GrafikonRepository.Load(pathgvd.Path, pathgvd.Gvd, GlobData.Workspace);
             }
             catch (Exception exception)
             {
@@ -194,52 +194,9 @@ public partial class FMain : Form
                 return;
             }
         else
-            e.Result = GlobData.LoadDocument(() => ProccessData(pathgvd));
+            e.Result = GrafikonRepository.Load(pathgvd.Path, pathgvd.Gvd, GlobData.Workspace);
 
         _error = false;
-    }
-
-    /// <summary>
-    /// Nacita grafikon. Bezi vo vnutri <see cref="GlobData.LoadDocument" /> - vsetko, co zapise do GlobData,
-    /// patri novemu dokumentu; otvoreny grafikon ostava nezmeneny.
-    /// </summary>
-    private static void ProccessData(PathAndGVD pathgvd)
-    {
-        GlobData.CustomStations = new ExBindingList<Station>(TxtParser.ReadCustomStations(pathgvd.Path, pathgvd.Gvd));
-
-        var (tabtabs, catalogs, physicals, logicals) = TxtParser.ReadTables(pathgvd.Path);
-        GlobData.TabTabs = new ExBindingList<TableTabTab>(tabtabs);
-        GlobData.TableCatalogs = new ExBindingList<TableCatalog>(catalogs);
-        GlobData.TablePhysicals = new ExBindingList<TablePhysical>(physicals);
-        GlobData.TableLogicals = new ExBindingList<TableLogical>(logicals);
-
-        var operators = TxtParser.ReadOperators(pathgvd.Path);
-        GlobData.Operators = new ExBindingList<Operator>(operators)
-        {
-            FireEventOnSort = true
-        };
-
-        var tracks = TxtParser.ReadTracks(pathgvd.Path);
-        GlobData.Tracks = new ExBindingList<Track>(tracks)
-        {
-            FireEventOnSort = true
-        };
-
-        // kolaje s rovnakym nastupistom zdielaju jednu instanciu (TxtParser.ReadTracks)
-        GlobData.Platforms = new ExBindingList<Platform>(GlobData.Tracks.Select(kolaj => kolaj.Platform).Distinct().ToList());
-
-        (GlobData.ReportVariants,GlobData.ReportTypes,GlobData.LocalLanguages) = TxtParser.ReadLocalCategori(pathgvd.Path);
-
-        var allSounds = new List<FyzSound>();
-        foreach (var language in GlobData.LocalLanguages)
-            allSounds.AddRange(language.IsBasic ? GlobData.Sounds : RawBankParser.ReadFyzZvukFile(GlobData.RawBankDir, language));
-
-        try { GlobData.Radenia = TxtParser.ReadRazeni1(pathgvd.Path, allSounds); }catch (FileNotFoundException) { }
-
-        GlobData.Trains = new TrainBindingList(TxtParser.ReadTrains(pathgvd.Path));
-
-        GlobData.TableTexts = new ExBindingList<TableText>(TxtParser.ReadTTexts(pathgvd.Path, GlobData.Trains));
-        GlobData.TableFonts = new ExBindingList<TableFont>(TxtParser.ReadTableFonts(pathgvd.Path));
     }
 
     /// <summary>
@@ -373,36 +330,9 @@ public partial class FMain : Form
             //by ostal v pôvodnom stave a grafikon by sa pri ďalšom otvorení hlásil ako chybný
             // hlavicka nesie pocet vlakov a datum poslednej upravy
             dir.GVD.TrainCount = GlobData.Trains.Count;
-            dir.GVD.CreateData = DateTime.Today;
+            dir.GVD.CreateData = DateOnly.FromDateTime(DateTime.Today);
 
-            var transaction = new FileTransaction(dir.Dir.FullPath);
-            try
-            {
-                TxtParser.WriteTrains(dir.Dir.FullPath, GlobData.Trains, dir.GVD, GlobData.ReportVariants);
-                TxtParser.WriteRazeni1(dir.Dir.FullPath, GlobData.Radenia, GlobData.LocalLanguages);
-
-                TxtParser.WriteTables(dir.Dir.FullPath, GlobData.TabTabs, GlobData.TableCatalogs, GlobData.TablePhysicals, GlobData.TableLogicals);
-                TxtParser.WriteTTexts(dir.Dir.FullPath, GlobData.TableTexts);
-                TxtParser.WriteTracks(dir.Dir.FullPath, GlobData.Tracks);
-                TxtParser.WriteInfoGVD(dir.Dir.FullPath, dir.GVD);
-                TxtParser.WriteOperators(dir.Dir.FullPath, GlobData.Operators);
-                TxtParser.WriteModeTabs(dir.Dir.FullPath, GlobData.TableFonts, GlobData.TableFontDir);
-                TxtParser.WriteLocalCategori(dir.Dir.FullPath, GlobData.ReportVariants, GlobData.ReportTypes, GlobData.LocalLanguages);
-                TxtParser.WriteCustomStations(dir.Dir.FullPath, GlobData.CustomStations, dir.GVD);
-            }
-            catch (Exception exception)
-            {
-                Log.Exception(exception);
-
-                var message = transaction.TryRollback()
-                    ? string.Format(Resources.FMain_Uloženie_grafikonu_zlyhalo_zmeny_boli_vrátené, exception.Message)
-                    : string.Format(Resources.FMain_Uloženie_grafikonu_zlyhalo_a_nepodarilo_sa_obnoviť, exception.Message,
-                        transaction.BackupPath);
-
-                throw new InvalidOperationException(message, exception);
-            }
-
-            transaction.Commit();
+            GrafikonRepository.Save(dir.Dir.FullPath, dir.GVD, GrafikonContext.Current);
             DataSaved = true;
         }
     }
@@ -467,12 +397,12 @@ public partial class FMain : Form
             if ((string)tscbStanica.ComboBox.SelectedItem! == gvd.ThisStation.Name)
                 ObdobiaList.Add(new GVDDirectory(dir, gvd));
 
-            var dirs = TxtParser.ReadDirList();
+            var dirs = DirListFile.Read(GlobData.DataDir);
             dirs.Add(dir);
-            TxtParser.WriteDirList(dirs);
+            DirListFile.Write(GlobData.DataDir, dirs);
             GlobData.GVDDirs.Add(dir);
             Directory.CreateDirectory(dir.FullPath);
-            TxtParser.WriteInfoGVD(dir.FullPath, gvd);
+            InfoGvdFile.Write(dir.FullPath, gvd);
 
             var dgyv = new GVDDirectory(dir, gvd);
             _gvdDirs.Add(dgyv);
@@ -534,7 +464,7 @@ public partial class FMain : Form
         GVDInfo gvd;
         try
         {
-            gvd = TxtParser.ReadInfoGVD(selectedPath);
+            gvd = InfoGvdFile.Read(selectedPath);
         }
         catch (Exception e)
         {
@@ -560,9 +490,9 @@ public partial class FMain : Form
             var dirList = new DirList { DirName = Path.GetFileName(newDirPath), FullPath = newDirPath };
             var dgyv = new GVDDirectory(dirList, gvd);
 
-            var dirs = TxtParser.ReadDirList();
+            var dirs = DirListFile.Read(GlobData.DataDir);
             dirs.Add(dirList);
-            TxtParser.WriteDirList(dirs);
+            DirListFile.Write(GlobData.DataDir, dirs);
 
             GlobData.GVDDirs.Add(dirList);
             _gvdDirs.Add(dgyv);
@@ -731,11 +661,11 @@ public partial class FMain : Form
             var dirlist = gf.Grafikony.Select(gvd => gvd.Dir).ToList();
 
             GlobData.GVDDirs = dirlist;
-            TxtParser.WriteDirList(dirlist);
-            TxtParser.WriteTrainTypes(GlobData.TrainsTypes);
-            TxtParser.WriteZpozdeni(GlobData.Delays);
-            TxtParser.WriteAudio(GlobData.Audios);
-            TxtParser.WriteLanguages(GlobData.Languages.ToList());
+            DirListFile.Write(GlobData.DataDir, dirlist);
+            TrTypesFile.Write(GlobData.DataDir, GlobData.TrainsTypes);
+            ZpozdeniFile.Write(GlobData.DataDir, GlobData.Delays);
+            AudioFile.Write(GlobData.DataDir, GlobData.Audios);
+            CategoriFile.WriteGlobal(GlobData.DataDir, GlobData.Languages.ToList());
             // jazyky grafikonu si ponechavaju vlastny vyber - zmazany jazyk z neho vypadne, novy si zapne pouzivatel
             GlobData.LocalLanguages = GrafikonLanguageRules.Sync(GlobData.LocalLanguages, GlobData.Languages);
 
@@ -1055,13 +985,13 @@ public partial class FMain : Form
         {
             var stanice = new HashSet<string>();
             var obdobiaList = new List<GVDDirectory>();
-            var dirsInData = TxtParser.ReadDirList();
+            var dirsInData = DirListFile.Read(GlobData.DataDir);
             foreach (var dir in dirsInData)
             {
                 GVDInfo gvd;
                 if (GlobData.Config.DebugModeGUI == DebugMode.AppCrash)
                 {
-                    gvd = TxtParser.ReadInfoGVD(dir.FullPath);
+                    gvd = InfoGvdFile.Read(dir.FullPath);
                     stanice.Add(gvd.ThisStation.Name);
                     obdobiaList.Add(new GVDDirectory(dir, gvd));
                 }
@@ -1069,7 +999,7 @@ public partial class FMain : Form
                 {
                     try
                     {
-                        gvd = TxtParser.ReadInfoGVD(dir.FullPath);
+                        gvd = InfoGvdFile.Read(dir.FullPath);
                         stanice.Add(gvd.ThisStation.Name);
                         obdobiaList.Add(new GVDDirectory(dir, gvd));
                     }
@@ -1420,25 +1350,7 @@ public partial class FMain : Form
             BindDocument();
             _prechod = false;
 
-            TxtParser.WriteTrains(dir.Dir.FullPath, GlobData.Trains.ToList(), dir.GVD, GlobData.ReportVariants);
-
-            TxtParser.WriteTables(dir.Dir.FullPath, GlobData.TabTabs, GlobData.TableCatalogs, GlobData.TablePhysicals, GlobData.TableLogicals);
-            TxtParser.WriteTTexts(dir.Dir.FullPath, GlobData.TableTexts);
-
-            TxtParser.WriteTracks(dir.Dir.FullPath, GlobData.Tracks);
-
-            TxtParser.WriteInfoGVD(dir.Dir.FullPath, dir.GVD);
-
-            TxtParser.WriteOperators(dir.Dir.FullPath, GlobData.Operators);
-
-            TxtParser.WriteModeTabs(dir.Dir.FullPath, GlobData.TableFonts, GlobData.TableFontDir);
-
-            TxtParser.WriteStateDgm(dir.Dir.FullPath, _newDirTemplate);
-
-            TxtParser.WriteLocalCategori(dir.Dir.FullPath, GlobData.ReportVariants, GlobData.ReportTypes, GlobData.LocalLanguages);
-
-            TxtParser.WriteRazeniDefault(dir.Dir.FullPath);
-            TxtParser.WriteRazeni1Default(dir.Dir.FullPath);
+            GrafikonRepository.CreateNew(dir.Dir.FullPath, dir.GVD, GrafikonContext.Current, GlobData.DataDir, _newDirTemplate);
 
             _newDir = null;
             _grafikonLoaded = true;
@@ -1499,7 +1411,7 @@ public partial class FMain : Form
         try
         {
             //grafikon priamo v DATA (bez DirList.TXT) sa presuva do vlastneho priecinka vzdy, aj ked ma jediny blok
-            return BlockMigrator.Analyze(dir.Dir.FullPath, dir.GVD, dir.Dir.DirName, dir.Dir.IsDataRoot);
+            return BlockMigrator.Analyze(GlobData.DataDir, dir.Dir.FullPath, dir.GVD, dir.Dir.DirName, dir.Dir.IsDataRoot);
         }
         catch (Exception e)
         {
@@ -1528,7 +1440,7 @@ public partial class FMain : Form
         List<DirList> newDirs;
         try
         {
-            newDirs = BlockMigrator.Migrate(dir.Dir.FullPath, dir.Dir, dir.GVD, blocks);
+            newDirs = BlockMigrator.Migrate(GlobData.DataDir, dir.Dir.FullPath, dir.Dir, dir.GVD, blocks);
         }
         catch (Exception e)
         {
@@ -1539,7 +1451,7 @@ public partial class FMain : Form
 
         Utils.ShowInfo(string.Format(Resources.FMain_Grafikon_rozdeleny, string.Join(", ", newDirs.Select(d => d.DirName)), dir.Dir.FullPath));
 
-        GlobData.GVDDirs = TxtParser.ReadDirList();
+        GlobData.GVDDirs = DirListFile.Read(GlobData.DataDir);
         DataSaved = true;
         _previousSelectedGVD = null;
 
@@ -1703,7 +1615,7 @@ public partial class FMain : Form
                         train.Number, TrainName.ToDisplay(GlobData.TrainNames, train.Name), obmand));
                     if (result == DialogResult.Yes)
                     {
-                        if (FDateLimitEdit.SetDateLimit(this, thistrain.ZaciatokPlatnosti, thistrain.KoniecPlatnosti, train,
+                        if (FDateLimitEdit.SetDateLimit(this, thistrain.ZaciatokPlatnosti.ToDateTime(), thistrain.KoniecPlatnosti.ToDateTime(), train,
                                 true, train.DateLimitText) is { } limit)
                             train.DateLimitText = limit;
                     }
@@ -2050,7 +1962,7 @@ public partial class FMain : Form
             DefinedTrains = data.DefTrains,
             OmitPassingTrains = data.OmitPassingTrains,
             ReorderTrains = data.ReorderTrains,
-            StationMap = TxtParser.ReadElisStationMap(data.GVDPath)
+            StationMap = ElisMapFile.Read(data.GVDPath)
         };
 
         var elisData = client.LoadData();
@@ -2142,7 +2054,7 @@ public partial class FMain : Form
 
         try
         {
-            TxtParser.WriteElisStationMap(import.GVDPath, import.Client.StationMap, import.GVDInfo);
+            ElisMapFile.Write(import.GVDPath, import.Client.StationMap, import.GVDInfo, GlobData.Config.Language);
         }
         catch (Exception e)
         {
@@ -2396,7 +2308,7 @@ public partial class FMain : Form
     private void ShowDatObm()
     {
         var gvd = (tscbObdobie.ComboBox?.SelectedItem as GVDDirectory)?.GVD;
-        using var fobm = new FDatObm(gvd?.StartValidTimeTable, gvd?.EndValidTimeTable);
+        using var fobm = new FDatObm(gvd?.StartValidTimeTable.ToDateTime(), gvd?.EndValidTimeTable.ToDateTime());
         fobm.ShowDialog(this);
     }
 

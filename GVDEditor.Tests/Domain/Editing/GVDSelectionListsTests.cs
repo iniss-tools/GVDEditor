@@ -17,8 +17,8 @@ public class GVDSelectionListsTests
         new GVDInfo
         {
             ThisStation = new Station("1", station),
-            StartValidTimeTable = new DateTime(year, 12, 10),
-            EndValidTimeTable = new DateTime(year + 1, 12, 9),
+            StartValidTimeTable = new DateOnly(year, 12, 10),
+            EndValidTimeTable = new DateOnly(year + 1, 12, 9),
         });
 
     [TestMethod]
@@ -27,8 +27,8 @@ public class GVDSelectionListsTests
         var dir = NewDir("Horna", 2024);
         Assert.AreEqual("2024/2025", dir.Period);
 
-        dir.GVD.StartValidTimeTable = new DateTime(2025, 12, 14);
-        dir.GVD.EndValidTimeTable = new DateTime(2026, 12, 12);
+        dir.GVD.StartValidTimeTable = new DateOnly(2025, 12, 14);
+        dir.GVD.EndValidTimeTable = new DateOnly(2026, 12, 12);
 
         Assert.AreEqual("2025/2026", dir.Period);
         Assert.AreEqual("2025/2026", dir.ToString());

@@ -30,16 +30,16 @@ public class TrainDraftTests
             Type = Ex,
             Name = "Lipovan",
             Operator = Zssk,
-            Arrival = new DateTime(2026, 1, 1, 10, 12, 0),
-            Departure = new DateTime(2026, 1, 1, 10, 15, 0),
+            Arrival = new TimeOnly(10, 12),
+            Departure = new TimeOnly(10, 15),
             Routing = Routing.Prechadzajuci,
             Track = Track1,
             TrackDeparture = Track2,
             LineArrival = "S20",
             LineDeparture = "R1",
             DateLimitText = "ide v 1-5",
-            ZaciatokPlatnosti = new DateTime(2026, 12, 13),
-            KoniecPlatnosti = new DateTime(2027, 12, 11),
+            ZaciatokPlatnosti = new DateOnly(2026, 12, 13),
+            KoniecPlatnosti = new DateOnly(2027, 12, 11),
             Variant = 2,
             LockoutNumber = 57,
             IsMedzistatny = true,
@@ -75,8 +75,8 @@ public class TrainDraftTests
         Assert.AreSame(source.Type, copy.Type);
         Assert.AreEqual(source.Name, copy.Name);
         Assert.AreEqual(source.Operator, copy.Operator);
-        Assert.AreEqual(source.Arrival!.Value.TimeOfDay, copy.Arrival!.Value.TimeOfDay);
-        Assert.AreEqual(source.Departure!.Value.TimeOfDay, copy.Departure!.Value.TimeOfDay);
+        Assert.AreEqual(source.Arrival, copy.Arrival);
+        Assert.AreEqual(source.Departure, copy.Departure);
         Assert.AreSame(Routing.Prechadzajuci, copy.Routing);
         Assert.AreEqual(Track1, copy.Track);
         Assert.AreEqual(Track2, copy.TrackDeparture);
@@ -176,10 +176,10 @@ public class TrainDraftTests
     [TestMethod]
     public void Koncept_NovyVlak_MaPlatnostGrafikonu()
     {
-        var draft = TrainDraft.New(new DateTime(2026, 12, 13, 8, 0, 0), new DateTime(2027, 12, 11));
+        var draft = TrainDraft.New(new DateOnly(2026, 12, 13), new DateOnly(2027, 12, 11));
 
-        Assert.AreEqual(new DateTime(2026, 12, 13), draft.ValidFrom);
-        Assert.AreEqual(new DateTime(2027, 12, 11), draft.ValidTo);
+        Assert.AreEqual(new DateOnly(2026, 12, 13), draft.ValidFrom);
+        Assert.AreEqual(new DateOnly(2027, 12, 11), draft.ValidTo);
         Assert.AreEqual(-1, draft.Variant);
         Assert.IsNull(draft.Routing);
     }

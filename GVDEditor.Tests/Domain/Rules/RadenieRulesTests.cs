@@ -13,14 +13,13 @@ namespace GVDEditor.Tests.Domain.Rules;
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
 public class RadenieRulesTests
 {
-    private static readonly DateTime From = new(2026, 12, 13);
-    private static readonly DateTime To = new(2027, 12, 11);
+    private static readonly DateOnly From = new(2026, 12, 13);
+    private static readonly DateOnly To = new(2027, 12, 11);
     private static readonly Station Kosice = new("5", "Košice");
 
-    private static Radenie Radenie(string datObm, Station? dest = null, DateTime? to = null) => new()
+    private static Radenie Radenie(string datObm, Station? dest = null, DateOnly? to = null) => new()
     {
-        ZacPlatnosti = From,
-        KonPlatnosti = to ?? To,
+        Validity = new ValidityPeriod(From, to ?? To),
         DatObm = datObm,
         Text = "A",
         Sounds = [new FyzSound { Name = "R001" }],

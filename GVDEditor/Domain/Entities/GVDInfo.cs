@@ -28,27 +28,27 @@ public sealed record GVDInfo
     /// <summary>
     /// Začiatok platnosti rozvrhu vlakov
     /// </summary>
-    public DateTime StartValidTimeTable { get; set; }
+    public DateOnly StartValidTimeTable { get; set; }
 
     /// <summary>
     /// Koniec platnosti rozvrhu vlakov
     /// </summary>
-    public DateTime EndValidTimeTable { get; set; }
+    public DateOnly EndValidTimeTable { get; set; }
 
     /// <summary>
     /// Začiatok platnosti dát
     /// </summary>
-    public DateTime StartValidData { get; set; }
+    public DateOnly StartValidData { get; set; }
 
     /// <summary>
     /// Koniec platnosti dát
     /// </summary>
-    public DateTime EndValidData { get; set; }
+    public DateOnly EndValidData { get; set; }
 
     /// <summary>
     /// Dátum vytvorenia/úpravy grafikonu
     /// </summary>
-    public DateTime CreateData { get; set; }
+    public DateOnly CreateData { get; set; }
 
     /// <summary>
     /// TTIndex

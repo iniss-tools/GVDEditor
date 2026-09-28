@@ -49,7 +49,7 @@ public class DirListFileTests
         if (before != null)
             File.WriteAllLines(File_, before.Split('|'), Encodings.Win1250);
 
-        var written = TxtParser.WriteDirList(File_, Dirs(names));
+        var written = DirListFile.WriteFile(File_, Dirs(names));
 
         Assert.AreEqual(expectedWritten, written);
         if (expectedAfter == null)

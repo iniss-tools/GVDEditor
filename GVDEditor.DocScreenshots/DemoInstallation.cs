@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Reflection;
 using GVDEditor.Domain.Analysis;
+using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using ToolsCore.Entities;
@@ -19,8 +20,8 @@ internal static class DemoInstallation
     public const string GvdDirName = "DolneMesto.2027";
     public const string ExeName = "INISS - Dolné Mesto.exe";
 
-    private static readonly DateTime ValidFrom = new(2026, 12, 13);
-    private static readonly DateTime ValidTo = new(2027, 12, 11);
+    private static readonly DateOnly ValidFrom = new(2026, 12, 13);
+    private static readonly DateOnly ValidTo = new(2027, 12, 11);
 
     // stanice trate od západu na východ, odbočka z Dolného Mesta na juh
     private static readonly (string Id, string Name)[] StationList =
@@ -79,9 +80,9 @@ internal static class DemoInstallation
         SetGlobData(nameof(GlobData.DataDir), dataDir);
         SetGlobData(nameof(GlobData.RawBankDir), bankDir);
 
-        TxtParser.WriteLanguages(languages);
-        TxtParser.WriteTrainTypesDefaults();
-        TxtParser.WriteZpozdeniDefault();
+        CategoriFile.WriteGlobal(GlobData.DataDir, languages);
+        TrTypesFile.WriteDefaults(GlobData.DataDir);
+        ZpozdeniFile.WriteDefault(GlobData.DataDir);
 
         // zvukový okruh stanice a testovací okruh TEST (sprístupní v INISSe tlačidlo Test/stop)
         File.WriteAllLines(Path.Combine(dataDir, GvdFileConsts.FILE_AUDIO),
@@ -91,7 +92,7 @@ internal static class DemoInstallation
         ], ToolsCore.Tools.Encodings.Win1250);
 
         var dir = new DirList { DirName = GvdDirName, FullPath = Path.Combine(dataDir, GvdDirName), TablePort = 2, ReportPort = 3 };
-        TxtParser.WriteDirList([dir]);
+        DirListFile.Write(GlobData.DataDir, [dir]);
 
         GlobData.PrepareGlobalData(root);
 
@@ -174,20 +175,10 @@ internal static class DemoInstallation
     /// <summary>
     /// Rovnaké súbory, aké vytvorí FMain pri prvom otvorení nového grafikonu.
     /// </summary>
-    private static void WriteNewGvd(string path, GVDInfo gvd)
-    {
-        TxtParser.WriteTrains(path, [], gvd, ReportVariant.GetDefaultValues());
-        TxtParser.WriteTables(path, [], [], [], []);
-        TxtParser.WriteTTexts(path, []);
-        TxtParser.WriteTracks(path, [Track.None]);
-        TxtParser.WriteInfoGVD(path, gvd);
-        TxtParser.WriteOperators(path, [Operator.None]);
-        TxtParser.WriteModeTabs(path, [], GlobData.TableFontDir);
-        TxtParser.WriteStateDgm(path, StateDgmTemplate.Slovak);
-        TxtParser.WriteLocalCategori(path, ReportVariant.GetDefaultValues(), ReportType.GetDefaultValuesSK(), GlobData.Languages);
-        TxtParser.WriteRazeniDefault(path);
-        TxtParser.WriteRazeni1Default(path);
-    }
+    private static void WriteNewGvd(string path, GVDInfo gvd) =>
+        GrafikonRepository.CreateNew(path, gvd,
+            new GrafikonContext(GlobData.Workspace, GrafikonDocument.CreateNew(GlobData.Languages), GlobData.Config.Language),
+            GlobData.DataDir, StateDgmTemplate.Slovak);
 
     /// <summary>
     /// Naplní grafikon koľajami, dopravcami a vlakmi a uloží ho rovnako ako Súbor → Uložiť.
@@ -256,15 +247,17 @@ internal static class DemoInstallation
         GlobData.TableLogicals = new ExControls.ExBindingList<TableLogical>(tables.Logicals);
         GlobData.TableFontDir = DemoTables.FontDir;
 
-        TxtParser.WriteTrains(path, trains, gvd, ReportVariant.GetDefaultValues());
-        TxtParser.WriteTables(path, tables.TabTabs, tables.Catalogs, tables.Physicals, tables.Logicals);
-        TxtParser.WriteTTexts(path, tables.Texts);
-        TxtParser.WriteModeTabs(path, tables.Fonts, DemoTables.FontDir);
-        TxtParser.WriteTracks(path, tracks);
-        TxtParser.WriteOperators(path, operators);
-        TxtParser.WriteInfoGVD(path, gvd);
-        TxtParser.WriteCustomStations(path, GlobData.CustomStations, gvd);
-        TxtParser.WriteRazeni1(path, DemoRadenia(), GlobData.Languages);
+        TrainsFile.Write(path, trains, gvd, new GrafikonContext(GlobData.Workspace,
+            new GrafikonDocument { ReportVariants = ReportVariant.GetDefaultValues(), ReportTypes = GlobData.ReportTypes, CustomStations = GlobData.CustomStations },
+            GlobData.Config.Language));
+        TablesFile.Write(path, tables.TabTabs, tables.Catalogs, tables.Physicals, tables.Logicals);
+        TTextsFile.Write(path, tables.Texts);
+        ModeTabsFile.Write(path, tables.Fonts, DemoTables.FontDir, []);
+        TracksFile.Write(path, tracks);
+        OperatorsFile.Write(path, operators);
+        InfoGvdFile.Write(path, gvd);
+        CustomStationsFile.Write(path, GlobData.CustomStations, gvd, GlobData.Config.Language);
+        RazeniFile.Write(path, DemoRadenia(), GlobData.Languages, ReportVariant.GetDefaultValues());
     }
 
     /// <summary>
@@ -291,8 +284,7 @@ internal static class DemoInstallation
             return new Radenie
             {
                 CisloVlaku = "521",
-                ZacPlatnosti = ValidFrom,
-                KonPlatnosti = ValidTo,
+                Validity = new ValidityPeriod(ValidFrom, ValidTo),
                 DatObm = dateLimit,
                 Sounds = sounds,
                 Text = Radenie.SoundsToString(sounds),
@@ -313,8 +305,8 @@ internal static class DemoInstallation
             Name = name,
             Type = GlobData.TrainsTypes.First(t => t.Key == type),
             Routing = routing,
-            Arrival = arrival is null ? null : DateTime.Today.Add(TimeSpan.Parse(arrival, CultureInfo.InvariantCulture)),
-            Departure = departure is null ? null : DateTime.Today.Add(TimeSpan.Parse(departure, CultureInfo.InvariantCulture)),
+            Arrival = arrival is null ? null : TimeOnly.FromTimeSpan(TimeSpan.Parse(arrival, CultureInfo.InvariantCulture)),
+            Departure = departure is null ? null : TimeOnly.FromTimeSpan(TimeSpan.Parse(departure, CultureInfo.InvariantCulture)),
             Track = track,
             Operator = op,
             DateLimitText = dateLimit,
@@ -353,20 +345,20 @@ internal static class DemoInstallation
     {
         // poradie ako vo FMain.ProccessData: vlastné stanice pred trasami, koľaje sa odkazujú na logické tabule
         LoadWarnings.Clear();
-        GlobData.CustomStations = new ExControls.ExBindingList<Station>(TxtParser.ReadCustomStations(path, gvd));
-        var (tabtabs, catalogs, physicals, logicals) = TxtParser.ReadTables(path);
+        GlobData.CustomStations = new ExControls.ExBindingList<Station>(CustomStationsFile.Read(path, gvd, GlobData.Stations));
+        var (tabtabs, catalogs, physicals, logicals) = TablesFile.Read(path);
         GlobData.TabTabs = new ExControls.ExBindingList<TableTabTab>(tabtabs);
         GlobData.TableCatalogs = new ExControls.ExBindingList<TableCatalog>(catalogs);
         GlobData.TablePhysicals = new ExControls.ExBindingList<TablePhysical>(physicals);
         GlobData.TableLogicals = new ExControls.ExBindingList<TableLogical>(logicals);
-        GlobData.Tracks = new ExControls.ExBindingList<Track>(TxtParser.ReadTracks(path));
-        GlobData.Operators = new ExControls.ExBindingList<Operator>(TxtParser.ReadOperators(path));
-        (GlobData.ReportVariants, GlobData.ReportTypes, GlobData.LocalLanguages) = TxtParser.ReadLocalCategori(path);
-        var trains = TxtParser.ReadTrains(path);
-        var texts = TxtParser.ReadTTexts(path, trains);
-        var fonts = TxtParser.ReadTableFonts(path);
+        GlobData.Tracks = new ExControls.ExBindingList<Track>(TracksFile.Read(path, GlobData.TableLogicals));
+        GlobData.Operators = new ExControls.ExBindingList<Operator>(OperatorsFile.Read(path));
+        (GlobData.ReportVariants, GlobData.ReportTypes, GlobData.LocalLanguages) = CategoriFile.ReadLocal(path, GlobData.Languages);
+        var trains = TrainsFile.Read(path, GrafikonContext.Current);
+        var texts = TTextsFile.Read(path, trains, GlobData.TableCatalogs);
+        var fonts = ModeTabsFile.Read(path).Fonts;
         var tracksWithTables = GlobData.Tracks.Count(t => t.Tables.Count > 0);
-        var radenia = TxtParser.ReadRazeni1(path, GlobData.Sounds);
+        var radenia = RazeniFile.Read(path, GlobData.Sounds, GrafikonContext.Current);
         log.Add($"demo: radenia {radenia.Count} ({string.Join("; ", radenia.Select(r => $"{r.CisloVlaku} {r.DatObm}: {r.Text}"))})");
 
         log.Add($"demo: {trains.Count} vlakov, {GlobData.Tracks.Count - 1} koľají ({tracksWithTables} s tabuľou), " +

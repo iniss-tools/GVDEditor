@@ -147,11 +147,11 @@ public class TableCatalogEditingTests
             };
 
             // FTableCatalog kedysi vkladal Ziadny do GlobData.TabTabs – do suboru sa nesmie dostat
-            TxtParser.WriteTables(dir.FullName, [TableTabTab.Empty, tabTab], [catalog], [], []);
+            TablesFile.Write(dir.FullName, [TableTabTab.Empty, tabTab], [catalog], [], []);
             var text = File.ReadAllText(Path.Combine(dir.FullName, GvdFileConsts.FILE_TABTAB), Encodings.Win1250);
             Assert.DoesNotContain("[" + TableTabTab.Empty.Key + "]", text);
 
-            var (tabTabs, catalogs, _, _) = TxtParser.ReadTables(dir.FullName);
+            var (tabTabs, catalogs, _, _) = TablesFile.Read(dir.FullName);
             Assert.AreEqual((tabTab.Key, tabTab.Text), (tabTabs.Single().Key, tabTabs.Single().Text));
             Assert.AreSame(TableAlign.Right, catalogs[0].Items[0].Align);
             Assert.AreSame(TableAlign.Left, catalogs[0].Items[1].Align);
@@ -169,13 +169,13 @@ public class TableCatalogEditingTests
         var dir = Directory.CreateTempSubdirectory("gvdtables");
         try
         {
-            TxtParser.WriteTables(dir.FullName, [new TableTabTab { Key = "Smer", Text = "\"A\"=\"B\"" }], [], [], []);
+            TablesFile.Write(dir.FullName, [new TableTabTab { Key = "Smer", Text = "\"A\"=\"B\"" }], [], [], []);
             // subor po starsej verzii GVDEditora: prazdna sekcia [Ziadny]
             // (za nou dalsia sekcia – dokazuje, ze sa pripisane sekcie naozaj citaju)
             File.AppendAllText(Path.Combine(dir.FullName, GvdFileConsts.FILE_TABTAB),
                 "\r\n[" + TableTabTab.Empty.Key + "]\r\n\r\n[Druh]\r\n\"R\"=\"{2}R\"\r\n", Encodings.Win1250);
 
-            var (tabTabs, _, _, _) = TxtParser.ReadTables(dir.FullName);
+            var (tabTabs, _, _, _) = TablesFile.Read(dir.FullName);
 
             CollectionAssert.AreEqual(new[] { "Smer", "Druh" }, tabTabs.Select(t => t.Key).ToArray());
         }

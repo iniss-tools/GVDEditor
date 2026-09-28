@@ -110,13 +110,13 @@ internal static class TrainVariants
     public static List<(Train Train, string Days)> Overlaps(TrainDraft draft, IEnumerable<Train> others)
     {
         var result = new List<(Train, string)>();
-        if (draft.ValidTo.Date < draft.ValidFrom.Date)
+        if (draft.ValidTo < draft.ValidFrom)
             return result;
 
-        var limit = new DateLimit(draft.ValidFrom.Date, draft.ValidTo.Date, true, true, false, false);
+        var limit = new DateLimit(draft.ValidFrom, draft.ValidTo, true, true, false, false);
         foreach (var other in others)
         {
-            if (other.ZaciatokPlatnosti.Date != draft.ValidFrom.Date || other.KoniecPlatnosti.Date != draft.ValidTo.Date)
+            if (other.ZaciatokPlatnosti != draft.ValidFrom || other.KoniecPlatnosti != draft.ValidTo)
                 continue;
 
             try
@@ -140,10 +140,10 @@ internal static class TrainVariants
     /// </summary>
     public static string? Without(TrainDraft draft, string limit, string removed)
     {
-        if (draft.ValidTo.Date < draft.ValidFrom.Date)
+        if (draft.ValidTo < draft.ValidFrom)
             return null;
 
-        var dateLimit = new DateLimit(draft.ValidFrom.Date, draft.ValidTo.Date, true, true, false, false);
+        var dateLimit = new DateLimit(draft.ValidFrom, draft.ValidTo, true, true, false, false);
         try
         {
             return dateLimit.TextAnd(limit, dateLimit.TextNot(removed));

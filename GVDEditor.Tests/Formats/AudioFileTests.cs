@@ -51,16 +51,16 @@ public class AudioFileTests
             "9900200,Stará linka,STARA,Stara,"
         ], Encodings.Win1250);
 
-        var audios = TxtParser.ReadAudio();
+        var audios = AudioFile.Read(GlobData.DataDir);
 
         CollectionAssert.AreEqual(new[] { "9900100", "TEST" }, audios.Select(a => a.Station.ID).ToArray());
 
-        TxtParser.WriteAudio(audios);
+        AudioFile.Write(GlobData.DataDir, audios);
         var lines = File.ReadAllLines(File_, Encodings.Win1250);
 
         StringAssert.StartsWith(lines[1], "TEST,Test,Test,TestHlas", lines[1]);
         Assert.AreEqual("/koniec okruhov", lines[2]);
         Assert.AreEqual("9900200,Stará linka,STARA,Stara,", lines[3]);
-        Assert.AreEqual(2, TxtParser.ReadAudio().Count);
+        Assert.AreEqual(2, AudioFile.Read(GlobData.DataDir).Count);
     }
 }

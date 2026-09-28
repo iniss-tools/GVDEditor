@@ -163,9 +163,9 @@ public class TabTabLexer
                             style = TabTabStyle.Event;
                         if (operators.Contains(identifier))
                             style = TabTabStyle.Operator;
-                        if (constans.Contains(identifier.ToUpper()))
+                        if (constans.Contains(identifier.ToUpperInvariant()))
                             style = TabTabStyle.Constant;
-                        if (functions.Contains(identifier.ToUpper()))
+                        if (functions.Contains(identifier.ToUpperInvariant()))
                             style = TabTabStyle.Function;
 
                         scintilla.SetStyling(length, style);

@@ -41,9 +41,9 @@ internal static class GVDImport
         if (!inPlace && Path.GetFullPath(targetPath).StartsWith(source + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase))
             return Resources.FMain_Import_grafikonu_do_seba;
 
-        var period = new Interval(gvd.StartValidTimeTable, gvd.EndValidTimeTable);
+        var period = new Interval(gvd.StartValidTimeTable.ToDateTime(), gvd.EndValidTimeTable.ToDateTime());
         if (existing.Any(d => d.GVD.ThisStation.Name == gvd.ThisStation.Name &&
-                              period.Overlaps(new Interval(d.GVD.StartValidTimeTable, d.GVD.EndValidTimeTable))))
+                              period.Overlaps(new Interval(d.GVD.StartValidTimeTable.ToDateTime(), d.GVD.EndValidTimeTable.ToDateTime()))))
             return Resources.FNewGrafikon_Zadané_obdobie_platnosti_tejto_stanice_už_existuje;
 
         return null;

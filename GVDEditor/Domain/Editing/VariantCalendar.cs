@@ -1,5 +1,6 @@
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Domain.Editing;
 
@@ -73,13 +74,13 @@ internal sealed class VariantCalendar
     {
         var periods = new List<(Train? Train, DateTime From, DateTime To, string Limit)>
         {
-            (null, draft.ValidFrom.Date, draft.ValidTo.Date, draft.DateLimitText)
+            (null, draft.ValidFrom.ToDateTime(), draft.ValidTo.ToDateTime(), draft.DateLimitText)
         };
         periods.AddRange(others.Select(other =>
-            ((Train?)other, other.ZaciatokPlatnosti.Date, other.KoniecPlatnosti.Date, draft.LimitOf(other))));
+            ((Train?)other, other.ZaciatokPlatnosti.ToDateTime(), other.KoniecPlatnosti.ToDateTime(), draft.LimitOf(other))));
 
         var valid = periods.Where(p => p.From <= p.To).ToList();
-        var from = valid.Count == 0 ? draft.ValidFrom.Date : valid.Min(p => p.From);
+        var from = valid.Count == 0 ? draft.ValidFrom.ToDateTime() : valid.Min(p => p.From);
         var to = valid.Count == 0 ? from : valid.Max(p => p.To);
         var days = (to - from).Days + 1;
 

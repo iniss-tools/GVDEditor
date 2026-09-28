@@ -61,10 +61,10 @@ public partial class GrafikonPage : UserControl, ISettingsPage
 
         _loading = true;
         tbDir.Text = dir.Dir.FullPath;
-        dtpGVDOd.Value = dir.GVD.StartValidTimeTable;
-        dtpGVDDo.Value = dir.GVD.EndValidTimeTable;
-        dtpDataOd.Value = dir.GVD.StartValidData;
-        dtpDataDo.Value = dir.GVD.EndValidData;
+        dtpGVDOd.Value = dir.GVD.StartValidTimeTable.ToDateTime();
+        dtpGVDDo.Value = dir.GVD.EndValidTimeTable.ToDateTime();
+        dtpDataOd.Value = dir.GVD.StartValidData.ToDateTime();
+        dtpDataDo.Value = dir.GVD.EndValidData.ToDateTime();
 
         cbStationName.DataSource = GlobData.Stations;
         cbCustomStation.Checked = dir.GVD.ThisStation.IsCustom;
@@ -224,7 +224,7 @@ public partial class GrafikonPage : UserControl, ISettingsPage
             // GlobData.GVDDirs obsahuje vsetky zaznamy DirList.TXT (aj grafikony inych stanic a necitatelne),
             // FMain.ObdobiaList len obdobia prave vybratej stanice
             GVDDirRename.UpdateEntries(_dir.Dir, GlobData.GVDDirs, dirname, fullpath);
-            TxtParser.WriteDirList(GlobData.GVDDirs);
+            DirListFile.Write(GlobData.DataDir, GlobData.GVDDirs);
         }
 
         _pendingDirName = null;
@@ -237,10 +237,10 @@ public partial class GrafikonPage : UserControl, ISettingsPage
     public void Apply()
     {
         var gvdInfo = _dir.GVD;
-        gvdInfo.StartValidData = dtpDataOd.Value.Date;
-        gvdInfo.EndValidData = dtpDataDo.Value.Date;
-        gvdInfo.StartValidTimeTable = dtpGVDOd.Value.Date;
-        gvdInfo.EndValidTimeTable = dtpGVDDo.Value.Date;
+        gvdInfo.StartValidData = DateOnly.FromDateTime(dtpDataOd.Value);
+        gvdInfo.EndValidData = DateOnly.FromDateTime(dtpDataDo.Value);
+        gvdInfo.StartValidTimeTable = DateOnly.FromDateTime(dtpGVDOd.Value);
+        gvdInfo.EndValidTimeTable = DateOnly.FromDateTime(dtpGVDDo.Value);
 
         gvdInfo.ThisStation = cbCustomStation.Checked
             ? new Station(decimal.ToInt32(nudIDStation.Value).ToString(CultureInfo.InvariantCulture), tbGVDStationName.Text, IsCustom: true)

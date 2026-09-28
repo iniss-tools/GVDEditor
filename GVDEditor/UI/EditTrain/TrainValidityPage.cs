@@ -63,8 +63,8 @@ public partial class TrainValidityPage : UserControl, ITrainPage
 
         _loading = true;
         tbDateLimit.Text = draft.DateLimitText;
-        dtpFrom.Value = draft.ValidFrom;
-        dtpTo.Value = draft.ValidTo;
+        dtpFrom.Value = draft.ValidFrom.ToDateTime();
+        dtpTo.Value = draft.ValidTo.ToDateTime();
         llCalendar.Enabled = openCalendar != null;
         _loading = false;
 
@@ -141,7 +141,7 @@ public partial class TrainValidityPage : UserControl, ITrainPage
         var rows = new List<(int Position, object Tag, string Route, DateTime From, DateTime To, string Limit, string Common)>
         {
             (TrainVariants.PositionOf(_draft, _others).Position, this, Route(_draft.RouteFrom.FirstOrDefault(),
-                _draft.RouteTo.LastOrDefault()), _draft.ValidFrom, _draft.ValidTo, _draft.DateLimitText, "")
+                _draft.RouteTo.LastOrDefault()), _draft.ValidFrom.ToDateTime(), _draft.ValidTo.ToDateTime(), _draft.DateLimitText, "")
         };
         foreach (var other in _others)
         {
@@ -149,7 +149,7 @@ public partial class TrainValidityPage : UserControl, ITrainPage
             if (_draft.VariantLimits.ContainsKey(other))
                 limit = string.Format(CultureInfo.CurrentCulture, Resources.TrainValidityPage_ZmeniSaPoOK, limit);
             rows.Add((TrainVariants.PositionOf(other, _draft, _others), other, Route(other.StartingStation, other.EndingStation),
-                other.ZaciatokPlatnosti, other.KoniecPlatnosti, limit, _overlaps.GetValueOrDefault(other, "")));
+                other.ZaciatokPlatnosti.ToDateTime(), other.KoniecPlatnosti.ToDateTime(), limit, _overlaps.GetValueOrDefault(other, "")));
         }
 
         foreach (var (position, tag, route, from, to, limit, common) in rows.OrderBy(r => r.Position))
@@ -225,8 +225,8 @@ public partial class TrainValidityPage : UserControl, ITrainPage
         if (_loading)
             return;
 
-        _draft.ValidFrom = dtpFrom.Value;
-        _draft.ValidTo = dtpTo.Value;
+        _draft.ValidFrom = DateOnly.FromDateTime(dtpFrom.Value);
+        _draft.ValidTo = DateOnly.FromDateTime(dtpTo.Value);
         OnChanged();
     }
 
@@ -234,10 +234,10 @@ public partial class TrainValidityPage : UserControl, ITrainPage
 
     private void EditOwnLimit()
     {
-        if (FindForm() is not { } form || _draft.ValidTo.Date < _draft.ValidFrom.Date)
+        if (FindForm() is not { } form || _draft.ValidTo < _draft.ValidFrom)
             return;
 
-        if (FDateLimitEdit.SetDateLimit(form, _draft.ValidFrom, _draft.ValidTo, defaultValue: tbDateLimit.Text) is { } limit)
+        if (FDateLimitEdit.SetDateLimit(form, _draft.ValidFrom.ToDateTime(), _draft.ValidTo.ToDateTime(), defaultValue: tbDateLimit.Text) is { } limit)
             tbDateLimit.Text = limit;
     }
 
@@ -263,11 +263,11 @@ public partial class TrainValidityPage : UserControl, ITrainPage
     /// </summary>
     private void EditOther()
     {
-        if (SelectedOther() is not { } other || FindForm() is not { } form || _draft.ValidTo.Date < _draft.ValidFrom.Date)
+        if (SelectedOther() is not { } other || FindForm() is not { } form || _draft.ValidTo < _draft.ValidFrom)
             return;
 
         var proposal = _overlaps.ContainsKey(other) ? TrainVariants.WithoutCommonDays(_draft, other) : null;
-        if (FDateLimitEdit.SetDateLimit(form, _draft.ValidFrom, _draft.ValidTo, other, defaultValue: _draft.LimitOf(other),
+        if (FDateLimitEdit.SetDateLimit(form, _draft.ValidFrom.ToDateTime(), _draft.ValidTo.ToDateTime(), other, defaultValue: _draft.LimitOf(other),
                 proposal: proposal) is not { } limit)
             return;
 

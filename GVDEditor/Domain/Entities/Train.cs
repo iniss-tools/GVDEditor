@@ -74,12 +74,12 @@ public sealed class Train
     /// <summary>
     /// Prichod vlaku do stanice (nullable).
     /// </summary>
-    public DateTime? Arrival { get; set; }
+    public TimeOnly? Arrival { get; set; }
 
     /// <summary>
     /// Odchod vlaku zo stanice (nullable).
     /// </summary>
-    public DateTime? Departure { get; set; }
+    public TimeOnly? Departure { get; set; }
 
     /// <summary>
     /// Vychodzia stanica.
@@ -174,12 +174,12 @@ public sealed class Train
     /// <summary>
     /// Zaciatok platnosti datumoveho obmedzenia.
     /// </summary>
-    public DateTime ZaciatokPlatnosti { get; set; }
+    public DateOnly ZaciatokPlatnosti { get; set; }
 
     /// <summary>
     /// Koniec platnosti datumoveho obmedzenia.
     /// </summary>
-    public DateTime KoniecPlatnosti { get; set; }
+    public DateOnly KoniecPlatnosti { get; set; }
 
     /// <summary>
     /// Linka na prichode.

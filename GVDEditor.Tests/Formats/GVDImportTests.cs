@@ -30,8 +30,8 @@ public class GVDImportTests
     private static GVDInfo Gvd(string station, int year) => new()
     {
         ThisStation = new Station("99", station),
-        StartValidTimeTable = new DateTime(year, 12, 13),
-        EndValidTimeTable = new DateTime(year + 1, 12, 11)
+        StartValidTimeTable = new DateOnly(year, 12, 13),
+        EndValidTimeTable = new DateOnly(year + 1, 12, 11)
     };
 
     private GVDDirectory[] Existing() =>

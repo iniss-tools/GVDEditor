@@ -54,7 +54,7 @@ public class Export3BMapTests
             foreach (var file in new[] { GvdFileConsts.FILE_VZORY, GvdFileConsts.FILE_STAHLASB, GvdFileConsts.FILE_STAHLASC, GvdFileConsts.FILE_VLAKY, GvdFileConsts.FILE_POZICE })
                 Write(dir, file);
 
-            var trains = TxtParser.ReadTrains(dir.FullName);
+            var trains = TrainsFile.Read(dir.FullName, GrafikonContext.Current);
 
             var limit = new DateLimit(new DateTime(2026, 1, 1), new DateTime(2026, 1, 14), insertMarks: false);
             var expected = limit.BitArrayToText(Utils.StringToBitArray(WEEKENDS));

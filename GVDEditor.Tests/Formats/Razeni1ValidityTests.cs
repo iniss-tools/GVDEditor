@@ -26,14 +26,14 @@ public class Razeni1ValidityTests
             var file = Path.Combine(dir.FullName, GvdFileConsts.FILE_RAZENI1);
             File.WriteAllText(file, "#721,P,,,\r\n#722,P,01.01.2026,03.01.2026,101\r\n", Encodings.Win1250);
 
-            var radenia = TxtParser.ReadRazeni1(dir.FullName, []);
+            var radenia = RazeniFile.Read(dir.FullName, [], GrafikonContext.Current);
 
             Assert.HasCount(2, radenia);
             Assert.IsFalse(radenia[0].HasValidity);
             Assert.AreEqual("", radenia[0].DatObm);
             Assert.IsTrue(radenia[1].HasValidity);
 
-            TxtParser.WriteRazeni1(dir.FullName, radenia, []);
+            RazeniFile.Write(dir.FullName, radenia, [], GlobData.ReportVariants);
             var headers = File.ReadAllLines(file, Encodings.Win1250).Where(line => line.StartsWith('#')).ToList();
 
             CollectionAssert.AreEqual(new[] { "#721,P,,,", "#722,P,01.01.2026,03.01.2026,101" }, headers);
@@ -61,13 +61,13 @@ public class Razeni1ValidityTests
             // znama stanica, neznama stanica (ostane pod cislom) a bez obmedzenia
             File.WriteAllLines(file, ["#521:9900140,P,,,", "#521:9912345,P,,,", "#521,P,,,"], Encodings.Win1250);
 
-            var radenia = TxtParser.ReadRazeni1(dir.FullName, []);
+            var radenia = RazeniFile.Read(dir.FullName, [], GrafikonContext.Current);
 
             Assert.AreEqual("Hraničná", radenia[0].DestStation.Name);
             Assert.AreEqual("9912345", radenia[1].DestStation.ID);
             Assert.IsNull(radenia[2].DestStation);
 
-            TxtParser.WriteRazeni1(dir.FullName, radenia, []);
+            RazeniFile.Write(dir.FullName, radenia, [], GlobData.ReportVariants);
             var headers = File.ReadAllLines(file, Encodings.Win1250).Where(line => line.StartsWith('#')).ToList();
 
             CollectionAssert.AreEqual(new[] { "#521:9900140,P,,,", "#521:9912345,P,,,", "#521,P,,," }, headers);

@@ -245,15 +245,15 @@ public partial class FStateDgm : Form
     {
         try
         {
-            var d = TxtParser.ReadStateDgm(_dir);
+            var d = StateDgmFile.Read(_dir);
             if (d != null) return d;
             _dirty = true; // subor chyba - po ulozeni vznikne z predlohy
-            return StateDgmDiagram.Parse(TxtParser.StateDgmTemplateText(StateDgmTemplate.Slovak));
+            return StateDgmDiagram.Parse(StateDgmFile.TemplateText(StateDgmTemplate.Slovak));
         }
         catch (StateDgmParseException e)
         {
             // text sa otvori na opravu (FStateDgm_Load); model je dovtedy prazdny
-            var path = TxtParser.StateDgmPath(_dir);
+            var path = StateDgmFile.PathOf(_dir);
             ExMessageBox.Show(string.Format(Resources.FStateDgm_SuborChyba, path, e.Line + 1, e.Message), Resources.FStateDgm_SuborChyba_Nadpis,
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             _rawText = File.ReadAllText(path, Encodings.Win1250);
@@ -643,7 +643,7 @@ public partial class FStateDgm : Form
                 return false;
             try
             {
-                TxtParser.WriteStateDgmText(_dir, _sc.Text);
+                StateDgmFile.WriteText(_dir, GlobData.DataDir, _sc.Text);
             }
             catch (Exception e) when (e is IOException or UnauthorizedAccessException)
             {
@@ -667,7 +667,7 @@ public partial class FStateDgm : Form
 
         try
         {
-            TxtParser.WriteStateDgm(_dir, _d);
+            StateDgmFile.Write(_dir, GlobData.DataDir, _d);
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException)
         {
@@ -859,7 +859,7 @@ public partial class FStateDgm : Form
             : sender == tsmiTplILTIS ? (StateDgmTemplate.SlovakIltis, Resources.FStateDgm_PredlohaILTIS)
             : (StateDgmTemplate.Slovak, Resources.FStateDgm_PredlohaSK);
         if (Utils.ShowQuestion(string.Format(Resources.FStateDgm_PredlohaOtazka, name)) != DialogResult.Yes) return;
-        _d = StateDgmDiagram.Parse(TxtParser.StateDgmTemplateText(template));
+        _d = StateDgmDiagram.Parse(StateDgmFile.TemplateText(template));
         if (_rawMode) SetRawMode(false);
         MarkDirty();
         BuildTree();

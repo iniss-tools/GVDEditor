@@ -94,7 +94,7 @@ internal static class Analyzer
 
         //1. Check GVD validity
         var now = DateTime.Now;
-        if (gvd.GVD.EndValidData < now)
+        if (gvd.GVD.EndValidData < DateOnly.FromDateTime(now))
         {
             var problem = new GVDOutOfValidity(gvd);
             problems.Add(problem);
@@ -514,6 +514,6 @@ internal class GVDOutOfValidity : IProblem
         Program.MainForm.ShowLocalSettings();
 
         //Check if the problem was solved
-        return GVDDir.GVD.EndValidData < DateTime.Now ? FixResult.NotSolved : FixResult.Done;
+        return GVDDir.GVD.EndValidData < DateOnly.FromDateTime(DateTime.Now) ? FixResult.NotSolved : FixResult.Done;
     }
 }

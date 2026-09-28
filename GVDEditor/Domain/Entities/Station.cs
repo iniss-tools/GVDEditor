@@ -57,20 +57,24 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
     /// </summary>
     /// <param name="id">Identifikátor stanice.</param>
     /// <returns><see cref="Station" />. Ak nenašlo žiadnu zhodu, vrati stanicu s nazvom zadaneho ID.</returns>
-    public static Station GetFromID(string? id)
+    public static Station GetFromID(string? id) => GetFromID(id, GlobData.Stations, GlobData.CustomStations);
+
+    /// <summary>
+    /// Vrati stanicu zo zvukovej banky alebo zo stanic grafikonu podla identifikatora stanice.
+    /// </summary>
+    /// <param name="id">Identifikator stanice.</param>
+    /// <param name="stations">stanice zo zvukovej banky</param>
+    /// <param name="customStations">stanice definovane v grafikone (Stanice.txt)</param>
+    /// <returns>Nova instancia stanice. Ak nenaslo ziadnu zhodu, vrati stanicu s nazvom zadaneho ID.</returns>
+    public static Station GetFromID(string? id, IEnumerable<Station> stations, IEnumerable<Station> customStations)
     {
         if (string.IsNullOrEmpty(id))
             return None;
 
-        var stationWithSameId = GlobData.Stations.FirstOrDefault(station => station.ID == id);
-        if (stationWithSameId is not null)
-            return new Station(stationWithSameId.ID, stationWithSameId.Name);
+        var stationWithSameId = stations.FirstOrDefault(station => station.ID == id)
+                                ?? customStations.FirstOrDefault(customStation => customStation.ID == id);
 
-        stationWithSameId = GlobData.CustomStations.FirstOrDefault(customStation => customStation.ID == id);
-        if (stationWithSameId is not null)
-            return new Station(stationWithSameId.ID, stationWithSameId.Name);
-
-        return new Station(id, id);
+        return stationWithSameId is not null ? new Station(stationWithSameId.ID, stationWithSameId.Name) : new Station(id, id);
     }
 
     /// <summary>
@@ -83,12 +87,12 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
         if (string.IsNullOrEmpty(name))
             return None;
 
-        name = name.Replace(".", "").Replace("-", "").ToLower();
+        name = name.Replace(".", "").Replace("-", "").ToLowerInvariant();
         name = Utils.RemoveDiacritics(name);
 
         foreach (var st in GlobData.Stations)
         {
-            var ns = st.Name.Replace(".", "").Replace("-", "").ToLower();
+            var ns = st.Name.Replace(".", "").Replace("-", "").ToLowerInvariant();
             ns = Utils.RemoveDiacritics(ns);
             if (ns == name) 
                 return new Station(st.ID, st.Name);
@@ -96,7 +100,7 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
 
         foreach (var cst in GlobData.CustomStations)
         {
-            var ns = cst.Name.Replace(".", "").Replace("-", "").ToLower();
+            var ns = cst.Name.Replace(".", "").Replace("-", "").ToLowerInvariant();
             ns = Utils.RemoveDiacritics(ns);
             if (ns == name) 
                 return new Station(cst.ID, cst.Name);

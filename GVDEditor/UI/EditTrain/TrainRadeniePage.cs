@@ -5,6 +5,7 @@ using GVDEditor.Domain.Rules;
 using GVDEditor.Integration;
 using GVDEditor.UI.Settings;
 using GVDEditor.Properties;
+using ToolsCore.Tools;
 
 namespace GVDEditor.UI.EditTrain;
 
@@ -125,8 +126,8 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
 
         tbText.Text = radenie?.Text ?? "";
         cbValidity.Checked = radenie?.HasValidity ?? true;
-        dtpFrom.Value = radenie is { HasValidity: true } ? radenie.ZacPlatnosti.Date : _gvdStart;
-        dtpTo.Value = radenie is { HasValidity: true } ? radenie.KonPlatnosti.Date : _gvdEnd;
+        dtpFrom.Value = radenie?.Validity is { } validity ? validity.From.ToDateTime() : _gvdStart;
+        dtpTo.Value = radenie?.Validity is { } period ? period.To.ToDateTime() : _gvdEnd;
         tbLimit.Text = radenie?.DatObm ?? "";
         SelectEndStation(radenie?.DestStation);
         matrix.Bind(radenie?.ChosenReports, GlobData.ReportTypes, GlobData.ReportVariants);
@@ -166,13 +167,12 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
 
         if (cbValidity.Checked)
         {
-            radenie.ZacPlatnosti = dtpFrom.Value.Date;
-            radenie.KonPlatnosti = dtpTo.Value.Date;
+            radenie.Validity = new ValidityPeriod(DateOnly.FromDateTime(dtpFrom.Value), DateOnly.FromDateTime(dtpTo.Value));
             radenie.DatObm = tbLimit.Text;
         }
         else
         {
-            radenie.ZacPlatnosti = radenie.KonPlatnosti = DateTime.MinValue;
+            radenie.Validity = null;
             radenie.DatObm = "";
         }
 
@@ -194,9 +194,9 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
         if (e.ListItem is not Radenie radenie)
             return;
 
-        var text = !radenie.HasValidity
+        var text = radenie.Validity is not { } validity
             ? Resources.FEditTrain_Radenie_BezPlatnosti
-            : DateLimit.FormatDate(radenie.ZacPlatnosti) + " – " + DateLimit.FormatDate(radenie.KonPlatnosti);
+            : DateLimit.FormatDate(validity.From.ToDateTime()) + " – " + DateLimit.FormatDate(validity.To.ToDateTime());
 
         // radenia s rovnakym obdobim sa lisia len datumovym obmedzenim
         if (!string.IsNullOrWhiteSpace(radenie.DatObm)) text += $" ({radenie.DatObm})";
@@ -218,7 +218,7 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
     /// Nove radenie s obdobim grafikonu; nahravky sa mu zlozia tlacidlom Zlozit radenie.
     /// </summary>
     private void bNew_Click(object? sender, EventArgs e) =>
-        Add(new Radenie { ZacPlatnosti = _gvdStart, KonPlatnosti = _gvdEnd, DatObm = "", Text = "", DestStation = null! });
+        Add(new Radenie { Validity = new ValidityPeriod(DateOnly.FromDateTime(_gvdStart), DateOnly.FromDateTime(_gvdEnd)), DatObm = "", Text = "", DestStation = null! });
 
     private void bDuplicate_Click(object? sender, EventArgs e)
     {

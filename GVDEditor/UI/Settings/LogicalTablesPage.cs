@@ -137,7 +137,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
         {
             try
             {
-                AddStation(TxtParser.ReadInfoGVD(dir.FullPath).ThisStation);
+                AddStation(InfoGvdFile.Read(dir.FullPath).ThisStation);
             }
             catch (Exception)
             {

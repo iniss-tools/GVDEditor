@@ -67,17 +67,17 @@ public class ReportVariantOrderTests
                 new(0, "Krátke hlásenie"),
                 new(1, "Dlhé hlásenie")
             };
-            TxtParser.WriteLocalCategori(dir.FullName, swapped, ReportType.GetDefaultValuesSK(), []);
+            CategoriFile.WriteLocal(dir.FullName, swapped, ReportType.GetDefaultValuesSK(), []);
             LoadWarnings.Clear();
 
-            var (variants, types, _) = TxtParser.ReadLocalCategori(dir.FullName);
+            var (variants, types, _) = CategoriFile.ReadLocal(dir.FullName, GlobData.Languages);
 
             CollectionAssert.AreEqual(ReportVariant.GetDefaultValues(), variants);
             Assert.HasCount(5, types);
             Assert.HasCount(1, LoadWarnings.Items);
             LoadWarnings.Clear();
 
-            TxtParser.WriteLocalCategori(dir.FullName, variants, types, []);
+            CategoriFile.WriteLocal(dir.FullName, variants, types, []);
             var file = new TxtPropsAreasFields(Path.Combine(dir.FullName, GvdFileConsts.FILE_CATEGORI));
             Assert.AreEqual("Dlhé hlásenie", file.Get("VARIANT_01", "NAME").ANSItoUTF());
             Assert.AreEqual("0", file.Get("VARIANT_01", "KEY"));
@@ -103,13 +103,13 @@ public class ReportVariantOrderTests
             var file = Path.Combine(dir.FullName, GvdFileConsts.FILE_RAZENI1);
             File.WriteAllText(file, "#721,Pl,,,\r\n", Encodings.Win1250);
 
-            var radenie = TxtParser.ReadRazeni1(dir.FullName, []).Single();
+            var radenie = RazeniFile.Read(dir.FullName, [], GrafikonContext.Current).Single();
 
             Assert.HasCount(2, radenie.ChosenReports);
             CollectionAssert.AreEqual(new[] { ReportVariant.DlheHlasenie }, radenie.ChosenReports.Single(r => r.Type == prichadza).Variants);
             CollectionAssert.AreEqual(new[] { ReportVariant.KratkeHlasenie }, radenie.ChosenReports.Single(r => r.Type == zastavil).Variants);
 
-            TxtParser.WriteRazeni1(dir.FullName, [radenie], []);
+            RazeniFile.Write(dir.FullName, [radenie], [], GlobData.ReportVariants);
             var header = File.ReadAllLines(file, Encodings.Win1250).Single(line => line.StartsWith('#'));
 
             Assert.AreEqual("#721,Pl,,,", header);

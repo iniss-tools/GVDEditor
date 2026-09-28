@@ -67,7 +67,7 @@ public class EntityIdentityTests
             File.WriteAllText(Path.Combine(dir.FullName, GvdFileConsts.FILE_VLASTNIK),
                 "-1,\"Žiadny\"\r\n1,\"ZSSK\"\r\n1,\"ZSSK\"\r\n2,\"RegioJet\"\r\n", Encodings.Win1250);
 
-            var operators = TxtParser.ReadOperators(dir.FullName);
+            var operators = OperatorsFile.Read(dir.FullName);
 
             CollectionAssert.AreEqual(new[] { "Žiadny", "ZSSK", "RegioJet" }, operators.Select(o => o.Name).ToList());
             Assert.AreSame(Operator.None, operators[0]);
