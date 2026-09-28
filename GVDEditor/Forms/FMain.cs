@@ -210,10 +210,8 @@ public partial class FMain : Form
             FireEventOnSort = true
         };
 
-        var nastupistia = new HashSet<Platform>();
-        foreach (var kolaj in GlobData.Tracks)
-            nastupistia.Add(kolaj.Platform);
-        GlobData.Platforms = new ExBindingList<Platform>(nastupistia.ToList());
+        // kolaje s rovnakym nastupistom zdielaju jednu instanciu (TxtParser.ReadTracks)
+        GlobData.Platforms = new ExBindingList<Platform>(GlobData.Tracks.Select(kolaj => kolaj.Platform).Distinct().ToList());
 
         (GlobData.ReportVariants,GlobData.ReportTypes,GlobData.LocalLanguages) = TxtParser.ReadLocalCategori(pathgvd.Path);
         InitDruhyReportov();
@@ -1577,7 +1575,7 @@ public partial class FMain : Form
     private void dgvTrains_CellClick(object sender, DataGridViewCellEventArgs e)
     {
         if (e.ColumnIndex != -1 && dgvTrains.Columns[e.ColumnIndex].Name == "Ostatne")
-            if (dgvTrains.CurrentRow != null && e.RowIndex != -1 && GlobData.Trains[e.RowIndex] != new Train())
+            if (dgvTrains.CurrentRow != null && e.RowIndex != -1)
                 ShowEditTrain(GlobData.Trains[e.RowIndex], e.RowIndex);
 
         if (e.RowIndex != -1)

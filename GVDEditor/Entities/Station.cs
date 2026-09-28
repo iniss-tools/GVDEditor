@@ -10,12 +10,18 @@ namespace GVDEditor.Entities;
 /// <param name="IsInShortReport">Ci sa bude hlásiť v krátkom hlásení.</param>
 /// <param name="IsInLongReport">Ci sa bude hlásiť v dlhom hlásení.</param>
 /// <param name="IsCustom">Ci stanica nepochadza zo zvukovej banky ale zo suboru Stanice.txt.</param>
+/// <remarks>
+///     Hodnotovy objekt - kazdy vlak ma v trase vlastne kopie (<see cref="CopyRoute" />) a trasy sa porovnavaju
+///     hodnotou (<see cref="SequencesEqual" />). Priznaky hlasenia sa upravuju na mieste v tabulke trasy, preto sa
+///     stanica nesmie pouzivat ako kluc v <see cref="HashSet{T}" /> alebo <see cref="Dictionary{TKey,TValue}" />.
+/// </remarks>
 public sealed record Station(string ID, string Name, bool IsInShortReport = false, bool IsInLongReport = false, bool IsCustom = false) : IComparable
 {
     /// <summary>
-    ///     Predvolena (nedefinovana) stanica.
+    ///     Predvolena (nedefinovana) stanica. Zakazdym nova instancia - stanica v trase sa upravuje na mieste
+    ///     (priznaky hlasenia), zdielana instancia by sa tak zmenila vsetkym.
     /// </summary>
-    public static Station None { get; } = new("0000000", "None");
+    public static Station None => new("0000000", "None");
 
     /// <summary>
     ///     Identifikátor stanice.

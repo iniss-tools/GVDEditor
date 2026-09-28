@@ -10,9 +10,12 @@ namespace GVDEditor.Entities;
 /// <summary>
 ///     Trieda reprezentujuca vlak.
 /// </summary>
-public sealed record Train
+/// <remarks>
+///     Vlak je entita s identitou - porovnava sa referenciou. Dva vlaky s rovnakymi udajmi (napr. hned po skopirovani)
+///     su stale dva rozne vlaky.
+/// </remarks>
+public sealed class Train
 {
-    private NumberVariant _numberVariant;
     private Routing _routing = null!;
 
     /// <summary>
@@ -23,25 +26,12 @@ public sealed record Train
     /// <summary>
     ///     Cislo vlaku.
     /// </summary>
-    public string Number
-    {
-        get => _numberVariant.Number;
-        set => _numberVariant.Number = value;
-    }
+    public string Number { get; set; } = null!;
 
     /// <summary>
-    ///     Cislo a varianta vlaku.
+    ///     Cislo a varianta vlaku (stlpec zoznamu vlakov).
     /// </summary>
-    public NumberVariant NumberVariant
-    {
-        get => _numberVariant;
-        set
-        {
-            _numberVariant = value;
-            _numberVariant.Number = Number;
-            _numberVariant.Variant = Variant;
-        }
-    }
+    public NumberVariant NumberVariant => new(Number, Variant);
 
     /// <summary>
     ///     Typ vlaku.
@@ -209,11 +199,7 @@ public sealed record Train
     /// <summary>
     ///     Varianta vlaku.
     /// </summary>
-    public int Variant
-    {
-        get => _numberVariant.Variant;
-        set => _numberVariant.Variant = value;
-    }
+    public int Variant { get; set; }
 
     /// <summary>
     ///     Radenie vlaku.

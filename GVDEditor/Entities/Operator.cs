@@ -3,9 +3,10 @@
 /// <summary>
 ///     Dopravca vlaku (operátor).
 /// </summary>
-/// <param name="Id">identifikátor dopravcu</param>
-/// <param name="Name">názov dopravcu</param>
-public sealed record Operator(int Id, string Name)
+/// <param name="id">identifikátor dopravcu</param>
+/// <param name="name">názov dopravcu</param>
+/// <remarks>Entita s identitou - vlaky sa odkazujú na inštanciu zo zoznamu dopravcov, porovnáva sa referenciou.</remarks>
+public sealed class Operator(int id, string name)
 {
     /// <summary>
     ///     Predvolený dopravca.
@@ -15,12 +16,12 @@ public sealed record Operator(int Id, string Name)
     /// <summary>
     ///     Identifikátor dopravcu.
     /// </summary>
-    public int Id { get; } = Id;
+    public int Id { get; } = id;
 
     /// <summary>
     ///     Názov dopravcu.
     /// </summary>
-    public string Name { get; set; } = Name;
+    public string Name { get; set; } = name;
 
     /// <summary>
     ///     This.

@@ -3,7 +3,7 @@
 /// <summary>
 ///     Typ reportu
 /// </summary>
-public sealed class ReportType
+public sealed record ReportType
 {
     /// <summary>
     ///     Konstruktor
@@ -62,17 +62,17 @@ public sealed class ReportType
     /// <summary>
     ///     Priznak LOCKOUT_BASE z Categori.TXT. INISS ho nacita, ale nikde nepouzije; zachovava sa.
     /// </summary>
-    public bool LockoutBase { get; set; }
+    public bool LockoutBase { get; init; }
 
     /// <summary>
     ///     Priznak LOCKOUT_THROUGH z Categori.TXT. INISS ho nacita, ale nikde nepouzije; zachovava sa.
     /// </summary>
-    public bool LockoutThrough { get; set; }
+    public bool LockoutThrough { get; init; }
 
     /// <summary>
     ///     Priznak LOCKOUT_TERMINATE z Categori.TXT. INISS ho nacita, ale nikde nepouzije; zachovava sa.
     /// </summary>
-    public bool LockoutTerminate { get; set; }
+    public bool LockoutTerminate { get; init; }
 
     /// <inheritdoc />
     public override string ToString() => Name;
@@ -144,64 +144,6 @@ public sealed class ReportType
         return reports;
     }
 
-    private bool Equals(ReportType other)
-    {
-        return Key == other.Key && Name == other.Name && Char == other.Char && BaseTrain == other.BaseTrain &&
-               PassThrough == other.PassThrough && TerminateTrain == other.TerminateTrain &&
-               Complement == other.Complement;
-    }
-
-    /// <inheritdoc />
-    public override bool Equals(object? obj)
-    {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != GetType()) return false;
-        return Equals((ReportType)obj);
-    }
-
-    /// <inheritdoc />
-    public override int GetHashCode()
-    {
-        unchecked
-        {
-            var hashCode = Key != null ? Key.GetHashCode() : 0;
-            hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
-            hashCode = (hashCode * 397) ^ (Char != null ? Char.GetHashCode() : 0);
-            hashCode = (hashCode * 397) ^ BaseTrain.GetHashCode();
-            hashCode = (hashCode * 397) ^ PassThrough.GetHashCode();
-            hashCode = (hashCode * 397) ^ TerminateTrain.GetHashCode();
-            hashCode = (hashCode * 397) ^ Complement.GetHashCode();
-            return hashCode;
-        }
-    }
-
-    /// <summary>
-    ///     Returns a value that indicates whether the values of two <see cref="T:GVDEditor.Entities.ReportType" />
-    ///     objects are equal.
-    /// </summary>
-    /// <param name="left">The first value to compare.</param>
-    /// <param name="right">The second value to compare.</param>
-    /// <returns>
-    ///     true if the <paramref name="left" /> and <paramref name="right" /> parameters have the same value; otherwise,
-    ///     false.
-    /// </returns>
-    public static bool operator ==(ReportType left, ReportType right)
-    {
-        return Equals(left, right);
-    }
-
-    /// <summary>
-    ///     Returns a value that indicates whether two <see cref="T:GVDEditor.Entities.ReportType" /> objects have
-    ///     different values.
-    /// </summary>
-    /// <param name="left">The first value to compare.</param>
-    /// <param name="right">The second value to compare.</param>
-    /// <returns>true if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise, false.</returns>
-    public static bool operator !=(ReportType left, ReportType right)
-    {
-        return !Equals(left, right);
-    }
 #pragma warning disable 1591
     public static readonly ReportType Prichadza = new("Přijíždí", "Přijíždí", "P");
     public static readonly ReportType Vchadza = new("Vjíždí", "Vjíždí", "I");

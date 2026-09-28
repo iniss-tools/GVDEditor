@@ -787,12 +787,8 @@ internal static class TxtParser
         var countV = int.Parse(categoriF.Get("MAIN", "COUNT_BASIC_REPORT_VARIANT"));
         for (var i = 1; i <= countV; i++)
         {
-            var variant = new ReportVariant();
             var area = $"VARIANT_{i.PadZeros(2)}";
-            variant.Key = int.Parse(categoriF.Get(area, "KEY"));
-            variant.Name = categoriF.Get(area, "NAME").ANSItoUTF();
-
-            variants.Add(variant);
+            variants.Add(new ReportVariant(int.Parse(categoriF.Get(area, "KEY")), categoriF.Get(area, "NAME").ANSItoUTF()));
         }
 
         if (ReportVariant.FixSwappedDefaultNames(variants))
@@ -2085,11 +2081,11 @@ internal static class TxtParser
         foreach (var group in tracks.GroupBy(track => track.Platform.Key, StringComparer.Ordinal))
         {
             // GroupBy zachovava poradie prveho vyskytu a OrderByDescending je stabilne
-            var variants = group.GroupBy(track => track.Platform).OrderByDescending(variant => variant.Count()).ToList();
-            var shared = group.Key == Platform.None.Key ? Platform.None : variants[0].Key;
+            var variants = group.GroupBy(track => (track.Platform.FullName, track.Platform.SoundName))
+                .OrderByDescending(variant => variant.Count()).ToList();
+            var shared = group.Key == Platform.None.Key ? Platform.None : variants[0].First().Platform;
 
-            var different = variants.Where(variant => !variant.Key.Equals(shared)).ToList();
-            if (different.Count > 0)
+            if (variants.Any(variant => variant.Key != (shared.FullName, shared.SoundName)))
             {
                 var descriptions = variants.Select(variant =>
                     $"„{variant.Key.FullName}“/{variant.Key.SoundName} ({string.Join(", ", variant.Select(track => track.Key))})");
@@ -2162,7 +2158,7 @@ internal static class TxtParser
     {
         var file = CombinePath(path, FILE_VLASTNIK)!;
 
-        var operators = new HashSet<Operator> { Operator.None };
+        var operators = new List<Operator> { Operator.None };
 
         try
         {
@@ -2185,7 +2181,9 @@ internal static class TxtParser
                 {
                     var id = int.Parse(row[0]);
                     var nazov = row[1].ANSItoUTF();
-                    operators.Add(new Operator(id, nazov));
+                    // rovnaky riadok dvakrat (aj riadok s predvolenym dopravcom) sa nacita len raz
+                    if (!operators.Any(o => o.Id == id && o.Name == nazov))
+                        operators.Add(new Operator(id, nazov));
                 }
                 catch (Exception e)
                 {
@@ -2200,7 +2198,7 @@ internal static class TxtParser
             //ignored
         }
 
-        return operators.ToList();
+        return operators;
     }
 
     /// <summary>

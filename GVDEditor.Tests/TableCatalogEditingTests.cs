@@ -1,4 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using GVDEditor.Entities;
 using GVDEditor.Tools;
 using ToolsCore.Tools;
@@ -107,7 +107,7 @@ public class TableCatalogEditingTests
     public void TabTab_ZiadnySaPridaLenDoKopie()
     {
         var tab = new TableTabTab { Key = "Smer", Text = "\"A\"=\"B\"" };
-        List<TableTabTab> global = [tab, TableTabTab.Empty with { }];
+        List<TableTabTab> global = [tab, TableTabTab.Empty];
 
         var list = TableCatalogEditing.WithEmptyTabTab(global);
 
@@ -150,7 +150,7 @@ public class TableCatalogEditingTests
             Assert.DoesNotContain("[" + TableTabTab.Empty.Key + "]", text);
 
             var (tabTabs, catalogs, _, _) = TxtParser.ReadTables(dir.FullName);
-            CollectionAssert.AreEqual(new[] { tabTab }, tabTabs);
+            Assert.AreEqual((tabTab.Key, tabTab.Text), (tabTabs.Single().Key, tabTabs.Single().Text));
             Assert.AreSame(TableAlign.Right, catalogs[0].Items[0].Align);
             Assert.AreSame(TableAlign.Left, catalogs[0].Items[1].Align);
             CollectionAssert.AreEqual(new[] { "Cas", "Smer" }, catalogs[0].ViewTypeTabs[0].TypeModeItems[0].ItemsKeys);

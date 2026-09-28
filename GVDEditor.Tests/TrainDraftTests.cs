@@ -1,4 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using GVDEditor.Entities;
 using GVDEditor.Tools;
 using ToolsCore.Entities;
@@ -141,7 +141,7 @@ public class TrainDraftTests
         var draft = TrainDraft.From(train);
         Assert.AreEqual(Track1, draft.TrackDeparture, "ponuka ukazuje kolaj prichodu");
 
-        draft.TrackDeparture = Track1 with { };
+        draft.TrackDeparture = Track1;
         draft.ApplyTo(train);
         Assert.IsNull(train.TrackDeparture);
     }

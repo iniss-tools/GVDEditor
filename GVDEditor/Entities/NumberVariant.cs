@@ -1,39 +1,35 @@
-﻿namespace GVDEditor.Entities;
+﻿using System.Globalization;
+
+namespace GVDEditor.Entities;
 
 /// <summary>
-///     Cislo a varianta vlaku.
+///     Cislo a varianta vlaku - zobrazuje sa v jednom stlpci zoznamu vlakov a triedi sa podla cisla, potom varianty.
 /// </summary>
-public struct NumberVariant : IComparable
+/// <param name="Number">Cislo vlaku.</param>
+/// <param name="Variant">Varianta vlaku; -1 = vlak nema varianty.</param>
+public readonly record struct NumberVariant(string Number, int Variant) : IComparable, IComparable<NumberVariant>
 {
-    /// <summary>
-    ///     Cislo vlaku.
-    /// </summary>
-    public string Number { get; set; }
-
-    /// <summary>
-    ///     Varianta vlaku.
-    /// </summary>
-    public int Variant { get; set; }
-
     /// <inheritdoc />
     public override string ToString() => Variant == -1 ? $"{Number}" : $"{Number} v{Variant}";
 
     /// <inheritdoc />
-    public int CompareTo(object? obj)
+    public int CompareTo(object? obj) => obj is NumberVariant other ? CompareTo(other) : 1;
+
+    /// <inheritdoc />
+    public int CompareTo(NumberVariant other)
     {
-        if (obj == null) 
-            return 1;
-        
-        var numberVariant = (NumberVariant)obj;
-        int compared;
-        
-        if (decimal.TryParse(Number, out var ln) && decimal.TryParse(numberVariant.Number, out var rn))
-            compared = ln.CompareTo(rn);
-        else
-            compared = string.Compare(Number, numberVariant.Number, StringComparison.Ordinal);
-        
-        return compared == 0 
-            ? Variant.CompareTo(numberVariant.Variant) 
-            : compared;
+        var compared = decimal.TryParse(Number, NumberStyles.Number, CultureInfo.InvariantCulture, out var ln) &&
+                       decimal.TryParse(other.Number, NumberStyles.Number, CultureInfo.InvariantCulture, out var rn)
+            ? ln.CompareTo(rn)
+            : string.Compare(Number, other.Number, StringComparison.Ordinal);
+
+        return compared == 0 ? Variant.CompareTo(other.Variant) : compared;
     }
+
+#pragma warning disable 1591
+    public static bool operator <(NumberVariant left, NumberVariant right) => left.CompareTo(right) < 0;
+    public static bool operator <=(NumberVariant left, NumberVariant right) => left.CompareTo(right) <= 0;
+    public static bool operator >(NumberVariant left, NumberVariant right) => left.CompareTo(right) > 0;
+    public static bool operator >=(NumberVariant left, NumberVariant right) => left.CompareTo(right) >= 0;
+#pragma warning restore 1591
 }

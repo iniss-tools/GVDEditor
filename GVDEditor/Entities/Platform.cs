@@ -3,10 +3,13 @@
 /// <summary>
 ///     Nástupište na stanici.
 /// </summary>
-/// <param name="Key">kľúč nástupišťa</param>
-/// <param name="FullName">celý názov nástupišťa</param>
-/// <param name="SoundName">názov zvuku nástupišťa (bez prípony)</param>
-public sealed record Platform(string Key, string FullName, string SoundName)
+/// <param name="key">kľúč nástupišťa</param>
+/// <param name="fullName">celý názov nástupišťa</param>
+/// <param name="soundName">názov zvuku nástupišťa (bez prípony)</param>
+/// <remarks>
+///     Entita s identitou - koľaje s rovnakým kľúčom nástupišťa zdieľajú jednu inštanciu, porovnáva sa referenciou.
+/// </remarks>
+public sealed class Platform(string key, string fullName, string soundName)
 {
     /// <summary>
     ///     Predvolené nástupište.
@@ -16,17 +19,17 @@ public sealed record Platform(string Key, string FullName, string SoundName)
     /// <summary>
     ///     Kľúč nástupišťa.
     /// </summary>
-    public string Key { get; set; } = Key;
+    public string Key { get; set; } = key;
 
     /// <summary>
     ///     Celý názov nástupišťa.
     /// </summary>
-    public string FullName { get; set; } = FullName;
+    public string FullName { get; set; } = fullName;
 
     /// <summary>
     ///     Názov zvuku nástupišťa (bez prípony).
     /// </summary>
-    public string SoundName { get; set; } = SoundName;
+    public string SoundName { get; set; } = soundName;
 
     /// <summary>
     ///     This

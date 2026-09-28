@@ -3,7 +3,8 @@
 /// <summary>
 ///     Trieda reprezentujuca kolaj v stanici.
 /// </summary>
-public sealed record Track()
+/// <remarks>Entita s identitou - porovnava sa referenciou, kluce porovnava <see cref="EqualsKeys" />.</remarks>
+public sealed class Track()
 {
     /// <summary>
     ///     Neznama kolaj - prvy riadok Pozice_A.TXT s klucom N. INISS na nu posadi vlak, ktoremu sa kolaj nepodarilo

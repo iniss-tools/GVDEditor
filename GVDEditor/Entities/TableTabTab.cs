@@ -3,7 +3,10 @@
 /// <summary>
 ///     Definuje spravanie obsahu sekcie katalogovej tabule.
 /// </summary>
-public sealed record TableTabTab
+/// <remarks>
+///     Entita s identitou - stlpce katalogovych tabul sa odkazuju na instanciu (TAB1/TAB2), porovnava sa referenciou.
+/// </remarks>
+public sealed class TableTabTab
 {
     /// <summary>
     ///     Predvolený TabTab - žiadny.

@@ -1,4 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using GVDEditor.Entities;
 using GVDEditor.Tools;
@@ -31,8 +31,8 @@ public class ReportVariantOrderTests
     {
         var variants = new List<ReportVariant>
         {
-            new() { Key = 0, Name = "Krátke hlásenie" },
-            new() { Key = 1, Name = "Dlhé hlásenie" }
+            new(0, "Krátke hlásenie"),
+            new(1, "Dlhé hlásenie")
         };
 
         Assert.IsTrue(ReportVariant.FixSwappedDefaultNames(variants));
@@ -46,8 +46,8 @@ public class ReportVariantOrderTests
     {
         var variants = new List<ReportVariant>
         {
-            new() { Key = 0, Name = "Dlouhé hlášení" },
-            new() { Key = 1, Name = "Krátké hlášení" }
+            new(0, "Dlouhé hlášení"),
+            new(1, "Krátké hlášení")
         };
 
         Assert.IsFalse(ReportVariant.FixSwappedDefaultNames(variants));
@@ -63,8 +63,8 @@ public class ReportVariantOrderTests
         {
             var swapped = new List<ReportVariant>
             {
-                new() { Key = 0, Name = "Krátke hlásenie" },
-                new() { Key = 1, Name = "Dlhé hlásenie" }
+                new(0, "Krátke hlásenie"),
+                new(1, "Dlhé hlásenie")
             };
             TxtParser.WriteLocalCategori(dir.FullName, swapped, ReportType.GetDefaultValuesSK(), []);
             LoadWarnings.Clear();

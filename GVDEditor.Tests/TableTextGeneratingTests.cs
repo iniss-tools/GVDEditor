@@ -1,4 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using GVDEditor.Entities;
 using GVDEditor.Tools;
 
@@ -140,8 +140,8 @@ public class TableTextGeneratingTests
     [TestMethod]
     public void PridanieVlaku_PonukaLenVlakyBezTextuPodlaInstancie()
     {
-        //Train je record – kopia s rovnakymi hodnotami je iny vlak
-        var kopia = Prechadzajuci with { };
+        // vlak s rovnakymi udajmi je stale iny vlak
+        var kopia = Vlak(1, Routing.Prechadzajuci, Prechadzajuci.StaniceZoSmeru, Prechadzajuci.StaniceDoSmeru);
         var existing = new[] { new TableTrain { Train = Prechadzajuci, Text = "", FontID = -1 } };
 
         var without = TableTextGenerating.TrainsWithoutText([Prechadzajuci, Vychadzajuci, kopia, Konciaci], existing);
