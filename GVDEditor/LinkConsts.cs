@@ -23,6 +23,7 @@ internal static class LinkConsts
 
     // Lokalne nastavenia - stranky okna
     public const string LINK_LOCAL_GRAFIKON = DOCS + "lokalne-nastavenia/grafikon/";
+    public const string LINK_LOCAL_JAZYKY = DOCS + "lokalne-nastavenia/jazyky-hlaseni/";
     public const string LINK_LOCAL_STANICE = DOCS + "lokalne-nastavenia/stanice/";
     public const string LINK_LOCAL_DOPRAVCOVIA = DOCS + "lokalne-nastavenia/dopravcovia/";
     public const string LINK_LOCAL_NASTUPISTIA_KOLAJE = DOCS + "lokalne-nastavenia/nastupistia-a-kolaje/";

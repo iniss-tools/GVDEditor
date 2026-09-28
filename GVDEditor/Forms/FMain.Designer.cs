@@ -136,6 +136,7 @@ namespace GVDEditor.Forms
             tsmiStanica = new ToolStripMenuItem();
             tsmiVlastnostiStanice = new ToolStripMenuItem();
             tsmiGrafikon = new ToolStripMenuItem();
+            tsmiJazykyHlaseni = new ToolStripMenuItem();
             tsmiStanice = new ToolStripMenuItem();
             tsmiDopravcovia = new ToolStripMenuItem();
             toolStripSeparator16 = new ToolStripSeparator();
@@ -436,7 +437,7 @@ namespace GVDEditor.Forms
             // 
             // tsmiVlastnostiStanice
             // 
-            tsmiVlastnostiStanice.DropDownItems.AddRange(new ToolStripItem[] { tsmiGrafikon, tsmiStanice, tsmiDopravcovia, toolStripSeparator16, tsmiPlatforms, tsmiKolaje, toolStripSeparator15, tsmiTPhysical, tsmiTLogical, tsmiTCatalog, tsmiTabTab, tsmiTTexts, tsmiTFonts, toolStripSeparator17, tsmiTabTabEditor });
+            tsmiVlastnostiStanice.DropDownItems.AddRange(new ToolStripItem[] { tsmiGrafikon, tsmiJazykyHlaseni, tsmiStanice, tsmiDopravcovia, toolStripSeparator16, tsmiPlatforms, tsmiKolaje, toolStripSeparator15, tsmiTPhysical, tsmiTLogical, tsmiTCatalog, tsmiTabTab, tsmiTTexts, tsmiTFonts, toolStripSeparator17, tsmiTabTabEditor });
             resources.ApplyResources(tsmiVlastnostiStanice, "tsmiVlastnostiStanice");
             tsmiVlastnostiStanice.Name = "tsmiVlastnostiStanice";
             tsmiVlastnostiStanice.Click += tsmiLocalSettings_Click;
@@ -446,6 +447,12 @@ namespace GVDEditor.Forms
             resources.ApplyResources(tsmiGrafikon, "tsmiGrafikon");
             tsmiGrafikon.Name = "tsmiGrafikon";
             tsmiGrafikon.Click += tsmiGrafikon_Click;
+            // 
+            // tsmiJazykyHlaseni
+            // 
+            resources.ApplyResources(tsmiJazykyHlaseni, "tsmiJazykyHlaseni");
+            tsmiJazykyHlaseni.Name = "tsmiJazykyHlaseni";
+            tsmiJazykyHlaseni.Click += tsmiJazykyHlaseni_Click;
             // 
             // tsmiStanice
             // 
@@ -2204,6 +2211,7 @@ namespace GVDEditor.Forms
         private ToolStripSeparator toolStripSeparator14;
         private ToolStripMenuItem tsmimKillINISS;
         private ToolStripMenuItem tsmiGrafikon;
+        private ToolStripMenuItem tsmiJazykyHlaseni;
         private ToolStripMenuItem tsmiDopravcovia;
         private ToolStripMenuItem tsmiPlatforms;
         private ToolStripMenuItem tsmiKolaje;

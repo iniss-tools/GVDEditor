@@ -824,20 +824,14 @@ internal static class TxtParser
         {
             var area = $"LANGUAGE_{i.PadZeros(2)}";
             var key = categoriF.Get(area, "KEY");
-            var isBasic = ParseIntOrDefault(categoriF.Get(area, "IS_BASIC", false)).ToBool();
-            var name = categoriF.Get(area, "NAME").ANSItoUTF();
 
-            foreach (var lang in GlobData.Languages)
-                if (lang.Key == key)
-                {
-                    lang.Name = name;
-                    lang.IsBasic = isBasic;
-                    languages.Add(lang);
-                    break;
-                }
-
-            if (!FyzLanguage.ContainsKey(GlobData.Languages, key))
-                throw new ArgumentException($"Neplatný kľúč jazyka {key} v súbore {file}.");
+            // INISS berie z lokalneho suboru len to, ktore jazyky grafikon pouziva - nazov a hlavny jazyk ma
+            // z globalneho Categori.txt. NAME a IS_BASIC sa preto necitaju: prepisali by zdielane globalne
+            // jazyky a lokalny nazov by sa pri ulozeni globalnych nastaveni dostal aj do globalneho suboru.
+            var lang = GlobData.Languages.FirstOrDefault(language => language.Key == key)
+                       ?? throw new ArgumentException($"Neplatný kľúč jazyka {key} v súbore {file}.");
+            if (!languages.Contains(lang))
+                languages.Add(lang);
         }
 
         return (variants, types, languages);

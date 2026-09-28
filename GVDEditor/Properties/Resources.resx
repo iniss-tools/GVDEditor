@@ -1968,4 +1968,19 @@ Pokračovať?</value>
   <data name="FMain_Variant_Prekrytie" xml:space="preserve">
     <value>Prekrýva sa s variantou {0} v dňoch „{1}“.</value>
   </data>
+  <data name="GrafikonLanguages_Ziadny" xml:space="preserve">
+    <value>Grafikon musí používať aspoň jeden jazyk.</value>
+  </data>
+  <data name="GrafikonLanguages_Hlavny_Vypnuty" xml:space="preserve">
+    <value>Hlavný jazyk stanice ({0}) sa nedá vypnúť.</value>
+  </data>
+  <data name="GrafikonLanguages_Radenie" xml:space="preserve">
+    <value>Radenie vlaku {1} obsahuje nahrávky v jazyku {0}. Jazyk sa dá vypnúť, až keď ich z radenia odstránite.</value>
+  </data>
+  <data name="GrafikonLanguages_Vlaky" xml:space="preserve">
+    <value>Počet vlakov so zapnutým jazykom {0}: {1}. INISS ho pri nich preskočí, kým ho grafikon nepoužíva.</value>
+  </data>
+  <data name="GrafikonLanguages_Hlavny_Polozka" xml:space="preserve">
+    <value>{0} (hlavný jazyk)</value>
+  </data>
 </root>

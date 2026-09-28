@@ -235,8 +235,8 @@ public partial class TrainValidityPage : UserControl, ITrainPage
         if (FindForm() is not { } form || _draft.ValidTo.Date < _draft.ValidFrom.Date)
             return;
 
-        if (FDateLimitEdit.SetDateLimit(form, _draft.ValidFrom, _draft.ValidTo, defaultValue: tbDateLimit.Text) == DialogResult.OK)
-            tbDateLimit.Text = FDateLimitEdit.Result;
+        if (FDateLimitEdit.SetDateLimit(form, _draft.ValidFrom, _draft.ValidTo, defaultValue: tbDateLimit.Text) is { } limit)
+            tbDateLimit.Text = limit;
     }
 
     private void llCalendar_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e) => _openCalendar?.Invoke();
@@ -266,10 +266,10 @@ public partial class TrainValidityPage : UserControl, ITrainPage
 
         var proposal = _overlaps.ContainsKey(other) ? TrainVariants.WithoutCommonDays(_draft, other) : null;
         if (FDateLimitEdit.SetDateLimit(form, _draft.ValidFrom, _draft.ValidTo, other, defaultValue: _draft.LimitOf(other),
-                proposal: proposal) != DialogResult.OK)
+                proposal: proposal) is not { } limit)
             return;
 
-        TrainVariants.SetLimit(_draft, other, FDateLimitEdit.Result);
+        TrainVariants.SetLimit(_draft, other, limit);
         OnChanged();
     }
 

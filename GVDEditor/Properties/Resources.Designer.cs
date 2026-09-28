@@ -5168,6 +5168,51 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grafikon musí používať aspoň jeden jazyk..
+        /// </summary>
+        internal static string GrafikonLanguages_Ziadny {
+            get {
+                return ResourceManager.GetString("GrafikonLanguages_Ziadny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hlavný jazyk stanice ({0}) sa nedá vypnúť..
+        /// </summary>
+        internal static string GrafikonLanguages_Hlavny_Vypnuty {
+            get {
+                return ResourceManager.GetString("GrafikonLanguages_Hlavny_Vypnuty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Radenie vlaku {1} obsahuje nahrávky v jazyku {0}. Jazyk sa dá vypnúť, až keď ich z radenia odstránite..
+        /// </summary>
+        internal static string GrafikonLanguages_Radenie {
+            get {
+                return ResourceManager.GetString("GrafikonLanguages_Radenie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Počet vlakov so zapnutým jazykom {0}: {1}. INISS ho pri nich preskočí, kým ho grafikon nepoužíva..
+        /// </summary>
+        internal static string GrafikonLanguages_Vlaky {
+            get {
+                return ResourceManager.GetString("GrafikonLanguages_Vlaky", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} (hlavný jazyk).
+        /// </summary>
+        internal static string GrafikonLanguages_Hlavny_Polozka {
+            get {
+                return ResourceManager.GetString("GrafikonLanguages_Hlavny_Polozka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vyberte dopravcu..
         /// </summary>
         internal static string TrainRules_Dopravca {

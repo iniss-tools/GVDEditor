@@ -66,7 +66,7 @@ internal sealed class ItemListSupport<T> where T : class
         _loading = true;
         _dgv.Rows.Clear();
         foreach (var item in _items())
-            _dgv.Rows[_dgv.Rows.Add(_cells(item))].Tag = item;
+            _dgv.Rows[_dgv.Rows.Add(_cells(item)!)].Tag = item;
         ApplyFilter();
         _loading = false;
 

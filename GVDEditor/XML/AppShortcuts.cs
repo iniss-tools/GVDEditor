@@ -36,6 +36,7 @@ public record AppShortcuts()
         [nameof(GSAudio)] = (Shortcut.Ctrl4, "Globálne nastavenia - Audio"),
 
         [nameof(LSGvd)] = (Shortcut.CtrlShiftG, "Lokálne nastavenia - Grafikon"),
+        [nameof(LSLanguages)] = (Shortcut.CtrlShiftJ, "Lokálne nastavenia - Jazyky hlásení"),
         [nameof(LSStations)] = (Shortcut.CtrlShiftS, "Lokálne nastavenia - Stanice"),
         [nameof(LSOperators)] = (Shortcut.CtrlShiftO, "Lokálne nastavenia - Dopravcovia"),
         [nameof(LSPlatforms)] = (Shortcut.CtrlShiftN, "Lokálne nastavenia - Nástupištia"),
@@ -83,6 +84,7 @@ public record AppShortcuts()
     private CmdShortcut _gsAudio = InitShortcut(nameof(GSAudio));
 
     private CmdShortcut _lsGvd = InitShortcut(nameof(LSGvd));
+    private CmdShortcut _lsLanguages = InitShortcut(nameof(LSLanguages));
     private CmdShortcut _lsStations = InitShortcut(nameof(LSStations));
     private CmdShortcut _lsOperators = InitShortcut(nameof(LSOperators));
     private CmdShortcut _lsPlatforms = InitShortcut(nameof(LSPlatforms));
@@ -371,6 +373,20 @@ public record AppShortcuts()
         {
             _lsGvd = value;
             AssignShortcutProps(ref _lsGvd, nameof(LSGvd));
+        }
+    }
+
+    /// <summary>
+    ///     Skratka pre otvorenie polozky z Lokalnych nastaveni.
+    /// </summary>
+    [XmlElement("LSJazyky")]
+    public CmdShortcut LSLanguages
+    {
+        get => _lsLanguages ??= InitShortcut(nameof(LSLanguages));
+        set
+        {
+            _lsLanguages = value;
+            AssignShortcutProps(ref _lsLanguages, nameof(LSLanguages));
         }
     }
 
@@ -689,6 +705,7 @@ public record AppShortcuts()
         GSAudio = original.GSAudio with { };
 
         LSGvd = original.LSGvd with { };
+        LSLanguages = original.LSLanguages with { };
         LSStations = original.LSStations with { };
         LSOperators = original.LSOperators with { };
         LSPlatforms = original.LSPlatforms with { };

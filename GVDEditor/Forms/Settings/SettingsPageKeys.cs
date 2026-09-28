@@ -6,6 +6,7 @@ namespace GVDEditor.Forms.Settings;
 public enum LocalSettingsPage
 {
     Grafikon,
+    JazykyHlaseni,
     VlastneStanice,
     Dopravcovia,
     Nastupistia,

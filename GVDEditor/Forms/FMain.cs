@@ -35,6 +35,7 @@ public partial class FMain : Form
     private Process? _actualINISSProcess;
     private bool _error;
     private string? _lastINISSStart;
+    private bool _restartingINISS;
     private GVDDirectory? _newDir;
     private StateDgmTemplate _newDirTemplate = StateDgmTemplate.Slovak;
     private bool _prechod;
@@ -231,6 +232,9 @@ public partial class FMain : Form
 
     private void BackgroundWorker1_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
     {
+        // najprv povolit - zatvorenie okna vlastneneho zakazanym oknom by aktivovalo okno ineho programu
+        // a GVDEditor by sa pri naslednom hlaseni skryl za neho
+        Enabled = true;
         _waitForm!.Close();
 
         // preskocene riadky a chybajuce nahravky - pouzivatel by o nich mal vediet skor, nez grafikon ulozi
@@ -279,8 +283,9 @@ public partial class FMain : Form
         }
         else
         {
+            // nacitanie mohlo skoncit v polovici - nesmie ostat zmes dat stareho a noveho grafikonu
             _prechod = true;
-            GlobData.Trains.Clear();
+            GlobData.ClearGrafikonData();
             _prechod = false;
 
             //znefunkcnit tlacidla v tool stripe
@@ -709,7 +714,8 @@ public partial class FMain : Form
             TxtParser.WriteZpozdeni(GlobData.Delays);
             TxtParser.WriteAudio(GlobData.Audios);
             TxtParser.WriteLanguages(GlobData.Languages.ToList());
-            GlobData.LocalLanguages = GlobData.Languages.ToList(); //TODO prerobit
+            // jazyky grafikonu si ponechavaju vlastny vyber - zmazany jazyk z neho vypadne, novy si zapne pouzivatel
+            GlobData.LocalLanguages = GrafikonLanguageRules.Sync(GlobData.LocalLanguages, GlobData.Languages);
 
             // odstraneny jazyk nesmie ostat pri vlakoch - zapisal by sa do Foreign.txt
             foreach (var train in GlobData.Trains)
@@ -1326,7 +1332,7 @@ public partial class FMain : Form
     private void tsbInformation_Click(object sender, EventArgs e)
         => ShowInfoApp();
 
-    private void tscbStanica_SelectedIndexChanged(object sender, EventArgs e)
+    private void tscbStanica_SelectedIndexChanged(object? sender, EventArgs e)
     {
         if (tscbStanica.ComboBox.SelectedItem != null)
         {
@@ -1355,7 +1361,7 @@ public partial class FMain : Form
         }
     }
 
-    private void tscbObdobie_SelectedIndexChanged(object sender, EventArgs e)
+    private void tscbObdobie_SelectedIndexChanged(object? sender, EventArgs e)
     {
         if (_removingGVD)
             return;
@@ -1405,6 +1411,8 @@ public partial class FMain : Form
 
             GlobData.ReportTypes = ReportType.GetDefaultValuesSK();
             GlobData.ReportVariants = ReportVariant.GetDefaultValues();
+            // novy grafikon pouziva vsetky jazyky stanice - inak by si ponechal jazyky predchadzajuceho grafikonu
+            GlobData.LocalLanguages = GlobData.Languages.ToList();
 
             _prechod = true;
             GlobData.Trains.Clear();
@@ -1425,7 +1433,7 @@ public partial class FMain : Form
 
             TxtParser.WriteStateDgm(dir.Dir.FullPath, _newDirTemplate);
 
-            TxtParser.WriteLocalCategori(dir.Dir.FullPath, GlobData.ReportVariants, GlobData.ReportTypes, GlobData.Languages);
+            TxtParser.WriteLocalCategori(dir.Dir.FullPath, GlobData.ReportVariants, GlobData.ReportTypes, GlobData.LocalLanguages);
 
             TxtParser.WriteRazeniDefault(dir.Dir.FullPath);
             TxtParser.WriteRazeni1Default(dir.Dir.FullPath);
@@ -1445,11 +1453,15 @@ public partial class FMain : Form
         if (blocks.Count > 0 && MigrateBlocks(dir, blocks))
             return;
 
+        if (backgroundWorker1.IsBusy)
+            return;
+
         _error = false;
+        // nacitanie na pozadi prepisuje GlobData - okno sa medzitym nesmie dat pouzivat (nastavenia, iny grafikon)
+        Enabled = false;
         _waitForm = new FWait();
         _waitForm.Show(this);
-        if (!backgroundWorker1.IsBusy)
-            backgroundWorker1.RunWorkerAsync(new PathAndGVD { Path = dir.Dir.FullPath, Gvd = dir.GVD, BlocksDeclined = blocks.Count > 0 });
+        backgroundWorker1.RunWorkerAsync(new PathAndGVD { Path = dir.Dir.FullPath, Gvd = dir.GVD, BlocksDeclined = blocks.Count > 0 });
     }
 
     /// <summary>
@@ -1703,10 +1715,9 @@ public partial class FMain : Form
                         train.Number, TrainName.ToDisplay(GlobData.TrainNames, train.Name), obmand));
                     if (result == DialogResult.Yes)
                     {
-                        var result2 = FDateLimitEdit.SetDateLimit(this, thistrain.ZaciatokPlatnosti, thistrain.KoniecPlatnosti, train,
-                            true, train.DateLimitText);
-                        if (result2 == DialogResult.OK) 
-                            train.DateLimitText = FDateLimitEdit.Result;
+                        if (FDateLimitEdit.SetDateLimit(this, thistrain.ZaciatokPlatnosti, thistrain.KoniecPlatnosti, train,
+                                true, train.DateLimitText) is { } limit)
+                            train.DateLimitText = limit;
                     }
                 }
 
@@ -1988,6 +1999,7 @@ public partial class FMain : Form
         tsmimRestartINISS.ShortcutKeys = (Keys)sc.RestartINISS.Shortcut.Value;
 
         tsmiGrafikon.ShortcutKeys = (Keys)sc.LSGvd.Shortcut.Value;
+        tsmiJazykyHlaseni.ShortcutKeys = (Keys)sc.LSLanguages.Shortcut.Value;
         tsmiStanice.ShortcutKeys = (Keys)sc.LSStations.Shortcut.Value;
         tsmiDopravcovia.ShortcutKeys = (Keys)sc.LSOperators.Shortcut.Value;
         tsmiPlatforms.ShortcutKeys = (Keys)sc.LSPlatforms.Shortcut.Value;
@@ -2270,9 +2282,23 @@ public partial class FMain : Form
     {
         var process = _actualINISSProcess;
         var path = _lastINISSStart;
-        if (process == null || path == null || !ConfirmSaveBeforeINISS())
+        // cakanie na ukoncenie trva az 30 s - dalsi klik by spustil druhy restart
+        if (_restartingINISS || process == null || path == null || !ConfirmSaveBeforeINISS())
             return;
 
+        _restartingINISS = true;
+        try
+        {
+            await RestartINISS(process, path);
+        }
+        finally
+        {
+            _restartingINISS = false;
+        }
+    }
+
+    private async Task RestartINISS(Process process, string path)
+    {
         ShutDownINISS();
         using (var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(30)))
         {
@@ -2326,6 +2352,8 @@ public partial class FMain : Form
 
     //LOCAL SETTINGS
     private void tsmiGrafikon_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.Grafikon);
+
+    private void tsmiJazykyHlaseni_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.JazykyHlaseni);
 
     private void tsmiStanice_Click(object sender, EventArgs e) => ShowLocalSettings(LocalSettingsPage.VlastneStanice);
 
@@ -2403,6 +2431,7 @@ public partial class FMain : Form
     private void ChangeEnableMenuItemsLSettings(bool enabled)
     {
         tsmiGrafikon.Enabled = enabled;
+        tsmiJazykyHlaseni.Enabled = enabled;
         tsmiStanice.Enabled = enabled;
         tsmiDopravcovia.Enabled = enabled;
         tsmiPlatforms.Enabled = enabled;

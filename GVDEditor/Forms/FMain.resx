@@ -392,6 +392,15 @@
   <data name="tsmiGrafikon.Text" xml:space="preserve">
     <value>Grafikon</value>
   </data>
+  <data name="tsmiJazykyHlaseni.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tsmiJazykyHlaseni.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 22</value>
+  </data>
+  <data name="tsmiJazykyHlaseni.Text" xml:space="preserve">
+    <value>Jazyky hlásení</value>
+  </data>
   <data name="tsmiStanice.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -3143,6 +3152,12 @@
     <value>tsmiGrafikon</value>
   </data>
   <data name="&gt;&gt;tsmiGrafikon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiJazykyHlaseni.Name" xml:space="preserve">
+    <value>tsmiJazykyHlaseni</value>
+  </data>
+  <data name="&gt;&gt;tsmiJazykyHlaseni.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmiStanice.Name" xml:space="preserve">

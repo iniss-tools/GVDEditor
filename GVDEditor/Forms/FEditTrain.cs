@@ -114,7 +114,8 @@ public partial class FEditTrain : Form
         trainPage.LoadData(_draft, GlobData.TrainNames);
         routePage.LoadData(_draft, gvd.ThisStation);
         validityPage.LoadData(_draft, _context, gvd.ThisStation?.Name, gvdDir != null ? OpenCalendar : null);
-        languagesPage.LoadData(_draft, GlobData.Languages);
+        // INISS jazyk, ktory grafikon nepouziva, u vlaku preskoci - ponukaju sa len jazyky grafikonu
+        languagesPage.LoadData(_draft, GrafikonLanguageRules.Offered(GlobData.Languages, GlobData.LocalLanguages, _draft.Languages));
         dodatkyPage.LoadData(_draft, GlobData.Sounds.Where(sound => sound.Group.Key.EqualsIgnoreCase("DODATKY")));
         radeniePage.LoadData(_draft, gvd.StartValidTimeTable, gvd.EndValidTimeTable);
         _pages = [trainPage, routePage, validityPage, languagesPage, dodatkyPage, radeniePage];

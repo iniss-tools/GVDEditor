@@ -70,18 +70,18 @@ internal static class GlobData
     public static Styles<GVDEditorStyle> Styles = null!;
     public static GVDEditorStyle UsingStyle = null!;
 
-    public static void PrepareGlobalData(string pathtoiniss)
+    /// <summary>
+    ///     Vyprazdni data otvoreneho grafikonu - rovnaky stav ako bez otvoreneho grafikonu po spusteni programu.
+    ///     Po neuspesnom nacitani tak nezostane zmes dat stareho a noveho grafikonu.
+    /// </summary>
+    public static void ClearGrafikonData()
     {
-        Trains.FireEventOnSort = true;
-
-        Audios = new ExBindingList<Audio>();
+        Trains.Clear();
 
         Tracks = new ExBindingList<Track>();
         Platforms = new ExBindingList<Platform>();
-
-        TrainsTypes = new ExBindingList<TrainType>();
-
         Operators = new ExBindingList<Operator>();
+        CustomStations = new ExBindingList<Station>();
 
         TabTabs = new ExBindingList<TableTabTab>();
         TableCatalogs = new ExBindingList<TableCatalog>();
@@ -91,16 +91,24 @@ internal static class GlobData
         TableFonts = new ExBindingList<TableFont>();
         ModeTabsSections = new Dictionary<string, Dictionary<string, string>>();
 
-        ReportVariants = new List<ReportVariant>();
-        ReportTypes = new List<ReportType>();
+        ReportVariants = [];
+        ReportTypes = [];
+        ReportTypesV = [];
+        ReportTypesP = [];
+        ReportTypesK = [];
+        LocalLanguages = [];
 
-        ReportTypesV = new List<ReportType>();
-        ReportTypesP = new List<ReportType>();
-        ReportTypesK = new List<ReportType>();
+        Radenia = [];
+    }
 
-        CustomStations = new ExBindingList<Station>();
+    public static void PrepareGlobalData(string pathtoiniss)
+    {
+        Trains.FireEventOnSort = true;
 
-        Radenia = new List<Radenie>();
+        Audios = new ExBindingList<Audio>();
+        TrainsTypes = new ExBindingList<TrainType>();
+
+        ClearGrafikonData();
 
         INISSDir = pathtoiniss;
         DataDir = Utils.CombinePath(pathtoiniss, FileConsts.DIR_DATA)!;

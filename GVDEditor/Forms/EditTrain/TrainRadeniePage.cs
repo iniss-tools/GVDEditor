@@ -279,8 +279,8 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
         if (FindForm() is not { } form || dtpTo.Value.Date < dtpFrom.Value.Date)
             return;
 
-        if (FDateLimitEdit.SetDateLimit(form, dtpFrom.Value, dtpTo.Value, defaultValue: tbLimit.Text) == DialogResult.OK)
-            tbLimit.Text = FDateLimitEdit.Result;
+        if (FDateLimitEdit.SetDateLimit(form, dtpFrom.Value, dtpTo.Value, defaultValue: tbLimit.Text) is { } limit)
+            tbLimit.Text = limit;
     }
 
     // ---------------------------------------------------------------- cielova stanica

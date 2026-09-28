@@ -150,7 +150,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     /// <summary>
     ///     Zostava tabule - pri prvom otvoreni tabule sa rozlozi z umiestneni zaznamov.
     /// </summary>
-    private List<TableLogicalSegment>? Layout(TableLogical table)
+    private List<TableLogicalSegment>? SegmentsOf(TableLogical table)
     {
         if (_layouts.TryGetValue(table, out var layout))
             return layout;
@@ -192,7 +192,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
             _loading = false;
         }
 
-        var editable = table is not null && Layout(table) is not null;
+        var editable = table is not null && SegmentsOf(table) is not null;
         nudCount.Enabled = editable;
         lZostavaNote.Text = table is null ? ""
             : editable ? Resources.LogicalTablesPage_Zostava
@@ -239,11 +239,11 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
         var loading = _loading;
         _loading = true;
         dgvZostava.Rows.Clear();
-        var layout = _current is null ? null : Layout(_current);
+        var layout = _current is null ? null : SegmentsOf(_current);
         var segments = layout ?? (_current is null ? [] : TableLogicalLayout.FromRecords(_current.Records));
         foreach (var segment in segments)
         {
-            var row = dgvZostava.Rows[dgvZostava.Rows.Add(segment.Table?.Name, segment.FirstRecord, segment.LastRecord, segment.StartRow)];
+            var row = dgvZostava.Rows[dgvZostava.Rows.Add(segment.Table?.Name ?? "", segment.FirstRecord, segment.LastRecord, segment.StartRow)];
             row.Tag = segment;
             SetTypeCell(row, segment);
         }
@@ -276,7 +276,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
 
     private void UpdateZostavaButtons()
     {
-        var editable = _current is not null && Layout(_current) is not null;
+        var editable = _current is not null && SegmentsOf(_current) is not null;
         cbAddPhysical.Enabled = bAddPhysical.Enabled = editable && cbAddPhysical.Items.Count > 0;
         bSegmentRemove.Enabled = editable && dgvZostava.CurrentRow?.Tag is TableLogicalSegment;
     }
@@ -286,7 +286,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     /// </summary>
     private void ApplyZostava()
     {
-        if (_current is not { } table || Layout(table) is not { } segments)
+        if (_current is not { } table || SegmentsOf(table) is not { } segments)
             return;
 
         table.Records = TableLogicalLayout.ToRecords(segments, decimal.ToInt32(nudCount.Value));
@@ -334,7 +334,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
 
     private void bAddPhysical_Click(object? sender, EventArgs e)
     {
-        if (_current is not { } table || Layout(table) is not { } segments || cbAddPhysical.SelectedItem is not TablePhysical physical)
+        if (_current is not { } table || SegmentsOf(table) is not { } segments || cbAddPhysical.SelectedItem is not TablePhysical physical)
             return;
 
         var count = decimal.ToInt32(nudCount.Value);
@@ -357,7 +357,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
 
     private void bSegmentRemove_Click(object? sender, EventArgs e)
     {
-        if (_current is not { } table || Layout(table) is not { } segments ||
+        if (_current is not { } table || SegmentsOf(table) is not { } segments ||
             dgvZostava.CurrentRow?.Tag is not TableLogicalSegment segment)
             return;
 
@@ -387,7 +387,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
             table.Comment = tbComment.Text;
         else if (sender == nudCount)
         {
-            if (Layout(table) is { } segments)
+            if (SegmentsOf(table) is { } segments)
             {
                 TableLogicalLayout.Resize(segments, table.Records.Count, decimal.ToInt32(nudCount.Value));
                 table.Records = TableLogicalLayout.ToRecords(segments, decimal.ToInt32(nudCount.Value));
@@ -407,7 +407,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
         // novy typ prejde na riadky zostavy s doterajsim typom, ak ho ich fyzicka tabula podporuje
         var oldType = table.ViewType;
         table.ViewType = type;
-        if (Layout(table) is { } segments && TableLogicalLayout.ChangeViewType(segments, oldType, type))
+        if (SegmentsOf(table) is { } segments && TableLogicalLayout.ChangeViewType(segments, oldType, type))
         {
             ApplyZostava();
             FillZostava(dgvZostava.CurrentRow?.Index ?? 0);
@@ -468,7 +468,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
         var own = _problems.Where(p => ReferenceEquals(p.Table, _current)).ToList();
         _marks.Mark(own.Select(p => FieldControl(p.Field)));
 
-        _warningsSource = _current is null ? [] : Layout(_current) ?? [];
+        _warningsSource = _current is null ? [] : SegmentsOf(_current) ?? [];
         var warnings = TableLogicalRules.Warnings(_warningsSource);
         foreach (DataGridViewRow row in dgvZostava.Rows)
         {

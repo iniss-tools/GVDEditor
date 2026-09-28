@@ -141,7 +141,11 @@ internal abstract class SdEditorBase : UserControl
                 ScrollBy(-e.Delta);
             };
         foreach (Control child in c.Controls) HookWheel(child);
-        c.ControlAdded += (_, e) => HookWheel(e.Control);
+        c.ControlAdded += (_, e) =>
+        {
+            if (e.Control is { } added)
+                HookWheel(added);
+        };
     }
 
     /// <summary>Posunie obsah editora o dany pocet bodov.</summary>
@@ -209,7 +213,7 @@ internal abstract class SdEditorBase : UserControl
     }
 
     /// <summary>Vytvori textove pole.</summary>
-    protected static ExTextBox Text(string? hint = null) => new() { Width = 220, HintText = hint };
+    protected static ExTextBox TextField(string? hint = null) => new() { Width = 220, HintText = hint };
 
     /// <summary>Vytvori ciselne pole.</summary>
     protected static ExNumericUpDown Number(int min, int max, int step = 1) => new()
@@ -281,7 +285,7 @@ internal sealed class SdDynamicField : UserControl
         if (_number != null) _number.ValueChanged += (_, _) => Fire();
         _expr.TextChanged += (_, _) =>
         {
-            Validate();
+            ValidateInput();
             Fire();
         };
         _errors.SetIconAlignment(_expr, ErrorIconAlignment.MiddleLeft);
@@ -313,7 +317,7 @@ internal sealed class SdDynamicField : UserControl
         if (expr) _expr.Text = BasicText();
         else if (_combo != null) SdEditorContext.Select(_combo, StateDgmReader.TryStrtol(_expr.Text.Trim(), out var n) ? n : null);
         else if (_number != null && StateDgmReader.TryStrtol(_expr.Text.Trim(), out var m)) _number.Value = Math.Clamp(m, _number.Minimum, _number.Maximum);
-        Validate();
+        ValidateInput();
         ValueChanged?.Invoke(this, EventArgs.Empty);
     }
 
@@ -365,7 +369,7 @@ internal sealed class SdDynamicField : UserControl
                     else _number!.Value = Math.Clamp(value?.Number ?? 0, _number.Minimum, _number.Maximum);
                 }
 
-                Validate();
+                ValidateInput();
             }
             finally
             {
@@ -385,7 +389,7 @@ internal sealed class SdDynamicField : UserControl
         if (!_loading) ValueChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    private void Validate()
+    private void ValidateInput()
     {
         var r = _isExpr ? SdEditorContext.Check(_expr.Text, _context, false) : null;
         _errors.SetError(_expr, r?.Message ?? "");
@@ -415,7 +419,7 @@ internal sealed class SdHeaderEditor : SdEditorBase
             new SdEditorContext.Item("INDCAT8", "INDCAT8"),
             new SdEditorContext.Item(Resources.FStateDgm_IndCatVlastny, ""));
         AddRow(Resources.FStateDgm_IndCat, _indCatMode);
-        _indCat = Text();
+        _indCat = TextField();
         AddRow("", _indCat);
         _info = AddInfo("");
         _errors.SetIconAlignment(_indCat, ErrorIconAlignment.MiddleLeft);
@@ -440,11 +444,11 @@ internal sealed class SdHeaderEditor : SdEditorBase
                 RaiseChanged();
             }
 
-            Validate();
+            ValidateInput();
         };
         _indCat.TextChanged += (_, _) =>
         {
-            Validate();
+            ValidateInput();
             if (Loading || _d == null || !_indCat.Enabled) return;
             _d.IndCat = _indCat.Text.Trim();
             RaiseChanged();
@@ -464,7 +468,7 @@ internal sealed class SdHeaderEditor : SdEditorBase
             _indCat.Text = ic ?? "";
             _indCat.Enabled = mode == "";
             _info.Text = string.Format(Resources.FStateDgm_IndCatInfo, d.Categories.Count);
-            Validate();
+            ValidateInput();
         }
         finally
         {
@@ -472,7 +476,7 @@ internal sealed class SdHeaderEditor : SdEditorBase
         }
     }
 
-    private void Validate()
+    private void ValidateInput()
     {
         var r = _indCat.Enabled ? SdEditorContext.Check(_indCat.Text, ExprContext.Condition, false) : null;
         _errors.SetError(_indCat, r?.Message ?? "");
@@ -484,9 +488,9 @@ internal sealed class SdHeaderEditor : SdEditorBase
 /// </summary>
 internal sealed class SdCategoryEditor : SdEditorBase
 {
-    private readonly ExTextBox _key = Text();
-    private readonly ExTextBox _name = Text();
-    private readonly ExTextBox _comment = Text();
+    private readonly ExTextBox _key = TextField();
+    private readonly ExTextBox _name = TextField();
+    private readonly ExTextBox _comment = TextField();
     private readonly ExComboBox _icon;
     private StateDgmCategory? _c;
 
@@ -544,8 +548,8 @@ internal sealed class SdCategoryEditor : SdEditorBase
 /// </summary>
 internal sealed class SdStateEditor : SdEditorBase
 {
-    private readonly ExTextBox _key = Text();
-    private readonly ExTextBox _name = Text();
+    private readonly ExTextBox _key = TextField();
+    private readonly ExTextBox _name = TextField();
     private readonly ExComboBox _icon;
     private readonly Dictionary<StateDgmAttr, ExCheckBox> _attr = new();
     private readonly ExComboBox _defaultControl;
@@ -554,7 +558,7 @@ internal sealed class SdStateEditor : SdEditorBase
     private readonly SdDynamicField _autoAdd;
     private readonly SdDynamicField _autoModif;
     private readonly SdDynamicField _wait;
-    private readonly ExTextBox _condition = Text();
+    private readonly ExTextBox _condition = TextField();
     private readonly ErrorProvider _errors = new() { BlinkStyle = ErrorBlinkStyle.NeverBlink };
     private readonly ExCheckBox _doOn;
     private readonly TableSetBox _do;
@@ -830,10 +834,10 @@ internal sealed class SdStateEditor : SdEditorBase
 /// </summary>
 internal sealed class SdDesignEditor : SdEditorBase
 {
-    private readonly ExTextBox _key = Text();
-    private readonly ExTextBox _bitmaps = Text("6-7,8,9");
+    private readonly ExTextBox _key = TextField();
+    private readonly ExTextBox _bitmaps = TextField("6-7,8,9");
     private readonly ExCheckBox _def = Check(Resources.FStateDgm_DefPushBtn);
-    private readonly ExTextBox _class = Text();
+    private readonly ExTextBox _class = TextField();
     private readonly ErrorProvider _errors = new() { BlinkStyle = ErrorBlinkStyle.NeverBlink };
     private StateDgmDesign? _d;
 
@@ -892,8 +896,8 @@ internal sealed class SdDesignEditor : SdEditorBase
 /// </summary>
 internal sealed class SdTimePointEditor : SdEditorBase
 {
-    private readonly ExTextBox _key = Text();
-    private readonly ExTextBox _name = Text();
+    private readonly ExTextBox _key = TextField();
+    private readonly ExTextBox _name = TextField();
     private readonly ExComboBox _key1 = new() { DropDownStyle = ComboBoxStyle.DropDown, Width = 220 };
     private readonly ExNumericUpDown _off1 = Number(-86400, 86400, 60);
     private readonly ExComboBox _key2 = new() { DropDownStyle = ComboBoxStyle.DropDown, Width = 220 };
@@ -967,8 +971,8 @@ internal sealed class SdTimePointEditor : SdEditorBase
 /// </summary>
 internal sealed class SdEventEditor : SdEditorBase
 {
-    private readonly ExTextBox _key = Text();
-    private readonly ExTextBox _name = Text();
+    private readonly ExTextBox _key = TextField();
+    private readonly ExTextBox _name = TextField();
     private readonly ExComboBox _class;
     private readonly ExComboBox _next = new() { DropDownStyle = ComboBoxStyle.DropDown, Width = 220 };
     private readonly ExComboBox _report = new() { DropDownStyle = ComboBoxStyle.DropDown, Width = 220 };
@@ -1125,7 +1129,7 @@ internal sealed class SdEventEditor : SdEditorBase
 /// </summary>
 internal sealed class SdStarterEditor : SdEditorBase
 {
-    private readonly ExTextBox _key = Text();
+    private readonly ExTextBox _key = TextField();
     private readonly ExComboBox _event = new() { DropDownStyle = ComboBoxStyle.DropDownList, Width = 220 };
     private readonly ExComboBox _tp = new() { DropDownStyle = ComboBoxStyle.DropDown, Width = 220 };
     private readonly ExNumericUpDown _offset = Number(-86400, 86400, 60);

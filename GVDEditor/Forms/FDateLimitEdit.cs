@@ -26,9 +26,11 @@ internal partial class FDateLimitEdit : Form
         InitColumns();
     }
 
-    public static string Result { get; private set; } = "";
-
-    public static DialogResult SetDateLimit(Form owner, DateTime dateFrom, DateTime dateTo, Train? train = null, bool textNot = false, string defaultValue = "",
+    /// <summary>
+    ///     Otvori editor datumoveho obmedzenia.
+    /// </summary>
+    /// <returns>upravene obmedzenie; <see langword="null" />, ak ho pouzivatel zrusil</returns>
+    public static string? SetDateLimit(Form owner, DateTime dateFrom, DateTime dateTo, Train? train = null, bool textNot = false, string defaultValue = "",
         string? proposal = null)
     {
         using var form = new FDateLimitEdit();
@@ -48,11 +50,7 @@ internal partial class FDateLimitEdit : Form
         form.TextToGrid();
         form.tbDateLimit.Select();
         form._textChanging = false;
-        var result = form.ShowDialog();
-        if (result is DialogResult.OK) 
-            Result = form.tbDateLimit.Text;
-
-        return result;
+        return form.ShowDialog() is DialogResult.OK ? form.tbDateLimit.Text : null;
     }
 
     private void FDateLimit_Load(object sender, EventArgs e)

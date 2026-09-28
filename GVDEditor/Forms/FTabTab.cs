@@ -240,17 +240,17 @@ public partial class FTabTab : Form
         public TabTabDiagnostic Diagnostic { get; } = diagnostic;
 
         /// <summary>Poradie pre triedenie: chyba 0, varovanie 1, informacia 2.</summary>
-        public int Severity => diagnostic.Severity switch
+        public int Severity => Diagnostic.Severity switch
         {
             ExprSeverity.Error => 0,
             ExprSeverity.Warning => 1,
             _ => 2
         };
 
-        public string Code => diagnostic.CodeName;
-        public int Line => diagnostic.LineIndex + 1;
-        public string Message => diagnostic.Message;
-        public string Solution => diagnostic.Suggestion ?? "";
+        public string Code => Diagnostic.CodeName;
+        public int Line => Diagnostic.LineIndex + 1;
+        public string Message => Diagnostic.Message;
+        public string Solution => Diagnostic.Suggestion ?? "";
     }
 
     /// <summary>

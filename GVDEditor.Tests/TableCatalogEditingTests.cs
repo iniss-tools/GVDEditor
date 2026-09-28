@@ -90,9 +90,7 @@ public class TableCatalogEditingTests
     [TestMethod]
     public void Riadky_ZmenaPoctuNechaPresnePozadovanyPocet()
     {
-        // Enumerable.Range nejde – CS0433 (Enumerable aj v ExControls)
-        var rows = new List<TableSegment>();
-        for (var i = 0; i < 10; i++) rows.Add(new TableSegment { Height = i });
+        var rows = Enumerable.Range(0, 10).Select(i => new TableSegment { Height = i }).ToList();
 
         TableCatalogEditing.ResizeRows(rows, 3, () => new TableSegment());
         CollectionAssert.AreEqual(new[] { 0, 1, 2 }, rows.Select(r => r.Height).ToArray());

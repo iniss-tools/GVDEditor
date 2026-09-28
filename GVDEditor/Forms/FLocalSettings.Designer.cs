@@ -38,6 +38,7 @@ namespace GVDEditor.Forms
             OptionsNode optionsNode3 = new OptionsNode();
             OptionsNode optionsNode4 = new OptionsNode();
             OptionsNode optionsNode5 = new OptionsNode();
+            OptionsNode optionsNode6 = new OptionsNode();
             OptionsNode optionsNode7 = new OptionsNode();
             OptionsNode optionsNode8 = new OptionsNode();
             OptionsNode optionsNode9 = new OptionsNode();
@@ -49,6 +50,7 @@ namespace GVDEditor.Forms
             ComponentResourceManager resources = new ComponentResourceManager(typeof(FLocalSettings));
             optionsView = new ExOptionsView();
             grafikonPage = new GrafikonPage();
+            languagesPage = new GrafikonLanguagesPage();
             platformsTracksPage = new PlatformsTracksPage();
             physicalTablesPage = new PhysicalTablesPage();
             logicalTablesPage = new LogicalTablesPage();
@@ -67,6 +69,7 @@ namespace GVDEditor.Forms
             bSave = new ExButton();
             bStorno = new ExButton();
             pGrafikon = new ExOptionsPanel(optionsView);
+            pJazyky = new ExOptionsPanel(optionsView);
             pStanice = new ExOptionsPanel(optionsView);
             pDopravcovia = new ExOptionsPanel(optionsView);
             pNastupistia = new ExOptionsPanel(optionsView);
@@ -81,6 +84,7 @@ namespace GVDEditor.Forms
             optionsView.SuspendLayout();
             tlpBottom.SuspendLayout();
             pGrafikon.SuspendLayout();
+            pJazyky.SuspendLayout();
             pStanice.SuspendLayout();
             pDopravcovia.SuspendLayout();
             pNastupistia.SuspendLayout();
@@ -136,6 +140,7 @@ namespace GVDEditor.Forms
             optionsView.HeaderNodeNameVisible = true;
             optionsView.Name = "optionsView";
             optionsView.Panels.Add(pGrafikon);
+            optionsView.Panels.Add(pJazyky);
             optionsView.Panels.Add(pGroupStanica);
             optionsView.Panels.Add(pStanice);
             optionsView.Panels.Add(pDopravcovia);
@@ -198,6 +203,19 @@ namespace GVDEditor.Forms
             // 
             resources.ApplyResources(grafikonPage, "grafikonPage");
             grafikonPage.Name = "grafikonPage";
+            // 
+            // pJazyky
+            // 
+            pJazyky.Node = optionsNode6;
+            resources.ApplyResources(pJazyky, "pJazyky");
+            pJazyky.Controls.Add(languagesPage);
+            pJazyky.Name = "pJazyky";
+            pJazyky.ParentNode = null;
+            // 
+            // languagesPage
+            // 
+            resources.ApplyResources(languagesPage, "languagesPage");
+            languagesPage.Name = "languagesPage";
             // 
             // pStanice
             // 
@@ -349,6 +367,7 @@ namespace GVDEditor.Forms
             tlpBottom.ResumeLayout(false);
             tlpBottom.PerformLayout();
             pGrafikon.ResumeLayout(false);
+            pJazyky.ResumeLayout(false);
             pStanice.ResumeLayout(false);
             pStanice.PerformLayout();
             pDopravcovia.ResumeLayout(false);
@@ -378,6 +397,7 @@ namespace GVDEditor.Forms
         private ExControls.ExButton bStorno;
         private ExOptionsPanel pDopravcovia;
         private ExOptionsPanel pGrafikon;
+        private ExOptionsPanel pJazyky;
         private ExOptionsView optionsView;
         private ExOptionsPanel pNastupistia;
         private ExOptionsPanel pFyzTab;
@@ -397,6 +417,7 @@ namespace GVDEditor.Forms
         private Label lProblem;
         private FontsPage fontsPage;
         private GrafikonPage grafikonPage;
+        private GrafikonLanguagesPage languagesPage;
         private PlatformsTracksPage platformsTracksPage;
         private PhysicalTablesPage physicalTablesPage;
         private LogicalTablesPage logicalTablesPage;

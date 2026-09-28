@@ -93,6 +93,7 @@ public partial class FLocalSettings : Form
         _helpLinks = new Dictionary<ExOptionsPanel, string>
         {
             [pGrafikon] = LinkConsts.LINK_LOCAL_GRAFIKON,
+            [pJazyky] = LinkConsts.LINK_LOCAL_JAZYKY,
             [pStanice] = LinkConsts.LINK_LOCAL_STANICE,
             [pDopravcovia] = LinkConsts.LINK_LOCAL_DOPRAVCOVIA,
             [pNastupistia] = LinkConsts.LINK_LOCAL_NASTUPISTIA_KOLAJE,
@@ -108,7 +109,7 @@ public partial class FLocalSettings : Form
 
         _checkedPages =
         [
-            (pGrafikon, grafikonPage), (pStanice, customStationsPage), (pDopravcovia, operatorsPage),
+            (pGrafikon, grafikonPage), (pJazyky, languagesPage), (pStanice, customStationsPage), (pDopravcovia, operatorsPage),
             (pNastupistia, platformsTracksPage), (pFonts, fontsPage), (pFyzTab, physicalTablesPage), (pTTexts, textsPage),
             (pLogTab, logicalTablesPage), (pKatTab, catalogTablesPage)
         ];
@@ -119,6 +120,7 @@ public partial class FLocalSettings : Form
         var station = dir.GVD.ThisStation;
         _pages = new PageLoader(this, optionsView);
         _pages.Add(pGrafikon, () => grafikonPage.LoadData(dir));
+        _pages.Add(pJazyky, languagesPage.LoadData);
         _pages.Add(pStanice, () => customStationsPage.LoadData(station.Name));
         _pages.Add(pDopravcovia, operatorsPage.LoadData);
         _pages.Add(pNastupistia, platformsTracksPage.LoadData);
@@ -135,6 +137,7 @@ public partial class FLocalSettings : Form
 
     private ExOptionsPanel PanelOf(LocalSettingsPage page) => page switch
     {
+        LocalSettingsPage.JazykyHlaseni => pJazyky,
         LocalSettingsPage.VlastneStanice => pStanice,
         LocalSettingsPage.Dopravcovia => pDopravcovia,
         LocalSettingsPage.Nastupistia or LocalSettingsPage.Kolaje => pNastupistia,
@@ -235,6 +238,7 @@ public partial class FLocalSettings : Form
         }
 
         grafikonPage.Apply();
+        languagesPage.Apply();
         DialogResult = DialogResult.OK;
     }
 

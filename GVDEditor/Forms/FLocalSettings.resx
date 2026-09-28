@@ -928,4 +928,58 @@
   <data name="&gt;&gt;stateDgmPage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="pJazyky.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 44</value>
+  </data>
+  <data name="pJazyky.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pJazyky.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pJazyky.Size" type="System.Drawing.Size, System.Drawing">
+    <value>651, 355</value>
+  </data>
+  <data name="pJazyky.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="pJazyky.NodeText" xml:space="preserve">
+    <value>Jazyky hlásení</value>
+  </data>
+  <data name="&gt;&gt;pJazyky.Name" xml:space="preserve">
+    <value>pJazyky</value>
+  </data>
+  <data name="&gt;&gt;pJazyky.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pJazyky.Parent" xml:space="preserve">
+    <value>optionsView</value>
+  </data>
+  <data name="&gt;&gt;pJazyky.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="languagesPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="languagesPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="languagesPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>680, 480</value>
+  </data>
+  <data name="languagesPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;languagesPage.Name" xml:space="preserve">
+    <value>languagesPage</value>
+  </data>
+  <data name="&gt;&gt;languagesPage.Type" xml:space="preserve">
+    <value>GVDEditor.Forms.Settings.GrafikonLanguagesPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;languagesPage.Parent" xml:space="preserve">
+    <value>pJazyky</value>
+  </data>
+  <data name="&gt;&gt;languagesPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
 </root>

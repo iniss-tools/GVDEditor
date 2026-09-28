@@ -1130,6 +1130,9 @@
         X/g/g1KMu1R0dqcAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="tsmiJazykyHlaseni.Text" xml:space="preserve">
+    <value>Jazyky hlášení</value>
+  </data>
   <data name="tsmiStanice.Text" xml:space="preserve">
     <value>Vlastní stanice</value>
   </data>

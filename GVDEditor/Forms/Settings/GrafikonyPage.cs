@@ -67,7 +67,7 @@ public partial class GrafikonyPage : UserControl, ISettingsPage
             var dir = grafikon.Dir;
             var index = dgv.Rows.Add(gvd.ThisStation.Name,
                 $"{gvd.StartValidTimeTable:dd.MM.yyyy} – {gvd.EndValidTimeTable:dd.MM.yyyy}",
-                PortText(grafikon, colTablePort, dir.TablePort), PortText(grafikon, colReportPort, dir.ReportPort), null);
+                PortText(grafikon, colTablePort, dir.TablePort), PortText(grafikon, colReportPort, dir.ReportPort), null!);
             var row = dgv.Rows[index];
             row.Tag = grafikon;
 
@@ -174,7 +174,7 @@ public partial class GrafikonyPage : UserControl, ISettingsPage
 
         var text = color is { } value ? $"#{value.R:X2}{value.G:X2}{value.B:X2}" : Resources.GrafikonyPage_Z_palety;
         var textBounds = new Rectangle(textLeft, bounds.Y, bounds.Right - textLeft - 2, bounds.Height);
-        TextRenderer.DrawText(e.Graphics, text, e.CellStyle.Font, textBounds, fore,
+        TextRenderer.DrawText(e.Graphics, text, e.CellStyle?.Font, textBounds, fore,
             TextFormatFlags.VerticalCenter | TextFormatFlags.Left | TextFormatFlags.EndEllipsis | TextFormatFlags.NoPrefix);
         e.Handled = true;
     }

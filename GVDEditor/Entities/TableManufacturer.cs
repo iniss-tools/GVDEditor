@@ -7,9 +7,8 @@ namespace GVDEditor.Entities;
 /// </summary>
 public sealed class TableManufacturer : Enumeration<TableManufacturer>
 {
-    private TableManufacturer(int id, string name, string description, int minAddress, int maxAddress) : base(id, name)
+    private TableManufacturer(int id, string name, string description, int minAddress, int maxAddress) : base(id, name, description)
     {
-        Description = description;
         MinAddress = minAddress;
         MaxAddress = maxAddress;
     }
@@ -18,11 +17,6 @@ public sealed class TableManufacturer : Enumeration<TableManufacturer>
     ///     Odkaz na seba, pouzivane pre DataSource.
     /// </summary>
     public TableManufacturer This => this;
-
-    /// <summary>
-    ///     Popis vyrobcu tak, ako ho ma zabudovany INISS.
-    /// </summary>
-    public string Description { get; }
 
     /// <summary>
     ///     Najmensia povolena adresa (ID) fyzickej tabule; <c>-1</c> = INISS rozsah nekontroluje.

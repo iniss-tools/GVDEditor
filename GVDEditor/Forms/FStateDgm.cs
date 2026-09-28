@@ -1153,16 +1153,16 @@ public partial class FStateDgm : Form
     {
         public StateDgmDiagnostic Diagnostic { get; } = diagnostic;
 
-        public int Severity => diagnostic.Severity switch
+        public int Severity => Diagnostic.Severity switch
         {
             ExprSeverity.Error => 0,
             ExprSeverity.Warning => 1,
             _ => 2
         };
 
-        public string Code => diagnostic.Code.ToString();
-        public string Path => diagnostic.Path;
-        public string Message => diagnostic.Message;
+        public string Code => Diagnostic.Code.ToString();
+        public string Path => Diagnostic.Path;
+        public string Message => Diagnostic.Message;
     }
 
     /// <summary>Riadok akcie s jej tlacidlom.</summary>
@@ -1172,13 +1172,13 @@ public partial class FStateDgm : Form
         public StateDgmEvent? Event { get; } = ev;
         public StateDgmControl? Control { get; } = control;
 
-        public string CtrlId => control?.CtrlId.ToString() ?? Resources.FStateDgm_BezTlacidla;
-        public string Design => control?.DesignKey ?? "";
-        public string Key => ev?.Key ?? control?.EventKey ?? "";
-        public string Class => ev?.Class ?? "";
-        public string NextState => ev?.NextState ?? "";
-        public string ReportKey => ev?.ReportKey ?? "";
-        public string Dialog => ev?.Dialog ?? "";
+        public string CtrlId => Control?.CtrlId.ToString() ?? Resources.FStateDgm_BezTlacidla;
+        public string Design => Control?.DesignKey ?? "";
+        public string Key => Event?.Key ?? Control?.EventKey ?? "";
+        public string Class => Event?.Class ?? "";
+        public string NextState => Event?.NextState ?? "";
+        public string ReportKey => Event?.ReportKey ?? "";
+        public string Dialog => Event?.Dialog ?? "";
     }
 
     /// <summary>Riadok startera.</summary>
@@ -1186,9 +1186,9 @@ public partial class FStateDgm : Form
     internal sealed class StarterRow(StateDgmStarter starter)
     {
         public StateDgmStarter Starter { get; } = starter;
-        public string Key => starter.Key;
-        public string EventKey => starter.EventKey;
-        public string Text => SdStarterEditor.Sentence(starter);
+        public string Key => Starter.Key;
+        public string EventKey => Starter.EventKey;
+        public string Text => SdStarterEditor.Sentence(Starter);
     }
 
     #endregion

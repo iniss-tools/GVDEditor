@@ -29,7 +29,10 @@ public partial class FRadenie : Form
 
         SelSounds = sounds;
 
-        foreach (var lang in GlobData.Languages)
+        // nahravka v jazyku, ktory grafikon nepouziva, by grafikon pri dalsom otvoreni nenacitala
+        var languages = GrafikonLanguageRules.Offered(GlobData.Languages, GlobData.LocalLanguages,
+            sounds.Select(sound => sound.Language));
+        foreach (var lang in languages)
             _allSoundsLangs.Add(lang, lang.IsBasic ? GlobData.Sounds : RawBankParser.ReadFyzZvukFile(GlobData.RawBankDir, lang));
 
         _selectedSounds.ListChanged += SelectedSounds_ListChanged;
@@ -41,8 +44,8 @@ public partial class FRadenie : Form
         foreach (var sound in sounds) _selectedSounds.Add(sound);
 
         cbSoundDir.DataSource = FyzGroupType.GetValues();
-        cbLanguage.DataSource = GlobData.Languages;
-        if (GlobData.Languages.Count != 0) cbLanguage.SelectedIndex = 0;
+        cbLanguage.DataSource = languages;
+        if (languages.Count != 0) cbLanguage.SelectedIndex = 0;
 
         cbSoundDir.SelectedIndex = 0;
     }

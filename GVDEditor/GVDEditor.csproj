@@ -25,36 +25,6 @@
 		     satelity balíčkov (System.ServiceModel a spol.), ktoré program nikdy nezobrazí. -->
 		<SatelliteResourceLanguages>cs</SatelliteResourceLanguages>
 	</PropertyGroup>
-	<!-- ClickOnce publish nastavenia (pôvodne pre .NET Framework) - zachované pre kontinuitu,
-	     ale `dotnet publish` ClickOnce flow pre SDK-style .NET treba pred použitím overiť samostatne. -->
-	<PropertyGroup>
-		<PublishUrl>ftp://endora.endora.cz/iniss.6f.sk/web/apps/GVDEditor/</PublishUrl>
-		<Install>true</Install>
-		<InstallFrom>Web</InstallFrom>
-		<UpdateEnabled>true</UpdateEnabled>
-		<UpdateMode>Foreground</UpdateMode>
-		<UpdateInterval>7</UpdateInterval>
-		<UpdateIntervalUnits>Days</UpdateIntervalUnits>
-		<UpdatePeriodically>false</UpdatePeriodically>
-		<UpdateRequired>false</UpdateRequired>
-		<MapFileExtensions>true</MapFileExtensions>
-		<InstallUrl>http://iniss.6f.sk/apps/GVDEditor/</InstallUrl>
-		<CreateWebPageOnPublish>true</CreateWebPageOnPublish>
-		<WebPage>publish.htm</WebPage>
-		<ApplicationRevision>2</ApplicationRevision>
-		<ApplicationVersion>1.9.0.*</ApplicationVersion>
-		<UseApplicationTrust>false</UseApplicationTrust>
-		<CreateDesktopShortcut>true</CreateDesktopShortcut>
-		<ManifestCertificateThumbprint>B97ABAA6C3D241E476C79AE2D5335E05C1E4C140</ManifestCertificateThumbprint>
-		<ManifestKeyFile>iniss6f.pfx</ManifestKeyFile>
-		<!-- GenerateManifests/SignManifests vypnuté: úloha GenerateTrustInfo (ClickOnce) nie je podporovaná
-		     .NET Core MSBuildom (MSB4803, rovnaký limit ako ResolveComReference). ClickOnce `dotnet publish`
-		     flow pre SDK-style .NET treba overiť/zapnúť samostatne (viď MIGRATION_PROGRESS.md), mimo dotnet build. -->
-		<GenerateManifests>false</GenerateManifests>
-		<SignManifests>false</SignManifests>
-		<TargetZone>LocalIntranet</TargetZone>
-		<SignAssembly>false</SignAssembly>
-	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="AutoCompleteMenu-ScintillaNET" Version="2.1.1" />
 		<PackageReference Include="JetBrains.Annotations" Version="2026.2.0" />
@@ -149,6 +119,9 @@
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Forms\Settings\DelaysPage.cs.resx">
 	    <DependentUpon>DelaysPage.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Forms\Settings\GrafikonLanguagesPage.cs.resx">
+	    <DependentUpon>GrafikonLanguagesPage.cs</DependentUpon>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Forms\Settings\LanguagesPage.cs.resx">
 	    <DependentUpon>LanguagesPage.cs</DependentUpon>

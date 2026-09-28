@@ -90,7 +90,16 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 Resize(form, 980, 700);
                 Descendants(form).OfType<GVDEditor.Forms.Settings.PlatformsTracksPage>().Single().SelectFirstTrack();
             }, tabs: true);
-            Shot("globalne-nastavenia", () => new FGlobalSettings(FMain.ObdobiaList.ToList()), form => Resize(form, 900, 620), tabs: true);
+            // vypnuta anglictina - pod zoznamom upozornenie na vlaky, ktore ju maju zapnutu (okno sa zavrie bez OK)
+            Shot("lokalne-nastavenia/jazyky-hlaseni-upozornenie",
+                () => new FLocalSettings(gvdDir, GVDEditor.Forms.Settings.LocalSettingsPage.JazykyHlaseni), form =>
+                {
+                    Resize(form, 980, 700);
+                    var page = Descendants(form).OfType<GVDEditor.Forms.Settings.GrafikonLanguagesPage>().Single();
+                    Descendants(page).OfType<CheckedListBox>().Single().SetItemChecked(1, false);
+                    Pump.Events();
+                });
+            Shot("globalne-nastavenia",() => new FGlobalSettings(FMain.ObdobiaList.ToList()), form => Resize(form, 900, 620), tabs: true);
 
             // chyba na stránke: dopravca bez názvu - okno sa zavrie bez OK, takže Zrušiť zmenu vráti
             var errorForm = new FLocalSettings(gvdDir, GVDEditor.Forms.Settings.LocalSettingsPage.Dopravcovia);

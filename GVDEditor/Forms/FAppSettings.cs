@@ -48,7 +48,7 @@ public partial class FAppSettings : FAppSettingsBase
 
         // zdroj registrov najprv - jeho vyber by inak prepisal nacitane argumenty
         _argsinit = true;
-        cbArgRegister.DataSource = Tools.AppRegistry.GetINISSRegisters();
+        cbArgRegister.DataSource = InissRegistry.GetINISSRegisters();
         cbArgRegister.SelectedIndex = -1;
         _argsinit = false;
 
