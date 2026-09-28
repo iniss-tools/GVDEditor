@@ -80,7 +80,6 @@ public partial class FAppSettings : FAppSettingsBase
     {
         GlobData.Config = Config;
         GlobData.UsingStyle = (GVDEditorStyle)UsingStyle;
-        GlobSettings.UsingStyle = UsingStyle;
         GlobData.Styles = Styles;
         
         var configsDir = ToolsCore.AppPaths.ConfigDir;

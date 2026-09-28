@@ -3,6 +3,7 @@ using ExControls;
 using GVDEditor.Config;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Calendar;
+using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
@@ -171,10 +172,11 @@ public partial class FMain : Form
             return;
         }
 
+        var pathgvd = (PathAndGVD)e.Argument!;
         if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
             try
             {
-                ProccessData((PathAndGVD)e.Argument!);
+                e.Result = GlobData.LoadDocument(() => ProccessData(pathgvd));
             }
             catch (Exception exception)
             {
@@ -192,11 +194,15 @@ public partial class FMain : Form
                 return;
             }
         else
-            ProccessData((PathAndGVD)e.Argument!);
+            e.Result = GlobData.LoadDocument(() => ProccessData(pathgvd));
 
         _error = false;
     }
 
+    /// <summary>
+    /// Nacita grafikon. Bezi vo vnutri <see cref="GlobData.LoadDocument" /> - vsetko, co zapise do GlobData,
+    /// patri novemu dokumentu; otvoreny grafikon ostava nezmeneny.
+    /// </summary>
     private static void ProccessData(PathAndGVD pathgvd)
     {
         GlobData.CustomStations = new ExBindingList<Station>(TxtParser.ReadCustomStations(pathgvd.Path, pathgvd.Gvd));
@@ -223,7 +229,6 @@ public partial class FMain : Form
         GlobData.Platforms = new ExBindingList<Platform>(GlobData.Tracks.Select(kolaj => kolaj.Platform).Distinct().ToList());
 
         (GlobData.ReportVariants,GlobData.ReportTypes,GlobData.LocalLanguages) = TxtParser.ReadLocalCategori(pathgvd.Path);
-        InitDruhyReportov();
 
         var allSounds = new List<FyzSound>();
         foreach (var language in GlobData.LocalLanguages)
@@ -235,6 +240,24 @@ public partial class FMain : Form
 
         GlobData.TableTexts = new ExBindingList<TableText>(TxtParser.ReadTTexts(pathgvd.Path, GlobData.Trains));
         GlobData.TableFonts = new ExBindingList<TableFont>(TxtParser.ReadTableFonts(pathgvd.Path));
+    }
+
+    /// <summary>
+    /// Naviaze tabulku vlakov a jej stlpce Kolaj a Dopravca na otvoreny grafikon.
+    /// </summary>
+    private void BindDocument()
+    {
+        Kolaj.DataSource = GlobData.Tracks;
+        Dopravca.DataSource = GlobData.Operators;
+
+        var prechod = _prechod;
+        _prechod = true;
+        dgvTrains.DataSource = GlobData.Trains;
+        _prechod = prechod;
+        GlobData.Trains.ListChanged += (_, _) => InvalidateVariants();
+        InvalidateVariants();
+
+        SetColumnsAutoWidth();
     }
 
     private void BackgroundWorker1_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
@@ -251,17 +274,9 @@ public partial class FMain : Form
 
         if (!_error)
         {
-
-            Kolaj.DataSource = GlobData.Tracks;
-            Dopravca.DataSource = GlobData.Operators;
-
-            _prechod = true;
-            dgvTrains.DataSource = GlobData.Trains;
-            _prechod = false;
-            GlobData.Trains.ListChanged += (_, _) => InvalidateVariants();
-            InvalidateVariants();
-
-            SetColumnsAutoWidth();
+            // vsetky data grafikonu sa vymenia naraz - okno medzitym videlo povodny grafikon
+            GlobData.OpenDocument((GrafikonDocument)e.Result!);
+            BindDocument();
 
             //sfunkčniť tlačidlá v tool stripe
             tsbAddTrain.Enabled = true;
@@ -1399,30 +1414,10 @@ public partial class FMain : Form
         //ak sa jedna o novy grafikon
         if (Equals(dir, _newDir))
         {
-            GlobData.Tracks = new ExBindingList<Track> { Track.None };
-            GlobData.Platforms = new ExBindingList<Platform> { Platform.None };
-
-            GlobData.Operators = new ExBindingList<Operator> { Operator.None };
-
-            GlobData.TabTabs = new ExBindingList<TableTabTab>();
-            GlobData.TableCatalogs = new ExBindingList<TableCatalog>();
-            GlobData.TablePhysicals = new ExBindingList<TablePhysical>();
-            GlobData.TableLogicals = new ExBindingList<TableLogical>();
-            GlobData.TableTexts = new ExBindingList<TableText>();
-            GlobData.TableFonts = new ExBindingList<TableFont>();
-            GlobData.ModeTabsSections = new Dictionary<string, Dictionary<string, string>>();
-
-            GlobData.CustomStations = new ExBindingList<Station>();
-
-            GlobData.Radenia = new List<Radenie>();
-
-            GlobData.ReportTypes = ReportType.GetDefaultValuesSK();
-            GlobData.ReportVariants = ReportVariant.GetDefaultValues();
-            // novy grafikon pouziva vsetky jazyky stanice - inak by si ponechal jazyky predchadzajuceho grafikonu
-            GlobData.LocalLanguages = GlobData.Languages.ToList();
-
+            // novy grafikon nesmie nic prevziat z predchadzajuceho (jazyky, priecinok pisiem...)
             _prechod = true;
-            GlobData.Trains.Clear();
+            GlobData.OpenDocument(GrafikonDocument.CreateNew(GlobData.Languages));
+            BindDocument();
             _prechod = false;
 
             TxtParser.WriteTrains(dir.Dir.FullPath, GlobData.Trains.ToList(), dir.GVD, GlobData.ReportVariants);
@@ -1565,20 +1560,6 @@ public partial class FMain : Form
 
         tscbObdobie.ComboBox.SelectedItem = first ?? ObdobiaList.FirstOrDefault();
         return true;
-    }
-
-    private static void InitDruhyReportov()
-    {
-        GlobData.ReportTypesV.Clear();
-        GlobData.ReportTypesP.Clear();
-        GlobData.ReportTypesK.Clear();
-
-        foreach (var reportType in GlobData.ReportTypes)
-        {
-            if (reportType.BaseTrain) GlobData.ReportTypesV.Add(reportType);
-            if (reportType.PassThrough) GlobData.ReportTypesP.Add(reportType);
-            if (reportType.TerminateTrain) GlobData.ReportTypesK.Add(reportType);
-        }
     }
 
     private void dgvTrains_CellClick(object sender, DataGridViewCellEventArgs e)

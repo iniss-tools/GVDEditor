@@ -83,7 +83,7 @@ internal static class Program
         if (Directory.Exists(AppPaths.DataDir))
             Directory.Delete(AppPaths.DataDir, true);
 
-        AppInit.Initialization(out GlobData.Config, out GlobData.Styles, out GlobData.UsingStyle);
+        GlobData.Session = AppInit.Initialization<GVDEditorConfig, GVDEditorStyle>();
 
         // harness nebezi v Application.Run: modalne okno (ShowDialog) by pri skonceni svojej slucky odinstalovalo
         // synchronizacny kontext WinForms a BackgroundWorker spusteny potom by volal ProgressChanged/RunWorkerCompleted
@@ -105,7 +105,6 @@ internal static class Program
     {
         var style = theme == "dark" ? GVDEditorStyle.DefaultDarkStyle : GVDEditorStyle.DefaultLightStyle;
         GlobData.UsingStyle = style;
-        GlobSettings.UsingStyle = style;
         AppInit.MsgBoxStyleInit(style, GlobData.Config);
     }
 

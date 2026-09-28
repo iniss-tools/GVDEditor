@@ -1,3 +1,4 @@
+using GVDEditor.Config;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.UI.Main;
 using ToolsCore;
@@ -15,7 +16,7 @@ internal static class Program
     [STAThread]
     private static void Main()
     {
-        AppInit.Initialization(out GlobData.Config, out GlobData.Styles, out GlobData.UsingStyle);
+        GlobData.Session = AppInit.Initialization<GVDEditorConfig, GVDEditorStyle>();
 
         DateLimit.Loc = GlobData.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
 
