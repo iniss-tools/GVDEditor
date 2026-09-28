@@ -3,12 +3,12 @@
 namespace GVDEditor.UI.Controls;
 
 /// <summary>
-///     Custom Scintilla Control.
+/// Custom Scintilla Control.
 /// </summary>
 public partial class MyScintilla : UserControl
 {
     /// <summary>
-    ///     Custom Scintilla Control.
+    /// Custom Scintilla Control.
     /// </summary>
     public MyScintilla()
     {
@@ -114,7 +114,7 @@ public partial class MyScintilla : UserControl
     }
 
     /// <summary>
-    ///     Dokument bol vymeneny.
+    /// Dokument bol vymeneny.
     /// </summary>
     public void SwitchedDocument()
     {
@@ -122,7 +122,7 @@ public partial class MyScintilla : UserControl
     }
 
     /// <summary>
-    ///     Gets the Scintilla control.
+    /// Gets the Scintilla control.
     /// </summary>
     [Browsable(true)]
     public Scintilla Scintilla => scintilla;

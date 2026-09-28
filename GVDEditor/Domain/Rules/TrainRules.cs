@@ -9,7 +9,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Domain.Rules;
 
 /// <summary>
-///     Grafikon, voci ktoremu sa kontroluje upravovany vlak.
+/// Grafikon, voci ktoremu sa kontroluje upravovany vlak.
 /// </summary>
 /// <param name="Trains">vsetky vlaky grafikonu</param>
 /// <param name="Row">riadok upravovaneho vlaku v <paramref name="Trains" />; pri novom vlaku a kopii pocet vlakov</param>
@@ -17,12 +17,12 @@ namespace GVDEditor.Domain.Rules;
 internal sealed record TrainContext(IReadOnlyList<Train> Trains, int Row, string? HomeStationId = null);
 
 /// <summary>
-///     Kontrola vlaku upravovaneho v okne vlaku. Chyby brania ulozeniu, upozornenia nie.
+/// Kontrola vlaku upravovaneho v okne vlaku. Chyby brania ulozeniu, upozornenia nie.
 /// </summary>
 internal static partial class TrainRules
 {
     /// <summary>
-    ///     Pole vlaku, ku ktoremu sa chyba viaze.
+    /// Pole vlaku, ku ktoremu sa chyba viaze.
     /// </summary>
     public enum Field
     {
@@ -42,12 +42,12 @@ internal static partial class TrainRules
     }
 
     /// <summary>
-    ///     Chyba alebo upozornenie; <paramref name="Row" /> je poradie polozky zoznamu (dodatku, radenia), inak -1.
+    /// Chyba alebo upozornenie; <paramref name="Row" /> je poradie polozky zoznamu (dodatku, radenia), inak -1.
     /// </summary>
     public sealed record Problem(Field Field, string Message, bool IsWarning = false, int Row = -1);
 
     /// <summary>
-    ///     Vsetky chyby a upozornenia vlaku v poradi poli okna (chyby maju prednost pred upozorneniami toho isteho pola).
+    /// Vsetky chyby a upozornenia vlaku v poradi poli okna (chyby maju prednost pred upozorneniami toho isteho pola).
     /// </summary>
     public static List<Problem> Check(TrainDraft draft, TrainContext context)
     {
@@ -123,13 +123,13 @@ internal static partial class TrainRules
     }
 
     /// <summary>
-    ///     Typ, cislo a nazov vlaku, napr. „Ex 521 Lipovan“.
+    /// Typ, cislo a nazov vlaku, napr. „Ex 521 Lipovan“.
     /// </summary>
     public static string Label(Train train) =>
         string.Join(" ", new[] { train.Type?.ToString(), train.Number, train.Name }.Where(part => !string.IsNullOrEmpty(part)));
 
     /// <summary>
-    ///     Chyba cisla vlaku - prazdne alebo so znakom, ktory by rozbil riadok grafikonu.
+    /// Chyba cisla vlaku - prazdne alebo so znakom, ktory by rozbil riadok grafikonu.
     /// </summary>
     public static string? CheckNumber(string? number)
     {
@@ -140,13 +140,13 @@ internal static partial class TrainRules
     }
 
     /// <summary>
-    ///     Chyba linky - prazdna je v poriadku (vlak bez linky), inak najviac 20 pismen bez diakritiky a cislic.
+    /// Chyba linky - prazdna je v poriadku (vlak bez linky), inak najviac 20 pismen bez diakritiky a cislic.
     /// </summary>
     public static string? CheckLine(string? line) =>
         string.IsNullOrEmpty(line) || LinePattern().IsMatch(line) ? null : Resources.TrainRules_Linka;
 
     /// <summary>
-    ///     Chyba datumoveho obmedzenia v obdobi platnosti; <see langword="null" />, ak sa da precitat.
+    /// Chyba datumoveho obmedzenia v obdobi platnosti; <see langword="null" />, ak sa da precitat.
     /// </summary>
     public static string? CheckDateLimit(string? text, DateTime from, DateTime to)
     {
@@ -165,7 +165,7 @@ internal static partial class TrainRules
     }
 
     /// <summary>
-    ///     Cas v tvare HH:mm; prazdne pole nie je cas (<see cref="Utils.ParseTime" /> by vratil polnoc).
+    /// Cas v tvare HH:mm; prazdne pole nie je cas (<see cref="Utils.ParseTime" /> by vratil polnoc).
     /// </summary>
     public static bool TryParseTime(string? text, out DateTime time)
     {
@@ -174,7 +174,7 @@ internal static partial class TrainRules
     }
 
     /// <summary>
-    ///     Smerovanie podla vyplnenych casti trasy; <see langword="null" />, ak vlak nema ziadnu stanicu.
+    /// Smerovanie podla vyplnenych casti trasy; <see langword="null" />, ak vlak nema ziadnu stanicu.
     /// </summary>
     public static Routing? RoutingOf(bool hasFrom, bool hasTo) => (hasFrom, hasTo) switch
     {
@@ -185,8 +185,8 @@ internal static partial class TrainRules
     };
 
     /// <summary>
-    ///     Typy hlaseni, ktore INISS pri vlaku s danym smerovanim pouziva (v poradi <paramref name="all" />);
-    ///     vlak bez trasy nema ziadne.
+    /// Typy hlaseni, ktore INISS pri vlaku s danym smerovanim pouziva (v poradi <paramref name="all" />);
+    /// vlak bez trasy nema ziadne.
     /// </summary>
     public static List<ReportType> ReportTypesFor(Routing? routing, IEnumerable<ReportType> all) =>
         all.Where(type => routing == Routing.Vychadzajuci ? type.BaseTrain
@@ -194,7 +194,7 @@ internal static partial class TrainRules
             : routing == Routing.Konciaci && type.TerminateTrain).ToList();
 
     /// <summary>
-    ///     Po zmene smerovania odstrani z dodatkov hlasenia, ktore vlak uz nema.
+    /// Po zmene smerovania odstrani z dodatkov hlasenia, ktore vlak uz nema.
     /// </summary>
     public static void PruneReports(IEnumerable<Dodatok> doplnky, IReadOnlyCollection<ReportType> allowed)
     {

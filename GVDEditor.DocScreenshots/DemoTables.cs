@@ -3,9 +3,9 @@
 namespace GVDEditor.DocScreenshots;
 
 /// <summary>
-///     Informačné tabule ukážkového grafikonu: odchodová tabuľa v hale a dve nástupištné.
-///     Hodnoty zodpovedajú pravidlám zo špecifikácie (TKatalog.txt, TPhysic.txt, TLogical.txt, TabTab.txt):
-///     stĺpce zoradené podľa pozície, pri LCD1 hranice v násobkoch 8, v každom type zobrazenia všetkých šesť režimov.
+/// Informačné tabule ukážkového grafikonu: odchodová tabuľa v hale a dve nástupištné.
+/// Hodnoty zodpovedajú pravidlám zo špecifikácie (TKatalog.txt, TPhysic.txt, TLogical.txt, TabTab.txt):
+/// stĺpce zoradené podľa pozície, pri LCD1 hranice v násobkoch 8, v každom type zobrazenia všetkých šesť režimov.
 /// </summary>
 internal sealed class DemoTables
 {
@@ -124,7 +124,7 @@ internal sealed class DemoTables
     };
 
     /// <summary>
-    ///     Typ zobrazenia so všetkými šiestimi režimami; meškajúci vlak na odchode ukazuje aj stĺpec meškania.
+    /// Typ zobrazenia so všetkými šiestimi režimami; meškajúci vlak na odchode ukazuje aj stĺpec meškania.
     /// </summary>
     private static TableViewTypeTab ViewTab(TableViewType type, int linesPerRecord, TableItem[] nothing, TableItem[] text,
         TableItem[] train, TableItem[] delayed)

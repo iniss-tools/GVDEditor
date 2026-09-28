@@ -10,8 +10,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.TabTab;
 
 /// <summary>
-///     Nahlad vysledku stlpcov katalogovych tabul pre vybrany vlak a simulovany prevadzkovy stav -
-///     ukaze, co by INISS poslal na tabulu po uplatneni pravidiel TabTab (vratane neulozenych uprav v editore).
+/// Nahlad vysledku stlpcov katalogovych tabul pre vybrany vlak a simulovany prevadzkovy stav -
+/// ukaze, co by INISS poslal na tabulu po uplatneni pravidiel TabTab (vratane neulozenych uprav v editore).
 /// </summary>
 public partial class FTabTabPreview : Form
 {
@@ -24,7 +24,7 @@ public partial class FTabTabPreview : Form
     private readonly bool _loading = true;
 
     /// <summary>
-    ///     Vytvori nahlad.
+    /// Vytvori nahlad.
     /// </summary>
     /// <param name="sectionText">Text sekcie TabTab podla mena (aktualny text z editora); <see langword="null"/>, ak sekcia nie je.</param>
     /// <param name="currentSection">Meno sekcie otvorenej v editore - predvolene sa zobrazia len stlpce, ktore ju pouzivaju.</param>
@@ -55,7 +55,7 @@ public partial class FTabTabPreview : Form
     }
 
     /// <summary>
-    ///     Zneplatni nacitane sekcie (po zmene textu v editore) a prepocita.
+    /// Zneplatni nacitane sekcie (po zmene textu v editore) a prepocita.
     /// </summary>
     public void RefreshPreview()
     {

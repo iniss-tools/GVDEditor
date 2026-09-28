@@ -4,23 +4,23 @@ using ToolsCore.Entities;
 namespace GVDEditor.Domain.Rules;
 
 /// <summary>
-///     Pravidla INISSu pre jazyky stanice (globalny Categori.TXT): najviac tri jazyky, len styri zname kluce
-///     a prave jeden hlavny jazyk.
+/// Pravidla INISSu pre jazyky stanice (globalny Categori.TXT): najviac tri jazyky, len styri zname kluce
+/// a prave jeden hlavny jazyk.
 /// </summary>
 internal static class LanguageRules
 {
     /// <summary>
-    ///     Najvacsi pocet jazykov - pri vacsom COUNT_LANGUAGES INISS nacitanie prerusi.
+    /// Najvacsi pocet jazykov - pri vacsom COUNT_LANGUAGES INISS nacitanie prerusi.
     /// </summary>
     public const int MaxLanguages = 3;
 
     /// <summary>
-    ///     Kluce jazykov, ktore INISS pozna; ine preskoci.
+    /// Kluce jazykov, ktore INISS pozna; ine preskoci.
     /// </summary>
     public static readonly string[] InissKeys = ["SK", "CZ", "GB", "D"];
 
     /// <summary>
-    ///     Skontroluje zoznam jazykov po pridani alebo uprave.
+    /// Skontroluje zoznam jazykov po pridani alebo uprave.
     /// </summary>
     /// <param name="languages">jazyky tak, ako by po zmene vyzerali</param>
     /// <param name="bankKeys">kluce jazykov zvukovej banky</param>
@@ -42,8 +42,8 @@ internal static class LanguageRules
     }
 
     /// <summary>
-    ///     Chyba kluca jazyka na pozicii <paramref name="index" /> - kluc, ktory INISS nepozna, chyba v zvukovej banke
-    ///     alebo ho ma aj iny jazyk.
+    /// Chyba kluca jazyka na pozicii <paramref name="index" /> - kluc, ktory INISS nepozna, chyba v zvukovej banke
+    /// alebo ho ma aj iny jazyk.
     /// </summary>
     /// <returns>Text chyby, alebo <see langword="null" />, ak je kluc v poriadku.</returns>
     public static string? CheckLanguage(IReadOnlyList<FyzLanguage> languages, int index, IReadOnlyCollection<string> bankKeys)
@@ -63,7 +63,7 @@ internal static class LanguageRules
     }
 
     /// <summary>
-    ///     Chyba vyberu hlavneho jazyka - hlavny musi byt prave jeden.
+    /// Chyba vyberu hlavneho jazyka - hlavny musi byt prave jeden.
     /// </summary>
     /// <returns>Text chyby, alebo <see langword="null" />, ak je hlavny prave jeden.</returns>
     public static string? CheckBasic(IReadOnlyList<FyzLanguage> languages) =>

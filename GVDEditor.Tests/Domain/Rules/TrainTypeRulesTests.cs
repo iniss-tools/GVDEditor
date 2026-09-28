@@ -5,7 +5,7 @@ using GVDEditor.Domain.Rules;
 namespace GVDEditor.Tests.Domain.Rules;
 
 /// <summary>
-///     Typy vlakov (Globalne nastavenia → Typy vlakov, TrTypes.txt).
+/// Typy vlakov (Globalne nastavenia → Typy vlakov, TrTypes.txt).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

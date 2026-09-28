@@ -4,7 +4,7 @@
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Typ stĺpca pre imporovanie dát.
+/// Typ stĺpca pre imporovanie dát.
 /// </summary>
 public sealed class ImportTrainColumnType : Enumeration<ImportTrainColumnType>
 {
@@ -13,7 +13,7 @@ public sealed class ImportTrainColumnType : Enumeration<ImportTrainColumnType>
     }
 
     /// <summary>
-    ///     Vráti všetky požadované typy stĺpcov pre importovanie dát.
+    /// Vráti všetky požadované typy stĺpcov pre importovanie dát.
     /// </summary>
     /// <returns>všetky požadované typy stĺpcov</returns>
     public static List<ImportTrainColumnType> GetRequiredValues()
@@ -28,7 +28,7 @@ public sealed class ImportTrainColumnType : Enumeration<ImportTrainColumnType>
     }
 
     /// <summary>
-    ///     Konvertuje názov stĺpca na objekt.
+    /// Konvertuje názov stĺpca na objekt.
     /// </summary>
     /// <param name="name">názov stĺpca ako reťazec</param>
     /// <returns>objekt <see cref="ImportTrainColumnType" /> alebo <see cref="None" /> ak sa nenašla žiadna zhoda</returns>

@@ -3,12 +3,12 @@
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Radenie vlaku
+/// Radenie vlaku
 /// </summary>
 public sealed class Radenie
 {
     /// <summary>
-    ///     Konstruktor
+    /// Konstruktor
     /// </summary>
     public Radenie()
     {
@@ -17,53 +17,53 @@ public sealed class Radenie
     }
 
     /// <summary>
-    ///     Začiatok platnosti radenia vlaku
+    /// Začiatok platnosti radenia vlaku
     /// </summary>
     public DateTime ZacPlatnosti { get; set; }
 
     /// <summary>
-    ///     Koniec platnosti radenia vlaku
+    /// Koniec platnosti radenia vlaku
     /// </summary>
     public DateTime KonPlatnosti { get; set; }
 
     /// <summary>
-    ///     Ci ma radenie zadane obdobie platnosti. Zaznam s prazdnymi datumami v Razeni1.txt plati bez obmedzenia -
-    ///     INISS pri nom datum vobec nekontroluje (<see cref="ZacPlatnosti" /> je vtedy <see cref="DateTime.MinValue" />).
+    /// Ci ma radenie zadane obdobie platnosti. Zaznam s prazdnymi datumami v Razeni1.txt plati bez obmedzenia -
+    /// INISS pri nom datum vobec nekontroluje (<see cref="ZacPlatnosti" /> je vtedy <see cref="DateTime.MinValue" />).
     /// </summary>
     public bool HasValidity => ZacPlatnosti != DateTime.MinValue;
 
     /// <summary>
-    ///     Dátumové obmedzenie ako text
+    /// Dátumové obmedzenie ako text
     /// </summary>
     public string DatObm { get; set; } = null!;
 
     /// <summary>
-    ///     Fyzické zvuky, ktoré tvoria hlásenie radenia vlaku
+    /// Fyzické zvuky, ktoré tvoria hlásenie radenia vlaku
     /// </summary>
     public List<FyzSound> Sounds { get; set; }
 
     /// <summary>
-    ///     V ktorých variantach hlásení sa má radenie vlaku vyhlasovať
+    /// V ktorých variantach hlásení sa má radenie vlaku vyhlasovať
     /// </summary>
     public List<ChosenReportType> ChosenReports { get; set; }
 
     /// <summary>
-    ///     Text hlásenia vlaku
+    /// Text hlásenia vlaku
     /// </summary>
     public string Text { get; set; } = null!;
 
     /// <summary>
-    ///     Cieľová stanica vlaku s radením
+    /// Cieľová stanica vlaku s radením
     /// </summary>
     public Station DestStation { get; set; } = null!;
 
     /// <summary>
-    ///     Číslo vlaku, ktorému patrí toto radenie
+    /// Číslo vlaku, ktorému patrí toto radenie
     /// </summary>
     public string CisloVlaku { get; set; } = null!;
 
     /// <summary>
-    ///     Konveruje list fyzických zvukov radenia do reťazca  - text hlasenia
+    /// Konveruje list fyzických zvukov radenia do reťazca  - text hlasenia
     /// </summary>
     /// <param name="sounds"></param>
     /// <returns>text hlasenia radenia</returns>

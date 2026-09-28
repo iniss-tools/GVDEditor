@@ -1,8 +1,8 @@
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Spolocne spravanie stranok nastaveni s tabulkou: chyby oznacene priamo v bunkach, text pod tabulkou
-///     (chyba vybraneho riadka alebo napoveda k nemu) a skok na prvu chybu.
+/// Spolocne spravanie stranok nastaveni s tabulkou: chyby oznacene priamo v bunkach, text pod tabulkou
+/// (chyba vybraneho riadka alebo napoveda k nemu) a skok na prvu chybu.
 /// </summary>
 internal sealed class GridPageSupport
 {
@@ -12,7 +12,7 @@ internal sealed class GridPageSupport
     private Color _hintColor;
 
     /// <summary>
-    ///     Vytvori podporu pre tabulku <paramref name="dgv" /> s textom pod nou <paramref name="hint" />.
+    /// Vytvori podporu pre tabulku <paramref name="dgv" /> s textom pod nou <paramref name="hint" />.
     /// </summary>
     public GridPageSupport(DataGridView dgv, Label hint)
     {
@@ -22,13 +22,13 @@ internal sealed class GridPageSupport
     }
 
     /// <summary>
-    ///     Prva chyba tabulky; <see langword="null" />, ak ziadna nie je.
+    /// Prva chyba tabulky; <see langword="null" />, ak ziadna nie je.
     /// </summary>
     public string? FirstProblem => _problems.Count == 0 ? null : _problems[0].Text;
 
     /// <summary>
-    ///     Zapamata farbu textu pod tabulkou - volat po nastaveni temy okna. Prazdna plocha tabulky dostane farbu
-    ///     buniek (predvolena sivá plocha vyzera ako nedostupny prvok).
+    /// Zapamata farbu textu pod tabulkou - volat po nastaveni temy okna. Prazdna plocha tabulky dostane farbu
+    /// buniek (predvolena sivá plocha vyzera ako nedostupny prvok).
     /// </summary>
     public void CaptureColors()
     {
@@ -38,12 +38,12 @@ internal sealed class GridPageSupport
     }
 
     /// <summary>
-    ///     Bunka, ktora sa neda upravit (napr. cislo pouzivanej stanice), vyzera ako nedostupna.
+    /// Bunka, ktora sa neda upravit (napr. cislo pouzivanej stanice), vyzera ako nedostupna.
     /// </summary>
     public static void MarkLocked(DataGridViewCell cell) => cell.Style.ForeColor = SystemColors.GrayText;
 
     /// <summary>
-    ///     Zmaze chyby vo vsetkych bunkach pred novou kontrolou.
+    /// Zmaze chyby vo vsetkych bunkach pred novou kontrolou.
     /// </summary>
     public void BeginCheck()
     {
@@ -54,8 +54,8 @@ internal sealed class GridPageSupport
     }
 
     /// <summary>
-    ///     Oznaci chybu v bunke; <see langword="null" /> znamena, ze bunka je v poriadku. Chyba celeho zoznamu
-    ///     (napr. chyba hlavny jazyk) nema bunku - <paramref name="cell" /> je <see langword="null" />.
+    /// Oznaci chybu v bunke; <see langword="null" /> znamena, ze bunka je v poriadku. Chyba celeho zoznamu
+    /// (napr. chyba hlavny jazyk) nema bunku - <paramref name="cell" /> je <see langword="null" />.
     /// </summary>
     public void Report(DataGridViewCell? cell, string? problem)
     {
@@ -68,7 +68,7 @@ internal sealed class GridPageSupport
     }
 
     /// <summary>
-    ///     Vyberie bunku s prvou chybou.
+    /// Vyberie bunku s prvou chybou.
     /// </summary>
     public void FocusFirstProblem()
     {
@@ -81,7 +81,7 @@ internal sealed class GridPageSupport
     }
 
     /// <summary>
-    ///     Pod tabulkou ukaze chybu vybraneho riadka, potom chybu celeho zoznamu, inak napovedu <paramref name="neutral" />.
+    /// Pod tabulkou ukaze chybu vybraneho riadka, potom chybu celeho zoznamu, inak napovedu <paramref name="neutral" />.
     /// </summary>
     public void ShowHint(string? neutral)
     {
@@ -93,9 +93,9 @@ internal sealed class GridPageSupport
     }
 
     /// <summary>
-    ///     Spusti obnovenie stavu stranky az po skonceni udalosti tabulky. Zmena aktualnej bunky (napr. po odstraneni
-    ///     riadka) nesmie hned vypnut tlacidlo, ktore ma fokus - fokus by presiel do tabulky a ta by pocas zmeny
-    ///     bunky menila bunku znova (InvalidOperationException: reentrant call to SetCurrentCellAddressCore).
+    /// Spusti obnovenie stavu stranky az po skonceni udalosti tabulky. Zmena aktualnej bunky (napr. po odstraneni
+    /// riadka) nesmie hned vypnut tlacidlo, ktore ma fokus - fokus by presiel do tabulky a ta by pocas zmeny
+    /// bunky menila bunku znova (InvalidOperationException: reentrant call to SetCurrentCellAddressCore).
     /// </summary>
     public void Defer(Action update)
     {
@@ -120,7 +120,7 @@ internal sealed class GridPageSupport
     private bool _deferred;
 
     /// <summary>
-    ///     Vyberie bunku a zacne ju upravovat (novy riadok).
+    /// Vyberie bunku a zacne ju upravovat (novy riadok).
     /// </summary>
     public void Edit(int row, DataGridViewColumn column)
     {
@@ -130,7 +130,7 @@ internal sealed class GridPageSupport
     }
 
     /// <summary>
-    ///     Klavesy tabulky: Insert prida polozku, Delete odstrani vybranu (ak sa bunka prave neupravuje).
+    /// Klavesy tabulky: Insert prida polozku, Delete odstrani vybranu (ak sa bunka prave neupravuje).
     /// </summary>
     public static void HandleKeys(KeyEventArgs e, Action add, Action delete)
     {

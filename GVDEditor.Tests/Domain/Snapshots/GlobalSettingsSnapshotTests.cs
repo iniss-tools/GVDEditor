@@ -8,7 +8,7 @@ using ToolsCore.Entities;
 namespace GVDEditor.Tests.Domain.Snapshots;
 
 /// <summary>
-///     Tlacidlo Zrusit v okne Globalne nastavenia: zmeny jazykov, meskani, typov vlakov a audio liniek sa vratia.
+/// Tlacidlo Zrusit v okne Globalne nastavenia: zmeny jazykov, meskani, typov vlakov a audio liniek sa vratia.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

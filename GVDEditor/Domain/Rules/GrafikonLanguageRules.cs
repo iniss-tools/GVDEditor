@@ -6,13 +6,13 @@ using ToolsCore.Entities;
 namespace GVDEditor.Domain.Rules;
 
 /// <summary>
-///     Jazyky, ktore grafikon pouziva (sekcie LANGUAGE_nn lokalneho Categori.txt). INISS jazyk mimo nich u vlaku
-///     preskoci; nazov a priznak hlavneho jazyka berie vzdy z globalneho Categori.txt.
+/// Jazyky, ktore grafikon pouziva (sekcie LANGUAGE_nn lokalneho Categori.txt). INISS jazyk mimo nich u vlaku
+/// preskoci; nazov a priznak hlavneho jazyka berie vzdy z globalneho Categori.txt.
 /// </summary>
 internal static class GrafikonLanguageRules
 {
     /// <summary>
-    ///     Jazyky grafikonu po zmene globalnych jazykov: zmazane vypadnu, nove sa nepridaju, poradie je globalne.
+    /// Jazyky grafikonu po zmene globalnych jazykov: zmazane vypadnu, nove sa nepridaju, poradie je globalne.
     /// </summary>
     public static List<FyzLanguage> Sync(IEnumerable<FyzLanguage> grafikon, IEnumerable<FyzLanguage> global)
     {
@@ -21,7 +21,7 @@ internal static class GrafikonLanguageRules
     }
 
     /// <summary>
-    ///     Chyba, ktora brani ulozeniu vyberu; <see langword="null" />, ak je vyber v poriadku.
+    /// Chyba, ktora brani ulozeniu vyberu; <see langword="null" />, ak je vyber v poriadku.
     /// </summary>
     /// <param name="selected">zapnute jazyky</param>
     /// <param name="global">vsetky jazyky stanice</param>
@@ -42,7 +42,7 @@ internal static class GrafikonLanguageRules
     }
 
     /// <summary>
-    ///     Upozornenia k vypnutym jazykom, ktore maju vlaky zapnute - INISS ich pri nich preskoci.
+    /// Upozornenia k vypnutym jazykom, ktore maju vlaky zapnute - INISS ich pri nich preskoci.
     /// </summary>
     public static List<string> Warnings(IReadOnlyCollection<FyzLanguage> selected, IEnumerable<FyzLanguage> global, IEnumerable<Train> trains)
     {
@@ -59,8 +59,8 @@ internal static class GrafikonLanguageRules
     }
 
     /// <summary>
-    ///     Jazyky na vyber pri vlaku alebo radeni: jazyky grafikonu a navyse tie, ktore uz vyber obsahuje (aby sa
-    ///     neulozenim okna potichu nestratili), v poradi globalneho zoznamu.
+    /// Jazyky na vyber pri vlaku alebo radeni: jazyky grafikonu a navyse tie, ktore uz vyber obsahuje (aby sa
+    /// neulozenim okna potichu nestratili), v poradi globalneho zoznamu.
     /// </summary>
     public static List<FyzLanguage> Offered(IEnumerable<FyzLanguage> global, IEnumerable<FyzLanguage> grafikon, IEnumerable<FyzLanguage> alreadyUsed)
     {

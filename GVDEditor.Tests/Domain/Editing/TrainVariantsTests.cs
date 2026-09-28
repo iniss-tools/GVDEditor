@@ -6,8 +6,8 @@ using GVDEditor.Domain.Rules;
 namespace GVDEditor.Tests.Domain.Editing;
 
 /// <summary>
-///     Varianty vlaku: cisla prideluje GVDEditor (INISS ich pouziva len ako identifikator), spolocne dni sa
-///     prideluju jednej variante, pruh kalendara a zmena cisla celej skupiny.
+/// Varianty vlaku: cisla prideluje GVDEditor (INISS ich pouziva len ako identifikator), spolocne dni sa
+/// prideluju jednej variante, pruh kalendara a zmena cisla celej skupiny.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

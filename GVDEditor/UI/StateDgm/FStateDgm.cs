@@ -15,8 +15,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.StateDgm;
 
 /// <summary>
-///     Editor stavoveho diagramu vlaku (StateDgm.txt): navigator (kategorie → stavy, vzhlady, casove body),
-///     panel vlastnosti, akcie s tlacidlami a startery vybraneho stavu, kontrola diagramu a text suboru.
+/// Editor stavoveho diagramu vlaku (StateDgm.txt): navigator (kategorie → stavy, vzhlady, casove body),
+/// panel vlastnosti, akcie s tlacidlami a startery vybraneho stavu, kontrola diagramu a text suboru.
 /// </summary>
 public partial class FStateDgm : Form
 {
@@ -62,8 +62,8 @@ public partial class FStateDgm : Form
     private const int ERROR_MARKER = 1;
 
     /// <summary>
-    ///     Rezim upravy textu: subor sa nedal rozlozit, zalozka Text je editovatelna a ostatne casti su vypnute,
-    ///     kym sa text neopravi (Nacitat text) alebo nenahradi predlohou.
+    /// Rezim upravy textu: subor sa nedal rozlozit, zalozka Text je editovatelna a ostatne casti su vypnute,
+    /// kym sa text neopravi (Nacitat text) alebo nenahradi predlohou.
     /// </summary>
     private bool _rawMode;
 
@@ -79,7 +79,7 @@ public partial class FStateDgm : Form
     private readonly ToolStripLabel _rawInfo = new();
 
     /// <summary>
-    ///     Otvori editor diagramu grafikonu.
+    /// Otvori editor diagramu grafikonu.
     /// </summary>
     /// <param name="dir">Priecinok grafikonu.</param>
     internal FStateDgm(GVDDirectory dir) : this(dir.Dir.FullPath, dir.GVD.ThisStation?.Name ?? dir.Dir.DirName, dir.GVD.ThisStation?.ID)
@@ -87,7 +87,7 @@ public partial class FStateDgm : Form
     }
 
     /// <summary>
-    ///     Otvori editor diagramu v danom priecinku.
+    /// Otvori editor diagramu v danom priecinku.
     /// </summary>
     /// <param name="dirPath">Priecinok grafikonu so suborom StateDgm.txt.</param>
     /// <param name="stationName">Meno stanice do titulku.</param>
@@ -140,7 +140,7 @@ public partial class FStateDgm : Form
     }
 
     /// <summary>
-    ///     Zalozka Text suboru: Scintilla len na citanie, bez lexera, s cislami riadkov a farbami temy.
+    /// Zalozka Text suboru: Scintilla len na citanie, bez lexera, s cislami riadkov a farbami temy.
     /// </summary>
     private void SetupTextView()
     {
@@ -194,7 +194,7 @@ public partial class FStateDgm : Form
     }
 
     /// <summary>
-    ///     Zalozka Graf: panel grafu kategorie s listou (prepinac vsetkych prechodov, legenda).
+    /// Zalozka Graf: panel grafu kategorie s listou (prepinac vsetkych prechodov, legenda).
     /// </summary>
     private void SetupGraph()
     {
@@ -332,7 +332,7 @@ public partial class FStateDgm : Form
     }
 
     /// <summary>
-    ///     Rozlozi upraveny text; ak je bez chyby syntaxe, prepne editor do bezneho rezimu nad modelom.
+    /// Rozlozi upraveny text; ak je bez chyby syntaxe, prepne editor do bezneho rezimu nad modelom.
     /// </summary>
     /// <returns>true, ked sa text rozlozil.</returns>
     private bool ApplyRawText()

@@ -7,8 +7,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.Tests.TabTabEditor;
 
 /// <summary>
-///     Sprava sekcii TabTab: kontrola nazvu pri pridani/premenovani, hladanie pouzitia pred odstranenim
-///     a formatovanie textu sekcie (nesmie menit text posielany na tabulu).
+/// Sprava sekcii TabTab: kontrola nazvu pri pridani/premenovani, hladanie pouzitia pred odstranenim
+/// a formatovanie textu sekcie (nesmie menit text posielany na tabulu).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

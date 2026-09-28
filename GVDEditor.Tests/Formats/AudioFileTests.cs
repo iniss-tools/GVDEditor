@@ -8,7 +8,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Tests.Formats;
 
 /// <summary>
-///     Audio.txt (Globalne nastavenia → Audio): testovaci okruh TEST a riadky za prvym '/'.
+/// Audio.txt (Globalne nastavenia → Audio): testovaci okruh TEST a riadky za prvym '/'.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

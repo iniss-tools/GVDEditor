@@ -8,7 +8,7 @@ using GVDEditor.Domain.Snapshots;
 namespace GVDEditor.Tests.Domain.Snapshots;
 
 /// <summary>
-///     Tlacidlo Zrusit v okne Lokalne nastavenia: zmeny na vsetkych zalozkach (vratane dopadu na vlaky) sa vratia.
+/// Tlacidlo Zrusit v okne Lokalne nastavenia: zmeny na vsetkych zalozkach (vratane dopadu na vlaky) sa vratia.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

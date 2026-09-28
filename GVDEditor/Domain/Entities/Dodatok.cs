@@ -4,27 +4,27 @@ using ToolsCore.Tools;
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Trieda obsahujuca informacie o dodatkovom hláseni.
+/// Trieda obsahujuca informacie o dodatkovom hláseni.
 /// </summary>
 public sealed class Dodatok
 {
     /// <summary>
-    ///     Vytvori novu instanciu triedy <see cref="Dodatok"/>.
+    /// Vytvori novu instanciu triedy <see cref="Dodatok"/>.
     /// </summary>
     public Dodatok() => ChosenReports = new List<ChosenReportType>();
 
     /// <summary>
-    ///     Vrati alebo nastavi fyzický zvuk dodatku.
+    /// Vrati alebo nastavi fyzický zvuk dodatku.
     /// </summary>
     public FyzSound Sound { get; set; } = null!;
 
     /// <summary>
-    ///     Vrati alebo nastavi kód dodatkového hlásenia - kľúč zvuku Dxxxx bez predpony D (x - 0-9).
+    /// Vrati alebo nastavi kód dodatkového hlásenia - kľúč zvuku Dxxxx bez predpony D (x - 0-9).
     /// </summary>
     public string Name { get; set; } = null!;
 
     /// <summary>
-    ///     Prevedie kľúč zvuku zo skupiny DODATKY na kód doplnku zapisovaný do grafikonu (bez predpony D).
+    /// Prevedie kľúč zvuku zo skupiny DODATKY na kód doplnku zapisovaný do grafikonu (bez predpony D).
     /// </summary>
     /// <param name="key">kľúč zvuku, napr. D1003.</param>
     /// <returns>kód doplnku, napr. 1003.</returns>
@@ -32,7 +32,7 @@ public sealed class Dodatok
         key.StartsWith('D') || key.StartsWith('d') ? key[1..] : key;
 
     /// <summary>
-    ///     Vrati alebo nastavi v akých reportoch sa má dodatok hlásiť.
+    /// Vrati alebo nastavi v akých reportoch sa má dodatok hlásiť.
     /// </summary>
     public List<ChosenReportType> ChosenReports { get; set; }
 
@@ -40,7 +40,7 @@ public sealed class Dodatok
     public override string ToString() => Name;
 
     /// <summary>
-    ///     Konvertuje binárne pole na dodatkové hlásenie zo všetkými dátami.
+    /// Konvertuje binárne pole na dodatkové hlásenie zo všetkými dátami.
     /// </summary>
     /// <param name="sound">Fyzický zvuk.</param>
     /// <param name="nums">Binárne pole vo forme reťazca.</param>
@@ -97,7 +97,7 @@ public sealed class Dodatok
     }
 
     /// <summary>
-    ///     Konvertuje dodatkové hlásenie na binárne pole.
+    /// Konvertuje dodatkové hlásenie na binárne pole.
     /// </summary>
     /// <param name="dodatok">Dodatkové hlásenie.</param>
     /// <param name="reportTypes">Dostupné typy reportov.</param>

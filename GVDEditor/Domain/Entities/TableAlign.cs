@@ -3,7 +3,7 @@
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Zarovnanie tabule
+/// Zarovnanie tabule
 /// </summary>
 public sealed class TableAlign : Enumeration<TableAlign>
 {
@@ -12,13 +12,13 @@ public sealed class TableAlign : Enumeration<TableAlign>
     }
 
     /// <summary>
-    ///     Konveruje identifikátor tabule ako <see cref="int" /> na <see cref="TableAlign" />
+    /// Konveruje identifikátor tabule ako <see cref="int" /> na <see cref="TableAlign" />
     /// </summary>
     /// <param name="s"></param>
     /// <returns><see cref="TableAlign" /> alebo <see langword="null" /> ak sa nenašla žiadna zhoda</returns>
     /// <remarks>
-    ///     Cisla zodpovedaju sekcii [ALIGN] v ModeTabs.TXT tak, ako ju pozna INISS:
-    ///     0 = vlavo, 1 = vpravo, 2 = doprostred.
+    /// Cisla zodpovedaju sekcii [ALIGN] v ModeTabs.TXT tak, ako ju pozna INISS:
+    /// 0 = vlavo, 1 = vpravo, 2 = doprostred.
     /// </remarks>
     public static TableAlign? Parse(int s)
     {
@@ -34,17 +34,17 @@ public sealed class TableAlign : Enumeration<TableAlign>
     #region VALUES
 
     /// <summary>
-    ///     Zarovnanie vľavo
+    /// Zarovnanie vľavo
     /// </summary>
     public static readonly TableAlign Left = new(0, "Vľavo");
 
     /// <summary>
-    ///     Zarovnanie vpravo
+    /// Zarovnanie vpravo
     /// </summary>
     public static readonly TableAlign Right = new(1, "Vpravo");
 
     /// <summary>
-    ///     Zarovnanie na stred
+    /// Zarovnanie na stred
     /// </summary>
     public static readonly TableAlign Center = new(2, "V strede");
 

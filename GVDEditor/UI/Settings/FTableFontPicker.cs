@@ -6,13 +6,13 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Dialog - vzhlad pisma, ktore nie je v zozname pisiem (stlpec katalogovej tabule, text vlaku na tabuli).
-///     Pismo sa da rovno pridat do zoznamu pisiem.
+/// Dialog - vzhlad pisma, ktore nie je v zozname pisiem (stlpec katalogovej tabule, text vlaku na tabuli).
+/// Pismo sa da rovno pridat do zoznamu pisiem.
 /// </summary>
 public partial class FTableFontPicker : Form
 {
     /// <summary>
-    ///     Vytvori dialog s pismom <paramref name="value" /> pre tabule vyrobcu <paramref name="manufacturer" />.
+    /// Vytvori dialog s pismom <paramref name="value" /> pre tabule vyrobcu <paramref name="manufacturer" />.
     /// </summary>
     public FTableFontPicker(int value, TableManufacturer? manufacturer)
     {
@@ -27,14 +27,14 @@ public partial class FTableFontPicker : Form
     }
 
     /// <summary>
-    ///     Zvolene cislo pisma.
+    /// Zvolene cislo pisma.
     /// </summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public int Value => picker.Value;
 
     /// <summary>
-    ///     Pridat pismo do zoznamu pisiem (len ak toto cislo v zozname este nie je).
+    /// Pridat pismo do zoznamu pisiem (len ak toto cislo v zozname este nie je).
     /// </summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]

@@ -18,7 +18,7 @@ using static ToolsCore.Tools.Utils;
 namespace GVDEditor.Formats;
 
 /// <summary>
-///     Trieda obsahujuca funkcie pre citanie a zapisovanie dat do .TXT suborov.
+/// Trieda obsahujuca funkcie pre citanie a zapisovanie dat do .TXT suborov.
 /// </summary>
 internal static class TxtParser
 {
@@ -39,7 +39,7 @@ internal static class TxtParser
     #region COMMENTS
 
     /// <summary>
-    ///     Vygeneruje komentar ako hlavicku k niektorym suborom.
+    /// Vygeneruje komentar ako hlavicku k niektorym suborom.
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="filename">nazov suboru</param>
@@ -90,7 +90,7 @@ internal static class TxtParser
     #region STATEDGM
 
     /// <summary>
-    ///     Zapise predlohu stavoveho diagramu do priecinka grafikonu.
+    /// Zapise predlohu stavoveho diagramu do priecinka grafikonu.
     /// </summary>
     /// <param name="path">cesta do priecinka grafikonu</param>
     /// <param name="template">predloha</param>
@@ -107,7 +107,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Text predlohy stavoveho diagramu (na nahlad alebo na porovnanie).
+    /// Text predlohy stavoveho diagramu (na nahlad alebo na porovnanie).
     /// </summary>
     public static string StateDgmTemplateText(StateDgmTemplate template) => template switch
     {
@@ -117,8 +117,8 @@ internal static class TxtParser
     };
 
     /// <summary>
-    ///     Cesta k suboru StateDgm.txt v priecinku grafikonu (INISS meno suboru nerozlisuje velkostou pismen,
-    ///     preto sa pouzije existujuci subor, ak tam je).
+    /// Cesta k suboru StateDgm.txt v priecinku grafikonu (INISS meno suboru nerozlisuje velkostou pismen,
+    /// preto sa pouzije existujuci subor, ak tam je).
     /// </summary>
     public static string StateDgmPath(string dir)
     {
@@ -129,8 +129,8 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Nacita stavovy diagram grafikonu; null, ak subor neexistuje. Chyby syntaxe vyhadzuje
-    ///     <see cref="StateDgmParseException" />.
+    /// Nacita stavovy diagram grafikonu; null, ak subor neexistuje. Chyby syntaxe vyhadzuje
+    /// <see cref="StateDgmParseException" />.
     /// </summary>
     public static StateDgmDiagram? ReadStateDgm(string dir)
     {
@@ -139,7 +139,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise stavovy diagram do priecinka grafikonu a zmaze vyrovnavaciu pamat StateDgm.dat.
+    /// Zapise stavovy diagram do priecinka grafikonu a zmaze vyrovnavaciu pamat StateDgm.dat.
     /// </summary>
     public static void WriteStateDgm(string dir, StateDgmDiagram diagram)
     {
@@ -148,7 +148,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise text stavoveho diagramu tak, ako je (aj s chybou syntaxe), a zmaze vyrovnavaciu pamat StateDgm.dat.
+    /// Zapise text stavoveho diagramu tak, ako je (aj s chybou syntaxe), a zmaze vyrovnavaciu pamat StateDgm.dat.
     /// </summary>
     public static void WriteStateDgmText(string dir, string text)
     {
@@ -157,9 +157,9 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zmaze StateDgm.dat v koreni datoveho adresara. INISS textove diagramy cita znova, len ked .dat chyba
-    ///     alebo je starsi nez niektory StateDgm.txt - po kopii suborov so starym casom by inak dalej pouzival
-    ///     stary diagram.
+    /// Zmaze StateDgm.dat v koreni datoveho adresara. INISS textove diagramy cita znova, len ked .dat chyba
+    /// alebo je starsi nez niektory StateDgm.txt - po kopii suborov so starym casom by inak dalej pouzival
+    /// stary diagram.
     /// </summary>
     public static void DeleteStateDgmCache()
     {
@@ -173,7 +173,7 @@ internal static class TxtParser
     #region DIRLIST
 
     /// <summary>
-    ///     Vrati zoznam pouzivanych priecinkov s GVD.
+    /// Vrati zoznam pouzivanych priecinkov s GVD.
     /// </summary>
     /// <returns>priecinky s GVD</returns>
     public static List<DirList> ReadDirList()
@@ -231,7 +231,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise zoznam pouzivanych priecinkoch s GVD.
+    /// Zapise zoznam pouzivanych priecinkoch s GVD.
     /// </summary>
     /// <param name="dirs">priecinky s GVD</param>
     public static void WriteDirList(IEnumerable<DirList> dirs)
@@ -240,8 +240,8 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise zoznam priecinkov s GVD do daneho suboru. Subor nezalozi ani neprepise, ked by v nom neostal
-    ///     ziadny riadok a zaroven existuje grafikon priamo v DATA alebo subor este neexistuje.
+    /// Zapise zoznam priecinkov s GVD do daneho suboru. Subor nezalozi ani neprepise, ked by v nom neostal
+    /// ziadny riadok a zaroven existuje grafikon priamo v DATA alebo subor este neexistuje.
     /// </summary>
     /// <param name="fileDirList">cesta k DirList.TXT</param>
     /// <param name="dirs">priecinky s GVD</param>
@@ -289,7 +289,7 @@ internal static class TxtParser
     #region GVD
 
     /// <summary>
-    ///     Vrati informacie o grafikone.
+    /// Vrati informacie o grafikone.
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <returns>informacie o grafikone</returns>
@@ -323,7 +323,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise informacie o grafikone do suboru.
+    /// Zapise informacie o grafikone do suboru.
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="gvd">informacie o grafikone</param>
@@ -357,7 +357,7 @@ internal static class TxtParser
     #region AUDIO
 
     /// <summary>
-    ///     Vrati informacie o audio linkach zo suboru.
+    /// Vrati informacie o audio linkach zo suboru.
     /// </summary>
     /// <returns>audio linky</returns>
     public static List<Audio> ReadAudio()
@@ -422,7 +422,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise informacie o audio linkach do suboru.
+    /// Zapise informacie o audio linkach do suboru.
     /// </summary>
     /// <param name="audios">audio linky</param>
     public static void WriteAudio(IEnumerable<Audio> audios)
@@ -431,12 +431,12 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Riadky Audio.txt od prveho riadka zacinajuceho '/' - INISS ich ako okruhy necita, zapisu sa spat bez zmeny.
+    /// Riadky Audio.txt od prveho riadka zacinajuceho '/' - INISS ich ako okruhy necita, zapisu sa spat bez zmeny.
     /// </summary>
     public static List<string> AudioTrailer { get; private set; } = new();
 
     /// <summary>
-    ///     Zapise audio linky a za ne riadky <paramref name="trailer" /> do suboru <paramref name="fileAudio" />.
+    /// Zapise audio linky a za ne riadky <paramref name="trailer" /> do suboru <paramref name="fileAudio" />.
     /// </summary>
     internal static void WriteAudio(string fileAudio, IEnumerable<Audio> audios, IEnumerable<string> trailer)
     {
@@ -475,7 +475,7 @@ internal static class TxtParser
     #region ZPOZDENI
 
     /// <summary>
-    ///     Vrati mozne casy meskani.
+    /// Vrati mozne casy meskani.
     /// </summary>
     /// <returns>meskania</returns>
     public static List<string> ReadZpozdeni()
@@ -515,8 +515,8 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zmaze vyrovnavaciu pamat Zpozdeni.DAT. INISS textovy Zpozdeni.TXT cita, len ked .DAT chyba alebo je spusteny
-    ///     s parametrom /Import - bez zmazania by dalej pouzival stary zoznam.
+    /// Zmaze vyrovnavaciu pamat Zpozdeni.DAT. INISS textovy Zpozdeni.TXT cita, len ked .DAT chyba alebo je spusteny
+    /// s parametrom /Import - bez zmazania by dalej pouzival stary zoznam.
     /// </summary>
     private static void DeleteZpozdeniCache()
     {
@@ -526,7 +526,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise predvolene casy meskani.
+    /// Zapise predvolene casy meskani.
     /// </summary>
     public static void WriteZpozdeniDefault()
     {
@@ -544,7 +544,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise mozne casy meskani do suboru.
+    /// Zapise mozne casy meskani do suboru.
     /// </summary>
     /// <param name="meskania">meskania</param>
     public static void WriteZpozdeni(IEnumerable<string> meskania)
@@ -567,7 +567,7 @@ internal static class TxtParser
     #region TRAIN_TYPES
 
     /// <summary>
-    ///     Vrati kategorie vlakov.
+    /// Vrati kategorie vlakov.
     /// </summary>
     /// <returns>kategorie vlakov</returns>
     public static List<TrainType> ReadTrainTypes()
@@ -640,7 +640,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise do suboru kategorie vlakov.
+    /// Zapise do suboru kategorie vlakov.
     /// </summary>
     /// <param name="typy">kategorie vlakov</param>
     public static void WriteTrainTypes(IEnumerable<TrainType> typy)
@@ -674,7 +674,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise do suboru predvolene kategorie vlakov.
+    /// Zapise do suboru predvolene kategorie vlakov.
     /// </summary>
     public static void WriteTrainTypesDefaults()
     {
@@ -695,7 +695,7 @@ internal static class TxtParser
     #region GLOBAL_CATEGORI
 
     /// <summary>
-    ///     Vrati informacie o jazykovych mutaciach hlaseni (pre vsetky GVD)
+    /// Vrati informacie o jazykovych mutaciach hlaseni (pre vsetky GVD)
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="jazykyFromBank">jazykove mutacie z banky zvukov</param>
@@ -746,7 +746,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise informacie o jazykovych mutaciach hlaseni pouzivanych na stanici
+    /// Zapise informacie o jazykovych mutaciach hlaseni pouzivanych na stanici
     /// </summary>
     /// <param name="jazyky">jazyky</param>
     public static void WriteLanguages(List<FyzLanguage> jazyky)
@@ -773,7 +773,7 @@ internal static class TxtParser
     #region LOCAL_CATEGORI
 
     /// <summary>
-    ///     Nainicializuje data o variantach a typoch reportov a jazykovych mutaciach hlaseni (pre konkretne GVD)
+    /// Nainicializuje data o variantach a typoch reportov a jazykovych mutaciach hlaseni (pre konkretne GVD)
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     public static (List<ReportVariant>,List<ReportType>,List<FyzLanguage>) ReadLocalCategori(string path)
@@ -836,7 +836,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise data o variantach a typoch reportov a jazykovych mutaciach hlaseni pouzivanych na stanici (pre konkretne GVD).
+    /// Zapise data o variantach a typoch reportov a jazykovych mutaciach hlaseni pouzivanych na stanici (pre konkretne GVD).
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="varianty">verianty reportov</param>
@@ -904,7 +904,7 @@ internal static class TxtParser
     #region TRAINS
 
     /// <summary>
-    ///     Nacita Pozice.txt - priradi vlakom kolaj prichodu a pripadne kolaj odchodu.
+    /// Nacita Pozice.txt - priradi vlakom kolaj prichodu a pripadne kolaj odchodu.
     /// </summary>
     /// <param name="file">cesta k suboru Pozice.txt</param>
     /// <param name="trains">vlaky v poradi podla ID (riadok s ID n patri vlaku na indexe n - 1)</param>
@@ -959,7 +959,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise Pozice.txt - kolaj prichodu a (ak sa lisi) kolaj odchodu kazdeho vlaku.
+    /// Zapise Pozice.txt - kolaj prichodu a (ak sa lisi) kolaj odchodu kazdeho vlaku.
     /// </summary>
     /// <param name="file">cesta k suboru Pozice.txt</param>
     /// <param name="trains">vlaky v poradi podla ID</param>
@@ -985,8 +985,8 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Vrati textove obmedzenie vlaku bez poznamky v Export3C podla mapy dni z Export3B.
-    ///     Ak mapa chyba, nesedi dlzkou na obdobie platnosti alebo ide kazdy den, vrati "ide denne".
+    /// Vrati textove obmedzenie vlaku bez poznamky v Export3C podla mapy dni z Export3B.
+    /// Ak mapa chyba, nesedi dlzkou na obdobie platnosti alebo ide kazdy den, vrati "ide denne".
     /// </summary>
     /// <param name="train">vlak s nacitanym obdobim platnosti</param>
     /// <param name="map">mapa dni ('0'/'1' za kazdy den obdobia) alebo <see langword="null"/></param>
@@ -1006,7 +1006,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Vrati informacie a data o vlakoch.
+    /// Vrati informacie a data o vlakoch.
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <returns>vlaky</returns>
@@ -1583,7 +1583,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise informacie a data o vlakoch
+    /// Zapise informacie a data o vlakoch
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="trains">vlaky</param>
@@ -2001,7 +2001,7 @@ internal static class TxtParser
     #region TRACKS
 
     /// <summary>
-    ///     Nainicializuje informacie o nastupistiach a kolajach nachadzajucich sa na stanici
+    /// Nainicializuje informacie o nastupistiach a kolajach nachadzajucich sa na stanici
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     public static List<Track> ReadTracks(string path)
@@ -2072,10 +2072,10 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Kazdy riadok Pozice_A.txt nesie vlastnu kopiu udajov nastupista. Kolaje s rovnakym klucom nastupista musia
-    ///     zdielat jednu instanciu <see cref="Platform" />, inak by sa uprava nastupista (Lokalne nastavenia) prejavila
-    ///     len na jednej z nich. Ked sa udaje medzi riadkami lisia, pouzije sa najcastejsia varianta (pri zhode prva)
-    ///     a do <see cref="LoadWarnings" /> sa zapise upozornenie. Nastupiste s klucom N je vzdy <see cref="Platform.None" />.
+    /// Kazdy riadok Pozice_A.txt nesie vlastnu kopiu udajov nastupista. Kolaje s rovnakym klucom nastupista musia
+    /// zdielat jednu instanciu <see cref="Platform" />, inak by sa uprava nastupista (Lokalne nastavenia) prejavila
+    /// len na jednej z nich. Ked sa udaje medzi riadkami lisia, pouzije sa najcastejsia varianta (pri zhode prva)
+    /// a do <see cref="LoadWarnings" /> sa zapise upozornenie. Nastupiste s klucom N je vzdy <see cref="Platform.None" />.
     /// </summary>
     /// <param name="tracks">nacitane kolaje</param>
     private static void ShareTrackPlatforms(List<Track> tracks)
@@ -2101,7 +2101,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise informacie o nastupistiach a kolajach nachadzajucich sa na stanici/zastavke
+    /// Zapise informacie o nastupistiach a kolajach nachadzajucich sa na stanici/zastavke
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="tracks">kolaje</param>
@@ -2153,7 +2153,7 @@ internal static class TxtParser
     #region OPERATORS
 
     /// <summary>
-    ///     Nainicializuje informacie o dopravcoch
+    /// Nainicializuje informacie o dopravcoch
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     public static List<Operator> ReadOperators(string path)
@@ -2204,7 +2204,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise informacie o dopravcoch
+    /// Zapise informacie o dopravcoch
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="operators">dopravcovia</param>
@@ -2231,7 +2231,7 @@ internal static class TxtParser
     #region CUSTOM_STATIONS
 
     /// <summary>
-    ///     Nainicializuje vsetky pouzivatelom-definovane stanice, ktore sa nenachadzaju v zvukovej banke
+    /// Nainicializuje vsetky pouzivatelom-definovane stanice, ktore sa nenachadzaju v zvukovej banke
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="gvd">informacie o grafikone</param>
@@ -2286,7 +2286,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise vsetky pouzivatelom definovane stanice do STANICE.TXT
+    /// Zapise vsetky pouzivatelom definovane stanice do STANICE.TXT
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="cstations">zoznam definovanych stanic</param>
@@ -2317,17 +2317,17 @@ internal static class TxtParser
     #region ELISMAP
 
     /// <summary>
-    ///     Hodnota v ELISMAP.TXT, ktora znamena "tuto stanicu z ELIS vynechat".
+    /// Hodnota v ELISMAP.TXT, ktora znamena "tuto stanicu z ELIS vynechat".
     /// </summary>
     public const string ELIS_MAP_SKIP = "-";
 
     /// <summary>
-    ///     Nacita priradenie nazvov stanic z programu ELIS k staniciam grafikonu z ELISMAP.TXT.
+    /// Nacita priradenie nazvov stanic z programu ELIS k staniciam grafikonu z ELISMAP.TXT.
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <returns>
-    ///     Slovnik nazov z ELIS -> ID stanice, alebo <see cref="ELIS_MAP_SKIP" /> ak sa ma stanica vynechat.
-    ///     Ak subor neexistuje, vrati prazdny slovnik.
+    /// Slovnik nazov z ELIS -> ID stanice, alebo <see cref="ELIS_MAP_SKIP" /> ak sa ma stanica vynechat.
+    /// Ak subor neexistuje, vrati prazdny slovnik.
     /// </returns>
     public static Dictionary<string, string> ReadElisStationMap(string path)
     {
@@ -2369,7 +2369,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise priradenie nazvov stanic z programu ELIS do ELISMAP.TXT.
+    /// Zapise priradenie nazvov stanic z programu ELIS do ELISMAP.TXT.
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="map">nazov z ELIS -> ID stanice alebo <see cref="ELIS_MAP_SKIP" /></param>
@@ -2400,7 +2400,7 @@ internal static class TxtParser
     #region RAZENI
 
     /// <summary>
-    ///     Nainicializuje informacie o radeniach vlakov
+    /// Nainicializuje informacie o radeniach vlakov
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="sounds">zvuky zo zvukovej banky</param>
@@ -2540,13 +2540,13 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Vytvori novy subor, ktory bude sluzit na ukladanie informacii o radeniach vlakov
+    /// Vytvori novy subor, ktory bude sluzit na ukladanie informacii o radeniach vlakov
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     public static void WriteRazeni1Default(string path) => File.Create(CombinePath(path, FILE_RAZENI1)!).Dispose();
 
     /// <summary>
-    ///     Zapise informacie o radeniach vlakov
+    /// Zapise informacie o radeniach vlakov
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="radenia">radenia vlakov</param>
@@ -2648,7 +2648,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Vytvori novy subor, ktory bude sluzit na ukladanie informacii o radeniach vlakov
+    /// Vytvori novy subor, ktory bude sluzit na ukladanie informacii o radeniach vlakov
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     public static void WriteRazeniDefault(string path) => File.Create(CombinePath(path, FILE_RAZENI)!).Dispose();
@@ -2658,7 +2658,7 @@ internal static class TxtParser
     #region TABLES
 
     /// <summary>
-    ///     Inicializuje definície a vlastnosti tabul.
+    /// Inicializuje definície a vlastnosti tabul.
     /// </summary>
     /// <param name="path">cesta do priecinka s dátami.</param>
     public static (List<TableTabTab>, List<TableCatalog>, List<TablePhysical>, List<TableLogical>) ReadTables(string path)
@@ -2985,7 +2985,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise data o tabuliach do suborov.
+    /// Zapise data o tabuliach do suborov.
     /// </summary>
     /// <param name="path">Cesta do priecinka s datami.</param>
     /// <param name="tabTabs">TabTabs.</param>
@@ -3157,7 +3157,7 @@ internal static class TxtParser
     #region TTEXTS
 
     /// <summary>
-    ///     Nainicializuje texty do tabul
+    /// Nainicializuje texty do tabul
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="trains">vlaky</param>
@@ -3239,7 +3239,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise texty do tabul do suboru
+    /// Zapise texty do tabul do suboru
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="ttexts">texty do tabul</param>
@@ -3293,7 +3293,7 @@ internal static class TxtParser
     #region MODETABS
 
     /// <summary>
-    ///     Vrati typy fontov pre tabule
+    /// Vrati typy fontov pre tabule
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     public static List<TableFont> ReadTableFonts(string path)
@@ -3358,8 +3358,8 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise sekciu ciselnika do ModeTabs.TXT: ak bola v povodnom subore, zapise ju nezmenenu, inak z predvolenych
-    ///     hodnot GVDEditora.
+    /// Zapise sekciu ciselnika do ModeTabs.TXT: ak bola v povodnom subore, zapise ju nezmenenu, inak z predvolenych
+    /// hodnot GVDEditora.
     /// </summary>
     /// <param name="modetabsF">Zapisovany subor.</param>
     /// <param name="area">Nazov sekcie.</param>
@@ -3382,7 +3382,7 @@ internal static class TxtParser
     }
 
     /// <summary>
-    ///     Zapise mody tabuli, typy tabuli, typy obsahov a typy fontov pre tabule do suboru
+    /// Zapise mody tabuli, typy tabuli, typy obsahov a typy fontov pre tabule do suboru
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="fonts">fonty pre tabule</param>

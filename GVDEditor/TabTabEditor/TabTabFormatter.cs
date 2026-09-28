@@ -4,10 +4,10 @@ using ToolsCore.TabTab;
 namespace GVDEditor.TabTabEditor;
 
 /// <summary>
-///     Formatovanie textu sekcie TabTab (tlacidlo Formatovat v editore TabTab).
-///     Meni len to, co INISS pri citani aj tak ignoruje: velkost pismen funkcii a konstant a medzery okolo
-///     <c>&amp;&amp;</c> / <c>||</c> v podmienkach pravidiel <c>#SWITCH</c>, <c>#MERGE</c>, <c>#MERGE2</c> a medzery
-///     okolo ich <c>=</c>. Texty pre tabulu (retazce, jednoduche pravidla, komentare) ostavaju nedotknute.
+/// Formatovanie textu sekcie TabTab (tlacidlo Formatovat v editore TabTab).
+/// Meni len to, co INISS pri citani aj tak ignoruje: velkost pismen funkcii a konstant a medzery okolo
+/// <c>&amp;&amp;</c> / <c>||</c> v podmienkach pravidiel <c>#SWITCH</c>, <c>#MERGE</c>, <c>#MERGE2</c> a medzery
+/// okolo ich <c>=</c>. Texty pre tabulu (retazce, jednoduche pravidla, komentare) ostavaju nedotknute.
 /// </summary>
 internal static class TabTabFormatter
 {
@@ -17,7 +17,7 @@ internal static class TabTabFormatter
     private readonly record struct Edit(int Start, int Length, string Text);
 
     /// <summary>
-    ///     Naformatuje text sekcie.
+    /// Naformatuje text sekcie.
     /// </summary>
     /// <param name="text">Text sekcie.</param>
     /// <returns>Naformatovany text (rovnaky, ak nie je co menit).</returns>
@@ -58,8 +58,8 @@ internal static class TabTabFormatter
     }
 
     /// <summary>
-    ///     Upravi jednu podmienku: mena funkcii a konstant na tvar z tabulky INISSu, jedna medzera okolo spojok.
-    ///     Obsah retazcov a literalov <c>#…#</c> sa preskakuje.
+    /// Upravi jednu podmienku: mena funkcii a konstant na tvar z tabulky INISSu, jedna medzera okolo spojok.
+    /// Obsah retazcov a literalov <c>#…#</c> sa preskakuje.
     /// </summary>
     private static void FormatCondition(string text, TabTabItem item, List<Edit> edits)
     {

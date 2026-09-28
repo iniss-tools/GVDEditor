@@ -10,9 +10,9 @@ using ToolsCore.Tools;
 namespace GVDEditor.DocScreenshots;
 
 /// <summary>
-///     Fiktívna inštalácia INISS pre snímky do dokumentácie – stanica Dolné Mesto na vymyslenej trati.
-///     Súbory zapisuje tými istými zapisovačmi ako GVDEditor pri založení a uložení grafikonu,
-///     takže sú platné bez ručného písania. Stanice majú čísla 99xxxxx, mimo rozsah skutočných staníc.
+/// Fiktívna inštalácia INISS pre snímky do dokumentácie – stanica Dolné Mesto na vymyslenej trati.
+/// Súbory zapisuje tými istými zapisovačmi ako GVDEditor pri založení a uložení grafikonu,
+/// takže sú platné bez ručného písania. Stanice majú čísla 99xxxxx, mimo rozsah skutočných staníc.
 /// </summary>
 internal static class DemoInstallation
 {
@@ -46,7 +46,7 @@ internal static class DemoInstallation
     private static readonly string[] TrainNames =["Brezovan", "Lipovan", "Podhradčan"];
 
     /// <summary>
-    ///     Zostaví inštaláciu do <paramref name="root" /> (existujúci obsah zmaže) a vráti cestu k priečinku grafikonu.
+    /// Zostaví inštaláciu do <paramref name="root" /> (existujúci obsah zmaže) a vráti cestu k priečinku grafikonu.
     /// </summary>
     public static string Build(string root, List<string> log)
     {
@@ -119,7 +119,7 @@ internal static class DemoInstallation
     }
 
     /// <summary>
-    ///     Zvuková banka bez nahrávok - len zoznamy FYZBANK/FYZZVUK, z ktorých GVDEditor berie stanice a názvy vlakov.
+    /// Zvuková banka bez nahrávok - len zoznamy FYZBANK/FYZZVUK, z ktorých GVDEditor berie stanice a názvy vlakov.
     /// </summary>
     private static List<FyzLanguage> BuildSoundBank(string bankDir)
     {
@@ -172,7 +172,7 @@ internal static class DemoInstallation
     }
 
     /// <summary>
-    ///     Rovnaké súbory, aké vytvorí FMain pri prvom otvorení nového grafikonu.
+    /// Rovnaké súbory, aké vytvorí FMain pri prvom otvorení nového grafikonu.
     /// </summary>
     private static void WriteNewGvd(string path, GVDInfo gvd)
     {
@@ -190,7 +190,7 @@ internal static class DemoInstallation
     }
 
     /// <summary>
-    ///     Naplní grafikon koľajami, dopravcami a vlakmi a uloží ho rovnako ako Súbor → Uložiť.
+    /// Naplní grafikon koľajami, dopravcami a vlakmi a uloží ho rovnako ako Súbor → Uložiť.
     /// </summary>
     private static void FillGvd(string path, GVDInfo gvd)
     {
@@ -268,7 +268,7 @@ internal static class DemoInstallation
     }
 
     /// <summary>
-    ///     Radenie Ex 521: v pracovné dni šesť vozňov, cez víkend osem, hlási sa pri príchode a zastavení.
+    /// Radenie Ex 521: v pracovné dni šesť vozňov, cez víkend osem, hlási sa pri príchode a zastavení.
     /// </summary>
     private static List<Radenie> DemoRadenia()
     {
@@ -347,7 +347,7 @@ internal static class DemoInstallation
     private static (string ID, string Name) Station(string id) => StationList.Concat(CustomStationList).First(s => s.Id == id);
 
     /// <summary>
-    ///     Načíta grafikon späť tými istými čítačmi ako GVDEditor a zapíše varovania do logu.
+    /// Načíta grafikon späť tými istými čítačmi ako GVDEditor a zapíše varovania do logu.
     /// </summary>
     private static void Verify(string path, GVDInfo gvd, List<string> log)
     {

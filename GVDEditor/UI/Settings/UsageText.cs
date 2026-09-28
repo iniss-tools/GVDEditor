@@ -4,14 +4,14 @@ using GVDEditor.Properties;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Text „Pouziva sa v“ pod udajmi tabule: najviac niekolko riadkov, zvysok sa zhrnie poctom.
+/// Text „Pouziva sa v“ pod udajmi tabule: najviac niekolko riadkov, zvysok sa zhrnie poctom.
 /// </summary>
 internal static class UsageText
 {
     private const int Shown = 6;
 
     /// <summary>
-    ///     Zostavi text z miest pouzitia.
+    /// Zostavi text z miest pouzitia.
     /// </summary>
     /// <param name="usage">miesta, kde sa polozka pouziva</param>
     /// <param name="blocksDelete">ci pouzita polozka nejde odstranit (pripise sa vysvetlenie)</param>

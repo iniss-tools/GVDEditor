@@ -5,8 +5,8 @@ using ToolsCore.TabTab;
 namespace GVDEditor.TabTabEditor;
 
 /// <summary>
-///     Prevadzkovy stav vlaku, ktory grafikon nepozna a nahlad si ho musi nasimulovat: meskania,
-///     stav, vyluky, odklon a "teraz".
+/// Prevadzkovy stav vlaku, ktory grafikon nepozna a nahlad si ho musi nasimulovat: meskania,
+/// stav, vyluky, odklon a "teraz".
 /// </summary>
 internal sealed record TrainRuntime
 {
@@ -21,7 +21,7 @@ internal sealed record TrainRuntime
 }
 
 /// <summary>
-///     <see cref="IExprTrainContext"/> nad vlakom GVDEditora: udaje z grafikonu + simulovany prevadzkovy stav.
+/// <see cref="IExprTrainContext"/> nad vlakom GVDEditora: udaje z grafikonu + simulovany prevadzkovy stav.
 /// </summary>
 internal sealed class GvdTrainContext : IExprTrainContext
 {
@@ -121,7 +121,7 @@ internal sealed class GvdTrainContext : IExprTrainContext
     private static int StationId(Station? s) => s is not null && int.TryParse(s.ID, out var id) ? id : 0;
 
     /// <summary>
-    ///     Hodnota, ktoru stlpec pocita sam (TYPE_ITEMS_IDX) - priblizna napodobenina INISSu pre nahlad.
+    /// Hodnota, ktoru stlpec pocita sam (TYPE_ITEMS_IDX) - priblizna napodobenina INISSu pre nahlad.
     /// </summary>
     public TabTabValue OwnValue(TableItem item)
     {

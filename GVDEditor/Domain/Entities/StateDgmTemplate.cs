@@ -1,7 +1,7 @@
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Predloha stavoveho diagramu (StateDgm.txt), ktora sa zapise do noveho grafikonu.
+/// Predloha stavoveho diagramu (StateDgm.txt), ktora sa zapise do noveho grafikonu.
 /// </summary>
 public enum StateDgmTemplate
 {

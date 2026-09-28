@@ -5,8 +5,8 @@ using GVDEditor.Domain.Calendar;
 namespace GVDEditor.Tests.Domain.Calendar;
 
 /// <summary>
-///     Zapis datumoveho obmedzenia (priklady z dokumentacie GVDEditora) nad grafikonom 13.12.2026 - 11.12.2027:
-///     pocet dni, v ktore vlak ide, a text, na ktory GVDEditor zapis upravi.
+/// Zapis datumoveho obmedzenia (priklady z dokumentacie GVDEditora) nad grafikonom 13.12.2026 - 11.12.2027:
+/// pocet dni, v ktore vlak ide, a text, na ktory GVDEditor zapis upravi.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

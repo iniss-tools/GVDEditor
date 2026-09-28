@@ -8,8 +8,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.Tests.Formats;
 
 /// <summary>
-///     Odkazy na zvuky banky: INISS hlada skupinu aj zvuk podla klucov (nie nazvov), bez ohladu na velkost pismen.
-///     Testovacia banka ma nazvy odlisne od klucov, aby sa zamena prejavila.
+/// Odkazy na zvuky banky: INISS hlada skupinu aj zvuk podla klucov (nie nazvov), bez ohladu na velkost pismen.
+/// Testovacia banka ma nazvy odlisne od klucov, aby sa zamena prejavila.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

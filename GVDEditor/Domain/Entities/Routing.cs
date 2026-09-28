@@ -4,7 +4,7 @@ using ToolsCore;
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Trieda reprezentujúca smerovanie vlaku
+/// Trieda reprezentujúca smerovanie vlaku
 /// </summary>
 public sealed class Routing
 {
@@ -17,27 +17,27 @@ public sealed class Routing
     }
 
     /// <summary>
-    ///     Názov smerovania
+    /// Názov smerovania
     /// </summary>
     public string Name { get; }
 
     /// <summary>
-    ///     Symbol smerovania ako text
+    /// Symbol smerovania ako text
     /// </summary>
     public string Symbol { get; }
 
     /// <summary>
-    ///     Označenie smerovania ako znak
+    /// Označenie smerovania ako znak
     /// </summary>
     public string CharSymbol { get; }
 
     /// <summary>
-    ///     Symbol smerovania ako obrázok
+    /// Symbol smerovania ako obrázok
     /// </summary>
     public Bitmap Image { get; }
 
     /// <summary>
-    ///     Konvertuje označenie smerovania na objekt
+    /// Konvertuje označenie smerovania na objekt
     /// </summary>
     /// <param name="s">označenie smerovania</param>
     /// <returns><see cref="Routing" />, ak nenájde zhodu, vráti <see langword="null" /></returns>
@@ -53,7 +53,7 @@ public sealed class Routing
     }
 
     /// <summary>
-    ///     Konvertuje označenie smerovania na objekt a vráti, či sa operácia podarila
+    /// Konvertuje označenie smerovania na objekt a vráti, či sa operácia podarila
     /// </summary>
     /// <param name="s">označenie smerovania</param>
     /// <param name="routing">výsledné smerovanie</param>
@@ -83,17 +83,17 @@ public sealed class Routing
     #region VALUES
 
     /// <summary>
-    ///     Vlak končí v stanici
+    /// Vlak končí v stanici
     /// </summary>
     public static readonly Routing Konciaci = new("Končiaci", "->|", GlobalResources.konecna_st, "K");
 
     /// <summary>
-    ///     Vlak prechádza stanicou
+    /// Vlak prechádza stanicou
     /// </summary>
     public static readonly Routing Prechadzajuci = new("Prechádzajúci", "<->", GlobalResources.prechadza_st, "P");
 
     /// <summary>
-    ///     Vlak vychádza zo stanice
+    /// Vlak vychádza zo stanice
     /// </summary>
     public static readonly Routing Vychadzajuci = new("Vychadzajúci", "|->", GlobalResources.vychodzia_st, "V");
 

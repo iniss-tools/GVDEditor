@@ -11,7 +11,7 @@ using TableFileReader = ToolsCore.Tools.TableFileReader;
 namespace GVDEditor.UI.Import;
 
 /// <summary>
-///     Dialog - Import dát zo súborov resp. schránky.
+/// Dialog - Import dát zo súborov resp. schránky.
 /// </summary>
 public partial class FImportData : Form
 {
@@ -25,18 +25,18 @@ public partial class FImportData : Form
     private string? _lastCsvPath;
 
     /// <summary>
-    ///     Naimportovane vlaky; do grafikonu ich prida hlavne okno.
+    /// Naimportovane vlaky; do grafikonu ich prida hlavne okno.
     /// </summary>
     public List<Train> ImportedTrains { get; private set; } = new();
 
     /// <summary>
-    ///     Ci sa maju existujuce vlaky pred pridanim naimportovanych odstranit.
+    /// Ci sa maju existujuce vlaky pred pridanim naimportovanych odstranit.
     /// </summary>
     public bool ReplaceTrains { get; private set; }
 
 
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FGlobalSettings"/>.
+    /// Vytvori novy formular typu <see cref="FGlobalSettings"/>.
     /// </summary>
     /// <param name="gvd">aktulne vybrany grafikon.</param>
     public FImportData(GVDInfo gvd)
@@ -396,8 +396,8 @@ public partial class FImportData : Form
     }
 
     /// <summary>
-    ///     Rozdeli trasu na stanice pred touto stanicou (zo smeru) a za nou (do smeru) a nastavi, v ktorom hlaseni
-    ///     sa stanice hlasia.
+    /// Rozdeli trasu na stanice pred touto stanicou (zo smeru) a za nou (do smeru) a nastavi, v ktorom hlaseni
+    /// sa stanice hlasia.
     /// </summary>
     /// <param name="allStations">vsetky stanice trasy vratane tejto stanice</param>
     /// <param name="homeId">cislo stanice grafikonu</param>
@@ -471,7 +471,7 @@ public partial class FImportData : Form
     }
 
     /// <summary>
-    ///     Oddelovac buniek podla prveho riadku: tabulator (kopia z Excelu), inak bodkociarka, inak ciarka.
+    /// Oddelovac buniek podla prveho riadku: tabulator (kopia z Excelu), inak bodkociarka, inak ciarka.
     /// </summary>
     internal static char DetectSeparator(string text)
     {

@@ -14,8 +14,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.EditTrain;
 
 /// <summary>
-///     Dialog - Uprava/pridanie vlaku. Stranky v strome menia koncept vlaku (<see cref="TrainDraft" />), okno ho
-///     po kazdej zmene skontroluje; vlak a radenia v grafikone sa zmenia az tlacidlom OK.
+/// Dialog - Uprava/pridanie vlaku. Stranky v strome menia koncept vlaku (<see cref="TrainDraft" />), okno ho
+/// po kazdej zmene skontroluje; vlak a radenia v grafikone sa zmenia az tlacidlom OK.
 /// </summary>
 public partial class FEditTrain : Form
 {
@@ -48,17 +48,17 @@ public partial class FEditTrain : Form
     private bool initialization;
 
     /// <summary>
-    ///     Index riadku na pracovnej ploche.
+    /// Index riadku na pracovnej ploche.
     /// </summary>
     public int Row;
 
     /// <summary>
-    ///     Vlak, s ktorym tento dialog pracuje.
+    /// Vlak, s ktorym tento dialog pracuje.
     /// </summary>
     public Train? ThisTrain;
 
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FEditTrain"/>.
+    /// Vytvori novy formular typu <see cref="FEditTrain"/>.
     /// </summary>
     /// <param name="train">Upravovany vlak.</param>
     /// <param name="row">Index riadku na prac. ploche.</param>
@@ -148,7 +148,7 @@ public partial class FEditTrain : Form
     }
 
     /// <summary>
-    ///     Uprava textu Formu
+    /// Uprava textu Formu
     /// </summary>
     [AllowNull]
     public sealed override string Text
@@ -217,8 +217,8 @@ public partial class FEditTrain : Form
     }
 
     /// <summary>
-    ///     Skontroluje koncept a chyby ukaze na strankach, v strome a v spodnom riadku okna. Po zmene smerovania
-    ///     najprv z dodatkov odstrani hlasenia, ktore vlak uz nema.
+    /// Skontroluje koncept a chyby ukaze na strankach, v strome a v spodnom riadku okna. Po zmene smerovania
+    /// najprv z dodatkov odstrani hlasenia, ktore vlak uz nema.
     /// </summary>
     private void Recheck()
     {
@@ -249,7 +249,7 @@ public partial class FEditTrain : Form
     }
 
     /// <summary>
-    ///     Stranka, na ktorej je pole vlaku.
+    /// Stranka, na ktorej je pole vlaku.
     /// </summary>
     private ExOptionsPanel PanelOf(TrainRules.Field field) => field switch
     {
@@ -262,7 +262,7 @@ public partial class FEditTrain : Form
     };
 
     /// <summary>
-    ///     Prepne na stranku s polom, ku ktoremu sa chyba viaze, a da mu fokus.
+    /// Prepne na stranku s polom, ku ktoremu sa chyba viaze, a da mu fokus.
     /// </summary>
     private void FocusProblem(TrainRules.Problem problem)
     {
@@ -292,8 +292,8 @@ public partial class FEditTrain : Form
     }
 
     /// <summary>
-    ///     Radenie patri cislu vlaku: ak ma rovnake cislo iny vlak s radenim, okno prevezme jeho radenie a na strankach
-    ///     Vlak a Radenie to oznami pruhom; ak uz nie, vrati radenie vlaku, s ktorym sa okno otvorilo.
+    /// Radenie patri cislu vlaku: ak ma rovnake cislo iny vlak s radenim, okno prevezme jeho radenie a na strankach
+    /// Vlak a Radenie to oznami pruhom; ak uz nie, vrati radenie vlaku, s ktorym sa okno otvorilo.
     /// </summary>
     private void SyncRadeniaWithNumber()
     {
@@ -326,7 +326,7 @@ public partial class FEditTrain : Form
     }
 
     /// <summary>
-    ///     Nahlad Kalendara akcii vlaku pre upravovany vlak podla stavoveho diagramu grafikonu (subor sa cita z disku).
+    /// Nahlad Kalendara akcii vlaku pre upravovany vlak podla stavoveho diagramu grafikonu (subor sa cita z disku).
     /// </summary>
     private void OpenCalendar()
     {

@@ -1,77 +1,77 @@
 ﻿namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Informácie o grafikone
+/// Informácie o grafikone
 /// </summary>
 public sealed record GVDInfo
 {
     /// <summary>
-    ///     Kategória
+    /// Kategória
     /// </summary>
     public int Category { get; set; }
 
     /// <summary>
-    ///     Podkategória
+    /// Podkategória
     /// </summary>
     public int Subcat { get; set; }
 
     /// <summary>
-    ///     Reprezentuje stanicu, pre ktorú bol grafikon robený
+    /// Reprezentuje stanicu, pre ktorú bol grafikon robený
     /// </summary>
     public Station ThisStation { get; set; } = null!;
 
     /// <summary>
-    ///     Počet vlakov
+    /// Počet vlakov
     /// </summary>
     public int TrainCount { get; set; }
 
     /// <summary>
-    ///     Začiatok platnosti rozvrhu vlakov
+    /// Začiatok platnosti rozvrhu vlakov
     /// </summary>
     public DateTime StartValidTimeTable { get; set; }
 
     /// <summary>
-    ///     Koniec platnosti rozvrhu vlakov
+    /// Koniec platnosti rozvrhu vlakov
     /// </summary>
     public DateTime EndValidTimeTable { get; set; }
 
     /// <summary>
-    ///     Začiatok platnosti dát
+    /// Začiatok platnosti dát
     /// </summary>
     public DateTime StartValidData { get; set; }
 
     /// <summary>
-    ///     Koniec platnosti dát
+    /// Koniec platnosti dát
     /// </summary>
     public DateTime EndValidData { get; set; }
 
     /// <summary>
-    ///     Dátum vytvorenia/úpravy grafikonu
+    /// Dátum vytvorenia/úpravy grafikonu
     /// </summary>
     public DateTime CreateData { get; set; }
 
     /// <summary>
-    ///     TTIndex
+    /// TTIndex
     /// </summary>
     public int TTIndex { get; set; }
 
     /// <summary>
-    ///     VLIndex
+    /// VLIndex
     /// </summary>
     public int VLIndex { get; set; }
 
     /// <summary>
-    ///     STIndex
+    /// STIndex
     /// </summary>
     public int STIndex { get; set; }
 
     /// <summary>
-    ///     IsRegionText
+    /// IsRegionText
     /// </summary>
     public bool IsRegionText { get; set; }
 
     /// <summary>
-    ///     OnlyCityVLIndex
+    /// OnlyCityVLIndex
     /// </summary>
     public int OnlyCityVLIndex { get; set; }
 }

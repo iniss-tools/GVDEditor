@@ -9,14 +9,14 @@ using ToolsCore.StateDgm;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Stavovy diagram v okne Lokalne nastavenia - stav suboru stavoveho diagramu a otvorenie jeho editora.
+/// Stranka Stavovy diagram v okne Lokalne nastavenia - stav suboru stavoveho diagramu a otvorenie jeho editora.
 /// </summary>
 public partial class StateDgmPage : UserControl
 {
     private GVDDirectory _dir = null!;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public StateDgmPage()
     {
@@ -24,7 +24,7 @@ public partial class StateDgmPage : UserControl
     }
 
     /// <summary>
-    ///     Zobrazi stav stavoveho diagramu grafikonu.
+    /// Zobrazi stav stavoveho diagramu grafikonu.
     /// </summary>
     public void LoadData(GVDDirectory dir)
     {
@@ -33,7 +33,7 @@ public partial class StateDgmPage : UserControl
     }
 
     /// <summary>
-    ///     Otvori editor stavoveho diagramu a po jeho zatvoreni obnovi stav.
+    /// Otvori editor stavoveho diagramu a po jeho zatvoreni obnovi stav.
     /// </summary>
     public void OpenEditor()
     {

@@ -3,12 +3,12 @@
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Reprezentuje zaznam tabule.
+/// Reprezentuje zaznam tabule.
 /// </summary>
 public sealed class TableRecord : IEnumerable
 {
     /// <summary>
-    ///     Pozicie zaznamu tabule.
+    /// Pozicie zaznamu tabule.
     /// </summary>
     public List<TablePosition> Positions { get; set; } = new();
 

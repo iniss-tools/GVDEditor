@@ -3,12 +3,12 @@
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Definuje typ, mod zobrazenia a pocet riadkov na zaznam katalogovej tabuli.
+/// Definuje typ, mod zobrazenia a pocet riadkov na zaznam katalogovej tabuli.
 /// </summary>
 public sealed class TableViewTypeTab : IEnumerable
 {
     /// <summary>
-    ///     Konstruktor
+    /// Konstruktor
     /// </summary>
     public TableViewTypeTab()
     {
@@ -16,17 +16,17 @@ public sealed class TableViewTypeTab : IEnumerable
     }
 
     /// <summary>
-    ///     Typ zobrazenia.
+    /// Typ zobrazenia.
     /// </summary>
     public TableViewType ViewType { get; set; } = null!;
 
     /// <summary>
-    ///     Pocet riadkov, kolko ma 1 zaznam na tabuli.
+    /// Pocet riadkov, kolko ma 1 zaznam na tabuli.
     /// </summary>
     public string CountLinesRecord { get; set; } = null!;
 
     /// <summary>
-    ///     Mody zobrazenia zaznamu.
+    /// Mody zobrazenia zaznamu.
     /// </summary>
     public List<TableTypeModeItem> TypeModeItems { get; }
 

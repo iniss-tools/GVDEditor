@@ -6,9 +6,9 @@ using GVDEditor.Properties;
 namespace GVDEditor.UI.Controls;
 
 /// <summary>
-///     Vyber pisma tabule podla vzhladu: rez, farba a efekty. Cislo pisma pre tabule ELEN z nich zlozi
-///     <see cref="ElenFontCode.Compose" />; bity bez ovladaca (napr. 0x40) ponecha. Pri vyrobcovi, ktory cislo
-///     nekoduje ako ELEN, sa cislo zadava rucne.
+/// Vyber pisma tabule podla vzhladu: rez, farba a efekty. Cislo pisma pre tabule ELEN z nich zlozi
+/// <see cref="ElenFontCode.Compose" />; bity bez ovladaca (napr. 0x40) ponecha. Pri vyrobcovi, ktory cislo
+/// nekoduje ako ELEN, sa cislo zadava rucne.
 /// </summary>
 public partial class TableFontPicker : UserControl
 {
@@ -23,7 +23,7 @@ public partial class TableFontPicker : UserControl
     private bool _updating;
 
     /// <summary>
-    ///     Vytvori vyber pisma (predvolene tenke pismo bez farby).
+    /// Vytvori vyber pisma (predvolene tenke pismo bez farby).
     /// </summary>
     public TableFontPicker()
     {
@@ -34,12 +34,12 @@ public partial class TableFontPicker : UserControl
     }
 
     /// <summary>
-    ///     Pouzivatel zmenil cislo pisma.
+    /// Pouzivatel zmenil cislo pisma.
     /// </summary>
     public event EventHandler? ValueChanged;
 
     /// <summary>
-    ///     Cislo pisma.
+    /// Cislo pisma.
     /// </summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -55,8 +55,8 @@ public partial class TableFontPicker : UserControl
     }
 
     /// <summary>
-    ///     Vyrobca tabule - urcuje, ci sa cislo sklada ako ELEN a kolko rozsirenych pisiem je k dispozicii.
-    ///     <see langword="null" /> = zoznam pisiem bez tabule (predpoklada sa ELEN).
+    /// Vyrobca tabule - urcuje, ci sa cislo sklada ako ELEN a kolko rozsirenych pisiem je k dispozicii.
+    /// <see langword="null" /> = zoznam pisiem bez tabule (predpoklada sa ELEN).
     /// </summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -73,8 +73,8 @@ public partial class TableFontPicker : UserControl
     private bool IsElen => ElenFontCode.AppliesTo(_manufacturer);
 
     /// <summary>
-    ///     Sirka podla rodica (riadky volieb sa zalomia, nahlad sa roztiahne), vyska podla obsahu. Bez obmedzenia
-    ///     sirky (napr. dialog s automatickou velkostou) sa volby rozlozia do jedneho riadka.
+    /// Sirka podla rodica (riadky volieb sa zalomia, nahlad sa roztiahne), vyska podla obsahu. Bez obmedzenia
+    /// sirky (napr. dialog s automatickou velkostou) sa volby rozlozia do jedneho riadka.
     /// </summary>
     public override Size GetPreferredSize(Size proposedSize)
     {
@@ -84,7 +84,7 @@ public partial class TableFontPicker : UserControl
     }
 
     /// <summary>
-    ///     Sirka, pri ktorej sa ziadny riadok volieb nezalomi.
+    /// Sirka, pri ktorej sa ziadny riadok volieb nezalomi.
     /// </summary>
     private int UnwrappedWidth()
     {
@@ -149,7 +149,7 @@ public partial class TableFontPicker : UserControl
     }
 
     /// <summary>
-    ///     Nastavi ovladace podla cisla pisma.
+    /// Nastavi ovladace podla cisla pisma.
     /// </summary>
     private void Sync(bool updateNumber)
     {

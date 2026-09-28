@@ -12,9 +12,9 @@ using Field = GVDEditor.Domain.Rules.TableTextRules.Field;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Texty na tabuliach v okne Lokalne nastavenia - zoznam typov textov a udaje vybraneho textu
-///     (realizacie, texty vlakov) s upravou priamo v poliach a tabulkach. Zmeny idu rovno do
-///     <see cref="GlobData.TableTexts" />, Zrusit okna ich vrati.
+/// Stranka Texty na tabuliach v okne Lokalne nastavenia - zoznam typov textov a udaje vybraneho textu
+/// (realizacie, texty vlakov) s upravou priamo v poliach a tabulkach. Zmeny idu rovno do
+/// <see cref="GlobData.TableTexts" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class TableTextsPage : UserControl, ISettingsPage
 {
@@ -30,7 +30,7 @@ public partial class TableTextsPage : UserControl, ISettingsPage
     private Color _hintColor;
 
     /// <summary>
-    ///     Polozka rozbalovacieho zoznamu v bunke - objekt a text pre obsluhu.
+    /// Polozka rozbalovacieho zoznamu v bunke - objekt a text pre obsluhu.
     /// </summary>
     private sealed record Choice(object Ref, string Text)
     {
@@ -38,7 +38,7 @@ public partial class TableTextsPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public TableTextsPage()
     {
@@ -79,7 +79,7 @@ public partial class TableTextsPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Naplni stranku - volat az po nastaveni temy okna.
+    /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="gvd">grafikon - jeho stanica pri predvyplneni textov vlakov</param>
     internal void LoadData(GVDInfo gvd)
@@ -102,7 +102,7 @@ public partial class TableTextsPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Vyberie text (napr. pri oprave z analyzy grafikonu); pred naplnenim stranky az po nom.
+    /// Vyberie text (napr. pri oprave z analyzy grafikonu); pred naplnenim stranky az po nom.
     /// </summary>
     public void SelectText(TableText text)
     {
@@ -184,8 +184,8 @@ public partial class TableTextsPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Ponuka tabul a stlpcov v riadku realizacie; tabula alebo stlpec, ktory uz neexistuje, sa ponukne tiez,
-    ///     aby ho bunka vedela zobrazit (chybu ukaze kontrola).
+    /// Ponuka tabul a stlpcov v riadku realizacie; tabula alebo stlpec, ktory uz neexistuje, sa ponukne tiez,
+    /// aby ho bunka vedela zobrazit (chybu ukaze kontrola).
     /// </summary>
     private void SetRealizationCells(DataGridViewRow row, TableTextRealization realization)
     {

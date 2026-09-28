@@ -5,7 +5,7 @@ using GVDEditor.Formats;
 namespace GVDEditor.Tests.Formats;
 
 /// <summary>
-///     Premenovanie priecinka grafikonu (Lokalne nastavenia → Grafikon → Zmenit, vykona sa az tlacidlom Ulozit).
+/// Premenovanie priecinka grafikonu (Lokalne nastavenia → Grafikon → Zmenit, vykona sa az tlacidlom Ulozit).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

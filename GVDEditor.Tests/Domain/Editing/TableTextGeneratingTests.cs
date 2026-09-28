@@ -5,8 +5,8 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Tests.Domain.Editing;
 
 /// <summary>
-///     Generovanie textov na tabuliach (TTexts.txt) – spolocne pre stranku Texty na tabuliach aj automaticke generovanie pri
-///     ukladani grafikonu (FMain).
+/// Generovanie textov na tabuliach (TTexts.txt) – spolocne pre stranku Texty na tabuliach aj automaticke generovanie pri
+/// ukladani grafikonu (FMain).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

@@ -5,7 +5,7 @@ using GVDEditor.Domain.Rules;
 namespace GVDEditor.Tests.Domain.Rules;
 
 /// <summary>
-///     Kontrola fyzickych tabul a textov na tabuliach (Lokalne nastavenia → Tabule).
+/// Kontrola fyzickych tabul a textov na tabuliach (Lokalne nastavenia → Tabule).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

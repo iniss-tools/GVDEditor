@@ -5,7 +5,7 @@ using GVDEditor.Formats;
 namespace GVDEditor.Tests.Formats;
 
 /// <summary>
-///     Import grafikonu (Subor → Importovat → Grafikon…) - kontroly pred skopirovanim priecinka do DATA.
+/// Import grafikonu (Subor → Importovat → Grafikon…) - kontroly pred skopirovanim priecinka do DATA.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

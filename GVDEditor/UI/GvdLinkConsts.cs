@@ -1,7 +1,7 @@
 ﻿namespace GVDEditor.UI;
 
 /// <summary>
-///     Odkazy na stránku s návodmi a informáciami o programe
+/// Odkazy na stránku s návodmi a informáciami o programe
 /// </summary>
 internal static class GvdLinkConsts
 {

@@ -7,8 +7,8 @@ using GVDEditor.Properties;
 namespace GVDEditor.UI.Controls;
 
 /// <summary>
-///     Vyber pisma tabule v rozbalovacom zozname: pomenovane pisma zo zoznamu Pisma, pripadne predvolene pismo
-///     stlpca a polozka „Ine pismo…“, ktora otvori vyber podla vzhladu. Nahradza zadavanie cisla pisma.
+/// Vyber pisma tabule v rozbalovacom zozname: pomenovane pisma zo zoznamu Pisma, pripadne predvolene pismo
+/// stlpca a polozka „Ine pismo…“, ktora otvori vyber podla vzhladu. Nahradza zadavanie cisla pisma.
 /// </summary>
 internal sealed class TableFontChoice
 {
@@ -21,7 +21,7 @@ internal sealed class TableFontChoice
     private int _value;
 
     /// <summary>
-    ///     Polozka zoznamu - cislo pisma a text pre obsluhu.
+    /// Polozka zoznamu - cislo pisma a text pre obsluhu.
     /// </summary>
     private sealed record Item(int Id, string Text)
     {
@@ -29,7 +29,7 @@ internal sealed class TableFontChoice
     }
 
     /// <summary>
-    ///     Pripoji vyber k rozbalovaciemu zoznamu.
+    /// Pripoji vyber k rozbalovaciemu zoznamu.
     /// </summary>
     /// <param name="combo">rozbalovaci zoznam v okne</param>
     /// <param name="tip">popisok, do ktoreho sa zapise vyznam cisla</param>
@@ -46,12 +46,12 @@ internal sealed class TableFontChoice
     }
 
     /// <summary>
-    ///     Pouzivatel zmenil pismo.
+    /// Pouzivatel zmenil pismo.
     /// </summary>
     public event EventHandler? ValueChanged;
 
     /// <summary>
-    ///     Cislo pisma.
+    /// Cislo pisma.
     /// </summary>
     public int Value
     {
@@ -64,7 +64,7 @@ internal sealed class TableFontChoice
     }
 
     /// <summary>
-    ///     Vyrobca tabule - urcuje vyznam cisla a ponuku vo vybere podla vzhladu.
+    /// Vyrobca tabule - urcuje vyznam cisla a ponuku vo vybere podla vzhladu.
     /// </summary>
     public TableManufacturer? Manufacturer
     {
@@ -77,7 +77,7 @@ internal sealed class TableFontChoice
     }
 
     /// <summary>
-    ///     Text pisma pre obsluhu tak, ako ho ponuka vyber - napr. v tabulke bez rozbalovacieho zoznamu.
+    /// Text pisma pre obsluhu tak, ako ho ponuka vyber - napr. v tabulke bez rozbalovacieho zoznamu.
     /// </summary>
     public static string Describe(int id)
     {

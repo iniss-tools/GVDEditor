@@ -6,12 +6,12 @@ using GVDEditor.Properties;
 namespace GVDEditor.UI.EditTrain;
 
 /// <summary>
-///     Text chyb a upozorneni pod poliami stranky okna vlaku.
+/// Text chyb a upozorneni pod poliami stranky okna vlaku.
 /// </summary>
 internal static class TrainPageHint
 {
     /// <summary>
-    ///     Vypise chyby (pred upozorneniami) do <paramref name="hint" />; chyby cervenou, samotne upozornenia oranzovou.
+    /// Vypise chyby (pred upozorneniami) do <paramref name="hint" />; chyby cervenou, samotne upozornenia oranzovou.
     /// </summary>
     /// <param name="hint">popis pod poliami stranky</param>
     /// <param name="problems">chyby a upozornenia stranky</param>
@@ -26,7 +26,7 @@ internal static class TrainPageHint
     }
 
     /// <summary>
-    ///     Farba upozornenia citatelna na pozadi prvku (svetla aj tmava tema).
+    /// Farba upozornenia citatelna na pozadi prvku (svetla aj tmava tema).
     /// </summary>
     public static Color WarningColor(Control control) =>
         control.BackColor.GetBrightness() < 0.5f ? Color.FromArgb(255, 190, 90) : Color.FromArgb(166, 86, 0);

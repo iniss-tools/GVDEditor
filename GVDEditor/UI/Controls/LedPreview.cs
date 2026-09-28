@@ -5,8 +5,8 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.UI.Controls;
 
 /// <summary>
-///     Nahlad ukazkoveho textu na bodovej tabuli ELEN podla cisla pisma - farba, rez, blikanie a vysoke cislice.
-///     Tabula ma 16 riadkov bodov; velkost bodu sa riadi vyskou prvku.
+/// Nahlad ukazkoveho textu na bodovej tabuli ELEN podla cisla pisma - farba, rez, blikanie a vysoke cislice.
+/// Tabula ma 16 riadkov bodov; velkost bodu sa riadi vyskou prvku.
 /// </summary>
 public sealed class LedPreview : Control
 {
@@ -24,7 +24,7 @@ public sealed class LedPreview : Control
     private bool _blinkOff;
 
     /// <summary>
-    ///     Vytvori nahlad.
+    /// Vytvori nahlad.
     /// </summary>
     public LedPreview()
     {
@@ -38,12 +38,12 @@ public sealed class LedPreview : Control
     }
 
     /// <summary>
-    ///     Farba svietiaceho bodu pre farbu pisma ELEN (0 bez farby, 1 cervena, 2 zelena, 3 zlta).
+    /// Farba svietiaceho bodu pre farbu pisma ELEN (0 bez farby, 1 cervena, 2 zelena, 3 zlta).
     /// </summary>
     public static Color LitColor(int color) => Lit[Math.Clamp(color, 0, Lit.Length - 1)];
 
     /// <summary>
-    ///     Zobrazovane cislo pisma.
+    /// Zobrazovane cislo pisma.
     /// </summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -99,7 +99,7 @@ public sealed class LedPreview : Control
     }
 
     /// <summary>
-    ///     Ukazkovy text vykresleny ciernobielo po bodoch tabule.
+    /// Ukazkovy text vykresleny ciernobielo po bodoch tabule.
     /// </summary>
     private Bitmap RenderText(int cols)
     {

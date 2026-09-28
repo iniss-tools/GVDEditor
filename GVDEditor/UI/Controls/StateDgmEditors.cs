@@ -10,7 +10,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Controls;
 
 /// <summary>
-///     Spolocny kontext editorov stavoveho diagramu - symboly pre kontrolu vyrazov a typy hlaseni z Categori.txt.
+/// Spolocny kontext editorov stavoveho diagramu - symboly pre kontrolu vyrazov a typy hlaseni z Categori.txt.
 /// </summary>
 internal static class SdEditorContext
 {
@@ -63,7 +63,7 @@ internal static class SdEditorContext
 }
 
 /// <summary>
-///     Zaklad editora vlastnosti: tabulka popis | ovladaci prvok, udalost <see cref="Changed" /> pri kazdej zmene.
+/// Zaklad editora vlastnosti: tabulka popis | ovladaci prvok, udalost <see cref="Changed" /> pri kazdej zmene.
 /// </summary>
 internal abstract class SdEditorBase : UserControl
 {
@@ -117,9 +117,9 @@ internal abstract class SdEditorBase : UserControl
     }
 
     /// <summary>
-    ///     Prenesie novy kluc prvku do odkazov (vola sa pri kazdej zmene kluca). Ked sa prenos odmietne - napr. medzikrok
-    ///     pisania sa zhoduje s klucom ineho prvku - odkazy ostanu na poslednom prenesenom kluci a presunu sa pri dalsej
-    ///     zmene; ak kluc ostane kolidujuci, duplicitu ohlasi kontrola diagramu.
+    /// Prenesie novy kluc prvku do odkazov (vola sa pri kazdej zmene kluca). Ked sa prenos odmietne - napr. medzikrok
+    /// pisania sa zhoduje s klucom ineho prvku - odkazy ostanu na poslednom prenesenom kluci a presunu sa pri dalsej
+    /// zmene; ak kluc ostane kolidujuci, duplicitu ohlasi kontrola diagramu.
     /// </summary>
     protected void RenameReferences(StateDgmElement element, string newKey)
     {
@@ -129,8 +129,8 @@ internal abstract class SdEditorBase : UserControl
     }
 
     /// <summary>
-    ///     Koliesko mysi nad comboboxom / ciselnym polom posuva cely editor, nie hodnotu pola (hodnota sa meni len
-    ///     klavesnicou alebo klikom) - inak by sa pri rolovani panela nechtiac prepisovali hodnoty.
+    /// Koliesko mysi nad comboboxom / ciselnym polom posuva cely editor, nie hodnotu pola (hodnota sa meni len
+    /// klavesnicou alebo klikom) - inak by sa pri rolovani panela nechtiac prepisovali hodnoty.
     /// </summary>
     private void HookWheel(Control c)
     {
@@ -235,7 +235,7 @@ internal abstract class SdEditorBase : UserControl
 }
 
 /// <summary>
-///     Hodnota, ktoru INISS cita ako cislo aj ako vyraz: vyber zo zoznamu / cislo, alebo po prepnuti [ƒ] volny vyraz.
+/// Hodnota, ktoru INISS cita ako cislo aj ako vyraz: vyber zo zoznamu / cislo, alebo po prepnuti [ƒ] volny vyraz.
 /// </summary>
 internal sealed class SdDynamicField : UserControl
 {
@@ -398,7 +398,7 @@ internal sealed class SdDynamicField : UserControl
 }
 
 /// <summary>
-///     Editor hlavicky diagramu - popis suboru a vyraz IndCat.
+/// Editor hlavicky diagramu - popis suboru a vyraz IndCat.
 /// </summary>
 internal sealed class SdHeaderEditor : SdEditorBase
 {
@@ -485,7 +485,7 @@ internal sealed class SdHeaderEditor : SdEditorBase
 }
 
 /// <summary>
-///     Editor kategorie vlaku.
+/// Editor kategorie vlaku.
 /// </summary>
 internal sealed class SdCategoryEditor : SdEditorBase
 {
@@ -545,7 +545,7 @@ internal sealed class SdCategoryEditor : SdEditorBase
 }
 
 /// <summary>
-///     Editor stavu - kluc, ikona, priznaky, automatika, tabule.
+/// Editor stavu - kluc, ikona, priznaky, automatika, tabule.
 /// </summary>
 internal sealed class SdStateEditor : SdEditorBase
 {
@@ -831,7 +831,7 @@ internal sealed class SdStateEditor : SdEditorBase
 }
 
 /// <summary>
-///     Editor vzhladu tlacidla.
+/// Editor vzhladu tlacidla.
 /// </summary>
 internal sealed class SdDesignEditor : SdEditorBase
 {
@@ -893,7 +893,7 @@ internal sealed class SdDesignEditor : SdEditorBase
 }
 
 /// <summary>
-///     Editor casoveho bodu (vlastneho v hlavicke alebo v stave).
+/// Editor casoveho bodu (vlastneho v hlavicke alebo v stave).
 /// </summary>
 internal sealed class SdTimePointEditor : SdEditorBase
 {
@@ -968,7 +968,7 @@ internal sealed class SdTimePointEditor : SdEditorBase
 }
 
 /// <summary>
-///     Editor akcie stavu spolu s jej tlacidlom (jeden riadok mriezky).
+/// Editor akcie stavu spolu s jej tlacidlom (jeden riadok mriezky).
 /// </summary>
 internal sealed class SdEventEditor : SdEditorBase
 {
@@ -1126,7 +1126,7 @@ internal sealed class SdEventEditor : SdEditorBase
 }
 
 /// <summary>
-///     Editor startera s generovanou vetou.
+/// Editor startera s generovanou vetou.
 /// </summary>
 internal sealed class SdStarterEditor : SdEditorBase
 {

@@ -4,7 +4,7 @@ using GVDEditor.Domain.Rules;
 namespace GVDEditor.Tests.Domain.Rules;
 
 /// <summary>
-///     Casy meskania (Globalne nastavenia → Meskania, Zpozdeni.TXT).
+/// Casy meskania (Globalne nastavenia → Meskania, Zpozdeni.TXT).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

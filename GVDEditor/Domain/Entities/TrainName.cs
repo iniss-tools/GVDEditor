@@ -3,10 +3,10 @@ using ToolsCore.Tools;
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Nazov vlaku zo zvukovej banky (zvuk skupiny s klucom V8).
+/// Nazov vlaku zo zvukovej banky (zvuk skupiny s klucom V8).
 /// </summary>
 /// <remarks>
-///     Do grafikonu sa zapisuje kluc zvuku - INISS podla neho hlada nahravku; v rozhrani sa zobrazuje nazov zvuku.
+/// Do grafikonu sa zapisuje kluc zvuku - INISS podla neho hlada nahravku; v rozhrani sa zobrazuje nazov zvuku.
 /// </remarks>
 /// <param name="Key">Kluc zvuku.</param>
 /// <param name="Name">Nazov zvuku.</param>
@@ -16,7 +16,7 @@ public sealed record TrainName(string Key, string Name)
     public override string ToString() => Name;
 
     /// <summary>
-    ///     Vrati text, ktory sa ma zobrazit pre nazov vlaku zapisany v grafikone (kluc zvuku -> nazov zvuku).
+    /// Vrati text, ktory sa ma zobrazit pre nazov vlaku zapisany v grafikone (kluc zvuku -> nazov zvuku).
     /// </summary>
     /// <param name="names">nazvy vlakov zo zvukovej banky.</param>
     /// <param name="stored">nazov vlaku z grafikonu.</param>
@@ -25,10 +25,10 @@ public sealed record TrainName(string Key, string Name)
         names.FirstOrDefault(n => n.Key.EqualsIgnoreCase(stored))?.Name ?? stored;
 
     /// <summary>
-    ///     Vrati hodnotu, ktora sa zapise do grafikonu pre text zadany v rozhrani.
+    /// Vrati hodnotu, ktora sa zapise do grafikonu pre text zadany v rozhrani.
     /// </summary>
     /// <remarks>
-    ///     Najprv sa hlada podla nazvu (ten je v zozname vidno), potom podla kluca; iny text sa zapise tak, ako je.
+    /// Najprv sa hlada podla nazvu (ten je v zozname vidno), potom podla kluca; iny text sa zapise tak, ako je.
     /// </remarks>
     /// <param name="names">nazvy vlakov zo zvukovej banky.</param>
     /// <param name="text">text zo zoznamu nazvov vlakov.</param>

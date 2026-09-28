@@ -5,13 +5,13 @@ using GVDEditor.Formats;
 namespace GVDEditor.Domain.Analysis;
 
 /// <summary>
-///     Zisti, ktore grafikony pouzivaju typ vlaku. Vlak sa na typ odkazuje klucom (stlpec 4 v Export3A.TXT) -
-///     po odstraneni alebo premenovani pouzivaneho typu by sa grafikon nedal otvorit.
+/// Zisti, ktore grafikony pouzivaju typ vlaku. Vlak sa na typ odkazuje klucom (stlpec 4 v Export3A.TXT) -
+/// po odstraneni alebo premenovani pouzivaneho typu by sa grafikon nedal otvorit.
 /// </summary>
 internal static class TrainTypeUsage
 {
     /// <summary>
-    ///     Grafikony, ktorych vlaky pouzivaju typ s klucom <paramref name="key" />.
+    /// Grafikony, ktorych vlaky pouzivaju typ s klucom <paramref name="key" />.
     /// </summary>
     /// <param name="key">kluc typu vlaku</param>
     /// <param name="grafikony">vsetky grafikony instalacie</param>
@@ -33,7 +33,7 @@ internal static class TrainTypeUsage
     }
 
     /// <summary>
-    ///     Pocet vlakov kazdeho typu po grafikonoch - jeden prechod cez vsetky grafikony.
+    /// Pocet vlakov kazdeho typu po grafikonoch - jeden prechod cez vsetky grafikony.
     /// </summary>
     /// <param name="grafikony">vsetky grafikony instalacie</param>
     /// <param name="open">otvoreny grafikon - jeho vlaky sa beru z pamate (mozu byt neulozene)</param>
@@ -80,7 +80,7 @@ internal static class TrainTypeUsage
     }
 
     /// <summary>
-    ///     Ci niektory vlak v <c>Export3A.TXT</c> ma typ s klucom <paramref name="key" />.
+    /// Ci niektory vlak v <c>Export3A.TXT</c> ma typ s klucom <paramref name="key" />.
     /// </summary>
     public static bool UsesKey(string export3A, string key)
     {

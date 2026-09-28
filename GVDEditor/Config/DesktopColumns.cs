@@ -7,7 +7,7 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Config;
 
 /// <summary>
-///     Obsahuje zoznam všetkých možných stĺpcov pre tabuľku na pracovnej ploche programu.
+/// Obsahuje zoznam všetkých možných stĺpcov pre tabuľku na pracovnej ploche programu.
 /// </summary>
 public record DesktopColumns()
 {
@@ -35,7 +35,7 @@ public record DesktopColumns()
     #region Properties
 
     /// <summary>
-    ///     Stĺpec Číslo.
+    /// Stĺpec Číslo.
     /// </summary>
     [XmlElement("Number")]
     public DesktopColumn Number
@@ -49,7 +49,7 @@ public record DesktopColumns()
     } = InitColumn(nameof(Number));
 
     /// <summary>
-    ///     Stĺpec Typ.
+    /// Stĺpec Typ.
     /// </summary>
     [XmlElement("Type")]
     public DesktopColumn Type
@@ -63,7 +63,7 @@ public record DesktopColumns()
     } = InitColumn(nameof(Type));
 
     /// <summary>
-    ///     Stĺpec Názov.
+    /// Stĺpec Názov.
     /// </summary>
     [XmlElement("Name")]
     public DesktopColumn Name
@@ -77,7 +77,7 @@ public record DesktopColumns()
     } = InitColumn(nameof(Name));
 
     /// <summary>
-    ///     Stĺpec Linka-Príchod.
+    /// Stĺpec Linka-Príchod.
     /// </summary>
     [XmlElement("LinkaPrichod")]
     public DesktopColumn LinkaPrichod
@@ -91,7 +91,7 @@ public record DesktopColumns()
     } = InitColumn(nameof(LinkaPrichod));
 
     /// <summary>
-    ///     Stĺpec Linka-Odchod.
+    /// Stĺpec Linka-Odchod.
     /// </summary>
     [XmlElement("LinkaOdchod")]
     public DesktopColumn LinkaOdchod
@@ -105,7 +105,7 @@ public record DesktopColumns()
     } = InitColumn(nameof(LinkaOdchod));
 
     /// <summary>
-    ///     Stĺpec Smerovanie.
+    /// Stĺpec Smerovanie.
     /// </summary>
     [XmlElement("Routing")]
     public DesktopColumn Routing
@@ -119,7 +119,7 @@ public record DesktopColumns()
     } = InitColumn(nameof(Routing));
 
     /// <summary>
-    ///     Stĺpec Príchod.
+    /// Stĺpec Príchod.
     /// </summary>
     [XmlElement("Prichod")]
     public DesktopColumn Prichod
@@ -133,7 +133,7 @@ public record DesktopColumns()
     } = InitColumn(nameof(Prichod));
 
     /// <summary>
-    ///     Stĺpec Odchod.
+    /// Stĺpec Odchod.
     /// </summary>
     [XmlElement("Odchod")]
     public DesktopColumn Odchod
@@ -147,7 +147,7 @@ public record DesktopColumns()
     } = InitColumn(nameof(Odchod));
 
     /// <summary>
-    ///     Stĺpec Východzia stanica.
+    /// Stĺpec Východzia stanica.
     /// </summary>
     [XmlElement("StartStation")]
     public DesktopColumn VychodziaStanica
@@ -161,7 +161,7 @@ public record DesktopColumns()
     } = InitColumn(nameof(VychodziaStanica));
 
     /// <summary>
-    ///     Stĺpec Konečná stanica.
+    /// Stĺpec Konečná stanica.
     /// </summary>
     [XmlElement("EndStation")]
     public DesktopColumn KonecnaStanica
@@ -175,7 +175,7 @@ public record DesktopColumns()
     } = InitColumn(nameof(KonecnaStanica));
 
     /// <summary>
-    ///     Stĺpec Dátumové obmedzenie.
+    /// Stĺpec Dátumové obmedzenie.
     /// </summary>
     [XmlElement("DateLimit")]
     public DesktopColumn DateLimit
@@ -189,7 +189,7 @@ public record DesktopColumns()
     } = InitColumn(nameof(DateLimit));
 
     /// <summary>
-    ///     Stĺpec Koľaj.
+    /// Stĺpec Koľaj.
     /// </summary>
     [XmlElement("Track")]
     public DesktopColumn Track
@@ -203,7 +203,7 @@ public record DesktopColumns()
     } = InitColumn(nameof(Track));
 
     /// <summary>
-    ///     Stĺpec Dopravca.
+    /// Stĺpec Dopravca.
     /// </summary>
     [XmlElement("Operator")]
     public DesktopColumn Operator
@@ -217,7 +217,7 @@ public record DesktopColumns()
     } = InitColumn(nameof(Operator));
 
     /// <summary>
-    ///     Stĺpec Ostatné.
+    /// Stĺpec Ostatné.
     /// </summary>
     [XmlElement("OtherBtn")]
     public DesktopColumn OtherBtn
@@ -233,7 +233,7 @@ public record DesktopColumns()
     #endregion
 
     /// <summary>
-    ///     Vráti zoradený zoznam všetkých možných stĺpcov pre tabuľku na pracovnej ploche programu
+    /// Vráti zoradený zoznam všetkých možných stĺpcov pre tabuľku na pracovnej ploche programu
     /// </summary>
     /// <returns></returns>
     public IList<DesktopColumn> GetValues()

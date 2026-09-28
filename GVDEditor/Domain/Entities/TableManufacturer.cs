@@ -3,7 +3,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Vyrobca tabule, ktory sa definuje v katalogovej tabuli
+/// Vyrobca tabule, ktory sa definuje v katalogovej tabuli
 /// </summary>
 public sealed class TableManufacturer : Enumeration<TableManufacturer>
 {
@@ -14,34 +14,34 @@ public sealed class TableManufacturer : Enumeration<TableManufacturer>
     }
 
     /// <summary>
-    ///     Odkaz na seba, pouzivane pre DataSource.
+    /// Odkaz na seba, pouzivane pre DataSource.
     /// </summary>
     public TableManufacturer This => this;
 
     /// <summary>
-    ///     Najmensia povolena adresa (ID) fyzickej tabule; <c>-1</c> = INISS rozsah nekontroluje.
+    /// Najmensia povolena adresa (ID) fyzickej tabule; <c>-1</c> = INISS rozsah nekontroluje.
     /// </summary>
     public int MinAddress { get; }
 
     /// <summary>
-    ///     Najvacsia povolena adresa (ID) fyzickej tabule; <c>-1</c> = INISS rozsah nekontroluje.
+    /// Najvacsia povolena adresa (ID) fyzickej tabule; <c>-1</c> = INISS rozsah nekontroluje.
     /// </summary>
     public int MaxAddress { get; }
 
     /// <summary>
-    ///     Ci INISS pozna tohto vyrobcu. Vyrobcovia, ktorych nepozna, ostavaju len kvoli starsim datam z GVDEditora.
+    /// Ci INISS pozna tohto vyrobcu. Vyrobcovia, ktorych nepozna, ostavaju len kvoli starsim datam z GVDEditora.
     /// </summary>
     public bool IsKnownToIniss => MinAddress != int.MinValue;
 
     /// <summary>
-    ///     Ci je adresa tabule v rozsahu, ktory INISS pre tohto vyrobcu prijme. Adresa <c>-1</c> (bez adresy) prejde vzdy.
+    /// Ci je adresa tabule v rozsahu, ktory INISS pre tohto vyrobcu prijme. Adresa <c>-1</c> (bez adresy) prejde vzdy.
     /// </summary>
     /// <param name="address">Adresa tabule (kluc ID v TPhysic.TXT).</param>
     public bool IsAddressValid(int address) => address == -1 || MinAddress < 0 || (address >= MinAddress && address <= MaxAddress);
 
     /// <summary>
-    ///     Konvertuje textove vyjadrenie nazvu typu tabule na objekt. V pripade, ak sa to nepodari, metoda vrati
-    ///     <see langword="null" />.
+    /// Konvertuje textove vyjadrenie nazvu typu tabule na objekt. V pripade, ak sa to nepodari, metoda vrati
+    /// <see langword="null" />.
     /// </summary>
     /// <param name="s">Vstupny retazec.</param>
     /// <returns></returns>

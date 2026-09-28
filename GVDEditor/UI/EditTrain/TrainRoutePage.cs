@@ -9,8 +9,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.EditTrain;
 
 /// <summary>
-///     Stranka Trasa a casy v okne vlaku - trasa v poradi jazdy: stanice zo smeru, tato stanica s casmi, kolajami
-///     a linkami, stanice do smeru. Cas prichodu sa zadava len pri vlaku s trasou zo smeru, cas odchodu s trasou do smeru.
+/// Stranka Trasa a casy v okne vlaku - trasa v poradi jazdy: stanice zo smeru, tato stanica s casmi, kolajami
+/// a linkami, stanice do smeru. Cas prichodu sa zadava len pri vlaku s trasou zo smeru, cas odchodu s trasou do smeru.
 /// </summary>
 public partial class TrainRoutePage : UserControl, ITrainPage
 {
@@ -23,7 +23,7 @@ public partial class TrainRoutePage : UserControl, ITrainPage
     private RouteEditor _target = null!;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public TrainRoutePage()
     {
@@ -34,7 +34,7 @@ public partial class TrainRoutePage : UserControl, ITrainPage
     public event EventHandler? Changed;
 
     /// <summary>
-    ///     Naplni stranku udajmi konceptu - volat az po nastaveni temy okna.
+    /// Naplni stranku udajmi konceptu - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="draft">koncept vlaku</param>
     /// <param name="station">stanica grafikonu</param>
@@ -101,8 +101,8 @@ public partial class TrainRoutePage : UserControl, ITrainPage
     }
 
     /// <summary>
-    ///     Cas prichodu ma zmysel len s trasou zo smeru, cas odchodu s trasou do smeru; zadany cas sa pri
-    ///     vyprazdneni trasy nemaze, aby sa po jej doplneni vratil.
+    /// Cas prichodu ma zmysel len s trasou zo smeru, cas odchodu s trasou do smeru; zadany cas sa pri
+    /// vyprazdneni trasy nemaze, aby sa po jej doplneni vratil.
     /// </summary>
     private void UpdateRoute()
     {
@@ -130,8 +130,8 @@ public partial class TrainRoutePage : UserControl, ITrainPage
     // ---------------------------------------------------------------- dostupne stanice
 
     /// <summary>
-    ///     Stanice zo zvukovej banky alebo vlastne stanice grafikonu, ktorych nazov obsahuje hladany text
-    ///     (bez ohladu na velkost pismen a diakritiku).
+    /// Stanice zo zvukovej banky alebo vlastne stanice grafikonu, ktorych nazov obsahuje hladany text
+    /// (bez ohladu na velkost pismen a diakritiku).
     /// </summary>
     private void FillStations()
     {

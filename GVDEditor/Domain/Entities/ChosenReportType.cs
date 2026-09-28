@@ -1,12 +1,12 @@
 ﻿namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Definuje vybrane typy reportov
+/// Definuje vybrane typy reportov
 /// </summary>
 public sealed class ChosenReportType
 {
     /// <summary>
-    ///     Konstruktor
+    /// Konstruktor
     /// </summary>
     public ChosenReportType()
     {
@@ -14,12 +14,12 @@ public sealed class ChosenReportType
     }
 
     /// <summary>
-    ///     Typ reportu
+    /// Typ reportu
     /// </summary>
     public ReportType Type { get; set; } = null!;
 
     /// <summary>
-    ///     Varianty reportu
+    /// Varianty reportu
     /// </summary>
     public List<ReportVariant> Variants { get; set; }
 }

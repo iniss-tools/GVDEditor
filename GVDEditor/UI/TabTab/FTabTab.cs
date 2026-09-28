@@ -14,7 +14,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.TabTab;
 
 /// <summary>
-///     Dialog - Nastavenie TabTabs.
+/// Dialog - Nastavenie TabTabs.
 /// </summary>
 public partial class FTabTab : Form
 {
@@ -54,7 +54,7 @@ public partial class FTabTab : Form
     private readonly ShellIcon _iconInfo = new(ShellIconType.Info, ShellIconSize.Small);
     
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FTabTab"/>.
+    /// Vytvori novy formular typu <see cref="FTabTab"/>.
     /// </summary>
     /// <param name="tab">Sekcia, ktora sa ma otvorit.</param>
     /// <param name="station">Stanica grafikonu - pre nahlad (ZAJMSTANICE, MISTNI); moze byt <see langword="null"/>.</param>
@@ -232,8 +232,8 @@ public partial class FTabTab : Form
     }
 
     /// <summary>
-    ///     Riadok v zozname problemov. Vlastnosti cita <see cref="dgvProblems"/> cez data binding
-    ///     (<c>DataPropertyName</c> stlpcov), nie kod.
+    /// Riadok v zozname problemov. Vlastnosti cita <see cref="dgvProblems"/> cez data binding
+    /// (<c>DataPropertyName</c> stlpcov), nie kod.
     /// </summary>
     [UsedImplicitly(ImplicitUseTargetFlags.Members)]
     internal sealed class ProblemRow(TabTabDiagnostic diagnostic)
@@ -255,7 +255,7 @@ public partial class FTabTab : Form
     }
 
     /// <summary>
-    ///     Skontroluje text aktualnej sekcie, podciarkne problemy v editore a naplni zoznam problemov.
+    /// Skontroluje text aktualnej sekcie, podciarkne problemy v editore a naplni zoznam problemov.
     /// </summary>
     private void ValidateDocument()
     {
@@ -304,7 +304,7 @@ public partial class FTabTab : Form
     }
 
     /// <summary>
-    ///     Text sekcie podla mena - z editora (aj neulozeny), nie z GlobData.
+    /// Text sekcie podla mena - z editora (aj neulozeny), nie z GlobData.
     /// </summary>
     private string? SectionText(string name)
     {
@@ -355,7 +355,7 @@ public partial class FTabTab : Form
     }
 
     /// <summary>
-    ///     Skryje riadky podla prepinacov Chyby / Varovania / Spravy.
+    /// Skryje riadky podla prepinacov Chyby / Varovania / Spravy.
     /// </summary>
     private void ApplyProblemFilter()
     {
@@ -380,8 +380,8 @@ public partial class FTabTab : Form
         dgvProblems.SelectedRows.Count > 0 ? dgvProblems.SelectedRows[0].DataBoundItem as ProblemRow : null;
 
     /// <summary>
-    ///     Rozsah hlasenia v znakoch (ScintillaNET pracuje so znakovymi poziciami a na bajty prevadza sam).
-    ///     Bodove hlasenie zvyrazni jeden znak; na konci textu znak pred nim.
+    /// Rozsah hlasenia v znakoch (ScintillaNET pracuje so znakovymi poziciami a na bajty prevadza sam).
+    /// Bodove hlasenie zvyrazni jeden znak; na konci textu znak pred nim.
     /// </summary>
     private static (int Start, int End) CharRange(string text, TabTabDiagnostic d)
     {
@@ -430,7 +430,7 @@ public partial class FTabTab : Form
     }
 
     /// <summary>
-    ///     Pouzije navrhovanu opravu na text v editore (ako jednu akciu pre Undo) a znova skontroluje.
+    /// Pouzije navrhovanu opravu na text v editore (ako jednu akciu pre Undo) a znova skontroluje.
     /// </summary>
     private void ApplyFix(TabTabDiagnostic d)
     {
@@ -534,15 +534,15 @@ public partial class FTabTab : Form
     }
 
     /// <summary>
-    ///     Zoznam sekcii v editore sa lisi od ulozeneho (pridana, odstranena alebo premenovana sekcia).
+    /// Zoznam sekcii v editore sa lisi od ulozeneho (pridana, odstranena alebo premenovana sekcia).
     /// </summary>
     private bool SectionsUnsaved =>
         documents.Any(doc => doc.KeyUnsaved) || !documents.Select(doc => doc.TabTab).SequenceEqual(GlobData.TabTabs);
 
     /// <summary>
-    ///     Prenesie zoznam sekcii (pridane, odstranene, premenovane) do <see cref="GlobData.TabTabs"/>.
-    ///     Vola sa pri kazdom ulozeni - text sekcii sa uklada zvlast (<see cref="DoSave"/>, <see cref="DoSaveAll"/>).
-    ///     Objekty sekcii ostavaju tie iste, aby odkazy TAB1/TAB2 katalogovych tabul ostali platne.
+    /// Prenesie zoznam sekcii (pridane, odstranene, premenovane) do <see cref="GlobData.TabTabs"/>.
+    /// Vola sa pri kazdom ulozeni - text sekcii sa uklada zvlast (<see cref="DoSave"/>, <see cref="DoSaveAll"/>).
+    /// Objekty sekcii ostavaju tie iste, aby odkazy TAB1/TAB2 katalogovych tabul ostali platne.
     /// </summary>
     private void SaveSections()
     {

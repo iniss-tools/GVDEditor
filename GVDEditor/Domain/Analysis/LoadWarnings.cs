@@ -4,8 +4,8 @@ using GVDEditor.Properties;
 namespace GVDEditor.Domain.Analysis;
 
 /// <summary>
-///     Zbiera varovania, ktore vzniknu pri nacitani dat (preskocene riadky, chybajuce nahravky, neznamy druh vlaku...).
-///     Kazde varovanie sa zaroven zapise do logu; po nacitani grafikonu ich hlavne okno ukaze pouzivatelovi naraz.
+/// Zbiera varovania, ktore vzniknu pri nacitani dat (preskocene riadky, chybajuce nahravky, neznamy druh vlaku...).
+/// Kazde varovanie sa zaroven zapise do logu; po nacitani grafikonu ich hlavne okno ukaze pouzivatelovi naraz.
 /// </summary>
 internal static class LoadWarnings
 {
@@ -13,7 +13,7 @@ internal static class LoadWarnings
     private static readonly object _locker = new();
 
     /// <summary>
-    ///     Varovania od posledneho volania <see cref="Clear" />.
+    /// Varovania od posledneho volania <see cref="Clear" />.
     /// </summary>
     public static IReadOnlyList<string> Items
     {
@@ -25,7 +25,7 @@ internal static class LoadWarnings
     }
 
     /// <summary>
-    ///     Prida varovanie a zapise ho do logu.
+    /// Prida varovanie a zapise ho do logu.
     /// </summary>
     /// <param name="message">Text varovania.</param>
     public static void Add(string message)
@@ -36,7 +36,7 @@ internal static class LoadWarnings
     }
 
     /// <summary>
-    ///     Vyprazdni zoznam - vola sa pred nacitanim dalsieho grafikonu.
+    /// Vyprazdni zoznam - vola sa pred nacitanim dalsieho grafikonu.
     /// </summary>
     public static void Clear()
     {
@@ -45,7 +45,7 @@ internal static class LoadWarnings
     }
 
     /// <summary>
-    ///     Ak sa pri nacitani nieco preskocilo, ukaze suhrn (najviac <paramref name="maxLines" /> riadkov) a zoznam vyprazdni.
+    /// Ak sa pri nacitani nieco preskocilo, ukaze suhrn (najviac <paramref name="maxLines" /> riadkov) a zoznam vyprazdni.
     /// </summary>
     /// <param name="maxLines">Kolko varovani vypisat do okna; zvysok je v logu.</param>
     public static void ShowSummary(int maxLines = 12)

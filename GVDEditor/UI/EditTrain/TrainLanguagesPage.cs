@@ -5,7 +5,7 @@ using ToolsCore.Entities;
 namespace GVDEditor.UI.EditTrain;
 
 /// <summary>
-///     Stranka Jazyky v okne vlaku - dalsie jazyky, v ktorych INISS vlak hlasi.
+/// Stranka Jazyky v okne vlaku - dalsie jazyky, v ktorych INISS vlak hlasi.
 /// </summary>
 public partial class TrainLanguagesPage : UserControl, ITrainPage
 {
@@ -13,7 +13,7 @@ public partial class TrainLanguagesPage : UserControl, ITrainPage
     private bool _loading;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public TrainLanguagesPage()
     {
@@ -24,7 +24,7 @@ public partial class TrainLanguagesPage : UserControl, ITrainPage
     public event EventHandler? Changed;
 
     /// <summary>
-    ///     Naplni zoznam jazykmi (bez zakladneho) a zaskrtne jazyky vlaku.
+    /// Naplni zoznam jazykmi (bez zakladneho) a zaskrtne jazyky vlaku.
     /// </summary>
     internal void LoadData(TrainDraft draft, IEnumerable<FyzLanguage> languages)
     {

@@ -21,9 +21,9 @@ using ToolsCore.StateDgm;
 namespace GVDEditor.DocScreenshots;
 
 /// <summary>
-///     Zoznam snímok. Každá snímka je okno (a pri oknách so záložkami každá záložka zvlášť),
-///     uložené ako <c>&lt;priečinok&gt;/&lt;názov&gt;-light.png</c> a <c>-dark.png</c>.
-///     Názov záložky sa odvodí z jej textu (Fyzické tabule → fyzicke-tabule).
+/// Zoznam snímok. Každá snímka je okno (a pri oknách so záložkami každá záložka zvlášť),
+/// uložené ako <c>&lt;priečinok&gt;/&lt;názov&gt;-light.png</c> a <c>-dark.png</c>.
+/// Názov záložky sa odvodí z jej textu (Fyzické tabule → fyzicke-tabule).
 /// </summary>
 internal sealed class Shots(Program.Options options, string theme, List<string> log)
 {
@@ -454,8 +454,8 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
     }
 
     /// <summary>
-    ///     Pre značky v článkoch: polohy prvkov stránky v percentách snímky (ľavý okraj, stred, horný okraj). Zapíše sa,
-    ///     len ak premenná prostredia <c>DOCSHOTS_BOUNDS</c> určuje súbor.
+    /// Pre značky v článkoch: polohy prvkov stránky v percentách snímky (ľavý okraj, stred, horný okraj). Zapíše sa,
+    /// len ak premenná prostredia <c>DOCSHOTS_BOUNDS</c> určuje súbor.
     /// </summary>
     private void WriteBounds(string shot, Form form, Control panel)
     {
@@ -487,7 +487,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
         control is Label or ButtonBase ? control.Text.Split(Environment.NewLine[^1])[0].TrimEnd() : "";
 
     /// <summary>
-    ///     Okná, ktoré sa otvárajú maximalizované, by mali na snímke šírku celej obrazovky.
+    /// Okná, ktoré sa otvárajú maximalizované, by mali na snímke šírku celej obrazovky.
     /// </summary>
     private static void Resize(Form form, int width, int height)
     {
@@ -497,7 +497,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
     }
 
     /// <summary>
-    ///     Problémy, ktoré editor stavového diagramu hlási v ukážkovom grafikone (majú byť na snímke nula).
+    /// Problémy, ktoré editor stavového diagramu hlási v ukážkovom grafikone (majú byť na snímke nula).
     /// </summary>
     private void LogStateDgmProblems(Form form)
     {
@@ -510,7 +510,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
     }
 
     /// <summary>
-    ///     Prejde všetky sekcie v editore TabTab a zapíše problémy, ktoré v nich editor hlási; potom vráti výber.
+    /// Prejde všetky sekcie v editore TabTab a zapíše problémy, ktoré v nich editor hlási; potom vráti výber.
     /// </summary>
     private void LogTabTabProblems(Form form, TableTabTab selected)
     {
@@ -537,7 +537,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
     }
 
     /// <summary>
-    ///     V navigátore editora stavového diagramu zbalí vzhľady, časové body a ostatné kategórie a vyberie stav.
+    /// V navigátore editora stavového diagramu zbalí vzhľady, časové body a ostatné kategórie a vyberie stav.
     /// </summary>
     private static void SelectStateDgmNode(Form form, StateDgmCategory category, StateDgmState state)
     {
@@ -597,7 +597,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
     }
 
     /// <summary>
-    ///     Hlavný TabControl okna - najväčší, ktorý nie je vnorený v inom TabControle.
+    /// Hlavný TabControl okna - najväčší, ktorý nie je vnorený v inom TabControle.
     /// </summary>
     private static TabControl? MainTabControl(Form form) =>
         Descendants(form).OfType<TabControl>()
@@ -621,7 +621,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
     }
 
     /// <summary>
-    ///     „Fyzické tabule“ → „fyzicke-tabule“.
+    /// „Fyzické tabule“ → „fyzicke-tabule“.
     /// </summary>
     private static string Slug(string text)
     {

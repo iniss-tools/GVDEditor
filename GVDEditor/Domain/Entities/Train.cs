@@ -8,43 +8,43 @@ using ToolsCore.Tools;
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Trieda reprezentujuca vlak.
+/// Trieda reprezentujuca vlak.
 /// </summary>
 /// <remarks>
-///     Vlak je entita s identitou - porovnava sa referenciou. Dva vlaky s rovnakymi udajmi (napr. hned po skopirovani)
-///     su stale dva rozne vlaky.
+/// Vlak je entita s identitou - porovnava sa referenciou. Dva vlaky s rovnakymi udajmi (napr. hned po skopirovani)
+/// su stale dva rozne vlaky.
 /// </remarks>
 public sealed class Train
 {
     private Routing _routing = null!;
 
     /// <summary>
-    ///     Identifikator vlaku.
+    /// Identifikator vlaku.
     /// </summary>
     public int ID { get; set; }
 
     /// <summary>
-    ///     Cislo vlaku.
+    /// Cislo vlaku.
     /// </summary>
     public string Number { get; set; } = null!;
 
     /// <summary>
-    ///     Cislo a varianta vlaku (stlpec zoznamu vlakov).
+    /// Cislo a varianta vlaku (stlpec zoznamu vlakov).
     /// </summary>
     public NumberVariant NumberVariant => new(Number, Variant);
 
     /// <summary>
-    ///     Typ vlaku.
+    /// Typ vlaku.
     /// </summary>
     public TrainType Type { get; set; } = null!;
 
     /// <summary>
-    ///     Nazov vlaku.
+    /// Nazov vlaku.
     /// </summary>
     public string Name { get; set; } = null!;
 
     /// <summary>
-    ///     Smerovanie vlaku.
+    /// Smerovanie vlaku.
     /// </summary>
     public Routing Routing
     {
@@ -57,157 +57,157 @@ public sealed class Train
     }
 
     /// <summary>
-    ///     Smerovanie vlaku vo forme obrazku.
+    /// Smerovanie vlaku vo forme obrazku.
     /// </summary>
     public Bitmap RoutingImage { get; set; } = null!;
 
     /// <summary>
-    ///     Stanice zo smeru.
+    /// Stanice zo smeru.
     /// </summary>
     public List<Station> StaniceZoSmeru { get; } = new();
 
     /// <summary>
-    ///     Stanice do smeru.
+    /// Stanice do smeru.
     /// </summary>
     public List<Station> StaniceDoSmeru { get; } = new();
 
     /// <summary>
-    ///     Prichod vlaku do stanice (nullable).
+    /// Prichod vlaku do stanice (nullable).
     /// </summary>
     public DateTime? Arrival { get; set; }
 
     /// <summary>
-    ///     Odchod vlaku zo stanice (nullable).
+    /// Odchod vlaku zo stanice (nullable).
     /// </summary>
     public DateTime? Departure { get; set; }
 
     /// <summary>
-    ///     Vychodzia stanica.
+    /// Vychodzia stanica.
     /// </summary>
     public Station? StartingStation { get; set; }
 
     /// <summary>
-    ///     Konecna stanica.
+    /// Konecna stanica.
     /// </summary>
     public Station? EndingStation { get; set; }
 
     /// <summary>
-    ///     Kolaj na stanici v ktorej stoji vlak.
+    /// Kolaj na stanici v ktorej stoji vlak.
     /// </summary>
     public Track Track { get; set; } = null!;
 
     /// <summary>
-    ///     Kolaj pri odchode, ak sa lisi od kolaje prichodu (tretie pole v Pozice.txt). <see langword="null" /> = rovnaka
-    ///     ako <see cref="Track" />.
+    /// Kolaj pri odchode, ak sa lisi od kolaje prichodu (tretie pole v Pozice.txt). <see langword="null" /> = rovnaka
+    /// ako <see cref="Track" />.
     /// </summary>
     public Track? TrackDeparture { get; set; }
 
     /// <summary>
-    ///     Dopravca vlaku.
+    /// Dopravca vlaku.
     /// </summary>
     public Operator Operator { get; set; } = null!;
 
     /// <summary>
-    ///     Datumove obmedzenie v textovej forme.
+    /// Datumove obmedzenie v textovej forme.
     /// </summary>
     public string DateLimitText { get; set; } = null!;
 
     /// <summary>
-    ///     Jazykove mutacie hlasenia vlaku.
+    /// Jazykove mutacie hlasenia vlaku.
     /// </summary>
     public List<FyzLanguage> Languages { get; set; } = new();
 
     /// <summary>
-    ///     Ci ma vlak priznak medzistatny.
+    /// Ci ma vlak priznak medzistatny.
     /// </summary>
     public bool IsMedzistatny { get; set; }
 
     /// <summary>
-    ///     Ci ma vlak priznak dialkovy.
+    /// Ci ma vlak priznak dialkovy.
     /// </summary>
     public bool IsDialkovy { get; set; }
 
     /// <summary>
-    ///     Ci ma vlak priznak mimoriadny.
+    /// Ci ma vlak priznak mimoriadny.
     /// </summary>
     public bool IsMimoriadny { get; set; }
 
     /// <summary>
-    ///     Ci ma vlak priznak miestenkovy.
+    /// Ci ma vlak priznak miestenkovy.
     /// </summary>
     public bool IsMiestenkovy { get; set; }
 
     /// <summary>
-    ///     Ci ma vlak priznak lozkovy.
+    /// Ci ma vlak priznak lozkovy.
     /// </summary>
     public bool IsIbaLozkovy { get; set; }
 
     /// <summary>
-    ///     Ci ma vlak priznak nizkopodlazny.
+    /// Ci ma vlak priznak nizkopodlazny.
     /// </summary>
     public bool IsNizkopodlazny { get; set; }
 
     /// <summary>
-    ///     Ci ma vlak priznak prestupovy (pismeno P v Export3A.TXT). INISS taky vlak v zozname podfarbuje a
-    ///     kontroluje priznak pri spracovani externych sprav o kolaji.
+    /// Ci ma vlak priznak prestupovy (pismeno P v Export3A.TXT). INISS taky vlak v zozname podfarbuje a
+    /// kontroluje priznak pri spracovani externych sprav o kolaji.
     /// </summary>
     public bool IsPrestupovy { get; set; }
 
     /// <summary>
-    ///     Ci ma vlak priznak O (pismeno O v Export3A.TXT). INISS ho nacita, ale nikde nepouziva; zachovava sa,
-    ///     aby sa pri ulozeni nestratil.
+    /// Ci ma vlak priznak O (pismeno O v Export3A.TXT). INISS ho nacita, ale nikde nepouziva; zachovava sa,
+    /// aby sa pri ulozeni nestratil.
     /// </summary>
     public bool IsPriznakO { get; set; }
 
     /// <summary>
-    ///     Cislo vyluky priradenej vlaku priamo v grafikone (Vyluka.TXT); 0 = bez vyluky. Je to kluc V&lt;N&gt; textu
-    ///     vyluky v logickej zvukovej banke (1 = zabudovana "Obecna vyluka v stanici").
+    /// Cislo vyluky priradenej vlaku priamo v grafikone (Vyluka.TXT); 0 = bez vyluky. Je to kluc V&lt;N&gt; textu
+    /// vyluky v logickej zvukovej banke (1 = zabudovana "Obecna vyluka v stanici").
     /// </summary>
     public int LockoutNumber { get; set; }
 
     /// <summary>
-    ///     Ci je vlak uvedeny v Mos.txt - INISS mu pri nacitani zmeni druh na MOs bez ohladu na druh v Export3A.TXT.
-    ///     Druh v <see cref="Type" /> sa tym nemeni, priznak sa len zachovava.
+    /// Ci je vlak uvedeny v Mos.txt - INISS mu pri nacitani zmeni druh na MOs bez ohladu na druh v Export3A.TXT.
+    /// Druh v <see cref="Type" /> sa tym nemeni, priznak sa len zachovava.
     /// </summary>
     public bool IsMotorovy { get; set; }
 
     /// <summary>
-    ///     Zaciatok platnosti datumoveho obmedzenia.
+    /// Zaciatok platnosti datumoveho obmedzenia.
     /// </summary>
     public DateTime ZaciatokPlatnosti { get; set; }
 
     /// <summary>
-    ///     Koniec platnosti datumoveho obmedzenia.
+    /// Koniec platnosti datumoveho obmedzenia.
     /// </summary>
     public DateTime KoniecPlatnosti { get; set; }
 
     /// <summary>
-    ///     Linka na prichode.
+    /// Linka na prichode.
     /// </summary>
     public string? LineArrival { get; set; }
 
     /// <summary>
-    ///     Linka na odchode.
+    /// Linka na odchode.
     /// </summary>
     public string? LineDeparture { get; set; }
 
     /// <summary>
-    ///     Dodatkove hlasenia vlaku.
+    /// Dodatkove hlasenia vlaku.
     /// </summary>
     public List<Dodatok> Doplnky { get; set; } = new();
 
     /// <summary>
-    ///     Varianta vlaku.
+    /// Varianta vlaku.
     /// </summary>
     public int Variant { get; set; }
 
     /// <summary>
-    ///     Radenie vlaku.
+    /// Radenie vlaku.
     /// </summary>
     public List<Radenie> Radenia { get; } = new();
 
     /// <summary>
-    ///     Vrati prvy vyskyt vlaku v zozname so specifikovanymi vlastnostami.
+    /// Vrati prvy vyskyt vlaku v zozname so specifikovanymi vlastnostami.
     /// </summary>
     /// <param name="trains">zoznam vsetkych vlakov</param>
     /// <param name="trainNum">cislo vlaku</param>
@@ -220,7 +220,7 @@ public sealed class Train
             train.Number == trainNum && train.Name == trainName && train.Type == trainType && train.Variant == variant);
 
     /// <summary>
-    ///     Vráti všetky názvy vlakov zo zvukovej banky (zvuky skupiny s kľúčom V8).
+    /// Vráti všetky názvy vlakov zo zvukovej banky (zvuky skupiny s kľúčom V8).
     /// </summary>
     /// <remarks>Do grafikonu sa zapisuje kľúč zvuku - INISS podľa neho hľadá nahrávku názvu vlaku; v zozname je vidno názov.</remarks>
     /// <returns></returns>
@@ -228,7 +228,7 @@ public sealed class Train
         GlobData.Sounds.Where(soundE => soundE.Group.Key.EqualsIgnoreCase("V8")).Select(soundE => new TrainName(soundE.Key, soundE.Name)).ToList();
 
     /// <summary>
-    ///     Vrati vlak zo zoznamu variant, ktory je hlavna varianta vlaku (ma najdlhsiu trasu poctom stanic).
+    /// Vrati vlak zo zoznamu variant, ktory je hlavna varianta vlaku (ma najdlhsiu trasu poctom stanic).
     /// </summary>
     /// <param name="allVariants">Varianty vlaku.</param>
     public static void ReorderVariants(List<Train> allVariants)
@@ -281,7 +281,7 @@ public sealed class Train
     }
 
     /// <summary>
-    ///     Zisti, ci sa vlaky zhoduju v cisle, nazve a type.
+    /// Zisti, ci sa vlaky zhoduju v cisle, nazve a type.
     /// </summary>
     /// <param name="train1"></param>
     /// <param name="train2"></param>

@@ -5,19 +5,19 @@ using GVDEditor.Properties;
 namespace GVDEditor.Domain.Rules;
 
 /// <summary>
-///     Pravidla zoznamu pisiem tabul (ModeTabs.txt [FONT]): povinny nazov a jedinecne cislo - stlpce a texty
-///     sa na pismo odkazuju cislom.
+/// Pravidla zoznamu pisiem tabul (ModeTabs.txt [FONT]): povinny nazov a jedinecne cislo - stlpce a texty
+/// sa na pismo odkazuju cislom.
 /// </summary>
 internal static class FontRules
 {
     /// <summary>
-    ///     Chyba nazvu pisma, alebo <see langword="null" />.
+    /// Chyba nazvu pisma, alebo <see langword="null" />.
     /// </summary>
     public static string? CheckName(string name) =>
         string.IsNullOrWhiteSpace(name) ? Resources.FLocalSettings_Nezadaný_názov_písma : null;
 
     /// <summary>
-    ///     Chyba cisla pisma na pozicii <paramref name="index" /> - rovnake cislo ma aj ine pismo.
+    /// Chyba cisla pisma na pozicii <paramref name="index" /> - rovnake cislo ma aj ine pismo.
     /// </summary>
     public static string? CheckId(IReadOnlyList<TableFont> fonts, int index)
     {
@@ -30,8 +30,8 @@ internal static class FontRules
     }
 
     /// <summary>
-    ///     Cislo pre nove pismo - prvy volny vzhlad (tenke, tucne, neproporcionalne, len cislice; bez farby, cervene,
-    ///     zelene, zlte) s bitom 0x40 ako v datach INISSu.
+    /// Cislo pre nove pismo - prvy volny vzhlad (tenke, tucne, neproporcionalne, len cislice; bez farby, cervene,
+    /// zelene, zlte) s bitom 0x40 ako v datach INISSu.
     /// </summary>
     public static int SuggestId(IEnumerable<int> used)
     {

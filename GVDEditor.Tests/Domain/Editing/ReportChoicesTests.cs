@@ -5,7 +5,7 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Tests.Domain.Editing;
 
 /// <summary>
-///     Tabulka Kedy hlasit dodatku a radenia - zaskrtnutie meni zoznam vybranych hlaseni tak, ako ho zapisuje grafikon.
+/// Tabulka Kedy hlasit dodatku a radenia - zaskrtnutie meni zoznam vybranych hlaseni tak, ako ho zapisuje grafikon.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

@@ -5,13 +5,13 @@ using ToolsCore.Tools;
 namespace GVDEditor.Formats;
 
 /// <summary>
-///     Kontroly pred importom grafikonu (Subor → Importovat → Grafikon…) - priecinok sa skopiruje do DATA
-///     a zapise do DirList.TXT.
+/// Kontroly pred importom grafikonu (Subor → Importovat → Grafikon…) - priecinok sa skopiruje do DATA
+/// a zapise do DirList.TXT.
 /// </summary>
 internal static class GVDImport
 {
     /// <summary>
-    ///     Skontroluje, ci sa grafikon z priecinka <paramref name="sourcePath" /> da pridat do instalacie.
+    /// Skontroluje, ci sa grafikon z priecinka <paramref name="sourcePath" /> da pridat do instalacie.
     /// </summary>
     /// <param name="sourcePath">vybrany priecinok s grafikonom</param>
     /// <param name="dataDir">priecinok DATA otvorenej instalacie</param>

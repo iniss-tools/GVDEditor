@@ -5,7 +5,7 @@ using GVDEditor.UI.Main;
 namespace GVDEditor.UI.Import;
 
 /// <summary>
-///     Dialog - Volby importu vlakov priamo z dat programu ELIS.
+/// Dialog - Volby importu vlakov priamo z dat programu ELIS.
 /// </summary>
 public partial class FELISImport : Form
 {
@@ -14,7 +14,7 @@ public partial class FELISImport : Form
     private readonly int _existingTrainCount;
 
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FELISImport" />.
+    /// Vytvori novy formular typu <see cref="FELISImport" />.
     /// </summary>
     /// <param name="stationName">Nazov stanice, pre ktoru sa vlaky nacitaju.</param>
     /// <param name="existingTrainCount">Pocet vlakov, ktore uz grafikon obsahuje.</param>

@@ -4,7 +4,7 @@ using GVDEditor.Integration;
 namespace GVDEditor.Tests.Integration;
 
 /// <summary>
-///     Argumenty spustania INISSu (Nastavenia programu → Spustanie INISS).
+/// Argumenty spustania INISSu (Nastavenia programu → Spustanie INISS).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

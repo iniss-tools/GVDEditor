@@ -2,8 +2,8 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Domain.Snapshots;
 
 /// <summary>
-///     Stav dat, ktore okno Lokalne nastavenia meni priamo v <see cref="GlobData" /> (dopravcovia, nastupistia, kolaje,
-///     tabule, texty, pisma, TabTab, vlastne stanice a vlaky, ktorych sa zmeny tykaju). Tlacidlo Zrusit ho obnovi.
+/// Stav dat, ktore okno Lokalne nastavenia meni priamo v <see cref="GlobData" /> (dopravcovia, nastupistia, kolaje,
+/// tabule, texty, pisma, TabTab, vlastne stanice a vlaky, ktorych sa zmeny tykaju). Tlacidlo Zrusit ho obnovi.
 /// </summary>
 internal sealed class LocalSettingsSnapshot
 {
@@ -17,7 +17,7 @@ internal sealed class LocalSettingsSnapshot
     }
 
     /// <summary>
-    ///     Zapamata aktualny stav dat lokalnych nastaveni.
+    /// Zapamata aktualny stav dat lokalnych nastaveni.
     /// </summary>
     public static LocalSettingsSnapshot Capture()
     {
@@ -35,7 +35,7 @@ internal sealed class LocalSettingsSnapshot
     }
 
     /// <summary>
-    ///     Vrati data do stavu v case snimky a obnovi prvky na ne naviazane (napr. zoznam vlakov v hlavnom okne).
+    /// Vrati data do stavu v case snimky a obnovi prvky na ne naviazane (napr. zoznam vlakov v hlavnom okne).
     /// </summary>
     public void Restore()
     {
@@ -48,8 +48,8 @@ internal sealed class LocalSettingsSnapshot
         list == null ? null : (list, list.ResetBindings);
 
     /// <summary>
-    ///     Okno vlaky nepridava ani nemaze, meni len ich odkazy (kolaj, dopravca). Staci preto prekreslit riadky -
-    ///     ResetBindings by v hlavnom okne prestaval riadky tabulky vlakov a ta by grafikon oznacila ako zmeneny (*).
+    /// Okno vlaky nepridava ani nemaze, meni len ich odkazy (kolaj, dopravca). Staci preto prekreslit riadky -
+    /// ResetBindings by v hlavnom okne prestaval riadky tabulky vlakov a ta by grafikon oznacila ako zmeneny (*).
     /// </summary>
     private static (object List, Action Reset)? TrainsItem<T>(BindingList<T>? trains) =>
         trains == null ? null : (trains, () =>
@@ -59,7 +59,7 @@ internal sealed class LocalSettingsSnapshot
         });
 
     /// <summary>
-    ///     Sleduju sa len entity GVDEditora; zvukova banka, obrazky a pod. sa oknom nemenia.
+    /// Sleduju sa len entity GVDEditora; zvukova banka, obrazky a pod. sa oknom nemenia.
     /// </summary>
     private static bool IsEntity(Type type) =>
         type.Assembly == typeof(GlobData).Assembly && type.Namespace == typeof(Train).Namespace;

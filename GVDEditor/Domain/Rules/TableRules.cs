@@ -7,19 +7,19 @@ using GVDEditor.Properties;
 namespace GVDEditor.Domain.Rules;
 
 /// <summary>
-///     Spolocne pravidla zoznamov tabul a textov: nazov a jednoznacny kluc, nazov kopie.
+/// Spolocne pravidla zoznamov tabul a textov: nazov a jednoznacny kluc, nazov kopie.
 /// </summary>
 internal static partial class TableRules
 {
     /// <summary>
-    ///     Chyba nazvu; <see langword="null" />, ak je v poriadku.
+    /// Chyba nazvu; <see langword="null" />, ak je v poriadku.
     /// </summary>
     public static string? CheckName(string? name) =>
         string.IsNullOrWhiteSpace(name) ? Resources.TableRules_Nazov : null;
 
     /// <summary>
-    ///     Chyba kluca polozky na pozicii <paramref name="index" /> - prazdny alebo rovnaky ako pri inej polozke.
-    ///     Na velkosti pismen zalezi (INISS kluce porovnava presne).
+    /// Chyba kluca polozky na pozicii <paramref name="index" /> - prazdny alebo rovnaky ako pri inej polozke.
+    /// Na velkosti pismen zalezi (INISS kluce porovnava presne).
     /// </summary>
     public static string? CheckKey(IReadOnlyList<string?> keys, int index)
     {
@@ -35,8 +35,8 @@ internal static partial class TableRules
     }
 
     /// <summary>
-    ///     Text, ktory v zozname este nie je: <paramref name="name" />, potom „name 2“, „name 3“… Cislo na konci sa
-    ///     neopakuje - kopia „name 2“ dostane „name 3“, nie „name 2 2“.
+    /// Text, ktory v zozname este nie je: <paramref name="name" />, potom „name 2“, „name 3“… Cislo na konci sa
+    /// neopakuje - kopia „name 2“ dostane „name 3“, nie „name 2 2“.
     /// </summary>
     public static string Unique(IEnumerable<string?> used, string name)
     {
@@ -57,12 +57,12 @@ internal static partial class TableRules
 }
 
 /// <summary>
-///     Kontrola fyzickej tabule tak, ako ju INISS nacita.
+/// Kontrola fyzickej tabule tak, ako ju INISS nacita.
 /// </summary>
 internal static class TablePhysicalRules
 {
     /// <summary>
-    ///     Pole fyzickej tabule, ku ktoremu sa chyba viaze.
+    /// Pole fyzickej tabule, ku ktoremu sa chyba viaze.
     /// </summary>
     public enum Field
     {
@@ -73,7 +73,7 @@ internal static class TablePhysicalRules
     }
 
     /// <summary>
-    ///     Vsetky chyby tabule na pozicii <paramref name="index" />.
+    /// Vsetky chyby tabule na pozicii <paramref name="index" />.
     /// </summary>
     /// <param name="tables">fyzicke tabule</param>
     /// <param name="index">kontrolovana tabula</param>
@@ -98,7 +98,7 @@ internal static class TablePhysicalRules
     }
 
     /// <summary>
-    ///     Adresa tabule mimo rozsahu vyrobcu - INISS taku tabulu nezalozi. -1 (bez adresy) je vzdy v poriadku.
+    /// Adresa tabule mimo rozsahu vyrobcu - INISS taku tabulu nezalozi. -1 (bez adresy) je vzdy v poriadku.
     /// </summary>
     public static string? CheckId(int id, TableManufacturer? manufacturer)
     {
@@ -111,12 +111,12 @@ internal static class TablePhysicalRules
 }
 
 /// <summary>
-///     Kontrola textu na tabuliach (typ textu s realizaciami a textami vlakov).
+/// Kontrola textu na tabuliach (typ textu s realizaciami a textami vlakov).
 /// </summary>
 internal static class TableTextRules
 {
     /// <summary>
-    ///     Pole textu, ku ktoremu sa chyba viaze.
+    /// Pole textu, ku ktoremu sa chyba viaze.
     /// </summary>
     public enum Field
     {
@@ -126,7 +126,7 @@ internal static class TableTextRules
     }
 
     /// <summary>
-    ///     Vsetky chyby textu na pozicii <paramref name="index" />; pri realizacii aj jej poradie v zozname.
+    /// Vsetky chyby textu na pozicii <paramref name="index" />; pri realizacii aj jej poradie v zozname.
     /// </summary>
     public static List<(Field Field, int Row, string Message)> Check(IReadOnlyList<TableText> texts, int index,
         IReadOnlyCollection<TableCatalog> catalogs)
@@ -148,7 +148,7 @@ internal static class TableTextRules
     }
 
     /// <summary>
-    ///     Realizacia musi ukazovat na existujucu katalogovu tabulu a jej stlpec - inak by sa grafikon neotvoril.
+    /// Realizacia musi ukazovat na existujucu katalogovu tabulu a jej stlpec - inak by sa grafikon neotvoril.
     /// </summary>
     public static string? CheckRealization(TableTextRealization realization, IReadOnlyCollection<TableCatalog> catalogs)
     {
@@ -163,13 +163,13 @@ internal static class TableTextRules
 }
 
 /// <summary>
-///     Kontrola logickej tabule a jej zostavy. Chyby INISS neprijme (tabula bez zaznamov, neplatny riadok zostavy),
-///     upozornenia znesie (zapise ich do logu) - tie ulozenie neblokuju.
+/// Kontrola logickej tabule a jej zostavy. Chyby INISS neprijme (tabula bez zaznamov, neplatny riadok zostavy),
+/// upozornenia znesie (zapise ich do logu) - tie ulozenie neblokuju.
 /// </summary>
 internal static class TableLogicalRules
 {
     /// <summary>
-    ///     Pole logickej tabule, ku ktoremu sa chyba viaze.
+    /// Pole logickej tabule, ku ktoremu sa chyba viaze.
     /// </summary>
     public enum Field
     {
@@ -181,7 +181,7 @@ internal static class TableLogicalRules
     }
 
     /// <summary>
-    ///     Vsetky chyby tabule na pozicii <paramref name="index" />; pri riadku zostavy aj jeho poradie.
+    /// Vsetky chyby tabule na pozicii <paramref name="index" />; pri riadku zostavy aj jeho poradie.
     /// </summary>
     /// <param name="tables">logicke tabule</param>
     /// <param name="index">kontrolovana tabula</param>
@@ -209,15 +209,15 @@ internal static class TableLogicalRules
     }
 
     /// <summary>
-    ///     Riadok zostavy: zaznamy v rozsahu 1 az pocet zaznamov (od ≤ do), riadok fyzickej tabule aspon 1, typ vybrany.
+    /// Riadok zostavy: zaznamy v rozsahu 1 az pocet zaznamov (od ≤ do), riadok fyzickej tabule aspon 1, typ vybrany.
     /// </summary>
     public static bool IsValid(TableLogicalSegment segment, int recordCount) =>
         segment.FirstRecord >= 1 && segment.LastRecord <= recordCount && segment.FirstRecord <= segment.LastRecord &&
         segment.StartRow >= 1 && segment.TypeView != null;
 
     /// <summary>
-    ///     Nedostatky zostavy, ktore INISS znesie: typ, ktory katalog fyzickej tabule nepodporuje, riadky za poctom
-    ///     zaznamov fyzickej tabule, viac zaznamov na jednom riadku. Riadok zostavy je -1, ak sa tyka viacerych riadkov.
+    /// Nedostatky zostavy, ktore INISS znesie: typ, ktory katalog fyzickej tabule nepodporuje, riadky za poctom
+    /// zaznamov fyzickej tabule, viac zaznamov na jednom riadku. Riadok zostavy je -1, ak sa tyka viacerych riadkov.
     /// </summary>
     public static List<(int Row, string Message)> Warnings(IReadOnlyList<TableLogicalSegment> segments)
     {
@@ -253,7 +253,7 @@ internal static class TableLogicalRules
     }
 
     /// <summary>
-    ///     Precita cislo stanice (IDSTATION) z pola - cislo, pripadne v tvare „5613600 – Nazov“ z ponuky.
+    /// Precita cislo stanice (IDSTATION) z pola - cislo, pripadne v tvare „5613600 – Nazov“ z ponuky.
     /// </summary>
     /// <returns>Cislo stanice, 0 pri prazdnom poli, alebo <see langword="null" /> pri neplatnom zadani.</returns>
     public static int? ParseStation(string? text)
@@ -273,14 +273,14 @@ internal static class TableLogicalRules
 }
 
 /// <summary>
-///     Kontrola katalogovej tabule a jej stlpcov tak, ako ich INISS nacita. Chyby INISS neprijme (stlpec s nulovou
-///     sirkou, chybajuca TAB1/TAB2, pocet rezimov...), upozornenia znesie - tie ulozenie neblokuju. Prekryv stlpcov
-///     na riadku chybou nie je (alternativy pre rozne rezimy), ani poradie stlpcov podla pozicie.
+/// Kontrola katalogovej tabule a jej stlpcov tak, ako ich INISS nacita. Chyby INISS neprijme (stlpec s nulovou
+/// sirkou, chybajuca TAB1/TAB2, pocet rezimov...), upozornenia znesie - tie ulozenie neblokuju. Prekryv stlpcov
+/// na riadku chybou nie je (alternativy pre rozne rezimy), ani poradie stlpcov podla pozicie.
 /// </summary>
 internal static class TableCatalogRules
 {
     /// <summary>
-    ///     Cast katalogovej tabule, ku ktorej sa chyba viaze.
+    /// Cast katalogovej tabule, ku ktorej sa chyba viaze.
     /// </summary>
     public enum Field
     {
@@ -292,12 +292,12 @@ internal static class TableCatalogRules
     }
 
     /// <summary>
-    ///     Najvacsia pozicia stlpca na tabuli ELEN (v bodoch).
+    /// Najvacsia pozicia stlpca na tabuli ELEN (v bodoch).
     /// </summary>
     public const int ElenMaxPosition = 512;
 
     /// <summary>
-    ///     Vsetky chyby tabule na pozicii <paramref name="index" />; pri stlpci aj jeho poradie.
+    /// Vsetky chyby tabule na pozicii <paramref name="index" />; pri stlpci aj jeho poradie.
     /// </summary>
     public static List<(Field Field, int Column, string Message)> Check(IReadOnlyList<TableCatalog> tables, int index)
     {
@@ -331,7 +331,7 @@ internal static class TableCatalogRules
     }
 
     /// <summary>
-    ///     Prva chyba stlpca na pozicii <paramref name="index" />; <see langword="null" />, ak je v poriadku.
+    /// Prva chyba stlpca na pozicii <paramref name="index" />; <see langword="null" />, ak je v poriadku.
     /// </summary>
     public static string? CheckColumn(TableCatalog table, int index)
     {
@@ -361,8 +361,8 @@ internal static class TableCatalogRules
     }
 
     /// <summary>
-    ///     Nedostatky stlpcov, ktore INISS znesie: pozicia mimo hranic znakov tabule, TAB1/TAB2, ktore sa pri spôsobe
-    ///     plnenia nepouziju.
+    /// Nedostatky stlpcov, ktore INISS znesie: pozicia mimo hranic znakov tabule, TAB1/TAB2, ktore sa pri spôsobe
+    /// plnenia nepouziju.
     /// </summary>
     public static List<(int Column, string Message)> Warnings(TableCatalog table)
     {
@@ -386,7 +386,7 @@ internal static class TableCatalogRules
     }
 
     /// <summary>
-    ///     Sirka znakovej bunky tabule - START a END stlpcov maju byt jej nasobkom; 1 = bez obmedzenia.
+    /// Sirka znakovej bunky tabule - START a END stlpcov maju byt jej nasobkom; 1 = bez obmedzenia.
     /// </summary>
     public static int CellWidth(TableManufacturer? manufacturer)
     {

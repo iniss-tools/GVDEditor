@@ -3,15 +3,15 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Domain.Editing;
 
 /// <summary>
-///     Zoznamy pre comboboxy Stanica a Obdobie v hlavnom okne - po zmene stanice grafikonu v lokalnych
-///     nastaveniach sa musia prisposobit bez znovunacitania priecinka INISS.
+/// Zoznamy pre comboboxy Stanica a Obdobie v hlavnom okne - po zmene stanice grafikonu v lokalnych
+/// nastaveniach sa musia prisposobit bez znovunacitania priecinka INISS.
 /// </summary>
 internal static class GVDSelectionLists
 {
     /// <summary>
-    ///     Upravi zoznam nazvov stanic po zmene stanice grafikonu z <paramref name="oldName" /> na
-    ///     <paramref name="newName" />. Stary nazov nahradi novym (na tom istom mieste), ak ho uz nepouziva
-    ///     ziadny grafikon; novy nazov prida, ak v zozname chyba. Nazov sa v zozname nikdy nezdvoji.
+    /// Upravi zoznam nazvov stanic po zmene stanice grafikonu z <paramref name="oldName" /> na
+    /// <paramref name="newName" />. Stary nazov nahradi novym (na tom istom mieste), ak ho uz nepouziva
+    /// ziadny grafikon; novy nazov prida, ak v zozname chyba. Nazov sa v zozname nikdy nezdvoji.
     /// </summary>
     /// <param name="stanice">Zoznam nazvov stanic (zdroj comboboxu Stanica).</param>
     /// <param name="dirs">Vsetky grafikony, uz s novou stanicou upraveneho grafikonu.</param>
@@ -37,7 +37,7 @@ internal static class GVDSelectionLists
     }
 
     /// <summary>
-    ///     Vrati grafikony danej stanice v poradi zoznamu <paramref name="dirs" /> (zdroj comboboxu Obdobie).
+    /// Vrati grafikony danej stanice v poradi zoznamu <paramref name="dirs" /> (zdroj comboboxu Obdobie).
     /// </summary>
     public static IEnumerable<GVDDirectory> PeriodsOf(IEnumerable<GVDDirectory> dirs, string station) =>
         dirs.Where(dir => dir.GVD.ThisStation.Name == station);

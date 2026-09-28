@@ -4,13 +4,13 @@ using GVDEditor.Properties;
 namespace GVDEditor.Formats;
 
 /// <summary>
-///     Premenovanie priecinka grafikonu (Lokalne nastavenia → Grafikon). Tlacidlo Zmenit nazov len overi a naplanuje,
-///     priecinok sa premenuje az tlacidlom Ulozit.
+/// Premenovanie priecinka grafikonu (Lokalne nastavenia → Grafikon). Tlacidlo Zmenit nazov len overi a naplanuje,
+/// priecinok sa premenuje az tlacidlom Ulozit.
 /// </summary>
 internal static class GVDDirRename
 {
     /// <summary>
-    ///     Overi novy nazov priecinka grafikonu.
+    /// Overi novy nazov priecinka grafikonu.
     /// </summary>
     /// <param name="dirname">Novy nazov priecinka (uz orezany).</param>
     /// <param name="oldFullPath">Sucasna cesta k priecinku grafikonu.</param>
@@ -45,8 +45,8 @@ internal static class GVDDirRename
     }
 
     /// <summary>
-    ///     Po premenovani priecinka na disku prepise nazov a cestu v zazname grafikonu aj v zozname
-    ///     <paramref name="allDirs" /> (obsah <c>DirList.TXT</c>), kde moze byt ina instancia toho isteho zaznamu.
+    /// Po premenovani priecinka na disku prepise nazov a cestu v zazname grafikonu aj v zozname
+    /// <paramref name="allDirs" /> (obsah <c>DirList.TXT</c>), kde moze byt ina instancia toho isteho zaznamu.
     /// </summary>
     /// <param name="dir">Zaznam upravovaneho grafikonu.</param>
     /// <param name="allDirs">Vsetky zaznamy <c>DirList.TXT</c>.</param>

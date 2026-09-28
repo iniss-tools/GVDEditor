@@ -5,7 +5,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Tests.Domain.Entities;
 
 /// <summary>
-///     Entity grafikonu (vlak, kolaj, nastupiste, dopravca) sa porovnavaju referenciou, hodnotove objekty hodnotou.
+/// Entity grafikonu (vlak, kolaj, nastupiste, dopravca) sa porovnavaju referenciou, hodnotove objekty hodnotou.
 /// </summary>
 [TestClass]
 public class EntityIdentityTests

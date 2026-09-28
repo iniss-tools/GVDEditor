@@ -7,7 +7,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.EditTrain;
 
 /// <summary>
-///     Dialog - Radenie vlaku.
+/// Dialog - Radenie vlaku.
 /// </summary>
 public partial class FRadenie : Form
 {
@@ -16,12 +16,12 @@ public partial class FRadenie : Form
     private BindingList<FyzSound> _soundInDir = new();
 
     /// <summary>
-    ///     Vybrane zvuky reprezentujúce radenie.
+    /// Vybrane zvuky reprezentujúce radenie.
     /// </summary>
     public List<FyzSound> SelSounds;
 
     /// <summary>
-    ///     Vytvori novy formulár typu <see cref="FRadenie"/>.
+    /// Vytvori novy formulár typu <see cref="FRadenie"/>.
     /// </summary>
     /// <param name="sounds">Zoznam fyzických zvukov reprezentujúcich radenie vlaku.</param>
     public FRadenie(List<FyzSound> sounds)

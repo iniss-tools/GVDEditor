@@ -5,16 +5,16 @@ using GVDEditor.Domain.Rules;
 namespace GVDEditor.Domain.Editing;
 
 /// <summary>
-///     Varianty vlaku - vlaky s rovnakym cislom, nazvom a typom v jednom grafikone. INISS ich rozlisuje cislom
-///     varianty, ktore je len identifikator: na hodnote nezalezi, v skupine musi byt jedinecne (inak riadok
-///     Vlaky.txt dostane len prvy vlak). Cisla prideluje GVDEditor sam (<see cref="Normalize" />).
+/// Varianty vlaku - vlaky s rovnakym cislom, nazvom a typom v jednom grafikone. INISS ich rozlisuje cislom
+/// varianty, ktore je len identifikator: na hodnote nezalezi, v skupine musi byt jedinecne (inak riadok
+/// Vlaky.txt dostane len prvy vlak). Cisla prideluje GVDEditor sam (<see cref="Normalize" />).
 /// </summary>
 internal static class TrainVariants
 {
     /// <summary>
-    ///     Pridelí cisla variant: jediny vlak skupiny ma -1, platne cisla (od 1, v skupine jedinecne) ostavaju,
-    ///     ostatne vlaky dostanu najmensie volne cislo v poradi riadkov. Medzery sa nezhustuju - zmena cisla by
-    ///     zbytocne menila iny vlak.
+    /// Pridelí cisla variant: jediny vlak skupiny ma -1, platne cisla (od 1, v skupine jedinecne) ostavaju,
+    /// ostatne vlaky dostanu najmensie volne cislo v poradi riadkov. Medzery sa nezhustuju - zmena cisla by
+    /// zbytocne menila iny vlak.
     /// </summary>
     /// <returns>vlaky, ktorym sa cislo zmenilo</returns>
     public static List<Train> Normalize(IReadOnlyList<Train> trains)
@@ -51,20 +51,20 @@ internal static class TrainVariants
     }
 
     /// <summary>
-    ///     Vsetky vlaky skupiny <paramref name="train" /> (vratane neho) zoradene podla cisla varianty.
+    /// Vsetky vlaky skupiny <paramref name="train" /> (vratane neho) zoradene podla cisla varianty.
     /// </summary>
     public static List<Train> GroupOf(IReadOnlyList<Train> trains, Train train) =>
         [.. trains.Where(other => Train.IsSameVariant(other, train)).OrderBy(SortKey)];
 
     /// <summary>
-    ///     Poradie vo vypise skupiny: platne cisla varianty vzostupne, vlaky bez cisla na konci.
+    /// Poradie vo vypise skupiny: platne cisla varianty vzostupne, vlaky bez cisla na konci.
     /// </summary>
     public static int SortKey(Train train) => train.Variant >= 1 ? train.Variant : int.MaxValue;
 
     /// <summary>
-    ///     Ostatne vlaky s rovnakym cislom, nazvom a typom ako koncept (bez upravovaneho riadku). Ked sa pri
-    ///     zmene cisla, nazvu alebo typu menia aj ostatne varianty (<see cref="TrainDraft.RenameSiblings" />),
-    ///     patria sem aj povodne varianty.
+    /// Ostatne vlaky s rovnakym cislom, nazvom a typom ako koncept (bez upravovaneho riadku). Ked sa pri
+    /// zmene cisla, nazvu alebo typu menia aj ostatne varianty (<see cref="TrainDraft.RenameSiblings" />),
+    /// patria sem aj povodne varianty.
     /// </summary>
     public static List<Train> Others(TrainDraft draft, TrainContext context)
     {
@@ -85,7 +85,7 @@ internal static class TrainVariants
     }
 
     /// <summary>
-    ///     Poradie konceptu medzi variantami (od 1) a pocet vlakov skupiny vratane neho; novy vlak je posledny.
+    /// Poradie konceptu medzi variantami (od 1) a pocet vlakov skupiny vratane neho; novy vlak je posledny.
     /// </summary>
     public static (int Position, int Count) PositionOf(TrainDraft draft, IReadOnlyList<Train> others)
     {
@@ -94,7 +94,7 @@ internal static class TrainVariants
     }
 
     /// <summary>
-    ///     Poradie ostatnej varianty v skupine s konceptom (od 1).
+    /// Poradie ostatnej varianty v skupine s konceptom (od 1).
     /// </summary>
     public static int PositionOf(Train other, TrainDraft draft, IReadOnlyList<Train> others)
     {
@@ -104,8 +104,8 @@ internal static class TrainVariants
     }
 
     /// <summary>
-    ///     Varianty s rovnakym obdobim platnosti, ktorych datumove obmedzenie ma s konceptom spolocne dni;
-    ///     <c>Days</c> je obmedzenie spolocnych dni. Variant s necitatelnym obmedzenim sa preskoci.
+    /// Varianty s rovnakym obdobim platnosti, ktorych datumove obmedzenie ma s konceptom spolocne dni;
+    /// <c>Days</c> je obmedzenie spolocnych dni. Variant s necitatelnym obmedzenim sa preskoci.
     /// </summary>
     public static List<(Train Train, string Days)> Overlaps(TrainDraft draft, IEnumerable<Train> others)
     {
@@ -135,8 +135,8 @@ internal static class TrainVariants
     }
 
     /// <summary>
-    ///     Obmedzenie <paramref name="limit" /> bez dni obmedzenia <paramref name="removed" /> v obdobi konceptu;
-    ///     <see langword="null" />, ak sa obmedzenia nedaju precitat.
+    /// Obmedzenie <paramref name="limit" /> bez dni obmedzenia <paramref name="removed" /> v obdobi konceptu;
+    /// <see langword="null" />, ak sa obmedzenia nedaju precitat.
     /// </summary>
     public static string? Without(TrainDraft draft, string limit, string removed)
     {
@@ -155,14 +155,14 @@ internal static class TrainVariants
     }
 
     /// <summary>
-    ///     Navrh obmedzenia inej varianty bez dni, v ktore ide upravovany vlak; <see langword="null" />, ak sa
-    ///     obmedzenia nedaju precitat.
+    /// Navrh obmedzenia inej varianty bez dni, v ktore ide upravovany vlak; <see langword="null" />, ak sa
+    /// obmedzenia nedaju precitat.
     /// </summary>
     public static string? WithoutCommonDays(TrainDraft draft, Train other) => Without(draft, draft.LimitOf(other), draft.DateLimitText);
 
     /// <summary>
-    ///     Spolocne dni s variantou <paramref name="other" /> prideli jednej strane: tomuto vlaku (druhej variante sa
-    ///     odoberu; zapise sa po ulozeni) alebo druhej variante (odoberu sa tomuto vlaku).
+    /// Spolocne dni s variantou <paramref name="other" /> prideli jednej strane: tomuto vlaku (druhej variante sa
+    /// odoberu; zapise sa po ulozeni) alebo druhej variante (odoberu sa tomuto vlaku).
     /// </summary>
     /// <returns><see langword="false" />, ak sa obmedzenia nedaju precitat</returns>
     public static bool GiveCommonDays(TrainDraft draft, Train other, bool toThis)
@@ -184,7 +184,7 @@ internal static class TrainVariants
     }
 
     /// <summary>
-    ///     Zmenene obmedzenie inej varianty; rovnake ako vo vlaku sa uz nepamata.
+    /// Zmenene obmedzenie inej varianty; rovnake ako vo vlaku sa uz nepamata.
     /// </summary>
     public static void SetLimit(TrainDraft draft, Train other, string limit)
     {

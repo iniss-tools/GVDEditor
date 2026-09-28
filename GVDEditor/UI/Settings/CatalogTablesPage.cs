@@ -11,9 +11,9 @@ using Field = GVDEditor.Domain.Rules.TableCatalogRules.Field;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Katalogove tabule v okne Lokalne nastavenia - zoznam predloh tabul a udaje vybranej predlohy (stlpce
-///     s pravitkom, vybrany stlpec, poradie stlpcov, rozmery riadkov) s upravou priamo v poliach a tabulkach. Zmeny idu
-///     rovno do <see cref="GlobData.TableCatalogs" />, Zrusit okna ich vrati.
+/// Stranka Katalogove tabule v okne Lokalne nastavenia - zoznam predloh tabul a udaje vybranej predlohy (stlpce
+/// s pravitkom, vybrany stlpec, poradie stlpcov, rozmery riadkov) s upravou priamo v poliach a tabulkach. Zmeny idu
+/// rovno do <see cref="GlobData.TableCatalogs" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class CatalogTablesPage : UserControl, ISettingsPage
 {
@@ -30,7 +30,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
     private Color _hintColor;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public CatalogTablesPage()
     {
@@ -83,7 +83,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Naplni stranku - volat az po nastaveni temy okna.
+    /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
     public void LoadData()
     {
@@ -115,7 +115,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Vyberie tabulu (napr. pri oprave z analyzy grafikonu); pred naplnenim stranky az po nom.
+    /// Vyberie tabulu (napr. pri oprave z analyzy grafikonu); pred naplnenim stranky az po nom.
     /// </summary>
     public void SelectTable(TableCatalog table)
     {
@@ -222,7 +222,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Zobrazi udaje vybraneho stlpca.
+    /// Zobrazi udaje vybraneho stlpca.
     /// </summary>
     private void ShowColumn()
     {
@@ -347,8 +347,8 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Kluc stlpca sa zmeni az po opusteni pola - poradie stlpcov naň odkazuje a premenuje sa s nim; prazdny alebo
-    ///     obsadeny kluc by odkazy dvoch stlpcov zlucil, preto sa neprijme.
+    /// Kluc stlpca sa zmeni az po opusteni pola - poradie stlpcov naň odkazuje a premenuje sa s nim; prazdny alebo
+    /// obsadeny kluc by odkazy dvoch stlpcov zlucil, preto sa neprijme.
     /// </summary>
     private void tbColKey_Validated(object? sender, EventArgs e)
     {

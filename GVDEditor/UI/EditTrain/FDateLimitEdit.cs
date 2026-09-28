@@ -6,7 +6,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.EditTrain;
 
 /// <summary>
-///     Dialog - pre upravu datumoveho obmedzenia vlakov.
+/// Dialog - pre upravu datumoveho obmedzenia vlakov.
 /// </summary>
 internal partial class FDateLimitEdit : Form
 {
@@ -27,7 +27,7 @@ internal partial class FDateLimitEdit : Form
     }
 
     /// <summary>
-    ///     Otvori editor datumoveho obmedzenia.
+    /// Otvori editor datumoveho obmedzenia.
     /// </summary>
     /// <returns>upravene obmedzenie; <see langword="null" />, ak ho pouzivatel zrusil</returns>
     public static string? SetDateLimit(Form owner, DateTime dateFrom, DateTime dateTo, Train? train = null, bool textNot = false, string defaultValue = "",

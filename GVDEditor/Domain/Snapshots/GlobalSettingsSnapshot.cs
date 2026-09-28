@@ -4,8 +4,8 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Domain.Snapshots;
 
 /// <summary>
-///     Stav dat, ktore okno Globalne nastavenia meni priamo v <see cref="GlobData" /> (jazyky, meskania, typy vlakov,
-///     audio linky). Tlacidlo Zrusit ho obnovi.
+/// Stav dat, ktore okno Globalne nastavenia meni priamo v <see cref="GlobData" /> (jazyky, meskania, typy vlakov,
+/// audio linky). Tlacidlo Zrusit ho obnovi.
 /// </summary>
 internal sealed class GlobalSettingsSnapshot
 {
@@ -19,7 +19,7 @@ internal sealed class GlobalSettingsSnapshot
     }
 
     /// <summary>
-    ///     Zapamata aktualny stav dat globalnych nastaveni.
+    /// Zapamata aktualny stav dat globalnych nastaveni.
     /// </summary>
     public static GlobalSettingsSnapshot Capture()
     {
@@ -34,7 +34,7 @@ internal sealed class GlobalSettingsSnapshot
     }
 
     /// <summary>
-    ///     Vrati data do stavu v case snimky a obnovi prvky na ne naviazane.
+    /// Vrati data do stavu v case snimky a obnovi prvky na ne naviazane.
     /// </summary>
     public void Restore()
     {
@@ -47,7 +47,7 @@ internal sealed class GlobalSettingsSnapshot
         list == null ? null : (list, list.ResetBindings);
 
     /// <summary>
-    ///     Sleduju sa entity GVDEditora a jazyk; skupiny zvukov jazyka (zvukova banka) sa oknom nemenia.
+    /// Sleduju sa entity GVDEditora a jazyk; skupiny zvukov jazyka (zvukova banka) sa oknom nemenia.
     /// </summary>
     private static bool IsEntity(Type type) =>
         type == typeof(FyzLanguage) ||

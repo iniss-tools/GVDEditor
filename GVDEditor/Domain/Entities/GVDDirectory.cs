@@ -1,13 +1,13 @@
 ﻿namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Spojenie vlastností <see cref="DirList" /> a <see cref="GVDInfo" /> s ďalšími vlastnosťami
-///     (používa sa len pre potreby GUI).
+/// Spojenie vlastností <see cref="DirList" /> a <see cref="GVDInfo" /> s ďalšími vlastnosťami
+/// (používa sa len pre potreby GUI).
 /// </summary>
 public sealed class GVDDirectory
 {
     /// <summary>
-    ///     Vytvori novu instanciu triedy <see cref="GVDDirectory"/>.
+    /// Vytvori novu instanciu triedy <see cref="GVDDirectory"/>.
     /// </summary>
     /// <param name="dir">Informácie o priečinku s grafikonom.</param>
     /// <param name="gvd">Informácie grafiku.</param>
@@ -18,22 +18,22 @@ public sealed class GVDDirectory
     }
 
     /// <summary>
-    ///     Vrati obdobie platnosti ako text (napr. 2020/2021).
+    /// Vrati obdobie platnosti ako text (napr. 2020/2021).
     /// </summary>
     public string Period => GVD.StartValidTimeTable.Year + "/" + GVD.EndValidTimeTable.Year;
 
     /// <summary>
-    ///     Formátovaný reťazec obdobia (názov stanice + obdobie).
+    /// Formátovaný reťazec obdobia (názov stanice + obdobie).
     /// </summary>
     public string PeriodFormatted => GVD.ThisStation.Name + " " + Period;
 
     /// <summary>
-    ///     Priečinok s dátami grafikonu.
+    /// Priečinok s dátami grafikonu.
     /// </summary>
     public DirList Dir { get; }
 
     /// <summary>
-    ///     Informácie o grafikone.
+    /// Informácie o grafikone.
     /// </summary>
     public GVDInfo GVD { get; }
 

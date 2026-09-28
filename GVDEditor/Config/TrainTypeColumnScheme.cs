@@ -4,7 +4,7 @@ using ToolsCore.XML;
 namespace GVDEditor.Config;
 
 /// <summary>
-///     Spracovanie fontu a jeho farby pre zobrazenie na pracovnej ploche programu.
+/// Spracovanie fontu a jeho farby pre zobrazenie na pracovnej ploche programu.
 /// </summary>
 public record TrainTypeColumnScheme() : IColorScheme
 {
@@ -13,13 +13,13 @@ public record TrainTypeColumnScheme() : IColorScheme
     public bool DisableFontEdit => false;
 
     /// <summary>
-    ///     Font typu vlaku na pracovnej ploche v časti Typ vlaku.
+    /// Font typu vlaku na pracovnej ploche v časti Typ vlaku.
     /// </summary>
     [XmlIgnore] 
     public Font Font { get; set; } = new("Segoe UI", 9);
 
     /// <summary>
-    ///     Font typu vlaku na pracovnej ploche v časti Typ vlaku vo formate XML.
+    /// Font typu vlaku na pracovnej ploche v časti Typ vlaku vo formate XML.
     /// </summary>
     [XmlElement(Type = typeof(XmlFont), ElementName = "Font")]
     public XmlFont FontXML
@@ -53,7 +53,7 @@ public record TrainTypeColumnScheme() : IColorScheme
     #region Properties
 
     /// <summary>
-    ///     Pracovná plocha, stĺpec Typ vlaku - Osobný vlak.
+    /// Pracovná plocha, stĺpec Typ vlaku - Osobný vlak.
     /// </summary>
     [XmlElement("Os")]
     public ColorSetting Os
@@ -67,7 +67,7 @@ public record TrainTypeColumnScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Pracovná plocha, stĺpec Typ vlaku - Rýchlik.
+    /// Pracovná plocha, stĺpec Typ vlaku - Rýchlik.
     /// </summary>
     [XmlElement("R")]
     public ColorSetting R
@@ -81,7 +81,7 @@ public record TrainTypeColumnScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Pracovná plocha, stĺpec Typ vlaku - Vlak vyššej kvality.
+    /// Pracovná plocha, stĺpec Typ vlaku - Vlak vyššej kvality.
     /// </summary>
     [XmlElement("X")]
     public ColorSetting X
@@ -95,7 +95,7 @@ public record TrainTypeColumnScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Pracovná plocha, stĺpec Typ vlaku - Služobný vlak.
+    /// Pracovná plocha, stĺpec Typ vlaku - Služobný vlak.
     /// </summary>
     [XmlElement("Sl")]
     public ColorSetting Sl

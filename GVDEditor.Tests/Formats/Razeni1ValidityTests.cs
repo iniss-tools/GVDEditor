@@ -6,8 +6,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.Tests.Formats;
 
 /// <summary>
-///     Razeni1.txt: zaznam s prazdnymi datumami plati bez obmedzenia a po ulozeni musi ostat bez datumov -
-///     inak by INISS radenie hlasil len v nezmyselnom obdobi (01.01.0001), teda nikdy.
+/// Razeni1.txt: zaznam s prazdnymi datumami plati bez obmedzenia a po ulozeni musi ostat bez datumov -
+/// inak by INISS radenie hlasil len v nezmyselnom obdobi (01.01.0001), teda nikdy.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

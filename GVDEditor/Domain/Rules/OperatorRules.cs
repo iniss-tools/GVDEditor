@@ -4,13 +4,13 @@ using GVDEditor.Properties;
 namespace GVDEditor.Domain.Rules;
 
 /// <summary>
-///     Pravidla ciselnika dopravcov grafikonu (Vlastnik.txt). Nazov je zaroven meno nahravky dopravcu
-///     v zvukovej banke a zapisuje sa v uvodzovkach bez escapovania.
+/// Pravidla ciselnika dopravcov grafikonu (Vlastnik.txt). Nazov je zaroven meno nahravky dopravcu
+/// v zvukovej banke a zapisuje sa v uvodzovkach bez escapovania.
 /// </summary>
 internal static class OperatorRules
 {
     /// <summary>
-    ///     Chyba nazvu dopravcu na pozicii <paramref name="index" />.
+    /// Chyba nazvu dopravcu na pozicii <paramref name="index" />.
     /// </summary>
     /// <param name="names">nazvy vsetkych dopravcov v poradi zoznamu</param>
     /// <param name="index">pozicia kontrolovaneho dopravcu</param>
@@ -33,8 +33,8 @@ internal static class OperatorRules
     }
 
     /// <summary>
-    ///     Cislo pre noveho dopravcu - o jedno vyssie nez najvyssie pouzite, aby nekolidovalo s dopravcom,
-    ///     ktory medzitym zmizol zo zoznamu, ani s cislovanim s medzerami.
+    /// Cislo pre noveho dopravcu - o jedno vyssie nez najvyssie pouzite, aby nekolidovalo s dopravcom,
+    /// ktory medzitym zmizol zo zoznamu, ani s cislovanim s medzerami.
     /// </summary>
     public static int NextId(IEnumerable<int> ids) => Math.Max(1, ids.DefaultIfEmpty(0).Max() + 1);
 }

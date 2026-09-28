@@ -6,8 +6,8 @@ using GVDEditor.TabTabEditor;
 namespace GVDEditor.Domain.Analysis;
 
 /// <summary>
-///     Kde sa v grafikone používa číslo písma tabule. Katalógové tabule a texty vlakov majú číslo písma
-///     vo vlastnom poli, TabTab ho má v texte pravidiel ako <c>{n}</c>.
+/// Kde sa v grafikone používa číslo písma tabule. Katalógové tabule a texty vlakov majú číslo písma
+/// vo vlastnom poli, TabTab ho má v texte pravidiel ako <c>{n}</c>.
 /// </summary>
 /// <param name="CatalogColumns">Stĺpce katalógových tabúľ s týmto písmom (TYPE_ITEMS_FONT_IDX).</param>
 /// <param name="TrainTexts">Texty vlakov s týmto písmom (TRAIN_nnn_IDX_FONT v TTexts.txt).</param>
@@ -19,7 +19,7 @@ internal sealed record TableFontUsage(int CatalogColumns, int TrainTexts, IReadO
     public bool IsUsed => CatalogColumns > 0 || TrainTexts > 0 || TabTabSections.Count > 0;
 
     /// <summary>
-    ///     Či sa dá použitie zmeniť automaticky - stĺpce a texty áno, TabTab nie.
+    /// Či sa dá použitie zmeniť automaticky - stĺpce a texty áno, TabTab nie.
     /// </summary>
     public bool HasReplaceable => CatalogColumns > 0 || TrainTexts > 0;
 
@@ -39,7 +39,7 @@ internal sealed record TableFontUsage(int CatalogColumns, int TrainTexts, IReadO
     }
 
     /// <summary>
-    ///     Zmení číslo písma v stĺpcoch katalógových tabúľ a v textoch vlakov. TabTab sa nemení.
+    /// Zmení číslo písma v stĺpcoch katalógových tabúľ a v textoch vlakov. TabTab sa nemení.
     /// </summary>
     /// <returns>Počet zmenených miest.</returns>
     public static int Replace(int oldId, int newId, IEnumerable<TableCatalog> catalogs, IEnumerable<TableText> texts)

@@ -5,14 +5,14 @@ using GVDEditor.UI.Settings;
 namespace GVDEditor.Domain.Editing;
 
 /// <summary>
-///     Logika katalogovej tabule nezavisla od GUI (stranka Katalogove tabule, FTableColumnOrder): kopie, novy stlpec,
-///     udrzanie klucov stlpcov v poradi stlpcov a pocet riadkov.
+/// Logika katalogovej tabule nezavisla od GUI (stranka Katalogove tabule, FTableColumnOrder): kopie, novy stlpec,
+/// udrzanie klucov stlpcov v poradi stlpcov a pocet riadkov.
 /// </summary>
 public static class TableCatalogEditing
 {
     /// <summary>
-    ///     Vrati novy zoznam TabTab pre vyber v okne – na zaciatku <see cref="TableTabTab.Empty"/>, potom TabTab
-    ///     zo zoznamu (bez pripadnej uz ulozenej polozky „Ziadny“). Odovzdany zoznam sa nemeni.
+    /// Vrati novy zoznam TabTab pre vyber v okne – na zaciatku <see cref="TableTabTab.Empty"/>, potom TabTab
+    /// zo zoznamu (bez pripadnej uz ulozenej polozky „Ziadny“). Odovzdany zoznam sa nemeni.
     /// </summary>
     /// <param name="tabTabs">TabTab grafikonu.</param>
     public static List<TableTabTab> WithEmptyTabTab(IEnumerable<TableTabTab> tabTabs)
@@ -23,7 +23,7 @@ public static class TableCatalogEditing
     }
 
     /// <summary>
-    ///     Kopia stlpca (TabTab su zdielane).
+    /// Kopia stlpca (TabTab su zdielane).
     /// </summary>
     public static TableItem Clone(TableItem item)
     {
@@ -33,8 +33,8 @@ public static class TableCatalogEditing
     }
 
     /// <summary>
-    ///     Prepise vlastnosti stlpca <paramref name="target"/> hodnotami zo <paramref name="source"/> (instancia cielu
-    ///     sa zachova – odkazuju na nu napr. realizacie textov na tabuli).
+    /// Prepise vlastnosti stlpca <paramref name="target"/> hodnotami zo <paramref name="source"/> (instancia cielu
+    /// sa zachova – odkazuju na nu napr. realizacie textov na tabuli).
     /// </summary>
     public static void CopyTo(TableItem source, TableItem target)
     {
@@ -52,12 +52,12 @@ public static class TableCatalogEditing
     }
 
     /// <summary>
-    ///     Kopia riadku (segmentu).
+    /// Kopia riadku (segmentu).
     /// </summary>
     public static TableSegment Clone(TableSegment segment) => new() { Height = segment.Height, Width = segment.Width, Size = segment.Size };
 
     /// <summary>
-    ///     Hlboka kopia typu zobrazenia vratane modov a zoznamov klucov.
+    /// Hlboka kopia typu zobrazenia vratane modov a zoznamov klucov.
     /// </summary>
     public static TableViewTypeTab Clone(TableViewTypeTab tab)
     {
@@ -68,8 +68,8 @@ public static class TableCatalogEditing
     }
 
     /// <summary>
-    ///     Vytvori typ zobrazenia, v ktorom maju vsetky mody (<see cref="TableViewMode.GetValues"/>) rovnake stlpce;
-    ///     kazdy mod dostane vlastnu kopiu zoznamu klucov.
+    /// Vytvori typ zobrazenia, v ktorom maju vsetky mody (<see cref="TableViewMode.GetValues"/>) rovnake stlpce;
+    /// kazdy mod dostane vlastnu kopiu zoznamu klucov.
     /// </summary>
     /// <param name="tab">Typ zobrazenia, ktoremu sa mody nastavia.</param>
     /// <param name="keys">Kluce stlpcov v poradi.</param>
@@ -82,13 +82,13 @@ public static class TableCatalogEditing
     }
 
     /// <summary>
-    ///     Pocet vyskytov kluca stlpca vo vsetkych typoch a modoch poradia stlpcov.
+    /// Pocet vyskytov kluca stlpca vo vsetkych typoch a modoch poradia stlpcov.
     /// </summary>
     public static int CountKeyUsages(IEnumerable<TableViewTypeTab> tabs, string key) =>
         tabs.SelectMany(t => t.TypeModeItems).Sum(m => m.ItemsKeys.Count(k => k == key));
 
     /// <summary>
-    ///     Premenuje kluc stlpca vo vsetkych typoch a modoch poradia stlpcov.
+    /// Premenuje kluc stlpca vo vsetkych typoch a modoch poradia stlpcov.
     /// </summary>
     public static void RenameKey(IEnumerable<TableViewTypeTab> tabs, string oldKey, string newKey)
     {
@@ -99,7 +99,7 @@ public static class TableCatalogEditing
     }
 
     /// <summary>
-    ///     Odoberie kluc stlpca zo vsetkych typov a modov poradia stlpcov.
+    /// Odoberie kluc stlpca zo vsetkych typov a modov poradia stlpcov.
     /// </summary>
     public static void RemoveKey(IEnumerable<TableViewTypeTab> tabs, string key)
     {
@@ -108,7 +108,7 @@ public static class TableCatalogEditing
     }
 
     /// <summary>
-    ///     Najde prvy kluc v poradi stlpcov, ku ktoremu neexistuje stlpec (ReadTables by taky subor odmietol).
+    /// Najde prvy kluc v poradi stlpcov, ku ktoremu neexistuje stlpec (ReadTables by taky subor odmietol).
     /// </summary>
     /// <returns>Typ, mod a kluc, alebo <c>null</c>, ak su vsetky kluce platne.</returns>
     public static (TableViewTypeTab Tab, TableTypeModeItem Mode, string Key)? FindUnknownKey(IEnumerable<TableViewTypeTab> tabs,
@@ -124,7 +124,7 @@ public static class TableCatalogEditing
     }
 
     /// <summary>
-    ///     Upravi pocet riadkov na presne <paramref name="count"/> – nadbytocne od konca odoberie, chybajuce doplni.
+    /// Upravi pocet riadkov na presne <paramref name="count"/> – nadbytocne od konca odoberie, chybajuce doplni.
     /// </summary>
     /// <param name="rows">Riadky tabule.</param>
     /// <param name="count">Pozadovany pocet riadkov.</param>
@@ -135,7 +135,7 @@ public static class TableCatalogEditing
         while (rows.Count < count) rows.Add(create());
     }
     /// <summary>
-    ///     Hlboka kopia katalogovej tabule (stlpce, riadky, poradie stlpcov; TabTab a vyrobca su zdielane).
+    /// Hlboka kopia katalogovej tabule (stlpce, riadky, poradie stlpcov; TabTab a vyrobca su zdielane).
     /// </summary>
     public static TableCatalog Clone(TableCatalog source) => new()
     {
@@ -152,8 +152,8 @@ public static class TableCatalogEditing
     };
 
     /// <summary>
-    ///     Novy stlpec za poslednym stlpcom: na jeho riadku, od jeho konca, siroky 64 bodov (zarovnane na sirku znaku
-    ///     tabule), s jeho pismom; kluc a nazov su volne.
+    /// Novy stlpec za poslednym stlpcom: na jeho riadku, od jeho konca, siroky 64 bodov (zarovnane na sirku znaku
+    /// tabule), s jeho pismom; kluc a nazov su volne.
     /// </summary>
     /// <param name="table">katalogova tabula</param>
     /// <param name="name">zaklad nazvu noveho stlpca</param>
@@ -181,7 +181,7 @@ public static class TableCatalogEditing
     }
 
     /// <summary>
-    ///     Texty na tabuliach, ktore sa zobrazuju v stlpci <paramref name="item" />.
+    /// Texty na tabuliach, ktore sa zobrazuju v stlpci <paramref name="item" />.
     /// </summary>
     public static List<TableText> TextsUsing(TableItem item, IEnumerable<TableText> texts) =>
         texts.Where(text => text.Realizations.Any(r => ReferenceEquals(r.Item, item))).ToList();

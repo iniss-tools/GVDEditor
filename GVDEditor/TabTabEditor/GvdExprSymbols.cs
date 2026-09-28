@@ -5,8 +5,8 @@ using ToolsCore.TabTab;
 namespace GVDEditor.TabTabEditor;
 
 /// <summary>
-///     Symboly nacitaneho grafikonu pre kontrolu vyrazov a TabTab: druhy vlakov z TrTypes.txt, stanice,
-///     kolaje a dopravcovia.
+/// Symboly nacitaneho grafikonu pre kontrolu vyrazov a TabTab: druhy vlakov z TrTypes.txt, stanice,
+/// kolaje a dopravcovia.
 /// </summary>
 internal sealed class GvdExprSymbols : IExprSymbolProvider
 {
@@ -16,7 +16,7 @@ internal sealed class GvdExprSymbols : IExprSymbolProvider
     private readonly HashSet<string> _operators;
 
     /// <summary>
-    ///     Zostavi symboly z aktualnych dat v <see cref="GlobData"/>.
+    /// Zostavi symboly z aktualnych dat v <see cref="GlobData"/>.
     /// </summary>
     public GvdExprSymbols()
     {
@@ -51,8 +51,8 @@ internal sealed class GvdExprSymbols : IExprSymbolProvider
         _operators.Count == 0 ? null : _operators.Contains(name) || _operators.Any(o => ExprEvaluator.CzechEquals(o, name));
 
     /// <summary>
-    ///     Mena a kluce stlpcov katalogovych tabul, ktore danu sekciu TabTab pouzivaju (pre <c>%meno%</c>).
-    ///     <see langword="null"/>, ak sekciu nepouziva ziadna tabula - kontrola sa vtedy nerobi.
+    /// Mena a kluce stlpcov katalogovych tabul, ktore danu sekciu TabTab pouzivaju (pre <c>%meno%</c>).
+    /// <see langword="null"/>, ak sekciu nepouziva ziadna tabula - kontrola sa vtedy nerobi.
     /// </summary>
     public static IReadOnlyCollection<string>? ColumnNamesFor(TableTabTab tab)
     {
@@ -72,7 +72,7 @@ internal sealed class GvdExprSymbols : IExprSymbolProvider
     }
 
     /// <summary>
-    ///     Nastavenia kontroly sekcie TabTab pre danu sekciu.
+    /// Nastavenia kontroly sekcie TabTab pre danu sekciu.
     /// </summary>
     public TabTabValidationOptions OptionsFor(TableTabTab tab) => new()
     {

@@ -1,18 +1,18 @@
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Koliesko mysi v oknach nastaveni: posuva stranku, nie hodnotu pola, nad ktorym sa kurzor pri posuvani ocitne.
-///     <list type="bullet">
-///         <item>Rozbalovaci zoznam kolieskom hodnotu nemeni nikdy (rozbaleny zoznam sa posuva ako doteraz).</item>
-///         <item>Ciselne pole meni hodnotu kolieskom, len ked ma fokus (pouzivatel don klikol).</item>
-///         <item>Tabulka a zoznam sa posuvaju samy, kym mozu; na zaciatku alebo konci posuva koliesko stranku.</item>
-///     </list>
-///     Posuva sa najblizsi rodic s posuvnikom (panel s udajmi polozky).
+/// Koliesko mysi v oknach nastaveni: posuva stranku, nie hodnotu pola, nad ktorym sa kurzor pri posuvani ocitne.
+/// <list type="bullet">
+/// <item>Rozbalovaci zoznam kolieskom hodnotu nemeni nikdy (rozbaleny zoznam sa posuva ako doteraz).</item>
+/// <item>Ciselne pole meni hodnotu kolieskom, len ked ma fokus (pouzivatel don klikol).</item>
+/// <item>Tabulka a zoznam sa posuvaju samy, kym mozu; na zaciatku alebo konci posuva koliesko stranku.</item>
+/// </list>
+/// Posuva sa najblizsi rodic s posuvnikom (panel s udajmi polozky).
 /// </summary>
 internal static class WheelScroll
 {
     /// <summary>
-    ///     Pripoji spravanie kolieska ku vsetkym prvkom v <paramref name="root" /> (okno so vsetkymi strankami).
+    /// Pripoji spravanie kolieska ku vsetkym prvkom v <paramref name="root" /> (okno so vsetkymi strankami).
     /// </summary>
     public static void Attach(Control root)
     {

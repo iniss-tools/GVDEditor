@@ -5,7 +5,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.TabTab;
 
 /// <summary>
-///     Dialog vyhladavania textu v editore TabTab.
+/// Dialog vyhladavania textu v editore TabTab.
 /// </summary>
 public partial class FTabTabFindReplace : Form
 {
@@ -25,7 +25,7 @@ public partial class FTabTabFindReplace : Form
     public event EventHandler<SearchingEventArgs>? Searching;
 
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FTabTabFindReplace"/>.
+    /// Vytvori novy formular typu <see cref="FTabTabFindReplace"/>.
     /// </summary>
     public FTabTabFindReplace(Scintilla scintilla, bool showReplace)
     {
@@ -164,7 +164,7 @@ public partial class FTabTabFindReplace : Form
     private void CboxBackSearching_CheckedChanged(object sender, EventArgs e) => ResetTarget();
 
     /// <summary>
-    ///     Sluzi na hladanie/nahradzovanie textu. Ci sa ma hladat alebo nahradzovat zavisi od _replaceMode.
+    /// Sluzi na hladanie/nahradzovanie textu. Ci sa ma hladat alebo nahradzovat zavisi od _replaceMode.
     /// </summary>
     /// <param name="countOnly">ci chceme len spocitat pocet najdeni</param>
     /// <param name="replaceAll">ci sa ma nahradit vsetko (iba ak _replaceMode = true)</param>
@@ -335,27 +335,27 @@ public partial class FTabTabFindReplace : Form
 }
 
 /// <summary>
-///     Trida reprezentujuca data pri hladani v TabTab editore
+/// Trida reprezentujuca data pri hladani v TabTab editore
 /// </summary>
 public class SearchingEventArgs : EventArgs
 {
     /// <summary>
-    ///     Hladany text.
+    /// Hladany text.
     /// </summary>
     public string Text { get; }
 
     /// <summary>
-    ///     Nahradzany text.
+    /// Nahradzany text.
     /// </summary>
     public string? NewText { get; }
 
     /// <summary>
-    ///     Pozicia zaciatku najdeneho vyrazu.
+    /// Pozicia zaciatku najdeneho vyrazu.
     /// </summary>
     public int StartPosition { get; }
 
     /// <summary>
-    ///     Pozicia konca najdeneho vyrazu.
+    /// Pozicia konca najdeneho vyrazu.
     /// </summary>
     public int EndPosition { get; }
 
@@ -364,7 +364,7 @@ public class SearchingEventArgs : EventArgs
     public bool Replacing => !string.IsNullOrEmpty(NewText);
 
     /// <summary>
-    ///     Konstuktor
+    /// Konstuktor
     /// </summary>
     /// <param name="startPosition"></param>
     public SearchingEventArgs(string text, int startPosition, int endPosition, string? newText)

@@ -3,58 +3,58 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Domain.Editing;
 
 /// <summary>
-///     Jeden riadok zostavy logickej tabule: suvisly rozsah zaznamov logickej tabule, ktory ide na jednu fyzicku
-///     tabulu od urceneho riadku s jednym typom zobrazenia. Cisla su od 1 ako v okne (zaznam 1 = <c>nnn</c> 001,
-///     riadok 1 = <c>POSITION</c> 0).
+/// Jeden riadok zostavy logickej tabule: suvisly rozsah zaznamov logickej tabule, ktory ide na jednu fyzicku
+/// tabulu od urceneho riadku s jednym typom zobrazenia. Cisla su od 1 ako v okne (zaznam 1 = <c>nnn</c> 001,
+/// riadok 1 = <c>POSITION</c> 0).
 /// </summary>
 public sealed class TableLogicalSegment
 {
     /// <summary>
-    ///     Fyzicka tabula, na ktoru sa zaznamy posielaju.
+    /// Fyzicka tabula, na ktoru sa zaznamy posielaju.
     /// </summary>
     public TablePhysical Table { get; set; } = null!;
 
     /// <summary>
-    ///     Prvy zaznam logickej tabule v rozsahu (od 1).
+    /// Prvy zaznam logickej tabule v rozsahu (od 1).
     /// </summary>
     public int FirstRecord { get; set; }
 
     /// <summary>
-    ///     Posledny zaznam logickej tabule v rozsahu (od 1).
+    /// Posledny zaznam logickej tabule v rozsahu (od 1).
     /// </summary>
     public int LastRecord { get; set; }
 
     /// <summary>
-    ///     Riadok fyzickej tabule, na ktory ide <see cref="FirstRecord" /> (od 1); dalsie zaznamy idu na nasledujuce riadky.
+    /// Riadok fyzickej tabule, na ktory ide <see cref="FirstRecord" /> (od 1); dalsie zaznamy idu na nasledujuce riadky.
     /// </summary>
     public int StartRow { get; set; }
 
     /// <summary>
-    ///     Typ zobrazenia umiestneni (<c>TYPE_VIEW_KEY_nnn_mmm</c>).
+    /// Typ zobrazenia umiestneni (<c>TYPE_VIEW_KEY_nnn_mmm</c>).
     /// </summary>
     public TableViewType TypeView { get; set; } = null!;
 
     /// <summary>
-    ///     Posledny riadok fyzickej tabule, na ktory rozsah siaha (od 1).
+    /// Posledny riadok fyzickej tabule, na ktory rozsah siaha (od 1).
     /// </summary>
     public int EndRow => StartRow + LastRecord - FirstRecord;
 
     /// <summary>
-    ///     Kopia riadku.
+    /// Kopia riadku.
     /// </summary>
     public TableLogicalSegment Clone() => (TableLogicalSegment)MemberwiseClone();
 }
 
 /// <summary>
-///     Prevod medzi umiestneniami zaznamov logickej tabule (<see cref="TableRecord" />) a zostavou
-///     (<see cref="TableLogicalSegment" />), s ktorou pracuje okno logickej tabule.
+/// Prevod medzi umiestneniami zaznamov logickej tabule (<see cref="TableRecord" />) a zostavou
+/// (<see cref="TableLogicalSegment" />), s ktorou pracuje okno logickej tabule.
 /// </summary>
 public static class TableLogicalLayout
 {
     /// <summary>
-    ///     Rozlozi umiestnenia zaznamov na co najmenej riadkov zostavy tak, aby <see cref="ToRecords" /> vratil
-    ///     presne tie iste umiestnenia v tom istom poradi. Susedne zaznamy sa spoja do jedneho riadku, ak idu na tu istu
-    ///     fyzicku tabulu na susedne riadky s tym istym typom zobrazenia.
+    /// Rozlozi umiestnenia zaznamov na co najmenej riadkov zostavy tak, aby <see cref="ToRecords" /> vratil
+    /// presne tie iste umiestnenia v tom istom poradi. Susedne zaznamy sa spoja do jedneho riadku, ak idu na tu istu
+    /// fyzicku tabulu na susedne riadky s tym istym typom zobrazenia.
     /// </summary>
     /// <param name="records">Zaznamy logickej tabule.</param>
     /// <returns>Riadky zostavy v poradi, ktore zachova poradie umiestneni v kazdom zazname.</returns>
@@ -111,8 +111,8 @@ public static class TableLogicalLayout
     }
 
     /// <summary>
-    ///     Zostavi zaznamy logickej tabule zo zostavy. Umiestnenia kazdeho zaznamu su v poradi riadkov zostavy;
-    ///     casti rozsahov za <paramref name="recordCount" /> sa ignoruju.
+    /// Zostavi zaznamy logickej tabule zo zostavy. Umiestnenia kazdeho zaznamu su v poradi riadkov zostavy;
+    /// casti rozsahov za <paramref name="recordCount" /> sa ignoruju.
     /// </summary>
     /// <param name="segments">Riadky zostavy.</param>
     /// <param name="recordCount">Pocet zaznamov logickej tabule.</param>
@@ -135,7 +135,7 @@ public static class TableLogicalLayout
     }
 
     /// <summary>
-    ///     Porovna umiestnenia dvoch zoznamov zaznamov (pocet zaznamov, poradie umiestneni, fyzicka tabula, riadok a typ).
+    /// Porovna umiestnenia dvoch zoznamov zaznamov (pocet zaznamov, poradie umiestneni, fyzicka tabula, riadok a typ).
     /// </summary>
     /// <returns>Popis prvej odlisnosti alebo <see langword="null" />, ak su zhodne.</returns>
     public static string? FindDifference(IReadOnlyList<TableRecord> expected, IReadOnlyList<TableRecord> actual)
@@ -159,15 +159,15 @@ public static class TableLogicalLayout
     }
 
     /// <summary>
-    ///     Ci sa umiestnenia daju vyjadrit zostavou - zostava z nich musi dat presne tie iste umiestnenia a riadky
-    ///     fyzickych tabul musia byt od 1 (zaporny <c>POSITION</c> okno nevie zobrazit).
+    /// Ci sa umiestnenia daju vyjadrit zostavou - zostava z nich musi dat presne tie iste umiestnenia a riadky
+    /// fyzickych tabul musia byt od 1 (zaporny <c>POSITION</c> okno nevie zobrazit).
     /// </summary>
     public static bool IsExpressible(IReadOnlyList<TableRecord> records, IReadOnlyList<TableLogicalSegment> segments) =>
         segments.All(segment => segment.StartRow >= 1) &&
         FindDifference(records, ToRecords(segments, records.Count)) == null;
 
     /// <summary>
-    ///     Hlboka kopia zaznamov (nove <see cref="TableRecord" /> a <see cref="TablePosition" />, tie iste fyzicke tabule).
+    /// Hlboka kopia zaznamov (nove <see cref="TableRecord" /> a <see cref="TablePosition" />, tie iste fyzicke tabule).
     /// </summary>
     public static List<TableRecord> CloneRecords(IEnumerable<TableRecord> records) =>
         records.Select(record => new TableRecord
@@ -179,14 +179,14 @@ public static class TableLogicalLayout
         }).ToList();
 
     /// <summary>
-    ///     Typy zobrazenia, ktore fyzicka tabula podporuje (<c>TYPE_VIEW_TAB_KEY</c> jej katalogovej tabule).
+    /// Typy zobrazenia, ktore fyzicka tabula podporuje (<c>TYPE_VIEW_TAB_KEY</c> jej katalogovej tabule).
     /// </summary>
     public static List<TableViewType> SupportedViewTypes(TablePhysical table) =>
         table.TableCatalog?.ViewTypeTabs.Select(tab => tab.ViewType).Distinct().ToList() ?? new List<TableViewType>();
 
     /// <summary>
-    ///     Zmena poctu zaznamov z <paramref name="oldCount" /> na <paramref name="newCount" />: rozsahy za novym koncom
-    ///     sa skratia alebo odstrania, rozsahy konciace na povodnom poslednom zazname sa predlzia na novy posledny.
+    /// Zmena poctu zaznamov z <paramref name="oldCount" /> na <paramref name="newCount" />: rozsahy za novym koncom
+    /// sa skratia alebo odstrania, rozsahy konciace na povodnom poslednom zazname sa predlzia na novy posledny.
     /// </summary>
     public static void Resize(List<TableLogicalSegment> segments, int oldCount, int newCount)
     {
@@ -211,8 +211,8 @@ public static class TableLogicalLayout
     }
 
     /// <summary>
-    ///     Zmena typu logickej tabule prenesie novy typ na riadky zostavy, ktore mali doterajsi typ a ktorych fyzicka
-    ///     tabula novy typ podporuje.
+    /// Zmena typu logickej tabule prenesie novy typ na riadky zostavy, ktore mali doterajsi typ a ktorych fyzicka
+    /// tabula novy typ podporuje.
     /// </summary>
     /// <returns>Ci sa niektory riadok zmenil.</returns>
     public static bool ChangeViewType(IEnumerable<TableLogicalSegment> segments, TableViewType? oldType, TableViewType newType)
@@ -235,8 +235,8 @@ public static class TableLogicalLayout
     }
 
     /// <summary>
-    ///     Novy riadok zostavy pre fyzicku tabulu: vsetky zaznamy od 1. riadku, s typom logickej tabule, ak ho katalog
-    ///     fyzickej tabule podporuje, inak s prvym podporovanym.
+    /// Novy riadok zostavy pre fyzicku tabulu: vsetky zaznamy od 1. riadku, s typom logickej tabule, ak ho katalog
+    /// fyzickej tabule podporuje, inak s prvym podporovanym.
     /// </summary>
     public static TableLogicalSegment NewSegment(TablePhysical table, int recordCount, TableViewType? tableType)
     {

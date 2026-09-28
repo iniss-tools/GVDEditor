@@ -7,8 +7,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Vlastne stanice v okne Lokalne nastavenia - stanice mimo zvukovej banky (Stanice.txt) s upravou
-///     priamo v tabulke. Zmeny idu rovno do <see cref="GlobData.CustomStations" />, Zrusit okna ich vrati.
+/// Stranka Vlastne stanice v okne Lokalne nastavenia - stanice mimo zvukovej banky (Stanice.txt) s upravou
+/// priamo v tabulke. Zmeny idu rovno do <see cref="GlobData.CustomStations" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class CustomStationsPage : UserControl, ISettingsPage
 {
@@ -17,7 +17,7 @@ public partial class CustomStationsPage : UserControl, ISettingsPage
     private bool _loading;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public CustomStationsPage()
     {
@@ -38,7 +38,7 @@ public partial class CustomStationsPage : UserControl, ISettingsPage
     public void FocusFirstProblem() => _grid.FocusFirstProblem();
 
     /// <summary>
-    ///     Naplni tabulku vlastnymi stanicami - volat az po nastaveni temy okna.
+    /// Naplni tabulku vlastnymi stanicami - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="gvdStationName">nazov stanice grafikonu (vlastna stanica sa nesmie volat rovnako)</param>
     public void LoadData(string gvdStationName)

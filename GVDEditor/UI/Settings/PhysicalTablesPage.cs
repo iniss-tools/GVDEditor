@@ -10,8 +10,8 @@ using Field = GVDEditor.Domain.Rules.TablePhysicalRules.Field;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Fyzicke tabule v okne Lokalne nastavenia - zoznam tabul a udaje vybranej tabule s upravou priamo
-///     v poliach. Zmeny idu rovno do <see cref="GlobData.TablePhysicals" />, Zrusit okna ich vrati.
+/// Stranka Fyzicke tabule v okne Lokalne nastavenia - zoznam tabul a udaje vybranej tabule s upravou priamo
+/// v poliach. Zmeny idu rovno do <see cref="GlobData.TablePhysicals" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class PhysicalTablesPage : UserControl, ISettingsPage
 {
@@ -24,7 +24,7 @@ public partial class PhysicalTablesPage : UserControl, ISettingsPage
     private Color _hintColor;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public PhysicalTablesPage()
     {
@@ -54,7 +54,7 @@ public partial class PhysicalTablesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Naplni stranku - volat az po nastaveni temy okna.
+    /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
     public void LoadData()
     {

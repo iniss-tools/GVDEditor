@@ -11,9 +11,9 @@ using Field = GVDEditor.Domain.Rules.TableLogicalRules.Field;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Logicke tabule v okne Lokalne nastavenia - zoznam tabul a udaje vybranej tabule so zostavou
-///     (ktore zaznamy idu na ktoru fyzicku tabulu) s upravou priamo v poliach a v tabulke. Zmeny idu rovno do
-///     <see cref="GlobData.TableLogicals" />, Zrusit okna ich vrati.
+/// Stranka Logicke tabule v okne Lokalne nastavenia - zoznam tabul a udaje vybranej tabule so zostavou
+/// (ktore zaznamy idu na ktoru fyzicku tabulu) s upravou priamo v poliach a v tabulke. Zmeny idu rovno do
+/// <see cref="GlobData.TableLogicals" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class LogicalTablesPage : UserControl, ISettingsPage
 {
@@ -34,7 +34,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     private Color _hintColor;
 
     /// <summary>
-    ///     Polozka ponuky stanic - cislo a nazov.
+    /// Polozka ponuky stanic - cislo a nazov.
     /// </summary>
     private sealed record StationItem(int Id, string Name)
     {
@@ -42,7 +42,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public LogicalTablesPage()
     {
@@ -79,7 +79,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Naplni stranku - volat az po nastaveni temy okna.
+    /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="station">stanica grafikonu - prva v ponuke stanic</param>
     internal void LoadData(Station station)
@@ -118,8 +118,8 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     private static string Label(TableLogical table) => string.IsNullOrWhiteSpace(table.Name) ? table.Key : table.Name;
 
     /// <summary>
-    ///     Ponuka stanic: najprv stanica tohto grafikonu, potom stanice ostatnych grafikonov. Pole je editovatelne,
-    ///     takze sa da zadat aj ine cislo.
+    /// Ponuka stanic: najprv stanica tohto grafikonu, potom stanice ostatnych grafikonov. Pole je editovatelne,
+    /// takze sa da zadat aj ine cislo.
     /// </summary>
     private void FillStations()
     {
@@ -150,7 +150,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Zostava tabule - pri prvom otvoreni tabule sa rozlozi z umiestneni zaznamov.
+    /// Zostava tabule - pri prvom otvoreni tabule sa rozlozi z umiestneni zaznamov.
     /// </summary>
     private List<TableLogicalSegment>? SegmentsOf(TableLogical table)
     {
@@ -258,8 +258,8 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Bunke typu zobrazenia ponukne len typy, ktore podporuje katalog fyzickej tabule riadku (plus aktualny typ,
-    ///     ak ho katalog nepodporuje - aby sa dal zobrazit a nestratil sa).
+    /// Bunke typu zobrazenia ponukne len typy, ktore podporuje katalog fyzickej tabule riadku (plus aktualny typ,
+    /// ak ho katalog nepodporuje - aby sa dal zobrazit a nestratil sa).
     /// </summary>
     private void SetTypeCell(DataGridViewRow row, TableLogicalSegment segment)
     {
@@ -284,7 +284,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Po zmene zostavy zapise umiestnenia zaznamov do tabule.
+    /// Po zmene zostavy zapise umiestnenia zaznamov do tabule.
     /// </summary>
     private void ApplyZostava()
     {

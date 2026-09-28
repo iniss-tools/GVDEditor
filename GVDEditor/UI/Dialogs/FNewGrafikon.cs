@@ -7,17 +7,17 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Dialogs;
 
 /// <summary>
-///     Dialog - Novy grafikon.
+/// Dialog - Novy grafikon.
 /// </summary>
 public partial class FNewGrafikon : Form
 {
     /// <summary>
-    ///     Novy grafikon.
+    /// Novy grafikon.
     /// </summary>
     public GVDInfo GvdInfo { get; private set; } = null!;
 
     /// <summary>
-    ///     Novy priecinok s grafikonom.
+    /// Novy priecinok s grafikonom.
     /// </summary>
     public DirList NewDir { get; private set; } = null!;
 
@@ -28,7 +28,7 @@ public partial class FNewGrafikon : Form
     private readonly IReadOnlyList<GVDDirectory> _grafikony;
 
     /// <summary>
-    ///     Predloha stavoveho diagramu, ktora sa zapise do noveho grafikonu.
+    /// Predloha stavoveho diagramu, ktora sa zapise do noveho grafikonu.
     /// </summary>
     public StateDgmTemplate Template => cbStateDgmTemplate.SelectedIndex switch
     {
@@ -38,7 +38,7 @@ public partial class FNewGrafikon : Form
     };
 
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FNewGrafikon"/>.
+    /// Vytvori novy formular typu <see cref="FNewGrafikon"/>.
     /// </summary>
     /// <param name="grafikony">Všetky grafikony otvorenej inštalácie INISSu.</param>
     public FNewGrafikon(IReadOnlyList<GVDDirectory> grafikony)
@@ -190,7 +190,7 @@ public partial class FNewGrafikon : Form
     }
 
     /// <summary>
-    ///     Skontroluje nazov priecinka noveho grafikonu.
+    /// Skontroluje nazov priecinka noveho grafikonu.
     /// </summary>
     /// <returns>Text chyby, alebo <see langword="null" />, ak je nazov v poriadku.</returns>
     internal static string? CheckDirName(string name, IEnumerable<string> existingDirs)

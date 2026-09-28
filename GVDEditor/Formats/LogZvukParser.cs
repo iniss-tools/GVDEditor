@@ -5,9 +5,9 @@ using ToolsCore.Tools;
 namespace GVDEditor.Formats;
 
 /// <summary>
-///     Citac binarneho suboru RAWBANK\LogZvuk.usr - pouzivatelskej polovice logickej zvukovej banky,
-///     v ktorej INISS uklada texty vyluk, odklonov a dodatkov zalozene obsluhou.
-///     Subor je MFC CArchive bez hlavicky: int32 pocet poloziek a potom objekty SLogTextConstReport.
+/// Citac binarneho suboru RAWBANK\LogZvuk.usr - pouzivatelskej polovice logickej zvukovej banky,
+/// v ktorej INISS uklada texty vyluk, odklonov a dodatkov zalozene obsluhou.
+/// Subor je MFC CArchive bez hlavicky: int32 pocet poloziek a potom objekty SLogTextConstReport.
 /// </summary>
 internal static class LogZvukParser
 {
@@ -20,8 +20,8 @@ internal static class LogZvukParser
     private const ushort TAG_CLASS_REF = 0x8000;
 
     /// <summary>
-    ///     Precita subor LogZvuk.usr zo zvukovej banky. Ak subor neexistuje, vrati prazdny zoznam (obsluha zatial nic nezalozila).
-    ///     Pri poskodenom subore vrati polozky precitane po chybu a chybu zaloguje.
+    /// Precita subor LogZvuk.usr zo zvukovej banky. Ak subor neexistuje, vrati prazdny zoznam (obsluha zatial nic nezalozila).
+    /// Pri poskodenom subore vrati polozky precitane po chybu a chybu zaloguje.
     /// </summary>
     public static List<LogZvukText> ReadLogZvukUsr(string pathToBank)
     {
@@ -82,8 +82,8 @@ internal static class LogZvukParser
     }
 
     /// <summary>
-    ///     Precita znacku objektu MFC CArchive. Vrati meno triedy objektu alebo null, ak je objekt prazdny (00 00).
-    ///     Prvy vyskyt triedy: FF FF, schema, dlzka mena, meno. Dalsi vyskyt: 2-bajtovy odkaz s najvyssim bitom.
+    /// Precita znacku objektu MFC CArchive. Vrati meno triedy objektu alebo null, ak je objekt prazdny (00 00).
+    /// Prvy vyskyt triedy: FF FF, schema, dlzka mena, meno. Dalsi vyskyt: 2-bajtovy odkaz s najvyssim bitom.
     /// </summary>
     private static string? ReadObjectHeader(BinaryReader reader, List<string> classes)
     {
@@ -131,8 +131,8 @@ internal static class LogZvukParser
     }
 
     /// <summary>
-    ///     Precita MFC CString: 1 bajt dlzka; ak je FF, nasleduje 2-bajtova dlzka; ak je ta FFFF, nasleduje 4-bajtova.
-    ///     Znacka FF FE FF uvadza text v UTF-16.
+    /// Precita MFC CString: 1 bajt dlzka; ak je FF, nasleduje 2-bajtova dlzka; ak je ta FFFF, nasleduje 4-bajtova.
+    /// Znacka FF FE FF uvadza text v UTF-16.
     /// </summary>
     private static string ReadCString(BinaryReader reader)
     {

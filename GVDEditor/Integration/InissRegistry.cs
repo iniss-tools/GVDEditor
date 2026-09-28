@@ -3,7 +3,7 @@
 namespace GVDEditor.Integration;
 
 /// <summary>
-///     Zapisy INISSu v registroch Windows.
+/// Zapisy INISSu v registroch Windows.
 /// </summary>
 internal static class InissRegistry
 {

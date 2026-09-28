@@ -6,12 +6,12 @@ using ToolsCore.Tools;
 namespace GVDEditor.TabTabEditor;
 
 /// <summary>
-///     Spravovanie sekcii TabTab.txt: kontrola nazvu sekcie a hladanie jej pouzitia v katalogovych tabuliach.
+/// Spravovanie sekcii TabTab.txt: kontrola nazvu sekcie a hladanie jej pouzitia v katalogovych tabuliach.
 /// </summary>
 internal static class TabTabSections
 {
     /// <summary>
-    ///     Skontroluje nazov sekcie (pri pridani alebo premenovani).
+    /// Skontroluje nazov sekcie (pri pridani alebo premenovani).
     /// </summary>
     /// <param name="name">Zadany nazov; okolite medzery sa odrezu.</param>
     /// <param name="otherNames">Nazvy ostatnych sekcii (bez premenovavanej).</param>
@@ -46,7 +46,7 @@ internal static class TabTabSections
     }
 
     /// <summary>
-    ///     Najde stlpce katalogovych tabul, ktore sekciu pouzivaju ako TAB1 alebo TAB2.
+    /// Najde stlpce katalogovych tabul, ktore sekciu pouzivaju ako TAB1 alebo TAB2.
     /// </summary>
     /// <returns>Popis kazdeho pouzitia (prazdny zoznam, ak sa sekcia nepouziva).</returns>
     public static List<string> FindUsage(TableTabTab tab, IEnumerable<TableCatalog> catalogs)
@@ -68,7 +68,7 @@ internal static class TabTabSections
     }
 
     /// <summary>
-    ///     Ak sa sekcia pouziva, zobrazi chybu so zoznamom pouziti a vrati <see langword="false"/>.
+    /// Ak sa sekcia pouziva, zobrazi chybu so zoznamom pouziti a vrati <see langword="false"/>.
     /// </summary>
     public static bool CheckCanRemove(TableTabTab tab, IEnumerable<TableCatalog> catalogs)
     {

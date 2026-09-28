@@ -4,7 +4,7 @@ using GVDEditor.Domain.Rules;
 namespace GVDEditor.Tests.Domain.Rules;
 
 /// <summary>
-///     Ciselnik dopravcov grafikonu (Lokalne nastavenia → Dopravcovia, Vlastnik.txt).
+/// Ciselnik dopravcov grafikonu (Lokalne nastavenia → Dopravcovia, Vlastnik.txt).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

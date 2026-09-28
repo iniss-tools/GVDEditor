@@ -4,16 +4,16 @@ using System.Reflection;
 namespace GVDEditor.Domain.Snapshots;
 
 /// <summary>
-///     Snimka stavu grafu objektov: zapamata si hodnoty vsetkych poli dosiahnutelnych objektov a pri
-///     <see cref="Restore" /> ich zapise spat do tych istych instancii. Odkazy medzi objektmi (vlak → kolaj,
-///     kolaj → logicka tabula...) preto po obnoveni ostanu platne a objekty pridane medzitym vypadnu zo zoznamov.
+/// Snimka stavu grafu objektov: zapamata si hodnoty vsetkych poli dosiahnutelnych objektov a pri
+/// <see cref="Restore" /> ich zapise spat do tych istych instancii. Odkazy medzi objektmi (vlak → kolaj,
+/// kolaj → logicka tabula...) preto po obnoveni ostanu platne a objekty pridane medzitym vypadnu zo zoznamov.
 /// </summary>
 /// <remarks>
-///     Sledovane su len objekty, pre ktore <c>isTracked</c> vrati <see langword="true" />, polia a genericke kolekcie
-///     z <c>System.Collections.Generic</c> / <c>System.Collections.ObjectModel</c> (aj ako zaklad odvodenych tried,
-///     napr. <c>BindingList</c>). Ostatne objekty (retazce, delegaty, obrazky, zvukova banka...) sa povazuju za
-///     nemenne - obnovi sa len odkaz na ne. Delegaty sa obnovia tiez, takze odbery udalosti pridane po snimke
-///     (napr. vazby zoznamov v zatvorenom okne) zaniknu.
+/// Sledovane su len objekty, pre ktore <c>isTracked</c> vrati <see langword="true" />, polia a genericke kolekcie
+/// z <c>System.Collections.Generic</c> / <c>System.Collections.ObjectModel</c> (aj ako zaklad odvodenych tried,
+/// napr. <c>BindingList</c>). Ostatne objekty (retazce, delegaty, obrazky, zvukova banka...) sa povazuju za
+/// nemenne - obnovi sa len odkaz na ne. Delegaty sa obnovia tiez, takze odbery udalosti pridane po snimke
+/// (napr. vazby zoznamov v zatvorenom okne) zaniknu.
 /// </remarks>
 internal sealed class ObjectGraphSnapshot
 {
@@ -27,12 +27,12 @@ internal sealed class ObjectGraphSnapshot
     }
 
     /// <summary>
-    ///     Pocet zapamatanych objektov (vratane poli).
+    /// Pocet zapamatanych objektov (vratane poli).
     /// </summary>
     public int Count => _objects.Count + _arrays.Count;
 
     /// <summary>
-    ///     Zapamata stav vsetkych sledovanych objektov dosiahnutelnych z <paramref name="roots" />.
+    /// Zapamata stav vsetkych sledovanych objektov dosiahnutelnych z <paramref name="roots" />.
     /// </summary>
     /// <param name="roots">Korene grafu.</param>
     /// <param name="isTracked">Urci, ci sa objekty daneho typu (mimo kolekcii) maju sledovat.</param>
@@ -92,8 +92,8 @@ internal sealed class ObjectGraphSnapshot
     }
 
     /// <summary>
-    ///     Vrati vsetky zapamatane objekty do stavu v case snimky. Udalosti zoznamov sa pritom nevyvolaju -
-    ///     naviazane prvky treba obnovit napr. cez <c>ResetBindings</c>.
+    /// Vrati vsetky zapamatane objekty do stavu v case snimky. Udalosti zoznamov sa pritom nevyvolaju -
+    /// naviazane prvky treba obnovit napr. cez <c>ResetBindings</c>.
     /// </summary>
     public void Restore()
     {
@@ -109,7 +109,7 @@ internal sealed class ObjectGraphSnapshot
         type != typeof(string) && !typeof(Delegate).IsAssignableFrom(type);
 
     /// <summary>
-    ///     Genericke kolekcie .NET (List, Dictionary, HashSet, Collection, BindingList...) a z nich odvodene triedy.
+    /// Genericke kolekcie .NET (List, Dictionary, HashSet, Collection, BindingList...) a z nich odvodene triedy.
     /// </summary>
     private static bool IsCollection(Type type)
     {

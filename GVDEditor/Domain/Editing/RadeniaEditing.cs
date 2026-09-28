@@ -3,13 +3,13 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Domain.Editing;
 
 /// <summary>
-///     Radenia vlaku upravovane v okne vlaku (zalozka Radenie). Okno pracuje s kopiami, aby sa uprava dala zrusit;
-///     az <see cref="Commit" /> zapise zmeny do grafikonu.
+/// Radenia vlaku upravovane v okne vlaku (zalozka Radenie). Okno pracuje s kopiami, aby sa uprava dala zrusit;
+/// az <see cref="Commit" /> zapise zmeny do grafikonu.
 /// </summary>
 /// <remarks>
-///     Radenie patri cislu vlaku: ten isty objekt <see cref="Radenie" /> je v <c>GlobData.Radenia</c> aj
-///     v <see cref="Train.Radenia" /> vsetkych vlakov s tymto cislom - preto sa povodne objekty nenahradzaju, ale
-///     prepisuju sa ich vlastnosti.
+/// Radenie patri cislu vlaku: ten isty objekt <see cref="Radenie" /> je v <c>GlobData.Radenia</c> aj
+/// v <see cref="Train.Radenia" /> vsetkych vlakov s tymto cislom - preto sa povodne objekty nenahradzaju, ale
+/// prepisuju sa ich vlastnosti.
 /// </remarks>
 internal sealed class RadeniaEditing
 {
@@ -23,12 +23,12 @@ internal sealed class RadeniaEditing
     private List<Radenie> _own = [];
 
     /// <summary>
-    ///     Radenia zobrazene v okne (kopie povodnych a nove).
+    /// Radenia zobrazene v okne (kopie povodnych a nove).
     /// </summary>
     public BindingList<Radenie> Items { get; } = [];
 
     /// <summary>
-    ///     Zobrazi kopie radeni vlaku, s ktorym sa okno otvorilo; <see cref="RestoreOwn" /> sa k nim vie vratit.
+    /// Zobrazi kopie radeni vlaku, s ktorym sa okno otvorilo; <see cref="RestoreOwn" /> sa k nim vie vratit.
     /// </summary>
     /// <param name="radenia">radenia vlaku (povodne objekty)</param>
     public void LoadOwn(IEnumerable<Radenie> radenia)
@@ -38,8 +38,8 @@ internal sealed class RadeniaEditing
     }
 
     /// <summary>
-    ///     Po prevzati radeni ineho vlaku vrati radenia vlaku, s ktorym sa okno otvorilo - cislo sa uz s tym vlakom
-    ///     nezhoduje. Ak okno zobrazuje vlastne radenia, upravy v nich ostanu.
+    /// Po prevzati radeni ineho vlaku vrati radenia vlaku, s ktorym sa okno otvorilo - cislo sa uz s tym vlakom
+    /// nezhoduje. Ak okno zobrazuje vlastne radenia, upravy v nich ostanu.
     /// </summary>
     public void RestoreOwn()
     {
@@ -48,7 +48,7 @@ internal sealed class RadeniaEditing
     }
 
     /// <summary>
-    ///     Nahradi zobrazene radenia kopiami radeni vlaku - pri prevzati radeni vlaku s rovnakym cislom.
+    /// Nahradi zobrazene radenia kopiami radeni vlaku - pri prevzati radeni vlaku s rovnakym cislom.
     /// </summary>
     /// <param name="radenia">radenia vlaku (povodne objekty)</param>
     public void Load(IEnumerable<Radenie> radenia)
@@ -68,7 +68,7 @@ internal sealed class RadeniaEditing
     }
 
     /// <summary>
-    ///     Ci okno zobrazuje (kopie) prave tieto radenia - vtedy ich netreba preberat znova a zahodit upravy.
+    /// Ci okno zobrazuje (kopie) prave tieto radenia - vtedy ich netreba preberat znova a zahodit upravy.
     /// </summary>
     /// <param name="radenia">radenia ineho vlaku</param>
     public bool Shows(IEnumerable<Radenie> radenia)
@@ -79,11 +79,11 @@ internal sealed class RadeniaEditing
     }
 
     /// <summary>
-    ///     Zapise upravy do grafikonu a zosuladi <see cref="Train.Radenia" /> vlakov s <paramref name="globalRadenia" />.
+    /// Zapise upravy do grafikonu a zosuladi <see cref="Train.Radenia" /> vlakov s <paramref name="globalRadenia" />.
     /// </summary>
     /// <remarks>
-    ///     Povodne radenie sa prepise, len ak po ulozeni nepatri inemu vlaku - napr. pri kopii vlaku s inym cislom
-    ///     alebo pri zmene cisla jednej varianty zostava vlaku s povodnym cislom a ukladany vlak dostane novy objekt.
+    /// Povodne radenie sa prepise, len ak po ulozeni nepatri inemu vlaku - napr. pri kopii vlaku s inym cislom
+    /// alebo pri zmene cisla jednej varianty zostava vlaku s povodnym cislom a ukladany vlak dostane novy objekt.
     /// </remarks>
     /// <param name="train">ukladany vlak (uz s novym cislom); nemusi byt v <paramref name="trains" /></param>
     /// <param name="globalRadenia">vsetky radenia grafikonu (<c>GlobData.Radenia</c>)</param>
@@ -133,7 +133,7 @@ internal sealed class RadeniaEditing
     }
 
     /// <summary>
-    ///     Kopia radenia s vlastnymi zoznamami nahravok a hlaseni.
+    /// Kopia radenia s vlastnymi zoznamami nahravok a hlaseni.
     /// </summary>
     public static Radenie Clone(Radenie source)
     {

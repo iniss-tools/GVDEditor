@@ -9,7 +9,7 @@ using GVDEditor.Properties;
 namespace GVDEditor.UI.EditTrain;
 
 /// <summary>
-///     Stranka Vlak v okne vlaku - cislo, typ, nazov, dopravca, priznaky a vyluka.
+/// Stranka Vlak v okne vlaku - cislo, typ, nazov, dopravca, priznaky a vyluka.
 /// </summary>
 public partial class TrainBasicsPage : UserControl, ITrainPage
 {
@@ -20,7 +20,7 @@ public partial class TrainBasicsPage : UserControl, ITrainPage
     private bool _loading;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public TrainBasicsPage()
     {
@@ -31,12 +31,12 @@ public partial class TrainBasicsPage : UserControl, ITrainPage
     public event EventHandler? Changed;
 
     /// <summary>
-    ///     Cislo vlaku je dopisane (pole stratilo fokus) - okno podla neho zosuladi radenia.
+    /// Cislo vlaku je dopisane (pole stratilo fokus) - okno podla neho zosuladi radenia.
     /// </summary>
     public event EventHandler? NumberCommitted;
 
     /// <summary>
-    ///     Naplni stranku udajmi konceptu - volat az po nastaveni temy okna.
+    /// Naplni stranku udajmi konceptu - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="draft">koncept vlaku</param>
     /// <param name="names">mena vlakov zo zvukovej banky</param>
@@ -114,7 +114,7 @@ public partial class TrainBasicsPage : UserControl, ITrainPage
     }
 
     /// <summary>
-    ///     Ukaze alebo skryje pruh s oznamenim o radeni prevzatom od vlaku s rovnakym cislom.
+    /// Ukaze alebo skryje pruh s oznamenim o radeni prevzatom od vlaku s rovnakym cislom.
     /// </summary>
     internal void ShowRadeniaNotice(string? text)
     {
@@ -192,8 +192,8 @@ public partial class TrainBasicsPage : UserControl, ITrainPage
     }
 
     /// <summary>
-    ///     Polozka ponuky vyluk: kod zapisovany do grafikonu a text zobrazeny v ponuke.
-    ///     <paramref name="Source" /> je vyluka zalozena obsluhou v INISSe.
+    /// Polozka ponuky vyluk: kod zapisovany do grafikonu a text zobrazeny v ponuke.
+    /// <paramref name="Source" /> je vyluka zalozena obsluhou v INISSe.
     /// </summary>
     private sealed record LockoutItem(int Code, string Text, LogZvukText? Source = null)
     {
@@ -201,8 +201,8 @@ public partial class TrainBasicsPage : UserControl, ITrainPage
     }
 
     /// <summary>
-    ///     Naplni ponuku vyluk: ziadna (0), zabudovana obecna vyluka (1) a vyluky zalozene obsluhou v INISSe.
-    ///     Ak vlak odkazuje na kod, ktory INISS nepozna, prida sa ako neznama polozka, aby sa hodnota pri ulozeni nestratila.
+    /// Naplni ponuku vyluk: ziadna (0), zabudovana obecna vyluka (1) a vyluky zalozene obsluhou v INISSe.
+    /// Ak vlak odkazuje na kod, ktory INISS nepozna, prida sa ako neznama polozka, aby sa hodnota pri ulozeni nestratila.
     /// </summary>
     private void FillLockouts(int currentCode)
     {

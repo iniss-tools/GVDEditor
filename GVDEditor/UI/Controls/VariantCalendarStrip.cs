@@ -5,8 +5,8 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.UI.Controls;
 
 /// <summary>
-///     Pruh kalendara variant vlaku: pre kazdu variantu riadok dni obdobia, dni jazdy farebne a dni, v ktore ide
-///     viac variant naraz, cervene. Nad riadkami su mesiace. Bublina ukaze datum a varianty, ktore v den idu.
+/// Pruh kalendara variant vlaku: pre kazdu variantu riadok dni obdobia, dni jazdy farebne a dni, v ktore ide
+/// viac variant naraz, cervene. Nad riadkami su mesiace. Bublina ukaze datum a varianty, ktore v den idu.
 /// </summary>
 internal sealed class VariantCalendarStrip : Control
 {
@@ -19,7 +19,7 @@ internal sealed class VariantCalendarStrip : Control
     private int _hoverDay = -1;
 
     /// <summary>
-    ///     Vytvori prazdny pruh.
+    /// Vytvori prazdny pruh.
     /// </summary>
     public VariantCalendarStrip()
     {
@@ -29,14 +29,14 @@ internal sealed class VariantCalendarStrip : Control
     }
 
     /// <summary>
-    ///     Text popisu riadku (napr. „1/3“) podla riadku kalendara.
+    /// Text popisu riadku (napr. „1/3“) podla riadku kalendara.
     /// </summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Func<VariantCalendar.Row, string> RowLabel { get; set; } = row => $"{row.Position}";
 
     /// <summary>
-    ///     Text bubliny pre den: datum a popisy variant, ktore v nom idu.
+    /// Text bubliny pre den: datum a popisy variant, ktore v nom idu.
     /// </summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -44,7 +44,7 @@ internal sealed class VariantCalendarStrip : Control
         (date, _) => date.ToString("d", CultureInfo.CurrentCulture);
 
     /// <summary>
-    ///     Poradie varianty vybranej v tabulke (jej riadok ma ramik); 0 = ziadna.
+    /// Poradie varianty vybranej v tabulke (jej riadok ma ramik); 0 = ziadna.
     /// </summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -61,7 +61,7 @@ internal sealed class VariantCalendarStrip : Control
     }
 
     /// <summary>
-    ///     Zobrazi kalendar a prisposobi vysku poctu variant.
+    /// Zobrazi kalendar a prisposobi vysku poctu variant.
     /// </summary>
     public void SetCalendar(VariantCalendar? calendar)
     {
@@ -150,7 +150,7 @@ internal sealed class VariantCalendarStrip : Control
     private const float MinSegment = 4f;
 
     /// <summary>
-    ///     Suvisle useky dni, pre ktore plati <paramref name="test" />: (prvy den, pocet dni).
+    /// Suvisle useky dni, pre ktore plati <paramref name="test" />: (prvy den, pocet dni).
     /// </summary>
     private static IEnumerable<(int Start, int Length)> Segments(Func<int, bool> test, int days)
     {

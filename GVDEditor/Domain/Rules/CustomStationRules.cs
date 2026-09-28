@@ -5,13 +5,13 @@ using GVDEditor.Properties;
 namespace GVDEditor.Domain.Rules;
 
 /// <summary>
-///     Pravidla vlastnych stanic grafikonu (Stanice.txt). GVDEditor pri nacitani vynecha stanicu, ktorej nazov
-///     je v zvukovej banke alebo patri stanici grafikonu - taka stanica by po ulozeni zmizla.
+/// Pravidla vlastnych stanic grafikonu (Stanice.txt). GVDEditor pri nacitani vynecha stanicu, ktorej nazov
+/// je v zvukovej banke alebo patri stanici grafikonu - taka stanica by po ulozeni zmizla.
 /// </summary>
 internal static class CustomStationRules
 {
     /// <summary>
-    ///     Chyba cisla vlastnej stanice na pozicii <paramref name="index" />.
+    /// Chyba cisla vlastnej stanice na pozicii <paramref name="index" />.
     /// </summary>
     /// <param name="ids">cisla vsetkych vlastnych stanic v poradi zoznamu</param>
     /// <param name="index">pozicia kontrolovanej stanice</param>
@@ -35,7 +35,7 @@ internal static class CustomStationRules
     }
 
     /// <summary>
-    ///     Chyba nazvu vlastnej stanice na pozicii <paramref name="index" />.
+    /// Chyba nazvu vlastnej stanice na pozicii <paramref name="index" />.
     /// </summary>
     /// <param name="names">nazvy vsetkych vlastnych stanic v poradi zoznamu</param>
     /// <param name="index">pozicia kontrolovanej stanice</param>
@@ -65,7 +65,7 @@ internal static class CustomStationRules
     }
 
     /// <summary>
-    ///     Cislo pre novu vlastnu stanicu - o jedno vyssie nez najvyssie cislo v banke aj medzi vlastnymi stanicami.
+    /// Cislo pre novu vlastnu stanicu - o jedno vyssie nez najvyssie cislo v banke aj medzi vlastnymi stanicami.
     /// </summary>
     public static string SuggestId(IEnumerable<string> ids)
     {
@@ -78,7 +78,7 @@ internal static class CustomStationRules
     }
 
     /// <summary>
-    ///     Cislo stanice je kladne cele cislo bez znamienka a medzier.
+    /// Cislo stanice je kladne cele cislo bez znamienka a medzier.
     /// </summary>
     public static bool TryParseId(string id, out int number) =>
         int.TryParse(id, NumberStyles.None, CultureInfo.InvariantCulture, out number) && number > 0;

@@ -6,12 +6,12 @@ using GVDEditor.Properties;
 namespace GVDEditor.Domain.Rules;
 
 /// <summary>
-///     Kontrola audio liniek (zvukovych okruhov) tak, ako ich INISS cita pri starte.
+/// Kontrola audio liniek (zvukovych okruhov) tak, ako ich INISS cita pri starte.
 /// </summary>
 internal static partial class AudioRules
 {
     /// <summary>
-    ///     Pole audio linky, ku ktoremu sa chyba viaze.
+    /// Pole audio linky, ku ktoremu sa chyba viaze.
     /// </summary>
     public enum Field
     {
@@ -25,17 +25,17 @@ internal static partial class AudioRules
     }
 
     /// <summary>
-    ///     Kluc testovacieho okruhu namiesto cisla stanice.
+    /// Kluc testovacieho okruhu namiesto cisla stanice.
     /// </summary>
     public const string TestKey = "TEST";
 
     /// <summary>
-    ///     Ci je linka testovacim okruhom (na velkosti pismen nezalezi).
+    /// Ci je linka testovacim okruhom (na velkosti pismen nezalezi).
     /// </summary>
     public static bool IsTest(Station station) => string.Equals(station.ID, TestKey, StringComparison.OrdinalIgnoreCase);
 
     /// <summary>
-    ///     Prva chyba linky na pozicii <paramref name="index" />.
+    /// Prva chyba linky na pozicii <paramref name="index" />.
     /// </summary>
     /// <returns>Pole a text chyby, alebo <see langword="null" />, ak je linka v poriadku.</returns>
     public static (Field Field, string Message)? Check(IReadOnlyList<Audio> audios, int index)
@@ -77,8 +77,8 @@ internal static partial class AudioRules
     }
 
     /// <summary>
-    ///     Spinanie zosilnovaca: cislo vystupu ustredne 0-63, <c>E1</c>-<c>E99</c> / <c>EE1</c>-<c>EE99</c> port
-    ///     ELSVO, <c>Z…</c> (INISS ho ulozi, ale nepouzije), alebo nic.
+    /// Spinanie zosilnovaca: cislo vystupu ustredne 0-63, <c>E1</c>-<c>E99</c> / <c>EE1</c>-<c>EE99</c> port
+    /// ELSVO, <c>Z…</c> (INISS ho ulozi, ale nepouzije), alebo nic.
     /// </summary>
     public static string? CheckAmplifier(string? value)
     {
@@ -94,7 +94,7 @@ internal static partial class AudioRules
     }
 
     /// <summary>
-    ///     Parameter ustredne: cele cislo 0-65535 (posiela sa v dolnom slove spravy ovladacu), alebo nic.
+    /// Parameter ustredne: cele cislo 0-65535 (posiela sa v dolnom slove spravy ovladacu), alebo nic.
     /// </summary>
     public static string? CheckExchange(string? value)
     {
@@ -106,7 +106,7 @@ internal static partial class AudioRules
     }
 
     /// <summary>
-    ///     Uzol: cislo pocitaca, seriovy port <c>COMn</c> (aj <c>\\.\COMn</c>, <c>//./COMn</c>), alebo nic.
+    /// Uzol: cislo pocitaca, seriovy port <c>COMn</c> (aj <c>\\.\COMn</c>, <c>//./COMn</c>), alebo nic.
     /// </summary>
     public static string? CheckNode(string? value)
     {
@@ -131,7 +131,7 @@ internal static partial class AudioRules
     private static partial Regex ComPort();
 
     /// <summary>
-    ///     Nazov novej linky, ktory este v zozname nie je (<see cref="TableRules.Unique" />).
+    /// Nazov novej linky, ktory este v zozname nie je (<see cref="TableRules.Unique" />).
     /// </summary>
     public static string UniqueName(IEnumerable<Audio> audios, string name) =>
         TableRules.Unique(audios.Select(a => a.Name), name);

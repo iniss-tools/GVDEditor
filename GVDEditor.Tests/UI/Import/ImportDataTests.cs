@@ -6,7 +6,7 @@ using GVDEditor.UI.Import;
 namespace GVDEditor.Tests.UI.Import;
 
 /// <summary>
-///     Import dat (Subor → Importovat → Data…): oddelovac buniek, trasa vlaku a stanice v kratkom a dlhom hlaseni.
+/// Import dat (Subor → Importovat → Data…): oddelovac buniek, trasa vlaku a stanice v kratkom a dlhom hlaseni.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

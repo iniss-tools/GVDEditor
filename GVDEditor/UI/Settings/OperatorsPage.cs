@@ -7,8 +7,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Dopravcovia v okne Lokalne nastavenia - ciselnik dopravcov grafikonu (Vlastnik.txt) s upravou
-///     priamo v tabulke. Zmeny idu rovno do <see cref="GlobData.Operators" />, Zrusit okna ich vrati.
+/// Stranka Dopravcovia v okne Lokalne nastavenia - ciselnik dopravcov grafikonu (Vlastnik.txt) s upravou
+/// priamo v tabulke. Zmeny idu rovno do <see cref="GlobData.Operators" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class OperatorsPage : UserControl, ISettingsPage
 {
@@ -18,7 +18,7 @@ public partial class OperatorsPage : UserControl, ISettingsPage
     private bool _loading;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public OperatorsPage()
     {
@@ -39,7 +39,7 @@ public partial class OperatorsPage : UserControl, ISettingsPage
     public void FocusFirstProblem() => _grid.FocusFirstProblem();
 
     /// <summary>
-    ///     Naplni tabulku dopravcami grafikonu - volat az po nastaveni temy okna.
+    /// Naplni tabulku dopravcami grafikonu - volat az po nastaveni temy okna.
     /// </summary>
     public void LoadData()
     {

@@ -5,8 +5,8 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Tests.Domain.Editing;
 
 /// <summary>
-///     Comboboxy Stanica a Obdobie v hlavnom okne po zmene stanice alebo obdobia grafikonu v lokalnych nastaveniach
-///     (Lokalne nastavenia → Grafikon).
+/// Comboboxy Stanica a Obdobie v hlavnom okne po zmene stanice alebo obdobia grafikonu v lokalnych nastaveniach
+/// (Lokalne nastavenia → Grafikon).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

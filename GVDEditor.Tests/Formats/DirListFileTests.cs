@@ -6,8 +6,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.Tests.Formats;
 
 /// <summary>
-///     DirList.TXT: grafikon priamo v DATA (bez DirList.TXT) nesmie zapis zoznamu skryt pred INISSom - existujuci
-///     prazdny subor INISS berie ako prazdny zoznam a nenacita ziadny grafikon.
+/// DirList.TXT: grafikon priamo v DATA (bez DirList.TXT) nesmie zapis zoznamu skryt pred INISSom - existujuci
+/// prazdny subor INISS berie ako prazdny zoznam a nenacita ziadny grafikon.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

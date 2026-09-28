@@ -9,8 +9,8 @@ using GVDEditor.Properties;
 namespace GVDEditor.UI.EditTrain;
 
 /// <summary>
-///     Stranka Radenie v okne vlaku - radenia cisla vlaku; vybrane radenie sa upravuje priamo v poliach (kopie,
-///     do grafikonu sa zapisu az po OK). Radenie bez obdobia platnosti plati stale.
+/// Stranka Radenie v okne vlaku - radenia cisla vlaku; vybrane radenie sa upravuje priamo v poliach (kopie,
+/// do grafikonu sa zapisu az po OK). Radenie bez obdobia platnosti plati stale.
 /// </summary>
 public partial class TrainRadeniePage : UserControl, ITrainPage
 {
@@ -21,7 +21,7 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
     private bool _loading;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public TrainRadeniePage()
     {
@@ -34,7 +34,7 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
     private BindingList<Radenie> Radenia => _draft.Radenia.Items;
 
     /// <summary>
-    ///     Naplni stranku radeniami konceptu - volat az po nastaveni temy okna.
+    /// Naplni stranku radeniami konceptu - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="draft">koncept vlaku</param>
     /// <param name="gvdStart">zaciatok platnosti grafikonu (predvolene obdobie noveho radenia)</param>
@@ -92,7 +92,7 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
     }
 
     /// <summary>
-    ///     Ukaze alebo skryje pruh s oznamenim o radeni prevzatom od vlaku s rovnakym cislom.
+    /// Ukaze alebo skryje pruh s oznamenim o radeni prevzatom od vlaku s rovnakym cislom.
     /// </summary>
     internal void ShowRadeniaNotice(string? text)
     {
@@ -114,7 +114,7 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
         : null;
 
     /// <summary>
-    ///     Zobrazi vybrane radenie v poliach; bez vyberu su polia nedostupne.
+    /// Zobrazi vybrane radenie v poliach; bez vyberu su polia nedostupne.
     /// </summary>
     private void ShowSelected()
     {
@@ -157,7 +157,7 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
     }
 
     /// <summary>
-    ///     Zapise polia do vybraneho radenia. Bez obdobia platnosti ma radenie prazdne obdobie aj dni (tak ho cita INISS).
+    /// Zapise polia do vybraneho radenia. Bez obdobia platnosti ma radenie prazdne obdobie aj dni (tak ho cita INISS).
     /// </summary>
     private void Detail_Changed(object? sender, EventArgs e)
     {
@@ -215,7 +215,7 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
     }
 
     /// <summary>
-    ///     Nove radenie s obdobim grafikonu; nahravky sa mu zlozia tlacidlom Zlozit radenie.
+    /// Nove radenie s obdobim grafikonu; nahravky sa mu zlozia tlacidlom Zlozit radenie.
     /// </summary>
     private void bNew_Click(object? sender, EventArgs e) =>
         Add(new Radenie { ZacPlatnosti = _gvdStart, KonPlatnosti = _gvdEnd, DatObm = "", Text = "", DestStation = null! });
@@ -289,7 +289,7 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
     // ---------------------------------------------------------------- cielova stanica
 
     /// <summary>
-    ///     Polozka ponuky cielovej stanice radenia; <see cref="Station" /> null = radenie pre vlak do akejkolvek stanice.
+    /// Polozka ponuky cielovej stanice radenia; <see cref="Station" /> null = radenie pre vlak do akejkolvek stanice.
     /// </summary>
     private sealed record EndStationItem(Station? Station, string Text)
     {
@@ -297,8 +297,8 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
     }
 
     /// <summary>
-    ///     Naplni ponuku cielovej stanice radenia: ziadne obmedzenie, stanice zo zvukovej banky a vlastne stanice.
-    ///     Radenie patri cislu vlaku - obmedzenie na ciel rozlisi varianty toho isteho vlaku do roznych stanic.
+    /// Naplni ponuku cielovej stanice radenia: ziadne obmedzenie, stanice zo zvukovej banky a vlastne stanice.
+    /// Radenie patri cislu vlaku - obmedzenie na ciel rozlisi varianty toho isteho vlaku do roznych stanic.
     /// </summary>
     private void FillEndStations()
     {

@@ -8,7 +8,7 @@ using ToolsCore.Entities;
 namespace GVDEditor.Tests.Domain.Rules;
 
 /// <summary>
-///     Jazyky grafikonu (Lokalne nastavenia → Jazyky hlaseni) a ich citanie z lokalneho Categori.txt.
+/// Jazyky grafikonu (Lokalne nastavenia → Jazyky hlaseni) a ich citanie z lokalneho Categori.txt.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

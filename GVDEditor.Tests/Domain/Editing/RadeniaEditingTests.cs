@@ -6,8 +6,8 @@ using ToolsCore.Entities;
 namespace GVDEditor.Tests.Domain.Editing;
 
 /// <summary>
-///     Radenia v okne vlaku: uprava sa da zrusit (okno meni kopie), pri ulozeni ostane zachovana identita objektov
-///     zdielanych medzi GlobData.Radenia a vlakmi s rovnakym cislom a radenie ineho cisla sa nezmeni.
+/// Radenia v okne vlaku: uprava sa da zrusit (okno meni kopie), pri ulozeni ostane zachovana identita objektov
+/// zdielanych medzi GlobData.Radenia a vlakmi s rovnakym cislom a radenie ineho cisla sa nezmeni.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

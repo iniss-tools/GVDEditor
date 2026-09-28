@@ -8,8 +8,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Grafikon v okne Lokalne nastavenia - obdobia platnosti, stanica a priecinok grafikonu. Udaje sa do
-///     grafikonu zapisu az po OK (<see cref="Apply" />), priecinok sa vtedy aj premenuje (<see cref="RenamePendingDir" />).
+/// Stranka Grafikon v okne Lokalne nastavenia - obdobia platnosti, stanica a priecinok grafikonu. Udaje sa do
+/// grafikonu zapisu az po OK (<see cref="Apply" />), priecinok sa vtedy aj premenuje (<see cref="RenamePendingDir" />).
 /// </summary>
 public partial class GrafikonPage : UserControl, ISettingsPage
 {
@@ -19,12 +19,12 @@ public partial class GrafikonPage : UserControl, ISettingsPage
     private bool _loading;
 
     /// <summary>
-    ///     Novy nazov priecinka grafikonu, ktory tlacidlo Premenovat overilo; priecinok sa premenuje az pri OK.
+    /// Novy nazov priecinka grafikonu, ktory tlacidlo Premenovat overilo; priecinok sa premenuje az pri OK.
     /// </summary>
     private string? _pendingDirName;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public GrafikonPage()
     {
@@ -47,7 +47,7 @@ public partial class GrafikonPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Naplni stranku udajmi grafikonu - volat az po nastaveni temy okna.
+    /// Naplni stranku udajmi grafikonu - volat az po nastaveni temy okna.
     /// </summary>
     public void LoadData(GVDDirectory dir)
     {
@@ -93,7 +93,7 @@ public partial class GrafikonPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Navrhovany nazov priecinka podla stanice a roku zaciatku platnosti dat (priecinok sa premenuje len tlacidlom).
+    /// Navrhovany nazov priecinka podla stanice a roku zaciatku platnosti dat (priecinok sa premenuje len tlacidlom).
     /// </summary>
     private void SuggestDirName()
     {
@@ -189,7 +189,7 @@ public partial class GrafikonPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Premenuje priecinok grafikonu na nazov naplanovany tlacidlom Premenovat a zapise <c>DirList.TXT</c>.
+    /// Premenuje priecinok grafikonu na nazov naplanovany tlacidlom Premenovat a zapise <c>DirList.TXT</c>.
     /// </summary>
     /// <returns><see langword="false" />, ak sa premenovanie nepodarilo a dialog ma ostat otvoreny.</returns>
     public bool RenamePendingDir()
@@ -232,7 +232,7 @@ public partial class GrafikonPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Zapise obdobia platnosti a stanicu do grafikonu (po OK).
+    /// Zapise obdobia platnosti a stanicu do grafikonu (po OK).
     /// </summary>
     public void Apply()
     {

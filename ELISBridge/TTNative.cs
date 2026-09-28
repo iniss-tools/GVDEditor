@@ -4,13 +4,13 @@ using System.Text;
 namespace Iniss.Elis;
 
 /// <summary>
-///     Priama vrstva nad TT.dll z aplikacie Cestovne poriadky (CHAPS).
-///     Vsetky exporty su <c>stdcall</c> s nedekorovanymi menami.
+/// Priama vrstva nad TT.dll z aplikacie Cestovne poriadky (CHAPS).
+/// Vsetky exporty su <c>stdcall</c> s nedekorovanymi menami.
 /// </summary>
 /// <remarks>
-///     TT.dll je 32-bitova, takze tento kod musi bezat v x86 procese.
-///     Retazce vracia ako <c>char*</c> v kodovani CP1250 a casto do zdielaneho
-///     statickeho buffera - vycitat treba hned po volani.
+/// TT.dll je 32-bitova, takze tento kod musi bezat v x86 procese.
+/// Retazce vracia ako <c>char*</c> v kodovani CP1250 a casto do zdielaneho
+/// statickeho buffera - vycitat treba hned po volani.
 /// </remarks>
 internal static class TTNative
 {
@@ -32,9 +32,9 @@ internal static class TTNative
     public const int ErrDateOutOfRange = 18;
 
     /// <summary>
-    ///     Chybove kody, ktorymi loader hlasi, ze platený cestovny poriadok nebolo mozne
-    ///     zaregistrovat (nespravne alebo chybajuce registracne cislo). Takyto poriadok
-    ///     sa zahodi a <see cref="TTTTCount" /> ho nezapocita.
+    /// Chybove kody, ktorymi loader hlasi, ze platený cestovny poriadok nebolo mozne
+    /// zaregistrovat (nespravne alebo chybajuce registracne cislo). Takyto poriadok
+    /// sa zahodi a <see cref="TTTTCount" /> ho nezapocita.
     /// </summary>
     private static readonly int[] RegistrationErrors = [27, 28, 29];
 
@@ -76,8 +76,8 @@ internal static class TTNative
 
     /// <summary>Cislo stanice v ciselniku dopravcu - pre zeleznicne poriadky je to kod SR70.</summary>
     /// <remarks>
-    ///     Kniznica ho drzi ako int a do textu ho prevadza cez "%d" (<c>TTStKeyChar</c>).
-    ///     Vracia 0, ak stanica ziadne cislo nema.
+    /// Kniznica ho drzi ako int a do textu ho prevadza cez "%d" (<c>TTStKeyChar</c>).
+    /// Vracia 0, ak stanica ziadne cislo nema.
     /// </remarks>
     [DllImport(Dll)]
     public static extern int TTStKey(int tt, int st);
@@ -88,9 +88,9 @@ internal static class TTNative
         out IntPtr number, out IntPtr name, out IntPtr type, out uint flags);
 
     /// <summary>
-    ///     Ako <see cref="TTTrainInfo" />, ale cislo, nazov a typ su tie, ktore platia
-    ///     v stanici <paramref name="st" />. Medzistatne vlaky maju v kazdej sieti ine cislo,
-    ///     niektore menia po trase nazov (oddelene '/') alebo typ.
+    /// Ako <see cref="TTTrainInfo" />, ale cislo, nazov a typ su tie, ktore platia
+    /// v stanici <paramref name="st" />. Medzistatne vlaky maju v kazdej sieti ine cislo,
+    /// niektore menia po trase nazov (oddelene '/') alebo typ.
     /// </summary>
     [DllImport(Dll)]
     public static extern void TTTrainStationInfo(int tt, int lang, int tr, int st,
@@ -102,10 +102,10 @@ internal static class TTNative
 
     /// <summary>Ci vlak v dany den prechadza stanicou <paramref name="st" /> (0 = nie).</summary>
     /// <remarks>
-    ///     Vola sa po dnoch. Kniznica ma aj <c>TTGetTrainDateRem</c>, ktora vrati cely kalendar
-    ///     jednym volanim, ale to pole je pracovny buffer generatora textu (po volani byva
-    ///     vynulovane) a pre koncovu stanicu vlaku sa nevytvori vobec - overene porovnanim.
-    ///     Preto sa nepouziva.
+    /// Vola sa po dnoch. Kniznica ma aj <c>TTGetTrainDateRem</c>, ktora vrati cely kalendar
+    /// jednym volanim, ale to pole je pracovny buffer generatora textu (po volani byva
+    /// vynulovane) a pre koncovu stanicu vlaku sa nevytvori vobec - overene porovnanim.
+    /// Preto sa nepouziva.
     /// </remarks>
     [DllImport(Dll)]
     public static extern int TTTrainRuns(int tt, int tr, int day, int month, int year, int st, int flag);
@@ -121,14 +121,14 @@ internal static class TTNative
     public static extern IntPtr TTOwnerDesc(int tt, int lang, int owner);
 
     /// <summary>
-    ///     Trate, po ktorych vlak ide, ako retazec trojic <c>cislo:odKodu:doKodu</c> zretazenych
-    ///     dvojbodkou, napr. <c>190:5616640:5613600:180:5613600:5617915</c>. Kody su SR70.
+    /// Trate, po ktorych vlak ide, ako retazec trojic <c>cislo:odKodu:doKodu</c> zretazenych
+    /// dvojbodkou, napr. <c>190:5616640:5613600:180:5613600:5617915</c>. Kody su SR70.
     /// </summary>
     /// <param name="stFrom">Index stanice, od ktorej filtrovat, alebo -1 pre celu trasu.</param>
     /// <param name="stTo">Index stanice, po ktoru filtrovat, alebo -1 pre celu trasu.</param>
     /// <remarks>
-    ///     Cislo trate je traťové číslo (KCP), nie linka IDS - tu drzia data ako poznamku vlaku,
-    ///     pozri <see cref="TTTrRem1" />. Vracia ukazovatel do zdielaneho buffera.
+    /// Cislo trate je traťové číslo (KCP), nie linka IDS - tu drzia data ako poznamku vlaku,
+    /// pozri <see cref="TTTrRem1" />. Vracia ukazovatel do zdielaneho buffera.
     /// </remarks>
     [DllImport(Dll)]
     public static extern IntPtr TTTrLines(int tt, int tr, int stFrom, int stTo, int flags);
@@ -138,8 +138,8 @@ internal static class TTNative
     public static extern int TTTrRem1Count(int tt, int tr);
 
     /// <summary>
-    ///     Jedna vseobecna poznamka vlaku ako hotovy text, presne tak, ako ju zobrazuje TT.exe
-    ///     (napr. <c>linka R2 [IDS PLUS] (Žilina-&gt;Čadca)</c>).
+    /// Jedna vseobecna poznamka vlaku ako hotovy text, presne tak, ako ju zobrazuje TT.exe
+    /// (napr. <c>linka R2 [IDS PLUS] (Žilina-&gt;Čadca)</c>).
     /// </summary>
     [DllImport(Dll)]
     public static extern IntPtr TTTrRem1(int tt, int lang, int tr, int idx);
@@ -166,7 +166,7 @@ internal static class TTNative
     private static readonly Encoding Cp1250 = Encoding.GetEncoding(1250);
 
     /// <summary>
-    ///     Nastavi, odkial sa ma nacitat TT.dll, a rovno ju zavedie.
+    /// Nastavi, odkial sa ma nacitat TT.dll, a rovno ju zavedie.
     /// </summary>
     /// <param name="appDirectory">Priecinok s TT.dll (instalacia Cestovnych poriadkov).</param>
     /// <exception cref="DirectoryNotFoundException">ak priecinok neexistuje</exception>
@@ -187,9 +187,9 @@ internal static class TTNative
     }
 
     /// <summary>
-    ///     Zaregistruje platený cestovny poriadok - vlozi registracne cislo (a volitelne
-    ///     identifikaciu klienta) do kniznice. MUSI sa zavolat PRED <see cref="TTInit" />,
-    ///     lebo overenie prebieha pocas nacitania kazdeho .tt.
+    /// Zaregistruje platený cestovny poriadok - vlozi registracne cislo (a volitelne
+    /// identifikaciu klienta) do kniznice. MUSI sa zavolat PRED <see cref="TTInit" />,
+    /// lebo overenie prebieha pocas nacitania kazdeho .tt.
     /// </summary>
     /// <param name="registrationNumber">Zakupene registracne cislo; ak je prazdne, nerobi sa nic.</param>
     /// <param name="client">Identifikacia klienta, ak ju dataset vyzaduje (inak <see langword="null" />).</param>
@@ -206,8 +206,8 @@ internal static class TTNative
     public static bool IsRegistrationError(int error) => Array.IndexOf(RegistrationErrors, error) >= 0;
 
     /// <summary>
-    ///     Precita retazec, ktory vratila TT.dll, a dekoduje ho z CP1250.
-    ///     Kopiruje okamzite, lebo kniznica vracia ukazovatele do zdielanych bufferov.
+    /// Precita retazec, ktory vratila TT.dll, a dekoduje ho z CP1250.
+    /// Kopiruje okamzite, lebo kniznica vracia ukazovatele do zdielanych bufferov.
     /// </summary>
     public static string Str(IntPtr p)
     {

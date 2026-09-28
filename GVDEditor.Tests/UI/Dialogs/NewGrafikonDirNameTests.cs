@@ -5,7 +5,7 @@ using GVDEditor.UI.Dialogs;
 namespace GVDEditor.Tests.UI.Dialogs;
 
 /// <summary>
-///     Nazov priecinka noveho grafikonu (Subor → Novy…) - zapisuje sa do DirList.TXT, ktory ciarky neuzatvara do uvodzoviek.
+/// Nazov priecinka noveho grafikonu (Subor → Novy…) - zapisuje sa do DirList.TXT, ktory ciarky neuzatvara do uvodzoviek.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

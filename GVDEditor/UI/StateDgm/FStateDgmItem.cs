@@ -3,12 +3,12 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.StateDgm;
 
 /// <summary>
-///     Dialog s editorom prvku stavoveho diagramu (akcia, starter) a tlacidlami OK / Zrusit.
+/// Dialog s editorom prvku stavoveho diagramu (akcia, starter) a tlacidlami OK / Zrusit.
 /// </summary>
 public partial class FStateDgmItem : Form
 {
     /// <summary>
-    ///     Vytvori dialog s editorom.
+    /// Vytvori dialog s editorom.
     /// </summary>
     /// <param name="title">Titulok okna.</param>
     /// <param name="editor">Editor, ktory sa vlozi do dialogu (vyplni celu plochu nad tlacidlami).</param>

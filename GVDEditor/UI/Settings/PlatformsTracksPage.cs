@@ -10,9 +10,9 @@ using Field = GVDEditor.Domain.Rules.PlatformTrackRules.Field;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Nastupistia a kolaje v okne Lokalne nastavenia - strom nastupiste → kolaje a udaje vybranej polozky
-///     s upravou priamo v poliach. Zmeny idu rovno do <see cref="GlobData.Platforms" /> a <see cref="GlobData.Tracks" />,
-///     Zrusit okna ich vrati.
+/// Stranka Nastupistia a kolaje v okne Lokalne nastavenia - strom nastupiste → kolaje a udaje vybranej polozky
+/// s upravou priamo v poliach. Zmeny idu rovno do <see cref="GlobData.Platforms" /> a <see cref="GlobData.Tracks" />,
+/// Zrusit okna ich vrati.
 /// </summary>
 public partial class PlatformsTracksPage : UserControl, ISettingsPage
 {
@@ -27,7 +27,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
     private bool _selectFirstTrack;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public PlatformsTracksPage()
     {
@@ -54,7 +54,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Naplni stranku - volat az po nastaveni temy okna.
+    /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
     public void LoadData()
     {
@@ -78,7 +78,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Vyberie prvu kolaj (stranka otvorena cez Vlastnosti → Kolaje).
+    /// Vyberie prvu kolaj (stranka otvorena cez Vlastnosti → Kolaje).
     /// </summary>
     public void SelectFirstTrack()
     {
@@ -111,7 +111,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
     };
 
     /// <summary>
-    ///     Nastupiste, pod ktorym kolaj lezi v strome - rovnaky objekt, inak podla oznacenia.
+    /// Nastupiste, pod ktorym kolaj lezi v strome - rovnaky objekt, inak podla oznacenia.
     /// </summary>
     private static Platform? PlatformOf(Track track)
     {
@@ -192,7 +192,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Zobrazi udaje nastupista alebo kolaje.
+    /// Zobrazi udaje nastupista alebo kolaje.
     /// </summary>
     private void Show(object? item)
     {
@@ -428,7 +428,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Zoznam logickych tabul - meni sa aj na stranke Logicke tabule toho isteho okna.
+    /// Zoznam logickych tabul - meni sa aj na stranke Logicke tabule toho isteho okna.
     /// </summary>
     private void RefreshTables()
     {

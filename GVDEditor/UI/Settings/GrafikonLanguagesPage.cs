@@ -6,8 +6,8 @@ using ToolsCore.Entities;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Jazyky hlaseni v okne Lokalne nastavenia - ktore jazyky stanice grafikon pouziva (LANGUAGE_nn
-///     lokalneho Categori.txt). Vyber sa do <see cref="GlobData.LocalLanguages" /> zapise az pri OK okna.
+/// Stranka Jazyky hlaseni v okne Lokalne nastavenia - ktore jazyky stanice grafikon pouziva (LANGUAGE_nn
+/// lokalneho Categori.txt). Vyber sa do <see cref="GlobData.LocalLanguages" /> zapise az pri OK okna.
 /// </summary>
 public partial class GrafikonLanguagesPage : UserControl, ISettingsPage
 {
@@ -17,7 +17,7 @@ public partial class GrafikonLanguagesPage : UserControl, ISettingsPage
     private Color _usageColor;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public GrafikonLanguagesPage()
     {
@@ -36,7 +36,7 @@ public partial class GrafikonLanguagesPage : UserControl, ISettingsPage
     public void FocusFirstProblem() => clbLanguages.Focus();
 
     /// <summary>
-    ///     Naplni zoznam jazykmi stanice a zaskrtne jazyky grafikonu.
+    /// Naplni zoznam jazykmi stanice a zaskrtne jazyky grafikonu.
     /// </summary>
     public void LoadData()
     {
@@ -52,7 +52,7 @@ public partial class GrafikonLanguagesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Zapise vyber do jazykov grafikonu - volat pri OK okna, ked stranka nehlasi chybu.
+    /// Zapise vyber do jazykov grafikonu - volat pri OK okna, ked stranka nehlasi chybu.
     /// </summary>
     public void Apply() => GlobData.LocalLanguages = Selected();
 
@@ -93,7 +93,7 @@ public partial class GrafikonLanguagesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Polozka zoznamu - hlavny jazyk je oznaceny v texte.
+    /// Polozka zoznamu - hlavny jazyk je oznaceny v texte.
     /// </summary>
     private sealed record Item(FyzLanguage Language)
     {

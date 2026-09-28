@@ -6,12 +6,12 @@ using GVDEditor.Properties;
 namespace GVDEditor.Domain.Rules;
 
 /// <summary>
-///     Kontrola radenia vlaku (zalozka Radenie v okne vlaku).
+/// Kontrola radenia vlaku (zalozka Radenie v okne vlaku).
 /// </summary>
 internal static class RadenieRules
 {
     /// <summary>
-    ///     Pole radenia, ku ktoremu sa chyba viaze.
+    /// Pole radenia, ku ktoremu sa chyba viaze.
     /// </summary>
     public enum Field
     {
@@ -21,8 +21,8 @@ internal static class RadenieRules
     }
 
     /// <summary>
-    ///     Vsetky chyby radenia <paramref name="radenie" /> voci radeniam vlaku. Radenie bez obdobia platnosti
-    ///     (<see cref="Radenie.HasValidity" />) plati cely grafikon - obdobie ani prekrytie sa pri nom nekontroluju.
+    /// Vsetky chyby radenia <paramref name="radenie" /> voci radeniam vlaku. Radenie bez obdobia platnosti
+    /// (<see cref="Radenie.HasValidity" />) plati cely grafikon - obdobie ani prekrytie sa pri nom nekontroluju.
     /// </summary>
     /// <param name="radenie">kontrolovane radenie (hodnoty z okna)</param>
     /// <param name="radenia">radenia vlaku</param>
@@ -68,7 +68,7 @@ internal static class RadenieRules
     }
 
     /// <summary>
-    ///     Spolocne dni s inym radenim s rovnakym obdobim a cielovou stanicou - INISS by nevedel, ktore pouzit.
+    /// Spolocne dni s inym radenim s rovnakym obdobim a cielovou stanicou - INISS by nevedel, ktore pouzit.
     /// </summary>
     private static string? FindOverlap(Radenie radenie, IReadOnlyList<Radenie> radenia, int index)
     {

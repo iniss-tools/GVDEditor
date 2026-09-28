@@ -6,9 +6,9 @@ using JetBrains.Annotations;
 namespace Iniss.Elis;
 
 /// <summary>
-///     Vysledok jedneho vycitania dat z programu ELIS (Cestovne poriadky, CHAPS).
-///     Tento subor je zdielany medzi projektom ELISBridge (x86 host nad TT.dll)
-///     a GVDEditorom, ktory ho linkuje - preto nesmie zavisiet na niecom z GVDEditora.
+/// Vysledok jedneho vycitania dat z programu ELIS (Cestovne poriadky, CHAPS).
+/// Tento subor je zdielany medzi projektom ELISBridge (x86 host nad TT.dll)
+/// a GVDEditorom, ktory ho linkuje - preto nesmie zavisiet na niecom z GVDEditora.
 /// </summary>
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public sealed class ElisResult
@@ -58,7 +58,7 @@ public sealed class ElisResult
 }
 
 /// <summary>
-///     Jeden vlak tak, ako ho vracia TT.dll - bez naviazania na entity GVDEditora.
+/// Jeden vlak tak, ako ho vracia TT.dll - bez naviazania na entity GVDEditora.
 /// </summary>
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public sealed class ElisTrain
@@ -94,8 +94,8 @@ public sealed class ElisTrain
     public string OperatorNumber { get; set; } = null!;
 
     /// <summary>
-    ///     Linka integrovaneho dopravneho systemu, na ktorej vlak do stanice PRICHADZA
-    ///     (napr. "R2"). Prazdne, ak stanica do ziadneho IDS nepatri alebo vlak tam linku nema.
+    /// Linka integrovaneho dopravneho systemu, na ktorej vlak do stanice PRICHADZA
+    /// (napr. "R2"). Prazdne, ak stanica do ziadneho IDS nepatri alebo vlak tam linku nema.
     /// </summary>
     public string LineArrival { get; set; } = "";
 
@@ -106,8 +106,8 @@ public sealed class ElisTrain
     public string LineSystem { get; set; } = "";
 
     /// <summary>
-    ///     Traťové číslo (podla knizneho cestovneho poriadku), po ktorom vlak do stanice
-    ///     prichadza - napr. "190". Na rozdiel od <see cref="LineArrival" /> ho maju vsetky vlaky.
+    /// Traťové číslo (podla knizneho cestovneho poriadku), po ktorom vlak do stanice
+    /// prichadza - napr. "190". Na rozdiel od <see cref="LineArrival" /> ho maju vsetky vlaky.
     /// </summary>
     public string RailLineArrival { get; set; } = "";
 
@@ -115,21 +115,21 @@ public sealed class ElisTrain
     public string RailLineDeparture { get; set; } = "";
 
     /// <summary>
-    ///     Datumove obmedzenie ako retazec '0'/'1' dlzky <see cref="ElisResult.TotalDays" />,
-    ///     kde index 0 zodpoveda <see cref="ElisResult.ValidFrom" />.
+    /// Datumove obmedzenie ako retazec '0'/'1' dlzky <see cref="ElisResult.TotalDays" />,
+    /// kde index 0 zodpoveda <see cref="ElisResult.ValidFrom" />.
     /// </summary>
     public string RunsBits { get; set; } = null!;
 }
 
 /// <summary>
-///     Zastavka na trase vlaku.
+/// Zastavka na trase vlaku.
 /// </summary>
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 public sealed class ElisStop
 {
     /// <summary>
-    ///     Cislo stanice (SR70), ktore je zaroven ID stanice v zvukovej banke INISS - jednoznacny
-    ///     kluc na parovanie. 0, ak ho ELIS pre danu zastavku nema.
+    /// Cislo stanice (SR70), ktore je zaroven ID stanice v zvukovej banke INISS - jednoznacny
+    /// kluc na parovanie. 0, ak ho ELIS pre danu zastavku nema.
     /// </summary>
     public int Code { get; set; }
 

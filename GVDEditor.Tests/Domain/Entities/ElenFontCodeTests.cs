@@ -6,7 +6,7 @@ using GVDEditor.Properties;
 namespace GVDEditor.Tests.Domain.Entities;
 
 /// <summary>
-///     Vyznam cisla pisma pri tabuliach ELEN (Lokalne nastavenia → Pisma, ModeTabs.TXT [FONT]).
+/// Vyznam cisla pisma pri tabuliach ELEN (Lokalne nastavenia → Pisma, ModeTabs.TXT [FONT]).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

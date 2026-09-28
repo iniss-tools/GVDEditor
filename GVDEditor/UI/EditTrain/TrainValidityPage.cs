@@ -11,9 +11,9 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.EditTrain;
 
 /// <summary>
-///     Stranka Platnost v okne vlaku - datumove obmedzenie, obdobie platnosti a varianty vlaku: vlaky s rovnakym
-///     cislom, nazvom a typom s pruhom kalendara ich dni. Cisla variant prideluje GVDEditor sam; prekrytie dni je len
-///     upozornenie a spolocne dni sa daju pridelit jednej variante. Ine varianty sa zmenia az po ulozeni vlaku.
+/// Stranka Platnost v okne vlaku - datumove obmedzenie, obdobie platnosti a varianty vlaku: vlaky s rovnakym
+/// cislom, nazvom a typom s pruhom kalendara ich dni. Cisla variant prideluje GVDEditor sam; prekrytie dni je len
+/// upozornenie a spolocne dni sa daju pridelit jednej variante. Ine varianty sa zmenia az po ulozeni vlaku.
 /// </summary>
 public partial class TrainValidityPage : UserControl, ITrainPage
 {
@@ -28,7 +28,7 @@ public partial class TrainValidityPage : UserControl, ITrainPage
     private bool _loading;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public TrainValidityPage()
     {
@@ -40,7 +40,7 @@ public partial class TrainValidityPage : UserControl, ITrainPage
     public event EventHandler? Changed;
 
     /// <summary>
-    ///     Naplni stranku udajmi konceptu - volat az po nastaveni temy okna.
+    /// Naplni stranku udajmi konceptu - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="draft">koncept vlaku</param>
     /// <param name="context">grafikon</param>
@@ -105,7 +105,7 @@ public partial class TrainValidityPage : UserControl, ITrainPage
     // ---------------------------------------------------------------- varianty
 
     /// <summary>
-    ///     Obnovi popis, pruh kalendara a tabulku variant - zavisia od cisla, nazvu a typu vlaku aj od jeho dni.
+    /// Obnovi popis, pruh kalendara a tabulku variant - zavisia od cisla, nazvu a typu vlaku aj od jeho dni.
     /// </summary>
     private void RefreshVariants()
     {
@@ -259,7 +259,7 @@ public partial class TrainValidityPage : UserControl, ITrainPage
     private void bEditOther_Click(object? sender, EventArgs e) => EditOther();
 
     /// <summary>
-    ///     Upravi dni vybranej varianty; pri prekryti navrhne dni bez spolocnych. Vlak sa zmeni az po ulozeni.
+    /// Upravi dni vybranej varianty; pri prekryti navrhne dni bez spolocnych. Vlak sa zmeni az po ulozeni.
     /// </summary>
     private void EditOther()
     {
@@ -280,7 +280,7 @@ public partial class TrainValidityPage : UserControl, ITrainPage
     private void bGiveOther_Click(object? sender, EventArgs e) => GiveCommonDays(false);
 
     /// <summary>
-    ///     Spolocne dni s vybranou variantou prideli tomuto vlaku alebo jej.
+    /// Spolocne dni s vybranou variantou prideli tomuto vlaku alebo jej.
     /// </summary>
     private void GiveCommonDays(bool toThis)
     {

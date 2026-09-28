@@ -1,7 +1,7 @@
 ﻿namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Definuje varianty reportu
+/// Definuje varianty reportu
 /// </summary>
 /// <param name="Key">Kluc varianty reportu.</param>
 /// <param name="Name">Nazov varianty reportu.</param>
@@ -11,8 +11,8 @@ public sealed record ReportVariant(int Key, string Name)
     public override string ToString() => Name;
 
     /// <summary>
-    ///     Vrati predvolene hodnoty variant reportov. Na poradi zalezi: prvy variant (VARIANT_01, velke pismeno typu)
-    ///     je v INISSe dlhe hlasenie, druhy (VARIANT_02, male pismeno) kratke.
+    /// Vrati predvolene hodnoty variant reportov. Na poradi zalezi: prvy variant (VARIANT_01, velke pismeno typu)
+    /// je v INISSe dlhe hlasenie, druhy (VARIANT_02, male pismeno) kratke.
     /// </summary>
     /// <returns></returns>
     public static List<ReportVariant> GetDefaultValues()
@@ -22,9 +22,9 @@ public sealed record ReportVariant(int Key, string Name)
     }
 
     /// <summary>
-    ///     Starsie verzie GVDEditora zakladali grafikony s prehodenymi nazvami variantov (VARIANT_01 = Kratke hlasenie).
-    ///     INISS nazvy nepouziva, takze sa opravia len popisky; pismena a mapy vlakov ostanu bezo zmeny.
-    ///     Opravi sa len presne tato dvojica nazvov, vlastne nazvy pouzivatela sa nemenia.
+    /// Starsie verzie GVDEditora zakladali grafikony s prehodenymi nazvami variantov (VARIANT_01 = Kratke hlasenie).
+    /// INISS nazvy nepouziva, takze sa opravia len popisky; pismena a mapy vlakov ostanu bezo zmeny.
+    /// Opravi sa len presne tato dvojica nazvov, vlastne nazvy pouzivatela sa nemenia.
     /// </summary>
     /// <param name="variants">varianty nacitane z Categori.txt (nie instancie z <see cref="GetDefaultValues" />)</param>
     /// <returns>true, ak sa nazvy opravili</returns>

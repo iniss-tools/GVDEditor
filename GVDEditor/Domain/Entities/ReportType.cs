@@ -1,12 +1,12 @@
 ﻿namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Typ reportu
+/// Typ reportu
 /// </summary>
 public sealed record ReportType
 {
     /// <summary>
-    ///     Konstruktor
+    /// Konstruktor
     /// </summary>
     /// <param name="key"></param>
     /// <param name="name"></param>
@@ -28,17 +28,17 @@ public sealed record ReportType
     }
 
     /// <summary>
-    ///     Kluc reportu
+    /// Kluc reportu
     /// </summary>
     public string Key { get; }
 
     /// <summary>
-    ///     Nazov reportu
+    /// Nazov reportu
     /// </summary>
     public string Name { get; }
 
     /// <summary>
-    ///     Znak reportu
+    /// Znak reportu
     /// </summary>
     public string Char { get; }
 
@@ -51,7 +51,7 @@ public sealed record ReportType
     public bool PassThrough { get; }
 
     /// <summary>
-    ///     Nastavi alebo zisti, ci sa da v danom reporte ukončiť vlak
+    /// Nastavi alebo zisti, ci sa da v danom reporte ukončiť vlak
     /// </summary>
     public bool TerminateTrain { get; }
 
@@ -60,17 +60,17 @@ public sealed record ReportType
     public bool Complement { get; }
 
     /// <summary>
-    ///     Priznak LOCKOUT_BASE z Categori.TXT. INISS ho nacita, ale nikde nepouzije; zachovava sa.
+    /// Priznak LOCKOUT_BASE z Categori.TXT. INISS ho nacita, ale nikde nepouzije; zachovava sa.
     /// </summary>
     public bool LockoutBase { get; init; }
 
     /// <summary>
-    ///     Priznak LOCKOUT_THROUGH z Categori.TXT. INISS ho nacita, ale nikde nepouzije; zachovava sa.
+    /// Priznak LOCKOUT_THROUGH z Categori.TXT. INISS ho nacita, ale nikde nepouzije; zachovava sa.
     /// </summary>
     public bool LockoutThrough { get; init; }
 
     /// <summary>
-    ///     Priznak LOCKOUT_TERMINATE z Categori.TXT. INISS ho nacita, ale nikde nepouzije; zachovava sa.
+    /// Priznak LOCKOUT_TERMINATE z Categori.TXT. INISS ho nacita, ale nikde nepouzije; zachovava sa.
     /// </summary>
     public bool LockoutTerminate { get; init; }
 
@@ -78,7 +78,7 @@ public sealed record ReportType
     public override string ToString() => Name;
 
     /// <summary>
-    ///     Vrati predvolene typy reportov pre SK ako list
+    /// Vrati predvolene typy reportov pre SK ako list
     /// </summary>
     /// <returns>list reportov pre Slovensko</returns>
     public static List<ReportType> GetDefaultValuesSK()
@@ -95,7 +95,7 @@ public sealed record ReportType
     }
 
     /// <summary>
-    ///     Vyberie zo zoznamu reportov (alltypes) vybrane reporty podla znaku reportu (toparse)
+    /// Vyberie zo zoznamu reportov (alltypes) vybrane reporty podla znaku reportu (toparse)
     /// </summary>
     /// <param name="allTypes"></param>
     /// <param name="toparse"></param>

@@ -9,8 +9,8 @@ using GVDEditor.TabTabEditor;
 namespace GVDEditor.Tests.Domain.Editing;
 
 /// <summary>
-///     Ciselnik kolaji a nastupist (Lokalne nastavenia → Nastupistia, Kolaje): zmazanie kolaje nesmie nechat v Pozice.txt
-///     odkaz na neexistujucu kolaj, nastupiste bez kolaje sa do Pozice_A.txt nezapise.
+/// Ciselnik kolaji a nastupist (Lokalne nastavenia → Nastupistia, Kolaje): zmazanie kolaje nesmie nechat v Pozice.txt
+/// odkaz na neexistujucu kolaj, nastupiste bez kolaje sa do Pozice_A.txt nezapise.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
@@ -173,7 +173,7 @@ public class TrackEditingTests
     }
 
     /// <summary>
-    ///     Zapise Pozice_A.txt z riadkov, nacita ho a vrati kolaje (bez Track.None).
+    /// Zapise Pozice_A.txt z riadkov, nacita ho a vrati kolaje (bez Track.None).
     /// </summary>
     private static List<Track> ReadPoziceA(params string[] lines)
     {

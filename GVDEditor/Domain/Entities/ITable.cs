@@ -2,22 +2,22 @@
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Rozhranie pre všetky triedy tabuľovitého typu s klucom a nazvom.
+/// Rozhranie pre všetky triedy tabuľovitého typu s klucom a nazvom.
 /// </summary>
 public interface ITable
 {
     /// <summary>
-    ///     Kluc tabule.
+    /// Kluc tabule.
     /// </summary>
     public string Key { get; set; }
 
     /// <summary>
-    ///     Nazov tabule.
+    /// Nazov tabule.
     /// </summary>
     public string Name { get; set; }
 
     /// <summary>
-    ///     Typ tabule ako retazec.
+    /// Typ tabule ako retazec.
     /// </summary>
     public string TypeName { get; }
 }

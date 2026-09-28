@@ -4,7 +4,7 @@ using NAudio.Wave.SampleProviders;
 namespace GVDEditor.Integration;
 
 /// <summary>
-///     Trieda umoznujuca prehravanie zvukovych suborov .WAV.
+/// Trieda umoznujuca prehravanie zvukovych suborov .WAV.
 /// </summary>
 internal sealed class WavPlayer : IDisposable
 {
@@ -12,7 +12,7 @@ internal sealed class WavPlayer : IDisposable
     private AudioFileReader[]? _audios;
 
     /// <summary>
-    ///     Vytvori novu instanciu triedy <see cref="WavPlayer"/>.
+    /// Vytvori novu instanciu triedy <see cref="WavPlayer"/>.
     /// </summary>
     /// <param name="sounds">zoznam zvukov, ktore sa maju prehrat</param>
     /// <param name="soundsOffset">pauza medzi zvukmi</param>
@@ -23,17 +23,17 @@ internal sealed class WavPlayer : IDisposable
     }
 
     /// <summary>
-    ///     Cesty ku zvukovym suborom .WAV, ktore sa maju prehrat.
+    /// Cesty ku zvukovym suborom .WAV, ktore sa maju prehrat.
     /// </summary>
     public string[] Sounds { get; }
 
     /// <summary>
-    ///    Pauza medzi zvukmi v milisekundach.
+    /// Pauza medzi zvukmi v milisekundach.
     /// </summary>
     public int SoundsOffset { get; }
 
     /// <summary>
-    ///     Zacne prehravanie zvukovych suborov (asynchronne).
+    /// Zacne prehravanie zvukovych suborov (asynchronne).
     /// </summary>
     public void StartPlay()
     {

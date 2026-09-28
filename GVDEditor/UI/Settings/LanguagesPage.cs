@@ -6,8 +6,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Jazyky v okne Globalne nastavenia - jazyky, v ktorych INISS hlasi (Categori.txt), s upravou priamo
-///     v tabulke. Zmeny idu rovno do <see cref="GlobData.Languages" />, Zrusit okna ich vrati.
+/// Stranka Jazyky v okne Globalne nastavenia - jazyky, v ktorych INISS hlasi (Categori.txt), s upravou priamo
+/// v tabulke. Zmeny idu rovno do <see cref="GlobData.Languages" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class LanguagesPage : UserControl, ISettingsPage
 {
@@ -16,7 +16,7 @@ public partial class LanguagesPage : UserControl, ISettingsPage
     private bool _loading;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public LanguagesPage()
     {
@@ -37,7 +37,7 @@ public partial class LanguagesPage : UserControl, ISettingsPage
     public void FocusFirstProblem() => _grid.FocusFirstProblem();
 
     /// <summary>
-    ///     Naplni tabulku jazykmi - volat az po nastaveni temy okna.
+    /// Naplni tabulku jazykmi - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="bank">jazyky zvukovej banky</param>
     public void LoadData(List<FyzLanguage> bank)

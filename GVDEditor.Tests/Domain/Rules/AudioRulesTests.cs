@@ -5,7 +5,7 @@ using GVDEditor.Domain.Rules;
 namespace GVDEditor.Tests.Domain.Rules;
 
 /// <summary>
-///     Audio linky (Globalne nastavenia → Audio, Audio.txt) a porty grafikonov (Grafikony, DirList.TXT).
+/// Audio linky (Globalne nastavenia → Audio, Audio.txt) a porty grafikonov (Grafikony, DirList.TXT).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

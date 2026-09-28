@@ -9,18 +9,18 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Dialog - Globalne nastavenia vsetkych GVD v priecinku.
+/// Dialog - Globalne nastavenia vsetkych GVD v priecinku.
 /// </summary>
 public partial class FGlobalSettings : Form
 {
     /// <summary>
-    ///     Vsetky grafikony.
+    /// Vsetky grafikony.
     /// </summary>
     public readonly BindingList<GVDDirectory> Grafikony;
 
 
     /// <summary>
-    ///     Odstranene grafikony - ich priecinky sa po OK presunu do Kosa.
+    /// Odstranene grafikony - ich priecinky sa po OK presunu do Kosa.
     /// </summary>
     public readonly List<GVDDirectory> RemovedGVDs = new();
 
@@ -46,7 +46,7 @@ public partial class FGlobalSettings : Form
     private readonly Dictionary<ExOptionsPanel, string> _helpLinks;
 
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FGlobalSettings"/>.
+    /// Vytvori novy formular typu <see cref="FGlobalSettings"/>.
     /// </summary>
     /// <param name="gvds">Vsetky grafikony v priecinku.</param>
     /// <param name="page">Stranka, ktora sa ma otvorit po otvoreni dialogu.</param>
@@ -132,7 +132,7 @@ public partial class FGlobalSettings : Form
     }
 
     /// <summary>
-    ///     V spodnom riadku ukaze prvu chybu stranok a stranky s chybou oznaci v strome.
+    /// V spodnom riadku ukaze prvu chybu stranok a stranky s chybou oznaci v strome.
     /// </summary>
     private void UpdateProblems()
     {

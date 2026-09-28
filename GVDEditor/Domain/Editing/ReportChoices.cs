@@ -3,20 +3,20 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Domain.Editing;
 
 /// <summary>
-///     Vyber hlaseni dodatku alebo radenia (tabulka Kedy hlasit): pri ktorom type hlasenia a v ktorej variante
-///     (dlhe, kratke) zaznie.
+/// Vyber hlaseni dodatku alebo radenia (tabulka Kedy hlasit): pri ktorom type hlasenia a v ktorej variante
+/// (dlhe, kratke) zaznie.
 /// </summary>
 internal static class ReportChoices
 {
     /// <summary>
-    ///     Je hlasenie <paramref name="type" /> vo variante <paramref name="variant" /> vybrane.
+    /// Je hlasenie <paramref name="type" /> vo variante <paramref name="variant" /> vybrane.
     /// </summary>
     public static bool IsChosen(IEnumerable<ChosenReportType> chosen, ReportType type, ReportVariant variant) =>
         chosen.Any(item => item.Type == type && item.Variants.Contains(variant));
 
     /// <summary>
-    ///     Zaskrtne alebo odskrtne hlasenie. Varianty ostavaju v poradi <paramref name="variants" /> a typ bez variant
-    ///     sa zo zoznamu odstrani (rovnako ako ho zapisuje subor grafikonu).
+    /// Zaskrtne alebo odskrtne hlasenie. Varianty ostavaju v poradi <paramref name="variants" /> a typ bez variant
+    /// sa zo zoznamu odstrani (rovnako ako ho zapisuje subor grafikonu).
     /// </summary>
     /// <param name="chosen">vybrane hlasenia (meni sa)</param>
     /// <param name="type">typ hlasenia</param>
@@ -50,7 +50,7 @@ internal static class ReportChoices
     }
 
     /// <summary>
-    ///     Pocet zaskrtnutych hlaseni.
+    /// Pocet zaskrtnutych hlaseni.
     /// </summary>
     public static int Count(IEnumerable<ChosenReportType> chosen) => chosen.Sum(item => item.Variants.Count);
 

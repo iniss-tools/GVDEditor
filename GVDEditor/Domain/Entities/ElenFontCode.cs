@@ -4,9 +4,9 @@ using GVDEditor.Properties;
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Vyznam cisla pisma pri tabuliach s protokolom ELEN (ELEN, ELENOLD, ELEN10, ELEN16, ELEN16Kam, ELEKON).
-///     INISS posle tabuli dolny bajt cisla a pri ELEN10/ELEN16 s bitom 0x8000 aj horny bajt; podla tych istych
-///     bitov pocita sirku textu pri zarovnani. Ostatni vyrobcovia cislo pisma takto nepouzivaju.
+/// Vyznam cisla pisma pri tabuliach s protokolom ELEN (ELEN, ELENOLD, ELEN10, ELEN16, ELEN16Kam, ELEKON).
+/// INISS posle tabuli dolny bajt cisla a pri ELEN10/ELEN16 s bitom 0x8000 aj horny bajt; podla tych istych
+/// bitov pocita sirku textu pri zarovnani. Ostatni vyrobcovia cislo pisma takto nepouzivaju.
 /// </summary>
 /// <param name="Id">Cislo pisma; zaporne = pismo stlpca.</param>
 internal readonly record struct ElenFontCode(int Id)
@@ -14,44 +14,44 @@ internal readonly record struct ElenFontCode(int Id)
     private const int ExtendedFlag = 0x8000;
 
     /// <summary>
-    ///     Farba: 0 bez farby, 1 cervena, 2 zelena, 3 zlta.
+    /// Farba: 0 bez farby, 1 cervena, 2 zelena, 3 zlta.
     /// </summary>
     public int Color => Id < 0 ? 0 : Id & 0x03;
 
     /// <summary>
-    ///     Pismo blika.
+    /// Pismo blika.
     /// </summary>
     public bool Blinks => Id >= 0 && (Id & 0x04) != 0;
 
     /// <summary>
-    ///     Medzera a cislice sa nahradia vysokymi cislicami pisma.
+    /// Medzera a cislice sa nahradia vysokymi cislicami pisma.
     /// </summary>
     public bool TallDigits => Id >= 0 && (Id & 0x08) != 0;
 
     /// <summary>
-    ///     Rez: 0 neproporcionalne (6 px), 1 tenke, 2 tucne, 3 len cislice.
+    /// Rez: 0 neproporcionalne (6 px), 1 tenke, 2 tucne, 3 len cislice.
     /// </summary>
     public int Face => Id < 0 ? 0 : (Id >> 4) & 0x03;
 
     /// <summary>
-    ///     Cislo rozsireneho pisma ELEN10/ELEN16 (bity 8-11 pri bite 0x8000); 0 = ziadne, rozhoduje <see cref="Face" />.
+    /// Cislo rozsireneho pisma ELEN10/ELEN16 (bity 8-11 pri bite 0x8000); 0 = ziadne, rozhoduje <see cref="Face" />.
     /// </summary>
     public int ExtendedFont => Id >= 0 && (Id & ExtendedFlag) != 0 ? (Id >> 8) & 0x0F : 0;
 
     /// <summary>
-    ///     Bity cisla, ktore nie su farba, blikanie, vysoke cislice, rez ani rozsirene pismo (napr. 0x40, ktory
-    ///     v datach byva vzdy). Pri skladani cisla v <see cref="Compose" /> sa ponechaju, aby sa cislo nezmenilo.
+    /// Bity cisla, ktore nie su farba, blikanie, vysoke cislice, rez ani rozsirene pismo (napr. 0x40, ktory
+    /// v datach byva vzdy). Pri skladani cisla v <see cref="Compose" /> sa ponechaju, aby sa cislo nezmenilo.
     /// </summary>
     public int KeptBits => Id < 0 ? DefaultKeptBits : Id & ~(0x3F | (ExtendedFont > 0 ? ExtendedFlag | 0x0F00 : 0));
 
     /// <summary>
-    ///     Bity noveho pisma - bit 0x40 ako v datach INISSu.
+    /// Bity noveho pisma - bit 0x40 ako v datach INISSu.
     /// </summary>
     public const int DefaultKeptBits = 0x40;
 
     /// <summary>
-    ///     Najvacsie cislo rozsireneho pisma, ktore vyrobca pozna (0 = rozsirene pisma nema).
-    ///     Bez vyrobcu (zoznam pisiem) sa pripusta ELEN16.
+    /// Najvacsie cislo rozsireneho pisma, ktore vyrobca pozna (0 = rozsirene pisma nema).
+    /// Bez vyrobcu (zoznam pisiem) sa pripusta ELEN16.
     /// </summary>
     public static int MaxExtendedFont(TableManufacturer? manufacturer)
     {
@@ -61,7 +61,7 @@ internal readonly record struct ElenFontCode(int Id)
     }
 
     /// <summary>
-    ///     Zlozi cislo pisma z jeho casti - opak vlastnosti tejto struktury.
+    /// Zlozi cislo pisma z jeho casti - opak vlastnosti tejto struktury.
     /// </summary>
     /// <param name="keptBits">ostatne bity (<see cref="KeptBits" />)</param>
     /// <param name="face">rez 0-3</param>
@@ -78,7 +78,7 @@ internal readonly record struct ElenFontCode(int Id)
     }
 
     /// <summary>
-    ///     Nazov pisma podla vzhladu, napr. "Tucne cervene blikajuce".
+    /// Nazov pisma podla vzhladu, napr. "Tucne cervene blikajuce".
     /// </summary>
     public string SuggestedName()
     {
@@ -116,12 +116,12 @@ internal readonly record struct ElenFontCode(int Id)
     };
 
     /// <summary>
-    ///     Cislo ma nastavene bity nad dolnym bajtom, ktore sa bez bitu 0x8000 tabuli neposielaju.
+    /// Cislo ma nastavene bity nad dolnym bajtom, ktore sa bez bitu 0x8000 tabuli neposielaju.
     /// </summary>
     public bool HasIgnoredHighBits => Id > 0xFF && (Id & ExtendedFlag) == 0;
 
     /// <summary>
-    ///     Ci vyrobca pouziva cislo pisma podla tohto kodovania. Bez vyrobcu (zoznam pisiem) sa predpoklada ELEN.
+    /// Ci vyrobca pouziva cislo pisma podla tohto kodovania. Bez vyrobcu (zoznam pisiem) sa predpoklada ELEN.
     /// </summary>
     public static bool AppliesTo(TableManufacturer? manufacturer) =>
         manufacturer == null || manufacturer == TableManufacturer.ELEN || manufacturer == TableManufacturer.ELENOLD ||
@@ -129,7 +129,7 @@ internal readonly record struct ElenFontCode(int Id)
         manufacturer == TableManufacturer.ELEN16Kam || manufacturer == TableManufacturer.ELEKON;
 
     /// <summary>
-    ///     Typ pisma, ktory zodpoveda rezu.
+    /// Typ pisma, ktory zodpoveda rezu.
     /// </summary>
     public TableFontType SuggestedType => Face switch
     {
@@ -139,12 +139,12 @@ internal readonly record struct ElenFontCode(int Id)
     };
 
     /// <summary>
-    ///     Neproporcionalny je len rez 0.
+    /// Neproporcionalny je len rez 0.
     /// </summary>
     public bool SuggestedProportional => Face != 0;
 
     /// <summary>
-    ///     Typicka sirka znaku rezu v bodoch podla tabuliek sirok v INISSe.
+    /// Typicka sirka znaku rezu v bodoch podla tabuliek sirok v INISSe.
     /// </summary>
     public int SuggestedWidth => Face switch
     {
@@ -154,7 +154,7 @@ internal readonly record struct ElenFontCode(int Id)
     };
 
     /// <summary>
-    ///     Popis pre obsluhu, napr. "tucne, cervene, blika".
+    /// Popis pre obsluhu, napr. "tucne, cervene, blika".
     /// </summary>
     public string Describe()
     {

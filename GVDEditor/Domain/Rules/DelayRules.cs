@@ -4,13 +4,13 @@ using GVDEditor.Properties;
 namespace GVDEditor.Domain.Rules;
 
 /// <summary>
-///     Casy meskania ponukane operatorovi (Zpozdeni.TXT). INISS kazdy riadok prevedie na cele cislo - nieco ine
-///     (napr. "VICE480" v starsich instalaciach) zaloguje ako chybu a do ponuky nezaradi.
+/// Casy meskania ponukane operatorovi (Zpozdeni.TXT). INISS kazdy riadok prevedie na cele cislo - nieco ine
+/// (napr. "VICE480" v starsich instalaciach) zaloguje ako chybu a do ponuky nezaradi.
 /// </summary>
 internal static class DelayRules
 {
     /// <summary>
-    ///     Ci INISS hodnotu prijme - rovnako ako jeho prevod: medzery, volitelne znamienko, cislice, medzery.
+    /// Ci INISS hodnotu prijme - rovnako ako jeho prevod: medzery, volitelne znamienko, cislice, medzery.
     /// </summary>
     public static bool IsAcceptedByIniss(string value) => TryGetMinutes(value, out _);
 
@@ -18,8 +18,8 @@ internal static class DelayRules
         int.TryParse(value.Trim(' ', '\t'), NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out minutes);
 
     /// <summary>
-    ///     Chyba casu na pozicii <paramref name="index" /> - prazdna hodnota alebo cas, ktory je v zozname dvakrat.
-    ///     Necislena hodnota chybou nie je (INISS ju len preskoci), na tu upozornuje <see cref="IsAcceptedByIniss" />.
+    /// Chyba casu na pozicii <paramref name="index" /> - prazdna hodnota alebo cas, ktory je v zozname dvakrat.
+    /// Necislena hodnota chybou nie je (INISS ju len preskoci), na tu upozornuje <see cref="IsAcceptedByIniss" />.
     /// </summary>
     /// <returns>Text chyby, alebo <see langword="null" />, ak je cas v poriadku.</returns>
     public static string? CheckValue(IReadOnlyList<string> delays, int index)
@@ -36,7 +36,7 @@ internal static class DelayRules
     }
 
     /// <summary>
-    ///     Pozicia, na ktoru patri <paramref name="value" />: cislo pred prvy vacsi cas, necislena hodnota na koniec.
+    /// Pozicia, na ktoru patri <paramref name="value" />: cislo pred prvy vacsi cas, necislena hodnota na koniec.
     /// </summary>
     public static int InsertIndex(IReadOnlyList<string> delays, string value)
     {

@@ -8,8 +8,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.Tests.Domain.Editing;
 
 /// <summary>
-///     Katalogova tabula (stranka Katalogove tabule, FTableColumnOrder): poradie stlpcov musi po premenovani ci zmazani
-///     stlpca ostat citatelne, polozka „Ziadny“ sa nesmie dostat do TabTab.txt.
+/// Katalogova tabula (stranka Katalogove tabule, FTableColumnOrder): poradie stlpcov musi po premenovani ci zmazani
+/// stlpca ostat citatelne, polozka „Ziadny“ sa nesmie dostat do TabTab.txt.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

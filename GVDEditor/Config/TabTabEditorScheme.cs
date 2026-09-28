@@ -5,7 +5,7 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Config;
 
 /// <summary>
-///     Obsahuje zoznam všetkých štýlov pre text v editore TabTab.
+/// Obsahuje zoznam všetkých štýlov pre text v editore TabTab.
 /// </summary>
 public record TabTabEditorScheme() : IColorScheme
 {
@@ -14,13 +14,13 @@ public record TabTabEditorScheme() : IColorScheme
     public bool DisableFontEdit => false;
 
     /// <summary>
-    ///     Font v editore TabTab.
+    /// Font v editore TabTab.
     /// </summary>
     [XmlIgnore] 
     public Font Font { get; set; } = new("Consolas", 10);
 
     /// <summary>
-    ///     Font v editore TabTab vo formate XML.
+    /// Font v editore TabTab vo formate XML.
     /// </summary>
     [XmlElement(Type = typeof(XmlFont), ElementName = "Font")]
     public XmlFont FontXML
@@ -72,7 +72,7 @@ public record TabTabEditorScheme() : IColorScheme
     #region Properties
 
     /// <summary>
-    ///     Textový editor TabTab - Číslo.
+    /// Textový editor TabTab - Číslo.
     /// </summary>
     [XmlElement("Number")]
     public ColorSetting Number
@@ -86,7 +86,7 @@ public record TabTabEditorScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Textový editor TabTab - Reťazec.
+    /// Textový editor TabTab - Reťazec.
     /// </summary>
     [XmlElement("String")]
     public ColorSetting String
@@ -100,7 +100,7 @@ public record TabTabEditorScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Textový editor TabTab - Komentár.
+    /// Textový editor TabTab - Komentár.
     /// </summary>
     [XmlElement("Comment")]
     public ColorSetting Comment
@@ -114,7 +114,7 @@ public record TabTabEditorScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Textový editor TabTab - Znak konca riadku a prechod do ďalšieho.
+    /// Textový editor TabTab - Znak konca riadku a prechod do ďalšieho.
     /// </summary>
     [XmlElement("OnNewLine")]
     public ColorSetting OnNewLine
@@ -128,7 +128,7 @@ public record TabTabEditorScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Textový editor TabTab - Operátor.
+    /// Textový editor TabTab - Operátor.
     /// </summary>
     [XmlElement("Operator")]
     public ColorSetting Operator
@@ -142,7 +142,7 @@ public record TabTabEditorScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Textový editor TabTab - Konštanta.
+    /// Textový editor TabTab - Konštanta.
     /// </summary>
     [XmlElement("Constant")]
     public ColorSetting Constant
@@ -156,7 +156,7 @@ public record TabTabEditorScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Textový editor TabTab - Normálny text.
+    /// Textový editor TabTab - Normálny text.
     /// </summary>
     [XmlElement("Default")]
     public ColorSetting Default
@@ -170,7 +170,7 @@ public record TabTabEditorScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Textový editor TabTab - Označenie premennej.
+    /// Textový editor TabTab - Označenie premennej.
     /// </summary>
     [XmlElement("Var")]
     public ColorSetting Var
@@ -184,7 +184,7 @@ public record TabTabEditorScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Textový editor TabTab - Udalosť.
+    /// Textový editor TabTab - Udalosť.
     /// </summary>
     [XmlElement("Event")]
     public ColorSetting Event
@@ -198,7 +198,7 @@ public record TabTabEditorScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Textový editor TabTab - Funkcia.
+    /// Textový editor TabTab - Funkcia.
     /// </summary>
     [XmlElement("Function")]
     public ColorSetting Function
@@ -212,7 +212,7 @@ public record TabTabEditorScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Textový editor TabTab - Identifikátor.
+    /// Textový editor TabTab - Identifikátor.
     /// </summary>
     [XmlElement("Identifier")]
     public ColorSetting Identifier
@@ -226,7 +226,7 @@ public record TabTabEditorScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Textový editor TabTab - Označenenie aktívnych zátvoriek.
+    /// Textový editor TabTab - Označenenie aktívnych zátvoriek.
     /// </summary>
     [XmlElement("SelBraces")]
     public ColorSetting SelBraces
@@ -240,7 +240,7 @@ public record TabTabEditorScheme() : IColorScheme
     }
 
     /// <summary>
-    ///     Textový editor TabTab - Označenenie aktívnej zátvorky, ktorá nemá páru.
+    /// Textový editor TabTab - Označenenie aktívnej zátvorky, ktorá nemá páru.
     /// </summary>
     [XmlElement("SelBraceBad")]
     public ColorSetting SelBraceBad

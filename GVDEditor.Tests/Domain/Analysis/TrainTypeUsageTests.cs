@@ -5,7 +5,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Tests.Domain.Analysis;
 
 /// <summary>
-///     Pouzitie typu vlaku v grafikone (Export3A.TXT) - pred odstranenim alebo premenovanim typu.
+/// Pouzitie typu vlaku v grafikone (Export3A.TXT) - pred odstranenim alebo premenovanim typu.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

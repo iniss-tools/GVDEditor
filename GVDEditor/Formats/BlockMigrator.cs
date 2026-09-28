@@ -7,7 +7,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.Formats;
 
 /// <summary>
-///     Jeden blok grafikonu uvedeny riadkom <c>/&lt;cislo stanice&gt;</c> v CSV suboroch priecinka GVD.
+/// Jeden blok grafikonu uvedeny riadkom <c>/&lt;cislo stanice&gt;</c> v CSV suboroch priecinka GVD.
 /// </summary>
 /// <param name="Index">Poradie bloku v subore (od 1).</param>
 /// <param name="StationId">Cislo stanice z hlavicky bloku.</param>
@@ -18,21 +18,21 @@ namespace GVDEditor.Formats;
 internal sealed record GvdBlock(int Index, int StationId, string StationName, int TrainCount, DateTime StartValid, DateTime EndValid)
 {
     /// <summary>
-    ///     Nazov noveho priecinka, do ktoreho sa blok presunie (predvyplneny, pouzivatel ho moze zmenit).
+    /// Nazov noveho priecinka, do ktoreho sa blok presunie (predvyplneny, pouzivatel ho moze zmenit).
     /// </summary>
     public string DirName { get; set; } = "";
 }
 
 /// <summary>
-///     Migracia starsieho zapisu grafikonu, v ktorom jeden priecinok obsahoval viac grafikonov za sebou
-///     (kazdy uvedeny riadkom <c>/&lt;cislo stanice&gt;</c>), na dnesne rozlozenie - jeden priecinok na grafikon
-///     zapisany v DirList.TXT.
+/// Migracia starsieho zapisu grafikonu, v ktorom jeden priecinok obsahoval viac grafikonov za sebou
+/// (kazdy uvedeny riadkom <c>/&lt;cislo stanice&gt;</c>), na dnesne rozlozenie - jeden priecinok na grafikon
+/// zapisany v DirList.TXT.
 /// </summary>
 /// <remarks>
-///     INISS pri hlavicke bloku zacne cislovat vlaky znova od 1 a vlaky bloku vedie pod stanicou z hlavicky;
-///     GVDEditor bloky nerozlisuje, takze by druhy blok prepisal prvy. Migracia rozdeli kazdy subor s hlavickami
-///     podla blokov, subory bez hlavicky (tabule, StateDgm, Categori...) skopiruje do kazdeho noveho priecinka
-///     a pre kazdy blok vytvori Grafikon.txt s platnostou podla najskorsieho a najneskorsieho datumu v Export3B.
+/// INISS pri hlavicke bloku zacne cislovat vlaky znova od 1 a vlaky bloku vedie pod stanicou z hlavicky;
+/// GVDEditor bloky nerozlisuje, takze by druhy blok prepisal prvy. Migracia rozdeli kazdy subor s hlavickami
+/// podla blokov, subory bez hlavicky (tabule, StateDgm, Categori...) skopiruje do kazdeho noveho priecinka
+/// a pre kazdy blok vytvori Grafikon.txt s platnostou podla najskorsieho a najneskorsieho datumu v Export3B.
 /// </remarks>
 internal static class BlockMigrator
 {
@@ -43,8 +43,8 @@ internal static class BlockMigrator
     private static readonly Regex YearSuffix = new(@"\.\d{4}$", RegexOptions.Compiled);
 
     /// <summary>
-    ///     Zisti, ci priecinok GVD obsahuje bloky, ktore treba rozdelit: viac hlaviciek <c>/</c> v Export3A,
-    ///     alebo jedinu hlavicku s inou stanicou, nez je IDSTATION grafikonu.
+    /// Zisti, ci priecinok GVD obsahuje bloky, ktore treba rozdelit: viac hlaviciek <c>/</c> v Export3A,
+    /// alebo jedinu hlavicku s inou stanicou, nez je IDSTATION grafikonu.
     /// </summary>
     /// <param name="gvdPath">Priecinok grafikonu.</param>
     /// <param name="gvd">Grafikon.txt priecinka.</param>
@@ -107,8 +107,8 @@ internal static class BlockMigrator
     }
 
     /// <summary>
-    ///     Rozdeli priecinok GVD podla blokov do novych priecinkov v DATA a zapise ich do DirList.TXT
-    ///     namiesto povodneho zaznamu. Povodny priecinok ostava na disku nedotknuty.
+    /// Rozdeli priecinok GVD podla blokov do novych priecinkov v DATA a zapise ich do DirList.TXT
+    /// namiesto povodneho zaznamu. Povodny priecinok ostava na disku nedotknuty.
     /// </summary>
     /// <param name="gvdPath">Priecinok so starym zapisom.</param>
     /// <param name="sourceDir">Zaznam DirList povodneho priecinka (porty a priznaky sa prenesu na nove zaznamy); null, ak v DirList nebol.</param>
@@ -248,9 +248,9 @@ internal static class BlockMigrator
     private sealed record RawBlock(int? StationId, List<string> Lines);
 
     /// <summary>
-    ///     Rozdeli riadky suboru podla hlaviciek <c>/N</c>; hlavicka sama sa do riadkov bloku nezapisuje.
-    ///     Riadky pred prvou hlavickou tvoria blok bez stanice (INISS ich vedie pod IDSTATION); ak su to len
-    ///     komentare a prazdne riadky, pripoja sa k prvemu bloku s hlavickou.
+    /// Rozdeli riadky suboru podla hlaviciek <c>/N</c>; hlavicka sama sa do riadkov bloku nezapisuje.
+    /// Riadky pred prvou hlavickou tvoria blok bez stanice (INISS ich vedie pod IDSTATION); ak su to len
+    /// komentare a prazdne riadky, pripoja sa k prvemu bloku s hlavickou.
     /// </summary>
     private static List<RawBlock> SplitBlocks(IEnumerable<string> lines)
     {
@@ -284,8 +284,8 @@ internal static class BlockMigrator
     private static readonly Regex TrainEntry = new(@"^TRAIN_(\d+)_(ID|TEXT|IDX_FONT)\s*=\s*(.*)$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     /// <summary>
-    ///     Rozdeli TTexts.TXT podla blokov: v kazdej sekcii [TEXT_nnn] ostanu len vlaky daneho bloku,
-    ///     ich index sa zmensi o zakladnu bloku a precisluju sa od TRAIN_001; COUNT sekcie sa prepocita.
+    /// Rozdeli TTexts.TXT podla blokov: v kazdej sekcii [TEXT_nnn] ostanu len vlaky daneho bloku,
+    /// ich index sa zmensi o zakladnu bloku a precisluju sa od TRAIN_001; COUNT sekcie sa prepocita.
     /// </summary>
     private static List<List<string>> SplitTTexts(List<string> lines, IReadOnlyList<GvdBlock> blocks)
     {

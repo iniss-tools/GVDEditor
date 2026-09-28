@@ -11,14 +11,14 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Pisma v okne Lokalne nastavenia - zoznam pisiem tabul (ModeTabs.txt [FONT]) s upravou priamo
-///     vo vybranom pisme. Vzhlad sa vybera rezom, farbou a efektmi, cislo sklada <see cref="TableFontPicker" />.
-///     Stlpce katalogovych tabul a texty vlakov, ktore pismo pouzivaju, sa pri zmene vzhladu precisluju s nim.
+/// Stranka Pisma v okne Lokalne nastavenia - zoznam pisiem tabul (ModeTabs.txt [FONT]) s upravou priamo
+/// vo vybranom pisme. Vzhlad sa vybera rezom, farbou a efektmi, cislo sklada <see cref="TableFontPicker" />.
+/// Stlpce katalogovych tabul a texty vlakov, ktore pismo pouzivaju, sa pri zmene vzhladu precisluju s nim.
 /// </summary>
 public partial class FontsPage : UserControl, ISettingsPage
 {
     /// <summary>
-    ///     Stav pisma pocas upravy: ktore udaje sa este riadia rezom a kde sa pismo pouziva.
+    /// Stav pisma pocas upravy: ktore udaje sa este riadia rezom a kde sa pismo pouziva.
     /// </summary>
     private sealed class FontState
     {
@@ -41,7 +41,7 @@ public partial class FontsPage : UserControl, ISettingsPage
     private bool _selfChange;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public FontsPage()
     {
@@ -57,7 +57,7 @@ public partial class FontsPage : UserControl, ISettingsPage
     public string? FirstProblem => _problems.Count == 0 ? null : ProblemText(_problems[0]);
 
     /// <summary>
-    ///     Priecinok s pismami (subory .fnt).
+    /// Priecinok s pismami (subory .fnt).
     /// </summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -78,7 +78,7 @@ public partial class FontsPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Naplni stranku pismami - volat az po nastaveni temy okna.
+    /// Naplni stranku pismami - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="fontDir">priecinok s pismami</param>
     public void LoadData(string fontDir)
@@ -130,8 +130,8 @@ public partial class FontsPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Zisti, ktore stlpce a texty pouzivaju ktore pismo. Pismu s cislom, ktore ma aj ine pismo, sa pouzitie
-    ///     nemeni - nedalo by sa rozlisit, ktoremu z nich patri.
+    /// Zisti, ktore stlpce a texty pouzivaju ktore pismo. Pismu s cislom, ktore ma aj ine pismo, sa pouzitie
+    /// nemeni - nedalo by sa rozlisit, ktoremu z nich patri.
     /// </summary>
     private void RecountUsage()
     {
@@ -208,7 +208,7 @@ public partial class FontsPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Zobrazi udaje vybraneho pisma.
+    /// Zobrazi udaje vybraneho pisma.
     /// </summary>
     private void ShowCurrent()
     {
@@ -234,7 +234,7 @@ public partial class FontsPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Zobrazi udaje pre obsluhu (typ, rozmery, znaky) a ktore sa riadia rezom.
+    /// Zobrazi udaje pre obsluhu (typ, rozmery, znaky) a ktore sa riadia rezom.
     /// </summary>
     private void ShowData()
     {
@@ -322,7 +322,7 @@ public partial class FontsPage : UserControl, ISettingsPage
         string.IsNullOrWhiteSpace(problem.Font.Name) ? problem.Text : $"{problem.Font.Name} – {problem.Text}";
 
     /// <summary>
-    ///     Po zmene pisma obnovi jeho riadok v zozname a oznami zmenu zoznamu (napr. vyberu pisma v inych oknach).
+    /// Po zmene pisma obnovi jeho riadok v zozname a oznami zmenu zoznamu (napr. vyberu pisma v inych oknach).
     /// </summary>
     private void Changed(TableFont font)
     {
@@ -563,7 +563,7 @@ public partial class FontsPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Riadok zoznamu: farba pisma, nazov, cislo a vykricnik pri chybe.
+    /// Riadok zoznamu: farba pisma, nazov, cislo a vykricnik pri chybe.
     /// </summary>
     private void listFonts_DrawItem(object? sender, DrawItemEventArgs e)
     {

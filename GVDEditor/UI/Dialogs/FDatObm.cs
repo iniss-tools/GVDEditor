@@ -7,7 +7,7 @@ namespace GVDEditor.UI.Dialogs;
 public partial class FDatObm : Form
 {
     /// <summary>
-    ///     Vytvori generator; obdobie sa predvyplni platnostou grafikonu (bez neho dnesnym dnom).
+    /// Vytvori generator; obdobie sa predvyplni platnostou grafikonu (bez neho dnesnym dnom).
     /// </summary>
     public FDatObm(DateTime? from = null, DateTime? to = null)
     {

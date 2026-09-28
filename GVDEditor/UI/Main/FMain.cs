@@ -26,17 +26,17 @@ using AppRegistry = ToolsCore.Tools.AppRegistry;
 namespace GVDEditor.UI.Main;
 
 /// <summary>
-///     Hlavný formulár
+/// Hlavný formulár
 /// </summary>
 public partial class FMain : Form
 {
     /// <summary>
-    ///     Dostupné stanice.
+    /// Dostupné stanice.
     /// </summary>
     public static BindingList<string> Stanice { get; } = new();
 
     /// <summary>
-    ///     Všetky dostupne priečinky s grafikonmi.
+    /// Všetky dostupne priečinky s grafikonmi.
     /// </summary>
     public static BindingList<GVDDirectory> ObdobiaList { get; } = new();
 
@@ -56,7 +56,7 @@ public partial class FMain : Form
     private FWait? _waitForm;
 
     /// <summary>
-    ///     Vytvori nový formulár typu <see cref="FMain"/>.
+    /// Vytvori nový formulár typu <see cref="FMain"/>.
     /// </summary>
     public FMain()
     {
@@ -588,7 +588,7 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Zobrazi ponuku a panel nastrojov podla nastaveni. Bez panela nastrojov sa vyber stanice a obdobia presunie do ponuky.
+    /// Zobrazi ponuku a panel nastrojov podla nastaveni. Bez panela nastrojov sa vyber stanice a obdobia presunie do ponuky.
     /// </summary>
     private void ApplyMenuMode()
     {
@@ -668,8 +668,8 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Po zmene stanice alebo obdobia platnosti grafikonu v lokalnych nastaveniach aktualizuje comboboxy
-    ///     Stanica a Obdobie tak, aby grafikon <paramref name="dir" /> ostal vybraty.
+    /// Po zmene stanice alebo obdobia platnosti grafikonu v lokalnych nastaveniach aktualizuje comboboxy
+    /// Stanica a Obdobie tak, aby grafikon <paramref name="dir" /> ostal vybraty.
     /// </summary>
     private void RefreshStationAndPeriod(GVDDirectory dir, string oldStation, string oldPeriod)
     {
@@ -743,8 +743,8 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Presunie odstranene grafikony do kosa a prisposobi im vyber stanice a obdobia.
-    ///     DirList.TXT uz je zapisany bez nich.
+    /// Presunie odstranene grafikony do kosa a prisposobi im vyber stanice a obdobia.
+    /// DirList.TXT uz je zapisany bez nich.
     /// </summary>
     private void RemoveGrafikony(IReadOnlyCollection<GVDDirectory> removed)
     {
@@ -834,7 +834,7 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Prideli cisla variant (<see cref="TrainVariants.Normalize" />) a obnovi zoznam, ak sa niektore zmenilo.
+    /// Prideli cisla variant (<see cref="TrainVariants.Normalize" />) a obnovi zoznam, ak sa niektore zmenilo.
     /// </summary>
     private void NormalizeVariants()
     {
@@ -845,7 +845,7 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Rozsiri stlpec Cislo, aby sa zmestilo poradie varianty aj s upozornenim (napr. „4327  1/2  ⚠“).
+    /// Rozsiri stlpec Cislo, aby sa zmestilo poradie varianty aj s upozornenim (napr. „4327  1/2  ⚠“).
     /// </summary>
     private void FitNumberColumn()
     {
@@ -862,7 +862,7 @@ public partial class FMain : Form
         dgvTrains.CurrentRow is { Index: var index } && index >= 0 && index < GlobData.Trains.Count ? GlobData.Trains[index] : null;
 
     /// <summary>
-    ///     Kontextove menu zoznamu vlakov s prikazmi pre varianty.
+    /// Kontextove menu zoznamu vlakov s prikazmi pre varianty.
     /// </summary>
     private void CreateVariantMenu()
     {
@@ -919,7 +919,7 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Bublina cisla vlaku s variantmi: zoznam variant s trasou a dnami, prekrytie s inymi variantmi.
+    /// Bublina cisla vlaku s variantmi: zoznam variant s trasou a dnami, prekrytie s inymi variantmi.
     /// </summary>
     private string VariantToolTip(Train train)
     {
@@ -944,8 +944,8 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Zoradi varianty vybraneho vlaku podla dlzky trasy a dni, v ktore by islo viac variant naraz, necha len
-    ///     variante s najdlhsou trasou.
+    /// Zoradi varianty vybraneho vlaku podla dlzky trasy a dni, v ktore by islo viac variant naraz, necha len
+    /// variante s najdlhsou trasou.
     /// </summary>
     private void ReorderVariants()
     {
@@ -1210,7 +1210,7 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Ci bezi INISS spusteny z GVDEditora.
+    /// Ci bezi INISS spusteny z GVDEditora.
     /// </summary>
     private bool IsINISSRunning
     {
@@ -1228,8 +1228,8 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Spusti program <paramref name="path" /> (null = naposledy spusteny, inak rozbali ponuku
-    ///     <paramref name="dropDown" />). Ak INISS uz bezi, ponukne jeho nutene ukoncenie.
+    /// Spusti program <paramref name="path" /> (null = naposledy spusteny, inak rozbali ponuku
+    /// <paramref name="dropDown" />). Ak INISS uz bezi, ponukne jeho nutene ukoncenie.
     /// </summary>
     private void StartINISS(string? path, ToolStripDropDownItem dropDown)
     {
@@ -1252,7 +1252,7 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     INISS cita data grafikonu pri starte - neulozene zmeny by v nom chybali.
+    /// INISS cita data grafikonu pri starte - neulozene zmeny by v nom chybali.
     /// </summary>
     /// <returns><see langword="false" />, ak pouzivatel spustenie zrusil alebo sa grafikon nepodarilo ulozit.</returns>
     private bool ConfirmSaveBeforeINISS()
@@ -1269,7 +1269,7 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Naplní menu naposledy otvorenými projektmi zoradenými od naposledy otvoreného.
+    /// Naplní menu naposledy otvorenými projektmi zoradenými od naposledy otvoreného.
     /// </summary>
     private void SetRecentProjects()
     {
@@ -1472,7 +1472,7 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Vrati vyber stanice a obdobia na grafikon <paramref name="dir" /> bez jeho opatovneho nacitania.
+    /// Vrati vyber stanice a obdobia na grafikon <paramref name="dir" /> bez jeho opatovneho nacitania.
     /// </summary>
     private void RestoreSelection(GVDDirectory? dir)
     {
@@ -1515,7 +1515,7 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Ponukne rozdelenie priecinka s blokmi <c>/stanica</c> do samostatnych priecinkov.
+    /// Ponukne rozdelenie priecinka s blokmi <c>/stanica</c> do samostatnych priecinkov.
     /// </summary>
     /// <returns><see langword="true" />, ak sa grafikon rozdelil a zoznam obdobi bol nacitany znova.</returns>
     private bool MigrateBlocks(GVDDirectory dir, List<GvdBlock> blocks)
@@ -2056,9 +2056,9 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Prva faza importu - nacita data z ELIS a zisti, ktore stanice sa nepodarilo priradit.
-    ///     Bezi na pozadi, takze sa tu nesmie nic pytat pouzivatela; priradenie stanic
-    ///     dokoncuje az <see cref="bWorkerELIS_RunWorkerCompleted" />.
+    /// Prva faza importu - nacita data z ELIS a zisti, ktore stanice sa nepodarilo priradit.
+    /// Bezi na pozadi, takze sa tu nesmie nic pytat pouzivatela; priradenie stanic
+    /// dokoncuje az <see cref="bWorkerELIS_RunWorkerCompleted" />.
     /// </summary>
     private static ElisImport CallELISBridge(SendData data)
     {
@@ -2085,7 +2085,7 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Medzivysledok importu z ELIS medzi vlaknom na pozadi a dokoncenim v GUI.
+    /// Medzivysledok importu z ELIS medzi vlaknom na pozadi a dokoncenim v GUI.
     /// </summary>
     internal sealed class ElisImport
     {
@@ -2096,9 +2096,9 @@ public partial class FMain : Form
         public GVDInfo GVDInfo { get; set; } = null!;
 
         /// <summary>
-        ///     Ci sa maju povodne vlaky pred pridanim naimportovanych odstranit. Nesie sa
-        ///     spolu s vysledkom, nie v poli formulara - stav okolo asynchronneho behu
-        ///     sa lahko stratí a chyba by sa prejavila az tichym nenahradenim vlakov.
+        /// Ci sa maju povodne vlaky pred pridanim naimportovanych odstranit. Nesie sa
+        /// spolu s vysledkom, nie v poli formulara - stav okolo asynchronneho behu
+        /// sa lahko stratí a chyba by sa prejavila az tichym nenahradenim vlakov.
         /// </summary>
         public bool ReplaceTrains { get; set; }
     }
@@ -2146,8 +2146,8 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Necha pouzivatela priradit stanice, ktore sa nepodarilo rozpoznat automaticky,
-    ///     a priradenie ulozi do grafikonu.
+    /// Necha pouzivatela priradit stanice, ktore sa nepodarilo rozpoznat automaticky,
+    /// a priradenie ulozi do grafikonu.
     /// </summary>
     /// <returns><see langword="false" />, ak pouzivatel import zrusil.</returns>
     private bool ResolveStations(ElisImport import)
@@ -2173,7 +2173,7 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Odstrani vsetky vlaky grafikonu aj texty tabul, ktore sa na ne odvolavaju.
+    /// Odstrani vsetky vlaky grafikonu aj texty tabul, ktore sa na ne odvolavaju.
     /// </summary>
     private void RemoveAllTrains()
     {
@@ -2267,7 +2267,7 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Zavrie okno INISSu rovnako ako krizik - INISS sa ukonci riadne (a moze sa opytat na potvrdenie).
+    /// Zavrie okno INISSu rovnako ako krizik - INISS sa ukonci riadne (a moze sa opytat na potvrdenie).
     /// </summary>
     private void ShutDownINISS()
     {
@@ -2282,8 +2282,8 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Riadne ukonci INISS a spusti ho znova. Ak sa INISS do casoveho limitu neukonci (napr. caka na potvrdenie),
-    ///     ponukne nutene ukoncenie.
+    /// Riadne ukonci INISS a spusti ho znova. Ak sa INISS do casoveho limitu neukonci (napr. caka na potvrdenie),
+    /// ponukne nutene ukoncenie.
     /// </summary>
     private async void RestartINISS()
     {
@@ -2341,7 +2341,7 @@ public partial class FMain : Form
     private void tsmimKillINISS_Click(object sender, EventArgs e) => AskKillINISS();
 
     /// <summary>
-    ///     Nutene ukoncenie na priamy prikaz - s potvrdenim, predvolena skratka F10 sa lahko stlaci omylom.
+    /// Nutene ukoncenie na priamy prikaz - s potvrdenim, predvolena skratka F10 sa lahko stlaci omylom.
     /// </summary>
     private void AskKillINISS()
     {
@@ -2401,7 +2401,7 @@ public partial class FMain : Form
     private void tsmiStateDgm_Click(object sender, EventArgs e) => ShowStateDgm();
 
     /// <summary>
-    ///     Otvori editor stavoveho diagramu aktualneho grafikonu.
+    /// Otvori editor stavoveho diagramu aktualneho grafikonu.
     /// </summary>
     private void ShowStateDgm()
     {
@@ -2420,8 +2420,8 @@ public partial class FMain : Form
     }
 
     /// <summary>
-    ///     Import grafikonu je dostupny vzdy, ked je otvorena instalacia - aj bez grafikonu; import dat a z ELIS
-    ///     potrebuju otvoreny grafikon.
+    /// Import grafikonu je dostupny vzdy, ked je otvorena instalacia - aj bez grafikonu; import dat a z ELIS
+    /// potrebuju otvoreny grafikon.
     /// </summary>
     private void SetImportEnabled(bool grafikonOpen)
     {
@@ -2474,7 +2474,7 @@ public partial class FMain : Form
     internal class SendData
     {
         /// <summary>
-        ///     Predvolene umiestnenie aplikacie Cestovne poriadky.
+        /// Predvolene umiestnenie aplikacie Cestovne poriadky.
         /// </summary>
         public const string DefaultElisDirectory = @"C:\Program Files (x86)\Cestovné poriadky";
 

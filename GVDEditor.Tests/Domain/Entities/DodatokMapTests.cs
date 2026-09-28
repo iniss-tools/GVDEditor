@@ -5,7 +5,7 @@ using ToolsCore.Entities;
 namespace GVDEditor.Tests.Domain.Entities;
 
 /// <summary>
-///     Mapa dodatku v Doplnky.txt: obsahuje len typy hlaseni platne pre smerovanie vlaku, v poradi zo zoznamu typov.
+/// Mapa dodatku v Doplnky.txt: obsahuje len typy hlaseni platne pre smerovanie vlaku, v poradi zo zoznamu typov.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

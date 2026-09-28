@@ -5,7 +5,7 @@ using GVDEditor.Domain.Rules;
 namespace GVDEditor.Tests.Domain.Rules;
 
 /// <summary>
-///     Zoznam pisiem tabul (Lokalne nastavenia → Pisma, ModeTabs.txt [FONT]).
+/// Zoznam pisiem tabul (Lokalne nastavenia → Pisma, ModeTabs.txt [FONT]).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

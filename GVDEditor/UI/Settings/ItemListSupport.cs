@@ -3,9 +3,9 @@ using ExControls;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Zoznam poloziek vlavo na strankach so zoznamom a udajmi vybranej polozky (tabule, texty): naplnenie,
-///     vyhladavanie, vyber a oznacenie poloziek s chybou. Zmenu vyberu oznami az po skonceni udalosti tabulky -
-///     stranka vtedy meni tlacidla a pole, co by uprostred zmeny bunky skoncilo vnorenym volanim.
+/// Zoznam poloziek vlavo na strankach so zoznamom a udajmi vybranej polozky (tabule, texty): naplnenie,
+/// vyhladavanie, vyber a oznacenie poloziek s chybou. Zmenu vyberu oznami az po skonceni udalosti tabulky -
+/// stranka vtedy meni tlacidla a pole, co by uprostred zmeny bunky skoncilo vnorenym volanim.
 /// </summary>
 /// <typeparam name="T">polozka zoznamu</typeparam>
 internal sealed class ItemListSupport<T> where T : class
@@ -18,7 +18,7 @@ internal sealed class ItemListSupport<T> where T : class
     private bool _deferred;
 
     /// <summary>
-    ///     Pripoji zoznam k tabulke <paramref name="dgv" /> a vyhladavaciemu polu <paramref name="filter" />.
+    /// Pripoji zoznam k tabulke <paramref name="dgv" /> a vyhladavaciemu polu <paramref name="filter" />.
     /// </summary>
     /// <param name="dgv">tabulka zoznamu</param>
     /// <param name="filter">pole na vyhladavanie</param>
@@ -40,17 +40,17 @@ internal sealed class ItemListSupport<T> where T : class
     }
 
     /// <summary>
-    ///     Zmenil sa vybrany riadok (oznamene az po skonceni udalosti tabulky).
+    /// Zmenil sa vybrany riadok (oznamene az po skonceni udalosti tabulky).
     /// </summary>
     public event EventHandler? SelectionChanged;
 
     /// <summary>
-    ///     Vybrana polozka.
+    /// Vybrana polozka.
     /// </summary>
     public T? Current => _dgv.CurrentRow?.Tag as T;
 
     /// <summary>
-    ///     Plocha tabulky bez riadkov dostane farbu buniek - volat po nastaveni temy.
+    /// Plocha tabulky bez riadkov dostane farbu buniek - volat po nastaveni temy.
     /// </summary>
     public void CaptureColors()
     {
@@ -59,7 +59,7 @@ internal sealed class ItemListSupport<T> where T : class
     }
 
     /// <summary>
-    ///     Naplni zoznam a vyberie <paramref name="select" /> (alebo prvu viditelnu polozku).
+    /// Naplni zoznam a vyberie <paramref name="select" /> (alebo prvu viditelnu polozku).
     /// </summary>
     public void Fill(T? select)
     {
@@ -77,7 +77,7 @@ internal sealed class ItemListSupport<T> where T : class
     }
 
     /// <summary>
-    ///     Obnovi bunky riadka polozky po zmene jej udajov.
+    /// Obnovi bunky riadka polozky po zmene jej udajov.
     /// </summary>
     public void Refresh(T item)
     {
@@ -90,7 +90,7 @@ internal sealed class ItemListSupport<T> where T : class
     }
 
     /// <summary>
-    ///     Vyberie polozku; ak ju vyhladavanie skryva, vyhladavanie zrusi.
+    /// Vyberie polozku; ak ju vyhladavanie skryva, vyhladavanie zrusi.
     /// </summary>
     public void Select(T item)
     {
@@ -107,7 +107,7 @@ internal sealed class ItemListSupport<T> where T : class
     }
 
     /// <summary>
-    ///     Pri polozkach s chybou ukaze v prvej bunke ikonu s textom chyby.
+    /// Pri polozkach s chybou ukaze v prvej bunke ikonu s textom chyby.
     /// </summary>
     public void MarkProblems(Func<T, string?> problem)
     {

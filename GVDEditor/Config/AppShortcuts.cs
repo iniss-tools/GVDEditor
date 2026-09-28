@@ -6,7 +6,7 @@ using GVDEditor.Domain.Calendar;
 namespace GVDEditor.Config;
 
 /// <summary>
-///     Obsahuje zoznam všetkých možných klávesových skratiek pre program.
+/// Obsahuje zoznam všetkých možných klávesových skratiek pre program.
 /// </summary>
 public record AppShortcuts()
 {
@@ -112,7 +112,7 @@ public record AppShortcuts()
     #region Properties
 
     /// <summary>
-    ///     Skratka pre otvorenie dialógu Nový grafikon.
+    /// Skratka pre otvorenie dialógu Nový grafikon.
     /// </summary>
     [XmlElement("NewGVD")]
     public CmdShortcut New
@@ -126,7 +126,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie grafikonu.
+    /// Skratka pre otvorenie grafikonu.
     /// </summary>
     [XmlElement("OpenGVD")]
     public CmdShortcut Open
@@ -140,7 +140,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre import grafikonu.
+    /// Skratka pre import grafikonu.
     /// </summary>
     [XmlElement("ImportGVD")]
     public CmdShortcut ImportGvd
@@ -154,7 +154,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie dialógu Importovanie dát.
+    /// Skratka pre otvorenie dialógu Importovanie dát.
     /// </summary>
     [XmlElement("ImportData")]
     public CmdShortcut ImportData
@@ -168,7 +168,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre uloženie grafikonu.
+    /// Skratka pre uloženie grafikonu.
     /// </summary>
     [XmlElement("Save")]
     public CmdShortcut Save
@@ -182,7 +182,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre analyzu grafikonu.
+    /// Skratka pre analyzu grafikonu.
     /// </summary>
     [XmlElement("Analyze")]
     public CmdShortcut Analyze
@@ -196,7 +196,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre import grafikonu.
+    /// Skratka pre import grafikonu.
     /// </summary>
     [XmlElement("AddTrain")]
     public CmdShortcut AddTrain
@@ -210,7 +210,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre úpravu vlaku.
+    /// Skratka pre úpravu vlaku.
     /// </summary>
     [XmlElement("EditTrain")]
     public CmdShortcut EditTrain
@@ -224,7 +224,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre vymazanie vlaku.
+    /// Skratka pre vymazanie vlaku.
     /// </summary>
     [XmlElement("DeleteTrains")]
     public CmdShortcut DeleteTrains
@@ -238,7 +238,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre duplikovanie vlaku.
+    /// Skratka pre duplikovanie vlaku.
     /// </summary>
     [XmlElement("DuplicateTrain")]
     public CmdShortcut DuplicateTrain
@@ -252,7 +252,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre uloženie grafikonu.
+    /// Skratka pre uloženie grafikonu.
     /// </summary>
     [XmlElement("LSettings")]
     public CmdShortcut LocalSettings
@@ -266,7 +266,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre pridanie vlaku.
+    /// Skratka pre pridanie vlaku.
     /// </summary>
     [XmlElement("GSettings")]
     public CmdShortcut GlobalSettings
@@ -280,7 +280,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre úpravu vlaku.
+    /// Skratka pre úpravu vlaku.
     /// </summary>
     [XmlElement("AppSettings")]
     public CmdShortcut AppSettings
@@ -294,7 +294,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Globalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Globalnych nastaveni.
     /// </summary>
     [XmlElement("GSGrafikony")]
     public CmdShortcut GSGvds
@@ -308,7 +308,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Globalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Globalnych nastaveni.
     /// </summary>
     [XmlElement("GSLangs")]
     public CmdShortcut GSLanguages
@@ -322,7 +322,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Globalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Globalnych nastaveni.
     /// </summary>
     [XmlElement("GSMeskania")]
     public CmdShortcut GSDelays
@@ -336,7 +336,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Globalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Globalnych nastaveni.
     /// </summary>
     [XmlElement("GSTrainTypes")]
     public CmdShortcut GSTrainTypes
@@ -350,7 +350,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Globalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Globalnych nastaveni.
     /// </summary>
     [XmlElement("GSAudio")]
     public CmdShortcut GSAudio
@@ -364,7 +364,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Lokalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Lokalnych nastaveni.
     /// </summary>
     [XmlElement("LSGrafikon")] 
     public CmdShortcut LSGvd
@@ -378,7 +378,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Lokalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Lokalnych nastaveni.
     /// </summary>
     [XmlElement("LSJazyky")]
     public CmdShortcut LSLanguages
@@ -392,7 +392,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Lokalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Lokalnych nastaveni.
     /// </summary>
     [XmlElement("LSStanice")] 
     public CmdShortcut LSStations
@@ -406,7 +406,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Lokalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Lokalnych nastaveni.
     /// </summary>
     [XmlElement("LSDopravcovia")] 
     public CmdShortcut LSOperators
@@ -420,7 +420,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Lokalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Lokalnych nastaveni.
     /// </summary>
     [XmlElement("LSPlatforms")] 
     public CmdShortcut LSPlatforms
@@ -434,7 +434,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Lokalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Lokalnych nastaveni.
     /// </summary>
     [XmlElement("LSKolaje")] 
     public CmdShortcut LSTracks
@@ -448,7 +448,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Lokalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Lokalnych nastaveni.
     /// </summary>
     [XmlElement("LSTPhysicals")] 
     public CmdShortcut LSPhysicalTables
@@ -462,7 +462,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Lokalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Lokalnych nastaveni.
     /// </summary>
     [XmlElement("LSTLogicals")] 
     public CmdShortcut LSLogicalsTables
@@ -476,7 +476,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Lokalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Lokalnych nastaveni.
     /// </summary>
     [XmlElement("LSTCatalogs")]
     public CmdShortcut LSCatalogTables
@@ -490,7 +490,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Lokalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Lokalnych nastaveni.
     /// </summary>
     [XmlElement("LSTabTab")] 
     public CmdShortcut LSTabTab
@@ -504,7 +504,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Lokalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Lokalnych nastaveni.
     /// </summary>
     [XmlElement("LSTTexts")]
     public CmdShortcut LSTTexts
@@ -518,7 +518,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie polozky z Lokalnych nastaveni.
+    /// Skratka pre otvorenie polozky z Lokalnych nastaveni.
     /// </summary>
     [XmlElement("LSTFonts")] 
     public CmdShortcut LSTFonts
@@ -532,7 +532,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre otvorenie editoru TabTab.
+    /// Skratka pre otvorenie editoru TabTab.
     /// </summary>
     [XmlElement("LSTabTabEditor")] 
     public CmdShortcut LSTabTabEditor
@@ -546,7 +546,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre spustenie programu INISS.
+    /// Skratka pre spustenie programu INISS.
     /// </summary>
     [XmlElement("RunINISS")] 
     public CmdShortcut RunINISS
@@ -560,7 +560,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre ukoncenie programu INISS.
+    /// Skratka pre ukoncenie programu INISS.
     /// </summary>
     [XmlElement("ShutdownINISS")]
     public CmdShortcut ShutdownINISS
@@ -574,7 +574,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre nutene ukoncenie programu INISS.
+    /// Skratka pre nutene ukoncenie programu INISS.
     /// </summary>
     [XmlElement("KillINISS")] 
     public CmdShortcut KillINISS
@@ -588,7 +588,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre restartovanie programu INISS.
+    /// Skratka pre restartovanie programu INISS.
     /// </summary>
     [XmlElement("RestartINISS")] 
     public CmdShortcut RestartINISS
@@ -602,7 +602,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre vymazanie vlaku.
+    /// Skratka pre vymazanie vlaku.
     /// </summary>
     [XmlElement("InfoApp")] 
     public CmdShortcut InfoApp
@@ -616,7 +616,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre duplikovanie vlaku.
+    /// Skratka pre duplikovanie vlaku.
     /// </summary>
     [XmlElement("UpdateNotes")] 
     public CmdShortcut UpdateNotes
@@ -630,7 +630,7 @@ public record AppShortcuts()
     }
 
     /// <summary>
-    ///     Skratka pre okno s generovaniim datumoveho obmedzenia.
+    /// Skratka pre okno s generovaniim datumoveho obmedzenia.
     /// </summary>
     [XmlElement("DatObm")] 
     public CmdShortcut DateLimit
@@ -646,7 +646,7 @@ public record AppShortcuts()
     #endregion
 
     /// <summary>
-    ///     Vráti zoznam všetkých možných klávesových skratiek pre program.
+    /// Vráti zoznam všetkých možných klávesových skratiek pre program.
     /// </summary>
     /// <returns></returns>
     public IList<CmdShortcut> GetValues()

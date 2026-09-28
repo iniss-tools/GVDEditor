@@ -13,17 +13,17 @@ namespace GVDEditor.Domain.Analysis;
 internal enum FixType
 {
     /// <summary>
-    ///     Program problem opravi uplne sam automaticky.
+    /// Program problem opravi uplne sam automaticky.
     /// </summary>
     Auto,
 
     /// <summary>
-    ///     Pouzivatel musi vybrat jednu z ponukanych moznosti, aby chybu opravil.
+    /// Pouzivatel musi vybrat jednu z ponukanych moznosti, aby chybu opravil.
     /// </summary>
     SemiAuto,
 
     /// <summary>
-    ///     Pouzivatel musi chybu opravit sam a program mu len ukaze, kde ma chybu opravit.
+    /// Pouzivatel musi chybu opravit sam a program mu len ukaze, kde ma chybu opravit.
     /// </summary>
     Manual
 }
@@ -31,17 +31,17 @@ internal enum FixType
 internal enum ProblemType
 {
     /// <summary>
-    ///     Len informacia pre pouzivatela. Grafikon je uplne funkcny.
+    /// Len informacia pre pouzivatela. Grafikon je uplne funkcny.
     /// </summary>
     Hint,
 
     /// <summary>
-    ///     Grafikon nemusi fungovat uplne spravne, ale je spustitelny.
+    /// Grafikon nemusi fungovat uplne spravne, ale je spustitelny.
     /// </summary>
     Warning,
 
     /// <summary>
-    ///     Zavazna chyba v grafikone. INISS pravdepodobne nespusti tento grafikon.
+    /// Zavazna chyba v grafikone. INISS pravdepodobne nespusti tento grafikon.
     /// </summary>
     Error
 }
@@ -49,17 +49,17 @@ internal enum ProblemType
 internal enum FixResult
 {
     /// <summary>
-    ///     Ak bola chyba opravena.
+    /// Ak bola chyba opravena.
     /// </summary>
     Done,
 
     /// <summary>
-    ///     Ak pouzivatel chybu neopravil.
+    /// Ak pouzivatel chybu neopravil.
     /// </summary>
     NotSolved,
 
     /// <summary>
-    ///     Ak pocas opravy doslo k chybe.
+    /// Ak pocas opravy doslo k chybe.
     /// </summary>
     Error
 }
@@ -77,14 +77,14 @@ internal interface IProblem
     public FixResult FixProblem();
 
     /// <summary>
-    ///     Ci oprava meni grafikon v pamati (a treba ho potom ulozit). Oprava mimo grafikonu, napr. zmazanie
-    ///     vyrovnavacej pamate INISSu, sa zapise hned.
+    /// Ci oprava meni grafikon v pamati (a treba ho potom ulozit). Oprava mimo grafikonu, napr. zmazanie
+    /// vyrovnavacej pamate INISSu, sa zapise hned.
     /// </summary>
     public bool ChangesGrafikon => true;
 }
 
 /// <summary>
-///     Analyzuje a opravuje problemy najdene v grafikone.
+/// Analyzuje a opravuje problemy najdene v grafikone.
 /// </summary>
 internal static class Analyzer
 {

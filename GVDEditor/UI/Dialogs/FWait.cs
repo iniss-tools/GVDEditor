@@ -3,12 +3,12 @@
 namespace GVDEditor.UI.Dialogs;
 
 /// <summary>
-///     Okno oznamujuce pouzivatelovi nacitavanie dat.
+/// Okno oznamujuce pouzivatelovi nacitavanie dat.
 /// </summary>
 public partial class FWait : Form
 {
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FWait"/>.
+    /// Vytvori novy formular typu <see cref="FWait"/>.
     /// </summary>
     public FWait(string? text = null)
     {

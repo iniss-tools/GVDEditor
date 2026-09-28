@@ -3,12 +3,12 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Domain.Analysis;
 
 /// <summary>
-///     Kde sa tabule pouzivaju - podla toho sa rozhoduje, ci sa tabula da odstranit.
+/// Kde sa tabule pouzivaju - podla toho sa rozhoduje, ci sa tabula da odstranit.
 /// </summary>
 internal static class TableUsage
 {
     /// <summary>
-    ///     Pozicie logickych tabul, na ktore sa posiela obsah fyzickej tabule <paramref name="table" />.
+    /// Pozicie logickych tabul, na ktore sa posiela obsah fyzickej tabule <paramref name="table" />.
     /// </summary>
     public static IEnumerable<(TableLogical Logical, int Position)> LogicalPositions(TablePhysical table,
         IEnumerable<TableLogical> logicals)

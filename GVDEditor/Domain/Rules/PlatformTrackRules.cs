@@ -5,13 +5,13 @@ using GVDEditor.Properties;
 namespace GVDEditor.Domain.Rules;
 
 /// <summary>
-///     Pravidla nastupist a kolaji stanice (Pozice_A.txt): povinne polia a jedinecne oznacenie - vlaky sa na kolaj
-///     odkazuju jej oznacenim.
+/// Pravidla nastupist a kolaji stanice (Pozice_A.txt): povinne polia a jedinecne oznacenie - vlaky sa na kolaj
+/// odkazuju jej oznacenim.
 /// </summary>
 internal static class PlatformTrackRules
 {
     /// <summary>
-    ///     Pole nastupista alebo kolaje, ktoreho sa chyba tyka.
+    /// Pole nastupista alebo kolaje, ktoreho sa chyba tyka.
     /// </summary>
     public enum Field
     {
@@ -23,7 +23,7 @@ internal static class PlatformTrackRules
     }
 
     /// <summary>
-    ///     Prva chyba nastupista na pozicii <paramref name="index" />, alebo <see langword="null" />.
+    /// Prva chyba nastupista na pozicii <paramref name="index" />, alebo <see langword="null" />.
     /// </summary>
     public static (Field Field, string Message)? CheckPlatform(IReadOnlyList<Platform> platforms, int index)
     {
@@ -42,7 +42,7 @@ internal static class PlatformTrackRules
     }
 
     /// <summary>
-    ///     Prva chyba kolaje na pozicii <paramref name="index" />, alebo <see langword="null" />.
+    /// Prva chyba kolaje na pozicii <paramref name="index" />, alebo <see langword="null" />.
     /// </summary>
     public static (Field Field, string Message)? CheckTrack(IReadOnlyList<Track> tracks, int index)
     {
@@ -65,7 +65,7 @@ internal static class PlatformTrackRules
     }
 
     /// <summary>
-    ///     Oznacenie noveho nastupista alebo kolaje - o jedno vyssie cislo nez najvyssie ciselne oznacenie.
+    /// Oznacenie noveho nastupista alebo kolaje - o jedno vyssie cislo nez najvyssie ciselne oznacenie.
     /// </summary>
     public static string SuggestKey(IEnumerable<string?> keys)
     {

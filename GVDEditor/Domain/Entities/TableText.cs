@@ -1,12 +1,12 @@
 ﻿namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Trieda zastrešujúca texty na tabuliach.
+/// Trieda zastrešujúca texty na tabuliach.
 /// </summary>
 public sealed class TableText : ITable
 {
     /// <summary>
-    ///     Vytvori novu instanciu triedy <see cref="TableText"/>.
+    /// Vytvori novu instanciu triedy <see cref="TableText"/>.
     /// </summary>
     public TableText()
     {
@@ -15,27 +15,27 @@ public sealed class TableText : ITable
     }
 
     /// <summary>
-    ///     Vrati alebo nastavi kluc typu textu na tabuliach.
+    /// Vrati alebo nastavi kluc typu textu na tabuliach.
     /// </summary>
     public string Key { get; set; } = null!;
 
     /// <summary>
-    ///     Vrati alebo nastavi nazov typu textu na tabuliach.
+    /// Vrati alebo nastavi nazov typu textu na tabuliach.
     /// </summary>
     public string Name { get; set; } = null!;
 
     /// <summary>
-    ///     Vrati alebo nastavi komentar ku danemu typu textu na tabuliach.
+    /// Vrati alebo nastavi komentar ku danemu typu textu na tabuliach.
     /// </summary>
     public string Comment { get; set; } = null!;
 
     /// <summary>
-    ///     Vrati alebo nastavi realizacie tohto typu textu na tabuliach.
+    /// Vrati alebo nastavi realizacie tohto typu textu na tabuliach.
     /// </summary>
     public List<TableTextRealization> Realizations { get; set; }
 
     /// <summary>
-    ///     Vrati alebo nastavi vlaky (<see cref="TableTrain" />), ktore maju tento typ textu na tabuliach.
+    /// Vrati alebo nastavi vlaky (<see cref="TableTrain" />), ktore maju tento typ textu na tabuliach.
     /// </summary>
     public List<TableTrain> Trains { get; set; }
 

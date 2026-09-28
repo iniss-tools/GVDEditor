@@ -8,13 +8,13 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Import;
 
 /// <summary>
-///     Dialog - priradenie staníc z programu ELIS k staniciam grafikonu.
+/// Dialog - priradenie staníc z programu ELIS k staniciam grafikonu.
 /// </summary>
 /// <remarks>
-///     ELIS pomenúva niektoré stanice inak než zvuková banka. Tento dialóg sa pýta len na tie,
-///     ktoré sa nepodarilo priradiť automaticky, a výsledok sa uloží do ELISMAP.TXT, aby sa
-///     pri ďalšom importe už nepýtal. Stanica sa nikdy nezakladá sama - inak by v grafikone
-///     vznikli dva názvy tej istej stanice.
+/// ELIS pomenúva niektoré stanice inak než zvuková banka. Tento dialóg sa pýta len na tie,
+/// ktoré sa nepodarilo priradiť automaticky, a výsledok sa uloží do ELISMAP.TXT, aby sa
+/// pri ďalšom importe už nepýtal. Stanica sa nikdy nezakladá sama - inak by v grafikone
+/// vznikli dva názvy tej istej stanice.
 /// </remarks>
 public partial class FELISStations : Form
 {
@@ -28,13 +28,13 @@ public partial class FELISStations : Form
     private readonly List<Station> _created = new();
 
     /// <summary>
-    ///     Vysledne priradenie: nazov z ELIS -> ID stanice, alebo
-    ///     <see cref="TxtParser.ELIS_MAP_SKIP" /> ak sa ma stanica vynechat.
+    /// Vysledne priradenie: nazov z ELIS -> ID stanice, alebo
+    /// <see cref="TxtParser.ELIS_MAP_SKIP" /> ak sa ma stanica vynechat.
     /// </summary>
     internal Dictionary<string, string> Result { get; } = new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FELISStations" />.
+    /// Vytvori novy formular typu <see cref="FELISStations" />.
     /// </summary>
     /// <param name="unresolvedNames">Nazvy z ELIS, ktore sa nepodarilo priradit automaticky.</param>
     public FELISStations(List<string> unresolvedNames)
@@ -134,7 +134,7 @@ public partial class FELISStations : Form
     }
 
     /// <summary>
-    ///     Vrati najnizsie volne ID pre novu pouzivatelom definovanu stanicu.
+    /// Vrati najnizsie volne ID pre novu pouzivatelom definovanu stanicu.
     /// </summary>
     private static string NextFreeId()
     {
@@ -150,8 +150,8 @@ public partial class FELISStations : Form
     }
 
     /// <summary>
-    ///     Zvyrazni bunku s priradenou stanicou; <see langword="null" /> vrati farbu temy.
-    ///     Bunka z ExControls kresli text podla svojho stylu, nie podla DataGridViewCellStyle.
+    /// Zvyrazni bunku s priradenou stanicou; <see langword="null" /> vrati farbu temy.
+    /// Bunka z ExControls kresli text podla svojho stylu, nie podla DataGridViewCellStyle.
     /// </summary>
     private void SetStationColor(DataGridViewCell cell, Color? color)
     {

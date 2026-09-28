@@ -11,13 +11,13 @@ using System.Text.RegularExpressions;
 namespace GVDEditor.Domain.Calendar;
 
 /// <summary>
-///     Trieda pre zpracovavanie bitoveho pola do poznamky a naopak.
+/// Trieda pre zpracovavanie bitoveho pola do poznamky a naopak.
 /// </summary>
 internal class DateLimit
 {
     /// <summary>
-    ///     Pevne kody dni tak, ako sa zapisuju v poznamke. Poradie znakov zodpoveda poradiu bitov
-    ///     v <see cref="DayType"/>, teda '1' je pondelok, 'X' pracovny den a '+' sviatok.
+    /// Pevne kody dni tak, ako sa zapisuju v poznamke. Poradie znakov zodpoveda poradiu bitov
+    /// v <see cref="DayType"/>, teda '1' je pondelok, 'X' pracovny den a '+' sviatok.
     /// </summary>
     private const string WeekDaySigns = "1234567";
 
@@ -77,7 +77,7 @@ internal class DateLimit
     private string _text = null!;
 
     /// <summary>
-    ///     Jazyk generovaných datumových obmedzeni.
+    /// Jazyk generovaných datumových obmedzeni.
     /// </summary>
     public enum Locale
     {
@@ -86,7 +86,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Kluce k textom
+    /// Kluce k textom
     /// </summary>
     public enum Message
     {
@@ -161,8 +161,8 @@ internal class DateLimit
     ];
 
     /// <summary>
-    ///     Vzory, ktorymi sa pri parsovani rozpoznavaju sprAvy aj v skratenom alebo inojazycnom tvare.
-    ///     Spravy, ktore v zozname nie su, sa porovnavaju len na presnu zhodu.
+    /// Vzory, ktorymi sa pri parsovani rozpoznavaju sprAvy aj v skratenom alebo inojazycnom tvare.
+    /// Spravy, ktore v zozname nie su, sa porovnavaju len na presnu zhodu.
     /// </summary>
     private static readonly Dictionary<Message, string> MessagePatterns = new()
     {
@@ -190,7 +190,7 @@ internal class DateLimit
     ];
 
     /// <summary>
-    ///     Vytvori novu instanciu triedy <see cref="DateLimit"/>.
+    /// Vytvori novu instanciu triedy <see cref="DateLimit"/>.
     /// </summary>
     /// <param name="from">Pociatocny datum platnosti GVD.</param>
     /// <param name="to">Koncovy datum platnosti GVD.</param>
@@ -231,73 +231,73 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Jazyk generovanych poznamok.
+    /// Jazyk generovanych poznamok.
     /// </summary>
     public static Locale Loc { get; set; } = Locale.Sk;
 
     /// <summary>
-    ///     Urcuje, ci sa nazvy typov dni obalia znackami {}.
+    /// Urcuje, ci sa nazvy typov dni obalia znackami {}.
     /// </summary>
     public bool InsertMarks { get; set; }
 
     /// <summary>
-    ///     Vrati celkovy pocet dni grafikonu.
+    /// Vrati celkovy pocet dni grafikonu.
     /// </summary>
     public int TotalDays => MaxDay + 1;
 
     /// <summary>
-    ///     Vrati maximalny poradovy index dna.
+    /// Vrati maximalny poradovy index dna.
     /// </summary>
     public int MaxDay => DateDiff(DateFrom, DateTo);
 
     /// <summary>
-    ///     Vrati pociatocny datum.
+    /// Vrati pociatocny datum.
     /// </summary>
     public DateTime DateFrom { get; private set; }
 
     /// <summary>
-    ///     Vrati koncovy datum.
+    /// Vrati koncovy datum.
     /// </summary>
     public DateTime DateTo { get; private set; }
 
     /// <summary>
-    ///     Obdobie platnosti ako text.
+    /// Obdobie platnosti ako text.
     /// </summary>
     public string TextFromTo => $"{FormatDate(DateFrom)} - {FormatDate(DateTo)}";
 
     /// <summary>
-    ///     Vrati priznak alternativneho tvaru textu.
+    /// Vrati priznak alternativneho tvaru textu.
     /// </summary>
     public bool AltForm { get; }
 
     /// <summary>
-    ///     Vrati datum pouzity ako "dnes".
+    /// Vrati datum pouzity ako "dnes".
     /// </summary>
     public DateTime Today { get; }
 
     /// <summary>
-    ///     Vytvori bitove pole pre priznaky ide/nejde.
+    /// Vytvori bitove pole pre priznaky ide/nejde.
     /// </summary>
     public BitArray CreateBitArray() => new(TotalDays);
 
     /// <summary>
-    ///     Formatuje datum do formatu "dd:MM:yyyy".
+    /// Formatuje datum do formatu "dd:MM:yyyy".
     /// </summary>
     public static string FormatDate(DateTime date) => date.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture);
 
     /// <summary>
-    ///     Vrati vzdialenost medzi datumami ako <see cref="int"/>.
+    /// Vrati vzdialenost medzi datumami ako <see cref="int"/>.
     /// </summary>
     public static int DateDiff(DateTime from, DateTime to) => (int)Math.Round((to - from).TotalDays);
 
     /// <summary>
-    ///     Konvertuje bitove pole do textovej poznamky.
+    /// Konvertuje bitove pole do textovej poznamky.
     /// </summary>
     /// <param name="bits">Bitove pole.</param>
     /// <param name="cycle">Posunutie vzhladom k bitovemu polu.</param>
     /// <param name="validBits">Dni, ktore ma zmysel v poznamke uvadzat.</param>
     /// <returns>
-    ///     Text poznamky.
+    /// Text poznamky.
     /// </returns>
     public string BitArrayToText(BitArray? bits, int cycle = 0, BitArray? validBits = null)
     {
@@ -377,7 +377,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Konvertuje textovu poznamku do bitoveho pole.
+    /// Konvertuje textovu poznamku do bitoveho pole.
     /// </summary>
     /// <param name="text">Text poznamky.</param>
     /// <returns>Text poznamky.</returns>
@@ -411,7 +411,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati, ci sa datumove obmedzenia ako texty prekryvaju.
+    /// Vrati, ci sa datumove obmedzenia ako texty prekryvaju.
     /// </summary>
     /// <param name="dl1">Text datumoveho obmedenia.</param>
     /// <param name="dl2">Text datumoveho obmedenia.</param>
@@ -422,27 +422,27 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Logicka operacia AND medzi textami.
+    /// Logicka operacia AND medzi textami.
     /// </summary>
     public string TextAnd(params string[] texts) => Combine((first, second) => first.And(second), texts);
 
     /// <summary>
-    ///     Logicka operacia OR medzi textami.
+    /// Logicka operacia OR medzi textami.
     /// </summary>
     public string TextOr(params string[] texts) => Combine((first, second) => first.Or(second), texts);
 
     /// <summary>
-    ///     Logicka operacia XOR medzi textami.
+    /// Logicka operacia XOR medzi textami.
     /// </summary>
     public string TextXor(params string[] texts) => Combine((first, second) => first.Xor(second), texts);
 
     /// <summary>
-    ///     Logicka operacia NOT podla textu.
+    /// Logicka operacia NOT podla textu.
     /// </summary>
     public string TextNot(string text) => BitArrayToText(TextToBitArray(text).Not());
 
     /// <summary>
-    ///     Vrati text správy.
+    /// Vrati text správy.
     /// </summary>
     public static string MsgText(Message message)
     {
@@ -455,12 +455,12 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Text správy so zohlednenim alternativnej formulacie.
+    /// Text správy so zohlednenim alternativnej formulacie.
     /// </summary>
     public string AltMsgText(Message msg1, Message msg2) => MsgText(AltForm ? msg2 : msg1);
 
     /// <summary>
-    ///     Vrati, ci je zadany datum sviatok alebo nedela.
+    /// Vrati, ci je zadany datum sviatok alebo nedela.
     /// </summary>
     public static bool IsHoliday(DateTime date)
     {
@@ -492,8 +492,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vykona logicku operaciu <paramref name="operation"/> nad bitovymi polami vsetkych textov
-    ///     a vysledok prevedie spat na text.
+    /// Vykona logicku operaciu <paramref name="operation"/> nad bitovymi polami vsetkych textov
+    /// a vysledok prevedie spat na text.
     /// </summary>
     private string Combine(Func<BitArray, BitArray, BitArray> operation, string[] texts)
     {
@@ -514,7 +514,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati, ci sa v rozsahu <paramref name="from"/>-<paramref name="to"/> vyskytuju obe hodnoty bitov.
+    /// Vrati, ci sa v rozsahu <paramref name="from"/>-<paramref name="to"/> vyskytuju obe hodnoty bitov.
     /// </summary>
     private static bool HasMixedBits(BitArray bits, int from, int to)
     {
@@ -526,7 +526,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati novu kopiu bitoveho pola orezanu na rozsah <paramref name="from"/>-<paramref name="to"/>.
+    /// Vrati novu kopiu bitoveho pola orezanu na rozsah <paramref name="from"/>-<paramref name="to"/>.
     /// </summary>
     private static BitArray Slice(BitArray bits, int from, int to)
     {
@@ -539,7 +539,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Odstrani z obmedzenia jednotlive dni, ktore nepatria medzi platne dni.
+    /// Odstrani z obmedzenia jednotlive dni, ktore nepatria medzi platne dni.
     /// </summary>
     private static void ReduceDates(IList<DateLimitInfo> limits, BitArray validBits)
     {
@@ -559,7 +559,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vytvori text pre aktualne bitove pole <see cref="_bits"/>.
+    /// Vytvori text pre aktualne bitove pole <see cref="_bits"/>.
     /// </summary>
     /// <param name="isNot">Spracovat negovane bitove pole, teda vytvorit zapis v tvare "nejde ...".</param>
     /// <param name="infosCount">Pocet useku vysledneho obmedzenia - mensi pocet znamena jednoduchsi zapis.</param>
@@ -610,7 +610,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Rozlozi interval <paramref name="from"/>-<paramref name="to"/> na useky datumoveho obmedzenia.
+    /// Rozlozi interval <paramref name="from"/>-<paramref name="to"/> na useky datumoveho obmedzenia.
     /// </summary>
     /// <param name="minCount">Minimalna dlzka useku, ktory sa este oplati oddelit.</param>
     /// <param name="from">Zaciatok intervalu.</param>
@@ -664,8 +664,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Oddeli jednotlive dni na zaciatku alebo konci intervalu, ktore od zvysku deli dlha medzera,
-    ///     aby nerozbili tyzdenny vzor zvysku (napr. "ide 26.XII.,od 28.III. v 7").
+    /// Oddeli jednotlive dni na zaciatku alebo konci intervalu, ktore od zvysku deli dlha medzera,
+    /// aby nerozbili tyzdenny vzor zvysku (napr. "ide 26.XII.,od 28.III. v 7").
     /// </summary>
     /// <returns><see langword="null"/>, ak take dni v intervale nie su.</returns>
     private List<DateLimitInfo>? SplitIsolatedDays(int minCount, int from, int to)
@@ -732,7 +732,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati, ci vlak v rozsahu <paramref name="from"/>-<paramref name="to"/> aspon raz ide.
+    /// Vrati, ci vlak v rozsahu <paramref name="from"/>-<paramref name="to"/> aspon raz ide.
     /// </summary>
     private bool HasRuns(int from, int to)
     {
@@ -744,8 +744,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati, ci sa jazda v rozsahu <paramref name="from"/>-<paramref name="to"/> riadi dnami v tyzdni -
-    ///     niektore typy dni su prevazne jazdne a ine prevazne nejazdne.
+    /// Vrati, ci sa jazda v rozsahu <paramref name="from"/>-<paramref name="to"/> riadi dnami v tyzdni -
+    /// niektore typy dni su prevazne jazdne a ine prevazne nejazdne.
     /// </summary>
     private bool HasWeekPattern(int from, int to)
     {
@@ -768,7 +768,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Postupne skusi vsetky sposoby rozdelenia intervalu na kratsie useky.
+    /// Postupne skusi vsetky sposoby rozdelenia intervalu na kratsie useky.
     /// </summary>
     private List<DateLimitInfo>? SplitInterval(int minCount, int from, int to) =>
         SplitAtRunBlocks(minCount, from, to) ??
@@ -777,11 +777,11 @@ internal class DateLimit
         SplitTrailingRun(minCount, from, to);
 
     /// <summary>
-    ///     Rozdeli interval na useky ohranicene dnami, kedy vlak nejde.
+    /// Rozdeli interval na useky ohranicene dnami, kedy vlak nejde.
     /// </summary>
     /// <remarks>
-    ///     Povodny kod tu porovnaval dlzku jedineho dna s <paramref name="minCount"/>, takze usek
-    ///     vznikne az vtedy, ked <paramref name="minCount"/> klesne na 1 alebo nizsie.
+    /// Povodny kod tu porovnaval dlzku jedineho dna s <paramref name="minCount"/>, takze usek
+    /// vznikne az vtedy, ked <paramref name="minCount"/> klesne na 1 alebo nizsie.
     /// </remarks>
     private List<DateLimitInfo>? SplitAtRunBlocks(int minCount, int from, int to)
     {
@@ -807,8 +807,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Najde vnutri intervalu dostatocne dlhy suvisly usek a rozdeli interval na cast pred nim,
-    ///     samotny usek a cast za nim.
+    /// Najde vnutri intervalu dostatocne dlhy suvisly usek a rozdeli interval na cast pred nim,
+    /// samotny usek a cast za nim.
     /// </summary>
     private List<DateLimitInfo>? SplitAtLongRun(int minCount, int from, int to)
     {
@@ -847,7 +847,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Oddeli dostatocne dlhy suvisly usek na zaciatku intervalu.
+    /// Oddeli dostatocne dlhy suvisly usek na zaciatku intervalu.
     /// </summary>
     private List<DateLimitInfo>? SplitLeadingRun(int minCount, int from, int to)
     {
@@ -872,7 +872,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Oddeli dostatocne dlhy suvisly usek na konci intervalu.
+    /// Oddeli dostatocne dlhy suvisly usek na konci intervalu.
     /// </summary>
     private List<DateLimitInfo>? SplitTrailingRun(int minCount, int from, int to)
     {
@@ -895,8 +895,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Hlada najdlhsi usek, ktory sa da popisat tyzdennym vzorom (napr. "ide 1-5") spolu so zoznamom
-    ///     vynimiek z neho. Zvysok intervalu spracuje rekurzivne.
+    /// Hlada najdlhsi usek, ktory sa da popisat tyzdennym vzorom (napr. "ide 1-5") spolu so zoznamom
+    /// vynimiek z neho. Zvysok intervalu spracuje rekurzivne.
     /// </summary>
     private List<DateLimitInfo>? ScanWeekDays(int minCount, int from, int to)
     {
@@ -1052,7 +1052,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Doplni do obmedzenia useky, v ktorych vlak ide nad ramec tyzdenneho vzoru.
+    /// Doplni do obmedzenia useky, v ktorych vlak ide nad ramec tyzdenneho vzoru.
     /// </summary>
     private void AddExtraRuns(DateLimitInfo limit, int from, int lastDay, DayCounter okCount, DayGrouping grouping)
     {
@@ -1079,7 +1079,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Doplni do obmedzenia useky dni tyzdenneho vzoru, v ktorych vlak nejde.
+    /// Doplni do obmedzenia useky dni tyzdenneho vzoru, v ktorych vlak nejde.
     /// </summary>
     private void AddMissingRuns(DateLimitInfo limit, int from, int lastDay, int dayFrom, int dayTo,
         DayCounter okCount, DayGrouping grouping)
@@ -1139,7 +1139,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Pokusi sa zredukovat interval <paramref name="from"/>-<paramref name="to"/>.
+    /// Pokusi sa zredukovat interval <paramref name="from"/>-<paramref name="to"/>.
     /// </summary>
     /// <param name="from">zaciatok intervalu</param>
     /// <param name="to">koniec intervalu</param>
@@ -1153,7 +1153,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati jednotlive intervaly datumoveho obmedzenia.
+    /// Vrati jednotlive intervaly datumoveho obmedzenia.
     /// </summary>
     /// <param name="from">zaciatok intervalu</param>
     /// <param name="to">koniec intervalu</param>
@@ -1199,8 +1199,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati obmedzenie zapisane tyzdennym vzorom alebo vypisom jednotlivych dni, ak je takyto
-    ///     zapis mozny. Inak vrati <see langword="null"/>.
+    /// Vrati obmedzenie zapisane tyzdennym vzorom alebo vypisom jednotlivych dni, ak je takyto
+    /// zapis mozny. Inak vrati <see langword="null"/>.
     /// </summary>
     private List<DateLimitInfo>? GetSingleDays(int from, int to)
     {
@@ -1243,8 +1243,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Prida prvky (intervaly) zoznamu <paramref name="appendIntervals"/> do zoznamu <paramref name="baseIntervals"/>.<br></br>
-    ///     Ak <paramref name="baseIntervals"/> je <see langword="null"/>, priradi referenciu <paramref name="appendIntervals"/> do <paramref name="baseIntervals"/>.
+    /// Prida prvky (intervaly) zoznamu <paramref name="appendIntervals"/> do zoznamu <paramref name="baseIntervals"/>.<br></br>
+    /// Ak <paramref name="baseIntervals"/> je <see langword="null"/>, priradi referenciu <paramref name="appendIntervals"/> do <paramref name="baseIntervals"/>.
     /// </summary>
     /// <param name="baseIntervals">zakladny zoznam</param>
     /// <param name="appendIntervals">zoznam na priradenie do zakladneho zoznamu</param>
@@ -1260,8 +1260,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Prida prvok <paramref name="interval"/> do zoznamu <paramref name="baseIntervals"/>.<br></br>
-    ///     Ak <paramref name="baseIntervals"/> je <see langword="null"/>, vytvori sa nova instancia triedy <see cref="List{DateLimitInfo}"/>.
+    /// Prida prvok <paramref name="interval"/> do zoznamu <paramref name="baseIntervals"/>.<br></br>
+    /// Ak <paramref name="baseIntervals"/> je <see langword="null"/>, vytvori sa nova instancia triedy <see cref="List{DateLimitInfo}"/>.
     /// </summary>
     /// <param name="baseIntervals">zakladny zoznam</param>
     /// <param name="interval">interval na pridanie</param>
@@ -1272,12 +1272,12 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Prida jeden den ako periodu s rovnakym zaciatkom aj koncom.
+    /// Prida jeden den ako periodu s rovnakym zaciatkom aj koncom.
     /// </summary>
     private static void AddDay(List<DateLimitInfo> runs, int day) => AddPeriod(runs, day, day);
 
     /// <summary>
-    ///     Prida periodu. Ak nadvazuje na poslednu periodu v zozname, obe sa spoja do jednej.
+    /// Prida periodu. Ak nadvazuje na poslednu periodu v zozname, obe sa spoja do jednej.
     /// </summary>
     /// <param name="runs">intervaly</param>
     /// <param name="from">ide od</param>
@@ -1294,19 +1294,19 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati, ci v zadany den vlak IDE.
+    /// Vrati, ci v zadany den vlak IDE.
     /// </summary>
     /// <param name="day">Den na posudenie.</param>
     private bool Runs(int day) => _bits![day];
 
     /// <summary>
-    ///     Vrati, ci v zadany den vlak NEJDE.
+    /// Vrati, ci v zadany den vlak NEJDE.
     /// </summary>
     /// <param name="day">Den na posudenie.</param>
     private bool RunsNot(int day) => !Runs(day);
 
     /// <summary>
-    ///     Prida zadany den do <see cref="StringBuilder"/>a, ktory pred pridanim sformatuje.
+    /// Prida zadany den do <see cref="StringBuilder"/>a, ktory pred pridanim sformatuje.
     /// </summary>
     /// <param name="day">Den, ktory sa ma pridat na koniec buildera.</param>
     private void AppendDay(int day)
@@ -1316,8 +1316,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Sformatuje zadany den. Ak ma rovnaky mesiac ako naposledy vypisany den, mesiac sa
-    ///     z predchadzajuceho datumu v builderi odstrani (zapise sa teda len raz, napr. "1.,5.I.").
+    /// Sformatuje zadany den. Ak ma rovnaky mesiac ako naposledy vypisany den, mesiac sa
+    /// z predchadzajuceho datumu v builderi odstrani (zapise sa teda len raz, napr. "1.,5.I.").
     /// </summary>
     /// <param name="day">Den, ktory sa ma sformatovat.</param>
     /// <returns>sformatovany den ako retazec.</returns>
@@ -1341,7 +1341,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Prida znak ciarky (,) na koniec <see cref="StringBuilder"/>a.
+    /// Prida znak ciarky (,) na koniec <see cref="StringBuilder"/>a.
     /// </summary>
     private void AppendComma()
     {
@@ -1352,7 +1352,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Prida znak medzery ( ) na koniec <see cref="StringBuilder"/>a.
+    /// Prida znak medzery ( ) na koniec <see cref="StringBuilder"/>a.
     /// </summary>
     private void AppendSpace()
     {
@@ -1363,13 +1363,13 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Spocita, kolkokrat vlak v intervale ide a nejde v jednotlivych typoch dni. Ak prevazuje
-    ///     jazda podla pracovnych dni a sviatkov, prepne <paramref name="grouping"/> na toto zlucenie
-    ///     a pocitadla dni v tyzdni vynuluje.
+    /// Spocita, kolkokrat vlak v intervale ide a nejde v jednotlivych typoch dni. Ak prevazuje
+    /// jazda podla pracovnych dni a sviatkov, prepne <paramref name="grouping"/> na toto zlucenie
+    /// a pocitadla dni v tyzdni vynuluje.
     /// </summary>
     /// <returns>
-    ///     <see langword="true"/>, ak sa jazda da uplne popisat typmi dni, teda ziadny typ dna nie je
-    ///     zaroven jazdny aj nejazdny.
+    /// <see langword="true"/>, ak sa jazda da uplne popisat typmi dni, teda ziadny typ dna nie je
+    /// zaroven jazdny aj nejazdny.
     /// </returns>
     private bool ScanDays(int from, int to, DayCounter okCount, DayCounter badCount, ref DayGrouping grouping)
     {
@@ -1421,8 +1421,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Rozhodne, ci sa jazda lepsie popise dnami v tyzdni, alebo pracovnymi dnami a sviatkami,
-    ///     a pocitadla nepouziteho popisu vynuluje.
+    /// Rozhodne, ci sa jazda lepsie popise dnami v tyzdni, alebo pracovnymi dnami a sviatkami,
+    /// a pocitadla nepouziteho popisu vynuluje.
     /// </summary>
     private static void ApplySpecDays(DayCounter okCount, DayCounter badCount, int saturdays, ref DayGrouping grouping)
     {
@@ -1473,8 +1473,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Posunie zaciatok useku na prvy den patriaci do tyzdenneho vzoru. Ak vzor siaha az na
-    ///     zaciatok grafikonu, vrati 0 - zaciatok sa potom v poznamke neuvadza.
+    /// Posunie zaciatok useku na prvy den patriaci do tyzdenneho vzoru. Ak vzor siaha az na
+    /// zaciatok grafikonu, vrati 0 - zaciatok sa potom v poznamke neuvadza.
     /// </summary>
     private int GetBetterDayFrom(int from, DayCounter okCount, DayGrouping grouping)
     {
@@ -1498,8 +1498,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Posunie koniec useku na posledny den patriaci do tyzdenneho vzoru. Ak vzor siaha az na
-    ///     koniec grafikonu, vrati <see cref="MaxDay"/> - koniec sa potom v poznamke neuvadza.
+    /// Posunie koniec useku na posledny den patriaci do tyzdenneho vzoru. Ak vzor siaha az na
+    /// koniec grafikonu, vrati <see cref="MaxDay"/> - koniec sa potom v poznamke neuvadza.
     /// </summary>
     private int GetBetterDayTo(int to, DayCounter okCount, DayGrouping grouping)
     {
@@ -1523,7 +1523,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati, ci su nastavene vsetky dni v tyzdni, alebo vsetky pracovne dni spolu so sviatkami.
+    /// Vrati, ci su nastavene vsetky dni v tyzdni, alebo vsetky pracovne dni spolu so sviatkami.
     /// </summary>
     private static bool AllSet(DayCounter count)
     {
@@ -1532,7 +1532,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati, ci sa tyzdenny vzor od dna <paramref name="from"/> zhoduje so vzorom od dna <paramref name="to"/>.
+    /// Vrati, ci sa tyzdenny vzor od dna <paramref name="from"/> zhoduje so vzorom od dna <paramref name="to"/>.
     /// </summary>
     private bool EqualPattern(int from, int to)
     {
@@ -1544,7 +1544,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Sformatuje vsetky useky obmedzenia do vysledneho textu poznamky.
+    /// Sformatuje vsetky useky obmedzenia do vysledneho textu poznamky.
     /// </summary>
     private string Format(IList<DateLimitInfo> limits, bool isNot)
     {
@@ -1562,7 +1562,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Sformatuje jeden usek obmedzenia.
+    /// Sformatuje jeden usek obmedzenia.
     /// </summary>
     /// <param name="info">Usek na sformatovanie.</param>
     /// <param name="next">Nasledujuci usek, alebo <see langword="null"/> pri poslednom useku.</param>
@@ -1646,7 +1646,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Spoji susedne useky obmedzenia, ktore sa daju zapisat spolocne.
+    /// Spoji susedne useky obmedzenia, ktore sa daju zapisat spolocne.
     /// </summary>
     private static void Merge(IList<DateLimitInfo> limits)
     {
@@ -1660,7 +1660,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Pripoji zoznam typov dni, napr. "v 1-5,7". Tri a viac dni po sebe sa zapisu ako rozsah.
+    /// Pripoji zoznam typov dni, napr. "v 1-5,7". Tri a viac dni po sebe sa zapisu ako rozsah.
     /// </summary>
     private void AppendDays(DayType dayType)
     {
@@ -1709,8 +1709,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Pripoji obdobie. Hranice zhodne s hranicami grafikonu sa neuvadzaju, kratke obdobia sa
-    ///     vypisu ako jednotlive datumy.
+    /// Pripoji obdobie. Hranice zhodne s hranicami grafikonu sa neuvadzaju, kratke obdobia sa
+    /// vypisu ako jednotlive datumy.
     /// </summary>
     private void AppendPeriod(int dayFrom, int dayTo)
     {
@@ -1740,8 +1740,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati, ci den a mesiac zadaneho datumu pripadnu do platnosti grafikonu najviac raz,
-    ///     teda ci netreba k datumu uvadzat aj rok.
+    /// Vrati, ci den a mesiac zadaneho datumu pripadnu do platnosti grafikonu najviac raz,
+    /// teda ci netreba k datumu uvadzat aj rok.
     /// </summary>
     private bool DateUnique(DateTime date)
     {
@@ -1763,7 +1763,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Rozlozi text poznamky na useky a vysledok zapise do bitoveho pola.
+    /// Rozlozi text poznamky na useky a vysledok zapise do bitoveho pola.
     /// </summary>
     private void ParseText()
     {
@@ -1799,11 +1799,11 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Spracuje jeden token textu poznamky.
+    /// Spracuje jeden token textu poznamky.
     /// </summary>
     /// <returns>
-    ///     <see langword="false"/>, ak token len prepol parser do rezimu zoznamu dni a este sa ma
-    ///     posudit v kontexte nasledujuceho tokenu.
+    /// <see langword="false"/>, ak token len prepol parser do rezimu zoznamu dni a este sa ma
+    /// posudit v kontexte nasledujuceho tokenu.
     /// </returns>
     private bool TryReadToken(string token, ParseState state)
     {
@@ -1850,7 +1850,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Zapise datum z tokenu do stavu parsera podla toho, ci ide o "od", "do", alebo o jeden den.
+    /// Zapise datum z tokenu do stavu parsera podla toho, ci ide o "od", "do", alebo o jeden den.
     /// </summary>
     private void ReadDate(string token, ParseState state)
     {
@@ -1875,8 +1875,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Nazrie za zadany token bez posunutia pozicie a vrati, ci nasledujuci token este patri do
-    ///     zoznamu pevnych kodov dni (jednoznakovy kod alebo rozsah tvaru "1-5").
+    /// Nazrie za zadany token bez posunutia pozicie a vrati, ci nasledujuci token este patri do
+    /// zoznamu pevnych kodov dni (jednoznakovy kod alebo rozsah tvaru "1-5").
     /// </summary>
     private bool NextTokenIsDayCode(string token)
     {
@@ -1890,7 +1890,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Ulozi rozparsovany usek a pripravi stav parsera na dalsi usek.
+    /// Ulozi rozparsovany usek a pripravi stav parsera na dalsi usek.
     /// </summary>
     /// <param name="state">Stav parsera.</param>
     /// <param name="and">Usek je s nasledujucim usekom spojeny spojkou "a".</param>
@@ -1926,7 +1926,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Prenesie vsetky rozparsovane useky do bitoveho pola.
+    /// Prenesie vsetky rozparsovane useky do bitoveho pola.
     /// </summary>
     private void ApplyParsedData(Level level)
     {
@@ -1957,7 +1957,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Posunie poziciu na najblizsi neprazdny znak.
+    /// Posunie poziciu na najblizsi neprazdny znak.
     /// </summary>
     /// <returns><see langword="true"/>, ak v texte este nejaky znak zostal.</returns>
     private bool SkipWhiteSpace()
@@ -1969,8 +1969,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati token na aktualnej pozicii bez toho, aby poziciu posunul. Tokenom je bud samotna
-    ///     ciarka, alebo znaky az po najblizsiu medzeru ci ciarku.
+    /// Vrati token na aktualnej pozicii bez toho, aby poziciu posunul. Tokenom je bud samotna
+    /// ciarka, alebo znaky az po najblizsiu medzeru ci ciarku.
     /// </summary>
     private string ExtractToken()
     {
@@ -1983,7 +1983,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati, ci token zodpoveda niektorej zo zadanych sprav.
+    /// Vrati, ci token zodpoveda niektorej zo zadanych sprav.
     /// </summary>
     private static bool TokenIsMsg(string token, params Message[] msgs)
     {
@@ -2007,18 +2007,18 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati, ci je token zlozeny len z pevnych kodov dni.
+    /// Vrati, ci je token zlozeny len z pevnych kodov dni.
     /// </summary>
     private static bool IsDayType(string token) => token.ToUpper(CultureInfo.CurrentCulture).All(c => DayTypeSigns.Contains(c));
 
     /// <summary>
-    ///     Vrati, ci je token rozsah dni v tvare "1-5".
+    /// Vrati, ci je token rozsah dni v tvare "1-5".
     /// </summary>
     private static bool IsDayRange(string token) =>
         token is [_, '-', _] && char.IsDigit(token[0]) && char.IsDigit(token[2]);
 
     /// <summary>
-    ///     Prevedie pevny kod dni ("1", "X+", "1-5") na priznaky typov dni.
+    /// Prevedie pevny kod dni ("1", "X+", "1-5") na priznaky typov dni.
     /// </summary>
     private DayType GetDayType(string token)
     {
@@ -2049,7 +2049,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Prevedie token na datum. Rok sa v poznamke uvadzat nemusi - vtedy sa odvodi z platnosti grafikonu.
+    /// Prevedie token na datum. Rok sa v poznamke uvadzat nemusi - vtedy sa odvodi z platnosti grafikonu.
     /// </summary>
     /// <param name="token">Token s datumom.</param>
     /// <param name="checkLast">Token je koncovym datumom obdobia.</param>
@@ -2124,7 +2124,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vytvori datum a neplatnu kombinaciu prevedie na <see cref="ParseException"/>.
+    /// Vytvori datum a neplatnu kombinaciu prevedie na <see cref="ParseException"/>.
     /// </summary>
     private DateTime CreateDate(int year, int month, int day, string token)
     {
@@ -2139,7 +2139,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Prevedie cislo mesiaca alebo jeho rimsku cislicu na cislo mesiaca.
+    /// Prevedie cislo mesiaca alebo jeho rimsku cislicu na cislo mesiaca.
     /// </summary>
     private int GetMonth(string month)
     {
@@ -2156,13 +2156,13 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati cislo mesiaca ako rimsku cislicu alebo ako cislo podla nastavenia.
+    /// Vrati cislo mesiaca ako rimsku cislicu alebo ako cislo podla nastavenia.
     /// </summary>
     private string MsgMonth(int month) => _monthRoman ? MsgText(Message.Jan + month - 1) : month.ToString(CultureInfo.CurrentCulture);
 
     /// <summary>
-    ///     Vrati nazov typu dna, pripadne obaleny znackami {}. Dlzka znaciek sa pripocita
-    ///     k <see cref="_marksLength"/>, aby sa nezapocitala do dlzky poznamky.
+    /// Vrati nazov typu dna, pripadne obaleny znackami {}. Dlzka znaciek sa pripocita
+    /// k <see cref="_marksLength"/>, aby sa nezapocitala do dlzky poznamky.
     /// </summary>
     private string MsgDayType(Message message)
     {
@@ -2174,7 +2174,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati typ zadaneho dna - den v tyzdni a pripadne aj priznak pracovneho dna alebo sviatku.
+    /// Vrati typ zadaneho dna - den v tyzdni a pripadne aj priznak pracovneho dna alebo sviatku.
     /// </summary>
     private DayType GetDayType(DateTime date, bool forceSpecDays = false)
     {
@@ -2195,7 +2195,7 @@ internal class DateLimit
     private DayType GetDayType(int day, bool forceSpecDays = false) => GetDayType(DateFrom.AddDays(day), forceSpecDays);
 
     /// <summary>
-    ///     Vrati typy dni, ktore maju v pocitadle nenulovu hodnotu.
+    /// Vrati typy dni, ktore maju v pocitadle nenulovu hodnotu.
     /// </summary>
     private static DayType GetDayType(DayCounter okCount)
     {
@@ -2209,8 +2209,8 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati <paramref name="dayType"/>, ak sa v obdobi vyskytuje aspon jeden den mimo tychto typov,
-    ///     inak <see cref="DayType.None"/> - typy dni potom netreba v poznamke uvadzat.
+    /// Vrati <paramref name="dayType"/>, ak sa v obdobi vyskytuje aspon jeden den mimo tychto typov,
+    /// inak <see cref="DayType.None"/> - typy dni potom netreba v poznamke uvadzat.
     /// </summary>
     private DayType CheckDayType(int dayFrom, int dayTo, DayType dayType)
     {
@@ -2226,13 +2226,13 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Prevedie datum na index dna v tyzdni, kde pondelok je 0.
+    /// Prevedie datum na index dna v tyzdni, kde pondelok je 0.
     /// </summary>
     private static DayIndex GetDayIndex(DateTime date) => (DayIndex)date.AddDays(-1).DayOfWeek;
 
     /// <summary>
-    ///     Vrati index dna pouzity pri porovnavani. Pri zluceni na pracovne dni a sviatky vrati
-    ///     <see cref="DayIndex.Workday"/> alebo <see cref="DayIndex.Holiday"/> namiesto dna v tyzdni.
+    /// Vrati index dna pouzity pri porovnavani. Pri zluceni na pracovne dni a sviatky vrati
+    /// <see cref="DayIndex.Workday"/> alebo <see cref="DayIndex.Holiday"/> namiesto dna v tyzdni.
     /// </summary>
     private DayIndex GetDayIndex(int day, DayGrouping grouping)
     {
@@ -2252,15 +2252,15 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Vrati index nasledujuceho dna.
-    ///     Ak je <paramref name="day"/> <see cref="DayIndex.Sunday"/>, vrati <see cref="DayIndex.Monday"/>.
+    /// Vrati index nasledujuceho dna.
+    /// Ak je <paramref name="day"/> <see cref="DayIndex.Sunday"/>, vrati <see cref="DayIndex.Monday"/>.
     /// </summary>
     /// <param name="day">Index dna.</param>
     /// <returns>Index nasledujuceho dna.</returns>
     private static DayIndex GetNextDayIndex(DayIndex day) => day >= DayIndex.Sunday ? DayIndex.Monday : day + 1;
 
     /// <summary>
-    ///     Vrati datum Velkonocneho pondelka v zadanom roku (Gaussov velkonocny algoritmus).
+    /// Vrati datum Velkonocneho pondelka v zadanom roku (Gaussov velkonocny algoritmus).
     /// </summary>
     private static DateTime GetEasterMonday(int year)
     {
@@ -2283,7 +2283,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Chyba pri parsovani textu poznamky.
+    /// Chyba pri parsovani textu poznamky.
     /// </summary>
     public class ParseException : Exception
     {
@@ -2295,23 +2295,23 @@ internal class DateLimit
     private enum Level
     {
         /// <summary>
-        ///     Nedefinovane.
+        /// Nedefinovane.
         /// </summary>
         Undefined,
 
         /// <summary>
-        ///     Vlak ide.
+        /// Vlak ide.
         /// </summary>
         Runs,
 
         /// <summary>
-        ///     Vlak nejde.
+        /// Vlak nejde.
         /// </summary>
         RunsNot
     }
 
     /// <summary>
-    ///     Cast poznamky, ku ktorej sa vztahuje prave spracovany token.
+    /// Cast poznamky, ku ktorej sa vztahuje prave spracovany token.
     /// </summary>
     private enum DateLevel
     {
@@ -2322,29 +2322,29 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Sposob, akym sa dni zlucuju pri hladani tyzdenneho vzoru.
+    /// Sposob, akym sa dni zlucuju pri hladani tyzdenneho vzoru.
     /// </summary>
     [Flags]
     private enum DayGrouping
     {
         /// <summary>
-        ///     Dni sa posudzuju podla dna v tyzdni.
+        /// Dni sa posudzuju podla dna v tyzdni.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     Dni sa zlucuju na pracovne dni a sviatky.
+        /// Dni sa zlucuju na pracovne dni a sviatky.
         /// </summary>
         WorkdayHoliday = 1,
 
         /// <summary>
-        ///     Sobota sa aj napriek zluceniu posudzuje samostatne.
+        /// Sobota sa aj napriek zluceniu posudzuje samostatne.
         /// </summary>
         KeepSaturday = 32
     }
 
     /// <summary>
-    ///     Pocitadlo dni pre kazdu polozku <see cref="DayIndex"/>.
+    /// Pocitadlo dni pre kazdu polozku <see cref="DayIndex"/>.
     /// </summary>
     private sealed class DayCounter
     {
@@ -2357,7 +2357,7 @@ internal class DateLimit
         }
 
         /// <summary>
-        ///     Vrati, ci su vsetky pocitadla nulove.
+        /// Vrati, ci su vsetky pocitadla nulove.
         /// </summary>
         public bool AllZero => _counts.All(count => count == 0);
 
@@ -2365,7 +2365,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Jeden usek datumoveho obmedzenia - obdobie, typy dni a vynimky z nich.
+    /// Jeden usek datumoveho obmedzenia - obdobie, typy dni a vynimky z nich.
     /// </summary>
     private class DateLimitInfo
     {
@@ -2402,7 +2402,7 @@ internal class DateLimit
         public bool RunsNot => ListRunsNot.Count > 0;
 
         /// <summary>
-        ///     Pokusi sa pripojit nasledujuci usek k tomuto useku.
+        /// Pokusi sa pripojit nasledujuci usek k tomuto useku.
         /// </summary>
         /// <returns><see langword="true"/>, ak sa useky podarilo spojit.</returns>
         public bool Merge(DateLimitInfo info)
@@ -2447,7 +2447,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Priebezny stav parsera textovej poznamky.
+    /// Priebezny stav parsera textovej poznamky.
     /// </summary>
     private sealed class ParseState
     {
@@ -2460,7 +2460,7 @@ internal class DateLimit
     }
 
     /// <summary>
-    ///     Jeden rozparsovany usek poznamky.
+    /// Jeden rozparsovany usek poznamky.
     /// </summary>
     private class ParseData
     {

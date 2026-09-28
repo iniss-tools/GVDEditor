@@ -9,7 +9,7 @@ using ToolsCore.Entities;
 namespace GVDEditor.Tests.Domain.Rules;
 
 /// <summary>
-///     Kontrola vlaku v okne vlaku (TrainRules) a varianty vlaku (TrainVariants).
+/// Kontrola vlaku v okne vlaku (TrainRules) a varianty vlaku (TrainVariants).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

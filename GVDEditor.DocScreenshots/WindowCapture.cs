@@ -4,8 +4,8 @@ using System.Runtime.InteropServices;
 namespace GVDEditor.DocScreenshots;
 
 /// <summary>
-///     Snímka okna tak, ako ho vykreslí Windows – vrátane (tmavého) titulku, bez neviditeľných okrajov
-///     a bez zaoblených rohov. DrawToBitmap by titulok vykreslil v klasickom vzhľade a Scintillu vynechal.
+/// Snímka okna tak, ako ho vykreslí Windows – vrátane (tmavého) titulku, bez neviditeľných okrajov
+/// a bez zaoblených rohov. DrawToBitmap by titulok vykreslil v klasickom vzhľade a Scintillu vynechal.
 /// </summary>
 internal static partial class WindowCapture
 {
@@ -22,7 +22,7 @@ internal static partial class WindowCapture
     }
 
     /// <summary>
-    ///     Viditeľný rám okna na obrazovke - to, čo zachytí <see cref="Save" />.
+    /// Viditeľný rám okna na obrazovke - to, čo zachytí <see cref="Save" />.
     /// </summary>
     public static Rectangle FrameBounds(Form form)
     {
@@ -60,7 +60,7 @@ internal static partial class WindowCapture
     }
 
     /// <summary>
-    ///     Titulky viditeľných okien tohto procesu – pri zaseknutí ukážu, ktoré modálne okno čaká.
+    /// Titulky viditeľných okien tohto procesu – pri zaseknutí ukážu, ktoré modálne okno čaká.
     /// </summary>
     public static List<string> ProcessWindowTitles()
     {
@@ -118,7 +118,7 @@ internal static partial class WindowCapture
 }
 
 /// <summary>
-///     Spracovanie správ okien medzi krokmi, kým harness nemá vlastnú slučku správ.
+/// Spracovanie správ okien medzi krokmi, kým harness nemá vlastnú slučku správ.
 /// </summary>
 internal static class Pump
 {
@@ -132,7 +132,7 @@ internal static class Pump
     }
 
     /// <summary>
-    ///     Spracúva správy, kým neplatí podmienka (napr. kým sa na pozadí nenačíta grafikon).
+    /// Spracúva správy, kým neplatí podmienka (napr. kým sa na pozadí nenačíta grafikon).
     /// </summary>
     public static bool Until(Func<bool> condition, int timeoutMs = 30000)
     {

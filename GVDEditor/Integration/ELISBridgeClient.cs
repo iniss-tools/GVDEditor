@@ -11,12 +11,12 @@ using ToolsCore.Tools;
 namespace GVDEditor.Integration;
 
 /// <summary>
-///     Nacita vlaky priamo z dat programu ELIS cez pomocny x86 proces ELISBridge,
-///     ktory hovori s 32-bitovou kniznicou TT.dll.
+/// Nacita vlaky priamo z dat programu ELIS cez pomocny x86 proces ELISBridge,
+/// ktory hovori s 32-bitovou kniznicou TT.dll.
 /// </summary>
 /// <remarks>
-///     Nahradzuje povodne parsovanie textu rucne exportovaneho z programu ELIS;
-///     datumove obmedzenia berie priamo z kniznice namiesto parsovania poznamok.
+/// Nahradzuje povodne parsovanie textu rucne exportovaneho z programu ELIS;
+/// datumove obmedzenia berie priamo z kniznice namiesto parsovania poznamok.
 /// </remarks>
 public sealed partial class ELISBridgeClient
 {
@@ -24,7 +24,7 @@ public sealed partial class ELISBridgeClient
     public const string BridgeExeName = "ELISBridge.exe";
 
     /// <summary>
-    ///     Hodnota varianty vlaku, kym sa varianty neprepocitaju.
+    /// Hodnota varianty vlaku, kym sa varianty neprepocitaju.
     /// </summary>
     internal const int VariantNotSet = -2;
 
@@ -46,79 +46,79 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    ///     Vsetky typy vlakov definovane v stanici.
+    /// Vsetky typy vlakov definovane v stanici.
     /// </summary>
     public List<TrainType> TrainTypes { get; }
 
     /// <summary>
-    ///     Zoznam vsetkych definovanych dopravcov.
+    /// Zoznam vsetkych definovanych dopravcov.
     /// </summary>
     public List<Operator> Operators { get; }
 
     /// <summary>
-    ///     Informácie o aktualnom grafikone.
+    /// Informácie o aktualnom grafikone.
     /// </summary>
     public GVDInfo GVD { get; }
 
     /// <summary>
-    ///     Kolaj, ktora bude priradena kazdemu vlaku.
+    /// Kolaj, ktora bude priradena kazdemu vlaku.
     /// </summary>
     public Track DefaultTrack { get; }
 
     /// <summary>
-    ///     Uz definovane vlaky. Do vysledku sa nevracaju, ale vstupuju do cislovania variant,
-    ///     aby import nepridelil variantu, ktoru uz iny vlak pouziva.
+    /// Uz definovane vlaky. Do vysledku sa nevracaju, ale vstupuju do cislovania variant,
+    /// aby import nepridelil variantu, ktoru uz iny vlak pouziva.
     /// </summary>
     public List<Train> DefinedTrains { get; set; } = new();
 
     /// <summary>
-    ///     Priecinok s instalaciou aplikacie Cestovne poriadky (obsahuje TT.dll).
-    ///     Ak je prazdny, pouzije sa predvolena cesta zabudovana v ELISBridge.
+    /// Priecinok s instalaciou aplikacie Cestovne poriadky (obsahuje TT.dll).
+    /// Ak je prazdny, pouzije sa predvolena cesta zabudovana v ELISBridge.
     /// </summary>
     public string AppDirectory { get; set; } = "";
 
     /// <summary>
-    ///     Priecinok s datami (.tt subory). Ak je prazdny, pouzije sa podpriecinok Data1.
+    /// Priecinok s datami (.tt subory). Ak je prazdny, pouzije sa podpriecinok Data1.
     /// </summary>
     public string DataDirectory { get; set; } = "";
 
     /// <summary>
-    ///     Ci sa maju preskocit vlaky, ktore su prechadzajuce.
+    /// Ci sa maju preskocit vlaky, ktore su prechadzajuce.
     /// </summary>
     public bool OmitPassingTrains { get; set; }
 
     /// <summary>
-    ///     Ci sa maju vlaky (ich varianty) zoradit a prepocitat.
+    /// Ci sa maju vlaky (ich varianty) zoradit a prepocitat.
     /// </summary>
     public bool ReorderTrains { get; set; }
 
     /// <summary>
-    ///     Registracne cislo pre platene cestovne poriadky. Voľne stiahnuteľné dáta ho nepotrebujú.
+    /// Registracne cislo pre platene cestovne poriadky. Voľne stiahnuteľné dáta ho nepotrebujú.
     /// </summary>
     public string RegistrationNumber { get; set; } = "";
 
     /// <summary>
-    ///     Identifikacia klienta, ak ju platene data vyzaduju.
+    /// Identifikacia klienta, ak ju platene data vyzaduju.
     /// </summary>
     public string ClientString { get; set; } = "";
 
     /// <summary>
-    ///     Priradenie nazvov stanic z ELIS k staniciam grafikonu: nazov -> ID stanice,
-    ///     alebo <see cref="TxtParser.ELIS_MAP_SKIP" /> ak sa ma stanica z trasy vynechat.
-    ///     Pouzije sa este pred automatickym rozpoznavanim nazvu.
+    /// Priradenie nazvov stanic z ELIS k staniciam grafikonu: nazov -> ID stanice,
+    /// alebo <see cref="TxtParser.ELIS_MAP_SKIP" /> ak sa ma stanica z trasy vynechat.
+    /// Pouzije sa este pred automatickym rozpoznavanim nazvu.
     /// </summary>
     public Dictionary<string, string> StationMap { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>
-    ///     Nacita data z programu ELIS. Bezi na pozadi - nevyzaduje ziadnu interakciu.
+    /// Nacita data z programu ELIS. Bezi na pozadi - nevyzaduje ziadnu interakciu.
     /// </summary>
     /// <exception cref="FileNotFoundException">ak sa nenajde pomocny program ELISBridge</exception>
     /// <exception cref="InvalidOperationException">ak sa nepodari nacitat data ELIS</exception>
     public ElisResult LoadData() => RunBridge();
 
     /// <summary>
-    ///     Vrati nazvy stanic z <paramref name="result" />, ktore sa nepodarilo priradit
-    ///     k ziadnej stanici grafikonu ani cez <see cref="StationMap" />.
+    /// Vrati nazvy stanic z <paramref name="result" />, ktore sa nepodarilo priradit
+    /// k ziadnej stanici grafikonu ani cez <see cref="StationMap" />.
     /// </summary>
     public List<string> FindUnresolvedStations(ElisResult result)
     {
@@ -134,7 +134,7 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    ///     Spracuje data programu ELIS do zoznamu vlakov ako objekty typu <see cref="Train" />.
+    /// Spracuje data programu ELIS do zoznamu vlakov ako objekty typu <see cref="Train" />.
     /// </summary>
     /// <returns>Vlaky prechadzajuce stanicou aktualneho grafikonu.</returns>
     /// <exception cref="FileNotFoundException">ak sa nenajde pomocny program ELISBridge</exception>
@@ -143,7 +143,7 @@ public sealed partial class ELISBridgeClient
     public List<Train> ReadTrains() => Convert(LoadData());
 
     /// <summary>
-    ///     Spusti pomocny program a vrati jeho vystup.
+    /// Spusti pomocny program a vrati jeho vystup.
     /// </summary>
     private ElisResult RunBridge()
     {
@@ -212,7 +212,7 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    ///     Nájde pomocný program vedľa spusteného GVDEditora.
+    /// Nájde pomocný program vedľa spusteného GVDEditora.
     /// </summary>
     private static string FindBridgeExe()
     {
@@ -226,13 +226,13 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    ///     Pripoji k hlaseniu podrobnosti z chyboveho vystupu pomocneho programu, ak nejake su.
+    /// Pripoji k hlaseniu podrobnosti z chyboveho vystupu pomocneho programu, ak nejake su.
     /// </summary>
     private static string WithDetail(string message, string detail) =>
         string.IsNullOrWhiteSpace(detail) ? message : $"{message}\r\n{detail.Trim()}";
 
     /// <summary>
-    ///     Prevedie vystup pomocneho programu na entity GVDEditora.
+    /// Prevedie vystup pomocneho programu na entity GVDEditora.
     /// </summary>
     public List<Train> Convert(ElisResult result)
     {
@@ -308,13 +308,13 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    ///     Pridelí variantu kazdemu naimportovanemu vlaku.
+    /// Pridelí variantu kazdemu naimportovanemu vlaku.
     /// </summary>
     /// <remarks>
-    ///     Musi zbehnut vzdy - <see cref="VariantNotSet" /> je iba docasny sentinel a v modeli
-    ///     by skoncil ako neplatna hodnota (editacia vlaku povoluje az od -1).
-    ///     Uz definovane vlaky sa do skupin zaratavaju, aby varianty nekolidovali - ak import
-    ///     doplni dalsi vlak k uz existujucemu, precisluje sa cela skupina vratane neho.
+    /// Musi zbehnut vzdy - <see cref="VariantNotSet" /> je iba docasny sentinel a v modeli
+    /// by skoncil ako neplatna hodnota (editacia vlaku povoluje az od -1).
+    /// Uz definovane vlaky sa do skupin zaratavaju, aby varianty nekolidovali - ak import
+    /// doplni dalsi vlak k uz existujucemu, precisluje sa cela skupina vratane neho.
     /// </remarks>
     private void SetVariants(List<Train> imported)
     {
@@ -340,12 +340,12 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    ///     Overi, ze vygenerovane datumove obmedzenie sa da rozparsovat spat.
+    /// Overi, ze vygenerovane datumove obmedzenie sa da rozparsovat spat.
     /// </summary>
     /// <remarks>
-    ///     Ukladanie grafikonu (<c>TxtParser.WriteTrains</c>) prevadza <see cref="Train.DateLimitText" />
-    ///     spat na bitove pole. Ked to zlyha, spadne az ulozenie - teda dlho po importe a s chybou,
-    ///     ktora o vlaku nic nepovie. Radsej to zistime hned tu.
+    /// Ukladanie grafikonu (<c>TxtParser.WriteTrains</c>) prevadza <see cref="Train.DateLimitText" />
+    /// spat na bitove pole. Ked to zlyha, spadne az ulozenie - teda dlho po importe a s chybou,
+    /// ktora o vlaku nic nepovie. Radsej to zistime hned tu.
     /// </remarks>
     /// <exception cref="FormatException">ak sa text neda rozparsovat spat</exception>
     private static void VerifyDateLimit(Train train, DateLimit saveCheck)
@@ -371,16 +371,16 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    ///     Linka pre pole <see cref="Train.LineArrival" />/<see cref="Train.LineDeparture" />.
+    /// Linka pre pole <see cref="Train.LineArrival" />/<see cref="Train.LineDeparture" />.
     /// </summary>
     /// <remarks>
-    ///     Berie sa linka integrovaneho dopravneho systemu ("R50", "S2"), nie traťové číslo -
-    ///     to je interne cislo trate a na tabuliach sa nezobrazuje. ELIS ho posiela tiez,
-    ///     v <see cref="ElisTrain.RailLineArrival" />, keby sa niekedy zislo.
-    ///     <para>
-    ///         Formular detailu vlaku povoluje len alfanumericke znaky, najviac 20 - co
-    ///         neprejde, radsej vynechame, nez by sa do grafikonu ulozila neplatna hodnota.
-    ///     </para>
+    /// Berie sa linka integrovaneho dopravneho systemu ("R50", "S2"), nie traťové číslo -
+    /// to je interne cislo trate a na tabuliach sa nezobrazuje. ELIS ho posiela tiez,
+    /// v <see cref="ElisTrain.RailLineArrival" />, keby sa niekedy zislo.
+    /// <para>
+    /// Formular detailu vlaku povoluje len alfanumericke znaky, najviac 20 - co
+    /// neprejde, radsej vynechame, nez by sa do grafikonu ulozila neplatna hodnota.
+    /// </para>
     /// </remarks>
     private static string Line(string line) => LineFormat().IsMatch(line) ? line : string.Empty;
 
@@ -388,9 +388,9 @@ public sealed partial class ELISBridgeClient
     private static partial Regex LineFormat();
 
     /// <summary>
-    ///     Prida stanice do trasy. Nerozpoznane a vedome vynechane stanice sa preskocia,
-    ///     rovnako ako opakovanie tej istej stanice bezprostredne za sebou - to vznika,
-    ///     ked sa hranicny bod priradi k stanici, ktora uz v trase je.
+    /// Prida stanice do trasy. Nerozpoznane a vedome vynechane stanice sa preskocia,
+    /// rovnako ako opakovanie tej istej stanice bezprostredne za sebou - to vznika,
+    /// ked sa hranicny bod priradi k stanici, ktora uz v trase je.
     /// </summary>
     private void AddStations(IEnumerable<ElisStop> stops, ICollection<Station> target)
     {
@@ -412,7 +412,7 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    ///     Najde stanicu pre zastavku z ELIS - najprv podla ulozeneho priradenia, potom automaticky.
+    /// Najde stanicu pre zastavku z ELIS - najprv podla ulozeneho priradenia, potom automaticky.
     /// </summary>
     /// <returns><see langword="null" />, ak sa stanica nenasla alebo sa ma vynechat.</returns>
     private Station? ResolveMapped(ElisStop stop)
@@ -424,8 +424,8 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    ///     Automaticky priradi zastavku z ELIS k stanici grafikonu - najprv podla cisla SR70,
-    ///     ktore je zaroven ID stanice v zvukovej banke, az potom podla nazvu.
+    /// Automaticky priradi zastavku z ELIS k stanici grafikonu - najprv podla cisla SR70,
+    /// ktore je zaroven ID stanice v zvukovej banke, az potom podla nazvu.
     /// </summary>
     /// <returns><see langword="null" />, ak sa stanica nenasla.</returns>
     public static Station? Resolve(ElisStop stop)
@@ -442,19 +442,19 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    ///     Ci je ID stanice cislo SR70. Stanice zo zvukovej banky ho maju vzdy; pouzivatelom
-    ///     definovane (STANICE.TXT) mozu mat cokolvek, typicky 9000001 a vyssie pre hranicne body.
+    /// Ci je ID stanice cislo SR70. Stanice zo zvukovej banky ho maju vzdy; pouzivatelom
+    /// definovane (STANICE.TXT) mozu mat cokolvek, typicky 9000001 a vyssie pre hranicne body.
     /// </summary>
     private static bool TryGetCode(Station station, out int code) =>
         int.TryParse(station.ID, NumberStyles.None, CultureInfo.InvariantCulture, out code) && code > 0;
 
     /// <summary>
-    ///     Automaticky priradi nazov z ELIS k stanici grafikonu.
+    /// Automaticky priradi nazov z ELIS k stanici grafikonu.
     /// </summary>
     /// <remarks>
-    ///     ELIS pise niektore nazvy inak nez zvukova banka - skracuje "nad" na "n." a k
-    ///     dvojjazycnym nazvom pridava druhy jazyk do zatvorky. Najprv sa skusa presna zhoda
-    ///     (spravanie zvysku aplikacie), az potom porovnanie v kanonickom tvare.
+    /// ELIS pise niektore nazvy inak nez zvukova banka - skracuje "nad" na "n." a k
+    /// dvojjazycnym nazvom pridava druhy jazyk do zatvorky. Najprv sa skusa presna zhoda
+    /// (spravanie zvysku aplikacie), az potom porovnanie v kanonickom tvare.
     /// </remarks>
     /// <returns><see langword="null" />, ak sa stanica nenasla.</returns>
     public static Station? Resolve(string name)
@@ -475,7 +475,7 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    ///     Navrhne najblizsiu stanicu k nazvu z ELIS - pouziva sa ako predvolba v dialogu priradenia.
+    /// Navrhne najblizsiu stanicu k nazvu z ELIS - pouziva sa ako predvolba v dialogu priradenia.
     /// </summary>
     /// <returns><see langword="null" />, ak sa nenaslo nic dost podobne.</returns>
     public static Station? Suggest(string name)
@@ -519,9 +519,9 @@ public sealed partial class ELISBridgeClient
         Regex.IsMatch(name, @"\bGr\b|\(\s*Gr\s*\)|\bšt\s*\.?\s*hr\b", RegexOptions.IgnoreCase);
 
     /// <summary>
-    ///     Prevedie nazov stanice na tvar, v ktorom sa daju porovnavat nazvy z ELIS
-    ///     a nazvy zo zvukovej banky - bez diakritiky, interpunkcie, medzier,
-    ///     s rozvinutou skratkou "n." a bez alternativneho nazvu v zatvorke.
+    /// Prevedie nazov stanice na tvar, v ktorom sa daju porovnavat nazvy z ELIS
+    /// a nazvy zo zvukovej banky - bez diakritiky, interpunkcie, medzier,
+    /// s rozvinutou skratkou "n." a bez alternativneho nazvu v zatvorke.
     /// </summary>
     private static string Canonical(string name)
     {
@@ -561,7 +561,7 @@ public sealed partial class ELISBridgeClient
     }
 
     /// <summary>
-    ///     Prevedie cas v minutach od polnoci na <see cref="DateTime" /> rovnako, ako to robi textovy parser.
+    /// Prevedie cas v minutach od polnoci na <see cref="DateTime" /> rovnako, ako to robi textovy parser.
     /// </summary>
     private static DateTime? ToTime(int minutes)
     {

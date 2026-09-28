@@ -4,8 +4,8 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Domain.Editing;
 
 /// <summary>
-///     Dni, v ktore idu jednotlive varianty vlaku, v spolocnom rozsahu ich obdobi platnosti - pre pruh kalendara na
-///     stranke Platnost. Den, v ktory ide viac variant naraz, je prekrytie.
+/// Dni, v ktore idu jednotlive varianty vlaku, v spolocnom rozsahu ich obdobi platnosti - pre pruh kalendara na
+/// stranke Platnost. Den, v ktory ide viac variant naraz, je prekrytie.
 /// </summary>
 internal sealed class VariantCalendar
 {
@@ -17,7 +17,7 @@ internal sealed class VariantCalendar
     }
 
     /// <summary>
-    ///     Riadok pruhu - jedna varianta.
+    /// Riadok pruhu - jedna varianta.
     /// </summary>
     /// <param name="Train">varianta; <see langword="null" /> = upravovany vlak</param>
     /// <param name="Position">poradie varianty v skupine (od 1)</param>
@@ -26,32 +26,32 @@ internal sealed class VariantCalendar
     public sealed record Row(Train? Train, int Position, bool[] Runs, bool Invalid);
 
     /// <summary>
-    ///     Prvy den pruhu.
+    /// Prvy den pruhu.
     /// </summary>
     public DateTime From { get; }
 
     /// <summary>
-    ///     Posledny den pruhu.
+    /// Posledny den pruhu.
     /// </summary>
     public DateTime To { get; }
 
     /// <summary>
-    ///     Riadky v poradi variant.
+    /// Riadky v poradi variant.
     /// </summary>
     public IReadOnlyList<Row> Rows { get; }
 
     /// <summary>
-    ///     Pocet dni pruhu.
+    /// Pocet dni pruhu.
     /// </summary>
     public int Days => (To - From).Days + 1;
 
     /// <summary>
-    ///     V den <paramref name="day" /> ide viac variant naraz.
+    /// V den <paramref name="day" /> ide viac variant naraz.
     /// </summary>
     public bool IsOverlap(int day) => Rows.Count(row => row.Runs[day]) > 1;
 
     /// <summary>
-    ///     Pocet dni, v ktore ide viac variant naraz.
+    /// Pocet dni, v ktore ide viac variant naraz.
     /// </summary>
     public int OverlapDays
     {
@@ -66,8 +66,8 @@ internal sealed class VariantCalendar
     }
 
     /// <summary>
-    ///     Pruh pre koncept a jeho ostatne varianty (<paramref name="others" /> zoradene podla poradia); zmenene
-    ///     obmedzenia inych variant sa beru z konceptu.
+    /// Pruh pre koncept a jeho ostatne varianty (<paramref name="others" /> zoradene podla poradia); zmenene
+    /// obmedzenia inych variant sa beru z konceptu.
     /// </summary>
     public static VariantCalendar Build(TrainDraft draft, IReadOnlyList<Train> others)
     {

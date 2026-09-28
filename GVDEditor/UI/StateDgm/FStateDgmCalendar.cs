@@ -10,10 +10,10 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.StateDgm;
 
 /// <summary>
-///     Nahlad Kalendara akcii vlaku: pre vybrany vlak a simulovany prevadzkovy stav urci kategoriu (IndCat) a pre kazdy
-///     stav kategorie vypocita to, co ukazuje INISS - rezim automatiky, ci je akcia naplanovana (AutoCondition),
-///     cas spustenia (casovy bod + posun + meskanie), cakanie na ILTIS a druh hlasenia. Dynamicke hodnoty sa
-///     vyhodnocuju rovnakym evaluatorom ako podmienky TabTab.
+/// Nahlad Kalendara akcii vlaku: pre vybrany vlak a simulovany prevadzkovy stav urci kategoriu (IndCat) a pre kazdy
+/// stav kategorie vypocita to, co ukazuje INISS - rezim automatiky, ci je akcia naplanovana (AutoCondition),
+/// cas spustenia (casovy bod + posun + meskanie), cakanie na ILTIS a druh hlasenia. Dynamicke hodnoty sa
+/// vyhodnocuju rovnakym evaluatorom ako podmienky TabTab.
 /// </summary>
 public partial class FStateDgmCalendar : Form
 {
@@ -24,7 +24,7 @@ public partial class FStateDgmCalendar : Form
     private bool _loading = true;
 
     /// <summary>
-    ///     Vytvori nahlad.
+    /// Vytvori nahlad.
     /// </summary>
     /// <param name="diagram">Aktualny diagram (z editora alebo zo suboru); null = diagram nie je.</param>
     /// <param name="homeStationId">ID stanice grafikonu (pre vyrazy).</param>

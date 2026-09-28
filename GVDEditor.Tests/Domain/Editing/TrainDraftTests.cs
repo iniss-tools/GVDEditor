@@ -6,8 +6,8 @@ using ToolsCore.Entities;
 namespace GVDEditor.Tests.Domain.Editing;
 
 /// <summary>
-///     Koncept vlaku v okne vlaku: udaje prejdu do vlaku bez straty, okno meni len kopie a kopia vlaku
-///     nezdiela zoznamy so zdrojovym vlakom.
+/// Koncept vlaku v okne vlaku: udaje prejdu do vlaku bez straty, okno meni len kopie a kopia vlaku
+/// nezdiela zoznamy so zdrojovym vlakom.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

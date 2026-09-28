@@ -6,7 +6,7 @@ using Field = GVDEditor.Domain.Rules.PlatformTrackRules.Field;
 namespace GVDEditor.Tests.Domain.Rules;
 
 /// <summary>
-///     Nastupistia a kolaje stanice (Lokalne nastavenia → Nastupistia a kolaje, Pozice_A.txt).
+/// Nastupistia a kolaje stanice (Lokalne nastavenia → Nastupistia a kolaje, Pozice_A.txt).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

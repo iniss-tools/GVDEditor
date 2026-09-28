@@ -7,10 +7,10 @@ using ToolsCore.XML;
 namespace GVDEditor.UI.Controls;
 
 /// <summary>
-///     Graf jednej kategorie stavoveho diagramu: uzly su stavy v poradi zo suboru (zhora nadol), hrany su akcie
-///     s <c>NextState</c> (dopredne vpravo, spatne vlavo, slucky na uzle). Uzol nesie znacku automatiky a starterov;
-///     nedosiahnutelne stavy su sive, slepe maju oranzovy okraj, chybajuci NextState je cervena ciarkovana hrana.
-///     Klik vyberie stav, tahanie z uzla na uzol ziada novy prechod. Pozicie sa nikam neukladaju.
+/// Graf jednej kategorie stavoveho diagramu: uzly su stavy v poradi zo suboru (zhora nadol), hrany su akcie
+/// s <c>NextState</c> (dopredne vpravo, spatne vlavo, slucky na uzle). Uzol nesie znacku automatiky a starterov;
+/// nedosiahnutelne stavy su sive, slepe maju oranzovy okraj, chybajuci NextState je cervena ciarkovana hrana.
+/// Klik vyberie stav, tahanie z uzla na uzol ziada novy prechod. Pozicie sa nikam neukladaju.
 /// </summary>
 internal sealed class StateDgmGraphPanel : Control
 {

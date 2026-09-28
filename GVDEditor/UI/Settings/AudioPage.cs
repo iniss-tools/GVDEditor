@@ -9,8 +9,8 @@ using Field = GVDEditor.Domain.Rules.AudioRules.Field;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Audio v okne Globalne nastavenia - zoznam audio liniek a udaje vybranej linky s upravou priamo
-///     v poliach. Zmeny idu rovno do <see cref="GlobData.Audios" />, Zrusit okna ich vrati.
+/// Stranka Audio v okne Globalne nastavenia - zoznam audio liniek a udaje vybranej linky s upravou priamo
+/// v poliach. Zmeny idu rovno do <see cref="GlobData.Audios" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class AudioPage : UserControl, ISettingsPage
 {
@@ -27,7 +27,7 @@ public partial class AudioPage : UserControl, ISettingsPage
     private (bool CustomOnly, Station? Extra)? _stationsState;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public AudioPage()
     {
@@ -56,7 +56,7 @@ public partial class AudioPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Naplni stranku - volat az po nastaveni temy okna.
+    /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="grafikony">grafikony v priecinku - port hlaseni grafikonu prepisuje uzol linky jeho stanice</param>
     public void LoadData(IList<GVDDirectory> grafikony)
@@ -135,7 +135,7 @@ public partial class AudioPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Zobrazi udaje linky vybranej v zozname.
+    /// Zobrazi udaje linky vybranej v zozname.
     /// </summary>
     private void ShowCurrent()
     {
@@ -174,9 +174,9 @@ public partial class AudioPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Naplni ponuku stanic: testovaci okruh, potom stanice zvukovej banky alebo vlastne stanice. Stanica
-    ///     <paramref name="select" /> sa vyberie podla cisla - ak v ponuke nie je (neznama stanica zo suboru),
-    ///     prida sa, aby sa linka potichu nezmenila na inu.
+    /// Naplni ponuku stanic: testovaci okruh, potom stanice zvukovej banky alebo vlastne stanice. Stanica
+    /// <paramref name="select" /> sa vyberie podla cisla - ak v ponuke nie je (neznama stanica zo suboru),
+    /// prida sa, aby sa linka potichu nezmenila na inu.
     /// </summary>
     private void FillStations(Station select)
     {
@@ -231,7 +231,7 @@ public partial class AudioPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Nastavi nazov linky; protokolovy nazov a fronta ho nasleduju, kym sa s nim zhoduju.
+    /// Nastavi nazov linky; protokolovy nazov a fronta ho nasleduju, kym sa s nim zhoduju.
     /// </summary>
     private void SetName(string name, bool updateBox)
     {

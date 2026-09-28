@@ -10,19 +10,19 @@ using ToolsCore.Tools;
 namespace GVDEditor.DocScreenshots;
 
 /// <summary>
-///     Generátor snímok okien GVDEditora do dokumentácie.
+/// Generátor snímok okien GVDEditora do dokumentácie.
 /// </summary>
 /// <remarks>
-///     Použitie: <c>GVDEditor.DocScreenshots [--out priečinok] [--work priečinok] [--only text] [--theme light|dark|both]</c>.
-///     <list type="bullet">
-///         <item><c>--out</c> – kam uložiť PNG; predvolene <c>iniss-tools-docs\static\img\gvdeditor</c> vedľa repozitára.</item>
-///         <item><c>--work</c> – kde zostaviť ukážkovú inštaláciu INISS; predvolene <c>C:\INISS</c> (cesta je vidno
-///         v titulku a nastaveniach). Existujúci priečinok bez značky <c>.docshots</c> sa nezmaže.</item>
-///         <item><c>--timeout</c> – po koľkých minútach sa harness ukončí, ak ho zablokuje modálne okno (predvolene 5).</item>
-///         <item><c>--only</c> – len snímky, ktorých cesta obsahuje daný text (napr. <c>uprava-vlaku</c>).</item>
-///     </list>
-///     Program beží pod vlastným menom, takže konfiguráciu (<c>%LocalAppData%\GVDEditor.DocScreenshots</c>)
-///     aj register má oddelené od GVDEditora – pri každom spustení začína s predvolenými nastaveniami.
+/// Použitie: <c>GVDEditor.DocScreenshots [--out priečinok] [--work priečinok] [--only text] [--theme light|dark|both]</c>.
+/// <list type="bullet">
+/// <item><c>--out</c> – kam uložiť PNG; predvolene <c>iniss-tools-docs\static\img\gvdeditor</c> vedľa repozitára.</item>
+/// <item><c>--work</c> – kde zostaviť ukážkovú inštaláciu INISS; predvolene <c>C:\INISS</c> (cesta je vidno
+/// v titulku a nastaveniach). Existujúci priečinok bez značky <c>.docshots</c> sa nezmaže.</item>
+/// <item><c>--timeout</c> – po koľkých minútach sa harness ukončí, ak ho zablokuje modálne okno (predvolene 5).</item>
+/// <item><c>--only</c> – len snímky, ktorých cesta obsahuje daný text (napr. <c>uprava-vlaku</c>).</item>
+/// </list>
+/// Program beží pod vlastným menom, takže konfiguráciu (<c>%LocalAppData%\GVDEditor.DocScreenshots</c>)
+/// aj register má oddelené od GVDEditora – pri každom spustení začína s predvolenými nastaveniami.
 /// </remarks>
 internal static class Program
 {
@@ -76,7 +76,7 @@ internal static class Program
     }
 
     /// <summary>
-    ///     Rovnaká inicializácia ako GVDEditor.Program.Main, s čistou konfiguráciou a slovenčinou.
+    /// Rovnaká inicializácia ako GVDEditor.Program.Main, s čistou konfiguráciou a slovenčinou.
     /// </summary>
     private static void InitApp()
     {
@@ -110,7 +110,7 @@ internal static class Program
     }
 
     /// <summary>
-    ///     Otvorí hlavné okno s ukážkovou inštaláciou rovnako ako Súbor → Nedávne.
+    /// Otvorí hlavné okno s ukážkovou inštaláciou rovnako ako Súbor → Nedávne.
     /// </summary>
     public static FMain OpenMain(string installDir)
     {

@@ -1,19 +1,19 @@
 namespace GVDEditor.Integration;
 
 /// <summary>
-///     Argumenty prikazoveho riadka INISSu (Nastavenia programu → Spustanie INISS). INISS pozna parametre s prefixom
-///     <c>/</c> alebo <c>-</c> a na velkosti pismen mu nezalezi.
+/// Argumenty prikazoveho riadka INISSu (Nastavenia programu → Spustanie INISS). INISS pozna parametre s prefixom
+/// <c>/</c> alebo <c>-</c> a na velkosti pismen mu nezalezi.
 /// </summary>
 internal static class INISSArgs
 {
     /// <summary>
-    ///     Ci argumenty obsahuju parameter <paramref name="name" /> (bez prefixu, napr. <c>Minimize</c>).
+    /// Ci argumenty obsahuju parameter <paramref name="name" /> (bez prefixu, napr. <c>Minimize</c>).
     /// </summary>
     public static bool Has(string args, string name) =>
         Tokens(args).Any(t => t.Length > 1 && t[0] is '/' or '-' && string.Equals(t[1..], name, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>
-    ///     Hodnota parametra <c>/Reg:</c>, alebo <see langword="null" />, ak v argumentoch nie je.
+    /// Hodnota parametra <c>/Reg:</c>, alebo <see langword="null" />, ak v argumentoch nie je.
     /// </summary>
     public static string? Registry(string args)
     {
@@ -25,7 +25,7 @@ internal static class INISSArgs
     }
 
     /// <summary>
-    ///     Rozdeli argumenty podla medzier; text v uvodzovkach tvori jeden argument (uvodzovky sa odstrania).
+    /// Rozdeli argumenty podla medzier; text v uvodzovkach tvori jeden argument (uvodzovky sa odstrania).
     /// </summary>
     public static IEnumerable<string> Tokens(string? args)
     {

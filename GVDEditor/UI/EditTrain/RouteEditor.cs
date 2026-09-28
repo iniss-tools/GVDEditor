@@ -3,15 +3,15 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.UI.EditTrain;
 
 /// <summary>
-///     Jedna cast trasy vlaku (zo smeru alebo do smeru): stanice v poradi jazdy so stlpcami dlheho a kratkeho hlasenia.
-///     Meni priamo zoznam stanic konceptu vlaku.
+/// Jedna cast trasy vlaku (zo smeru alebo do smeru): stanice v poradi jazdy so stlpcami dlheho a kratkeho hlasenia.
+/// Meni priamo zoznam stanic konceptu vlaku.
 /// </summary>
 public partial class RouteEditor : UserControl
 {
     private BindingList<Station> _stations = [];
 
     /// <summary>
-    ///     Vytvori prazdny zoznam; stanice priradi <see cref="Bind" />.
+    /// Vytvori prazdny zoznam; stanice priradi <see cref="Bind" />.
     /// </summary>
     public RouteEditor()
     {
@@ -20,19 +20,19 @@ public partial class RouteEditor : UserControl
     }
 
     /// <summary>
-    ///     Pridala alebo odobrala sa stanica, alebo sa zmenilo ich poradie.
+    /// Pridala alebo odobrala sa stanica, alebo sa zmenilo ich poradie.
     /// </summary>
     public event EventHandler? Changed;
 
     /// <summary>
-    ///     Pocet stanic trasy.
+    /// Pocet stanic trasy.
     /// </summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public int Count => _stations.Count;
 
     /// <summary>
-    ///     Upravuje zoznam <paramref name="stations" /> (zoznam konceptu, nie kopiu).
+    /// Upravuje zoznam <paramref name="stations" /> (zoznam konceptu, nie kopiu).
     /// </summary>
     internal void Bind(List<Station> stations)
     {
@@ -42,7 +42,7 @@ public partial class RouteEditor : UserControl
     }
 
     /// <summary>
-    ///     Prida stanicu na koniec trasy (nova stanica je v dlhom hlaseni) a vyberie ju.
+    /// Prida stanicu na koniec trasy (nova stanica je v dlhom hlaseni) a vyberie ju.
     /// </summary>
     internal void Add(Station station)
     {

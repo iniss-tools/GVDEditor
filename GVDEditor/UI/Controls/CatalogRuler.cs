@@ -3,20 +3,20 @@ using System.Globalization;
 namespace GVDEditor.UI.Controls;
 
 /// <summary>
-///     Udalost kliknutia na stlpec pravitka - poradie stlpca v tabuli.
+/// Udalost kliknutia na stlpec pravitka - poradie stlpca v tabuli.
 /// </summary>
 public sealed class CatalogRulerEventArgs(int column) : EventArgs
 {
     /// <summary>
-    ///     Poradie stlpca v katalogovej tabuli.
+    /// Poradie stlpca v katalogovej tabuli.
     /// </summary>
     public int Column { get; } = column;
 }
 
 /// <summary>
-///     Pravitko katalogovej tabule: stlpce ako obdlzniky podla bodov (START–END) na svojich riadkoch. Stlpce, ktore sa
-///     na riadku prekryvaju (napr. alternativy pre rozne rezimy), idu pod seba. Vybrany stlpec je zvyrazneny, chybny
-///     cerveny; hranica tabule (napr. 512 bodov pri ELEN) je zvisla ciara.
+/// Pravitko katalogovej tabule: stlpce ako obdlzniky podla bodov (START–END) na svojich riadkoch. Stlpce, ktore sa
+/// na riadku prekryvaju (napr. alternativy pre rozne rezimy), idu pod seba. Vybrany stlpec je zvyrazneny, chybny
+/// cerveny; hranica tabule (napr. 512 bodov pri ELEN) je zvisla ciara.
 /// </summary>
 public sealed class CatalogRuler : Control
 {
@@ -32,12 +32,12 @@ public sealed class CatalogRuler : Control
     private int _tipColumn = -1;
 
     /// <summary>
-    ///     Stlpec tabule tak, ako ho pravitko kresli.
+    /// Stlpec tabule tak, ako ho pravitko kresli.
     /// </summary>
     public sealed record Column(string Name, int Line, int Start, int End, bool Problem);
 
     /// <summary>
-    ///     Vytvori pravitko.
+    /// Vytvori pravitko.
     /// </summary>
     public CatalogRuler()
     {
@@ -47,12 +47,12 @@ public sealed class CatalogRuler : Control
     }
 
     /// <summary>
-    ///     Pouzivatel klikol na stlpec.
+    /// Pouzivatel klikol na stlpec.
     /// </summary>
     public event EventHandler<CatalogRulerEventArgs>? ColumnClicked;
 
     /// <summary>
-    ///     Nastavi stlpce, vybrany stlpec a hranicu tabule v bodoch (<see langword="null" /> = bez hranice).
+    /// Nastavi stlpce, vybrany stlpec a hranicu tabule v bodoch (<see langword="null" /> = bez hranice).
     /// </summary>
     public void SetColumns(IReadOnlyList<Column> columns, int selected, int? limit)
     {
@@ -64,7 +64,7 @@ public sealed class CatalogRuler : Control
     }
 
     /// <summary>
-    ///     Zmeni len vybrany stlpec.
+    /// Zmeni len vybrany stlpec.
     /// </summary>
     public void Select(int selected)
     {

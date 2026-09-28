@@ -7,8 +7,8 @@ using ToolsCore.Entities;
 namespace GVDEditor.UI.EditTrain;
 
 /// <summary>
-///     Stranka Dodatky v okne vlaku - dodatky hlasenia a pri kazdom tabulka Kedy hlasit, ktora sa upravuje priamo.
-///     Typy hlaseni sa riadia smerovanim vlaku, preto sa tabulka pri zmene trasy prestavi.
+/// Stranka Dodatky v okne vlaku - dodatky hlasenia a pri kazdom tabulka Kedy hlasit, ktora sa upravuje priamo.
+/// Typy hlaseni sa riadia smerovanim vlaku, preto sa tabulka pri zmene trasy prestavi.
 /// </summary>
 public partial class TrainDodatkyPage : UserControl, ITrainPage
 {
@@ -20,7 +20,7 @@ public partial class TrainDodatkyPage : UserControl, ITrainPage
     private bool _loading;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public TrainDodatkyPage()
     {
@@ -31,7 +31,7 @@ public partial class TrainDodatkyPage : UserControl, ITrainPage
     public event EventHandler? Changed;
 
     /// <summary>
-    ///     Naplni stranku dodatkami konceptu - volat az po nastaveni temy okna.
+    /// Naplni stranku dodatkami konceptu - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="draft">koncept vlaku</param>
     /// <param name="sounds">nahravky dodatkov zo zvukovej banky</param>
@@ -138,8 +138,8 @@ public partial class TrainDodatkyPage : UserControl, ITrainPage
     private void bAdd_Click(object? sender, EventArgs e) => Add();
 
     /// <summary>
-    ///     Prida dodatok vybrany v ponuke. Dostane rovnake hlasenia ako vybrany dodatok (dodatky vlaku sa zvycajne
-    ///     hlasia spolu), inak ziadne - upozornenie pripomenie, ze ich treba zaskrtnut.
+    /// Prida dodatok vybrany v ponuke. Dostane rovnake hlasenia ako vybrany dodatok (dodatky vlaku sa zvycajne
+    /// hlasia spolu), inak ziadne - upozornenie pripomenie, ze ich treba zaskrtnut.
     /// </summary>
     private void Add()
     {

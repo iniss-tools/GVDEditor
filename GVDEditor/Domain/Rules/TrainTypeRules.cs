@@ -6,18 +6,18 @@ using GVDEditor.Properties;
 namespace GVDEditor.Domain.Rules;
 
 /// <summary>
-///     Pravidla zoznamu typov vlakov (TrTypes.txt). INISS ma zabudovanu tabulku druhov, kazdy na jednom mieste,
-///     a styri skupiny po devat volnych miest pre vlastne typy (Os, R, X, Sl).
+/// Pravidla zoznamu typov vlakov (TrTypes.txt). INISS ma zabudovanu tabulku druhov, kazdy na jednom mieste,
+/// a styri skupiny po devat volnych miest pre vlastne typy (Os, R, X, Sl).
 /// </summary>
 internal static partial class TrainTypeRules
 {
     /// <summary>
-    ///     Skupiny vlastnych typov v poradi, v akom sa ponukaju.
+    /// Skupiny vlastnych typov v poradi, v akom sa ponukaju.
     /// </summary>
     public static readonly string[] CustomGroups = ["Os", "R", "X", "Sl"];
 
     /// <summary>
-    ///     Pocet volnych miest v skupine.
+    /// Pocet volnych miest v skupine.
     /// </summary>
     public const int SlotsPerGroup = 9;
 
@@ -25,8 +25,8 @@ internal static partial class TrainTypeRules
     private static partial Regex CustomCategory();
 
     /// <summary>
-    ///     Skupina vlastneho typu podla kategorie (R3 -> R), alebo <see langword="null" /> pri zabudovanom druhu.
-    ///     Pripusta aj cislo nad 9 - to je chyba, ktoru hlasi <see cref="CheckCategory" />.
+    /// Skupina vlastneho typu podla kategorie (R3 -> R), alebo <see langword="null" /> pri zabudovanom druhu.
+    /// Pripusta aj cislo nad 9 - to je chyba, ktoru hlasi <see cref="CheckCategory" />.
     /// </summary>
     public static string? GroupOf(string category)
     {
@@ -35,7 +35,7 @@ internal static partial class TrainTypeRules
     }
 
     /// <summary>
-    ///     Chyba skratky typu na pozicii <paramref name="index" />.
+    /// Chyba skratky typu na pozicii <paramref name="index" />.
     /// </summary>
     public static string? CheckKey(IReadOnlyList<TrainType> types, int index)
     {
@@ -54,13 +54,13 @@ internal static partial class TrainTypeRules
     }
 
     /// <summary>
-    ///     Chyba textu na tabuli - subor je CSV bez uvodzoviek, ciarka by rozdelila stlpec.
+    /// Chyba textu na tabuli - subor je CSV bez uvodzoviek, ciarka by rozdelila stlpec.
     /// </summary>
     public static string? CheckText(string text) => HasForbiddenChar(text) ? Resources.TrainTypeRules_Znaky : null;
 
     /// <summary>
-    ///     Chyba kategorie typu na pozicii <paramref name="index" /> - zabudovany druh dvakrat (druhy riadok by
-    ///     v INISSe prepisal prvy) alebo viac vlastnych typov v skupine, nez je volnych miest.
+    /// Chyba kategorie typu na pozicii <paramref name="index" /> - zabudovany druh dvakrat (druhy riadok by
+    /// v INISSe prepisal prvy) alebo viac vlastnych typov v skupine, nez je volnych miest.
     /// </summary>
     public static string? CheckCategory(IReadOnlyList<TrainType> types, int index)
     {
@@ -80,14 +80,14 @@ internal static partial class TrainTypeRules
     }
 
     /// <summary>
-    ///     Pocet vlastnych typov v skupine <paramref name="group" /> (okrem <paramref name="exclude" />).
+    /// Pocet vlastnych typov v skupine <paramref name="group" /> (okrem <paramref name="exclude" />).
     /// </summary>
     public static int CountInGroup(IEnumerable<TrainType> types, string group, TrainType? exclude = null) =>
         types.Count(t => !ReferenceEquals(t, exclude) && GroupOf(t.CategoryTrain) == group);
 
     /// <summary>
-    ///     Precisluje vlastne typy v kazdej skupine od 1 v poradi zoznamu (R2, R5 -> R1, R2). Vlaky sa na typ
-    ///     odkazuju skratkou, nie kategoriou, takze ich sa to netyka.
+    /// Precisluje vlastne typy v kazdej skupine od 1 v poradi zoznamu (R2, R5 -> R1, R2). Vlaky sa na typ
+    /// odkazuju skratkou, nie kategoriou, takze ich sa to netyka.
     /// </summary>
     public static void Renumber(IEnumerable<TrainType> types)
     {

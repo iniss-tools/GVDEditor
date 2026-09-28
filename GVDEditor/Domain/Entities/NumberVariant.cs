@@ -3,7 +3,7 @@
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Cislo a varianta vlaku - zobrazuje sa v jednom stlpci zoznamu vlakov a triedi sa podla cisla, potom varianty.
+/// Cislo a varianta vlaku - zobrazuje sa v jednom stlpci zoznamu vlakov a triedi sa podla cisla, potom varianty.
 /// </summary>
 /// <param name="Number">Cislo vlaku.</param>
 /// <param name="Variant">Varianta vlaku; -1 = vlak nema varianty.</param>

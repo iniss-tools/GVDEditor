@@ -7,7 +7,7 @@ namespace GVDEditor.Domain.Entities;
 public sealed class TableTypeModeItem : IEnumerable
 {
     /// <summary>
-    ///     Konstruktor
+    /// Konstruktor
     /// </summary>
     public TableTypeModeItem()
     {
@@ -15,7 +15,7 @@ public sealed class TableTypeModeItem : IEnumerable
     }
 
     /// <summary>
-    ///     Mod zobrazenia polozky.
+    /// Mod zobrazenia polozky.
     /// </summary>
     public TableViewMode ViewMode { get; set; } = null!;
 

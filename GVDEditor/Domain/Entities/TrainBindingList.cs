@@ -3,10 +3,10 @@ using ExControls;
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Zoznam vlakov grafikonu pre tabulku hlavneho okna.
+/// Zoznam vlakov grafikonu pre tabulku hlavneho okna.
 /// </summary>
 /// <remarks>
-///     Nazov vlaku je v grafikone kluc zvuku, tabulka vsak zobrazuje nazov zvuku - podla neho sa aj triedi.
+/// Nazov vlaku je v grafikone kluc zvuku, tabulka vsak zobrazuje nazov zvuku - podla neho sa aj triedi.
 /// </remarks>
 public sealed class TrainBindingList : ExBindingList<Train>
 {

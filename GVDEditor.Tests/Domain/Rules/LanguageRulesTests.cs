@@ -5,7 +5,7 @@ using ToolsCore.Entities;
 namespace GVDEditor.Tests.Domain.Rules;
 
 /// <summary>
-///     Jazyky stanice (Globalne nastavenia → Jazyky) podla pravidiel INISSu.
+/// Jazyky stanice (Globalne nastavenia → Jazyky) podla pravidiel INISSu.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

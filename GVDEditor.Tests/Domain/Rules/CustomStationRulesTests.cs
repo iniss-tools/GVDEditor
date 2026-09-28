@@ -5,7 +5,7 @@ using GVDEditor.Domain.Rules;
 namespace GVDEditor.Tests.Domain.Rules;
 
 /// <summary>
-///     Vlastne stanice grafikonu (Lokalne nastavenia → Vlastne stanice, Stanice.txt).
+/// Vlastne stanice grafikonu (Lokalne nastavenia → Vlastne stanice, Stanice.txt).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

@@ -9,8 +9,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.Tests.Formats;
 
 /// <summary>
-///     Export3 3.01 niekedy nevypise poznamku do Export3C (pocet 0), hoci mapa dni v Export3B vlak obmedzuje.
-///     Obmedzenie sa potom musi zobrat z mapy, inak by vlak po nacitani isiel denne a ulozenie by ho stratilo.
+/// Export3 3.01 niekedy nevypise poznamku do Export3C (pocet 0), hoci mapa dni v Export3B vlak obmedzuje.
+/// Obmedzenie sa potom musi zobrat z mapy, inak by vlak po nacitani isiel denne a ulozenie by ho stratilo.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

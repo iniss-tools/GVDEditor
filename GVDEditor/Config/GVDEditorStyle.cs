@@ -9,13 +9,13 @@ namespace GVDEditor.Config;
 public record GVDEditorStyle : Style
 {
     /// <summary>
-    ///     Farebna schema pre druh vlaku zobrazujuceho sa v tabulke na pracovnej ploche programu
+    /// Farebna schema pre druh vlaku zobrazujuceho sa v tabulke na pracovnej ploche programu
     /// </summary>
     [XmlElement("TrainType")]
     public TrainTypeColumnScheme TrainTypeColumnScheme { get; set; } = new();
 
     /// <summary>
-    ///     Farebna schéma pre textový editor TabTab
+    /// Farebna schéma pre textový editor TabTab
     /// </summary>
     [XmlElement("TabTabEditor")]
     public TabTabEditorScheme TabTabEditorScheme { get; set; } = new();
@@ -34,7 +34,7 @@ public record GVDEditorStyle : Style
     public override string ToString() => Name;
 
     /// <summary>
-    ///     Nastavi nastavenia farieb pre editor TabTab na predvolene hodnoty (Dark mode)
+    /// Nastavi nastavenia farieb pre editor TabTab na predvolene hodnoty (Dark mode)
     /// </summary>
     public static TabTabEditorScheme SetTabTabEditorSchemeDarkDefault()
     {
@@ -123,7 +123,7 @@ public record GVDEditorStyle : Style
     }
 
     /// <summary>
-    ///     Nastavi nastavenia farieb pre stlpec Typ vlaku na predvolene hodnoty
+    /// Nastavi nastavenia farieb pre stlpec Typ vlaku na predvolene hodnoty
     /// </summary>
     public static TrainTypeColumnScheme SetTrainTypeColumnSchemeDarkDefault()
     {

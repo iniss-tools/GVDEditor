@@ -6,8 +6,8 @@ using GVDEditor.TabTabEditor;
 namespace GVDEditor.Tests.Domain.Analysis;
 
 /// <summary>
-///     Pisma tabul (zalozka Pisma v Lokalnych nastaveniach): kde sa cislo pisma pouziva a jeho prenesenie pri zmene ID.
-///     Stlpce katalogovych tabul a texty vlakov sa menia, TabTab len hlasi - {n} tam moze byt aj kod znaku.
+/// Pisma tabul (zalozka Pisma v Lokalnych nastaveniach): kde sa cislo pisma pouziva a jeho prenesenie pri zmene ID.
+/// Stlpce katalogovych tabul a texty vlakov sa menia, TabTab len hlasi - {n} tam moze byt aj kod znaku.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

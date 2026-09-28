@@ -7,12 +7,12 @@ using ToolsCore.Tools;
 namespace GVDEditor.Domain.Editing;
 
 /// <summary>
-///     Udaje vlaku upravovane v okne vlaku. Okno meni len koncept - vlak (a radenia v grafikone) sa zmenia az
-///     pri <see cref="ApplyTo" /> a <see cref="RadeniaEditing.Commit" />, takze Zrusit nic nezanecha.
+/// Udaje vlaku upravovane v okne vlaku. Okno meni len koncept - vlak (a radenia v grafikone) sa zmenia az
+/// pri <see cref="ApplyTo" /> a <see cref="RadeniaEditing.Commit" />, takze Zrusit nic nezanecha.
 /// </summary>
 /// <remarks>
-///     Trasa a dodatky su kopie - stlpce Dlhe/Kratke ani Kedy hlasit nesmu menit vlak pred ulozenim. Kopia vlaku
-///     z nich dostane vlastne objekty a nezdiela ich so zdrojovym vlakom.
+/// Trasa a dodatky su kopie - stlpce Dlhe/Kratke ani Kedy hlasit nesmu menit vlak pred ulozenim. Kopia vlaku
+/// z nich dostane vlastne objekty a nezdiela ich so zdrojovym vlakom.
 /// </remarks>
 internal sealed class TrainDraft
 {
@@ -21,26 +21,26 @@ internal sealed class TrainDraft
     public TrainType? Type { get; set; }
 
     /// <summary>
-    ///     Nazov vlaku tak, ako je v grafikone (kluc zvuku alebo volny text).
+    /// Nazov vlaku tak, ako je v grafikone (kluc zvuku alebo volny text).
     /// </summary>
     public string Name { get; set; } = "";
 
     public Operator? Operator { get; set; }
 
     /// <summary>
-    ///     Cas prichodu v tvare HH:mm; pri vlaku bez trasy zo smeru sa neberie do uvahy.
+    /// Cas prichodu v tvare HH:mm; pri vlaku bez trasy zo smeru sa neberie do uvahy.
     /// </summary>
     public string ArrivalText { get; set; } = "";
 
     /// <summary>
-    ///     Cas odchodu v tvare HH:mm; pri vlaku bez trasy do smeru sa neberie do uvahy.
+    /// Cas odchodu v tvare HH:mm; pri vlaku bez trasy do smeru sa neberie do uvahy.
     /// </summary>
     public string DepartureText { get; set; } = "";
 
     public Track? Track { get; set; }
 
     /// <summary>
-    ///     Kolaj odchodu tak, ako je v ponuke - rovnaka kolaj ako pri prichode sa pri ulozeni nezapise.
+    /// Kolaj odchodu tak, ako je v ponuke - rovnaka kolaj ako pri prichode sa pri ulozeni nezapise.
     /// </summary>
     public Track? TrackDeparture { get; set; }
 
@@ -55,8 +55,8 @@ internal sealed class TrainDraft
     public DateTime ValidTo { get; set; }
 
     /// <summary>
-    ///     Cislo varianty vlaku pri otvoreni okna - len na urcenie poradia medzi variantmi; cisla prideluje
-    ///     <see cref="TrainVariants.Normalize" />.
+    /// Cislo varianty vlaku pri otvoreni okna - len na urcenie poradia medzi variantmi; cisla prideluje
+    /// <see cref="TrainVariants.Normalize" />.
     /// </summary>
     public int Variant { get; set; } = -1;
 
@@ -79,40 +79,40 @@ internal sealed class TrainDraft
     public bool IsIbaLozkovy { get; set; }
 
     /// <summary>
-    ///     Priznak O z Export3A.txt - okno ho neukazuje, ale nesmie sa stratit (ani pri kopii vlaku).
+    /// Priznak O z Export3A.txt - okno ho neukazuje, ale nesmie sa stratit (ani pri kopii vlaku).
     /// </summary>
     public bool IsPriznakO { get; set; }
 
     /// <summary>
-    ///     Stanice pred touto stanicou v poradi jazdy (prva je vychodzia stanica).
+    /// Stanice pred touto stanicou v poradi jazdy (prva je vychodzia stanica).
     /// </summary>
     public List<Station> RouteFrom { get; } = [];
 
     /// <summary>
-    ///     Stanice za touto stanicou v poradi jazdy (posledna je cielova stanica).
+    /// Stanice za touto stanicou v poradi jazdy (posledna je cielova stanica).
     /// </summary>
     public List<Station> RouteTo { get; } = [];
 
     /// <summary>
-    ///     Dalsie jazyky hlasenia (bez zakladneho).
+    /// Dalsie jazyky hlasenia (bez zakladneho).
     /// </summary>
     public List<FyzLanguage> Languages { get; } = [];
 
     public List<Dodatok> Doplnky { get; } = [];
 
     /// <summary>
-    ///     Kopie radeni vlaku; do grafikonu sa zapisu cez <see cref="RadeniaEditing.Commit" />.
+    /// Kopie radeni vlaku; do grafikonu sa zapisu cez <see cref="RadeniaEditing.Commit" />.
     /// </summary>
     public RadeniaEditing Radenia { get; } = new();
 
     /// <summary>
-    ///     Ostatne varianty upravovaneho vlaku v case otvorenia okna (pri novom vlaku a kopii prazdne).
+    /// Ostatne varianty upravovaneho vlaku v case otvorenia okna (pri novom vlaku a kopii prazdne).
     /// </summary>
     public List<Train> Siblings { get; } = [];
 
     /// <summary>
-    ///     Zmena cisla, nazvu alebo typu sa prenesie aj na <see cref="Siblings" /> - vlak so vsetkymi variantmi
-    ///     ostane jednou skupinou. Bez nej vlak zo skupiny odide.
+    /// Zmena cisla, nazvu alebo typu sa prenesie aj na <see cref="Siblings" /> - vlak so vsetkymi variantmi
+    /// ostane jednou skupinou. Bez nej vlak zo skupiny odide.
     /// </summary>
     public bool RenameSiblings { get; set; } = true;
 
@@ -120,29 +120,29 @@ internal sealed class TrainDraft
     private (string Number, string Name, TrainType? Type) _originalKey;
 
     /// <summary>
-    ///     Cislo, nazov alebo typ sa zmenili oproti vlaku pri otvoreni okna.
+    /// Cislo, nazov alebo typ sa zmenili oproti vlaku pri otvoreni okna.
     /// </summary>
     public bool KeyChanged => Number != _originalKey.Number || Name != _originalKey.Name || Type != _originalKey.Type;
 
     /// <summary>
-    ///     Pri ulozeni sa zmena cisla, nazvu alebo typu prenesie aj na ostatne varianty.
+    /// Pri ulozeni sa zmena cisla, nazvu alebo typu prenesie aj na ostatne varianty.
     /// </summary>
     public bool RenamesSiblings => RenameSiblings && KeyChanged && Siblings.Count != 0;
 
     /// <summary>
-    ///     Datumove obmedzenia inych variant zmenene v okne (kvoli prekrytiu); do vlakov sa zapisu az
-    ///     <see cref="ApplyVariantLimits" />.
+    /// Datumove obmedzenia inych variant zmenene v okne (kvoli prekrytiu); do vlakov sa zapisu az
+    /// <see cref="ApplyVariantLimits" />.
     /// </summary>
     public Dictionary<Train, string> VariantLimits { get; } = new(ReferenceEqualityComparer.Instance);
 
     /// <summary>
-    ///     Datumove obmedzenie inej varianty - zmenene v okne alebo zo vlaku.
+    /// Datumove obmedzenie inej varianty - zmenene v okne alebo zo vlaku.
     /// </summary>
     public string LimitOf(Train other) => VariantLimits.TryGetValue(other, out var limit) ? limit : other.DateLimitText ?? "";
 
     /// <summary>
-    ///     Zapamata si ostatne varianty upravovaneho vlaku (vlaky s rovnakym cislom, nazvom a typom okrem riadku
-    ///     <paramref name="row" />) - pri zmene cisla, nazvu alebo typu sa mozu zmenit s nim.
+    /// Zapamata si ostatne varianty upravovaneho vlaku (vlaky s rovnakym cislom, nazvom a typom okrem riadku
+    /// <paramref name="row" />) - pri zmene cisla, nazvu alebo typu sa mozu zmenit s nim.
     /// </summary>
     public void LoadSiblings(IReadOnlyList<Train> trains, int row)
     {
@@ -154,7 +154,7 @@ internal sealed class TrainDraft
     }
 
     /// <summary>
-    ///     Prenesie nove cislo, nazov a typ na ostatne varianty (<see cref="RenamesSiblings" />).
+    /// Prenesie nove cislo, nazov a typ na ostatne varianty (<see cref="RenamesSiblings" />).
     /// </summary>
     public void ApplyToSiblings()
     {
@@ -170,7 +170,7 @@ internal sealed class TrainDraft
     }
 
     /// <summary>
-    ///     Zapise zmenene datumove obmedzenia inych variant do ich vlakov.
+    /// Zapise zmenene datumove obmedzenia inych variant do ich vlakov.
     /// </summary>
     public void ApplyVariantLimits()
     {
@@ -179,17 +179,17 @@ internal sealed class TrainDraft
     }
 
     /// <summary>
-    ///     Smerovanie podla vyplnenych casti trasy; <see langword="null" />, ak vlak nema ziadnu stanicu.
+    /// Smerovanie podla vyplnenych casti trasy; <see langword="null" />, ak vlak nema ziadnu stanicu.
     /// </summary>
     public Routing? Routing => TrainRules.RoutingOf(RouteFrom.Count != 0, RouteTo.Count != 0);
 
     /// <summary>
-    ///     Koncept noveho vlaku - platnost ma obdobie grafikonu.
+    /// Koncept noveho vlaku - platnost ma obdobie grafikonu.
     /// </summary>
     public static TrainDraft New(DateTime gvdStart, DateTime gvdEnd) => new() { ValidFrom = gvdStart.Date, ValidTo = gvdEnd.Date };
 
     /// <summary>
-    ///     Koncept s udajmi vlaku (aj pri kopii - ta sa lisi az tym, do ktoreho vlaku sa koncept zapise).
+    /// Koncept s udajmi vlaku (aj pri kopii - ta sa lisi az tym, do ktoreho vlaku sa koncept zapise).
     /// </summary>
     public static TrainDraft From(Train train)
     {
@@ -231,7 +231,7 @@ internal sealed class TrainDraft
     }
 
     /// <summary>
-    ///     Kopia dodatku s vlastnym zoznamom vybranych hlaseni.
+    /// Kopia dodatku s vlastnym zoznamom vybranych hlaseni.
     /// </summary>
     public static Dodatok CopyDodatok(Dodatok dodatok) => new()
     {
@@ -242,8 +242,8 @@ internal sealed class TrainDraft
     };
 
     /// <summary>
-    ///     Zapise koncept do vlaku okrem cisla varianty (prideli ho <see cref="TrainVariants.Normalize" />) a radeni.
-    ///     Koncept musi byt bez chyb podla <see cref="TrainRules.Check" />.
+    /// Zapise koncept do vlaku okrem cisla varianty (prideli ho <see cref="TrainVariants.Normalize" />) a radeni.
+    /// Koncept musi byt bez chyb podla <see cref="TrainRules.Check" />.
     /// </summary>
     /// <exception cref="InvalidOperationException">koncept ma chybu, ktora sa neda zapisat</exception>
     public void ApplyTo(Train train)

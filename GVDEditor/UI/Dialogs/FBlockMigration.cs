@@ -6,15 +6,15 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Dialogs;
 
 /// <summary>
-///     Dialog - rozdelenie priecinka so starsim zapisom grafikonu (bloky <c>/&lt;cislo stanice&gt;</c>)
-///     na samostatne priecinky. Pouzivatel vidi bloky a moze upravit nazvy novych priecinkov.
+/// Dialog - rozdelenie priecinka so starsim zapisom grafikonu (bloky <c>/&lt;cislo stanice&gt;</c>)
+/// na samostatne priecinky. Pouzivatel vidi bloky a moze upravit nazvy novych priecinkov.
 /// </summary>
 public partial class FBlockMigration : Form
 {
     private readonly List<GvdBlock> _blocks;
 
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FBlockMigration" />.
+    /// Vytvori novy formular typu <see cref="FBlockMigration" />.
     /// </summary>
     /// <param name="sourcePath">Priecinok so starym zapisom (len na zobrazenie).</param>
     /// <param name="blocks">Bloky z <see cref="BlockMigrator.Analyze" />; nazvy priecinkov sa po potvrdeni zapisu spat do nich.</param>

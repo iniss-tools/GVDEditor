@@ -7,9 +7,9 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Grafikony v okne Globalne nastavenia - grafikony v datovom priecinku s portami a farbou upravovanymi
-///     priamo v tabulke. Porty a farba idu rovno do <see cref="DirList" /> grafikonu (Zrusit okna ich vrati),
-///     odstraneny grafikon sa len zapamata - jeho priecinok sa presunie do Kosa az po OK.
+/// Stranka Grafikony v okne Globalne nastavenia - grafikony v datovom priecinku s portami a farbou upravovanymi
+/// priamo v tabulke. Porty a farba idu rovno do <see cref="DirList" /> grafikonu (Zrusit okna ich vrati),
+/// odstraneny grafikon sa len zapamata - jeho priecinok sa presunie do Kosa az po OK.
 /// </summary>
 public partial class GrafikonyPage : UserControl, ISettingsPage
 {
@@ -22,7 +22,7 @@ public partial class GrafikonyPage : UserControl, ISettingsPage
     private bool _loading;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public GrafikonyPage()
     {
@@ -43,7 +43,7 @@ public partial class GrafikonyPage : UserControl, ISettingsPage
     public void FocusFirstProblem() => _grid.FocusFirstProblem();
 
     /// <summary>
-    ///     Naplni tabulku grafikonmi - volat az po nastaveni temy okna.
+    /// Naplni tabulku grafikonmi - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="grafikony">grafikony v priecinku; odstraneny grafikon sa z neho vyberie</param>
     /// <param name="removed">sem sa pridaju odstranene grafikony</param>

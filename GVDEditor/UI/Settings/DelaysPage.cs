@@ -4,8 +4,8 @@ using GVDEditor.Domain.Rules;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Meskania v okne Globalne nastavenia - casy meskania ponukane operatorovi (Zpozdeni.txt), zoradene
-///     podla velkosti. Zmeny idu rovno do <see cref="GlobData.Delays" />, Zrusit okna ich vrati.
+/// Stranka Meskania v okne Globalne nastavenia - casy meskania ponukane operatorovi (Zpozdeni.txt), zoradene
+/// podla velkosti. Zmeny idu rovno do <see cref="GlobData.Delays" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class DelaysPage : UserControl, ISettingsPage
 {
@@ -16,7 +16,7 @@ public partial class DelaysPage : UserControl, ISettingsPage
     private int _newRow = -1;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public DelaysPage()
     {
@@ -37,7 +37,7 @@ public partial class DelaysPage : UserControl, ISettingsPage
     public void FocusFirstProblem() => _grid.FocusFirstProblem();
 
     /// <summary>
-    ///     Naplni tabulku casmi meskania - volat az po nastaveni temy okna.
+    /// Naplni tabulku casmi meskania - volat az po nastaveni temy okna.
     /// </summary>
     public void LoadData()
     {
@@ -62,7 +62,7 @@ public partial class DelaysPage : UserControl, ISettingsPage
     private static bool IsNumber(string delay) => delay.Trim().Length == 0 || DelayRules.IsAcceptedByIniss(delay);
 
     /// <summary>
-    ///     Hodnota, ktoru INISS preskoci (nie je cislo), je sivá s vysvetlenim - chybou nie je.
+    /// Hodnota, ktoru INISS preskoci (nie je cislo), je sivá s vysvetlenim - chybou nie je.
     /// </summary>
     private static void MarkNumber(DataGridViewCell cell, string delay)
     {
@@ -136,7 +136,7 @@ public partial class DelaysPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Zaradi upraveny cas podla velkosti - INISS ponuka casy v poradi zo suboru.
+    /// Zaradi upraveny cas podla velkosti - INISS ponuka casy v poradi zo suboru.
     /// </summary>
     private void Place(int index)
     {

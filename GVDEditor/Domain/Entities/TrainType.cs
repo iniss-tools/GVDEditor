@@ -3,16 +3,16 @@
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Reprezentuje typ vlaku.
+/// Reprezentuje typ vlaku.
 /// </summary>
 /// <remarks>
-///     Entita s identitou - vlaky sa odkazuju na instanciu zo zoznamu typov a typ sa upravuje na mieste,
-///     preto sa porovnava referenciou.
+/// Entita s identitou - vlaky sa odkazuju na instanciu zo zoznamu typov a typ sa upravuje na mieste,
+/// preto sa porovnava referenciou.
 /// </remarks>
 public sealed partial class TrainType
 {
     /// <summary>
-    ///     Konstruktor pre definovanie predvoleneho typu vlaku.
+    /// Konstruktor pre definovanie predvoleneho typu vlaku.
     /// </summary>
     /// <param name="key">Kluc typu vlaku.</param>
     public TrainType(string key)
@@ -23,7 +23,7 @@ public sealed partial class TrainType
     }
 
     /// <summary>
-    ///     Konstruktor pre definovanie pouzivatelom definovaneho typu vlaku.
+    /// Konstruktor pre definovanie pouzivatelom definovaneho typu vlaku.
     /// </summary>
     /// <param name="categoryTrain"></param>
     /// <param name="key"></param>
@@ -36,35 +36,35 @@ public sealed partial class TrainType
     }
 
     /// <summary>
-    ///     Kluc typu vlaku.
+    /// Kluc typu vlaku.
     /// </summary>
     public string Key { get; set; }
 
     /// <summary>
-    ///     Ci je pouzivatelom definovany - ma kategoriu z volnych miest INISSu (Os1-Os9, R1-R9, X1-X9, Sl1-Sl9).
-    ///     Odvodzuje sa z kategorie, aby typ mohol na mieste zmenit zabudovany druh na vlastny a naopak
-    ///     (vlaky otvoreneho grafikonu sa odkazuju na tento objekt).
+    /// Ci je pouzivatelom definovany - ma kategoriu z volnych miest INISSu (Os1-Os9, R1-R9, X1-X9, Sl1-Sl9).
+    /// Odvodzuje sa z kategorie, aby typ mohol na mieste zmenit zabudovany druh na vlastny a naopak
+    /// (vlaky otvoreneho grafikonu sa odkazuju na tento objekt).
     /// </summary>
     public bool IsCustom => IsCustomCategory(CategoryTrain);
 
     /// <summary>
-    ///     Ci je kategoria volne miesto pre vlastny typ (napr. R3).
+    /// Ci je kategoria volne miesto pre vlastny typ (napr. R3).
     /// </summary>
     public static bool IsCustomCategory(string? category) =>
         category is not null && CustomTrainType().IsMatch(category);
 
     /// <summary>
-    ///     Vrati text na tabuli, ktory sa ma zobrazovat na mieste typu vlaku.
+    /// Vrati text na tabuli, ktory sa ma zobrazovat na mieste typu vlaku.
     /// </summary>
     public string TextInTable { get; set; }
 
     /// <summary>
-    ///     Kategoria typu vlaku.
+    /// Kategoria typu vlaku.
     /// </summary>
     public string CategoryTrain { get; set; }
 
     /// <summary>
-    ///     This.
+    /// This.
     /// </summary>
     public TrainType This => this;
 
@@ -72,7 +72,7 @@ public sealed partial class TrainType
     public override string ToString() => Key;
 
     /// <summary>
-    ///     Zisti, ci zadany retazec reprezentuje predvoleny typ vlaku.
+    /// Zisti, ci zadany retazec reprezentuje predvoleny typ vlaku.
     /// </summary>
     /// <param name="type"></param>
     /// <returns></returns>
@@ -110,7 +110,7 @@ public sealed partial class TrainType
     }
 
     /// <summary>
-    ///     Vrati vsetky zabudovane typy vlakov (tabulka INISSu bez volnych miest X1-X9, R1-R9, Os1-Os9, Sl1-Sl9).
+    /// Vrati vsetky zabudovane typy vlakov (tabulka INISSu bez volnych miest X1-X9, R1-R9, Os1-Os9, Sl1-Sl9).
     /// </summary>
     /// <returns></returns>
     public static List<TrainType> GetDefaultValues()

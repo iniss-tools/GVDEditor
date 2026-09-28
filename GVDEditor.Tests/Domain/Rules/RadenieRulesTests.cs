@@ -7,7 +7,7 @@ using ToolsCore.Entities;
 namespace GVDEditor.Tests.Domain.Rules;
 
 /// <summary>
-///     Kontrola radenia vlaku pred pridanim alebo upravou (zalozka Radenie v okne vlaku).
+/// Kontrola radenia vlaku pred pridanim alebo upravou (zalozka Radenie v okne vlaku).
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

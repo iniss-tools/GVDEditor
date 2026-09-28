@@ -3,7 +3,7 @@
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Definuje mód zobrazenia udaju na tabuli.
+/// Definuje mód zobrazenia udaju na tabuli.
 /// </summary>
 public sealed class TableViewMode : Enumeration<TableViewMode>
 {
@@ -12,12 +12,12 @@ public sealed class TableViewMode : Enumeration<TableViewMode>
     }
 
     /// <summary>
-    ///     Odkaz na seba, pre potreby DataSource.
+    /// Odkaz na seba, pre potreby DataSource.
     /// </summary>
     public TableViewMode This => this;
 
     /// <summary>
-    ///     Skonvertuje mód zobrazenia podla kluca na objekt.
+    /// Skonvertuje mód zobrazenia podla kluca na objekt.
     /// </summary>
     /// <param name="s"></param>
     /// <returns></returns>

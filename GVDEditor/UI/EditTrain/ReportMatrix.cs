@@ -6,8 +6,8 @@ using ToolsCore;
 namespace GVDEditor.UI.EditTrain;
 
 /// <summary>
-///     Tabulka Kedy hlasit: riadok pre kazdy typ hlasenia, stlpec pre kazdu variantu (dlhe, kratke). Zaskrtnutie
-///     meni priamo zoznam vybranych hlaseni dodatku alebo radenia.
+/// Tabulka Kedy hlasit: riadok pre kazdy typ hlasenia, stlpec pre kazdu variantu (dlhe, kratke). Zaskrtnutie
+/// meni priamo zoznam vybranych hlaseni dodatku alebo radenia.
 /// </summary>
 public sealed class ReportMatrix : UserControl
 {
@@ -18,7 +18,7 @@ public sealed class ReportMatrix : UserControl
     private bool _loading;
 
     /// <summary>
-    ///     Vytvori prazdnu tabulku; typy a varianty nastavi <see cref="Bind" />.
+    /// Vytvori prazdnu tabulku; typy a varianty nastavi <see cref="Bind" />.
     /// </summary>
     public ReportMatrix()
     {
@@ -42,13 +42,13 @@ public sealed class ReportMatrix : UserControl
     }
 
     /// <summary>
-    ///     Pouzivatel zaskrtol alebo odskrtol hlasenie.
+    /// Pouzivatel zaskrtol alebo odskrtol hlasenie.
     /// </summary>
     public event EventHandler? Changed;
 
     /// <summary>
-    ///     Zobrazi hlasenia <paramref name="types" /> vo variantach <paramref name="variants" /> a zaskrtne vybrane
-    ///     v <paramref name="chosen" />; <see langword="null" /> = nic nie je vybrane na upravu (tabulka je nedostupna).
+    /// Zobrazi hlasenia <paramref name="types" /> vo variantach <paramref name="variants" /> a zaskrtne vybrane
+    /// v <paramref name="chosen" />; <see langword="null" /> = nic nie je vybrane na upravu (tabulka je nedostupna).
     /// </summary>
     internal void Bind(List<ChosenReportType>? chosen, IReadOnlyList<ReportType> types, IReadOnlyList<ReportVariant> variants)
     {

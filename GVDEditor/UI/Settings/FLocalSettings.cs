@@ -9,8 +9,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Dialog - Lokálne nastavenia konkrétneho GVD. Stránky sú v strome vľavo; každá je samostatný prvok
-///     v <c>Forms/Settings</c>, okno ich len hostí, zbiera ich chyby a pri OK zapíše grafikon.
+/// Dialog - Lokálne nastavenia konkrétneho GVD. Stránky sú v strome vľavo; každá je samostatný prvok
+/// v <c>Forms/Settings</c>, okno ich len hostí, zbiera ich chyby a pri OK zapíše grafikon.
 /// </summary>
 public partial class FLocalSettings : Form
 {
@@ -18,47 +18,47 @@ public partial class FLocalSettings : Form
     private readonly bool _openStateDgmEditor;
 
     /// <summary>
-    ///     Tento priečinok.
+    /// Tento priečinok.
     /// </summary>
     public readonly GVDDirectory ThisDir;
 
     /// <summary>
-    ///     Priečinok s písmami pre tabule.
+    /// Priečinok s písmami pre tabule.
     /// </summary>
     public string FontDir => fontsPage.FontDir;
 
     /// <summary>
-    ///     Stav dat pred otvorenim okna; ak sa okno nezavrie tlacidlom OK, data sa don vratia.
+    /// Stav dat pred otvorenim okna; ak sa okno nezavrie tlacidlom OK, data sa don vratia.
     /// </summary>
     private readonly LocalSettingsSnapshot _snapshot;
 
     /// <summary>
-    ///     Stranka, ktora sa ma vybrat po otvoreni okna.
+    /// Stranka, ktora sa ma vybrat po otvoreni okna.
     /// </summary>
     private readonly LocalSettingsPage _startPage;
 
     /// <summary>
-    ///     Stranky, ktore samy kontroluju svoje udaje, s panelom, v ktorom su.
+    /// Stranky, ktore samy kontroluju svoje udaje, s panelom, v ktorom su.
     /// </summary>
     private readonly (ExOptionsPanel Panel, ISettingsPage Page)[] _checkedPages;
 
     /// <summary>
-    ///     Polozka, ktora sa ma po otvoreni okna vybrat.
+    /// Polozka, ktora sa ma po otvoreni okna vybrat.
     /// </summary>
     private readonly object? _select;
 
     /// <summary>
-    ///     Plnenie stranok - az pri prvom zobrazeni, zvysne postupne po otvoreni okna.
+    /// Plnenie stranok - az pri prvom zobrazeni, zvysne postupne po otvoreni okna.
     /// </summary>
     private readonly PageLoader _pages;
 
     /// <summary>
-    ///     Clanok dokumentacie ku kazdej stranke okna.
+    /// Clanok dokumentacie ku kazdej stranke okna.
     /// </summary>
     private readonly Dictionary<ExOptionsPanel, string> _helpLinks;
 
     /// <summary>
-    ///     Vytvori novy formulár typu <see cref="FLocalSettings"/>.
+    /// Vytvori novy formulár typu <see cref="FLocalSettings"/>.
     /// </summary>
     /// <param name="dir">Aktualny priecinok s grafikonom.</param>
     /// <param name="page">Stranka, ktora sa ma otvorit po otvoreni dialogu.</param>
@@ -173,7 +173,7 @@ public partial class FLocalSettings : Form
     }
 
     /// <summary>
-    ///     V spodnom riadku ukaze prvu chybu stranok a stranky s chybou oznaci v strome.
+    /// V spodnom riadku ukaze prvu chybu stranok a stranky s chybou oznaci v strome.
     /// </summary>
     private void UpdateProblems()
     {
@@ -192,7 +192,7 @@ public partial class FLocalSettings : Form
     }
 
     /// <summary>
-    ///     Ak niektora stranka hlasi chybu, prepne na nu a oznaci chybne pole.
+    /// Ak niektora stranka hlasi chybu, prepne na nu a oznaci chybne pole.
     /// </summary>
     private bool CheckPages()
     {

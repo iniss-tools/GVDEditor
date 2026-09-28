@@ -1,7 +1,7 @@
 ﻿namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Dopravca vlaku (operátor).
+/// Dopravca vlaku (operátor).
 /// </summary>
 /// <param name="id">identifikátor dopravcu</param>
 /// <param name="name">názov dopravcu</param>
@@ -9,27 +9,27 @@
 public sealed class Operator(int id, string name)
 {
     /// <summary>
-    ///     Predvolený dopravca.
+    /// Predvolený dopravca.
     /// </summary>
     public static readonly Operator None = new(-1, "Žiadny");
 
     /// <summary>
-    ///     Identifikátor dopravcu.
+    /// Identifikátor dopravcu.
     /// </summary>
     public int Id { get; } = id;
 
     /// <summary>
-    ///     Názov dopravcu.
+    /// Názov dopravcu.
     /// </summary>
     public string Name { get; set; } = name;
 
     /// <summary>
-    ///     This.
+    /// This.
     /// </summary>
     public Operator This => this;
 
     /// <summary>
-    ///     Vráti dopravcu zo zadaného listu podľa identifikátora dopravcu.
+    /// Vráti dopravcu zo zadaného listu podľa identifikátora dopravcu.
     /// </summary>
     /// <param name="operators">list dopravcov</param>
     /// <param name="id">identifikátor dopravcu</param>
@@ -38,7 +38,7 @@ public sealed class Operator(int id, string name)
         operators.FirstOrDefault(dopravca => dopravca.Id == id);
 
     /// <summary>
-    ///     Vráti dopravcu zo zadaného listu podľa názvu dopravcu.
+    /// Vráti dopravcu zo zadaného listu podľa názvu dopravcu.
     /// </summary>
     /// <param name="operators">list dopravcov</param>
     /// <param name="name">názov dopravcu</param>

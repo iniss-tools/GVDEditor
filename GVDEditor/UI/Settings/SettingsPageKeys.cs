@@ -2,7 +2,7 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranky okna Lokalne nastavenia, ktore sa daju otvorit priamo (menu Vlastnosti, analyza grafikonu).
+/// Stranky okna Lokalne nastavenia, ktore sa daju otvorit priamo (menu Vlastnosti, analyza grafikonu).
 /// </summary>
 public enum LocalSettingsPage
 {
@@ -22,7 +22,7 @@ public enum LocalSettingsPage
 }
 
 /// <summary>
-///     Editor, ktory sa ma otvorit hned po otvoreni okna Lokalne nastavenia.
+/// Editor, ktory sa ma otvorit hned po otvoreni okna Lokalne nastavenia.
 /// </summary>
 public enum LocalSettingsAction
 {
@@ -32,7 +32,7 @@ public enum LocalSettingsAction
 }
 
 /// <summary>
-///     Stranky okna Globalne nastavenia.
+/// Stranky okna Globalne nastavenia.
 /// </summary>
 public enum GlobalSettingsPage
 {

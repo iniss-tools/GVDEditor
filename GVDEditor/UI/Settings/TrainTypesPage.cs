@@ -7,9 +7,9 @@ using GVDEditor.Properties;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka Typy vlakov v okne Globalne nastavenia - zabudovane aj vlastne druhy (TrTypes.txt) v jednej tabulke
-///     s upravou priamo v bunkach. Druh urcuje kategoriu a tym farbu vlaku v zozname INISSu; vlastnym typom
-///     pridelí volne miesto (napr. R3) stranka sama. Zmeny idu rovno do <see cref="GlobData.TrainsTypes" />.
+/// Stranka Typy vlakov v okne Globalne nastavenia - zabudovane aj vlastne druhy (TrTypes.txt) v jednej tabulke
+/// s upravou priamo v bunkach. Druh urcuje kategoriu a tym farbu vlaku v zozname INISSu; vlastnym typom
+/// pridelí volne miesto (napr. R3) stranka sama. Zmeny idu rovno do <see cref="GlobData.TrainsTypes" />.
 /// </summary>
 public partial class TrainTypesPage : UserControl, ISettingsPage
 {
@@ -17,7 +17,7 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     private const string CustomPrefix = "c:";
 
     /// <summary>
-    ///     Vzhlad riadka vlaku v hlavnom zozname INISSu podla kategorie (farba textu a pozadia).
+    /// Vzhlad riadka vlaku v hlavnom zozname INISSu podla kategorie (farba textu a pozadia).
     /// </summary>
     private enum Look
     {
@@ -31,7 +31,7 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Polozka ponuky Druh - hodnota "b:Os" (zabudovany druh) alebo "c:R" (skupina vlastnych typov).
+    /// Polozka ponuky Druh - hodnota "b:Os" (zabudovany druh) alebo "c:R" (skupina vlastnych typov).
     /// </summary>
     private sealed record KindOption(string Value, string Text);
 
@@ -43,7 +43,7 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     private bool _refreshPending;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public TrainTypesPage()
     {
@@ -65,7 +65,7 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     public void FocusFirstProblem() => _grid.FocusFirstProblem();
 
     /// <summary>
-    ///     Naplni tabulku typmi vlakov - volat az po nastaveni temy okna.
+    /// Naplni tabulku typmi vlakov - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="grafikony">vsetky grafikony instalacie (pre pocet vlakov kazdeho typu)</param>
     /// <param name="open">otvoreny grafikon - jeho vlaky sa beru z pamate</param>
@@ -92,7 +92,7 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     private int UsedBy(TrainType type) => _usage.TryGetValue(type, out var list) ? list.Sum(u => u.Count) : 0;
 
     /// <summary>
-    ///     Obnovi vsetky bunky podla typov - ponuka druhov zavisi od ostatnych riadkov (obsadene druhy a miesta).
+    /// Obnovi vsetky bunky podla typov - ponuka druhov zavisi od ostatnych riadkov (obsadene druhy a miesta).
     /// </summary>
     private void RefreshRows()
     {
@@ -156,7 +156,7 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
         TrainTypeRules.GroupOf(type.CategoryTrain) is { } group ? CustomPrefix + group : BuiltinPrefix + type.CategoryTrain;
 
     /// <summary>
-    ///     Ponuka druhov pre typ: skupiny vlastnych typov s volnym miestom a zabudovane druhy, ktore nema iny typ.
+    /// Ponuka druhov pre typ: skupiny vlastnych typov s volnym miestom a zabudovane druhy, ktore nema iny typ.
     /// </summary>
     private static List<KindOption> KindOptions(TrainType type)
     {
@@ -192,7 +192,7 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     };
 
     /// <summary>
-    ///     Vzhlad v zozname INISSu podla zabudovanej tabulky druhov (vlastne typy preberaju vzhlad svojej skupiny).
+    /// Vzhlad v zozname INISSu podla zabudovanej tabulky druhov (vlastne typy preberaju vzhlad svojej skupiny).
     /// </summary>
     private static Look LookOf(string category) => TrainTypeRules.GroupOf(category) switch
     {
@@ -283,8 +283,8 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Obsadenost skupin vlastnych typov: nazov skupiny, devat policok a pocet. Kresli sa, aby boli policka
-    ///     pod sebou zarovnane (v texte s proporcionalnym pismom by nesedeli).
+    /// Obsadenost skupin vlastnych typov: nazov skupiny, devat policok a pocet. Kresli sa, aby boli policka
+    /// pod sebou zarovnane (v texte s proporcionalnym pismom by nesedeli).
     /// </summary>
     private void pSlots_Paint(object? sender, PaintEventArgs e)
     {
@@ -332,7 +332,7 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     private static string GroupRange(string group) => $"{group}1–{group}9";
 
     /// <summary>
-    ///     Velkost plochy s obsadenostou pre pismo <paramref name="font" />.
+    /// Velkost plochy s obsadenostou pre pismo <paramref name="font" />.
     /// </summary>
     private static Size SlotsSize(Font font)
     {
@@ -345,7 +345,7 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Obnovenie riadkov az po skonceni udalosti tabulky - zmena ponuky v udalosti by bola vnorena.
+    /// Obnovenie riadkov az po skonceni udalosti tabulky - zmena ponuky v udalosti by bola vnorena.
     /// </summary>
     private void RequestRefresh()
     {
@@ -405,8 +405,8 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     }
 
     /// <summary>
-    ///     Zmena druhu. Zabudovany druh predvyplni skratku a text (ak ich pouzivatel nezmenil), vlastny typ dostane
-    ///     volne miesto v skupine.
+    /// Zmena druhu. Zabudovany druh predvyplni skratku a text (ak ich pouzivatel nezmenil), vlastny typ dostane
+    /// volne miesto v skupine.
     /// </summary>
     private void SetKind(TrainType type, string value)
     {

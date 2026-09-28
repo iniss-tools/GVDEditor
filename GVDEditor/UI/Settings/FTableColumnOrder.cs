@@ -5,7 +5,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Dialog - Nastavenie poradia stlpcov katalogej tabule.
+/// Dialog - Nastavenie poradia stlpcov katalogej tabule.
 /// </summary>
 public partial class FTableColumnOrder : Form
 {
@@ -22,7 +22,7 @@ public partial class FTableColumnOrder : Form
     private TableViewType selectedType = null!;
 
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FTableColumnOrder"/>.
+    /// Vytvori novy formular typu <see cref="FTableColumnOrder"/>.
     /// </summary>
     /// <param name="items">Stlpce.</param>
     /// <param name="itemsTypeTabs">Typy pohladov.</param>

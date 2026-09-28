@@ -3,15 +3,15 @@ using ExControls;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Oznacenie chybnych poli farbou okraja. Povodne farby (podla temy) sa zapamataju pri
-///     <see cref="Capture" />, preto ju volat az po nastaveni temy okna.
+/// Oznacenie chybnych poli farbou okraja. Povodne farby (podla temy) sa zapamataju pri
+/// <see cref="Capture" />, preto ju volat az po nastaveni temy okna.
 /// </summary>
 internal sealed class FieldMarks
 {
     private readonly Dictionary<Control, Color> _normal = [];
 
     /// <summary>
-    ///     Zapamata povodnu farbu okraja poli.
+    /// Zapamata povodnu farbu okraja poli.
     /// </summary>
     public void Capture(params Control[] fields)
     {
@@ -21,7 +21,7 @@ internal sealed class FieldMarks
     }
 
     /// <summary>
-    ///     Zafarbi okraj poli <paramref name="bad" />, ostatnym vrati povodnu farbu.
+    /// Zafarbi okraj poli <paramref name="bad" />, ostatnym vrati povodnu farbu.
     /// </summary>
     public void Mark(IEnumerable<Control> bad)
     {

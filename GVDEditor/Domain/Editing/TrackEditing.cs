@@ -3,13 +3,13 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Domain.Editing;
 
 /// <summary>
-///     Upravy ciselnika kolaji a nastupist (Lokalne nastavenia), ktore musia ostat v sulade s vlakmi - Pozice.txt
-///     odkazuje na kolaje klucom a Pozice_A.txt uklada nastupistia len spolu s kolajami.
+/// Upravy ciselnika kolaji a nastupist (Lokalne nastavenia), ktore musia ostat v sulade s vlakmi - Pozice.txt
+/// odkazuje na kolaje klucom a Pozice_A.txt uklada nastupistia len spolu s kolajami.
 /// </summary>
 internal static class TrackEditing
 {
     /// <summary>
-    ///     Kolko vlakov pouziva kolaj ako kolaj prichodu a kolko ako (odlisnu) kolaj odchodu.
+    /// Kolko vlakov pouziva kolaj ako kolaj prichodu a kolko ako (odlisnu) kolaj odchodu.
     /// </summary>
     /// <param name="track">kolaj</param>
     /// <param name="trains">vlaky grafikonu</param>
@@ -28,9 +28,9 @@ internal static class TrackEditing
     }
 
     /// <summary>
-    ///     Odstrani kolaj zo zoznamu. Vlaky, ktore na nej stali, presunie na <see cref="Track.None" />; vlakom, ktore z
-    ///     nej odchadzali, zrusi kolaj odchodu (odchadzaju z kolaje prichodu). Inak by Pozice.txt odkazoval na
-    ///     neexistujucu kolaj a grafikon by sa uz nenacital.
+    /// Odstrani kolaj zo zoznamu. Vlaky, ktore na nej stali, presunie na <see cref="Track.None" />; vlakom, ktore z
+    /// nej odchadzali, zrusi kolaj odchodu (odchadzaju z kolaje prichodu). Inak by Pozice.txt odkazoval na
+    /// neexistujucu kolaj a grafikon by sa uz nenacital.
     /// </summary>
     /// <param name="track">odstranovana kolaj</param>
     /// <param name="tracks">zoznam kolaji</param>
@@ -52,8 +52,8 @@ internal static class TrackEditing
     }
 
     /// <summary>
-    ///     Nastupistia, na ktorych nelezi ziadna kolaj. Pozice_A.txt nema riadky nastupist, takze sa take nastupiste
-    ///     nezapise a po opatovnom otvoreni grafikonu zmizne.
+    /// Nastupistia, na ktorych nelezi ziadna kolaj. Pozice_A.txt nema riadky nastupist, takze sa take nastupiste
+    /// nezapise a po opatovnom otvoreni grafikonu zmizne.
     /// </summary>
     /// <param name="platforms">zoznam nastupist</param>
     /// <param name="tracks">zoznam kolaji</param>

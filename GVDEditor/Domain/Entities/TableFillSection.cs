@@ -3,7 +3,7 @@
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-///     Urcuje obsah sekcie na katalogovej tabuli.
+/// Urcuje obsah sekcie na katalogovej tabuli.
 /// </summary>
 public sealed class TableFillSection : Enumeration<TableFillSection>
 {
@@ -12,12 +12,12 @@ public sealed class TableFillSection : Enumeration<TableFillSection>
     }
 
     /// <summary>
-    ///     Odkaz na seba, pre potreby DataSource.
+    /// Odkaz na seba, pre potreby DataSource.
     /// </summary>
     public TableFillSection This => this;
 
     /// <summary>
-    ///     Konvertuje ID typu obsahu sekcie na objekt.
+    /// Konvertuje ID typu obsahu sekcie na objekt.
     /// </summary>
     /// <param name="id">Cislo zo sekcie [FILL_SECTION] v ModeTabs.TXT (TYPE_ITEMS_IDX v TKatalog.TXT).</param>
     /// <returns>Objekt alebo <see langword="null" />, ak INISS take cislo nepozna.</returns>

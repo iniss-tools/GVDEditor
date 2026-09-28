@@ -4,14 +4,14 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.TabTab;
 
 /// <summary>
-///     Dialog premenovania TabTab.
+/// Dialog premenovania TabTab.
 /// </summary>
 internal partial class FTabTabRename : Form
 {
     private readonly List<string> _otherNames;
 
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FTabTabRename"/>.
+    /// Vytvori novy formular typu <see cref="FTabTabRename"/>.
     /// </summary>
     /// <param name="currentName">Aktualny nazov sekcie (pri premenovani); pri pridani <see langword="null"/>.</param>
     /// <param name="otherNames">Nazvy ostatnych sekcii - novy nazov sa s nimi nesmie zhodovat.</param>

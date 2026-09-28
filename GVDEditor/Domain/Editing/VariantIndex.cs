@@ -4,15 +4,15 @@ using GVDEditor.Domain.Entities;
 namespace GVDEditor.Domain.Editing;
 
 /// <summary>
-///     Prehlad variant vlakov pre zoznam vlakov v hlavnom okne: poradie vlaku v skupine (1/2), jeho ostatne
-///     varianty a prekrytie dni s nimi. Stavia sa raz pre cely zoznam, zoznam ho pri kresleni len cita.
+/// Prehlad variant vlakov pre zoznam vlakov v hlavnom okne: poradie vlaku v skupine (1/2), jeho ostatne
+/// varianty a prekrytie dni s nimi. Stavia sa raz pre cely zoznam, zoznam ho pri kresleni len cita.
 /// </summary>
 internal sealed class VariantIndex
 {
     private readonly Dictionary<Train, Info> _items = new(ReferenceEqualityComparer.Instance);
 
     /// <summary>
-    ///     Varianty jedneho vlaku.
+    /// Varianty jedneho vlaku.
     /// </summary>
     /// <param name="Position">poradie vlaku v skupine (od 1)</param>
     /// <param name="Group">vsetky vlaky skupiny vratane neho v poradi variant</param>
@@ -20,7 +20,7 @@ internal sealed class VariantIndex
     public sealed record Info(int Position, IReadOnlyList<Train> Group, IReadOnlyList<(Train Train, string Days)> Overlaps)
     {
         /// <summary>
-        ///     Pocet vlakov skupiny.
+        /// Pocet vlakov skupiny.
         /// </summary>
         public int Count => Group.Count;
     }
@@ -30,17 +30,17 @@ internal sealed class VariantIndex
     }
 
     /// <summary>
-    ///     Varianty vlaku; vlak bez variant ma skupinu len so sebou.
+    /// Varianty vlaku; vlak bez variant ma skupinu len so sebou.
     /// </summary>
     public Info Of(Train train) => _items.TryGetValue(train, out var info) ? info : new Info(1, [train], []);
 
     /// <summary>
-    ///     Vlaky <paramref name="a" /> a <paramref name="b" /> su rozne varianty toho isteho vlaku.
+    /// Vlaky <paramref name="a" /> a <paramref name="b" /> su rozne varianty toho isteho vlaku.
     /// </summary>
     public bool AreSiblings(Train a, Train b) => !ReferenceEquals(a, b) && Of(a).Group.Contains(b);
 
     /// <summary>
-    ///     Prehlad variant vsetkych vlakov zoznamu.
+    /// Prehlad variant vsetkych vlakov zoznamu.
     /// </summary>
     public static VariantIndex Build(IReadOnlyList<Train> trains)
     {
@@ -66,8 +66,8 @@ internal sealed class VariantIndex
     }
 
     /// <summary>
-    ///     Spolocne dni dvoch vlakov s rovnakym obdobim platnosti; <see langword="null" />, ak nejdu v ziadny spolocny
-    ///     den, maju ine obdobie alebo sa obmedzenie neda precitat.
+    /// Spolocne dni dvoch vlakov s rovnakym obdobim platnosti; <see langword="null" />, ak nejdu v ziadny spolocny
+    /// den, maju ine obdobie alebo sa obmedzenie neda precitat.
     /// </summary>
     public static string? CommonDays(Train a, Train b)
     {

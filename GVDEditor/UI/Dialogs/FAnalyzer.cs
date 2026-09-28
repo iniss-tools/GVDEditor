@@ -6,7 +6,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Dialogs;
 
 /// <summary>
-///     Dialog - Analyza grafikonu.
+/// Dialog - Analyza grafikonu.
 /// </summary>
 public partial class FAnalyzer : Form
 {
@@ -19,12 +19,12 @@ public partial class FAnalyzer : Form
     private BindingList<IProblem> Problems = new();
 
     /// <summary>
-    ///     Ci niektora oprava zmenila grafikon v pamati - hlavne okno ho potom oznaci ako neulozeny.
+    /// Ci niektora oprava zmenila grafikon v pamati - hlavne okno ho potom oznaci ako neulozeny.
     /// </summary>
     public bool DataChanged { get; private set; }
 
     /// <summary>
-    ///     Vytvori novy formular typu <see cref="FAnalyzer"/>.
+    /// Vytvori novy formular typu <see cref="FAnalyzer"/>.
     /// </summary>
     /// <param name="gvd">Aktualne vybrany grafikon na analyzovanie.</param>
     public FAnalyzer(GVDDirectory gvd)

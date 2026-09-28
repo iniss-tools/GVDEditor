@@ -7,8 +7,8 @@ using GVDEditor.Properties;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Stranka TabTab v okne Lokalne nastavenia - zoznam sekcii TabTab, obsah vybranej sekcie a kde sa pouziva.
-///     Sekcie sa upravuju v editore TabTab (samostatne okno), ktory ich zapise do <see cref="GlobData.TabTabs" />.
+/// Stranka TabTab v okne Lokalne nastavenia - zoznam sekcii TabTab, obsah vybranej sekcie a kde sa pouziva.
+/// Sekcie sa upravuju v editore TabTab (samostatne okno), ktory ich zapise do <see cref="GlobData.TabTabs" />.
 /// </summary>
 public partial class TabTabPage : UserControl
 {
@@ -17,7 +17,7 @@ public partial class TabTabPage : UserControl
     private bool _loaded;
 
     /// <summary>
-    ///     Vytvori stranku; udaje nacita az <see cref="LoadData" />.
+    /// Vytvori stranku; udaje nacita az <see cref="LoadData" />.
     /// </summary>
     public TabTabPage()
     {
@@ -27,7 +27,7 @@ public partial class TabTabPage : UserControl
     }
 
     /// <summary>
-    ///     Naplni stranku - volat az po nastaveni temy okna.
+    /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
     /// <param name="station">stanica grafikonu - editor podla nej ponuka stanice</param>
     internal void LoadData(Station station)
@@ -53,7 +53,7 @@ public partial class TabTabPage : UserControl
     }
 
     /// <summary>
-    ///     Otvori editor TabTab (napr. hned po otvoreni okna z hlavneho menu).
+    /// Otvori editor TabTab (napr. hned po otvoreni okna z hlavneho menu).
     /// </summary>
     public void OpenEditor() => bEditor_Click(this, EventArgs.Empty);
 

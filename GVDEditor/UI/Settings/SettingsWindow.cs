@@ -5,12 +5,12 @@ using ToolsCore.XML;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Spolocne spravanie okien Lokalne a Globalne nastavenia: zapamatana velkost okna a farba chybovych textov.
+/// Spolocne spravanie okien Lokalne a Globalne nastavenia: zapamatana velkost okna a farba chybovych textov.
 /// </summary>
 internal static class SettingsWindow
 {
     /// <summary>
-    ///     Nastavi oknu zapamatanu velkost; bez nej ostane velkost z navrhu.
+    /// Nastavi oknu zapamatanu velkost; bez nej ostane velkost z navrhu.
     /// </summary>
     public static void ApplyPlacement(Form form, WindowPlacement? placement)
     {
@@ -28,7 +28,7 @@ internal static class SettingsWindow
     }
 
     /// <summary>
-    ///     Aktualna velkost okna v bodoch pri 96 DPI (pri maximalizovanom okne jeho normalna velkost).
+    /// Aktualna velkost okna v bodoch pri 96 DPI (pri maximalizovanom okne jeho normalna velkost).
     /// </summary>
     public static WindowPlacement CapturePlacement(Form form)
     {
@@ -43,8 +43,8 @@ internal static class SettingsWindow
     }
 
     /// <summary>
-    ///     Zapise konfiguraciu programu (napr. po zmene zapamatanej velkosti okna). Chyba zapisu sa len zaloguje -
-    ///     velkost okna nestoji za prerusenie prace.
+    /// Zapise konfiguraciu programu (napr. po zmene zapamatanej velkosti okna). Chyba zapisu sa len zaloguje -
+    /// velkost okna nestoji za prerusenie prace.
     /// </summary>
     public static void SaveConfig()
     {
@@ -63,7 +63,7 @@ internal static class SettingsWindow
     }
 
     /// <summary>
-    ///     Farba textu chyby citatelna na pozadi prvku (svetla aj tmava tema).
+    /// Farba textu chyby citatelna na pozadi prvku (svetla aj tmava tema).
     /// </summary>
     public static Color ProblemColor(Control control) =>
         control.BackColor.GetBrightness() < 0.5f ? Color.FromArgb(255, 128, 128) : Color.FromArgb(190, 30, 45);

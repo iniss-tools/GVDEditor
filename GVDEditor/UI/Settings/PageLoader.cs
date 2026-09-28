@@ -3,9 +3,9 @@ using ExControls;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-///     Naplna stranky okna nastaveni postupne, aby sa okno otvorilo hned: pred zobrazenim len stranku, ktorou sa
-///     otvara, ostatne po zobrazeni okna jednu po druhej (medzi nimi okno reaguje) alebo hned, ked ich pouzivatel
-///     vyberie. Pred OK treba naplnit vsetky (<see cref="LoadAll" />) - kontrola chyb musi vidiet kazdu stranku.
+/// Naplna stranky okna nastaveni postupne, aby sa okno otvorilo hned: pred zobrazenim len stranku, ktorou sa
+/// otvara, ostatne po zobrazeni okna jednu po druhej (medzi nimi okno reaguje) alebo hned, ked ich pouzivatel
+/// vyberie. Pred OK treba naplnit vsetky (<see cref="LoadAll" />) - kontrola chyb musi vidiet kazdu stranku.
 /// </summary>
 internal sealed class PageLoader
 {
@@ -14,7 +14,7 @@ internal sealed class PageLoader
     private bool _running;
 
     /// <summary>
-    ///     Vytvori plnenie stranok okna <paramref name="form" /> so stromom stranok <paramref name="view" />.
+    /// Vytvori plnenie stranok okna <paramref name="form" /> so stromom stranok <paramref name="view" />.
     /// </summary>
     public PageLoader(Form form, ExOptionsView view)
     {
@@ -24,12 +24,12 @@ internal sealed class PageLoader
     }
 
     /// <summary>
-    ///     Prida stranku na panele <paramref name="panel" />; stranky sa po zobrazeni okna plnia v poradi pridania.
+    /// Prida stranku na panele <paramref name="panel" />; stranky sa po zobrazeni okna plnia v poradi pridania.
     /// </summary>
     public void Add(ExOptionsPanel panel, Action load) => _pending.Add((panel, load));
 
     /// <summary>
-    ///     Naplni stranku na panele <paramref name="panel" />, ak este naplnena nie je.
+    /// Naplni stranku na panele <paramref name="panel" />, ak este naplnena nie je.
     /// </summary>
     public void Load(ExOptionsPanel? panel)
     {
@@ -43,7 +43,7 @@ internal sealed class PageLoader
     }
 
     /// <summary>
-    ///     Naplni vsetky este nenaplnene stranky.
+    /// Naplni vsetky este nenaplnene stranky.
     /// </summary>
     public void LoadAll()
     {

@@ -8,8 +8,8 @@ using ToolsCore.Tools;
 namespace GVDEditor.Tests.Formats;
 
 /// <summary>
-///     Poradie variantov hlasenia: INISS berie variant podla poradia sekcii VARIANT_nn - prvy (velke pismeno typu,
-///     prvy stlpec mapy dodatku) je dlhe hlasenie, druhy (male pismeno) kratke. Nazvy variantov INISS necita.
+/// Poradie variantov hlasenia: INISS berie variant podla poradia sekcii VARIANT_nn - prvy (velke pismeno typu,
+/// prvy stlpec mapy dodatku) je dlhe hlasenie, druhy (male pismeno) kratke. Nazvy variantov INISS necita.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
