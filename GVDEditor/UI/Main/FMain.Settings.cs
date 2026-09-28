@@ -1,0 +1,202 @@
+using GVDEditor.Domain.Calendar;
+using GVDEditor.Domain.Editing;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
+using GVDEditor.Services;
+using GVDEditor.UI.Dialogs;
+using GVDEditor.UI.Settings;
+using GVDEditor.UI.StateDgm;
+using Microsoft.VisualBasic.FileIO;
+using ToolsCore;
+using ToolsCore.Forms;
+using ToolsCore.Tools;
+using ToolsCore.XML;
+
+namespace GVDEditor.UI.Main;
+
+public partial class FMain
+{
+    private void ShowAppSettings(string? page = null)
+    {
+        var old = GlobData.Config;
+        var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+        if (page != null) form.PreselectMenuItem(page);
+        if (form.ShowDialog() != DialogResult.OK)
+            return;
+
+        UpdateMainUI();
+
+        // tieto nastavenia sa inak nacitaju len pri starte programu
+        DateLimit.Loc = GlobData.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
+        Log.DoAppLogs = GlobData.Config.LoggingInfo;
+        Log.DoErrorLogs = GlobData.Config.LoggingError;
+
+        if (old.Language != GlobData.Config.Language || old.ClassicGUI != GlobData.Config.ClassicGUI)
+            Utils.ShowInfo(Resources.FMain_Nastavenia_po_restarte);
+    }
+
+    private void ShowInfoApp()
+    {
+        var form = new FAboutApp(Resources.AboutAppDescription, Resources.gvd);
+        form.ShowDialog(this);
+    }
+
+    /// <returns><see langword="true" />, ak pouzivatel nastavenia ulozil.</returns>
+    internal bool ShowLocalSettings(LocalSettingsPage page = LocalSettingsPage.Grafikon,
+        LocalSettingsAction action = LocalSettingsAction.None, object? select = null)
+    {
+        var dir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
+        // FLocalSettings meni dir.GVD priamo, povodne hodnoty treba zapamatat vopred
+        var oldStation = dir.GVD.ThisStation.Name;
+        var oldPeriod = dir.Period;
+        var wasSaved = DataSaved;
+        // okno sa chvilu zostavuje - kurzor ukaze, ze klik zabral (po zobrazeni okna sa vrati sam)
+        Cursor.Current = Cursors.WaitCursor;
+        var svform = new FLocalSettings(dir, page, action, select);
+        var result = svform.ShowDialog();
+        if (result != DialogResult.OK)
+        {
+            // Zrusit/krizik vratil vsetky data - obnova zoznamov nesmie grafikon oznacit ako zmeneny
+            DataSaved = wasSaved;
+            return false;
+        }
+
+        RefreshStationAndPeriod(dir, oldStation, oldPeriod);
+
+        GlobData.TableFontDir = svform.FontDir;
+        DataSaved = false;
+        GlobData.Trains.ResetBindings();
+        return true;
+    }
+
+    /// <summary>
+    /// Po zmene stanice alebo obdobia platnosti grafikonu v lokalnych nastaveniach aktualizuje comboboxy
+    /// Stanica a Obdobie tak, aby grafikon <paramref name="dir" /> ostal vybraty.
+    /// </summary>
+    private void RefreshStationAndPeriod(GVDDirectory dir, string oldStation, string oldPeriod)
+    {
+        var newStation = dir.GVD.ThisStation.Name;
+        if (newStation == oldStation && dir.Period == oldPeriod) return;
+
+        // zmena zdrojov comboboxov by cez SelectedIndexChanged znovu nacitala grafikon zo suborov
+        // a zahodila neulozene zmeny (vratane tych z lokalnych nastaveni)
+        WithoutSelectionEvents(() =>
+        {
+            if (newStation != oldStation)
+            {
+                GVDSelectionLists.RenameStation(Stanice, _gvdDirs, oldStation, newStation);
+
+                ObdobiaList.Clear();
+                foreach (var gvdDir in GVDSelectionLists.PeriodsOf(_gvdDirs, newStation)) ObdobiaList.Add(gvdDir);
+
+                tscbStanica.ComboBox.SelectedItem = newStation;
+            }
+            else
+            {
+                ObdobiaList.ResetBindings();
+            }
+
+            tscbObdobie.ComboBox.SelectedItem = dir;
+        });
+    }
+
+    private void ShowGlobalSettings(GlobalSettingsPage page = GlobalSettingsPage.Grafikony)
+    {
+        // okno sa chvilu zostavuje - kurzor ukaze, ze klik zabral (po zobrazeni okna sa vrati sam)
+        Cursor.Current = Cursors.WaitCursor;
+        var gf = new FGlobalSettings(_gvdDirs.ToList(), page, _grafikonLoaded ? _previousSelectedGVD : null);
+        if (gf.ShowDialog() != DialogResult.OK)
+            return;
+
+        try
+        {
+            GrafikonService.SaveGlobalSettings(GlobData.Workspace, gf.Grafikony.Select(gvd => gvd.Dir).ToList(), GlobData.Document);
+        }
+        catch (InvalidOperationException e)
+        {
+            Utils.ShowError(e.Message);
+            return;
+        }
+        finally
+        {
+            GlobData.Trains.ResetBindings();
+        }
+
+        if (gf.RemovedGVDs.Count != 0)
+            RemoveGrafikony(gf.RemovedGVDs);
+
+        // grafikon, ktory sa predtym nenacital (napr. pre chybajuci typ vlaku), skusit nacitat znova
+        if (!_grafikonLoaded && tscbObdobie.ComboBox.SelectedItem is GVDDirectory dir && _gvdDirs.Contains(dir))
+        {
+            tscbObdobie.ComboBox.SelectedItem = null;
+            tscbObdobie.ComboBox.SelectedItem = dir;
+        }
+
+        UpdateCommandStates();
+    }
+
+    /// <summary>
+    /// Presunie odstranene grafikony do kosa a prisposobi im vyber stanice a obdobia.
+    /// DirList.TXT uz je zapisany bez nich.
+    /// </summary>
+    private void RemoveGrafikony(IReadOnlyCollection<GVDDirectory> removed)
+    {
+        var currentRemoved = _previousSelectedGVD is not null && removed.Contains(_previousSelectedGVD);
+
+        foreach (var gvd in removed)
+        {
+            _gvdDirs.Remove(gvd);
+
+            try
+            {
+                FileSystem.DeleteDirectory(gvd.Dir.FullPath, UIOption.AllDialogs, RecycleOption.SendToRecycleBin);
+            }
+            catch (Exception e)
+            {
+                Utils.ShowError(e.Message);
+            }
+        }
+
+        if (currentRemoved)
+        {
+            // otvoreny grafikon uz neexistuje - jeho vlaky nesmu ostat v zozname a zmeny v nom sa nemaju ukladat
+            DataSaved = true;
+            _previousSelectedGVD = null;
+            CloseGrafikon();
+
+            if (InitializeDataList())
+                InitializeGUI();
+            return;
+        }
+
+        // otvoreny grafikon ostava - len zo zoznamov zmiznu odstranene obdobia a stanice bez grafikonu
+        WithoutSelectionEvents(() =>
+        {
+            foreach (var gvd in removed)
+                ObdobiaList.Remove(gvd);
+
+            foreach (var station in Stanice.Where(s => _gvdDirs.All(d => d.GVD.ThisStation.Name != s)).ToList())
+                Stanice.Remove(station);
+
+            tscbStanica.ComboBox.SelectedItem = _previousSelectedGVD?.GVD.ThisStation.Name;
+            tscbObdobie.ComboBox.SelectedItem = _previousSelectedGVD;
+        });
+    }
+
+    /// <summary>
+    /// Otvori editor stavoveho diagramu aktualneho grafikonu.
+    /// </summary>
+    private void ShowStateDgm()
+    {
+        if (tscbObdobie.ComboBox.SelectedItem is not GVDDirectory dir) return;
+        using var f = new FStateDgm(dir);
+        f.ShowDialog(this);
+    }
+
+    private void ShowDatObm()
+    {
+        var gvd = (tscbObdobie.ComboBox?.SelectedItem as GVDDirectory)?.GVD;
+        using var fobm = new FDatObm(gvd?.StartValidTimeTable.ToDateTime(), gvd?.EndValidTimeTable.ToDateTime());
+        fobm.ShowDialog(this);
+    }
+}

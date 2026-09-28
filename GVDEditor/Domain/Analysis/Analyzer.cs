@@ -88,7 +88,11 @@ internal interface IProblem
 /// </summary>
 internal static class Analyzer
 {
-    public static List<IProblem> FindProblems(BackgroundWorker bw, GVDDirectory gvd)
+    /// <summary>
+    /// Najde problemy grafikonu <paramref name="gvd" />. Bezi na pozadi - priebeh v percentach hlasi cez
+    /// <paramref name="progress" />.
+    /// </summary>
+    public static List<IProblem> FindProblems(GVDDirectory gvd, IProgress<int>? progress = null)
     {
         List<IProblem> problems = new();
 
@@ -100,7 +104,7 @@ internal static class Analyzer
             problems.Add(problem);
         }
 
-        bw.ReportProgress(5);
+        progress?.Report(5);
 
         //2. Check Empty TabTabs
         foreach (var tab in GlobData.TabTabs)
@@ -110,7 +114,7 @@ internal static class Analyzer
                 problems.Add(problem);
             }
 
-        bw.ReportProgress(10);
+        progress?.Report(10);
 
         //3. Check using Catalog tables in TPhysic and in TableTextRealization AND Segments
         foreach (var catalog in GlobData.TableCatalogs)
@@ -137,7 +141,7 @@ internal static class Analyzer
             }
         }
 
-        bw.ReportProgress(25);
+        progress?.Report(25);
 
         //4. Check using Physic tables in Tlogical
         foreach (var physical in GlobData.TablePhysicals)
@@ -162,7 +166,7 @@ internal static class Analyzer
             }
         }
 
-        bw.ReportProgress(50);
+        progress?.Report(50);
 
         //5. Check using TabTabs
         foreach (var tab in GlobData.TabTabs)
@@ -197,7 +201,7 @@ internal static class Analyzer
                 problems.Add(new TabTabProblems(tab, result));
         }
 
-        bw.ReportProgress(75);
+        progress?.Report(75);
 
         //6. Check TTexts
         for (var i = 0; i < GlobData.TableTexts.Count; i++)
@@ -216,7 +220,7 @@ internal static class Analyzer
             }
         }
 
-        bw.ReportProgress(90);
+        progress?.Report(90);
 
         //7. Check Zpozdeni.DAT cache - INISS Zpozdeni.TXT necita, kym existuje .DAT (nekontroluje ani cas suborov)
         var zpozdeniTxt = Utils.CombinePath(GlobData.DataDir, GvdFileConsts.FILE_ZPOZDENI)!;
@@ -228,7 +232,7 @@ internal static class Analyzer
             problems.Add(problem);
         }
 
-        bw.ReportProgress(100);
+        progress?.Report(100);
 
         return problems;
     }

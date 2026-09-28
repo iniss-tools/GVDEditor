@@ -1,6 +1,7 @@
 ﻿using ExControls;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
+using ToolsCore;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Dialogs;
@@ -17,6 +18,9 @@ public partial class FAnalyzer : Form
 
     private readonly GVDDirectory GVD;
     private BindingList<IProblem> Problems = new();
+
+    // prebiehajuca analyza (harness snimok na nu caka)
+    private Task _analysis = Task.CompletedTask;
 
     /// <summary>
     /// Ci niektora oprava zmenila grafikon v pamati - hlavne okno ho potom oznaci ako neulozeny.
@@ -42,7 +46,44 @@ public partial class FAnalyzer : Form
 
     private void bOK_Click(object sender, EventArgs e) => DialogResult = DialogResult.OK;
 
-    private void bAnalyze_Click(object sender, EventArgs e) => bgWorkAnalyze.RunWorkerAsync();
+    private async void bAnalyze_Click(object sender, EventArgs e)
+    {
+        if (!_analysis.IsCompleted)
+            return;
+
+        _analysis = AnalyzeAsync();
+        await _analysis;
+    }
+
+    /// <summary>
+    /// Analyza bezi na pozadi, priebeh sa ukazuje v stavovom riadku okna.
+    /// </summary>
+    private async Task AnalyzeAsync()
+    {
+        bAnalyze.Enabled = false;
+        var progress = new Progress<int>(percent =>
+        {
+            pbStatus.Value = percent;
+            lStatus.Text = @$"{percent}%";
+        });
+
+        try
+        {
+            var problems = await Task.Run(() => Analyzer.FindProblems(GVD, progress));
+            Problems = new BindingList<IProblem>(problems);
+            dgvResults.DataSource = null;
+            dgvResults.DataSource = Problems;
+        }
+        catch (Exception exception)
+        {
+            Log.Exception(exception);
+            Utils.ShowError(exception.Message);
+        }
+        finally
+        {
+            bAnalyze.Enabled = true;
+        }
+    }
 
     private void dgvResults_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
@@ -79,23 +120,6 @@ public partial class FAnalyzer : Form
                     cell.ToolTipText = "Používateľ musí problém opraviť sám, program len navedie k riešeniu";
                     break;
             }
-    }
-
-    private void bgWorkAnalyze_DoWork(object sender, DoWorkEventArgs e)
-    {
-        Problems = new BindingList<IProblem>(Analyzer.FindProblems(bgWorkAnalyze, GVD));
-    }
-
-    private void bgWorkAnalyze_ProgressChanged(object sender, ProgressChangedEventArgs e)
-    {
-        pbStatus.Value = e.ProgressPercentage;
-        lStatus.Text = @$"{e.ProgressPercentage}%";
-    }
-
-    private void bgWorkAnalyze_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-    {
-        dgvResults.DataSource = null;
-        dgvResults.DataSource = Problems;
     }
 
     private void dgvResults_DoubleClick(object sender, EventArgs e)

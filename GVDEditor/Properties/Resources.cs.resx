@@ -1955,4 +1955,148 @@ Pokračovat?</value>
   <data name="GrafikonLanguages_Hlavny_Polozka" xml:space="preserve">
     <value>{0} (hlavní jazyk)</value>
   </data>
+  <data name="Cmd_New" xml:space="preserve">
+    <value>Nový grafikon</value>
+  </data>
+  <data name="Cmd_Open" xml:space="preserve">
+    <value>Otevřít instalaci</value>
+  </data>
+  <data name="Cmd_ImportGvd" xml:space="preserve">
+    <value>Importovat grafikon</value>
+  </data>
+  <data name="Cmd_ImportData" xml:space="preserve">
+    <value>Importovat data</value>
+  </data>
+  <data name="Cmd_ImportElis" xml:space="preserve">
+    <value>Importovat z ELIS</value>
+  </data>
+  <data name="Cmd_Save" xml:space="preserve">
+    <value>Uložit grafikon</value>
+  </data>
+  <data name="Cmd_Analyze" xml:space="preserve">
+    <value>Analyzovat grafikon</value>
+  </data>
+  <data name="Cmd_AddTrain" xml:space="preserve">
+    <value>Přidat vlak</value>
+  </data>
+  <data name="Cmd_EditTrain" xml:space="preserve">
+    <value>Upravit vybraný vlak</value>
+  </data>
+  <data name="Cmd_DeleteTrains" xml:space="preserve">
+    <value>Odstranit vybrané vlaky</value>
+  </data>
+  <data name="Cmd_DuplicateTrain" xml:space="preserve">
+    <value>Duplikovat vybraný vlak</value>
+  </data>
+  <data name="Cmd_LocalSettings" xml:space="preserve">
+    <value>Lokální nastavení</value>
+  </data>
+  <data name="Cmd_GlobalSettings" xml:space="preserve">
+    <value>Globální nastavení</value>
+  </data>
+  <data name="Cmd_AppSettings" xml:space="preserve">
+    <value>Nastavení programu</value>
+  </data>
+  <data name="Cmd_GSGvds" xml:space="preserve">
+    <value>Globální nastavení – Grafikony</value>
+  </data>
+  <data name="Cmd_GSLanguages" xml:space="preserve">
+    <value>Globální nastavení – Jazyky</value>
+  </data>
+  <data name="Cmd_GSDelays" xml:space="preserve">
+    <value>Globální nastavení – Zpoždění</value>
+  </data>
+  <data name="Cmd_GSTrainTypes" xml:space="preserve">
+    <value>Globální nastavení – Typy vlaků</value>
+  </data>
+  <data name="Cmd_GSAudio" xml:space="preserve">
+    <value>Globální nastavení – Audio</value>
+  </data>
+  <data name="Cmd_LSGvd" xml:space="preserve">
+    <value>Lokální nastavení – Grafikon</value>
+  </data>
+  <data name="Cmd_LSLanguages" xml:space="preserve">
+    <value>Lokální nastavení – Jazyky hlášení</value>
+  </data>
+  <data name="Cmd_LSStations" xml:space="preserve">
+    <value>Lokální nastavení – Vlastní stanice</value>
+  </data>
+  <data name="Cmd_LSOperators" xml:space="preserve">
+    <value>Lokální nastavení – Dopravci</value>
+  </data>
+  <data name="Cmd_LSPlatforms" xml:space="preserve">
+    <value>Lokální nastavení – Nástupiště</value>
+  </data>
+  <data name="Cmd_LSTracks" xml:space="preserve">
+    <value>Lokální nastavení – Koleje</value>
+  </data>
+  <data name="Cmd_LSPhysicalTables" xml:space="preserve">
+    <value>Lokální nastavení – Fyzické tabule</value>
+  </data>
+  <data name="Cmd_LSLogicalTables" xml:space="preserve">
+    <value>Lokální nastavení – Logické tabule</value>
+  </data>
+  <data name="Cmd_LSCatalogTables" xml:space="preserve">
+    <value>Lokální nastavení – Katalogové tabule</value>
+  </data>
+  <data name="Cmd_LSTabTab" xml:space="preserve">
+    <value>Lokální nastavení – TabTab</value>
+  </data>
+  <data name="Cmd_LSTableTexts" xml:space="preserve">
+    <value>Lokální nastavení – Texty na tabulích</value>
+  </data>
+  <data name="Cmd_LSTableFonts" xml:space="preserve">
+    <value>Lokální nastavení – Písma</value>
+  </data>
+  <data name="Cmd_LSTabTabEditor" xml:space="preserve">
+    <value>Lokální nastavení – Editor TabTab</value>
+  </data>
+  <data name="Cmd_StateDgm" xml:space="preserve">
+    <value>Stavový diagram</value>
+  </data>
+  <data name="Cmd_RunIniss" xml:space="preserve">
+    <value>Spustit INISS</value>
+  </data>
+  <data name="Cmd_ShutdownIniss" xml:space="preserve">
+    <value>Ukončit INISS</value>
+  </data>
+  <data name="Cmd_KillIniss" xml:space="preserve">
+    <value>Vynutit ukončení INISS</value>
+  </data>
+  <data name="Cmd_RestartIniss" xml:space="preserve">
+    <value>Restartovat INISS</value>
+  </data>
+  <data name="Cmd_InissStartupSettings" xml:space="preserve">
+    <value>Nastavení spouštění INISS</value>
+  </data>
+  <data name="Cmd_InfoApp" xml:space="preserve">
+    <value>Informace o programu</value>
+  </data>
+  <data name="Cmd_UpdateNotes" xml:space="preserve">
+    <value>Poznámky k aktualizacím</value>
+  </data>
+  <data name="Cmd_DateLimit" xml:space="preserve">
+    <value>Generátor datumových omezení</value>
+  </data>
+  <data name="FMain_Import_prebieha" xml:space="preserve">
+    <value>Probíhá importování údajů...</value>
+  </data>
+  <data name="FMain_Vyberte_priecinok_s_grafikonom" xml:space="preserve">
+    <value>Vyberte složku obsahující grafikon</value>
+  </data>
+  <data name="FMain_Vyberte_priecinok_s_INISS" xml:space="preserve">
+    <value>Vyberte složku s INISS.exe</value>
+  </data>
+  <data name="GlobalSettings_Ulozenie_zlyhalo_vratene" xml:space="preserve">
+    <value>Uložení globálních nastavení selhalo, žádné změny se neuložily. Soubory ve složce DATA zůstaly v původním stavu.
+
+{0}</value>
+  </data>
+  <data name="GlobalSettings_Ulozenie_zlyhalo_neobnovene" xml:space="preserve">
+    <value>Uložení globálních nastavení selhalo a původní stav se nepodařilo obnovit. Soubory ve složce DATA mohou být nekonzistentní.
+
+Záloha původních souborů: {1}
+
+{0}</value>
+  </data>
 </root>

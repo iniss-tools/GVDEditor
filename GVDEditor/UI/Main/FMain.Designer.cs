@@ -209,7 +209,6 @@ namespace GVDEditor.UI.Main
             tsbRestartINISS = new ToolStripButton();
             toolStripSeparator19 = new ToolStripSeparator();
             tsbDatObm = new ToolStripButton();
-            backgroundWorker1 = new BackgroundWorker();
             dgvTrains = new DataGridView();
             cisloDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -241,7 +240,6 @@ namespace GVDEditor.UI.Main
             dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
             dOpenELIS = new OpenFileDialog();
-            bWorkerELIS = new BackgroundWorker();
             statusStrip = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             tsslTrainCountWithVariants = new ToolStripStatusLabel();
@@ -321,7 +319,6 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiNew, "tsmiNew");
             tsmiNew.Name = "tsmiNew";
-            tsmiNew.Click += tsmiNew_Click;
             // 
             // toolStripSeparator6
             // 
@@ -332,7 +329,6 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiOpen, "tsmiOpen");
             tsmiOpen.Name = "tsmiOpen";
-            tsmiOpen.Click += tsmiOpen_Click;
             // 
             // tsmiRecent
             // 
@@ -354,19 +350,16 @@ namespace GVDEditor.UI.Main
             // 
             tsmiImportData.Name = "tsmiImportData";
             resources.ApplyResources(tsmiImportData, "tsmiImportData");
-            tsmiImportData.Click += tsmiImportData_Click;
             // 
             // tsmiImportGVD
             // 
             tsmiImportGVD.Name = "tsmiImportGVD";
             resources.ApplyResources(tsmiImportGVD, "tsmiImportGVD");
-            tsmiImportGVD.Click += tsmiImportGVD_Click;
             // 
             // tsmiImportELIS
             // 
             tsmiImportELIS.Name = "tsmiImportELIS";
             resources.ApplyResources(tsmiImportELIS, "tsmiImportELIS");
-            tsmiImportELIS.Click += tsmiImportELIS_Click;
             // 
             // toolStripSeparator3
             // 
@@ -377,7 +370,6 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiSave, "tsmiSave");
             tsmiSave.Name = "tsmiSave";
-            tsmiSave.Click += tsmiSave_Click;
             // 
             // toolStripSeparator18
             // 
@@ -388,7 +380,6 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiAnalyze, "tsmiAnalyze");
             tsmiAnalyze.Name = "tsmiAnalyze";
-            tsmiAnalyze.Click += tsmiAnalyze_Click;
             // 
             // tsmiUpravit
             // 
@@ -400,13 +391,11 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmimAddTrain, "tsmimAddTrain");
             tsmimAddTrain.Name = "tsmimAddTrain";
-            tsmimAddTrain.Click += tsmimAddTrain_Click;
             // 
             // tsmimEditTrain
             // 
             resources.ApplyResources(tsmimEditTrain, "tsmimEditTrain");
             tsmimEditTrain.Name = "tsmimEditTrain";
-            tsmimEditTrain.Click += tsmimEditTrain_Click;
             // 
             // toolStripSeparator2
             // 
@@ -417,7 +406,6 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiDeleteTrain, "tsmiDeleteTrain");
             tsmiDeleteTrain.Name = "tsmiDeleteTrain";
-            tsmiDeleteTrain.Click += tsmiDeleteTrain_Click;
             // 
             // toolStripSeparator1
             // 
@@ -428,7 +416,6 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiDuplikovat, "tsmiDuplikovat");
             tsmiDuplikovat.Name = "tsmiDuplikovat";
-            tsmiDuplikovat.Click += tsmiDuplikovat_Click;
             // 
             // tsmiStanica
             // 
@@ -441,31 +428,26 @@ namespace GVDEditor.UI.Main
             tsmiVlastnostiStanice.DropDownItems.AddRange(new ToolStripItem[] { tsmiGrafikon, tsmiJazykyHlaseni, tsmiStanice, tsmiDopravcovia, toolStripSeparator16, tsmiPlatforms, tsmiKolaje, toolStripSeparator15, tsmiTPhysical, tsmiTLogical, tsmiTCatalog, tsmiTabTab, tsmiTTexts, tsmiTFonts, toolStripSeparator17, tsmiTabTabEditor });
             resources.ApplyResources(tsmiVlastnostiStanice, "tsmiVlastnostiStanice");
             tsmiVlastnostiStanice.Name = "tsmiVlastnostiStanice";
-            tsmiVlastnostiStanice.Click += tsmiLocalSettings_Click;
             // 
             // tsmiGrafikon
             // 
             resources.ApplyResources(tsmiGrafikon, "tsmiGrafikon");
             tsmiGrafikon.Name = "tsmiGrafikon";
-            tsmiGrafikon.Click += tsmiGrafikon_Click;
             // 
             // tsmiJazykyHlaseni
             // 
             resources.ApplyResources(tsmiJazykyHlaseni, "tsmiJazykyHlaseni");
             tsmiJazykyHlaseni.Name = "tsmiJazykyHlaseni";
-            tsmiJazykyHlaseni.Click += tsmiJazykyHlaseni_Click;
             // 
             // tsmiStanice
             // 
             resources.ApplyResources(tsmiStanice, "tsmiStanice");
             tsmiStanice.Name = "tsmiStanice";
-            tsmiStanice.Click += tsmiStanice_Click;
             // 
             // tsmiDopravcovia
             // 
             resources.ApplyResources(tsmiDopravcovia, "tsmiDopravcovia");
             tsmiDopravcovia.Name = "tsmiDopravcovia";
-            tsmiDopravcovia.Click += tsmiDopravcovia_Click;
             // 
             // toolStripSeparator16
             // 
@@ -476,13 +458,11 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiPlatforms, "tsmiPlatforms");
             tsmiPlatforms.Name = "tsmiPlatforms";
-            tsmiPlatforms.Click += tsmiPlatforms_Click;
             // 
             // tsmiKolaje
             // 
             resources.ApplyResources(tsmiKolaje, "tsmiKolaje");
             tsmiKolaje.Name = "tsmiKolaje";
-            tsmiKolaje.Click += tsmiKolaje_Click;
             // 
             // toolStripSeparator15
             // 
@@ -493,37 +473,31 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiTPhysical, "tsmiTPhysical");
             tsmiTPhysical.Name = "tsmiTPhysical";
-            tsmiTPhysical.Click += tsmiTPhysical_Click;
             // 
             // tsmiTLogical
             // 
             resources.ApplyResources(tsmiTLogical, "tsmiTLogical");
             tsmiTLogical.Name = "tsmiTLogical";
-            tsmiTLogical.Click += tsmiTLogical_Click;
             // 
             // tsmiTCatalog
             // 
             resources.ApplyResources(tsmiTCatalog, "tsmiTCatalog");
             tsmiTCatalog.Name = "tsmiTCatalog";
-            tsmiTCatalog.Click += tsmiTCatalog_Click;
             // 
             // tsmiTabTab
             // 
             resources.ApplyResources(tsmiTabTab, "tsmiTabTab");
             tsmiTabTab.Name = "tsmiTabTab";
-            tsmiTabTab.Click += tsmiTabTab_Click;
             // 
             // tsmiTTexts
             // 
             resources.ApplyResources(tsmiTTexts, "tsmiTTexts");
             tsmiTTexts.Name = "tsmiTTexts";
-            tsmiTTexts.Click += tsmiTTexts_Click;
             // 
             // tsmiTFonts
             // 
             resources.ApplyResources(tsmiTFonts, "tsmiTFonts");
             tsmiTFonts.Name = "tsmiTFonts";
-            tsmiTFonts.Click += tsmiTFonts_Click;
             // 
             // toolStripSeparator17
             // 
@@ -534,44 +508,37 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiTabTabEditor, "tsmiTabTabEditor");
             tsmiTabTabEditor.Name = "tsmiTabTabEditor";
-            tsmiTabTabEditor.Click += tsmiTabTabEditor_Click;
             // 
             // tsmiGlobalSettings
             // 
             tsmiGlobalSettings.DropDownItems.AddRange(new ToolStripItem[] { tsmiGrafikony, tsmiLanguages, tsmiMeskania, tsmiTypyVlakov, tsmiAudio });
             resources.ApplyResources(tsmiGlobalSettings, "tsmiGlobalSettings");
             tsmiGlobalSettings.Name = "tsmiGlobalSettings";
-            tsmiGlobalSettings.Click += tsmiGlobalSettings_Click;
             // 
             // tsmiGrafikony
             // 
             resources.ApplyResources(tsmiGrafikony, "tsmiGrafikony");
             tsmiGrafikony.Name = "tsmiGrafikony";
-            tsmiGrafikony.Click += tsmiGrafikony_Click;
             // 
             // tsmiLanguages
             // 
             resources.ApplyResources(tsmiLanguages, "tsmiLanguages");
             tsmiLanguages.Name = "tsmiLanguages";
-            tsmiLanguages.Click += tsmiLanguages_Click;
             // 
             // tsmiMeskania
             // 
             resources.ApplyResources(tsmiMeskania, "tsmiMeskania");
             tsmiMeskania.Name = "tsmiMeskania";
-            tsmiMeskania.Click += tsmiMeskania_Click;
             // 
             // tsmiTypyVlakov
             // 
             resources.ApplyResources(tsmiTypyVlakov, "tsmiTypyVlakov");
             tsmiTypyVlakov.Name = "tsmiTypyVlakov";
-            tsmiTypyVlakov.Click += tsmiTypyVlakov_Click;
             // 
             // tsmiAudio
             // 
             resources.ApplyResources(tsmiAudio, "tsmiAudio");
             tsmiAudio.Name = "tsmiAudio";
-            tsmiAudio.Click += tsmiAudio_Click;
             // 
             // toolStripSeparator5
             // 
@@ -582,7 +549,6 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiAppSettings, "tsmiAppSettings");
             tsmiAppSettings.Name = "tsmiAppSettings";
-            tsmiAppSettings.Click += tsmiAppSettings_Click;
             // 
             // tsmiTools
             // 
@@ -594,13 +560,11 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiDatObm, "tsmiDatObm");
             tsmiDatObm.Name = "tsmiDatObm";
-            tsmiDatObm.Click += tsmiDatObm_Click;
             // 
             // tsmiStateDgm
             // 
             resources.ApplyResources(tsmiStateDgm, "tsmiStateDgm");
             tsmiStateDgm.Name = "tsmiStateDgm";
-            tsmiStateDgm.Click += tsmiStateDgm_Click;
             // 
             // tsmiRun
             // 
@@ -612,7 +576,6 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmimStartupSettings, "tsmimStartupSettings");
             tsmimStartupSettings.Name = "tsmimStartupSettings";
-            tsmimStartupSettings.Click += tsmimStartupSettings_Click;
             // 
             // toolStripSeparator9
             // 
@@ -623,25 +586,21 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmimStartINISS, "tsmimStartINISS");
             tsmimStartINISS.Name = "tsmimStartINISS";
-            tsmimStartINISS.Click += tsmimStartINISS_Click;
             // 
             // tsmimShutdownINISS
             // 
             resources.ApplyResources(tsmimShutdownINISS, "tsmimShutdownINISS");
             tsmimShutdownINISS.Name = "tsmimShutdownINISS";
-            tsmimShutdownINISS.Click += tsmimShutdownINISS_Click;
             // 
             // tsmimKillINISS
             // 
             resources.ApplyResources(tsmimKillINISS, "tsmimKillINISS");
             tsmimKillINISS.Name = "tsmimKillINISS";
-            tsmimKillINISS.Click += tsmimKillINISS_Click;
             // 
             // tsmimRestartINISS
             // 
             resources.ApplyResources(tsmimRestartINISS, "tsmimRestartINISS");
             tsmimRestartINISS.Name = "tsmimRestartINISS";
-            tsmimRestartINISS.Click += tsmimRestartINISS_Click;
             // 
             // toolStripSeparator14
             // 
@@ -658,13 +617,11 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiInformation, "tsmiInformation");
             tsmiInformation.Name = "tsmiInformation";
-            tsmiInformation.Click += tsmiInformation_Click;
             // 
             // tsmiChangelog
             // 
             resources.ApplyResources(tsmiChangelog, "tsmiChangelog");
             tsmiChangelog.Name = "tsmiChangelog";
-            tsmiChangelog.Click += tsmiChangelog_Click;
             // 
             // toolMenu
             // 
@@ -679,14 +636,12 @@ namespace GVDEditor.UI.Main
             tsbSave.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbSave, "tsbSave");
             tsbSave.Name = "tsbSave";
-            tsbSave.Click += tsbSave_Click;
             // 
             // tsbOpen
             // 
             tsbOpen.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbOpen, "tsbOpen");
             tsbOpen.Name = "tsbOpen";
-            tsbOpen.Click += tsbOpen_Click;
             // 
             // tsbImport
             // 
@@ -699,19 +654,16 @@ namespace GVDEditor.UI.Main
             // 
             tsmimImportData.Name = "tsmimImportData";
             resources.ApplyResources(tsmimImportData, "tsmimImportData");
-            tsmimImportData.Click += tsmimImportData_Click;
             // 
             // tsmimImportGVD
             // 
             tsmimImportGVD.Name = "tsmimImportGVD";
             resources.ApplyResources(tsmimImportGVD, "tsmimImportGVD");
-            tsmimImportGVD.Click += tsmimImportGVD_Click;
             // 
             // tsmimImportELIS
             // 
             tsmimImportELIS.Name = "tsmimImportELIS";
             resources.ApplyResources(tsmimImportELIS, "tsmimImportELIS");
-            tsmimImportELIS.Click += tsmimImportELIS_Click;
             // 
             // tssbRecentDirs
             // 
@@ -724,14 +676,12 @@ namespace GVDEditor.UI.Main
             tsbAnalyze.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbAnalyze, "tsbAnalyze");
             tsbAnalyze.Name = "tsbAnalyze";
-            tsbAnalyze.Click += tsbAnalyze_Click;
             // 
             // tsbAddGVD
             // 
             tsbAddGVD.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbAddGVD, "tsbAddGVD");
             tsbAddGVD.Name = "tsbAddGVD";
-            tsbAddGVD.Click += tsbAddGVD_Click;
             // 
             // toolStripSeparator12
             // 
@@ -743,28 +693,24 @@ namespace GVDEditor.UI.Main
             tsbAddTrain.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbAddTrain, "tsbAddTrain");
             tsbAddTrain.Name = "tsbAddTrain";
-            tsbAddTrain.Click += tsbAddTrain_Click;
             // 
             // tsbEditTrain
             // 
             tsbEditTrain.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbEditTrain, "tsbEditTrain");
             tsbEditTrain.Name = "tsbEditTrain";
-            tsbEditTrain.Click += tsbEditTrain_Click;
             // 
             // tsbDeleteTrain
             // 
             tsbDeleteTrain.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbDeleteTrain, "tsbDeleteTrain");
             tsbDeleteTrain.Name = "tsbDeleteTrain";
-            tsbDeleteTrain.Click += tsbDeleteTrain_Click;
             // 
             // tsbCopyTrain
             // 
             tsbCopyTrain.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbCopyTrain, "tsbCopyTrain");
             tsbCopyTrain.Name = "tsbCopyTrain";
-            tsbCopyTrain.Click += tsbCopyTrain_Click;
             // 
             // toolStripSeparator10
             // 
@@ -776,14 +722,12 @@ namespace GVDEditor.UI.Main
             tsbStanica.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbStanica, "tsbStanica");
             tsbStanica.Name = "tsbStanica";
-            tsbStanica.Click += tsbLocalSettings_Click;
             // 
             // tsbGlobalSettings
             // 
             tsbGlobalSettings.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbGlobalSettings, "tsbGlobalSettings");
             tsbGlobalSettings.Name = "tsbGlobalSettings";
-            tsbGlobalSettings.Click += tsbGlobalSettings_Click;
             // 
             // toolStripSeparator11
             // 
@@ -795,14 +739,12 @@ namespace GVDEditor.UI.Main
             tsbAppSettings.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbAppSettings, "tsbAppSettings");
             tsbAppSettings.Name = "tsbAppSettings";
-            tsbAppSettings.Click += tsbAppSettings_Click;
             // 
             // tsbInformation
             // 
             tsbInformation.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbInformation, "tsbInformation");
             tsbInformation.Name = "tsbInformation";
-            tsbInformation.Click += tsbInformation_Click;
             // 
             // toolStripSeparator13
             // 
@@ -849,13 +791,11 @@ namespace GVDEditor.UI.Main
             tssbStartINISS.DropDownItems.AddRange(new ToolStripItem[] { tsmiStartupSettings, toolStripSeparator8 });
             resources.ApplyResources(tssbStartINISS, "tssbStartINISS");
             tssbStartINISS.Name = "tssbStartINISS";
-            tssbStartINISS.ButtonClick += tssbStartINISS_ButtonClick;
             // 
             // tsmiStartupSettings
             // 
             resources.ApplyResources(tsmiStartupSettings, "tsmiStartupSettings");
             tsmiStartupSettings.Name = "tsmiStartupSettings";
-            tsmiStartupSettings.Click += tsmiStartupSettings_Click;
             // 
             // toolStripSeparator8
             // 
@@ -867,21 +807,18 @@ namespace GVDEditor.UI.Main
             tsbKillINISS.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbKillINISS, "tsbKillINISS");
             tsbKillINISS.Name = "tsbKillINISS";
-            tsbKillINISS.Click += tsbKillINISS_Click;
             // 
             // tsbShutdownINISS
             // 
             tsbShutdownINISS.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbShutdownINISS, "tsbShutdownINISS");
             tsbShutdownINISS.Name = "tsbShutdownINISS";
-            tsbShutdownINISS.Click += tsbShutdownINISS_Click;
             // 
             // tsbRestartINISS
             // 
             tsbRestartINISS.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbRestartINISS, "tsbRestartINISS");
             tsbRestartINISS.Name = "tsbRestartINISS";
-            tsbRestartINISS.Click += tsbRestartINISS_Click;
             // 
             // toolStripSeparator19
             // 
@@ -893,7 +830,6 @@ namespace GVDEditor.UI.Main
             tsbDatObm.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbDatObm, "tsbDatObm");
             tsbDatObm.Name = "tsbDatObm";
-            tsbDatObm.Click += tsbDatObm_Click;
             // 
             // dgvTrains
             // 
@@ -1210,10 +1146,7 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(dOpenELIS, "dOpenELIS");
             // 
-            // bWorkerELIS
             // 
-            bWorkerELIS.DoWork += bWorkerELIS_DoWork;
-            bWorkerELIS.RunWorkerCompleted += bWorkerELIS_RunWorkerCompleted;
             // 
             // statusStrip
             // 
@@ -2137,7 +2070,6 @@ namespace GVDEditor.UI.Main
         private ToolStripLabel toolStripLabel1;
         private ToolStripLabel toolStripLabel2;
         private ToolStripMenuItem tsmiRecent;
-        private BackgroundWorker backgroundWorker1;
         private ToolStripMenuItem tsmiGlobalSettings;
         private DataGridView dgvTrains;
         private ToolStripMenuItem tsmimAddTrain;
@@ -2189,7 +2121,6 @@ namespace GVDEditor.UI.Main
         private ToolStripMenuItem tsmiImportELIS;
         private ToolStripMenuItem tsmimImportELIS;
         private OpenFileDialog dOpenELIS;
-        private BackgroundWorker bWorkerELIS;
         private StatusStrip statusStrip;
         private ToolStripStatusLabel tsslTrainCountWithVariants;
         private ToolStripStatusLabel toolStripStatusLabel1;

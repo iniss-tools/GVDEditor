@@ -1,0 +1,722 @@
+using System.Globalization;
+using GVDEditor.Domain.Analysis;
+using GVDEditor.Domain.Documents;
+using GVDEditor.Domain.Editing;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Formats;
+using GVDEditor.Integration;
+using GVDEditor.Properties;
+using GVDEditor.Services;
+using GVDEditor.UI.Dialogs;
+using GVDEditor.UI.EditTrain;
+using GVDEditor.UI.Import;
+using ToolsCore;
+using ToolsCore.Forms;
+using ToolsCore.Tools;
+using ToolsCore.XML;
+using AppRegistry = ToolsCore.Tools.AppRegistry;
+
+namespace GVDEditor.UI.Main;
+
+public partial class FMain
+{
+    // ------------------------------------------------------------------ instalacia INISS
+
+    private void ShowOpenDir()
+    {
+        var dialog = new FolderBrowserDialog { Description = Resources.FMain_Vyberte_priecinok_s_INISS };
+        if (dialog.ShowDialog(this) == DialogResult.Cancel)
+            return;
+
+        OpenInstallation(dialog.SelectedPath);
+    }
+
+    private void RecentDirsClick(object? sender, EventArgs e)
+    {
+        var menuItem = (ToolStripMenuItem)sender!;
+        OpenRecentProject(menuItem.Text!);
+    }
+
+    private void OpenRecentProject(string fullPath) => OpenInstallation(fullPath);
+
+    /// <summary>
+    /// Otvori instalaciu INISS v priecinku <paramref name="path" /> - zavrie otvoreny grafikon (neulozene zmeny
+    /// ponukne ulozit) a nacita zoznam grafikonov.
+    /// </summary>
+    private void OpenInstallation(string path)
+    {
+        if (!ConfirmSaveChanges())
+            return;
+
+        CloseGrafikon();
+        _installationOpen = false;
+        _previousSelectedGVD = null;
+
+        try
+        {
+            GlobData.PrepareGlobalData(path);
+        }
+        catch (Exception e) when (CatchErrors)
+        {
+            // instalacia sa nacitala len z casti - okno sa vrati do stavu bez otvorenej instalacie
+            ShowException(e);
+            ClearGrafikonLists();
+            UpdateCommandStates();
+            return;
+        }
+
+        if (InitializeDataList())
+            InitializeGUI();
+        else
+            UpdateCommandStates();
+    }
+
+    private void ClearGrafikonLists()
+    {
+        WithoutSelectionEvents(() =>
+        {
+            _gvdDirs.Clear();
+            ObdobiaList.Clear();
+            Stanice.Clear();
+        });
+        Text = Application.ProductName;
+    }
+
+    private static bool InitializeDataList()
+    {
+        try
+        {
+            var stanice = new HashSet<string>();
+            var obdobiaList = new List<GVDDirectory>();
+            var dirsInData = DirListFile.Read(GlobData.DataDir);
+            foreach (var dir in dirsInData)
+            {
+                try
+                {
+                    var gvd = InfoGvdFile.Read(dir.FullPath);
+                    stanice.Add(gvd.ThisStation.Name);
+                    obdobiaList.Add(new GVDDirectory(dir, gvd));
+                }
+                catch (Exception e) when (CatchErrors)
+                {
+                    ShowException(e);
+                }
+            }
+
+            Stanice.Clear();
+            foreach (var st in stanice) Stanice.Add(st);
+
+            ObdobiaList.Clear();
+            foreach (var obd in obdobiaList) ObdobiaList.Add(obd);
+        }
+        catch (DirectoryNotFoundException)
+        {
+            Utils.ShowError(Resources.FMain_Priečinok_neobsahuje_všetky_potrebné_dáta);
+            return false;
+        }
+
+        AppRegistry.SetUsageOfProject(GlobData.INISSDir);
+        AppRegistry.SetLastProject(GlobData.INISSDir);
+        return true;
+    }
+
+    private void InitializeGUI()
+    {
+        _installationOpen = true;
+
+        //vlozit stanice a obdobia do combo boxov v tool stripe
+        _gvdDirs.Clear();
+        _gvdDirs.AddRange(ObdobiaList);
+
+        //premenovat form podla aktualne otvoreneho priecinka
+        Text = Application.ProductName + @" - " + GlobData.INISSDir;
+        DataSaved = true;
+        FillInissPrograms();
+        UpdateCommandStates();
+
+        //otvoreny projekt sa presunul na zaciatok zoznamu poslednych projektov
+        SetRecentProjects();
+
+        // vyber prveho obdobia nacita jeho grafikon
+        tscbStanica.ComboBox.SelectedItem = null;
+        tscbObdobie.ComboBox.SelectedItem = null;
+        tscbStanica.ComboBox.SelectedItem = Stanice.FirstOrDefault();
+        tscbObdobie.ComboBox.SelectedItem = ObdobiaList.FirstOrDefault();
+    }
+
+    /// <summary>
+    /// Naplní menu naposledy otvorenými projektmi zoradenými od naposledy otvoreného.
+    /// </summary>
+    private void SetRecentProjects()
+    {
+        tsmiRecent.DropDownItems.Clear();
+        tssbRecentDirs.DropDownItems.Clear();
+
+        var recentDirs = AppRegistry.GetOpenedProjects();
+
+        foreach (var dir in recentDirs)
+        {
+            var itemA = new ToolStripMenuItem(dir.Path);
+            var itemB = new ToolStripMenuItem(dir.Path);
+
+            itemA.Click += RecentDirsClick;
+            itemB.Click += RecentDirsClick;
+            itemA.ApplyThemeAndFont();
+            itemB.ApplyThemeAndFont();
+            tsmiRecent.DropDownItems.Add(itemA);
+            tssbRecentDirs.DropDownItems.Add(itemB);
+        }
+
+        var enabled = recentDirs.Length != 0 && recentDirs[0].Path != "";
+        tsmiRecent.Enabled = enabled;
+        tssbRecentDirs.Enabled = enabled;
+    }
+
+    // ------------------------------------------------------------------ vyber a nacitanie grafikonu
+
+    /// <summary>
+    /// Zmeni vyber stanice a obdobia bez nacitania grafikonu (bez udalosti SelectedIndexChanged).
+    /// </summary>
+    private void WithoutSelectionEvents(Action change)
+    {
+        tscbStanica.SelectedIndexChanged -= tscbStanica_SelectedIndexChanged;
+        tscbObdobie.SelectedIndexChanged -= tscbObdobie_SelectedIndexChanged;
+        try
+        {
+            change();
+        }
+        finally
+        {
+            tscbStanica.SelectedIndexChanged += tscbStanica_SelectedIndexChanged;
+            tscbObdobie.SelectedIndexChanged += tscbObdobie_SelectedIndexChanged;
+        }
+    }
+
+    private void tscbStanica_SelectedIndexChanged(object? sender, EventArgs e)
+    {
+        if (tscbStanica.ComboBox.SelectedItem != null)
+        {
+            var dirs = new List<GVDDirectory>();
+            var stanica = tscbStanica.ComboBox.SelectedItem.ToString();
+            foreach (var gvdDir in _gvdDirs)
+                if (stanica == gvdDir.GVD.ThisStation.Name)
+                    dirs.Add(gvdDir);
+
+            ObdobiaList.Clear();
+
+            foreach (var dir in dirs) ObdobiaList.Add(dir);
+
+            if (dirs.Count != 0 && _newDir == null)
+            {
+                tscbObdobie.ComboBox.SelectedItem = null;
+                tscbObdobie.ComboBox.SelectedIndex = 0;
+            }
+            else if (_newDir != null)
+            {
+                tscbObdobie.ComboBox.SelectedItem = null;
+                tscbObdobie.ComboBox.SelectedItem = _newDir;
+            }
+
+            _previousSelectedGVD ??= (GVDDirectory?)tscbObdobie.ComboBox.SelectedItem;
+        }
+    }
+
+    private void tscbObdobie_SelectedIndexChanged(object? sender, EventArgs e)
+    {
+        if (_removingGVD)
+            return;
+
+        var dir = (GVDDirectory?)tscbObdobie.ComboBox.SelectedItem;
+
+        if (dir == null) return;
+
+        if (!ConfirmSaveChanges())
+        {
+            // zrusene alebo neulozene - ostava otvoreny povodny grafikon, vyber sa k nemu musi vratit
+            RestoreSelection(_previousSelectedGVD);
+            return;
+        }
+
+        _previousSelectedGVD = dir;
+
+        //ak sa jedna o novy grafikon
+        if (Equals(dir, _newDir))
+        {
+            // novy grafikon nesmie nic prevziat z predchadzajuceho (jazyky, priecinok pisiem...)
+            _prechod = true;
+            GlobData.OpenDocument(GrafikonDocument.CreateNew(GlobData.Languages));
+            BindDocument();
+            _prechod = false;
+
+            GrafikonRepository.CreateNew(dir.Dir.FullPath, dir.GVD, GrafikonContext.Current, GlobData.DataDir, _newDirTemplate);
+
+            _newDir = null;
+            _grafikonLoaded = true;
+            UpdateCommandStates();
+            return;
+        }
+
+        _prechod = true;
+        dgvTrains.DataSource = null;
+        GlobData.Trains.Clear();
+        _prechod = false;
+
+        //starsi zapis - viac grafikonov v jednom priecinku; po rozdeleni sa zoznam obdobi nacita znova a vyberie prvy novy
+        var blocks = AnalyzeBlocks(dir);
+        if (blocks.Count > 0 && MigrateBlocks(dir, blocks))
+            return;
+
+        // druhy blok by pri nacitani prepisal prvy a pri ulozeni by sa stary zapis znicil - radsej nenacitat nic
+        if (blocks.Count > 0)
+        {
+            Utils.ShowWarning(Resources.FMain_Grafikon_s_blokmi_nenacitany);
+            LoadWarnings.ShowSummary();
+            CloseGrafikon();
+            UpdateCommandStates();
+            return;
+        }
+
+        LoadGrafikon(dir);
+    }
+
+    /// <summary>
+    /// Nacita grafikon na pozadi. Okno medzitym ukazuje povodny grafikon a neda sa pouzivat; nacitany grafikon sa
+    /// otvori naraz, pri chybe sa okno vrati do stavu bez otvoreneho grafikonu.
+    /// </summary>
+    private async void LoadGrafikon(GVDDirectory dir)
+    {
+        if (_loading)
+            return;
+
+        _loading = true;
+        Enabled = false;
+        var waitForm = new FWait();
+        waitForm.Show(this);
+
+        GrafikonDocument? document = null;
+        Exception? error = null;
+        try
+        {
+            document = await GrafikonService.LoadAsync(dir, GlobData.Workspace);
+        }
+        catch (Exception e) when (CatchErrors)
+        {
+            error = e;
+        }
+        finally
+        {
+            // najprv povolit - zatvorenie okna vlastneneho zakazanym oknom by aktivovalo okno ineho programu
+            // a GVDEditor by sa pri naslednom hlaseni skryl za neho
+            Enabled = true;
+            waitForm.Close();
+            _loading = false;
+        }
+
+        if (error != null)
+            ShowException(error);
+
+        // preskocene riadky a chybajuce nahravky - pouzivatel by o nich mal vediet skor, nez grafikon ulozi
+        // pri chybe nacitania by inak ostali v zozname a ukazali sa pri dalsom grafikone
+        LoadWarnings.ShowSummary();
+
+        if (document != null)
+        {
+            // vsetky data grafikonu sa vymenia naraz - okno medzitym videlo povodny grafikon
+            GlobData.OpenDocument(document);
+            BindDocument();
+            _grafikonLoaded = true;
+        }
+        else
+        {
+            // nacitanie mohlo skoncit v polovici - nesmie ostat zmes dat stareho a noveho grafikonu
+            // globalne nastavenia a novy grafikon nepotrebuju otvoreny grafikon - napr. chybajuci typ vlaku sa da doplnit
+            // a grafikon potom nacitat znova
+            CloseGrafikon();
+        }
+
+        UpdateCommandStates();
+    }
+
+    /// <summary>
+    /// Zavrie otvoreny grafikon - zoznam vlakov ostane naviazany, len prazdny.
+    /// </summary>
+    private void CloseGrafikon()
+    {
+        _prechod = true;
+        GlobData.ClearGrafikonData();
+        _prechod = false;
+        _grafikonLoaded = false;
+    }
+
+    /// <summary>
+    /// Vrati vyber stanice a obdobia na grafikon <paramref name="dir" /> bez jeho opatovneho nacitania.
+    /// </summary>
+    private void RestoreSelection(GVDDirectory? dir)
+    {
+        if (dir == null) return;
+
+        WithoutSelectionEvents(() =>
+        {
+            var station = dir.GVD.ThisStation.Name;
+            if (!ObdobiaList.Contains(dir))
+            {
+                ObdobiaList.Clear();
+                foreach (var gvdDir in GVDSelectionLists.PeriodsOf(_gvdDirs, station)) ObdobiaList.Add(gvdDir);
+            }
+
+            tscbStanica.ComboBox.SelectedItem = station;
+            tscbObdobie.ComboBox.SelectedItem = dir;
+        });
+    }
+
+    private static List<GvdBlock> AnalyzeBlocks(GVDDirectory dir)
+    {
+        try
+        {
+            //grafikon priamo v DATA (bez DirList.TXT) sa presuva do vlastneho priecinka vzdy, aj ked ma jediny blok
+            return BlockMigrator.Analyze(GlobData.DataDir, dir.Dir.FullPath, dir.GVD, dir.Dir.DirName, dir.Dir.IsDataRoot);
+        }
+        catch (Exception e)
+        {
+            //chybny Export3A ohlasi az nacitanie grafikonu
+            Log.Exception(e);
+            return new List<GvdBlock>();
+        }
+    }
+
+    /// <summary>
+    /// Ponukne rozdelenie priecinka s blokmi <c>/stanica</c> do samostatnych priecinkov.
+    /// </summary>
+    /// <returns><see langword="true" />, ak sa grafikon rozdelil a zoznam obdobi bol nacitany znova.</returns>
+    private bool MigrateBlocks(GVDDirectory dir, List<GvdBlock> blocks)
+    {
+        var question = dir.Dir.IsDataRoot
+            ? string.Format(Resources.FMain_Grafikon_v_koreni_otazka, dir.Dir.FullPath, blocks.Count)
+            : string.Format(Resources.FMain_Grafikon_obsahuje_bloky_otazka, dir.Dir.FullPath, blocks.Count);
+        if (Utils.ShowQuestion(question) != DialogResult.Yes)
+            return false;
+
+        using var form = new FBlockMigration(dir.Dir.FullPath, blocks, dir.Dir.IsDataRoot);
+        if (form.ShowDialog(this) != DialogResult.OK)
+            return false;
+
+        List<DirList> newDirs;
+        try
+        {
+            newDirs = BlockMigrator.Migrate(GlobData.DataDir, dir.Dir.FullPath, dir.Dir, dir.GVD, blocks);
+        }
+        catch (Exception e)
+        {
+            Log.Exception(e);
+            Utils.ShowError(string.Format(Resources.FMain_Rozdelenie_zlyhalo, e.Message));
+            return false;
+        }
+
+        Utils.ShowInfo(string.Format(Resources.FMain_Grafikon_rozdeleny, string.Join(", ", newDirs.Select(d => d.DirName)), dir.Dir.FullPath));
+
+        GlobData.GVDDirs = DirListFile.Read(GlobData.DataDir);
+        DataSaved = true;
+        _previousSelectedGVD = null;
+
+        if (!InitializeDataList())
+            return true;
+
+        _gvdDirs.Clear();
+        _gvdDirs.AddRange(ObdobiaList);
+
+        var first = _gvdDirs.FirstOrDefault(o => o.Dir.DirName.Equals(newDirs[0].DirName, StringComparison.OrdinalIgnoreCase));
+
+        //zmena stanice by sama vybrala prve obdobie a spustila nacitanie - vybrat treba az prvy novy priecinok
+        _removingGVD = true;
+        tscbStanica.ComboBox.SelectedItem = null;
+        tscbStanica.ComboBox.SelectedItem = first?.GVD.ThisStation.Name ?? Stanice.FirstOrDefault();
+        tscbObdobie.ComboBox.SelectedItem = null;
+        _removingGVD = false;
+
+        tscbObdobie.ComboBox.SelectedItem = first ?? ObdobiaList.FirstOrDefault();
+        return true;
+    }
+
+    // ------------------------------------------------------------------ ulozenie
+
+    /// <summary>
+    /// Ak ma otvoreny grafikon neulozene zmeny, opyta sa na ich ulozenie.
+    /// </summary>
+    /// <returns><see langword="false" />, ak pouzivatel akciu zrusil alebo sa grafikon nepodarilo ulozit.</returns>
+    private bool ConfirmSaveChanges()
+    {
+        if (!HasInstallation || DataSaved)
+            return true;
+
+        switch (Utils.ShowQuestion(Resources.FMain_Save_Changes, MessageBoxButtons.YesNoCancel))
+        {
+            case DialogResult.Yes:
+                return DoSave();
+            case DialogResult.No:
+                DataSaved = true;
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    /// <returns><see langword="false" />, ak sa grafikon nepodarilo ulozit.</returns>
+    private bool DoSave()
+    {
+        // dva vlaky s rovnakym cislom, nazvom, typom a variantou by INISS nerozlisil (trasu by dostal len prvy)
+        NormalizeVariants();
+
+        try
+        {
+            GrafikonService.Save(_previousSelectedGVD!, GrafikonContext.Current, GlobData.Config.AutoTableText);
+        }
+        catch (Exception e) when (CatchErrors)
+        {
+            Utils.ShowError(GlobData.Config.DebugModeGUI == DebugMode.OnlyMessage ? e.Message : e.ToString());
+            return false;
+        }
+
+        DataSaved = true;
+        return true;
+    }
+
+    // ------------------------------------------------------------------ novy grafikon, import, analyza
+
+    private void ShowAnalyzeGVD()
+    {
+        var fan = new FAnalyzer((tscbObdobie.SelectedItem as GVDDirectory)!);
+        fan.ShowDialog();
+
+        // opravy menia grafikon v pamati - bez oznacenia by sa pri zatvoreni bez otazky stratili
+        if (fan.DataChanged)
+        {
+            DataSaved = false;
+            GlobData.Trains.ResetBindings();
+        }
+    }
+
+    private void ShowNewGVD()
+    {
+        var nsf = new FNewGrafikon(_gvdDirs);
+        if (nsf.ShowDialog() != DialogResult.OK)
+            return;
+
+        var gvd = nsf.GvdInfo;
+        _newDirTemplate = nsf.Template;
+
+        var dgyv = GrafikonService.Register(GlobData.Workspace, nsf.NewDir, gvd);
+        _gvdDirs.Add(dgyv);
+        _newDir = dgyv;
+
+        if (!Stanice.Contains(gvd.ThisStation.Name)) Stanice.Add(gvd.ThisStation.Name);
+
+        if ((string?)tscbStanica.ComboBox.SelectedItem == gvd.ThisStation.Name)
+            ObdobiaList.Add(dgyv);
+
+        UpdateCommandStates();
+
+        // vyber stanice vyberie novy grafikon a vytvori jeho subory
+        tscbStanica.ComboBox.SelectedItem = null;
+        tscbStanica.ComboBox.SelectedItem = gvd.ThisStation.Name;
+    }
+
+    private void ShowImportGVD()
+    {
+        var dialog = new FolderBrowserDialog { Description = Resources.FMain_Vyberte_priecinok_s_grafikonom };
+        if (dialog.ShowDialog(this) == DialogResult.Cancel)
+            return;
+
+        GVDDirectory dgyv;
+        try
+        {
+            dgyv = GrafikonService.Import(GlobData.Workspace, dialog.SelectedPath, _gvdDirs);
+        }
+        catch (Exception e)
+        {
+            Log.Exception(e);
+            Utils.ShowError(e.Message);
+            return;
+        }
+
+        _gvdDirs.Add(dgyv);
+        var station = dgyv.GVD.ThisStation.Name;
+        if (!Stanice.Contains(station)) Stanice.Add(station);
+        if ((string?)tscbStanica.ComboBox.SelectedItem == station) ObdobiaList.Add(dgyv);
+
+        Utils.ShowInfo(string.Format(Resources.FMain_Import_grafikonu_hotovy, dgyv.PeriodFormatted, dgyv.Dir.FullPath));
+
+        // prvy grafikon instalacie - hlavne okno ho rovno otvori a spristupni prikazy
+        if (_gvdDirs.Count == 1 && InitializeDataList())
+            InitializeGUI();
+        else
+            UpdateCommandStates();
+    }
+
+    private void ShowImportData()
+    {
+        var fid = new FImportData(((GVDDirectory)tscbObdobie.ComboBox.SelectedItem!).GVD);
+        if (fid.ShowDialog() != DialogResult.OK)
+            return;
+
+        // rovnako ako import z ELIS - pri nahradeni odstranit aj texty tabul odkazujuce na povodne vlaky
+        if (fid.ReplaceTrains)
+            RemoveAllTrains();
+
+        foreach (var train in fid.ImportedTrains) GlobData.Trains.Add(train);
+        NormalizeVariants();
+        GlobData.Trains.ResetBindings();
+        DataSaved = false;
+    }
+
+    /// <summary>
+    /// Import vlakov z ELIS: data sa nacitaju na pozadi, nepriradene stanice priradi pouzivatel a vlaky sa pridaju
+    /// do grafikonu.
+    /// </summary>
+    private async void ShowImportELIS()
+    {
+        var gvdDir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
+
+        var fimport = new FELISImport(gvdDir.GVD.ThisStation.Name, GlobData.Trains.Count);
+        if (fimport.ShowDialog() != DialogResult.OK)
+            return;
+
+        ElisImport? import = null;
+        Exception? error = null;
+        var waitForm = new FWait(Resources.FMain_Import_prebieha);
+        waitForm.Show(this);
+        Enabled = false;
+        try
+        {
+            import = await ElisImportService.LoadAsync(fimport.ResultOptions, gvdDir, GlobData.TrainsTypes, GlobData.Operators,
+                GlobData.Tracks.FirstOrDefault()!, GlobData.Trains);
+        }
+        catch (Exception e) when (CatchErrors)
+        {
+            error = e;
+        }
+        finally
+        {
+            Enabled = true;
+            waitForm.Close();
+        }
+
+        if (error != null)
+        {
+            ShowException(error);
+            return;
+        }
+
+        Cursor.Current = Cursors.AppStarting;
+
+        //stanice, ktore ELIS pomenuva inak, doriesi pouzivatel - a volba sa zapamata
+        if (import!.Unresolved.Count != 0 && !ResolveStations(import))
+            return;
+
+        List<Train> imported;
+        try
+        {
+            imported = ElisImportService.Convert(import);
+        }
+        catch (Exception exception)
+        {
+            Log.Exception(exception);
+            Utils.ShowError(exception.Message);
+            return;
+        }
+
+        var removed = 0;
+        if (import.ReplaceTrains)
+        {
+            removed = GlobData.Trains.Count;
+            RemoveAllTrains();
+        }
+
+        foreach (var train in imported) GlobData.Trains.Add(train);
+        NormalizeVariants();
+        GlobData.Trains.ResetBindings();
+
+        DataSaved = false;
+
+        Utils.ShowInfo(string.Format(Resources.FMain_Import_z_ELIS_dokončený, removed, imported.Count));
+    }
+
+    /// <summary>
+    /// Necha pouzivatela priradit stanice, ktore sa nepodarilo rozpoznat automaticky,
+    /// a priradenie ulozi do grafikonu.
+    /// </summary>
+    /// <returns><see langword="false" />, ak pouzivatel import zrusil.</returns>
+    private bool ResolveStations(ElisImport import)
+    {
+        var dialog = new FELISStations(import.Unresolved);
+        if (dialog.ShowDialog(this) != DialogResult.OK)
+            return false;
+
+        //ulozenie priradenia nie je kriticke - import moze pokracovat, len sa nabuduce spyta znova
+        if (ElisImportService.SaveStationMap(import, dialog.Result, GlobData.Config.Language) is { } error)
+            Log.Exception(error);
+
+        return true;
+    }
+
+    // ------------------------------------------------------------------ vlaky
+
+    private void ShowEditTrain(Train? train, int row, bool copy = false, EditTrainPage startPage = EditTrainPage.Vlak)
+    {
+        var gvdDir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
+        var eform = new FEditTrain(train, row, gvdDir.GVD, copy, gvdDir.Dir.FullPath, startPage);
+        var result = eform.ShowDialog();
+        if (result == DialogResult.OK)
+        {
+            if (train == null || row == GlobData.Trains.Count)
+                GlobData.Trains.Add(eform.ThisTrain!);
+            else
+                GlobData.Trains.ResetBindings();
+
+            // novy vlak, kopia alebo zmena cisla, nazvu ci typu - cisla variant prideli GVDEditor
+            NormalizeVariants();
+            DataSaved = false;
+        }
+    }
+
+    private void DoDeleteTrains()
+    {
+        if (dgvTrains.SelectedRows.Count > 0)
+        {
+            foreach (DataGridViewRow row in dgvTrains.SelectedRows)
+            {
+                if (!GlobData.Config.AutoTableText)
+                    DeleteTTexts((row.DataBoundItem as Train)!);
+
+                GlobData.Trains.RemoveAt(row.Index);
+            }
+
+            // varianta, ktora ostala sama, dostane -1
+            NormalizeVariants();
+            GlobData.Trains.ResetBindings();
+
+            DataSaved = false;
+        }
+    }
+
+    /// <summary>
+    /// Odstrani vsetky vlaky grafikonu aj texty tabul, ktore sa na ne odvolavaju.
+    /// </summary>
+    private void RemoveAllTrains()
+    {
+        if (!GlobData.Config.AutoTableText)
+            foreach (var train in GlobData.Trains)
+                DeleteTTexts(train);
+
+        _prechod = true;
+        GlobData.Trains.Clear();
+        _prechod = false;
+    }
+
+    private static void DeleteTTexts(Train vlak)
+    {
+        foreach (var tt in GlobData.TableTexts)
+            for (var i = tt.Trains.Count - 1; i >= 0; i--)
+                if (tt.Trains[i].Train == vlak)
+                    tt.Trains.RemoveAt(i);
+    }
+}

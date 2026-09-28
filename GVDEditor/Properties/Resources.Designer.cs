@@ -5499,5 +5499,419 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("FMain_Variant_Prekrytie", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nový grafikon.
+        /// </summary>
+        internal static string Cmd_New {
+            get {
+                return ResourceManager.GetString("Cmd_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Otvoriť inštaláciu.
+        /// </summary>
+        internal static string Cmd_Open {
+            get {
+                return ResourceManager.GetString("Cmd_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importovať grafikon.
+        /// </summary>
+        internal static string Cmd_ImportGvd {
+            get {
+                return ResourceManager.GetString("Cmd_ImportGvd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importovať dáta.
+        /// </summary>
+        internal static string Cmd_ImportData {
+            get {
+                return ResourceManager.GetString("Cmd_ImportData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importovať z ELIS.
+        /// </summary>
+        internal static string Cmd_ImportElis {
+            get {
+                return ResourceManager.GetString("Cmd_ImportElis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uložiť grafikon.
+        /// </summary>
+        internal static string Cmd_Save {
+            get {
+                return ResourceManager.GetString("Cmd_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analyzovať grafikon.
+        /// </summary>
+        internal static string Cmd_Analyze {
+            get {
+                return ResourceManager.GetString("Cmd_Analyze", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pridať vlak.
+        /// </summary>
+        internal static string Cmd_AddTrain {
+            get {
+                return ResourceManager.GetString("Cmd_AddTrain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upraviť vybraný vlak.
+        /// </summary>
+        internal static string Cmd_EditTrain {
+            get {
+                return ResourceManager.GetString("Cmd_EditTrain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odstrániť vybrané vlaky.
+        /// </summary>
+        internal static string Cmd_DeleteTrains {
+            get {
+                return ResourceManager.GetString("Cmd_DeleteTrains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duplikovať vybraný vlak.
+        /// </summary>
+        internal static string Cmd_DuplicateTrain {
+            get {
+                return ResourceManager.GetString("Cmd_DuplicateTrain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia.
+        /// </summary>
+        internal static string Cmd_LocalSettings {
+            get {
+                return ResourceManager.GetString("Cmd_LocalSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Globálne nastavenia.
+        /// </summary>
+        internal static string Cmd_GlobalSettings {
+            get {
+                return ResourceManager.GetString("Cmd_GlobalSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia programu.
+        /// </summary>
+        internal static string Cmd_AppSettings {
+            get {
+                return ResourceManager.GetString("Cmd_AppSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Globálne nastavenia – Grafikony.
+        /// </summary>
+        internal static string Cmd_GSGvds {
+            get {
+                return ResourceManager.GetString("Cmd_GSGvds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Globálne nastavenia – Jazyky.
+        /// </summary>
+        internal static string Cmd_GSLanguages {
+            get {
+                return ResourceManager.GetString("Cmd_GSLanguages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Globálne nastavenia – Meškania.
+        /// </summary>
+        internal static string Cmd_GSDelays {
+            get {
+                return ResourceManager.GetString("Cmd_GSDelays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Globálne nastavenia – Typy vlakov.
+        /// </summary>
+        internal static string Cmd_GSTrainTypes {
+            get {
+                return ResourceManager.GetString("Cmd_GSTrainTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Globálne nastavenia – Audio.
+        /// </summary>
+        internal static string Cmd_GSAudio {
+            get {
+                return ResourceManager.GetString("Cmd_GSAudio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Grafikon.
+        /// </summary>
+        internal static string Cmd_LSGvd {
+            get {
+                return ResourceManager.GetString("Cmd_LSGvd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Jazyky hlásení.
+        /// </summary>
+        internal static string Cmd_LSLanguages {
+            get {
+                return ResourceManager.GetString("Cmd_LSLanguages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Vlastné stanice.
+        /// </summary>
+        internal static string Cmd_LSStations {
+            get {
+                return ResourceManager.GetString("Cmd_LSStations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Dopravcovia.
+        /// </summary>
+        internal static string Cmd_LSOperators {
+            get {
+                return ResourceManager.GetString("Cmd_LSOperators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Nástupištia.
+        /// </summary>
+        internal static string Cmd_LSPlatforms {
+            get {
+                return ResourceManager.GetString("Cmd_LSPlatforms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Koľaje.
+        /// </summary>
+        internal static string Cmd_LSTracks {
+            get {
+                return ResourceManager.GetString("Cmd_LSTracks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Fyzické tabule.
+        /// </summary>
+        internal static string Cmd_LSPhysicalTables {
+            get {
+                return ResourceManager.GetString("Cmd_LSPhysicalTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Logické tabule.
+        /// </summary>
+        internal static string Cmd_LSLogicalTables {
+            get {
+                return ResourceManager.GetString("Cmd_LSLogicalTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Katalógové tabule.
+        /// </summary>
+        internal static string Cmd_LSCatalogTables {
+            get {
+                return ResourceManager.GetString("Cmd_LSCatalogTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – TabTab.
+        /// </summary>
+        internal static string Cmd_LSTabTab {
+            get {
+                return ResourceManager.GetString("Cmd_LSTabTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Texty na tabuliach.
+        /// </summary>
+        internal static string Cmd_LSTableTexts {
+            get {
+                return ResourceManager.GetString("Cmd_LSTableTexts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Písma.
+        /// </summary>
+        internal static string Cmd_LSTableFonts {
+            get {
+                return ResourceManager.GetString("Cmd_LSTableFonts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Editor TabTab.
+        /// </summary>
+        internal static string Cmd_LSTabTabEditor {
+            get {
+                return ResourceManager.GetString("Cmd_LSTabTabEditor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stavový diagram.
+        /// </summary>
+        internal static string Cmd_StateDgm {
+            get {
+                return ResourceManager.GetString("Cmd_StateDgm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spustiť INISS.
+        /// </summary>
+        internal static string Cmd_RunIniss {
+            get {
+                return ResourceManager.GetString("Cmd_RunIniss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ukončiť INISS.
+        /// </summary>
+        internal static string Cmd_ShutdownIniss {
+            get {
+                return ResourceManager.GetString("Cmd_ShutdownIniss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vynútiť ukončenie INISS.
+        /// </summary>
+        internal static string Cmd_KillIniss {
+            get {
+                return ResourceManager.GetString("Cmd_KillIniss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reštartovať INISS.
+        /// </summary>
+        internal static string Cmd_RestartIniss {
+            get {
+                return ResourceManager.GetString("Cmd_RestartIniss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia spúšťania INISS.
+        /// </summary>
+        internal static string Cmd_InissStartupSettings {
+            get {
+                return ResourceManager.GetString("Cmd_InissStartupSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informácie o programe.
+        /// </summary>
+        internal static string Cmd_InfoApp {
+            get {
+                return ResourceManager.GetString("Cmd_InfoApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poznámky k aktualizáciám.
+        /// </summary>
+        internal static string Cmd_UpdateNotes {
+            get {
+                return ResourceManager.GetString("Cmd_UpdateNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generátor dátumových obmedzení.
+        /// </summary>
+        internal static string Cmd_DateLimit {
+            get {
+                return ResourceManager.GetString("Cmd_DateLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prebieha importovanie údajov....
+        /// </summary>
+        internal static string FMain_Import_prebieha {
+            get {
+                return ResourceManager.GetString("FMain_Import_prebieha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte priečinok obsahujúci grafikon.
+        /// </summary>
+        internal static string FMain_Vyberte_priecinok_s_grafikonom {
+            get {
+                return ResourceManager.GetString("FMain_Vyberte_priecinok_s_grafikonom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte priečinok s INISS.exe.
+        /// </summary>
+        internal static string FMain_Vyberte_priecinok_s_INISS {
+            get {
+                return ResourceManager.GetString("FMain_Vyberte_priecinok_s_INISS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uloženie globálnych nastavení zlyhalo, žiadne zmeny sa neuložili. Súbory v priečinku DATA zostali v pôvodnom stave.  {0}.
+        /// </summary>
+        internal static string GlobalSettings_Ulozenie_zlyhalo_vratene {
+            get {
+                return ResourceManager.GetString("GlobalSettings_Ulozenie_zlyhalo_vratene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uloženie globálnych nastavení zlyhalo a pôvodný stav sa nepodarilo obnoviť. Súbory v priečinku DATA môžu byť nekonzistentné.  Záloha pôvodných súborov: {1}  {0}.
+        /// </summary>
+        internal static string GlobalSettings_Ulozenie_zlyhalo_neobnovene {
+            get {
+                return ResourceManager.GetString("GlobalSettings_Ulozenie_zlyhalo_neobnovene", resourceCulture);
+            }
+        }
 }
 }

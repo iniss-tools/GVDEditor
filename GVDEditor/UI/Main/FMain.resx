@@ -1559,9 +1559,6 @@
   <data name="&gt;&gt;toolMenu.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>375, 13</value>
-  </metadata>
   <data name="dgvTrains.ColumnHeadersHeight" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
@@ -1865,9 +1862,6 @@
   <data name="dOpenELIS.Title" xml:space="preserve">
     <value>Otvorte textový súbor z exportovanými údajmi z programu ELIS</value>
   </data>
-  <metadata name="bWorkerELIS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>985, 13</value>
-  </metadata>
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1106, 13</value>
   </metadata>
@@ -3580,12 +3574,6 @@
   <data name="&gt;&gt;tsbDatObm.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;backgroundWorker1.Name" xml:space="preserve">
-    <value>backgroundWorker1</value>
-  </data>
-  <data name="&gt;&gt;backgroundWorker1.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System.ComponentModel.EventBasedAsync, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="&gt;&gt;cisloDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>cisloDataGridViewTextBoxColumn</value>
   </data>
@@ -3765,12 +3753,6 @@
   </data>
   <data name="&gt;&gt;dOpenELIS.Type" xml:space="preserve">
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bWorkerELIS.Name" xml:space="preserve">
-    <value>bWorkerELIS</value>
-  </data>
-  <data name="&gt;&gt;bWorkerELIS.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System.ComponentModel.EventBasedAsync, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
     <value>toolStripStatusLabel1</value>

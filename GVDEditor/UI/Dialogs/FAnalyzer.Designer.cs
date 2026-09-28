@@ -47,7 +47,6 @@ namespace GVDEditor.UI.Dialogs
             this.FixType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.solutionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iFixBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bgWorkAnalyze = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -174,14 +173,6 @@ namespace GVDEditor.UI.Dialogs
             // 
             this.iFixBindingSource.DataSource = typeof(GVDEditor.Domain.Analysis.IProblem);
             // 
-            // bgWorkAnalyze
-            // 
-            this.bgWorkAnalyze.WorkerReportsProgress = true;
-            this.bgWorkAnalyze.WorkerSupportsCancellation = true;
-            this.bgWorkAnalyze.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkAnalyze_DoWork);
-            this.bgWorkAnalyze.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkAnalyze_ProgressChanged);
-            this.bgWorkAnalyze.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkAnalyze_RunWorkerCompleted);
-            // 
             // FAnalyzer
             // 
             this.AcceptButton = this.bOK;
@@ -215,7 +206,6 @@ namespace GVDEditor.UI.Dialogs
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataGridView dgvResults;
         private System.Windows.Forms.BindingSource iFixBindingSource;
-        private System.ComponentModel.BackgroundWorker bgWorkAnalyze;
         private System.Windows.Forms.DataGridViewImageColumn ProblemType;
         private System.Windows.Forms.DataGridViewTextBoxColumn textDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn FixType;

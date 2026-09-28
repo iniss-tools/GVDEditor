@@ -226,8 +226,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             {
                 Resize(form, 820, 360);
                 form.GetType().GetMethod("bAnalyze_Click", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(form, [form, EventArgs.Empty]);
-                var worker = (BackgroundWorker)Field(form, "bgWorkAnalyze");
-                Pump.Until(() => !worker.IsBusy);
+                Pump.Until(() => ((Task)Field(form, "_analysis")).IsCompleted);
                 Pump.Events();
                 var grid = (DataGridView)Field(form, "dgvResults");
                 grid.ClearSelection();

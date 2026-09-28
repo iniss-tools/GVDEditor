@@ -39,7 +39,7 @@ public record GVDEditorConfig() : ConfigBase
     /// Klávesové skratky pre akcie na pracovnej ploche programu.
     /// </summary>
     [XmlElement("Shortcuts")] 
-    public AppShortcuts Shortcuts { get; set; } = new();
+    public ShortcutMap Shortcuts { get; set; } = new();
 
     /// <summary>
     /// konfiguracia spustania INISSu z tohto programu.
@@ -74,7 +74,7 @@ public record GVDEditorConfig() : ConfigBase
         AutoTableText = original.AutoTableText;
         PlayerSoundsOffset = original.PlayerSoundsOffset;
         DesktopCols = original.DesktopCols with { };
-        Shortcuts = original.Shortcuts with { };
+        Shortcuts = original.Shortcuts.Clone();
         StartupINISSConfig = original.StartupINISSConfig with { };
         LocalSettingsWindow = original.LocalSettingsWindow?.Clone();
         GlobalSettingsWindow = original.GlobalSettingsWindow?.Clone();

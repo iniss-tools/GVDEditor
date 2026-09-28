@@ -1,6 +1,6 @@
 ﻿using GVDEditor.Properties;
 using ToolsCore.Tools;
-using GVDEditor.UI.Main;
+using GVDEditor.Integration;
 
 namespace GVDEditor.UI.Import;
 
@@ -9,7 +9,7 @@ namespace GVDEditor.UI.Import;
 /// </summary>
 public partial class FELISImport : Form
 {
-    internal FMain.SendData ResultOptions = null!;
+    internal ElisImportOptions ResultOptions = null!;
 
     private readonly int _existingTrainCount;
 
@@ -26,7 +26,7 @@ public partial class FELISImport : Form
         _existingTrainCount = existingTrainCount;
 
         lStation.Text = string.Format(Resources.FELISImport_Vlaky_sa_načítajú_pre_stanicu, stationName);
-        tbAppPath.Text = FMain.SendData.DefaultElisDirectory;
+        tbAppPath.Text = ElisImportOptions.DefaultElisDirectory;
 
         //ak grafikon este ziadne vlaky nema, nie je co nahradzat
         cbReplace.Enabled = existingTrainCount != 0;
@@ -70,7 +70,7 @@ public partial class FELISImport : Form
             }
         }
 
-        ResultOptions = new FMain.SendData
+        ResultOptions = new ElisImportOptions
         {
             AppDirectory = tbAppPath.Text,
             RegistrationNumber = tbReg.Text.Trim(),

@@ -14,7 +14,7 @@ public partial class FAppSettings : FAppSettingsBase
     private new GVDEditorConfig Config => (GVDEditorConfig)base.Config;
     private new Styles<GVDEditorStyle> Styles => (Styles<GVDEditorStyle>)base.Styles;
 
-    protected override IList<CmdShortcut> DefaultShortcuts => new AppShortcuts().GetValues();
+    protected override IList<CmdShortcut> DefaultShortcuts => ShortcutMap.DefaultRows(GvdCommands.All);
     
     protected override IList<DesktopColumn> DefaultColumns => new DesktopColumns().GetValues();
 
@@ -25,7 +25,7 @@ public partial class FAppSettings : FAppSettingsBase
     {
         InitializeComponent();
         
-        Shortcuts = new ExBindingList<CmdShortcut>(Config.Shortcuts.GetValues());
+        Shortcuts = new ExBindingList<CmdShortcut>(Config.Shortcuts.ToRows(GvdCommands.All));
         Columns = new ExBindingList<DesktopColumn>(Config.DesktopCols.GetValues());
 
         dgvShortcuts.DataSource = Shortcuts;
@@ -60,7 +60,7 @@ public partial class FAppSettings : FAppSettingsBase
     /// <inheritdoc />
     protected override bool OnSaving()
     {
-        Config.Shortcuts.SetValues(Shortcuts);
+        Config.Shortcuts.SetFromRows(Shortcuts);
         Config.DesktopCols.SetValues(Columns);
 
         Config.DateLimitLocate = (AppLanguage)cbDateLimitLanguage.SelectedValue!;
