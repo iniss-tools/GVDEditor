@@ -1,8 +1,9 @@
 using System.Globalization;
 using System.Reflection;
-using GVDEditor.Forms;
-using GVDEditor.Tools;
-using GVDEditor.XML;
+using GVDEditor.Config;
+using GVDEditor.Domain.Calendar;
+using GVDEditor.UI.Dialogs;
+using GVDEditor.UI.Main;
 using ToolsCore;
 using ToolsCore.Tools;
 

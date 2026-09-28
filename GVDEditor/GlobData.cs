@@ -1,7 +1,7 @@
 ﻿using ExControls;
-using GVDEditor.Entities;
-using GVDEditor.Tools;
-using GVDEditor.XML;
+using GVDEditor.Config;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Formats;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
 using ToolsCore.XML;
@@ -111,8 +111,8 @@ internal static class GlobData
         ClearGrafikonData();
 
         INISSDir = pathtoiniss;
-        DataDir = Utils.CombinePath(pathtoiniss, FileConsts.DIR_DATA)!;
-        RawBankDir = Utils.CombinePath(pathtoiniss, FileConsts.DIR_RAWBANK)!;
+        DataDir = Utils.CombinePath(pathtoiniss, GvdFileConsts.DIR_DATA)!;
+        RawBankDir = Utils.CombinePath(pathtoiniss, GvdFileConsts.DIR_RAWBANK)!;
         GVDDirs = TxtParser.ReadDirList();
 
         INISSExeFiles = new List<string>();

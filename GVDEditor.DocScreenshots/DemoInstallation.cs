@@ -1,7 +1,8 @@
 ﻿using System.Globalization;
 using System.Reflection;
-using GVDEditor.Entities;
-using GVDEditor.Tools;
+using GVDEditor.Domain.Analysis;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Formats;
 using ToolsCore.Entities;
 using ToolsCore.StateDgm;
 using ToolsCore.Tools;
@@ -83,7 +84,7 @@ internal static class DemoInstallation
         TxtParser.WriteZpozdeniDefault();
 
         // zvukový okruh stanice a testovací okruh TEST (sprístupní v INISSe tlačidlo Test/stop)
-        File.WriteAllLines(Path.Combine(dataDir, FileConsts.FILE_AUDIO),
+        File.WriteAllLines(Path.Combine(dataDir, GvdFileConsts.FILE_AUDIO),
         [
             "9900100,Dolné Mesto,Dolné Mesto,Hlásenie,",
             "TEST,Test,Test,TestHlas,"

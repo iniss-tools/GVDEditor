@@ -3,10 +3,19 @@ using System.Globalization;
 using System.Reflection;
 using System.Text;
 using ExControls;
-using GVDEditor.Controls;
-using GVDEditor.Entities;
-using GVDEditor.Forms;
-using GVDEditor.Tools;
+using GVDEditor.Config;
+using GVDEditor.Domain.Calendar;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Formats;
+using GVDEditor.Properties;
+using GVDEditor.UI.Controls;
+using GVDEditor.UI.Dialogs;
+using GVDEditor.UI.EditTrain;
+using GVDEditor.UI.Import;
+using GVDEditor.UI.Main;
+using GVDEditor.UI.Settings;
+using GVDEditor.UI.StateDgm;
+using GVDEditor.UI.TabTab;
 using ToolsCore.StateDgm;
 
 namespace GVDEditor.DocScreenshots;
@@ -74,7 +83,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
 
             // kópia rýchlika je jeho druhou variantou - skupina variant s prekrytím dní na stránke Platnosť
             Shot("uprava-vlaku/varianty", () => new FEditTrain(express, trains.Count, gvdDir.GVD, true, gvdDir.Dir.FullPath,
-                GVDEditor.Forms.EditTrain.EditTrainPage.Platnost), form => Resize(form, 960, 680));
+                GVDEditor.UI.EditTrain.EditTrainPage.Platnost), form => Resize(form, 960, 680));
 
             // skladanie radenia: vybraná druhá nahrávka „číslo“ a priečinok s vlastnosťami vozňov
             Shot("radenie/uprava-radenia", () => new FRadenie([.. express.Radenia[0].Sounds]), form =>
@@ -88,27 +97,27 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("lokalne-nastavenia", () => new FLocalSettings(gvdDir), form =>
             {
                 Resize(form, 980, 700);
-                Descendants(form).OfType<GVDEditor.Forms.Settings.PlatformsTracksPage>().Single().SelectFirstTrack();
+                Descendants(form).OfType<GVDEditor.UI.Settings.PlatformsTracksPage>().Single().SelectFirstTrack();
             }, tabs: true);
             // vypnuta anglictina - pod zoznamom upozornenie na vlaky, ktore ju maju zapnutu (okno sa zavrie bez OK)
             Shot("lokalne-nastavenia/jazyky-hlaseni-upozornenie",
-                () => new FLocalSettings(gvdDir, GVDEditor.Forms.Settings.LocalSettingsPage.JazykyHlaseni), form =>
+                () => new FLocalSettings(gvdDir, GVDEditor.UI.Settings.LocalSettingsPage.JazykyHlaseni), form =>
                 {
                     Resize(form, 980, 700);
-                    var page = Descendants(form).OfType<GVDEditor.Forms.Settings.GrafikonLanguagesPage>().Single();
+                    var page = Descendants(form).OfType<GVDEditor.UI.Settings.GrafikonLanguagesPage>().Single();
                     Descendants(page).OfType<CheckedListBox>().Single().SetItemChecked(1, false);
                     Pump.Events();
                 });
             Shot("globalne-nastavenia",() => new FGlobalSettings(FMain.ObdobiaList.ToList()), form => Resize(form, 900, 620), tabs: true);
 
             // chyba na stránke: dopravca bez názvu - okno sa zavrie bez OK, takže Zrušiť zmenu vráti
-            var errorForm = new FLocalSettings(gvdDir, GVDEditor.Forms.Settings.LocalSettingsPage.Dopravcovia);
+            var errorForm = new FLocalSettings(gvdDir, GVDEditor.UI.Settings.LocalSettingsPage.Dopravcovia);
             Shot("okna-nastaveni/chyba", errorForm, form =>
             {
                 Resize(form, 900, 560);
                 // druha chyba na inej stranke - v strome je vidno cervenu stranku (vybrana by ju prekryla)
                 var view = Descendants(form).OfType<ExOptionsView>().Single();
-                var stations = Descendants(form).OfType<GVDEditor.Forms.Settings.CustomStationsPage>().Single();
+                var stations = Descendants(form).OfType<GVDEditor.UI.Settings.CustomStationsPage>().Single();
                 var operatorsPanel = view.SelectedPanel;
                 view.SelectedPanel = (ExOptionsPanel)stations.Parent!;
                 Pump.Events();
@@ -118,7 +127,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 view.SelectedPanel = operatorsPanel;
                 Pump.Events();
 
-                var grid = Descendants(Descendants(form).OfType<GVDEditor.Forms.Settings.OperatorsPage>().Single())
+                var grid = Descendants(Descendants(form).OfType<GVDEditor.UI.Settings.OperatorsPage>().Single())
                     .OfType<DataGridView>().Single();
                 grid.Rows[1].Cells[1].Value = "";
                 grid.CurrentCell = grid.Rows[1].Cells[0];
@@ -171,7 +180,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             // stránka Spúšťanie INISS s argumentmi zadanými zaškrtnutím
             Shot("spustanie-iniss/nastavenia-spustania", () =>
             {
-                var config = GlobData.Config with { StartupINISSConfig = new GVDEditor.XML.StartupINISS { CmdArgs = "/Minimize /NoRestore" } };
+                var config = GlobData.Config with { StartupINISSConfig = new GVDEditor.Config.StartupINISS { CmdArgs = "/Minimize /NoRestore" } };
                 var form = new FAppSettings(config, GlobData.Styles);
                 form.PreselectMenuItem("pStartupIniss");
                 return form;
@@ -245,7 +254,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 var flags = BindingFlags.NonPublic | BindingFlags.Instance;
                 type.GetField("_train", flags)!.SetValue(form, express);
                 type.GetField("_dateLimit", flags)!.SetValue(form,
-                    new Tools.DateLimit(gvdInfo.StartValidTimeTable, gvdInfo.EndValidTimeTable, insertMarks: false));
+                    new DateLimit(gvdInfo.StartValidTimeTable, gvdInfo.EndValidTimeTable, insertMarks: false));
                 type.GetField("_textChanging", flags)!.SetValue(form, true);
                 ((TextBox)Field(form, "tbDateLimit")).Text = sampleLimit;
                 ((TextBox)Field(form, "tbOldDateLimit")).Text = express.DateLimitText;
@@ -277,7 +286,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("tabule/editor-tabtab-problemy", () => new FTabTab(smer, station), form =>
             {
                 Resize(form, 1100, 620);
-                var scintilla = ((Controls.MyScintilla)Field(form, "scText")).Scintilla;
+                var scintilla = ((MyScintilla)Field(form, "scText")).Scintilla;
                 scintilla.Text = smer.Text + "\r\nTyp(Typ_RR), \"R\" = #SWITCH";
                 form.GetType().GetMethod("ValidateDocument", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(form, null);
                 Pump.Events();
@@ -458,7 +467,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
         foreach (var control in Descendants(panel).Where(c => c.Visible && c.Name.Length > 0 && c.Width > 0))
         {
             if (control is not (ButtonBase or DataGridView or TextBoxBase or ComboBox or UpDownBase or TreeView or ListBox or Label
-                or GVDEditor.Controls.CatalogRuler or GVDEditor.Controls.LedPreview or Panel))
+                or GVDEditor.UI.Controls.CatalogRuler or GVDEditor.UI.Controls.LedPreview or Panel))
                 continue;
 
             var r = control.RectangleToScreen(control.ClientRectangle);

@@ -1,4 +1,4 @@
-﻿using GVDEditor.Entities;
+﻿using GVDEditor.Domain.Entities;
 
 namespace GVDEditor.DocScreenshots;
 

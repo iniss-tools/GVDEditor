@@ -39,7 +39,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<!-- ElisData.cs je zdieľaný medzi GVDEditor (tento proces) a ELISBridge (samostatný x86 proces) -->
-		<Compile Include="..\ELISBridge\ElisData.cs" Link="Tools\ElisData.cs" />
+		<Compile Include="..\ELISBridge\ElisData.cs" Link="Integration\ElisData.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<Content Include="gvd.ico" />
@@ -57,139 +57,139 @@
 		<ProjectReference Include="..\..\ToolsCore\ToolsCore\ToolsCore.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <EmbeddedResource Update="Forms\FColumnTypeSelect.cs.resx">
+	  <EmbeddedResource Update="UI\Import\FColumnTypeSelect.cs.resx">
 	    <DependentUpon>FColumnTypeSelect.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FAnalyzer.cs.resx">
+	  <EmbeddedResource Update="UI\Dialogs\FAnalyzer.cs.resx">
 	    <DependentUpon>FAnalyzer.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FEditTrain.cs.resx">
+	  <EmbeddedResource Update="UI\EditTrain\FEditTrain.cs.resx">
 	    <DependentUpon>FEditTrain.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FELISImport.cs.resx">
+	  <EmbeddedResource Update="UI\Import\FELISImport.cs.resx">
 	    <DependentUpon>FELISImport.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FELISStations.cs.resx">
+	  <EmbeddedResource Update="UI\Import\FELISStations.cs.resx">
 	    <DependentUpon>FELISStations.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FGlobalSettings.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\FGlobalSettings.cs.resx">
 	    <DependentUpon>FGlobalSettings.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FImportData.cs.resx">
+	  <EmbeddedResource Update="UI\Import\FImportData.cs.resx">
 	    <DependentUpon>FImportData.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FLocalSettings.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\FLocalSettings.cs.resx">
 	    <DependentUpon>FLocalSettings.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FMain.cs.resx">
+	  <EmbeddedResource Update="UI\Main\FMain.cs.resx">
 	    <DependentUpon>FMain.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FNewGrafikon.cs.resx">
+	  <EmbeddedResource Update="UI\Dialogs\FNewGrafikon.cs.resx">
 	    <DependentUpon>FNewGrafikon.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FRadenie.cs.resx">
+	  <EmbeddedResource Update="UI\EditTrain\FRadenie.cs.resx">
 	    <DependentUpon>FRadenie.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FTableColumnOrder.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\FTableColumnOrder.cs.resx">
 	    <DependentUpon>FTableColumnOrder.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FTabTab.cs.resx">
+	  <EmbeddedResource Update="UI\TabTab\FTabTab.cs.resx">
 	    <DependentUpon>FTabTab.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FWait.cs.resx">
+	  <EmbeddedResource Update="UI\Dialogs\FWait.cs.resx">
 	    <DependentUpon>FWait.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FStateDgm.cs.resx">
+	  <EmbeddedResource Update="UI\StateDgm\FStateDgm.cs.resx">
 	    <DependentUpon>FStateDgm.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FStateDgmItem.cs.resx">
+	  <EmbeddedResource Update="UI\StateDgm\FStateDgmItem.cs.resx">
 	    <DependentUpon>FStateDgmItem.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FTabTabPreview.cs.resx">
+	  <EmbeddedResource Update="UI\TabTab\FTabTabPreview.cs.resx">
 	    <DependentUpon>FTabTabPreview.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FBlockMigration.cs.resx">
+	  <EmbeddedResource Update="UI\Dialogs\FBlockMigration.cs.resx">
 	    <DependentUpon>FBlockMigration.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\OperatorsPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\OperatorsPage.cs.resx">
 	    <DependentUpon>OperatorsPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\CustomStationsPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\CustomStationsPage.cs.resx">
 	    <DependentUpon>CustomStationsPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\DelaysPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\DelaysPage.cs.resx">
 	    <DependentUpon>DelaysPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\GrafikonLanguagesPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\GrafikonLanguagesPage.cs.resx">
 	    <DependentUpon>GrafikonLanguagesPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\LanguagesPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\LanguagesPage.cs.resx">
 	    <DependentUpon>LanguagesPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\FontsPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\FontsPage.cs.resx">
 	    <DependentUpon>FontsPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FTableFontPicker.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\FTableFontPicker.cs.resx">
 	    <DependentUpon>FTableFontPicker.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Controls\TableFontPicker.cs.resx">
+	  <EmbeddedResource Update="UI\Controls\TableFontPicker.cs.resx">
 	    <DependentUpon>TableFontPicker.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\TrainTypesPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\TrainTypesPage.cs.resx">
 	    <DependentUpon>TrainTypesPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\EditTrain\TrainBasicsPage.cs.resx">
+	  <EmbeddedResource Update="UI\EditTrain\TrainBasicsPage.cs.resx">
 	    <DependentUpon>TrainBasicsPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\EditTrain\TrainValidityPage.cs.resx">
+	  <EmbeddedResource Update="UI\EditTrain\TrainValidityPage.cs.resx">
 	    <DependentUpon>TrainValidityPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\EditTrain\TrainLanguagesPage.cs.resx">
+	  <EmbeddedResource Update="UI\EditTrain\TrainLanguagesPage.cs.resx">
 	    <DependentUpon>TrainLanguagesPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\EditTrain\RouteEditor.cs.resx">
+	  <EmbeddedResource Update="UI\EditTrain\RouteEditor.cs.resx">
 	    <DependentUpon>RouteEditor.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\EditTrain\TrainRoutePage.cs.resx">
+	  <EmbeddedResource Update="UI\EditTrain\TrainRoutePage.cs.resx">
 	    <DependentUpon>TrainRoutePage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\EditTrain\TrainDodatkyPage.cs.resx">
+	  <EmbeddedResource Update="UI\EditTrain\TrainDodatkyPage.cs.resx">
 	    <DependentUpon>TrainDodatkyPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\EditTrain\TrainRadeniePage.cs.resx">
+	  <EmbeddedResource Update="UI\EditTrain\TrainRadeniePage.cs.resx">
 	    <DependentUpon>TrainRadeniePage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\PlatformsTracksPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\PlatformsTracksPage.cs.resx">
 	    <DependentUpon>PlatformsTracksPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\GrafikonPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\GrafikonPage.cs.resx">
 	    <DependentUpon>GrafikonPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\StateDgmPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\StateDgmPage.cs.resx">
 	    <DependentUpon>StateDgmPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\GrafikonyPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\GrafikonyPage.cs.resx">
 	    <DependentUpon>GrafikonyPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\PhysicalTablesPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\PhysicalTablesPage.cs.resx">
 	    <DependentUpon>PhysicalTablesPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\TableTextsPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\TableTextsPage.cs.resx">
 	    <DependentUpon>TableTextsPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\LogicalTablesPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\LogicalTablesPage.cs.resx">
 	    <DependentUpon>LogicalTablesPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\CatalogTablesPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\CatalogTablesPage.cs.resx">
 	    <DependentUpon>CatalogTablesPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\TabTabPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\TabTabPage.cs.resx">
 	    <DependentUpon>TabTabPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\Settings\AudioPage.cs.resx">
+	  <EmbeddedResource Update="UI\Settings\AudioPage.cs.resx">
 	    <DependentUpon>AudioPage.cs</DependentUpon>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Forms\FStateDgmCalendar.cs.resx">
+	  <EmbeddedResource Update="UI\StateDgm\FStateDgmCalendar.cs.resx">
 	    <DependentUpon>FStateDgmCalendar.cs</DependentUpon>
 	  </EmbeddedResource>
 	</ItemGroup>

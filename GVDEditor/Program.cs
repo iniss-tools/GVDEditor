@@ -1,5 +1,5 @@
-using GVDEditor.Forms;
-using GVDEditor.Tools;
+using GVDEditor.Domain.Calendar;
+using GVDEditor.UI.Main;
 using ToolsCore;
 using ToolsCore.XML;
 
