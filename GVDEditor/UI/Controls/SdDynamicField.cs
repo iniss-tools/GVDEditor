@@ -18,11 +18,13 @@ internal sealed class SdDynamicField : UserControl
     private bool _isExpr;
     private readonly ErrorProvider _errors = new() { BlinkStyle = ErrorBlinkStyle.NeverBlink };
     private readonly ExprContext _context;
+    private readonly SdEditorContext _editors;
     private readonly bool _nullWhenZero;
     private bool _loading;
 
-    private SdDynamicField(ExComboBox? combo, ExNumericUpDown? number, ExprContext context, bool nullWhenZero)
+    private SdDynamicField(SdEditorContext editors, ExComboBox? combo, ExNumericUpDown? number, ExprContext context, bool nullWhenZero)
     {
+        _editors = editors;
         _combo = combo;
         _number = number;
         _context = context;
@@ -31,7 +33,7 @@ internal sealed class SdDynamicField : UserControl
 
         // [ zoznam / cislo / vyraz (jeden z nich viditelny) ][ ƒ ]
         var basic = (Control?)combo ?? number!;
-        _expr = new ExTextBox { Visible = false, HintText = Resources.FStateDgm_VyrazTip, Font = GlobData.UsingStyle.TabTabEditorScheme.Font };
+        _expr = new ExTextBox { Visible = false, HintText = Resources.FStateDgm_VyrazTip, Font = editors.ExprFont };
         _fx = new ExButton { Text = Resources.FStateDgm_Vyraz, Width = 28, Margin = new Padding(3), Font = new Font(Font.FontFamily, Font.Size, FontStyle.Italic | FontStyle.Bold) };
         new ToolTip().SetToolTip(_fx, Resources.FStateDgm_VyrazTip);
 
@@ -95,19 +97,19 @@ internal sealed class SdDynamicField : UserControl
     }
 
     /// <summary>Pole s vyberom z ciselnych hodnot (Value = null znamena kluc nenastaveny).</summary>
-    public static SdDynamicField Choice(ExprContext context, params SdEditorContext.Item[] items)
+    public static SdDynamicField Choice(SdEditorContext editors, ExprContext context, params SdEditorContext.Item[] items)
     {
         var cb = new ExComboBox { DropDownStyle = ComboBoxStyle.DropDownList };
         cb.Items.AddRange(items.Cast<object>().ToArray());
         cb.SelectedIndex = 0;
-        return new SdDynamicField(cb, null, context, false);
+        return new SdDynamicField(editors, cb, null, context, false);
     }
 
     /// <summary>Ciselne pole; <paramref name="nullWhenZero" /> - nula sa do suboru nezapisuje.</summary>
-    public static SdDynamicField Number(int min, int max, int step, bool nullWhenZero)
+    public static SdDynamicField Number(SdEditorContext editors, int min, int max, int step, bool nullWhenZero)
     {
         var n = new ExNumericUpDown { Minimum = min, Maximum = max, Increment = step, TextAlign = HorizontalAlignment.Right };
-        return new SdDynamicField(null, n, ExprContext.Condition, nullWhenZero);
+        return new SdDynamicField(editors, null, n, ExprContext.Condition, nullWhenZero);
     }
 
     /// <summary>Aktualna hodnota (null = kluc sa nezapise).</summary>
@@ -164,7 +166,7 @@ internal sealed class SdDynamicField : UserControl
 
     private void ValidateInput()
     {
-        var r = _isExpr ? SdEditorContext.Check(_expr.Text, _context, false) : null;
+        var r = _isExpr ? _editors.Check(_expr.Text, _context, false) : null;
         _errors.SetError(_expr, r?.Message ?? "");
     }
 }

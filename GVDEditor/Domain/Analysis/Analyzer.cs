@@ -1,10 +1,10 @@
 ﻿using System.Globalization;
+using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.Properties;
 using GVDEditor.TabTabEditor;
 using GVDEditor.UI.Settings;
-using GVDEditor.UI.TabTab;
 using ToolsCore.Iniss.Expressions;
 using ToolsCore.Iniss.TabTab;
 using ToolsCore.Iniss.Tools;
@@ -93,7 +93,7 @@ internal static class Analyzer
     /// Najde problemy grafikonu <paramref name="gvd" />. Bezi na pozadi - priebeh v percentach hlasi cez
     /// <paramref name="progress" />.
     /// </summary>
-    public static List<IProblem> FindProblems(GVDDirectory gvd, IProgress<int>? progress = null)
+    public static List<IProblem> FindProblems(GVDDirectory gvd, AnalysisScope scope, IProgress<int>? progress = null)
     {
         List<IProblem> problems = new();
 
@@ -101,43 +101,43 @@ internal static class Analyzer
         var now = DateTime.Now;
         if (gvd.GVD.EndValidData < DateOnly.FromDateTime(now))
         {
-            var problem = new GVDOutOfValidity(gvd);
+            var problem = new GVDOutOfValidity(gvd, scope);
             problems.Add(problem);
         }
 
         progress?.Report(5);
 
         //2. Check Empty TabTabs
-        foreach (var tab in GlobData.TabTabs)
+        foreach (var tab in scope.Document.TabTabs)
             if (string.IsNullOrEmpty(tab.Text))
             {
-                var problem = new EmptyTabTab(tab);
+                var problem = new EmptyTabTab(tab, scope);
                 problems.Add(problem);
             }
 
         progress?.Report(10);
 
         //3. Check using Catalog tables in TPhysic and in TableTextRealization AND Segments
-        foreach (var catalog in GlobData.TableCatalogs)
+        foreach (var catalog in scope.Document.TableCatalogs)
         {
             if (catalog.Segments.Count == 0)
             {
-                var problem = new TableWithoutSegments(catalog);
+                var problem = new TableWithoutSegments(catalog, scope);
                 problems.Add(problem);
             }
 
-            var unused = GlobData.TablePhysicals.All(physical => physical.TableCatalog != catalog);
+            var unused = scope.Document.TablePhysicals.All(physical => physical.TableCatalog != catalog);
 
             if (!unused) continue;
 
-            foreach (var tt in GlobData.TableTexts)
+            foreach (var tt in scope.Document.TableTexts)
             foreach (var realization in tt.Realizations)
                 if (realization.Table == catalog)
                     unused = false;
 
             if (unused)
             {
-                var problem = new UnusedTable(catalog);
+                var problem = new UnusedTable(catalog, scope);
                 problems.Add(problem);
             }
         }
@@ -145,10 +145,10 @@ internal static class Analyzer
         progress?.Report(25);
 
         //4. Check using Physic tables in Tlogical
-        foreach (var physical in GlobData.TablePhysicals)
+        foreach (var physical in scope.Document.TablePhysicals)
         {
             var unused = true;
-            foreach (var logical in GlobData.TableLogicals)
+            foreach (var logical in scope.Document.TableLogicals)
             {
                 foreach (var rec in logical.Records)
                 {
@@ -162,7 +162,7 @@ internal static class Analyzer
 
             if (unused)
             {
-                var problem = new UnusedTable(physical);
+                var problem = new UnusedTable(physical, scope);
                 problems.Add(problem);
             }
         }
@@ -170,10 +170,10 @@ internal static class Analyzer
         progress?.Report(50);
 
         //5. Check using TabTabs
-        foreach (var tab in GlobData.TabTabs)
+        foreach (var tab in scope.Document.TabTabs)
         {
             var unused = true;
-            foreach (var catalog in GlobData.TableCatalogs)
+            foreach (var catalog in scope.Document.TableCatalogs)
             {
                 foreach (var item in catalog.Items)
                     if (item.Tab1 == tab || item.Tab2 == tab)
@@ -187,36 +187,36 @@ internal static class Analyzer
 
             if (unused)
             {
-                var problem = new UnusedTabTab(tab);
+                var problem = new UnusedTabTab(tab, scope);
                 problems.Add(problem);
             }
         }
 
         //5b. Check TabTab rules and conditions (what INISS logs at load + GVDEditor warnings)
-        var symbols = new GvdExprSymbols();
-        foreach (var tab in GlobData.TabTabs)
+        var symbols = new GvdExprSymbols(scope.Workspace, scope.Document);
+        foreach (var tab in scope.Document.TabTabs)
         {
             if (string.IsNullOrEmpty(tab.Text)) continue;
             var result = TabTabValidator.Validate(tab.Text, symbols.OptionsFor(tab));
             if (result.Diagnostics.Any(d => d.Severity != ExprSeverity.Info))
-                problems.Add(new TabTabProblems(tab, result));
+                problems.Add(new TabTabProblems(tab, result, scope));
         }
 
         progress?.Report(75);
 
         //6. Check TTexts
-        for (var i = 0; i < GlobData.TableTexts.Count; i++)
+        for (var i = 0; i < scope.Document.TableTexts.Count; i++)
         {
-            var tableText = GlobData.TableTexts[i];
+            var tableText = scope.Document.TableTexts[i];
             if (tableText.Realizations.Count == 0)
             {
-                var problem = new TableTextWithoutRealization(tableText);
+                var problem = new TableTextWithoutRealization(tableText, scope);
                 problems.Add(problem);
             }
 
             if (tableText.Trains.Count == 0)
             {
-                var problem = new TableTextWithoutTrains(tableText);
+                var problem = new TableTextWithoutTrains(tableText, scope);
                 problems.Add(problem);
             }
         }
@@ -224,8 +224,8 @@ internal static class Analyzer
         progress?.Report(90);
 
         //7. Check Zpozdeni.DAT cache - INISS Zpozdeni.TXT necita, kym existuje .DAT (nekontroluje ani cas suborov)
-        var zpozdeniTxt = PathUtils.CombinePath(GlobData.DataDir, GvdFileConsts.FILE_ZPOZDENI)!;
-        var zpozdeniDat = PathUtils.CombinePath(GlobData.DataDir, GvdFileConsts.FILE_ZPOZDENI_DAT)!;
+        var zpozdeniTxt = PathUtils.CombinePath(scope.Workspace.DataDir, GvdFileConsts.FILE_ZPOZDENI)!;
+        var zpozdeniDat = PathUtils.CombinePath(scope.Workspace.DataDir, GvdFileConsts.FILE_ZPOZDENI_DAT)!;
         if (File.Exists(zpozdeniTxt) && File.Exists(zpozdeniDat) &&
             File.GetLastWriteTimeUtc(zpozdeniTxt) > File.GetLastWriteTimeUtc(zpozdeniDat))
         {
@@ -277,9 +277,12 @@ internal class StaleZpozdeniCache : IProblem
 
 internal class UnusedTable : IProblem
 {
+    private AnalysisScope Scope { get; }
+
     /// <summary>Initializes a new instance of the <see cref="UnusedTable" /> class.</summary>
-    public UnusedTable(ITable table)
+    public UnusedTable(ITable table, AnalysisScope scope)
     {
+        Scope = scope;
         Table = table;
     }
 
@@ -310,9 +313,9 @@ internal class UnusedTable : IProblem
     {
         return Table switch
         {
-            TableCatalog tc => GlobData.TableCatalogs.Remove(tc) ? FixResult.Done : FixResult.NotSolved,
-            TablePhysical tb => GlobData.TablePhysicals.Remove(tb) ? FixResult.Done : FixResult.NotSolved,
-            TableLogical tl => GlobData.TableLogicals.Remove(tl) ? FixResult.Done : FixResult.NotSolved,
+            TableCatalog tc => Scope.Document.TableCatalogs.Remove(tc) ? FixResult.Done : FixResult.NotSolved,
+            TablePhysical tb => Scope.Document.TablePhysicals.Remove(tb) ? FixResult.Done : FixResult.NotSolved,
+            TableLogical tl => Scope.Document.TableLogicals.Remove(tl) ? FixResult.Done : FixResult.NotSolved,
             _ => FixResult.NotSolved
         };
     }
@@ -320,9 +323,12 @@ internal class UnusedTable : IProblem
 
 internal class UnusedTabTab : IProblem
 {
+    private AnalysisScope Scope { get; }
+
     /// <summary>Initializes a new instance of the <see cref="UnusedTabTab" /> class.</summary>
-    public UnusedTabTab(TableTabTab table)
+    public UnusedTabTab(TableTabTab table, AnalysisScope scope)
     {
+        Scope = scope;
         TabTab = table;
     }
 
@@ -338,15 +344,18 @@ internal class UnusedTabTab : IProblem
 
     public FixResult FixProblem()
     {
-        return GlobData.TabTabs.Remove(TabTab) ? FixResult.Done : FixResult.NotSolved;
+        return Scope.Document.TabTabs.Remove(TabTab) ? FixResult.Done : FixResult.NotSolved;
     }
 }
 
 internal class TableWithoutSegments : IProblem
 {
+    private AnalysisScope Scope { get; }
+
     /// <summary>Initializes a new instance of the <see cref="TableWithoutSegments" /> class.</summary>
-    public TableWithoutSegments(TableCatalog table)
+    public TableWithoutSegments(TableCatalog table, AnalysisScope scope)
     {
+        Scope = scope;
         Table = table;
     }
 
@@ -363,7 +372,7 @@ internal class TableWithoutSegments : IProblem
     public FixResult FixProblem()
     {
         // riadky pribudnu s poctom zaznamov na stranke Katalogove tabule - okno sa otvori s touto tabulou
-        Program.MainForm.ShowLocalSettings(LocalSettingsPage.KatalogoveTabule, select: Table);
+        Scope.Host.ShowLocalSettings(LocalSettingsPage.KatalogoveTabule, select: Table);
 
         //Check if the problem was solved
         return Table.Segments.Count == 0 ? FixResult.NotSolved : FixResult.Done;
@@ -372,9 +381,12 @@ internal class TableWithoutSegments : IProblem
 
 internal class TableTextWithoutRealization : IProblem
 {
+    private AnalysisScope Scope { get; }
+
     /// <summary>Initializes a new instance of the <see cref="TableTextWithoutRealization" /> class.</summary>
-    public TableTextWithoutRealization(TableText text)
+    public TableTextWithoutRealization(TableText text, AnalysisScope scope)
     {
+        Scope = scope;
         TText = text;
     }
 
@@ -391,7 +403,7 @@ internal class TableTextWithoutRealization : IProblem
     public FixResult FixProblem()
     {
         // text sa upravuje na stranke Texty na tabuliach - okno sa otvori s tymto textom
-        Program.MainForm.ShowLocalSettings(LocalSettingsPage.Texty, select: TText);
+        Scope.Host.ShowLocalSettings(LocalSettingsPage.Texty, select: TText);
 
         //Check if the problem was solved
         return TText.Realizations.Count == 0 ? FixResult.NotSolved : FixResult.Done;
@@ -400,9 +412,12 @@ internal class TableTextWithoutRealization : IProblem
 
 internal class TableTextWithoutTrains : IProblem
 {
+    private AnalysisScope Scope { get; }
+
     /// <summary>Initializes a new instance of the <see cref="TableTextWithoutTrains" /> class.</summary>
-    public TableTextWithoutTrains(TableText text)
+    public TableTextWithoutTrains(TableText text, AnalysisScope scope)
     {
+        Scope = scope;
         TText = text;
     }
 
@@ -419,7 +434,7 @@ internal class TableTextWithoutTrains : IProblem
     public FixResult FixProblem()
     {
         // text sa upravuje na stranke Texty na tabuliach - okno sa otvori s tymto textom
-        Program.MainForm.ShowLocalSettings(LocalSettingsPage.Texty, select: TText);
+        Scope.Host.ShowLocalSettings(LocalSettingsPage.Texty, select: TText);
 
         //Check if the problem was solved
         return TText.Trains.Count == 0 ? FixResult.NotSolved : FixResult.Done;
@@ -428,9 +443,12 @@ internal class TableTextWithoutTrains : IProblem
 
 internal class EmptyTabTab : IProblem
 {
+    private AnalysisScope Scope { get; }
+
     /// <summary>Initializes a new instance of the <see cref="EmptyTabTab" /> class.</summary>
-    public EmptyTabTab(TableTabTab tabTab)
+    public EmptyTabTab(TableTabTab tabTab, AnalysisScope scope)
     {
+        Scope = scope;
         TabTab = tabTab;
     }
 
@@ -446,8 +464,7 @@ internal class EmptyTabTab : IProblem
 
     public FixResult FixProblem()
     {
-        var form = new FTabTab(TabTab);
-        form.ShowDialog();
+        Scope.Host.EditTabTab(TabTab);
 
         //Check if the problem was solved
         return string.IsNullOrEmpty(TabTab.Text) ? FixResult.NotSolved : FixResult.Done;
@@ -456,9 +473,12 @@ internal class EmptyTabTab : IProblem
 
 internal class TabTabProblems : IProblem
 {
+    private AnalysisScope Scope { get; }
+
     /// <summary>Initializes a new instance of the <see cref="TabTabProblems" /> class.</summary>
-    public TabTabProblems(TableTabTab tabTab, TabTabValidationResult result)
+    public TabTabProblems(TableTabTab tabTab, TabTabValidationResult result, AnalysisScope scope)
     {
+        Scope = scope;
         TabTab = tabTab;
         Result = result;
     }
@@ -487,19 +507,21 @@ internal class TabTabProblems : IProblem
 
     public FixResult FixProblem()
     {
-        var form = new FTabTab(TabTab);
-        form.ShowDialog();
+        Scope.Host.EditTabTab(TabTab);
 
-        var again = TabTabValidator.Validate(TabTab.Text, new GvdExprSymbols().OptionsFor(TabTab));
+        var again = TabTabValidator.Validate(TabTab.Text, new GvdExprSymbols(Scope.Workspace, Scope.Document).OptionsFor(TabTab));
         return again.Diagnostics.Any(d => d.Severity != ExprSeverity.Info) ? FixResult.NotSolved : FixResult.Done;
     }
 }
 
 internal class GVDOutOfValidity : IProblem
 {
+    private AnalysisScope Scope { get; }
+
     /// <summary>Initializes a new instance of the <see cref="GVDOutOfValidity" /> class.</summary>
-    public GVDOutOfValidity(GVDDirectory gvdDir)
+    public GVDOutOfValidity(GVDDirectory gvdDir, AnalysisScope scope)
     {
+        Scope = scope;
         GVDDir = gvdDir;
     }
 
@@ -516,7 +538,7 @@ internal class GVDOutOfValidity : IProblem
     public FixResult FixProblem()
     {
         // cez hlavne okno - po zmene obdobia obnovi vyber obdobia a oznaci grafikon ako neulozeny
-        Program.MainForm.ShowLocalSettings();
+        Scope.Host.ShowLocalSettings();
 
         //Check if the problem was solved
         return GVDDir.GVD.EndValidData < DateOnly.FromDateTime(DateTime.Now) ? FixResult.NotSolved : FixResult.Done;

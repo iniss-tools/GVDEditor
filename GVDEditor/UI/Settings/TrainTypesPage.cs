@@ -9,10 +9,15 @@ namespace GVDEditor.UI.Settings;
 /// <summary>
 /// Stranka Typy vlakov v okne Globalne nastavenia - zabudovane aj vlastne druhy (TrTypes.txt) v jednej tabulke
 /// s upravou priamo v bunkach. Druh urcuje kategoriu a tym farbu vlaku v zozname INISSu; vlastnym typom
-/// pridelí volne miesto (napr. R3) stranka sama. Zmeny idu rovno do <see cref="GlobData.TrainsTypes" />.
+/// pridelí volne miesto (napr. R3) stranka sama. Zmeny idu rovno do <see cref="_ctx.Workspace.TrainsTypes" />.
 /// </summary>
 public partial class TrainTypesPage : UserControl, ISettingsPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private const string BuiltinPrefix = "b:";
     private const string CustomPrefix = "c:";
 
@@ -67,20 +72,22 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     /// <summary>
     /// Naplni tabulku typmi vlakov - volat az po nastaveni temy okna.
     /// </summary>
+    /// <param name=\"context\">kontext editora</param>
     /// <param name="grafikony">vsetky grafikony instalacie (pre pocet vlakov kazdeho typu)</param>
     /// <param name="open">otvoreny grafikon - jeho vlaky sa beru z pamate</param>
-    public void LoadData(IEnumerable<GVDDirectory> grafikony, GVDDirectory? open)
+    internal void LoadData(EditorContext context, IEnumerable<GVDDirectory> grafikony, GVDDirectory? open)
     {
+        _ctx = context;
         _grid.CaptureColors();
         pSlots.MinimumSize = pSlots.Size = SlotsSize(pSlots.Font);
 
-        var counts = TrainTypeUsage.CountAll(grafikony, open, GlobData.Trains);
-        foreach (var type in GlobData.TrainsTypes)
+        var counts = TrainTypeUsage.CountAll(grafikony, open, _ctx.Document.Trains);
+        foreach (var type in _ctx.Workspace.TrainsTypes)
             _usage[type] = counts.TryGetValue(type.Key, out var list) ? list : [];
 
         _loading = true;
         dgv.Rows.Clear();
-        foreach (var type in GlobData.TrainsTypes)
+        foreach (var type in _ctx.Workspace.TrainsTypes)
             dgv.Rows[dgv.Rows.Add()].Tag = type;
         _loading = false;
 
@@ -144,10 +151,10 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     }
 
     // TrainType porovnava podla hodnot - riadok patri konkretnemu objektu
-    private static int IndexOf(TrainType type)
+    private int IndexOf(TrainType type)
     {
-        for (var i = 0; i < GlobData.TrainsTypes.Count; i++)
-            if (ReferenceEquals(GlobData.TrainsTypes[i], type))
+        for (var i = 0; i < _ctx.Workspace.TrainsTypes.Count; i++)
+            if (ReferenceEquals(_ctx.Workspace.TrainsTypes[i], type))
                 return i;
         return -1;
     }
@@ -158,19 +165,19 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     /// <summary>
     /// Ponuka druhov pre typ: skupiny vlastnych typov s volnym miestom a zabudovane druhy, ktore nema iny typ.
     /// </summary>
-    private static List<KindOption> KindOptions(TrainType type)
+    private List<KindOption> KindOptions(TrainType type)
     {
         var options = new List<KindOption>();
         var ownGroup = TrainTypeRules.GroupOf(type.CategoryTrain);
         foreach (var group in TrainTypeRules.CustomGroups)
         {
-            var free = TrainTypeRules.SlotsPerGroup - TrainTypeRules.CountInGroup(GlobData.TrainsTypes, group, type);
+            var free = TrainTypeRules.SlotsPerGroup - TrainTypeRules.CountInGroup(_ctx.Workspace.TrainsTypes, group, type);
             if (free > 0 || group == ownGroup)
                 options.Add(new KindOption(CustomPrefix + group, string.Format(CultureInfo.CurrentCulture,
                     Resources.TrainTypesPage_Vlastny, GroupName(group), group, Math.Max(0, free))));
         }
 
-        var taken = GlobData.TrainsTypes.Where(t => !ReferenceEquals(t, type)).Select(t => t.CategoryTrain).ToHashSet();
+        var taken = _ctx.Workspace.TrainsTypes.Where(t => !ReferenceEquals(t, type)).Select(t => t.CategoryTrain).ToHashSet();
         foreach (var builtin in TrainType.GetDefaultValues().Select(t => t.CategoryTrain))
             if (!taken.Contains(builtin) || builtin == type.CategoryTrain)
                 options.Add(new KindOption(BuiltinPrefix + builtin,
@@ -237,7 +244,7 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
     private void Check()
     {
         _grid.BeginCheck();
-        var types = GlobData.TrainsTypes.ToList();
+        var types = _ctx.Workspace.TrainsTypes.ToList();
         foreach (DataGridViewRow row in dgv.Rows)
         {
             var type = (TrainType)row.Tag!;
@@ -307,12 +314,12 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
         var flags = TextFormatFlags.NoPadding | TextFormatFlags.VerticalCenter;
 
         TextRenderer.DrawText(g, Resources.TrainTypesPage_Sloty, font, new Rectangle(0, 0, pSlots.Width, line), fore, flags);
-        using var fill = new SolidBrush(GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor);
+        using var fill = new SolidBrush(_ctx.UsingStyle.ControlsColorScheme.Highlight.BackColor);
         using var border = new Pen(Color.FromArgb(140, fore));
         var y = line;
         foreach (var group in TrainTypeRules.CustomGroups)
         {
-            var used = Math.Min(TrainTypeRules.SlotsPerGroup, TrainTypeRules.CountInGroup(GlobData.TrainsTypes, group));
+            var used = Math.Min(TrainTypeRules.SlotsPerGroup, TrainTypeRules.CountInGroup(_ctx.Workspace.TrainsTypes, group));
             TextRenderer.DrawText(g, GroupRange(group), font, new Rectangle(0, y, labelWidth, line), fore, flags);
             var x = labelWidth;
             for (var i = 0; i < TrainTypeRules.SlotsPerGroup; i++, x += box + gap)
@@ -356,11 +363,11 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
         BeginInvoke(RefreshRows);
     }
 
-    private static void Changed(TrainType type)
+    private void Changed(TrainType type)
     {
         var index = IndexOf(type);
         if (index >= 0)
-            GlobData.TrainsTypes.ResetItem(index);
+            _ctx.Workspace.TrainsTypes.ResetItem(index);
     }
 
     private void dgv_CellValueChanged(object? sender, DataGridViewCellEventArgs e)
@@ -427,13 +434,13 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
             type.CategoryTrain = value[CustomPrefix.Length..] + "99";
         }
 
-        TrainTypeRules.Renumber(GlobData.TrainsTypes);
+        TrainTypeRules.Renumber(_ctx.Workspace.TrainsTypes);
     }
 
     private void bAdd_Click(object? sender, EventArgs e)
     {
         var group = TrainTypeRules.CustomGroups.FirstOrDefault(g =>
-            TrainTypeRules.CountInGroup(GlobData.TrainsTypes, g) < TrainTypeRules.SlotsPerGroup);
+            TrainTypeRules.CountInGroup(_ctx.Workspace.TrainsTypes, g) < TrainTypeRules.SlotsPerGroup);
         if (group is null)
         {
             ToolsCore.Tools.Utils.ShowError(Resources.FGlobalSettings_Maximálny_počet_typov_vlakov_tohto_druhu_je_9);
@@ -441,8 +448,8 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
         }
 
         var type = new TrainType(group + "99", "", "");
-        GlobData.TrainsTypes.Add(type);
-        TrainTypeRules.Renumber(GlobData.TrainsTypes);
+        _ctx.Workspace.TrainsTypes.Add(type);
+        TrainTypeRules.Renumber(_ctx.Workspace.TrainsTypes);
         _usage[type] = [];
 
         tbFilter.Text = "";
@@ -456,9 +463,9 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
         if (CurrentType is not { } type || UsedBy(type) > 0)
             return;
 
-        GlobData.TrainsTypes.RemoveAt(IndexOf(type));
+        _ctx.Workspace.TrainsTypes.RemoveAt(IndexOf(type));
         _usage.Remove(type);
-        TrainTypeRules.Renumber(GlobData.TrainsTypes);
+        TrainTypeRules.Renumber(_ctx.Workspace.TrainsTypes);
         dgv.Rows.RemoveAt(dgv.CurrentRow!.Index);
         RefreshRows();
     }

@@ -7,7 +7,7 @@ namespace GVDEditor.Domain.Editing;
 /// az <see cref="Commit" /> zapise zmeny do grafikonu.
 /// </summary>
 /// <remarks>
-/// Radenie patri cislu vlaku: ten isty objekt <see cref="Radenie" /> je v <c>GlobData.Radenia</c> aj
+/// Radenie patri cislu vlaku: ten isty objekt <see cref="Radenie" /> je v <see cref="Documents.GrafikonDocument.Radenia" /> aj
 /// v <see cref="Train.Radenia" /> vsetkych vlakov s tymto cislom - preto sa povodne objekty nenahradzaju, ale
 /// prepisuju sa ich vlastnosti.
 /// </remarks>
@@ -86,7 +86,7 @@ internal sealed class RadeniaEditing
     /// alebo pri zmene cisla jednej varianty zostava vlaku s povodnym cislom a ukladany vlak dostane novy objekt.
     /// </remarks>
     /// <param name="train">ukladany vlak (uz s novym cislom); nemusi byt v <paramref name="trains" /></param>
-    /// <param name="globalRadenia">vsetky radenia grafikonu (<c>GlobData.Radenia</c>)</param>
+    /// <param name="globalRadenia">vsetky radenia grafikonu (<see cref="Documents.GrafikonDocument.Radenia" />)</param>
     /// <param name="trains">vlaky grafikonu</param>
     public void Commit(Train train, List<Radenie> globalRadenia, IEnumerable<Train> trains)
     {

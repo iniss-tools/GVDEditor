@@ -1,5 +1,6 @@
 using System.Globalization;
 using AppRegistry = ToolsCore.Tools.AppRegistry;
+using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Integration;
@@ -7,10 +8,10 @@ using GVDEditor.Properties;
 using GVDEditor.UI.EditTrain;
 using ToolsCore.Commands;
 using ToolsCore.Forms;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 using ToolsCore;
-using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.UI.Main;
 
@@ -19,7 +20,7 @@ namespace GVDEditor.UI.Main;
 /// v <c>FMain.Grafikon.cs</c>, okná nastavení v <c>FMain.Settings.cs</c>, INISS v <c>FMain.Iniss.cs</c> a varianty
 /// vlakov v <c>FMain.Variants.cs</c>.
 /// </summary>
-public partial class FMain : Form
+internal partial class FMain : Form, IAnalyzerHost
 {
     /// <summary>
     /// Dostupné stanice.
@@ -43,10 +44,17 @@ public partial class FMain : Form
     private bool _loading;
 
     /// <summary>
+    /// Kontext editora - nastavenia programu, zvolena instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
+    /// <summary>
     /// Vytvori nový formulár typu <see cref="FMain"/>.
     /// </summary>
-    public FMain()
+    /// <param name="context">kontext editora</param>
+    public FMain(EditorContext context)
     {
+        _ctx = context;
         InitializeComponent();
 
         // stav INISSu sa hlasi vo vlakne okna - sluzba vznika az po vytvoreni prvkov
@@ -56,16 +64,16 @@ public partial class FMain : Form
 
         mainMenu.Renderer = new ToolStripProfessionalRenderer(new FormUtils.LightColorTable());
 
-        tsslSelTrainName.Font = GlobData.Config.Fonts.StateRow.Font;
-        tsslSelTrainVariants.Font = GlobData.Config.Fonts.StateRow.Font;
-        tsslTrainCount.Font = GlobData.Config.Fonts.StateRow.Font;
-        tsslTrainCountWithVariants.Font = GlobData.Config.Fonts.StateRow.Font;
+        tsslSelTrainName.Font = _ctx.Config.Fonts.StateRow.Font;
+        tsslSelTrainVariants.Font = _ctx.Config.Fonts.StateRow.Font;
+        tsslTrainCount.Font = _ctx.Config.Fonts.StateRow.Font;
+        tsslTrainCountWithVariants.Font = _ctx.Config.Fonts.StateRow.Font;
         CreateVariantMenu();
 
-        dgvTrains.RowHeadersVisible = GlobData.Config.ShowRowsHeader;
+        dgvTrains.RowHeadersVisible = _ctx.Config.ShowRowsHeader;
 
         CreateCommands();
-        _commands.ApplyShortcuts(GlobData.Config.Shortcuts);
+        _commands.ApplyShortcuts(_ctx.Config.Shortcuts);
         SetColumns();
         SetColumnsAutoWidth();
 
@@ -88,7 +96,7 @@ public partial class FMain : Form
         AppRegistry.RegisterJumpList();
 
         var path = Utils.GetProjectPathFromArgs();
-        if (path is null && GlobData.Config.Startup == StartupType.LastProject)
+        if (path is null && _ctx.Config.Startup == StartupType.LastProject)
             path = AppRegistry.GetLastProject();
 
         if (!string.IsNullOrWhiteSpace(path))
@@ -107,7 +115,7 @@ public partial class FMain : Form
             if (field)
                 Text = Text.Replace("*", "");
             else
-                Text = Application.ProductName + @" - *" + GlobData.INISSDir;
+                Text = Application.ProductName + @" - *" + _ctx.Workspace.INISSDir;
         }
     } = true;
 
@@ -140,15 +148,15 @@ public partial class FMain : Form
     /// <summary>
     /// Ci sa maju chyby zachytit a ukazat pouzivatelovi (inak program pri chybe spadne - rezim ladenia).
     /// </summary>
-    private static bool CatchErrors => GlobData.Config.DebugModeGUI != DebugMode.AppCrash;
+    private bool CatchErrors => _ctx.Config.DebugModeGUI != DebugMode.AppCrash;
 
     /// <summary>
     /// Zaznamena chybu a ukaze ju podla rezimu ladenia.
     /// </summary>
-    private static void ShowException(Exception e)
+    private void ShowException(Exception e)
     {
         Log.Exception(e);
-        switch (GlobData.Config.DebugModeGUI)
+        switch (_ctx.Config.DebugModeGUI)
         {
             case DebugMode.OnlyMessage:
                 FError.ShowError(e.Message);
@@ -164,14 +172,14 @@ public partial class FMain : Form
     /// </summary>
     private void BindDocument()
     {
-        Kolaj.DataSource = GlobData.Tracks;
-        Dopravca.DataSource = GlobData.Operators;
+        Kolaj.DataSource = _ctx.Document.Tracks;
+        Dopravca.DataSource = _ctx.Document.Operators;
 
         var prechod = _prechod;
         _prechod = true;
-        dgvTrains.DataSource = GlobData.Trains;
+        dgvTrains.DataSource = _ctx.Document.Trains;
         _prechod = prechod;
-        GlobData.Trains.ListChanged += (_, _) => InvalidateVariants();
+        _ctx.Document.Trains.ListChanged += (_, _) => InvalidateVariants();
         InvalidateVariants();
 
         SetColumnsAutoWidth();
@@ -182,7 +190,7 @@ public partial class FMain : Form
     /// </summary>
     private void ApplyMenuMode()
     {
-        var menu = GlobData.Config.DesktopMenuMode;
+        var menu = _ctx.Config.DesktopMenuMode;
         mainMenu.Visible = menu is DesktopMenu.MsTs or DesktopMenu.MsOnly;
         toolMenu.Visible = menu is DesktopMenu.MsTs or DesktopMenu.TsOnly;
 
@@ -205,27 +213,27 @@ public partial class FMain : Form
     private void UpdateMainUI()
     {
         ApplyMenuMode();
-        dgvTrains.RowHeadersVisible = GlobData.Config.ShowRowsHeader;
+        dgvTrains.RowHeadersVisible = _ctx.Config.ShowRowsHeader;
 
         this.ApplyThemeAndFonts();
         SetColumns();
         SetColumnsAutoWidth();
-        _commands.ApplyShortcuts(GlobData.Config.Shortcuts);
+        _commands.ApplyShortcuts(_ctx.Config.Shortcuts);
         Refresh();
-        AppInit.MsgBoxStyleInit(GlobData.UsingStyle, GlobData.Config);
+        AppInit.MsgBoxStyleInit(_ctx.UsingStyle, _ctx.Config);
         ApplyStatusBarColors();
     }
 
     private void ApplyStatusBarColors()
     {
-        if (!GlobData.UsingStyle.HighlightStatusBar)
+        if (!_ctx.UsingStyle.HighlightStatusBar)
             return;
 
-        statusStrip.BackColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor;
-        tsslSelTrainName.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
-        tsslSelTrainVariants.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
-        tsslTrainCount.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
-        tsslTrainCountWithVariants.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+        statusStrip.BackColor = _ctx.UsingStyle.ControlsColorScheme.Highlight.BackColor;
+        tsslSelTrainName.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+        tsslSelTrainVariants.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+        tsslTrainCount.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+        tsslTrainCountWithVariants.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
     }
 
     private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -241,24 +249,24 @@ public partial class FMain : Form
     {
         if (e.ColumnIndex != -1 && dgvTrains.Columns[e.ColumnIndex].Name == "Ostatne")
             if (dgvTrains.CurrentRow != null && e.RowIndex != -1)
-                ShowEditTrain(GlobData.Trains[e.RowIndex], e.RowIndex);
+                ShowEditTrain(_ctx.Document.Trains[e.RowIndex], e.RowIndex);
 
         if (e.RowIndex != -1)
         {
             tsslSelTrainName.Visible = true;
             tsslSelTrainVariants.Visible = true;
-            tsslSelTrainName.Text = $@"{GlobData.Trains[e.RowIndex].Type} {GlobData.Trains[e.RowIndex].Number}";
-            tsslSelTrainVariants.Text = CountSelTrainVariants(GlobData.Trains[e.RowIndex]).ToString();
+            tsslSelTrainName.Text = $@"{_ctx.Document.Trains[e.RowIndex].Type} {_ctx.Document.Trains[e.RowIndex].Number}";
+            tsslSelTrainVariants.Text = CountSelTrainVariants(_ctx.Document.Trains[e.RowIndex]).ToString();
         }
     }
 
     private void dgvTrains_DataError(object sender, DataGridViewDataErrorEventArgs e)
     {
-        if (dgvTrains.Columns[e.ColumnIndex].Name == @"Kolaj" && e.RowIndex != -1 && e.RowIndex < GlobData.Trains.Count)
-            GlobData.Trains[e.RowIndex].Track = GlobData.Tracks[0];
+        if (dgvTrains.Columns[e.ColumnIndex].Name == @"Kolaj" && e.RowIndex != -1 && e.RowIndex < _ctx.Document.Trains.Count)
+            _ctx.Document.Trains[e.RowIndex].Track = _ctx.Document.Tracks[0];
         else if (dgvTrains.Columns[e.ColumnIndex].Name == @"Dopravca" && e.RowIndex != -1 &&
-                 e.RowIndex < GlobData.Trains.Count)
-            GlobData.Trains[e.RowIndex].Operator = GlobData.Operators[0];
+                 e.RowIndex < _ctx.Document.Trains.Count)
+            _ctx.Document.Trains[e.RowIndex].Operator = _ctx.Document.Operators[0];
         else
             Utils.ShowError(Resources.FMain_dgvTrains_DataError_Tabuľka_obsahuje_nesprávny_údaj + e.Exception!.Message);
     }
@@ -284,7 +292,7 @@ public partial class FMain : Form
         if (dgvTrains.Columns[e.ColumnIndex].Name == @"DatumoveObmedzenieText")
         {
             var value = e.FormattedValue as string;
-            var thistrain = GlobData.Trains[e.RowIndex];
+            var thistrain = _ctx.Document.Trains[e.RowIndex];
             var dateRemThis = new DateLimit(thistrain.ZaciatokPlatnosti, thistrain.KoniecPlatnosti,
                 insertMarks: false);
             try
@@ -299,7 +307,7 @@ public partial class FMain : Form
             }
 
             var i = 0;
-            foreach (var train in GlobData.Trains)
+            foreach (var train in _ctx.Document.Trains)
             {
                 if (Train.IsSameVariant(train, thistrain) && i != e.RowIndex &&
                     train.ZaciatokPlatnosti == thistrain.ZaciatokPlatnosti &&
@@ -308,10 +316,10 @@ public partial class FMain : Form
                 {
                     var obmand = dateRemThis.TextAnd(train.DateLimitText, thistrain.DateLimitText);
                     var result = Utils.ShowQuestion(string.Format(Resources.FEditTrain_DateRem_zasahuje_do_ineho_vlaku, train.Type,
-                        train.Number, TrainName.ToDisplay(GlobData.TrainNames, train.Name), obmand));
+                        train.Number, TrainName.ToDisplay(_ctx.Workspace.TrainNames, train.Name), obmand));
                     if (result == DialogResult.Yes)
                     {
-                        if (FDateLimitEdit.SetDateLimit(this, thistrain.ZaciatokPlatnosti.ToDateTime(), thistrain.KoniecPlatnosti.ToDateTime(), train,
+                        if (FDateLimitEdit.SetDateLimit(this, _ctx.UsingStyle, thistrain.ZaciatokPlatnosti.ToDateTime(), thistrain.KoniecPlatnosti.ToDateTime(), train,
                                 true, train.DateLimitText) is { } limit)
                             train.DateLimitText = limit;
                     }
@@ -324,25 +332,25 @@ public partial class FMain : Form
 
     private void dgvTrains_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
     {
-        if (GlobData.Trains.Count != 0)
+        if (_ctx.Document.Trains.Count != 0)
         {
             for (var i = e.RowIndex; i < e.RowIndex + e.RowCount; i++)
             {
-                GlobData.Trains[i].ID = i + 1;
+                _ctx.Document.Trains[i].ID = i + 1;
 
-                if (GlobData.Trains[i].Routing == null)
+                if (_ctx.Document.Trains[i].Routing == null)
                 {
-                    var vlak = GlobData.Trains[i];
+                    var vlak = _ctx.Document.Trains[i];
                     throw new ArgumentNullException(
-                        string.Format(CultureInfo.CurrentCulture, Resources.FMain_TrainNoRouting, vlak.Type, vlak.NumberVariant, TrainName.ToDisplay(GlobData.TrainNames, vlak.Name)));
+                        string.Format(CultureInfo.CurrentCulture, Resources.FMain_TrainNoRouting, vlak.Type, vlak.NumberVariant, TrainName.ToDisplay(_ctx.Workspace.TrainNames, vlak.Name)));
                 }
 
-                if (GlobData.Trains[i].Routing == Routing.Prechadzajuci)
+                if (_ctx.Document.Trains[i].Routing == Routing.Prechadzajuci)
                 {
                     dgvTrains.Rows[i].Cells[@"odchodDataGridViewTextBoxColumn"].ReadOnly = false;
                     dgvTrains.Rows[i].Cells[@"prichodDataGridViewTextBoxColumn"].ReadOnly = false;
                 }
-                else if (GlobData.Trains[i].Routing == Routing.Vychadzajuci)
+                else if (_ctx.Document.Trains[i].Routing == Routing.Vychadzajuci)
                 {
                     dgvTrains.Rows[i].Cells[@"odchodDataGridViewTextBoxColumn"].ReadOnly = false;
                     dgvTrains.Rows[i].Cells[@"prichodDataGridViewTextBoxColumn"].ReadOnly = true;
@@ -361,24 +369,24 @@ public partial class FMain : Form
 
     private void dgvTrains_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
     {
-        for (var i = 1; i <= GlobData.Trains.Count; i++) GlobData.Trains[i - 1].ID = i;
+        for (var i = 1; i <= _ctx.Document.Trains.Count; i++) _ctx.Document.Trains[i - 1].ID = i;
 
         if (!_prechod) DataSaved = false;
 
         tsslTrainCountWithVariants.Text = dgvTrains.Rows.Count.ToString();
         tsslTrainCount.Text = $@"({CountTrainVariants()})";
 
-        if (GlobData.Trains.Count == 0)
+        if (_ctx.Document.Trains.Count == 0)
         {
             tsslSelTrainName.Visible = false;
             tsslSelTrainVariants.Visible = false;
         }
     }
 
-    private static int CountTrainVariants()
+    private int CountTrainVariants()
     {
         var trains = new HashSet<(string num, TrainType type, string name)>();
-        foreach (var t in GlobData.Trains)
+        foreach (var t in _ctx.Document.Trains)
             trains.Add((t.Number, t.Type, t.Name));
 
         return trains.Count;
@@ -394,7 +402,7 @@ public partial class FMain : Form
     private Color SiblingColor()
     {
         var back = dgvTrains.DefaultCellStyle.BackColor;
-        var mark = GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor;
+        var mark = _ctx.UsingStyle.ControlsColorScheme.Highlight.BackColor;
         return Color.FromArgb((back.R * 4 + mark.R) / 5, (back.G * 4 + mark.G) / 5, (back.B * 4 + mark.B) / 5);
     }
 
@@ -406,13 +414,13 @@ public partial class FMain : Form
             if (sett.BackColor != Color.Transparent)
                 e.CellStyle.BackColor = sett.BackColor;
             e.CellStyle.Font = sett.Bold
-                ? new Font(GlobData.UsingStyle.TrainTypeColumnScheme.Font, FontStyle.Bold)
-                : GlobData.UsingStyle.TrainTypeColumnScheme.Font;
+                ? new Font(_ctx.UsingStyle.TrainTypeColumnScheme.Font, FontStyle.Bold)
+                : _ctx.UsingStyle.TrainTypeColumnScheme.Font;
         }
 
-        if (e.RowIndex >= 0 && e.RowIndex < GlobData.Trains.Count)
+        if (e.RowIndex >= 0 && e.RowIndex < _ctx.Document.Trains.Count)
         {
-            var rowTrain = GlobData.Trains[e.RowIndex];
+            var rowTrain = _ctx.Document.Trains[e.RowIndex];
 
             // varianty vybraneho vlaku su podfarbene
             if (CurrentTrain is { } current && Variants.AreSiblings(current, rowTrain))
@@ -429,26 +437,26 @@ public partial class FMain : Form
         // v grafikone je kluc zvuku nazvu vlaku, v tabulke sa zobrazuje jeho nazov
         if (e.ColumnIndex == nameDataGridViewTextBoxColumn.Index && e.Value is string { Length: > 0 } trainName)
         {
-            e.Value = TrainName.ToDisplay(GlobData.TrainNames, trainName);
+            e.Value = TrainName.ToDisplay(_ctx.Workspace.TrainNames, trainName);
             e.FormattingApplied = true;
         }
 
         var typColumn = dgvTrains.Columns["typDataGridViewTextBoxColumn"];
         if (typColumn != null && e.ColumnIndex == typColumn.Index)
-            if (e.RowIndex < GlobData.Trains.Count)
+            if (e.RowIndex < _ctx.Document.Trains.Count)
             {
-                var type = GlobData.Trains[e.RowIndex].Type;
+                var type = _ctx.Document.Trains[e.RowIndex].Type;
                 if (type.IsCustom)
                 {
                     var stype = type.CategoryTrain.ToUpper();
                     if (stype.StartsWith("X"))
-                        SetFromScheme(GlobData.UsingStyle.TrainTypeColumnScheme.X);
+                        SetFromScheme(_ctx.UsingStyle.TrainTypeColumnScheme.X);
                     else if (stype.StartsWith("R"))
-                        SetFromScheme(GlobData.UsingStyle.TrainTypeColumnScheme.R);
+                        SetFromScheme(_ctx.UsingStyle.TrainTypeColumnScheme.R);
                     else if (stype.StartsWith("SL"))
-                        SetFromScheme(GlobData.UsingStyle.TrainTypeColumnScheme.Sl);
+                        SetFromScheme(_ctx.UsingStyle.TrainTypeColumnScheme.Sl);
                     else if (stype.StartsWith("OS"))
-                        SetFromScheme(GlobData.UsingStyle.TrainTypeColumnScheme.Os);
+                        SetFromScheme(_ctx.UsingStyle.TrainTypeColumnScheme.Os);
                 }
                 else
                 {
@@ -457,16 +465,16 @@ public partial class FMain : Form
                         case "R":
                         case "REX":
                         case "RR":
-                            SetFromScheme(GlobData.UsingStyle.TrainTypeColumnScheme.R);
+                            SetFromScheme(_ctx.UsingStyle.TrainTypeColumnScheme.R);
                             break;
                         case "IC":
                         case "EC":
                         case "EN":
                         case "SC":
-                            SetFromScheme(GlobData.UsingStyle.TrainTypeColumnScheme.X);
+                            SetFromScheme(_ctx.UsingStyle.TrainTypeColumnScheme.X);
                             break;
                         default:
-                            SetFromScheme(GlobData.UsingStyle.TrainTypeColumnScheme.Os);
+                            SetFromScheme(_ctx.UsingStyle.TrainTypeColumnScheme.Os);
                             break;
                     }
                 }
@@ -482,22 +490,22 @@ public partial class FMain : Form
             column.DisplayIndex = format.Order;
         }
 
-        SetCol(cisloDataGridViewTextBoxColumn, GlobData.Config.DesktopCols.Number);
-        SetCol(typDataGridViewTextBoxColumn, GlobData.Config.DesktopCols.Type);
-        SetCol(nameDataGridViewTextBoxColumn, GlobData.Config.DesktopCols.Name);
-        SetCol(LinkaPrichod, GlobData.Config.DesktopCols.LinkaPrichod);
-        SetCol(LinkaOdchod, GlobData.Config.DesktopCols.LinkaOdchod);
-        SetCol(smerovanieDataGridViewTextBoxColumn, GlobData.Config.DesktopCols.Routing);
-        SetCol(prichodDataGridViewTextBoxColumn, GlobData.Config.DesktopCols.Prichod);
-        SetCol(odchodDataGridViewTextBoxColumn, GlobData.Config.DesktopCols.Odchod);
-        SetCol(dgvcVychodziaStanica, GlobData.Config.DesktopCols.VychodziaStanica);
-        SetCol(dgvcKonecnaStanica, GlobData.Config.DesktopCols.KonecnaStanica);
-        SetCol(DatumoveObmedzenieText, GlobData.Config.DesktopCols.DateLimit);
-        SetCol(Kolaj, GlobData.Config.DesktopCols.Track);
-        SetCol(Dopravca, GlobData.Config.DesktopCols.Operator);
-        SetCol(Ostatne, GlobData.Config.DesktopCols.OtherBtn);
+        SetCol(cisloDataGridViewTextBoxColumn, _ctx.Config.DesktopCols.Number);
+        SetCol(typDataGridViewTextBoxColumn, _ctx.Config.DesktopCols.Type);
+        SetCol(nameDataGridViewTextBoxColumn, _ctx.Config.DesktopCols.Name);
+        SetCol(LinkaPrichod, _ctx.Config.DesktopCols.LinkaPrichod);
+        SetCol(LinkaOdchod, _ctx.Config.DesktopCols.LinkaOdchod);
+        SetCol(smerovanieDataGridViewTextBoxColumn, _ctx.Config.DesktopCols.Routing);
+        SetCol(prichodDataGridViewTextBoxColumn, _ctx.Config.DesktopCols.Prichod);
+        SetCol(odchodDataGridViewTextBoxColumn, _ctx.Config.DesktopCols.Odchod);
+        SetCol(dgvcVychodziaStanica, _ctx.Config.DesktopCols.VychodziaStanica);
+        SetCol(dgvcKonecnaStanica, _ctx.Config.DesktopCols.KonecnaStanica);
+        SetCol(DatumoveObmedzenieText, _ctx.Config.DesktopCols.DateLimit);
+        SetCol(Kolaj, _ctx.Config.DesktopCols.Track);
+        SetCol(Dopravca, _ctx.Config.DesktopCols.Operator);
+        SetCol(Ostatne, _ctx.Config.DesktopCols.OtherBtn);
 
-        dgvTrains.Columns[dgvTrains.Columns.Count - 1].AutoSizeMode = GlobData.Config.FitLastColumn
+        dgvTrains.Columns[dgvTrains.Columns.Count - 1].AutoSizeMode = _ctx.Config.FitLastColumn
             ? DataGridViewAutoSizeColumnMode.Fill
             : DataGridViewAutoSizeColumnMode.None;
     }

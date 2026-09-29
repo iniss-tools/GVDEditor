@@ -4,7 +4,7 @@ using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Main;
 
-public partial class FMain
+internal partial class FMain
 {
     /// <summary>
     /// Doplni do ponuk Spustit programy (*.exe) otvorenej instalacie.
@@ -15,7 +15,7 @@ public partial class FMain
         RemoveItemsAfter(tssbStartINISS.DropDownItems, toolStripSeparator8);
         RemoveItemsAfter(tsmiRun.DropDownItems, toolStripSeparator14);
 
-        foreach (var file in GlobData.INISSExeFiles)
+        foreach (var file in _ctx.Workspace.INISSExeFiles)
         {
             ToolStripItem item1 = new ToolStripMenuItem(file);
             item1.Click += InissStartItemOnClick;
@@ -26,9 +26,9 @@ public partial class FMain
             tsmiRun.DropDownItems.Add(item2);
         }
 
-        foreach (ToolStripItem item in tssbStartINISS.DropDownItems) item.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Button.ForeColor;
+        foreach (ToolStripItem item in tssbStartINISS.DropDownItems) item.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Button.ForeColor;
 
-        foreach (ToolStripItem item in tsmiRun.DropDownItems) item.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Button.ForeColor;
+        foreach (ToolStripItem item in tsmiRun.DropDownItems) item.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Button.ForeColor;
     }
 
     private static void RemoveItemsAfter(ToolStripItemCollection items, ToolStripItem separator)
@@ -45,7 +45,7 @@ public partial class FMain
     private void InissStartItemOnClick(object? sender, EventArgs e)
     {
         if (sender is ToolStripItem tsmi && !_iniss.IsRestarting)
-            StartINISS(PathUtils.CombinePath(GlobData.INISSDir, tsmi.Text!)!, tsmiRun);
+            StartINISS(PathUtils.CombinePath(_ctx.Workspace.INISSDir, tsmi.Text!)!, tsmiRun);
     }
 
     /// <summary>
@@ -73,7 +73,7 @@ public partial class FMain
 
         try
         {
-            _iniss.Start(path, GlobData.Config.StartupINISSConfig);
+            _iniss.Start(path, _ctx.Config.StartupINISSConfig);
         }
         catch (InvalidOperationException e)
         {
@@ -130,7 +130,7 @@ public partial class FMain
 
         try
         {
-            await _iniss.RestartAsync(GlobData.Config.StartupINISSConfig,
+            await _iniss.RestartAsync(_ctx.Config.StartupINISSConfig,
                 () => Utils.ShowQuestion(Resources.FMain_INISS_sa_neukoncil) == DialogResult.Yes);
         }
         catch (InvalidOperationException e)

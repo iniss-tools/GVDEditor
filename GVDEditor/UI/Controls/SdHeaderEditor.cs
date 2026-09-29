@@ -17,7 +17,7 @@ internal sealed class SdHeaderEditor : SdEditorBase
     private readonly ErrorProvider _errors = new() { BlinkStyle = ErrorBlinkStyle.NeverBlink };
     private StateDgmDiagram? _d;
 
-    public SdHeaderEditor()
+    public SdHeaderEditor(SdEditorContext context) : base(context)
     {
         AddHeader(Resources.FStateDgm_Diagram);
         _comments = new ExTextBox { Multiline = true, Height = 70, ScrollBars = ScrollBars.Vertical, Width = 300 };
@@ -87,7 +87,7 @@ internal sealed class SdHeaderEditor : SdEditorBase
 
     private void ValidateInput()
     {
-        var r = _indCat.Enabled ? SdEditorContext.Check(_indCat.Text, ExprContext.Condition, false) : null;
+        var r = _indCat.Enabled ? Context.Check(_indCat.Text, ExprContext.Condition, false) : null;
         _errors.SetError(_indCat, r?.Message ?? "");
     }
 }

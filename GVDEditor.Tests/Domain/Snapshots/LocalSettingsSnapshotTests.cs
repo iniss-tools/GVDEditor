@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using ExControls;
+using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Snapshots;
@@ -14,6 +15,8 @@ namespace GVDEditor.Tests.Domain.Snapshots;
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
 public class LocalSettingsSnapshotTests
 {
+    private GrafikonDocument _doc = new();
+
     private static readonly Platform Platform1 = new("1", "Nástupište 1", "01");
 
     private Operator _zssk = null!;
@@ -34,68 +37,68 @@ public class LocalSettingsSnapshotTests
         _font = new TableFont { Name = "Normal", FontID = 5 };
         _train = new Train { Track = _track1, TrackDeparture = _track2, Operator = _zssk };
 
-        GlobData.Operators = new ExBindingList<Operator> { Operator.None, _zssk };
-        GlobData.Platforms = new ExBindingList<Platform> { Platform.None, Platform1 };
-        GlobData.Tracks = new ExBindingList<Track> { Track.None, _track1, _track2 };
-        GlobData.Trains = new ExBindingList<Train> { _train };
-        GlobData.TablePhysicals = new ExBindingList<TablePhysical>();
-        GlobData.TableLogicals = new ExBindingList<TableLogical> { _logical };
-        GlobData.TableCatalogs = new ExBindingList<TableCatalog>();
-        GlobData.TabTabs = new ExBindingList<TableTabTab> { new() { Key = "A", Text = "[MAIN]" } };
-        GlobData.TableTexts = new ExBindingList<TableText>();
-        GlobData.TableFonts = new ExBindingList<TableFont> { _font };
-        GlobData.CustomStations = new ExBindingList<Station> { new("900", "Vlastná", IsCustom: true) };
-        GlobData.ModeTabsSections = new Dictionary<string, Dictionary<string, string>> { ["ALIGN"] = new() { ["0"] = "vľavo" } };
+        _doc.Operators = new ExBindingList<Operator> { Operator.None, _zssk };
+        _doc.Platforms = new ExBindingList<Platform> { Platform.None, Platform1 };
+        _doc.Tracks = new ExBindingList<Track> { Track.None, _track1, _track2 };
+        _doc.Trains = new ExBindingList<Train> { _train };
+        _doc.TablePhysicals = new ExBindingList<TablePhysical>();
+        _doc.TableLogicals = new ExBindingList<TableLogical> { _logical };
+        _doc.TableCatalogs = new ExBindingList<TableCatalog>();
+        _doc.TabTabs = new ExBindingList<TableTabTab> { new() { Key = "A", Text = "[MAIN]" } };
+        _doc.TableTexts = new ExBindingList<TableText>();
+        _doc.TableFonts = new ExBindingList<TableFont> { _font };
+        _doc.CustomStations = new ExBindingList<Station> { new("900", "Vlastná", IsCustom: true) };
+        _doc.ModeTabsSections = new Dictionary<string, Dictionary<string, string>> { ["ALIGN"] = new() { ["0"] = "vľavo" } };
     }
 
     [TestMethod]
     public void Zrusit_VratiUpravyPridaniaAMazania()
     {
-        var snapshot = LocalSettingsSnapshot.Capture();
+        var snapshot = LocalSettingsSnapshot.Capture(_doc);
 
         _zssk.Name = "RegioJet";
-        GlobData.Operators.Add(new Operator(2, "Leo Express"));
+        _doc.Operators.Add(new Operator(2, "Leo Express"));
         Platform1.FullName = "Iné";
         _track1.Tables.Clear();
         _track1.Key = "9";
         _font.FontID = 7;
-        GlobData.TableFonts.RemoveAt(0);
-        GlobData.TabTabs[0].Text = "[ZMENA]";
-        GlobData.CustomStations[0].Name = "Premenovaná";
-        GlobData.ModeTabsSections["ALIGN"]["0"] = "vpravo";
-        GlobData.ModeTabsSections["NOVA"] = new Dictionary<string, string>();
+        _doc.TableFonts.RemoveAt(0);
+        _doc.TabTabs[0].Text = "[ZMENA]";
+        _doc.CustomStations[0].Name = "Premenovaná";
+        _doc.ModeTabsSections["ALIGN"]["0"] = "vpravo";
+        _doc.ModeTabsSections["NOVA"] = new Dictionary<string, string>();
 
         snapshot.Restore();
 
         Assert.AreEqual("ZSSK", _zssk.Name);
-        CollectionAssert.AreEqual(new[] { Operator.None, _zssk }, GlobData.Operators.ToList());
+        CollectionAssert.AreEqual(new[] { Operator.None, _zssk }, _doc.Operators.ToList());
         Assert.AreEqual("Nástupište 1", Platform1.FullName);
         Assert.AreEqual("1", _track1.Key);
         CollectionAssert.AreEqual(new[] { _logical }, _track1.Tables.ToList());
-        CollectionAssert.AreEqual(new[] { _font }, GlobData.TableFonts.ToList());
+        CollectionAssert.AreEqual(new[] { _font }, _doc.TableFonts.ToList());
         Assert.AreEqual(5, _font.FontID);
-        Assert.AreEqual("[MAIN]", GlobData.TabTabs[0].Text);
-        Assert.AreEqual("Vlastná", GlobData.CustomStations[0].Name);
-        Assert.AreEqual("vľavo", GlobData.ModeTabsSections["ALIGN"]["0"]);
-        Assert.IsFalse(GlobData.ModeTabsSections.ContainsKey("NOVA"));
+        Assert.AreEqual("[MAIN]", _doc.TabTabs[0].Text);
+        Assert.AreEqual("Vlastná", _doc.CustomStations[0].Name);
+        Assert.AreEqual("vľavo", _doc.ModeTabsSections["ALIGN"]["0"]);
+        Assert.IsFalse(_doc.ModeTabsSections.ContainsKey("NOVA"));
     }
 
     [TestMethod]
     public void Zrusit_VratiVlakomKolajADopravcuPoZmazani()
     {
-        var snapshot = LocalSettingsSnapshot.Capture();
+        var snapshot = LocalSettingsSnapshot.Capture(_doc);
 
-        TrackEditing.Remove(_track1, GlobData.Tracks, GlobData.Trains);
+        TrackEditing.Remove(_track1, _doc.Tracks, _doc.Trains);
         _train.Operator = Operator.None;
-        GlobData.Operators.Remove(_zssk);
+        _doc.Operators.Remove(_zssk);
 
         snapshot.Restore();
 
         Assert.AreSame(_track1, _train.Track);
         Assert.AreSame(_track2, _train.TrackDeparture);
         Assert.AreSame(_zssk, _train.Operator);
-        CollectionAssert.AreEqual(new[] { Track.None, _track1, _track2 }, GlobData.Tracks.ToList());
-        CollectionAssert.Contains(GlobData.Operators.ToList(), _zssk);
+        CollectionAssert.AreEqual(new[] { Track.None, _track1, _track2 }, _doc.Tracks.ToList());
+        CollectionAssert.Contains(_doc.Operators.ToList(), _zssk);
     }
 
     [TestMethod]
@@ -103,9 +106,9 @@ public class LocalSettingsSnapshotTests
     {
         var povodne = 0;
         var okno = 0;
-        GlobData.Tracks.ListChanged += (_, _) => povodne++;
-        var snapshot = LocalSettingsSnapshot.Capture();
-        GlobData.Tracks.ListChanged += (_, _) => okno++;
+        _doc.Tracks.ListChanged += (_, _) => povodne++;
+        var snapshot = LocalSettingsSnapshot.Capture(_doc);
+        _doc.Tracks.ListChanged += (_, _) => okno++;
 
         snapshot.Restore();
 
@@ -117,8 +120,8 @@ public class LocalSettingsSnapshotTests
     public void Zrusit_VlakyLenPrekresliBezPrestavaniaZoznamu()
     {
         var types = new List<ListChangedType>();
-        GlobData.Trains.ListChanged += (_, e) => types.Add(e.ListChangedType);
-        var snapshot = LocalSettingsSnapshot.Capture();
+        _doc.Trains.ListChanged += (_, e) => types.Add(e.ListChangedType);
+        var snapshot = LocalSettingsSnapshot.Capture(_doc);
 
         snapshot.Restore();
 

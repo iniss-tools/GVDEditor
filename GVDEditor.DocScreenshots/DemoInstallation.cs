@@ -74,14 +74,10 @@ internal static class DemoInstallation
 
         var languages = BuildSoundBank(bankDir);
 
-        // zapisovače globálnych súborov pracujú s GlobData.DataDir - nastaví sa pred PrepareGlobalData
-        SetGlobData(nameof(GlobData.INISSDir), root);
-        SetGlobData(nameof(GlobData.DataDir), dataDir);
-        SetGlobData(nameof(GlobData.RawBankDir), bankDir);
 
-        CategoriFile.WriteGlobal(GlobData.DataDir, languages);
-        TrTypesFile.WriteDefaults(GlobData.DataDir);
-        ZpozdeniFile.WriteDefault(GlobData.DataDir);
+        CategoriFile.WriteGlobal(dataDir, languages);
+        TrTypesFile.WriteDefaults(dataDir);
+        ZpozdeniFile.WriteDefault(dataDir);
 
         // zvukový okruh stanice a testovací okruh TEST (sprístupní v INISSe tlačidlo Test/stop)
         File.WriteAllLines(Path.Combine(dataDir, GvdFileConsts.FILE_AUDIO),
@@ -91,9 +87,9 @@ internal static class DemoInstallation
         ], Encodings.Win1250);
 
         var dir = new DirList { DirName = GvdDirName, FullPath = Path.Combine(dataDir, GvdDirName), TablePort = 2, ReportPort = 3 };
-        DirListFile.Write(GlobData.DataDir, [dir]);
+        DirListFile.Write(dataDir, [dir]);
 
-        GlobData.PrepareGlobalData(root);
+        Program.Context.OpenWorkspace(WorkspaceRepository.Load(root));
 
         var home = Station("9900100");
         var gvd = new GVDInfo
@@ -176,8 +172,8 @@ internal static class DemoInstallation
     /// </summary>
     private static void WriteNewGvd(string path, GVDInfo gvd) =>
         GrafikonRepository.CreateNew(path, gvd,
-            new GrafikonContext(GlobData.Workspace, GrafikonDocument.CreateNew(GlobData.Languages), GlobData.Config.Language),
-            GlobData.DataDir, StateDgmTemplate.Slovak);
+            new GrafikonContext(Program.Context.Workspace, GrafikonDocument.CreateNew(Program.Context.Workspace.Languages), Program.Context.Config.Language),
+            Program.Context.Workspace.DataDir, StateDgmTemplate.Slovak);
 
     /// <summary>
     /// Naplní grafikon koľajami, dopravcami a vlakmi a uloží ho rovnako ako Súbor → Uložiť.
@@ -199,8 +195,8 @@ internal static class DemoInstallation
         var express = new Operator(2, "Expres Línia, s.r.o.");
         var operators = new List<Operator> { Operator.None, regional, express };
 
-        var skOnly = GlobData.Languages.Where(l => l.IsBasic).ToList();
-        var all = GlobData.Languages.ToList();
+        var skOnly = Program.Context.Workspace.Languages.Where(l => l.IsBasic).ToList();
+        var all = Program.Context.Workspace.Languages.ToList();
 
         string[] west = ["9900010", "9900020", "9900030"];
         string[] east = ["9900110", "9900120", "9900130", "9900140"];
@@ -233,9 +229,9 @@ internal static class DemoInstallation
         };
         gvd.TrainCount = trains.Count;
 
-        GlobData.Tracks = new ExControls.ExBindingList<Track>(tracks);
-        GlobData.Operators = new ExControls.ExBindingList<Operator>(operators);
-        GlobData.CustomStations = new ExControls.ExBindingList<Station>(
+        Program.Context.Document.Tracks = new ExControls.ExBindingList<Track>(tracks);
+        Program.Context.Document.Operators = new ExControls.ExBindingList<Operator>(operators);
+        Program.Context.Document.CustomStations = new ExControls.ExBindingList<Station>(
             CustomStationList.Select(s => new Station(s.Id, s.Name, IsCustom: true)).ToList());
 
         // ID vlaku je jeho poradie v Export3A.TXT - odkazujú naň texty tabúľ
@@ -243,20 +239,20 @@ internal static class DemoInstallation
             trains[i].ID = i + 1;
 
         var tables = new DemoTables(trains, tracks);
-        GlobData.TableLogicals = new ExControls.ExBindingList<TableLogical>(tables.Logicals);
-        GlobData.TableFontDir = DemoTables.FontDir;
+        Program.Context.Document.TableLogicals = new ExControls.ExBindingList<TableLogical>(tables.Logicals);
+        Program.Context.Document.TableFontDir = DemoTables.FontDir;
 
-        TrainsFile.Write(path, trains, gvd, new GrafikonContext(GlobData.Workspace,
-            new GrafikonDocument { ReportVariants = ReportVariant.GetDefaultValues(), ReportTypes = GlobData.ReportTypes, CustomStations = GlobData.CustomStations },
-            GlobData.Config.Language));
+        TrainsFile.Write(path, trains, gvd, new GrafikonContext(Program.Context.Workspace,
+            new GrafikonDocument { ReportVariants = ReportVariant.GetDefaultValues(), ReportTypes = Program.Context.Document.ReportTypes, CustomStations = Program.Context.Document.CustomStations },
+            Program.Context.Config.Language));
         TablesFile.Write(path, tables.TabTabs, tables.Catalogs, tables.Physicals, tables.Logicals);
         TTextsFile.Write(path, tables.Texts);
         ModeTabsFile.Write(path, tables.Fonts, DemoTables.FontDir, []);
         TracksFile.Write(path, tracks);
         OperatorsFile.Write(path, operators);
         InfoGvdFile.Write(path, gvd);
-        CustomStationsFile.Write(path, GlobData.CustomStations, gvd, GlobData.Config.Language);
-        RazeniFile.Write(path, DemoRadenia(), GlobData.Languages, ReportVariant.GetDefaultValues());
+        CustomStationsFile.Write(path, Program.Context.Document.CustomStations, gvd, Program.Context.Config.Language);
+        RazeniFile.Write(path, DemoRadenia(), Program.Context.Workspace.Languages, ReportVariant.GetDefaultValues());
     }
 
     /// <summary>
@@ -264,7 +260,7 @@ internal static class DemoInstallation
     /// </summary>
     private static List<Radenie> DemoRadenia()
     {
-        FyzSound Snd(string group, string key) => GlobData.Sounds.First(s => s.Group.Key == group && s.Key == key);
+        FyzSound Snd(string group, string key) => Program.Context.Workspace.Sounds.First(s => s.Group.Key == group && s.Key == key);
 
         var types = ReportType.GetDefaultValuesSK();
         List<ChosenReportType> Reports() =>
@@ -302,7 +298,7 @@ internal static class DemoInstallation
             Number = number,
             Variant = -1,
             Name = name,
-            Type = GlobData.TrainsTypes.First(t => t.Key == type),
+            Type = Program.Context.Workspace.TrainsTypes.First(t => t.Key == type),
             Routing = routing,
             Arrival = arrival is null ? null : TimeOnly.FromTimeSpan(TimeSpan.Parse(arrival, CultureInfo.InvariantCulture)),
             Departure = departure is null ? null : TimeOnly.FromTimeSpan(TimeSpan.Parse(departure, CultureInfo.InvariantCulture)),
@@ -344,29 +340,27 @@ internal static class DemoInstallation
     {
         // poradie ako vo FMain.ProccessData: vlastné stanice pred trasami, koľaje sa odkazujú na logické tabule
         LoadWarnings.Clear();
-        GlobData.CustomStations = new ExControls.ExBindingList<Station>(CustomStationsFile.Read(path, gvd, GlobData.Stations));
+        Program.Context.Document.CustomStations = new ExControls.ExBindingList<Station>(CustomStationsFile.Read(path, gvd, Program.Context.Workspace.Stations));
         var (tabtabs, catalogs, physicals, logicals) = TablesFile.Read(path);
-        GlobData.TabTabs = new ExControls.ExBindingList<TableTabTab>(tabtabs);
-        GlobData.TableCatalogs = new ExControls.ExBindingList<TableCatalog>(catalogs);
-        GlobData.TablePhysicals = new ExControls.ExBindingList<TablePhysical>(physicals);
-        GlobData.TableLogicals = new ExControls.ExBindingList<TableLogical>(logicals);
-        GlobData.Tracks = new ExControls.ExBindingList<Track>(TracksFile.Read(path, GlobData.TableLogicals));
-        GlobData.Operators = new ExControls.ExBindingList<Operator>(OperatorsFile.Read(path));
-        (GlobData.ReportVariants, GlobData.ReportTypes, GlobData.LocalLanguages) = CategoriFile.ReadLocal(path, GlobData.Languages);
-        var trains = TrainsFile.Read(path, GrafikonContext.Current);
-        var texts = TTextsFile.Read(path, trains, GlobData.TableCatalogs);
+        Program.Context.Document.TabTabs = new ExControls.ExBindingList<TableTabTab>(tabtabs);
+        Program.Context.Document.TableCatalogs = new ExControls.ExBindingList<TableCatalog>(catalogs);
+        Program.Context.Document.TablePhysicals = new ExControls.ExBindingList<TablePhysical>(physicals);
+        Program.Context.Document.TableLogicals = new ExControls.ExBindingList<TableLogical>(logicals);
+        Program.Context.Document.Tracks = new ExControls.ExBindingList<Track>(TracksFile.Read(path, Program.Context.Document.TableLogicals));
+        Program.Context.Document.Operators = new ExControls.ExBindingList<Operator>(OperatorsFile.Read(path));
+        (Program.Context.Document.ReportVariants, Program.Context.Document.ReportTypes, Program.Context.Document.LocalLanguages) = CategoriFile.ReadLocal(path, Program.Context.Workspace.Languages);
+        var trains = TrainsFile.Read(path, Program.Context.Grafikon);
+        var texts = TTextsFile.Read(path, trains, Program.Context.Document.TableCatalogs);
         var fonts = ModeTabsFile.Read(path).Fonts;
-        var tracksWithTables = GlobData.Tracks.Count(t => t.Tables.Count > 0);
-        var radenia = RazeniFile.Read(path, GlobData.Sounds, GrafikonContext.Current);
+        var tracksWithTables = Program.Context.Document.Tracks.Count(t => t.Tables.Count > 0);
+        var radenia = RazeniFile.Read(path, Program.Context.Workspace.Sounds, Program.Context.Grafikon);
         log.Add($"demo: radenia {radenia.Count} ({string.Join("; ", radenia.Select(r => $"{r.CisloVlaku} {r.DatObm}: {r.Text}"))})");
 
-        log.Add($"demo: {trains.Count} vlakov, {GlobData.Tracks.Count - 1} koľají ({tracksWithTables} s tabuľou), " +
-                $"{GlobData.Operators.Count - 1} dopravcov, tabule fyz/log/kat/TabTab {physicals.Count}/{logicals.Count}/" +
-                $"{catalogs.Count}/{tabtabs.Count}, texty {texts.Count}, písma {fonts.Count}, vlastné stanice {GlobData.CustomStations.Count}");
+        log.Add($"demo: {trains.Count} vlakov, {Program.Context.Document.Tracks.Count - 1} koľají ({tracksWithTables} s tabuľou), " +
+                $"{Program.Context.Document.Operators.Count - 1} dopravcov, tabule fyz/log/kat/TabTab {physicals.Count}/{logicals.Count}/" +
+                $"{catalogs.Count}/{tabtabs.Count}, texty {texts.Count}, písma {fonts.Count}, vlastné stanice {Program.Context.Document.CustomStations.Count}");
         foreach (var warning in LoadWarnings.Items)
             log.Add("demo varovanie: " + warning);
     }
 
-    private static void SetGlobData(string property, string value) =>
-        typeof(GlobData).GetProperty(property, BindingFlags.Public | BindingFlags.Static)!.SetValue(null, value);
 }

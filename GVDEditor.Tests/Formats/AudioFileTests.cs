@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using ExControls;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using ToolsCore.Iniss.Tools;
@@ -14,26 +13,18 @@ namespace GVDEditor.Tests.Formats;
 public class AudioFileTests
 {
     private string _dir = null!;
-    private string? _oldDataDir;
+    private static readonly List<Station> Stations = [new Station("9900100", "Dolné Mesto")];
 
     [TestInitialize]
     public void Init()
     {
         _dir = Path.Combine(Path.GetTempPath(), "AudioFileTests_" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(_dir);
-
-        var prop = typeof(GlobData).GetProperty(nameof(GlobData.DataDir))!;
-        _oldDataDir = (string?)prop.GetValue(null);
-        prop.SetValue(null, _dir);
-
-        GlobData.Stations = [new Station("9900100", "Dolné Mesto")];
-        GlobData.CustomStations = new ExBindingList<Station>();
     }
 
     [TestCleanup]
     public void Cleanup()
     {
-        typeof(GlobData).GetProperty(nameof(GlobData.DataDir))!.SetValue(null, _oldDataDir);
         Directory.Delete(_dir, true);
     }
 
@@ -50,16 +41,16 @@ public class AudioFileTests
             "9900200,Stará linka,STARA,Stara,"
         ], Encodings.Win1250);
 
-        var audios = AudioFile.Read(GlobData.DataDir);
+        var audios = AudioFile.Read(_dir, Stations);
 
         CollectionAssert.AreEqual(new[] { "9900100", "TEST" }, audios.Select(a => a.Station.ID).ToArray());
 
-        AudioFile.Write(GlobData.DataDir, audios);
+        AudioFile.Write(_dir, audios);
         var lines = File.ReadAllLines(File_, Encodings.Win1250);
 
         StringAssert.StartsWith(lines[1], "TEST,Test,Test,TestHlas", lines[1]);
         Assert.AreEqual("/koniec okruhov", lines[2]);
         Assert.AreEqual("9900200,Stará linka,STARA,Stara,", lines[3]);
-        Assert.AreEqual(2, AudioFile.Read(GlobData.DataDir).Count);
+        Assert.AreEqual(2, AudioFile.Read(_dir, Stations).Count);
     }
 }

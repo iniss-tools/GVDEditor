@@ -14,6 +14,11 @@ namespace GVDEditor.UI.Settings;
 /// </summary>
 public partial class StateDgmPage : UserControl
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private GVDDirectory _dir = null!;
 
     /// <summary>
@@ -27,8 +32,10 @@ public partial class StateDgmPage : UserControl
     /// <summary>
     /// Zobrazi stav stavoveho diagramu grafikonu.
     /// </summary>
-    public void LoadData(GVDDirectory dir)
+    /// <param name=\"context\">kontext editora</param>
+    internal void LoadData(EditorContext context, GVDDirectory dir)
     {
+        _ctx = context;
         _dir = dir;
         RefreshStatus();
     }
@@ -38,7 +45,7 @@ public partial class StateDgmPage : UserControl
     /// </summary>
     public void OpenEditor()
     {
-        using var form = new FStateDgm(_dir);
+        using var form = new FStateDgm(_ctx, _dir);
         form.ShowDialog(FindForm());
         RefreshStatus();
     }
@@ -58,8 +65,8 @@ public partial class StateDgmPage : UserControl
 
             var diags = StateDgmValidator.Validate(d, new StateDgmValidationOptions
             {
-                ReportKeys = GlobData.ReportTypes?.Count > 0 ? GlobData.ReportTypes.Select(r => r.Key).ToList() : null,
-                Symbols = new GvdExprSymbols()
+                ReportKeys = _ctx.Document.ReportTypes?.Count > 0 ? _ctx.Document.ReportTypes.Select(r => r.Key).ToList() : null,
+                Symbols = new GvdExprSymbols(_ctx.Workspace, _ctx.Document)
             });
             var errors = diags.Count(x => x.IsError);
             var warnings = diags.Count(x => x.Severity == ExprSeverity.Warning);

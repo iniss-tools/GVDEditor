@@ -98,17 +98,15 @@ public class GrafikonLanguageRulesTests
     {
         var dir = Path.Combine(Path.GetTempPath(), "GrafikonLanguageRulesTests_" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(dir);
-        var oldLanguages = GlobData.Languages;
         try
         {
-            GlobData.Languages = new ExBindingList<FyzLanguage>(_global);
             // lokalny subor ma iny nazov jazyka aj priznak hlavneho jazyka - INISS ich berie z globalneho suboru
             File.WriteAllText(Path.Combine(dir, GvdFileConsts.FILE_CATEGORI),
                 "[MAIN]\r\nCOUNT_BASIC_REPORT_VARIANT=0\r\nCOUNT_TYPE_BASIC_REPORT=0\r\nCOUNT_LANGUAGES=2\r\n\r\n" +
                 "[LANGUAGE_01]\r\nKEY=\"SK\"\r\nIS_BASIC=0\r\nNAME=\"SK\"\r\n\r\n" +
                 "[LANGUAGE_02]\r\nKEY=\"GB\"\r\nIS_BASIC=1\r\nNAME=\"EN\"\r\n");
 
-            var (_, _, languages) = CategoriFile.ReadLocal(dir, GlobData.Languages);
+            var (_, _, languages) = CategoriFile.ReadLocal(dir, _global);
 
             CollectionAssert.AreEqual(new[] { _sk, _gb }, languages);
             Assert.AreEqual("Slovensky", _sk.Name);
@@ -118,7 +116,6 @@ public class GrafikonLanguageRulesTests
         }
         finally
         {
-            GlobData.Languages = oldLanguages;
             Directory.Delete(dir, true);
         }
     }

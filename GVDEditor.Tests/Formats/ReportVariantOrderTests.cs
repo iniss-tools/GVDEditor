@@ -1,8 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using GVDEditor.Domain.Analysis;
+using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using ToolsCore.Iniss.Tools;
+using ToolsCore.XML;
 
 namespace GVDEditor.Tests.Formats;
 
@@ -69,7 +71,7 @@ public class ReportVariantOrderTests
             CategoriFile.WriteLocal(dir.FullName, swapped, ReportType.GetDefaultValuesSK(), []);
             LoadWarnings.Clear();
 
-            var (variants, types, _) = CategoriFile.ReadLocal(dir.FullName, GlobData.Languages);
+            var (variants, types, _) = CategoriFile.ReadLocal(dir.FullName, []);
 
             CollectionAssert.AreEqual(ReportVariant.GetDefaultValues(), variants);
             Assert.HasCount(5, types);
@@ -92,30 +94,28 @@ public class ReportVariantOrderTests
     public void VariantyHlasenia_PismenaRadenia_VelkeJeDlheMaleKratke()
     {
         var dir = Directory.CreateTempSubdirectory("gvdrazeni");
-        var (oldTypes, oldVariants) = (GlobData.ReportTypes, GlobData.ReportVariants);
         try
         {
             var prichadza = new ReportType("Prijizdi", "Přijíždí", "P");
             var zastavil = new ReportType("Zastavil", "Zastavil", "L");
-            GlobData.ReportTypes = [prichadza, zastavil];
-            GlobData.ReportVariants = ReportVariant.GetDefaultValues();
+            var context = new GrafikonContext(new InissWorkspace { Stations = [] },
+                new GrafikonDocument { ReportTypes = [prichadza, zastavil], ReportVariants = ReportVariant.GetDefaultValues() }, AppLanguage.Slovak);
             var file = Path.Combine(dir.FullName, GvdFileConsts.FILE_RAZENI1);
             File.WriteAllText(file, "#721,Pl,,,\r\n", Encodings.Win1250);
 
-            var radenie = RazeniFile.Read(dir.FullName, [], GrafikonContext.Current).Single();
+            var radenie = RazeniFile.Read(dir.FullName, [], context).Single();
 
             Assert.HasCount(2, radenie.ChosenReports);
             CollectionAssert.AreEqual(new[] { ReportVariant.DlheHlasenie }, radenie.ChosenReports.Single(r => r.Type == prichadza).Variants);
             CollectionAssert.AreEqual(new[] { ReportVariant.KratkeHlasenie }, radenie.ChosenReports.Single(r => r.Type == zastavil).Variants);
 
-            RazeniFile.Write(dir.FullName, [radenie], [], GlobData.ReportVariants);
+            RazeniFile.Write(dir.FullName, [radenie], [], context.Document.ReportVariants);
             var header = File.ReadAllLines(file, Encodings.Win1250).Single(line => line.StartsWith('#'));
 
             Assert.AreEqual("#721,Pl,,,", header);
         }
         finally
         {
-            (GlobData.ReportTypes, GlobData.ReportVariants) = (oldTypes, oldVariants);
             dir.Delete(true);
         }
     }

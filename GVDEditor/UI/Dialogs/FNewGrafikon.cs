@@ -10,8 +10,13 @@ namespace GVDEditor.UI.Dialogs;
 /// <summary>
 /// Dialog - Novy grafikon.
 /// </summary>
-public partial class FNewGrafikon : Form
+internal partial class FNewGrafikon : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
     /// <summary>
     /// Novy grafikon.
     /// </summary>
@@ -42,8 +47,9 @@ public partial class FNewGrafikon : Form
     /// Vytvori novy formular typu <see cref="FNewGrafikon"/>.
     /// </summary>
     /// <param name="grafikony">Všetky grafikony otvorenej inštalácie INISSu.</param>
-    public FNewGrafikon(IReadOnlyList<GVDDirectory> grafikony)
+    public FNewGrafikon(EditorContext context, IReadOnlyList<GVDDirectory> grafikony)
     {
+        _ctx = context;
         _grafikony = grafikony;
         InitializeComponent();
         this.ApplyThemeAndFonts();
@@ -51,8 +57,8 @@ public partial class FNewGrafikon : Form
         // grafikon sa vzdy zaklada v otvorenej instalacii, cesta sa len zobrazuje
         tbDirIniss.ReadOnly = true;
         pbColor.BackColor = Color.Transparent;
-        if (!string.IsNullOrEmpty(GlobData.INISSDir)) 
-            tbDirIniss.Text = GlobData.INISSDir;
+        if (!string.IsNullOrEmpty(_ctx.Workspace.INISSDir)) 
+            tbDirIniss.Text = _ctx.Workspace.INISSDir;
 
         if (FMain.Stanice.Count == 0) rbNewObd.Enabled = false;
 
@@ -97,7 +103,7 @@ public partial class FNewGrafikon : Form
                 return;
             }
 
-            foreach (var stanica in GlobData.Stations)
+            foreach (var stanica in _ctx.Workspace.Stations)
                 if (stanica.ID == id.ToString())
                 {
                     Utils.ShowError(Resources.FNewGrafikon_Zadané_ID_vlastnej_stanice_už_patrí_inej_stanici);
@@ -142,7 +148,7 @@ public partial class FNewGrafikon : Form
         NewDir = new DirList
         {
             DirName = tbDirName.Text,
-            FullPath = GlobData.DataDir + Path.DirectorySeparatorChar + tbDirName.Text,
+            FullPath = _ctx.Workspace.DataDir + Path.DirectorySeparatorChar + tbDirName.Text,
             TablePort = decimal.ToInt32(nudTabPort.Value),
             ReportPort = decimal.ToInt32(nudHlaseniePort.Value),
             BackColor = selectedColor
@@ -229,10 +235,9 @@ public partial class FNewGrafikon : Form
         try
         {
             var path = tbDirIniss.Text + Path.DirectorySeparatorChar + "RAWBANK";
-            RawBankParser.ReadFyzZvukFile(path, FyzLanguage.GetBasicLanguage(GlobData.Languages)!);
-            GlobData.Stations = Station.GetStations();
-            GlobData.Stations.Sort();
-            cbStationName.DataSource = GlobData.Stations;
+            var stations = Station.GetStations(RawBankParser.ReadFyzZvukFile(path, FyzLanguage.GetBasicLanguage(_ctx.Workspace.Languages)!));
+            stations.Sort();
+            cbStationName.DataSource = stations;
         }
         catch (Exception)
         {
@@ -245,7 +250,7 @@ public partial class FNewGrafikon : Form
         if (rbNewStation.Checked)
         {
             cbStationName.DataSource = null;
-            var st = new List<Station>(GlobData.Stations);
+            var st = new List<Station>(_ctx.Workspace.Stations);
             st.Sort();
             cbStationName.DataSource = st;
         }
@@ -253,7 +258,7 @@ public partial class FNewGrafikon : Form
         {
             cbStationName.DataSource = null;
             var st = new List<Station>();
-            foreach (var s in GlobData.Stations)
+            foreach (var s in _ctx.Workspace.Stations)
             foreach (var ss in FMain.Stanice)
                 if (ss == s.Name)
                     st.Add(s);

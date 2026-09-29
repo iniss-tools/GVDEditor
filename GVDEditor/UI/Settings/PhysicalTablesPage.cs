@@ -11,10 +11,15 @@ namespace GVDEditor.UI.Settings;
 
 /// <summary>
 /// Stranka Fyzicke tabule v okne Lokalne nastavenia - zoznam tabul a udaje vybranej tabule s upravou priamo
-/// v poliach. Zmeny idu rovno do <see cref="GlobData.TablePhysicals" />, Zrusit okna ich vrati.
+/// v poliach. Zmeny idu rovno do <see cref="_ctx.Document.TablePhysicals" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class PhysicalTablesPage : UserControl, ISettingsPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly ItemListSupport<TablePhysical> _list;
     private readonly FieldMarks _marks = new();
     private readonly List<(TablePhysical Table, Field Field, string Text)> _problems = [];
@@ -29,7 +34,7 @@ public partial class PhysicalTablesPage : UserControl, ISettingsPage
     public PhysicalTablesPage()
     {
         InitializeComponent();
-        _list = new ItemListSupport<TablePhysical>(dgv, tbFilter, () => GlobData.TablePhysicals, t => [t.Name, t.Key]);
+        _list = new ItemListSupport<TablePhysical>(dgv, tbFilter, () => _ctx.Document.TablePhysicals, t => [t.Name, t.Key]);
         _list.SelectionChanged += (_, _) => ShowCurrent();
     }
 
@@ -56,20 +61,22 @@ public partial class PhysicalTablesPage : UserControl, ISettingsPage
     /// <summary>
     /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
-    public void LoadData()
+    /// <param name=\"context\">kontext editora</param>
+    internal void LoadData(EditorContext context)
     {
+        _ctx = context;
         foreach (var header in new[] { lBasic, lComm, lAdvanced, lCommentHeader, lUseHeader })
             header.Font = new Font(Font, FontStyle.Bold);
         lIdNote.ForeColor = SystemColors.GrayText;
         _hintColor = lHint.ForeColor;
         _marks.Capture(tbName, tbKey, nudId);
-        if (GlobData.UsingStyle.DarkScrollBar)
+        if (_ctx.UsingStyle.DarkScrollBar)
             pDetail.SetTheme(WindowsTheme.DarkExplorer);
         _list.CaptureColors();
 
         FillCatalogs();
         _loaded = true;
-        _list.Fill(GlobData.TablePhysicals.FirstOrDefault());
+        _list.Fill(_ctx.Document.TablePhysicals.FirstOrDefault());
         Check();
     }
 
@@ -93,7 +100,7 @@ public partial class PhysicalTablesPage : UserControl, ISettingsPage
         _loading = true;
         cbCatalog.BeginUpdate();
         cbCatalog.Items.Clear();
-        cbCatalog.Items.AddRange(GlobData.TableCatalogs.ToArray<object>());
+        cbCatalog.Items.AddRange(_ctx.Document.TableCatalogs.ToArray<object>());
         cbCatalog.SelectedItem = _current?.TableCatalog;
         cbCatalog.EndUpdate();
         _loading = false;
@@ -143,8 +150,8 @@ public partial class PhysicalTablesPage : UserControl, ISettingsPage
                 : string.Format(CultureInfo.CurrentCulture, Resources.PhysicalTablesPage_Adresa_Bez_kontroly, manufacturer.Name);
     }
 
-    private static IReadOnlyList<string> Usage(TablePhysical table) =>
-        TableUsage.LogicalPositions(table, GlobData.TableLogicals)
+    private IReadOnlyList<string> Usage(TablePhysical table) =>
+        TableUsage.LogicalPositions(table, _ctx.Document.TableLogicals)
             .Select(u => string.Format(CultureInfo.CurrentCulture, Resources.TablesPage_Pouzitie_Logicka, u.Logical.Name, u.Position))
             .ToList();
 
@@ -200,9 +207,9 @@ public partial class PhysicalTablesPage : UserControl, ISettingsPage
     private void Check()
     {
         _problems.Clear();
-        var tables = GlobData.TablePhysicals.ToList();
+        var tables = _ctx.Document.TablePhysicals.ToList();
         for (var i = 0; i < tables.Count; i++)
-            foreach (var (field, text) in TablePhysicalRules.Check(tables, i, GlobData.TableCatalogs))
+            foreach (var (field, text) in TablePhysicalRules.Check(tables, i, _ctx.Document.TableCatalogs))
                 _problems.Add((tables[i], field, text));
 
         MarkProblems();
@@ -226,21 +233,21 @@ public partial class PhysicalTablesPage : UserControl, ISettingsPage
 
     private void bAdd_Click(object? sender, EventArgs e)
     {
-        if (GlobData.TableCatalogs.FirstOrDefault() is not { } catalog)
+        if (_ctx.Document.TableCatalogs.FirstOrDefault() is not { } catalog)
         {
             Utils.ShowError(Resources.PhysicalTablesPage_Bez_katalogu);
             return;
         }
 
-        var name = TableRules.Unique(GlobData.TablePhysicals.Select(t => t.Name), Resources.TablesPage_Nova_tabula);
+        var name = TableRules.Unique(_ctx.Document.TablePhysicals.Select(t => t.Name), Resources.TablesPage_Nova_tabula);
         var manufacturer = catalog.Manufacturer;
         var table = new TablePhysical
         {
             Name = name,
-            Key = TableRules.Unique(GlobData.TablePhysicals.Select(t => t.Key), name),
+            Key = TableRules.Unique(_ctx.Document.TablePhysicals.Select(t => t.Key), name),
             TableCatalog = catalog,
             ID = manufacturer is { IsKnownToIniss: true, MinAddress: >= 1 } ? manufacturer.MinAddress : 1,
-            CommunicationPort = GlobData.TablePhysicals.LastOrDefault()?.CommunicationPort ?? 1,
+            CommunicationPort = _ctx.Document.TablePhysicals.LastOrDefault()?.CommunicationPort ?? 1,
             RecCount = catalog.MaxRecCount,
             SaveXML = "",
             ReverseArrows = "",
@@ -248,7 +255,7 @@ public partial class PhysicalTablesPage : UserControl, ISettingsPage
             Comment = ""
         };
 
-        GlobData.TablePhysicals.Add(table);
+        _ctx.Document.TablePhysicals.Add(table);
         Added(table);
     }
 
@@ -259,8 +266,8 @@ public partial class PhysicalTablesPage : UserControl, ISettingsPage
 
         var table = new TablePhysical
         {
-            Name = TableRules.Unique(GlobData.TablePhysicals.Select(t => t.Name), source.Name),
-            Key = TableRules.Unique(GlobData.TablePhysicals.Select(t => t.Key), source.Key),
+            Name = TableRules.Unique(_ctx.Document.TablePhysicals.Select(t => t.Name), source.Name),
+            Key = TableRules.Unique(_ctx.Document.TablePhysicals.Select(t => t.Key), source.Key),
             TableCatalog = source.TableCatalog,
             ID = source.ID,
             CommunicationPort = source.CommunicationPort,
@@ -271,7 +278,7 @@ public partial class PhysicalTablesPage : UserControl, ISettingsPage
             Comment = source.Comment
         };
 
-        GlobData.TablePhysicals.Insert(GlobData.TablePhysicals.IndexOf(source) + 1, table);
+        _ctx.Document.TablePhysicals.Insert(_ctx.Document.TablePhysicals.IndexOf(source) + 1, table);
         Added(table);
     }
 
@@ -289,9 +296,9 @@ public partial class PhysicalTablesPage : UserControl, ISettingsPage
         if (_current is not { } table || Usage(table).Count > 0)
             return;
 
-        var index = GlobData.TablePhysicals.IndexOf(table);
-        GlobData.TablePhysicals.RemoveAt(index);
-        _list.Fill(GlobData.TablePhysicals.Count == 0 ? null : GlobData.TablePhysicals[Math.Min(index, GlobData.TablePhysicals.Count - 1)]);
+        var index = _ctx.Document.TablePhysicals.IndexOf(table);
+        _ctx.Document.TablePhysicals.RemoveAt(index);
+        _list.Fill(_ctx.Document.TablePhysicals.Count == 0 ? null : _ctx.Document.TablePhysicals[Math.Min(index, _ctx.Document.TablePhysicals.Count - 1)]);
         Check();
     }
 

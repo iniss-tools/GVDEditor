@@ -7,7 +7,7 @@ namespace GVDEditor.Tests.Domain.Editing;
 
 /// <summary>
 /// Radenia v okne vlaku: uprava sa da zrusit (okno meni kopie), pri ulozeni ostane zachovana identita objektov
-/// zdielanych medzi GlobData.Radenia a vlakmi s rovnakym cislom a radenie ineho cisla sa nezmeni.
+/// zdielanych medzi radeniami grafikonu a vlakmi s rovnakym cislom a radenie ineho cisla sa nezmeni.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
@@ -37,7 +37,7 @@ public class RadeniaEditingTests
         public Radenie R3 => Global[2];
     }
 
-    // dva vlaky s cislom 1001 (varianty) zdielaju tie iste radenia s GlobData.Radenia, vlak 2002 ma vlastne
+    // dva vlaky s cislom 1001 (varianty) zdielaju tie iste radenia s radeniami grafikonu, vlak 2002 ma vlastne
     private static Grafikon Graph()
     {
         var r1 = NewRadenie("1001", "jede denne");

@@ -145,7 +145,7 @@ public class TableCatalogEditingTests
                 ViewTypeTabs = [TypeTab("Cas", "Smer")]
             };
 
-            // FTableCatalog kedysi vkladal Ziadny do GlobData.TabTabs – do suboru sa nesmie dostat
+            // FTableCatalog kedysi vkladal Ziadny do sekcii TabTab grafikonu – do suboru sa nesmie dostat
             TablesFile.Write(dir.FullName, [TableTabTab.Empty, tabTab], [catalog], [], []);
             var text = File.ReadAllText(Path.Combine(dir.FullName, GvdFileConsts.FILE_TABTAB), Encodings.Win1250);
             Assert.DoesNotContain("[" + TableTabTab.Empty.Key + "]", text);

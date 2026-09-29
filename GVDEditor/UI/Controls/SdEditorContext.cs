@@ -4,15 +4,22 @@ using ToolsCore.Iniss.Expressions;
 namespace GVDEditor.UI.Controls;
 
 /// <summary>
-/// Spolocny kontext editorov stavoveho diagramu - symboly pre kontrolu vyrazov a typy hlaseni z Categori.txt.
+/// Spolocny kontext editorov stavoveho diagramu - symboly pre kontrolu vyrazov, typy hlaseni z Categori.txt
+/// a pismo vyrazov. Vytvara ho okno stavoveho diagramu a dostava ho kazdy editor.
 /// </summary>
-internal static class SdEditorContext
+/// <param name="symbols">symboly grafikonu pre validator vyrazov (druhy vlakov, stanice…)</param>
+/// <param name="reportKeys">kluce typov hlaseni z lokalneho Categori.txt</param>
+/// <param name="exprFont">pismo poli s vyrazom (ako v editore TabTab)</param>
+internal sealed class SdEditorContext(IExprSymbolProvider? symbols, IReadOnlyList<string> reportKeys, Font exprFont)
 {
     /// <summary>Symboly grafikonu pre validator vyrazov (druhy vlakov, stanice…).</summary>
-    public static IExprSymbolProvider? Symbols { get; set; }
+    public IExprSymbolProvider? Symbols { get; } = symbols;
 
     /// <summary>Kluce typov hlaseni z lokalneho Categori.txt.</summary>
-    public static IReadOnlyList<string> ReportKeys { get; set; } = [];
+    public IReadOnlyList<string> ReportKeys { get; } = reportKeys;
+
+    /// <summary>Pismo poli s vyrazom.</summary>
+    public Font ExprFont { get; } = exprFont;
 
     /// <summary>Polozka comboboxu s hodnotou.</summary>
     public sealed record Item(string Text, object? Value)
@@ -38,7 +45,7 @@ internal static class SdEditorContext
     public static object? Value(ComboBox cb) => (cb.SelectedItem as Item)?.Value;
 
     /// <summary>Skontroluje vyraz; vrati text chyby/varovania alebo null.</summary>
-    public static (ExprSeverity Severity, string Message)? Check(string text, ExprContext context, bool isCondition)
+    public (ExprSeverity Severity, string Message)? Check(string text, ExprContext context, bool isCondition)
     {
         if (string.IsNullOrWhiteSpace(text)) return null;
         var r = ExprValidator.Validate(text, new ExprValidationOptions { Context = context, Symbols = Symbols, IsCondition = isCondition, ReportContextDependent = false });

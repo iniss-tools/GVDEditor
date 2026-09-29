@@ -25,6 +25,11 @@ namespace GVDEditor.DocScreenshots;
 /// </remarks>
 internal static class Program
 {
+    /// <summary>
+    /// Kontext editora harnessu - ukážková inštalácia a otvorený grafikon (v programe ho vytvára GVDEditor.Program).
+    /// </summary>
+    public static EditorContext Context { get; private set; } = null!;
+
     private const BindingFlags Any = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
 
     [STAThread]
@@ -82,7 +87,7 @@ internal static class Program
         if (Directory.Exists(AppPaths.DataDir))
             Directory.Delete(AppPaths.DataDir, true);
 
-        GlobData.Session = AppInit.Initialization<GVDEditorConfig, GVDEditorStyle>();
+        Context = new EditorContext(AppInit.Initialization<GVDEditorConfig, GVDEditorStyle>());
 
         // harness nebezi v Application.Run: modalne okno (ShowDialog) by pri skonceni svojej slucky odinstalovalo
         // synchronizacny kontext WinForms a BackgroundWorker spusteny potom by volal ProgressChanged/RunWorkerCompleted
@@ -103,8 +108,8 @@ internal static class Program
     private static void SetTheme(string theme)
     {
         var style = theme == "dark" ? GVDEditorStyle.DefaultDarkStyle : GVDEditorStyle.DefaultLightStyle;
-        GlobData.UsingStyle = style;
-        AppInit.MsgBoxStyleInit(style, GlobData.Config);
+        Context.Session.UsingStyle = style;
+        AppInit.MsgBoxStyleInit(style, Context.Config);
     }
 
     /// <summary>
@@ -112,8 +117,7 @@ internal static class Program
     /// </summary>
     public static FMain OpenMain(string installDir)
     {
-        var main = new FMain();
-        typeof(GVDEditor.Program).GetProperty(nameof(GVDEditor.Program.MainForm), Any)!.SetValue(null, main);
+        var main = new FMain(Context);
 
         // FMain_Load by argumenty harnessu (--out …) bral ako cestu k projektu a registroval jump list
         main.Load -= (EventHandler)Delegate.CreateDelegate(typeof(EventHandler), main, "FMain_Load");
@@ -123,7 +127,7 @@ internal static class Program
         Pump.Events();
 
         typeof(FMain).GetMethod("OpenRecentProject", Any)!.Invoke(main, [installDir]);
-        if (!Pump.Until(() => GlobData.Trains.Count > 0 && Application.OpenForms.OfType<FWait>().All(f => !f.Visible)))
+        if (!Pump.Until(() => Context.Document.Trains.Count > 0 && Application.OpenForms.OfType<FWait>().All(f => !f.Visible)))
             throw new TimeoutException("Grafikon sa nenačítal.");
 
         return main;

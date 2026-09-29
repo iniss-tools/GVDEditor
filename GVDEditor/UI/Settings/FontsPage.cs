@@ -17,6 +17,11 @@ namespace GVDEditor.UI.Settings;
 public partial class FontsPage : UserControl, ISettingsPage
 {
     /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
+    /// <summary>
     /// Stav pisma pocas upravy: ktore udaje sa este riadia rezom a kde sa pismo pouziva.
     /// </summary>
     private sealed class FontState
@@ -79,9 +84,11 @@ public partial class FontsPage : UserControl, ISettingsPage
     /// <summary>
     /// Naplni stranku pismami - volat az po nastaveni temy okna.
     /// </summary>
+    /// <param name=\"context\">kontext editora</param>
     /// <param name="fontDir">priecinok s pismami</param>
-    public void LoadData(string fontDir)
+    internal void LoadData(EditorContext context, string fontDir)
     {
+        _ctx = context;
         FontDir = fontDir;
         tbDir.Text = fontDir;
 
@@ -91,20 +98,20 @@ public partial class FontsPage : UserControl, ISettingsPage
             auto.ForeColor = SystemColors.GrayText;
         listFonts.ItemHeight = Font.Height + 6;
         // tema nastavuje tmave posuvniky len niektorym prvkom - panel s posuvanim ich ma inak svetle
-        if (GlobData.UsingStyle.DarkScrollBar)
+        if (_ctx.UsingStyle.DarkScrollBar)
             pDetail.SetTheme(WindowsTheme.DarkExplorer);
 
         cbType.Items.Clear();
         cbType.Items.AddRange(TableFontType.GetValues().ToArray<object>());
 
-        foreach (var font in GlobData.TableFonts)
+        foreach (var font in _ctx.Document.TableFonts)
             _states[font] = NewState(font, false);
         RecountUsage();
 
-        GlobData.TableFonts.ListChanged += TableFonts_ListChanged;
-        Disposed += (_, _) => GlobData.TableFonts.ListChanged -= TableFonts_ListChanged;
+        _ctx.Document.TableFonts.ListChanged += TableFonts_ListChanged;
+        Disposed += (_, _) => _ctx.Document.TableFonts.ListChanged -= TableFonts_ListChanged;
 
-        FillList(GlobData.TableFonts.FirstOrDefault());
+        FillList(_ctx.Document.TableFonts.FirstOrDefault());
     }
 
     private static FontState NewState(TableFont font, bool autoName)
@@ -134,16 +141,16 @@ public partial class FontsPage : UserControl, ISettingsPage
     /// </summary>
     private void RecountUsage()
     {
-        var fonts = GlobData.TableFonts.ToList();
+        var fonts = _ctx.Document.TableFonts.ToList();
         foreach (var font in fonts)
         {
             if (fonts.Count(f => f.FontID == font.FontID) > 1)
                 continue;
 
             var state = State(font);
-            state.Columns = GlobData.TableCatalogs.SelectMany(c => c.Items).Where(item => item.FontIDX == font.FontID).ToList();
-            state.Trains = GlobData.TableTexts.SelectMany(t => t.Trains).Where(train => train.FontID == font.FontID).ToList();
-            state.TabTabSections = TableFontUsage.Find(font.FontID, [], [], GlobData.TabTabs).TabTabSections;
+            state.Columns = _ctx.Document.TableCatalogs.SelectMany(c => c.Items).Where(item => item.FontIDX == font.FontID).ToList();
+            state.Trains = _ctx.Document.TableTexts.SelectMany(t => t.Trains).Where(train => train.FontID == font.FontID).ToList();
+            state.TabTabSections = TableFontUsage.Find(font.FontID, [], [], _ctx.Document.TabTabs).TabTabSections;
             state.TabTabId = font.FontID;
         }
     }
@@ -166,7 +173,7 @@ public partial class FontsPage : UserControl, ISettingsPage
         if (_selfChange || _loading)
             return;
 
-        FillList(_current is not null && GlobData.TableFonts.Contains(_current) ? _current : GlobData.TableFonts.FirstOrDefault());
+        FillList(_current is not null && _ctx.Document.TableFonts.Contains(_current) ? _current : _ctx.Document.TableFonts.FirstOrDefault());
     }
 
     private void FillList(TableFont? select)
@@ -174,7 +181,7 @@ public partial class FontsPage : UserControl, ISettingsPage
         _loading = true;
         listFonts.BeginUpdate();
         listFonts.Items.Clear();
-        listFonts.Items.AddRange(GlobData.TableFonts.ToArray<object>());
+        listFonts.Items.AddRange(_ctx.Document.TableFonts.ToArray<object>());
         listFonts.EndUpdate();
         _loading = false;
 
@@ -303,7 +310,7 @@ public partial class FontsPage : UserControl, ISettingsPage
     private void Check()
     {
         _problems.Clear();
-        var fonts = GlobData.TableFonts.ToList();
+        var fonts = _ctx.Document.TableFonts.ToList();
         for (var i = 0; i < fonts.Count; i++)
         {
             if (FontRules.CheckName(fonts[i].Name) is { } name)
@@ -328,9 +335,9 @@ public partial class FontsPage : UserControl, ISettingsPage
         _selfChange = true;
         try
         {
-            var index = GlobData.TableFonts.IndexOf(font);
+            var index = _ctx.Document.TableFonts.IndexOf(font);
             if (index >= 0)
-                GlobData.TableFonts.ResetItem(index);
+                _ctx.Document.TableFonts.ResetItem(index);
         }
         finally
         {
@@ -441,7 +448,7 @@ public partial class FontsPage : UserControl, ISettingsPage
 
     private void bAdd_Click(object? sender, EventArgs e)
     {
-        var code = new ElenFontCode(FontRules.SuggestId(GlobData.TableFonts.Select(f => f.FontID)));
+        var code = new ElenFontCode(FontRules.SuggestId(_ctx.Document.TableFonts.Select(f => f.FontID)));
         var font = new TableFont
         {
             Name = code.SuggestedName(),
@@ -495,7 +502,7 @@ public partial class FontsPage : UserControl, ISettingsPage
         _selfChange = true;
         try
         {
-            GlobData.TableFonts.Insert(_current is null ? GlobData.TableFonts.Count : GlobData.TableFonts.IndexOf(_current) + 1, font);
+            _ctx.Document.TableFonts.Insert(_current is null ? _ctx.Document.TableFonts.Count : _ctx.Document.TableFonts.IndexOf(_current) + 1, font);
         }
         finally
         {
@@ -519,19 +526,19 @@ public partial class FontsPage : UserControl, ISettingsPage
                 return;
         }
 
-        var index = GlobData.TableFonts.IndexOf(font);
+        var index = _ctx.Document.TableFonts.IndexOf(font);
         _states.Remove(font);
         _selfChange = true;
         try
         {
-            GlobData.TableFonts.Remove(font);
+            _ctx.Document.TableFonts.Remove(font);
         }
         finally
         {
             _selfChange = false;
         }
 
-        FillList(GlobData.TableFonts.Count == 0 ? null : GlobData.TableFonts[Math.Min(index, GlobData.TableFonts.Count - 1)]);
+        FillList(_ctx.Document.TableFonts.Count == 0 ? null : _ctx.Document.TableFonts[Math.Min(index, _ctx.Document.TableFonts.Count - 1)]);
     }
 
     private void listFonts_KeyDown(object? sender, KeyEventArgs e)

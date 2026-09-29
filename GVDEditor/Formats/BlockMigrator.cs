@@ -53,7 +53,7 @@ internal static class BlockMigrator
     /// <param name="dirName">Nazov priecinka v DirList (zaklad pre nazvy novych priecinkov); prazdny pre grafikon priamo v DATA.</param>
     /// <param name="always">Vratit bloky aj pri jedinom bloku bez hlavicky - grafikon priamo v DATA sa presuva vzdy.</param>
     /// <returns>Zoznam blokov s predvyplnenymi nazvami priecinkov, alebo prazdny zoznam, ak migracia nie je potrebna.</returns>
-    public static List<GvdBlock> Analyze(string dataDir, string gvdPath, GVDInfo gvd, string dirName, bool always = false)
+    public static List<GvdBlock> Analyze(string dataDir, string gvdPath, GVDInfo gvd, string dirName, StationDirectory stations, bool always = false)
     {
         var export3A = PathUtils.CombinePath(gvdPath, GvdFileConsts.FILE_EXPORT3A)!;
         var export3B = PathUtils.CombinePath(gvdPath, GvdFileConsts.FILE_EXPORT3B)!;
@@ -85,7 +85,7 @@ internal static class BlockMigrator
             var stationId = a.StationId ?? idStation;
             var stationName = stationId == idStation
                 ? gvd.ThisStation.Name
-                : Station.GetFromID(stationId.ToString(CultureInfo.InvariantCulture)).Name;
+                : stations.FromID(stationId.ToString(CultureInfo.InvariantCulture)).Name;
             result.Add(new GvdBlock(result.Count + 1, stationId, stationName, dataRows, start, end));
         }
 

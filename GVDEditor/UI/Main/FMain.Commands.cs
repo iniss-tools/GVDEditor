@@ -4,7 +4,7 @@ using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Main;
 
-public partial class FMain
+internal partial class FMain
 {
     // instalacia INISS je otvorena (zoznam grafikonov sa nacital)
     private bool _installationOpen;
@@ -36,7 +36,7 @@ public partial class FMain
         Add(GvdCommands.Save, () => DoSave(), grafikon, tsmiSave, tsbSave);
         Add(GvdCommands.Analyze, ShowAnalyzeGVD, grafikon, tsmiAnalyze, tsbAnalyze);
 
-        Add(GvdCommands.AddTrain, () => ShowEditTrain(null, GlobData.Trains.Count), grafikon, tsmimAddTrain, tsbAddTrain);
+        Add(GvdCommands.AddTrain, () => ShowEditTrain(null, _ctx.Document.Trains.Count), grafikon, tsmimAddTrain, tsbAddTrain);
         Add(GvdCommands.EditTrain, EditSelectedTrain, grafikon, tsmimEditTrain, tsbEditTrain);
         Add(GvdCommands.DeleteTrains, DoDeleteTrains, grafikon, tsmiDeleteTrain, tsbDeleteTrain);
         Add(GvdCommands.DuplicateTrain, DuplicateSelectedTrain, grafikon, tsmiDuplikovat, tsbCopyTrain);
@@ -104,7 +104,7 @@ public partial class FMain
         if (dgvTrains.SelectedRows.Count > 0)
         {
             var index = dgvTrains.SelectedRows[0].Index;
-            ShowEditTrain(GlobData.Trains[index], index);
+            ShowEditTrain(_ctx.Document.Trains[index], index);
         }
     }
 
@@ -113,7 +113,7 @@ public partial class FMain
         if (dgvTrains.SelectedRows.Count > 0)
         {
             var index = dgvTrains.SelectedRows[0].Index;
-            ShowEditTrain(GlobData.Trains[index], GlobData.Trains.Count, true);
+            ShowEditTrain(_ctx.Document.Trains[index], _ctx.Document.Trains.Count, true);
         }
     }
 }

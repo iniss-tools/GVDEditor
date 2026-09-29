@@ -1,3 +1,4 @@
+using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using ToolsCore.Iniss.Expressions;
 using ToolsCore.Iniss.TabTab;
@@ -14,14 +15,15 @@ internal sealed class GvdExprSymbols : IExprSymbolProvider
     private readonly HashSet<int> _stations;
     private readonly HashSet<string> _tracks;
     private readonly HashSet<string> _operators;
+    private readonly IEnumerable<TableCatalog> _catalogs;
 
     /// <summary>
-    /// Zostavi symboly z aktualnych dat v <see cref="GlobData"/>.
+    /// Zostavi symboly z instalacie INISS a grafikonu.
     /// </summary>
-    public GvdExprSymbols()
+    public GvdExprSymbols(InissWorkspace workspace, GrafikonDocument document)
     {
         _trainTypeKeys = new Dictionary<string, int>(StringComparer.Ordinal);
-        foreach (var t in GlobData.TrainsTypes ?? [])
+        foreach (var t in workspace.TrainsTypes ?? [])
         {
             var idx = ExprTrainTypes.IndexOf(t.CategoryTrain);
             if (idx >= 0 && !string.IsNullOrEmpty(t.Key))
@@ -29,12 +31,13 @@ internal sealed class GvdExprSymbols : IExprSymbolProvider
         }
 
         _stations = [];
-        foreach (var s in (GlobData.Stations ?? []).Concat(GlobData.CustomStations ?? []))
+        foreach (var s in (workspace.Stations ?? []).Concat(document.CustomStations ?? []))
             if (int.TryParse(s.ID, out var id))
                 _stations.Add(id);
 
-        _tracks = new HashSet<string>((GlobData.Tracks ?? []).Select(t => t.Name), StringComparer.Ordinal);
-        _operators = new HashSet<string>((GlobData.Operators ?? []).Select(o => o.Name), StringComparer.Ordinal);
+        _tracks = new HashSet<string>((document.Tracks ?? []).Select(t => t.Name), StringComparer.Ordinal);
+        _operators = new HashSet<string>((document.Operators ?? []).Select(o => o.Name), StringComparer.Ordinal);
+        _catalogs = document.TableCatalogs ?? [];
     }
 
     /// <inheritdoc />
@@ -54,11 +57,11 @@ internal sealed class GvdExprSymbols : IExprSymbolProvider
     /// Mena a kluce stlpcov katalogovych tabul, ktore danu sekciu TabTab pouzivaju (pre <c>%meno%</c>).
     /// <see langword="null"/>, ak sekciu nepouziva ziadna tabula - kontrola sa vtedy nerobi.
     /// </summary>
-    public static IReadOnlyCollection<string>? ColumnNamesFor(TableTabTab tab)
+    public IReadOnlyCollection<string>? ColumnNamesFor(TableTabTab tab)
     {
         var names = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var used = false;
-        foreach (var catalog in GlobData.TableCatalogs ?? [])
+        foreach (var catalog in _catalogs)
         {
             if (!catalog.Items.Any(i => i.Tab1 == tab || i.Tab2 == tab)) continue;
             used = true;

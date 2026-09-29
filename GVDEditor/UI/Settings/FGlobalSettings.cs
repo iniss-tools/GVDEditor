@@ -11,8 +11,13 @@ namespace GVDEditor.UI.Settings;
 /// <summary>
 /// Dialog - Globalne nastavenia vsetkych GVD v priecinku.
 /// </summary>
-public partial class FGlobalSettings : Form
+internal partial class FGlobalSettings : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
     /// <summary>
     /// Vsetky grafikony.
     /// </summary>
@@ -30,7 +35,7 @@ public partial class FGlobalSettings : Form
     // porty a farby grafikonov pred upravou - stranka Grafikony ich meni priamo, zatvorenie bez OK ich musi vratit
     private readonly List<(DirList dir, int? tablePort, int? reportPort, Color? color)> _dirSnapshot;
 
-    // jazyky, meskania, typy vlakov a audio linky pred upravou - stranky ich menia priamo v GlobData
+    // jazyky, meskania, typy vlakov a audio linky pred upravou - stranky ich menia priamo v instalacii
     private readonly GlobalSettingsSnapshot _globalSnapshot;
 
     // stranka, ktora sa ma vybrat po otvoreni okna
@@ -51,9 +56,10 @@ public partial class FGlobalSettings : Form
     /// <param name="gvds">Vsetky grafikony v priecinku.</param>
     /// <param name="page">Stranka, ktora sa ma otvorit po otvoreni dialogu.</param>
     /// <param name="openGrafikon">Otvoreny grafikon - jeho vlaky sa pri kontrole pouzitia typu vlaku beru z pamate.</param>
-    public FGlobalSettings(IList<GVDDirectory> gvds, GlobalSettingsPage page = GlobalSettingsPage.Grafikony,
+    public FGlobalSettings(EditorContext context, IList<GVDDirectory> gvds, GlobalSettingsPage page = GlobalSettingsPage.Grafikony,
         GVDDirectory? openGrafikon = null)
     {
+        _ctx = context;
         _openGrafikon = openGrafikon;
         InitializeComponent();
         this.ApplyThemeAndFonts();
@@ -63,7 +69,7 @@ public partial class FGlobalSettings : Form
         AutoSize = false;
         // nazov stranky nad nou tucne ako v nastaveniach programu
         optionsView.HeaderNodeNameFont = new Font(optionsView.HeaderNodeNameFont, FontStyle.Bold);
-        SettingsWindow.ApplyPlacement(this, GlobData.Config.GlobalSettingsWindow);
+        SettingsWindow.ApplyPlacement(this, _ctx.Config.GlobalSettingsWindow);
         _startPage = page;
         // zobrazi sa len stranka, ktorou sa okno otvara - ostatne sa vytvoria az pri prvom zobrazeni
         optionsView.SelectedPanel = PanelOf(page);
@@ -80,7 +86,7 @@ public partial class FGlobalSettings : Form
 
         Grafikony = new BindingList<GVDDirectory>(gvds);
         _dirSnapshot = gvds.Select(g => (g.Dir, g.Dir.TablePort, g.Dir.ReportPort, g.Dir.BackColor)).ToList();
-        _globalSnapshot = GlobalSettingsSnapshot.Capture();
+        _globalSnapshot = GlobalSettingsSnapshot.Capture(_ctx.Workspace);
 
         _checkedPages =
         [
@@ -93,10 +99,10 @@ public partial class FGlobalSettings : Form
         // typy vlakov citaju vlaky vsetkych grafikonov - pri mnohych grafikonoch by otvorenie okna trvalo
         _pages = new PageLoader(this, optionsView);
         _pages.Add(pGrafikony, () => grafikonyPage.LoadData(Grafikony, RemovedGVDs));
-        _pages.Add(pJazyky, () => languagesPage.LoadData(RawBankParser.ReadFyzBankFile(GlobData.RawBankDir, out _)));
-        _pages.Add(pMeskania, delaysPage.LoadData);
-        _pages.Add(pAudio, () => audioPage.LoadData(Grafikony));
-        _pages.Add(pTrainTypes, () => trainTypesPage.LoadData(Grafikony, _openGrafikon));
+        _pages.Add(pJazyky, () => languagesPage.LoadData(_ctx, RawBankParser.ReadFyzBankFile(_ctx.Workspace.RawBankDir, out _)));
+        _pages.Add(pMeskania, () => delaysPage.LoadData(_ctx));
+        _pages.Add(pAudio, () => audioPage.LoadData(_ctx, Grafikony));
+        _pages.Add(pTrainTypes, () => trainTypesPage.LoadData(_ctx, Grafikony, _openGrafikon));
         _pages.Load(PanelOf(page));
         UpdateProblems();
     }
@@ -187,12 +193,12 @@ public partial class FGlobalSettings : Form
         base.OnFormClosed(e);
     }
 
-    private static void EnableEvents(bool enable)
+    private void EnableEvents(bool enable)
     {
-        GlobData.Audios.FireEventOnSort = enable;
-        GlobData.TrainsTypes.FireEventOnSort = enable;
-        GlobData.Languages.FireEventOnSort = enable;
-        GlobData.Delays.FireEventOnSort = enable;
+        _ctx.Workspace.Audios.FireEventOnSort = enable;
+        _ctx.Workspace.TrainsTypes.FireEventOnSort = enable;
+        _ctx.Workspace.Languages.FireEventOnSort = enable;
+        _ctx.Workspace.Delays.FireEventOnSort = enable;
     }
 
     private void FGlobalSettings_Load(object sender, EventArgs e)
@@ -206,8 +212,8 @@ public partial class FGlobalSettings : Form
     private void FGlobalSettings_FormClosed(object sender, FormClosedEventArgs e)
     {
         EnableEvents(false);
-        GlobData.Config.GlobalSettingsWindow = SettingsWindow.CapturePlacement(this);
-        SettingsWindow.SaveConfig();
+        _ctx.Config.GlobalSettingsWindow = SettingsWindow.CapturePlacement(this);
+        SettingsWindow.SaveConfig(_ctx.Config);
     }
 
 }

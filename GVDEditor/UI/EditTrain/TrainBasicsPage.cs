@@ -13,6 +13,11 @@ namespace GVDEditor.UI.EditTrain;
 /// </summary>
 public partial class TrainBasicsPage : UserControl, ITrainPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly FieldMarks _marks = new();
     private TrainDraft _draft = null!;
     private List<TrainName> _names = [];
@@ -38,10 +43,12 @@ public partial class TrainBasicsPage : UserControl, ITrainPage
     /// <summary>
     /// Naplni stranku udajmi konceptu - volat az po nastaveni temy okna.
     /// </summary>
+    /// <param name=\"context\">kontext editora</param>
     /// <param name="draft">koncept vlaku</param>
     /// <param name="names">mena vlakov zo zvukovej banky</param>
-    internal void LoadData(TrainDraft draft, IEnumerable<TrainName> names)
+    internal void LoadData(EditorContext context, TrainDraft draft, IEnumerable<TrainName> names)
     {
+        _ctx = context;
         _draft = draft;
         _names = [.. names];
         foreach (var header in new[] { lTrainHeader, lFlagsHeader, lLockoutHeader })
@@ -50,14 +57,14 @@ public partial class TrainBasicsPage : UserControl, ITrainPage
         lLockoutInfo.ForeColor = SystemColors.GrayText;
         lBanner.Padding = new Padding(6);
         lBanner.Visible = false;
-        if (GlobData.UsingStyle.DarkScrollBar)
+        if (_ctx.UsingStyle.DarkScrollBar)
             pScroll.SetTheme(WindowsTheme.DarkExplorer);
         _marks.Capture(tbNumber);
 
         _loading = true;
         tbNumber.Text = draft.Number;
 
-        cbType.DataSource = GlobData.TrainsTypes;
+        cbType.DataSource = _ctx.Workspace.TrainsTypes;
         cbType.SelectedItem = draft.Type;
 
         cbName.DataSource = _names;
@@ -65,7 +72,7 @@ public partial class TrainBasicsPage : UserControl, ITrainPage
         // v grafikone je kluc zvuku, v zozname sa zobrazuje jeho nazov
         cbName.Text = TrainName.ToDisplay(_names, draft.Name);
 
-        cbOperator.DataSource = GlobData.Operators.ToList();
+        cbOperator.DataSource = _ctx.Document.Operators.ToList();
         cbOperator.SelectedItem = draft.Operator;
 
         boxMiestenkovy.Checked = draft.IsMiestenkovy;
@@ -212,7 +219,7 @@ public partial class TrainBasicsPage : UserControl, ITrainPage
             new(1, $"1 – {Resources.FEditTrain_Vyluka_BuiltIn}")
         };
 
-        foreach (var text in GlobData.LogZvukTexts)
+        foreach (var text in _ctx.Workspace.LogZvukTexts)
             if (text.IsLockout && text.Code > 1 && items.All(item => item.Code != text.Code))
                 items.Add(new LockoutItem(text.Code, text.ToString(), text));
 
@@ -233,7 +240,7 @@ public partial class TrainBasicsPage : UserControl, ITrainPage
     {
         lLockoutInfo.Text = cbLockout.SelectedItem is LockoutItem { Source: { } source }
             ? string.Format(CultureInfo.CurrentCulture, Resources.FEditTrain_Vyluka_ItemHint, source.Template,
-                string.Join(", ", source.StationNames))
+                string.Join(", ", source.StationNames(_ctx.Stations)))
             : Resources.TrainBasicsPage_Vyluka_Info;
     }
 

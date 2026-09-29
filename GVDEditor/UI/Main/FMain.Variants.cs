@@ -10,7 +10,7 @@ using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Main;
 
-public partial class FMain
+internal partial class FMain
 {
     // prehlad variant pre zoznam vlakov - postavi sa znova az pri kresleni po zmene zoznamu
     private VariantIndex? _variantIndex;
@@ -18,7 +18,7 @@ public partial class FMain
     // riadok, ktoreho varianty su v zozname zvyraznene
     private int _variantRow = -1;
 
-    private VariantIndex Variants => _variantIndex ??= VariantIndex.Build(GlobData.Trains);
+    private VariantIndex Variants => _variantIndex ??= VariantIndex.Build(_ctx.Document.Trains);
 
     private void InvalidateVariants()
     {
@@ -31,8 +31,8 @@ public partial class FMain
     /// </summary>
     private void NormalizeVariants()
     {
-        if (TrainVariants.Normalize(GlobData.Trains).Count != 0)
-            GlobData.Trains.ResetBindings();
+        if (TrainVariants.Normalize(_ctx.Document.Trains).Count != 0)
+            _ctx.Document.Trains.ResetBindings();
         InvalidateVariants();
         FitNumberColumn();
     }
@@ -52,7 +52,7 @@ public partial class FMain
     }
 
     private Train? CurrentTrain =>
-        dgvTrains.CurrentRow is { Index: var index } && index >= 0 && index < GlobData.Trains.Count ? GlobData.Trains[index] : null;
+        dgvTrains.CurrentRow is { Index: var index } && index >= 0 && index < _ctx.Document.Trains.Count ? _ctx.Document.Trains[index] : null;
 
     /// <summary>
     /// Kontextove menu zoznamu vlakov s prikazmi pre varianty.
@@ -76,12 +76,12 @@ public partial class FMain
         {
             // kopia s rovnakym cislom, nazvom a typom je dalsou variantou - dni sa rozdelia na stranke Platnost
             if (CurrentTrain is { } train)
-                ShowEditTrain(train, GlobData.Trains.Count, true, EditTrainPage.Platnost);
+                ShowEditTrain(train, _ctx.Document.Trains.Count, true, EditTrainPage.Platnost);
         };
         show.Click += (_, _) =>
         {
             if (CurrentTrain is { } train)
-                ShowEditTrain(train, GlobData.Trains.IndexOf(train), false, EditTrainPage.Platnost);
+                ShowEditTrain(train, _ctx.Document.Trains.IndexOf(train), false, EditTrainPage.Platnost);
         };
         reorder.Click += (_, _) => ReorderVariants();
         dgvTrains.ContextMenuStrip = menu;
@@ -106,8 +106,8 @@ public partial class FMain
         };
         dgvTrains.CellToolTipTextNeeded += (_, e) =>
         {
-            if (e.ColumnIndex == cisloDataGridViewTextBoxColumn.Index && e.RowIndex >= 0 && e.RowIndex < GlobData.Trains.Count)
-                e.ToolTipText = VariantToolTip(GlobData.Trains[e.RowIndex]);
+            if (e.ColumnIndex == cisloDataGridViewTextBoxColumn.Index && e.RowIndex >= 0 && e.RowIndex < _ctx.Document.Trains.Count)
+                e.ToolTipText = VariantToolTip(_ctx.Document.Trains[e.RowIndex]);
         };
     }
 
@@ -161,7 +161,7 @@ public partial class FMain
             return;
         }
 
-        GlobData.Trains.ResetBindings();
+        _ctx.Document.Trains.ResetBindings();
         InvalidateVariants();
         DataSaved = false;
     }

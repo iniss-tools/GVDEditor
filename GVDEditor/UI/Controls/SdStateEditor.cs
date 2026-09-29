@@ -29,7 +29,7 @@ internal sealed class SdStateEditor : SdEditorBase
     private readonly TableSetBox _undo;
     private StateDgmState? _s;
 
-    public SdStateEditor()
+    public SdStateEditor(SdEditorContext context) : base(context)
     {
         AddHeader(Resources.FStateDgm_Stav);
         AddRow(Resources.FStateDgm_Kluc, _key);
@@ -60,21 +60,21 @@ internal sealed class SdStateEditor : SdEditorBase
         AddFull(flags);
 
         AddHeader(Resources.FStateDgm_Automatika);
-        _autoMode = SdDynamicField.Choice(ExprContext.Condition,
+        _autoMode = SdDynamicField.Choice(Context, ExprContext.Condition,
             new SdEditorContext.Item(Resources.FStateDgm_Nenastavene, null), new SdEditorContext.Item(Resources.FStateDgm_AutoMode0, 0),
             new SdEditorContext.Item(Resources.FStateDgm_AutoMode1, 1), new SdEditorContext.Item(Resources.FStateDgm_AutoMode2, 2));
         AddRow(Resources.FStateDgm_AutoMode, _autoMode);
-        _autoTimePoint = SdDynamicField.Choice(ExprContext.Condition,
+        _autoTimePoint = SdDynamicField.Choice(Context, ExprContext.Condition,
             new SdEditorContext.Item(Resources.FStateDgm_Nenastavene, null), new SdEditorContext.Item(Resources.FStateDgm_AutoTimePoint1, 1),
             new SdEditorContext.Item(Resources.FStateDgm_AutoTimePoint2, 2));
         AddRow(Resources.FStateDgm_AutoTimePoint, _autoTimePoint);
-        _autoAdd = SdDynamicField.Number(-86400, 86400, 60, true);
+        _autoAdd = SdDynamicField.Number(Context, -86400, 86400, 60, true);
         AddRow(Resources.FStateDgm_AutoTimePointAdd, _autoAdd, Resources.FStateDgm_AutoTimePointAddTip);
-        _autoModif = SdDynamicField.Choice(ExprContext.Condition,
+        _autoModif = SdDynamicField.Choice(Context, ExprContext.Condition,
             new SdEditorContext.Item(Resources.FStateDgm_Nenastavene, null), new SdEditorContext.Item(Resources.FStateDgm_AutoModif1, 1),
             new SdEditorContext.Item(Resources.FStateDgm_AutoModif2, 2));
         AddRow(Resources.FStateDgm_AutoModif, _autoModif);
-        _wait = SdDynamicField.Choice(ExprContext.StateDgmWait,
+        _wait = SdDynamicField.Choice(Context, ExprContext.StateDgmWait,
             new SdEditorContext.Item(Resources.FStateDgm_Nenastavene, null),
             new SdEditorContext.Item(Resources.FStateDgm_Wait_VVC, unchecked((int)StateDgmWaitEvent.VVC)),
             new SdEditorContext.Item(Resources.FStateDgm_Wait_OVC, (int)StateDgmWaitEvent.OVC),
@@ -82,7 +82,7 @@ internal sealed class SdStateEditor : SdEditorBase
             new SdEditorContext.Item(Resources.FStateDgm_Wait_Odj, (int)StateDgmWaitEvent.Odj),
             new SdEditorContext.Item(Resources.FStateDgm_Wait_ZCV, (int)StateDgmWaitEvent.ZCV));
         AddRow(Resources.FStateDgm_Wait, _wait);
-        _condition.Font = GlobData.UsingStyle.TabTabEditorScheme.Font;
+        _condition.Font = Context.ExprFont;
         AddRow(Resources.FStateDgm_AutoCondition, _condition, Resources.FStateDgm_AutoConditionTip);
         _errors.SetIconAlignment(_condition, ErrorIconAlignment.MiddleLeft);
 
@@ -156,7 +156,7 @@ internal sealed class SdStateEditor : SdEditorBase
 
     private void ValidateCondition()
     {
-        var r = SdEditorContext.Check(_condition.Text, ExprContext.Condition, true);
+        var r = Context.Check(_condition.Text, ExprContext.Condition, true);
         _errors.SetError(_condition, r?.Message ?? "");
     }
 

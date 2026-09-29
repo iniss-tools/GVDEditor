@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using ExControls;
+using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Snapshots;
 using ToolsCore.Iniss.Entities;
@@ -14,6 +15,8 @@ namespace GVDEditor.Tests.Domain.Snapshots;
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
 public class GlobalSettingsSnapshotTests
 {
+    private InissWorkspace _ws = new();
+
     private static readonly Station Stanica = new("100", "Stanica");
 
     private FyzLanguage _sk = null!;
@@ -35,16 +38,16 @@ public class GlobalSettingsSnapshotTests
         _custom = new TrainType("R1", "RR", "RegioRapid");
         _audio = new Audio { Station = Stanica, Name = "Nástupištia", ShortName = "NAST", QueueName = "NAST", Mixer = "", SoundCard = "1" };
 
-        GlobData.Languages = _languages = new ExBindingList<FyzLanguage> { _sk, _cz };
-        GlobData.Delays = _delays = new ExBindingList<string> { "5", "10" };
-        GlobData.TrainsTypes = _trainTypes = new ExBindingList<TrainType> { _os, _custom };
-        GlobData.Audios = _audios = new ExBindingList<Audio> { _audio };
+        _ws.Languages = _languages = new ExBindingList<FyzLanguage> { _sk, _cz };
+        _ws.Delays = _delays = new ExBindingList<string> { "5", "10" };
+        _ws.TrainsTypes = _trainTypes = new ExBindingList<TrainType> { _os, _custom };
+        _ws.Audios = _audios = new ExBindingList<Audio> { _audio };
     }
 
     [TestMethod]
     public void Zrusit_VratiUpravyPoloziekNaMieste()
     {
-        var snapshot = GlobalSettingsSnapshot.Capture();
+        var snapshot = GlobalSettingsSnapshot.Capture(_ws);
 
         _sk.Name = "Iný";
         _sk.Key = "GB";
@@ -70,38 +73,38 @@ public class GlobalSettingsSnapshotTests
     [TestMethod]
     public void Zrusit_VratiPridaniaMazaniaANahradenia()
     {
-        var snapshot = GlobalSettingsSnapshot.Capture();
+        var snapshot = GlobalSettingsSnapshot.Capture(_ws);
 
-        GlobData.Languages.RemoveAt(1);
-        GlobData.Languages.Add(new FyzLanguage("D", "Německy"));
-        GlobData.Delays.RemoveAt(0);
-        GlobData.Delays.Insert(0, "15");
-        GlobData.Delays.Add("20");
-        GlobData.TrainsTypes[1] = new TrainType("X1", "LE", "Leo Express");
-        GlobData.TrainsTypes.Add(new TrainType("Ex"));
-        GlobData.Audios.Clear();
+        _ws.Languages.RemoveAt(1);
+        _ws.Languages.Add(new FyzLanguage("D", "Německy"));
+        _ws.Delays.RemoveAt(0);
+        _ws.Delays.Insert(0, "15");
+        _ws.Delays.Add("20");
+        _ws.TrainsTypes[1] = new TrainType("X1", "LE", "Leo Express");
+        _ws.TrainsTypes.Add(new TrainType("Ex"));
+        _ws.Audios.Clear();
 
         snapshot.Restore();
 
-        CollectionAssert.AreEqual(new[] { _sk, _cz }, GlobData.Languages.ToList());
-        CollectionAssert.AreEqual(new[] { "5", "10" }, GlobData.Delays.ToList());
-        CollectionAssert.AreEqual(new[] { _os, _custom }, GlobData.TrainsTypes.ToList());
-        Assert.AreSame(_custom, GlobData.TrainsTypes[1]);
-        CollectionAssert.AreEqual(new[] { _audio }, GlobData.Audios.ToList());
+        CollectionAssert.AreEqual(new[] { _sk, _cz }, _ws.Languages.ToList());
+        CollectionAssert.AreEqual(new[] { "5", "10" }, _ws.Delays.ToList());
+        CollectionAssert.AreEqual(new[] { _os, _custom }, _ws.TrainsTypes.ToList());
+        Assert.AreSame(_custom, _ws.TrainsTypes[1]);
+        CollectionAssert.AreEqual(new[] { _audio }, _ws.Audios.ToList());
     }
 
     [TestMethod]
     public void Zrusit_PonechaTieIsteInstancieZoznamov()
     {
-        var snapshot = GlobalSettingsSnapshot.Capture();
-        GlobData.Delays.Add("30");
+        var snapshot = GlobalSettingsSnapshot.Capture(_ws);
+        _ws.Delays.Add("30");
 
         snapshot.Restore();
 
-        Assert.AreSame(_languages, GlobData.Languages);
-        Assert.AreSame(_delays, GlobData.Delays);
-        Assert.AreSame(_trainTypes, GlobData.TrainsTypes);
-        Assert.AreSame(_audios, GlobData.Audios);
+        Assert.AreSame(_languages, _ws.Languages);
+        Assert.AreSame(_delays, _ws.Delays);
+        Assert.AreSame(_trainTypes, _ws.TrainsTypes);
+        Assert.AreSame(_audios, _ws.Audios);
     }
 
     [TestMethod]
@@ -109,15 +112,15 @@ public class GlobalSettingsSnapshotTests
     {
         var povodne = new List<ListChangedType>();
         var okno = 0;
-        GlobData.TrainsTypes.ListChanged += (_, e) => povodne.Add(e.ListChangedType);
-        var snapshot = GlobalSettingsSnapshot.Capture();
-        GlobData.TrainsTypes.ListChanged += (_, _) => okno++;
-        GlobData.TrainsTypes.FireEventOnSort = true;
+        _ws.TrainsTypes.ListChanged += (_, e) => povodne.Add(e.ListChangedType);
+        var snapshot = GlobalSettingsSnapshot.Capture(_ws);
+        _ws.TrainsTypes.ListChanged += (_, _) => okno++;
+        _ws.TrainsTypes.FireEventOnSort = true;
 
         snapshot.Restore();
 
         CollectionAssert.AreEqual(new[] { ListChangedType.Reset }, povodne);
         Assert.AreEqual(0, okno);
-        Assert.IsFalse(GlobData.TrainsTypes.FireEventOnSort);
+        Assert.IsFalse(_ws.TrainsTypes.FireEventOnSort);
     }
 }

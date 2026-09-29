@@ -7,7 +7,7 @@ using ToolsCore.XML;
 
 namespace GVDEditor.UI.Settings;
 
-public partial class FAppSettings : FAppSettingsBase
+internal partial class FAppSettings : FAppSettingsBase
 {
     private new GVDEditorConfig Config => (GVDEditorConfig)base.Config;
     private new Styles<GVDEditorStyle> Styles => (Styles<GVDEditorStyle>)base.Styles;
@@ -18,9 +18,12 @@ public partial class FAppSettings : FAppSettingsBase
 
     private bool _argsinit;
 
-    public FAppSettings(GVDEditorConfig config, Styles<GVDEditorStyle> styles) 
-        : base(config, new Styles<GVDEditorStyle>(styles), GlobData.UsingStyle, typeof(GVDEditorStyle))
+    private readonly EditorContext _ctx;
+
+    public FAppSettings(EditorContext context)
+        : base(context.Config, new Styles<GVDEditorStyle>(context.Session.Styles), context.UsingStyle, typeof(GVDEditorStyle))
     {
+        _ctx = context;
         InitializeComponent();
         
         Shortcuts = new ExBindingList<CmdShortcut>(Config.Shortcuts.ToRows(GvdCommands.All));
@@ -76,16 +79,16 @@ public partial class FAppSettings : FAppSettingsBase
     /// <inheritdoc />
     protected override void SaveData()
     {
-        GlobData.Config = Config;
-        GlobData.UsingStyle = (GVDEditorStyle)UsingStyle;
-        GlobData.Styles = Styles;
+        _ctx.Session.Config = Config;
+        _ctx.Session.UsingStyle = (GVDEditorStyle)UsingStyle;
+        _ctx.Session.Styles = Styles;
         
         var configsDir = ToolsCore.AppPaths.ConfigDir;
         if (!Directory.Exists(configsDir))
             Directory.CreateDirectory(configsDir);
 
-        Styles<GVDEditorStyle>.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_STYLES)!, GlobData.Styles);
-        XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG)!, GlobData.Config);
+        Styles<GVDEditorStyle>.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_STYLES)!, _ctx.Session.Styles);
+        XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG)!, _ctx.Config);
     }
 
     /// <inheritdoc />

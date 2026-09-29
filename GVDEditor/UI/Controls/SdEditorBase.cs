@@ -22,8 +22,12 @@ internal abstract class SdEditorBase : UserControl
     /// <summary>Kluc, na ktory v diagrame ukazuju odkazy na prvok (z Bind, posuva sa po kazdom prenose).</summary>
     private string? _refKey;
 
-    protected SdEditorBase()
+    /// <summary>Spolocny kontext editorov (symboly, typy hlaseni, pismo vyrazov).</summary>
+    protected SdEditorContext Context { get; }
+
+    protected SdEditorBase(SdEditorContext context)
     {
+        Context = context;
         AutoScroll = true;
         Table = new TableLayoutPanel
         {

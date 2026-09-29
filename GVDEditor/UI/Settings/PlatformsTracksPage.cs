@@ -11,11 +11,16 @@ namespace GVDEditor.UI.Settings;
 
 /// <summary>
 /// Stranka Nastupistia a kolaje v okne Lokalne nastavenia - strom nastupiste → kolaje a udaje vybranej polozky
-/// s upravou priamo v poliach. Zmeny idu rovno do <see cref="GlobData.Platforms" /> a <see cref="GlobData.Tracks" />,
+/// s upravou priamo v poliach. Zmeny idu rovno do <see cref="_ctx.Document.Platforms" /> a <see cref="_ctx.Document.Tracks" />,
 /// Zrusit okna ich vrati.
 /// </summary>
 public partial class PlatformsTracksPage : UserControl, ISettingsPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly List<(object Item, Field Field, string Text)> _problems = [];
     // povodna farba okraja poli (podla temy) - chybne pole sa zafarbi
     private readonly Dictionary<ExTextBox, Color> _borders = [];
@@ -56,19 +61,21 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
     /// <summary>
     /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
-    public void LoadData()
+    /// <param name=\"context\">kontext editora</param>
+    internal void LoadData(EditorContext context)
     {
+        _ctx = context;
         foreach (var header in new[] { lPlatHeader, lIdent, lBoards, lSound })
             header.Font = new Font(Font, FontStyle.Bold);
         _hintColor = lHint.ForeColor;
         foreach (var box in new[] { tbPlatKey, tbPlatName, tbPlatSound, tbTrKey, tbTrName, tbTrFull, tbTrText, tbTrSound })
             _borders[box] = box.BorderColor;
-        if (GlobData.UsingStyle.DarkScrollBar)
+        if (_ctx.UsingStyle.DarkScrollBar)
             pDetail.SetTheme(WindowsTheme.DarkExplorer);
 
         RefreshTables();
-        GlobData.TableLogicals.ListChanged += TableLogicals_ListChanged;
-        Disposed += (_, _) => GlobData.TableLogicals.ListChanged -= TableLogicals_ListChanged;
+        _ctx.Document.TableLogicals.ListChanged += TableLogicals_ListChanged;
+        Disposed += (_, _) => _ctx.Document.TableLogicals.ListChanged -= TableLogicals_ListChanged;
 
         BuildTree(null);
         Check();
@@ -86,7 +93,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
         if (!_loaded)
             return;
 
-        var track = GlobData.Tracks.FirstOrDefault(t => t != Track.None);
+        var track = _ctx.Document.Tracks.FirstOrDefault(t => t != Track.None);
         if (track is not null)
             SelectItem(track);
     }
@@ -113,13 +120,13 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
     /// <summary>
     /// Nastupiste, pod ktorym kolaj lezi v strome - rovnaky objekt, inak podla oznacenia.
     /// </summary>
-    private static Platform? PlatformOf(Track track)
+    private Platform? PlatformOf(Track track)
     {
         if (track.Platform is null || !IsReal(track.Platform))
             return null;
 
-        return GlobData.Platforms.FirstOrDefault(p => ReferenceEquals(p, track.Platform))
-               ?? GlobData.Platforms.FirstOrDefault(p => IsReal(p) && p.EqualsKeys(track.Platform));
+        return _ctx.Document.Platforms.FirstOrDefault(p => ReferenceEquals(p, track.Platform))
+               ?? _ctx.Document.Platforms.FirstOrDefault(p => IsReal(p) && p.EqualsKeys(track.Platform));
     }
 
     private void BuildTree(object? select)
@@ -129,11 +136,11 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
         tvTracks.Nodes.Clear();
         TreeNode? selected = null;
 
-        foreach (var platform in GlobData.Platforms.Where(IsReal))
+        foreach (var platform in _ctx.Document.Platforms.Where(IsReal))
         {
             var node = new TreeNode(Label(platform)) { Tag = platform };
             if (ReferenceEquals(platform, select)) selected = node;
-            foreach (var track in GlobData.Tracks.Where(t => IsReal(t) && ReferenceEquals(PlatformOf(t), platform)))
+            foreach (var track in _ctx.Document.Tracks.Where(t => IsReal(t) && ReferenceEquals(PlatformOf(t), platform)))
             {
                 var child = new TreeNode(Label(track)) { Tag = track };
                 if (ReferenceEquals(track, select)) selected = child;
@@ -144,7 +151,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
         }
 
         // kolaje, ktore nelezia na ziadnom nastupisti
-        var orphans = GlobData.Tracks.Where(t => IsReal(t) && PlatformOf(t) is null).ToList();
+        var orphans = _ctx.Document.Tracks.Where(t => IsReal(t) && PlatformOf(t) is null).ToList();
         if (orphans.Count > 0)
         {
             var node = new TreeNode(Resources.PlatformsTracksPage_Bez_nastupista);
@@ -209,7 +216,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
                 tbPlatKey.Text = platform.Key;
                 tbPlatName.Text = platform.FullName;
                 tbPlatSound.Text = platform.SoundName;
-                var tracks = GlobData.Tracks.Count(t => IsReal(t) && ReferenceEquals(PlatformOf(t), platform));
+                var tracks = _ctx.Document.Tracks.Count(t => IsReal(t) && ReferenceEquals(PlatformOf(t), platform));
                 lPlatNote.Text = tracks == 0
                     ? Resources.PlatformsTracksPage_Bez_kolaje
                     : string.Format(CultureInfo.CurrentCulture, Resources.PlatformsTracksPage_Kolaji, tracks);
@@ -225,13 +232,13 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
                 tbTrSound.Text = track.SoundName;
 
                 cbTrPlatform.Items.Clear();
-                cbTrPlatform.Items.AddRange(GlobData.Platforms.ToArray<object>());
+                cbTrPlatform.Items.AddRange(_ctx.Document.Platforms.ToArray<object>());
                 cbTrPlatform.SelectedItem = PlatformOf(track) ?? (object)Platform.None;
 
                 for (var i = 0; i < clbTables.Items.Count; i++)
                     clbTables.SetItemChecked(i, track.Tables.Any(t => ReferenceEquals(t, clbTables.Items[i])));
 
-                var (arrival, departure) = TrackEditing.CountUsage(track, GlobData.Trains);
+                var (arrival, departure) = TrackEditing.CountUsage(track, _ctx.Document.Trains);
                 lTrUse.Text = string.Format(CultureInfo.CurrentCulture, Resources.PlatformsTracksPage_Vlaky, arrival, departure);
             }
         }
@@ -247,7 +254,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
 
     private void UpdateButtons()
     {
-        var hasTracks = _current is Platform p && GlobData.Tracks.Any(t => IsReal(t) && ReferenceEquals(PlatformOf(t), p));
+        var hasTracks = _current is Platform p && _ctx.Document.Tracks.Any(t => IsReal(t) && ReferenceEquals(PlatformOf(t), p));
         bDelete.Enabled = _current is Track || (_current is Platform && !hasTracks);
     }
 
@@ -289,12 +296,12 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
     private void Check()
     {
         _problems.Clear();
-        var platforms = GlobData.Platforms.Where(IsReal).ToList();
+        var platforms = _ctx.Document.Platforms.Where(IsReal).ToList();
         for (var i = 0; i < platforms.Count; i++)
             if (PlatformTrackRules.CheckPlatform(platforms, i) is { } p)
                 _problems.Add((platforms[i], p.Field, p.Message));
 
-        var tracks = GlobData.Tracks.Where(IsReal).ToList();
+        var tracks = _ctx.Document.Tracks.Where(IsReal).ToList();
         for (var i = 0; i < tracks.Count; i++)
             if (PlatformTrackRules.CheckTrack(tracks, i) is { } t)
                 _problems.Add((tracks[i], t.Field, t.Message));
@@ -353,7 +360,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
         else if (sender == tbPlatSound)
             platform.SoundName = tbPlatSound.Text.Trim();
 
-        Changed(GlobData.Platforms, platform);
+        Changed(_ctx.Document.Platforms, platform);
     }
 
     private void Track_Changed(object? sender, EventArgs e)
@@ -387,7 +394,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
         else if (sender == tbTrSound)
             track.SoundName = tbTrSound.Text.Trim();
 
-        Changed(GlobData.Tracks, track);
+        Changed(_ctx.Document.Tracks, track);
     }
 
     private void SetText(Control box, string value)
@@ -411,7 +418,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
             return;
 
         track.Platform = platform;
-        Changed(GlobData.Tracks, track);
+        Changed(_ctx.Document.Tracks, track);
         BuildTree(track);
     }
 
@@ -435,7 +442,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
         _loading = true;
         clbTables.BeginUpdate();
         clbTables.Items.Clear();
-        foreach (var logical in GlobData.TableLogicals)
+        foreach (var logical in _ctx.Document.TableLogicals)
             clbTables.Items.Add(logical, _current is Track track && track.Tables.Any(t => ReferenceEquals(t, logical)));
         clbTables.EndUpdate();
         _loading = false;
@@ -445,9 +452,9 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
 
     private void bAddPlatform_Click(object? sender, EventArgs e)
     {
-        var key = PlatformTrackRules.SuggestKey(GlobData.Platforms.Select(p => p.Key));
+        var key = PlatformTrackRules.SuggestKey(_ctx.Document.Platforms.Select(p => p.Key));
         var platform = new Platform(key, Resources.FLocalSettings_Nástupište_ + key, "");
-        GlobData.Platforms.Add(platform);
+        _ctx.Document.Platforms.Add(platform);
         BuildTree(platform);
         Check();
         tbPlatSound.Focus();
@@ -460,9 +467,9 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
             Platform p => p,
             Track t => PlatformOf(t),
             _ => null
-        } ?? GlobData.Platforms.FirstOrDefault(IsReal) ?? Platform.None;
+        } ?? _ctx.Document.Platforms.FirstOrDefault(IsReal) ?? Platform.None;
 
-        var key = PlatformTrackRules.SuggestKey(GlobData.Tracks.Select(t => t.Key));
+        var key = PlatformTrackRules.SuggestKey(_ctx.Document.Tracks.Select(t => t.Key));
         var track = new Track
         {
             Key = key,
@@ -472,7 +479,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
             SoundName = "",
             Platform = platform
         };
-        GlobData.Tracks.Add(track);
+        _ctx.Document.Tracks.Add(track);
         BuildTree(track);
         Check();
         tbTrSound.Focus();
@@ -487,7 +494,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
         {
             case Track track:
             {
-                var (arrival, departure) = TrackEditing.CountUsage(track, GlobData.Trains);
+                var (arrival, departure) = TrackEditing.CountUsage(track, _ctx.Document.Trains);
                 var question = arrival + departure == 0
                     ? string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Kolaj_Odstranit_Nepouzita, track.Key)
                     : string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Kolaj_Odstranit, track.Key, arrival, departure);
@@ -495,12 +502,12 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
                     return;
 
                 var platform = PlatformOf(track);
-                TrackEditing.Remove(track, GlobData.Tracks, GlobData.Trains);
+                TrackEditing.Remove(track, _ctx.Document.Tracks, _ctx.Document.Trains);
                 BuildTree(platform);
                 break;
             }
             case Platform platform:
-                GlobData.Platforms.RemoveAt(IndexOf(GlobData.Platforms, platform));
+                _ctx.Document.Platforms.RemoveAt(IndexOf(_ctx.Document.Platforms, platform));
                 BuildTree(null);
                 break;
         }

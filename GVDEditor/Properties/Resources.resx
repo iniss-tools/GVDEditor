@@ -2960,4 +2960,7 @@ Smerovanie vlaku a/alebo stanice vlaku,
   <data name="TabTabAC_UserTypeSl" xml:space="preserve">
     <value>Používateľský typ vlaku {0} (typu služobný vlak)</value>
   </data>
+  <data name="Station_NotFound" xml:space="preserve">
+    <value>Stanica "{0}" neexistuje.</value>
+  </data>
 </root>

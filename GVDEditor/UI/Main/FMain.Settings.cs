@@ -6,6 +6,7 @@ using GVDEditor.Services;
 using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.Settings;
 using GVDEditor.UI.StateDgm;
+using GVDEditor.UI.TabTab;
 using Microsoft.VisualBasic.FileIO;
 using ToolsCore.Forms;
 using ToolsCore.Iniss.Tools;
@@ -14,12 +15,12 @@ using ToolsCore.XML;
 
 namespace GVDEditor.UI.Main;
 
-public partial class FMain
+internal partial class FMain
 {
     private void ShowAppSettings(string? page = null)
     {
-        var old = GlobData.Config;
-        var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+        var old = _ctx.Config;
+        var form = new FAppSettings(_ctx);
         if (page != null) form.PreselectMenuItem(page);
         if (form.ShowDialog() != DialogResult.OK)
             return;
@@ -27,11 +28,11 @@ public partial class FMain
         UpdateMainUI();
 
         // tieto nastavenia sa inak nacitaju len pri starte programu
-        DateLimit.Loc = GlobData.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
-        Log.DoAppLogs = GlobData.Config.LoggingInfo;
-        Log.DoErrorLogs = GlobData.Config.LoggingError;
+        DateLimit.Loc = _ctx.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
+        Log.DoAppLogs = _ctx.Config.LoggingInfo;
+        Log.DoErrorLogs = _ctx.Config.LoggingError;
 
-        if (old.Language != GlobData.Config.Language || old.ClassicGUI != GlobData.Config.ClassicGUI)
+        if (old.Language != _ctx.Config.Language || old.ClassicGUI != _ctx.Config.ClassicGUI)
             Utils.ShowInfo(Resources.FMain_Nastavenia_po_restarte);
     }
 
@@ -41,8 +42,15 @@ public partial class FMain
         form.ShowDialog(this);
     }
 
+    /// <inheritdoc />
+    public void EditTabTab(TableTabTab tabTab)
+    {
+        using var form = new FTabTab(_ctx, tabTab);
+        form.ShowDialog(this);
+    }
+
     /// <returns><see langword="true" />, ak pouzivatel nastavenia ulozil.</returns>
-    internal bool ShowLocalSettings(LocalSettingsPage page = LocalSettingsPage.Grafikon,
+    public bool ShowLocalSettings(LocalSettingsPage page = LocalSettingsPage.Grafikon,
         LocalSettingsAction action = LocalSettingsAction.None, object? select = null)
     {
         var dir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
@@ -52,7 +60,7 @@ public partial class FMain
         var wasSaved = DataSaved;
         // okno sa chvilu zostavuje - kurzor ukaze, ze klik zabral (po zobrazeni okna sa vrati sam)
         Cursor.Current = Cursors.WaitCursor;
-        var svform = new FLocalSettings(dir, page, action, select);
+        var svform = new FLocalSettings(_ctx, dir, page, action, select);
         var result = svform.ShowDialog();
         if (result != DialogResult.OK)
         {
@@ -63,9 +71,9 @@ public partial class FMain
 
         RefreshStationAndPeriod(dir, oldStation, oldPeriod);
 
-        GlobData.TableFontDir = svform.FontDir;
+        _ctx.Document.TableFontDir = svform.FontDir;
         DataSaved = false;
-        GlobData.Trains.ResetBindings();
+        _ctx.Document.Trains.ResetBindings();
         return true;
     }
 
@@ -104,13 +112,13 @@ public partial class FMain
     {
         // okno sa chvilu zostavuje - kurzor ukaze, ze klik zabral (po zobrazeni okna sa vrati sam)
         Cursor.Current = Cursors.WaitCursor;
-        var gf = new FGlobalSettings(_gvdDirs.ToList(), page, _grafikonLoaded ? _previousSelectedGVD : null);
+        var gf = new FGlobalSettings(_ctx, _gvdDirs.ToList(), page, _grafikonLoaded ? _previousSelectedGVD : null);
         if (gf.ShowDialog() != DialogResult.OK)
             return;
 
         try
         {
-            GrafikonService.SaveGlobalSettings(GlobData.Workspace, gf.Grafikony.Select(gvd => gvd.Dir).ToList(), GlobData.Document);
+            GrafikonService.SaveGlobalSettings(_ctx.Workspace, gf.Grafikony.Select(gvd => gvd.Dir).ToList(), _ctx.Document);
         }
         catch (InvalidOperationException e)
         {
@@ -119,7 +127,7 @@ public partial class FMain
         }
         finally
         {
-            GlobData.Trains.ResetBindings();
+            _ctx.Document.Trains.ResetBindings();
         }
 
         if (gf.RemovedGVDs.Count != 0)
@@ -189,7 +197,7 @@ public partial class FMain
     private void ShowStateDgm()
     {
         if (tscbObdobie.ComboBox.SelectedItem is not GVDDirectory dir) return;
-        using var f = new FStateDgm(dir);
+        using var f = new FStateDgm(_ctx, dir);
         f.ShowDialog(this);
     }
 

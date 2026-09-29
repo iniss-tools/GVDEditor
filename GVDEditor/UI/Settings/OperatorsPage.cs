@@ -8,10 +8,15 @@ namespace GVDEditor.UI.Settings;
 
 /// <summary>
 /// Stranka Dopravcovia v okne Lokalne nastavenia - ciselnik dopravcov grafikonu (Vlastnik.txt) s upravou
-/// priamo v tabulke. Zmeny idu rovno do <see cref="GlobData.Operators" />, Zrusit okna ich vrati.
+/// priamo v tabulke. Zmeny idu rovno do <see cref="_ctx.Document.Operators" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class OperatorsPage : UserControl, ISettingsPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly GridPageSupport _grid;
 
     // naplnanie tabulky kodom nema spustat zapis do dopravcov
@@ -41,12 +46,14 @@ public partial class OperatorsPage : UserControl, ISettingsPage
     /// <summary>
     /// Naplni tabulku dopravcami grafikonu - volat az po nastaveni temy okna.
     /// </summary>
-    public void LoadData()
+    /// <param name=\"context\">kontext editora</param>
+    internal void LoadData(EditorContext context)
     {
+        _ctx = context;
         _grid.CaptureColors();
         _loading = true;
         dgv.Rows.Clear();
-        foreach (var op in GlobData.Operators)
+        foreach (var op in _ctx.Document.Operators)
             if (op != Operator.None)
                 AddRow(op);
         _loading = false;
@@ -61,7 +68,7 @@ public partial class OperatorsPage : UserControl, ISettingsPage
         return index;
     }
 
-    private static int CountTrains(Operator op) => GlobData.Trains.Count(train => train.Operator == op);
+    private int CountTrains(Operator op) => _ctx.Document.Trains.Count(train => train.Operator == op);
 
     private Operator? CurrentOperator => dgv.CurrentRow?.Tag as Operator;
 
@@ -78,8 +85,8 @@ public partial class OperatorsPage : UserControl, ISettingsPage
 
     private void bAdd_Click(object sender, EventArgs e)
     {
-        var op = new Operator(OperatorRules.NextId(GlobData.Operators.Select(o => o.Id)), "");
-        GlobData.Operators.Add(op);
+        var op = new Operator(OperatorRules.NextId(_ctx.Document.Operators.Select(o => o.Id)), "");
+        _ctx.Document.Operators.Add(op);
 
         _loading = true;
         var index = AddRow(op);
@@ -95,7 +102,7 @@ public partial class OperatorsPage : UserControl, ISettingsPage
         if (op is null)
             return;
 
-        var trains = GlobData.Trains.Where(train => train.Operator == op).ToList();
+        var trains = _ctx.Document.Trains.Where(train => train.Operator == op).ToList();
         if (trains.Count > 0 && Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture,
                 Resources.OperatorsPage_Odstranit_pouzity, op.Name, trains.Count)) != DialogResult.Yes)
             return;
@@ -103,7 +110,7 @@ public partial class OperatorsPage : UserControl, ISettingsPage
         foreach (var train in trains)
             train.Operator = Operator.None;
 
-        GlobData.Operators.Remove(op);
+        _ctx.Document.Operators.Remove(op);
         dgv.Rows.RemoveAt(dgv.CurrentRow!.Index);
         Check();
     }
@@ -116,7 +123,7 @@ public partial class OperatorsPage : UserControl, ISettingsPage
         var row = dgv.Rows[e.RowIndex];
         var op = (Operator)row.Tag!;
         op.Name = (row.Cells[e.ColumnIndex].Value as string ?? "").Trim();
-        GlobData.Operators.ResetItem(GlobData.Operators.IndexOf(op));
+        _ctx.Document.Operators.ResetItem(_ctx.Document.Operators.IndexOf(op));
         Check();
     }
 

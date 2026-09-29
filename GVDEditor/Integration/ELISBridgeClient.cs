@@ -37,13 +37,19 @@ public sealed partial class ELISBridgeClient
     /// <param name="operators">Zoznam vsetkych definovanych dopravcov.</param>
     /// <param name="gvd">Informacie o aktualnom grafikone.</param>
     /// <param name="defaultTrack">Kolaj, ktora bude priradena kazdemu vlaku.</param>
-    public ELISBridgeClient(List<TrainType> trainTypes, List<Operator> operators, GVDInfo gvd, Track defaultTrack)
+    public ELISBridgeClient(List<TrainType> trainTypes, List<Operator> operators, GVDInfo gvd, Track defaultTrack, StationDirectory stations)
     {
         TrainTypes = trainTypes;
         Operators = operators;
         GVD = gvd;
         DefaultTrack = defaultTrack;
+        Stations = stations;
     }
+
+    /// <summary>
+    /// Stanice zvukovej banky a grafikonu, ku ktorym sa priraduju zastavky z ELIS.
+    /// </summary>
+    public StationDirectory Stations { get; }
 
     /// <summary>
     /// Vsetky typy vlakov definovane v stanici.
@@ -126,7 +132,7 @@ public sealed partial class ELISBridgeClient
 
         foreach (var train in result.Trains)
         foreach (var stop in train.StationsBefore.Concat(train.StationsAfter))
-            if (!unresolved.Contains(stop.Name) && !StationMap.ContainsKey(stop.Name) && Resolve(stop) is null)
+            if (!unresolved.Contains(stop.Name) && !StationMap.ContainsKey(stop.Name) && Resolve(stop, Stations) is null)
                 unresolved.Add(stop.Name);
 
         unresolved.Sort(StringComparer.CurrentCulture);
@@ -418,9 +424,9 @@ public sealed partial class ELISBridgeClient
     private Station? ResolveMapped(ElisStop stop)
     {
         if (StationMap.TryGetValue(stop.Name, out var mapped))
-            return mapped == ElisMapFile.ELIS_MAP_SKIP ? null : Station.GetFromID(mapped);
+            return mapped == ElisMapFile.ELIS_MAP_SKIP ? null : Stations.FromID(mapped);
 
-        return Resolve(stop);
+        return Resolve(stop, Stations);
     }
 
     /// <summary>
@@ -428,17 +434,17 @@ public sealed partial class ELISBridgeClient
     /// ktore je zaroven ID stanice v zvukovej banke, az potom podla nazvu.
     /// </summary>
     /// <returns><see langword="null" />, ak sa stanica nenasla.</returns>
-    public static Station? Resolve(ElisStop stop)
+    public static Station? Resolve(ElisStop stop, StationDirectory stations)
     {
         if (stop.Code > 0)
         {
             var id = stop.Code.ToString(CultureInfo.InvariantCulture);
-            var byCode = AllStations().FirstOrDefault(s => s.ID == id);
+            var byCode = stations.All.FirstOrDefault(s => s.ID == id);
             if (byCode is not null)
                 return new Station(byCode.ID, byCode.Name);
         }
 
-        return Resolve(stop.Name);
+        return Resolve(stop.Name, stations);
     }
 
     /// <summary>
@@ -457,9 +463,9 @@ public sealed partial class ELISBridgeClient
     /// (spravanie zvysku aplikacie), az potom porovnanie v kanonickom tvare.
     /// </remarks>
     /// <returns><see langword="null" />, ak sa stanica nenasla.</returns>
-    public static Station? Resolve(string name)
+    public static Station? Resolve(string name, StationDirectory stations)
     {
-        var exact = Station.GetFromName(name);
+        var exact = stations.FromName(name);
         if (exact is not null)
             return exact;
 
@@ -467,7 +473,7 @@ public sealed partial class ELISBridgeClient
         if (wanted.Length == 0)
             return null;
 
-        foreach (var station in AllStations())
+        foreach (var station in stations.All)
             if (Canonical(station.Name) == wanted)
                 return new Station(station.ID, station.Name);
 
@@ -478,7 +484,7 @@ public sealed partial class ELISBridgeClient
     /// Navrhne najblizsiu stanicu k nazvu z ELIS - pouziva sa ako predvolba v dialogu priradenia.
     /// </summary>
     /// <returns><see langword="null" />, ak sa nenaslo nic dost podobne.</returns>
-    public static Station? Suggest(string name)
+    public static Station? Suggest(string name, StationDirectory stations)
     {
         var wanted = Canonical(name);
         if (wanted.Length < 4)
@@ -491,7 +497,7 @@ public sealed partial class ELISBridgeClient
         Station? best = null;
         var bestLength = 0;
 
-        foreach (var station in AllStations())
+        foreach (var station in stations.All)
         {
             var candidate = Canonical(station.Name);
             var common = CommonPrefixLength(wanted, candidate);
@@ -509,9 +515,6 @@ public sealed partial class ELISBridgeClient
 
         return best is null ? null : new Station(best.ID, best.Name);
     }
-
-    /// <summary>Vsetky stanice zo zvukovej banky aj pouzivatelom definovane.</summary>
-    private static IEnumerable<Station> AllStations() => GlobData.Stations.Concat(GlobData.CustomStations);
 
     /// <summary>Ci nazov oznacuje statnu hranicu alebo iny technicky bod, nie stanicu.</summary>
     public static bool IsBorderPoint(string name) =>

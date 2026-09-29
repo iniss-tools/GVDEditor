@@ -16,8 +16,13 @@ namespace GVDEditor.UI.TabTab;
 /// <summary>
 /// Dialog - Nastavenie TabTabs.
 /// </summary>
-public partial class FTabTab : Form
+internal partial class FTabTab : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
     private static readonly string[] operatory = { "AND", "OR", "NOT", "ODD" };
 
     private readonly TabTabLexer cSharpLexer = new(
@@ -44,7 +49,7 @@ public partial class FTabTab : Form
     private const int IndicatorInfo = 10;
     private const int IndicatorGoTo = 11;
 
-    private readonly GvdExprSymbols _symbols = new();
+    private readonly GvdExprSymbols _symbols;
     private readonly System.Windows.Forms.Timer _validateTimer = new() { Interval = 400 };
     private IReadOnlyList<TabTabDiagnostic> _diagnostics = [];
     private string _validatedText = "";
@@ -58,16 +63,18 @@ public partial class FTabTab : Form
     /// </summary>
     /// <param name="tab">Sekcia, ktora sa ma otvorit.</param>
     /// <param name="station">Stanica grafikonu - pre nahlad (ZAJMSTANICE, MISTNI); moze byt <see langword="null"/>.</param>
-    public FTabTab(TableTabTab? tab = null, Station? station = null)
+    public FTabTab(EditorContext context, TableTabTab? tab = null, Station? station = null)
     {
+        _ctx = context;
+        _symbols = new GvdExprSymbols(context.Workspace, context.Document);
         InitializeComponent();
 
-        if (GlobData.UsingStyle.DarkTitleBar) ExTools.SetImmersiveDarkMode(Handle, true);
+        if (_ctx.UsingStyle.DarkTitleBar) ExTools.SetImmersiveDarkMode(Handle, true);
 
         sc = scText.scintilla;
         acMenu.TargetControlWrapper = new ScintillaWrapper(sc);
 
-        foreach (var tabTab in GlobData.TabTabs) 
+        foreach (var tabTab in _ctx.Document.TabTabs) 
             documents.Add(new TabTabDoc { Document = CreateDocument(tabTab.Text), TabTab = tabTab, Key = tabTab.Key });
 
         lbTabTabs.DataSource = documents;
@@ -117,27 +124,27 @@ public partial class FTabTab : Form
 
     private void FTabTab_Load(object sender, EventArgs e)
     {
-        lbTabTabs.Font = GlobData.Config.Fonts.Menu; //GlobData.UsingStyle.TabTabEditorScheme.Font;
+        lbTabTabs.Font = _ctx.Config.Fonts.Menu; //_ctx.UsingStyle.TabTabEditorScheme.Font;
 
         sc.StyleResetDefault();
-        sc.Styles[Style.Default].Font = GlobData.UsingStyle.TabTabEditorScheme.Font.Name;
-        sc.Styles[Style.Default].SizeF = GlobData.UsingStyle.TabTabEditorScheme.Font.Size;
-        sc.Styles[Style.Default].BackColor = GlobData.UsingStyle.ControlsColorScheme.Box.BackColor;
+        sc.Styles[Style.Default].Font = _ctx.UsingStyle.TabTabEditorScheme.Font.Name;
+        sc.Styles[Style.Default].SizeF = _ctx.UsingStyle.TabTabEditorScheme.Font.Size;
+        sc.Styles[Style.Default].BackColor = _ctx.UsingStyle.ControlsColorScheme.Box.BackColor;
         sc.StyleClearAll();
-        sc.Styles[Style.LineNumber].BackColor = GlobData.UsingStyle.ControlsColorScheme.Button.BackColor;
-        sc.Styles[Style.LineNumber].ForeColor = GlobData.UsingStyle.ControlsColorScheme.Button.ForeColor;
-        sc.CaretForeColor = GlobData.UsingStyle.ControlsColorScheme.Box.ForeColor;
+        sc.Styles[Style.LineNumber].BackColor = _ctx.UsingStyle.ControlsColorScheme.Button.BackColor;
+        sc.Styles[Style.LineNumber].ForeColor = _ctx.UsingStyle.ControlsColorScheme.Button.ForeColor;
+        sc.CaretForeColor = _ctx.UsingStyle.ControlsColorScheme.Box.ForeColor;
         // vyber textu vo farbe zvyraznenia temy (svetla: systemova modra, tmava: podla stylu), nie farbou ramika
-        var highlight = GlobData.UsingStyle.ControlsColorScheme.Highlight;
+        var highlight = _ctx.UsingStyle.ControlsColorScheme.Highlight;
         sc.SetSelectionBackColor(true, highlight.BackColor);
         sc.SetSelectionForeColor(true, highlight.ForeColor);
         sc.SetAdditionalSelBack(highlight.BackColor);
         sc.SetAdditionalSelFore(highlight.ForeColor);
 
-        if (!GlobData.UsingStyle.ControlsDefaultStyle)
+        if (!_ctx.UsingStyle.ControlsDefaultStyle)
             sc.BorderStyle = ScintillaNET.BorderStyle.None;
 
-        if (GlobData.UsingStyle.DarkScrollBar)
+        if (_ctx.UsingStyle.DarkScrollBar)
         {
             scText.VScrollBarControl.SetTheme(WindowsTheme.DarkExplorer);
             scText.HScrollBarControl.SetTheme(WindowsTheme.DarkExplorer);
@@ -145,44 +152,44 @@ public partial class FTabTab : Form
 
         this.ApplyThemeAndFonts();
 
-        FormUtils.ChangeColorContextMenu(GlobData.UsingStyle, conMenuScText);
+        FormUtils.ChangeColorContextMenu(_ctx.UsingStyle, conMenuScText);
 
-        acMenu.Colors.BackColor = GlobData.UsingStyle.ControlsColorScheme.Panel.BackColor;
-        acMenu.Colors.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Panel.ForeColor;
-        acMenu.Colors.SelectedForeColor = GlobData.UsingStyle.ControlsColorScheme.Panel.ForeColor;
+        acMenu.Colors.BackColor = _ctx.UsingStyle.ControlsColorScheme.Panel.BackColor;
+        acMenu.Colors.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Panel.ForeColor;
+        acMenu.Colors.SelectedForeColor = _ctx.UsingStyle.ControlsColorScheme.Panel.ForeColor;
 
-        sc.Styles[TabTabStyle.Default].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.Default.ForeColor;
-        sc.Styles[TabTabStyle.Default].Bold = GlobData.UsingStyle.TabTabEditorScheme.Default.Bold;
+        sc.Styles[TabTabStyle.Default].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Default.ForeColor;
+        sc.Styles[TabTabStyle.Default].Bold = _ctx.UsingStyle.TabTabEditorScheme.Default.Bold;
 
-        sc.Styles[TabTabStyle.Function].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.Function.ForeColor;
-        sc.Styles[TabTabStyle.Function].Bold = GlobData.UsingStyle.TabTabEditorScheme.Function.Bold;
+        sc.Styles[TabTabStyle.Function].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Function.ForeColor;
+        sc.Styles[TabTabStyle.Function].Bold = _ctx.UsingStyle.TabTabEditorScheme.Function.Bold;
 
-        sc.Styles[TabTabStyle.Identifier].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.Identifier.ForeColor;
-        sc.Styles[TabTabStyle.Identifier].Bold = GlobData.UsingStyle.TabTabEditorScheme.Identifier.Bold;
+        sc.Styles[TabTabStyle.Identifier].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Identifier.ForeColor;
+        sc.Styles[TabTabStyle.Identifier].Bold = _ctx.UsingStyle.TabTabEditorScheme.Identifier.Bold;
 
-        sc.Styles[TabTabStyle.Number].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.Number.ForeColor;
-        sc.Styles[TabTabStyle.Number].Bold = GlobData.UsingStyle.TabTabEditorScheme.Number.Bold;
+        sc.Styles[TabTabStyle.Number].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Number.ForeColor;
+        sc.Styles[TabTabStyle.Number].Bold = _ctx.UsingStyle.TabTabEditorScheme.Number.Bold;
 
-        sc.Styles[TabTabStyle.String].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.String.ForeColor;
-        sc.Styles[TabTabStyle.String].Bold = GlobData.UsingStyle.TabTabEditorScheme.String.Bold;
+        sc.Styles[TabTabStyle.String].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.String.ForeColor;
+        sc.Styles[TabTabStyle.String].Bold = _ctx.UsingStyle.TabTabEditorScheme.String.Bold;
 
-        sc.Styles[TabTabStyle.Comment].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.Comment.ForeColor;
-        sc.Styles[TabTabStyle.Comment].Bold = GlobData.UsingStyle.TabTabEditorScheme.Comment.Bold;
+        sc.Styles[TabTabStyle.Comment].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Comment.ForeColor;
+        sc.Styles[TabTabStyle.Comment].Bold = _ctx.UsingStyle.TabTabEditorScheme.Comment.Bold;
 
-        sc.Styles[TabTabStyle.Var].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.Var.ForeColor;
-        sc.Styles[TabTabStyle.Var].Bold = GlobData.UsingStyle.TabTabEditorScheme.Var.Bold;
+        sc.Styles[TabTabStyle.Var].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Var.ForeColor;
+        sc.Styles[TabTabStyle.Var].Bold = _ctx.UsingStyle.TabTabEditorScheme.Var.Bold;
 
-        sc.Styles[TabTabStyle.Event].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.Event.ForeColor;
-        sc.Styles[TabTabStyle.Event].Bold = GlobData.UsingStyle.TabTabEditorScheme.Event.Bold;
+        sc.Styles[TabTabStyle.Event].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Event.ForeColor;
+        sc.Styles[TabTabStyle.Event].Bold = _ctx.UsingStyle.TabTabEditorScheme.Event.Bold;
 
-        sc.Styles[TabTabStyle.OnNewLine].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.OnNewLine.ForeColor;
-        sc.Styles[TabTabStyle.OnNewLine].Bold = GlobData.UsingStyle.TabTabEditorScheme.OnNewLine.Bold;
+        sc.Styles[TabTabStyle.OnNewLine].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.OnNewLine.ForeColor;
+        sc.Styles[TabTabStyle.OnNewLine].Bold = _ctx.UsingStyle.TabTabEditorScheme.OnNewLine.Bold;
 
-        sc.Styles[TabTabStyle.Operator].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.Operator.ForeColor;
-        sc.Styles[TabTabStyle.Operator].Bold = GlobData.UsingStyle.TabTabEditorScheme.Operator.Bold;
+        sc.Styles[TabTabStyle.Operator].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Operator.ForeColor;
+        sc.Styles[TabTabStyle.Operator].Bold = _ctx.UsingStyle.TabTabEditorScheme.Operator.Bold;
 
-        sc.Styles[TabTabStyle.Constant].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.Constant.ForeColor;
-        sc.Styles[TabTabStyle.Constant].Bold = GlobData.UsingStyle.TabTabEditorScheme.Constant.Bold;
+        sc.Styles[TabTabStyle.Constant].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Constant.ForeColor;
+        sc.Styles[TabTabStyle.Constant].Bold = _ctx.UsingStyle.TabTabEditorScheme.Constant.Bold;
 
         // Scintilla 5: SCI_SETILEXER s NULL = ziadny lexer, stylovanie robi kontajner (StyleNeeded).
         // sc.Lexer = Lexer.Container v Scintilla.NET 5.3 vyhodi "No lexer name was found".
@@ -191,13 +198,13 @@ public partial class FTabTab : Form
         //highlight active braces
         sc.IndentationGuides = IndentView.LookBoth;
 
-        sc.Styles[Style.BraceLight].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.SelBraces.ForeColor;
-        sc.Styles[Style.BraceLight].BackColor = GlobData.UsingStyle.TabTabEditorScheme.SelBraces.BackColor;
-        sc.Styles[Style.BraceLight].Bold = GlobData.UsingStyle.TabTabEditorScheme.SelBraces.Bold;
+        sc.Styles[Style.BraceLight].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.SelBraces.ForeColor;
+        sc.Styles[Style.BraceLight].BackColor = _ctx.UsingStyle.TabTabEditorScheme.SelBraces.BackColor;
+        sc.Styles[Style.BraceLight].Bold = _ctx.UsingStyle.TabTabEditorScheme.SelBraces.Bold;
 
-        sc.Styles[Style.BraceBad].ForeColor = GlobData.UsingStyle.TabTabEditorScheme.SelBraceBad.ForeColor;
-        sc.Styles[Style.BraceBad].BackColor = GlobData.UsingStyle.TabTabEditorScheme.SelBraceBad.BackColor;
-        sc.Styles[Style.BraceBad].Bold = GlobData.UsingStyle.TabTabEditorScheme.SelBraceBad.Bold;
+        sc.Styles[Style.BraceBad].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.SelBraceBad.ForeColor;
+        sc.Styles[Style.BraceBad].BackColor = _ctx.UsingStyle.TabTabEditorScheme.SelBraceBad.BackColor;
+        sc.Styles[Style.BraceBad].Bold = _ctx.UsingStyle.TabTabEditorScheme.SelBraceBad.Bold;
 
         sc.Indicators[IndicatorError].Style = IndicatorStyle.Squiggle;
         sc.Indicators[IndicatorError].ForeColor = Color.Red;
@@ -212,17 +219,17 @@ public partial class FTabTab : Form
         sc.Indicators[IndicatorGoTo].Under = true;
         sc.MouseDwellTime = 500;
 
-        var box = GlobData.UsingStyle.ControlsColorScheme.Box;
+        var box = _ctx.UsingStyle.ControlsColorScheme.Box;
         dgvProblems.BackgroundColor = box.BackColor;
         dgvProblems.DefaultCellStyle.BackColor = box.BackColor;
         dgvProblems.DefaultCellStyle.ForeColor = box.ForeColor;
-        dgvProblems.EnableHeadersVisualStyles = GlobData.UsingStyle.ControlsDefaultStyle;
-        if (!GlobData.UsingStyle.ControlsDefaultStyle)
+        dgvProblems.EnableHeadersVisualStyles = _ctx.UsingStyle.ControlsDefaultStyle;
+        if (!_ctx.UsingStyle.ControlsDefaultStyle)
         {
-            dgvProblems.ColumnHeadersDefaultCellStyle.BackColor = GlobData.UsingStyle.ControlsColorScheme.Button.BackColor;
-            dgvProblems.ColumnHeadersDefaultCellStyle.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Button.ForeColor;
+            dgvProblems.ColumnHeadersDefaultCellStyle.BackColor = _ctx.UsingStyle.ControlsColorScheme.Button.BackColor;
+            dgvProblems.ColumnHeadersDefaultCellStyle.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Button.ForeColor;
         }
-        FormUtils.ChangeColorContextMenu(GlobData.UsingStyle, conMenuProblems);
+        FormUtils.ChangeColorContextMenu(_ctx.UsingStyle, conMenuProblems);
 
         if (SelectedTab is not null)
             for (var i = 0; i < documents.Count; i++)
@@ -305,7 +312,7 @@ public partial class FTabTab : Form
     }
 
     /// <summary>
-    /// Text sekcie podla mena - z editora (aj neulozeny), nie z GlobData.
+    /// Text sekcie podla mena - z editora (aj neulozeny), nie z grafikonu.
     /// </summary>
     private string? SectionText(string name)
     {
@@ -331,7 +338,7 @@ public partial class FTabTab : Form
         {
             preview.Close();
         }
-        preview = new FTabTabPreview(SectionText, section, homeStationId) { Owner = this };
+        preview = new FTabTabPreview(_ctx, SectionText, section, homeStationId) { Owner = this };
         preview.Show(this);
     }
 
@@ -345,13 +352,13 @@ public partial class FTabTab : Form
         {
             tsslProblems.Image = GlobalResources.correct;
             tsslProblems.Text = Resources.FTabTab_Bez_problemov;
-            tsslProblems.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Panel.ForeColor;
+            tsslProblems.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Panel.ForeColor;
         }
         else
         {
             tsslProblems.Image = errors > 0 ? _iconError.ToBitmap() : _iconWarning.ToBitmap();
             tsslProblems.Text = string.Format(Resources.FTabTab_Stav_kontroly, errors, warnings);
-            tsslProblems.ForeColor = errors > 0 ? Color.Red : GlobData.UsingStyle.ControlsColorScheme.Panel.ForeColor;
+            tsslProblems.ForeColor = errors > 0 ? Color.Red : _ctx.UsingStyle.ControlsColorScheme.Panel.ForeColor;
         }
     }
 
@@ -538,25 +545,25 @@ public partial class FTabTab : Form
     /// Zoznam sekcii v editore sa lisi od ulozeneho (pridana, odstranena alebo premenovana sekcia).
     /// </summary>
     private bool SectionsUnsaved =>
-        documents.Any(doc => doc.KeyUnsaved) || !documents.Select(doc => doc.TabTab).SequenceEqual(GlobData.TabTabs);
+        documents.Any(doc => doc.KeyUnsaved) || !documents.Select(doc => doc.TabTab).SequenceEqual(_ctx.Document.TabTabs);
 
     /// <summary>
-    /// Prenesie zoznam sekcii (pridane, odstranene, premenovane) do <see cref="GlobData.TabTabs"/>.
+    /// Prenesie zoznam sekcii (pridane, odstranene, premenovane) do <see cref="_ctx.Document.TabTabs"/>.
     /// Vola sa pri kazdom ulozeni - text sekcii sa uklada zvlast (<see cref="DoSave"/>, <see cref="DoSaveAll"/>).
     /// Objekty sekcii ostavaju tie iste, aby odkazy TAB1/TAB2 katalogovych tabul ostali platne.
     /// </summary>
     private void SaveSections()
     {
-        TabTabSections.Apply(documents.Select(doc => (doc.TabTab, doc.Key)).ToList(), GlobData.TabTabs);
+        TabTabSections.Apply(documents.Select(doc => (doc.TabTab, doc.Key)).ToList(), _ctx.Document.TabTabs);
         foreach (var doc in documents)
             doc.KeyUnsaved = false;
 
-        GlobData.TabTabs.ResetBindings();
+        _ctx.Document.TabTabs.ResetBindings();
     }
 
     private void FTabTab_FormClosing(object sender, FormClosingEventArgs e)
     {
-        // pri zatvoreni bez ulozenia sa neulozene texty aj zmeny zoznamu sekcii zahodia - GlobData drzi posledny ulozeny stav
+        // pri zatvoreni bez ulozenia sa neulozene texty aj zmeny zoznamu sekcii zahodia - grafikon drzi posledny ulozeny stav
         var unsaved = documents.Any(doc => doc.Unsaved) || SectionsUnsaved;
 
         if (unsaved)
@@ -628,7 +635,7 @@ public partial class FTabTab : Form
         using var frtt = new FTabTabRename(null, documents.Select(doc => doc.Key));
         if (frtt.ShowDialog(this) == DialogResult.OK)
         {
-            // do GlobData.TabTabs sa sekcia dostane az pri ulozeni (SaveSections)
+            // do _ctx.Document.TabTabs sa sekcia dostane az pri ulozeni (SaveSections)
             documents.Add(new TabTabDoc
             {
                 KeyUnsaved = true, Key = frtt.NewTabName, Document = CreateDocument(""),
@@ -644,9 +651,9 @@ public partial class FTabTab : Form
         if (lbTabTabs.SelectedIndex == -1)
             return;
 
-        // index v editore sa po pridani/odstraneni sekcie nezhoduje s GlobData.TabTabs - kontroluje sa objekt dokumentu
+        // index v editore sa po pridani/odstraneni sekcie nezhoduje s _ctx.Document.TabTabs - kontroluje sa objekt dokumentu
         var index = lbTabTabs.SelectedIndex;
-        if (!TabTabSections.CheckCanRemove(documents[index].TabTab, GlobData.TableCatalogs))
+        if (!TabTabSections.CheckCanRemove(documents[index].TabTab, _ctx.Document.TableCatalogs))
             return;
 
         documents.RemoveAt(index);
@@ -979,7 +986,7 @@ public partial class FTabTab : Form
 
     internal class TabTabDoc
     {
-        /// <summary>Sekcia v GlobData (pri novej sekcii objekt, ktory sa tam prida pri ulozeni).</summary>
+        /// <summary>Sekcia v grafikone (pri novej sekcii objekt, ktory sa tam prida pri ulozeni).</summary>
         public TableTabTab TabTab { get; init; } = null!;
 
         /// <summary>Nazov sekcie v editore; do <see cref="TableTabTab.Key"/> sa zapise pri ulozeni.</summary>

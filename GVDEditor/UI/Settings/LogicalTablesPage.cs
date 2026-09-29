@@ -13,10 +13,15 @@ namespace GVDEditor.UI.Settings;
 /// <summary>
 /// Stranka Logicke tabule v okne Lokalne nastavenia - zoznam tabul a udaje vybranej tabule so zostavou
 /// (ktore zaznamy idu na ktoru fyzicku tabulu) s upravou priamo v poliach a v tabulke. Zmeny idu rovno do
-/// <see cref="GlobData.TableLogicals" />, Zrusit okna ich vrati.
+/// <see cref="_ctx.Document.TableLogicals" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class LogicalTablesPage : UserControl, ISettingsPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly ItemListSupport<TableLogical> _list;
     private readonly FieldMarks _marks = new();
     private readonly List<(TableLogical Table, Field Field, int Row, string Message)> _problems = [];
@@ -48,7 +53,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     {
         InitializeComponent();
         dgvZostava.AutoGenerateColumns = false;
-        _list = new ItemListSupport<TableLogical>(dgv, tbFilter, () => GlobData.TableLogicals, t => [t.Name, t.Key]);
+        _list = new ItemListSupport<TableLogical>(dgv, tbFilter, () => _ctx.Document.TableLogicals, t => [t.Name, t.Key]);
         _list.SelectionChanged += (_, _) => ShowCurrent();
     }
 
@@ -81,16 +86,18 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     /// <summary>
     /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
+    /// <param name=\"context\">kontext editora</param>
     /// <param name="station">stanica grafikonu - prva v ponuke stanic</param>
-    internal void LoadData(Station station)
+    internal void LoadData(EditorContext context, Station station)
     {
+        _ctx = context;
         _station = station;
         foreach (var header in new[] { lBasic, lZostava, lCommentHeader, lUseHeader })
             header.Font = new Font(Font, FontStyle.Bold);
         lStationNote.ForeColor = lZostavaNote.ForeColor = SystemColors.GrayText;
         _hintColor = lHint.ForeColor;
         _marks.Capture(tbName, tbKey, nudCount);
-        if (GlobData.UsingStyle.DarkScrollBar)
+        if (_ctx.UsingStyle.DarkScrollBar)
             pDetail.SetTheme(WindowsTheme.DarkExplorer);
         _list.CaptureColors();
         dgvZostava.BackgroundColor = dgvZostava.DefaultCellStyle.BackColor.IsEmpty ? SystemColors.Window : dgvZostava.DefaultCellStyle.BackColor;
@@ -99,7 +106,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
         FillStations();
 
         _loaded = true;
-        _list.Fill(GlobData.TableLogicals.FirstOrDefault());
+        _list.Fill(_ctx.Document.TableLogicals.FirstOrDefault());
         Check();
     }
 
@@ -133,7 +140,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
         }
 
         AddStation(_station);
-        foreach (var dir in GlobData.GVDDirs)
+        foreach (var dir in _ctx.Workspace.GVDDirs)
         {
             try
             {
@@ -181,7 +188,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
 
             cbAddPhysical.BeginUpdate();
             cbAddPhysical.Items.Clear();
-            cbAddPhysical.Items.AddRange(GlobData.TablePhysicals.ToArray<object>());
+            cbAddPhysical.Items.AddRange(_ctx.Document.TablePhysicals.ToArray<object>());
             if (cbAddPhysical.Items.Count > 0)
                 cbAddPhysical.SelectedIndex = 0;
             cbAddPhysical.EndUpdate();
@@ -222,8 +229,8 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
             cbStation.Text = id == 0 ? "" : id.ToString(CultureInfo.InvariantCulture);
     }
 
-    private static IReadOnlyList<string> Usage(TableLogical table) =>
-        GlobData.Tracks.Where(track => track.Tables.Any(t => ReferenceEquals(t, table)))
+    private IReadOnlyList<string> Usage(TableLogical table) =>
+        _ctx.Document.Tracks.Where(track => track.Tables.Any(t => ReferenceEquals(t, table)))
             .Select(track => string.Format(CultureInfo.CurrentCulture, Resources.TablesPage_Pouzitie_Kolaj, track.Name))
             .ToList();
 
@@ -381,7 +388,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
         {
             table.Name = tbName.Text.Trim();
             // nazov vidno aj v zozname logickych tabul kolaje (stranka Nastupistia a kolaje)
-            GlobData.TableLogicals.ResetItem(GlobData.TableLogicals.IndexOf(table));
+            _ctx.Document.TableLogicals.ResetItem(_ctx.Document.TableLogicals.IndexOf(table));
         }
         else if (sender == tbKey)
             table.Key = tbKey.Text.Trim();
@@ -449,7 +456,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     private void Check()
     {
         _problems.Clear();
-        var tables = GlobData.TableLogicals.ToList();
+        var tables = _ctx.Document.TableLogicals.ToList();
         for (var i = 0; i < tables.Count; i++)
         {
             var layout = _layouts.GetValueOrDefault(tables[i]);
@@ -505,18 +512,18 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
 
     private void bAdd_Click(object? sender, EventArgs e)
     {
-        var name = TableRules.Unique(GlobData.TableLogicals.Select(t => t.Name), Resources.TablesPage_Nova_tabula);
+        var name = TableRules.Unique(_ctx.Document.TableLogicals.Select(t => t.Name), Resources.TablesPage_Nova_tabula);
         var table = new TableLogical
         {
             Name = name,
-            Key = TableRules.Unique(GlobData.TableLogicals.Select(t => t.Key), name),
+            Key = TableRules.Unique(_ctx.Document.TableLogicals.Select(t => t.Key), name),
             ViewType = TableViewType.Odchodova,
             TypeViewFlags = "",
             Comment = "",
             Records = TableLogicalLayout.ToRecords([], 1)
         };
 
-        GlobData.TableLogicals.Add(table);
+        _ctx.Document.TableLogicals.Add(table);
         Added(table);
     }
 
@@ -527,8 +534,8 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
 
         var table = new TableLogical
         {
-            Name = TableRules.Unique(GlobData.TableLogicals.Select(t => t.Name), source.Name),
-            Key = TableRules.Unique(GlobData.TableLogicals.Select(t => t.Key), source.Key),
+            Name = TableRules.Unique(_ctx.Document.TableLogicals.Select(t => t.Name), source.Name),
+            Key = TableRules.Unique(_ctx.Document.TableLogicals.Select(t => t.Key), source.Key),
             ViewType = source.ViewType,
             TypeViewFlags = source.TypeViewFlags,
             IdStation = source.IdStation,
@@ -536,7 +543,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
             Records = TableLogicalLayout.CloneRecords(source.Records)
         };
 
-        GlobData.TableLogicals.Insert(GlobData.TableLogicals.IndexOf(source) + 1, table);
+        _ctx.Document.TableLogicals.Insert(_ctx.Document.TableLogicals.IndexOf(source) + 1, table);
         Added(table);
     }
 
@@ -554,11 +561,11 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
         if (_current is not { } table || Usage(table).Count > 0)
             return;
 
-        var index = GlobData.TableLogicals.IndexOf(table);
-        GlobData.TableLogicals.RemoveAt(index);
+        var index = _ctx.Document.TableLogicals.IndexOf(table);
+        _ctx.Document.TableLogicals.RemoveAt(index);
         _layouts.Remove(table);
         _invalidStation.Remove(table);
-        _list.Fill(GlobData.TableLogicals.Count == 0 ? null : GlobData.TableLogicals[Math.Min(index, GlobData.TableLogicals.Count - 1)]);
+        _list.Fill(_ctx.Document.TableLogicals.Count == 0 ? null : _ctx.Document.TableLogicals[Math.Min(index, _ctx.Document.TableLogicals.Count - 1)]);
         Check();
     }
 

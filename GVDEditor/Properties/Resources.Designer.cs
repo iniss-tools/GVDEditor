@@ -8406,5 +8406,14 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("TabTabAC_UserTypeSl", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanica "{0}" neexistuje..
+        /// </summary>
+        internal static string Station_NotFound {
+            get {
+                return ResourceManager.GetString("Station_NotFound", resourceCulture);
+            }
+        }
 }
 }

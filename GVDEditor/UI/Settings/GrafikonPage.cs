@@ -14,6 +14,11 @@ namespace GVDEditor.UI.Settings;
 /// </summary>
 public partial class GrafikonPage : UserControl, ISettingsPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly List<(Control Control, string Text)> _problems = [];
     private GVDDirectory _dir = null!;
     private Color _hintColor;
@@ -50,14 +55,16 @@ public partial class GrafikonPage : UserControl, ISettingsPage
     /// <summary>
     /// Naplni stranku udajmi grafikonu - volat az po nastaveni temy okna.
     /// </summary>
-    public void LoadData(GVDDirectory dir)
+    /// <param name=\"context\">kontext editora</param>
+    internal void LoadData(EditorContext context, GVDDirectory dir)
     {
+        _ctx = context;
         _dir = dir;
         foreach (var header in new[] { lPeriod, lStation, lFiles })
             header.Font = new Font(Font, FontStyle.Bold);
         lDirNote.ForeColor = SystemColors.GrayText;
         _hintColor = lHint.ForeColor;
-        if (GlobData.UsingStyle.DarkScrollBar)
+        if (_ctx.UsingStyle.DarkScrollBar)
             pScroll.SetTheme(WindowsTheme.DarkExplorer);
 
         _loading = true;
@@ -67,7 +74,7 @@ public partial class GrafikonPage : UserControl, ISettingsPage
         dtpDataOd.Value = dir.GVD.StartValidData.ToDateTime();
         dtpDataDo.Value = dir.GVD.EndValidData.ToDateTime();
 
-        cbStationName.DataSource = GlobData.Stations;
+        cbStationName.DataSource = _ctx.Workspace.Stations;
         cbCustomStation.Checked = dir.GVD.ThisStation.IsCustom;
         if (cbCustomStation.Checked)
         {
@@ -158,7 +165,7 @@ public partial class GrafikonPage : UserControl, ISettingsPage
         else
         {
             var id = decimal.ToInt32(nudIDStation.Value).ToString(CultureInfo.InvariantCulture);
-            if (GlobData.Stations.Concat(GlobData.CustomStations).Any(station => station.ID == id))
+            if (_ctx.Workspace.Stations.Concat(_ctx.Document.CustomStations).Any(station => station.ID == id))
                 _problems.Add((nudIDStation, Resources.FNewGrafikon_Zadané_ID_vlastnej_stanice_už_patrí_inej_stanici));
         }
 
@@ -174,7 +181,7 @@ public partial class GrafikonPage : UserControl, ISettingsPage
         var dirname = tbDirName.Text.Trim();
         tbDirName.Text = dirname;
 
-        var error = GVDDirRename.Validate(dirname, _dir.Dir.FullPath, GlobData.DataDir, out var fullpath);
+        var error = GVDDirRename.Validate(dirname, _dir.Dir.FullPath, _ctx.Workspace.DataDir, out var fullpath);
         if (error != null)
         {
             Utils.ShowError(error);
@@ -201,7 +208,7 @@ public partial class GrafikonPage : UserControl, ISettingsPage
         var oldFullPath = _dir.Dir.FullPath;
 
         // od kliknutia na Premenovat mohol na disku vzniknut priecinok s rovnakym nazvom
-        var error = GVDDirRename.Validate(dirname, oldFullPath, GlobData.DataDir, out var fullpath);
+        var error = GVDDirRename.Validate(dirname, oldFullPath, _ctx.Workspace.DataDir, out var fullpath);
         if (error != null)
         {
             Utils.ShowError(error);
@@ -222,10 +229,10 @@ public partial class GrafikonPage : UserControl, ISettingsPage
                 return false;
             }
 
-            // GlobData.GVDDirs obsahuje vsetky zaznamy DirList.TXT (aj grafikony inych stanic a necitatelne),
+            // _ctx.Workspace.GVDDirs obsahuje vsetky zaznamy DirList.TXT (aj grafikony inych stanic a necitatelne),
             // FMain.ObdobiaList len obdobia prave vybratej stanice
-            GVDDirRename.UpdateEntries(_dir.Dir, GlobData.GVDDirs, dirname, fullpath);
-            DirListFile.Write(GlobData.DataDir, GlobData.GVDDirs);
+            GVDDirRename.UpdateEntries(_dir.Dir, _ctx.Workspace.GVDDirs, dirname, fullpath);
+            DirListFile.Write(_ctx.Workspace.DataDir, _ctx.Workspace.GVDDirs);
         }
 
         _pendingDirName = null;

@@ -14,6 +14,11 @@ namespace GVDEditor.UI.EditTrain;
 /// </summary>
 public partial class TrainRoutePage : UserControl, ITrainPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly FieldMarks _marks = new();
     private TrainDraft _draft = null!;
     private Color _hintColor;
@@ -36,10 +41,12 @@ public partial class TrainRoutePage : UserControl, ITrainPage
     /// <summary>
     /// Naplni stranku udajmi konceptu - volat az po nastaveni temy okna.
     /// </summary>
+    /// <param name=\"context\">kontext editora</param>
     /// <param name="draft">koncept vlaku</param>
     /// <param name="station">stanica grafikonu</param>
-    internal void LoadData(TrainDraft draft, Station? station)
+    internal void LoadData(EditorContext context, TrainDraft draft, Station? station)
     {
+        _ctx = context;
         _draft = draft;
         foreach (var header in new[] { lStationsHeader, lFromHeader, lToHeader, lStationName })
             header.Font = new Font(Font, FontStyle.Bold);
@@ -48,8 +55,8 @@ public partial class TrainRoutePage : UserControl, ITrainPage
         lStationName.Text = string.Format(CultureInfo.CurrentCulture, Resources.TrainRoutePage_TatoStanica, station?.Name);
 
         _loading = true;
-        cbArrTrack.DataSource = GlobData.Tracks.ToList();
-        cbDepTrack.DataSource = GlobData.Tracks.ToList();
+        cbArrTrack.DataSource = _ctx.Document.Tracks.ToList();
+        cbDepTrack.DataSource = _ctx.Document.Tracks.ToList();
         cbArrTrack.SelectedItem = draft.Track;
         cbDepTrack.SelectedItem = draft.TrackDeparture ?? draft.Track;
         mtArrival.Text = draft.ArrivalText;
@@ -136,7 +143,7 @@ public partial class TrainRoutePage : UserControl, ITrainPage
     private void FillStations()
     {
         var search = Normalize(tbSearch.Text);
-        var source = cbCustom.Checked ? (IEnumerable<Station>)GlobData.CustomStations : GlobData.Stations;
+        var source = cbCustom.Checked ? (IEnumerable<Station>)_ctx.Document.CustomStations : _ctx.Workspace.Stations;
         var selected = listStations.SelectedItem as Station;
 
         listStations.BeginUpdate();

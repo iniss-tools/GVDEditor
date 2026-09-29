@@ -12,6 +12,11 @@ namespace GVDEditor.UI.EditTrain;
 /// </summary>
 public partial class TrainDodatkyPage : UserControl, ITrainPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private TrainDraft _draft = null!;
     private BindingList<Dodatok> _doplnky = [];
     private List<ReportType> _types = [];
@@ -33,10 +38,12 @@ public partial class TrainDodatkyPage : UserControl, ITrainPage
     /// <summary>
     /// Naplni stranku dodatkami konceptu - volat az po nastaveni temy okna.
     /// </summary>
+    /// <param name=\"context\">kontext editora</param>
     /// <param name="draft">koncept vlaku</param>
     /// <param name="sounds">nahravky dodatkov zo zvukovej banky</param>
-    internal void LoadData(TrainDraft draft, IEnumerable<FyzSound> sounds)
+    internal void LoadData(EditorContext context, TrainDraft draft, IEnumerable<FyzSound> sounds)
     {
+        _ctx = context;
         _draft = draft;
         foreach (var header in new[] { lListHeader, lDetailHeader })
             header.Font = new Font(Font, FontStyle.Bold);
@@ -85,7 +92,7 @@ public partial class TrainDodatkyPage : UserControl, ITrainPage
     private void UpdateTypes()
     {
         _routing = _draft.Routing;
-        _types = TrainRules.ReportTypesFor(_routing, GlobData.ReportTypes);
+        _types = TrainRules.ReportTypesFor(_routing, _ctx.Document.ReportTypes);
         lInfo.Text = _routing == null ? Resources.TrainDodatkyPage_BezTrasy : Resources.TrainDodatkyPage_Info;
     }
 
@@ -95,7 +102,7 @@ public partial class TrainDodatkyPage : UserControl, ITrainPage
     {
         var dodatok = Selected;
         lText.Text = dodatok?.Sound?.Text ?? "";
-        matrix.Bind(dodatok?.ChosenReports, _types, GlobData.ReportVariants);
+        matrix.Bind(dodatok?.ChosenReports, _types, _ctx.Document.ReportVariants);
         bRemove.Enabled = dodatok != null;
     }
 

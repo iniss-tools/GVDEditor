@@ -224,8 +224,8 @@ public sealed class Train
     /// </summary>
     /// <remarks>Do grafikonu sa zapisuje kľúč zvuku - INISS podľa neho hľadá nahrávku názvu vlaku; v zozname je vidno názov.</remarks>
     /// <returns></returns>
-    public static List<TrainName> GetTrainNames() =>
-        GlobData.Sounds.Where(soundE => soundE.Group.Key.EqualsIgnoreCase("V8")).Select(soundE => new TrainName(soundE.Key, soundE.Name)).ToList();
+    public static List<TrainName> GetTrainNames(IEnumerable<FyzSound> sounds) =>
+        sounds.Where(soundE => soundE.Group.Key.EqualsIgnoreCase("V8")).Select(soundE => new TrainName(soundE.Key, soundE.Name)).ToList();
 
     /// <summary>
     /// Vrati vlak zo zoznamu variant, ktory je hlavna varianta vlaku (ma najdlhsiu trasu poctom stanic).

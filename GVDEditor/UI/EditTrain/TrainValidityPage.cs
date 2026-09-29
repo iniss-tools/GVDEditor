@@ -18,6 +18,11 @@ namespace GVDEditor.UI.EditTrain;
 /// </summary>
 public partial class TrainValidityPage : UserControl, ITrainPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly FieldMarks _marks = new();
     private TrainDraft _draft = null!;
     private TrainContext _context = null!;
@@ -43,12 +48,14 @@ public partial class TrainValidityPage : UserControl, ITrainPage
     /// <summary>
     /// Naplni stranku udajmi konceptu - volat az po nastaveni temy okna.
     /// </summary>
+    /// <param name=\"context\">kontext editora</param>
     /// <param name="draft">koncept vlaku</param>
     /// <param name="context">grafikon</param>
     /// <param name="homeStation">nazov stanice grafikonu (zaciatok alebo koniec trasy vychodzieho a konciaceho vlaku)</param>
     /// <param name="openCalendar">otvori Kalendar akcii vlaku; <see langword="null" />, ak sa neda zobrazit</param>
-    internal void LoadData(TrainDraft draft, TrainContext context, string? homeStation, Action? openCalendar)
+    internal void LoadData(EditorContext editor, TrainDraft draft, TrainContext context, string? homeStation, Action? openCalendar)
     {
+        _ctx = editor;
         _draft = draft;
         _context = context;
         _homeStation = homeStation ?? "";
@@ -56,7 +63,7 @@ public partial class TrainValidityPage : UserControl, ITrainPage
         foreach (var header in new[] { lLimitHeader, lVariantHeader })
             header.Font = new Font(Font, FontStyle.Bold);
         _hintColor = lHint.ForeColor;
-        if (GlobData.UsingStyle.DarkScrollBar)
+        if (_ctx.UsingStyle.DarkScrollBar)
             pScroll.SetTheme(WindowsTheme.DarkExplorer);
         _marks.Capture(tbDateLimit);
         strip.RowLabel = row => $"{row.Position}/{_others.Count + 1}";
@@ -130,7 +137,7 @@ public partial class TrainValidityPage : UserControl, ITrainPage
     }
 
     private string DraftLabel() =>
-        string.Join(" ", new[] { _draft.Type?.ToString(), _draft.Number, TrainName.ToDisplay(GlobData.TrainNames, _draft.Name) }
+        string.Join(" ", new[] { _draft.Type?.ToString(), _draft.Number, TrainName.ToDisplay(_ctx.Workspace.TrainNames, _draft.Name) }
             .Where(part => !string.IsNullOrEmpty(part)));
 
     private void FillGrid(object? selected)
@@ -238,7 +245,7 @@ public partial class TrainValidityPage : UserControl, ITrainPage
         if (FindForm() is not { } form || _draft.ValidTo < _draft.ValidFrom)
             return;
 
-        if (FDateLimitEdit.SetDateLimit(form, _draft.ValidFrom.ToDateTime(), _draft.ValidTo.ToDateTime(), defaultValue: tbDateLimit.Text) is { } limit)
+        if (FDateLimitEdit.SetDateLimit(form, _ctx.UsingStyle, _draft.ValidFrom.ToDateTime(), _draft.ValidTo.ToDateTime(), defaultValue: tbDateLimit.Text) is { } limit)
             tbDateLimit.Text = limit;
     }
 
@@ -268,7 +275,7 @@ public partial class TrainValidityPage : UserControl, ITrainPage
             return;
 
         var proposal = _overlaps.ContainsKey(other) ? TrainVariants.WithoutCommonDays(_draft, other) : null;
-        if (FDateLimitEdit.SetDateLimit(form, _draft.ValidFrom.ToDateTime(), _draft.ValidTo.ToDateTime(), other, defaultValue: _draft.LimitOf(other),
+        if (FDateLimitEdit.SetDateLimit(form, _ctx.UsingStyle, _draft.ValidFrom.ToDateTime(), _draft.ValidTo.ToDateTime(), other, defaultValue: _draft.LimitOf(other),
                 proposal: proposal) is not { } limit)
             return;
 

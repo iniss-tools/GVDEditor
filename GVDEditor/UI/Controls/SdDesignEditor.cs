@@ -16,7 +16,7 @@ internal sealed class SdDesignEditor : SdEditorBase
     private readonly ErrorProvider _errors = new() { BlinkStyle = ErrorBlinkStyle.NeverBlink };
     private StateDgmDesign? _d;
 
-    public SdDesignEditor()
+    public SdDesignEditor(SdEditorContext context) : base(context)
     {
         AddHeader(Resources.FStateDgm_Vzhlad);
         AddRow(Resources.FStateDgm_Kluc, _key);

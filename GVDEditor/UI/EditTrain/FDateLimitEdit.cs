@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using GVDEditor.Config;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
 using ToolsCore.Tools;
@@ -19,8 +20,11 @@ internal partial class FDateLimitEdit : Form
     private bool _needCheckText;
     private bool _textChanging;
 
-    private FDateLimitEdit()
+    private readonly GVDEditorStyle _style;
+
+    private FDateLimitEdit(GVDEditorStyle style)
     {
+        _style = style;
         InitializeComponent();
         this.ApplyThemeAndFonts();
         InitColumns();
@@ -30,10 +34,10 @@ internal partial class FDateLimitEdit : Form
     /// Otvori editor datumoveho obmedzenia.
     /// </summary>
     /// <returns>upravene obmedzenie; <see langword="null" />, ak ho pouzivatel zrusil</returns>
-    public static string? SetDateLimit(Form owner, DateTime dateFrom, DateTime dateTo, Train? train = null, bool textNot = false, string defaultValue = "",
+    public static string? SetDateLimit(Form owner, GVDEditorStyle style, DateTime dateFrom, DateTime dateTo, Train? train = null, bool textNot = false, string defaultValue = "",
         string? proposal = null)
     {
-        using var form = new FDateLimitEdit();
+        using var form = new FDateLimitEdit(style);
         form.Owner = owner;
         form._train = train;
         form._dateLimit = new DateLimit(dateFrom, dateTo, insertMarks: false);
@@ -99,8 +103,8 @@ internal partial class FDateLimitEdit : Form
         monthCol.HeaderText = @"Mesiac";
         monthCol.Width = (int)Math.Round(TextRenderer.MeasureText("99.9999", dgvCalendar.Font).Width * 1.05 + 0.5);
         monthCol.SortMode = DataGridViewColumnSortMode.NotSortable;
-        monthCol.DefaultCellStyle.BackColor = GlobData.UsingStyle.ControlsColorScheme.Box.BackColor;
-        monthCol.DefaultCellStyle.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Box.ForeColor;
+        monthCol.DefaultCellStyle.BackColor = _style.ControlsColorScheme.Box.BackColor;
+        monthCol.DefaultCellStyle.ForeColor = _style.ControlsColorScheme.Box.ForeColor;
         monthCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
         dgvCalendar.RowTemplate.Height = TextRenderer.MeasureText("Čý", dgvCalendar.Font).Height + 3;
@@ -117,8 +121,8 @@ internal partial class FDateLimitEdit : Form
             dayCol.Width = TextRenderer.MeasureText("99", dgvCalendar.Font).Width + 3;
             dayCol.SortMode = DataGridViewColumnSortMode.NotSortable;
             dayCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
-            dayCol.DefaultCellStyle.BackColor = GlobData.UsingStyle.ControlsColorScheme.Box.BackColor;
-            dayCol.DefaultCellStyle.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Box.ForeColor;
+            dayCol.DefaultCellStyle.BackColor = _style.ControlsColorScheme.Box.BackColor;
+            dayCol.DefaultCellStyle.ForeColor = _style.ControlsColorScheme.Box.ForeColor;
         }
     }
 
@@ -152,7 +156,7 @@ internal partial class FDateLimitEdit : Form
             }
 
             var cell = (CalendarCell)dgvCalendar[colIndex, rowIndex];
-            cell.Style.BackColor = GlobData.UsingStyle.ControlsColorScheme.Box.BackColor;
+            cell.Style.BackColor = _style.ControlsColorScheme.Box.BackColor;
             cell.Value = currentDay;
             cell.ToolTipText = currentDate.ToString("dddd d. MMMM yyyy", CultureInfo.CurrentUICulture);
 
@@ -260,6 +264,7 @@ internal partial class FDateLimitEdit : Form
                     {
                         doNotResetLastSelected = true;
                         cell.Highlighted = true;
+                        cell.HighlightColor = _style.ControlsColorScheme.Box.ForeColor;
                         cell.SelectedDay = !cell.SelectedDay;
                         _lastSelectedCell = cell;
                         dgvCalendar.InvalidateCell(cell);
@@ -486,6 +491,11 @@ public class CalendarCell : DataGridViewTextBoxCell
     public bool Highlighted { get; set; }
 
     /// <summary>
+    /// Farba oramovania zvyrazneneho policka (podla temy).
+    /// </summary>
+    public Color HighlightColor { get; set; } = Color.Black;
+
+    /// <summary>
     /// Vrati/nastavi akciu resp. stav, v akom sa policko nachadza.
     /// </summary>
     public CalendarCellAction Action { get; set; }
@@ -511,7 +521,7 @@ public class CalendarCell : DataGridViewTextBoxCell
 
         if (Highlighted)
         {
-            using var pen = new Pen(GlobData.UsingStyle.ControlsColorScheme.Box.ForeColor, 2);
+            using var pen = new Pen(HighlightColor, 2);
             graphics.DrawRectangle(pen, cellBounds.X + 1, cellBounds.Y + 1, cellBounds.Width - 2, cellBounds.Height - 2);
         }
     }

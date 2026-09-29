@@ -20,13 +20,13 @@ public sealed class TrainBindingList : ExBindingList<Train>
     {
     }
 
-    /// <summary>Nazvy vlakov zo zvukovej banky; predvolene <see cref="GlobData.TrainNames" />.</summary>
+    /// <summary>Nazvy vlakov zo zvukovej banky (bez nich sa triedi podla kluca).</summary>
     public IEnumerable<TrainName>? TrainNames { get; set; }
 
     /// <inheritdoc />
     protected override int OnComparison(object left, object right)
     {
-        var names = TrainNames ?? GlobData.TrainNames;
+        var names = TrainNames;
         if (SortPropertyCore?.Name == nameof(Train.Name) && names != null && left is string l && right is string r)
             return StringComparer.CurrentCulture.Compare(TrainName.ToDisplay(names, l), TrainName.ToDisplay(names, r));
 

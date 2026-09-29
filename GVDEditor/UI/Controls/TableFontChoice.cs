@@ -14,6 +14,7 @@ internal sealed class TableFontChoice
 {
     private const int OtherId = int.MinValue;
 
+    private readonly Func<EditorContext?> _context;
     private readonly ExComboBox _combo;
     private readonly ToolTip _tip;
     private readonly bool _allowColumnDefault;
@@ -31,11 +32,13 @@ internal sealed class TableFontChoice
     /// <summary>
     /// Pripoji vyber k rozbalovaciemu zoznamu.
     /// </summary>
+    /// <param name="context">kontext editora (pisma tabul grafikonu); vola sa az pri plneni</param>
     /// <param name="combo">rozbalovaci zoznam v okne</param>
     /// <param name="tip">popisok, do ktoreho sa zapise vyznam cisla</param>
     /// <param name="allowColumnDefault">ponuknut predvolene pismo stlpca (cislo -1)</param>
-    public TableFontChoice(ExComboBox combo, ToolTip tip, bool allowColumnDefault)
+    public TableFontChoice(Func<EditorContext?> context, ExComboBox combo, ToolTip tip, bool allowColumnDefault)
     {
+        _context = context;
         _combo = combo;
         _tip = tip;
         _allowColumnDefault = allowColumnDefault;
@@ -79,23 +82,28 @@ internal sealed class TableFontChoice
     /// <summary>
     /// Text pisma pre obsluhu tak, ako ho ponuka vyber - napr. v tabulke bez rozbalovacieho zoznamu.
     /// </summary>
-    public static string Describe(int id)
+    public static string Describe(IEnumerable<TableFont> fonts, int id)
     {
         if (id == -1)
             return Resources.FontChoice_Stlpec;
 
-        var font = GlobData.TableFonts.FirstOrDefault(f => f.FontID == id);
+        var font = fonts.FirstOrDefault(f => f.FontID == id);
         return font is null
             ? string.Format(CultureInfo.CurrentCulture, Resources.FontChoice_Vlastne, id)
             : string.Format(CultureInfo.CurrentCulture, Resources.FontChoice_Pismo, font.Name, font.FontID);
     }
+
+    /// <summary>
+    /// Pisma tabul grafikonu; pred naplnenim stranky (kontext este nie je) prazdne.
+    /// </summary>
+    private IEnumerable<TableFont> Fonts => _context()?.Document.TableFonts ?? [];
 
     private void Fill()
     {
         var items = new List<Item>();
         if (_allowColumnDefault)
             items.Add(new Item(-1, Resources.FontChoice_Stlpec));
-        items.AddRange(GlobData.TableFonts.Select(font =>
+        items.AddRange(Fonts.Select(font =>
             new Item(font.FontID, string.Format(CultureInfo.CurrentCulture, Resources.FontChoice_Pismo, font.Name, font.FontID))));
         if (items.All(item => item.Id != _value))
             items.Add(new Item(_value, string.Format(CultureInfo.CurrentCulture, Resources.FontChoice_Vlastne, _value)));
@@ -129,7 +137,7 @@ internal sealed class TableFontChoice
     private void PickOther()
     {
         var start = _value >= 0 ? _value : ElenFontCode.DefaultKeptBits | 0x10;
-        using var picker = new FTableFontPicker(start, _manufacturer);
+        using var picker = new FTableFontPicker(_context()!, start, _manufacturer);
         if (picker.ShowDialog(_combo.FindForm()) != DialogResult.OK)
         {
             Fill();
@@ -139,7 +147,7 @@ internal sealed class TableFontChoice
         if (picker.AddToList)
         {
             var code = new ElenFontCode(picker.Value);
-            GlobData.TableFonts.Add(new TableFont
+            _context()!.Document.TableFonts.Add(new TableFont
             {
                 Name = code.SuggestedName(),
                 FontID = picker.Value,

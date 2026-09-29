@@ -1,8 +1,9 @@
+using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 namespace GVDEditor.Domain.Snapshots;
 
 /// <summary>
-/// Stav dat, ktore okno Lokalne nastavenia meni priamo v <see cref="GlobData" /> (dopravcovia, nastupistia, kolaje,
+/// Stav dat, ktore okno Lokalne nastavenia meni priamo v otvorenom grafikone (dopravcovia, nastupistia, kolaje,
 /// tabule, texty, pisma, TabTab, vlastne stanice a vlaky, ktorych sa zmeny tykaju). Tlacidlo Zrusit ho obnovi.
 /// </summary>
 internal sealed class LocalSettingsSnapshot
@@ -19,17 +20,17 @@ internal sealed class LocalSettingsSnapshot
     /// <summary>
     /// Zapamata aktualny stav dat lokalnych nastaveni.
     /// </summary>
-    public static LocalSettingsSnapshot Capture()
+    public static LocalSettingsSnapshot Capture(GrafikonDocument document)
     {
         (object List, Action Reset)?[] lists =
         [
-            Item(GlobData.Operators), Item(GlobData.Platforms), Item(GlobData.Tracks), TrainsItem(GlobData.Trains),
-            Item(GlobData.TablePhysicals), Item(GlobData.TableLogicals), Item(GlobData.TableCatalogs), Item(GlobData.TabTabs),
-            Item(GlobData.TableTexts), Item(GlobData.TableFonts), Item(GlobData.CustomStations)
+            Item(document.Operators), Item(document.Platforms), Item(document.Tracks), TrainsItem(document.Trains),
+            Item(document.TablePhysicals), Item(document.TableLogicals), Item(document.TableCatalogs), Item(document.TabTabs),
+            Item(document.TableTexts), Item(document.TableFonts), Item(document.CustomStations)
         ];
         var present = lists.OfType<(object List, Action Reset)>().ToList();
 
-        var roots = present.Select(item => item.List).Append(GlobData.ModeTabsSections);
+        var roots = present.Select(item => item.List).Append(document.ModeTabsSections);
         var graph = ObjectGraphSnapshot.Capture(roots, IsEntity);
         return new LocalSettingsSnapshot(graph, present.Select(item => item.Reset).ToArray());
     }
@@ -62,5 +63,5 @@ internal sealed class LocalSettingsSnapshot
     /// Sleduju sa len entity GVDEditora; zvukova banka, obrazky a pod. sa oknom nemenia.
     /// </summary>
     private static bool IsEntity(Type type) =>
-        type.Assembly == typeof(GlobData).Assembly && type.Namespace == typeof(Train).Namespace;
+        type.Assembly == typeof(Train).Assembly && type.Namespace == typeof(Train).Namespace;
 }

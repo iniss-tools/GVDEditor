@@ -2,9 +2,11 @@
 using System.Reflection;
 using System.Text;
 using ExControls;
+using GVDEditor.Config;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
+using GVDEditor.TabTabEditor;
 using GVDEditor.UI.Controls;
 using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.EditTrain;
@@ -16,6 +18,7 @@ using GVDEditor.UI.TabTab;
 using ToolsCore.Iniss.Entities;
 using ToolsCore.Iniss.StateDgm;
 using ToolsCore.Iniss.Tools;
+using ToolsCore;
 
 namespace GVDEditor.DocScreenshots;
 
@@ -36,7 +39,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
         try
         {
             var gvdDir = FMain.ObdobiaList.First();
-            var trains = GlobData.Trains;
+            var trains = Program.Context.Document.Trains;
             var express = trains.First(t => t.Number == "521");
 
             // hlavné okno s vybraným rýchlikom
@@ -47,7 +50,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             }, dispose: false);
 
             // nový grafikon pre ďalšiu stanicu na obdobie 2026/2027
-            Shot("novy-grafikon/novy-grafikon", () => new FNewGrafikon(FMain.ObdobiaList.ToList()), form =>
+            Shot("novy-grafikon/novy-grafikon", () => new FNewGrafikon(Program.Context, FMain.ObdobiaList.ToList()), form =>
             {
                 foreach (var name in new[] { "dtpDataOd", "dtpGVDOd" })
                     ((ExControls.ExDateTimePicker)Field(form, name)).Value = new DateTime(2026, 12, 13);
@@ -58,7 +61,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 ((TextBoxBase)Field(form, "tbDirIniss")).Select(0, 0);
             });
             // na záložke Radenie vybrané radenie v pracovné dni
-            Shot("uprava-vlaku", () => new FEditTrain(express, trains.IndexOf(express), gvdDir.GVD, false, gvdDir.Dir.FullPath),
+            Shot("uprava-vlaku", () => new FEditTrain(Program.Context, express, trains.IndexOf(express), gvdDir.GVD, false, gvdDir.Dir.FullPath),
                 form =>
                 {
                     Resize(form, 960, 680);
@@ -81,11 +84,11 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 }, tabs: true);
 
             // kópia rýchlika je jeho druhou variantou - skupina variant s prekrytím dní na stránke Platnosť
-            Shot("uprava-vlaku/varianty", () => new FEditTrain(express, trains.Count, gvdDir.GVD, true, gvdDir.Dir.FullPath,
+            Shot("uprava-vlaku/varianty", () => new FEditTrain(Program.Context, express, trains.Count, gvdDir.GVD, true, gvdDir.Dir.FullPath,
                 GVDEditor.UI.EditTrain.EditTrainPage.Platnost), form => Resize(form, 960, 680));
 
             // skladanie radenia: vybraná druhá nahrávka „číslo“ a priečinok s vlastnosťami vozňov
-            Shot("radenie/uprava-radenia", () => new FRadenie([.. express.Radenia[0].Sounds]), form =>
+            Shot("radenie/uprava-radenia", () => new FRadenie(Program.Context, [.. express.Radenia[0].Sounds]), form =>
             {
                 SelectCombo(form, "cbSoundDir", ((ComboBox)Field(form, "cbSoundDir")).Items.IndexOf(FyzGroupType.VOZY1));
                 SelectListItem(form, "listAllSounds", 0);
@@ -93,24 +96,24 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             });
             // na stránke Nástupištia a koľaje vybrať koľaj (údaje koľaje sú zaujímavejšie ako nástupište)
             // okná nastavení väčšie ako predvolené, nech je na snímke viac údajov vybranej položky
-            Shot("lokalne-nastavenia", () => new FLocalSettings(gvdDir), form =>
+            Shot("lokalne-nastavenia", () => new FLocalSettings(Program.Context, gvdDir), form =>
             {
                 Resize(form, 980, 700);
                 Descendants(form).OfType<GVDEditor.UI.Settings.PlatformsTracksPage>().Single().SelectFirstTrack();
             }, tabs: true);
             // vypnuta anglictina - pod zoznamom upozornenie na vlaky, ktore ju maju zapnutu (okno sa zavrie bez OK)
             Shot("lokalne-nastavenia/jazyky-hlaseni-upozornenie",
-                () => new FLocalSettings(gvdDir, GVDEditor.UI.Settings.LocalSettingsPage.JazykyHlaseni), form =>
+                () => new FLocalSettings(Program.Context, gvdDir, GVDEditor.UI.Settings.LocalSettingsPage.JazykyHlaseni), form =>
                 {
                     Resize(form, 980, 700);
                     var page = Descendants(form).OfType<GVDEditor.UI.Settings.GrafikonLanguagesPage>().Single();
                     Descendants(page).OfType<CheckedListBox>().Single().SetItemChecked(1, false);
                     Pump.Events();
                 });
-            Shot("globalne-nastavenia",() => new FGlobalSettings(FMain.ObdobiaList.ToList()), form => Resize(form, 900, 620), tabs: true);
+            Shot("globalne-nastavenia",() => new FGlobalSettings(Program.Context, FMain.ObdobiaList.ToList()), form => Resize(form, 900, 620), tabs: true);
 
             // chyba na stránke: dopravca bez názvu - okno sa zavrie bez OK, takže Zrušiť zmenu vráti
-            var errorForm = new FLocalSettings(gvdDir, GVDEditor.UI.Settings.LocalSettingsPage.Dopravcovia);
+            var errorForm = new FLocalSettings(Program.Context, gvdDir, GVDEditor.UI.Settings.LocalSettingsPage.Dopravcovia);
             Shot("okna-nastaveni/chyba", errorForm, form =>
             {
                 Resize(form, 900, 560);
@@ -133,59 +136,59 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             }, dispose: false);
             errorForm.Close();
             errorForm.Dispose();
-            Shot("nastavenia-programu/nastavenia-programu", () => new FAppSettings(GlobData.Config, GlobData.Styles));
+            Shot("nastavenia-programu/nastavenia-programu", () => new FAppSettings(Program.Context));
             Shot("nastavenia-programu/komponenty", () =>
             {
-                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                var form = new FAppSettings(Program.Context);
                 form.PreselectMenuItem("pDesktopComponents");
                 return form;
             });
             Shot("nastavenia-programu/stlpce", () =>
             {
-                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                var form = new FAppSettings(Program.Context);
                 form.PreselectMenuItem("pDesktopColumns");
                 return form;
             });
             Shot("nastavenia-programu/lokalizacia", () =>
             {
-                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                var form = new FAppSettings(Program.Context);
                 form.PreselectMenuItem("pLocalization");
                 return form;
             });
             Shot("nastavenia-programu/klavesove-skratky", () =>
             {
-                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                var form = new FAppSettings(Program.Context);
                 form.PreselectMenuItem("pShortcuts");
                 return form;
             });
             Shot("nastavenia-programu/styly", () =>
             {
-                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                var form = new FAppSettings(Program.Context);
                 form.PreselectMenuItem("pStyles");
                 return form;
             });
             Shot("nastavenia-programu/pisma", () =>
             {
-                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                var form = new FAppSettings(Program.Context);
                 form.PreselectMenuItem("pFonts");
                 return form;
             });
             Shot("nastavenia-programu/logovanie", () =>
             {
-                var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+                var form = new FAppSettings(Program.Context);
                 form.PreselectMenuItem("pLogging");
                 return form;
             });
             // stránka Spúšťanie INISS s argumentmi zadanými zaškrtnutím
             Shot("spustanie-iniss/nastavenia-spustania", () =>
             {
-                var config = GlobData.Config with { StartupINISSConfig = new GVDEditor.Config.StartupINISS { CmdArgs = "/Minimize /NoRestore" } };
-                var form = new FAppSettings(config, GlobData.Styles);
+                var config = Program.Context.Config with { StartupINISSConfig = new GVDEditor.Config.StartupINISS { CmdArgs = "/Minimize /NoRestore" } };
+                var form = new FAppSettings(new EditorContext(new AppSession<GVDEditorConfig, GVDEditorStyle>(config, Program.Context.Session.Styles, Program.Context.UsingStyle)));
                 form.PreselectMenuItem("pStartupIniss");
                 return form;
             });
             // rozdelenie staršieho zápisu: jeden priečinok s dvoma obdobiami stanice (bloky /9900100)
-            Shot("migracia-blokov/rozdelenie", () => new FBlockMigration(@"C:\INISS\DATA\DolneMesto",
+            Shot("migracia-blokov/rozdelenie", () => new FBlockMigration(Program.Context, @"C:\INISS\DATA\DolneMesto",
             [
                 new GvdBlock(1, 9900100, "Dolné Mesto", 118, new DateTime(2025, 12, 14), new DateTime(2026, 12, 12)) { DirName = "DolneMesto.2026" },
                 new GvdBlock(2, 9900100, "Dolné Mesto", 124, new DateTime(2026, 12, 13), new DateTime(2027, 12, 11)) { DirName = "DolneMesto.2027_2" }
@@ -199,7 +202,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 "1921;REX;08:48;08:50;1;ide denne;9900130,9900100,9900140\n";
             FImportData ImportForm()
             {
-                var form = new FImportData(gvdDir.GVD);
+                var form = new FImportData(Program.Context, gvdDir.GVD);
                 ((CheckBox)Field(form, "cboxFirstHeader")).Checked = true;
                 form.GetType().GetMethod("LoadText", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(form, [importSample]);
                 return form;
@@ -212,15 +215,15 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("import-z-elis/import-z-elis", () => new FELISImport(gvdDir.GVD.ThisStation.Name, trains.Count),
                 form => ((TextBoxBase)Field(form, "tbAppPath")).Select(0, 0));
             Shot("import-z-elis/priradenie-stanic",
-                () => new FELISStations(["Hraničná št.hr.", "Lipová zastávka", "Nová Obec", "Podhradie mesto"]),
+                () => new FELISStations(Program.Context, ["Hraničná št.hr.", "Lipová zastávka", "Nová Obec", "Podhradie mesto"], Program.Context.Stations),
                 form => Resize(form, 720, 420));
 
             // analýza s nájdenými problémami: prázdny a nepoužitý TabTab a uplynutá platnosť dát (po snímke sa vráti)
             var emptyTab = new TableTabTab { Key = "Rezerva", Text = "" };
             var endValidData = gvdDir.GVD.EndValidData;
-            GlobData.TabTabs.Add(emptyTab);
+            Program.Context.Document.TabTabs.Add(emptyTab);
             gvdDir.GVD.EndValidData = new DateOnly(2026, 6, 30);
-            Shot("analyza-grafikonu/analyza-grafikonu", () => new FAnalyzer(gvdDir), form =>
+            Shot("analyza-grafikonu/analyza-grafikonu", () => new FAnalyzer(Program.Context, gvdDir, main), form =>
             {
                 Resize(form, 820, 360);
                 form.GetType().GetMethod("bAnalyze_Click", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(form, [form, EventArgs.Empty]);
@@ -230,7 +233,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 grid.ClearSelection();
                 if (grid.Rows.Count > 0) grid.Rows[0].Selected = true;
             });
-            GlobData.TabTabs.Remove(emptyTab);
+            Program.Context.Document.TabTabs.Remove(emptyTab);
             gvdDir.GVD.EndValidData = endValidData;
             // generátor s obdobím grafikonu a vygenerovaným poľom bitov
             var gvdInfo = gvdDir.GVD;
@@ -247,7 +250,8 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             // editor dátumového obmedzenia s kalendárom pre Ex 521 (normálne sa otvára modálne cez SetDateLimit)
             Shot("datumove-obmedzenia/editor", () =>
             {
-                var form = (Form)Activator.CreateInstance(typeof(FDateLimitEdit), nonPublic: true)!;
+                var form = (Form)Activator.CreateInstance(typeof(FDateLimitEdit), BindingFlags.NonPublic | BindingFlags.Instance, null,
+                    [Program.Context.UsingStyle], null)!;
                 var type = form.GetType();
                 var flags = BindingFlags.NonPublic | BindingFlags.Instance;
                 type.GetField("_train", flags)!.SetValue(form, express);
@@ -268,20 +272,20 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             });
             // editory tabúľ nad ukážkovými tabuľami (DemoTables)
             var station = gvdDir.GVD.ThisStation;
-            var catalog = GlobData.TableCatalogs[0];
+            var catalog = Program.Context.Document.TableCatalogs[0];
             Shot("tabule/poradie-stlpcov", () => new FTableColumnOrder(catalog.Items, catalog.ViewTypeTabs),
                 form => SelectCombo(form, "cbViewMode", 1));
             // prvá položka zoznamu je zabudovaná prázdna "Žiadny"
-            var druh = GlobData.TabTabs.First(t => t.Key == "Druh");
-            Shot("tabule/editor-tabtab", () => new FTabTab(druh, station), form =>
+            var druh = Program.Context.Document.TabTabs.First(t => t.Key == "Druh");
+            Shot("tabule/editor-tabtab", () => new FTabTab(Program.Context, druh, station), form =>
             {
                 Resize(form, 1100, 620);
                 LogTabTabProblems(form, druh);
             });
 
             // editor s chybou v pravidle (neuložená úprava) - ukážka podčiarknutia a zoznamu problémov s opravou
-            var smer = GlobData.TabTabs.First(t => t.Key == "Smer");
-            Shot("tabule/editor-tabtab-problemy", () => new FTabTab(smer, station), form =>
+            var smer = Program.Context.Document.TabTabs.First(t => t.Key == "Smer");
+            Shot("tabule/editor-tabtab-problemy", () => new FTabTab(Program.Context, smer, station), form =>
             {
                 Resize(form, 1100, 620);
                 var scintilla = ((MyScintilla)Field(form, "scText")).Scintilla;
@@ -298,7 +302,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
 
             // náhľad textu na tabuli pre Ex 521 s meškaním na odchode
             Shot("tabule/nahlad-na-tabuli",
-                () => new FTabTabPreview(name => GlobData.TabTabs.FirstOrDefault(t => t.Key == name)?.Text, "Druh",
+                () => new FTabTabPreview(Program.Context, name => Program.Context.Document.TabTabs.FirstOrDefault(t => t.Key == name)?.Text, "Druh",
                     int.Parse(station.ID, CultureInfo.InvariantCulture)),
                 form =>
                 {
@@ -327,7 +331,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             var diagram = StateDgmFile.Read(gvdDir.Dir.FullPath)!;
             var passing = diagram.Categories[1];
             var arrived = passing.States.First(s => s.Key == "Zastavil");
-            Shot("stavovy-diagram/stavovy-diagram", () => new FStateDgm(gvdDir), form =>
+            Shot("stavovy-diagram/stavovy-diagram", () => new FStateDgm(Program.Context, gvdDir), form =>
             {
                 Resize(form, 1360, 820);
                 LogStateDgmProblems(form);
@@ -340,7 +344,8 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             var departs = arrived.Events.First(e => e.NextState == "Odjede");
             Shot("stavovy-diagram/akcia", () =>
             {
-                var editor = new SdEventEditor();
+                var editor = new SdEventEditor(new SdEditorContext(new GvdExprSymbols(Program.Context.Workspace, Program.Context.Document),
+                    Program.Context.Document.ReportTypes.Select(r => r.Key).ToList(), Program.Context.UsingStyle.TabTabEditorScheme.Font));
                 editor.Bind(departs, arrived.Controls.FirstOrDefault(c => c.EventKey == departs.Key),
                     passing.States.Select(s => s.Key), diagram.Designs.Select(d => d.Key), 0);
                 return new FStateDgmItem(Properties.Resources.FStateDgm_Akcia_Titul, editor, 520, 380);
@@ -356,7 +361,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
 
             // kalendár akcií pre rýchlik s meškaním
             Shot("stavovy-diagram/kalendar-akcii",
-                () => new FStateDgmCalendar(() => diagram, int.Parse(station.ID, CultureInfo.InvariantCulture), express),
+                () => new FStateDgmCalendar(Program.Context, () => diagram, int.Parse(station.ID, CultureInfo.InvariantCulture), express),
                 form =>
                 {
                     ((NumericUpDown)Field(form, "nudDelayArr")).Value = 5;

@@ -16,13 +16,19 @@ namespace GVDEditor.UI.Import;
 /// pri ďalšom importe už nepýtal. Stanica sa nikdy nezakladá sama - inak by v grafikone
 /// vznikli dva názvy tej istej stanice.
 /// </remarks>
-public partial class FELISStations : Form
+internal partial class FELISStations : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
     /// <summary>Polozka v zozname, ktora znamena vynechanie stanice z trasy.</summary>
     private static readonly string SkipItem = Resources.FELISStations_vynechať;
 
     private readonly List<string> _names;
     private readonly List<Station> _stations;
+    private readonly StationDirectory _directory;
 
     // stanice zalozene v tomto okne - pri zruseni importu sa z grafikonu zase odstrania
     private readonly List<Station> _created = new();
@@ -37,8 +43,10 @@ public partial class FELISStations : Form
     /// Vytvori novy formular typu <see cref="FELISStations" />.
     /// </summary>
     /// <param name="unresolvedNames">Nazvy z ELIS, ktore sa nepodarilo priradit automaticky.</param>
-    public FELISStations(List<string> unresolvedNames)
+    /// <param name="stations">Stanice zvukovej banky a grafikonu.</param>
+    public FELISStations(EditorContext context, List<string> unresolvedNames, StationDirectory stations)
     {
+        _ctx = context;
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
@@ -46,7 +54,8 @@ public partial class FELISStations : Form
         colStation.DefaultStyle = false;
 
         _names = unresolvedNames;
-        _stations = GlobData.Stations.Concat(GlobData.CustomStations)
+        _directory = stations;
+        _stations = stations.All
             .GroupBy(s => s.ID)
             .Select(g => g.First())
             .OrderBy(s => s.Name, StringComparer.CurrentCulture)
@@ -69,7 +78,7 @@ public partial class FELISStations : Form
         dgvStations.Rows.Clear();
         foreach (var name in _names)
         {
-            var suggestion = ELISBridgeClient.Suggest(name);
+            var suggestion = ELISBridgeClient.Suggest(name, _directory);
 
             //do bunky smie ist len hodnota, ktora je v zozname, inak DataGridView hlasi chybu
             var value = suggestion is not null && items.Contains(suggestion.Name) ? suggestion.Name : SkipItem;
@@ -99,7 +108,7 @@ public partial class FELISStations : Form
             if (existing is null)
             {
                 var station = new Station(NextFreeId(), elisName) { IsCustom = true };
-                GlobData.CustomStations.Add(station);
+                _ctx.Document.CustomStations.Add(station);
                 _stations.Add(station);
                 _created.Add(station);
                 created.Add(elisName);
@@ -136,10 +145,10 @@ public partial class FELISStations : Form
     /// <summary>
     /// Vrati najnizsie volne ID pre novu pouzivatelom definovanu stanicu.
     /// </summary>
-    private static string NextFreeId()
+    private string NextFreeId()
     {
-        var used = new HashSet<string>(GlobData.Stations.Select(s => s.ID));
-        foreach (var station in GlobData.CustomStations)
+        var used = new HashSet<string>(_ctx.Workspace.Stations.Select(s => s.ID));
+        foreach (var station in _ctx.Document.CustomStations)
             used.Add(station.ID);
 
         var id = 9000001;
@@ -204,7 +213,7 @@ public partial class FELISStations : Form
         // Zrusit import aj krizik - import sa nevykona, zalozene stanice by v grafikone ostali navyse
         if (DialogResult != DialogResult.OK)
             foreach (var station in _created)
-                GlobData.CustomStations.Remove(station);
+                _ctx.Document.CustomStations.Remove(station);
 
         base.OnFormClosed(e);
     }

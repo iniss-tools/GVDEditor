@@ -9,13 +9,19 @@ namespace GVDEditor.UI.Settings;
 /// Dialog - vzhlad pisma, ktore nie je v zozname pisiem (stlpec katalogovej tabule, text vlaku na tabuli).
 /// Pismo sa da rovno pridat do zoznamu pisiem.
 /// </summary>
-public partial class FTableFontPicker : Form
+internal partial class FTableFontPicker : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
     /// <summary>
     /// Vytvori dialog s pismom <paramref name="value" /> pre tabule vyrobcu <paramref name="manufacturer" />.
     /// </summary>
-    public FTableFontPicker(int value, TableManufacturer? manufacturer)
+    public FTableFontPicker(EditorContext context, int value, TableManufacturer? manufacturer)
     {
+        _ctx = context;
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
@@ -44,7 +50,7 @@ public partial class FTableFontPicker : Form
 
     private void UpdateExisting()
     {
-        var existing = GlobData.TableFonts.FirstOrDefault(font => font.FontID == picker.Value);
+        var existing = _ctx.Document.TableFonts.FirstOrDefault(font => font.FontID == picker.Value);
         lExisting.Text = existing is null
             ? ""
             : string.Format(CultureInfo.CurrentCulture, Resources.FontPicker_Uz_v_zozname, existing.Name);

@@ -17,9 +17,14 @@ namespace GVDEditor.UI.StateDgm;
 /// </summary>
 public partial class FStateDgmCalendar : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
     private readonly Func<StateDgmDiagram?> _diagram;
     private readonly int _homeStationId;
-    private readonly GvdExprSymbols _symbols = new();
+    private readonly GvdExprSymbols _symbols;
     private readonly BindingList<CalendarRow> _rows = [];
     private bool _loading = true;
 
@@ -29,17 +34,19 @@ public partial class FStateDgmCalendar : Form
     /// <param name="diagram">Aktualny diagram (z editora alebo zo suboru); null = diagram nie je.</param>
     /// <param name="homeStationId">ID stanice grafikonu (pre vyrazy).</param>
     /// <param name="train">Vlak, ktory sa ma predvolit.</param>
-    internal FStateDgmCalendar(Func<StateDgmDiagram?> diagram, int homeStationId, Train? train = null)
+    internal FStateDgmCalendar(EditorContext context, Func<StateDgmDiagram?> diagram, int homeStationId, Train? train = null)
     {
+        _ctx = context;
+        _symbols = new GvdExprSymbols(context.Workspace, context.Document);
         InitializeComponent();
         this.ApplyThemeAndFonts();
-        if (GlobData.UsingStyle.DarkTitleBar) ExTools.SetImmersiveDarkMode(Handle, true);
+        if (_ctx.UsingStyle.DarkTitleBar) ExTools.SetImmersiveDarkMode(Handle, true);
 
         _diagram = diagram;
         _homeStationId = homeStationId;
 
         cbTrain.DisplayMember = nameof(TrainItem.Text);
-        foreach (var t in GlobData.Trains.OrderBy(t => t.Arrival ?? t.Departure))
+        foreach (var t in _ctx.Document.Trains.OrderBy(t => t.Arrival ?? t.Departure))
             cbTrain.Items.Add(new TrainItem(t));
         if (cbTrain.Items.Count > 0)
             cbTrain.SelectedIndex = Math.Max(0, cbTrain.Items.Cast<TrainItem>().ToList().FindIndex(i => i.Train == train));

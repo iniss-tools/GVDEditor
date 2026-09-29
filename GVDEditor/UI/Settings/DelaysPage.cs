@@ -5,10 +5,15 @@ namespace GVDEditor.UI.Settings;
 
 /// <summary>
 /// Stranka Meskania v okne Globalne nastavenia - casy meskania ponukane operatorovi (Zpozdeni.txt), zoradene
-/// podla velkosti. Zmeny idu rovno do <see cref="GlobData.Delays" />, Zrusit okna ich vrati.
+/// podla velkosti. Zmeny idu rovno do <see cref="_ctx.Workspace.Delays" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class DelaysPage : UserControl, ISettingsPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly GridPageSupport _grid;
     private bool _loading;
 
@@ -39,8 +44,10 @@ public partial class DelaysPage : UserControl, ISettingsPage
     /// <summary>
     /// Naplni tabulku casmi meskania - volat az po nastaveni temy okna.
     /// </summary>
-    public void LoadData()
+    /// <param name=\"context\">kontext editora</param>
+    internal void LoadData(EditorContext context)
     {
+        _ctx = context;
         _grid.CaptureColors();
         Fill(-1);
     }
@@ -49,7 +56,7 @@ public partial class DelaysPage : UserControl, ISettingsPage
     {
         _loading = true;
         dgv.Rows.Clear();
-        foreach (var delay in GlobData.Delays)
+        foreach (var delay in _ctx.Workspace.Delays)
             MarkNumber(dgv.Rows[dgv.Rows.Add(delay)].Cells[colValue.Index], delay);
         _loading = false;
 
@@ -75,7 +82,7 @@ public partial class DelaysPage : UserControl, ISettingsPage
     {
         _grid.BeginCheck();
         for (var i = 0; i < dgv.Rows.Count; i++)
-            _grid.Report(dgv.Rows[i].Cells[colValue.Index], DelayRules.CheckValue(GlobData.Delays, i));
+            _grid.Report(dgv.Rows[i].Cells[colValue.Index], DelayRules.CheckValue(_ctx.Workspace.Delays, i));
 
         _grid.Defer(UpdateSelection);
         ProblemsChanged?.Invoke(this, EventArgs.Empty);
@@ -83,7 +90,7 @@ public partial class DelaysPage : UserControl, ISettingsPage
 
     private void bAdd_Click(object sender, EventArgs e)
     {
-        GlobData.Delays.Add("");
+        _ctx.Workspace.Delays.Add("");
         _loading = true;
         _newRow = dgv.Rows.Add("");
         _loading = false;
@@ -98,9 +105,9 @@ public partial class DelaysPage : UserControl, ISettingsPage
             return;
 
         var index = row.Index;
-        GlobData.Delays.RemoveAt(index);
+        _ctx.Workspace.Delays.RemoveAt(index);
         _newRow = -1;
-        Fill(Math.Min(index, GlobData.Delays.Count - 1));
+        Fill(Math.Min(index, _ctx.Workspace.Delays.Count - 1));
     }
 
     private void dgv_CellValueChanged(object? sender, DataGridViewCellEventArgs e)
@@ -109,7 +116,7 @@ public partial class DelaysPage : UserControl, ISettingsPage
             return;
 
         var value = (dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value as string ?? "").Trim();
-        GlobData.Delays[e.RowIndex] = value;
+        _ctx.Workspace.Delays[e.RowIndex] = value;
 
         // prerobenie riadkov priamo v udalosti tabulky by bolo vnorene volanie - az po skonceni upravy
         var index = e.RowIndex;
@@ -125,13 +132,13 @@ public partial class DelaysPage : UserControl, ISettingsPage
         _newRow = -1;
 
         // novy cas, ktory pouzivatel nevyplnil, sa neprida (CellValueChanged uz prebehol)
-        if (index >= GlobData.Delays.Count || GlobData.Delays[index].Length != 0)
+        if (index >= _ctx.Workspace.Delays.Count || _ctx.Workspace.Delays[index].Length != 0)
             return;
 
         BeginInvoke(() =>
         {
-            GlobData.Delays.RemoveAt(index);
-            Fill(Math.Min(index, GlobData.Delays.Count - 1));
+            _ctx.Workspace.Delays.RemoveAt(index);
+            Fill(Math.Min(index, _ctx.Workspace.Delays.Count - 1));
         });
     }
 
@@ -140,19 +147,19 @@ public partial class DelaysPage : UserControl, ISettingsPage
     /// </summary>
     private void Place(int index)
     {
-        if (index >= GlobData.Delays.Count)
+        if (index >= _ctx.Workspace.Delays.Count)
             return;
 
-        var value = GlobData.Delays[index];
+        var value = _ctx.Workspace.Delays[index];
         if (value.Length == 0)
         {
             Fill(index);
             return;
         }
 
-        GlobData.Delays.RemoveAt(index);
-        var position = DelayRules.InsertIndex(GlobData.Delays, value);
-        GlobData.Delays.Insert(position, value);
+        _ctx.Workspace.Delays.RemoveAt(index);
+        var position = DelayRules.InsertIndex(_ctx.Workspace.Delays, value);
+        _ctx.Workspace.Delays.Insert(position, value);
         Fill(position);
     }
 
@@ -161,7 +168,7 @@ public partial class DelaysPage : UserControl, ISettingsPage
     private void UpdateSelection()
     {
         bDelete.Enabled = dgv.CurrentRow is not null;
-        var value = dgv.CurrentRow?.Index is { } i && i < GlobData.Delays.Count ? GlobData.Delays[i] : "";
+        var value = dgv.CurrentRow?.Index is { } i && i < _ctx.Workspace.Delays.Count ? _ctx.Workspace.Delays[i] : "";
         _grid.ShowHint(IsNumber(value) ? null : Resources.DelaysPage_Necislo);
     }
 

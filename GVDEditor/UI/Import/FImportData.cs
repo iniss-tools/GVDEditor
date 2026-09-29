@@ -15,8 +15,13 @@ namespace GVDEditor.UI.Import;
 /// <summary>
 /// Dialog - Import dát zo súborov resp. schránky.
 /// </summary>
-public partial class FImportData : Form
+internal partial class FImportData : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
     private readonly GVDInfo Gvd;
     private DataTable? DataTable;
     private object?[]? firstRow;
@@ -41,8 +46,9 @@ public partial class FImportData : Form
     /// Vytvori novy formular typu <see cref="FGlobalSettings"/>.
     /// </summary>
     /// <param name="gvd">aktulne vybrany grafikon.</param>
-    public FImportData(GVDInfo gvd)
+    public FImportData(EditorContext context, GVDInfo gvd)
     {
+        _ctx = context;
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
@@ -84,7 +90,7 @@ public partial class FImportData : Form
 
         var trains = new List<Train>(DataTable.Rows.Count);
 
-        if (GlobData.Config.DebugModeGUI == DebugMode.AppCrash)
+        if (_ctx.Config.DebugModeGUI == DebugMode.AppCrash)
             Deserialize();
         else
             try
@@ -93,7 +99,7 @@ public partial class FImportData : Form
             }
             catch (Exception ex)
             {
-                Utils.ShowError(GlobData.Config.DebugModeGUI == DebugMode.OnlyMessage ? ex.Message : ex.ToString());
+                Utils.ShowError(_ctx.Config.DebugModeGUI == DebugMode.OnlyMessage ? ex.Message : ex.ToString());
                 DialogResult = DialogResult.None;
                 return;
             }
@@ -118,7 +124,7 @@ public partial class FImportData : Form
                     }
                     else if (selectedColumnTypes[j] == ImportTrainColumnType.Type)
                     {
-                        foreach (var typ in GlobData.TrainsTypes)
+                        foreach (var typ in _ctx.Workspace.TrainsTypes)
                             if (data == typ.Key)
                                 train.Type = typ;
 
@@ -155,7 +161,7 @@ public partial class FImportData : Form
                                 throw new ArgumentException(string.Format(fmtException, data, i + 1, j + 1,
                                     selectedColumnTypes[j], typeof(Operator)));
 
-                            var oper = Operator.GetFromID(GlobData.Operators, num);
+                            var oper = Operator.GetFromID(_ctx.Document.Operators, num);
 
                             if (oper == null)
                                 throw new ArgumentException(string.Format(fmtException, data, i + 1, j + 1,
@@ -172,14 +178,14 @@ public partial class FImportData : Form
                         }
                         else
                         {
-                            var oper = Operator.GetFromName(GlobData.Operators, data);
+                            var oper = Operator.GetFromName(_ctx.Document.Operators, data);
                             train.Operator = oper ?? throw new ArgumentException(string.Format(fmtException, data, i + 1, j + 1,
                                 selectedColumnTypes[j], typeof(Operator)));
                         }
                     }
                     else if (selectedColumnTypes[j] == ImportTrainColumnType.Track)
                     {
-                        var trk = Track.GetFromID(GlobData.Tracks, data);
+                        var trk = Track.GetFromID(_ctx.Document.Tracks, data);
                         train.Track = trk ?? throw new ArgumentException(string.Format(fmtException, data, i + 1, j + 1,
                             selectedColumnTypes[j], typeof(Track)));
                     }
@@ -200,7 +206,7 @@ public partial class FImportData : Form
 
                         foreach (var s in langsArrayS)
                         {
-                            var language = FyzLanguage.GetLanguageFromKey(GlobData.LocalLanguages, s);
+                            var language = FyzLanguage.GetLanguageFromKey(_ctx.Document.LocalLanguages, s);
 
                             if (language == null)
                                 throw new ArgumentException(string.Format(fmtException, data, i + 1, j + 1,
@@ -387,7 +393,7 @@ public partial class FImportData : Form
             var data = DataTable!.Rows[row][index].ToString()!;
             try
             {
-                return byId ? Station.GetStationsFromIDListString(data) : Station.GetStationsFromNameListString(data);
+                return byId ? _ctx.Stations.FromIDList(data) : _ctx.Stations.FromNameList(data);
             }
             catch (ArgumentException exception)
             {

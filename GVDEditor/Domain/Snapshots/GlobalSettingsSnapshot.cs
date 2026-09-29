@@ -1,10 +1,11 @@
+using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using ToolsCore.Iniss.Entities;
 
 namespace GVDEditor.Domain.Snapshots;
 
 /// <summary>
-/// Stav dat, ktore okno Globalne nastavenia meni priamo v <see cref="GlobData" /> (jazyky, meskania, typy vlakov,
+/// Stav dat, ktore okno Globalne nastavenia meni priamo v instalacii INISS (jazyky, meskania, typy vlakov,
 /// audio linky). Tlacidlo Zrusit ho obnovi.
 /// </summary>
 internal sealed class GlobalSettingsSnapshot
@@ -21,11 +22,11 @@ internal sealed class GlobalSettingsSnapshot
     /// <summary>
     /// Zapamata aktualny stav dat globalnych nastaveni.
     /// </summary>
-    public static GlobalSettingsSnapshot Capture()
+    public static GlobalSettingsSnapshot Capture(InissWorkspace workspace)
     {
         (object List, Action Reset)?[] lists =
         [
-            Item(GlobData.Languages), Item(GlobData.Delays), Item(GlobData.TrainsTypes), Item(GlobData.Audios)
+            Item(workspace.Languages), Item(workspace.Delays), Item(workspace.TrainsTypes), Item(workspace.Audios)
         ];
         var present = lists.OfType<(object List, Action Reset)>().ToList();
 
@@ -51,5 +52,5 @@ internal sealed class GlobalSettingsSnapshot
     /// </summary>
     private static bool IsEntity(Type type) =>
         type == typeof(FyzLanguage) ||
-        (type.Assembly == typeof(GlobData).Assembly && type.Namespace == typeof(Train).Namespace);
+        (type.Assembly == typeof(Train).Assembly && type.Namespace == typeof(Train).Namespace);
 }

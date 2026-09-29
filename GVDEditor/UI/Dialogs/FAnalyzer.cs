@@ -11,8 +11,14 @@ namespace GVDEditor.UI.Dialogs;
 /// <summary>
 /// Dialog - Analyza grafikonu.
 /// </summary>
-public partial class FAnalyzer : Form
+internal partial class FAnalyzer : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+    private readonly IAnalyzerHost _host;
+
     // moderne ikony systemu (rovnake ako zoznam chyb v RawBankEditore), nie stare SystemIcons
     private static readonly Bitmap InfoIcon = StockIcon(ShellIconType.Info);
     private static readonly Bitmap WarningIcon = StockIcon(ShellIconType.Warning);
@@ -32,9 +38,13 @@ public partial class FAnalyzer : Form
     /// <summary>
     /// Vytvori novy formular typu <see cref="FAnalyzer"/>.
     /// </summary>
+    /// <param name="context">Kontext editora.</param>
     /// <param name="gvd">Aktualne vybrany grafikon na analyzovanie.</param>
-    public FAnalyzer(GVDDirectory gvd)
+    /// <param name="host">Hlavne okno - opravy, ktore otvaraju nastavenia alebo editor TabTab.</param>
+    public FAnalyzer(EditorContext context, GVDDirectory gvd, IAnalyzerHost host)
     {
+        _ctx = context;
+        _host = host;
         InitializeComponent();
         this.ApplyThemeAndFonts();
         GVD = gvd;
@@ -71,7 +81,7 @@ public partial class FAnalyzer : Form
 
         try
         {
-            var problems = await Task.Run(() => Analyzer.FindProblems(GVD, progress));
+            var problems = await Task.Run(() => Analyzer.FindProblems(GVD, new AnalysisScope(_ctx.Document, _ctx.Workspace, _host), progress));
             Problems = new BindingList<IProblem>(problems);
             dgvResults.DataSource = null;
             dgvResults.DataSource = Problems;

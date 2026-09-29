@@ -6,10 +6,15 @@ namespace GVDEditor.UI.Settings;
 
 /// <summary>
 /// Stranka Jazyky v okne Globalne nastavenia - jazyky, v ktorych INISS hlasi (Categori.txt), s upravou priamo
-/// v tabulke. Zmeny idu rovno do <see cref="GlobData.Languages" />, Zrusit okna ich vrati.
+/// v tabulke. Zmeny idu rovno do <see cref="_ctx.Workspace.Languages" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class LanguagesPage : UserControl, ISettingsPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly GridPageSupport _grid;
     private List<FyzLanguage> _bank = [];
     private bool _loading;
@@ -38,21 +43,23 @@ public partial class LanguagesPage : UserControl, ISettingsPage
     /// <summary>
     /// Naplni tabulku jazykmi - volat az po nastaveni temy okna.
     /// </summary>
+    /// <param name=\"context\">kontext editora</param>
     /// <param name="bank">jazyky zvukovej banky</param>
-    public void LoadData(List<FyzLanguage> bank)
+    internal void LoadData(EditorContext context, List<FyzLanguage> bank)
     {
+        _ctx = context;
         _bank = bank;
         _grid.CaptureColors();
 
         // ponuka klucov: co INISS pozna a je v banke; kluc zo suboru mimo ponuky sa prida, aby ho bunka vedela zobrazit
         colKey.Items.Clear();
         var keys = LanguageRules.InissKeys.Where(key => _bank.Any(l => l.Key == key))
-            .Concat(GlobData.Languages.Select(l => l.Key)).Distinct().ToArray<object>();
+            .Concat(_ctx.Workspace.Languages.Select(l => l.Key)).Distinct().ToArray<object>();
         colKey.Items.AddRange(keys);
 
         _loading = true;
         dgv.Rows.Clear();
-        foreach (var language in GlobData.Languages)
+        foreach (var language in _ctx.Workspace.Languages)
         {
             var index = dgv.Rows.Add(language.Key, language.Name, language.IsBasic, BankName(language.Key));
             dgv.Rows[index].Tag = language;
@@ -69,7 +76,7 @@ public partial class LanguagesPage : UserControl, ISettingsPage
     private void Check()
     {
         _grid.BeginCheck();
-        var languages = GlobData.Languages.ToList();
+        var languages = _ctx.Workspace.Languages.ToList();
         var bankKeys = _bank.Select(l => l.Key).ToList();
         for (var i = 0; i < dgv.Rows.Count; i++)
         {
@@ -81,7 +88,7 @@ public partial class LanguagesPage : UserControl, ISettingsPage
 
         _grid.Report(null, LanguageRules.CheckBasic(languages));
 
-        bAdd.Enabled = GlobData.Languages.Count < LanguageRules.MaxLanguages;
+        bAdd.Enabled = _ctx.Workspace.Languages.Count < LanguageRules.MaxLanguages;
         _grid.Defer(UpdateSelection);
         ProblemsChanged?.Invoke(this, EventArgs.Empty);
     }
@@ -91,17 +98,17 @@ public partial class LanguagesPage : UserControl, ISettingsPage
 
     private void bAdd_Click(object sender, EventArgs e)
     {
-        if (GlobData.Languages.Count >= LanguageRules.MaxLanguages)
+        if (_ctx.Workspace.Languages.Count >= LanguageRules.MaxLanguages)
             return;
 
         // prvy jazyk banky, ktory INISS pozna a v zozname este nie je
-        var used = GlobData.Languages.Select(l => l.Key).ToHashSet();
+        var used = _ctx.Workspace.Languages.Select(l => l.Key).ToHashSet();
         var key = LanguageRules.InissKeys.FirstOrDefault(k => !used.Contains(k) && _bank.Any(l => l.Key == k))
                   ?? LanguageRules.InissKeys.FirstOrDefault(k => !used.Contains(k))
                   ?? LanguageRules.InissKeys[0];
         var bankLanguage = _bank.FirstOrDefault(l => l.Key == key);
-        var language = new FyzLanguage(key, bankLanguage?.Name ?? key) { IsBasic = GlobData.Languages.Count == 0 };
-        GlobData.Languages.Add(language);
+        var language = new FyzLanguage(key, bankLanguage?.Name ?? key) { IsBasic = _ctx.Workspace.Languages.Count == 0 };
+        _ctx.Workspace.Languages.Add(language);
 
         _loading = true;
         var index = dgv.Rows.Add(language.Key, language.Name, language.IsBasic, BankName(language.Key));
@@ -117,7 +124,7 @@ public partial class LanguagesPage : UserControl, ISettingsPage
         if (CurrentLanguage is not { } language)
             return;
 
-        GlobData.Languages.Remove(language);
+        _ctx.Workspace.Languages.Remove(language);
         dgv.Rows.RemoveAt(dgv.CurrentRow!.Index);
         Check();
     }
@@ -164,7 +171,7 @@ public partial class LanguagesPage : UserControl, ISettingsPage
         }
         _loading = false;
 
-        GlobData.Languages.ResetBindings();
+        _ctx.Workspace.Languages.ResetBindings();
         Check();
     }
 

@@ -15,6 +15,11 @@ namespace GVDEditor.UI.TabTab;
 /// </summary>
 public partial class FTabTabPreview : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
     private readonly Func<string, string?> _sectionText;
     private readonly string? _currentSection;
     private readonly int _homeStationId;
@@ -29,11 +34,12 @@ public partial class FTabTabPreview : Form
     /// <param name="sectionText">Text sekcie TabTab podla mena (aktualny text z editora); <see langword="null"/>, ak sekcia nie je.</param>
     /// <param name="currentSection">Meno sekcie otvorenej v editore - predvolene sa zobrazia len stlpce, ktore ju pouzivaju.</param>
     /// <param name="homeStationId">ID stanice grafikonu (pre <c>ZAJMSTANICE</c>, <c>MISTNI</c>).</param>
-    internal FTabTabPreview(Func<string, string?> sectionText, string? currentSection, int homeStationId)
+    internal FTabTabPreview(EditorContext context, Func<string, string?> sectionText, string? currentSection, int homeStationId)
     {
+        _ctx = context;
         InitializeComponent();
         this.ApplyThemeAndFonts();
-        if (GlobData.UsingStyle.DarkTitleBar) ExTools.SetImmersiveDarkMode(Handle, true);
+        if (_ctx.UsingStyle.DarkTitleBar) ExTools.SetImmersiveDarkMode(Handle, true);
 
         _sectionText = sectionText;
         _currentSection = currentSection;
@@ -44,7 +50,7 @@ public partial class FTabTabPreview : Form
         chkOnlySection.Text = string.Format(Resources.FTabTabPreview_Len_sekcia, currentSection ?? "");
 
         cbTrain.DisplayMember = nameof(TrainItem.Text);
-        foreach (var t in GlobData.Trains.OrderBy(t => t.Arrival ?? t.Departure))
+        foreach (var t in _ctx.Document.Trains.OrderBy(t => t.Arrival ?? t.Departure))
             cbTrain.Items.Add(new TrainItem(t));
         if (cbTrain.Items.Count > 0) cbTrain.SelectedIndex = 0;
 
@@ -119,7 +125,7 @@ public partial class FTabTabPreview : Form
             };
             var ctx = new GvdTrainContext(ti.Train, runtime, _homeStationId);
 
-            foreach (var catalog in GlobData.TableCatalogs)
+            foreach (var catalog in _ctx.Document.TableCatalogs)
             {
                 var usesSection = catalog.Items.Any(i => UsesCurrent(i));
                 if (chkOnlySection.Checked && !usesSection) continue;
@@ -167,7 +173,7 @@ public partial class FTabTabPreview : Form
         var site = first is not null && first.FillSection == TableFillSection.CasPrichodu ? ExprEvalSite.ArrivalTable : ExprEvalSite.Default;
 
         TabTabValue? ttexts = null;
-        foreach (var tt in GlobData.TableTexts)
+        foreach (var tt in _ctx.Document.TableTexts)
         {
             if (!tt.Realizations.Any(r => r.Table == catalog && r.Item == item)) continue;
             var train = tt.Trains.FirstOrDefault(t => t.Train == ctx.Train);

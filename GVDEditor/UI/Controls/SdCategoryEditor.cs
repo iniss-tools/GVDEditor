@@ -15,7 +15,7 @@ internal sealed class SdCategoryEditor : SdEditorBase
     private readonly ExComboBox _icon;
     private StateDgmCategory? _c;
 
-    public SdCategoryEditor()
+    public SdCategoryEditor(SdEditorContext context) : base(context)
     {
         AddHeader(Resources.FStateDgm_Kategoria);
         AddRow(Resources.FStateDgm_Kluc, _key);

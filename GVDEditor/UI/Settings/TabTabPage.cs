@@ -8,10 +8,15 @@ namespace GVDEditor.UI.Settings;
 
 /// <summary>
 /// Stranka TabTab v okne Lokalne nastavenia - zoznam sekcii TabTab, obsah vybranej sekcie a kde sa pouziva.
-/// Sekcie sa upravuju v editore TabTab (samostatne okno), ktory ich zapise do <see cref="GlobData.TabTabs" />.
+/// Sekcie sa upravuju v editore TabTab (samostatne okno), ktory ich zapise do <see cref="_ctx.Document.TabTabs" />.
 /// </summary>
 public partial class TabTabPage : UserControl
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly ItemListSupport<TableTabTab> _list;
     private Station? _station;
     private bool _loaded;
@@ -29,9 +34,11 @@ public partial class TabTabPage : UserControl
     /// <summary>
     /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
+    /// <param name=\"context\">kontext editora</param>
     /// <param name="station">stanica grafikonu - editor podla nej ponuka stanice</param>
-    internal void LoadData(Station station)
+    internal void LoadData(EditorContext context, Station station)
     {
+        _ctx = context;
         _station = station;
         foreach (var header in new[] { lTextHeader, lUseHeader })
             header.Font = new Font(Font, FontStyle.Bold);
@@ -58,7 +65,7 @@ public partial class TabTabPage : UserControl
     public void OpenEditor() => bEditor_Click(this, EventArgs.Empty);
 
     // prvou polozkou zoznamu je zabudovana prazdna sekcia „Ziadny“ - v zozname nie je
-    private static IEnumerable<TableTabTab> Sections() => GlobData.TabTabs.Where(tab => tab != TableTabTab.Empty);
+    private IEnumerable<TableTabTab> Sections() => _ctx.Document.TabTabs.Where(tab => tab != TableTabTab.Empty);
 
     private static string Lines(TableTabTab tab) =>
         (tab.Text ?? "").Split('\n').Count(line => line.Trim().Length > 0).ToString(CultureInfo.CurrentCulture);
@@ -68,7 +75,7 @@ public partial class TabTabPage : UserControl
         var tab = _list.Current;
         tbText.Text = (tab?.Text ?? "").Replace("\r\n", "\n").Replace("\n", Environment.NewLine);
 
-        var usage = tab is null ? [] : TabTabSections.FindUsage(tab, GlobData.TableCatalogs);
+        var usage = tab is null ? [] : TabTabSections.FindUsage(tab, _ctx.Document.TableCatalogs);
         lUse.Text = tab is null ? "" : UsageText.Format(usage, true, Resources.TablesPage_Nepouziva);
         bDelete.Enabled = tab is not null && usage.Count == 0;
     }
@@ -77,21 +84,21 @@ public partial class TabTabPage : UserControl
     {
         // editor sa otvori na vybranej sekcii, bez vyberu prazdny
         var current = _list.Current;
-        using (var form = new FTabTab(current, _station))
+        using (var form = new FTabTab(_ctx, current, _station))
             form.ShowDialog(FindForm());
 
         // editor mohol sekcie pridat, premenovat aj odstranit
-        _list.Fill(current is not null && GlobData.TabTabs.Contains(current) ? current : Sections().FirstOrDefault());
+        _list.Fill(current is not null && _ctx.Document.TabTabs.Contains(current) ? current : Sections().FirstOrDefault());
     }
 
     private void bDelete_Click(object? sender, EventArgs e)
     {
-        if (_list.Current is not { } tab || TabTabSections.FindUsage(tab, GlobData.TableCatalogs).Count > 0)
+        if (_list.Current is not { } tab || TabTabSections.FindUsage(tab, _ctx.Document.TableCatalogs).Count > 0)
             return;
 
         var sections = Sections().ToList();
         var index = sections.IndexOf(tab);
-        GlobData.TabTabs.Remove(tab);
+        _ctx.Document.TabTabs.Remove(tab);
         sections.Remove(tab);
         _list.Fill(sections.Count == 0 ? null : sections[Math.Min(index, sections.Count - 1)]);
     }

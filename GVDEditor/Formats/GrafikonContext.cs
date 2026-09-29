@@ -14,13 +14,6 @@ namespace GVDEditor.Formats;
 internal sealed record GrafikonContext(InissWorkspace Workspace, GrafikonDocument Document, AppLanguage CommentLanguage)
 {
     /// <summary>
-    /// Kontext otvoreneho grafikonu (cez fasadu <see cref="GlobData" />) - pre okna, ktore zatial pracuju s GlobData.
-    /// Bez nacitanej konfiguracie (testy) su hlavicky suborov po slovensky.
-    /// </summary>
-    public static GrafikonContext Current =>
-        new(GlobData.Workspace, GlobData.Document, GlobData.Session?.Config.Language ?? AppLanguage.Slovak);
-
-    /// <summary>
     /// Stanica podla identifikatora - zo zvukovej banky alebo zo stanic grafikonu; neznama stanica ma za nazov
     /// svoj identifikator.
     /// </summary>

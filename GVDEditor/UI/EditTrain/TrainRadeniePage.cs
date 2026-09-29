@@ -15,6 +15,11 @@ namespace GVDEditor.UI.EditTrain;
 /// </summary>
 public partial class TrainRadeniePage : UserControl, ITrainPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly FieldMarks _marks = new();
     private TrainDraft _draft = null!;
     private DateTime _gvdStart, _gvdEnd;
@@ -37,11 +42,13 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
     /// <summary>
     /// Naplni stranku radeniami konceptu - volat az po nastaveni temy okna.
     /// </summary>
+    /// <param name=\"context\">kontext editora</param>
     /// <param name="draft">koncept vlaku</param>
     /// <param name="gvdStart">zaciatok platnosti grafikonu (predvolene obdobie noveho radenia)</param>
     /// <param name="gvdEnd">koniec platnosti grafikonu</param>
-    internal void LoadData(TrainDraft draft, DateTime gvdStart, DateTime gvdEnd)
+    internal void LoadData(EditorContext context, TrainDraft draft, DateTime gvdStart, DateTime gvdEnd)
     {
+        _ctx = context;
         _draft = draft;
         _gvdStart = gvdStart.Date;
         _gvdEnd = gvdEnd.Date;
@@ -130,7 +137,7 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
         dtpTo.Value = radenie?.Validity is { } period ? period.To.ToDateTime() : _gvdEnd;
         tbLimit.Text = radenie?.DatObm ?? "";
         SelectEndStation(radenie?.DestStation);
-        matrix.Bind(radenie?.ChosenReports, GlobData.ReportTypes, GlobData.ReportVariants);
+        matrix.Bind(radenie?.ChosenReports, _ctx.Document.ReportTypes, _ctx.Document.ReportVariants);
         UpdateValidityFields();
         _loading = false;
     }
@@ -256,7 +263,7 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
         if (Selected is not { } radenie)
             return;
 
-        using var dialog = new FRadenie([.. radenie.Sounds]);
+        using var dialog = new FRadenie(_ctx, [.. radenie.Sounds]);
         if (dialog.ShowDialog(FindForm()) != DialogResult.OK)
             return;
 
@@ -273,8 +280,8 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
             return;
 
         var files = radenie.Sounds.Select(sound =>
-            GlobData.RawBankDir + "\\" + sound.Language.RelativePath + sound.Group.RelativePath + sound.FileName).ToArray();
-        new WavPlayer(files, GlobData.Config.PlayerSoundsOffset).StartPlay();
+            _ctx.Workspace.RawBankDir + "\\" + sound.Language.RelativePath + sound.Group.RelativePath + sound.FileName).ToArray();
+        new WavPlayer(files, _ctx.Config.PlayerSoundsOffset).StartPlay();
     }
 
     private void bLimit_Click(object? sender, EventArgs e)
@@ -282,7 +289,7 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
         if (FindForm() is not { } form || dtpTo.Value.Date < dtpFrom.Value.Date)
             return;
 
-        if (FDateLimitEdit.SetDateLimit(form, dtpFrom.Value, dtpTo.Value, defaultValue: tbLimit.Text) is { } limit)
+        if (FDateLimitEdit.SetDateLimit(form, _ctx.UsingStyle, dtpFrom.Value, dtpTo.Value, defaultValue: tbLimit.Text) is { } limit)
             tbLimit.Text = limit;
     }
 
@@ -304,7 +311,7 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
     {
         cbDest.Items.Clear();
         cbDest.Items.Add(new EndStationItem(null, Resources.FEditTrain_Radenie_LubovolnyCiel));
-        foreach (var station in GlobData.Stations.Concat(GlobData.CustomStations).DistinctBy(s => s.ID).OrderBy(s => s.Name))
+        foreach (var station in _ctx.Workspace.Stations.Concat(_ctx.Document.CustomStations).DistinctBy(s => s.ID).OrderBy(s => s.Name))
             cbDest.Items.Add(new EndStationItem(station, station.Name));
         cbDest.SelectedIndex = 0;
     }

@@ -13,10 +13,15 @@ namespace GVDEditor.UI.Settings;
 /// <summary>
 /// Stranka Katalogove tabule v okne Lokalne nastavenia - zoznam predloh tabul a udaje vybranej predlohy (stlpce
 /// s pravitkom, vybrany stlpec, poradie stlpcov, rozmery riadkov) s upravou priamo v poliach a tabulkach. Zmeny idu
-/// rovno do <see cref="GlobData.TableCatalogs" />, Zrusit okna ich vrati.
+/// rovno do <see cref="_ctx.Document.TableCatalogs" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class CatalogTablesPage : UserControl, ISettingsPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly ItemListSupport<TableCatalog> _list;
     private readonly FieldMarks _marks = new();
     private readonly List<(TableCatalog Table, Field Field, int Column, string Message)> _problems = [];
@@ -38,9 +43,9 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
         dgvColumns.AutoGenerateColumns = false;
         dgvRows.AutoGenerateColumns = false;
         (components ??= new Container()).Add(_fontTip);
-        _font = new TableFontChoice(cbFont, _fontTip, allowColumnDefault: false);
+        _font = new TableFontChoice(() => _ctx, cbFont, _fontTip, allowColumnDefault: false);
         _font.ValueChanged += (_, _) => Column_Changed(cbFont, EventArgs.Empty);
-        _list = new ItemListSupport<TableCatalog>(dgv, tbFilter, () => GlobData.TableCatalogs, t => [t.Name, t.Key]);
+        _list = new ItemListSupport<TableCatalog>(dgv, tbFilter, () => _ctx.Document.TableCatalogs, t => [t.Name, t.Key]);
         _list.SelectionChanged += (_, _) => ShowCurrent();
     }
 
@@ -85,8 +90,10 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
     /// <summary>
     /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
-    public void LoadData()
+    /// <param name=\"context\">kontext editora</param>
+    internal void LoadData(EditorContext context)
     {
+        _ctx = context;
         foreach (var header in new[] { lBasic, lColumns, lOrder, lRows, lCommentHeader, lUseHeader })
             header.Font = new Font(Font, FontStyle.Bold);
         lColumn.Font = new Font(Font, FontStyle.Bold);
@@ -94,7 +101,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
             note.ForeColor = SystemColors.GrayText;
         _hintColor = lHint.ForeColor;
         _marks.Capture(tbName, tbKey, tbColKey);
-        if (GlobData.UsingStyle.DarkScrollBar)
+        if (_ctx.UsingStyle.DarkScrollBar)
             pDetail.SetTheme(WindowsTheme.DarkExplorer);
         _list.CaptureColors();
         foreach (var grid in new[] { dgvColumns, dgvRows })
@@ -110,7 +117,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
         FillTabTabs();
 
         _loaded = true;
-        _list.Fill(_selectAfterLoad ?? GlobData.TableCatalogs.FirstOrDefault());
+        _list.Fill(_selectAfterLoad ?? _ctx.Document.TableCatalogs.FirstOrDefault());
         Check();
     }
 
@@ -154,7 +161,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
         {
             combo.BeginUpdate();
             combo.Items.Clear();
-            combo.Items.AddRange(TableCatalogEditing.WithEmptyTabTab(GlobData.TabTabs).ToArray<object>());
+            combo.Items.AddRange(TableCatalogEditing.WithEmptyTabTab(_ctx.Document.TabTabs).ToArray<object>());
             combo.EndUpdate();
         }
 
@@ -395,7 +402,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
             return;
 
         // realizacia textu by po odstraneni ukazovala na neexistujuci stlpec
-        var texts = TableCatalogEditing.TextsUsing(item, GlobData.TableTexts);
+        var texts = TableCatalogEditing.TextsUsing(item, _ctx.Document.TableTexts);
         if (texts.Count > 0)
         {
             Utils.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.CatalogTablesPage_Stlpec_V_Textoch, item.Name,
@@ -521,7 +528,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
         {
             table.Name = tbName.Text.Trim();
             // nazov predlohy vidno aj na strankach fyzickych tabul a textov
-            GlobData.TableCatalogs.ResetItem(GlobData.TableCatalogs.IndexOf(table));
+            _ctx.Document.TableCatalogs.ResetItem(_ctx.Document.TableCatalogs.IndexOf(table));
         }
         else if (sender == tbKey)
             table.Key = tbKey.Text.Trim();
@@ -547,12 +554,12 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
         Check();
     }
 
-    private static IReadOnlyList<string> Usage(TableCatalog table)
+    private IReadOnlyList<string> Usage(TableCatalog table)
     {
-        var usage = GlobData.TablePhysicals.Where(p => ReferenceEquals(p.TableCatalog, table))
+        var usage = _ctx.Document.TablePhysicals.Where(p => ReferenceEquals(p.TableCatalog, table))
             .Select(p => string.Format(CultureInfo.CurrentCulture, Resources.TablesPage_Pouzitie_Fyzicka, p.Name))
             .ToList();
-        foreach (var text in GlobData.TableTexts)
+        foreach (var text in _ctx.Document.TableTexts)
         foreach (var realization in text.Realizations)
             if (ReferenceEquals(realization.Table, table))
                 usage.Add(string.Format(CultureInfo.CurrentCulture, Resources.TablesPage_Pouzitie_Text, text.Name, realization.Item?.Name));
@@ -570,7 +577,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
     private void Check()
     {
         _problems.Clear();
-        var tables = GlobData.TableCatalogs.ToList();
+        var tables = _ctx.Document.TableCatalogs.ToList();
         for (var i = 0; i < tables.Count; i++)
             foreach (var (field, column, message) in TableCatalogRules.Check(tables, i))
                 _problems.Add((tables[i], field, column, message));
@@ -636,11 +643,11 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
 
     private void bAdd_Click(object? sender, EventArgs e)
     {
-        var name = TableRules.Unique(GlobData.TableCatalogs.Select(t => t.Name), Resources.TablesPage_Nova_tabula);
+        var name = TableRules.Unique(_ctx.Document.TableCatalogs.Select(t => t.Name), Resources.TablesPage_Nova_tabula);
         var table = new TableCatalog
         {
             Name = name,
-            Key = TableRules.Unique(GlobData.TableCatalogs.Select(t => t.Key), name),
+            Key = TableRules.Unique(_ctx.Document.TableCatalogs.Select(t => t.Key), name),
             Comment = "",
             Manufacturer = TableManufacturer.LCD1,
             MaxRecCount = 1,
@@ -649,7 +656,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
         };
         TableCatalogEditing.ResizeRows(table.Segments, 1, () => new TableSegment { Height = 10 });
 
-        GlobData.TableCatalogs.Add(table);
+        _ctx.Document.TableCatalogs.Add(table);
         Added(table);
     }
 
@@ -659,10 +666,10 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
             return;
 
         var table = TableCatalogEditing.Clone(source);
-        table.Name = TableRules.Unique(GlobData.TableCatalogs.Select(t => t.Name), source.Name);
-        table.Key = TableRules.Unique(GlobData.TableCatalogs.Select(t => t.Key), source.Key);
+        table.Name = TableRules.Unique(_ctx.Document.TableCatalogs.Select(t => t.Name), source.Name);
+        table.Key = TableRules.Unique(_ctx.Document.TableCatalogs.Select(t => t.Key), source.Key);
 
-        GlobData.TableCatalogs.Insert(GlobData.TableCatalogs.IndexOf(source) + 1, table);
+        _ctx.Document.TableCatalogs.Insert(_ctx.Document.TableCatalogs.IndexOf(source) + 1, table);
         Added(table);
     }
 
@@ -680,9 +687,9 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
         if (_current is not { } table || Usage(table).Count > 0)
             return;
 
-        var index = GlobData.TableCatalogs.IndexOf(table);
-        GlobData.TableCatalogs.RemoveAt(index);
-        _list.Fill(GlobData.TableCatalogs.Count == 0 ? null : GlobData.TableCatalogs[Math.Min(index, GlobData.TableCatalogs.Count - 1)]);
+        var index = _ctx.Document.TableCatalogs.IndexOf(table);
+        _ctx.Document.TableCatalogs.RemoveAt(index);
+        _list.Fill(_ctx.Document.TableCatalogs.Count == 0 ? null : _ctx.Document.TableCatalogs[Math.Min(index, _ctx.Document.TableCatalogs.Count - 1)]);
         Check();
     }
 

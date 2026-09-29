@@ -59,8 +59,9 @@ internal static class ElisImportService
     /// <param name="operators">Dopravcovia grafikonu.</param>
     /// <param name="track">Kolaj pre vlaky bez kolaje.</param>
     /// <param name="existingTrains">Vlaky grafikonu, ktore ostanu (vstupuju do cislovania variant).</param>
+    /// <param name="stations">Stanice zvukovej banky a grafikonu.</param>
     public static Task<ElisImport> LoadAsync(ElisImportOptions options, GVDDirectory gvdDir, IReadOnlyList<TrainType> types,
-        IReadOnlyList<Operator> operators, Track track, IReadOnlyList<Train> existingTrains)
+        IReadOnlyList<Operator> operators, Track track, IReadOnlyList<Train> existingTrains, StationDirectory stations)
     {
         // zoznamy sa skopiruju este na UI vlakne - pocas importu ich okno moze menit
         var typeList = types.ToList();
@@ -71,7 +72,7 @@ internal static class ElisImportService
 
         return Task.Run(() =>
         {
-            var client = new ELISBridgeClient(typeList, operatorList, gvd, track)
+            var client = new ELISBridgeClient(typeList, operatorList, gvd, track, stations)
             {
                 AppDirectory = options.AppDirectory,
                 RegistrationNumber = options.RegistrationNumber,

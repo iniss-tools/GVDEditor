@@ -9,10 +9,15 @@ namespace GVDEditor.UI.Settings;
 
 /// <summary>
 /// Stranka Audio v okne Globalne nastavenia - zoznam audio liniek a udaje vybranej linky s upravou priamo
-/// v poliach. Zmeny idu rovno do <see cref="GlobData.Audios" />, Zrusit okna ich vrati.
+/// v poliach. Zmeny idu rovno do <see cref="_ctx.Workspace.Audios" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class AudioPage : UserControl, ISettingsPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly GridPageSupport _grid;
     private readonly List<(Audio Item, Field Field, string Text)> _problems = [];
     // povodna farba okraja poli (podla temy) - chybne pole sa zafarbi
@@ -57,20 +62,22 @@ public partial class AudioPage : UserControl, ISettingsPage
     /// <summary>
     /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
+    /// <param name=\"context\">kontext editora</param>
     /// <param name="grafikony">grafikony v priecinku - port hlaseni grafikonu prepisuje uzol linky jeho stanice</param>
-    public void LoadData(IList<GVDDirectory> grafikony)
+    internal void LoadData(EditorContext context, IList<GVDDirectory> grafikony)
     {
+        _ctx = context;
         _grafikony = grafikony;
         foreach (var header in new[] { lBasic, lTech })
             header.Font = new Font(Font, FontStyle.Bold);
         _hintColor = lHint.ForeColor;
         foreach (var box in TextBoxes)
             _borders[box] = box.BorderColor;
-        if (GlobData.UsingStyle.DarkScrollBar)
+        if (_ctx.UsingStyle.DarkScrollBar)
             pDetail.SetTheme(WindowsTheme.DarkExplorer);
         _grid.CaptureColors();
 
-        Fill(GlobData.Audios.FirstOrDefault());
+        Fill(_ctx.Workspace.Audios.FirstOrDefault());
     }
 
     private IEnumerable<ExTextBox> TextBoxes =>
@@ -84,10 +91,10 @@ public partial class AudioPage : UserControl, ISettingsPage
     // nazov linky podla stanice - novej linke a linke, ktorej nazov pouzivatel neprepisal
     private static string DefaultName(Station station) => AudioRules.IsTest(station) ? "Test" : station.Name;
 
-    private static int IndexOf(Audio audio)
+    private int IndexOf(Audio audio)
     {
-        for (var i = 0; i < GlobData.Audios.Count; i++)
-            if (ReferenceEquals(GlobData.Audios[i], audio))
+        for (var i = 0; i < _ctx.Workspace.Audios.Count; i++)
+            if (ReferenceEquals(_ctx.Workspace.Audios[i], audio))
                 return i;
         return -1;
     }
@@ -96,7 +103,7 @@ public partial class AudioPage : UserControl, ISettingsPage
     {
         _loading = true;
         dgv.Rows.Clear();
-        foreach (var audio in GlobData.Audios)
+        foreach (var audio in _ctx.Workspace.Audios)
         {
             var index = dgv.Rows.Add(Label(audio), StationText(audio.Station));
             dgv.Rows[index].Tag = audio;
@@ -156,7 +163,7 @@ public partial class AudioPage : UserControl, ISettingsPage
 
             if (audio is not null)
             {
-                cbCustomOnly.Checked = GlobData.CustomStations.Any(s => s.ID == audio.Station.ID);
+                cbCustomOnly.Checked = _ctx.Document.CustomStations.Any(s => s.ID == audio.Station.ID);
                 FillStations(audio.Station);
             }
         }
@@ -180,7 +187,7 @@ public partial class AudioPage : UserControl, ISettingsPage
     private void FillStations(Station select)
     {
         var customOnly = cbCustomOnly.Checked;
-        var stations = customOnly ? GlobData.CustomStations.ToList() : GlobData.Stations.ToList();
+        var stations = customOnly ? _ctx.Document.CustomStations.ToList() : _ctx.Workspace.Stations.ToList();
         var known = AudioRules.IsTest(select) || stations.Any(s => SameId(s, select));
         var state = (customOnly, known ? null : select);
 
@@ -299,7 +306,7 @@ public partial class AudioPage : UserControl, ISettingsPage
     private void Check()
     {
         _problems.Clear();
-        var audios = GlobData.Audios.ToList();
+        var audios = _ctx.Workspace.Audios.ToList();
         for (var i = 0; i < audios.Count; i++)
             if (AudioRules.Check(audios, i) is { } problem)
                 _problems.Add((audios[i], problem.Field, problem.Message));
@@ -356,10 +363,10 @@ public partial class AudioPage : UserControl, ISettingsPage
     {
         // prva stanica grafikonu, ktora este linku nema
         var station = _grafikony.Select(g => g.GVD.ThisStation)
-                          .FirstOrDefault(s => !GlobData.Audios.Any(a => a.Station.ID == s.ID))
+                          .FirstOrDefault(s => !_ctx.Workspace.Audios.Any(a => a.Station.ID == s.ID))
                       ?? _grafikony.Select(g => g.GVD.ThisStation).FirstOrDefault()
                       ?? new Station(AudioRules.TestKey, AudioRules.TestKey);
-        var name = AudioRules.UniqueName(GlobData.Audios, DefaultName(station));
+        var name = AudioRules.UniqueName(_ctx.Workspace.Audios, DefaultName(station));
         var audio = new Audio
         {
             Station = new Station(station.ID, station.Name),
@@ -370,7 +377,7 @@ public partial class AudioPage : UserControl, ISettingsPage
             SoundCard = ""
         };
 
-        GlobData.Audios.Add(audio);
+        _ctx.Workspace.Audios.Add(audio);
         Fill(audio);
         FocusName();
     }
@@ -380,7 +387,7 @@ public partial class AudioPage : UserControl, ISettingsPage
         if (_current is not { } source)
             return;
 
-        var name = AudioRules.UniqueName(GlobData.Audios, source.Name.Trim());
+        var name = AudioRules.UniqueName(_ctx.Workspace.Audios, source.Name.Trim());
         var audio = new Audio
         {
             Station = source.Station,
@@ -395,7 +402,7 @@ public partial class AudioPage : UserControl, ISettingsPage
             Node = source.Node
         };
 
-        GlobData.Audios.Insert(IndexOf(source) + 1, audio);
+        _ctx.Workspace.Audios.Insert(IndexOf(source) + 1, audio);
         Fill(audio);
         FocusName();
     }
@@ -412,8 +419,8 @@ public partial class AudioPage : UserControl, ISettingsPage
             return;
 
         var index = IndexOf(audio);
-        GlobData.Audios.RemoveAt(index);
-        Fill(GlobData.Audios.Count == 0 ? null : GlobData.Audios[Math.Min(index, GlobData.Audios.Count - 1)]);
+        _ctx.Workspace.Audios.RemoveAt(index);
+        Fill(_ctx.Workspace.Audios.Count == 0 ? null : _ctx.Workspace.Audios[Math.Min(index, _ctx.Workspace.Audios.Count - 1)]);
     }
 
     private void dgv_KeyDown(object? sender, KeyEventArgs e) =>

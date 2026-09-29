@@ -29,7 +29,7 @@ internal sealed class SdEventEditor : SdEditorBase
     private readonly ExCheckBox _delayDep = Check(Resources.FStateDgm_Akcia_DelayDep);
     private readonly FlowLayoutPanel _advPanel;
 
-    public SdEventEditor()
+    public SdEventEditor(SdEditorContext context) : base(context)
     {
         AddHeader(Resources.FStateDgm_Akcia_Titul);
         AddRow(Resources.FStateDgm_Kluc, _key);
@@ -97,7 +97,7 @@ internal sealed class SdEventEditor : SdEditorBase
             _next.Items.AddRange(stateKeys.Cast<object>().ToArray());
             _report.Items.Clear();
             _report.Items.Add(Resources.FStateDgm_Akcia_BezHlasenia);
-            _report.Items.AddRange(SdEditorContext.ReportKeys.Cast<object>().ToArray());
+            _report.Items.AddRange(Context.ReportKeys.Cast<object>().ToArray());
             _design.Items.Clear();
             _design.Items.AddRange(designKeys.Cast<object>().ToArray());
 

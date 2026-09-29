@@ -66,10 +66,8 @@ public class TrackEditingTests
     public void OdstranenieKolaje_PoziceSaPoUlozeniZnovaNacita()
     {
         var dir = Directory.CreateTempSubdirectory("gvdtracks");
-        var oldLogicals = GlobData.TableLogicals;
         try
         {
-            GlobData.TableLogicals = new ExBindingList<TableLogical>();
             var tracks = Tracks();
             var (t1, t2, t3) = (tracks[1], tracks[2], tracks[3]);
             List<Train> trains = [NewTrain(t1), NewTrain(t2, t1), NewTrain(t1, t3), NewTrain(t3)];
@@ -90,7 +88,6 @@ public class TrackEditingTests
         }
         finally
         {
-            GlobData.TableLogicals = oldLogicals;
             dir.Delete(true);
         }
     }
@@ -119,10 +116,8 @@ public class TrackEditingTests
     public void Kolaj_NazovATextNaTabuleSaZapisuDoStlpcov2A5()
     {
         var dir = Directory.CreateTempSubdirectory("gvdtracks");
-        var oldLogicals = GlobData.TableLogicals;
         try
         {
-            GlobData.TableLogicals = new ExBindingList<TableLogical>();
 
             TracksFile.Write(dir.FullName, [Track.None, NewTrack("6V", Platform1, "6")]);
 
@@ -135,7 +130,6 @@ public class TrackEditingTests
         }
         finally
         {
-            GlobData.TableLogicals = oldLogicals;
             dir.Delete(true);
         }
     }
@@ -179,16 +173,13 @@ public class TrackEditingTests
     private static List<Track> ReadPoziceA(params string[] lines)
     {
         var dir = Directory.CreateTempSubdirectory("gvdtracks");
-        var oldLogicals = GlobData.TableLogicals;
         try
         {
-            GlobData.TableLogicals = new ExBindingList<TableLogical>();
             File.WriteAllLines(Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE_A), lines, Encodings.Win1250);
             return TracksFile.Read(dir.FullName, []).Skip(1).ToList();
         }
         finally
         {
-            GlobData.TableLogicals = oldLogicals;
             dir.Delete(true);
         }
     }

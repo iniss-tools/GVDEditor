@@ -9,8 +9,13 @@ namespace GVDEditor.UI.EditTrain;
 /// <summary>
 /// Dialog - Radenie vlaku.
 /// </summary>
-public partial class FRadenie : Form
+internal partial class FRadenie : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
     private readonly Dictionary<FyzLanguage, List<FyzSound>> _allSoundsLangs = new();
     private readonly BindingList<FyzSound> _selectedSounds = new();
     private BindingList<FyzSound> _soundInDir = new();
@@ -26,18 +31,19 @@ public partial class FRadenie : Form
     /// Vytvori novy formulár typu <see cref="FRadenie"/>.
     /// </summary>
     /// <param name="sounds">Zoznam fyzických zvukov reprezentujúcich radenie vlaku.</param>
-    public FRadenie(List<FyzSound> sounds)
+    public FRadenie(EditorContext context, List<FyzSound> sounds)
     {
+        _ctx = context;
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
         SelSounds = sounds;
 
         // nahravka v jazyku, ktory grafikon nepouziva, by grafikon pri dalsom otvoreni nenacitala
-        var languages = GrafikonLanguageRules.Offered(GlobData.Languages, GlobData.LocalLanguages,
+        var languages = GrafikonLanguageRules.Offered(_ctx.Workspace.Languages, _ctx.Document.LocalLanguages,
             sounds.Select(sound => sound.Language));
         foreach (var lang in languages)
-            _allSoundsLangs.Add(lang, lang.IsBasic ? GlobData.Sounds : RawBankParser.ReadFyzZvukFile(GlobData.RawBankDir, lang));
+            _allSoundsLangs.Add(lang, lang.IsBasic ? _ctx.Workspace.Sounds : RawBankParser.ReadFyzZvukFile(_ctx.Workspace.RawBankDir, lang));
 
         _selectedSounds.ListChanged += SelectedSounds_ListChanged;
         listRadenie.MouseMove += listRadenie_MouseMove;
@@ -274,9 +280,9 @@ public partial class FRadenie : Form
         var soundsS = new List<string>();
 
         foreach (var fyzZvuk in _selectedSounds)
-            soundsS.Add(GlobData.RawBankDir + "\\" + fyzZvuk.Language.RelativePath + fyzZvuk.Group.RelativePath + fyzZvuk.FileName);
+            soundsS.Add(_ctx.Workspace.RawBankDir + "\\" + fyzZvuk.Language.RelativePath + fyzZvuk.Group.RelativePath + fyzZvuk.FileName);
 
-        var player = new WavPlayer(soundsS.ToArray(), GlobData.Config.PlayerSoundsOffset);
+        var player = new WavPlayer(soundsS.ToArray(), _ctx.Config.PlayerSoundsOffset);
         player.StartPlay();
     }
 

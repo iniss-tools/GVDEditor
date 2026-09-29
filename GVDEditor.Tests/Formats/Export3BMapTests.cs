@@ -1,10 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 using ExControls;
 using GVDEditor.Domain.Calendar;
+using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using ToolsCore.Iniss.Tools;
+using ToolsCore.XML;
 
 namespace GVDEditor.Tests.Formats;
 
@@ -23,19 +24,12 @@ public class Export3BMapTests
     public void ReadTrains_BezPoznamkyVExport3C_BerieObmedzenieZMapyExport3B()
     {
         var dir = Directory.CreateTempSubdirectory("gvdexport3b");
-        var typesProp = typeof(GlobData).GetProperty(nameof(GlobData.TrainsTypes), BindingFlags.Public | BindingFlags.Static)!;
-        var oldTypes = GlobData.TrainsTypes;
-        var (oldOperators, oldTracks, oldRadenia, oldStations, oldCustom) =
-            (GlobData.Operators, GlobData.Tracks, GlobData.Radenia, GlobData.Stations, GlobData.CustomStations);
+        var context = new GrafikonContext(
+            new InissWorkspace { TrainsTypes = new ExBindingList<TrainType>([new TrainType("Os")]), Stations = [] },
+            new GrafikonDocument(), AppLanguage.Slovak);
         try
         {
             DateLimit.Loc = DateLimit.Locale.Sk;
-            typesProp.SetValue(null, new ExBindingList<TrainType>([new TrainType("Os")]));
-            GlobData.Operators = [];
-            GlobData.Tracks = [];
-            GlobData.Radenia = [];
-            GlobData.Stations = [];
-            GlobData.CustomStations = [];
 
             Write(dir, GvdFileConsts.FILE_GRAFIKON,
                 "IDSTATION=1", "NAMESTATION=\"Test\"",
@@ -54,7 +48,7 @@ public class Export3BMapTests
             foreach (var file in new[] { GvdFileConsts.FILE_VZORY, GvdFileConsts.FILE_STAHLASB, GvdFileConsts.FILE_STAHLASC, GvdFileConsts.FILE_VLAKY, GvdFileConsts.FILE_POZICE })
                 Write(dir, file);
 
-            var trains = TrainsFile.Read(dir.FullName, GrafikonContext.Current);
+            var trains = TrainsFile.Read(dir.FullName, context);
 
             var limit = new DateLimit(new DateTime(2026, 1, 1), new DateTime(2026, 1, 14), insertMarks: false);
             var expected = limit.BitArrayToText(ParseUtils.StringToBitArray(WEEKENDS));
@@ -71,9 +65,6 @@ public class Export3BMapTests
         }
         finally
         {
-            typesProp.SetValue(null, oldTypes);
-            (GlobData.Operators, GlobData.Tracks, GlobData.Radenia, GlobData.Stations, GlobData.CustomStations) =
-                (oldOperators, oldTracks, oldRadenia, oldStations, oldCustom);
             dir.Delete(true);
         }
     }

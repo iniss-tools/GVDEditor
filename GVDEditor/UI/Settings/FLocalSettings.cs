@@ -13,8 +13,13 @@ namespace GVDEditor.UI.Settings;
 /// Dialog - Lokálne nastavenia konkrétneho GVD. Stránky sú v strome vľavo; každá je samostatný prvok
 /// v <c>Forms/Settings</c>, okno ich len hostí, zbiera ich chyby a pri OK zapíše grafikon.
 /// </summary>
-public partial class FLocalSettings : Form
+internal partial class FLocalSettings : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
     private readonly bool _openTabTabEditor;
     private readonly bool _openStateDgmEditor;
 
@@ -65,11 +70,12 @@ public partial class FLocalSettings : Form
     /// <param name="page">Stranka, ktora sa ma otvorit po otvoreni dialogu.</param>
     /// <param name="action">Editor, ktory sa ma otvorit hned po otvoreni dialogu.</param>
     /// <param name="select">Polozka, ktora sa ma na stranke vybrat (napr. text na tabuli z analyzy grafikonu).</param>
-    public FLocalSettings(GVDDirectory dir, LocalSettingsPage page = LocalSettingsPage.Grafikon,
+    public FLocalSettings(EditorContext context, GVDDirectory dir, LocalSettingsPage page = LocalSettingsPage.Grafikon,
         LocalSettingsAction action = LocalSettingsAction.None, object? select = null)
     {
-        // stranky menia data priamo v GlobData - Zrusit ich vracia z tejto snimky
-        _snapshot = LocalSettingsSnapshot.Capture();
+        _ctx = context;
+        // stranky menia data priamo v grafikone - Zrusit ich vracia z tejto snimky
+        _snapshot = LocalSettingsSnapshot.Capture(_ctx.Document);
 
         InitializeComponent();
         this.ApplyThemeAndFonts();
@@ -79,7 +85,7 @@ public partial class FLocalSettings : Form
         AutoSize = false;
         // nazov stranky nad nou tucne ako v nastaveniach programu
         optionsView.HeaderNodeNameFont = new Font(optionsView.HeaderNodeNameFont, FontStyle.Bold);
-        SettingsWindow.ApplyPlacement(this, GlobData.Config.LocalSettingsWindow);
+        SettingsWindow.ApplyPlacement(this, _ctx.Config.LocalSettingsWindow);
         pGroupStanica.GenerateLinksToChildren = true;
         pGroupTabule.GenerateLinksToChildren = true;
 
@@ -120,18 +126,18 @@ public partial class FLocalSettings : Form
         // stranky s kontrolou chyb idu prve, aby sa chyby v strome ukazali co najskor
         var station = dir.GVD.ThisStation;
         _pages = new PageLoader(this, optionsView);
-        _pages.Add(pGrafikon, () => grafikonPage.LoadData(dir));
-        _pages.Add(pJazyky, languagesPage.LoadData);
-        _pages.Add(pStanice, () => customStationsPage.LoadData(station.Name));
-        _pages.Add(pDopravcovia, operatorsPage.LoadData);
-        _pages.Add(pNastupistia, platformsTracksPage.LoadData);
-        _pages.Add(pFonts, () => fontsPage.LoadData(ParseUtils.ParseStringOrDefault(GlobData.TableFontDir)));
-        _pages.Add(pFyzTab, physicalTablesPage.LoadData);
-        _pages.Add(pTTexts, () => textsPage.LoadData(dir.GVD));
-        _pages.Add(pLogTab, () => logicalTablesPage.LoadData(station));
-        _pages.Add(pKatTab, catalogTablesPage.LoadData);
-        _pages.Add(pTabTab, () => tabTabPage.LoadData(station));
-        _pages.Add(pStateDgm, () => stateDgmPage.LoadData(dir));
+        _pages.Add(pGrafikon, () => grafikonPage.LoadData(_ctx, dir));
+        _pages.Add(pJazyky, () => languagesPage.LoadData(_ctx));
+        _pages.Add(pStanice, () => customStationsPage.LoadData(_ctx, station.Name));
+        _pages.Add(pDopravcovia, () => operatorsPage.LoadData(_ctx));
+        _pages.Add(pNastupistia, () => platformsTracksPage.LoadData(_ctx));
+        _pages.Add(pFonts, () => fontsPage.LoadData(_ctx, ParseUtils.ParseStringOrDefault(_ctx.Document.TableFontDir)));
+        _pages.Add(pFyzTab, () => physicalTablesPage.LoadData(_ctx));
+        _pages.Add(pTTexts, () => textsPage.LoadData(_ctx, dir.GVD));
+        _pages.Add(pLogTab, () => logicalTablesPage.LoadData(_ctx, station));
+        _pages.Add(pKatTab, () => catalogTablesPage.LoadData(_ctx));
+        _pages.Add(pTabTab, () => tabTabPage.LoadData(_ctx, station));
+        _pages.Add(pStateDgm, () => stateDgmPage.LoadData(_ctx, dir));
         _pages.Load(PanelOf(page));
         UpdateProblems();
     }
@@ -221,7 +227,7 @@ public partial class FLocalSettings : Form
         }
 
         // Pozice_A.txt nema riadky nastupist - nastupiste bez kolaje sa nezapise a po opatovnom otvoreni zmizne
-        var withoutTracks = TrackEditing.PlatformsWithoutTracks(GlobData.Platforms.Where(p => p != Platform.None), GlobData.Tracks);
+        var withoutTracks = TrackEditing.PlatformsWithoutTracks(_ctx.Document.Platforms.Where(p => p != Platform.None), _ctx.Document.Tracks);
         if (withoutTracks.Count > 0 &&
             Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Nastupistia_Bez_Kolaje,
                 string.Join(", ", withoutTracks.Select(platform => platform.Key)))) != DialogResult.Yes)
@@ -276,23 +282,23 @@ public partial class FLocalSettings : Form
     {
         EnableEvents(false);
 
-        GlobData.Config.LocalSettingsWindow = SettingsWindow.CapturePlacement(this);
-        SettingsWindow.SaveConfig();
+        _ctx.Config.LocalSettingsWindow = SettingsWindow.CapturePlacement(this);
+        SettingsWindow.SaveConfig(_ctx.Config);
 
         // Zrusit, krizik aj Esc - vratia sa zmeny na vsetkych strankach
         if (DialogResult != DialogResult.OK)
             _snapshot.Restore();
     }
 
-    private static void EnableEvents(bool enable)
+    private void EnableEvents(bool enable)
     {
-        GlobData.CustomStations.FireEventOnSort = enable;
-        GlobData.Platforms.FireEventOnSort = enable;
-        GlobData.TablePhysicals.FireEventOnSort = enable;
-        GlobData.TableCatalogs.FireEventOnSort = enable;
-        GlobData.TableLogicals.FireEventOnSort = enable;
-        GlobData.TabTabs.FireEventOnSort = enable;
-        GlobData.TableTexts.FireEventOnSort = enable;
-        GlobData.TableFonts.FireEventOnSort = enable;
+        _ctx.Document.CustomStations.FireEventOnSort = enable;
+        _ctx.Document.Platforms.FireEventOnSort = enable;
+        _ctx.Document.TablePhysicals.FireEventOnSort = enable;
+        _ctx.Document.TableCatalogs.FireEventOnSort = enable;
+        _ctx.Document.TableLogicals.FireEventOnSort = enable;
+        _ctx.Document.TabTabs.FireEventOnSort = enable;
+        _ctx.Document.TableTexts.FireEventOnSort = enable;
+        _ctx.Document.TableFonts.FireEventOnSort = enable;
     }
 }

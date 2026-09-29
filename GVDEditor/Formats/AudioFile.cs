@@ -18,7 +18,8 @@ internal static class AudioFile
     /// </summary>
     /// <returns>audio linky</returns>
     /// <param name="dataDir">priecinok DATA instalacie INISS</param>
-    public static List<Audio> Read(string dataDir)
+    /// <param name="stations">stanice zvukovej banky</param>
+    public static List<Audio> Read(string dataDir, IEnumerable<Station> stations)
     {
         var fileAudio = CombinePath(dataDir, FILE_AUDIO)!;
 
@@ -54,7 +55,7 @@ internal static class AudioFile
             {
                 var audio = new Audio
                 {
-                    Station = Station.GetFromID(row[0]),
+                    Station = Station.GetFromID(row[0], stations, []),
                     Name = row[1],
                     ShortName = row[2],
                     QueueName = row[3],

@@ -8,18 +8,17 @@ namespace GVDEditor;
 
 internal static class Program
 {
-    public static FMain MainForm { get; private set; } = null!;
-
     /// <summary>
     /// The main entry point for the application.
     /// </summary>
     [STAThread]
     private static void Main()
     {
-        GlobData.Session = AppInit.Initialization<GVDEditorConfig, GVDEditorStyle>();
+        // composition root - kontext editora dostavaju okna explicitne
+        var context = new EditorContext(AppInit.Initialization<GVDEditorConfig, GVDEditorStyle>());
 
-        DateLimit.Loc = GlobData.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
+        DateLimit.Loc = context.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
 
-        AppInit.Run(GlobData.Config, () => MainForm = new FMain());
+        AppInit.Run(context.Config, () => new FMain(context));
     }
 }

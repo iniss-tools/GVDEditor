@@ -35,7 +35,7 @@ public sealed record LogZvukText(string Key, string Name, string Description, in
     /// <summary>
     /// Názvy dosadených staníc (ak stanica nie je známa, jej identifikátor).
     /// </summary>
-    public IEnumerable<string> StationNames => StationIds.Select(id => Station.GetFromID(id).Name);
+    public IEnumerable<string> StationNames(StationDirectory stations) => StationIds.Select(id => stations.FromID(id).Name);
 
     public override string ToString() => $"{Code} – {Name}";
 }

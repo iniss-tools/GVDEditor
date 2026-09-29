@@ -20,7 +20,7 @@ internal sealed class SdStarterEditor : SdEditorBase
     private readonly ExCheckBox _later = Check(Resources.FStateDgm_Starter_Later);
     private readonly Label _sentence;
 
-    public SdStarterEditor()
+    public SdStarterEditor(SdEditorContext context) : base(context)
     {
         AddHeader(Resources.FStateDgm_Starter_Titul);
         AddRow(Resources.FStateDgm_Kluc, _key);

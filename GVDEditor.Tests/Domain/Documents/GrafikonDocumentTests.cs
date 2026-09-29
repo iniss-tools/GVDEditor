@@ -10,27 +10,20 @@ namespace GVDEditor.Tests.Domain.Documents;
 [TestClass]
 public class GrafikonDocumentTests
 {
-    private GrafikonDocument _original = null!;
-
-    [TestInitialize]
-    public void Init() => _original = GlobData.Document;
-
-    [TestCleanup]
-    public void Cleanup() => GlobData.OpenDocument(_original);
-
     [TestMethod]
     public void Vyprazdnenie_ZachovaZoznamVlakov()
     {
         var open = new GrafikonDocument { Tracks = [Track.None] };
         open.Trains.Add(new Train { Number = "601" });
-        GlobData.OpenDocument(open);
-        var trains = GlobData.Trains;
+        var context = new EditorContext(null!);
+        context.OpenDocument(open);
+        var trains = context.Document.Trains;
 
-        GlobData.ClearGrafikonData();
+        context.CloseDocument();
 
-        Assert.AreSame(trains, GlobData.Trains, "tabulka vlakov v hlavnom okne ostava naviazana na ten isty zoznam");
-        Assert.IsEmpty(GlobData.Trains);
-        Assert.IsEmpty(GlobData.Tracks);
+        Assert.AreSame(trains, context.Document.Trains, "tabulka vlakov v hlavnom okne ostava naviazana na ten isty zoznam");
+        Assert.IsEmpty(context.Document.Trains);
+        Assert.IsEmpty(context.Document.Tracks);
     }
 
     [TestMethod]

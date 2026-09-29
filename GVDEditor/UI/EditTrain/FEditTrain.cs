@@ -18,8 +18,13 @@ namespace GVDEditor.UI.EditTrain;
 /// Dialog - Uprava/pridanie vlaku. Stranky v strome menia koncept vlaku (<see cref="TrainDraft" />), okno ho
 /// po kazdej zmene skontroluje; vlak a radenia v grafikone sa zmenia az tlacidlom OK.
 /// </summary>
-public partial class FEditTrain : Form
+internal partial class FEditTrain : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
     private readonly bool copy;
 
     // koncept vlaku - okno meni len jeho kopie, vlak a radenia v grafikone sa zmenia az v bSave_Click
@@ -71,16 +76,17 @@ public partial class FEditTrain : Form
     /// <param name="copy">Ci sa jedna o kopiu vlaku.</param>
     /// <param name="gvdDir">Priecinok grafikonu (pre Kalendar akcii); <see langword="null" />, ak nie je.</param>
     /// <param name="startPage">Stranka, na ktorej sa okno otvori.</param>
-    public FEditTrain(Train? train, int row, GVDInfo gvd, bool copy = false, string? gvdDir = null,
+    public FEditTrain(EditorContext context, Train? train, int row, GVDInfo gvd, bool copy = false, string? gvdDir = null,
         EditTrainPage startPage = EditTrainPage.Vlak)
     {
+        _ctx = context;
         InitializeComponent();
         _draft = train != null ? TrainDraft.From(train) : NewDraft(gvd);
         _routing = _draft.Routing;
-        _context = new TrainContext(GlobData.Trains, row, gvd.ThisStation?.ID);
+        _context = new TrainContext(_ctx.Document.Trains, row, gvd.ThisStation?.ID);
         // ostatne varianty upraveneho vlaku - pri zmene cisla, nazvu alebo typu sa mozu zmenit s nim
         if (train != null && !copy)
-            _draft.LoadSiblings(GlobData.Trains, row);
+            _draft.LoadSiblings(_ctx.Document.Trains, row);
         _gvdDir = gvdDir;
         _homeStationId = int.TryParse(gvd.ThisStation?.ID, out var stationId) ? stationId : 0;
 
@@ -105,7 +111,7 @@ public partial class FEditTrain : Form
         optionsView.HeaderNodeNameFont = new Font(optionsView.HeaderNodeNameFont, FontStyle.Bold);
         // v Designeri by odkazy vytvorili handle priskoro
         pGroupHlasenia.GenerateLinksToChildren = true;
-        SettingsWindow.ApplyPlacement(this, GlobData.Config.EditTrainWindow);
+        SettingsWindow.ApplyPlacement(this, _ctx.Config.EditTrainWindow);
         // zobrazi sa len stranka, ktorou sa okno otvara - ostatne sa vytvoria az pri prvom zobrazeni
         _startPanel = startPage switch
         {
@@ -119,13 +125,13 @@ public partial class FEditTrain : Form
         optionsView.SelectedPanel = _startPanel;
 
         // stranky plnit az po teme okna (nastavuju si pisma a farby)
-        trainPage.LoadData(_draft, GlobData.TrainNames);
-        routePage.LoadData(_draft, gvd.ThisStation);
-        validityPage.LoadData(_draft, _context, gvd.ThisStation?.Name, gvdDir != null ? OpenCalendar : null);
+        trainPage.LoadData(_ctx, _draft, _ctx.Workspace.TrainNames);
+        routePage.LoadData(_ctx, _draft, gvd.ThisStation);
+        validityPage.LoadData(_ctx, _draft, _context, gvd.ThisStation?.Name, gvdDir != null ? OpenCalendar : null);
         // INISS jazyk, ktory grafikon nepouziva, u vlaku preskoci - ponukaju sa len jazyky grafikonu
-        languagesPage.LoadData(_draft, GrafikonLanguageRules.Offered(GlobData.Languages, GlobData.LocalLanguages, _draft.Languages));
-        dodatkyPage.LoadData(_draft, GlobData.Sounds.Where(sound => sound.Group.Key.EqualsIgnoreCase("DODATKY")));
-        radeniePage.LoadData(_draft, gvd.StartValidTimeTable.ToDateTime(), gvd.EndValidTimeTable.ToDateTime());
+        languagesPage.LoadData(_draft, GrafikonLanguageRules.Offered(_ctx.Workspace.Languages, _ctx.Document.LocalLanguages, _draft.Languages));
+        dodatkyPage.LoadData(_ctx, _draft, _ctx.Workspace.Sounds.Where(sound => sound.Group.Key.EqualsIgnoreCase("DODATKY")));
+        radeniePage.LoadData(_ctx, _draft, gvd.StartValidTimeTable.ToDateTime(), gvd.EndValidTimeTable.ToDateTime());
         _pages = [trainPage, routePage, validityPage, languagesPage, dodatkyPage, radeniePage];
         foreach (var page in _pages)
             page.Changed += (_, _) => Recheck();
@@ -163,12 +169,12 @@ public partial class FEditTrain : Form
     }
 
     // novy vlak dostane prvy typ, dopravcu a kolaj z ponuk ako doteraz
-    private static TrainDraft NewDraft(GVDInfo gvd)
+    private TrainDraft NewDraft(GVDInfo gvd)
     {
         var draft = TrainDraft.New(gvd.StartValidTimeTable, gvd.EndValidTimeTable);
-        draft.Type = GlobData.TrainsTypes.FirstOrDefault();
-        draft.Operator = GlobData.Operators.FirstOrDefault();
-        draft.Track = draft.TrackDeparture = GlobData.Tracks.FirstOrDefault();
+        draft.Type = _ctx.Workspace.TrainsTypes.FirstOrDefault();
+        draft.Operator = _ctx.Document.Operators.FirstOrDefault();
+        draft.Track = draft.TrackDeparture = _ctx.Document.Tracks.FirstOrDefault();
         return draft;
     }
 
@@ -181,8 +187,8 @@ public partial class FEditTrain : Form
 
     private void FEditTrain_FormClosed(object? sender, FormClosedEventArgs e)
     {
-        GlobData.Config.EditTrainWindow = SettingsWindow.CapturePlacement(this);
-        SettingsWindow.SaveConfig();
+        _ctx.Config.EditTrainWindow = SettingsWindow.CapturePlacement(this);
+        SettingsWindow.SaveConfig(_ctx.Config);
     }
 
     private void bSave_Click(object sender, EventArgs e)
@@ -209,7 +215,7 @@ public partial class FEditTrain : Form
         _draft.ApplyTo(train);
         _draft.ApplyToSiblings();
         _draft.ApplyVariantLimits();
-        _draft.Radenia.Commit(train, GlobData.Radenia, GlobData.Trains);
+        _draft.Radenia.Commit(train, _ctx.Document.Radenia, _ctx.Document.Trains);
 
         if (isNew) ThisTrain = train;
 
@@ -233,7 +239,7 @@ public partial class FEditTrain : Form
         if (_draft.Routing != _routing)
         {
             _routing = _draft.Routing;
-            TrainRules.PruneReports(_draft.Doplnky, TrainRules.ReportTypesFor(_routing, GlobData.ReportTypes));
+            TrainRules.PruneReports(_draft.Doplnky, TrainRules.ReportTypesFor(_routing, _ctx.Document.ReportTypes));
         }
 
         _problems = TrainRules.Check(_draft, _context);
@@ -307,7 +313,7 @@ public partial class FEditTrain : Form
             return;
 
         // pri kopii je Row novy riadok, takze sem patri aj zdrojovy vlak - Shows ho vsak vynecha
-        var other = GlobData.Trains.Where((train, i) => train.Number == cislo && train.Radenia.Count != 0 && Row != i).FirstOrDefault();
+        var other = _ctx.Document.Trains.Where((train, i) => train.Number == cislo && train.Radenia.Count != 0 && Row != i).FirstOrDefault();
         if (other == null)
         {
             _draft.Radenia.RestoreOwn();
@@ -337,7 +343,7 @@ public partial class FEditTrain : Form
     {
         if (_gvdDir == null) return;
         var dir = _gvdDir;
-        var f = new FStateDgmCalendar(() =>
+        var f = new FStateDgmCalendar(_ctx, () =>
         {
             try
             {

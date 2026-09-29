@@ -14,10 +14,15 @@ namespace GVDEditor.UI.Settings;
 /// <summary>
 /// Stranka Texty na tabuliach v okne Lokalne nastavenia - zoznam typov textov a udaje vybraneho textu
 /// (realizacie, texty vlakov) s upravou priamo v poliach a tabulkach. Zmeny idu rovno do
-/// <see cref="GlobData.TableTexts" />, Zrusit okna ich vrati.
+/// <see cref="_ctx.Document.TableTexts" />, Zrusit okna ich vrati.
 /// </summary>
 public partial class TableTextsPage : UserControl, ISettingsPage
 {
+    /// <summary>
+    /// Kontext editora - nastavi ho <c>LoadData</c>.
+    /// </summary>
+    private EditorContext _ctx = null!;
+
     private readonly ItemListSupport<TableText> _list;
     private readonly FieldMarks _marks = new();
     private readonly List<(TableText Text, Field Field, int Row, string Message)> _problems = [];
@@ -46,9 +51,9 @@ public partial class TableTextsPage : UserControl, ISettingsPage
         dgvReal.AutoGenerateColumns = false;
         dgvTrains.AutoGenerateColumns = false;
         (components ??= new Container()).Add(_fontTip);
-        _font = new TableFontChoice(cbFont, _fontTip, allowColumnDefault: true);
+        _font = new TableFontChoice(() => _ctx, cbFont, _fontTip, allowColumnDefault: true);
         _font.ValueChanged += Font_ValueChanged;
-        _list = new ItemListSupport<TableText>(dgv, tbFilter, () => GlobData.TableTexts, t => [t.Name, t.Key]);
+        _list = new ItemListSupport<TableText>(dgv, tbFilter, () => _ctx.Document.TableTexts, t => [t.Name, t.Key]);
         _list.SelectionChanged += (_, _) => ShowCurrent();
     }
 
@@ -81,23 +86,25 @@ public partial class TableTextsPage : UserControl, ISettingsPage
     /// <summary>
     /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
+    /// <param name=\"context\">kontext editora</param>
     /// <param name="gvd">grafikon - jeho stanica pri predvyplneni textov vlakov</param>
-    internal void LoadData(GVDInfo gvd)
+    internal void LoadData(EditorContext context, GVDInfo gvd)
     {
+        _ctx = context;
         _gvd = gvd;
         foreach (var header in new[] { lBasic, lRealHeader, lTrainsHeader, lCommentHeader })
             header.Font = new Font(Font, FontStyle.Bold);
         lRealNote.ForeColor = SystemColors.GrayText;
         _hintColor = lHint.ForeColor;
         _marks.Capture(tbName, tbKey);
-        if (GlobData.UsingStyle.DarkScrollBar)
+        if (_ctx.UsingStyle.DarkScrollBar)
             pDetail.SetTheme(WindowsTheme.DarkExplorer);
         _list.CaptureColors();
         foreach (var grid in new[] { dgvReal, dgvTrains })
             grid.BackgroundColor = grid.DefaultCellStyle.BackColor.IsEmpty ? SystemColors.Window : grid.DefaultCellStyle.BackColor;
 
         _loaded = true;
-        _list.Fill(_selectAfterLoad ?? GlobData.TableTexts.FirstOrDefault());
+        _list.Fill(_selectAfterLoad ?? _ctx.Document.TableTexts.FirstOrDefault());
         Check();
     }
 
@@ -189,8 +196,8 @@ public partial class TableTextsPage : UserControl, ISettingsPage
     /// </summary>
     private void SetRealizationCells(DataGridViewRow row, TableTextRealization realization)
     {
-        var tables = GlobData.TableCatalogs.Select(t => new Choice(t, t.Name)).ToList();
-        if (realization.Table is { } table && !GlobData.TableCatalogs.Contains(table))
+        var tables = _ctx.Document.TableCatalogs.Select(t => new Choice(t, t.Name)).ToList();
+        if (realization.Table is { } table && !_ctx.Document.TableCatalogs.Contains(table))
             tables.Add(new Choice(table, table.Name));
         SetChoices((DataGridViewComboBoxCell)row.Cells[colRealTable.Index], tables, realization.Table);
 
@@ -254,14 +261,14 @@ public partial class TableTextsPage : UserControl, ISettingsPage
 
     private void UpdateRealizationButtons()
     {
-        bRealAdd.Enabled = _current is not null && GlobData.TableCatalogs.Count > 0;
+        bRealAdd.Enabled = _current is not null && _ctx.Document.TableCatalogs.Count > 0;
         bRealDelete.Enabled = CurrentRealization is not null;
         _font.Manufacturer = (CurrentRealization ?? _current?.Realizations.FirstOrDefault())?.Table?.Manufacturer;
     }
 
     private void bRealAdd_Click(object? sender, EventArgs e)
     {
-        if (_current is not { } text || GlobData.TableCatalogs.FirstOrDefault() is not { } table)
+        if (_current is not { } text || _ctx.Document.TableCatalogs.FirstOrDefault() is not { } table)
             return;
 
         text.Realizations.Add(new TableTextRealization { Table = table, Item = table.Items.FirstOrDefault()! });
@@ -292,7 +299,7 @@ public partial class TableTextsPage : UserControl, ISettingsPage
         dgvTrains.Rows.Clear();
         foreach (var train in _current?.Trains ?? [])
         {
-            var index = dgvTrains.Rows.Add(FormatTrain(train.Train), train.Text, TableFontChoice.Describe(train.FontID));
+            var index = dgvTrains.Rows.Add(FormatTrain(train.Train), train.Text, TableFontChoice.Describe(_ctx.Document.TableFonts, train.FontID));
             dgvTrains.Rows[index].Tag = train;
         }
 
@@ -304,7 +311,7 @@ public partial class TableTextsPage : UserControl, ISettingsPage
         cbAddTrain.BeginUpdate();
         cbAddTrain.Items.Clear();
         if (_current is not null)
-            cbAddTrain.Items.AddRange(TableTextGenerating.TrainsWithoutText(GlobData.Trains, _current.Trains)
+            cbAddTrain.Items.AddRange(TableTextGenerating.TrainsWithoutText(_ctx.Document.Trains, _current.Trains)
                 .Select(t => new Choice(t, FormatTrain(t))).ToArray<object>());
         if (cbAddTrain.Items.Count > 0)
             cbAddTrain.SelectedIndex = 0;
@@ -355,7 +362,7 @@ public partial class TableTextsPage : UserControl, ISettingsPage
 
         train.FontID = _font.Value;
         if (dgvTrains.CurrentRow is { } row)
-            row.Cells[colFont.Index].Value = TableFontChoice.Describe(train.FontID);
+            row.Cells[colFont.Index].Value = TableFontChoice.Describe(_ctx.Document.TableFonts, train.FontID);
     }
 
     private void bTrainAdd_Click(object? sender, EventArgs e)
@@ -409,7 +416,7 @@ public partial class TableTextsPage : UserControl, ISettingsPage
                 item.Name)) != DialogResult.Yes)
             return;
 
-        text.Trains = TableTextGenerating.Generate(GlobData.Trains, item.FillSection, _gvd.ThisStation).ToList();
+        text.Trains = TableTextGenerating.Generate(_ctx.Document.Trains, item.FillSection, _gvd.ThisStation).ToList();
         FillTrains(text.Trains.FirstOrDefault());
     }
 
@@ -434,9 +441,9 @@ public partial class TableTextsPage : UserControl, ISettingsPage
     private void Check()
     {
         _problems.Clear();
-        var texts = GlobData.TableTexts.ToList();
+        var texts = _ctx.Document.TableTexts.ToList();
         for (var i = 0; i < texts.Count; i++)
-            foreach (var (field, row, message) in TableTextRules.Check(texts, i, GlobData.TableCatalogs))
+            foreach (var (field, row, message) in TableTextRules.Check(texts, i, _ctx.Document.TableCatalogs))
                 _problems.Add((texts[i], field, row, message));
 
         MarkProblems();
@@ -463,15 +470,15 @@ public partial class TableTextsPage : UserControl, ISettingsPage
 
     private void bAdd_Click(object? sender, EventArgs e)
     {
-        var name = TableRules.Unique(GlobData.TableTexts.Select(t => t.Name), Resources.TablesPage_Novy_text);
+        var name = TableRules.Unique(_ctx.Document.TableTexts.Select(t => t.Name), Resources.TablesPage_Novy_text);
         var text = new TableText
         {
             Name = name,
-            Key = TableRules.Unique(GlobData.TableTexts.Select(t => t.Key), name),
+            Key = TableRules.Unique(_ctx.Document.TableTexts.Select(t => t.Key), name),
             Comment = ""
         };
 
-        GlobData.TableTexts.Add(text);
+        _ctx.Document.TableTexts.Add(text);
         Added(text);
     }
 
@@ -482,14 +489,14 @@ public partial class TableTextsPage : UserControl, ISettingsPage
 
         var text = new TableText
         {
-            Name = TableRules.Unique(GlobData.TableTexts.Select(t => t.Name), source.Name),
-            Key = TableRules.Unique(GlobData.TableTexts.Select(t => t.Key), source.Key),
+            Name = TableRules.Unique(_ctx.Document.TableTexts.Select(t => t.Name), source.Name),
+            Key = TableRules.Unique(_ctx.Document.TableTexts.Select(t => t.Key), source.Key),
             Comment = source.Comment,
             Realizations = source.Realizations.Select(TableTextGenerating.Clone).ToList(),
             Trains = source.Trains.Select(TableTextGenerating.Clone).ToList()
         };
 
-        GlobData.TableTexts.Insert(GlobData.TableTexts.IndexOf(source) + 1, text);
+        _ctx.Document.TableTexts.Insert(_ctx.Document.TableTexts.IndexOf(source) + 1, text);
         Added(text);
     }
 
@@ -507,9 +514,9 @@ public partial class TableTextsPage : UserControl, ISettingsPage
         if (_current is not { } text)
             return;
 
-        var index = GlobData.TableTexts.IndexOf(text);
-        GlobData.TableTexts.RemoveAt(index);
-        _list.Fill(GlobData.TableTexts.Count == 0 ? null : GlobData.TableTexts[Math.Min(index, GlobData.TableTexts.Count - 1)]);
+        var index = _ctx.Document.TableTexts.IndexOf(text);
+        _ctx.Document.TableTexts.RemoveAt(index);
+        _list.Fill(_ctx.Document.TableTexts.Count == 0 ? null : _ctx.Document.TableTexts[Math.Min(index, _ctx.Document.TableTexts.Count - 1)]);
         Check();
     }
 

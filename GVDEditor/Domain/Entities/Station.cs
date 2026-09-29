@@ -1,4 +1,5 @@
-﻿using ToolsCore.Iniss.Tools;
+﻿using ToolsCore.Iniss.Entities;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Domain.Entities;
 
@@ -52,14 +53,6 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
     public int CompareTo(object? obj) => string.Compare(Name, obj?.ToString(), StringComparison.Ordinal);
 
     /// <summary>
-    /// Vráti stanicu z <see cref="GlobData.Stations" /> alebo <see cref="GlobData.CustomStations" />
-    /// podľa identifikátora stanice.
-    /// </summary>
-    /// <param name="id">Identifikátor stanice.</param>
-    /// <returns><see cref="Station" />. Ak nenašlo žiadnu zhodu, vrati stanicu s nazvom zadaneho ID.</returns>
-    public static Station GetFromID(string? id) => GetFromID(id, GlobData.Stations, GlobData.CustomStations);
-
-    /// <summary>
     /// Vrati stanicu zo zvukovej banky alebo zo stanic grafikonu podla identifikatora stanice.
     /// </summary>
     /// <param name="id">Identifikator stanice.</param>
@@ -78,84 +71,17 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
     }
 
     /// <summary>
-    /// Vráti stanicu z <see cref="GlobData.Stations" /> alebo <see cref="GlobData.CustomStations" /> podľa názvu stanice
-    /// </summary>
-    /// <param name="name">názov stanice</param>
-    /// <returns><see cref="Station" /> alebo <see langword="null" /> ak nenašlo žiadnu zhodu</returns>
-    public static Station? GetFromName(string name)
-    {
-        if (string.IsNullOrEmpty(name))
-            return None;
-
-        name = name.Replace(".", "").Replace("-", "").ToLowerInvariant();
-        name = StringUtils.RemoveDiacritics(name);
-
-        foreach (var st in GlobData.Stations)
-        {
-            var ns = st.Name.Replace(".", "").Replace("-", "").ToLowerInvariant();
-            ns = StringUtils.RemoveDiacritics(ns);
-            if (ns == name) 
-                return new Station(st.ID, st.Name);
-        }
-
-        foreach (var cst in GlobData.CustomStations)
-        {
-            var ns = cst.Name.Replace(".", "").Replace("-", "").ToLowerInvariant();
-            ns = StringUtils.RemoveDiacritics(ns);
-            if (ns == name) 
-                return new Station(cst.ID, cst.Name);
-        }
-
-        return null;
-    }
-
-    /// <summary>
     /// Vráti stanice dostupné zo zvukovej banky (prehľadáva sa skupina s kľúčom R1).
     /// </summary>
     /// <remarks>Číslo stanice je kľúč zvuku - INISS hľadá zvuky v skupine podľa kľúča, nie podľa názvu.</remarks>
+    /// <param name="sounds">zvuky zakladneho jazyka zvukovej banky</param>
     /// <returns>list staníc.</returns>
-    public static List<Station> GetStations()
+    public static List<Station> GetStations(IEnumerable<FyzSound> sounds)
     {
-        return GlobData.Sounds
+        return sounds
             .Where(soundE => soundE.Group.Key.EqualsIgnoreCase("R1"))
             .Select(soundE => new Station(soundE.Key, soundE.Text.Replace(",", "")))
             .ToList();
-    }
-
-    /// <summary>
-    /// Vráti list staníc podľa poľa staníc zapísaných v reťazci ako identifikátory staníc.
-    /// </summary>
-    /// <param name="stations">pole staníc ako reťazec</param>
-    /// <returns>list staníc</returns>
-    /// <exception cref="ArgumentException">ak stanica neexistuje</exception>
-    public static List<Station> GetStationsFromIDListString(string stations)
-    {
-        return stations.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-            .Select(GetFromID).ToList();
-    }
-
-    /// <summary>
-    /// Vráti list staníc podľa poľa staníc zapísaných v reťazci ako názvy staníc.
-    /// </summary>
-    /// <param name="stations">pole staníc ako reťazec</param>
-    /// <returns>list staníc</returns>
-    /// <exception cref="ArgumentException">ak stanica neexistuje</exception>
-    public static List<Station> GetStationsFromNameListString(string stations)
-    {
-        var stationsList = new List<Station>();
-
-        // nazvy mozu obsahovat medzery (Velka Ves) - orezavaju sa az jednotlive polozky
-        var stationsStringArr = stations.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-
-        foreach (var s in stationsStringArr)
-        {
-            var station = GetFromName(s);
-            if (station == null) 
-                throw new ArgumentException($"Stanica \"{s}\" neexistuje.");
-            stationsList.Add(station);
-        }
-
-        return stationsList;
     }
 
     /// <summary>

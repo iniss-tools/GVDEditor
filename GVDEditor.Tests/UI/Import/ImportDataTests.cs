@@ -19,12 +19,7 @@ public class ImportDataTests
     private static readonly Station Sklene = new("9900400", "Sklené Pole");
     private static readonly Station Dolne = new(Home, "Dolné Mesto");
 
-    [TestInitialize]
-    public void Init()
-    {
-        GlobData.Stations = [Velka, Hranicna, Sklene, Dolne];
-        GlobData.CustomStations = new ExBindingList<Station>();
-    }
+    private static readonly StationDirectory Stations = new([Velka, Hranicna, Sklene, Dolne], []);
 
     [TestMethod]
     [DataRow("Číslo\tTyp\tPríchod\n521\tEx\t09:10", '\t')]
@@ -52,7 +47,7 @@ public class ImportDataTests
     [TestMethod]
     public void NazvyStanic_SMedzerou_SaNajdu()
     {
-        var stations = Station.GetStationsFromNameListString("Veľká Ves, Dolné Mesto ,Sklené Pole");
+        var stations = Stations.FromNameList("Veľká Ves, Dolné Mesto ,Sklené Pole");
 
         CollectionAssert.AreEqual(new[] { Velka.ID, Home, Sklene.ID }, stations.Select(s => s.ID).ToArray());
     }

@@ -18,7 +18,7 @@ internal sealed class SdTimePointEditor : SdEditorBase
     private readonly ExComboBox _op;
     private StateDgmTimePoint? _t;
 
-    public SdTimePointEditor()
+    public SdTimePointEditor(SdEditorContext context) : base(context)
     {
         AddHeader(Resources.FStateDgm_CasovyBod);
         AddRow(Resources.FStateDgm_Kluc, _key);

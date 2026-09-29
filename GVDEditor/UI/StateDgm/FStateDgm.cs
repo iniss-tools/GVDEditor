@@ -21,6 +21,11 @@ namespace GVDEditor.UI.StateDgm;
 /// </summary>
 public partial class FStateDgm : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
     private const string TAG_HEADER = "header";
     private const string TAG_DESIGNS = "designs";
     private const string TAG_TIMEPOINTS = "timepoints";
@@ -33,11 +38,12 @@ public partial class FStateDgm : Form
     private bool _dirty;
     private bool _textStale = true;
 
-    private readonly SdHeaderEditor _headerEditor = new();
-    private readonly SdCategoryEditor _categoryEditor = new();
-    private readonly SdStateEditor _stateEditor = new();
-    private readonly SdDesignEditor _designEditor = new();
-    private readonly SdTimePointEditor _timePointEditor = new();
+    private readonly SdHeaderEditor _headerEditor;
+    private readonly SdCategoryEditor _categoryEditor;
+    private readonly SdStateEditor _stateEditor;
+    private readonly SdDesignEditor _designEditor;
+    private readonly SdTimePointEditor _timePointEditor;
+    private readonly SdEditorContext _sd;
     private readonly Label _emptyEditor = new() { Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = SystemColors.GrayText };
 
     private readonly System.Windows.Forms.Timer _validateTimer = new() { Interval = 500 };
@@ -83,7 +89,7 @@ public partial class FStateDgm : Form
     /// Otvori editor diagramu grafikonu.
     /// </summary>
     /// <param name="dir">Priecinok grafikonu.</param>
-    internal FStateDgm(GVDDirectory dir) : this(dir.Dir.FullPath, dir.GVD.ThisStation?.Name ?? dir.Dir.DirName, dir.GVD.ThisStation?.ID)
+    internal FStateDgm(EditorContext context, GVDDirectory dir) : this(context, dir.Dir.FullPath, dir.GVD.ThisStation?.Name ?? dir.Dir.DirName, dir.GVD.ThisStation?.ID)
     {
     }
 
@@ -92,11 +98,12 @@ public partial class FStateDgm : Form
     /// </summary>
     /// <param name="dirPath">Priecinok grafikonu so suborom StateDgm.txt.</param>
     /// <param name="stationName">Meno stanice do titulku.</param>
-    internal FStateDgm(string dirPath, string stationName, string? homeStationId = null)
+    internal FStateDgm(EditorContext context, string dirPath, string stationName, string? homeStationId = null)
     {
+        _ctx = context;
         InitializeComponent();
         this.ApplyThemeAndFonts();
-        if (GlobData.UsingStyle.DarkTitleBar) ExTools.SetImmersiveDarkMode(Handle, true);
+        if (_ctx.UsingStyle.DarkTitleBar) ExTools.SetImmersiveDarkMode(Handle, true);
 
         _dir = dirPath;
         _stationName = stationName;
@@ -104,8 +111,13 @@ public partial class FStateDgm : Form
         _sc = scText.Scintilla;
         SetupTextView();
 
-        SdEditorContext.Symbols = new GvdExprSymbols();
-        SdEditorContext.ReportKeys = (GlobData.ReportTypes ?? []).Select(r => r.Key).ToList();
+        _sd = new SdEditorContext(new GvdExprSymbols(_ctx.Workspace, _ctx.Document),
+            (_ctx.Document.ReportTypes ?? []).Select(r => r.Key).ToList(), _ctx.UsingStyle.TabTabEditorScheme.Font);
+        _headerEditor = new SdHeaderEditor(_sd);
+        _categoryEditor = new SdCategoryEditor(_sd);
+        _stateEditor = new SdStateEditor(_sd);
+        _designEditor = new SdDesignEditor(_sd);
+        _timePointEditor = new SdTimePointEditor(_sd);
 
         _treeImages.Images.Add("file", GlobalResources.flow_chart);
         _treeImages.Images.Add("designs", GlobalResources.colors);
@@ -146,7 +158,7 @@ public partial class FStateDgm : Form
     private void SetupTextView()
     {
         const int SCI_SETILEXER = 4033;
-        var style = GlobData.UsingStyle;
+        var style = _ctx.UsingStyle;
         _sc.DirectMessage(SCI_SETILEXER, IntPtr.Zero, IntPtr.Zero);
         _sc.StyleResetDefault();
         _sc.Styles[Style.Default].Font = style.TabTabEditorScheme.Font.Name;
@@ -211,12 +223,12 @@ public partial class FStateDgm : Form
         _graphBar.Items.Add(_tsbAllEdges);
         _graphBar.Items.Add(new ToolStripSeparator());
         _graphBar.Items.Add(_graphLegend);
-        _graph.Scheme = GlobData.UsingStyle.ControlsColorScheme;
-        _graph.DarkScrollBar = GlobData.UsingStyle.DarkScrollBar;
+        _graph.Scheme = _ctx.UsingStyle.ControlsColorScheme;
+        _graph.DarkScrollBar = _ctx.UsingStyle.DarkScrollBar;
         _graph.Font = Font;
         pnlGraph.Controls.Add(_graph);
         pnlGraph.Controls.Add(_graphBar);
-        FormUtils.ChangeStyleOfControls(GlobData.UsingStyle, new Control[] { _graphBar });
+        FormUtils.ChangeStyleOfControls(_ctx.UsingStyle, new Control[] { _graphBar });
 
         _graph.StateSelected += (_, st) =>
         {
@@ -534,7 +546,7 @@ public partial class FStateDgm : Form
         {
             pnlProps.SuspendLayout();
             pnlProps.Controls.Clear();
-            FormUtils.ChangeStyleOfControls(GlobData.UsingStyle, new[] { editor });
+            FormUtils.ChangeStyleOfControls(_ctx.UsingStyle, new[] { editor });
             editor.Font = Font;
             pnlProps.Controls.Add(editor);
             pnlProps.ResumeLayout();
@@ -591,8 +603,8 @@ public partial class FStateDgm : Form
 
         var diags = StateDgmValidator.Validate(_d, new StateDgmValidationOptions
         {
-            ReportKeys = SdEditorContext.ReportKeys.Count > 0 ? SdEditorContext.ReportKeys : null,
-            Symbols = SdEditorContext.Symbols
+            ReportKeys = _sd.ReportKeys.Count > 0 ? _sd.ReportKeys : null,
+            Symbols = _sd.Symbols
         });
         _problems.RaiseListChangedEvents = false;
         _problems.Clear();
@@ -644,7 +656,7 @@ public partial class FStateDgm : Form
                 return false;
             try
             {
-                StateDgmFile.WriteText(_dir, GlobData.DataDir, _sc.Text);
+                StateDgmFile.WriteText(_dir, _ctx.Workspace.DataDir, _sc.Text);
             }
             catch (Exception e) when (e is IOException or UnauthorizedAccessException)
             {
@@ -668,7 +680,7 @@ public partial class FStateDgm : Form
 
         try
         {
-            StateDgmFile.Write(_dir, GlobData.DataDir, _d);
+            StateDgmFile.Write(_dir, _ctx.Workspace.DataDir, _d);
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException)
         {
@@ -857,7 +869,7 @@ public partial class FStateDgm : Form
         var control = row?.Control;
         var isNew = row?.Event == null;
 
-        var editor = new SdEventEditor();
+        var editor = new SdEventEditor(_sd);
         var nextId = _selState.Controls.Count == 0 ? 0 : _selState.Controls.Max(c => c.CtrlId) + 1;
         editor.Bind(ev, control, _selCategory.States.Select(s => s.Key), _d.Designs.Select(d => d.Key), nextId);
         using var dlg = new FStateDgmItem(Resources.FStateDgm_Akcia_Titul, editor, 520, 640);
@@ -935,7 +947,7 @@ public partial class FStateDgm : Form
         if (_selState == null) return;
         var isNew = starter == null;
         starter ??= StateDgmEditing.NewStarter(_selState);
-        var editor = new SdStarterEditor();
+        var editor = new SdStarterEditor(_sd);
         editor.Bind(starter, _selState.Events.Select(x => x.Key), _d.AllTimePointKeys.Concat(_selState.TimePoints.Select(t => t.Key)));
         using var dlg = new FStateDgmItem(Resources.FStateDgm_Starter_Titul, editor, 520, 520);
         if (dlg.ShowDialog(this) != DialogResult.OK) return;
@@ -1031,7 +1043,7 @@ public partial class FStateDgm : Form
             return;
         }
 
-        _calendar = new FStateDgmCalendar(() => _d, HomeStationId());
+        _calendar = new FStateDgmCalendar(_ctx, () => _d, HomeStationId());
         _calendar.StateSelected += (_, st) =>
         {
             if (FindNode(st) is { } n && tvNav.SelectedNode != n) tvNav.SelectedNode = n;

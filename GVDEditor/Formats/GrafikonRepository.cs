@@ -54,7 +54,7 @@ internal static class GrafikonRepository
             // grafikon bez radeni
         }
 
-        document.Trains = new TrainBindingList(TrainsFile.Read(path, context));
+        document.Trains = new TrainBindingList(TrainsFile.Read(path, context)) { TrainNames = context.Workspace.TrainNames };
         document.TableTexts = new ExBindingList<TableText>(TTextsFile.Read(path, document.Trains, document.TableCatalogs));
 
         var modeTabs = ModeTabsFile.Read(path);

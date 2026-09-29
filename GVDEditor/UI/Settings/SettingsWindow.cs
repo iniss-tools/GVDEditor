@@ -46,7 +46,8 @@ internal static class SettingsWindow
     /// Zapise konfiguraciu programu (napr. po zmene zapamatanej velkosti okna). Chyba zapisu sa len zaloguje -
     /// velkost okna nestoji za prerusenie prace.
     /// </summary>
-    public static void SaveConfig()
+    /// <param name="config">konfiguracia programu</param>
+    public static void SaveConfig(GVDEditorConfig config)
     {
         try
         {
@@ -54,7 +55,7 @@ internal static class SettingsWindow
             if (!Directory.Exists(configsDir))
                 Directory.CreateDirectory(configsDir);
 
-            XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG)!, GlobData.Config);
+            XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG)!, config);
         }
         catch (Exception e)
         {

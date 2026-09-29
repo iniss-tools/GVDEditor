@@ -2944,4 +2944,7 @@ Směrování vlaku a/nebo stanice vlaku,
   <data name="NameColorSettings_Label" xml:space="preserve">
     <value>Štítky</value>
   </data>
+  <data name="Station_NotFound" xml:space="preserve">
+    <value>Stanice "{0}" neexistuje.</value>
+  </data>
 </root>

@@ -16,7 +16,7 @@ using AppRegistry = ToolsCore.Tools.AppRegistry;
 
 namespace GVDEditor.UI.Main;
 
-public partial class FMain
+internal partial class FMain
 {
     // ------------------------------------------------------------------ instalacia INISS
 
@@ -52,7 +52,7 @@ public partial class FMain
 
         try
         {
-            GlobData.PrepareGlobalData(path);
+            _ctx.OpenWorkspace(WorkspaceRepository.Load(path));
         }
         catch (Exception e) when (CatchErrors)
         {
@@ -80,13 +80,13 @@ public partial class FMain
         Text = Application.ProductName;
     }
 
-    private static bool InitializeDataList()
+    private bool InitializeDataList()
     {
         try
         {
             var stanice = new HashSet<string>();
             var obdobiaList = new List<GVDDirectory>();
-            var dirsInData = DirListFile.Read(GlobData.DataDir);
+            var dirsInData = DirListFile.Read(_ctx.Workspace.DataDir);
             foreach (var dir in dirsInData)
             {
                 try
@@ -113,8 +113,8 @@ public partial class FMain
             return false;
         }
 
-        AppRegistry.SetUsageOfProject(GlobData.INISSDir);
-        AppRegistry.SetLastProject(GlobData.INISSDir);
+        AppRegistry.SetUsageOfProject(_ctx.Workspace.INISSDir);
+        AppRegistry.SetLastProject(_ctx.Workspace.INISSDir);
         return true;
     }
 
@@ -127,7 +127,7 @@ public partial class FMain
         _gvdDirs.AddRange(ObdobiaList);
 
         //premenovat form podla aktualne otvoreneho priecinka
-        Text = Application.ProductName + @" - " + GlobData.INISSDir;
+        Text = Application.ProductName + @" - " + _ctx.Workspace.INISSDir;
         DataSaved = true;
         FillInissPrograms();
         UpdateCommandStates();
@@ -242,11 +242,11 @@ public partial class FMain
         {
             // novy grafikon nesmie nic prevziat z predchadzajuceho (jazyky, priecinok pisiem...)
             _prechod = true;
-            GlobData.OpenDocument(GrafikonDocument.CreateNew(GlobData.Languages));
+            _ctx.OpenDocument(GrafikonDocument.CreateNew(_ctx.Workspace.Languages));
             BindDocument();
             _prechod = false;
 
-            GrafikonRepository.CreateNew(dir.Dir.FullPath, dir.GVD, GrafikonContext.Current, GlobData.DataDir, _newDirTemplate);
+            GrafikonRepository.CreateNew(dir.Dir.FullPath, dir.GVD, _ctx.Grafikon, _ctx.Workspace.DataDir, _newDirTemplate);
 
             _newDir = null;
             _grafikonLoaded = true;
@@ -256,7 +256,7 @@ public partial class FMain
 
         _prechod = true;
         dgvTrains.DataSource = null;
-        GlobData.Trains.Clear();
+        _ctx.Document.Trains.Clear();
         _prechod = false;
 
         //starsi zapis - viac grafikonov v jednom priecinku; po rozdeleni sa zoznam obdobi nacita znova a vyberie prvy novy
@@ -288,14 +288,14 @@ public partial class FMain
 
         _loading = true;
         Enabled = false;
-        var waitForm = new FWait();
+        var waitForm = new FWait(_ctx);
         waitForm.Show(this);
 
         GrafikonDocument? document = null;
         Exception? error = null;
         try
         {
-            document = await GrafikonService.LoadAsync(dir, GlobData.Workspace);
+            document = await GrafikonService.LoadAsync(dir, _ctx.Workspace);
         }
         catch (Exception e) when (CatchErrors)
         {
@@ -320,7 +320,7 @@ public partial class FMain
         if (document != null)
         {
             // vsetky data grafikonu sa vymenia naraz - okno medzitym videlo povodny grafikon
-            GlobData.OpenDocument(document);
+            _ctx.OpenDocument(document);
             BindDocument();
             _grafikonLoaded = true;
         }
@@ -341,7 +341,7 @@ public partial class FMain
     private void CloseGrafikon()
     {
         _prechod = true;
-        GlobData.ClearGrafikonData();
+        _ctx.CloseDocument();
         _prechod = false;
         _grafikonLoaded = false;
     }
@@ -367,12 +367,12 @@ public partial class FMain
         });
     }
 
-    private static List<GvdBlock> AnalyzeBlocks(GVDDirectory dir)
+    private List<GvdBlock> AnalyzeBlocks(GVDDirectory dir)
     {
         try
         {
             //grafikon priamo v DATA (bez DirList.TXT) sa presuva do vlastneho priecinka vzdy, aj ked ma jediny blok
-            return BlockMigrator.Analyze(GlobData.DataDir, dir.Dir.FullPath, dir.GVD, dir.Dir.DirName, dir.Dir.IsDataRoot);
+            return BlockMigrator.Analyze(_ctx.Workspace.DataDir, dir.Dir.FullPath, dir.GVD, dir.Dir.DirName, _ctx.Stations, dir.Dir.IsDataRoot);
         }
         catch (Exception e)
         {
@@ -394,14 +394,14 @@ public partial class FMain
         if (Utils.ShowQuestion(question) != DialogResult.Yes)
             return false;
 
-        using var form = new FBlockMigration(dir.Dir.FullPath, blocks, dir.Dir.IsDataRoot);
+        using var form = new FBlockMigration(_ctx, dir.Dir.FullPath, blocks, dir.Dir.IsDataRoot);
         if (form.ShowDialog(this) != DialogResult.OK)
             return false;
 
         List<DirList> newDirs;
         try
         {
-            newDirs = BlockMigrator.Migrate(GlobData.DataDir, dir.Dir.FullPath, dir.Dir, dir.GVD, blocks);
+            newDirs = BlockMigrator.Migrate(_ctx.Workspace.DataDir, dir.Dir.FullPath, dir.Dir, dir.GVD, blocks);
         }
         catch (Exception e)
         {
@@ -412,7 +412,7 @@ public partial class FMain
 
         Utils.ShowInfo(string.Format(Resources.FMain_Grafikon_rozdeleny, string.Join(", ", newDirs.Select(d => d.DirName)), dir.Dir.FullPath));
 
-        GlobData.GVDDirs = DirListFile.Read(GlobData.DataDir);
+        _ctx.Workspace.GVDDirs = DirListFile.Read(_ctx.Workspace.DataDir);
         DataSaved = true;
         _previousSelectedGVD = null;
 
@@ -466,11 +466,11 @@ public partial class FMain
 
         try
         {
-            GrafikonService.Save(_previousSelectedGVD!, GrafikonContext.Current, GlobData.Config.AutoTableText);
+            GrafikonService.Save(_previousSelectedGVD!, _ctx.Grafikon, _ctx.Config.AutoTableText);
         }
         catch (Exception e) when (CatchErrors)
         {
-            Utils.ShowError(GlobData.Config.DebugModeGUI == DebugMode.OnlyMessage ? e.Message : e.ToString());
+            Utils.ShowError(_ctx.Config.DebugModeGUI == DebugMode.OnlyMessage ? e.Message : e.ToString());
             return false;
         }
 
@@ -482,27 +482,27 @@ public partial class FMain
 
     private void ShowAnalyzeGVD()
     {
-        var fan = new FAnalyzer((tscbObdobie.SelectedItem as GVDDirectory)!);
+        var fan = new FAnalyzer(_ctx, (tscbObdobie.SelectedItem as GVDDirectory)!, this);
         fan.ShowDialog();
 
         // opravy menia grafikon v pamati - bez oznacenia by sa pri zatvoreni bez otazky stratili
         if (fan.DataChanged)
         {
             DataSaved = false;
-            GlobData.Trains.ResetBindings();
+            _ctx.Document.Trains.ResetBindings();
         }
     }
 
     private void ShowNewGVD()
     {
-        var nsf = new FNewGrafikon(_gvdDirs);
+        var nsf = new FNewGrafikon(_ctx, _gvdDirs);
         if (nsf.ShowDialog() != DialogResult.OK)
             return;
 
         var gvd = nsf.GvdInfo;
         _newDirTemplate = nsf.Template;
 
-        var dgyv = GrafikonService.Register(GlobData.Workspace, nsf.NewDir, gvd);
+        var dgyv = GrafikonService.Register(_ctx.Workspace, nsf.NewDir, gvd);
         _gvdDirs.Add(dgyv);
         _newDir = dgyv;
 
@@ -527,7 +527,7 @@ public partial class FMain
         GVDDirectory dgyv;
         try
         {
-            dgyv = GrafikonService.Import(GlobData.Workspace, dialog.SelectedPath, _gvdDirs);
+            dgyv = GrafikonService.Import(_ctx.Workspace, dialog.SelectedPath, _gvdDirs);
         }
         catch (Exception e)
         {
@@ -552,7 +552,7 @@ public partial class FMain
 
     private void ShowImportData()
     {
-        var fid = new FImportData(((GVDDirectory)tscbObdobie.ComboBox.SelectedItem!).GVD);
+        var fid = new FImportData(_ctx, ((GVDDirectory)tscbObdobie.ComboBox.SelectedItem!).GVD);
         if (fid.ShowDialog() != DialogResult.OK)
             return;
 
@@ -560,9 +560,9 @@ public partial class FMain
         if (fid.ReplaceTrains)
             RemoveAllTrains();
 
-        foreach (var train in fid.ImportedTrains) GlobData.Trains.Add(train);
+        foreach (var train in fid.ImportedTrains) _ctx.Document.Trains.Add(train);
         NormalizeVariants();
-        GlobData.Trains.ResetBindings();
+        _ctx.Document.Trains.ResetBindings();
         DataSaved = false;
     }
 
@@ -574,19 +574,19 @@ public partial class FMain
     {
         var gvdDir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
 
-        var fimport = new FELISImport(gvdDir.GVD.ThisStation.Name, GlobData.Trains.Count);
+        var fimport = new FELISImport(gvdDir.GVD.ThisStation.Name, _ctx.Document.Trains.Count);
         if (fimport.ShowDialog() != DialogResult.OK)
             return;
 
         ElisImport? import = null;
         Exception? error = null;
-        var waitForm = new FWait(Resources.FMain_Import_prebieha);
+        var waitForm = new FWait(_ctx, Resources.FMain_Import_prebieha);
         waitForm.Show(this);
         Enabled = false;
         try
         {
-            import = await ElisImportService.LoadAsync(fimport.ResultOptions, gvdDir, GlobData.TrainsTypes, GlobData.Operators,
-                GlobData.Tracks.FirstOrDefault()!, GlobData.Trains);
+            import = await ElisImportService.LoadAsync(fimport.ResultOptions, gvdDir, _ctx.Workspace.TrainsTypes, _ctx.Document.Operators,
+                _ctx.Document.Tracks.FirstOrDefault()!, _ctx.Document.Trains, _ctx.Stations);
         }
         catch (Exception e) when (CatchErrors)
         {
@@ -625,13 +625,13 @@ public partial class FMain
         var removed = 0;
         if (import.ReplaceTrains)
         {
-            removed = GlobData.Trains.Count;
+            removed = _ctx.Document.Trains.Count;
             RemoveAllTrains();
         }
 
-        foreach (var train in imported) GlobData.Trains.Add(train);
+        foreach (var train in imported) _ctx.Document.Trains.Add(train);
         NormalizeVariants();
-        GlobData.Trains.ResetBindings();
+        _ctx.Document.Trains.ResetBindings();
 
         DataSaved = false;
 
@@ -645,12 +645,12 @@ public partial class FMain
     /// <returns><see langword="false" />, ak pouzivatel import zrusil.</returns>
     private bool ResolveStations(ElisImport import)
     {
-        var dialog = new FELISStations(import.Unresolved);
+        var dialog = new FELISStations(_ctx, import.Unresolved, import.Client.Stations);
         if (dialog.ShowDialog(this) != DialogResult.OK)
             return false;
 
         //ulozenie priradenia nie je kriticke - import moze pokracovat, len sa nabuduce spyta znova
-        if (ElisImportService.SaveStationMap(import, dialog.Result, GlobData.Config.Language) is { } error)
+        if (ElisImportService.SaveStationMap(import, dialog.Result, _ctx.Config.Language) is { } error)
             Log.Exception(error);
 
         return true;
@@ -661,14 +661,14 @@ public partial class FMain
     private void ShowEditTrain(Train? train, int row, bool copy = false, EditTrainPage startPage = EditTrainPage.Vlak)
     {
         var gvdDir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
-        var eform = new FEditTrain(train, row, gvdDir.GVD, copy, gvdDir.Dir.FullPath, startPage);
+        var eform = new FEditTrain(_ctx, train, row, gvdDir.GVD, copy, gvdDir.Dir.FullPath, startPage);
         var result = eform.ShowDialog();
         if (result == DialogResult.OK)
         {
-            if (train == null || row == GlobData.Trains.Count)
-                GlobData.Trains.Add(eform.ThisTrain!);
+            if (train == null || row == _ctx.Document.Trains.Count)
+                _ctx.Document.Trains.Add(eform.ThisTrain!);
             else
-                GlobData.Trains.ResetBindings();
+                _ctx.Document.Trains.ResetBindings();
 
             // novy vlak, kopia alebo zmena cisla, nazvu ci typu - cisla variant prideli GVDEditor
             NormalizeVariants();
@@ -682,15 +682,15 @@ public partial class FMain
         {
             foreach (DataGridViewRow row in dgvTrains.SelectedRows)
             {
-                if (!GlobData.Config.AutoTableText)
+                if (!_ctx.Config.AutoTableText)
                     DeleteTTexts((row.DataBoundItem as Train)!);
 
-                GlobData.Trains.RemoveAt(row.Index);
+                _ctx.Document.Trains.RemoveAt(row.Index);
             }
 
             // varianta, ktora ostala sama, dostane -1
             NormalizeVariants();
-            GlobData.Trains.ResetBindings();
+            _ctx.Document.Trains.ResetBindings();
 
             DataSaved = false;
         }
@@ -701,18 +701,18 @@ public partial class FMain
     /// </summary>
     private void RemoveAllTrains()
     {
-        if (!GlobData.Config.AutoTableText)
-            foreach (var train in GlobData.Trains)
+        if (!_ctx.Config.AutoTableText)
+            foreach (var train in _ctx.Document.Trains)
                 DeleteTTexts(train);
 
         _prechod = true;
-        GlobData.Trains.Clear();
+        _ctx.Document.Trains.Clear();
         _prechod = false;
     }
 
-    private static void DeleteTTexts(Train vlak)
+    private void DeleteTTexts(Train vlak)
     {
-        foreach (var tt in GlobData.TableTexts)
+        foreach (var tt in _ctx.Document.TableTexts)
             for (var i = tt.Trains.Count - 1; i >= 0; i--)
                 if (tt.Trains[i].Train == vlak)
                     tt.Trains.RemoveAt(i);

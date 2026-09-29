@@ -11,6 +11,11 @@ namespace GVDEditor.UI.Dialogs;
 /// </summary>
 public partial class FBlockMigration : Form
 {
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
     private readonly List<GvdBlock> _blocks;
 
     /// <summary>
@@ -19,8 +24,9 @@ public partial class FBlockMigration : Form
     /// <param name="sourcePath">Priecinok so starym zapisom (len na zobrazenie).</param>
     /// <param name="blocks">Bloky z <see cref="BlockMigrator.Analyze" />; nazvy priecinkov sa po potvrdeni zapisu spat do nich.</param>
     /// <param name="isDataRoot">Grafikon lezi priamo v DATA (bez DirList.TXT) - presuva sa do vlastneho priecinka.</param>
-    internal FBlockMigration(string sourcePath, List<GvdBlock> blocks, bool isDataRoot = false)
+    internal FBlockMigration(EditorContext context, string sourcePath, List<GvdBlock> blocks, bool isDataRoot = false)
     {
+        _ctx = context;
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
@@ -64,7 +70,7 @@ public partial class FBlockMigration : Form
                 return;
             }
 
-            if (Directory.Exists(PathUtils.CombinePath(GlobData.DataDir, name)!))
+            if (Directory.Exists(PathUtils.CombinePath(_ctx.Workspace.DataDir, name)!))
             {
                 Utils.ShowError($"{name}: {Properties.Resources.Priečinok_s_týmto_názvom_už_existuje__Zmeňte_jeho_názov}");
                 return;
