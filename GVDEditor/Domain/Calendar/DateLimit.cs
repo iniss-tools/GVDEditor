@@ -6,7 +6,6 @@ using GVDEditor.Properties;
 // ReSharper disable UnusedMember.Global
 // ReSharper disable StringLiteralTypo
 // ReSharper disable UnusedAutoPropertyAccessor.Global
-// ReSharper disable UnusedMember.Local
 
 namespace GVDEditor.Domain.Calendar;
 

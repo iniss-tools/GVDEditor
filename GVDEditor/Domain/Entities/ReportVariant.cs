@@ -39,8 +39,6 @@ public sealed record ReportVariant(int Key, string Name)
         return true;
     }
 
-#pragma warning disable 1591
     public static readonly ReportVariant DlheHlasenie = new(0, "Dlhé hlásenie");
     public static readonly ReportVariant KratkeHlasenie = new(1, "Krátke hlásenie");
-#pragma warning restore 1591
 }

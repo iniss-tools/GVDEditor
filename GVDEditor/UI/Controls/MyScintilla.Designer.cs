@@ -111,11 +111,9 @@ namespace GVDEditor.UI.Controls
 
         #endregion
         private System.Windows.Forms.Panel pVertical;
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public System.Windows.Forms.VScrollBar VScrollBarControl;
         private System.Windows.Forms.Panel pHorizontal;
         public System.Windows.Forms.HScrollBar HScrollBarControl;
         public ScintillaNET.Scintilla scintillaEditor;
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

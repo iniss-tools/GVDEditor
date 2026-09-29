@@ -38,14 +38,12 @@ public sealed class TableViewMode : Enumeration<TableViewMode>
 
     #region VALUES
 
-#pragma warning disable 1591
     public static readonly TableViewMode Nothing = new("LVM_Nothing", Resources.ViewMode_Nothing);
     public static readonly TableViewMode Vlak = new("LVM_Vlak", Resources.ViewMode_Vlak);
     public static readonly TableViewMode VlakZmeskanyPrichod = new("LVM_VlakZpozdenyPrijezd", Resources.ViewMode_VlakZmeskanyPrichod);
     public static readonly TableViewMode VlakZmeskanyOdchod = new("LVM_VlakZpozdenyOdjezd", Resources.ViewMode_VlakZmeskanyOdchod);
     public static readonly TableViewMode VlakZmeskany = new("LVM_VlakZpozdeny", Resources.ViewMode_VlakZmeskany);
     public static readonly TableViewMode Text = new("LVM_Text", "Text");
-#pragma warning restore 1591
 
     #endregion
 }

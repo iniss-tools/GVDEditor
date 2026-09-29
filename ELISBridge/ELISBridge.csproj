@@ -9,6 +9,7 @@
 		<LangVersion>default</LangVersion>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="JetBrains.Annotations" Version="2026.2.0" />
+		<!-- len pre Rider ([UsedImplicitly]); atributy su [Conditional], za behu sa DLL nepotrebuje -->
+		<PackageReference Include="JetBrains.Annotations" Version="2026.2.0" PrivateAssets="all" ExcludeAssets="runtime" />
 	</ItemGroup>
 </Project>

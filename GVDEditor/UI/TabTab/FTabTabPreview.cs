@@ -26,7 +26,6 @@ public partial class FTabTabPreview : Form
     private readonly int _homeStationId;
     private readonly Dictionary<string, TabTabSection?> _sections = new(StringComparer.Ordinal);
     private readonly BindingList<ResultRow> _rows = [];
-    // ReSharper disable once MemberInitializerValueIgnored
     private readonly bool _loading = true;
 
     /// <summary>

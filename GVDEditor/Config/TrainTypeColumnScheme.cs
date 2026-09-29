@@ -42,15 +42,6 @@ public record TrainTypeColumnScheme() : IColorScheme
         [nameof(Sl)] = new(Color.Transparent, Color.OrangeRed, true) { Name = "Sl", Bold = false },
     };
 
-    #region Fields
-
-    private ColorSetting _os = InitProperty(nameof(Os));
-    private ColorSetting _r = InitProperty(nameof(R));
-    private ColorSetting _x = InitProperty(nameof(X));
-    private ColorSetting _sl = InitProperty(nameof(Sl));
-
-    #endregion
-
     #region Properties
 
     /// <summary>
@@ -59,13 +50,13 @@ public record TrainTypeColumnScheme() : IColorScheme
     [XmlElement("Os")]
     public ColorSetting Os
     {
-        get => _os ??= InitProperty(nameof(Os));
+        get => field ??= InitProperty(nameof(Os));
         set
         {
-            _os = value;
-            AssignProperty(ref _os, nameof(Os));
+            field = value;
+            AssignProperty(ref field, nameof(Os));
         }
-    }
+    } = InitProperty(nameof(Os));
 
     /// <summary>
     /// Pracovná plocha, stĺpec Typ vlaku - Rýchlik.
@@ -73,13 +64,13 @@ public record TrainTypeColumnScheme() : IColorScheme
     [XmlElement("R")]
     public ColorSetting R
     {
-        get => _r ??= InitProperty(nameof(R));
+        get => field ??= InitProperty(nameof(R));
         set
         {
-            _r = value;
-            AssignProperty(ref _r, nameof(R));
+            field = value;
+            AssignProperty(ref field, nameof(R));
         }
-    }
+    } = InitProperty(nameof(R));
 
     /// <summary>
     /// Pracovná plocha, stĺpec Typ vlaku - Vlak vyššej kvality.
@@ -87,13 +78,13 @@ public record TrainTypeColumnScheme() : IColorScheme
     [XmlElement("X")]
     public ColorSetting X
     {
-        get => _x ??= InitProperty(nameof(X));
+        get => field ??= InitProperty(nameof(X));
         set
         {
-            _x = value;
-            AssignProperty(ref _x, nameof(X));
+            field = value;
+            AssignProperty(ref field, nameof(X));
         }
-    }
+    } = InitProperty(nameof(X));
 
     /// <summary>
     /// Pracovná plocha, stĺpec Typ vlaku - Služobný vlak.
@@ -101,13 +92,13 @@ public record TrainTypeColumnScheme() : IColorScheme
     [XmlElement("Sl")]
     public ColorSetting Sl
     {
-        get => _sl ??= InitProperty(nameof(Sl));
+        get => field ??= InitProperty(nameof(Sl));
         set
         {
-            _sl = value;
-            AssignProperty(ref _sl, nameof(Sl));
+            field = value;
+            AssignProperty(ref field, nameof(Sl));
         }
-    }
+    } = InitProperty(nameof(Sl));
 
     #endregion
 
@@ -124,19 +115,13 @@ public record TrainTypeColumnScheme() : IColorScheme
             prop.DisableFontBoldEdit = Props[propname].DisableFontBoldEdit;
         }
     }
-
-    // Every property setter below unconditionally assigns its backing field before this constructor
-    // exits (see the "set" accessors above), but Roslyn's per-constructor flow analysis doesn't credit
-    // assignment performed indirectly through a property setter call - it only sees `this` escaping into
-    // a method call and forgets the field's null-state. All backing fields are genuinely never null here.
-#pragma warning disable CS8618
+    
     protected TrainTypeColumnScheme(TrainTypeColumnScheme original)
     {
-        Os = original.Os with { };
-        R = original.R with { };
-        X = original.X with { };
-        Sl = original.Sl with { };
+        if (original.Os != null) Os = original.Os with { };
+        if (original.R != null) R = original.R with { };
+        if (original.X != null) X = original.X with { };
+        if (original.Sl != null) Sl = original.Sl with { };
         Font = (Font) original.Font.Clone();
     }
-#pragma warning restore CS8618
 }

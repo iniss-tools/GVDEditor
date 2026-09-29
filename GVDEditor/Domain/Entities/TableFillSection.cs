@@ -26,7 +26,6 @@ public sealed class TableFillSection : Enumeration<TableFillSection>
 
     #region VALUES
 
-#pragma warning disable 1591
     // Cisla su zabudovane v INISSe (ArgsPanel_*); poradie a nazvy zodpovedaju zoznamu v INISS 3.39.
     public static readonly TableFillSection NotDefined = new(0, Resources.FillSection_NotDefined);
     public static readonly TableFillSection Free = new(1, Resources.FillSection_Free);
@@ -67,7 +66,6 @@ public sealed class TableFillSection : Enumeration<TableFillSection>
     public static readonly TableFillSection LinkaOdchod = new(36, Resources.FillSection_LinkaOdchod);
     public static readonly TableFillSection LinkaPrichod = new(37, Resources.FillSection_LinkaPrichod);
     public static readonly TableFillSection CisloVlaku38 = new(38, Resources.FillSection_CisloVlaku38);
-#pragma warning restore 1591
 
     #endregion
 }

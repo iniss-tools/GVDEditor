@@ -50,7 +50,6 @@ public sealed class TableManufacturer : Enumeration<TableManufacturer>
     #region VALUES
 
     // Kluce, popisy a rozsahy adries su zabudovane v INISSe 3.39 (viď dokumentaciu TPhysic.TXT).
-#pragma warning disable 1591
     public static readonly TableManufacturer AdonBuse = new(0, "Adon/BUSE", "terčíkové", -1, -1);
     public static readonly TableManufacturer Lcd = new(1, "LCD", "pôv. Elektročas do r. 2001", 0, 255);
     public static readonly TableManufacturer Ers = new(2, "ERS", "listové PT / stará Čihařova ERS", 0, 255);
@@ -69,7 +68,6 @@ public sealed class TableManufacturer : Enumeration<TableManufacturer>
     // INISS tieto kluce nepozna; ostavaju len kvoli datam ulozenym starsimi verziami GVDEditora.
     public static readonly TableManufacturer Elektrocas = new(100, "Elektrocas", "(INISS nepozná)", int.MinValue, int.MinValue);
     public static readonly TableManufacturer Pragotron = new(101, "Pragotron", "(INISS nepozná)", int.MinValue, int.MinValue);
-#pragma warning restore 1591
 
     #endregion
 }

@@ -26,10 +26,8 @@ public readonly record struct NumberVariant(string Number, int Variant) : ICompa
         return compared == 0 ? Variant.CompareTo(other.Variant) : compared;
     }
 
-#pragma warning disable 1591
     public static bool operator <(NumberVariant left, NumberVariant right) => left.CompareTo(right) < 0;
     public static bool operator <=(NumberVariant left, NumberVariant right) => left.CompareTo(right) <= 0;
     public static bool operator >(NumberVariant left, NumberVariant right) => left.CompareTo(right) > 0;
     public static bool operator >=(NumberVariant left, NumberVariant right) => left.CompareTo(right) >= 0;
-#pragma warning restore 1591
 }

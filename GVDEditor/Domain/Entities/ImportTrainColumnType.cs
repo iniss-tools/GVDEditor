@@ -138,7 +138,6 @@ public sealed class ImportTrainColumnType : Enumeration<ImportTrainColumnType>
 
     #region VALUES
 
-#pragma warning disable 1591
     public static readonly ImportTrainColumnType None = new(0, "-");
     public static readonly ImportTrainColumnType Number = new(1, Resources.ImportColumn_Number);
     public static readonly ImportTrainColumnType Type = new(2, Resources.ImportColumn_Type);
@@ -164,7 +163,6 @@ public sealed class ImportTrainColumnType : Enumeration<ImportTrainColumnType>
     public static readonly ImportTrainColumnType StationsShortName = new(22, Resources.ImportColumn_StationsShortName);
     public static readonly ImportTrainColumnType StationsLongName = new(23, Resources.ImportColumn_StationsLongName);
     public static readonly ImportTrainColumnType Attributes = new(24, Resources.ImportColumn_Attributes);
-#pragma warning restore 1591
 
     #endregion
 }

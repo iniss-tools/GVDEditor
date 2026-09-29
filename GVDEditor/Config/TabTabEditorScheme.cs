@@ -48,26 +48,8 @@ public record TabTabEditorScheme() : IColorScheme
         [nameof(Function)] = new(Color.Blue) { Name = Resources.Scheme_Function, DisableBackColorEdit = true },
         [nameof(Identifier)] = new(Color.Teal) { Name = Resources.Scheme_Identifier, DisableBackColorEdit = true },
         [nameof(SelBraces)] = new(Color.BlueViolet,Color.LightGray) { Name = Resources.Scheme_SelBraces },
-        [nameof(SelBraceBad)] = new(Color.LightGray, Color.Red) { Name = Resources.Scheme_SelBraceBad },
+        [nameof(SelBraceBad)] = new(Color.LightGray, Color.Red) { Name = Resources.Scheme_SelBraceBad }
     };
-
-    #region Fields
-
-    private ColorSetting _number = InitProperty(nameof(Number));
-    private ColorSetting _string = InitProperty(nameof(String));
-    private ColorSetting _comment = InitProperty(nameof(Comment));
-    private ColorSetting _onNewLine = InitProperty(nameof(OnNewLine));
-    private ColorSetting _operator = InitProperty(nameof(Operator));
-    private ColorSetting _constant = InitProperty(nameof(Constant));
-    private ColorSetting _default = InitProperty(nameof(Default));
-    private ColorSetting _var = InitProperty(nameof(Var));
-    private ColorSetting _event = InitProperty(nameof(Event));
-    private ColorSetting _function = InitProperty(nameof(Function));
-    private ColorSetting _identifier = InitProperty(nameof(Identifier));
-    private ColorSetting _selBraces = InitProperty(nameof(SelBraces));
-    private ColorSetting _selBraceBad = InitProperty(nameof(SelBraceBad));
-
-    #endregion
 
     #region Properties
 
@@ -77,13 +59,13 @@ public record TabTabEditorScheme() : IColorScheme
     [XmlElement("Number")]
     public ColorSetting Number
     {
-        get => _number ??= InitProperty(nameof(Number));
+        get => field ??= InitProperty(nameof(Number));
         set
         {
-            _number = value;
-            AssignProperty(ref _number, nameof(Number));
+            field = value;
+            AssignProperty(ref field, nameof(Number));
         }
-    }
+    } = InitProperty(nameof(Number));
 
     /// <summary>
     /// Textový editor TabTab - Reťazec.
@@ -91,13 +73,13 @@ public record TabTabEditorScheme() : IColorScheme
     [XmlElement("String")]
     public ColorSetting String
     {
-        get => _string ??= InitProperty(nameof(String));
+        get => field ??= InitProperty(nameof(String));
         set
         {
-            _string = value;
-            AssignProperty(ref _string, nameof(String));
+            field = value;
+            AssignProperty(ref field, nameof(String));
         }
-    }
+    } = InitProperty(nameof(String));
 
     /// <summary>
     /// Textový editor TabTab - Komentár.
@@ -105,13 +87,13 @@ public record TabTabEditorScheme() : IColorScheme
     [XmlElement("Comment")]
     public ColorSetting Comment
     {
-        get => _comment ??= InitProperty(nameof(Comment));
+        get => field ??= InitProperty(nameof(Comment));
         set
         {
-            _comment = value;
-            AssignProperty(ref _comment, nameof(Comment));
+            field = value;
+            AssignProperty(ref field, nameof(Comment));
         }
-    }
+    } = InitProperty(nameof(Comment));
 
     /// <summary>
     /// Textový editor TabTab - Znak konca riadku a prechod do ďalšieho.
@@ -119,13 +101,13 @@ public record TabTabEditorScheme() : IColorScheme
     [XmlElement("OnNewLine")]
     public ColorSetting OnNewLine
     {
-        get => _onNewLine ??= InitProperty(nameof(OnNewLine));
+        get => field ??= InitProperty(nameof(OnNewLine));
         set
         {
-            _onNewLine = value;
-            AssignProperty(ref _onNewLine, nameof(OnNewLine));
+            field = value;
+            AssignProperty(ref field, nameof(OnNewLine));
         }
-    }
+    } = InitProperty(nameof(OnNewLine));
 
     /// <summary>
     /// Textový editor TabTab - Operátor.
@@ -133,13 +115,13 @@ public record TabTabEditorScheme() : IColorScheme
     [XmlElement("Operator")]
     public ColorSetting Operator
     {
-        get => _operator ??= InitProperty(nameof(Operator));
+        get => field ??= InitProperty(nameof(Operator));
         set
         {
-            _operator = value;
-            AssignProperty(ref _operator, nameof(Operator));
+            field = value;
+            AssignProperty(ref field, nameof(Operator));
         }
-    }
+    } = InitProperty(nameof(Operator));
 
     /// <summary>
     /// Textový editor TabTab - Konštanta.
@@ -147,13 +129,13 @@ public record TabTabEditorScheme() : IColorScheme
     [XmlElement("Constant")]
     public ColorSetting Constant
     {
-        get => _constant ??= InitProperty(nameof(Constant));
+        get => field ??= InitProperty(nameof(Constant));
         set
         {
-            _constant = value;
-            AssignProperty(ref _constant, nameof(Constant));
+            field = value;
+            AssignProperty(ref field, nameof(Constant));
         }
-    }
+    } = InitProperty(nameof(Constant));
 
     /// <summary>
     /// Textový editor TabTab - Normálny text.
@@ -161,13 +143,13 @@ public record TabTabEditorScheme() : IColorScheme
     [XmlElement("Default")]
     public ColorSetting Default
     {
-        get => _default ??= InitProperty(nameof(Default));
+        get => field ??= InitProperty(nameof(Default));
         set
         {
-            _default = value;
-            AssignProperty(ref _default, nameof(Default));
+            field = value;
+            AssignProperty(ref field, nameof(Default));
         }
-    }
+    } = InitProperty(nameof(Default));
 
     /// <summary>
     /// Textový editor TabTab - Označenie premennej.
@@ -175,13 +157,13 @@ public record TabTabEditorScheme() : IColorScheme
     [XmlElement("Var")]
     public ColorSetting Var
     {
-        get => _var ??= InitProperty(nameof(Var));
+        get => field ??= InitProperty(nameof(Var));
         set
         {
-            _var = value;
-            AssignProperty(ref _var, nameof(Var));
+            field = value;
+            AssignProperty(ref field, nameof(Var));
         }
-    }
+    } = InitProperty(nameof(Var));
 
     /// <summary>
     /// Textový editor TabTab - Udalosť.
@@ -189,13 +171,13 @@ public record TabTabEditorScheme() : IColorScheme
     [XmlElement("Event")]
     public ColorSetting Event
     {
-        get => _event ??= InitProperty(nameof(Event));
+        get => field ??= InitProperty(nameof(Event));
         set
         {
-            _event = value;
-            AssignProperty(ref _event, nameof(Event));
+            field = value;
+            AssignProperty(ref field, nameof(Event));
         }
-    }
+    } = InitProperty(nameof(Event));
 
     /// <summary>
     /// Textový editor TabTab - Funkcia.
@@ -203,13 +185,13 @@ public record TabTabEditorScheme() : IColorScheme
     [XmlElement("Function")]
     public ColorSetting Function
     {
-        get => _function ??= InitProperty(nameof(Function));
+        get => field ??= InitProperty(nameof(Function));
         set
         {
-            _function = value;
-            AssignProperty(ref _function, nameof(Function));
+            field = value;
+            AssignProperty(ref field, nameof(Function));
         }
-    }
+    } = InitProperty(nameof(Function));
 
     /// <summary>
     /// Textový editor TabTab - Identifikátor.
@@ -217,13 +199,13 @@ public record TabTabEditorScheme() : IColorScheme
     [XmlElement("Identifier")]
     public ColorSetting Identifier
     {
-        get => _identifier ??= InitProperty(nameof(Identifier));
+        get => field ??= InitProperty(nameof(Identifier));
         set
         {
-            _identifier = value;
-            AssignProperty(ref _identifier, nameof(Identifier));
+            field = value;
+            AssignProperty(ref field, nameof(Identifier));
         }
-    }
+    } = InitProperty(nameof(Identifier));
 
     /// <summary>
     /// Textový editor TabTab - Označenenie aktívnych zátvoriek.
@@ -231,13 +213,13 @@ public record TabTabEditorScheme() : IColorScheme
     [XmlElement("SelBraces")]
     public ColorSetting SelBraces
     {
-        get => _selBraces ??= InitProperty(nameof(SelBraces));
+        get => field ??= InitProperty(nameof(SelBraces));
         set
         {
-            _selBraces = value;
-            AssignProperty(ref _selBraces, nameof(SelBraces));
+            field = value;
+            AssignProperty(ref field, nameof(SelBraces));
         }
-    }
+    } = InitProperty(nameof(SelBraces));
 
     /// <summary>
     /// Textový editor TabTab - Označenenie aktívnej zátvorky, ktorá nemá páru.
@@ -245,19 +227,19 @@ public record TabTabEditorScheme() : IColorScheme
     [XmlElement("SelBraceBad")]
     public ColorSetting SelBraceBad
     {
-        get => _selBraceBad ??= InitProperty(nameof(SelBraceBad));
+        get => field ??= InitProperty(nameof(SelBraceBad));
         set
         {
-            _selBraceBad = value;
-            AssignProperty(ref _selBraceBad, nameof(SelBraceBad));
+            field = value;
+            AssignProperty(ref field, nameof(SelBraceBad));
         }
-    }
+    } = InitProperty(nameof(SelBraceBad));
 
     #endregion
 
     private static ColorSetting InitProperty(string propname) => Props[propname] with { };
 
-    private static void AssignProperty(ref ColorSetting prop, string propname)
+    private static void AssignProperty(ref ColorSetting? prop, string propname)
     {
         if (prop is null)
             prop = InitProperty(propname);
@@ -268,28 +250,22 @@ public record TabTabEditorScheme() : IColorScheme
             prop.DisableFontBoldEdit = Props[propname].DisableFontBoldEdit;
         }
     }
-
-    // Every property setter below unconditionally assigns its backing field before this constructor
-    // exits (see the "set" accessors above), but Roslyn's per-constructor flow analysis doesn't credit
-    // assignment performed indirectly through a property setter call - it only sees `this` escaping into
-    // a method call and forgets the field's null-state. All backing fields (and Font, via its own
-    // declaration-site initializer) are genuinely never null here.
-#pragma warning disable CS8618
+    
     protected TabTabEditorScheme(TabTabEditorScheme original)
     {
-        Number = original.Number with { };
-        String = original.String with { };
-        Comment = original.Comment with { };
-        OnNewLine = original.OnNewLine with { };
-        Operator = original.Operator with { };
-        Constant = original.Constant with { };
-        Default = original.Default with { };
-        Var = original.Var with { };
-        Event = original.Event with { };
-        Function = original.Function with { };
-        Identifier = original.Identifier with { };
-        SelBraces = original.SelBraces with { };
-        SelBraceBad = original.SelBraceBad with { };
+        if (original.Number != null) Number = original.Number with { };
+        if (original.String != null) String = original.String with { };
+        if (original.Comment != null) Comment = original.Comment with { };
+        if (original.OnNewLine != null) OnNewLine = original.OnNewLine with { };
+        if (original.Operator != null) Operator = original.Operator with { };
+        if (original.Constant != null) Constant = original.Constant with { };
+        if (original.Default != null) Default = original.Default with { };
+        if (original.Var != null) Var = original.Var with { };
+        if (original.Event != null) Event = original.Event with { };
+        if (original.Function != null) Function = original.Function with { };
+        if (original.Identifier != null) Identifier = original.Identifier with { };
+        if (original.SelBraces != null) SelBraces = original.SelBraces with { };
+        if (original.SelBraceBad != null) SelBraceBad = original.SelBraceBad with { };
+        Font = (Font)original.Font.Clone();
     }
-#pragma warning restore CS8618
 }
