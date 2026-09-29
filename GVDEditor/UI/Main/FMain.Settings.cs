@@ -8,6 +8,7 @@ using GVDEditor.UI.Settings;
 using GVDEditor.UI.StateDgm;
 using Microsoft.VisualBasic.FileIO;
 using ToolsCore.Forms;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 

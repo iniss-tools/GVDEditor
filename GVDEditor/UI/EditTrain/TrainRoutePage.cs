@@ -4,7 +4,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
 using GVDEditor.UI.Settings;
 using GVDEditor.Properties;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.UI.EditTrain;
 
@@ -153,7 +153,7 @@ public partial class TrainRoutePage : UserControl, ITrainPage
         bAddFrom.Enabled = bAddTo.Enabled = listStations.SelectedIndex != -1;
     }
 
-    private static string Normalize(string text) => Utils.RemoveDiacritics(text.Trim()).ToLowerInvariant();
+    private static string Normalize(string text) => StringUtils.RemoveDiacritics(text.Trim()).ToLowerInvariant();
 
     private void Filter_Changed(object? sender, EventArgs e) => FillStations();
 

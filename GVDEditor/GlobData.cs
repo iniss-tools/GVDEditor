@@ -4,8 +4,8 @@ using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using ToolsCore;
-using ToolsCore.Entities;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Entities;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.XML;
 
 namespace GVDEditor;
@@ -126,8 +126,8 @@ internal static class GlobData
         };
 
         INISSDir = pathtoiniss;
-        DataDir = Utils.CombinePath(pathtoiniss, GvdFileConsts.DIR_DATA)!;
-        RawBankDir = Utils.CombinePath(pathtoiniss, GvdFileConsts.DIR_RAWBANK)!;
+        DataDir = PathUtils.CombinePath(pathtoiniss, GvdFileConsts.DIR_DATA)!;
+        RawBankDir = PathUtils.CombinePath(pathtoiniss, GvdFileConsts.DIR_RAWBANK)!;
         GVDDirs = DirListFile.Read(DataDir);
 
         INISSExeFiles = new DirectoryInfo(INISSDir).GetFiles("*.exe").Select(file => file.Name).ToList();

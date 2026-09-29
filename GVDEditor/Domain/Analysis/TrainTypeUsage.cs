@@ -1,6 +1,6 @@
 using GVDEditor.Domain.Entities;
-using ToolsCore.Tools;
 using GVDEditor.Formats;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Domain.Analysis;
 
@@ -24,7 +24,7 @@ internal static class TrainTypeUsage
         {
             var used = ReferenceEquals(gvd, open)
                 ? openTrains.Any(t => t.Type?.Key == key)
-                : UsesKey(Utils.CombinePath(gvd.Dir.FullPath, GvdFileConsts.FILE_EXPORT3A)!, key);
+                : UsesKey(PathUtils.CombinePath(gvd.Dir.FullPath, GvdFileConsts.FILE_EXPORT3A)!, key);
 
             if (used) result.Add(gvd.PeriodFormatted);
         }
@@ -47,7 +47,7 @@ internal static class TrainTypeUsage
         {
             var keys = ReferenceEquals(gvd, open)
                 ? openTrains.Select(t => t.Type?.Key).OfType<string>()
-                : ReadKeys(Utils.CombinePath(gvd.Dir.FullPath, GvdFileConsts.FILE_EXPORT3A)!);
+                : ReadKeys(PathUtils.CombinePath(gvd.Dir.FullPath, GvdFileConsts.FILE_EXPORT3A)!);
 
             foreach (var group in keys.GroupBy(k => k))
             {

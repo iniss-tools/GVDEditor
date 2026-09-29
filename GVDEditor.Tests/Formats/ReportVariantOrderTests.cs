@@ -2,7 +2,7 @@
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Tests.Formats;
 

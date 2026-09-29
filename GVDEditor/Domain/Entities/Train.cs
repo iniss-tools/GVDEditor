@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using GVDEditor.Domain.Calendar;
-using ToolsCore.Entities;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Entities;
+using ToolsCore.Iniss.Tools;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 

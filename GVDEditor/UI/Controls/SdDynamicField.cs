@@ -1,8 +1,8 @@
 ﻿using ExControls;
 using GVDEditor.Properties;
 using ToolsCore;
-using ToolsCore.Expressions;
-using ToolsCore.StateDgm;
+using ToolsCore.Iniss.Expressions;
+using ToolsCore.Iniss.StateDgm;
 
 namespace GVDEditor.UI.Controls;
 

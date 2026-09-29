@@ -1,9 +1,9 @@
 ﻿using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
-using ToolsCore.StateDgm;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.StateDgm;
+using ToolsCore.Iniss.Tools;
 using static GVDEditor.Formats.GvdFileConsts;
-using static ToolsCore.Tools.Utils;
+using static ToolsCore.Iniss.Tools.PathUtils;
 
 namespace GVDEditor.Formats;
 

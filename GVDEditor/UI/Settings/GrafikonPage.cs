@@ -3,6 +3,7 @@ using ExControls;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.Properties;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Settings;

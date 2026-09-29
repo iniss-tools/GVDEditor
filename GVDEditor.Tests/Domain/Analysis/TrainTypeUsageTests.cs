@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using GVDEditor.Domain.Analysis;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Tests.Domain.Analysis;
 

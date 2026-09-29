@@ -2,7 +2,7 @@
 using GVDEditor.Integration;
 using ExControls;
 using ToolsCore.Forms;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.XML;
 
 namespace GVDEditor.UI.Settings;
@@ -84,8 +84,8 @@ public partial class FAppSettings : FAppSettingsBase
         if (!Directory.Exists(configsDir))
             Directory.CreateDirectory(configsDir);
 
-        Styles<GVDEditorStyle>.WriteData(Utils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_STYLES)!, GlobData.Styles);
-        XmlSerialization.WriteData(Utils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG)!, GlobData.Config);
+        Styles<GVDEditorStyle>.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_STYLES)!, GlobData.Styles);
+        XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG)!, GlobData.Config);
     }
 
     /// <inheritdoc />

@@ -5,6 +5,7 @@ using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.TabTabEditor;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Tests.Domain.Editing;
 
@@ -125,7 +126,7 @@ public class TrackEditingTests
 
             TracksFile.Write(dir.FullName, [Track.None, NewTrack("6V", Platform1, "6")]);
 
-            var line = File.ReadAllLines(Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE_A), ToolsCore.Tools.Encodings.Win1250)[1];
+            var line = File.ReadAllLines(Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE_A), Encodings.Win1250)[1];
             StringAssert.StartsWith(line, "\"6V\",\"6V\",\"Koľaj 6V\",\"Nástupište 1\",\"6\",\"1\",");
 
             var read = TracksFile.Read(dir.FullName, [])[1];
@@ -182,7 +183,7 @@ public class TrackEditingTests
         try
         {
             GlobData.TableLogicals = new ExBindingList<TableLogical>();
-            File.WriteAllLines(Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE_A), lines, ToolsCore.Tools.Encodings.Win1250);
+            File.WriteAllLines(Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE_A), lines, Encodings.Win1250);
             return TracksFile.Read(dir.FullName, []).Skip(1).ToList();
         }
         finally

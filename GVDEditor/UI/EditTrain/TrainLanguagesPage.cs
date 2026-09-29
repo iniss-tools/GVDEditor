@@ -1,6 +1,6 @@
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Rules;
-using ToolsCore.Entities;
+using ToolsCore.Iniss.Entities;
 
 namespace GVDEditor.UI.EditTrain;
 

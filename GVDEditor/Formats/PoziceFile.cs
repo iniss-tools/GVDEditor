@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 using static GVDEditor.Formats.FormatCommon;
 using static GVDEditor.Formats.GvdFileConsts;
 

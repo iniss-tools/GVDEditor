@@ -6,7 +6,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.Properties;
 using Iniss.Elis;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Integration;
 
@@ -535,7 +535,7 @@ public sealed partial class ELISBridgeClient
         text = RegexTransformNad().Replace(text, "nad ");
 
         text = text.Replace(".", string.Empty).Replace("-", string.Empty).Replace(" ", string.Empty);
-        return Utils.RemoveDiacritics(text).ToLowerInvariant();
+        return StringUtils.RemoveDiacritics(text).ToLowerInvariant();
     }
 
     private static int CommonPrefixLength(string a, string b)

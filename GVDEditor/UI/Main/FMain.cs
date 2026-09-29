@@ -10,6 +10,7 @@ using ToolsCore.Forms;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 using ToolsCore;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.UI.Main;
 

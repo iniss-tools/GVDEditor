@@ -4,7 +4,7 @@ using ExControls;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Tests.Formats;
 
@@ -57,7 +57,7 @@ public class Export3BMapTests
             var trains = TrainsFile.Read(dir.FullName, GrafikonContext.Current);
 
             var limit = new DateLimit(new DateTime(2026, 1, 1), new DateTime(2026, 1, 14), insertMarks: false);
-            var expected = limit.BitArrayToText(Utils.StringToBitArray(WEEKENDS));
+            var expected = limit.BitArrayToText(ParseUtils.StringToBitArray(WEEKENDS));
             Assert.AreNotEqual("ide denne", expected);
             Assert.AreEqual(expected, trains[0].DateLimitText);
             Assert.AreEqual("ide denne", trains[1].DateLimitText);

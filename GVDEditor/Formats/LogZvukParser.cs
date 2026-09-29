@@ -1,7 +1,7 @@
 using System.Globalization;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Formats;
 
@@ -26,7 +26,7 @@ internal static class LogZvukParser
     /// </summary>
     public static List<LogZvukText> ReadLogZvukUsr(string pathToBank)
     {
-        var file = Utils.CombinePath(pathToBank, GvdFileConsts.FILE_LOGZVUK_USR)!;
+        var file = PathUtils.CombinePath(pathToBank, GvdFileConsts.FILE_LOGZVUK_USR)!;
         var texts = new List<LogZvukText>();
 
         if (!File.Exists(file))

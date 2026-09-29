@@ -3,7 +3,7 @@ using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.Services;
-using ToolsCore.Entities;
+using ToolsCore.Iniss.Entities;
 
 namespace GVDEditor.Tests.Services;
 

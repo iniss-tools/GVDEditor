@@ -13,8 +13,9 @@ using GVDEditor.UI.Main;
 using GVDEditor.UI.Settings;
 using GVDEditor.UI.StateDgm;
 using GVDEditor.UI.TabTab;
-using ToolsCore.StateDgm;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Entities;
+using ToolsCore.Iniss.StateDgm;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.DocScreenshots;
 
@@ -86,7 +87,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             // skladanie radenia: vybraná druhá nahrávka „číslo“ a priečinok s vlastnosťami vozňov
             Shot("radenie/uprava-radenia", () => new FRadenie([.. express.Radenia[0].Sounds]), form =>
             {
-                SelectCombo(form, "cbSoundDir", ((ComboBox)Field(form, "cbSoundDir")).Items.IndexOf(ToolsCore.Entities.FyzGroupType.VOZY1));
+                SelectCombo(form, "cbSoundDir", ((ComboBox)Field(form, "cbSoundDir")).Items.IndexOf(FyzGroupType.VOZY1));
                 SelectListItem(form, "listAllSounds", 0);
                 SelectListItem(form, "listRadenie", 5);
             });

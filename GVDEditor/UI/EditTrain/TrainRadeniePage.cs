@@ -5,7 +5,7 @@ using GVDEditor.Domain.Rules;
 using GVDEditor.Integration;
 using GVDEditor.UI.Settings;
 using GVDEditor.Properties;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.UI.EditTrain;
 

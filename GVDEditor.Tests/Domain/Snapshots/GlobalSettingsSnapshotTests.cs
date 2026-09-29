@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using ExControls;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Snapshots;
-using ToolsCore.Entities;
+using ToolsCore.Iniss.Entities;
 
 namespace GVDEditor.Tests.Domain.Snapshots;
 

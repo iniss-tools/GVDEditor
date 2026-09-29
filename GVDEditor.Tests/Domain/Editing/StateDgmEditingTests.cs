@@ -1,5 +1,5 @@
 using GVDEditor.Domain.Editing;
-using ToolsCore.StateDgm;
+using ToolsCore.Iniss.StateDgm;
 
 namespace GVDEditor.Tests.Domain.Editing;
 

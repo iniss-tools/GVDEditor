@@ -1,9 +1,10 @@
 ﻿using System.Globalization;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.XML;
-using static ToolsCore.Tools.Utils;
+using static ToolsCore.Iniss.Tools.ParseUtils;
+using static ToolsCore.Iniss.Tools.PathUtils;
 
 namespace GVDEditor.Formats;
 

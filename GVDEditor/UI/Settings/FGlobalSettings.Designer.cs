@@ -1,5 +1,4 @@
 ﻿using ExControls;
-using ToolsCore.Entities;
 
 namespace GVDEditor.UI.Settings
 {

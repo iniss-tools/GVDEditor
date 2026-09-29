@@ -1,4 +1,4 @@
-using ToolsCore.StateDgm;
+using ToolsCore.Iniss.StateDgm;
 
 namespace GVDEditor.Domain.Editing;
 

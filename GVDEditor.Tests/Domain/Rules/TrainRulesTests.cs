@@ -3,7 +3,7 @@ using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
 using GVDEditor.Properties;
-using ToolsCore.Entities;
+using ToolsCore.Iniss.Entities;
 
 namespace GVDEditor.Tests.Domain.Rules;
 

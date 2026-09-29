@@ -1,5 +1,6 @@
 ﻿using GVDEditor.Properties;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
+
 // ReSharper disable StringLiteralTypo
 
 namespace GVDEditor.Domain.Entities;
@@ -40,7 +41,7 @@ public sealed class ImportTrainColumnType : Enumeration<ImportTrainColumnType>
         // hlavicky sa porovnavaju bez ohladu na velkost pismen, pomlcky a diakritiku (Kolaj = Koľaj)
         var normalized = string.Join(' ', name.ToLower().Replace("-", " ").Split(' ', StringSplitOptions.RemoveEmptyEntries));
         var type = ParseNormalized(normalized);
-        return type != None ? type : ParseNormalized(Utils.RemoveDiacritics(normalized));
+        return type != None ? type : ParseNormalized(StringUtils.RemoveDiacritics(normalized));
     }
 
     private static ImportTrainColumnType ParseNormalized(string name)

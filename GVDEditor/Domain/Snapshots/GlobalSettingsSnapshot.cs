@@ -1,5 +1,5 @@
-using ToolsCore.Entities;
 using GVDEditor.Domain.Entities;
+using ToolsCore.Iniss.Entities;
 
 namespace GVDEditor.Domain.Snapshots;
 

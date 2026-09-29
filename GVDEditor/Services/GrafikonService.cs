@@ -5,6 +5,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
 using GVDEditor.Formats;
 using GVDEditor.Properties;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 using static GVDEditor.Formats.GvdFileConsts;
 

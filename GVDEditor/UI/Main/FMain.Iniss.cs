@@ -1,4 +1,5 @@
 using GVDEditor.Properties;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Main;
@@ -44,7 +45,7 @@ public partial class FMain
     private void InissStartItemOnClick(object? sender, EventArgs e)
     {
         if (sender is ToolStripItem tsmi && !_iniss.IsRestarting)
-            StartINISS(Utils.CombinePath(GlobData.INISSDir, tsmi.Text!)!, tsmiRun);
+            StartINISS(PathUtils.CombinePath(GlobData.INISSDir, tsmi.Text!)!, tsmiRun);
     }
 
     /// <summary>

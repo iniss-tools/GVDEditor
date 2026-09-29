@@ -4,7 +4,8 @@ using GVDEditor.Formats;
 using GVDEditor.TabTabEditor;
 using GVDEditor.UI.StateDgm;
 using GVDEditor.Properties;
-using ToolsCore.StateDgm;
+using ToolsCore.Iniss.Expressions;
+using ToolsCore.Iniss.StateDgm;
 
 namespace GVDEditor.UI.Settings;
 
@@ -61,7 +62,7 @@ public partial class StateDgmPage : UserControl
                 Symbols = new GvdExprSymbols()
             });
             var errors = diags.Count(x => x.IsError);
-            var warnings = diags.Count(x => x.Severity == ToolsCore.Expressions.ExprSeverity.Warning);
+            var warnings = diags.Count(x => x.Severity == ExprSeverity.Warning);
             var check = diags.Count == 0
                 ? Resources.FStateDgm_BezProblemov
                 : string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_PocetProblemov, errors, warnings, diags.Count - errors - warnings);

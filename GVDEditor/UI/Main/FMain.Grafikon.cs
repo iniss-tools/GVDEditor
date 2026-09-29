@@ -9,6 +9,7 @@ using GVDEditor.Services;
 using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.EditTrain;
 using GVDEditor.UI.Import;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 using AppRegistry = ToolsCore.Tools.AppRegistry;

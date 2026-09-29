@@ -3,8 +3,8 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.TabTabEditor;
 using GVDEditor.Properties;
 using JetBrains.Annotations;
-using ToolsCore.Expressions;
-using ToolsCore.TabTab;
+using ToolsCore.Iniss.Expressions;
+using ToolsCore.Iniss.TabTab;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.TabTab;

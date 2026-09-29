@@ -4,6 +4,7 @@ using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Snapshots;
 using GVDEditor.Properties;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Settings;
@@ -124,7 +125,7 @@ public partial class FLocalSettings : Form
         _pages.Add(pStanice, () => customStationsPage.LoadData(station.Name));
         _pages.Add(pDopravcovia, operatorsPage.LoadData);
         _pages.Add(pNastupistia, platformsTracksPage.LoadData);
-        _pages.Add(pFonts, () => fontsPage.LoadData(Utils.ParseStringOrDefault(GlobData.TableFontDir)));
+        _pages.Add(pFonts, () => fontsPage.LoadData(ParseUtils.ParseStringOrDefault(GlobData.TableFontDir)));
         _pages.Add(pFyzTab, physicalTablesPage.LoadData);
         _pages.Add(pTTexts, () => textsPage.LoadData(dir.GVD));
         _pages.Add(pLogTab, () => logicalTablesPage.LoadData(station));

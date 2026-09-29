@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
-using ToolsCore.Entities;
+using ToolsCore.Iniss.Entities;
 
 namespace GVDEditor.Tests.Domain.Rules;
 

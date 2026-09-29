@@ -1,7 +1,7 @@
 using System.Globalization;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
-using ToolsCore.Entities;
+using ToolsCore.Iniss.Entities;
 
 namespace GVDEditor.Domain.Rules;
 

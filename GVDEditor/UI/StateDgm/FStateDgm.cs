@@ -8,8 +8,9 @@ using GVDEditor.Properties;
 using JetBrains.Annotations;
 using ScintillaNET;
 using ToolsCore;
-using ToolsCore.Expressions;
-using ToolsCore.StateDgm;
+using ToolsCore.Iniss.Expressions;
+using ToolsCore.Iniss.StateDgm;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.StateDgm;

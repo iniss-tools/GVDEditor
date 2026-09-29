@@ -1,5 +1,5 @@
 ﻿using GVDEditor.Properties;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Domain.Entities;
 

@@ -1,5 +1,5 @@
 using GVDEditor.Config;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.XML;
 
 namespace GVDEditor.UI.Settings;
@@ -54,7 +54,7 @@ internal static class SettingsWindow
             if (!Directory.Exists(configsDir))
                 Directory.CreateDirectory(configsDir);
 
-            XmlSerialization.WriteData(Utils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG)!, GlobData.Config);
+            XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG)!, GlobData.Config);
         }
         catch (Exception e)
         {

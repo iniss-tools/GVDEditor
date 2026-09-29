@@ -1,5 +1,5 @@
 ﻿using GVDEditor.Properties;
-using ToolsCore.Expressions;
+using ToolsCore.Iniss.Expressions;
 
 namespace GVDEditor.UI.Controls;
 

@@ -1,10 +1,13 @@
 ﻿using System.Globalization;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 using static GVDEditor.Formats.FormatCommon;
 using static GVDEditor.Formats.GvdFileConsts;
 using static ToolsCore.Tools.Utils;
+using static ToolsCore.Iniss.Tools.ParseUtils;
+using static ToolsCore.Iniss.Tools.PathUtils;
 
 namespace GVDEditor.Formats;
 

@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Formats;
@@ -54,8 +55,8 @@ internal static class BlockMigrator
     /// <returns>Zoznam blokov s predvyplnenymi nazvami priecinkov, alebo prazdny zoznam, ak migracia nie je potrebna.</returns>
     public static List<GvdBlock> Analyze(string dataDir, string gvdPath, GVDInfo gvd, string dirName, bool always = false)
     {
-        var export3A = Utils.CombinePath(gvdPath, GvdFileConsts.FILE_EXPORT3A)!;
-        var export3B = Utils.CombinePath(gvdPath, GvdFileConsts.FILE_EXPORT3B)!;
+        var export3A = PathUtils.CombinePath(gvdPath, GvdFileConsts.FILE_EXPORT3A)!;
+        var export3B = PathUtils.CombinePath(gvdPath, GvdFileConsts.FILE_EXPORT3B)!;
         if (!File.Exists(export3A))
             return new List<GvdBlock>();
 
@@ -98,7 +99,7 @@ internal static class BlockMigrator
             var name = $"{baseName}.{block.EndValid.Year}";
             var candidate = name;
             var n = 2;
-            while (used.Contains(candidate) || Directory.Exists(Utils.CombinePath(dataDir, candidate)!))
+            while (used.Contains(candidate) || Directory.Exists(PathUtils.CombinePath(dataDir, candidate)!))
                 candidate = $"{name}_{n++}";
             used.Add(candidate);
             block.DirName = candidate;
@@ -121,7 +122,7 @@ internal static class BlockMigrator
     {
         ValidateNames(blocks, dataDir);
 
-        var targets = blocks.Select(b => Utils.CombinePath(dataDir, b.DirName)!).ToList();
+        var targets = blocks.Select(b => PathUtils.CombinePath(dataDir, b.DirName)!).ToList();
         var created = new List<string>();
 
         try
@@ -148,7 +149,7 @@ internal static class BlockMigrator
                 {
                     var perBlock = SplitTTexts(lines, blocks);
                     for (var i = 0; i < blocks.Count; i++)
-                        WriteLines(Utils.CombinePath(targets[i], name)!, perBlock[i]);
+                        WriteLines(PathUtils.CombinePath(targets[i], name)!, perBlock[i]);
                     continue;
                 }
 
@@ -158,7 +159,7 @@ internal static class BlockMigrator
                 if (headerCount == 0)
                 {
                     foreach (var target in targets)
-                        File.Copy(file, Utils.CombinePath(target, name)!, true);
+                        File.Copy(file, PathUtils.CombinePath(target, name)!, true);
                     continue;
                 }
 
@@ -166,7 +167,7 @@ internal static class BlockMigrator
                     throw new InvalidDataException(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BlockMigrator_Pocet_blokov_nesedi, name, raw.Count, blocks.Count));
 
                 for (var i = 0; i < blocks.Count; i++)
-                    WriteLines(Utils.CombinePath(targets[i], name)!, raw[i].Lines);
+                    WriteLines(PathUtils.CombinePath(targets[i], name)!, raw[i].Lines);
             }
 
             // podpriecinky (pisma tabul) - okrem runtime dat, inych grafikonov a prave vytvorenych cielov
@@ -176,10 +177,10 @@ internal static class BlockMigrator
                 var name = Path.GetFileName(dir);
                 if (RuntimeDirectories.Contains(name, StringComparer.OrdinalIgnoreCase)
                     || targets.Any(t => string.Equals(Path.GetFullPath(t), Path.GetFullPath(dir), StringComparison.OrdinalIgnoreCase))
-                    || File.Exists(Utils.CombinePath(dir, GvdFileConsts.FILE_GRAFIKON)))
+                    || File.Exists(PathUtils.CombinePath(dir, GvdFileConsts.FILE_GRAFIKON)))
                     continue;
                 foreach (var target in targets)
-                    Utils.CopyDirectory(dir, Utils.CombinePath(target, name)!);
+                    Utils.CopyDirectory(dir, PathUtils.CombinePath(target, name)!);
             }
 
             for (var i = 0; i < blocks.Count; i++)
@@ -209,14 +210,14 @@ internal static class BlockMigrator
         var newDirs = blocks.Select(b => new DirList
         {
             DirName = b.DirName,
-            FullPath = Utils.CombinePath(dataDir, b.DirName)!,
+            FullPath = PathUtils.CombinePath(dataDir, b.DirName)!,
             TablePort = sourceDir?.TablePort,
             ReportPort = sourceDir?.ReportPort,
             Flags = sourceDir?.Flags,
             BackColor = sourceDir?.BackColor
         }).ToList();
 
-        var dirList = File.Exists(Utils.CombinePath(dataDir, GvdFileConsts.FILE_DIRLIST)) ? DirListFile.Read(dataDir) : new List<DirList>();
+        var dirList = File.Exists(PathUtils.CombinePath(dataDir, GvdFileConsts.FILE_DIRLIST)) ? DirListFile.Read(dataDir) : new List<DirList>();
         var position = sourceDir is null ? -1 : dirList.FindIndex(d => d.DirName.Equals(sourceDir.DirName, StringComparison.OrdinalIgnoreCase));
         if (position >= 0)
             dirList.RemoveAt(position);
@@ -241,7 +242,7 @@ internal static class BlockMigrator
                 throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BlockMigrator_Neplatny_nazov_priecinka, block.DirName));
             if (!seen.Add(name))
                 throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BlockMigrator_Duplicitny_nazov_priecinka, name));
-            if (Directory.Exists(Utils.CombinePath(dataDir, name)!))
+            if (Directory.Exists(PathUtils.CombinePath(dataDir, name)!))
                 throw new ArgumentException($"{name}: {Properties.Resources.Priečinok_s_týmto_názvom_už_existuje__Zmeňte_jeho_názov}");
             block.DirName = name;
         }
@@ -385,8 +386,8 @@ internal static class BlockMigrator
                 continue;
             try
             {
-                var s = Utils.ParseDateAlts(cols[1].Trim());
-                var e = Utils.ParseDateAlts(cols[2].Trim());
+                var s = ParseUtils.ParseDateAlts(cols[1].Trim());
+                var e = ParseUtils.ParseDateAlts(cols[2].Trim());
                 if (s < start) start = s;
                 if (e > end) end = e;
             }

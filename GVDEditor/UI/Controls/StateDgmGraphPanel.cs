@@ -1,7 +1,7 @@
 using System.Drawing.Drawing2D;
 using ExControls;
 using GVDEditor.Properties;
-using ToolsCore.StateDgm;
+using ToolsCore.Iniss.StateDgm;
 using ToolsCore.XML;
 
 namespace GVDEditor.UI.Controls;

@@ -4,8 +4,9 @@ using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
 using GVDEditor.UI.Settings;
-using TableFileReader = ToolsCore.Tools.TableFileReader;
-using ToolsCore.Entities;
+using ToolsCore.Iniss.Entities;
+using ToolsCore.Iniss.Tools;
+using TableFileReader = ToolsCore.Iniss.Tools.TableFileReader;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 
@@ -272,11 +273,11 @@ public partial class FImportData : Form
 
                 if (train.Routing == Routing.Prechadzajuci)
                 {
-                    if (!Utils.TryParseTime(dataPrichod, out var timePrichod))
+                    if (!ParseUtils.TryParseTime(dataPrichod, out var timePrichod))
                         throw new ArgumentException(string.Format(fmtException, dataPrichod, i + 1, iPrichod,
                             selectedColumnTypes[iPrichod], typeof(DateTime)));
 
-                    if (!Utils.TryParseTime(dataOdchod, out var timeOdchod))
+                    if (!ParseUtils.TryParseTime(dataOdchod, out var timeOdchod))
                         throw new ArgumentException(string.Format(fmtException, dataOdchod, i + 1, iOdchod,
                             selectedColumnTypes[iOdchod], typeof(DateTime)));
 
@@ -285,7 +286,7 @@ public partial class FImportData : Form
                 }
                 else if (train.Routing == Routing.Vychadzajuci)
                 {
-                    if (!Utils.TryParseTime(dataOdchod, out var timeOdchod))
+                    if (!ParseUtils.TryParseTime(dataOdchod, out var timeOdchod))
                         throw new ArgumentException(string.Format(fmtException, dataOdchod, i + 1, iOdchod,
                             selectedColumnTypes[iOdchod], typeof(DateTime)));
 
@@ -293,7 +294,7 @@ public partial class FImportData : Form
                 }
                 else
                 {
-                    if (!Utils.TryParseTime(dataPrichod, out var timePrichod))
+                    if (!ParseUtils.TryParseTime(dataPrichod, out var timePrichod))
                         throw new ArgumentException(string.Format(fmtException, dataPrichod, i + 1, iPrichod,
                             selectedColumnTypes[iPrichod], typeof(DateTime)));
 
@@ -305,7 +306,7 @@ public partial class FImportData : Form
                     var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.PlatnostOd);
                     var data = DataTable.Rows[i][index].ToString()!;
 
-                    if (!Utils.TryParseDateAlts(data, out var date))
+                    if (!ParseUtils.TryParseDateAlts(data, out var date))
                         throw new ArgumentException(string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index],
                             typeof(DateTime)));
 
@@ -317,7 +318,7 @@ public partial class FImportData : Form
                     var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.PlatnostDo);
                     var data = DataTable.Rows[i][index].ToString()!;
 
-                    if (!Utils.TryParseDateAlts(data, out var date))
+                    if (!ParseUtils.TryParseDateAlts(data, out var date))
                         throw new ArgumentException(string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index],
                             typeof(DateTime)));
 
@@ -361,7 +362,7 @@ public partial class FImportData : Form
                     try
                     {
                         var dateRem = new DateLimit(train.ZaciatokPlatnosti, train.KoniecPlatnosti, insertMarks: false);
-                        dateRemText = dateRem.BitArrayToText(Utils.StringToBitArray(data));
+                        dateRemText = dateRem.BitArrayToText(ParseUtils.StringToBitArray(data));
                     }
                     catch (Exception exception)
                     {

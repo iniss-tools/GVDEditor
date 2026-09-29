@@ -5,9 +5,9 @@ using GVDEditor.Properties;
 using GVDEditor.TabTabEditor;
 using GVDEditor.UI.Settings;
 using GVDEditor.UI.TabTab;
-using ToolsCore.Expressions;
-using ToolsCore.TabTab;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Expressions;
+using ToolsCore.Iniss.TabTab;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Domain.Analysis;
 
@@ -224,8 +224,8 @@ internal static class Analyzer
         progress?.Report(90);
 
         //7. Check Zpozdeni.DAT cache - INISS Zpozdeni.TXT necita, kym existuje .DAT (nekontroluje ani cas suborov)
-        var zpozdeniTxt = Utils.CombinePath(GlobData.DataDir, GvdFileConsts.FILE_ZPOZDENI)!;
-        var zpozdeniDat = Utils.CombinePath(GlobData.DataDir, GvdFileConsts.FILE_ZPOZDENI_DAT)!;
+        var zpozdeniTxt = PathUtils.CombinePath(GlobData.DataDir, GvdFileConsts.FILE_ZPOZDENI)!;
+        var zpozdeniDat = PathUtils.CombinePath(GlobData.DataDir, GvdFileConsts.FILE_ZPOZDENI_DAT)!;
         if (File.Exists(zpozdeniTxt) && File.Exists(zpozdeniDat) &&
             File.GetLastWriteTimeUtc(zpozdeniTxt) > File.GetLastWriteTimeUtc(zpozdeniDat))
         {

@@ -2,8 +2,8 @@ using System.Diagnostics.CodeAnalysis;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
-using ToolsCore.Entities;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Entities;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Tests.Formats;
 

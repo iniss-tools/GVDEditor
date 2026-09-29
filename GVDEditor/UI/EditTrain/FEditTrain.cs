@@ -8,6 +8,8 @@ using GVDEditor.Formats;
 using GVDEditor.UI.Settings;
 using GVDEditor.UI.StateDgm;
 using GVDEditor.Properties;
+using ToolsCore.Iniss.StateDgm;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.EditTrain;
@@ -341,7 +343,7 @@ public partial class FEditTrain : Form
             {
                 return StateDgmFile.Read(dir);
             }
-            catch (ToolsCore.StateDgm.StateDgmParseException)
+            catch (StateDgmParseException)
             {
                 return null;
             }

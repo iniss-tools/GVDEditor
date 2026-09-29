@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using GVDEditor.Formats;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Dialogs;
@@ -63,7 +64,7 @@ public partial class FBlockMigration : Form
                 return;
             }
 
-            if (Directory.Exists(Utils.CombinePath(GlobData.DataDir, name)!))
+            if (Directory.Exists(PathUtils.CombinePath(GlobData.DataDir, name)!))
             {
                 Utils.ShowError($"{name}: {Properties.Resources.Priečinok_s_týmto_názvom_už_existuje__Zmeňte_jeho_názov}");
                 return;

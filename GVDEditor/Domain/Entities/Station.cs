@@ -1,4 +1,4 @@
-﻿using ToolsCore.Tools;
+﻿using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Domain.Entities;
 
@@ -88,12 +88,12 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
             return None;
 
         name = name.Replace(".", "").Replace("-", "").ToLowerInvariant();
-        name = Utils.RemoveDiacritics(name);
+        name = StringUtils.RemoveDiacritics(name);
 
         foreach (var st in GlobData.Stations)
         {
             var ns = st.Name.Replace(".", "").Replace("-", "").ToLowerInvariant();
-            ns = Utils.RemoveDiacritics(ns);
+            ns = StringUtils.RemoveDiacritics(ns);
             if (ns == name) 
                 return new Station(st.ID, st.Name);
         }
@@ -101,7 +101,7 @@ public sealed record Station(string ID, string Name, bool IsInShortReport = fals
         foreach (var cst in GlobData.CustomStations)
         {
             var ns = cst.Name.Replace(".", "").Replace("-", "").ToLowerInvariant();
-            ns = Utils.RemoveDiacritics(ns);
+            ns = StringUtils.RemoveDiacritics(ns);
             if (ns == name) 
                 return new Station(cst.ID, cst.Name);
         }

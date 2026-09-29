@@ -4,7 +4,7 @@ using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Domain.Rules;
 
@@ -165,12 +165,12 @@ internal static partial class TrainRules
     }
 
     /// <summary>
-    /// Cas v tvare HH:mm; prazdne pole nie je cas (<see cref="Utils.ParseTime" /> by vratil polnoc).
+    /// Cas v tvare HH:mm; prazdne pole nie je cas (<see cref="ParseUtils.ParseTime" /> by vratil polnoc).
     /// </summary>
     public static bool TryParseTime(string? text, out TimeOnly time)
     {
         time = default;
-        if (string.IsNullOrWhiteSpace(text) || !Utils.TryParseTime(text.Trim(), out var parsed))
+        if (string.IsNullOrWhiteSpace(text) || !ParseUtils.TryParseTime(text.Trim(), out var parsed))
             return false;
 
         time = TimeOnly.FromDateTime(parsed);

@@ -1,6 +1,6 @@
 using ExControls;
 using GVDEditor.Domain.Entities;
-using ToolsCore.Entities;
+using ToolsCore.Iniss.Entities;
 
 namespace GVDEditor.Domain.Documents;
 

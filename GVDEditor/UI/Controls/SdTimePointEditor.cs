@@ -1,6 +1,6 @@
 ﻿using ExControls;
 using GVDEditor.Properties;
-using ToolsCore.StateDgm;
+using ToolsCore.Iniss.StateDgm;
 
 namespace GVDEditor.UI.Controls;
 

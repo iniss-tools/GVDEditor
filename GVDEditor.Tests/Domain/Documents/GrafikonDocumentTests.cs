@@ -1,6 +1,6 @@
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
-using ToolsCore.Entities;
+using ToolsCore.Iniss.Entities;
 
 namespace GVDEditor.Tests.Domain.Documents;
 

@@ -7,8 +7,8 @@ using GVDEditor.Properties;
 using ScintillaNET;
 using ToolsCore;
 using ToolsCore.Commands;
-using ToolsCore.Expressions;
-using ToolsCore.TabTab;
+using ToolsCore.Iniss.Expressions;
+using ToolsCore.Iniss.TabTab;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.TabTab;

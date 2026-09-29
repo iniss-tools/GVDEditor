@@ -1,5 +1,5 @@
-using ToolsCore.Expressions;
-using ToolsCore.TabTab;
+using ToolsCore.Iniss.Expressions;
+using ToolsCore.Iniss.TabTab;
 
 namespace GVDEditor.TabTabEditor;
 

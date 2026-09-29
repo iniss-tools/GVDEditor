@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using GVDEditor.Properties;
-using ToolsCore.Entities;
-using ToolsCore.Tools;
+using ToolsCore.Iniss.Entities;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Domain.Entities;
 
@@ -56,7 +56,7 @@ public sealed class Dodatok
     {
         var dodatok = new Dodatok { Sound = sound, Name = Dodatok.CodeFromKey(sound.Key) };
 
-        if (!Utils.IsInt(nums)) 
+        if (!ParseUtils.IsInt(nums)) 
             throw new FormatException(Resources.Dodatok_NotNumbers);
 
         List<ReportType> rightTypes;
