@@ -66,7 +66,7 @@ internal static class ElisImportService
         // zoznamy sa skopiruju este na UI vlakne - pocas importu ich okno moze menit
         var typeList = types.ToList();
         var operatorList = operators.ToList();
-        var trains = options.ReplaceTrains ? new List<Train>() : existingTrains.ToList();
+        var trains = options.ReplaceTrains ? [] : existingTrains.ToList();
         var gvdPath = gvdDir.Dir.FullPath;
         var gvd = gvdDir.GVD;
 

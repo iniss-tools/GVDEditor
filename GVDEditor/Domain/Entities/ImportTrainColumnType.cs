@@ -20,13 +20,13 @@ public sealed class ImportTrainColumnType : Enumeration<ImportTrainColumnType>
     /// <returns>všetky požadované typy stĺpcov</returns>
     public static List<ImportTrainColumnType> GetRequiredValues()
     {
-        return new List<ImportTrainColumnType>
-        {
+        return
+        [
             Number,
             Type,
             Prichod, Odchod,
             Track
-        };
+        ];
     }
 
     /// <summary>

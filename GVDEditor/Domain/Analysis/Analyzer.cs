@@ -95,7 +95,7 @@ internal static class Analyzer
     /// </summary>
     public static List<IProblem> FindProblems(GVDDirectory gvd, AnalysisScope scope, IProgress<int>? progress = null)
     {
-        List<IProblem> problems = new();
+        List<IProblem> problems = [];
 
         //1. Check GVD validity
         var now = DateTime.Now;

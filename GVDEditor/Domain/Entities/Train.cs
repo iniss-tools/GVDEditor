@@ -64,12 +64,12 @@ public sealed class Train
     /// <summary>
     /// Stanice zo smeru.
     /// </summary>
-    public List<Station> StaniceZoSmeru { get; } = new();
+    public List<Station> StaniceZoSmeru { get; } = [];
 
     /// <summary>
     /// Stanice do smeru.
     /// </summary>
-    public List<Station> StaniceDoSmeru { get; } = new();
+    public List<Station> StaniceDoSmeru { get; } = [];
 
     /// <summary>
     /// Prichod vlaku do stanice (nullable).
@@ -115,7 +115,7 @@ public sealed class Train
     /// <summary>
     /// Jazykove mutacie hlasenia vlaku.
     /// </summary>
-    public List<FyzLanguage> Languages { get; set; } = new();
+    public List<FyzLanguage> Languages { get; set; } = [];
 
     /// <summary>
     /// Ci ma vlak priznak medzistatny.
@@ -194,7 +194,7 @@ public sealed class Train
     /// <summary>
     /// Dodatkove hlasenia vlaku.
     /// </summary>
-    public List<Dodatok> Doplnky { get; set; } = new();
+    public List<Dodatok> Doplnky { get; set; } = [];
 
     /// <summary>
     /// Varianta vlaku.
@@ -204,7 +204,7 @@ public sealed class Train
     /// <summary>
     /// Radenie vlaku.
     /// </summary>
-    public List<Radenie> Radenia { get; } = new();
+    public List<Radenie> Radenia { get; } = [];
 
     /// <summary>
     /// Vrati prvy vyskyt vlaku v zozname so specifikovanymi vlastnostami.

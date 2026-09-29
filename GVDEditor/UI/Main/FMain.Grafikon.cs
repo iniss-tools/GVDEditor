@@ -387,7 +387,7 @@ internal partial class FMain
         {
             //chybny Export3A ohlasi az nacitanie grafikonu
             Log.Exception(e);
-            return new List<GvdBlock>();
+            return [];
         }
     }
 

@@ -19,7 +19,7 @@ public partial class FTabTabFindReplace : Form
     private readonly bool _showReplace;
     private int _backupCaretPos;
 
-    private static readonly ExBindingList<string> FindHistory = new(), ReplaceHistory = new();
+    private static readonly ExBindingList<string> FindHistory = [], ReplaceHistory = [];
 
     /// <summary>
     /// 

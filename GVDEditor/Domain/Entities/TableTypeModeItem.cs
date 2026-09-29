@@ -11,7 +11,7 @@ public sealed class TableTypeModeItem : IEnumerable
     /// </summary>
     public TableTypeModeItem()
     {
-        ItemsKeys = new List<string>();
+        ItemsKeys = [];
     }
 
     /// <summary>

@@ -120,7 +120,7 @@ public sealed record ReportType
                     reports.Add(new ChosenReportType
                     {
                         Type = reportType,
-                        Variants = new List<ReportVariant> { variants.ElementAtOrDefault(0)! }
+                        Variants = [variants.ElementAtOrDefault(0)!]
                     });
             }
 
@@ -137,7 +137,7 @@ public sealed record ReportType
                     reports.Add(new ChosenReportType
                     {
                         Type = reportType,
-                        Variants = new List<ReportVariant> { variants.ElementAtOrDefault(1)! }
+                        Variants = [variants.ElementAtOrDefault(1)!]
                     });
             }
         }

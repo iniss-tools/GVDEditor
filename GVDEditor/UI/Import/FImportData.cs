@@ -26,7 +26,7 @@ internal partial class FImportData : Form
     private DataTable? DataTable;
     private object?[]? firstRow;
 
-    private List<ImportTrainColumnType> selectedColumnTypes = new();
+    private List<ImportTrainColumnType> selectedColumnTypes = [];
 
     // naposledy nacitany CSV subor - pri zmene kodovania sa nacita znova
     private string? _lastCsvPath;
@@ -34,7 +34,7 @@ internal partial class FImportData : Form
     /// <summary>
     /// Naimportovane vlaky; do grafikonu ich prida hlavne okno.
     /// </summary>
-    public List<Train> ImportedTrains { get; private set; } = new();
+    public List<Train> ImportedTrains { get; private set; } = [];
 
     /// <summary>
     /// Ci sa maju existujuce vlaky pred pridanim naimportovanych odstranit.
@@ -333,7 +333,7 @@ internal partial class FImportData : Form
 
                 train.Operator ??= Operator.None;
 
-                train.Languages ??= new List<FyzLanguage>();
+                train.Languages ??= [];
 
                 if (train.ZaciatokPlatnosti == default) train.ZaciatokPlatnosti = Gvd.StartValidTimeTable;
 
@@ -575,7 +575,7 @@ internal partial class FImportData : Form
     private void SetTable(TableFileReader reader)
     {
         DataTable = new DataTable();
-        selectedColumnTypes = new List<ImportTrainColumnType>();
+        selectedColumnTypes = [];
 
         for (var i = 0; i < reader.ColumnCount; i++)
         {

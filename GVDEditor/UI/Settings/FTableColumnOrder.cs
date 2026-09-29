@@ -11,7 +11,7 @@ public partial class FTableColumnOrder : Form
 {
     private readonly BindingList<TableItem> AllItems;
     private readonly bool initialization;
-    private readonly BindingList<TableItem> OrderedItems = new();
+    private readonly BindingList<TableItem> OrderedItems = [];
 
     /// <summary>
     /// </summary>

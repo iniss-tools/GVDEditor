@@ -13,10 +13,10 @@ public sealed class Template
     /// <summary>
     /// Stanice vo vzore trasy.
     /// </summary>
-    public List<Station> Stations { get; set; } = new();
+    public List<Station> Stations { get; set; } = [];
 
     /// <summary>
     /// Vlaky, ktore maju tuto trasu.
     /// </summary>
-    public List<Train> Trains { get; set; } = new();
+    public List<Train> Trains { get; set; } = [];
 }

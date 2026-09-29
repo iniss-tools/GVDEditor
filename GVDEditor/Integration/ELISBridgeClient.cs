@@ -75,7 +75,7 @@ public sealed partial class ELISBridgeClient
     /// Uz definovane vlaky. Do vysledku sa nevracaju, ale vstupuju do cislovania variant,
     /// aby import nepridelil variantu, ktoru uz iny vlak pouziva.
     /// </summary>
-    public List<Train> DefinedTrains { get; set; } = new();
+    public List<Train> DefinedTrains { get; set; } = [];
 
     /// <summary>
     /// Priecinok s instalaciou aplikacie Cestovne poriadky (obsahuje TT.dll).

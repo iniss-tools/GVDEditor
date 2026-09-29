@@ -12,7 +12,7 @@ public sealed class TableViewTypeTab : IEnumerable
     /// </summary>
     public TableViewTypeTab()
     {
-        TypeModeItems = new List<TableTypeModeItem>();
+        TypeModeItems = [];
     }
 
     /// <summary>

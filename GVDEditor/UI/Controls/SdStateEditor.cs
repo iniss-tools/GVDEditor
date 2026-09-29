@@ -13,7 +13,7 @@ internal sealed class SdStateEditor : SdEditorBase
     private readonly ExTextBox _key = TextField();
     private readonly ExTextBox _name = TextField();
     private readonly ExComboBox _icon;
-    private readonly Dictionary<StateDgmAttr, ExCheckBox> _attr = new();
+    private readonly Dictionary<StateDgmAttr, ExCheckBox> _attr = [];
     private readonly ExComboBox _defaultControl;
     private readonly SdDynamicField _autoMode;
     private readonly SdDynamicField _autoTimePoint;

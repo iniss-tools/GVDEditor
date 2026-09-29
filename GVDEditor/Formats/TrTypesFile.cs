@@ -133,7 +133,7 @@ internal static class TrTypesFile
     {
         var file = CombinePath(dataDir, FILE_TRTYPES)!;
 
-        string[] types = { "Os", "Zr", "R", "Ex", "EC", "IC", "EN", "ER", "REX", "Bus", "SC" };
+        string[] types = ["Os", "Zr", "R", "Ex", "EC", "IC", "EN", "ER", "REX", "Bus", "SC"];
 
         using var trtypes = new CsvFileWriter(file);
         foreach (var typ in types)

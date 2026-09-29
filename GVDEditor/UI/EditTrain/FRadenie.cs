@@ -16,9 +16,9 @@ internal partial class FRadenie : Form
     /// </summary>
     private readonly EditorContext _ctx;
 
-    private readonly Dictionary<FyzLanguage, List<FyzSound>> _allSoundsLangs = new();
-    private readonly BindingList<FyzSound> _selectedSounds = new();
-    private BindingList<FyzSound> _soundInDir = new();
+    private readonly Dictionary<FyzLanguage, List<FyzSound>> _allSoundsLangs = [];
+    private readonly BindingList<FyzSound> _selectedSounds = [];
+    private BindingList<FyzSound> _soundInDir = [];
 
     /// <summary>
     /// Vybrane zvuky reprezentujúce radenie.
@@ -73,9 +73,7 @@ internal partial class FRadenie : Form
         if (cbLanguage.SelectedIndex != -1 && cbSoundDir.SelectedIndex != -1)
         {
             var list = new List<FyzSound>(_allSoundsLangs[(FyzLanguage)cbLanguage.SelectedItem!]);
-            _soundInDir = new BindingList<FyzSound>();
-            foreach (var zvuk in list.Where(zvuk => zvuk.Group.Type.Equals(cbSoundDir.SelectedItem)))
-                _soundInDir.Add(zvuk);
+            _soundInDir = [.. list.Where(zvuk => zvuk.Group.Type.Equals(cbSoundDir.SelectedItem))];
 
             listAllSounds.DataSource = _soundInDir;
         }
@@ -86,9 +84,7 @@ internal partial class FRadenie : Form
         if (cbLanguage.SelectedIndex != -1 && cbSoundDir.SelectedIndex != -1)
         {
             var list = new List<FyzSound>(_allSoundsLangs[(FyzLanguage)cbLanguage.SelectedItem!]);
-            _soundInDir = new BindingList<FyzSound>();
-            foreach (var zvuk in list.Where(zvuk => zvuk.Group.Type.Equals(cbSoundDir.SelectedItem)))
-                _soundInDir.Add(zvuk);
+            _soundInDir = [.. list.Where(zvuk => zvuk.Group.Type.Equals(cbSoundDir.SelectedItem))];
             listAllSounds.DataSource = _soundInDir;
         }
     }

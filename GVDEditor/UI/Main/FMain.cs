@@ -25,15 +25,15 @@ internal partial class FMain : Form, IAnalyzerHost
     /// <summary>
     /// Dostupné stanice.
     /// </summary>
-    private readonly BindingList<string> _stations = new();
+    private readonly BindingList<string> _stations = [];
 
     /// <summary>
     /// Všetky dostupne priečinky s grafikonmi.
     /// </summary>
-    private readonly BindingList<GVDDirectory> _periods = new();
+    private readonly BindingList<GVDDirectory> _periods = [];
 
-    private readonly List<GVDDirectory> _gvdDirs = new();
-    private readonly CommandSet _commands = new();
+    private readonly List<GVDDirectory> _gvdDirs = [];
+    private readonly CommandSet _commands = [];
     private readonly IInissProcess _iniss;
     private readonly IDialogService _dialogs;
 
@@ -206,7 +206,7 @@ internal partial class FMain : Form, IAnalyzerHost
         if (menu == DesktopMenu.MsOnly)
         {
             if (!mainMenu.Items.Contains(tscbStanica))
-                mainMenu.Items.AddRange(new ToolStripItem[] { toolStripLabel1, tscbStanica, toolStripLabel2, tscbObdobie });
+                mainMenu.Items.AddRange([toolStripLabel1, tscbStanica, toolStripLabel2, tscbObdobie]);
         }
         else if (!toolMenu.Items.Contains(tscbStanica))
         {

@@ -10,7 +10,7 @@ public sealed class TableLogical : ITable
     /// <summary>
     /// Vytvori novu instanciu triedy <see cref="TableLogical"/>.
     /// </summary>
-    public TableLogical() => Records = new List<TableRecord>();
+    public TableLogical() => Records = [];
 
     /// <summary>
     /// Typ pouzitia logickej tabule.

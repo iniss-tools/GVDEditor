@@ -58,13 +58,13 @@ public sealed class Track()
     /// <summary>
     /// Logicke tabule nachadzajuce sa na tejto kolaji.
     /// </summary>
-    public List<TableLogical> Tables { get; } = new();
+    public List<TableLogical> Tables { get; } = [];
 
     /// <summary>
     /// Priority logickych tabul podla kluca tabule (Pozice_A.TXT, polia za klucmi tabul). Tabula bez zaznamu ma
     /// prioritu 0. INISS hodnotu nacita, GVDEditor ju len zachovava.
     /// </summary>
-    public Dictionary<string, int> TablePriorities { get; } = new();
+    public Dictionary<string, int> TablePriorities { get; } = [];
 
     /// <summary>
     /// Spojeny text nastupista a kolaje pre tabulove funkcie NastKolejPrijezd/NastKolejOdjezd (FILL_SECTION 30/31)

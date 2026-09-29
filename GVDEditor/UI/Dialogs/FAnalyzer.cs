@@ -25,7 +25,7 @@ internal partial class FAnalyzer : Form
     private static readonly Bitmap ErrorIcon = StockIcon(ShellIconType.Error);
 
     private readonly GVDDirectory GVD;
-    private BindingList<IProblem> Problems = new();
+    private BindingList<IProblem> Problems = [];
 
     // prebiehajuca analyza (harness snimok na nu caka)
     private Task _analysis = Task.CompletedTask;

@@ -38,8 +38,8 @@ internal sealed record GvdBlock(int Index, int StationId, string StationName, in
 internal static class BlockMigrator
 {
     /// <summary>Subory a priecinky, ktore si INISS vytvara sam - do novych priecinkov sa nekopiruju.</summary>
-    private static readonly string[] RuntimeExtensions = { ".dat", ".log", ".bak", ".err", ".hed" };
-    private static readonly string[] RuntimeDirectories = { "_TrStat" };
+    private static readonly string[] RuntimeExtensions = [".dat", ".log", ".bak", ".err", ".hed"];
+    private static readonly string[] RuntimeDirectories = ["_TrStat"];
 
     private static readonly Regex YearSuffix = new(@"\.\d{4}$", RegexOptions.Compiled);
 
@@ -58,16 +58,16 @@ internal static class BlockMigrator
         var export3A = PathUtils.CombinePath(gvdPath, GvdFileConsts.FILE_EXPORT3A)!;
         var export3B = PathUtils.CombinePath(gvdPath, GvdFileConsts.FILE_EXPORT3B)!;
         if (!File.Exists(export3A))
-            return new List<GvdBlock>();
+            return [];
 
         var blocksA = SplitBlocks(ReadLines(export3A));
         var headers = blocksA.Count(b => b.StationId.HasValue);
 
         var idStation = int.TryParse(gvd.ThisStation.ID, out var id) ? id : 0;
         if (!always && (headers == 0 || (blocksA.Count == 1 && blocksA[0].StationId == idStation)))
-            return new List<GvdBlock>();
+            return [];
 
-        var blocksB = File.Exists(export3B) ? SplitBlocks(ReadLines(export3B)) : new List<RawBlock>();
+        var blocksB = File.Exists(export3B) ? SplitBlocks(ReadLines(export3B)) : [];
 
         var result = new List<GvdBlock>();
         for (var i = 0; i < blocksA.Count; i++)
@@ -75,7 +75,7 @@ internal static class BlockMigrator
             var a = blocksA[i];
             var dataRows = a.Lines.Count(IsDataLine);
 
-            var (start, end) = ValidityOf(i < blocksB.Count ? blocksB[i].Lines : new List<string>());
+            var (start, end) = ValidityOf(i < blocksB.Count ? blocksB[i].Lines : []);
             if (start == DateTime.MinValue)
             {
                 start = gvd.StartValidTimeTable.ToDateTime();
@@ -217,7 +217,7 @@ internal static class BlockMigrator
             BackColor = sourceDir?.BackColor
         }).ToList();
 
-        var dirList = File.Exists(PathUtils.CombinePath(dataDir, GvdFileConsts.FILE_DIRLIST)) ? DirListFile.Read(dataDir) : new List<DirList>();
+        var dirList = File.Exists(PathUtils.CombinePath(dataDir, GvdFileConsts.FILE_DIRLIST)) ? DirListFile.Read(dataDir) : [];
         var position = sourceDir is null ? -1 : dirList.FindIndex(d => d.DirName.Equals(sourceDir.DirName, StringComparison.OrdinalIgnoreCase));
         if (position >= 0)
             dirList.RemoveAt(position);
@@ -258,7 +258,7 @@ internal static class BlockMigrator
     private static List<RawBlock> SplitBlocks(IEnumerable<string> lines)
     {
         var blocks = new List<RawBlock>();
-        var current = new RawBlock(null, new List<string>());
+        var current = new RawBlock(null, []);
 
         foreach (var line in lines)
         {
@@ -266,7 +266,7 @@ internal static class BlockMigrator
             {
                 blocks.Add(current);
                 int.TryParse(line.AsSpan(1).Trim(), NumberStyles.Integer, CultureInfo.InvariantCulture, out var station);
-                current = new RawBlock(station, new List<string>());
+                current = new RawBlock(station, []);
                 continue;
             }
 
@@ -310,7 +310,7 @@ internal static class BlockMigrator
                     foreach (var output in outputs)
                         output.AddRange(section);
 
-                section = new List<string>();
+                section = [];
                 inText = line.Trim().StartsWith("[TEXT_", StringComparison.OrdinalIgnoreCase);
                 if (line != "[END]")
                     section.Add(line);
@@ -336,7 +336,7 @@ internal static class BlockMigrator
             {
                 var n = int.Parse(m.Groups[1].Value, CultureInfo.InvariantCulture);
                 if (!trains.TryGetValue(n, out var entry))
-                    trains[n] = entry = new List<(string, string)>();
+                    trains[n] = entry = [];
                 entry.Add((m.Groups[2].Value.ToUpperInvariant(), m.Groups[3].Value));
                 continue;
             }

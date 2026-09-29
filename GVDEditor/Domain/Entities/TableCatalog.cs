@@ -12,9 +12,9 @@ public sealed class TableCatalog : ITable
     /// </summary>
     public TableCatalog()
     {
-        Segments = new List<TableSegment>();
-        Items = new List<TableItem>();
-        ViewTypeTabs = new List<TableViewTypeTab>();
+        Segments = [];
+        Items = [];
+        ViewTypeTabs = [];
     }
 
     /// <summary>

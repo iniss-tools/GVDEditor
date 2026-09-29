@@ -1302,8 +1302,8 @@ internal partial class DateLimit
 
         public DateLimitInfo()
         {
-            ListRuns = new List<DateLimitInfo>();
-            ListRunsNot = new List<DateLimitInfo>();
+            ListRuns = [];
+            ListRunsNot = [];
         }
 
         public DateLimitInfo(int dayFrom, int dayTo) : this()

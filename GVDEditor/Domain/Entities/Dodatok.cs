@@ -13,7 +13,7 @@ public sealed class Dodatok
     /// <summary>
     /// Vytvori novu instanciu triedy <see cref="Dodatok"/>.
     /// </summary>
-    public Dodatok() => ChosenReports = new List<ChosenReportType>();
+    public Dodatok() => ChosenReports = [];
 
     /// <summary>
     /// Vrati alebo nastavi fyzický zvuk dodatku.

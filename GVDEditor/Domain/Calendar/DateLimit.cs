@@ -152,7 +152,7 @@ internal partial class DateLimit
         Today = today ?? DateTime.Today;
 
         _builder = new StringBuilder();
-        _parsedData = new List<ParseData>();
+        _parsedData = [];
 
         _specDays = specDays;
         _allowRunsDaily = allowRunsDaily;

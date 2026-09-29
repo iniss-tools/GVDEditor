@@ -12,8 +12,8 @@ public sealed class TableText : ITable
     /// </summary>
     public TableText()
     {
-        Realizations = new List<TableTextRealization>();
-        Trains = new List<TableTrain>();
+        Realizations = [];
+        Trains = [];
     }
 
     /// <summary>

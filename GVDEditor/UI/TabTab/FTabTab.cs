@@ -23,7 +23,7 @@ internal partial class FTabTab : Form
     /// </summary>
     private readonly EditorContext _ctx;
 
-    private static readonly string[] operatory = { "AND", "OR", "NOT", "ODD" };
+    private static readonly string[] operatory = ["AND", "OR", "NOT", "ODD"];
 
     private readonly TabTabLexer cSharpLexer = new(
         TabTabACItems.GetFunctionItems().Select(item => item.FunctionName),
@@ -31,7 +31,7 @@ internal partial class FTabTab : Form
         TabTabACItems.GetConstantItems().Select(item => item.ConstName),
         operatory);
 
-    private readonly BindingList<TabTabDoc> documents = new();
+    private readonly BindingList<TabTabDoc> documents = [];
 
     private readonly TableTabTab? SelectedTab;
     private readonly int homeStationId;

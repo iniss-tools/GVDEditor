@@ -9,7 +9,7 @@ namespace GVDEditor.Domain.Analysis;
 /// </summary>
 internal sealed class LoadWarnings
 {
-    private readonly List<string> _items = new();
+    private readonly List<string> _items = [];
     private readonly object _locker = new();
 
     /// <summary>

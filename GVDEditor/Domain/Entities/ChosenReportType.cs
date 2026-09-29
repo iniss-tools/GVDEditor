@@ -10,7 +10,7 @@ public sealed class ChosenReportType
     /// </summary>
     public ChosenReportType()
     {
-        Variants = new List<ReportVariant>();
+        Variants = [];
     }
 
     /// <summary>

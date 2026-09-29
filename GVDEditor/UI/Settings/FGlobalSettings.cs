@@ -27,7 +27,7 @@ internal partial class FGlobalSettings : Form
     /// <summary>
     /// Odstranene grafikony - ich priecinky sa po OK presunu do Kosa.
     /// </summary>
-    public List<GVDDirectory> RemovedGVDs { get; } = new();
+    public List<GVDDirectory> RemovedGVDs { get; } = [];
 
 
     private readonly GVDDirectory? _openGrafikon;

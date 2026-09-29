@@ -31,7 +31,7 @@ internal partial class FELISStations : Form
     private readonly StationDirectory _directory;
 
     // stanice zalozene v tomto okne - pri zruseni importu sa z grafikonu zase odstrania
-    private readonly List<Station> _created = new();
+    private readonly List<Station> _created = [];
 
     /// <summary>
     /// Vysledne priradenie: nazov z ELIS -> ID stanice, alebo

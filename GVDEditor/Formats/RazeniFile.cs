@@ -74,7 +74,7 @@ internal static class RazeniFile
                     }
 
                     radenie = new Radenie();
-                    var array = row[0].Split(new[] { ':' }, 2);
+                    var array = row[0].Split([':'], 2);
                     radenie.CisloVlaku = array[0].Substring(1);
                     if (array.Length > 1 && array[1].Length > 0)
                     {

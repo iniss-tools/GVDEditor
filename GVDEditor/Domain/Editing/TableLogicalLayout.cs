@@ -182,7 +182,7 @@ public static class TableLogicalLayout
     /// Typy zobrazenia, ktore fyzicka tabula podporuje (<c>TYPE_VIEW_TAB_KEY</c> jej katalogovej tabule).
     /// </summary>
     public static List<TableViewType> SupportedViewTypes(TablePhysical table) =>
-        table.TableCatalog?.ViewTypeTabs.Select(tab => tab.ViewType).Distinct().ToList() ?? new List<TableViewType>();
+        table.TableCatalog?.ViewTypeTabs.Select(tab => tab.ViewType).Distinct().ToList() ?? [];
 
     /// <summary>
     /// Zmena poctu zaznamov z <paramref name="oldCount" /> na <paramref name="newCount" />: rozsahy za novym koncom

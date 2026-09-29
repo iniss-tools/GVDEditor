@@ -12,8 +12,8 @@ public sealed class Radenie
     /// </summary>
     public Radenie()
     {
-        Sounds = new List<FyzSound>();
-        ChosenReports = new List<ChosenReportType>();
+        Sounds = [];
+        ChosenReports = [];
     }
 
     /// <summary>
