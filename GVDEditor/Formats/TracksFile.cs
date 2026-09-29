@@ -1,10 +1,11 @@
-﻿using GVDEditor.Domain.Analysis;
+﻿using System.Globalization;
+using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
-using System.Globalization;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
+using static GVDEditor.Formats.FormatCommon;
 using static GVDEditor.Formats.GvdFileConsts;
 using static ToolsCore.Tools.Utils;
-using static GVDEditor.Formats.FormatCommon;
 
 namespace GVDEditor.Formats;
 
@@ -105,8 +106,8 @@ internal static class TracksFile
             {
                 var descriptions = variants.Select(variant =>
                     $"„{variant.Key.FullName}“/{variant.Key.SoundName} ({string.Join(", ", variant.Select(track => track.Key))})");
-                LoadWarnings.Add($"{FILE_POZICE_A}: nástupište {group.Key} má pri koľajach rôzne údaje: {string.Join("; ", descriptions)}. " +
-                                 $"Použije sa „{shared.FullName}“/{shared.SoundName}, pri uložení sa zapíše ku všetkým jeho koľajam.");
+                LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.TracksFile_PlatformDiffers, FILE_POZICE_A, group.Key, string.Join("; ", descriptions)) +
+                                 string.Format(CultureInfo.CurrentCulture, Resources.TracksFile_PlatformShared, shared.FullName, shared.SoundName));
             }
 
             foreach (var track in group)

@@ -1,5 +1,6 @@
-﻿using GVDEditor.Domain.Entities;
-using System.Globalization;
+﻿using System.Globalization;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 using static GVDEditor.Formats.GvdFileConsts;
 using static ToolsCore.Tools.Utils;
@@ -52,7 +53,7 @@ internal static class TTextsFile
 
                 if (realization.Table == null)
                 {
-                    throw new FormatException($"Súbor s textami pre tabule {ttext.Key} obsahuje neexistujúcu katalógovú tabuľu {catname}.");
+                    throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.TTexts_CatalogMissing, ttext.Key, catname));
                 }
 
                 var realname = ttextsF.Get(area, $"REALIZE_{tj.PadZeros()}_TYPEITEM_KEY").ANSItoUTF();
@@ -65,7 +66,7 @@ internal static class TTextsFile
 
                 if (realization.Item == null)
                     throw new FormatException(
-                        $"Súbor s textami pre tabule {ttext.Key} obsahuje neexistujúci stĺpec pre realizáciu {realname}, ktorý by mal patriť katalógovej tabuli {realization.Table.Key}.");
+                        string.Format(CultureInfo.CurrentCulture, Resources.TTexts_ColumnMissing, ttext.Key, realname, realization.Table.Key));
 
                 ttext.Realizations.Add(realization);
             }
@@ -80,7 +81,7 @@ internal static class TTextsFile
                     if (train.ID == id)
                         ttrain.Train = train;
                 if (ttrain.Train == null)
-                    throw new FormatException($"Súbor s textami pre tabule obsahuje ID neexistujúceho vlaku ({id}).");
+                    throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.TTexts_TrainMissing, id));
 
                 ttrain.FontID = ParseIntOrDefault(ttextsF.Get(area, $"TRAIN_{tj.PadZeros()}_IDX_FONT", false));
                 ttrain.Text = ttextsF.Get(area, $"TRAIN_{tj.PadZeros()}_TEXT").ANSItoUTF();

@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Xml.Serialization;
+using GVDEditor.Properties;
 using ToolsCore.XML;
 
 namespace GVDEditor.Config;
@@ -14,20 +15,20 @@ public record DesktopColumns()
     [XmlIgnore]
     private static readonly Dictionary<string, (string name, int order, int minWidth, bool visible)> props = new()
     {
-        [nameof(Number)] = ("Číslo", 0, 60, true),
-        [nameof(Type)] = ("Typ", 1, 40, true),
-        [nameof(Name)] = ("Názov", 2, 100, true),
-        [nameof(LinkaPrichod)] = ("Linka príchod", 3, 50, false),
-        [nameof(LinkaOdchod)] = ("Linka odchod", 4, 50, false),
-        [nameof(Routing)] = ("Smerovanie", 5, 100, true),
-        [nameof(Prichod)] = ("Príchod", 6, 60, true),
-        [nameof(Odchod)] = ("Odchod", 7, 60, true),
-        [nameof(VychodziaStanica)] = ("Východzia stanica", 8, 120, true),
-        [nameof(KonecnaStanica)] = ("Konečná stanica", 9, 120, true),
-        [nameof(DateLimit)] = ("Dátumové obmedzenie", 10, 300, true),
-        [nameof(Track)] = ("Koľaj", 11, 100, true),
-        [nameof(Operator)] = ("Dopravca", 12, 50, true),
-        [nameof(OtherBtn)] = ("Ostatné", 13, 50, true),
+        [nameof(Number)] = (Resources.Column_Number, 0, 60, true),
+        [nameof(Type)] = (Resources.Column_Type, 1, 40, true),
+        [nameof(Name)] = (Resources.Column_Name, 2, 100, true),
+        [nameof(LinkaPrichod)] = (Resources.Column_LineArrival, 3, 50, false),
+        [nameof(LinkaOdchod)] = (Resources.Column_LineDeparture, 4, 50, false),
+        [nameof(Routing)] = (Resources.Column_Routing, 5, 100, true),
+        [nameof(Prichod)] = (Resources.Column_Arrival, 6, 60, true),
+        [nameof(Odchod)] = (Resources.Column_Departure, 7, 60, true),
+        [nameof(VychodziaStanica)] = (Resources.Column_StartStation, 8, 120, true),
+        [nameof(KonecnaStanica)] = (Resources.Column_EndStation, 9, 120, true),
+        [nameof(DateLimit)] = (Resources.Column_DateLimit, 10, 300, true),
+        [nameof(Track)] = (Resources.Column_Track, 11, 100, true),
+        [nameof(Operator)] = (Resources.Column_Operator, 12, 50, true),
+        [nameof(OtherBtn)] = (Resources.Column_Other, 13, 50, true),
     };
 
     #region Properties

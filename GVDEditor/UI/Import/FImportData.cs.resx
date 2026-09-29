@@ -211,4 +211,7 @@
   <data name="ofDialogCSV.Title" xml:space="preserve">
     <value>Vyberte .CSV soubor:</value>
   </data>
+  <data name="ofDialogXLS.Filter" xml:space="preserve">
+    <value>XLSX (Excel 2007-)|*.xlsx|XLS (Excel 97-2003)|*.xls|Všechny soubory|*.*</value>
+  </data>
 </root>

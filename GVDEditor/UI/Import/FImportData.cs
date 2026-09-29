@@ -1,12 +1,13 @@
 ﻿using System.Data;
+using System.Globalization;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
-using GVDEditor.UI.Settings;
 using GVDEditor.Properties;
+using GVDEditor.UI.Settings;
+using TableFileReader = ToolsCore.Tools.TableFileReader;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
 using ToolsCore.XML;
-using TableFileReader = ToolsCore.Tools.TableFileReader;
 
 namespace GVDEditor.UI.Import;
 
@@ -54,8 +55,8 @@ public partial class FImportData : Form
 
     private void bImport_Click(object sender, EventArgs e)
     {
-        const string fmtException =
-            "Hodnota \"{0}\" na riadku {1}, stĺpec {2} ({3}), nemohla byť prevedená na {4}.";
+        var fmtException =
+            Resources.Import_ConvertFailed;
 
         if (DataTable == null || DataTable.Rows.Count == 0 || DataTable.Columns.Count == 0)
         {
@@ -68,7 +69,7 @@ public partial class FImportData : Form
         if (!selectedColumnTypes.ContainsAllItems(required))
         {
             var text = new StringBuilder(
-                "Nie sú zadané všetky povinné stĺpce pre import. Povinné stĺpce sú:\r\nSmerovanie vlaku a/alebo stanice vlaku,\r\n");
+                Resources.Import_RequiredColumns);
             for (var i = 0; i < required.Count; i++)
                 if (i == required.Count - 1)
                     text.Append(required[i] + ".");
@@ -251,7 +252,7 @@ public partial class FImportData : Form
                 }
                 else
                 {
-                    throw new Exception("Chýba smerovanie vlaku alebo stanice vlaku.");
+                    throw new Exception(Resources.Import_NoRoute);
                 }
 
                 void SetSmerovanie()
@@ -261,7 +262,7 @@ public partial class FImportData : Form
                     else if (train.StaniceZoSmeru.Count != 0)
                         train.Routing = Routing.Konciaci;
                     else if (train.StaniceDoSmeru.Count != 0) train.Routing = Routing.Vychadzajuci;
-                    else throw new ArgumentException($"Vlak na riadku {i + 1} nemá v trase žiadnu stanicu okrem tejto.");
+                    else throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.Import_OnlyHomeStation, i + 1));
                 }
 
                 var iPrichod = selectedColumnTypes.IndexOf(ImportTrainColumnType.Prichod);

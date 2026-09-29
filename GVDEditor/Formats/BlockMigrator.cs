@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Text.RegularExpressions;
 using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Formats;
@@ -224,7 +225,7 @@ internal static class BlockMigrator
         dirList.InsertRange(position, newDirs);
         DirListFile.Write(dataDir, dirList);
 
-        Log.Info($"Grafikon {gvdPath} rozdelený na {blocks.Count} priečinkov: {string.Join(", ", blocks.Select(b => b.DirName))}");
+        Log.Info(string.Format(CultureInfo.CurrentCulture, Resources.BlockMigrator_Split, gvdPath, blocks.Count, string.Join(", ", blocks.Select(b => b.DirName))));
         return newDirs;
     }
 

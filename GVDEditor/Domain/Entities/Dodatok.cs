@@ -1,4 +1,6 @@
-﻿using ToolsCore.Entities;
+﻿using System.Globalization;
+using GVDEditor.Properties;
+using ToolsCore.Entities;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Domain.Entities;
@@ -55,7 +57,7 @@ public sealed class Dodatok
         var dodatok = new Dodatok { Sound = sound, Name = Dodatok.CodeFromKey(sound.Key) };
 
         if (!Utils.IsInt(nums)) 
-            throw new FormatException("Pole dodatku neobsahuje iba čísla.");
+            throw new FormatException(Resources.Dodatok_NotNumbers);
 
         List<ReportType> rightTypes;
         if (smerovanie == Routing.Vychadzajuci)
@@ -68,7 +70,7 @@ public sealed class Dodatok
         var rightMapLength = rightTypes.Count * reportVariants.Count;
 
         if (rightMapLength != nums.Length)
-            throw new FormatException($"Mapa dodatku má nesprávnu dĺžku ({nums.Length}). Mala by mať dĺžku {rightMapLength}.");
+            throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.Dodatok_BadMapLength, nums.Length, rightMapLength));
 
         var ch = 0;
         for (var i = 0; i < rightTypes.Count; i++)
@@ -84,7 +86,7 @@ public sealed class Dodatok
                     case '0':
                         break;
                     default:
-                        throw new FormatException("Pole dodatku musí obsahovať iba číslice 0 a 1.");
+                        throw new FormatException(Resources.Dodatok_OnlyBinary);
                 }
                 ch++;
             }

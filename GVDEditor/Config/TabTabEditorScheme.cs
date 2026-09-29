@@ -1,4 +1,5 @@
 ﻿using System.Xml.Serialization;
+using GVDEditor.Properties;
 using ToolsCore.XML;
 
 namespace GVDEditor.Config;
@@ -30,24 +31,24 @@ public record TabTabEditorScheme() : IColorScheme
 
     /// <inheritdoc />
     [XmlIgnore]
-    public string Name => "TabTab editor";
+    public string Name => Resources.Scheme_TabTabEditor;
 
     [XmlIgnore]
     private static readonly Dictionary<string, ColorSetting> props = new()
     {
-        [nameof(Number)] = new(Color.Purple) { Name = "Číslo", DisableBackColorEdit = true },
-        [nameof(String)] = new(Color.Red) { Name = "Reťazec", DisableBackColorEdit = true  },
-        [nameof(Comment)] = new(Color.Green) { Name = "Komentár", DisableBackColorEdit = true },
-        [nameof(OnNewLine)] = new(Color.OrangeRed) { Name = "Zápis do ďalšieho riadka", DisableBackColorEdit = true },
-        [nameof(Operator)] = new(Color.Black) { Name = "Operátor", DisableBackColorEdit = true },
-        [nameof(Constant)] = new(Color.DimGray) { Name = "Konštanta", DisableBackColorEdit = true },
-        [nameof(Default)] = new(Color.Black) { Name = "Predvolené", DisableBackColorEdit = true },
-        [nameof(Var)] = new(Color.DarkSlateGray) { Name = "Premenná", DisableBackColorEdit = true },
-        [nameof(Event)] = new(Color.SaddleBrown) { Name = "Udalosť", DisableBackColorEdit = true },
-        [nameof(Function)] = new(Color.Blue) { Name = "Funkcia", DisableBackColorEdit = true },
-        [nameof(Identifier)] = new(Color.Teal) { Name = "Identifikátor", DisableBackColorEdit = true },
-        [nameof(SelBraces)] = new(Color.BlueViolet,Color.LightGray) { Name = "Zvýraznenie zátvoriek" },
-        [nameof(SelBraceBad)] = new(Color.LightGray, Color.Red) { Name = "Zvýraznie zátvorky, ktorej chýba pár" },
+        [nameof(Number)] = new(Color.Purple) { Name = Resources.Scheme_Number, DisableBackColorEdit = true },
+        [nameof(String)] = new(Color.Red) { Name = Resources.Scheme_String, DisableBackColorEdit = true  },
+        [nameof(Comment)] = new(Color.Green) { Name = Resources.Scheme_Comment, DisableBackColorEdit = true },
+        [nameof(OnNewLine)] = new(Color.OrangeRed) { Name = Resources.Scheme_OnNewLine, DisableBackColorEdit = true },
+        [nameof(Operator)] = new(Color.Black) { Name = Resources.Scheme_Operator, DisableBackColorEdit = true },
+        [nameof(Constant)] = new(Color.DimGray) { Name = Resources.Scheme_Constant, DisableBackColorEdit = true },
+        [nameof(Default)] = new(Color.Black) { Name = Resources.Scheme_Default, DisableBackColorEdit = true },
+        [nameof(Var)] = new(Color.DarkSlateGray) { Name = Resources.Scheme_Var, DisableBackColorEdit = true },
+        [nameof(Event)] = new(Color.SaddleBrown) { Name = Resources.Scheme_Event, DisableBackColorEdit = true },
+        [nameof(Function)] = new(Color.Blue) { Name = Resources.Scheme_Function, DisableBackColorEdit = true },
+        [nameof(Identifier)] = new(Color.Teal) { Name = Resources.Scheme_Identifier, DisableBackColorEdit = true },
+        [nameof(SelBraces)] = new(Color.BlueViolet,Color.LightGray) { Name = Resources.Scheme_SelBraces },
+        [nameof(SelBraceBad)] = new(Color.LightGray, Color.Red) { Name = Resources.Scheme_SelBraceBad },
     };
 
     #region Fields

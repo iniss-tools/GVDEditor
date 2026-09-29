@@ -1,4 +1,6 @@
-﻿namespace GVDEditor.Domain.Entities;
+﻿using GVDEditor.Properties;
+
+namespace GVDEditor.Domain.Entities;
 
 /// <summary>
 /// Trieda zastrešujúca texty na tabuliach.
@@ -40,7 +42,7 @@ public sealed class TableText : ITable
     public List<TableTrain> Trains { get; set; }
 
     /// <inheritdoc/>
-    public string TypeName => "Text tabule";
+    public string TypeName => Resources.TypeName_Text;
 
     /// <inheritdoc />
     public override string ToString() => Name;

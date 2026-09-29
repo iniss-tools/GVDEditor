@@ -31,6 +31,7 @@ namespace GVDEditor.UI.TabTab
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FTabTabFindReplace));
             ExComboBoxStyle exComboBoxStyle1 = new ExComboBoxStyle();
             ExComboBoxStyle exComboBoxStyle2 = new ExComboBoxStyle();
             ExComboBoxStyle exComboBoxStyle3 = new ExComboBoxStyle();
@@ -86,39 +87,30 @@ namespace GVDEditor.UI.TabTab
             tabControl.Controls.Add(tabPage1);
             tabControl.Controls.Add(tabPage2);
             tabControl.DefaultStyle = true;
-            tabControl.Dock = DockStyle.Fill;
+            resources.ApplyResources(tabControl, "tabControl");
             tabControl.HeaderBackColor = SystemColors.Control;
             tabControl.HeaderForeColor = Color.Black;
             tabControl.HighlightBackColor = SystemColors.GradientInactiveCaption;
             tabControl.HighlightForeColor = Color.Black;
-            tabControl.Location = new Point(2, 2);
             tabControl.Margin = new Padding(2);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(537, 23);
-            tabControl.TabIndex = 0;
             tabControl.SelectedIndexChanged += TabControl_SelectedIndexChanged;
             // 
             // tabPage1
             // 
-            tabPage1.Location = new Point(4, 24);
+            resources.ApplyResources(tabPage1, "tabPage1");
             tabPage1.Margin = new Padding(2);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(2);
-            tabPage1.Size = new Size(529, 0);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Hľadať";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            tabPage2.Location = new Point(4, 24);
+            resources.ApplyResources(tabPage2, "tabPage2");
             tabPage2.Margin = new Padding(2);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(2);
-            tabPage2.Size = new Size(529, 0);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Nahradiť";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
@@ -136,90 +128,63 @@ namespace GVDEditor.UI.TabTab
             tableLayoutPanel2.Controls.Add(lReplace, 0, 1);
             tableLayoutPanel2.Controls.Add(cbReplace, 1, 1);
             tableLayoutPanel2.Controls.Add(cbFind, 1, 0);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(2, 29);
+            resources.ApplyResources(tableLayoutPanel2, "tableLayoutPanel2");
             tableLayoutPanel2.Margin = new Padding(2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 3;
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 18F));
-            tableLayoutPanel2.Size = new Size(537, 165);
-            tableLayoutPanel2.TabIndex = 1;
             // 
             // lFind
             // 
-            lFind.AutoSize = true;
-            lFind.Dock = DockStyle.Fill;
-            lFind.Location = new Point(2, 0);
+            resources.ApplyResources(lFind, "lFind");
             lFind.Margin = new Padding(2, 0, 2, 0);
             lFind.Name = "lFind";
-            lFind.Size = new Size(61, 33);
-            lFind.TabIndex = 0;
-            lFind.Text = "Hľadať:";
             lFind.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // bFindOrReplace
             // 
-            bFindOrReplace.AutoSize = true;
+            resources.ApplyResources(bFindOrReplace, "bFindOrReplace");
             bFindOrReplace.DefaultStyle = true;
-            bFindOrReplace.Dock = DockStyle.Fill;
-            bFindOrReplace.Location = new Point(439, 2);
             bFindOrReplace.Margin = new Padding(2);
             bFindOrReplace.Name = "bFindOrReplace";
-            bFindOrReplace.Size = new Size(96, 29);
-            bFindOrReplace.TabIndex = 5;
-            bFindOrReplace.Text = "Hľadať ďalší";
             bFindOrReplace.UseVisualStyleBackColor = true;
             bFindOrReplace.Click += bFindOrReplace_Click;
             // 
             // bCountOrReplaceAll
             // 
-            bCountOrReplaceAll.AutoSize = true;
+            resources.ApplyResources(bCountOrReplaceAll, "bCountOrReplaceAll");
             bCountOrReplaceAll.DefaultStyle = true;
-            bCountOrReplaceAll.Dock = DockStyle.Fill;
-            bCountOrReplaceAll.Location = new Point(439, 35);
             bCountOrReplaceAll.Margin = new Padding(2);
             bCountOrReplaceAll.Name = "bCountOrReplaceAll";
-            bCountOrReplaceAll.Size = new Size(96, 29);
-            bCountOrReplaceAll.TabIndex = 6;
-            bCountOrReplaceAll.Text = "Spočítať";
             bCountOrReplaceAll.UseVisualStyleBackColor = true;
             bCountOrReplaceAll.Click += bCountOrReplaceAll_Click;
             // 
             // bFindClose
             // 
-            bFindClose.AutoSize = true;
+            resources.ApplyResources(bFindClose, "bFindClose");
             bFindClose.DefaultStyle = true;
-            bFindClose.Dock = DockStyle.Top;
-            bFindClose.Location = new Point(439, 68);
             bFindClose.Margin = new Padding(2);
             bFindClose.Name = "bFindClose";
-            bFindClose.Size = new Size(96, 29);
-            bFindClose.TabIndex = 7;
-            bFindClose.Text = "Zatvoriť";
             bFindClose.UseVisualStyleBackColor = true;
             bFindClose.Click += bClose_Click;
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.AutoSize = true;
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
             tableLayoutPanel2.SetColumnSpan(flowLayoutPanel1, 2);
             flowLayoutPanel1.Controls.Add(cboxSearchingCyclic);
             flowLayoutPanel1.Controls.Add(cboxSearchingCaseSensitive);
             flowLayoutPanel1.Controls.Add(cboxSearchingWholeWord);
             flowLayoutPanel1.Controls.Add(cboxBackSearching);
-            flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.FlowDirection = FlowDirection.BottomUp;
-            flowLayoutPanel1.Location = new Point(2, 68);
             flowLayoutPanel1.Margin = new Padding(2);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(433, 95);
-            flowLayoutPanel1.TabIndex = 4;
             // 
             // cboxSearchingCyclic
             // 
-            cboxSearchingCyclic.AutoSize = true;
+            resources.ApplyResources(cboxSearchingCyclic, "cboxSearchingCyclic");
             cboxSearchingCyclic.BorderColor = Color.Black;
             cboxSearchingCyclic.BoxBackColor = Color.White;
             cboxSearchingCyclic.Checked = true;
@@ -227,92 +192,69 @@ namespace GVDEditor.UI.TabTab
             cboxSearchingCyclic.DefaultStyle = true;
             cboxSearchingCyclic.DisabledForeColor = Color.DimGray;
             cboxSearchingCyclic.HighlightColor = SystemColors.Highlight;
-            cboxSearchingCyclic.Location = new Point(2, 74);
             cboxSearchingCyclic.Margin = new Padding(2);
             cboxSearchingCyclic.MarkColor = Color.Black;
             cboxSearchingCyclic.Name = "cboxSearchingCyclic";
-            cboxSearchingCyclic.Size = new Size(70, 19);
-            cboxSearchingCyclic.TabIndex = 3;
-            cboxSearchingCyclic.Text = "Cyklicky";
             cboxSearchingCyclic.UseVisualStyleBackColor = true;
             // 
             // cboxSearchingCaseSensitive
             // 
-            cboxSearchingCaseSensitive.AutoSize = true;
+            resources.ApplyResources(cboxSearchingCaseSensitive, "cboxSearchingCaseSensitive");
             cboxSearchingCaseSensitive.BorderColor = Color.Black;
             cboxSearchingCaseSensitive.BoxBackColor = Color.White;
             cboxSearchingCaseSensitive.DefaultStyle = true;
             cboxSearchingCaseSensitive.DisabledForeColor = Color.DimGray;
             cboxSearchingCaseSensitive.HighlightColor = SystemColors.Highlight;
-            cboxSearchingCaseSensitive.Location = new Point(2, 51);
             cboxSearchingCaseSensitive.Margin = new Padding(2);
             cboxSearchingCaseSensitive.MarkColor = Color.Black;
             cboxSearchingCaseSensitive.Name = "cboxSearchingCaseSensitive";
-            cboxSearchingCaseSensitive.Size = new Size(194, 19);
-            cboxSearchingCaseSensitive.TabIndex = 2;
-            cboxSearchingCaseSensitive.Text = "Rozlišovať malé/VEĽKÉ písmená";
             cboxSearchingCaseSensitive.UseVisualStyleBackColor = true;
             // 
             // cboxSearchingWholeWord
             // 
-            cboxSearchingWholeWord.AutoSize = true;
+            resources.ApplyResources(cboxSearchingWholeWord, "cboxSearchingWholeWord");
             cboxSearchingWholeWord.BorderColor = Color.Black;
             cboxSearchingWholeWord.BoxBackColor = Color.White;
             cboxSearchingWholeWord.DefaultStyle = true;
             cboxSearchingWholeWord.DisabledForeColor = Color.DimGray;
             cboxSearchingWholeWord.HighlightColor = SystemColors.Highlight;
-            cboxSearchingWholeWord.Location = new Point(2, 28);
             cboxSearchingWholeWord.Margin = new Padding(2);
             cboxSearchingWholeWord.MarkColor = Color.Black;
             cboxSearchingWholeWord.Name = "cboxSearchingWholeWord";
-            cboxSearchingWholeWord.Size = new Size(136, 19);
-            cboxSearchingWholeWord.TabIndex = 1;
-            cboxSearchingWholeWord.Text = "Hľadať iba celé slová";
             cboxSearchingWholeWord.UseVisualStyleBackColor = true;
             // 
             // cboxBackSearching
             // 
-            cboxBackSearching.AutoSize = true;
+            resources.ApplyResources(cboxBackSearching, "cboxBackSearching");
             cboxBackSearching.BorderColor = Color.Black;
             cboxBackSearching.BoxBackColor = Color.White;
             cboxBackSearching.DefaultStyle = true;
             cboxBackSearching.DisabledForeColor = Color.DimGray;
             cboxBackSearching.HighlightColor = SystemColors.Highlight;
-            cboxBackSearching.Location = new Point(2, 5);
             cboxBackSearching.Margin = new Padding(2);
             cboxBackSearching.MarkColor = Color.Black;
             cboxBackSearching.Name = "cboxBackSearching";
-            cboxBackSearching.Size = new Size(113, 19);
-            cboxBackSearching.TabIndex = 0;
-            cboxBackSearching.Text = "Smerom dozadu";
             cboxBackSearching.UseVisualStyleBackColor = true;
             cboxBackSearching.CheckedChanged += CboxBackSearching_CheckedChanged;
             // 
             // lReplace
             // 
-            lReplace.AutoSize = true;
+            resources.ApplyResources(lReplace, "lReplace");
             lReplace.DisabledForeColor = Color.DimGray;
-            lReplace.Dock = DockStyle.Fill;
-            lReplace.Location = new Point(4, 33);
             lReplace.Margin = new Padding(4, 0, 4, 0);
             lReplace.Name = "lReplace";
-            lReplace.Size = new Size(57, 33);
-            lReplace.TabIndex = 2;
-            lReplace.Text = "Nahradiť:";
             lReplace.TextAlign = ContentAlignment.MiddleLeft;
             lReplace.Visible = false;
             // 
             // cbReplace
             // 
             cbReplace.DefaultStyle = true;
-            cbReplace.Dock = DockStyle.Fill;
+            resources.ApplyResources(cbReplace, "cbReplace");
             cbReplace.DropDownBackColor = Color.White;
             cbReplace.DropDownSelectedRowBackColor = SystemColors.Highlight;
             cbReplace.FormattingEnabled = true;
-            cbReplace.Location = new Point(69, 36);
             cbReplace.Margin = new Padding(4, 3, 4, 3);
             cbReplace.Name = "cbReplace";
-            cbReplace.Size = new Size(364, 23);
             exComboBoxStyle1.ArrowColor = null;
             exComboBoxStyle1.BackColor = null;
             exComboBoxStyle1.BorderColor = null;
@@ -345,21 +287,18 @@ namespace GVDEditor.UI.TabTab
             exComboBoxStyle4.ButtonRenderFirst = null;
             exComboBoxStyle4.ForeColor = null;
             cbReplace.StyleSelected = exComboBoxStyle4;
-            cbReplace.TabIndex = 3;
             cbReplace.UseDarkScrollBar = false;
             cbReplace.Visible = false;
             // 
             // cbFind
             // 
             cbFind.DefaultStyle = true;
-            cbFind.Dock = DockStyle.Fill;
+            resources.ApplyResources(cbFind, "cbFind");
             cbFind.DropDownBackColor = Color.White;
             cbFind.DropDownSelectedRowBackColor = SystemColors.Highlight;
             cbFind.FormattingEnabled = true;
-            cbFind.Location = new Point(69, 3);
             cbFind.Margin = new Padding(4, 3, 4, 3);
             cbFind.Name = "cbFind";
-            cbFind.Size = new Size(364, 23);
             exComboBoxStyle5.ArrowColor = null;
             exComboBoxStyle5.BackColor = null;
             exComboBoxStyle5.BorderColor = null;
@@ -392,25 +331,20 @@ namespace GVDEditor.UI.TabTab
             exComboBoxStyle8.ButtonRenderFirst = null;
             exComboBoxStyle8.ForeColor = null;
             cbFind.StyleSelected = exComboBoxStyle8;
-            cbFind.TabIndex = 1;
             cbFind.UseDarkScrollBar = false;
             // 
             // statusStrip
             // 
             statusStrip.ImageScalingSize = new Size(20, 20);
             statusStrip.Items.AddRange(new ToolStripItem[] { tsslStatus });
-            statusStrip.Location = new Point(0, 300);
+            resources.ApplyResources(statusStrip, "statusStrip");
             statusStrip.Name = "statusStrip";
             statusStrip.Padding = new Padding(1, 0, 12, 0);
-            statusStrip.Size = new Size(541, 22);
-            statusStrip.TabIndex = 1;
-            statusStrip.Text = "statusStrip1";
             // 
             // tsslStatus
             // 
             tsslStatus.Name = "tsslStatus";
-            tsslStatus.Size = new Size(63, 17);
-            tsslStatus.Text = "Pripravené";
+            resources.ApplyResources(tsslStatus, "tsslStatus");
             // 
             // tableLayoutPanel1
             // 
@@ -421,16 +355,13 @@ namespace GVDEditor.UI.TabTab
             tableLayoutPanel1.Controls.Add(exGroupBox1, 0, 2);
             tableLayoutPanel1.Controls.Add(exGroupBox2, 1, 2);
             tableLayoutPanel1.Controls.Add(tabControl, 0, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
+            resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
             tableLayoutPanel1.Margin = new Padding(2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(541, 300);
-            tableLayoutPanel1.TabIndex = 0;
             // 
             // exGroupBox1
             // 
@@ -441,51 +372,39 @@ namespace GVDEditor.UI.TabTab
             exGroupBox1.Controls.Add(rbNormalSearching);
             exGroupBox1.DefaultStyle = true;
             exGroupBox1.DisabledForeColor = SystemColors.GrayText;
-            exGroupBox1.Dock = DockStyle.Fill;
-            exGroupBox1.Location = new Point(2, 198);
+            resources.ApplyResources(exGroupBox1, "exGroupBox1");
             exGroupBox1.Margin = new Padding(2);
             exGroupBox1.Name = "exGroupBox1";
             exGroupBox1.Padding = new Padding(2);
-            exGroupBox1.Size = new Size(266, 100);
-            exGroupBox1.TabIndex = 2;
             exGroupBox1.TabStop = false;
-            exGroupBox1.Text = "Režim vyhľadávania";
             // 
             // rbRegExSearching
             // 
-            rbRegExSearching.AutoSize = true;
+            resources.ApplyResources(rbRegExSearching, "rbRegExSearching");
             rbRegExSearching.BorderColor = Color.Black;
             rbRegExSearching.BoxBackColor = Color.White;
             rbRegExSearching.DefaultStyle = true;
             rbRegExSearching.DisabledForeColor = Color.DimGray;
             rbRegExSearching.HighlightColor = SystemColors.Highlight;
-            rbRegExSearching.Location = new Point(9, 44);
             rbRegExSearching.Margin = new Padding(2);
             rbRegExSearching.MarkColor = Color.Black;
             rbRegExSearching.Name = "rbRegExSearching";
-            rbRegExSearching.Size = new Size(108, 19);
-            rbRegExSearching.TabIndex = 1;
-            rbRegExSearching.Text = "Regulárny výraz";
             rbRegExSearching.UseVisualStyleBackColor = true;
             rbRegExSearching.CheckedChanged += rbRegExSearching_CheckedChanged;
             // 
             // rbNormalSearching
             // 
-            rbNormalSearching.AutoSize = true;
+            resources.ApplyResources(rbNormalSearching, "rbNormalSearching");
             rbNormalSearching.BorderColor = Color.Black;
             rbNormalSearching.BoxBackColor = Color.White;
             rbNormalSearching.Checked = true;
             rbNormalSearching.DefaultStyle = true;
             rbNormalSearching.DisabledForeColor = Color.DimGray;
             rbNormalSearching.HighlightColor = SystemColors.Highlight;
-            rbNormalSearching.Location = new Point(9, 20);
             rbNormalSearching.Margin = new Padding(2);
             rbNormalSearching.MarkColor = Color.Black;
             rbNormalSearching.Name = "rbNormalSearching";
-            rbNormalSearching.Size = new Size(78, 19);
-            rbNormalSearching.TabIndex = 0;
             rbNormalSearching.TabStop = true;
-            rbNormalSearching.Text = "Normálny";
             rbNormalSearching.UseVisualStyleBackColor = true;
             // 
             // exGroupBox2
@@ -499,84 +418,65 @@ namespace GVDEditor.UI.TabTab
             exGroupBox2.Controls.Add(barTransparency);
             exGroupBox2.DefaultStyle = true;
             exGroupBox2.DisabledForeColor = SystemColors.GrayText;
-            exGroupBox2.Dock = DockStyle.Fill;
-            exGroupBox2.Location = new Point(272, 198);
+            resources.ApplyResources(exGroupBox2, "exGroupBox2");
             exGroupBox2.Margin = new Padding(2);
             exGroupBox2.Name = "exGroupBox2";
             exGroupBox2.Padding = new Padding(2);
-            exGroupBox2.Size = new Size(267, 100);
-            exGroupBox2.TabIndex = 3;
             exGroupBox2.TabStop = false;
-            exGroupBox2.Text = " ";
             // 
             // cboxTransparency
             // 
-            cboxTransparency.AutoSize = true;
+            resources.ApplyResources(cboxTransparency, "cboxTransparency");
             cboxTransparency.BorderColor = Color.Black;
             cboxTransparency.BoxBackColor = Color.White;
             cboxTransparency.DefaultStyle = true;
             cboxTransparency.DisabledForeColor = Color.DimGray;
             cboxTransparency.HighlightColor = SystemColors.Highlight;
-            cboxTransparency.Location = new Point(5, 0);
             cboxTransparency.Margin = new Padding(2);
             cboxTransparency.MarkColor = Color.Black;
             cboxTransparency.Name = "cboxTransparency";
-            cboxTransparency.Size = new Size(94, 19);
-            cboxTransparency.TabIndex = 0;
-            cboxTransparency.Text = "Priehľadnosť";
             cboxTransparency.UseVisualStyleBackColor = true;
             cboxTransparency.CheckedChanged += cboxTransparency_CheckedChanged;
             // 
             // rbTransAlways
             // 
-            rbTransAlways.AutoSize = true;
+            resources.ApplyResources(rbTransAlways, "rbTransAlways");
             rbTransAlways.BorderColor = Color.Black;
             rbTransAlways.BoxBackColor = Color.White;
             rbTransAlways.DefaultStyle = true;
             rbTransAlways.DisabledForeColor = Color.DimGray;
             rbTransAlways.HighlightColor = SystemColors.Highlight;
-            rbTransAlways.Location = new Point(126, 58);
             rbTransAlways.Margin = new Padding(2);
             rbTransAlways.MarkColor = Color.Black;
             rbTransAlways.Name = "rbTransAlways";
-            rbTransAlways.Size = new Size(50, 19);
-            rbTransAlways.TabIndex = 3;
-            rbTransAlways.Text = "Vždy";
             rbTransAlways.UseVisualStyleBackColor = true;
             // 
             // rbTransOnlyOnFocusLost
             // 
-            rbTransOnlyOnFocusLost.AutoSize = true;
+            resources.ApplyResources(rbTransOnlyOnFocusLost, "rbTransOnlyOnFocusLost");
             rbTransOnlyOnFocusLost.BorderColor = Color.Black;
             rbTransOnlyOnFocusLost.BoxBackColor = Color.White;
             rbTransOnlyOnFocusLost.Checked = true;
             rbTransOnlyOnFocusLost.DefaultStyle = true;
             rbTransOnlyOnFocusLost.DisabledForeColor = Color.DimGray;
             rbTransOnlyOnFocusLost.HighlightColor = SystemColors.Highlight;
-            rbTransOnlyOnFocusLost.Location = new Point(5, 58);
             rbTransOnlyOnFocusLost.Margin = new Padding(2);
             rbTransOnlyOnFocusLost.MarkColor = Color.Black;
             rbTransOnlyOnFocusLost.Name = "rbTransOnlyOnFocusLost";
-            rbTransOnlyOnFocusLost.Size = new Size(110, 19);
-            rbTransOnlyOnFocusLost.TabIndex = 2;
             rbTransOnlyOnFocusLost.TabStop = true;
-            rbTransOnlyOnFocusLost.Text = "Pri strate fokusu";
             rbTransOnlyOnFocusLost.UseVisualStyleBackColor = true;
             rbTransOnlyOnFocusLost.CheckedChanged += rbTransOnlyOnFocusLost_CheckedChanged;
             // 
             // barTransparency
             // 
-            barTransparency.Dock = DockStyle.Fill;
+            resources.ApplyResources(barTransparency, "barTransparency");
             barTransparency.Enabled = false;
             barTransparency.LargeChange = 10;
-            barTransparency.Location = new Point(2, 18);
             barTransparency.Margin = new Padding(2);
             barTransparency.Maximum = 100;
             barTransparency.Minimum = 20;
             barTransparency.Name = "barTransparency";
-            barTransparency.Size = new Size(263, 80);
             barTransparency.SmallChange = 5;
-            barTransparency.TabIndex = 1;
             barTransparency.TickStyle = TickStyle.None;
             barTransparency.Value = 100;
             barTransparency.Scroll += barTransparency_Scroll;
@@ -585,7 +485,7 @@ namespace GVDEditor.UI.TabTab
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(541, 322);
+            resources.ApplyResources(this, "$this");
             Controls.Add(tableLayoutPanel1);
             Controls.Add(statusStrip);
             Margin = new Padding(2);
@@ -596,7 +496,6 @@ namespace GVDEditor.UI.TabTab
             Name = "FTabTabFindReplace";
             ShowIcon = false;
             ShowInTaskbar = false;
-            Text = "Hľadať a nahradiť";
             TopMost = true;
             Activated += FTabTabFindReplace_Activated;
             Deactivate += FTabTabFindReplace_Deactivate;

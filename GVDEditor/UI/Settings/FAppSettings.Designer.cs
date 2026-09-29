@@ -74,14 +74,14 @@ namespace GVDEditor.UI.Settings
             // 
             this.pConcreteGeneral.Controls.Add(this.exGroupBox4);
             this.pConcreteGeneral.Controls.Add(this.exGroupBox2);
-            this.pConcreteGeneral.Size = new System.Drawing.Size(521, 270);
+            resources.ApplyResources(this.pConcreteGeneral, "pConcreteGeneral");
             // 
             // optionsView
             // 
             this.optionsView.HeaderNodeNameVisible = true;
             this.optionsView.Panels.Add(this.pStartupIniss);
             this.optionsView.SearchBoxVisible = true;
-            this.optionsView.Size = new System.Drawing.Size(800, 440);
+            resources.ApplyResources(this.optionsView, "optionsView");
             // 
             // 
             // 
@@ -105,28 +105,18 @@ namespace GVDEditor.UI.Settings
             // 
             // exGroupBox2
             // 
-            this.exGroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.exGroupBox2.AutoSize = true;
+            resources.ApplyResources(this.exGroupBox2, "exGroupBox2");
             this.exGroupBox2.Controls.Add(this.cboxTabTextAutoGenerate);
             this.exGroupBox2.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.exGroupBox2.Location = new System.Drawing.Point(0, 3);
             this.exGroupBox2.Name = "exGroupBox2";
-            this.exGroupBox2.Size = new System.Drawing.Size(521, 47);
-            this.exGroupBox2.TabIndex = 0;
             this.exGroupBox2.TabStop = false;
-            this.exGroupBox2.Text = "Grafikon";
             // 
             // cboxTabTextAutoGenerate
             // 
-            this.cboxTabTextAutoGenerate.AutoSize = true;
+            resources.ApplyResources(this.cboxTabTextAutoGenerate, "cboxTabTextAutoGenerate");
             this.cboxTabTextAutoGenerate.BoxBackColor = System.Drawing.Color.White;
             this.cboxTabTextAutoGenerate.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.cboxTabTextAutoGenerate.Location = new System.Drawing.Point(7, 19);
             this.cboxTabTextAutoGenerate.Name = "cboxTabTextAutoGenerate";
-            this.cboxTabTextAutoGenerate.Size = new System.Drawing.Size(204, 17);
-            this.cboxTabTextAutoGenerate.TabIndex = 0;
-            this.cboxTabTextAutoGenerate.Text = "Automaticky generovať texty do tabúľ";
             // 
             // pStartupIniss
             // 
@@ -135,9 +125,9 @@ namespace GVDEditor.UI.Settings
             optionsNode2.ImageKey = "start.png";
             optionsNode2.Name = "";
             optionsNode2.SelectedImageKey = "start.png";
-            optionsNode2.Text = "Spúšťanie INISS";
+            optionsNode2.Text = resources.GetString("optionsNode2.Text");
             this.pStartupIniss.Node = optionsNode2;
-            this.pStartupIniss.NodeText = "Spúšťanie INISS";
+            this.pStartupIniss.NodeText = resources.GetString("pStartupIniss.NodeText");
             this.pStartupIniss.ParentNode = null;
             // 
             // ppStartupIniss
@@ -148,51 +138,35 @@ namespace GVDEditor.UI.Settings
             this.ppStartupIniss.Controls.Add(this.tbCmdArguments);
             this.ppStartupIniss.Controls.Add(this.label18);
             this.ppStartupIniss.Controls.Add(this.groupArguments);
-            this.ppStartupIniss.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ppStartupIniss.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.ppStartupIniss, "ppStartupIniss");
             this.ppStartupIniss.Name = "ppStartupIniss";
-            this.ppStartupIniss.Size = new System.Drawing.Size(521, 399);
-            this.ppStartupIniss.TabIndex = 10;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 63);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Argumenty:";
             // 
             // cboxManualCmdArgs
             // 
-            this.cboxManualCmdArgs.AutoSize = true;
+            resources.ApplyResources(this.cboxManualCmdArgs, "cboxManualCmdArgs");
             this.cboxManualCmdArgs.BoxBackColor = System.Drawing.Color.White;
             this.cboxManualCmdArgs.Checked = true;
             this.cboxManualCmdArgs.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cboxManualCmdArgs.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.cboxManualCmdArgs.Location = new System.Drawing.Point(9, 36);
             this.cboxManualCmdArgs.Name = "cboxManualCmdArgs";
-            this.cboxManualCmdArgs.Size = new System.Drawing.Size(156, 17);
-            this.cboxManualCmdArgs.TabIndex = 10;
-            this.cboxManualCmdArgs.Text = "Zadať argumenty manuálne";
             this.cboxManualCmdArgs.CheckedChanged += new System.EventHandler(this.CboxManualCmdArgs_CheckedChanged);
             // 
             // cboxRunAsAdmin
             // 
-            this.cboxRunAsAdmin.AutoSize = true;
+            resources.ApplyResources(this.cboxRunAsAdmin, "cboxRunAsAdmin");
             this.cboxRunAsAdmin.BoxBackColor = System.Drawing.Color.White;
             this.cboxRunAsAdmin.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.cboxRunAsAdmin.Location = new System.Drawing.Point(9, 13);
             this.cboxRunAsAdmin.Margin = new System.Windows.Forms.Padding(18, 3, 18, 3);
             this.cboxRunAsAdmin.Name = "cboxRunAsAdmin";
-            this.cboxRunAsAdmin.Size = new System.Drawing.Size(142, 17);
-            this.cboxRunAsAdmin.TabIndex = 7;
-            this.cboxRunAsAdmin.Text = "Spustiť ako administrátor";
             // 
             // tbCmdArguments
             // 
-            this.tbCmdArguments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tbCmdArguments, "tbCmdArguments");
             this.tbCmdArguments.BorderColor = System.Drawing.Color.DimGray;
             this.tbCmdArguments.DisabledBackColor = System.Drawing.SystemColors.Control;
             this.tbCmdArguments.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
@@ -200,29 +174,22 @@ namespace GVDEditor.UI.Settings
             this.tbCmdArguments.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.tbCmdArguments.HintForeColor = System.Drawing.SystemColors.GrayText;
             this.tbCmdArguments.HintText = null;
-            this.tbCmdArguments.Location = new System.Drawing.Point(86, 56);
             this.tbCmdArguments.Margin = new System.Windows.Forms.Padding(0);
             this.tbCmdArguments.Name = "tbCmdArguments";
-            this.tbCmdArguments.Size = new System.Drawing.Size(422, 20);
-            this.tbCmdArguments.TabIndex = 1;
             // 
             // label18
             // 
             this.label18.AutoEllipsis = true;
-            this.label18.AutoSize = true;
+            resources.ApplyResources(this.label18, "label18");
             this.label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label18.Location = new System.Drawing.Point(6, 275);
             this.label18.Margin = new System.Windows.Forms.Padding(0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(436, 13);
-            this.label18.TabIndex = 9;
             this.label18.Text = "Pozn.: Ak zvolíte pri spustení iný program ako INISS, zadané argumenty nebudú fun" +
     "govať.";
             // 
             // groupArguments
             // 
-            this.groupArguments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.groupArguments, "groupArguments");
             this.groupArguments.Controls.Add(this.label4);
             this.groupArguments.Controls.Add(this.label19);
             this.groupArguments.Controls.Add(this.cbArgRegister);
@@ -233,45 +200,30 @@ namespace GVDEditor.UI.Settings
             this.groupArguments.Controls.Add(this.cboxArgMoreInstances);
             this.groupArguments.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.groupArguments.Enabled = false;
-            this.groupArguments.Location = new System.Drawing.Point(9, 88);
             this.groupArguments.Margin = new System.Windows.Forms.Padding(0);
             this.groupArguments.Name = "groupArguments";
             this.groupArguments.Padding = new System.Windows.Forms.Padding(0);
-            this.groupArguments.Size = new System.Drawing.Size(499, 175);
-            this.groupArguments.TabIndex = 8;
             this.groupArguments.TabStop = false;
-            this.groupArguments.Text = "Grafické zadanie argumentov";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 145);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 13);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Spustiť s registrom:";
             // 
             // label19
             // 
-            this.label19.AutoSize = true;
+            resources.ApplyResources(this.label19, "label19");
             this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(1, 439);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(96, 13);
-            this.label19.TabIndex = 12;
-            this.label19.Text = "Spustiť s registrom:";
             // 
             // cbArgRegister
             // 
-            this.cbArgRegister.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.cbArgRegister, "cbArgRegister");
             this.cbArgRegister.DropDownSelectedRowBackColor = System.Drawing.SystemColors.Highlight;
             this.cbArgRegister.FormattingEnabled = true;
-            this.cbArgRegister.Location = new System.Drawing.Point(123, 142);
             this.cbArgRegister.Margin = new System.Windows.Forms.Padding(0);
             this.cbArgRegister.Name = "cbArgRegister";
-            this.cbArgRegister.Size = new System.Drawing.Size(364, 21);
             this.cbArgRegister.StyleDisabled.ArrowColor = null;
             this.cbArgRegister.StyleDisabled.BackColor = null;
             this.cbArgRegister.StyleDisabled.BorderColor = null;
@@ -300,103 +252,77 @@ namespace GVDEditor.UI.Settings
             this.cbArgRegister.StyleSelected.ButtonBorderColor = null;
             this.cbArgRegister.StyleSelected.ButtonRenderFirst = null;
             this.cbArgRegister.StyleSelected.ForeColor = null;
-            this.cbArgRegister.TabIndex = 13;
             this.cbArgRegister.UseDarkScrollBar = false;
             this.cbArgRegister.SelectedIndexChanged += new System.EventHandler(this.ArgsUpdate);
             this.cbArgRegister.TextUpdate += new System.EventHandler(this.ArgsUpdate);
             // 
             // cboxArgExportTableTexts
             // 
-            this.cboxArgExportTableTexts.AutoSize = true;
+            resources.ApplyResources(this.cboxArgExportTableTexts, "cboxArgExportTableTexts");
             this.cboxArgExportTableTexts.BoxBackColor = System.Drawing.Color.White;
             this.cboxArgExportTableTexts.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxArgExportTableTexts.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cboxArgExportTableTexts.Location = new System.Drawing.Point(16, 106);
             this.cboxArgExportTableTexts.Margin = new System.Windows.Forms.Padding(2);
             this.cboxArgExportTableTexts.Name = "cboxArgExportTableTexts";
-            this.cboxArgExportTableTexts.Size = new System.Drawing.Size(315, 17);
-            this.cboxArgExportTableTexts.TabIndex = 11;
-            this.cboxArgExportTableTexts.Text = "Exportovať texty do tabúľ pri úprave šablón vlakov do súboru";
             this.cboxArgExportTableTexts.UseVisualStyleBackColor = true;
             this.cboxArgExportTableTexts.CheckedChanged += new System.EventHandler(this.ArgsUpdate);
             // 
             // cboxArgAsClient
             // 
-            this.cboxArgAsClient.AutoSize = true;
+            resources.ApplyResources(this.cboxArgAsClient, "cboxArgAsClient");
             this.cboxArgAsClient.BoxBackColor = System.Drawing.Color.White;
             this.cboxArgAsClient.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxArgAsClient.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cboxArgAsClient.Location = new System.Drawing.Point(16, 85);
             this.cboxArgAsClient.Margin = new System.Windows.Forms.Padding(2);
             this.cboxArgAsClient.Name = "cboxArgAsClient";
-            this.cboxArgAsClient.Size = new System.Drawing.Size(149, 17);
-            this.cboxArgAsClient.TabIndex = 10;
-            this.cboxArgAsClient.Text = "Spustiť program ako klient";
             this.cboxArgAsClient.UseVisualStyleBackColor = true;
             this.cboxArgAsClient.CheckedChanged += new System.EventHandler(this.ArgsUpdate);
             // 
             // cboxArgExportHlasTexts
             // 
-            this.cboxArgExportHlasTexts.AutoSize = true;
+            resources.ApplyResources(this.cboxArgExportHlasTexts, "cboxArgExportHlasTexts");
             this.cboxArgExportHlasTexts.BoxBackColor = System.Drawing.Color.White;
             this.cboxArgExportHlasTexts.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxArgExportHlasTexts.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cboxArgExportHlasTexts.Location = new System.Drawing.Point(16, 64);
             this.cboxArgExportHlasTexts.Margin = new System.Windows.Forms.Padding(2);
             this.cboxArgExportHlasTexts.Name = "cboxArgExportHlasTexts";
-            this.cboxArgExportHlasTexts.Size = new System.Drawing.Size(285, 17);
-            this.cboxArgExportHlasTexts.TabIndex = 9;
-            this.cboxArgExportHlasTexts.Text = "Exportovať text všetkých hlásení do súboru TxtHlas.txt";
             this.cboxArgExportHlasTexts.UseVisualStyleBackColor = true;
             this.cboxArgExportHlasTexts.CheckedChanged += new System.EventHandler(this.ArgsUpdate);
             // 
             // cboxArgMinimize
             // 
-            this.cboxArgMinimize.AutoSize = true;
+            resources.ApplyResources(this.cboxArgMinimize, "cboxArgMinimize");
             this.cboxArgMinimize.BoxBackColor = System.Drawing.Color.White;
             this.cboxArgMinimize.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxArgMinimize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cboxArgMinimize.Location = new System.Drawing.Point(16, 43);
             this.cboxArgMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.cboxArgMinimize.Name = "cboxArgMinimize";
-            this.cboxArgMinimize.Size = new System.Drawing.Size(222, 17);
-            this.cboxArgMinimize.TabIndex = 8;
-            this.cboxArgMinimize.Text = "Minimalizovať okno programu pri spustení";
             this.cboxArgMinimize.UseVisualStyleBackColor = true;
             this.cboxArgMinimize.CheckedChanged += new System.EventHandler(this.ArgsUpdate);
             // 
             // cboxArgMoreInstances
             // 
-            this.cboxArgMoreInstances.AutoSize = true;
+            resources.ApplyResources(this.cboxArgMoreInstances, "cboxArgMoreInstances");
             this.cboxArgMoreInstances.BoxBackColor = System.Drawing.Color.White;
             this.cboxArgMoreInstances.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxArgMoreInstances.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cboxArgMoreInstances.Location = new System.Drawing.Point(16, 22);
             this.cboxArgMoreInstances.Margin = new System.Windows.Forms.Padding(2);
             this.cboxArgMoreInstances.Name = "cboxArgMoreInstances";
-            this.cboxArgMoreInstances.Size = new System.Drawing.Size(199, 17);
-            this.cboxArgMoreInstances.TabIndex = 7;
-            this.cboxArgMoreInstances.Text = "Povoliť duplicitné inštancie programu";
             this.cboxArgMoreInstances.UseVisualStyleBackColor = true;
             this.cboxArgMoreInstances.CheckedChanged += new System.EventHandler(this.ArgsUpdate);
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(159, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Jazyk dátumového obmedzenia:";
             // 
             // cbDateLimitLanguage
             // 
             this.cbDateLimitLanguage.DropDownSelectedRowBackColor = System.Drawing.SystemColors.Highlight;
             this.cbDateLimitLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDateLimitLanguage.FormattingEnabled = true;
-            this.cbDateLimitLanguage.Location = new System.Drawing.Point(6, 19);
+            resources.ApplyResources(this.cbDateLimitLanguage, "cbDateLimitLanguage");
             this.cbDateLimitLanguage.Name = "cbDateLimitLanguage";
-            this.cbDateLimitLanguage.Size = new System.Drawing.Size(202, 21);
             this.cbDateLimitLanguage.StyleDisabled.ArrowColor = null;
             this.cbDateLimitLanguage.StyleDisabled.BackColor = null;
             this.cbDateLimitLanguage.StyleDisabled.BorderColor = null;
@@ -425,23 +351,16 @@ namespace GVDEditor.UI.Settings
             this.cbDateLimitLanguage.StyleSelected.ButtonBorderColor = null;
             this.cbDateLimitLanguage.StyleSelected.ButtonRenderFirst = null;
             this.cbDateLimitLanguage.StyleSelected.ForeColor = null;
-            this.cbDateLimitLanguage.TabIndex = 1;
             this.cbDateLimitLanguage.UseDarkScrollBar = false;
             // 
             // exGroupBox4
             // 
-            this.exGroupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.exGroupBox4.AutoSize = true;
+            resources.ApplyResources(this.exGroupBox4, "exGroupBox4");
             this.exGroupBox4.Controls.Add(this.nudPlayerWordPause);
             this.exGroupBox4.Controls.Add(this.label7);
             this.exGroupBox4.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.exGroupBox4.Location = new System.Drawing.Point(0, 60);
             this.exGroupBox4.Name = "exGroupBox4";
-            this.exGroupBox4.Size = new System.Drawing.Size(521, 67);
-            this.exGroupBox4.TabIndex = 1;
             this.exGroupBox4.TabStop = false;
-            this.exGroupBox4.Text = "Prehrávanie";
             // 
             // nudPlayerWordPause
             // 
@@ -451,7 +370,7 @@ namespace GVDEditor.UI.Settings
             0,
             0,
             0});
-            this.nudPlayerWordPause.Location = new System.Drawing.Point(218, 28);
+            resources.ApplyResources(this.nudPlayerWordPause, "nudPlayerWordPause");
             this.nudPlayerWordPause.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -464,23 +383,17 @@ namespace GVDEditor.UI.Settings
             -2147483648});
             this.nudPlayerWordPause.Name = "nudPlayerWordPause";
             this.nudPlayerWordPause.SelectedButtonColor = System.Drawing.SystemColors.Highlight;
-            this.nudPlayerWordPause.Size = new System.Drawing.Size(82, 20);
-            this.nudPlayerWordPause.TabIndex = 1;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 30);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(205, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Medzera medzi prehrávanými zvukmi (ms):";
             // 
             // FAppSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 475);
+            resources.ApplyResources(this, "$this");
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FAppSettings";
             this.pGeneral.ResumeLayout(false);

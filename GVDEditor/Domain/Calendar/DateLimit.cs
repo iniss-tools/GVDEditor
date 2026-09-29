@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Globalization;
+using GVDEditor.Properties;
 
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
@@ -143,7 +144,7 @@ internal partial class DateLimit
         DateTime? today = null)
     {
         if (to < from)
-            throw new ArgumentException($"Dátum do {to} je menší ako dátum od {from}.");
+            throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.DateLimit_ToBeforeFrom, to, from));
 
         DateFrom = from;
         DateTo = to;
@@ -234,7 +235,7 @@ internal partial class DateLimit
     public string BitArrayToText(BitArray? bits, int cycle = 0, BitArray? validBits = null)
     {
         if (bits == null || bits.Length != TotalDays)
-            throw new ArgumentException(@"Bitové pole na vstupe chýba alebo neodpovedá jeho dĺžka.", nameof(bits));
+            throw new ArgumentException(Resources.DateLimit_BadBitArray, nameof(bits));
 
         var originalFrom = DateFrom;
         var originalTo = DateTo;

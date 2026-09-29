@@ -1,4 +1,6 @@
+using System.Globalization;
 using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 
 namespace GVDEditor.Domain.Editing;
 
@@ -65,7 +67,7 @@ public static class TableTextGenerating
             return JoinStations(train.StaniceZoSmeru.Where(s => s.IsInShortReport).Skip(1));
         }
 
-        throw new ArgumentException($"Obsah stĺpca \"{fillSection.Name}\" generovanie textov nepodporuje.", nameof(fillSection));
+        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.TableText_FillUnsupported, fillSection.Name), nameof(fillSection));
     }
 
     /// <summary>

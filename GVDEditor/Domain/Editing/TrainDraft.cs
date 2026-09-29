@@ -1,6 +1,7 @@
 using System.Globalization;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
+using GVDEditor.Properties;
 using ToolsCore.Entities;
 
 namespace GVDEditor.Domain.Editing;
@@ -247,13 +248,13 @@ internal sealed class TrainDraft
     /// <exception cref="InvalidOperationException">koncept ma chybu, ktora sa neda zapisat</exception>
     public void ApplyTo(Train train)
     {
-        var routing = Routing ?? throw new InvalidOperationException("Vlak nemá trasu.");
-        var track = Track ?? throw new InvalidOperationException("Vlak nemá koľaj.");
+        var routing = Routing ?? throw new InvalidOperationException(Resources.TrainDraft_NoRoute);
+        var track = Track ?? throw new InvalidOperationException(Resources.TrainDraft_NoTrack);
 
         train.Number = Number;
-        train.Type = Type ?? throw new InvalidOperationException("Vlak nemá typ.");
+        train.Type = Type ?? throw new InvalidOperationException(Resources.TrainDraft_NoType);
         train.Name = Name;
-        train.Operator = Operator ?? throw new InvalidOperationException("Vlak nemá dopravcu.");
+        train.Operator = Operator ?? throw new InvalidOperationException(Resources.TrainDraft_NoOperator);
 
         train.Arrival = RouteFrom.Count != 0 && TrainRules.TryParseTime(ArrivalText, out var arrival) ? arrival : null;
         train.Departure = RouteTo.Count != 0 && TrainRules.TryParseTime(DepartureText, out var departure) ? departure : null;

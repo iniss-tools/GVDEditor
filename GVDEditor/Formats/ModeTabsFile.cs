@@ -1,4 +1,6 @@
-﻿using GVDEditor.Domain.Entities;
+﻿using System.Globalization;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 using static GVDEditor.Formats.GvdFileConsts;
 using static ToolsCore.Tools.Utils;
@@ -57,7 +59,7 @@ internal static class ModeTabsFile
             var parsedType = TableFontType.Parse(type);
             if (parsedType == null)
             {
-                throw new FormatException($"Písmo tabule {font.Name} má neplatný typ (BOLD_FACE_{pad}): {type}.");
+                throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.ModeTabs_BadFontType, font.Name, pad, type));
             }
 
             font.Type = parsedType;

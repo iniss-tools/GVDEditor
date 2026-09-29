@@ -145,4 +145,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Přiřazení stanic z programu ELIS</value>
   </data>
+  <data name="lInfo.Text" xml:space="preserve">
+    <value>Stanice z programu ELIS</value>
+  </data>
 </root>

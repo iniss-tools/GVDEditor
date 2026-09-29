@@ -1,4 +1,5 @@
 ﻿using System.Xml.Serialization;
+using GVDEditor.Properties;
 using ToolsCore.XML;
 
 namespace GVDEditor.Config;
@@ -30,7 +31,7 @@ public record TrainTypeColumnScheme() : IColorScheme
 
     /// <inheritdoc />
     [XmlIgnore]
-    public string Name => "Stĺpec typ vlaku";
+    public string Name => Resources.Scheme_TrainTypeColumn;
 
     [XmlIgnore]
     private static readonly Dictionary<string, ColorSetting> props = new()

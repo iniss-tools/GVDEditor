@@ -1,4 +1,5 @@
-﻿using ToolsCore.Tools;
+﻿using GVDEditor.Properties;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Domain.Entities;
 
@@ -36,17 +37,17 @@ public sealed class TableAlign : Enumeration<TableAlign>
     /// <summary>
     /// Zarovnanie vľavo
     /// </summary>
-    public static readonly TableAlign Left = new(0, "Vľavo");
+    public static readonly TableAlign Left = new(0, Resources.Align_Left);
 
     /// <summary>
     /// Zarovnanie vpravo
     /// </summary>
-    public static readonly TableAlign Right = new(1, "Vpravo");
+    public static readonly TableAlign Right = new(1, Resources.Align_Right);
 
     /// <summary>
     /// Zarovnanie na stred
     /// </summary>
-    public static readonly TableAlign Center = new(2, "V strede");
+    public static readonly TableAlign Center = new(2, Resources.Align_Center);
 
     #endregion
 }

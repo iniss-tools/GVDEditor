@@ -1,4 +1,6 @@
-﻿namespace GVDEditor.Domain.Entities;
+﻿using GVDEditor.Properties;
+
+namespace GVDEditor.Domain.Entities;
 
 /// <summary>
 /// Trieda reprezentujuca logicku tabulu.
@@ -52,7 +54,7 @@ public sealed class TableLogical : ITable
     public string Comment { get; set; } = null!;
 
     /// <inheritdoc/>
-    public string TypeName => "Logická tabuľa";
+    public string TypeName => Resources.TypeName_Logical;
 
     /// <inheritdoc />
     public override string ToString() => Name;

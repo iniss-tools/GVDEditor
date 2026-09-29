@@ -1,5 +1,6 @@
-﻿using GVDEditor.Domain.Entities;
-using System.Globalization;
+﻿using System.Globalization;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 using static ToolsCore.Tools.Utils;
@@ -11,8 +12,8 @@ namespace GVDEditor.Formats;
 /// </summary>
 internal static class FormatCommon
 {
-    internal const string FORMAT_EX = "Chyba v súbore {0} na riadku {1}. ";
-    internal const string FORMAT_EX_AREA = "{0}: Nezadefinované pole {1}.";
+    internal static string FORMAT_EX => Resources.FormatCommon_Error;
+    internal static string FORMAT_EX_AREA => Resources.FormatCommon_UndefinedField;
 
     /// <summary>
     /// Precita CSV subor INISS po riadkoch. Prazdne riadky a komentare preskoci; chybu riadka obali

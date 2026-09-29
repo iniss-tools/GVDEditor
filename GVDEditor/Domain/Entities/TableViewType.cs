@@ -1,4 +1,5 @@
-﻿using ToolsCore.Tools;
+﻿using GVDEditor.Properties;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Domain.Entities;
 
@@ -40,32 +41,32 @@ public sealed class TableViewType : Enumeration<TableViewType>
     /// <summary>
     /// Odchodová tabuľa.
     /// </summary>
-    public static readonly TableViewType Odchodova = new("Tabule_Odjezdova", "Odchodová");
+    public static readonly TableViewType Odchodova = new("Tabule_Odjezdova", Resources.ViewType_Odchodova);
 
     /// <summary>
     /// Príchodová tabuľa.
     /// </summary>
-    public static readonly TableViewType Prichodova = new("Tabule_Prijezdova", "Prichodová");
+    public static readonly TableViewType Prichodova = new("Tabule_Prijezdova", Resources.ViewType_Prichodova);
 
     /// <summary>
     /// Nástupištná tabuľa.
     /// </summary>
-    public static readonly TableViewType Nastupistna = new("Tabule_Nastupistni", "Nástupištná");
+    public static readonly TableViewType Nastupistna = new("Tabule_Nastupistni", Resources.ViewType_Nastupistna);
 
     /// <summary>
     /// Podchodová tabuľa.
     /// </summary>
-    public static readonly TableViewType Podchodova = new("Tabule_Podchodova", "Podchodová");
+    public static readonly TableViewType Podchodova = new("Tabule_Podchodova", Resources.ViewType_Podchodova);
 
     /// <summary>
     /// Reklamná tabuľa.
     /// </summary>
-    public static readonly TableViewType Reklamna = new("Tabule_Reklamni", "Reklamná");
+    public static readonly TableViewType Reklamna = new("Tabule_Reklamni", Resources.ViewType_Reklamna);
 
     /// <summary>
     /// Iný druh tabule.
     /// </summary>
-    public static readonly TableViewType Ina = new("Tabule_JinyDruh", "Iná");
+    public static readonly TableViewType Ina = new("Tabule_JinyDruh", Resources.ViewType_Ina);
 
     #endregion
 }

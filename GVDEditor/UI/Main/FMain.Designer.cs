@@ -1049,7 +1049,6 @@ namespace GVDEditor.UI.Main
             Ostatne.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             resources.ApplyResources(Ostatne, "Ostatne");
             Ostatne.Name = "Ostatne";
-            Ostatne.Text = "Upraviť";
             Ostatne.UseColumnTextForButtonValue = true;
             // 
             // vlakBindingSource

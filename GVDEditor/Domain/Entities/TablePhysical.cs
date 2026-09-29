@@ -1,4 +1,6 @@
-﻿namespace GVDEditor.Domain.Entities;
+﻿using GVDEditor.Properties;
+
+namespace GVDEditor.Domain.Entities;
 
 /// <summary>
 /// Definuje fyzicku tabulu.
@@ -56,7 +58,7 @@ public sealed class TablePhysical : ITable
     public string Comment { get; set; } = null!;
 
     /// <inheritdoc/>
-    public string TypeName => "Fyzická tabuľa";
+    public string TypeName => Resources.TypeName_Physical;
 
     /// <inheritdoc />
     public override string ToString() => Name;

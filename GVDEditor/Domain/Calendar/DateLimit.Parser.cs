@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Text.RegularExpressions;
+using GVDEditor.Properties;
 
 namespace GVDEditor.Domain.Calendar;
 
@@ -236,12 +237,12 @@ internal partial class DateLimit
     private DateTime GetDate(string token, bool checkLast)
     {
         if (token.Contains('-'))
-            throw new ParseException("Pre interval dát použite od ... do ..., nie -.", _position);
+            throw new ParseException(Resources.DateLimit_UseFromTo, _position);
 
         var dotIndex = token.IndexOf('.');
 
         if (dotIndex < 0 || !int.TryParse(token.AsSpan(0, dotIndex), out var day) || day is <= 0 or > 31)
-            throw new ParseException($"Chybný dátum {token}.", _position);
+            throw new ParseException(string.Format(CultureInfo.CurrentCulture, Resources.DateLimit_BadDate, token), _position);
 
         string rest;
 
@@ -264,7 +265,7 @@ internal partial class DateLimit
         var monthEnd = rest.IndexOf('.');
 
         if (monthEnd < 0)
-            throw new ParseException($"Chybný dátum {token}.", _position);
+            throw new ParseException(string.Format(CultureInfo.CurrentCulture, Resources.DateLimit_BadDate, token), _position);
 
         var month = GetMonth(rest[..monthEnd]);
         var yearSet = int.TryParse(rest.AsSpan(monthEnd + 1), out var year) && year is >= 2000 and < 2100;
@@ -283,7 +284,7 @@ internal partial class DateLimit
                 if (_skipDateRangeCheck)
                     return DateTo;
 
-                throw new ParseException($"Koncový dátum {FormatDate(date)} je mimo rozsahu platnosti grafikonu.", _position);
+                throw new ParseException(string.Format(CultureInfo.CurrentCulture, Resources.DateLimit_EndOutOfRange, FormatDate(date)), _position);
             }
 
             date = CreateDate(year - 1, month, day, token);
@@ -293,7 +294,7 @@ internal partial class DateLimit
             return date;
 
         if (!_skipDateRangeCheck)
-            throw new ParseException($"Dátum {FormatDate(date)} je mimo rozsahu platnosti grafikonu.", _position);
+            throw new ParseException(string.Format(CultureInfo.CurrentCulture, Resources.DateLimit_OutOfRange, FormatDate(date)), _position);
 
         // datum bez roku sa posunie o rok dopredu, ak tak lezi blizsie k platnosti grafikonu
         if (!yearSet && date < DateFrom &&
@@ -314,7 +315,7 @@ internal partial class DateLimit
         }
         catch (Exception)
         {
-            throw new ParseException($"Chybný dátum {token}.", _position);
+            throw new ParseException(string.Format(CultureInfo.CurrentCulture, Resources.DateLimit_BadDate, token), _position);
         }
     }
 
@@ -330,7 +331,7 @@ internal partial class DateLimit
         var index = Array.IndexOf(MessagesCz, month.ToUpper(CultureInfo.CurrentCulture), (int)Message.Jan);
 
         if (index is < (int)Message.Jan or > (int)Message.Dec)
-            throw new ParseException($"Neplatný mesiac {month}.", _position);
+            throw new ParseException(string.Format(CultureInfo.CurrentCulture, Resources.DateLimit_BadMonth, month), _position);
 
         return index - (int)Message.Jan + 1;
     }

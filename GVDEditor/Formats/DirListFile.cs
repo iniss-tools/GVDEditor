@@ -1,9 +1,10 @@
-﻿using GVDEditor.Domain.Entities;
-using System.Globalization;
+﻿using System.Globalization;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
+using static GVDEditor.Formats.FormatCommon;
 using static GVDEditor.Formats.GvdFileConsts;
 using static ToolsCore.Tools.Utils;
-using static GVDEditor.Formats.FormatCommon;
 
 namespace GVDEditor.Formats;
 
@@ -100,7 +101,7 @@ internal static class DirListFile
             return false;
 
         if (hasDataRoot)
-            Log.Warning("DirList.TXT: grafikon priamo v priečinku DATA sa do zoznamu nezapisuje – INISS ho po zápise DirList.TXT prestane vidieť.");
+            Log.Warning(Resources.DirList_RootGrafikon);
 
         using var dirlistF = new CsvFileWriter(fileDirList);
         foreach (var dir in toWrite)

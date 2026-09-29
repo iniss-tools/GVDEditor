@@ -1,5 +1,6 @@
-﻿using GVDEditor.Domain.Entities;
-using System.Globalization;
+﻿using System.Globalization;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 using static GVDEditor.Formats.GvdFileConsts;
 using static ToolsCore.Tools.Utils;
@@ -14,10 +15,10 @@ internal static class TablesFile
     private static string CheckKey(this ITable table, string key, string name, IEnumerable<ITable> items)
     {
         if (string.IsNullOrEmpty(key))
-            throw new FormatException($"{table.TypeName} s názvom {name} nemá zadaný kľúč.");
+            throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_NoKey, table.TypeName, name));
 
         if (items.Any(item => item.Key == key))
-            throw new FormatException($"{table.TypeName} s názvom {name} má kľúč \"{key}\" zhodný s inou tabuľou.");
+            throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_DuplicateKey, table.TypeName, name, key));
 
         return key;
     }
@@ -46,7 +47,7 @@ internal static class TablesFile
         {
             if (string.IsNullOrWhiteSpace(area) || area == "")
             {
-                throw new FormatException($"TabTab č. {p} má neplatný názov (prázdny alebo obsahujúci iba biele znaky).");
+                throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_TabTabInvalidName, p));
             }
 
             var tabTab = new TableTabTab { Key = area, Text = tabtabF.Get(area) ?? "" };
@@ -76,7 +77,7 @@ internal static class TablesFile
             if (parsedManufacturer == null)
             {
                 throw new FormatException(
-                    $"Katalógová tabuľa {tcatalog.Key} má zadaný neplatný kľúč výrobcu (MANUFACTURER_KEY): {manufacturer}.");
+                    string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_BadManufacturer, tcatalog.Key, manufacturer));
             }
 
             tcatalog.Manufacturer = parsedManufacturer;
@@ -125,19 +126,19 @@ internal static class TablesFile
                 if (parsedFillSection == null)
                 {
                     throw new FormatException(
-                        $"Katalógová tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neplatnú hodnotu TYPE_ITEMS_IDX: {fillSection}.");
+                        string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_BadFillSection, tcatalog.Key, item.Key, fillSection));
                 }
 
                 if (parsedAlign == null)
                 {
                     throw new FormatException(
-                        $"Katalógová tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neplatnú hodnotu TYPE_ITEMS_ALIGN: {align}.");
+                        string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_BadAlign, tcatalog.Key, item.Key, align));
                 }
 
                 if (parsedDivType == null)
                 {
                     throw new FormatException(
-                        $"Katalógová tabuľa {tcatalog.Key} obsahuje pre stĺpec {item.Key} neplatnú hodnotu TYPE_ITEMS_DIVTYPE: {align}.");
+                        string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_BadDivType, tcatalog.Key, item.Key, align));
                 }
 
                 item.FillSection = parsedFillSection;
@@ -164,7 +165,7 @@ internal static class TablesFile
                 if (parsedViewType == null)
                 {
                     throw new FormatException(
-                        $"Katalógová tabuľa {tcatalog.Key} obsahuje neplatný typ zobrazenia (TYPE_VIEW_TAB_KEY): {viewType}.");
+                        string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_BadViewType, tcatalog.Key, viewType));
                 }
 
                 typetab.ViewType = parsedViewType;
@@ -173,7 +174,7 @@ internal static class TablesFile
                 if (!IsInt(typetab.CountLinesRecord))
                 {
                     throw new FormatException(
-                        $"Katalógová tabuľa {tcatalog.Key} obsahuje v type zobrazenia {typetab.ViewType.Key} neplatný počet riadkov - \"{typetab.CountLinesRecord}\" (počet má byť číslo).");
+                        string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_BadLineCount, tcatalog.Key, typetab.ViewType.Key, typetab.CountLinesRecord));
                 }
 
                 var ck = ParseIntOrDefault(catalogF.Get(area, $"TYPE_VIEW_TAB_COUNT_TYPE_MODE_{tj.PadZeros()}", false));
@@ -188,7 +189,7 @@ internal static class TablesFile
                     if (parsedViewMode == null)
                     {
                         throw new FormatException(
-                            $"Katalógová tabuľa {tcatalog.Key} obsahuje neplatný typ zobrazenia (TYPE_VIEW_TAB_KEY): {viewMode}.");
+                            string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_BadViewType, tcatalog.Key, viewMode));
                     }
 
                     ttmi.ViewMode = parsedViewMode;
@@ -208,7 +209,7 @@ internal static class TablesFile
                             ttmi.ItemsKeys.Add(itemKey);
                         else
                             throw new FormatException(
-                                $"Katalógová tabuľa {tcatalog.Key} obsahuje v type {typetab.ViewType.Key} v móde {ttmi.ViewMode.Key} neplatný stĺpec {itemKey}.");
+                                string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_BadColumn, tcatalog.Key, typetab.ViewType.Key, ttmi.ViewMode.Key, itemKey));
                     }
 
                     typetab.TypeModeItems.Add(ttmi);
@@ -243,7 +244,7 @@ internal static class TablesFile
             var catname = tphysicF.Get(area, "CATALOG_KEY").ANSItoUTF();
             AssignCatalogToPhysical(tcatalogs, tphysical, catname);
             if (tphysical.TableCatalog == null)
-                throw new FormatException($"Katalógová tabuľa {catname}, ktorá bola použitá vo fyzickej tabuli {tphysical.Key}, neexistuje.");
+                throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_CatalogMissing, catname, tphysical.Key));
 
             tphysicals.Add(tphysical);
         }
@@ -267,7 +268,7 @@ internal static class TablesFile
             var parsedViewType = TableViewType.Parse(viewtype);
             if (parsedViewType == null)
             {
-                throw new FormatException($"Logická tabuľa {tlLogical.Key} obsahuje neplatný typ zobrazenia (TYPE_VIEW): {viewtype}.");
+                throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_LogicalBadViewType, tlLogical.Key, viewtype));
             }
 
             tlLogical.ViewType = parsedViewType;
@@ -287,7 +288,7 @@ internal static class TablesFile
                     var parsedTypeView = TableViewType.Parse(tv);
                     if (parsedTypeView == null)
                     {
-                        throw new FormatException($"Logická tabuľa {tlLogical.Key} obsahuje pre neplatný kľúč typu zobrazenia (TYPE_VIEW_KEY_{tj.PadZeros()}_{tk.PadZeros()}): {tv}.");
+                        throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_LogicalBadViewKey, tlLogical.Key, tj.PadZeros(), tk.PadZeros(), tv));
                     }
 
                     tposition.TypeView = parsedTypeView;
@@ -296,7 +297,7 @@ internal static class TablesFile
                     AssignPhysicalToPosition(tphysicals, tposition, fyzname);
 
                     if (tposition.Table == null)
-                        throw new FormatException($"Logická tabuľa {tlLogical.Key} obsahuje neexistujúcu fyzickú tabuľu {fyzname}.");
+                        throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_LogicalPhysicalMissing, tlLogical.Key, fyzname));
 
                     trecord.Positions.Add(tposition);
                 }
@@ -318,7 +319,7 @@ internal static class TablesFile
 
             if (tab == null)
                 throw new FormatException(
-                    $"Katalógová tabuľa {catalogKey} obsahuje pre stĺpec {item.Key} neexistujúci {(tab1 ? "TABTAB1" : "TABTAB2")} {tabkey}.");
+                    string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_TabTabMissing, catalogKey, item.Key, (tab1 ? "TABTAB1" : "TABTAB2"), tabkey));
                 
             if (tab1) item.Tab1 = tab;
             else item.Tab2 = tab;

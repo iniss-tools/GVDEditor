@@ -1,4 +1,6 @@
-﻿using ExControls;
+﻿using System.Globalization;
+using ExControls;
+using GVDEditor.Properties;
 using ScintillaNET;
 using ToolsCore.Tools;
 
@@ -51,16 +53,16 @@ public partial class FTabTabFindReplace : Form
         _replaceMode = tabControl.SelectedIndex == 1;
         if (!_replaceMode)
         {
-            bFindOrReplace.Text = "Hľadať ďalší";
-            bCountOrReplaceAll.Text = "Spočítať";
+            bFindOrReplace.Text = Resources.FindReplace_FindNext;
+            bCountOrReplaceAll.Text = Resources.FindReplace_Count;
             lReplace.Visible = false;
             cbReplace.Visible = false;
             cboxSearchingCyclic.Enabled = true;
         }
         else
         {
-            bFindOrReplace.Text = "Nahradiť";
-            bCountOrReplaceAll.Text = "Nahradiť všetky";
+            bFindOrReplace.Text = Resources.FindReplace_Replace;
+            bCountOrReplaceAll.Text = Resources.FindReplace_ReplaceAll;
             lReplace.Visible = true;
             cbReplace.Visible = true;
             cboxSearchingCyclic.Enabled = false;
@@ -71,7 +73,7 @@ public partial class FTabTabFindReplace : Form
     {
         if (string.IsNullOrEmpty(cbFind.Text) || (_replaceMode && string.IsNullOrEmpty(cbReplace.Text)))
         {
-            SetStatus("Neplatný vstup pre hľadanie", Color.Red);
+            SetStatus(Resources.FindReplace_InvalidInput, Color.Red);
             return;
         }
 
@@ -87,7 +89,7 @@ public partial class FTabTabFindReplace : Form
     {
         if (string.IsNullOrEmpty(cbFind.Text) || (_replaceMode && string.IsNullOrEmpty(cbReplace.Text)))
         {
-            SetStatus("Neplatný vstup pre hľadanie", Color.Red);
+            SetStatus(Resources.FindReplace_InvalidInput, Color.Red);
             return;
         }
 
@@ -98,7 +100,7 @@ public partial class FTabTabFindReplace : Form
 
         if (!_replaceMode)
         {
-            SetStatus($"{SearchReplace(true)} nájdení", Color.Green);
+            SetStatus(string.Format(CultureInfo.CurrentCulture, Resources.FindReplace_Found, SearchReplace(true)), Color.Green);
         }
         else
         {
@@ -209,7 +211,7 @@ public partial class FTabTabFindReplace : Form
 
         if (SearchCycleIsDone(reversed))
         {
-            SetStatus("Prišli ste na koniec dokumentu");
+            SetStatus(Resources.FindReplace_EndOfDocument);
             
             if (!cyclic)
             {
@@ -231,7 +233,7 @@ public partial class FTabTabFindReplace : Form
                 if (!cyclic)
                 {
                     ResetTarget();
-                    SetStatus(replaceAll ? $"Všetkých {found} výskytov boli nahradených": "Prišli ste na koniec dokumentu");
+                    SetStatus(replaceAll ? string.Format(CultureInfo.CurrentCulture, Resources.FindReplace_Replaced, found): Resources.FindReplace_EndOfDocument);
                     _scintilla.CurrentPosition = _backupCaretPos;
                     _lastFound = false;
                     return found;
@@ -289,7 +291,7 @@ public partial class FTabTabFindReplace : Form
 
         if (!cyclic && SearchCycleIsDone(reversed))
         {
-            SetStatus("Prišli ste na koniec dokumentu");
+            SetStatus(Resources.FindReplace_EndOfDocument);
             ResetTarget(false);
         }
 
@@ -313,7 +315,7 @@ public partial class FTabTabFindReplace : Form
 
     private void SetStatus(string? text = null, Color textColor = default)
     {
-        tsslStatus.Text = text ?? "Pripravený";
+        tsslStatus.Text = text ?? Resources.FindReplace_Ready;
         tsslStatus.ForeColor = textColor == default ? _defaultStatusTextColor : textColor;
     }
 

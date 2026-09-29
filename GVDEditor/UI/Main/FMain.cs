@@ -1,14 +1,15 @@
+using System.Globalization;
+using AppRegistry = ToolsCore.Tools.AppRegistry;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Integration;
 using GVDEditor.Properties;
 using GVDEditor.UI.EditTrain;
-using ToolsCore;
 using ToolsCore.Commands;
 using ToolsCore.Forms;
 using ToolsCore.Tools;
 using ToolsCore.XML;
-using AppRegistry = ToolsCore.Tools.AppRegistry;
+using ToolsCore;
 
 namespace GVDEditor.UI.Main;
 
@@ -332,7 +333,7 @@ public partial class FMain : Form
                 {
                     var vlak = GlobData.Trains[i];
                     throw new ArgumentNullException(
-                        $"Vlak {vlak.Type} {vlak.NumberVariant} {TrainName.ToDisplay(GlobData.TrainNames, vlak.Name)} nemá definované smerovanie.");
+                        string.Format(CultureInfo.CurrentCulture, Resources.FMain_TrainNoRouting, vlak.Type, vlak.NumberVariant, TrainName.ToDisplay(GlobData.TrainNames, vlak.Name)));
                 }
 
                 if (GlobData.Trains[i].Routing == Routing.Prechadzajuci)

@@ -1,6 +1,8 @@
-﻿using ExControls;
+﻿using System.Globalization;
+using ExControls;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Dialogs;
@@ -92,11 +94,11 @@ public partial class FAnalyzer : Form
             {
                 case Domain.Analysis.ProblemType.Hint:
                     e.Value = InfoIcon;
-                    cell.ToolTipText = "Informácia";
+                    cell.ToolTipText = Resources.Analyzer_Info;
                     break;
                 case Domain.Analysis.ProblemType.Warning:
                     e.Value = WarningIcon;
-                    cell.ToolTipText = "Upozornenie";
+                    cell.ToolTipText = Resources.Analyzer_Warning;
                     break;
                 case Domain.Analysis.ProblemType.Error:
                     e.Value = ErrorIcon;
@@ -107,16 +109,16 @@ public partial class FAnalyzer : Form
             switch (Problems[e.RowIndex].FixType)
             {
                 case Domain.Analysis.FixType.Auto:
-                    e.Value = "Automaticky";
-                    cell.ToolTipText = "Program opraví problém sám";
+                    e.Value = Resources.Analyzer_FixAuto;
+                    cell.ToolTipText = Resources.Analyzer_FixAuto_Tip;
                     break;
                 case Domain.Analysis.FixType.SemiAuto:
-                    e.Value = "Polo-automaticky";
-                    cell.ToolTipText = "Používateľ vyberie jednu možnosť opravy";
+                    e.Value = Resources.Analyzer_FixSemi;
+                    cell.ToolTipText = Resources.Analyzer_FixSemi_Tip;
                     break;
                 case Domain.Analysis.FixType.Manual:
-                    e.Value = "Manuálne";
-                    cell.ToolTipText = "Používateľ musí problém opraviť sám, program len navedie k riešeniu";
+                    e.Value = Resources.Analyzer_FixManual;
+                    cell.ToolTipText = Resources.Analyzer_FixManual_Tip;
                     break;
             }
     }
@@ -148,13 +150,13 @@ public partial class FAnalyzer : Form
         switch (res)
         {
             case FixResult.Error:
-                Utils.ShowError(@$"Počas operácie sa vyskytla chyba: {error!.Message}");
+                Utils.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_FixError, error!.Message));
                 break;
             case FixResult.NotSolved:
-                Utils.ShowWarning(@"Používateľ chybu neopravil.");
+                Utils.ShowWarning(Resources.Analyzer_NotFixed);
                 break;
             case FixResult.Done:
-                Utils.ShowInfo(@"Problém bol opravený.");
+                Utils.ShowInfo(Resources.Analyzer_Fixed);
                 Problems.Remove(problem);
                 if (problem.ChangesGrafikon) DataChanged = true;
                 break;

@@ -117,56 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lDelayArr.Text" xml:space="preserve">
-    <value>Zpoždění příjezd (min):</value>
+  <data name="exLabel1.Text" xml:space="preserve">
+    <value>Nové:</value>
   </data>
-  <data name="lDelayDep.Text" xml:space="preserve">
-    <value>Zpoždění odjezd (min):</value>
+  <data name="bCheck.Text" xml:space="preserve">
+    <value>Zkontrolovat</value>
   </data>
-  <data name="chkStanding.Text" xml:space="preserve">
-    <value>Stojí ve stanici</value>
+  <data name="bReset.Text" xml:space="preserve">
+    <value>Obnovit</value>
   </data>
-  <data name="chkLockArr.Text" xml:space="preserve">
-    <value>Výluka příjezd</value>
+  <data name="exLabel2.Text" xml:space="preserve">
+    <value>Původní:</value>
   </data>
-  <data name="chkLockDep.Text" xml:space="preserve">
-    <value>Výluka odjezd</value>
+  <data name="bStorno.Text" xml:space="preserve">
+    <value>Zrušit</value>
   </data>
-  <data name="cEvent.HeaderText" xml:space="preserve">
-    <value>Událost</value>
+  <data name="bOK.Text" xml:space="preserve">
+    <value>Uložit</value>
   </data>
-  <data name="cDelay.HeaderText" xml:space="preserve">
-    <value>+/- zpožd. (s)</value>
+  <data name="bNever.Text" xml:space="preserve">
+    <value>Nikdy</value>
   </data>
-  <data name="cWait.HeaderText" xml:space="preserve">
-    <value>Čekat</value>
-  </data>
-  <data name="cShort.HeaderText" xml:space="preserve">
-    <value>Krátké</value>
-  </data>
-  <data name="lInfo.Text" xml:space="preserve">
-    <value>Řádek = stav kategorie, do které vlak patří podle IndCat. Automatika říká, kdy vlak do stavu vstoupí sám: čas = časový bod + posun + zpoždění; „Plán.“ je výsledek AutoCondition. Stejné údaje ukazuje INISS v okně Kalendář akcí vlaku.</value>
+  <data name="bDaily.Text" xml:space="preserve">
+    <value>Denně</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Kalendář akcí vlaku</value>
-  </data>
-  <data name="lTrain.Text" xml:space="preserve">
-    <value>Vlak:</value>
-  </data>
-  <data name="chkDeflected.Text" xml:space="preserve">
-    <value>Odklon</value>
-  </data>
-  <data name="cMode.HeaderText" xml:space="preserve">
-    <value>Režim</value>
-  </data>
-  <data name="cPlanned.HeaderText" xml:space="preserve">
-    <value>Plán.</value>
-  </data>
-  <data name="cTimePoint.HeaderText" xml:space="preserve">
-    <value>Čas</value>
-  </data>
-  <data name="cNote.HeaderText" xml:space="preserve">
-    <value>Poznámka</value>
+    <value>Nastavení platnosti</value>
   </data>
 </root>

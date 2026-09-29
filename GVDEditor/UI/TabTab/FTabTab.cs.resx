@@ -190,4 +190,25 @@
   <data name="cProbSolution.HeaderText" xml:space="preserve">
     <value>Řešení</value>
   </data>
+  <data name="tsmiAddTabTab.Text" xml:space="preserve">
+    <value>Přidat TabTab...</value>
+  </data>
+  <data name="tsmiDeleteTabTab.Text" xml:space="preserve">
+    <value>Odstranit TabTab</value>
+  </data>
+  <data name="tsbSaveAll.Text" xml:space="preserve">
+    <value>Uložit vše (Ctrl+Shift+S)</value>
+  </data>
+  <data name="tsbStorno.ToolTipText" xml:space="preserve">
+    <value>Odejít</value>
+  </data>
+  <data name="tsslLenText.Text" xml:space="preserve">
+    <value>Velikost:</value>
+  </data>
+  <data name="tsslLinesText.Text" xml:space="preserve">
+    <value>Řádky:</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Úprava TabTab</value>
+  </data>
 </root>

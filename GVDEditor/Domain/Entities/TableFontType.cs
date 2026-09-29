@@ -1,4 +1,5 @@
-﻿using ToolsCore.Tools;
+﻿using GVDEditor.Properties;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Domain.Entities;
 
@@ -40,27 +41,27 @@ public sealed class TableFontType : Enumeration<TableFontType>
     /// <summary>
     /// Obyčajné písmo.
     /// </summary>
-    public static readonly TableFontType None = new("", "Normálne písmo");
+    public static readonly TableFontType None = new("", Resources.FontType_None);
 
     /// <summary>
     /// Tučné písmo.
     /// </summary>
-    public static readonly TableFontType Bold = new("Tučný", "Tučné písmo");
+    public static readonly TableFontType Bold = new("Tučný", Resources.FontType_Bold);
 
     /// <summary>
     /// Šikmé písmo (kurzíva).
     /// </summary>
-    public static readonly TableFontType Italics = new("Šikmý", "Šikmé písmo");
+    public static readonly TableFontType Italics = new("Šikmý", Resources.FontType_Italics);
 
     /// <summary>
     /// Tučné a šikmé písmo.
     /// </summary>
-    public static readonly TableFontType BoldItalics = new("Šikmý a tučný", "Šikmé a tučné písmo");
+    public static readonly TableFontType BoldItalics = new("Šikmý a tučný", Resources.FontType_BoldItalics);
 
     /// <summary>
     /// Špeciálne písmo.
     /// </summary>
-    public static readonly TableFontType Special = new("Špeciálny", "Špeciálne písmo");
+    public static readonly TableFontType Special = new("Špeciálny", Resources.FontType_Special);
 
     #endregion
 }

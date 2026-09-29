@@ -1,6 +1,7 @@
 using System.Globalization;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 using static GVDEditor.Formats.FormatCommon;
 using static GVDEditor.Formats.GvdFileConsts;
@@ -34,11 +35,11 @@ internal static class Export3File
                     train.Type = type;
 
             if (train.Type == null)
-                throw new FormatException($"Neexistujúci typ vlaku {row[3]}");
+                throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.Export3_TypeMissing, row[3]));
 
             train.Variant = int.Parse(row[4], CultureInfo.InvariantCulture);
 
-            train.Routing = Routing.Parse(row[5]) ?? throw new FormatException($"Neexistujúce smerovanie vlaku {row[5]}");
+            train.Routing = Routing.Parse(row[5]) ?? throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.Export3_RoutingMissing, row[5]));
             train.IsMedzistatny = row[6].Contains('M');
             train.IsMiestenkovy = row[6].Contains('R');
             train.IsMimoriadny = row[6].Contains('X');

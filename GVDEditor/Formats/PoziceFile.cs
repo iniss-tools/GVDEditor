@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 using static GVDEditor.Formats.FormatCommon;
 using static GVDEditor.Formats.GvdFileConsts;
@@ -22,7 +23,7 @@ internal static class PoziceFile
         ReadRows(file, FILE_POZICE, (row, _) =>
         {
             var train = trains[int.Parse(row[0], CultureInfo.InvariantCulture) - 1];
-            var track = Track.GetFromID(tracks, row[1]) ?? throw new FormatException($"Neexistujúca koľaj {row[1]}");
+            var track = Track.GetFromID(tracks, row[1]) ?? throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.Pozice_TrackMissing, row[1]));
             train.Track = track;
 
             // nepovinne tretie pole: kolaj pri odchode, ak vlak v stanici prechadza na inu kolaj
@@ -30,7 +31,7 @@ internal static class PoziceFile
             if (!string.IsNullOrEmpty(departureKey))
             {
                 var departure = Track.GetFromID(tracks, departureKey)
-                                ?? throw new FormatException($"Neexistujúca koľaj pri odchode {departureKey}");
+                                ?? throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.Pozice_DepartureTrackMissing, departureKey));
                 train.TrackDeparture = departure.EqualsKeys(track) ? null : departure;
             }
         });

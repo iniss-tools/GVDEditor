@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using GVDEditor.Properties;
 
 namespace GVDEditor.Domain.Calendar;
 
@@ -76,7 +77,7 @@ internal partial class DateLimit
 
         // rozsah dni - jeho zaciatok musi lezat pred nedelou
         if (token is not [_, '-', _] || first >= 6)
-            throw new ParseException($"Chybný pevný kód dňa {token}.", _position);
+            throw new ParseException(string.Format(CultureInfo.CurrentCulture, Resources.DateLimit_BadDayCode, token), _position);
         
         var last = WeekDaySigns.IndexOf(token[2]);
 
@@ -90,7 +91,7 @@ internal partial class DateLimit
             return range;
         }
 
-        throw new ParseException($"Chybný pevný kód dňa {token}.", _position);
+        throw new ParseException(string.Format(CultureInfo.CurrentCulture, Resources.DateLimit_BadDayCode, token), _position);
     }
 
     /// <summary>

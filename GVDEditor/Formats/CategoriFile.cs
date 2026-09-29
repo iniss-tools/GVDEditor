@@ -33,7 +33,7 @@ internal static class CategoriFile
         var count = int.Parse(categoriF.Get("MAIN", "COUNT_LANGUAGES"), CultureInfo.InvariantCulture);
 
         if (count > maxLangs)
-            LoadWarnings.Add($"{file}: COUNT_LANGUAGES ({count}) je väčší než počet jazykov vo zvukovej banke ({maxLangs}); jazyky bez nahrávok sa preskočia.");
+            LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Categori_TooManyLanguages, file, count, maxLangs));
 
         for (var i = 1; i <= count; i++)
         {
@@ -50,7 +50,7 @@ internal static class CategoriFile
             if (!FyzLanguage.ContainsKey(jazykyFromBank, key))
             {
                 // INISS neznamy kluc preskoci s varovanim; rovnako sa spravame aj my
-                LoadWarnings.Add($"{file}: jazyk {key} sa nenachádza v zvukovej banke, preskakuje sa.");
+                LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Categori_LanguageMissing, file, key));
                 continue;
             }
 
@@ -146,7 +146,7 @@ internal static class CategoriFile
             // z globalneho Categori.txt. NAME a IS_BASIC sa preto necitaju: prepisali by zdielane globalne
             // jazyky a lokalny nazov by sa pri ulozeni globalnych nastaveni dostal aj do globalneho suboru.
             var lang = globalLanguages.FirstOrDefault(language => language.Key == key)
-                       ?? throw new ArgumentException($"Neplatný kľúč jazyka {key} v súbore {file}.");
+                       ?? throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.Categori_BadLanguageKey, key, file));
             if (!languages.Contains(lang))
                 languages.Add(lang);
         }

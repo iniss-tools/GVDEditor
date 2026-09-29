@@ -145,4 +145,37 @@
   <data name="lReg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="cbSkipPassingTrains.Text" xml:space="preserve">
+    <value>Přeskakovat projíždějící vlaky</value>
+  </data>
+  <data name="cbReorder.Text" xml:space="preserve">
+    <value>Seřadit vlaky a přepočítat varianty</value>
+  </data>
+  <data name="cbReplace.Text" xml:space="preserve">
+    <value>Nahradit všechny vlaky v grafikonu</value>
+  </data>
+  <data name="bImport.Text" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="bStorno.Text" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
+  <data name="exGroupBox1.Text" xml:space="preserve">
+    <value>Možnosti</value>
+  </data>
+  <data name="bBrowse.Text" xml:space="preserve">
+    <value>Procházet...</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Složka s aplikací Cestovné poriadky:</value>
+  </data>
+  <data name="lStation.Text" xml:space="preserve">
+    <value>Vlaky se načtou pro stanici:</value>
+  </data>
+  <data name="lReg.Text" xml:space="preserve">
+    <value>Registrační číslo (volně dostupná data ho nepotřebují):</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Import vlaků z programu ELIS</value>
+  </data>
 </root>

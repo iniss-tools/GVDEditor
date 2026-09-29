@@ -2,6 +2,7 @@ using System.Globalization;
 using ExControls;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 using static GVDEditor.Formats.FormatCommon;
 using static GVDEditor.Formats.GvdFileConsts;
@@ -64,7 +65,7 @@ internal static class RoutesFile
         ReadRows(file, FILE_VLAKY, (row, rowNumber) =>
         {
             var id = int.Parse(row[0], CultureInfo.InvariantCulture);
-            var template = templates.Find(t => t.ID == id) ?? throw new FormatException($"Neexistujúce ID trasy {id} v tomto súbore.");
+            var template = templates.Find(t => t.ID == id) ?? throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.Routes_BadId, id));
 
             var count = int.Parse(row[1], CultureInfo.InvariantCulture);
             for (var i = 0; i < count; i++)
@@ -78,14 +79,14 @@ internal static class RoutesFile
                 var type = trainTypes.FirstOrDefault(t => t.Key == typeKey);
                 if (type == null)
                 {
-                    LoadWarnings.Add($"{FILE_VLAKY}, riadok {rowNumber}: neznámy druh vlaku \"{typeKey}\" pri vlaku {number}; zvyšok riadka sa preskakuje.");
+                    LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Routes_UnknownType, FILE_VLAKY, rowNumber, typeKey, number));
                     break;
                 }
 
                 var train = Train.GetTrain(trains, number, name, type, variant);
                 if (train == null)
                 {
-                    LoadWarnings.Add($"{FILE_VLAKY}, riadok {rowNumber}: vlak {number} {type.Key} nemá definíciu v {FILE_EXPORT3A}; zvyšok riadka sa preskakuje.");
+                    LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Routes_NoDefinition, FILE_VLAKY, rowNumber, number, type.Key, FILE_EXPORT3A));
                     break;
                 }
 

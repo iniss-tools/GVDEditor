@@ -1,13 +1,14 @@
-﻿using GVDEditor.Domain.Analysis;
+﻿using System.Collections;
+using System.Globalization;
+using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
-using System.Collections;
-using System.Globalization;
+using GVDEditor.Properties;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
+using static GVDEditor.Formats.FormatCommon;
 using static GVDEditor.Formats.GvdFileConsts;
 using static ToolsCore.Tools.Utils;
-using static GVDEditor.Formats.FormatCommon;
 
 namespace GVDEditor.Formats;
 
@@ -108,7 +109,7 @@ internal static class RazeniFile
                 }
                 else
                 {
-                    if (radenie == null) throw new FormatException("Chýbajú základné informácie o radení.");
+                    if (radenie == null) throw new FormatException(Resources.Razeni_MissingBasics);
                     var file = row[0];
                     var array = file.Split('/');
 
@@ -132,12 +133,12 @@ internal static class RazeniFile
                         zvuk = candidates.FirstOrDefault(sound => sound.Group.Language.IsBasic) ?? candidates.FirstOrDefault();
                     }
                     else
-                        throw new FormatException($"Neplatný odkaz na nahrávku \"{file}\".");
+                        throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.Razeni_BadSoundRef, file));
 
                     if (zvuk == null)
                     {
                         // chybajuca nahravka nezhodi cely grafikon - INISS ju tiez len preskoci
-                        LoadWarnings.Add($"{FILE_RAZENI1}, riadok {riadok}: nahrávka {file} sa v zvukovej banke nenachádza, preskakuje sa.");
+                        LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Razeni_SoundMissing, FILE_RAZENI1, riadok, file));
                         riadok++; // continue obchadza pocitadlo na konci cyklu - dalsie hlasenia by mali zle cislo riadka
                         continue;
                     }

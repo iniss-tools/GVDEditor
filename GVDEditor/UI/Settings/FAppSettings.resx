@@ -765,4 +765,620 @@
         X/g/g1KMu1R0dqcAAAAASUVORK5CYII=
 </value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="exGroupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="exGroupBox2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="exGroupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 3</value>
+  </data>
+  <data name="exGroupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 47</value>
+  </data>
+  <data name="exGroupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="exGroupBox2.Text" xml:space="preserve">
+    <value>Grafikon</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.Name" xml:space="preserve">
+    <value>exGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.Parent" xml:space="preserve">
+    <value>pConcreteGeneral</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cboxTabTextAutoGenerate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxTabTextAutoGenerate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 19</value>
+  </data>
+  <data name="cboxTabTextAutoGenerate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 17</value>
+  </data>
+  <data name="cboxTabTextAutoGenerate.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cboxTabTextAutoGenerate.Text" xml:space="preserve">
+    <value>Automaticky generovať texty do tabúľ</value>
+  </data>
+  <data name="&gt;&gt;cboxTabTextAutoGenerate.Name" xml:space="preserve">
+    <value>cboxTabTextAutoGenerate</value>
+  </data>
+  <data name="&gt;&gt;cboxTabTextAutoGenerate.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxTabTextAutoGenerate.Parent" xml:space="preserve">
+    <value>exGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;cboxTabTextAutoGenerate.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pStartupIniss.Name" xml:space="preserve">
+    <value>pStartupIniss</value>
+  </data>
+  <data name="&gt;&gt;pStartupIniss.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="ppStartupIniss.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ppStartupIniss.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ppStartupIniss.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 399</value>
+  </data>
+  <data name="ppStartupIniss.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;ppStartupIniss.Name" xml:space="preserve">
+    <value>ppStartupIniss</value>
+  </data>
+  <data name="&gt;&gt;ppStartupIniss.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ppStartupIniss.Parent" xml:space="preserve">
+    <value>pStartupIniss</value>
+  </data>
+  <data name="&gt;&gt;ppStartupIniss.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 63</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Argumenty:</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>ppStartupIniss</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboxManualCmdArgs.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxManualCmdArgs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 36</value>
+  </data>
+  <data name="cboxManualCmdArgs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 17</value>
+  </data>
+  <data name="cboxManualCmdArgs.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="cboxManualCmdArgs.Text" xml:space="preserve">
+    <value>Zadať argumenty manuálne</value>
+  </data>
+  <data name="&gt;&gt;cboxManualCmdArgs.Name" xml:space="preserve">
+    <value>cboxManualCmdArgs</value>
+  </data>
+  <data name="&gt;&gt;cboxManualCmdArgs.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxManualCmdArgs.Parent" xml:space="preserve">
+    <value>ppStartupIniss</value>
+  </data>
+  <data name="&gt;&gt;cboxManualCmdArgs.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cboxRunAsAdmin.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxRunAsAdmin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 13</value>
+  </data>
+  <data name="cboxRunAsAdmin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 17</value>
+  </data>
+  <data name="cboxRunAsAdmin.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="cboxRunAsAdmin.Text" xml:space="preserve">
+    <value>Spustiť ako administrátor</value>
+  </data>
+  <data name="&gt;&gt;cboxRunAsAdmin.Name" xml:space="preserve">
+    <value>cboxRunAsAdmin</value>
+  </data>
+  <data name="&gt;&gt;cboxRunAsAdmin.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxRunAsAdmin.Parent" xml:space="preserve">
+    <value>ppStartupIniss</value>
+  </data>
+  <data name="&gt;&gt;cboxRunAsAdmin.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tbCmdArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="tbCmdArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 56</value>
+  </data>
+  <data name="tbCmdArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>422, 20</value>
+  </data>
+  <data name="tbCmdArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tbCmdArguments.Name" xml:space="preserve">
+    <value>tbCmdArguments</value>
+  </data>
+  <data name="&gt;&gt;tbCmdArguments.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbCmdArguments.Parent" xml:space="preserve">
+    <value>ppStartupIniss</value>
+  </data>
+  <data name="&gt;&gt;tbCmdArguments.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 275</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>436, 13</value>
+  </data>
+  <data name="label18.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>ppStartupIniss</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupArguments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="groupArguments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 88</value>
+  </data>
+  <data name="groupArguments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>499, 175</value>
+  </data>
+  <data name="groupArguments.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="groupArguments.Text" xml:space="preserve">
+    <value>Grafické zadanie argumentov</value>
+  </data>
+  <data name="&gt;&gt;groupArguments.Name" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;groupArguments.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;groupArguments.Parent" xml:space="preserve">
+    <value>ppStartupIniss</value>
+  </data>
+  <data name="&gt;&gt;groupArguments.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 145</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 13</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Spustiť s registrom:</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>ExControls.ExLabel, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label19.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 439</value>
+  </data>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 13</value>
+  </data>
+  <data name="label19.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Spustiť s registrom:</value>
+  </data>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
+  </data>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbArgRegister.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="cbArgRegister.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 142</value>
+  </data>
+  <data name="cbArgRegister.Size" type="System.Drawing.Size, System.Drawing">
+    <value>364, 21</value>
+  </data>
+  <data name="cbArgRegister.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;cbArgRegister.Name" xml:space="preserve">
+    <value>cbArgRegister</value>
+  </data>
+  <data name="&gt;&gt;cbArgRegister.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbArgRegister.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;cbArgRegister.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cboxArgExportTableTexts.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxArgExportTableTexts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 106</value>
+  </data>
+  <data name="cboxArgExportTableTexts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 17</value>
+  </data>
+  <data name="cboxArgExportTableTexts.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="cboxArgExportTableTexts.Text" xml:space="preserve">
+    <value>Exportovať texty do tabúľ pri úprave šablón vlakov do súboru</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportTableTexts.Name" xml:space="preserve">
+    <value>cboxArgExportTableTexts</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportTableTexts.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportTableTexts.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportTableTexts.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cboxArgAsClient.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxArgAsClient.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 85</value>
+  </data>
+  <data name="cboxArgAsClient.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 17</value>
+  </data>
+  <data name="cboxArgAsClient.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="cboxArgAsClient.Text" xml:space="preserve">
+    <value>Spustiť program ako klient</value>
+  </data>
+  <data name="&gt;&gt;cboxArgAsClient.Name" xml:space="preserve">
+    <value>cboxArgAsClient</value>
+  </data>
+  <data name="&gt;&gt;cboxArgAsClient.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxArgAsClient.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;cboxArgAsClient.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cboxArgExportHlasTexts.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxArgExportHlasTexts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 64</value>
+  </data>
+  <data name="cboxArgExportHlasTexts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>285, 17</value>
+  </data>
+  <data name="cboxArgExportHlasTexts.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="cboxArgExportHlasTexts.Text" xml:space="preserve">
+    <value>Exportovať text všetkých hlásení do súboru TxtHlas.txt</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportHlasTexts.Name" xml:space="preserve">
+    <value>cboxArgExportHlasTexts</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportHlasTexts.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportHlasTexts.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;cboxArgExportHlasTexts.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cboxArgMinimize.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxArgMinimize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 43</value>
+  </data>
+  <data name="cboxArgMinimize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 17</value>
+  </data>
+  <data name="cboxArgMinimize.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="cboxArgMinimize.Text" xml:space="preserve">
+    <value>Minimalizovať okno programu pri spustení</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMinimize.Name" xml:space="preserve">
+    <value>cboxArgMinimize</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMinimize.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMinimize.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMinimize.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="cboxArgMoreInstances.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxArgMoreInstances.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 22</value>
+  </data>
+  <data name="cboxArgMoreInstances.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 17</value>
+  </data>
+  <data name="cboxArgMoreInstances.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="cboxArgMoreInstances.Text" xml:space="preserve">
+    <value>Povoliť duplicitné inštancie programu</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMoreInstances.Name" xml:space="preserve">
+    <value>cboxArgMoreInstances</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMoreInstances.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMoreInstances.Parent" xml:space="preserve">
+    <value>groupArguments</value>
+  </data>
+  <data name="&gt;&gt;cboxArgMoreInstances.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 13</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Jazyk dátumového obmedzenia:</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>pConcreteLocalization</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbDateLimitLanguage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="cbDateLimitLanguage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 21</value>
+  </data>
+  <data name="cbDateLimitLanguage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbDateLimitLanguage.Name" xml:space="preserve">
+    <value>cbDateLimitLanguage</value>
+  </data>
+  <data name="&gt;&gt;cbDateLimitLanguage.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbDateLimitLanguage.Parent" xml:space="preserve">
+    <value>pConcreteLocalization</value>
+  </data>
+  <data name="&gt;&gt;cbDateLimitLanguage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="exGroupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="exGroupBox4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="exGroupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 60</value>
+  </data>
+  <data name="exGroupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 67</value>
+  </data>
+  <data name="exGroupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="exGroupBox4.Text" xml:space="preserve">
+    <value>Prehrávanie</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox4.Name" xml:space="preserve">
+    <value>exGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox4.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox4.Parent" xml:space="preserve">
+    <value>pConcreteGeneral</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="nudPlayerWordPause.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 28</value>
+  </data>
+  <data name="nudPlayerWordPause.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 20</value>
+  </data>
+  <data name="nudPlayerWordPause.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;nudPlayerWordPause.Name" xml:space="preserve">
+    <value>nudPlayerWordPause</value>
+  </data>
+  <data name="&gt;&gt;nudPlayerWordPause.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudPlayerWordPause.Parent" xml:space="preserve">
+    <value>exGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;nudPlayerWordPause.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 30</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 13</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Medzera medzi prehrávanými zvukmi (ms):</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>exGroupBox4</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;AutoScaleDimensions.Name" xml:space="preserve">
+    <value>AutoScaleDimensions</value>
+  </data>
+  <data name="&gt;&gt;AutoScaleDimensions.Type" xml:space="preserve">
+    <value>System.Drawing.SizeF, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ClientSize.Name" xml:space="preserve">
+    <value>ClientSize</value>
+  </data>
+  <data name="&gt;&gt;ClientSize.Type" xml:space="preserve">
+    <value>System.Drawing.Size, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="pConcreteGeneral.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 270</value>
+  </data>
+  <data name="optionsView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>800, 440</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 475</value>
+  </data>
+  <data name="optionsNode2.Text" xml:space="preserve">
+    <value>Spúšťanie INISS</value>
+  </data>
+  <data name="pStartupIniss.NodeText" xml:space="preserve">
+    <value>Spúšťanie INISS</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FAppSettings</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

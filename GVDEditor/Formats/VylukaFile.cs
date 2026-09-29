@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 using static GVDEditor.Formats.FormatCommon;
 using static GVDEditor.Formats.GvdFileConsts;
@@ -25,7 +26,7 @@ internal static class VylukaFile
             var train = trains[int.Parse(row[0], CultureInfo.InvariantCulture) - 1];
             var count = ParseIntOrDefault(row.ElementAtOrDefault(1));
             if (count > 1)
-                throw new FormatException("Vlak nemôže mať v grafikone viac než jednu výluku.");
+                throw new FormatException(Resources.Vyluka_OnlyOne);
 
             train.LockoutNumber = count == 1 ? int.Parse(row[2], CultureInfo.InvariantCulture) : 0;
         });

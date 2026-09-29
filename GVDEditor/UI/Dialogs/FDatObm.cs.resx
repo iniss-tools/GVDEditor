@@ -117,56 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lDelayArr.Text" xml:space="preserve">
-    <value>Zpoždění příjezd (min):</value>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Datumové omezení (text):</value>
   </data>
-  <data name="lDelayDep.Text" xml:space="preserve">
-    <value>Zpoždění odjezd (min):</value>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Pole bitů:</value>
   </data>
-  <data name="chkStanding.Text" xml:space="preserve">
-    <value>Stojí ve stanici</value>
+  <data name="bCopy.Text" xml:space="preserve">
+    <value>Zkopírovat</value>
   </data>
-  <data name="chkLockArr.Text" xml:space="preserve">
-    <value>Výluka příjezd</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Doplňková nastavení:</value>
   </data>
-  <data name="chkLockDep.Text" xml:space="preserve">
-    <value>Výluka odjezd</value>
+  <data name="cbSpecDays.Text" xml:space="preserve">
+    <value>Používat svátky a pracovní dny</value>
   </data>
-  <data name="cEvent.HeaderText" xml:space="preserve">
-    <value>Událost</value>
+  <data name="cbSkipDateRangeCheck.Text" xml:space="preserve">
+    <value>Přeskakovat chyby dat mimo grafikon </value>
   </data>
-  <data name="cDelay.HeaderText" xml:space="preserve">
-    <value>+/- zpožd. (s)</value>
+  <data name="cbMonthRoman.Text" xml:space="preserve">
+    <value>Čísla měsíců římskými číslicemi</value>
   </data>
-  <data name="cWait.HeaderText" xml:space="preserve">
-    <value>Čekat</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Základní nastavení:</value>
   </data>
-  <data name="cShort.HeaderText" xml:space="preserve">
-    <value>Krátké</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Začátek platnosti grafikonu:</value>
   </data>
-  <data name="lInfo.Text" xml:space="preserve">
-    <value>Řádek = stav kategorie, do které vlak patří podle IndCat. Automatika říká, kdy vlak do stavu vstoupí sám: čas = časový bod + posun + zpoždění; „Plán.“ je výsledek AutoCondition. Stejné údaje ukazuje INISS v okně Kalendář akcí vlaku.</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Konec platnosti grafikonu:</value>
+  </data>
+  <data name="bGenerate.Text" xml:space="preserve">
+    <value>Generovat</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Kalendář akcí vlaku</value>
-  </data>
-  <data name="lTrain.Text" xml:space="preserve">
-    <value>Vlak:</value>
-  </data>
-  <data name="chkDeflected.Text" xml:space="preserve">
-    <value>Odklon</value>
-  </data>
-  <data name="cMode.HeaderText" xml:space="preserve">
-    <value>Režim</value>
-  </data>
-  <data name="cPlanned.HeaderText" xml:space="preserve">
-    <value>Plán.</value>
-  </data>
-  <data name="cTimePoint.HeaderText" xml:space="preserve">
-    <value>Čas</value>
-  </data>
-  <data name="cNote.HeaderText" xml:space="preserve">
-    <value>Poznámka</value>
+    <value>Generátor datum. omezení</value>
   </data>
 </root>

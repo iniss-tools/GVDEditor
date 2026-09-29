@@ -1142,4 +1142,100 @@
   <data name="tsmiTFonts.Text" xml:space="preserve">
     <value>Písma</value>
   </data>
+  <data name="Ostatne.Text" xml:space="preserve">
+    <value>Upravit</value>
+  </data>
+  <data name="tsmiNew.Text" xml:space="preserve">
+    <value>Nový...</value>
+  </data>
+  <data name="tsmiImportGVD.Text" xml:space="preserve">
+    <value>Grafikon...</value>
+  </data>
+  <data name="tsmiImportELIS.Text" xml:space="preserve">
+    <value>Z programu ELIS</value>
+  </data>
+  <data name="tsmiGrafikon.Text" xml:space="preserve">
+    <value>Grafikon</value>
+  </data>
+  <data name="tsmiDopravcovia.Text" xml:space="preserve">
+    <value>Dopravci</value>
+  </data>
+  <data name="tsmiPlatforms.Text" xml:space="preserve">
+    <value>Nástupiště</value>
+  </data>
+  <data name="tsmiKolaje.Text" xml:space="preserve">
+    <value>Koleje</value>
+  </data>
+  <data name="tsmiTPhysical.Text" xml:space="preserve">
+    <value>Fyzické tabule</value>
+  </data>
+  <data name="tsmiTLogical.Text" xml:space="preserve">
+    <value>Logické tabule</value>
+  </data>
+  <data name="tsmiTabTab.Text" xml:space="preserve">
+    <value>TabTab</value>
+  </data>
+  <data name="tsmiTTexts.Text" xml:space="preserve">
+    <value>Texty na tabulích</value>
+  </data>
+  <data name="tsmiTabTabEditor.Text" xml:space="preserve">
+    <value>Editor TabTab</value>
+  </data>
+  <data name="tsmiGrafikony.Text" xml:space="preserve">
+    <value>Grafikony</value>
+  </data>
+  <data name="tsmiLanguages.Text" xml:space="preserve">
+    <value>Jazyky</value>
+  </data>
+  <data name="tsmiMeskania.Text" xml:space="preserve">
+    <value>Zpoždění</value>
+  </data>
+  <data name="tsmiTypyVlakov.Text" xml:space="preserve">
+    <value>Typy vlaků</value>
+  </data>
+  <data name="tsmiAudio.Text" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="tsmiDatObm.Text" xml:space="preserve">
+    <value>Generátor datum. omez.</value>
+  </data>
+  <data name="tsmiStateDgm.Text" xml:space="preserve">
+    <value>Stavový diagram…</value>
+  </data>
+  <data name="tsmiTools.Text" xml:space="preserve">
+    <value>Nástroje</value>
+  </data>
+  <data name="tsmimShutdownINISS.Text" xml:space="preserve">
+    <value>Ukončit INISS</value>
+  </data>
+  <data name="tsmimImportGVD.Text" xml:space="preserve">
+    <value>Grafikon...</value>
+  </data>
+  <data name="tsmimImportELIS.Text" xml:space="preserve">
+    <value>Z programu ELIS</value>
+  </data>
+  <data name="tssbRecentDirs.ToolTipText" xml:space="preserve">
+    <value>Nedávné</value>
+  </data>
+  <data name="tsbKillINISS.Text" xml:space="preserve">
+    <value>Vynutit ukončení programu</value>
+  </data>
+  <data name="tsbShutdownINISS.Text" xml:space="preserve">
+    <value>Ukončit program</value>
+  </data>
+  <data name="tsbDatObm.Text" xml:space="preserve">
+    <value>Generátor datum. omez.</value>
+  </data>
+  <data name="cisloDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Číslo</value>
+  </data>
+  <data name="nameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Název</value>
+  </data>
+  <data name="tsslTrainCountWithVariants.ToolTipText" xml:space="preserve">
+    <value>Počet všech vlaků</value>
+  </data>
+  <data name="tsslTrainCount.ToolTipText" xml:space="preserve">
+    <value>Počet všech vlaků (mimo variant)</value>
+  </data>
 </root>

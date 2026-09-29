@@ -151,4 +151,10 @@
   <data name="label5.Text" xml:space="preserve">
     <value>Počet řádků pro záznam tohoto typu:</value>
   </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Režim:</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Typ:</value>
+  </data>
 </root>

@@ -1,5 +1,6 @@
 using System.Globalization;
 using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Formats;
@@ -41,7 +42,7 @@ internal static class LogZvukParser
             {
                 var className = ReadObjectHeader(reader, classes);
                 if (className != CLASS_CONST_REPORT)
-                    throw new InvalidDataException($"Neočakávaný objekt {className ?? "(null)"} na pozícii {i}.");
+                    throw new InvalidDataException(string.Format(CultureInfo.CurrentCulture, Resources.LogZvuk_UnexpectedObject, className ?? "(null)", i));
 
                 // spolocna cast SLogText
                 var key = ReadCString(reader);
@@ -58,7 +59,7 @@ internal static class LogZvukParser
                 if (dataClass is not null)
                 {
                     if (dataClass != CLASS_STATION_LIST)
-                        throw new InvalidDataException($"Neznámy objekt dát {dataClass} pri položke {key}.");
+                        throw new InvalidDataException(string.Format(CultureInfo.CurrentCulture, Resources.LogZvuk_UnknownDataObject, dataClass, key));
 
                     var countStations = reader.ReadInt32();
                     for (var j = 0; j < countStations; j++)
@@ -75,7 +76,7 @@ internal static class LogZvukParser
         }
         catch (Exception e) when (e is IOException or InvalidDataException or ArgumentException)
         {
-            Log.Warning($"Súbor {file} sa nepodarilo prečítať celý ({texts.Count} položiek načítaných): {e.Message}");
+            Log.Warning(string.Format(CultureInfo.CurrentCulture, Resources.LogZvuk_ReadPartial, file, texts.Count, e.Message));
         }
 
         return texts;
@@ -97,7 +98,7 @@ internal static class LogZvukParser
             // 32-bitova znacka - pri malych suboroch sa nevyskytuje
             var bigTag = reader.ReadUInt32();
             if ((bigTag & 0x80000000) == 0)
-                throw new InvalidDataException("Odkaz na už načítaný objekt nie je podporovaný.");
+                throw new InvalidDataException(Resources.LogZvuk_BackRefUnsupported);
             return ClassByIndex(classes, (int)(bigTag & 0x7FFFFFFF));
         }
 
@@ -119,14 +120,14 @@ internal static class LogZvukParser
             return className;
         }
 
-        throw new InvalidDataException("Odkaz na už načítaný objekt nie je podporovaný.");
+        throw new InvalidDataException(Resources.LogZvuk_BackRefUnsupported);
     }
 
     private static string ClassByIndex(List<string> classes, int index)
     {
         // indexy MFC su od 1
         if (index < 1 || index > classes.Count)
-            throw new InvalidDataException($"Neplatný odkaz na triedu {index}.");
+            throw new InvalidDataException(string.Format(CultureInfo.CurrentCulture, Resources.LogZvuk_BadClassRef, index));
         return classes[index - 1];
     }
 
@@ -161,7 +162,7 @@ internal static class LogZvukParser
     private static string ReadChars(BinaryReader reader, int length, bool unicode)
     {
         if (length < 0)
-            throw new InvalidDataException("Záporná dĺžka textu.");
+            throw new InvalidDataException(Resources.LogZvuk_NegativeLength);
 
         var bytes = reader.ReadBytes(unicode ? length * 2 : length);
         return unicode ? System.Text.Encoding.Unicode.GetString(bytes) : Encodings.Win1250.GetString(bytes);

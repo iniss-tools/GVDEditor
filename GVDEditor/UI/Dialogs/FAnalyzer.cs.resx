@@ -136,4 +136,13 @@
   <data name="solutionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Řešení</value>
   </data>
+  <data name="ProblemType.HeaderText" xml:space="preserve">
+    <value>Typ problému</value>
+  </data>
+  <data name="textDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Problém</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Analyzátor grafikonu</value>
+  </data>
 </root>

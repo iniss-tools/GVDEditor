@@ -1,4 +1,5 @@
-﻿using ToolsCore.Tools;
+﻿using GVDEditor.Properties;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Domain.Entities;
 
@@ -34,27 +35,27 @@ public sealed class TableDivType : Enumeration<TableDivType>
     /// <summary>
     /// Text ide na tabulu bez prekodovania; TAB1 a TAB2 sa nepouziju.
     /// </summary>
-    public static readonly TableDivType Free = new(0, "0: Text bez prekódovania");
+    public static readonly TableDivType Free = new(0, Resources.DivType_Free);
 
     /// <summary>
     /// Text sa cely hlada v TAB1 a pouzije sa len najdeny preklad - inak stlpec ostane prazdny.
     /// </summary>
-    public static readonly TableDivType Table = new(1, "1: Len hodnoty z TAB1 (inak prázdne)");
+    public static readonly TableDivType Table = new(1, Resources.DivType_Table);
 
     /// <summary>
     /// Cas HH:MM po castiach: hodiny v TAB1, desiatky a jednotky minut v TAB2.
     /// </summary>
-    public static readonly TableDivType TableTime = new(2, "2: Čas HH:MM po častiach (TAB1 a TAB2)");
+    public static readonly TableDivType TableTime = new(2, Resources.DivType_TableTime);
 
     /// <summary>
     /// Text sa hlada v TAB1; ak sa nenajde, posle sa nezmeneny.
     /// </summary>
-    public static readonly TableDivType Translate = new(3, "3: Prekódovať podľa TAB1, ak sa dá");
+    public static readonly TableDivType Translate = new(3, Resources.DivType_Translate);
 
     /// <summary>
     /// Text sa prekoduje znak po znaku podla TAB1; neznamy znak nahradi medzera.
     /// </summary>
-    public static readonly TableDivType Char = new(4, "4: Znak po znaku podľa TAB1");
+    public static readonly TableDivType Char = new(4, Resources.DivType_Char);
 
     #endregion
 }

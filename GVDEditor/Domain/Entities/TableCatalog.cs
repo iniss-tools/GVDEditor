@@ -1,4 +1,6 @@
-﻿namespace GVDEditor.Domain.Entities;
+﻿using GVDEditor.Properties;
+
+namespace GVDEditor.Domain.Entities;
 
 /// <summary>
 /// Definuje katalogovu tabulu.
@@ -66,7 +68,7 @@ public sealed class TableCatalog : ITable
     public string Comment { get; set; } = null!;
 
     /// <inheritdoc/>
-    public string TypeName => "Katalógová tabuľa";
+    public string TypeName => Resources.TypeName_Catalog;
 
     /// <inheritdoc />
     public override string ToString() => Name;

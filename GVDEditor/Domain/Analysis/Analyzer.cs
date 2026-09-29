@@ -1,12 +1,13 @@
-﻿using GVDEditor.Domain.Entities;
+﻿using System.Globalization;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Formats;
+using GVDEditor.Properties;
 using GVDEditor.TabTabEditor;
 using GVDEditor.UI.Settings;
 using GVDEditor.UI.TabTab;
-using GVDEditor.Properties;
 using ToolsCore.Expressions;
 using ToolsCore.TabTab;
 using ToolsCore.Tools;
-using GVDEditor.Formats;
 
 namespace GVDEditor.Domain.Analysis;
 
@@ -249,9 +250,9 @@ internal class StaleZpozdeniCache : IProblem
     private string CachePath { get; }
 
     public string Text =>
-        $"{GvdFileConsts.FILE_ZPOZDENI} je novší než vyrovnávacia pamäť {GvdFileConsts.FILE_ZPOZDENI_DAT}; INISS bude ďalej používať starý zoznam meškaní.";
+        string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_ZpozdeniCacheOld, GvdFileConsts.FILE_ZPOZDENI, GvdFileConsts.FILE_ZPOZDENI_DAT);
 
-    public string Solution => $"Zmazať {GvdFileConsts.FILE_ZPOZDENI_DAT} (INISS si ho pri štarte vytvorí znova)";
+    public string Solution => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_ZpozdeniCacheOld_Fix, GvdFileConsts.FILE_ZPOZDENI_DAT);
 
     public bool ChangesGrafikon => false;
 
@@ -268,7 +269,7 @@ internal class StaleZpozdeniCache : IProblem
         }
         catch (Exception e)
         {
-            Log.Exception(e, $"Nepodarilo sa zmazať {CachePath}");
+            Log.Exception(e, string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_DeleteFailed, CachePath));
             return FixResult.Error;
         }
     }
@@ -290,16 +291,16 @@ internal class UnusedTable : IProblem
         {
             var tabname = Table switch
             {
-                TableCatalog => "Katalógová",
-                TablePhysical => "Fyzická",
-                TableLogical => "Logická",
+                TableCatalog => Resources.Analyzer_TableCatalog,
+                TablePhysical => Resources.Analyzer_TablePhysical,
+                TableLogical => Resources.Analyzer_TableLogical,
                 _ => ""
             };
-            return $"{tabname} tabuľa {Table.Key} sa nikde nepoužíva.";
+            return string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_TableUnused, tabname, Table.Key);
         }
     }
 
-    public string Solution => "Odstrániť tabuľu";
+    public string Solution => Resources.Analyzer_TableUnused_Fix;
 
     public ProblemType ProblemType => ProblemType.Hint;
 
@@ -327,9 +328,9 @@ internal class UnusedTabTab : IProblem
 
     private TableTabTab TabTab { get; }
 
-    public string Text => $"TabTab {TabTab.Key} sa nikde nepoužíva.";
+    public string Text => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_TabTabUnused, TabTab.Key);
 
-    public string Solution => "Odstrániť TabTab";
+    public string Solution => Resources.Analyzer_TabTabUnused_Fix;
 
     public ProblemType ProblemType => ProblemType.Hint;
 
@@ -351,9 +352,9 @@ internal class TableWithoutSegments : IProblem
 
     private TableCatalog Table { get; }
 
-    public string Text => $"Katalógová tabuľa {Table.Key} nemá nastavené žiadne riadky (segmenty).";
+    public string Text => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_CatalogNoRows, Table.Key);
 
-    public string Solution => "Upraviť segmenty katalógovej tabule";
+    public string Solution => Resources.Analyzer_CatalogNoRows_Fix;
 
     public ProblemType ProblemType => ProblemType.Warning;
 
@@ -379,9 +380,9 @@ internal class TableTextWithoutRealization : IProblem
 
     private TableText TText { get; }
 
-    public string Text => $"Text na tabuli „{TText.Key}“ nemá žiadnu realizáciu.";
+    public string Text => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_TextNoRealization, TText.Key);
 
-    public string Solution => "Pridať realizácie textu";
+    public string Solution => Resources.Analyzer_TextNoRealization_Fix;
 
     public ProblemType ProblemType => ProblemType.Warning;
 
@@ -407,9 +408,9 @@ internal class TableTextWithoutTrains : IProblem
 
     private TableText TText { get; }
 
-    public string Text => $"Text na tabuli „{TText.Key}“ nemá priradené žiadne vlaky.";
+    public string Text => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_TextNoTrains, TText.Key);
 
-    public string Solution => "Pridať vlaky k textu";
+    public string Solution => Resources.Analyzer_TextNoTrains_Fix;
 
     public ProblemType ProblemType => ProblemType.Warning;
 
@@ -435,9 +436,9 @@ internal class EmptyTabTab : IProblem
 
     private TableTabTab TabTab { get; }
 
-    public string Text => $"TabTab {TabTab.Key} je prázdny.";
+    public string Text => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_TabTabEmpty, TabTab.Key);
 
-    public string Solution => "Upraviť TabTab";
+    public string Solution => Resources.Analyzer_TabTabEmpty_Fix;
 
     public ProblemType ProblemType => ProblemType.Warning;
 
@@ -474,7 +475,7 @@ internal class TabTabProblems : IProblem
             var counts = Result.ErrorCount > 0
                 ? string.Format(Resources.Analyzer_TabTab_pocet_chyb, Result.ErrorCount, Result.WarningCount)
                 : string.Format(Resources.Analyzer_TabTab_pocet_varovani, Result.WarningCount);
-            return $"TabTab {TabTab.Key}: {counts} – r. {first.LineIndex + 1}: {first.Message}";
+            return string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_TabTabProblems, TabTab.Key, counts, first.LineIndex + 1, first.Message);
         }
     }
 
@@ -504,9 +505,9 @@ internal class GVDOutOfValidity : IProblem
 
     private GVDDirectory GVDDir { get; }
 
-    public string Text => $"Grafikonu {GVDDir.PeriodFormatted} uplynula platnosť dát ({GVDDir.GVD.EndValidData:dd.MM.yyyy}).";
+    public string Text => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_DataExpired, GVDDir.PeriodFormatted, GVDDir.GVD.EndValidData);
 
-    public string Solution => "Zmeniť platnosť dát";
+    public string Solution => Resources.Analyzer_DataExpired_Fix;
 
     public ProblemType ProblemType => ProblemType.Warning;
 

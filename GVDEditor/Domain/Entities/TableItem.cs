@@ -1,4 +1,6 @@
-﻿namespace GVDEditor.Domain.Entities;
+﻿using GVDEditor.Properties;
+
+namespace GVDEditor.Domain.Entities;
 
 /// <summary>
 /// Definuje jeden stlpec katalogovej tabule a jeho vlastnosti.
@@ -61,7 +63,7 @@ public sealed class TableItem : ITable
     public TableTabTab Tab2 { get; set; } = null!;
 
     /// <inheritdoc/>
-    public string TypeName => "Riadok tabule";
+    public string TypeName => Resources.TypeName_Item;
 
     /// <inheritdoc />
     public override string ToString() => Name;

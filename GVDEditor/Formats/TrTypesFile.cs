@@ -1,11 +1,12 @@
-﻿using GVDEditor.Domain.Analysis;
-using GVDEditor.Domain.Entities;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
+using GVDEditor.Domain.Analysis;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
+using static GVDEditor.Formats.FormatCommon;
 using static GVDEditor.Formats.GvdFileConsts;
 using static ToolsCore.Tools.Utils;
-using static GVDEditor.Formats.FormatCommon;
 
 namespace GVDEditor.Formats;
 
@@ -72,7 +73,7 @@ internal static class TrTypesFile
                         };
                     }
                     else
-                        throw new ArgumentException($"Neznámy typ vlaku {s}");
+                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.TrTypes_Unknown, s));
                 }
 
                 typy.Add(typ);

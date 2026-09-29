@@ -2,6 +2,7 @@
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 using static GVDEditor.Formats.FormatCommon;
 using static GVDEditor.Formats.GvdFileConsts;
@@ -42,7 +43,7 @@ internal static class DoplnkyFile
                 if (sound == null)
                 {
                     // kod bez nahravky v banke: nezahadzujeme ho ticho, ale aspon zalogujeme
-                    LoadWarnings.Add($"{FILE_DOPLNKY}, riadok {rowNumber}: doplnok {code} vlaku {train.Number} nemá zvuk v skupine DODATKY; pri uložení sa stratí.");
+                    LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Doplnky_NoSound, FILE_DOPLNKY, rowNumber, code, train.Number));
                     continue;
                 }
 
@@ -53,7 +54,7 @@ internal static class DoplnkyFile
                 }
                 catch (Exception e)
                 {
-                    throw new FormatException($"Doplnok vlaku [{id},{i}]: " + e.Message, e);
+                    throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.Doplnky_TrainItem, id, i) + e.Message, e);
                 }
             }
         });
