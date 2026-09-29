@@ -35,7 +35,7 @@ internal static class StateDgmEditing
     public static StateDgmCategory AddCategory(StateDgmDiagram diagram, string name)
     {
         var category = new StateDgmCategory { Key = UniqueKey(diagram.Categories.Select(x => x.Key), "#Kategorie"), Name = name };
-        category.States.Add(NewState(StateDgmKeys.START_STATE));
+        category.States.Add(NewState(StateDgmKeys.StartState));
         diagram.Categories.Add(category);
         return category;
     }
@@ -45,7 +45,7 @@ internal static class StateDgmEditing
     /// </summary>
     public static StateDgmState AddState(StateDgmCategory category, StateDgmState? after)
     {
-        var state = NewState(UniqueKey(category.States.Select(x => x.Key), category.States.Count == 0 ? StateDgmKeys.START_STATE : "Stav"));
+        var state = NewState(UniqueKey(category.States.Select(x => x.Key), category.States.Count == 0 ? StateDgmKeys.StartState : "Stav"));
         var at = after != null ? category.States.IndexOf(after) + 1 : category.States.Count;
         category.States.Insert(at, state);
         return state;
@@ -69,7 +69,7 @@ internal static class StateDgmEditing
         var timePoint = new StateDgmTimePoint();
         if (state != null)
         {
-            timePoint.Key = UniqueKey(state.TimePoints.Select(x => x.Key), StateDgmKeys.START_TIME);
+            timePoint.Key = UniqueKey(state.TimePoints.Select(x => x.Key), StateDgmKeys.StartTime);
             state.TimePoints.Add(timePoint);
         }
         else

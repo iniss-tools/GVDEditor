@@ -1,4 +1,4 @@
-using GVDEditor.Domain.Analysis;
+using System.Globalization;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
@@ -398,8 +398,8 @@ internal partial class FMain
     private bool MigrateBlocks(GVDDirectory dir, List<GvdBlock> blocks)
     {
         var question = dir.Dir.IsDataRoot
-            ? string.Format(Resources.FMain_Grafikon_v_koreni_otazka, dir.Dir.FullPath, blocks.Count)
-            : string.Format(Resources.FMain_Grafikon_obsahuje_bloky_otazka, dir.Dir.FullPath, blocks.Count);
+            ? string.Format(CultureInfo.CurrentCulture, Resources.FMain_Grafikon_v_koreni_otazka, dir.Dir.FullPath, blocks.Count)
+            : string.Format(CultureInfo.CurrentCulture, Resources.FMain_Grafikon_obsahuje_bloky_otazka, dir.Dir.FullPath, blocks.Count);
         if (_dialogs.ShowQuestion(question) != DialogResult.Yes)
             return false;
 
@@ -415,11 +415,11 @@ internal partial class FMain
         catch (Exception e)
         {
             Log.Exception(e);
-            _dialogs.ShowError(string.Format(Resources.FMain_Rozdelenie_zlyhalo, e.Message));
+            _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Rozdelenie_zlyhalo, e.Message));
             return false;
         }
 
-        _dialogs.ShowInfo(string.Format(Resources.FMain_Grafikon_rozdeleny, string.Join(", ", newDirs.Select(d => d.DirName)), dir.Dir.FullPath));
+        _dialogs.ShowInfo(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Grafikon_rozdeleny, string.Join(", ", newDirs.Select(d => d.DirName)), dir.Dir.FullPath));
 
         _ctx.Workspace.GVDDirs = DirListFile.Read(_ctx.Workspace.DataDir);
         DataSaved = true;
@@ -550,7 +550,7 @@ internal partial class FMain
         if (!_stations.Contains(station)) _stations.Add(station);
         if ((string?)tscbStanica.ComboBox.SelectedItem == station) _periods.Add(dgyv);
 
-        _dialogs.ShowInfo(string.Format(Resources.FMain_Import_grafikonu_hotovy, dgyv.PeriodFormatted, dgyv.Dir.FullPath));
+        _dialogs.ShowInfo(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Import_grafikonu_hotovy, dgyv.PeriodFormatted, dgyv.Dir.FullPath));
 
         // prvy grafikon instalacie - hlavne okno ho rovno otvori a spristupni prikazy
         if (_gvdDirs.Count == 1 && InitializeDataList())
@@ -579,11 +579,11 @@ internal partial class FMain
     /// Import vlakov z ELIS: data sa nacitaju na pozadi, nepriradene stanice priradi pouzivatel a vlaky sa pridaju
     /// do grafikonu.
     /// </summary>
-    private async void ShowImportELIS()
+    private async void ShowImportElis()
     {
         var gvdDir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
 
-        var fimport = new FELISImport(gvdDir.GVD.ThisStation.Name, _ctx.Document.Trains.Count);
+        var fimport = new FelisImport(gvdDir.GVD.ThisStation.Name, _ctx.Document.Trains.Count);
         if (fimport.ShowDialog() != DialogResult.OK)
             return;
 
@@ -644,7 +644,7 @@ internal partial class FMain
 
         DataSaved = false;
 
-        _dialogs.ShowInfo(string.Format(Resources.FMain_Import_z_ELIS_dokončený, removed, imported.Count));
+        _dialogs.ShowInfo(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Import_z_ELIS_dokončený, removed, imported.Count));
     }
 
     /// <summary>
@@ -654,7 +654,7 @@ internal partial class FMain
     /// <returns><see langword="false" />, ak pouzivatel import zrusil.</returns>
     private bool ResolveStations(ElisImport import)
     {
-        var dialog = new FELISStations(_ctx, import.Unresolved, import.Client.Stations);
+        var dialog = new FelisStations(_ctx, import.Unresolved, import.Client.Stations);
         if (dialog.ShowDialog(this) != DialogResult.OK)
             return false;
 

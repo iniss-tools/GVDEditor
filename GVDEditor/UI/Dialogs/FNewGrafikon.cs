@@ -1,5 +1,5 @@
-﻿using GVDEditor.Domain.Entities;
-using GVDEditor.UI.Main;
+﻿using System.Globalization;
+using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Entities;
 using ToolsCore.Iniss.Tools;
@@ -28,7 +28,7 @@ internal partial class FNewGrafikon : Form
     public DirList NewDir { get; private set; } = null!;
 
     // bez vybranej farby sa do DirList.TXT nezapise ziadna a INISS pouzije farbu zo svojej palety
-    private Color? selectedColor;
+    private Color? _selectedColor;
 
     // vsetky grafikony instalacie (hlavne okno ma v zozname obdobi len obdobia prave vybranej stanice)
     private readonly IReadOnlyList<GVDDirectory> _grafikony;
@@ -104,14 +104,14 @@ internal partial class FNewGrafikon : Form
             }
 
             foreach (var stanica in _ctx.Workspace.Stations)
-                if (stanica.ID == id.ToString())
+                if (stanica.ID == id.ToString(CultureInfo.CurrentCulture))
                 {
                     Utils.ShowError(Resources.FNewGrafikon_Zadané_ID_vlastnej_stanice_už_patrí_inej_stanici);
                     DialogResult = DialogResult.None;
                     return;
                 }
 
-            gvd.ThisStation = new Station(id.ToString(), name, IsCustom: true);
+            gvd.ThisStation = new Station(id.ToString(CultureInfo.CurrentCulture), name, IsCustom: true);
         }
         else
         {
@@ -134,8 +134,8 @@ internal partial class FNewGrafikon : Form
 
         gvd.IsRegionText = true;
         gvd.Category = 1;
-        gvd.VLIndex = -1;
-        gvd.OnlyCityVLIndex = -999;
+        gvd.VlIndex = -1;
+        gvd.OnlyCityVlIndex = -999;
 
         var dirError = CheckDirName(tbDirName.Text, _grafikony.Select(g => g.Dir.DirName));
         if (dirError != null)
@@ -151,7 +151,7 @@ internal partial class FNewGrafikon : Form
             FullPath = _ctx.Workspace.DataDir + Path.DirectorySeparatorChar + tbDirName.Text,
             TablePort = decimal.ToInt32(nudTabPort.Value),
             ReportPort = decimal.ToInt32(nudHlaseniePort.Value),
-            BackColor = selectedColor
+            BackColor = _selectedColor
         };
 
         GvdInfo = gvd;
@@ -268,7 +268,7 @@ internal partial class FNewGrafikon : Form
         var result = colorDialogFarba.ShowDialog();
         if (result == DialogResult.OK)
         {
-            selectedColor = colorDialogFarba.Color;
+            _selectedColor = colorDialogFarba.Color;
             pbColor.BackColor = colorDialogFarba.Color;
         }
     }
@@ -297,6 +297,6 @@ internal partial class FNewGrafikon : Form
 
     private void FNewGrafikon_HelpButtonClicked(object sender, CancelEventArgs e)
     {
-        Utils.OpenShell(GvdLinkConsts.LINK_NEW_GVD);
+        Utils.OpenShell(GvdLinkConsts.LinkNewGVD);
     }
 }

@@ -25,7 +25,7 @@ internal sealed record TableFontUsage(int CatalogColumns, int TrainTexts, IReadO
     public static TableFontUsage Find(int fontId, IEnumerable<TableCatalog> catalogs, IEnumerable<TableText> texts,
         IEnumerable<TableTabTab> tabTabs)
     {
-        var columns = catalogs.Sum(catalog => catalog.Items.Count(item => item.FontIDX == fontId));
+        var columns = catalogs.Sum(catalog => catalog.Items.Count(item => item.FontIdx == fontId));
         var trainTexts = texts.Sum(text => text.Trains.Count(train => train.FontID == fontId));
 
         // {n} v TabTab môže byť kód písma aj kód znaku - preto sa len hlási, nemení sa
@@ -45,9 +45,9 @@ internal sealed record TableFontUsage(int CatalogColumns, int TrainTexts, IReadO
     {
         var changed = 0;
 
-        foreach (var item in catalogs.SelectMany(catalog => catalog.Items).Where(item => item.FontIDX == oldId))
+        foreach (var item in catalogs.SelectMany(catalog => catalog.Items).Where(item => item.FontIdx == oldId))
         {
-            item.FontIDX = newId;
+            item.FontIdx = newId;
             changed++;
         }
 

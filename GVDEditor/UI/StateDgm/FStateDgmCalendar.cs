@@ -1,3 +1,4 @@
+using System.Globalization;
 using ExControls;
 using GVDEditor.Domain.Entities;
 using GVDEditor.TabTabEditor;
@@ -69,7 +70,7 @@ public partial class FStateDgmCalendar : Form
     private sealed record TrainItem(Train Train)
     {
         public string Text => $"{Train.Type.Key} {Train.Number}{(string.IsNullOrEmpty(Train.Name) ? "" : " " + Train.Name)}  "
-                              + $"{Train.Arrival?.ToString("HH:mm") ?? "–"} / {Train.Departure?.ToString("HH:mm") ?? "–"}  {Train.Routing.Symbol}";
+                              + $"{Train.Arrival?.ToString("HH:mm", CultureInfo.CurrentCulture) ?? "–"} / {Train.Departure?.ToString("HH:mm", CultureInfo.CurrentCulture) ?? "–"}  {Train.Routing.Symbol}";
     }
 
     /// <summary>Riadok kalendara (vlastnosti su DataPropertyName stlpcov).</summary>
@@ -127,7 +128,7 @@ public partial class FStateDgmCalendar : Form
             if (d.Categories.Count > 0)
             {
                 Category = index >= 1 && index <= d.Categories.Count ? d.Categories[index - 1] : d.Categories[^1];
-                lCategory.Text = string.Format(Resources.FStateDgmCalendar_Kategoria, Category.Name.Length > 0 ? Category.Name : Category.Key, cat?.ToString() ?? "?")
+                lCategory.Text = string.Format(CultureInfo.CurrentCulture, Resources.FStateDgmCalendar_Kategoria, Category.Name.Length > 0 ? Category.Name : Category.Key, cat?.ToString(CultureInfo.CurrentCulture) ?? "?")
                                  + (catNote != null ? "  –  " + catNote : "")
                                  + (index < 1 || index > d.Categories.Count ? "  –  " + Resources.FStateDgmCalendar_MimoRozsahu : "");
             }
@@ -152,14 +153,14 @@ public partial class FStateDgmCalendar : Form
     {
         if (string.IsNullOrWhiteSpace(text)) return (null, null);
         var p = ExprParser.Parse(text, context, _symbols);
-        if (!p.Success) return (null, string.Format(Resources.FStateDgmCalendar_ChybaVyrazu, text, p.Error?.Message));
+        if (!p.Success) return (null, string.Format(CultureInfo.CurrentCulture, Resources.FStateDgmCalendar_ChybaVyrazu, text, p.Error?.Message));
         try
         {
             return (eval.Evaluate(p.Root!), null);
         }
         catch (ExprEvaluationException e)
         {
-            return (null, string.Format(Resources.FStateDgmCalendar_ChybaVyrazu, text, e.Message));
+            return (null, string.Format(CultureInfo.CurrentCulture, Resources.FStateDgmCalendar_ChybaVyrazu, text, e.Message));
         }
     }
 
@@ -222,9 +223,9 @@ public partial class FStateDgmCalendar : Form
                 2 => Resources.FStateDgm_Graf_Odchod,
                 _ => ""
             },
-            Add = add is { } a && (mode ?? 0) > 0 ? a.ToString() : "",
-            Delay = tp != null && (mode ?? 0) > 0 ? (delay * 60).ToString() : "",
-            Result = (mode ?? 0) > 0 ? result?.ToString("HH:mm:ss") ?? "–" : "",
+            Add = add is { } a && (mode ?? 0) > 0 ? a.ToString(CultureInfo.CurrentCulture) : "",
+            Delay = tp != null && (mode ?? 0) > 0 ? (delay * 60).ToString(CultureInfo.CurrentCulture) : "",
+            Result = (mode ?? 0) > 0 ? result?.ToString("HH:mm:ss", CultureInfo.CurrentCulture) ?? "–" : "",
             Wait = waitNames,
             Short = modif == 1,
             Note = string.Join("; ", notes)

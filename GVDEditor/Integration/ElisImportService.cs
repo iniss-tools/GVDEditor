@@ -31,7 +31,7 @@ internal sealed class ElisImportOptions
 /// </summary>
 internal sealed class ElisImport
 {
-    public required ELISBridgeClient Client { get; init; }
+    public required ElisBridgeClient Client { get; init; }
     public required ElisResult Data { get; init; }
     public required List<string> Unresolved { get; init; }
     public required string GVDPath { get; init; }
@@ -72,7 +72,7 @@ internal static class ElisImportService
 
         return Task.Run(() =>
         {
-            var client = new ELISBridgeClient(typeList, operatorList, gvd, track, stations)
+            var client = new ElisBridgeClient(typeList, operatorList, gvd, track, stations)
             {
                 AppDirectory = options.AppDirectory,
                 RegistrationNumber = options.RegistrationNumber,

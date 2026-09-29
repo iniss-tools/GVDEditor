@@ -29,6 +29,10 @@ namespace GVDEditor.DocScreenshots;
 /// </summary>
 internal sealed class Shots(Program.Options options, string theme, List<string> log)
 {
+    // polia dátumov od/do v okne Nový grafikon
+    private static readonly string[] FromPickers = ["dtpDataOd", "dtpGVDOd"];
+    private static readonly string[] ToPickers = ["dtpDataDo", "dtpGVDDo"];
+
     private int _count;
 
     public int Run(string gvdPath)
@@ -52,9 +56,9 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             // nový grafikon pre ďalšiu stanicu na obdobie 2026/2027
             Shot("novy-grafikon/novy-grafikon", () => new FNewGrafikon(Program.Context, Periods(main)), form =>
             {
-                foreach (var name in new[] { "dtpDataOd", "dtpGVDOd" })
+                foreach (var name in FromPickers)
                     ((ExControls.ExDateTimePicker)Field(form, name)).Value = new DateTime(2026, 12, 13);
-                foreach (var name in new[] { "dtpDataDo", "dtpGVDDo" })
+                foreach (var name in ToPickers)
                     ((ExControls.ExDateTimePicker)Field(form, name)).Value = new DateTime(2027, 12, 11);
                 var station = (ComboBox)Field(form, "cbStationName");
                 station.SelectedIndex = station.Items.Cast<object>().ToList().FindIndex(o => o.ToString() == "Veľká Ves");
@@ -90,7 +94,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             // skladanie radenia: vybraná druhá nahrávka „číslo“ a priečinok s vlastnosťami vozňov
             Shot("radenie/uprava-radenia", () => new FRadenie(Program.Context, [.. express.Radenia[0].Sounds]), form =>
             {
-                SelectCombo(form, "cbSoundDir", ((ComboBox)Field(form, "cbSoundDir")).Items.IndexOf(FyzGroupType.VOZY1));
+                SelectCombo(form, "cbSoundDir", ((ComboBox)Field(form, "cbSoundDir")).Items.IndexOf(FyzGroupType.Vozy1));
                 SelectListItem(form, "listAllSounds", 0);
                 SelectListItem(form, "listRadenie", 5);
             });
@@ -212,10 +216,10 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("import-dat/typ-stlpca", () => new FColumnTypeSelect(), form => SelectListItem(form, "listColumnTypes", 5));
 
             // import z ELIS: voľby importu a priradenie staníc, ktoré ELIS pomenúva inak
-            Shot("import-z-elis/import-z-elis", () => new FELISImport(gvdDir.GVD.ThisStation.Name, trains.Count),
+            Shot("import-z-elis/import-z-elis", () => new FelisImport(gvdDir.GVD.ThisStation.Name, trains.Count),
                 form => ((TextBoxBase)Field(form, "tbAppPath")).Select(0, 0));
             Shot("import-z-elis/priradenie-stanic",
-                () => new FELISStations(Program.Context, ["Hraničná št.hr.", "Lipová zastávka", "Nová Obec", "Podhradie mesto"], Program.Context.Stations),
+                () => new FelisStations(Program.Context, ["Hraničná št.hr.", "Lipová zastávka", "Nová Obec", "Podhradie mesto"], Program.Context.Stations),
                 form => Resize(form, 720, 420));
 
             // analýza s nájdenými problémami: prázdny a nepoužitý TabTab a uplynutá platnosť dát (po snímke sa vráti)
@@ -308,7 +312,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 {
                     var trainBox = (ComboBox)Field(form, "cbTrain");
                     for (var i = 0; i < trainBox.Items.Count; i++)
-                        if (trainBox.GetItemText(trainBox.Items[i]).Contains("521", StringComparison.Ordinal))
+                        if (trainBox.GetItemText(trainBox.Items[i])?.Contains("521", StringComparison.Ordinal) == true)
                             trainBox.SelectedIndex = i;
                     ((NumericUpDown)Field(form, "nudDelayDep")).Value = 5;
                     ((CheckBox)Field(form, "chkOnlySection")).Checked = false;

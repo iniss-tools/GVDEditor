@@ -1,7 +1,7 @@
 
 namespace GVDEditor.UI.Import
 {
-    partial class FELISImport
+    partial class FelisImport
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace GVDEditor.UI.Import
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FELISImport));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FelisImport));
             this.cbSkipPassingTrains = new ExControls.ExCheckBox();
             this.cbReorder = new ExControls.ExCheckBox();
             this.cbReplace = new ExControls.ExCheckBox();
@@ -158,7 +158,7 @@ namespace GVDEditor.UI.Import
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FELISImport";
+            this.Name = "FelisImport";
             this.ShowInTaskbar = false;
             this.exGroupBox1.ResumeLayout(false);
             this.exGroupBox1.PerformLayout();

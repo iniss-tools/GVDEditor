@@ -1,4 +1,5 @@
-﻿using ExControls;
+﻿using System.Globalization;
+using ExControls;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.StateDgm;
 
@@ -27,10 +28,10 @@ internal sealed class SdTimePointEditor : SdEditorBase
         AddRow(Resources.FStateDgm_TP_Offset1, _off1);
         AddRow(Resources.FStateDgm_TP_Key2, _key2);
         AddRow(Resources.FStateDgm_TP_Offset2, _off2);
-        _op = Combo(new SdEditorContext.Item(Resources.FStateDgm_TP_Min, StateDgmKeys.OPERATOR_MIN), new SdEditorContext.Item(Resources.FStateDgm_TP_Max, StateDgmKeys.OPERATOR_MAX));
+        _op = Combo(new SdEditorContext.Item(Resources.FStateDgm_TP_Min, StateDgmKeys.OperatorMin), new SdEditorContext.Item(Resources.FStateDgm_TP_Max, StateDgmKeys.OperatorMax));
         AddRow(Resources.FStateDgm_TP_Operator, _op);
         AddInfo(Resources.FStateDgm_TP_Info);
-        AddInfo(string.Format(Resources.FStateDgm_TP_Zabudovane, string.Join(", ", StateDgmKeys.BuiltInTimePoints)));
+        AddInfo(string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_TP_Zabudovane, string.Join(", ", StateDgmKeys.BuiltInTimePoints)));
 
         _key.TextChanged += (_, _) => Set(t =>
         {
@@ -42,7 +43,7 @@ internal sealed class SdTimePointEditor : SdEditorBase
         _key2.TextChanged += (_, _) => Set(t => t.TimePointKey2 = _key2.Text.Trim());
         _off1.ValueChanged += (_, _) => Set(t => t.Offset1 = (int)_off1.Value);
         _off2.ValueChanged += (_, _) => Set(t => t.Offset2 = (int)_off2.Value);
-        _op.SelectedIndexChanged += (_, _) => Set(t => t.Operator = SdEditorContext.Value(_op) as string ?? StateDgmKeys.OPERATOR_MIN);
+        _op.SelectedIndexChanged += (_, _) => Set(t => t.Operator = SdEditorContext.Value(_op) as string ?? StateDgmKeys.OperatorMin);
     }
 
     private void Set(Action<StateDgmTimePoint> a)
@@ -70,7 +71,7 @@ internal sealed class SdTimePointEditor : SdEditorBase
             _key2.Text = t.TimePointKey2;
             _off1.Value = Math.Clamp(t.Offset1, _off1.Minimum, _off1.Maximum);
             _off2.Value = Math.Clamp(t.Offset2, _off2.Minimum, _off2.Maximum);
-            SdEditorContext.Select(_op, t.Operator == StateDgmKeys.OPERATOR_MAX ? StateDgmKeys.OPERATOR_MAX : StateDgmKeys.OPERATOR_MIN);
+            SdEditorContext.Select(_op, t.Operator == StateDgmKeys.OperatorMax ? StateDgmKeys.OperatorMax : StateDgmKeys.OperatorMin);
         }
         finally
         {

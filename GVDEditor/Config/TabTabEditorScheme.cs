@@ -34,7 +34,7 @@ public record TabTabEditorScheme() : IColorScheme
     public string Name => Resources.Scheme_TabTabEditor;
 
     [XmlIgnore]
-    private static readonly Dictionary<string, ColorSetting> props = new()
+    private static readonly Dictionary<string, ColorSetting> Props = new()
     {
         [nameof(Number)] = new(Color.Purple) { Name = Resources.Scheme_Number, DisableBackColorEdit = true },
         [nameof(String)] = new(Color.Red) { Name = Resources.Scheme_String, DisableBackColorEdit = true  },
@@ -255,7 +255,7 @@ public record TabTabEditorScheme() : IColorScheme
 
     #endregion
 
-    private static ColorSetting InitProperty(string propname) => props[propname] with { };
+    private static ColorSetting InitProperty(string propname) => Props[propname] with { };
 
     private static void AssignProperty(ref ColorSetting prop, string propname)
     {
@@ -263,9 +263,9 @@ public record TabTabEditorScheme() : IColorScheme
             prop = InitProperty(propname);
         else
         {
-            prop.Name = props[propname].Name;
-            prop.DisableBackColorEdit = props[propname].DisableBackColorEdit;
-            prop.DisableFontBoldEdit = props[propname].DisableFontBoldEdit;
+            prop.Name = Props[propname].Name;
+            prop.DisableBackColorEdit = Props[propname].DisableBackColorEdit;
+            prop.DisableFontBoldEdit = Props[propname].DisableFontBoldEdit;
         }
     }
 

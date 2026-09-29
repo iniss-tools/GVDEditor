@@ -24,7 +24,7 @@ internal static class ModeTabsFile
     /// <param name="path">cesta do priecinka s datami</param>
     public static Content Read(string path)
     {
-        var fileModeTabs = CombinePath(path, FILE_MODETABS)!;
+        var fileModeTabs = CombinePath(path, FileModetabs)!;
 
         var fonts = new List<TableFont>();
 
@@ -43,11 +43,11 @@ internal static class ModeTabsFile
             var font = new TableFont
             {
                 FontID = ParseIntOrDefault(modetabsF.Get(area, $"IDX_{pad}", false)),
-                Name = modetabsF.Get(area, $"NAME_{pad}").ANSItoUTF(),
+                Name = modetabsF.Get(area, $"NAME_{pad}").AnsiToUTF(),
                 Size = ParseIntOrDefault(modetabsF.Get(area, $"SIZE_{pad}", false)),
                 Width = ParseIntOrDefault(modetabsF.Get(area, $"WIDTH_{pad}", false)),
                 IsProportional = ParseIntOrDefault(modetabsF.Get(area, $"PROPORTIONAL_{pad}", false)).ToBool(),
-                FileName = ParseStringOrDefault(modetabsF.Get(area, $"FILE_NAME_{pad}", false)).ANSItoUTF(),
+                FileName = ParseStringOrDefault(modetabsF.Get(area, $"FILE_NAME_{pad}", false)).AnsiToUTF(),
                 IsDia = ParseIntOrDefault(modetabsF.Get(area, $"IS_DIA_{pad}", false)).ToBool(),
                 IsLower = ParseIntOrDefault(modetabsF.Get(area, $"IS_LOWER_{pad}", false)).ToBool(),
                 IsUpper = ParseIntOrDefault(modetabsF.Get(area, $"IS_UPPER_{pad}", false)).ToBool(),
@@ -56,7 +56,7 @@ internal static class ModeTabsFile
                 IsSpecAssigment = ParseIntOrDefault(modetabsF.Get(area, $"IS_SPECIAL_ASSIGNMENT_{pad}", false)).ToBool()
             };
 
-            var type = ParseStringOrDefault(modetabsF.Get(area, $"BOLD_FACE_{pad}", false)).ANSItoUTF();
+            var type = ParseStringOrDefault(modetabsF.Get(area, $"BOLD_FACE_{pad}", false)).AnsiToUTF();
             var parsedType = TableFontType.Parse(type);
             if (parsedType == null)
             {
@@ -77,7 +77,7 @@ internal static class ModeTabsFile
                 continue;
 
             sections[otherArea] = modetabsF.Get(otherArea)!
-                .ToDictionary(pair => pair.Key, pair => pair.Value.ANSItoUTF());
+                .ToDictionary(pair => pair.Key, pair => pair.Value.AnsiToUTF());
         }
 
         return new Content(fonts, fontDir, sections);
@@ -117,7 +117,7 @@ internal static class ModeTabsFile
     /// <param name="sections">ciselniky z povodneho suboru (<see cref="Content.Sections" />)</param>
     public static void Write(string path, IList<TableFont> fonts, string fontdir, Dictionary<string, Dictionary<string, string>> sections)
     {
-        var fileModeTabs = CombinePath(path, FILE_MODETABS)!;
+        var fileModeTabs = CombinePath(path, FileModetabs)!;
 
         var modetabsF = new TxtPropsAreasFields(fileModeTabs, true);
 

@@ -28,12 +28,12 @@ public class AudioFileTests
         Directory.Delete(_dir, true);
     }
 
-    private string File_ => Path.Combine(_dir, GvdFileConsts.FILE_AUDIO);
+    private string File => Path.Combine(_dir, GvdFileConsts.FileAudio);
 
     [TestMethod]
     public void Audio_TestARiadkyZaLomkou_PrezijuNacitanieAZapis()
     {
-        File.WriteAllLines(File_,
+        System.IO.File.WriteAllLines(File,
         [
             "9900100,Dolné Mesto,Dolné Mesto,Hlásenie,",
             "TEST,Test,Test,TestHlas,",
@@ -46,7 +46,7 @@ public class AudioFileTests
         CollectionAssert.AreEqual(new[] { "9900100", "TEST" }, audios.Select(a => a.Station.ID).ToArray());
 
         AudioFile.Write(_dir, audios, trailer);
-        var lines = File.ReadAllLines(File_, Encodings.Win1250);
+        var lines = System.IO.File.ReadAllLines(File, Encodings.Win1250);
 
         StringAssert.StartsWith(lines[1], "TEST,Test,Test,TestHlas", lines[1]);
         Assert.AreEqual("/koniec okruhov", lines[2]);

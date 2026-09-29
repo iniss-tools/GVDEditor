@@ -1,3 +1,4 @@
+using System.Globalization;
 using ExControls;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
@@ -157,9 +158,9 @@ public partial class FStateDgm : Form
     /// </summary>
     private void SetupTextView()
     {
-        const int SCI_SETILEXER = 4033;
+        const int sciSetilexer = 4033;
         var style = _ctx.UsingStyle;
-        _sc.DirectMessage(SCI_SETILEXER, IntPtr.Zero, IntPtr.Zero);
+        _sc.DirectMessage(sciSetilexer, IntPtr.Zero, IntPtr.Zero);
         _sc.StyleResetDefault();
         _sc.Styles[Style.Default].Font = style.TabTabEditorScheme.Font.Name;
         _sc.Styles[Style.Default].SizeF = style.TabTabEditorScheme.Font.Size;
@@ -267,7 +268,7 @@ public partial class FStateDgm : Form
         {
             // text sa otvori na opravu (FStateDgm_Load); model je dovtedy prazdny
             var path = StateDgmFile.PathOf(_dir);
-            ExMessageBox.Show(string.Format(Resources.FStateDgm_SuborChyba, path, e.Line + 1, e.Message), Resources.FStateDgm_SuborChyba_Nadpis,
+            ExMessageBox.Show(string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_SuborChyba, path, e.Line + 1, e.Message), Resources.FStateDgm_SuborChyba_Nadpis,
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             _rawText = File.ReadAllText(path, Encodings.Win1250);
             _rawError = e;
@@ -320,10 +321,10 @@ public partial class FStateDgm : Form
         {
             var line = Math.Clamp(_rawError.Line, 0, Math.Max(0, _sc.Lines.Count - 1));
             _sc.Lines[line].MarkerAdd(ERROR_MARKER);
-            _rawInfo.Text = string.Format(Resources.FStateDgm_Text_Chyba, line + 1, _rawError.Message);
+            _rawInfo.Text = string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_Text_Chyba, line + 1, _rawError.Message);
             _problems.Add(new ProblemRow(new StateDgmDiagnostic(ExprSeverity.Error, StateDgmDiagnosticCode.Syntax, _rawError.Message, StateDgmLocation.Root)
             {
-                Path = string.Format(Resources.FStateDgm_Text_Riadok, line + 1)
+                Path = string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_Text_Riadok, line + 1)
             }));
             GoToRawError();
         }
@@ -590,7 +591,7 @@ public partial class FStateDgm : Form
 
     private void UpdateTitle()
     {
-        Text = string.Format(Resources.FStateDgm_Title, _stationName) + (_dirty ? " *" : "");
+        Text = string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_Title, _stationName) + (_dirty ? " *" : "");
     }
 
     private void ValidateDiagram()
@@ -615,7 +616,7 @@ public partial class FStateDgm : Form
         var errors = diags.Count(x => x.IsError);
         var warnings = diags.Count(x => x.Severity == ExprSeverity.Warning);
         var infos = diags.Count - errors - warnings;
-        tsslStatus.Text = diags.Count == 0 ? Resources.FStateDgm_BezProblemov : string.Format(Resources.FStateDgm_PocetProblemov, errors, warnings, infos);
+        tsslStatus.Text = diags.Count == 0 ? Resources.FStateDgm_BezProblemov : string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_PocetProblemov, errors, warnings, infos);
         tpProblems.Text = diags.Count == 0 ? Resources.FStateDgm_Problemy : $"{Resources.FStateDgm_Problemy} ({diags.Count})";
 
         if (tcCenter.SelectedTab == tpText) RefreshText();
@@ -652,7 +653,7 @@ public partial class FStateDgm : Form
         // text s chybou syntaxe sa po potvrdeni ulozi tak, ako je; opraveny text sa ulozi cez model
         if (_rawMode && !ApplyRawText())
         {
-            if (Utils.ShowWarning(string.Format(Resources.FStateDgm_UlozitText, _rawError!.Line + 1, _rawError.Message), MessageBoxButtons.YesNo) != DialogResult.Yes)
+            if (Utils.ShowWarning(string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_UlozitText, _rawError!.Line + 1, _rawError.Message), MessageBoxButtons.YesNo) != DialogResult.Yes)
                 return false;
             try
             {
@@ -666,13 +667,13 @@ public partial class FStateDgm : Form
 
             _dirty = false;
             UpdateTitle();
-            tsslStatus.Text = string.Format(Resources.FStateDgm_Ulozene, DateTime.Now.ToShortTimeString()) + "  –  " + Resources.FStateDgm_Text_Rezim;
+            tsslStatus.Text = string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_Ulozene, DateTime.Now.ToShortTimeString()) + "  –  " + Resources.FStateDgm_Text_Rezim;
             return true;
         }
 
         ValidateDiagram();
         var errors = _problems.Count(p => p.Diagnostic.IsError);
-        if (errors > 0 && Utils.ShowWarning(string.Format(Resources.FStateDgm_UlozitSChybami, errors), MessageBoxButtons.YesNo) != DialogResult.Yes)
+        if (errors > 0 && Utils.ShowWarning(string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_UlozitSChybami, errors), MessageBoxButtons.YesNo) != DialogResult.Yes)
         {
             tcBottom.SelectedTab = tpProblems;
             return false;
@@ -690,7 +691,7 @@ public partial class FStateDgm : Form
 
         _dirty = false;
         UpdateTitle();
-        tsslStatus.Text = string.Format(Resources.FStateDgm_Ulozene, DateTime.Now.ToShortTimeString()) + "  –  " + tsslStatus.Text;
+        tsslStatus.Text = string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_Ulozene, DateTime.Now.ToShortTimeString()) + "  –  " + tsslStatus.Text;
         return true;
     }
 
@@ -758,7 +759,7 @@ public partial class FStateDgm : Form
             _ => null
         };
         if (name == null) return;
-        if (Utils.ShowQuestion(string.Format(Resources.FStateDgm_OdstranitOtazka, name)) != DialogResult.Yes) return;
+        if (Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_OdstranitOtazka, name)) != DialogResult.Yes) return;
 
         // po odstraneni sa vyberie vlastnik polozky, inak jej skupina v strome
         var select = StateDgmEditing.Remove(_d, tag!) ?? tag switch
@@ -789,7 +790,7 @@ public partial class FStateDgm : Form
         var (template, name) = sender == tsmiTplCZ ? (StateDgmTemplate.Czech, Resources.FStateDgm_PredlohaCZ)
             : sender == tsmiTplILTIS ? (StateDgmTemplate.SlovakIltis, Resources.FStateDgm_PredlohaILTIS)
             : (StateDgmTemplate.Slovak, Resources.FStateDgm_PredlohaSK);
-        if (Utils.ShowQuestion(string.Format(Resources.FStateDgm_PredlohaOtazka, name)) != DialogResult.Yes) return;
+        if (Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_PredlohaOtazka, name)) != DialogResult.Yes) return;
         _d = StateDgmDiagram.Parse(StateDgmFile.TemplateText(template));
         if (_rawMode) SetRawMode(false);
         MarkDirty();
@@ -909,7 +910,7 @@ public partial class FStateDgm : Form
     {
         var row = SelectedEventRow;
         if (row == null || _selState == null) return;
-        if (Utils.ShowQuestion(string.Format(Resources.FStateDgm_OdstranitOtazka, row.Key)) != DialogResult.Yes) return;
+        if (Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_OdstranitOtazka, row.Key)) != DialogResult.Yes) return;
         if (row.Event != null) _selState.Events.Remove(row.Event);
         if (row.Control != null) _selState.Controls.Remove(row.Control);
         MarkDirty();
@@ -961,7 +962,7 @@ public partial class FStateDgm : Form
     {
         var row = SelectedStarterRow;
         if (row == null || _selState == null) return;
-        if (Utils.ShowQuestion(string.Format(Resources.FStateDgm_OdstranitOtazka, row.Key)) != DialogResult.Yes) return;
+        if (Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_OdstranitOtazka, row.Key)) != DialogResult.Yes) return;
         _selState.Starters.Remove(row.Starter);
         MarkDirty();
         FillStateGrids();
@@ -1083,7 +1084,7 @@ public partial class FStateDgm : Form
         public StateDgmEvent? Event { get; } = ev;
         public StateDgmControl? Control { get; } = control;
 
-        public string CtrlId => Control?.CtrlId.ToString() ?? Resources.FStateDgm_BezTlacidla;
+        public string CtrlId => Control?.CtrlId.ToString(CultureInfo.CurrentCulture) ?? Resources.FStateDgm_BezTlacidla;
         public string Design => Control?.DesignKey ?? "";
         public string Key => Event?.Key ?? Control?.EventKey ?? "";
         public string Class => Event?.Class ?? "";

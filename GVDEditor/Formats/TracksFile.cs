@@ -23,23 +23,23 @@ internal static class TracksFile
     /// <param name="warnings">zberac varovani pri nacitani</param>
     public static List<Track> Read(string path, IEnumerable<TableLogical> logicals, LoadWarnings warnings)
     {
-        var file = CombinePath(path, FILE_POZICE_A)!;
+        var file = CombinePath(path, FilePoziceA)!;
 
         var tracks = new List<Track>();
 
-        using var poziceAF = new CsvFileReader(file);
+        using var poziceAf = new CsvFileReader(file);
         var riadok = 1;
         var row = new CsvRow();
         while (true)
         {
-            var status = poziceAF.ReadRow(row);
+            var status = poziceAf.ReadRow(row);
             if (LineIsEmpty(status))
             {
                 riadok++;
                 continue;
             }
 
-            if (LineIsEOF(status))
+            if (LineIsEof(status))
                 break;
 
             try
@@ -48,10 +48,10 @@ internal static class TracksFile
                 {
                     Key = row[0],
                     Name = row[1],
-                    FullName = row[2].ANSItoUTF(),
+                    FullName = row[2].AnsiToUTF(),
                     TrackName = row[4],
                     SoundName = row[6],
-                    Platform = new Platform(row[5], row[3].ANSItoUTF(), row[7])
+                    Platform = new Platform(row[5], row[3].AnsiToUTF(), row[7])
                 };
 
                 var tableCount = ParseIntOrDefault(row[8]);
@@ -66,14 +66,14 @@ internal static class TracksFile
                         }
 
                 // dve nepovinne textove polia za prioritami (FILL_SECTION 30-33)
-                track.PlatformTrackText = row.ElementAtOrDefaultStr(9 + 2 * tableCount).ANSItoUTF();
-                track.AltTrackText = row.ElementAtOrDefaultStr(10 + 2 * tableCount).ANSItoUTF();
+                track.PlatformTrackText = row.ElementAtOrDefaultStr(9 + 2 * tableCount).AnsiToUTF();
+                track.AltTrackText = row.ElementAtOrDefaultStr(10 + 2 * tableCount).AnsiToUTF();
 
                 tracks.Add(track);
             }
             catch (Exception e)
             {
-                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FORMAT_EX, FILE_POZICE_A, riadok) + e.Message, e);
+                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FormatEx, FilePoziceA, riadok) + e.Message, e);
             }
 
             riadok++;
@@ -109,7 +109,7 @@ internal static class TracksFile
             {
                 var descriptions = variants.Select(variant =>
                     $"„{variant.Key.FullName}“/{variant.Key.SoundName} ({string.Join(", ", variant.Select(track => track.Key))})");
-                warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.TracksFile_PlatformDiffers, FILE_POZICE_A, group.Key, string.Join("; ", descriptions)) +
+                warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.TracksFile_PlatformDiffers, FilePoziceA, group.Key, string.Join("; ", descriptions)) +
                                  string.Format(CultureInfo.CurrentCulture, Resources.TracksFile_PlatformShared, shared.FullName, shared.SoundName));
             }
 
@@ -125,9 +125,9 @@ internal static class TracksFile
     /// <param name="tracks">kolaje</param>
     public static void Write(string path, IEnumerable<Track> tracks)
     {
-        var file = CombinePath(path, FILE_POZICE_A)!;
+        var file = CombinePath(path, FilePoziceA)!;
 
-        using var poziceAF = new CsvFileWriter(file);
+        using var poziceAf = new CsvFileWriter(file);
 
         var allTracks = tracks.ToList();
         if (!allTracks.Contains(Track.None))
@@ -162,7 +162,7 @@ internal static class TracksFile
                 row.Add(track.AltTrackText.Quote().UTFtoANSI());
             }
 
-            poziceAF.WriteRow(row);
+            poziceAf.WriteRow(row);
         }
     }
 }

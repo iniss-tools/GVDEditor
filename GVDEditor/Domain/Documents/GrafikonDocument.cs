@@ -78,7 +78,7 @@ internal sealed class GrafikonDocument
         Tracks = [Track.None],
         Platforms = [Platform.None],
         Operators = [Operator.None],
-        ReportTypes = ReportType.GetDefaultValuesSK(),
+        ReportTypes = ReportType.GetDefaultValuesSk(),
         ReportVariants = ReportVariant.GetDefaultValues(),
         LocalLanguages = languages.ToList()
     };

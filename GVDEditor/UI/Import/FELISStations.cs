@@ -1,4 +1,5 @@
-﻿using ExControls;
+﻿using System.Globalization;
+using ExControls;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.Integration;
@@ -16,7 +17,7 @@ namespace GVDEditor.UI.Import;
 /// pri ďalšom importe už nepýtal. Stanica sa nikdy nezakladá sama - inak by v grafikone
 /// vznikli dva názvy tej istej stanice.
 /// </remarks>
-internal partial class FELISStations : Form
+internal partial class FelisStations : Form
 {
     /// <summary>
     /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
@@ -35,16 +36,16 @@ internal partial class FELISStations : Form
 
     /// <summary>
     /// Vysledne priradenie: nazov z ELIS -> ID stanice, alebo
-    /// <see cref="ElisMapFile.ELIS_MAP_SKIP" /> ak sa ma stanica vynechat.
+    /// <see cref="ElisMapFile.ElisMapSkip" /> ak sa ma stanica vynechat.
     /// </summary>
     internal Dictionary<string, string> Result { get; } = new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>
-    /// Vytvori novy formular typu <see cref="FELISStations" />.
+    /// Vytvori novy formular typu <see cref="FelisStations" />.
     /// </summary>
     /// <param name="unresolvedNames">Nazvy z ELIS, ktore sa nepodarilo priradit automaticky.</param>
     /// <param name="stations">Stanice zvukovej banky a grafikonu.</param>
-    public FELISStations(EditorContext context, List<string> unresolvedNames, StationDirectory stations)
+    public FelisStations(EditorContext context, List<string> unresolvedNames, StationDirectory stations)
     {
         _ctx = context;
         InitializeComponent();
@@ -62,7 +63,7 @@ internal partial class FELISStations : Form
             .ToList();
 
         lInfo.Text =
-            string.Format(Resources.FELISStations_FELISStations_Týchto__0__staníc_z_programu_ELIS_sa_nepodarilo_priradiť_automaticky, _names.Count);
+            string.Format(CultureInfo.CurrentCulture, Resources.FELISStations_FELISStations_Týchto__0__staníc_z_programu_ELIS_sa_nepodarilo_priradiť_automaticky, _names.Count);
 
         FillGrid();
     }
@@ -78,7 +79,7 @@ internal partial class FELISStations : Form
         dgvStations.Rows.Clear();
         foreach (var name in _names)
         {
-            var suggestion = ELISBridgeClient.Suggest(name, _directory);
+            var suggestion = ElisBridgeClient.Suggest(name, _directory);
 
             //do bunky smie ist len hodnota, ktora je v zozname, inak DataGridView hlasi chybu
             var value = suggestion is not null && items.Contains(suggestion.Name) ? suggestion.Name : SkipItem;
@@ -120,7 +121,7 @@ internal partial class FELISStations : Form
 
         if (created.Count != 0)
         {
-            _stations.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.CurrentCulture));
+            _stations.Sort((a, b) => CultureInfo.CurrentCulture.CompareInfo.Compare(a.Name, b.Name));
             RefreshComboItems();
         }
     }
@@ -152,10 +153,10 @@ internal partial class FELISStations : Form
             used.Add(station.ID);
 
         var id = 9000001;
-        while (used.Contains(id.ToString()))
+        while (used.Contains(id.ToString(CultureInfo.CurrentCulture)))
             id++;
 
-        return id.ToString();
+        return id.ToString(CultureInfo.CurrentCulture);
     }
 
     /// <summary>
@@ -194,12 +195,12 @@ internal partial class FELISStations : Form
 
             if (string.IsNullOrEmpty(chosen) || chosen == SkipItem)
             {
-                Result[elisName] = ElisMapFile.ELIS_MAP_SKIP;
+                Result[elisName] = ElisMapFile.ElisMapSkip;
                 continue;
             }
 
             var station = _stations.FirstOrDefault(s => s.Name == chosen);
-            Result[elisName] = station is null ? ElisMapFile.ELIS_MAP_SKIP : station.ID;
+            Result[elisName] = station is null ? ElisMapFile.ElisMapSkip : station.ID;
         }
 
         DialogResult = DialogResult.OK;

@@ -23,7 +23,7 @@ internal static class TrTypesFile
     /// <param name="dataDir">priecinok DATA instalacie INISS</param>
     public static List<TrainType> Read(string dataDir, LoadWarnings warnings)
     {
-        var fileTrTypes = CombinePath(dataDir, FILE_TRTYPES)!;
+        var fileTrTypes = CombinePath(dataDir, FileTrtypes)!;
 
         var typy = new List<TrainType>();
 
@@ -47,7 +47,7 @@ internal static class TrTypesFile
                 continue;
             }
 
-            if (LineIsEOF(status))
+            if (LineIsEof(status))
                 break;
 
             try
@@ -81,7 +81,7 @@ internal static class TrTypesFile
             }
             catch (Exception e)
             {
-                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FORMAT_EX, FILE_TRTYPES, riadok) + e.Message, e);
+                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FormatEx, FileTrtypes, riadok) + e.Message, e);
             }
 
             riadok++;
@@ -97,7 +97,7 @@ internal static class TrTypesFile
     /// <param name="dataDir">priecinok DATA instalacie INISS</param>
     public static void Write(string dataDir, IEnumerable<TrainType> typy)
     {
-        var fileTrTypes = CombinePath(dataDir, FILE_TRTYPES)!;
+        var fileTrTypes = CombinePath(dataDir, FileTrtypes)!;
 
         using var trtypesF = new CsvFileWriter(fileTrTypes);
         foreach (var typ in typy)
@@ -131,7 +131,7 @@ internal static class TrTypesFile
     /// <param name="dataDir">priecinok DATA instalacie INISS</param>
     public static void WriteDefaults(string dataDir)
     {
-        var file = CombinePath(dataDir, FILE_TRTYPES)!;
+        var file = CombinePath(dataDir, FileTrtypes)!;
 
         string[] types = ["Os", "Zr", "R", "Ex", "EC", "IC", "EN", "ER", "REX", "Bus", "SC"];
 

@@ -2,7 +2,6 @@
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Tools;
-using ToolsCore.Tools;
 
 namespace GVDEditor.TabTabEditor;
 

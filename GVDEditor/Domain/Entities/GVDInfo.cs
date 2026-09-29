@@ -58,12 +58,12 @@ public sealed record GVDInfo
     /// <summary>
     /// VLIndex
     /// </summary>
-    public int VLIndex { get; set; }
+    public int VlIndex { get; set; }
 
     /// <summary>
     /// STIndex
     /// </summary>
-    public int STIndex { get; set; }
+    public int StIndex { get; set; }
 
     /// <summary>
     /// IsRegionText
@@ -73,5 +73,5 @@ public sealed record GVDInfo
     /// <summary>
     /// OnlyCityVLIndex
     /// </summary>
-    public int OnlyCityVLIndex { get; set; }
+    public int OnlyCityVlIndex { get; set; }
 }

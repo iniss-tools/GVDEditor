@@ -1,3 +1,4 @@
+using System.Xml;
 using System.Xml.Serialization;
 using GVDEditor.Config;
 using GVDEditor.UI;
@@ -54,7 +55,7 @@ public class GvdCommandsTests
             """;
 
         using var reader = new StringReader(xml);
-        var config = (GVDEditorConfig)new XmlSerializer(typeof(GVDEditorConfig)).Deserialize(reader)!;
+        var config = (GVDEditorConfig)new XmlSerializer(typeof(GVDEditorConfig)).Deserialize(XmlReader.Create(reader))!;
         var copy = config with { };
 
         Assert.AreEqual(Shortcut.CtrlShiftO, config.Shortcuts.Get(GvdCommands.Open));

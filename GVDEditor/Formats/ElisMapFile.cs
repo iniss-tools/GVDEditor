@@ -17,21 +17,21 @@ internal static class ElisMapFile
     /// <summary>
     /// Hodnota v ELISMAP.TXT, ktora znamena "tuto stanicu z ELIS vynechat".
     /// </summary>
-    public const string ELIS_MAP_SKIP = "-";
+    public const string ElisMapSkip = "-";
 
     /// <summary>
     /// Nacita priradenie nazvov stanic z programu ELIS k staniciam grafikonu z ELISMAP.TXT.
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <returns>
-    /// Slovnik nazov z ELIS -> ID stanice, alebo <see cref="ELIS_MAP_SKIP" /> ak sa ma stanica vynechat.
+    /// Slovnik nazov z ELIS -> ID stanice, alebo <see cref="ElisMapSkip" /> ak sa ma stanica vynechat.
     /// Ak subor neexistuje, vrati prazdny slovnik.
     /// </returns>
     public static Dictionary<string, string> Read(string path)
     {
         var map = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
-        var fileMap = CombinePath(path, FILE_ELISMAP)!;
+        var fileMap = CombinePath(path, FileElismap)!;
         if (!File.Exists(fileMap))
             return map;
 
@@ -47,17 +47,17 @@ internal static class ElisMapFile
                 continue;
             }
 
-            if (LineIsEOF(status))
+            if (LineIsEof(status))
                 break;
 
             try
             {
                 if (row.Count >= 2)
-                    map[row[0].ANSItoUTF()] = row[1].Trim();
+                    map[row[0].AnsiToUTF()] = row[1].Trim();
             }
             catch (Exception e)
             {
-                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FORMAT_EX, FILE_ELISMAP, riadok) + e.Message, e);
+                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FormatEx, FileElismap, riadok) + e.Message, e);
             }
 
             riadok++;
@@ -70,16 +70,16 @@ internal static class ElisMapFile
     /// Zapise priradenie nazvov stanic z programu ELIS do ELISMAP.TXT.
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
-    /// <param name="map">nazov z ELIS -> ID stanice alebo <see cref="ELIS_MAP_SKIP" /></param>
+    /// <param name="map">nazov z ELIS -> ID stanice alebo <see cref="ElisMapSkip" /></param>
     /// <param name="gvd">informacie o grafikone</param>
     /// <param name="language">jazyk komentarov v hlavicke suboru</param>
     public static void Write(string path, Dictionary<string, string> map, GVDInfo gvd, AppLanguage language)
     {
-        var fileMap = CombinePath(path, FILE_ELISMAP)!;
+        var fileMap = CombinePath(path, FileElismap)!;
 
         using var mapF = new CsvFileWriter(fileMap);
 
-        var comments = FormatCommon.GenerateComment(path, FILE_ELISMAP, gvd, language);
+        var comments = FormatCommon.GenerateComment(path, FileElismap, gvd, language);
         foreach (var comment in comments) mapF.WriteComment(comment);
 
         // abecedne len kvoli citatelnosti - vzdy slovenske poradie, aby subor nezavisel od jazyka systemu

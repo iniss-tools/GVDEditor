@@ -26,7 +26,7 @@ internal static class RoutesFile
     public static List<Template> ReadTemplates(string vzory, string staHlasB, string staHlasC, GrafikonContext context)
     {
         var templates = new List<Template>();
-        ReadRows(vzory, FILE_VZORY, (row, _) =>
+        ReadRows(vzory, FileVzory, (row, _) =>
         {
             var template = new Template { ID = int.Parse(row[0], CultureInfo.InvariantCulture) };
             var count = int.Parse(row[1], CultureInfo.InvariantCulture);
@@ -35,8 +35,8 @@ internal static class RoutesFile
             templates.Add(template);
         });
 
-        ReadReportStations(staHlasB, FILE_STAHLASB, templates, station => station.IsInShortReport = true);
-        ReadReportStations(staHlasC, FILE_STAHLASC, templates, station => station.IsInLongReport = true);
+        ReadReportStations(staHlasB, FileStahlasb, templates, station => station.IsInShortReport = true);
+        ReadReportStations(staHlasC, FileStahlasc, templates, station => station.IsInLongReport = true);
         return templates;
     }
 
@@ -63,7 +63,7 @@ internal static class RoutesFile
     /// <param name="trainTypes">druhy vlakov</param>
     public static void AssignRoutes(string file, List<Template> templates, List<Train> trains, GVDInfo gvd, IEnumerable<TrainType> trainTypes,
         LoadWarnings warnings) =>
-        ReadRows(file, FILE_VLAKY, (row, rowNumber) =>
+        ReadRows(file, FileVlaky, (row, rowNumber) =>
         {
             var id = int.Parse(row[0], CultureInfo.InvariantCulture);
             var template = templates.Find(t => t.ID == id) ?? throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.Routes_BadId, id));
@@ -80,14 +80,14 @@ internal static class RoutesFile
                 var type = trainTypes.FirstOrDefault(t => t.Key == typeKey);
                 if (type == null)
                 {
-                    warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Routes_UnknownType, FILE_VLAKY, rowNumber, typeKey, number));
+                    warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Routes_UnknownType, FileVlaky, rowNumber, typeKey, number));
                     break;
                 }
 
                 var train = Train.GetTrain(trains, number, name, type, variant);
                 if (train == null)
                 {
-                    warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Routes_NoDefinition, FILE_VLAKY, rowNumber, number, type.Key, FILE_EXPORT3A));
+                    warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Routes_NoDefinition, FileVlaky, rowNumber, number, type.Key, FileExport3A));
                     break;
                 }
 

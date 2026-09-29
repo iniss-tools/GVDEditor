@@ -31,10 +31,10 @@ internal static class TablesFile
     /// <param name="path">cesta do priecinka s dátami.</param>
     public static (List<TableTabTab>, List<TableCatalog>, List<TablePhysical>, List<TableLogical>) Read(string path)
     {
-        var fileTabTab = CombinePath(path, FILE_TABTAB)!;
-        var fileTCatalog = CombinePath(path, FILE_TKATALOG)!;
-        var fileTPhysical = CombinePath(path, FILE_TPHYSIC)!;
-        var fileTLogical = CombinePath(path, FILE_TLOGICAL)!;
+        var fileTabTab = CombinePath(path, FileTabtab)!;
+        var fileTCatalog = CombinePath(path, FileTkatalog)!;
+        var fileTPhysical = CombinePath(path, FileTphysic)!;
+        var fileTLogical = CombinePath(path, FileTlogical)!;
 
         var tabtabs = new List<TableTabTab>();
         var tcatalogs = new List<TableCatalog>();
@@ -71,8 +71,8 @@ internal static class TablesFile
             var area = $"TABLE_{ti.PadZeros()}";
             tcatalog.Comment = catalogF.GetComment(area);
 
-            tcatalog.Name = catalogF.Get(area, "NAME").ANSItoUTF();
-            tcatalog.Key = tcatalog.CheckKey(catalogF.Get(area, "KEY").ANSItoUTF(), tcatalog.Name, tcatalogs);
+            tcatalog.Name = catalogF.Get(area, "NAME").AnsiToUTF();
+            tcatalog.Key = tcatalog.CheckKey(catalogF.Get(area, "KEY").AnsiToUTF(), tcatalog.Name, tcatalogs);
             var manufacturer = catalogF.Get(area, "MANUFACTURER_KEY");
             var parsedManufacturer = TableManufacturer.Parse(manufacturer);
             if (parsedManufacturer == null)
@@ -104,15 +104,15 @@ internal static class TablesFile
                 var tj = j + 1;
                 var padded = tj.PadZeros();
 
-                var name = catalogF.Get(area, $"TYPE_ITEMS_NAME_{padded}").ANSItoUTF();
+                var name = catalogF.Get(area, $"TYPE_ITEMS_NAME_{padded}").AnsiToUTF();
                 var item = new TableItem
                 {
                     Name = name,
-                    Key = tcatalog.CheckKey(catalogF.Get(area, $"TYPE_ITEMS_KEY_{padded}").ANSItoUTF(), name, tcatalog.Items),
+                    Key = tcatalog.CheckKey(catalogF.Get(area, $"TYPE_ITEMS_KEY_{padded}").AnsiToUTF(), name, tcatalog.Items),
                     Line = ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_LINE_{padded}", false)),
                     Start = ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_START_{padded}", false)),
                     End = ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_END_{padded}", false)),
-                    FontIDX = ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_FONT_IDX_{padded}", false))
+                    FontIdx = ParseIntOrDefault(catalogF.Get(area, $"TYPE_ITEMS_FONT_IDX_{padded}", false))
                 };
 
                 var fillSection = catalogF.Get(area, $"TYPE_ITEMS_IDX_{padded}", false);
@@ -146,8 +146,8 @@ internal static class TablesFile
                 item.Align = parsedAlign;
                 item.DivType = parsedDivType;
 
-                var tab1 = catalogF.Get(area, $"TYPE_ITEMS_TAB1_{padded}").ANSItoUTF();
-                var tab2 = catalogF.Get(area, $"TYPE_ITEMS_TAB2_{padded}").ANSItoUTF();
+                var tab1 = catalogF.Get(area, $"TYPE_ITEMS_TAB1_{padded}").AnsiToUTF();
+                var tab2 = catalogF.Get(area, $"TYPE_ITEMS_TAB2_{padded}").AnsiToUTF();
 
                 CheckTabTab(tab1, item, tabtabs, true, tcatalog.Key);
                 CheckTabTab(tab2, item, tabtabs, false, tcatalog.Key);
@@ -160,7 +160,7 @@ internal static class TablesFile
                 var tj = j + 1;
                 var typetab = new TableViewTypeTab();
 
-                var viewType = catalogF.Get(area, $"TYPE_VIEW_TAB_KEY_{tj.PadZeros()}").ANSItoUTF();
+                var viewType = catalogF.Get(area, $"TYPE_VIEW_TAB_KEY_{tj.PadZeros()}").AnsiToUTF();
                 var parsedViewType = TableViewType.Parse(viewType);
 
                 if (parsedViewType == null)
@@ -184,7 +184,7 @@ internal static class TablesFile
                     var tk = k + 1;
                     var ttmi = new TableTypeModeItem();
 
-                    var viewMode = catalogF.Get(area, $"TYPE_MODE_KEY_{tj.PadZeros()}_{tk.PadZeros()}").ANSItoUTF();
+                    var viewMode = catalogF.Get(area, $"TYPE_MODE_KEY_{tj.PadZeros()}_{tk.PadZeros()}").AnsiToUTF();
                     var parsedViewMode = TableViewMode.Parse(viewMode);
 
                     if (parsedViewMode == null)
@@ -199,7 +199,7 @@ internal static class TablesFile
                     for (var l = 0; l < cl; l++)
                     {
                         var tl = l + 1;
-                        var itemKey = catalogF.Get(area, $"TYPE_ITEM_{tj.PadZeros()}_{tk.PadZeros()}_{tl.PadZeros(2)}").ANSItoUTF();
+                        var itemKey = catalogF.Get(area, $"TYPE_ITEM_{tj.PadZeros()}_{tk.PadZeros()}_{tl.PadZeros(2)}").AnsiToUTF();
 
                         string? tolist = null;
                         foreach (var item in tcatalog.Items)
@@ -233,16 +233,16 @@ internal static class TablesFile
             var area = $"TABLE_{ti.PadZeros()}";
             tphysical.Comment = tphysicF.GetComment(area);
 
-            tphysical.Name = tphysicF.Get(area, "NAME").ANSItoUTF();
-            tphysical.Key = tphysical.CheckKey(tphysicF.Get(area, "KEY").ANSItoUTF(), tphysical.Name, tphysicals);
+            tphysical.Name = tphysicF.Get(area, "NAME").AnsiToUTF();
+            tphysical.Key = tphysical.CheckKey(tphysicF.Get(area, "KEY").AnsiToUTF(), tphysical.Name, tphysicals);
             tphysical.ID = ParseIntOrDefault(tphysicF.Get(area, "ID", false));
             tphysical.CommunicationPort = ParseIntOrDefault(tphysicF.Get(area, "COMUNICATION_PORT", false));
             tphysical.RecCount = ParseIntOrDefault(tphysicF.Get(area, "REC_COUNT", false));
-            tphysical.Rem = tphysicF.Get(area, "REM").ANSItoUTF();
-            tphysical.ReverseArrows = ParseStringOrDefault(tphysicF.Get(area, "REVERSE_ARROWS", false)).ANSItoUTF();
-            tphysical.SaveXML = tphysicF.Get(area, "SAVE_XML", "").ANSItoUTF();
+            tphysical.Rem = tphysicF.Get(area, "REM").AnsiToUTF();
+            tphysical.ReverseArrows = ParseStringOrDefault(tphysicF.Get(area, "REVERSE_ARROWS", false)).AnsiToUTF();
+            tphysical.SaveXML = tphysicF.Get(area, "SAVE_XML", "").AnsiToUTF();
 
-            var catname = tphysicF.Get(area, "CATALOG_KEY").ANSItoUTF();
+            var catname = tphysicF.Get(area, "CATALOG_KEY").AnsiToUTF();
             AssignCatalogToPhysical(tcatalogs, tphysical, catname);
             if (tphysical.TableCatalog == null)
                 throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.TablesFile_CatalogMissing, catname, tphysical.Key));
@@ -261,11 +261,11 @@ internal static class TablesFile
             var area = $"TABLE_{ti.PadZeros()}";
             tlLogical.Comment = tlogicF.GetComment(area);
 
-            tlLogical.Name = tlogicF.Get(area, "NAME").ANSItoUTF();
-            tlLogical.Key = tlLogical.CheckKey(tlogicF.Get(area, "KEY").ANSItoUTF(), tlLogical.Name, tlogicals);
-            tlLogical.TypeViewFlags = tlogicF.Get(area, "TYPE_VIEW_FLAGS").ANSItoUTF();
+            tlLogical.Name = tlogicF.Get(area, "NAME").AnsiToUTF();
+            tlLogical.Key = tlLogical.CheckKey(tlogicF.Get(area, "KEY").AnsiToUTF(), tlLogical.Name, tlogicals);
+            tlLogical.TypeViewFlags = tlogicF.Get(area, "TYPE_VIEW_FLAGS").AnsiToUTF();
             tlLogical.IdStation = ParseIntOrDefault(tlogicF.Get(area, "IDSTATION", false));
-            var viewtype = tlogicF.Get(area, "TYPE_VIEW").ANSItoUTF();
+            var viewtype = tlogicF.Get(area, "TYPE_VIEW").AnsiToUTF();
             var parsedViewType = TableViewType.Parse(viewtype);
             if (parsedViewType == null)
             {
@@ -285,7 +285,7 @@ internal static class TablesFile
                     var tk = k + 1;
 
                     tposition.Position = int.Parse(tlogicF.Get(area, $"POSITION_{tj.PadZeros()}_{tk.PadZeros()}"), CultureInfo.InvariantCulture);
-                    var tv = tlogicF.Get(area, $"TYPE_VIEW_KEY_{tj.PadZeros()}_{tk.PadZeros()}").ANSItoUTF();
+                    var tv = tlogicF.Get(area, $"TYPE_VIEW_KEY_{tj.PadZeros()}_{tk.PadZeros()}").AnsiToUTF();
                     var parsedTypeView = TableViewType.Parse(tv);
                     if (parsedTypeView == null)
                     {
@@ -294,7 +294,7 @@ internal static class TablesFile
 
                     tposition.TypeView = parsedTypeView;
 
-                    var fyzname = tlogicF.Get(area, $"PHYSICAL_KEY_{tj.PadZeros()}_{tk.PadZeros()}").ANSItoUTF();
+                    var fyzname = tlogicF.Get(area, $"PHYSICAL_KEY_{tj.PadZeros()}_{tk.PadZeros()}").AnsiToUTF();
                     AssignPhysicalToPosition(tphysicals, tposition, fyzname);
 
                     if (tposition.Table == null)
@@ -362,10 +362,10 @@ internal static class TablesFile
     /// <param name="logicals">Logicke tabule.</param>
     public static void Write(string path, IEnumerable<TableTabTab> tabTabs, IList<TableCatalog> catalogs, IList<TablePhysical> physicals, IList<TableLogical> logicals)
     {
-        var fileTabTab = CombinePath(path, FILE_TABTAB)!;
-        var fileTCatalog = CombinePath(path, FILE_TKATALOG)!;
-        var fileTPhysical = CombinePath(path, FILE_TPHYSIC)!;
-        var fileTLogical = CombinePath(path, FILE_TLOGICAL)!;
+        var fileTabTab = CombinePath(path, FileTabtab)!;
+        var fileTCatalog = CombinePath(path, FileTkatalog)!;
+        var fileTPhysical = CombinePath(path, FileTphysic)!;
+        var fileTLogical = CombinePath(path, FileTlogical)!;
 
         //TABTABS - uvodne komentare suboru (pred prvou sekciou) sa zachovaju
         var tabtabF = new TxtPropsAreas(fileTabTab, true);
@@ -420,7 +420,7 @@ internal static class TablesFile
                 catalogF.Set(area, $"TYPE_ITEMS_LINE_{tj.PadZeros()}", item.Line);
                 catalogF.Set(area, $"TYPE_ITEMS_START_{tj.PadZeros()}", item.Start);
                 catalogF.Set(area, $"TYPE_ITEMS_END_{tj.PadZeros()}", item.End);
-                catalogF.Set(area, $"TYPE_ITEMS_FONT_IDX_{tj.PadZeros()}", item.FontIDX);
+                catalogF.Set(area, $"TYPE_ITEMS_FONT_IDX_{tj.PadZeros()}", item.FontIdx);
                 catalogF.Set(area, $"TYPE_ITEMS_ALIGN_{tj.PadZeros()}", item.Align.Id);
                 catalogF.Set(area, $"TYPE_ITEMS_DIVTYPE_{tj.PadZeros()}", item.DivType.Id);
                 catalogF.Set(area, $"TYPE_ITEMS_TAB1_{tj.PadZeros()}", item.Tab1 == TableTabTab.Empty ? "" : item.Tab1.Key,

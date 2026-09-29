@@ -4,7 +4,7 @@ namespace GVDEditor.Domain.Entities;
 
 /// <summary>
 /// </summary>
-public sealed class TableTypeModeItem : IEnumerable
+public sealed class TableTypeModeItem : IEnumerable<string>
 {
     /// <summary>
     /// Konstruktor
@@ -24,6 +24,8 @@ public sealed class TableTypeModeItem : IEnumerable
     public List<string> ItemsKeys { get; set; }
 
     /// <summary>Returns an enumerator that iterates through a collection.</summary>
-    /// <returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
-    public IEnumerator GetEnumerator() => ItemsKeys.GetEnumerator();
+    /// <returns>An <see cref="System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
+    public IEnumerator<string> GetEnumerator() => ItemsKeys.GetEnumerator();
+
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }

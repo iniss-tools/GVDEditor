@@ -14,10 +14,10 @@ public class TabTabLexer
     private const int STATE_COMMENT = 4;
     private const int STATE_VAR = 5;
 
-    private readonly HashSet<string> constans;
-    private readonly HashSet<string> events;
-    private readonly HashSet<string> functions;
-    private readonly HashSet<string> operators;
+    private readonly HashSet<string> _constans;
+    private readonly HashSet<string> _events;
+    private readonly HashSet<string> _functions;
+    private readonly HashSet<string> _operators;
 
     /// <summary>
     /// Vytvori novu instanciu triedy <see cref="TabTabLexer"/>.
@@ -32,10 +32,10 @@ public class TabTabLexer
         IEnumerable<string> constans, 
         IEnumerable<string> operators)
     {
-        this.functions = new HashSet<string>(functions);
-        this.events = new HashSet<string>(events);
-        this.constans = new HashSet<string>(constans);
-        this.operators = new HashSet<string>(operators);
+        this._functions = new HashSet<string>(functions);
+        this._events = new HashSet<string>(events);
+        this._constans = new HashSet<string>(constans);
+        this._operators = new HashSet<string>(operators);
     }
 
     /// <summary>
@@ -158,13 +158,13 @@ public class TabTabLexer
                         var style = TabTabStyle.Identifier;
                         var identifier = scintilla.GetTextRange(startPos - length, length);
 
-                        if (events.Contains(identifier))
+                        if (_events.Contains(identifier))
                             style = TabTabStyle.Event;
-                        if (operators.Contains(identifier))
+                        if (_operators.Contains(identifier))
                             style = TabTabStyle.Operator;
-                        if (constans.Contains(identifier.ToUpperInvariant()))
+                        if (_constans.Contains(identifier.ToUpperInvariant()))
                             style = TabTabStyle.Constant;
-                        if (functions.Contains(identifier.ToUpperInvariant()))
+                        if (_functions.Contains(identifier.ToUpperInvariant()))
                             style = TabTabStyle.Function;
 
                         scintilla.SetStyling(length, style);

@@ -1,4 +1,5 @@
-﻿using AutocompleteMenuNS;
+﻿using System.Globalization;
+using AutocompleteMenuNS;
 using JetBrains.Annotations;
 using ExControls;
 using GVDEditor.Domain.Entities;
@@ -23,24 +24,24 @@ internal partial class FTabTab : Form
     /// </summary>
     private readonly EditorContext _ctx;
 
-    private static readonly string[] operatory = ["AND", "OR", "NOT", "ODD"];
+    private static readonly string[] Operatory = ["AND", "OR", "NOT", "ODD"];
 
-    private readonly TabTabLexer cSharpLexer = new(
+    private readonly TabTabLexer _cSharpLexer = new(
         TabTabACItems.GetFunctionItems().Select(item => item.FunctionName),
         TabTabACItems.GetEventItems().Select(item => item.MenuText),
         TabTabACItems.GetConstantItems().Select(item => item.ConstName),
-        operatory);
+        Operatory);
 
-    private readonly BindingList<TabTabDoc> documents = [];
+    private readonly BindingList<TabTabDoc> _documents = [];
 
-    private readonly TableTabTab? SelectedTab;
-    private readonly int homeStationId;
-    private FTabTabPreview? preview;
+    private readonly TableTabTab? _selectedTab;
+    private readonly int _homeStationId;
+    private FTabTabPreview? _preview;
 
-    private int lastCaretPos;
-    private int maxLineNumberCharLength;
+    private int _lastCaretPos;
+    private int _maxLineNumberCharLength;
 
-    private readonly Scintilla sc;
+    private readonly Scintilla _sc;
 
     // kontrola pravidiel a podmienok (ToolsCore.TabTab) - indikatory v editore a zoznam problemov
     private const int SCI_SETILEXER = 4033;
@@ -71,15 +72,15 @@ internal partial class FTabTab : Form
 
         if (_ctx.UsingStyle.DarkTitleBar) ExTools.SetImmersiveDarkMode(Handle, true);
 
-        sc = scText.scintilla;
-        acMenu.TargetControlWrapper = new ScintillaWrapper(sc);
+        _sc = scText.Scintilla;
+        acMenu.TargetControlWrapper = new ScintillaWrapper(_sc);
 
         foreach (var tabTab in _ctx.Document.TabTabs) 
-            documents.Add(new TabTabDoc { Document = CreateDocument(tabTab.Text), TabTab = tabTab, Key = tabTab.Key });
+            _documents.Add(new TabTabDoc { Document = CreateDocument(tabTab.Text), TabTab = tabTab, Key = tabTab.Key });
 
-        lbTabTabs.DataSource = documents;
+        lbTabTabs.DataSource = _documents;
 
-        sc.EmptyUndoBuffer();
+        _sc.EmptyUndoBuffer();
 
         acMenu.SetAutocompleteItems(TabTabACItems.GetItems());
 
@@ -89,21 +90,21 @@ internal partial class FTabTab : Form
 
         ShowNumberLines();
 
-        SelectedTab = tab;
-        homeStationId = station is not null && int.TryParse(station.ID, out var sid) ? sid : 0;
+        _selectedTab = tab;
+        _homeStationId = station is not null && int.TryParse(station.ID, out var sid) ? sid : 0;
         tsbPreview.Text = tsbPreview.ToolTipText = Resources.FTabTab_Nahlad;
 
         _validateTimer.Tick += (_, _) =>
         {
             _validateTimer.Stop();
             // kontrola naplanovana tesne pred zatvorenim okna by siahla na zruseny editor Scintilla (pad programu)
-            if (IsDisposed || sc.IsDisposed || !sc.IsHandleCreated)
+            if (IsDisposed || _sc.IsDisposed || !_sc.IsHandleCreated)
                 return;
             ValidateDocument();
         };
         Disposed += (_, _) => _validateTimer.Dispose();
-        sc.DwellStart += sc_DwellStart;
-        sc.DwellEnd += (_, _) => sc.CallTipCancel();
+        _sc.DwellStart += sc_DwellStart;
+        _sc.DwellEnd += (_, _) => _sc.CallTipCancel();
 
         tsbProbGoTo.Text = tsmiProbGoTo.Text = Resources.FTabTab_Problems_Zobrazit;
         tsbProbFix.Text = tsmiProbFix.Text = Resources.FTabTab_Problems_Opravit;
@@ -126,23 +127,23 @@ internal partial class FTabTab : Form
     {
         lbTabTabs.Font = _ctx.Config.Fonts.Menu; //_ctx.UsingStyle.TabTabEditorScheme.Font;
 
-        sc.StyleResetDefault();
-        sc.Styles[Style.Default].Font = _ctx.UsingStyle.TabTabEditorScheme.Font.Name;
-        sc.Styles[Style.Default].SizeF = _ctx.UsingStyle.TabTabEditorScheme.Font.Size;
-        sc.Styles[Style.Default].BackColor = _ctx.UsingStyle.ControlsColorScheme.Box.BackColor;
-        sc.StyleClearAll();
-        sc.Styles[Style.LineNumber].BackColor = _ctx.UsingStyle.ControlsColorScheme.Button.BackColor;
-        sc.Styles[Style.LineNumber].ForeColor = _ctx.UsingStyle.ControlsColorScheme.Button.ForeColor;
-        sc.CaretForeColor = _ctx.UsingStyle.ControlsColorScheme.Box.ForeColor;
+        _sc.StyleResetDefault();
+        _sc.Styles[Style.Default].Font = _ctx.UsingStyle.TabTabEditorScheme.Font.Name;
+        _sc.Styles[Style.Default].SizeF = _ctx.UsingStyle.TabTabEditorScheme.Font.Size;
+        _sc.Styles[Style.Default].BackColor = _ctx.UsingStyle.ControlsColorScheme.Box.BackColor;
+        _sc.StyleClearAll();
+        _sc.Styles[Style.LineNumber].BackColor = _ctx.UsingStyle.ControlsColorScheme.Button.BackColor;
+        _sc.Styles[Style.LineNumber].ForeColor = _ctx.UsingStyle.ControlsColorScheme.Button.ForeColor;
+        _sc.CaretForeColor = _ctx.UsingStyle.ControlsColorScheme.Box.ForeColor;
         // vyber textu vo farbe zvyraznenia temy (svetla: systemova modra, tmava: podla stylu), nie farbou ramika
         var highlight = _ctx.UsingStyle.ControlsColorScheme.Highlight;
-        sc.SetSelectionBackColor(true, highlight.BackColor);
-        sc.SetSelectionForeColor(true, highlight.ForeColor);
-        sc.SetAdditionalSelBack(highlight.BackColor);
-        sc.SetAdditionalSelFore(highlight.ForeColor);
+        _sc.SetSelectionBackColor(true, highlight.BackColor);
+        _sc.SetSelectionForeColor(true, highlight.ForeColor);
+        _sc.SetAdditionalSelBack(highlight.BackColor);
+        _sc.SetAdditionalSelFore(highlight.ForeColor);
 
         if (!_ctx.UsingStyle.ControlsDefaultStyle)
-            sc.BorderStyle = ScintillaNET.BorderStyle.None;
+            _sc.BorderStyle = ScintillaNET.BorderStyle.None;
 
         if (_ctx.UsingStyle.DarkScrollBar)
         {
@@ -158,66 +159,66 @@ internal partial class FTabTab : Form
         acMenu.Colors.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Panel.ForeColor;
         acMenu.Colors.SelectedForeColor = _ctx.UsingStyle.ControlsColorScheme.Panel.ForeColor;
 
-        sc.Styles[TabTabStyle.Default].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Default.ForeColor;
-        sc.Styles[TabTabStyle.Default].Bold = _ctx.UsingStyle.TabTabEditorScheme.Default.Bold;
+        _sc.Styles[TabTabStyle.Default].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Default.ForeColor;
+        _sc.Styles[TabTabStyle.Default].Bold = _ctx.UsingStyle.TabTabEditorScheme.Default.Bold;
 
-        sc.Styles[TabTabStyle.Function].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Function.ForeColor;
-        sc.Styles[TabTabStyle.Function].Bold = _ctx.UsingStyle.TabTabEditorScheme.Function.Bold;
+        _sc.Styles[TabTabStyle.Function].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Function.ForeColor;
+        _sc.Styles[TabTabStyle.Function].Bold = _ctx.UsingStyle.TabTabEditorScheme.Function.Bold;
 
-        sc.Styles[TabTabStyle.Identifier].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Identifier.ForeColor;
-        sc.Styles[TabTabStyle.Identifier].Bold = _ctx.UsingStyle.TabTabEditorScheme.Identifier.Bold;
+        _sc.Styles[TabTabStyle.Identifier].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Identifier.ForeColor;
+        _sc.Styles[TabTabStyle.Identifier].Bold = _ctx.UsingStyle.TabTabEditorScheme.Identifier.Bold;
 
-        sc.Styles[TabTabStyle.Number].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Number.ForeColor;
-        sc.Styles[TabTabStyle.Number].Bold = _ctx.UsingStyle.TabTabEditorScheme.Number.Bold;
+        _sc.Styles[TabTabStyle.Number].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Number.ForeColor;
+        _sc.Styles[TabTabStyle.Number].Bold = _ctx.UsingStyle.TabTabEditorScheme.Number.Bold;
 
-        sc.Styles[TabTabStyle.String].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.String.ForeColor;
-        sc.Styles[TabTabStyle.String].Bold = _ctx.UsingStyle.TabTabEditorScheme.String.Bold;
+        _sc.Styles[TabTabStyle.String].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.String.ForeColor;
+        _sc.Styles[TabTabStyle.String].Bold = _ctx.UsingStyle.TabTabEditorScheme.String.Bold;
 
-        sc.Styles[TabTabStyle.Comment].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Comment.ForeColor;
-        sc.Styles[TabTabStyle.Comment].Bold = _ctx.UsingStyle.TabTabEditorScheme.Comment.Bold;
+        _sc.Styles[TabTabStyle.Comment].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Comment.ForeColor;
+        _sc.Styles[TabTabStyle.Comment].Bold = _ctx.UsingStyle.TabTabEditorScheme.Comment.Bold;
 
-        sc.Styles[TabTabStyle.Var].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Var.ForeColor;
-        sc.Styles[TabTabStyle.Var].Bold = _ctx.UsingStyle.TabTabEditorScheme.Var.Bold;
+        _sc.Styles[TabTabStyle.Var].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Var.ForeColor;
+        _sc.Styles[TabTabStyle.Var].Bold = _ctx.UsingStyle.TabTabEditorScheme.Var.Bold;
 
-        sc.Styles[TabTabStyle.Event].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Event.ForeColor;
-        sc.Styles[TabTabStyle.Event].Bold = _ctx.UsingStyle.TabTabEditorScheme.Event.Bold;
+        _sc.Styles[TabTabStyle.Event].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Event.ForeColor;
+        _sc.Styles[TabTabStyle.Event].Bold = _ctx.UsingStyle.TabTabEditorScheme.Event.Bold;
 
-        sc.Styles[TabTabStyle.OnNewLine].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.OnNewLine.ForeColor;
-        sc.Styles[TabTabStyle.OnNewLine].Bold = _ctx.UsingStyle.TabTabEditorScheme.OnNewLine.Bold;
+        _sc.Styles[TabTabStyle.OnNewLine].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.OnNewLine.ForeColor;
+        _sc.Styles[TabTabStyle.OnNewLine].Bold = _ctx.UsingStyle.TabTabEditorScheme.OnNewLine.Bold;
 
-        sc.Styles[TabTabStyle.Operator].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Operator.ForeColor;
-        sc.Styles[TabTabStyle.Operator].Bold = _ctx.UsingStyle.TabTabEditorScheme.Operator.Bold;
+        _sc.Styles[TabTabStyle.Operator].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Operator.ForeColor;
+        _sc.Styles[TabTabStyle.Operator].Bold = _ctx.UsingStyle.TabTabEditorScheme.Operator.Bold;
 
-        sc.Styles[TabTabStyle.Constant].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Constant.ForeColor;
-        sc.Styles[TabTabStyle.Constant].Bold = _ctx.UsingStyle.TabTabEditorScheme.Constant.Bold;
+        _sc.Styles[TabTabStyle.Constant].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Constant.ForeColor;
+        _sc.Styles[TabTabStyle.Constant].Bold = _ctx.UsingStyle.TabTabEditorScheme.Constant.Bold;
 
         // Scintilla 5: SCI_SETILEXER s NULL = ziadny lexer, stylovanie robi kontajner (StyleNeeded).
         // sc.Lexer = Lexer.Container v Scintilla.NET 5.3 vyhodi "No lexer name was found".
-        sc.DirectMessage(SCI_SETILEXER, IntPtr.Zero, IntPtr.Zero);
+        _sc.DirectMessage(SCI_SETILEXER, IntPtr.Zero, IntPtr.Zero);
 
         //highlight active braces
-        sc.IndentationGuides = IndentView.LookBoth;
+        _sc.IndentationGuides = IndentView.LookBoth;
 
-        sc.Styles[Style.BraceLight].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.SelBraces.ForeColor;
-        sc.Styles[Style.BraceLight].BackColor = _ctx.UsingStyle.TabTabEditorScheme.SelBraces.BackColor;
-        sc.Styles[Style.BraceLight].Bold = _ctx.UsingStyle.TabTabEditorScheme.SelBraces.Bold;
+        _sc.Styles[Style.BraceLight].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.SelBraces.ForeColor;
+        _sc.Styles[Style.BraceLight].BackColor = _ctx.UsingStyle.TabTabEditorScheme.SelBraces.BackColor;
+        _sc.Styles[Style.BraceLight].Bold = _ctx.UsingStyle.TabTabEditorScheme.SelBraces.Bold;
 
-        sc.Styles[Style.BraceBad].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.SelBraceBad.ForeColor;
-        sc.Styles[Style.BraceBad].BackColor = _ctx.UsingStyle.TabTabEditorScheme.SelBraceBad.BackColor;
-        sc.Styles[Style.BraceBad].Bold = _ctx.UsingStyle.TabTabEditorScheme.SelBraceBad.Bold;
+        _sc.Styles[Style.BraceBad].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.SelBraceBad.ForeColor;
+        _sc.Styles[Style.BraceBad].BackColor = _ctx.UsingStyle.TabTabEditorScheme.SelBraceBad.BackColor;
+        _sc.Styles[Style.BraceBad].Bold = _ctx.UsingStyle.TabTabEditorScheme.SelBraceBad.Bold;
 
-        sc.Indicators[IndicatorError].Style = IndicatorStyle.Squiggle;
-        sc.Indicators[IndicatorError].ForeColor = Color.Red;
-        sc.Indicators[IndicatorWarning].Style = IndicatorStyle.Squiggle;
-        sc.Indicators[IndicatorWarning].ForeColor = Color.DarkOrange;
-        sc.Indicators[IndicatorInfo].Style = IndicatorStyle.Dots;
-        sc.Indicators[IndicatorInfo].ForeColor = Color.Gray;
-        sc.Indicators[IndicatorGoTo].Style = IndicatorStyle.RoundBox;
-        sc.Indicators[IndicatorGoTo].ForeColor = Color.Gold;
-        sc.Indicators[IndicatorGoTo].Alpha = 70;
-        sc.Indicators[IndicatorGoTo].OutlineAlpha = 160;
-        sc.Indicators[IndicatorGoTo].Under = true;
-        sc.MouseDwellTime = 500;
+        _sc.Indicators[IndicatorError].Style = IndicatorStyle.Squiggle;
+        _sc.Indicators[IndicatorError].ForeColor = Color.Red;
+        _sc.Indicators[IndicatorWarning].Style = IndicatorStyle.Squiggle;
+        _sc.Indicators[IndicatorWarning].ForeColor = Color.DarkOrange;
+        _sc.Indicators[IndicatorInfo].Style = IndicatorStyle.Dots;
+        _sc.Indicators[IndicatorInfo].ForeColor = Color.Gray;
+        _sc.Indicators[IndicatorGoTo].Style = IndicatorStyle.RoundBox;
+        _sc.Indicators[IndicatorGoTo].ForeColor = Color.Gold;
+        _sc.Indicators[IndicatorGoTo].Alpha = 70;
+        _sc.Indicators[IndicatorGoTo].OutlineAlpha = 160;
+        _sc.Indicators[IndicatorGoTo].Under = true;
+        _sc.MouseDwellTime = 500;
 
         var box = _ctx.UsingStyle.ControlsColorScheme.Box;
         dgvProblems.BackgroundColor = box.BackColor;
@@ -231,9 +232,9 @@ internal partial class FTabTab : Form
         }
         FormUtils.ChangeColorContextMenu(_ctx.UsingStyle, conMenuProblems);
 
-        if (SelectedTab is not null)
-            for (var i = 0; i < documents.Count; i++)
-                if (documents[i].TabTab == SelectedTab)
+        if (_selectedTab is not null)
+            for (var i = 0; i < _documents.Count; i++)
+                if (_documents[i].TabTab == _selectedTab)
                     lbTabTabs.SelectedIndex = i;
 
         ValidateDocument();
@@ -275,16 +276,16 @@ internal partial class FTabTab : Form
             return;
         }
 
-        var tab = documents[lbTabTabs.SelectedIndex].TabTab;
-        var text = sc.Text;
+        var tab = _documents[lbTabTabs.SelectedIndex].TabTab;
+        var text = _sc.Text;
         _validatedText = text;
         var result = TabTabValidator.Validate(text, _symbols.OptionsFor(tab));
         _diagnostics = result.Diagnostics;
 
         foreach (var ind in new[] { IndicatorError, IndicatorWarning, IndicatorInfo, IndicatorGoTo })
         {
-            sc.IndicatorCurrent = ind;
-            sc.IndicatorClearRange(0, sc.TextLength);
+            _sc.IndicatorCurrent = ind;
+            _sc.IndicatorClearRange(0, _sc.TextLength);
         }
 
         _problemRows.RaiseListChangedEvents = false;
@@ -292,13 +293,13 @@ internal partial class FTabTab : Form
         foreach (var d in _diagnostics)
         {
             var (start, end) = CharRange(text, d);
-            sc.IndicatorCurrent = d.Severity switch
+            _sc.IndicatorCurrent = d.Severity switch
             {
                 ExprSeverity.Error => IndicatorError,
                 ExprSeverity.Warning => IndicatorWarning,
                 _ => IndicatorInfo
             };
-            sc.IndicatorFillRange(start, Math.Max(1, end - start));
+            _sc.IndicatorFillRange(start, Math.Max(1, end - start));
             _problemRows.Add(new ProblemRow(d));
         }
         _problemRows.RaiseListChangedEvents = true;
@@ -307,8 +308,8 @@ internal partial class FTabTab : Form
         UpdateProblemCounts(result.ErrorCount, result.WarningCount, _diagnostics.Count - result.ErrorCount - result.WarningCount);
         ApplyProblemFilter();
 
-        if (preview is { IsDisposed: false })
-            preview.RefreshPreview();
+        if (_preview is { IsDisposed: false })
+            _preview.RefreshPreview();
     }
 
     /// <summary>
@@ -316,37 +317,37 @@ internal partial class FTabTab : Form
     /// </summary>
     private string? SectionText(string name)
     {
-        var doc = documents.FirstOrDefault(d => d.TabTab.Key == name);
+        var doc = _documents.FirstOrDefault(d => d.TabTab.Key == name);
         if (doc is null) return null;
-        if (lbTabTabs.SelectedIndex != -1 && documents[lbTabTabs.SelectedIndex] == doc)
-            return sc.Text;
+        if (lbTabTabs.SelectedIndex != -1 && _documents[lbTabTabs.SelectedIndex] == doc)
+            return _sc.Text;
 
         // text ineho dokumentu Scintilly: docasne prepnut a precitat
-        var current = sc.Document;
-        sc.AddRefDocument(current);
-        sc.Document = doc.Document;
-        var text = sc.Text;
-        sc.Document = current;
-        sc.ReleaseDocument(current);
+        var current = _sc.Document;
+        _sc.AddRefDocument(current);
+        _sc.Document = doc.Document;
+        var text = _sc.Text;
+        _sc.Document = current;
+        _sc.ReleaseDocument(current);
         return text;
     }
 
     private void tsbPreview_Click(object sender, EventArgs e)
     {
-        var section = lbTabTabs.SelectedIndex == -1 ? null : documents[lbTabTabs.SelectedIndex].TabTab.Key;
-        if (preview is { IsDisposed: false })
+        var section = lbTabTabs.SelectedIndex == -1 ? null : _documents[lbTabTabs.SelectedIndex].TabTab.Key;
+        if (_preview is { IsDisposed: false })
         {
-            preview.Close();
+            _preview.Close();
         }
-        preview = new FTabTabPreview(_ctx, SectionText, section, homeStationId) { Owner = this };
-        preview.Show(this);
+        _preview = new FTabTabPreview(_ctx, SectionText, section, _homeStationId) { Owner = this };
+        _preview.Show(this);
     }
 
     private void UpdateProblemCounts(int errors, int warnings, int infos)
     {
-        tsbProbErrors.Text = string.Format(Resources.FTabTab_Problems_Chyby, errors);
-        tsbProbWarnings.Text = string.Format(Resources.FTabTab_Problems_Varovania, warnings);
-        tsbProbInfos.Text = string.Format(Resources.FTabTab_Problems_Spravy, infos);
+        tsbProbErrors.Text = string.Format(CultureInfo.CurrentCulture, Resources.FTabTab_Problems_Chyby, errors);
+        tsbProbWarnings.Text = string.Format(CultureInfo.CurrentCulture, Resources.FTabTab_Problems_Varovania, warnings);
+        tsbProbInfos.Text = string.Format(CultureInfo.CurrentCulture, Resources.FTabTab_Problems_Spravy, infos);
 
         if (errors + warnings == 0)
         {
@@ -357,7 +358,7 @@ internal partial class FTabTab : Form
         else
         {
             tsslProblems.Image = errors > 0 ? _iconError.ToBitmap() : _iconWarning.ToBitmap();
-            tsslProblems.Text = string.Format(Resources.FTabTab_Stav_kontroly, errors, warnings);
+            tsslProblems.Text = string.Format(CultureInfo.CurrentCulture, Resources.FTabTab_Stav_kontroly, errors, warnings);
             tsslProblems.ForeColor = errors > 0 ? Color.Red : _ctx.UsingStyle.ControlsColorScheme.Panel.ForeColor;
         }
     }
@@ -405,7 +406,7 @@ internal partial class FTabTab : Form
 
     private void sc_DwellStart(object? sender, DwellEventArgs e)
     {
-        if (e.Position < 0 || _diagnostics.Count == 0 || _validatedText != sc.Text)
+        if (e.Position < 0 || _diagnostics.Count == 0 || _validatedText != _sc.Text)
             return;
 
         var text = _validatedText;
@@ -418,23 +419,23 @@ internal partial class FTabTab : Form
         }
 
         if (hits.Count > 0)
-            sc.CallTipShow(e.Position, string.Join("\n", hits));
+            _sc.CallTipShow(e.Position, string.Join("\n", hits));
     }
 
     private void GoToDiagnostic(TabTabDiagnostic d)
     {
-        if (_validatedText != sc.Text) ValidateDocument();
+        if (_validatedText != _sc.Text) ValidateDocument();
         var (start, end) = CharRange(_validatedText, d);
 
         // zvyraznenie miesta problemu - nie vyberom (jeho farba je v svetlej teme prilis tmava),
         // ale docasnym indikatorom, ktory zmizne pri dalsej kontrole alebo skoku
-        sc.IndicatorCurrent = IndicatorGoTo;
-        sc.IndicatorClearRange(0, sc.TextLength);
-        sc.IndicatorFillRange(start, Math.Max(1, end - start));
+        _sc.IndicatorCurrent = IndicatorGoTo;
+        _sc.IndicatorClearRange(0, _sc.TextLength);
+        _sc.IndicatorFillRange(start, Math.Max(1, end - start));
 
-        sc.GotoPosition(start);
-        sc.ScrollCaret();
-        sc.Focus();
+        _sc.GotoPosition(start);
+        _sc.ScrollCaret();
+        _sc.Focus();
     }
 
     /// <summary>
@@ -443,7 +444,7 @@ internal partial class FTabTab : Form
     private void ApplyFix(TabTabDiagnostic d)
     {
         if (d.Fix is null) return;
-        if (_validatedText != sc.Text)
+        if (_validatedText != _sc.Text)
         {
             // text sa medzitym zmenil - pozicie opravy uz nemusia sediet
             ValidateDocument();
@@ -451,13 +452,13 @@ internal partial class FTabTab : Form
         }
 
         var text = _validatedText;
-        sc.BeginUndoAction();
+        _sc.BeginUndoAction();
         foreach (var edit in d.Fix.Edits.OrderByDescending(x => x.Start))
         {
-            sc.DeleteRange(edit.Start, edit.Length);
-            sc.InsertText(edit.Start, edit.NewText);
+            _sc.DeleteRange(edit.Start, edit.Length);
+            _sc.InsertText(edit.Start, edit.NewText);
         }
-        sc.EndUndoAction();
+        _sc.EndUndoAction();
 
         _validateTimer.Stop();
         ValidateDocument();
@@ -519,7 +520,7 @@ internal partial class FTabTab : Form
         if (e.RowIndex < 0 || e.ColumnIndex != cProbCode.Index) return;
         if (dgvProblems.Rows[e.RowIndex].DataBoundItem is not ProblemRow pr) return;
 
-        Utils.OpenShell(pr.Diagnostic.ExprCode is not null ? GvdLinkConsts.LINK_DOC_VYRAZY : GvdLinkConsts.LINK_DOC_TABTAB);
+        Utils.OpenShell(pr.Diagnostic.ExprCode is not null ? GvdLinkConsts.LinkDocVyrazy : GvdLinkConsts.LinkDocTabtab);
     }
 
     private void dgvProblems_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -545,7 +546,7 @@ internal partial class FTabTab : Form
     /// Zoznam sekcii v editore sa lisi od ulozeneho (pridana, odstranena alebo premenovana sekcia).
     /// </summary>
     private bool SectionsUnsaved =>
-        documents.Any(doc => doc.KeyUnsaved) || !documents.Select(doc => doc.TabTab).SequenceEqual(_ctx.Document.TabTabs);
+        _documents.Any(doc => doc.KeyUnsaved) || !_documents.Select(doc => doc.TabTab).SequenceEqual(_ctx.Document.TabTabs);
 
     /// <summary>
     /// Prenesie zoznam sekcii (pridane, odstranene, premenovane) do <see cref="_ctx.Document.TabTabs"/>.
@@ -554,8 +555,8 @@ internal partial class FTabTab : Form
     /// </summary>
     private void SaveSections()
     {
-        TabTabSections.Apply(documents.Select(doc => (doc.TabTab, doc.Key)).ToList(), _ctx.Document.TabTabs);
-        foreach (var doc in documents)
+        TabTabSections.Apply(_documents.Select(doc => (doc.TabTab, doc.Key)).ToList(), _ctx.Document.TabTabs);
+        foreach (var doc in _documents)
             doc.KeyUnsaved = false;
 
         _ctx.Document.TabTabs.ResetBindings();
@@ -564,7 +565,7 @@ internal partial class FTabTab : Form
     private void FTabTab_FormClosing(object sender, FormClosingEventArgs e)
     {
         // pri zatvoreni bez ulozenia sa neulozene texty aj zmeny zoznamu sekcii zahodia - grafikon drzi posledny ulozeny stav
-        var unsaved = documents.Any(doc => doc.Unsaved) || SectionsUnsaved;
+        var unsaved = _documents.Any(doc => doc.Unsaved) || SectionsUnsaved;
 
         if (unsaved)
         {
@@ -591,57 +592,57 @@ internal partial class FTabTab : Form
     {
         if (lbTabTabs.SelectedIndex != -1)
         {
-            documents[lbTabTabs.SelectedIndex].TabTab.Text = sc.Text;
-            documents[lbTabTabs.SelectedIndex].Unsaved = false;
+            _documents[lbTabTabs.SelectedIndex].TabTab.Text = _sc.Text;
+            _documents[lbTabTabs.SelectedIndex].Unsaved = false;
         }
 
         SaveSections();
-        documents.ResetBindings();
+        _documents.ResetBindings();
         tsbSave.Enabled = false;
     }
 
     private void DoSaveAll()
     {
-        var current = sc.Document;
+        var current = _sc.Document;
 
-        foreach (var doc in documents)
+        foreach (var doc in _documents)
         {
             SwitchDocument(doc.Document);
-            doc.TabTab.Text = sc.Text;
+            doc.TabTab.Text = _sc.Text;
             doc.Unsaved = false;
         }
 
-        sc.Document = current;
+        _sc.Document = current;
         SaveSections();
-        documents.ResetBindings();
+        _documents.ResetBindings();
         tsbSave.Enabled = false;
     }
 
     private void DoUndo()
     {
-        sc.Undo();
+        _sc.Undo();
 
-        if (!sc.CanUndo && lbTabTabs.SelectedIndex != -1)
+        if (!_sc.CanUndo && lbTabTabs.SelectedIndex != -1)
         {
-            documents[lbTabTabs.SelectedIndex].Unsaved = false;
-            documents.ResetBindings();
+            _documents[lbTabTabs.SelectedIndex].Unsaved = false;
+            _documents.ResetBindings();
         }
     }
 
-    private void DoRedo() => sc.Redo();
+    private void DoRedo() => _sc.Redo();
 
     private void DoAddTab()
     {
-        using var frtt = new FTabTabRename(null, documents.Select(doc => doc.Key));
+        using var frtt = new FTabTabRename(null, _documents.Select(doc => doc.Key));
         if (frtt.ShowDialog(this) == DialogResult.OK)
         {
             // do _ctx.Document.TabTabs sa sekcia dostane az pri ulozeni (SaveSections)
-            documents.Add(new TabTabDoc
+            _documents.Add(new TabTabDoc
             {
                 KeyUnsaved = true, Key = frtt.NewTabName, Document = CreateDocument(""),
                 TabTab = new TableTabTab { Key = frtt.NewTabName, Text = "" }
             });
-            lbTabTabs.SelectedIndex = documents.Count - 1;
+            lbTabTabs.SelectedIndex = _documents.Count - 1;
             tsbSave.Enabled = true;
         }
     }
@@ -653,13 +654,13 @@ internal partial class FTabTab : Form
 
         // index v editore sa po pridani/odstraneni sekcie nezhoduje s _ctx.Document.TabTabs - kontroluje sa objekt dokumentu
         var index = lbTabTabs.SelectedIndex;
-        if (TabTabSections.RemoveBlockedMessage(documents[index].TabTab, _ctx.Document.TableCatalogs) is { } blocked)
+        if (TabTabSections.RemoveBlockedMessage(_documents[index].TabTab, _ctx.Document.TableCatalogs) is { } blocked)
         {
             Utils.ShowError(blocked);
             return;
         }
 
-        documents.RemoveAt(index);
+        _documents.RemoveAt(index);
         tsbSave.Enabled = true;
     }
 
@@ -668,8 +669,8 @@ internal partial class FTabTab : Form
         if (lbTabTabs.SelectedIndex == -1)
             return;
 
-        var doc = documents[lbTabTabs.SelectedIndex];
-        using var frtt = new FTabTabRename(doc.Key, documents.Where(d => d != doc).Select(d => d.Key));
+        var doc = _documents[lbTabTabs.SelectedIndex];
+        using var frtt = new FTabTabRename(doc.Key, _documents.Where(d => d != doc).Select(d => d.Key));
         if (frtt.ShowDialog(this) == DialogResult.OK && frtt.NewTabName != doc.Key)
         {
             // TabTab.Key sa zmeni az pri ulozeni (SaveSections), aby Odist bez ulozenia vratilo povodny nazov
@@ -677,33 +678,33 @@ internal partial class FTabTab : Form
             doc.KeyUnsaved = true;
             tsslTabTabName.Text = doc.Key;
             tsbSave.Enabled = true;
-            documents.ResetBindings();
+            _documents.ResetBindings();
         }
     }
 
     private void DoFindReplace(bool showReplace = false)
     {
-        var ffar = new FTabTabFindReplace(sc, showReplace);
+        var ffar = new FTabTabFindReplace(_sc, showReplace);
         ffar.Show();
     }
 
     private void DoReformat()
     {
         // formatuju sa len podmienky pravidiel #SWITCH/#MERGE - texty pre tabulu (aj v uvodzovkach) ostanu, ako su
-        var text = sc.Text;
+        var text = _sc.Text;
         var formatted = TabTabFormatter.Format(text);
         if (formatted == text)
             return;
 
-        var pos = sc.CurrentPosition;
-        var firstLine = sc.FirstVisibleLine;
+        var pos = _sc.CurrentPosition;
+        var firstLine = _sc.FirstVisibleLine;
 
-        sc.BeginUndoAction();
-        sc.Text = formatted;
-        sc.EndUndoAction();
+        _sc.BeginUndoAction();
+        _sc.Text = formatted;
+        _sc.EndUndoAction();
 
-        sc.GotoPosition(Math.Min(pos, sc.TextLength));
-        sc.FirstVisibleLine = firstLine;
+        _sc.GotoPosition(Math.Min(pos, _sc.TextLength));
+        _sc.FirstVisibleLine = firstLine;
     }
 
     /// <summary>
@@ -729,34 +730,34 @@ internal partial class FTabTab : Form
 
     private void tsbStorno_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
 
-    private void tsmiCut_Click(object sender, EventArgs e) => sc.Cut();
+    private void tsmiCut_Click(object sender, EventArgs e) => _sc.Cut();
 
-    private void tsmiCopy_Click(object sender, EventArgs e) => sc.Copy();
+    private void tsmiCopy_Click(object sender, EventArgs e) => _sc.Copy();
 
-    private void tsmiPaste_Click(object sender, EventArgs e) => sc.Paste();
+    private void tsmiPaste_Click(object sender, EventArgs e) => _sc.Paste();
 
-    private void tsmiDelete_Click(object sender, EventArgs e) => sc.ReplaceSelection("");
+    private void tsmiDelete_Click(object sender, EventArgs e) => _sc.ReplaceSelection("");
 
-    private void tsmiSelectAll_Click(object sender, EventArgs e) => sc.SelectAll();
+    private void tsmiSelectAll_Click(object sender, EventArgs e) => _sc.SelectAll();
 
     private void scText_StyleNeeded(object sender, StyleNeededEventArgs e)
     {
-        var startPos = sc.GetEndStyled();
+        var startPos = _sc.GetEndStyled();
         var endPos = e.Position;
 
-        cSharpLexer.Style(sc, startPos, endPos);
+        _cSharpLexer.Style(_sc, startPos, endPos);
     }
 
     private void scText_TextChanged(object sender, EventArgs e)
     {
-        tsbUndo.Enabled = sc.CanUndo;
-        tsbRedo.Enabled = sc.CanRedo;
+        tsbUndo.Enabled = _sc.CanUndo;
+        tsbRedo.Enabled = _sc.CanRedo;
 
-        if (lbTabTabs.SelectedIndex != -1 && !documents[lbTabTabs.SelectedIndex].Unsaved)
+        if (lbTabTabs.SelectedIndex != -1 && !_documents[lbTabTabs.SelectedIndex].Unsaved)
         {
-            documents[lbTabTabs.SelectedIndex].Unsaved = true;
+            _documents[lbTabTabs.SelectedIndex].Unsaved = true;
             tsbSave.Enabled = true;
-            documents.ResetBindings();
+            _documents.ResetBindings();
         }
 
         ShowNumberLines();
@@ -767,13 +768,13 @@ internal partial class FTabTab : Form
 
     private void ShowNumberLines()
     {
-        var maxLength = sc.Lines.Count.ToString().Length;
-        if (maxLength == maxLineNumberCharLength)
+        var maxLength = _sc.Lines.Count.ToString(CultureInfo.CurrentCulture).Length;
+        if (maxLength == _maxLineNumberCharLength)
             return;
 
         const int padding = 2;
-        sc.Margins[0].Width = sc.TextWidth(Style.LineNumber, new string('9', maxLength + 1)) + padding;
-        maxLineNumberCharLength = maxLength;
+        _sc.Margins[0].Width = _sc.TextWidth(Style.LineNumber, new string('9', maxLength + 1)) + padding;
+        _maxLineNumberCharLength = maxLength;
     }
 
     private void FTabTab_KeyDown(object sender, KeyEventArgs e)
@@ -795,12 +796,12 @@ internal partial class FTabTab : Form
 
     private void InsertMatchedChars(CharAddedEventArgs e)
     {
-        var caretPos = sc.CurrentPosition;
+        var caretPos = _sc.CurrentPosition;
         var docStart = caretPos == 1;
-        var docEnd = caretPos == sc.Text.Length;
+        var docEnd = caretPos == _sc.Text.Length;
 
-        var charPrev = docStart ? sc.GetCharAt(caretPos) : sc.GetCharAt(caretPos - 2);
-        var charNext = sc.GetCharAt(caretPos);
+        var charPrev = docStart ? _sc.GetCharAt(caretPos) : _sc.GetCharAt(caretPos - 2);
+        var charNext = _sc.GetCharAt(caretPos);
 
         var isCharPrevBlank = charPrev is ' ' or '\t' or '\n' or '\r';
 
@@ -820,39 +821,39 @@ internal partial class FTabTab : Form
         {
             case '(':
                 if (charNextIsCharOrString) return;
-                sc.InsertText(caretPos, ")");
+                _sc.InsertText(caretPos, ")");
                 break;
             case '{':
                 if (charNextIsCharOrString) return;
-                sc.InsertText(caretPos, "}");
+                _sc.InsertText(caretPos, "}");
                 break;
             case '[':
                 if (charNextIsCharOrString) return;
-                sc.InsertText(caretPos, "]");
+                _sc.InsertText(caretPos, "]");
                 break;
             case '"':
                 // 0x22 = "
                 if (charPrev == 0x22 && charNext == 0x22)
                 {
-                    sc.DeleteRange(caretPos, 1);
-                    sc.GotoPosition(caretPos);
+                    _sc.DeleteRange(caretPos, 1);
+                    _sc.GotoPosition(caretPos);
                     return;
                 }
 
                 if (isCharOrString)
-                    sc.InsertText(caretPos, "\"");
+                    _sc.InsertText(caretPos, "\"");
                 break;
             case '\'':
                 // 0x27 = '
                 if (charPrev == 0x27 && charNext == 0x27)
                 {
-                    sc.DeleteRange(caretPos, 1);
-                    sc.GotoPosition(caretPos);
+                    _sc.DeleteRange(caretPos, 1);
+                    _sc.GotoPosition(caretPos);
                     return;
                 }
 
                 if (isCharOrString)
-                    sc.InsertText(caretPos, "'");
+                    _sc.InsertText(caretPos, "'");
                 break;
         }
     }
@@ -874,75 +875,75 @@ internal partial class FTabTab : Form
     private void scText_UpdateUI(object sender, UpdateUIEventArgs e)
     {
         // Has the caret changed position?
-        var caretPos = sc.CurrentPosition;
-        if (lastCaretPos != caretPos)
+        var caretPos = _sc.CurrentPosition;
+        if (_lastCaretPos != caretPos)
         {
-            lastCaretPos = caretPos;
+            _lastCaretPos = caretPos;
             var bracePos1 = -1;
 
             // Is there a brace to the left or right?
-            if (caretPos > 0 && IsBrace(sc.GetCharAt(caretPos - 1)))
+            if (caretPos > 0 && IsBrace(_sc.GetCharAt(caretPos - 1)))
                 bracePos1 = caretPos - 1;
-            else if (IsBrace(sc.GetCharAt(caretPos)))
+            else if (IsBrace(_sc.GetCharAt(caretPos)))
                 bracePos1 = caretPos;
 
             if (bracePos1 >= 0)
             {
                 // Find the matching brace
-                var bracePos2 = sc.BraceMatch(bracePos1);
+                var bracePos2 = _sc.BraceMatch(bracePos1);
                 if (bracePos2 == Scintilla.InvalidPosition)
                 {
-                    sc.BraceBadLight(bracePos1);
-                    sc.HighlightGuide = 0;
+                    _sc.BraceBadLight(bracePos1);
+                    _sc.HighlightGuide = 0;
                 }
                 else
                 {
-                    sc.BraceHighlight(bracePos1, bracePos2);
-                    sc.HighlightGuide = sc.GetColumn(bracePos1);
+                    _sc.BraceHighlight(bracePos1, bracePos2);
+                    _sc.HighlightGuide = _sc.GetColumn(bracePos1);
                 }
             }
             else
             {
                 // Turn off brace matching
-                sc.BraceHighlight(Scintilla.InvalidPosition, Scintilla.InvalidPosition);
-                sc.HighlightGuide = 0;
+                _sc.BraceHighlight(Scintilla.InvalidPosition, Scintilla.InvalidPosition);
+                _sc.HighlightGuide = 0;
             }
         }
 
         if ((e.Change & UpdateChange.Selection) > 0)
         {
-            var currentPos = sc.CurrentPosition;
-            var anchorPos = sc.AnchorPosition;
+            var currentPos = _sc.CurrentPosition;
+            var anchorPos = _sc.AnchorPosition;
             if (anchorPos - currentPos == 0)
             {
                 tsslPosText.Text = @"Pos:";
-                tsslPos.Text = currentPos.ToString();
+                tsslPos.Text = currentPos.ToString(CultureInfo.CurrentCulture);
             }
             else
             {
                 tsslPosText.Text = @"Sel:";
-                tsslPos.Text = Math.Abs(anchorPos - currentPos).ToString();
+                tsslPos.Text = Math.Abs(anchorPos - currentPos).ToString(CultureInfo.CurrentCulture);
             }
 
-            tsslRow.Text = (sc.LineFromPosition(currentPos) + 1).ToString();
-            tsslCol.Text = (sc.GetColumn(currentPos) + 1).ToString();
+            tsslRow.Text = (_sc.LineFromPosition(currentPos) + 1).ToString(CultureInfo.CurrentCulture);
+            tsslCol.Text = (_sc.GetColumn(currentPos) + 1).ToString(CultureInfo.CurrentCulture);
         }
     }
 
     private void SwitchDocument(Document nextDocument)
     {
-        var prevDocument = sc.Document;
-        sc.AddRefDocument(prevDocument);
+        var prevDocument = _sc.Document;
+        _sc.AddRefDocument(prevDocument);
 
-        sc.Document = nextDocument;
-        sc.ReleaseDocument(nextDocument);
+        _sc.Document = nextDocument;
+        _sc.ReleaseDocument(nextDocument);
 
         scText.SwitchedDocument();
     }
 
     private Document CreateDocument(string text)
     {
-        var l = sc.CreateLoader(256);
+        var l = _sc.CreateLoader(256);
         var chars = text.ToCharArray();
         if (chars.Length != 0) l.AddData(chars, text.Length);
         return l.ConvertToDocument();
@@ -952,14 +953,14 @@ internal partial class FTabTab : Form
     {
         if (lbTabTabs.SelectedIndex != -1)
         {
-            SwitchDocument(documents[lbTabTabs.SelectedIndex].Document);
+            SwitchDocument(_documents[lbTabTabs.SelectedIndex].Document);
 
-            tsbSave.Enabled = documents[lbTabTabs.SelectedIndex].Unsaved;
-            tsbUndo.Enabled = sc.CanUndo;
-            tsbRedo.Enabled = sc.CanRedo;
-            tsslTabTabName.Text = documents[lbTabTabs.SelectedIndex].Key;
-            tsslLen.Text = sc.Text.Length.ToString();
-            tsslLines.Text = sc.Lines.Count.ToString();
+            tsbSave.Enabled = _documents[lbTabTabs.SelectedIndex].Unsaved;
+            tsbUndo.Enabled = _sc.CanUndo;
+            tsbRedo.Enabled = _sc.CanRedo;
+            tsslTabTabName.Text = _documents[lbTabTabs.SelectedIndex].Key;
+            tsslLen.Text = _sc.Text.Length.ToString(CultureInfo.CurrentCulture);
+            tsslLines.Text = _sc.Lines.Count.ToString(CultureInfo.CurrentCulture);
 
             _validateTimer.Stop();
             ValidateDocument();
@@ -977,13 +978,13 @@ internal partial class FTabTab : Form
         if (e.Button == MouseButtons.Right)
         {
             tsmiSave.Enabled = tsbSave.Enabled;
-            tsmiUndo.Enabled = sc.CanUndo;
-            tsmiRedo.Enabled = sc.CanRedo;
-            tsmiCut.Enabled = sc.SelectedText.Length > 0;
-            tsmiCopy.Enabled = sc.SelectedText.Length > 0;
-            tsmiPaste.Enabled = sc.CanPaste;
-            tsmiDelete.Enabled = sc.SelectedText.Length > 0;
-            tsmiSelectAll.Enabled = sc.Text.Length > 0 && sc.Text.Length != sc.SelectedText.Length;
+            tsmiUndo.Enabled = _sc.CanUndo;
+            tsmiRedo.Enabled = _sc.CanRedo;
+            tsmiCut.Enabled = _sc.SelectedText.Length > 0;
+            tsmiCopy.Enabled = _sc.SelectedText.Length > 0;
+            tsmiPaste.Enabled = _sc.CanPaste;
+            tsmiDelete.Enabled = _sc.SelectedText.Length > 0;
+            tsmiSelectAll.Enabled = _sc.Text.Length > 0 && _sc.Text.Length != _sc.SelectedText.Length;
         }
     }
 

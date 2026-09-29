@@ -412,7 +412,7 @@ internal sealed partial class TTReader
             bits.Append(runs != 0 ? '1' : '0');
         }
 
-        TTNative.TTError(); // vycistenie pripadneho kodu 18 (datum mimo rozsahu)
+        _ = TTNative.TTError(); // vycistenie pripadneho kodu 18 (datum mimo rozsahu)
         
         return bits.ToString();
     }

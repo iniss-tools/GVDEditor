@@ -1,3 +1,4 @@
+using System.Globalization;
 using ExControls;
 using GVDEditor.Domain.Entities;
 using GVDEditor.TabTabEditor;
@@ -31,6 +32,7 @@ public partial class FTabTabPreview : Form
     /// <summary>
     /// Vytvori nahlad.
     /// </summary>
+    /// <param name="context">Editor kontext.</param>
     /// <param name="sectionText">Text sekcie TabTab podla mena (aktualny text z editora); <see langword="null"/>, ak sekcia nie je.</param>
     /// <param name="currentSection">Meno sekcie otvorenej v editore - predvolene sa zobrazia len stlpce, ktore ju pouzivaju.</param>
     /// <param name="homeStationId">ID stanice grafikonu (pre <c>ZAJMSTANICE</c>, <c>MISTNI</c>).</param>
@@ -47,7 +49,7 @@ public partial class FTabTabPreview : Form
 
         chkOnlySection.Enabled = currentSection is not null;
         chkOnlySection.Checked = currentSection is not null;
-        chkOnlySection.Text = string.Format(Resources.FTabTabPreview_Len_sekcia, currentSection ?? "");
+        chkOnlySection.Text = string.Format(CultureInfo.CurrentCulture, Resources.FTabTabPreview_Len_sekcia, currentSection ?? "");
 
         cbTrain.DisplayMember = nameof(TrainItem.Text);
         foreach (var t in _ctx.Document.Trains.OrderBy(t => t.Arrival ?? t.Departure))
@@ -72,7 +74,7 @@ public partial class FTabTabPreview : Form
     private sealed record TrainItem(Train Train)
     {
         public string Text => $"{Train.Type.Key} {Train.Number}{(string.IsNullOrEmpty(Train.Name) ? "" : " " + Train.Name)}  "
-                              + $"{Train.Arrival?.ToString("HH:mm") ?? "–"} / {Train.Departure?.ToString("HH:mm") ?? "–"}  {Train.Routing.Symbol}";
+                              + $"{Train.Arrival?.ToString("HH:mm", CultureInfo.CurrentCulture) ?? "–"} / {Train.Departure?.ToString("HH:mm", CultureInfo.CurrentCulture) ?? "–"}  {Train.Routing.Symbol}";
     }
 
     [UsedImplicitly(ImplicitUseTargetFlags.Members)]
@@ -189,7 +191,7 @@ public partial class FTabTabPreview : Form
             Train = ctx,
             Site = site,
             OwnValue = ctx.OwnValue(item),
-            TTextsValue = ttexts,
+            TextsValue = ttexts,
             DivType = item.DivType.Id,
             TypeItemsIdx = item.FillSection.Id,
             Tab1 = item.Tab1 == TableTabTab.Empty ? null : Section(item.Tab1.Key),
@@ -209,7 +211,7 @@ public partial class FTabTabPreview : Form
     {
         null => "",
         TabTabText.DefaultFont => "{@}",
-        _ => font.Value.ToString()
+        _ => font.Value.ToString(CultureInfo.CurrentCulture)
     };
 
     private void dgvResult_SelectionChanged(object sender, EventArgs e) => ShowSteps();

@@ -147,7 +147,7 @@ public class TableCatalogEditingTests
 
             // FTableCatalog kedysi vkladal Ziadny do sekcii TabTab grafikonu – do suboru sa nesmie dostat
             TablesFile.Write(dir.FullName, [TableTabTab.Empty, tabTab], [catalog], [], []);
-            var text = File.ReadAllText(Path.Combine(dir.FullName, GvdFileConsts.FILE_TABTAB), Encodings.Win1250);
+            var text = File.ReadAllText(Path.Combine(dir.FullName, GvdFileConsts.FileTabtab), Encodings.Win1250);
             Assert.DoesNotContain("[" + TableTabTab.Empty.Key + "]", text);
 
             var (tabTabs, catalogs, _, _) = TablesFile.Read(dir.FullName);
@@ -171,7 +171,7 @@ public class TableCatalogEditingTests
             TablesFile.Write(dir.FullName, [new TableTabTab { Key = "Smer", Text = "\"A\"=\"B\"" }], [], [], []);
             // subor po starsej verzii GVDEditora: prazdna sekcia [Ziadny]
             // (za nou dalsia sekcia – dokazuje, ze sa pripisane sekcie naozaj citaju)
-            File.AppendAllText(Path.Combine(dir.FullName, GvdFileConsts.FILE_TABTAB),
+            File.AppendAllText(Path.Combine(dir.FullName, GvdFileConsts.FileTabtab),
                 "\r\n[" + TableTabTab.Empty.Key + "]\r\n\r\n[Druh]\r\n\"R\"=\"{2}R\"\r\n", Encodings.Win1250);
 
             var (tabTabs, _, _, _) = TablesFile.Read(dir.FullName);

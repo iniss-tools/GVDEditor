@@ -64,7 +64,7 @@ public class EntityIdentityTests
         var dir = Directory.CreateTempSubdirectory("gvdoperators");
         try
         {
-            File.WriteAllText(Path.Combine(dir.FullName, GvdFileConsts.FILE_VLASTNIK),
+            File.WriteAllText(Path.Combine(dir.FullName, GvdFileConsts.FileVlastnik),
                 "-1,\"Žiadny\"\r\n1,\"ZSSK\"\r\n1,\"ZSSK\"\r\n2,\"RegioJet\"\r\n", Encodings.Win1250);
 
             var operators = OperatorsFile.Read(dir.FullName);

@@ -66,7 +66,7 @@ public record GVDEditorConfig() : ConfigBase
     public WindowPlacement? EditTrainWindow { get; set; }
 
     /// <inheritdoc />
-    public override string LinkAppSettingsGuide => GvdLinkConsts.LINK_APP_SETTINGS;
+    public override string LinkAppSettingsGuide => GvdLinkConsts.LinkAppSettings;
 
     protected GVDEditorConfig(GVDEditorConfig original) : base(original)
     {

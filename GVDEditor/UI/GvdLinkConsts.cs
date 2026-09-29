@@ -7,35 +7,35 @@ internal static class GvdLinkConsts
 {
     private const string DOCS = "http://iniss.6f.sk/docs/gvdeditor/";
 
-    public const string LINK_EDIT_TRAIN = DOCS + "vlaky/uprava-vlaku/";
-    public const string LINK_EDIT_TRAIN_RADENIE = DOCS + "vlaky/radenie/";
-    public const string LINK_EDIT_TRAIN_HLASENIA = DOCS + "vlaky/texty-hlaseni/";
-    public const string LINK_TCATALOG = DOCS + "tabule/katalogove-tabule/";
-    public const string LINK_TCOLUMN_ORDER = DOCS + "tabule/katalogove-tabule/#poradie-stĺpcov-v-režimoch";
-    public const string LINK_TPHYSICAL = DOCS + "tabule/fyzicke-tabule/";
-    public const string LINK_TLOGICAL = DOCS + "tabule/logicke-tabule/";
-    public const string LINK_TTEXTS = DOCS + "tabule/texty-na-tabuliach/";
-    public const string LINK_TFONTS = DOCS + "tabule/pisma-tabul/";
-    public const string LINK_TABTAB_EDITOR = DOCS + "tabule/editor-tabtab/";
-    public const string LINK_APP_SETTINGS = DOCS + "nastroje/nastavenia-programu/";
-    public const string LINK_NEW_GVD = DOCS + "prve-kroky/novy-grafikon/";
-    public const string LINK_NEWS = DOCS + "novinky/";
+    public const string LinkEditTrain = DOCS + "vlaky/uprava-vlaku/";
+    public const string LinkEditTrainRadenie = DOCS + "vlaky/radenie/";
+    public const string LinkEditTrainHlasenia = DOCS + "vlaky/texty-hlaseni/";
+    public const string LinkTcatalog = DOCS + "tabule/katalogove-tabule/";
+    public const string LinkTcolumnOrder = DOCS + "tabule/katalogove-tabule/#poradie-stĺpcov-v-režimoch";
+    public const string LinkTphysical = DOCS + "tabule/fyzicke-tabule/";
+    public const string LinkTlogical = DOCS + "tabule/logicke-tabule/";
+    public const string LinkTtexts = DOCS + "tabule/texty-na-tabuliach/";
+    public const string LinkTfonts = DOCS + "tabule/pisma-tabul/";
+    public const string LinkTabtabEditor = DOCS + "tabule/editor-tabtab/";
+    public const string LinkAppSettings = DOCS + "nastroje/nastavenia-programu/";
+    public const string LinkNewGVD = DOCS + "prve-kroky/novy-grafikon/";
+    public const string LinkNews = DOCS + "novinky/";
 
     // Lokalne nastavenia - stranky okna
-    public const string LINK_LOCAL_GRAFIKON = DOCS + "lokalne-nastavenia/grafikon/";
-    public const string LINK_LOCAL_JAZYKY = DOCS + "lokalne-nastavenia/jazyky-hlaseni/";
-    public const string LINK_LOCAL_STANICE = DOCS + "lokalne-nastavenia/stanice/";
-    public const string LINK_LOCAL_DOPRAVCOVIA = DOCS + "lokalne-nastavenia/dopravcovia/";
-    public const string LINK_LOCAL_NASTUPISTIA_KOLAJE = DOCS + "lokalne-nastavenia/nastupistia-a-kolaje/";
-    public const string LINK_LOCAL_STATEDGM = DOCS + "lokalne-nastavenia/stavovy-diagram/";
+    public const string LinkLocalGrafikon = DOCS + "lokalne-nastavenia/grafikon/";
+    public const string LinkLocalJazyky = DOCS + "lokalne-nastavenia/jazyky-hlaseni/";
+    public const string LinkLocalStanice = DOCS + "lokalne-nastavenia/stanice/";
+    public const string LinkLocalDopravcovia = DOCS + "lokalne-nastavenia/dopravcovia/";
+    public const string LinkLocalNastupistiaKolaje = DOCS + "lokalne-nastavenia/nastupistia-a-kolaje/";
+    public const string LinkLocalStatedgm = DOCS + "lokalne-nastavenia/stavovy-diagram/";
 
     // Globalne nastavenia - stranky okna
-    public const string LINK_GLOBAL_GRAFIKONY = DOCS + "globalne-nastavenia/grafikony/";
-    public const string LINK_GLOBAL_JAZYKY = DOCS + "globalne-nastavenia/jazyky/";
-    public const string LINK_GLOBAL_MESKANIA = DOCS + "globalne-nastavenia/meskania/";
-    public const string LINK_GLOBAL_TYPY_VLAKOV = DOCS + "globalne-nastavenia/typy-vlakov/";
-    public const string LINK_GLOBAL_AUDIO = DOCS + "globalne-nastavenia/audio/";
+    public const string LinkGlobalGrafikony = DOCS + "globalne-nastavenia/grafikony/";
+    public const string LinkGlobalJazyky = DOCS + "globalne-nastavenia/jazyky/";
+    public const string LinkGlobalMeskania = DOCS + "globalne-nastavenia/meskania/";
+    public const string LinkGlobalTypyVlakov = DOCS + "globalne-nastavenia/typy-vlakov/";
+    public const string LinkGlobalAudio = DOCS + "globalne-nastavenia/audio/";
 
-    public const string LINK_DOC_TABTAB = "http://iniss.6f.sk/docs/iniss/formaty-suborov/local/tabtab/";
-    public const string LINK_DOC_VYRAZY = "http://iniss.6f.sk/docs/iniss/formaty-suborov/local/vyrazy/";
+    public const string LinkDocTabtab = "http://iniss.6f.sk/docs/iniss/formaty-suborov/local/tabtab/";
+    public const string LinkDocVyrazy = "http://iniss.6f.sk/docs/iniss/formaty-suborov/local/vyrazy/";
 }

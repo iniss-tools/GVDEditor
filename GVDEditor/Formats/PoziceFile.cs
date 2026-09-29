@@ -20,7 +20,7 @@ internal static class PoziceFile
     /// <param name="tracks">kolaje stanice (Pozice_A.txt)</param>
     /// <exception cref="FormatException">riadok odkazuje na neexistujucu kolaj alebo vlak</exception>
     public static void Read(string file, IList<Train> trains, IEnumerable<Track> tracks) =>
-        ReadRows(file, FILE_POZICE, (row, _) =>
+        ReadRows(file, FilePozice, (row, _) =>
         {
             var train = trains[int.Parse(row[0], CultureInfo.InvariantCulture) - 1];
             var track = Track.GetFromID(tracks, row[1]) ?? throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.Pozice_TrackMissing, row[1]));

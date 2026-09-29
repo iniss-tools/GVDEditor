@@ -150,7 +150,7 @@ public partial class PhysicalTablesPage : UserControl, ISettingsPage
                 : string.Format(CultureInfo.CurrentCulture, Resources.PhysicalTablesPage_Adresa_Bez_kontroly, manufacturer.Name);
     }
 
-    private IReadOnlyList<string> Usage(TablePhysical table) =>
+    private List<string> Usage(TablePhysical table) =>
         TableUsage.LogicalPositions(table, _ctx.Document.TableLogicals)
             .Select(u => string.Format(CultureInfo.CurrentCulture, Resources.TablesPage_Pouzitie_Logicka, u.Logical.Name, u.Position))
             .ToList();

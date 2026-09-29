@@ -354,7 +354,7 @@ internal static class TableCatalogRules
         if (item.DivType == TableDivType.TableTime && IsEmpty(item.Tab2))
             return Resources.TableCatalogRules_Stlpec_Tab2;
 
-        if (table.Manufacturer == TableManufacturer.ELEN && item.End > ElenMaxPosition)
+        if (table.Manufacturer == TableManufacturer.Elen && item.End > ElenMaxPosition)
             return string.Format(CultureInfo.CurrentCulture, Resources.TableCatalogRules_Stlpec_ELEN, ElenMaxPosition, item.End);
 
         return null;
@@ -390,10 +390,10 @@ internal static class TableCatalogRules
     /// </summary>
     public static int CellWidth(TableManufacturer? manufacturer)
     {
-        if (manufacturer == TableManufacturer.ELENOLD)
+        if (manufacturer == TableManufacturer.Elenold)
             return 6;
-        if (manufacturer == TableManufacturer.LCD || manufacturer == TableManufacturer.ERS || manufacturer == TableManufacturer.FERS ||
-            manufacturer == TableManufacturer.LCD1 || manufacturer == TableManufacturer.ERP)
+        if (manufacturer == TableManufacturer.Lcd || manufacturer == TableManufacturer.Ers || manufacturer == TableManufacturer.Fers ||
+            manufacturer == TableManufacturer.Lcd1 || manufacturer == TableManufacturer.Erp)
             return 8;
         return 1;
     }

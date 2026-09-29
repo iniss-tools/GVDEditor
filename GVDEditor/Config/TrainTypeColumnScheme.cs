@@ -34,7 +34,7 @@ public record TrainTypeColumnScheme() : IColorScheme
     public string Name => Resources.Scheme_TrainTypeColumn;
 
     [XmlIgnore]
-    private static readonly Dictionary<string, ColorSetting> props = new()
+    private static readonly Dictionary<string, ColorSetting> Props = new()
     {
         [nameof(Os)] = new(Color.Transparent, Color.Black, true) { Name = "Os", Bold = false },
         [nameof(R)] = new(Color.Transparent, Color.Red, true) { Name = "R", Bold = true },
@@ -111,7 +111,7 @@ public record TrainTypeColumnScheme() : IColorScheme
 
     #endregion
 
-    private static ColorSetting InitProperty(string propname) => props[propname] with { };
+    private static ColorSetting InitProperty(string propname) => Props[propname] with { };
 
     private static void AssignProperty(ref ColorSetting prop, string propname)
     {
@@ -119,9 +119,9 @@ public record TrainTypeColumnScheme() : IColorScheme
             prop = InitProperty(propname);
         else
         {
-            prop.Name = props[propname].Name;
-            prop.DisableBackColorEdit = props[propname].DisableBackColorEdit;
-            prop.DisableFontBoldEdit = props[propname].DisableFontBoldEdit;
+            prop.Name = Props[propname].Name;
+            prop.DisableBackColorEdit = Props[propname].DisableBackColorEdit;
+            prop.DisableFontBoldEdit = Props[propname].DisableFontBoldEdit;
         }
     }
 

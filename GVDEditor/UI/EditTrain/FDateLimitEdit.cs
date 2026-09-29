@@ -145,7 +145,7 @@ internal partial class FDateLimitEdit : Form
                 currentMonth = currentDate.Month;
                 
                 rowIndex = dgvCalendar.Rows.Add();
-                dgvCalendar[0, rowIndex].Value = currentDate.ToString("M.yyyy");
+                dgvCalendar[0, rowIndex].Value = currentDate.ToString("M.yyyy", CultureInfo.CurrentCulture);
 
                 //kvoli zarovnaniu na dni v tyzdni
                 colIndex = (int)currentDate.AddDays(-currentDay).DayOfWeek;
@@ -158,7 +158,7 @@ internal partial class FDateLimitEdit : Form
             var cell = (CalendarCell)dgvCalendar[colIndex, rowIndex];
             cell.Style.BackColor = _style.ControlsColorScheme.Box.BackColor;
             cell.Value = currentDay;
-            cell.ToolTipText = currentDate.ToString("dddd d. MMMM yyyy", CultureInfo.CurrentUICulture);
+            cell.ToolTipText = currentDate.ToString("dddd d. MMMM yyyy", CultureInfo.CurrentCulture);
 
             if (currentDate.DayOfWeek == DayOfWeek.Sunday || DateLimit.IsHoliday(currentDate))
             {

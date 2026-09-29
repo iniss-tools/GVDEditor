@@ -20,12 +20,12 @@ public partial class MyScintilla : UserControl
 
     private void VScrollBarControlOnScroll(object? sender, ScrollEventArgs e)
     {
-        scintilla.FirstVisibleLine = e.NewValue;
+        scintillaEditor.FirstVisibleLine = e.NewValue;
     }
 
     private void HScrollBarControlOnScroll(object? sender, ScrollEventArgs e)
     {
-        scintilla.XOffset = e.NewValue;
+        scintillaEditor.XOffset = e.NewValue;
     }
 
     private void Scintilla_UpdateUI(object sender, UpdateUIEventArgs e)
@@ -33,26 +33,26 @@ public partial class MyScintilla : UserControl
         if (IsChange(e.Change, UpdateChange.VScroll))
         {
             VScrollBarControl.Minimum = 0;
-            VScrollBarControl.Maximum = scintilla.Lines.Count;
-            VScrollBarControl.LargeChange = scintilla.LinesOnScreen;
+            VScrollBarControl.Maximum = scintillaEditor.Lines.Count;
+            VScrollBarControl.LargeChange = scintillaEditor.LinesOnScreen;
             VScrollBarControl.SmallChange = 1;
-            VScrollBarControl.Value = scintilla.FirstVisibleLine;
+            VScrollBarControl.Value = scintillaEditor.FirstVisibleLine;
         }
 
         if (IsChange(e.Change, UpdateChange.HScroll))
         {
             HScrollBarControl.Minimum = 0;
-            HScrollBarControl.Maximum = scintilla.ScrollWidth;
-            HScrollBarControl.LargeChange = scintilla.Width;
+            HScrollBarControl.Maximum = scintillaEditor.ScrollWidth;
+            HScrollBarControl.LargeChange = scintillaEditor.Width;
             HScrollBarControl.SmallChange = 10;
-            HScrollBarControl.Value = scintilla.XOffset;
+            HScrollBarControl.Value = scintillaEditor.XOffset;
         }
 
         if (IsChange(e.Change, UpdateChange.Content))
         {
             ChangeScrollWidth();
 
-            if (scintilla.Lines.Count < scintilla.LinesOnScreen)
+            if (scintillaEditor.Lines.Count < scintillaEditor.LinesOnScreen)
             {
                 pVertical.Visible = false;
             }
@@ -60,13 +60,13 @@ public partial class MyScintilla : UserControl
             {
                 pVertical.Visible = true;
                 VScrollBarControl.Minimum = 0;
-                VScrollBarControl.Maximum = scintilla.Lines.Count;
-                VScrollBarControl.LargeChange = scintilla.LinesOnScreen;
+                VScrollBarControl.Maximum = scintillaEditor.Lines.Count;
+                VScrollBarControl.LargeChange = scintillaEditor.LinesOnScreen;
                 VScrollBarControl.SmallChange = 1;
-                VScrollBarControl.Value = scintilla.FirstVisibleLine;
+                VScrollBarControl.Value = scintillaEditor.FirstVisibleLine;
             }
 
-            if (scintilla.ScrollWidth < scintilla.Width)
+            if (scintillaEditor.ScrollWidth < scintillaEditor.Width)
             {
                 pHorizontal.Visible = false;
             }
@@ -74,10 +74,10 @@ public partial class MyScintilla : UserControl
             {
                 pHorizontal.Visible = true;
                 HScrollBarControl.Minimum = 0;
-                HScrollBarControl.Maximum = scintilla.ScrollWidth;
-                HScrollBarControl.LargeChange = scintilla.Width;
+                HScrollBarControl.Maximum = scintillaEditor.ScrollWidth;
+                HScrollBarControl.LargeChange = scintillaEditor.Width;
                 HScrollBarControl.SmallChange = 10;
-                HScrollBarControl.Value = scintilla.XOffset;
+                HScrollBarControl.Value = scintillaEditor.XOffset;
             }
         }
     }
@@ -91,7 +91,7 @@ public partial class MyScintilla : UserControl
     {
         int index = 0;
         int len = 0;
-        foreach (var line in scintilla.Lines)
+        foreach (var line in scintillaEditor.Lines)
         {
             if (line.Length > len)
             {
@@ -106,10 +106,10 @@ public partial class MyScintilla : UserControl
     private void ChangeScrollWidth()
     {
         var index = LargestLine();
-        if (scintilla.Lines[index].EndPosition - 2 >= 0)
+        if (scintillaEditor.Lines[index].EndPosition - 2 >= 0)
         {
-            int point = scintilla.PointXFromPosition(scintilla.Lines[index].EndPosition - 2);
-            scintilla.ScrollWidth = point + 100;
+            int point = scintillaEditor.PointXFromPosition(scintillaEditor.Lines[index].EndPosition - 2);
+            scintillaEditor.ScrollWidth = point + 100;
         }
     }
 
@@ -118,38 +118,38 @@ public partial class MyScintilla : UserControl
     /// </summary>
     public void SwitchedDocument()
     {
-        Scintilla_UpdateUI(scintilla, new UpdateUIEventArgs(UpdateChange.Content));
+        Scintilla_UpdateUI(scintillaEditor, new UpdateUIEventArgs(UpdateChange.Content));
     }
 
     /// <summary>
     /// Gets the Scintilla control.
     /// </summary>
     [Browsable(true)]
-    public Scintilla Scintilla => scintilla;
+    public Scintilla Scintilla => scintillaEditor;
 
     /// <summary>Occurs when the user enters a text character.</summary>
     [Category("Notifications")]
     [Description("Occurs when the user types a character.")]
     public event EventHandler<CharAddedEventArgs> CharAdded
     {
-        add => scintilla.CharAdded += value;
-        remove => scintilla.CharAdded -= value;
+        add => scintillaEditor.CharAdded += value;
+        remove => scintillaEditor.CharAdded -= value;
     }
 
     /// <summary>
     /// Occurs when the control is about to display or print text and requires styling.
     /// </summary>
     /// <remarks>
-    /// This event is only raised when <see cref="P:ScintillaNET.Scintilla.Lexer" /> is set to <see cref="F:ScintillaNET.Lexer.Container" />.
-    /// The last position styled correctly can be determined by calling <see cref="M:ScintillaNET.Scintilla.GetEndStyled" />.
+    /// This event is only raised when <see cref="ScintillaNET.Scintilla.Lexer" /> is set to <see cref="ScintillaNET.Lexer.Container" />.
+    /// The last position styled correctly can be determined by calling <see cref="ScintillaNET.Scintilla.GetEndStyled" />.
     /// </remarks>
-    /// <seealso cref="M:ScintillaNET.Scintilla.GetEndStyled" />
+    /// <seealso cref="ScintillaNET.Scintilla.GetEndStyled" />
     [Category("Notifications")]
     [Description("Occurs when the text needs styling.")]
     public event EventHandler<StyleNeededEventArgs> StyleNeeded
     {
-        add => scintilla.StyleNeeded += value;
-        remove => scintilla.StyleNeeded -= value;
+        add => scintillaEditor.StyleNeeded += value;
+        remove => scintillaEditor.StyleNeeded -= value;
     }
 
     /// <summary>
@@ -160,28 +160,28 @@ public partial class MyScintilla : UserControl
     [Description("Occurs when the control UI is updated.")]
     public event EventHandler<UpdateUIEventArgs> UpdateUI
     {
-        add => scintilla.UpdateUI += value;
-        remove => scintilla.UpdateUI -= value;
+        add => scintillaEditor.UpdateUI += value;
+        remove => scintillaEditor.UpdateUI -= value;
     }
 
     /// <inheritdoc cref="TextChanged"/>
     public new event EventHandler TextChanged
     {
-        add => scintilla.TextChanged += value;
-        remove => scintilla.TextChanged -= value;
+        add => scintillaEditor.TextChanged += value;
+        remove => scintillaEditor.TextChanged -= value;
     }
 
     /// <inheritdoc cref="KeyPress"/>
     public new event KeyPressEventHandler KeyPress
     {
-        add => scintilla.KeyPress += value;
-        remove => scintilla.KeyPress -= value;
+        add => scintillaEditor.KeyPress += value;
+        remove => scintillaEditor.KeyPress -= value;
     }
 
     /// <inheritdoc cref="MouseDown"/>
     public new event MouseEventHandler MouseDown
     {
-        add => scintilla.MouseDown += value;
-        remove => scintilla.MouseDown -= value;
+        add => scintillaEditor.MouseDown += value;
+        remove => scintillaEditor.MouseDown -= value;
     }
 }

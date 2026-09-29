@@ -14,7 +14,7 @@ public class TableLogicalRulesTests
 {
     private static TablePhysical Physical(string key, int recCount, params TableViewType[] supported)
     {
-        var catalog = new TableCatalog { Key = "K" + key, Name = "K" + key, Comment = "", Manufacturer = TableManufacturer.LCD1 };
+        var catalog = new TableCatalog { Key = "K" + key, Name = "K" + key, Comment = "", Manufacturer = TableManufacturer.Lcd1 };
         foreach (var type in supported)
             catalog.ViewTypeTabs.Add(new TableViewTypeTab { ViewType = type, CountLinesRecord = "1" });
         return new TablePhysical { Key = key, Name = key, RecCount = recCount, TableCatalog = catalog };

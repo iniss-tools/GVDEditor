@@ -23,7 +23,7 @@ internal static class ForeignFile
     {
         try
         {
-            ReadRows(file, FILE_FOREIGN, (row, _) =>
+            ReadRows(file, FileForeign, (row, _) =>
             {
                 var train = trains[int.Parse(row[0], CultureInfo.InvariantCulture) - 1];
 

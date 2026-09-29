@@ -19,8 +19,8 @@ internal static class WorkspaceRepository
     /// <param name="warnings">sem sa pridaju varovania z globalnych suborov</param>
     public static InissWorkspace Load(string inissDir, LoadWarnings warnings)
     {
-        var dataDir = PathUtils.CombinePath(inissDir, GvdFileConsts.DIR_DATA)!;
-        var rawBankDir = PathUtils.CombinePath(inissDir, GvdFileConsts.DIR_RAWBANK)!;
+        var dataDir = PathUtils.CombinePath(inissDir, GvdFileConsts.DirData)!;
+        var rawBankDir = PathUtils.CombinePath(inissDir, GvdFileConsts.DirRawbank)!;
         var langs = RawBankParser.ReadFyzBankFile(rawBankDir, out var maxLangs);
         var languages = new ExBindingList<FyzLanguage>(CategoriFile.ReadGlobal(dataDir, langs, maxLangs, warnings));
         var sounds = RawBankParser.ReadFyzZvukFile(rawBankDir, FyzLanguage.GetBasicLanguage(languages)!);

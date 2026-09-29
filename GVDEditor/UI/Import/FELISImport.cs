@@ -1,4 +1,5 @@
-﻿using GVDEditor.Properties;
+﻿using System.Globalization;
+using GVDEditor.Properties;
 using ToolsCore.Tools;
 using GVDEditor.Integration;
 
@@ -7,25 +8,25 @@ namespace GVDEditor.UI.Import;
 /// <summary>
 /// Dialog - Volby importu vlakov priamo z dat programu ELIS.
 /// </summary>
-public partial class FELISImport : Form
+public partial class FelisImport : Form
 {
     internal ElisImportOptions ResultOptions = null!;
 
     private readonly int _existingTrainCount;
 
     /// <summary>
-    /// Vytvori novy formular typu <see cref="FELISImport" />.
+    /// Vytvori novy formular typu <see cref="FelisImport" />.
     /// </summary>
     /// <param name="stationName">Nazov stanice, pre ktoru sa vlaky nacitaju.</param>
     /// <param name="existingTrainCount">Pocet vlakov, ktore uz grafikon obsahuje.</param>
-    public FELISImport(string stationName, int existingTrainCount)
+    public FelisImport(string stationName, int existingTrainCount)
     {
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
         _existingTrainCount = existingTrainCount;
 
-        lStation.Text = string.Format(Resources.FELISImport_Vlaky_sa_načítajú_pre_stanicu, stationName);
+        lStation.Text = string.Format(CultureInfo.CurrentCulture, Resources.FELISImport_Vlaky_sa_načítajú_pre_stanicu, stationName);
         tbAppPath.Text = ElisImportOptions.DefaultElisDirectory;
 
         //ak grafikon este ziadne vlaky nema, nie je co nahradzat
@@ -61,7 +62,7 @@ public partial class FELISImport : Form
         if (replace)
         {
             var answer = Utils.ShowQuestion(
-                string.Format(Resources.FELISImport_Nahradiť_všetky_vlaky_otázka, _existingTrainCount));
+                string.Format(CultureInfo.CurrentCulture, Resources.FELISImport_Nahradiť_všetky_vlaky_otázka, _existingTrainCount));
 
             if (answer != DialogResult.Yes)
             {

@@ -15,7 +15,7 @@ public class TableFontUsageTests
     private static TableItem Column(string key, int font) => new()
     {
         Key = key, Name = key, FillSection = TableFillSection.Free, Align = TableAlign.Left,
-        DivType = TableDivType.Free, Tab1 = TableTabTab.Empty, Tab2 = TableTabTab.Empty, Start = 0, End = 8, FontIDX = font
+        DivType = TableDivType.Free, Tab1 = TableTabTab.Empty, Tab2 = TableTabTab.Empty, Start = 0, End = 8, FontIdx = font
     };
 
     private static TableCatalog Catalog(params TableItem[] items)
@@ -83,8 +83,8 @@ public class TableFontUsageTests
         var changed = TableFontUsage.Replace(81, 85, catalogs, texts);
 
         Assert.AreEqual(2, changed);
-        Assert.AreEqual(85, catalogs[0].Items[0].FontIDX);
-        Assert.AreEqual(16, catalogs[0].Items[1].FontIDX);
+        Assert.AreEqual(85, catalogs[0].Items[0].FontIdx);
+        Assert.AreEqual(16, catalogs[0].Items[1].FontIdx);
         Assert.AreEqual(85, texts[0].Trains[0].FontID);
         Assert.AreEqual(16, texts[0].Trains[1].FontID);
         Assert.AreEqual("R{81}=R", druh.Text);

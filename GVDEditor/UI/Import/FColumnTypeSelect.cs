@@ -8,7 +8,7 @@ namespace GVDEditor.UI.Import;
 /// </summary>
 public partial class FColumnTypeSelect : Form
 {
-    private readonly List<ImportTrainColumnType> columnTypes = ImportTrainColumnType.GetValues();
+    private readonly List<ImportTrainColumnType> _columnTypes = ImportTrainColumnType.GetValues();
 
     /// <summary>
     /// Vytvori novy formular typu <see cref="FColumnTypeSelect"/>.
@@ -18,7 +18,7 @@ public partial class FColumnTypeSelect : Form
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
-        listColumnTypes.DataSource = columnTypes;
+        listColumnTypes.DataSource = _columnTypes;
     }
 
     /// <summary>

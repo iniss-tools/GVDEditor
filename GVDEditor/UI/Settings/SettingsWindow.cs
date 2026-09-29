@@ -55,7 +55,7 @@ internal static class SettingsWindow
             if (!Directory.Exists(configsDir))
                 Directory.CreateDirectory(configsDir);
 
-            XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG)!, config);
+            XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FileConfig)!, config);
         }
         catch (Exception e)
         {

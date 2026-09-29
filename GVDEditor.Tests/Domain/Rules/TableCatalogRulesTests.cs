@@ -32,7 +32,7 @@ public class TableCatalogRulesTests
     public void Stlpce_PrekryvANeusporiadanaPozicia_NieSuChyba()
     {
         // alternativy pre rozne rezimy sa na riadku prekryvaju a nemusia ist za sebou - bezne v realnych datach
-        var table = Catalog(TableManufacturer.ELEN16, Column("Cas", 0, 0, 30), Column("Text", 0, 0, 200), Column("Mesk", 0, 168, 216),
+        var table = Catalog(TableManufacturer.Elen16, Column("Cas", 0, 0, 30), Column("Text", 0, 0, 200), Column("Mesk", 0, 168, 216),
             Column("Smer", 0, 40, 160));
 
         Assert.AreEqual(0, TableCatalogRules.Check([table], 0).Count);
@@ -41,7 +41,7 @@ public class TableCatalogRulesTests
     [TestMethod]
     public void Stlpec_BezSirky_JeChyba()
     {
-        var table = Catalog(TableManufacturer.ELEN16, Column("A", 0, 40, 40));
+        var table = Catalog(TableManufacturer.Elen16, Column("A", 0, 40, 40));
 
         Assert.IsNotNull(TableCatalogRules.CheckColumn(table, 0));
     }
@@ -57,7 +57,7 @@ public class TableCatalogRulesTests
     public void Stlpec_TabPodlaSposobuPlnenia(int div, bool tab1, bool tab2, bool valid)
     {
         var divType = TableDivType.GetValues().Single(d => d.Id == div);
-        var table = Catalog(TableManufacturer.ELEN16, Column("A", 0, 0, 40, divType, tab1 ? Druh : null, tab2 ? Druh : null));
+        var table = Catalog(TableManufacturer.Elen16, Column("A", 0, 0, 40, divType, tab1 ? Druh : null, tab2 ? Druh : null));
 
         Assert.AreEqual(valid, TableCatalogRules.CheckColumn(table, 0) is null);
     }
@@ -65,14 +65,14 @@ public class TableCatalogRulesTests
     [TestMethod]
     public void Stlpec_ElenNad512_JeChyba()
     {
-        Assert.IsNotNull(TableCatalogRules.CheckColumn(Catalog(TableManufacturer.ELEN, Column("A", 0, 480, 520)), 0));
-        Assert.IsNull(TableCatalogRules.CheckColumn(Catalog(TableManufacturer.ELEN16, Column("A", 0, 480, 520)), 0));
+        Assert.IsNotNull(TableCatalogRules.CheckColumn(Catalog(TableManufacturer.Elen, Column("A", 0, 480, 520)), 0));
+        Assert.IsNull(TableCatalogRules.CheckColumn(Catalog(TableManufacturer.Elen16, Column("A", 0, 480, 520)), 0));
     }
 
     [TestMethod]
     public void Stlpec_ZdvojenyKluc_JeChyba()
     {
-        var table = Catalog(TableManufacturer.ELEN16, Column("A", 0, 0, 40), Column("A", 0, 40, 80));
+        var table = Catalog(TableManufacturer.Elen16, Column("A", 0, 0, 40), Column("A", 0, 40, 80));
 
         Assert.IsNotNull(TableCatalogRules.CheckColumn(table, 1));
     }
@@ -80,7 +80,7 @@ public class TableCatalogRulesTests
     [TestMethod]
     public void Upozornenia_NasobokZnakuANepouzitaTab()
     {
-        var table = Catalog(TableManufacturer.LCD1, Column("A", 0, 0, 22), Column("B", 0, 24, 48, TableDivType.Free, Druh));
+        var table = Catalog(TableManufacturer.Lcd1, Column("A", 0, 0, 22), Column("B", 0, 24, 48, TableDivType.Free, Druh));
 
         var warnings = TableCatalogRules.Warnings(table);
 
@@ -91,7 +91,7 @@ public class TableCatalogRulesTests
     [TestMethod]
     public void NovyStlpec_ZaPoslednymZarovnanyNaZnak()
     {
-        var table = Catalog(TableManufacturer.LCD1, Column("Stĺpec", 1, 0, 30));
+        var table = Catalog(TableManufacturer.Lcd1, Column("Stĺpec", 1, 0, 30));
 
         var item = TableCatalogEditing.NewColumn(table, "Stĺpec", TableCatalogRules.CellWidth(table.Manufacturer));
 
@@ -102,7 +102,7 @@ public class TableCatalogRulesTests
     [TestMethod]
     public void Kopia_MaVlastneStlpceARiadky()
     {
-        var table = Catalog(TableManufacturer.LCD1, Column("A", 0, 0, 32));
+        var table = Catalog(TableManufacturer.Lcd1, Column("A", 0, 0, 32));
         table.Segments.Add(new TableSegment { Height = 10 });
 
         var copy = TableCatalogEditing.Clone(table);
@@ -116,7 +116,7 @@ public class TableCatalogRulesTests
     [TestMethod]
     public void TextyVStlpci()
     {
-        var table = Catalog(TableManufacturer.LCD1, Column("A", 0, 0, 32), Column("B", 0, 32, 64));
+        var table = Catalog(TableManufacturer.Lcd1, Column("A", 0, 0, 32), Column("B", 0, 32, 64));
         var text = new TableText { Key = "T", Name = "Cieľ", Comment = "" };
         text.Realizations.Add(new TableTextRealization { Table = table, Item = table.Items[1] });
 

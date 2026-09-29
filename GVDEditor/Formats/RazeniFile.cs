@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Globalization;
-using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
@@ -27,7 +26,7 @@ internal static class RazeniFile
     /// <param name="context">instalacia INISS a dokument grafikonu</param>
     public static List<Radenie> Read(string path, List<FyzSound> sounds, GrafikonContext context)
     {
-        var fileRazeni1 = CombinePath(path, FILE_RAZENI1)!;
+        var fileRazeni1 = CombinePath(path, FileRazeni1)!;
 
         var radeniaList = new List<Radenie>();
 
@@ -46,7 +45,7 @@ internal static class RazeniFile
                 continue;
             }
 
-            if (LineIsEOF(status))
+            if (LineIsEof(status))
             {
                 if (radenie != null)
                 {
@@ -139,7 +138,7 @@ internal static class RazeniFile
                     if (zvuk == null)
                     {
                         // chybajuca nahravka nezhodi cely grafikon - INISS ju tiez len preskoci
-                        context.Warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Razeni_SoundMissing, FILE_RAZENI1, riadok, file));
+                        context.Warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Razeni_SoundMissing, FileRazeni1, riadok, file));
                         riadok++; // continue obchadza pocitadlo na konci cyklu - dalsie hlasenia by mali zle cislo riadka
                         continue;
                     }
@@ -149,7 +148,7 @@ internal static class RazeniFile
             }
             catch (Exception e)
             {
-                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FORMAT_EX, FILE_RAZENI1, riadok) + e.Message, e);
+                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FormatEx, FileRazeni1, riadok) + e.Message, e);
             }
 
             riadok++;
@@ -162,7 +161,7 @@ internal static class RazeniFile
     /// Vytvori novy subor, ktory bude sluzit na ukladanie informacii o radeniach vlakov
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
-    public static void WriteDefault(string path) => File.Create(CombinePath(path, FILE_RAZENI1)!).Dispose();
+    public static void WriteDefault(string path) => File.Create(CombinePath(path, FileRazeni1)!).Dispose();
 
     /// <summary>
     /// Zapise informacie o radeniach vlakov
@@ -173,7 +172,7 @@ internal static class RazeniFile
     /// <param name="reportVariants">varianty hlaseni grafikonu (poradie urcuje pismeno typu)</param>
     public static void Write(string path, IEnumerable<Radenie> radenia, IEnumerable<FyzLanguage> languages, IList<ReportVariant> reportVariants)
     {
-        var fileRazeni1 = CombinePath(path, FILE_RAZENI1)!;
+        var fileRazeni1 = CombinePath(path, FileRazeni1)!;
 
         using var razeni1F = new CsvFileWriter(fileRazeni1);
         var otherLangs = new List<FyzLanguage>(2);
@@ -271,5 +270,5 @@ internal static class RazeniFile
     /// Vytvori novy subor, ktory bude sluzit na ukladanie informacii o radeniach vlakov
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
-    public static void WriteRazeniDefault(string path) => File.Create(CombinePath(path, FILE_RAZENI)!).Dispose();
+    public static void WriteRazeniDefault(string path) => File.Create(CombinePath(path, FileRazeni)!).Dispose();
 }

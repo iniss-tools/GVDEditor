@@ -19,7 +19,7 @@ internal static class InfoGvdFile
     /// <returns>informacie o grafikone</returns>
     public static GVDInfo Read(string path)
     {
-        var fileGrafikon = CombinePath(path, FILE_GRAFIKON)!;
+        var fileGrafikon = CombinePath(path, FileGrafikon)!;
 
         var gvd = new GVDInfo();
 
@@ -37,11 +37,11 @@ internal static class InfoGvdFile
         gvd.EndValidData = ParseDateOnlyAlts(config.Get("END_VALID_DATA"));
         gvd.CreateData = ParseDateOnlyAlts(config.Get("CREATE_DATA"));
         gvd.TTIndex = int.Parse(config.Get("TT_INDEX", "0"), CultureInfo.InvariantCulture);
-        gvd.VLIndex = int.Parse(config.Get("VL_INDEX", "-1"), CultureInfo.InvariantCulture);
-        gvd.STIndex = int.Parse(config.Get("ST_INDEX", "0"), CultureInfo.InvariantCulture);
+        gvd.VlIndex = int.Parse(config.Get("VL_INDEX", "-1"), CultureInfo.InvariantCulture);
+        gvd.StIndex = int.Parse(config.Get("ST_INDEX", "0"), CultureInfo.InvariantCulture);
         var isRegionText = config.Get("IS_REGION_TEXT", "1");
         gvd.IsRegionText = isRegionText == "1";
-        gvd.OnlyCityVLIndex = int.Parse(config.Get("ONLY_CITY_VL_INDEX", "-999"), CultureInfo.InvariantCulture);
+        gvd.OnlyCityVlIndex = int.Parse(config.Get("ONLY_CITY_VL_INDEX", "-999"), CultureInfo.InvariantCulture);
 
         return gvd;
     }
@@ -53,7 +53,7 @@ internal static class InfoGvdFile
     /// <param name="gvd">informacie o grafikone</param>
     public static void Write(string path, GVDInfo gvd)
     {
-        var fileGrafikon = CombinePath(path, FILE_GRAFIKON)!;
+        var fileGrafikon = CombinePath(path, FileGrafikon)!;
 
         var config = new TxtProps(fileGrafikon, true);
 
@@ -68,11 +68,11 @@ internal static class InfoGvdFile
         config.Set("END_VALID_DATA", gvd.EndValidData.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
         config.Set("CREATE_DATA", gvd.CreateData.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
         config.Set("TT_INDEX", gvd.TTIndex);
-        config.Set("VL_INDEX", gvd.VLIndex);
-        config.Set("ST_INDEX", gvd.STIndex);
+        config.Set("VL_INDEX", gvd.VlIndex);
+        config.Set("ST_INDEX", gvd.StIndex);
         var isRegionText = gvd.IsRegionText ? 1 : 0;
         config.Set("IS_REGION_TEXT", isRegionText);
-        config.Set("ONLY_CITY_VL_INDEX", gvd.OnlyCityVLIndex);
+        config.Set("ONLY_CITY_VL_INDEX", gvd.OnlyCityVlIndex);
         config.Save();
     }
 }

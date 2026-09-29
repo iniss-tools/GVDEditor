@@ -22,7 +22,7 @@ internal static class AudioFile
     /// <param name="trailer">riadky od prveho riadka zacinajuceho '/' - INISS ich ako okruhy necita, zapisu sa spat bez zmeny</param>
     public static List<Audio> Read(string dataDir, IEnumerable<Station> stations, out List<string> trailer)
     {
-        var fileAudio = CombinePath(dataDir, FILE_AUDIO)!;
+        var fileAudio = CombinePath(dataDir, FileAudio)!;
 
         var audios = new List<Audio>();
         trailer = [];
@@ -49,7 +49,7 @@ internal static class AudioFile
                 continue;
             }
 
-            if (LineIsEOF(status))
+            if (LineIsEof(status))
                 break;
 
             try
@@ -72,7 +72,7 @@ internal static class AudioFile
             }
             catch (Exception e)
             {
-                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FORMAT_EX, FILE_AUDIO, riadok) + e.Message, e);
+                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FormatEx, FileAudio, riadok) + e.Message, e);
             }
 
             riadok++;
@@ -89,7 +89,7 @@ internal static class AudioFile
     /// <param name="trailer">riadky za okruhmi z <see cref="Read" /></param>
     public static void Write(string dataDir, IEnumerable<Audio> audios, IEnumerable<string> trailer)
     {
-        WriteFile(CombinePath(dataDir, FILE_AUDIO)!, audios, trailer);
+        WriteFile(CombinePath(dataDir, FileAudio)!, audios, trailer);
     }
 
     /// <summary>

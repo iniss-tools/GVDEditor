@@ -21,7 +21,7 @@ public class TrainRulesTests
     private static readonly DateOnly From = new(2026, 12, 13);
     private static readonly DateOnly To = new(2027, 12, 11);
 
-    private static TrainContext Context(IReadOnlyList<Train>? trains = null, int row = -1) =>
+    private static TrainContext Context(List<Train>? trains = null, int row = -1) =>
         new(trains ?? [], row < 0 ? trains?.Count ?? 0 : row);
 
     // platny koncept prechadzajuceho vlaku Os 3001

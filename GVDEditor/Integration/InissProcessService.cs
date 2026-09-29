@@ -1,3 +1,4 @@
+using System.Globalization;
 using GVDEditor.Config;
 using GVDEditor.Properties;
 
@@ -117,7 +118,7 @@ internal sealed class InissProcessService : IInissProcess
         {
             // proces nebezi - nesmie ostat ako "beziaci"
             process.Dispose();
-            throw new InvalidOperationException(string.Format(Resources.FMain_Nepodarilo_sa_spustiť_vybraný_program, e.Message), e);
+            throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Nepodarilo_sa_spustiť_vybraný_program, e.Message), e);
         }
 
         _process = process;
@@ -140,7 +141,7 @@ internal sealed class InissProcessService : IInissProcess
         {
             if (!IsRunning)
                 return;
-            throw new InvalidOperationException(string.Format(Resources.FMain_INISS_neda_ukoncit, e.Message), e);
+            throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.FMain_INISS_neda_ukoncit, e.Message), e);
         }
     }
 

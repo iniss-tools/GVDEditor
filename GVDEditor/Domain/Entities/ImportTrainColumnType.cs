@@ -1,4 +1,5 @@
-﻿using GVDEditor.Properties;
+﻿using System.Globalization;
+using GVDEditor.Properties;
 using ToolsCore.Iniss.Tools;
 
 // ReSharper disable StringLiteralTypo
@@ -39,7 +40,7 @@ public sealed class ImportTrainColumnType : Enumeration<ImportTrainColumnType>
         if (string.IsNullOrEmpty(name)) return None;
 
         // hlavicky sa porovnavaju bez ohladu na velkost pismen, pomlcky a diakritiku (Kolaj = Koľaj)
-        var normalized = string.Join(' ', name.ToLower().Replace("-", " ").Split(' ', StringSplitOptions.RemoveEmptyEntries));
+        var normalized = string.Join(' ', name.ToLower(CultureInfo.CurrentCulture).Replace("-", " ").Split(' ', StringSplitOptions.RemoveEmptyEntries));
         var type = ParseNormalized(normalized);
         return type != None ? type : ParseNormalized(StringUtils.RemoveDiacritics(normalized));
     }

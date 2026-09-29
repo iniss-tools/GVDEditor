@@ -5,7 +5,7 @@ namespace GVDEditor.Domain.Entities;
 /// <summary>
 /// Definuje typ, mod zobrazenia a pocet riadkov na zaznam katalogovej tabuli.
 /// </summary>
-public sealed class TableViewTypeTab : IEnumerable
+public sealed class TableViewTypeTab : IEnumerable<TableTypeModeItem>
 {
     /// <summary>
     /// Konstruktor
@@ -31,6 +31,8 @@ public sealed class TableViewTypeTab : IEnumerable
     public List<TableTypeModeItem> TypeModeItems { get; }
 
     /// <summary>Returns an enumerator that iterates through a collection.</summary>
-    /// <returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
-    public IEnumerator GetEnumerator() => TypeModeItems.GetEnumerator();
+    /// <returns>An <see cref="System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
+    public IEnumerator<TableTypeModeItem> GetEnumerator() => TypeModeItems.GetEnumerator();
+
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }

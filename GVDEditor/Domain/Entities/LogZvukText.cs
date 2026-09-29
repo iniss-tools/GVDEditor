@@ -12,10 +12,10 @@ namespace GVDEditor.Domain.Entities;
 /// <param name="StationIds">Identifikátory dosadených staníc.</param>
 public sealed record LogZvukText(string Key, string Name, string Description, int Type, string Template, List<string> StationIds)
 {
-    public const int TYPE_ADDITION = 7;
-    public const int TYPE_DIVERSION = 8;
-    public const int TYPE_LOCKOUT = 11;
-    public const int TYPE_LOCKOUT_DYNAMIC = 12;
+    public const int TypeAddition = 7;
+    public const int TypeDiversion = 8;
+    public const int TypeLockout = 11;
+    public const int TypeLockoutDynamic = 12;
 
     /// <summary>
     /// Druh položky podľa písmena kľúča: <c>V</c> výluka, <c>O</c> odklon, <c>D</c> dodatok.

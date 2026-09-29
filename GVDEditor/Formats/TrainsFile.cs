@@ -1,5 +1,4 @@
-﻿using GVDEditor.Domain.Analysis;
-using GVDEditor.Domain.Entities;
+﻿using GVDEditor.Domain.Entities;
 using ToolsCore.Iniss.Tools;
 using static GVDEditor.Formats.FormatCommon;
 using static GVDEditor.Formats.GvdFileConsts;
@@ -21,18 +20,18 @@ internal static class TrainsFile
     /// <returns>vlaky v poradi podla ID</returns>
     public static List<Train> Read(string path, GrafikonContext context)
     {
-        var trains = Export3File.ReadTrains(FileIn(path, FILE_EXPORT3A), context);
-        var dayMaps = Export3File.ReadValidity(FileIn(path, FILE_EXPORT3B), trains);
-        Export3File.ReadNotes(FileIn(path, FILE_EXPORT3C), trains, dayMaps);
+        var trains = Export3File.ReadTrains(FileIn(path, FileExport3A), context);
+        var dayMaps = Export3File.ReadValidity(FileIn(path, FileExport3B), trains);
+        Export3File.ReadNotes(FileIn(path, FileExport3C), trains, dayMaps);
 
-        var templates = RoutesFile.ReadTemplates(FileIn(path, FILE_VZORY), FileIn(path, FILE_STAHLASB), FileIn(path, FILE_STAHLASC), context);
-        RoutesFile.AssignRoutes(FileIn(path, FILE_VLAKY), templates, trains, InfoGvdFile.Read(path), context.Workspace.TrainsTypes, context.Warnings);
+        var templates = RoutesFile.ReadTemplates(FileIn(path, FileVzory), FileIn(path, FileStahlasb), FileIn(path, FileStahlasc), context);
+        RoutesFile.AssignRoutes(FileIn(path, FileVlaky), templates, trains, InfoGvdFile.Read(path), context.Workspace.TrainsTypes, context.Warnings);
 
-        PoziceFile.Read(FileIn(path, FILE_POZICE), trains, context.Document.Tracks);
-        DoplnkyFile.Read(FileIn(path, FILE_DOPLNKY), trains, context);
-        ForeignFile.Read(FileIn(path, FILE_FOREIGN), trains, context.Workspace.Languages);
-        VylukaFile.Read(FileIn(path, FILE_VYLUKA), trains);
-        MosFile.Read(FileIn(path, FILE_MOS), trains);
+        PoziceFile.Read(FileIn(path, FilePozice), trains, context.Document.Tracks);
+        DoplnkyFile.Read(FileIn(path, FileDoplnky), trains, context);
+        ForeignFile.Read(FileIn(path, FileForeign), trains, context.Workspace.Languages);
+        VylukaFile.Read(FileIn(path, FileVyluka), trains);
+        MosFile.Read(FileIn(path, FileMos), trains);
 
         foreach (var train in trains)
             train.Radenia.AddRange(context.Document.Radenia.Where(radenie => train.Number == radenie.CisloVlaku));
@@ -51,21 +50,21 @@ internal static class TrainsFile
     {
         IEnumerable<string> Comments(string file) => GenerateComment(path, file, gvd, context.CommentLanguage);
 
-        Export3File.WriteTrains(FileIn(path, FILE_EXPORT3A), trains, gvd, Comments(FILE_EXPORT3A));
-        Export3File.WriteValidity(FileIn(path, FILE_EXPORT3B), trains, Comments(FILE_EXPORT3B));
-        Export3File.WriteNotes(FileIn(path, FILE_EXPORT3C), trains, Comments(FILE_EXPORT3C));
+        Export3File.WriteTrains(FileIn(path, FileExport3A), trains, gvd, Comments(FileExport3A));
+        Export3File.WriteValidity(FileIn(path, FileExport3B), trains, Comments(FileExport3B));
+        Export3File.WriteNotes(FileIn(path, FileExport3C), trains, Comments(FileExport3C));
 
         var templates = RoutesFile.BuildTemplates(trains, gvd);
-        RoutesFile.WriteTemplates(FileIn(path, FILE_VZORY), templates, Comments(FILE_VZORY));
-        RoutesFile.WriteTrains(FileIn(path, FILE_VLAKY), templates, Comments(FILE_VLAKY));
-        RoutesFile.WriteReportStations(FileIn(path, FILE_STAHLASB), templates, gvd, station => station.IsInShortReport, Comments(FILE_STAHLASB));
-        RoutesFile.WriteReportStations(FileIn(path, FILE_STAHLASC), templates, gvd, station => station.IsInLongReport, Comments(FILE_STAHLASC));
+        RoutesFile.WriteTemplates(FileIn(path, FileVzory), templates, Comments(FileVzory));
+        RoutesFile.WriteTrains(FileIn(path, FileVlaky), templates, Comments(FileVlaky));
+        RoutesFile.WriteReportStations(FileIn(path, FileStahlasb), templates, gvd, station => station.IsInShortReport, Comments(FileStahlasb));
+        RoutesFile.WriteReportStations(FileIn(path, FileStahlasc), templates, gvd, station => station.IsInLongReport, Comments(FileStahlasc));
 
-        PoziceFile.Write(FileIn(path, FILE_POZICE), trains, Comments(FILE_POZICE));
-        DoplnkyFile.Write(FileIn(path, FILE_DOPLNKY), trains, context.Document, Comments(FILE_DOPLNKY));
-        ForeignFile.Write(FileIn(path, FILE_FOREIGN), trains, context.Workspace.Languages, Comments(FILE_FOREIGN));
-        VylukaFile.Write(FileIn(path, FILE_VYLUKA), trains, Comments(FILE_VYLUKA));
-        MosFile.Write(FileIn(path, FILE_MOS), trains, Comments(FILE_MOS));
+        PoziceFile.Write(FileIn(path, FilePozice), trains, Comments(FilePozice));
+        DoplnkyFile.Write(FileIn(path, FileDoplnky), trains, context.Document, Comments(FileDoplnky));
+        ForeignFile.Write(FileIn(path, FileForeign), trains, context.Workspace.Languages, Comments(FileForeign));
+        VylukaFile.Write(FileIn(path, FileVyluka), trains, Comments(FileVyluka));
+        MosFile.Write(FileIn(path, FileMos), trains, Comments(FileMos));
 
         // stanice tras - pri ulozeni grafikonu subor hned prepise CustomStationsFile len vlastnymi stanicami
         var stations = new HashSet<Station> { gvd.ThisStation };
@@ -76,7 +75,7 @@ internal static class TrainsFile
             stations.UnionWith(train.StaniceDoSmeru);
         }
 
-        WriteRows(FileIn(path, FILE_STANICE), Comments(FILE_STANICE),
+        WriteRows(FileIn(path, FileStanice), Comments(FileStanice),
             stations.Select(station => new CsvRow { station.ID, station.Name.UTFtoANSI().Quote() }));
     }
 

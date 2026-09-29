@@ -9,9 +9,6 @@
 		<StartupObject>GVDEditor.Program</StartupObject>
 		<ApplicationIcon>gvd.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<!-- Zodpovedá pôvodnému app.manifest dpiAware=true + App.config EnableWindowsFormsHighDpiAutoResizing=true
-		     (system-aware, nie PerMonitorV2 - zachovaná pôvodná škálovacia logika, pozri MIGRATION_PROGRESS.md). -->
-		<ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
 		<LangVersion>default</LangVersion>
 		<!-- Bez RID kopiruje SDK do runtimes\ aj natívne knižnice pre Android, Linux a macOS
 		     (ťahá ich System.IO.Ports). Pripnutie win-x64 nechá len tie windowsové.

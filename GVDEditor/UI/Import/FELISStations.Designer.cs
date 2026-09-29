@@ -1,7 +1,7 @@
 
 namespace GVDEditor.UI.Import
 {
-    partial class FELISStations
+    partial class FelisStations
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace GVDEditor.UI.Import
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FELISStations));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FelisStations));
             this.dgvStations = new System.Windows.Forms.DataGridView();
             this.colElis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStation = new ExControls.DataGridViewExComboBoxColumn();
@@ -112,7 +112,7 @@ namespace GVDEditor.UI.Import
             this.Controls.Add(this.dgvStations);
             this.Controls.Add(this.lInfo);
             this.MinimizeBox = false;
-            this.Name = "FELISStations";
+            this.Name = "FelisStations";
             this.ShowInTaskbar = false;
             ((System.ComponentModel.ISupportInitialize)(this.dgvStations)).EndInit();
             this.ResumeLayout(false);

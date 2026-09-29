@@ -25,7 +25,7 @@ internal partial class FEditTrain : Form
     /// </summary>
     private readonly EditorContext _ctx;
 
-    private readonly bool copy;
+    private readonly bool _copy;
 
     // koncept vlaku - okno meni len jeho kopie, vlak a radenia v grafikone sa zmenia az v bSave_Click
     private readonly TrainDraft _draft;
@@ -51,7 +51,7 @@ internal partial class FEditTrain : Form
     // smerovanie, podla ktoreho su upravene hlasenia dodatkov
     private Routing? _routing;
 
-    private bool initialization;
+    private bool _initialization;
 
     /// <summary>
     /// Index riadku na pracovnej ploche.
@@ -92,9 +92,9 @@ internal partial class FEditTrain : Form
 
         ThisTrain = train;
         Row = row;
-        this.copy = copy;
+        this._copy = copy;
 
-        initialization = true;
+        _initialization = true;
 
         if (train == null || copy)
         {
@@ -144,17 +144,17 @@ internal partial class FEditTrain : Form
 
         _helpLinks = new Dictionary<ExOptionsPanel, string>
         {
-            [pVlak] = GvdLinkConsts.LINK_EDIT_TRAIN,
-            [pTrasa] = GvdLinkConsts.LINK_EDIT_TRAIN,
-            [pPlatnost] = GvdLinkConsts.LINK_EDIT_TRAIN,
-            [pGroupHlasenia] = GvdLinkConsts.LINK_EDIT_TRAIN_HLASENIA,
-            [pJazyky] = GvdLinkConsts.LINK_EDIT_TRAIN_HLASENIA,
-            [pDodatky] = GvdLinkConsts.LINK_EDIT_TRAIN_HLASENIA,
-            [pRadenie] = GvdLinkConsts.LINK_EDIT_TRAIN_RADENIE
+            [pVlak] = GvdLinkConsts.LinkEditTrain,
+            [pTrasa] = GvdLinkConsts.LinkEditTrain,
+            [pPlatnost] = GvdLinkConsts.LinkEditTrain,
+            [pGroupHlasenia] = GvdLinkConsts.LinkEditTrainHlasenia,
+            [pJazyky] = GvdLinkConsts.LinkEditTrainHlasenia,
+            [pDodatky] = GvdLinkConsts.LinkEditTrainHlasenia,
+            [pRadenie] = GvdLinkConsts.LinkEditTrainRadenie
         };
         optionsView.SelectedPanelChanged += (_, _) => UpdateHelpLink();
 
-        initialization = false;
+        _initialization = false;
         Recheck();
     }
 
@@ -205,7 +205,7 @@ internal partial class FEditTrain : Form
             return;
         }
 
-        var isNew = copy || ThisTrain == null;
+        var isNew = _copy || ThisTrain == null;
         var train = isNew ? new Train() : ThisTrain!;
         // vlak, ktory odide do inej skupiny variant, dostane v nej nove cislo (TrainVariants.Normalize po ulozeni) -
         // vlakom, ktore uz v skupine su, cisla ostanu
@@ -233,7 +233,7 @@ internal partial class FEditTrain : Form
     /// </summary>
     private void Recheck()
     {
-        if (initialization)
+        if (_initialization)
             return;
 
         if (_draft.Routing != _routing)
@@ -309,7 +309,7 @@ internal partial class FEditTrain : Form
     private void SyncRadeniaWithNumber()
     {
         var cislo = _draft.Number;
-        if (initialization || string.IsNullOrEmpty(cislo))
+        if (_initialization || string.IsNullOrEmpty(cislo))
             return;
 
         // pri kopii je Row novy riadok, takze sem patri aj zdrojovy vlak - Shows ho vsak vynecha

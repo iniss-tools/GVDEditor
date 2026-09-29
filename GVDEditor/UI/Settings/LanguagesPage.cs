@@ -1,3 +1,4 @@
+using System.Globalization;
 using GVDEditor.Properties;
 using GVDEditor.Domain.Rules;
 using ToolsCore.Iniss.Entities;
@@ -82,7 +83,7 @@ public partial class LanguagesPage : UserControl, ISettingsPage
         {
             var cell = dgv.Rows[i].Cells[colKey.Index];
             _grid.Report(cell, i >= LanguageRules.MaxLanguages
-                ? string.Format(Resources.LanguageRules_Najviac_jazykov, LanguageRules.MaxLanguages)
+                ? string.Format(CultureInfo.CurrentCulture, Resources.LanguageRules_Najviac_jazykov, LanguageRules.MaxLanguages)
                 : LanguageRules.CheckLanguage(languages, i, bankKeys));
         }
 
@@ -94,7 +95,7 @@ public partial class LanguagesPage : UserControl, ISettingsPage
     }
 
     private string BankHint() =>
-        string.Format(Resources.LanguagesPage_Banka, string.Join(", ", _bank.Select(l => $"{l.Key} – {l.Name}")));
+        string.Format(CultureInfo.CurrentCulture, Resources.LanguagesPage_Banka, string.Join(", ", _bank.Select(l => $"{l.Key} – {l.Name}")));
 
     private void bAdd_Click(object sender, EventArgs e)
     {

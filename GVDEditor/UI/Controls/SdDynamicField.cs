@@ -1,4 +1,5 @@
-﻿using ExControls;
+﻿using System.Globalization;
+using ExControls;
 using GVDEditor.Properties;
 using ToolsCore;
 using ToolsCore.Iniss.Expressions;
@@ -155,8 +156,8 @@ internal sealed class SdDynamicField : UserControl
 
     private string BasicText()
     {
-        if (_combo != null) return SdEditorContext.Value(_combo) is int n ? n.ToString() : "";
-        return ((int)_number!.Value).ToString();
+        if (_combo != null) return SdEditorContext.Value(_combo) is int n ? n.ToString(CultureInfo.CurrentCulture) : "";
+        return ((int)_number!.Value).ToString(CultureInfo.CurrentCulture);
     }
 
     private void Fire()

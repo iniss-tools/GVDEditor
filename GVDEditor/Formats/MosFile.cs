@@ -19,7 +19,7 @@ internal static class MosFile
         if (!File.Exists(file))
             return;
 
-        ReadRows(file, FILE_MOS, (row, _) =>
+        ReadRows(file, FileMos, (row, _) =>
         {
             var id = int.Parse(row[0], CultureInfo.InvariantCulture);
             if (id < 1 || id > trains.Count)

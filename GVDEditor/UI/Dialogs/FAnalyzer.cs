@@ -24,8 +24,8 @@ internal partial class FAnalyzer : Form
     private static readonly Bitmap WarningIcon = StockIcon(ShellIconType.Warning);
     private static readonly Bitmap ErrorIcon = StockIcon(ShellIconType.Error);
 
-    private readonly GVDDirectory GVD;
-    private BindingList<IProblem> Problems = [];
+    private readonly GVDDirectory _gvd;
+    private BindingList<IProblem> _problems = [];
 
     // prebiehajuca analyza (harness snimok na nu caka)
     private Task _analysis = Task.CompletedTask;
@@ -47,7 +47,7 @@ internal partial class FAnalyzer : Form
         _host = host;
         InitializeComponent();
         this.ApplyThemeAndFonts();
-        GVD = gvd;
+        _gvd = gvd;
     }
 
     private static Bitmap StockIcon(ShellIconType type)
@@ -81,10 +81,10 @@ internal partial class FAnalyzer : Form
 
         try
         {
-            var problems = await Task.Run(() => Analyzer.FindProblems(GVD, new AnalysisScope(_ctx.Document, _ctx.Workspace, _host), progress));
-            Problems = new BindingList<IProblem>(problems);
+            var problems = await Task.Run(() => Analyzer.FindProblems(_gvd, new AnalysisScope(_ctx.Document, _ctx.Workspace, _host), progress));
+            _problems = new BindingList<IProblem>(problems);
             dgvResults.DataSource = null;
-            dgvResults.DataSource = Problems;
+            dgvResults.DataSource = _problems;
         }
         catch (Exception exception)
         {
@@ -101,7 +101,7 @@ internal partial class FAnalyzer : Form
     {
         var cell = dgvResults.Rows[e.RowIndex].Cells[e.ColumnIndex];
         if (e.ColumnIndex == 0)
-            switch (Problems[e.RowIndex].ProblemType)
+            switch (_problems[e.RowIndex].ProblemType)
             {
                 case Domain.Analysis.ProblemType.Hint:
                     e.Value = InfoIcon;
@@ -117,7 +117,7 @@ internal partial class FAnalyzer : Form
                     break;
             }
         else if (e.ColumnIndex == 2)
-            switch (Problems[e.RowIndex].FixType)
+            switch (_problems[e.RowIndex].FixType)
             {
                 case Domain.Analysis.FixType.Auto:
                     e.Value = Resources.Analyzer_FixAuto;
@@ -168,7 +168,7 @@ internal partial class FAnalyzer : Form
                 break;
             case FixResult.Done:
                 Utils.ShowInfo(Resources.Analyzer_Fixed);
-                Problems.Remove(problem);
+                _problems.Remove(problem);
                 if (problem.ChangesGrafikon) DataChanged = true;
                 break;
         }

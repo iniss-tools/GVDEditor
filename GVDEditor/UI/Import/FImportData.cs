@@ -22,11 +22,11 @@ internal partial class FImportData : Form
     /// </summary>
     private readonly EditorContext _ctx;
 
-    private readonly GVDInfo Gvd;
-    private DataTable? DataTable;
-    private object?[]? firstRow;
+    private readonly GVDInfo _gvd;
+    private DataTable? _dataTable;
+    private object?[]? _firstRow;
 
-    private List<ImportTrainColumnType> selectedColumnTypes = [];
+    private List<ImportTrainColumnType> _selectedColumnTypes = [];
 
     // naposledy nacitany CSV subor - pri zmene kodovania sa nacita znova
     private string? _lastCsvPath;
@@ -52,7 +52,7 @@ internal partial class FImportData : Form
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
-        Gvd = gvd;
+        _gvd = gvd;
         cbDataType.SelectedIndex = 0;
         cbEncoding.SelectedIndex = 0;
 
@@ -65,7 +65,7 @@ internal partial class FImportData : Form
         var fmtException =
             Resources.Import_ConvertFailed;
 
-        if (DataTable == null || DataTable.Rows.Count == 0 || DataTable.Columns.Count == 0)
+        if (_dataTable == null || _dataTable.Rows.Count == 0 || _dataTable.Columns.Count == 0)
         {
             Utils.ShowError(Resources.FImportData_Nie_sú_zadané_údaje_pre_import);
             DialogResult = DialogResult.None;
@@ -73,7 +73,7 @@ internal partial class FImportData : Form
         }
 
         var required = ImportTrainColumnType.GetRequiredValues();
-        if (!selectedColumnTypes.ContainsAllItems(required))
+        if (!_selectedColumnTypes.ContainsAllItems(required))
         {
             var text = new StringBuilder(
                 Resources.Import_RequiredColumns);
@@ -88,7 +88,7 @@ internal partial class FImportData : Form
             return;
         }
 
-        var trains = new List<Train>(DataTable.Rows.Count);
+        var trains = new List<Train>(_dataTable.Rows.Count);
 
         if (_ctx.Config.DebugModeGUI == DebugMode.AppCrash)
             Deserialize();
@@ -110,28 +110,28 @@ internal partial class FImportData : Form
 
         void Deserialize()
         {
-            for (var i = 0; i < DataTable.Rows.Count; i++)
+            for (var i = 0; i < _dataTable.Rows.Count; i++)
             {
                 var train = new Train { Variant = -1 };
 
-                for (var j = 0; j < selectedColumnTypes.Count; j++)
+                for (var j = 0; j < _selectedColumnTypes.Count; j++)
                 {
-                    var data = DataTable.Rows[i][j].ToString()!;
+                    var data = _dataTable.Rows[i][j].ToString()!;
 
-                    if (selectedColumnTypes[j] == ImportTrainColumnType.Number)
+                    if (_selectedColumnTypes[j] == ImportTrainColumnType.Number)
                     {
                         train.Number = data;
                     }
-                    else if (selectedColumnTypes[j] == ImportTrainColumnType.Type)
+                    else if (_selectedColumnTypes[j] == ImportTrainColumnType.Type)
                     {
                         foreach (var typ in _ctx.Workspace.TrainsTypes)
                             if (data == typ.Key)
                                 train.Type = typ;
 
                         if (train.Type == null)
-                            throw new ArgumentException(string.Format(fmtException, data, i + 1, j + 1, selectedColumnTypes[j], typeof(TrainType)));
+                            throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, data, i + 1, j + 1, _selectedColumnTypes[j], typeof(TrainType)));
                     }
-                    else if (selectedColumnTypes[j] == ImportTrainColumnType.Variant)
+                    else if (_selectedColumnTypes[j] == ImportTrainColumnType.Variant)
                     {
                         // prazdna bunka = vlak bez varianty
                         if (string.IsNullOrWhiteSpace(data))
@@ -141,15 +141,15 @@ internal partial class FImportData : Form
                         }
 
                         if (!int.TryParse(data, out var num))
-                            throw new ArgumentException(string.Format(fmtException, data, i + 1, j + 1, selectedColumnTypes[j], typeof(int)));
+                            throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, data, i + 1, j + 1, _selectedColumnTypes[j], typeof(int)));
 
                         train.Variant = num;
                     }
-                    else if (selectedColumnTypes[j] == ImportTrainColumnType.Nazov)
+                    else if (_selectedColumnTypes[j] == ImportTrainColumnType.Nazov)
                     {
                         train.Name = data.Trim();
                     }
-                    else if (selectedColumnTypes[j] == ImportTrainColumnType.DopravcaId)
+                    else if (_selectedColumnTypes[j] == ImportTrainColumnType.DopravcaId)
                     {
                         if (string.IsNullOrEmpty(data))
                         {
@@ -158,19 +158,19 @@ internal partial class FImportData : Form
                         else
                         {
                             if (!int.TryParse(data, out var num))
-                                throw new ArgumentException(string.Format(fmtException, data, i + 1, j + 1,
-                                    selectedColumnTypes[j], typeof(Operator)));
+                                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, data, i + 1, j + 1,
+                                    _selectedColumnTypes[j], typeof(Operator)));
 
                             var oper = Operator.GetFromID(_ctx.Document.Operators, num);
 
                             if (oper == null)
-                                throw new ArgumentException(string.Format(fmtException, data, i + 1, j + 1,
-                                    selectedColumnTypes[j], typeof(Operator)));
+                                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, data, i + 1, j + 1,
+                                    _selectedColumnTypes[j], typeof(Operator)));
 
                             train.Operator = oper;
                         }
                     }
-                    else if (selectedColumnTypes[j] == ImportTrainColumnType.DopravcaName)
+                    else if (_selectedColumnTypes[j] == ImportTrainColumnType.DopravcaName)
                     {
                         if (string.IsNullOrEmpty(data))
                         {
@@ -179,25 +179,25 @@ internal partial class FImportData : Form
                         else
                         {
                             var oper = Operator.GetFromName(_ctx.Document.Operators, data);
-                            train.Operator = oper ?? throw new ArgumentException(string.Format(fmtException, data, i + 1, j + 1,
-                                selectedColumnTypes[j], typeof(Operator)));
+                            train.Operator = oper ?? throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, data, i + 1, j + 1,
+                                _selectedColumnTypes[j], typeof(Operator)));
                         }
                     }
-                    else if (selectedColumnTypes[j] == ImportTrainColumnType.Track)
+                    else if (_selectedColumnTypes[j] == ImportTrainColumnType.Track)
                     {
                         var trk = Track.GetFromID(_ctx.Document.Tracks, data);
-                        train.Track = trk ?? throw new ArgumentException(string.Format(fmtException, data, i + 1, j + 1,
-                            selectedColumnTypes[j], typeof(Track)));
+                        train.Track = trk ?? throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, data, i + 1, j + 1,
+                            _selectedColumnTypes[j], typeof(Track)));
                     }
-                    else if (selectedColumnTypes[j] == ImportTrainColumnType.LinkaOdchod)
+                    else if (_selectedColumnTypes[j] == ImportTrainColumnType.LinkaOdchod)
                     {
                         train.LineDeparture = data.Trim();
                     }
-                    else if (selectedColumnTypes[j] == ImportTrainColumnType.LinkaPrichod)
+                    else if (_selectedColumnTypes[j] == ImportTrainColumnType.LinkaPrichod)
                     {
                         train.LineArrival = data.Trim();
                     }
-                    else if (selectedColumnTypes[j] == ImportTrainColumnType.Languages)
+                    else if (_selectedColumnTypes[j] == ImportTrainColumnType.Languages)
                     {
                         var langs = new List<FyzLanguage>();
 
@@ -209,15 +209,15 @@ internal partial class FImportData : Form
                             var language = FyzLanguage.GetLanguageFromKey(_ctx.Document.LocalLanguages, s);
 
                             if (language == null)
-                                throw new ArgumentException(string.Format(fmtException, data, i + 1, j + 1,
-                                    selectedColumnTypes[j], typeof(FyzLanguage)));
+                                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, data, i + 1, j + 1,
+                                    _selectedColumnTypes[j], typeof(FyzLanguage)));
 
                             langs.Add(language);
                         }
 
                         train.Languages = langs;
                     }
-                    else if (selectedColumnTypes[j] == ImportTrainColumnType.Attributes)
+                    else if (_selectedColumnTypes[j] == ImportTrainColumnType.Attributes)
                     {
                         train.IsMedzistatny = data.Contains('M');
                         train.IsMiestenkovy = data.Contains('R');
@@ -232,34 +232,34 @@ internal partial class FImportData : Form
 
                 //stlpce, ktore potrebuju data predchadzajucich nadobudnutych hodnot
 
-                if (selectedColumnTypes.Contains(ImportTrainColumnType.AllStationsID) ||
-                    selectedColumnTypes.Contains(ImportTrainColumnType.AllStationsName))
+                if (_selectedColumnTypes.Contains(ImportTrainColumnType.AllStationsID) ||
+                    _selectedColumnTypes.Contains(ImportTrainColumnType.AllStationsName))
                 {
-                    var byId = selectedColumnTypes.Contains(ImportTrainColumnType.AllStationsID);
+                    var byId = _selectedColumnTypes.Contains(ImportTrainColumnType.AllStationsID);
                     var allStations = ReadStations(i, byId ? ImportTrainColumnType.AllStationsID : ImportTrainColumnType.AllStationsName, byId)!;
                     var shortStations = ReadStations(i, byId ? ImportTrainColumnType.StationsShortID : ImportTrainColumnType.StationsShortName, byId);
                     var longStations = ReadStations(i, byId ? ImportTrainColumnType.StationsLongID : ImportTrainColumnType.StationsLongName, byId);
 
-                    var (zo, @do) = BuildRoute(allStations, Gvd.ThisStation.ID, shortStations, longStations);
+                    var (zo, @do) = BuildRoute(allStations, _gvd.ThisStation.ID, shortStations, longStations);
                     train.StaniceZoSmeru.AddRange(zo);
                     train.StaniceDoSmeru.AddRange(@do);
 
                     SetSmerovanie();
                 }
-                else if (selectedColumnTypes.Contains(ImportTrainColumnType.Routing))
+                else if (_selectedColumnTypes.Contains(ImportTrainColumnType.Routing))
                 {
-                    var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.Routing);
-                    var data = DataTable.Rows[i][index].ToString()!;
+                    var index = _selectedColumnTypes.IndexOf(ImportTrainColumnType.Routing);
+                    var data = _dataTable.Rows[i][index].ToString()!;
 
                     if (!Routing.TryParse(data, out var routing))
-                        throw new ArgumentException(string.Format(fmtException, data, i + 1, index + 1,
-                            selectedColumnTypes[index], typeof(Routing)));
+                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, data, i + 1, index + 1,
+                            _selectedColumnTypes[index], typeof(Routing)));
 
                     train.Routing = routing;
                 }
                 else
                 {
-                    throw new Exception(Resources.Import_NoRoute);
+                    throw new InvalidDataException(Resources.Import_NoRoute);
                 }
 
                 void SetSmerovanie()
@@ -272,20 +272,20 @@ internal partial class FImportData : Form
                     else throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.Import_OnlyHomeStation, i + 1));
                 }
 
-                var iPrichod = selectedColumnTypes.IndexOf(ImportTrainColumnType.Prichod);
-                var dataPrichod = DataTable.Rows[i][iPrichod].ToString()!;
-                var iOdchod = selectedColumnTypes.IndexOf(ImportTrainColumnType.Odchod);
-                var dataOdchod = DataTable.Rows[i][iOdchod].ToString()!;
+                var iPrichod = _selectedColumnTypes.IndexOf(ImportTrainColumnType.Prichod);
+                var dataPrichod = _dataTable.Rows[i][iPrichod].ToString()!;
+                var iOdchod = _selectedColumnTypes.IndexOf(ImportTrainColumnType.Odchod);
+                var dataOdchod = _dataTable.Rows[i][iOdchod].ToString()!;
 
                 if (train.Routing == Routing.Prechadzajuci)
                 {
                     if (!ParseUtils.TryParseTime(dataPrichod, out var timePrichod))
-                        throw new ArgumentException(string.Format(fmtException, dataPrichod, i + 1, iPrichod,
-                            selectedColumnTypes[iPrichod], typeof(DateTime)));
+                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, dataPrichod, i + 1, iPrichod,
+                            _selectedColumnTypes[iPrichod], typeof(DateTime)));
 
                     if (!ParseUtils.TryParseTime(dataOdchod, out var timeOdchod))
-                        throw new ArgumentException(string.Format(fmtException, dataOdchod, i + 1, iOdchod,
-                            selectedColumnTypes[iOdchod], typeof(DateTime)));
+                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, dataOdchod, i + 1, iOdchod,
+                            _selectedColumnTypes[iOdchod], typeof(DateTime)));
 
                     train.Arrival = TimeOnly.FromDateTime(timePrichod);
                     train.Departure = TimeOnly.FromDateTime(timeOdchod);
@@ -293,39 +293,39 @@ internal partial class FImportData : Form
                 else if (train.Routing == Routing.Vychadzajuci)
                 {
                     if (!ParseUtils.TryParseTime(dataOdchod, out var timeOdchod))
-                        throw new ArgumentException(string.Format(fmtException, dataOdchod, i + 1, iOdchod,
-                            selectedColumnTypes[iOdchod], typeof(DateTime)));
+                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, dataOdchod, i + 1, iOdchod,
+                            _selectedColumnTypes[iOdchod], typeof(DateTime)));
 
                     train.Departure = TimeOnly.FromDateTime(timeOdchod);
                 }
                 else
                 {
                     if (!ParseUtils.TryParseTime(dataPrichod, out var timePrichod))
-                        throw new ArgumentException(string.Format(fmtException, dataPrichod, i + 1, iPrichod,
-                            selectedColumnTypes[iPrichod], typeof(DateTime)));
+                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, dataPrichod, i + 1, iPrichod,
+                            _selectedColumnTypes[iPrichod], typeof(DateTime)));
 
                     train.Arrival = TimeOnly.FromDateTime(timePrichod);
                 }
 
-                if (selectedColumnTypes.Contains(ImportTrainColumnType.PlatnostOd))
+                if (_selectedColumnTypes.Contains(ImportTrainColumnType.PlatnostOd))
                 {
-                    var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.PlatnostOd);
-                    var data = DataTable.Rows[i][index].ToString()!;
+                    var index = _selectedColumnTypes.IndexOf(ImportTrainColumnType.PlatnostOd);
+                    var data = _dataTable.Rows[i][index].ToString()!;
 
                     if (!ParseUtils.TryParseDateAlts(data, out var date))
-                        throw new ArgumentException(string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index],
+                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, data, i + 1, index, _selectedColumnTypes[index],
                             typeof(DateTime)));
 
                     train.ZaciatokPlatnosti = DateOnly.FromDateTime(date);
                 }
 
-                if (selectedColumnTypes.Contains(ImportTrainColumnType.PlatnostDo))
+                if (_selectedColumnTypes.Contains(ImportTrainColumnType.PlatnostDo))
                 {
-                    var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.PlatnostDo);
-                    var data = DataTable.Rows[i][index].ToString()!;
+                    var index = _selectedColumnTypes.IndexOf(ImportTrainColumnType.PlatnostDo);
+                    var data = _dataTable.Rows[i][index].ToString()!;
 
                     if (!ParseUtils.TryParseDateAlts(data, out var date))
-                        throw new ArgumentException(string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index],
+                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, data, i + 1, index, _selectedColumnTypes[index],
                             typeof(DateTime)));
 
                     train.KoniecPlatnosti = DateOnly.FromDateTime(date);
@@ -335,14 +335,14 @@ internal partial class FImportData : Form
 
                 train.Languages ??= [];
 
-                if (train.ZaciatokPlatnosti == default) train.ZaciatokPlatnosti = Gvd.StartValidTimeTable;
+                if (train.ZaciatokPlatnosti == default) train.ZaciatokPlatnosti = _gvd.StartValidTimeTable;
 
-                if (train.KoniecPlatnosti == default) train.KoniecPlatnosti = Gvd.EndValidTimeTable;
+                if (train.KoniecPlatnosti == default) train.KoniecPlatnosti = _gvd.EndValidTimeTable;
 
-                if (selectedColumnTypes.Contains(ImportTrainColumnType.DateRemText))
+                if (_selectedColumnTypes.Contains(ImportTrainColumnType.DateRemText))
                 {
-                    var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.DateRemText);
-                    var data = DataTable.Rows[i][index].ToString()!;
+                    var index = _selectedColumnTypes.IndexOf(ImportTrainColumnType.DateRemText);
+                    var data = _dataTable.Rows[i][index].ToString()!;
 
                     try
                     {
@@ -352,17 +352,17 @@ internal partial class FImportData : Form
                     catch (Exception exception)
                     {
                         throw new ArgumentException(
-                            string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index], typeof(DateTime)) + " " +
+                            string.Format(CultureInfo.CurrentCulture, fmtException, data, i + 1, index, _selectedColumnTypes[index], typeof(DateTime)) + " " +
                             exception.Message);
                     }
 
                     train.DateLimitText = data;
                 }
 
-                if (selectedColumnTypes.Contains(ImportTrainColumnType.DateRemBitArray))
+                if (_selectedColumnTypes.Contains(ImportTrainColumnType.DateRemBitArray))
                 {
-                    var index = selectedColumnTypes.IndexOf(ImportTrainColumnType.DateRemBitArray);
-                    var data = DataTable.Rows[i][index].ToString()!;
+                    var index = _selectedColumnTypes.IndexOf(ImportTrainColumnType.DateRemBitArray);
+                    var data = _dataTable.Rows[i][index].ToString()!;
 
                     string dateRemText;
                     try
@@ -373,7 +373,7 @@ internal partial class FImportData : Form
                     catch (Exception exception)
                     {
                         throw new ArgumentException(
-                            string.Format(fmtException, data, i + 1, index, selectedColumnTypes[index], typeof(DateTime)) + " " +
+                            string.Format(CultureInfo.CurrentCulture, fmtException, data, i + 1, index, _selectedColumnTypes[index], typeof(DateTime)) + " " +
                             exception.Message);
                     }
 
@@ -387,17 +387,17 @@ internal partial class FImportData : Form
         // stanice zo stlpca daneho typu; null, ak stlpec nie je vybrany
         List<Station>? ReadStations(int row, ImportTrainColumnType type, bool byId)
         {
-            var index = selectedColumnTypes.IndexOf(type);
+            var index = _selectedColumnTypes.IndexOf(type);
             if (index == -1) return null;
 
-            var data = DataTable!.Rows[row][index].ToString()!;
+            var data = _dataTable!.Rows[row][index].ToString()!;
             try
             {
                 return byId ? _ctx.Stations.FromIDList(data) : _ctx.Stations.FromNameList(data);
             }
             catch (ArgumentException exception)
             {
-                throw new ArgumentException(string.Format(fmtException, data, row + 1, index + 1, type, typeof(Station)) + " " +
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, fmtException, data, row + 1, index + 1, type, typeof(Station)) + " " +
                                             exception.Message);
             }
         }
@@ -516,37 +516,37 @@ internal partial class FImportData : Form
 
     private void cboxFirstHeader_CheckedChanged(object sender, EventArgs e)
     {
-        if (DataTable != null && DataTable.Rows.Count != 0)
+        if (_dataTable != null && _dataTable.Rows.Count != 0)
         {
             if (cboxFirstHeader.Checked)
             {
-                firstRow = DataTable.Rows[0].ItemArray;
-                selectedColumnTypes.Clear();
+                _firstRow = _dataTable.Rows[0].ItemArray;
+                _selectedColumnTypes.Clear();
 
                 for (var i = 0; i < dgvData.Columns.Count; i++)
                 {
-                    var type = ImportTrainColumnType.ParseColumnName((string)firstRow[i]!);
+                    var type = ImportTrainColumnType.ParseColumnName((string)_firstRow[i]!);
                     dgvData.Columns[i].HeaderText = type.Name;
-                    selectedColumnTypes.Add(type);
+                    _selectedColumnTypes.Add(type);
                 }
 
-                DataTable.Rows.RemoveAt(0);
+                _dataTable.Rows.RemoveAt(0);
             }
             else
             {
-                if (firstRow != null)
+                if (_firstRow != null)
                 {
-                    selectedColumnTypes.Clear();
+                    _selectedColumnTypes.Clear();
 
-                    for (var i = 0; i < DataTable.Columns.Count; i++)
+                    for (var i = 0; i < _dataTable.Columns.Count; i++)
                     {
                         dgvData.Columns[i].HeaderText = ImportTrainColumnType.None.Name;
-                        selectedColumnTypes.Add(ImportTrainColumnType.None);
+                        _selectedColumnTypes.Add(ImportTrainColumnType.None);
                     }
 
-                    var row = DataTable.NewRow();
-                    row.ItemArray = firstRow;
-                    DataTable.Rows.InsertAt(row, 0);
+                    var row = _dataTable.NewRow();
+                    row.ItemArray = _firstRow;
+                    _dataTable.Rows.InsertAt(row, 0);
                 }
             }
         }
@@ -561,21 +561,21 @@ internal partial class FImportData : Form
         if (result == DialogResult.OK)
         {
             var type = fcts.SelectedType;
-            selectedColumnTypes[index] = fcts.SelectedType;
+            _selectedColumnTypes[index] = fcts.SelectedType;
 
             dgvData.Columns[index].HeaderText = type.Name;
         }
         else if (result == DialogResult.No)
         {
             dgvData.Columns[index].HeaderText = ImportTrainColumnType.None.Name;
-            selectedColumnTypes[index] = ImportTrainColumnType.None;
+            _selectedColumnTypes[index] = ImportTrainColumnType.None;
         }
     }
 
     private void SetTable(TableFileReader reader)
     {
-        DataTable = new DataTable();
-        selectedColumnTypes = [];
+        _dataTable = new DataTable();
+        _selectedColumnTypes = [];
 
         for (var i = 0; i < reader.ColumnCount; i++)
         {
@@ -583,26 +583,26 @@ internal partial class FImportData : Form
 
             var dc = new DataColumn { Caption = ct.Name, DefaultValue = "" };
 
-            selectedColumnTypes.Add(ct);
-            DataTable.Columns.Add(dc);
+            _selectedColumnTypes.Add(ct);
+            _dataTable.Columns.Add(dc);
         }
 
         for (var i = cboxFirstHeader.Checked ? 1 : 0; i < reader.RowCount; i++)
         {
-            var row = DataTable.NewRow();
+            var row = _dataTable.NewRow();
             for (var j = 0; j < reader.ColumnCount; j++) row[j] = reader[i, j];
-            DataTable.Rows.Add(row);
+            _dataTable.Rows.Add(row);
         }
 
         reader.Dispose();
 
         dgvData.DataSource = null;
-        dgvData.DataSource = DataTable;
+        dgvData.DataSource = _dataTable;
 
         for (var i = 0; i < dgvData.Columns.Count; i++)
         {
             var column = dgvData.Columns[i];
-            column.HeaderText = DataTable.Columns[i].Caption;
+            column.HeaderText = _dataTable.Columns[i].Caption;
             column.SortMode = DataGridViewColumnSortMode.NotSortable;
             column.AutoSizeMode = i == dgvData.Columns.Count - 1
                 ? DataGridViewAutoSizeColumnMode.Fill
@@ -625,7 +625,7 @@ internal partial class FImportData : Form
         if (e.Data == null) return;
 
         var files = (string[])e.Data.GetData(DataFormats.FileDrop)!;
-        switch (Path.GetExtension(files[0]).ToLower())
+        switch (Path.GetExtension(files[0]).ToLowerInvariant())
         {
             case ".xls":
             case ".xlsx":

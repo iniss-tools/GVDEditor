@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using ExControls;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
@@ -104,7 +103,7 @@ public class GrafikonLanguageRulesTests
         try
         {
             // lokalny subor ma iny nazov jazyka aj priznak hlavneho jazyka - INISS ich berie z globalneho suboru
-            File.WriteAllText(Path.Combine(dir, GvdFileConsts.FILE_CATEGORI),
+            File.WriteAllText(Path.Combine(dir, GvdFileConsts.FileCategori),
                 "[MAIN]\r\nCOUNT_BASIC_REPORT_VARIANT=0\r\nCOUNT_TYPE_BASIC_REPORT=0\r\nCOUNT_LANGUAGES=2\r\n\r\n" +
                 "[LANGUAGE_01]\r\nKEY=\"SK\"\r\nIS_BASIC=0\r\nNAME=\"SK\"\r\n\r\n" +
                 "[LANGUAGE_02]\r\nKEY=\"GB\"\r\nIS_BASIC=1\r\nNAME=\"EN\"\r\n");

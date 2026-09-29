@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Reflection;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
@@ -80,7 +79,7 @@ internal static class DemoInstallation
         ZpozdeniFile.WriteDefault(dataDir);
 
         // zvukový okruh stanice a testovací okruh TEST (sprístupní v INISSe tlačidlo Test/stop)
-        File.WriteAllLines(Path.Combine(dataDir, GvdFileConsts.FILE_AUDIO),
+        File.WriteAllLines(Path.Combine(dataDir, GvdFileConsts.FileAudio),
         [
             "9900100,Dolné Mesto,Dolné Mesto,Hlásenie,",
             "TEST,Test,Test,TestHlas,"
@@ -102,8 +101,8 @@ internal static class DemoInstallation
             CreateData = ValidFrom.AddMonths(-1),
             IsRegionText = true,
             Category = 1,
-            VLIndex = -1,
-            OnlyCityVLIndex = -999
+            VlIndex = -1,
+            OnlyCityVlIndex = -999
         };
 
         Directory.CreateDirectory(dir.FullPath);
@@ -246,7 +245,7 @@ internal static class DemoInstallation
             new GrafikonDocument { ReportVariants = ReportVariant.GetDefaultValues(), ReportTypes = Program.Context.Document.ReportTypes, CustomStations = Program.Context.Document.CustomStations },
             Program.Context.Config.Language));
         TablesFile.Write(path, tables.TabTabs, tables.Catalogs, tables.Physicals, tables.Logicals);
-        TTextsFile.Write(path, tables.Texts);
+        TextsFile.Write(path, tables.Texts);
         ModeTabsFile.Write(path, tables.Fonts, DemoTables.FontDir, []);
         TracksFile.Write(path, tracks);
         OperatorsFile.Write(path, operators);
@@ -262,7 +261,7 @@ internal static class DemoInstallation
     {
         FyzSound Snd(string group, string key) => Program.Context.Workspace.Sounds.First(s => s.Group.Key == group && s.Key == key);
 
-        var types = ReportType.GetDefaultValuesSK();
+        var types = ReportType.GetDefaultValuesSk();
         List<ChosenReportType> Reports() =>
         [
             new() { Type = types[0], Variants = ReportVariant.GetDefaultValues() },
@@ -351,7 +350,7 @@ internal static class DemoInstallation
         Program.Context.Document.Operators = new ExControls.ExBindingList<Operator>(OperatorsFile.Read(path));
         (Program.Context.Document.ReportVariants, Program.Context.Document.ReportTypes, Program.Context.Document.LocalLanguages) = CategoriFile.ReadLocal(path, Program.Context.Workspace.Languages, warnings);
         var trains = TrainsFile.Read(path, context);
-        var texts = TTextsFile.Read(path, trains, Program.Context.Document.TableCatalogs);
+        var texts = TextsFile.Read(path, trains, Program.Context.Document.TableCatalogs);
         var fonts = ModeTabsFile.Read(path).Fonts;
         var tracksWithTables = Program.Context.Document.Tracks.Count(t => t.Tables.Count > 0);
         var radenia = RazeniFile.Read(path, Program.Context.Workspace.Sounds, context);

@@ -70,7 +70,7 @@ public class ReportVariantOrderTests
                 new(0, "Krátke hlásenie"),
                 new(1, "Dlhé hlásenie")
             };
-            CategoriFile.WriteLocal(dir.FullName, swapped, ReportType.GetDefaultValuesSK(), []);
+            CategoriFile.WriteLocal(dir.FullName, swapped, ReportType.GetDefaultValuesSk(), []);
             _warnings.Clear();
 
             var (variants, types, _) = CategoriFile.ReadLocal(dir.FullName, [], _warnings);
@@ -81,10 +81,10 @@ public class ReportVariantOrderTests
             _warnings.Clear();
 
             CategoriFile.WriteLocal(dir.FullName, variants, types, []);
-            var file = new TxtPropsAreasFields(Path.Combine(dir.FullName, GvdFileConsts.FILE_CATEGORI));
-            Assert.AreEqual("Dlhé hlásenie", file.Get("VARIANT_01", "NAME").ANSItoUTF());
+            var file = new TxtPropsAreasFields(Path.Combine(dir.FullName, GvdFileConsts.FileCategori));
+            Assert.AreEqual("Dlhé hlásenie", file.Get("VARIANT_01", "NAME").AnsiToUTF());
             Assert.AreEqual("0", file.Get("VARIANT_01", "KEY"));
-            Assert.AreEqual("Krátke hlásenie", file.Get("VARIANT_02", "NAME").ANSItoUTF());
+            Assert.AreEqual("Krátke hlásenie", file.Get("VARIANT_02", "NAME").AnsiToUTF());
         }
         finally
         {
@@ -102,7 +102,7 @@ public class ReportVariantOrderTests
             var zastavil = new ReportType("Zastavil", "Zastavil", "L");
             var context = new GrafikonContext(new InissWorkspace { Stations = [] },
                 new GrafikonDocument { ReportTypes = [prichadza, zastavil], ReportVariants = ReportVariant.GetDefaultValues() }, AppLanguage.Slovak);
-            var file = Path.Combine(dir.FullName, GvdFileConsts.FILE_RAZENI1);
+            var file = Path.Combine(dir.FullName, GvdFileConsts.FileRazeni1);
             File.WriteAllText(file, "#721,Pl,,,\r\n", Encodings.Win1250);
 
             var radenie = RazeniFile.Read(dir.FullName, [], context).Single();

@@ -1,4 +1,5 @@
-﻿using GVDEditor.Domain.Editing;
+﻿using System.Globalization;
+using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using ToolsCore.Tools;
 
@@ -9,9 +10,9 @@ namespace GVDEditor.UI.Settings;
 /// </summary>
 public partial class FTableColumnOrder : Form
 {
-    private readonly BindingList<TableItem> AllItems;
-    private readonly bool initialization;
-    private readonly BindingList<TableItem> OrderedItems = [];
+    private readonly BindingList<TableItem> _allItems;
+    private readonly bool _initialization;
+    private readonly BindingList<TableItem> _orderedItems = [];
 
     /// <summary>
     /// </summary>
@@ -19,9 +20,9 @@ public partial class FTableColumnOrder : Form
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public BindingList<TableViewTypeTab> ItemsTypeTabs { get; set; }
 
-    private TableViewMode selectedMode = null!;
+    private TableViewMode _selectedMode = null!;
 
-    private TableViewType selectedType = null!;
+    private TableViewType _selectedType = null!;
 
     /// <summary>
     /// Vytvori novy formular typu <see cref="FTableColumnOrder"/>.
@@ -33,16 +34,16 @@ public partial class FTableColumnOrder : Form
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
-        AllItems = new BindingList<TableItem>(items);
+        _allItems = new BindingList<TableItem>(items);
         ItemsTypeTabs = new BindingList<TableViewTypeTab>(itemsTypeTabs);
 
-        initialization = true;
+        _initialization = true;
         cbViewType.DataSource = TableViewType.GetValues();
         cbViewMode.DataSource = TableViewMode.GetValues();
-        initialization = false;
+        _initialization = false;
 
-        listColumns.DataSource = AllItems;
-        listOrder.DataSource = OrderedItems;
+        listColumns.DataSource = _allItems;
+        listOrder.DataSource = _orderedItems;
 
         if (ItemsTypeTabs.Count != 0)
             cbViewType.SelectedItem = ItemsTypeTabs[0].ViewType;
@@ -53,84 +54,84 @@ public partial class FTableColumnOrder : Form
 
     private void cbViewType_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (!initialization) SaveTypeModeItems();
+        if (!_initialization) SaveTypeModeItems();
 
-        OrderedItems.Clear();
+        _orderedItems.Clear();
 
         foreach (var tab in ItemsTypeTabs)
             if (tab.ViewType == cbViewType.SelectedItem as TableViewType)
             {
-                nudTypeCountLines.Value = int.Parse(tab.CountLinesRecord);
+                nudTypeCountLines.Value = int.Parse(tab.CountLinesRecord, CultureInfo.CurrentCulture);
                 foreach (TableTypeModeItem item in tab)
                     if (item.ViewMode == cbViewMode.SelectedItem as TableViewMode)
                         foreach (string s in item)
-                        foreach (var i in AllItems)
+                        foreach (var i in _allItems)
                             if (i.Key == s)
-                                OrderedItems.Add(i);
+                                _orderedItems.Add(i);
             }
 
-        selectedType = (TableViewType)cbViewType.SelectedItem!;
-        selectedMode = (TableViewMode)cbViewMode.SelectedItem!;
+        _selectedType = (TableViewType)cbViewType.SelectedItem!;
+        _selectedMode = (TableViewMode)cbViewMode.SelectedItem!;
     }
 
     private void cbViewMode_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (!initialization) SaveTypeModeItems();
+        if (!_initialization) SaveTypeModeItems();
 
-        OrderedItems.Clear();
+        _orderedItems.Clear();
 
         foreach (var tab in ItemsTypeTabs)
             if (tab.ViewType == cbViewType.SelectedItem as TableViewType)
             {
-                nudTypeCountLines.Value = int.Parse(tab.CountLinesRecord);
+                nudTypeCountLines.Value = int.Parse(tab.CountLinesRecord, CultureInfo.CurrentCulture);
                 foreach (TableTypeModeItem item in tab)
                     if (item.ViewMode == cbViewMode.SelectedItem as TableViewMode)
                         foreach (string s in item)
-                        foreach (var i in AllItems)
+                        foreach (var i in _allItems)
                             if (i.Key == s)
-                                OrderedItems.Add(i);
+                                _orderedItems.Add(i);
             }
 
-        selectedType = (TableViewType)cbViewType.SelectedItem!;
-        selectedMode = (TableViewMode)cbViewMode.SelectedItem!;
+        _selectedType = (TableViewType)cbViewType.SelectedItem!;
+        _selectedMode = (TableViewMode)cbViewMode.SelectedItem!;
     }
 
     private void bAdd_Click(object sender, EventArgs e)
     {
         if (listColumns.SelectedIndex != -1) 
-            OrderedItems.Add((TableItem)listColumns.SelectedItem!);
+            _orderedItems.Add((TableItem)listColumns.SelectedItem!);
     }
 
     private void listColumns_DoubleClick(object sender, EventArgs e)
     {
         if (listColumns.SelectedIndex != -1) 
-            OrderedItems.Add((TableItem)listColumns.SelectedItem!);
+            _orderedItems.Add((TableItem)listColumns.SelectedItem!);
     }
 
     private void listOrder_DoubleClick(object sender, EventArgs e)
     {
         if (listOrder.SelectedIndex != -1) 
-            OrderedItems.RemoveAt(listOrder.SelectedIndex);
+            _orderedItems.RemoveAt(listOrder.SelectedIndex);
     }
 
     private void bDelete_Click(object sender, EventArgs e)
     {
         if (listOrder.SelectedIndex != -1) 
-            OrderedItems.RemoveAt(listOrder.SelectedIndex);
+            _orderedItems.RemoveAt(listOrder.SelectedIndex);
     }
 
     private void bSetForAll_Click(object sender, EventArgs e)
     {
-        var keys = OrderedItems.Select(i => i.Key);
-        var tab = ItemsTypeTabs.FirstOrDefault(tt => tt.ViewType == selectedType);
+        var keys = _orderedItems.Select(i => i.Key);
+        var tab = ItemsTypeTabs.FirstOrDefault(tt => tt.ViewType == _selectedType);
 
         if (tab == null)
         {
-            tab = new TableViewTypeTab { ViewType = selectedType };
+            tab = new TableViewTypeTab { ViewType = _selectedType };
             ItemsTypeTabs.Add(tab);
         }
 
-        tab.CountLinesRecord = decimal.ToInt32(nudTypeCountLines.Value).ToString();
+        tab.CountLinesRecord = decimal.ToInt32(nudTypeCountLines.Value).ToString(CultureInfo.CurrentCulture);
         // vsetky mody (kazdy s vlastnou kopiou zoznamu klucov)
         TableCatalogEditing.SetAllModes(tab, keys);
     }
@@ -155,8 +156,8 @@ public partial class FTableColumnOrder : Form
         var index = listOrder.IndexFromPoint(point);
         if (index < 0) index = listOrder.Items.Count - 1;
         var data = (TableItem)e.Data!.GetData(typeof(TableItem))!;
-        OrderedItems.Remove(data);
-        OrderedItems.Insert(index, data);
+        _orderedItems.Remove(data);
+        _orderedItems.Insert(index, data);
         listOrder.SelectedItem = data;
     }
 
@@ -164,42 +165,42 @@ public partial class FTableColumnOrder : Form
     {
         var types = ItemsTypeTabs.Select(tt => tt.ViewType).ToList();
 
-        if (types.Contains(selectedType))
+        if (types.Contains(_selectedType))
         {
-            var indexT = types.IndexOf(selectedType);
+            var indexT = types.IndexOf(_selectedType);
             var modes = ItemsTypeTabs[indexT].TypeModeItems.Select(tm => tm.ViewMode).ToList();
 
-            if (modes.Contains(selectedMode))
+            if (modes.Contains(_selectedMode))
             {
-                var indexM = modes.IndexOf(selectedMode);
-                ItemsTypeTabs[indexT].CountLinesRecord = decimal.ToInt32(nudTypeCountLines.Value).ToString();
+                var indexM = modes.IndexOf(_selectedMode);
+                ItemsTypeTabs[indexT].CountLinesRecord = decimal.ToInt32(nudTypeCountLines.Value).ToString(CultureInfo.CurrentCulture);
                 ItemsTypeTabs[indexT].TypeModeItems[indexM].ItemsKeys.Clear();
 
-                foreach (var i in OrderedItems)
+                foreach (var i in _orderedItems)
                     ItemsTypeTabs[indexT].TypeModeItems[indexM].ItemsKeys.Add(i.Key);
             }
             else
             {
                 var keys = new List<string>();
-                foreach (var i in OrderedItems) keys.Add(i.Key);
+                foreach (var i in _orderedItems) keys.Add(i.Key);
 
-                ItemsTypeTabs[indexT].CountLinesRecord = decimal.ToInt32(nudTypeCountLines.Value).ToString();
+                ItemsTypeTabs[indexT].CountLinesRecord = decimal.ToInt32(nudTypeCountLines.Value).ToString(CultureInfo.CurrentCulture);
 
-                var tmi = new TableTypeModeItem { ItemsKeys = keys, ViewMode = selectedMode };
+                var tmi = new TableTypeModeItem { ItemsKeys = keys, ViewMode = _selectedMode };
                 ItemsTypeTabs[indexT].TypeModeItems.Add(tmi);
             }
         }
         else
         {
             var keys = new List<string>();
-            foreach (var i in OrderedItems) keys.Add(i.Key);
+            foreach (var i in _orderedItems) keys.Add(i.Key);
 
-            var tmi = new TableTypeModeItem { ItemsKeys = keys, ViewMode = selectedMode };
+            var tmi = new TableTypeModeItem { ItemsKeys = keys, ViewMode = _selectedMode };
 
             var tvtt = new TableViewTypeTab
             {
-                ViewType = selectedType,
-                CountLinesRecord = decimal.ToInt32(nudTypeCountLines.Value).ToString()
+                ViewType = _selectedType,
+                CountLinesRecord = decimal.ToInt32(nudTypeCountLines.Value).ToString(CultureInfo.CurrentCulture)
             };
             tvtt.TypeModeItems.Add(tmi);
 
@@ -208,5 +209,5 @@ public partial class FTableColumnOrder : Form
     }
 
     private void FTableColumnOrder_HelpButtonClicked(object sender, CancelEventArgs e) => 
-        Utils.OpenShell(GvdLinkConsts.LINK_TCOLUMN_ORDER);
+        Utils.OpenShell(GvdLinkConsts.LinkTcolumnOrder);
 }

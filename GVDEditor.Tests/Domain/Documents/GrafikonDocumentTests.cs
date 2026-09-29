@@ -44,7 +44,7 @@ public class GrafikonDocumentTests
     [TestMethod]
     public void TypyHlaseni_PodlaSmerovania_SaPocitajuZTypov()
     {
-        var document = new GrafikonDocument { ReportTypes = ReportType.GetDefaultValuesSK() };
+        var document = new GrafikonDocument { ReportTypes = ReportType.GetDefaultValuesSk() };
 
         CollectionAssert.AreEqual(document.ReportTypes, document.ReportTypesV);
         CollectionAssert.AreEqual(document.ReportTypes, document.ReportTypesP);

@@ -52,7 +52,7 @@ public class SoundKeyTests
         try
         {
             _warnings.Clear();
-            var file = Path.Combine(dir.FullName, GvdFileConsts.FILE_RAZENI1);
+            var file = Path.Combine(dir.FullName, GvdFileConsts.FileRazeni1);
             // male pismena, dvojdielny zapis a odkaz podla nazvov (ten INISS nenajde)
             File.WriteAllLines(file, ["#721,P,,,", "sk/vlaknum/nmen", "CZ/POZ7/ZALOK", "Poz7/zalok", "SK/Číslovky/NFMEN"], Encodings.Win1250);
 
@@ -142,5 +142,5 @@ public class SoundKeyTests
     }
 
     [TestMethod]
-    public void FyzGroup_TypPodlaKluca() => Assert.AreEqual(FyzGroupType.VLAKNUM, SkVlakNum.Type);
+    public void FyzGroup_TypPodlaKluca() => Assert.AreEqual(FyzGroupType.Vlaknum, SkVlakNum.Type);
 }

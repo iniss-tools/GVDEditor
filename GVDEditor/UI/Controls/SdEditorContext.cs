@@ -1,4 +1,5 @@
-﻿using GVDEditor.Properties;
+﻿using System.Globalization;
+using GVDEditor.Properties;
 using ToolsCore.Iniss.Expressions;
 
 namespace GVDEditor.UI.Controls;
@@ -59,6 +60,6 @@ internal sealed class SdEditorContext(IExprSymbolProvider? symbols, IReadOnlyLis
     public static string Seconds(int s)
     {
         var abs = Math.Abs(s);
-        return abs % 60 == 0 ? string.Format(Resources.FStateDgm_Min, abs / 60) : string.Format(Resources.FStateDgm_Sek, abs);
+        return abs % 60 == 0 ? string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_Min, abs / 60) : string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_Sek, abs);
     }
 }

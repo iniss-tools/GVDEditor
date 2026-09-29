@@ -1,4 +1,5 @@
-﻿using ExControls;
+﻿using System.Globalization;
+using ExControls;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Expressions;
 using ToolsCore.Iniss.StateDgm;
@@ -76,7 +77,7 @@ internal sealed class SdHeaderEditor : SdEditorBase
             SdEditorContext.Select(_indCatMode, mode);
             _indCat.Text = ic ?? "";
             _indCat.Enabled = mode == "";
-            _info.Text = string.Format(Resources.FStateDgm_IndCatInfo, d.Categories.Count);
+            _info.Text = string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_IndCatInfo, d.Categories.Count);
             ValidateInput();
         }
         finally

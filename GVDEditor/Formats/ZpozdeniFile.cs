@@ -19,7 +19,7 @@ internal static class ZpozdeniFile
     /// <param name="dataDir">priecinok DATA instalacie INISS</param>
     public static List<string> Read(string dataDir)
     {
-        var file = CombinePath(dataDir, FILE_ZPOZDENI)!;
+        var file = CombinePath(dataDir, FileZpozdeni)!;
 
         var meskania = new List<string>();
 
@@ -35,7 +35,7 @@ internal static class ZpozdeniFile
                 continue;
             }
 
-            if (LineIsEOF(status))
+            if (LineIsEof(status))
                 break;
 
             try
@@ -44,7 +44,7 @@ internal static class ZpozdeniFile
             }
             catch (Exception e)
             {
-                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FORMAT_EX, FILE_ZPOZDENI, riadok) + e.Message, e);
+                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FormatEx, FileZpozdeni, riadok) + e.Message, e);
             }
 
             riadok++;
@@ -59,7 +59,7 @@ internal static class ZpozdeniFile
     /// </summary>
     private static void DeleteCache(string dataDir)
     {
-        var cache = CombinePath(dataDir, FILE_ZPOZDENI_DAT)!;
+        var cache = CombinePath(dataDir, FileZpozdeniDat)!;
         if (File.Exists(cache))
             File.Delete(cache);
     }
@@ -70,7 +70,7 @@ internal static class ZpozdeniFile
     /// <param name="dataDir">priecinok DATA instalacie INISS</param>
     public static void WriteDefault(string dataDir)
     {
-        var file = CombinePath(dataDir, FILE_ZPOZDENI)!;
+        var file = CombinePath(dataDir, FileZpozdeni)!;
         DeleteCache(dataDir);
 
         using var zpozdeniF = new CsvFileWriter(file);
@@ -90,7 +90,7 @@ internal static class ZpozdeniFile
     /// <param name="dataDir">priecinok DATA instalacie INISS</param>
     public static void Write(string dataDir, IEnumerable<string> meskania)
     {
-        var file = CombinePath(dataDir, FILE_ZPOZDENI)!;
+        var file = CombinePath(dataDir, FileZpozdeni)!;
         DeleteCache(dataDir);
 
         using var zpozdeniF = new CsvFileWriter(file);

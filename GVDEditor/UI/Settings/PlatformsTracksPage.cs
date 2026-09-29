@@ -272,7 +272,7 @@ public partial class PlatformsTracksPage : UserControl, ISettingsPage
         lHint.Text = _current is Platform && !bDelete.Enabled ? Resources.PlatformsTracksPage_Najprv_kolaje : "";
     }
 
-    private Control? FieldBox(object item, Field field) => item switch
+    private ExTextBox? FieldBox(object item, Field field) => item switch
     {
         Platform => field switch
         {

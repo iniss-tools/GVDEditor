@@ -25,7 +25,7 @@ internal static class CategoriFile
     /// <returns>jazyky</returns>
     public static List<FyzLanguage> ReadGlobal(string path, IList<FyzLanguage> jazykyFromBank, int maxLangs, LoadWarnings warnings)
     {
-        var file = CombinePath(path, FILE_CATEGORI)!;
+        var file = CombinePath(path, FileCategori)!;
 
         var jazyky = new List<FyzLanguage>();
 
@@ -41,12 +41,12 @@ internal static class CategoriFile
             var area = $"LANGUAGE_{i.PadZeros(2)}";
 
             if (!categoriF.GetAreas().Contains(area))
-                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FORMAT_EX_AREA, file, area));
+                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FormatExArea, file, area));
 
-            var key = categoriF.Get(area, "KEY").ANSItoUTF();
+            var key = categoriF.Get(area, "KEY").AnsiToUTF();
             var isBasic = ParseIntOrDefault(categoriF.Get(area, "IS_BASIC", false)).ToBool();
             // NAME je nepovinne - INISS ma pre styri zname kluce zabudovane nazvy
-            var name = categoriF.Get(area, "NAME", false)?.ANSItoUTF() ?? FyzLanguage.BuiltInName(key);
+            var name = categoriF.Get(area, "NAME", false)?.AnsiToUTF() ?? FyzLanguage.BuiltInName(key);
 
             if (!FyzLanguage.ContainsKey(jazykyFromBank, key))
             {
@@ -74,7 +74,7 @@ internal static class CategoriFile
     /// <param name="dataDir">priecinok DATA instalacie INISS</param>
     public static void WriteGlobal(string dataDir, List<FyzLanguage> jazyky)
     {
-        var file = CombinePath(dataDir, FILE_CATEGORI)!;
+        var file = CombinePath(dataDir, FileCategori)!;
 
         var categoriF = new TxtPropsAreasFields(file, true);
 
@@ -99,7 +99,7 @@ internal static class CategoriFile
     public static (List<ReportVariant>,List<ReportType>,List<FyzLanguage>) ReadLocal(string path, IEnumerable<FyzLanguage> globalLanguages,
         LoadWarnings warnings)
     {
-        var file = CombinePath(path, FILE_CATEGORI)!;
+        var file = CombinePath(path, FileCategori)!;
 
         var variants = new List<ReportVariant>();
         var types = new List<ReportType>();
@@ -111,7 +111,7 @@ internal static class CategoriFile
         for (var i = 1; i <= countV; i++)
         {
             var area = $"VARIANT_{i.PadZeros(2)}";
-            variants.Add(new ReportVariant(int.Parse(categoriF.Get(area, "KEY"), CultureInfo.InvariantCulture), categoriF.Get(area, "NAME").ANSItoUTF()));
+            variants.Add(new ReportVariant(int.Parse(categoriF.Get(area, "KEY"), CultureInfo.InvariantCulture), categoriF.Get(area, "NAME").AnsiToUTF()));
         }
 
         if (ReportVariant.FixSwappedDefaultNames(variants))
@@ -121,9 +121,9 @@ internal static class CategoriFile
         for (var i = 1; i <= countT; i++)
         {
             var area = $"TYPE_REPORT_{i.PadZeros(2)}";
-            var key = categoriF.Get(area, "KEY").ANSItoUTF();
-            var name = categoriF.Get(area, "NAME").ANSItoUTF();
-            var @char = categoriF.Get(area, "CHAR").ANSItoUTF();
+            var key = categoriF.Get(area, "KEY").AnsiToUTF();
+            var name = categoriF.Get(area, "NAME").AnsiToUTF();
+            var @char = categoriF.Get(area, "CHAR").AnsiToUTF();
             var bt = int.Parse(categoriF.Get(area, "BASE_TRAIN"), CultureInfo.InvariantCulture).ToBool();
             var pt = int.Parse(categoriF.Get(area, "PASS_THROUGH"), CultureInfo.InvariantCulture).ToBool();
             var tt = int.Parse(categoriF.Get(area, "TERMINATE_TRAIN"), CultureInfo.InvariantCulture).ToBool();
@@ -165,7 +165,7 @@ internal static class CategoriFile
     /// <param name="languages">jazyky</param>
     public static void WriteLocal(string path, List<ReportVariant> varianty, List<ReportType> types, IList<FyzLanguage> languages)
     {
-        var file = CombinePath(path, FILE_CATEGORI)!;
+        var file = CombinePath(path, FileCategori)!;
 
         var categoriF = new TxtPropsAreasFields(file, true);
 

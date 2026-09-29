@@ -19,7 +19,7 @@ internal static class OperatorsFile
     /// <param name="path">cesta do priecinka s datami</param>
     public static List<Operator> Read(string path)
     {
-        var file = CombinePath(path, FILE_VLASTNIK)!;
+        var file = CombinePath(path, FileVlastnik)!;
 
         var operators = new List<Operator> { Operator.None };
 
@@ -37,20 +37,20 @@ internal static class OperatorsFile
                     continue;
                 }
 
-                if (LineIsEOF(status))
+                if (LineIsEof(status))
                     break;
 
                 try
                 {
                     var id = int.Parse(row[0], CultureInfo.InvariantCulture);
-                    var nazov = row[1].ANSItoUTF();
+                    var nazov = row[1].AnsiToUTF();
                     // rovnaky riadok dvakrat (aj riadok s predvolenym dopravcom) sa nacita len raz
                     if (!operators.Any(o => o.Id == id && o.Name == nazov))
                         operators.Add(new Operator(id, nazov));
                 }
                 catch (Exception e)
                 {
-                    throw new FormatException(string.Format(CultureInfo.InvariantCulture, FORMAT_EX, FILE_VLASTNIK, riadok) + e.Message, e);
+                    throw new FormatException(string.Format(CultureInfo.InvariantCulture, FormatEx, FileVlastnik, riadok) + e.Message, e);
                 }
 
                 riadok++;
@@ -71,7 +71,7 @@ internal static class OperatorsFile
     /// <param name="operators">dopravcovia</param>
     public static void Write(string path, IEnumerable<Operator> operators)
     {
-        var file = CombinePath(path, FILE_VLASTNIK)!;
+        var file = CombinePath(path, FileVlastnik)!;
 
         using var vlastnikF = new CsvFileWriter(file);
         foreach (var operatorV in operators)

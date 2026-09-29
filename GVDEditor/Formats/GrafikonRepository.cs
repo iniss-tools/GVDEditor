@@ -56,7 +56,7 @@ internal static class GrafikonRepository
         }
 
         document.Trains = new TrainBindingList(TrainsFile.Read(path, context)) { TrainNames = context.Workspace.TrainNames };
-        document.TableTexts = new ExBindingList<TableText>(TTextsFile.Read(path, document.Trains, document.TableCatalogs));
+        document.TableTexts = new ExBindingList<TableText>(TextsFile.Read(path, document.Trains, document.TableCatalogs));
 
         var modeTabs = ModeTabsFile.Read(path);
         document.TableFonts = new ExBindingList<TableFont>(modeTabs.Fonts);
@@ -85,7 +85,7 @@ internal static class GrafikonRepository
             RazeniFile.Write(path, document.Radenia, document.LocalLanguages, document.ReportVariants);
 
             TablesFile.Write(path, document.TabTabs, document.TableCatalogs, document.TablePhysicals, document.TableLogicals);
-            TTextsFile.Write(path, document.TableTexts);
+            TextsFile.Write(path, document.TableTexts);
             TracksFile.Write(path, document.Tracks);
             InfoGvdFile.Write(path, gvd);
             OperatorsFile.Write(path, document.Operators);
@@ -122,7 +122,7 @@ internal static class GrafikonRepository
 
         TrainsFile.Write(path, document.Trains, gvd, context);
         TablesFile.Write(path, document.TabTabs, document.TableCatalogs, document.TablePhysicals, document.TableLogicals);
-        TTextsFile.Write(path, document.TableTexts);
+        TextsFile.Write(path, document.TableTexts);
         TracksFile.Write(path, document.Tracks);
         InfoGvdFile.Write(path, gvd);
         OperatorsFile.Write(path, document.Operators);

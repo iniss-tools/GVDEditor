@@ -18,7 +18,7 @@ namespace GVDEditor.Integration;
 /// Nahradzuje povodne parsovanie textu rucne exportovaneho z programu ELIS;
 /// datumove obmedzenia berie priamo z kniznice namiesto parsovania poznamok.
 /// </remarks>
-public sealed partial class ELISBridgeClient
+public sealed partial class ElisBridgeClient
 {
     /// <summary>Nazov pomocneho programu, ktory sa hlada vedla GVDEditor.exe.</summary>
     public const string BridgeExeName = "ELISBridge.exe";
@@ -32,12 +32,12 @@ public sealed partial class ELISBridgeClient
     private const int ExitStationNotFound = 3;
     private const int ExitRegistrationFailed = 4;
 
-    /// <summary>Initializes a new instance of the <see cref="ELISBridgeClient" /> class.</summary>
+    /// <summary>Initializes a new instance of the <see cref="ElisBridgeClient" /> class.</summary>
     /// <param name="trainTypes">Vsetky typy vlakov definovane v stanici.</param>
     /// <param name="operators">Zoznam vsetkych definovanych dopravcov.</param>
     /// <param name="gvd">Informacie o aktualnom grafikone.</param>
     /// <param name="defaultTrack">Kolaj, ktora bude priradena kazdemu vlaku.</param>
-    public ELISBridgeClient(List<TrainType> trainTypes, List<Operator> operators, GVDInfo gvd, Track defaultTrack, StationDirectory stations)
+    public ElisBridgeClient(List<TrainType> trainTypes, List<Operator> operators, GVDInfo gvd, Track defaultTrack, StationDirectory stations)
     {
         TrainTypes = trainTypes;
         Operators = operators;
@@ -110,7 +110,7 @@ public sealed partial class ELISBridgeClient
 
     /// <summary>
     /// Priradenie nazvov stanic z ELIS k staniciam grafikonu: nazov -> ID stanice,
-    /// alebo <see cref="ElisMapFile.ELIS_MAP_SKIP" /> ak sa ma stanica z trasy vynechat.
+    /// alebo <see cref="ElisMapFile.ElisMapSkip" /> ak sa ma stanica z trasy vynechat.
     /// Pouzije sa este pred automatickym rozpoznavanim nazvu.
     /// </summary>
     public Dictionary<string, string> StationMap { get; set; } = new(StringComparer.OrdinalIgnoreCase);
@@ -398,7 +398,7 @@ public sealed partial class ELISBridgeClient
     /// rovnako ako opakovanie tej istej stanice bezprostredne za sebou - to vznika,
     /// ked sa hranicny bod priradi k stanici, ktora uz v trase je.
     /// </summary>
-    private void AddStations(IEnumerable<ElisStop> stops, ICollection<Station> target)
+    private void AddStations(IEnumerable<ElisStop> stops, List<Station> target)
     {
         Station? previous = null;
 
@@ -424,7 +424,7 @@ public sealed partial class ELISBridgeClient
     private Station? ResolveMapped(ElisStop stop)
     {
         if (StationMap.TryGetValue(stop.Name, out var mapped))
-            return mapped == ElisMapFile.ELIS_MAP_SKIP ? null : Stations.FromID(mapped);
+            return mapped == ElisMapFile.ElisMapSkip ? null : Stations.FromID(mapped);
 
         return Resolve(stop, Stations);
     }

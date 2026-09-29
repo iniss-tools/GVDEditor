@@ -13,8 +13,8 @@ namespace GVDEditor.Formats;
 /// </summary>
 internal static class FormatCommon
 {
-    internal static string FORMAT_EX => Resources.FormatCommon_Error;
-    internal static string FORMAT_EX_AREA => Resources.FormatCommon_UndefinedField;
+    internal static string FormatEx => Resources.FormatCommon_Error;
+    internal static string FormatExArea => Resources.FormatCommon_UndefinedField;
 
     /// <summary>
     /// Precita CSV subor INISS po riadkoch. Prazdne riadky a komentare preskoci; chybu riadka obali
@@ -37,7 +37,7 @@ internal static class FormatCommon
                 continue;
             }
 
-            if (LineIsEOF(status))
+            if (LineIsEof(status))
                 break;
 
             try
@@ -46,7 +46,7 @@ internal static class FormatCommon
             }
             catch (Exception e)
             {
-                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FORMAT_EX, fileName, rowNumber) + e.Message, e);
+                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FormatEx, fileName, rowNumber) + e.Message, e);
             }
 
             rowNumber++;

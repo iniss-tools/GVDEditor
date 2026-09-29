@@ -224,7 +224,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
         var table = _current;
         var columns = (table?.Items ?? []).Select((item, i) => new CatalogRuler.Column(item.Name, item.Line, item.Start, item.End,
             _problems.Any(p => ReferenceEquals(p.Table, table) && p.Field == Field.Column && p.Column == i))).ToList();
-        var limit = table?.Manufacturer == TableManufacturer.ELEN ? TableCatalogRules.ElenMaxPosition : (int?)null;
+        var limit = table?.Manufacturer == TableManufacturer.Elen ? TableCatalogRules.ElenMaxPosition : (int?)null;
         ruler.SetColumns(columns, dgvColumns.CurrentRow?.Index ?? -1, limit);
     }
 
@@ -243,7 +243,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
             tbColKey.Text = item?.Key ?? "";
             cbFill.SelectedItem = item?.FillSection;
             cbAlign.SelectedItem = item?.Align;
-            _font.Value = item?.FontIDX ?? 0;
+            _font.Value = item?.FontIdx ?? 0;
             cbDivType.SelectedItem = item?.DivType;
             cbTab1.SelectedItem = TabItem(cbTab1, item?.Tab1);
             cbTab2.SelectedItem = TabItem(cbTab2, item?.Tab2);
@@ -263,7 +263,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
     }
 
     // TabTab stlpca v ponuke - prazdny odkaz je polozka „Ziadny“
-    private static object? TabItem(ComboBox combo, TableTabTab? tab) =>
+    private static TableTabTab? TabItem(ComboBox combo, TableTabTab? tab) =>
         combo.Items.Cast<TableTabTab>().FirstOrDefault(t => tab is null || tab == TableTabTab.Empty ? t == TableTabTab.Empty : t == tab);
 
     private void ShowDivNote()
@@ -339,7 +339,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
         else if (sender == cbAlign && cbAlign.SelectedItem is TableAlign align)
             item.Align = align;
         else if (sender == cbFont)
-            item.FontIDX = _font.Value;
+            item.FontIdx = _font.Value;
         else if (sender == cbDivType && cbDivType.SelectedItem is TableDivType div)
         {
             item.DivType = div;
@@ -554,7 +554,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
         Check();
     }
 
-    private IReadOnlyList<string> Usage(TableCatalog table)
+    private List<string> Usage(TableCatalog table)
     {
         var usage = _ctx.Document.TablePhysicals.Where(p => ReferenceEquals(p.TableCatalog, table))
             .Select(p => string.Format(CultureInfo.CurrentCulture, Resources.TablesPage_Pouzitie_Fyzicka, p.Name))
@@ -649,7 +649,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
             Name = name,
             Key = TableRules.Unique(_ctx.Document.TableCatalogs.Select(t => t.Key), name),
             Comment = "",
-            Manufacturer = TableManufacturer.LCD1,
+            Manufacturer = TableManufacturer.Lcd1,
             MaxRecCount = 1,
             MinHeight = 10,
             NumSegments = 1

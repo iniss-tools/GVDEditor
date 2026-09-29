@@ -1,4 +1,5 @@
-﻿using ExControls;
+﻿using System.Globalization;
+using ExControls;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.StateDgm;
 
@@ -70,13 +71,13 @@ internal sealed class SdStarterEditor : SdEditorBase
     public static string Sentence(StateDgmStarter s)
     {
         var first = s.TimeOffset == 0 ? Resources.FStateDgm_V_case : $"{SdEditorContext.Seconds(s.TimeOffset)} {(s.TimeOffset < 0 ? Resources.FStateDgm_Pred : Resources.FStateDgm_Po)}";
-        var step = s.TimeOffsetStep is > 0 ? string.Format(Resources.FStateDgm_Starter_VetaKrok, SdEditorContext.Seconds(s.TimeOffsetStep.Value)) : "";
+        var step = s.TimeOffsetStep is > 0 ? string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_Starter_VetaKrok, SdEditorContext.Seconds(s.TimeOffsetStep.Value)) : "";
         var last = s.TimeOffsetLast != null || s.TimePointKeyLast != null
-            ? string.Format(Resources.FStateDgm_Starter_VetaLast,
+            ? string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_Starter_VetaLast,
                 s.TimeOffsetLast is { } l && l != 0 ? $"{SdEditorContext.Seconds(l)} {(l < 0 ? Resources.FStateDgm_Pred : Resources.FStateDgm_Po)}" : Resources.FStateDgm_V_case,
                 s.TimePointKeyLast ?? s.TimePointKey)
             : "";
-        return string.Format(Resources.FStateDgm_Starter_Veta, s.EventKey, first, s.TimePointKey, step, last);
+        return string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_Starter_Veta, s.EventKey, first, s.TimePointKey, step, last);
     }
 
     public void Bind(StateDgmStarter s, IEnumerable<string> eventKeys, IEnumerable<string> timePointKeys)

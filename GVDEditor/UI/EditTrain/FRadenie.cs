@@ -229,10 +229,10 @@ internal partial class FRadenie : Form
                 type == FyzGroupType.N11 ||
                 type == FyzGroupType.N12 ||
                 type == FyzGroupType.N13 ||
-                type == FyzGroupType.POZ1 ||
-                type == FyzGroupType.POZ2 ||
-                type == FyzGroupType.POZ3 ||
-                type == FyzGroupType.POZ7 ||
+                type == FyzGroupType.Poz1 ||
+                type == FyzGroupType.Poz2 ||
+                type == FyzGroupType.Poz3 ||
+                type == FyzGroupType.Poz7 ||
                 type == FyzGroupType.R1 ||
                 type == FyzGroupType.R2 ||
                 type == FyzGroupType.R3 ||
@@ -241,23 +241,23 @@ internal partial class FRadenie : Form
                 type == FyzGroupType.V2 ||
                 type == FyzGroupType.V4 ||
                 type == FyzGroupType.V14 ||
-                type == FyzGroupType.SLOVA ||
-                type == FyzGroupType.VOZY1 ||
-                type == FyzGroupType.VOZY1M ||
-                type == FyzGroupType.VOZY2 ||
-                type == FyzGroupType.VOZY2M ||
-                type == FyzGroupType.VOZY3 ||
-                type == FyzGroupType.VOZY3M ||
-                type == FyzGroupType.VOZY4 ||
-                type == FyzGroupType.VOZY4M ||
-                type == FyzGroupType.VOZY5 ||
-                type == FyzGroupType.VOZY5M ||
-                type == FyzGroupType.VOZY6 ||
-                type == FyzGroupType.VOZY6M ||
-                type == FyzGroupType.VOZY7 ||
-                type == FyzGroupType.VOZY7M ||
-                type == FyzGroupType.VOZY8 ||
-                type == FyzGroupType.VOZY8M
+                type == FyzGroupType.Slova ||
+                type == FyzGroupType.Vozy1 ||
+                type == FyzGroupType.Vozy1M ||
+                type == FyzGroupType.Vozy2 ||
+                type == FyzGroupType.Vozy2M ||
+                type == FyzGroupType.Vozy3 ||
+                type == FyzGroupType.Vozy3M ||
+                type == FyzGroupType.Vozy4 ||
+                type == FyzGroupType.Vozy4M ||
+                type == FyzGroupType.Vozy5 ||
+                type == FyzGroupType.Vozy5M ||
+                type == FyzGroupType.Vozy6 ||
+                type == FyzGroupType.Vozy6M ||
+                type == FyzGroupType.Vozy7 ||
+                type == FyzGroupType.Vozy7M ||
+                type == FyzGroupType.Vozy8 ||
+                type == FyzGroupType.Vozy8M
             )
                 e.Value = sound.Text;
             else
@@ -284,6 +284,6 @@ internal partial class FRadenie : Form
 
     private void FRadenie_HelpButtonClicked(object sender, CancelEventArgs e)
     {
-        Utils.OpenShell(GvdLinkConsts.LINK_EDIT_TRAIN_RADENIE);
+        Utils.OpenShell(GvdLinkConsts.LinkEditTrainRadenie);
     }
 }

@@ -71,9 +71,9 @@ public class ElenFontCodeTests
     public void PismoElen_RozsirenePismaPodlaVyrobcu()
     {
         Assert.AreEqual(9, ElenFontCode.MaxExtendedFont(null));
-        Assert.AreEqual(9, ElenFontCode.MaxExtendedFont(TableManufacturer.ELEN16));
-        Assert.AreEqual(4, ElenFontCode.MaxExtendedFont(TableManufacturer.ELEN10));
-        Assert.AreEqual(0, ElenFontCode.MaxExtendedFont(TableManufacturer.ELEN));
+        Assert.AreEqual(9, ElenFontCode.MaxExtendedFont(TableManufacturer.Elen16));
+        Assert.AreEqual(4, ElenFontCode.MaxExtendedFont(TableManufacturer.Elen10));
+        Assert.AreEqual(0, ElenFontCode.MaxExtendedFont(TableManufacturer.Elen));
     }
 
     [TestMethod]
@@ -136,9 +136,9 @@ public class ElenFontCodeTests
     public void PismoElen_LenProtokolElen()
     {
         Assert.IsTrue(ElenFontCode.AppliesTo(null));
-        Assert.IsTrue(ElenFontCode.AppliesTo(TableManufacturer.ELEN16));
-        Assert.IsTrue(ElenFontCode.AppliesTo(TableManufacturer.ELEKON));
-        Assert.IsFalse(ElenFontCode.AppliesTo(TableManufacturer.LCD1));
-        Assert.IsFalse(ElenFontCode.AppliesTo(TableManufacturer.APEL));
+        Assert.IsTrue(ElenFontCode.AppliesTo(TableManufacturer.Elen16));
+        Assert.IsTrue(ElenFontCode.AppliesTo(TableManufacturer.Elekon));
+        Assert.IsFalse(ElenFontCode.AppliesTo(TableManufacturer.Lcd1));
+        Assert.IsFalse(ElenFontCode.AppliesTo(TableManufacturer.Apel));
     }
 }

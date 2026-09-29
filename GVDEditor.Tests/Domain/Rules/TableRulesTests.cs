@@ -48,7 +48,7 @@ public class TableRulesTests
     [DataRow(-1, true)]
     public void Fyzicka_AdresaPodlaVyrobcu(int id, bool valid)
     {
-        Assert.AreEqual(valid, TablePhysicalRules.CheckId(id, TableManufacturer.ELEN16) is null);
+        Assert.AreEqual(valid, TablePhysicalRules.CheckId(id, TableManufacturer.Elen16) is null);
     }
 
     [TestMethod]
@@ -61,7 +61,7 @@ public class TableRulesTests
     [TestMethod]
     public void Fyzicka_OdstranenyKatalog_JeChyba()
     {
-        var catalog = Catalog(TableManufacturer.LCD1);
+        var catalog = Catalog(TableManufacturer.Lcd1);
         TablePhysical[] tables = [Physical("A", catalog)];
 
         Assert.AreEqual(0, TablePhysicalRules.Check(tables, 0, [catalog]).Count);
@@ -71,7 +71,7 @@ public class TableRulesTests
     [TestMethod]
     public void Fyzicka_HlasiVsetkyChyby()
     {
-        var catalog = Catalog(TableManufacturer.ELEN16);
+        var catalog = Catalog(TableManufacturer.Elen16);
         TablePhysical[] tables = [Physical("A", catalog), Physical("A", catalog, 500)];
         tables[1].Name = "";
 
@@ -84,7 +84,7 @@ public class TableRulesTests
     [TestMethod]
     public void Text_RealizaciaNaNeexistujuciStlpec_JeChyba()
     {
-        var catalog = Catalog(TableManufacturer.LCD1, "Ciel", "Cas");
+        var catalog = Catalog(TableManufacturer.Lcd1, "Ciel", "Cas");
         var text = new TableText { Key = "T", Name = "Text", Comment = "" };
         text.Realizations.Add(new TableTextRealization { Table = catalog, Item = catalog.Items[0] });
         text.Realizations.Add(new TableTextRealization { Table = catalog, Item = new TableItem { Key = "X", Name = "X" } });
@@ -99,7 +99,7 @@ public class TableRulesTests
     [TestMethod]
     public void Text_RealizaciaOdstranenejTabule_JeChyba()
     {
-        var catalog = Catalog(TableManufacturer.LCD1, "Ciel");
+        var catalog = Catalog(TableManufacturer.Lcd1, "Ciel");
         var realization = new TableTextRealization { Table = catalog, Item = catalog.Items[0] };
 
         Assert.IsNull(TableTextRules.CheckRealization(realization, [catalog]));

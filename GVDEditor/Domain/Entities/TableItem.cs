@@ -40,7 +40,7 @@ public sealed class TableItem : ITable
     /// <summary>
     /// Identifikator pisma.
     /// </summary>
-    public int FontIDX { get; set; }
+    public int FontIdx { get; set; }
 
     /// <summary>
     /// Zarovnanie pisma.

@@ -28,7 +28,7 @@ public class DirListFileTests
     [TestCleanup]
     public void Cleanup() => Directory.Delete(_dir, true);
 
-    private string File_ => Path.Combine(_dir, GvdFileConsts.FILE_DIRLIST);
+    private string File => Path.Combine(_dir, GvdFileConsts.FileDirlist);
 
     private List<DirList> Dirs(string names) =>
         names.Split('|', StringSplitOptions.RemoveEmptyEntries)
@@ -47,18 +47,18 @@ public class DirListFileTests
     public void DirList_ZapisBezRiadkov_NezaloziAniNeprepiseSubor(string? before, string names, bool expectedWritten, string? expectedAfter)
     {
         if (before != null)
-            File.WriteAllLines(File_, before.Split('|'), Encodings.Win1250);
+            System.IO.File.WriteAllLines(File, before.Split('|'), Encodings.Win1250);
 
-        var written = DirListFile.WriteFile(File_, Dirs(names));
+        var written = DirListFile.WriteFile(File, Dirs(names));
 
         Assert.AreEqual(expectedWritten, written);
         if (expectedAfter == null)
         {
-            Assert.IsFalse(File.Exists(File_));
+            Assert.IsFalse(System.IO.File.Exists(File));
             return;
         }
 
-        var after = File.ReadAllLines(File_, Encodings.Win1250);
+        var after = System.IO.File.ReadAllLines(File, Encodings.Win1250);
         CollectionAssert.AreEqual(expectedAfter.Split('|', StringSplitOptions.RemoveEmptyEntries), after);
     }
 }

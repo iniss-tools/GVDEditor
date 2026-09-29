@@ -30,8 +30,8 @@ public class StateDgmEditingTests
         var second = StateDgmEditing.AddCategory(d, "Nákladné");
 
         Assert.AreEqual("#Kategorie2", second.Key);
-        Assert.AreEqual(StateDgmKeys.START_STATE, second.States.Single().Key);
-        Assert.IsTrue(second.States[0].DoState.OnDepartureTable);
+        Assert.AreEqual(StateDgmKeys.StartState, second.States.Single().Key);
+        Assert.IsTrue(second.States[0].DoState!.OnDepartureTable);
     }
 
     [TestMethod]

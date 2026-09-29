@@ -23,14 +23,14 @@ internal static class DirListFile
     /// <returns>priecinky s GVD</returns>
     public static List<DirList> Read(string dataDir)
     {
-        var fileDirList = CombinePath(dataDir, FILE_DIRLIST)!;
+        var fileDirList = CombinePath(dataDir, FileDirlist)!;
 
         var dirs = new List<DirList>();
 
         // bez DirList.TXT berie INISS ako jediny GVD samotny priecinok DATA (starsi zapis s jednym grafikonom)
         if (!File.Exists(fileDirList))
         {
-            if (File.Exists(CombinePath(dataDir, FILE_GRAFIKON)))
+            if (File.Exists(CombinePath(dataDir, FileGrafikon)))
                 dirs.Add(new DirList { DirName = "", FullPath = dataDir });
             return dirs;
         }
@@ -47,7 +47,7 @@ internal static class DirListFile
                 continue;
             }
 
-            if (LineIsEOF(status))
+            if (LineIsEof(status))
                 break;
 
             try
@@ -66,7 +66,7 @@ internal static class DirListFile
             }
             catch (Exception e)
             {
-                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FORMAT_EX, FILE_DIRLIST, riadok) + e.Message, e);
+                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FormatEx, FileDirlist, riadok) + e.Message, e);
             }
 
             riadok++;
@@ -82,7 +82,7 @@ internal static class DirListFile
     /// <param name="dirs">priecinky s GVD</param>
     public static void Write(string dataDir, IEnumerable<DirList> dirs)
     {
-        WriteFile(CombinePath(dataDir, FILE_DIRLIST)!, dirs);
+        WriteFile(CombinePath(dataDir, FileDirlist)!, dirs);
     }
 
     /// <summary>

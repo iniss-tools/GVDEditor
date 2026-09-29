@@ -20,7 +20,7 @@ internal static class StateDgmFile
     /// <param name="template">predloha</param>
     public static void WriteTemplate(string path, string dataDir, StateDgmTemplate template = StateDgmTemplate.Slovak)
     {
-        File.WriteAllText(CombinePath(path, FILE_STATEDGM)!, TemplateText(template), Encodings.Win1250);
+        File.WriteAllText(CombinePath(path, FileStatedgm)!, TemplateText(template), Encodings.Win1250);
         DeleteCache(dataDir);
     }
 
@@ -41,9 +41,9 @@ internal static class StateDgmFile
     public static string PathOf(string dir)
     {
         var existing = Directory.Exists(dir)
-            ? Directory.EnumerateFiles(dir).FirstOrDefault(f => string.Equals(Path.GetFileName(f), FILE_STATEDGM, StringComparison.OrdinalIgnoreCase))
+            ? Directory.EnumerateFiles(dir).FirstOrDefault(f => string.Equals(Path.GetFileName(f), FileStatedgm, StringComparison.OrdinalIgnoreCase))
             : null;
-        return existing ?? CombinePath(dir, FILE_STATEDGM)!;
+        return existing ?? CombinePath(dir, FileStatedgm)!;
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ internal static class StateDgmFile
     public static void DeleteCache(string dataDir)
     {
         if (string.IsNullOrEmpty(dataDir) || !Directory.Exists(dataDir)) return;
-        foreach (var f in Directory.EnumerateFiles(dataDir).Where(f => string.Equals(Path.GetFileName(f), FILE_STATEDGM_DAT, StringComparison.OrdinalIgnoreCase)))
+        foreach (var f in Directory.EnumerateFiles(dataDir).Where(f => string.Equals(Path.GetFileName(f), FileStatedgmDat, StringComparison.OrdinalIgnoreCase)))
             File.Delete(f);
     }
 }

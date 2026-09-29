@@ -81,7 +81,7 @@ public sealed record ReportType
     /// Vrati predvolene typy reportov pre SK ako list
     /// </summary>
     /// <returns>list reportov pre Slovensko</returns>
-    public static List<ReportType> GetDefaultValuesSK()
+    public static List<ReportType> GetDefaultValuesSk()
     {
         var types = new List<ReportType>
         {
@@ -107,7 +107,7 @@ public sealed record ReportType
 
         foreach (var reportType in allTypes)
         {
-            if (toparse.Contains(reportType.Char.ToUpperInvariant()))
+            if (toparse.Contains(reportType.Char.ToUpperInvariant(), StringComparison.Ordinal))
             {
                 var found = false;
                 foreach (var chosenReportType in reports.Where(chosenReportType => reportType.Equals(chosenReportType.Type)))
@@ -124,7 +124,7 @@ public sealed record ReportType
                     });
             }
 
-            if (toparse.Contains(reportType.Char.ToLowerInvariant()))
+            if (toparse.Contains(reportType.Char.ToLowerInvariant(), StringComparison.Ordinal))
             {
                 var found = false;
                 foreach (var chosenReportType in reports.Where(chosenReportType => reportType.Equals(chosenReportType.Type)))

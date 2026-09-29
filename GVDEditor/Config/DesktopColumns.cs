@@ -13,7 +13,7 @@ public record DesktopColumns()
     private static readonly Type ClassType = typeof(DesktopColumns);
 
     [XmlIgnore]
-    private static readonly Dictionary<string, (string name, int order, int minWidth, bool visible)> props = new()
+    private static readonly Dictionary<string, (string name, int order, int minWidth, bool visible)> Props = new()
     {
         [nameof(Number)] = (Resources.Column_Number, 0, 60, true),
         [nameof(Type)] = (Resources.Column_Type, 1, 40, true),
@@ -28,7 +28,7 @@ public record DesktopColumns()
         [nameof(DateLimit)] = (Resources.Column_DateLimit, 10, 300, true),
         [nameof(Track)] = (Resources.Column_Track, 11, 100, true),
         [nameof(Operator)] = (Resources.Column_Operator, 12, 50, true),
-        [nameof(OtherBtn)] = (Resources.Column_Other, 13, 50, true),
+        [nameof(OtherBtn)] = (Resources.Column_Other, 13, 50, true)
     };
 
     #region Properties
@@ -253,9 +253,9 @@ public record DesktopColumns()
     }
 
     private static DesktopColumn InitColumn(string propname)
-        => new(props[propname].name, propname, props[propname].order, props[propname].minWidth, props[propname].visible);
+        => new(Props[propname].name, propname, Props[propname].order, Props[propname].minWidth, Props[propname].visible);
 
-    private static void AssignColumnProps(ref DesktopColumn obj, string propname)
+    private static void AssignColumnProps(ref DesktopColumn? obj, string propname)
     {
         if (obj is null)
         {
@@ -263,32 +263,26 @@ public record DesktopColumns()
         }
         else
         {
-            obj.Name = props[propname].name;
+            obj.Name = Props[propname].name;
             obj.PropertyName = propname;
         }
     }
     
-    // Every property setter below unconditionally assigns its backing field before this constructor
-    // exits (see the "set" accessors above), but Roslyn's per-constructor flow analysis doesn't credit
-    // assignment performed indirectly through a property setter call - it only sees `this` escaping into
-    // a method call and forgets the field's null-state. All backing fields are genuinely never null here.
-#pragma warning disable CS8618
     protected DesktopColumns(DesktopColumns original)
     {
-        Number = original.Number with { };
-        Type = original.Type with { };
-        Name = original.Name with { };
-        LinkaPrichod = original.LinkaPrichod with { };
-        LinkaOdchod = original.LinkaOdchod with { };
-        Routing = original.Routing with { };
-        Prichod = original.Prichod with { };
-        Odchod = original.Odchod with { };
-        VychodziaStanica = original.VychodziaStanica with { };
-        KonecnaStanica = original.KonecnaStanica with { };
-        DateLimit = original.DateLimit with { };
-        Track = original.Track with { };
-        Operator = original.Operator with { };
-        OtherBtn = original.OtherBtn with { };
+        if (original.Number != null) Number = original.Number with { };
+        if (original.Type != null) Type = original.Type with { };
+        if (original.Name != null) Name = original.Name with { };
+        if (original.LinkaPrichod != null) LinkaPrichod = original.LinkaPrichod with { };
+        if (original.LinkaOdchod != null) LinkaOdchod = original.LinkaOdchod with { };
+        if (original.Routing != null) Routing = original.Routing with { };
+        if (original.Prichod != null) Prichod = original.Prichod with { };
+        if (original.Odchod != null) Odchod = original.Odchod with { };
+        if (original.VychodziaStanica != null) VychodziaStanica = original.VychodziaStanica with { };
+        if (original.KonecnaStanica != null) KonecnaStanica = original.KonecnaStanica with { };
+        if (original.DateLimit != null) DateLimit = original.DateLimit with { };
+        if (original.Track != null) Track = original.Track with { };
+        if (original.Operator != null) Operator = original.Operator with { };
+        if (original.OtherBtn != null) OtherBtn = original.OtherBtn with { };
     }
-#pragma warning restore CS8618
 }

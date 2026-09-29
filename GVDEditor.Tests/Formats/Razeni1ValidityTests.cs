@@ -27,7 +27,7 @@ public class Razeni1ValidityTests
         var context = Context();
         try
         {
-            var file = Path.Combine(dir.FullName, GvdFileConsts.FILE_RAZENI1);
+            var file = Path.Combine(dir.FullName, GvdFileConsts.FileRazeni1);
             File.WriteAllText(file, "#721,P,,,\r\n#722,P,01.01.2026,03.01.2026,101\r\n", Encodings.Win1250);
 
             var radenia = RazeniFile.Read(dir.FullName, [], context);
@@ -55,7 +55,7 @@ public class Razeni1ValidityTests
         var context = Context([new Station("9900140", "Hraničná")]);
         try
         {
-            var file = Path.Combine(dir.FullName, GvdFileConsts.FILE_RAZENI1);
+            var file = Path.Combine(dir.FullName, GvdFileConsts.FileRazeni1);
             // znama stanica, neznama stanica (ostane pod cislom) a bez obmedzenia
             File.WriteAllLines(file, ["#521:9900140,P,,,", "#521:9912345,P,,,", "#521,P,,,"], Encodings.Win1250);
 

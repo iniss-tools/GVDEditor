@@ -87,8 +87,8 @@ internal partial class FAppSettings : FAppSettingsBase
         if (!Directory.Exists(configsDir))
             Directory.CreateDirectory(configsDir);
 
-        Styles<GVDEditorStyle>.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_STYLES)!, _ctx.Session.Styles);
-        XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG)!, _ctx.Config);
+        Styles<GVDEditorStyle>.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FileStyles)!, _ctx.Session.Styles);
+        XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FileConfig)!, _ctx.Config);
     }
 
     /// <inheritdoc />

@@ -148,7 +148,7 @@ public partial class FontsPage : UserControl, ISettingsPage
                 continue;
 
             var state = State(font);
-            state.Columns = _ctx.Document.TableCatalogs.SelectMany(c => c.Items).Where(item => item.FontIDX == font.FontID).ToList();
+            state.Columns = _ctx.Document.TableCatalogs.SelectMany(c => c.Items).Where(item => item.FontIdx == font.FontID).ToList();
             state.Trains = _ctx.Document.TableTexts.SelectMany(t => t.Trains).Where(train => train.FontID == font.FontID).ToList();
             state.TabTabSections = TableFontUsage.Find(font.FontID, [], [], _ctx.Document.TabTabs).TabTabSections;
             state.TabTabId = font.FontID;
@@ -357,7 +357,7 @@ public partial class FontsPage : UserControl, ISettingsPage
 
         // stlpce a texty, ktore pismo pouzivaju, idu s nim (TabTab sa nemeni - {n} moze byt aj kod znaku)
         foreach (var column in state.Columns)
-            column.FontIDX = id;
+            column.FontIdx = id;
         foreach (var train in state.Trains)
             train.FontID = id;
         font.FontID = id;

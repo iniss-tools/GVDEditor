@@ -11,7 +11,7 @@ namespace GVDEditor.Formats;
 /// <summary>
 /// Texty na tabuliach (TTexts.txt).
 /// </summary>
-internal static class TTextsFile
+internal static class TextsFile
 {
     /// <summary>
     /// Nainicializuje texty do tabul
@@ -21,7 +21,7 @@ internal static class TTextsFile
     /// <param name="catalogs">katalogove tabule grafikonu - texty sa na ne odkazuju</param>
     public static List<TableText> Read(string path, IList<Train> trains, IEnumerable<TableCatalog> catalogs)
     {
-        var fileTTexts = CombinePath(path, FILE_TTEXTS)!;
+        var fileTTexts = CombinePath(path, FileTtexts)!;
 
         var ttexts = new List<TableText>();
 
@@ -37,14 +37,14 @@ internal static class TTextsFile
             var area = $"TEXT_{ti.PadZeros()}";
             ttext.Comment = ttextsF.GetComment(area);
 
-            ttext.Key = ttextsF.Get(area, "KEY").ANSItoUTF();
-            ttext.Name = ttextsF.Get(area, "NAME").ANSItoUTF();
+            ttext.Key = ttextsF.Get(area, "KEY").AnsiToUTF();
+            ttext.Name = ttextsF.Get(area, "NAME").AnsiToUTF();
             for (var j = 0; j < ParseIntOrDefault(ttextsF.Get(area, "REALIZE_COUNT", false)); j++)
             {
                 var realization = new TableTextRealization();
                 var tj = j + 1;
 
-                var catname = ttextsF.Get(area, $"REALIZE_{tj.PadZeros()}_CATALOG_KEY").ANSItoUTF();
+                var catname = ttextsF.Get(area, $"REALIZE_{tj.PadZeros()}_CATALOG_KEY").AnsiToUTF();
                 foreach (var catalog in catalogs)
                     if (catalog.Key == catname)
                     {
@@ -57,7 +57,7 @@ internal static class TTextsFile
                     throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.TTexts_CatalogMissing, ttext.Key, catname));
                 }
 
-                var realname = ttextsF.Get(area, $"REALIZE_{tj.PadZeros()}_TYPEITEM_KEY").ANSItoUTF();
+                var realname = ttextsF.Get(area, $"REALIZE_{tj.PadZeros()}_TYPEITEM_KEY").AnsiToUTF();
                 foreach (var item in realization.Table.Items)
                     if (item.Key == realname)
                     {
@@ -85,7 +85,7 @@ internal static class TTextsFile
                     throw new FormatException(string.Format(CultureInfo.CurrentCulture, Resources.TTexts_TrainMissing, id));
 
                 ttrain.FontID = ParseIntOrDefault(ttextsF.Get(area, $"TRAIN_{tj.PadZeros()}_IDX_FONT", false));
-                ttrain.Text = ttextsF.Get(area, $"TRAIN_{tj.PadZeros()}_TEXT").ANSItoUTF();
+                ttrain.Text = ttextsF.Get(area, $"TRAIN_{tj.PadZeros()}_TEXT").AnsiToUTF();
 
                 ttext.Trains.Add(ttrain);
             }
@@ -103,7 +103,7 @@ internal static class TTextsFile
     /// <param name="ttexts">texty do tabul</param>
     public static void Write(string path, IList<TableText> ttexts)
     {
-        var fileTTexts = CombinePath(path, FILE_TTEXTS)!;
+        var fileTTexts = CombinePath(path, FileTtexts)!;
 
         var ttextsF = new TxtPropsAreasFields(fileTTexts, true);
 

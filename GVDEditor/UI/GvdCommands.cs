@@ -26,25 +26,25 @@ internal static class GvdCommands
     public static CommandInfo GlobalSettings => new("GSettings", Resources.Cmd_GlobalSettings, Shortcut.CtrlG);
     public static CommandInfo AppSettings => new("AppSettings", Resources.Cmd_AppSettings, Shortcut.CtrlP);
 
-    public static CommandInfo GSGvds => new("GSGrafikony", Resources.Cmd_GSGvds, Shortcut.Ctrl0);
-    public static CommandInfo GSLanguages => new("GSLangs", Resources.Cmd_GSLanguages, Shortcut.Ctrl1);
-    public static CommandInfo GSDelays => new("GSMeskania", Resources.Cmd_GSDelays, Shortcut.Ctrl2);
-    public static CommandInfo GSTrainTypes => new("GSTrainTypes", Resources.Cmd_GSTrainTypes, Shortcut.Ctrl3);
-    public static CommandInfo GSAudio => new("GSAudio", Resources.Cmd_GSAudio, Shortcut.Ctrl4);
+    public static CommandInfo GsGvds => new("GSGrafikony", Resources.Cmd_GSGvds, Shortcut.Ctrl0);
+    public static CommandInfo GsLanguages => new("GSLangs", Resources.Cmd_GSLanguages, Shortcut.Ctrl1);
+    public static CommandInfo GsDelays => new("GSMeskania", Resources.Cmd_GSDelays, Shortcut.Ctrl2);
+    public static CommandInfo GsTrainTypes => new("GSTrainTypes", Resources.Cmd_GSTrainTypes, Shortcut.Ctrl3);
+    public static CommandInfo GsAudio => new("GSAudio", Resources.Cmd_GSAudio, Shortcut.Ctrl4);
 
-    public static CommandInfo LSGvd => new("LSGrafikon", Resources.Cmd_LSGvd, Shortcut.CtrlShiftG);
-    public static CommandInfo LSLanguages => new("LSJazyky", Resources.Cmd_LSLanguages, Shortcut.CtrlShiftJ);
-    public static CommandInfo LSStations => new("LSStanice", Resources.Cmd_LSStations, Shortcut.CtrlShiftS);
-    public static CommandInfo LSOperators => new("LSDopravcovia", Resources.Cmd_LSOperators, Shortcut.CtrlShiftO);
-    public static CommandInfo LSPlatforms => new("LSPlatforms", Resources.Cmd_LSPlatforms, Shortcut.CtrlShiftN);
-    public static CommandInfo LSTracks => new("LSKolaje", Resources.Cmd_LSTracks, Shortcut.CtrlShiftK);
-    public static CommandInfo LSPhysicalTables => new("LSTPhysicals", Resources.Cmd_LSPhysicalTables, Shortcut.CtrlShiftF);
-    public static CommandInfo LSLogicalTables => new("LSTLogicals", Resources.Cmd_LSLogicalTables, Shortcut.CtrlShiftL);
-    public static CommandInfo LSCatalogTables => new("LSTCatalogs", Resources.Cmd_LSCatalogTables, Shortcut.CtrlShiftC);
-    public static CommandInfo LSTabTab => new("LSTabTab", Resources.Cmd_LSTabTab, Shortcut.CtrlShiftT);
-    public static CommandInfo LSTableTexts => new("LSTTexts", Resources.Cmd_LSTableTexts, Shortcut.CtrlShiftE);
-    public static CommandInfo LSTableFonts => new("LSTFonts", Resources.Cmd_LSTableFonts, Shortcut.CtrlShiftP);
-    public static CommandInfo LSTabTabEditor => new("LSTabTabEditor", Resources.Cmd_LSTabTabEditor, Shortcut.CtrlT);
+    public static CommandInfo LsGvd => new("LSGrafikon", Resources.Cmd_LSGvd, Shortcut.CtrlShiftG);
+    public static CommandInfo LsLanguages => new("LSJazyky", Resources.Cmd_LSLanguages, Shortcut.CtrlShiftJ);
+    public static CommandInfo LsStations => new("LSStanice", Resources.Cmd_LSStations, Shortcut.CtrlShiftS);
+    public static CommandInfo LsOperators => new("LSDopravcovia", Resources.Cmd_LSOperators, Shortcut.CtrlShiftO);
+    public static CommandInfo LsPlatforms => new("LSPlatforms", Resources.Cmd_LSPlatforms, Shortcut.CtrlShiftN);
+    public static CommandInfo LsTracks => new("LSKolaje", Resources.Cmd_LSTracks, Shortcut.CtrlShiftK);
+    public static CommandInfo LsPhysicalTables => new("LSTPhysicals", Resources.Cmd_LSPhysicalTables, Shortcut.CtrlShiftF);
+    public static CommandInfo LsLogicalTables => new("LSTLogicals", Resources.Cmd_LSLogicalTables, Shortcut.CtrlShiftL);
+    public static CommandInfo LsCatalogTables => new("LSTCatalogs", Resources.Cmd_LSCatalogTables, Shortcut.CtrlShiftC);
+    public static CommandInfo LsTabTab => new("LSTabTab", Resources.Cmd_LSTabTab, Shortcut.CtrlShiftT);
+    public static CommandInfo LsTableTexts => new("LSTTexts", Resources.Cmd_LSTableTexts, Shortcut.CtrlShiftE);
+    public static CommandInfo LsTableFonts => new("LSTFonts", Resources.Cmd_LSTableFonts, Shortcut.CtrlShiftP);
+    public static CommandInfo LsTabTabEditor => new("LSTabTabEditor", Resources.Cmd_LSTabTabEditor, Shortcut.CtrlT);
     public static CommandInfo StateDgm => new("StateDgm", Resources.Cmd_StateDgm, Shortcut.None);
 
     public static CommandInfo RunIniss => new("RunINISS", Resources.Cmd_RunIniss, Shortcut.F5);
@@ -65,9 +65,9 @@ internal static class GvdCommands
         New, Open, ImportGvd, ImportData, ImportElis, Save, Analyze,
         AddTrain, EditTrain, DeleteTrains, DuplicateTrain,
         LocalSettings, GlobalSettings, AppSettings,
-        GSGvds, GSLanguages, GSDelays, GSTrainTypes, GSAudio,
-        LSGvd, LSLanguages, LSStations, LSOperators, LSPlatforms, LSTracks, LSPhysicalTables, LSLogicalTables,
-        LSCatalogTables, LSTabTab, LSTableTexts, LSTableFonts, LSTabTabEditor, StateDgm,
+        GsGvds, GsLanguages, GsDelays, GsTrainTypes, GsAudio,
+        LsGvd, LsLanguages, LsStations, LsOperators, LsPlatforms, LsTracks, LsPhysicalTables, LsLogicalTables,
+        LsCatalogTables, LsTabTab, LsTableTexts, LsTableFonts, LsTabTabEditor, StateDgm,
         RunIniss, ShutdownIniss, KillIniss, RestartIniss, InissStartupSettings,
         InfoApp, UpdateNotes, DateLimit
     ];

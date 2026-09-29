@@ -229,7 +229,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
             cbStation.Text = id == 0 ? "" : id.ToString(CultureInfo.InvariantCulture);
     }
 
-    private IReadOnlyList<string> Usage(TableLogical table) =>
+    private List<string> Usage(TableLogical table) =>
         _ctx.Document.Tracks.Where(track => track.Tables.Any(t => ReferenceEquals(t, table)))
             .Select(track => string.Format(CultureInfo.CurrentCulture, Resources.TablesPage_Pouzitie_Kolaj, track.Name))
             .ToList();

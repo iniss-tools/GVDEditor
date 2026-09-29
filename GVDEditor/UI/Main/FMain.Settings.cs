@@ -10,7 +10,6 @@ using GVDEditor.UI.TabTab;
 using Microsoft.VisualBasic.FileIO;
 using ToolsCore.Forms;
 using ToolsCore.Iniss.Tools;
-using ToolsCore.Tools;
 using ToolsCore.XML;
 
 namespace GVDEditor.UI.Main;
@@ -130,8 +129,8 @@ internal partial class FMain
             _ctx.Document.Trains.ResetBindings();
         }
 
-        if (gf.RemovedGVDs.Count != 0)
-            RemoveGrafikony(gf.RemovedGVDs);
+        if (gf.RemovedGvDs.Count != 0)
+            RemoveGrafikony(gf.RemovedGvDs);
 
         // grafikon, ktory sa predtym nenacital (napr. pre chybajuci typ vlaku), skusit nacitat znova
         if (!_grafikonLoaded && tscbObdobie.ComboBox.SelectedItem is GVDDirectory dir && _gvdDirs.Contains(dir))

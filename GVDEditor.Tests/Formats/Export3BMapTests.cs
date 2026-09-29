@@ -31,21 +31,21 @@ public class Export3BMapTests
         {
             DateLimit.Loc = DateLimit.Locale.Sk;
 
-            Write(dir, GvdFileConsts.FILE_GRAFIKON,
+            Write(dir, GvdFileConsts.FileGrafikon,
                 "IDSTATION=1", "NAMESTATION=\"Test\"",
                 "START_VALID_TIMETABLE=01.01.2026", "END_VALID_TIMETABLE=14.01.2026",
                 "START_VALID_DATA=01.01.2026", "END_VALID_DATA=14.01.2026", "CREATE_DATA=01.01.2026");
-            Write(dir, GvdFileConsts.FILE_EXPORT3A, new[] { 1, 2, 3, 4, 5 }
+            Write(dir, GvdFileConsts.FileExport3A, new[] { 1, 2, 3, 4, 5 }
                 .Select(i => $"{i},\"{100 + i}\",\"\",\"Os\",-1,V,,,8:00,,,-1,-1").ToArray());
-            Write(dir, GvdFileConsts.FILE_EXPORT3B,
+            Write(dir, GvdFileConsts.FileExport3B,
                 $"1,01.01.2026,14.01.2026,{WEEKENDS}",             // vikendy, pocet 0
                 "2,01.01.2026,14.01.2026,11111111111111",          // kazdy den
                 "3,01.01.2026,14.01.2026,0011000001100",           // mapa kratsia nez obdobie
                 $"4,01.01.2026,14.01.2026,{WEEKENDS}",             // poznamka v 3C ma prednost
                 $"5,01.01.2026,14.01.2026,{WEEKENDS}");            // pocet 1, ale prazdne pole
-            Write(dir, GvdFileConsts.FILE_EXPORT3C,
+            Write(dir, GvdFileConsts.FileExport3C,
                 "1,0,", "2,0,", "3,0,", "4,1,\"ide 1.I.\"", "5,1,\"\"");
-            foreach (var file in new[] { GvdFileConsts.FILE_VZORY, GvdFileConsts.FILE_STAHLASB, GvdFileConsts.FILE_STAHLASC, GvdFileConsts.FILE_VLAKY, GvdFileConsts.FILE_POZICE })
+            foreach (var file in new[] { GvdFileConsts.FileVzory, GvdFileConsts.FileStahlasb, GvdFileConsts.FileStahlasc, GvdFileConsts.FileVlaky, GvdFileConsts.FilePozice })
                 Write(dir, file);
 
             var trains = TrainsFile.Read(dir.FullName, context);

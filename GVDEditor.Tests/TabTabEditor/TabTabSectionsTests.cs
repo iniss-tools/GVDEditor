@@ -15,7 +15,7 @@ public class TabTabSectionsTests
     private static TableItem Column(string key, TableTabTab tab1, TableTabTab tab2) => new()
     {
         Key = key, Name = key, FillSection = TableFillSection.Free, Align = TableAlign.Left,
-        DivType = TableDivType.Free, Tab1 = tab1, Tab2 = tab2, Start = 0, End = 8, FontIDX = 81
+        DivType = TableDivType.Free, Tab1 = tab1, Tab2 = tab2, Start = 0, End = 8, FontIdx = 81
     };
 
     // ---- nazov sekcie ----

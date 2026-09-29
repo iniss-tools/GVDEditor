@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
@@ -25,7 +24,7 @@ internal static class DoplnkyFile
         if (!File.Exists(file))
             return;
 
-        ReadRows(file, FILE_DOPLNKY, (row, rowNumber) =>
+        ReadRows(file, FileDoplnky, (row, rowNumber) =>
         {
             var id = int.Parse(row[0], CultureInfo.InvariantCulture);
             var train = trains[id - 1];
@@ -43,7 +42,7 @@ internal static class DoplnkyFile
                 if (sound == null)
                 {
                     // kod bez nahravky v banke: nezahadzujeme ho ticho, ale aspon zalogujeme
-                    context.Warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Doplnky_NoSound, FILE_DOPLNKY, rowNumber, code, train.Number));
+                    context.Warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Doplnky_NoSound, FileDoplnky, rowNumber, code, train.Number));
                     continue;
                 }
 

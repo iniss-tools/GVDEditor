@@ -1,4 +1,5 @@
-﻿using ExControls;
+﻿using System.Globalization;
+using ExControls;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.StateDgm;
 
@@ -53,7 +54,7 @@ internal sealed class SdCategoryEditor : SdEditorBase
             if (c.Icon is >= 0 and <= 2) SdEditorContext.Select(_icon, c.Icon);
             else
             {
-                _icon.Items.Add(new SdEditorContext.Item(c.Icon.ToString(), c.Icon));
+                _icon.Items.Add(new SdEditorContext.Item(c.Icon.ToString(CultureInfo.CurrentCulture), c.Icon));
                 _icon.SelectedIndex = _icon.Items.Count - 1;
             }
         }

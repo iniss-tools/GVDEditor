@@ -1,3 +1,4 @@
+using System.Globalization;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Entities;
 
@@ -28,7 +29,7 @@ internal static class LanguageRules
     public static string? Check(IReadOnlyList<FyzLanguage> languages, IEnumerable<string> bankKeys)
     {
         if (languages.Count > MaxLanguages)
-            return string.Format(Resources.LanguageRules_Najviac_jazykov, MaxLanguages);
+            return string.Format(CultureInfo.CurrentCulture, Resources.LanguageRules_Najviac_jazykov, MaxLanguages);
 
         var bank = bankKeys.ToList();
         for (var i = 0; i < languages.Count; i++)
@@ -50,7 +51,7 @@ internal static class LanguageRules
     {
         var key = languages[index].Key;
         if (!InissKeys.Contains(key))
-            return string.Format(Resources.LanguageRules_Neznamy_kluc, key, string.Join(", ", InissKeys));
+            return string.Format(CultureInfo.CurrentCulture, Resources.LanguageRules_Neznamy_kluc, key, string.Join(", ", InissKeys));
 
         if (!bankKeys.Contains(key))
             return Resources.FGlobalSettings_Kľúč_jazyka_sa_nezhoduje_so_žiadnym_jazykom_nacházajúci_sa_v_zvukovej_banke;

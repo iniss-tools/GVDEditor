@@ -32,7 +32,7 @@ internal partial class FMain
         Add(GvdCommands.Open, ShowOpenDir, null, tsmiOpen, tsbOpen);
         Add(GvdCommands.ImportGvd, ShowImportGVD, installation, tsmiImportGVD, tsmimImportGVD);
         Add(GvdCommands.ImportData, ShowImportData, grafikon, tsmiImportData, tsmimImportData);
-        Add(GvdCommands.ImportElis, ShowImportELIS, grafikon, tsmiImportELIS, tsmimImportELIS);
+        Add(GvdCommands.ImportElis, ShowImportElis, grafikon, tsmiImportELIS, tsmimImportELIS);
         Add(GvdCommands.Save, () => DoSave(), grafikon, tsmiSave, tsbSave);
         Add(GvdCommands.Analyze, ShowAnalyzeGVD, grafikon, tsmiAnalyze, tsbAnalyze);
 
@@ -45,25 +45,25 @@ internal partial class FMain
         Add(GvdCommands.GlobalSettings, () => ShowGlobalSettings(), grafikons, tsmiGlobalSettings, tsbGlobalSettings);
         Add(GvdCommands.AppSettings, () => ShowAppSettings(), null, tsmiAppSettings, tsbAppSettings);
 
-        Add(GvdCommands.GSGvds, () => ShowGlobalSettings(GlobalSettingsPage.Grafikony), grafikons, tsmiGrafikony);
-        Add(GvdCommands.GSLanguages, () => ShowGlobalSettings(GlobalSettingsPage.Jazyky), grafikons, tsmiLanguages);
-        Add(GvdCommands.GSDelays, () => ShowGlobalSettings(GlobalSettingsPage.Meskania), grafikons, tsmiMeskania);
-        Add(GvdCommands.GSTrainTypes, () => ShowGlobalSettings(GlobalSettingsPage.TypyVlakov), grafikons, tsmiTypyVlakov);
-        Add(GvdCommands.GSAudio, () => ShowGlobalSettings(GlobalSettingsPage.Audio), grafikons, tsmiAudio);
+        Add(GvdCommands.GsGvds, () => ShowGlobalSettings(GlobalSettingsPage.Grafikony), grafikons, tsmiGrafikony);
+        Add(GvdCommands.GsLanguages, () => ShowGlobalSettings(GlobalSettingsPage.Jazyky), grafikons, tsmiLanguages);
+        Add(GvdCommands.GsDelays, () => ShowGlobalSettings(GlobalSettingsPage.Meskania), grafikons, tsmiMeskania);
+        Add(GvdCommands.GsTrainTypes, () => ShowGlobalSettings(GlobalSettingsPage.TypyVlakov), grafikons, tsmiTypyVlakov);
+        Add(GvdCommands.GsAudio, () => ShowGlobalSettings(GlobalSettingsPage.Audio), grafikons, tsmiAudio);
 
-        Add(GvdCommands.LSGvd, () => ShowLocalSettings(LocalSettingsPage.Grafikon), grafikon, tsmiGrafikon);
-        Add(GvdCommands.LSLanguages, () => ShowLocalSettings(LocalSettingsPage.JazykyHlaseni), grafikon, tsmiJazykyHlaseni);
-        Add(GvdCommands.LSStations, () => ShowLocalSettings(LocalSettingsPage.VlastneStanice), grafikon, tsmiStanice);
-        Add(GvdCommands.LSOperators, () => ShowLocalSettings(LocalSettingsPage.Dopravcovia), grafikon, tsmiDopravcovia);
-        Add(GvdCommands.LSPlatforms, () => ShowLocalSettings(LocalSettingsPage.Nastupistia), grafikon, tsmiPlatforms);
-        Add(GvdCommands.LSTracks, () => ShowLocalSettings(LocalSettingsPage.Kolaje), grafikon, tsmiKolaje);
-        Add(GvdCommands.LSPhysicalTables, () => ShowLocalSettings(LocalSettingsPage.FyzickeTabule), grafikon, tsmiTPhysical);
-        Add(GvdCommands.LSLogicalTables, () => ShowLocalSettings(LocalSettingsPage.LogickeTabule), grafikon, tsmiTLogical);
-        Add(GvdCommands.LSCatalogTables, () => ShowLocalSettings(LocalSettingsPage.KatalogoveTabule), grafikon, tsmiTCatalog);
-        Add(GvdCommands.LSTabTab, () => ShowLocalSettings(LocalSettingsPage.TabTab), grafikon, tsmiTabTab);
-        Add(GvdCommands.LSTableTexts, () => ShowLocalSettings(LocalSettingsPage.Texty), grafikon, tsmiTTexts);
-        Add(GvdCommands.LSTableFonts, () => ShowLocalSettings(LocalSettingsPage.Pisma), grafikon, tsmiTFonts);
-        Add(GvdCommands.LSTabTabEditor, () => ShowLocalSettings(LocalSettingsPage.TabTab, LocalSettingsAction.OpenTabTabEditor), grafikon,
+        Add(GvdCommands.LsGvd, () => ShowLocalSettings(LocalSettingsPage.Grafikon), grafikon, tsmiGrafikon);
+        Add(GvdCommands.LsLanguages, () => ShowLocalSettings(LocalSettingsPage.JazykyHlaseni), grafikon, tsmiJazykyHlaseni);
+        Add(GvdCommands.LsStations, () => ShowLocalSettings(LocalSettingsPage.VlastneStanice), grafikon, tsmiStanice);
+        Add(GvdCommands.LsOperators, () => ShowLocalSettings(LocalSettingsPage.Dopravcovia), grafikon, tsmiDopravcovia);
+        Add(GvdCommands.LsPlatforms, () => ShowLocalSettings(LocalSettingsPage.Nastupistia), grafikon, tsmiPlatforms);
+        Add(GvdCommands.LsTracks, () => ShowLocalSettings(LocalSettingsPage.Kolaje), grafikon, tsmiKolaje);
+        Add(GvdCommands.LsPhysicalTables, () => ShowLocalSettings(LocalSettingsPage.FyzickeTabule), grafikon, tsmiTPhysical);
+        Add(GvdCommands.LsLogicalTables, () => ShowLocalSettings(LocalSettingsPage.LogickeTabule), grafikon, tsmiTLogical);
+        Add(GvdCommands.LsCatalogTables, () => ShowLocalSettings(LocalSettingsPage.KatalogoveTabule), grafikon, tsmiTCatalog);
+        Add(GvdCommands.LsTabTab, () => ShowLocalSettings(LocalSettingsPage.TabTab), grafikon, tsmiTabTab);
+        Add(GvdCommands.LsTableTexts, () => ShowLocalSettings(LocalSettingsPage.Texty), grafikon, tsmiTTexts);
+        Add(GvdCommands.LsTableFonts, () => ShowLocalSettings(LocalSettingsPage.Pisma), grafikon, tsmiTFonts);
+        Add(GvdCommands.LsTabTabEditor, () => ShowLocalSettings(LocalSettingsPage.TabTab, LocalSettingsAction.OpenTabTabEditor), grafikon,
             tsmiTabTabEditor);
         Add(GvdCommands.StateDgm, ShowStateDgm, grafikon, tsmiStateDgm);
 
@@ -80,7 +80,7 @@ internal partial class FMain
         Add(GvdCommands.InissStartupSettings, () => ShowAppSettings("pStartupIniss"), null, tsmimStartupSettings, tsmiStartupSettings);
 
         Add(GvdCommands.InfoApp, ShowInfoApp, null, tsmiInformation, tsbInformation);
-        Add(GvdCommands.UpdateNotes, () => Utils.OpenShell(GvdLinkConsts.LINK_NEWS), null, tsmiChangelog);
+        Add(GvdCommands.UpdateNotes, () => Utils.OpenShell(GvdLinkConsts.LinkNews), null, tsmiChangelog);
         Add(GvdCommands.DateLimit, ShowDatObm, null, tsmiDatObm, tsbDatObm);
     }
 

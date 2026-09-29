@@ -23,7 +23,7 @@ internal static class CustomStationsFile
     /// <param name="bankStations">stanice zo zvukovej banky</param>
     public static List<Station> Read(string path, GVDInfo gvd, IEnumerable<Station> bankStations)
     {
-        var fileStanice = CombinePath(path, FILE_STANICE)!;
+        var fileStanice = CombinePath(path, FileStanice)!;
 
         var stanice = new List<Station>();
 
@@ -39,13 +39,13 @@ internal static class CustomStationsFile
                 continue;
             }
 
-            if (LineIsEOF(status))
+            if (LineIsEof(status))
                 break;
 
             try
             {
                 var id = int.Parse(row[0], CultureInfo.InvariantCulture);
-                var name = row[1].ANSItoUTF();
+                var name = row[1].AnsiToUTF();
                 var stanica = new Station(id.ToString(CultureInfo.InvariantCulture), name);
 
                 if (!Station.ContainsName(bankStations, stanica.Name))
@@ -61,7 +61,7 @@ internal static class CustomStationsFile
             }
             catch (Exception e)
             {
-                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FORMAT_EX, FILE_STANICE, riadok) + e.Message, e);
+                throw new FormatException(string.Format(CultureInfo.InvariantCulture, FormatEx, FileStanice, riadok) + e.Message, e);
             }
 
             riadok++;
@@ -79,11 +79,11 @@ internal static class CustomStationsFile
     /// <param name="language">jazyk komentarov v hlavicke suboru</param>
     public static void Write(string path, IEnumerable<Station> cstations, GVDInfo gvd, AppLanguage language)
     {
-        var fileStations = CombinePath(path, FILE_STANICE)!;
+        var fileStations = CombinePath(path, FileStanice)!;
 
         using var staniceF = new CsvFileWriter(fileStations);
 
-        var comments = FormatCommon.GenerateComment(path, FILE_STANICE, gvd, language);
+        var comments = FormatCommon.GenerateComment(path, FileStanice, gvd, language);
         foreach (var comment in comments) staniceF.WriteComment(comment);
 
         foreach (var cs in cstations)

@@ -264,7 +264,7 @@ internal partial class FMain : Form, IAnalyzerHost
             tsslSelTrainName.Visible = true;
             tsslSelTrainVariants.Visible = true;
             tsslSelTrainName.Text = $@"{_ctx.Document.Trains[e.RowIndex].Type} {_ctx.Document.Trains[e.RowIndex].Number}";
-            tsslSelTrainVariants.Text = CountSelTrainVariants(_ctx.Document.Trains[e.RowIndex]).ToString();
+            tsslSelTrainVariants.Text = CountSelTrainVariants(_ctx.Document.Trains[e.RowIndex]).ToString(CultureInfo.CurrentCulture);
         }
     }
 
@@ -323,7 +323,7 @@ internal partial class FMain : Form, IAnalyzerHost
                     dateRemThis.Overlap(thistrain.DateLimitText, train.DateLimitText))
                 {
                     var obmand = dateRemThis.TextAnd(train.DateLimitText, thistrain.DateLimitText);
-                    var result = _dialogs.ShowQuestion(string.Format(Resources.FEditTrain_DateRem_zasahuje_do_ineho_vlaku, train.Type,
+                    var result = _dialogs.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FEditTrain_DateRem_zasahuje_do_ineho_vlaku, train.Type,
                         train.Number, TrainName.ToDisplay(_ctx.Workspace.TrainNames, train.Name), obmand));
                     if (result == DialogResult.Yes)
                     {
@@ -370,7 +370,7 @@ internal partial class FMain : Form, IAnalyzerHost
                 }
             }
 
-            tsslTrainCountWithVariants.Text = dgvTrains.Rows.Count.ToString();
+            tsslTrainCountWithVariants.Text = dgvTrains.Rows.Count.ToString(CultureInfo.CurrentCulture);
             tsslTrainCount.Text = $@"({CountTrainVariants()})";
         }
     }
@@ -381,7 +381,7 @@ internal partial class FMain : Form, IAnalyzerHost
 
         if (!_prechod) DataSaved = false;
 
-        tsslTrainCountWithVariants.Text = dgvTrains.Rows.Count.ToString();
+        tsslTrainCountWithVariants.Text = dgvTrains.Rows.Count.ToString(CultureInfo.CurrentCulture);
         tsslTrainCount.Text = $@"({CountTrainVariants()})";
 
         if (_ctx.Document.Trains.Count == 0)
@@ -456,14 +456,14 @@ internal partial class FMain : Form, IAnalyzerHost
                 var type = _ctx.Document.Trains[e.RowIndex].Type;
                 if (type.IsCustom)
                 {
-                    var stype = type.CategoryTrain.ToUpper();
-                    if (stype.StartsWith("X"))
+                    var stype = type.CategoryTrain.ToUpperInvariant();
+                    if (stype.StartsWith('X'))
                         SetFromScheme(_ctx.UsingStyle.TrainTypeColumnScheme.X);
-                    else if (stype.StartsWith("R"))
+                    else if (stype.StartsWith('R'))
                         SetFromScheme(_ctx.UsingStyle.TrainTypeColumnScheme.R);
-                    else if (stype.StartsWith("SL"))
+                    else if (stype.StartsWith("SL", StringComparison.Ordinal))
                         SetFromScheme(_ctx.UsingStyle.TrainTypeColumnScheme.Sl);
-                    else if (stype.StartsWith("OS"))
+                    else if (stype.StartsWith("OS", StringComparison.Ordinal))
                         SetFromScheme(_ctx.UsingStyle.TrainTypeColumnScheme.Os);
                 }
                 else

@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.Properties;
@@ -224,8 +223,8 @@ internal static class Analyzer
         progress?.Report(90);
 
         //7. Check Zpozdeni.DAT cache - INISS Zpozdeni.TXT necita, kym existuje .DAT (nekontroluje ani cas suborov)
-        var zpozdeniTxt = PathUtils.CombinePath(scope.Workspace.DataDir, GvdFileConsts.FILE_ZPOZDENI)!;
-        var zpozdeniDat = PathUtils.CombinePath(scope.Workspace.DataDir, GvdFileConsts.FILE_ZPOZDENI_DAT)!;
+        var zpozdeniTxt = PathUtils.CombinePath(scope.Workspace.DataDir, GvdFileConsts.FileZpozdeni)!;
+        var zpozdeniDat = PathUtils.CombinePath(scope.Workspace.DataDir, GvdFileConsts.FileZpozdeniDat)!;
         if (File.Exists(zpozdeniTxt) && File.Exists(zpozdeniDat) &&
             File.GetLastWriteTimeUtc(zpozdeniTxt) > File.GetLastWriteTimeUtc(zpozdeniDat))
         {
@@ -250,9 +249,9 @@ internal class StaleZpozdeniCache : IProblem
     private string CachePath { get; }
 
     public string Text =>
-        string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_ZpozdeniCacheOld, GvdFileConsts.FILE_ZPOZDENI, GvdFileConsts.FILE_ZPOZDENI_DAT);
+        string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_ZpozdeniCacheOld, GvdFileConsts.FileZpozdeni, GvdFileConsts.FileZpozdeniDat);
 
-    public string Solution => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_ZpozdeniCacheOld_Fix, GvdFileConsts.FILE_ZPOZDENI_DAT);
+    public string Solution => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_ZpozdeniCacheOld_Fix, GvdFileConsts.FileZpozdeniDat);
 
     public bool ChangesGrafikon => false;
 
@@ -493,8 +492,8 @@ internal class TabTabProblems : IProblem
         {
             var first = Result.Diagnostics.First(d => d.Severity != ExprSeverity.Info);
             var counts = Result.ErrorCount > 0
-                ? string.Format(Resources.Analyzer_TabTab_pocet_chyb, Result.ErrorCount, Result.WarningCount)
-                : string.Format(Resources.Analyzer_TabTab_pocet_varovani, Result.WarningCount);
+                ? string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_TabTab_pocet_chyb, Result.ErrorCount, Result.WarningCount)
+                : string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_TabTab_pocet_varovani, Result.WarningCount);
             return string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_TabTabProblems, TabTab.Key, counts, first.LineIndex + 1, first.Message);
         }
     }

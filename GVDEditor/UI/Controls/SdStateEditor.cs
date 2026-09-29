@@ -1,4 +1,5 @@
-﻿using ExControls;
+﻿using System.Globalization;
+using ExControls;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Expressions;
 using ToolsCore.Iniss.StateDgm;
@@ -76,11 +77,11 @@ internal sealed class SdStateEditor : SdEditorBase
         AddRow(Resources.FStateDgm_AutoModif, _autoModif);
         _wait = SdDynamicField.Choice(Context, ExprContext.StateDgmWait,
             new SdEditorContext.Item(Resources.FStateDgm_Nenastavene, null),
-            new SdEditorContext.Item(Resources.FStateDgm_Wait_VVC, unchecked((int)StateDgmWaitEvent.VVC)),
-            new SdEditorContext.Item(Resources.FStateDgm_Wait_OVC, (int)StateDgmWaitEvent.OVC),
+            new SdEditorContext.Item(Resources.FStateDgm_Wait_VVC, unchecked((int)StateDgmWaitEvent.Vvc)),
+            new SdEditorContext.Item(Resources.FStateDgm_Wait_OVC, (int)StateDgmWaitEvent.Ovc),
             new SdEditorContext.Item(Resources.FStateDgm_Wait_Vj, (int)StateDgmWaitEvent.Vj),
             new SdEditorContext.Item(Resources.FStateDgm_Wait_Odj, (int)StateDgmWaitEvent.Odj),
-            new SdEditorContext.Item(Resources.FStateDgm_Wait_ZCV, (int)StateDgmWaitEvent.ZCV));
+            new SdEditorContext.Item(Resources.FStateDgm_Wait_ZCV, (int)StateDgmWaitEvent.Zcv));
         AddRow(Resources.FStateDgm_Wait, _wait);
         _condition.Font = Context.ExprFont;
         AddRow(Resources.FStateDgm_AutoCondition, _condition, Resources.FStateDgm_AutoConditionTip);
@@ -177,7 +178,7 @@ internal sealed class SdStateEditor : SdEditorBase
             }
 
             if (_s.DefaultControl > _s.Controls.Count)
-                _defaultControl.Items.Add(new SdEditorContext.Item(_s.DefaultControl.ToString(), _s.DefaultControl));
+                _defaultControl.Items.Add(new SdEditorContext.Item(_s.DefaultControl.ToString(CultureInfo.CurrentCulture), _s.DefaultControl));
             SdEditorContext.Select(_defaultControl, _s.DefaultControl);
         }
         finally
@@ -195,10 +196,10 @@ internal sealed class SdStateEditor : SdEditorBase
             BindKey(d, s.Key);
             _key.Text = s.Key;
             _name.Text = s.Name;
-            if (s.Icon is >= 0 and <= StateDgmKeys.MAX_ICON) SdEditorContext.Select(_icon, s.Icon);
+            if (s.Icon is >= 0 and <= StateDgmKeys.MaxIcon) SdEditorContext.Select(_icon, s.Icon);
             else
             {
-                _icon.Items.Add(new SdEditorContext.Item(s.Icon.ToString(), s.Icon));
+                _icon.Items.Add(new SdEditorContext.Item(s.Icon.ToString(CultureInfo.CurrentCulture), s.Icon));
                 _icon.SelectedIndex = _icon.Items.Count - 1;
             }
 
@@ -228,7 +229,7 @@ internal sealed class SdStateEditor : SdEditorBase
     private static StateDgmDynamic? WaitToChoice(StateDgmDynamic? w)
     {
         if (w == null) return null;
-        if (w.IsExpression && Enum.TryParse<StateDgmWaitEvent>(w.Expression!.Trim(), out var e) && e != StateDgmWaitEvent.None)
+        if (w.IsExpression && StateDgmDynamic.TryParseWait(w.Expression!.Trim(), out var e))
             return StateDgmDynamic.FromNumber(unchecked((int)e));
         return w;
     }

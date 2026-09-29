@@ -55,8 +55,8 @@ internal static class BlockMigrator
     /// <returns>Zoznam blokov s predvyplnenymi nazvami priecinkov, alebo prazdny zoznam, ak migracia nie je potrebna.</returns>
     public static List<GvdBlock> Analyze(string dataDir, string gvdPath, GVDInfo gvd, string dirName, StationDirectory stations, bool always = false)
     {
-        var export3A = PathUtils.CombinePath(gvdPath, GvdFileConsts.FILE_EXPORT3A)!;
-        var export3B = PathUtils.CombinePath(gvdPath, GvdFileConsts.FILE_EXPORT3B)!;
+        var export3A = PathUtils.CombinePath(gvdPath, GvdFileConsts.FileExport3A)!;
+        var export3B = PathUtils.CombinePath(gvdPath, GvdFileConsts.FileExport3B)!;
         if (!File.Exists(export3A))
             return [];
 
@@ -137,15 +137,15 @@ internal static class BlockMigrator
             {
                 var name = Path.GetFileName(file);
                 if (IsRuntimeFile(name)
-                    || name.Equals(GvdFileConsts.FILE_GRAFIKON, StringComparison.OrdinalIgnoreCase)
-                    || name.Equals(GvdFileConsts.FILE_AUDIO, StringComparison.OrdinalIgnoreCase)
-                    || name.Equals(GvdFileConsts.FILE_DIRLIST, StringComparison.OrdinalIgnoreCase))
+                    || name.Equals(GvdFileConsts.FileGrafikon, StringComparison.OrdinalIgnoreCase)
+                    || name.Equals(GvdFileConsts.FileAudio, StringComparison.OrdinalIgnoreCase)
+                    || name.Equals(GvdFileConsts.FileDirlist, StringComparison.OrdinalIgnoreCase))
                     continue;
 
                 var lines = ReadLines(file);
 
                 // TTexts.TXT hlavicky nema, ale TRAIN_nnn_ID je index vlaku v celom subore (cez vsetky bloky)
-                if (name.Equals(GvdFileConsts.FILE_TTEXTS, StringComparison.OrdinalIgnoreCase))
+                if (name.Equals(GvdFileConsts.FileTtexts, StringComparison.OrdinalIgnoreCase))
                 {
                     var perBlock = SplitTTexts(lines, blocks);
                     for (var i = 0; i < blocks.Count; i++)
@@ -177,7 +177,7 @@ internal static class BlockMigrator
                 var name = Path.GetFileName(dir);
                 if (RuntimeDirectories.Contains(name, StringComparer.OrdinalIgnoreCase)
                     || targets.Any(t => string.Equals(Path.GetFullPath(t), Path.GetFullPath(dir), StringComparison.OrdinalIgnoreCase))
-                    || File.Exists(PathUtils.CombinePath(dir, GvdFileConsts.FILE_GRAFIKON)))
+                    || File.Exists(PathUtils.CombinePath(dir, GvdFileConsts.FileGrafikon)))
                     continue;
                 foreach (var target in targets)
                     Utils.CopyDirectory(dir, PathUtils.CombinePath(target, name)!);
@@ -217,7 +217,7 @@ internal static class BlockMigrator
             BackColor = sourceDir?.BackColor
         }).ToList();
 
-        var dirList = File.Exists(PathUtils.CombinePath(dataDir, GvdFileConsts.FILE_DIRLIST)) ? DirListFile.Read(dataDir) : [];
+        var dirList = File.Exists(PathUtils.CombinePath(dataDir, GvdFileConsts.FileDirlist)) ? DirListFile.Read(dataDir) : [];
         var position = sourceDir is null ? -1 : dirList.FindIndex(d => d.DirName.Equals(sourceDir.DirName, StringComparison.OrdinalIgnoreCase));
         if (position >= 0)
             dirList.RemoveAt(position);

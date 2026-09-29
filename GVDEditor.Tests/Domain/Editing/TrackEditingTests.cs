@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using ExControls;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
@@ -77,7 +76,7 @@ public class TrackEditingTests
             TrackEditing.Remove(t1, tracks, trains);
 
             TracksFile.Write(dir.FullName, tracks);
-            var pozice = Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE);
+            var pozice = Path.Combine(dir.FullName, GvdFileConsts.FilePozice);
             PoziceFile.Write(pozice, trains, []);
 
             var readTracks = TracksFile.Read(dir.FullName, [], _warnings);
@@ -102,7 +101,7 @@ public class TrackEditingTests
         try
         {
             var tracks = Tracks();
-            var pozice = Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE);
+            var pozice = Path.Combine(dir.FullName, GvdFileConsts.FilePozice);
             PoziceFile.Write(pozice, [NewTrain(tracks[2], tracks[1])], []);
             tracks.RemoveAt(1);
 
@@ -123,7 +122,7 @@ public class TrackEditingTests
 
             TracksFile.Write(dir.FullName, [Track.None, NewTrack("6V", Platform1, "6")]);
 
-            var line = File.ReadAllLines(Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE_A), Encodings.Win1250)[1];
+            var line = File.ReadAllLines(Path.Combine(dir.FullName, GvdFileConsts.FilePoziceA), Encodings.Win1250)[1];
             StringAssert.StartsWith(line, "\"6V\",\"6V\",\"Koľaj 6V\",\"Nástupište 1\",\"6\",\"1\",");
 
             var read = TracksFile.Read(dir.FullName, [], _warnings)[1];
@@ -177,7 +176,7 @@ public class TrackEditingTests
         var dir = Directory.CreateTempSubdirectory("gvdtracks");
         try
         {
-            File.WriteAllLines(Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE_A), lines, Encodings.Win1250);
+            File.WriteAllLines(Path.Combine(dir.FullName, GvdFileConsts.FilePoziceA), lines, Encodings.Win1250);
             return TracksFile.Read(dir.FullName, [], _warnings).Skip(1).ToList();
         }
         finally

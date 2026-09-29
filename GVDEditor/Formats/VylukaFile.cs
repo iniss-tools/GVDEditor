@@ -21,7 +21,7 @@ internal static class VylukaFile
         if (!File.Exists(file))
             return;
 
-        ReadRows(file, FILE_VYLUKA, (row, _) =>
+        ReadRows(file, FileVyluka, (row, _) =>
         {
             var train = trains[int.Parse(row[0], CultureInfo.InvariantCulture) - 1];
             var count = ParseIntOrDefault(row.ElementAtOrDefault(1));

@@ -26,7 +26,7 @@ internal static class LogZvukParser
     /// </summary>
     public static List<LogZvukText> ReadLogZvukUsr(string pathToBank)
     {
-        var file = PathUtils.CombinePath(pathToBank, GvdFileConsts.FILE_LOGZVUK_USR)!;
+        var file = PathUtils.CombinePath(pathToBank, GvdFileConsts.FileLogzvukUsr)!;
         var texts = new List<LogZvukText>();
 
         if (!File.Exists(file))

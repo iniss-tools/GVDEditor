@@ -101,7 +101,7 @@ internal static class GrafikonService
     public static void SaveGlobalSettings(InissWorkspace workspace, List<DirList> dirs, GrafikonDocument document)
     {
         var dataDir = workspace.DataDir;
-        var transaction = new FileTransaction(new[] { FILE_DIRLIST, FILE_TRTYPES, FILE_ZPOZDENI, FILE_ZPOZDENI_DAT, FILE_AUDIO, FILE_CATEGORI }
+        var transaction = new FileTransaction(new[] { FileDirlist, FileTrtypes, FileZpozdeni, FileZpozdeniDat, FileAudio, FileCategori }
             .Select(file => Path.Combine(dataDir, file)));
         try
         {

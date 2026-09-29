@@ -27,7 +27,7 @@ internal partial class FGlobalSettings : Form
     /// <summary>
     /// Odstranene grafikony - ich priecinky sa po OK presunu do Kosa.
     /// </summary>
-    public List<GVDDirectory> RemovedGVDs { get; } = [];
+    public List<GVDDirectory> RemovedGvDs { get; } = [];
 
 
     private readonly GVDDirectory? _openGrafikon;
@@ -76,11 +76,11 @@ internal partial class FGlobalSettings : Form
 
         _helpLinks = new Dictionary<ExOptionsPanel, string>
         {
-            [pGrafikony] = GvdLinkConsts.LINK_GLOBAL_GRAFIKONY,
-            [pJazyky] = GvdLinkConsts.LINK_GLOBAL_JAZYKY,
-            [pMeskania] = GvdLinkConsts.LINK_GLOBAL_MESKANIA,
-            [pTrainTypes] = GvdLinkConsts.LINK_GLOBAL_TYPY_VLAKOV,
-            [pAudio] = GvdLinkConsts.LINK_GLOBAL_AUDIO
+            [pGrafikony] = GvdLinkConsts.LinkGlobalGrafikony,
+            [pJazyky] = GvdLinkConsts.LinkGlobalJazyky,
+            [pMeskania] = GvdLinkConsts.LinkGlobalMeskania,
+            [pTrainTypes] = GvdLinkConsts.LinkGlobalTypyVlakov,
+            [pAudio] = GvdLinkConsts.LinkGlobalAudio
         };
         optionsView.SelectedPanelChanged += (_, _) => UpdateHelpLink();
 
@@ -98,7 +98,7 @@ internal partial class FGlobalSettings : Form
 
         // typy vlakov citaju vlaky vsetkych grafikonov - pri mnohych grafikonoch by otvorenie okna trvalo
         _pages = new PageLoader(this, optionsView);
-        _pages.Add(pGrafikony, () => grafikonyPage.LoadData(Grafikony, RemovedGVDs));
+        _pages.Add(pGrafikony, () => grafikonyPage.LoadData(Grafikony, RemovedGvDs));
         _pages.Add(pJazyky, () => languagesPage.LoadData(_ctx, RawBankParser.ReadFyzBankFile(_ctx.Workspace.RawBankDir, out _)));
         _pages.Add(pMeskania, () => delaysPage.LoadData(_ctx));
         _pages.Add(pAudio, () => audioPage.LoadData(_ctx, Grafikony));

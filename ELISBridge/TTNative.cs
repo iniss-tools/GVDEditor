@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Iniss.Elis;
@@ -15,7 +14,6 @@ namespace Iniss.Elis;
 /// Ostava [DllImport]: retazce do kniznice idu v ANSI kodovani systemu (TT.dll nimi otvara subory cez
 /// ANSI API), co [LibraryImport] bez vlastneho marshallera nevie.
 /// </remarks>
-[SuppressMessage("Globalization", "CA2101", Justification = "TT.dll prijima retazce v ANSI kodovani systemu.")]
 internal static class TTNative
 {
     private const string Dll = "TT.dll";
@@ -55,7 +53,7 @@ internal static class TTNative
     public static extern IntPtr TTVer();
 
     /// <summary>Nacita vsetky *.tt z priecinka. Cesta MUSI koncit spatnou lomkou.</summary>
-    [DllImport(Dll, CharSet = CharSet.Ansi)]
+    [DllImport(Dll, CharSet = CharSet.Ansi, BestFitMapping = false)]
     public static extern void TTInit(string path, IntPtr callback);
 
     [DllImport(Dll)]
@@ -152,7 +150,7 @@ internal static class TTNative
     public static extern int TTGetOwnersCount(int tt);
 
     /// <summary>Vytiahne jednu polozku ({ON}, {ONo}, ...) zo zaznamu vrateneho <see cref="TTOwnerDesc" />.</summary>
-    [DllImport(Dll, CharSet = CharSet.Ansi)]
+    [DllImport(Dll, CharSet = CharSet.Ansi, BestFitMapping = false)]
     public static extern IntPtr TTGetField(string tag, IntPtr desc);
 
     /// <summary>Zlozky <paramref name="from" /> a <paramref name="to" /> su v poradi den, mesiac, rok.</summary>
@@ -160,11 +158,11 @@ internal static class TTNative
     public static extern void TTGetValidityRange(int category, int subcat, [Out] int[] from, [Out] int[] to);
 
     /// <summary>Servisny prikaz kniznice; pouziva sa na vlozenie registracneho cisla pred nacitanim dat.</summary>
-    [DllImport(Dll, CharSet = CharSet.Ansi)]
+    [DllImport(Dll, CharSet = CharSet.Ansi, BestFitMapping = false)]
     public static extern int TTService(string command, string argument);
 
     /// <summary>Nastavi identifikaciu klienta, ktora vstupuje do overenia registracie. Segmenty oddeluje '|'.</summary>
-    [DllImport(Dll, CharSet = CharSet.Ansi)]
+    [DllImport(Dll, CharSet = CharSet.Ansi, BestFitMapping = false)]
     public static extern void TTRegisterClient(string client);
 
     private static readonly Encoding Cp1250 = Encoding.GetEncoding(1250);

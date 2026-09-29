@@ -79,7 +79,7 @@ public class GrafikonServiceTests
         var imported = GrafikonService.Import(workspace, source, []);
 
         Assert.AreEqual(Path.Combine(_data, "Horna.2026"), imported.Dir.FullPath);
-        Assert.IsTrue(File.Exists(Path.Combine(imported.Dir.FullPath, GvdFileConsts.FILE_GRAFIKON)));
+        Assert.IsTrue(File.Exists(Path.Combine(imported.Dir.FullPath, GvdFileConsts.FileGrafikon)));
         Assert.AreEqual("Horné Mesto", imported.GVD.ThisStation.Name);
         CollectionAssert.AreEqual(new[] { "Horna.2026" }, DirListFile.Read(_data).Select(d => d.DirName).ToList());
         Assert.HasCount(1, workspace.GVDDirs);
@@ -123,9 +123,9 @@ public class GrafikonServiceTests
     {
         var workspace = Workspace();
         ZpozdeniFile.Write(_data, ["15"]);
-        var cache = Path.Combine(_data, GvdFileConsts.FILE_ZPOZDENI_DAT);
+        var cache = Path.Combine(_data, GvdFileConsts.FileZpozdeniDat);
         File.WriteAllText(cache, "cache");
-        var audio = Path.Combine(_data, GvdFileConsts.FILE_AUDIO);
+        var audio = Path.Combine(_data, GvdFileConsts.FileAudio);
         File.WriteAllText(audio, "");
         File.SetAttributes(audio, FileAttributes.ReadOnly);
         var dirs = new List<DirList> { new() { DirName = "Dolne.2026", FullPath = Path.Combine(_data, "Dolne.2026") } };

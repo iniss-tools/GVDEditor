@@ -31,7 +31,7 @@ namespace GVDEditor.UI.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.scintilla = new ScintillaNET.Scintilla();
+            this.scintillaEditor = new ScintillaNET.Scintilla();
             this.pVertical = new System.Windows.Forms.Panel();
             this.VScrollBarControl = new System.Windows.Forms.VScrollBar();
             this.pHorizontal = new System.Windows.Forms.Panel();
@@ -42,15 +42,15 @@ namespace GVDEditor.UI.Controls
             // 
             // Scintilla
             // 
-            this.scintilla.BorderStyle = ScintillaNET.BorderStyle.FixedSingle;
-            this.scintilla.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scintilla.HScrollBar = false;
-            this.scintilla.Location = new System.Drawing.Point(0, 0);
-            this.scintilla.Name = "scintilla";
-            this.scintilla.Size = new System.Drawing.Size(449, 329);
-            this.scintilla.TabIndex = 0;
-            this.scintilla.VScrollBar = false;
-            this.scintilla.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.Scintilla_UpdateUI);
+            this.scintillaEditor.BorderStyle = ScintillaNET.BorderStyle.FixedSingle;
+            this.scintillaEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scintillaEditor.HScrollBar = false;
+            this.scintillaEditor.Location = new System.Drawing.Point(0, 0);
+            this.scintillaEditor.Name = "scintillaEditor";
+            this.scintillaEditor.Size = new System.Drawing.Size(449, 329);
+            this.scintillaEditor.TabIndex = 0;
+            this.scintillaEditor.VScrollBar = false;
+            this.scintillaEditor.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.Scintilla_UpdateUI);
             // 
             // pVertical
             // 
@@ -97,7 +97,7 @@ namespace GVDEditor.UI.Controls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.scintilla);
+            this.Controls.Add(this.scintillaEditor);
             this.Controls.Add(this.pVertical);
             this.Controls.Add(this.pHorizontal);
             this.Name = "MyScintilla";
@@ -115,7 +115,7 @@ namespace GVDEditor.UI.Controls
         public System.Windows.Forms.VScrollBar VScrollBarControl;
         private System.Windows.Forms.Panel pHorizontal;
         public System.Windows.Forms.HScrollBar HScrollBarControl;
-        public ScintillaNET.Scintilla scintilla;
+        public ScintillaNET.Scintilla scintillaEditor;
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

@@ -99,18 +99,18 @@ internal partial class FLocalSettings : Form
 
         _helpLinks = new Dictionary<ExOptionsPanel, string>
         {
-            [pGrafikon] = GvdLinkConsts.LINK_LOCAL_GRAFIKON,
-            [pJazyky] = GvdLinkConsts.LINK_LOCAL_JAZYKY,
-            [pStanice] = GvdLinkConsts.LINK_LOCAL_STANICE,
-            [pDopravcovia] = GvdLinkConsts.LINK_LOCAL_DOPRAVCOVIA,
-            [pNastupistia] = GvdLinkConsts.LINK_LOCAL_NASTUPISTIA_KOLAJE,
-            [pFonts] = GvdLinkConsts.LINK_TFONTS,
-            [pTabTab] = GvdLinkConsts.LINK_TABTAB_EDITOR,
-            [pKatTab] = GvdLinkConsts.LINK_TCATALOG,
-            [pFyzTab] = GvdLinkConsts.LINK_TPHYSICAL,
-            [pLogTab] = GvdLinkConsts.LINK_TLOGICAL,
-            [pTTexts] = GvdLinkConsts.LINK_TTEXTS,
-            [pStateDgm] = GvdLinkConsts.LINK_LOCAL_STATEDGM
+            [pGrafikon] = GvdLinkConsts.LinkLocalGrafikon,
+            [pJazyky] = GvdLinkConsts.LinkLocalJazyky,
+            [pStanice] = GvdLinkConsts.LinkLocalStanice,
+            [pDopravcovia] = GvdLinkConsts.LinkLocalDopravcovia,
+            [pNastupistia] = GvdLinkConsts.LinkLocalNastupistiaKolaje,
+            [pFonts] = GvdLinkConsts.LinkTfonts,
+            [pTabTab] = GvdLinkConsts.LinkTabtabEditor,
+            [pKatTab] = GvdLinkConsts.LinkTcatalog,
+            [pFyzTab] = GvdLinkConsts.LinkTphysical,
+            [pLogTab] = GvdLinkConsts.LinkTlogical,
+            [pTTexts] = GvdLinkConsts.LinkTtexts,
+            [pStateDgm] = GvdLinkConsts.LinkLocalStatedgm
         };
         optionsView.SelectedPanelChanged += (_, _) => UpdateHelpLink();
 

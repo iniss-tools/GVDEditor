@@ -43,7 +43,7 @@ internal class FunctionItem : AutocompleteItem
     {
         if (Text.StartsWith(fragmentText.ToUpperInvariant(), StringComparison.Ordinal))
             return CompareResult.VisibleAndSelected;
-        if (Text.Contains(fragmentText.ToUpperInvariant()))
+        if (Text.Contains(fragmentText.ToUpperInvariant(), StringComparison.Ordinal))
             return CompareResult.Visible;
         return CompareResult.Hidden;
     }
@@ -66,7 +66,7 @@ internal class ConstantItem : AutocompleteItem
     {
         if (Text.StartsWith(fragmentText.ToUpperInvariant(), StringComparison.Ordinal))
             return CompareResult.VisibleAndSelected;
-        if (Text.Contains(fragmentText.ToUpperInvariant()))
+        if (Text.Contains(fragmentText.ToUpperInvariant(), StringComparison.Ordinal))
             return CompareResult.Visible;
 
         return CompareResult.Hidden;

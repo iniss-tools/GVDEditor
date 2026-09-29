@@ -55,9 +55,9 @@ internal readonly record struct ElenFontCode(int Id)
     /// </summary>
     public static int MaxExtendedFont(TableManufacturer? manufacturer)
     {
-        if (manufacturer == null || manufacturer == TableManufacturer.ELEN16 || manufacturer == TableManufacturer.ELEN16Kam)
+        if (manufacturer == null || manufacturer == TableManufacturer.Elen16 || manufacturer == TableManufacturer.Elen16Kam)
             return 9;
-        return manufacturer == TableManufacturer.ELEN10 ? 4 : 0;
+        return manufacturer == TableManufacturer.Elen10 ? 4 : 0;
     }
 
     /// <summary>
@@ -124,9 +124,9 @@ internal readonly record struct ElenFontCode(int Id)
     /// Ci vyrobca pouziva cislo pisma podla tohto kodovania. Bez vyrobcu (zoznam pisiem) sa predpoklada ELEN.
     /// </summary>
     public static bool AppliesTo(TableManufacturer? manufacturer) =>
-        manufacturer == null || manufacturer == TableManufacturer.ELEN || manufacturer == TableManufacturer.ELENOLD ||
-        manufacturer == TableManufacturer.ELEN10 || manufacturer == TableManufacturer.ELEN16 ||
-        manufacturer == TableManufacturer.ELEN16Kam || manufacturer == TableManufacturer.ELEKON;
+        manufacturer == null || manufacturer == TableManufacturer.Elen || manufacturer == TableManufacturer.Elenold ||
+        manufacturer == TableManufacturer.Elen10 || manufacturer == TableManufacturer.Elen16 ||
+        manufacturer == TableManufacturer.Elen16Kam || manufacturer == TableManufacturer.Elekon;
 
     /// <summary>
     /// Typ pisma, ktory zodpoveda rezu.

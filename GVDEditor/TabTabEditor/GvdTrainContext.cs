@@ -161,7 +161,7 @@ internal sealed class GvdTrainContext : IExprTrainContext
         else if (s == TableFillSection.LinkaPrichod) text = ArrivalLine;
         else text = "";
 
-        return new TabTabValue(text, item.FontIDX);
+        return new TabTabValue(text, item.FontIdx);
     }
 
     /// <summary>Stlpec 5 Pozice_A (text na tabule); vlak bez kolaje nema nic.</summary>

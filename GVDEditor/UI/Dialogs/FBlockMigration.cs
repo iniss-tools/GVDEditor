@@ -60,13 +60,13 @@ public partial class FBlockMigration : Form
             // ciarka by rozbila DirList.TXT (zapisuje sa bez uvodzoviek), bodku na konci Windows z nazvu odstrani
             if (name.Length == 0 || name.IndexOfAny(invalid) >= 0 || name.Contains(',') || name.EndsWith('.'))
             {
-                Utils.ShowError(string.Format(Properties.Resources.BlockMigrator_Neplatny_nazov_priecinka, name));
+                Utils.ShowError(string.Format(CultureInfo.CurrentCulture, Properties.Resources.BlockMigrator_Neplatny_nazov_priecinka, name));
                 return;
             }
 
             if (!names.Add(name))
             {
-                Utils.ShowError(string.Format(Properties.Resources.BlockMigrator_Duplicitny_nazov_priecinka, name));
+                Utils.ShowError(string.Format(CultureInfo.CurrentCulture, Properties.Resources.BlockMigrator_Duplicitny_nazov_priecinka, name));
                 return;
             }
 

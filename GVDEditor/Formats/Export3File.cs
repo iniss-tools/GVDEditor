@@ -26,7 +26,7 @@ internal static class Export3File
     public static List<Train> ReadTrains(string file, GrafikonContext context)
     {
         var trains = new List<Train>();
-        ReadRows(file, FILE_EXPORT3A, (row, _) =>
+        ReadRows(file, FileExport3A, (row, _) =>
         {
             var train = new Train { ID = int.Parse(row[0], CultureInfo.InvariantCulture), Number = row[1], Name = row[2] };
 
@@ -88,7 +88,7 @@ internal static class Export3File
     public static Dictionary<Train, string> ReadValidity(string file, IList<Train> trains)
     {
         var dayMaps = new Dictionary<Train, string>();
-        ReadRows(file, FILE_EXPORT3B, (row, _) =>
+        ReadRows(file, FileExport3B, (row, _) =>
         {
             var train = trains[int.Parse(row[0], CultureInfo.InvariantCulture) - 1];
             train.ZaciatokPlatnosti = ParseDateOnlyAlts(row[1]);
@@ -111,7 +111,7 @@ internal static class Export3File
     /// <param name="dayMaps">mapy dni z <see cref="ReadValidity" /></param>
     public static void ReadNotes(string file, IList<Train> trains, Dictionary<Train, string> dayMaps)
     {
-        ReadRows(file, FILE_EXPORT3C, (row, _) =>
+        ReadRows(file, FileExport3C, (row, _) =>
         {
             var train = trains[int.Parse(row[0], CultureInfo.InvariantCulture) - 1];
 

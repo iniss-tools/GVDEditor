@@ -5,7 +5,7 @@ namespace GVDEditor.Domain.Entities;
 /// <summary>
 /// Reprezentuje zaznam tabule.
 /// </summary>
-public sealed class TableRecord : IEnumerable
+public sealed class TableRecord : IEnumerable<TablePosition>
 {
     /// <summary>
     /// Pozicie zaznamu tabule.
@@ -13,6 +13,8 @@ public sealed class TableRecord : IEnumerable
     public List<TablePosition> Positions { get; set; } = [];
 
     /// <summary>Returns an enumerator that iterates through a collection.</summary>
-    /// <returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
-    public IEnumerator GetEnumerator() => Positions.GetEnumerator();
+    /// <returns>An <see cref="System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
+    public IEnumerator<TablePosition> GetEnumerator() => Positions.GetEnumerator();
+
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }

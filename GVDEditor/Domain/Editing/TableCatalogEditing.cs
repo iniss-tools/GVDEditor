@@ -43,7 +43,7 @@ public static class TableCatalogEditing
         target.Line = source.Line;
         target.Start = source.Start;
         target.End = source.End;
-        target.FontIDX = source.FontIDX;
+        target.FontIdx = source.FontIdx;
         target.Align = source.Align;
         target.DivType = source.DivType;
         target.Tab1 = source.Tab1;
@@ -171,7 +171,7 @@ public static class TableCatalogEditing
             Line = last?.Line ?? 0,
             Start = start,
             End = start + (64 + cell - 1) / cell * cell,
-            FontIDX = last?.FontIDX ?? 0,
+            FontIdx = last?.FontIdx ?? 0,
             Align = TableAlign.Left,
             DivType = TableDivType.Free,
             Tab1 = TableTabTab.Empty,
