@@ -1,4 +1,5 @@
 using System.Globalization;
+using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
@@ -20,8 +21,8 @@ internal static class GrafikonService
     /// <summary>
     /// Nacita grafikon na pozadi do noveho dokumentu - otvoreny grafikon sa medzitym nemeni.
     /// </summary>
-    public static Task<GrafikonDocument> LoadAsync(GVDDirectory dir, InissWorkspace workspace) =>
-        Task.Run(() => GrafikonRepository.Load(dir.Dir.FullPath, dir.GVD, workspace));
+    public static Task<GrafikonDocument> LoadAsync(GVDDirectory dir, InissWorkspace workspace, LoadWarnings warnings) =>
+        Task.Run(() => GrafikonRepository.Load(dir.Dir.FullPath, dir.GVD, workspace, warnings));
 
     /// <summary>
     /// Ulozi grafikon (transakcne, pozri <see cref="GrafikonRepository.Save" />). Pred ulozenim podla nastavenia
@@ -107,7 +108,7 @@ internal static class GrafikonService
             DirListFile.Write(dataDir, dirs);
             TrTypesFile.Write(dataDir, workspace.TrainsTypes);
             ZpozdeniFile.Write(dataDir, workspace.Delays);
-            AudioFile.Write(dataDir, workspace.Audios);
+            AudioFile.Write(dataDir, workspace.Audios, workspace.AudioTrailer);
             CategoriFile.WriteGlobal(dataDir, workspace.Languages.ToList());
         }
         catch (Exception exception)

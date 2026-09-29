@@ -89,7 +89,7 @@ internal static class DemoInstallation
         var dir = new DirList { DirName = GvdDirName, FullPath = Path.Combine(dataDir, GvdDirName), TablePort = 2, ReportPort = 3 };
         DirListFile.Write(dataDir, [dir]);
 
-        Program.Context.OpenWorkspace(WorkspaceRepository.Load(root));
+        Program.Context.OpenWorkspace(WorkspaceRepository.Load(root, new LoadWarnings()));
 
         var home = Station("9900100");
         var gvd = new GVDInfo
@@ -339,27 +339,28 @@ internal static class DemoInstallation
     private static void Verify(string path, GVDInfo gvd, List<string> log)
     {
         // poradie ako vo FMain.ProccessData: vlastné stanice pred trasami, koľaje sa odkazujú na logické tabule
-        LoadWarnings.Clear();
+        var warnings = new LoadWarnings();
+        var context = Program.Context.Grafikon with { Warnings = warnings };
         Program.Context.Document.CustomStations = new ExControls.ExBindingList<Station>(CustomStationsFile.Read(path, gvd, Program.Context.Workspace.Stations));
         var (tabtabs, catalogs, physicals, logicals) = TablesFile.Read(path);
         Program.Context.Document.TabTabs = new ExControls.ExBindingList<TableTabTab>(tabtabs);
         Program.Context.Document.TableCatalogs = new ExControls.ExBindingList<TableCatalog>(catalogs);
         Program.Context.Document.TablePhysicals = new ExControls.ExBindingList<TablePhysical>(physicals);
         Program.Context.Document.TableLogicals = new ExControls.ExBindingList<TableLogical>(logicals);
-        Program.Context.Document.Tracks = new ExControls.ExBindingList<Track>(TracksFile.Read(path, Program.Context.Document.TableLogicals));
+        Program.Context.Document.Tracks = new ExControls.ExBindingList<Track>(TracksFile.Read(path, Program.Context.Document.TableLogicals, warnings));
         Program.Context.Document.Operators = new ExControls.ExBindingList<Operator>(OperatorsFile.Read(path));
-        (Program.Context.Document.ReportVariants, Program.Context.Document.ReportTypes, Program.Context.Document.LocalLanguages) = CategoriFile.ReadLocal(path, Program.Context.Workspace.Languages);
-        var trains = TrainsFile.Read(path, Program.Context.Grafikon);
+        (Program.Context.Document.ReportVariants, Program.Context.Document.ReportTypes, Program.Context.Document.LocalLanguages) = CategoriFile.ReadLocal(path, Program.Context.Workspace.Languages, warnings);
+        var trains = TrainsFile.Read(path, context);
         var texts = TTextsFile.Read(path, trains, Program.Context.Document.TableCatalogs);
         var fonts = ModeTabsFile.Read(path).Fonts;
         var tracksWithTables = Program.Context.Document.Tracks.Count(t => t.Tables.Count > 0);
-        var radenia = RazeniFile.Read(path, Program.Context.Workspace.Sounds, Program.Context.Grafikon);
+        var radenia = RazeniFile.Read(path, Program.Context.Workspace.Sounds, context);
         log.Add($"demo: radenia {radenia.Count} ({string.Join("; ", radenia.Select(r => $"{r.CisloVlaku} {r.DatObm}: {r.Text}"))})");
 
         log.Add($"demo: {trains.Count} vlakov, {Program.Context.Document.Tracks.Count - 1} koľají ({tracksWithTables} s tabuľou), " +
                 $"{Program.Context.Document.Operators.Count - 1} dopravcov, tabule fyz/log/kat/TabTab {physicals.Count}/{logicals.Count}/" +
                 $"{catalogs.Count}/{tabtabs.Count}, texty {texts.Count}, písma {fonts.Count}, vlastné stanice {Program.Context.Document.CustomStations.Count}");
-        foreach (var warning in LoadWarnings.Items)
+        foreach (var warning in warnings.Items)
             log.Add("demo varovanie: " + warning);
     }
 

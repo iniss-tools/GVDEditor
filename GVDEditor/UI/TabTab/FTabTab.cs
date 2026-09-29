@@ -653,8 +653,11 @@ internal partial class FTabTab : Form
 
         // index v editore sa po pridani/odstraneni sekcie nezhoduje s _ctx.Document.TabTabs - kontroluje sa objekt dokumentu
         var index = lbTabTabs.SelectedIndex;
-        if (!TabTabSections.CheckCanRemove(documents[index].TabTab, _ctx.Document.TableCatalogs))
+        if (TabTabSections.RemoveBlockedMessage(documents[index].TabTab, _ctx.Document.TableCatalogs) is { } blocked)
+        {
+            Utils.ShowError(blocked);
             return;
+        }
 
         documents.RemoveAt(index);
         tsbSave.Enabled = true;

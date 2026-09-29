@@ -30,7 +30,7 @@ internal partial class FNewGrafikon : Form
     // bez vybranej farby sa do DirList.TXT nezapise ziadna a INISS pouzije farbu zo svojej palety
     private Color? selectedColor;
 
-    // vsetky grafikony instalacie - FMain.ObdobiaList obsahuje len obdobia prave vybranej stanice
+    // vsetky grafikony instalacie (hlavne okno ma v zozname obdobi len obdobia prave vybranej stanice)
     private readonly IReadOnlyList<GVDDirectory> _grafikony;
 
     /// <summary>
@@ -60,7 +60,7 @@ internal partial class FNewGrafikon : Form
         if (!string.IsNullOrEmpty(_ctx.Workspace.INISSDir)) 
             tbDirIniss.Text = _ctx.Workspace.INISSDir;
 
-        if (FMain.Stanice.Count == 0) rbNewObd.Enabled = false;
+        if (_grafikony.Count == 0) rbNewObd.Enabled = false;
 
         nudIDStation.Enabled = false;
         tbStationName.Enabled = false;
@@ -257,11 +257,7 @@ internal partial class FNewGrafikon : Form
         else
         {
             cbStationName.DataSource = null;
-            var st = new List<Station>();
-            foreach (var s in _ctx.Workspace.Stations)
-            foreach (var ss in FMain.Stanice)
-                if (ss == s.Name)
-                    st.Add(s);
+            var st = _ctx.Workspace.Stations.Where(s => _grafikony.Any(g => g.GVD.ThisStation.Name == s.Name)).ToList();
             st.Sort();
             cbStationName.DataSource = st;
         }

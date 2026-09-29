@@ -16,6 +16,8 @@ namespace GVDEditor.Tests.Formats;
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
 public class ReportVariantOrderTests
 {
+    private readonly LoadWarnings _warnings = new();
+
     [TestMethod]
     public void VariantyHlasenia_Predvolene_PrvyJeDlhy()
     {
@@ -69,14 +71,14 @@ public class ReportVariantOrderTests
                 new(1, "Dlhé hlásenie")
             };
             CategoriFile.WriteLocal(dir.FullName, swapped, ReportType.GetDefaultValuesSK(), []);
-            LoadWarnings.Clear();
+            _warnings.Clear();
 
-            var (variants, types, _) = CategoriFile.ReadLocal(dir.FullName, []);
+            var (variants, types, _) = CategoriFile.ReadLocal(dir.FullName, [], _warnings);
 
             CollectionAssert.AreEqual(ReportVariant.GetDefaultValues(), variants);
             Assert.HasCount(5, types);
-            Assert.HasCount(1, LoadWarnings.Items);
-            LoadWarnings.Clear();
+            Assert.HasCount(1, _warnings.Items);
+            _warnings.Clear();
 
             CategoriFile.WriteLocal(dir.FullName, variants, types, []);
             var file = new TxtPropsAreasFields(Path.Combine(dir.FullName, GvdFileConsts.FILE_CATEGORI));

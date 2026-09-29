@@ -25,16 +25,22 @@ internal partial class FMain : Form, IAnalyzerHost
     /// <summary>
     /// Dostupné stanice.
     /// </summary>
-    public static BindingList<string> Stanice { get; } = new();
+    private readonly BindingList<string> _stations = new();
 
     /// <summary>
     /// Všetky dostupne priečinky s grafikonmi.
     /// </summary>
-    public static BindingList<GVDDirectory> ObdobiaList { get; } = new();
+    private readonly BindingList<GVDDirectory> _periods = new();
 
     private readonly List<GVDDirectory> _gvdDirs = new();
     private readonly CommandSet _commands = new();
-    private readonly InissProcessService _iniss;
+    private readonly IInissProcess _iniss;
+    private readonly IDialogService _dialogs;
+
+    /// <summary>
+    /// Varovania pri nacitani instalacie a grafikonu - ukazu sa naraz po nacitani grafikonu.
+    /// </summary>
+    private readonly LoadWarnings _loadWarnings = new();
     private GVDDirectory? _newDir;
     private StateDgmTemplate _newDirTemplate = StateDgmTemplate.Slovak;
     private bool _prechod;
@@ -52,15 +58,17 @@ internal partial class FMain : Form, IAnalyzerHost
     /// Vytvori nový formulár typu <see cref="FMain"/>.
     /// </summary>
     /// <param name="context">kontext editora</param>
-    public FMain(EditorContext context)
+    /// <param name="iniss">spustanie a ukoncovanie INISSu (vlastni ho <see cref="Program" />)</param>
+    /// <param name="dialogs">dialogy s hlasenim</param>
+    public FMain(EditorContext context, IInissProcess iniss, IDialogService dialogs)
     {
         _ctx = context;
+        _iniss = iniss;
+        _dialogs = dialogs;
         InitializeComponent();
 
-        // stav INISSu sa hlasi vo vlakne okna - sluzba vznika az po vytvoreni prvkov
-        _iniss = new InissProcessService();
-        _iniss.StateChanged += (_, _) => UpdateCommandStates();
-        FormClosed += (_, _) => _iniss.Dispose();
+        _iniss.StateChanged += Iniss_StateChanged;
+        FormClosed += (_, _) => _iniss.StateChanged -= Iniss_StateChanged;
 
         mainMenu.Renderer = new ToolStripProfessionalRenderer(new FormUtils.LightColorTable());
 
@@ -83,8 +91,8 @@ internal partial class FMain : Form, IAnalyzerHost
 
         SetRecentProjects();
 
-        if (tscbStanica.ComboBox != null) tscbStanica.ComboBox.DataSource = Stanice;
-        if (tscbObdobie.ComboBox != null) tscbObdobie.ComboBox.DataSource = ObdobiaList;
+        if (tscbStanica.ComboBox != null) tscbStanica.ComboBox.DataSource = _stations;
+        if (tscbObdobie.ComboBox != null) tscbObdobie.ComboBox.DataSource = _periods;
 
         this.ApplyThemeAndFonts();
         ApplyStatusBarColors();
@@ -268,7 +276,7 @@ internal partial class FMain : Form, IAnalyzerHost
                  e.RowIndex < _ctx.Document.Trains.Count)
             _ctx.Document.Trains[e.RowIndex].Operator = _ctx.Document.Operators[0];
         else
-            Utils.ShowError(Resources.FMain_dgvTrains_DataError_Tabuľka_obsahuje_nesprávny_údaj + e.Exception!.Message);
+            _dialogs.ShowError(Resources.FMain_dgvTrains_DataError_Tabuľka_obsahuje_nesprávny_údaj + e.Exception!.Message);
     }
 
     private void dgvTrains_KeyDown(object sender, KeyEventArgs e)
@@ -301,7 +309,7 @@ internal partial class FMain : Form, IAnalyzerHost
             }
             catch (Exception exception)
             {
-                Utils.ShowError(exception.Message);
+                _dialogs.ShowError(exception.Message);
                 e.Cancel = true;
                 return;
             }
@@ -315,7 +323,7 @@ internal partial class FMain : Form, IAnalyzerHost
                     dateRemThis.Overlap(thistrain.DateLimitText, train.DateLimitText))
                 {
                     var obmand = dateRemThis.TextAnd(train.DateLimitText, thistrain.DateLimitText);
-                    var result = Utils.ShowQuestion(string.Format(Resources.FEditTrain_DateRem_zasahuje_do_ineho_vlaku, train.Type,
+                    var result = _dialogs.ShowQuestion(string.Format(Resources.FEditTrain_DateRem_zasahuje_do_ineho_vlaku, train.Type,
                         train.Number, TrainName.ToDisplay(_ctx.Workspace.TrainNames, train.Name), obmand));
                     if (result == DialogResult.Yes)
                     {

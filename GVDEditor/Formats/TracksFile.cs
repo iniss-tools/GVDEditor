@@ -20,7 +20,8 @@ internal static class TracksFile
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="logicals">logicke tabule grafikonu - kolaje sa na ne odkazuju</param>
-    public static List<Track> Read(string path, IEnumerable<TableLogical> logicals)
+    /// <param name="warnings">zberac varovani pri nacitani</param>
+    public static List<Track> Read(string path, IEnumerable<TableLogical> logicals, LoadWarnings warnings)
     {
         var file = CombinePath(path, FILE_POZICE_A)!;
 
@@ -82,7 +83,7 @@ internal static class TracksFile
         tracks.RemoveAll(track => track.Key == Track.None.Key);
         tracks.Insert(0, Track.None);
 
-        ShareTrackPlatforms(tracks);
+        ShareTrackPlatforms(tracks, warnings);
 
         return tracks;
     }
@@ -94,7 +95,8 @@ internal static class TracksFile
     /// a do <see cref="LoadWarnings" /> sa zapise upozornenie. Nastupiste s klucom N je vzdy <see cref="Platform.None" />.
     /// </summary>
     /// <param name="tracks">nacitane kolaje</param>
-    private static void ShareTrackPlatforms(List<Track> tracks)
+    /// <param name="warnings">zberac varovani pri nacitani</param>
+    private static void ShareTrackPlatforms(List<Track> tracks, LoadWarnings warnings)
     {
         foreach (var group in tracks.GroupBy(track => track.Platform.Key, StringComparer.Ordinal))
         {
@@ -107,7 +109,7 @@ internal static class TracksFile
             {
                 var descriptions = variants.Select(variant =>
                     $"„{variant.Key.FullName}“/{variant.Key.SoundName} ({string.Join(", ", variant.Select(track => track.Key))})");
-                LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.TracksFile_PlatformDiffers, FILE_POZICE_A, group.Key, string.Join("; ", descriptions)) +
+                warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.TracksFile_PlatformDiffers, FILE_POZICE_A, group.Key, string.Join("; ", descriptions)) +
                                  string.Format(CultureInfo.CurrentCulture, Resources.TracksFile_PlatformShared, shared.FullName, shared.SoundName));
             }
 

@@ -21,7 +21,7 @@ internal static class TrTypesFile
     /// </summary>
     /// <returns>kategorie vlakov</returns>
     /// <param name="dataDir">priecinok DATA instalacie INISS</param>
-    public static List<TrainType> Read(string dataDir)
+    public static List<TrainType> Read(string dataDir, LoadWarnings warnings)
     {
         var fileTrTypes = CombinePath(dataDir, FILE_TRTYPES)!;
 
@@ -31,7 +31,7 @@ internal static class TrTypesFile
         // GVDEditor preto ponukne celu zabudovanu tabulku, aby sa taky grafikon dal otvorit a upravovat
         if (!File.Exists(fileTrTypes))
         {
-            LoadWarnings.Add(string.Format(CultureInfo.InvariantCulture, Properties.Resources.TxtParser_TrTypes_chyba_pouzite_zabudovane, fileTrTypes));
+            warnings.Add(string.Format(CultureInfo.InvariantCulture, Properties.Resources.TxtParser_TrTypes_chyba_pouzite_zabudovane, fileTrTypes));
             return TrainType.GetDefaultValues();
         }
 

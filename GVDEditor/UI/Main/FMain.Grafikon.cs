@@ -52,7 +52,7 @@ internal partial class FMain
 
         try
         {
-            _ctx.OpenWorkspace(WorkspaceRepository.Load(path));
+            _ctx.OpenWorkspace(WorkspaceRepository.Load(path, _loadWarnings));
         }
         catch (Exception e) when (CatchErrors)
         {
@@ -74,10 +74,19 @@ internal partial class FMain
         WithoutSelectionEvents(() =>
         {
             _gvdDirs.Clear();
-            ObdobiaList.Clear();
-            Stanice.Clear();
+            _periods.Clear();
+            _stations.Clear();
         });
         Text = Application.ProductName;
+    }
+
+    /// <summary>
+    /// Ukaze varovania z nacitania instalacie a grafikonu (ak nejake su) a zoznam vyprazdni.
+    /// </summary>
+    private void ShowLoadWarnings()
+    {
+        if (_loadWarnings.TakeSummary() is { } summary)
+            _dialogs.ShowWarning(summary);
     }
 
     private bool InitializeDataList()
@@ -101,15 +110,15 @@ internal partial class FMain
                 }
             }
 
-            Stanice.Clear();
-            foreach (var st in stanice) Stanice.Add(st);
+            _stations.Clear();
+            foreach (var st in stanice) _stations.Add(st);
 
-            ObdobiaList.Clear();
-            foreach (var obd in obdobiaList) ObdobiaList.Add(obd);
+            _periods.Clear();
+            foreach (var obd in obdobiaList) _periods.Add(obd);
         }
         catch (DirectoryNotFoundException)
         {
-            Utils.ShowError(Resources.FMain_Priečinok_neobsahuje_všetky_potrebné_dáta);
+            _dialogs.ShowError(Resources.FMain_Priečinok_neobsahuje_všetky_potrebné_dáta);
             return false;
         }
 
@@ -124,7 +133,7 @@ internal partial class FMain
 
         //vlozit stanice a obdobia do combo boxov v tool stripe
         _gvdDirs.Clear();
-        _gvdDirs.AddRange(ObdobiaList);
+        _gvdDirs.AddRange(_periods);
 
         //premenovat form podla aktualne otvoreneho priecinka
         Text = Application.ProductName + @" - " + _ctx.Workspace.INISSDir;
@@ -138,8 +147,8 @@ internal partial class FMain
         // vyber prveho obdobia nacita jeho grafikon
         tscbStanica.ComboBox.SelectedItem = null;
         tscbObdobie.ComboBox.SelectedItem = null;
-        tscbStanica.ComboBox.SelectedItem = Stanice.FirstOrDefault();
-        tscbObdobie.ComboBox.SelectedItem = ObdobiaList.FirstOrDefault();
+        tscbStanica.ComboBox.SelectedItem = _stations.FirstOrDefault();
+        tscbObdobie.ComboBox.SelectedItem = _periods.FirstOrDefault();
     }
 
     /// <summary>
@@ -200,9 +209,9 @@ internal partial class FMain
                 if (stanica == gvdDir.GVD.ThisStation.Name)
                     dirs.Add(gvdDir);
 
-            ObdobiaList.Clear();
+            _periods.Clear();
 
-            foreach (var dir in dirs) ObdobiaList.Add(dir);
+            foreach (var dir in dirs) _periods.Add(dir);
 
             if (dirs.Count != 0 && _newDir == null)
             {
@@ -267,8 +276,8 @@ internal partial class FMain
         // druhy blok by pri nacitani prepisal prvy a pri ulozeni by sa stary zapis znicil - radsej nenacitat nic
         if (blocks.Count > 0)
         {
-            Utils.ShowWarning(Resources.FMain_Grafikon_s_blokmi_nenacitany);
-            LoadWarnings.ShowSummary();
+            _dialogs.ShowWarning(Resources.FMain_Grafikon_s_blokmi_nenacitany);
+            ShowLoadWarnings();
             CloseGrafikon();
             UpdateCommandStates();
             return;
@@ -295,7 +304,7 @@ internal partial class FMain
         Exception? error = null;
         try
         {
-            document = await GrafikonService.LoadAsync(dir, _ctx.Workspace);
+            document = await GrafikonService.LoadAsync(dir, _ctx.Workspace, _loadWarnings);
         }
         catch (Exception e) when (CatchErrors)
         {
@@ -315,7 +324,7 @@ internal partial class FMain
 
         // preskocene riadky a chybajuce nahravky - pouzivatel by o nich mal vediet skor, nez grafikon ulozi
         // pri chybe nacitania by inak ostali v zozname a ukazali sa pri dalsom grafikone
-        LoadWarnings.ShowSummary();
+        ShowLoadWarnings();
 
         if (document != null)
         {
@@ -356,10 +365,10 @@ internal partial class FMain
         WithoutSelectionEvents(() =>
         {
             var station = dir.GVD.ThisStation.Name;
-            if (!ObdobiaList.Contains(dir))
+            if (!_periods.Contains(dir))
             {
-                ObdobiaList.Clear();
-                foreach (var gvdDir in GVDSelectionLists.PeriodsOf(_gvdDirs, station)) ObdobiaList.Add(gvdDir);
+                _periods.Clear();
+                foreach (var gvdDir in GVDSelectionLists.PeriodsOf(_gvdDirs, station)) _periods.Add(gvdDir);
             }
 
             tscbStanica.ComboBox.SelectedItem = station;
@@ -391,7 +400,7 @@ internal partial class FMain
         var question = dir.Dir.IsDataRoot
             ? string.Format(Resources.FMain_Grafikon_v_koreni_otazka, dir.Dir.FullPath, blocks.Count)
             : string.Format(Resources.FMain_Grafikon_obsahuje_bloky_otazka, dir.Dir.FullPath, blocks.Count);
-        if (Utils.ShowQuestion(question) != DialogResult.Yes)
+        if (_dialogs.ShowQuestion(question) != DialogResult.Yes)
             return false;
 
         using var form = new FBlockMigration(_ctx, dir.Dir.FullPath, blocks, dir.Dir.IsDataRoot);
@@ -406,11 +415,11 @@ internal partial class FMain
         catch (Exception e)
         {
             Log.Exception(e);
-            Utils.ShowError(string.Format(Resources.FMain_Rozdelenie_zlyhalo, e.Message));
+            _dialogs.ShowError(string.Format(Resources.FMain_Rozdelenie_zlyhalo, e.Message));
             return false;
         }
 
-        Utils.ShowInfo(string.Format(Resources.FMain_Grafikon_rozdeleny, string.Join(", ", newDirs.Select(d => d.DirName)), dir.Dir.FullPath));
+        _dialogs.ShowInfo(string.Format(Resources.FMain_Grafikon_rozdeleny, string.Join(", ", newDirs.Select(d => d.DirName)), dir.Dir.FullPath));
 
         _ctx.Workspace.GVDDirs = DirListFile.Read(_ctx.Workspace.DataDir);
         DataSaved = true;
@@ -420,18 +429,18 @@ internal partial class FMain
             return true;
 
         _gvdDirs.Clear();
-        _gvdDirs.AddRange(ObdobiaList);
+        _gvdDirs.AddRange(_periods);
 
         var first = _gvdDirs.FirstOrDefault(o => o.Dir.DirName.Equals(newDirs[0].DirName, StringComparison.OrdinalIgnoreCase));
 
         //zmena stanice by sama vybrala prve obdobie a spustila nacitanie - vybrat treba az prvy novy priecinok
         _removingGVD = true;
         tscbStanica.ComboBox.SelectedItem = null;
-        tscbStanica.ComboBox.SelectedItem = first?.GVD.ThisStation.Name ?? Stanice.FirstOrDefault();
+        tscbStanica.ComboBox.SelectedItem = first?.GVD.ThisStation.Name ?? _stations.FirstOrDefault();
         tscbObdobie.ComboBox.SelectedItem = null;
         _removingGVD = false;
 
-        tscbObdobie.ComboBox.SelectedItem = first ?? ObdobiaList.FirstOrDefault();
+        tscbObdobie.ComboBox.SelectedItem = first ?? _periods.FirstOrDefault();
         return true;
     }
 
@@ -446,7 +455,7 @@ internal partial class FMain
         if (!HasInstallation || DataSaved)
             return true;
 
-        switch (Utils.ShowQuestion(Resources.FMain_Save_Changes, MessageBoxButtons.YesNoCancel))
+        switch (_dialogs.ShowQuestion(Resources.FMain_Save_Changes, MessageBoxButtons.YesNoCancel))
         {
             case DialogResult.Yes:
                 return DoSave();
@@ -470,7 +479,7 @@ internal partial class FMain
         }
         catch (Exception e) when (CatchErrors)
         {
-            Utils.ShowError(_ctx.Config.DebugModeGUI == DebugMode.OnlyMessage ? e.Message : e.ToString());
+            _dialogs.ShowError(_ctx.Config.DebugModeGUI == DebugMode.OnlyMessage ? e.Message : e.ToString());
             return false;
         }
 
@@ -506,10 +515,10 @@ internal partial class FMain
         _gvdDirs.Add(dgyv);
         _newDir = dgyv;
 
-        if (!Stanice.Contains(gvd.ThisStation.Name)) Stanice.Add(gvd.ThisStation.Name);
+        if (!_stations.Contains(gvd.ThisStation.Name)) _stations.Add(gvd.ThisStation.Name);
 
         if ((string?)tscbStanica.ComboBox.SelectedItem == gvd.ThisStation.Name)
-            ObdobiaList.Add(dgyv);
+            _periods.Add(dgyv);
 
         UpdateCommandStates();
 
@@ -532,16 +541,16 @@ internal partial class FMain
         catch (Exception e)
         {
             Log.Exception(e);
-            Utils.ShowError(e.Message);
+            _dialogs.ShowError(e.Message);
             return;
         }
 
         _gvdDirs.Add(dgyv);
         var station = dgyv.GVD.ThisStation.Name;
-        if (!Stanice.Contains(station)) Stanice.Add(station);
-        if ((string?)tscbStanica.ComboBox.SelectedItem == station) ObdobiaList.Add(dgyv);
+        if (!_stations.Contains(station)) _stations.Add(station);
+        if ((string?)tscbStanica.ComboBox.SelectedItem == station) _periods.Add(dgyv);
 
-        Utils.ShowInfo(string.Format(Resources.FMain_Import_grafikonu_hotovy, dgyv.PeriodFormatted, dgyv.Dir.FullPath));
+        _dialogs.ShowInfo(string.Format(Resources.FMain_Import_grafikonu_hotovy, dgyv.PeriodFormatted, dgyv.Dir.FullPath));
 
         // prvy grafikon instalacie - hlavne okno ho rovno otvori a spristupni prikazy
         if (_gvdDirs.Count == 1 && InitializeDataList())
@@ -618,7 +627,7 @@ internal partial class FMain
         catch (Exception exception)
         {
             Log.Exception(exception);
-            Utils.ShowError(exception.Message);
+            _dialogs.ShowError(exception.Message);
             return;
         }
 
@@ -635,7 +644,7 @@ internal partial class FMain
 
         DataSaved = false;
 
-        Utils.ShowInfo(string.Format(Resources.FMain_Import_z_ELIS_dokončený, removed, imported.Count));
+        _dialogs.ShowInfo(string.Format(Resources.FMain_Import_z_ELIS_dokončený, removed, imported.Count));
     }
 
     /// <summary>

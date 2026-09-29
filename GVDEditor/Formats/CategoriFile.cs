@@ -23,7 +23,7 @@ internal static class CategoriFile
     /// <param name="jazykyFromBank">jazykove mutacie z banky zvukov</param>
     /// <param name="maxLangs">maximalny pocet jazykovych mutacii (podla zvukovej banky)</param>
     /// <returns>jazyky</returns>
-    public static List<FyzLanguage> ReadGlobal(string path, IList<FyzLanguage> jazykyFromBank, int maxLangs)
+    public static List<FyzLanguage> ReadGlobal(string path, IList<FyzLanguage> jazykyFromBank, int maxLangs, LoadWarnings warnings)
     {
         var file = CombinePath(path, FILE_CATEGORI)!;
 
@@ -34,7 +34,7 @@ internal static class CategoriFile
         var count = int.Parse(categoriF.Get("MAIN", "COUNT_LANGUAGES"), CultureInfo.InvariantCulture);
 
         if (count > maxLangs)
-            LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Categori_TooManyLanguages, file, count, maxLangs));
+            warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Categori_TooManyLanguages, file, count, maxLangs));
 
         for (var i = 1; i <= count; i++)
         {
@@ -51,7 +51,7 @@ internal static class CategoriFile
             if (!FyzLanguage.ContainsKey(jazykyFromBank, key))
             {
                 // INISS neznamy kluc preskoci s varovanim; rovnako sa spravame aj my
-                LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Categori_LanguageMissing, file, key));
+                warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Categori_LanguageMissing, file, key));
                 continue;
             }
 
@@ -96,7 +96,8 @@ internal static class CategoriFile
     /// </summary>
     /// <param name="path">cesta do priecinka s datami</param>
     /// <param name="globalLanguages">jazyky stanice (globalny Categori.txt) - nazov a hlavny jazyk sa beru z nich</param>
-    public static (List<ReportVariant>,List<ReportType>,List<FyzLanguage>) ReadLocal(string path, IEnumerable<FyzLanguage> globalLanguages)
+    public static (List<ReportVariant>,List<ReportType>,List<FyzLanguage>) ReadLocal(string path, IEnumerable<FyzLanguage> globalLanguages,
+        LoadWarnings warnings)
     {
         var file = CombinePath(path, FILE_CATEGORI)!;
 
@@ -114,7 +115,7 @@ internal static class CategoriFile
         }
 
         if (ReportVariant.FixSwappedDefaultNames(variants))
-            LoadWarnings.Add(string.Format(CultureInfo.InvariantCulture, Resources.TxtParser_Categori_prehodene_nazvy_variantov, file));
+            warnings.Add(string.Format(CultureInfo.InvariantCulture, Resources.TxtParser_Categori_prehodene_nazvy_variantov, file));
 
         var countT = int.Parse(categoriF.Get("MAIN", "COUNT_TYPE_BASIC_REPORT"), CultureInfo.InvariantCulture);
         for (var i = 1; i <= countT; i++)

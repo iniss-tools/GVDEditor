@@ -17,6 +17,8 @@ namespace GVDEditor.Tests.Domain.Editing;
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
 public class TrackEditingTests
 {
+    private readonly LoadWarnings _warnings = new();
+
     private static readonly Platform Platform1 = new("1", "Nástupište 1", "01");
     private static readonly Platform Platform2 = new("2", "Nástupište 2", "02");
 
@@ -78,7 +80,7 @@ public class TrackEditingTests
             var pozice = Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE);
             PoziceFile.Write(pozice, trains, []);
 
-            var readTracks = TracksFile.Read(dir.FullName, []);
+            var readTracks = TracksFile.Read(dir.FullName, [], _warnings);
             List<Train> readTrains = [new(), new(), new(), new()];
             PoziceFile.Read(pozice, readTrains, readTracks);
 
@@ -124,7 +126,7 @@ public class TrackEditingTests
             var line = File.ReadAllLines(Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE_A), Encodings.Win1250)[1];
             StringAssert.StartsWith(line, "\"6V\",\"6V\",\"Koľaj 6V\",\"Nástupište 1\",\"6\",\"1\",");
 
-            var read = TracksFile.Read(dir.FullName, [])[1];
+            var read = TracksFile.Read(dir.FullName, [], _warnings)[1];
             Assert.AreEqual("6V", read.Name);
             Assert.AreEqual("6", read.TrackName);
         }
@@ -170,13 +172,13 @@ public class TrackEditingTests
     /// <summary>
     /// Zapise Pozice_A.txt z riadkov, nacita ho a vrati kolaje (bez Track.None).
     /// </summary>
-    private static List<Track> ReadPoziceA(params string[] lines)
+    private List<Track> ReadPoziceA(params string[] lines)
     {
         var dir = Directory.CreateTempSubdirectory("gvdtracks");
         try
         {
             File.WriteAllLines(Path.Combine(dir.FullName, GvdFileConsts.FILE_POZICE_A), lines, Encodings.Win1250);
-            return TracksFile.Read(dir.FullName, []).Skip(1).ToList();
+            return TracksFile.Read(dir.FullName, [], _warnings).Skip(1).ToList();
         }
         finally
         {
@@ -203,7 +205,7 @@ public class TrackEditingTests
     [TestMethod]
     public void Nastupiste_RozneUdajeVRiadkochVyhraNajcastejsia()
     {
-        LoadWarnings.Clear();
+        _warnings.Clear();
         var tracks = ReadPoziceA(
             "\"1\",\"1\",\"koľaj 1\",\"nástupište \",\"1\",\"3\",\"0100\",\"03\",0",
             "\"3A\",\"3A\",\"koľaj 3A\",\"nástupište 3\",\"3A\",\"3\",\"0303\",\"03\",0",
@@ -211,21 +213,21 @@ public class TrackEditingTests
 
         Assert.IsTrue(tracks.All(track => ReferenceEquals(track.Platform, tracks[1].Platform)));
         Assert.AreEqual("nástupište 3", tracks[0].Platform.FullName);
-        Assert.HasCount(1, LoadWarnings.Items);
-        StringAssert.Contains(LoadWarnings.Items[0], "nástupište 3");
-        LoadWarnings.Clear();
+        Assert.HasCount(1, _warnings.Items);
+        StringAssert.Contains(_warnings.Items[0], "nástupište 3");
+        _warnings.Clear();
     }
 
     [TestMethod]
     public void Nastupiste_KlucNJeVzdyPlatformNone()
     {
-        LoadWarnings.Clear();
+        _warnings.Clear();
         var tracks = ReadPoziceA(
             "\"N\",\"-\",\"Neznámá\",\"Neznámé\",\"\",\"\",\"\",\"\",0",
             "\"BUS\",\"BUS\",\"koľaj BUS\",\"Nedefinované\",\"BUS\",\"N\",\"0\",\"\",0",
             "\"3V\",\"3V\",\"koľaj 3V\",\"Nedefinované\",\"3V\",\"N\",\"0301\",\"\",0");
 
         Assert.IsTrue(tracks.All(track => ReferenceEquals(track.Platform, Platform.None)));
-        Assert.HasCount(0, LoadWarnings.Items);
+        Assert.HasCount(0, _warnings.Items);
     }
 }

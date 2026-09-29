@@ -61,7 +61,8 @@ internal static class RoutesFile
     /// <param name="trains">vlaky grafikonu</param>
     /// <param name="gvd">hlavicka grafikonu (stanica grafikonu)</param>
     /// <param name="trainTypes">druhy vlakov</param>
-    public static void AssignRoutes(string file, List<Template> templates, List<Train> trains, GVDInfo gvd, IEnumerable<TrainType> trainTypes) =>
+    public static void AssignRoutes(string file, List<Template> templates, List<Train> trains, GVDInfo gvd, IEnumerable<TrainType> trainTypes,
+        LoadWarnings warnings) =>
         ReadRows(file, FILE_VLAKY, (row, rowNumber) =>
         {
             var id = int.Parse(row[0], CultureInfo.InvariantCulture);
@@ -79,14 +80,14 @@ internal static class RoutesFile
                 var type = trainTypes.FirstOrDefault(t => t.Key == typeKey);
                 if (type == null)
                 {
-                    LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Routes_UnknownType, FILE_VLAKY, rowNumber, typeKey, number));
+                    warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Routes_UnknownType, FILE_VLAKY, rowNumber, typeKey, number));
                     break;
                 }
 
                 var train = Train.GetTrain(trains, number, name, type, variant);
                 if (train == null)
                 {
-                    LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Routes_NoDefinition, FILE_VLAKY, rowNumber, number, type.Key, FILE_EXPORT3A));
+                    warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Routes_NoDefinition, FILE_VLAKY, rowNumber, number, type.Key, FILE_EXPORT3A));
                     break;
                 }
 

@@ -43,7 +43,7 @@ internal static class DoplnkyFile
                 if (sound == null)
                 {
                     // kod bez nahravky v banke: nezahadzujeme ho ticho, ale aspon zalogujeme
-                    LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Doplnky_NoSound, FILE_DOPLNKY, rowNumber, code, train.Number));
+                    context.Warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Doplnky_NoSound, FILE_DOPLNKY, rowNumber, code, train.Number));
                     continue;
                 }
 

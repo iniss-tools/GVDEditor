@@ -5,12 +5,58 @@ namespace GVDEditor.Integration;
 
 /// <summary>
 /// Proces INISS spusteny z GVDEditora: spustenie, riadne a nutene ukoncenie, restart. Zmenu stavu (spustenie,
-/// ukoncenie procesu, zaciatok a koniec restartu) hlasi udalost <see cref="StateChanged" /> vo vlakne, v ktorom
-/// sluzba vznikla (hlavne okno).
+/// ukoncenie procesu, zaciatok a koniec restartu) hlasi udalost <see cref="StateChanged" />.
 /// </summary>
-internal sealed class InissProcessService : IDisposable
+internal interface IInissProcess : IDisposable
 {
-    private readonly SynchronizationContext? _context = SynchronizationContext.Current;
+    /// <summary>
+    /// Cesta k naposledy spustenemu programu (pre restart).
+    /// </summary>
+    string? LastStartPath { get; }
+
+    /// <summary>
+    /// Prebieha restart.
+    /// </summary>
+    bool IsRestarting { get; }
+
+    /// <summary>
+    /// INISS bezi.
+    /// </summary>
+    bool IsRunning { get; }
+
+    /// <summary>
+    /// Zmena stavu - hlasi sa vo vlakne okna, ktore INISS spustilo.
+    /// </summary>
+    event EventHandler? StateChanged;
+
+    /// <summary>
+    /// Spusti program <paramref name="path" /> s nastaveniami spustania INISSu.
+    /// </summary>
+    void Start(string path, StartupINISS options);
+
+    /// <summary>
+    /// Nutene ukoncenie.
+    /// </summary>
+    void Kill();
+
+    /// <summary>
+    /// Riadne ukoncenie.
+    /// </summary>
+    void ShutDown();
+
+    /// <summary>
+    /// Restart; ak sa INISS riadne neukonci, opyta sa <paramref name="confirmKill" />, ci ho ukoncit nasilu.
+    /// </summary>
+    Task RestartAsync(StartupINISS options, Func<bool> confirmKill);
+}
+
+/// <summary>
+/// Proces INISS cez <see cref="Process" />. Zmenu stavu hlasi vo vlakne, z ktoreho bol INISS spusteny
+/// (hlavne okno) - sluzba moze vzniknut skor nez okno (composition root v <see cref="Program" />).
+/// </summary>
+internal sealed class InissProcessService : IInissProcess
+{
+    private SynchronizationContext? _context = SynchronizationContext.Current;
     private Process? _process;
 
     /// <summary>
@@ -58,6 +104,7 @@ internal sealed class InissProcessService : IDisposable
     /// administrator); sprava je urcena pouzivatelovi.</exception>
     public void Start(string path, StartupINISS options)
     {
+        _context = SynchronizationContext.Current ?? _context;
         var process = new Process { StartInfo = { FileName = path, UseShellExecute = true, Arguments = options.CmdArgs } };
         if (options.RunAsAdmin) process.StartInfo.Verb = "runas";
         process.EnableRaisingEvents = true;

@@ -1,3 +1,4 @@
+using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using ToolsCore.XML;
@@ -13,6 +14,11 @@ namespace GVDEditor.Formats;
 /// <param name="CommentLanguage">jazyk komentarov v hlavicke zapisanych suborov</param>
 internal sealed record GrafikonContext(InissWorkspace Workspace, GrafikonDocument Document, AppLanguage CommentLanguage)
 {
+    /// <summary>
+    /// Varovania pri citani (preskocene riadky, chybajuce nahravky...).
+    /// </summary>
+    public LoadWarnings Warnings { get; init; } = new();
+
     /// <summary>
     /// Stanica podla identifikatora - zo zvukovej banky alebo zo stanic grafikonu; neznama stanica ma za nazov
     /// svoj identifikator.

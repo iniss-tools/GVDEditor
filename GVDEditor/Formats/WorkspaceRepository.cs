@@ -1,4 +1,5 @@
 using ExControls;
+using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using ToolsCore.Iniss.Entities;
@@ -14,12 +15,14 @@ internal static class WorkspaceRepository
     /// <summary>
     /// Nacita instalaciu INISS z priecinka <paramref name="inissDir" />.
     /// </summary>
-    public static InissWorkspace Load(string inissDir)
+    /// <param name="inissDir">priecinok instalacie INISS</param>
+    /// <param name="warnings">sem sa pridaju varovania z globalnych suborov</param>
+    public static InissWorkspace Load(string inissDir, LoadWarnings warnings)
     {
         var dataDir = PathUtils.CombinePath(inissDir, GvdFileConsts.DIR_DATA)!;
         var rawBankDir = PathUtils.CombinePath(inissDir, GvdFileConsts.DIR_RAWBANK)!;
         var langs = RawBankParser.ReadFyzBankFile(rawBankDir, out var maxLangs);
-        var languages = new ExBindingList<FyzLanguage>(CategoriFile.ReadGlobal(dataDir, langs, maxLangs));
+        var languages = new ExBindingList<FyzLanguage>(CategoriFile.ReadGlobal(dataDir, langs, maxLangs, warnings));
         var sounds = RawBankParser.ReadFyzZvukFile(rawBankDir, FyzLanguage.GetBasicLanguage(languages)!);
         // zoznamy stanic v oknach su podla nazvu
         var stations = Station.GetStations(sounds);
@@ -44,7 +47,7 @@ internal static class WorkspaceRepository
 
         try
         {
-            workspace.TrainsTypes = new ExBindingList<TrainType>(TrTypesFile.Read(dataDir));
+            workspace.TrainsTypes = new ExBindingList<TrainType>(TrTypesFile.Read(dataDir, warnings));
         }
         catch (FileNotFoundException)
         {
@@ -52,7 +55,8 @@ internal static class WorkspaceRepository
 
         try
         {
-            workspace.Audios = new ExBindingList<Audio>(AudioFile.Read(dataDir, stations));
+            workspace.Audios = new ExBindingList<Audio>(AudioFile.Read(dataDir, stations, out var trailer));
+            workspace.AudioTrailer = trailer;
         }
         catch (FileNotFoundException)
         {

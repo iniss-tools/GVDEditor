@@ -1,4 +1,5 @@
-﻿using GVDEditor.Domain.Entities;
+﻿using GVDEditor.Domain.Analysis;
+using GVDEditor.Domain.Entities;
 using ToolsCore.Iniss.Tools;
 using static GVDEditor.Formats.FormatCommon;
 using static GVDEditor.Formats.GvdFileConsts;
@@ -25,7 +26,7 @@ internal static class TrainsFile
         Export3File.ReadNotes(FileIn(path, FILE_EXPORT3C), trains, dayMaps);
 
         var templates = RoutesFile.ReadTemplates(FileIn(path, FILE_VZORY), FileIn(path, FILE_STAHLASB), FileIn(path, FILE_STAHLASC), context);
-        RoutesFile.AssignRoutes(FileIn(path, FILE_VLAKY), templates, trains, InfoGvdFile.Read(path), context.Workspace.TrainsTypes);
+        RoutesFile.AssignRoutes(FileIn(path, FILE_VLAKY), templates, trains, InfoGvdFile.Read(path), context.Workspace.TrainsTypes, context.Warnings);
 
         PoziceFile.Read(FileIn(path, FILE_POZICE), trains, context.Document.Tracks);
         DoplnkyFile.Read(FileIn(path, FILE_DOPLNKY), trains, context);

@@ -72,6 +72,21 @@ public class TabTabSectionsTests
         Assert.IsEmpty(TabTabSections.FindUsage(TableTabTab.Empty, [catalog]));
     }
 
+    [TestMethod]
+    public void Odstranenie_PouzivanaSekcia_SpravaSoZoznamomPouziti()
+    {
+        var druh = new TableTabTab { Key = "Druh", Text = "R{81}=R" };
+        var iny = new TableTabTab { Key = "Iny", Text = "" };
+        var catalog = new TableCatalog { Key = "Kat", Name = "Odjezdy" };
+        catalog.Items.Add(Column("Druh", druh, TableTabTab.Empty));
+
+        var message = TabTabSections.RemoveBlockedMessage(druh, [catalog]);
+
+        Assert.IsNotNull(message);
+        StringAssert.Contains(message, "Odjezdy");
+        Assert.IsNull(TabTabSections.RemoveBlockedMessage(iny, [catalog]));
+    }
+
     // ---- formatovanie ----
 
     [TestMethod]

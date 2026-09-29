@@ -1,21 +1,21 @@
-﻿using ToolsCore.Iniss.Tools;
-using ToolsCore.Tools;
+using System.Globalization;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Domain.Analysis;
 
 /// <summary>
-/// Zbiera varovania, ktore vzniknu pri nacitani dat (preskocene riadky, chybajuce nahravky, neznamy druh vlaku...).
-/// Kazde varovanie sa zaroven zapise do logu; po nacitani grafikonu ich hlavne okno ukaze pouzivatelovi naraz.
+/// Varovania pri nacitani instalacie a grafikonu, ktore nezastavia nacitanie (preskoceny riadok, chybajuca
+/// nahravka...). Kazde nacitanie dostane zberac explicitne; zbiera sa aj z vlakna na pozadi. Varovanie sa aj zaloguje.
 /// </summary>
-internal static class LoadWarnings
+internal sealed class LoadWarnings
 {
-    private static readonly List<string> _items = new();
-    private static readonly object _locker = new();
+    private readonly List<string> _items = new();
+    private readonly object _locker = new();
 
     /// <summary>
-    /// Varovania od posledneho volania <see cref="Clear" />.
+    /// Zozbierane varovania (kopia).
     /// </summary>
-    public static IReadOnlyList<string> Items
+    public IReadOnlyList<string> Items
     {
         get
         {
@@ -25,10 +25,9 @@ internal static class LoadWarnings
     }
 
     /// <summary>
-    /// Prida varovanie a zapise ho do logu.
+    /// Prida varovanie a zaloguje ho.
     /// </summary>
-    /// <param name="message">Text varovania.</param>
-    public static void Add(string message)
+    public void Add(string message)
     {
         Log.Warning(message);
         lock (_locker)
@@ -36,42 +35,41 @@ internal static class LoadWarnings
     }
 
     /// <summary>
-    /// Vyprazdni zoznam - vola sa pred nacitanim dalsieho grafikonu.
+    /// Vyprazdni zoznam.
     /// </summary>
-    public static void Clear()
+    public void Clear()
     {
         lock (_locker)
             _items.Clear();
     }
 
     /// <summary>
-    /// Ak sa pri nacitani nieco preskocilo, ukaze suhrn (najviac <paramref name="maxLines" /> riadkov) a zoznam vyprazdni.
+    /// Suhrn varovani pre pouzivatela (najviac <paramref name="maxLines" /> riadkov) - zoznam sa pritom vyprazdni.
     /// </summary>
-    /// <param name="maxLines">Kolko varovani vypisat do okna; zvysok je v logu.</param>
-    public static void ShowSummary(int maxLines = 12)
+    /// <returns><see langword="null" />, ak ziadne varovanie nie je.</returns>
+    public string? TakeSummary(int maxLines = 12)
     {
         List<string> items;
         lock (_locker)
         {
             if (_items.Count == 0)
-                return;
+                return null;
 
             items = _items.ToList();
             _items.Clear();
         }
 
         var sb = new StringBuilder();
-        sb.AppendLine(string.Format(Properties.Resources.LoadWarnings_Header, items.Count));
+        sb.AppendLine(string.Format(CultureInfo.CurrentCulture, Properties.Resources.LoadWarnings_Header, items.Count));
         sb.AppendLine();
         foreach (var item in items.Take(maxLines))
             sb.AppendLine("• " + item);
 
         if (items.Count > maxLines)
-            sb.AppendLine(string.Format(Properties.Resources.LoadWarnings_More, items.Count - maxLines));
+            sb.AppendLine(string.Format(CultureInfo.CurrentCulture, Properties.Resources.LoadWarnings_More, items.Count - maxLines));
 
         sb.AppendLine();
         sb.Append(Properties.Resources.LoadWarnings_Footer);
-
-        Utils.ShowWarning(sb.ToString());
+        return sb.ToString();
     }
 }

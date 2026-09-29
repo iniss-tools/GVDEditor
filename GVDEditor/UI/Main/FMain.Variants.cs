@@ -147,7 +147,7 @@ internal partial class FMain
 
         var group = Variants.Of(train).Group.ToList();
         if (group.Count < 2 ||
-            Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Variant_UsporiadatOtazka, TrainRules.Label(train)))
+            _dialogs.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Variant_UsporiadatOtazka, TrainRules.Label(train)))
             != DialogResult.Yes)
             return;
 
@@ -157,7 +157,7 @@ internal partial class FMain
         }
         catch (DateLimit.ParseException exception)
         {
-            Utils.ShowError(exception.Message);
+            _dialogs.ShowError(exception.Message);
             return;
         }
 

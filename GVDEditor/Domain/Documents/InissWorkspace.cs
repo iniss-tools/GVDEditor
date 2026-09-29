@@ -27,6 +27,11 @@ internal sealed class InissWorkspace
     public ExBindingList<Audio> Audios { get; set; } = null!;
 
     /// <summary>
+    /// Riadky Audio.txt za okruhmi (od prveho riadka zacinajuceho '/') - zapisu sa spat bez zmeny.
+    /// </summary>
+    public List<string> AudioTrailer { get; set; } = [];
+
+    /// <summary>
     /// Zvuky hlavneho jazyka banky.
     /// </summary>
     public List<FyzSound> Sounds { get; set; } = null!;

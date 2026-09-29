@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using ExControls;
+using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
 using GVDEditor.Formats;
@@ -14,6 +15,8 @@ namespace GVDEditor.Tests.Domain.Rules;
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
 public class GrafikonLanguageRulesTests
 {
+    private readonly LoadWarnings _warnings = new();
+
     private FyzLanguage _sk = null!;
     private FyzLanguage _gb = null!;
     private FyzLanguage _de = null!;
@@ -106,7 +109,7 @@ public class GrafikonLanguageRulesTests
                 "[LANGUAGE_01]\r\nKEY=\"SK\"\r\nIS_BASIC=0\r\nNAME=\"SK\"\r\n\r\n" +
                 "[LANGUAGE_02]\r\nKEY=\"GB\"\r\nIS_BASIC=1\r\nNAME=\"EN\"\r\n");
 
-            var (_, _, languages) = CategoriFile.ReadLocal(dir, _global);
+            var (_, _, languages) = CategoriFile.ReadLocal(dir, _global, _warnings);
 
             CollectionAssert.AreEqual(new[] { _sk, _gb }, languages);
             Assert.AreEqual("Slovensky", _sk.Name);

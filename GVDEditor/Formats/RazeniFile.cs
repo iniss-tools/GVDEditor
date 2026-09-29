@@ -139,7 +139,7 @@ internal static class RazeniFile
                     if (zvuk == null)
                     {
                         // chybajuca nahravka nezhodi cely grafikon - INISS ju tiez len preskoci
-                        LoadWarnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Razeni_SoundMissing, FILE_RAZENI1, riadok, file));
+                        context.Warnings.Add(string.Format(CultureInfo.CurrentCulture, Resources.Razeni_SoundMissing, FILE_RAZENI1, riadok, file));
                         riadok++; // continue obchadza pocitadlo na konci cyklu - dalsie hlasenia by mali zle cislo riadka
                         continue;
                     }

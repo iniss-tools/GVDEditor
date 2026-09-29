@@ -88,15 +88,14 @@ internal static class TabTabSections
     }
 
     /// <summary>
-    /// Ak sa sekcia pouziva, zobrazi chybu so zoznamom pouziti a vrati <see langword="false"/>.
+    /// Preco sa sekcia neda odstranit - zoznam jej pouziti v katalogovych tabuliach.
     /// </summary>
-    public static bool CheckCanRemove(TableTabTab tab, IEnumerable<TableCatalog> catalogs)
+    /// <returns>sprava pre pouzivatela; <see langword="null" />, ak sa sekcia nepouziva</returns>
+    public static string? RemoveBlockedMessage(TableTabTab tab, IEnumerable<TableCatalog> catalogs)
     {
         var usage = FindUsage(tab, catalogs);
-        if (usage.Count == 0)
-            return true;
-
-        Utils.ShowError(Resources.SelectedItemRemoveCancel + Environment.NewLine + string.Join(Environment.NewLine, usage.Select(u => "– " + u)));
-        return false;
+        return usage.Count == 0
+            ? null
+            : Resources.SelectedItemRemoveCancel + Environment.NewLine + string.Join(Environment.NewLine, usage.Select(u => "– " + u));
     }
 }

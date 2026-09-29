@@ -33,7 +33,7 @@ internal partial class FMain
         Log.DoErrorLogs = _ctx.Config.LoggingError;
 
         if (old.Language != _ctx.Config.Language || old.ClassicGUI != _ctx.Config.ClassicGUI)
-            Utils.ShowInfo(Resources.FMain_Nastavenia_po_restarte);
+            _dialogs.ShowInfo(Resources.FMain_Nastavenia_po_restarte);
     }
 
     private void ShowInfoApp()
@@ -92,16 +92,16 @@ internal partial class FMain
         {
             if (newStation != oldStation)
             {
-                GVDSelectionLists.RenameStation(Stanice, _gvdDirs, oldStation, newStation);
+                GVDSelectionLists.RenameStation(_stations, _gvdDirs, oldStation, newStation);
 
-                ObdobiaList.Clear();
-                foreach (var gvdDir in GVDSelectionLists.PeriodsOf(_gvdDirs, newStation)) ObdobiaList.Add(gvdDir);
+                _periods.Clear();
+                foreach (var gvdDir in GVDSelectionLists.PeriodsOf(_gvdDirs, newStation)) _periods.Add(gvdDir);
 
                 tscbStanica.ComboBox.SelectedItem = newStation;
             }
             else
             {
-                ObdobiaList.ResetBindings();
+                _periods.ResetBindings();
             }
 
             tscbObdobie.ComboBox.SelectedItem = dir;
@@ -122,7 +122,7 @@ internal partial class FMain
         }
         catch (InvalidOperationException e)
         {
-            Utils.ShowError(e.Message);
+            _dialogs.ShowError(e.Message);
             return;
         }
         finally
@@ -161,7 +161,7 @@ internal partial class FMain
             }
             catch (Exception e)
             {
-                Utils.ShowError(e.Message);
+                _dialogs.ShowError(e.Message);
             }
         }
 
@@ -181,10 +181,10 @@ internal partial class FMain
         WithoutSelectionEvents(() =>
         {
             foreach (var gvd in removed)
-                ObdobiaList.Remove(gvd);
+                _periods.Remove(gvd);
 
-            foreach (var station in Stanice.Where(s => _gvdDirs.All(d => d.GVD.ThisStation.Name != s)).ToList())
-                Stanice.Remove(station);
+            foreach (var station in _stations.Where(s => _gvdDirs.All(d => d.GVD.ThisStation.Name != s)).ToList())
+                _stations.Remove(station);
 
             tscbStanica.ComboBox.SelectedItem = _previousSelectedGVD?.GVD.ThisStation.Name;
             tscbObdobie.ComboBox.SelectedItem = _previousSelectedGVD;

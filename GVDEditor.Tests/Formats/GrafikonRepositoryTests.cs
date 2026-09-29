@@ -15,6 +15,8 @@ namespace GVDEditor.Tests.Formats;
 [TestClass]
 public class GrafikonRepositoryTests
 {
+    private readonly LoadWarnings _warnings = new();
+
     private static readonly FyzLanguage Sk = new("SK", "Slovenčina", "SK\\") { IsBasic = true };
     private static readonly FyzLanguage Gb = new("GB", "Angličtina", "GB\\");
 
@@ -105,12 +107,12 @@ public class GrafikonRepositoryTests
     public void Grafikon_UlozenieANacitanie_ZachovaUdajeVlakov()
     {
         var workspace = Workspace();
-        LoadWarnings.Clear();
+        _warnings.Clear();
         var dir = Save("a", workspace, Document(workspace));
 
-        var loaded = GrafikonRepository.Load(dir, InfoGvdFile.Read(dir), workspace);
+        var loaded = GrafikonRepository.Load(dir, InfoGvdFile.Read(dir), workspace, _warnings);
 
-        Assert.IsEmpty(LoadWarnings.Items, string.Join("; ", LoadWarnings.Items));
+        Assert.IsEmpty(_warnings.Items, string.Join("; ", _warnings.Items));
         Assert.HasCount(2, loaded.Trains);
         var passing = loaded.Trains[0];
         Assert.AreEqual("601", passing.Number);
@@ -144,7 +146,7 @@ public class GrafikonRepositoryTests
     {
         var workspace = Workspace();
         var first = Save("a", workspace, Document(workspace));
-        var loaded = GrafikonRepository.Load(first, InfoGvdFile.Read(first), workspace);
+        var loaded = GrafikonRepository.Load(first, InfoGvdFile.Read(first), workspace, _warnings);
         var second = Save("b", workspace, loaded);
 
         foreach (var file in Directory.GetFiles(first))

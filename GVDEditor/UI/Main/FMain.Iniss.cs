@@ -6,6 +6,8 @@ namespace GVDEditor.UI.Main;
 
 internal partial class FMain
 {
+    private void Iniss_StateChanged(object? sender, EventArgs e) => UpdateCommandStates();
+
     /// <summary>
     /// Doplni do ponuk Spustit programy (*.exe) otvorenej instalacie.
     /// </summary>
@@ -56,7 +58,7 @@ internal partial class FMain
     {
         if (_iniss.IsRunning)
         {
-            if (Utils.ShowQuestion(Resources.FMain_InissStartItemOnClick) == DialogResult.Yes)
+            if (_dialogs.ShowQuestion(Resources.FMain_InissStartItemOnClick) == DialogResult.Yes)
                 KillINISS();
             return;
         }
@@ -77,7 +79,7 @@ internal partial class FMain
         }
         catch (InvalidOperationException e)
         {
-            Utils.ShowError(e.Message);
+            _dialogs.ShowError(e.Message);
         }
     }
 
@@ -90,7 +92,7 @@ internal partial class FMain
         if (DataSaved || !HasInstallation)
             return true;
 
-        return Utils.ShowQuestion(Resources.FMain_Ulozit_pred_spustenim_INISS, MessageBoxButtons.YesNoCancel) switch
+        return _dialogs.ShowQuestion(Resources.FMain_Ulozit_pred_spustenim_INISS, MessageBoxButtons.YesNoCancel) switch
         {
             DialogResult.Yes => DoSave(),
             DialogResult.No => true,
@@ -106,7 +108,7 @@ internal partial class FMain
         }
         catch (InvalidOperationException e)
         {
-            Utils.ShowError(e.Message);
+            _dialogs.ShowError(e.Message);
         }
     }
 
@@ -115,7 +117,7 @@ internal partial class FMain
     /// </summary>
     private void AskKillINISS()
     {
-        if (_iniss.IsRunning && Utils.ShowQuestion(Resources.FMain_Vynutit_ukoncenie_INISS) == DialogResult.Yes)
+        if (_iniss.IsRunning && _dialogs.ShowQuestion(Resources.FMain_Vynutit_ukoncenie_INISS) == DialogResult.Yes)
             KillINISS();
     }
 
@@ -131,11 +133,11 @@ internal partial class FMain
         try
         {
             await _iniss.RestartAsync(_ctx.Config.StartupINISSConfig,
-                () => Utils.ShowQuestion(Resources.FMain_INISS_sa_neukoncil) == DialogResult.Yes);
+                () => _dialogs.ShowQuestion(Resources.FMain_INISS_sa_neukoncil) == DialogResult.Yes);
         }
         catch (InvalidOperationException e)
         {
-            Utils.ShowError(e.Message);
+            _dialogs.ShowError(e.Message);
         }
     }
 }

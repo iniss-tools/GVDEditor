@@ -1,8 +1,9 @@
+using System.Globalization;
 using ExControls;
+using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
-using System.Globalization;
 using ToolsCore.Iniss.Entities;
 using ToolsCore.Iniss.Tools;
 
@@ -20,10 +21,10 @@ internal static class GrafikonRepository
     /// <param name="gvd">hlavicka grafikonu (Grafikon.txt)</param>
     /// <param name="workspace">instalacia INISS, do ktorej grafikon patri</param>
     /// <exception cref="FormatException">subor grafikonu je chybny</exception>
-    public static GrafikonDocument Load(string path, GVDInfo gvd, InissWorkspace workspace)
+    public static GrafikonDocument Load(string path, GVDInfo gvd, InissWorkspace workspace, LoadWarnings warnings)
     {
         var document = new GrafikonDocument();
-        var context = new GrafikonContext(workspace, document, default);
+        var context = new GrafikonContext(workspace, document, default) { Warnings = warnings };
 
         // poradie: vlastne stanice pred trasami vlakov, logicke tabule pred kolajami, katalogove pred textami
         document.CustomStations = new ExBindingList<Station>(CustomStationsFile.Read(path, gvd, workspace.Stations));
@@ -35,11 +36,11 @@ internal static class GrafikonRepository
         document.TableLogicals = new ExBindingList<TableLogical>(logicals);
 
         document.Operators = new ExBindingList<Operator>(OperatorsFile.Read(path)) { FireEventOnSort = true };
-        document.Tracks = new ExBindingList<Track>(TracksFile.Read(path, document.TableLogicals)) { FireEventOnSort = true };
+        document.Tracks = new ExBindingList<Track>(TracksFile.Read(path, document.TableLogicals, warnings)) { FireEventOnSort = true };
         // kolaje s rovnakym nastupistom zdielaju jednu instanciu (TracksFile.Read)
         document.Platforms = new ExBindingList<Platform>(document.Tracks.Select(track => track.Platform).Distinct().ToList());
 
-        (document.ReportVariants, document.ReportTypes, document.LocalLanguages) = CategoriFile.ReadLocal(path, workspace.Languages);
+        (document.ReportVariants, document.ReportTypes, document.LocalLanguages) = CategoriFile.ReadLocal(path, workspace.Languages, warnings);
 
         var allSounds = new List<FyzSound>();
         foreach (var language in document.LocalLanguages)

@@ -38,7 +38,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
         var main = Program.OpenMain(installDir);
         try
         {
-            var gvdDir = FMain.ObdobiaList.First();
+            var gvdDir = Periods(main).First();
             var trains = Program.Context.Document.Trains;
             var express = trains.First(t => t.Number == "521");
 
@@ -50,7 +50,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             }, dispose: false);
 
             // nový grafikon pre ďalšiu stanicu na obdobie 2026/2027
-            Shot("novy-grafikon/novy-grafikon", () => new FNewGrafikon(Program.Context, FMain.ObdobiaList.ToList()), form =>
+            Shot("novy-grafikon/novy-grafikon", () => new FNewGrafikon(Program.Context, Periods(main)), form =>
             {
                 foreach (var name in new[] { "dtpDataOd", "dtpGVDOd" })
                     ((ExControls.ExDateTimePicker)Field(form, name)).Value = new DateTime(2026, 12, 13);
@@ -110,7 +110,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                     Descendants(page).OfType<CheckedListBox>().Single().SetItemChecked(1, false);
                     Pump.Events();
                 });
-            Shot("globalne-nastavenia",() => new FGlobalSettings(Program.Context, FMain.ObdobiaList.ToList()), form => Resize(form, 900, 620), tabs: true);
+            Shot("globalne-nastavenia",() => new FGlobalSettings(Program.Context, Periods(main)), form => Resize(form, 900, 620), tabs: true);
 
             // chyba na stránke: dopravca bez názvu - okno sa zavrie bez OK, takže Zrušiť zmenu vráti
             var errorForm = new FLocalSettings(Program.Context, gvdDir, GVDEditor.UI.Settings.LocalSettingsPage.Dopravcovia);
@@ -580,6 +580,11 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
 
     private static void SelectListItem(Form form, string name, int index) =>
         ((ListBox)form.Controls.Find(name, true).Single()).SelectedIndex = index;
+
+    /// <summary>
+    /// Obdobia vybranej stanice v hlavnom okne (zoznam obdobi na paneli nastrojov).
+    /// </summary>
+    private static List<GVDDirectory> Periods(FMain main) => ((IEnumerable<GVDDirectory>)Field(main, "_periods")).ToList();
 
     private static object Field(Form form, string name) =>
         form.GetType().GetField(name, BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(form)!;

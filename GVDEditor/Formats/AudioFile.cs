@@ -19,12 +19,13 @@ internal static class AudioFile
     /// <returns>audio linky</returns>
     /// <param name="dataDir">priecinok DATA instalacie INISS</param>
     /// <param name="stations">stanice zvukovej banky</param>
-    public static List<Audio> Read(string dataDir, IEnumerable<Station> stations)
+    /// <param name="trailer">riadky od prveho riadka zacinajuceho '/' - INISS ich ako okruhy necita, zapisu sa spat bez zmeny</param>
+    public static List<Audio> Read(string dataDir, IEnumerable<Station> stations, out List<string> trailer)
     {
         var fileAudio = CombinePath(dataDir, FILE_AUDIO)!;
 
         var audios = new List<Audio>();
-        AudioTrailer = new List<string>();
+        trailer = [];
 
         using var audioF = new CsvFileReader(fileAudio);
         var riadok = 1;
@@ -36,9 +37,9 @@ internal static class AudioFile
             // INISS okruhy cita len po prvy riadok zacinajuci '/' - zvysok suboru sa nesmie stat okruhmi
             if (status == ReadStartChar.Slash)
             {
-                AudioTrailer.Add(row.LineText!);
+                trailer.Add(row.LineText!);
                 while (audioF.ReadLine() is { } line)
-                    AudioTrailer.Add(line);
+                    trailer.Add(line);
                 break;
             }
 
@@ -85,20 +86,16 @@ internal static class AudioFile
     /// </summary>
     /// <param name="audios">audio linky</param>
     /// <param name="dataDir">priecinok DATA instalacie INISS</param>
-    public static void Write(string dataDir, IEnumerable<Audio> audios)
+    /// <param name="trailer">riadky za okruhmi z <see cref="Read" /></param>
+    public static void Write(string dataDir, IEnumerable<Audio> audios, IEnumerable<string> trailer)
     {
-        Write(CombinePath(dataDir, FILE_AUDIO)!, audios, AudioTrailer);
+        WriteFile(CombinePath(dataDir, FILE_AUDIO)!, audios, trailer);
     }
-
-    /// <summary>
-    /// Riadky Audio.txt od prveho riadka zacinajuceho '/' - INISS ich ako okruhy necita, zapisu sa spat bez zmeny.
-    /// </summary>
-    public static List<string> AudioTrailer { get; private set; } = new();
 
     /// <summary>
     /// Zapise audio linky a za ne riadky <paramref name="trailer" /> do suboru <paramref name="fileAudio" />.
     /// </summary>
-    internal static void Write(string fileAudio, IEnumerable<Audio> audios, IEnumerable<string> trailer)
+    private static void WriteFile(string fileAudio, IEnumerable<Audio> audios, IEnumerable<string> trailer)
     {
         using var audioF = new CsvFileWriter(fileAudio);
         foreach (var a in audios)

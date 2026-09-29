@@ -17,6 +17,8 @@ namespace GVDEditor.Tests.Formats;
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
 public class SoundKeyTests
 {
+    private readonly LoadWarnings _warnings = new();
+
     private static readonly FyzLanguage Sk = new("SK", "Slovenčina", "SK\\") { IsBasic = true };
     private static readonly FyzLanguage Cz = new("CZ", "Čeština", "CZ\\");
 
@@ -46,10 +48,10 @@ public class SoundKeyTests
             new GrafikonDocument
             {
                 ReportTypes = [new ReportType("Prijizdi", "Přijíždí", "P")], ReportVariants = ReportVariant.GetDefaultValues(), LocalLanguages = [Sk, Cz]
-            }, AppLanguage.Slovak);
+            }, AppLanguage.Slovak) { Warnings = _warnings };
         try
         {
-            LoadWarnings.Clear();
+            _warnings.Clear();
             var file = Path.Combine(dir.FullName, GvdFileConsts.FILE_RAZENI1);
             // male pismena, dvojdielny zapis a odkaz podla nazvov (ten INISS nenajde)
             File.WriteAllLines(file, ["#721,P,,,", "sk/vlaknum/nmen", "CZ/POZ7/ZALOK", "Poz7/zalok", "SK/Číslovky/NFMEN"], Encodings.Win1250);
@@ -58,8 +60,8 @@ public class SoundKeyTests
 
             Assert.HasCount(1, radenia);
             CollectionAssert.AreEqual(new[] { Nmen, CzZalok, SkZalok }, radenia[0].Sounds);
-            Assert.HasCount(1, LoadWarnings.Items);
-            StringAssert.Contains(LoadWarnings.Items[0], "SK/Číslovky/NFMEN");
+            Assert.HasCount(1, _warnings.Items);
+            StringAssert.Contains(_warnings.Items[0], "SK/Číslovky/NFMEN");
 
             RazeniFile.Write(dir.FullName, radenia, [Sk, Cz], context.Document.ReportVariants);
             var refs = File.ReadAllLines(file, Encodings.Win1250).Where(line => !line.StartsWith('#') && !line.StartsWith(';')).ToList();
@@ -71,7 +73,7 @@ public class SoundKeyTests
         }
         finally
         {
-            LoadWarnings.Clear();
+            _warnings.Clear();
             dir.Delete(true);
         }
     }
