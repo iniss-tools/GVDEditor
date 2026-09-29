@@ -11,11 +11,11 @@ public record StartupINISS
     /// Ci ma program zapnut ako Administrator.
     /// </summary>
     [XmlElement("RunAsAdmin"), DefaultValue(false)]
-    public bool RunAsAdmin;
+    public bool RunAsAdmin { get; set; }
 
     /// <summary>
     /// Argumenty prikazoveho riadka ako vstup pre program.
     /// </summary>
     [XmlElement("CmdArgs"), DefaultValue("")]
-    public string CmdArgs = "";
+    public string CmdArgs { get; set; } = "";
 }

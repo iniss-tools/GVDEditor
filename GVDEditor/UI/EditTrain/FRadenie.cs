@@ -1,5 +1,4 @@
-﻿using GVDEditor.Domain.Entities;
-using GVDEditor.Domain.Rules;
+﻿using GVDEditor.Domain.Rules;
 using GVDEditor.Integration;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
@@ -18,7 +17,9 @@ public partial class FRadenie : Form
     /// <summary>
     /// Vybrane zvuky reprezentujúce radenie.
     /// </summary>
-    public List<FyzSound> SelSounds;
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public List<FyzSound> SelSounds { get; set; }
 
     /// <summary>
     /// Vytvori novy formulár typu <see cref="FRadenie"/>.

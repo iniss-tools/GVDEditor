@@ -1,5 +1,5 @@
 using ExControls;
-using GVDEditor.Config;
+using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.TabTabEditor;
@@ -715,66 +715,22 @@ public partial class FStateDgm : Form
 
     #region Pridanie, odstranenie, poradie
 
-    private void tsmiNewCategory_Click(object sender, EventArgs e)
-    {
-        var c = new StateDgmCategory { Key = UniqueKey(_d.Categories.Select(x => x.Key), "#Kategorie"), Name = Resources.FStateDgm_NovaKategoria };
-        c.States.Add(NewState(StateDgmKeys.START_STATE));
-        _d.Categories.Add(c);
-        MarkDirty();
-        BuildTree(c);
-    }
+    private void tsmiNewCategory_Click(object sender, EventArgs e) => Added(StateDgmEditing.AddCategory(_d, Resources.FStateDgm_NovaKategoria));
 
     private void tsmiNewState_Click(object sender, EventArgs e)
     {
-        if (_selCategory == null) return;
-        var s = NewState(UniqueKey(_selCategory.States.Select(x => x.Key), _selCategory.States.Count == 0 ? StateDgmKeys.START_STATE : "Stav"));
-        var at = _selState != null ? _selCategory.States.IndexOf(_selState) + 1 : _selCategory.States.Count;
-        _selCategory.States.Insert(at, s);
-        MarkDirty();
-        BuildTree(s);
+        if (_selCategory != null)
+            Added(StateDgmEditing.AddState(_selCategory, _selState));
     }
 
-    private static StateDgmState NewState(string key) => new()
-    {
-        Key = key,
-        DoState = new StateDgmTableSet { OnDepartureTable = true, ShowTrack = true, ShowPosition = true }
-    };
+    private void tsmiNewDesign_Click(object sender, EventArgs e) => Added(StateDgmEditing.AddDesign(_d));
 
-    private void tsmiNewDesign_Click(object sender, EventArgs e)
+    private void tsmiNewTimePoint_Click(object sender, EventArgs e) => Added(StateDgmEditing.AddTimePoint(_d, _selState));
+
+    private void Added(object item)
     {
-        var d = new StateDgmDesign { Key = UniqueKey(_d.Designs.Select(x => x.Key), "Vzhlad"), Bitmaps = "0-0,1,2" };
-        _d.Designs.Add(d);
         MarkDirty();
-        BuildTree(d);
-    }
-
-    private void tsmiNewTimePoint_Click(object sender, EventArgs e)
-    {
-        var t = new StateDgmTimePoint();
-        if (_selState != null)
-        {
-            t.Key = UniqueKey(_selState.TimePoints.Select(x => x.Key), StateDgmKeys.START_TIME);
-            _selState.TimePoints.Add(t);
-        }
-        else
-        {
-            t.Key = UniqueKey(_d.TimePoints.Select(x => x.Key), "#Bod");
-            t.TimePointKey1 = StateDgmKeys.BuiltInTimePoints[1];
-            t.TimePointKey2 = StateDgmKeys.BuiltInTimePoints[3];
-            _d.TimePoints.Add(t);
-        }
-
-        MarkDirty();
-        BuildTree(t);
-    }
-
-    private static string UniqueKey(IEnumerable<string> existing, string baseKey)
-    {
-        var set = existing.ToHashSet(StringComparer.Ordinal);
-        if (!set.Contains(baseKey)) return baseKey;
-        for (var i = 2;; i++)
-            if (!set.Contains(baseKey + i))
-                return baseKey + i;
+        BuildTree(item);
     }
 
     private void tsbDelete_Click(object sender, EventArgs e)
@@ -791,34 +747,13 @@ public partial class FStateDgm : Form
         if (name == null) return;
         if (Utils.ShowQuestion(string.Format(Resources.FStateDgm_OdstranitOtazka, name)) != DialogResult.Yes) return;
 
-        object? select = null;
-        switch (tag)
+        // po odstraneni sa vyberie vlastnik polozky, inak jej skupina v strome
+        var select = StateDgmEditing.Remove(_d, tag!) ?? tag switch
         {
-            case StateDgmCategory c:
-                _d.Categories.Remove(c);
-                select = TAG_CATEGORIES;
-                break;
-            case StateDgmState s:
-                var cat = _d.Categories.First(x => x.States.Contains(s));
-                cat.States.Remove(s);
-                select = cat;
-                break;
-            case StateDgmDesign d:
-                _d.Designs.Remove(d);
-                select = TAG_DESIGNS;
-                break;
-            case StateDgmTimePoint t:
-                if (!_d.TimePoints.Remove(t))
-                    foreach (var s in _d.Categories.SelectMany(x => x.States))
-                        if (s.TimePoints.Remove(t))
-                        {
-                            select = s;
-                            break;
-                        }
-
-                select ??= TAG_TIMEPOINTS;
-                break;
-        }
+            StateDgmCategory => TAG_CATEGORIES,
+            StateDgmDesign => TAG_DESIGNS,
+            _ => (object)TAG_TIMEPOINTS
+        };
 
         MarkDirty();
         BuildTree(select);
@@ -831,26 +766,9 @@ public partial class FStateDgm : Form
     private new void Move(int delta)
     {
         var tag = tvNav.SelectedNode?.Tag;
-        var moved = tag switch
-        {
-            StateDgmCategory c => MoveIn(_d.Categories, c, delta),
-            StateDgmState s => MoveIn(_d.Categories.First(x => x.States.Contains(s)).States, s, delta),
-            StateDgmDesign d => MoveIn(_d.Designs, d, delta),
-            StateDgmTimePoint t => _d.TimePoints.Contains(t) ? MoveIn(_d.TimePoints, t, delta) : _selState != null && MoveIn(_selState.TimePoints, t, delta),
-            _ => false
-        };
-        if (!moved) return;
+        if (tag == null || !StateDgmEditing.Move(_d, tag, delta, _selState)) return;
         MarkDirty();
         BuildTree(tag);
-    }
-
-    private static bool MoveIn<T>(List<T> list, T item, int delta)
-    {
-        var i = list.IndexOf(item);
-        var j = i + delta;
-        if (i < 0 || j < 0 || j >= list.Count) return false;
-        (list[i], list[j]) = (list[j], list[i]);
-        return true;
     }
 
     private void tsmiTpl_Click(object sender, EventArgs e)
@@ -934,12 +852,7 @@ public partial class FStateDgm : Form
     private void EditEvent(EventRow? row, string? nextState = null)
     {
         if (_selState == null || _selCategory == null) return;
-        var ev = row?.Event ?? new StateDgmEvent
-        {
-            Key = UniqueKey(_selState.Events.Select(x => x.Key), nextState != null ? "#GoTo" + nextState.TrimStart('#') : "#Akcia"),
-            Class = "SDEventUniPos",
-            NextState = nextState
-        };
+        var ev = row?.Event ?? StateDgmEditing.NewEvent(_selState, nextState);
         var control = row?.Control;
         var isNew = row?.Event == null;
 
@@ -1004,15 +917,7 @@ public partial class FStateDgm : Form
         if (other < 0 || other >= _eventRows.Count) return;
         var target = _eventRows[other];
 
-        // poradie tlacidiel urcuje CtrlID, poradie akcii ich zoznam
-        if (row.Control != null && target.Control != null)
-            (row.Control.CtrlId, target.Control.CtrlId) = (target.Control.CtrlId, row.Control.CtrlId);
-        if (row.Event != null && target.Event != null)
-        {
-            var i = _selState.Events.IndexOf(row.Event);
-            var j = _selState.Events.IndexOf(target.Event);
-            (_selState.Events[i], _selState.Events[j]) = (_selState.Events[j], _selState.Events[i]);
-        }
+        StateDgmEditing.SwapEvents(_selState, (row.Event, row.Control), (target.Event, target.Control));
 
         MarkDirty();
         FillStateGrids();
@@ -1028,16 +933,7 @@ public partial class FStateDgm : Form
     {
         if (_selState == null) return;
         var isNew = starter == null;
-        starter ??= new StateDgmStarter
-        {
-            Key = UniqueKey(_selState.Starters.Select(x => x.Key), "Starter"),
-            EventKey = _selState.Events.FirstOrDefault()?.Key ?? "",
-            TimePointKey = StateDgmKeys.BuiltInTimePoints[1],
-            TimeOffset = -360,
-            TimeOffsetStep = 600,
-            TimePointKeyLast = StateDgmKeys.BuiltInTimePoints[3],
-            TimeOffsetLast = -300
-        };
+        starter ??= StateDgmEditing.NewStarter(_selState);
         var editor = new SdStarterEditor();
         editor.Bind(starter, _selState.Events.Select(x => x.Key), _d.AllTimePointKeys.Concat(_selState.TimePoints.Select(t => t.Key)));
         using var dlg = new FStateDgmItem(Resources.FStateDgm_Starter_Titul, editor, 520, 520);

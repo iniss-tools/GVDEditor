@@ -20,7 +20,7 @@ public partial class FLocalSettings : Form
     /// <summary>
     /// Tento priečinok.
     /// </summary>
-    public readonly GVDDirectory ThisDir;
+    public GVDDirectory ThisDir { get; }
 
     /// <summary>
     /// Priečinok s písmami pre tabule.
@@ -283,7 +283,7 @@ public partial class FLocalSettings : Form
             _snapshot.Restore();
     }
 
-    private void EnableEvents(bool enable)
+    private static void EnableEvents(bool enable)
     {
         GlobData.CustomStations.FireEventOnSort = enable;
         GlobData.Platforms.FireEventOnSort = enable;

@@ -2,7 +2,6 @@
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
-using GVDEditor.UI.Settings;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Tests.Domain.Editing;

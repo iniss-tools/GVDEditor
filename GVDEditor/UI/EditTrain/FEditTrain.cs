@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using ExControls;
-using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
@@ -50,12 +49,16 @@ public partial class FEditTrain : Form
     /// <summary>
     /// Index riadku na pracovnej ploche.
     /// </summary>
-    public int Row;
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public int Row { get; set; }
 
     /// <summary>
     /// Vlak, s ktorym tento dialog pracuje.
     /// </summary>
-    public Train? ThisTrain;
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public Train? ThisTrain { get; set; }
 
     /// <summary>
     /// Vytvori novy formular typu <see cref="FEditTrain"/>.

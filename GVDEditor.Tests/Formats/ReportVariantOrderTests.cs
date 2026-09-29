@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;

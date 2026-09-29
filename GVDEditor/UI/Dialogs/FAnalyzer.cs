@@ -1,7 +1,6 @@
 ﻿using ExControls;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
-using ToolsCore;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Dialogs;

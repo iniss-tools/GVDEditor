@@ -1,15 +1,5 @@
-﻿using ExControls;
-using GVDEditor.Domain.Analysis;
-using GVDEditor.Domain.Calendar;
-using GVDEditor.Domain.Entities;
-using GVDEditor.Properties;
-using System.Collections;
-using System.Globalization;
-using System.Text.RegularExpressions;
-using ToolsCore.Entities;
-using ToolsCore.StateDgm;
+﻿using System.Globalization;
 using ToolsCore.Tools;
-using ToolsCore.XML;
 using static GVDEditor.Formats.GvdFileConsts;
 using static ToolsCore.Tools.Utils;
 using static GVDEditor.Formats.FormatCommon;

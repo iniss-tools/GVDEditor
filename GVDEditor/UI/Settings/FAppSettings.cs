@@ -1,8 +1,6 @@
 ﻿using GVDEditor.Config;
-using GVDEditor.Domain.Entities;
 using GVDEditor.Integration;
 using ExControls;
-using ToolsCore;
 using ToolsCore.Forms;
 using ToolsCore.Tools;
 using ToolsCore.XML;

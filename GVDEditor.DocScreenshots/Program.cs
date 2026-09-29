@@ -5,7 +5,6 @@ using GVDEditor.Domain.Calendar;
 using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.Main;
 using ToolsCore;
-using ToolsCore.Tools;
 
 namespace GVDEditor.DocScreenshots;
 

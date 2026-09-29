@@ -15,7 +15,9 @@ public partial class FTableColumnOrder : Form
 
     /// <summary>
     /// </summary>
-    public BindingList<TableViewTypeTab> ItemsTypeTabs;
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public BindingList<TableViewTypeTab> ItemsTypeTabs { get; set; }
 
     private TableViewMode selectedMode = null!;
 

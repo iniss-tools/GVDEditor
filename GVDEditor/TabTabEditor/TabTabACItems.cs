@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using AutocompleteMenuNS;
-using GVDEditor.Domain.Entities;
+
 // ReSharper disable StringLiteralTypo
 // ReSharper disable UnusedMember.Global
 // ReSharper disable InconsistentNaming

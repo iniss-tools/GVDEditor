@@ -1,4 +1,3 @@
-using GVDEditor.Config;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Integration;

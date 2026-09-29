@@ -1,8 +1,6 @@
 ﻿using System.Reflection;
 using System.Xml.Serialization;
 using ToolsCore.XML;
-using GVDEditor.Domain.Calendar;
-using GVDEditor.Domain.Entities;
 
 namespace GVDEditor.Config;
 

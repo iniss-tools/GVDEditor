@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Iniss.Elis;
@@ -11,7 +12,10 @@ namespace Iniss.Elis;
 /// TT.dll je 32-bitova, takze tento kod musi bezat v x86 procese.
 /// Retazce vracia ako <c>char*</c> v kodovani CP1250 a casto do zdielaneho
 /// statickeho buffera - vycitat treba hned po volani.
+/// Ostava [DllImport]: retazce do kniznice idu v ANSI kodovani systemu (TT.dll nimi otvara subory cez
+/// ANSI API), co [LibraryImport] bez vlastneho marshallera nevie.
 /// </remarks>
+[SuppressMessage("Globalization", "CA2101", Justification = "TT.dll prijima retazce v ANSI kodovani systemu.")]
 internal static class TTNative
 {
     private const string Dll = "TT.dll";
@@ -199,7 +203,8 @@ internal static class TTNative
             TTRegisterClient(client);
 
         if (!string.IsNullOrWhiteSpace(registrationNumber))
-            TTService(SvcAddRegistration, registrationNumber.Trim());
+            // vysledok registracie sa prejavi az pri nacitani dat (TTError po TTInit)
+            _ = TTService(SvcAddRegistration, registrationNumber.Trim());
     }
 
     /// <summary>Ci je <paramref name="error" /> jeden z chybovych kodov neuspesnej registracie.</summary>

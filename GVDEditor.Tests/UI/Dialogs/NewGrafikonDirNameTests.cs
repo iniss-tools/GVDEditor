@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using GVDEditor.Domain.Entities;
 using GVDEditor.UI.Dialogs;
 
 namespace GVDEditor.Tests.UI.Dialogs;

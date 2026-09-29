@@ -1,7 +1,6 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 using GVDEditor.Domain.Entities;
-using GVDEditor.TabTabEditor;
 
 namespace GVDEditor.Domain.Analysis;
 

@@ -1,12 +1,12 @@
 ﻿using AutocompleteMenuNS;
 using JetBrains.Annotations;
 using ExControls;
-using GVDEditor.Config;
 using GVDEditor.Domain.Entities;
 using GVDEditor.TabTabEditor;
 using GVDEditor.Properties;
 using ScintillaNET;
 using ToolsCore;
+using ToolsCore.Commands;
 using ToolsCore.Expressions;
 using ToolsCore.TabTab;
 using ToolsCore.Tools;
@@ -78,6 +78,7 @@ public partial class FTabTab : Form
 
         tsbUndo.Enabled = false;
         tsbRedo.Enabled = false;
+        CreateCommands();
 
         ShowNumberLines();
 
@@ -546,18 +547,9 @@ public partial class FTabTab : Form
     /// </summary>
     private void SaveSections()
     {
+        TabTabSections.Apply(documents.Select(doc => (doc.TabTab, doc.Key)).ToList(), GlobData.TabTabs);
         foreach (var doc in documents)
-        {
-            doc.TabTab.Key = doc.Key;
             doc.KeyUnsaved = false;
-        }
-
-        if (!documents.Select(doc => doc.TabTab).SequenceEqual(GlobData.TabTabs))
-        {
-            GlobData.TabTabs.Clear();
-            foreach (var doc in documents)
-                GlobData.TabTabs.Add(doc.TabTab);
-        }
 
         GlobData.TabTabs.ResetBindings();
     }
@@ -704,33 +696,28 @@ public partial class FTabTab : Form
         sc.FirstVisibleLine = firstLine;
     }
 
-    private void tsbSave_Click(object sender, EventArgs e) => DoSave();
+    /// <summary>
+    /// Prikazy panela nastrojov a kontextovych ponuk - tlacidlo a polozka ponuky robia to iste. Skratky su pevne
+    /// (zobrazene pri polozkach ponuky); Ctrl+S, Ctrl+F a Ctrl+H spracuva <see cref="FTabTab_KeyDown" />.
+    /// </summary>
+    private void CreateCommands()
+    {
+        var commands = new CommandSet();
+        void Add(string id, Shortcut shortcut, Action execute, params ToolStripItem[] items) =>
+            commands.Add(new CommandInfo(id, id, shortcut), execute).Bind(items);
 
-    private void tsbSaveAll_Click(object sender, EventArgs e) => DoSaveAll();
+        Add("Save", Shortcut.None, DoSave, tsbSave, tsmiSave);
+        Add("SaveAll", Shortcut.CtrlShiftS, DoSaveAll, tsbSaveAll, tsmiSaveAll);
+        Add("Undo", Shortcut.CtrlZ, DoUndo, tsbUndo, tsmiUndo);
+        Add("Redo", Shortcut.CtrlY, DoRedo, tsbRedo, tsmiRedo);
+        Add("AddTab", Shortcut.None, DoAddTab, tsbAddTab, tsmiAddTabTab);
+        Add("RemoveTab", Shortcut.None, DoRemoveTab, tsbRemoveTab, tsmiDeleteTabTab);
+        Add("RenameTab", Shortcut.F2, DoRenameTab, tsbRename, tsmiRenameTabTab);
+        Add("FindReplace", Shortcut.None, () => DoFindReplace(), tsbFindReplace);
+        Add("Reformat", Shortcut.None, DoReformat, tsbReformat);
+    }
 
     private void tsbStorno_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
-
-    private void tsbUndo_Click(object sender, EventArgs e) => DoUndo();
-
-    private void tsbRedo_Click(object sender, EventArgs e) => DoRedo();
-
-    private void tsbAddTab_Click(object sender, EventArgs e) => DoAddTab();
-
-    private void tsbRemoveTab_Click(object sender, EventArgs e) => DoRemoveTab();
-
-    private void tsbRename_Click(object sender, EventArgs e) => DoRenameTab();
-
-    private void tsbFindReplace_Click(object sender, EventArgs e) => DoFindReplace();
-
-    private void tsbReformat_Click(object sender, EventArgs e) => DoReformat();
-
-    private void tsmiSave_Click(object sender, EventArgs e) => DoSave();
-
-    private void tsmiSaveAll_Click(object sender, EventArgs e) => DoSaveAll();
-
-    private void tsmiUndo_Click(object sender, EventArgs e) => DoUndo();
-
-    private void tsmiRedo_Click(object sender, EventArgs e) => DoRedo();
 
     private void tsmiCut_Click(object sender, EventArgs e) => sc.Cut();
 
@@ -741,12 +728,6 @@ public partial class FTabTab : Form
     private void tsmiDelete_Click(object sender, EventArgs e) => sc.ReplaceSelection("");
 
     private void tsmiSelectAll_Click(object sender, EventArgs e) => sc.SelectAll();
-
-    private void tsmiAddTabTab_Click(object sender, EventArgs e) => DoAddTab();
-
-    private void tsmiDeleteTabTab_Click(object sender, EventArgs e) => DoRemoveTab();
-
-    private void tsmiRenameTabTab_Click(object sender, EventArgs e) => DoRenameTab();
 
     private void scText_StyleNeeded(object sender, StyleNeededEventArgs e)
     {

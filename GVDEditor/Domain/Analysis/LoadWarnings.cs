@@ -1,5 +1,4 @@
 ﻿using ToolsCore.Tools;
-using GVDEditor.Properties;
 
 namespace GVDEditor.Domain.Analysis;
 

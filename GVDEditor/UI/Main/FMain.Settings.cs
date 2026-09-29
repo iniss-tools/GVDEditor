@@ -7,7 +7,6 @@ using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.Settings;
 using GVDEditor.UI.StateDgm;
 using Microsoft.VisualBasic.FileIO;
-using ToolsCore;
 using ToolsCore.Forms;
 using ToolsCore.Tools;
 using ToolsCore.XML;

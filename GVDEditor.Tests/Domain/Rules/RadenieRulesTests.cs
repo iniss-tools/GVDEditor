@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
 using ToolsCore.Entities;

@@ -5,7 +5,6 @@ using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using ToolsCore.Entities;
-using ToolsCore.StateDgm;
 using ToolsCore.Tools;
 
 namespace GVDEditor.DocScreenshots;
@@ -89,7 +88,7 @@ internal static class DemoInstallation
         [
             "9900100,Dolné Mesto,Dolné Mesto,Hlásenie,",
             "TEST,Test,Test,TestHlas,"
-        ], ToolsCore.Tools.Encodings.Win1250);
+        ], Encodings.Win1250);
 
         var dir = new DirList { DirName = GvdDirName, FullPath = Path.Combine(dataDir, GvdDirName), TablePort = 2, ReportPort = 3 };
         DirListFile.Write(GlobData.DataDir, [dir]);
@@ -108,7 +107,7 @@ internal static class DemoInstallation
             IsRegionText = true,
             Category = 1,
             VLIndex = -1,
-            OnlyCityVLIndex = -999,
+            OnlyCityVLIndex = -999
         };
 
         Directory.CreateDirectory(dir.FullPath);
@@ -312,7 +311,7 @@ internal static class DemoInstallation
             DateLimitText = dateLimit,
             ZaciatokPlatnosti = ValidFrom,
             KoniecPlatnosti = ValidTo,
-            Languages = languages,
+            Languages = languages
         };
 
         // v kratšom hlásení len východisková a cieľová stanica, v dlhšom všetky

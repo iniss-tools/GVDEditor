@@ -547,7 +547,7 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
         Check();
     }
 
-    private IReadOnlyList<string> Usage(TableCatalog table)
+    private static IReadOnlyList<string> Usage(TableCatalog table)
     {
         var usage = GlobData.TablePhysicals.Where(p => ReferenceEquals(p.TableCatalog, table))
             .Select(p => string.Format(CultureInfo.CurrentCulture, Resources.TablesPage_Pouzitie_Fyzicka, p.Name))

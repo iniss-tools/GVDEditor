@@ -3,7 +3,6 @@ using ExControls;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
-using GVDEditor.TabTabEditor;
 using GVDEditor.UI.Controls;
 using GVDEditor.Properties;
 using ToolsCore.Tools;

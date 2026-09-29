@@ -4,7 +4,6 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
 using System.Globalization;
 using ToolsCore.Entities;
-using ToolsCore.StateDgm;
 using ToolsCore.Tools;
 
 namespace GVDEditor.Formats;

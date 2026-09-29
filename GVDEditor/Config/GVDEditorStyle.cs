@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 using ToolsCore.XML;
-using GVDEditor.Domain.Entities;
+
 // ReSharper disable UnusedMember.Global
 
 namespace GVDEditor.Config;

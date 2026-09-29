@@ -1,6 +1,5 @@
 using System.Globalization;
 using GVDEditor.Domain.Editing;
-using GVDEditor.Domain.Entities;
 
 namespace GVDEditor.UI.Controls;
 

@@ -33,7 +33,7 @@ internal static class GVDDirRename
 
         //Windows koncovú bodku z názvu priečinka ticho zahodí - priečinok na disku by sa potom
         //volal inak, než čo je zapísané v DIRLIST.txt, a grafikon by sa nabudúce nenašiel
-        if (dirname.EndsWith(".", StringComparison.Ordinal))
+        if (dirname.EndsWith('.'))
             return Resources.FLocalSettings_Názov_priečinka_grafikonu_nesmie_končiť_bodkou;
 
         //zmena len vo veľkosti písmen je na Windowse platné premenovanie,

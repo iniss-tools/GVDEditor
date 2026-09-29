@@ -3,7 +3,6 @@ using ExControls;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Snapshots;
 using GVDEditor.Properties;
-using ToolsCore.Entities;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Settings;
@@ -16,13 +15,13 @@ public partial class FGlobalSettings : Form
     /// <summary>
     /// Vsetky grafikony.
     /// </summary>
-    public readonly BindingList<GVDDirectory> Grafikony;
+    public BindingList<GVDDirectory> Grafikony { get; }
 
 
     /// <summary>
     /// Odstranene grafikony - ich priecinky sa po OK presunu do Kosa.
     /// </summary>
-    public readonly List<GVDDirectory> RemovedGVDs = new();
+    public List<GVDDirectory> RemovedGVDs { get; } = new();
 
 
     private readonly GVDDirectory? _openGrafikon;
@@ -187,7 +186,7 @@ public partial class FGlobalSettings : Form
         base.OnFormClosed(e);
     }
 
-    private void EnableEvents(bool enable)
+    private static void EnableEvents(bool enable)
     {
         GlobData.Audios.FireEventOnSort = enable;
         GlobData.TrainsTypes.FireEventOnSort = enable;

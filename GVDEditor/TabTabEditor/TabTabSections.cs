@@ -68,6 +68,25 @@ internal static class TabTabSections
     }
 
     /// <summary>
+    /// Prenesie sekcie z editora do grafikonu: nazvy, poradie, pridane a odstranene sekcie. Objekty sekcii ostavaju
+    /// tie iste, aby odkazy TAB1/TAB2 katalogovych tabul ostali platne; zoznam sa prepise, len ak sa zmenil.
+    /// </summary>
+    /// <param name="edited">sekcie v poradi editora s novym nazvom</param>
+    /// <param name="sections">sekcie grafikonu</param>
+    public static void Apply(IReadOnlyList<(TableTabTab Section, string Key)> edited, IList<TableTabTab> sections)
+    {
+        foreach (var (section, key) in edited)
+            section.Key = key;
+
+        if (edited.Select(e => e.Section).SequenceEqual(sections))
+            return;
+
+        sections.Clear();
+        foreach (var (section, _) in edited)
+            sections.Add(section);
+    }
+
+    /// <summary>
     /// Ak sa sekcia pouziva, zobrazi chybu so zoznamom pouziti a vrati <see langword="false"/>.
     /// </summary>
     public static bool CheckCanRemove(TableTabTab tab, IEnumerable<TableCatalog> catalogs)

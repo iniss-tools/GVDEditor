@@ -211,14 +211,14 @@ public partial class FImportData : Form
                     }
                     else if (selectedColumnTypes[j] == ImportTrainColumnType.Attributes)
                     {
-                        train.IsMedzistatny = data.Contains("M");
-                        train.IsMiestenkovy = data.Contains("R");
-                        train.IsMimoriadny = data.Contains("X");
-                        train.IsDialkovy = data.Contains("D");
-                        train.IsIbaLozkovy = data.Contains("L");
-                        train.IsNizkopodlazny = data.Contains("N");
-                        train.IsPrestupovy = data.Contains("P");
-                        train.IsPriznakO = data.Contains("O");
+                        train.IsMedzistatny = data.Contains('M');
+                        train.IsMiestenkovy = data.Contains('R');
+                        train.IsMimoriadny = data.Contains('X');
+                        train.IsDialkovy = data.Contains('D');
+                        train.IsIbaLozkovy = data.Contains('L');
+                        train.IsNizkopodlazny = data.Contains('N');
+                        train.IsPrestupovy = data.Contains('P');
+                        train.IsPriznakO = data.Contains('O');
                     }
                 }
 

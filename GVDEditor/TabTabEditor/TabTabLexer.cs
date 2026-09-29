@@ -1,5 +1,4 @@
 ﻿using ScintillaNET;
-using GVDEditor.Domain.Entities;
 
 namespace GVDEditor.TabTabEditor;
 

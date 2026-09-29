@@ -356,7 +356,7 @@ public partial class TrainTypesPage : UserControl, ISettingsPage
         BeginInvoke(RefreshRows);
     }
 
-    private void Changed(TrainType type)
+    private static void Changed(TrainType type)
     {
         var index = IndexOf(type);
         if (index >= 0)

@@ -1,4 +1,3 @@
-using System.Globalization;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Editing;
@@ -10,8 +9,6 @@ using GVDEditor.Services;
 using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.EditTrain;
 using GVDEditor.UI.Import;
-using ToolsCore;
-using ToolsCore.Forms;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 using AppRegistry = ToolsCore.Tools.AppRegistry;

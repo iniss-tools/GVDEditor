@@ -1,8 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using GVDEditor.Domain.Entities;
 using GVDEditor.TabTabEditor;
-using ToolsCore.TabTab;
-using ToolsCore.Tools;
 
 namespace GVDEditor.Tests.TabTabEditor;
 
@@ -115,5 +113,36 @@ public class TabTabSectionsTests
 
         Assert.AreEqual(expected, formatted);
         Assert.AreEqual(formatted, TabTabFormatter.Format(formatted));
+    }
+
+    // ---- ulozenie zoznamu sekcii ----
+
+    [TestMethod]
+    public void Apply_PremenovanieAPoradie_ZachovaObjektySekcii()
+    {
+        var smer = new TableTabTab { Key = "Smer", Text = "a" };
+        var druh = new TableTabTab { Key = "Druh", Text = "b" };
+        var nova = new TableTabTab { Key = "Nova", Text = "c" };
+        var sections = new List<TableTabTab> { smer, druh };
+        var catalogColumn = Column("C1", smer, druh);
+
+        TabTabSections.Apply([(druh, "Druh"), (smer, "Ciel"), (nova, "Nova")], sections);
+
+        CollectionAssert.AreEqual(new[] { druh, smer, nova }, sections);
+        Assert.AreEqual("Ciel", smer.Key);
+        Assert.AreSame(smer, catalogColumn.Tab1, "odkaz katalogovej tabule ostava na tu istu sekciu");
+    }
+
+    [TestMethod]
+    public void Apply_BezZmenyZoznamu_ZoznamSaNeprepise()
+    {
+        var smer = new TableTabTab { Key = "Smer", Text = "a" };
+        var sections = new ExControls.ExBindingList<TableTabTab> { smer };
+        var changes = 0;
+        sections.ListChanged += (_, _) => changes++;
+
+        TabTabSections.Apply([(smer, "Smer")], sections);
+
+        Assert.AreEqual(0, changes);
     }
 }

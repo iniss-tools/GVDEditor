@@ -1,6 +1,5 @@
 ﻿using System.Xml.Serialization;
 using ToolsCore.XML;
-using GVDEditor.Domain.Entities;
 
 namespace GVDEditor.Config;
 

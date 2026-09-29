@@ -1,13 +1,10 @@
-﻿using System.ComponentModel;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Reflection;
 using System.Text;
 using ExControls;
-using GVDEditor.Config;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
-using GVDEditor.Properties;
 using GVDEditor.UI.Controls;
 using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.EditTrain;

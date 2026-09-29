@@ -167,13 +167,11 @@ namespace GVDEditor.UI.TabTab
             // 
             resources.ApplyResources(this.tsmiAddTabTab, "tsmiAddTabTab");
             this.tsmiAddTabTab.Name = "tsmiAddTabTab";
-            this.tsmiAddTabTab.Click += new System.EventHandler(this.tsmiAddTabTab_Click);
             // 
             // tsmiDeleteTabTab
             // 
             resources.ApplyResources(this.tsmiDeleteTabTab, "tsmiDeleteTabTab");
             this.tsmiDeleteTabTab.Name = "tsmiDeleteTabTab";
-            this.tsmiDeleteTabTab.Click += new System.EventHandler(this.tsmiDeleteTabTab_Click);
             // 
             // toolStripSeparator8
             // 
@@ -184,7 +182,6 @@ namespace GVDEditor.UI.TabTab
             // 
             resources.ApplyResources(this.tsmiRenameTabTab, "tsmiRenameTabTab");
             this.tsmiRenameTabTab.Name = "tsmiRenameTabTab";
-            this.tsmiRenameTabTab.Click += new System.EventHandler(this.tsmiRenameTabTab_Click);
             // 
             // conMenuScText
             // 
@@ -210,13 +207,11 @@ namespace GVDEditor.UI.TabTab
             // 
             resources.ApplyResources(this.tsmiSave, "tsmiSave");
             this.tsmiSave.Name = "tsmiSave";
-            this.tsmiSave.Click += new System.EventHandler(this.tsmiSave_Click);
             // 
             // tsmiSaveAll
             // 
             resources.ApplyResources(this.tsmiSaveAll, "tsmiSaveAll");
             this.tsmiSaveAll.Name = "tsmiSaveAll";
-            this.tsmiSaveAll.Click += new System.EventHandler(this.tsmiSaveAll_Click);
             // 
             // toolStripSeparator7
             // 
@@ -227,13 +222,11 @@ namespace GVDEditor.UI.TabTab
             // 
             resources.ApplyResources(this.tsmiUndo, "tsmiUndo");
             this.tsmiUndo.Name = "tsmiUndo";
-            this.tsmiUndo.Click += new System.EventHandler(this.tsmiUndo_Click);
             // 
             // tsmiRedo
             // 
             resources.ApplyResources(this.tsmiRedo, "tsmiRedo");
             this.tsmiRedo.Name = "tsmiRedo";
-            this.tsmiRedo.Click += new System.EventHandler(this.tsmiRedo_Click);
             // 
             // toolStripSeparator5
             // 
@@ -303,7 +296,6 @@ namespace GVDEditor.UI.TabTab
             this.tsbSave.Image = global::ToolsCore.GlobalResources.save;
             resources.ApplyResources(this.tsbSave, "tsbSave");
             this.tsbSave.Name = "tsbSave";
-            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // tsbSaveAll
             // 
@@ -311,7 +303,6 @@ namespace GVDEditor.UI.TabTab
             this.tsbSaveAll.Image = global::ToolsCore.GlobalResources.save_all;
             resources.ApplyResources(this.tsbSaveAll, "tsbSaveAll");
             this.tsbSaveAll.Name = "tsbSaveAll";
-            this.tsbSaveAll.Click += new System.EventHandler(this.tsbSaveAll_Click);
             // 
             // tsbStorno
             // 
@@ -332,7 +323,6 @@ namespace GVDEditor.UI.TabTab
             this.tsbUndo.Image = global::ToolsCore.GlobalResources.undo;
             resources.ApplyResources(this.tsbUndo, "tsbUndo");
             this.tsbUndo.Name = "tsbUndo";
-            this.tsbUndo.Click += new System.EventHandler(this.tsbUndo_Click);
             // 
             // tsbRedo
             // 
@@ -340,7 +330,6 @@ namespace GVDEditor.UI.TabTab
             this.tsbRedo.Image = global::ToolsCore.GlobalResources.redo;
             resources.ApplyResources(this.tsbRedo, "tsbRedo");
             this.tsbRedo.Name = "tsbRedo";
-            this.tsbRedo.Click += new System.EventHandler(this.tsbRedo_Click);
             // 
             // toolStripSeparator2
             // 
@@ -353,7 +342,6 @@ namespace GVDEditor.UI.TabTab
             this.tsbAddTab.Image = global::ToolsCore.GlobalResources.add;
             resources.ApplyResources(this.tsbAddTab, "tsbAddTab");
             this.tsbAddTab.Name = "tsbAddTab";
-            this.tsbAddTab.Click += new System.EventHandler(this.tsbAddTab_Click);
             // 
             // tsbRemoveTab
             // 
@@ -361,7 +349,6 @@ namespace GVDEditor.UI.TabTab
             this.tsbRemoveTab.Image = global::ToolsCore.GlobalResources.delete;
             resources.ApplyResources(this.tsbRemoveTab, "tsbRemoveTab");
             this.tsbRemoveTab.Name = "tsbRemoveTab";
-            this.tsbRemoveTab.Click += new System.EventHandler(this.tsbRemoveTab_Click);
             // 
             // toolStripSeparator3
             // 
@@ -374,7 +361,6 @@ namespace GVDEditor.UI.TabTab
             this.tsbRename.Image = global::ToolsCore.GlobalResources.rename;
             resources.ApplyResources(this.tsbRename, "tsbRename");
             this.tsbRename.Name = "tsbRename";
-            this.tsbRename.Click += new System.EventHandler(this.tsbRename_Click);
             // 
             // tsbFindReplace
             // 
@@ -382,7 +368,6 @@ namespace GVDEditor.UI.TabTab
             this.tsbFindReplace.Image = global::ToolsCore.GlobalResources.find_replace;
             resources.ApplyResources(this.tsbFindReplace, "tsbFindReplace");
             this.tsbFindReplace.Name = "tsbFindReplace";
-            this.tsbFindReplace.Click += new System.EventHandler(this.tsbFindReplace_Click);
             // 
             // tsbReformat
             // 
@@ -390,7 +375,6 @@ namespace GVDEditor.UI.TabTab
             this.tsbReformat.Image = global::ToolsCore.GlobalResources.wrench;
             resources.ApplyResources(this.tsbReformat, "tsbReformat");
             this.tsbReformat.Name = "tsbReformat";
-            this.tsbReformat.Click += new System.EventHandler(this.tsbReformat_Click);
             // 
             // toolStripSeparator10
             // 

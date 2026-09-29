@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using GVDEditor.Formats;
-using GVDEditor.Properties;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Dialogs;

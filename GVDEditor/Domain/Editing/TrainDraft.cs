@@ -2,7 +2,6 @@ using System.Globalization;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
 using ToolsCore.Entities;
-using ToolsCore.Tools;
 
 namespace GVDEditor.Domain.Editing;
 

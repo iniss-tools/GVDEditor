@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
