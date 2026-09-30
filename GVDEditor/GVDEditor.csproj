@@ -26,7 +26,6 @@
 		<PackageReference Include="AutoCompleteMenu-ScintillaNET" Version="2.1.1" />
 		<!-- len pre Rider ([UsedImplicitly]); atributy su [Conditional], za behu sa DLL nepotrebuje -->
 		<PackageReference Include="JetBrains.Annotations" Version="2026.2.0" PrivateAssets="all" ExcludeAssets="runtime" />
-		<PackageReference Include="Microsoft.Office.Interop.Excel" Version="16.0.18925.20022" />
 		<PackageReference Include="NAudio" Version="2.2.1" />
 		<PackageReference Include="NAudio.WinForms" Version="2.2.1" />
 		<!-- Balík "Scintilla5.NET" (bez bodky) je silne pomenovaný s iným PublicKeyToken ako to, proti čomu je
