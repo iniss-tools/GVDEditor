@@ -1,0 +1,168 @@
+﻿using System.Globalization;
+using GVDEditor.Properties;
+using ToolsCore.Iniss.Tools;
+
+// ReSharper disable StringLiteralTypo
+
+namespace GVDEditor.Domain.Entities;
+
+/// <summary>
+/// Typ stĺpca pre imporovanie dát.
+/// </summary>
+public sealed class ImportTrainColumnType : Enumeration<ImportTrainColumnType>
+{
+    private ImportTrainColumnType(int id, string name) : base(id, name)
+    {
+    }
+
+    /// <summary>
+    /// Vráti všetky požadované typy stĺpcov pre importovanie dát.
+    /// </summary>
+    /// <returns>všetky požadované typy stĺpcov</returns>
+    public static List<ImportTrainColumnType> GetRequiredValues()
+    {
+        return
+        [
+            Number,
+            Type,
+            Prichod, Odchod,
+            Track
+        ];
+    }
+
+    /// <summary>
+    /// Konvertuje názov stĺpca na objekt.
+    /// </summary>
+    /// <param name="name">názov stĺpca ako reťazec</param>
+    /// <returns>objekt <see cref="ImportTrainColumnType" /> alebo <see cref="None" /> ak sa nenašla žiadna zhoda</returns>
+    public static ImportTrainColumnType ParseColumnName(string name)
+    {
+        if (string.IsNullOrEmpty(name)) return None;
+
+        // hlavicky sa porovnavaju bez ohladu na velkost pismen, pomlcky a diakritiku (Kolaj = Koľaj)
+        var normalized = string.Join(' ', name.ToLower(CultureInfo.CurrentCulture).Replace("-", " ").Split(' ', StringSplitOptions.RemoveEmptyEntries));
+        var type = ParseNormalized(normalized);
+        return type != None ? type : ParseNormalized(StringUtils.RemoveDiacritics(normalized));
+    }
+
+    private static ImportTrainColumnType ParseNormalized(string name)
+    {
+        return name switch
+        {
+            "číslo" => Number,
+            "cislo" => Number,
+            "number" => Number,
+            "typ" => Type,
+            "type" => Type,
+            "variant" => Variant,
+            "varianta" => Variant,
+            "názov" => Nazov,
+            "nazov" => Nazov,
+            "název" => Nazov,
+            "nazev" => Nazov,
+            "názov vlaku" => Nazov,
+            "nazov vlaku" => Nazov,
+            "název vlaku" => Nazov,
+            "nazev vlaku" => Nazov,
+            "name" => Nazov,
+            "príchod" => Prichod,
+            "příjezd" => Prichod,
+            "prichod" => Prichod,
+            "arrival" => Prichod,
+            "odchod" => Odchod,
+            "odjezd" => Odchod,
+            "departure" => Odchod,
+            "daterem" => DateRemText,
+            "datum. obm." => DateRemText,
+            "dátum. obm." => DateRemText,
+            "datum. om." => DateRemText,
+            "dátumové obmedzenie" => DateRemText,
+            "datumové omezení" => DateRemText,
+            "platnosť od" => PlatnostOd,
+            "platnost od" => PlatnostOd,
+            "platnosť do" => PlatnostDo,
+            "platnost do" => PlatnostDo,
+            "dopravca id" => DopravcaId,
+            "dopravce id" => DopravcaId,
+            "id dopravca" => DopravcaId,
+            "id dopravce" => DopravcaId,
+            "dopravca" => DopravcaName,
+            "dopravce" => DopravcaName,
+            "název dopravce" => DopravcaName,
+            "názov dopravcu" => DopravcaName,
+            "kolaj" => Track,
+            "kolej" => Track,
+            "track" => Track,
+            "jazyky" => Languages,
+            "languages" => Languages,
+            "jazyk" => Languages,
+            "language" => Languages,
+            "linka odchod" => LinkaOdchod,
+            "linka odjezd" => LinkaOdchod,
+            "linka príchod" => LinkaPrichod,
+            "linka příjezd" => LinkaPrichod,
+            "linka prijezd" => LinkaPrichod,
+            "linka prichod" => LinkaPrichod,
+            "routing" => Routing,
+            "smerovanie" => Routing,
+            "směrování" => Routing,
+            "smerovani" => Routing,
+            "trasy" => AllStationsID,
+            "všetky stanice" => AllStationsID,
+            "všechny stanice" => AllStationsID,
+            "vsetky stanice" => AllStationsID,
+            "vsechny stanice" => AllStationsID,
+            "all stations" => AllStationsID,
+            "stahlasb" => StationsShortID,
+            "stanice kratke hlasenie" => StationsShortID,
+            "stanice krátke hlásenie" => StationsShortID,
+            "stanice kratke hlaseni" => StationsShortID,
+            "stanice krátke hlášeni" => StationsShortID,
+            "stanice kratke" => StationsShortID,
+            "stanice krátke" => StationsShortID,
+            "stahlasc" => StationsLongID,
+            "stanice dlhe hlasenie" => StationsLongID,
+            "stanice dlhé hlásenie" => StationsLongID,
+            "stanice dlouhe hlaseni" => StationsLongID,
+            "stanice dlhé hlášeni" => StationsLongID,
+            "stanice dlhe" => StationsLongID,
+            "stanice dlhé" => StationsLongID,
+            "stanice dlouhe" => StationsLongID,
+            "stanice dlouhé" => StationsLongID,
+            "attributes" => Attributes,
+            "atributy" => Attributes,
+            "atribúty" => Attributes,
+            _ => None
+        };
+    }
+
+    #region VALUES
+
+    public static readonly ImportTrainColumnType None = new(0, "-");
+    public static readonly ImportTrainColumnType Number = new(1, Resources.ImportColumn_Number);
+    public static readonly ImportTrainColumnType Type = new(2, Resources.ImportColumn_Type);
+    public static readonly ImportTrainColumnType Variant = new(3, Resources.ImportColumn_Variant);
+    public static readonly ImportTrainColumnType Nazov = new(4, Resources.ImportColumn_Nazov);
+    public static readonly ImportTrainColumnType Prichod = new(5, Resources.ImportColumn_Prichod);
+    public static readonly ImportTrainColumnType Odchod = new(6, Resources.ImportColumn_Odchod);
+    public static readonly ImportTrainColumnType DateRemText = new(7, Resources.ImportColumn_DateRemText);
+    public static readonly ImportTrainColumnType DateRemBitArray = new(8, Resources.ImportColumn_DateRemBitArray);
+    public static readonly ImportTrainColumnType PlatnostOd = new(9, Resources.ImportColumn_PlatnostOd);
+    public static readonly ImportTrainColumnType PlatnostDo = new(10, Resources.ImportColumn_PlatnostDo);
+    public static readonly ImportTrainColumnType DopravcaId = new(11, Resources.ImportColumn_DopravcaId);
+    public static readonly ImportTrainColumnType DopravcaName = new(12, Resources.ImportColumn_DopravcaName);
+    public static readonly ImportTrainColumnType Track = new(13, Resources.ImportColumn_Track);
+    public static readonly ImportTrainColumnType Languages = new(14, Resources.ImportColumn_Languages);
+    public static readonly ImportTrainColumnType LinkaOdchod = new(15, Resources.ImportColumn_LinkaOdchod);
+    public static readonly ImportTrainColumnType LinkaPrichod = new(16, Resources.ImportColumn_LinkaPrichod);
+    public static readonly ImportTrainColumnType Routing = new(17, Resources.ImportColumn_Routing);
+    public static readonly ImportTrainColumnType AllStationsID = new(18, Resources.ImportColumn_AllStationsID);
+    public static readonly ImportTrainColumnType StationsShortID = new(19, Resources.ImportColumn_StationsShortID);
+    public static readonly ImportTrainColumnType StationsLongID = new(20, Resources.ImportColumn_StationsLongID);
+    public static readonly ImportTrainColumnType AllStationsName = new(21, Resources.ImportColumn_AllStationsName);
+    public static readonly ImportTrainColumnType StationsShortName = new(22, Resources.ImportColumn_StationsShortName);
+    public static readonly ImportTrainColumnType StationsLongName = new(23, Resources.ImportColumn_StationsLongName);
+    public static readonly ImportTrainColumnType Attributes = new(24, Resources.ImportColumn_Attributes);
+
+    #endregion
+}

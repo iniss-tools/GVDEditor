@@ -1,30 +1,37 @@
 using System.Globalization;
 using System.Reflection;
-using GVDEditor.Forms;
-using GVDEditor.Tools;
-using GVDEditor.XML;
-using ToolsCore;
+using GVDEditor.Config;
+using GVDEditor.Domain.Calendar;
+using GVDEditor.Integration;
+using GVDEditor.UI.Dialogs;
+using GVDEditor.UI.Main;
 using ToolsCore.Tools;
+using ToolsCore;
 
 namespace GVDEditor.DocScreenshots;
 
 /// <summary>
-///     Generátor snímok okien GVDEditora do dokumentácie.
+/// Generátor snímok okien GVDEditora do dokumentácie.
 /// </summary>
 /// <remarks>
-///     Použitie: <c>GVDEditor.DocScreenshots [--out priečinok] [--work priečinok] [--only text] [--theme light|dark|both]</c>.
-///     <list type="bullet">
-///         <item><c>--out</c> – kam uložiť PNG; predvolene <c>iniss-tools-docs\static\img\gvdeditor</c> vedľa repozitára.</item>
-///         <item><c>--work</c> – kde zostaviť ukážkovú inštaláciu INISS; predvolene <c>C:\INISS</c> (cesta je vidno
-///         v titulku a nastaveniach). Existujúci priečinok bez značky <c>.docshots</c> sa nezmaže.</item>
-///         <item><c>--timeout</c> – po koľkých minútach sa harness ukončí, ak ho zablokuje modálne okno (predvolene 5).</item>
-///         <item><c>--only</c> – len snímky, ktorých cesta obsahuje daný text (napr. <c>uprava-vlaku</c>).</item>
-///     </list>
-///     Program beží pod vlastným menom, takže konfiguráciu (<c>%LocalAppData%\GVDEditor.DocScreenshots</c>)
-///     aj register má oddelené od GVDEditora – pri každom spustení začína s predvolenými nastaveniami.
+/// Použitie: <c>GVDEditor.DocScreenshots [--out priečinok] [--work priečinok] [--only text] [--theme light|dark|both]</c>.
+/// <list type="bullet">
+/// <item><c>--out</c> – kam uložiť PNG; predvolene <c>iniss-tools-docs\static\img\gvdeditor</c> vedľa repozitára.</item>
+/// <item><c>--work</c> – kde zostaviť ukážkovú inštaláciu INISS; predvolene <c>C:\INISS</c> (cesta je vidno
+/// v titulku a nastaveniach). Existujúci priečinok bez značky <c>.docshots</c> sa nezmaže.</item>
+/// <item><c>--timeout</c> – po koľkých minútach sa harness ukončí, ak ho zablokuje modálne okno (predvolene 5).</item>
+/// <item><c>--only</c> – len snímky, ktorých cesta obsahuje daný text (napr. <c>uprava-vlaku</c>).</item>
+/// </list>
+/// Program beží pod vlastným menom, takže konfiguráciu (<c>%LocalAppData%\GVDEditor.DocScreenshots</c>)
+/// aj register má oddelené od GVDEditora – pri každom spustení začína s predvolenými nastaveniami.
 /// </remarks>
 internal static class Program
 {
+    /// <summary>
+    /// Kontext editora harnessu - ukážková inštalácia a otvorený grafikon (v programe ho vytvára GVDEditor.Program).
+    /// </summary>
+    public static EditorContext Context { get; private set; } = null!;
+
     private const BindingFlags Any = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
 
     [STAThread]
@@ -75,14 +82,14 @@ internal static class Program
     }
 
     /// <summary>
-    ///     Rovnaká inicializácia ako GVDEditor.Program.Main, s čistou konfiguráciou a slovenčinou.
+    /// Rovnaká inicializácia ako GVDEditor.Program.Main, s čistou konfiguráciou a slovenčinou.
     /// </summary>
     private static void InitApp()
     {
         if (Directory.Exists(AppPaths.DataDir))
             Directory.Delete(AppPaths.DataDir, true);
 
-        AppInit.Initialization(out GlobData.Config, out GlobData.Styles, out GlobData.UsingStyle);
+        Context = new EditorContext(AppInit.Initialization<GVDEditorConfig, GVDEditorStyle>());
 
         // harness nebezi v Application.Run: modalne okno (ShowDialog) by pri skonceni svojej slucky odinstalovalo
         // synchronizacny kontext WinForms a BackgroundWorker spusteny potom by volal ProgressChanged/RunWorkerCompleted
@@ -103,18 +110,16 @@ internal static class Program
     private static void SetTheme(string theme)
     {
         var style = theme == "dark" ? GVDEditorStyle.DefaultDarkStyle : GVDEditorStyle.DefaultLightStyle;
-        GlobData.UsingStyle = style;
-        GlobSettings.UsingStyle = style;
-        AppInit.MsgBoxStyleInit(style, GlobData.Config);
+        Context.Session.UsingStyle = style;
+        AppInit.MsgBoxStyleInit(style, Context.Config);
     }
 
     /// <summary>
-    ///     Otvorí hlavné okno s ukážkovou inštaláciou rovnako ako Súbor → Nedávne.
+    /// Otvorí hlavné okno s ukážkovou inštaláciou rovnako ako Súbor → Nedávne.
     /// </summary>
     public static FMain OpenMain(string installDir)
     {
-        var main = new FMain();
-        typeof(GVDEditor.Program).GetProperty(nameof(GVDEditor.Program.MainForm), Any)!.SetValue(null, main);
+        var main = new FMain(Context, new InissProcessService(), new DialogService());
 
         // FMain_Load by argumenty harnessu (--out …) bral ako cestu k projektu a registroval jump list
         main.Load -= (EventHandler)Delegate.CreateDelegate(typeof(EventHandler), main, "FMain_Load");
@@ -124,7 +129,7 @@ internal static class Program
         Pump.Events();
 
         typeof(FMain).GetMethod("OpenRecentProject", Any)!.Invoke(main, [installDir]);
-        if (!Pump.Until(() => GlobData.Trains.Count > 0 && Application.OpenForms.OfType<FWait>().All(f => !f.Visible)))
+        if (!Pump.Until(() => Context.Document.Trains.Count > 0 && Application.OpenForms.OfType<FWait>().All(f => !f.Visible)))
             throw new TimeoutException("Grafikon sa nenačítal.");
 
         return main;

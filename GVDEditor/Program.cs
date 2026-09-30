@@ -1,46 +1,30 @@
-﻿using GVDEditor.Forms;
-using GVDEditor.Tools;
-using ToolsCore;
-using ToolsCore.XML;
+using GVDEditor.Config;
+using GVDEditor.Domain.Calendar;
+using GVDEditor.Integration;
+using GVDEditor.UI.Main;
 using ToolsCore.Tools;
-using ToolsCore.Forms;
+using ToolsCore.XML;
+using ToolsCore;
 
 namespace GVDEditor;
 
 internal static class Program
 {
-    public static FMain MainForm { get; private set; } = null!;
-
     /// <summary>
-    ///     The main entry point for the application.
+    /// The main entry point for the application.
     /// </summary>
     [STAThread]
     private static void Main()
     {
-        GlobSettings.LinkUpdater = "http://iniss.6f.sk/gvdeditor-updater/update.txt";
-        AppInit.Initialization(out GlobData.Config, out GlobData.Styles, out GlobData.UsingStyle);
-        
-        DateLimit.Loc = GlobData.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
+        // composition root (skladanie bez kontajnera): nastavenia programu, kontext editora a sluzby hlavneho okna;
+        // okna a stranky ich dostavaju explicitne - ziadny staticky pristup k datam
+        var context = new EditorContext(AppInit.Initialization<GVDEditorConfig, GVDEditorStyle>());
+        var dialogs = new DialogService();
+        using var iniss = new InissProcessService();
 
-        MainForm = new FMain();
+        // jazyk datumovych obmedzeni je okolite nastavenie (ako kultura) - meni sa len tu a po zmene nastaveni
+        DateLimit.Loc = context.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
 
-        if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
-        {
-            try
-            {
-                Application.Run(MainForm);
-            }
-            catch (Exception exception)
-            {
-                Log.Exception(exception);
-                FError.ShowError(GlobData.Config.DebugModeGUI == DebugMode.OnlyMessage ? exception.Message : exception.ToString());
-            }
-        }
-        else
-        {
-            Application.Run(MainForm);
-        }
-
-        Log.Info("Program sa ukončuje\r\n");
+        AppInit.Run(context.Config, () => new FMain(context, iniss, dialogs));
     }
 }

@@ -1,0 +1,56 @@
+using System.Diagnostics.CodeAnalysis;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Formats;
+using ToolsCore.Iniss.Tools;
+
+namespace GVDEditor.Tests.Formats;
+
+/// <summary>
+/// Audio.txt (Globalne nastavenia → Audio): testovaci okruh TEST a riadky za prvym '/'.
+/// </summary>
+[TestClass]
+[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
+public class AudioFileTests
+{
+    private string _dir = null!;
+    private static readonly List<Station> Stations = [new Station("9900100", "Dolné Mesto")];
+
+    [TestInitialize]
+    public void Init()
+    {
+        _dir = Path.Combine(Path.GetTempPath(), "AudioFileTests_" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(_dir);
+    }
+
+    [TestCleanup]
+    public void Cleanup()
+    {
+        Directory.Delete(_dir, true);
+    }
+
+    private string File => Path.Combine(_dir, GvdFileConsts.FileAudio);
+
+    [TestMethod]
+    public void Audio_TestARiadkyZaLomkou_PrezijuNacitanieAZapis()
+    {
+        System.IO.File.WriteAllLines(File,
+        [
+            "9900100,Dolné Mesto,Dolné Mesto,Hlásenie,",
+            "TEST,Test,Test,TestHlas,",
+            "/koniec okruhov",
+            "9900200,Stará linka,STARA,Stara,"
+        ], Encodings.Win1250);
+
+        var audios = AudioFile.Read(_dir, Stations, out var trailer);
+
+        CollectionAssert.AreEqual(new[] { "9900100", "TEST" }, audios.Select(a => a.Station.ID).ToArray());
+
+        AudioFile.Write(_dir, audios, trailer);
+        var lines = System.IO.File.ReadAllLines(File, Encodings.Win1250);
+
+        StringAssert.StartsWith(lines[1], "TEST,Test,Test,TestHlas", lines[1]);
+        Assert.AreEqual("/koniec okruhov", lines[2]);
+        Assert.AreEqual("9900200,Stará linka,STARA,Stara,", lines[3]);
+        Assert.AreEqual(2, AudioFile.Read(_dir, Stations, out _).Count);
+    }
+}

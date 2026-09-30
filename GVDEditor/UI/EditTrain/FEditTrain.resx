@@ -1,0 +1,667 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bSave.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="bSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 31</value>
+  </data>
+  <data name="bSave.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="bSave.Text" xml:space="preserve">
+    <value>Upraviť</value>
+  </data>
+  <data name="&gt;&gt;bSave.Name" xml:space="preserve">
+    <value>bSave</value>
+  </data>
+  <data name="&gt;&gt;bSave.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bSave.Parent" xml:space="preserve">
+    <value>tlpBottom</value>
+  </data>
+  <data name="&gt;&gt;bSave.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="bZrusit.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bZrusit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bZrusit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <data name="bZrusit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 31</value>
+  </data>
+  <data name="bZrusit.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="bZrusit.Text" xml:space="preserve">
+    <value>Zrušiť</value>
+  </data>
+  <data name="&gt;&gt;bZrusit.Name" xml:space="preserve">
+    <value>bZrusit</value>
+  </data>
+  <data name="&gt;&gt;bZrusit.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bZrusit.Parent" xml:space="preserve">
+    <value>tlpBottom</value>
+  </data>
+  <data name="&gt;&gt;bZrusit.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pDodatky.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="pDodatky.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pDodatky.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 429</value>
+  </data>
+  <data name="pDodatky.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="pDodatky.NodeText" xml:space="preserve">
+    <value>Dodatky</value>
+  </data>
+  <data name="&gt;&gt;pDodatky.Name" xml:space="preserve">
+    <value>pDodatky</value>
+  </data>
+  <data name="&gt;&gt;pDodatky.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pDodatky.Parent" xml:space="preserve">
+    <value>optionsView</value>
+  </data>
+  <data name="&gt;&gt;pDodatky.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="pRadenie.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="pRadenie.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pRadenie.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 429</value>
+  </data>
+  <data name="pRadenie.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="pRadenie.NodeText" xml:space="preserve">
+    <value>Radenie</value>
+  </data>
+  <data name="&gt;&gt;pRadenie.Name" xml:space="preserve">
+    <value>pRadenie</value>
+  </data>
+  <data name="&gt;&gt;pRadenie.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pRadenie.Parent" xml:space="preserve">
+    <value>optionsView</value>
+  </data>
+  <data name="&gt;&gt;pRadenie.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>920, 620</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Upraviť vlak</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FEditTrain</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bSave.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>80, 31</value>
+  </data>
+  <data name="bZrusit.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>80, 31</value>
+  </data>
+  <data name="pVlak.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="pVlak.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pVlak.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 429</value>
+  </data>
+  <data name="pVlak.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pVlak.Name" xml:space="preserve">
+    <value>pVlak</value>
+  </data>
+  <data name="&gt;&gt;pVlak.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pVlak.Parent" xml:space="preserve">
+    <value>optionsView</value>
+  </data>
+  <data name="&gt;&gt;pVlak.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pVlak.NodeText" xml:space="preserve">
+    <value>Vlak</value>
+  </data>
+  <data name="pPlatnost.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="pPlatnost.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pPlatnost.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 429</value>
+  </data>
+  <data name="pPlatnost.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;pPlatnost.Name" xml:space="preserve">
+    <value>pPlatnost</value>
+  </data>
+  <data name="&gt;&gt;pPlatnost.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pPlatnost.Parent" xml:space="preserve">
+    <value>optionsView</value>
+  </data>
+  <data name="&gt;&gt;pPlatnost.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="pPlatnost.NodeText" xml:space="preserve">
+    <value>Platnosť</value>
+  </data>
+  <data name="pGroupHlasenia.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="pGroupHlasenia.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pGroupHlasenia.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 429</value>
+  </data>
+  <data name="pGroupHlasenia.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;pGroupHlasenia.Name" xml:space="preserve">
+    <value>pGroupHlasenia</value>
+  </data>
+  <data name="&gt;&gt;pGroupHlasenia.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pGroupHlasenia.Parent" xml:space="preserve">
+    <value>optionsView</value>
+  </data>
+  <data name="&gt;&gt;pGroupHlasenia.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="pGroupHlasenia.NodeText" xml:space="preserve">
+    <value>Hlásenia</value>
+  </data>
+  <data name="pJazyky.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="pJazyky.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pJazyky.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 429</value>
+  </data>
+  <data name="pJazyky.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;pJazyky.Name" xml:space="preserve">
+    <value>pJazyky</value>
+  </data>
+  <data name="&gt;&gt;pJazyky.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pJazyky.Parent" xml:space="preserve">
+    <value>optionsView</value>
+  </data>
+  <data name="&gt;&gt;pJazyky.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="pJazyky.NodeText" xml:space="preserve">
+    <value>Jazyky</value>
+  </data>
+  <data name="trainPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="trainPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="trainPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 429</value>
+  </data>
+  <data name="trainPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;trainPage.Name" xml:space="preserve">
+    <value>trainPage</value>
+  </data>
+  <data name="&gt;&gt;trainPage.Type" xml:space="preserve">
+    <value>GVDEditor.UI.EditTrain.TrainBasicsPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;trainPage.Parent" xml:space="preserve">
+    <value>pVlak</value>
+  </data>
+  <data name="&gt;&gt;trainPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="validityPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="validityPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="validityPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 429</value>
+  </data>
+  <data name="validityPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;validityPage.Name" xml:space="preserve">
+    <value>validityPage</value>
+  </data>
+  <data name="&gt;&gt;validityPage.Type" xml:space="preserve">
+    <value>GVDEditor.UI.EditTrain.TrainValidityPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;validityPage.Parent" xml:space="preserve">
+    <value>pPlatnost</value>
+  </data>
+  <data name="&gt;&gt;validityPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="languagesPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="languagesPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="languagesPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 429</value>
+  </data>
+  <data name="languagesPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;languagesPage.Name" xml:space="preserve">
+    <value>languagesPage</value>
+  </data>
+  <data name="&gt;&gt;languagesPage.Type" xml:space="preserve">
+    <value>GVDEditor.UI.EditTrain.TrainLanguagesPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;languagesPage.Parent" xml:space="preserve">
+    <value>pJazyky</value>
+  </data>
+  <data name="&gt;&gt;languagesPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="optionsView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="optionsView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="optionsView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>860, 520</value>
+  </data>
+  <data name="optionsView.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;optionsView.Name" xml:space="preserve">
+    <value>optionsView</value>
+  </data>
+  <data name="&gt;&gt;optionsView.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsView, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;optionsView.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;optionsView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tlpBottom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tlpBottom.ColumnCount" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tlpBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="tlpBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 520</value>
+  </data>
+  <data name="tlpBottom.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 4, 6, 4</value>
+  </data>
+  <data name="tlpBottom.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tlpBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>860, 40</value>
+  </data>
+  <data name="tlpBottom.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tlpBottom.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="llHelp" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lProblem" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="bSave" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="bZrusit" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="&gt;&gt;tlpBottom.Name" xml:space="preserve">
+    <value>tlpBottom</value>
+  </data>
+  <data name="&gt;&gt;tlpBottom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tlpBottom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="llHelp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="llHelp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="llHelp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 12</value>
+  </data>
+  <data name="llHelp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 12, 0</value>
+  </data>
+  <data name="llHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="llHelp.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="llHelp.Text" xml:space="preserve">
+    <value>Nápoveda</value>
+  </data>
+  <data name="&gt;&gt;llHelp.Name" xml:space="preserve">
+    <value>llHelp</value>
+  </data>
+  <data name="&gt;&gt;llHelp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;llHelp.Parent" xml:space="preserve">
+    <value>tlpBottom</value>
+  </data>
+  <data name="&gt;&gt;llHelp.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lProblem.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="lProblem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>76, 4</value>
+  </data>
+  <data name="lProblem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>600, 32</value>
+  </data>
+  <data name="lProblem.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lProblem.Name" xml:space="preserve">
+    <value>lProblem</value>
+  </data>
+  <data name="&gt;&gt;lProblem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lProblem.Parent" xml:space="preserve">
+    <value>tlpBottom</value>
+  </data>
+  <data name="&gt;&gt;lProblem.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 520</value>
+  </data>
+  <data name="pTrasa.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="pTrasa.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="pTrasa.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 429</value>
+  </data>
+  <data name="pTrasa.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pTrasa.Name" xml:space="preserve">
+    <value>pTrasa</value>
+  </data>
+  <data name="&gt;&gt;pTrasa.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pTrasa.Parent" xml:space="preserve">
+    <value>optionsView</value>
+  </data>
+  <data name="&gt;&gt;pTrasa.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pTrasa.NodeText" xml:space="preserve">
+    <value>Trasa a časy</value>
+  </data>
+  <data name="routePage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="routePage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="routePage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 429</value>
+  </data>
+  <data name="routePage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;routePage.Name" xml:space="preserve">
+    <value>routePage</value>
+  </data>
+  <data name="&gt;&gt;routePage.Type" xml:space="preserve">
+    <value>GVDEditor.UI.EditTrain.TrainRoutePage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;routePage.Parent" xml:space="preserve">
+    <value>pTrasa</value>
+  </data>
+  <data name="&gt;&gt;routePage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dodatkyPage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dodatkyPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dodatkyPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 429</value>
+  </data>
+  <data name="dodatkyPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dodatkyPage.Name" xml:space="preserve">
+    <value>dodatkyPage</value>
+  </data>
+  <data name="&gt;&gt;dodatkyPage.Type" xml:space="preserve">
+    <value>GVDEditor.UI.EditTrain.TrainDodatkyPage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dodatkyPage.Parent" xml:space="preserve">
+    <value>pDodatky</value>
+  </data>
+  <data name="&gt;&gt;dodatkyPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radeniePage.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="radeniePage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="radeniePage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 429</value>
+  </data>
+  <data name="radeniePage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radeniePage.Name" xml:space="preserve">
+    <value>radeniePage</value>
+  </data>
+  <data name="&gt;&gt;radeniePage.Type" xml:space="preserve">
+    <value>GVDEditor.UI.EditTrain.TrainRadeniePage, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;radeniePage.Parent" xml:space="preserve">
+    <value>pRadenie</value>
+  </data>
+  <data name="&gt;&gt;radeniePage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+</root>

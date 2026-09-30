@@ -1,11 +1,11 @@
-﻿using GVDEditor.Entities;
+﻿using GVDEditor.Domain.Entities;
 
 namespace GVDEditor.DocScreenshots;
 
 /// <summary>
-///     Informačné tabule ukážkového grafikonu: odchodová tabuľa v hale a dve nástupištné.
-///     Hodnoty zodpovedajú pravidlám zo špecifikácie (TKatalog.txt, TPhysic.txt, TLogical.txt, TabTab.txt):
-///     stĺpce zoradené podľa pozície, pri LCD1 hranice v násobkoch 8, v každom type zobrazenia všetkých šesť režimov.
+/// Informačné tabule ukážkového grafikonu: odchodová tabuľa v hale a dve nástupištné.
+/// Hodnoty zodpovedajú pravidlám zo špecifikácie (TKatalog.txt, TPhysic.txt, TLogical.txt, TabTab.txt):
+/// stĺpce zoradené podľa pozície, pri LCD1 hranice v násobkoch 8, v každom type zobrazenia všetkých šesť režimov.
 /// </summary>
 internal sealed class DemoTables
 {
@@ -37,7 +37,7 @@ internal sealed class DemoTables
         var meskanie = TabTabs[2];
 
         // odchodová tabuľa LCD1: jeden riadok na vlak, šírka 528 bodov, stĺpce na hraniciach po 8 bodoch
-        var departures = Catalog("Odchodová LCD1", "Odchodová tabuľa (8 vlakov)", TableManufacturer.LCD1, maxRecords: 8, lines: 8, width: 528);
+        var departures = Catalog("Odchodová LCD1", "Odchodová tabuľa (8 vlakov)", TableManufacturer.Lcd1, maxRecords: 8, lines: 8, width: 528);
         var dNothing = Item("Nic", "Prázdny riadok", TableFillSection.Free, 0, 0, 528, 16);
         var dText = Item("Text", "Text", TableFillSection.TextLine1, 0, 0, 528, 16);
         var dTime = Item("Cas", "Čas odchodu", TableFillSection.CasOdchodu, 0, 0, 40, 17);
@@ -52,7 +52,7 @@ internal sealed class DemoTables
             [dTime, dType, dNumber, dName, dTarget, dTrack], [dTime, dType, dNumber, dName, dTarget, dTrack, dDelay]));
 
         // nástupištná tabuľa ELEN16: dva riadky na vlak - vlak a cieľ, pod tým stanice na trase
-        var platform = Catalog("Nástupištná ELEN16", "Nástupištná tabuľa", TableManufacturer.ELEN16, maxRecords: 1, lines: 2, width: 320);
+        var platform = Catalog("Nástupištná ELEN16", "Nástupištná tabuľa", TableManufacturer.Elen16, maxRecords: 1, lines: 2, width: 320);
         var pNothing = Item("Nic", "Prázdny riadok", TableFillSection.Free, 0, 0, 320, 16);
         var pText = Item("Text", "Text", TableFillSection.TextLine1, 0, 0, 320, 16);
         var pType = Item("Druh", "Druh vlaku", TableFillSection.TypVlaku, 0, 0, 36, 17, divType: TableDivType.Translate, tab1: druh);
@@ -118,13 +118,13 @@ internal sealed class DemoTables
     private static TableItem Item(string key, string name, TableFillSection fill, int line, int start, int end, int font,
         TableAlign? align = null, TableDivType? divType = null, TableTabTab? tab1 = null) => new()
     {
-        Key = key, Name = name, FillSection = fill, Line = line, Start = start, End = end, FontIDX = font,
+        Key = key, Name = name, FillSection = fill, Line = line, Start = start, End = end, FontIdx = font,
         Align = align ?? TableAlign.Left, DivType = divType ?? TableDivType.Free,
         Tab1 = tab1 ?? TableTabTab.Empty, Tab2 = TableTabTab.Empty,
     };
 
     /// <summary>
-    ///     Typ zobrazenia so všetkými šiestimi režimami; meškajúci vlak na odchode ukazuje aj stĺpec meškania.
+    /// Typ zobrazenia so všetkými šiestimi režimami; meškajúci vlak na odchode ukazuje aj stĺpec meškania.
     /// </summary>
     private static TableViewTypeTab ViewTab(TableViewType type, int linesPerRecord, TableItem[] nothing, TableItem[] text,
         TableItem[] train, TableItem[] delayed)

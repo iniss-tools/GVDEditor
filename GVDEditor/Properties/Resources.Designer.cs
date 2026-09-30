@@ -5168,6 +5168,51 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grafikon musí používať aspoň jeden jazyk..
+        /// </summary>
+        internal static string GrafikonLanguages_Ziadny {
+            get {
+                return ResourceManager.GetString("GrafikonLanguages_Ziadny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hlavný jazyk stanice ({0}) sa nedá vypnúť..
+        /// </summary>
+        internal static string GrafikonLanguages_Hlavny_Vypnuty {
+            get {
+                return ResourceManager.GetString("GrafikonLanguages_Hlavny_Vypnuty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Radenie vlaku {1} obsahuje nahrávky v jazyku {0}. Jazyk sa dá vypnúť, až keď ich z radenia odstránite..
+        /// </summary>
+        internal static string GrafikonLanguages_Radenie {
+            get {
+                return ResourceManager.GetString("GrafikonLanguages_Radenie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Počet vlakov so zapnutým jazykom {0}: {1}. INISS ho pri nich preskočí, kým ho grafikon nepoužíva..
+        /// </summary>
+        internal static string GrafikonLanguages_Vlaky {
+            get {
+                return ResourceManager.GetString("GrafikonLanguages_Vlaky", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} (hlavný jazyk).
+        /// </summary>
+        internal static string GrafikonLanguages_Hlavny_Polozka {
+            get {
+                return ResourceManager.GetString("GrafikonLanguages_Hlavny_Polozka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vyberte dopravcu..
         /// </summary>
         internal static string TrainRules_Dopravca {
@@ -5452,6 +5497,2922 @@ namespace GVDEditor.Properties {
         internal static string FMain_Variant_Prekrytie {
             get {
                 return ResourceManager.GetString("FMain_Variant_Prekrytie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nový grafikon.
+        /// </summary>
+        internal static string Cmd_New {
+            get {
+                return ResourceManager.GetString("Cmd_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Otvoriť inštaláciu.
+        /// </summary>
+        internal static string Cmd_Open {
+            get {
+                return ResourceManager.GetString("Cmd_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importovať grafikon.
+        /// </summary>
+        internal static string Cmd_ImportGvd {
+            get {
+                return ResourceManager.GetString("Cmd_ImportGvd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importovať dáta.
+        /// </summary>
+        internal static string Cmd_ImportData {
+            get {
+                return ResourceManager.GetString("Cmd_ImportData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importovať z ELIS.
+        /// </summary>
+        internal static string Cmd_ImportElis {
+            get {
+                return ResourceManager.GetString("Cmd_ImportElis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uložiť grafikon.
+        /// </summary>
+        internal static string Cmd_Save {
+            get {
+                return ResourceManager.GetString("Cmd_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analyzovať grafikon.
+        /// </summary>
+        internal static string Cmd_Analyze {
+            get {
+                return ResourceManager.GetString("Cmd_Analyze", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pridať vlak.
+        /// </summary>
+        internal static string Cmd_AddTrain {
+            get {
+                return ResourceManager.GetString("Cmd_AddTrain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upraviť vybraný vlak.
+        /// </summary>
+        internal static string Cmd_EditTrain {
+            get {
+                return ResourceManager.GetString("Cmd_EditTrain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odstrániť vybrané vlaky.
+        /// </summary>
+        internal static string Cmd_DeleteTrains {
+            get {
+                return ResourceManager.GetString("Cmd_DeleteTrains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duplikovať vybraný vlak.
+        /// </summary>
+        internal static string Cmd_DuplicateTrain {
+            get {
+                return ResourceManager.GetString("Cmd_DuplicateTrain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia.
+        /// </summary>
+        internal static string Cmd_LocalSettings {
+            get {
+                return ResourceManager.GetString("Cmd_LocalSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Globálne nastavenia.
+        /// </summary>
+        internal static string Cmd_GlobalSettings {
+            get {
+                return ResourceManager.GetString("Cmd_GlobalSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia programu.
+        /// </summary>
+        internal static string Cmd_AppSettings {
+            get {
+                return ResourceManager.GetString("Cmd_AppSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Globálne nastavenia – Grafikony.
+        /// </summary>
+        internal static string Cmd_GSGvds {
+            get {
+                return ResourceManager.GetString("Cmd_GSGvds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Globálne nastavenia – Jazyky.
+        /// </summary>
+        internal static string Cmd_GSLanguages {
+            get {
+                return ResourceManager.GetString("Cmd_GSLanguages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Globálne nastavenia – Meškania.
+        /// </summary>
+        internal static string Cmd_GSDelays {
+            get {
+                return ResourceManager.GetString("Cmd_GSDelays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Globálne nastavenia – Typy vlakov.
+        /// </summary>
+        internal static string Cmd_GSTrainTypes {
+            get {
+                return ResourceManager.GetString("Cmd_GSTrainTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Globálne nastavenia – Audio.
+        /// </summary>
+        internal static string Cmd_GSAudio {
+            get {
+                return ResourceManager.GetString("Cmd_GSAudio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Grafikon.
+        /// </summary>
+        internal static string Cmd_LSGvd {
+            get {
+                return ResourceManager.GetString("Cmd_LSGvd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Jazyky hlásení.
+        /// </summary>
+        internal static string Cmd_LSLanguages {
+            get {
+                return ResourceManager.GetString("Cmd_LSLanguages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Vlastné stanice.
+        /// </summary>
+        internal static string Cmd_LSStations {
+            get {
+                return ResourceManager.GetString("Cmd_LSStations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Dopravcovia.
+        /// </summary>
+        internal static string Cmd_LSOperators {
+            get {
+                return ResourceManager.GetString("Cmd_LSOperators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Nástupištia.
+        /// </summary>
+        internal static string Cmd_LSPlatforms {
+            get {
+                return ResourceManager.GetString("Cmd_LSPlatforms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Koľaje.
+        /// </summary>
+        internal static string Cmd_LSTracks {
+            get {
+                return ResourceManager.GetString("Cmd_LSTracks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Fyzické tabule.
+        /// </summary>
+        internal static string Cmd_LSPhysicalTables {
+            get {
+                return ResourceManager.GetString("Cmd_LSPhysicalTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Logické tabule.
+        /// </summary>
+        internal static string Cmd_LSLogicalTables {
+            get {
+                return ResourceManager.GetString("Cmd_LSLogicalTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Katalógové tabule.
+        /// </summary>
+        internal static string Cmd_LSCatalogTables {
+            get {
+                return ResourceManager.GetString("Cmd_LSCatalogTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – TabTab.
+        /// </summary>
+        internal static string Cmd_LSTabTab {
+            get {
+                return ResourceManager.GetString("Cmd_LSTabTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Texty na tabuliach.
+        /// </summary>
+        internal static string Cmd_LSTableTexts {
+            get {
+                return ResourceManager.GetString("Cmd_LSTableTexts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Písma.
+        /// </summary>
+        internal static string Cmd_LSTableFonts {
+            get {
+                return ResourceManager.GetString("Cmd_LSTableFonts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lokálne nastavenia – Editor TabTab.
+        /// </summary>
+        internal static string Cmd_LSTabTabEditor {
+            get {
+                return ResourceManager.GetString("Cmd_LSTabTabEditor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stavový diagram.
+        /// </summary>
+        internal static string Cmd_StateDgm {
+            get {
+                return ResourceManager.GetString("Cmd_StateDgm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spustiť INISS.
+        /// </summary>
+        internal static string Cmd_RunIniss {
+            get {
+                return ResourceManager.GetString("Cmd_RunIniss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ukončiť INISS.
+        /// </summary>
+        internal static string Cmd_ShutdownIniss {
+            get {
+                return ResourceManager.GetString("Cmd_ShutdownIniss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vynútiť ukončenie INISS.
+        /// </summary>
+        internal static string Cmd_KillIniss {
+            get {
+                return ResourceManager.GetString("Cmd_KillIniss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reštartovať INISS.
+        /// </summary>
+        internal static string Cmd_RestartIniss {
+            get {
+                return ResourceManager.GetString("Cmd_RestartIniss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia spúšťania INISS.
+        /// </summary>
+        internal static string Cmd_InissStartupSettings {
+            get {
+                return ResourceManager.GetString("Cmd_InissStartupSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informácie o programe.
+        /// </summary>
+        internal static string Cmd_InfoApp {
+            get {
+                return ResourceManager.GetString("Cmd_InfoApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poznámky k aktualizáciám.
+        /// </summary>
+        internal static string Cmd_UpdateNotes {
+            get {
+                return ResourceManager.GetString("Cmd_UpdateNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generátor dátumových obmedzení.
+        /// </summary>
+        internal static string Cmd_DateLimit {
+            get {
+                return ResourceManager.GetString("Cmd_DateLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prebieha importovanie údajov....
+        /// </summary>
+        internal static string FMain_Import_prebieha {
+            get {
+                return ResourceManager.GetString("FMain_Import_prebieha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte priečinok obsahujúci grafikon.
+        /// </summary>
+        internal static string FMain_Vyberte_priecinok_s_grafikonom {
+            get {
+                return ResourceManager.GetString("FMain_Vyberte_priecinok_s_grafikonom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte priečinok s INISS.exe.
+        /// </summary>
+        internal static string FMain_Vyberte_priecinok_s_INISS {
+            get {
+                return ResourceManager.GetString("FMain_Vyberte_priecinok_s_INISS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uloženie globálnych nastavení zlyhalo, žiadne zmeny sa neuložili. Súbory v priečinku DATA zostali v pôvodnom stave.  {0}.
+        /// </summary>
+        internal static string GlobalSettings_Ulozenie_zlyhalo_vratene {
+            get {
+                return ResourceManager.GetString("GlobalSettings_Ulozenie_zlyhalo_vratene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uloženie globálnych nastavení zlyhalo a pôvodný stav sa nepodarilo obnoviť. Súbory v priečinku DATA môžu byť nekonzistentné.  Záloha pôvodných súborov: {1}  {0}.
+        /// </summary>
+        internal static string GlobalSettings_Ulozenie_zlyhalo_neobnovene {
+            get {
+                return ResourceManager.GetString("GlobalSettings_Ulozenie_zlyhalo_neobnovene", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} je novší než vyrovnávacia pamäť {1}; INISS bude ďalej používať starý zoznam meškaní..
+        /// </summary>
+        internal static string Analyzer_ZpozdeniCacheOld {
+            get {
+                return ResourceManager.GetString("Analyzer_ZpozdeniCacheOld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmazať {0} (INISS si ho pri štarte vytvorí znova).
+        /// </summary>
+        internal static string Analyzer_ZpozdeniCacheOld_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_ZpozdeniCacheOld_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nepodarilo sa zmazať {0}.
+        /// </summary>
+        internal static string Analyzer_DeleteFailed {
+            get {
+                return ResourceManager.GetString("Analyzer_DeleteFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová.
+        /// </summary>
+        internal static string Analyzer_TableCatalog {
+            get {
+                return ResourceManager.GetString("Analyzer_TableCatalog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fyzická.
+        /// </summary>
+        internal static string Analyzer_TablePhysical {
+            get {
+                return ResourceManager.GetString("Analyzer_TablePhysical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logická.
+        /// </summary>
+        internal static string Analyzer_TableLogical {
+            get {
+                return ResourceManager.GetString("Analyzer_TableLogical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} tabuľa {1} sa nikde nepoužíva..
+        /// </summary>
+        internal static string Analyzer_TableUnused {
+            get {
+                return ResourceManager.GetString("Analyzer_TableUnused", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odstrániť tabuľu.
+        /// </summary>
+        internal static string Analyzer_TableUnused_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_TableUnused_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TabTab {0} sa nikde nepoužíva..
+        /// </summary>
+        internal static string Analyzer_TabTabUnused {
+            get {
+                return ResourceManager.GetString("Analyzer_TabTabUnused", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odstrániť TabTab.
+        /// </summary>
+        internal static string Analyzer_TabTabUnused_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_TabTabUnused_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa {0} nemá nastavené žiadne riadky (segmenty)..
+        /// </summary>
+        internal static string Analyzer_CatalogNoRows {
+            get {
+                return ResourceManager.GetString("Analyzer_CatalogNoRows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upraviť segmenty katalógovej tabule.
+        /// </summary>
+        internal static string Analyzer_CatalogNoRows_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_CatalogNoRows_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text na tabuli „{0}“ nemá žiadnu realizáciu..
+        /// </summary>
+        internal static string Analyzer_TextNoRealization {
+            get {
+                return ResourceManager.GetString("Analyzer_TextNoRealization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pridať realizácie textu.
+        /// </summary>
+        internal static string Analyzer_TextNoRealization_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_TextNoRealization_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text na tabuli „{0}“ nemá priradené žiadne vlaky..
+        /// </summary>
+        internal static string Analyzer_TextNoTrains {
+            get {
+                return ResourceManager.GetString("Analyzer_TextNoTrains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pridať vlaky k textu.
+        /// </summary>
+        internal static string Analyzer_TextNoTrains_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_TextNoTrains_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TabTab {0} je prázdny..
+        /// </summary>
+        internal static string Analyzer_TabTabEmpty {
+            get {
+                return ResourceManager.GetString("Analyzer_TabTabEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upraviť TabTab.
+        /// </summary>
+        internal static string Analyzer_TabTabEmpty_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_TabTabEmpty_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TabTab {0}: {1} – r. {2}: {3}.
+        /// </summary>
+        internal static string Analyzer_TabTabProblems {
+            get {
+                return ResourceManager.GetString("Analyzer_TabTabProblems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikonu {0} uplynula platnosť dát ({1:dd.MM.yyyy})..
+        /// </summary>
+        internal static string Analyzer_DataExpired {
+            get {
+                return ResourceManager.GetString("Analyzer_DataExpired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmeniť platnosť dát.
+        /// </summary>
+        internal static string Analyzer_DataExpired_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_DataExpired_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} s názvom {1} nemá zadaný kľúč..
+        /// </summary>
+        internal static string TablesFile_NoKey {
+            get {
+                return ResourceManager.GetString("TablesFile_NoKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} s názvom {1} má kľúč "{2}" zhodný s inou tabuľou..
+        /// </summary>
+        internal static string TablesFile_DuplicateKey {
+            get {
+                return ResourceManager.GetString("TablesFile_DuplicateKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TabTab č. {0} má neplatný názov (prázdny alebo obsahujúci iba biele znaky)..
+        /// </summary>
+        internal static string TablesFile_TabTabInvalidName {
+            get {
+                return ResourceManager.GetString("TablesFile_TabTabInvalidName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa {0} má zadaný neplatný kľúč výrobcu (MANUFACTURER_KEY): {1}..
+        /// </summary>
+        internal static string TablesFile_BadManufacturer {
+            get {
+                return ResourceManager.GetString("TablesFile_BadManufacturer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa {0} obsahuje pre stĺpec {1} neplatnú hodnotu TYPE_ITEMS_IDX: {2}..
+        /// </summary>
+        internal static string TablesFile_BadFillSection {
+            get {
+                return ResourceManager.GetString("TablesFile_BadFillSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa {0} obsahuje pre stĺpec {1} neplatnú hodnotu TYPE_ITEMS_ALIGN: {2}..
+        /// </summary>
+        internal static string TablesFile_BadAlign {
+            get {
+                return ResourceManager.GetString("TablesFile_BadAlign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa {0} obsahuje pre stĺpec {1} neplatnú hodnotu TYPE_ITEMS_DIVTYPE: {2}..
+        /// </summary>
+        internal static string TablesFile_BadDivType {
+            get {
+                return ResourceManager.GetString("TablesFile_BadDivType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa {0} obsahuje neplatný typ zobrazenia (TYPE_VIEW_TAB_KEY): {1}..
+        /// </summary>
+        internal static string TablesFile_BadViewType {
+            get {
+                return ResourceManager.GetString("TablesFile_BadViewType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa {0} obsahuje v type zobrazenia {1} neplatný počet riadkov - "{2}" (počet má byť číslo)..
+        /// </summary>
+        internal static string TablesFile_BadLineCount {
+            get {
+                return ResourceManager.GetString("TablesFile_BadLineCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa {0} obsahuje v type {1} v móde {2} neplatný stĺpec {3}..
+        /// </summary>
+        internal static string TablesFile_BadColumn {
+            get {
+                return ResourceManager.GetString("TablesFile_BadColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa {0}, ktorá bola použitá vo fyzickej tabuli {1}, neexistuje..
+        /// </summary>
+        internal static string TablesFile_CatalogMissing {
+            get {
+                return ResourceManager.GetString("TablesFile_CatalogMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logická tabuľa {0} obsahuje neplatný typ zobrazenia (TYPE_VIEW): {1}..
+        /// </summary>
+        internal static string TablesFile_LogicalBadViewType {
+            get {
+                return ResourceManager.GetString("TablesFile_LogicalBadViewType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logická tabuľa {0} obsahuje pre neplatný kľúč typu zobrazenia (TYPE_VIEW_KEY_{1}_{2}): {3}..
+        /// </summary>
+        internal static string TablesFile_LogicalBadViewKey {
+            get {
+                return ResourceManager.GetString("TablesFile_LogicalBadViewKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logická tabuľa {0} obsahuje neexistujúcu fyzickú tabuľu {1}..
+        /// </summary>
+        internal static string TablesFile_LogicalPhysicalMissing {
+            get {
+                return ResourceManager.GetString("TablesFile_LogicalPhysicalMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa {0} obsahuje pre stĺpec {1} neexistujúci {2} {3}..
+        /// </summary>
+        internal static string TablesFile_TabTabMissing {
+            get {
+                return ResourceManager.GetString("TablesFile_TabTabMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hľadať ďalší.
+        /// </summary>
+        internal static string FindReplace_FindNext {
+            get {
+                return ResourceManager.GetString("FindReplace_FindNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spočítať.
+        /// </summary>
+        internal static string FindReplace_Count {
+            get {
+                return ResourceManager.GetString("FindReplace_Count", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nahradiť.
+        /// </summary>
+        internal static string FindReplace_Replace {
+            get {
+                return ResourceManager.GetString("FindReplace_Replace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nahradiť všetky.
+        /// </summary>
+        internal static string FindReplace_ReplaceAll {
+            get {
+                return ResourceManager.GetString("FindReplace_ReplaceAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neplatný vstup pre hľadanie.
+        /// </summary>
+        internal static string FindReplace_InvalidInput {
+            get {
+                return ResourceManager.GetString("FindReplace_InvalidInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} nájdení.
+        /// </summary>
+        internal static string FindReplace_Found {
+            get {
+                return ResourceManager.GetString("FindReplace_Found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prišli ste na koniec dokumentu.
+        /// </summary>
+        internal static string FindReplace_EndOfDocument {
+            get {
+                return ResourceManager.GetString("FindReplace_EndOfDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Všetkých {0} výskytov boli nahradených.
+        /// </summary>
+        internal static string FindReplace_Replaced {
+            get {
+                return ResourceManager.GetString("FindReplace_Replaced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pripravený.
+        /// </summary>
+        internal static string FindReplace_Ready {
+            get {
+                return ResourceManager.GetString("FindReplace_Ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TabTab editor.
+        /// </summary>
+        internal static string Scheme_TabTabEditor {
+            get {
+                return ResourceManager.GetString("Scheme_TabTabEditor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo.
+        /// </summary>
+        internal static string Scheme_Number {
+            get {
+                return ResourceManager.GetString("Scheme_Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reťazec.
+        /// </summary>
+        internal static string Scheme_String {
+            get {
+                return ResourceManager.GetString("Scheme_String", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Komentár.
+        /// </summary>
+        internal static string Scheme_Comment {
+            get {
+                return ResourceManager.GetString("Scheme_Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zápis do ďalšieho riadka.
+        /// </summary>
+        internal static string Scheme_OnNewLine {
+            get {
+                return ResourceManager.GetString("Scheme_OnNewLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operátor.
+        /// </summary>
+        internal static string Scheme_Operator {
+            get {
+                return ResourceManager.GetString("Scheme_Operator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Konštanta.
+        /// </summary>
+        internal static string Scheme_Constant {
+            get {
+                return ResourceManager.GetString("Scheme_Constant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Predvolené.
+        /// </summary>
+        internal static string Scheme_Default {
+            get {
+                return ResourceManager.GetString("Scheme_Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Premenná.
+        /// </summary>
+        internal static string Scheme_Var {
+            get {
+                return ResourceManager.GetString("Scheme_Var", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Udalosť.
+        /// </summary>
+        internal static string Scheme_Event {
+            get {
+                return ResourceManager.GetString("Scheme_Event", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Funkcia.
+        /// </summary>
+        internal static string Scheme_Function {
+            get {
+                return ResourceManager.GetString("Scheme_Function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identifikátor.
+        /// </summary>
+        internal static string Scheme_Identifier {
+            get {
+                return ResourceManager.GetString("Scheme_Identifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zvýraznenie zátvoriek.
+        /// </summary>
+        internal static string Scheme_SelBraces {
+            get {
+                return ResourceManager.GetString("Scheme_SelBraces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zvýraznie zátvorky, ktorej chýba pár.
+        /// </summary>
+        internal static string Scheme_SelBraceBad {
+            get {
+                return ResourceManager.GetString("Scheme_SelBraceBad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stĺpec typ vlaku.
+        /// </summary>
+        internal static string Scheme_TrainTypeColumn {
+            get {
+                return ResourceManager.GetString("Scheme_TrainTypeColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo.
+        /// </summary>
+        internal static string Column_Number {
+            get {
+                return ResourceManager.GetString("Column_Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ.
+        /// </summary>
+        internal static string Column_Type {
+            get {
+                return ResourceManager.GetString("Column_Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov.
+        /// </summary>
+        internal static string Column_Name {
+            get {
+                return ResourceManager.GetString("Column_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linka príchod.
+        /// </summary>
+        internal static string Column_LineArrival {
+            get {
+                return ResourceManager.GetString("Column_LineArrival", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linka odchod.
+        /// </summary>
+        internal static string Column_LineDeparture {
+            get {
+                return ResourceManager.GetString("Column_LineDeparture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smerovanie.
+        /// </summary>
+        internal static string Column_Routing {
+            get {
+                return ResourceManager.GetString("Column_Routing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Príchod.
+        /// </summary>
+        internal static string Column_Arrival {
+            get {
+                return ResourceManager.GetString("Column_Arrival", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odchod.
+        /// </summary>
+        internal static string Column_Departure {
+            get {
+                return ResourceManager.GetString("Column_Departure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Východzia stanica.
+        /// </summary>
+        internal static string Column_StartStation {
+            get {
+                return ResourceManager.GetString("Column_StartStation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Konečná stanica.
+        /// </summary>
+        internal static string Column_EndStation {
+            get {
+                return ResourceManager.GetString("Column_EndStation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dátumové obmedzenie.
+        /// </summary>
+        internal static string Column_DateLimit {
+            get {
+                return ResourceManager.GetString("Column_DateLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaj.
+        /// </summary>
+        internal static string Column_Track {
+            get {
+                return ResourceManager.GetString("Column_Track", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dopravca.
+        /// </summary>
+        internal static string Column_Operator {
+            get {
+                return ResourceManager.GetString("Column_Operator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ostatné.
+        /// </summary>
+        internal static string Column_Other {
+            get {
+                return ResourceManager.GetString("Column_Other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informácia.
+        /// </summary>
+        internal static string Analyzer_Info {
+            get {
+                return ResourceManager.GetString("Analyzer_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upozornenie.
+        /// </summary>
+        internal static string Analyzer_Warning {
+            get {
+                return ResourceManager.GetString("Analyzer_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automaticky.
+        /// </summary>
+        internal static string Analyzer_FixAuto {
+            get {
+                return ResourceManager.GetString("Analyzer_FixAuto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Program opraví problém sám.
+        /// </summary>
+        internal static string Analyzer_FixAuto_Tip {
+            get {
+                return ResourceManager.GetString("Analyzer_FixAuto_Tip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Polo-automaticky.
+        /// </summary>
+        internal static string Analyzer_FixSemi {
+            get {
+                return ResourceManager.GetString("Analyzer_FixSemi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Používateľ vyberie jednu možnosť opravy.
+        /// </summary>
+        internal static string Analyzer_FixSemi_Tip {
+            get {
+                return ResourceManager.GetString("Analyzer_FixSemi_Tip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manuálne.
+        /// </summary>
+        internal static string Analyzer_FixManual {
+            get {
+                return ResourceManager.GetString("Analyzer_FixManual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Používateľ musí problém opraviť sám, program len navedie k riešeniu.
+        /// </summary>
+        internal static string Analyzer_FixManual_Tip {
+            get {
+                return ResourceManager.GetString("Analyzer_FixManual_Tip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Počas operácie sa vyskytla chyba: {0}.
+        /// </summary>
+        internal static string Analyzer_FixError {
+            get {
+                return ResourceManager.GetString("Analyzer_FixError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Používateľ chybu neopravil..
+        /// </summary>
+        internal static string Analyzer_NotFixed {
+            get {
+                return ResourceManager.GetString("Analyzer_NotFixed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problém bol opravený..
+        /// </summary>
+        internal static string Analyzer_Fixed {
+            get {
+                return ResourceManager.GetString("Analyzer_Fixed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neočakávaný objekt {0} na pozícii {1}..
+        /// </summary>
+        internal static string LogZvuk_UnexpectedObject {
+            get {
+                return ResourceManager.GetString("LogZvuk_UnexpectedObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neznámy objekt dát {0} pri položke {1}..
+        /// </summary>
+        internal static string LogZvuk_UnknownDataObject {
+            get {
+                return ResourceManager.GetString("LogZvuk_UnknownDataObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor {0} sa nepodarilo prečítať celý ({1} položiek načítaných): {2}.
+        /// </summary>
+        internal static string LogZvuk_ReadPartial {
+            get {
+                return ResourceManager.GetString("LogZvuk_ReadPartial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odkaz na už načítaný objekt nie je podporovaný..
+        /// </summary>
+        internal static string LogZvuk_BackRefUnsupported {
+            get {
+                return ResourceManager.GetString("LogZvuk_BackRefUnsupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neplatný odkaz na triedu {0}..
+        /// </summary>
+        internal static string LogZvuk_BadClassRef {
+            get {
+                return ResourceManager.GetString("LogZvuk_BadClassRef", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Záporná dĺžka textu..
+        /// </summary>
+        internal static string LogZvuk_NegativeLength {
+            get {
+                return ResourceManager.GetString("LogZvuk_NegativeLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pre interval dát použite od ... do ..., nie -..
+        /// </summary>
+        internal static string DateLimit_UseFromTo {
+            get {
+                return ResourceManager.GetString("DateLimit_UseFromTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chybný dátum {0}..
+        /// </summary>
+        internal static string DateLimit_BadDate {
+            get {
+                return ResourceManager.GetString("DateLimit_BadDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koncový dátum {0} je mimo rozsahu platnosti grafikonu..
+        /// </summary>
+        internal static string DateLimit_EndOutOfRange {
+            get {
+                return ResourceManager.GetString("DateLimit_EndOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dátum {0} je mimo rozsahu platnosti grafikonu..
+        /// </summary>
+        internal static string DateLimit_OutOfRange {
+            get {
+                return ResourceManager.GetString("DateLimit_OutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neplatný mesiac {0}..
+        /// </summary>
+        internal static string DateLimit_BadMonth {
+            get {
+                return ResourceManager.GetString("DateLimit_BadMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dátum do {0} je menší ako dátum od {1}..
+        /// </summary>
+        internal static string DateLimit_ToBeforeFrom {
+            get {
+                return ResourceManager.GetString("DateLimit_ToBeforeFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bitové pole na vstupe chýba alebo neodpovedá jeho dĺžka..
+        /// </summary>
+        internal static string DateLimit_BadBitArray {
+            get {
+                return ResourceManager.GetString("DateLimit_BadBitArray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chybný pevný kód dňa {0}..
+        /// </summary>
+        internal static string DateLimit_BadDayCode {
+            get {
+                return ResourceManager.GetString("DateLimit_BadDayCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hodnota "{0}" na riadku {1}, stĺpec {2} ({3}), nemohla byť prevedená na {4}..
+        /// </summary>
+        internal static string Import_ConvertFailed {
+            get {
+                return ResourceManager.GetString("Import_ConvertFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nie sú zadané všetky povinné stĺpce pre import. Povinné stĺpce sú:  Smerovanie vlaku a/alebo stanice vlaku,  .
+        /// </summary>
+        internal static string Import_RequiredColumns {
+            get {
+                return ResourceManager.GetString("Import_RequiredColumns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chýba smerovanie vlaku alebo stanice vlaku..
+        /// </summary>
+        internal static string Import_NoRoute {
+            get {
+                return ResourceManager.GetString("Import_NoRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak na riadku {0} nemá v trase žiadnu stanicu okrem tejto..
+        /// </summary>
+        internal static string Import_OnlyHomeStation {
+            get {
+                return ResourceManager.GetString("Import_OnlyHomeStation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak nemá trasu..
+        /// </summary>
+        internal static string TrainDraft_NoRoute {
+            get {
+                return ResourceManager.GetString("TrainDraft_NoRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak nemá koľaj..
+        /// </summary>
+        internal static string TrainDraft_NoTrack {
+            get {
+                return ResourceManager.GetString("TrainDraft_NoTrack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak nemá typ..
+        /// </summary>
+        internal static string TrainDraft_NoType {
+            get {
+                return ResourceManager.GetString("TrainDraft_NoType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak nemá dopravcu..
+        /// </summary>
+        internal static string TrainDraft_NoOperator {
+            get {
+                return ResourceManager.GetString("TrainDraft_NoOperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: nástupište {1} má pri koľajach rôzne údaje: {2}. .
+        /// </summary>
+        internal static string TracksFile_PlatformDiffers {
+            get {
+                return ResourceManager.GetString("TracksFile_PlatformDiffers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Použije sa „{0}“/{1}, pri uložení sa zapíše ku všetkým jeho koľajam..
+        /// </summary>
+        internal static string TracksFile_PlatformShared {
+            get {
+                return ResourceManager.GetString("TracksFile_PlatformShared", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor s textami pre tabule {0} obsahuje neexistujúcu katalógovú tabuľu {1}..
+        /// </summary>
+        internal static string TTexts_CatalogMissing {
+            get {
+                return ResourceManager.GetString("TTexts_CatalogMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor s textami pre tabule {0} obsahuje neexistujúci stĺpec pre realizáciu {1}, ktorý by mal patriť katalógovej tabuli {2}..
+        /// </summary>
+        internal static string TTexts_ColumnMissing {
+            get {
+                return ResourceManager.GetString("TTexts_ColumnMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor s textami pre tabule obsahuje ID neexistujúceho vlaku ({0})..
+        /// </summary>
+        internal static string TTexts_TrainMissing {
+            get {
+                return ResourceManager.GetString("TTexts_TrainMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neexistujúce ID trasy {0} v tomto súbore..
+        /// </summary>
+        internal static string Routes_BadId {
+            get {
+                return ResourceManager.GetString("Routes_BadId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}, riadok {1}: neznámy druh vlaku "{2}" pri vlaku {3}; zvyšok riadka sa preskakuje..
+        /// </summary>
+        internal static string Routes_UnknownType {
+            get {
+                return ResourceManager.GetString("Routes_UnknownType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}, riadok {1}: vlak {2} {3} nemá definíciu v {4}; zvyšok riadka sa preskakuje..
+        /// </summary>
+        internal static string Routes_NoDefinition {
+            get {
+                return ResourceManager.GetString("Routes_NoDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chýbajú základné informácie o radení..
+        /// </summary>
+        internal static string Razeni_MissingBasics {
+            get {
+                return ResourceManager.GetString("Razeni_MissingBasics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neplatný odkaz na nahrávku "{0}"..
+        /// </summary>
+        internal static string Razeni_BadSoundRef {
+            get {
+                return ResourceManager.GetString("Razeni_BadSoundRef", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}, riadok {1}: nahrávka {2} sa v zvukovej banke nenachádza, preskakuje sa..
+        /// </summary>
+        internal static string Razeni_SoundMissing {
+            get {
+                return ResourceManager.GetString("Razeni_SoundMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: COUNT_LANGUAGES ({1}) je väčší než počet jazykov vo zvukovej banke ({2}); jazyky bez nahrávok sa preskočia..
+        /// </summary>
+        internal static string Categori_TooManyLanguages {
+            get {
+                return ResourceManager.GetString("Categori_TooManyLanguages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: jazyk {1} sa nenachádza v zvukovej banke, preskakuje sa..
+        /// </summary>
+        internal static string Categori_LanguageMissing {
+            get {
+                return ResourceManager.GetString("Categori_LanguageMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neplatný kľúč jazyka {0} v súbore {1}..
+        /// </summary>
+        internal static string Categori_BadLanguageKey {
+            get {
+                return ResourceManager.GetString("Categori_BadLanguageKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neexistujúca koľaj {0}.
+        /// </summary>
+        internal static string Pozice_TrackMissing {
+            get {
+                return ResourceManager.GetString("Pozice_TrackMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neexistujúca koľaj pri odchode {0}.
+        /// </summary>
+        internal static string Pozice_DepartureTrackMissing {
+            get {
+                return ResourceManager.GetString("Pozice_DepartureTrackMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neexistujúci typ vlaku {0}.
+        /// </summary>
+        internal static string Export3_TypeMissing {
+            get {
+                return ResourceManager.GetString("Export3_TypeMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neexistujúce smerovanie vlaku {0}.
+        /// </summary>
+        internal static string Export3_RoutingMissing {
+            get {
+                return ResourceManager.GetString("Export3_RoutingMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon {0} rozdelený na {1} priečinkov: {2}.
+        /// </summary>
+        internal static string BlockMigrator_Split {
+            get {
+                return ResourceManager.GetString("BlockMigrator_Split", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak nemôže mať v grafikone viac než jednu výluku..
+        /// </summary>
+        internal static string Vyluka_OnlyOne {
+            get {
+                return ResourceManager.GetString("Vyluka_OnlyOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neznámy typ vlaku {0}.
+        /// </summary>
+        internal static string TrTypes_Unknown {
+            get {
+                return ResourceManager.GetString("TrTypes_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo tabule {0} má neplatný typ (BOLD_FACE_{1}): {2}..
+        /// </summary>
+        internal static string ModeTabs_BadFontType {
+            get {
+                return ResourceManager.GetString("ModeTabs_BadFontType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}, riadok {1}: doplnok {2} vlaku {3} nemá zvuk v skupine DODATKY; pri uložení sa stratí..
+        /// </summary>
+        internal static string Doplnky_NoSound {
+            get {
+                return ResourceManager.GetString("Doplnky_NoSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doplnok vlaku [{0},{1}]: .
+        /// </summary>
+        internal static string Doplnky_TrainItem {
+            get {
+                return ResourceManager.GetString("Doplnky_TrainItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DirList.TXT: grafikon priamo v priečinku DATA sa do zoznamu nezapisuje – INISS ho po zápise DirList.TXT prestane vidieť..
+        /// </summary>
+        internal static string DirList_RootGrafikon {
+            get {
+                return ResourceManager.GetString("DirList_RootGrafikon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pole dodatku neobsahuje iba čísla..
+        /// </summary>
+        internal static string Dodatok_NotNumbers {
+            get {
+                return ResourceManager.GetString("Dodatok_NotNumbers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mapa dodatku má nesprávnu dĺžku ({0}). Mala by mať dĺžku {1}..
+        /// </summary>
+        internal static string Dodatok_BadMapLength {
+            get {
+                return ResourceManager.GetString("Dodatok_BadMapLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pole dodatku musí obsahovať iba číslice 0 a 1..
+        /// </summary>
+        internal static string Dodatok_OnlyBinary {
+            get {
+                return ResourceManager.GetString("Dodatok_OnlyBinary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obsah stĺpca "{0}" generovanie textov nepodporuje..
+        /// </summary>
+        internal static string TableText_FillUnsupported {
+            get {
+                return ResourceManager.GetString("TableText_FillUnsupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chyba v súbore {0} na riadku {1}. .
+        /// </summary>
+        internal static string FormatCommon_Error {
+            get {
+                return ResourceManager.GetString("FormatCommon_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: Nezadefinované pole {1}..
+        /// </summary>
+        internal static string FormatCommon_UndefinedField {
+            get {
+                return ResourceManager.GetString("FormatCommon_UndefinedField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak {0} {1} {2} nemá definované smerovanie..
+        /// </summary>
+        internal static string FMain_TrainNoRouting {
+            get {
+                return ResourceManager.GetString("FMain_TrainNoRouting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte priečinok s aplikáciou Cestovné poriadky.
+        /// </summary>
+        internal static string ElisImport_SelectFolder {
+            get {
+                return ResourceManager.GetString("ElisImport_SelectFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fyzická tabuľa.
+        /// </summary>
+        internal static string TypeName_Physical {
+            get {
+                return ResourceManager.GetString("TypeName_Physical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logická tabuľa.
+        /// </summary>
+        internal static string TypeName_Logical {
+            get {
+                return ResourceManager.GetString("TypeName_Logical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa.
+        /// </summary>
+        internal static string TypeName_Catalog {
+            get {
+                return ResourceManager.GetString("TypeName_Catalog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Riadok tabule.
+        /// </summary>
+        internal static string TypeName_Item {
+            get {
+                return ResourceManager.GetString("TypeName_Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text tabule.
+        /// </summary>
+        internal static string TypeName_Text {
+            get {
+                return ResourceManager.GetString("TypeName_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Končiaci.
+        /// </summary>
+        internal static string Routing_Ending {
+            get {
+                return ResourceManager.GetString("Routing_Ending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prechádzajúci.
+        /// </summary>
+        internal static string Routing_Passing {
+            get {
+                return ResourceManager.GetString("Routing_Passing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vychadzajúci.
+        /// </summary>
+        internal static string Routing_Starting {
+            get {
+                return ResourceManager.GetString("Routing_Starting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (konštanta) .
+        /// </summary>
+        internal static string TabTabAC_Constant {
+            get {
+                return ResourceManager.GetString("TabTabAC_Constant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (udalosť) .
+        /// </summary>
+        internal static string TabTabAC_Event {
+            get {
+                return ResourceManager.GetString("TabTabAC_Event", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to názov.
+        /// </summary>
+        internal static string TabTabAC_ParamName {
+            get {
+                return ResourceManager.GetString("TabTabAC_ParamName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to príznak.
+        /// </summary>
+        internal static string TabTabAC_ParamFlag {
+            get {
+                return ResourceManager.GetString("TabTabAC_ParamFlag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zistí, či sa dopravca daného vlaku rovná zadanému názvu dopravcu..
+        /// </summary>
+        internal static string TabTabAC_Operator {
+            get {
+                return ResourceManager.GetString("TabTabAC_Operator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vracia číslo daného vlaku..
+        /// </summary>
+        internal static string TabTabAC_CVlaku {
+            get {
+                return ResourceManager.GetString("TabTabAC_CVlaku", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vracia pozíciu vlaku v stanici (vychádza, prechádza, končí)..
+        /// </summary>
+        internal static string TabTabAC_Pozice {
+            get {
+                return ResourceManager.GetString("TabTabAC_Pozice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zistí, či sa typ vlaku rovná zadanému typu vlaku..
+        /// </summary>
+        internal static string TabTabAC_Typ {
+            get {
+                return ResourceManager.GetString("TabTabAC_Typ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zistí, či má daný vlak príznak rovný zadanému príznaku..
+        /// </summary>
+        internal static string TabTabAC_Priznak {
+            get {
+                return ResourceManager.GetString("TabTabAC_Priznak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zistí, či sa stav vlaku rovná zadanému stavu vlaku..
+        /// </summary>
+        internal static string TabTabAC_Stav {
+            get {
+                return ResourceManager.GetString("TabTabAC_Stav", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vracia, či je vlak nákladného typu..
+        /// </summary>
+        internal static string TabTabAC_NaklTyp {
+            get {
+                return ResourceManager.GetString("TabTabAC_NaklTyp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vracia, či má vlak v tejto stanici výluku..
+        /// </summary>
+        internal static string TabTabAC_VylukaZde {
+            get {
+                return ResourceManager.GetString("TabTabAC_VylukaZde", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vracia, či má vlak odklonenú trasu..
+        /// </summary>
+        internal static string TabTabAC_Odklon {
+            get {
+                return ResourceManager.GetString("TabTabAC_Odklon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vracia, či má vlak nejaké meškanie..
+        /// </summary>
+        internal static string TabTabAC_Zpozdeni {
+            get {
+                return ResourceManager.GetString("TabTabAC_Zpozdeni", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zistí, či sa záujmová stanica rovná zadanému ID stanice..
+        /// </summary>
+        internal static string TabTabAC_HomeStation {
+            get {
+                return ResourceManager.GetString("TabTabAC_HomeStation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zistí, či sa východzia stanica vlaku rovná zadanému ID stanice..
+        /// </summary>
+        internal static string TabTabAC_BaseStation {
+            get {
+                return ResourceManager.GetString("TabTabAC_BaseStation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zistí, či sa konečná stanica vlaku rovná zadanému ID stanice..
+        /// </summary>
+        internal static string TabTabAC_EndStation {
+            get {
+                return ResourceManager.GetString("TabTabAC_EndStation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pozícia Vychádzajúci.
+        /// </summary>
+        internal static string TabTabAC_PozV {
+            get {
+                return ResourceManager.GetString("TabTabAC_PozV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pozícia Prechádzajúci.
+        /// </summary>
+        internal static string TabTabAC_PozP {
+            get {
+                return ResourceManager.GetString("TabTabAC_PozP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pozícia Končiaci.
+        /// </summary>
+        internal static string TabTabAC_PozK {
+            get {
+                return ResourceManager.GetString("TabTabAC_PozK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Príznak Vlak vo výluke.
+        /// </summary>
+        internal static string TabTabAC_PriznVyl {
+            get {
+                return ResourceManager.GetString("TabTabAC_PriznVyl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Príznak Vlak vo výluke na príchode.
+        /// </summary>
+        internal static string TabTabAC_PriznVylP {
+            get {
+                return ResourceManager.GetString("TabTabAC_PriznVylP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Príznak Vlak vo výluke na odchode.
+        /// </summary>
+        internal static string TabTabAC_PriznVylO {
+            get {
+                return ResourceManager.GetString("TabTabAC_PriznVylO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak má príznak Medzištátny.
+        /// </summary>
+        internal static string TabTabAC_PriznM {
+            get {
+                return ResourceManager.GetString("TabTabAC_PriznM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak má príznak XXX.
+        /// </summary>
+        internal static string TabTabAC_PriznO {
+            get {
+                return ResourceManager.GetString("TabTabAC_PriznO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak má príznak Diaľkový.
+        /// </summary>
+        internal static string TabTabAC_PriznD {
+            get {
+                return ResourceManager.GetString("TabTabAC_PriznD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak má príznak Mimoriadny.
+        /// </summary>
+        internal static string TabTabAC_PriznX {
+            get {
+                return ResourceManager.GetString("TabTabAC_PriznX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak má príznak Miestenkový.
+        /// </summary>
+        internal static string TabTabAC_PriznR {
+            get {
+                return ResourceManager.GetString("TabTabAC_PriznR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak má príznak Iba lôžkový.
+        /// </summary>
+        internal static string TabTabAC_PriznL {
+            get {
+                return ResourceManager.GetString("TabTabAC_PriznL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak má príznak Nízkopodlažný.
+        /// </summary>
+        internal static string TabTabAC_PriznN {
+            get {
+                return ResourceManager.GetString("TabTabAC_PriznN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ osobný vlak.
+        /// </summary>
+        internal static string TabTabAC_TypOs {
+            get {
+                return ResourceManager.GetString("TabTabAC_TypOs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ zrýchlený vlak.
+        /// </summary>
+        internal static string TabTabAC_TypZr {
+            get {
+                return ResourceManager.GetString("TabTabAC_TypZr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ autobus.
+        /// </summary>
+        internal static string TabTabAC_TypBus {
+            get {
+                return ResourceManager.GetString("TabTabAC_TypBus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ rýchlik.
+        /// </summary>
+        internal static string TabTabAC_TypR {
+            get {
+                return ResourceManager.GetString("TabTabAC_TypR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ expres.
+        /// </summary>
+        internal static string TabTabAC_TypEx {
+            get {
+                return ResourceManager.GetString("TabTabAC_TypEx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ regionálny expres.
+        /// </summary>
+        internal static string TabTabAC_TypREX {
+            get {
+                return ResourceManager.GetString("TabTabAC_TypREX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ regionálny rýchlik.
+        /// </summary>
+        internal static string TabTabAC_TypRR {
+            get {
+                return ResourceManager.GetString("TabTabAC_TypRR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text sa bude preblikávať. Ak text obsahuje '#', budú sa časti textu rezdelené týmto znakom preblikávať navzájom..
+        /// </summary>
+        internal static string TabTabAC_Switch {
+            get {
+                return ResourceManager.GetString("TabTabAC_Switch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo.
+        /// </summary>
+        internal static string ImportColumn_Number {
+            get {
+                return ResourceManager.GetString("ImportColumn_Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ.
+        /// </summary>
+        internal static string ImportColumn_Type {
+            get {
+                return ResourceManager.GetString("ImportColumn_Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Varianta.
+        /// </summary>
+        internal static string ImportColumn_Variant {
+            get {
+                return ResourceManager.GetString("ImportColumn_Variant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov.
+        /// </summary>
+        internal static string ImportColumn_Nazov {
+            get {
+                return ResourceManager.GetString("ImportColumn_Nazov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Príchod.
+        /// </summary>
+        internal static string ImportColumn_Prichod {
+            get {
+                return ResourceManager.GetString("ImportColumn_Prichod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odchod.
+        /// </summary>
+        internal static string ImportColumn_Odchod {
+            get {
+                return ResourceManager.GetString("ImportColumn_Odchod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dátum. obm. (text).
+        /// </summary>
+        internal static string ImportColumn_DateRemText {
+            get {
+                return ResourceManager.GetString("ImportColumn_DateRemText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dátum. obm. (bitarray).
+        /// </summary>
+        internal static string ImportColumn_DateRemBitArray {
+            get {
+                return ResourceManager.GetString("ImportColumn_DateRemBitArray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Platnosť od.
+        /// </summary>
+        internal static string ImportColumn_PlatnostOd {
+            get {
+                return ResourceManager.GetString("ImportColumn_PlatnostOd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Platnosť do.
+        /// </summary>
+        internal static string ImportColumn_PlatnostDo {
+            get {
+                return ResourceManager.GetString("ImportColumn_PlatnostDo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dopravca (ID).
+        /// </summary>
+        internal static string ImportColumn_DopravcaId {
+            get {
+                return ResourceManager.GetString("ImportColumn_DopravcaId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dopravca (Názov).
+        /// </summary>
+        internal static string ImportColumn_DopravcaName {
+            get {
+                return ResourceManager.GetString("ImportColumn_DopravcaName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaj.
+        /// </summary>
+        internal static string ImportColumn_Track {
+            get {
+                return ResourceManager.GetString("ImportColumn_Track", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jazyky.
+        /// </summary>
+        internal static string ImportColumn_Languages {
+            get {
+                return ResourceManager.GetString("ImportColumn_Languages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linka (odchod).
+        /// </summary>
+        internal static string ImportColumn_LinkaOdchod {
+            get {
+                return ResourceManager.GetString("ImportColumn_LinkaOdchod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linka (príchod).
+        /// </summary>
+        internal static string ImportColumn_LinkaPrichod {
+            get {
+                return ResourceManager.GetString("ImportColumn_LinkaPrichod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smerovanie.
+        /// </summary>
+        internal static string ImportColumn_Routing {
+            get {
+                return ResourceManager.GetString("ImportColumn_Routing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Všetky stanice (ID stanice).
+        /// </summary>
+        internal static string ImportColumn_AllStationsID {
+            get {
+                return ResourceManager.GetString("ImportColumn_AllStationsID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanice (krátke hlásenie) (ID stanice).
+        /// </summary>
+        internal static string ImportColumn_StationsShortID {
+            get {
+                return ResourceManager.GetString("ImportColumn_StationsShortID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanice (dlhé hlásenie) (ID stanice).
+        /// </summary>
+        internal static string ImportColumn_StationsLongID {
+            get {
+                return ResourceManager.GetString("ImportColumn_StationsLongID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Všetky stanice (názov stanice).
+        /// </summary>
+        internal static string ImportColumn_AllStationsName {
+            get {
+                return ResourceManager.GetString("ImportColumn_AllStationsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanice (krátke hlásenie) (názov stanice).
+        /// </summary>
+        internal static string ImportColumn_StationsShortName {
+            get {
+                return ResourceManager.GetString("ImportColumn_StationsShortName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanice (dlhé hlásenie) (názov stanice).
+        /// </summary>
+        internal static string ImportColumn_StationsLongName {
+            get {
+                return ResourceManager.GetString("ImportColumn_StationsLongName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlastnosti vlaku.
+        /// </summary>
+        internal static string ImportColumn_Attributes {
+            get {
+                return ResourceManager.GetString("ImportColumn_Attributes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nedefinované.
+        /// </summary>
+        internal static string FillSection_NotDefined {
+            get {
+                return ResourceManager.GetString("FillSection_NotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prázdny text.
+        /// </summary>
+        internal static string FillSection_Free {
+            get {
+                return ResourceManager.GetString("FillSection_Free", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov vychádzajúcej stanice.
+        /// </summary>
+        internal static string FillSection_VychadzajucaStanica {
+            get {
+                return ResourceManager.GetString("FillSection_VychadzajucaStanica", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanice zo smeru.
+        /// </summary>
+        internal static string FillSection_StaniceZoSmeru {
+            get {
+                return ResourceManager.GetString("FillSection_StaniceZoSmeru", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanice do smeru (pre nástupištnú tabuľu).
+        /// </summary>
+        internal static string FillSection_StaniceDoSmeruNastupiste {
+            get {
+                return ResourceManager.GetString("FillSection_StaniceDoSmeruNastupiste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanice do smeru.
+        /// </summary>
+        internal static string FillSection_StaniceDoSmeru {
+            get {
+                return ResourceManager.GetString("FillSection_StaniceDoSmeru", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov cieľovej stanice (nástupište).
+        /// </summary>
+        internal static string FillSection_CielovaStanicaNastupiste {
+            get {
+                return ResourceManager.GetString("FillSection_CielovaStanicaNastupiste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov cieľovej stanice (podchod).
+        /// </summary>
+        internal static string FillSection_CielovaStanicaPodchod {
+            get {
+                return ResourceManager.GetString("FillSection_CielovaStanicaPodchod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov cieľovej stanice.
+        /// </summary>
+        internal static string FillSection_CielovaStanica {
+            get {
+                return ResourceManager.GetString("FillSection_CielovaStanica", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Čas odchodu.
+        /// </summary>
+        internal static string FillSection_CasOdchodu {
+            get {
+                return ResourceManager.GetString("FillSection_CasOdchodu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Čas príchodu.
+        /// </summary>
+        internal static string FillSection_CasPrichodu {
+            get {
+                return ResourceManager.GetString("FillSection_CasPrichodu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meškanie na príchode.
+        /// </summary>
+        internal static string FillSection_MeskaniePrichod {
+            get {
+                return ResourceManager.GetString("FillSection_MeskaniePrichod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meškanie na odchode.
+        /// </summary>
+        internal static string FillSection_MeskanieOdchod {
+            get {
+                return ResourceManager.GetString("FillSection_MeskanieOdchod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meškanie na príchode (vo formáte Mešká X min.).
+        /// </summary>
+        internal static string FillSection_MeskaniePrichodPopis {
+            get {
+                return ResourceManager.GetString("FillSection_MeskaniePrichodPopis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meškanie na odchode (vo formáte Mešká X min.).
+        /// </summary>
+        internal static string FillSection_MeskanieOdchodPopis {
+            get {
+                return ResourceManager.GetString("FillSection_MeskanieOdchodPopis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ vlaku (R, Os,...).
+        /// </summary>
+        internal static string FillSection_TypVlaku {
+            get {
+                return ResourceManager.GetString("FillSection_TypVlaku", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo vlaku (R-121).
+        /// </summary>
+        internal static string FillSection_CisloVlaku {
+            get {
+                return ResourceManager.GetString("FillSection_CisloVlaku", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ a číslo vlaku.
+        /// </summary>
+        internal static string FillSection_TypCisloVlaku {
+            get {
+                return ResourceManager.GetString("FillSection_TypCisloVlaku", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov vlaku (Košičan).
+        /// </summary>
+        internal static string FillSection_NazovVlaku {
+            get {
+                return ResourceManager.GetString("FillSection_NazovVlaku", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text koľaje na príchode (z Pozice_A).
+        /// </summary>
+        internal static string FillSection_KolajPrichod {
+            get {
+                return ResourceManager.GetString("FillSection_KolajPrichod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text koľaje na odchode (z Pozice_A).
+        /// </summary>
+        internal static string FillSection_KolajOdchod {
+            get {
+                return ResourceManager.GetString("FillSection_KolajOdchod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Označenie nástupišťa na príchode (z Pozice_A).
+        /// </summary>
+        internal static string FillSection_NastupistePrichod {
+            get {
+                return ResourceManager.GetString("FillSection_NastupistePrichod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Označenie nástupišťa na odchode (z Pozice_A).
+        /// </summary>
+        internal static string FillSection_NastupisteOdchod {
+            get {
+                return ResourceManager.GetString("FillSection_NastupisteOdchod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak stojí v stanici.
+        /// </summary>
+        internal static string FillSection_VlakStojiVStanici {
+            get {
+                return ResourceManager.GetString("FillSection_VlakStojiVStanici", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text 1. riadok.
+        /// </summary>
+        internal static string FillSection_TextLine1 {
+            get {
+                return ResourceManager.GetString("FillSection_TextLine1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text 2. riadok.
+        /// </summary>
+        internal static string FillSection_TextLine2 {
+            get {
+                return ResourceManager.GetString("FillSection_TextLine2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ vlaku a názov alebo číslo vlaku.
+        /// </summary>
+        internal static string FillSection_TypNazovOrCislo {
+            get {
+                return ResourceManager.GetString("FillSection_TypNazovOrCislo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ a číslo vlaku na 6 znakov.
+        /// </summary>
+        internal static string FillSection_TypCisloVlaku6Chars {
+            get {
+                return ResourceManager.GetString("FillSection_TypCisloVlaku6Chars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hex. typ vlaku (8 znakov).
+        /// </summary>
+        internal static string FillSection_HexTypVlaku {
+            get {
+                return ResourceManager.GetString("FillSection_HexTypVlaku", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typ, medzera a číslo vlaku.
+        /// </summary>
+        internal static string FillSection_TypMedzeraCisloVlaku {
+            get {
+                return ResourceManager.GetString("FillSection_TypMedzeraCisloVlaku", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nástupište a koľaj na príchode (text z Pozice_A).
+        /// </summary>
+        internal static string FillSection_NastupisteKolajPrichod {
+            get {
+                return ResourceManager.GetString("FillSection_NastupisteKolajPrichod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nástupište a koľaj na odchode (text z Pozice_A).
+        /// </summary>
+        internal static string FillSection_NastupisteKolajOdchod {
+            get {
+                return ResourceManager.GetString("FillSection_NastupisteKolajOdchod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alternatívny text koľaje na príchode (z Pozice_A).
+        /// </summary>
+        internal static string FillSection_KolajAltPrichod {
+            get {
+                return ResourceManager.GetString("FillSection_KolajAltPrichod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alternatívny text koľaje na odchode (z Pozice_A).
+        /// </summary>
+        internal static string FillSection_KolajAltOdchod {
+            get {
+                return ResourceManager.GetString("FillSection_KolajAltOdchod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dopravca.
+        /// </summary>
+        internal static string FillSection_Dopravca {
+            get {
+                return ResourceManager.GetString("FillSection_Dopravca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo vlaku (variant 35).
+        /// </summary>
+        internal static string FillSection_CisloVlaku35 {
+            get {
+                return ResourceManager.GetString("FillSection_CisloVlaku35", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linka na odchode.
+        /// </summary>
+        internal static string FillSection_LinkaOdchod {
+            get {
+                return ResourceManager.GetString("FillSection_LinkaOdchod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linka na príchode.
+        /// </summary>
+        internal static string FillSection_LinkaPrichod {
+            get {
+                return ResourceManager.GetString("FillSection_LinkaPrichod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo vlaku (variant 38).
+        /// </summary>
+        internal static string FillSection_CisloVlaku38 {
+            get {
+                return ResourceManager.GetString("FillSection_CisloVlaku38", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normálne písmo.
+        /// </summary>
+        internal static string FontType_None {
+            get {
+                return ResourceManager.GetString("FontType_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tučné písmo.
+        /// </summary>
+        internal static string FontType_Bold {
+            get {
+                return ResourceManager.GetString("FontType_Bold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Šikmé písmo.
+        /// </summary>
+        internal static string FontType_Italics {
+            get {
+                return ResourceManager.GetString("FontType_Italics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Šikmé a tučné písmo.
+        /// </summary>
+        internal static string FontType_BoldItalics {
+            get {
+                return ResourceManager.GetString("FontType_BoldItalics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Špeciálne písmo.
+        /// </summary>
+        internal static string FontType_Special {
+            get {
+                return ResourceManager.GetString("FontType_Special", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odchodová.
+        /// </summary>
+        internal static string ViewType_Odchodova {
+            get {
+                return ResourceManager.GetString("ViewType_Odchodova", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prichodová.
+        /// </summary>
+        internal static string ViewType_Prichodova {
+            get {
+                return ResourceManager.GetString("ViewType_Prichodova", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nástupištná.
+        /// </summary>
+        internal static string ViewType_Nastupistna {
+            get {
+                return ResourceManager.GetString("ViewType_Nastupistna", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podchodová.
+        /// </summary>
+        internal static string ViewType_Podchodova {
+            get {
+                return ResourceManager.GetString("ViewType_Podchodova", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reklamná.
+        /// </summary>
+        internal static string ViewType_Reklamna {
+            get {
+                return ResourceManager.GetString("ViewType_Reklamna", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iná.
+        /// </summary>
+        internal static string ViewType_Ina {
+            get {
+                return ResourceManager.GetString("ViewType_Ina", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prázdna tabuľa.
+        /// </summary>
+        internal static string ViewMode_Nothing {
+            get {
+                return ResourceManager.GetString("ViewMode_Nothing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak bez meškania.
+        /// </summary>
+        internal static string ViewMode_Vlak {
+            get {
+                return ResourceManager.GetString("ViewMode_Vlak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Na príchode meškajúci vlak.
+        /// </summary>
+        internal static string ViewMode_VlakZmeskanyPrichod {
+            get {
+                return ResourceManager.GetString("ViewMode_VlakZmeskanyPrichod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Na odchode meškajúci vlak.
+        /// </summary>
+        internal static string ViewMode_VlakZmeskanyOdchod {
+            get {
+                return ResourceManager.GetString("ViewMode_VlakZmeskanyOdchod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Na príchode i odchode meškajúci vlak.
+        /// </summary>
+        internal static string ViewMode_VlakZmeskany {
+            get {
+                return ResourceManager.GetString("ViewMode_VlakZmeskany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0: Text bez prekódovania.
+        /// </summary>
+        internal static string DivType_Free {
+            get {
+                return ResourceManager.GetString("DivType_Free", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1: Len hodnoty z TAB1 (inak prázdne).
+        /// </summary>
+        internal static string DivType_Table {
+            get {
+                return ResourceManager.GetString("DivType_Table", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2: Čas HH:MM po častiach (TAB1 a TAB2).
+        /// </summary>
+        internal static string DivType_TableTime {
+            get {
+                return ResourceManager.GetString("DivType_TableTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3: Prekódovať podľa TAB1, ak sa dá.
+        /// </summary>
+        internal static string DivType_Translate {
+            get {
+                return ResourceManager.GetString("DivType_Translate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4: Znak po znaku podľa TAB1.
+        /// </summary>
+        internal static string DivType_Char {
+            get {
+                return ResourceManager.GetString("DivType_Char", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vľavo.
+        /// </summary>
+        internal static string Align_Left {
+            get {
+                return ResourceManager.GetString("Align_Left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vpravo.
+        /// </summary>
+        internal static string Align_Right {
+            get {
+                return ResourceManager.GetString("Align_Right", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V strede.
+        /// </summary>
+        internal static string Align_Center {
+            get {
+                return ResourceManager.GetString("Align_Center", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Používateľský typ vlaku {0}.
+        /// </summary>
+        internal static string TabTabAC_UserType {
+            get {
+                return ResourceManager.GetString("TabTabAC_UserType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Používateľský typ vlaku {0} (typu rýchlik).
+        /// </summary>
+        internal static string TabTabAC_UserTypeR {
+            get {
+                return ResourceManager.GetString("TabTabAC_UserTypeR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Používateľský typ vlaku {0} (typu Os).
+        /// </summary>
+        internal static string TabTabAC_UserTypeOs {
+            get {
+                return ResourceManager.GetString("TabTabAC_UserTypeOs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Používateľský typ vlaku {0} (typu služobný vlak).
+        /// </summary>
+        internal static string TabTabAC_UserTypeSl {
+            get {
+                return ResourceManager.GetString("TabTabAC_UserTypeSl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanica "{0}" neexistuje..
+        /// </summary>
+        internal static string Station_NotFound {
+            get {
+                return ResourceManager.GetString("Station_NotFound", resourceCulture);
             }
         }
 }

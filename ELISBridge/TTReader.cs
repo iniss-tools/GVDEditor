@@ -7,8 +7,8 @@ using System.Text.RegularExpressions;
 namespace Iniss.Elis;
 
 /// <summary>
-///     Vyhodena, ked platene data vyzaduju registraciu a tu nebolo mozne vykonat
-///     (chybne alebo chybajuce registracne cislo).
+/// Vyhodena, ked platene data vyzaduju registraciu a tu nebolo mozne vykonat
+/// (chybne alebo chybajuce registracne cislo).
 /// </summary>
 internal sealed class RegistrationException : Exception
 {
@@ -16,20 +16,20 @@ internal sealed class RegistrationException : Exception
 }
 
 /// <summary>
-///     Stanica aj s jej cislom v ciselniku dopravcu (pre zeleznicu kod SR70).
+/// Stanica aj s jej cislom v ciselniku dopravcu (pre zeleznicu kod SR70).
 /// </summary>
 /// <param name="Code">Cislo stanice, napr. 5613600.</param>
 /// <param name="Name">Nazov stanice tak, ako ho uvadza ELIS.</param>
 internal readonly record struct ElisStationCode(int Code, string Name);
 
 /// <summary>
-///     Vycita z dat ELIS vsetky vlaky prechadzajuce zadanou stanicou.
+/// Vycita z dat ELIS vsetky vlaky prechadzajuce zadanou stanicou.
 /// </summary>
 internal sealed partial class TTReader
 {
     /// <summary>
-    ///     Poznamka vlaku s linkou integrovaneho dopravneho systemu, napr.
-    ///     <c>linka R2 [IDS PLUS] (Žilina-&gt;Čadca)</c>.
+    /// Poznamka vlaku s linkou integrovaneho dopravneho systemu, napr.
+    /// <c>linka R2 [IDS PLUS] (Žilina-&gt;Čadca)</c>.
     /// </summary>
     [GeneratedRegex(@"^linka (\S+) \[([^\]]+)\] \((.+)->(.+)\)$")]
     private static partial Regex IdsLineRegex();
@@ -57,8 +57,8 @@ internal sealed partial class TTReader
 
     /// <summary>Zavedie cestovne poriadky.</summary>
     /// <exception cref="InvalidOperationException">
-    ///     ak sa nenacital ziadny cestovny poriadok - vratane pripadu, ked platene data
-    ///     vyzaduju registraciu a ta zlyhala (chybne/chybajuce cislo).
+    /// ak sa nenacital ziadny cestovny poriadok - vratane pripadu, ked platene data
+    /// vyzaduju registraciu a ta zlyhala (chybne/chybajuce cislo).
     /// </exception>
     public void Open()
     {
@@ -107,8 +107,8 @@ internal sealed partial class TTReader
     }
 
     /// <summary>
-    ///     Vrati stanice aj s ich cislom v ciselniku (pre zeleznicne poriadky kod SR70),
-    ///     zoradene podla nazvu. Stanice bez cisla vynechava.
+    /// Vrati stanice aj s ich cislom v ciselniku (pre zeleznicne poriadky kod SR70),
+    /// zoradene podla nazvu. Stanice bez cisla vynechava.
     /// </summary>
     /// <param name="skipped">Pocet stanic, ktore ziadne cislo nemaju.</param>
     public static List<ElisStationCode> GetStationCodes(out int skipped)
@@ -139,14 +139,14 @@ internal sealed partial class TTReader
     }
 
     /// <summary>
-    ///     Vycita vsetky vlaky prechadzajuce zadanou stanicou.
+    /// Vycita vsetky vlaky prechadzajuce zadanou stanicou.
     /// </summary>
     /// <param name="stationCode">
-    ///     Cislo stanice (SR70) - ak je kladne, hlada sa najprv podla neho a je to jednoznacne.
+    /// Cislo stanice (SR70) - ak je kladne, hlada sa najprv podla neho a je to jednoznacne.
     /// </param>
     /// <param name="stationName">
-    ///     Nazov stanice; pouzije sa, ak sa podla cisla nic nenaslo. Porovnava sa bez
-    ///     diakritiky, bodiek a pomlciek.
+    /// Nazov stanice; pouzije sa, ak sa podla cisla nic nenaslo. Porovnava sa bez
+    /// diakritiky, bodiek a pomlciek.
     /// </param>
     /// <exception cref="ArgumentException">ak sa stanica v datach nenajde</exception>
     public ElisResult Read(int stationCode, string? stationName)
@@ -320,8 +320,8 @@ internal sealed partial class TTReader
     }
 
     /// <summary>
-    ///     Doplni vlaku linku IDS a traťové číslo, oddelene pre prichod a odchod - vlak moze
-    ///     do stanice prist po jednej trati a odist po inej.
+    /// Doplni vlaku linku IDS a traťové číslo, oddelene pre prichod a odchod - vlak moze
+    /// do stanice prist po jednej trati a odist po inej.
     /// </summary>
     private static void ReadLines(int tt, int tr, int position, int count,
         int[] stopStation, List<string> stations, ElisTrain train)
@@ -354,8 +354,8 @@ internal sealed partial class TTReader
     }
 
     /// <summary>
-    ///     Priradi linku prichodu a/alebo odchodu podla toho, kde na useku
-    ///     &lt;<paramref name="from" />, <paramref name="to" />&gt; lezi nasa stanica.
+    /// Priradi linku prichodu a/alebo odchodu podla toho, kde na useku
+    /// &lt;<paramref name="from" />, <paramref name="to" />&gt; lezi nasa stanica.
     /// </summary>
     /// <returns><see langword="true" />, ak sa linka niekam priradila.</returns>
     private static bool Assign(string line, int from, int to, int position,
@@ -412,7 +412,7 @@ internal sealed partial class TTReader
             bits.Append(runs != 0 ? '1' : '0');
         }
 
-        TTNative.TTError(); // vycistenie pripadneho kodu 18 (datum mimo rozsahu)
+        _ = TTNative.TTError(); // vycistenie pripadneho kodu 18 (datum mimo rozsahu)
         
         return bits.ToString();
     }

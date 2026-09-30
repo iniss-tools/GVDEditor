@@ -4,8 +4,8 @@ using System.Text;
 namespace Iniss.Elis;
 
 /// <summary>
-///     x86 host nad TT.dll. GVDEditor bezi ako 64-bitovy proces a 32-bitovu TT.dll
-///     zavolat priamo nemoze, preto s nou hovori cez tento pomocny program.
+/// x86 host nad TT.dll. GVDEditor bezi ako 64-bitovy proces a 32-bitovu TT.dll
+/// zavolat priamo nemoze, preto s nou hovori cez tento pomocny program.
 /// </summary>
 internal static class Program
 {
@@ -162,8 +162,8 @@ internal static class Program
     }
 
     /// <summary>
-    ///     Vypise verziu ELISBridge a TT.dll. Kniznica sa musi najprv zaviest cez
-    ///     <see cref="TTNative.LoadFrom" /> - bez toho ju P/Invoke hlada len vedla .exe a v PATH.
+    /// Vypise verziu ELISBridge a TT.dll. Kniznica sa musi najprv zaviest cez
+    /// <see cref="TTNative.LoadFrom" /> - bez toho ju P/Invoke hlada len vedla .exe a v PATH.
     /// </summary>
     private static int WriteVersion(string app)
     {
@@ -183,7 +183,7 @@ internal static class Program
     }
 
     /// <summary>
-    ///     Zapise ciselnik stanic vo formate <c>5613600,"Košice"</c> - jedna stanica na riadok.
+    /// Zapise ciselnik stanic vo formate <c>5613600,"Košice"</c> - jedna stanica na riadok.
     /// </summary>
     /// <param name="output">Cielovy subor, alebo <see langword="null" /> pre standardny vystup.</param>
     private static void WriteStationCodes(string? output)

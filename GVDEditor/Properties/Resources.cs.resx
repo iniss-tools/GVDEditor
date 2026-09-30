@@ -1940,4 +1940,1011 @@ Pokračovat?</value>
   <data name="FMain_Variant_Prekrytie" xml:space="preserve">
     <value>Překrývá se s variantou {0} ve dnech „{1}“.</value>
   </data>
+  <data name="GrafikonLanguages_Ziadny" xml:space="preserve">
+    <value>Grafikon musí používat alespoň jeden jazyk.</value>
+  </data>
+  <data name="GrafikonLanguages_Hlavny_Vypnuty" xml:space="preserve">
+    <value>Hlavní jazyk stanice ({0}) nelze vypnout.</value>
+  </data>
+  <data name="GrafikonLanguages_Radenie" xml:space="preserve">
+    <value>Řazení vlaku {1} obsahuje nahrávky v jazyce {0}. Jazyk lze vypnout, až když je z řazení odstraníte.</value>
+  </data>
+  <data name="GrafikonLanguages_Vlaky" xml:space="preserve">
+    <value>Počet vlaků se zapnutým jazykem {0}: {1}. INISS ho u nich přeskočí, dokud ho grafikon nepoužívá.</value>
+  </data>
+  <data name="GrafikonLanguages_Hlavny_Polozka" xml:space="preserve">
+    <value>{0} (hlavní jazyk)</value>
+  </data>
+  <data name="Cmd_New" xml:space="preserve">
+    <value>Nový grafikon</value>
+  </data>
+  <data name="Cmd_Open" xml:space="preserve">
+    <value>Otevřít instalaci</value>
+  </data>
+  <data name="Cmd_ImportGvd" xml:space="preserve">
+    <value>Importovat grafikon</value>
+  </data>
+  <data name="Cmd_ImportData" xml:space="preserve">
+    <value>Importovat data</value>
+  </data>
+  <data name="Cmd_ImportElis" xml:space="preserve">
+    <value>Importovat z ELIS</value>
+  </data>
+  <data name="Cmd_Save" xml:space="preserve">
+    <value>Uložit grafikon</value>
+  </data>
+  <data name="Cmd_Analyze" xml:space="preserve">
+    <value>Analyzovat grafikon</value>
+  </data>
+  <data name="Cmd_AddTrain" xml:space="preserve">
+    <value>Přidat vlak</value>
+  </data>
+  <data name="Cmd_EditTrain" xml:space="preserve">
+    <value>Upravit vybraný vlak</value>
+  </data>
+  <data name="Cmd_DeleteTrains" xml:space="preserve">
+    <value>Odstranit vybrané vlaky</value>
+  </data>
+  <data name="Cmd_DuplicateTrain" xml:space="preserve">
+    <value>Duplikovat vybraný vlak</value>
+  </data>
+  <data name="Cmd_LocalSettings" xml:space="preserve">
+    <value>Lokální nastavení</value>
+  </data>
+  <data name="Cmd_GlobalSettings" xml:space="preserve">
+    <value>Globální nastavení</value>
+  </data>
+  <data name="Cmd_AppSettings" xml:space="preserve">
+    <value>Nastavení programu</value>
+  </data>
+  <data name="Cmd_GSGvds" xml:space="preserve">
+    <value>Globální nastavení – Grafikony</value>
+  </data>
+  <data name="Cmd_GSLanguages" xml:space="preserve">
+    <value>Globální nastavení – Jazyky</value>
+  </data>
+  <data name="Cmd_GSDelays" xml:space="preserve">
+    <value>Globální nastavení – Zpoždění</value>
+  </data>
+  <data name="Cmd_GSTrainTypes" xml:space="preserve">
+    <value>Globální nastavení – Typy vlaků</value>
+  </data>
+  <data name="Cmd_GSAudio" xml:space="preserve">
+    <value>Globální nastavení – Audio</value>
+  </data>
+  <data name="Cmd_LSGvd" xml:space="preserve">
+    <value>Lokální nastavení – Grafikon</value>
+  </data>
+  <data name="Cmd_LSLanguages" xml:space="preserve">
+    <value>Lokální nastavení – Jazyky hlášení</value>
+  </data>
+  <data name="Cmd_LSStations" xml:space="preserve">
+    <value>Lokální nastavení – Vlastní stanice</value>
+  </data>
+  <data name="Cmd_LSOperators" xml:space="preserve">
+    <value>Lokální nastavení – Dopravci</value>
+  </data>
+  <data name="Cmd_LSPlatforms" xml:space="preserve">
+    <value>Lokální nastavení – Nástupiště</value>
+  </data>
+  <data name="Cmd_LSTracks" xml:space="preserve">
+    <value>Lokální nastavení – Koleje</value>
+  </data>
+  <data name="Cmd_LSPhysicalTables" xml:space="preserve">
+    <value>Lokální nastavení – Fyzické tabule</value>
+  </data>
+  <data name="Cmd_LSLogicalTables" xml:space="preserve">
+    <value>Lokální nastavení – Logické tabule</value>
+  </data>
+  <data name="Cmd_LSCatalogTables" xml:space="preserve">
+    <value>Lokální nastavení – Katalogové tabule</value>
+  </data>
+  <data name="Cmd_LSTabTab" xml:space="preserve">
+    <value>Lokální nastavení – TabTab</value>
+  </data>
+  <data name="Cmd_LSTableTexts" xml:space="preserve">
+    <value>Lokální nastavení – Texty na tabulích</value>
+  </data>
+  <data name="Cmd_LSTableFonts" xml:space="preserve">
+    <value>Lokální nastavení – Písma</value>
+  </data>
+  <data name="Cmd_LSTabTabEditor" xml:space="preserve">
+    <value>Lokální nastavení – Editor TabTab</value>
+  </data>
+  <data name="Cmd_StateDgm" xml:space="preserve">
+    <value>Stavový diagram</value>
+  </data>
+  <data name="Cmd_RunIniss" xml:space="preserve">
+    <value>Spustit INISS</value>
+  </data>
+  <data name="Cmd_ShutdownIniss" xml:space="preserve">
+    <value>Ukončit INISS</value>
+  </data>
+  <data name="Cmd_KillIniss" xml:space="preserve">
+    <value>Vynutit ukončení INISS</value>
+  </data>
+  <data name="Cmd_RestartIniss" xml:space="preserve">
+    <value>Restartovat INISS</value>
+  </data>
+  <data name="Cmd_InissStartupSettings" xml:space="preserve">
+    <value>Nastavení spouštění INISS</value>
+  </data>
+  <data name="Cmd_InfoApp" xml:space="preserve">
+    <value>Informace o programu</value>
+  </data>
+  <data name="Cmd_UpdateNotes" xml:space="preserve">
+    <value>Poznámky k aktualizacím</value>
+  </data>
+  <data name="Cmd_DateLimit" xml:space="preserve">
+    <value>Generátor datumových omezení</value>
+  </data>
+  <data name="FMain_Import_prebieha" xml:space="preserve">
+    <value>Probíhá importování údajů...</value>
+  </data>
+  <data name="FMain_Vyberte_priecinok_s_grafikonom" xml:space="preserve">
+    <value>Vyberte složku obsahující grafikon</value>
+  </data>
+  <data name="FMain_Vyberte_priecinok_s_INISS" xml:space="preserve">
+    <value>Vyberte složku s INISS.exe</value>
+  </data>
+  <data name="GlobalSettings_Ulozenie_zlyhalo_vratene" xml:space="preserve">
+    <value>Uložení globálních nastavení selhalo, žádné změny se neuložily. Soubory ve složce DATA zůstaly v původním stavu.
+
+{0}</value>
+  </data>
+  <data name="GlobalSettings_Ulozenie_zlyhalo_neobnovene" xml:space="preserve">
+    <value>Uložení globálních nastavení selhalo a původní stav se nepodařilo obnovit. Soubory ve složce DATA mohou být nekonzistentní.
+
+Záloha původních souborů: {1}
+
+{0}</value>
+  </data>
+  <data name="Analyzer_ZpozdeniCacheOld" xml:space="preserve">
+    <value>{0} je novější než vyrovnávací paměť {1}; INISS bude dál používat starý seznam zpoždění.</value>
+  </data>
+  <data name="Analyzer_ZpozdeniCacheOld_Fix" xml:space="preserve">
+    <value>Smazat {0} (INISS si ho při startu vytvoří znovu)</value>
+  </data>
+  <data name="Analyzer_DeleteFailed" xml:space="preserve">
+    <value>Nepodařilo se smazat {0}</value>
+  </data>
+  <data name="Analyzer_TableCatalog" xml:space="preserve">
+    <value>Katalogová</value>
+  </data>
+  <data name="Analyzer_TablePhysical" xml:space="preserve">
+    <value>Fyzická</value>
+  </data>
+  <data name="Analyzer_TableLogical" xml:space="preserve">
+    <value>Logická</value>
+  </data>
+  <data name="Analyzer_TableUnused" xml:space="preserve">
+    <value>{0} tabule {1} se nikde nepoužívá.</value>
+  </data>
+  <data name="Analyzer_TableUnused_Fix" xml:space="preserve">
+    <value>Odstranit tabuli</value>
+  </data>
+  <data name="Analyzer_TabTabUnused" xml:space="preserve">
+    <value>TabTab {0} se nikde nepoužívá.</value>
+  </data>
+  <data name="Analyzer_TabTabUnused_Fix" xml:space="preserve">
+    <value>Odstranit TabTab</value>
+  </data>
+  <data name="Analyzer_CatalogNoRows" xml:space="preserve">
+    <value>Katalogová tabule {0} nemá nastavené žádné řádky (segmenty).</value>
+  </data>
+  <data name="Analyzer_CatalogNoRows_Fix" xml:space="preserve">
+    <value>Upravit segmenty katalogové tabule</value>
+  </data>
+  <data name="Analyzer_TextNoRealization" xml:space="preserve">
+    <value>Text na tabuli „{0}“ nemá žádnou realizaci.</value>
+  </data>
+  <data name="Analyzer_TextNoRealization_Fix" xml:space="preserve">
+    <value>Přidat realizace textu</value>
+  </data>
+  <data name="Analyzer_TextNoTrains" xml:space="preserve">
+    <value>Text na tabuli „{0}“ nemá přiřazené žádné vlaky.</value>
+  </data>
+  <data name="Analyzer_TextNoTrains_Fix" xml:space="preserve">
+    <value>Přidat vlaky k textu</value>
+  </data>
+  <data name="Analyzer_TabTabEmpty" xml:space="preserve">
+    <value>TabTab {0} je prázdný.</value>
+  </data>
+  <data name="Analyzer_TabTabEmpty_Fix" xml:space="preserve">
+    <value>Upravit TabTab</value>
+  </data>
+  <data name="Analyzer_TabTabProblems" xml:space="preserve">
+    <value>TabTab {0}: {1} – ř. {2}: {3}</value>
+  </data>
+  <data name="Analyzer_DataExpired" xml:space="preserve">
+    <value>Grafikonu {0} vypršela platnost dat ({1:dd.MM.yyyy}).</value>
+  </data>
+  <data name="Analyzer_DataExpired_Fix" xml:space="preserve">
+    <value>Změnit platnost dat</value>
+  </data>
+  <data name="TablesFile_NoKey" xml:space="preserve">
+    <value>{0} s názvem {1} nemá zadaný klíč.</value>
+  </data>
+  <data name="TablesFile_DuplicateKey" xml:space="preserve">
+    <value>{0} s názvem {1} má klíč "{2}" shodný s jinou tabulí.</value>
+  </data>
+  <data name="TablesFile_TabTabInvalidName" xml:space="preserve">
+    <value>TabTab č. {0} má neplatný název (prázdný nebo obsahující pouze bílé znaky).</value>
+  </data>
+  <data name="TablesFile_BadManufacturer" xml:space="preserve">
+    <value>Katalogová tabule {0} má zadaný neplatný klíč výrobce (MANUFACTURER_KEY): {1}.</value>
+  </data>
+  <data name="TablesFile_BadFillSection" xml:space="preserve">
+    <value>Katalogová tabule {0} obsahuje pro sloupec {1} neplatnou hodnotu TYPE_ITEMS_IDX: {2}.</value>
+  </data>
+  <data name="TablesFile_BadAlign" xml:space="preserve">
+    <value>Katalogová tabule {0} obsahuje pro sloupec {1} neplatnou hodnotu TYPE_ITEMS_ALIGN: {2}.</value>
+  </data>
+  <data name="TablesFile_BadDivType" xml:space="preserve">
+    <value>Katalogová tabule {0} obsahuje pro sloupec {1} neplatnou hodnotu TYPE_ITEMS_DIVTYPE: {2}.</value>
+  </data>
+  <data name="TablesFile_BadViewType" xml:space="preserve">
+    <value>Katalogová tabule {0} obsahuje neplatný typ zobrazení (TYPE_VIEW_TAB_KEY): {1}.</value>
+  </data>
+  <data name="TablesFile_BadLineCount" xml:space="preserve">
+    <value>Katalogová tabule {0} obsahuje v typu zobrazení {1} neplatný počet řádků - "{2}" (počet má být číslo).</value>
+  </data>
+  <data name="TablesFile_BadColumn" xml:space="preserve">
+    <value>Katalogová tabule {0} obsahuje v typu {1} v režimu {2} neplatný sloupec {3}.</value>
+  </data>
+  <data name="TablesFile_CatalogMissing" xml:space="preserve">
+    <value>Katalogová tabule {0}, která byla použita ve fyzické tabuli {1}, neexistuje.</value>
+  </data>
+  <data name="TablesFile_LogicalBadViewType" xml:space="preserve">
+    <value>Logická tabule {0} obsahuje neplatný typ zobrazení (TYPE_VIEW): {1}.</value>
+  </data>
+  <data name="TablesFile_LogicalBadViewKey" xml:space="preserve">
+    <value>Logická tabule {0} obsahuje neplatný klíč typu zobrazení (TYPE_VIEW_KEY_{1}_{2}): {3}.</value>
+  </data>
+  <data name="TablesFile_LogicalPhysicalMissing" xml:space="preserve">
+    <value>Logická tabule {0} obsahuje neexistující fyzickou tabuli {1}.</value>
+  </data>
+  <data name="TablesFile_TabTabMissing" xml:space="preserve">
+    <value>Katalogová tabule {0} obsahuje pro sloupec {1} neexistující {2} {3}.</value>
+  </data>
+  <data name="FindReplace_FindNext" xml:space="preserve">
+    <value>Hledat další</value>
+  </data>
+  <data name="FindReplace_Count" xml:space="preserve">
+    <value>Spočítat</value>
+  </data>
+  <data name="FindReplace_Replace" xml:space="preserve">
+    <value>Nahradit</value>
+  </data>
+  <data name="FindReplace_ReplaceAll" xml:space="preserve">
+    <value>Nahradit vše</value>
+  </data>
+  <data name="FindReplace_InvalidInput" xml:space="preserve">
+    <value>Neplatný vstup pro hledání</value>
+  </data>
+  <data name="FindReplace_Found" xml:space="preserve">
+    <value>{0} nalezených</value>
+  </data>
+  <data name="FindReplace_EndOfDocument" xml:space="preserve">
+    <value>Dosáhli jste konce dokumentu</value>
+  </data>
+  <data name="FindReplace_Replaced" xml:space="preserve">
+    <value>Všech {0} výskytů bylo nahrazeno</value>
+  </data>
+  <data name="FindReplace_Ready" xml:space="preserve">
+    <value>Připraveno</value>
+  </data>
+  <data name="Scheme_TabTabEditor" xml:space="preserve">
+    <value>Editor TabTab</value>
+  </data>
+  <data name="Scheme_Number" xml:space="preserve">
+    <value>Číslo</value>
+  </data>
+  <data name="Scheme_String" xml:space="preserve">
+    <value>Řetězec</value>
+  </data>
+  <data name="Scheme_Comment" xml:space="preserve">
+    <value>Komentář</value>
+  </data>
+  <data name="Scheme_OnNewLine" xml:space="preserve">
+    <value>Zápis na další řádek</value>
+  </data>
+  <data name="Scheme_Operator" xml:space="preserve">
+    <value>Operátor</value>
+  </data>
+  <data name="Scheme_Constant" xml:space="preserve">
+    <value>Konstanta</value>
+  </data>
+  <data name="Scheme_Default" xml:space="preserve">
+    <value>Výchozí</value>
+  </data>
+  <data name="Scheme_Var" xml:space="preserve">
+    <value>Proměnná</value>
+  </data>
+  <data name="Scheme_Event" xml:space="preserve">
+    <value>Událost</value>
+  </data>
+  <data name="Scheme_Function" xml:space="preserve">
+    <value>Funkce</value>
+  </data>
+  <data name="Scheme_Identifier" xml:space="preserve">
+    <value>Identifikátor</value>
+  </data>
+  <data name="Scheme_SelBraces" xml:space="preserve">
+    <value>Zvýraznění závorek</value>
+  </data>
+  <data name="Scheme_SelBraceBad" xml:space="preserve">
+    <value>Zvýraznění závorky, které chybí pár</value>
+  </data>
+  <data name="Scheme_TrainTypeColumn" xml:space="preserve">
+    <value>Sloupec typ vlaku</value>
+  </data>
+  <data name="Column_Number" xml:space="preserve">
+    <value>Číslo</value>
+  </data>
+  <data name="Column_Type" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="Column_Name" xml:space="preserve">
+    <value>Název</value>
+  </data>
+  <data name="Column_LineArrival" xml:space="preserve">
+    <value>Linka příjezd</value>
+  </data>
+  <data name="Column_LineDeparture" xml:space="preserve">
+    <value>Linka odjezd</value>
+  </data>
+  <data name="Column_Routing" xml:space="preserve">
+    <value>Směrování</value>
+  </data>
+  <data name="Column_Arrival" xml:space="preserve">
+    <value>Příjezd</value>
+  </data>
+  <data name="Column_Departure" xml:space="preserve">
+    <value>Odjezd</value>
+  </data>
+  <data name="Column_StartStation" xml:space="preserve">
+    <value>Výchozí stanice</value>
+  </data>
+  <data name="Column_EndStation" xml:space="preserve">
+    <value>Konečná stanice</value>
+  </data>
+  <data name="Column_DateLimit" xml:space="preserve">
+    <value>Datumové omezení</value>
+  </data>
+  <data name="Column_Track" xml:space="preserve">
+    <value>Kolej</value>
+  </data>
+  <data name="Column_Operator" xml:space="preserve">
+    <value>Dopravce</value>
+  </data>
+  <data name="Column_Other" xml:space="preserve">
+    <value>Ostatní</value>
+  </data>
+  <data name="Analyzer_Info" xml:space="preserve">
+    <value>Informace</value>
+  </data>
+  <data name="Analyzer_Warning" xml:space="preserve">
+    <value>Upozornění</value>
+  </data>
+  <data name="Analyzer_FixAuto" xml:space="preserve">
+    <value>Automaticky</value>
+  </data>
+  <data name="Analyzer_FixAuto_Tip" xml:space="preserve">
+    <value>Program opraví problém sám</value>
+  </data>
+  <data name="Analyzer_FixSemi" xml:space="preserve">
+    <value>Poloautomaticky</value>
+  </data>
+  <data name="Analyzer_FixSemi_Tip" xml:space="preserve">
+    <value>Uživatel vybere jednu možnost opravy</value>
+  </data>
+  <data name="Analyzer_FixManual" xml:space="preserve">
+    <value>Ručně</value>
+  </data>
+  <data name="Analyzer_FixManual_Tip" xml:space="preserve">
+    <value>Uživatel musí problém opravit sám, program jen navede k řešení</value>
+  </data>
+  <data name="Analyzer_FixError" xml:space="preserve">
+    <value>Během operace došlo k chybě: {0}</value>
+  </data>
+  <data name="Analyzer_NotFixed" xml:space="preserve">
+    <value>Uživatel chybu neopravil.</value>
+  </data>
+  <data name="Analyzer_Fixed" xml:space="preserve">
+    <value>Problém byl opraven.</value>
+  </data>
+  <data name="LogZvuk_UnexpectedObject" xml:space="preserve">
+    <value>Neočekávaný objekt {0} na pozici {1}.</value>
+  </data>
+  <data name="LogZvuk_UnknownDataObject" xml:space="preserve">
+    <value>Neznámý objekt dat {0} u položky {1}.</value>
+  </data>
+  <data name="LogZvuk_ReadPartial" xml:space="preserve">
+    <value>Soubor {0} se nepodařilo přečíst celý ({1} načtených položek): {2}</value>
+  </data>
+  <data name="LogZvuk_BackRefUnsupported" xml:space="preserve">
+    <value>Odkaz na již načtený objekt není podporován.</value>
+  </data>
+  <data name="LogZvuk_BadClassRef" xml:space="preserve">
+    <value>Neplatný odkaz na třídu {0}.</value>
+  </data>
+  <data name="LogZvuk_NegativeLength" xml:space="preserve">
+    <value>Záporná délka textu.</value>
+  </data>
+  <data name="DateLimit_UseFromTo" xml:space="preserve">
+    <value>Pro interval dat použijte od ... do ..., ne -.</value>
+  </data>
+  <data name="DateLimit_BadDate" xml:space="preserve">
+    <value>Chybné datum {0}.</value>
+  </data>
+  <data name="DateLimit_EndOutOfRange" xml:space="preserve">
+    <value>Koncové datum {0} je mimo rozsah platnosti grafikonu.</value>
+  </data>
+  <data name="DateLimit_OutOfRange" xml:space="preserve">
+    <value>Datum {0} je mimo rozsah platnosti grafikonu.</value>
+  </data>
+  <data name="DateLimit_BadMonth" xml:space="preserve">
+    <value>Neplatný měsíc {0}.</value>
+  </data>
+  <data name="DateLimit_ToBeforeFrom" xml:space="preserve">
+    <value>Datum do {0} je menší než datum od {1}.</value>
+  </data>
+  <data name="DateLimit_BadBitArray" xml:space="preserve">
+    <value>Bitové pole na vstupu chybí nebo neodpovídá jeho délka.</value>
+  </data>
+  <data name="DateLimit_BadDayCode" xml:space="preserve">
+    <value>Chybný pevný kód dne {0}.</value>
+  </data>
+  <data name="Import_ConvertFailed" xml:space="preserve">
+    <value>Hodnota "{0}" na řádku {1}, sloupec {2} ({3}), nemohla být převedena na {4}.</value>
+  </data>
+  <data name="Import_RequiredColumns" xml:space="preserve">
+    <value>Nejsou zadány všechny povinné sloupce pro import. Povinné sloupce jsou:
+Směrování vlaku a/nebo stanice vlaku,
+</value>
+  </data>
+  <data name="Import_NoRoute" xml:space="preserve">
+    <value>Chybí směrování vlaku nebo stanice vlaku.</value>
+  </data>
+  <data name="Import_OnlyHomeStation" xml:space="preserve">
+    <value>Vlak na řádku {0} nemá v trase žádnou stanici kromě této.</value>
+  </data>
+  <data name="TrainDraft_NoRoute" xml:space="preserve">
+    <value>Vlak nemá trasu.</value>
+  </data>
+  <data name="TrainDraft_NoTrack" xml:space="preserve">
+    <value>Vlak nemá kolej.</value>
+  </data>
+  <data name="TrainDraft_NoType" xml:space="preserve">
+    <value>Vlak nemá typ.</value>
+  </data>
+  <data name="TrainDraft_NoOperator" xml:space="preserve">
+    <value>Vlak nemá dopravce.</value>
+  </data>
+  <data name="TracksFile_PlatformDiffers" xml:space="preserve">
+    <value>{0}: nástupiště {1} má u kolejí různé údaje: {2}. </value>
+  </data>
+  <data name="TracksFile_PlatformShared" xml:space="preserve">
+    <value>Použije se „{0}“/{1}, při uložení se zapíše ke všem jeho kolejím.</value>
+  </data>
+  <data name="TTexts_CatalogMissing" xml:space="preserve">
+    <value>Soubor s texty pro tabule {0} obsahuje neexistující katalogovou tabuli {1}.</value>
+  </data>
+  <data name="TTexts_ColumnMissing" xml:space="preserve">
+    <value>Soubor s texty pro tabule {0} obsahuje neexistující sloupec pro realizaci {1}, který by měl patřit katalogové tabuli {2}.</value>
+  </data>
+  <data name="TTexts_TrainMissing" xml:space="preserve">
+    <value>Soubor s texty pro tabule obsahuje ID neexistujícího vlaku ({0}).</value>
+  </data>
+  <data name="Routes_BadId" xml:space="preserve">
+    <value>Neexistující ID trasy {0} v tomto souboru.</value>
+  </data>
+  <data name="Routes_UnknownType" xml:space="preserve">
+    <value>{0}, řádek {1}: neznámý druh vlaku "{2}" u vlaku {3}; zbytek řádku se přeskakuje.</value>
+  </data>
+  <data name="Routes_NoDefinition" xml:space="preserve">
+    <value>{0}, řádek {1}: vlak {2} {3} nemá definici v {4}; zbytek řádku se přeskakuje.</value>
+  </data>
+  <data name="Razeni_MissingBasics" xml:space="preserve">
+    <value>Chybí základní informace o řazení.</value>
+  </data>
+  <data name="Razeni_BadSoundRef" xml:space="preserve">
+    <value>Neplatný odkaz na nahrávku "{0}".</value>
+  </data>
+  <data name="Razeni_SoundMissing" xml:space="preserve">
+    <value>{0}, řádek {1}: nahrávka {2} se ve zvukové bance nenachází, přeskakuje se.</value>
+  </data>
+  <data name="Categori_TooManyLanguages" xml:space="preserve">
+    <value>{0}: COUNT_LANGUAGES ({1}) je větší než počet jazyků ve zvukové bance ({2}); jazyky bez nahrávek se přeskočí.</value>
+  </data>
+  <data name="Categori_LanguageMissing" xml:space="preserve">
+    <value>{0}: jazyk {1} se ve zvukové bance nenachází, přeskakuje se.</value>
+  </data>
+  <data name="Categori_BadLanguageKey" xml:space="preserve">
+    <value>Neplatný klíč jazyka {0} v souboru {1}.</value>
+  </data>
+  <data name="Pozice_TrackMissing" xml:space="preserve">
+    <value>Neexistující kolej {0}</value>
+  </data>
+  <data name="Pozice_DepartureTrackMissing" xml:space="preserve">
+    <value>Neexistující kolej při odjezdu {0}</value>
+  </data>
+  <data name="Export3_TypeMissing" xml:space="preserve">
+    <value>Neexistující typ vlaku {0}</value>
+  </data>
+  <data name="Export3_RoutingMissing" xml:space="preserve">
+    <value>Neexistující směrování vlaku {0}</value>
+  </data>
+  <data name="BlockMigrator_Split" xml:space="preserve">
+    <value>Grafikon {0} rozdělen do {1} složek: {2}</value>
+  </data>
+  <data name="Vyluka_OnlyOne" xml:space="preserve">
+    <value>Vlak nemůže mít v grafikonu více než jednu výluku.</value>
+  </data>
+  <data name="TrTypes_Unknown" xml:space="preserve">
+    <value>Neznámý typ vlaku {0}</value>
+  </data>
+  <data name="ModeTabs_BadFontType" xml:space="preserve">
+    <value>Písmo tabule {0} má neplatný typ (BOLD_FACE_{1}): {2}.</value>
+  </data>
+  <data name="Doplnky_NoSound" xml:space="preserve">
+    <value>{0}, řádek {1}: doplněk {2} vlaku {3} nemá zvuk ve skupině DODATKY; při uložení se ztratí.</value>
+  </data>
+  <data name="Doplnky_TrainItem" xml:space="preserve">
+    <value>Doplněk vlaku [{0},{1}]: </value>
+  </data>
+  <data name="DirList_RootGrafikon" xml:space="preserve">
+    <value>DirList.TXT: grafikon přímo ve složce DATA se do seznamu nezapisuje – INISS ho po zápisu DirList.TXT přestane vidět.</value>
+  </data>
+  <data name="Dodatok_NotNumbers" xml:space="preserve">
+    <value>Pole doplňku neobsahuje pouze čísla.</value>
+  </data>
+  <data name="Dodatok_BadMapLength" xml:space="preserve">
+    <value>Mapa doplňku má nesprávnou délku ({0}). Měla by mít délku {1}.</value>
+  </data>
+  <data name="Dodatok_OnlyBinary" xml:space="preserve">
+    <value>Pole doplňku musí obsahovat pouze číslice 0 a 1.</value>
+  </data>
+  <data name="TableText_FillUnsupported" xml:space="preserve">
+    <value>Obsah sloupce "{0}" generování textů nepodporuje.</value>
+  </data>
+  <data name="FormatCommon_Error" xml:space="preserve">
+    <value>Chyba v souboru {0} na řádku {1}. </value>
+  </data>
+  <data name="FormatCommon_UndefinedField" xml:space="preserve">
+    <value>{0}: Nedefinované pole {1}.</value>
+  </data>
+  <data name="FMain_TrainNoRouting" xml:space="preserve">
+    <value>Vlak {0} {1} {2} nemá definované směrování.</value>
+  </data>
+  <data name="ElisImport_SelectFolder" xml:space="preserve">
+    <value>Vyberte složku s aplikací Cestovné poriadky</value>
+  </data>
+  <data name="TypeName_Physical" xml:space="preserve">
+    <value>Fyzická tabule</value>
+  </data>
+  <data name="TypeName_Logical" xml:space="preserve">
+    <value>Logická tabule</value>
+  </data>
+  <data name="TypeName_Catalog" xml:space="preserve">
+    <value>Katalogová tabule</value>
+  </data>
+  <data name="TypeName_Item" xml:space="preserve">
+    <value>Řádek tabule</value>
+  </data>
+  <data name="TypeName_Text" xml:space="preserve">
+    <value>Text tabule</value>
+  </data>
+  <data name="Routing_Ending" xml:space="preserve">
+    <value>Končící</value>
+  </data>
+  <data name="Routing_Passing" xml:space="preserve">
+    <value>Projíždějící</value>
+  </data>
+  <data name="Routing_Starting" xml:space="preserve">
+    <value>Výchozí</value>
+  </data>
+  <data name="TabTabAC_Constant" xml:space="preserve">
+    <value>(konstanta) </value>
+  </data>
+  <data name="TabTabAC_Event" xml:space="preserve">
+    <value>(událost) </value>
+  </data>
+  <data name="TabTabAC_ParamName" xml:space="preserve">
+    <value>název</value>
+  </data>
+  <data name="TabTabAC_ParamFlag" xml:space="preserve">
+    <value>příznak</value>
+  </data>
+  <data name="TabTabAC_Operator" xml:space="preserve">
+    <value>Zjistí, zda se dopravce daného vlaku rovná zadanému názvu dopravce.</value>
+  </data>
+  <data name="TabTabAC_CVlaku" xml:space="preserve">
+    <value>Vrací číslo daného vlaku.</value>
+  </data>
+  <data name="TabTabAC_Pozice" xml:space="preserve">
+    <value>Vrací pozici vlaku ve stanici (výchozí, projíždějící, končící).</value>
+  </data>
+  <data name="TabTabAC_Typ" xml:space="preserve">
+    <value>Zjistí, zda se typ vlaku rovná zadanému typu vlaku.</value>
+  </data>
+  <data name="TabTabAC_Priznak" xml:space="preserve">
+    <value>Zjistí, zda má daný vlak příznak rovný zadanému příznaku.</value>
+  </data>
+  <data name="TabTabAC_Stav" xml:space="preserve">
+    <value>Zjistí, zda se stav vlaku rovná zadanému stavu vlaku.</value>
+  </data>
+  <data name="TabTabAC_NaklTyp" xml:space="preserve">
+    <value>Vrací, zda je vlak nákladního typu.</value>
+  </data>
+  <data name="TabTabAC_VylukaZde" xml:space="preserve">
+    <value>Vrací, zda má vlak v této stanici výluku.</value>
+  </data>
+  <data name="TabTabAC_Odklon" xml:space="preserve">
+    <value>Vrací, zda má vlak odkloněnou trasu.</value>
+  </data>
+  <data name="TabTabAC_Zpozdeni" xml:space="preserve">
+    <value>Vrací, zda má vlak nějaké zpoždění.</value>
+  </data>
+  <data name="TabTabAC_HomeStation" xml:space="preserve">
+    <value>Zjistí, zda se zájmová stanice rovná zadanému ID stanice.</value>
+  </data>
+  <data name="TabTabAC_BaseStation" xml:space="preserve">
+    <value>Zjistí, zda se výchozí stanice vlaku rovná zadanému ID stanice.</value>
+  </data>
+  <data name="TabTabAC_EndStation" xml:space="preserve">
+    <value>Zjistí, zda se konečná stanice vlaku rovná zadanému ID stanice.</value>
+  </data>
+  <data name="TabTabAC_PozV" xml:space="preserve">
+    <value>Pozice Výchozí</value>
+  </data>
+  <data name="TabTabAC_PozP" xml:space="preserve">
+    <value>Pozice Projíždějící</value>
+  </data>
+  <data name="TabTabAC_PozK" xml:space="preserve">
+    <value>Pozice Končící</value>
+  </data>
+  <data name="TabTabAC_PriznVyl" xml:space="preserve">
+    <value>Příznak Vlak ve výluce</value>
+  </data>
+  <data name="TabTabAC_PriznVylP" xml:space="preserve">
+    <value>Příznak Vlak ve výluce na příjezdu</value>
+  </data>
+  <data name="TabTabAC_PriznVylO" xml:space="preserve">
+    <value>Příznak Vlak ve výluce na odjezdu</value>
+  </data>
+  <data name="TabTabAC_PriznM" xml:space="preserve">
+    <value>Vlak má příznak Mezistátní</value>
+  </data>
+  <data name="TabTabAC_PriznO" xml:space="preserve">
+    <value>Vlak má příznak XXX</value>
+  </data>
+  <data name="TabTabAC_PriznD" xml:space="preserve">
+    <value>Vlak má příznak Dálkový</value>
+  </data>
+  <data name="TabTabAC_PriznX" xml:space="preserve">
+    <value>Vlak má příznak Mimořádný</value>
+  </data>
+  <data name="TabTabAC_PriznR" xml:space="preserve">
+    <value>Vlak má příznak Místenkový</value>
+  </data>
+  <data name="TabTabAC_PriznL" xml:space="preserve">
+    <value>Vlak má příznak Pouze lůžkový</value>
+  </data>
+  <data name="TabTabAC_PriznN" xml:space="preserve">
+    <value>Vlak má příznak Nízkopodlažní</value>
+  </data>
+  <data name="TabTabAC_TypOs" xml:space="preserve">
+    <value>Typ osobní vlak</value>
+  </data>
+  <data name="TabTabAC_TypZr" xml:space="preserve">
+    <value>Typ zrychlený vlak</value>
+  </data>
+  <data name="TabTabAC_TypBus" xml:space="preserve">
+    <value>Typ autobus</value>
+  </data>
+  <data name="TabTabAC_TypR" xml:space="preserve">
+    <value>Typ rychlík</value>
+  </data>
+  <data name="TabTabAC_TypEx" xml:space="preserve">
+    <value>Typ expres</value>
+  </data>
+  <data name="TabTabAC_TypREX" xml:space="preserve">
+    <value>Typ regionální expres</value>
+  </data>
+  <data name="TabTabAC_TypRR" xml:space="preserve">
+    <value>Typ regionální rychlík</value>
+  </data>
+  <data name="TabTabAC_Switch" xml:space="preserve">
+    <value>Text se bude přeblikávat. Pokud text obsahuje '#', budou se části textu oddělené tímto znakem přeblikávat navzájem.</value>
+  </data>
+  <data name="ImportColumn_Number" xml:space="preserve">
+    <value>Číslo</value>
+  </data>
+  <data name="ImportColumn_Type" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="ImportColumn_Variant" xml:space="preserve">
+    <value>Varianta</value>
+  </data>
+  <data name="ImportColumn_Nazov" xml:space="preserve">
+    <value>Název</value>
+  </data>
+  <data name="ImportColumn_Prichod" xml:space="preserve">
+    <value>Příjezd</value>
+  </data>
+  <data name="ImportColumn_Odchod" xml:space="preserve">
+    <value>Odjezd</value>
+  </data>
+  <data name="ImportColumn_DateRemText" xml:space="preserve">
+    <value>Datum. omez. (text)</value>
+  </data>
+  <data name="ImportColumn_DateRemBitArray" xml:space="preserve">
+    <value>Datum. omez. (bitarray)</value>
+  </data>
+  <data name="ImportColumn_PlatnostOd" xml:space="preserve">
+    <value>Platnost od</value>
+  </data>
+  <data name="ImportColumn_PlatnostDo" xml:space="preserve">
+    <value>Platnost do</value>
+  </data>
+  <data name="ImportColumn_DopravcaId" xml:space="preserve">
+    <value>Dopravce (ID)</value>
+  </data>
+  <data name="ImportColumn_DopravcaName" xml:space="preserve">
+    <value>Dopravce (Název)</value>
+  </data>
+  <data name="ImportColumn_Track" xml:space="preserve">
+    <value>Kolej</value>
+  </data>
+  <data name="ImportColumn_Languages" xml:space="preserve">
+    <value>Jazyky</value>
+  </data>
+  <data name="ImportColumn_LinkaOdchod" xml:space="preserve">
+    <value>Linka (odjezd)</value>
+  </data>
+  <data name="ImportColumn_LinkaPrichod" xml:space="preserve">
+    <value>Linka (příjezd)</value>
+  </data>
+  <data name="ImportColumn_Routing" xml:space="preserve">
+    <value>Směrování</value>
+  </data>
+  <data name="ImportColumn_AllStationsID" xml:space="preserve">
+    <value>Všechny stanice (ID stanice)</value>
+  </data>
+  <data name="ImportColumn_StationsShortID" xml:space="preserve">
+    <value>Stanice (krátké hlášení) (ID stanice)</value>
+  </data>
+  <data name="ImportColumn_StationsLongID" xml:space="preserve">
+    <value>Stanice (dlouhé hlášení) (ID stanice)</value>
+  </data>
+  <data name="ImportColumn_AllStationsName" xml:space="preserve">
+    <value>Všechny stanice (název stanice)</value>
+  </data>
+  <data name="ImportColumn_StationsShortName" xml:space="preserve">
+    <value>Stanice (krátké hlášení) (název stanice)</value>
+  </data>
+  <data name="ImportColumn_StationsLongName" xml:space="preserve">
+    <value>Stanice (dlouhé hlášení) (název stanice)</value>
+  </data>
+  <data name="ImportColumn_Attributes" xml:space="preserve">
+    <value>Vlastnosti vlaku</value>
+  </data>
+  <data name="FillSection_NotDefined" xml:space="preserve">
+    <value>Nedefinováno</value>
+  </data>
+  <data name="FillSection_Free" xml:space="preserve">
+    <value>Prázdný text</value>
+  </data>
+  <data name="FillSection_VychadzajucaStanica" xml:space="preserve">
+    <value>Název výchozí stanice</value>
+  </data>
+  <data name="FillSection_StaniceZoSmeru" xml:space="preserve">
+    <value>Stanice ze směru</value>
+  </data>
+  <data name="FillSection_StaniceDoSmeruNastupiste" xml:space="preserve">
+    <value>Stanice do směru (pro nástupištní tabuli)</value>
+  </data>
+  <data name="FillSection_StaniceDoSmeru" xml:space="preserve">
+    <value>Stanice do směru</value>
+  </data>
+  <data name="FillSection_CielovaStanicaNastupiste" xml:space="preserve">
+    <value>Název cílové stanice (nástupiště)</value>
+  </data>
+  <data name="FillSection_CielovaStanicaPodchod" xml:space="preserve">
+    <value>Název cílové stanice (podchod)</value>
+  </data>
+  <data name="FillSection_CielovaStanica" xml:space="preserve">
+    <value>Název cílové stanice</value>
+  </data>
+  <data name="FillSection_CasOdchodu" xml:space="preserve">
+    <value>Čas odjezdu</value>
+  </data>
+  <data name="FillSection_CasPrichodu" xml:space="preserve">
+    <value>Čas příjezdu</value>
+  </data>
+  <data name="FillSection_MeskaniePrichod" xml:space="preserve">
+    <value>Zpoždění na příjezdu</value>
+  </data>
+  <data name="FillSection_MeskanieOdchod" xml:space="preserve">
+    <value>Zpoždění na odjezdu</value>
+  </data>
+  <data name="FillSection_MeskaniePrichodPopis" xml:space="preserve">
+    <value>Zpoždění na příjezdu (ve formátu Mešká X min.)</value>
+  </data>
+  <data name="FillSection_MeskanieOdchodPopis" xml:space="preserve">
+    <value>Zpoždění na odjezdu (ve formátu Mešká X min.)</value>
+  </data>
+  <data name="FillSection_TypVlaku" xml:space="preserve">
+    <value>Typ vlaku (R, Os,...)</value>
+  </data>
+  <data name="FillSection_CisloVlaku" xml:space="preserve">
+    <value>Číslo vlaku (R-121)</value>
+  </data>
+  <data name="FillSection_TypCisloVlaku" xml:space="preserve">
+    <value>Typ a číslo vlaku</value>
+  </data>
+  <data name="FillSection_NazovVlaku" xml:space="preserve">
+    <value>Název vlaku (Košičan)</value>
+  </data>
+  <data name="FillSection_KolajPrichod" xml:space="preserve">
+    <value>Text koleje na příjezdu (z Pozice_A)</value>
+  </data>
+  <data name="FillSection_KolajOdchod" xml:space="preserve">
+    <value>Text koleje na odjezdu (z Pozice_A)</value>
+  </data>
+  <data name="FillSection_NastupistePrichod" xml:space="preserve">
+    <value>Označení nástupiště na příjezdu (z Pozice_A)</value>
+  </data>
+  <data name="FillSection_NastupisteOdchod" xml:space="preserve">
+    <value>Označení nástupiště na odjezdu (z Pozice_A)</value>
+  </data>
+  <data name="FillSection_VlakStojiVStanici" xml:space="preserve">
+    <value>Vlak stojí ve stanici</value>
+  </data>
+  <data name="FillSection_TextLine1" xml:space="preserve">
+    <value>Text 1. řádek</value>
+  </data>
+  <data name="FillSection_TextLine2" xml:space="preserve">
+    <value>Text 2. řádek</value>
+  </data>
+  <data name="FillSection_TypNazovOrCislo" xml:space="preserve">
+    <value>Typ vlaku a název nebo číslo vlaku</value>
+  </data>
+  <data name="FillSection_TypCisloVlaku6Chars" xml:space="preserve">
+    <value>Typ a číslo vlaku na 6 znaků</value>
+  </data>
+  <data name="FillSection_HexTypVlaku" xml:space="preserve">
+    <value>Hex. typ vlaku (8 znaků)</value>
+  </data>
+  <data name="FillSection_TypMedzeraCisloVlaku" xml:space="preserve">
+    <value>Typ, mezera a číslo vlaku</value>
+  </data>
+  <data name="FillSection_NastupisteKolajPrichod" xml:space="preserve">
+    <value>Nástupiště a kolej na příjezdu (text z Pozice_A)</value>
+  </data>
+  <data name="FillSection_NastupisteKolajOdchod" xml:space="preserve">
+    <value>Nástupiště a kolej na odjezdu (text z Pozice_A)</value>
+  </data>
+  <data name="FillSection_KolajAltPrichod" xml:space="preserve">
+    <value>Alternativní text koleje na příjezdu (z Pozice_A)</value>
+  </data>
+  <data name="FillSection_KolajAltOdchod" xml:space="preserve">
+    <value>Alternativní text koleje na odjezdu (z Pozice_A)</value>
+  </data>
+  <data name="FillSection_Dopravca" xml:space="preserve">
+    <value>Dopravce</value>
+  </data>
+  <data name="FillSection_CisloVlaku35" xml:space="preserve">
+    <value>Číslo vlaku (varianta 35)</value>
+  </data>
+  <data name="FillSection_LinkaOdchod" xml:space="preserve">
+    <value>Linka na odjezdu</value>
+  </data>
+  <data name="FillSection_LinkaPrichod" xml:space="preserve">
+    <value>Linka na příjezdu</value>
+  </data>
+  <data name="FillSection_CisloVlaku38" xml:space="preserve">
+    <value>Číslo vlaku (varianta 38)</value>
+  </data>
+  <data name="FontType_None" xml:space="preserve">
+    <value>Normální písmo</value>
+  </data>
+  <data name="FontType_Bold" xml:space="preserve">
+    <value>Tučné písmo</value>
+  </data>
+  <data name="FontType_Italics" xml:space="preserve">
+    <value>Kurzíva</value>
+  </data>
+  <data name="FontType_BoldItalics" xml:space="preserve">
+    <value>Tučná kurzíva</value>
+  </data>
+  <data name="FontType_Special" xml:space="preserve">
+    <value>Speciální písmo</value>
+  </data>
+  <data name="ViewType_Odchodova" xml:space="preserve">
+    <value>Odjezdová</value>
+  </data>
+  <data name="ViewType_Prichodova" xml:space="preserve">
+    <value>Příjezdová</value>
+  </data>
+  <data name="ViewType_Nastupistna" xml:space="preserve">
+    <value>Nástupištní</value>
+  </data>
+  <data name="ViewType_Podchodova" xml:space="preserve">
+    <value>Podchodová</value>
+  </data>
+  <data name="ViewType_Reklamna" xml:space="preserve">
+    <value>Reklamní</value>
+  </data>
+  <data name="ViewType_Ina" xml:space="preserve">
+    <value>Jiná</value>
+  </data>
+  <data name="ViewMode_Nothing" xml:space="preserve">
+    <value>Prázdná tabule</value>
+  </data>
+  <data name="ViewMode_Vlak" xml:space="preserve">
+    <value>Vlak bez zpoždění</value>
+  </data>
+  <data name="ViewMode_VlakZmeskanyPrichod" xml:space="preserve">
+    <value>Na příjezdu zpožděný vlak</value>
+  </data>
+  <data name="ViewMode_VlakZmeskanyOdchod" xml:space="preserve">
+    <value>Na odjezdu zpožděný vlak</value>
+  </data>
+  <data name="ViewMode_VlakZmeskany" xml:space="preserve">
+    <value>Na příjezdu i odjezdu zpožděný vlak</value>
+  </data>
+  <data name="DivType_Free" xml:space="preserve">
+    <value>0: Text bez překódování</value>
+  </data>
+  <data name="DivType_Table" xml:space="preserve">
+    <value>1: Pouze hodnoty z TAB1 (jinak prázdné)</value>
+  </data>
+  <data name="DivType_TableTime" xml:space="preserve">
+    <value>2: Čas HH:MM po částech (TAB1 a TAB2)</value>
+  </data>
+  <data name="DivType_Translate" xml:space="preserve">
+    <value>3: Překódovat podle TAB1, pokud to jde</value>
+  </data>
+  <data name="DivType_Char" xml:space="preserve">
+    <value>4: Znak po znaku podle TAB1</value>
+  </data>
+  <data name="Align_Left" xml:space="preserve">
+    <value>Vlevo</value>
+  </data>
+  <data name="Align_Right" xml:space="preserve">
+    <value>Vpravo</value>
+  </data>
+  <data name="Align_Center" xml:space="preserve">
+    <value>Uprostřed</value>
+  </data>
+  <data name="TabTabAC_UserType" xml:space="preserve">
+    <value>Uživatelský typ vlaku {0}</value>
+  </data>
+  <data name="TabTabAC_UserTypeR" xml:space="preserve">
+    <value>Uživatelský typ vlaku {0} (typu rychlík)</value>
+  </data>
+  <data name="TabTabAC_UserTypeOs" xml:space="preserve">
+    <value>Uživatelský typ vlaku {0} (typu Os)</value>
+  </data>
+  <data name="TabTabAC_UserTypeSl" xml:space="preserve">
+    <value>Uživatelský typ vlaku {0} (typu služební vlak)</value>
+  </data>
+  <data name="NameColorSettings_Panel" xml:space="preserve">
+    <value>Panel</value>
+  </data>
+  <data name="NameColorSettings_Box" xml:space="preserve">
+    <value>Box</value>
+  </data>
+  <data name="NameColorSettings_Mark" xml:space="preserve">
+    <value>Značky v CheckBox a v RadioButton</value>
+  </data>
+  <data name="NameColorSettings_Label" xml:space="preserve">
+    <value>Štítky</value>
+  </data>
+  <data name="Station_NotFound" xml:space="preserve">
+    <value>Stanice "{0}" neexistuje.</value>
+  </data>
 </root>

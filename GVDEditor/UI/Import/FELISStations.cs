@@ -1,0 +1,221 @@
+﻿using System.Globalization;
+using ExControls;
+using GVDEditor.Domain.Entities;
+using GVDEditor.Formats;
+using GVDEditor.Integration;
+using GVDEditor.Properties;
+using ToolsCore.Tools;
+
+namespace GVDEditor.UI.Import;
+
+/// <summary>
+/// Dialog - priradenie staníc z programu ELIS k staniciam grafikonu.
+/// </summary>
+/// <remarks>
+/// ELIS pomenúva niektoré stanice inak než zvuková banka. Tento dialóg sa pýta len na tie,
+/// ktoré sa nepodarilo priradiť automaticky, a výsledok sa uloží do ELISMAP.TXT, aby sa
+/// pri ďalšom importe už nepýtal. Stanica sa nikdy nezakladá sama - inak by v grafikone
+/// vznikli dva názvy tej istej stanice.
+/// </remarks>
+internal partial class FelisStations : Form
+{
+    /// <summary>
+    /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
+    /// </summary>
+    private readonly EditorContext _ctx;
+
+    /// <summary>Polozka v zozname, ktora znamena vynechanie stanice z trasy.</summary>
+    private static readonly string SkipItem = Resources.FELISStations_vynechať;
+
+    private readonly List<string> _names;
+    private readonly List<Station> _stations;
+    private readonly StationDirectory _directory;
+
+    // stanice zalozene v tomto okne - pri zruseni importu sa z grafikonu zase odstrania
+    private readonly List<Station> _created = [];
+
+    /// <summary>
+    /// Vysledne priradenie: nazov z ELIS -> ID stanice, alebo
+    /// <see cref="ElisMapFile.ElisMapSkip" /> ak sa ma stanica vynechat.
+    /// </summary>
+    internal Dictionary<string, string> Result { get; } = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Vytvori novy formular typu <see cref="FelisStations" />.
+    /// </summary>
+    /// <param name="unresolvedNames">Nazvy z ELIS, ktore sa nepodarilo priradit automaticky.</param>
+    /// <param name="stations">Stanice zvukovej banky a grafikonu.</param>
+    public FelisStations(EditorContext context, List<string> unresolvedNames, StationDirectory stations)
+    {
+        _ctx = context;
+        InitializeComponent();
+        this.ApplyThemeAndFonts();
+
+        // systemove kreslenie (svetla tema) farbu textu ignoruje - navrhy by neboli vidno
+        colStation.DefaultStyle = false;
+
+        _names = unresolvedNames;
+        _directory = stations;
+        _stations = stations.All
+            .GroupBy(s => s.ID)
+            .Select(g => g.First())
+            .OrderBy(s => s.Name, StringComparer.CurrentCulture)
+            .ToList();
+
+        lInfo.Text =
+            string.Format(CultureInfo.CurrentCulture, Resources.FELISStations_FELISStations_Týchto__0__staníc_z_programu_ELIS_sa_nepodarilo_priradiť_automaticky, _names.Count);
+
+        FillGrid();
+    }
+
+    private void FillGrid()
+    {
+        var items = new List<string> { SkipItem };
+        items.AddRange(_stations.Select(s => s.Name));
+
+        colStation.Items.Clear();
+        colStation.Items.AddRange(items.Cast<object>().ToArray());
+
+        dgvStations.Rows.Clear();
+        foreach (var name in _names)
+        {
+            var suggestion = ElisBridgeClient.Suggest(name, _directory);
+
+            //do bunky smie ist len hodnota, ktora je v zozname, inak DataGridView hlasi chybu
+            var value = suggestion is not null && items.Contains(suggestion.Name) ? suggestion.Name : SkipItem;
+            var index = dgvStations.Rows.Add(name, value);
+
+            //navrhnute priradenie zvyraznime, nech je vidiet, co program odporučil
+            if (value != SkipItem)
+                SetStationColor(dgvStations.Rows[index].Cells[1], Color.SteelBlue);
+        }
+    }
+
+    private void bCreate_Click(object sender, EventArgs e)
+    {
+        if (dgvStations.SelectedRows.Count == 0)
+        {
+            Utils.ShowError(Resources.FELISStations_bCreate_Click_Najprv_vyberte_riadky__pre_ktoré_sa_má_založiť_nová_stanica_);
+            return;
+        }
+
+        var created = new List<string>();
+        foreach (DataGridViewRow row in dgvStations.SelectedRows)
+        {
+            var elisName = (string)row.Cells[0].Value!;
+
+            //ak uz stanica s tym nazvom existuje, nezakladame druhu - iba ju priradime
+            var existing = _stations.FirstOrDefault(s => s.Name == elisName);
+            if (existing is null)
+            {
+                var station = new Station(NextFreeId(), elisName) { IsCustom = true };
+                _ctx.Document.CustomStations.Add(station);
+                _stations.Add(station);
+                _created.Add(station);
+                created.Add(elisName);
+            }
+
+            row.Cells[1].Value = elisName;
+            SetStationColor(row.Cells[1], Color.SeaGreen);
+        }
+
+        if (created.Count != 0)
+        {
+            _stations.Sort((a, b) => CultureInfo.CurrentCulture.CompareInfo.Compare(a.Name, b.Name));
+            RefreshComboItems();
+        }
+    }
+
+    private void RefreshComboItems()
+    {
+        //zapamatame si aktualne hodnoty, lebo zmena poloziek ich vymaze
+        var current = new string?[dgvStations.Rows.Count];
+        for (var i = 0; i < dgvStations.Rows.Count; i++)
+            current[i] = dgvStations.Rows[i].Cells[1].Value as string;
+
+        var items = new List<string> { SkipItem };
+        items.AddRange(_stations.Select(s => s.Name));
+
+        colStation.Items.Clear();
+        colStation.Items.AddRange(items.Cast<object>().ToArray());
+
+        for (var i = 0; i < dgvStations.Rows.Count; i++)
+            dgvStations.Rows[i].Cells[1].Value = current[i];
+    }
+
+    /// <summary>
+    /// Vrati najnizsie volne ID pre novu pouzivatelom definovanu stanicu.
+    /// </summary>
+    private string NextFreeId()
+    {
+        var used = new HashSet<string>(_ctx.Workspace.Stations.Select(s => s.ID));
+        foreach (var station in _ctx.Document.CustomStations)
+            used.Add(station.ID);
+
+        var id = 9000001;
+        while (used.Contains(id.ToString(CultureInfo.CurrentCulture)))
+            id++;
+
+        return id.ToString(CultureInfo.CurrentCulture);
+    }
+
+    /// <summary>
+    /// Zvyrazni bunku s priradenou stanicou; <see langword="null" /> vrati farbu temy.
+    /// Bunka z ExControls kresli text podla svojho stylu, nie podla DataGridViewCellStyle.
+    /// </summary>
+    private void SetStationColor(DataGridViewCell cell, Color? color)
+    {
+        if (cell is not DataGridViewExComboBoxCell exCell)
+            return;
+
+        var style = (ExComboBoxStyle)colStation.StyleNormal.Clone();
+        if (color is not null)
+            style.ForeColor = color;
+        exCell.StyleNormal = style;
+        dgvStations.InvalidateCell(cell);
+    }
+
+    private void bSkipAll_Click(object sender, EventArgs e)
+    {
+        foreach (DataGridViewRow row in dgvStations.Rows)
+        {
+            row.Cells[1].Value = SkipItem;
+            SetStationColor(row.Cells[1], null);
+        }
+    }
+
+    private void bOK_Click(object sender, EventArgs e)
+    {
+        Result.Clear();
+
+        foreach (DataGridViewRow row in dgvStations.Rows)
+        {
+            var elisName = (string)row.Cells[0].Value!;
+            var chosen = row.Cells[1].Value as string;
+
+            if (string.IsNullOrEmpty(chosen) || chosen == SkipItem)
+            {
+                Result[elisName] = ElisMapFile.ElisMapSkip;
+                continue;
+            }
+
+            var station = _stations.FirstOrDefault(s => s.Name == chosen);
+            Result[elisName] = station is null ? ElisMapFile.ElisMapSkip : station.ID;
+        }
+
+        DialogResult = DialogResult.OK;
+    }
+
+    private void bStorno_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
+
+    /// <inheritdoc />
+    protected override void OnFormClosed(FormClosedEventArgs e)
+    {
+        // Zrusit import aj krizik - import sa nevykona, zalozene stanice by v grafikone ostali navyse
+        if (DialogResult != DialogResult.OK)
+            foreach (var station in _created)
+                _ctx.Document.CustomStations.Remove(station);
+
+        base.OnFormClosed(e);
+    }
+}
