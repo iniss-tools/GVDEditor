@@ -220,9 +220,24 @@ internal static class Analyzer
             }
         }
 
-        progress?.Report(90);
+        progress?.Report(80);
 
-        //7. Check Zpozdeni.DAT cache - INISS Zpozdeni.TXT necita, kym existuje .DAT (nekontroluje ani cas suborov)
+        //7. Tables, texts, platforms, tracks, operators and fonts - the rules of the Local settings pages
+        problems.AddRange(GrafikonChecks.Settings(scope));
+
+        //8. Trains - the rules of the train window (data from files and imports never went through it)
+        problems.AddRange(GrafikonChecks.Trains(gvd, scope));
+        progress?.Report(88);
+
+        //9. Announced stations without a recording in the sound bank
+        problems.AddRange(GrafikonChecks.StationRecordings(scope));
+
+        //10. State diagram - missing, unreadable or with validator errors
+        problems.AddRange(GrafikonChecks.StateDgm(gvd, scope));
+
+        progress?.Report(95);
+
+        //11. Check Zpozdeni.DAT cache - INISS Zpozdeni.TXT necita, kym existuje .DAT (nekontroluje ani cas suborov)
         var zpozdeniTxt = PathUtils.CombinePath(scope.Workspace.DataDir, GvdFileConsts.FileZpozdeni)!;
         var zpozdeniDat = PathUtils.CombinePath(scope.Workspace.DataDir, GvdFileConsts.FileZpozdeniDat)!;
         if (File.Exists(zpozdeniTxt) && File.Exists(zpozdeniDat) &&

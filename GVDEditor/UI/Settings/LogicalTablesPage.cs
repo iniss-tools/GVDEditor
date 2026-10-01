@@ -106,9 +106,26 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
         FillStations();
 
         _loaded = true;
-        _list.Fill(_ctx.Document.TableLogicals.FirstOrDefault());
+        _list.Fill(_selectAfterLoad ?? _ctx.Document.TableLogicals.FirstOrDefault());
         Check();
     }
+
+    /// <summary>
+    /// Vyberie tabulu (napr. pri oprave z analyzy grafikonu); pred naplnenim stranky az po nom.
+    /// </summary>
+    public void SelectTable(TableLogical table)
+    {
+        if (!_loaded)
+        {
+            _selectAfterLoad = table;
+            return;
+        }
+
+        _list.Select(table);
+        ShowCurrent();
+    }
+
+    private TableLogical? _selectAfterLoad;
 
     /// <inheritdoc />
     protected override void OnVisibleChanged(EventArgs e)

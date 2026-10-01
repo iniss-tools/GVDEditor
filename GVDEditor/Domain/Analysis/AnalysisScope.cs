@@ -20,6 +20,12 @@ internal interface IAnalyzerHost
     /// Otvori editor TabTab so sekciou <paramref name="tabTab" />.
     /// </summary>
     void EditTabTab(TableTabTab tabTab);
+
+    /// <summary>
+    /// Otvori okno vlaku.
+    /// </summary>
+    /// <returns><see langword="true" />, ak pouzivatel vlak ulozil.</returns>
+    bool EditTrain(Train train);
 }
 
 /// <summary>

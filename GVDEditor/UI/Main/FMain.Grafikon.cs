@@ -667,7 +667,8 @@ internal partial class FMain
 
     // ------------------------------------------------------------------ vlaky
 
-    private void ShowEditTrain(Train? train, int row, bool copy = false, EditTrainPage startPage = EditTrainPage.Vlak)
+    /// <returns><see langword="true" />, ak pouzivatel vlak ulozil.</returns>
+    private bool ShowEditTrain(Train? train, int row, bool copy = false, EditTrainPage startPage = EditTrainPage.Vlak)
     {
         var gvdDir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
         var eform = new FEditTrain(_ctx, train, row, gvdDir.GVD, copy, gvdDir.Dir.FullPath, startPage);
@@ -682,7 +683,17 @@ internal partial class FMain
             // novy vlak, kopia alebo zmena cisla, nazvu ci typu - cisla variant prideli GVDEditor
             NormalizeVariants();
             DataSaved = false;
+            return true;
         }
+
+        return false;
+    }
+
+    /// <inheritdoc />
+    public bool EditTrain(Train train)
+    {
+        var index = _ctx.Document.Trains.IndexOf(train);
+        return index >= 0 && ShowEditTrain(train, index);
     }
 
     private void DoDeleteTrains()

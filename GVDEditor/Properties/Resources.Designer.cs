@@ -8505,5 +8505,212 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("DirListFlags_TipRaw", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chyba.
+        /// </summary>
+        internal static string Analyzer_Error {
+            get {
+                return ResourceManager.GetString("Analyzer_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fyzická tabuľa.
+        /// </summary>
+        internal static string Analyzer_ItemPhysical {
+            get {
+                return ResourceManager.GetString("Analyzer_ItemPhysical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logická tabuľa.
+        /// </summary>
+        internal static string Analyzer_ItemLogical {
+            get {
+                return ResourceManager.GetString("Analyzer_ItemLogical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa.
+        /// </summary>
+        internal static string Analyzer_ItemCatalog {
+            get {
+                return ResourceManager.GetString("Analyzer_ItemCatalog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text na tabuli.
+        /// </summary>
+        internal static string Analyzer_ItemText {
+            get {
+                return ResourceManager.GetString("Analyzer_ItemText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nástupište.
+        /// </summary>
+        internal static string Analyzer_ItemPlatform {
+            get {
+                return ResourceManager.GetString("Analyzer_ItemPlatform", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koľaj.
+        /// </summary>
+        internal static string Analyzer_ItemTrack {
+            get {
+                return ResourceManager.GetString("Analyzer_ItemTrack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dopravca.
+        /// </summary>
+        internal static string Analyzer_ItemOperator {
+            get {
+                return ResourceManager.GetString("Analyzer_ItemOperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo.
+        /// </summary>
+        internal static string Analyzer_ItemFont {
+            get {
+                return ResourceManager.GetString("Analyzer_ItemFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (bez kľúča).
+        /// </summary>
+        internal static string Analyzer_NoKey {
+            get {
+                return ResourceManager.GetString("Analyzer_NoKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} {1}: {2}.
+        /// </summary>
+        internal static string Analyzer_SettingsItem {
+            get {
+                return ResourceManager.GetString("Analyzer_SettingsItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opraviť v Lokálnych nastaveniach.
+        /// </summary>
+        internal static string Analyzer_SettingsItem_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_SettingsItem_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skontrolovať v Lokálnych nastaveniach (INISS to znesie, no zapíše do logu).
+        /// </summary>
+        internal static string Analyzer_SettingsItemWarning_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_SettingsItemWarning_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (a ďalšie: {0}).
+        /// </summary>
+        internal static string Analyzer_More {
+            get {
+                return ResourceManager.GetString("Analyzer_More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak {0}: {1}.
+        /// </summary>
+        internal static string Analyzer_Train {
+            get {
+                return ResourceManager.GetString("Analyzer_Train", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upraviť vlak.
+        /// </summary>
+        internal static string Analyzer_Train_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_Train_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanica {0} ({1}) sa hlási vo vlakoch (počet: {2}, napr. {3}), ale zvuková banka pre ňu nemá nahrávku – INISS ju nemá čím ohlásiť..
+        /// </summary>
+        internal static string Analyzer_StationNoRecording {
+            get {
+                return ResourceManager.GetString("Analyzer_StationNoRecording", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doplniť nahrávku do skupiny R1 v RawBankEditore, alebo stanicu z hlásení vlaku vynechať.
+        /// </summary>
+        internal static string Analyzer_StationNoRecording_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_StationNoRecording_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon nemá stavový diagram – INISS jeho vlaky nedokáže obsluhovať..
+        /// </summary>
+        internal static string Analyzer_StateDgmMissing {
+            get {
+                return ResourceManager.GetString("Analyzer_StateDgmMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Založiť stavový diagram v Lokálnych nastaveniach.
+        /// </summary>
+        internal static string Analyzer_StateDgmMissing_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_StateDgmMissing_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stavový diagram sa nedá načítať: {0}.
+        /// </summary>
+        internal static string Analyzer_StateDgmRead {
+            get {
+                return ResourceManager.GetString("Analyzer_StateDgmRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stavový diagram: chyby {0}, upozornenia {1} – {2}.
+        /// </summary>
+        internal static string Analyzer_StateDgmProblems {
+            get {
+                return ResourceManager.GetString("Analyzer_StateDgmProblems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upraviť stavový diagram.
+        /// </summary>
+        internal static string Analyzer_StateDgmProblems_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_StateDgmProblems_Fix", resourceCulture);
+            }
+        }
 }
 }

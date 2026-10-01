@@ -2977,4 +2977,73 @@ Směrování vlaku a/nebo stanice vlaku,
   <data name="DirListFlags_TipRaw" xml:space="preserve">
     <value>Zapsáno jako „{0}“ – INISS z toho použije jen uvedené příznaky.</value>
   </data>
+  <data name="Analyzer_Error" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="Analyzer_ItemPhysical" xml:space="preserve">
+    <value>Fyzická tabule</value>
+  </data>
+  <data name="Analyzer_ItemLogical" xml:space="preserve">
+    <value>Logická tabule</value>
+  </data>
+  <data name="Analyzer_ItemCatalog" xml:space="preserve">
+    <value>Katalogová tabule</value>
+  </data>
+  <data name="Analyzer_ItemText" xml:space="preserve">
+    <value>Text na tabuli</value>
+  </data>
+  <data name="Analyzer_ItemPlatform" xml:space="preserve">
+    <value>Nástupiště</value>
+  </data>
+  <data name="Analyzer_ItemTrack" xml:space="preserve">
+    <value>Kolej</value>
+  </data>
+  <data name="Analyzer_ItemOperator" xml:space="preserve">
+    <value>Dopravce</value>
+  </data>
+  <data name="Analyzer_ItemFont" xml:space="preserve">
+    <value>Písmo</value>
+  </data>
+  <data name="Analyzer_NoKey" xml:space="preserve">
+    <value>(bez klíče)</value>
+  </data>
+  <data name="Analyzer_SettingsItem" xml:space="preserve">
+    <value>{0} {1}: {2}</value>
+  </data>
+  <data name="Analyzer_SettingsItem_Fix" xml:space="preserve">
+    <value>Opravit v Lokálních nastaveních</value>
+  </data>
+  <data name="Analyzer_SettingsItemWarning_Fix" xml:space="preserve">
+    <value>Zkontrolovat v Lokálních nastaveních (INISS to snese, ale zapíše do logu)</value>
+  </data>
+  <data name="Analyzer_More" xml:space="preserve">
+    <value>(a další: {0})</value>
+  </data>
+  <data name="Analyzer_Train" xml:space="preserve">
+    <value>Vlak {0}: {1}</value>
+  </data>
+  <data name="Analyzer_Train_Fix" xml:space="preserve">
+    <value>Upravit vlak</value>
+  </data>
+  <data name="Analyzer_StationNoRecording" xml:space="preserve">
+    <value>Stanice {0} ({1}) se hlásí ve vlacích (počet: {2}, např. {3}), ale zvuková banka pro ni nemá nahrávku – INISS ji nemá čím ohlásit.</value>
+  </data>
+  <data name="Analyzer_StationNoRecording_Fix" xml:space="preserve">
+    <value>Doplnit nahrávku do skupiny R1 v RawBankEditoru, nebo stanici z hlášení vlaku vynechat</value>
+  </data>
+  <data name="Analyzer_StateDgmMissing" xml:space="preserve">
+    <value>Grafikon nemá stavový diagram – INISS jeho vlaky nedokáže obsluhovat.</value>
+  </data>
+  <data name="Analyzer_StateDgmMissing_Fix" xml:space="preserve">
+    <value>Založit stavový diagram v Lokálních nastaveních</value>
+  </data>
+  <data name="Analyzer_StateDgmRead" xml:space="preserve">
+    <value>Stavový diagram nelze načíst: {0}</value>
+  </data>
+  <data name="Analyzer_StateDgmProblems" xml:space="preserve">
+    <value>Stavový diagram: chyby {0}, upozornění {1} – {2}</value>
+  </data>
+  <data name="Analyzer_StateDgmProblems_Fix" xml:space="preserve">
+    <value>Upravit stavový diagram</value>
+  </data>
 </root>

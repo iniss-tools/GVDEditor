@@ -262,6 +262,10 @@ internal partial class FLocalSettings : Form
             textsPage.SelectText(text);
         else if (_select is TableCatalog catalog)
             catalogTablesPage.SelectTable(catalog);
+        else if (_select is TablePhysical physical)
+            physicalTablesPage.SelectTable(physical);
+        else if (_select is TableLogical logical)
+            logicalTablesPage.SelectTable(logical);
         UpdateHelpLink();
 
         if (_openTabTabEditor)

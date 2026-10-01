@@ -113,7 +113,7 @@ internal partial class FAnalyzer : Form
                     break;
                 case Domain.Analysis.ProblemType.Error:
                     e.Value = ErrorIcon;
-                    cell.ToolTipText = "Chyba";
+                    cell.ToolTipText = Resources.Analyzer_Error;
                     break;
             }
         else if (e.ColumnIndex == 2)
