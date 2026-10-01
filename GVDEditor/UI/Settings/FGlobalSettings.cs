@@ -32,8 +32,8 @@ internal partial class FGlobalSettings : Form
 
     private readonly GVDDirectory? _openGrafikon;
 
-    // porty a farby grafikonov pred upravou - stranka Grafikony ich meni priamo, zatvorenie bez OK ich musi vratit
-    private readonly List<(DirList dir, int? tablePort, int? reportPort, Color? color)> _dirSnapshot;
+    // porty, priznaky a farby grafikonov pred upravou - stranka Grafikony ich meni priamo, zatvorenie bez OK ich musi vratit
+    private readonly List<(DirList dir, int? tablePort, int? reportPort, string? flags, Color? color)> _dirSnapshot;
 
     // jazyky, meskania, typy vlakov a audio linky pred upravou - stranky ich menia priamo v instalacii
     private readonly GlobalSettingsSnapshot _globalSnapshot;
@@ -85,7 +85,7 @@ internal partial class FGlobalSettings : Form
         optionsView.SelectedPanelChanged += (_, _) => UpdateHelpLink();
 
         Grafikony = new BindingList<GVDDirectory>(gvds);
-        _dirSnapshot = gvds.Select(g => (g.Dir, g.Dir.TablePort, g.Dir.ReportPort, g.Dir.BackColor)).ToList();
+        _dirSnapshot = gvds.Select(g => (g.Dir, g.Dir.TablePort, g.Dir.ReportPort, g.Dir.Flags, g.Dir.BackColor)).ToList();
         _globalSnapshot = GlobalSettingsSnapshot.Capture(_ctx.Workspace);
 
         _checkedPages =
@@ -180,10 +180,11 @@ internal partial class FGlobalSettings : Form
     {
         if (DialogResult != DialogResult.OK)
         {
-            foreach (var (dir, tablePort, reportPort, color) in _dirSnapshot)
+            foreach (var (dir, tablePort, reportPort, flags, color) in _dirSnapshot)
             {
                 dir.TablePort = tablePort;
                 dir.ReportPort = reportPort;
+                dir.Flags = flags;
                 dir.BackColor = color;
             }
 

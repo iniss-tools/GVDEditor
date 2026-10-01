@@ -132,6 +132,10 @@ internal partial class FMain
         if (gf.RemovedGvDs.Count != 0)
             RemoveGrafikony(gf.RemovedGvDs);
 
+        // poradie grafikonov (a s nim obdobi stanice) podla zoznamu, ktory sa zapisal do DirList.TXT
+        var order = gf.Grafikony.ToList();
+        _gvdDirs.Sort((a, b) => order.IndexOf(a).CompareTo(order.IndexOf(b)));
+
         // grafikon, ktory sa predtym nenacital (napr. pre chybajuci typ vlaku), skusit nacitat znova
         if (!_grafikonLoaded && tscbObdobie.ComboBox.SelectedItem is GVDDirectory dir && _gvdDirs.Contains(dir))
         {

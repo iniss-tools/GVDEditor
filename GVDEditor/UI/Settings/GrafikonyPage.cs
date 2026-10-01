@@ -8,8 +8,9 @@ namespace GVDEditor.UI.Settings;
 
 /// <summary>
 /// Stranka Grafikony v okne Globalne nastavenia - grafikony v datovom priecinku s portami a farbou upravovanymi
-/// priamo v tabulke. Porty a farba idu rovno do <see cref="DirList" /> grafikonu (Zrusit okna ich vrati),
-/// odstraneny grafikon sa len zapamata - jeho priecinok sa presunie do Kosa az po OK.
+/// priamo v tabulke a priznakmi v samostatnom okne. Porty, priznaky a farba idu rovno do <see cref="DirList" />
+/// grafikonu (Zrusit okna ich vrati), poradie sa meni v zozname okna (zapise sa po OK), odstraneny grafikon sa len
+/// zapamata - jeho priecinok sa presunie do Kosa az po OK.
 /// </summary>
 public partial class GrafikonyPage : UserControl, ISettingsPage
 {
@@ -67,13 +68,15 @@ public partial class GrafikonyPage : UserControl, ISettingsPage
             var dir = grafikon.Dir;
             var index = dgv.Rows.Add(gvd.ThisStation.Name,
                 $"{gvd.StartValidTimeTable:dd.MM.yyyy} – {gvd.EndValidTimeTable:dd.MM.yyyy}",
-                PortText(grafikon, colTablePort, dir.TablePort), PortText(grafikon, colReportPort, dir.ReportPort), null!);
+                PortText(grafikon, colTablePort, dir.TablePort), PortText(grafikon, colReportPort, dir.ReportPort),
+                DirListFlags.Parse(dir.Flags).ToString(), null!);
             var row = dgv.Rows[index];
             row.Tag = grafikon;
+            row.Cells[colFlags.Index].ToolTipText = FlagsToolTip(dir.Flags);
 
-            // grafikon priamo v DATA sa do zoznamu nezapisuje - porty a farba by sa stratili
+            // grafikon priamo v DATA sa do zoznamu nezapisuje - porty, priznaky a farba by sa stratili
             if (dir.IsDataRoot)
-                foreach (var column in new[] { colTablePort, colReportPort, colColor })
+                foreach (var column in new[] { colTablePort, colReportPort, colFlags, colColor })
                 {
                     row.Cells[column.Index].ReadOnly = true;
                     GridPageSupport.MarkLocked(row.Cells[column.Index]);
@@ -86,6 +89,28 @@ public partial class GrafikonyPage : UserControl, ISettingsPage
             dgv.CurrentCell = selected.Cells[colStation.Index];
 
         Check();
+    }
+
+    /// <summary>
+    /// Vyznam priznakov po riadkoch; ak je v zozname zapisane nieco ine, nez co z toho INISS pouzije, aj povodny text.
+    /// </summary>
+    private static string FlagsToolTip(string? text)
+    {
+        var flags = DirListFlags.Parse(text);
+        var lines = new List<string>();
+        if (flags.Spread)
+            lines.Add(Resources.DirListFlags_TipSpread);
+        if (flags.DepartureTrack)
+            lines.Add(Resources.DirListFlags_TipDeparture);
+        if (flags.TrainCreation == DirListTrainCreation.Create)
+            lines.Add(Resources.DirListFlags_TipCreate);
+        else if (flags.TrainCreation == DirListTrainCreation.CreateWithoutCategori)
+            lines.Add(Resources.DirListFlags_TipCreateWithoutCategori);
+        if (flags.Switch is { } number)
+            lines.Add(string.Format(CultureInfo.CurrentCulture, Resources.DirListFlags_TipSwitch, number));
+        if (!DirListFlags.IsCanonical(text))
+            lines.Add(string.Format(CultureInfo.CurrentCulture, Resources.DirListFlags_TipRaw, text));
+        return string.Join("\n", lines);
     }
 
     private string PortText(GVDDirectory grafikon, DataGridViewColumn column, int? port) =>
@@ -109,6 +134,9 @@ public partial class GrafikonyPage : UserControl, ISettingsPage
         var editable = grafikon is not null && !grafikon.Dir.IsDataRoot;
         bColor.Enabled = editable;
         bNoColor.Enabled = editable && grafikon!.Dir.BackColor is not null;
+        bFlags.Enabled = editable;
+        bUp.Enabled = editable && CanMove(grafikon!, -1);
+        bDown.Enabled = editable && CanMove(grafikon!, 1);
         bDelete.Enabled = editable;
         bOpenDir.Enabled = grafikon is not null;
 
@@ -210,6 +238,49 @@ public partial class GrafikonyPage : UserControl, ISettingsPage
         _grid.Defer(UpdateSelection);
     }
 
+    private void bFlags_Click(object? sender, EventArgs e)
+    {
+        if (Current is not { } grafikon || grafikon.Dir.IsDataRoot)
+            return;
+
+        var flags = DirListFlags.Parse(grafikon.Dir.Flags);
+        using var dialog = new FDirListFlags(grafikon, flags);
+        if (dialog.ShowDialog(this) != DialogResult.OK || dialog.Flags == flags)
+            return;
+
+        // nezmenene priznaky ostavaju zapisane tak, ako boli (aj s inymi znakmi, ktore INISS ignoruje)
+        var text = dialog.Flags.ToString();
+        grafikon.Dir.Flags = text.Length == 0 ? null : text;
+        if (dgv.CurrentRow is { } row)
+        {
+            row.Cells[colFlags.Index].Value = text;
+            row.Cells[colFlags.Index].ToolTipText = FlagsToolTip(grafikon.Dir.Flags);
+        }
+    }
+
+    private void bUp_Click(object? sender, EventArgs e) => MoveGrafikon(-1);
+
+    private void bDown_Click(object? sender, EventArgs e) => MoveGrafikon(1);
+
+    // grafikon priamo v DATA sa do zoznamu nezapisuje - jeho poradie nema vyznam a ostatne sa cez neho neposuvaju
+    private bool CanMove(GVDDirectory grafikon, int delta)
+    {
+        var target = _grafikony.IndexOf(grafikon) + delta;
+        return target >= 0 && target < _grafikony.Count && !_grafikony[target].Dir.IsDataRoot;
+    }
+
+    private void MoveGrafikon(int delta)
+    {
+        if (Current is not { } grafikon || grafikon.Dir.IsDataRoot || !CanMove(grafikon, delta))
+            return;
+
+        var column = dgv.CurrentCell?.ColumnIndex ?? colStation.Index;
+        DirListRules.Move(_grafikony, _grafikony.IndexOf(grafikon), delta);
+        Fill(grafikon);
+        if (dgv.Rows.Cast<DataGridViewRow>().FirstOrDefault(r => ReferenceEquals(r.Tag, grafikon)) is { } row)
+            dgv.CurrentCell = row.Cells[column];
+    }
+
     private void bOpenDir_Click(object? sender, EventArgs e)
     {
         if (Current is { } grafikon)
@@ -245,6 +316,8 @@ public partial class GrafikonyPage : UserControl, ISettingsPage
 
         if (e.ColumnIndex == colColor.Index)
             bColor_Click(this, EventArgs.Empty);
+        else if (e.ColumnIndex == colFlags.Index)
+            bFlags_Click(this, EventArgs.Empty);
         else if (!dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly)
             dgv.BeginEdit(true);
     }
@@ -254,8 +327,14 @@ public partial class GrafikonyPage : UserControl, ISettingsPage
         if (dgv.CurrentCell is not { } cell)
             return;
 
+        // Alt+sipka posunie grafikon v zozname (sipka bez Alt len presuva vyber)
+        if (e.Alt && e.KeyCode is Keys.Up or Keys.Down)
+        {
+            MoveGrafikon(e.KeyCode == Keys.Up ? -1 : 1);
+            e.Handled = true;
+        }
         // Delete vymaze port; grafikon sa odstranuje len tlacidlom (presunie priecinok do Kosa)
-        if (e.KeyCode == Keys.Delete && !cell.ReadOnly && (cell.ColumnIndex == colTablePort.Index || cell.ColumnIndex == colReportPort.Index))
+        else if (e.KeyCode == Keys.Delete && !cell.ReadOnly && (cell.ColumnIndex == colTablePort.Index || cell.ColumnIndex == colReportPort.Index))
         {
             cell.Value = "";
             e.Handled = true;
@@ -263,6 +342,11 @@ public partial class GrafikonyPage : UserControl, ISettingsPage
         else if (e.KeyCode == Keys.Enter && cell.ColumnIndex == colColor.Index)
         {
             bColor_Click(this, EventArgs.Empty);
+            e.Handled = true;
+        }
+        else if (e.KeyCode == Keys.Enter && cell.ColumnIndex == colFlags.Index)
+        {
+            bFlags_Click(this, EventArgs.Empty);
             e.Handled = true;
         }
     }

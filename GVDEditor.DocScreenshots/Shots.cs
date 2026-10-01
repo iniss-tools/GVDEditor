@@ -115,6 +115,9 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                     Pump.Events();
                 });
             Shot("globalne-nastavenia",() => new FGlobalSettings(Program.Context, Periods(main)), form => Resize(form, 900, 620), tabs: true);
+            // grafikon, ktory zaklada vlaky z externych sprav, siri ich dalej a je aktivny len s prepinacom /3
+            Shot("globalne-nastavenia/priznaky-grafikonu",
+                () => new GVDEditor.UI.Settings.FDirListFlags(gvdDir, GVDEditor.Domain.Entities.DirListFlags.Parse("ZK3")));
 
             // chyba na stránke: dopravca bez názvu - okno sa zavrie bez OK, takže Zrušiť zmenu vráti
             var errorForm = new FLocalSettings(Program.Context, gvdDir, GVDEditor.UI.Settings.LocalSettingsPage.Dopravcovia);

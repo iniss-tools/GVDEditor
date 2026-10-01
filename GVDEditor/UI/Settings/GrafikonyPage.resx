@@ -156,7 +156,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Grafikony v dátovom priečinku INISSu. Porty sú čísla komunikačných liniek vyhradených pre grafikon – bežne ostávajú prázdne. Port hlásení zároveň určuje uzol, ktorý hlási za stanicu grafikonu. Farba odlíši vlaky grafikonu na pracovnej ploche INISSu. Ostatné nastavenia grafikonu sú v Lokálnych nastaveniach.</value>
+    <value>Grafikony v dátovom priečinku INISSu. Na poradí záleží – INISS v ňom premieta stanice na trasy vlakov. Porty sú čísla komunikačných liniek vyhradených pre grafikon – bežne ostávajú prázdne. Port hlásení zároveň určuje uzol, ktorý hlási za stanicu grafikonu. Príznaky riadia spracovanie externých správ o vlakoch. Farba odlíši vlaky grafikonu na pracovnej ploche INISSu. Ostatné nastavenia grafikonu sú v Lokálnych nastaveniach.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -201,7 +201,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flpButtons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 33</value>
+    <value>680, 33</value>
   </data>
   <data name="flpButtons.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -272,6 +272,87 @@
   <data name="&gt;&gt;bNoColor.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="bFlags.Text" xml:space="preserve">
+    <value>Príznaky…</value>
+  </data>
+  <data name="bFlags.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bFlags.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="bFlags.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 27</value>
+  </data>
+  <data name="bFlags.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;bFlags.Name" xml:space="preserve">
+    <value>bFlags</value>
+  </data>
+  <data name="&gt;&gt;bFlags.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bFlags.Parent" xml:space="preserve">
+    <value>flpButtons</value>
+  </data>
+  <data name="&gt;&gt;bFlags.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="bUp.Text" xml:space="preserve">
+    <value>Vyššie</value>
+  </data>
+  <data name="bUp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bUp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="bUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 27</value>
+  </data>
+  <data name="bUp.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;bUp.Name" xml:space="preserve">
+    <value>bUp</value>
+  </data>
+  <data name="&gt;&gt;bUp.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bUp.Parent" xml:space="preserve">
+    <value>flpButtons</value>
+  </data>
+  <data name="&gt;&gt;bUp.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="bDown.Text" xml:space="preserve">
+    <value>Nižšie</value>
+  </data>
+  <data name="bDown.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="bDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 27</value>
+  </data>
+  <data name="bDown.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;bDown.Name" xml:space="preserve">
+    <value>bDown</value>
+  </data>
+  <data name="&gt;&gt;bDown.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bDown.Parent" xml:space="preserve">
+    <value>flpButtons</value>
+  </data>
+  <data name="&gt;&gt;bDown.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="bOpenDir.Text" xml:space="preserve">
     <value>Otvoriť priečinok</value>
   </data>
@@ -285,7 +366,7 @@
     <value>90, 27</value>
   </data>
   <data name="bOpenDir.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;bOpenDir.Name" xml:space="preserve">
     <value>bOpenDir</value>
@@ -297,7 +378,7 @@
     <value>flpButtons</value>
   </data>
   <data name="&gt;&gt;bOpenDir.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="bDelete.Text" xml:space="preserve">
     <value>Odstrániť…</value>
@@ -312,7 +393,7 @@
     <value>90, 27</value>
   </data>
   <data name="bDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;bDelete.Name" xml:space="preserve">
     <value>bDelete</value>
@@ -324,7 +405,7 @@
     <value>flpButtons</value>
   </data>
   <data name="&gt;&gt;bDelete.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="dgv.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -404,6 +485,12 @@
   <data name="colReportPort.Width" type="System.Int32, mscorlib">
     <value>85</value>
   </data>
+  <data name="colFlags.HeaderText" xml:space="preserve">
+    <value>Príznaky</value>
+  </data>
+  <data name="colFlags.Width" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
   <data name="colColor.HeaderText" xml:space="preserve">
     <value>Farba</value>
   </data>
@@ -443,6 +530,12 @@
   <data name="&gt;&gt;colReportPort.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;colFlags.Name" xml:space="preserve">
+    <value>colFlags</value>
+  </data>
+  <data name="&gt;&gt;colFlags.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;colColor.Name" xml:space="preserve">
     <value>colColor</value>
   </data>
@@ -465,6 +558,9 @@
     <value>True</value>
   </metadata>
   <metadata name="colReportPort.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colFlags.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="colColor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

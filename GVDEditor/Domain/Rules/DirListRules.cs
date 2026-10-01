@@ -32,4 +32,23 @@ internal static class DirListRules
         port = number == 0 ? null : number;
         return null;
     }
+
+    /// <summary>
+    /// Posunie grafikon v zozname o <paramref name="delta" /> miest (zaporne = vyssie). Na poradi zalezi - INISS
+    /// premieta stanice na trasy vlakov v poradi grafikonov v DirList.TXT.
+    /// </summary>
+    /// <returns>nova pozicia, alebo <see langword="null" />, ak by sa grafikon dostal mimo zoznamu.</returns>
+    public static int? Move<T>(IList<T> items, int index, int delta)
+    {
+        ArgumentNullException.ThrowIfNull(items);
+
+        var target = index + delta;
+        if (index < 0 || index >= items.Count || target < 0 || target >= items.Count || delta == 0)
+            return null;
+
+        var item = items[index];
+        items.RemoveAt(index);
+        items.Insert(target, item);
+        return target;
+    }
 }

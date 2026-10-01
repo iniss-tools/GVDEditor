@@ -61,4 +61,25 @@ public class DirListFileTests
         var after = System.IO.File.ReadAllLines(File, Encodings.Win1250);
         CollectionAssert.AreEqual(expectedAfter.Split('|', StringSplitOptions.RemoveEmptyEntries), after);
     }
+
+    [TestMethod]
+    public void DirList_RoundTrip_ZachovaPoradieAPriznaky()
+    {
+        // priznaky sa zapisu tak, ako su - aj neupraveny zapis s oddelovacom a malymi pismenami
+        string[] lines = ["B.2020,4,,\"z, k\",0xFF8000", "A.2019,,7,ZOK3,", "C.2021,,,,"];
+        System.IO.File.WriteAllLines(File, lines, Encodings.Win1250);
+
+        var dirs = DirListFile.Read(_dir);
+        Assert.AreEqual("B.2020|A.2019|C.2021", string.Join("|", dirs.Select(d => d.DirName)));
+        Assert.AreEqual("z, k", dirs[0].Flags);
+        Assert.AreEqual("ZK", DirListFlags.Parse(dirs[0].Flags).ToString());
+
+        // posun A.2019 na zaciatok a nove priznaky pre C.2021
+        (dirs[0], dirs[1]) = (dirs[1], dirs[0]);
+        dirs[2].Flags = new DirListFlags(false, false, DirListTrainCreation.CreateWithoutCategori, 2).ToString();
+        DirListFile.Write(_dir, dirs);
+
+        var after = System.IO.File.ReadAllLines(File, Encodings.Win1250);
+        CollectionAssert.AreEqual(new[] { "A.2019,,7,ZOK3,", "B.2020,4,,\"z, k\",0xFF8000", "C.2021,,,M2," }, after);
+    }
 }

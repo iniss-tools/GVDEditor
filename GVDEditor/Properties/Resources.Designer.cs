@@ -8415,5 +8415,95 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("Station_NotFound", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to vždy.
+        /// </summary>
+        internal static string DirListFlags_Always {
+            get {
+                return ResourceManager.GetString("DirListFlags_Always", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to len pri spustení INISSu s prepínačom /{0}.
+        /// </summary>
+        internal static string DirListFlags_OnlyWithSwitch {
+            get {
+                return ResourceManager.GetString("DirListFlags_OnlyWithSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kód príznakov: {0}.
+        /// </summary>
+        internal static string DirListFlags_Code {
+            get {
+                return ResourceManager.GetString("DirListFlags_Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (žiadne).
+        /// </summary>
+        internal static string DirListFlags_CodeEmpty {
+            get {
+                return ResourceManager.GetString("DirListFlags_CodeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Z – šíri správy na nasledujúce stanice trasy.
+        /// </summary>
+        internal static string DirListFlags_TipSpread {
+            get {
+                return ResourceManager.GetString("DirListFlags_TipSpread", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O – správa mení koľaj odchodu.
+        /// </summary>
+        internal static string DirListFlags_TipDeparture {
+            get {
+                return ResourceManager.GetString("DirListFlags_TipDeparture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to K – zakladá vlaky z externých správ.
+        /// </summary>
+        internal static string DirListFlags_TipCreate {
+            get {
+                return ResourceManager.GetString("DirListFlags_TipCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M – zakladá vlaky z externých správ, nenačíta varianty a jazyky hlásení.
+        /// </summary>
+        internal static string DirListFlags_TipCreateWithoutCategori {
+            get {
+                return ResourceManager.GetString("DirListFlags_TipCreateWithoutCategori", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} – aktívny len s prepínačom /{0}.
+        /// </summary>
+        internal static string DirListFlags_TipSwitch {
+            get {
+                return ResourceManager.GetString("DirListFlags_TipSwitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zapísané ako „{0}“ – INISS z toho použije len uvedené príznaky..
+        /// </summary>
+        internal static string DirListFlags_TipRaw {
+            get {
+                return ResourceManager.GetString("DirListFlags_TipRaw", resourceCulture);
+            }
+        }
 }
 }

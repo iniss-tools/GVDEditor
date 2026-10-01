@@ -41,8 +41,8 @@ public sealed class DirList
     /// z externých správ), <c>M</c> (ako <c>K</c>, navyše sa z priečinka nenačíta
     /// <c>Categori.TXT</c>) a číslicu <c>1</c>–<c>9</c> (položka je aktívna len pri
     /// spustení INISSu s prepínačom <c>/N</c>).
-    /// GVDEditor obsah poľa nijako neinterpretuje, iba ho zachováva, aby sa pri uložení
-    /// nestratil.
+    /// Rozložené príznaky vracia <see cref="DirListFlags.Parse" />; GVDEditor text prepíše, len keď
+    /// používateľ príznaky zmení, inak ho zachová tak, ako bol v súbore.
     /// </remarks>
     public string? Flags { get; set; }
 

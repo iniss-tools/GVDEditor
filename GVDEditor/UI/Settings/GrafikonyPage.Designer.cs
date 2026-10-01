@@ -36,6 +36,9 @@ namespace GVDEditor.UI.Settings
             flpButtons = new FlowLayoutPanel();
             bColor = new ExButton();
             bNoColor = new ExButton();
+            bFlags = new ExButton();
+            bUp = new ExButton();
+            bDown = new ExButton();
             bOpenDir = new ExButton();
             bDelete = new ExButton();
             dgv = new DataGridView();
@@ -44,6 +47,7 @@ namespace GVDEditor.UI.Settings
             colPeriod = new DataGridViewTextBoxColumn();
             colTablePort = new DataGridViewTextBoxColumn();
             colReportPort = new DataGridViewTextBoxColumn();
+            colFlags = new DataGridViewTextBoxColumn();
             colColor = new DataGridViewTextBoxColumn();
             ((ISupportInitialize)dgv).BeginInit();
             tlpMain.SuspendLayout();
@@ -69,6 +73,9 @@ namespace GVDEditor.UI.Settings
             resources.ApplyResources(flpButtons, "flpButtons");
             flpButtons.Controls.Add(bColor);
             flpButtons.Controls.Add(bNoColor);
+            flpButtons.Controls.Add(bFlags);
+            flpButtons.Controls.Add(bUp);
+            flpButtons.Controls.Add(bDown);
             flpButtons.Controls.Add(bOpenDir);
             flpButtons.Controls.Add(bDelete);
             flpButtons.Name = "flpButtons";
@@ -87,6 +94,27 @@ namespace GVDEditor.UI.Settings
             bNoColor.Name = "bNoColor";
             bNoColor.UseVisualStyleBackColor = true;
             bNoColor.Click += bNoColor_Click;
+            // 
+            // bFlags
+            // 
+            resources.ApplyResources(bFlags, "bFlags");
+            bFlags.Name = "bFlags";
+            bFlags.UseVisualStyleBackColor = true;
+            bFlags.Click += bFlags_Click;
+            // 
+            // bUp
+            // 
+            resources.ApplyResources(bUp, "bUp");
+            bUp.Name = "bUp";
+            bUp.UseVisualStyleBackColor = true;
+            bUp.Click += bUp_Click;
+            // 
+            // bDown
+            // 
+            resources.ApplyResources(bDown, "bDown");
+            bDown.Name = "bDown";
+            bDown.UseVisualStyleBackColor = true;
+            bDown.Click += bDown_Click;
             // 
             // bOpenDir
             // 
@@ -109,7 +137,7 @@ namespace GVDEditor.UI.Settings
             dgv.AllowUserToDeleteRows = false;
             dgv.AllowUserToResizeRows = false;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv.Columns.AddRange(new DataGridViewColumn[] { colStation, colPeriod, colTablePort, colReportPort, colColor });
+            dgv.Columns.AddRange(new DataGridViewColumn[] { colStation, colPeriod, colTablePort, colReportPort, colFlags, colColor });
             dgv.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
             dgv.MultiSelect = false;
             dgv.Name = "dgv";
@@ -153,6 +181,13 @@ namespace GVDEditor.UI.Settings
             colReportPort.Name = "colReportPort";
             colReportPort.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
+            // colFlags
+            // 
+            resources.ApplyResources(colFlags, "colFlags");
+            colFlags.Name = "colFlags";
+            colFlags.ReadOnly = true;
+            colFlags.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
             // colColor
             // 
             resources.ApplyResources(colColor, "colColor");
@@ -182,6 +217,9 @@ namespace GVDEditor.UI.Settings
         private FlowLayoutPanel flpButtons;
         private ExButton bColor;
         private ExButton bNoColor;
+        private ExButton bFlags;
+        private ExButton bUp;
+        private ExButton bDown;
         private ExButton bOpenDir;
         private ExButton bDelete;
         private DataGridView dgv;
@@ -190,6 +228,7 @@ namespace GVDEditor.UI.Settings
         private DataGridViewTextBoxColumn colPeriod;
         private DataGridViewTextBoxColumn colTablePort;
         private DataGridViewTextBoxColumn colReportPort;
+        private DataGridViewTextBoxColumn colFlags;
         private DataGridViewTextBoxColumn colColor;
     }
 }

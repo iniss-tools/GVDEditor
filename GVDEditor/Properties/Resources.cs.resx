@@ -2947,4 +2947,34 @@ Směrování vlaku a/nebo stanice vlaku,
   <data name="Station_NotFound" xml:space="preserve">
     <value>Stanice "{0}" neexistuje.</value>
   </data>
+  <data name="DirListFlags_Always" xml:space="preserve">
+    <value>vždy</value>
+  </data>
+  <data name="DirListFlags_OnlyWithSwitch" xml:space="preserve">
+    <value>jen při spuštění INISSu s přepínačem /{0}</value>
+  </data>
+  <data name="DirListFlags_Code" xml:space="preserve">
+    <value>Kód příznaků: {0}</value>
+  </data>
+  <data name="DirListFlags_CodeEmpty" xml:space="preserve">
+    <value>(žádné)</value>
+  </data>
+  <data name="DirListFlags_TipSpread" xml:space="preserve">
+    <value>Z – šíří zprávy na následující stanice trasy</value>
+  </data>
+  <data name="DirListFlags_TipDeparture" xml:space="preserve">
+    <value>O – zpráva mění kolej odjezdu</value>
+  </data>
+  <data name="DirListFlags_TipCreate" xml:space="preserve">
+    <value>K – zakládá vlaky z externích zpráv</value>
+  </data>
+  <data name="DirListFlags_TipCreateWithoutCategori" xml:space="preserve">
+    <value>M – zakládá vlaky z externích zpráv, nenačte varianty a jazyky hlášení</value>
+  </data>
+  <data name="DirListFlags_TipSwitch" xml:space="preserve">
+    <value>{0} – aktivní jen s přepínačem /{0}</value>
+  </data>
+  <data name="DirListFlags_TipRaw" xml:space="preserve">
+    <value>Zapsáno jako „{0}“ – INISS z toho použije jen uvedené příznaky.</value>
+  </data>
 </root>

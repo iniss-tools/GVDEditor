@@ -110,7 +110,7 @@ internal static class DirListFile
         foreach (var dir in toWrite)
         {
             var row = new CsvRow();
-            row.Insert(0, dir.DirName);
+            row.Insert(0, Field(dir.DirName));
             if (dir.TablePort.HasValue && dir.TablePort != 0)
                 row.Insert(1, dir.TablePort.Value.ToString(CultureInfo.InvariantCulture));
             else
@@ -121,7 +121,7 @@ internal static class DirListFile
             else
                 row.Insert(2, "");
 
-            row.Insert(3, dir.Flags ?? "");
+            row.Insert(3, Field(dir.Flags ?? ""));
             row.Insert(4, dir.BackColor.HasValue ? dir.BackColor.Value.ToHex() : "");
 
             dirlistF.WriteRow(row);
@@ -129,4 +129,7 @@ internal static class DirListFile
 
         return true;
     }
+
+    // INISS cita hodnotu s ciarkou len v uvodzovkach - napr. rucne zapisane priznaky "Z, K"
+    private static string Field(string value) => value.Contains(',', StringComparison.Ordinal) ? value.Quote() : value;
 }

@@ -117,46 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lInfo.Text" xml:space="preserve">
-    <value>Grafikony v datové složce INISSu. Na pořadí záleží – INISS v něm promítá stanice na trasy vlaků. Porty jsou čísla komunikačních linek vyhrazených pro grafikon – běžně zůstávají prázdné. Port hlášení zároveň určuje uzel, který hlásí za stanici grafikonu. Příznaky řídí zpracování externích zpráv o vlacích. Barva odliší vlaky grafikonu na pracovní ploše INISSu. Ostatní nastavení grafikonu jsou v Lokálních nastaveních.</value>
+  <data name="lIntro.Text" xml:space="preserve">
+    <value>Příznaky určují, jak INISS zpracuje externí zprávy o vlacích (například z ISOŘ) pro stanici tohoto grafikonu a kdy je grafikon aktivní. INISS je načte po restartu.</value>
   </data>
-  <data name="bColor.Text" xml:space="preserve">
-    <value>Změnit barvu…</value>
+  <data name="gbMessages.Text" xml:space="preserve">
+    <value>Externí zprávy o vlacích</value>
   </data>
-  <data name="bNoColor.Text" xml:space="preserve">
-    <value>Barva z palety</value>
+  <data name="cboxSpread.Text" xml:space="preserve">
+    <value>Šířit zprávu na následující stanice trasy (Z)</value>
   </data>
-  <data name="bFlags.Text" xml:space="preserve">
-    <value>Příznaky…</value>
+  <data name="cboxDeparture.Text" xml:space="preserve">
+    <value>Zpráva mění kolej odjezdu, ne příjezdu (O)</value>
   </data>
-  <data name="bUp.Text" xml:space="preserve">
-    <value>Výš</value>
+  <data name="lCreate.Text" xml:space="preserve">
+    <value>Vlak, který INISS v grafikonu nemá:</value>
   </data>
-  <data name="bDown.Text" xml:space="preserve">
-    <value>Níž</value>
+  <data name="rbCreateNone.Text" xml:space="preserve">
+    <value>nezakládat – zprávu jen zapsat do logu</value>
   </data>
-  <data name="bOpenDir.Text" xml:space="preserve">
-    <value>Otevřít složku</value>
+  <data name="rbCreate.Text" xml:space="preserve">
+    <value>založit nový vlak (K)</value>
   </data>
-  <data name="bDelete.Text" xml:space="preserve">
-    <value>Odstranit…</value>
+  <data name="rbCreateWithoutCategori.Text" xml:space="preserve">
+    <value>založit nový vlak, nenačítat varianty a jazyky hlášení grafikonu (M)</value>
   </data>
-  <data name="colStation.HeaderText" xml:space="preserve">
-    <value>Stanice</value>
+  <data name="gbActive.Text" xml:space="preserve">
+    <value>Kdy je grafikon aktivní</value>
   </data>
-  <data name="colPeriod.HeaderText" xml:space="preserve">
-    <value>Období</value>
+  <data name="lInactive.Text" xml:space="preserve">
+    <value>Neaktivní grafikon INISS načte, ale neplatí pro něj vyhrazené porty, zvukové okruhy ani panely a jeho vlaky nejsou ve výběru vlaků.</value>
   </data>
-  <data name="colTablePort.HeaderText" xml:space="preserve">
-    <value>Port tabulí</value>
+  <data name="bOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="colReportPort.HeaderText" xml:space="preserve">
-    <value>Port hlášení</value>
+  <data name="bCancel.Text" xml:space="preserve">
+    <value>Zrušit</value>
   </data>
-  <data name="colFlags.HeaderText" xml:space="preserve">
-    <value>Příznaky</value>
-  </data>
-  <data name="colColor.HeaderText" xml:space="preserve">
-    <value>Barva</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Příznaky grafikonu {0}</value>
   </data>
 </root>
