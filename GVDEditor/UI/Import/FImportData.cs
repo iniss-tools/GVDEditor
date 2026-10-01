@@ -471,22 +471,11 @@ internal partial class FImportData : Form
 
     private void LoadText(string text)
     {
-        var reader = new CsvStringReader(text, rowsep: DetectSeparator(text));
+        var reader = new CsvStringReader(text, rowsep: CsvStringReader.DetectSeparator(text));
 
         if (reader.RowCount == 0) return;
 
         SetTable(reader);
-    }
-
-    /// <summary>
-    /// Oddelovac buniek podla prveho riadku: tabulator (kopia z Excelu), inak bodkociarka, inak ciarka.
-    /// </summary>
-    internal static char DetectSeparator(string text)
-    {
-        var end = text.IndexOf('\n');
-        var firstLine = end == -1 ? text : text[..end];
-        if (firstLine.Contains('\t')) return '\t';
-        return firstLine.Contains(';') || !firstLine.Contains(',') ? ';' : ',';
     }
 
     private void bXLS_Click(object sender, EventArgs e)

@@ -1,11 +1,11 @@
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using GVDEditor.Domain.Entities;
 using GVDEditor.UI.Import;
 
 namespace GVDEditor.Tests.UI.Import;
 
 /// <summary>
-/// Import dat (Subor → Importovat → Data…): oddelovac buniek, trasa vlaku a stanice v kratkom a dlhom hlaseni.
+/// Import dat (Subor → Importovat → Data…): trasa vlaku a stanice v kratkom a dlhom hlaseni.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
@@ -19,16 +19,6 @@ public class ImportDataTests
     private static readonly Station Dolne = new(Home, "Dolné Mesto");
 
     private static readonly StationDirectory Stations = new([Velka, Hranicna, Sklene, Dolne], []);
-
-    [TestMethod]
-    [DataRow("Číslo\tTyp\tPríchod\n521\tEx\t09:10", '\t')]
-    [DataRow("Číslo;Typ;Trasy\n521;Ex;9900200,9900100", ';')]
-    [DataRow("Číslo,Typ,Príchod\n521,Ex,09:10", ',')]
-    [DataRow("521", ';')]
-    public void Oddelovac_PodlaPrvehoRiadku(string text, char expected)
-    {
-        Assert.AreEqual(expected, FImportData.DetectSeparator(text));
-    }
 
     [TestMethod]
     [DataRow("Koľaj", "Koľaj")]
