@@ -30,7 +30,7 @@ namespace GVDEditor.UI.Settings
         /// </summary>
         private void InitializeComponent()
         {
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(FDirListFlags));
+            var resources = new ComponentResourceManager(typeof(FDirListFlags));
             tlpMain = new TableLayoutPanel();
             lIntro = new Label();
             gbMessages = new ExGroupBox();
@@ -56,9 +56,9 @@ namespace GVDEditor.UI.Settings
             flpActive.SuspendLayout();
             flpButtons.SuspendLayout();
             SuspendLayout();
-            //
+            // 
             // tlpMain
-            //
+            // 
             resources.ApplyResources(tlpMain, "tlpMain");
             tlpMain.Controls.Add(lIntro, 0, 0);
             tlpMain.Controls.Add(gbMessages, 0, 1);
@@ -66,21 +66,22 @@ namespace GVDEditor.UI.Settings
             tlpMain.Controls.Add(lCode, 0, 3);
             tlpMain.Controls.Add(flpButtons, 0, 5);
             tlpMain.Name = "tlpMain";
-            //
+            // 
             // lIntro
-            //
+            // 
             resources.ApplyResources(lIntro, "lIntro");
             lIntro.Name = "lIntro";
-            //
+            // 
             // gbMessages
-            //
+            // 
             resources.ApplyResources(gbMessages, "gbMessages");
             gbMessages.Controls.Add(flpMessages);
+            gbMessages.DisabledForeColor = SystemColors.GrayText;
             gbMessages.Name = "gbMessages";
             gbMessages.TabStop = false;
-            //
+            // 
             // flpMessages
-            //
+            // 
             resources.ApplyResources(flpMessages, "flpMessages");
             flpMessages.Controls.Add(cboxSpread);
             flpMessages.Controls.Add(cboxDeparture);
@@ -89,106 +90,106 @@ namespace GVDEditor.UI.Settings
             flpMessages.Controls.Add(rbCreate);
             flpMessages.Controls.Add(rbCreateWithoutCategori);
             flpMessages.Name = "flpMessages";
-            //
+            // 
             // cboxSpread
-            //
+            // 
             resources.ApplyResources(cboxSpread, "cboxSpread");
-            cboxSpread.BoxBackColor = System.Drawing.Color.White;
-            cboxSpread.HighlightColor = System.Drawing.SystemColors.Highlight;
+            cboxSpread.BoxBackColor = Color.White;
+            cboxSpread.HighlightColor = SystemColors.Highlight;
             cboxSpread.Name = "cboxSpread";
             cboxSpread.UseVisualStyleBackColor = true;
-            //
+            // 
             // cboxDeparture
-            //
+            // 
             resources.ApplyResources(cboxDeparture, "cboxDeparture");
-            cboxDeparture.BoxBackColor = System.Drawing.Color.White;
-            cboxDeparture.HighlightColor = System.Drawing.SystemColors.Highlight;
+            cboxDeparture.BoxBackColor = Color.White;
+            cboxDeparture.HighlightColor = SystemColors.Highlight;
             cboxDeparture.Name = "cboxDeparture";
             cboxDeparture.UseVisualStyleBackColor = true;
-            //
+            // 
             // lCreate
-            //
+            // 
             resources.ApplyResources(lCreate, "lCreate");
             lCreate.Name = "lCreate";
-            //
+            // 
             // rbCreateNone
-            //
+            // 
             resources.ApplyResources(rbCreateNone, "rbCreateNone");
-            rbCreateNone.HighlightColor = System.Drawing.SystemColors.Highlight;
+            rbCreateNone.HighlightColor = SystemColors.Highlight;
             rbCreateNone.Name = "rbCreateNone";
             rbCreateNone.TabStop = true;
             rbCreateNone.UseVisualStyleBackColor = true;
-            //
+            // 
             // rbCreate
-            //
+            // 
             resources.ApplyResources(rbCreate, "rbCreate");
-            rbCreate.HighlightColor = System.Drawing.SystemColors.Highlight;
+            rbCreate.HighlightColor = SystemColors.Highlight;
             rbCreate.Name = "rbCreate";
             rbCreate.UseVisualStyleBackColor = true;
-            //
+            // 
             // rbCreateWithoutCategori
-            //
+            // 
             resources.ApplyResources(rbCreateWithoutCategori, "rbCreateWithoutCategori");
-            rbCreateWithoutCategori.HighlightColor = System.Drawing.SystemColors.Highlight;
+            rbCreateWithoutCategori.HighlightColor = SystemColors.Highlight;
             rbCreateWithoutCategori.Name = "rbCreateWithoutCategori";
             rbCreateWithoutCategori.UseVisualStyleBackColor = true;
-            //
+            // 
             // gbActive
-            //
+            // 
             resources.ApplyResources(gbActive, "gbActive");
             gbActive.Controls.Add(flpActive);
+            gbActive.DisabledForeColor = SystemColors.GrayText;
             gbActive.Name = "gbActive";
             gbActive.TabStop = false;
-            //
+            // 
             // flpActive
-            //
+            // 
             resources.ApplyResources(flpActive, "flpActive");
             flpActive.Controls.Add(cbSwitch);
             flpActive.Controls.Add(lInactive);
             flpActive.Name = "flpActive";
-            //
+            // 
             // cbSwitch
-            //
-            cbSwitch.DropDownSelectedRowBackColor = System.Drawing.SystemColors.Highlight;
+            // 
+            cbSwitch.DropDownSelectedRowBackColor = SystemColors.Highlight;
             cbSwitch.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSwitch.FormattingEnabled = true;
             resources.ApplyResources(cbSwitch, "cbSwitch");
             cbSwitch.Name = "cbSwitch";
-            cbSwitch.UseDarkScrollBar = false;
-            //
+            // 
             // lInactive
-            //
+            // 
             resources.ApplyResources(lInactive, "lInactive");
             lInactive.Name = "lInactive";
-            //
+            // 
             // lCode
-            //
+            // 
             resources.ApplyResources(lCode, "lCode");
             lCode.Name = "lCode";
-            //
+            // 
             // flpButtons
-            //
+            // 
             resources.ApplyResources(flpButtons, "flpButtons");
             flpButtons.Controls.Add(bCancel);
             flpButtons.Controls.Add(bOK);
             flpButtons.Name = "flpButtons";
-            //
+            // 
             // bCancel
-            //
-            resources.ApplyResources(bCancel, "bCancel");
+            // 
             bCancel.DialogResult = DialogResult.Cancel;
+            resources.ApplyResources(bCancel, "bCancel");
             bCancel.Name = "bCancel";
             bCancel.UseVisualStyleBackColor = true;
-            //
+            // 
             // bOK
-            //
-            resources.ApplyResources(bOK, "bOK");
+            // 
             bOK.DialogResult = DialogResult.OK;
+            resources.ApplyResources(bOK, "bOK");
             bOK.Name = "bOK";
             bOK.UseVisualStyleBackColor = true;
-            //
+            // 
             // FDirListFlags
-            //
+            // 
             AcceptButton = bOK;
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
@@ -211,7 +212,6 @@ namespace GVDEditor.UI.Settings
             flpActive.ResumeLayout(false);
             flpActive.PerformLayout();
             flpButtons.ResumeLayout(false);
-            flpButtons.PerformLayout();
             ResumeLayout(false);
         }
 
