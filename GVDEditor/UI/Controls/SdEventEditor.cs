@@ -1,4 +1,5 @@
-﻿using ExControls;
+﻿using System.Globalization;
+using ExControls;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.StateDgm;
 
@@ -14,6 +15,8 @@ internal sealed class SdEventEditor : SdEditorBase
     private readonly ExComboBox _class;
     private readonly ExComboBox _next = new() { DropDownStyle = ComboBoxStyle.DropDown, Width = 220 };
     private readonly ExComboBox _report = new() { DropDownStyle = ComboBoxStyle.DropDown, Width = 220 };
+    private readonly LinkLabel _reportInfo = new() { AutoSize = true, MaximumSize = new Size(360, 0), Anchor = AnchorStyles.Left, Margin = new Padding(3, 0, 3, 3), Visible = false };
+    private readonly ErrorProvider _errors = new() { BlinkStyle = ErrorBlinkStyle.NeverBlink };
     private readonly ExComboBox _dialog;
     private readonly ExCheckBox _hasControl = Check(Resources.FStateDgm_Akcia_MaTlacidlo);
     private readonly ExNumericUpDown _ctrlId = Number(0, 99);
@@ -43,6 +46,14 @@ internal sealed class SdEventEditor : SdEditorBase
         AddRow(Resources.FStateDgm_Trieda, _class);
         AddRow(Resources.FStateDgm_Akcia_NextState, _next);
         AddRow(Resources.FStateDgm_Akcia_ReportKey, _report);
+        _errors.SetIconAlignment(_report, ErrorIconAlignment.MiddleLeft);
+        // upozornenie na neznamy typ hlasenia - pod polom, s odkazom na navrhnuty typ
+        var infoRow = Table.RowCount++;
+        Table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+        Table.Controls.Add(_reportInfo, 1, infoRow);
+        Table.SizeChanged += (_, _) => _reportInfo.MaximumSize = new Size(Math.Max(120, _report.Width), 0);
+        _reportInfo.LinkClicked += (_, _) => UseSuggestedReport();
+        _report.TextChanged += (_, _) => ValidateReport();
         _dialog = Combo(
             new SdEditorContext.Item(Resources.FStateDgm_Akcia_Dlg_Kolej, "SDDlgKolej"),
             new SdEditorContext.Item(Resources.FStateDgm_Akcia_Dlg_Zpozdeni, "SDDlgZpozdeni"),
@@ -81,9 +92,44 @@ internal sealed class SdEventEditor : SdEditorBase
         SetRowVisible(_dialog, cls == "SDEventWithDialog");
         SetRowVisible(_next, cls != "SDEventWithDialog");
         SetRowVisible(_report, HasReport(cls));
+        ValidateReport();
         _delayArr.Visible = _delayDep.Visible = cls == "SDEventVlakAttr";
         SetRowVisible(_ctrlId, _hasControl.Checked);
         SetRowVisible(_design, _hasControl.Checked);
+    }
+
+    /// <summary>
+    /// Typ hlasenia, ktory nie je v Categori.txt: ikona chyby pri poli a pod nim upozornenie, pripadne s odkazom
+    /// na typ s rovnakym nazvom (kluc a nazov typu sa lahko zamenia - INISS hlada podla kluca).
+    /// </summary>
+    private void ValidateReport()
+    {
+        var rep = _report.Text.Trim();
+        var unknown = HasReport(SdEditorContext.Value(_class) as string) && rep != Resources.FStateDgm_Akcia_BezHlasenia && Context.IsUnknownReport(rep);
+        var message = unknown ? string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_Akcia_ReportNeznamy, rep) : "";
+        _errors.SetError(_report, message);
+        _reportInfo.Visible = unknown;
+        var suggested = unknown ? Context.SuggestReport(rep) : null;
+        _reportInfo.Tag = suggested?.Key;
+        if (!unknown) return;
+
+        if (suggested == null)
+        {
+            _reportInfo.Text = message;
+            _reportInfo.LinkArea = new LinkArea(0, 0);
+            return;
+        }
+
+        var link = string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_Akcia_ReportNavrh, suggested.Key, suggested.Name.Trim());
+        // oblast odkazu sa rata v texte, z ktoreho LinkLabel vynecha \r - preto len \n
+        _reportInfo.Text = message + "\n" + link;
+        _reportInfo.LinkArea = new LinkArea(message.Length + 1, link.Length);
+    }
+
+    /// <summary>Prepise neznamy typ hlasenia navrhnutym (odkaz pod polom); bez navrhu nerobi nic.</summary>
+    internal void UseSuggestedReport()
+    {
+        if (_reportInfo.Tag is string key) _report.Text = key;
     }
 
     /// <summary>Trieda akcie, ktora moze spustit hlasenie (<c>ReportKey</c>).</summary>

@@ -1127,6 +1127,12 @@ INISS taký súbor nenačíta. Uložiť ho aj tak?</value>
   <data name="FStateDgm_Akcia_BezHlasenia" xml:space="preserve">
     <value>(bez hlásenia)</value>
   </data>
+  <data name="FStateDgm_Akcia_ReportNeznamy" xml:space="preserve">
+    <value>Typ hlásenia „{0}“ nie je v zozname typov hlásení – INISS ho nenájde a hlásenie nevyhlási.</value>
+  </data>
+  <data name="FStateDgm_Akcia_ReportNavrh" xml:space="preserve">
+    <value>Použiť typ „{0}“ (názov „{1}“)</value>
+  </data>
   <data name="FStateDgm_Akcia_Dialog" xml:space="preserve">
     <value>Dialóg:</value>
   </data>

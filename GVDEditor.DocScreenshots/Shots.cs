@@ -352,7 +352,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("stavovy-diagram/akcia", () =>
             {
                 var editor = new SdEventEditor(new SdEditorContext(new GvdExprSymbols(Program.Context.Workspace, Program.Context.Document),
-                    Program.Context.Document.ReportTypes.Select(r => r.Key).ToList(), Program.Context.UsingStyle.TabTabEditorScheme.Font));
+                    Program.Context.Document.ReportTypes, Program.Context.UsingStyle.TabTabEditorScheme.Font));
                 editor.Bind(departs, arrived.Controls.FirstOrDefault(c => c.EventKey == departs.Key),
                     passing.States.Select(s => s.Key), diagram.Designs.Select(d => d.Key), 0);
                 return new FStateDgmItem(Properties.Resources.FStateDgm_Akcia_Titul, editor, 520, 380);

@@ -113,7 +113,7 @@ public partial class FStateDgm : Form
         SetupTextView();
 
         _sd = new SdEditorContext(new GvdExprSymbols(_ctx.Workspace, _ctx.Document),
-            (_ctx.Document.ReportTypes ?? []).Select(r => r.Key).ToList(), _ctx.UsingStyle.TabTabEditorScheme.Font);
+            _ctx.Document.ReportTypes ?? [], _ctx.UsingStyle.TabTabEditorScheme.Font);
         _headerEditor = new SdHeaderEditor(_sd);
         _categoryEditor = new SdCategoryEditor(_sd);
         _stateEditor = new SdStateEditor(_sd);

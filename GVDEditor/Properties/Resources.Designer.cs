@@ -2972,6 +2972,24 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Typ hlásenia „{0}“ nie je v zozname typov hlásení – INISS ho nenájde a hlásenie nevyhlási..
+        /// </summary>
+        internal static string FStateDgm_Akcia_ReportNeznamy {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_ReportNeznamy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Použiť typ „{0}“ (názov „{1}“).
+        /// </summary>
+        internal static string FStateDgm_Akcia_ReportNavrh {
+            get {
+                return ResourceManager.GetString("FStateDgm_Akcia_ReportNavrh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dialóg:.
         /// </summary>
         internal static string FStateDgm_Akcia_Dialog {

@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Expressions;
 
@@ -9,15 +10,31 @@ namespace GVDEditor.UI.Controls;
 /// a pismo vyrazov. Vytvara ho okno stavoveho diagramu a dostava ho kazdy editor.
 /// </summary>
 /// <param name="symbols">symboly grafikonu pre validator vyrazov (druhy vlakov, stanice…)</param>
-/// <param name="reportKeys">kluce typov hlaseni z lokalneho Categori.txt</param>
+/// <param name="reportTypes">typy hlaseni z lokalneho Categori.txt</param>
 /// <param name="exprFont">pismo poli s vyrazom (ako v editore TabTab)</param>
-internal sealed class SdEditorContext(IExprSymbolProvider? symbols, IReadOnlyList<string> reportKeys, Font exprFont)
+internal sealed class SdEditorContext(IExprSymbolProvider? symbols, IReadOnlyList<ReportType> reportTypes, Font exprFont)
 {
     /// <summary>Symboly grafikonu pre validator vyrazov (druhy vlakov, stanice…).</summary>
     public IExprSymbolProvider? Symbols { get; } = symbols;
 
+    /// <summary>Typy hlaseni z lokalneho Categori.txt.</summary>
+    public IReadOnlyList<ReportType> ReportTypes { get; } = reportTypes;
+
     /// <summary>Kluce typov hlaseni z lokalneho Categori.txt.</summary>
-    public IReadOnlyList<string> ReportKeys { get; } = reportKeys;
+    public IReadOnlyList<string> ReportKeys { get; } = reportTypes.Select(r => r.Key).ToList();
+
+    /// <summary>
+    /// Kluc hlasenia, ktory INISS v Categori.txt nenajde (porovnava presne s KEY). Bez typov hlaseni sa nekontroluje.
+    /// </summary>
+    public bool IsUnknownReport(string key) => ReportKeys.Count > 0 && key.Length > 0 && !ReportKeys.Contains(key, StringComparer.Ordinal);
+
+    /// <summary>
+    /// Typ hlasenia, ktory zrejme patri k neznamemu klucu: s rovnakym nazvom (NAME - napr. v Categori.txt so zamenenym
+    /// KEY a NAME), inak s klucom, ktory sa lisi len velkostou pismen. Null, ak sa ziadny nehodi.
+    /// </summary>
+    public ReportType? SuggestReport(string key) =>
+        ReportTypes.FirstOrDefault(r => string.Equals(r.Name.Trim(), key, StringComparison.OrdinalIgnoreCase))
+        ?? ReportTypes.FirstOrDefault(r => string.Equals(r.Key, key, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>Pismo poli s vyrazom.</summary>
     public Font ExprFont { get; } = exprFont;
