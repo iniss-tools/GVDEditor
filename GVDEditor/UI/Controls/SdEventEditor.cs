@@ -80,11 +80,14 @@ internal sealed class SdEventEditor : SdEditorBase
         var cls = SdEditorContext.Value(_class) as string;
         SetRowVisible(_dialog, cls == "SDEventWithDialog");
         SetRowVisible(_next, cls != "SDEventWithDialog");
-        SetRowVisible(_report, cls is "SDEventUniPos" or "SDEventReportAboutState" or "SDEventVlakAttr");
+        SetRowVisible(_report, HasReport(cls));
         _delayArr.Visible = _delayDep.Visible = cls == "SDEventVlakAttr";
         SetRowVisible(_ctrlId, _hasControl.Checked);
         SetRowVisible(_design, _hasControl.Checked);
     }
+
+    /// <summary>Trieda akcie, ktora moze spustit hlasenie (<c>ReportKey</c>).</summary>
+    private static bool HasReport(string? cls) => cls is "SDEventUniPos" or "SDEventReportAboutState" or "SDEventVlakAttr";
 
     /// <summary>Naplni editor akciou a jej tlacidlom (null = bez tlacidla).</summary>
     public void Bind(StateDgmEvent e, StateDgmControl? control, IEnumerable<string> stateKeys, IEnumerable<string> designKeys, int nextCtrlId)
@@ -140,7 +143,8 @@ internal sealed class SdEventEditor : SdEditorBase
         var next = _next.Text.Trim();
         e.NextState = e.Class == "SDEventWithDialog" || next.Length == 0 || next == Resources.FStateDgm_Akcia_BezZmeny ? null : next;
         var rep = _report.Text.Trim();
-        e.ReportKey = !_report.Visible || rep.Length == 0 || rep == Resources.FStateDgm_Akcia_BezHlasenia ? null : rep;
+        // podla triedy, nie podla _report.Visible - Apply sa vola az po zatvoreni dialogu, ked je skryte cele okno
+        e.ReportKey = !HasReport(e.Class) || rep.Length == 0 || rep == Resources.FStateDgm_Akcia_BezHlasenia ? null : rep;
         e.Dialog = e.Class == "SDEventWithDialog" ? SdEditorContext.Value(_dialog) as string : null;
         // rozsirene volby: zapisu sa len tie, ktore sa lisia od predvolenych INISSu
         e.PositionForArrival = _posArr.Checked ? 1 : null;
