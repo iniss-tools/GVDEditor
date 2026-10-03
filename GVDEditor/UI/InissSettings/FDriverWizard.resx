@@ -1,0 +1,726 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tlpMain.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tlpMain.RowCount" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="tlpMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tlpMain.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 10</value>
+  </data>
+  <data name="tlpMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tlpMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>580, 440</value>
+  </data>
+  <data name="tlpMain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tlpMain.Name" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;tlpMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tlpMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tlpMain.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lIntro" Row="0" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="lSection" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbSection" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lClass" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbClass" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lConnection" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbConnection" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lComPort" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbComPort" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lParams" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbParams" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lHost" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbHost" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lNetPort" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudNetPort" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lPipe" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbPipe" Row="8" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lLine" Row="9" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="nudLine" Row="9" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lTarget" Row="10" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbTarget" Row="10" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lPreview" Row="11" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="flpButtons" Row="13" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,175,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="lIntro.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lIntro.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 10</value>
+  </data>
+  <data name="lIntro.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lIntro.Text" xml:space="preserve">
+    <value>Linka k tabuliam je jedna sekcia Driver v registri. Vyberte protokol tabúľ a spôsob pripojenia – ostatné nastavenia linky dostanú predvolené hodnoty podľa protokolu.</value>
+  </data>
+  <data name="&gt;&gt;lIntro.Name" xml:space="preserve">
+    <value>lIntro</value>
+  </data>
+  <data name="&gt;&gt;lIntro.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lIntro.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;lIntro.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lSection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lSection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lSection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 8, 3</value>
+  </data>
+  <data name="lSection.Text" xml:space="preserve">
+    <value>Sekcia v registri:</value>
+  </data>
+  <data name="lSection.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lSection.Name" xml:space="preserve">
+    <value>lSection</value>
+  </data>
+  <data name="&gt;&gt;lSection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lSection.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;lSection.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbSection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="cbSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 23</value>
+  </data>
+  <data name="cbSection.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cbSection.Name" xml:space="preserve">
+    <value>cbSection</value>
+  </data>
+  <data name="&gt;&gt;cbSection.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbSection.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;cbSection.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lClass.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lClass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lClass.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 8, 3</value>
+  </data>
+  <data name="lClass.Text" xml:space="preserve">
+    <value>Protokol (trieda linky):</value>
+  </data>
+  <data name="lClass.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lClass.Name" xml:space="preserve">
+    <value>lClass</value>
+  </data>
+  <data name="&gt;&gt;lClass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lClass.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;lClass.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cbClass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="cbClass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 23</value>
+  </data>
+  <data name="cbClass.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;cbClass.Name" xml:space="preserve">
+    <value>cbClass</value>
+  </data>
+  <data name="&gt;&gt;cbClass.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbClass.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;cbClass.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lConnection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lConnection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lConnection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 8, 3</value>
+  </data>
+  <data name="lConnection.Text" xml:space="preserve">
+    <value>Pripojenie:</value>
+  </data>
+  <data name="lConnection.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;lConnection.Name" xml:space="preserve">
+    <value>lConnection</value>
+  </data>
+  <data name="&gt;&gt;lConnection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lConnection.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;lConnection.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cbConnection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="cbConnection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 23</value>
+  </data>
+  <data name="cbConnection.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;cbConnection.Name" xml:space="preserve">
+    <value>cbConnection</value>
+  </data>
+  <data name="&gt;&gt;cbConnection.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbConnection.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;cbConnection.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lComPort.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lComPort.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lComPort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 8, 3</value>
+  </data>
+  <data name="lComPort.Text" xml:space="preserve">
+    <value>Sériový port:</value>
+  </data>
+  <data name="lComPort.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;lComPort.Name" xml:space="preserve">
+    <value>lComPort</value>
+  </data>
+  <data name="&gt;&gt;lComPort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lComPort.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;lComPort.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="cbComPort.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="cbComPort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 23</value>
+  </data>
+  <data name="cbComPort.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;cbComPort.Name" xml:space="preserve">
+    <value>cbComPort</value>
+  </data>
+  <data name="&gt;&gt;cbComPort.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbComPort.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;cbComPort.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="lParams.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lParams.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lParams.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 8, 3</value>
+  </data>
+  <data name="lParams.Text" xml:space="preserve">
+    <value>Parametre linky:</value>
+  </data>
+  <data name="lParams.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;lParams.Name" xml:space="preserve">
+    <value>lParams</value>
+  </data>
+  <data name="&gt;&gt;lParams.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lParams.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;lParams.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="tbParams.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="tbParams.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 23</value>
+  </data>
+  <data name="tbParams.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;tbParams.Name" xml:space="preserve">
+    <value>tbParams</value>
+  </data>
+  <data name="&gt;&gt;tbParams.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbParams.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;tbParams.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="lHost.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lHost.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lHost.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 8, 3</value>
+  </data>
+  <data name="lHost.Text" xml:space="preserve">
+    <value>Adresa počítača:</value>
+  </data>
+  <data name="lHost.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;lHost.Name" xml:space="preserve">
+    <value>lHost</value>
+  </data>
+  <data name="&gt;&gt;lHost.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lHost.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;lHost.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="tbHost.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="tbHost.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 23</value>
+  </data>
+  <data name="tbHost.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;tbHost.Name" xml:space="preserve">
+    <value>tbHost</value>
+  </data>
+  <data name="&gt;&gt;tbHost.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbHost.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;tbHost.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="lNetPort.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lNetPort.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lNetPort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 8, 3</value>
+  </data>
+  <data name="lNetPort.Text" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="lNetPort.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;lNetPort.Name" xml:space="preserve">
+    <value>lNetPort</value>
+  </data>
+  <data name="&gt;&gt;lNetPort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lNetPort.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;lNetPort.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="nudNetPort.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="nudNetPort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="nudNetPort.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;nudNetPort.Name" xml:space="preserve">
+    <value>nudNetPort</value>
+  </data>
+  <data name="&gt;&gt;nudNetPort.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudNetPort.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;nudNetPort.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="lPipe.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lPipe.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lPipe.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 8, 3</value>
+  </data>
+  <data name="lPipe.Text" xml:space="preserve">
+    <value>Názov rúry:</value>
+  </data>
+  <data name="lPipe.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;lPipe.Name" xml:space="preserve">
+    <value>lPipe</value>
+  </data>
+  <data name="&gt;&gt;lPipe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lPipe.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;lPipe.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="tbPipe.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="tbPipe.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 23</value>
+  </data>
+  <data name="tbPipe.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;tbPipe.Name" xml:space="preserve">
+    <value>tbPipe</value>
+  </data>
+  <data name="&gt;&gt;tbPipe.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbPipe.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;tbPipe.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="lLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lLine.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 8, 3</value>
+  </data>
+  <data name="lLine.Text" xml:space="preserve">
+    <value>Číslo linky:</value>
+  </data>
+  <data name="lLine.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;lLine.Name" xml:space="preserve">
+    <value>lLine</value>
+  </data>
+  <data name="&gt;&gt;lLine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lLine.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;lLine.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="nudLine.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="nudLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="nudLine.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;nudLine.Name" xml:space="preserve">
+    <value>nudLine</value>
+  </data>
+  <data name="&gt;&gt;nudLine.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudLine.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;nudLine.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="lTarget.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lTarget.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="lTarget.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 8, 3</value>
+  </data>
+  <data name="lTarget.Text" xml:space="preserve">
+    <value>Uložiť do:</value>
+  </data>
+  <data name="lTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;lTarget.Name" xml:space="preserve">
+    <value>lTarget</value>
+  </data>
+  <data name="&gt;&gt;lTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lTarget.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;lTarget.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="cbTarget.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="cbTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 23</value>
+  </data>
+  <data name="cbTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;cbTarget.Name" xml:space="preserve">
+    <value>cbTarget</value>
+  </data>
+  <data name="&gt;&gt;cbTarget.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbTarget.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;cbTarget.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="lPreview.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lPreview.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 12, 3, 3</value>
+  </data>
+  <data name="lPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="lPreview.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="&gt;&gt;lPreview.Name" xml:space="preserve">
+    <value>lPreview</value>
+  </data>
+  <data name="&gt;&gt;lPreview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lPreview.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;lPreview.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="flpButtons.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flpButtons.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flpButtons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flpButtons.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>RightToLeft</value>
+  </data>
+  <data name="flpButtons.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 6, 0, 0</value>
+  </data>
+  <data name="flpButtons.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="&gt;&gt;flpButtons.Name" xml:space="preserve">
+    <value>flpButtons</value>
+  </data>
+  <data name="&gt;&gt;flpButtons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flpButtons.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;flpButtons.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="bCancel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bCancel.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>90, 27</value>
+  </data>
+  <data name="bCancel.Text" xml:space="preserve">
+    <value>Zrušiť</value>
+  </data>
+  <data name="bCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;bCancel.Name" xml:space="preserve">
+    <value>bCancel</value>
+  </data>
+  <data name="&gt;&gt;bCancel.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bCancel.Parent" xml:space="preserve">
+    <value>flpButtons</value>
+  </data>
+  <data name="&gt;&gt;bCancel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="bOK.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bOK.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>90, 27</value>
+  </data>
+  <data name="bOK.Text" xml:space="preserve">
+    <value>Pridať linku</value>
+  </data>
+  <data name="bOK.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;bOK.Name" xml:space="preserve">
+    <value>bOK</value>
+  </data>
+  <data name="&gt;&gt;bOK.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bOK.Parent" xml:space="preserve">
+    <value>flpButtons</value>
+  </data>
+  <data name="&gt;&gt;bOK.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>580, 440</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Nová linka k tabuliam</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FDriverWizard</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

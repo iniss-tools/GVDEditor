@@ -51,6 +51,8 @@ namespace GVDEditor.UI.InissSettings
             flpFilter = new FlowLayoutPanel();
             cboxChangedOnly = new ExCheckBox();
             cboxNotRead = new ExCheckBox();
+            bAddLine = new ExButton();
+            bRemoveLine = new ExButton();
             dgvValues = new DataGridView();
             cState = new DataGridViewImageColumn();
             cName = new DataGridViewTextBoxColumn();
@@ -203,6 +205,8 @@ namespace GVDEditor.UI.InissSettings
             resources.ApplyResources(flpFilter, "flpFilter");
             flpFilter.Controls.Add(cboxChangedOnly);
             flpFilter.Controls.Add(cboxNotRead);
+            flpFilter.Controls.Add(bAddLine);
+            flpFilter.Controls.Add(bRemoveLine);
             flpFilter.Name = "flpFilter";
             // 
             // cboxChangedOnly
@@ -216,6 +220,18 @@ namespace GVDEditor.UI.InissSettings
             resources.ApplyResources(cboxNotRead, "cboxNotRead");
             cboxNotRead.UseVisualStyleBackColor = true;
             cboxNotRead.Name = "cboxNotRead";
+            // 
+            // bAddLine
+            // 
+            resources.ApplyResources(bAddLine, "bAddLine");
+            bAddLine.UseVisualStyleBackColor = true;
+            bAddLine.Name = "bAddLine";
+            // 
+            // bRemoveLine
+            // 
+            resources.ApplyResources(bRemoveLine, "bRemoveLine");
+            bRemoveLine.UseVisualStyleBackColor = true;
+            bRemoveLine.Name = "bRemoveLine";
             // 
             // dgvValues
             // 
@@ -374,6 +390,8 @@ namespace GVDEditor.UI.InissSettings
         private FlowLayoutPanel flpFilter;
         private ExCheckBox cboxChangedOnly;
         private ExCheckBox cboxNotRead;
+        private ExButton bAddLine;
+        private ExButton bRemoveLine;
         private DataGridView dgvValues;
         private DataGridViewImageColumn cState;
         private DataGridViewTextBoxColumn cName;

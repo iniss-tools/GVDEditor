@@ -27,6 +27,8 @@ internal partial class FInissSettings : Form
     private readonly IDialogService _dialogs;
     private readonly SettingDetail _detail = new() { Dock = DockStyle.Fill };
     private InissSettingsModel? _model;
+    private readonly IReadOnlyList<InissTable> _tables;
+    private DriverLineMap _lines = new([], []);
     private string _appName = "";
     private string? _exePath;
     private InissRunMode _runMode;
@@ -48,6 +50,8 @@ internal partial class FInissSettings : Form
         _dialogs = dialogs;
         InitializeComponent();
         dgvValues.AutoGenerateColumns = false;
+        // fyzicke tabule vsetkych grafikonov v poradi, v akom ich INISS indexuje (Tables\…<N>)
+        _tables = InissTableMap.Build(_ctx.Workspace);
         pDetail.Controls.Add(_detail);
         cState.DefaultCellStyle.NullValue = null;
         this.ApplyThemeAndFonts();
@@ -57,9 +61,8 @@ internal partial class FInissSettings : Form
         _loading = true;
         try
         {
-            // len programy INISS (v priecinku byvaju aj pomocne exe); ak ziadny nie je rozpoznany, vsetky
-            var programs = _ctx.Workspace.INISSExeFiles.Where(e => InissRegistry.IsInissExe(PathUtils.CombinePath(_ctx.Workspace.INISSDir, e)!)).ToList();
-            if (programs.Count == 0) programs = _ctx.Workspace.INISSExeFiles.ToList();
+            // instalacia uz ponuka len programy INISS (pomocne exe vynecha)
+            var programs = _ctx.Workspace.INISSExeFiles;
             foreach (var exe in programs) cbProgram.Items.Add(exe);
             // predvolene naposledy spusteny program, inak prvy, ktory uz ma konfiguraciu v registri
             var last = _iniss.LastStartPath is { } path ? Path.GetFileName(path) : null;
@@ -129,6 +132,8 @@ internal partial class FInissSettings : Form
         bSave.Click += async (_, _) => await SaveAsync(false);
         bSaveRestart.Click += async (_, _) => await SaveAsync(true);
         bDiscard.Click += (_, _) => DiscardAll();
+        bAddLine.Click += async (_, _) => await AddLineAsync();
+        bRemoveLine.Click += async (_, _) => await RemoveLineAsync();
         bClose.Click += (_, _) => Close();
         _iniss.StateChanged += Iniss_StateChanged;
         tlpGrid.SizeChanged += (_, _) => lSection.MaximumSize = new Size(Math.Max(200, tlpGrid.ClientSize.Width - 12), 0);
@@ -196,6 +201,7 @@ internal partial class FInissSettings : Form
         if (app.Length == 0)
         {
             _model = null;
+            _lines = new DriverLineMap([], []);
             BuildTree();
             UpdateInfo();
             return;
@@ -204,8 +210,9 @@ internal partial class FInissSettings : Form
         UseWaitCursor = true;
         try
         {
-            var source = InissRegistry.LoadSource(app, exe, mode);
+            var source = InissRegistry.LoadSource(app, exe, mode, _tables.ToDictionary(t => t.Index, t => t.ToInfo()));
             _model = new InissSettingsModel(RegResolver.Resolve(source), exe is null ? null : InissRegistry.IniPathFor(exe), InissRegistry.CanWriteMachine(app));
+            _lines = DriverLines.Build(_model.Config, _tables);
         }
         finally
         {
@@ -263,7 +270,12 @@ internal partial class FInissSettings : Form
                 var sections = m.Config.Sections.Where(s => s.Definition.Group == group).ToList();
                 if (sections.Count == 0) continue;
                 var node = new TreeNode(InissSettingsModel.GroupText(group)) { Tag = group };
-                foreach (var s in sections) node.Nodes.Add(new TreeNode(s.Name) { Tag = s });
+                foreach (var s in sections)
+                {
+                    // linka: "Driver0 – linka 2 · ELEN"
+                    var line = _lines.Lines.FirstOrDefault(l => l.Section == s.Name);
+                    node.Nodes.Add(new TreeNode(line is null ? s.Name : $"{s.Name} – {line.Summary}") { Tag = s });
+                }
                 tvSections.Nodes.Add(node);
             }
 
@@ -318,11 +330,11 @@ internal partial class FInissSettings : Form
             {
                 case ResolvedSection s:
                     rows = InissSettingsModel.RowsOf(s);
-                    lSection.Text = s.FromIni ? s.Definition.Description + Environment.NewLine + Resources.InissSettings_SectionFromIni : s.Definition.Description;
+                    lSection.Text = SectionText(s);
                     break;
                 case RegGroup g:
                     rows = m.Config.Sections.Where(s => s.Definition.Group == g).SelectMany(InissSettingsModel.RowsOf);
-                    lSection.Text = InissSettingsModel.GroupText(g);
+                    lSection.Text = g == RegGroup.Boards ? JoinLines(InissSettingsModel.GroupText(g), OrphanTablesText()) : InissSettingsModel.GroupText(g);
                     break;
                 default:
                     rows = m.AllRows().Where(r => r.Severity >= RegSeverity.Warning);
@@ -341,13 +353,16 @@ internal partial class FInissSettings : Form
             var index = dgvValues.Rows.Add();
             var gridRow = dgvValues.Rows[index];
             gridRow.Tag = row;
-            gridRow.Cells[cName.Index].Value = multiSection ? $"{row.Section}\\{row.Name}" : row.Name;
+            var key = multiSection ? $"{row.Section}\\{row.Name}" : row.Name;
+            // hodnoty jednotlivych tabul: "Enabled3 – Prichody (Kosice.2025)"
+            gridRow.Cells[cName.Index].Value = row.Setting?.Table is { } table ? $"{key} – {table.Name} ({table.Grafikon})" : key;
             gridRow.Cells[cValue.Index] = CreateValueCell(row);
             // ReadOnly sa da nastavit az bunke, ktora uz je v riadku
             if (InissSettingsModel.KindOf(row) == CellKind.ReadOnly) gridRow.Cells[cValue.Index].ReadOnly = true;
             UpdateGridRow(gridRow);
         }
 
+        UpdateLineButtons();
         var restore = dgvValues.Rows.Cast<DataGridViewRow>().FirstOrDefault(r => (r.Tag as SettingRow)?.Key == selectedKey);
         if (restore is not null) dgvValues.CurrentCell = restore.Cells[cName.Index];
         ShowDetail();
@@ -590,6 +605,87 @@ internal partial class FInissSettings : Form
         UpdateChanges();
     }
 
+    // --- linky k tabuliam ---
+
+    /// <summary>Popis sekcie; pri linke aj tabule na nej a zistenia, pri Tables tabule bez ovladaca.</summary>
+    private string SectionText(ResolvedSection s)
+    {
+        var text = s.FromIni ? JoinLines(s.Definition.Description, Resources.InissSettings_SectionFromIni) : s.Definition.Description;
+        if (_lines.Lines.FirstOrDefault(l => l.Section == s.Name) is { } line)
+        {
+            var tables = line.Tables.Count == 0 ? "—"
+                : Shorten(line.Tables.Select(t => $"{t.Table.Table.Key}{(t.Automatic ? " (" + Resources.InissSettings_LineAuto + ")" : "")}").ToList());
+            text = JoinLines(text, string.Format(CultureInfo.CurrentCulture, Resources.InissSettings_LineTables, line.Summary, tables));
+            text = JoinLines([text, .. line.Problems.Select(p => $"• {InissSettingsModel.SeverityText(p.Severity)}: {p.Text}")]);
+        }
+        else if (s.Definition.Name is "Tables")
+            text = JoinLines(text, OrphanTablesText());
+
+        return text;
+    }
+
+    /// <summary>Text o tabuliach, ktorym INISS nic neposle (prazdny, ak take nie su); rovnake dovody spolu.</summary>
+    private string OrphanTablesText() =>
+        _lines.Unserved.Count == 0 ? ""
+            : JoinLines([Resources.InissSettings_TablesWithoutDriver,
+                .. _lines.Unserved.GroupBy(u => u.Reason).Select(g => $"• {g.Key}: {Shorten(g.Select(u => u.Table.Table.Key).ToList())}")]);
+
+    /// <summary>Prvych niekolko nazvov a pocet dalsich - dlhy zoznam by odsunul tabulku hodnot.</summary>
+    private static string Shorten(List<string> names, int max = 6) =>
+        names.Count <= max ? string.Join(", ", names)
+            : string.Join(", ", names.Take(max)) + string.Format(CultureInfo.CurrentCulture, Resources.InissSettings_AndMore, names.Count - max);
+
+    private static string JoinLines(params string[] parts) => string.Join(Environment.NewLine, parts.Where(p => p.Length > 0));
+
+    /// <summary>Tlacidla liniek: pridat pri tabuliach a linkach, odstranit pri vybranej linke.</summary>
+    private void UpdateLineButtons()
+    {
+        var tag = tvSections.SelectedNode?.Tag;
+        var driver = tag is ResolvedSection { Definition.Name: "Driver" };
+        bAddLine.Visible = _model is not null && tbSearch.Text.Trim().Length == 0
+                                              && (driver || tag is RegGroup.Boards || tag is ResolvedSection { Definition.Name: "Tables" });
+        bRemoveLine.Visible = bAddLine.Visible && driver;
+    }
+
+    private async Task AddLineAsync()
+    {
+        if (_model is not { } m) return;
+        if (m.Pending.Count > 0)
+        {
+            _dialogs.ShowInfo(Resources.InissSettings_PendingFirst);
+            return;
+        }
+
+        var registryTarget = m.Config.UserBranchActive ? Resources.InissSettings_Target_User
+            : m.CanWriteMachine ? Resources.InissSettings_Target_Machine : Resources.InissSettings_Target_MachineUac;
+        using var wizard = new FDriverWizard(m.Config, _lines, _tables, InissRegistry.SerialPorts(), registryTarget, m.IniPath is not null);
+        if (wizard.ShowDialog(this) != DialogResult.OK) return;
+        var section = wizard.Section;
+        if (await ApplyAsync(m, RegWritePlanner.Plan(m.Config, wizard.Changes())))
+            SelectSection(section);
+    }
+
+    private async Task RemoveLineAsync()
+    {
+        if (_model is not { } m || tvSections.SelectedNode?.Tag is not ResolvedSection { Definition.Name: "Driver" } section) return;
+        if (m.Pending.Count > 0)
+        {
+            _dialogs.ShowInfo(Resources.InissSettings_PendingFirst);
+            return;
+        }
+
+        var summary = _lines.Lines.FirstOrDefault(l => l.Section == section.Name)?.Summary ?? "";
+        if (_dialogs.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.InissSettings_RemoveLineQuestion, section.Name, summary)) != DialogResult.Yes)
+            return;
+        await ApplyAsync(m, RegWritePlanner.PlanRemoveSection(m.Config, section.Name));
+    }
+
+    private void SelectSection(string section)
+    {
+        var node = Flatten(tvSections.Nodes).FirstOrDefault(n => n.Tag is ResolvedSection s && string.Equals(s.Name, section, StringComparison.OrdinalIgnoreCase));
+        if (node is not null) tvSections.SelectedNode = node;
+    }
+
     private void UpdateChanges()
     {
         var count = _model?.Pending.Count ?? 0;
@@ -605,40 +701,7 @@ internal partial class FInissSettings : Form
         var plan = RegWritePlanner.Plan(m.Config, pending.Select(p => p.ToChange()));
         if (_dialogs.ShowQuestion(Summary(m, pending, plan)) != DialogResult.Yes) return;
 
-        _saving = true;
-        UpdateChanges();
-        UseWaitCursor = true;
-        RegApplyResult result;
-        try
-        {
-            var app = _appName;
-            var ini = m.IniPath;
-            result = await Task.Run(() => InissRegistry.Apply(plan, app, ini));
-        }
-        catch (Exception ex) when (ex is UnauthorizedAccessException or IOException or System.Security.SecurityException)
-        {
-            _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.InissSettings_SaveError, ex.Message));
-            return;
-        }
-        finally
-        {
-            UseWaitCursor = false;
-            _saving = false;
-            UpdateChanges();
-        }
-
-        switch (result)
-        {
-            case RegApplyResult.Cancelled:
-                _dialogs.ShowWarning(Resources.InissSettings_SaveCancelled);
-                return;
-            case RegApplyResult.Failed:
-                _dialogs.ShowError(Resources.InissSettings_SaveFailed);
-                return;
-        }
-
-        m.RevertAll();
-        Reload(false);
+        if (!await ApplyAsync(m, plan)) return;
         if (restart && _iniss.IsRunning)
         {
             try
@@ -654,6 +717,49 @@ internal partial class FInissSettings : Form
         {
             _dialogs.ShowInfo(Resources.InissSettings_SavedRestartNeeded);
         }
+    }
+
+    /// <summary>
+    /// Zapise plan (HKLM pripadne so zvysenim prav) a po uspechu zahodi neulozene zmeny a nacita konfiguraciu znova.
+    /// </summary>
+    /// <returns>zapis prebehol</returns>
+    private async Task<bool> ApplyAsync(InissSettingsModel m, RegWritePlan plan)
+    {
+        _saving = true;
+        UpdateChanges();
+        UseWaitCursor = true;
+        RegApplyResult result;
+        try
+        {
+            var app = _appName;
+            var ini = m.IniPath;
+            result = await Task.Run(() => InissRegistry.Apply(plan, app, ini));
+        }
+        catch (Exception ex) when (ex is UnauthorizedAccessException or IOException or System.Security.SecurityException)
+        {
+            _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.InissSettings_SaveError, ex.Message));
+            return false;
+        }
+        finally
+        {
+            UseWaitCursor = false;
+            _saving = false;
+            UpdateChanges();
+        }
+
+        switch (result)
+        {
+            case RegApplyResult.Cancelled:
+                _dialogs.ShowWarning(Resources.InissSettings_SaveCancelled);
+                return false;
+            case RegApplyResult.Failed:
+                _dialogs.ShowError(Resources.InissSettings_SaveFailed);
+                return false;
+        }
+
+        m.RevertAll();
+        Reload(false);
+        return true;
     }
 
     /// <summary>Suhrn zmien pred zapisom (pred → po, kam).</summary>

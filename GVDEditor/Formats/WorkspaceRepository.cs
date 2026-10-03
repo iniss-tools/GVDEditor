@@ -4,6 +4,7 @@ using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using ToolsCore.Iniss.Entities;
 using ToolsCore.Iniss.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Formats;
 
@@ -34,7 +35,7 @@ internal static class WorkspaceRepository
             DataDir = dataDir,
             RawBankDir = rawBankDir,
             GVDDirs = DirListFile.Read(dataDir),
-            INISSExeFiles = new DirectoryInfo(inissDir).GetFiles("*.exe").Select(file => file.Name).ToList(),
+            INISSExeFiles = InissPrograms(inissDir),
             Languages = languages,
             Sounds = sounds,
             LogZvukTexts = LogZvukParser.ReadLogZvukUsr(rawBankDir),
@@ -63,5 +64,16 @@ internal static class WorkspaceRepository
         }
 
         return workspace;
+    }
+
+    /// <summary>
+    /// Programy INISS v priecinku instalacie (popis alebo produkt v informaciach o subore je INISS) - v priecinku byvaju
+    /// aj pomocne programy (ZvukBase, DatObm…). Ak sa ziadny nerozpozna (napr. exe bez informacii o verzii), vsetky exe.
+    /// </summary>
+    private static List<string> InissPrograms(string inissDir)
+    {
+        var all = new DirectoryInfo(inissDir).GetFiles("*.exe").Select(file => file.Name).ToList();
+        var iniss = all.Where(name => InissRegistry.IsInissExe(Path.Combine(inissDir, name))).ToList();
+        return iniss.Count > 0 ? iniss : all;
     }
 }

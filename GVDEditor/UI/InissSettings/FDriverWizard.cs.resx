@@ -58,67 +58,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lProgram.Text" xml:space="preserve">
-    <value>Program:</value>
-  </data>
-  <data name="lConfig.Text" xml:space="preserve">
-    <value>Konfigurace v registru:</value>
-  </data>
-  <data name="lRunMode.Text" xml:space="preserve">
-    <value>INISS se spouští:</value>
-  </data>
-  <data name="bReload.Text" xml:space="preserve">
-    <value>Načíst znovu</value>
-  </data>
-  <data name="lInfo.Text" xml:space="preserve">
-    <value>INISS</value>
-  </data>
-  <data name="tbSearch.HintText" xml:space="preserve">
-    <value>Hledat hodnotu…</value>
+  <data name="lIntro.Text" xml:space="preserve">
+    <value>Linka k tabulím je jedna sekce Driver v registru. Vyberte protokol tabulí a způsob připojení – ostatní nastavení linky dostanou výchozí hodnoty podle protokolu.</value>
   </data>
   <data name="lSection.Text" xml:space="preserve">
-    <value></value>
+    <value>Sekce v registru:</value>
   </data>
-  <data name="cboxChangedOnly.Text" xml:space="preserve">
-    <value>Jen hodnoty odlišné od výchozích</value>
+  <data name="lClass.Text" xml:space="preserve">
+    <value>Protokol (třída linky):</value>
   </data>
-  <data name="cboxNotRead.Text" xml:space="preserve">
-    <value>I hodnoty, které tato verze INISSu nečte</value>
+  <data name="lConnection.Text" xml:space="preserve">
+    <value>Připojení:</value>
   </data>
-  <data name="bAddLine.Text" xml:space="preserve">
-    <value>Přidat linku…</value>
+  <data name="lComPort.Text" xml:space="preserve">
+    <value>Sériový port:</value>
   </data>
-  <data name="bRemoveLine.Text" xml:space="preserve">
-    <value>Odstranit linku</value>
+  <data name="lParams.Text" xml:space="preserve">
+    <value>Parametry linky:</value>
   </data>
-  <data name="cName.HeaderText" xml:space="preserve">
-    <value>Klíč</value>
+  <data name="lHost.Text" xml:space="preserve">
+    <value>Adresa počítače:</value>
   </data>
-  <data name="cValue.HeaderText" xml:space="preserve">
-    <value>Hodnota</value>
+  <data name="lNetPort.Text" xml:space="preserve">
+    <value>Port:</value>
   </data>
-  <data name="cSource.HeaderText" xml:space="preserve">
-    <value>Zdroj</value>
+  <data name="lPipe.Text" xml:space="preserve">
+    <value>Název roury:</value>
   </data>
-  <data name="cDefault.HeaderText" xml:space="preserve">
-    <value>Výchozí</value>
+  <data name="lLine.Text" xml:space="preserve">
+    <value>Číslo linky:</value>
   </data>
-  <data name="bClose.Text" xml:space="preserve">
-    <value>Zavřít</value>
+  <data name="lTarget.Text" xml:space="preserve">
+    <value>Uložit do:</value>
   </data>
-  <data name="bSaveRestart.Text" xml:space="preserve">
-    <value>Uložit a restartovat INISS</value>
+  <data name="bCancel.Text" xml:space="preserve">
+    <value>Zrušit</value>
   </data>
-  <data name="bSave.Text" xml:space="preserve">
-    <value>Uložit</value>
-  </data>
-  <data name="bDiscard.Text" xml:space="preserve">
-    <value>Zahodit změny</value>
-  </data>
-  <data name="lChanges.Text" xml:space="preserve">
-    <value></value>
+  <data name="bOK.Text" xml:space="preserve">
+    <value>Přidat linku</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Nastavení INISSu</value>
+    <value>Nová linka k tabulím</value>
   </data>
 </root>

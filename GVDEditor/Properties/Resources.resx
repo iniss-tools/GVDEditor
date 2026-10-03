@@ -3323,4 +3323,79 @@ Smerovanie vlaku a/alebo stanice vlaku,
   <data name="InissSettings_Note_Color" xml:space="preserve">
     <value>Farbu zadajte v tabuľke ako #RRGGBB alebo ju vyberte dvojklikom; prázdna hodnota je systémová farba.</value>
   </data>
+  <data name="InissSettings_LineSummary" xml:space="preserve">
+    <value>linka {0} · {1}</value>
+  </data>
+  <data name="InissSettings_LineDuplicate" xml:space="preserve">
+    <value>Číslo linky {0} už používa sekcia {1} – INISS túto linku ignoruje.</value>
+  </data>
+  <data name="InissSettings_LineOutOfRange" xml:space="preserve">
+    <value>Číslo linky {0} je mimo rozsahu 1 až 100 – INISS linku nezaloží.</value>
+  </data>
+  <data name="InissSettings_LineWrongFamily" xml:space="preserve">
+    <value>Tabuľa {0} ({1}) nepatrí na linku s protokolom {2} – INISS jej nič nepošle.</value>
+  </data>
+  <data name="InissSettings_LineNoTables" xml:space="preserve">
+    <value>Žiadna fyzická tabuľa v dátach nepoužíva túto linku.</value>
+  </data>
+  <data name="InissSettings_LineTables" xml:space="preserve">
+    <value>Linka: {0}. Fyzické tabule na linke: {1}</value>
+  </data>
+  <data name="InissSettings_TablesWithoutDriver" xml:space="preserve">
+    <value>Tabule, ktorým INISS nič nepošle:</value>
+  </data>
+  <data name="InissSettings_PendingFirst" xml:space="preserve">
+    <value>Najprv uložte alebo zahoďte neuložené zmeny.</value>
+  </data>
+  <data name="InissSettings_RemoveLineQuestion" xml:space="preserve">
+    <value>Odstrániť linku {0} ({1})? Sekcia sa zmaže z registra aj zo súboru .INI.</value>
+  </data>
+  <data name="InissSettings_Conn_Serial" xml:space="preserve">
+    <value>sériový port (COM)</value>
+  </data>
+  <data name="InissSettings_Conn_Tcp" xml:space="preserve">
+    <value>sieť – TCP</value>
+  </data>
+  <data name="InissSettings_Conn_Udp" xml:space="preserve">
+    <value>sieť – UDP</value>
+  </data>
+  <data name="InissSettings_Conn_Pipe" xml:space="preserve">
+    <value>pomenovaná rúra</value>
+  </data>
+  <data name="InissSettings_Wizard_Port" xml:space="preserve">
+    <value>Zapíše sa TablePort = {0}</value>
+  </data>
+  <data name="InissSettings_Wizard_Tables" xml:space="preserve">
+    <value>Tabule s linkou {0} v dátach: {1}</value>
+  </data>
+  <data name="InissSettings_Wizard_NoTables" xml:space="preserve">
+    <value>V dátach nie je žiadna tabuľa s linkou {0} – linku pri fyzickej tabuli nastavíte v lokálnych nastaveniach.</value>
+  </data>
+  <data name="InissSettings_Wizard_LineUsed" xml:space="preserve">
+    <value>Linku {0} už používa sekcia {1}.</value>
+  </data>
+  <data name="InissSettings_Wizard_NoSection" xml:space="preserve">
+    <value>Všetky sekcie Driver sú obsadené.</value>
+  </data>
+  <data name="InissSettings_Wizard_ComInvalid" xml:space="preserve">
+    <value>Zadajte sériový port v tvare COM1, COM2…</value>
+  </data>
+  <data name="InissSettings_Wizard_HostMissing" xml:space="preserve">
+    <value>Zadajte adresu počítača.</value>
+  </data>
+  <data name="InissSettings_LineAuto" xml:space="preserve">
+    <value>automaticky</value>
+  </data>
+  <data name="InissSettings_Unserved_NoAuto" xml:space="preserve">
+    <value>nemá číslo linky a žiadna linka nemá protokol jej výrobcu</value>
+  </data>
+  <data name="InissSettings_Unserved_NoDriver" xml:space="preserve">
+    <value>linku {0} neobsluhuje žiadna sekcia Driver</value>
+  </data>
+  <data name="InissSettings_Wizard_AutoTables" xml:space="preserve">
+    <value>Tabule bez čísla linky, ktoré sa na novú linku priradia automaticky: {0}</value>
+  </data>
+  <data name="InissSettings_AndMore" xml:space="preserve">
+    <value> a ďalších {0}</value>
+  </data>
 </root>

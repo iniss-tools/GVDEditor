@@ -591,6 +591,54 @@
   <data name="&gt;&gt;cboxNotRead.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="bAddLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bAddLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>24, 0, 3, 3</value>
+  </data>
+  <data name="bAddLine.Text" xml:space="preserve">
+    <value>Pridať linku…</value>
+  </data>
+  <data name="bAddLine.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;bAddLine.Name" xml:space="preserve">
+    <value>bAddLine</value>
+  </data>
+  <data name="&gt;&gt;bAddLine.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bAddLine.Parent" xml:space="preserve">
+    <value>flpFilter</value>
+  </data>
+  <data name="&gt;&gt;bAddLine.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="bRemoveLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bRemoveLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
+  <data name="bRemoveLine.Text" xml:space="preserve">
+    <value>Odstrániť linku</value>
+  </data>
+  <data name="bRemoveLine.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;bRemoveLine.Name" xml:space="preserve">
+    <value>bRemoveLine</value>
+  </data>
+  <data name="&gt;&gt;bRemoveLine.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bRemoveLine.Parent" xml:space="preserve">
+    <value>flpFilter</value>
+  </data>
+  <data name="&gt;&gt;bRemoveLine.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="dgvValues.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>

@@ -9495,5 +9495,230 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("InissSettings_Note_Color", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to linka {0} · {1}.
+        /// </summary>
+        internal static string InissSettings_LineSummary {
+            get {
+                return ResourceManager.GetString("InissSettings_LineSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo linky {0} používa viac sekcií Driver – číslo linky musí byť jedinečné..
+        /// </summary>
+        internal static string InissSettings_LineDuplicate {
+            get {
+                return ResourceManager.GetString("InissSettings_LineDuplicate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Číslo linky {0} je mimo rozsahu 1 až 100 – INISS linku nezaloží..
+        /// </summary>
+        internal static string InissSettings_LineOutOfRange {
+            get {
+                return ResourceManager.GetString("InissSettings_LineOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabuľa {0} ({1}) nepatrí na linku s protokolom {2}..
+        /// </summary>
+        internal static string InissSettings_LineWrongFamily {
+            get {
+                return ResourceManager.GetString("InissSettings_LineWrongFamily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Žiadna fyzická tabuľa v dátach nepoužíva túto linku..
+        /// </summary>
+        internal static string InissSettings_LineNoTables {
+            get {
+                return ResourceManager.GetString("InissSettings_LineNoTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linka: {0}. Fyzické tabule na linke: {1}.
+        /// </summary>
+        internal static string InissSettings_LineTables {
+            get {
+                return ResourceManager.GetString("InissSettings_LineTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabule na linkách bez ovládača – INISS im nič nepošle (v zátvorke číslo linky): {0}.
+        /// </summary>
+        internal static string InissSettings_TablesWithoutDriver {
+            get {
+                return ResourceManager.GetString("InissSettings_TablesWithoutDriver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Najprv uložte alebo zahoďte neuložené zmeny..
+        /// </summary>
+        internal static string InissSettings_PendingFirst {
+            get {
+                return ResourceManager.GetString("InissSettings_PendingFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odstrániť linku {0} ({1})? Sekcia sa zmaže z registra aj zo súboru .INI..
+        /// </summary>
+        internal static string InissSettings_RemoveLineQuestion {
+            get {
+                return ResourceManager.GetString("InissSettings_RemoveLineQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sériový port (COM).
+        /// </summary>
+        internal static string InissSettings_Conn_Serial {
+            get {
+                return ResourceManager.GetString("InissSettings_Conn_Serial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sieť – TCP.
+        /// </summary>
+        internal static string InissSettings_Conn_Tcp {
+            get {
+                return ResourceManager.GetString("InissSettings_Conn_Tcp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sieť – UDP.
+        /// </summary>
+        internal static string InissSettings_Conn_Udp {
+            get {
+                return ResourceManager.GetString("InissSettings_Conn_Udp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to pomenovaná rúra.
+        /// </summary>
+        internal static string InissSettings_Conn_Pipe {
+            get {
+                return ResourceManager.GetString("InissSettings_Conn_Pipe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zapíše sa TablePort = {0}.
+        /// </summary>
+        internal static string InissSettings_Wizard_Port {
+            get {
+                return ResourceManager.GetString("InissSettings_Wizard_Port", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabule s linkou {0} v dátach: {1}.
+        /// </summary>
+        internal static string InissSettings_Wizard_Tables {
+            get {
+                return ResourceManager.GetString("InissSettings_Wizard_Tables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V dátach nie je žiadna tabuľa s linkou {0} – linku pri fyzickej tabuli nastavíte v lokálnych nastaveniach..
+        /// </summary>
+        internal static string InissSettings_Wizard_NoTables {
+            get {
+                return ResourceManager.GetString("InissSettings_Wizard_NoTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linku {0} už používa sekcia {1}..
+        /// </summary>
+        internal static string InissSettings_Wizard_LineUsed {
+            get {
+                return ResourceManager.GetString("InissSettings_Wizard_LineUsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Všetky sekcie Driver sú obsadené..
+        /// </summary>
+        internal static string InissSettings_Wizard_NoSection {
+            get {
+                return ResourceManager.GetString("InissSettings_Wizard_NoSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte sériový port v tvare COM1, COM2….
+        /// </summary>
+        internal static string InissSettings_Wizard_ComInvalid {
+            get {
+                return ResourceManager.GetString("InissSettings_Wizard_ComInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte adresu počítača..
+        /// </summary>
+        internal static string InissSettings_Wizard_HostMissing {
+            get {
+                return ResourceManager.GetString("InissSettings_Wizard_HostMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to automaticky.
+        /// </summary>
+        internal static string InissSettings_LineAuto {
+            get {
+                return ResourceManager.GetString("InissSettings_LineAuto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to nemá číslo linky a žiadna linka nemá protokol jej výrobcu.
+        /// </summary>
+        internal static string InissSettings_Unserved_NoAuto {
+            get {
+                return ResourceManager.GetString("InissSettings_Unserved_NoAuto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to linku {0} neobsluhuje žiadna sekcia Driver.
+        /// </summary>
+        internal static string InissSettings_Unserved_NoDriver {
+            get {
+                return ResourceManager.GetString("InissSettings_Unserved_NoDriver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabule bez čísla linky, ktoré sa na novú linku priradia automaticky: {0}.
+        /// </summary>
+        internal static string InissSettings_Wizard_AutoTables {
+            get {
+                return ResourceManager.GetString("InissSettings_Wizard_AutoTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  a ďalších {0}.
+        /// </summary>
+        internal static string InissSettings_AndMore {
+            get {
+                return ResourceManager.GetString("InissSettings_AndMore", resourceCulture);
+            }
+        }
 }
 }
