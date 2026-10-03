@@ -1,6 +1,7 @@
 ﻿using GVDEditor.Config;
 using GVDEditor.Integration;
 using ExControls;
+using ToolsCore.Tools;
 using ToolsCore.Forms;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.XML;
@@ -50,7 +51,8 @@ internal partial class FAppSettings : FAppSettingsBase
 
         // zdroj registrov najprv - jeho vyber by inak prepisal nacitane argumenty
         _argsinit = true;
-        cbArgRegister.DataSource = InissRegistry.GetINISSRegisters();
+        // prazdna polozka = bez /Reg: (vetva podla mena exe)
+        cbArgRegister.DataSource = InissRegistry.AppNames().Prepend("").ToArray();
         cbArgRegister.SelectedIndex = -1;
         _argsinit = false;
 
