@@ -3068,4 +3068,259 @@ Smerovanie vlaku a/alebo stanice vlaku,
   <data name="Analyzer_StateDgmProblems_Fix" xml:space="preserve">
     <value>Upraviť stavový diagram</value>
   </data>
+  <data name="Cmd_InissSettings" xml:space="preserve">
+    <value>Nastavenia INISSu…</value>
+  </data>
+  <data name="InissSettings_Bytes" xml:space="preserve">
+    <value>{0} bajtov (stav okna)</value>
+  </data>
+  <data name="InissSettings_ChangesCount" xml:space="preserve">
+    <value>Neuložené zmeny: {0}</value>
+  </data>
+  <data name="InissSettings_CloseQuestion" xml:space="preserve">
+    <value>Nastavenia majú neuložené zmeny. Zavrieť okno a zmeny zahodiť?</value>
+  </data>
+  <data name="InissSettings_DefaultLine" xml:space="preserve">
+    <value>Predvolená hodnota: {0}</value>
+  </data>
+  <data name="InissSettings_Delete" xml:space="preserve">
+    <value>Zmazať hodnotu</value>
+  </data>
+  <data name="InissSettings_DiscardQuestion" xml:space="preserve">
+    <value>Neuložené zmeny sa zahodia. Pokračovať?</value>
+  </data>
+  <data name="InissSettings_EffectiveLine" xml:space="preserve">
+    <value>INISS použije: {0} ({1})</value>
+  </data>
+  <data name="InissSettings_Empty" xml:space="preserve">
+    <value>(prázdne)</value>
+  </data>
+  <data name="InissSettings_ExtraDescription" xml:space="preserve">
+    <value>Túto hodnotu INISS nepozná alebo ju nečíta – je to pozostatok staršej verzie, hodnota iného programu alebo preklep. Dá sa len zmazať.</value>
+  </data>
+  <data name="InissSettings_Findings" xml:space="preserve">
+    <value>Zistenia</value>
+  </data>
+  <data name="InissSettings_Group_Appearance" xml:space="preserve">
+    <value>Vzhľad</value>
+  </data>
+  <data name="InissSettings_Group_Boards" xml:space="preserve">
+    <value>Tabule</value>
+  </data>
+  <data name="InissSettings_Group_Debug" xml:space="preserve">
+    <value>Ladenie a servis</value>
+  </data>
+  <data name="InissSettings_Group_Files" xml:space="preserve">
+    <value>Súbory</value>
+  </data>
+  <data name="InissSettings_Group_Installation" xml:space="preserve">
+    <value>Inštalácia</value>
+  </data>
+  <data name="InissSettings_Group_Interfaces" xml:space="preserve">
+    <value>Rozhrania</value>
+  </data>
+  <data name="InissSettings_Group_Logs" xml:space="preserve">
+    <value>Logy</value>
+  </data>
+  <data name="InissSettings_Group_Operator" xml:space="preserve">
+    <value>Prostredie obsluhy</value>
+  </data>
+  <data name="InissSettings_Group_Sound" xml:space="preserve">
+    <value>Zvuk a hlásenia</value>
+  </data>
+  <data name="InissSettings_Group_Timetable" xml:space="preserve">
+    <value>Grafikon</value>
+  </data>
+  <data name="InissSettings_Info_Ini" xml:space="preserve">
+    <value>súbor .INI prebíja register</value>
+  </data>
+  <data name="InissSettings_Info_NoConfig" xml:space="preserve">
+    <value>konfigurácia v registri zatiaľ neexistuje – INISS ju založí pri prvom spustení</value>
+  </data>
+  <data name="InissSettings_Info_NoUserBranch" xml:space="preserve">
+    <value>nastavenia sú v HKEY_LOCAL_MACHINE</value>
+  </data>
+  <data name="InissSettings_Info_Running" xml:space="preserve">
+    <value>INISS beží – zmeny sa prejavia po reštarte</value>
+  </data>
+  <data name="InissSettings_Info_UserBranch" xml:space="preserve">
+    <value>per-user nastavenia sa čítajú z HKEY_CURRENT_USER</value>
+  </data>
+  <data name="InissSettings_Info_Version" xml:space="preserve">
+    <value>INISS {0}</value>
+  </data>
+  <data name="InissSettings_Info_VersionUnknown" xml:space="preserve">
+    <value>verzia INISSu neznáma</value>
+  </data>
+  <data name="InissSettings_Info_VirtualStore" xml:space="preserve">
+    <value>bez práv správcu INISS číta aj kópiu vo VirtualStore</value>
+  </data>
+  <data name="InissSettings_InvalidNumber" xml:space="preserve">
+    <value>Zadajte celé číslo (desiatkovo, prípadne 0x… šestnástkovo).</value>
+  </data>
+  <data name="InissSettings_Layer_NotRead" xml:space="preserve">
+    <value>nečíta sa</value>
+  </data>
+  <data name="InissSettings_Layer_Shadowed" xml:space="preserve">
+    <value>prebitá</value>
+  </data>
+  <data name="InissSettings_Layer_Used" xml:space="preserve">
+    <value>platí</value>
+  </data>
+  <data name="InissSettings_Layer_WrongType" xml:space="preserve">
+    <value>zlý typ – nečíta sa</value>
+  </data>
+  <data name="InissSettings_Layers" xml:space="preserve">
+    <value>Kde hodnota leží</value>
+  </data>
+  <data name="InissSettings_NoLayers" xml:space="preserve">
+    <value>Hodnota nie je v registri ani v súbore .INI.</value>
+  </data>
+  <data name="InissSettings_NoSelection" xml:space="preserve">
+    <value>Vyberte hodnotu v tabuľke.</value>
+  </data>
+  <data name="InissSettings_Note_Ini" xml:space="preserve">
+    <value>Súbor .INI prebíja register a INISS doňho nikdy nezapisuje. Po jeho zmazaní platí opäť register.</value>
+  </data>
+  <data name="InissSettings_Note_IniAppWrites" xml:space="preserve">
+    <value>INISS túto hodnotu počas behu ukladá do registra – kým bude v súbore .INI, uložený stav sa neuplatní.</value>
+  </data>
+  <data name="InissSettings_Note_IniRemoved" xml:space="preserve">
+    <value>Hodnota teraz platí zo súboru .INI – pri uložení sa zo súboru odstráni, inak by zmenu prebila.</value>
+  </data>
+  <data name="InissSettings_Note_NotRead" xml:space="preserve">
+    <value>Táto verzia INISSu hodnotu nečíta – zmena nebude mať účinok.</value>
+  </data>
+  <data name="InissSettings_Note_SectionFromIni" xml:space="preserve">
+    <value>Sekcia je v súbore .INI – INISS jej hodnoty z registra nečíta. Zapíšte zmenu do súboru .INI.</value>
+  </data>
+  <data name="InissSettings_Note_Uac" xml:space="preserve">
+    <value>Zápis do HKEY_LOCAL_MACHINE vyžaduje práva správcu – pri uložení sa zobrazí výzva systému Windows.</value>
+  </data>
+  <data name="InissSettings_Off" xml:space="preserve">
+    <value>vypnuté</value>
+  </data>
+  <data name="InissSettings_On" xml:space="preserve">
+    <value>zapnuté</value>
+  </data>
+  <data name="InissSettings_PendingLine" xml:space="preserve">
+    <value>Po uložení: {0}</value>
+  </data>
+  <data name="InissSettings_PendingReset" xml:space="preserve">
+    <value>predvolená (hodnota sa zmaže)</value>
+  </data>
+  <data name="InissSettings_Reset" xml:space="preserve">
+    <value>Obnoviť predvolenú</value>
+  </data>
+  <data name="InissSettings_Revert" xml:space="preserve">
+    <value>Vrátiť zmenu</value>
+  </data>
+  <data name="InissSettings_RunElevated" xml:space="preserve">
+    <value>ako správca</value>
+  </data>
+  <data name="InissSettings_RunNormal" xml:space="preserve">
+    <value>bez práv správcu</value>
+  </data>
+  <data name="InissSettings_SaveCancelled" xml:space="preserve">
+    <value>Zápis do HKEY_LOCAL_MACHINE bol zrušený – nič sa neuložilo.</value>
+  </data>
+  <data name="InissSettings_SaveError" xml:space="preserve">
+    <value>Nastavenia sa nepodarilo uložiť: {0}</value>
+  </data>
+  <data name="InissSettings_SaveFailed" xml:space="preserve">
+    <value>Zápis do HKEY_LOCAL_MACHINE zlyhal – nič sa neuložilo.</value>
+  </data>
+  <data name="InissSettings_SavedRestartNeeded" xml:space="preserve">
+    <value>Nastavenia sú uložené. INISS beží – prejavia sa po jeho reštarte.</value>
+  </data>
+  <data name="InissSettings_SearchResults" xml:space="preserve">
+    <value>Hodnoty obsahujúce „{0}“ v názve alebo popise</value>
+  </data>
+  <data name="InissSettings_SectionFromIni" xml:space="preserve">
+    <value>Sekcia je v súbore .INI – INISS ju číta len zo súboru, register pre ňu nepoužije.</value>
+  </data>
+  <data name="InissSettings_Severity_Error" xml:space="preserve">
+    <value>chyba</value>
+  </data>
+  <data name="InissSettings_Severity_Info" xml:space="preserve">
+    <value>info</value>
+  </data>
+  <data name="InissSettings_Severity_Warning" xml:space="preserve">
+    <value>upozornenie</value>
+  </data>
+  <data name="InissSettings_Source_ClassDefault" xml:space="preserve">
+    <value>predvolená podľa triedy</value>
+  </data>
+  <data name="InissSettings_Source_Default" xml:space="preserve">
+    <value>predvolená</value>
+  </data>
+  <data name="InissSettings_Source_Ini" xml:space="preserve">
+    <value>súbor .INI</value>
+  </data>
+  <data name="InissSettings_Source_Machine" xml:space="preserve">
+    <value>HKEY_LOCAL_MACHINE</value>
+  </data>
+  <data name="InissSettings_Source_NotRead" xml:space="preserve">
+    <value>táto verzia nečíta</value>
+  </data>
+  <data name="InissSettings_Source_UnknownDefault" xml:space="preserve">
+    <value>predvolená programu</value>
+  </data>
+  <data name="InissSettings_Source_User" xml:space="preserve">
+    <value>HKEY_CURRENT_USER</value>
+  </data>
+  <data name="InissSettings_Source_VirtualStore" xml:space="preserve">
+    <value>VirtualStore</value>
+  </data>
+  <data name="InissSettings_SummaryEverywhere" xml:space="preserve">
+    <value>zmaže sa zo všetkých miest</value>
+  </data>
+  <data name="InissSettings_SummaryExtra" xml:space="preserve">
+    <value>hodnota mimo katalógu</value>
+  </data>
+  <data name="InissSettings_SummaryIntro" xml:space="preserve">
+    <value>Uložia sa tieto zmeny:</value>
+  </data>
+  <data name="InissSettings_SummaryNotRead" xml:space="preserve">
+    <value>Niektoré zmeny idú do registra v sekcii zo súboru .INI – INISS ich nebude čítať.</value>
+  </data>
+  <data name="InissSettings_SummaryUac" xml:space="preserve">
+    <value>Zápis do HKEY_LOCAL_MACHINE vyžaduje práva správcu – Windows zobrazí jednu výzvu na potvrdenie.</value>
+  </data>
+  <data name="InissSettings_SystemColor" xml:space="preserve">
+    <value>systémová farba</value>
+  </data>
+  <data name="InissSettings_Target" xml:space="preserve">
+    <value>Uložiť do:</value>
+  </data>
+  <data name="InissSettings_Target_Ini" xml:space="preserve">
+    <value>súbor .INI vedľa programu</value>
+  </data>
+  <data name="InissSettings_Target_Machine" xml:space="preserve">
+    <value>register – HKEY_LOCAL_MACHINE</value>
+  </data>
+  <data name="InissSettings_Target_MachineUac" xml:space="preserve">
+    <value>register – HKEY_LOCAL_MACHINE (vyžaduje práva správcu)</value>
+  </data>
+  <data name="InissSettings_Target_User" xml:space="preserve">
+    <value>register – HKEY_CURRENT_USER</value>
+  </data>
+  <data name="InissSettings_WarningsDescription" xml:space="preserve">
+    <value>Hodnoty s upozornením alebo chybou vo všetkých sekciách.</value>
+  </data>
+  <data name="InissSettings_WarningsNode" xml:space="preserve">
+    <value>Upozornenia ({0})</value>
+  </data>
+  <data name="InissSettings_SummaryVirtualStore" xml:space="preserve">
+    <value>Kópie vo VirtualStore, ktoré by zmenu pri spustení bez práv správcu prebili, sa zmažú.</value>
+  </data>
+  <data name="InissSettings_SummaryIniRemoved" xml:space="preserve">
+    <value>Hodnoty v súbore .INI, ktoré by zmenu prebili, sa zo súboru odstránia.</value>
+  </data>
+  <data name="InissSettings_InvalidColor" xml:space="preserve">
+    <value>Zadajte farbu ako #RRGGBB (napríklad #FF0000), prázdna hodnota je systémová farba.</value>
+  </data>
+  <data name="InissSettings_Note_Color" xml:space="preserve">
+    <value>Farbu zadajte v tabuľke ako #RRGGBB alebo ju vyberte dvojklikom; prázdna hodnota je systémová farba.</value>
+  </data>
 </root>

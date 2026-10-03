@@ -716,6 +716,12 @@
   <data name="tsmimStartupSettings.Text" xml:space="preserve">
     <value>Nastavenia spúšťania...</value>
   </data>
+  <data name="tsmimInissSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 26</value>
+  </data>
+  <data name="tsmimInissSettings.Text" xml:space="preserve">
+    <value>Nastavenia INISSu...</value>
+  </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 6</value>
   </data>
@@ -3314,6 +3320,12 @@
     <value>tsmimStartupSettings</value>
   </data>
   <data name="&gt;&gt;tsmimStartupSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmimInissSettings.Name" xml:space="preserve">
+    <value>tsmimInissSettings</value>
+  </data>
+  <data name="&gt;&gt;tsmimInissSettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator9.Name" xml:space="preserve">

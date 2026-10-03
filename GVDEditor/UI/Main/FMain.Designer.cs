@@ -165,6 +165,7 @@ namespace GVDEditor.UI.Main
             tsmiStateDgm = new ToolStripMenuItem();
             tsmiRun = new ToolStripMenuItem();
             tsmimStartupSettings = new ToolStripMenuItem();
+            tsmimInissSettings = new ToolStripMenuItem();
             toolStripSeparator9 = new ToolStripSeparator();
             tsmimStartINISS = new ToolStripMenuItem();
             tsmimShutdownINISS = new ToolStripMenuItem();
@@ -568,7 +569,7 @@ namespace GVDEditor.UI.Main
             // 
             // tsmiRun
             // 
-            tsmiRun.DropDownItems.AddRange(new ToolStripItem[] { tsmimStartupSettings, toolStripSeparator9, tsmimStartINISS, tsmimShutdownINISS, tsmimKillINISS, tsmimRestartINISS, toolStripSeparator14 });
+            tsmiRun.DropDownItems.AddRange(new ToolStripItem[] { tsmimStartupSettings, tsmimInissSettings, toolStripSeparator9, tsmimStartINISS, tsmimShutdownINISS, tsmimKillINISS, tsmimRestartINISS, toolStripSeparator14 });
             tsmiRun.Name = "tsmiRun";
             resources.ApplyResources(tsmiRun, "tsmiRun");
             // 
@@ -576,6 +577,11 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmimStartupSettings, "tsmimStartupSettings");
             tsmimStartupSettings.Name = "tsmimStartupSettings";
+            // 
+            // tsmimInissSettings
+            // 
+            resources.ApplyResources(tsmimInissSettings, "tsmimInissSettings");
+            tsmimInissSettings.Name = "tsmimInissSettings";
             // 
             // toolStripSeparator9
             // 
@@ -2137,6 +2143,7 @@ namespace GVDEditor.UI.Main
         private ToolStripButton tsbKillINISS;
         private ToolStripMenuItem tsmiRun;
         private ToolStripMenuItem tsmimStartupSettings;
+        private ToolStripMenuItem tsmimInissSettings;
         private ToolStripSeparator toolStripSeparator9;
         private ToolStripMenuItem tsmimStartINISS;
         private ToolStripSeparator toolStripSeparator14;

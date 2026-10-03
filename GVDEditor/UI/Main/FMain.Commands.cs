@@ -78,6 +78,7 @@ internal partial class FMain
         Add(GvdCommands.RestartIniss, RestartINISS, () => _iniss.IsRunning && !_iniss.IsRestarting && _iniss.LastStartPath != null,
             tsmimRestartINISS, tsbRestartINISS);
         Add(GvdCommands.InissStartupSettings, () => ShowAppSettings("pStartupIniss"), null, tsmimStartupSettings, tsmiStartupSettings);
+        Add(GvdCommands.InissSettings, ShowInissSettings, installation, tsmimInissSettings);
 
         Add(GvdCommands.InfoApp, ShowInfoApp, null, tsmiInformation, tsbInformation);
         Add(GvdCommands.UpdateNotes, () => Utils.OpenShell(GvdLinkConsts.LinkNews), null, tsmiChangelog);

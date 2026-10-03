@@ -52,6 +52,7 @@ internal static class GvdCommands
     public static CommandInfo KillIniss => new("KillINISS", Resources.Cmd_KillIniss, Shortcut.F10);
     public static CommandInfo RestartIniss => new("RestartINISS", Resources.Cmd_RestartIniss, Shortcut.CtrlShiftF5);
     public static CommandInfo InissStartupSettings => new("INISSStartupSettings", Resources.Cmd_InissStartupSettings, Shortcut.None);
+    public static CommandInfo InissSettings => new("INISSSettings", Resources.Cmd_InissSettings, Shortcut.None);
 
     public static CommandInfo InfoApp => new("InfoApp", Resources.Cmd_InfoApp, Shortcut.F6);
     public static CommandInfo UpdateNotes => new("UpdateNotes", Resources.Cmd_UpdateNotes, Shortcut.None);
@@ -68,7 +69,7 @@ internal static class GvdCommands
         GsGvds, GsLanguages, GsDelays, GsTrainTypes, GsAudio,
         LsGvd, LsLanguages, LsStations, LsOperators, LsPlatforms, LsTracks, LsPhysicalTables, LsLogicalTables,
         LsCatalogTables, LsTabTab, LsTableTexts, LsTableFonts, LsTabTabEditor, StateDgm,
-        RunIniss, ShutdownIniss, KillIniss, RestartIniss, InissStartupSettings,
+        RunIniss, ShutdownIniss, KillIniss, RestartIniss, InissStartupSettings, InissSettings,
         InfoApp, UpdateNotes, DateLimit
     ];
 }

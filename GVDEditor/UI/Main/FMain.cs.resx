@@ -277,6 +277,12 @@
   <data name="tsmimStartupSettings.Text" xml:space="preserve">
     <value>Nastavení spouštění ...</value>
   </data>
+  <data name="tsmimInissSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="tsmimInissSettings.Text" xml:space="preserve">
+    <value>Nastavení INISSu...</value>
+  </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 6</value>
   </data>

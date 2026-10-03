@@ -1,4 +1,5 @@
 using GVDEditor.Properties;
+using GVDEditor.UI.InissSettings;
 using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.UI.Main;
@@ -6,6 +7,15 @@ namespace GVDEditor.UI.Main;
 internal partial class FMain
 {
     private void Iniss_StateChanged(object? sender, EventArgs e) => UpdateCommandStates();
+
+    /// <summary>
+    /// Okno Nastavenia INISSu - register a subor .INI programov otvorenej instalacie.
+    /// </summary>
+    private void ShowInissSettings()
+    {
+        using var f = new FInissSettings(_ctx, _iniss, _dialogs);
+        f.ShowDialog(this);
+    }
 
     /// <summary>
     /// Doplni do ponuk Spustit programy (*.exe) otvorenej instalacie.

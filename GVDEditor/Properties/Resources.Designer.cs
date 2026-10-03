@@ -8730,5 +8730,770 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("Analyzer_StateDgmProblems_Fix", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia INISSu….
+        /// </summary>
+        internal static string Cmd_InissSettings {
+            get {
+                return ResourceManager.GetString("Cmd_InissSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} bajtov (stav okna).
+        /// </summary>
+        internal static string InissSettings_Bytes {
+            get {
+                return ResourceManager.GetString("InissSettings_Bytes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neuložené zmeny: {0}.
+        /// </summary>
+        internal static string InissSettings_ChangesCount {
+            get {
+                return ResourceManager.GetString("InissSettings_ChangesCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia majú neuložené zmeny. Zavrieť okno a zmeny zahodiť?.
+        /// </summary>
+        internal static string InissSettings_CloseQuestion {
+            get {
+                return ResourceManager.GetString("InissSettings_CloseQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Predvolená hodnota: {0}.
+        /// </summary>
+        internal static string InissSettings_DefaultLine {
+            get {
+                return ResourceManager.GetString("InissSettings_DefaultLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmazať hodnotu.
+        /// </summary>
+        internal static string InissSettings_Delete {
+            get {
+                return ResourceManager.GetString("InissSettings_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neuložené zmeny sa zahodia. Pokračovať?.
+        /// </summary>
+        internal static string InissSettings_DiscardQuestion {
+            get {
+                return ResourceManager.GetString("InissSettings_DiscardQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS použije: {0} ({1}).
+        /// </summary>
+        internal static string InissSettings_EffectiveLine {
+            get {
+                return ResourceManager.GetString("InissSettings_EffectiveLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (prázdne).
+        /// </summary>
+        internal static string InissSettings_Empty {
+            get {
+                return ResourceManager.GetString("InissSettings_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Túto hodnotu INISS nepozná alebo ju nečíta – je to pozostatok staršej verzie, hodnota iného programu alebo preklep. Dá sa len zmazať..
+        /// </summary>
+        internal static string InissSettings_ExtraDescription {
+            get {
+                return ResourceManager.GetString("InissSettings_ExtraDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zistenia.
+        /// </summary>
+        internal static string InissSettings_Findings {
+            get {
+                return ResourceManager.GetString("InissSettings_Findings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vzhľad.
+        /// </summary>
+        internal static string InissSettings_Group_Appearance {
+            get {
+                return ResourceManager.GetString("InissSettings_Group_Appearance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabule.
+        /// </summary>
+        internal static string InissSettings_Group_Boards {
+            get {
+                return ResourceManager.GetString("InissSettings_Group_Boards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ladenie a servis.
+        /// </summary>
+        internal static string InissSettings_Group_Debug {
+            get {
+                return ResourceManager.GetString("InissSettings_Group_Debug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbory.
+        /// </summary>
+        internal static string InissSettings_Group_Files {
+            get {
+                return ResourceManager.GetString("InissSettings_Group_Files", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inštalácia.
+        /// </summary>
+        internal static string InissSettings_Group_Installation {
+            get {
+                return ResourceManager.GetString("InissSettings_Group_Installation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rozhrania.
+        /// </summary>
+        internal static string InissSettings_Group_Interfaces {
+            get {
+                return ResourceManager.GetString("InissSettings_Group_Interfaces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logy.
+        /// </summary>
+        internal static string InissSettings_Group_Logs {
+            get {
+                return ResourceManager.GetString("InissSettings_Group_Logs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prostredie obsluhy.
+        /// </summary>
+        internal static string InissSettings_Group_Operator {
+            get {
+                return ResourceManager.GetString("InissSettings_Group_Operator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zvuk a hlásenia.
+        /// </summary>
+        internal static string InissSettings_Group_Sound {
+            get {
+                return ResourceManager.GetString("InissSettings_Group_Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon.
+        /// </summary>
+        internal static string InissSettings_Group_Timetable {
+            get {
+                return ResourceManager.GetString("InissSettings_Group_Timetable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to súbor .INI prebíja register.
+        /// </summary>
+        internal static string InissSettings_Info_Ini {
+            get {
+                return ResourceManager.GetString("InissSettings_Info_Ini", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to konfigurácia v registri zatiaľ neexistuje – INISS ju založí pri prvom spustení.
+        /// </summary>
+        internal static string InissSettings_Info_NoConfig {
+            get {
+                return ResourceManager.GetString("InissSettings_Info_NoConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to nastavenia sú v HKEY_LOCAL_MACHINE.
+        /// </summary>
+        internal static string InissSettings_Info_NoUserBranch {
+            get {
+                return ResourceManager.GetString("InissSettings_Info_NoUserBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS beží – zmeny sa prejavia po reštarte.
+        /// </summary>
+        internal static string InissSettings_Info_Running {
+            get {
+                return ResourceManager.GetString("InissSettings_Info_Running", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to per-user nastavenia sa čítajú z HKEY_CURRENT_USER.
+        /// </summary>
+        internal static string InissSettings_Info_UserBranch {
+            get {
+                return ResourceManager.GetString("InissSettings_Info_UserBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS {0}.
+        /// </summary>
+        internal static string InissSettings_Info_Version {
+            get {
+                return ResourceManager.GetString("InissSettings_Info_Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to verzia INISSu neznáma.
+        /// </summary>
+        internal static string InissSettings_Info_VersionUnknown {
+            get {
+                return ResourceManager.GetString("InissSettings_Info_VersionUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bez práv správcu INISS číta aj kópiu vo VirtualStore.
+        /// </summary>
+        internal static string InissSettings_Info_VirtualStore {
+            get {
+                return ResourceManager.GetString("InissSettings_Info_VirtualStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte celé číslo (desiatkovo, prípadne 0x… šestnástkovo)..
+        /// </summary>
+        internal static string InissSettings_InvalidNumber {
+            get {
+                return ResourceManager.GetString("InissSettings_InvalidNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to nečíta sa.
+        /// </summary>
+        internal static string InissSettings_Layer_NotRead {
+            get {
+                return ResourceManager.GetString("InissSettings_Layer_NotRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to prebitá.
+        /// </summary>
+        internal static string InissSettings_Layer_Shadowed {
+            get {
+                return ResourceManager.GetString("InissSettings_Layer_Shadowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to platí.
+        /// </summary>
+        internal static string InissSettings_Layer_Used {
+            get {
+                return ResourceManager.GetString("InissSettings_Layer_Used", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to zlý typ – nečíta sa.
+        /// </summary>
+        internal static string InissSettings_Layer_WrongType {
+            get {
+                return ResourceManager.GetString("InissSettings_Layer_WrongType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kde hodnota leží.
+        /// </summary>
+        internal static string InissSettings_Layers {
+            get {
+                return ResourceManager.GetString("InissSettings_Layers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hodnota nie je v registri ani v súbore .INI..
+        /// </summary>
+        internal static string InissSettings_NoLayers {
+            get {
+                return ResourceManager.GetString("InissSettings_NoLayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte hodnotu v tabuľke..
+        /// </summary>
+        internal static string InissSettings_NoSelection {
+            get {
+                return ResourceManager.GetString("InissSettings_NoSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor .INI prebíja register a INISS doňho nikdy nezapisuje. Po jeho zmazaní platí opäť register..
+        /// </summary>
+        internal static string InissSettings_Note_Ini {
+            get {
+                return ResourceManager.GetString("InissSettings_Note_Ini", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS túto hodnotu počas behu ukladá do registra – kým bude v súbore .INI, uložený stav sa neuplatní..
+        /// </summary>
+        internal static string InissSettings_Note_IniAppWrites {
+            get {
+                return ResourceManager.GetString("InissSettings_Note_IniAppWrites", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hodnota teraz platí zo súboru .INI – pri uložení sa zo súboru odstráni, inak by zmenu prebila..
+        /// </summary>
+        internal static string InissSettings_Note_IniRemoved {
+            get {
+                return ResourceManager.GetString("InissSettings_Note_IniRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Táto verzia INISSu hodnotu nečíta – zmena nebude mať účinok..
+        /// </summary>
+        internal static string InissSettings_Note_NotRead {
+            get {
+                return ResourceManager.GetString("InissSettings_Note_NotRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sekcia je v súbore .INI – INISS jej hodnoty z registra nečíta. Zapíšte zmenu do súboru .INI..
+        /// </summary>
+        internal static string InissSettings_Note_SectionFromIni {
+            get {
+                return ResourceManager.GetString("InissSettings_Note_SectionFromIni", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zápis do HKEY_LOCAL_MACHINE vyžaduje práva správcu – pri uložení sa zobrazí výzva systému Windows..
+        /// </summary>
+        internal static string InissSettings_Note_Uac {
+            get {
+                return ResourceManager.GetString("InissSettings_Note_Uac", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to vypnuté.
+        /// </summary>
+        internal static string InissSettings_Off {
+            get {
+                return ResourceManager.GetString("InissSettings_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to zapnuté.
+        /// </summary>
+        internal static string InissSettings_On {
+            get {
+                return ResourceManager.GetString("InissSettings_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Po uložení: {0}.
+        /// </summary>
+        internal static string InissSettings_PendingLine {
+            get {
+                return ResourceManager.GetString("InissSettings_PendingLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to predvolená (hodnota sa zmaže).
+        /// </summary>
+        internal static string InissSettings_PendingReset {
+            get {
+                return ResourceManager.GetString("InissSettings_PendingReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obnoviť predvolenú.
+        /// </summary>
+        internal static string InissSettings_Reset {
+            get {
+                return ResourceManager.GetString("InissSettings_Reset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vrátiť zmenu.
+        /// </summary>
+        internal static string InissSettings_Revert {
+            get {
+                return ResourceManager.GetString("InissSettings_Revert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ako správca.
+        /// </summary>
+        internal static string InissSettings_RunElevated {
+            get {
+                return ResourceManager.GetString("InissSettings_RunElevated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bez práv správcu.
+        /// </summary>
+        internal static string InissSettings_RunNormal {
+            get {
+                return ResourceManager.GetString("InissSettings_RunNormal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zápis do HKEY_LOCAL_MACHINE bol zrušený – nič sa neuložilo..
+        /// </summary>
+        internal static string InissSettings_SaveCancelled {
+            get {
+                return ResourceManager.GetString("InissSettings_SaveCancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia sa nepodarilo uložiť: {0}.
+        /// </summary>
+        internal static string InissSettings_SaveError {
+            get {
+                return ResourceManager.GetString("InissSettings_SaveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zápis do HKEY_LOCAL_MACHINE zlyhal – nič sa neuložilo..
+        /// </summary>
+        internal static string InissSettings_SaveFailed {
+            get {
+                return ResourceManager.GetString("InissSettings_SaveFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia sú uložené. INISS beží – prejavia sa po jeho reštarte..
+        /// </summary>
+        internal static string InissSettings_SavedRestartNeeded {
+            get {
+                return ResourceManager.GetString("InissSettings_SavedRestartNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hodnoty obsahujúce „{0}“ v názve alebo popise.
+        /// </summary>
+        internal static string InissSettings_SearchResults {
+            get {
+                return ResourceManager.GetString("InissSettings_SearchResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sekcia je v súbore .INI – INISS ju číta len zo súboru, register pre ňu nepoužije..
+        /// </summary>
+        internal static string InissSettings_SectionFromIni {
+            get {
+                return ResourceManager.GetString("InissSettings_SectionFromIni", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to chyba.
+        /// </summary>
+        internal static string InissSettings_Severity_Error {
+            get {
+                return ResourceManager.GetString("InissSettings_Severity_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to info.
+        /// </summary>
+        internal static string InissSettings_Severity_Info {
+            get {
+                return ResourceManager.GetString("InissSettings_Severity_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to upozornenie.
+        /// </summary>
+        internal static string InissSettings_Severity_Warning {
+            get {
+                return ResourceManager.GetString("InissSettings_Severity_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to predvolená podľa triedy.
+        /// </summary>
+        internal static string InissSettings_Source_ClassDefault {
+            get {
+                return ResourceManager.GetString("InissSettings_Source_ClassDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to predvolená.
+        /// </summary>
+        internal static string InissSettings_Source_Default {
+            get {
+                return ResourceManager.GetString("InissSettings_Source_Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to súbor .INI.
+        /// </summary>
+        internal static string InissSettings_Source_Ini {
+            get {
+                return ResourceManager.GetString("InissSettings_Source_Ini", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HKEY_LOCAL_MACHINE.
+        /// </summary>
+        internal static string InissSettings_Source_Machine {
+            get {
+                return ResourceManager.GetString("InissSettings_Source_Machine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to táto verzia nečíta.
+        /// </summary>
+        internal static string InissSettings_Source_NotRead {
+            get {
+                return ResourceManager.GetString("InissSettings_Source_NotRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to predvolená programu.
+        /// </summary>
+        internal static string InissSettings_Source_UnknownDefault {
+            get {
+                return ResourceManager.GetString("InissSettings_Source_UnknownDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HKEY_CURRENT_USER.
+        /// </summary>
+        internal static string InissSettings_Source_User {
+            get {
+                return ResourceManager.GetString("InissSettings_Source_User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VirtualStore.
+        /// </summary>
+        internal static string InissSettings_Source_VirtualStore {
+            get {
+                return ResourceManager.GetString("InissSettings_Source_VirtualStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to zmaže sa zo všetkých miest.
+        /// </summary>
+        internal static string InissSettings_SummaryEverywhere {
+            get {
+                return ResourceManager.GetString("InissSettings_SummaryEverywhere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hodnota mimo katalógu.
+        /// </summary>
+        internal static string InissSettings_SummaryExtra {
+            get {
+                return ResourceManager.GetString("InissSettings_SummaryExtra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uložia sa tieto zmeny:.
+        /// </summary>
+        internal static string InissSettings_SummaryIntro {
+            get {
+                return ResourceManager.GetString("InissSettings_SummaryIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Niektoré zmeny idú do registra v sekcii zo súboru .INI – INISS ich nebude čítať..
+        /// </summary>
+        internal static string InissSettings_SummaryNotRead {
+            get {
+                return ResourceManager.GetString("InissSettings_SummaryNotRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zápis do HKEY_LOCAL_MACHINE vyžaduje práva správcu – Windows zobrazí jednu výzvu na potvrdenie..
+        /// </summary>
+        internal static string InissSettings_SummaryUac {
+            get {
+                return ResourceManager.GetString("InissSettings_SummaryUac", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to systémová farba.
+        /// </summary>
+        internal static string InissSettings_SystemColor {
+            get {
+                return ResourceManager.GetString("InissSettings_SystemColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uložiť do:.
+        /// </summary>
+        internal static string InissSettings_Target {
+            get {
+                return ResourceManager.GetString("InissSettings_Target", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to súbor .INI vedľa programu.
+        /// </summary>
+        internal static string InissSettings_Target_Ini {
+            get {
+                return ResourceManager.GetString("InissSettings_Target_Ini", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to register – HKEY_LOCAL_MACHINE.
+        /// </summary>
+        internal static string InissSettings_Target_Machine {
+            get {
+                return ResourceManager.GetString("InissSettings_Target_Machine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to register – HKEY_LOCAL_MACHINE (vyžaduje práva správcu).
+        /// </summary>
+        internal static string InissSettings_Target_MachineUac {
+            get {
+                return ResourceManager.GetString("InissSettings_Target_MachineUac", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to register – HKEY_CURRENT_USER.
+        /// </summary>
+        internal static string InissSettings_Target_User {
+            get {
+                return ResourceManager.GetString("InissSettings_Target_User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hodnoty s upozornením alebo chybou vo všetkých sekciách..
+        /// </summary>
+        internal static string InissSettings_WarningsDescription {
+            get {
+                return ResourceManager.GetString("InissSettings_WarningsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upozornenia ({0}).
+        /// </summary>
+        internal static string InissSettings_WarningsNode {
+            get {
+                return ResourceManager.GetString("InissSettings_WarningsNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kópie vo VirtualStore, ktoré by zmenu pri spustení bez práv správcu prebili, sa zmažú..
+        /// </summary>
+        internal static string InissSettings_SummaryVirtualStore {
+            get {
+                return ResourceManager.GetString("InissSettings_SummaryVirtualStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hodnoty v súbore .INI, ktoré by zmenu prebili, sa zo súboru odstránia..
+        /// </summary>
+        internal static string InissSettings_SummaryIniRemoved {
+            get {
+                return ResourceManager.GetString("InissSettings_SummaryIniRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte farbu ako #RRGGBB (napríklad #FF0000), prázdna hodnota je systémová farba..
+        /// </summary>
+        internal static string InissSettings_InvalidColor {
+            get {
+                return ResourceManager.GetString("InissSettings_InvalidColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Farbu zadajte v tabuľke ako #RRGGBB alebo ju vyberte dvojklikom; prázdna hodnota je systémová farba..
+        /// </summary>
+        internal static string InissSettings_Note_Color {
+            get {
+                return ResourceManager.GetString("InissSettings_Note_Color", resourceCulture);
+            }
+        }
 }
 }
