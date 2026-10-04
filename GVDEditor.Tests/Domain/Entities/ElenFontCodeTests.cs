@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
+using ToolsCore.Iniss.Elen;
 
 namespace GVDEditor.Tests.Domain.Entities;
 

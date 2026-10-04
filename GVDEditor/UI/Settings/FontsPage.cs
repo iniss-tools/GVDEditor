@@ -3,8 +3,9 @@ using ExControls;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
-using GVDEditor.UI.Controls;
 using GVDEditor.Properties;
+using GVDEditor.UI.Controls;
+using ToolsCore.Iniss.Elen;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Settings;

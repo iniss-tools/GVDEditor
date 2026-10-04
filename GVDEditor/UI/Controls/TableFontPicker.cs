@@ -2,6 +2,7 @@
 using ExControls;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
+using ToolsCore.Iniss.Elen;
 
 namespace GVDEditor.UI.Controls;
 

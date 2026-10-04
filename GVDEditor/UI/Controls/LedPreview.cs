@@ -1,6 +1,7 @@
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using GVDEditor.Domain.Entities;
+using ToolsCore.Iniss.Elen;
 
 namespace GVDEditor.UI.Controls;
 

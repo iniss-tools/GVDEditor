@@ -1,8 +1,9 @@
 using System.Globalization;
 using ExControls;
 using GVDEditor.Domain.Entities;
-using GVDEditor.UI.Settings;
 using GVDEditor.Properties;
+using GVDEditor.UI.Settings;
+using ToolsCore.Iniss.Elen;
 
 namespace GVDEditor.UI.Controls;
 
