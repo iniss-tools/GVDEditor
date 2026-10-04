@@ -38,12 +38,15 @@ internal partial class FMain
     }
 
     /// <summary>
-    /// Okno Nastavenia INISSu pre vybranu konfiguraciu spustania.
+    /// Okno Nastavenia INISSu pre vybranu konfiguraciu spustania, pripadne na sekcii <paramref name="section" />.
     /// </summary>
-    private void ShowInissSettings()
+    public void ShowInissSettings(string? section)
     {
         using var f = new FInissSettings(_ctx, _iniss, _dialogs, _ctx.RunConfigurations.Selected);
+        if (section is not null) f.SelectSection(section);
         f.ShowDialog(this);
+        // klon vetvy mohol pridat konfiguraciu spustania
+        FillRunMenus();
     }
 
     /// <summary>
@@ -270,7 +273,7 @@ internal partial class FMain
         if (!SaveBeforeLaunch(config))
             return false;
 
-        return !config.AnalyzeBefore || await AnalyzeBeforeLaunchAsync();
+        return !config.AnalyzeBefore || await AnalyzeBeforeLaunchAsync(config);
     }
 
     /// <summary>
@@ -298,7 +301,7 @@ internal partial class FMain
     /// <summary>
     /// Analyza otvoreneho grafikonu pred spustenim; pri chybach sa opyta, ci aj tak spustit (inak otvori analyzu).
     /// </summary>
-    private async Task<bool> AnalyzeBeforeLaunchAsync()
+    private async Task<bool> AnalyzeBeforeLaunchAsync(RunConfiguration config)
     {
         if (!HasGrafikon || tscbObdobie.SelectedItem is not GVDDirectory gvd)
             return true;
@@ -307,7 +310,10 @@ internal partial class FMain
         UseWaitCursor = true;
         try
         {
-            var scope = new AnalysisScope(_ctx.Document, _ctx.Workspace, this);
+            var scope = new AnalysisScope(_ctx.Document, _ctx.Workspace, this)
+            {
+                InissLoader = () => InissEnvironment.AnalysisView(config, _ctx.Workspace)
+            };
             problems = await Task.Run(() => Analyzer.FindProblems(gvd, scope));
         }
         finally

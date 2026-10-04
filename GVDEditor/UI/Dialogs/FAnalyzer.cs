@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using ExControls;
 using GVDEditor.Domain.Analysis;
+using GVDEditor.Integration;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Tools;
@@ -50,6 +51,18 @@ internal partial class FAnalyzer : Form
         _gvd = gvd;
     }
 
+    /// <summary>
+    /// Sirka stlpca Problem podla textov - raz po analyze, potom ju meni len pouzivatel (automaticka sirka by mu
+    /// pri tahani posuvala ostatne stlpce). Zvysok miesta vyplni stlpec Riesenie.
+    /// </summary>
+    private void FitTextColumn()
+    {
+        var column = textDataGridViewTextBoxColumn;
+        var preferred = column.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true);
+        var max = Math.Max(LogicalToDeviceUnits(200), dgvResults.ClientSize.Width * 55 / 100);
+        column.Width = Math.Clamp(preferred, LogicalToDeviceUnits(200), max);
+    }
+
     private static Bitmap StockIcon(ShellIconType type)
     {
         using var icon = new ShellIcon(type, ShellIconSize.Small);
@@ -81,10 +94,16 @@ internal partial class FAnalyzer : Form
 
         try
         {
-            var problems = await Task.Run(() => Analyzer.FindProblems(_gvd, new AnalysisScope(_ctx.Document, _ctx.Workspace, _host), progress));
+            var config = _ctx.RunConfigurations.Selected;
+            var scope = new AnalysisScope(_ctx.Document, _ctx.Workspace, _host)
+            {
+                InissLoader = () => InissEnvironment.AnalysisView(config, _ctx.Workspace)
+            };
+            var problems = await Task.Run(() => Analyzer.FindProblems(_gvd, scope, progress));
             _problems = new BindingList<IProblem>(problems);
             dgvResults.DataSource = null;
             dgvResults.DataSource = _problems;
+            FitTextColumn();
         }
         catch (Exception exception)
         {

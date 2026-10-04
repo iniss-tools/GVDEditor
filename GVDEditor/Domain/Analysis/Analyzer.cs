@@ -235,6 +235,9 @@ internal static class Analyzer
         //10. State diagram - missing, unreadable or with validator errors
         problems.AddRange(GrafikonChecks.StateDgm(gvd, scope));
 
+        //10b. INISS settings of the selected run configuration - lines for the tables, disabled tables, file names
+        problems.AddRange(InissChecks.Problems(gvd, scope));
+
         progress?.Report(95);
 
         //11. Check Zpozdeni.DAT cache - INISS Zpozdeni.TXT necita, kym existuje .DAT (nekontroluje ani cas suborov)

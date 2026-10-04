@@ -44,12 +44,14 @@ namespace GVDEditor.UI.InissSettings
             bReload = new ExButton();
             lInfo = new Label();
             scMain = new SplitContainer();
+            scLeft = new SplitContainer();
             tlpLeft = new TableLayoutPanel();
             tbSearch = new ExTextBox();
             tvSections = new ExTreeView();
+            pSectionInfo = new Panel();
+            lSection = new Label();
             scRight = new SplitContainer();
             tlpGrid = new TableLayoutPanel();
-            lSection = new Label();
             flpFilter = new FlowLayoutPanel();
             cboxChangedOnly = new ExCheckBox();
             cboxNotRead = new ExCheckBox();
@@ -73,6 +75,9 @@ namespace GVDEditor.UI.InissSettings
             ((ISupportInitialize)scMain).BeginInit();
             scMain.Panel1.SuspendLayout();
             scMain.Panel2.SuspendLayout();
+            ((ISupportInitialize)scLeft).BeginInit();
+            scLeft.Panel1.SuspendLayout();
+            scLeft.Panel2.SuspendLayout();
             ((ISupportInitialize)scRight).BeginInit();
             scRight.Panel1.SuspendLayout();
             scRight.Panel2.SuspendLayout();
@@ -80,7 +85,9 @@ namespace GVDEditor.UI.InissSettings
             tlpMain.SuspendLayout();
             flpTop.SuspendLayout();
             scMain.SuspendLayout();
+            scLeft.SuspendLayout();
             tlpLeft.SuspendLayout();
+            pSectionInfo.SuspendLayout();
             scRight.SuspendLayout();
             tlpGrid.SuspendLayout();
             flpFilter.SuspendLayout();
@@ -174,9 +181,16 @@ namespace GVDEditor.UI.InissSettings
             // scMain
             // 
             resources.ApplyResources(scMain, "scMain");
-            scMain.Panel1.Controls.Add(tlpLeft);
+            scMain.Panel1.Controls.Add(scLeft);
             scMain.Panel2.Controls.Add(scRight);
             scMain.Name = "scMain";
+            // 
+            // scLeft
+            // 
+            resources.ApplyResources(scLeft, "scLeft");
+            scLeft.Panel1.Controls.Add(tlpLeft);
+            scLeft.Panel2.Controls.Add(pSectionInfo);
+            scLeft.Name = "scLeft";
             // 
             // tlpLeft
             // 
@@ -199,6 +213,17 @@ namespace GVDEditor.UI.InissSettings
             tvSections.Style = ExTreeViewStyle.Light;
             tvSections.Name = "tvSections";
             // 
+            // pSectionInfo
+            // 
+            resources.ApplyResources(pSectionInfo, "pSectionInfo");
+            pSectionInfo.Controls.Add(lSection);
+            pSectionInfo.Name = "pSectionInfo";
+            // 
+            // lSection
+            // 
+            resources.ApplyResources(lSection, "lSection");
+            lSection.Name = "lSection";
+            // 
             // scRight
             // 
             resources.ApplyResources(scRight, "scRight");
@@ -209,15 +234,9 @@ namespace GVDEditor.UI.InissSettings
             // tlpGrid
             // 
             resources.ApplyResources(tlpGrid, "tlpGrid");
-            tlpGrid.Controls.Add(lSection, 0, 0);
-            tlpGrid.Controls.Add(flpFilter, 0, 1);
-            tlpGrid.Controls.Add(dgvValues, 0, 2);
+            tlpGrid.Controls.Add(flpFilter, 0, 0);
+            tlpGrid.Controls.Add(dgvValues, 0, 1);
             tlpGrid.Name = "tlpGrid";
-            // 
-            // lSection
-            // 
-            resources.ApplyResources(lSection, "lSection");
-            lSection.Name = "lSection";
             // 
             // flpFilter
             // 
@@ -269,7 +288,7 @@ namespace GVDEditor.UI.InissSettings
             // cState
             // 
             resources.ApplyResources(cState, "cState");
-            cState.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            cState.ImageLayout = DataGridViewImageCellLayout.Normal;
             cState.ReadOnly = true;
             cState.Resizable = DataGridViewTriState.False;
             cState.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -386,8 +405,17 @@ namespace GVDEditor.UI.InissSettings
             ((ISupportInitialize)scRight).EndInit();
             scRight.ResumeLayout(false);
             scRight.PerformLayout();
+            pSectionInfo.ResumeLayout(false);
+            pSectionInfo.PerformLayout();
             tlpLeft.ResumeLayout(false);
             tlpLeft.PerformLayout();
+            scLeft.Panel1.ResumeLayout(false);
+            scLeft.Panel1.PerformLayout();
+            scLeft.Panel2.ResumeLayout(false);
+            scLeft.Panel2.PerformLayout();
+            ((ISupportInitialize)scLeft).EndInit();
+            scLeft.ResumeLayout(false);
+            scLeft.PerformLayout();
             scMain.Panel1.ResumeLayout(false);
             scMain.Panel1.PerformLayout();
             scMain.Panel2.ResumeLayout(false);
@@ -418,12 +446,14 @@ namespace GVDEditor.UI.InissSettings
         private ExButton bReload;
         private Label lInfo;
         private SplitContainer scMain;
+        private SplitContainer scLeft;
         private TableLayoutPanel tlpLeft;
         private ExTextBox tbSearch;
         private ExTreeView tvSections;
+        private Panel pSectionInfo;
+        private Label lSection;
         private SplitContainer scRight;
         private TableLayoutPanel tlpGrid;
-        private Label lSection;
         private FlowLayoutPanel flpFilter;
         private ExCheckBox cboxChangedOnly;
         private ExCheckBox cboxNotRead;

@@ -39,6 +39,8 @@ namespace GVDEditor.UI.Settings
             this.exGroupBox4 = new ExControls.ExGroupBox();
             this.nudPlayerWordPause = new ExControls.ExNumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
+            this.exGroupBox5 = new ExControls.ExGroupBox();
+            this.cboxInissEvaluation = new ExControls.ExCheckBox();
             this.pGeneral.SuspendLayout();
             this.pConcreteGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optionsView)).BeginInit();
@@ -47,11 +49,13 @@ namespace GVDEditor.UI.Settings
             this.pConcreteLocalization.SuspendLayout();
             this.exGroupBox2.SuspendLayout();
             this.exGroupBox4.SuspendLayout();
+            this.exGroupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlayerWordPause)).BeginInit();
             this.SuspendLayout();
             // 
             // pConcreteGeneral
             // 
+            this.pConcreteGeneral.Controls.Add(this.exGroupBox5);
             this.pConcreteGeneral.Controls.Add(this.exGroupBox4);
             this.pConcreteGeneral.Controls.Add(this.exGroupBox2);
             resources.ApplyResources(this.pConcreteGeneral, "pConcreteGeneral");
@@ -175,6 +179,21 @@ namespace GVDEditor.UI.Settings
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
+            // exGroupBox5
+            // 
+            resources.ApplyResources(this.exGroupBox5, "exGroupBox5");
+            this.exGroupBox5.Controls.Add(this.cboxInissEvaluation);
+            this.exGroupBox5.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.exGroupBox5.Name = "exGroupBox5";
+            this.exGroupBox5.TabStop = false;
+            // 
+            // cboxInissEvaluation
+            // 
+            resources.ApplyResources(this.cboxInissEvaluation, "cboxInissEvaluation");
+            this.cboxInissEvaluation.BoxBackColor = System.Drawing.Color.White;
+            this.cboxInissEvaluation.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.cboxInissEvaluation.Name = "cboxInissEvaluation";
+            // 
             // FAppSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,6 +216,8 @@ namespace GVDEditor.UI.Settings
             this.exGroupBox2.PerformLayout();
             this.exGroupBox4.ResumeLayout(false);
             this.exGroupBox4.PerformLayout();
+            this.exGroupBox5.ResumeLayout(false);
+            this.exGroupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlayerWordPause)).EndInit();
             this.ResumeLayout(false);
 
@@ -211,5 +232,7 @@ namespace GVDEditor.UI.Settings
         private ExControls.ExGroupBox exGroupBox4;
         private ExControls.ExNumericUpDown nudPlayerWordPause;
         private Label label7;
+        private ExControls.ExGroupBox exGroupBox5;
+        private ExControls.ExCheckBox cboxInissEvaluation;
     }
 }

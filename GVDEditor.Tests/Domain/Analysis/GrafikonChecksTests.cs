@@ -186,5 +186,9 @@ public class GrafikonChecksTests
         }
 
         public bool EditTrain(Train train) => false;
+
+        public void ShowInissSettings(string? section)
+        {
+        }
     }
 }

@@ -132,4 +132,10 @@
   <data name="label7.Text" xml:space="preserve">
     <value>Mezera mezi přehrávanými zvuky (ms):</value>
   </data>
+  <data name="exGroupBox5.Text" xml:space="preserve">
+    <value>Nastavení INISSu</value>
+  </data>
+  <data name="cboxInissEvaluation.Text" xml:space="preserve">
+    <value>Zobrazovat vyhodnocení hodnoty (odkud ji INISS bere)</value>
+  </data>
 </root>

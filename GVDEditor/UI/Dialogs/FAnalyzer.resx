@@ -385,7 +385,7 @@
     <value>6</value>
   </data>
   <data name="textDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>70</value>
+    <value>420</value>
   </data>
   <metadata name="FixType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

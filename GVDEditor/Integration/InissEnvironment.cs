@@ -1,4 +1,5 @@
 using GVDEditor.Config;
+using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Formats;
 using ToolsCore.Iniss.Registry;
@@ -43,11 +44,25 @@ internal static class InissEnvironment
     /// <summary>
     /// Nastavenia INISSu tejto konfiguracie tak, ako ich INISS pri starte nacita (vetva, rezim spravcu).
     /// </summary>
-    public static ResolvedConfig Resolve(RunConfiguration config, string installationDir)
+    public static ResolvedConfig Resolve(RunConfiguration config, string installationDir, IReadOnlyDictionary<int, RegTableInfo>? tables = null)
     {
         var exe = PathUtils.CombinePath(installationDir, config.Program)!;
         var mode = config.RunAsAdmin ? InissRunMode.Elevated : InissRunMode.Normal;
-        return RegResolver.Resolve(InissRegistry.LoadSource(RunConfigurations.AppName(config), exe, mode));
+        return RegResolver.Resolve(InissRegistry.LoadSource(RunConfigurations.AppName(config), exe, mode, tables));
+    }
+
+    /// <summary>
+    /// Nastavenia INISSu vybranej konfiguracie spustania pre analyzu grafikonu (tabule instalacie v poradi INISSu);
+    /// null, ak instalacia nema konfiguraciu s programom.
+    /// </summary>
+    public static InissRegistryView? AnalysisView(RunConfiguration? config, InissWorkspace workspace)
+    {
+        if (config is null || config.Program.Length == 0) return null;
+        var tables = InissTableMap.Build(workspace);
+        var resolved = Resolve(config, workspace.INISSDir, tables.ToDictionary(t => t.Index, t => t.ToInfo()));
+        var src = resolved.Source;
+        var exists = src.Machine.Exists || src.User.Exists || src.VirtualStore.Exists || src.Ini is not null;
+        return new InissRegistryView(config.Name, resolved, tables, exists);
     }
 
     /// <summary>

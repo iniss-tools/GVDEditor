@@ -3155,7 +3155,7 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>špatný typ – nečte se</value>
   </data>
   <data name="InissSettings_Layers" xml:space="preserve">
-    <value>Kde hodnota leží</value>
+    <value>Vyhodnocení hodnoty</value>
   </data>
   <data name="InissSettings_NoLayers" xml:space="preserve">
     <value>Hodnota není v registru ani v souboru .INI.</value>
@@ -3755,5 +3755,47 @@ Zrušit – nic nedělat</value>
 {2}
 
 Před zápisem se uloží záloha.</value>
+  </data>
+  <data name="InissCheck_Disabled" xml:space="preserve">
+    <value>Tabule {0} je v INISSu vypnutá – INISS s ní nekomunikuje.</value>
+  </data>
+  <data name="InissCheck_Disabled_Fix" xml:space="preserve">
+    <value>Pokud má tabule fungovat, zapněte ji v okně Nastavení INISSu (sekce Tables).</value>
+  </data>
+  <data name="InissCheck_FileName" xml:space="preserve">
+    <value>INISS podle nastavení (PathNames\{0} = {1}) čte jiný soubor, než do kterého GVDEditor zapisuje – změny z GVDEditoru neuvidí.</value>
+  </data>
+  <data name="InissCheck_FileName_Fix" xml:space="preserve">
+    <value>Obnovte výchozí hodnotu v okně Nastavení INISSu (sekce PathNames).</value>
+  </data>
+  <data name="InissCheck_Line" xml:space="preserve">
+    <value>Linka {0}: {1}</value>
+  </data>
+  <data name="InissCheck_Line_Fix" xml:space="preserve">
+    <value>Upravte linku v okně Nastavení INISSu.</value>
+  </data>
+  <data name="InissCheck_Missing" xml:space="preserve">
+    <value>Nastavení INISSu konfigurace spouštění {0} v registru ani v souboru .INI nejsou – INISS poběží s výchozím nastavením. Kontrola linek tabulí a souborů se přeskočila.</value>
+  </data>
+  <data name="InissCheck_Missing_Fix" xml:space="preserve">
+    <value>Zkontrolujte vybranou konfiguraci spouštění (větev registru, program), případně nastavte INISS v okně Nastavení INISSu.</value>
+  </data>
+  <data name="InissCheck_Orphans" xml:space="preserve">
+    <value>V nastavení INISSu jsou hodnoty tabulí s pořadovým číslem {0}, ale tabulí je jen {1}. INISS nastavení tabulí přiřazuje podle pořadí – po přidání nebo odstranění tabule se zapnutí a jas mohou posunout na jinou tabuli.</value>
+  </data>
+  <data name="InissCheck_Orphans_Fix" xml:space="preserve">
+    <value>Zkontrolujte sekci Tables v okně Nastavení INISSu a hodnoty bez tabule obnovte na výchozí.</value>
+  </data>
+  <data name="InissCheck_OutputOff" xml:space="preserve">
+    <value>INISS má vypnuté posílání na tabule (Environment\OutToTableDriver) – obsah tabulí jen zobrazuje a na linky nic nepošle.</value>
+  </data>
+  <data name="InissCheck_OutputOff_Fix" xml:space="preserve">
+    <value>Zapněte OutToTableDriver v okně Nastavení INISSu (sekce Environment).</value>
+  </data>
+  <data name="InissCheck_Unserved" xml:space="preserve">
+    <value>Tabule {0}: INISS jí nic nepošle – {1}.</value>
+  </data>
+  <data name="InissCheck_Unserved_Fix" xml:space="preserve">
+    <value>Přidejte linku s protokolem výrobce tabule v okně Nastavení INISSu, nebo změňte číslo linky tabule ve fyzických tabulích.</value>
   </data>
 </root>

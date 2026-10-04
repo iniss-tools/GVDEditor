@@ -5,7 +5,7 @@ using ToolsCore.XML;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-/// Spolocne spravanie okien Lokalne a Globalne nastavenia: zapamatana velkost okna a farba chybovych textov.
+/// Spolocne spravanie okien Lokalne a Globalne nastavenia a Nastavenia INISSu: zapamatana velkost okna a farba chybovych textov.
 /// </summary>
 internal static class SettingsWindow
 {

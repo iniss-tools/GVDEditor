@@ -141,13 +141,12 @@ namespace GVDEditor.UI.Dialogs
             // ProblemType
             // 
             resources.ApplyResources(this.ProblemType, "ProblemType");
-            this.ProblemType.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.ProblemType.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Normal;
             this.ProblemType.Name = "ProblemType";
             this.ProblemType.ReadOnly = true;
             // 
             // textDataGridViewTextBoxColumn
             // 
-            this.textDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.textDataGridViewTextBoxColumn.DataPropertyName = "Text";
             resources.ApplyResources(this.textDataGridViewTextBoxColumn, "textDataGridViewTextBoxColumn");
             this.textDataGridViewTextBoxColumn.Name = "textDataGridViewTextBoxColumn";

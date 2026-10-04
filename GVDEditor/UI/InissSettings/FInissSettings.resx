@@ -390,6 +390,54 @@
   <data name="&gt;&gt;scMain.Panel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="scLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="scLeft.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="scLeft.SplitterDistance" type="System.Int32, mscorlib">
+    <value>380</value>
+  </data>
+  <data name="scLeft.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;scLeft.Name" xml:space="preserve">
+    <value>scLeft</value>
+  </data>
+  <data name="&gt;&gt;scLeft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;scLeft.Parent" xml:space="preserve">
+    <value>scMain.Panel1</value>
+  </data>
+  <data name="&gt;&gt;scLeft.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;scLeft.Panel1.Name" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="&gt;&gt;scLeft.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;scLeft.Panel1.Parent" xml:space="preserve">
+    <value>scLeft</value>
+  </data>
+  <data name="&gt;&gt;scLeft.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;scLeft.Panel2.Name" xml:space="preserve">
+    <value>Panel2</value>
+  </data>
+  <data name="&gt;&gt;scLeft.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;scLeft.Panel2.Parent" xml:space="preserve">
+    <value>scLeft</value>
+  </data>
+  <data name="&gt;&gt;scLeft.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="tlpLeft.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -412,7 +460,7 @@
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tlpLeft.Parent" xml:space="preserve">
-    <value>scMain.Panel1</value>
+    <value>scLeft.Panel1</value>
   </data>
   <data name="&gt;&gt;tlpLeft.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -458,6 +506,54 @@
   </data>
   <data name="&gt;&gt;tvSections.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="pSectionInfo.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="pSectionInfo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pSectionInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pSectionInfo.Name" xml:space="preserve">
+    <value>pSectionInfo</value>
+  </data>
+  <data name="&gt;&gt;pSectionInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pSectionInfo.Parent" xml:space="preserve">
+    <value>scLeft.Panel2</value>
+  </data>
+  <data name="&gt;&gt;pSectionInfo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lSection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lSection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="lSection.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="lSection.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lSection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 6</value>
+  </data>
+  <data name="&gt;&gt;lSection.Name" xml:space="preserve">
+    <value>lSection</value>
+  </data>
+  <data name="&gt;&gt;lSection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lSection.Parent" xml:space="preserve">
+    <value>pSectionInfo</value>
+  </data>
+  <data name="&gt;&gt;lSection.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="scRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -511,7 +607,7 @@
     <value>1</value>
   </data>
   <data name="tlpGrid.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="tlpGrid.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -535,34 +631,7 @@
     <value>0</value>
   </data>
   <data name="tlpGrid.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lSection" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flpFilter" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="dgvValues" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="lSection.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lSection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 6</value>
-  </data>
-  <data name="lSection.Text" xml:space="preserve">
-    <value></value>
-  </data>
-  <data name="lSection.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lSection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left, Right</value>
-  </data>
-  <data name="&gt;&gt;lSection.Name" xml:space="preserve">
-    <value>lSection</value>
-  </data>
-  <data name="&gt;&gt;lSection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lSection.Parent" xml:space="preserve">
-    <value>tlpGrid</value>
-  </data>
-  <data name="&gt;&gt;lSection.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="flpFilter" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="dgvValues" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="flpFilter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -589,7 +658,7 @@
     <value>tlpGrid</value>
   </data>
   <data name="&gt;&gt;flpFilter.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="cboxChangedOnly.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -697,7 +766,7 @@
     <value>tlpGrid</value>
   </data>
   <data name="&gt;&gt;dgvValues.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="cState.HeaderText" xml:space="preserve">
     <value></value>
@@ -1033,7 +1102,7 @@
     <value>1180, 720</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>900, 560</value>
+    <value>900, 640</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

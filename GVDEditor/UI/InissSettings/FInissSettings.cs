@@ -40,6 +40,9 @@ internal partial class FInissSettings : Form
     private bool _loading;
     private bool _saving;
     private bool _updatingGrid;
+    // vyhladavanie a strom sa navzajom vylucuju - pocas hladania nie je vybrana ziadna sekcia
+    private bool _syncingSearch;
+    private TreeNode? _beforeSearch;
     private readonly HashSet<Control> _hookedEditors = [];
 
     /// <summary>
@@ -55,6 +58,7 @@ internal partial class FInissSettings : Form
         _iniss = iniss;
         _dialogs = dialogs;
         InitializeComponent();
+        GVDEditor.UI.Settings.SettingsWindow.ApplyPlacement(this, _ctx.Config.InissSettingsWindow);
         dgvValues.AutoGenerateColumns = false;
         // fyzicke tabule vsetkych grafikonov v poradi, v akom ich INISS indexuje (Tables\…<N>)
         _tables = InissTableMap.Build(_ctx.Workspace);
@@ -105,8 +109,8 @@ internal partial class FInissSettings : Form
         cbConfig.SelectedIndexChanged += (_, _) => Reload(true);
         cbRunMode.SelectedIndexChanged += (_, _) => Reload(true);
         bReload.Click += (_, _) => Reload(true);
-        tvSections.AfterSelect += (_, _) => FillGrid();
-        tbSearch.TextChanged += (_, _) => FillGrid();
+        tvSections.AfterSelect += (_, _) => SectionSelected();
+        tbSearch.TextChanged += (_, _) => SearchChanged();
         cboxChangedOnly.CheckedChanged += (_, _) => FillGrid();
         cboxNotRead.CheckedChanged += (_, _) => FillGrid();
         // CurrentCellChanged - pri SelectionChanged z kodu este CurrentRow ukazuje na povodny riadok
@@ -150,7 +154,8 @@ internal partial class FInissSettings : Form
         bClose.Click += (_, _) => Close();
         bTools.Click += (_, _) => ShowToolsMenu();
         _iniss.StateChanged += Iniss_StateChanged;
-        tlpGrid.SizeChanged += (_, _) => lSection.MaximumSize = new Size(Math.Max(200, tlpGrid.ClientSize.Width - 12), 0);
+        pSectionInfo.ClientSizeChanged += (_, _) => FitSectionText();
+        _detail.ShowEvaluation = _ctx.Config.InissSettingsShowEvaluation;
 
         Reload(false);
     }
@@ -161,10 +166,58 @@ internal partial class FInissSettings : Form
         base.OnLoad(e);
         // deliace ciary az ked maju kontajnery skutocnu velkost (z navrhu sa pri FixedPanel neuplatnia)
         scMain.SplitterDistance = LogicalToDeviceUnits(230);
+        scLeft.SplitterDistance = Math.Max(scLeft.Panel1MinSize, scLeft.Height * 62 / 100);
+        FitSectionText();
         scRight.SplitterDistance = Math.Max(scRight.Panel1MinSize, scRight.Height * 55 / 100);
     }
 
     private SettingRow? SelectedRow => dgvValues.CurrentRow?.Tag as SettingRow;
+
+    /// <summary>Popis sekcie pod stromom sa zalamuje na sirku panela.</summary>
+    private void FitSectionText() =>
+        lSection.MaximumSize = new Size(Math.Max(LogicalToDeviceUnits(100), pSectionInfo.ClientSize.Width - LogicalToDeviceUnits(12)), 0);
+
+    /// <summary>Vyber sekcie v strome ukonci hladanie.</summary>
+    private void SectionSelected()
+    {
+        if (_syncingSearch) return;
+        if (tbSearch.Text.Length > 0)
+        {
+            _syncingSearch = true;
+            tbSearch.Text = "";
+            _syncingSearch = false;
+        }
+
+        FillGrid();
+    }
+
+    /// <summary>
+    /// Hladanie prehladava vsetky sekcie - vyber v strome sa zrusi (inak by matuco svietila posledna sekcia) a po
+    /// vymazani hladania sa vrati.
+    /// </summary>
+    private void SearchChanged()
+    {
+        if (_syncingSearch) return;
+        _syncingSearch = true;
+        try
+        {
+            if (tbSearch.Text.Trim().Length > 0 && tvSections.SelectedNode is { } node)
+            {
+                _beforeSearch = node;
+                tvSections.SelectedNode = null;
+            }
+            else if (tbSearch.Text.Trim().Length == 0 && tvSections.SelectedNode is null && _beforeSearch?.TreeView == tvSections)
+            {
+                tvSections.SelectedNode = _beforeSearch;
+            }
+        }
+        finally
+        {
+            _syncingSearch = false;
+        }
+
+        FillGrid();
+    }
 
     private static Bitmap StockIcon(ShellIconType type)
     {
@@ -327,8 +380,21 @@ internal partial class FInissSettings : Form
                 RegGroup g => g.ToString() == selected,
                 _ => false
             });
-            tvSections.SelectedNode = restore ?? (tvSections.Nodes.Count > 0 ? tvSections.Nodes[0] : null);
-            if (tvSections.SelectedNode is not null) tvSections.SelectedNode.EnsureVisible();
+            _syncingSearch = true;
+            var select = restore ?? (tvSections.Nodes.Count > 0 ? tvSections.Nodes[0] : null);
+            if (tbSearch.Text.Trim().Length > 0)
+            {
+                // pocas hladania ostava strom bez vyberu
+                _beforeSearch = select;
+                tvSections.SelectedNode = null;
+            }
+            else
+            {
+                tvSections.SelectedNode = select;
+                select?.EnsureVisible();
+            }
+
+            _syncingSearch = false;
         }
         finally
         {
@@ -727,7 +793,8 @@ internal partial class FInissSettings : Form
     private List<InissInstance> RunningInstances() => _appName.Length == 0 ? []
         : _iniss.Instances.Where(i => string.Equals(RunConfigurations.AppName(i.Configuration), _appName, StringComparison.OrdinalIgnoreCase)).ToList();
 
-    private void SelectSection(string section)
+    /// <summary>Vyberie sekciu v strome (napr. z analyzy grafikonu).</summary>
+    public void SelectSection(string section)
     {
         var node = Flatten(tvSections.Nodes).FirstOrDefault(n => n.Tag is ResolvedSection s && string.Equals(s.Name, section, StringComparison.OrdinalIgnoreCase));
         if (node is not null) tvSections.SelectedNode = node;
@@ -1130,6 +1197,9 @@ internal partial class FInissSettings : Form
     protected override void OnFormClosed(FormClosedEventArgs e)
     {
         _iniss.StateChanged -= Iniss_StateChanged;
+        // velkost okna sa pamata ako pri lokalnych a globalnych nastaveniach
+        _ctx.Config.InissSettingsWindow = GVDEditor.UI.Settings.SettingsWindow.CapturePlacement(this);
+        GVDEditor.UI.Settings.SettingsWindow.SaveConfig(_ctx.Config);
         base.OnFormClosed(e);
     }
 }

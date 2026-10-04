@@ -91,6 +91,13 @@ internal sealed class SettingDetail : UserControl
     /// <summary>Pouzivatel vratil neulozenu zmenu.</summary>
     public event EventHandler? Reverted;
 
+    /// <summary>
+    /// Zobrazovat vyhodnotenie hodnoty (vrstvy registra a .INI, predvolena a ucinna hodnota) - nastavenie programu.
+    /// </summary>
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public bool ShowEvaluation { get; set; }
+
     /// <summary>Vybrany ciel zapisu.</summary>
     public RegWriteTarget SelectedTarget => _target.SelectedItem is TargetItem t ? t.Target : RegWriteTarget.Registry;
 
@@ -133,7 +140,7 @@ internal sealed class SettingDetail : UserControl
             _reset.Enabled = row.Extra.Count > 0 || (setting?.Layers.Count ?? 0) > 0;
             _revert.Visible = pending is not null;
 
-            _layersHeader.Visible = _layers.Visible = true;
+            _layersHeader.Visible = _layers.Visible = ShowEvaluation;
             _layers.Text = LayersText(row, pending);
             _diagnosticsHeader.Visible = _diagnostics.Visible = row.Diagnostics.Count > 0;
             ShowDiagnostics(row.Diagnostics);

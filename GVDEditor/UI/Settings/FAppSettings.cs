@@ -36,6 +36,19 @@ internal partial class FAppSettings : FAppSettingsBase
             [AppLanguage.Czech] = "Čeština" 
         });
         cbDateLimitLanguage.SelectedValue = Config.DateLimitLocate;
+
+        // skupiny stranky Vseobecne siahaju po pravy okraj ako skupina zo zakladu okna - kotvy z navrhu pocitaju
+        // s inou sirkou panela, preto sa sirka nastavuje podla skutocneho panela
+        pConcreteGeneral.ClientSizeChanged += (_, _) => FitGeneralGroups();
+    }
+
+    private void FitGeneralGroups()
+    {
+        foreach (var box in new Control[] { exGroupBox2, exGroupBox4, exGroupBox5 })
+        {
+            box.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            box.Width = Math.Max(box.MinimumSize.Width, pConcreteGeneral.ClientSize.Width - box.Left);
+        }
     }
 
     /// <inheritdoc />
@@ -44,6 +57,8 @@ internal partial class FAppSettings : FAppSettingsBase
         base.OnLoad();
         cboxTabTextAutoGenerate.Checked = Config.AutoTableText;
         nudPlayerWordPause.Value = Config.PlayerSoundsOffset;
+        cboxInissEvaluation.Checked = Config.InissSettingsShowEvaluation;
+        FitGeneralGroups();
     }
 
     /// <inheritdoc />
@@ -56,6 +71,7 @@ internal partial class FAppSettings : FAppSettingsBase
 
         Config.AutoTableText = cboxTabTextAutoGenerate.Checked;
         Config.PlayerSoundsOffset = decimal.ToInt32(nudPlayerWordPause.Value);
+        Config.InissSettingsShowEvaluation = cboxInissEvaluation.Checked;
         return base.OnSaving();
     }
 

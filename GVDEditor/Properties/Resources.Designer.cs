@@ -9038,7 +9038,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kde hodnota leží.
+        ///   Looks up a localized string similar to Vyhodnotenie hodnoty.
         /// </summary>
         internal static string InissSettings_Layers {
             get {
@@ -10735,6 +10735,132 @@ namespace GVDEditor.Properties {
         internal static string InissTools_TakeOverQuestion {
             get {
                 return ResourceManager.GetString("InissTools_TakeOverQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabuľa {0} je v INISSe vypnutá – INISS s ňou nekomunikuje..
+        /// </summary>
+        internal static string InissCheck_Disabled {
+            get {
+                return ResourceManager.GetString("InissCheck_Disabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ak má tabuľa fungovať, zapnite ju v okne Nastavenia INISSu (sekcia Tables)..
+        /// </summary>
+        internal static string InissCheck_Disabled_Fix {
+            get {
+                return ResourceManager.GetString("InissCheck_Disabled_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS podľa nastavení (PathNames\{0} = {1}) číta iný súbor, než do ktorého GVDEditor zapisuje – zmeny z GVDEditora neuvidí..
+        /// </summary>
+        internal static string InissCheck_FileName {
+            get {
+                return ResourceManager.GetString("InissCheck_FileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obnovte predvolenú hodnotu v okne Nastavenia INISSu (sekcia PathNames)..
+        /// </summary>
+        internal static string InissCheck_FileName_Fix {
+            get {
+                return ResourceManager.GetString("InissCheck_FileName_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linka {0}: {1}.
+        /// </summary>
+        internal static string InissCheck_Line {
+            get {
+                return ResourceManager.GetString("InissCheck_Line", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upravte linku v okne Nastavenia INISSu..
+        /// </summary>
+        internal static string InissCheck_Line_Fix {
+            get {
+                return ResourceManager.GetString("InissCheck_Line_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia INISSu konfigurácie spúšťania {0} v registri ani v súbore .INI nie sú – INISS pobeží s predvolenými nastaveniami. Kontrola liniek tabúľ a súborov sa preskočila..
+        /// </summary>
+        internal static string InissCheck_Missing {
+            get {
+                return ResourceManager.GetString("InissCheck_Missing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skontrolujte vybranú konfiguráciu spúšťania (vetva registra, program), prípadne nastavte INISS v okne Nastavenia INISSu..
+        /// </summary>
+        internal static string InissCheck_Missing_Fix {
+            get {
+                return ResourceManager.GetString("InissCheck_Missing_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V nastaveniach INISSu sú hodnoty tabúľ s poradovým číslom {0}, ale tabúľ je len {1}. INISS nastavenia tabúľ priraďuje podľa poradia – po pridaní alebo odstránení tabule sa zapnutie a jas môžu posunúť na inú tabuľu..
+        /// </summary>
+        internal static string InissCheck_Orphans {
+            get {
+                return ResourceManager.GetString("InissCheck_Orphans", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skontrolujte sekciu Tables v okne Nastavenia INISSu a hodnoty bez tabule obnovte na predvolené..
+        /// </summary>
+        internal static string InissCheck_Orphans_Fix {
+            get {
+                return ResourceManager.GetString("InissCheck_Orphans_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS má vypnuté posielanie na tabule (Environment\OutToTableDriver) – obsah tabúľ len zobrazuje a na linky nič nepošle..
+        /// </summary>
+        internal static string InissCheck_OutputOff {
+            get {
+                return ResourceManager.GetString("InissCheck_OutputOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zapnite OutToTableDriver v okne Nastavenia INISSu (sekcia Environment)..
+        /// </summary>
+        internal static string InissCheck_OutputOff_Fix {
+            get {
+                return ResourceManager.GetString("InissCheck_OutputOff_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabuľa {0}: INISS jej nič nepošle – {1}..
+        /// </summary>
+        internal static string InissCheck_Unserved {
+            get {
+                return ResourceManager.GetString("InissCheck_Unserved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pridajte linku s protokolom výrobcu tabule v okne Nastavenia INISSu, alebo zmeňte číslo linky tabule vo fyzických tabuliach..
+        /// </summary>
+        internal static string InissCheck_Unserved_Fix {
+            get {
+                return ResourceManager.GetString("InissCheck_Unserved_Fix", resourceCulture);
             }
         }
 }

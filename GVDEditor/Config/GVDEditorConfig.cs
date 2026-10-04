@@ -30,6 +30,12 @@ public record GVDEditorConfig() : ConfigBase
     public int PlayerSoundsOffset { get; set; }
 
     /// <summary>
+    /// Okno Nastavenia INISSu ukazuje pri hodnote aj jej vyhodnotenie (vrstvy registra a .INI, predvolena, ucinna).
+    /// </summary>
+    [XmlElement("InissSettingsShowEvaluation"), DefaultValue(false)]
+    public bool InissSettingsShowEvaluation { get; set; }
+
+    /// <summary>
     /// Stlpce zobrazujuce sa v tabulke na pracovnej ploche programu.
     /// </summary>
     [XmlElement("DesktopCols")] 
@@ -67,6 +73,12 @@ public record GVDEditorConfig() : ConfigBase
     public WindowPlacement? GlobalSettingsWindow { get; set; }
 
     /// <summary>
+    /// Velkost okna Nastavenia INISSu; <see langword="null" /> = predvolena z navrhu.
+    /// </summary>
+    [XmlElement("InissSettingsWindow")]
+    public WindowPlacement? InissSettingsWindow { get; set; }
+
+    /// <summary>
     /// Velkost okna uprava vlaku; <see langword="null" /> = predvolena z navrhu.
     /// </summary>
     [XmlElement("EditTrainWindow")]
@@ -80,6 +92,7 @@ public record GVDEditorConfig() : ConfigBase
         DateLimitLocate = original.DateLimitLocate;
         AutoTableText = original.AutoTableText;
         PlayerSoundsOffset = original.PlayerSoundsOffset;
+        InissSettingsShowEvaluation = original.InissSettingsShowEvaluation;
         DesktopCols = original.DesktopCols with { };
         Shortcuts = original.Shortcuts.Clone();
         StartupINISSConfig = original.StartupINISSConfig with { };
@@ -87,5 +100,6 @@ public record GVDEditorConfig() : ConfigBase
         LocalSettingsWindow = original.LocalSettingsWindow?.Clone();
         GlobalSettingsWindow = original.GlobalSettingsWindow?.Clone();
         EditTrainWindow = original.EditTrainWindow?.Clone();
+        InissSettingsWindow = original.InissSettingsWindow?.Clone();
     }
 }

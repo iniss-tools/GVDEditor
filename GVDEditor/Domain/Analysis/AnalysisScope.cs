@@ -26,9 +26,21 @@ internal interface IAnalyzerHost
     /// </summary>
     /// <returns><see langword="true" />, ak pouzivatel vlak ulozil.</returns>
     bool EditTrain(Train train);
+
+    /// <summary>
+    /// Otvori okno Nastavenia INISSu (vybrana konfiguracia spustania) na sekcii <paramref name="section" />.
+    /// </summary>
+    void ShowInissSettings(string? section);
 }
 
 /// <summary>
 /// Co analyza kontroluje a opravuje: otvoreny grafikon, instalacia INISS a hlavne okno pre opravy s pouzivatelom.
 /// </summary>
-internal sealed record AnalysisScope(GrafikonDocument Document, InissWorkspace Workspace, IAnalyzerHost Host);
+internal sealed record AnalysisScope(GrafikonDocument Document, InissWorkspace Workspace, IAnalyzerHost Host)
+{
+    /// <summary>
+    /// Nacita nastavenia INISSu vybranej konfiguracie spustania (register, .INI); null = kontroly nastaveni INISSu
+    /// sa vynechaju. Vola sa na pozadi a po oprave znova.
+    /// </summary>
+    public Func<InissRegistryView?>? InissLoader { get; init; }
+}
