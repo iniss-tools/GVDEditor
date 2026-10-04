@@ -44,6 +44,7 @@ internal partial class FInissSettings : Form
     private bool _syncingSearch;
     private TreeNode? _beforeSearch;
     private readonly HashSet<Control> _hookedEditors = [];
+    private readonly Func<string, string?, InissRunMode, IReadOnlyDictionary<int, RegTableInfo>?, InissConfigSource> _loadSource;
 
     /// <summary>
     /// Vytvori okno pre otvorenu instalaciu INISSu.
@@ -52,9 +53,13 @@ internal partial class FInissSettings : Form
     /// <param name="iniss">beziace INISSy - stav a restart po ulozeni</param>
     /// <param name="dialogs">dialogy</param>
     /// <param name="runConfig">konfiguracia spustania, ktorej nastavenia sa zobrazia (null = vybrana)</param>
-    public FInissSettings(EditorContext ctx, IInissProcess iniss, IDialogService dialogs, RunConfiguration? runConfig = null)
+    /// <param name="loadSource">nacitanie vrstiev konfiguracie (vetva, program, rezim, tabule); null = register a .INI
+    /// tohto pocitaca - inak napr. ukazkova konfiguracia pre snimky dokumentacie</param>
+    public FInissSettings(EditorContext ctx, IInissProcess iniss, IDialogService dialogs, RunConfiguration? runConfig = null,
+        Func<string, string?, InissRunMode, IReadOnlyDictionary<int, RegTableInfo>?, InissConfigSource>? loadSource = null)
     {
         _ctx = ctx;
+        _loadSource = loadSource ?? InissRegistry.LoadSource;
         _iniss = iniss;
         _dialogs = dialogs;
         InitializeComponent();
@@ -174,8 +179,12 @@ internal partial class FInissSettings : Form
     private SettingRow? SelectedRow => dgvValues.CurrentRow?.Tag as SettingRow;
 
     /// <summary>Popis sekcie pod stromom sa zalamuje na sirku panela.</summary>
-    private void FitSectionText() =>
-        lSection.MaximumSize = new Size(Math.Max(LogicalToDeviceUnits(100), pSectionInfo.ClientSize.Width - LogicalToDeviceUnits(12)), 0);
+    private void FitSectionText()
+    {
+        // rezerva na zvisly posuvnik - inak dlhy text najprv prekroci sirku a objavi sa aj vodorovny
+        var scrollBar = pSectionInfo.VerticalScroll.Visible ? 0 : SystemInformation.VerticalScrollBarWidth;
+        lSection.MaximumSize = new Size(Math.Max(LogicalToDeviceUnits(100), pSectionInfo.ClientSize.Width - scrollBar - LogicalToDeviceUnits(12)), 0);
+    }
 
     /// <summary>Vyber sekcie v strome ukonci hladanie.</summary>
     private void SectionSelected()
@@ -304,7 +313,7 @@ internal partial class FInissSettings : Form
         UseWaitCursor = true;
         try
         {
-            var source = InissRegistry.LoadSource(app, exe, mode, _tables.ToDictionary(t => t.Index, t => t.ToInfo()));
+            var source = _loadSource(app, exe, mode, _tables.ToDictionary(t => t.Index, t => t.ToInfo()));
             _model = new InissSettingsModel(RegResolver.Resolve(source), exe is null ? null : InissRegistry.IniPathFor(exe), InissRegistry.CanWriteMachine(app));
             _lines = DriverLines.Build(_model.Config, _tables);
         }

@@ -201,6 +201,9 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 ctx.RunConfigurations = new RunConfigurationSet(ctx.Workspace.INISSDir, [live, test], test.Id);
                 return new FRunConfigurations(ctx, new InissProcessService(), new ToolsCore.Tools.DialogService());
             });
+            // okno Nastavenia INISSu s ukážkovou konfiguráciou (len v pamäti, register sa nečíta)
+            InissSettingsShots();
+
             // rozdelenie staršieho zápisu: jeden priečinok s dvoma obdobiami stanice (bloky /9900100)
             Shot("migracia-blokov/rozdelenie", () => new FBlockMigration(Program.Context, @"C:\INISS\DATA\DolneMesto",
             [
@@ -390,6 +393,77 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
         }
 
         return _count;
+    }
+
+    /// <summary>
+    /// Snímky okna Nastavenia INISSu a jeho nástrojov s ukážkovou konfiguráciou <see cref="DemoIniss" />.
+    /// </summary>
+    private void InissSettingsShots()
+    {
+        const BindingFlags any = BindingFlags.NonPublic | BindingFlags.Instance;
+        var ctx = Program.Context;
+        var config = new RunConfiguration { Name = "Dolné Mesto", Program = DemoInstallation.ExeName };
+        ctx.RunConfigurations = new RunConfigurationSet(ctx.Workspace.INISSDir, [config], config.Id);
+        FInissSettings Create() => new(ctx, new InissProcessService(), new ToolsCore.Tools.DialogService(), config, DemoIniss.Load);
+        T Field<T>(object o, string name) => (T)o.GetType().GetField(name, any)!.GetValue(o)!;
+
+        void SelectRow(Form form, string key)
+        {
+            var grid = Field<DataGridView>(form, "dgvValues");
+            var row = grid.Rows.Cast<DataGridViewRow>().First(r => Equals(r.Cells[1].Value, key));
+            grid.CurrentCell = row.Cells[2];
+        }
+
+        // hodnota s upozornením - kópia vo VirtualStore prebíja HKLM
+        Shot("nastavenia-iniss/okno", Create, form =>
+        {
+            Resize(form, 1180, 720);
+            ((FInissSettings)form).SelectSection("PathNames");
+            Pump.Events();
+            SelectRow(form, "LogPath");
+            Field<TreeView>(form, "tvSections").SelectedNode?.EnsureVisible();
+            form.Refresh();
+        });
+        // linka k tabuliam - priradené tabule a tabuľa, ktorej INISS nič nepošle
+        Shot("nastavenia-iniss/linka", Create, form =>
+        {
+            Resize(form, 1180, 720);
+            ((FInissSettings)form).SelectSection("Driver");
+            Pump.Events();
+            SelectRow(form, "TablePort");
+            form.Refresh();
+        });
+        // sprievodca novou linkou
+        Shot("nastavenia-iniss/nova-linka", () =>
+        {
+            using var settings = Create();
+            var model = Field<InissSettingsModel>(settings, "_model");
+            return new FDriverWizard(model.Config, Field<DriverLineMap>(settings, "_lines"), Field<IReadOnlyList<InissTable>>(settings, "_tables"),
+                ["COM1", "COM2", "COM3", "COM4"], Properties.Resources.InissSettings_Target_MachineUac, true);
+        });
+        // porovnanie so súborom .reg inej stanice
+        Shot("nastavenia-iniss/porovnanie", () =>
+        {
+            using var settings = Create();
+            var model = Field<InissSettingsModel>(settings, "_model");
+            var form = new FCompareSettings(model.Config, true, new ToolsCore.Tools.DialogService());
+            form.LoadFile(DemoIniss.WriteOtherRegFile(ctx.Workspace.INISSDir, "INISS - Horné Mesto"), false);
+            return form;
+        }, form =>
+        {
+            Resize(form, 980, 560);
+            var grid = Field<DataGridView>(form, "dgvDiff");
+            foreach (DataGridViewRow row in grid.Rows)
+                if (row.Index < 2) row.Cells[0].Value = true;
+        });
+        // vyčistenie - pozostatok, starý názov, zlý typ, kópia vo VirtualStore
+        Shot("nastavenia-iniss/vycistenie", () =>
+        {
+            using var settings = Create();
+            var model = Field<InissSettingsModel>(settings, "_model");
+            return new FCleanupSettings(RunConfigurations.AppName(config), ToolsCore.Iniss.Registry.RegTools.FindCleanup(model.Config),
+                @"C:\Users\Dispečer\AppData\Local\GVDEditor\zalohy-registra");
+        }, form => Resize(form, 980, 420));
     }
 
     private void Shot(string name, Func<Form> create, Action<Form>? setup = null, bool tabs = false) =>
