@@ -107,6 +107,25 @@ public class InissChecksTests
     }
 
     [TestMethod]
+    public void PresmerovanieNaSimulator_Upozornenie()
+    {
+        var machine = Machine().Set("Driver", "TableClass", RegRawValue.Dword(4)).Set("Driver", "TablePort", RegRawValue.String("COM3"));
+        var tables = new[] { Table(0, "A", "T1", 3) };
+        var before = View(machine, tables);
+        var ini = SimulatorRedirect.Update(before.Config, null, new Dictionary<string, string> { ["Driver"] = "3=TCP://127.0.0.1:47003" });
+        var config = RegResolver.Resolve(new InissConfigSource
+        {
+            AppName = "INISS", Version = new RegVersion(3, 39), Machine = machine, Ini = ini, Tables = tables.ToDictionary(t => t.Index, t => t.ToInfo())
+        });
+
+        var finding = InissChecks.Evaluate("A", before with { Config = config }).Single();
+
+        Assert.AreEqual("redirected", finding.Key);
+        Assert.AreEqual("Driver", finding.Section);
+        Assert.IsEmpty(InissChecks.Evaluate("B", before with { Config = config }), "grafikon bez tabul na linke");
+    }
+
+    [TestMethod]
     public void BezNastaveni_LenInformacia()
     {
         var view = View(new RegBranch(), Table(0, "A", "T1", 5)) with { Exists = false };

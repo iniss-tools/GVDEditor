@@ -28,8 +28,8 @@ internal sealed record InissFinding(string Key, ProblemType Type, string Text, s
 
 /// <summary>
 /// Kontroly nastaveni INISSu (register, .INI) voci grafikonu: ci INISS tabuliam grafikonu nieco posle, ci su
-/// zapnute, ci v sekcii Tables nie su nastavenia tabul, ktore v datach nie su, a ci INISS cita subory, do ktorych
-/// GVDEditor zapisuje.
+/// zapnute, ci ich linky nie su presmerovane na simulator, ci v sekcii Tables nie su nastavenia tabul, ktore v datach
+/// nie su, a ci INISS cita subory, do ktorych GVDEditor zapisuje.
 /// </summary>
 internal static class InissChecks
 {
@@ -107,6 +107,13 @@ internal static class InissChecks
                 foreach (var (severity, text) in line.Problems.Where(p => p.Severity != RegSeverity.Info))
                     Add("line:" + line.Section + ":" + text, severity == RegSeverity.Error ? ProblemType.Error : ProblemType.Warning,
                         string.Format(CultureInfo.CurrentCulture, Resources.InissCheck_Line, line.Section, text), Resources.InissCheck_Line_Fix, line.Section);
+
+                // skuska so simulatorom tabul, na ktoru sa lahko zabudne - skutocne tabule potom nedostanu nic
+                var redirected = SimulatorRedirect.Find(config.Source.Ini).Select(r => r.Section).ToHashSet(StringComparer.OrdinalIgnoreCase);
+                var toSimulator = lines.Lines.Where(l => redirected.Contains(l.Section) && l.Tables.Any(t => mine.Contains(t.Table))).Select(l => l.Section).ToList();
+                if (toSimulator.Count > 0)
+                    Add("redirected", ProblemType.Warning, string.Format(CultureInfo.CurrentCulture, Resources.InissCheck_Redirected, string.Join(", ", toSimulator)),
+                        Resources.InissCheck_Redirected_Fix, toSimulator[0]);
             }
 
             foreach (var table in mine)

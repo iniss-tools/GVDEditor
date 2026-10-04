@@ -10863,5 +10863,230 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("InissCheck_Unserved_Fix", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Presmerovať tabule na simulátor....
+        /// </summary>
+        internal static string InissTools_RedirectSimulator {
+            get {
+                return ResourceManager.GetString("InissTools_RedirectSimulator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linky k tabuliam presmeruje na simulátor tabúľ zápisom do súboru {0} vedľa programu – linka N bude posielať na port „prvý port + N“. Register sa nemení a zrušenie presmerovania vráti súbor do pôvodného stavu. INISS zmenu načíta pri najbližšom spustení..
+        /// </summary>
+        internal static string InissRedirect_Intro {
+            get {
+                return ResourceManager.GetString("InissRedirect_Intro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zisťujem, či simulátor beží….
+        /// </summary>
+        internal static string InissRedirect_StatusChecking {
+            get {
+                return ResourceManager.GetString("InissRedirect_StatusChecking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simulátor beží a pozná triedy liniek {0}..
+        /// </summary>
+        internal static string InissRedirect_StatusRunning {
+            get {
+                return ResourceManager.GetString("InissRedirect_StatusRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simulátor na adrese {0} neodpovedá – linky v ňom bude treba založiť ručne, alebo ho spustite a stav zistite znova..
+        /// </summary>
+        internal static string InissRedirect_StatusOffline {
+            get {
+                return ResourceManager.GetString("InissRedirect_StatusOffline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Webová adresa simulátora nie je platná (napr. http://localhost:5470)..
+        /// </summary>
+        internal static string InissRedirect_UrlInvalid {
+            get {
+                return ResourceManager.GetString("InissRedirect_UrlInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte adresu počítača so simulátorom (napr. 127.0.0.1)..
+        /// </summary>
+        internal static string InissRedirect_HostInvalid {
+            get {
+                return ResourceManager.GetString("InissRedirect_HostInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prvý port musí byť číslo od 1 do {0}..
+        /// </summary>
+        internal static string InissRedirect_PortInvalid {
+            get {
+                return ResourceManager.GetString("InissRedirect_PortInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Označte linky, ktoré sa majú presmerovať..
+        /// </summary>
+        internal static string InissRedirect_NothingSelected {
+            get {
+                return ResourceManager.GetString("InissRedirect_NothingSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to presmerovaná na simulátor.
+        /// </summary>
+        internal static string InissRedirect_NoteRedirected {
+            get {
+                return ResourceManager.GetString("InissRedirect_NoteRedirected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to simulátor túto triedu nepozná.
+        /// </summary>
+        internal static string InissRedirect_NoteUnsupported {
+            get {
+                return ResourceManager.GetString("InissRedirect_NoteUnsupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS linku nezaloží.
+        /// </summary>
+        internal static string InissRedirect_NoteInactive {
+            get {
+                return ResourceManager.GetString("InissRedirect_NoteInactive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Presmerované linky: {0}. INISS ich použije po najbližšom spustení..
+        /// </summary>
+        internal static string InissRedirect_Done {
+            get {
+                return ResourceManager.GetString("InissRedirect_Done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Presmerovanie na simulátor je zrušené – súbor .INI je v pôvodnom stave..
+        /// </summary>
+        internal static string InissRedirect_Undone {
+            get {
+                return ResourceManager.GetString("InissRedirect_Undone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zrušiť presmerovanie liniek {0} na simulátor?.
+        /// </summary>
+        internal static string InissRedirect_UndoQuestion {
+            get {
+                return ResourceManager.GetString("InissRedirect_UndoQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor {0} sa nepodarilo zapísať: {1}.
+        /// </summary>
+        internal static string InissRedirect_WriteFailed {
+            get {
+                return ResourceManager.GetString("InissRedirect_WriteFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V simulátore pribudli linky: {0}, zmenili sa: {1}; pribudli tabule: {2}, ponechané: {3}..
+        /// </summary>
+        internal static string InissRedirect_SimulatorDone {
+            get {
+                return ResourceManager.GetString("InissRedirect_SimulatorDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triedy liniek {0} simulátor nepozná – ich tabule nezobrazí..
+        /// </summary>
+        internal static string InissRedirect_SimulatorUnsupported {
+            get {
+                return ResourceManager.GetString("InissRedirect_SimulatorUnsupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabule, ktoré simulátor na ich linke nezobrazí: {0}..
+        /// </summary>
+        internal static string InissRedirect_SimulatorSkipped {
+            get {
+                return ResourceManager.GetString("InissRedirect_SimulatorSkipped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linky a tabule v simulátore sa nepodarilo založiť ({0}). Spustite simulátor a presmerovanie potvrďte znova, alebo linky založte ručne..
+        /// </summary>
+        internal static string InissRedirect_SimulatorFailed {
+            get {
+                return ResourceManager.GetString("InissRedirect_SimulatorFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS beží a zmenu načíta až po reštarte. Reštartovať ho teraz?.
+        /// </summary>
+        internal static string InissRedirect_RestartQuestion {
+            get {
+                return ResourceManager.GetString("InissRedirect_RestartQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Presmerovanie zapisuje do súboru .INI vedľa programu – vyberte program INISSu..
+        /// </summary>
+        internal static string InissRedirect_NeedsProgram {
+            get {
+                return ResourceManager.GetString("InissRedirect_NeedsProgram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tabule presmerované na simulátor.
+        /// </summary>
+        internal static string InissSettings_Info_Redirected {
+            get {
+                return ResourceManager.GetString("InissSettings_Info_Redirected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabule grafikonu dostáva len simulátor tabúľ – linky {0} sú v súbore .INI presmerované na simulátor..
+        /// </summary>
+        internal static string InissCheck_Redirected {
+            get {
+                return ResourceManager.GetString("InissCheck_Redirected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ak to nie je skúška, zrušte presmerovanie v okne Nastavenia INISSu (Nástroje → Presmerovať tabule na simulátor)..
+        /// </summary>
+        internal static string InissCheck_Redirected_Fix {
+            get {
+                return ResourceManager.GetString("InissCheck_Redirected_Fix", resourceCulture);
+            }
+        }
 }
 }

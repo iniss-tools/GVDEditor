@@ -464,6 +464,30 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             return new FCleanupSettings(RunConfigurations.AppName(config), ToolsCore.Iniss.Registry.RegTools.FindCleanup(model.Config),
                 @"C:\Users\Dispečer\AppData\Local\GVDEditor\zalohy-registra");
         }, form => Resize(form, 980, 420));
+        // presmerovanie liniek na simulátor tabúľ - simulátor beží (stav sa nastaví ručne, harness ho nespúšťa)
+        Shot("nastavenia-iniss/presmerovanie", () =>
+        {
+            using var settings = Create();
+            return new FSimulatorRedirect(Field<DriverLineMap>(settings, "_lines"), [], new TableSimulatorSettings(), Path.ChangeExtension(DemoInstallation.ExeName, ".INI"));
+        }, form =>
+        {
+            Resize(form, 900, 420);
+            // zistovanie stavu pri otvoreni (simulator nebezi) musi dobehnut, inak by prepisalo stav nastaveny nizsie
+            var probe = Field<Button>(form, "bProbe");
+            for (var end = Environment.TickCount64 + 5000; !probe.Enabled && Environment.TickCount64 < end;)
+                Pump.Events();
+            form.GetType().GetField("_supported", any)!.SetValue(form, (IReadOnlyList<int>)[1, 4, 5, 130]);
+            form.GetType().GetMethod("UpdateRows", any)!.Invoke(form, null);
+            var status = Field<Label>(form, "lStatus");
+            status.ResetForeColor();
+            status.Text = string.Format(CultureInfo.CurrentCulture, Properties.Resources.InissRedirect_StatusRunning, "1, 4, 5, 130");
+            foreach (var box in Descendants(form).OfType<TextBox>())
+                box.SelectionLength = 0;
+            var grid = Field<DataGridView>(form, "dgvLines");
+            grid.CurrentCell = null;
+            grid.ClearSelection();
+            form.ActiveControl = Field<Button>(form, "bApply");
+        });
     }
 
     private void Shot(string name, Func<Form> create, Action<Form>? setup = null, bool tabs = false) =>

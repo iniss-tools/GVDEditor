@@ -36,6 +36,12 @@ public record GVDEditorConfig() : ConfigBase
     public bool InissSettingsShowEvaluation { get; set; }
 
     /// <summary>
+    /// Simulator tabul, na ktory okno Nastavenia INISSu presmerovava linky.
+    /// </summary>
+    [XmlElement("TableSimulator")]
+    public TableSimulatorSettings TableSimulator { get; set; } = new();
+
+    /// <summary>
     /// Stlpce zobrazujuce sa v tabulke na pracovnej ploche programu.
     /// </summary>
     [XmlElement("DesktopCols")] 
@@ -93,6 +99,7 @@ public record GVDEditorConfig() : ConfigBase
         AutoTableText = original.AutoTableText;
         PlayerSoundsOffset = original.PlayerSoundsOffset;
         InissSettingsShowEvaluation = original.InissSettingsShowEvaluation;
+        TableSimulator = original.TableSimulator.Clone();
         DesktopCols = original.DesktopCols with { };
         Shortcuts = original.Shortcuts.Clone();
         StartupINISSConfig = original.StartupINISSConfig with { };

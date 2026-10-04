@@ -3814,4 +3814,79 @@ Pred zápisom sa uloží záloha.</value>
   <data name="InissCheck_Unserved_Fix" xml:space="preserve">
     <value>Pridajte linku s protokolom výrobcu tabule v okne Nastavenia INISSu, alebo zmeňte číslo linky tabule vo fyzických tabuliach.</value>
   </data>
+  <data name="InissTools_RedirectSimulator" xml:space="preserve">
+    <value>Presmerovať tabule na simulátor...</value>
+  </data>
+  <data name="InissRedirect_Intro" xml:space="preserve">
+    <value>Linky k tabuliam presmeruje na simulátor tabúľ zápisom do súboru {0} vedľa programu – linka N bude posielať na port „prvý port + N“. Register sa nemení a zrušenie presmerovania vráti súbor do pôvodného stavu. INISS zmenu načíta pri najbližšom spustení.</value>
+  </data>
+  <data name="InissRedirect_StatusChecking" xml:space="preserve">
+    <value>Zisťujem, či simulátor beží…</value>
+  </data>
+  <data name="InissRedirect_StatusRunning" xml:space="preserve">
+    <value>Simulátor beží a pozná triedy liniek {0}.</value>
+  </data>
+  <data name="InissRedirect_StatusOffline" xml:space="preserve">
+    <value>Simulátor na adrese {0} neodpovedá – linky v ňom bude treba založiť ručne, alebo ho spustite a stav zistite znova.</value>
+  </data>
+  <data name="InissRedirect_UrlInvalid" xml:space="preserve">
+    <value>Webová adresa simulátora nie je platná (napr. http://localhost:5470).</value>
+  </data>
+  <data name="InissRedirect_HostInvalid" xml:space="preserve">
+    <value>Zadajte adresu počítača so simulátorom (napr. 127.0.0.1).</value>
+  </data>
+  <data name="InissRedirect_PortInvalid" xml:space="preserve">
+    <value>Prvý port musí byť číslo od 1 do {0}.</value>
+  </data>
+  <data name="InissRedirect_NothingSelected" xml:space="preserve">
+    <value>Označte linky, ktoré sa majú presmerovať.</value>
+  </data>
+  <data name="InissRedirect_NoteRedirected" xml:space="preserve">
+    <value>presmerovaná na simulátor</value>
+  </data>
+  <data name="InissRedirect_NoteUnsupported" xml:space="preserve">
+    <value>simulátor túto triedu nepozná</value>
+  </data>
+  <data name="InissRedirect_NoteInactive" xml:space="preserve">
+    <value>INISS linku nezaloží</value>
+  </data>
+  <data name="InissRedirect_Done" xml:space="preserve">
+    <value>Presmerované linky: {0}. INISS ich použije po najbližšom spustení.</value>
+  </data>
+  <data name="InissRedirect_Undone" xml:space="preserve">
+    <value>Presmerovanie na simulátor je zrušené – súbor .INI je v pôvodnom stave.</value>
+  </data>
+  <data name="InissRedirect_UndoQuestion" xml:space="preserve">
+    <value>Zrušiť presmerovanie liniek {0} na simulátor?</value>
+  </data>
+  <data name="InissRedirect_WriteFailed" xml:space="preserve">
+    <value>Súbor {0} sa nepodarilo zapísať: {1}</value>
+  </data>
+  <data name="InissRedirect_SimulatorDone" xml:space="preserve">
+    <value>V simulátore pribudli linky: {0}, zmenili sa: {1}; pribudli tabule: {2}, ponechané: {3}.</value>
+  </data>
+  <data name="InissRedirect_SimulatorUnsupported" xml:space="preserve">
+    <value>Triedy liniek {0} simulátor nepozná – ich tabule nezobrazí.</value>
+  </data>
+  <data name="InissRedirect_SimulatorSkipped" xml:space="preserve">
+    <value>Tabule, ktoré simulátor na ich linke nezobrazí: {0}.</value>
+  </data>
+  <data name="InissRedirect_SimulatorFailed" xml:space="preserve">
+    <value>Linky a tabule v simulátore sa nepodarilo založiť ({0}). Spustite simulátor a presmerovanie potvrďte znova, alebo linky založte ručne.</value>
+  </data>
+  <data name="InissRedirect_RestartQuestion" xml:space="preserve">
+    <value>INISS beží a zmenu načíta až po reštarte. Reštartovať ho teraz?</value>
+  </data>
+  <data name="InissRedirect_NeedsProgram" xml:space="preserve">
+    <value>Presmerovanie zapisuje do súboru .INI vedľa programu – vyberte program INISSu.</value>
+  </data>
+  <data name="InissSettings_Info_Redirected" xml:space="preserve">
+    <value>tabule presmerované na simulátor</value>
+  </data>
+  <data name="InissCheck_Redirected" xml:space="preserve">
+    <value>Tabule grafikonu dostáva len simulátor tabúľ – linky {0} sú v súbore .INI presmerované na simulátor.</value>
+  </data>
+  <data name="InissCheck_Redirected_Fix" xml:space="preserve">
+    <value>Ak to nie je skúška, zrušte presmerovanie v okne Nastavenia INISSu (Nástroje → Presmerovať tabule na simulátor).</value>
+  </data>
 </root>

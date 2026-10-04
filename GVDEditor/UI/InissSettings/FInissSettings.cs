@@ -336,6 +336,7 @@ internal partial class FInissSettings : Form
             if (!src.Machine.Exists && !src.User.Exists && !src.VirtualStore.Exists) parts.Add(Resources.InissSettings_Info_NoConfig);
             parts.Add(m.Config.UserBranchActive ? Resources.InissSettings_Info_UserBranch : Resources.InissSettings_Info_NoUserBranch);
             if (src.Ini is not null) parts.Add(Resources.InissSettings_Info_Ini);
+            if (SimulatorRedirect.Find(src.Ini).Count > 0) parts.Add(Resources.InissSettings_Info_Redirected);
             if (src.RunMode == InissRunMode.Normal && src.VirtualStore.Exists) parts.Add(Resources.InissSettings_Info_VirtualStore);
         }
 
@@ -827,24 +828,26 @@ internal partial class FInissSettings : Form
         if (!await ApplyAsync(m, plan)) return;
         var running = RunningInstances();
         if (restart && running.Count > 0)
+            await RestartAsync(running);
+        else if (running.Count > 0)
+            _dialogs.ShowInfo(Resources.InissSettings_SavedRestartNeeded);
+    }
+
+    /// <summary>Restartuje beziace INISSy zobrazenej vetvy (nacitaju zmenene nastavenia).</summary>
+    private async Task RestartAsync(List<InissInstance> running)
+    {
+        try
         {
-            try
+            foreach (var instance in running.Where(i => !i.IsRestarting))
             {
-                foreach (var instance in running.Where(i => !i.IsRestarting))
-                {
-                    var config = _ctx.RunConfigurations.Find(instance.Configuration.Id) ?? instance.Configuration;
-                    await _iniss.RestartAsync(instance, InissLaunch.Create(config, _ctx.Workspace.INISSDir),
-                        () => _dialogs.ShowQuestion(Resources.FMain_INISS_sa_neukoncil) == DialogResult.Yes);
-                }
-            }
-            catch (InvalidOperationException ex)
-            {
-                _dialogs.ShowError(ex.Message);
+                var config = _ctx.RunConfigurations.Find(instance.Configuration.Id) ?? instance.Configuration;
+                await _iniss.RestartAsync(instance, InissLaunch.Create(config, _ctx.Workspace.INISSDir),
+                    () => _dialogs.ShowQuestion(Resources.FMain_INISS_sa_neukoncil) == DialogResult.Yes);
             }
         }
-        else if (running.Count > 0)
+        catch (InvalidOperationException ex)
         {
-            _dialogs.ShowInfo(Resources.InissSettings_SavedRestartNeeded);
+            _dialogs.ShowError(ex.Message);
         }
     }
 
@@ -936,6 +939,7 @@ internal partial class FInissSettings : Form
         menu.Items.Add(new ToolStripSeparator());
         Item(Resources.InissTools_Clone, () => _ = CloneAsync(), loaded);
         Item(Resources.InissTools_Cleanup, () => _ = CleanupAsync(), loaded);
+        Item(Resources.InissTools_RedirectSimulator, () => _ = RedirectSimulatorAsync(), loaded);
         if (m?.Config.UserBranchActive == true)
             Item(Resources.InissTools_RemoveUserBranch, () => _ = RemoveUserBranchAsync(), loaded);
         else
@@ -1135,6 +1139,93 @@ internal partial class FInissSettings : Form
         _loading = false;
         Reload(false);
         _dialogs.ShowInfo(string.Format(CultureInfo.CurrentCulture, Resources.InissTools_Cloned, name));
+    }
+
+    /// <summary>
+    /// Presmeruje linky na simulator tabul (alebo presmerovanie zrusi) zapisom do .INI vedla programu a pripadne
+    /// zalozi linky a tabule stanice v beziacom simulatore.
+    /// </summary>
+    private async Task RedirectSimulatorAsync()
+    {
+        if (!CanRunWritingTool() || _model is not { } m) return;
+        if (m.IniPath is not { } iniPath)
+        {
+            _dialogs.ShowInfo(Resources.InissRedirect_NeedsProgram);
+            return;
+        }
+
+        // subor .INI mohol medzicasom niekto zmenit - presmerovanie vychadza z aktualneho
+        var current = InissIniFile.Load(iniPath);
+        var redirected = SimulatorRedirect.Find(current);
+        using var f = new FSimulatorRedirect(_lines, redirected, _ctx.Config.TableSimulator, Path.GetFileName(iniPath));
+        if (f.ShowDialog(this) != DialogResult.OK) return;
+        _ctx.Config.TableSimulator = f.Settings;
+        GVDEditor.UI.Settings.SettingsWindow.SaveConfig(_ctx.Config);
+        if (f.Undo && _dialogs.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_UndoQuestion,
+                string.Join(", ", redirected.Select(r => r.Section)))) != DialogResult.Yes)
+            return;
+
+        var host = f.Settings.Host;
+        var ports = f.Undo ? new Dictionary<string, int>() : f.Ports.ToDictionary(p => p.Key, p => p.Value, StringComparer.OrdinalIgnoreCase);
+        var tablePorts = _lines.Lines.Where(l => ports.ContainsKey(l.Section) && l.Line is not null)
+            .ToDictionary(l => l.Section, l => SimulatorRedirect.TablePort(l.Line!.Value, host, ports[l.Section]), StringComparer.OrdinalIgnoreCase);
+        var updated = SimulatorRedirect.Update(m.Config, current, tablePorts);
+        try
+        {
+            if (!updated.IsEmpty) updated.Save(iniPath);
+            else if (File.Exists(iniPath)) File.Delete(iniPath);
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+        {
+            _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_WriteFailed, iniPath, e.Message));
+            return;
+        }
+
+        var message = new StringBuilder(f.Undo ? Resources.InissRedirect_Undone
+            : string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_Done, string.Join(", ", tablePorts.Keys)));
+        if (!f.Undo && f.PrepareUrl is { } url)
+            message.AppendLine().AppendLine().Append(await PrepareSimulatorAsync(url, SimulatorStation.From(_lines, ports)));
+
+        Reload(false);
+        var running = RunningInstances();
+        if (running.Count > 0)
+        {
+            message.AppendLine().AppendLine().Append(Resources.InissRedirect_RestartQuestion);
+            if (_dialogs.ShowQuestion(message.ToString()) == DialogResult.Yes) await RestartAsync(running);
+            return;
+        }
+
+        _dialogs.ShowInfo(message.ToString());
+    }
+
+    /// <summary>Zalozi linky a tabule stanice v simulatore; vrati text vysledku pre obsluhu.</summary>
+    private async Task<string> PrepareSimulatorAsync(Uri url, SimulatorStation station)
+    {
+        UseWaitCursor = true;
+        try
+        {
+            var result = await TableSimulatorClient.ImportAsync(url, station, CancellationToken.None);
+            var text = new StringBuilder(string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_SimulatorDone,
+                result.LinesAdded, result.LinesUpdated, result.BoardsAdded, result.BoardsKept));
+            if (result.UnsupportedLines.Count > 0)
+            {
+                var classes = station.Lines.Where(l => result.UnsupportedLines.Contains(l.Number)).Select(l => l.TableClass).Distinct()
+                    .Select(c => c.ToString(CultureInfo.CurrentCulture));
+                text.AppendLine().Append(string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_SimulatorUnsupported, string.Join(", ", classes)));
+            }
+
+            if (result.SkippedBoards.Count > 0)
+                text.AppendLine().Append(string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_SimulatorSkipped, string.Join(", ", result.SkippedBoards)));
+            return text.ToString();
+        }
+        catch (Exception e) when (e is HttpRequestException or System.Text.Json.JsonException or TaskCanceledException)
+        {
+            return string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_SimulatorFailed, e.Message);
+        }
+        finally
+        {
+            UseWaitCursor = false;
+        }
     }
 
     private async Task CleanupAsync()
