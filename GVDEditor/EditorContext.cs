@@ -2,6 +2,7 @@ using GVDEditor.Config;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
+using GVDEditor.Integration;
 using ToolsCore;
 
 namespace GVDEditor;
@@ -41,6 +42,11 @@ internal sealed class EditorContext
     /// Zvolena instalacia INISS.
     /// </summary>
     public InissWorkspace Workspace { get; private set; } = new();
+
+    /// <summary>
+    /// Konfiguracie spustania INISSu zvolenej instalacie (nacita ich hlavne okno po otvoreni instalacie).
+    /// </summary>
+    public RunConfigurationSet RunConfigurations { get; set; } = new("", [], null);
 
     /// <summary>
     /// Otvoreny grafikon (bez otvoreneho grafikonu prazdny dokument).

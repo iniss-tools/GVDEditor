@@ -2073,7 +2073,7 @@ Pokračovat?</value>
     <value>Restartovat INISS</value>
   </data>
   <data name="Cmd_InissStartupSettings" xml:space="preserve">
-    <value>Nastavení spouštění INISS</value>
+    <value>Konfigurace spouštění INISSu</value>
   </data>
   <data name="Cmd_InfoApp" xml:space="preserve">
     <value>Informace o programu</value>
@@ -2406,8 +2406,8 @@ Záloha původních souborů: {1}
     <value>Hodnota "{0}" na řádku {1}, sloupec {2} ({3}), nemohla být převedena na {4}.</value>
   </data>
   <data name="Import_RequiredColumns" xml:space="preserve">
-    <value>Nejsou zadány všechny povinné sloupce pro import. Povinné sloupce jsou:
-Směrování vlaku a/nebo stanice vlaku,
+    <value>Nejsou zadány všechny povinné sloupce pro import. Povinné sloupce jsou:
+Směrování vlaku a/nebo stanice vlaku,
 </value>
   </data>
   <data name="Import_NoRoute" xml:space="preserve">
@@ -3381,5 +3381,189 @@ Směrování vlaku a/nebo stanice vlaku,
   </data>
   <data name="InissSettings_AndMore" xml:space="preserve">
     <value> a dalších {0}</value>
+  </data>
+  <data name="InissSettings_OtherBranch" xml:space="preserve">
+    <value>Jiná větev registru…</value>
+  </data>
+  <data name="Run_Activator" xml:space="preserve">
+    <value>/{0} – zapne: {1}</value>
+  </data>
+  <data name="Run_ActivatorUnused" xml:space="preserve">
+    <value>/{0} – nezapne žádný grafikon</value>
+  </data>
+  <data name="Run_AllInstances" xml:space="preserve">
+    <value>Všechny</value>
+  </data>
+  <data name="Run_AlreadyRunning" xml:space="preserve">
+    <value>INISS konfigurace {0} už běží.
+
+Ano – restartovat ho
+Ne – spustit další instanci
+Zrušit – nic nedělat</value>
+  </data>
+  <data name="Run_AnalysisErrors" xml:space="preserve">
+    <value>Analýza grafikonu našla chyby: {0}. INISS takový grafikon pravděpodobně nespustí správně.
+
+Ano – spustit INISS i tak
+Ne – otevřít analýzu
+Zrušit – nespouštět</value>
+  </data>
+  <data name="Run_BranchByArgument" xml:space="preserve">
+    <value>Nastavení z větve „{0}“ (parametr /Reg)</value>
+  </data>
+  <data name="Run_BranchByProgram" xml:space="preserve">
+    <value>Nastavení z větve „{0}“ (podle jména programu)</value>
+  </data>
+  <data name="Run_BranchExists" xml:space="preserve">
+    <value>v registru existuje</value>
+  </data>
+  <data name="Run_BranchMissing" xml:space="preserve">
+    <value>v registru zatím není</value>
+  </data>
+  <data name="Run_ButtonToolTip" xml:space="preserve">
+    <value>Spustit konfiguraci {0}</value>
+  </data>
+  <data name="Run_CannotStart" xml:space="preserve">
+    <value>Konfiguraci {0} nelze spustit:
+
+{1}</value>
+  </data>
+  <data name="Run_Check_ExportHlas" xml:space="preserve">
+    <value>INISS vyexportuje hlášení a sám skončí – operátorské okno se neotevře.</value>
+  </data>
+  <data name="Run_Check_ImportDat" xml:space="preserve">
+    <value>INISS naimportuje data a sám skončí – operátorské okno se neotevře.</value>
+  </data>
+  <data name="Run_Check_ImportMarker" xml:space="preserve">
+    <value>V datech instalace je značka dávkového importu – INISS data jen naimportuje a hned skončí, operátorské okno se neotevře.</value>
+  </data>
+  <data name="Run_Check_NewInstanceNoMultiuse" xml:space="preserve">
+    <value>Další instance se bez /Multiuse nespustí – INISS skončí, pokud už jiný INISS běží.</value>
+  </data>
+  <data name="Run_Check_NoBranch" xml:space="preserve">
+    <value>Větev registru „{0}“ zatím neexistuje – INISS poběží s výchozím nastavením.</value>
+  </data>
+  <data name="Run_Check_NoProgram" xml:space="preserve">
+    <value>Konfigurace nemá vybraný program.</value>
+  </data>
+  <data name="Run_Check_NotIniss" xml:space="preserve">
+    <value>Program {0} není INISS – parametry INISSu mu nemusí být srozumitelné.</value>
+  </data>
+  <data name="Run_Check_ProgramMissing" xml:space="preserve">
+    <value>Program {0} v instalaci neexistuje.</value>
+  </data>
+  <data name="Run_Check_SameBranch" xml:space="preserve">
+    <value>Stejnou větev registru „{0}“ používá také: {1} – změny nastavení INISSu platí pro všechny.</value>
+  </data>
+  <data name="Run_Check_SingleInstance" xml:space="preserve">
+    <value>Už běží INISS spuštěný bez /Multiuse – tento INISS se bez /Multiuse nespustí (hned skončí).</value>
+  </data>
+  <data name="Run_Check_Sleeping" xml:space="preserve">
+    <value>Bez /{0} zůstanou neaktivní (bez hlášení a linek): {1}</value>
+  </data>
+  <data name="Run_Check_UnusedActivator" xml:space="preserve">
+    <value>/{0} nezapne žádný grafikon – žádný ho nemá mezi příznaky.</value>
+  </data>
+  <data name="Run_CopyName" xml:space="preserve">
+    <value>{0} – kopie</value>
+  </data>
+  <data name="Run_DiscardQuestion" xml:space="preserve">
+    <value>Zahodit změny konfigurací spouštění?</value>
+  </data>
+  <data name="Run_Exit_AlreadyRunning" xml:space="preserve">
+    <value>INISS ({0}) se nespustil – už běží jiný INISS a tato konfigurace nemá zapnuté /Multiuse (více instancí najednou).</value>
+  </data>
+  <data name="Run_Exit_Mutex" xml:space="preserve">
+    <value>INISS ({0}) se nespustil – nepodařilo se mu ověřit, zda už běží jiný INISS. Pomůže zapnout /Multiuse.</value>
+  </data>
+  <data name="Run_Exit_Unregistered" xml:space="preserve">
+    <value>INISS ({0}) se ukončil, protože tato kopie není registrovaná.</value>
+  </data>
+  <data name="Run_GroupLocal" xml:space="preserve">
+    <value>Na tomto počítači</value>
+  </data>
+  <data name="Run_GroupShared" xml:space="preserve">
+    <value>V datech instalace</value>
+  </data>
+  <data name="Run_InstanceItem" xml:space="preserve">
+    <value>{0} (spuštěný v {1:t})</value>
+  </data>
+  <data name="Run_ItemInstances" xml:space="preserve">
+    <value>{0} ({1}×)</value>
+  </data>
+  <data name="Run_KillQuestion" xml:space="preserve">
+    <value>Vynutit ukončení INISSu ({0})? INISS se ukončí okamžitě, bez otázek a bez řádného ukončení.</value>
+  </data>
+  <data name="Run_LoadSharedFailed" xml:space="preserve">
+    <value>Konfigurace spouštění uložené v datech instalace se nepodařilo načíst: {0}</value>
+  </data>
+  <data name="Run_LogsMissing" xml:space="preserve">
+    <value>Složka logů {0} neexistuje – INISS ji založí, až začne logovat.</value>
+  </data>
+  <data name="Run_NameDuplicate" xml:space="preserve">
+    <value>Název {0} má více konfigurací – každá musí mít vlastní.</value>
+  </data>
+  <data name="Run_NameEmpty" xml:space="preserve">
+    <value>Konfigurace nemá název.</value>
+  </data>
+  <data name="Run_NoActivators" xml:space="preserve">
+    <value>Žádný grafikon nemá aktivátor – všechny jsou aktivní vždy.</value>
+  </data>
+  <data name="Run_NodeRunning" xml:space="preserve">
+    <value>{0} – běží</value>
+  </data>
+  <data name="Run_ProgramEmpty" xml:space="preserve">
+    <value>Konfigurace {0} nemá vybraný program.</value>
+  </data>
+  <data name="Run_ProgramMissing" xml:space="preserve">
+    <value>{0} (chybí)</value>
+  </data>
+  <data name="Run_ProgramVersion" xml:space="preserve">
+    <value>{0} ({1})</value>
+  </data>
+  <data name="Run_SaveAlways" xml:space="preserve">
+    <value>Uložit bez ptaní</value>
+  </data>
+  <data name="Run_SaveAsk" xml:space="preserve">
+    <value>Zeptat se, zda uložit</value>
+  </data>
+  <data name="Run_SaveNever" xml:space="preserve">
+    <value>Neukládat (INISS načte uložená data)</value>
+  </data>
+  <data name="Run_SaveSharedFailed" xml:space="preserve">
+    <value>Konfigurace spouštění se nepodařilo uložit do dat instalace: {0}</value>
+  </data>
+  <data name="Run_Unnamed" xml:space="preserve">
+    <value>(bez názvu)</value>
+  </data>
+  <data name="Run_WarningsQuestion" xml:space="preserve">
+    <value>Konfigurace {0}:
+
+{1}
+
+Spustit INISS i tak?</value>
+  </data>
+  <data name="Run_WhenRunningAsk" xml:space="preserve">
+    <value>Zeptat se</value>
+  </data>
+  <data name="Run_WhenRunningNew" xml:space="preserve">
+    <value>Spustit další instanci</value>
+  </data>
+  <data name="Run_WhenRunningRestart" xml:space="preserve">
+    <value>Restartovat ho</value>
+  </data>
+  <data name="Run_Check_VirtualStore" xml:space="preserve">
+    <value>Bez práv správce INISS čte kopii nastavení ve VirtualStore a {0} hodnot v ní se liší od nastavení v HKLM: {1}. Upravit je můžete v okně Nastavení INISSu, nebo zapněte Spustit jako správce.</value>
+  </data>
+  <data name="Run_LogsDefault" xml:space="preserve">
+    <value>výchozí hodnota</value>
+  </data>
+  <data name="Run_LogsToolTip" xml:space="preserve">
+    <value>INISS bez práv správce loguje do: {0}
+Hodnota z: {1}</value>
+  </data>
+  <data name="Run_LogsToolTipAdmin" xml:space="preserve">
+    <value>INISS spuštěný jako správce loguje do: {0}
+Hodnota z: {1}</value>
   </data>
 </root>

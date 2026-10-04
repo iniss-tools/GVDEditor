@@ -795,6 +795,7 @@ namespace GVDEditor.UI.Main
             // tssbStartINISS
             // 
             tssbStartINISS.DropDownItems.AddRange(new ToolStripItem[] { tsmiStartupSettings, toolStripSeparator8 });
+            tssbStartINISS.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
             resources.ApplyResources(tssbStartINISS, "tssbStartINISS");
             tssbStartINISS.Name = "tssbStartINISS";
             // 

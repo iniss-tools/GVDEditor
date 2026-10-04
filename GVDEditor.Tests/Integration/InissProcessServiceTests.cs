@@ -4,12 +4,12 @@ using GVDEditor.Integration;
 namespace GVDEditor.Tests.Integration;
 
 /// <summary>
-/// Proces INISS spusteny z GVDEditora - stavy bez skutocneho INISSu.
+/// INISSy spustene z GVDEditora - stavy bez skutocneho INISSu.
 /// </summary>
 [TestClass]
 public class InissProcessServiceTests
 {
-    private static readonly StartupINISS Options = new() { CmdArgs = "", RunAsAdmin = false };
+    private static InissLaunch Launch(string path) => new(new RunConfiguration { Name = "Test", Program = Path.GetFileName(path) }, path, "");
 
     [TestMethod]
     public void Start_NeexistujuciProgram_VynimkaAINISSNebezi()
@@ -19,38 +19,22 @@ public class InissProcessServiceTests
         service.StateChanged += (_, _) => changed++;
 
         var path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"), "INISS.exe");
-        Assert.ThrowsExactly<InvalidOperationException>(() => service.Start(path, Options));
+        Assert.ThrowsExactly<InvalidOperationException>(() => service.Start(Launch(path)));
 
-        Assert.IsFalse(service.IsRunning);
-        Assert.IsNull(service.LastStartPath);
+        Assert.IsFalse(((IInissProcess)service).IsRunning);
+        Assert.IsEmpty(service.Instances);
         Assert.AreEqual(0, changed);
     }
 
     [TestMethod]
-    public async Task Restart_BezSpustenehoINISSu_NicNespravi()
+    public void Spustenie_VytvoriPrikazovyRiadokZKonfiguracie()
     {
-        using var service = new InissProcessService();
-        var changed = 0;
-        service.StateChanged += (_, _) => changed++;
+        var config = new RunConfiguration { Name = "A", Program = "INISS - A.exe", Minimize = true, Registry = "INISS Test", Activators = "31" };
 
-        await service.RestartAsync(Options, () =>
-        {
-            Assert.Fail("bez procesu sa nema na co pytat");
-            return false;
-        });
+        var launch = InissLaunch.Create(config, @"C:\INISS");
 
-        Assert.IsFalse(service.IsRestarting);
-        Assert.AreEqual(0, changed);
-    }
-
-    [TestMethod]
-    public void KillAShutDown_BezSpustenehoINISSu_BezChyby()
-    {
-        using var service = new InissProcessService();
-
-        service.Kill();
-        service.ShutDown();
-
-        Assert.IsFalse(service.IsRunning);
+        Assert.AreEqual(@"C:\INISS\INISS - A.exe", launch.Path);
+        Assert.AreEqual("/Minimize \"/Reg:INISS Test\" /1 /3", launch.Arguments);
+        Assert.AreNotSame(config, launch.Configuration);
     }
 }

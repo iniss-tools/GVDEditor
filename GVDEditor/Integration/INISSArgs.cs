@@ -1,7 +1,7 @@
 namespace GVDEditor.Integration;
 
 /// <summary>
-/// Argumenty prikazoveho riadka INISSu (Nastavenia programu → Spustanie INISS). INISS pozna parametre s prefixom
+/// Argumenty prikazoveho riadka INISSu (rozklad textu argumentov). INISS pozna parametre s prefixom
 /// <c>/</c> alebo <c>-</c> a na velkosti pismen mu nezalezi.
 /// </summary>
 internal static class INISSArgs

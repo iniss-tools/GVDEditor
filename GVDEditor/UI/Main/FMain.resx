@@ -714,7 +714,7 @@
     <value>205, 26</value>
   </data>
   <data name="tsmimStartupSettings.Text" xml:space="preserve">
-    <value>Nastavenia spúšťania...</value>
+    <value>Konfigurácie spúšťania...</value>
   </data>
   <data name="tsmimInissSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 26</value>
@@ -1390,7 +1390,7 @@
     <value>195, 22</value>
   </data>
   <data name="tsmiStartupSettings.Text" xml:space="preserve">
-    <value>Nastavenie spúšťania...</value>
+    <value>Upraviť konfigurácie...</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 6</value>

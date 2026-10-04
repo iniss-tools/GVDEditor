@@ -58,70 +58,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lRunConfig.Text" xml:space="preserve">
-    <value>Konfigurace:</value>
+  <data name="bAdd.Text" xml:space="preserve">
+    <value>Přidat</value>
+  </data>
+  <data name="bCopy.Text" xml:space="preserve">
+    <value>Kopírovat</value>
+  </data>
+  <data name="bRemove.Text" xml:space="preserve">
+    <value>Odstranit</value>
+  </data>
+  <data name="lName.Text" xml:space="preserve">
+    <value>Název:</value>
   </data>
   <data name="lProgram.Text" xml:space="preserve">
     <value>Program:</value>
   </data>
-  <data name="lConfig.Text" xml:space="preserve">
-    <value>Větev registru:</value>
+  <data name="lRegistry.Text" xml:space="preserve">
+    <value>Větev registru (/Reg):</value>
   </data>
-  <data name="lRunMode.Text" xml:space="preserve">
-    <value>Spouští se:</value>
-  </data>
-  <data name="bReload.Text" xml:space="preserve">
-    <value>Načíst znovu</value>
-  </data>
-  <data name="lInfo.Text" xml:space="preserve">
-    <value>INISS</value>
-  </data>
-  <data name="tbSearch.HintText" xml:space="preserve">
-    <value>Hledat hodnotu…</value>
-  </data>
-  <data name="lSection.Text" xml:space="preserve">
+  <data name="lBranchInfo.Text" xml:space="preserve">
     <value></value>
   </data>
-  <data name="cboxChangedOnly.Text" xml:space="preserve">
-    <value>Jen hodnoty odlišné od výchozích</value>
+  <data name="cboxAdmin.Text" xml:space="preserve">
+    <value>Spustit jako správce</value>
   </data>
-  <data name="cboxNotRead.Text" xml:space="preserve">
-    <value>I hodnoty, které tato verze INISSu nečte</value>
+  <data name="cboxShared.Text" xml:space="preserve">
+    <value>Uložit do dat instalace (konfigurace putuje s instalací)</value>
   </data>
-  <data name="bAddLine.Text" xml:space="preserve">
-    <value>Přidat linku…</value>
+  <data name="lSwitches.Text" xml:space="preserve">
+    <value>Parametry:</value>
   </data>
-  <data name="bRemoveLine.Text" xml:space="preserve">
-    <value>Odstranit linku</value>
+  <data name="cboxMinimize.Text" xml:space="preserve">
+    <value>/Minimize – minimalizované okno</value>
   </data>
-  <data name="cName.HeaderText" xml:space="preserve">
-    <value>Klíč</value>
+  <data name="cboxMultiuse.Text" xml:space="preserve">
+    <value>/Multiuse – více instancí najednou</value>
   </data>
-  <data name="cValue.HeaderText" xml:space="preserve">
-    <value>Hodnota</value>
+  <data name="cboxRemote.Text" xml:space="preserve">
+    <value>/Remote – dálkově ovládané pracoviště</value>
   </data>
-  <data name="cSource.HeaderText" xml:space="preserve">
-    <value>Zdroj</value>
+  <data name="cboxExport.Text" xml:space="preserve">
+    <value>/Export – export textů tabulí</value>
   </data>
-  <data name="cDefault.HeaderText" xml:space="preserve">
-    <value>Výchozí</value>
+  <data name="cboxExportHlas.Text" xml:space="preserve">
+    <value>/ExportHlas – export hlášení a konec</value>
   </data>
-  <data name="bClose.Text" xml:space="preserve">
-    <value>Zavřít</value>
+  <data name="cboxImport.Text" xml:space="preserve">
+    <value>/Import – data znovu ze zdrojových textů</value>
   </data>
-  <data name="bSaveRestart.Text" xml:space="preserve">
-    <value>Uložit a restartovat INISS</value>
+  <data name="cboxImportDat.Text" xml:space="preserve">
+    <value>/ImportDat – import dat a konec</value>
   </data>
-  <data name="bSave.Text" xml:space="preserve">
-    <value>Uložit</value>
+  <data name="cboxNoRestore.Text" xml:space="preserve">
+    <value>/NoRestore – bez obnovy stavu vlaků</value>
   </data>
-  <data name="bDiscard.Text" xml:space="preserve">
-    <value>Zahodit změny</value>
+  <data name="lActivators.Text" xml:space="preserve">
+    <value>Aktivátory grafikonů:</value>
   </data>
-  <data name="lChanges.Text" xml:space="preserve">
-    <value></value>
+  <data name="lExtra.Text" xml:space="preserve">
+    <value>Další parametry:</value>
+  </data>
+  <data name="lSaveBefore.Text" xml:space="preserve">
+    <value>Neuložené změny:</value>
+  </data>
+  <data name="cboxAnalyze.Text" xml:space="preserve">
+    <value>Před spuštěním zkontrolovat grafikon analýzou</value>
+  </data>
+  <data name="lWhenRunning.Text" xml:space="preserve">
+    <value>Pokud INISS už běží:</value>
+  </data>
+  <data name="lCommandLine.Text" xml:space="preserve">
+    <value>Příkazový řádek:</value>
+  </data>
+  <data name="bInissSettings.Text" xml:space="preserve">
+    <value>Nastavení INISSu...</value>
+  </data>
+  <data name="bLogs.Text" xml:space="preserve">
+    <value>Složka logů</value>
+  </data>
+  <data name="bCancel.Text" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
+  <data name="bOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="bRun.Text" xml:space="preserve">
+    <value>Uložit a spustit</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Nastavení INISSu</value>
+    <value>Konfigurace spouštění INISSu</value>
   </data>
 </root>

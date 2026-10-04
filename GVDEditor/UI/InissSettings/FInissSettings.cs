@@ -1,5 +1,6 @@
 using System.Globalization;
 using ExControls;
+using GVDEditor.Config;
 using GVDEditor.Integration;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Registry;
@@ -32,6 +33,10 @@ internal partial class FInissSettings : Form
     private string _appName = "";
     private string? _exePath;
     private InissRunMode _runMode;
+    // zobrazena konfiguracia spustania; null = ina vetva registra (program, vetva a rezim sa vyberaju rucne)
+    private RunConfiguration? _runConfig;
+    // konfiguracie v zozname (moze medzi nimi byt neulozena kopia z okna Konfiguracie spustania)
+    private readonly List<RunConfiguration> _configs;
     private bool _loading;
     private bool _saving;
     private bool _updatingGrid;
@@ -40,10 +45,11 @@ internal partial class FInissSettings : Form
     /// <summary>
     /// Vytvori okno pre otvorenu instalaciu INISSu.
     /// </summary>
-    /// <param name="ctx">kontext editora (instalacia, nastavenia spustania INISSu)</param>
-    /// <param name="iniss">proces INISS - stav a restart po ulozeni</param>
+    /// <param name="ctx">kontext editora (instalacia, konfiguracie spustania INISSu)</param>
+    /// <param name="iniss">beziace INISSy - stav a restart po ulozeni</param>
     /// <param name="dialogs">dialogy</param>
-    public FInissSettings(EditorContext ctx, IInissProcess iniss, IDialogService dialogs)
+    /// <param name="runConfig">konfiguracia spustania, ktorej nastavenia sa zobrazia (null = vybrana)</param>
+    public FInissSettings(EditorContext ctx, IInissProcess iniss, IDialogService dialogs, RunConfiguration? runConfig = null)
     {
         _ctx = ctx;
         _iniss = iniss;
@@ -62,25 +68,32 @@ internal partial class FInissSettings : Form
         try
         {
             // instalacia uz ponuka len programy INISS (pomocne exe vynecha)
-            var programs = _ctx.Workspace.INISSExeFiles;
-            foreach (var exe in programs) cbProgram.Items.Add(exe);
-            // predvolene naposledy spusteny program, inak prvy, ktory uz ma konfiguraciu v registri
-            var last = _iniss.LastStartPath is { } path ? Path.GetFileName(path) : null;
-            var existing = InissRegistry.AppNames();
-            var reg = INISSArgs.Registry(_ctx.Config.StartupINISSConfig.CmdArgs);
-            var index = programs.FindIndex(e => string.Equals(e, last, StringComparison.OrdinalIgnoreCase));
-            if (index < 0) index = programs.FindIndex(e => existing.Contains(InissRegistry.AppNameFor(e, reg), StringComparer.OrdinalIgnoreCase));
-            cbProgram.SelectedIndex = cbProgram.Items.Count == 0 ? -1 : Math.Max(0, index);
-            cbProgram.Enabled = cbProgram.Items.Count > 0;
+            foreach (var exe in _ctx.Workspace.INISSExeFiles) cbProgram.Items.Add(exe);
             cbRunMode.Items.AddRange([Resources.InissSettings_RunNormal, Resources.InissSettings_RunElevated]);
-            cbRunMode.SelectedIndex = _ctx.Config.StartupINISSConfig.RunAsAdmin ? 1 : 0;
-            FillConfigs(AppNameForProgram());
+            cbRunMode.SelectedIndex = 0;
+            // konfiguracie spustania urcuju program, vetvu aj rezim; posledna polozka = ina vetva registra
+            runConfig ??= _ctx.RunConfigurations.Selected;
+            _configs = _ctx.RunConfigurations.Items.Select(i => i.Id == runConfig?.Id ? runConfig : i).ToList();
+            if (runConfig is not null && !_configs.Contains(runConfig)) _configs.Add(runConfig);
+            foreach (var config in _configs) cbRunConfig.Items.Add(new RunConfigItem(config));
+            cbRunConfig.Items.Add(Resources.InissSettings_OtherBranch);
+            var index = runConfig is null ? -1 : _configs.IndexOf(runConfig);
+            cbRunConfig.SelectedIndex = index >= 0 ? index : cbRunConfig.Items.Count - 1;
+            ApplyRunConfig();
         }
         finally
         {
             _loading = false;
         }
 
+        cbRunConfig.SelectedIndexChanged += (_, _) =>
+        {
+            if (_loading) return;
+            _loading = true;
+            ApplyRunConfig();
+            _loading = false;
+            Reload(true);
+        };
         cbProgram.SelectedIndexChanged += (_, _) =>
         {
             if (_loading) return;
@@ -158,13 +171,38 @@ internal partial class FInissSettings : Form
         return icon.ToBitmap();
     }
 
-    /// <summary>Nazov vetvy pre vybrany program a /Reg: z nastaveni spustania.</summary>
-    private string AppNameForProgram()
+    /// <summary>Polozka zoznamu konfiguracii spustania.</summary>
+    private sealed record RunConfigItem(RunConfiguration Config)
     {
-        var exe = cbProgram.SelectedItem as string;
-        var reg = INISSArgs.Registry(_ctx.Config.StartupINISSConfig.CmdArgs);
-        return exe is null ? reg ?? "" : InissRegistry.AppNameFor(exe, reg);
+        public override string ToString() => Config.Name;
     }
+
+    /// <summary>
+    /// Program, vetvu a rezim nastavi podla vybranej konfiguracie spustania (a zamkne ich); pri inej vetve ich
+    /// necha na vyber.
+    /// </summary>
+    private void ApplyRunConfig()
+    {
+        _runConfig = (cbRunConfig.SelectedItem as RunConfigItem)?.Config;
+        var manual = _runConfig is null;
+        cbProgram.Enabled = manual && cbProgram.Items.Count > 0;
+        cbConfig.Enabled = manual;
+        cbRunMode.Enabled = manual;
+        if (_runConfig is not { } config)
+        {
+            if (cbProgram.SelectedIndex < 0 && cbProgram.Items.Count > 0) cbProgram.SelectedIndex = 0;
+            FillConfigs(cbConfig.SelectedItem as string ?? AppNameForProgram());
+            return;
+        }
+
+        if (config.Program.Length > 0 && !cbProgram.Items.Contains(config.Program)) cbProgram.Items.Add(config.Program);
+        cbProgram.SelectedItem = config.Program.Length > 0 ? config.Program : null;
+        cbRunMode.SelectedIndex = config.RunAsAdmin ? 1 : 0;
+        FillConfigs(config.Program.Length > 0 ? RunConfigurations.AppName(config) : config.Registry.Trim());
+    }
+
+    /// <summary>Nazov vetvy pre vybrany program (bez /Reg:).</summary>
+    private string AppNameForProgram() => cbProgram.SelectedItem is string exe ? InissRegistry.AppNameFor(exe, null) : "";
 
     private void FillConfigs(string select)
     {
@@ -188,6 +226,8 @@ internal partial class FInissSettings : Form
         {
             // vratit vyber, ktory zodpoveda zobrazenym datam
             _loading = true;
+            cbRunConfig.SelectedIndex = _runConfig is null ? cbRunConfig.Items.Count - 1 : _configs.IndexOf(_runConfig);
+            ApplyRunConfig();
             cbConfig.SelectedItem = _appName;
             cbRunMode.SelectedIndex = _runMode == InissRunMode.Elevated ? 1 : 0;
             cbProgram.SelectedItem = _exePath is null ? null : Path.GetFileName(_exePath);
@@ -236,7 +276,7 @@ internal partial class FInissSettings : Form
             if (src.RunMode == InissRunMode.Normal && src.VirtualStore.Exists) parts.Add(Resources.InissSettings_Info_VirtualStore);
         }
 
-        if (_iniss.IsRunning) parts.Add(Resources.InissSettings_Info_Running);
+        if (RunningInstances().Count > 0) parts.Add(Resources.InissSettings_Info_Running);
         lInfo.Text = string.Join("  ·  ", parts);
         UpdateChanges();
     }
@@ -680,6 +720,12 @@ internal partial class FInissSettings : Form
         await ApplyAsync(m, RegWritePlanner.PlanRemoveSection(m.Config, section.Name));
     }
 
+    /// <summary>
+    /// Beziace INISSy, ktore citaju zobrazenu vetvu registra.
+    /// </summary>
+    private List<InissInstance> RunningInstances() => _appName.Length == 0 ? []
+        : _iniss.Instances.Where(i => string.Equals(RunConfigurations.AppName(i.Configuration), _appName, StringComparison.OrdinalIgnoreCase)).ToList();
+
     private void SelectSection(string section)
     {
         var node = Flatten(tvSections.Nodes).FirstOrDefault(n => n.Tag is ResolvedSection s && string.Equals(s.Name, section, StringComparison.OrdinalIgnoreCase));
@@ -691,7 +737,7 @@ internal partial class FInissSettings : Form
         var count = _model?.Pending.Count ?? 0;
         lChanges.Text = count == 0 ? "" : string.Format(CultureInfo.CurrentCulture, Resources.InissSettings_ChangesCount, count);
         bSave.Enabled = bDiscard.Enabled = count > 0 && !_saving;
-        bSaveRestart.Enabled = count > 0 && !_saving && _iniss.IsRunning && !_iniss.IsRestarting && _iniss.LastStartPath is not null;
+        bSaveRestart.Enabled = count > 0 && !_saving && RunningInstances().Any(i => !i.IsRestarting);
     }
 
     private async Task SaveAsync(bool restart)
@@ -702,18 +748,24 @@ internal partial class FInissSettings : Form
         if (_dialogs.ShowQuestion(Summary(m, pending, plan)) != DialogResult.Yes) return;
 
         if (!await ApplyAsync(m, plan)) return;
-        if (restart && _iniss.IsRunning)
+        var running = RunningInstances();
+        if (restart && running.Count > 0)
         {
             try
             {
-                await _iniss.RestartAsync(_ctx.Config.StartupINISSConfig, () => _dialogs.ShowQuestion(Resources.FMain_INISS_sa_neukoncil) == DialogResult.Yes);
+                foreach (var instance in running.Where(i => !i.IsRestarting))
+                {
+                    var config = _ctx.RunConfigurations.Find(instance.Configuration.Id) ?? instance.Configuration;
+                    await _iniss.RestartAsync(instance, InissLaunch.Create(config, _ctx.Workspace.INISSDir),
+                        () => _dialogs.ShowQuestion(Resources.FMain_INISS_sa_neukoncil) == DialogResult.Yes);
+                }
             }
             catch (InvalidOperationException ex)
             {
                 _dialogs.ShowError(ex.Message);
             }
         }
-        else if (_iniss.IsRunning)
+        else if (running.Count > 0)
         {
             _dialogs.ShowInfo(Resources.InissSettings_SavedRestartNeeded);
         }

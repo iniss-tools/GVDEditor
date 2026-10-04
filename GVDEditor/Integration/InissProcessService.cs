@@ -1,29 +1,81 @@
 using System.Globalization;
 using GVDEditor.Config;
 using GVDEditor.Properties;
+using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Integration;
 
 /// <summary>
-/// Proces INISS spusteny z GVDEditora: spustenie, riadne a nutene ukoncenie, restart. Zmenu stavu (spustenie,
-/// ukoncenie procesu, zaciatok a koniec restartu) hlasi udalost <see cref="StateChanged" />.
+/// Co sa spusta: konfiguracia (snimka v case spustenia), cesta k programu a argumenty.
+/// </summary>
+/// <param name="Configuration">konfiguracia spustania</param>
+/// <param name="Path">cela cesta k programu</param>
+/// <param name="Arguments">argumenty prikazoveho riadka</param>
+internal sealed record InissLaunch(RunConfiguration Configuration, string Path, string Arguments)
+{
+    /// <summary>
+    /// Spustenie konfiguracie <paramref name="configuration" /> z instalacie <paramref name="installationDir" />.
+    /// </summary>
+    public static InissLaunch Create(RunConfiguration configuration, string installationDir) =>
+        new(configuration with { }, PathUtils.CombinePath(installationDir, configuration.Program)!, RunConfigurations.Arguments(configuration));
+}
+
+/// <summary>
+/// INISS spusteny z GVDEditora.
+/// </summary>
+internal sealed class InissInstance
+{
+    internal InissInstance(InissLaunch launch, Process process)
+    {
+        Launch = launch;
+        Process = process;
+        Started = DateTime.Now;
+    }
+
+    /// <summary>Ako bol spusteny.</summary>
+    public InissLaunch Launch { get; }
+
+    /// <summary>Konfiguracia v case spustenia.</summary>
+    public RunConfiguration Configuration => Launch.Configuration;
+
+    /// <summary>Cas spustenia.</summary>
+    public DateTime Started { get; }
+
+    /// <summary>Prave sa restartuje (caka sa na ukoncenie).</summary>
+    public bool IsRestarting { get; internal set; }
+
+    internal Process Process { get; }
+}
+
+/// <summary>
+/// INISS skoncil.
+/// </summary>
+/// <param name="instance">ukonceny INISS</param>
+/// <param name="exitCode">navratovy kod; <see langword="null" />, ak sa neda zistit</param>
+internal sealed class InissExitedEventArgs(InissInstance instance, int? exitCode) : EventArgs
+{
+    /// <summary>Ukonceny INISS.</summary>
+    public InissInstance Instance { get; } = instance;
+
+    /// <summary>Navratovy kod; <see langword="null" />, ak sa neda zistit.</summary>
+    public int? ExitCode { get; } = exitCode;
+}
+
+/// <summary>
+/// INISSy spustene z GVDEditora: spustenie, riadne a nutene ukoncenie, restart. Moze ich bezat viac naraz (rozne
+/// konfiguracie alebo dalsia instancia s /Multiuse). Zmenu stavu hlasi udalost <see cref="StateChanged" />.
 /// </summary>
 internal interface IInissProcess : IDisposable
 {
     /// <summary>
-    /// Cesta k naposledy spustenemu programu (pre restart).
+    /// Beziace INISSy v poradi spustenia.
     /// </summary>
-    string? LastStartPath { get; }
+    IReadOnlyList<InissInstance> Instances { get; }
 
     /// <summary>
-    /// Prebieha restart.
+    /// Bezi aspon jeden INISS.
     /// </summary>
-    bool IsRestarting { get; }
-
-    /// <summary>
-    /// INISS bezi.
-    /// </summary>
-    bool IsRunning { get; }
+    bool IsRunning => Instances.Count > 0;
 
     /// <summary>
     /// Zmena stavu - hlasi sa vo vlakne okna, ktore INISS spustilo.
@@ -31,83 +83,72 @@ internal interface IInissProcess : IDisposable
     event EventHandler? StateChanged;
 
     /// <summary>
-    /// Spusti program <paramref name="path" /> s nastaveniami spustania INISSu.
+    /// INISS skoncil (aj pri restarte) - hlasi sa vo vlakne okna, ktore ho spustilo, pred <see cref="StateChanged" />.
     /// </summary>
-    void Start(string path, StartupINISS options);
+    event EventHandler<InissExitedEventArgs>? Exited;
+
+    /// <summary>
+    /// Spusti INISS.
+    /// </summary>
+    InissInstance Start(InissLaunch launch);
 
     /// <summary>
     /// Nutene ukoncenie.
     /// </summary>
-    void Kill();
+    void Kill(InissInstance instance);
 
     /// <summary>
     /// Riadne ukoncenie.
     /// </summary>
-    void ShutDown();
+    void ShutDown(InissInstance instance);
 
     /// <summary>
-    /// Restart; ak sa INISS riadne neukonci, opyta sa <paramref name="confirmKill" />, ci ho ukoncit nasilu.
+    /// Restart; ak sa INISS riadne neukonci, opyta sa <paramref name="confirmKill" />, ci ho ukoncit nasilu. Znova sa
+    /// spusti podla <paramref name="launch" /> (konfiguracia sa medzitym mohla zmenit).
     /// </summary>
-    Task RestartAsync(StartupINISS options, Func<bool> confirmKill);
+    Task RestartAsync(InissInstance instance, InissLaunch launch, Func<bool> confirmKill);
 }
 
 /// <summary>
-/// Proces INISS cez <see cref="Process" />. Zmenu stavu hlasi vo vlakne, z ktoreho bol INISS spusteny
+/// INISSy cez <see cref="Process" />. Zmenu stavu hlasi vo vlakne, z ktoreho bol INISS spusteny
 /// (hlavne okno) - sluzba moze vzniknut skor nez okno (composition root v <see cref="Program" />).
 /// </summary>
 internal sealed class InissProcessService : IInissProcess
 {
     private SynchronizationContext? _context = SynchronizationContext.Current;
-    private Process? _process;
+    private readonly List<InissInstance> _instances = [];
 
     /// <summary>
     /// Ako dlho restart caka na riadne ukoncenie INISSu, kym ponukne nutene ukoncenie.
     /// </summary>
     public TimeSpan RestartTimeout { get; init; } = TimeSpan.FromSeconds(30);
 
-    /// <summary>
-    /// Program spusteny naposledy (restart ho spusti znova).
-    /// </summary>
-    public string? LastStartPath { get; private set; }
+    /// <inheritdoc />
+    public IReadOnlyList<InissInstance> Instances => _instances;
 
-    /// <summary>
-    /// Ci prave prebieha restart (caka sa na ukoncenie INISSu).
-    /// </summary>
-    public bool IsRestarting { get; private set; }
-
-    /// <summary>
-    /// Ci bezi INISS spusteny z GVDEditora.
-    /// </summary>
-    public bool IsRunning
-    {
-        get
-        {
-            try
-            {
-                return _process is { HasExited: false };
-            }
-            catch (InvalidOperationException)
-            {
-                return false;
-            }
-        }
-    }
-
-    /// <summary>
-    /// INISS sa spustil alebo ukoncil, restart zacal alebo skoncil.
-    /// </summary>
+    /// <inheritdoc />
     public event EventHandler? StateChanged;
 
+    /// <inheritdoc />
+    public event EventHandler<InissExitedEventArgs>? Exited;
+
     /// <summary>
-    /// Spusti program <paramref name="path" /> s nastaveniami spustania INISSu.
+    /// Spusti INISS podla <paramref name="launch" />.
     /// </summary>
     /// <exception cref="InvalidOperationException">Program sa nepodarilo spustit (napr. zamietnute spustenie ako
     /// administrator); sprava je urcena pouzivatelovi.</exception>
-    public void Start(string path, StartupINISS options)
+    public InissInstance Start(InissLaunch launch)
     {
         _context = SynchronizationContext.Current ?? _context;
-        var process = new Process { StartInfo = { FileName = path, UseShellExecute = true, Arguments = options.CmdArgs } };
-        if (options.RunAsAdmin) process.StartInfo.Verb = "runas";
+        var process = new Process
+        {
+            StartInfo =
+            {
+                FileName = launch.Path, UseShellExecute = true, Arguments = launch.Arguments,
+                WorkingDirectory = Path.GetDirectoryName(launch.Path) ?? ""
+            }
+        };
+        if (launch.Configuration.RunAsAdmin) process.StartInfo.Verb = "runas";
         process.EnableRaisingEvents = true;
         process.Exited += OnExited;
         try
@@ -117,13 +158,15 @@ internal sealed class InissProcessService : IInissProcess
         catch (Exception e) when (e is Win32Exception or InvalidOperationException or FileNotFoundException)
         {
             // proces nebezi - nesmie ostat ako "beziaci"
+            process.Exited -= OnExited;
             process.Dispose();
             throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Nepodarilo_sa_spustiť_vybraný_program, e.Message), e);
         }
 
-        _process = process;
-        LastStartPath = path;
+        var instance = new InissInstance(launch, process);
+        _instances.Add(instance);
         OnStateChanged();
+        return instance;
     }
 
     /// <summary>
@@ -131,15 +174,15 @@ internal sealed class InissProcessService : IInissProcess
     /// </summary>
     /// <exception cref="InvalidOperationException">INISS sa ukoncit neda (napr. bezi ako administrator a GVDEditor bez
     /// opravneni); sprava je urcena pouzivatelovi.</exception>
-    public void Kill()
+    public void Kill(InissInstance instance)
     {
         try
         {
-            _process?.Kill();
+            instance.Process.Kill();
         }
         catch (Exception e) when (e is Win32Exception or NotSupportedException or InvalidOperationException)
         {
-            if (!IsRunning)
+            if (HasExited(instance.Process))
                 return;
             throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.FMain_INISS_neda_ukoncit, e.Message), e);
         }
@@ -148,12 +191,12 @@ internal sealed class InissProcessService : IInissProcess
     /// <summary>
     /// Zavrie okno INISSu rovnako ako krizik - INISS sa ukonci riadne (a moze sa opytat na potvrdenie).
     /// </summary>
-    public void ShutDown()
+    public void ShutDown(InissInstance instance)
     {
         try
         {
-            if (IsRunning)
-                _process!.CloseMainWindow();
+            if (!HasExited(instance.Process))
+                instance.Process.CloseMainWindow();
         }
         catch (InvalidOperationException)
         {
@@ -161,48 +204,70 @@ internal sealed class InissProcessService : IInissProcess
     }
 
     /// <summary>
-    /// Riadne ukonci INISS a spusti naposledy spusteny program znova. Ak sa INISS do <see cref="RestartTimeout" />
-    /// neukonci (napr. caka na potvrdenie), opyta sa <paramref name="confirmKill" />, ci ho ukoncit nasilu.
+    /// Riadne ukonci INISS a spusti ho znova podla <paramref name="launch" />. Ak sa INISS do
+    /// <see cref="RestartTimeout" /> neukonci (napr. caka na potvrdenie), opyta sa <paramref name="confirmKill" />, ci ho
+    /// ukoncit nasilu.
     /// </summary>
     /// <exception cref="InvalidOperationException">INISS sa nepodarilo ukoncit alebo znova spustit.</exception>
-    public async Task RestartAsync(StartupINISS options, Func<bool> confirmKill)
+    public async Task RestartAsync(InissInstance instance, InissLaunch launch, Func<bool> confirmKill)
     {
-        var process = _process;
-        var path = LastStartPath;
-        if (IsRestarting || process == null || path == null)
+        if (instance.IsRestarting || !_instances.Contains(instance))
             return;
 
-        IsRestarting = true;
+        instance.IsRestarting = true;
         OnStateChanged();
         try
         {
-            ShutDown();
+            ShutDown(instance);
             using (var timeout = new CancellationTokenSource(RestartTimeout))
             {
                 try
                 {
-                    await process.WaitForExitAsync(timeout.Token);
+                    await instance.Process.WaitForExitAsync(timeout.Token);
                 }
                 catch (OperationCanceledException)
                 {
                     if (!confirmKill())
                         return;
 
-                    Kill();
-                    await WaitForExitAsync(process);
+                    Kill(instance);
+                    await WaitForExitAsync(instance.Process);
                 }
                 catch (InvalidOperationException)
                 {
                 }
             }
 
-            if (!IsRunning)
-                Start(path, options);
+            Start(launch);
         }
         finally
         {
-            IsRestarting = false;
+            instance.IsRestarting = false;
             OnStateChanged();
+        }
+    }
+
+    private static bool HasExited(Process process)
+    {
+        try
+        {
+            return process.HasExited;
+        }
+        catch (InvalidOperationException)
+        {
+            return true;
+        }
+    }
+
+    private static int? ExitCodeOf(Process process)
+    {
+        try
+        {
+            return process.ExitCode;
+        }
+        catch (Exception e) when (e is InvalidOperationException or Win32Exception or NotSupportedException)
+        {
+            return null;
         }
     }
 
@@ -217,28 +282,22 @@ internal sealed class InissProcessService : IInissProcess
         }
     }
 
-    private void OnExited(object? sender, EventArgs e)
+    private void OnExited(object? sender, EventArgs e) => Post(() =>
     {
-        // pri restarte uz moze bezat novy proces - ukoncenie stareho ho nesmie prestat sledovat
-        if (!ReferenceEquals(sender, _process))
+        var instance = _instances.Find(i => ReferenceEquals(i.Process, sender));
+        if (instance is null)
         {
             (sender as Process)?.Dispose();
             return;
         }
 
-        Post(() =>
-        {
-            if (!ReferenceEquals(sender, _process))
-            {
-                (sender as Process)?.Dispose();
-                return;
-            }
-
-            _process?.Dispose();
-            _process = null;
-            OnStateChanged();
-        });
-    }
+        _instances.Remove(instance);
+        var code = ExitCodeOf(instance.Process);
+        instance.Process.Exited -= OnExited;
+        instance.Process.Dispose();
+        Exited?.Invoke(this, new InissExitedEventArgs(instance, code));
+        OnStateChanged();
+    });
 
     private void OnStateChanged() => StateChanged?.Invoke(this, EventArgs.Empty);
 
@@ -263,9 +322,12 @@ internal sealed class InissProcessService : IInissProcess
     /// <inheritdoc />
     public void Dispose()
     {
-        if (_process is not null)
-            _process.Exited -= OnExited;
-        _process?.Dispose();
-        _process = null;
+        foreach (var instance in _instances)
+        {
+            instance.Process.Exited -= OnExited;
+            instance.Process.Dispose();
+        }
+
+        _instances.Clear();
     }
 }

@@ -68,7 +68,12 @@ internal partial class FMain : Form, IAnalyzerHost
         InitializeComponent();
 
         _iniss.StateChanged += Iniss_StateChanged;
-        FormClosed += (_, _) => _iniss.StateChanged -= Iniss_StateChanged;
+        _iniss.Exited += Iniss_Exited;
+        FormClosed += (_, _) =>
+        {
+            _iniss.StateChanged -= Iniss_StateChanged;
+            _iniss.Exited -= Iniss_Exited;
+        };
 
         mainMenu.Renderer = new ToolStripProfessionalRenderer(new FormUtils.LightColorTable());
 

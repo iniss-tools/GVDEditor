@@ -2,6 +2,8 @@
 
 internal static class GvdFileConsts
 {
+    /// <summary>Znacka davkoveho importu v DATA - INISS sa spusti ako s /Import /ImportDat.</summary>
+    public const string FileAktAkt = "Akt.akt";
     public const string FileAudio = "AUDIO.txt";
     public const string FileCategori = "CATEGORI.txt";
     public const string FileDoplnky = "DOPLNKY.txt";

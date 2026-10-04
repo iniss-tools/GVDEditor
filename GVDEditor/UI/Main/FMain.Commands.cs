@@ -67,17 +67,14 @@ internal partial class FMain
             tsmiTabTabEditor);
         Add(GvdCommands.StateDgm, ShowStateDgm, grafikon, tsmiStateDgm);
 
-        // spustenie rozbali ponuku programov pod prvkom, cez ktory bolo vyvolane (skratka - pod viditelnou ponukou)
-        _commands.Add(GvdCommands.RunIniss,
-                source => StartINISS(null, source == tssbStartINISS || !mainMenu.Visible ? tssbStartINISS : tsmiRun),
-                () => HasInstallation && !_iniss.IsRestarting)
-            .Bind(tsmimStartINISS, tssbStartINISS);
-        Add(GvdCommands.ShutdownIniss, _iniss.ShutDown, () => _iniss.IsRunning, tsmimShutdownINISS, tsbShutdownINISS);
-        Add(GvdCommands.KillIniss, AskKillINISS, () => _iniss.IsRunning, tsmimKillINISS, tsbKillINISS);
+        // spusti vybranu konfiguraciu spustania; ukoncenie a restart pri viacerych beziacich ponuknu vyber
+        Add(GvdCommands.RunIniss, RunSelected, installation, tsmimStartINISS, tssbStartINISS);
+        _commands.Add(GvdCommands.ShutdownIniss, ShutDownINISS, () => _iniss.IsRunning).Bind(tsmimShutdownINISS, tsbShutdownINISS);
+        _commands.Add(GvdCommands.KillIniss, AskKillINISS, () => _iniss.IsRunning).Bind(tsmimKillINISS, tsbKillINISS);
         // cakanie na ukoncenie pri restarte trva az 30 s - dalsi klik by spustil druhy restart
-        Add(GvdCommands.RestartIniss, RestartINISS, () => _iniss.IsRunning && !_iniss.IsRestarting && _iniss.LastStartPath != null,
-            tsmimRestartINISS, tsbRestartINISS);
-        Add(GvdCommands.InissStartupSettings, () => ShowAppSettings("pStartupIniss"), null, tsmimStartupSettings, tsmiStartupSettings);
+        _commands.Add(GvdCommands.RestartIniss, RestartINISS, () => HasInstallation && _iniss.Instances.Any(i => !i.IsRestarting))
+            .Bind(tsmimRestartINISS, tsbRestartINISS);
+        Add(GvdCommands.InissStartupSettings, ShowRunConfigurations, installation, tsmimStartupSettings, tsmiStartupSettings);
         Add(GvdCommands.InissSettings, ShowInissSettings, installation, tsmimInissSettings);
 
         Add(GvdCommands.InfoApp, ShowInfoApp, null, tsmiInformation, tsbInformation);

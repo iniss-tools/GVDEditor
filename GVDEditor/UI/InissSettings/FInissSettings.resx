@@ -76,7 +76,7 @@
     <value>0, 0</value>
   </data>
   <data name="tlpMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1100, 720</value>
+    <value>1180, 720</value>
   </data>
   <data name="tlpMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -123,11 +123,53 @@
   <data name="&gt;&gt;flpTop.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="lRunConfig.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lRunConfig.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 3, 3</value>
+  </data>
+  <data name="lRunConfig.Text" xml:space="preserve">
+    <value>Konfigurácia:</value>
+  </data>
+  <data name="lRunConfig.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lRunConfig.Name" xml:space="preserve">
+    <value>lRunConfig</value>
+  </data>
+  <data name="&gt;&gt;lRunConfig.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lRunConfig.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;lRunConfig.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbRunConfig.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 23</value>
+  </data>
+  <data name="cbRunConfig.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbRunConfig.Name" xml:space="preserve">
+    <value>cbRunConfig</value>
+  </data>
+  <data name="&gt;&gt;cbRunConfig.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbRunConfig.Parent" xml:space="preserve">
+    <value>flpTop</value>
+  </data>
+  <data name="&gt;&gt;cbRunConfig.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="lProgram.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lProgram.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 7, 3, 3</value>
+    <value>15, 7, 3, 3</value>
   </data>
   <data name="lProgram.Text" xml:space="preserve">
     <value>Program:</value>
@@ -145,13 +187,13 @@
     <value>flpTop</value>
   </data>
   <data name="&gt;&gt;lProgram.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="cbProgram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 23</value>
+    <value>170, 23</value>
   </data>
   <data name="cbProgram.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;cbProgram.Name" xml:space="preserve">
     <value>cbProgram</value>
@@ -163,7 +205,7 @@
     <value>flpTop</value>
   </data>
   <data name="&gt;&gt;cbProgram.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="lConfig.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -172,7 +214,7 @@
     <value>15, 7, 3, 3</value>
   </data>
   <data name="lConfig.Text" xml:space="preserve">
-    <value>Konfigurácia v registri:</value>
+    <value>Vetva registra:</value>
   </data>
   <data name="lConfig.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -187,13 +229,13 @@
     <value>flpTop</value>
   </data>
   <data name="&gt;&gt;lConfig.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="cbConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 23</value>
+    <value>170, 23</value>
   </data>
   <data name="cbConfig.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;cbConfig.Name" xml:space="preserve">
     <value>cbConfig</value>
@@ -205,7 +247,7 @@
     <value>flpTop</value>
   </data>
   <data name="&gt;&gt;cbConfig.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="lRunMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -214,7 +256,7 @@
     <value>15, 7, 3, 3</value>
   </data>
   <data name="lRunMode.Text" xml:space="preserve">
-    <value>INISS sa spúšťa:</value>
+    <value>Spúšťa sa:</value>
   </data>
   <data name="lRunMode.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -229,13 +271,13 @@
     <value>flpTop</value>
   </data>
   <data name="&gt;&gt;lRunMode.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="cbRunMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 23</value>
+    <value>130, 23</value>
   </data>
   <data name="cbRunMode.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;cbRunMode.Name" xml:space="preserve">
     <value>cbRunMode</value>
@@ -247,7 +289,7 @@
     <value>flpTop</value>
   </data>
   <data name="&gt;&gt;cbRunMode.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="bReload.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -259,7 +301,7 @@
     <value>Načítať znova</value>
   </data>
   <data name="bReload.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;bReload.Name" xml:space="preserve">
     <value>bReload</value>
@@ -271,7 +313,7 @@
     <value>flpTop</value>
   </data>
   <data name="&gt;&gt;bReload.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="lInfo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -928,7 +970,7 @@
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1100, 720</value>
+    <value>1180, 720</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>900, 560</value>

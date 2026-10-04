@@ -42,10 +42,17 @@ public record GVDEditorConfig() : ConfigBase
     public ShortcutMap Shortcuts { get; set; } = new();
 
     /// <summary>
-    /// konfiguracia spustania INISSu z tohto programu.
+    /// Povodne spolocne nastavenie spustania INISSu - len na prenos do konfiguracii spustania instalacie, ktora este
+    /// ziadnu nema (<see cref="RunConfigurations" />).
     /// </summary>
     [XmlElement("StartupINISSConfig")] 
     public StartupINISS StartupINISSConfig { get; set; } = new() { CmdArgs = "", RunAsAdmin = false };
+
+    /// <summary>
+    /// Konfiguracie spustania INISSu ulozene na tomto pocitaci, podla instalacie.
+    /// </summary>
+    [XmlArray("RunConfigurations"), XmlArrayItem("Installation")]
+    public List<InstallationRunConfigurations> RunConfigurations { get; set; } = [];
 
     /// <summary>
     /// Velkost okna Lokalne nastavenia; <see langword="null" /> = predvolena z navrhu.
@@ -76,6 +83,7 @@ public record GVDEditorConfig() : ConfigBase
         DesktopCols = original.DesktopCols with { };
         Shortcuts = original.Shortcuts.Clone();
         StartupINISSConfig = original.StartupINISSConfig with { };
+        RunConfigurations = original.RunConfigurations.Select(r => r.DeepCopy()).ToList();
         LocalSettingsWindow = original.LocalSettingsWindow?.Clone();
         GlobalSettingsWindow = original.GlobalSettingsWindow?.Clone();
         EditTrainWindow = original.EditTrainWindow?.Clone();

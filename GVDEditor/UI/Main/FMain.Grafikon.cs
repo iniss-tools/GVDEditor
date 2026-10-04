@@ -138,7 +138,8 @@ internal partial class FMain
         //premenovat form podla aktualne otvoreneho priecinka
         Text = Application.ProductName + @" - " + _ctx.Workspace.INISSDir;
         DataSaved = true;
-        FillInissPrograms();
+        LoadRunConfigurations();
+        FillRunMenus();
         UpdateCommandStates();
 
         //otvoreny projekt sa presunul na zaciatok zoznamu poslednych projektov

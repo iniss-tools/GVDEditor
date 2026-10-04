@@ -5852,7 +5852,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nastavenia spúšťania INISS.
+        ///   Looks up a localized string similar to Konfigurácie spúšťania INISSu.
         /// </summary>
         internal static string Cmd_InissStartupSettings {
             get {
@@ -9718,6 +9718,510 @@ namespace GVDEditor.Properties {
         internal static string InissSettings_AndMore {
             get {
                 return ResourceManager.GetString("InissSettings_AndMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iná vetva registra….
+        /// </summary>
+        internal static string InissSettings_OtherBranch {
+            get {
+                return ResourceManager.GetString("InissSettings_OtherBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /{0} – zapne: {1}.
+        /// </summary>
+        internal static string Run_Activator {
+            get {
+                return ResourceManager.GetString("Run_Activator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /{0} – nezapne žiadny grafikon.
+        /// </summary>
+        internal static string Run_ActivatorUnused {
+            get {
+                return ResourceManager.GetString("Run_ActivatorUnused", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Všetky.
+        /// </summary>
+        internal static string Run_AllInstances {
+            get {
+                return ResourceManager.GetString("Run_AllInstances", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS konfigurácie {0} už beží.  Áno – reštartovať ho Nie – spustiť ďalšiu inštanciu Zrušiť – nič nerobiť.
+        /// </summary>
+        internal static string Run_AlreadyRunning {
+            get {
+                return ResourceManager.GetString("Run_AlreadyRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analýza grafikonu našla chyby: {0}. INISS taký grafikon pravdepodobne nespustí správne.  Áno – spustiť INISS aj tak Nie – otvoriť analýzu Zrušiť – nespúšťať.
+        /// </summary>
+        internal static string Run_AnalysisErrors {
+            get {
+                return ResourceManager.GetString("Run_AnalysisErrors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia z vetvy „{0}“ (parameter /Reg).
+        /// </summary>
+        internal static string Run_BranchByArgument {
+            get {
+                return ResourceManager.GetString("Run_BranchByArgument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia z vetvy „{0}“ (podľa mena programu).
+        /// </summary>
+        internal static string Run_BranchByProgram {
+            get {
+                return ResourceManager.GetString("Run_BranchByProgram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to v registri existuje.
+        /// </summary>
+        internal static string Run_BranchExists {
+            get {
+                return ResourceManager.GetString("Run_BranchExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to v registri zatiaľ nie je.
+        /// </summary>
+        internal static string Run_BranchMissing {
+            get {
+                return ResourceManager.GetString("Run_BranchMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spustiť konfiguráciu {0}.
+        /// </summary>
+        internal static string Run_ButtonToolTip {
+            get {
+                return ResourceManager.GetString("Run_ButtonToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Konfiguráciu {0} nemožno spustiť:  {1}.
+        /// </summary>
+        internal static string Run_CannotStart {
+            get {
+                return ResourceManager.GetString("Run_CannotStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS vyexportuje hlásenia a sám skončí – operátorské okno sa neotvorí..
+        /// </summary>
+        internal static string Run_Check_ExportHlas {
+            get {
+                return ResourceManager.GetString("Run_Check_ExportHlas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS naimportuje dáta a sám skončí – operátorské okno sa neotvorí..
+        /// </summary>
+        internal static string Run_Check_ImportDat {
+            get {
+                return ResourceManager.GetString("Run_Check_ImportDat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V dátach inštalácie je značka dávkového importu – INISS dáta len naimportuje a hneď skončí, operátorské okno sa neotvorí..
+        /// </summary>
+        internal static string Run_Check_ImportMarker {
+            get {
+                return ResourceManager.GetString("Run_Check_ImportMarker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ďalšia inštancia sa bez /Multiuse nespustí – INISS skončí, ak už iný INISS beží..
+        /// </summary>
+        internal static string Run_Check_NewInstanceNoMultiuse {
+            get {
+                return ResourceManager.GetString("Run_Check_NewInstanceNoMultiuse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vetva registra „{0}“ zatiaľ neexistuje – INISS pobeží s predvolenými nastaveniami..
+        /// </summary>
+        internal static string Run_Check_NoBranch {
+            get {
+                return ResourceManager.GetString("Run_Check_NoBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Konfigurácia nemá vybraný program..
+        /// </summary>
+        internal static string Run_Check_NoProgram {
+            get {
+                return ResourceManager.GetString("Run_Check_NoProgram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Program {0} nie je INISS – parametre INISSu mu nemusia byť zrozumiteľné..
+        /// </summary>
+        internal static string Run_Check_NotIniss {
+            get {
+                return ResourceManager.GetString("Run_Check_NotIniss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Program {0} v inštalácii neexistuje..
+        /// </summary>
+        internal static string Run_Check_ProgramMissing {
+            get {
+                return ResourceManager.GetString("Run_Check_ProgramMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rovnakú vetvu registra „{0}“ používa aj: {1} – zmeny nastavení INISSu platia pre všetky..
+        /// </summary>
+        internal static string Run_Check_SameBranch {
+            get {
+                return ResourceManager.GetString("Run_Check_SameBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Už beží INISS spustený bez /Multiuse – tento INISS sa bez /Multiuse nespustí (hneď skončí)..
+        /// </summary>
+        internal static string Run_Check_SingleInstance {
+            get {
+                return ResourceManager.GetString("Run_Check_SingleInstance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bez /{0} ostanú neaktívne (bez hlásení a liniek): {1}.
+        /// </summary>
+        internal static string Run_Check_Sleeping {
+            get {
+                return ResourceManager.GetString("Run_Check_Sleeping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /{0} nezapne žiadny grafikon – žiadny ho nemá medzi príznakmi..
+        /// </summary>
+        internal static string Run_Check_UnusedActivator {
+            get {
+                return ResourceManager.GetString("Run_Check_UnusedActivator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} – kópia.
+        /// </summary>
+        internal static string Run_CopyName {
+            get {
+                return ResourceManager.GetString("Run_CopyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zahodiť zmeny konfigurácií spúšťania?.
+        /// </summary>
+        internal static string Run_DiscardQuestion {
+            get {
+                return ResourceManager.GetString("Run_DiscardQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS ({0}) sa nespustil – už beží iný INISS a táto konfigurácia nemá zapnuté /Multiuse (viac inštancií naraz)..
+        /// </summary>
+        internal static string Run_Exit_AlreadyRunning {
+            get {
+                return ResourceManager.GetString("Run_Exit_AlreadyRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS ({0}) sa nespustil – nepodarilo sa mu overiť, či už beží iný INISS. Pomôže zapnúť /Multiuse..
+        /// </summary>
+        internal static string Run_Exit_Mutex {
+            get {
+                return ResourceManager.GetString("Run_Exit_Mutex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS ({0}) sa ukončil, pretože táto kópia nie je registrovaná..
+        /// </summary>
+        internal static string Run_Exit_Unregistered {
+            get {
+                return ResourceManager.GetString("Run_Exit_Unregistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Na tomto počítači.
+        /// </summary>
+        internal static string Run_GroupLocal {
+            get {
+                return ResourceManager.GetString("Run_GroupLocal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V dátach inštalácie.
+        /// </summary>
+        internal static string Run_GroupShared {
+            get {
+                return ResourceManager.GetString("Run_GroupShared", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} (spustený o {1:t}).
+        /// </summary>
+        internal static string Run_InstanceItem {
+            get {
+                return ResourceManager.GetString("Run_InstanceItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} ({1}×).
+        /// </summary>
+        internal static string Run_ItemInstances {
+            get {
+                return ResourceManager.GetString("Run_ItemInstances", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vynútiť ukončenie INISSu ({0})? INISS sa ukončí okamžite, bez otázok a bez riadneho ukončenia..
+        /// </summary>
+        internal static string Run_KillQuestion {
+            get {
+                return ResourceManager.GetString("Run_KillQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Konfigurácie spúšťania uložené v dátach inštalácie sa nepodarilo načítať: {0}.
+        /// </summary>
+        internal static string Run_LoadSharedFailed {
+            get {
+                return ResourceManager.GetString("Run_LoadSharedFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priečinok logov {0} neexistuje – INISS ho založí, keď začne logovať..
+        /// </summary>
+        internal static string Run_LogsMissing {
+            get {
+                return ResourceManager.GetString("Run_LogsMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov {0} má viac konfigurácií – každá musí mať vlastný..
+        /// </summary>
+        internal static string Run_NameDuplicate {
+            get {
+                return ResourceManager.GetString("Run_NameDuplicate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Konfigurácia nemá názov..
+        /// </summary>
+        internal static string Run_NameEmpty {
+            get {
+                return ResourceManager.GetString("Run_NameEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Žiadny grafikon nemá aktivátor – všetky sú aktívne vždy..
+        /// </summary>
+        internal static string Run_NoActivators {
+            get {
+                return ResourceManager.GetString("Run_NoActivators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} – beží.
+        /// </summary>
+        internal static string Run_NodeRunning {
+            get {
+                return ResourceManager.GetString("Run_NodeRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Konfigurácia {0} nemá vybraný program..
+        /// </summary>
+        internal static string Run_ProgramEmpty {
+            get {
+                return ResourceManager.GetString("Run_ProgramEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} (chýba).
+        /// </summary>
+        internal static string Run_ProgramMissing {
+            get {
+                return ResourceManager.GetString("Run_ProgramMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} ({1}).
+        /// </summary>
+        internal static string Run_ProgramVersion {
+            get {
+                return ResourceManager.GetString("Run_ProgramVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uložiť bez pýtania.
+        /// </summary>
+        internal static string Run_SaveAlways {
+            get {
+                return ResourceManager.GetString("Run_SaveAlways", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opýtať sa, či uložiť.
+        /// </summary>
+        internal static string Run_SaveAsk {
+            get {
+                return ResourceManager.GetString("Run_SaveAsk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neukladať (INISS načíta uložené dáta).
+        /// </summary>
+        internal static string Run_SaveNever {
+            get {
+                return ResourceManager.GetString("Run_SaveNever", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Konfigurácie spúšťania sa nepodarilo uložiť do dát inštalácie: {0}.
+        /// </summary>
+        internal static string Run_SaveSharedFailed {
+            get {
+                return ResourceManager.GetString("Run_SaveSharedFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (bez názvu).
+        /// </summary>
+        internal static string Run_Unnamed {
+            get {
+                return ResourceManager.GetString("Run_Unnamed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Konfigurácia {0}:  {1}  Spustiť INISS aj tak?.
+        /// </summary>
+        internal static string Run_WarningsQuestion {
+            get {
+                return ResourceManager.GetString("Run_WarningsQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opýtať sa.
+        /// </summary>
+        internal static string Run_WhenRunningAsk {
+            get {
+                return ResourceManager.GetString("Run_WhenRunningAsk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spustiť ďalšiu inštanciu.
+        /// </summary>
+        internal static string Run_WhenRunningNew {
+            get {
+                return ResourceManager.GetString("Run_WhenRunningNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reštartovať ho.
+        /// </summary>
+        internal static string Run_WhenRunningRestart {
+            get {
+                return ResourceManager.GetString("Run_WhenRunningRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bez práv správcu INISS číta kópiu nastavení vo VirtualStore a {0} hodnôt v nej sa líši od nastavení v HKLM: {1}. Upraviť ich môžete v okne Nastavenia INISSu, alebo zapnite Spustiť ako správca..
+        /// </summary>
+        internal static string Run_Check_VirtualStore {
+            get {
+                return ResourceManager.GetString("Run_Check_VirtualStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to predvolená hodnota.
+        /// </summary>
+        internal static string Run_LogsDefault {
+            get {
+                return ResourceManager.GetString("Run_LogsDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS bez práv správcu loguje do: {0} Hodnota z: {1}.
+        /// </summary>
+        internal static string Run_LogsToolTip {
+            get {
+                return ResourceManager.GetString("Run_LogsToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS spustený ako správca loguje do: {0} Hodnota z: {1}.
+        /// </summary>
+        internal static string Run_LogsToolTipAdmin {
+            get {
+                return ResourceManager.GetString("Run_LogsToolTipAdmin", resourceCulture);
             }
         }
 }

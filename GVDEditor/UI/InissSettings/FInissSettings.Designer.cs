@@ -33,6 +33,8 @@ namespace GVDEditor.UI.InissSettings
             var resources = new ComponentResourceManager(typeof(FInissSettings));
             tlpMain = new TableLayoutPanel();
             flpTop = new FlowLayoutPanel();
+            lRunConfig = new Label();
+            cbRunConfig = new ExComboBox();
             lProgram = new Label();
             cbProgram = new ExComboBox();
             lConfig = new Label();
@@ -96,6 +98,8 @@ namespace GVDEditor.UI.InissSettings
             // flpTop
             // 
             resources.ApplyResources(flpTop, "flpTop");
+            flpTop.Controls.Add(lRunConfig);
+            flpTop.Controls.Add(cbRunConfig);
             flpTop.Controls.Add(lProgram);
             flpTop.Controls.Add(cbProgram);
             flpTop.Controls.Add(lConfig);
@@ -104,6 +108,18 @@ namespace GVDEditor.UI.InissSettings
             flpTop.Controls.Add(cbRunMode);
             flpTop.Controls.Add(bReload);
             flpTop.Name = "flpTop";
+            // 
+            // lRunConfig
+            // 
+            resources.ApplyResources(lRunConfig, "lRunConfig");
+            lRunConfig.Name = "lRunConfig";
+            // 
+            // cbRunConfig
+            // 
+            resources.ApplyResources(cbRunConfig, "cbRunConfig");
+            cbRunConfig.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbRunConfig.FormattingEnabled = true;
+            cbRunConfig.Name = "cbRunConfig";
             // 
             // lProgram
             // 
@@ -372,6 +388,8 @@ namespace GVDEditor.UI.InissSettings
 
         private TableLayoutPanel tlpMain;
         private FlowLayoutPanel flpTop;
+        private Label lRunConfig;
+        private ExComboBox cbRunConfig;
         private Label lProgram;
         private ExComboBox cbProgram;
         private Label lConfig;

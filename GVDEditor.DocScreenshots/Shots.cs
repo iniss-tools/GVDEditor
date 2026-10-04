@@ -6,11 +6,13 @@ using GVDEditor.Config;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
+using GVDEditor.Integration;
 using GVDEditor.TabTabEditor;
 using GVDEditor.UI.Controls;
 using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.EditTrain;
 using GVDEditor.UI.Import;
+using GVDEditor.UI.InissSettings;
 using GVDEditor.UI.Main;
 using GVDEditor.UI.Settings;
 using GVDEditor.UI.StateDgm;
@@ -186,13 +188,18 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 form.PreselectMenuItem("pLogging");
                 return form;
             });
-            // stránka Spúšťanie INISS s argumentmi zadanými zaškrtnutím
-            Shot("spustanie-iniss/nastavenia-spustania", () =>
+            // okno Konfigurácie spúšťania: ostrá konfigurácia na tomto počítači a testovacia zdieľaná v dátach inštalácie
+            Shot("spustanie-iniss/konfiguracie-spustania", () =>
             {
-                var config = Program.Context.Config with { StartupINISSConfig = new GVDEditor.Config.StartupINISS { CmdArgs = "/Minimize /NoRestore" } };
-                var form = new FAppSettings(new EditorContext(new AppSession<GVDEditorConfig, GVDEditorStyle>(config, Program.Context.Session.Styles, Program.Context.UsingStyle)));
-                form.PreselectMenuItem("pStartupIniss");
-                return form;
+                var ctx = Program.Context;
+                var live = new RunConfiguration { Name = "Dolné Mesto", Program = DemoInstallation.ExeName, NoRestore = true };
+                var test = new RunConfiguration
+                {
+                    Name = "Dolné Mesto – test", Program = DemoInstallation.ExeName, Registry = "INISS Test", Multiuse = true, Minimize = true,
+                    Shared = true, WhenRunning = WhenAlreadyRunning.NewInstance
+                };
+                ctx.RunConfigurations = new RunConfigurationSet(ctx.Workspace.INISSDir, [live, test], test.Id);
+                return new FRunConfigurations(ctx, new InissProcessService(), new ToolsCore.Tools.DialogService());
             });
             // rozdelenie staršieho zápisu: jeden priečinok s dvoma obdobiami stanice (bloky /9900100)
             Shot("migracia-blokov/rozdelenie", () => new FBlockMigration(Program.Context, @"C:\INISS\DATA\DolneMesto",
