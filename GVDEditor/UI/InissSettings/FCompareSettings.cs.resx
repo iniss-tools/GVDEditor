@@ -58,73 +58,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lRunConfig.Text" xml:space="preserve">
-    <value>Konfigurace:</value>
+  <data name="lOther.Text" xml:space="preserve">
+    <value>Porovnat s:</value>
   </data>
-  <data name="lProgram.Text" xml:space="preserve">
-    <value>Program:</value>
-  </data>
-  <data name="lConfig.Text" xml:space="preserve">
-    <value>Větev registru:</value>
-  </data>
-  <data name="lRunMode.Text" xml:space="preserve">
-    <value>Spouští se:</value>
-  </data>
-  <data name="bReload.Text" xml:space="preserve">
-    <value>Načíst znovu</value>
+  <data name="bFile.Text" xml:space="preserve">
+    <value>Soubor .reg nebo .INI...</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>INISS</value>
-  </data>
-  <data name="tbSearch.HintText" xml:space="preserve">
-    <value>Hledat hodnotu…</value>
-  </data>
-  <data name="lSection.Text" xml:space="preserve">
     <value></value>
   </data>
-  <data name="cboxChangedOnly.Text" xml:space="preserve">
-    <value>Jen hodnoty odlišné od výchozích</value>
+  <data name="cboxDifferentOnly.Text" xml:space="preserve">
+    <value>Jen rozdíly</value>
   </data>
-  <data name="cboxNotRead.Text" xml:space="preserve">
-    <value>I hodnoty, které tato verze INISSu nečte</value>
+  <data name="cboxOtherExplicit.Text" xml:space="preserve">
+    <value>Jen hodnoty zapsané v druhé konfiguraci</value>
   </data>
-  <data name="bAddLine.Text" xml:space="preserve">
-    <value>Přidat linku…</value>
+  <data name="cboxHideApp.Text" xml:space="preserve">
+    <value>Skrýt rozložení oken a počítadla INISSu</value>
   </data>
-  <data name="bRemoveLine.Text" xml:space="preserve">
-    <value>Odstranit linku</value>
-  </data>
-  <data name="cName.HeaderText" xml:space="preserve">
+  <data name="cKey.HeaderText" xml:space="preserve">
     <value>Klíč</value>
   </data>
-  <data name="cValue.HeaderText" xml:space="preserve">
-    <value>Hodnota</value>
+  <data name="cCurrent.HeaderText" xml:space="preserve">
+    <value>Tato konfigurace</value>
   </data>
-  <data name="cSource.HeaderText" xml:space="preserve">
+  <data name="cCurrentSource.HeaderText" xml:space="preserve">
     <value>Zdroj</value>
   </data>
-  <data name="cDefault.HeaderText" xml:space="preserve">
-    <value>Výchozí</value>
+  <data name="cOther.HeaderText" xml:space="preserve">
+    <value>Druhá konfigurace</value>
   </data>
-  <data name="bTools.Text" xml:space="preserve">
-    <value>Nástroje ▾</value>
+  <data name="cOtherSource.HeaderText" xml:space="preserve">
+    <value>Zdroj</value>
   </data>
   <data name="bClose.Text" xml:space="preserve">
     <value>Zavřít</value>
   </data>
-  <data name="bSaveRestart.Text" xml:space="preserve">
-    <value>Uložit a restartovat INISS</value>
+  <data name="bTakeOver.Text" xml:space="preserve">
+    <value>Převzít označené...</value>
   </data>
-  <data name="bSave.Text" xml:space="preserve">
-    <value>Uložit</value>
+  <data name="lTarget.Text" xml:space="preserve">
+    <value>Zapsat do:</value>
   </data>
-  <data name="bDiscard.Text" xml:space="preserve">
-    <value>Zahodit změny</value>
-  </data>
-  <data name="lChanges.Text" xml:space="preserve">
+  <data name="lCount.Text" xml:space="preserve">
     <value></value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Nastavení INISSu</value>
+    <value>Porovnání nastavení INISSu</value>
   </data>
 </root>

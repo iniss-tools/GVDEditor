@@ -3582,4 +3582,194 @@ Hodnota z: {1}</value>
     <value>INISS spustený ako správca loguje do: {0}
 Hodnota z: {1}</value>
   </data>
+  <data name="InissCleanup_Action_Convert" xml:space="preserve">
+    <value>Previesť na správny typ: {0}</value>
+  </data>
+  <data name="InissCleanup_Action_Delete" xml:space="preserve">
+    <value>Zmazať</value>
+  </data>
+  <data name="InissCleanup_Action_DeleteCopy" xml:space="preserve">
+    <value>Zmazať kópiu – platí HKLM: {0}</value>
+  </data>
+  <data name="InissCleanup_Action_DeleteDefault" xml:space="preserve">
+    <value>Zmazať – platí predvolená hodnota</value>
+  </data>
+  <data name="InissCleanup_Action_DeleteSection" xml:space="preserve">
+    <value>Zmazať celú sekciu</value>
+  </data>
+  <data name="InissCleanup_Action_Rename" xml:space="preserve">
+    <value>Premenovať na {0}</value>
+  </data>
+  <data name="InissCleanup_Backup" xml:space="preserve">
+    <value>Pred vyčistením sa všetky vetvy konfigurácie uložia ako záloha .reg do priečinka {0}.</value>
+  </data>
+  <data name="InissCleanup_Intro" xml:space="preserve">
+    <value>Hodnoty v registri vetvy „{0}“, ktoré INISS nepoužíva alebo použije inak, než vyzerá. Označené sú tie, ktoré je bezpečné vyčistiť; ostatné si skontrolujte.</value>
+  </data>
+  <data name="InissCleanup_WholeSection" xml:space="preserve">
+    <value>(celá sekcia)</value>
+  </data>
+  <data name="InissCleanup_Why_Leftover" xml:space="preserve">
+    <value>Pozostatok – nečíta ho žiadna verzia INISSu</value>
+  </data>
+  <data name="InissCleanup_Why_LegacyGhost" xml:space="preserve">
+    <value>Starý názov vedľa nového – INISS ho už nečíta</value>
+  </data>
+  <data name="InissCleanup_Why_LegacyName" xml:space="preserve">
+    <value>Starý názov – INISS ho číta a sám premenuje</value>
+  </data>
+  <data name="InissCleanup_Why_OtherLanguageColor" xml:space="preserve">
+    <value>Farba inej jazykovej verzie INISSu</value>
+  </data>
+  <data name="InissCleanup_Why_Unknown" xml:space="preserve">
+    <value>INISS tento názov nepozná (preklep, iný program)</value>
+  </data>
+  <data name="InissCleanup_Why_UnknownSection" xml:space="preserve">
+    <value>INISS túto sekciu nepozná</value>
+  </data>
+  <data name="InissCleanup_Why_VirtualStoreCopy" xml:space="preserve">
+    <value>Kópia vo VirtualStore prebíja HKLM (INISS bez práv správcu)</value>
+  </data>
+  <data name="InissCleanup_Why_WrongType" xml:space="preserve">
+    <value>Zlý typ hodnoty – INISS ju ignoruje</value>
+  </data>
+  <data name="InissClone_DefaultName" xml:space="preserve">
+    <value>{0} – kópia</value>
+  </data>
+  <data name="InissClone_Intro" xml:space="preserve">
+    <value>Skopíruje všetky vetvy konfigurácie „{0}“ (HKLM, HKCU aj VirtualStore) do novej vetvy registra. Súbor .INI patrí k programu a nekopíruje sa. Nová vetva sa použije pri spustení INISSu s parametrom /Reg.</value>
+  </data>
+  <data name="InissClone_NameEmpty" xml:space="preserve">
+    <value>Zadajte názov novej vetvy.</value>
+  </data>
+  <data name="InissClone_NameExists" xml:space="preserve">
+    <value>Vetva s týmto názvom už v registri je.</value>
+  </data>
+  <data name="InissClone_NameInvalid" xml:space="preserve">
+    <value>Názov nesmie obsahovať lomku.</value>
+  </data>
+  <data name="InissCompare_Count" xml:space="preserve">
+    <value>Rozdielov: {0}, označených: {1}</value>
+  </data>
+  <data name="InissCompare_FileError" xml:space="preserve">
+    <value>Súbor sa nepodarilo načítať: {0}</value>
+  </data>
+  <data name="InissCompare_FileFilter" xml:space="preserve">
+    <value>Nastavenia INISSu (*.reg;*.ini)|*.reg;*.ini|Súbory registra (*.reg)|*.reg|Súbory .INI (*.ini)|*.ini</value>
+  </data>
+  <data name="InissCompare_FileTitle" xml:space="preserve">
+    <value>Porovnať so súborom</value>
+  </data>
+  <data name="InissCompare_InfoBranch" xml:space="preserve">
+    <value>Druhá konfigurácia: vetva registra „{0}“ (rovnaký spôsob spustenia ako táto).</value>
+  </data>
+  <data name="InissCompare_InfoIniFile" xml:space="preserve">
+    <value>Druhá konfigurácia: súbor {0} (len hodnoty zo súboru, bez registra).</value>
+  </data>
+  <data name="InissCompare_InfoNone" xml:space="preserve">
+    <value>Vyberte vetvu registra alebo súbor, s ktorým sa má táto konfigurácia porovnať.</value>
+  </data>
+  <data name="InissCompare_InfoRegFile" xml:space="preserve">
+    <value>Druhá konfigurácia: súbor {0}, vetva „{1}“.</value>
+  </data>
+  <data name="InissCompare_Missing" xml:space="preserve">
+    <value>–</value>
+  </data>
+  <data name="InissCompare_NoSettingsInFile" xml:space="preserve">
+    <value>V súbore nie sú nastavenia INISSu.</value>
+  </data>
+  <data name="InissCompare_TargetRegistry" xml:space="preserve">
+    <value>register (podľa pravidla INISSu)</value>
+  </data>
+  <data name="InissTools_BackupFailed" xml:space="preserve">
+    <value>Zálohu sa nepodarilo uložiť, nič sa nezmenilo: {0}</value>
+  </data>
+  <data name="InissTools_Cleanup" xml:space="preserve">
+    <value>Vyčistiť...</value>
+  </data>
+  <data name="InissTools_Clone" xml:space="preserve">
+    <value>Klonovať konfiguráciu...</value>
+  </data>
+  <data name="InissTools_Cloned" xml:space="preserve">
+    <value>Vetva „{0}“ je založená. INISS ju použije, keď ho spustíte s parametrom /Reg:{0}.</value>
+  </data>
+  <data name="InissTools_ClonedWithRunConfig" xml:space="preserve">
+    <value>Vetva „{0}“ je založená a pribudla konfigurácia spúšťania {1}, ktorá ju používa.</value>
+  </data>
+  <data name="InissTools_Compare" xml:space="preserve">
+    <value>Porovnať s inou vetvou alebo súborom...</value>
+  </data>
+  <data name="InissTools_CreateUserBranch" xml:space="preserve">
+    <value>Založiť vetvu HKCU...</value>
+  </data>
+  <data name="InissTools_CreateUserBranchQuestion" xml:space="preserve">
+    <value>Založiť vetvu HKEY_CURRENT_USER pre „{0}“?
+
+INISS potom číta nastavenia používateľa (sekcie {1}) len z nej – ich hodnoty v HKLM prestanú platiť.
+
+Áno – založiť a skopírovať do nej súčasné hodnoty (INISS sa bude správať rovnako)
+Nie – založiť prázdnu (platia predvolené hodnoty)
+Zrušiť – nezakladať</value>
+  </data>
+  <data name="InissTools_DoneWithBackup" xml:space="preserve">
+    <value>Hotovo. Záloha pôvodného stavu: {0}</value>
+  </data>
+  <data name="InissTools_ExportFailed" xml:space="preserve">
+    <value>Export sa nepodaril: {0}</value>
+  </data>
+  <data name="InissTools_ExportIni" xml:space="preserve">
+    <value>Exportovať do súboru .INI...</value>
+  </data>
+  <data name="InissTools_ExportIniQuestion" xml:space="preserve">
+    <value>Exportovať aj predvolené hodnoty?
+
+Áno – všetky hodnoty, ktoré INISS použije
+Nie – len hodnoty zapísané v registri alebo .INI
+
+Súbor .INI s menom programu vedľa programu má prednosť pred registrom – exportovaný súbor tam dajte, len ak to tak chcete.</value>
+  </data>
+  <data name="InissTools_ExportReg" xml:space="preserve">
+    <value>Exportovať do súboru .reg...</value>
+  </data>
+  <data name="InissTools_Import" xml:space="preserve">
+    <value>Importovať zo súboru...</value>
+  </data>
+  <data name="InissTools_IniFilter" xml:space="preserve">
+    <value>Súbory .INI (*.ini)|*.ini</value>
+  </data>
+  <data name="InissTools_NothingInRegistry" xml:space="preserve">
+    <value>Táto konfigurácia v registri nie je.</value>
+  </data>
+  <data name="InissTools_NothingToClean" xml:space="preserve">
+    <value>V registri nie je čo vyčistiť.</value>
+  </data>
+  <data name="InissTools_OpenBackups" xml:space="preserve">
+    <value>Otvoriť priečinok záloh</value>
+  </data>
+  <data name="InissTools_PendingFirst" xml:space="preserve">
+    <value>Najprv uložte alebo zahoďte neuložené zmeny.</value>
+  </data>
+  <data name="InissTools_RegFilter" xml:space="preserve">
+    <value>Súbory registra (*.reg)|*.reg</value>
+  </data>
+  <data name="InissTools_RemoveUserBranch" xml:space="preserve">
+    <value>Zrušiť vetvu HKCU...</value>
+  </data>
+  <data name="InissTools_RemoveUserBranchQuestion" xml:space="preserve">
+    <value>Zrušiť vetvu HKEY_CURRENT_USER pre „{0}“? INISS potom číta všetky nastavenia z HKLM.
+
+Áno – presunúť jej hodnoty do HKLM (INISS sa bude správať rovnako)
+Nie – len zrušiť (hodnoty ostanú len v zálohe)
+Zrušiť – nič nerobiť</value>
+  </data>
+  <data name="InissTools_ResetToDefault" xml:space="preserve">
+    <value>predvolená</value>
+  </data>
+  <data name="InissTools_TakeOverQuestion" xml:space="preserve">
+    <value>Prevziať {0} hodnôt? {1}
+
+{2}
+
+Pred zápisom sa uloží záloha.</value>
+  </data>
 </root>

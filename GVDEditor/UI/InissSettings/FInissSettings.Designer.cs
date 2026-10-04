@@ -62,6 +62,8 @@ namespace GVDEditor.UI.InissSettings
             cSource = new DataGridViewTextBoxColumn();
             cDefault = new DataGridViewTextBoxColumn();
             pDetail = new Panel();
+            tlpBottom = new TableLayoutPanel();
+            bTools = new ExButton();
             flpButtons = new FlowLayoutPanel();
             bClose = new ExButton();
             bSaveRestart = new ExButton();
@@ -83,6 +85,7 @@ namespace GVDEditor.UI.InissSettings
             tlpGrid.SuspendLayout();
             flpFilter.SuspendLayout();
             pDetail.SuspendLayout();
+            tlpBottom.SuspendLayout();
             flpButtons.SuspendLayout();
             SuspendLayout();
             // 
@@ -92,7 +95,7 @@ namespace GVDEditor.UI.InissSettings
             tlpMain.Controls.Add(flpTop, 0, 0);
             tlpMain.Controls.Add(lInfo, 0, 1);
             tlpMain.Controls.Add(scMain, 0, 2);
-            tlpMain.Controls.Add(flpButtons, 0, 3);
+            tlpMain.Controls.Add(tlpBottom, 0, 3);
             tlpMain.Name = "tlpMain";
             // 
             // flpTop
@@ -304,6 +307,19 @@ namespace GVDEditor.UI.InissSettings
             resources.ApplyResources(pDetail, "pDetail");
             pDetail.Name = "pDetail";
             // 
+            // tlpBottom
+            // 
+            resources.ApplyResources(tlpBottom, "tlpBottom");
+            tlpBottom.Controls.Add(bTools, 0, 0);
+            tlpBottom.Controls.Add(flpButtons, 1, 0);
+            tlpBottom.Name = "tlpBottom";
+            // 
+            // bTools
+            // 
+            resources.ApplyResources(bTools, "bTools");
+            bTools.UseVisualStyleBackColor = true;
+            bTools.Name = "bTools";
+            // 
             // flpButtons
             // 
             resources.ApplyResources(flpButtons, "flpButtons");
@@ -312,6 +328,7 @@ namespace GVDEditor.UI.InissSettings
             flpButtons.Controls.Add(bSave);
             flpButtons.Controls.Add(bDiscard);
             flpButtons.Controls.Add(lChanges);
+            flpButtons.WrapContents = false;
             flpButtons.Name = "flpButtons";
             // 
             // bClose
@@ -354,6 +371,8 @@ namespace GVDEditor.UI.InissSettings
             Name = "FInissSettings";
             flpButtons.ResumeLayout(false);
             flpButtons.PerformLayout();
+            tlpBottom.ResumeLayout(false);
+            tlpBottom.PerformLayout();
             pDetail.ResumeLayout(false);
             pDetail.PerformLayout();
             flpFilter.ResumeLayout(false);
@@ -417,6 +436,8 @@ namespace GVDEditor.UI.InissSettings
         private DataGridViewTextBoxColumn cSource;
         private DataGridViewTextBoxColumn cDefault;
         private Panel pDetail;
+        private TableLayoutPanel tlpBottom;
+        private ExButton bTools;
         private FlowLayoutPanel flpButtons;
         private ExButton bClose;
         private ExButton bSaveRestart;

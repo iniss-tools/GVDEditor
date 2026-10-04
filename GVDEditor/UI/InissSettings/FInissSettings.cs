@@ -148,6 +148,7 @@ internal partial class FInissSettings : Form
         bAddLine.Click += async (_, _) => await AddLineAsync();
         bRemoveLine.Click += async (_, _) => await RemoveLineAsync();
         bClose.Click += (_, _) => Close();
+        bTools.Click += (_, _) => ShowToolsMenu();
         _iniss.StateChanged += Iniss_StateChanged;
         tlpGrid.SizeChanged += (_, _) => lSection.MaximumSize = new Size(Math.Max(200, tlpGrid.ClientSize.Width - 12), 0);
 
@@ -838,6 +839,273 @@ internal partial class FInissSettings : Form
         if (plan.WritesMachine && !m.CanWriteMachine) sb.AppendLine().AppendLine(Resources.InissSettings_SummaryUac);
         if (plan.RegistryNotRead.Count > 0) sb.AppendLine().AppendLine(Resources.InissSettings_SummaryNotRead);
         return sb.ToString().TrimEnd();
+    }
+
+    // --- nastroje (etapa 4): export, porovnanie a import, klon, vycistenie, vetva HKCU ---
+
+    /// <summary>Priecinok zaloh registra pred zasahmi nastrojov.</summary>
+    private static string BackupDir => Path.Combine(ToolsCore.AppPaths.DataDir, "zalohy-registra");
+
+    private void ShowToolsMenu()
+    {
+        var m = _model;
+        var menu = new ContextMenuStrip();
+        void Item(string text, Action action, bool enabled = true) => menu.Items.Add(new ToolStripMenuItem(text, null, (_, _) => action()) { Enabled = enabled });
+        var loaded = m is not null;
+        Item(Resources.InissTools_ExportReg, ExportReg, loaded);
+        Item(Resources.InissTools_ExportIni, ExportIni, loaded);
+        menu.Items.Add(new ToolStripSeparator());
+        Item(Resources.InissTools_Compare, () => _ = CompareAsync(null), loaded);
+        Item(Resources.InissTools_Import, () => _ = ImportAsync(), loaded);
+        menu.Items.Add(new ToolStripSeparator());
+        Item(Resources.InissTools_Clone, () => _ = CloneAsync(), loaded);
+        Item(Resources.InissTools_Cleanup, () => _ = CleanupAsync(), loaded);
+        if (m?.Config.UserBranchActive == true)
+            Item(Resources.InissTools_RemoveUserBranch, () => _ = RemoveUserBranchAsync(), loaded);
+        else
+            Item(Resources.InissTools_CreateUserBranch, () => _ = CreateUserBranchAsync(), loaded);
+        menu.Items.Add(new ToolStripSeparator());
+        Item(Resources.InissTools_OpenBackups, OpenBackups);
+        FormUtils.ChangeColorContextMenu(_ctx.UsingStyle, menu);
+        menu.Closed += (_, _) => BeginInvoke(menu.Dispose);
+        menu.Show(bTools, new Point(0, -menu.GetPreferredSize(Size.Empty).Height));
+    }
+
+    /// <summary>Nastroj, ktory zapisuje, potrebuje konfiguraciu bez neulozenych zmien.</summary>
+    private bool CanRunWritingTool()
+    {
+        if (_model is null || _saving) return false;
+        if (_model.Pending.Count == 0) return true;
+        _dialogs.ShowWarning(Resources.InissTools_PendingFirst);
+        return false;
+    }
+
+    /// <summary>Zaloha vsetkych vetiev zobrazenej konfiguracie; pri chybe ju ohlasi a vrati false.</summary>
+    private bool Backup(out string? path)
+    {
+        path = null;
+        try
+        {
+            path = InissRegistry.Backup(_appName, BackupDir);
+            return true;
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException or System.Security.SecurityException)
+        {
+            _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.InissTools_BackupFailed, e.Message));
+            return false;
+        }
+    }
+
+    /// <summary>Po zalohe zapise plan nastroja (HKLM pripadne s vyzvou UAC) a nacita konfiguraciu znova.</summary>
+    private async Task<bool> ApplyToolAsync(RegWritePlan plan)
+    {
+        if (_model is not { } m || plan.Ops.Count == 0) return false;
+        if (!Backup(out var backup)) return false;
+        var done = await ApplyAsync(m, plan);
+        if (done && backup is not null)
+            _dialogs.ShowInfo(string.Format(CultureInfo.CurrentCulture, Resources.InissTools_DoneWithBackup, backup));
+        return done;
+    }
+
+    private void ExportReg()
+    {
+        using var dialog = new SaveFileDialog
+        {
+            Filter = Resources.InissTools_RegFilter, FileName = SafeFileName(_appName) + ".reg", Title = Resources.InissTools_ExportReg.TrimEnd('.', '…')
+        };
+        if (dialog.ShowDialog(this) != DialogResult.OK) return;
+        try
+        {
+            var file = InissRegistry.Export(_appName);
+            if (file.IsEmpty)
+            {
+                _dialogs.ShowWarning(Resources.InissTools_NothingInRegistry);
+                return;
+            }
+
+            file.Save(dialog.FileName);
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException or System.Security.SecurityException)
+        {
+            _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.InissTools_ExportFailed, e.Message));
+        }
+    }
+
+    private void ExportIni()
+    {
+        if (_model is not { } m) return;
+        var answer = _dialogs.ShowQuestion(Resources.InissTools_ExportIniQuestion, MessageBoxButtons.YesNoCancel);
+        if (answer == DialogResult.Cancel) return;
+        using var dialog = new SaveFileDialog
+        {
+            Filter = Resources.InissTools_IniFilter, FileName = SafeFileName(_appName) + ".INI", Title = Resources.InissTools_ExportIni.TrimEnd('.', '…'),
+            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        };
+        if (dialog.ShowDialog(this) != DialogResult.OK) return;
+        try
+        {
+            RegTools.ToIni(m.Config, answer == DialogResult.Yes).Save(dialog.FileName);
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+        {
+            _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.InissTools_ExportFailed, e.Message));
+        }
+    }
+
+    private static string SafeFileName(string name) => string.Concat(name.Select(c => Path.GetInvalidFileNameChars().Contains(c) ? '_' : c));
+
+    private async Task ImportAsync()
+    {
+        if (!CanRunWritingTool()) return;
+        using var dialog = new OpenFileDialog { Filter = Resources.InissCompare_FileFilter, Title = Resources.InissTools_Import.TrimEnd('.', '…') };
+        if (dialog.ShowDialog(this) == DialogResult.OK)
+            await CompareAsync(dialog.FileName);
+    }
+
+    /// <summary>
+    /// Porovnanie s inou vetvou alebo so suborom (<paramref name="importFile" /> = import zo suboru s oznacenymi
+    /// zapisanymi hodnotami); prevzate hodnoty sa po zalohe a suhrne zapisu.
+    /// </summary>
+    private async Task CompareAsync(string? importFile)
+    {
+        if (_model is not { } m) return;
+        using var f = new FCompareSettings(m.Config, m.IniPath is not null, _dialogs);
+        if (importFile is not null && !f.LoadFile(importFile, true)) return;
+        if (f.ShowDialog(this) != DialogResult.OK || f.Changes.Count == 0) return;
+        if (!CanRunWritingTool()) return;
+
+        var plan = RegWritePlanner.Plan(m.Config, f.Changes);
+        var lines = f.Changes.Take(20).Select(c => "• " + InissSettingsModel.KeyOf(c.Section, c.Name) + " = "
+                                                    + (c.Value is null ? Resources.InissTools_ResetToDefault : InissSettingsModel.Format(c.Value, m.Config.Find(c.Section, c.Name)?.Setting)));
+        var text = string.Format(CultureInfo.CurrentCulture, Resources.InissTools_TakeOverQuestion, f.Changes.Count, f.OtherDescription,
+            string.Join(Environment.NewLine, lines) + (f.Changes.Count > 20 ? Environment.NewLine + "…" : ""));
+        if (plan.WritesMachine && !InissRegistry.CanWriteMachine(_appName)) text += Environment.NewLine + Environment.NewLine + Resources.InissSettings_SummaryUac;
+        if (_dialogs.ShowQuestion(text) != DialogResult.Yes) return;
+        await ApplyToolAsync(plan);
+    }
+
+    private async Task CloneAsync()
+    {
+        if (_model is not { } m || !CanRunWritingTool()) return;
+        var plan = RegTools.ClonePlan(m.Config.Source);
+        if (plan.Ops.Count == 0)
+        {
+            _dialogs.ShowWarning(Resources.InissTools_NothingInRegistry);
+            return;
+        }
+
+        var program = _runConfig?.Program ?? (cbProgram.SelectedItem as string);
+        using var f = new FCloneBranch(_appName, InissRegistry.AppNames().ToList(), !string.IsNullOrEmpty(program));
+        if (f.ShowDialog(this) != DialogResult.OK) return;
+
+        var name = f.NewName;
+        _saving = true;
+        UpdateChanges();
+        UseWaitCursor = true;
+        RegApplyResult result;
+        try
+        {
+            result = await Task.Run(() => InissRegistry.Apply(plan, name, null));
+        }
+        catch (Exception e) when (e is UnauthorizedAccessException or IOException or System.Security.SecurityException)
+        {
+            _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.InissSettings_SaveError, e.Message));
+            return;
+        }
+        finally
+        {
+            UseWaitCursor = false;
+            _saving = false;
+            UpdateChanges();
+        }
+
+        if (result != RegApplyResult.Ok)
+        {
+            _dialogs.ShowWarning(result == RegApplyResult.Cancelled ? Resources.InissSettings_SaveCancelled : Resources.InissSettings_SaveFailed);
+            return;
+        }
+
+        if (f.CreateRunConfig && program is not null)
+        {
+            var template = _runConfig ?? new RunConfiguration { Program = program, RunAsAdmin = cbRunMode.SelectedIndex == 1 };
+            var config = template with
+            {
+                Id = RunConfiguration.NewId(), Name = RunConfigurations.UniqueName(name, _ctx.RunConfigurations.Items.Select(i => i.Name)),
+                Program = program, Registry = name, Shared = false
+            };
+            _ctx.RunConfigurations.Replace(_ctx.RunConfigurations.Items.Append(config));
+            try
+            {
+                RunConfigurationStore.Save(_ctx.Config, _ctx.RunConfigurations);
+            }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+            {
+                _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.Run_SaveSharedFailed, e.Message));
+            }
+
+            GVDEditor.UI.Settings.SettingsWindow.SaveConfig(_ctx.Config);
+            _configs.Add(config);
+            cbRunConfig.Items.Insert(cbRunConfig.Items.Count - 1, new RunConfigItem(config));
+            cbRunConfig.SelectedIndex = cbRunConfig.Items.Count - 2;
+            _dialogs.ShowInfo(string.Format(CultureInfo.CurrentCulture, Resources.InissTools_ClonedWithRunConfig, name, config.Name));
+            return;
+        }
+
+        // bez konfiguracie spustania - zobrazit novu vetvu ako inu vetvu registra
+        _loading = true;
+        cbRunConfig.SelectedIndex = cbRunConfig.Items.Count - 1;
+        ApplyRunConfig();
+        FillConfigs(name);
+        _loading = false;
+        Reload(false);
+        _dialogs.ShowInfo(string.Format(CultureInfo.CurrentCulture, Resources.InissTools_Cloned, name));
+    }
+
+    private async Task CleanupAsync()
+    {
+        if (_model is not { } m || !CanRunWritingTool()) return;
+        var items = RegTools.FindCleanup(m.Config);
+        if (items.Count == 0)
+        {
+            _dialogs.ShowInfo(Resources.InissTools_NothingToClean);
+            return;
+        }
+
+        using var f = new FCleanupSettings(_appName, items, BackupDir);
+        if (f.ShowDialog(this) != DialogResult.OK) return;
+        await ApplyToolAsync(RegTools.CleanupPlan(f.Selected));
+    }
+
+    private async Task CreateUserBranchAsync()
+    {
+        if (_model is not { } m || !CanRunWritingTool()) return;
+        var sections = string.Join(", ", RegCatalog.Sections.Where(s => s.Hive == RegHive.User).Select(s => s.Name));
+        var answer = _dialogs.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.InissTools_CreateUserBranchQuestion, _appName, sections),
+            MessageBoxButtons.YesNoCancel);
+        if (answer == DialogResult.Cancel) return;
+        await ApplyToolAsync(RegTools.CreateUserBranchPlan(m.Config, answer == DialogResult.Yes));
+    }
+
+    private async Task RemoveUserBranchAsync()
+    {
+        if (_model is not { } m || !CanRunWritingTool()) return;
+        var answer = _dialogs.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.InissTools_RemoveUserBranchQuestion, _appName),
+            MessageBoxButtons.YesNoCancel);
+        if (answer == DialogResult.Cancel) return;
+        await ApplyToolAsync(RegTools.RemoveUserBranchPlan(m.Config, answer == DialogResult.Yes));
+    }
+
+    private void OpenBackups()
+    {
+        try
+        {
+            Directory.CreateDirectory(BackupDir);
+            Utils.OpenShell(BackupDir);
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException or System.ComponentModel.Win32Exception)
+        {
+            _dialogs.ShowError(e.Message);
+        }
     }
 
     /// <inheritdoc />

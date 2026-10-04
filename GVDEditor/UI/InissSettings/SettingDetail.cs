@@ -16,19 +16,34 @@ internal sealed record SettingEdit(RegWriteTarget Target, bool Reset);
 /// </summary>
 internal sealed class SettingDetail : UserControl
 {
+    // moderne ikony systemu ako v zozname upozorneni a v konfiguraciach spustania
+    private static readonly Bitmap InfoIcon = StockIcon(ShellIconType.Info);
+    private static readonly Bitmap WarningIcon = StockIcon(ShellIconType.Warning);
+    private static readonly Bitmap ErrorIcon = StockIcon(ShellIconType.Error);
+
     private readonly TableLayoutPanel _table;
-    private readonly Label _title = new() { AutoSize = true, Margin = new Padding(3, 3, 3, 6) };
+    private readonly TableLayoutPanel _header = new()
+    {
+        AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1, Margin = new Padding(0)
+    };
+    private readonly Label _title = new() { AutoSize = true, Anchor = AnchorStyles.Left, Margin = new Padding(3, 3, 3, 6) };
     private readonly Label _description = WrapLabel();
     private readonly Label _targetLabel = new() { AutoSize = true, Anchor = AnchorStyles.Left, Margin = new Padding(3, 7, 6, 3), Text = Resources.InissSettings_Target };
     private readonly ExComboBox _target = new() { DropDownStyle = ComboBoxStyle.DropDownList, Anchor = AnchorStyles.Left | AnchorStyles.Right, MaximumSize = new Size(700, 0) };
     private readonly Label _targetNote = WrapLabel();
     private readonly ExButton _reset = new() { AutoSize = true, Text = Resources.InissSettings_Reset };
     private readonly ExButton _revert = new() { AutoSize = true, Text = Resources.InissSettings_Revert };
-    private readonly FlowLayoutPanel _actions = new() { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, WrapContents = false, Margin = new Padding(0, 6, 0, 0) };
+    private readonly FlowLayoutPanel _actions = new()
+    {
+        AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, WrapContents = false, Anchor = AnchorStyles.Right, Margin = new Padding(6, 0, 0, 3)
+    };
     private readonly Label _layersHeader = Header(Resources.InissSettings_Layers);
     private readonly Label _layers = WrapLabel();
     private readonly Label _diagnosticsHeader = Header(Resources.InissSettings_Findings);
-    private readonly Label _diagnostics = WrapLabel();
+    private readonly FlowLayoutPanel _diagnostics = new()
+    {
+        AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, FlowDirection = FlowDirection.TopDown, WrapContents = false, Margin = new Padding(0, 0, 0, 6)
+    };
     private SettingRow? _row;
     private InissSettingsModel? _model;
     private bool _loading;
@@ -40,17 +55,22 @@ internal sealed class SettingDetail : UserControl
         _table = new TableLayoutPanel { Dock = DockStyle.Top, AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, ColumnCount = 2, Padding = new Padding(6) };
         _table.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
         _table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-        AddFull(_title);
+        // nazov kluca a vpravo od neho akcie - viac miesta na vysku
+        _header.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+        _header.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+        _header.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+        _actions.Controls.Add(_reset);
+        _actions.Controls.Add(_revert);
+        _header.Controls.Add(_title, 0, 0);
+        _header.Controls.Add(_actions, 1, 0);
+        AddFull(_header);
         AddFull(_description);
         AddRow(_targetLabel, _target);
         AddFull(_targetNote);
-        _actions.Controls.Add(_reset);
-        _actions.Controls.Add(_revert);
-        AddFull(_actions);
-        AddFull(_layersHeader);
-        AddFull(_layers);
         AddFull(_diagnosticsHeader);
         AddFull(_diagnostics);
+        AddFull(_layersHeader);
+        AddFull(_layers);
         Controls.Add(_table);
 
         _target.SelectedIndexChanged += (_, _) =>
@@ -116,7 +136,7 @@ internal sealed class SettingDetail : UserControl
             _layersHeader.Visible = _layers.Visible = true;
             _layers.Text = LayersText(row, pending);
             _diagnosticsHeader.Visible = _diagnostics.Visible = row.Diagnostics.Count > 0;
-            _diagnostics.Text = string.Join(Environment.NewLine, row.Diagnostics.Select(d => $"• {InissSettingsModel.SeverityText(d.Severity)}: {d.Message}"));
+            ShowDiagnostics(row.Diagnostics);
             UpdateWrap();
         }
         finally
@@ -219,11 +239,50 @@ internal sealed class SettingDetail : UserControl
         _table.SetColumnSpan(control, 2);
     }
 
+    /// <summary>Zistenia ako riadky s ikonou zavaznosti (text zavaznosti je v bubline ikony).</summary>
+    private void ShowDiagnostics(IReadOnlyList<RegDiagnostic> diagnostics)
+    {
+        _diagnostics.SuspendLayout();
+        foreach (Control c in _diagnostics.Controls.Cast<Control>().ToList())
+        {
+            _diagnostics.Controls.Remove(c);
+            c.Dispose();
+        }
+
+        foreach (var d in diagnostics.OrderByDescending(d => d.Severity))
+        {
+            var row = new FlowLayoutPanel { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, WrapContents = false, Margin = new Padding(0, 0, 0, 2) };
+            var icon = d.Severity switch
+            {
+                RegSeverity.Error => ErrorIcon,
+                RegSeverity.Warning => WarningIcon,
+                _ => InfoIcon
+            };
+            row.Controls.Add(new PictureBox
+            {
+                Image = icon, SizeMode = PictureBoxSizeMode.CenterImage, Size = new Size(20, 20), Margin = new Padding(3, 0, 3, 0),
+                AccessibleName = InissSettingsModel.SeverityText(d.Severity)
+            });
+            row.Controls.Add(new Label { AutoSize = true, Margin = new Padding(0, 3, 3, 0), Text = d.Message, ForeColor = _layers.ForeColor });
+            _diagnostics.Controls.Add(row);
+        }
+
+        _diagnostics.ResumeLayout(true);
+    }
+
     private void UpdateWrap()
     {
         var width = Math.Max(200, _table.ClientSize.Width - 24);
-        foreach (var l in new[] { _description, _targetNote, _layers, _diagnostics })
+        foreach (var l in new[] { _description, _targetNote, _layers })
             l.MaximumSize = new Size(width, 0);
+        foreach (var l in _diagnostics.Controls.Cast<Control>().SelectMany(r => r.Controls.OfType<Label>()))
+            l.MaximumSize = new Size(Math.Max(150, width - LogicalToDeviceUnits(26)), 0);
+    }
+
+    private static Bitmap StockIcon(ShellIconType type)
+    {
+        using var icon = new ShellIcon(type, ShellIconSize.Small);
+        return icon.ToBitmap();
     }
 
     private static Label WrapLabel() => new() { AutoSize = true, Margin = new Padding(3, 3, 3, 6) };

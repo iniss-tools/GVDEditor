@@ -10224,5 +10224,518 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("Run_LogsToolTipAdmin", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previesť na správny typ: {0}.
+        /// </summary>
+        internal static string InissCleanup_Action_Convert {
+            get {
+                return ResourceManager.GetString("InissCleanup_Action_Convert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmazať.
+        /// </summary>
+        internal static string InissCleanup_Action_Delete {
+            get {
+                return ResourceManager.GetString("InissCleanup_Action_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmazať kópiu – platí hodnota z HKLM.
+        /// </summary>
+        internal static string InissCleanup_Action_DeleteCopy {
+            get {
+                return ResourceManager.GetString("InissCleanup_Action_DeleteCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmazať – platí predvolená hodnota.
+        /// </summary>
+        internal static string InissCleanup_Action_DeleteDefault {
+            get {
+                return ResourceManager.GetString("InissCleanup_Action_DeleteDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmazať celú sekciu.
+        /// </summary>
+        internal static string InissCleanup_Action_DeleteSection {
+            get {
+                return ResourceManager.GetString("InissCleanup_Action_DeleteSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Premenovať na {0}.
+        /// </summary>
+        internal static string InissCleanup_Action_Rename {
+            get {
+                return ResourceManager.GetString("InissCleanup_Action_Rename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pred vyčistením sa všetky vetvy konfigurácie uložia ako záloha .reg do priečinka {0}..
+        /// </summary>
+        internal static string InissCleanup_Backup {
+            get {
+                return ResourceManager.GetString("InissCleanup_Backup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hodnoty v registri vetvy „{0}“, ktoré INISS nepoužíva alebo použije inak, než vyzerá. Označené sú tie, ktoré je bezpečné vyčistiť; ostatné si skontrolujte..
+        /// </summary>
+        internal static string InissCleanup_Intro {
+            get {
+                return ResourceManager.GetString("InissCleanup_Intro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (celá sekcia).
+        /// </summary>
+        internal static string InissCleanup_WholeSection {
+            get {
+                return ResourceManager.GetString("InissCleanup_WholeSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pozostatok – nečíta ho žiadna verzia INISSu.
+        /// </summary>
+        internal static string InissCleanup_Why_Leftover {
+            get {
+                return ResourceManager.GetString("InissCleanup_Why_Leftover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Starý názov vedľa nového – INISS ho už nečíta.
+        /// </summary>
+        internal static string InissCleanup_Why_LegacyGhost {
+            get {
+                return ResourceManager.GetString("InissCleanup_Why_LegacyGhost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Starý názov – INISS ho číta a sám premenuje.
+        /// </summary>
+        internal static string InissCleanup_Why_LegacyName {
+            get {
+                return ResourceManager.GetString("InissCleanup_Why_LegacyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Farba inej jazykovej verzie INISSu.
+        /// </summary>
+        internal static string InissCleanup_Why_OtherLanguageColor {
+            get {
+                return ResourceManager.GetString("InissCleanup_Why_OtherLanguageColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS tento názov nepozná (preklep, iný program).
+        /// </summary>
+        internal static string InissCleanup_Why_Unknown {
+            get {
+                return ResourceManager.GetString("InissCleanup_Why_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS túto sekciu nepozná.
+        /// </summary>
+        internal static string InissCleanup_Why_UnknownSection {
+            get {
+                return ResourceManager.GetString("InissCleanup_Why_UnknownSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kópia vo VirtualStore – INISS bez práv správcu ju číta namiesto HKLM ({0}).
+        /// </summary>
+        internal static string InissCleanup_Why_VirtualStoreCopy {
+            get {
+                return ResourceManager.GetString("InissCleanup_Why_VirtualStoreCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zlý typ hodnoty – INISS ju ignoruje.
+        /// </summary>
+        internal static string InissCleanup_Why_WrongType {
+            get {
+                return ResourceManager.GetString("InissCleanup_Why_WrongType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} – kópia.
+        /// </summary>
+        internal static string InissClone_DefaultName {
+            get {
+                return ResourceManager.GetString("InissClone_DefaultName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skopíruje všetky vetvy konfigurácie „{0}“ (HKLM, HKCU aj VirtualStore) do novej vetvy registra. Súbor .INI patrí k programu a nekopíruje sa. Nová vetva sa použije pri spustení INISSu s parametrom /Reg..
+        /// </summary>
+        internal static string InissClone_Intro {
+            get {
+                return ResourceManager.GetString("InissClone_Intro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte názov novej vetvy..
+        /// </summary>
+        internal static string InissClone_NameEmpty {
+            get {
+                return ResourceManager.GetString("InissClone_NameEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vetva s týmto názvom už v registri je..
+        /// </summary>
+        internal static string InissClone_NameExists {
+            get {
+                return ResourceManager.GetString("InissClone_NameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov nesmie obsahovať lomku..
+        /// </summary>
+        internal static string InissClone_NameInvalid {
+            get {
+                return ResourceManager.GetString("InissClone_NameInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rozdielov: {0}, označených: {1}.
+        /// </summary>
+        internal static string InissCompare_Count {
+            get {
+                return ResourceManager.GetString("InissCompare_Count", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor sa nepodarilo načítať: {0}.
+        /// </summary>
+        internal static string InissCompare_FileError {
+            get {
+                return ResourceManager.GetString("InissCompare_FileError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia INISSu (*.reg;*.ini)|*.reg;*.ini|Súbory registra (*.reg)|*.reg|Súbory .INI (*.ini)|*.ini.
+        /// </summary>
+        internal static string InissCompare_FileFilter {
+            get {
+                return ResourceManager.GetString("InissCompare_FileFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Porovnať so súborom.
+        /// </summary>
+        internal static string InissCompare_FileTitle {
+            get {
+                return ResourceManager.GetString("InissCompare_FileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Druhá konfigurácia: vetva registra „{0}“ (rovnaký spôsob spustenia ako táto)..
+        /// </summary>
+        internal static string InissCompare_InfoBranch {
+            get {
+                return ResourceManager.GetString("InissCompare_InfoBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Druhá konfigurácia: súbor {0} (len hodnoty zo súboru, bez registra)..
+        /// </summary>
+        internal static string InissCompare_InfoIniFile {
+            get {
+                return ResourceManager.GetString("InissCompare_InfoIniFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte vetvu registra alebo súbor, s ktorým sa má táto konfigurácia porovnať..
+        /// </summary>
+        internal static string InissCompare_InfoNone {
+            get {
+                return ResourceManager.GetString("InissCompare_InfoNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Druhá konfigurácia: súbor {0}, vetva „{1}“..
+        /// </summary>
+        internal static string InissCompare_InfoRegFile {
+            get {
+                return ResourceManager.GetString("InissCompare_InfoRegFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to –.
+        /// </summary>
+        internal static string InissCompare_Missing {
+            get {
+                return ResourceManager.GetString("InissCompare_Missing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V súbore nie sú nastavenia INISSu..
+        /// </summary>
+        internal static string InissCompare_NoSettingsInFile {
+            get {
+                return ResourceManager.GetString("InissCompare_NoSettingsInFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to register (podľa pravidla INISSu).
+        /// </summary>
+        internal static string InissCompare_TargetRegistry {
+            get {
+                return ResourceManager.GetString("InissCompare_TargetRegistry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zálohu sa nepodarilo uložiť, nič sa nezmenilo: {0}.
+        /// </summary>
+        internal static string InissTools_BackupFailed {
+            get {
+                return ResourceManager.GetString("InissTools_BackupFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyčistiť....
+        /// </summary>
+        internal static string InissTools_Cleanup {
+            get {
+                return ResourceManager.GetString("InissTools_Cleanup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Klonovať konfiguráciu....
+        /// </summary>
+        internal static string InissTools_Clone {
+            get {
+                return ResourceManager.GetString("InissTools_Clone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vetva „{0}“ je založená. INISS ju použije, keď ho spustíte s parametrom /Reg:{0}..
+        /// </summary>
+        internal static string InissTools_Cloned {
+            get {
+                return ResourceManager.GetString("InissTools_Cloned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vetva „{0}“ je založená a pribudla konfigurácia spúšťania {1}, ktorá ju používa..
+        /// </summary>
+        internal static string InissTools_ClonedWithRunConfig {
+            get {
+                return ResourceManager.GetString("InissTools_ClonedWithRunConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Porovnať s inou vetvou alebo súborom....
+        /// </summary>
+        internal static string InissTools_Compare {
+            get {
+                return ResourceManager.GetString("InissTools_Compare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Založiť vetvu HKCU....
+        /// </summary>
+        internal static string InissTools_CreateUserBranch {
+            get {
+                return ResourceManager.GetString("InissTools_CreateUserBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Založiť vetvu HKEY_CURRENT_USER pre „{0}“?  INISS potom číta nastavenia používateľa (sekcie {1}) len z nej – ich hodnoty v HKLM prestanú platiť.  Áno – založiť a skopírovať do nej súčasné hodnoty (INISS sa bude správať rovnako) Nie – založiť prázdnu (platia predvolené hodnoty) Zrušiť – nezakladať.
+        /// </summary>
+        internal static string InissTools_CreateUserBranchQuestion {
+            get {
+                return ResourceManager.GetString("InissTools_CreateUserBranchQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hotovo. Záloha pôvodného stavu: {0}.
+        /// </summary>
+        internal static string InissTools_DoneWithBackup {
+            get {
+                return ResourceManager.GetString("InissTools_DoneWithBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export sa nepodaril: {0}.
+        /// </summary>
+        internal static string InissTools_ExportFailed {
+            get {
+                return ResourceManager.GetString("InissTools_ExportFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exportovať do súboru .INI....
+        /// </summary>
+        internal static string InissTools_ExportIni {
+            get {
+                return ResourceManager.GetString("InissTools_ExportIni", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exportovať aj predvolené hodnoty?  Áno – všetky hodnoty, ktoré INISS použije Nie – len hodnoty zapísané v registri alebo .INI  Súbor .INI s menom programu vedľa programu má prednosť pred registrom – exportovaný súbor tam dajte, len ak to tak chcete..
+        /// </summary>
+        internal static string InissTools_ExportIniQuestion {
+            get {
+                return ResourceManager.GetString("InissTools_ExportIniQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exportovať do súboru .reg....
+        /// </summary>
+        internal static string InissTools_ExportReg {
+            get {
+                return ResourceManager.GetString("InissTools_ExportReg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importovať zo súboru....
+        /// </summary>
+        internal static string InissTools_Import {
+            get {
+                return ResourceManager.GetString("InissTools_Import", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbory .INI (*.ini)|*.ini.
+        /// </summary>
+        internal static string InissTools_IniFilter {
+            get {
+                return ResourceManager.GetString("InissTools_IniFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Táto konfigurácia v registri nie je..
+        /// </summary>
+        internal static string InissTools_NothingInRegistry {
+            get {
+                return ResourceManager.GetString("InissTools_NothingInRegistry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V registri nie je čo vyčistiť..
+        /// </summary>
+        internal static string InissTools_NothingToClean {
+            get {
+                return ResourceManager.GetString("InissTools_NothingToClean", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Otvoriť priečinok záloh.
+        /// </summary>
+        internal static string InissTools_OpenBackups {
+            get {
+                return ResourceManager.GetString("InissTools_OpenBackups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Najprv uložte alebo zahoďte neuložené zmeny..
+        /// </summary>
+        internal static string InissTools_PendingFirst {
+            get {
+                return ResourceManager.GetString("InissTools_PendingFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbory registra (*.reg)|*.reg.
+        /// </summary>
+        internal static string InissTools_RegFilter {
+            get {
+                return ResourceManager.GetString("InissTools_RegFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zrušiť vetvu HKCU....
+        /// </summary>
+        internal static string InissTools_RemoveUserBranch {
+            get {
+                return ResourceManager.GetString("InissTools_RemoveUserBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zrušiť vetvu HKEY_CURRENT_USER pre „{0}“? INISS potom číta všetky nastavenia z HKLM.  Áno – presunúť jej hodnoty do HKLM (INISS sa bude správať rovnako) Nie – len zrušiť (hodnoty ostanú len v zálohe) Zrušiť – nič nerobiť.
+        /// </summary>
+        internal static string InissTools_RemoveUserBranchQuestion {
+            get {
+                return ResourceManager.GetString("InissTools_RemoveUserBranchQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to predvolená.
+        /// </summary>
+        internal static string InissTools_ResetToDefault {
+            get {
+                return ResourceManager.GetString("InissTools_ResetToDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prevziať {0} hodnôt? {1}  {2}  Pred zápisom sa uloží záloha..
+        /// </summary>
+        internal static string InissTools_TakeOverQuestion {
+            get {
+                return ResourceManager.GetString("InissTools_TakeOverQuestion", resourceCulture);
+            }
+        }
 }
 }

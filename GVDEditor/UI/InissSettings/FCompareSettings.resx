@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tlpMain.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tlpMain.RowCount" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="tlpMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tlpMain.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 8</value>
+  </data>
+  <data name="tlpMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tlpMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>980, 620</value>
+  </data>
+  <data name="tlpMain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tlpMain.Name" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;tlpMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlpMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tlpMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tlpMain.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="flpOther" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lInfo" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flpFilter" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="dgvDiff" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flpButtons" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="flpOther.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flpOther.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flpOther.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flpOther.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flpOther.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;flpOther.Name" xml:space="preserve">
+    <value>flpOther</value>
+  </data>
+  <data name="&gt;&gt;flpOther.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flpOther.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;flpOther.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lOther.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lOther.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 3, 3</value>
+  </data>
+  <data name="lOther.Text" xml:space="preserve">
+    <value>Porovnať s:</value>
+  </data>
+  <data name="lOther.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lOther.Name" xml:space="preserve">
+    <value>lOther</value>
+  </data>
+  <data name="&gt;&gt;lOther.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lOther.Parent" xml:space="preserve">
+    <value>flpOther</value>
+  </data>
+  <data name="&gt;&gt;lOther.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbOther.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 23</value>
+  </data>
+  <data name="cbOther.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbOther.Name" xml:space="preserve">
+    <value>cbOther</value>
+  </data>
+  <data name="&gt;&gt;cbOther.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbOther.Parent" xml:space="preserve">
+    <value>flpOther</value>
+  </data>
+  <data name="&gt;&gt;cbOther.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="bFile.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bFile.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>90, 27</value>
+  </data>
+  <data name="bFile.Text" xml:space="preserve">
+    <value>Súbor .reg alebo .INI...</value>
+  </data>
+  <data name="bFile.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;bFile.Name" xml:space="preserve">
+    <value>bFile</value>
+  </data>
+  <data name="&gt;&gt;bFile.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bFile.Parent" xml:space="preserve">
+    <value>flpOther</value>
+  </data>
+  <data name="&gt;&gt;bFile.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lInfo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lInfo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="lInfo.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="lInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lInfo.Name" xml:space="preserve">
+    <value>lInfo</value>
+  </data>
+  <data name="&gt;&gt;lInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lInfo.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;lInfo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flpFilter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flpFilter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flpFilter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flpFilter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flpFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;flpFilter.Name" xml:space="preserve">
+    <value>flpFilter</value>
+  </data>
+  <data name="&gt;&gt;flpFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flpFilter.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;flpFilter.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cboxDifferentOnly.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxDifferentOnly.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 12, 3</value>
+  </data>
+  <data name="cboxDifferentOnly.Text" xml:space="preserve">
+    <value>Len rozdiely</value>
+  </data>
+  <data name="cboxDifferentOnly.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboxDifferentOnly.Name" xml:space="preserve">
+    <value>cboxDifferentOnly</value>
+  </data>
+  <data name="&gt;&gt;cboxDifferentOnly.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxDifferentOnly.Parent" xml:space="preserve">
+    <value>flpFilter</value>
+  </data>
+  <data name="&gt;&gt;cboxDifferentOnly.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboxOtherExplicit.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxOtherExplicit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 12, 3</value>
+  </data>
+  <data name="cboxOtherExplicit.Text" xml:space="preserve">
+    <value>Len hodnoty zapísané v druhej konfigurácii</value>
+  </data>
+  <data name="cboxOtherExplicit.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cboxOtherExplicit.Name" xml:space="preserve">
+    <value>cboxOtherExplicit</value>
+  </data>
+  <data name="&gt;&gt;cboxOtherExplicit.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxOtherExplicit.Parent" xml:space="preserve">
+    <value>flpFilter</value>
+  </data>
+  <data name="&gt;&gt;cboxOtherExplicit.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cboxHideApp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxHideApp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 6, 12, 3</value>
+  </data>
+  <data name="cboxHideApp.Text" xml:space="preserve">
+    <value>Skryť rozloženie okien a počítadlá INISSu</value>
+  </data>
+  <data name="cboxHideApp.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;cboxHideApp.Name" xml:space="preserve">
+    <value>cboxHideApp</value>
+  </data>
+  <data name="&gt;&gt;cboxHideApp.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxHideApp.Parent" xml:space="preserve">
+    <value>flpFilter</value>
+  </data>
+  <data name="&gt;&gt;cboxHideApp.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="dgvDiff.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dgvDiff.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;dgvDiff.Name" xml:space="preserve">
+    <value>dgvDiff</value>
+  </data>
+  <data name="&gt;&gt;dgvDiff.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvDiff.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;dgvDiff.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cTake.HeaderText" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="cTake.MinimumWidth" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="cTake.Width" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;cTake.Name" xml:space="preserve">
+    <value>cTake</value>
+  </data>
+  <data name="&gt;&gt;cTake.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cKey.HeaderText" xml:space="preserve">
+    <value>Kľúč</value>
+  </data>
+  <data name="cKey.MinimumWidth" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="cKey.Width" type="System.Int32, mscorlib">
+    <value>240</value>
+  </data>
+  <data name="&gt;&gt;cKey.Name" xml:space="preserve">
+    <value>cKey</value>
+  </data>
+  <data name="&gt;&gt;cKey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cCurrent.HeaderText" xml:space="preserve">
+    <value>Táto konfigurácia</value>
+  </data>
+  <data name="cCurrent.MinimumWidth" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="cCurrent.Width" type="System.Int32, mscorlib">
+    <value>170</value>
+  </data>
+  <data name="&gt;&gt;cCurrent.Name" xml:space="preserve">
+    <value>cCurrent</value>
+  </data>
+  <data name="&gt;&gt;cCurrent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cCurrentSource.HeaderText" xml:space="preserve">
+    <value>Zdroj</value>
+  </data>
+  <data name="cCurrentSource.MinimumWidth" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="cCurrentSource.Width" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="&gt;&gt;cCurrentSource.Name" xml:space="preserve">
+    <value>cCurrentSource</value>
+  </data>
+  <data name="&gt;&gt;cCurrentSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cOther.HeaderText" xml:space="preserve">
+    <value>Druhá konfigurácia</value>
+  </data>
+  <data name="cOther.MinimumWidth" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="cOther.Width" type="System.Int32, mscorlib">
+    <value>170</value>
+  </data>
+  <data name="&gt;&gt;cOther.Name" xml:space="preserve">
+    <value>cOther</value>
+  </data>
+  <data name="&gt;&gt;cOther.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cOtherSource.HeaderText" xml:space="preserve">
+    <value>Zdroj</value>
+  </data>
+  <data name="cOtherSource.MinimumWidth" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="cOtherSource.AutoSizeMode" type="System.Windows.Forms.DataGridViewAutoSizeColumnMode, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="cOtherSource.FillWeight" type="System.Single, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;cOtherSource.Name" xml:space="preserve">
+    <value>cOtherSource</value>
+  </data>
+  <data name="&gt;&gt;cOtherSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="flpButtons.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flpButtons.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flpButtons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flpButtons.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 6, 0, 0</value>
+  </data>
+  <data name="flpButtons.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="flpButtons.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>RightToLeft</value>
+  </data>
+  <data name="&gt;&gt;flpButtons.Name" xml:space="preserve">
+    <value>flpButtons</value>
+  </data>
+  <data name="&gt;&gt;flpButtons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flpButtons.Parent" xml:space="preserve">
+    <value>tlpMain</value>
+  </data>
+  <data name="&gt;&gt;flpButtons.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="bClose.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bClose.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>90, 27</value>
+  </data>
+  <data name="bClose.Text" xml:space="preserve">
+    <value>Zavrieť</value>
+  </data>
+  <data name="bClose.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;bClose.Name" xml:space="preserve">
+    <value>bClose</value>
+  </data>
+  <data name="&gt;&gt;bClose.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bClose.Parent" xml:space="preserve">
+    <value>flpButtons</value>
+  </data>
+  <data name="&gt;&gt;bClose.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="bTakeOver.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bTakeOver.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>90, 27</value>
+  </data>
+  <data name="bTakeOver.Text" xml:space="preserve">
+    <value>Prevziať označené...</value>
+  </data>
+  <data name="bTakeOver.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;bTakeOver.Name" xml:space="preserve">
+    <value>bTakeOver</value>
+  </data>
+  <data name="&gt;&gt;bTakeOver.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bTakeOver.Parent" xml:space="preserve">
+    <value>flpButtons</value>
+  </data>
+  <data name="&gt;&gt;bTakeOver.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cbTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 23</value>
+  </data>
+  <data name="cbTarget.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 3</value>
+  </data>
+  <data name="cbTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbTarget.Name" xml:space="preserve">
+    <value>cbTarget</value>
+  </data>
+  <data name="&gt;&gt;cbTarget.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbTarget.Parent" xml:space="preserve">
+    <value>flpButtons</value>
+  </data>
+  <data name="&gt;&gt;cbTarget.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lTarget.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lTarget.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 3, 3</value>
+  </data>
+  <data name="lTarget.Text" xml:space="preserve">
+    <value>Zapísať do:</value>
+  </data>
+  <data name="lTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lTarget.Name" xml:space="preserve">
+    <value>lTarget</value>
+  </data>
+  <data name="&gt;&gt;lTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lTarget.Parent" xml:space="preserve">
+    <value>flpButtons</value>
+  </data>
+  <data name="&gt;&gt;lTarget.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lCount.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lCount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 12, 3</value>
+  </data>
+  <data name="lCount.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="lCount.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lCount.Name" xml:space="preserve">
+    <value>lCount</value>
+  </data>
+  <data name="&gt;&gt;lCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lCount.Parent" xml:space="preserve">
+    <value>flpButtons</value>
+  </data>
+  <data name="&gt;&gt;lCount.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="cTake.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cKey.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cCurrent.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cCurrentSource.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cOther.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cOtherSource.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>980, 620</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Porovnanie nastavení INISSu</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>700, 400</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FCompareSettings</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
