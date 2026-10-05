@@ -36,7 +36,15 @@ internal static class SimulatorStation
 /// </summary>
 internal static class TableSimulatorClient
 {
-    private static readonly HttpClient Http = new() { Timeout = TimeSpan.FromSeconds(10) };
+    private static readonly HttpClient Http = CreateHttp();
+
+    /// <summary>Klient s hlavickou, bez ktorej server simulatora zmenu odmietne (ochrana proti CSRF).</summary>
+    private static HttpClient CreateHttp()
+    {
+        var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
+        http.DefaultRequestHeaders.Add("X-Requested-With", "GVDEditor");
+        return http;
+    }
 
     /// <summary>Webova adresa simulatora z textu (<c>http://host:port</c>); null pri neplatnej.</summary>
     public static Uri? ParseUrl(string text) =>
