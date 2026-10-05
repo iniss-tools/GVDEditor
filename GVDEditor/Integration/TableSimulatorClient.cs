@@ -1,5 +1,8 @@
+using System.Net;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
+using TableSimulator.Contracts.Auth;
 using TableSimulator.Contracts.State;
 using TableSimulator.Contracts.Station;
 
@@ -39,12 +42,36 @@ internal static class SimulatorStation
     }
 }
 
+/// <summary>Ako GVDEditor so simulatorom pracovat moze.</summary>
+internal enum SimulatorAccess
+{
+    /// <summary>Simulator na adrese neodpoveda.</summary>
+    Offline,
+
+    /// <summary>Simulator vyzaduje prihlasenie a API kluc chyba alebo ho neprijal.</summary>
+    Unauthorized,
+
+    /// <summary>Kluc smie len pozerat - linky a tabule nezalozi.</summary>
+    ReadOnly,
+
+    /// <summary>Linky a tabule sa daju zalozit.</summary>
+    Ok
+}
+
+/// <summary>Zistenie stavu simulatora.</summary>
+/// <param name="Access">co smie GVDEditor robit</param>
+/// <param name="State">stav simulatora (triedy liniek); null, ak sa neda zistit</param>
+internal sealed record SimulatorProbe(SimulatorAccess Access, StateDto? State);
+
 /// <summary>
 /// Volania weboveho API simulatora tabul (TableSimulator) s jeho kontraktmi: ci bezi a ake triedy liniek pozna,
-/// zalozenie liniek a tabul stanice.
+/// zalozenie liniek a tabul stanice. Ak simulator vyzaduje prihlasenie, ide s API klucom (<c>Authorization: Bearer</c>).
 /// </summary>
 internal static class TableSimulatorClient
 {
+    // opravnenie simulatora na zmenu liniek a tabul (kluc z /api/auth/me)
+    private const string EditPermission = "simulator.edit";
+
     private static readonly HttpClient Http = CreateHttp();
 
     /// <summary>Klient s hlavickou, bez ktorej server simulatora zmenu odmietne (ochrana proti CSRF).</summary>
@@ -59,28 +86,64 @@ internal static class TableSimulatorClient
     public static Uri? ParseUrl(string text) =>
         Uri.TryCreate(text.Trim(), UriKind.Absolute, out var uri) && (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps) ? uri : null;
 
-    /// <summary>Stav simulatora; null, ak na adrese neodpoveda.</summary>
-    public static async Task<StateDto?> StateAsync(Uri baseUri, TimeSpan timeout, CancellationToken cancel)
+    /// <summary>Poziadavka na simulator - s API klucom, ak je zadany.</summary>
+    internal static HttpRequestMessage Request(HttpMethod method, Uri uri, string? apiKey)
+    {
+        var request = new HttpRequestMessage(method, uri);
+        if (!string.IsNullOrWhiteSpace(apiKey))
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", apiKey.Trim());
+        return request;
+    }
+
+    /// <summary>
+    /// Zisti, ci simulator bezi, ake triedy liniek pozna a ci s klucom smie zakladat linky a tabule. Simulator bez
+    /// prihlasovania (aj starsi bez <c>/api/auth/me</c>) dovoli vsetko.
+    /// </summary>
+    public static async Task<SimulatorProbe> ProbeAsync(Uri baseUri, string? apiKey, TimeSpan timeout, CancellationToken cancel)
     {
         using var limit = CancellationTokenSource.CreateLinkedTokenSource(cancel);
         limit.CancelAfter(timeout);
         try
         {
-            return await Http.GetFromJsonAsync<StateDto>(new Uri(baseUri, "api/state"), limit.Token);
+            var me = await GetAsync<MeDto>(baseUri, "api/auth/me", apiKey, limit.Token);
+            if (me is { LoginRequired: true, Authenticated: false })
+                return new SimulatorProbe(SimulatorAccess.Unauthorized, null);
+            var state = await GetAsync<StateDto>(baseUri, "api/state", apiKey, limit.Token);
+            if (state is null)
+                return new SimulatorProbe(SimulatorAccess.Offline, null);
+            var canEdit = me is null || !me.LoginRequired || me.Permissions.Contains(EditPermission);
+            return new SimulatorProbe(canEdit ? SimulatorAccess.Ok : SimulatorAccess.ReadOnly, state);
+        }
+        catch (HttpRequestException e) when (e.StatusCode is HttpStatusCode.Unauthorized or HttpStatusCode.Forbidden)
+        {
+            return new SimulatorProbe(SimulatorAccess.Unauthorized, null);
         }
         catch (Exception e) when (e is HttpRequestException or JsonException or OperationCanceledException && !cancel.IsCancellationRequested)
         {
-            return null;
+            return new SimulatorProbe(SimulatorAccess.Offline, null);
         }
     }
 
     /// <summary>Zalozi v simulatore linky a tabule stanice.</summary>
-    /// <exception cref="HttpRequestException">simulator neodpoveda alebo poziadavku odmietol</exception>
-    public static async Task<StationImportedDto> ImportAsync(Uri baseUri, StationImportRequest station, CancellationToken cancel)
+    /// <exception cref="HttpRequestException">simulator neodpoveda alebo poziadavku odmietol (stav 401/403 - kluc)</exception>
+    public static async Task<StationImportedDto> ImportAsync(Uri baseUri, string? apiKey, StationImportRequest station, CancellationToken cancel)
     {
-        using var response = await Http.PostAsJsonAsync(new Uri(baseUri, "api/station"), station, cancel);
+        using var request = Request(HttpMethod.Post, new Uri(baseUri, "api/station"), apiKey);
+        request.Content = JsonContent.Create(station);
+        using var response = await Http.SendAsync(request, cancel);
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<StationImportedDto>(cancel)
                ?? throw new HttpRequestException("Empty response.");
+    }
+
+    /// <summary>Odpoved GET ako kontrakt; null, ak server cestu nepozna (starsi simulator).</summary>
+    private static async Task<T?> GetAsync<T>(Uri baseUri, string path, string? apiKey, CancellationToken cancel)
+    {
+        using var request = Request(HttpMethod.Get, new Uri(baseUri, path), apiKey);
+        using var response = await Http.SendAsync(request, cancel);
+        if (response.StatusCode == HttpStatusCode.NotFound)
+            return default;
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<T>(cancel);
     }
 }

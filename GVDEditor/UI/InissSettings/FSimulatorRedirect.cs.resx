@@ -73,6 +73,9 @@
   <data name="bProbe.Text" xml:space="preserve">
     <value>Zjistit stav</value>
   </data>
+  <data name="lApiKey.Text" xml:space="preserve">
+    <value>API klíč simulátoru:</value>
+  </data>
   <data name="cboxPrepare.Text" xml:space="preserve">
     <value>Založit v simulátoru linky a tabule stanice</value>
   </data>

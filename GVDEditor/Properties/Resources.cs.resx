@@ -3858,6 +3858,21 @@ Před zápisem se uloží záloha.</value>
   <data name="InissRedirect_SimulatorFailed" xml:space="preserve">
     <value>Linky a tabule v simulátoru se nepodařilo založit ({0}). Spusťte simulátor a přesměrování potvrďte znovu, nebo linky založte ručně.</value>
   </data>
+  <data name="InissRedirect_StatusNeedsKey" xml:space="preserve">
+    <value>Simulátor vyžaduje přihlášení – zadejte API klíč (v simulátoru Uživatelé → Klíče → Nový klíč, druh program, role operátor) a zjistěte stav znovu.</value>
+  </data>
+  <data name="InissRedirect_StatusKeyInvalid" xml:space="preserve">
+    <value>Simulátor API klíč nepřijal – zkontrolujte jej, nebo v simulátoru vytvořte nový.</value>
+  </data>
+  <data name="InissRedirect_StatusReadOnly" xml:space="preserve">
+    <value>API klíč smí jen prohlížet – k založení linek a tabulí je třeba klíč s rolí operátor.</value>
+  </data>
+  <data name="InissRedirect_SimulatorUnauthorized" xml:space="preserve">
+    <value>Simulátor vyžaduje přihlášení a API klíč chybí nebo neplatí – linky a tabule v něm nevznikly.</value>
+  </data>
+  <data name="InissRedirect_SimulatorForbidden" xml:space="preserve">
+    <value>API klíč nemá oprávnění měnit simulátor (je třeba role operátor) – linky a tabule v něm nevznikly.</value>
+  </data>
   <data name="InissRedirect_SimulatorVirtual" xml:space="preserve">
     <value>Virtuální tabule pro tabule s exportem do XML: přibyly {0}, ponechané {1}.</value>
   </data>

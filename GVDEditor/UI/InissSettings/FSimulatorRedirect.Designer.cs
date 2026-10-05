@@ -41,6 +41,8 @@ namespace GVDEditor.UI.InissSettings
             lUrl = new Label();
             tbUrl = new ExTextBox();
             bProbe = new ExButton();
+            lApiKey = new Label();
+            tbApiKey = new ExTextBox();
             cboxPrepare = new ExCheckBox();
             lStatus = new Label();
             dgvLines = new DataGridView();
@@ -88,7 +90,9 @@ namespace GVDEditor.UI.InissSettings
             tlpTarget.Controls.Add(tbUrl, 1, 1);
             tlpTarget.Controls.Add(bProbe, 2, 1);
             tlpTarget.SetColumnSpan(bProbe, 2);
-            tlpTarget.Controls.Add(cboxPrepare, 0, 2);
+            tlpTarget.Controls.Add(lApiKey, 0, 2);
+            tlpTarget.Controls.Add(tbApiKey, 1, 2);
+            tlpTarget.Controls.Add(cboxPrepare, 0, 3);
             tlpTarget.SetColumnSpan(cboxPrepare, 4);
             tlpTarget.Name = "tlpTarget";
             // 
@@ -127,6 +131,17 @@ namespace GVDEditor.UI.InissSettings
             resources.ApplyResources(bProbe, "bProbe");
             bProbe.UseVisualStyleBackColor = true;
             bProbe.Name = "bProbe";
+            // 
+            // lApiKey
+            // 
+            resources.ApplyResources(lApiKey, "lApiKey");
+            lApiKey.Name = "lApiKey";
+            // 
+            // tbApiKey
+            // 
+            resources.ApplyResources(tbApiKey, "tbApiKey");
+            tbApiKey.PasswordChar = '●';
+            tbApiKey.Name = "tbApiKey";
             // 
             // cboxPrepare
             // 
@@ -265,6 +280,8 @@ namespace GVDEditor.UI.InissSettings
         private Label lUrl;
         private ExTextBox tbUrl;
         private ExButton bProbe;
+        private Label lApiKey;
+        private ExTextBox tbApiKey;
         private ExCheckBox cboxPrepare;
         private Label lStatus;
         private DataGridView dgvLines;

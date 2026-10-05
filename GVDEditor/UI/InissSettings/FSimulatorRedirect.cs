@@ -39,6 +39,7 @@ internal partial class FSimulatorRedirect : Form
         tbHost.Text = settings.Host;
         tbBasePort.Text = settings.BasePort.ToString(CultureInfo.CurrentCulture);
         tbUrl.Text = settings.WebUrl;
+        tbApiKey.Text = settings.ApiKey;
         cboxPrepare.Checked = settings.Prepare;
         bUndo.Visible = redirected.Count > 0;
 
@@ -97,7 +98,8 @@ internal partial class FSimulatorRedirect : Form
         Host = tbHost.Text.Trim(),
         BasePort = BasePort() ?? TableSimulatorSettings.DefaultBasePort,
         WebUrl = tbUrl.Text.Trim(),
-        Prepare = cboxPrepare.Checked
+        Prepare = cboxPrepare.Checked,
+        ApiKey = tbApiKey.Text.Trim()
     };
 
     /// <summary>Zrusit cele presmerovanie (namiesto <see cref="Ports" />).</summary>
@@ -152,13 +154,25 @@ internal partial class FSimulatorRedirect : Form
         lStatus.Text = Resources.InissRedirect_StatusChecking;
         try
         {
-            var state = await TableSimulatorClient.StateAsync(url, TimeSpan.FromSeconds(2), _closing.Token);
+            var probe = await TableSimulatorClient.ProbeAsync(url, tbApiKey.Text, TimeSpan.FromSeconds(2), _closing.Token);
             if (IsDisposed) return;
+            var state = probe.State;
             _supported = state?.SupportedClasses;
-            lStatus.Text = state is null
-                ? string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_StatusOffline, url)
+            var running = state is null
+                ? ""
                 : string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_StatusRunning,
                     string.Join(", ", state.SupportedClasses.Select(c => c.ToString(CultureInfo.CurrentCulture))));
+            lStatus.Text = probe.Access switch
+            {
+                SimulatorAccess.Offline => string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_StatusOffline, url),
+                SimulatorAccess.Unauthorized => string.IsNullOrWhiteSpace(tbApiKey.Text)
+                    ? Resources.InissRedirect_StatusNeedsKey
+                    : Resources.InissRedirect_StatusKeyInvalid,
+                SimulatorAccess.ReadOnly => running + " " + Resources.InissRedirect_StatusReadOnly,
+                _ => running
+            };
+            if (probe.Access is SimulatorAccess.Unauthorized or SimulatorAccess.ReadOnly)
+                lStatus.ForeColor = GVDEditor.UI.Settings.SettingsWindow.ProblemColor(this);
             if (_supported is not null && !_checksTouched && _redirected.Count == 0)
             {
                 _filling = true;

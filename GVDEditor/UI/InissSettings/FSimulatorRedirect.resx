@@ -124,7 +124,7 @@
     <value>4</value>
   </data>
   <data name="tlpTarget.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="tlpTarget.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -151,7 +151,7 @@
     <value>1</value>
   </data>
   <data name="tlpTarget.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lHost" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbHost" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lBasePort" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="tbBasePort" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="lUrl" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbUrl" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="bProbe" Row="1" RowSpan="1" Column="2" ColumnSpan="2" /&gt;&lt;Control Name="cboxPrepare" Row="2" RowSpan="1" Column="0" ColumnSpan="4" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lHost" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbHost" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lBasePort" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="tbBasePort" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="lUrl" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbUrl" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="bProbe" Row="1" RowSpan="1" Column="2" ColumnSpan="2" /&gt;&lt;Control Name="lApiKey" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbApiKey" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="cboxPrepare" Row="3" RowSpan="1" Column="0" ColumnSpan="4" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="lHost.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -312,6 +312,51 @@
   <data name="&gt;&gt;bProbe.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="lApiKey.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lApiKey.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 7, 3, 3</value>
+  </data>
+  <data name="lApiKey.Text" xml:space="preserve">
+    <value>API kľúč simulátora:</value>
+  </data>
+  <data name="lApiKey.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lApiKey.Name" xml:space="preserve">
+    <value>lApiKey</value>
+  </data>
+  <data name="&gt;&gt;lApiKey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lApiKey.Parent" xml:space="preserve">
+    <value>tlpTarget</value>
+  </data>
+  <data name="&gt;&gt;lApiKey.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tbApiKey.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tbApiKey.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 3</value>
+  </data>
+  <data name="tbApiKey.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="&gt;&gt;tbApiKey.Name" xml:space="preserve">
+    <value>tbApiKey</value>
+  </data>
+  <data name="&gt;&gt;tbApiKey.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbApiKey.Parent" xml:space="preserve">
+    <value>tlpTarget</value>
+  </data>
+  <data name="&gt;&gt;tbApiKey.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
   <data name="cboxPrepare.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -322,7 +367,7 @@
     <value>Založiť v simulátore linky a tabule stanice</value>
   </data>
   <data name="cboxPrepare.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;cboxPrepare.Name" xml:space="preserve">
     <value>cboxPrepare</value>
@@ -334,7 +379,7 @@
     <value>tlpTarget</value>
   </data>
   <data name="&gt;&gt;cboxPrepare.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="lStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

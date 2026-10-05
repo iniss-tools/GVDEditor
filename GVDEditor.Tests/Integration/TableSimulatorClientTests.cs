@@ -70,6 +70,17 @@ public class TableSimulatorClientTests
     }
 
     [TestMethod]
+    public void Poziadavka_SKlucomHlavickaBearer()
+    {
+        var uri = new Uri("http://localhost:5470/api/state");
+        using var withKey = TableSimulatorClient.Request(HttpMethod.Get, uri, " ts_kluc ");
+        using var withoutKey = TableSimulatorClient.Request(HttpMethod.Get, uri, "");
+
+        Assert.AreEqual("Bearer ts_kluc", withKey.Headers.Authorization?.ToString());
+        Assert.IsNull(withoutKey.Headers.Authorization);
+    }
+
+    [TestMethod]
     public void AdresaSimulatora_LenHttp()
     {
         Assert.IsNotNull(TableSimulatorClient.ParseUrl("http://localhost:5470"));

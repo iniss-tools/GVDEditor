@@ -1208,7 +1208,7 @@ internal partial class FInissSettings : Form
         UseWaitCursor = true;
         try
         {
-            var result = await TableSimulatorClient.ImportAsync(url, station, CancellationToken.None);
+            var result = await TableSimulatorClient.ImportAsync(url, _ctx.Config.TableSimulator.ApiKey, station, CancellationToken.None);
             var text = new StringBuilder(string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_SimulatorDone,
                 result.LinesAdded, result.LinesUpdated, result.BoardsAdded, result.BoardsKept));
             if (result.UnsupportedLines.Count > 0)
@@ -1232,6 +1232,14 @@ internal partial class FInissSettings : Form
             if (logFolder is not null)
                 text.AppendLine().Append(string.Format(CultureInfo.CurrentCulture, logFolder, station.LogFolder));
             return text.ToString();
+        }
+        catch (HttpRequestException e) when (e.StatusCode is System.Net.HttpStatusCode.Unauthorized)
+        {
+            return Resources.InissRedirect_SimulatorUnauthorized;
+        }
+        catch (HttpRequestException e) when (e.StatusCode is System.Net.HttpStatusCode.Forbidden)
+        {
+            return Resources.InissRedirect_SimulatorForbidden;
         }
         catch (Exception e) when (e is HttpRequestException or System.Text.Json.JsonException or TaskCanceledException)
         {

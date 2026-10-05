@@ -11045,6 +11045,51 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Simulátor vyžaduje prihlásenie – zadajte API kľúč (v simulátore Používatelia → Kľúče → Nový kľúč, druh program, rola operátor) a zistite stav znova..
+        /// </summary>
+        internal static string InissRedirect_StatusNeedsKey {
+            get {
+                return ResourceManager.GetString("InissRedirect_StatusNeedsKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simulátor API kľúč neprijal – skontrolujte ho, alebo v simulátore vytvorte nový..
+        /// </summary>
+        internal static string InissRedirect_StatusKeyInvalid {
+            get {
+                return ResourceManager.GetString("InissRedirect_StatusKeyInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to API kľúč smie len pozerať – na založenie liniek a tabúľ treba kľúč s rolou operátor..
+        /// </summary>
+        internal static string InissRedirect_StatusReadOnly {
+            get {
+                return ResourceManager.GetString("InissRedirect_StatusReadOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simulátor vyžaduje prihlásenie a API kľúč chýba alebo neplatí – linky a tabule v ňom nevznikli..
+        /// </summary>
+        internal static string InissRedirect_SimulatorUnauthorized {
+            get {
+                return ResourceManager.GetString("InissRedirect_SimulatorUnauthorized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to API kľúč nemá oprávnenie meniť simulátor (treba rolu operátor) – linky a tabule v ňom nevznikli..
+        /// </summary>
+        internal static string InissRedirect_SimulatorForbidden {
+            get {
+                return ResourceManager.GetString("InissRedirect_SimulatorForbidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Virtuálne tabule pre tabule s exportom do XML: pribudli {0}, ponechané {1}..
         /// </summary>
         internal static string InissRedirect_SimulatorVirtual {
