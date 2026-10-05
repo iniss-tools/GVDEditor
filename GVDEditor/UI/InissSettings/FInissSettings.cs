@@ -3,6 +3,7 @@ using ExControls;
 using GVDEditor.Config;
 using GVDEditor.Integration;
 using GVDEditor.Properties;
+using TableSimulator.Contracts.Station;
 using ToolsCore.Iniss.Registry;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
@@ -1199,7 +1200,7 @@ internal partial class FInissSettings : Form
     }
 
     /// <summary>Zalozi linky a tabule stanice v simulatore; vrati text vysledku pre obsluhu.</summary>
-    private async Task<string> PrepareSimulatorAsync(Uri url, SimulatorStation station)
+    private async Task<string> PrepareSimulatorAsync(Uri url, StationImportRequest station)
     {
         UseWaitCursor = true;
         try

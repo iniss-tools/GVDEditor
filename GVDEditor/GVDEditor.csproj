@@ -52,6 +52,8 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\ExControls\ExControls\ExControls.csproj" />
 		<ProjectReference Include="..\..\ToolsCore\ToolsCore\ToolsCore.csproj" />
+		<!-- kontrakty API simulatora tabul (presmerovanie liniek INISSu na simulator) -->
+		<ProjectReference Include="..\..\TableSimulator\TableSimulator.Contracts\TableSimulator.Contracts.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 	  <EmbeddedResource Update="UI\Import\FColumnTypeSelect.cs.resx">
