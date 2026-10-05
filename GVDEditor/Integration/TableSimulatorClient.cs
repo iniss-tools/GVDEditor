@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Security.Authentication;
 using System.Text.Json;
 using TableSimulator.Contracts.Auth;
 using TableSimulator.Contracts.State;
@@ -55,13 +56,28 @@ internal enum SimulatorAccess
     ReadOnly,
 
     /// <summary>Linky a tabule sa daju zalozit.</summary>
-    Ok
+    Ok,
+
+    /// <summary>Simulator zo siete prijima len HTTPS - adresa sa ma zmenit na <see cref="SimulatorProbe.HttpsUrl" />.</summary>
+    HttpsRequired,
+
+    /// <summary>Certifikatu simulatora tento pocitac nedoveruje (certifikacna autorita simulatora nie je nainstalovana).</summary>
+    UntrustedCertificate
 }
 
 /// <summary>Zistenie stavu simulatora.</summary>
 /// <param name="Access">co smie GVDEditor robit</param>
 /// <param name="State">stav simulatora (triedy liniek); null, ak sa neda zistit</param>
-internal sealed record SimulatorProbe(SimulatorAccess Access, StateDto? State);
+/// <param name="HttpsUrl">adresa HTTPS simulatora, ak pristup cez HTTP presmeroval</param>
+internal sealed record SimulatorProbe(SimulatorAccess Access, StateDto? State, Uri? HttpsUrl = null);
+
+/// <summary>Simulator poziadavku presmeroval na HTTPS - zo siete neprijima HTTP.</summary>
+/// <param name="httpsUrl">adresa simulatora cez HTTPS (bez cesty)</param>
+internal sealed class SimulatorHttpsRequiredException(Uri httpsUrl)
+    : HttpRequestException($"The simulator accepts only HTTPS from the network: {httpsUrl}")
+{
+    public Uri HttpsUrl { get; } = httpsUrl;
+}
 
 /// <summary>
 /// Volania weboveho API simulatora tabul (TableSimulator) s jeho kontraktmi: ci bezi a ake triedy liniek pozna,
@@ -74,10 +90,13 @@ internal static class TableSimulatorClient
 
     private static readonly HttpClient Http = CreateHttp();
 
-    /// <summary>Klient s hlavickou, bez ktorej server simulatora zmenu odmietne (ochrana proti CSRF).</summary>
+    /// <summary>
+    /// Klient s hlavickou, bez ktorej server simulatora zmenu odmietne (ochrana proti CSRF). Presmerovanie nenasleduje -
+    /// presmerovana poziadavka by prisla o API kluc; presmerovanie na HTTPS sa obsluhe ohlasi.
+    /// </summary>
     private static HttpClient CreateHttp()
     {
-        var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
+        var http = new HttpClient(new SocketsHttpHandler { AllowAutoRedirect = false }) { Timeout = TimeSpan.FromSeconds(10) };
         http.DefaultRequestHeaders.Add("X-Requested-With", "GVDEditor");
         return http;
     }
@@ -114,6 +133,14 @@ internal static class TableSimulatorClient
             var canEdit = me is null || !me.LoginRequired || me.Permissions.Contains(EditPermission);
             return new SimulatorProbe(canEdit ? SimulatorAccess.Ok : SimulatorAccess.ReadOnly, state);
         }
+        catch (SimulatorHttpsRequiredException e)
+        {
+            return new SimulatorProbe(SimulatorAccess.HttpsRequired, null, e.HttpsUrl);
+        }
+        catch (HttpRequestException e) when (IsUntrustedCertificate(e))
+        {
+            return new SimulatorProbe(SimulatorAccess.UntrustedCertificate, null);
+        }
         catch (HttpRequestException e) when (e.StatusCode is HttpStatusCode.Unauthorized or HttpStatusCode.Forbidden)
         {
             return new SimulatorProbe(SimulatorAccess.Unauthorized, null);
@@ -124,16 +151,33 @@ internal static class TableSimulatorClient
         }
     }
 
+    /// <summary>Spojenie zlyhalo, lebo certifikatu simulatora tento pocitac nedoveruje.</summary>
+    public static bool IsUntrustedCertificate(HttpRequestException e)
+    {
+        ArgumentNullException.ThrowIfNull(e);
+        return e.InnerException is AuthenticationException || e.HttpRequestError == HttpRequestError.SecureConnectionError;
+    }
+
     /// <summary>Zalozi v simulatore linky a tabule stanice.</summary>
+    /// <exception cref="SimulatorHttpsRequiredException">simulator zo siete prijima len HTTPS</exception>
     /// <exception cref="HttpRequestException">simulator neodpoveda alebo poziadavku odmietol (stav 401/403 - kluc)</exception>
     public static async Task<StationImportedDto> ImportAsync(Uri baseUri, string? apiKey, StationImportRequest station, CancellationToken cancel)
     {
         using var request = Request(HttpMethod.Post, new Uri(baseUri, "api/station"), apiKey);
         request.Content = JsonContent.Create(station);
         using var response = await Http.SendAsync(request, cancel);
+        ThrowIfRedirectedToHttps(response);
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<StationImportedDto>(cancel)
                ?? throw new HttpRequestException("Empty response.");
+    }
+
+    /// <summary>Presmerovanie na HTTPS (simulator zo siete prijima len HTTPS) ako vynimka s adresou simulatora.</summary>
+    private static void ThrowIfRedirectedToHttps(HttpResponseMessage response)
+    {
+        if ((int)response.StatusCode is >= 300 and < 400 && response.Headers.Location is { IsAbsoluteUri: true } location
+                                                         && location.Scheme == Uri.UriSchemeHttps)
+            throw new SimulatorHttpsRequiredException(new Uri(location.GetLeftPart(UriPartial.Authority) + "/"));
     }
 
     /// <summary>Odpoved GET ako kontrakt; null, ak server cestu nepozna (starsi simulator).</summary>
@@ -141,6 +185,7 @@ internal static class TableSimulatorClient
     {
         using var request = Request(HttpMethod.Get, new Uri(baseUri, path), apiKey);
         using var response = await Http.SendAsync(request, cancel);
+        ThrowIfRedirectedToHttps(response);
         if (response.StatusCode == HttpStatusCode.NotFound)
             return default;
         response.EnsureSuccessStatusCode();

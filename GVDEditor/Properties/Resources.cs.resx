@@ -3864,6 +3864,12 @@ Před zápisem se uloží záloha.</value>
   <data name="InissRedirect_StatusKeyInvalid" xml:space="preserve">
     <value>Simulátor API klíč nepřijal – zkontrolujte jej, nebo v simulátoru vytvořte nový.</value>
   </data>
+  <data name="InissRedirect_StatusHttpsRequired" xml:space="preserve">
+    <value>Simulátor ze sítě přijímá jen HTTPS – změňte webovou adresu na {0}.</value>
+  </data>
+  <data name="InissRedirect_StatusUntrusted" xml:space="preserve">
+    <value>Certifikátu simulátoru tento počítač nedůvěřuje. Stáhněte certifikát autority simulátoru ({0}) a nainstalujte ho mezi důvěryhodné kořenové certifikáty.</value>
+  </data>
   <data name="InissRedirect_StatusReadOnly" xml:space="preserve">
     <value>API klíč smí jen prohlížet – k založení linek a tabulí je třeba klíč s rolí operátor.</value>
   </data>

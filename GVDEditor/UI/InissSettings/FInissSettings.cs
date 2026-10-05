@@ -1233,6 +1233,14 @@ internal partial class FInissSettings : Form
                 text.AppendLine().Append(string.Format(CultureInfo.CurrentCulture, logFolder, station.LogFolder));
             return text.ToString();
         }
+        catch (SimulatorHttpsRequiredException e)
+        {
+            return string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_StatusHttpsRequired, e.HttpsUrl);
+        }
+        catch (HttpRequestException e) when (TableSimulatorClient.IsUntrustedCertificate(e))
+        {
+            return string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_StatusUntrusted, new Uri(url, "api/https/certificate"));
+        }
         catch (HttpRequestException e) when (e.StatusCode is System.Net.HttpStatusCode.Unauthorized)
         {
             return Resources.InissRedirect_SimulatorUnauthorized;

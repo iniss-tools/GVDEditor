@@ -11063,6 +11063,24 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Simulátor zo siete prijíma len HTTPS – zmeňte webovú adresu na {0}..
+        /// </summary>
+        internal static string InissRedirect_StatusHttpsRequired {
+            get {
+                return ResourceManager.GetString("InissRedirect_StatusHttpsRequired", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Certifikátu simulátora tento počítač nedôveruje. Stiahnite certifikát autority simulátora ({0}) a nainštalujte ho medzi dôveryhodné koreňové certifikáty..
+        /// </summary>
+        internal static string InissRedirect_StatusUntrusted {
+            get {
+                return ResourceManager.GetString("InissRedirect_StatusUntrusted", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to API kľúč smie len pozerať – na založenie liniek a tabúľ treba kľúč s rolou operátor..
         /// </summary>
         internal static string InissRedirect_StatusReadOnly {

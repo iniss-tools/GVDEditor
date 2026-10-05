@@ -1,4 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Net;
+using System.Net.Security;
+using System.Net.Sockets;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Text.Json;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Integration;
@@ -78,6 +84,88 @@ public class TableSimulatorClientTests
 
         Assert.AreEqual("Bearer ts_kluc", withKey.Headers.Authorization?.ToString());
         Assert.IsNull(withoutKey.Headers.Authorization);
+    }
+
+    /// <summary>
+    /// Server na jedno spojenie: precita hlavicky poziadavky a posle <paramref name="response" />; s certifikatom
+    /// <paramref name="certificate" /> cez TLS. Vrati adresu servera.
+    /// </summary>
+    private static (Uri Url, Task Served) Serve(string response, X509Certificate2? certificate = null)
+    {
+        var listener = new TcpListener(IPAddress.Loopback, 0);
+        listener.Start();
+        var port = ((IPEndPoint)listener.LocalEndpoint).Port;
+        var served = Task.Run(async () =>
+        {
+            try
+            {
+                using var client = await listener.AcceptTcpClientAsync();
+                Stream stream = client.GetStream();
+                if (certificate is not null)
+                {
+                    var ssl = new SslStream(stream);
+                    stream = ssl;
+                    try
+                    {
+                        await ssl.AuthenticateAsServerAsync(certificate);
+                    }
+                    catch (Exception e) when (e is IOException or System.Security.Authentication.AuthenticationException)
+                    {
+                        // klient certifikat odmietol
+                        return;
+                    }
+                }
+
+                var buffer = new byte[4096];
+                var request = "";
+                while (!request.Contains("\r\n\r\n", StringComparison.Ordinal))
+                {
+                    var read = await stream.ReadAsync(buffer);
+                    if (read == 0) return;
+                    request += Encoding.ASCII.GetString(buffer, 0, read);
+                }
+
+                await stream.WriteAsync(Encoding.ASCII.GetBytes(response));
+                await stream.FlushAsync();
+            }
+            catch (IOException)
+            {
+                // klient spojenie zrusil (pri TLS 1.3 odmietne certifikat az po handshaku)
+            }
+            finally
+            {
+                listener.Stop();
+            }
+        });
+        return (new Uri($"{(certificate is null ? "http" : "https")}://localhost:{port}/"), served);
+    }
+
+    [TestMethod]
+    public async Task Sonda_PresmerovanieNaHttps_AdresaHttps()
+    {
+        var (url, served) = Serve("HTTP/1.1 308 Permanent Redirect\r\nLocation: https://simulator:5471/api/auth/me\r\nContent-Length: 0\r\nConnection: close\r\n\r\n");
+
+        var probe = await TableSimulatorClient.ProbeAsync(url, "kluc", TimeSpan.FromSeconds(5), CancellationToken.None);
+        await served;
+
+        Assert.AreEqual(SimulatorAccess.HttpsRequired, probe.Access);
+        Assert.AreEqual(new Uri("https://simulator:5471/"), probe.HttpsUrl);
+    }
+
+    [TestMethod]
+    public async Task Sonda_NedoveryhodnyCertifikat()
+    {
+        using var key = RSA.Create(2048);
+        var request = new CertificateRequest("CN=localhost", key, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+        using var created = request.CreateSelfSigned(DateTimeOffset.UtcNow.AddDays(-1), DateTimeOffset.UtcNow.AddDays(1));
+        // kluc z pamate Windows pri TLS nepouzije - cez PKCS#12
+        using var certificate = X509CertificateLoader.LoadPkcs12(created.Export(X509ContentType.Pkcs12), null);
+        var (url, served) = Serve("HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n", certificate);
+
+        var probe = await TableSimulatorClient.ProbeAsync(url, null, TimeSpan.FromSeconds(5), CancellationToken.None);
+        await served;
+
+        Assert.AreEqual(SimulatorAccess.UntrustedCertificate, probe.Access);
     }
 
     [TestMethod]

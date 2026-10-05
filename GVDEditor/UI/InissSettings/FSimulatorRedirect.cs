@@ -169,9 +169,12 @@ internal partial class FSimulatorRedirect : Form
                     ? Resources.InissRedirect_StatusNeedsKey
                     : Resources.InissRedirect_StatusKeyInvalid,
                 SimulatorAccess.ReadOnly => running + " " + Resources.InissRedirect_StatusReadOnly,
+                SimulatorAccess.HttpsRequired => string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_StatusHttpsRequired, probe.HttpsUrl),
+                SimulatorAccess.UntrustedCertificate => string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_StatusUntrusted,
+                    new Uri(url, "api/https/certificate")),
                 _ => running
             };
-            if (probe.Access is SimulatorAccess.Unauthorized or SimulatorAccess.ReadOnly)
+            if (probe.Access is not (SimulatorAccess.Ok or SimulatorAccess.Offline))
                 lStatus.ForeColor = GVDEditor.UI.Settings.SettingsWindow.ProblemColor(this);
             if (_supported is not null && !_checksTouched && _redirected.Count == 0)
             {
