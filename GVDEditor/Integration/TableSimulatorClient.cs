@@ -9,11 +9,15 @@ namespace GVDEditor.Integration;
 internal static class SimulatorStation
 {
     /// <summary>
-    /// Linky presmerovane na simulator a tabule, ktore im INISS priradi.
+    /// Linky presmerovane na simulator a tabule, ktore im INISS priradi; k tomu priecinok logov INISSu a tabule
+    /// s exportom do XML pre virtualne tabule simulatora.
     /// </summary>
     /// <param name="map">linky konfiguracie s priradenymi tabulami</param>
     /// <param name="ports">sekcia Driver* → port linky na simulatore</param>
-    public static StationImportRequest From(DriverLineMap map, IReadOnlyDictionary<string, int> ports)
+    /// <param name="tables">vsetky fyzicke tabule instalacie (export do XML maju aj tabule bez linky)</param>
+    /// <param name="logFolder">priecinok logov INISSu (PathNames\LogPath), kam INISS zapisuje XML tabul</param>
+    public static StationImportRequest From(DriverLineMap map, IReadOnlyDictionary<string, int> ports, IEnumerable<InissTable>? tables = null,
+        string? logFolder = null)
     {
         var lines = new List<StationLineDto>();
         var boards = new List<StationBoardDto>();
@@ -26,7 +30,12 @@ internal static class SimulatorStation
                     boards.Add(new StationBoardDto(number, table.Table.Table.ID, manufacturer.Name, table.Table.Table.Key));
         }
 
-        return new StationImportRequest(lines, boards);
+        // INISS zapisuje XML vsetkych grafikonov z DirList - rovnake SAVE_XML zapisuje do jedneho suboru
+        var xml = (tables ?? []).Where(t => !string.IsNullOrWhiteSpace(t.Table.SaveXML))
+            .DistinctBy(t => t.Table.SaveXML.Trim(), StringComparer.OrdinalIgnoreCase)
+            .Select(t => new StationXmlTableDto(t.Table.Key, t.Table.SaveXML.Trim()))
+            .ToList();
+        return new StationImportRequest(lines, boards) { LogFolder = logFolder, XmlTables = xml };
     }
 }
 

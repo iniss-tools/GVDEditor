@@ -47,7 +47,26 @@ public class TableSimulatorClientTests
         // ako PostAsJsonAsync (JsonSerializerDefaults.Web) - kluce cita server simulatora
         var json = JsonSerializer.Serialize(SimulatorStation.From(Map(), new Dictionary<string, int> { ["Driver"] = 47003 }), Web);
 
-        Assert.AreEqual("""{"lines":[{"number":3,"tableClass":4,"port":47003,"name":"Driver"}],"boards":[{"line":3,"address":5,"manufacturer":"ELEN16","name":"ODCH1"}]}""", json);
+        Assert.AreEqual("""{"lines":[{"number":3,"tableClass":4,"port":47003,"name":"Driver"}],"boards":[{"line":3,"address":5,"manufacturer":"ELEN16","name":"ODCH1"}],"logFolder":null,"xmlTables":[]}""", json);
+    }
+
+    [TestMethod]
+    public void Stanica_TabuleSExportomDoXmlAPriecinokLogov()
+    {
+        InissTable Xml(int index, string key, string saveXml)
+        {
+            var table = Table(index, key, TableManufacturer.Elen, 0, -1);
+            table.Table.SaveXML = saveXml;
+            return table;
+        }
+
+        var tables = new[] { Xml(0, "Odchody web", "StanicaO"), Xml(1, "ODCH1", ""), Xml(2, "Odchody iny GVD", "stanicao"), Xml(3, "Príchody web", " StanicaP ") };
+
+        var station = SimulatorStation.From(Map(), new Dictionary<string, int>(), tables, @"C:\INISS\Logy");
+
+        Assert.AreEqual(@"C:\INISS\Logy", station.LogFolder);
+        CollectionAssert.AreEqual(new[] { new StationXmlTableDto("Odchody web", "StanicaO"), new StationXmlTableDto("Príchody web", "StanicaP") },
+            station.XmlTables.ToArray());
     }
 
     [TestMethod]

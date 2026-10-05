@@ -3874,6 +3874,18 @@ Pred zápisom sa uloží záloha.</value>
   <data name="InissRedirect_SimulatorFailed" xml:space="preserve">
     <value>Linky a tabule v simulátore sa nepodarilo založiť ({0}). Spustite simulátor a presmerovanie potvrďte znova, alebo linky založte ručne.</value>
   </data>
+  <data name="InissRedirect_SimulatorVirtual" xml:space="preserve">
+    <value>Virtuálne tabule pre tabule s exportom do XML: pribudli {0}, ponechané {1}.</value>
+  </data>
+  <data name="InissRedirect_SimulatorLogAdded" xml:space="preserve">
+    <value>Simulátor sleduje priečinok logov INISSu {0} – virtuálne tabule ukážu obsah, ktorý doň INISS zapisuje.</value>
+  </data>
+  <data name="InissRedirect_SimulatorLogMissing" xml:space="preserve">
+    <value>Priečinok logov INISSu {0} simulátor nevidí (beží na inom počítači alebo priečinok neexistuje) – pre virtuálne tabule ho zadajte v nastaveniach simulátora.</value>
+  </data>
+  <data name="InissRedirect_SimulatorLogFull" xml:space="preserve">
+    <value>Simulátor už sleduje najviac priečinkov – priečinok logov INISSu {0} nepridal.</value>
+  </data>
   <data name="InissRedirect_RestartQuestion" xml:space="preserve">
     <value>INISS beží a zmenu načíta až po reštarte. Reštartovať ho teraz?</value>
   </data>

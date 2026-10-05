@@ -1185,7 +1185,10 @@ internal partial class FInissSettings : Form
         var message = new StringBuilder(f.Undo ? Resources.InissRedirect_Undone
             : string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_Done, string.Join(", ", tablePorts.Keys)));
         if (!f.Undo && f.PrepareUrl is { } url)
-            message.AppendLine().AppendLine().Append(await PrepareSimulatorAsync(url, SimulatorStation.From(_lines, ports)));
+        {
+            var logFolder = InissEnvironment.LogDirectory(m.Config, _ctx.Workspace.INISSDir).Path;
+            message.AppendLine().AppendLine().Append(await PrepareSimulatorAsync(url, SimulatorStation.From(_lines, ports, _tables, logFolder)));
+        }
 
         Reload(false);
         var running = RunningInstances();
@@ -1217,6 +1220,17 @@ internal partial class FInissSettings : Form
 
             if (result.SkippedBoards.Count > 0)
                 text.AppendLine().Append(string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_SimulatorSkipped, string.Join(", ", result.SkippedBoards)));
+            if (result.VirtualBoardsAdded + result.VirtualBoardsKept > 0)
+                text.AppendLine().Append(string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_SimulatorVirtual, result.VirtualBoardsAdded, result.VirtualBoardsKept));
+            var logFolder = result.LogFolder switch
+            {
+                StationLogFolder.Added => Resources.InissRedirect_SimulatorLogAdded,
+                StationLogFolder.Missing => Resources.InissRedirect_SimulatorLogMissing,
+                StationLogFolder.Full => Resources.InissRedirect_SimulatorLogFull,
+                _ => null
+            };
+            if (logFolder is not null)
+                text.AppendLine().Append(string.Format(CultureInfo.CurrentCulture, logFolder, station.LogFolder));
             return text.ToString();
         }
         catch (Exception e) when (e is HttpRequestException or System.Text.Json.JsonException or TaskCanceledException)

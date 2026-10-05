@@ -11045,6 +11045,42 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Virtuálne tabule pre tabule s exportom do XML: pribudli {0}, ponechané {1}..
+        /// </summary>
+        internal static string InissRedirect_SimulatorVirtual {
+            get {
+                return ResourceManager.GetString("InissRedirect_SimulatorVirtual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simulátor sleduje priečinok logov INISSu {0} – virtuálne tabule ukážu obsah, ktorý doň INISS zapisuje..
+        /// </summary>
+        internal static string InissRedirect_SimulatorLogAdded {
+            get {
+                return ResourceManager.GetString("InissRedirect_SimulatorLogAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priečinok logov INISSu {0} simulátor nevidí (beží na inom počítači alebo priečinok neexistuje) – pre virtuálne tabule ho zadajte v nastaveniach simulátora..
+        /// </summary>
+        internal static string InissRedirect_SimulatorLogMissing {
+            get {
+                return ResourceManager.GetString("InissRedirect_SimulatorLogMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simulátor už sleduje najviac priečinkov – priečinok logov INISSu {0} nepridal..
+        /// </summary>
+        internal static string InissRedirect_SimulatorLogFull {
+            get {
+                return ResourceManager.GetString("InissRedirect_SimulatorLogFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to INISS beží a zmenu načíta až po reštarte. Reštartovať ho teraz?.
         /// </summary>
         internal static string InissRedirect_RestartQuestion {
