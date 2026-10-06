@@ -1,4 +1,4 @@
-using System.Globalization;
+﻿using System.Globalization;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Elen;
 
@@ -48,6 +48,18 @@ internal static class ElenFontCodeExtensions
         /// Neproporcionalny je len rez 0.
         /// </summary>
         public bool SuggestedProportional => code.Face != 0;
+
+        /// <summary>
+        /// Tabuli by sa za <c>ESC</c> poslal riadiaci znak - dolny bajt cisla je pod 0x20 (chyba bit 0x40). Napr. pri
+        /// cisle 4 ide <c>1B 04</c> a <c>04</c> protokol ELEN berie ako koniec spravy. Pri -1 sa pismo neposiela.
+        /// </summary>
+        public bool SendsControlChar => code.Id != -1 && (code.Id & 0xFF) < 0x20;
+
+        /// <summary>
+        /// Rovnake cislo s bitom 0x40 - INISS ani tabula ho neinterpretuju, takze vzhlad ostane, len dolny bajt
+        /// prestane byt riadiacim znakom.
+        /// </summary>
+        public ElenFontCode WithKeptBit => new(code.Id | ElenFontCode.DefaultKeptBits);
 
         /// <summary>
         /// Typicka sirka znaku rezu v bodoch podla tabuliek sirok v INISSe.

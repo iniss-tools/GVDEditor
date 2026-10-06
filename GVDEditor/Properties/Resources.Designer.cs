@@ -8732,6 +8732,60 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}: číslo písma {1} sa tabuli ELEN pošle ako riadiaci znak 0x{2} (chýba bit 0x40) – tabuľa môže správu odmietnuť a INISS ju bude opakovať..
+        /// </summary>
+        internal static string Analyzer_ElenFont {
+            get {
+                return ResourceManager.GetString("Analyzer_ElenFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo „{0}“ (ponúka sa pri informačnom texte).
+        /// </summary>
+        internal static string Analyzer_ElenFont_Font {
+            get {
+                return ResourceManager.GetString("Analyzer_ElenFont_Font", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Katalógová tabuľa {0}, stĺpec {1}.
+        /// </summary>
+        internal static string Analyzer_ElenFont_Column {
+            get {
+                return ResourceManager.GetString("Analyzer_ElenFont_Column", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text na tabuli {0}, vlak {1}.
+        /// </summary>
+        internal static string Analyzer_ElenFont_Text {
+            get {
+                return ResourceManager.GetString("Analyzer_ElenFont_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TabTab {0}, r. {1}.
+        /// </summary>
+        internal static string Analyzer_ElenFont_TabTab {
+            get {
+                return ResourceManager.GetString("Analyzer_ElenFont_TabTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmeniť číslo písma na číslo s bitom 0x40 – rovnaký vzhľad ako {0} má {1}.
+        /// </summary>
+        internal static string Analyzer_ElenFont_Fix {
+            get {
+                return ResourceManager.GetString("Analyzer_ElenFont_Fix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nastavenia INISSu….
         /// </summary>
         internal static string Cmd_InissSettings {

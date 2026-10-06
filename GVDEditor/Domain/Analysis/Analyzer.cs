@@ -225,6 +225,9 @@ internal static class Analyzer
         //7. Tables, texts, platforms, tracks, operators and fonts - the rules of the Local settings pages
         problems.AddRange(GrafikonChecks.Settings(scope));
 
+        //7b. Font numbers that ELEN tables would get as a control character (without bit 0x40)
+        problems.AddRange(ElenFontChecks.Problems(scope));
+
         //8. Trains - the rules of the train window (data from files and imports never went through it)
         problems.AddRange(GrafikonChecks.Trains(gvd, scope));
         progress?.Report(88);

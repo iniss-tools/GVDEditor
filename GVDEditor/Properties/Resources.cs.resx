@@ -3052,6 +3052,24 @@ Směrování vlaku a/nebo stanice vlaku,
   <data name="Analyzer_StateDgmProblems_Fix" xml:space="preserve">
     <value>Upravit stavový diagram</value>
   </data>
+  <data name="Analyzer_ElenFont" xml:space="preserve">
+    <value>{0}: číslo písma {1} se tabuli ELEN pošle jako řídicí znak 0x{2} (chybí bit 0x40) – tabule může zprávu odmítnout a INISS ji bude opakovat.</value>
+  </data>
+  <data name="Analyzer_ElenFont_Font" xml:space="preserve">
+    <value>Písmo „{0}“ (nabízí se u informačního textu)</value>
+  </data>
+  <data name="Analyzer_ElenFont_Column" xml:space="preserve">
+    <value>Katalogová tabule {0}, sloupec {1}</value>
+  </data>
+  <data name="Analyzer_ElenFont_Text" xml:space="preserve">
+    <value>Text na tabuli {0}, vlak {1}</value>
+  </data>
+  <data name="Analyzer_ElenFont_TabTab" xml:space="preserve">
+    <value>TabTab {0}, ř. {1}</value>
+  </data>
+  <data name="Analyzer_ElenFont_Fix" xml:space="preserve">
+    <value>Změnit číslo písma na číslo s bitem 0x40 – stejný vzhled jako {0} má {1}</value>
+  </data>
   <data name="Cmd_InissSettings" xml:space="preserve">
     <value>Nastavení INISSu…</value>
   </data>
