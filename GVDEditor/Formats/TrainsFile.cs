@@ -1,7 +1,7 @@
 ﻿using GVDEditor.Domain.Entities;
 using ToolsCore.Iniss.Tools;
 using static GVDEditor.Formats.FormatCommon;
-using static GVDEditor.Formats.GvdFileConsts;
+using static ToolsCore.Iniss.Grafikon.GvdFileConsts;
 using static ToolsCore.Iniss.Tools.PathUtils;
 
 namespace GVDEditor.Formats;

@@ -7,3 +7,5 @@ global using System.Drawing;
 global using System.IO;
 global using System.ComponentModel;
 global using System.Diagnostics;
+global using ToolsCore.Iniss.Grafikon;
+global using ToolsCore.Iniss.Tables;

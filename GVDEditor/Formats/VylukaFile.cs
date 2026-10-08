@@ -3,7 +3,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Tools;
 using static GVDEditor.Formats.FormatCommon;
-using static GVDEditor.Formats.GvdFileConsts;
+using static ToolsCore.Iniss.Grafikon.GvdFileConsts;
 using static ToolsCore.Iniss.Tools.ParseUtils;
 
 namespace GVDEditor.Formats;

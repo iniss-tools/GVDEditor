@@ -104,9 +104,9 @@ internal static class InissChecks
                         string.Format(CultureInfo.CurrentCulture, Resources.InissCheck_Unserved, unserved.Table.Table.Key, unserved.Reason),
                         Resources.InissCheck_Unserved_Fix, "Tables");
                 foreach (var line in lines.Lines)
-                foreach (var (severity, text) in line.Problems.Where(p => p.Severity != RegSeverity.Info))
-                    Add("line:" + line.Section + ":" + text, severity == RegSeverity.Error ? ProblemType.Error : ProblemType.Warning,
-                        string.Format(CultureInfo.CurrentCulture, Resources.InissCheck_Line, line.Section, text), Resources.InissCheck_Line_Fix, line.Section);
+                foreach (var problem in line.Problems.Where(p => p.Severity != RegSeverity.Info))
+                    Add("line:" + line.Section + ":" + problem.Text, problem.Severity == RegSeverity.Error ? ProblemType.Error : ProblemType.Warning,
+                        string.Format(CultureInfo.CurrentCulture, Resources.InissCheck_Line, line.Section, problem.Text), Resources.InissCheck_Line_Fix, line.Section);
 
                 // skuska so simulatorom tabul, na ktoru sa lahko zabudne - skutocne tabule potom nedostanu nic
                 var redirected = SimulatorRedirect.Find(config.Source.Ini).Select(r => r.Section).ToHashSet(StringComparer.OrdinalIgnoreCase);

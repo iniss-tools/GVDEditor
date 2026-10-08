@@ -58,7 +58,7 @@ internal static class InissEnvironment
     public static InissRegistryView? AnalysisView(RunConfiguration? config, InissWorkspace workspace)
     {
         if (config is null || config.Program.Length == 0) return null;
-        var tables = InissTableMap.Build(workspace);
+        var tables = InissTableMap.Build(workspace.GVDDirs);
         var resolved = Resolve(config, workspace.INISSDir, tables.ToDictionary(t => t.Index, t => t.ToInfo()));
         var src = resolved.Source;
         var exists = src.Machine.Exists || src.User.Exists || src.VirtualStore.Exists || src.Ini is not null;
@@ -71,9 +71,7 @@ internal static class InissEnvironment
     /// </summary>
     public static (string Path, ResolvedSetting? Setting) LogDirectory(ResolvedConfig resolved, string installationDir)
     {
-        var setting = resolved.Find("PathNames", "LogPath");
-        var value = setting?.Value as string;
-        return (Path.GetFullPath(Path.Combine(installationDir, string.IsNullOrWhiteSpace(value) ? "DATA" : value.Trim())), setting);
+        return (InissPaths.LogDirectory(resolved, installationDir), resolved.Find("PathNames", "LogPath"));
     }
 
     /// <summary>

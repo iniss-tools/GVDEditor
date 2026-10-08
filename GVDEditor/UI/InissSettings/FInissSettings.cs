@@ -67,7 +67,7 @@ internal partial class FInissSettings : Form
         GVDEditor.UI.Settings.SettingsWindow.ApplyPlacement(this, _ctx.Config.InissSettingsWindow);
         dgvValues.AutoGenerateColumns = false;
         // fyzicke tabule vsetkych grafikonov v poradi, v akom ich INISS indexuje (Tables\…<N>)
-        _tables = InissTableMap.Build(_ctx.Workspace);
+        _tables = InissTableMap.Build(_ctx.Workspace.GVDDirs);
         pDetail.Controls.Add(_detail);
         cState.DefaultCellStyle.NullValue = null;
         this.ApplyThemeAndFonts();

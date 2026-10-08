@@ -176,7 +176,7 @@ namespace GVDEditor.UI.Settings
             // 
             // tableItemBindingSource
             // 
-            this.tableItemBindingSource.DataSource = typeof(GVDEditor.Domain.Entities.TableItem);
+            this.tableItemBindingSource.DataSource = typeof(ToolsCore.Iniss.Tables.TableItem);
             // 
             // label3
             // 

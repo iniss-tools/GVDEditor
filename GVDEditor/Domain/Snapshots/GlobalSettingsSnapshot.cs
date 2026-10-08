@@ -52,5 +52,5 @@ internal sealed class GlobalSettingsSnapshot
     /// </summary>
     private static bool IsEntity(Type type) =>
         type == typeof(FyzLanguage) ||
-        (type.Assembly == typeof(Train).Assembly && type.Namespace == typeof(Train).Namespace);
+        (type.Assembly == typeof(Train).Assembly && type.Namespace == typeof(Train).Namespace) || LocalSettingsSnapshot.IsInissEntity(type);
 }

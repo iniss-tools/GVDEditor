@@ -2,7 +2,7 @@
 using GVDEditor.Properties;
 using ToolsCore.Iniss.StateDgm;
 using ToolsCore.Iniss.Tools;
-using static GVDEditor.Formats.GvdFileConsts;
+using static ToolsCore.Iniss.Grafikon.GvdFileConsts;
 using static ToolsCore.Iniss.Tools.PathUtils;
 
 namespace GVDEditor.Formats;

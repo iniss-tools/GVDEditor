@@ -227,7 +227,7 @@ namespace GVDEditor.UI.Dialogs
             // 
             // stanicaBindingSource
             // 
-            this.stanicaBindingSource.DataSource = typeof(GVDEditor.Domain.Entities.Station);
+            this.stanicaBindingSource.DataSource = typeof(ToolsCore.Iniss.Grafikon.Station);
             // 
             // label4
             // 

@@ -4,7 +4,7 @@ using GVDEditor.Properties;
 using System.Globalization;
 using ToolsCore.Iniss.Entities;
 using ToolsCore.Iniss.Tools;
-using static GVDEditor.Formats.GvdFileConsts;
+using static ToolsCore.Iniss.Grafikon.GvdFileConsts;
 using static ToolsCore.Iniss.Tools.ParseUtils;
 using static ToolsCore.Iniss.Tools.PathUtils;
 using static GVDEditor.Formats.FormatCommon;

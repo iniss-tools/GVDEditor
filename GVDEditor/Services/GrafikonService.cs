@@ -8,7 +8,7 @@ using GVDEditor.Formats;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
-using static GVDEditor.Formats.GvdFileConsts;
+using static ToolsCore.Iniss.Grafikon.GvdFileConsts;
 
 namespace GVDEditor.Services;
 
