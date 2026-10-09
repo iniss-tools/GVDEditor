@@ -53,7 +53,37 @@ public class TableSimulatorClientTests
         // ako PostAsJsonAsync (JsonSerializerDefaults.Web) - kluce cita server simulatora
         var json = JsonSerializer.Serialize(SimulatorStation.From(Map(), new Dictionary<string, int> { ["Driver"] = 47003 }), Web);
 
-        Assert.AreEqual("""{"lines":[{"number":3,"tableClass":4,"port":47003,"name":"Driver"}],"boards":[{"line":3,"address":5,"manufacturer":"ELEN16","name":"ODCH1"}],"logFolder":null,"xmlTables":[]}""", json);
+        Assert.AreEqual("""{"lines":[{"number":3,"tableClass":4,"port":47003,"name":"Driver"}],"boards":[{"line":3,"address":5,"manufacturer":"ELEN16","name":"ODCH1","flaps":null,"flapRecords":1}],"logFolder":null,"xmlTables":[]}""", json);
+    }
+
+    [TestMethod]
+    public void Stanica_ListovaTabulaSoZoznamamiListov()
+    {
+        var machine = new RegBranch().Set("Driver", "TableClass", RegRawValue.Dword(3)).Set("Driver", "TablePort", RegRawValue.String("COM2"));
+        var config = RegResolver.Resolve(new InissConfigSource { AppName = "T", Version = new RegVersion(3, 39), Machine = machine });
+        var ciel = new TableTabTab { Key = "Ciel", Text = "A=BRATISLAVA\r\nB=*BRATISLAVA\r\n" };
+        var catalog = new TableCatalog
+        {
+            Key = "F", Name = "F", Comment = "", Manufacturer = TableManufacturer.Fers, MaxRecCount = 6,
+            Items =
+            [
+                new TableItem
+                {
+                    Key = "C", Name = "C", FillSection = TableFillSection.Free, Line = 0, Start = 0, End = 8, Align = TableAlign.Left,
+                    DivType = TableDivType.Table, Tab1 = ciel, Tab2 = TableTabTab.Empty
+                }
+            ]
+        };
+        var table = new InissTable(0, "Test.2025", new TablePhysical
+        {
+            Key = "ODCH", Name = "ODCH", ID = 20, CommunicationPort = 2, Rem = "", SaveXML = "", ReverseArrows = "", Comment = "", TableCatalog = catalog
+        });
+
+        var board = SimulatorStation.From(DriverLines.Build(config, [table]), new Dictionary<string, int> { ["Driver"] = 47002 }).Boards.Single();
+
+        Assert.AreEqual(6, board.FlapRecords);
+        Assert.AreEqual(new TableSimulator.Contracts.Boards.FlapModuleDto(0, 0, 1, "Ciel"), board.Flaps!.Modules.Single());
+        Assert.AreEqual("*BRATISLAVA", board.Flaps.Lists["Ciel"]["B"]);
     }
 
     [TestMethod]

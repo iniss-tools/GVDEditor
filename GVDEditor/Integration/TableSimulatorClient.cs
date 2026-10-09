@@ -4,6 +4,7 @@ using System.Net.Http.Json;
 using System.Security.Authentication;
 using System.Text.Json;
 using TableSimulator.Contracts.Auth;
+using TableSimulator.Contracts.Boards;
 using TableSimulator.Contracts.State;
 using TableSimulator.Contracts.Station;
 
@@ -30,8 +31,8 @@ internal static class SimulatorStation
             if (line.Line is not { } number || !ports.TryGetValue(line.Section, out var port)) continue;
             lines.Add(new StationLineDto(number, line.Class, port, line.Section));
             foreach (var table in line.Tables)
-                if (table.Table.Table.TableCatalog?.Manufacturer is { } manufacturer)
-                    boards.Add(new StationBoardDto(number, table.Table.Table.ID, manufacturer.Name, table.Table.Table.Key));
+                if (table.Table.Table.TableCatalog is { Manufacturer: { } manufacturer } catalog)
+                    boards.Add(Board(number, table.Table.Table, catalog, manufacturer));
         }
 
         // INISS zapisuje XML vsetkych grafikonov z DirList - rovnake SAVE_XML zapisuje do jedneho suboru
@@ -40,6 +41,25 @@ internal static class SimulatorStation
             .Select(t => new StationXmlTableDto(t.Table.Key, t.Table.SaveXML.Trim()))
             .ToList();
         return new StationImportRequest(lines, boards) { LogFolder = logFolder, XmlTables = xml };
+    }
+
+    /// <summary>Tabula; listova (ERS, FERS) aj s modulmi a zoznamami listov z predlohy a jej TabTab.</summary>
+    private static StationBoardDto Board(int line, TablePhysical table, TableCatalog catalog, TableManufacturer manufacturer)
+    {
+        var board = new StationBoardDto(line, table.ID, manufacturer.Name, table.Key);
+        if (!FlapLayouts.IsFlapBoard(manufacturer))
+            return board;
+        var layout = FlapLayouts.Build(catalog);
+        return board with
+        {
+            Flaps = new FlapProfileDto
+            {
+                LinesPerRecord = layout.LinesPerRecord,
+                Modules = layout.Modules.Select(m => new FlapModuleDto(m.Line, m.Position, m.Span, m.List)).ToArray(),
+                Lists = layout.Lists
+            },
+            FlapRecords = layout.Records
+        };
     }
 }
 
