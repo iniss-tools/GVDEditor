@@ -13,6 +13,9 @@ namespace GVDEditor.Integration;
 /// <summary>Linky a tabule stanice pre simulator tabul (kontrakt <see cref="StationImportRequest" />).</summary>
 internal static class SimulatorStation
 {
+    /// <summary>Vyrobca spinacej jednotky zosilnovaca v simulatore.</summary>
+    private const string AmplifierManufacturer = "ELSVO";
+
     /// <summary>
     /// Linky presmerovane na simulator a tabule, ktore im INISS priradi; k tomu priecinok logov INISSu a tabule
     /// s exportom do XML pre virtualne tabule simulatora.
@@ -21,8 +24,9 @@ internal static class SimulatorStation
     /// <param name="ports">sekcia Driver* → port linky na simulatore</param>
     /// <param name="tables">vsetky fyzicke tabule instalacie (export do XML maju aj tabule bez linky)</param>
     /// <param name="logFolder">priecinok logov INISSu (PathNames\LogPath), kam INISS zapisuje XML tabul</param>
+    /// <param name="amplifiers">spinacie jednotky zosilnovacov ELSVO zo zvukovych okruhov - patria linke podla cisla</param>
     public static StationImportRequest From(DriverLineMap map, IReadOnlyDictionary<string, int> ports, IEnumerable<InissTable>? tables = null,
-        string? logFolder = null)
+        string? logFolder = null, IReadOnlyList<ElsvoUnit>? amplifiers = null)
     {
         var lines = new List<StationLineDto>();
         var boards = new List<StationBoardDto>();
@@ -33,6 +37,8 @@ internal static class SimulatorStation
             foreach (var table in line.Tables)
                 if (table.Table.Table.TableCatalog is { Manufacturer: { } manufacturer } catalog)
                     boards.Add(Board(number, table.Table.Table, catalog, manufacturer));
+            foreach (var unit in (amplifiers ?? []).Where(u => u.Line == number))
+                boards.Add(new StationBoardDto(number, unit.Address, AmplifierManufacturer, unit.Name));
         }
 
         // INISS zapisuje XML vsetkych grafikonov z DirList - rovnake SAVE_XML zapisuje do jedneho suboru

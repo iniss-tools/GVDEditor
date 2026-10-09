@@ -1187,7 +1187,8 @@ internal partial class FInissSettings : Form
         if (!f.Undo && f.PrepareUrl is { } url)
         {
             var logFolder = InissEnvironment.LogDirectory(m.Config, _ctx.Workspace.INISSDir).Path;
-            message.AppendLine().AppendLine().Append(await PrepareSimulatorAsync(url, SimulatorStation.From(_lines, ports, _tables, logFolder)));
+            message.AppendLine().AppendLine().Append(await PrepareSimulatorAsync(url, SimulatorStation.From(_lines, ports, _tables, logFolder,
+                ElsvoUnits.FromCircuits(_ctx.Workspace.Audios.Select(a => (a.Name, (string?)a.AmplifierPort, (string?)a.ExchangeParameter))))));
         }
 
         Reload(false);

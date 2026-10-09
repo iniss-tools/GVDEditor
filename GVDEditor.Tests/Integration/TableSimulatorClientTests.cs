@@ -48,6 +48,17 @@ public class TableSimulatorClientTests
     }
 
     [TestMethod]
+    public void Stanica_ZosilnovaceElsvoNaPresmerovanejLinke()
+    {
+        var units = ElsvoUnits.FromCircuits([("Nastupiste 1", "E4", "5"), ("Hala", "E4", "5"), ("Ustredna", "12", "1"), ("Ina", "E3", "2")]);
+
+        var station = SimulatorStation.From(Map(), new Dictionary<string, int> { ["Driver0"] = 47004 }, amplifiers: units);
+
+        CollectionAssert.AreEqual(new[] { new StationBoardDto(4, 12, "LCD1", "NAST1"), new StationBoardDto(4, 5, "ELSVO", "Nastupiste 1, Hala") },
+            station.Boards.ToArray());
+    }
+
+    [TestMethod]
     public void Stanica_KluceJsonPodlaApiSimulatora()
     {
         // ako PostAsJsonAsync (JsonSerializerDefaults.Web) - kluce cita server simulatora
