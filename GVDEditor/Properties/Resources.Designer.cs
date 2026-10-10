@@ -10373,7 +10373,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to API kľúč nemá oprávnenie na linky a tabule. Na ich založenie treba kľúč s rolou operátor..
+        ///   Looks up a localized string similar to API kľúč nemá oprávnenie Linky a tabule. V simulátore vytvorte kľúč s rolou, ktorá ho má..
         /// </summary>
         internal static string InissRedirect_StatusReadOnly {
             get {

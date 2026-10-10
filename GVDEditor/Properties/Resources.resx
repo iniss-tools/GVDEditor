@@ -3640,7 +3640,7 @@ Pred zápisom sa uloží záloha.</value>
     <value>Linky a tabule v simulátore sa nepodarilo založiť ({0}). Spustite simulátor a presmerovanie potvrďte znova, alebo linky založte ručne.</value>
   </data>
   <data name="InissRedirect_StatusNeedsKey" xml:space="preserve">
-    <value>Simulátor vyžaduje prihlásenie. Zadajte API kľúč a zistite stav znova. Kľúč vytvoríte v simulátore na stránke Prístupové kľúče (druh program, rola operátor).</value>
+    <value>Simulátor vyžaduje prihlásenie. Zadajte API kľúč a zistite stav znova. Kľúč vytvoríte v simulátore na stránke Prístupové kľúče (druh program, rola s oprávnením Linky a tabule).</value>
   </data>
   <data name="InissRedirect_StatusKeyInvalid" xml:space="preserve">
     <value>Simulátor API kľúč neprijal. Skontrolujte ho, alebo v simulátore vytvorte nový.</value>
@@ -3652,7 +3652,7 @@ Pred zápisom sa uloží záloha.</value>
     <value>Certifikátu simulátora tento počítač nedôveruje. Stiahnite certifikát autority simulátora ({0}) a nainštalujte ho medzi dôveryhodné koreňové certifikáty.</value>
   </data>
   <data name="InissRedirect_StatusReadOnly" xml:space="preserve">
-    <value>API kľúč nemá oprávnenie na linky a tabule. Na ich založenie treba kľúč s rolou operátor.</value>
+    <value>API kľúč nemá oprávnenie Linky a tabule. V simulátore vytvorte kľúč s rolou, ktorá ho má.</value>
   </data>
   <data name="InissRedirect_SimulatorUnauthorized" xml:space="preserve">
     <value>Simulátor vyžaduje prihlásenie a API kľúč chýba alebo neplatí. Linky a tabule v ňom nevznikli.</value>
