@@ -156,7 +156,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Nástupištia a koľaje stanice. Koľaje sú v strome pod nástupišťom, na ktorom ležia. Nástupište bez koľaje sa nezapíše – pri ďalšom otvorení grafikonu by zmizlo.</value>
+    <value>Nástupištia a koľaje stanice. Koľaje sú v strome pod nástupišťom, na ktorom ležia. Nástupište bez koľaje sa nezapíše.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

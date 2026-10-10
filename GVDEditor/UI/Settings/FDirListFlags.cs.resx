@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lIntro.Text" xml:space="preserve">
-    <value>Příznaky určují, jak INISS zpracuje externí zprávy o vlacích (například z ISOŘ) pro stanici tohoto grafikonu a kdy je grafikon aktivní. INISS je načte po restartu.</value>
+    <value>Příznaky určují, jak INISS zpracuje externí zprávy o vlacích (například z ISOŘ) a kdy je grafikon aktivní. Projeví se po restartu INISSu.</value>
   </data>
   <data name="gbMessages.Text" xml:space="preserve">
     <value>Externí zprávy o vlacích</value>
@@ -133,7 +133,7 @@
     <value>Vlak, který INISS v grafikonu nemá:</value>
   </data>
   <data name="rbCreateNone.Text" xml:space="preserve">
-    <value>nezakládat – zprávu jen zapsat do logu</value>
+    <value>nezakládat, zprávu jen zapsat do logu</value>
   </data>
   <data name="rbCreate.Text" xml:space="preserve">
     <value>založit nový vlak (K)</value>

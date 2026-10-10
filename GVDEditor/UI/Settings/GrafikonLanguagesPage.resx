@@ -156,7 +156,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Zaškrtnuté jazyky grafikon používa – INISS v nich môže hlásiť vlaky, ktoré ich majú zapnuté, a radenia môžu obsahovať ich nahrávky. Hlavný jazyk stanice sa vypnúť nedá. Zoznam jazykov stanice je v globálnych nastaveniach.</value>
+    <value>Jazyky, ktoré grafikon používa. Hlavný jazyk stanice sa vypnúť nedá. Zoznam jazykov stanice je v globálnych nastaveniach.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

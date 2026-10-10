@@ -156,7 +156,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Logické tabule určujú, čo sa na fyzických tabuliach zobrazuje – ktoré záznamy idú na ktorú tabuľu a od ktorého riadka. Koľajám sa priraďujú na stránke Nástupištia a koľaje.</value>
+    <value>Logické tabule určujú, ktoré záznamy idú na ktorú fyzickú tabuľu a od ktorého riadka. Koľajám sa priraďujú na stránke Nástupištia a koľaje.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -894,7 +894,7 @@
     <value>10</value>
   </data>
   <data name="lStationNote.Text" xml:space="preserve">
-    <value>Nepovinné – väzba na grafikon stanice pri pracovisku s viacerými stanicami. Stanica sa vyberie zo zoznamu alebo sa zadá jej číslo.</value>
+    <value>Nepovinné. Väzba na grafikon stanice pri pracovisku s viacerými stanicami.</value>
   </data>
   <data name="lStationNote.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

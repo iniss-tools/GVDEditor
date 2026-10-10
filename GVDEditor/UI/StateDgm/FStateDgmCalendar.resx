@@ -659,7 +659,7 @@
     <value>3</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Riadok = stav kategórie, do ktorej vlak patrí podľa IndCat. Automatika hovorí, kedy vlak do stavu vstúpi sám: čas = časový bod + posun + meškanie; „Plán.“ je výsledok AutoCondition. Rovnaké údaje ukazuje INISS v okne Kalendár akcií vlaku.</value>
+    <value>Riadok = stav kategórie, do ktorej vlak patrí. Automatika hovorí, kedy vlak do stavu vstúpi sám (čas = časový bod + posun + meškanie). Rovnaké údaje ukazuje INISS v okne Kalendár akcií vlaku.</value>
   </data>
   <data name="&gt;&gt;lInfo.Name" xml:space="preserve">
     <value>lInfo</value>

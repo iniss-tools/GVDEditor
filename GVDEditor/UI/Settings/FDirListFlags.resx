@@ -143,7 +143,7 @@
     <value>0</value>
   </data>
   <data name="lIntro.Text" xml:space="preserve">
-    <value>Príznaky určujú, ako INISS spracuje externé správy o vlakoch (napríklad z ISOŘ) pre stanicu tohto grafikonu a kedy je grafikon aktívny. INISS ich načíta po reštarte.</value>
+    <value>Príznaky určujú, ako INISS spracuje externé správy o vlakoch (napríklad z ISOŘ) a kedy je grafikon aktívny. Prejavia sa po reštarte INISSu.</value>
   </data>
   <data name="&gt;&gt;lIntro.Name" xml:space="preserve">
     <value>lIntro</value>
@@ -275,7 +275,7 @@
     <value>3</value>
   </data>
   <data name="rbCreateNone.Text" xml:space="preserve">
-    <value>nezakladať – správu len zapísať do logu</value>
+    <value>nezakladať, správu len zapísať do logu</value>
   </data>
   <data name="&gt;&gt;rbCreateNone.Name" xml:space="preserve">
     <value>rbCreateNone</value>

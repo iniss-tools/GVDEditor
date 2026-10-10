@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Časy zpoždění v minutách, které INISS nabízí operátorovi. Seznam se řadí podle velikosti. Hodnotu, která není číslo, INISS při startu přeskočí.</value>
+    <value>Časy zpoždění v minutách, které INISS nabízí operátorovi. Seznam se řadí podle velikosti.</value>
   </data>
   <data name="bAdd.Text" xml:space="preserve">
     <value>Nový čas</value>

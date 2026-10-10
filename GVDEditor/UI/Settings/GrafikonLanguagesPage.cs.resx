@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Zaškrtnuté jazyky grafikon používá – INISS v nich může hlásit vlaky, které je mají zapnuté, a řazení mohou obsahovat jejich nahrávky. Hlavní jazyk stanice nelze vypnout. Seznam jazyků stanice je v globálním nastavení.</value>
+    <value>Jazyky, které grafikon používá. Hlavní jazyk stanice nelze vypnout. Seznam jazyků stanice je v globálním nastavení.</value>
   </data>
 </root>

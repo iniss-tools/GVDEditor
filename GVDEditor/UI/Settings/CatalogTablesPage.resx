@@ -156,7 +156,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Katalógové tabule sú predlohy vzhľadu tabule – výrobca, stĺpce s pozíciou v bodoch, písmo a obsah. Používajú ich fyzické tabule a texty na tabuliach.</value>
+    <value>Katalógové tabule sú predlohy vzhľadu tabule: výrobca, stĺpce, písmo a obsah. Používajú ich fyzické tabule a texty na tabuliach.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -1734,7 +1734,7 @@
     <value>34</value>
   </data>
   <data name="lRowsNote.Text" xml:space="preserve">
-    <value>Rozmery riadkov INISS načíta, ale nepoužije – skutočný vzhľad určujú stĺpce a písma. GVDEditor ich len zachováva.</value>
+    <value>Rozmery riadkov INISS načíta, ale nepoužije. Vzhľad určujú stĺpce a písma.</value>
   </data>
   <data name="lRowsNote.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Grafikony v datové složce INISSu. Na pořadí záleží – INISS v něm promítá stanice na trasy vlaků. Porty jsou čísla komunikačních linek vyhrazených pro grafikon – běžně zůstávají prázdné. Port hlášení zároveň určuje uzel, který hlásí za stanici grafikonu. Příznaky řídí zpracování externích zpráv o vlacích. Barva odliší vlaky grafikonu na pracovní ploše INISSu. Ostatní nastavení grafikonu jsou v Lokálních nastaveních.</value>
+    <value>Grafikony v datové složce INISSu. Na pořadí záleží, INISS v něm promítá stanice na trasy vlaků. Vyhrazené porty běžně zůstávají prázdné. Ostatní nastavení grafikonu jsou v lokálním nastavení.</value>
   </data>
   <data name="bColor.Text" xml:space="preserve">
     <value>Změnit barvu…</value>

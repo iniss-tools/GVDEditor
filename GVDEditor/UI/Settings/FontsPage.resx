@@ -156,7 +156,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Písma, ktoré sa ponúkajú v stĺpcoch katalógových tabúľ a v textoch na tabuliach. Na tabuliach ELEN určuje vzhľad písma jeho číslo – GVDEditor ho zloží z rezu, farby a efektov.</value>
+    <value>Písma, ktoré sa ponúkajú v stĺpcoch katalógových tabúľ a v textoch na tabuliach. Pri tabuliach ELEN zloží GVDEditor číslo písma z rezu, farby a efektov.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

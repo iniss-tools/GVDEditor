@@ -156,7 +156,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Druhy vlakov, ktoré sa ponúkajú v okne vlaku. Platia pre celú inštaláciu. Druh určuje farbu vlaku v zozname INISSu. Vlastným typom pridelí GVDEditor voľné miesto (kategóriu) sám.</value>
+    <value>Druhy vlakov, ktoré sa ponúkajú v okne vlaku. Druh určuje farbu vlaku v zozname INISSu. Vlastným typom pridelí GVDEditor voľné miesto sám.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

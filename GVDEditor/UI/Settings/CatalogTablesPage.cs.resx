@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Katalogové tabule jsou předlohy vzhledu tabule – výrobce, sloupce s pozicí v bodech, písmo a obsah. Používají je fyzické tabule a texty na tabulích.</value>
+    <value>Katalogové tabule jsou předlohy vzhledu tabule: výrobce, sloupce, písmo a obsah. Používají je fyzické tabule a texty na tabulích.</value>
   </data>
   <data name="bAdd.Text" xml:space="preserve">
     <value>Nová tabule</value>
@@ -199,7 +199,7 @@
     <value>Rozměry řádků</value>
   </data>
   <data name="lRowsNote.Text" xml:space="preserve">
-    <value>Rozměry řádků INISS načte, ale nepoužije – skutečný vzhled určují sloupce a písma. GVDEditor je jen zachovává.</value>
+    <value>Rozměry řádků INISS načte, ale nepoužije. Vzhled určují sloupce a písma.</value>
   </data>
   <data name="bRowsSetAll.Text" xml:space="preserve">
     <value>Všem jako vybraný</value>

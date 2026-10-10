@@ -168,10 +168,9 @@ Opravdu chcete použít tento typ debugování?</value>
     <value>Datumové omezení řazení obsahuje chybu:</value>
   </data>
   <data name="FEditTrain_DateRem_zasahuje_do_ineho_vlaku" xml:space="preserve">
-    <value>Datovací omezení tohoto vlaku zasahuje do vlaku {0} {1} {2} v rozmezí
-" {3} ".
+    <value>Datumové omezení tohoto vlaku zasahuje do vlaku {0} {1} {2} v rozmezí „{3}“.
 
-Upravit datumové omezení popsaného vlaku? </value>
+Upravit datumové omezení popsaného vlaku?</value>
   </data>
   <data name="FEditTrain_FEditTrain_Duplikovať_vlak" xml:space="preserve">
     <value>Duplikovat vlak</value>
@@ -230,7 +229,7 @@ Upravit datumové omezení popsaného vlaku? </value>
   <data name="FLocalSettings_Kolaj_Odstranit" xml:space="preserve">
     <value>Kolej {0} používá {1} vlaků jako kolej příjezdu a {2} vlaků jako kolej odjezdu.
 
-Vlaky, které na ní stojí, se přesunou na kolej N (neznámá). Vlakům, které z ní odjíždějí, se kolej odjezdu zruší – budou odjíždět z koleje příjezdu.
+Vlaky, které na ní stojí, se přesunou na kolej N (neznámá). Vlakům, které z ní odjíždějí, se kolej odjezdu zruší a budou odjíždět z koleje příjezdu.
 
 Opravdu odstranit kolej {0}?</value>
   </data>
@@ -240,7 +239,7 @@ Opravdu odstranit kolej {0}?</value>
   <data name="FLocalSettings_Nastupistia_Bez_Kolaje" xml:space="preserve">
     <value>Na těchto nástupištích neleží žádná kolej: {0}.
 
-Nástupiště se ukládají jen spolu s kolejemi, takže se při uložení grafikonu nezapíšou a při dalším otevření zmizí. Přesuňte na ně některou kolej na stránce Nástupiště a koleje.
+Taková nástupiště se při uložení grafikonu nezapíšou a při dalším otevření zmizí. Přesuňte na ně kolej na stránce Nástupiště a koleje.
 
 Přesto zavřít okno?</value>
   </data>
@@ -507,13 +506,14 @@ Mám ji nuceně vypnout? </value>
     <value>Změny se projeví po restartu programu.</value>
   </data>
   <data name="AboutAppDescription" xml:space="preserve">
-    <value>Tento program slouží pro úpravu textových souborů, které používá program INISS. Program GEditor není oficiální aplikace společnosti CHAPS ani společnosti INPROP.</value>
+    <value>Tento program slouží pro úpravu textových souborů, které používá program INISS.
+Program GVDEditor není oficiální aplikace společnosti CHAPS ani společnosti INPROP.</value>
   </data>
   <data name="FELISStations_bCreate_Click_Najprv_vyberte_riadky__pre_ktoré_sa_má_založiť_nová_stanica_" xml:space="preserve">
     <value>Nejprve vyberte řádky, pro které se má založit nová stanice.</value>
   </data>
   <data name="FELISStations_FELISStations_Týchto__0__staníc_z_programu_ELIS_sa_nepodarilo_priradiť_automaticky" xml:space="preserve">
-    <value>Těchto {0} stanic z programu ELIS se nepodařilo přiřadit automaticky. Přiřaďte je ke stávajícím stanicím, nebo je vynechejte. Volba se uloží a při dalším importu stejných stanic se již program ptát nebude.</value>
+    <value>Těchto {0} stanic z programu ELIS se nepodařilo přiřadit automaticky. Přiřaďte je ke stávajícím stanicím nebo je vynechejte. Při dalším importu se už program ptát nebude.</value>
   </data>
   <data name="LoadWarnings_Header" xml:space="preserve">
     <value>Při načítání grafikonu se vyskytlo {0} varování. Data jsou načtena, ale některé položky byly přeskočeny:</value>
@@ -522,16 +522,16 @@ Mám ji nuceně vypnout? </value>
     <value>… a dalších {0} varování.</value>
   </data>
   <data name="LoadWarnings_Footer" xml:space="preserve">
-    <value>Podrobnosti jsou v souboru %LocalAppData%\GVDEditor\logs\info.log (pokud je v nastavení programu zapnuté logování). Přeskočené položky se při uložení grafikonu do souborů nezapíší.</value>
+    <value>Přeskočené položky se při uložení grafikonu nezapíší. Podrobnosti jsou v %LocalAppData%\GVDEditor\logs\info.log, pokud je zapnuté logování.</value>
   </data>
   <data name="FTableLogical_Neplatné_číslo_stanice" xml:space="preserve">
     <value>Číslo stanice (IDSTATION) musí být celé číslo nebo prázdné.</value>
   </data>
   <data name="FTableLogical_Zostava_nevyjadriteľná" xml:space="preserve">
-    <value>Zapojení této logické tabule nelze zobrazit v sestavě (některé umístění má záporný řádek fyzické tabule). Sestavu ani počet záznamů proto nelze upravit; při uložení se zapojení zachová beze změny.</value>
+    <value>Zapojení této logické tabule nelze zobrazit v sestavě (některé umístění má záporný řádek fyzické tabule). Sestavu ani počet záznamů proto nelze upravit. Při uložení se zapojení zachová beze změny.</value>
   </data>
   <data name="FTableLogical_Bez_záznamov" xml:space="preserve">
-    <value>Logická tabule musí mít alespoň 1 záznam – tabuli bez záznamů INISS při startu odmítne.</value>
+    <value>Logická tabule musí mít alespoň 1 záznam. Tabuli bez záznamů INISS při startu odmítne.</value>
   </data>
   <data name="FTableLogical_Neplatný_riadok_zostavy" xml:space="preserve">
     <value>{0}. řádek sestavy ({1}) je neplatný: záznamy musí být v rozsahu 1 až {2} (od ≤ do) a řádek fyzické tabule alespoň 1.</value>
@@ -558,7 +558,7 @@ Mám ji nuceně vypnout? </value>
     <value>Obecná výluka ve stanici</value>
   </data>
   <data name="FEditTrain_Vyluka_Unknown" xml:space="preserve">
-    <value>(neznámá výluka – není v LogZvuk.usr)</value>
+    <value>(neznámá výluka)</value>
   </data>
   <data name="FEditTrain_Vyluka_ItemHint" xml:space="preserve">
     <value>Předloha: {0}
@@ -574,37 +574,37 @@ Stanice: {1}</value>
     <value>Název složky „{0}“ je použit pro více bloků.</value>
   </data>
   <data name="FMain_Grafikon_obsahuje_bloky_otazka" xml:space="preserve">
-    <value>Složka {0} obsahuje {1} grafikonů zapsaných za sebou (starší zápis s hlavičkami /číslo stanice). GVDEditor s takovým zápisem neumí pracovat – druhý blok by přepsal první.
+    <value>Složka {0} obsahuje {1} grafikonů zapsaných za sebou (starší zápis s hlavičkami /číslo stanice). GVDEditor s takovým zápisem neumí pracovat, druhý blok by přepsal první.
 
 Rozdělit je nyní do samostatných složek?</value>
   </data>
   <data name="FMain_Grafikon_rozdeleny" xml:space="preserve">
     <value>Grafikon byl rozdělen do složek: {0}.
 
-Původní složka {1} zůstala na disku, v DirList.txt už není – po kontrole ji můžete smazat.</value>
+Původní složka {1} zůstala na disku, v seznamu grafikonů už není. Po kontrole ji můžete smazat.</value>
   </data>
   <data name="FMain_Rozdelenie_zlyhalo" xml:space="preserve">
     <value>Rozdělení grafikonu selhalo, nové složky byly odstraněny: {0}</value>
   </data>
   <data name="FMain_Grafikon_s_blokmi_nenacitany" xml:space="preserve">
-    <value>Grafikon obsahuje více bloků a nebyl rozdělen – není načten. Vyberte jiný grafikon nebo jej znovu otevřete a rozdělte.</value>
+    <value>Grafikon obsahuje více bloků a nebyl rozdělen, proto není načten. Vyberte jiný grafikon nebo jej znovu otevřete a rozdělte.</value>
   </data>
   <data name="FMain_Grafikon_v_koreni_otazka" xml:space="preserve">
-    <value>Grafikon leží přímo ve složce {0} bez DirList.txt (starší zápis). GVDEditor s ním pracuje jen v samostatné složce zapsané v DirList.txt.
+    <value>Grafikon leží přímo ve složce {0} a není v seznamu grafikonů (starší zápis). GVDEditor s ním pracuje jen v samostatné složce ze seznamu grafikonů.
 
 Přesunout jej nyní do vlastní složky ({1} grafikon/y)?</value>
   </data>
   <data name="FBlockMigration_Info_DataRoot" xml:space="preserve">
-    <value>Grafikon leží přímo ve složce DATA bez DirList.txt. Přesune se do samostatné složky a zapíše do DirList.txt, tak jak to dělá dnešní INISS. Zkontrolujte navržený název složky, případně jej upravte.</value>
+    <value>Grafikon leží přímo ve složce DATA mimo seznam grafikonů. Přesune se do samostatné složky a zapíše do seznamu, tak jak to dělá dnešní INISS. Zkontrolujte navržený název složky.</value>
   </data>
   <data name="FBlockMigration_Note_DataRoot" xml:space="preserve">
-    <value>Nová složka vznikne ve složce DATA a založí se DirList.txt. Původní soubory v kořeni DATA zůstanou beze změny (INISS je po vzniku DirList.txt už nečte); po kontrole je můžete smazat.</value>
+    <value>Nová složka vznikne ve složce DATA. Původní soubory v kořeni DATA zůstanou beze změny a INISS je už nebude číst. Po kontrole je můžete smazat.</value>
   </data>
   <data name="TxtParser_TrTypes_chyba_pouzite_zabudovane" xml:space="preserve">
-    <value>Soubor {0} neexistuje – nabídka druhů vlaků je sestavena ze zabudované tabulky INISSu. Při uložení nastavení se soubor založí.</value>
+    <value>Soubor {0} neexistuje, nabídka druhů vlaků je proto ze zabudované tabulky INISSu. Při uložení nastavení se soubor založí.</value>
   </data>
   <data name="TxtParser_Categori_prehodene_nazvy_variantov" xml:space="preserve">
-    <value>{0}: varianty hlášení měly prohozené názvy (VARIANT_01 = „Krátke hlásenie“). INISS velkým písmenem typu hlásí dlouhé hlášení, proto se názvy opravily na VARIANT_01 = „Dlhé hlásenie“ a VARIANT_02 = „Krátke hlásenie“; zapíší se při dalším uložení grafikonu. Hlášení, dodatky a řazení vlaků se nezměnily – zkontrolujte, zda jsou přiřazeny k variantě, kterou jste zamýšleli.</value>
+    <value>{0}: varianty hlášení měly prohozené názvy (VARIANT_01 = „Krátke hlásenie“). Názvy se opravily na VARIANT_01 = „Dlhé hlásenie“ a VARIANT_02 = „Krátke hlásenie“ a zapíší se při dalším uložení grafikonu. Zkontrolujte, zda jsou hlášení, dodatky a řazení přiřazeny ke správné variantě.</value>
   </data>
   <data name="Analyzer_TabTab_pocet_chyb" xml:space="preserve">
     <value>{0} chyb, {1} varování</value>
@@ -735,7 +735,7 @@ Přesunout jej nyní do vlastní složky ({1} grafikon/y)?</value>
   <data name="FStateDgm_SuborChyba" xml:space="preserve">
     <value>Soubor {0} nelze načíst (řádek {1}): {2}
 
-Jeho text se otevře na záložce Text – opravte chybu a klikněte na Načíst text. Uložit lze i text s chybou.</value>
+Jeho text se otevře na záložce Text. Opravte chybu a klikněte na Načíst text. Uložit lze i text s chybou.</value>
   </data>
   <data name="FStateDgm_SuborChyba_Nadpis" xml:space="preserve">
     <value>Chyba v souboru StateDgm.txt</value>
@@ -752,7 +752,7 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
     <value>Načíst text</value>
   </data>
   <data name="FStateDgm_Text_NacitatTip" xml:space="preserve">
-    <value>Rozloží upravený text (Ctrl+Enter); pokud je bez chyby syntaxe, otevře diagram v editoru</value>
+    <value>Rozloží upravený text (Ctrl+Enter). Pokud je bez chyby, otevře diagram v editoru</value>
   </data>
   <data name="FStateDgm_Text_Chyba" xml:space="preserve">
     <value>Řádek {0}: {1}</value>
@@ -761,7 +761,7 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
     <value>Řádek {0}</value>
   </data>
   <data name="FStateDgm_Text_Rezim" xml:space="preserve">
-    <value>Soubor nelze načíst – opravte text na záložce Text a klikněte na Načíst text</value>
+    <value>Soubor nelze načíst. Opravte text na záložce Text a klikněte na Načíst text</value>
   </data>
   <data name="FStateDgm_NeulozeneZmeny" xml:space="preserve">
     <value>Diagram má neuložené změny. Uložit?</value>
@@ -968,7 +968,7 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
     <value>Posun (s):</value>
   </data>
   <data name="FStateDgm_AutoTimePointAddTip" xml:space="preserve">
-    <value>Kladný = po čase, záporný = před časem; 300 = 5 minut po</value>
+    <value>Kladný = po čase, záporný = před časem. 300 = 5 minut po</value>
   </data>
   <data name="FStateDgm_AutoModif" xml:space="preserve">
     <value>Hlášení:</value>
@@ -1001,7 +1001,7 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
     <value>Podmínka:</value>
   </data>
   <data name="FStateDgm_AutoConditionTip" xml:space="preserve">
-    <value>Výraz; pokud pro vlak neplatí, automatický přechod se nenaplánuje</value>
+    <value>Výraz. Pokud pro vlak neplatí, automatický přechod se nenaplánuje</value>
   </data>
   <data name="FStateDgm_Tabule" xml:space="preserve">
     <value>Tabule (DoState)</value>
@@ -1064,7 +1064,7 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
     <value>max – pozdější z dvojice</value>
   </data>
   <data name="FStateDgm_TP_Info" xml:space="preserve">
-    <value>Bod bez zdrojů je nastavitelný časový bod – #StartTime ve stavu INISS nastaví na čas vstupu vlaku do stavu.</value>
+    <value>Bod bez zdrojů je nastavitelný časový bod. Příkaz #StartTime ve stavu ho nastaví na čas vstupu vlaku do stavu.</value>
   </data>
   <data name="FStateDgm_TP_Zabudovane" xml:space="preserve">
     <value>Zabudované časové body: {0}</value>
@@ -1100,7 +1100,7 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
     <value>(bez hlášení)</value>
   </data>
   <data name="FStateDgm_Akcia_ReportNeznamy" xml:space="preserve">
-    <value>Typ hlášení „{0}“ není v seznamu typů hlášení – INISS ho nenajde a hlášení nevyhlásí.</value>
+    <value>Typ hlášení „{0}“ není v seznamu typů hlášení. INISS ho nenajde a hlášení nevyhlásí.</value>
   </data>
   <data name="FStateDgm_Akcia_ReportNavrh" xml:space="preserve">
     <value>Použít typ „{0}“ (název „{1}“)</value>
@@ -1217,7 +1217,7 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
     <value>Soubor nelze načíst: {0}</value>
   </data>
   <data name="FLocalSettings_SD_Chyba_Nie" xml:space="preserve">
-    <value>Soubor StateDgm.txt ve složce grafikonu není – INISS vlaky tohoto grafikonu nedokáže obsluhovat.</value>
+    <value>Grafikon nemá stavový diagram. INISS jeho vlaky nedokáže obsluhovat.</value>
   </data>
   <data name="FLocalSettings_SD_Problemy" xml:space="preserve">
     <value>Kontrola: {0}</value>
@@ -1226,13 +1226,13 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
     <value>Předloha stavového diagramu:</value>
   </data>
   <data name="FMain_Import_grafikonu_do_seba" xml:space="preserve">
-    <value>Vybraná složka obsahuje složku DATA této instalace – grafikon by se kopíroval sám do sebe. Vyberte složku s jedním grafikonem.</value>
+    <value>Vybraná složka obsahuje složku DATA této instalace, grafikon by se kopíroval sám do sebe. Vyberte složku s jedním grafikonem.</value>
   </data>
   <data name="FMain_Import_grafikonu_hotovy" xml:space="preserve">
     <value>Grafikon {0} byl přidán do instalace ({1}). Otevřete ho výběrem stanice a období v hlavním okně.</value>
   </data>
   <data name="FGlobalSettings_Kategoria_typu_obsadena" xml:space="preserve">
-    <value>Kategorie {0} už v seznamu je. INISS má pro každou kategorii jedno místo – druhý typ stejné kategorie by první přepsal. Pro další typ použijte vlastní typ vlaku.</value>
+    <value>Kategorie {0} už v seznamu je. INISS má pro každou kategorii jedno místo, druhý typ stejné kategorie by první přepsal. Pro další typ použijte vlastní typ vlaku.</value>
   </data>
   <data name="FGlobalSettings_Testovaci_okruh" xml:space="preserve">
     <value>TEST – testovací okruh</value>
@@ -1249,7 +1249,7 @@ Uložit grafikon před spuštěním INISSu?</value>
     <value>INISS se nepodařilo ukončit: {0}</value>
   </data>
   <data name="FMain_INISS_sa_neukoncil" xml:space="preserve">
-    <value>INISS se ani po 30 sekundách neukončil – možná čeká na potvrzení ukončení.
+    <value>INISS se ani po 30 sekundách neukončil. Možná čeká na potvrzení ukončení.
 
 Vynutit jeho ukončení a spustit ho znovu?</value>
   </data>
@@ -1260,13 +1260,13 @@ Vynutit jeho ukončení a spustit ho znovu?</value>
     <value>Vynutit ukončení INISSu? INISS se ukončí okamžitě, bez dotazů a bez řádného ukončení.</value>
   </data>
   <data name="LanguageRules_Najviac_jazykov" xml:space="preserve">
-    <value>INISS zvládne nejvýše {0} jazyky – s více se nespustí.</value>
+    <value>INISS zvládne nejvýše {0} jazyky. S více se nespustí.</value>
   </data>
   <data name="LanguageRules_Neznamy_kluc" xml:space="preserve">
     <value>Jazyk s klíčem „{0}“ INISS nezná a při startu ho přeskočí. Použijte jeden z klíčů {1}.</value>
   </data>
   <data name="LanguageRules_Chyba_hlavny_jazyk" xml:space="preserve">
-    <value>Jeden jazyk musí být hlavní – v něm se hlásí vždy.</value>
+    <value>Jeden jazyk musí být hlavní, v něm se hlásí vždy.</value>
   </data>
   <data name="FNewGrafikon_Neplatny_nazov_priecinka" xml:space="preserve">
     <value>Název složky je prázdný nebo obsahuje nepovolené znaky (\ / : * ? " &lt; &gt; | ,).</value>
@@ -1287,7 +1287,7 @@ Vynutit jeho ukončení a spustit ho znovu?</value>
     <value>Časový bod</value>
   </data>
   <data name="FStateDgm_GrafPrazdny" xml:space="preserve">
-    <value>Vyber kategorii nebo stav – graf ukáže stavy kategorie a přechody mezi nimi.</value>
+    <value>Vyber kategorii nebo stav. Graf ukáže stavy kategorie a přechody mezi nimi.</value>
   </data>
   <data name="FStateDgm_Graf_Automat" xml:space="preserve">
     <value>automat</value>
@@ -1305,7 +1305,7 @@ Vynutit jeho ukončení a spustit ho znovu?</value>
     <value>Nedosažitelný z počátečního stavu</value>
   </data>
   <data name="FStateDgm_Graf_Slepy" xml:space="preserve">
-    <value>Slepý stav – žádná akce z něj nevede</value>
+    <value>Slepý stav: žádná akce z něj nevede</value>
   </data>
   <data name="FStateDgm_Graf_VsetkyPrechody" xml:space="preserve">
     <value>Všechny přechody</value>
@@ -1365,13 +1365,13 @@ Vynutit jeho ukončení a spustit ho znovu?</value>
     <value>texty vlaků: {0}</value>
   </data>
   <data name="FLocalSettings_Pismo_TabTab" xml:space="preserve">
-    <value>TabTab, sekce {0} – kód {{{1}}} se nemění automaticky, upravte ho v editoru TabTab</value>
+    <value>TabTab, sekce {0}: kód {{{1}}} se nemění automaticky, upravte ho v editoru TabTab</value>
   </data>
   <data name="FLocalSettings_Pismo_Odstranit" xml:space="preserve">
     <value>Písmo s ID {0} se používá:
 {1}
 
-Odstranění ze seznamu tato místa nezmění – zůstane v nich původní číslo. Opravdu odstranit?</value>
+Odstranění ze seznamu tato místa nezmění, zůstane v nich původní číslo. Opravdu odstranit?</value>
   </data>
   <data name="TabTab_Nazov_prazdny" xml:space="preserve">
     <value>Název sekce TabTab nesmí být prázdný.</value>
@@ -1431,7 +1431,7 @@ Odstranění ze seznamu tato místa nezmění – zůstane v nich původní čí
     <value>Tabule ELEN: {0}</value>
   </data>
   <data name="ElenFont_InyVyrobca" xml:space="preserve">
-    <value>Výrobce {0} číslo písma nekóduje jako ELEN – význam určuje tabule.</value>
+    <value>Výrobce {0} číslo písma nekóduje jako ELEN, význam určuje tabule.</value>
   </data>
   <data name="ElenFont_Doplnit_Tip" xml:space="preserve">
     <value>Nastaví typ, proporcionalitu a šířku podle ID písma (kódování tabulí ELEN).</value>
@@ -1463,16 +1463,16 @@ Odstranit dopravce?</value>
     <value>Zadejte název stanice.</value>
   </data>
   <data name="CustomStationRules_Nazov_banka" xml:space="preserve">
-    <value>Stanice „{0}“ je ve zvukové bance – vlastní stanici s tímto názvem by GVDEditor při dalším otevření grafikonu vynechal.</value>
+    <value>Stanice „{0}“ je ve zvukové bance. Vlastní stanici s tímto názvem by GVDEditor při dalším otevření grafikonu vynechal.</value>
   </data>
   <data name="CustomStationRules_Nazov_grafikon" xml:space="preserve">
-    <value>„{0}“ je stanice tohoto grafikonu – vlastní stanici s tímto názvem by GVDEditor při dalším otevření grafikonu vynechal.</value>
+    <value>„{0}“ je stanice tohoto grafikonu. Vlastní stanici s tímto názvem by GVDEditor při dalším otevření grafikonu vynechal.</value>
   </data>
   <data name="CustomStationRules_Nazov_existuje" xml:space="preserve">
     <value>Stanice „{0}“ už v seznamu je.</value>
   </data>
   <data name="CustomStationsPage_Cislo_zamknute" xml:space="preserve">
-    <value>Číslo stanice nelze změnit – používají ji vlaky grafikonu (počet vlaků: {0}).</value>
+    <value>Číslo stanice nelze změnit, používají ji vlaky grafikonu (počet vlaků: {0}).</value>
   </data>
   <data name="CustomStationsPage_Odstranit_pouzitu" xml:space="preserve">
     <value>Stanici „{0}“ mají v trase vlaky grafikonu (počet vlaků: {1}). Po odstranění v trasách zůstane jen její číslo.
@@ -1486,7 +1486,7 @@ Odstranit stanici?</value>
     <value>Čas „{0}“ už v seznamu je.</value>
   </data>
   <data name="DelaysPage_Necislo" xml:space="preserve">
-    <value>Hodnota není číslo minut – INISS ji při startu přeskočí a operátorovi ji nenabídne.</value>
+    <value>Hodnota není číslo minut. INISS ji při startu přeskočí a operátorovi ji nenabídne.</value>
   </data>
   <data name="LanguagesPage_Nie_v_banke" xml:space="preserve">
     <value>není ve zvukové bance</value>
@@ -1513,10 +1513,10 @@ Odstranit stanici?</value>
     <value>Skrýt zadání čísla</value>
   </data>
   <data name="FontPicker_Ponechane_bity" xml:space="preserve">
-    <value>Bity 0x{0:X} nemají ovladač – GVDEditor je v čísle ponechá.</value>
+    <value>Bity 0x{0:X} nemají ovladač, GVDEditor je v čísle ponechá.</value>
   </data>
   <data name="FontPicker_Rozsirene_nepozna" xml:space="preserve">
-    <value>Výrobce {0} rozšířené písmo {1} nezná – tabule použije řez.</value>
+    <value>Výrobce {0} rozšířené písmo {1} nezná, tabule použije řez.</value>
   </data>
   <data name="FontPicker_Uz_v_zozname" xml:space="preserve">
     <value>Toto písmo je v seznamu jako „{0}“.</value>
@@ -1534,10 +1534,10 @@ Odstranit stanici?</value>
     <value>Jiné písmo…</value>
   </data>
   <data name="FontRules_Cislo_existuje" xml:space="preserve">
-    <value>Stejný vzhled (číslo {0}) má již písmo „{1}“ – změňte řez, barvu nebo efekty.</value>
+    <value>Stejný vzhled (číslo {0}) má již písmo „{1}“. Změňte řez, barvu nebo efekty.</value>
   </data>
   <data name="FontsPage_Nepouziva" xml:space="preserve">
-    <value>Nikde – písmo lze odstranit bez následků.</value>
+    <value>Nikde. Písmo lze odstranit bez následků.</value>
   </data>
   <data name="FontsPage_Precisluju" xml:space="preserve">
     <value>Sloupce a texty se při změně vzhledu přečíslují spolu s písmem.</value>
@@ -1591,10 +1591,10 @@ Odstranit stanici?</value>
     <value>světle zelené pozadí, služební druh</value>
   </data>
   <data name="TrainTypesPage_Detail_Zabudovany" xml:space="preserve">
-    <value>{0} – vestavěný druh {1}.</value>
+    <value>{0}: vestavěný druh {1}.</value>
   </data>
   <data name="TrainTypesPage_Detail_Vlastny" xml:space="preserve">
-    <value>{0} – vlastní typ na místě {1} ({2}).</value>
+    <value>{0}: vlastní typ na místě {1} ({2}).</value>
   </data>
   <data name="TrainTypesPage_Detail_Vzhlad" xml:space="preserve">
     <value>V seznamu vlaků INISSu: {0}.</value>
@@ -1603,7 +1603,7 @@ Odstranit stanici?</value>
     <value>Používají ho vlaky: {0}.</value>
   </data>
   <data name="TrainTypesPage_Nepouziva" xml:space="preserve">
-    <value>Žádný vlak ho nepoužívá – lze ho přejmenovat i odstranit.</value>
+    <value>Žádný vlak ho nepoužívá, lze ho přejmenovat i odstranit.</value>
   </data>
   <data name="TrainTypesPage_Zamknuta" xml:space="preserve">
     <value>Zkratka je zamčená, dokud ji vlaky používají. Text na tabuli a druh můžete měnit.</value>
@@ -1615,7 +1615,7 @@ Odstranit stanici?</value>
     <value>{0}1–{0}9  {1}  {2}/{3}</value>
   </data>
   <data name="TablesPage_Nepouziva" xml:space="preserve">
-    <value>Nikde – lze odstranit.</value>
+    <value>Nikde, lze odstranit.</value>
   </data>
   <data name="TablesPage_Pouzivana_neodstranit" xml:space="preserve">
     <value>Dokud se používá, nelze ji odstranit.</value>
@@ -1666,7 +1666,7 @@ Odstranit stanici?</value>
     <value>Koleje bez nástupiště</value>
   </data>
   <data name="PlatformsTracksPage_Bez_kolaje" xml:space="preserve">
-    <value>Na nástupišti neleží žádná kolej – nástupiště se nezapíše a při dalším otevření grafikonu zmizí.</value>
+    <value>Na nástupišti neleží žádná kolej. Nástupiště se nezapíše a při dalším otevření grafikonu zmizí.</value>
   </data>
   <data name="PlatformsTracksPage_Kolaji" xml:space="preserve">
     <value>Kolejí na nástupišti: {0}.</value>
@@ -1675,7 +1675,7 @@ Odstranit stanici?</value>
     <value>Vlaky: {0} s příjezdem na tuto kolej, {1} s odjezdem z ní.</value>
   </data>
   <data name="PlatformsTracksPage_Najprv_kolaje" xml:space="preserve">
-    <value>Nástupiště s kolejemi nelze odstranit – nejprve koleje přesuňte na jiné nástupiště nebo je odstraňte.</value>
+    <value>Nástupiště s kolejemi nelze odstranit. Nejprve koleje přesuňte na jiné nástupiště nebo je odstraňte.</value>
   </data>
   <data name="GrafikonPage_Priecinok_bez_zmeny" xml:space="preserve">
     <value>Název složky se nemění.</value>
@@ -1687,22 +1687,22 @@ Odstranit stanici?</value>
     <value>– a další místa: {0}</value>
   </data>
   <data name="DirListRules_Port" xml:space="preserve">
-    <value>Zadejte číslo od 1 do {0}, nebo pole nechte prázdné – grafikon pak vlastní linku nemá.</value>
+    <value>Zadejte číslo od 1 do {0}, nebo pole nechte prázdné. Grafikon pak vlastní linku nemá.</value>
   </data>
   <data name="AudioRules_Nazov" xml:space="preserve">
-    <value>Zadejte název linky – pod ním ji operátor vidí v INISSu.</value>
+    <value>Zadejte název linky. Pod ním ji operátor vidí v INISSu.</value>
   </data>
   <data name="AudioRules_Protokol" xml:space="preserve">
-    <value>Zadejte protokolový název – podle něj linku adresuje nadřazený systém.</value>
+    <value>Zadejte protokolový název. Podle něj linku adresuje nadřazený systém.</value>
   </data>
   <data name="AudioRules_Fronta" xml:space="preserve">
-    <value>Zadejte název fronty – linka bez fronty nemá zvukový výstup a nic nepřehraje.</value>
+    <value>Zadejte název fronty. Linka bez fronty nemá zvukový výstup a nic nepřehraje.</value>
   </data>
   <data name="AudioRules_Fronta_Uzol" xml:space="preserve">
     <value>Frontu „{0}“ má i linka „{1}“, ale s jiným uzlem. Linky se stejnou frontou sdílejí jeden výstup, proto musí hrát na stejném uzlu.</value>
   </data>
   <data name="AudioRules_Zosilnovac" xml:space="preserve">
-    <value>Spínání zesilovače: zadejte číslo výstupu ústředny 0 – 63 nebo E1 – E99 pro port spínací jednotky ELSVO, nebo pole nechte prázdné.</value>
+    <value>Spínání zesilovače: zadejte číslo výstupu ústředny 0 až 63 nebo E1 až E99 pro port spínací jednotky ELSVO, nebo pole nechte prázdné.</value>
   </data>
   <data name="AudioRules_Ustredna" xml:space="preserve">
     <value>Parametr ústředny musí být celé číslo od 0 do 65535, nebo pole nechte prázdné.</value>
@@ -1716,7 +1716,7 @@ Odstranit stanici?</value>
 Pokračovat?</value>
   </data>
   <data name="GrafikonyPage_DataRoot" xml:space="preserve">
-    <value>Grafikon leží přímo v datové složce INISSu (starší zápis s jediným grafikonem). Porty ani barvu mu nelze nastavit a nelze ho odstranit – nejdřív ho přesuňte do vlastní složky (GVDEditor to nabídne při jeho otevření).</value>
+    <value>Grafikon leží přímo v datové složce INISSu (starší zápis s jediným grafikonem). Porty ani barvu mu nelze nastavit a nelze ho odstranit. Nejdřív ho přesuňte do vlastní složky, GVDEditor to nabídne při jeho otevření.</value>
   </data>
   <data name="GrafikonyPage_Z_palety" xml:space="preserve">
     <value>z palety</value>
@@ -1725,25 +1725,25 @@ Pokračovat?</value>
     <value>Složka grafikonu: {0}</value>
   </data>
   <data name="AudioPage_Uzol_Z_Grafikonu" xml:space="preserve">
-    <value>Grafikon stanice {0} má port hlášení {1} – INISS ho použije jako uzel místo pole Uzel.</value>
+    <value>Grafikon stanice {0} má port hlášení {1}. INISS ho použije jako uzel místo pole Uzel.</value>
   </data>
   <data name="AudioPage_Test" xml:space="preserve">
-    <value>Testovací okruh se operátorovi v seznamu okruhů nenabízí – zpřístupní tlačítko Test/stop v dialozích hlášení.</value>
+    <value>Testovací okruh se operátorovi v seznamu okruhů nenabízí. Zpřístupní tlačítko Test/stop v dialozích hlášení.</value>
   </data>
   <data name="TableRules_Nazov" xml:space="preserve">
-    <value>Zadejte název – pod ním položku vidí obsluha a nabízejí ji další stránky.</value>
+    <value>Zadejte název. Pod ním položku vidí obsluha a nabízejí ji další stránky.</value>
   </data>
   <data name="TableRules_Kluc" xml:space="preserve">
-    <value>Zadejte klíč – podle něj se na položku odkazují ostatní tabule.</value>
+    <value>Zadejte klíč. Podle něj se na položku odkazují ostatní tabule.</value>
   </data>
   <data name="TableRules_Kluc_Existuje" xml:space="preserve">
     <value>Klíč „{0}“ už má jiná položka seznamu.</value>
   </data>
   <data name="TablePhysicalRules_Katalog" xml:space="preserve">
-    <value>Vyberte katalogovou tabuli – určuje rozložení tabule a jejího výrobce.</value>
+    <value>Vyberte katalogovou tabuli. Určuje rozložení tabule a jejího výrobce.</value>
   </data>
   <data name="TablePhysicalRules_Adresa" xml:space="preserve">
-    <value>Adresa {0} je mimo rozsah výrobce {1} ({2} – {3}) – INISS takovou tabuli nezaloží. Tabule bez adresy má −1.</value>
+    <value>Adresa {0} je mimo rozsah výrobce {1} ({2} až {3}). INISS takovou tabuli nezaloží. Tabule bez adresy má −1.</value>
   </data>
   <data name="TableTextRules_Realizacia" xml:space="preserve">
     <value>Realizace {0}: {1}</value>
@@ -1758,13 +1758,13 @@ Pokračovat?</value>
     <value>sloupec „{0}“ už v katalogové tabuli „{1}“ není.</value>
   </data>
   <data name="PhysicalTablesPage_Adresa" xml:space="preserve">
-    <value>Rozsah adres výrobce {0}: {1} – {2}. −1 = tabule bez adresy (např. jen export do XML).</value>
+    <value>Rozsah adres výrobce {0}: {1} až {2}. −1 = tabule bez adresy (např. jen export do XML).</value>
   </data>
   <data name="PhysicalTablesPage_Adresa_Bez_kontroly" xml:space="preserve">
     <value>U výrobce {0} se adresa nekontroluje. −1 = tabule bez adresy.</value>
   </data>
   <data name="PhysicalTablesPage_Bez_katalogu" xml:space="preserve">
-    <value>Nejdřív založte katalogovou tabuli (stránka Katalogové tabule) – fyzická tabule bez ní nemůže být.</value>
+    <value>Nejdřív založte katalogovou tabuli (stránka Katalogové tabule). Fyzická tabule bez ní nemůže být.</value>
   </data>
   <data name="TableTextsPage_Generovat_Bez" xml:space="preserve">
     <value>Vyberte v seznamu realizací řádek se sloupcem, podle kterého se mají texty vygenerovat.</value>
@@ -1779,7 +1779,7 @@ Pokračovat?</value>
     <value>Upozornění (INISS je snese, zapíše je jen do logu):</value>
   </data>
   <data name="TableCatalogRules_Vyrobca" xml:space="preserve">
-    <value>Vyberte výrobce tabule – určuje rozsah adres a význam čísla písma.</value>
+    <value>Vyberte výrobce tabule. Určuje rozsah adres a význam čísla písma.</value>
   </data>
   <data name="TableCatalogRules_Stlpec" xml:space="preserve">
     <value>Sloupec {0}: {1}</value>
@@ -1788,13 +1788,13 @@ Pokračovat?</value>
     <value>zadejte název.</value>
   </data>
   <data name="TableCatalogRules_Stlpec_Kluc" xml:space="preserve">
-    <value>zadejte klíč – odkazuje na něj pořadí sloupců a texty na tabulích.</value>
+    <value>zadejte klíč, odkazuje na něj pořadí sloupců a texty na tabulích.</value>
   </data>
   <data name="TableCatalogRules_Stlpec_Kluc_Existuje" xml:space="preserve">
     <value>klíč „{0}“ už má jiný sloupec.</value>
   </data>
   <data name="TableCatalogRules_Stlpec_Sirka" xml:space="preserve">
-    <value>konec ({1}) musí být za začátkem ({0}) – INISS sloupec bez šířky odmítne.</value>
+    <value>konec ({1}) musí být za začátkem ({0}), INISS sloupec bez šířky odmítne.</value>
   </data>
   <data name="TableCatalogRules_Stlpec_Tab1" xml:space="preserve">
     <value>způsob plnění {0} vyžaduje tabulku TAB1.</value>
@@ -1806,31 +1806,31 @@ Pokračovat?</value>
     <value>tabule ELEN má nejvýše {0} bodů, sloupec končí na {1}.</value>
   </data>
   <data name="TableCatalogRules_Nasobok" xml:space="preserve">
-    <value>• Sloupec {0}: začátek a konec mají být násobkem {1} (hranice znaků tabule {2}) – INISS to zapíše do logu.</value>
+    <value>• Sloupec {0}: začátek a konec mají být násobkem {1} (hranice znaků tabule {2}). Jinak to INISS zapíše do logu.</value>
   </data>
   <data name="TableCatalogRules_Tab_Navyse" xml:space="preserve">
     <value>• Sloupec {0}: {1} se při způsobu plnění {2} nepoužije.</value>
   </data>
   <data name="CatalogTablesPage_Div0" xml:space="preserve">
-    <value>Text jde na tabuli bez překódování; TAB1 a TAB2 se nepoužijí.</value>
+    <value>Text jde na tabuli bez překódování. TAB1 a TAB2 se nepoužijí.</value>
   </data>
   <data name="CatalogTablesPage_Div1" xml:space="preserve">
-    <value>Text se celý hledá v TAB1 a použije se jen to, co se najde – jinak sloupec zůstane prázdný.</value>
+    <value>Text se celý hledá v TAB1 a použije se jen to, co se najde. Jinak sloupec zůstane prázdný.</value>
   </data>
   <data name="CatalogTablesPage_Div2" xml:space="preserve">
     <value>Čas HH:MM po částech: hodiny se hledají v TAB1, desítky a jednotky minut v TAB2.</value>
   </data>
   <data name="CatalogTablesPage_Div3" xml:space="preserve">
-    <value>Text se hledá v TAB1; pokud se nenajde, pošle se nezměněný.</value>
+    <value>Text se hledá v TAB1. Pokud se nenajde, pošle se nezměněný.</value>
   </data>
   <data name="CatalogTablesPage_Div4" xml:space="preserve">
-    <value>Text se překóduje znak po znaku podle TAB1; znak, který v ní není, nahradí mezera.</value>
+    <value>Text se překóduje znak po znaku podle TAB1. Znak, který v ní není, nahradí mezera.</value>
   </data>
   <data name="CatalogTablesPage_Poradie" xml:space="preserve">
     <value>Pořadí sloupců je nastaveno pro typy zobrazení: {0}.</value>
   </data>
   <data name="CatalogTablesPage_Poradie_Ziadne" xml:space="preserve">
-    <value>Pořadí sloupců zatím není nastaveno pro žádný typ zobrazení – tabule s touto předlohou nebude co zobrazit.</value>
+    <value>Pořadí sloupců zatím není nastaveno pro žádný typ zobrazení. Tabule s touto předlohou nebude co zobrazit.</value>
   </data>
   <data name="CatalogTablesPage_Novy_stlpec" xml:space="preserve">
     <value>Sloupec</value>
@@ -1839,7 +1839,7 @@ Pokračovat?</value>
     <value>Sloupec {0} používají texty na tabulích: {1}. Nejdřív jim změňte realizaci.</value>
   </data>
   <data name="CatalogTablesPage_Kluc_Neplatny" xml:space="preserve">
-    <value>Klíč sloupce „{0}“ se nezměnil – je prázdný nebo ho už má jiný sloupec.</value>
+    <value>Klíč sloupce „{0}“ se nezměnil, je prázdný nebo ho už má jiný sloupec.</value>
   </data>
   <data name="CatalogTablesPage_Hore" xml:space="preserve">
     <value>Posunout sloupec výš v seznamu</value>
@@ -1863,7 +1863,7 @@ Pokračovat?</value>
     <value>Datumové omezení se překrývá s vlakem {0} (varianta {1}) ve dnech „{2}“.</value>
   </data>
   <data name="TrainRules_CezPolnoc" xml:space="preserve">
-    <value>Odjezd je dříve než příjezd – vlak stojí ve stanici přes půlnoc.</value>
+    <value>Odjezd je dříve než příjezd, vlak stojí ve stanici přes půlnoc.</value>
   </data>
   <data name="TrainRules_DodatokBezHlaseni" xml:space="preserve">
     <value>Dodatek {0} nemá zaškrtnuté žádné hlášení, proto nikdy nezazní.</value>
@@ -1872,10 +1872,10 @@ Pokračovat?</value>
     <value>Výluka, kterou INISS u vlaku hlásí. Kromě vestavěné obecné výluky nabídka obsahuje výluky, které obsluha založila v INISSu.</value>
   </data>
   <data name="TrainBasicsPage_Radenie_Prevzate" xml:space="preserve">
-    <value>Řazení patří číslu vlaku a číslo {0} má i vlak {1} s řazením – okno proto zobrazuje jeho řazení. Řazení upravené v tomto okně bylo zahozeno.</value>
+    <value>Řazení patří číslu vlaku a číslo {0} má i vlak {1} s řazením, okno proto zobrazuje jeho řazení. Řazení upravené v tomto okně bylo zahozeno.</value>
   </data>
   <data name="TrainValidityPage_ZiadneVarianty" xml:space="preserve">
-    <value>V grafikonu není jiný vlak se stejným číslem, názvem a typem – vlak nemá varianty.</value>
+    <value>V grafikonu není jiný vlak se stejným číslem, názvem a typem, vlak nemá varianty.</value>
   </data>
   <data name="TrainValidityPage_ZmeniSaPoOK" xml:space="preserve">
     <value>{0} (změní se po uložení vlaku)</value>
@@ -1884,19 +1884,19 @@ Pokračovat?</value>
     <value>Tato stanice: {0}</value>
   </data>
   <data name="TrainRoutePage_Prechadzajuci" xml:space="preserve">
-    <value>Projíždějící vlak – má příjezd i odjezd.</value>
+    <value>Projíždějící vlak: má příjezd i odjezd.</value>
   </data>
   <data name="TrainRoutePage_Konciaci" xml:space="preserve">
-    <value>Končící vlak – má jen příjezd.</value>
+    <value>Končící vlak: má jen příjezd.</value>
   </data>
   <data name="TrainRoutePage_Vychadzajuci" xml:space="preserve">
-    <value>Výchozí vlak – má jen odjezd.</value>
+    <value>Výchozí vlak: má jen odjezd.</value>
   </data>
   <data name="TrainRoutePage_BezTrasy" xml:space="preserve">
-    <value>Vlak zatím nemá trasu – přidejte stanice ze směru, do směru nebo obojí.</value>
+    <value>Vlak zatím nemá trasu. Přidejte stanice ze směru, do směru nebo obojí.</value>
   </data>
   <data name="TrainRules_TrasaSToutoStanicou" xml:space="preserve">
-    <value>Trasa obsahuje i stanici grafikonu – ta se do trasy nepíše.</value>
+    <value>Trasa obsahuje i stanici grafikonu, ta se do trasy nepíše.</value>
   </data>
   <data name="TrainPageHint_Upozornenie" xml:space="preserve">
     <value>Upozornění: {0}</value>
@@ -1908,22 +1908,22 @@ Pokračovat?</value>
     <value>Dodatek zazní u zaškrtnutých hlášení. Typy hlášení se řídí směrováním vlaku (trasou).</value>
   </data>
   <data name="TrainDodatkyPage_BezTrasy" xml:space="preserve">
-    <value>Vlak nemá trasu, proto zatím nemá ani typy hlášení – nejprve zadejte trasu.</value>
+    <value>Vlak nemá trasu, proto zatím nemá ani typy hlášení. Nejprve zadejte trasu.</value>
   </data>
   <data name="TrainRadeniePage_Info" xml:space="preserve">
-    <value>Řazení zazní u zaškrtnutých hlášení; pokud není zaškrtnuto nic, INISS ho přehraje u všech.</value>
+    <value>Řazení zazní u zaškrtnutých hlášení. Pokud není zaškrtnuto nic, INISS ho přehraje u všech.</value>
   </data>
   <data name="TrainRadeniePage_Nove" xml:space="preserve">
     <value>(nové řazení)</value>
   </data>
   <data name="TrainValidityPage_Skupina" xml:space="preserve">
-    <value>Tento vlak je {0}. z {1} variant vlaku {2}. Varianty se liší dny, ve které jedou – čísla variant přiděluje GVDEditor sám.</value>
+    <value>Tento vlak je {0}. z {1} variant vlaku {2}. Varianty se liší dny, ve které jedou. Čísla variant přiděluje GVDEditor sám.</value>
   </data>
   <data name="TrainValidityPage_TentoVlak" xml:space="preserve">
     <value>{0} (tento vlak)</value>
   </data>
   <data name="TrainValidityPage_DniSaNedajuPrecitat" xml:space="preserve">
-    <value>Dny jednoho z vlaků nelze přečíst – nejprve je opravte.</value>
+    <value>Dny jednoho z vlaků nelze přečíst. Nejprve je opravte.</value>
   </data>
   <data name="TrainBasicsPage_ZmenitVarianty" xml:space="preserve">
     <value>Změnit i ostatní varianty ({0})</value>
@@ -1938,7 +1938,7 @@ Pokračovat?</value>
     <value>Uspořádat varianty…</value>
   </data>
   <data name="FMain_Variant_UsporiadatOtazka" xml:space="preserve">
-    <value>Varianty vlaku {0} se seřadí podle délky trasy (nejkratší je první) a ve dnech, kdy by jelo více variant najednou, zůstane jen varianta s nejdelší trasou – ostatním se tyto dny z datumového omezení odeberou. Pokračovat?</value>
+    <value>Varianty vlaku {0} se seřadí podle délky trasy (nejkratší je první). Ve dnech, kdy by jelo více variant najednou, zůstane jen varianta s nejdelší trasou a ostatním se tyto dny odeberou. Pokračovat?</value>
   </data>
   <data name="FMain_Variant_Zoznam" xml:space="preserve">
     <value>Varianty vlaku {0}:</value>
@@ -2106,7 +2106,7 @@ Záloha původních souborů: {1}
 {0}</value>
   </data>
   <data name="Analyzer_ZpozdeniCacheOld" xml:space="preserve">
-    <value>{0} je novější než vyrovnávací paměť {1}; INISS bude dál používat starý seznam zpoždění.</value>
+    <value>{0} je novější než vyrovnávací paměť {1}. INISS bude dál používat starý seznam zpoždění.</value>
   </data>
   <data name="Analyzer_ZpozdeniCacheOld_Fix" xml:space="preserve">
     <value>Smazat {0} (INISS si ho při startu vytvoří znovu)</value>
@@ -2402,10 +2402,10 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>Neexistující ID trasy {0} v tomto souboru.</value>
   </data>
   <data name="Routes_UnknownType" xml:space="preserve">
-    <value>{0}, řádek {1}: neznámý druh vlaku "{2}" u vlaku {3}; zbytek řádku se přeskakuje.</value>
+    <value>{0}, řádek {1}: neznámý druh vlaku "{2}" u vlaku {3}. Zbytek řádku se přeskakuje.</value>
   </data>
   <data name="Routes_NoDefinition" xml:space="preserve">
-    <value>{0}, řádek {1}: vlak {2} {3} nemá definici v {4}; zbytek řádku se přeskakuje.</value>
+    <value>{0}, řádek {1}: vlak {2} {3} nemá definici v {4}. Zbytek řádku se přeskakuje.</value>
   </data>
   <data name="Razeni_MissingBasics" xml:space="preserve">
     <value>Chybí základní informace o řazení.</value>
@@ -2417,7 +2417,7 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>{0}, řádek {1}: nahrávka {2} se ve zvukové bance nenachází, přeskakuje se.</value>
   </data>
   <data name="Categori_TooManyLanguages" xml:space="preserve">
-    <value>{0}: COUNT_LANGUAGES ({1}) je větší než počet jazyků ve zvukové bance ({2}); jazyky bez nahrávek se přeskočí.</value>
+    <value>{0}: COUNT_LANGUAGES ({1}) je větší než počet jazyků ve zvukové bance ({2}). Jazyky bez nahrávek se přeskočí.</value>
   </data>
   <data name="Categori_LanguageMissing" xml:space="preserve">
     <value>{0}: jazyk {1} se ve zvukové bance nenachází, přeskakuje se.</value>
@@ -2450,7 +2450,7 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>Písmo tabule {0} má neplatný typ (BOLD_FACE_{1}): {2}.</value>
   </data>
   <data name="Doplnky_NoSound" xml:space="preserve">
-    <value>{0}, řádek {1}: doplněk {2} vlaku {3} nemá zvuk ve skupině DODATKY; při uložení se ztratí.</value>
+    <value>{0}, řádek {1}: doplněk {2} vlaku {3} nemá zvuk ve skupině DODATKY. Při uložení se ztratí.</value>
   </data>
   <data name="Doplnky_TrainItem" xml:space="preserve">
     <value>Doplněk vlaku [{0},{1}]: </value>
@@ -2747,7 +2747,7 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>{0} – aktivní jen s přepínačem /{0}</value>
   </data>
   <data name="DirListFlags_TipRaw" xml:space="preserve">
-    <value>Zapsáno jako „{0}“ – INISS z toho použije jen uvedené příznaky.</value>
+    <value>Zapsáno jako „{0}“. INISS z toho použije jen uvedené příznaky.</value>
   </data>
   <data name="Analyzer_Error" xml:space="preserve">
     <value>Chyba</value>
@@ -2798,13 +2798,13 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>Upravit vlak</value>
   </data>
   <data name="Analyzer_StationNoRecording" xml:space="preserve">
-    <value>Stanice {0} ({1}) se hlásí ve vlacích (počet: {2}, např. {3}), ale zvuková banka pro ni nemá nahrávku – INISS ji nemá čím ohlásit.</value>
+    <value>Stanice {0} ({1}) se hlásí ve vlacích (počet: {2}, např. {3}), ale zvuková banka pro ni nemá nahrávku. INISS ji nemá čím ohlásit.</value>
   </data>
   <data name="Analyzer_StationNoRecording_Fix" xml:space="preserve">
     <value>Doplnit nahrávku do skupiny R1 v RawBankEditoru, nebo stanici z hlášení vlaku vynechat</value>
   </data>
   <data name="Analyzer_StateDgmMissing" xml:space="preserve">
-    <value>Grafikon nemá stavový diagram – INISS jeho vlaky nedokáže obsluhovat.</value>
+    <value>Grafikon nemá stavový diagram. INISS jeho vlaky nedokáže obsluhovat.</value>
   </data>
   <data name="Analyzer_StateDgmMissing_Fix" xml:space="preserve">
     <value>Založit stavový diagram v Lokálních nastaveních</value>
@@ -2819,7 +2819,7 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>Upravit stavový diagram</value>
   </data>
   <data name="Analyzer_ElenFont" xml:space="preserve">
-    <value>{0}: číslo písma {1} se tabuli ELEN pošle jako řídicí znak 0x{2} (chybí bit 0x40) – tabule může zprávu odmítnout a INISS ji bude opakovat.</value>
+    <value>{0}: číslo písma {1} se tabuli ELEN pošle jako řídicí znak 0x{2} (chybí bit 0x40). Tabule může zprávu odmítnout a INISS ji bude opakovat.</value>
   </data>
   <data name="Analyzer_ElenFont_Font" xml:space="preserve">
     <value>Písmo „{0}“ (nabízí se u informačního textu)</value>
@@ -2834,7 +2834,7 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>TabTab {0}, ř. {1}</value>
   </data>
   <data name="Analyzer_ElenFont_Fix" xml:space="preserve">
-    <value>Změnit číslo písma na číslo s bitem 0x40 – stejný vzhled jako {0} má {1}</value>
+    <value>Změnit číslo písma na číslo s bitem 0x40 (stejný vzhled jako {0} má {1})</value>
   </data>
   <data name="Cmd_InissSettings" xml:space="preserve">
     <value>Nastavení INISSu…</value>
@@ -2864,7 +2864,7 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>(prázdné)</value>
   </data>
   <data name="InissSettings_ExtraDescription" xml:space="preserve">
-    <value>Tuto hodnotu INISS nezná nebo ji nečte – je to pozůstatek starší verze, hodnota jiného programu nebo překlep. Lze ji pouze smazat.</value>
+    <value>Tuto hodnotu INISS nezná nebo ji nečte. Je to pozůstatek starší verze, hodnota jiného programu nebo překlep. Lze ji pouze smazat.</value>
   </data>
   <data name="InissSettings_Findings" xml:space="preserve">
     <value>Zjištění</value>
@@ -2903,13 +2903,13 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>soubor .INI přebíjí registr</value>
   </data>
   <data name="InissSettings_Info_NoConfig" xml:space="preserve">
-    <value>konfigurace v registru zatím neexistuje – INISS ji založí při prvním spuštění</value>
+    <value>konfigurace v registru zatím neexistuje, INISS ji založí při prvním spuštění</value>
   </data>
   <data name="InissSettings_Info_NoUserBranch" xml:space="preserve">
     <value>nastavení jsou v HKEY_LOCAL_MACHINE</value>
   </data>
   <data name="InissSettings_Info_Running" xml:space="preserve">
-    <value>INISS běží – změny se projeví po restartu</value>
+    <value>INISS běží, změny se projeví po restartu</value>
   </data>
   <data name="InissSettings_Info_UserBranch" xml:space="preserve">
     <value>per-user nastavení se čtou z HKEY_CURRENT_USER</value>
@@ -2936,7 +2936,7 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>platí</value>
   </data>
   <data name="InissSettings_Layer_WrongType" xml:space="preserve">
-    <value>špatný typ – nečte se</value>
+    <value>špatný typ, nečte se</value>
   </data>
   <data name="InissSettings_Layers" xml:space="preserve">
     <value>Vyhodnocení hodnoty</value>
@@ -2951,19 +2951,19 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>Soubor .INI přebíjí registr a INISS do něj nikdy nezapisuje. Po jeho smazání platí opět registr.</value>
   </data>
   <data name="InissSettings_Note_IniAppWrites" xml:space="preserve">
-    <value>INISS tuto hodnotu za běhu ukládá do registru – dokud bude v souboru .INI, uložený stav se neuplatní.</value>
+    <value>INISS tuto hodnotu za běhu ukládá do registru. Dokud bude v souboru .INI, uložený stav se neuplatní.</value>
   </data>
   <data name="InissSettings_Note_IniRemoved" xml:space="preserve">
-    <value>Hodnota nyní platí ze souboru .INI – při uložení se ze souboru odstraní, jinak by změnu přebila.</value>
+    <value>Hodnota nyní platí ze souboru .INI. Při uložení se ze souboru odstraní, jinak by změnu přebila.</value>
   </data>
   <data name="InissSettings_Note_NotRead" xml:space="preserve">
-    <value>Tato verze INISSu hodnotu nečte – změna nebude mít účinek.</value>
+    <value>Tato verze INISSu hodnotu nečte, změna nebude mít účinek.</value>
   </data>
   <data name="InissSettings_Note_SectionFromIni" xml:space="preserve">
-    <value>Sekce je v souboru .INI – INISS její hodnoty z registru nečte. Zapište změnu do souboru .INI.</value>
+    <value>Sekce je v souboru .INI a INISS její hodnoty z registru nečte. Zapište změnu do souboru .INI.</value>
   </data>
   <data name="InissSettings_Note_Uac" xml:space="preserve">
-    <value>Zápis do HKEY_LOCAL_MACHINE vyžaduje práva správce – při uložení se zobrazí výzva systému Windows.</value>
+    <value>Zápis do HKEY_LOCAL_MACHINE vyžaduje práva správce. Při uložení se zobrazí výzva systému Windows.</value>
   </data>
   <data name="InissSettings_Off" xml:space="preserve">
     <value>vypnuto</value>
@@ -2990,22 +2990,22 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>bez práv správce</value>
   </data>
   <data name="InissSettings_SaveCancelled" xml:space="preserve">
-    <value>Zápis do HKEY_LOCAL_MACHINE byl zrušen – nic se neuložilo.</value>
+    <value>Zápis do HKEY_LOCAL_MACHINE byl zrušen, nic se neuložilo.</value>
   </data>
   <data name="InissSettings_SaveError" xml:space="preserve">
     <value>Nastavení se nepodařilo uložit: {0}</value>
   </data>
   <data name="InissSettings_SaveFailed" xml:space="preserve">
-    <value>Zápis do HKEY_LOCAL_MACHINE selhal – nic se neuložilo.</value>
+    <value>Zápis do HKEY_LOCAL_MACHINE selhal, nic se neuložilo.</value>
   </data>
   <data name="InissSettings_SavedRestartNeeded" xml:space="preserve">
-    <value>Nastavení jsou uložena. INISS běží – projeví se po jeho restartu.</value>
+    <value>Nastavení jsou uložena. INISS běží, projeví se po jeho restartu.</value>
   </data>
   <data name="InissSettings_SearchResults" xml:space="preserve">
     <value>Hodnoty obsahující „{0}“ v názvu nebo popisu</value>
   </data>
   <data name="InissSettings_SectionFromIni" xml:space="preserve">
-    <value>Sekce je v souboru .INI – INISS ji čte jen ze souboru, registr pro ni nepoužije.</value>
+    <value>Sekce je v souboru .INI. INISS ji čte jen ze souboru, registr pro ni nepoužije.</value>
   </data>
   <data name="InissSettings_Severity_Error" xml:space="preserve">
     <value>chyba</value>
@@ -3050,10 +3050,10 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>Uloží se tyto změny:</value>
   </data>
   <data name="InissSettings_SummaryNotRead" xml:space="preserve">
-    <value>Některé změny jdou do registru v sekci ze souboru .INI – INISS je nebude číst.</value>
+    <value>Některé změny jdou do registru v sekci ze souboru .INI. INISS je nebude číst.</value>
   </data>
   <data name="InissSettings_SummaryUac" xml:space="preserve">
-    <value>Zápis do HKEY_LOCAL_MACHINE vyžaduje práva správce – Windows zobrazí jednu výzvu k potvrzení.</value>
+    <value>Zápis do HKEY_LOCAL_MACHINE vyžaduje práva správce. Windows zobrazí jednu výzvu k potvrzení.</value>
   </data>
   <data name="InissSettings_SystemColor" xml:space="preserve">
     <value>systémová barva</value>
@@ -3089,10 +3089,10 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>Zadejte barvu jako #RRGGBB (například #FF0000), prázdná hodnota je systémová barva.</value>
   </data>
   <data name="InissSettings_Note_Color" xml:space="preserve">
-    <value>Barvu zadejte v tabulce jako #RRGGBB nebo ji vyberte dvojklikem; prázdná hodnota je systémová barva.</value>
+    <value>Barvu zadejte v tabulce jako #RRGGBB nebo ji vyberte dvojklikem. Prázdná hodnota je systémová barva.</value>
   </data>
   <data name="InissSettings_LineWrongFamily" xml:space="preserve">
-    <value>Tabule {0} ({1}) nepatří na linku s protokolem {2} – INISS jí nic nepošle.</value>
+    <value>Tabule {0} ({1}) nepatří na linku s protokolem {2}. INISS jí nic nepošle.</value>
   </data>
   <data name="InissSettings_LineTables" xml:space="preserve">
     <value>Linka: {0}. Fyzické tabule na lince: {1}</value>
@@ -3125,7 +3125,7 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>Tabule s linkou {0} v datech: {1}</value>
   </data>
   <data name="InissSettings_Wizard_NoTables" xml:space="preserve">
-    <value>V datech není žádná tabule s linkou {0} – linku u fyzické tabule nastavíte v lokálním nastavení.</value>
+    <value>V datech není žádná tabule s linkou {0}. Linku u fyzické tabule nastavíte v lokálním nastavení.</value>
   </data>
   <data name="InissSettings_Wizard_LineUsed" xml:space="preserve">
     <value>Linku {0} už používá sekce {1}.</value>
@@ -3195,40 +3195,40 @@ Zrušit – nespouštět</value>
 {1}</value>
   </data>
   <data name="Run_Check_ExportHlas" xml:space="preserve">
-    <value>INISS vyexportuje hlášení a sám skončí – operátorské okno se neotevře.</value>
+    <value>INISS vyexportuje hlášení a sám skončí, operátorské okno se neotevře.</value>
   </data>
   <data name="Run_Check_ImportDat" xml:space="preserve">
-    <value>INISS naimportuje data a sám skončí – operátorské okno se neotevře.</value>
+    <value>INISS naimportuje data a sám skončí, operátorské okno se neotevře.</value>
   </data>
   <data name="Run_Check_ImportMarker" xml:space="preserve">
-    <value>V datech instalace je značka dávkového importu – INISS data jen naimportuje a hned skončí, operátorské okno se neotevře.</value>
+    <value>V datech instalace je značka dávkového importu. INISS data jen naimportuje a hned skončí, operátorské okno se neotevře.</value>
   </data>
   <data name="Run_Check_NewInstanceNoMultiuse" xml:space="preserve">
-    <value>Další instance se bez /Multiuse nespustí – INISS skončí, pokud už jiný INISS běží.</value>
+    <value>Další instance se bez /Multiuse nespustí. INISS skončí, pokud už jiný INISS běží.</value>
   </data>
   <data name="Run_Check_NoBranch" xml:space="preserve">
-    <value>Větev registru „{0}“ zatím neexistuje – INISS poběží s výchozím nastavením.</value>
+    <value>Větev registru „{0}“ zatím neexistuje, INISS poběží s výchozím nastavením.</value>
   </data>
   <data name="Run_Check_NoProgram" xml:space="preserve">
     <value>Konfigurace nemá vybraný program.</value>
   </data>
   <data name="Run_Check_NotIniss" xml:space="preserve">
-    <value>Program {0} není INISS – parametry INISSu mu nemusí být srozumitelné.</value>
+    <value>Program {0} není INISS, parametry INISSu mu nemusí být srozumitelné.</value>
   </data>
   <data name="Run_Check_ProgramMissing" xml:space="preserve">
     <value>Program {0} v instalaci neexistuje.</value>
   </data>
   <data name="Run_Check_SameBranch" xml:space="preserve">
-    <value>Stejnou větev registru „{0}“ používá také: {1} – změny nastavení INISSu platí pro všechny.</value>
+    <value>Stejnou větev registru „{0}“ používá také: {1}. Změny nastavení INISSu platí pro všechny.</value>
   </data>
   <data name="Run_Check_SingleInstance" xml:space="preserve">
-    <value>Už běží INISS spuštěný bez /Multiuse – tento INISS se bez /Multiuse nespustí (hned skončí).</value>
+    <value>Už běží INISS spuštěný bez /Multiuse. Tento INISS se bez /Multiuse nespustí.</value>
   </data>
   <data name="Run_Check_Sleeping" xml:space="preserve">
     <value>Bez /{0} zůstanou neaktivní (bez hlášení a linek): {1}</value>
   </data>
   <data name="Run_Check_UnusedActivator" xml:space="preserve">
-    <value>/{0} nezapne žádný grafikon – žádný ho nemá mezi příznaky.</value>
+    <value>/{0} nezapne žádný grafikon, žádný ho nemá mezi příznaky.</value>
   </data>
   <data name="Run_CopyName" xml:space="preserve">
     <value>{0} – kopie</value>
@@ -3237,10 +3237,10 @@ Zrušit – nespouštět</value>
     <value>Zahodit změny konfigurací spouštění?</value>
   </data>
   <data name="Run_Exit_AlreadyRunning" xml:space="preserve">
-    <value>INISS ({0}) se nespustil – už běží jiný INISS a tato konfigurace nemá zapnuté /Multiuse (více instancí najednou).</value>
+    <value>INISS ({0}) se nespustil. Už běží jiný INISS a tato konfigurace nemá zapnuté /Multiuse (více instancí najednou).</value>
   </data>
   <data name="Run_Exit_Mutex" xml:space="preserve">
-    <value>INISS ({0}) se nespustil – nepodařilo se mu ověřit, zda už běží jiný INISS. Pomůže zapnout /Multiuse.</value>
+    <value>INISS ({0}) se nespustil, nepodařilo se mu ověřit, zda už běží jiný INISS. Pomůže zapnout /Multiuse.</value>
   </data>
   <data name="Run_Exit_Unregistered" xml:space="preserve">
     <value>INISS ({0}) se ukončil, protože tato kopie není registrovaná.</value>
@@ -3264,16 +3264,16 @@ Zrušit – nespouštět</value>
     <value>Konfigurace spouštění uložené v datech instalace se nepodařilo načíst: {0}</value>
   </data>
   <data name="Run_LogsMissing" xml:space="preserve">
-    <value>Složka logů {0} neexistuje – INISS ji založí, až začne logovat.</value>
+    <value>Složka logů {0} neexistuje. INISS ji založí, až začne logovat.</value>
   </data>
   <data name="Run_NameDuplicate" xml:space="preserve">
-    <value>Název {0} má více konfigurací – každá musí mít vlastní.</value>
+    <value>Název {0} má více konfigurací, každá musí mít vlastní.</value>
   </data>
   <data name="Run_NameEmpty" xml:space="preserve">
     <value>Konfigurace nemá název.</value>
   </data>
   <data name="Run_NoActivators" xml:space="preserve">
-    <value>Žádný grafikon nemá aktivátor – všechny jsou aktivní vždy.</value>
+    <value>Žádný grafikon nemá aktivátor, všechny jsou aktivní vždy.</value>
   </data>
   <data name="Run_NodeRunning" xml:space="preserve">
     <value>{0} – běží</value>
@@ -3354,19 +3354,19 @@ Hodnota z: {1}</value>
     <value>Před vyčištěním se všechny větve konfigurace uloží jako záloha .reg do složky {0}.</value>
   </data>
   <data name="InissCleanup_Intro" xml:space="preserve">
-    <value>Hodnoty v registru větve „{0}“, které INISS nepoužívá nebo použije jinak, než se zdá. Označené jsou ty, které je bezpečné vyčistit; ostatní si zkontrolujte.</value>
+    <value>Hodnoty v registru větve „{0}“, které INISS nepoužívá nebo použije jinak, než se zdá. Označené je bezpečné vyčistit, ostatní si zkontrolujte.</value>
   </data>
   <data name="InissCleanup_WholeSection" xml:space="preserve">
     <value>(celá sekce)</value>
   </data>
   <data name="InissCleanup_Why_Leftover" xml:space="preserve">
-    <value>Pozůstatek – nečte ho žádná verze INISSu</value>
+    <value>Pozůstatek, nečte ho žádná verze INISSu</value>
   </data>
   <data name="InissCleanup_Why_LegacyGhost" xml:space="preserve">
-    <value>Starý název vedle nového – INISS ho už nečte</value>
+    <value>Starý název vedle nového, INISS ho už nečte</value>
   </data>
   <data name="InissCleanup_Why_LegacyName" xml:space="preserve">
-    <value>Starý název – INISS ho čte a sám přejmenuje</value>
+    <value>Starý název, INISS ho čte a sám přejmenuje</value>
   </data>
   <data name="InissCleanup_Why_OtherLanguageColor" xml:space="preserve">
     <value>Barva jiné jazykové verze INISSu</value>
@@ -3381,13 +3381,13 @@ Hodnota z: {1}</value>
     <value>Kopie ve VirtualStore přebíjí HKLM (INISS bez práv správce)</value>
   </data>
   <data name="InissCleanup_Why_WrongType" xml:space="preserve">
-    <value>Špatný typ hodnoty – INISS ji ignoruje</value>
+    <value>Špatný typ hodnoty, INISS ji ignoruje</value>
   </data>
   <data name="InissClone_DefaultName" xml:space="preserve">
     <value>{0} – kopie</value>
   </data>
   <data name="InissClone_Intro" xml:space="preserve">
-    <value>Zkopíruje všechny větve konfigurace „{0}“ (HKLM, HKCU i VirtualStore) do nové větve registru. Soubor .INI patří k programu a nekopíruje se. Nová větev se použije při spuštění INISSu s parametrem /Reg.</value>
+    <value>Zkopíruje všechny větve konfigurace „{0}“ (HKLM, HKCU i VirtualStore) do nové větve registru. Soubor .INI se nekopíruje. Nová větev se použije při spuštění INISSu s parametrem /Reg.</value>
   </data>
   <data name="InissClone_NameEmpty" xml:space="preserve">
     <value>Zadejte název nové větve.</value>
@@ -3455,7 +3455,7 @@ Hodnota z: {1}</value>
   <data name="InissTools_CreateUserBranchQuestion" xml:space="preserve">
     <value>Založit větev HKEY_CURRENT_USER pro „{0}“?
 
-INISS pak čte nastavení uživatele (sekce {1}) jen z ní – jejich hodnoty v HKLM přestanou platit.
+INISS pak čte nastavení uživatele (sekce {1}) jen z ní a jejich hodnoty v HKLM přestanou platit.
 
 Ano – založit a zkopírovat do ní současné hodnoty (INISS se bude chovat stejně)
 Ne – založit prázdnou (platí výchozí hodnoty)
@@ -3476,7 +3476,7 @@ Zrušit – nezakládat</value>
 Ano – všechny hodnoty, které INISS použije
 Ne – jen hodnoty zapsané v registru nebo .INI
 
-Soubor .INI se jménem programu vedle programu má přednost před registrem – exportovaný soubor tam dejte, jen pokud to tak chcete.</value>
+Soubor .INI se jménem programu vedle programu má přednost před registrem. Exportovaný soubor tam dejte, jen pokud to tak chcete.</value>
   </data>
   <data name="InissTools_ExportReg" xml:space="preserve">
     <value>Exportovat do souboru .reg...</value>
@@ -3523,13 +3523,13 @@ Zrušit – nic nedělat</value>
 Před zápisem se uloží záloha.</value>
   </data>
   <data name="InissCheck_Disabled" xml:space="preserve">
-    <value>Tabule {0} je v INISSu vypnutá – INISS s ní nekomunikuje.</value>
+    <value>Tabule {0} je v INISSu vypnutá, INISS s ní nekomunikuje.</value>
   </data>
   <data name="InissCheck_Disabled_Fix" xml:space="preserve">
     <value>Pokud má tabule fungovat, zapněte ji v okně Nastavení INISSu (sekce Tables).</value>
   </data>
   <data name="InissCheck_FileName" xml:space="preserve">
-    <value>INISS podle nastavení (PathNames\{0} = {1}) čte jiný soubor, než do kterého GVDEditor zapisuje – změny z GVDEditoru neuvidí.</value>
+    <value>INISS podle nastavení (PathNames\{0} = {1}) čte jiný soubor, než do kterého GVDEditor zapisuje. Změny z GVDEditoru neuvidí.</value>
   </data>
   <data name="InissCheck_FileName_Fix" xml:space="preserve">
     <value>Obnovte výchozí hodnotu v okně Nastavení INISSu (sekce PathNames).</value>
@@ -3541,25 +3541,25 @@ Před zápisem se uloží záloha.</value>
     <value>Upravte linku v okně Nastavení INISSu.</value>
   </data>
   <data name="InissCheck_Missing" xml:space="preserve">
-    <value>Nastavení INISSu konfigurace spouštění {0} v registru ani v souboru .INI nejsou – INISS poběží s výchozím nastavením. Kontrola linek tabulí a souborů se přeskočila.</value>
+    <value>Nastavení INISSu konfigurace spouštění {0} v registru ani v souboru .INI nejsou. INISS poběží s výchozím nastavením a kontrola linek tabulí a souborů se přeskočila.</value>
   </data>
   <data name="InissCheck_Missing_Fix" xml:space="preserve">
     <value>Zkontrolujte vybranou konfiguraci spouštění (větev registru, program), případně nastavte INISS v okně Nastavení INISSu.</value>
   </data>
   <data name="InissCheck_Orphans" xml:space="preserve">
-    <value>V nastavení INISSu jsou hodnoty tabulí s pořadovým číslem {0}, ale tabulí je jen {1}. INISS nastavení tabulí přiřazuje podle pořadí – po přidání nebo odstranění tabule se zapnutí a jas mohou posunout na jinou tabuli.</value>
+    <value>V nastavení INISSu jsou hodnoty tabulí s pořadovým číslem {0}, ale tabulí je jen {1}. INISS je přiřazuje podle pořadí, takže po přidání nebo odstranění tabule se zapnutí a jas mohou posunout na jinou tabuli.</value>
   </data>
   <data name="InissCheck_Orphans_Fix" xml:space="preserve">
     <value>Zkontrolujte sekci Tables v okně Nastavení INISSu a hodnoty bez tabule obnovte na výchozí.</value>
   </data>
   <data name="InissCheck_OutputOff" xml:space="preserve">
-    <value>INISS má vypnuté posílání na tabule (Environment\OutToTableDriver) – obsah tabulí jen zobrazuje a na linky nic nepošle.</value>
+    <value>INISS má vypnuté posílání na tabule (Environment\OutToTableDriver). Obsah tabulí jen zobrazuje a na linky nic nepošle.</value>
   </data>
   <data name="InissCheck_OutputOff_Fix" xml:space="preserve">
     <value>Zapněte OutToTableDriver v okně Nastavení INISSu (sekce Environment).</value>
   </data>
   <data name="InissCheck_Unserved" xml:space="preserve">
-    <value>Tabule {0}: INISS jí nic nepošle – {1}.</value>
+    <value>Tabule {0}: INISS jí nic nepošle ({1}).</value>
   </data>
   <data name="InissCheck_Unserved_Fix" xml:space="preserve">
     <value>Přidejte linku s protokolem výrobce tabule v okně Nastavení INISSu, nebo změňte číslo linky tabule ve fyzických tabulích.</value>
@@ -3568,7 +3568,7 @@ Před zápisem se uloží záloha.</value>
     <value>Přesměrovat tabule na simulátor...</value>
   </data>
   <data name="InissRedirect_Intro" xml:space="preserve">
-    <value>Linky k tabulím přesměruje na simulátor tabulí zápisem do souboru {0} vedle programu – linka N bude posílat na port „první port + N“. Registr se nemění a zrušení přesměrování vrátí soubor do původního stavu. INISS změnu načte při nejbližším spuštění.</value>
+    <value>Linky k tabulím přesměruje na simulátor tabulí zápisem do souboru {0} vedle programu. Linka N bude posílat na port „první port + N“. Registr se nemění a zrušení přesměrování vrátí soubor do původního stavu. INISS změnu načte při nejbližším spuštění.</value>
   </data>
   <data name="InissRedirect_StatusChecking" xml:space="preserve">
     <value>Zjišťuji, zda simulátor běží…</value>
@@ -3577,7 +3577,7 @@ Před zápisem se uloží záloha.</value>
     <value>Simulátor běží a zná třídy linek {0}.</value>
   </data>
   <data name="InissRedirect_StatusOffline" xml:space="preserve">
-    <value>Simulátor na adrese {0} neodpovídá – linky v něm bude třeba založit ručně, nebo jej spusťte a stav zjistěte znovu.</value>
+    <value>Simulátor na adrese {0} neodpovídá. Spusťte jej a zjistěte stav znovu, nebo linky v něm založte ručně.</value>
   </data>
   <data name="InissRedirect_UrlInvalid" xml:space="preserve">
     <value>Webová adresa simulátoru není platná (např. http://localhost:5470).</value>
@@ -3604,7 +3604,7 @@ Před zápisem se uloží záloha.</value>
     <value>Přesměrované linky: {0}. INISS je použije po nejbližším spuštění.</value>
   </data>
   <data name="InissRedirect_Undone" xml:space="preserve">
-    <value>Přesměrování na simulátor je zrušeno – soubor .INI je v původním stavu.</value>
+    <value>Přesměrování na simulátor je zrušeno, soubor .INI je v původním stavu.</value>
   </data>
   <data name="InissRedirect_UndoQuestion" xml:space="preserve">
     <value>Zrušit přesměrování linek {0} na simulátor?</value>
@@ -3613,10 +3613,10 @@ Před zápisem se uloží záloha.</value>
     <value>Soubor {0} se nepodařilo zapsat: {1}</value>
   </data>
   <data name="InissRedirect_SimulatorDone" xml:space="preserve">
-    <value>V simulátoru přibyly linky: {0}, změnily se: {1}; přibyly tabule: {2}, ponechané: {3}.</value>
+    <value>V simulátoru přibyly linky: {0}, změnily se: {1}. Přibyly tabule: {2}, ponechané: {3}.</value>
   </data>
   <data name="InissRedirect_SimulatorUnsupported" xml:space="preserve">
-    <value>Třídy linek {0} simulátor nezná – jejich tabule nezobrazí.</value>
+    <value>Třídy linek {0} simulátor nezná a jejich tabule nezobrazí.</value>
   </data>
   <data name="InissRedirect_SimulatorSkipped" xml:space="preserve">
     <value>Tabule, které simulátor na jejich lince nezobrazí: {0}.</value>
@@ -3625,49 +3625,49 @@ Před zápisem se uloží záloha.</value>
     <value>Linky a tabule v simulátoru se nepodařilo založit ({0}). Spusťte simulátor a přesměrování potvrďte znovu, nebo linky založte ručně.</value>
   </data>
   <data name="InissRedirect_StatusNeedsKey" xml:space="preserve">
-    <value>Simulátor vyžaduje přihlášení – zadejte API klíč (v simulátoru Uživatelé → Klíče → Nový klíč, druh program, role operátor) a zjistěte stav znovu.</value>
+    <value>Simulátor vyžaduje přihlášení. Zadejte API klíč a zjistěte stav znovu. Klíč vytvoříte v simulátoru na stránce Přístupové klíče (druh program, role operátor).</value>
   </data>
   <data name="InissRedirect_StatusKeyInvalid" xml:space="preserve">
-    <value>Simulátor API klíč nepřijal – zkontrolujte jej, nebo v simulátoru vytvořte nový.</value>
+    <value>Simulátor API klíč nepřijal. Zkontrolujte jej, nebo v simulátoru vytvořte nový.</value>
   </data>
   <data name="InissRedirect_StatusHttpsRequired" xml:space="preserve">
-    <value>Simulátor ze sítě přijímá jen HTTPS – změňte webovou adresu na {0}.</value>
+    <value>Simulátor ze sítě přijímá jen HTTPS. Změňte webovou adresu na {0}.</value>
   </data>
   <data name="InissRedirect_StatusUntrusted" xml:space="preserve">
     <value>Certifikátu simulátoru tento počítač nedůvěřuje. Stáhněte certifikát autority simulátoru ({0}) a nainstalujte ho mezi důvěryhodné kořenové certifikáty.</value>
   </data>
   <data name="InissRedirect_StatusReadOnly" xml:space="preserve">
-    <value>API klíč smí jen prohlížet – k založení linek a tabulí je třeba klíč s rolí operátor.</value>
+    <value>API klíč nemá oprávnění k linkám a tabulím. K jejich založení je třeba klíč s rolí operátor.</value>
   </data>
   <data name="InissRedirect_SimulatorUnauthorized" xml:space="preserve">
-    <value>Simulátor vyžaduje přihlášení a API klíč chybí nebo neplatí – linky a tabule v něm nevznikly.</value>
+    <value>Simulátor vyžaduje přihlášení a API klíč chybí nebo neplatí. Linky a tabule v něm nevznikly.</value>
   </data>
   <data name="InissRedirect_SimulatorForbidden" xml:space="preserve">
-    <value>API klíč nemá oprávnění měnit simulátor (je třeba role operátor) – linky a tabule v něm nevznikly.</value>
+    <value>API klíč nemá oprávnění měnit linky a tabule simulátoru. Linky a tabule v něm nevznikly.</value>
   </data>
   <data name="InissRedirect_SimulatorVirtual" xml:space="preserve">
     <value>Virtuální tabule pro tabule s exportem do XML: přibyly {0}, ponechané {1}.</value>
   </data>
   <data name="InissRedirect_SimulatorLogAdded" xml:space="preserve">
-    <value>Simulátor sleduje složku logů INISSu {0} – virtuální tabule ukážou obsah, který do ní INISS zapisuje.</value>
+    <value>Simulátor sleduje složku logů INISSu {0}. Virtuální tabule ukážou obsah, který do ní INISS zapisuje.</value>
   </data>
   <data name="InissRedirect_SimulatorLogMissing" xml:space="preserve">
-    <value>Složku logů INISSu {0} simulátor nevidí (běží na jiném počítači nebo složka neexistuje) – pro virtuální tabule ji zadejte v nastavení simulátoru.</value>
+    <value>Složku logů INISSu {0} simulátor nevidí (běží na jiném počítači nebo složka neexistuje). Pro virtuální tabule ji zadejte v nastavení simulátoru.</value>
   </data>
   <data name="InissRedirect_SimulatorLogFull" xml:space="preserve">
-    <value>Simulátor už sleduje nejvíce složek – složku logů INISSu {0} nepřidal.</value>
+    <value>Simulátor už sleduje nejvíce složek, složku logů INISSu {0} nepřidal.</value>
   </data>
   <data name="InissRedirect_RestartQuestion" xml:space="preserve">
     <value>INISS běží a změnu načte až po restartu. Restartovat jej nyní?</value>
   </data>
   <data name="InissRedirect_NeedsProgram" xml:space="preserve">
-    <value>Přesměrování zapisuje do souboru .INI vedle programu – vyberte program INISSu.</value>
+    <value>Přesměrování zapisuje do souboru .INI vedle programu. Vyberte program INISSu.</value>
   </data>
   <data name="InissSettings_Info_Redirected" xml:space="preserve">
     <value>tabule přesměrované na simulátor</value>
   </data>
   <data name="InissCheck_Redirected" xml:space="preserve">
-    <value>Tabule grafikonu dostává jen simulátor tabulí – linky {0} jsou v souboru .INI přesměrované na simulátor.</value>
+    <value>Tabule grafikonu dostává jen simulátor tabulí, linky {0} jsou v souboru .INI přesměrované na simulátor.</value>
   </data>
   <data name="InissCheck_Redirected_Fix" xml:space="preserve">
     <value>Pokud nejde o zkoušku, zrušte přesměrování v okně Nastavení INISSu (Nástroje → Přesměrovat tabule na simulátor).</value>

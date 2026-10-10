@@ -153,7 +153,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Dopravcovia, ktorých možno nastaviť vlakom tohto grafikonu. Názov dopravcu je zároveň meno jeho nahrávky v zvukovej banke (priečinok Dopravca) – po premenovaní ju INISS nenájde.</value>
+    <value>Dopravcovia, ktorých možno nastaviť vlakom tohto grafikonu. Názov dopravcu je zároveň meno jeho nahrávky v zvukovej banke, po premenovaní ju INISS nenájde.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

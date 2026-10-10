@@ -156,7 +156,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Fyzické tabule – skutočné zariadenia na stanici. Vzhľad a výrobcu určuje katalógová tabuľa, obsah priraďujú logické tabule.</value>
+    <value>Fyzické tabule sú skutočné zariadenia na stanici. Vzhľad a výrobcu určuje katalógová tabuľa, obsah priraďujú logické tabule.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -1047,7 +1047,7 @@
     <value>15</value>
   </data>
   <data name="tbXml.HintText" xml:space="preserve">
-    <value>meno súboru bez prípony; prázdne = bez exportu</value>
+    <value>meno súboru bez prípony, prázdne = bez exportu</value>
   </data>
   <data name="tbXml.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

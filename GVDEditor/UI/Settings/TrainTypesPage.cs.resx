@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Druhy vlaků, které se nabízejí v okně vlaku. Platí pro celou instalaci. Druh určuje barvu vlaku v seznamu INISSu. Vlastním typům přidělí GVDEditor volné místo (kategorii) sám.</value>
+    <value>Druhy vlaků, které se nabízejí v okně vlaku. Druh určuje barvu vlaku v seznamu INISSu. Vlastním typům přidělí GVDEditor volné místo sám.</value>
   </data>
   <data name="bAdd.Text" xml:space="preserve">
     <value>Nový typ</value>

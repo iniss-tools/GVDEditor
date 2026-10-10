@@ -59,7 +59,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lIntro.Text" xml:space="preserve">
-    <value>Linka k tabulím je jedna sekce Driver v registru. Vyberte protokol tabulí a způsob připojení – ostatní nastavení linky dostanou výchozí hodnoty podle protokolu.</value>
+    <value>Linka k tabulím je jedna sekce Driver v registru. Vyberte protokol tabulí a způsob připojení, ostatní nastavení linky dostanou výchozí hodnoty.</value>
   </data>
   <data name="lSection.Text" xml:space="preserve">
     <value>Sekce v registru:</value>

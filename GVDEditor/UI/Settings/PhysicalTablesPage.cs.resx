@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Fyzické tabule – skutečná zařízení ve stanici. Vzhled a výrobce určuje katalogová tabule, obsah přiřazují logické tabule.</value>
+    <value>Fyzické tabule jsou skutečná zařízení ve stanici. Vzhled a výrobce určuje katalogová tabule, obsah přiřazují logické tabule.</value>
   </data>
   <data name="bAdd.Text" xml:space="preserve">
     <value>Nová tabule</value>
@@ -160,7 +160,7 @@
     <value>Export do XML:</value>
   </data>
   <data name="tbXml.HintText" xml:space="preserve">
-    <value>jméno souboru bez přípony; prázdné = bez exportu</value>
+    <value>jméno souboru bez přípony, prázdné = bez exportu</value>
   </data>
   <data name="lAdvanced.Text" xml:space="preserve">
     <value>Pokročilé (volitelné)</value>

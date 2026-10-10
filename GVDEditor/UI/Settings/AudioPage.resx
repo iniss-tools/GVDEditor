@@ -156,7 +156,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Audio linky (zvukové okruhy) určujú, cez ktorý zvukový výstup sa hlási pre ktorú stanicu. Platia pre celú inštaláciu. Linka so stanicou TEST je testovací okruh.</value>
+    <value>Audio linky (zvukové okruhy) určujú, cez ktorý zvukový výstup sa hlási pre ktorú stanicu. Linka so stanicou TEST je testovací okruh.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -990,7 +990,7 @@
     <value>16</value>
   </data>
   <data name="tbAmplifier.HintText" xml:space="preserve">
-    <value>výstup ústredne 0 – 63 alebo E1 – E99</value>
+    <value>výstup ústredne 0 až 63 alebo E1 až E99</value>
   </data>
   <data name="tbAmplifier.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

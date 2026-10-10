@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Složka obsahuje více grafikonů zapsaných za sebou (starší zápis s hlavičkami /číslo stanice). INISS je čte jako samostatné grafikony; GVDEditor je musí nejprve rozdělit do samostatných složek. Zkontrolujte navržené názvy složek, případně je upravte.</value>
+    <value>Složka obsahuje více grafikonů zapsaných za sebou (starší zápis s hlavičkami /číslo stanice). GVDEditor je musí nejprve rozdělit do samostatných složek. Zkontrolujte navržené názvy složek.</value>
   </data>
   <data name="colIndex.HeaderText" xml:space="preserve">
     <value>Blok</value>
@@ -139,7 +139,7 @@
     <value>Nová složka</value>
   </data>
   <data name="lNote.Text" xml:space="preserve">
-    <value>Nové složky vzniknou ve složce DATA a zapíší se do DirList.txt místo původní. Původní složka zůstane na disku beze změny; po kontrole ji můžete smazat.</value>
+    <value>Nové složky vzniknou ve složce DATA a zapíší se do seznamu grafikonů místo původní. Původní složka zůstane na disku beze změny a po kontrole ji můžete smazat.</value>
   </data>
   <data name="bOK.Text" xml:space="preserve">
     <value>Rozdělit</value>

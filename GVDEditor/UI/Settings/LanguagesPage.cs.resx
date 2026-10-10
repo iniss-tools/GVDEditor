@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Jazyky, ve kterých INISS hlásí – nejvýše tři. Hlavní jazyk se hlásí vždy. Klíč jazyka musí být ve zvukové bance.</value>
+    <value>Jazyky, ve kterých INISS hlásí, nejvýše tři. Hlavní jazyk se hlásí vždy. Klíč jazyka musí být ve zvukové bance.</value>
   </data>
   <data name="bAdd.Text" xml:space="preserve">
     <value>Nový jazyk</value>

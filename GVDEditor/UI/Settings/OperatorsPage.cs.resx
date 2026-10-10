@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Dopravci, které lze nastavit vlakům tohoto grafikonu. Název dopravce je zároveň jméno jeho nahrávky ve zvukové bance (složka Dopravca) – po přejmenování ji INISS nenajde.</value>
+    <value>Dopravci, které lze nastavit vlakům tohoto grafikonu. Název dopravce je zároveň jméno jeho nahrávky ve zvukové bance, po přejmenování ji INISS nenajde.</value>
   </data>
   <data name="bAdd.Text" xml:space="preserve">
     <value>Nový dopravce</value>

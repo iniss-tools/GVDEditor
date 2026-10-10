@@ -156,7 +156,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Grafikony v dátovom priečinku INISSu. Na poradí záleží – INISS v ňom premieta stanice na trasy vlakov. Porty sú čísla komunikačných liniek vyhradených pre grafikon – bežne ostávajú prázdne. Port hlásení zároveň určuje uzol, ktorý hlási za stanicu grafikonu. Príznaky riadia spracovanie externých správ o vlakoch. Farba odlíši vlaky grafikonu na pracovnej ploche INISSu. Ostatné nastavenia grafikonu sú v Lokálnych nastaveniach.</value>
+    <value>Grafikony v dátovom priečinku INISSu. Na poradí záleží, INISS v ňom premieta stanice na trasy vlakov. Vyhradené porty bežne ostávajú prázdne. Ostatné nastavenia grafikonu sú v lokálnych nastaveniach.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

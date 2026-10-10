@@ -128,7 +128,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Priečinok obsahuje viac grafikonov zapísaných za sebou (starší zápis s hlavičkami /číslo stanice). INISS ich číta ako samostatné grafikony; GVDEditor ich musí najprv rozdeliť do samostatných priečinkov. Skontrolujte navrhnuté názvy priečinkov, prípadne ich upravte.</value>
+    <value>Priečinok obsahuje viac grafikonov zapísaných za sebou (starší zápis s hlavičkami /číslo stanice). GVDEditor ich musí najprv rozdeliť do samostatných priečinkov. Skontrolujte navrhnuté názvy priečinkov.</value>
   </data>
   <data name="&gt;&gt;lInfo.Name" xml:space="preserve">
     <value>lInfo</value>
@@ -212,7 +212,7 @@
     <value>2</value>
   </data>
   <data name="lNote.Text" xml:space="preserve">
-    <value>Nové priečinky vzniknú v priečinku DATA a zapíšu sa do DirList.txt namiesto pôvodného. Pôvodný priečinok ostane na disku nezmenený; po kontrole ho môžete zmazať.</value>
+    <value>Nové priečinky vzniknú v priečinku DATA a zapíšu sa do zoznamu grafikonov namiesto pôvodného. Pôvodný priečinok ostane na disku nezmenený a po kontrole ho môžete zmazať.</value>
   </data>
   <data name="&gt;&gt;lNote.Name" xml:space="preserve">
     <value>lNote</value>

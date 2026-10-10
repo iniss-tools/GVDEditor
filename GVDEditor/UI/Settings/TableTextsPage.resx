@@ -156,7 +156,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Texty na tabuliach – vlastné znenie pre jednotlivé vlaky (napr. skrátená cieľová stanica), ktoré sa na tabuliach zobrazí namiesto vypočítanej hodnoty.</value>
+    <value>Vlastné znenie textov pre jednotlivé vlaky (napr. skrátená cieľová stanica), ktoré sa na tabuliach zobrazí namiesto vypočítanej hodnoty.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

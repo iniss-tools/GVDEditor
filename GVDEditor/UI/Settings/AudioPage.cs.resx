@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Audio linky (zvukové okruhy) určují, přes který zvukový výstup se hlásí pro kterou stanici. Platí pro celou instalaci. Linka se stanicí TEST je testovací okruh.</value>
+    <value>Audio linky (zvukové okruhy) určují, přes který zvukový výstup se hlásí pro kterou stanici. Linka se stanicí TEST je testovací okruh.</value>
   </data>
   <data name="bAdd.Text" xml:space="preserve">
     <value>Nová linka</value>
@@ -175,7 +175,7 @@
     <value>Spínání zesilovače:</value>
   </data>
   <data name="tbAmplifier.HintText" xml:space="preserve">
-    <value>výstup ústředny 0 – 63 nebo E1 – E99</value>
+    <value>výstup ústředny 0 až 63 nebo E1 až E99</value>
   </data>
   <data name="lExchange.Text" xml:space="preserve">
     <value>Parametr ústředny:</value>

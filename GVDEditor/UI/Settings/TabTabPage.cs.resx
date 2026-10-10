@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Sekce TabTab překládají hodnoty sloupců katalogových tabulí na text pro tabuli (např. druh vlaku na zkratku s písmem). Upravují se v editoru TabTab; zde je vidět jejich obsah a kde se používají.</value>
+    <value>Sekce TabTab překládají hodnoty sloupců katalogových tabulí na text pro tabuli (např. druh vlaku na zkratku s písmem). Upravují se v editoru TabTab.</value>
   </data>
   <data name="bEditor.Text" xml:space="preserve">
     <value>Otevřít editor TabTab…</value>

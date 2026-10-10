@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Zaškrtnuté jazyky určují, ve kterých jazycích kromě základního INISS vlak hlásí (například mezistátní vlaky i anglicky). Seznam jazyků je v globálním nastavení.</value>
+    <value>Zaškrtnuté jazyky, ve kterých INISS vlak hlásí kromě základního. Seznam jazyků je v globálním nastavení.</value>
   </data>
 </root>

@@ -156,7 +156,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Sekcie TabTab prekladajú hodnoty stĺpcov katalógových tabúľ na text pre tabuľu (napr. druh vlaku na skratku s písmom). Upravujú sa v editore TabTab; tu je vidno ich obsah a kde sa používajú.</value>
+    <value>Sekcie TabTab prekladajú hodnoty stĺpcov katalógových tabúľ na text pre tabuľu (napr. druh vlaku na skratku s písmom). Upravujú sa v editore TabTab.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

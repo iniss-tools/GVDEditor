@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Logické tabule určují, co se na fyzických tabulích zobrazuje – které záznamy jdou na kterou tabuli a od kterého řádku. Kolejím se přiřazují na stránce Nástupiště a koleje.</value>
+    <value>Logické tabule určují, které záznamy jdou na kterou fyzickou tabuli a od kterého řádku. Kolejím se přiřazují na stránce Nástupiště a koleje.</value>
   </data>
   <data name="bAdd.Text" xml:space="preserve">
     <value>Nová tabule</value>
@@ -151,7 +151,7 @@
     <value>Stanice:</value>
   </data>
   <data name="lStationNote.Text" xml:space="preserve">
-    <value>Nepovinné – vazba na grafikon stanice na pracovišti s více stanicemi. Stanice se vybere ze seznamu nebo se zadá její číslo.</value>
+    <value>Nepovinné. Vazba na grafikon stanice na pracovišti s více stanicemi.</value>
   </data>
   <data name="lZostava.Text" xml:space="preserve">
     <value>Sestava</value>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Nástupiště a koleje stanice. Koleje jsou ve stromu pod nástupištěm, na kterém leží. Nástupiště bez koleje se nezapíše – při dalším otevření grafikonu by zmizelo.</value>
+    <value>Nástupiště a koleje stanice. Koleje jsou ve stromu pod nástupištěm, na kterém leží. Nástupiště bez koleje se nezapíše.</value>
   </data>
   <data name="bAddPlatform.Text" xml:space="preserve">
     <value>Nové nástupiště</value>

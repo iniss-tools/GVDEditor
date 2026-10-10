@@ -156,7 +156,7 @@
     <value>0</value>
   </data>
   <data name="lInfo.Text" xml:space="preserve">
-    <value>Zaškrtnuté jazyky určujú, v ktorých jazykoch okrem základného INISS vlak hlási (napríklad medzištátne vlaky aj po anglicky). Zoznam jazykov je v globálnych nastaveniach.</value>
+    <value>Zaškrtnuté jazyky, v ktorých INISS vlak hlási okrem základného. Zoznam jazykov je v globálnych nastaveniach.</value>
   </data>
   <data name="lInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>

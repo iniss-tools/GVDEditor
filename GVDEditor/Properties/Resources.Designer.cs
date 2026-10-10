@@ -60,8 +60,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tento program slúži na úpravu textových súborov, ktoré používa program INISS. 
-        ///Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnosti INPROP..
+        ///   Looks up a localized string similar to Tento program slúži na úpravu textových súborov, ktoré používa program INISS. Program GVDEditor nie ....
         /// </summary>
         internal static string AboutAppDescription {
             get {
@@ -90,9 +89,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vybrali ste typ debugovania, ktorý nie je určený pre bežných používateľov.  To môže viesť k neočakávaným následkom.
-        ///
-        ///Naozaj chcete použiť tento typ debugovania?.
+        ///   Looks up a localized string similar to Vybrali ste typ debugovania, ktorý nie je určený pre bežných používateľov. To môže viesť k ....
         /// </summary>
         internal static string FAppSettings_cbDebugModeGUI_SelectedIndexChanged_Not_For_All_Users {
             get {
@@ -227,10 +224,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dátumové obmedzenie tohto vlaku zasahuje do vlaku {0} {1} {2} v rozmedzí 
-        ///&quot;{3}&quot;.
-        ///
-        ///Upraviť dátumové obmedzenie popísaného vlaku?.
+        ///   Looks up a localized string similar to Dátumové obmedzenie tohto vlaku zasahuje do vlaku {0} {1} {2} v rozmedzí „{3}“. Upraviť dátumové ....
         /// </summary>
         internal static string FEditTrain_DateRem_zasahuje_do_ineho_vlaku {
             get {
@@ -321,7 +315,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Týchto {0} staníc z programu ELIS sa nepodarilo priradiť automaticky. Priraďte ich k existujúcim staniciam, alebo ich vynechajte. Voľba sa uloží a pri ďalšom importe rovnakých staníc sa už program pýtať nebude..
+        ///   Looks up a localized string similar to Týchto {0} staníc z programu ELIS sa nepodarilo priradiť automaticky. Priraďte ich k existujúcim ....
         /// </summary>
         internal static string FELISStations_FELISStations_Týchto__0__staníc_z_programu_ELIS_sa_nepodarilo_priradiť_automaticky {
             get {
@@ -553,7 +547,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Koľaj {0} používa {1} vlakov ako koľaj príchodu a {2} vlakov ako koľaj odchodu..
+        ///   Looks up a localized string similar to Koľaj {0} používa {1} vlakov ako koľaj príchodu a {2} vlakov ako koľaj odchodu. Vlaky, ktoré na nej ....
         /// </summary>
         internal static string FLocalSettings_Kolaj_Odstranit {
             get {
@@ -571,7 +565,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Na týchto nástupištiach neleží žiadna koľaj: {0}..
+        ///   Looks up a localized string similar to Na týchto nástupištiach neleží žiadna koľaj: {0}. Takéto nástupištia sa pri uložení grafikonu ....
         /// </summary>
         internal static string FLocalSettings_Nastupistia_Bez_Kolaje {
             get {
@@ -1270,7 +1264,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Podrobnosti sú v súbore logs\info.log. Preskočené položky sa pri uložení grafiko.
+        ///   Looks up a localized string similar to Preskočené položky sa pri uložení grafikonu nezapíšu. Podrobnosti sú v ....
         /// </summary>
         internal static string LoadWarnings_Footer {
             get {
@@ -1288,7 +1282,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Zapojenie tejto logickej tabule sa nedá zobraziť v zostave (niektoré umiestnenie má záporný riadok fyzickej tabule)..
+        ///   Looks up a localized string similar to Zapojenie tejto logickej tabule sa nedá zobraziť v zostave (niektoré umiestnenie má záporný riadok ....
         /// </summary>
         internal static string FTableLogical_Zostava_nevyjadriteľná {
             get {
@@ -1297,7 +1291,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Logická tabuľa musí mať aspoň 1 záznam – tabuľu bez záznamov INISS pri štarte odmietne..
+        ///   Looks up a localized string similar to Logická tabuľa musí mať aspoň 1 záznam. Tabuľu bez záznamov INISS pri štarte odmietne..
         /// </summary>
         internal static string FTableLogical_Bez_záznamov {
             get {
@@ -1378,7 +1372,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to (neznáma výluka – nie je v LogZvuk.usr).
+        ///   Looks up a localized string similar to (neznáma výluka).
         /// </summary>
         internal static string FEditTrain_Vyluka_Unknown {
             get {
@@ -1424,7 +1418,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Priečinok {0} obsahuje {1} grafikonov zapísaných za sebou ... Rozdeliť ich teraz do samostatných priečinkov?.
+        ///   Looks up a localized string similar to Priečinok {0} obsahuje {1} grafikonov zapísaných za sebou (starší zápis s hlavičkami /číslo ....
         /// </summary>
         internal static string FMain_Grafikon_obsahuje_bloky_otazka {
             get {
@@ -1433,7 +1427,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Grafikon bol rozdelený do priečinkov: {0}. Pôvodný priečinok {1} ostal na disku ....
+        ///   Looks up a localized string similar to Grafikon bol rozdelený do priečinkov: {0}. Pôvodný priečinok {1} ostal na disku, v zozname ....
         /// </summary>
         internal static string FMain_Grafikon_rozdeleny {
             get {
@@ -1451,7 +1445,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Grafikon obsahuje viac blokov a nebol rozdelený – nie je načítaný. ....
+        ///   Looks up a localized string similar to Grafikon obsahuje viac blokov a nebol rozdelený, preto nie je načítaný. Vyberte iný grafikon alebo ....
         /// </summary>
         internal static string FMain_Grafikon_s_blokmi_nenacitany {
             get {
@@ -1460,7 +1454,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grafikon leží priamo v priečinku {0} bez DirList.txt (starší zápis). GVDEditor s.
+        ///   Looks up a localized string similar to Grafikon leží priamo v priečinku {0} a nie je v zozname grafikonov (starší zápis). GVDEditor s ním ....
         /// </summary>
         internal static string FMain_Grafikon_v_koreni_otazka {
             get {
@@ -1469,7 +1463,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grafikon leží priamo v priečinku DATA bez DirList.txt. Presunie sa do samostatné.
+        ///   Looks up a localized string similar to Grafikon leží priamo v priečinku DATA mimo zoznamu grafikonov. Presunie sa do samostatného ....
         /// </summary>
         internal static string FBlockMigration_Info_DataRoot {
             get {
@@ -1478,7 +1472,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nový priečinok vznikne v priečinku DATA a založí sa DirList.txt. Pôvodné súbory .
+        ///   Looks up a localized string similar to Nový priečinok vznikne v priečinku DATA. Pôvodné súbory v koreni DATA ostanú nezmenené a INISS ich ....
         /// </summary>
         internal static string FBlockMigration_Note_DataRoot {
             get {
@@ -1487,7 +1481,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Súbor {0} neexistuje – ponuka druhov vlakov je zostavená zo zabudovanej tabuľky .
+        ///   Looks up a localized string similar to Súbor {0} neexistuje, ponuka druhov vlakov je preto zo zabudovanej tabuľky INISSu. Pri uložení ....
         /// </summary>
         internal static string TxtParser_TrTypes_chyba_pouzite_zabudovane {
             get {
@@ -1496,7 +1490,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to {0}: varianty hlásenia mali prehodené názvy.
+        ///   Looks up a localized string similar to {0}: varianty hlásenia mali prehodené názvy (VARIANT_01 = „Krátke hlásenie“). Názvy sa opravili na ....
         /// </summary>
         internal static string TxtParser_Categori_prehodene_nazvy_variantov {
             get {
@@ -1883,7 +1877,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Súbor {0} sa nedá načítať (riadok {1}): {2}  Jeho text sa otvorí na záložke Text – opravte chybu a kliknite na Načítať text. Uložiť sa dá aj text s chybou..
+        ///   Looks up a localized string similar to Súbor {0} sa nedá načítať (riadok {1}): {2} Jeho text sa otvorí na záložke Text. Opravte chybu a ....
         /// </summary>
         internal static string FStateDgm_SuborChyba {
             get {
@@ -1928,7 +1922,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Rozloží upravený text (Ctrl+Enter); ak je bez chyby syntaxe, otvorí diagram v editore.
+        ///   Looks up a localized string similar to Rozloží upravený text (Ctrl+Enter). Ak je bez chyby, otvorí diagram v editore.
         /// </summary>
         internal static string FStateDgm_Text_NacitatTip {
             get {
@@ -1955,7 +1949,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Súbor sa nedá načítať – opravte text na záložke Text a kliknite na Načítať text.
+        ///   Looks up a localized string similar to Súbor sa nedá načítať. Opravte text na záložke Text a kliknite na Načítať text.
         /// </summary>
         internal static string FStateDgm_Text_Rezim {
             get {
@@ -2576,7 +2570,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kladný = po čase, záporný = pred časom; 300 = 5 minút po.
+        ///   Looks up a localized string similar to Kladný = po čase, záporný = pred časom. 300 = 5 minút po.
         /// </summary>
         internal static string FStateDgm_AutoTimePointAddTip {
             get {
@@ -2675,7 +2669,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Výraz; ak pre vlak neplatí, automatický prechod sa nenaplánuje.
+        ///   Looks up a localized string similar to Výraz. Ak pre vlak neplatí, automatický prechod sa nenaplánuje.
         /// </summary>
         internal static string FStateDgm_AutoConditionTip {
             get {
@@ -2864,7 +2858,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bod bez zdrojov je nastaviteľný časový bod – #StartTime v stave INISS nastaví na čas vstupu vlaku do stavu..
+        ///   Looks up a localized string similar to Bod bez zdrojov je nastaviteľný časový bod. Príkaz #StartTime v stave ho nastaví na čas vstupu ....
         /// </summary>
         internal static string FStateDgm_TP_Info {
             get {
@@ -2972,7 +2966,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Typ hlásenia „{0}“ nie je v zozname typov hlásení – INISS ho nenájde a hlásenie nevyhlási..
+        ///   Looks up a localized string similar to Typ hlásenia „{0}“ nie je v zozname typov hlásení. INISS ho nenájde a hlásenie nevyhlási..
         /// </summary>
         internal static string FStateDgm_Akcia_ReportNeznamy {
             get {
@@ -3323,7 +3317,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Súbor StateDgm.txt v priečinku grafikonu nie je – INISS vlaky tohto grafikonu nedokáže obsluhovať..
+        ///   Looks up a localized string similar to Grafikon nemá stavový diagram. INISS jeho vlaky nedokáže obsluhovať..
         /// </summary>
         internal static string FLocalSettings_SD_Chyba_Nie {
             get {
@@ -3350,7 +3344,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vybraný priečinok obsahuje priečinok DATA tejto inštalácie.
+        ///   Looks up a localized string similar to Vybraný priečinok obsahuje priečinok DATA tejto inštalácie, grafikon by sa kopíroval sám do seba. ....
         /// </summary>
         internal static string FMain_Import_grafikonu_do_seba {
             get {
@@ -3368,7 +3362,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Kategória {0} už v zozname je. INISS má pre každú kategóriu .
+        ///   Looks up a localized string similar to Kategória {0} už v zozname je. INISS má pre každú kategóriu jedno miesto, druhý typ tej istej ....
         /// </summary>
         internal static string FGlobalSettings_Kategoria_typu_obsadena {
             get {
@@ -3413,7 +3407,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to INISS sa ani po 30 sekundách neukončil – možno čaká na potvr.
+        ///   Looks up a localized string similar to INISS sa ani po 30 sekundách neukončil. Možno čaká na potvrdenie ukončenia. Vynútiť jeho ukončenie ....
         /// </summary>
         internal static string FMain_INISS_sa_neukoncil {
             get {
@@ -3440,7 +3434,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INISS zvládne najviac {0} jazyky.
+        ///   Looks up a localized string similar to INISS zvládne najviac {0} jazyky. S viacerými sa nespustí..
         /// </summary>
         internal static string LanguageRules_Najviac_jazykov {
             get {
@@ -3458,7 +3452,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Jeden jazyk musí byť hlavný.
+        ///   Looks up a localized string similar to Jeden jazyk musí byť hlavný, v ňom sa hlási vždy..
         /// </summary>
         internal static string LanguageRules_Chyba_hlavny_jazyk {
             get {
@@ -3521,7 +3515,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vyber kategóriu alebo stav – graf ukáže stavy kategórie a prechody medzi nimi..
+        ///   Looks up a localized string similar to Vyber kategóriu alebo stav. Graf ukáže stavy kategórie a prechody medzi nimi..
         /// </summary>
         internal static string FStateDgm_GrafPrazdny {
             get {
@@ -3575,7 +3569,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Slepý stav – žiadna akcia z neho nevedie.
+        ///   Looks up a localized string similar to Slepý stav: žiadna akcia z neho nevedie.
         /// </summary>
         internal static string FStateDgm_Graf_Slepy {
             get {
@@ -3755,7 +3749,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to TabTab, sekcie {0} – kód {{{1}}} sa nemení automaticky, upravte ho v editore TabTab.
+        ///   Looks up a localized string similar to TabTab, sekcie {0}: kód {{{1}}} sa nemení automaticky, upravte ho v editore TabTab.
         /// </summary>
         internal static string FLocalSettings_Pismo_TabTab {
             get {
@@ -3764,7 +3758,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Písmo s ID {0} sa používa:.
+        ///   Looks up a localized string similar to Písmo s ID {0} sa používa: {1} Odstránenie zo zoznamu tieto miesta nezmení, ostane v nich pôvodné ....
         /// </summary>
         internal static string FLocalSettings_Pismo_Odstranit {
             get {
@@ -3944,7 +3938,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Výrobca {0} číslo písma nekóduje ako ELEN – význam určuje tabuľa..
+        ///   Looks up a localized string similar to Výrobca {0} číslo písma nekóduje ako ELEN, význam určuje tabuľa..
         /// </summary>
         internal static string ElenFont_InyVyrobca {
             get {
@@ -4034,7 +4028,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stanica „{0}“ je v zvukovej banke – vlastnú stanicu s týmto názvom by GVDEditor pri ďalšom otvorení grafikonu vynechal..
+        ///   Looks up a localized string similar to Stanica „{0}“ je v zvukovej banke. Vlastnú stanicu s týmto názvom by GVDEditor pri ďalšom otvorení ....
         /// </summary>
         internal static string CustomStationRules_Nazov_banka {
             get {
@@ -4043,7 +4037,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to „{0}“ je stanica tohto grafikonu – vlastnú stanicu s týmto názvom by GVDEditor pri ďalšom otvorení grafikonu vynechal..
+        ///   Looks up a localized string similar to „{0}“ je stanica tohto grafikonu. Vlastnú stanicu s týmto názvom by GVDEditor pri ďalšom otvorení ....
         /// </summary>
         internal static string CustomStationRules_Nazov_grafikon {
             get {
@@ -4061,7 +4055,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Číslo stanice sa nedá zmeniť – používajú ju vlaky grafikonu (počet vlakov: {0})..
+        ///   Looks up a localized string similar to Číslo stanice sa nedá zmeniť, používajú ju vlaky grafikonu (počet vlakov: {0})..
         /// </summary>
         internal static string CustomStationsPage_Cislo_zamknute {
             get {
@@ -4097,7 +4091,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hodnota nie je číslo minút – INISS ju pri štarte preskočí a operátorovi ju neponúkne..
+        ///   Looks up a localized string similar to Hodnota nie je číslo minút. INISS ju pri štarte preskočí a operátorovi ju neponúkne..
         /// </summary>
         internal static string DelaysPage_Necislo {
             get {
@@ -4178,7 +4172,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bity 0x{0:X} nemajú ovládač – GVDEditor ich v čísle ponechá..
+        ///   Looks up a localized string similar to Bity 0x{0:X} nemajú ovládač, GVDEditor ich v čísle ponechá..
         /// </summary>
         internal static string FontPicker_Ponechane_bity {
             get {
@@ -4187,7 +4181,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Výrobca {0} rozšírené písmo {1} nepozná – tabuľa použije rez..
+        ///   Looks up a localized string similar to Výrobca {0} rozšírené písmo {1} nepozná, tabuľa použije rez..
         /// </summary>
         internal static string FontPicker_Rozsirene_nepozna {
             get {
@@ -4241,7 +4235,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rovnaký vzhľad (číslo {0}) má už písmo „{1}“ – zmeňte rez, farbu alebo efekty..
+        ///   Looks up a localized string similar to Rovnaký vzhľad (číslo {0}) má už písmo „{1}“. Zmeňte rez, farbu alebo efekty..
         /// </summary>
         internal static string FontRules_Cislo_existuje {
             get {
@@ -4250,7 +4244,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nikde – písmo sa dá odstrániť bez následkov..
+        ///   Looks up a localized string similar to Nikde. Písmo sa dá odstrániť bez následkov..
         /// </summary>
         internal static string FontsPage_Nepouziva {
             get {
@@ -4412,7 +4406,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} – zabudovaný druh {1}..
+        ///   Looks up a localized string similar to {0}: zabudovaný druh {1}..
         /// </summary>
         internal static string TrainTypesPage_Detail_Zabudovany {
             get {
@@ -4421,7 +4415,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} – vlastný typ na mieste {1} ({2})..
+        ///   Looks up a localized string similar to {0}: vlastný typ na mieste {1} ({2})..
         /// </summary>
         internal static string TrainTypesPage_Detail_Vlastny {
             get {
@@ -4448,7 +4442,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Žiadny vlak ho nepoužíva – dá sa premenovať aj odstrániť..
+        ///   Looks up a localized string similar to Žiadny vlak ho nepoužíva, dá sa premenovať aj odstrániť..
         /// </summary>
         internal static string TrainTypesPage_Nepouziva {
             get {
@@ -4484,7 +4478,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nikde – dá sa odstrániť..
+        ///   Looks up a localized string similar to Nikde, dá sa odstrániť..
         /// </summary>
         internal static string TablesPage_Nepouziva {
             get {
@@ -4637,7 +4631,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Na nástupišti neleží žiadna koľaj – nástupište sa nezapíše a pri ďalšom otvorení grafikonu zmizne..
+        ///   Looks up a localized string similar to Na nástupišti neleží žiadna koľaj. Nástupište sa nezapíše a pri ďalšom otvorení grafikonu zmizne..
         /// </summary>
         internal static string PlatformsTracksPage_Bez_kolaje {
             get {
@@ -4664,7 +4658,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nástupište s koľajami sa nedá odstrániť – najprv koľaje presuňte na iné nástupište alebo ich odstráňte..
+        ///   Looks up a localized string similar to Nástupište s koľajami sa nedá odstrániť. Najprv koľaje presuňte na iné nástupište alebo ich ....
         /// </summary>
         internal static string PlatformsTracksPage_Najprv_kolaje {
             get {
@@ -4700,7 +4694,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zadajte číslo od 1 do {0}, alebo pole nechajte prázdne – grafikon potom vlastnú linku nemá..
+        ///   Looks up a localized string similar to Zadajte číslo od 1 do {0}, alebo pole nechajte prázdne. Grafikon potom vlastnú linku nemá..
         /// </summary>
         internal static string DirListRules_Port {
             get {
@@ -4709,7 +4703,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zadajte názov linky – pod ním ju operátor vidí v INISSe..
+        ///   Looks up a localized string similar to Zadajte názov linky. Pod ním ju operátor vidí v INISSe..
         /// </summary>
         internal static string AudioRules_Nazov {
             get {
@@ -4718,7 +4712,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zadajte protokolový názov – podľa neho linku adresuje nadradený systém..
+        ///   Looks up a localized string similar to Zadajte protokolový názov. Podľa neho linku adresuje nadradený systém..
         /// </summary>
         internal static string AudioRules_Protokol {
             get {
@@ -4727,7 +4721,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zadajte názov fronty – linka bez fronty nemá zvukový výstup a nič neprehrá..
+        ///   Looks up a localized string similar to Zadajte názov fronty. Linka bez fronty nemá zvukový výstup a nič neprehrá..
         /// </summary>
         internal static string AudioRules_Fronta {
             get {
@@ -4745,7 +4739,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Spínanie zosilňovača: zadajte číslo výstupu ústredne 0 – 63 alebo E1 – E99 pre port spínacej jednotky ELSVO, alebo pole nechajte prázdne..
+        ///   Looks up a localized string similar to Spínanie zosilňovača: zadajte číslo výstupu ústredne 0 až 63 alebo E1 až E99 pre port spínacej ....
         /// </summary>
         internal static string AudioRules_Zosilnovac {
             get {
@@ -4781,7 +4775,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grafikon leží priamo v dátovom priečinku INISSu (starší zápis s jediným grafikonom). Porty ani farbu mu nemožno nastaviť a nedá sa odstrániť – najprv ho presuňte do vlastného priečinka (GVDEditor to ponúkne pri jeho otvorení)..
+        ///   Looks up a localized string similar to Grafikon leží priamo v dátovom priečinku INISSu (starší zápis s jediným grafikonom). Porty ani ....
         /// </summary>
         internal static string GrafikonyPage_DataRoot {
             get {
@@ -4808,7 +4802,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grafikon stanice {0} má port hlásenia {1} – INISS ho použije ako uzol namiesto poľa Uzol..
+        ///   Looks up a localized string similar to Grafikon stanice {0} má port hlásenia {1}. INISS ho použije ako uzol namiesto poľa Uzol..
         /// </summary>
         internal static string AudioPage_Uzol_Z_Grafikonu {
             get {
@@ -4817,7 +4811,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Testovací okruh sa operátorovi v zozname okruhov neponúka – sprístupní tlačidlo Test/stop v dialógoch hlásení..
+        ///   Looks up a localized string similar to Testovací okruh sa operátorovi v zozname okruhov neponúka. Sprístupní tlačidlo Test/stop v ....
         /// </summary>
         internal static string AudioPage_Test {
             get {
@@ -4826,7 +4820,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zadajte názov – pod ním položku vidí obsluha a ponúkajú ju ďalšie stránky..
+        ///   Looks up a localized string similar to Zadajte názov. Pod ním položku vidí obsluha a ponúkajú ju ďalšie stránky..
         /// </summary>
         internal static string TableRules_Nazov {
             get {
@@ -4835,7 +4829,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zadajte kľúč – podľa neho sa na položku odkazujú ostatné tabule..
+        ///   Looks up a localized string similar to Zadajte kľúč. Podľa neho sa na položku odkazujú ostatné tabule..
         /// </summary>
         internal static string TableRules_Kluc {
             get {
@@ -4853,7 +4847,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vyberte katalógovú tabuľu – určuje rozloženie tabule a jej výrobcu..
+        ///   Looks up a localized string similar to Vyberte katalógovú tabuľu. Určuje rozloženie tabule a jej výrobcu..
         /// </summary>
         internal static string TablePhysicalRules_Katalog {
             get {
@@ -4862,7 +4856,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adresa {0} je mimo rozsahu výrobcu {1} ({2} – {3}) – INISS takú tabuľu nezaloží. Tabuľa bez adresy má −1..
+        ///   Looks up a localized string similar to Adresa {0} je mimo rozsahu výrobcu {1} ({2} až {3}). INISS takú tabuľu nezaloží. Tabuľa bez adresy ....
         /// </summary>
         internal static string TablePhysicalRules_Adresa {
             get {
@@ -4907,7 +4901,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rozsah adries výrobcu {0}: {1} – {2}. −1 = tabuľa bez adresy (napr. len export do XML)..
+        ///   Looks up a localized string similar to Rozsah adries výrobcu {0}: {1} až {2}. −1 = tabuľa bez adresy (napr. len export do XML)..
         /// </summary>
         internal static string PhysicalTablesPage_Adresa {
             get {
@@ -4925,7 +4919,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Najprv založte katalógovú tabuľu (stránka Katalógové tabule) – fyzická tabuľa bez nej nemôže byť..
+        ///   Looks up a localized string similar to Najprv založte katalógovú tabuľu (stránka Katalógové tabule). Fyzická tabuľa bez nej nemôže byť..
         /// </summary>
         internal static string PhysicalTablesPage_Bez_katalogu {
             get {
@@ -4970,7 +4964,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vyberte výrobcu tabule – určuje rozsah adries a význam čísla písma..
+        ///   Looks up a localized string similar to Vyberte výrobcu tabule. Určuje rozsah adries a význam čísla písma..
         /// </summary>
         internal static string TableCatalogRules_Vyrobca {
             get {
@@ -4997,7 +4991,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to zadajte kľúč – odkazuje naň poradie stĺpcov a texty na tabuliach..
+        ///   Looks up a localized string similar to zadajte kľúč, odkazuje naň poradie stĺpcov a texty na tabuliach..
         /// </summary>
         internal static string TableCatalogRules_Stlpec_Kluc {
             get {
@@ -5015,7 +5009,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to koniec ({1}) musí byť za začiatkom ({0}) – INISS stĺpec bez šírky odmietne..
+        ///   Looks up a localized string similar to koniec ({1}) musí byť za začiatkom ({0}), INISS stĺpec bez šírky odmietne..
         /// </summary>
         internal static string TableCatalogRules_Stlpec_Sirka {
             get {
@@ -5051,7 +5045,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to • Stĺpec {0}: začiatok a koniec majú byť násobkom {1} (hranice znakov tabule {2}) – INISS to zapíše do logu..
+        ///   Looks up a localized string similar to • Stĺpec {0}: začiatok a koniec majú byť násobkom {1} (hranice znakov tabule {2}). Inak to INISS ....
         /// </summary>
         internal static string TableCatalogRules_Nasobok {
             get {
@@ -5069,7 +5063,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Text ide na tabuľu bez prekódovania; TAB1 a TAB2 sa nepoužijú..
+        ///   Looks up a localized string similar to Text ide na tabuľu bez prekódovania. TAB1 a TAB2 sa nepoužijú..
         /// </summary>
         internal static string CatalogTablesPage_Div0 {
             get {
@@ -5078,7 +5072,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Text sa celý hľadá v TAB1 a použije sa len to, čo sa nájde – inak stĺpec ostane prázdny..
+        ///   Looks up a localized string similar to Text sa celý hľadá v TAB1 a použije sa len to, čo sa nájde. Inak stĺpec ostane prázdny..
         /// </summary>
         internal static string CatalogTablesPage_Div1 {
             get {
@@ -5096,7 +5090,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Text sa hľadá v TAB1; ak sa nenájde, pošle sa nezmenený..
+        ///   Looks up a localized string similar to Text sa hľadá v TAB1. Ak sa nenájde, pošle sa nezmenený..
         /// </summary>
         internal static string CatalogTablesPage_Div3 {
             get {
@@ -5105,7 +5099,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Text sa prekóduje znak po znaku podľa TAB1; znak, ktorý v nej nie je, nahradí medzera..
+        ///   Looks up a localized string similar to Text sa prekóduje znak po znaku podľa TAB1. Znak, ktorý v nej nie je, nahradí medzera..
         /// </summary>
         internal static string CatalogTablesPage_Div4 {
             get {
@@ -5123,7 +5117,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Poradie stĺpcov zatiaľ nie je nastavené pre žiadny typ zobrazenia – tabuľa s touto predlohou nebude čo zobraziť..
+        ///   Looks up a localized string similar to Poradie stĺpcov zatiaľ nie je nastavené pre žiadny typ zobrazenia. Tabuľa s touto predlohou nebude ....
         /// </summary>
         internal static string CatalogTablesPage_Poradie_Ziadne {
             get {
@@ -5150,7 +5144,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kľúč stĺpca „{0}“ sa nezmenil – je prázdny alebo ho už má iný stĺpec..
+        ///   Looks up a localized string similar to Kľúč stĺpca „{0}“ sa nezmenil, je prázdny alebo ho už má iný stĺpec..
         /// </summary>
         internal static string CatalogTablesPage_Kluc_Neplatny {
             get {
@@ -5267,7 +5261,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Odchod je skôr ako príchod – vlak stojí v stanici cez polnoc..
+        ///   Looks up a localized string similar to Odchod je skôr ako príchod, vlak stojí v stanici cez polnoc..
         /// </summary>
         internal static string TrainRules_CezPolnoc {
             get {
@@ -5294,7 +5288,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Radenie patrí číslu vlaku a číslo {0} má aj vlak {1} s radením – okno preto zobrazuje jeho radenie. Radenie upravené v tomto okne sa zahodilo..
+        ///   Looks up a localized string similar to Radenie patrí číslu vlaku a číslo {0} má aj vlak {1} s radením, okno preto zobrazuje jeho radenie. ....
         /// </summary>
         internal static string TrainBasicsPage_Radenie_Prevzate {
             get {
@@ -5303,7 +5297,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to V grafikone nie je iný vlak s rovnakým číslom, názvom a typom..
+        ///   Looks up a localized string similar to V grafikone nie je iný vlak s rovnakým číslom, názvom a typom, vlak nemá varianty..
         /// </summary>
         internal static string TrainValidityPage_ZiadneVarianty {
             get {
@@ -5330,7 +5324,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prechádzajúci vlak – má príchod aj odchod..
+        ///   Looks up a localized string similar to Prechádzajúci vlak: má príchod aj odchod..
         /// </summary>
         internal static string TrainRoutePage_Prechadzajuci {
             get {
@@ -5339,7 +5333,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Končiaci vlak – má len príchod..
+        ///   Looks up a localized string similar to Končiaci vlak: má len príchod..
         /// </summary>
         internal static string TrainRoutePage_Konciaci {
             get {
@@ -5348,7 +5342,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Východzí vlak – má len odchod..
+        ///   Looks up a localized string similar to Východzí vlak: má len odchod..
         /// </summary>
         internal static string TrainRoutePage_Vychadzajuci {
             get {
@@ -5357,7 +5351,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vlak zatiaľ nemá trasu – pridajte stanice zo smeru, do smeru alebo oboje..
+        ///   Looks up a localized string similar to Vlak zatiaľ nemá trasu. Pridajte stanice zo smeru, do smeru alebo oboje..
         /// </summary>
         internal static string TrainRoutePage_BezTrasy {
             get {
@@ -5366,7 +5360,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trasa obsahuje aj stanicu grafikonu – tá sa do trasy nepíše..
+        ///   Looks up a localized string similar to Trasa obsahuje aj stanicu grafikonu, tá sa do trasy nepíše..
         /// </summary>
         internal static string TrainRules_TrasaSToutoStanicou {
             get {
@@ -5402,7 +5396,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vlak nemá trasu, preto zatiaľ nemá ani typy hlásení – najprv zadajte trasu..
+        ///   Looks up a localized string similar to Vlak nemá trasu, preto zatiaľ nemá ani typy hlásení. Najprv zadajte trasu..
         /// </summary>
         internal static string TrainDodatkyPage_BezTrasy {
             get {
@@ -5411,7 +5405,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Radenie zaznie pri zaškrtnutých hláseniach; ak nie je zaškrtnuté nič, INISS ho prehrá pri všetkých..
+        ///   Looks up a localized string similar to Radenie zaznie pri zaškrtnutých hláseniach. Ak nie je zaškrtnuté nič, INISS ho prehrá pri všetkých..
         /// </summary>
         internal static string TrainRadeniePage_Info {
             get {
@@ -5429,7 +5423,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tento vlak je {0}. z {1} variant vlaku {2}. Varianty sa líšia dňami, v ktoré idú – čísla variant prideľuje GVDEditor sám..
+        ///   Looks up a localized string similar to Tento vlak je {0}. z {1} variant vlaku {2}. Varianty sa líšia dňami, v ktoré idú. Čísla variant ....
         /// </summary>
         internal static string TrainValidityPage_Skupina {
             get {
@@ -5447,7 +5441,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dni jedného z vlakov sa nedajú prečítať – najprv ich opravte..
+        ///   Looks up a localized string similar to Dni jedného z vlakov sa nedajú prečítať. Najprv ich opravte..
         /// </summary>
         internal static string TrainValidityPage_DniSaNedajuPrecitat {
             get {
@@ -5492,7 +5486,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Varianty vlaku {0} sa zoradia podľa dĺžky trasy (najkratšia je prvá) a v dňoch, keď by išlo viac variant naraz, ostane len varianta s najdlhšou trasou – ostatným sa tie dni z dátumového obmedzenia odoberú. Pokračovať?.
+        ///   Looks up a localized string similar to Varianty vlaku {0} sa zoradia podľa dĺžky trasy (najkratšia je prvá). V dňoch, keď by išlo viac ....
         /// </summary>
         internal static string FMain_Variant_UsporiadatOtazka {
             get {
@@ -5933,7 +5927,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} je novší než vyrovnávacia pamäť {1}; INISS bude ďalej používať starý zoznam meškaní..
+        ///   Looks up a localized string similar to {0} je novší než vyrovnávacia pamäť {1}. INISS bude ďalej používať starý zoznam meškaní..
         /// </summary>
         internal static string Analyzer_ZpozdeniCacheOld {
             get {
@@ -6815,7 +6809,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}, riadok {1}: neznámy druh vlaku "{2}" pri vlaku {3}; zvyšok riadka sa preskakuje..
+        ///   Looks up a localized string similar to {0}, riadok {1}: neznámy druh vlaku "{2}" pri vlaku {3}. Zvyšok riadka sa preskakuje..
         /// </summary>
         internal static string Routes_UnknownType {
             get {
@@ -6824,7 +6818,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}, riadok {1}: vlak {2} {3} nemá definíciu v {4}; zvyšok riadka sa preskakuje..
+        ///   Looks up a localized string similar to {0}, riadok {1}: vlak {2} {3} nemá definíciu v {4}. Zvyšok riadka sa preskakuje..
         /// </summary>
         internal static string Routes_NoDefinition {
             get {
@@ -6860,7 +6854,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}: COUNT_LANGUAGES ({1}) je väčší než počet jazykov vo zvukovej banke ({2}); jazyky bez nahrávok sa preskočia..
+        ///   Looks up a localized string similar to {0}: COUNT_LANGUAGES ({1}) je väčší než počet jazykov vo zvukovej banke ({2}). Jazyky bez nahrávok ....
         /// </summary>
         internal static string Categori_TooManyLanguages {
             get {
@@ -6959,7 +6953,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}, riadok {1}: doplnok {2} vlaku {3} nemá zvuk v skupine DODATKY; pri uložení sa stratí..
+        ///   Looks up a localized string similar to {0}, riadok {1}: doplnok {2} vlaku {3} nemá zvuk v skupine DODATKY. Pri uložení sa stratí..
         /// </summary>
         internal static string Doplnky_NoSound {
             get {
@@ -7814,7 +7808,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zapísané ako „{0}“ – INISS z toho použije len uvedené príznaky..
+        ///   Looks up a localized string similar to Zapísané ako „{0}“. INISS z toho použije len uvedené príznaky..
         /// </summary>
         internal static string DirListFlags_TipRaw {
             get {
@@ -7967,7 +7961,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stanica {0} ({1}) sa hlási vo vlakoch (počet: {2}, napr. {3}), ale zvuková banka pre ňu nemá nahrávku – INISS ju nemá čím ohlásiť..
+        ///   Looks up a localized string similar to Stanica {0} ({1}) sa hlási vo vlakoch (počet: {2}, napr. {3}), ale zvuková banka pre ňu nemá ....
         /// </summary>
         internal static string Analyzer_StationNoRecording {
             get {
@@ -7985,7 +7979,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grafikon nemá stavový diagram – INISS jeho vlaky nedokáže obsluhovať..
+        ///   Looks up a localized string similar to Grafikon nemá stavový diagram. INISS jeho vlaky nedokáže obsluhovať..
         /// </summary>
         internal static string Analyzer_StateDgmMissing {
             get {
@@ -8030,7 +8024,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}: číslo písma {1} sa tabuli ELEN pošle ako riadiaci znak 0x{2} (chýba bit 0x40) – tabuľa môže správu odmietnuť a INISS ju bude opakovať..
+        ///   Looks up a localized string similar to {0}: číslo písma {1} sa tabuli ELEN pošle ako riadiaci znak 0x{2} (chýba bit 0x40). Tabuľa môže ....
         /// </summary>
         internal static string Analyzer_ElenFont {
             get {
@@ -8075,7 +8069,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zmeniť číslo písma na číslo s bitom 0x40 – rovnaký vzhľad ako {0} má {1}.
+        ///   Looks up a localized string similar to Zmeniť číslo písma na číslo s bitom 0x40 (rovnaký vzhľad ako {0} má {1}).
         /// </summary>
         internal static string Analyzer_ElenFont_Fix {
             get {
@@ -8165,7 +8159,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Túto hodnotu INISS nepozná alebo ju nečíta – je to pozostatok staršej verzie, hodnota iného programu alebo preklep. Dá sa len zmazať..
+        ///   Looks up a localized string similar to Túto hodnotu INISS nepozná alebo ju nečíta. Je to pozostatok staršej verzie, hodnota iného programu ....
         /// </summary>
         internal static string InissSettings_ExtraDescription {
             get {
@@ -8282,7 +8276,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to konfigurácia v registri zatiaľ neexistuje – INISS ju založí pri prvom spustení.
+        ///   Looks up a localized string similar to konfigurácia v registri zatiaľ neexistuje, INISS ju založí pri prvom spustení.
         /// </summary>
         internal static string InissSettings_Info_NoConfig {
             get {
@@ -8300,7 +8294,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INISS beží – zmeny sa prejavia po reštarte.
+        ///   Looks up a localized string similar to INISS beží, zmeny sa prejavia po reštarte.
         /// </summary>
         internal static string InissSettings_Info_Running {
             get {
@@ -8381,7 +8375,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to zlý typ – nečíta sa.
+        ///   Looks up a localized string similar to zlý typ, nečíta sa.
         /// </summary>
         internal static string InissSettings_Layer_WrongType {
             get {
@@ -8426,7 +8420,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INISS túto hodnotu počas behu ukladá do registra – kým bude v súbore .INI, uložený stav sa neuplatní..
+        ///   Looks up a localized string similar to INISS túto hodnotu počas behu ukladá do registra. Kým bude v súbore .INI, uložený stav sa neuplatní..
         /// </summary>
         internal static string InissSettings_Note_IniAppWrites {
             get {
@@ -8435,7 +8429,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hodnota teraz platí zo súboru .INI – pri uložení sa zo súboru odstráni, inak by zmenu prebila..
+        ///   Looks up a localized string similar to Hodnota teraz platí zo súboru .INI. Pri uložení sa zo súboru odstráni, inak by zmenu prebila..
         /// </summary>
         internal static string InissSettings_Note_IniRemoved {
             get {
@@ -8444,7 +8438,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Táto verzia INISSu hodnotu nečíta – zmena nebude mať účinok..
+        ///   Looks up a localized string similar to Táto verzia INISSu hodnotu nečíta, zmena nebude mať účinok..
         /// </summary>
         internal static string InissSettings_Note_NotRead {
             get {
@@ -8453,7 +8447,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sekcia je v súbore .INI – INISS jej hodnoty z registra nečíta. Zapíšte zmenu do súboru .INI..
+        ///   Looks up a localized string similar to Sekcia je v súbore .INI a INISS jej hodnoty z registra nečíta. Zapíšte zmenu do súboru .INI..
         /// </summary>
         internal static string InissSettings_Note_SectionFromIni {
             get {
@@ -8462,7 +8456,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zápis do HKEY_LOCAL_MACHINE vyžaduje práva správcu – pri uložení sa zobrazí výzva systému Windows..
+        ///   Looks up a localized string similar to Zápis do HKEY_LOCAL_MACHINE vyžaduje práva správcu. Pri uložení sa zobrazí výzva systému Windows..
         /// </summary>
         internal static string InissSettings_Note_Uac {
             get {
@@ -8543,7 +8537,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zápis do HKEY_LOCAL_MACHINE bol zrušený – nič sa neuložilo..
+        ///   Looks up a localized string similar to Zápis do HKEY_LOCAL_MACHINE bol zrušený, nič sa neuložilo..
         /// </summary>
         internal static string InissSettings_SaveCancelled {
             get {
@@ -8561,7 +8555,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zápis do HKEY_LOCAL_MACHINE zlyhal – nič sa neuložilo..
+        ///   Looks up a localized string similar to Zápis do HKEY_LOCAL_MACHINE zlyhal, nič sa neuložilo..
         /// </summary>
         internal static string InissSettings_SaveFailed {
             get {
@@ -8570,7 +8564,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nastavenia sú uložené. INISS beží – prejavia sa po jeho reštarte..
+        ///   Looks up a localized string similar to Nastavenia sú uložené. INISS beží, prejavia sa po jeho reštarte..
         /// </summary>
         internal static string InissSettings_SavedRestartNeeded {
             get {
@@ -8588,7 +8582,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sekcia je v súbore .INI – INISS ju číta len zo súboru, register pre ňu nepoužije..
+        ///   Looks up a localized string similar to Sekcia je v súbore .INI. INISS ju číta len zo súboru, register pre ňu nepoužije..
         /// </summary>
         internal static string InissSettings_SectionFromIni {
             get {
@@ -8723,7 +8717,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Niektoré zmeny idú do registra v sekcii zo súboru .INI – INISS ich nebude čítať..
+        ///   Looks up a localized string similar to Niektoré zmeny idú do registra v sekcii zo súboru .INI. INISS ich nebude čítať..
         /// </summary>
         internal static string InissSettings_SummaryNotRead {
             get {
@@ -8732,7 +8726,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zápis do HKEY_LOCAL_MACHINE vyžaduje práva správcu – Windows zobrazí jednu výzvu na potvrdenie..
+        ///   Looks up a localized string similar to Zápis do HKEY_LOCAL_MACHINE vyžaduje práva správcu. Windows zobrazí jednu výzvu na potvrdenie..
         /// </summary>
         internal static string InissSettings_SummaryUac {
             get {
@@ -8840,7 +8834,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Farbu zadajte v tabuľke ako #RRGGBB alebo ju vyberte dvojklikom; prázdna hodnota je systémová farba..
+        ///   Looks up a localized string similar to Farbu zadajte v tabuľke ako #RRGGBB alebo ju vyberte dvojklikom. Prázdna hodnota je systémová farba..
         /// </summary>
         internal static string InissSettings_Note_Color {
             get {
@@ -8849,7 +8843,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tabuľa {0} ({1}) nepatrí na linku s protokolom {2}..
+        ///   Looks up a localized string similar to Tabuľa {0} ({1}) nepatrí na linku s protokolom {2}. INISS jej nič nepošle..
         /// </summary>
         internal static string InissSettings_LineWrongFamily {
             get {
@@ -8948,7 +8942,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to V dátach nie je žiadna tabuľa s linkou {0} – linku pri fyzickej tabuli nastavíte v lokálnych nastaveniach..
+        ///   Looks up a localized string similar to V dátach nie je žiadna tabuľa s linkou {0}. Linku pri fyzickej tabuli nastavíte v lokálnych ....
         /// </summary>
         internal static string InissSettings_Wizard_NoTables {
             get {
@@ -9128,7 +9122,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INISS vyexportuje hlásenia a sám skončí – operátorské okno sa neotvorí..
+        ///   Looks up a localized string similar to INISS vyexportuje hlásenia a sám skončí, operátorské okno sa neotvorí..
         /// </summary>
         internal static string Run_Check_ExportHlas {
             get {
@@ -9137,7 +9131,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INISS naimportuje dáta a sám skončí – operátorské okno sa neotvorí..
+        ///   Looks up a localized string similar to INISS naimportuje dáta a sám skončí, operátorské okno sa neotvorí..
         /// </summary>
         internal static string Run_Check_ImportDat {
             get {
@@ -9146,7 +9140,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to V dátach inštalácie je značka dávkového importu – INISS dáta len naimportuje a hneď skončí, operátorské okno sa neotvorí..
+        ///   Looks up a localized string similar to V dátach inštalácie je značka dávkového importu. INISS dáta len naimportuje a hneď skončí, ....
         /// </summary>
         internal static string Run_Check_ImportMarker {
             get {
@@ -9155,7 +9149,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ďalšia inštancia sa bez /Multiuse nespustí – INISS skončí, ak už iný INISS beží..
+        ///   Looks up a localized string similar to Ďalšia inštancia sa bez /Multiuse nespustí. INISS skončí, ak už iný INISS beží..
         /// </summary>
         internal static string Run_Check_NewInstanceNoMultiuse {
             get {
@@ -9164,7 +9158,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vetva registra „{0}“ zatiaľ neexistuje – INISS pobeží s predvolenými nastaveniami..
+        ///   Looks up a localized string similar to Vetva registra „{0}“ zatiaľ neexistuje, INISS pobeží s predvolenými nastaveniami..
         /// </summary>
         internal static string Run_Check_NoBranch {
             get {
@@ -9182,7 +9176,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Program {0} nie je INISS – parametre INISSu mu nemusia byť zrozumiteľné..
+        ///   Looks up a localized string similar to Program {0} nie je INISS, parametre INISSu mu nemusia byť zrozumiteľné..
         /// </summary>
         internal static string Run_Check_NotIniss {
             get {
@@ -9200,7 +9194,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rovnakú vetvu registra „{0}“ používa aj: {1} – zmeny nastavení INISSu platia pre všetky..
+        ///   Looks up a localized string similar to Rovnakú vetvu registra „{0}“ používa aj: {1}. Zmeny nastavení INISSu platia pre všetky..
         /// </summary>
         internal static string Run_Check_SameBranch {
             get {
@@ -9209,7 +9203,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Už beží INISS spustený bez /Multiuse – tento INISS sa bez /Multiuse nespustí (hneď skončí)..
+        ///   Looks up a localized string similar to Už beží INISS spustený bez /Multiuse. Tento INISS sa bez /Multiuse nespustí..
         /// </summary>
         internal static string Run_Check_SingleInstance {
             get {
@@ -9227,7 +9221,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /{0} nezapne žiadny grafikon – žiadny ho nemá medzi príznakmi..
+        ///   Looks up a localized string similar to /{0} nezapne žiadny grafikon, žiadny ho nemá medzi príznakmi..
         /// </summary>
         internal static string Run_Check_UnusedActivator {
             get {
@@ -9254,7 +9248,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INISS ({0}) sa nespustil – už beží iný INISS a táto konfigurácia nemá zapnuté /Multiuse (viac inštancií naraz)..
+        ///   Looks up a localized string similar to INISS ({0}) sa nespustil. Už beží iný INISS a táto konfigurácia nemá zapnuté /Multiuse (viac ....
         /// </summary>
         internal static string Run_Exit_AlreadyRunning {
             get {
@@ -9263,7 +9257,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INISS ({0}) sa nespustil – nepodarilo sa mu overiť, či už beží iný INISS. Pomôže zapnúť /Multiuse..
+        ///   Looks up a localized string similar to INISS ({0}) sa nespustil, nepodarilo sa mu overiť, či už beží iný INISS. Pomôže zapnúť /Multiuse..
         /// </summary>
         internal static string Run_Exit_Mutex {
             get {
@@ -9335,7 +9329,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Priečinok logov {0} neexistuje – INISS ho založí, keď začne logovať..
+        ///   Looks up a localized string similar to Priečinok logov {0} neexistuje. INISS ho založí, keď začne logovať..
         /// </summary>
         internal static string Run_LogsMissing {
             get {
@@ -9344,7 +9338,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Názov {0} má viac konfigurácií – každá musí mať vlastný..
+        ///   Looks up a localized string similar to Názov {0} má viac konfigurácií, každá musí mať vlastný..
         /// </summary>
         internal static string Run_NameDuplicate {
             get {
@@ -9362,7 +9356,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Žiadny grafikon nemá aktivátor – všetky sú aktívne vždy..
+        ///   Looks up a localized string similar to Žiadny grafikon nemá aktivátor, všetky sú aktívne vždy..
         /// </summary>
         internal static string Run_NoActivators {
             get {
@@ -9587,7 +9581,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hodnoty v registri vetvy „{0}“, ktoré INISS nepoužíva alebo použije inak, než vyzerá. Označené sú tie, ktoré je bezpečné vyčistiť; ostatné si skontrolujte..
+        ///   Looks up a localized string similar to Hodnoty v registri vetvy „{0}“, ktoré INISS nepoužíva alebo použije inak, než vyzerá. Označené je ....
         /// </summary>
         internal static string InissCleanup_Intro {
             get {
@@ -9605,7 +9599,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pozostatok – nečíta ho žiadna verzia INISSu.
+        ///   Looks up a localized string similar to Pozostatok, nečíta ho žiadna verzia INISSu.
         /// </summary>
         internal static string InissCleanup_Why_Leftover {
             get {
@@ -9614,7 +9608,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Starý názov vedľa nového – INISS ho už nečíta.
+        ///   Looks up a localized string similar to Starý názov vedľa nového, INISS ho už nečíta.
         /// </summary>
         internal static string InissCleanup_Why_LegacyGhost {
             get {
@@ -9623,7 +9617,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Starý názov – INISS ho číta a sám premenuje.
+        ///   Looks up a localized string similar to Starý názov, INISS ho číta a sám premenuje.
         /// </summary>
         internal static string InissCleanup_Why_LegacyName {
             get {
@@ -9668,7 +9662,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zlý typ hodnoty – INISS ju ignoruje.
+        ///   Looks up a localized string similar to Zlý typ hodnoty, INISS ju ignoruje.
         /// </summary>
         internal static string InissCleanup_Why_WrongType {
             get {
@@ -9686,7 +9680,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Skopíruje všetky vetvy konfigurácie „{0}“ (HKLM, HKCU aj VirtualStore) do novej vetvy registra. Súbor .INI patrí k programu a nekopíruje sa. Nová vetva sa použije pri spustení INISSu s parametrom /Reg..
+        ///   Looks up a localized string similar to Skopíruje všetky vetvy konfigurácie „{0}“ (HKLM, HKCU aj VirtualStore) do novej vetvy registra. ....
         /// </summary>
         internal static string InissClone_Intro {
             get {
@@ -9884,7 +9878,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Založiť vetvu HKEY_CURRENT_USER pre „{0}“?  INISS potom číta nastavenia používateľa (sekcie {1}) len z nej – ich hodnoty v HKLM prestanú platiť.  Áno – založiť a skopírovať do nej súčasné hodnoty (INISS sa bude správať rovnako) Nie – založiť prázdnu (platia predvolené hodnoty) Zrušiť – nezakladať.
+        ///   Looks up a localized string similar to Založiť vetvu HKEY_CURRENT_USER pre „{0}“? INISS potom číta nastavenia používateľa (sekcie {1}) len ....
         /// </summary>
         internal static string InissTools_CreateUserBranchQuestion {
             get {
@@ -9920,7 +9914,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exportovať aj predvolené hodnoty?  Áno – všetky hodnoty, ktoré INISS použije Nie – len hodnoty zapísané v registri alebo .INI  Súbor .INI s menom programu vedľa programu má prednosť pred registrom – exportovaný súbor tam dajte, len ak to tak chcete..
+        ///   Looks up a localized string similar to Exportovať aj predvolené hodnoty? Áno – všetky hodnoty, ktoré INISS použije Nie – len hodnoty ....
         /// </summary>
         internal static string InissTools_ExportIniQuestion {
             get {
@@ -10037,7 +10031,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tabuľa {0} je v INISSe vypnutá – INISS s ňou nekomunikuje..
+        ///   Looks up a localized string similar to Tabuľa {0} je v INISSe vypnutá, INISS s ňou nekomunikuje..
         /// </summary>
         internal static string InissCheck_Disabled {
             get {
@@ -10055,7 +10049,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INISS podľa nastavení (PathNames\{0} = {1}) číta iný súbor, než do ktorého GVDEditor zapisuje – zmeny z GVDEditora neuvidí..
+        ///   Looks up a localized string similar to INISS podľa nastavení (PathNames\{0} = {1}) číta iný súbor, než do ktorého GVDEditor zapisuje. ....
         /// </summary>
         internal static string InissCheck_FileName {
             get {
@@ -10091,7 +10085,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nastavenia INISSu konfigurácie spúšťania {0} v registri ani v súbore .INI nie sú – INISS pobeží s predvolenými nastaveniami. Kontrola liniek tabúľ a súborov sa preskočila..
+        ///   Looks up a localized string similar to Nastavenia INISSu konfigurácie spúšťania {0} v registri ani v súbore .INI nie sú. INISS pobeží s ....
         /// </summary>
         internal static string InissCheck_Missing {
             get {
@@ -10109,7 +10103,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to V nastaveniach INISSu sú hodnoty tabúľ s poradovým číslom {0}, ale tabúľ je len {1}. INISS nastavenia tabúľ priraďuje podľa poradia – po pridaní alebo odstránení tabule sa zapnutie a jas môžu posunúť na inú tabuľu..
+        ///   Looks up a localized string similar to V nastaveniach INISSu sú hodnoty tabúľ s poradovým číslom {0}, ale tabúľ je len {1}. INISS ich ....
         /// </summary>
         internal static string InissCheck_Orphans {
             get {
@@ -10127,7 +10121,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INISS má vypnuté posielanie na tabule (Environment\OutToTableDriver) – obsah tabúľ len zobrazuje a na linky nič nepošle..
+        ///   Looks up a localized string similar to INISS má vypnuté posielanie na tabule (Environment\OutToTableDriver). Obsah tabúľ len zobrazuje a ....
         /// </summary>
         internal static string InissCheck_OutputOff {
             get {
@@ -10145,7 +10139,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tabuľa {0}: INISS jej nič nepošle – {1}..
+        ///   Looks up a localized string similar to Tabuľa {0}: INISS jej nič nepošle ({1})..
         /// </summary>
         internal static string InissCheck_Unserved {
             get {
@@ -10172,7 +10166,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Linky k tabuliam presmeruje na simulátor tabúľ zápisom do súboru {0} vedľa programu – linka N bude posielať na port „prvý port + N“. Register sa nemení a zrušenie presmerovania vráti súbor do pôvodného stavu. INISS zmenu načíta pri najbližšom spustení..
+        ///   Looks up a localized string similar to Linky k tabuliam presmeruje na simulátor tabúľ zápisom do súboru {0} vedľa programu. Linka N bude ....
         /// </summary>
         internal static string InissRedirect_Intro {
             get {
@@ -10199,7 +10193,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Simulátor na adrese {0} neodpovedá – linky v ňom bude treba založiť ručne, alebo ho spustite a stav zistite znova..
+        ///   Looks up a localized string similar to Simulátor na adrese {0} neodpovedá. Spustite ho a zistite stav znova, alebo linky v ňom založte ....
         /// </summary>
         internal static string InissRedirect_StatusOffline {
             get {
@@ -10280,7 +10274,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Presmerovanie na simulátor je zrušené – súbor .INI je v pôvodnom stave..
+        ///   Looks up a localized string similar to Presmerovanie na simulátor je zrušené, súbor .INI je v pôvodnom stave..
         /// </summary>
         internal static string InissRedirect_Undone {
             get {
@@ -10307,7 +10301,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to V simulátore pribudli linky: {0}, zmenili sa: {1}; pribudli tabule: {2}, ponechané: {3}..
+        ///   Looks up a localized string similar to V simulátore pribudli linky: {0}, zmenili sa: {1}. Pribudli tabule: {2}, ponechané: {3}..
         /// </summary>
         internal static string InissRedirect_SimulatorDone {
             get {
@@ -10316,7 +10310,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Triedy liniek {0} simulátor nepozná – ich tabule nezobrazí..
+        ///   Looks up a localized string similar to Triedy liniek {0} simulátor nepozná a ich tabule nezobrazí..
         /// </summary>
         internal static string InissRedirect_SimulatorUnsupported {
             get {
@@ -10343,7 +10337,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Simulátor vyžaduje prihlásenie – zadajte API kľúč (v simulátore Používatelia → Kľúče → Nový kľúč, druh program, rola operátor) a zistite stav znova..
+        ///   Looks up a localized string similar to Simulátor vyžaduje prihlásenie. Zadajte API kľúč a zistite stav znova. Kľúč vytvoríte v simulátore ....
         /// </summary>
         internal static string InissRedirect_StatusNeedsKey {
             get {
@@ -10352,7 +10346,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Simulátor API kľúč neprijal – skontrolujte ho, alebo v simulátore vytvorte nový..
+        ///   Looks up a localized string similar to Simulátor API kľúč neprijal. Skontrolujte ho, alebo v simulátore vytvorte nový..
         /// </summary>
         internal static string InissRedirect_StatusKeyInvalid {
             get {
@@ -10361,7 +10355,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Simulátor zo siete prijíma len HTTPS – zmeňte webovú adresu na {0}..
+        ///   Looks up a localized string similar to Simulátor zo siete prijíma len HTTPS. Zmeňte webovú adresu na {0}..
         /// </summary>
         internal static string InissRedirect_StatusHttpsRequired {
             get {
@@ -10379,7 +10373,7 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to API kľúč smie len pozerať – na založenie liniek a tabúľ treba kľúč s rolou operátor..
+        ///   Looks up a localized string similar to API kľúč nemá oprávnenie na linky a tabule. Na ich založenie treba kľúč s rolou operátor..
         /// </summary>
         internal static string InissRedirect_StatusReadOnly {
             get {
@@ -10388,7 +10382,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Simulátor vyžaduje prihlásenie a API kľúč chýba alebo neplatí – linky a tabule v ňom nevznikli..
+        ///   Looks up a localized string similar to Simulátor vyžaduje prihlásenie a API kľúč chýba alebo neplatí. Linky a tabule v ňom nevznikli..
         /// </summary>
         internal static string InissRedirect_SimulatorUnauthorized {
             get {
@@ -10397,7 +10391,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to API kľúč nemá oprávnenie meniť simulátor (treba rolu operátor) – linky a tabule v ňom nevznikli..
+        ///   Looks up a localized string similar to API kľúč nemá oprávnenie meniť linky a tabule simulátora. Linky a tabule v ňom nevznikli..
         /// </summary>
         internal static string InissRedirect_SimulatorForbidden {
             get {
@@ -10415,7 +10409,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Simulátor sleduje priečinok logov INISSu {0} – virtuálne tabule ukážu obsah, ktorý doň INISS zapisuje..
+        ///   Looks up a localized string similar to Simulátor sleduje priečinok logov INISSu {0}. Virtuálne tabule ukážu obsah, ktorý doň INISS ....
         /// </summary>
         internal static string InissRedirect_SimulatorLogAdded {
             get {
@@ -10424,7 +10418,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Priečinok logov INISSu {0} simulátor nevidí (beží na inom počítači alebo priečinok neexistuje) – pre virtuálne tabule ho zadajte v nastaveniach simulátora..
+        ///   Looks up a localized string similar to Priečinok logov INISSu {0} simulátor nevidí (beží na inom počítači alebo priečinok neexistuje). Pre ....
         /// </summary>
         internal static string InissRedirect_SimulatorLogMissing {
             get {
@@ -10433,7 +10427,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Simulátor už sleduje najviac priečinkov – priečinok logov INISSu {0} nepridal..
+        ///   Looks up a localized string similar to Simulátor už sleduje najviac priečinkov, priečinok logov INISSu {0} nepridal..
         /// </summary>
         internal static string InissRedirect_SimulatorLogFull {
             get {
@@ -10451,7 +10445,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Presmerovanie zapisuje do súboru .INI vedľa programu – vyberte program INISSu..
+        ///   Looks up a localized string similar to Presmerovanie zapisuje do súboru .INI vedľa programu. Vyberte program INISSu..
         /// </summary>
         internal static string InissRedirect_NeedsProgram {
             get {
@@ -10469,7 +10463,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tabule grafikonu dostáva len simulátor tabúľ – linky {0} sú v súbore .INI presmerované na simulátor..
+        ///   Looks up a localized string similar to Tabule grafikonu dostáva len simulátor tabúľ, linky {0} sú v súbore .INI presmerované na simulátor..
         /// </summary>
         internal static string InissCheck_Redirected {
             get {

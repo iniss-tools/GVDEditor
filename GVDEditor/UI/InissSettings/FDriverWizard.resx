@@ -106,7 +106,7 @@
     <value>0</value>
   </data>
   <data name="lIntro.Text" xml:space="preserve">
-    <value>Linka k tabuliam je jedna sekcia Driver v registri. Vyberte protokol tabúľ a spôsob pripojenia – ostatné nastavenia linky dostanú predvolené hodnoty podľa protokolu.</value>
+    <value>Linka k tabuliam je jedna sekcia Driver v registri. Vyberte protokol tabúľ a spôsob pripojenia, ostatné nastavenia linky dostanú predvolené hodnoty.</value>
   </data>
   <data name="&gt;&gt;lIntro.Name" xml:space="preserve">
     <value>lIntro</value>
