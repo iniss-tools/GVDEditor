@@ -159,6 +159,9 @@
   <data name="cbTall.Text" xml:space="preserve">
     <value>Vysoké číslice</value>
   </data>
+  <data name="llFixBit.Text" xml:space="preserve">
+    <value>Změnit na 68 (stejný vzhled)</value>
+  </data>
   <data name="llManual.Text" xml:space="preserve">
     <value>Zadat číslo ručně</value>
   </data>

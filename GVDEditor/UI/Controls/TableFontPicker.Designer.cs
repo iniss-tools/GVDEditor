@@ -55,6 +55,7 @@ namespace GVDEditor.UI.Controls
             flpManual = new FlowLayoutPanel();
             llManual = new LinkLabel();
             nudId = new ExNumericUpDown();
+            llFixBit = new LinkLabel();
             lNote = new Label();
             ((ISupportInitialize)nudExt).BeginInit();
             ((ISupportInitialize)nudId).BeginInit();
@@ -227,6 +228,7 @@ namespace GVDEditor.UI.Controls
             resources.ApplyResources(flpManual, "flpManual");
             flpManual.Controls.Add(llManual);
             flpManual.Controls.Add(nudId);
+            flpManual.Controls.Add(llFixBit);
             flpManual.Name = "flpManual";
             // 
             // llManual
@@ -244,6 +246,13 @@ namespace GVDEditor.UI.Controls
             nudId.Name = "nudId";
             nudId.Value = new decimal(new int[] { 80, 0, 0, 0 });
             nudId.ValueChanged += nudId_ValueChanged;
+            // 
+            // llFixBit
+            // 
+            resources.ApplyResources(llFixBit, "llFixBit");
+            llFixBit.Name = "llFixBit";
+            llFixBit.TabStop = true;
+            llFixBit.LinkClicked += llFixBit_LinkClicked;
             // 
             // lNote
             // 
@@ -298,6 +307,7 @@ namespace GVDEditor.UI.Controls
         private FlowLayoutPanel flpManual;
         private LinkLabel llManual;
         private ExNumericUpDown nudId;
+        private LinkLabel llFixBit;
         private Label lNote;
     }
 }

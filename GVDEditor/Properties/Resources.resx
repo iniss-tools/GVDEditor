@@ -1542,6 +1542,12 @@ Odstrániť stanicu?</value>
   <data name="FontPicker_Ponechane_bity" xml:space="preserve">
     <value>Bity 0x{0:X} nemajú ovládač, GVDEditor ich v čísle ponechá.</value>
   </data>
+  <data name="FontPicker_Pridat_bit" xml:space="preserve">
+    <value>Zmeniť na {0} (rovnaký vzhľad)</value>
+  </data>
+  <data name="FontPicker_Riadiaci_znak" xml:space="preserve">
+    <value>Tabuli ELEN sa pošle ako riadiaci znak 0x{0:X2}, lebo chýba bit 0x40. Tabuľa správu odmietne a INISS ju bude opakovať.</value>
+  </data>
   <data name="FontPicker_Rozsirene_nepozna" xml:space="preserve">
     <value>Výrobca {0} rozšírené písmo {1} nepozná, tabuľa použije rez.</value>
   </data>

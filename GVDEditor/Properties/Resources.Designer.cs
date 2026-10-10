@@ -4181,6 +4181,24 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zmeniť na {0} (rovnaký vzhľad).
+        /// </summary>
+        internal static string FontPicker_Pridat_bit {
+            get {
+                return ResourceManager.GetString("FontPicker_Pridat_bit", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tabuli ELEN sa pošle ako riadiaci znak 0x{0:X2}, lebo chýba bit 0x40. Tabuľa správu odmietne a INISS ju bude opakovať..
+        /// </summary>
+        internal static string FontPicker_Riadiaci_znak {
+            get {
+                return ResourceManager.GetString("FontPicker_Riadiaci_znak", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Výrobca {0} rozšírené písmo {1} nepozná, tabuľa použije rez..
         /// </summary>
         internal static string FontPicker_Rozsirene_nepozna {

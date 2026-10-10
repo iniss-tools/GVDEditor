@@ -2,6 +2,7 @@
 using ExControls;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
+using GVDEditor.UI.Settings;
 using ToolsCore.Iniss.Elen;
 
 namespace GVDEditor.UI.Controls;
@@ -141,6 +142,14 @@ public partial class TableFontPicker : UserControl
         ValueChanged?.Invoke(this, EventArgs.Empty);
     }
 
+    private void llFixBit_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
+    {
+        // rovnake cislo s bitom 0x40 - vzhlad ostane, tabula dostane platny bajt
+        var fixedCode = new ElenFontCode(_value).WithKeptBit;
+        _keptBits = fixedCode.KeptBits;
+        SetValue(fixedCode.Id, true);
+    }
+
     private void llManual_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
     {
         _manual = !_manual;
@@ -189,8 +198,15 @@ public partial class TableFontPicker : UserControl
             if (updateNumber)
                 nudId.Value = Math.Clamp(_value, nudId.Minimum, nudId.Maximum);
 
+            // cislo bez bitu 0x40 posle tabuli riadiaci znak (napr. 04 = koniec spravy ELEN) - tabula riadok odmietne
+            var controlChar = elen && code.SendsControlChar;
+            llFixBit.Visible = controlChar;
+            if (controlChar)
+                llFixBit.Text = string.Format(CultureInfo.CurrentCulture, Resources.FontPicker_Pridat_bit, code.WithKeptBit.Id);
+
             lNote.Text = NoteText(code, elen);
             lNote.Visible = lNote.Text.Length > 0;
+            lNote.ForeColor = controlChar ? SettingsWindow.ProblemColor(lNote) : lResult.ForeColor;
         }
         finally
         {
@@ -205,6 +221,8 @@ public partial class TableFontPicker : UserControl
             return string.Format(CultureInfo.CurrentCulture, Resources.ElenFont_InyVyrobca, _manufacturer?.Name);
 
         var notes = new List<string>();
+        if (code.SendsControlChar)
+            notes.Add(string.Format(CultureInfo.CurrentCulture, Resources.FontPicker_Riadiaci_znak, _value & 0xFF));
         var extra = code.KeptBits & ~ElenFontCode.DefaultKeptBits;
         if (_value >= 0 && extra != 0)
             notes.Add(string.Format(CultureInfo.CurrentCulture, Resources.FontPicker_Ponechane_bity, extra));
