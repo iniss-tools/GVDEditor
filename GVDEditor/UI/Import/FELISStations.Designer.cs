@@ -113,6 +113,7 @@ namespace GVDEditor.UI.Import
             this.Controls.Add(this.lInfo);
             this.MinimizeBox = false;
             this.Name = "FelisStations";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             ((System.ComponentModel.ISupportInitialize)(this.dgvStations)).EndInit();
             this.ResumeLayout(false);

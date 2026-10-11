@@ -71,6 +71,9 @@
 	  <EmbeddedResource Update="UI\Import\FELISStations.cs.resx">
 	    <DependentUpon>FELISStations.cs</DependentUpon>
 	  </EmbeddedResource>
+	  <EmbeddedResource Update="UI\Import\FELISReview.cs.resx">
+	    <DependentUpon>FELISReview.cs</DependentUpon>
+	  </EmbeddedResource>
 	  <EmbeddedResource Update="UI\Settings\FGlobalSettings.cs.resx">
 	    <DependentUpon>FGlobalSettings.cs</DependentUpon>
 	  </EmbeddedResource>

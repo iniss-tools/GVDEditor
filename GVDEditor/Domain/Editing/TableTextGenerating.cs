@@ -98,6 +98,47 @@ public static class TableTextGenerating
     }
 
     /// <summary>
+    /// Doplni texty vlakom, ktore ich este nemaju - pri importe vlakov. Typ textu sa generuje podla
+    /// <see cref="FindGeneratingRealization"/>, typ bez takej realizacie sa nemeni; texty ostatnych vlakov ostanu.
+    /// </summary>
+    /// <returns>Pocet pridanych textov.</returns>
+    public static int AddMissing(IEnumerable<TableText> tableTexts, IReadOnlyCollection<Train> trains, Station thisStation)
+    {
+        var count = 0;
+        foreach (var tableText in tableTexts)
+        {
+            var realization = FindGeneratingRealization(tableText);
+            if (realization == null) continue;
+
+            foreach (var train in TrainsWithoutText(trains, tableText.Trains))
+            {
+                tableText.Trains.Add(CreateFor(train, realization.Item.FillSection, thisStation));
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    /// <summary>
+    /// Presunie texty povodneho vlaku na vlak, ktory ho nahradil (aktualizacia z importu). Vygenerovany text sa
+    /// vygeneruje znova podla noveho vlaku, rucne upraveny ostane.
+    /// </summary>
+    public static void Replace(IEnumerable<TableText> tableTexts, Train original, Train replacement, Station thisStation)
+    {
+        foreach (var tableText in tableTexts)
+        {
+            var fillSection = FindGeneratingRealization(tableText)?.Item.FillSection;
+            foreach (var tableTrain in tableText.Trains.Where(t => ReferenceEquals(t.Train, original)))
+            {
+                if (fillSection != null && tableTrain.Text == GenerateText(original, fillSection, thisStation))
+                    tableTrain.Text = GenerateText(replacement, fillSection, thisStation);
+                tableTrain.Train = replacement;
+            }
+        }
+    }
+
+    /// <summary>
     /// Vrati vlaky grafikonu (v jeho poradi), ktore v zozname textov vlakov este nie su.
     /// </summary>
     public static List<Train> TrainsWithoutText(IEnumerable<Train> trains, IEnumerable<TableTrain> tableTrains)

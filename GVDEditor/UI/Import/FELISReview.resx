@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="colStName.AutoSizeMode" type="System.Windows.Forms.DataGridViewAutoSizeColumnMode, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="colStName.HeaderText" xml:space="preserve">
+    <value>Stanica</value>
+  </data>
+  <data name="colStName.MinimumWidth" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="&gt;&gt;colStName.Name" xml:space="preserve">
+    <value>colStName</value>
+  </data>
+  <data name="&gt;&gt;colStName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colStTrains.HeaderText" xml:space="preserve">
+    <value>Vlakov</value>
+  </data>
+  <data name="colStTrains.Width" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="&gt;&gt;colStTrains.Name" xml:space="preserve">
+    <value>colStTrains</value>
+  </data>
+  <data name="&gt;&gt;colStTrains.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colStShort.HeaderText" xml:space="preserve">
+    <value>Krátke hlásenie</value>
+  </data>
+  <data name="colStShort.Width" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
+  <data name="&gt;&gt;colStShort.Name" xml:space="preserve">
+    <value>colStShort</value>
+  </data>
+  <data name="&gt;&gt;colStShort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colStHint.HeaderText" xml:space="preserve">
+    <value>Návrh</value>
+  </data>
+  <data name="colStHint.Width" type="System.Int32, mscorlib">
+    <value>330</value>
+  </data>
+  <data name="&gt;&gt;colStHint.Name" xml:space="preserve">
+    <value>colStHint</value>
+  </data>
+  <data name="&gt;&gt;colStHint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colRemText.AutoSizeMode" type="System.Windows.Forms.DataGridViewAutoSizeColumnMode, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="colRemText.HeaderText" xml:space="preserve">
+    <value>Poznámka vlaku</value>
+  </data>
+  <data name="colRemText.MinimumWidth" type="System.Int32, mscorlib">
+    <value>160</value>
+  </data>
+  <data name="&gt;&gt;colRemText.Name" xml:space="preserve">
+    <value>colRemText</value>
+  </data>
+  <data name="&gt;&gt;colRemText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colRemTrains.HeaderText" xml:space="preserve">
+    <value>Vlakov</value>
+  </data>
+  <data name="colRemTrains.Width" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="&gt;&gt;colRemTrains.Name" xml:space="preserve">
+    <value>colRemTrains</value>
+  </data>
+  <data name="&gt;&gt;colRemTrains.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colRemFlag.HeaderText" xml:space="preserve">
+    <value>Príznak vlaku</value>
+  </data>
+  <data name="colRemFlag.Width" type="System.Int32, mscorlib">
+    <value>160</value>
+  </data>
+  <data name="&gt;&gt;colRemFlag.Name" xml:space="preserve">
+    <value>colRemFlag</value>
+  </data>
+  <data name="&gt;&gt;colRemFlag.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="colRemAddition.HeaderText" xml:space="preserve">
+    <value>Dodatok</value>
+  </data>
+  <data name="colRemAddition.Width" type="System.Int32, mscorlib">
+    <value>220</value>
+  </data>
+  <data name="&gt;&gt;colRemAddition.Name" xml:space="preserve">
+    <value>colRemAddition</value>
+  </data>
+  <data name="&gt;&gt;colRemAddition.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="colRemLockout.HeaderText" xml:space="preserve">
+    <value>Výluka</value>
+  </data>
+  <data name="colRemLockout.Width" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="&gt;&gt;colRemLockout.Name" xml:space="preserve">
+    <value>colRemLockout</value>
+  </data>
+  <data name="&gt;&gt;colRemLockout.Type" xml:space="preserve">
+    <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="dgvStations.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="dgvStations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 92</value>
+  </data>
+  <data name="dgvStations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>884, 427</value>
+  </data>
+  <data name="dgvStations.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;dgvStations.Name" xml:space="preserve">
+    <value>dgvStations</value>
+  </data>
+  <data name="&gt;&gt;dgvStations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvStations.Parent" xml:space="preserve">
+    <value>tpShort</value>
+  </data>
+  <data name="&gt;&gt;dgvStations.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbKeepTrainShort.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cbKeepTrainShort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 60</value>
+  </data>
+  <data name="cbKeepTrainShort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>520, 24</value>
+  </data>
+  <data name="cbKeepTrainShort.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="cbKeepTrainShort.Text" xml:space="preserve">
+    <value>Vlaky, ktoré už sú v grafikone, si ponechajú svoje krátke hlásenie</value>
+  </data>
+  <data name="&gt;&gt;cbKeepTrainShort.Name" xml:space="preserve">
+    <value>cbKeepTrainShort</value>
+  </data>
+  <data name="&gt;&gt;cbKeepTrainShort.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbKeepTrainShort.Parent" xml:space="preserve">
+    <value>tpShort</value>
+  </data>
+  <data name="&gt;&gt;cbKeepTrainShort.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lShortInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="lShortInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="lShortInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>884, 48</value>
+  </data>
+  <data name="lShortInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lShortInfo.Text" xml:space="preserve">
+    <value>Stanice, ktoré naimportované vlaky hlásia medzi východiskovou a cieľovou stanicou. Zaškrtnuté sa budú hlásiť aj v krátkom hlásení a v stĺpcoch Smer a Zo smeru na tabuliach.</value>
+  </data>
+  <data name="&gt;&gt;lShortInfo.Name" xml:space="preserve">
+    <value>lShortInfo</value>
+  </data>
+  <data name="&gt;&gt;lShortInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lShortInfo.Parent" xml:space="preserve">
+    <value>tpShort</value>
+  </data>
+  <data name="&gt;&gt;lShortInfo.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="dgvRemarks.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="dgvRemarks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 60</value>
+  </data>
+  <data name="dgvRemarks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>884, 459</value>
+  </data>
+  <data name="dgvRemarks.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;dgvRemarks.Name" xml:space="preserve">
+    <value>dgvRemarks</value>
+  </data>
+  <data name="&gt;&gt;dgvRemarks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvRemarks.Parent" xml:space="preserve">
+    <value>tpRemarks</value>
+  </data>
+  <data name="&gt;&gt;dgvRemarks.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lRemarksInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="lRemarksInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="lRemarksInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>884, 48</value>
+  </data>
+  <data name="lRemarksInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lRemarksInfo.Text" xml:space="preserve">
+    <value>Poznámky vlakov z programu ELIS, ktoré platia v tejto stanici. Vyberte, aký príznak, dodatok alebo výluku dostane vlak s poznámkou.</value>
+  </data>
+  <data name="&gt;&gt;lRemarksInfo.Name" xml:space="preserve">
+    <value>lRemarksInfo</value>
+  </data>
+  <data name="&gt;&gt;lRemarksInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lRemarksInfo.Parent" xml:space="preserve">
+    <value>tpRemarks</value>
+  </data>
+  <data name="&gt;&gt;lRemarksInfo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tpShort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="tpShort.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tpShort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>900, 527</value>
+  </data>
+  <data name="tpShort.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tpShort.Text" xml:space="preserve">
+    <value>Krátke hlásenie</value>
+  </data>
+  <data name="&gt;&gt;tpShort.Name" xml:space="preserve">
+    <value>tpShort</value>
+  </data>
+  <data name="&gt;&gt;tpShort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpShort.Parent" xml:space="preserve">
+    <value>tcReview</value>
+  </data>
+  <data name="&gt;&gt;tpShort.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tpRemarks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="tpRemarks.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tpRemarks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>900, 527</value>
+  </data>
+  <data name="tpRemarks.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tpRemarks.Text" xml:space="preserve">
+    <value>Poznámky vlakov</value>
+  </data>
+  <data name="&gt;&gt;tpRemarks.Name" xml:space="preserve">
+    <value>tpRemarks</value>
+  </data>
+  <data name="&gt;&gt;tpRemarks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpRemarks.Parent" xml:space="preserve">
+    <value>tcReview</value>
+  </data>
+  <data name="&gt;&gt;tpRemarks.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tcReview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="tcReview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 14</value>
+  </data>
+  <data name="tcReview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>908, 560</value>
+  </data>
+  <data name="tcReview.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tcReview.Name" xml:space="preserve">
+    <value>tcReview</value>
+  </data>
+  <data name="&gt;&gt;tcReview.Type" xml:space="preserve">
+    <value>ExControls.ExTabControl, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tcReview.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tcReview.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="bOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="bOK.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>622, 588</value>
+  </data>
+  <data name="bOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 38</value>
+  </data>
+  <data name="bOK.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="bOK.Text" xml:space="preserve">
+    <value>Dokončiť import</value>
+  </data>
+  <data name="&gt;&gt;bOK.Name" xml:space="preserve">
+    <value>bOK</value>
+  </data>
+  <data name="&gt;&gt;bOK.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bOK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bOK.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="bStorno.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="bStorno.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
+    <value>782, 588</value>
+  </data>
+  <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 38</value>
+  </data>
+  <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="bStorno.Text" xml:space="preserve">
+    <value>Zrušiť import</value>
+  </data>
+  <data name="&gt;&gt;bStorno.Name" xml:space="preserve">
+    <value>bStorno</value>
+  </data>
+  <data name="&gt;&gt;bStorno.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bStorno.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bStorno.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="colStName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colStTrains.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colStShort.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colStHint.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colRemText.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colRemTrains.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colRemFlag.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colRemAddition.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colRemLockout.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>9, 20</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>936, 640</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>760, 480</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Kontrola importu z programu ELIS</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FelisReview</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 using GVDEditor.Domain.Calendar;
+using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.Properties;
@@ -9,6 +10,21 @@ using Iniss.Elis;
 using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Integration;
+
+/// <summary>
+/// Vlaky prevedene z dat ELIS a udaje k nim, ktore sa pouziju az po volbach obsluhy (kratke hlasenie, poznamky).
+/// </summary>
+public sealed class ElisConversion
+{
+    /// <summary>Prevedene vlaky.</summary>
+    public required List<Train> Trains { get; init; }
+
+    /// <summary>Poznamky platne v stanici grafikonu (kluce bez useku) pre kazdy vlak.</summary>
+    public required Dictionary<Train, List<string>> Remarks { get; init; }
+
+    /// <summary>Druh stanice z ELIS (<see cref="ElisStop.StationType" />) podla ID stanice grafikonu.</summary>
+    public required Dictionary<string, int> StationTypes { get; init; }
+}
 
 /// <summary>
 /// Nacita vlaky priamo z dat programu ELIS cez pomocny x86 proces ELISBridge,
@@ -146,7 +162,7 @@ public sealed partial class ElisBridgeClient
     /// <exception cref="FileNotFoundException">ak sa nenajde pomocny program ELISBridge</exception>
     /// <exception cref="FormatException">ak sa zistia nedefinovane typy vlakov</exception>
     /// <exception cref="InvalidOperationException">ak sa nepodari nacitat data ELIS</exception>
-    public List<Train> ReadTrains() => Convert(LoadData());
+    public List<Train> ReadTrains() => Convert(LoadData()).Trains;
 
     /// <summary>
     /// Spusti pomocny program a vrati jeho vystup.
@@ -238,11 +254,14 @@ public sealed partial class ElisBridgeClient
         string.IsNullOrWhiteSpace(detail) ? message : $"{message}\r\n{detail.Trim()}";
 
     /// <summary>
-    /// Prevedie vystup pomocneho programu na entity GVDEditora.
+    /// Prevedie vystup pomocneho programu na entity GVDEditora. Hranicne body a prejazdy su v trase, ale nehlasia sa;
+    /// v kratkom hlaseni su zatial len koncove stanice (ostatne doplni <see cref="ShortReportLearning.Apply" />).
     /// </summary>
-    public List<Train> Convert(ElisResult result)
+    public ElisConversion Convert(ElisResult result)
     {
         var trains = new List<Train>();
+        var remarks = new Dictionary<Train, List<string>>(ReferenceEqualityComparer.Instance);
+        var stationTypes = new Dictionary<string, int>();
         var invalidTypes = new List<string>();
 
         var validFrom = result.ValidFromDate;
@@ -269,7 +288,7 @@ public sealed partial class ElisBridgeClient
             {
                 Type = type,
                 Number = source.Number,
-                Name = source.Name,
+                Name = TrainMerging.BaseName(source.Name),
                 Routing = routing,
                 Variant = VariantNotSet,
                 Track = DefaultTrack,
@@ -280,28 +299,20 @@ public sealed partial class ElisBridgeClient
                 KoniecPlatnosti = DateOnly.FromDateTime(validTo),
                 Arrival = ToTime(source.ArrivalMinutes),
                 Departure = ToTime(source.DepartureMinutes),
-                DateLimitText = dateLimit.BitArrayToText(ToBitArray(source.RunsBits, dateLimit.TotalDays))
+                DateLimitText = dateLimit.BitArrayToText(ToBitArray(source.RunsBits, dateLimit.TotalDays)),
+                IsMedzistatny = source.StationsBefore.Concat(source.StationsAfter).Any(stop => stop.IsAbroad)
             };
 
             VerifyDateLimit(train, saveCheck);
 
-            AddStations(source.StationsBefore, train.StaniceZoSmeru);
-            AddStations(source.StationsAfter, train.StaniceDoSmeru);
+            AddStations(source.StationsBefore, train.StaniceZoSmeru, stationTypes);
+            AddStations(source.StationsAfter, train.StaniceDoSmeru, stationTypes);
 
-            var firstZo = train.StaniceZoSmeru.FirstOrDefault();
-            var lastDo = train.StaniceDoSmeru.LastOrDefault();
-            if (firstZo is not null)
-            {
-                firstZo.IsInShortReport = true;
-                train.StartingStation = firstZo;
-            }
+            ShortReportLearning.Apply(train, NoChoices, null);
+            train.StartingStation = ShortReportLearning.Origin(train) ?? train.StaniceZoSmeru.FirstOrDefault();
+            train.EndingStation = ShortReportLearning.Destination(train) ?? train.StaniceDoSmeru.LastOrDefault();
 
-            if (lastDo is not null)
-            {
-                lastDo.IsInShortReport = true;
-                train.EndingStation = lastDo;
-            }
-
+            remarks[train] = ElisRemarks.AtStation(source, result.StationName);
             trains.Add(train);
         }
 
@@ -310,8 +321,10 @@ public sealed partial class ElisBridgeClient
                                       "\r\n    " + string.Join("\r\n    ", invalidTypes));
 
         SetVariants(trains);
-        return trains;
+        return new ElisConversion { Trains = trains, Remarks = remarks, StationTypes = stationTypes };
     }
+
+    private static readonly Dictionary<string, bool> NoChoices = [];
 
     /// <summary>
     /// Pridelí variantu kazdemu naimportovanemu vlaku.
@@ -394,11 +407,15 @@ public sealed partial class ElisBridgeClient
     private static partial Regex LineFormat();
 
     /// <summary>
-    /// Prida stanice do trasy. Nerozpoznane a vedome vynechane stanice sa preskocia,
-    /// rovnako ako opakovanie tej istej stanice bezprostredne za sebou - to vznika,
-    /// ked sa hranicny bod priradi k stanici, ktora uz v trase je.
+    /// Prida stanice do trasy. Hranicne body a prejazdy sa pridaju, ale nehlasia sa v ziadnom hlaseni. Nerozpoznane
+    /// a vedome vynechane stanice sa preskocia, rovnako ako opakovanie tej istej stanice bezprostredne za sebou - to
+    /// vznika, ked sa hranicny bod priradi k stanici, ktora uz v trase je; stanica sa potom hlasi, ak sa hlasi
+    /// aspon jeden z nich.
     /// </summary>
-    private void AddStations(IEnumerable<ElisStop> stops, List<Station> target)
+    /// <param name="stops">Zastavky z ELIS v poradi jazdy.</param>
+    /// <param name="target">Trasa vlaku.</param>
+    /// <param name="stationTypes">Druh stanice z ELIS podla ID stanice grafikonu - doplni sa.</param>
+    private void AddStations(IEnumerable<ElisStop> stops, List<Station> target, Dictionary<string, int> stationTypes)
     {
         Station? previous = null;
 
@@ -408,10 +425,16 @@ public sealed partial class ElisBridgeClient
             if (station is null)
                 continue;
 
-            if (previous is not null && previous.ID == station.ID)
-                continue;
+            if (stop.IsAnnounced)
+                stationTypes.TryAdd(station.ID, stop.StationType);
 
-            station.IsInLongReport = true;
+            if (previous is not null && previous.ID == station.ID)
+            {
+                previous.IsInLongReport |= stop.IsAnnounced;
+                continue;
+            }
+
+            station.IsInLongReport = stop.IsAnnounced;
             target.Add(station);
             previous = station;
         }

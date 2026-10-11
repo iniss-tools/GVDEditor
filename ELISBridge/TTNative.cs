@@ -30,6 +30,9 @@ internal static class TTNative
     /// <summary>Velkost jedneho zaznamu trasy v bajtoch.</summary>
     public const int RouteItemSize = 16;
 
+    /// <summary>Hodnota <c>flags</c> pre <see cref="TTTrainRouteExt" />: hranicne body aj priznak prejazdu.</summary>
+    public const int RouteWithPassing = 3;
+
     /// <summary>Chybovy kod TT.dll pre datum mimo rozsahu platnosti.</summary>
     public const int ErrDateOutOfRange = 18;
 
@@ -99,8 +102,17 @@ internal static class TTNative
         out IntPtr number, out IntPtr name, out IntPtr type, out uint flags);
 
     /// <summary>Vrati pocet zaznamov trasy; <paramref name="route" /> ukazuje na ZDIELANY globalny buffer.</summary>
+    /// <remarks>
+    /// Zaznam ma 16 B: +0 stanica, +2 prichod, +4 odchod, +10 priznaky (horne bity; spodnych 11 bitov je
+    /// zvysok vnutorneho casu), +12 vzdialenost v metroch. <paramref name="flags" /> bit 1 ponecha hranicne body
+    /// (inak ich vynecha), bit 2 ponecha priznak prejazdu (<see cref="ElisStop.FlagPassing" />) aj mimo hranic.
+    /// </remarks>
     [DllImport(Dll)]
     public static extern int TTTrainRouteExt(int tt, int tr, out IntPtr route, int flags);
+
+    /// <summary>Druh stanice - bitove priznaky <c>ElisStop.Type*</c> v dolnych 16 bitoch.</summary>
+    [DllImport(Dll)]
+    public static extern int TTStType(int tt, int st);
 
     /// <summary>Ci vlak v dany den prechadza stanicou <paramref name="st" /> (0 = nie).</summary>
     /// <remarks>

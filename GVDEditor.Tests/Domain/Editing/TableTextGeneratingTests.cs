@@ -162,6 +162,40 @@ public class TableTextGeneratingTests
     }
 
     [TestMethod]
+    public void Import_TextyLenPreVlakyBezTextu()
+    {
+        var rucny = new TableTrain { Train = Prechadzajuci, Text = "Ručný", FontID = 3 };
+        var ciel = new TableText { Key = "Ciel", Name = "Ciel", Comment = "", Realizations = [Realizacia(TableFillSection.CielovaStanica)], Trains = [rucny] };
+        var cas = new TableText { Key = "Cas", Name = "Cas", Comment = "", Realizations = [Realizacia(TableFillSection.CasOdchodu)] };
+
+        var count = TableTextGenerating.AddMissing([ciel, cas], [Prechadzajuci, Vychadzajuci, Konciaci], ThisStation);
+
+        Assert.AreEqual(2, count);
+        Assert.AreSame(rucny, ciel.Trains[0]);
+        CollectionAssert.AreEqual(new[] { "Ručný", "Cieľ", "Stredná" }, ciel.Trains.Select(t => t.Text).ToArray());
+        Assert.IsEmpty(cas.Trains);
+    }
+
+    [TestMethod]
+    public void Import_AktualizaciaPrenesieTextyNaNovyVlak()
+    {
+        var povodny = Vlak(7, Routing.Prechadzajuci, [St("Východ")], [St("Cieľ")]);
+        var novy = Vlak(8, Routing.Prechadzajuci, [St("Východ")], [St("Iný cieľ")]);
+        var vygenerovany = new TableTrain { Train = povodny, Text = "Cieľ", FontID = -1 };
+        var upraveny = new TableTrain { Train = povodny, Text = "Cieľ cez Hornú", FontID = 2 };
+        var ciel = new TableText { Key = "Ciel", Name = "Ciel", Comment = "", Realizations = [Realizacia(TableFillSection.CielovaStanica)], Trains = [vygenerovany] };
+        var ciel2 = new TableText { Key = "Ciel2", Name = "Ciel2", Comment = "", Realizations = [Realizacia(TableFillSection.CielovaStanica)], Trains = [upraveny] };
+
+        TableTextGenerating.Replace([ciel, ciel2], povodny, novy, ThisStation);
+
+        Assert.AreSame(novy, vygenerovany.Train);
+        Assert.AreEqual("Iný cieľ", vygenerovany.Text);
+        Assert.AreSame(novy, upraveny.Train);
+        Assert.AreEqual("Cieľ cez Hornú", upraveny.Text);
+        Assert.AreEqual(2, upraveny.FontID);
+    }
+
+    [TestMethod]
     public void Kopie_ZmenaKopieNemeniPovodny()
     {
         var original = new TableTrain { Train = Prechadzajuci, Text = "A", FontID = 1 };

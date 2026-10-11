@@ -4,6 +4,7 @@ using System.Text;
 using ExControls;
 using GVDEditor.Config;
 using GVDEditor.Domain.Calendar;
+using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.Integration;
@@ -228,12 +229,13 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("import-dat/import-dat", ImportForm, form => Resize(form, 900, 520));
             Shot("import-dat/typ-stlpca", () => new FColumnTypeSelect(), form => SelectListItem(form, "listColumnTypes", 5));
 
-            // import z ELIS: voľby importu a priradenie staníc, ktoré ELIS pomenúva inak
-            Shot("import-z-elis/import-z-elis", () => new FelisImport(gvdDir.GVD.ThisStation.Name, trains.Count),
+            // import z ELIS: voľby importu, priradenie staníc, ktoré ELIS pomenúva inak, a kontrola krátkeho hlásenia a poznámok
+            Shot("import-z-elis/import-z-elis", () => new FelisImport(gvdDir, trains.Count, Periods(main)),
                 form => ((TextBoxBase)Field(form, "tbAppPath")).Select(0, 0));
             Shot("import-z-elis/priradenie-stanic",
                 () => new FelisStations(Program.Context, ["Hraničná št.hr.", "Lipová zastávka", "Nová Obec", "Podhradie mesto"], Program.Context.Stations),
                 form => Resize(form, 720, 420));
+            Shot("import-z-elis/kontrola", () => new FelisReview(Program.Context, ElisReviewSample(trains)), form => Resize(form, 900, 500), tabs: true);
 
             // analýza s nájdenými problémami: prázdny a nepoužitý TabTab a uplynutá platnosť dát (po snímke sa vráti)
             var emptyTab = new TableTabTab { Key = "Rezerva", Text = "" };
@@ -534,6 +536,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             if (tabControl is null)
             {
                 Save(name, form);
+                WriteBounds(name, form, form);
                 return;
             }
 
@@ -545,6 +548,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 form.Refresh();
                 Pump.Events();
                 Save($"{name}/{Slug(page.Text)}", form);
+                WriteBounds($"{name}/{Slug(page.Text)}", form, form);
             }
         }
         catch (Exception e)
@@ -575,6 +579,8 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
     private void WriteBounds(string shot, Form form, Control panel)
     {
         if (Environment.GetEnvironmentVariable("DOCSHOTS_BOUNDS") is not { Length: > 0 } file || theme != "light")
+            return;
+        if (options.Only is not null && !shot.Contains(options.Only, StringComparison.OrdinalIgnoreCase))
             return;
 
         var frame = WindowCapture.FrameBounds(form);
@@ -696,6 +702,42 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
     /// <summary>
     /// Obdobia vybranej stanice v hlavnom okne (zoznam obdobi na paneli nastrojov).
     /// </summary>
+    /// <summary>
+    /// Ukážková kontrola importu z ELIS: stanice s návrhmi z rôznych zdrojov a poznámky vlakov.
+    /// </summary>
+    private static ElisReview ElisReviewSample(IList<Train> trains)
+    {
+        static ElisStationChoice Choice(string id, int count, ElisShortSource source, bool isShort, int type = 0, ShortReportVote vote = default) =>
+            new() { Station = Program.Context.Stations.FromID(id), Trains = count, Source = source, Short = isShort, ElisType = type, Vote = vote };
+
+        var same = new Dictionary<Train, Train>(ReferenceEqualityComparer.Instance);
+        foreach (var train in trains.Take(12))
+            same[new Train()] = train;
+
+        return new ElisReview
+        {
+            Same = same,
+            Stations =
+            [
+                Choice("9900120", 14, ElisShortSource.Grafikon, true, vote: new ShortReportVote(12, 10)),
+                Choice("9900110", 14, ElisShortSource.Grafikon, false, vote: new ShortReportVote(12, 1)),
+                Choice("9900130", 9, ElisShortSource.Saved, true),
+                Choice("9900115", 8, ElisShortSource.None, false),
+                Choice("9900140", 6, ElisShortSource.ElisType, true, Iniss.Elis.ElisStop.TypeJunction | Iniss.Elis.ElisStop.TypeRegionalSeat),
+                Choice("9900020", 5, ElisShortSource.None, false, Iniss.Elis.ElisStop.TypeDistrictSeat)
+            ],
+            Remarks =
+            [
+                new ElisRemarkChoice { Text = "vo vlaku je radený bezbariérový vozeň so zníženou podlahou a nástupnou rampou", Trains = 11,
+                    Action = new ElisRemarkAction(ElisTrainFlag.LowFloor, "", 0) },
+                new ElisRemarkChoice { Text = "samoobslužný výpravný systém", Trains = 9 },
+                new ElisRemarkChoice { Text = "náhradná autobusová doprava", Trains = 3, Saved = true, Action = new ElisRemarkAction(ElisTrainFlag.None, "1001", 1) },
+                new ElisRemarkChoice { Text = "povinne miestenkový vlak", Trains = 2, Action = new ElisRemarkAction(ElisTrainFlag.Reservation, "", 0) },
+                new ElisRemarkChoice { Text = "dámske kupé (kupé pre samostatne cestujúce ženy)", Trains = 2 }
+            ]
+        };
+    }
+
     private static List<GVDDirectory> Periods(FMain main) => ((IEnumerable<GVDDirectory>)Field(main, "_periods")).ToList();
 
     private static object Field(Form form, string name) =>

@@ -10497,5 +10497,140 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("InissCheck_Redirected_Fix", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nepreberať.
+        /// </summary>
+        internal static string FELISImport_LearnNone {
+            get {
+                return ResourceManager.GetString("FELISImport_LearnNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} (otvorený grafikon).
+        /// </summary>
+        internal static string FELISImport_LearnCurrent {
+            get {
+                return ResourceManager.GetString("FELISImport_LearnCurrent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} (vlakov: {1}).
+        /// </summary>
+        internal static string FELISImport_LearnOther {
+            get {
+                return ResourceManager.GetString("FELISImport_LearnOther", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlaky, ktoré už sú v grafikone ({0}), si ponechajú svoje krátke hlásenie.
+        /// </summary>
+        internal static string FELISReview_KeepTrainShort {
+            get {
+                return ResourceManager.GetString("FELISReview_KeepTrainShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voľba z minulého importu.
+        /// </summary>
+        internal static string FELISReview_HintSaved {
+            get {
+                return ResourceManager.GetString("FELISReview_HintSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V grafikone v krátkom hlásení {0} z {1} vlakov.
+        /// </summary>
+        internal static string FELISReview_HintGrafikon {
+            get {
+                return ResourceManager.GetString("FELISReview_HintGrafikon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Krajské mesto.
+        /// </summary>
+        internal static string FELISReview_HintRegional {
+            get {
+                return ResourceManager.GetString("FELISReview_HintRegional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uzlová alebo koncová stanica.
+        /// </summary>
+        internal static string FELISReview_HintJunction {
+            get {
+                return ResourceManager.GetString("FELISReview_HintJunction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Okresné mesto.
+        /// </summary>
+        internal static string FELISReview_HintDistrict {
+            get {
+                return ResourceManager.GetString("FELISReview_HintDistrict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Žiadny.
+        /// </summary>
+        internal static string FELISReview_FlagNone {
+            get {
+                return ResourceManager.GetString("FELISReview_FlagNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Miestenkový.
+        /// </summary>
+        internal static string FELISReview_FlagReservation {
+            get {
+                return ResourceManager.GetString("FELISReview_FlagReservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nízkopodlažný.
+        /// </summary>
+        internal static string FELISReview_FlagLowFloor {
+            get {
+                return ResourceManager.GetString("FELISReview_FlagLowFloor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iba lôžkový.
+        /// </summary>
+        internal static string FELISReview_FlagSleeperOnly {
+            get {
+                return ResourceManager.GetString("FELISReview_FlagSleeperOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Žiadny.
+        /// </summary>
+        internal static string FELISReview_AdditionNone {
+            get {
+                return ResourceManager.GetString("FELISReview_AdditionNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon {0} sa nepodarilo načítať, krátke hlásenie z neho nemožno prevziať. Vyberte iný grafikon alebo Nepreberať.....
+        /// </summary>
+        internal static string ElisImport_LearnFromFailed {
+            get {
+                return ResourceManager.GetString("ElisImport_LearnFromFailed", resourceCulture);
+            }
+        }
 }
 }

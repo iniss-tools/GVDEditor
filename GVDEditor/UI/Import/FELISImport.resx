@@ -118,10 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cbSkipPassingTrains.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cbSkipPassingTrains.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 26</value>
   </data>
@@ -141,7 +142,7 @@
     <value>ExControls.ExCheckBox, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbSkipPassingTrains.Parent" xml:space="preserve">
-    <value>exGroupBox1</value>
+    <value>gbOptions</value>
   </data>
   <data name="&gt;&gt;cbSkipPassingTrains.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -168,160 +169,289 @@
     <value>ExControls.ExCheckBox, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cbReorder.Parent" xml:space="preserve">
-    <value>exGroupBox1</value>
+    <value>gbOptions</value>
   </data>
   <data name="&gt;&gt;cbReorder.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="cbReplace.AutoSize" type="System.Boolean, mscorlib">
+  <data name="cbTableTexts.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="cbReplace.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="cbTableTexts.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 62</value>
   </data>
-  <data name="cbReplace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 24</value>
+  <data name="cbTableTexts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>420, 24</value>
   </data>
-  <data name="cbReplace.TabIndex" type="System.Int32, mscorlib">
+  <data name="cbTableTexts.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="cbReplace.Text" xml:space="preserve">
-    <value>Nahradiť všetky vlaky v grafikone</value>
+  <data name="cbTableTexts.Text" xml:space="preserve">
+    <value>Vygenerovať texty na tabuliach pre naimportované vlaky</value>
   </data>
-  <data name="&gt;&gt;cbReplace.Name" xml:space="preserve">
-    <value>cbReplace</value>
+  <data name="&gt;&gt;cbTableTexts.Name" xml:space="preserve">
+    <value>cbTableTexts</value>
   </data>
-  <data name="&gt;&gt;cbReplace.Type" xml:space="preserve">
+  <data name="&gt;&gt;cbTableTexts.Type" xml:space="preserve">
     <value>ExControls.ExCheckBox, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;cbReplace.Parent" xml:space="preserve">
-    <value>exGroupBox1</value>
+  <data name="&gt;&gt;cbTableTexts.Parent" xml:space="preserve">
+    <value>gbOptions</value>
   </data>
-  <data name="&gt;&gt;cbReplace.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cbTableTexts.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="bImport.AutoSize" type="System.Boolean, mscorlib">
+  <data name="rbAdd.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="bImport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>224, 315</value>
+  <data name="rbAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 26</value>
   </data>
-  <data name="bImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 38</value>
+  <data name="rbAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>310, 24</value>
   </data>
-  <data name="bImport.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="rbAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="bImport.Text" xml:space="preserve">
-    <value>Import</value>
+  <data name="rbAdd.Text" xml:space="preserve">
+    <value>Ponechať a pridať k nim naimportované</value>
   </data>
-  <data name="&gt;&gt;bImport.Name" xml:space="preserve">
-    <value>bImport</value>
+  <data name="&gt;&gt;rbAdd.Name" xml:space="preserve">
+    <value>rbAdd</value>
   </data>
-  <data name="&gt;&gt;bImport.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;rbAdd.Type" xml:space="preserve">
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;bImport.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;rbAdd.Parent" xml:space="preserve">
+    <value>gbTrains</value>
   </data>
-  <data name="&gt;&gt;bImport.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="bStorno.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 315</value>
-  </data>
-  <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 38</value>
-  </data>
-  <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="bStorno.Text" xml:space="preserve">
-    <value>Zrušiť</value>
-  </data>
-  <data name="&gt;&gt;bStorno.Name" xml:space="preserve">
-    <value>bStorno</value>
-  </data>
-  <data name="&gt;&gt;bStorno.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bStorno.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;bStorno.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="tbAppPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 38</value>
-  </data>
-  <data name="tbAppPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>520, 26</value>
-  </data>
-  <data name="tbAppPath.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tbAppPath.Name" xml:space="preserve">
-    <value>tbAppPath</value>
-  </data>
-  <data name="&gt;&gt;tbAppPath.Type" xml:space="preserve">
-    <value>ExControls.ExTextBox, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tbAppPath.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tbAppPath.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="exGroupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 186</value>
-  </data>
-  <data name="exGroupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>662, 105</value>
-  </data>
-  <data name="exGroupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="exGroupBox1.Text" xml:space="preserve">
-    <value>Možnosti</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox1.Name" xml:space="preserve">
-    <value>exGroupBox1</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox1.Type" xml:space="preserve">
-    <value>ExControls.ExGroupBox, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;exGroupBox1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="bBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>543, 32</value>
-  </data>
-  <data name="bBrowse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 40</value>
-  </data>
-  <data name="bBrowse.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;rbAdd.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="bBrowse.Text" xml:space="preserve">
-    <value>Prehľadávať...</value>
+  <data name="rbUpdate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;bBrowse.Name" xml:space="preserve">
-    <value>bBrowse</value>
+  <data name="rbUpdate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 58</value>
   </data>
-  <data name="&gt;&gt;bBrowse.Type" xml:space="preserve">
-    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  <data name="rbUpdate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 24</value>
   </data>
-  <data name="&gt;&gt;bBrowse.Parent" xml:space="preserve">
+  <data name="rbUpdate.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="rbUpdate.Text" xml:space="preserve">
+    <value>Aktualizovať podľa ELIS a ponechať im koľaje, dodatky a ďalšie údaje</value>
+  </data>
+  <data name="&gt;&gt;rbUpdate.Name" xml:space="preserve">
+    <value>rbUpdate</value>
+  </data>
+  <data name="&gt;&gt;rbUpdate.Type" xml:space="preserve">
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rbUpdate.Parent" xml:space="preserve">
+    <value>gbTrains</value>
+  </data>
+  <data name="&gt;&gt;rbUpdate.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="rbReplace.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rbReplace.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 90</value>
+  </data>
+  <data name="rbReplace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 24</value>
+  </data>
+  <data name="rbReplace.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="rbReplace.Text" xml:space="preserve">
+    <value>Odstrániť a nahradiť naimportovanými</value>
+  </data>
+  <data name="&gt;&gt;rbReplace.Name" xml:space="preserve">
+    <value>rbReplace</value>
+  </data>
+  <data name="&gt;&gt;rbReplace.Type" xml:space="preserve">
+    <value>ExControls.ExRadioButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rbReplace.Parent" xml:space="preserve">
+    <value>gbTrains</value>
+  </data>
+  <data name="&gt;&gt;rbReplace.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cbLearn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 458</value>
+  </data>
+  <data name="cbLearn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>660, 28</value>
+  </data>
+  <data name="cbLearn.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;cbLearn.Name" xml:space="preserve">
+    <value>cbLearn</value>
+  </data>
+  <data name="&gt;&gt;cbLearn.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbLearn.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;bBrowse.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cbLearn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lLearn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lLearn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 434</value>
+  </data>
+  <data name="lLearn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>420, 20</value>
+  </data>
+  <data name="lLearn.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lLearn.Text" xml:space="preserve">
+    <value>Krátke hlásenie a hlásenia dodatkov prevziať z grafikonu:</value>
+  </data>
+  <data name="&gt;&gt;lLearn.Name" xml:space="preserve">
+    <value>lLearn</value>
+  </data>
+  <data name="&gt;&gt;lLearn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lLearn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lLearn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="gbOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 322</value>
+  </data>
+  <data name="gbOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>662, 100</value>
+  </data>
+  <data name="gbOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="gbOptions.Text" xml:space="preserve">
+    <value>Možnosti</value>
+  </data>
+  <data name="&gt;&gt;gbOptions.Name" xml:space="preserve">
+    <value>gbOptions</value>
+  </data>
+  <data name="&gt;&gt;gbOptions.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;gbOptions.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;gbOptions.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="gbTrains.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 186</value>
+  </data>
+  <data name="gbTrains.Size" type="System.Drawing.Size, System.Drawing">
+    <value>662, 128</value>
+  </data>
+  <data name="gbTrains.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="gbTrains.Text" xml:space="preserve">
+    <value>Vlaky, ktoré už sú v grafikone</value>
+  </data>
+  <data name="&gt;&gt;gbTrains.Name" xml:space="preserve">
+    <value>gbTrains</value>
+  </data>
+  <data name="&gt;&gt;gbTrains.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;gbTrains.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;gbTrains.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tbReg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 108</value>
+  </data>
+  <data name="tbReg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>660, 26</value>
+  </data>
+  <data name="tbReg.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
+  </data>
+  <data name="&gt;&gt;tbReg.Name" xml:space="preserve">
+    <value>tbReg</value>
+  </data>
+  <data name="&gt;&gt;tbReg.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbReg.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tbReg.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lReg.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lReg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 83</value>
+  </data>
+  <data name="lReg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>405, 20</value>
+  </data>
+  <data name="lReg.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="lReg.Text" xml:space="preserve">
+    <value>Registračné číslo (voľne dostupné dáta ho nepotrebujú):</value>
+  </data>
+  <data name="&gt;&gt;lReg.Name" xml:space="preserve">
+    <value>lReg</value>
+  </data>
+  <data name="&gt;&gt;lReg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lReg.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lReg.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lStation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lStation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 152</value>
+  </data>
+  <data name="lStation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 20</value>
+  </data>
+  <data name="lStation.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="lStation.Text" xml:space="preserve">
+    <value>Vlaky sa načítajú pre stanicu:</value>
+  </data>
+  <data name="&gt;&gt;lStation.Name" xml:space="preserve">
+    <value>lStation</value>
+  </data>
+  <data name="&gt;&gt;lStation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lStation.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lStation.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -348,82 +478,106 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="lStation.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lStation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 152</value>
-  </data>
-  <data name="lStation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 20</value>
-  </data>
-  <data name="lStation.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="lStation.Text" xml:space="preserve">
-    <value>Vlaky sa načítajú pre stanicu:</value>
-  </data>
-  <data name="&gt;&gt;lStation.Name" xml:space="preserve">
-    <value>lStation</value>
-  </data>
-  <data name="&gt;&gt;lStation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lStation.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lStation.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lReg.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lReg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 83</value>
-  </data>
-  <data name="lReg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>405, 20</value>
-  </data>
-  <data name="lReg.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="lReg.Text" xml:space="preserve">
-    <value>Registračné číslo (voľne dostupné dáta ho nepotrebujú):</value>
+  <data name="bBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>543, 32</value>
   </data>
-  <data name="&gt;&gt;lReg.Name" xml:space="preserve">
-    <value>lReg</value>
+  <data name="bBrowse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 40</value>
   </data>
-  <data name="&gt;&gt;lReg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="bBrowse.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;lReg.Parent" xml:space="preserve">
+  <data name="bBrowse.Text" xml:space="preserve">
+    <value>Prehľadávať...</value>
+  </data>
+  <data name="&gt;&gt;bBrowse.Name" xml:space="preserve">
+    <value>bBrowse</value>
+  </data>
+  <data name="&gt;&gt;bBrowse.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bBrowse.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;lReg.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;bBrowse.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="tbAppPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 38</value>
+  </data>
+  <data name="tbAppPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>520, 26</value>
+  </data>
+  <data name="tbAppPath.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tbReg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 108</value>
+  <data name="&gt;&gt;tbAppPath.Name" xml:space="preserve">
+    <value>tbAppPath</value>
   </data>
-  <data name="tbReg.Size" type="System.Drawing.Size, System.Drawing">
-    <value>660, 26</value>
-  </data>
-  <data name="tbReg.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tbReg.Name" xml:space="preserve">
-    <value>tbReg</value>
-  </data>
-  <data name="&gt;&gt;tbReg.Type" xml:space="preserve">
+  <data name="&gt;&gt;tbAppPath.Type" xml:space="preserve">
     <value>ExControls.ExTextBox, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tbReg.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbAppPath.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tbReg.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tbAppPath.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="bStorno.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 506</value>
+  </data>
+  <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 38</value>
+  </data>
+  <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="bStorno.Text" xml:space="preserve">
+    <value>Zrušiť</value>
+  </data>
+  <data name="&gt;&gt;bStorno.Name" xml:space="preserve">
+    <value>bStorno</value>
+  </data>
+  <data name="&gt;&gt;bStorno.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bStorno.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bStorno.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="bImport.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bImport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>224, 506</value>
+  </data>
+  <data name="bImport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 38</value>
+  </data>
+  <data name="bImport.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="bImport.Text" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="&gt;&gt;bImport.Name" xml:space="preserve">
+    <value>bImport</value>
+  </data>
+  <data name="&gt;&gt;bImport.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bImport.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bImport.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -432,7 +586,7 @@
     <value>9, 20</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>688, 369</value>
+    <value>688, 560</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Import vlakov z programu ELIS</value>

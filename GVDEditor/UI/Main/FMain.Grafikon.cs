@@ -562,7 +562,8 @@ internal partial class FMain
 
     private void ShowImportData()
     {
-        var fid = new FImportData(_ctx, ((GVDDirectory)tscbObdobie.ComboBox.SelectedItem!).GVD);
+        var gvd = ((GVDDirectory)tscbObdobie.ComboBox.SelectedItem!).GVD;
+        var fid = new FImportData(_ctx, gvd);
         if (fid.ShowDialog() != DialogResult.OK)
             return;
 
@@ -571,20 +572,21 @@ internal partial class FMain
             RemoveAllTrains();
 
         foreach (var train in fid.ImportedTrains) _ctx.Document.Trains.Add(train);
+        TableTextGenerating.AddMissing(_ctx.Document.TableTexts, fid.ImportedTrains, gvd.ThisStation);
         NormalizeVariants();
         _ctx.Document.Trains.ResetBindings();
         DataSaved = false;
     }
 
     /// <summary>
-    /// Import vlakov z ELIS: data sa nacitaju na pozadi, nepriradene stanice priradi pouzivatel a vlaky sa pridaju
-    /// do grafikonu.
+    /// Import vlakov z ELIS: data sa nacitaju na pozadi, nepriradene stanice priradi pouzivatel, kratke hlasenie
+    /// a poznamky vlakov skontroluje a vlaky sa pridaju do grafikonu (alebo ho aktualizuju ci nahradia).
     /// </summary>
     private async void ShowImportElis()
     {
         var gvdDir = (GVDDirectory)tscbObdobie.ComboBox.SelectedItem!;
 
-        var fimport = new FelisImport(gvdDir.GVD.ThisStation.Name, _ctx.Document.Trains.Count);
+        var fimport = new FelisImport(gvdDir, _ctx.Document.Trains.Count, _periods);
         if (fimport.ShowDialog() != DialogResult.OK)
             return;
 
@@ -596,7 +598,7 @@ internal partial class FMain
         try
         {
             import = await ElisImportService.LoadAsync(fimport.ResultOptions, gvdDir, _ctx.Workspace.TrainsTypes, _ctx.Document.Operators,
-                _ctx.Document.Tracks.FirstOrDefault()!, _ctx.Document.Trains, _ctx.Stations);
+                _ctx.Document.Tracks.FirstOrDefault()!, _ctx.Document.Trains, _ctx.Stations, _ctx.Workspace);
         }
         catch (Exception e) when (CatchErrors)
         {
@@ -620,10 +622,10 @@ internal partial class FMain
         if (import!.Unresolved.Count != 0 && !ResolveStations(import))
             return;
 
-        List<Train> imported;
+        ElisConversion conversion;
         try
         {
-            imported = ElisImportService.Convert(import);
+            conversion = ElisImportService.Convert(import);
         }
         catch (Exception exception)
         {
@@ -632,20 +634,51 @@ internal partial class FMain
             return;
         }
 
-        var removed = 0;
-        if (import.ReplaceTrains)
+        //kratke hlasenie a poznamky vlakov skontroluje pouzivatel - volby sa tiez zapamataju
+        var review = ElisImportService.BuildReview(import, conversion);
+        if (!review.IsEmpty)
         {
-            removed = _ctx.Document.Trains.Count;
-            RemoveAllTrains();
+            var dialog = new FelisReview(_ctx, review);
+            if (dialog.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            if (ElisImportService.SaveChoices(import, review, _ctx.Stations, _ctx.Config.Language) is { } saveError)
+                Log.Exception(saveError);
+        }
+
+        ElisImportService.Apply(import, conversion, review, _ctx.Document, _ctx.Workspace.Sounds);
+
+        var imported = conversion.Trains;
+        var removed = 0;
+        var updated = 0;
+        switch (import.Mode)
+        {
+            case ElisImportMode.Replace:
+                removed = _ctx.Document.Trains.Count;
+                RemoveAllTrains();
+                break;
+            case ElisImportMode.Update:
+                // rovnaky vlak si ponecha kolaje, dodatky a dalsie udaje a jeho texty na tabuliach prejdu na novy vlak
+                foreach (var (original, train) in TrainMerging.Match(_ctx.Document.Trains, imported))
+                {
+                    TrainMerging.Preserve(original, train);
+                    TableTextGenerating.Replace(_ctx.Document.TableTexts, original, train, gvdDir.GVD.ThisStation);
+                    updated++;
+                }
+
+                removed = _ctx.Document.Trains.Count - updated;
+                RemoveAllTrains();
+                break;
         }
 
         foreach (var train in imported) _ctx.Document.Trains.Add(train);
+        var texts = import.GenerateTableTexts ? TableTextGenerating.AddMissing(_ctx.Document.TableTexts, imported, gvdDir.GVD.ThisStation) : 0;
         NormalizeVariants();
         _ctx.Document.Trains.ResetBindings();
 
         DataSaved = false;
 
-        _dialogs.ShowInfo(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Import_z_ELIS_dokončený, removed, imported.Count));
+        _dialogs.ShowInfo(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Import_z_ELIS_dokončený, removed, imported.Count, updated, texts));
     }
 
     /// <summary>

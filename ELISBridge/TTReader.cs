@@ -36,6 +36,11 @@ internal sealed partial class TTReader
 
     private static Regex IdsLine => IdsLineRegex();
 
+    /// <summary>
+    /// Horne bity slova trasy - priznaky zastavky (<see cref="ElisStop.FlagPassing" /> a dalsie); spodnych 11 bitov je cas.
+    /// </summary>
+    private const int RouteFlagsMask = 0xF800;
+
     private readonly string _dataPath;
     private readonly string? _registrationNumber;
     private readonly string? _client;
@@ -253,7 +258,7 @@ internal sealed partial class TTReader
 
         for (var tr = 0; tr < trainCount; tr++)
         {
-            var count = TTNative.TTTrainRouteExt(tt, tr, out var route, 1);
+            var count = TTNative.TTTrainRouteExt(tt, tr, out var route, TTNative.RouteWithPassing);
             if (count <= 0 || route == IntPtr.Zero)
                 continue;
 
@@ -261,6 +266,7 @@ internal sealed partial class TTReader
             var stopStation = new int[count];
             var stopArrival = new int[count];
             var stopDeparture = new int[count];
+            var stopFlags = new int[count];
             var position = -1;
 
             for (var i = 0; i < count; i++)
@@ -269,6 +275,7 @@ internal sealed partial class TTReader
                 stopStation[i] = (ushort)Marshal.ReadInt16(item, 0);
                 stopArrival[i] = ToMinutes((ushort)Marshal.ReadInt16(item, 2));
                 stopDeparture[i] = ToMinutes((ushort)Marshal.ReadInt16(item, 4));
+                stopFlags[i] = (ushort)Marshal.ReadInt16(item, 10) & RouteFlagsMask;
 
                 if (stopStation[i] == myStation)
                     position = i;
@@ -277,13 +284,13 @@ internal sealed partial class TTReader
             if (position < 0)
                 continue;
 
-            output.Add(BuildTrain(tt, tr, position, count, stopStation, stopArrival, stopDeparture,
+            output.Add(BuildTrain(tt, tr, position, count, stopStation, stopArrival, stopDeparture, stopFlags,
                 stations, owners, myStation, validFrom, totalDays));
         }
     }
 
     private static ElisTrain BuildTrain(int tt, int tr, int position, int count,
-        int[] stopStation, int[] stopArrival, int[] stopDeparture,
+        int[] stopStation, int[] stopArrival, int[] stopDeparture, int[] stopFlags,
         List<string> stations, IList<OwnerInfo> owners, int myStation,
         DateTime validFrom, int totalDays)
     {
@@ -302,9 +309,9 @@ internal sealed partial class TTReader
         };
 
         for (var i = 0; i < position; i++)
-            train.StationsBefore.Add(StopOf(tt, stations, stopStation[i]));
+            train.StationsBefore.Add(StopOf(tt, stations, stopStation[i], stopFlags[i]));
         for (var i = position + 1; i < count; i++)
-            train.StationsAfter.Add(StopOf(tt, stations, stopStation[i]));
+            train.StationsAfter.Add(StopOf(tt, stations, stopStation[i], stopFlags[i]));
 
         var owner = TTNative.TTTrOwner(tt, tr);
         if (owner >= 0 && owner < owners.Count)
@@ -321,7 +328,7 @@ internal sealed partial class TTReader
 
     /// <summary>
     /// Doplni vlaku linku IDS a traťové číslo, oddelene pre prichod a odchod - vlak moze
-    /// do stanice prist po jednej trati a odist po inej.
+    /// do stanice prist po jednej trati a odist po inej. Ostatne poznamky ulozi do <see cref="ElisTrain.Remarks" />.
     /// </summary>
     private static void ReadLines(int tt, int tr, int position, int count,
         int[] stopStation, List<string> stations, ElisTrain train)
@@ -336,12 +343,18 @@ internal sealed partial class TTReader
                 v => train.RailLineArrival = v, v => train.RailLineDeparture = v);
         }
 
-        //linka IDS: hotovy text poznamky, napr. "linka R2 [IDS PLUS] (Žilina->Čadca)"
+        //linka IDS: hotovy text poznamky, napr. "linka R2 [IDS PLUS] (Žilina->Čadca)"; ostatne poznamky
+        //idu do GVDEditora cele - ktore platia v stanici a co znamenaju, rozhodne az on
         for (var r = 0; r < TTNative.TTTrRem1Count(tt, tr); r++)
         {
-            var match = IdsLine.Match(TTNative.Str(TTNative.TTTrRem1(tt, TTNative.DefaultLang, tr, r)));
+            var remark = TTNative.Str(TTNative.TTTrRem1(tt, TTNative.DefaultLang, tr, r)).Trim();
+            var match = IdsLine.Match(remark);
             if (!match.Success)
+            {
+                if (remark.Length != 0 && !train.Remarks.Contains(remark))
+                    train.Remarks.Add(remark);
                 continue;
+            }
 
             var from = IndexOfName(stopStation, count, stations, match.Groups[3].Value);
             var to = IndexOfName(stopStation, count, stations, match.Groups[4].Value);
@@ -417,12 +430,18 @@ internal sealed partial class TTReader
         return bits.ToString();
     }
 
-    /// <summary>Zastavka trasy aj s cislom stanice (0, ak ho ELIS nema).</summary>
-    private static ElisStop StopOf(int tt, List<string> stations, int index) => new()
+    /// <summary>Zastavka trasy aj s cislom stanice (0, ak ho ELIS nema), druhom stanice a priznakmi zastavenia.</summary>
+    private static ElisStop StopOf(int tt, List<string> stations, int index, int flags)
     {
-        Name = NameOf(stations, index),
-        Code = index >= 0 && index < stations.Count ? TTNative.TTStKey(tt, index) : 0
-    };
+        var known = index >= 0 && index < stations.Count;
+        return new ElisStop
+        {
+            Name = NameOf(stations, index),
+            Code = known ? TTNative.TTStKey(tt, index) : 0,
+            StationType = known ? TTNative.TTStType(tt, index) & 0xFFFF : 0,
+            RouteFlags = flags
+        };
+    }
 
     private static string NameOf(List<string> stations, int index)
         => index >= 0 && index < stations.Count ? stations[index] : index.ToString(CultureInfo.InvariantCulture);

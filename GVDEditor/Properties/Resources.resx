@@ -374,7 +374,9 @@ Záloha pôvodných súborov: {1}
     <value>Import z programu ELIS dokončený.
 
 Odstránených pôvodných vlakov: {0}
-Naimportovaných vlakov: {1}</value>
+Naimportovaných vlakov: {1}
+Aktualizovaných vlakov s ponechanými údajmi: {2}
+Pridaných textov na tabuliach: {3}</value>
   </data>
   <data name="FMain_Priečinok_neobsahuje_všetky_potrebné_dáta" xml:space="preserve">
     <value>Priečinok neobsahuje všetky potrebné dáta.</value>
@@ -3692,5 +3694,52 @@ Pred zápisom sa uloží záloha.</value>
   </data>
   <data name="InissCheck_Redirected_Fix" xml:space="preserve">
     <value>Ak to nie je skúška, zrušte presmerovanie v okne Nastavenia INISSu (Nástroje → Presmerovať tabule na simulátor).</value>
+  </data>
+  <data name="FELISImport_LearnNone" xml:space="preserve">
+    <value>Nepreberať</value>
+  </data>
+  <data name="FELISImport_LearnCurrent" xml:space="preserve">
+    <value>{0} (otvorený grafikon)</value>
+  </data>
+  <data name="FELISImport_LearnOther" xml:space="preserve">
+    <value>{0} (vlakov: {1})</value>
+  </data>
+  <data name="FELISReview_KeepTrainShort" xml:space="preserve">
+    <value>Vlaky, ktoré už sú v grafikone ({0}), si ponechajú svoje krátke hlásenie</value>
+  </data>
+  <data name="FELISReview_HintSaved" xml:space="preserve">
+    <value>Voľba z minulého importu</value>
+  </data>
+  <data name="FELISReview_HintGrafikon" xml:space="preserve">
+    <value>V grafikone v krátkom hlásení {0} z {1} vlakov</value>
+  </data>
+  <data name="FELISReview_HintRegional" xml:space="preserve">
+    <value>Krajské mesto</value>
+  </data>
+  <data name="FELISReview_HintJunction" xml:space="preserve">
+    <value>Uzlová alebo koncová stanica</value>
+  </data>
+  <data name="FELISReview_HintDistrict" xml:space="preserve">
+    <value>Okresné mesto</value>
+  </data>
+  <data name="FELISReview_FlagNone" xml:space="preserve">
+    <value>Žiadny</value>
+  </data>
+  <data name="FELISReview_FlagReservation" xml:space="preserve">
+    <value>Miestenkový</value>
+  </data>
+  <data name="FELISReview_FlagLowFloor" xml:space="preserve">
+    <value>Nízkopodlažný</value>
+  </data>
+  <data name="FELISReview_FlagSleeperOnly" xml:space="preserve">
+    <value>Iba lôžkový</value>
+  </data>
+  <data name="FELISReview_AdditionNone" xml:space="preserve">
+    <value>Žiadny</value>
+  </data>
+  <data name="ElisImport_LearnFromFailed" xml:space="preserve">
+    <value>Grafikon {0} sa nepodarilo načítať, krátke hlásenie z neho nemožno prevziať. Vyberte iný grafikon alebo Nepreberať.
+
+{1}</value>
   </data>
 </root>
