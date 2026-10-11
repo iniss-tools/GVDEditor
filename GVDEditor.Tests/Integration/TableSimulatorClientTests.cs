@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Net;
 using System.Net.Security;
 using System.Net.Sockets;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Text.Json;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Integration;
+using TableSimulator.Contracts.Faces;
 using TableSimulator.Contracts.Station;
 using ToolsCore.Iniss.Registry;
 
@@ -61,10 +63,42 @@ public class TableSimulatorClientTests
     [TestMethod]
     public void Stanica_KluceJsonPodlaApiSimulatora()
     {
-        // ako PostAsJsonAsync (JsonSerializerDefaults.Web) - kluce cita server simulatora
-        var json = JsonSerializer.Serialize(SimulatorStation.From(Map(), new Dictionary<string, int> { ["Driver"] = 47003 }), Web);
+        // ako PostAsJsonAsync (JsonSerializerDefaults.Web) - kluce cita server simulatora; jazyk ciel podla GVDEditora
+        var culture = CultureInfo.CurrentUICulture;
+        string json;
+        try
+        {
+            CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo("cs-CZ");
+            json = JsonSerializer.Serialize(SimulatorStation.From(Map(), new Dictionary<string, int> { ["Driver"] = 47003 }), Web);
+        }
+        finally
+        {
+            CultureInfo.CurrentUICulture = culture;
+        }
 
-        Assert.AreEqual("""{"lines":[{"number":3,"tableClass":4,"port":47003,"name":"Driver"}],"boards":[{"line":3,"address":5,"manufacturer":"ELEN16","name":"ODCH1","flaps":null,"flapRecords":1}],"logFolder":null,"xmlTables":[]}""", json);
+        Assert.AreEqual("""{"lines":[{"number":3,"tableClass":4,"port":47003,"name":"Driver"}],"boards":[{"line":3,"address":5,"manufacturer":"ELEN16","name":"ODCH1","flaps":null,"flapRecords":1,"face":null}],"logFolder":null,"xmlTables":[],"faceLanguage":"cs","facesForExisting":false}""", json);
+    }
+
+    [TestMethod]
+    public void Stanica_DataPreCeloTabule()
+    {
+        var map = Map();
+        var table = map.Lines.SelectMany(l => l.Tables).Single(t => t.Table.Table.Key == "NAST1").Table;
+        var info = new TableFaceInfo("Tabule_Podchodova", 1, 2, 272, 16, [new FaceColumnInfo(0, 0, 35, 1, 9, "Cas")], ["2", "2V"], ["2"], "Stanica");
+        var withFace = DriverLines.Build(RegResolver.Resolve(new InissConfigSource
+        {
+            AppName = "T", Version = new RegVersion(3, 39),
+            Machine = new RegBranch().Set("Driver0", "TableClass", RegRawValue.Dword(5)).Set("Driver0", "TablePort", RegRawValue.String("4=TCP://10.0.0.5:4001"))
+        }), [table with { Face = info }]);
+
+        var face = SimulatorStation.From(withFace, new Dictionary<string, int> { ["Driver0"] = 47004 }).Boards.Single().Face!;
+
+        Assert.AreEqual(StationBoardKind.Underpass, face.Kind);
+        Assert.AreEqual(new StationFaceColumnDto(0, 0, 35, FaceAlign.Right, 9), face.Columns.Single());
+        Assert.AreEqual(2, face.Records);
+        Assert.AreEqual(272, face.Width);
+        CollectionAssert.AreEqual(new[] { "2", "2V" }, face.Tracks.ToArray());
+        Assert.AreEqual("Stanica", face.Station);
     }
 
     [TestMethod]

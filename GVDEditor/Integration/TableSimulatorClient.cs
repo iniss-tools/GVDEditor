@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -5,6 +6,7 @@ using System.Security.Authentication;
 using System.Text.Json;
 using TableSimulator.Contracts.Auth;
 using TableSimulator.Contracts.Boards;
+using TableSimulator.Contracts.Faces;
 using TableSimulator.Contracts.State;
 using TableSimulator.Contracts.Station;
 
@@ -36,7 +38,7 @@ internal static class SimulatorStation
             lines.Add(new StationLineDto(number, line.Class, port, line.Section));
             foreach (var table in line.Tables)
                 if (table.Table.Table.TableCatalog is { Manufacturer: { } manufacturer } catalog)
-                    boards.Add(Board(number, table.Table.Table, catalog, manufacturer));
+                    boards.Add(Board(number, table.Table, catalog, manufacturer));
             foreach (var unit in (amplifiers ?? []).Where(u => u.Line == number))
                 boards.Add(new StationBoardDto(number, unit.Address, AmplifierManufacturer, unit.Name));
         }
@@ -46,13 +48,19 @@ internal static class SimulatorStation
             .DistinctBy(t => t.Table.SaveXML.Trim(), StringComparer.OrdinalIgnoreCase)
             .Select(t => new StationXmlTableDto(t.Table.Key, t.Table.SaveXML.Trim()))
             .ToList();
-        return new StationImportRequest(lines, boards) { LogFolder = logFolder, XmlTables = xml };
+        // popisy na celach tabul v jazyku GVDEditora
+        var language = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs" ? StationFaceLanguage.Cs : StationFaceLanguage.Sk;
+        return new StationImportRequest(lines, boards) { LogFolder = logFolder, XmlTables = xml, FaceLanguage = language };
     }
 
-    /// <summary>Tabula; listova (ERS, FERS) aj s modulmi a zoznamami listov z predlohy a jej TabTab.</summary>
-    private static StationBoardDto Board(int line, TablePhysical table, TableCatalog catalog, TableManufacturer manufacturer)
+    /// <summary>
+    /// Tabula s datami pre celo (druh, stlpce, kolaje); listova (ERS, FERS) aj s modulmi a zoznamami listov z predlohy
+    /// a jej TabTab.
+    /// </summary>
+    private static StationBoardDto Board(int line, InissTable inissTable, TableCatalog catalog, TableManufacturer manufacturer)
     {
-        var board = new StationBoardDto(line, table.ID, manufacturer.Name, table.Key);
+        var table = inissTable.Table;
+        var board = new StationBoardDto(line, table.ID, manufacturer.Name, table.Key) { Face = Face(inissTable.Face) };
         if (!FlapLayouts.IsFlapBoard(manufacturer))
             return board;
         var layout = FlapLayouts.Build(catalog);
@@ -66,6 +74,26 @@ internal static class SimulatorStation
             },
             FlapRecords = layout.Records
         };
+    }
+
+    /// <summary>Co o cele tabule vedia data stanice (rovnako ako nacitanie instalacie INISSu v simulatore).</summary>
+    private static StationFaceDto? Face(TableFaceInfo? info)
+    {
+        if (info is null)
+            return null;
+        var type = TableViewType.Parse(info.ViewType);
+        var kind = type == TableViewType.Odchodova ? StationBoardKind.Departures
+            : type == TableViewType.Prichodova ? StationBoardKind.Arrivals
+            : type == TableViewType.Nastupistna ? StationBoardKind.Platform
+            : type == TableViewType.Podchodova ? StationBoardKind.Underpass
+            : StationBoardKind.Other;
+        var columns = info.Columns.Select(c => new StationFaceColumnDto(c.Line, c.Start, c.End, c.Align switch
+        {
+            1 => FaceAlign.Right,
+            2 => FaceAlign.Center,
+            _ => FaceAlign.Left
+        }, c.Content)).ToList();
+        return new StationFaceDto(kind, info.LinesPerRecord, info.Records, info.Width, info.RowHeight, columns, info.Tracks, info.Platforms, info.Station);
     }
 }
 
