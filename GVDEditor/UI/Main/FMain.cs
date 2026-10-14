@@ -4,6 +4,7 @@ using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Integration;
+using GVDEditor.Mcp;
 using GVDEditor.Properties;
 using GVDEditor.UI.EditTrain;
 using ToolsCore.Commands;
@@ -53,6 +54,7 @@ internal partial class FMain : Form, IAnalyzerHost
     /// Kontext editora - nastavenia programu, zvolena instalacia INISS a otvoreny grafikon.
     /// </summary>
     private readonly EditorContext _ctx;
+    private readonly GvdMcpServer _mcp;
 
     /// <summary>
     /// Vytvori nový formulár typu <see cref="FMain"/>.
@@ -60,9 +62,11 @@ internal partial class FMain : Form, IAnalyzerHost
     /// <param name="context">kontext editora</param>
     /// <param name="iniss">spustanie a ukoncovanie INISSu (vlastni ho <see cref="Program" />)</param>
     /// <param name="dialogs">dialogy s hlasenim</param>
-    public FMain(EditorContext context, IInissProcess iniss, IDialogService dialogs)
+    /// <param name="mcp">server MCP pre agentov (vlastni ho <see cref="Program" />)</param>
+    public FMain(EditorContext context, IInissProcess iniss, IDialogService dialogs, GvdMcpServer mcp)
     {
         _ctx = context;
+        _mcp = mcp;
         _iniss = iniss;
         _dialogs = dialogs;
         InitializeComponent();
@@ -107,6 +111,7 @@ internal partial class FMain : Form, IAnalyzerHost
     private void FMain_Load(object sender, EventArgs e)
     {
         AppRegistry.RegisterJumpList();
+        StartMcp();
 
         var path = Utils.GetProjectPathFromArgs();
         if (path is null && _ctx.Config.Startup == StartupType.LastProject)
@@ -114,6 +119,15 @@ internal partial class FMain : Form, IAnalyzerHost
 
         if (!string.IsNullOrWhiteSpace(path))
             OpenRecentProject(path);
+    }
+
+    /// <summary>
+    /// Server MCP podla nastavenia programu - pri starte a po zmene nastavenia; chyba (obsadeny port) je v jeho stave
+    /// a v logu, GVDEditor funguje dalej.
+    /// </summary>
+    private async void StartMcp()
+    {
+        await _mcp.ApplyAsync(new EditorAccess(_ctx, this), _ctx.Config.McpServer);
     }
 
     private bool DataSaved
@@ -525,12 +539,16 @@ internal partial class FMain : Form, IAnalyzerHost
 
     private void SetColumnsAutoWidth()
     {
+        // jeden dlhy text (napr. datumove obmedzenie s vela vynimkami) nesmie roztiahnut stlpec cez pol okna - skrateny
+        // text ukaze bublina bunky a stlpec sa da rozsirit rucne
+        var maxWidth = dgvTrains.ClientSize.Width / 4;
         for (var i = 0; i < dgvTrains.Columns.Count - 1; i++)
         {
-            dgvTrains.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            var widthCol = dgvTrains.Columns[i].Width;
-            dgvTrains.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvTrains.Columns[i].Width = widthCol;
+            var column = dgvTrains.Columns[i];
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            var widthCol = column.Width;
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            column.Width = Math.Max(column.MinimumWidth, Math.Min(widthCol, maxWidth));
         }
 
         // varianty mozu byt aj v riadkoch mimo obrazovky

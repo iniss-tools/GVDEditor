@@ -252,7 +252,7 @@ internal partial class FMain
         {
             // novy grafikon nesmie nic prevziat z predchadzajuceho (jazyky, priecinok pisiem...)
             _prechod = true;
-            _ctx.OpenDocument(GrafikonDocument.CreateNew(_ctx.Workspace.Languages));
+            _ctx.OpenDocument(GrafikonDocument.CreateNew(_ctx.Workspace.Languages), dir);
             BindDocument();
             _prechod = false;
 
@@ -330,7 +330,7 @@ internal partial class FMain
         if (document != null)
         {
             // vsetky data grafikonu sa vymenia naraz - okno medzitym videlo povodny grafikon
-            _ctx.OpenDocument(document);
+            _ctx.OpenDocument(document, dir);
             BindDocument();
             _grafikonLoaded = true;
         }

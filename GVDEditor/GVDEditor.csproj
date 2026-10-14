@@ -26,6 +26,7 @@
 		<PackageReference Include="AutoCompleteMenu-ScintillaNET" Version="2.1.1" />
 		<!-- len pre Rider ([UsedImplicitly]); atributy su [Conditional], za behu sa DLL nepotrebuje -->
 		<PackageReference Include="JetBrains.Annotations" Version="2026.2.0" PrivateAssets="all" ExcludeAssets="runtime" />
+		<PackageReference Include="ModelContextProtocol.AspNetCore" Version="2.2.0" />
 		<PackageReference Include="NAudio" Version="2.2.1" />
 		<PackageReference Include="NAudio.WinForms" Version="2.2.1" />
 		<!-- Balík "Scintilla5.NET" (bez bodky) je silne pomenovaný s iným PublicKeyToken ako to, proti čomu je
@@ -48,6 +49,10 @@
 		<Content Include="..\Licences\LICENCE.txt" Link="Licences\LICENCE.txt">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<!-- server MCP pre agentov bezi v procese editora (Kestrel) -->
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\ExControls\ExControls\ExControls.csproj" />

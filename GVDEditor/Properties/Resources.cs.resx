@@ -3727,4 +3727,25 @@ Před zápisem se uloží záloha.</value>
 
 {1}</value>
   </data>
+  <data name="FAppSettings_Mcp_Off" xml:space="preserve">
+    <value>Vypnutý.</value>
+  </data>
+  <data name="FAppSettings_Mcp_Running" xml:space="preserve">
+    <value>Běží na {0}</value>
+  </data>
+  <data name="FAppSettings_Mcp_Failed" xml:space="preserve">
+    <value>Nespustil se: {0}</value>
+  </data>
+  <data name="FAppSettings_Mcp_Pending" xml:space="preserve">
+    <value>Změny se projeví po uložení nastavení.</value>
+  </data>
+  <data name="FAppSettings_Mcp_Copied" xml:space="preserve">
+    <value>Zkopírováno do schránky.</value>
+  </data>
+  <data name="FAppSettings_Mcp_CopiedPending" xml:space="preserve">
+    <value>Zkopírováno do schránky. Platí po uložení nastavení.</value>
+  </data>
+  <data name="FAppSettings_Mcp_NewKey" xml:space="preserve">
+    <value>Vytvořit nový klíč? Agenti se starým klíčem ztratí přístup po uložení nastavení.</value>
+  </data>
 </root>

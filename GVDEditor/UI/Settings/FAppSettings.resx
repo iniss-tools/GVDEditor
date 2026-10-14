@@ -794,7 +794,7 @@
     <value>pConcreteGeneral</value>
   </data>
   <data name="&gt;&gt;exGroupBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="cboxTabTextAutoGenerate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -899,7 +899,7 @@
     <value>pConcreteGeneral</value>
   </data>
   <data name="&gt;&gt;exGroupBox4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="nudPlayerWordPause.Location" type="System.Drawing.Point, System.Drawing">
     <value>218, 28</value>
@@ -1001,7 +1001,7 @@
     <value>pConcreteGeneral</value>
   </data>
   <data name="&gt;&gt;exGroupBox5.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="cboxInissEvaluation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1028,6 +1028,237 @@
     <value>exGroupBox5</value>
   </data>
   <data name="&gt;&gt;cboxInissEvaluation.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="exGroupBox6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="exGroupBox6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 194</value>
+  </data>
+  <data name="exGroupBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 76</value>
+  </data>
+  <data name="exGroupBox6.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="exGroupBox6.Text" xml:space="preserve">
+    <value>Server MCP pre agentov</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox6.Name" xml:space="preserve">
+    <value>exGroupBox6</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox6.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox6.Parent" xml:space="preserve">
+    <value>pConcreteGeneral</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox6.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboxMcpEnabled.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxMcpEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 19</value>
+  </data>
+  <data name="cboxMcpEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>280, 17</value>
+  </data>
+  <data name="cboxMcpEnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cboxMcpEnabled.Text" xml:space="preserve">
+    <value>Zapnúť server pre agentov (Claude Code, VS Code)</value>
+  </data>
+  <data name="&gt;&gt;cboxMcpEnabled.Name" xml:space="preserve">
+    <value>cboxMcpEnabled</value>
+  </data>
+  <data name="&gt;&gt;cboxMcpEnabled.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxMcpEnabled.Parent" xml:space="preserve">
+    <value>exGroupBox6</value>
+  </data>
+  <data name="&gt;&gt;cboxMcpEnabled.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="lMcpPort.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lMcpPort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 49</value>
+  </data>
+  <data name="lMcpPort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="lMcpPort.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lMcpPort.Text" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="&gt;&gt;lMcpPort.Name" xml:space="preserve">
+    <value>lMcpPort</value>
+  </data>
+  <data name="&gt;&gt;lMcpPort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lMcpPort.Parent" xml:space="preserve">
+    <value>exGroupBox6</value>
+  </data>
+  <data name="&gt;&gt;lMcpPort.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="nudMcpPort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 47</value>
+  </data>
+  <data name="nudMcpPort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 20</value>
+  </data>
+  <data name="nudMcpPort.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;nudMcpPort.Name" xml:space="preserve">
+    <value>nudMcpPort</value>
+  </data>
+  <data name="&gt;&gt;nudMcpPort.Type" xml:space="preserve">
+    <value>ExControls.ExNumericUpDown, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;nudMcpPort.Parent" xml:space="preserve">
+    <value>exGroupBox6</value>
+  </data>
+  <data name="&gt;&gt;nudMcpPort.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lMcpStatus.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lMcpStatus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 20</value>
+  </data>
+  <data name="lMcpStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 13</value>
+  </data>
+  <data name="lMcpStatus.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;lMcpStatus.Name" xml:space="preserve">
+    <value>lMcpStatus</value>
+  </data>
+  <data name="&gt;&gt;lMcpStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lMcpStatus.Parent" xml:space="preserve">
+    <value>exGroupBox6</value>
+  </data>
+  <data name="&gt;&gt;lMcpStatus.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flpMcpButtons.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flpMcpButtons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 40</value>
+  </data>
+  <data name="flpMcpButtons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>420, 33</value>
+  </data>
+  <data name="flpMcpButtons.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;flpMcpButtons.Name" xml:space="preserve">
+    <value>flpMcpButtons</value>
+  </data>
+  <data name="&gt;&gt;flpMcpButtons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flpMcpButtons.Parent" xml:space="preserve">
+    <value>exGroupBox6</value>
+  </data>
+  <data name="&gt;&gt;flpMcpButtons.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="bMcpClaude.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bMcpClaude.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>90, 27</value>
+  </data>
+  <data name="bMcpClaude.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 27</value>
+  </data>
+  <data name="bMcpClaude.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="bMcpClaude.Text" xml:space="preserve">
+    <value>Kopírovať pre Claude Code</value>
+  </data>
+  <data name="&gt;&gt;bMcpClaude.Name" xml:space="preserve">
+    <value>bMcpClaude</value>
+  </data>
+  <data name="&gt;&gt;bMcpClaude.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bMcpClaude.Parent" xml:space="preserve">
+    <value>flpMcpButtons</value>
+  </data>
+  <data name="&gt;&gt;bMcpClaude.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="bMcpVsCode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bMcpVsCode.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>90, 27</value>
+  </data>
+  <data name="bMcpVsCode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 27</value>
+  </data>
+  <data name="bMcpVsCode.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="bMcpVsCode.Text" xml:space="preserve">
+    <value>Kopírovať pre VS Code</value>
+  </data>
+  <data name="&gt;&gt;bMcpVsCode.Name" xml:space="preserve">
+    <value>bMcpVsCode</value>
+  </data>
+  <data name="&gt;&gt;bMcpVsCode.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bMcpVsCode.Parent" xml:space="preserve">
+    <value>flpMcpButtons</value>
+  </data>
+  <data name="&gt;&gt;bMcpVsCode.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="bMcpNewKey.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="bMcpNewKey.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>90, 27</value>
+  </data>
+  <data name="bMcpNewKey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 27</value>
+  </data>
+  <data name="bMcpNewKey.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="bMcpNewKey.Text" xml:space="preserve">
+    <value>Nový kľúč</value>
+  </data>
+  <data name="&gt;&gt;bMcpNewKey.Name" xml:space="preserve">
+    <value>bMcpNewKey</value>
+  </data>
+  <data name="&gt;&gt;bMcpNewKey.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bMcpNewKey.Parent" xml:space="preserve">
+    <value>flpMcpButtons</value>
+  </data>
+  <data name="&gt;&gt;bMcpNewKey.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
 </root>

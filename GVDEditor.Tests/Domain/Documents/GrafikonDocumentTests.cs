@@ -16,7 +16,7 @@ public class GrafikonDocumentTests
         var open = new GrafikonDocument { Tracks = [Track.None] };
         open.Trains.Add(new Train { Number = "601" });
         var context = new EditorContext(null!);
-        context.OpenDocument(open);
+        context.OpenDocument(open, new GVDDirectory(new DirList(), new GVDInfo()));
         var trains = context.Document.Trains;
 
         context.CloseDocument();

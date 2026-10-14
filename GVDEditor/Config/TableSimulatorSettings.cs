@@ -1,5 +1,3 @@
-using System.Security.Cryptography;
-using System.Text;
 using System.Xml.Serialization;
 
 namespace GVDEditor.Config;
@@ -39,8 +37,8 @@ public sealed class TableSimulatorSettings
     [XmlIgnore]
     public string ApiKey
     {
-        get => Unprotect(ProtectedApiKey);
-        set => ProtectedApiKey = Protect(value);
+        get => UserSecret.Unprotect(ProtectedApiKey, Entropy);
+        set => ProtectedApiKey = UserSecret.Protect(value, Entropy);
     }
 
     /// <summary>Kopia.</summary>
@@ -48,22 +46,4 @@ public sealed class TableSimulatorSettings
         new() { Host = Host, BasePort = BasePort, WebUrl = WebUrl, Prepare = Prepare, ProtectedApiKey = ProtectedApiKey };
 
     private static readonly byte[] Entropy = "GVDEditor.TableSimulator.ApiKey"u8.ToArray();
-
-    private static string Protect(string? key) =>
-        string.IsNullOrWhiteSpace(key)
-            ? ""
-            : Convert.ToBase64String(ProtectedData.Protect(Encoding.UTF8.GetBytes(key.Trim()), Entropy, DataProtectionScope.CurrentUser));
-
-    private static string Unprotect(string protectedKey)
-    {
-        if (protectedKey.Length == 0) return "";
-        try
-        {
-            return Encoding.UTF8.GetString(ProtectedData.Unprotect(Convert.FromBase64String(protectedKey), Entropy, DataProtectionScope.CurrentUser));
-        }
-        catch (Exception e) when (e is CryptographicException or FormatException)
-        {
-            return "";
-        }
-    }
 }

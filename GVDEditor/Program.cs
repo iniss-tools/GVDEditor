@@ -1,6 +1,7 @@
 using GVDEditor.Config;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Integration;
+using GVDEditor.Mcp;
 using GVDEditor.UI.Main;
 using ToolsCore.Tools;
 using ToolsCore.XML;
@@ -21,10 +22,11 @@ internal static class Program
         var context = new EditorContext(AppInit.Initialization<GVDEditorConfig, GVDEditorStyle>());
         var dialogs = new DialogService();
         using var iniss = new InissProcessService();
+        using var mcp = new GvdMcpServer();
 
         // jazyk datumovych obmedzeni je okolite nastavenie (ako kultura) - meni sa len tu a po zmene nastaveni
         DateLimit.Loc = context.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
 
-        AppInit.Run(context.Config, () => new FMain(context, iniss, dialogs));
+        AppInit.Run(context.Config, () => new FMain(context, iniss, dialogs, mcp));
     }
 }

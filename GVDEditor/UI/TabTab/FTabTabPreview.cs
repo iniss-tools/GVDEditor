@@ -27,6 +27,7 @@ public partial class FTabTabPreview : Form
     private readonly Dictionary<string, TabTabSection?> _sections = new(StringComparer.Ordinal);
     private readonly BindingList<ResultRow> _rows = [];
     private readonly bool _loading = true;
+    private readonly BoardColumnComposer _composer;
 
     /// <summary>
     /// Vytvori nahlad.
@@ -45,6 +46,7 @@ public partial class FTabTabPreview : Form
         _sectionText = sectionText;
         _currentSection = currentSection;
         _homeStationId = homeStationId;
+        _composer = new BoardColumnComposer(_ctx.Document, Section);
 
         chkOnlySection.Enabled = currentSection is not null;
         chkOnlySection.Checked = currentSection is not null;
@@ -134,7 +136,7 @@ public partial class FTabTabPreview : Form
                 foreach (var item in catalog.Items)
                 {
                     if (chkOnlySection.Checked && !UsesCurrent(item)) continue;
-                    var r = ComposeColumn(catalog, item, ctx, 0);
+                    var r = _composer.Compose(catalog, item, ctx);
                     _rows.Add(new ResultRow
                     {
                         Table = catalog.Name,
@@ -166,45 +168,6 @@ public partial class FTabTabPreview : Form
 
     private bool UsesCurrent(TableItem item) =>
         _currentSection is not null && (item.Tab1?.Key == _currentSection || item.Tab2?.Key == _currentSection);
-
-    private TabTabComposeResult ComposeColumn(TableCatalog catalog, TableItem item, GvdTrainContext ctx, int depth)
-    {
-        var first = catalog.Items.FirstOrDefault();
-        // INISS berie tabulu ako prichodovu, ked jej prvy stlpec je typu 1 (cas prichodu)
-        var site = first is not null && first.FillSection == TableFillSection.CasPrichodu ? ExprEvalSite.ArrivalTable : ExprEvalSite.Default;
-
-        TabTabValue? ttexts = null;
-        foreach (var tt in _ctx.Document.TableTexts)
-        {
-            if (!tt.Realizations.Any(r => r.Table == catalog && r.Item == item)) continue;
-            var train = tt.Trains.FirstOrDefault(t => t.Train == ctx.Train);
-            if (train is not null)
-            {
-                ttexts = new TabTabValue(train.Text, train.FontID);
-                break;
-            }
-        }
-
-        return TabTabComposer.Compose(new TabTabColumnInput
-        {
-            Train = ctx,
-            Site = site,
-            OwnValue = ctx.OwnValue(item),
-            TextsValue = ttexts,
-            DivType = item.DivType.Id,
-            TypeItemsIdx = item.FillSection.Id,
-            Tab1 = item.Tab1 == TableTabTab.Empty ? null : Section(item.Tab1.Key),
-            Tab2 = item.Tab2 == TableTabTab.Empty ? null : Section(item.Tab2.Key),
-            ColumnValue = depth < 3
-                ? name =>
-                {
-                    var other = catalog.Items.FirstOrDefault(i =>
-                        string.Equals(i.Name, name, StringComparison.OrdinalIgnoreCase) || string.Equals(i.Key, name, StringComparison.OrdinalIgnoreCase));
-                    return other is null || other == item ? null : ComposeColumn(catalog, other, ctx, depth + 1).Value;
-                }
-                : null
-        });
-    }
 
     private static string FontText(int? font) => font switch
     {

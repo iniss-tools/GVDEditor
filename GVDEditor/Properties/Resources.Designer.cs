@@ -10632,5 +10632,68 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("ElisImport_LearnFromFailed", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vypnutý..
+        /// </summary>
+        internal static string FAppSettings_Mcp_Off {
+            get {
+                return ResourceManager.GetString("FAppSettings_Mcp_Off", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Beží na {0}.
+        /// </summary>
+        internal static string FAppSettings_Mcp_Running {
+            get {
+                return ResourceManager.GetString("FAppSettings_Mcp_Running", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Nespustil sa: {0}.
+        /// </summary>
+        internal static string FAppSettings_Mcp_Failed {
+            get {
+                return ResourceManager.GetString("FAppSettings_Mcp_Failed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Zmeny sa prejavia po uložení nastavení..
+        /// </summary>
+        internal static string FAppSettings_Mcp_Pending {
+            get {
+                return ResourceManager.GetString("FAppSettings_Mcp_Pending", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Skopírované do schránky..
+        /// </summary>
+        internal static string FAppSettings_Mcp_Copied {
+            get {
+                return ResourceManager.GetString("FAppSettings_Mcp_Copied", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Skopírované do schránky. Platí po uložení nastavení..
+        /// </summary>
+        internal static string FAppSettings_Mcp_CopiedPending {
+            get {
+                return ResourceManager.GetString("FAppSettings_Mcp_CopiedPending", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Vytvoriť nový kľúč? Agenti so starým kľúčom stratia prístup po uložení nastavení..
+        /// </summary>
+        internal static string FAppSettings_Mcp_NewKey {
+            get {
+                return ResourceManager.GetString("FAppSettings_Mcp_NewKey", resourceCulture);
+            }
+        }
 }
 }

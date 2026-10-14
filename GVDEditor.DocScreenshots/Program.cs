@@ -3,6 +3,7 @@ using System.Reflection;
 using GVDEditor.Config;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Integration;
+using GVDEditor.Mcp;
 using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.Main;
 using ToolsCore.Tools;
@@ -119,7 +120,7 @@ internal static class Program
     /// </summary>
     public static FMain OpenMain(string installDir)
     {
-        var main = new FMain(Context, new InissProcessService(), new DialogService());
+        var main = new FMain(Context, new InissProcessService(), new DialogService(), new GvdMcpServer());
 
         // FMain_Load by argumenty harnessu (--out …) bral ako cestu k projektu a registroval jump list
         main.Load -= (EventHandler)Delegate.CreateDelegate(typeof(EventHandler), main, "FMain_Load");

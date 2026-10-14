@@ -54,6 +54,11 @@ internal sealed class EditorContext
     public GrafikonDocument Document { get; private set; } = new();
 
     /// <summary>
+    /// Priecinok otvoreneho grafikonu; null = ziadny grafikon nie je otvoreny.
+    /// </summary>
+    public GVDDirectory? Directory { get; private set; }
+
+    /// <summary>
     /// Kontext pre citanie a zapis suborov otvoreneho grafikonu.
     /// </summary>
     public GrafikonContext Grafikon => new(Workspace, Document, Config.Language);
@@ -72,8 +77,9 @@ internal sealed class EditorContext
     /// <summary>
     /// Otvori grafikon - vsetky jeho data sa vymenia naraz.
     /// </summary>
-    public void OpenDocument(GrafikonDocument document)
+    public void OpenDocument(GrafikonDocument document, GVDDirectory directory)
     {
+        Directory = directory;
         if (document.Trains is TrainBindingList { TrainNames: null } trains)
             trains.TrainNames = Workspace.TrainNames;
         Document = document;
@@ -85,6 +91,7 @@ internal sealed class EditorContext
     /// </summary>
     public void CloseDocument()
     {
+        Directory = null;
         var trains = Document.Trains;
         trains.Clear();
         Document = new GrafikonDocument { Trains = trains };

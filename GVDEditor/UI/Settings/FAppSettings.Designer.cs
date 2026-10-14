@@ -41,6 +41,15 @@ namespace GVDEditor.UI.Settings
             this.label7 = new System.Windows.Forms.Label();
             this.exGroupBox5 = new ExControls.ExGroupBox();
             this.cboxInissEvaluation = new ExControls.ExCheckBox();
+            this.exGroupBox6 = new ExControls.ExGroupBox();
+            this.cboxMcpEnabled = new ExControls.ExCheckBox();
+            this.lMcpPort = new System.Windows.Forms.Label();
+            this.nudMcpPort = new ExControls.ExNumericUpDown();
+            this.lMcpStatus = new System.Windows.Forms.Label();
+            this.flpMcpButtons = new System.Windows.Forms.FlowLayoutPanel();
+            this.bMcpClaude = new ExControls.ExButton();
+            this.bMcpVsCode = new ExControls.ExButton();
+            this.bMcpNewKey = new ExControls.ExButton();
             this.pGeneral.SuspendLayout();
             this.pConcreteGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optionsView)).BeginInit();
@@ -50,11 +59,15 @@ namespace GVDEditor.UI.Settings
             this.exGroupBox2.SuspendLayout();
             this.exGroupBox4.SuspendLayout();
             this.exGroupBox5.SuspendLayout();
+            this.exGroupBox6.SuspendLayout();
+            this.flpMcpButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlayerWordPause)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMcpPort)).BeginInit();
             this.SuspendLayout();
             // 
             // pConcreteGeneral
             // 
+            this.pConcreteGeneral.Controls.Add(this.exGroupBox6);
             this.pConcreteGeneral.Controls.Add(this.exGroupBox5);
             this.pConcreteGeneral.Controls.Add(this.exGroupBox4);
             this.pConcreteGeneral.Controls.Add(this.exGroupBox2);
@@ -194,6 +207,88 @@ namespace GVDEditor.UI.Settings
             this.cboxInissEvaluation.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxInissEvaluation.Name = "cboxInissEvaluation";
             // 
+            // exGroupBox6
+            // 
+            resources.ApplyResources(this.exGroupBox6, "exGroupBox6");
+            this.exGroupBox6.Controls.Add(this.flpMcpButtons);
+            this.exGroupBox6.Controls.Add(this.lMcpStatus);
+            this.exGroupBox6.Controls.Add(this.nudMcpPort);
+            this.exGroupBox6.Controls.Add(this.lMcpPort);
+            this.exGroupBox6.Controls.Add(this.cboxMcpEnabled);
+            this.exGroupBox6.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.exGroupBox6.Name = "exGroupBox6";
+            this.exGroupBox6.TabStop = false;
+            // 
+            // cboxMcpEnabled
+            // 
+            resources.ApplyResources(this.cboxMcpEnabled, "cboxMcpEnabled");
+            this.cboxMcpEnabled.BoxBackColor = System.Drawing.Color.White;
+            this.cboxMcpEnabled.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.cboxMcpEnabled.Name = "cboxMcpEnabled";
+            this.cboxMcpEnabled.CheckedChanged += new System.EventHandler(this.McpSettingChanged);
+            // 
+            // lMcpPort
+            // 
+            resources.ApplyResources(this.lMcpPort, "lMcpPort");
+            this.lMcpPort.Name = "lMcpPort";
+            // 
+            // nudMcpPort
+            // 
+            this.nudMcpPort.HighlightColor = System.Drawing.SystemColors.Highlight;
+            resources.ApplyResources(this.nudMcpPort, "nudMcpPort");
+            this.nudMcpPort.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nudMcpPort.Minimum = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.nudMcpPort.Name = "nudMcpPort";
+            this.nudMcpPort.SelectedButtonColor = System.Drawing.SystemColors.Highlight;
+            this.nudMcpPort.Value = new decimal(new int[] {
+            5490,
+            0,
+            0,
+            0});
+            this.nudMcpPort.ValueChanged += new System.EventHandler(this.McpSettingChanged);
+            // 
+            // lMcpStatus
+            // 
+            resources.ApplyResources(this.lMcpStatus, "lMcpStatus");
+            this.lMcpStatus.Name = "lMcpStatus";
+            // 
+            // flpMcpButtons
+            // 
+            resources.ApplyResources(this.flpMcpButtons, "flpMcpButtons");
+            this.flpMcpButtons.Controls.Add(this.bMcpClaude);
+            this.flpMcpButtons.Controls.Add(this.bMcpVsCode);
+            this.flpMcpButtons.Controls.Add(this.bMcpNewKey);
+            this.flpMcpButtons.Name = "flpMcpButtons";
+            // 
+            // bMcpClaude
+            // 
+            resources.ApplyResources(this.bMcpClaude, "bMcpClaude");
+            this.bMcpClaude.Name = "bMcpClaude";
+            this.bMcpClaude.UseVisualStyleBackColor = true;
+            this.bMcpClaude.Click += new System.EventHandler(this.bMcpClaude_Click);
+            // 
+            // bMcpVsCode
+            // 
+            resources.ApplyResources(this.bMcpVsCode, "bMcpVsCode");
+            this.bMcpVsCode.Name = "bMcpVsCode";
+            this.bMcpVsCode.UseVisualStyleBackColor = true;
+            this.bMcpVsCode.Click += new System.EventHandler(this.bMcpVsCode_Click);
+            // 
+            // bMcpNewKey
+            // 
+            resources.ApplyResources(this.bMcpNewKey, "bMcpNewKey");
+            this.bMcpNewKey.Name = "bMcpNewKey";
+            this.bMcpNewKey.UseVisualStyleBackColor = true;
+            this.bMcpNewKey.Click += new System.EventHandler(this.bMcpNewKey_Click);
+            // 
             // FAppSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,7 +313,12 @@ namespace GVDEditor.UI.Settings
             this.exGroupBox4.PerformLayout();
             this.exGroupBox5.ResumeLayout(false);
             this.exGroupBox5.PerformLayout();
+            this.flpMcpButtons.ResumeLayout(false);
+            this.flpMcpButtons.PerformLayout();
+            this.exGroupBox6.ResumeLayout(false);
+            this.exGroupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlayerWordPause)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMcpPort)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -234,5 +334,14 @@ namespace GVDEditor.UI.Settings
         private Label label7;
         private ExControls.ExGroupBox exGroupBox5;
         private ExControls.ExCheckBox cboxInissEvaluation;
+        private ExControls.ExGroupBox exGroupBox6;
+        private ExControls.ExCheckBox cboxMcpEnabled;
+        private Label lMcpPort;
+        private ExControls.ExNumericUpDown nudMcpPort;
+        private Label lMcpStatus;
+        private FlowLayoutPanel flpMcpButtons;
+        private ExControls.ExButton bMcpClaude;
+        private ExControls.ExButton bMcpVsCode;
+        private ExControls.ExButton bMcpNewKey;
     }
 }

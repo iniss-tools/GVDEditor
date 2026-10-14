@@ -42,6 +42,12 @@ public record GVDEditorConfig() : ConfigBase
     public TableSimulatorSettings TableSimulator { get; set; } = new();
 
     /// <summary>
+    /// Server MCP pre agentov (Claude Code, VS Code).
+    /// </summary>
+    [XmlElement("McpServer")]
+    public McpServerSettings McpServer { get; set; } = new();
+
+    /// <summary>
     /// Stlpce zobrazujuce sa v tabulke na pracovnej ploche programu.
     /// </summary>
     [XmlElement("DesktopCols")] 
@@ -100,6 +106,7 @@ public record GVDEditorConfig() : ConfigBase
         PlayerSoundsOffset = original.PlayerSoundsOffset;
         InissSettingsShowEvaluation = original.InissSettingsShowEvaluation;
         TableSimulator = original.TableSimulator.Clone();
+        McpServer = original.McpServer.Clone();
         DesktopCols = original.DesktopCols with { };
         Shortcuts = original.Shortcuts.Clone();
         StartupINISSConfig = original.StartupINISSConfig with { };
