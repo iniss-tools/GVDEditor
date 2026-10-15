@@ -128,6 +128,9 @@ namespace GVDEditor.UI.Main
             toolStripSeparator18 = new ToolStripSeparator();
             tsmiAnalyze = new ToolStripMenuItem();
             tsmiUpravit = new ToolStripMenuItem();
+            tsmiUndo = new ToolStripMenuItem();
+            tsmiRedo = new ToolStripMenuItem();
+            toolStripSeparator20 = new ToolStripSeparator();
             tsmimAddTrain = new ToolStripMenuItem();
             tsmimEditTrain = new ToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
@@ -183,6 +186,9 @@ namespace GVDEditor.UI.Main
             tsmimImportGVD = new ToolStripMenuItem();
             tsmimImportELIS = new ToolStripMenuItem();
             tssbRecentDirs = new ToolStripSplitButton();
+            tssbUndo = new ToolStripSplitButton();
+            tssbRedo = new ToolStripSplitButton();
+            toolStripSeparator21 = new ToolStripSeparator();
             tsbAnalyze = new ToolStripButton();
             tsbAddGVD = new ToolStripButton();
             toolStripSeparator12 = new ToolStripSeparator();
@@ -384,9 +390,26 @@ namespace GVDEditor.UI.Main
             // 
             // tsmiUpravit
             // 
-            tsmiUpravit.DropDownItems.AddRange(new ToolStripItem[] { tsmimAddTrain, tsmimEditTrain, toolStripSeparator2, tsmiDeleteTrain, toolStripSeparator1, tsmiDuplikovat });
+            tsmiUpravit.DropDownItems.AddRange(new ToolStripItem[] { tsmiUndo, tsmiRedo, toolStripSeparator20, tsmimAddTrain, tsmimEditTrain, toolStripSeparator2, tsmiDeleteTrain, toolStripSeparator1, tsmiDuplikovat });
             resources.ApplyResources(tsmiUpravit, "tsmiUpravit");
             tsmiUpravit.Name = "tsmiUpravit";
+            // 
+            // tsmiUndo
+            // 
+            tsmiUndo.Image = global::ToolsCore.GlobalResources.undo;
+            resources.ApplyResources(tsmiUndo, "tsmiUndo");
+            tsmiUndo.Name = "tsmiUndo";
+            // 
+            // tsmiRedo
+            // 
+            tsmiRedo.Image = global::ToolsCore.GlobalResources.redo;
+            resources.ApplyResources(tsmiRedo, "tsmiRedo");
+            tsmiRedo.Name = "tsmiRedo";
+            // 
+            // toolStripSeparator20
+            // 
+            toolStripSeparator20.Name = "toolStripSeparator20";
+            resources.ApplyResources(toolStripSeparator20, "toolStripSeparator20");
             // 
             // tsmimAddTrain
             // 
@@ -633,7 +656,7 @@ namespace GVDEditor.UI.Main
             // 
             toolMenu.BackColor = SystemColors.MenuBar;
             toolMenu.ImageScalingSize = new Size(20, 20);
-            toolMenu.Items.AddRange(new ToolStripItem[] { tsbSave, tsbOpen, tsbImport, tssbRecentDirs, tsbAnalyze, tsbAddGVD, toolStripSeparator12, tsbAddTrain, tsbEditTrain, tsbDeleteTrain, tsbCopyTrain, toolStripSeparator10, tsbStanica, tsbGlobalSettings, toolStripSeparator11, tsbAppSettings, tsbInformation, toolStripSeparator13, toolStripLabel1, tscbStanica, toolStripLabel2, tscbObdobie, toolStripSeparator7, tssbStartINISS, tsbKillINISS, tsbShutdownINISS, tsbRestartINISS, toolStripSeparator19, tsbDatObm });
+            toolMenu.Items.AddRange(new ToolStripItem[] { tsbSave, tsbOpen, tsbImport, tssbRecentDirs, tsbAnalyze, tsbAddGVD, toolStripSeparator12, tssbUndo, tssbRedo, toolStripSeparator21, tsbAddTrain, tsbEditTrain, tsbDeleteTrain, tsbCopyTrain, toolStripSeparator10, tsbStanica, tsbGlobalSettings, toolStripSeparator11, tsbAppSettings, tsbInformation, toolStripSeparator13, toolStripLabel1, tscbStanica, toolStripLabel2, tscbObdobie, toolStripSeparator7, tssbStartINISS, tsbKillINISS, tsbShutdownINISS, tsbRestartINISS, toolStripSeparator19, tsbDatObm });
             resources.ApplyResources(toolMenu, "toolMenu");
             toolMenu.Name = "toolMenu";
             // 
@@ -670,6 +693,27 @@ namespace GVDEditor.UI.Main
             // 
             tsmimImportELIS.Name = "tsmimImportELIS";
             resources.ApplyResources(tsmimImportELIS, "tsmimImportELIS");
+            // 
+            // tssbUndo
+            // 
+            tssbUndo.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tssbUndo.Image = global::ToolsCore.GlobalResources.undo;
+            resources.ApplyResources(tssbUndo, "tssbUndo");
+            tssbUndo.Name = "tssbUndo";
+            tssbUndo.DropDownOpening += tssbUndo_DropDownOpening;
+            // 
+            // tssbRedo
+            // 
+            tssbRedo.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tssbRedo.Image = global::ToolsCore.GlobalResources.redo;
+            resources.ApplyResources(tssbRedo, "tssbRedo");
+            tssbRedo.Name = "tssbRedo";
+            tssbRedo.DropDownOpening += tssbRedo_DropDownOpening;
+            // 
+            // toolStripSeparator21
+            // 
+            toolStripSeparator21.Name = "toolStripSeparator21";
+            resources.ApplyResources(toolStripSeparator21, "toolStripSeparator21");
             // 
             // tssbRecentDirs
             // 
@@ -2058,6 +2102,12 @@ namespace GVDEditor.UI.Main
         private ToolStripSeparator toolStripSeparator6;
         private ToolStripMenuItem tsmiSave;
         private ToolStripMenuItem tsmiUpravit;
+        private ToolStripMenuItem tsmiUndo;
+        private ToolStripMenuItem tsmiRedo;
+        private ToolStripSeparator toolStripSeparator20;
+        private ToolStripSplitButton tssbUndo;
+        private ToolStripSplitButton tssbRedo;
+        private ToolStripSeparator toolStripSeparator21;
         private ToolStripMenuItem tsmiDuplikovat;
         private ToolStripMenuItem tsmiVlastnostiStanice;
 

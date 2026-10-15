@@ -4,6 +4,7 @@ using GVDEditor.Mcp;
 using GVDEditor.Properties;
 using ExControls;
 using ToolsCore.Tools;
+using ToolsCore;
 using ToolsCore.Forms;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.XML;
@@ -29,6 +30,8 @@ internal partial class FAppSettings : FAppSettingsBase
     {
         _ctx = context;
         _mcp = mcp;
+        // ikony stromu ma zoznam zakladneho okna - stranka Agenti (MCP) je len v GVDEditore
+        optionsView.TreeView.ImageList?.Images.Add("artificial-intelligence.png", GlobalResources.artificial_intelligence);
         InitializeComponent();
         
         Shortcuts = new ExBindingList<CmdShortcut>(Config.Shortcuts.ToRows(GvdCommands.All));
@@ -51,7 +54,7 @@ internal partial class FAppSettings : FAppSettingsBase
 
     private void FitGeneralGroups()
     {
-        foreach (var box in new Control[] { exGroupBox2, exGroupBox4, exGroupBox5, exGroupBox6 })
+        foreach (var box in new Control[] { exGroupBox2, exGroupBox4, exGroupBox5 })
         {
             box.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             box.Width = Math.Max(box.MinimumSize.Width, pConcreteGeneral.ClientSize.Width - box.Left);

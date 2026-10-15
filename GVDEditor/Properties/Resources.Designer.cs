@@ -10695,5 +10695,158 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("FAppSettings_Mcp_NewKey", resourceCulture);
             }
         }
-}
+
+        /// <summary>
+        ///   Looks up a localized string similar to Späť.
+        /// </summary>
+        internal static string Cmd_Undo {
+            get {
+                return ResourceManager.GetString("Cmd_Undo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Znova.
+        /// </summary>
+        internal static string Cmd_Redo {
+            get {
+                return ResourceManager.GetString("Cmd_Redo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Späť: {0}.
+        /// </summary>
+        internal static string History_UndoFormat {
+            get {
+                return ResourceManager.GetString("History_UndoFormat", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Znova: {0}.
+        /// </summary>
+        internal static string History_RedoFormat {
+            get {
+                return ResourceManager.GetString("History_RedoFormat", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to úprava grafikonu.
+        /// </summary>
+        internal static string History_Change {
+            get {
+                return ResourceManager.GetString("History_Change", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to úprava vlaku {0}.
+        /// </summary>
+        internal static string History_EditTrain {
+            get {
+                return ResourceManager.GetString("History_EditTrain", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to nový vlak {0}.
+        /// </summary>
+        internal static string History_NewTrain {
+            get {
+                return ResourceManager.GetString("History_NewTrain", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to kópia vlaku {0}.
+        /// </summary>
+        internal static string History_CopyTrain {
+            get {
+                return ResourceManager.GetString("History_CopyTrain", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to zmazanie vlaku {0}.
+        /// </summary>
+        internal static string History_DeleteTrain {
+            get {
+                return ResourceManager.GetString("History_DeleteTrain", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to zmazanie vlakov ({0}).
+        /// </summary>
+        internal static string History_DeleteTrains {
+            get {
+                return ResourceManager.GetString("History_DeleteTrains", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to úprava vlaku {0} v zozname.
+        /// </summary>
+        internal static string History_GridEdit {
+            get {
+                return ResourceManager.GetString("History_GridEdit", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to zoradenie vlakov.
+        /// </summary>
+        internal static string History_Sort {
+            get {
+                return ResourceManager.GetString("History_Sort", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to lokálne nastavenia.
+        /// </summary>
+        internal static string History_LocalSettings {
+            get {
+                return ResourceManager.GetString("History_LocalSettings", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to opravy z analýzy.
+        /// </summary>
+        internal static string History_Analysis {
+            get {
+                return ResourceManager.GetString("History_Analysis", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to import dát.
+        /// </summary>
+        internal static string History_ImportData {
+            get {
+                return ResourceManager.GetString("History_ImportData", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to import z ELIS.
+        /// </summary>
+        internal static string History_ImportElis {
+            get {
+                return ResourceManager.GetString("History_ImportElis", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to usporiadanie variant.
+        /// </summary>
+        internal static string History_Variants {
+            get {
+                return ResourceManager.GetString("History_Variants", resourceCulture);
+            }
+        }
+    }
 }

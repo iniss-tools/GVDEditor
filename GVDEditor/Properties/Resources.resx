@@ -3763,4 +3763,55 @@ Pred zápisom sa uloží záloha.</value>
   <data name="FAppSettings_Mcp_NewKey" xml:space="preserve">
     <value>Vytvoriť nový kľúč? Agenti so starým kľúčom stratia prístup po uložení nastavení.</value>
   </data>
+  <data name="Cmd_Undo" xml:space="preserve">
+    <value>Späť</value>
+  </data>
+  <data name="Cmd_Redo" xml:space="preserve">
+    <value>Znova</value>
+  </data>
+  <data name="History_UndoFormat" xml:space="preserve">
+    <value>Späť: {0}</value>
+  </data>
+  <data name="History_RedoFormat" xml:space="preserve">
+    <value>Znova: {0}</value>
+  </data>
+  <data name="History_Change" xml:space="preserve">
+    <value>úprava grafikonu</value>
+  </data>
+  <data name="History_EditTrain" xml:space="preserve">
+    <value>úprava vlaku {0}</value>
+  </data>
+  <data name="History_NewTrain" xml:space="preserve">
+    <value>nový vlak {0}</value>
+  </data>
+  <data name="History_CopyTrain" xml:space="preserve">
+    <value>kópia vlaku {0}</value>
+  </data>
+  <data name="History_DeleteTrain" xml:space="preserve">
+    <value>zmazanie vlaku {0}</value>
+  </data>
+  <data name="History_DeleteTrains" xml:space="preserve">
+    <value>zmazanie vlakov ({0})</value>
+  </data>
+  <data name="History_GridEdit" xml:space="preserve">
+    <value>úprava vlaku {0} v zozname</value>
+  </data>
+  <data name="History_Sort" xml:space="preserve">
+    <value>zoradenie vlakov</value>
+  </data>
+  <data name="History_LocalSettings" xml:space="preserve">
+    <value>lokálne nastavenia</value>
+  </data>
+  <data name="History_Analysis" xml:space="preserve">
+    <value>opravy z analýzy</value>
+  </data>
+  <data name="History_ImportData" xml:space="preserve">
+    <value>import dát</value>
+  </data>
+  <data name="History_ImportElis" xml:space="preserve">
+    <value>import z ELIS</value>
+  </data>
+  <data name="History_Variants" xml:space="preserve">
+    <value>usporiadanie variant</value>
+  </data>
 </root>

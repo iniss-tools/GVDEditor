@@ -62,7 +62,7 @@ internal sealed class LocalSettingsSnapshot
     /// <summary>
     /// Sleduju sa len entity GVDEditora a grafikonu a tabul z ToolsCore.Iniss; zvukova banka, obrazky a pod. sa oknom nemenia.
     /// </summary>
-    private static bool IsEntity(Type type) =>
+    internal static bool IsEntity(Type type) =>
         (type.Assembly == typeof(Train).Assembly && type.Namespace == typeof(Train).Namespace) || IsInissEntity(type);
 
     /// <summary>Entity grafikonu a tabul presunute do ToolsCore.Iniss (stanica, tabule).</summary>

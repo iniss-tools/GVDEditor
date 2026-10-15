@@ -1244,4 +1244,22 @@
   <data name="tsslTrainCount.ToolTipText" xml:space="preserve">
     <value>Počet všech vlaků (mimo variant)</value>
   </data>
+  <data name="tsmiUndo.Text" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="tsmiRedo.Text" xml:space="preserve">
+    <value>Znovu</value>
+  </data>
+  <data name="tssbUndo.Text" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="tssbUndo.ToolTipText" xml:space="preserve">
+    <value>Zpět (Ctrl+Z)</value>
+  </data>
+  <data name="tssbRedo.Text" xml:space="preserve">
+    <value>Znovu</value>
+  </data>
+  <data name="tssbRedo.ToolTipText" xml:space="preserve">
+    <value>Znovu (Ctrl+Y)</value>
+  </data>
 </root>

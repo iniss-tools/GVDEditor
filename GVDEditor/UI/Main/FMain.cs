@@ -3,6 +3,7 @@ using AppRegistry = ToolsCore.Tools.AppRegistry;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
+using GVDEditor.Domain.Rules;
 using GVDEditor.Integration;
 using GVDEditor.Mcp;
 using GVDEditor.Properties;
@@ -91,6 +92,8 @@ internal partial class FMain : Form, IAnalyzerHost
 
         CreateCommands();
         _commands.ApplyShortcuts(_ctx.Config.Shortcuts);
+        dgvTrains.Sorted += (_, _) => _changeLabel ??= Resources.History_Sort;
+        UpdateHistoryUi();
         SetColumns();
         SetColumnsAutoWidth();
 
@@ -135,6 +138,9 @@ internal partial class FMain : Form, IAnalyzerHost
         get;
         set
         {
+            // kazda zmena grafikonu (aj ked uz bol zmeneny) je krok spat
+            if (!value)
+                ScheduleCommit();
             if (value == field)
                 return;
 
@@ -158,7 +164,8 @@ internal partial class FMain : Form, IAnalyzerHost
 
     protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
     {
-        // pri pisani do bunky patria Delete a Insert textovemu polu - skratka Odstranit oznacene by inak zmazala cely vlak
+        // pri pisani do bunky patria Delete, Insert aj Ctrl+Z/Y textovemu polu - skratka Odstranit oznacene by inak zmazala
+        // cely vlak a Spat by vratilo celu predchadzajucu upravu grafikonu
         if (dgvTrains.EditingControl is TextBoxBase && IsTextEditingKey(keyData))
             return false;
 
@@ -170,7 +177,8 @@ internal partial class FMain : Form, IAnalyzerHost
     }
 
     private static bool IsTextEditingKey(Keys keyData)
-        => (keyData & Keys.KeyCode) is Keys.Delete or Keys.Insert or Keys.Back && (keyData & Keys.Alt) == 0;
+        => ((keyData & Keys.KeyCode) is Keys.Delete or Keys.Insert or Keys.Back && (keyData & Keys.Alt) == 0)
+           || ((keyData & Keys.KeyCode) is Keys.Z or Keys.Y && (keyData & Keys.Modifiers) == Keys.Control);
 
     /// <summary>
     /// Ci sa maju chyby zachytit a ukazat pouzivatelovi (inak program pri chybe spadne - rezim ladenia).
@@ -210,6 +218,7 @@ internal partial class FMain : Form, IAnalyzerHost
         InvalidateVariants();
 
         SetColumnsAutoWidth();
+        StartHistory(saved: true);
     }
 
     /// <summary>
@@ -421,7 +430,8 @@ internal partial class FMain : Form, IAnalyzerHost
 
     private void dgvTrains_CellValueChanged(object sender, DataGridViewCellEventArgs e)
     {
-        if (e.RowIndex != -1) DataSaved = false;
+        if (e.RowIndex != -1 && e.RowIndex < _ctx.Document.Trains.Count)
+            MarkChanged(string.Format(CultureInfo.CurrentCulture, Resources.History_GridEdit, TrainRules.Label(_ctx.Document.Trains[e.RowIndex])));
         InvalidateVariants();
     }
 

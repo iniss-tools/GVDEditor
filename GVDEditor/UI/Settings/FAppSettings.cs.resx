@@ -139,7 +139,7 @@
     <value>Zobrazovat vyhodnocení hodnoty (odkud ji INISS bere)</value>
   </data>
   <data name="exGroupBox6.Text" xml:space="preserve">
-    <value>Server MCP pro agenty</value>
+    <value>Server</value>
   </data>
   <data name="cboxMcpEnabled.Text" xml:space="preserve">
     <value>Zapnout server pro agenty (Claude Code, VS Code)</value>
@@ -155,5 +155,14 @@
   </data>
   <data name="bMcpNewKey.Text" xml:space="preserve">
     <value>Nový klíč</value>
+  </data>
+  <data name="optionsNodeMcp.Text" xml:space="preserve">
+    <value>Agenti (MCP)</value>
+  </data>
+  <data name="pMcp.NodeText" xml:space="preserve">
+    <value>Agenti (MCP)</value>
+  </data>
+  <data name="lMcpHint.Text" xml:space="preserve">
+    <value>Agent jako Claude Code nebo chat ve VS Code se připojí k otevřenému grafikonu a čte ho. Server běží jen na tomto počítači a vyžaduje přístupový klíč.</value>
   </data>
 </root>

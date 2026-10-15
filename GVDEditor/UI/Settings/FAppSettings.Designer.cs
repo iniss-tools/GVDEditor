@@ -41,6 +41,10 @@ namespace GVDEditor.UI.Settings
             this.label7 = new System.Windows.Forms.Label();
             this.exGroupBox5 = new ExControls.ExGroupBox();
             this.cboxInissEvaluation = new ExControls.ExCheckBox();
+            ExControls.OptionsNode optionsNodeMcp = new ExControls.OptionsNode();
+            this.pMcp = new ExControls.ExOptionsPanel(this.optionsView);
+            this.ppMcp = new System.Windows.Forms.Panel();
+            this.lMcpHint = new System.Windows.Forms.Label();
             this.exGroupBox6 = new ExControls.ExGroupBox();
             this.cboxMcpEnabled = new ExControls.ExCheckBox();
             this.lMcpPort = new System.Windows.Forms.Label();
@@ -59,6 +63,8 @@ namespace GVDEditor.UI.Settings
             this.exGroupBox2.SuspendLayout();
             this.exGroupBox4.SuspendLayout();
             this.exGroupBox5.SuspendLayout();
+            this.pMcp.SuspendLayout();
+            this.ppMcp.SuspendLayout();
             this.exGroupBox6.SuspendLayout();
             this.flpMcpButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlayerWordPause)).BeginInit();
@@ -67,7 +73,6 @@ namespace GVDEditor.UI.Settings
             // 
             // pConcreteGeneral
             // 
-            this.pConcreteGeneral.Controls.Add(this.exGroupBox6);
             this.pConcreteGeneral.Controls.Add(this.exGroupBox5);
             this.pConcreteGeneral.Controls.Add(this.exGroupBox4);
             this.pConcreteGeneral.Controls.Add(this.exGroupBox2);
@@ -76,6 +81,7 @@ namespace GVDEditor.UI.Settings
             // optionsView
             // 
             this.optionsView.HeaderNodeNameVisible = true;
+            this.optionsView.Panels.Add(this.pMcp);
             this.optionsView.SearchBoxVisible = true;
             resources.ApplyResources(this.optionsView, "optionsView");
             // 
@@ -207,6 +213,30 @@ namespace GVDEditor.UI.Settings
             this.cboxInissEvaluation.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxInissEvaluation.Name = "cboxInissEvaluation";
             // 
+            // pMcp
+            // 
+            this.pMcp.Controls.Add(this.ppMcp);
+            this.pMcp.Name = "pMcp";
+            optionsNodeMcp.ImageKey = "artificial-intelligence.png";
+            optionsNodeMcp.Name = "";
+            optionsNodeMcp.SelectedImageKey = "artificial-intelligence.png";
+            optionsNodeMcp.Text = resources.GetString("optionsNodeMcp.Text");
+            this.pMcp.Node = optionsNodeMcp;
+            this.pMcp.NodeText = resources.GetString("pMcp.NodeText");
+            this.pMcp.ParentNode = null;
+            // 
+            // ppMcp
+            // 
+            this.ppMcp.Controls.Add(this.exGroupBox6);
+            this.ppMcp.Controls.Add(this.lMcpHint);
+            resources.ApplyResources(this.ppMcp, "ppMcp");
+            this.ppMcp.Name = "ppMcp";
+            // 
+            // lMcpHint
+            // 
+            resources.ApplyResources(this.lMcpHint, "lMcpHint");
+            this.lMcpHint.Name = "lMcpHint";
+            // 
             // exGroupBox6
             // 
             resources.ApplyResources(this.exGroupBox6, "exGroupBox6");
@@ -313,6 +343,8 @@ namespace GVDEditor.UI.Settings
             this.exGroupBox4.PerformLayout();
             this.exGroupBox5.ResumeLayout(false);
             this.exGroupBox5.PerformLayout();
+            this.pMcp.ResumeLayout(false);
+            this.ppMcp.ResumeLayout(false);
             this.flpMcpButtons.ResumeLayout(false);
             this.flpMcpButtons.PerformLayout();
             this.exGroupBox6.ResumeLayout(false);
@@ -334,6 +366,9 @@ namespace GVDEditor.UI.Settings
         private Label label7;
         private ExControls.ExGroupBox exGroupBox5;
         private ExControls.ExCheckBox cboxInissEvaluation;
+        private ExControls.ExOptionsPanel pMcp;
+        private Panel ppMcp;
+        private Label lMcpHint;
         private ExControls.ExGroupBox exGroupBox6;
         private ExControls.ExCheckBox cboxMcpEnabled;
         private Label lMcpPort;

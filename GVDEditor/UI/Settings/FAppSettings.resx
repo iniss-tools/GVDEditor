@@ -794,7 +794,7 @@
     <value>pConcreteGeneral</value>
   </data>
   <data name="&gt;&gt;exGroupBox2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="cboxTabTextAutoGenerate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -899,7 +899,7 @@
     <value>pConcreteGeneral</value>
   </data>
   <data name="&gt;&gt;exGroupBox4.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="nudPlayerWordPause.Location" type="System.Drawing.Point, System.Drawing">
     <value>218, 28</value>
@@ -1001,7 +1001,7 @@
     <value>pConcreteGeneral</value>
   </data>
   <data name="&gt;&gt;exGroupBox5.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="cboxInissEvaluation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1034,16 +1034,16 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="exGroupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 194</value>
+    <value>3, 44</value>
   </data>
   <data name="exGroupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>521, 76</value>
+    <value>624, 112</value>
   </data>
   <data name="exGroupBox6.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="exGroupBox6.Text" xml:space="preserve">
-    <value>Server MCP pre agentov</value>
+    <value>Server</value>
   </data>
   <data name="&gt;&gt;exGroupBox6.Name" xml:space="preserve">
     <value>exGroupBox6</value>
@@ -1052,7 +1052,7 @@
     <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;exGroupBox6.Parent" xml:space="preserve">
-    <value>pConcreteGeneral</value>
+    <value>ppMcp</value>
   </data>
   <data name="&gt;&gt;exGroupBox6.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1061,7 +1061,7 @@
     <value>True</value>
   </data>
   <data name="cboxMcpEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 19</value>
+    <value>7, 22</value>
   </data>
   <data name="cboxMcpEnabled.Size" type="System.Drawing.Size, System.Drawing">
     <value>280, 17</value>
@@ -1088,7 +1088,7 @@
     <value>True</value>
   </data>
   <data name="lMcpPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 49</value>
+    <value>7, 51</value>
   </data>
   <data name="lMcpPort.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 13</value>
@@ -1112,7 +1112,7 @@
     <value>3</value>
   </data>
   <data name="nudMcpPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 47</value>
+    <value>45, 49</value>
   </data>
   <data name="nudMcpPort.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 20</value>
@@ -1136,7 +1136,7 @@
     <value>True</value>
   </data>
   <data name="lMcpStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 20</value>
+    <value>125, 51</value>
   </data>
   <data name="lMcpStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 13</value>
@@ -1160,7 +1160,7 @@
     <value>True</value>
   </data>
   <data name="flpMcpButtons.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 40</value>
+    <value>4, 74</value>
   </data>
   <data name="flpMcpButtons.Size" type="System.Drawing.Size, System.Drawing">
     <value>420, 33</value>
@@ -1260,5 +1260,68 @@
   </data>
   <data name="&gt;&gt;bMcpNewKey.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="optionsNodeMcp.Text" xml:space="preserve">
+    <value>Agenti (MCP)</value>
+  </data>
+  <data name="pMcp.NodeText" xml:space="preserve">
+    <value>Agenti (MCP)</value>
+  </data>
+  <data name="&gt;&gt;pMcp.Name" xml:space="preserve">
+    <value>pMcp</value>
+  </data>
+  <data name="&gt;&gt;pMcp.Type" xml:space="preserve">
+    <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="ppMcp.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ppMcp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ppMcp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>630, 465</value>
+  </data>
+  <data name="ppMcp.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ppMcp.Name" xml:space="preserve">
+    <value>ppMcp</value>
+  </data>
+  <data name="&gt;&gt;ppMcp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ppMcp.Parent" xml:space="preserve">
+    <value>pMcp</value>
+  </data>
+  <data name="&gt;&gt;ppMcp.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lMcpHint.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="lMcpHint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="lMcpHint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>624, 34</value>
+  </data>
+  <data name="lMcpHint.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lMcpHint.Text" xml:space="preserve">
+    <value>Agent ako Claude Code alebo chat vo VS Code sa pripojí k otvorenému grafikonu a číta ho. Server beží len na tomto počítači a vyžaduje prístupový kľúč.</value>
+  </data>
+  <data name="&gt;&gt;lMcpHint.Name" xml:space="preserve">
+    <value>lMcpHint</value>
+  </data>
+  <data name="&gt;&gt;lMcpHint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lMcpHint.Parent" xml:space="preserve">
+    <value>ppMcp</value>
+  </data>
+  <data name="&gt;&gt;lMcpHint.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
 </root>

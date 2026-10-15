@@ -36,7 +36,10 @@ internal sealed class ObjectGraphSnapshot
     /// </summary>
     /// <param name="roots">Korene grafu.</param>
     /// <param name="isTracked">Urci, ci sa objekty daneho typu (mimo kolekcii) maju sledovat.</param>
-    public static ObjectGraphSnapshot Capture(IEnumerable<object?> roots, Func<Type, bool> isTracked)
+    /// <param name="includeDelegates">
+    /// Zapamatat aj delegaty (odbery udalosti). Bez nich obnova necha odbery, ako su - napr. vazbu tabulky hlavneho okna.
+    /// </param>
+    public static ObjectGraphSnapshot Capture(IEnumerable<object?> roots, Func<Type, bool> isTracked, bool includeDelegates = true)
     {
         var snapshot = new ObjectGraphSnapshot();
         var visited = new HashSet<object>(ReferenceEqualityComparer.Instance);
@@ -78,6 +81,8 @@ internal sealed class ObjectGraphSnapshot
             }
 
             var fields = GetFields(obj.GetType());
+            if (!includeDelegates)
+                fields = Array.FindAll(fields, f => !typeof(Delegate).IsAssignableFrom(f.FieldType));
             var values = new object?[fields.Length];
             for (var i = 0; i < fields.Length; i++)
             {
@@ -104,6 +109,45 @@ internal sealed class ObjectGraphSnapshot
             for (var i = 0; i < fields.Length; i++)
                 fields[i].SetValue(target, values[i]);
     }
+
+    /// <summary>
+    /// Ci <paramref name="other" /> zachytil ten isty graf v rovnakom stave - rovnake objekty, polia aj hodnoty
+    /// (odkazy porovnane referenciou, hodnoty cez <see cref="object.Equals(object, object)" />).
+    /// </summary>
+    public bool SameAs(ObjectGraphSnapshot other)
+    {
+        ArgumentNullException.ThrowIfNull(other);
+        if (_objects.Count != other._objects.Count || _arrays.Count != other._arrays.Count)
+            return false;
+
+        for (var i = 0; i < _arrays.Count; i++)
+        {
+            var (target, copy) = _arrays[i];
+            var (otherTarget, otherCopy) = other._arrays[i];
+            if (!ReferenceEquals(target, otherTarget) || copy.Length != otherCopy.Length)
+                return false;
+            for (var j = 0; j < copy.Length; j++)
+                if (!SameValue(copy.GetValue(j), otherCopy.GetValue(j)))
+                    return false;
+        }
+
+        for (var i = 0; i < _objects.Count; i++)
+        {
+            var (target, fields, values) = _objects[i];
+            var (otherTarget, otherFields, otherValues) = other._objects[i];
+            if (!ReferenceEquals(target, otherTarget) || fields.Length != otherFields.Length)
+                return false;
+            for (var j = 0; j < values.Length; j++)
+                if (!SameValue(values[j], otherValues[j]))
+                    return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>Objekty referenciou (zmena odkazu je zmena), hodnoty a retazce podla hodnoty.</summary>
+    private static bool SameValue(object? a, object? b) =>
+        a is null || b is null || a.GetType().IsValueType || a is string ? Equals(a, b) : ReferenceEquals(a, b);
 
     private static bool IsPlainObject(Type type) =>
         type != typeof(string) && !typeof(Delegate).IsAssignableFrom(type);

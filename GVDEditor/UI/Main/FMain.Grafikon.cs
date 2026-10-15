@@ -2,6 +2,7 @@ using System.Globalization;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
+using GVDEditor.Domain.Rules;
 using GVDEditor.Formats;
 using GVDEditor.Integration;
 using GVDEditor.Properties;
@@ -350,6 +351,7 @@ internal partial class FMain
     /// </summary>
     private void CloseGrafikon()
     {
+        ClearHistory();
         _prechod = true;
         _ctx.CloseDocument();
         _prechod = false;
@@ -471,8 +473,11 @@ internal partial class FMain
     /// <returns><see langword="false" />, ak sa grafikon nepodarilo ulozit.</returns>
     private bool DoSave()
     {
+        // rozpisana uprava je este krok - ulozeny stav musi byt v historii
+        FlushCommit();
         // dva vlaky s rovnakym cislom, nazvom, typom a variantou by INISS nerozlisil (trasu by dostal len prvy)
         NormalizeVariants();
+        FlushCommit();
 
         try
         {
@@ -485,6 +490,7 @@ internal partial class FMain
         }
 
         DataSaved = true;
+        _history?.MarkSaved();
         return true;
     }
 
@@ -498,7 +504,7 @@ internal partial class FMain
         // opravy menia grafikon v pamati - bez oznacenia by sa pri zatvoreni bez otazky stratili
         if (fan.DataChanged)
         {
-            DataSaved = false;
+            MarkChanged(Resources.History_Analysis);
             _ctx.Document.Trains.ResetBindings();
         }
     }
@@ -575,7 +581,7 @@ internal partial class FMain
         TableTextGenerating.AddMissing(_ctx.Document.TableTexts, fid.ImportedTrains, gvd.ThisStation);
         NormalizeVariants();
         _ctx.Document.Trains.ResetBindings();
-        DataSaved = false;
+        MarkChanged(Resources.History_ImportData);
     }
 
     /// <summary>
@@ -676,7 +682,7 @@ internal partial class FMain
         NormalizeVariants();
         _ctx.Document.Trains.ResetBindings();
 
-        DataSaved = false;
+        MarkChanged(Resources.History_ImportElis);
 
         _dialogs.ShowInfo(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Import_z_ELIS_dokončený, removed, imported.Count, updated, texts));
     }
@@ -709,6 +715,9 @@ internal partial class FMain
         var result = eform.ShowDialog();
         if (result == DialogResult.OK)
         {
+            var label = TrainRules.Label(eform.ThisTrain!);
+            _changeLabel ??= string.Format(CultureInfo.CurrentCulture,
+                copy ? Resources.History_CopyTrain : train == null ? Resources.History_NewTrain : Resources.History_EditTrain, label);
             if (train == null || row == _ctx.Document.Trains.Count)
                 _ctx.Document.Trains.Add(eform.ThisTrain!);
             else
@@ -734,6 +743,9 @@ internal partial class FMain
     {
         if (dgvTrains.SelectedRows.Count > 0)
         {
+            _changeLabel ??= dgvTrains.SelectedRows.Count == 1 && dgvTrains.SelectedRows[0].DataBoundItem is Train single
+                ? string.Format(CultureInfo.CurrentCulture, Resources.History_DeleteTrain, TrainRules.Label(single))
+                : string.Format(CultureInfo.CurrentCulture, Resources.History_DeleteTrains, dgvTrains.SelectedRows.Count);
             foreach (DataGridViewRow row in dgvTrains.SelectedRows)
             {
                 if (!_ctx.Config.AutoTableText)

@@ -74,7 +74,7 @@ internal partial class FMain
         RefreshStationAndPeriod(dir, oldStation, oldPeriod);
 
         _ctx.Document.TableFontDir = svform.FontDir;
-        DataSaved = false;
+        MarkChanged(Resources.History_LocalSettings);
         _ctx.Document.Trains.ResetBindings();
         return true;
     }
@@ -131,6 +131,10 @@ internal partial class FMain
         {
             _ctx.Document.Trains.ResetBindings();
         }
+
+        // globalne nastavenia (druhy vlakov, jazyky...) sa zapisali hned - krok spat by ich vratil len v pamati
+        if (_grafikonLoaded)
+            StartHistory(saved: DataSaved);
 
         if (gf.RemovedGvDs.Count != 0)
             RemoveGrafikony(gf.RemovedGvDs);

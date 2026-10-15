@@ -36,6 +36,8 @@ internal partial class FMain
         Add(GvdCommands.Save, () => DoSave(), grafikon, tsmiSave, tsbSave);
         Add(GvdCommands.Analyze, ShowAnalyzeGVD, grafikon, tsmiAnalyze, tsbAnalyze);
 
+        Add(GvdCommands.Undo, Undo, () => _history?.CanUndo == true, tsmiUndo, tssbUndo);
+        Add(GvdCommands.Redo, Redo, () => _history?.CanRedo == true, tsmiRedo, tssbRedo);
         Add(GvdCommands.AddTrain, () => ShowEditTrain(null, _ctx.Document.Trains.Count), grafikon, tsmimAddTrain, tsbAddTrain);
         Add(GvdCommands.EditTrain, EditSelectedTrain, grafikon, tsmimEditTrain, tsbEditTrain);
         Add(GvdCommands.DeleteTrains, DoDeleteTrains, grafikon, tsmiDeleteTrain, tsbDeleteTrain);

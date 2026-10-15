@@ -189,6 +189,12 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 form.PreselectMenuItem("pLogging");
                 return form;
             });
+            Shot("nastavenia-programu/agenti", () =>
+            {
+                var form = new FAppSettings(Program.Context);
+                form.PreselectMenuItem("pMcp");
+                return form;
+            });
             // okno Konfigurácie spúšťania: ostrá konfigurácia na tomto počítači a testovacia zdieľaná v dátach inštalácie
             Shot("spustanie-iniss/konfiguracie-spustania", () =>
             {

@@ -163,7 +163,7 @@ internal partial class FMain
 
         _ctx.Document.Trains.ResetBindings();
         InvalidateVariants();
-        DataSaved = false;
+        MarkChanged(Resources.History_Variants);
     }
 
     private int CountSelTrainVariants(Train train) => Variants.Of(train).Count;
