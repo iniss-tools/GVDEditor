@@ -63,6 +63,27 @@ public class GrafikonHistoryTests
     }
 
     [TestMethod]
+    public void Commit_RovnakeHodnotyVNovychObjektochNieSuKrok()
+    {
+        var (document, _, history) = Open();
+        var text = new TableText { Key = "CIEL", Name = "Cieľ", Comment = "", Trains = [new TableTrain { Train = document.Trains[0], Text = "Žilina", FontID = -1 }] };
+        document.TableTexts.Add(text);
+        Assert.IsTrue(history.Commit("text"));
+
+        // napr. pregenerovanie textov - novy zoznam aj zaznamy s rovnakymi hodnotami
+        text.Trains = [new TableTrain { Train = document.Trains[0], Text = "Žilina", FontID = -1 }];
+        Assert.IsFalse(history.Commit("rovnake texty"));
+        // pridanie a odobratie zmeni len pocitadlo zmien zoznamu
+        document.Trains.Add(new Train { Number = "603", Name = "" });
+        document.Trains.RemoveAt(1);
+        Assert.IsFalse(history.Commit("nic"));
+        text.Trains[0].Text = "Košice";
+        Assert.IsTrue(history.Commit("iny text"));
+        text.Trains = [new TableTrain { Train = new Train { Number = "601", Name = "" }, Text = "Košice", FontID = -1 }];
+        Assert.IsTrue(history.Commit("iny vlak"), "rovnake hodnoty, ale vlak mimo grafikonu");
+    }
+
+    [TestMethod]
     public void Ulozenie_PoKrokochSpatAZnovaPozna_UlozenyStav()
     {
         var (document, _, history) = Open();

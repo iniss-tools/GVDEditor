@@ -69,6 +69,7 @@ internal partial class FAppSettings : FAppSettingsBase
         nudPlayerWordPause.Value = Config.PlayerSoundsOffset;
         cboxInissEvaluation.Checked = Config.InissSettingsShowEvaluation;
         cboxMcpEnabled.Checked = Config.McpServer.Enabled;
+        cboxMcpWrites.Checked = Config.McpServer.AllowWrites;
         nudMcpPort.Value = Math.Clamp(Config.McpServer.Port, (int)nudMcpPort.Minimum, (int)nudMcpPort.Maximum);
         FitGeneralGroups();
         UpdateMcpStatus();
@@ -79,6 +80,7 @@ internal partial class FAppSettings : FAppSettingsBase
     {
         var settings = Config.McpServer.Clone();
         settings.Enabled = cboxMcpEnabled.Checked;
+        settings.AllowWrites = cboxMcpWrites.Checked;
         settings.Port = decimal.ToInt32(nudMcpPort.Value);
         return settings;
     }
@@ -88,7 +90,7 @@ internal partial class FAppSettings : FAppSettingsBase
 
     private void UpdateMcpStatus()
     {
-        bMcpClaude.Enabled = bMcpVsCode.Enabled = cboxMcpEnabled.Checked;
+        bMcpClaude.Enabled = bMcpVsCode.Enabled = cboxMcpWrites.Enabled = cboxMcpEnabled.Checked;
         lMcpStatus.Text = McpPending ? Resources.FAppSettings_Mcp_Pending
             : _mcp?.Address is { } address ? string.Format(CultureInfo.CurrentCulture, Resources.FAppSettings_Mcp_Running, address)
             : _mcp?.Error is { } error ? string.Format(CultureInfo.CurrentCulture, Resources.FAppSettings_Mcp_Failed, error)
@@ -142,6 +144,7 @@ internal partial class FAppSettings : FAppSettingsBase
         Config.PlayerSoundsOffset = decimal.ToInt32(nudPlayerWordPause.Value);
         Config.InissSettingsShowEvaluation = cboxInissEvaluation.Checked;
         Config.McpServer.Enabled = cboxMcpEnabled.Checked;
+        Config.McpServer.AllowWrites = cboxMcpWrites.Checked;
         Config.McpServer.Port = decimal.ToInt32(nudMcpPort.Value);
         if (Config.McpServer.Enabled)
             Config.McpServer.EnsureKey();

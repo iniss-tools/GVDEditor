@@ -18,6 +18,10 @@ public sealed class McpServerSettings
     [XmlAttribute("Enabled")]
     public bool Enabled { get; set; }
 
+    /// <summary>Agent smie menit otvoreny grafikon (nastroje so zmenami); inak len cita.</summary>
+    [XmlAttribute("AllowWrites")]
+    public bool AllowWrites { get; set; }
+
     /// <summary>Port na 127.0.0.1.</summary>
     [XmlAttribute("Port")]
     public int Port { get; set; } = DefaultPort;
@@ -53,13 +57,13 @@ public sealed class McpServerSettings
         KeyPrefix + Convert.ToBase64String(RandomNumberGenerator.GetBytes(32)).TrimEnd('=').Replace('+', '-').Replace('/', '_');
 
     /// <summary>Kopia.</summary>
-    public McpServerSettings Clone() => new() { Enabled = Enabled, Port = Port, ProtectedKey = ProtectedKey };
+    public McpServerSettings Clone() => new() { Enabled = Enabled, AllowWrites = AllowWrites, Port = Port, ProtectedKey = ProtectedKey };
 
-    /// <summary>Rovnake nastavenie - pri zmene sa server spusti znova.</summary>
+    /// <summary>Rovnake nastavenie - pri zmene sa server spusti znova (aj povolenie zmien - nastroje sa registruju pri starte).</summary>
     public bool SameAs(McpServerSettings other)
     {
         ArgumentNullException.ThrowIfNull(other);
-        return Enabled == other.Enabled && Port == other.Port && Key == other.Key;
+        return Enabled == other.Enabled && AllowWrites == other.AllowWrites && Port == other.Port && Key == other.Key;
     }
 
     private static readonly byte[] Entropy = "GVDEditor.McpServer.Key"u8.ToArray();

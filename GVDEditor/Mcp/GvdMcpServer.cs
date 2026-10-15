@@ -36,7 +36,14 @@ internal sealed class GvdMcpServer : IDisposable
         + "Tools read the timetable open in the running editor including unsaved changes; list_grafikons shows the other timetables of the "
         + "installation. Train data use Slovak terms: routing originates/passes/terminates, validity is a calendar restriction text "
         + "(explain_validity expands it to days), TabTab is the INISS language deciding what boards show - read tabtab_reference before explaining it and do not guess its "
-        + "semantics. Changes are made by the user in GVDEditor.";
+        + "semantics.";
+
+    /// <summary>Pokyny podla povolenia zmien.</summary>
+    private const string ReadOnlyInstructions = " Changes are made by the user in GVDEditor.";
+
+    private const string WriteInstructions =
+        " Tools that change the timetable work in the editor's memory only: each call is one undo step the user can revert in GVDEditor, nothing is "
+        + "saved - the user reviews the changes and saves the timetable. Call a change with dryRun first when its effect is not obvious.";
 
     /// <summary>Vysledky nastrojov aj s null - schema vlastnosti vyzaduje (klient by vysledok bez nich odmietol).</summary>
     private static readonly JsonSerializerOptions ToolJson = new(McpJsonUtilities.DefaultOptions) { DefaultIgnoreCondition = JsonIgnoreCondition.Never };
@@ -88,7 +95,7 @@ internal sealed class GvdMcpServer : IDisposable
 
         try
         {
-            _app = await StartAsync(editor, settings.Port, key).ConfigureAwait(false);
+            _app = await StartAsync(editor, settings.Port, key, settings.AllowWrites).ConfigureAwait(false);
             Address = settings.Address;
             Log.Info("MCP: server bezi na " + Address);
         }
@@ -99,7 +106,7 @@ internal sealed class GvdMcpServer : IDisposable
         }
     }
 
-    private static async Task<WebApplication> StartAsync(EditorAccess editor, int port, string key)
+    private static async Task<WebApplication> StartAsync(EditorAccess editor, int port, string key, bool allowWrites)
     {
         var builder = WebApplication.CreateSlimBuilder(new WebApplicationOptions { ContentRootPath = AppContext.BaseDirectory });
         builder.WebHost.ConfigureKestrel(options => options.Listen(IPAddress.Loopback, port));
@@ -108,11 +115,11 @@ internal sealed class GvdMcpServer : IDisposable
         builder.Services.AddMcpServer(options =>
             {
                 options.ServerInfo = new Implementation { Name = "GVDEditor", Version = Application.ProductVersion };
-                options.ServerInstructions = Instructions;
+                options.ServerInstructions = Instructions + (allowWrites ? WriteInstructions : ReadOnlyInstructions);
             })
             .WithHttpTransport(options => options.Stateless = true);
-        // nastroje su internal - SDK ich zo zostavy samo nenajde
-        foreach (var method in ToolMethods())
+        // nastroje su internal - SDK ich zo zostavy samo nenajde; nastroje so zmenami len s povolenim (klient ich bez neho nevidi)
+        foreach (var method in ToolMethods().Where(m => allowWrites || IsReadOnly(m)))
             builder.Services.AddSingleton(provider => McpServerTool.Create(method, (object?)null, new McpServerToolCreateOptions { Services = provider, SerializerOptions = ToolJson, SchemaCreateOptions = ToolSchemas }));
 
         var app = builder.Build();
@@ -150,6 +157,9 @@ internal sealed class GvdMcpServer : IDisposable
             .SelectMany(t => t.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.DeclaredOnly))
             .Where(m => m.GetCustomAttribute<McpServerToolAttribute>() is not null)
             .ToList();
+
+    /// <summary>Nastroj grafikon nemeni.</summary>
+    public static bool IsReadOnly(MethodInfo method) => method.GetCustomAttribute<McpServerToolAttribute>()?.ReadOnly == true;
 
     /// <summary>Hlavicka <c>Authorization: Bearer</c> s klucom - porovnanie v konstantnom case.</summary>
     private static bool HasKey(HttpRequest request, byte[] expected)

@@ -48,18 +48,28 @@ public sealed partial class McpToolsTests
     }
 
     /// <summary>Editor s otvorenym grafikonom Dolne Mesto: Os 3001 (denne), R 801 (len v sobotu), Os 3003 na 2. kolaji.</summary>
-    private static EditorAccess Editor(bool open = true)
+    private static EditorAccess Editor(bool open = true) => Editor(out _, open);
+
+    /// <summary>
+    /// Editor s otvorenym grafikonom ako <see cref="Editor(bool)" /> a jeho kontext. Texty na tabuliach: CIEL (stlpec
+    /// s cielovou stanicou, rucny text len pri Os 3001) a POZNAMKA (bez stlpca, z ktoreho sa da generovat).
+    /// </summary>
+    private static EditorAccess Editor(out EditorContext context, bool open = true, IAgentHost? host = null)
     {
-        var context = new EditorContext(null!);
+        context = new EditorContext(null!);
         context.OpenWorkspace(new InissWorkspace { INISSDir = @"C:\INISS", GVDDirs = [], TrainsTypes = new([Os, R]) });
         if (!open)
-            return new EditorAccess(context, null);
+            return new EditorAccess(context, null, host);
         var druh = new TableTabTab { Key = "DRUH", Text = "R{34369}=R\nIC{113}=IC\n(Typ(Typ_X9)), \"@\" = #SWITCH\nBus=#VYLUKA" };
+        var ciel = new TableItem
+        {
+            Name = "Cieľ", Tab1 = TableTabTab.Empty, Tab2 = TableTabTab.Empty, DivType = TableDivType.Translate, FillSection = TableFillSection.CielovaStanica
+        };
         var catalog = new TableCatalog
         {
             Key = "K16",
             Name = "ELEN 16",
-            Items = [new TableItem { Name = "Druh", Tab1 = druh, Tab2 = TableTabTab.Empty, DivType = TableDivType.Translate, FillSection = TableFillSection.TypVlaku }]
+            Items = [new TableItem { Name = "Druh", Tab1 = druh, Tab2 = TableTabTab.Empty, DivType = TableDivType.Translate, FillSection = TableFillSection.TypVlaku }, ciel]
         };
         var document = new GrafikonDocument
         {
@@ -72,9 +82,24 @@ public sealed partial class McpToolsTests
         document.Trains.Add(Train(1, "3001", Os, "10:15", Track1));
         document.Trains.Add(Train(2, "801", R, "08:30", Track1, "jazdí v 6", "Žilina"));
         document.Trains.Add(Train(3, "3003", Os, "12:15", Track2));
+        document.TableTexts.Add(new TableText
+        {
+            Key = "CIEL",
+            Name = "Cieľová stanica",
+            Comment = "",
+            Realizations = [new TableTextRealization { Table = catalog, Item = ciel }],
+            Trains = [new TableTrain { Train = document.Trains[0], Text = "Ručný text", FontID = 113 }]
+        });
+        document.TableTexts.Add(new TableText
+        {
+            Key = "POZNAMKA",
+            Name = "Poznámka",
+            Comment = "",
+            Realizations = [new TableTextRealization { Table = catalog, Item = catalog.Items[0] }]
+        });
         context.OpenDocument(document, new GVDDirectory(new DirList { DirName = "GVD2027", FullPath = @"C:\INISS\DATA\GVD2027" },
             new GVDInfo { ThisStation = new Station("99", "Dolné Mesto"), StartValidTimeTable = From, EndValidTimeTable = To }));
-        return new EditorAccess(context, null);
+        return new EditorAccess(context, null, host);
     }
 
     [TestMethod]
@@ -229,17 +254,111 @@ public sealed partial class McpToolsTests
     }
 
     [TestMethod]
+    public async Task TextyTabul_VsetkyZnovaAjSRucnymTextom()
+    {
+        var editor = Editor(out var context);
+
+        var result = await TableTextTools.RegenerateBoardTexts(editor);
+        var again = await TableTextTools.RegenerateBoardTexts(editor);
+
+        var ciel = result.Texts.Single(t => t.Key == "CIEL");
+        Assert.AreEqual(("K16/Cieľ", 2, 1, 0), (ciel.Column, ciel.Added, ciel.Changed, ciel.Removed));
+        Assert.AreEqual(new TrainTextChange(1, "Os 3001", "Ručný text", "Brezová Dolina"), ciel.Changes[0]);
+        Assert.AreEqual(new TrainTextChange(2, "R 801", null, "Žilina"), ciel.Changes[1]);
+        Assert.IsNull(result.Texts.Single(t => t.Key == "POZNAMKA").Column, "bez stlpca s cielom ci stanicami sa typ preskoci");
+        Assert.IsTrue(result.Change.Changed);
+        Assert.IsFalse(result.Change.DryRun);
+        StringAssert.EndsWith(result.Change.UndoStep, "(agent)");
+        Assert.AreEqual(-1, context.Document.TableTexts[0].Trains[0].FontID, "pismo sa vrati na predvolene");
+        Assert.IsFalse(again.Change.Changed, "druhe volanie uz nic nemeni");
+        Assert.IsNull(again.Change.UndoStep);
+    }
+
+    [TestMethod]
+    public async Task TextyTabul_LenChybajuceANanecisto()
+    {
+        var editor = Editor(out var context);
+
+        var dry = await TableTextTools.RegenerateBoardTexts(editor, onlyMissing: true, text: "ciel", dryRun: true);
+        Assert.HasCount(1, context.Document.TableTexts[0].Trains, "nanecisto sa grafikon nezmeni");
+        var missing = await TableTextTools.RegenerateBoardTexts(editor, onlyMissing: true, text: "ciel");
+
+        Assert.AreEqual((true, true), (dry.Change.DryRun, dry.Change.Changed));
+        Assert.IsNull(dry.Change.UndoStep);
+        var (planned, done) = (dry.Texts.Single(), missing.Texts.Single());
+        Assert.AreEqual((planned.Added, planned.Changed, planned.Removed), (done.Added, done.Changed, done.Removed), "nanecisto rovnaky vysledok");
+        CollectionAssert.AreEqual(planned.Changes.ToArray(), done.Changes.ToArray());
+        Assert.AreEqual((2, 0), (done.Added, done.Changed));
+        CollectionAssert.AreEqual(new[] { "Ručný text", "Žilina", "Brezová Dolina" }, context.Document.TableTexts[0].Trains.Select(t => t.Text).ToArray());
+        var unknown = await Assert.ThrowsExactlyAsync<McpException>(() => TableTextTools.RegenerateBoardTexts(editor, text: "INY"));
+        StringAssert.StartsWith(unknown.Message, "tableText.notFound:");
+    }
+
+    [TestMethod]
+    public async Task Zmena_ChybaVratiGrafikonAOknoDostaneKrok()
+    {
+        var host = new Host();
+        var editor = Editor(out var context, host: host);
+
+        var failed = await Assert.ThrowsExactlyAsync<McpException>(() => editor.WriteAsync<int>("test", false, c =>
+        {
+            c.Document.Trains.Clear();
+            throw new McpException("test.fail: x");
+        }));
+        await TableTextTools.RegenerateBoardTexts(editor);
+        await TableTextTools.RegenerateBoardTexts(editor, dryRun: true);
+
+        Assert.AreEqual("test.fail: x", failed.Message);
+        Assert.HasCount(3, context.Document.Trains, "chyba vratila grafikon do povodneho stavu");
+        Assert.HasCount(3, host.Steps);
+        Assert.IsNull(host.Steps[0]);
+        StringAssert.EndsWith(host.Steps[1], "(agent)");
+        Assert.IsNull(host.Steps[2], "nanecisto bez kroku");
+        var busy = await Assert.ThrowsExactlyAsync<McpException>(() => TableTextTools.RegenerateBoardTexts(Editor(out _, host: new Host("editor.busy: x"))));
+        StringAssert.StartsWith(busy.Message, "editor.busy:");
+        var closed = await Assert.ThrowsExactlyAsync<McpException>(() => TableTextTools.RegenerateBoardTexts(Editor(false)));
+        StringAssert.StartsWith(closed.Message, "grafikon.notOpen:");
+    }
+
+    /// <summary>Hlavne okno v teste: zapamata kroky spat zmien agentom (null = bez kroku), pripadne je zaneprazdnene.</summary>
+    private sealed class Host(string? busy = null) : IAgentHost
+    {
+        public List<string?> Steps { get; } = [];
+
+        public void Change(Func<string?> change)
+        {
+            if (busy is not null)
+                throw new McpException(busy);
+            string? step = null;
+            try
+            {
+                step = change();
+            }
+            finally
+            {
+                Steps.Add(step);
+            }
+        }
+    }
+
+    [TestMethod]
     public void Nastroje_PravidlaPopisu()
     {
         var methods = GvdMcpServer.ToolMethods();
 
         Assert.IsGreaterThanOrEqualTo(10, methods.Count);
+        Assert.IsTrue(methods.Any(m => !GvdMcpServer.IsReadOnly(m)), "aspon jeden nastroj so zmenami");
         foreach (var method in methods)
         {
             var tool = method.GetCustomAttribute<McpServerToolAttribute>()!;
+            var named = method.CustomAttributes.Single(a => a.AttributeType == typeof(McpServerToolAttribute)).NamedArguments.Select(a => a.MemberName).ToList();
+            string[] hints = tool.ReadOnly ? ["ReadOnly", "OpenWorld"] : ["ReadOnly", "OpenWorld", "Destructive", "Idempotent"];
             Assert.IsTrue(SnakeCase().IsMatch(tool.Name!), $"{tool.Name}: snake_case");
-            Assert.IsTrue(tool.ReadOnly, $"{tool.Name}: zatial len citanie");
             Assert.IsFalse(tool.OpenWorld, $"{tool.Name}: OpenWorld explicitne false");
+            foreach (var hint in hints)
+                CollectionAssert.Contains(named, hint, $"{tool.Name}: {hint} explicitne");
+            if (!tool.ReadOnly)
+                Assert.IsTrue(method.GetParameters().Any(p => p.Name == "dryRun" && p.ParameterType == typeof(bool)), $"{tool.Name}: zmena ma dryRun");
             Assert.IsNotNull(method.GetCustomAttribute<System.ComponentModel.DescriptionAttribute>(), $"{tool.Name}: popis");
             foreach (var parameter in method.GetParameters().Where(p => p.ParameterType != typeof(EditorAccess) && p.ParameterType != typeof(CancellationToken)))
                 Assert.IsNotNull(parameter.GetCustomAttribute<System.ComponentModel.DescriptionAttribute>(), $"{tool.Name}.{parameter.Name}: popis");

@@ -83,6 +83,34 @@ public sealed class GvdMcpServerTests
     }
 
     [TestMethod]
+    public async Task Server_NastrojeSoZmenamiLenSPovolenim()
+    {
+        async Task<List<string>> Tools(bool allowWrites)
+        {
+            using var server = new GvdMcpServer();
+            var settings = Enabled(FreePort());
+            settings.AllowWrites = allowWrites;
+            await server.ApplyAsync(Editor(), settings);
+            var transport = new HttpClientTransport(new HttpClientTransportOptions
+            {
+                Endpoint = new Uri(server.Address!),
+                TransportMode = HttpTransportMode.StreamableHttp,
+                AdditionalHeaders = new Dictionary<string, string> { ["Authorization"] = "Bearer " + settings.Key }
+            });
+            await using var client = await McpClient.CreateAsync(transport, cancellationToken: TestContext.CancellationToken);
+            return (await client.ListToolsAsync(cancellationToken: TestContext.CancellationToken)).Select(t => t.Name).ToList();
+        }
+
+        var readOnly = await Tools(false);
+        var writes = await Tools(true);
+
+        CollectionAssert.Contains(readOnly, "get_grafikon");
+        CollectionAssert.DoesNotContain(readOnly, "regenerate_board_texts");
+        CollectionAssert.Contains(writes, "regenerate_board_texts");
+        Assert.AreEqual(GvdMcpServer.ToolMethods().Count, writes.Count);
+    }
+
+    [TestMethod]
     public async Task Server_VypnutyAleboObsadenyPortNebezi()
     {
         using var server = new GvdMcpServer();
@@ -102,7 +130,7 @@ public sealed class GvdMcpServerTests
     [TestMethod]
     public void Nastavenie_KlucSifrovanyVConfigu()
     {
-        var settings = new McpServerSettings { Enabled = true, Port = 5491 };
+        var settings = new McpServerSettings { Enabled = true, AllowWrites = true, Port = 5491 };
         var key = settings.EnsureKey();
         var serializer = new XmlSerializer(typeof(McpServerSettings));
         using var writer = new StringWriter();
@@ -115,6 +143,8 @@ public sealed class GvdMcpServerTests
         Assert.DoesNotContain(key, writer.ToString(), "kluc nie je v configu citatelny");
         Assert.AreEqual(key, read.Key);
         Assert.IsTrue(read.SameAs(settings));
+        Assert.IsTrue(read.AllowWrites);
+        Assert.IsFalse(read.SameAs(new McpServerSettings { Enabled = true, Port = 5491, ProtectedKey = settings.ProtectedKey }), "povolenie zmien = iny server");
         Assert.AreEqual("http://127.0.0.1:5491/mcp", read.Address);
         Assert.AreNotEqual(McpServerSettings.NewKey(), McpServerSettings.NewKey());
     }

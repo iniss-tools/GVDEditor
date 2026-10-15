@@ -197,3 +197,33 @@ internal sealed record BoardColumnText(
 internal sealed record BoardPreview(
     [property: Description("The train the texts are composed for.")] TrainRow Train,
     IReadOnlyList<BoardColumnText> Columns);
+
+/// <summary>Zmena grafikonu agentom - spolocna cast vysledku nastrojov so zmenami.</summary>
+internal sealed record ChangeInfo(
+    [property: Description("Dry run only - the timetable stays as it was.")] bool DryRun,
+    [property: Description("The timetable is (or would be) different; false = it already was in that state.")] bool Changed,
+    [property: Description("Undo step the user sees in GVDEditor (Edit > Undo); null = no step. The change is not saved - the user saves the timetable.")]
+    string? UndoStep);
+
+/// <summary>Zmena textu vlaku na tabuli.</summary>
+internal sealed record TrainTextChange(
+    [property: Description("Train id.")] int Train,
+    [property: Description("Train type, number and name.")] string Label,
+    [property: Description("Text before; null = the train had no text.")] string? Before,
+    [property: Description("Text after (# = line break); null = the text was removed.")] string? After);
+
+/// <summary>Texty jedneho typu textu na tabuliach po generovani.</summary>
+internal sealed record BoardTextResult(
+    [property: Description("Board text type key.")] string Key,
+    [property: Description("Board text type name.")] string Name,
+    [property: Description("Catalog board and column the texts are generated for (catalog/column); null = no realization in a column showing the destination "
+                           + "or stations on the way - the type was skipped.")] string? Column,
+    [property: Description("Trains that got a text.")] int Added,
+    [property: Description("Trains whose text or font changed (the font is reset to the default).")] int Changed,
+    [property: Description("Texts removed (the train is no longer in the timetable).")] int Removed,
+    [property: Description("First changes in train order (at most 20).")] IReadOnlyList<TrainTextChange> Changes);
+
+/// <summary>Vysledok regenerate_board_texts.</summary>
+internal sealed record RegenerateTextsResult(
+    ChangeInfo Change,
+    IReadOnlyList<BoardTextResult> Texts);

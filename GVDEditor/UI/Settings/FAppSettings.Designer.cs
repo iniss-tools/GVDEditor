@@ -54,6 +54,9 @@ namespace GVDEditor.UI.Settings
             this.bMcpClaude = new ExControls.ExButton();
             this.bMcpVsCode = new ExControls.ExButton();
             this.bMcpNewKey = new ExControls.ExButton();
+            this.exGroupBox7 = new ExControls.ExGroupBox();
+            this.cboxMcpWrites = new ExControls.ExCheckBox();
+            this.lMcpWritesHint = new System.Windows.Forms.Label();
             this.pGeneral.SuspendLayout();
             this.pConcreteGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optionsView)).BeginInit();
@@ -66,6 +69,7 @@ namespace GVDEditor.UI.Settings
             this.pMcp.SuspendLayout();
             this.ppMcp.SuspendLayout();
             this.exGroupBox6.SuspendLayout();
+            this.exGroupBox7.SuspendLayout();
             this.flpMcpButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlayerWordPause)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMcpPort)).BeginInit();
@@ -227,6 +231,7 @@ namespace GVDEditor.UI.Settings
             // 
             // ppMcp
             // 
+            this.ppMcp.Controls.Add(this.exGroupBox7);
             this.ppMcp.Controls.Add(this.exGroupBox6);
             this.ppMcp.Controls.Add(this.lMcpHint);
             resources.ApplyResources(this.ppMcp, "ppMcp");
@@ -248,6 +253,28 @@ namespace GVDEditor.UI.Settings
             this.exGroupBox6.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.exGroupBox6.Name = "exGroupBox6";
             this.exGroupBox6.TabStop = false;
+            // 
+            // exGroupBox7
+            // 
+            resources.ApplyResources(this.exGroupBox7, "exGroupBox7");
+            this.exGroupBox7.Controls.Add(this.lMcpWritesHint);
+            this.exGroupBox7.Controls.Add(this.cboxMcpWrites);
+            this.exGroupBox7.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.exGroupBox7.Name = "exGroupBox7";
+            this.exGroupBox7.TabStop = false;
+            // 
+            // cboxMcpWrites
+            // 
+            resources.ApplyResources(this.cboxMcpWrites, "cboxMcpWrites");
+            this.cboxMcpWrites.BoxBackColor = System.Drawing.Color.White;
+            this.cboxMcpWrites.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.cboxMcpWrites.Name = "cboxMcpWrites";
+            this.cboxMcpWrites.CheckedChanged += new System.EventHandler(this.McpSettingChanged);
+            // 
+            // lMcpWritesHint
+            // 
+            resources.ApplyResources(this.lMcpWritesHint, "lMcpWritesHint");
+            this.lMcpWritesHint.Name = "lMcpWritesHint";
             // 
             // cboxMcpEnabled
             // 
@@ -349,6 +376,8 @@ namespace GVDEditor.UI.Settings
             this.flpMcpButtons.PerformLayout();
             this.exGroupBox6.ResumeLayout(false);
             this.exGroupBox6.PerformLayout();
+            this.exGroupBox7.ResumeLayout(false);
+            this.exGroupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlayerWordPause)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMcpPort)).EndInit();
             this.ResumeLayout(false);
@@ -378,5 +407,8 @@ namespace GVDEditor.UI.Settings
         private ExControls.ExButton bMcpClaude;
         private ExControls.ExButton bMcpVsCode;
         private ExControls.ExButton bMcpNewKey;
+        private ExControls.ExGroupBox exGroupBox7;
+        private ExControls.ExCheckBox cboxMcpWrites;
+        private Label lMcpWritesHint;
     }
 }

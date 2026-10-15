@@ -3799,4 +3799,13 @@ Před zápisem se uloží záloha.</value>
   <data name="History_Variants" xml:space="preserve">
     <value>uspořádání variant</value>
   </data>
+  <data name="History_Agent" xml:space="preserve">
+    <value>{0} (agent)</value>
+  </data>
+  <data name="Agent_RegenerateBoardTexts" xml:space="preserve">
+    <value>přegenerování textů na tabulích</value>
+  </data>
+  <data name="Agent_AddBoardTexts" xml:space="preserve">
+    <value>doplnění textů na tabulích</value>
+  </data>
 </root>

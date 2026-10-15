@@ -111,8 +111,10 @@ internal sealed class ObjectGraphSnapshot
     }
 
     /// <summary>
-    /// Ci <paramref name="other" /> zachytil ten isty graf v rovnakom stave - rovnake objekty, polia aj hodnoty
-    /// (odkazy porovnane referenciou, hodnoty cez <see cref="object.Equals(object, object)" />).
+    /// Ci <paramref name="other" /> zachytil graf v rovnakom stave: rovnaka struktura a hodnoty, pricom sledovane objekty
+    /// sa porovnavaju podla miesta v grafe, nie podla instancie - zoznam nahradeny novym s rovnakymi prvkami je ten isty
+    /// stav. Pocitadlo zmien kolekcii (<c>_version</c>) a volne miesto v ich poliach sa neporovnavaju. Retazce a hodnoty
+    /// cez <see cref="object.Equals(object, object)" />, ostatne objekty (obrazky, zvukova banka...) referenciou.
     /// </summary>
     public bool SameAs(ObjectGraphSnapshot other)
     {
@@ -120,32 +122,57 @@ internal sealed class ObjectGraphSnapshot
         if (_objects.Count != other._objects.Count || _arrays.Count != other._arrays.Count)
             return false;
 
+        var places = Places();
+        var otherPlaces = other.Places();
+
+        bool Same(object? a, object? b)
+        {
+            if (a is not null && places.TryGetValue(a, out var place))
+                return b is not null && otherPlaces.TryGetValue(b, out var otherPlace) && place == otherPlace;
+            return (b is null || !otherPlaces.ContainsKey(b)) && SameValue(a, b);
+        }
+
         for (var i = 0; i < _arrays.Count; i++)
         {
-            var (target, copy) = _arrays[i];
-            var (otherTarget, otherCopy) = other._arrays[i];
-            if (!ReferenceEquals(target, otherTarget) || copy.Length != otherCopy.Length)
+            var (_, copy) = _arrays[i];
+            var (_, otherCopy) = other._arrays[i];
+            if (copy.GetType() != otherCopy.GetType())
                 return false;
-            for (var j = 0; j < copy.Length; j++)
-                if (!SameValue(copy.GetValue(j), otherCopy.GetValue(j)))
+            // pole kolekcie moze mat inu kapacitu - volne miesto ma predvolenu hodnotu
+            var elementType = copy.GetType().GetElementType()!;
+            var empty = elementType.IsValueType ? Activator.CreateInstance(elementType) : null;
+            for (var j = 0; j < Math.Max(copy.Length, otherCopy.Length); j++)
+                if (!Same(j < copy.Length ? copy.GetValue(j) : empty, j < otherCopy.Length ? otherCopy.GetValue(j) : empty))
                     return false;
         }
 
         for (var i = 0; i < _objects.Count; i++)
         {
             var (target, fields, values) = _objects[i];
-            var (otherTarget, otherFields, otherValues) = other._objects[i];
-            if (!ReferenceEquals(target, otherTarget) || fields.Length != otherFields.Length)
+            var (otherTarget, _, otherValues) = other._objects[i];
+            if (target.GetType() != otherTarget.GetType() || values.Length != otherValues.Length)
                 return false;
+            var collection = IsCollection(target.GetType());
             for (var j = 0; j < values.Length; j++)
-                if (!SameValue(values[j], otherValues[j]))
+                if (!(collection && fields[j].Name == "_version") && !Same(values[j], otherValues[j]))
                     return false;
         }
 
         return true;
     }
 
-    /// <summary>Objekty referenciou (zmena odkazu je zmena), hodnoty a retazce podla hodnoty.</summary>
+    /// <summary>Miesto sledovanych objektov a poli v grafe - poradie prechodu (polia zaporne).</summary>
+    private Dictionary<object, int> Places()
+    {
+        var places = new Dictionary<object, int>(_objects.Count + _arrays.Count, ReferenceEqualityComparer.Instance);
+        for (var i = 0; i < _objects.Count; i++)
+            places[_objects[i].Target] = i;
+        for (var i = 0; i < _arrays.Count; i++)
+            places[_arrays[i].Target] = -1 - i;
+        return places;
+    }
+
+    /// <summary>Hodnoty a retazce podla hodnoty, ostatne objekty referenciou.</summary>
     private static bool SameValue(object? a, object? b) =>
         a is null || b is null || a.GetType().IsValueType || a is string ? Equals(a, b) : ReferenceEquals(a, b);
 

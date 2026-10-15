@@ -165,4 +165,13 @@
   <data name="lMcpHint.Text" xml:space="preserve">
     <value>Agent jako Claude Code nebo chat ve VS Code se připojí k otevřenému grafikonu a čte ho. Server běží jen na tomto počítači a vyžaduje přístupový klíč.</value>
   </data>
+  <data name="exGroupBox7.Text" xml:space="preserve">
+    <value>Změny</value>
+  </data>
+  <data name="cboxMcpWrites.Text" xml:space="preserve">
+    <value>Povolit změny grafikonu přes agenta</value>
+  </data>
+  <data name="lMcpWritesHint.Text" xml:space="preserve">
+    <value>Agent mění jen otevřený grafikon a nikdy ho neuloží. Každou jeho změnu vrátíte příkazem Zpět.</value>
+  </data>
 </root>

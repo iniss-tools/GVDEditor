@@ -130,7 +130,7 @@ internal partial class FMain : Form, IAnalyzerHost
     /// </summary>
     private async void StartMcp()
     {
-        await _mcp.ApplyAsync(new EditorAccess(_ctx, this), _ctx.Config.McpServer);
+        await _mcp.ApplyAsync(new EditorAccess(_ctx, this, this), _ctx.Config.McpServer);
     }
 
     private bool DataSaved

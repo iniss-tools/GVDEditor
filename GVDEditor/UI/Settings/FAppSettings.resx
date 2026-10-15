@@ -1055,7 +1055,7 @@
     <value>ppMcp</value>
   </data>
   <data name="&gt;&gt;exGroupBox6.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="cboxMcpEnabled.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1322,6 +1322,87 @@
     <value>ppMcp</value>
   </data>
   <data name="&gt;&gt;lMcpHint.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="exGroupBox7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="exGroupBox7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 162</value>
+  </data>
+  <data name="exGroupBox7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>624, 78</value>
+  </data>
+  <data name="exGroupBox7.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="exGroupBox7.Text" xml:space="preserve">
+    <value>Zmeny</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox7.Name" xml:space="preserve">
+    <value>exGroupBox7</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox7.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox7.Parent" xml:space="preserve">
+    <value>ppMcp</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox7.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboxMcpWrites.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxMcpWrites.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 22</value>
+  </data>
+  <data name="cboxMcpWrites.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 17</value>
+  </data>
+  <data name="cboxMcpWrites.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cboxMcpWrites.Text" xml:space="preserve">
+    <value>Povoliť zmeny grafikonu cez agenta</value>
+  </data>
+  <data name="&gt;&gt;cboxMcpWrites.Name" xml:space="preserve">
+    <value>cboxMcpWrites</value>
+  </data>
+  <data name="&gt;&gt;cboxMcpWrites.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxMcpWrites.Parent" xml:space="preserve">
+    <value>exGroupBox7</value>
+  </data>
+  <data name="&gt;&gt;cboxMcpWrites.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="lMcpWritesHint.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="lMcpWritesHint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 45</value>
+  </data>
+  <data name="lMcpWritesHint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 26</value>
+  </data>
+  <data name="lMcpWritesHint.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lMcpWritesHint.Text" xml:space="preserve">
+    <value>Agent mení len otvorený grafikon a nikdy ho neuloží. Každú jeho zmenu vrátite príkazom Späť.</value>
+  </data>
+  <data name="&gt;&gt;lMcpWritesHint.Name" xml:space="preserve">
+    <value>lMcpWritesHint</value>
+  </data>
+  <data name="&gt;&gt;lMcpWritesHint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lMcpWritesHint.Parent" xml:space="preserve">
+    <value>exGroupBox7</value>
+  </data>
+  <data name="&gt;&gt;lMcpWritesHint.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
 </root>

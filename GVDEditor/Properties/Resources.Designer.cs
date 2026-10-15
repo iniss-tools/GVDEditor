@@ -10848,5 +10848,32 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("History_Variants", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0} (agent).
+        /// </summary>
+        internal static string History_Agent {
+            get {
+                return ResourceManager.GetString("History_Agent", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to pregenerovanie textov na tabuliach.
+        /// </summary>
+        internal static string Agent_RegenerateBoardTexts {
+            get {
+                return ResourceManager.GetString("Agent_RegenerateBoardTexts", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to doplnenie textov na tabuliach.
+        /// </summary>
+        internal static string Agent_AddBoardTexts {
+            get {
+                return ResourceManager.GetString("Agent_AddBoardTexts", resourceCulture);
+            }
+        }
     }
 }

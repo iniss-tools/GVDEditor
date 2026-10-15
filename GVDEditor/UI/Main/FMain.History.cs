@@ -1,15 +1,18 @@
 using System.Globalization;
 using GVDEditor.Domain.Snapshots;
+using GVDEditor.Mcp;
 using GVDEditor.Properties;
+using ModelContextProtocol;
+using Vanara.PInvoke;
 
 namespace GVDEditor.UI.Main;
 
 /// <summary>
 /// Kroky spat a znova: po kazdej dokoncenej uprave grafikonu (vsade, kde sa grafikon oznaci ako zmeneny) sa zapamata jeho
 /// stav. Upravy jednej operacie (napr. viac udalosti tabulky) sa zlucia do jedneho kroku - stav sa zapamata az po
-/// spracovani spravy, ktora operaciu vyvolala.
+/// spracovani spravy, ktora operaciu vyvolala. Zmena cez agenta (MCP) je vzdy samostatny krok.
 /// </summary>
-internal partial class FMain
+internal partial class FMain : IAgentHost
 {
     private GrafikonHistory? _history;
 
@@ -18,7 +21,7 @@ internal partial class FMain
 
     private bool _commitPending;
 
-    /// <summary>Prave sa obnovuje stav z historie - zmeny tabulky nie su nova uprava.</summary>
+    /// <summary>Grafikon meni krok spat alebo agent - zmeny tabulky nie su nova uprava.</summary>
     private bool _restoring;
 
     /// <summary>Zacne historiu otvoreneho grafikonu (po otvoreni, novom grafikone a zmene globalnych nastaveni).</summary>
@@ -86,9 +89,46 @@ internal partial class FMain
         if (dgvTrains.IsCurrentCellInEditMode)
             dgvTrains.EndEdit();
         FlushCommit();
-        if (_history is null)
+        if (_history is not { } history)
             return;
 
+        ChangeDocument(() =>
+        {
+            move(history);
+            DataSaved = history.IsSaved;
+        });
+        UpdateHistoryUi();
+        UpdateCommandStates();
+    }
+
+    /// <inheritdoc />
+    void IAgentHost.Change(Func<string?> change)
+    {
+        // otvorene okno (aj sprava ci vyber suboru) a nacitavanie hlavne okno vypnu; analyza pred spustenim cita grafikon na pozadi
+        if (!User32.IsWindowEnabled(Handle) || UseWaitCursor)
+            throw new McpException("editor.busy: GVDEditor has a window open or is busy; ask the user to close it, then try again.");
+        if (dgvTrains.IsCurrentCellInEditMode)
+            throw new McpException("editor.busy: The user is editing a cell in the train list; ask them to finish it, then try again.");
+
+        // rozpisana uprava pouzivatela je samostatny krok
+        FlushCommit();
+        ChangeDocument(() =>
+        {
+            if (change() is not { } label)
+                return;
+            if (_history is null || _history.Commit(label))
+                DataSaved = _history?.IsSaved ?? false;
+        });
+        UpdateHistoryUi();
+        UpdateCommandStates();
+    }
+
+    /// <summary>
+    /// Zmena grafikonu mimo okien (krok spat, agent): pocas nej nevznikaju kroky ani udalosti vyberu, potom sa obnovi
+    /// zoznam vlakov, stanica a obdobie a vybrana bunka.
+    /// </summary>
+    private void ChangeDocument(Action change)
+    {
         var dir = _ctx.Directory;
         var oldStation = dir?.GVD.ThisStation.Name ?? "";
         var oldPeriod = dir?.Period ?? "";
@@ -100,16 +140,15 @@ internal partial class FMain
         _prechod = true;
         try
         {
-            move(_history);
+            change();
+        }
+        finally
+        {
             _ctx.Document.Tracks.ResetBindings();
             _ctx.Document.Operators.ResetBindings();
             _ctx.Document.Trains.ResetBindings();
             InvalidateVariants();
             FitNumberColumn();
-            DataSaved = _history.IsSaved;
-        }
-        finally
-        {
             _prechod = prechod;
             _restoring = false;
         }
@@ -118,8 +157,6 @@ internal partial class FMain
             RefreshStationAndPeriod(dir, oldStation, oldPeriod);
         if (row >= 0 && row < dgvTrains.RowCount && column >= 0 && dgvTrains.Columns[column].Visible)
             dgvTrains.CurrentCell = dgvTrains.Rows[row].Cells[column];
-        UpdateHistoryUi();
-        UpdateCommandStates();
     }
 
     /// <summary>Popisy prikazov a tlacidiel Spat a Znova podla historie.</summary>
