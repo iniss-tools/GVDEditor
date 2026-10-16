@@ -70,24 +70,30 @@ internal static partial class TableTools
         editor.ReadAsync(context =>
         {
             var document = McpGuards.Open(context);
-            var tabTab = document.TabTabs.FirstOrDefault(t => string.Equals(t.Key, key, StringComparison.OrdinalIgnoreCase))
-                         ?? throw new McpException($"tabtab.notFound: TabTab section '{key}' does not exist; use list_tables.");
-            var diagnostics = TabTabValidator.Validate(tabTab.Text, new GvdExprSymbols(context.Workspace, document).OptionsFor(tabTab)).Diagnostics
-                .Select(d => new TabTabDiagnosticInfo(d.Severity switch { ExprSeverity.Error => "error", ExprSeverity.Warning => "warning", _ => "info" },
-                    d.LineIndex + 1, d.CodeName, d.Message, d.Suggestion))
-                .ToList();
-            var fonts = FontCode().Matches(tabTab.Text).Select(m => int.Parse(m.Groups[1].Value, CultureInfo.InvariantCulture)).Distinct().Order()
-                .Select(code => new FontCodeInfo(code, DescribeElen(new ElenFontCode(code)),
-                    document.TableFonts.FirstOrDefault(f => f.FontID == code) is { } font ? $"{font.Name} ({font.Type?.Name}, size {font.Size})" : null))
-                .ToList();
-            var usedBy = document.TableCatalogs
-                .SelectMany(c => c.Items.SelectMany(i => new[] { (Item: i, Tab: i.Tab1, Name: "TAB1"), (Item: i, Tab: i.Tab2, Name: "TAB2") })
-                    .Where(x => x.Tab == tabTab)
-                    .Select(x => new TabTabUsage(c.Key, x.Item.Name, x.Name, x.Item.DivType is { } divType ? divType.Id : null,
-                        document.TablePhysicals.Where(p => p.TableCatalog == c).Select(p => p.Key).ToList())))
-                .ToList();
-            return new TabTabInfo(tabTab.Key, tabTab.Text, diagnostics, fonts, usedBy);
+            return TabTabDetail(context, document.TabTabs.FirstOrDefault(t => string.Equals(t.Key, key, StringComparison.OrdinalIgnoreCase))
+                                         ?? throw new McpException($"tabtab.notFound: TabTab section '{key}' does not exist; use list_tables."));
         });
+
+    /// <summary>Sekcia TabTab s hlaseniami kontroly, pismami a pouzitim (get_tabtab).</summary>
+    public static TabTabInfo TabTabDetail(EditorContext context, TableTabTab tabTab)
+    {
+        var document = context.Document;
+        var diagnostics = TabTabValidator.Validate(tabTab.Text, new GvdExprSymbols(context.Workspace, document).OptionsFor(tabTab)).Diagnostics
+            .Select(d => new TabTabDiagnosticInfo(d.Severity switch { ExprSeverity.Error => "error", ExprSeverity.Warning => "warning", _ => "info" },
+                d.LineIndex + 1, d.CodeName, d.Message, d.Suggestion))
+            .ToList();
+        var fonts = FontCode().Matches(tabTab.Text).Select(m => int.Parse(m.Groups[1].Value, CultureInfo.InvariantCulture)).Distinct().Order()
+            .Select(code => new FontCodeInfo(code, DescribeElen(new ElenFontCode(code)),
+                document.TableFonts.FirstOrDefault(f => f.FontID == code) is { } font ? $"{font.Name} ({font.Type?.Name}, size {font.Size})" : null))
+            .ToList();
+        var usedBy = document.TableCatalogs
+            .SelectMany(c => c.Items.SelectMany(i => new[] { (Item: i, Tab: i.Tab1, Name: "TAB1"), (Item: i, Tab: i.Tab2, Name: "TAB2") })
+                .Where(x => x.Tab == tabTab)
+                .Select(x => new TabTabUsage(c.Key, x.Item.Name, x.Name, x.Item.DivType is { } divType ? divType.Id : null,
+                    document.TablePhysicals.Where(p => p.TableCatalog == c).Select(p => p.Key).ToList())))
+            .ToList();
+        return new TabTabInfo(tabTab.Key, tabTab.Text, diagnostics, fonts, usedBy);
+    }
 
     [McpServerTool(Name = "preview_board_text", Title = "Board text of a train", ReadOnly = true, Idempotent = true, OpenWorld = false,
         UseStructuredContent = true)]

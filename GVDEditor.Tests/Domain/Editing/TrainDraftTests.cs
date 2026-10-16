@@ -170,7 +170,25 @@ public class TrainDraftTests
         Assert.AreEqual("", draft.LineArrival);
 
         draft.ApplyTo(train);
-        Assert.AreEqual("", train.LineArrival);
+        Assert.IsTrue(string.IsNullOrEmpty(train.LineArrival), "subor nerozlisuje chybajucu a prazdnu linku");
+        draft.LineArrival = "S1";
+        draft.ApplyTo(train);
+        Assert.AreEqual("S1", train.LineArrival);
+    }
+
+    [TestMethod]
+    public void Ulozenie_BezZmenyNechaJazykyAKrajneStanice()
+    {
+        var train = FullTrain();
+        var start = train.StartingStation = new Station("1", "Veľká Ves");
+        var languages = train.Languages;
+
+        TrainDraft.From(train).ApplyTo(train);
+
+        // vlak so vsetkymi jazykmi ma aj hlavny jazyk, ktory koncept neponuka - pri rovnakom vybere ostane
+        Assert.AreSame(languages, train.Languages);
+        Assert.AreSame(start, train.StartingStation, "ta ista stanica, ako ju nacital grafikon");
+        Assert.AreSame(train.StaniceDoSmeru[^1], train.EndingStation);
     }
 
     [TestMethod]

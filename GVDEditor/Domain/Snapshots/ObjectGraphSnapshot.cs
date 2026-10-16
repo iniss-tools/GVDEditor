@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace GVDEditor.Domain.Snapshots;
 
@@ -21,6 +22,7 @@ internal sealed class ObjectGraphSnapshot
 
     private readonly List<(object Target, FieldInfo[] Fields, object?[] Values)> _objects = [];
     private readonly List<(Array Target, Array Copy)> _arrays = [];
+    private readonly List<object?> _roots = [];
 
     private ObjectGraphSnapshot()
     {
@@ -65,7 +67,10 @@ internal sealed class ObjectGraphSnapshot
         }
 
         foreach (var root in roots)
+        {
+            snapshot._roots.Add(root);
             Visit(root);
+        }
 
         while (pending.Count > 0)
         {
@@ -111,48 +116,67 @@ internal sealed class ObjectGraphSnapshot
     }
 
     /// <summary>
-    /// Ci <paramref name="other" /> zachytil graf v rovnakom stave: rovnaka struktura a hodnoty, pricom sledovane objekty
-    /// sa porovnavaju podla miesta v grafe, nie podla instancie - zoznam nahradeny novym s rovnakymi prvkami je ten isty
-    /// stav. Pocitadlo zmien kolekcii (<c>_version</c>) a volne miesto v ich poliach sa neporovnavaju. Retazce a hodnoty
-    /// cez <see cref="object.Equals(object, object)" />, ostatne objekty (obrazky, zvukova banka...) referenciou.
+    /// Ci <paramref name="other" /> zachytil graf v rovnakom stave: od korenov rovnake hodnoty v rovnakej strukture
+    /// (porovnanie ako stromov) - zalezi na hodnotach, nie na instanciach ani na tom, ktore objekty su zdielane.
+    /// Zoznam nahradeny novym s rovnakymi prvkami alebo stanica trasy ako kopia namiesto zdielaneho objektu je teda
+    /// ten isty stav. Pocitadlo zmien kolekcii (<c>_version</c>) a volne miesto v ich poliach sa neporovnavaju.
+    /// Retazce a hodnoty cez <see cref="object.Equals(object, object)" />, nesledovane objekty (obrazky, zvukova
+    /// banka...) referenciou.
     /// </summary>
     public bool SameAs(ObjectGraphSnapshot other)
     {
         ArgumentNullException.ThrowIfNull(other);
-        if (_objects.Count != other._objects.Count || _arrays.Count != other._arrays.Count)
+        if (_roots.Count != other._roots.Count)
             return false;
 
-        var places = Places();
-        var otherPlaces = other.Places();
+        var (objects, arrays) = Index();
+        var (otherObjects, otherArrays) = other.Index();
+        // dvojice objektov, ktore sa uz porovnavaju - pri cykloch a zdielanych objektoch sa porovnanie neopakuje
+        var seen = new HashSet<(object, object)>(PairComparer.Instance);
+        var pending = new Stack<(object A, object B)>();
 
         bool Same(object? a, object? b)
         {
-            if (a is not null && places.TryGetValue(a, out var place))
-                return b is not null && otherPlaces.TryGetValue(b, out var otherPlace) && place == otherPlace;
-            return (b is null || !otherPlaces.ContainsKey(b)) && SameValue(a, b);
+            if (a is null || b is null)
+                return a is null && b is null;
+            var tracked = objects.ContainsKey(a) || arrays.ContainsKey(a);
+            if (tracked != (otherObjects.ContainsKey(b) || otherArrays.ContainsKey(b)))
+                return false;
+            if (!tracked)
+                return SameValue(a, b);
+            if (seen.Add((a, b)))
+                pending.Push((a, b));
+            return true;
         }
 
-        for (var i = 0; i < _arrays.Count; i++)
-        {
-            var (_, copy) = _arrays[i];
-            var (_, otherCopy) = other._arrays[i];
-            if (copy.GetType() != otherCopy.GetType())
+        for (var i = 0; i < _roots.Count; i++)
+            if (!Same(_roots[i], other._roots[i]))
                 return false;
-            // pole kolekcie moze mat inu kapacitu - volne miesto ma predvolenu hodnotu
-            var elementType = copy.GetType().GetElementType()!;
-            var empty = elementType.IsValueType ? Activator.CreateInstance(elementType) : null;
-            for (var j = 0; j < Math.Max(copy.Length, otherCopy.Length); j++)
-                if (!Same(j < copy.Length ? copy.GetValue(j) : empty, j < otherCopy.Length ? otherCopy.GetValue(j) : empty))
-                    return false;
-        }
 
-        for (var i = 0; i < _objects.Count; i++)
+        while (pending.Count > 0)
         {
-            var (target, fields, values) = _objects[i];
-            var (otherTarget, _, otherValues) = other._objects[i];
-            if (target.GetType() != otherTarget.GetType() || values.Length != otherValues.Length)
+            var (a, b) = pending.Pop();
+            if (a.GetType() != b.GetType())
                 return false;
-            var collection = IsCollection(target.GetType());
+
+            if (a is Array)
+            {
+                var copy = arrays[a];
+                var otherCopy = otherArrays[b];
+                // pole kolekcie moze mat inu kapacitu - volne miesto ma predvolenu hodnotu
+                var elementType = copy.GetType().GetElementType()!;
+                var empty = elementType.IsValueType ? Activator.CreateInstance(elementType) : null;
+                for (var j = 0; j < Math.Max(copy.Length, otherCopy.Length); j++)
+                    if (!Same(j < copy.Length ? copy.GetValue(j) : empty, j < otherCopy.Length ? otherCopy.GetValue(j) : empty))
+                        return false;
+                continue;
+            }
+
+            var (fields, values) = objects[a];
+            var otherValues = otherObjects[b].Values;
+            if (values.Length != otherValues.Length)
+                return false;
+            var collection = IsCollection(a.GetType());
             for (var j = 0; j < values.Length; j++)
                 if (!(collection && fields[j].Name == "_version") && !Same(values[j], otherValues[j]))
                     return false;
@@ -161,15 +185,26 @@ internal sealed class ObjectGraphSnapshot
         return true;
     }
 
-    /// <summary>Miesto sledovanych objektov a poli v grafe - poradie prechodu (polia zaporne).</summary>
-    private Dictionary<object, int> Places()
+    /// <summary>Zapamatane hodnoty sledovanych objektov a poli podla instancie.</summary>
+    private (Dictionary<object, (FieldInfo[] Fields, object?[] Values)> Objects, Dictionary<object, Array> Arrays) Index()
     {
-        var places = new Dictionary<object, int>(_objects.Count + _arrays.Count, ReferenceEqualityComparer.Instance);
-        for (var i = 0; i < _objects.Count; i++)
-            places[_objects[i].Target] = i;
-        for (var i = 0; i < _arrays.Count; i++)
-            places[_arrays[i].Target] = -1 - i;
-        return places;
+        var objects = new Dictionary<object, (FieldInfo[], object?[])>(_objects.Count, ReferenceEqualityComparer.Instance);
+        foreach (var (target, fields, values) in _objects)
+            objects[target] = (fields, values);
+        var arrays = new Dictionary<object, Array>(_arrays.Count, ReferenceEqualityComparer.Instance);
+        foreach (var (target, copy) in _arrays)
+            arrays[target] = copy;
+        return (objects, arrays);
+    }
+
+    /// <summary>Dvojica instancii porovnana referenciou.</summary>
+    private sealed class PairComparer : IEqualityComparer<(object, object)>
+    {
+        public static readonly PairComparer Instance = new();
+
+        public bool Equals((object, object) x, (object, object) y) => ReferenceEquals(x.Item1, y.Item1) && ReferenceEquals(x.Item2, y.Item2);
+
+        public int GetHashCode((object, object) obj) => HashCode.Combine(RuntimeHelpers.GetHashCode(obj.Item1), RuntimeHelpers.GetHashCode(obj.Item2));
     }
 
     /// <summary>Hodnoty a retazce podla hodnoty, ostatne objekty referenciou.</summary>

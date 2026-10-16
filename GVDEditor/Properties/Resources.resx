@@ -3844,4 +3844,13 @@ Pred zápisom sa uloží záloha.</value>
   <data name="Agent_TrackTables" xml:space="preserve">
     <value>tabule koľaje {0}</value>
   </data>
+  <data name="Agent_NewTabTab" xml:space="preserve">
+    <value>nová sekcia TabTab {0}</value>
+  </data>
+  <data name="Agent_SetTabTab" xml:space="preserve">
+    <value>úprava TabTab {0}</value>
+  </data>
+  <data name="Agent_DeleteTabTab" xml:space="preserve">
+    <value>zmazanie sekcie TabTab {0}</value>
+  </data>
 </root>

@@ -5,6 +5,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Mcp;
 using ModelContextProtocol;
 using ModelContextProtocol.Server;
+using ToolsCore.Iniss.Entities;
 
 namespace GVDEditor.Tests.Mcp;
 
@@ -57,7 +58,15 @@ public sealed partial class McpToolsTests
     private static EditorAccess Editor(out EditorContext context, bool open = true, IAgentHost? host = null)
     {
         context = new EditorContext(null!);
-        context.OpenWorkspace(new InissWorkspace { INISSDir = @"C:\INISS", GVDDirs = [], TrainsTypes = new([Os, R]) });
+        context.OpenWorkspace(new InissWorkspace
+        {
+            INISSDir = @"C:\INISS",
+            GVDDirs = [],
+            TrainsTypes = new([Os, R]),
+            Stations = [new Station("1", "Veľká Ves"), new Station("2", "Brezová Dolina"), new Station("3", "Žilina"), new Station("4", "Žilina")],
+            TrainNames = [new TrainName("V8_01", "Tatran")],
+            Languages = new([new FyzLanguage("SK", "Slovenčina") { IsBasic = true }, new FyzLanguage("EN", "Angličtina")])
+        });
         if (!open)
             return new EditorAccess(context, null, host);
         var druh = new TableTabTab { Key = "DRUH", Text = "R{34369}=R\nIC{113}=IC\n(Typ(Typ_X9)), \"@\" = #SWITCH\nBus=#VYLUKA" };
@@ -74,6 +83,8 @@ public sealed partial class McpToolsTests
         var document = new GrafikonDocument
         {
             Tracks = [Track.None, Track1, Track2],
+            Operators = [Zssk],
+            LocalLanguages = [],
             TabTabs = [new TableTabTab { Key = "ODCHODY", Text = "@VLAK" }, druh],
             TableCatalogs = [catalog],
             TablePhysicals = [new TablePhysical { Key = "T1", Name = "Hala", TableCatalog = catalog }],
@@ -155,7 +166,7 @@ public sealed partial class McpToolsTests
         Assert.AreEqual("801", train.Train.Number);
         Assert.AreEqual("R", train.Train.Type);
         Assert.AreEqual("Žilina", train.Train.To);
-        CollectionAssert.AreEqual(new[] { "Veľká Ves" }, train.StationsBefore.ToArray());
+        CollectionAssert.AreEqual(new[] { "Veľká Ves" }, train.StationsBefore.Select(s => s.Station).ToArray());
         Assert.AreEqual(To, train.ValidTo);
         var missing = await Assert.ThrowsExactlyAsync<McpException>(() => TrainTools.GetTrain(Editor(), 99));
         StringAssert.StartsWith(missing.Message, "train.notFound:");

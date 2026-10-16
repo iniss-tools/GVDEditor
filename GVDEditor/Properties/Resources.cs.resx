@@ -3829,4 +3829,13 @@ Před zápisem se uloží záloha.</value>
   <data name="Agent_TrackTables" xml:space="preserve">
     <value>tabule koleje {0}</value>
   </data>
+  <data name="Agent_NewTabTab" xml:space="preserve">
+    <value>nová sekce TabTab {0}</value>
+  </data>
+  <data name="Agent_SetTabTab" xml:space="preserve">
+    <value>úprava TabTab {0}</value>
+  </data>
+  <data name="Agent_DeleteTabTab" xml:space="preserve">
+    <value>smazání sekce TabTab {0}</value>
+  </data>
 </root>

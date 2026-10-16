@@ -75,17 +75,24 @@ internal sealed record TrainFormation(
     [property: Description("Validity of the formation; null = whole validity of the train.")] string? Validity,
     [property: Description("Announcement types it is used in.")] IReadOnlyList<string> Reports);
 
+/// <summary>Stanica na trase vlaku.</summary>
+internal sealed record RouteStop(
+    [property: Description("Station name.")] string Station,
+    [property: Description("Station number.")] string Id,
+    [property: Description("Announced in the short announcement.")] bool Short,
+    [property: Description("Announced in the long announcement.")] bool Long);
+
 /// <summary>Vlak so vsetkymi udajmi (get_train).</summary>
 internal sealed record TrainDetail(
     TrainRow Train,
     [property: Description("First day of validity.")] DateOnly ValidFrom,
     [property: Description("Last day of validity.")] DateOnly ValidTo,
-    [property: Description("Stations before this station (where the train comes from).")] IReadOnlyList<string> StationsBefore,
-    [property: Description("Stations after this station (where the train goes).")] IReadOnlyList<string> StationsAfter,
+    [property: Description("Stations before this station (where the train comes from), in order.")] IReadOnlyList<RouteStop> StationsBefore,
+    [property: Description("Stations after this station (where the train goes), in order.")] IReadOnlyList<RouteStop> StationsAfter,
     [property: Description("Departure track when different from the arrival track.")] string? TrackDeparture,
     [property: Description("Line of arrival.")] string? LineArrival,
     [property: Description("Line of departure.")] string? LineDeparture,
-    [property: Description("Languages of announcements for this train.")] IReadOnlyList<string> Languages,
+    [property: Description("Languages of announcements for this train besides the basic one (keys).")] IReadOnlyList<string> Languages,
     [property: Description("Set flags: international, longDistance, extraordinary, reservation, sleeperOnly, lowFloor, transfer, flagO, diesel.")]
     IReadOnlyList<string> Flags,
     [property: Description("Lockout number; 0 = none.")] int Lockout,
@@ -347,3 +354,14 @@ internal sealed record TableOptions(
     [property: Description("View types of boards.")] IReadOnlyList<OptionInfo> ViewTypes,
     [property: Description("View modes; every view type of a catalog board lists columns for all of them.")] IReadOnlyList<OptionInfo> ViewModes,
     [property: Description("Font types.")] IReadOnlyList<OptionInfo> FontTypes);
+
+/// <summary>Vysledok zmeny vlaku.</summary>
+internal sealed record TrainChangeResult(
+    ChangeInfo Change,
+    [property: Description("The train after the change; null = deleted.")] TrainDetail? Train,
+    [property: Description("Warnings of the train check (the Edit train window shows them too), in the language of the editor.")] IReadOnlyList<string> Warnings);
+
+/// <summary>Vysledok zmeny sekcie TabTab.</summary>
+internal sealed record TabTabChangeResult(
+    ChangeInfo Change,
+    [property: Description("The section after the change with its check findings; null = deleted.")] TabTabInfo? TabTab);

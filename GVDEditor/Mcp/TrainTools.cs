@@ -1,5 +1,6 @@
 using System.Collections;
 using GVDEditor.Domain.Calendar;
+using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using ModelContextProtocol;
 using ModelContextProtocol.Server;
@@ -49,26 +50,30 @@ internal static class TrainTools
     [Description("All data of one train of the open timetable: times, tracks, route stations, validity, flags, announcement languages, supplements and "
                  + "formations.")]
     public static Task<TrainDetail> GetTrain(EditorAccess editor, [Description("Train id from list_trains.")] int id) =>
-        editor.ReadAsync(context =>
-        {
-            var train = McpGuards.Open(context).Trains.FirstOrDefault(t => t.ID == id)
-                        ?? throw new McpException($"train.notFound: Train {id} does not exist; use list_trains.");
-            return new TrainDetail(
-                Row(train),
-                train.ZaciatokPlatnosti,
-                train.KoniecPlatnosti,
-                train.StaniceZoSmeru.Select(s => s.Name).ToList(),
-                train.StaniceDoSmeru.Select(s => s.Name).ToList(),
-                train.TrackDeparture?.Key,
-                train.LineArrival,
-                train.LineDeparture,
-                train.Languages.Select(l => l.Name).ToList(),
-                Flags(train),
-                train.LockoutNumber,
-                train.Doplnky.Select(d => new TrainSupplement(d.Name, d.Sound?.Name, Reports(d.ChosenReports))).ToList(),
-                train.Radenia.Select(r => new TrainFormation(r.Text, r.DestStation?.Name, r.CisloVlaku, r.Validity?.ToString(), Reports(r.ChosenReports)))
-                    .ToList());
-        });
+        editor.ReadAsync(context => Detail(Find(McpGuards.Open(context), id)));
+
+    /// <summary>Vlak podla cisla zo zoznamu vlakov; neexistujuci = chyba.</summary>
+    public static Train Find(GrafikonDocument document, int id) =>
+        document.Trains.FirstOrDefault(t => t.ID == id) ?? throw new McpException($"train.notFound: Train {id} does not exist; use list_trains.");
+
+    /// <summary>Vsetky udaje vlaku v tvare, ktory berie set_train.</summary>
+    public static TrainDetail Detail(Train train) =>
+        new(Row(train),
+            train.ZaciatokPlatnosti,
+            train.KoniecPlatnosti,
+            train.StaniceZoSmeru.Select(Stop).ToList(),
+            train.StaniceDoSmeru.Select(Stop).ToList(),
+            train.TrackDeparture?.Key,
+            train.LineArrival,
+            train.LineDeparture,
+            train.Languages.Select(l => l.Key).ToList(),
+            Flags(train),
+            train.LockoutNumber,
+            train.Doplnky.Select(d => new TrainSupplement(d.Name, d.Sound?.Name, Reports(d.ChosenReports))).ToList(),
+            train.Radenia.Select(r => new TrainFormation(r.Text, r.DestStation?.Name, r.CisloVlaku, r.Validity?.ToString(), Reports(r.ChosenReports)))
+                .ToList());
+
+    private static RouteStop Stop(Station station) => new(station.Name, station.ID, station.IsInShortReport, station.IsInLongReport);
 
     [McpServerTool(Name = "explain_validity", Title = "Explain validity text", ReadOnly = true, Idempotent = true, OpenWorld = false,
         UseStructuredContent = true)]
@@ -128,14 +133,21 @@ internal static class TrainTools
         }
     }
 
-    private static List<string> Flags(Train t) =>
-        new (bool On, string Name)[]
-            {
-                (t.IsMedzistatny, "international"), (t.IsDialkovy, "longDistance"), (t.IsMimoriadny, "extraordinary"), (t.IsMiestenkovy, "reservation"),
-                (t.IsIbaLozkovy, "sleeperOnly"), (t.IsNizkopodlazny, "lowFloor"), (t.IsPrestupovy, "transfer"), (t.IsPriznakO, "flagO"),
-                (t.IsMotorovy, "diesel")
-            }
-            .Where(f => f.On).Select(f => f.Name).ToList();
+    /// <summary>Priznaky vlaku pre agenta - nazov a vlastnost vlaku.</summary>
+    public static readonly (string Name, Func<Train, bool> Get, Action<Train, bool> Set)[] FlagFields =
+    [
+        ("international", t => t.IsMedzistatny, (t, v) => t.IsMedzistatny = v),
+        ("longDistance", t => t.IsDialkovy, (t, v) => t.IsDialkovy = v),
+        ("extraordinary", t => t.IsMimoriadny, (t, v) => t.IsMimoriadny = v),
+        ("reservation", t => t.IsMiestenkovy, (t, v) => t.IsMiestenkovy = v),
+        ("sleeperOnly", t => t.IsIbaLozkovy, (t, v) => t.IsIbaLozkovy = v),
+        ("lowFloor", t => t.IsNizkopodlazny, (t, v) => t.IsNizkopodlazny = v),
+        ("transfer", t => t.IsPrestupovy, (t, v) => t.IsPrestupovy = v),
+        ("flagO", t => t.IsPriznakO, (t, v) => t.IsPriznakO = v),
+        ("diesel", t => t.IsMotorovy, (t, v) => t.IsMotorovy = v)
+    ];
+
+    private static List<string> Flags(Train t) => FlagFields.Where(f => f.Get(t)).Select(f => f.Name).ToList();
 
     private static List<string> Reports(IEnumerable<ChosenReportType>? reports) =>
         reports?.Select(r => r.Variants is { Count: > 0 } variants ? $"{r.Type.Name} ({string.Join(", ", variants.Select(v => v.Name))})" : r.Type.Name)

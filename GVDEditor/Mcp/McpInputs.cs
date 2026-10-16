@@ -40,3 +40,9 @@ internal sealed record LayoutRowInput(
     [property: Description("Last record shown there (records first..last go to consecutive rows).")] int LastRecord,
     [property: Description("Row of the physical board for the first record, from 1.")] int StartRow = 1,
     [property: Description("View type key on that board; null = the view type of the logical board.")] string? ViewType = null);
+
+/// <summary>Stanica trasy vlaku (set_train).</summary>
+internal sealed record RouteStopInput(
+    [property: Description("Station name or number (the number when more stations have the name).")] string Station,
+    [property: Description("Announced in the short announcement.")] bool Short = false,
+    [property: Description("Announced in the long announcement.")] bool Long = true);

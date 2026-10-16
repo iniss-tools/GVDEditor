@@ -259,13 +259,13 @@ internal sealed class TrainDraft
         train.Arrival = RouteFrom.Count != 0 && TrainRules.TryParseTime(ArrivalText, out var arrival) ? arrival : null;
         train.Departure = RouteTo.Count != 0 && TrainRules.TryParseTime(DepartureText, out var departure) ? departure : null;
         train.Routing = routing;
-        train.StartingStation = RouteFrom.FirstOrDefault();
-        train.EndingStation = RouteTo.LastOrDefault();
+        train.StartingStation = SameStation(train.StartingStation, RouteFrom.FirstOrDefault());
+        train.EndingStation = SameStation(train.EndingStation, RouteTo.LastOrDefault());
 
         train.Track = track;
         train.TrackDeparture = TrackDeparture != null && !TrackDeparture.EqualsKeys(track) ? TrackDeparture : null;
-        train.LineArrival = LineArrival;
-        train.LineDeparture = LineDeparture;
+        train.LineArrival = Same(train.LineArrival, LineArrival);
+        train.LineDeparture = Same(train.LineDeparture, LineDeparture);
 
         train.DateLimitText = DateLimitText;
         train.ZaciatokPlatnosti = ValidFrom;
@@ -287,8 +287,22 @@ internal sealed class TrainDraft
         train.StaniceDoSmeru.Clear();
         train.StaniceDoSmeru.AddRange(RouteTo);
 
-        // vlastne zoznamy - koncept sa po ulozeni uz nemeni, ale kopia vlaku nesmie zdielat zoznam so zdrojom
-        train.Languages = [.. Languages];
+        // vlastne zoznamy - koncept sa po ulozeni uz nemeni, ale kopia vlaku nesmie zdielat zoznam so zdrojom; jazyky len
+        // pri zmene vyberu - vlak so vsetkymi jazykmi stanice ma v zozname aj hlavny jazyk a ten koncept neponuka
+        if (!train.Languages.Where(language => !language.IsBasic).SequenceEqual(Languages))
+            train.Languages = [.. Languages];
         train.Doplnky = [.. Doplnky];
     }
+
+    /// <summary>
+    /// Nepovinne pole konceptu do vlaku - pri rovnakej hodnote ostane povodne (subory grafikonu nerozlisuju
+    /// chybajuce a prazdne pole, koncept ma vzdy text).
+    /// </summary>
+    private static string? Same(string? current, string value) => (current ?? "") == value ? current : value;
+
+    /// <summary>
+    /// Krajna stanica trasy - ta ista stanica ostane, ako ju nacital grafikon (bez priznakov hlasenia, tie ma trasa).
+    /// </summary>
+    private static Station? SameStation(Station? current, Station? route) =>
+        current is not null && route is not null && current.ID == route.ID && current.Name == route.Name ? current : route;
 }

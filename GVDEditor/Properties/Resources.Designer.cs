@@ -10938,5 +10938,32 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("Agent_TrackTables", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to nová sekcia TabTab {0}.
+        /// </summary>
+        internal static string Agent_NewTabTab {
+            get {
+                return ResourceManager.GetString("Agent_NewTabTab", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to úprava TabTab {0}.
+        /// </summary>
+        internal static string Agent_SetTabTab {
+            get {
+                return ResourceManager.GetString("Agent_SetTabTab", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to zmazanie sekcie TabTab {0}.
+        /// </summary>
+        internal static string Agent_DeleteTabTab {
+            get {
+                return ResourceManager.GetString("Agent_DeleteTabTab", resourceCulture);
+            }
+        }
     }
 }

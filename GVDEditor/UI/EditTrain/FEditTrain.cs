@@ -206,18 +206,7 @@ internal partial class FEditTrain : Form
         }
 
         var isNew = _copy || ThisTrain == null;
-        var train = isNew ? new Train() : ThisTrain!;
-        // vlak, ktory odide do inej skupiny variant, dostane v nej nove cislo (TrainVariants.Normalize po ulozeni) -
-        // vlakom, ktore uz v skupine su, cisla ostanu
-        if (!isNew && _draft.KeyChanged && !_draft.RenamesSiblings)
-            train.Variant = -1;
-
-        _draft.ApplyTo(train);
-        _draft.ApplyToSiblings();
-        _draft.ApplyVariantLimits();
-        _draft.Radenia.Commit(train, _ctx.Document.Radenia, _ctx.Document.Trains);
-
-        if (isNew) ThisTrain = train;
+        ThisTrain = TrainEditing.Save(_draft, isNew ? null : ThisTrain, Row, _ctx.Document);
 
         DialogResult = DialogResult.OK;
     }
@@ -308,26 +297,15 @@ internal partial class FEditTrain : Form
     /// </summary>
     private void SyncRadeniaWithNumber()
     {
-        var cislo = _draft.Number;
-        if (_initialization || string.IsNullOrEmpty(cislo))
+        if (_initialization || string.IsNullOrEmpty(_draft.Number))
             return;
 
-        // pri kopii je Row novy riadok, takze sem patri aj zdrojovy vlak - Shows ho vsak vynecha
-        var other = _ctx.Document.Trains.Where((train, i) => train.Number == cislo && train.Radenia.Count != 0 && Row != i).FirstOrDefault();
-        if (other == null)
-        {
-            _draft.Radenia.RestoreOwn();
+        var loaded = TrainEditing.SyncRadenia(_draft, _ctx.Document.Trains, Row, out var other);
+        if (other is null)
             ShowRadeniaNotice(null);
-            return;
-        }
-
-        // okno uz zobrazuje radenia tohto cisla (varianta, zdroj kopie) - netreba ich preberat a zahodit upravy
-        if (_draft.Radenia.Shows(other.Radenia))
-            return;
-
-        _draft.Radenia.Load(other.Radenia);
-        ShowRadeniaNotice(string.Format(CultureInfo.CurrentCulture, Resources.TrainBasicsPage_Radenie_Prevzate, cislo,
-            TrainRules.Label(other)));
+        else if (loaded)
+            ShowRadeniaNotice(string.Format(CultureInfo.CurrentCulture, Resources.TrainBasicsPage_Radenie_Prevzate, _draft.Number,
+                TrainRules.Label(other)));
     }
 
     private void ShowRadeniaNotice(string? text)
