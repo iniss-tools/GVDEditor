@@ -95,7 +95,8 @@ internal sealed class GvdMcpServer : IDisposable
 
         try
         {
-            _app = await StartAsync(editor, settings.Port, key, settings.AllowWrites).ConfigureAwait(false);
+            // zostavenie a start servera mimo vlakna okna - pri starte GVDEditora by ho inak na chvilu zablokovali
+            _app = await Task.Run(() => StartAsync(editor, settings.Port, key, settings.AllowWrites)).ConfigureAwait(false);
             Address = settings.Address;
             Log.Info("MCP: server bezi na " + Address);
         }
