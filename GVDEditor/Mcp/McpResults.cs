@@ -365,3 +365,36 @@ internal sealed record TrainChangeResult(
 internal sealed record TabTabChangeResult(
     ChangeInfo Change,
     [property: Description("The section after the change with its check findings; null = deleted.")] TabTabInfo? TabTab);
+
+/// <summary>Linka stanice v simulatore tabul.</summary>
+internal sealed record SimulatorLineInfo(
+    [property: Description("Line number.")] int Line,
+    [property: Description("Driver section of the INISS settings (Driver, Driver0...).")] string Section,
+    [property: Description("Table class of the line (protocol family).")] int Class,
+    [property: Description("Port of the line on the simulator.")] int Port,
+    [property: Description("Boards and amplifier units on the line.")] int Boards,
+    [property: Description("The .INI next to the INISS program already redirects the line to the simulator (the port is taken from it).")] bool Redirected);
+
+/// <summary>Co simulator pri priprave urobil.</summary>
+internal sealed record SimulatorImportInfo(
+    int LinesAdded,
+    int LinesUpdated,
+    int BoardsAdded,
+    [property: Description("Boards the simulator already had - they stay as they are.")] int BoardsKept,
+    int VirtualBoardsAdded,
+    int VirtualBoardsKept,
+    [property: Description("Lines whose class the simulator does not know.")] IReadOnlyList<int> UnsupportedLines,
+    [property: Description("Boards the simulator skipped.")] IReadOnlyList<string> SkippedBoards,
+    [property: Description("INISS log folder for virtual boards: none, added, watched (already), missing (does not exist), full (no more folders).")]
+    string LogFolder);
+
+/// <summary>Vysledok prepare_simulator.</summary>
+internal sealed record SimulatorPrepareResult(
+    [property: Description("Dry run only - nothing was sent to the simulator.")] bool DryRun,
+    [property: Description("Web address of the simulator.")] string Url,
+    [property: Description("Run configuration the lines come from.")] string Configuration,
+    IReadOnlyList<SimulatorLineInfo> Lines,
+    [property: Description("Boards with XML export the simulator shows as virtual boards.")] int XmlTables,
+    [property: Description("INISS log folder where INISS writes the XML of boards.")] string? LogFolder,
+    [property: Description("What the simulator did; null = dry run.")] SimulatorImportInfo? Result,
+    [property: Description("What is left to do, e.g. lines INISS does not send to the simulator yet.")] IReadOnlyList<string> Notes);
