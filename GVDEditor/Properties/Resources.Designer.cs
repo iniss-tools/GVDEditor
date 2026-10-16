@@ -10875,5 +10875,68 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("Agent_AddBoardTexts", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to nové písmo {0}.
+        /// </summary>
+        internal static string Agent_NewFont {
+            get {
+                return ResourceManager.GetString("Agent_NewFont", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to úprava písma {0}.
+        /// </summary>
+        internal static string Agent_SetFont {
+            get {
+                return ResourceManager.GetString("Agent_SetFont", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to zmazanie písma {0}.
+        /// </summary>
+        internal static string Agent_DeleteFont {
+            get {
+                return ResourceManager.GetString("Agent_DeleteFont", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to nová tabuľa {0}.
+        /// </summary>
+        internal static string Agent_NewTable {
+            get {
+                return ResourceManager.GetString("Agent_NewTable", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to úprava tabule {0}.
+        /// </summary>
+        internal static string Agent_SetTable {
+            get {
+                return ResourceManager.GetString("Agent_SetTable", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to zmazanie tabule {0}.
+        /// </summary>
+        internal static string Agent_DeleteTable {
+            get {
+                return ResourceManager.GetString("Agent_DeleteTable", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to tabule koľaje {0}.
+        /// </summary>
+        internal static string Agent_TrackTables {
+            get {
+                return ResourceManager.GetString("Agent_TrackTables", resourceCulture);
+            }
+        }
     }
 }

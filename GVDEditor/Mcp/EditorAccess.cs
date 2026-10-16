@@ -12,6 +12,9 @@ namespace GVDEditor.Mcp;
 /// </summary>
 internal sealed class EditorAccess(EditorContext context, Control? owner, IAgentHost? host = null)
 {
+    /// <summary>Popis parametra <c>dryRun</c> nastrojov so zmenou.</summary>
+    public const string DryRunDescription = "Only report the result; the timetable stays as it is.";
+
     /// <summary>Vysledok <paramref name="read" /> nad kontextom editora z vlakna okna.</summary>
     public Task<T> ReadAsync<T>(Func<EditorContext, T> read)
     {
@@ -39,15 +42,20 @@ internal sealed class EditorAccess(EditorContext context, Control? owner, IAgent
     }
 
     /// <summary>
-    /// Zmena otvoreneho grafikonu agentom: jedno volanie = jeden krok spat <c>Agent: <paramref name="label" /></c>
+    /// Zmena otvoreneho grafikonu agentom: jedno volanie = jeden krok spat „<paramref name="label" /> (agent)“
     /// v GVDEditore, grafikon sa neuklada. Pri chybe (<see cref="McpException" /> s kodom) a pri skuske nanecisto
     /// (<paramref name="dryRun" />) sa grafikon vrati do stavu pred zmenou - vysledok je rovnaky ako pri skutocnej zmene.
     /// </summary>
     public Task<(T Result, ChangeInfo Change)> WriteAsync<T>(string label, bool dryRun, Func<EditorContext, T> write) =>
+        WriteAsync(_ => label, dryRun, write);
+
+    /// <inheritdoc cref="WriteAsync{T}(string, bool, Func{EditorContext, T})" />
+    /// <param name="label">popis kroku podla grafikonu pred zmenou (napr. nova alebo upravena tabula)</param>
+    public Task<(T Result, ChangeInfo Change)> WriteAsync<T>(Func<EditorContext, string> label, bool dryRun, Func<EditorContext, T> write) =>
         ReadAsync(_ =>
         {
             var document = McpGuards.Open(context);
-            var step = string.Format(CultureInfo.CurrentCulture, Resources.History_Agent, label);
+            var step = string.Format(CultureInfo.CurrentCulture, Resources.History_Agent, label(context));
             T result = default!;
             var changed = false;
 

@@ -1,5 +1,4 @@
 using GVDEditor.Domain.Entities;
-using ModelContextProtocol;
 using ModelContextProtocol.Server;
 
 namespace GVDEditor.Mcp;
@@ -48,7 +47,7 @@ internal static class GrafikonTools
             var document = McpGuards.Open(context);
             return new StationInfo(
                 context.Directory?.GVD.ThisStation.Name,
-                document.Tracks.Where(t => t != Track.None).Select(t => new TrackInfo(t.Key, t.Name, t.Platform?.Key, t.Tables.Select(l => l.Key).ToList())).ToList(),
+                document.Tracks.Where(t => t != Track.None).Select(TableMapper.Track).ToList(),
                 document.Platforms.Select(p => $"{p.Key} - {p.FullName}").ToList(),
                 document.Operators.Select(o => $"{o.Id} - {o.Name}").ToList(),
                 context.Workspace.TrainsTypes.Select(t => $"{t.Key} - {t.TextInTable}").ToList(),
@@ -67,14 +66,4 @@ internal static class GrafikonTools
             return null;
         }
     }
-}
-
-/// <summary>Spolocne kontroly nastrojov.</summary>
-internal static class McpGuards
-{
-    /// <summary>Otvoreny grafikon; bez neho chyba nastroja.</summary>
-    public static Domain.Documents.GrafikonDocument Open(EditorContext context) =>
-        context.Directory is null
-            ? throw new McpException("grafikon.notOpen: No timetable is open in GVDEditor; open one or call list_grafikons.")
-            : context.Document;
 }

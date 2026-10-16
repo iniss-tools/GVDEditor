@@ -3823,4 +3823,25 @@ Pred zápisom sa uloží záloha.</value>
   <data name="Agent_AddBoardTexts" xml:space="preserve">
     <value>doplnenie textov na tabuliach</value>
   </data>
+  <data name="Agent_NewFont" xml:space="preserve">
+    <value>nové písmo {0}</value>
+  </data>
+  <data name="Agent_SetFont" xml:space="preserve">
+    <value>úprava písma {0}</value>
+  </data>
+  <data name="Agent_DeleteFont" xml:space="preserve">
+    <value>zmazanie písma {0}</value>
+  </data>
+  <data name="Agent_NewTable" xml:space="preserve">
+    <value>nová tabuľa {0}</value>
+  </data>
+  <data name="Agent_SetTable" xml:space="preserve">
+    <value>úprava tabule {0}</value>
+  </data>
+  <data name="Agent_DeleteTable" xml:space="preserve">
+    <value>zmazanie tabule {0}</value>
+  </data>
+  <data name="Agent_TrackTables" xml:space="preserve">
+    <value>tabule koľaje {0}</value>
+  </data>
 </root>

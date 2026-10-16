@@ -23,7 +23,7 @@ internal static class TableTextTools
         EditorAccess editor,
         [Description("Only add texts to trains that have none; existing texts stay.")] bool onlyMissing = false,
         [Description("Only this board text type (key from list_tables); null = all types.")] string? text = null,
-        [Description("Only report what would change; the timetable stays as it is.")] bool dryRun = false)
+        [Description(EditorAccess.DryRunDescription)] bool dryRun = false)
     {
         var (texts, change) = await editor.WriteAsync(onlyMissing ? Resources.Agent_AddBoardTexts : Resources.Agent_RegenerateBoardTexts, dryRun, context =>
         {

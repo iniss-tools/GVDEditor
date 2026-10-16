@@ -1,5 +1,6 @@
 using System.Globalization;
 using ExControls;
+using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
@@ -556,14 +557,10 @@ public partial class CatalogTablesPage : UserControl, ISettingsPage
 
     private List<string> Usage(TableCatalog table)
     {
-        var usage = _ctx.Document.TablePhysicals.Where(p => ReferenceEquals(p.TableCatalog, table))
-            .Select(p => string.Format(CultureInfo.CurrentCulture, Resources.TablesPage_Pouzitie_Fyzicka, p.Name))
+        var (physicals, texts) = TableUsage.CatalogUsage(table, _ctx.Document.TablePhysicals, _ctx.Document.TableTexts);
+        return physicals.Select(p => string.Format(CultureInfo.CurrentCulture, Resources.TablesPage_Pouzitie_Fyzicka, p.Name))
+            .Concat(texts.Select(t => string.Format(CultureInfo.CurrentCulture, Resources.TablesPage_Pouzitie_Text, t.Text.Name, t.Column?.Name)))
             .ToList();
-        foreach (var text in _ctx.Document.TableTexts)
-        foreach (var realization in text.Realizations)
-            if (ReferenceEquals(realization.Table, table))
-                usage.Add(string.Format(CultureInfo.CurrentCulture, Resources.TablesPage_Pouzitie_Text, text.Name, realization.Item?.Name));
-        return usage;
     }
 
     private void ShowUsage()

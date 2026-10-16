@@ -227,3 +227,123 @@ internal sealed record BoardTextResult(
 internal sealed record RegenerateTextsResult(
     ChangeInfo Change,
     IReadOnlyList<BoardTextResult> Texts);
+
+/// <summary>Stlpec katalogovej tabule (get_table).</summary>
+internal sealed record ColumnInfo(
+    [property: Description("Column key; board texts and the column order refer to it.")] string Key,
+    string Name,
+    [property: Description("Content number (FILL_SECTION, see table_options).")] int Content,
+    [property: Description("Content name.")] string ContentName,
+    [property: Description("Row of the board, from 0.")] int Line,
+    [property: Description("Start in points.")] int Start,
+    [property: Description("End in points.")] int End,
+    [property: Description("Font number.")] int Font,
+    [property: Description("Alignment number: 0 left, 1 right, 2 centre.")] int Align,
+    [property: Description("DIVTYPE 0-4 - how TAB1/TAB2 apply.")] int DivType,
+    [property: Description("TAB1 section key; null = none.")] string? Tab1,
+    [property: Description("TAB2 section key; null = none.")] string? Tab2,
+    [property: Description("Board texts (keys) shown in this column; such a column cannot be removed.")] IReadOnlyList<string> Texts);
+
+/// <summary>Rezim typu zobrazenia.</summary>
+internal sealed record ViewModeInfo(
+    [property: Description("View mode key.")] string Mode,
+    [property: Description("Column keys shown in this mode, in order.")] IReadOnlyList<string> Columns);
+
+/// <summary>Poradie stlpcov pre typ zobrazenia.</summary>
+internal sealed record ColumnOrderInfo(
+    [property: Description("View type key.")] string ViewType,
+    [property: Description("Board rows per record.")] int LinesPerRecord,
+    IReadOnlyList<ViewModeInfo> Modes);
+
+/// <summary>Riadok katalogovej tabule.</summary>
+internal sealed record RowInfo(int Height, int Width, int Size);
+
+/// <summary>Katalogova tabula - predloha vzhladu tabule (get_table).</summary>
+internal sealed record CatalogTableDetail(string Key, string Name, string Comment,
+    [property: Description("Manufacturer key - protocol of the board.")] string? Manufacturer,
+    [property: Description("Most records the board can show.")] int MaxRecords,
+    [property: Description("Minimal row height in points.")] int MinHeight,
+    [property: Description("Number of segments (NUM_SEGMENTS).")] int Segments,
+    [property: Description("Row sizes; INISS reads but does not use them.")] IReadOnlyList<RowInfo> Rows,
+    IReadOnlyList<ColumnInfo> Columns,
+    [property: Description("Columns shown per view type and mode.")] IReadOnlyList<ColumnOrderInfo> ColumnOrder);
+
+/// <summary>Fyzicka tabula - konkretna tabula na stanici (get_table).</summary>
+internal sealed record PhysicalTableDetail(string Key, string Name, string Comment,
+    [property: Description("Catalog board key - the type of the board.")] string? Catalog,
+    [property: Description("Address on the communication line; -1 = none.")] int Address,
+    [property: Description("Communication line number; 0 = assigned automatically.")] int Line,
+    [property: Description("Number of records the board shows.")] int Records,
+    [property: Description("Records with reversed arrows; usually empty.")] string ReverseArrows,
+    [property: Description("File name of the XML export; empty = no export.")] string XmlFile,
+    [property: Description("Note for the operator (REM).")] string Note);
+
+/// <summary>Riadok zostavy logickej tabule.</summary>
+internal sealed record LayoutRowInfo(
+    [property: Description("Physical board key.")] string Physical,
+    [property: Description("First record shown there, from 1.")] int FirstRecord,
+    [property: Description("Last record shown there.")] int LastRecord,
+    [property: Description("Row of the physical board for the first record, from 1.")] int StartRow,
+    [property: Description("View type key on that board.")] string? ViewType);
+
+/// <summary>Logicka tabula - co sa posiela na ktore fyzicke tabule (get_table).</summary>
+internal sealed record LogicalTableDetail(string Key, string Name, string Comment,
+    [property: Description("View type key.")] string? ViewType,
+    [property: Description("Number of records (trains) the board shows.")] int Records,
+    [property: Description("Station number (IDSTATION); 0 = none.")] int Station,
+    [property: Description("Where the records go, as rows of physical boards; null = the placement cannot be written as rows (see placements).")]
+    IReadOnlyList<LayoutRowInfo>? Layout,
+    [property: Description("Placement of each record when layout is null: physical board, row from 0 and view type.")] IReadOnlyList<string>? Placements);
+
+/// <summary>Pismo tabul (get_table).</summary>
+internal sealed record FontDetail(
+    [property: Description("Font number; columns, texts and TabTab {n} refer to it.")] int Id,
+    string Name,
+    [property: Description("regular, bold, italic, boldItalic or special; null = not set.")] string? Type,
+    [property: Description("Height in points.")] int Size,
+    [property: Description("Character width in points.")] int Width,
+    bool Proportional,
+    bool Diacritics,
+    bool Lowercase,
+    bool Uppercase,
+    bool Digits,
+    bool SpecialChars,
+    bool SpecialAssignment,
+    [property: Description("Font file; empty = none.")] string File,
+    [property: Description("Meaning of the number on ELEN boards: colour, face, blinking.")] string Elen);
+
+/// <summary>Tabula alebo pismo s pouzitim a kontrolou (get_table).</summary>
+internal sealed record TableDetail(
+    [property: Description("catalog, physical, logical or font - the one filled below.")] string Kind,
+    CatalogTableDetail? Catalog,
+    PhysicalTableDetail? Physical,
+    LogicalTableDetail? Logical,
+    FontDetail? Font,
+    [property: Description("Where it is used; a used item cannot be deleted.")] IReadOnlyList<string> UsedBy,
+    [property: Description("Errors of the GVDEditor check (INISS would reject them), in the language of the editor.")] IReadOnlyList<string> Problems,
+    [property: Description("Warnings INISS tolerates, in the language of the editor.")] IReadOnlyList<string> Warnings);
+
+/// <summary>Vysledok zmeny tabule alebo pisma.</summary>
+internal sealed record TableChangeResult(
+    ChangeInfo Change,
+    [property: Description("The item after the change; null = deleted.")] TableDetail? Table,
+    [property: Description("What the change did besides, or left to do (e.g. TabTab sections still using an old font number).")] IReadOnlyList<string> Notes);
+
+/// <summary>Vysledok set_track_tables.</summary>
+internal sealed record TrackChangeResult(ChangeInfo Change, TrackInfo Track);
+
+/// <summary>Hodnota na vyber.</summary>
+internal sealed record OptionInfo(
+    [property: Description("Value to use in the tools.")] string Value,
+    [property: Description("Name in the editor.")] string Name,
+    [property: Description("More information; null = none.")] string? Note);
+
+/// <summary>Hodnoty tabul a pisiem (table_options).</summary>
+internal sealed record TableOptions(
+    [property: Description("Manufacturers (protocols) of catalog boards; note = description and address range.")] IReadOnlyList<OptionInfo> Manufacturers,
+    [property: Description("Column contents (FILL_SECTION).")] IReadOnlyList<OptionInfo> Contents,
+    [property: Description("Column alignments.")] IReadOnlyList<OptionInfo> Aligns,
+    [property: Description("Column DIVTYPE - how TAB1/TAB2 apply.")] IReadOnlyList<OptionInfo> DivTypes,
+    [property: Description("View types of boards.")] IReadOnlyList<OptionInfo> ViewTypes,
+    [property: Description("View modes; every view type of a catalog board lists columns for all of them.")] IReadOnlyList<OptionInfo> ViewModes,
+    [property: Description("Font types.")] IReadOnlyList<OptionInfo> FontTypes);

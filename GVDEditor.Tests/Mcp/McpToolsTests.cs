@@ -63,13 +63,13 @@ public sealed partial class McpToolsTests
         var druh = new TableTabTab { Key = "DRUH", Text = "R{34369}=R\nIC{113}=IC\n(Typ(Typ_X9)), \"@\" = #SWITCH\nBus=#VYLUKA" };
         var ciel = new TableItem
         {
-            Name = "Cieľ", Tab1 = TableTabTab.Empty, Tab2 = TableTabTab.Empty, DivType = TableDivType.Translate, FillSection = TableFillSection.CielovaStanica
+            Key = "Ciel", Name = "Cieľ", Start = 48, End = 200, Tab1 = TableTabTab.Empty, Tab2 = TableTabTab.Empty, DivType = TableDivType.Translate, FillSection = TableFillSection.CielovaStanica
         };
         var catalog = new TableCatalog
         {
             Key = "K16",
             Name = "ELEN 16",
-            Items = [new TableItem { Name = "Druh", Tab1 = druh, Tab2 = TableTabTab.Empty, DivType = TableDivType.Translate, FillSection = TableFillSection.TypVlaku }, ciel]
+            Items = [new TableItem { Key = "Druh", Name = "Druh", Start = 0, End = 48, Tab1 = druh, Tab2 = TableTabTab.Empty, DivType = TableDivType.Translate, FillSection = TableFillSection.TypVlaku }, ciel]
         };
         var document = new GrafikonDocument
         {

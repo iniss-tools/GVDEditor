@@ -3808,4 +3808,25 @@ Před zápisem se uloží záloha.</value>
   <data name="Agent_AddBoardTexts" xml:space="preserve">
     <value>doplnění textů na tabulích</value>
   </data>
+  <data name="Agent_NewFont" xml:space="preserve">
+    <value>nové písmo {0}</value>
+  </data>
+  <data name="Agent_SetFont" xml:space="preserve">
+    <value>úprava písma {0}</value>
+  </data>
+  <data name="Agent_DeleteFont" xml:space="preserve">
+    <value>smazání písma {0}</value>
+  </data>
+  <data name="Agent_NewTable" xml:space="preserve">
+    <value>nová tabule {0}</value>
+  </data>
+  <data name="Agent_SetTable" xml:space="preserve">
+    <value>úprava tabule {0}</value>
+  </data>
+  <data name="Agent_DeleteTable" xml:space="preserve">
+    <value>smazání tabule {0}</value>
+  </data>
+  <data name="Agent_TrackTables" xml:space="preserve">
+    <value>tabule koleje {0}</value>
+  </data>
 </root>

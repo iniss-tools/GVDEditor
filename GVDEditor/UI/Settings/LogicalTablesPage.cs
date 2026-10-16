@@ -1,9 +1,8 @@
 using System.Globalization;
 using ExControls;
+using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Editing;
-using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
-using GVDEditor.Formats;
 using GVDEditor.Properties;
 using ToolsCore.Tools;
 using Field = GVDEditor.Domain.Rules.TableLogicalRules.Field;
@@ -86,7 +85,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     /// <summary>
     /// Naplni stranku - volat az po nastaveni temy okna.
     /// </summary>
-    /// <param name=\"context\">kontext editora</param>
+    /// <param name="context">kontext editora</param>
     /// <param name="station">stanica grafikonu - prva v ponuke stanic</param>
     internal void LoadData(EditorContext context, Station station)
     {
@@ -247,7 +246,7 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
     }
 
     private List<string> Usage(TableLogical table) =>
-        _ctx.Document.Tracks.Where(track => track.Tables.Any(t => ReferenceEquals(t, table)))
+        TableUsage.Tracks(table, _ctx.Document.Tracks)
             .Select(track => string.Format(CultureInfo.CurrentCulture, Resources.TablesPage_Pouzitie_Kolaj, track.Name))
             .ToList();
 

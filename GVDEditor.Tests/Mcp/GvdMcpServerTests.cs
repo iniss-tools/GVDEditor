@@ -111,6 +111,37 @@ public sealed class GvdMcpServerTests
     }
 
     [TestMethod]
+    public async Task Server_ZlozityArgumentSaNacitaAzKNastroju()
+    {
+        using var server = new GvdMcpServer();
+        var settings = Enabled(FreePort());
+        settings.AllowWrites = true;
+        await server.ApplyAsync(Editor(), settings);
+        var transport = new HttpClientTransport(new HttpClientTransportOptions
+        {
+            Endpoint = new Uri(server.Address!),
+            TransportMode = HttpTransportMode.StreamableHttp,
+            AdditionalHeaders = new Dictionary<string, string> { ["Authorization"] = "Bearer " + settings.Key }
+        });
+        await using var client = await McpClient.CreateAsync(transport, cancellationToken: TestContext.CancellationToken);
+
+        var tool = (await client.ListToolsAsync(cancellationToken: TestContext.CancellationToken)).Single(t => t.Name == "set_catalog_table");
+        var result = await client.CallToolAsync("set_catalog_table", new Dictionary<string, object?>
+        {
+            ["key"] = "K1",
+            ["columns"] = new[] { new Dictionary<string, object?> { ["key"] = "A", ["name"] = "A", ["start"] = 0, ["end"] = 8, ["font"] = 1 } },
+            ["columnOrder"] = new[] { new Dictionary<string, object?> { ["viewType"] = "Tabule_Odjezdova", ["columns"] = new[] { "A" } } }
+        }, cancellationToken: TestContext.CancellationToken);
+
+        // argumenty sa nacitali - nastroj skoncil az na tom, ze nie je otvoreny grafikon
+        Assert.IsTrue(result.IsError);
+        StringAssert.Contains(string.Join(" ", result.Content.OfType<ModelContextProtocol.Protocol.TextContentBlock>().Select(c => c.Text)), "grafikon.notOpen");
+        var column = tool.JsonSchema.GetProperty("properties").GetProperty("columns").GetProperty("items");
+        CollectionAssert.AreEquivalent(new[] { "key", "name", "start", "end", "font" },
+            column.GetProperty("required").EnumerateArray().Select(e => e.GetString()).ToArray(), "nepovinne polia maju predvolenu hodnotu");
+    }
+
+    [TestMethod]
     public async Task Server_VypnutyAleboObsadenyPortNebezi()
     {
         using var server = new GvdMcpServer();

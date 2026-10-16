@@ -107,6 +107,47 @@ public static class TableCatalogEditing
     }
 
     /// <summary>
+    /// Nahradi stlpce tabule zoznamom <paramref name="columns" /> v jeho poradi. Stlpec, ktoreho kluc
+    /// (<c>Match</c>, napr. povodny kluc pri premenovani) ma niektory doterajsi stlpec, zachova jeho instanciu - odkazuju
+    /// na nu realizacie textov na tabuli; zmena kluca sa prenesie do poradia stlpcov a kluce odstranenych stlpcov
+    /// z poradia vypadnu.
+    /// </summary>
+    /// <returns>Odstranene stlpce.</returns>
+    public static List<TableItem> ReplaceColumns(TableCatalog table, IReadOnlyList<(string Match, TableItem Column)> columns)
+    {
+        var remaining = table.Items.ToList();
+        var items = new List<TableItem>();
+        var renames = new List<(string From, string To)>();
+        foreach (var (match, column) in columns)
+        {
+            var existing = remaining.FirstOrDefault(i => i.Key == match);
+            if (existing is null)
+            {
+                items.Add(column);
+                continue;
+            }
+
+            remaining.Remove(existing);
+            if (existing.Key != column.Key)
+                renames.Add((existing.Key, column.Key));
+            CopyTo(column, existing);
+            items.Add(existing);
+        }
+
+        foreach (var removed in remaining)
+            RemoveKey(table.ViewTypeTabs, removed.Key);
+        // cez docasne kluce - vymena klucov dvoch stlpcov by inak oba zlucila
+        for (var i = 0; i < renames.Count; i++)
+            RenameKey(table.ViewTypeTabs, renames[i].From, $"\0{i}");
+        for (var i = 0; i < renames.Count; i++)
+            RenameKey(table.ViewTypeTabs, $"\0{i}", renames[i].To);
+
+        table.Items.Clear();
+        table.Items.AddRange(items);
+        return remaining;
+    }
+
+    /// <summary>
     /// Najde prvy kluc v poradi stlpcov, ku ktoremu neexistuje stlpec (ReadTables by taky subor odmietol).
     /// </summary>
     /// <returns>Typ, mod a kluc, alebo <c>null</c>, ak su vsetky kluce platne.</returns>

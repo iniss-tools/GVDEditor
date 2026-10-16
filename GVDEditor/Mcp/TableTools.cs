@@ -30,6 +30,38 @@ internal static partial class TableTools
                 document.TabTabs.Select(t => t.Key).ToList());
         });
 
+    [McpServerTool(Name = "get_table", Title = "Board or font", ReadOnly = true, Idempotent = true, OpenWorld = false, UseStructuredContent = true)]
+    [Description("One board or font of the open timetable with all values in the form the set_* tools take, where it is used and what the GVDEditor "
+                 + "check finds. Kinds: catalog (board type - look, columns and their order), physical (a board at the station - catalog, line and "
+                 + "address), logical (which records go to which rows of physical boards; tracks point to it), font (font list entry, key = number).")]
+    public static Task<TableDetail> GetTable(
+        EditorAccess editor,
+        [Description("catalog, physical, logical or font.")] string kind,
+        [Description("Key from list_tables; for a font its number.")] string key) =>
+        editor.ReadAsync(context =>
+        {
+            var document = McpGuards.Open(context);
+            return TableMapper.Detail(document, TableMapper.Item(document, kind, key));
+        });
+
+    [McpServerTool(Name = "table_options", Title = "Board values", ReadOnly = true, Idempotent = true, OpenWorld = false, UseStructuredContent = true)]
+    [Description("Values the board tools take: manufacturers of catalog boards with address ranges, column contents, alignments, DIVTYPE, view "
+                 + "types, view modes and font types.")]
+    public static TableOptions GetTableOptions()
+    {
+        static string Number(int value) => value.ToString(CultureInfo.InvariantCulture);
+        return new TableOptions(
+            TableManufacturer.GetValues().Where(m => m.IsKnownToIniss)
+                .Select(m => new OptionInfo(m.Name, m.Name, m.Description + (m.MinAddress < 0 ? "" : $"; addresses {m.MinAddress}-{m.MaxAddress}"))).ToList(),
+            TableFillSection.GetValues().Select(f => new OptionInfo(Number(f.Id), f.Name, null)).ToList(),
+            TableAlign.GetValues().Select(a => new OptionInfo(Number(a.Id), a.Name, null)).ToList(),
+            TableDivType.GetValues().Select(d => new OptionInfo(Number(d.Id), d.Name, d == TableDivType.TableTime ? "needs TAB1 and TAB2" : d == TableDivType.Free ? null : "needs TAB1"))
+                .ToList(),
+            TableViewType.GetValues().Select(v => new OptionInfo(v.Key!, v.Name, null)).ToList(),
+            TableViewMode.GetValues().Select(v => new OptionInfo(v.Key!, v.Name, null)).ToList(),
+            TableMapper.AllFontTypes.Select(t => new OptionInfo(t.Value, t.Type.Name, null)).ToList());
+    }
+
     [McpServerTool(Name = "get_tabtab", Title = "TabTab section", ReadOnly = true, Idempotent = true, OpenWorld = false, UseStructuredContent = true)]
     [Description("One TabTab section of the open timetable - the INISS rules recoding what boards show: its text, all check findings with line "
                  + "numbers, decoded font numbers and the board columns using it. Read tabtab_reference first to interpret the rules correctly and check "
@@ -124,7 +156,7 @@ internal static partial class TableTools
     private static partial Regex FontCode();
 
     /// <summary>Vyznam cisla pisma ELEN po anglicky (popisy GVDEditora su v jazyku obsluhy).</summary>
-    private static string DescribeElen(ElenFontCode code)
+    internal static string DescribeElen(ElenFontCode code)
     {
         string[] colors = ["no colour", "red", "green", "yellow"];
         string[] faces = ["fixed 6 px", "thin", "bold", "digits only"];
