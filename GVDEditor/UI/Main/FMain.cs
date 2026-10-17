@@ -1,4 +1,5 @@
 using System.Globalization;
+using ExControls;
 using AppRegistry = ToolsCore.Tools.AppRegistry;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Calendar;
@@ -22,7 +23,7 @@ namespace GVDEditor.UI.Main;
 /// v <c>FMain.Grafikon.cs</c>, okná nastavení v <c>FMain.Settings.cs</c>, INISS v <c>FMain.Iniss.cs</c> a varianty
 /// vlakov v <c>FMain.Variants.cs</c>.
 /// </summary>
-internal partial class FMain : Form, IAnalyzerHost
+internal partial class FMain : ExForm, IAnalyzerHost
 {
     /// <summary>
     /// Dostupné stanice.
@@ -151,16 +152,6 @@ internal partial class FMain : Form, IAnalyzerHost
                 Text = Application.ProductName + @" - *" + _ctx.Workspace.INISSDir;
         }
     } = true;
-
-    protected override CreateParams CreateParams
-    {
-        get
-        {
-            var handleParam = base.CreateParams;
-            handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED
-            return handleParam;
-        }
-    }
 
     protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
     {

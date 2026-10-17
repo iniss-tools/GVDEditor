@@ -112,6 +112,7 @@ namespace GVDEditor.UI.Main
             ExComboBoxStyle exComboBoxStyle70 = new ExComboBoxStyle();
             ExComboBoxStyle exComboBoxStyle71 = new ExComboBoxStyle();
             ExComboBoxStyle exComboBoxStyle72 = new ExComboBoxStyle();
+            titleBar = new ExTitleBar();
             mainMenu = new MenuStrip();
             tsmiSubor = new ToolStripMenuItem();
             tsmiNew = new ToolStripMenuItem();
@@ -296,6 +297,7 @@ namespace GVDEditor.UI.Main
             dataGridViewExComboBoxColumn14 = new DataGridViewExComboBoxColumn();
             dataGridViewExComboBoxColumn15 = new DataGridViewExComboBoxColumn();
             dataGridViewExComboBoxColumn16 = new DataGridViewExComboBoxColumn();
+            titleBar.SuspendLayout();
             mainMenu.SuspendLayout();
             toolMenu.SuspendLayout();
             ((ISupportInitialize)dgvTrains).BeginInit();
@@ -306,12 +308,18 @@ namespace GVDEditor.UI.Main
             panelMain.SuspendLayout();
             SuspendLayout();
             // 
+            // titleBar
+            // 
+            titleBar.Controls.Add(mainMenu);
+            resources.ApplyResources(titleBar, "titleBar");
+            titleBar.Name = "titleBar";
+            // 
             // mainMenu
             // 
             mainMenu.BackColor = SystemColors.Control;
             mainMenu.ImageScalingSize = new Size(20, 20);
             mainMenu.Items.AddRange(new ToolStripItem[] { tsmiSubor, tsmiUpravit, tsmiStanica, tsmiTools, tsmiRun, tsmiNastavenia });
-            mainMenu.LayoutStyle = ToolStripLayoutStyle.Flow;
+            mainMenu.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
             resources.ApplyResources(mainMenu, "mainMenu");
             mainMenu.Name = "mainMenu";
             mainMenu.RenderMode = ToolStripRenderMode.Professional;
@@ -2067,13 +2075,15 @@ namespace GVDEditor.UI.Main
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panelMain);
             Controls.Add(toolMenu);
-            Controls.Add(mainMenu);
+            Controls.Add(titleBar);
             Controls.Add(statusStrip);
             MainMenuStrip = mainMenu;
             Name = "FMain";
             WindowState = FormWindowState.Maximized;
             FormClosing += MainForm_FormClosing;
             Load += FMain_Load;
+            titleBar.ResumeLayout(false);
+            titleBar.PerformLayout();
             mainMenu.ResumeLayout(false);
             mainMenu.PerformLayout();
             toolMenu.ResumeLayout(false);
@@ -2089,6 +2099,7 @@ namespace GVDEditor.UI.Main
             PerformLayout();
 
         }
+        private ExTitleBar titleBar;
         private MenuStrip mainMenu;
         private ToolStripMenuItem tsmiNastavenia;
         private ToolStripMenuItem tsmiNew;
