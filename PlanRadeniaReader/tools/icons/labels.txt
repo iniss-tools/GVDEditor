@@ -1,0 +1,38 @@
+# zhluk<TAB>popis piktogramu z legendy (podla iconclusters.png); rovnaky popis pri viacerych zhlukoch = varianty kreslenia
+# popisy su texty ZSSK - PlanRadeniaConversion v GVDEditore podla nich urcuje druh vozna (napr. „vozeň 1. triedy“)
+# oznacenia patria k zhlukovaniu icons.tsv z planu platneho od 1.9.2026 (Radenie_vlakov_web_5okt2026.pdf)
+0	prípojka 220V
+1	vozeň 2. triedy
+2	preprava bicyklov s povinnou rezerváciou
+3	klimatizovaný vozeň
+4	vozeň s wifi
+5	vozeň 1. triedy
+6	dámske kupé
+7	vozeň so zdvíhacou plošinou pre imobilných cestujúcich
+8	ležadlový vozeň
+9	lôžkový vozeň
+10	povinne miestenkový vozeň 1. triedy
+11	reštauračný vozeň
+12	pojazdná úschovňa batožín s možnou rezerváciou bicyklov
+13	vyhradené oddiely pre cestujúcich s deťmi do 10 rokov
+14	tichá zóna
+15	vozeň s možnosťou zakúpenia miestenky
+16	vyhradené oddiely pre cestujúcich s deťmi do 10 rokov
+17	bistro zóna
+18	bezbariérový vozeň so zníženou podlahou a nástupnou rampou
+19	povinne miestenkový vozeň 2. triedy
+20	preprava bicyklov
+21	vozeň pre cestujúcich s obmedzenými pohybovými schopnosťami
+22	detské kino
+23	povinne miestenkový vozeň 1. triedy
+24	autovozeň
+25	preprava bicyklov s možnou rezerváciou
+26	bistro zóna
+27	pojazdná úschovňa batožín s povinnou rezerváciou bicyklov
+28	vozeň s wifi
+29	bistro vozeň
+30	povinne miestenkový vozeň 1. triedy vo vnútroštátnej preprave
+31	povinne miestenkový vozeň 2. triedy
+32	povinne miestenkový vozeň 1. triedy vo vnútroštátnej preprave
+33	vozeň s mobilným barom
+34	vozeň s wifi

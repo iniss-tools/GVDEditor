@@ -5,7 +5,7 @@
 viac vzorov podľa šírky bunky a polohy znaku v nej. Vzory sa naučia z prepisov riadkov poznámok:
 
 1. Strany plánu a polohy riadkov poznámok do pracovného priečinka `W` mimo repozitára (skripty ho čítajú
-   z premennej `NOTE_WORK` a zapisujú doň všetky medzivýsledky; bez nej skončia):
+   z premennej `PLAN_WORK` a zapisujú doň všetky medzivýsledky; bez nej skončia):
 
    ```
    PlanRadeniaReader --pdf plan.pdf --pages 1-999 --debug W\pages --dump-notes W\notes.tsv

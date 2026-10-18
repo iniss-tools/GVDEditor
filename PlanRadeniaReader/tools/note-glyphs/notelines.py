@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 # pracovny priecinok: pages/pageN.png a notes.tsv z PlanRadeniaReader (--debug, --dump-notes), sem idu aj vysledky
-D = os.environ.get('NOTE_WORK') or sys.exit('Nastavte NOTE_WORK na pracovny priecinok (pages/, notes.tsv) - vysledky nepatria do repozitara.')
+D = os.environ.get('PLAN_WORK') or sys.exit('Nastavte PLAN_WORK na pracovny priecinok (pages/, notes.tsv) - vysledky nepatria do repozitara.')
 HERE = os.path.dirname(os.path.abspath(__file__))
 rows = [l.rstrip('\n').split('\t') for l in open(os.path.join(D, 'notes.tsv'), encoding='utf-8')]
 pages = {}

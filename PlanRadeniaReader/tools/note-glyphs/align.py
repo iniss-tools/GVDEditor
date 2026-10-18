@@ -7,7 +7,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 # pracovny priecinok: pages/pageN.png a notes.tsv z PlanRadeniaReader (--debug, --dump-notes), sem idu aj vysledky
-D = os.environ.get('NOTE_WORK') or sys.exit('Nastavte NOTE_WORK na pracovny priecinok (pages/, notes.tsv) - vysledky nepatria do repozitara.')
+D = os.environ.get('PLAN_WORK') or sys.exit('Nastavte PLAN_WORK na pracovny priecinok (pages/, notes.tsv) - vysledky nepatria do repozitara.')
 HERE = os.path.dirname(os.path.abspath(__file__))
 TOP, BOTTOM = 10, 4          # riadky nad a pod uplatnou ciarou (vratane)
 ROWS = TOP + BOTTOM

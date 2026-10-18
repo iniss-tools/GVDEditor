@@ -82,6 +82,9 @@ internal static class Program
             vehicles.GlyphSink = [];
         if (notesDump is not null)
             vehicles.NoteSink = [];
+        // legendy sa pripisuju po stranach - vypis zacina prazdny
+        if (icons is not null)
+            await File.WriteAllTextAsync(icons, "");
         var reader = new PageReader(ocr, vehicles, Legend.LoadCatalog());
         var result = new PlanResult();
 
