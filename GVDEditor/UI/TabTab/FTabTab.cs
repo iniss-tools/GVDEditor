@@ -488,24 +488,20 @@ internal partial class FTabTab : Form
         switch (pr.Diagnostic.Severity)
         {
             case ExprSeverity.Error:
-                e.Value = ProblemIcon("status-error");
+                e.Value = IconImages.For(dgvProblems, "status-error");
                 cell.ToolTipText = Resources.FTabTab_Problems_Chyba;
                 break;
             case ExprSeverity.Warning:
-                e.Value = ProblemIcon("status-warning");
+                e.Value = IconImages.For(dgvProblems, "status-warning");
                 cell.ToolTipText = Resources.FTabTab_Problems_Varovanie;
                 break;
             default:
-                e.Value = ProblemIcon("status-info");
+                e.Value = IconImages.For(dgvProblems, "status-info");
                 cell.ToolTipText = Resources.FTabTab_Problems_Informacia;
                 break;
         }
         e.FormattingApplied = true;
     }
-
-    // ikona zavaznosti v zozname problemov - podla DPI a pozadia zoznamu
-    private Bitmap? ProblemIcon(string name) =>
-        AppIcons.Get(name, null, dgvProblems.LogicalToDeviceUnits(IconImages.Size), AppIcons.IsDarkBackground(dgvProblems.DefaultCellStyle.BackColor));
 
     private void dgvProblems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {

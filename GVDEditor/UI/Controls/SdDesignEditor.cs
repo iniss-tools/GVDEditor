@@ -1,6 +1,7 @@
 ﻿using ExControls;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.StateDgm;
+using ToolsCore.Icons;
 
 namespace GVDEditor.UI.Controls;
 
@@ -25,6 +26,7 @@ internal sealed class SdDesignEditor : SdEditorBase
         AddRow(Resources.FStateDgm_Trieda, _class);
         AddInfo(Resources.FStateDgm_BitmapsInfo);
         _errors.SetIconAlignment(_bitmaps, ErrorIconAlignment.MiddleLeft);
+        _errors.Icon = IconImages.ErrorIcon(this);
 
         _key.TextChanged += (_, _) => Set(d =>
         {

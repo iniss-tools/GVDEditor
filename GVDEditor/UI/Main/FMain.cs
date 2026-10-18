@@ -88,6 +88,7 @@ internal partial class FMain : ExForm, IAnalyzerHost
         tsslTrainCount.Font = _ctx.Config.Fonts.StateRow.Font;
         tsslTrainCountWithVariants.Font = _ctx.Config.Fonts.StateRow.Font;
         CreateVariantMenu();
+        dgvTrains.CellPainting += dgvTrains_CellPainting;
 
         dgvTrains.RowHeadersVisible = _ctx.Config.ShowRowsHeader;
 
@@ -454,11 +455,14 @@ internal partial class FMain : ExForm, IAnalyzerHost
             if (CurrentTrain is { } current && Variants.AreSiblings(current, rowTrain))
                 e.CellStyle.BackColor = SiblingColor();
 
-            // cislo vlaku s variantmi: poradie v skupine, pri prekryti dni s inou variantou upozornenie
+            // cislo vlaku s variantmi: poradie v skupine, pri prekryti dni s inou variantou miesto pre ikonu upozornenia
+            // (kresli ju dgvTrains_CellPainting)
             if (e.ColumnIndex == cisloDataGridViewTextBoxColumn.Index && Variants.Of(rowTrain) is { Count: > 1 } info)
             {
-                e.Value = $"{rowTrain.Number}  {info.Position}/{info.Count}" + (info.Overlaps.Count != 0 ? "  ⚠" : "");
+                e.Value = $"{rowTrain.Number}  {info.Position}/{info.Count}";
                 e.FormattingApplied = true;
+                if (info.Overlaps.Count != 0)
+                    e.CellStyle.Padding = e.CellStyle.Padding with { Right = OverlapIconSpace };
             }
         }
 

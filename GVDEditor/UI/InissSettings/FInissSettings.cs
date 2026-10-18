@@ -7,6 +7,7 @@ using TableSimulator.Contracts.Station;
 using ToolsCore.Iniss.Registry;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
+using ToolsCore.Icons;
 
 namespace GVDEditor.UI.InissSettings;
 
@@ -20,10 +21,6 @@ internal partial class FInissSettings : Form
     private static readonly object WarningsNode = new();
 
     // moderne ikony systemu ako v analyze grafikonu, nie stare SystemIcons
-    private static readonly Bitmap InfoIcon = StockIcon(ShellIconType.Info);
-    private static readonly Bitmap WarningIcon = StockIcon(ShellIconType.Warning);
-    private static readonly Bitmap ErrorIcon = StockIcon(ShellIconType.Error);
-
     private readonly EditorContext _ctx;
     private readonly IInissProcess _iniss;
     private readonly IDialogService _dialogs;
@@ -227,12 +224,6 @@ internal partial class FInissSettings : Form
         }
 
         FillGrid();
-    }
-
-    private static Bitmap StockIcon(ShellIconType type)
-    {
-        using var icon = new ShellIcon(type, ShellIconSize.Small);
-        return icon.ToBitmap();
     }
 
     /// <summary>Polozka zoznamu konfiguracii spustania.</summary>
@@ -544,9 +535,9 @@ internal partial class FInissSettings : Form
             var state = gridRow.Cells[cState.Index];
             state.Value = row.Severity switch
             {
-                RegSeverity.Error => ErrorIcon,
-                RegSeverity.Warning => WarningIcon,
-                RegSeverity.Info => InfoIcon,
+                RegSeverity.Error => IconImages.For(dgvValues, "status-error"),
+                RegSeverity.Warning => IconImages.For(dgvValues, "status-warning"),
+                RegSeverity.Info => IconImages.For(dgvValues, "status-info"),
                 _ => null
             };
             state.ToolTipText = string.Join(Environment.NewLine, row.Diagnostics.Select(d => d.Message));

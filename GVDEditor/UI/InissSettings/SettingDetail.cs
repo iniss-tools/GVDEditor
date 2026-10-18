@@ -2,6 +2,7 @@ using System.Globalization;
 using ExControls;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Registry;
+using ToolsCore.Icons;
 
 namespace GVDEditor.UI.InissSettings;
 
@@ -17,10 +18,6 @@ internal sealed record SettingEdit(RegWriteTarget Target, bool Reset);
 internal sealed class SettingDetail : UserControl
 {
     // moderne ikony systemu ako v zozname upozorneni a v konfiguraciach spustania
-    private static readonly Bitmap InfoIcon = StockIcon(ShellIconType.Info);
-    private static readonly Bitmap WarningIcon = StockIcon(ShellIconType.Warning);
-    private static readonly Bitmap ErrorIcon = StockIcon(ShellIconType.Error);
-
     private readonly TableLayoutPanel _table;
     private readonly TableLayoutPanel _header = new()
     {
@@ -259,12 +256,12 @@ internal sealed class SettingDetail : UserControl
         foreach (var d in diagnostics.OrderByDescending(d => d.Severity))
         {
             var row = new FlowLayoutPanel { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, WrapContents = false, Margin = new Padding(0, 0, 0, 2) };
-            var icon = d.Severity switch
+            var icon = IconImages.For(_diagnostics, d.Severity switch
             {
-                RegSeverity.Error => ErrorIcon,
-                RegSeverity.Warning => WarningIcon,
-                _ => InfoIcon
-            };
+                RegSeverity.Error => "status-error",
+                RegSeverity.Warning => "status-warning",
+                _ => "status-info"
+            });
             row.Controls.Add(new PictureBox
             {
                 Image = icon, SizeMode = PictureBoxSizeMode.CenterImage, Size = new Size(20, 20), Margin = new Padding(3, 0, 3, 0),
@@ -284,12 +281,6 @@ internal sealed class SettingDetail : UserControl
             l.MaximumSize = new Size(width, 0);
         foreach (var l in _diagnostics.Controls.Cast<Control>().SelectMany(r => r.Controls.OfType<Label>()))
             l.MaximumSize = new Size(Math.Max(150, width - LogicalToDeviceUnits(26)), 0);
-    }
-
-    private static Bitmap StockIcon(ShellIconType type)
-    {
-        using var icon = new ShellIcon(type, ShellIconSize.Small);
-        return icon.ToBitmap();
     }
 
     private static Label WrapLabel() => new() { AutoSize = true, Margin = new Padding(3, 3, 3, 6) };

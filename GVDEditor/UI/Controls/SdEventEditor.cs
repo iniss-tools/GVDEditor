@@ -2,6 +2,7 @@
 using ExControls;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.StateDgm;
+using ToolsCore.Icons;
 
 namespace GVDEditor.UI.Controls;
 
@@ -47,6 +48,7 @@ internal sealed class SdEventEditor : SdEditorBase
         AddRow(Resources.FStateDgm_Akcia_NextState, _next);
         AddRow(Resources.FStateDgm_Akcia_ReportKey, _report);
         _errors.SetIconAlignment(_report, ErrorIconAlignment.MiddleLeft);
+        _errors.Icon = IconImages.ErrorIcon(this);
         // upozornenie na neznamy typ hlasenia - pod polom, s odkazom na navrhnuty typ
         var infoRow = Table.RowCount++;
         Table.RowStyles.Add(new RowStyle(SizeType.AutoSize));

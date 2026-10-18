@@ -3,6 +3,7 @@ using ExControls;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Expressions;
 using ToolsCore.Iniss.StateDgm;
+using ToolsCore.Icons;
 
 namespace GVDEditor.UI.Controls;
 
@@ -33,6 +34,7 @@ internal sealed class SdHeaderEditor : SdEditorBase
         AddRow("", _indCat);
         _info = AddInfo("");
         _errors.SetIconAlignment(_indCat, ErrorIconAlignment.MiddleLeft);
+        _errors.Icon = IconImages.ErrorIcon(this);
 
         _comments.TextChanged += (_, _) =>
         {

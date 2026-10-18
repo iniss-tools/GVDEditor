@@ -6,6 +6,7 @@ using GVDEditor.Properties;
 using ToolsCore.Iniss.Registry;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
+using ToolsCore.Icons;
 
 namespace GVDEditor.UI.InissSettings;
 
@@ -16,10 +17,6 @@ namespace GVDEditor.UI.InissSettings;
 /// </summary>
 internal partial class FRunConfigurations : Form
 {
-    private static readonly Bitmap InfoIcon = StockIcon(ShellIconType.Info);
-    private static readonly Bitmap WarningIcon = StockIcon(ShellIconType.Warning);
-    private static readonly Bitmap ErrorIcon = StockIcon(ShellIconType.Error);
-
     private readonly EditorContext _ctx;
     private readonly IInissProcess _iniss;
     private readonly IDialogService _dialogs;
@@ -118,12 +115,6 @@ internal partial class FRunConfigurations : Form
         // sirka textov upozorneni az po skalovani okna; pri zmene sirky (aj posuvnik) znova
         FitChecks();
         pDetail.ClientSizeChanged += (_, _) => FitChecks();
-    }
-
-    private static Bitmap StockIcon(ShellIconType type)
-    {
-        using var icon = new ShellIcon(type, ShellIconSize.Small);
-        return icon.ToBitmap();
     }
 
     private static InissSwitch Switch(string name) => RunConfigurations.Switches.First(s => s.Name == name);
@@ -388,12 +379,12 @@ internal partial class FRunConfigurations : Form
         foreach (var check in checks)
         {
             var row = new FlowLayoutPanel { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, WrapContents = false, Margin = new Padding(0, 0, 0, 2) };
-            var icon = check.Severity switch
+            var icon = IconImages.For(flpChecks, check.Severity switch
             {
-                RunCheckSeverity.Error => ErrorIcon,
-                RunCheckSeverity.Warning => WarningIcon,
-                _ => InfoIcon
-            };
+                RunCheckSeverity.Error => "status-error",
+                RunCheckSeverity.Warning => "status-warning",
+                _ => "status-info"
+            });
             row.Controls.Add(new PictureBox { Image = icon, SizeMode = PictureBoxSizeMode.CenterImage, Size = new Size(20, 20), Margin = new Padding(3, 0, 3, 0) });
             row.Controls.Add(new Label { AutoSize = true, MaximumSize = new Size(ChecksTextWidth(), 0), Margin = new Padding(0, 3, 3, 0), Text = check.Text });
             flpChecks.Controls.Add(row);

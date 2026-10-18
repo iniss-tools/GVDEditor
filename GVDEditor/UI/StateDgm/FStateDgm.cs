@@ -979,16 +979,12 @@ public partial class FStateDgm : Form
         if (dgvProblems.Rows[e.RowIndex].DataBoundItem is not ProblemRow pr) return;
         e.Value = pr.Diagnostic.Severity switch
         {
-            ExprSeverity.Error => ProblemIcon("status-error"),
-            ExprSeverity.Warning => ProblemIcon("status-warning"),
-            _ => ProblemIcon("status-info")
+            ExprSeverity.Error => IconImages.For(dgvProblems, "status-error"),
+            ExprSeverity.Warning => IconImages.For(dgvProblems, "status-warning"),
+            _ => IconImages.For(dgvProblems, "status-info")
         };
         e.FormattingApplied = true;
     }
-
-    // ikona zavaznosti v zozname problemov - podla DPI a pozadia zoznamu
-    private Bitmap? ProblemIcon(string name) =>
-        AppIcons.Get(name, null, dgvProblems.LogicalToDeviceUnits(IconImages.Size), AppIcons.IsDarkBackground(dgvProblems.DefaultCellStyle.BackColor));
 
     private void dgvProblems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {

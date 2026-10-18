@@ -6,6 +6,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
+using ToolsCore.Icons;
 
 namespace GVDEditor.UI.Dialogs;
 
@@ -21,10 +22,6 @@ internal partial class FAnalyzer : Form
     private readonly IAnalyzerHost _host;
 
     // moderne ikony systemu (rovnake ako zoznam chyb v RawBankEditore), nie stare SystemIcons
-    private static readonly Bitmap InfoIcon = StockIcon(ShellIconType.Info);
-    private static readonly Bitmap WarningIcon = StockIcon(ShellIconType.Warning);
-    private static readonly Bitmap ErrorIcon = StockIcon(ShellIconType.Error);
-
     private readonly GVDDirectory _gvd;
     private BindingList<IProblem> _problems = [];
 
@@ -61,12 +58,6 @@ internal partial class FAnalyzer : Form
         var preferred = column.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true);
         var max = Math.Max(LogicalToDeviceUnits(200), dgvResults.ClientSize.Width * 55 / 100);
         column.Width = Math.Clamp(preferred, LogicalToDeviceUnits(200), max);
-    }
-
-    private static Bitmap StockIcon(ShellIconType type)
-    {
-        using var icon = new ShellIcon(type, ShellIconSize.Small);
-        return icon.ToBitmap();
     }
 
     private void bOK_Click(object sender, EventArgs e) => DialogResult = DialogResult.OK;
@@ -123,15 +114,15 @@ internal partial class FAnalyzer : Form
             switch (_problems[e.RowIndex].ProblemType)
             {
                 case Domain.Analysis.ProblemType.Hint:
-                    e.Value = InfoIcon;
+                    e.Value = IconImages.For(dgvResults, "status-info");
                     cell.ToolTipText = Resources.Analyzer_Info;
                     break;
                 case Domain.Analysis.ProblemType.Warning:
-                    e.Value = WarningIcon;
+                    e.Value = IconImages.For(dgvResults, "status-warning");
                     cell.ToolTipText = Resources.Analyzer_Warning;
                     break;
                 case Domain.Analysis.ProblemType.Error:
-                    e.Value = ErrorIcon;
+                    e.Value = IconImages.For(dgvResults, "status-error");
                     cell.ToolTipText = Resources.Analyzer_Error;
                     break;
             }

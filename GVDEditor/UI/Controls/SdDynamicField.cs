@@ -4,6 +4,7 @@ using GVDEditor.Properties;
 using ToolsCore;
 using ToolsCore.Iniss.Expressions;
 using ToolsCore.Iniss.StateDgm;
+using ToolsCore.Icons;
 
 namespace GVDEditor.UI.Controls;
 
@@ -65,6 +66,7 @@ internal sealed class SdDynamicField : UserControl
             Fire();
         };
         _errors.SetIconAlignment(_expr, ErrorIconAlignment.MiddleLeft);
+        _errors.Icon = IconImages.ErrorIcon(this);
     }
 
     /// <summary>Hodnota sa zmenila.</summary>

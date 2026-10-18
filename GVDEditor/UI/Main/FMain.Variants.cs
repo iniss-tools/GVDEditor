@@ -7,6 +7,7 @@ using GVDEditor.Properties;
 using GVDEditor.UI.EditTrain;
 using ToolsCore;
 using ToolsCore.Tools;
+using ToolsCore.Icons;
 
 namespace GVDEditor.UI.Main;
 
@@ -38,7 +39,7 @@ internal partial class FMain
     }
 
     /// <summary>
-    /// Rozsiri stlpec Cislo, aby sa zmestilo poradie varianty aj s upozornenim (napr. „4327  1/2  ⚠“).
+    /// Rozsiri stlpec Cislo, aby sa zmestilo poradie varianty aj s ikonou upozornenia (napr. „4327  1/2“ a ikona).
     /// </summary>
     private void FitNumberColumn()
     {
@@ -47,8 +48,41 @@ internal partial class FMain
             return;
 
         var preferred = column.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true);
+        // ikona upozornenia je v okraji bunky z formatovania - sirka podla obsahu ho nezapocita
+        if (_ctx.Document.Trains.Any(t => Variants.Of(t) is { Count: > 1, Overlaps.Count: > 0 }))
+            preferred += OverlapIconSpace;
         if (preferred > column.Width)
             column.Width = preferred;
+    }
+
+    // okraj ikony upozornenia na prekrytie dni variant v bunke cisla vlaku
+    private const int OverlapIconMargin = 4;
+
+    /// <summary>
+    /// Miesto vpravo v bunke cisla vlaku pre ikonu upozornenia (okraj bunky, preto s nim pocita aj sirka stlpca).
+    /// </summary>
+    private int OverlapIconSpace => dgvTrains.LogicalToDeviceUnits(IconImages.Size + 2 * OverlapIconMargin);
+
+    /// <summary>
+    /// Ikona upozornenia v bunke cisla vlaku, ktorej dni sa prekryvaju s inou variantou.
+    /// </summary>
+    private void dgvTrains_CellPainting(object? sender, DataGridViewCellPaintingEventArgs e)
+    {
+        if (e.Handled || e.Graphics is null || e.RowIndex < 0 || e.RowIndex >= _ctx.Document.Trains.Count || e.ColumnIndex != cisloDataGridViewTextBoxColumn.Index
+            || Variants.Of(_ctx.Document.Trains[e.RowIndex]) is not { Count: > 1, Overlaps.Count: > 0 })
+            return;
+
+        e.Paint(e.ClipBounds, DataGridViewPaintParts.All);
+        var size = dgvTrains.LogicalToDeviceUnits(IconImages.Size);
+        var selected = (e.State & DataGridViewElementStates.Selected) != 0;
+        var back = e.CellStyle is null ? dgvTrains.BackgroundColor : selected ? e.CellStyle.SelectionBackColor : e.CellStyle.BackColor;
+        if (AppIcons.Get("status-warning", null, size, AppIcons.IsDarkBackground(back)) is { } icon)
+        {
+            var x = e.CellBounds.Right - dgvTrains.LogicalToDeviceUnits(OverlapIconMargin) - size;
+            e.Graphics.DrawImage(icon, new Rectangle(x, e.CellBounds.Top + (e.CellBounds.Height - size) / 2, size, size));
+        }
+
+        e.Handled = true;
     }
 
     private Train? CurrentTrain =>

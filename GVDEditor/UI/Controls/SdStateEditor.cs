@@ -3,6 +3,7 @@ using ExControls;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Expressions;
 using ToolsCore.Iniss.StateDgm;
+using ToolsCore.Icons;
 
 namespace GVDEditor.UI.Controls;
 
@@ -86,6 +87,7 @@ internal sealed class SdStateEditor : SdEditorBase
         _condition.Font = Context.ExprFont;
         AddRow(Resources.FStateDgm_AutoCondition, _condition, Resources.FStateDgm_AutoConditionTip);
         _errors.SetIconAlignment(_condition, ErrorIconAlignment.MiddleLeft);
+        _errors.Icon = IconImages.ErrorIcon(this);
 
         AddHeader(Resources.FStateDgm_Tabule);
         _doOn = Check(Resources.FStateDgm_TabuleZapnut);
