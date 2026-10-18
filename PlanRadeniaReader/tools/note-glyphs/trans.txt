@@ -1,0 +1,108 @@
+# skupina<TAB>prepis; @ = cislo v kruzku (den v tyzdni), % = kladivka (pracovne dni), • = odrazka
+0	• č. 21, č. 22 - ide do 15.IX.
+1	• č. 359, č. 366, č. 366, č. 367, č. 368, č. 369, č. 370, por. č. 1, por. č. 2 - Humenné
+2	• č. 359, č. 366 - ide do 30.III. v ①, ⑤, od 31.III. do 27.VIII. v ② - ④, od 4.IX. v ①, ⑤
+3	• č. 366 - ide do 29.III. v ② - ④, ⑥, ⑦, nejde 25.XII., 1.I., ide od 3.IV. do 31.VIII. v ①, ⑤ - ⑦, od 1.IX. v ② - ④, ⑥, ⑦, 4., 7.IX., nejde 2., 3., 5., 6., 8.IX.
+4	• č. 367, č. 368, č. 369, č. 370, por. č. 1, por. č. 2 - nejde 25.XII., 1.I.
+5	• č. 359, č. 367, č. 368, č. 369, č. 370 - nejde 24., 31.XII.
+6	• č. 366 - ide do 29.III. v ② - ④, ⑥, ⑦, 15.XII., nejde 24., 31.XII., ide od 3.IV. do 31.VIII. v ①, ⑤ - ⑦, od 1.IX. v ② - ④, ⑥, ⑦, 4., 7.IX., nejde 2., 3., 5., 6., 8.IX.
+7	• č. 366 - ide od 19.XII. do 30.III. v ①, ⑤, od 31.III. do 27.VIII. v ② - ④, od 4.IX. v ①, ⑤
+8	• č. 21, č. 22 - ide do 14.IX.
+9	• č. 27 - ide od 28.VI. do 14.IX.
+10	• č. 28 - ide od 28.VI.
+11	• č. 1, č. 2, č. 3, č. 4, č. 5, č. 6 - Bratislava hlavná stanica
+12	• č. 7 - ide od 15. do 19.XII., od 7.I. do 30.VI. v %, od 1.IX. v ① - ⑤
+13	• č. 7 - ide od 15. do 19.XII., od 7.I. do 30.VI. v %, od 1.IX. v ① - ⑤
+14	• Vozne č. 1, 2, 3, 4, 5, 6 budú zaradené do 31.VIII. vo vlaku od ŽST Banská Bystrica.
+15	• č. 1, č. 2, č. 3 - nejde 25.XII., 1.I.
+16	• č. 364, č. 373 - ide v ⑤, ⑦, 2., 6., 30.IV., 7.V., 6.VII., 28.IX., 17.XI., nejde od 20.XII. do 3.I., 3., 5.IV., 1., 8.V., 5.VII., 15.XI.
+17	• č. 21 - nejde od 12.X. v ① - ④, ⑥, 15.XI., ide 16.XI.
+18	• č. 19, č. 20 - ide od 1.IX. do 14.X.
+19	• č. 364, č. 365 - ide v ⑤, ⑦, 2., 6., 30.IV., 7.V., 6.VII., 27., 28.X., 17.XI., nejde od 20.XII. do 3.I., 3., 5.IV., 1., 8.V., 5.VII., od 31.VIII. do 15.X., 15.XI.
+20	• č. 364, č. 365 - Nové Zámky
+21	• č. 344 - Krakow Glowny
+22	• č. 348 - Pszczyna
+23	• č. 390, č. 391 - Ujgorod
+24	• č. 10 - ide v ⑤, 2., 30.IV., nejde 26.XII., 2.I., 3.IV., 1.V.
+25	• č. 10 - ide v ⑤, 2., 30.IV., nejde 26.XII., 2.I., 3.IV., 1.V.
+26	• č. 10 - ide v ④, ⑤, 1., 29.IV., nejde od 20.XII. do 7.I., 3.IV., 1.V.
+27	• č. 10 - ide v ④, ⑤, 1., 29.IV., nejde od 20.XII. do 7.I., 2., 3., 30.IV., 1.V.
+28	• č. 11 - ide v ⑤, 2., 30.IV., nejde 26.XII., 2.I., 3.IV., 1.V.
+29	• č. 19, č. 20 - ide od 1.IX. do 14.X.
+30	• č. 364, č. 365 - ide v ⑤, ⑦, 2., 6., 30.IV., 7.V., 6.VII., 27., 28.X., 17.XI., nejde od 20.XII. do 3.I., 3., 5.IV., 1., 8.V., 5.VII., od 31.VIII. do 15.X., 15.XI.
+31	• č. 373 - ide v ⑤, ⑦, 2., 6., 30.IV., 7.V., 6.VII., 28.IX., 17.XI., nejde od 20.XII. do 3.I., 3., 5.IV., 1., 8.V., 5.VII., 15.XI.
+32	• č. 373 - Nové Zámky
+33	• č. 10 - ide v ④, ⑤, 1., 29.IV., 9.V., nejde od 20.XII. do 7.I., 2., 3., 30.IV., 1.V.
+34	• č. 10 - ide v ⑤, 2., 30.IV., nejde 26.XII., 2.I., 3.IV., 1.V.
+35	• č. 373 - ide v ⑤, ⑦, 2., 6., 30.IV., 7.V., 6.VII., 28.IX., 17.XI., nejde od 20.XII. do 3.I., 3., 5.IV., 1., 8.V., 5.VII., 15.XI.
+36	• č. 373, č. 374 - Nové Zámky
+37	• č. 261, č. 262, č. 263 - Berlin Gesundbrunnen
+38	• č. 351, č. 352 - Przemysl Gl.
+39	• č. 353, č. 354 - Warszawa Wschodnia
+40	• č. 364, č. 365 - Praha hl.n.
+41	• por. č. 1 - nejde od 21.XII. do 6.I., od 4. do 6.IV.
+42	• por. č. 4 - ide 6.I., od 11.I. do 28.VI. v ⑦, 6.IV., 31.VIII., nejde 5.IV., ide od 6.IX. v ⑦
+43	• por. č. 4 - ide v ④, ⑤, ⑦, 6., 7.I., 1., 6., 7., 29.IV., 31.VIII., 28.X., nejde od 20.XII. do 5.I., 3., 5.IV., 1.V.
+44	• por. č. 4 - nejde od 20.XII. do 5.I., od 3. do 5.IV.
+45	• por. č. 1 - ide 6.I., od 11.I. do 28.VI. v ⑦, 6.IV., 31.VIII., nejde 5.IV., ide od 6.IX. v ⑦
+46	• por. č. 1 - ide v ④, ⑤, ⑦, 6., 7.I., 1., 6., 7., 29.IV., 31.VIII., 28.X., nejde od 20.XII. do 5.I., 3., 5.IV., 1.V.
+47	• č. 1, č. 2, č. 3, č. 4, č. 5, č. 6 - ide do 30.IV. v ① - ⑤, ⑦, nejde od 20.XII. do 5.I., 3., 5.IV., ide od 4.V. do 31.VII. v ① - ⑤, od 2. do 30.VIII. v ⑦, od 1.IX. v ① - ⑤, ⑦
+48	• č. 10 - ide od 6.II. v ⑤, 2., 30.IV., nejde 3.IV., 1.V.
+49	• č. 10 - ide v ⑤, ⑥, 2., 30.IV., nejde od 21.XII. do 8.I., 4.IV., 2.V.
+50	• č. 10 - ide v ⑤, 2., 30.IV., nejde 26.XII., 2.I., 3.IV., 1.V.
+51	• č. 10 - ide v ④, ⑤, 1., 29.IV., nejde od 20.XII. do 7.I., 2., 3., 30.IV., 1.V.
+52	• č. 10 - ide v ⑦, 31.XII., 6.I., 6.IV., nejde 21., 28.XII., 4.I., 5.IV.
+53	• č. 11 - ide od 6.IX. v ⑦
+54	• č. 10 - ide v ⑦, 6.I., 6.IV., nejde od 15.XII. do 5.I., 5.IV.
+55	• č. 10, č. 11 - ide v ⑦, 6.I., 6.IV., nejde od 15.XII. do 5.I., 5.IV.
+56	• č. 10 - ide v ⑦, 6.I., 4., 6.IV., nejde od 15.XII. do 5.I., 5.IV.
+57	• č. 359, č. 360, č. 361, č. 364, č. 365, č. 367, č. 368, č. 369, č. 370 - nejde 24., 31.XII.
+58	• č. 359, č. 360, č. 361, č. 362, č. 363, č. 364, č. 365, č. 366, č. 366, č. 367, č. 368, č. 369, č. 370 - Humenné
+59	• č. 360, č. 361, č. 364, č. 365, č. 367, č. 368, č. 369, č. 370 - nejde 25.XII., 1.I.
+60	• č. 362, č. 363 - ide od 20.XII. do 29.III. v ⑥, ⑦, od 3.IV. do 31.VIII. v ①, ⑤ - ⑦, od 5.IX. v ⑥, ⑦
+61	• č. 366 - ide 3.IV., od 11.IV. do 6.VI. v ⑥, 1., 8.V., nejde 2., 9.V., ide od 13.VI.
+62	• č. 371 - ide od 14.VI.
+63	• č. 366 - ide 2.IV., od 6.IV. do 12.VI. v ⑤, ⑦, 6., 30.IV., 7.V., nejde 1., 8.V., ide od 14.VI.
+64	• č. 7 - nejde od 14. do 28.IX.
+65	• č. 366 - ide 2.IV., od 6.IV. do 12.VI. v ⑤, ⑦, 6., 30.IV., 7.V., nejde 1., 8.V., ide od 14.VI.
+66	• č. 371 - ide od 14.VI.
+67	• č. 365, č. 366, č. 373 - ide do 15.II.
+68	• č. 362, č. 363, č. 364 - ide od 22.II. v ⑦, 6.IV., 6.VII., 28.IX., 17.XI., nejde 5.IV., 5.VII., 27.IX., 15.XI.
+69	• č. 365 - ide do 15.II., od 22.II. v ⑦, 6.IV., 6.VII., 28.IX., 17.XI., nejde 5.IV., 5.VII., 27.IX., 15.XI.
+70	• č. 366, č. 373 - ide do 15.II.
+71	• č. 364, č. 365 - ide 19.XII., 9.I., od 27.II. v ⑤, 2., 30.IV., 7.V., nejde 3.IV., 1., 8.V.
+72	• č. 366 - ide od 14.VI.
+73	• č. 371 - ide od 13.VI.
+74	• č. 364, č. 365 - ide v ⑤, 2., 30.IV., 7.V., nejde 26.XII., 2.I., 3.IV., 1., 8.V.
+75	• č. 366 - nejde do 13.VI. v ① - ④, ⑥, ⑦, od 26.XII. do 2.I., 3.IV., 1., 8.V., ide 2., 30.IV., 7.V.
+76	• č. 371 - ide od 13.VI.
+77	• č. 1, č. 2, č. 3, č. 4, č. 5, č. 6 - ide do 31.VIII.
+78	• č. 370, por. č. 1, por. č. 2 - ide 4.IX.
+80	• Vozne č. 370, 369, 368, 367, 366, 366, 359 budú zaradené okrem 24., 31.XII. vo vlaku od ŽST Humenné.
+81	• Vozne č. 370, 369, 368, 367, 366, 366, 359 budú zaradené do 29.III. v ② - ④, ⑥, ⑦, 15.XII., okrem 24., 31.XII., od 3.IV. do 31.VIII. v ①, ⑤ - ⑦, od 1.IX. v ② - ④, ⑥, ⑦, okrem od 2. do 8.IX. vo vlaku od ŽST Humenné.
+82	• Vozeň č. bude zaradený okrem 25.XII., 1.I. vo vlaku od ŽST Košice.
+83	• Vozne č. 370, 369, 368, 367, 366, 366, 365, 364, 361, 360, 359 budú zaradené okrem 24., 31.XII. vo vlaku od ŽST Košice.
+84	• č. 7 - nejde od 14. do 28.IX.
+85	• č. 364, č. 365 - ide v ⑤, ⑦, 2., 6., 30.IV., 7.V., 6.VII., 27., 28.X., 17.XI., nejde od 20.XII. do 3.I., 3., 5.IV., 1., 8.V., 5.VII., od 31.VIII. do 15.X., 15.XI.
+86	• č. 368, č. 369, č. 370, č. 372 - ide v ⑦, 6.IV., 6.VII., 28.IX., 28.X., 17.XI., nejde 21., 28.XII., 5.IV., 5.VII., 27.IX., 15.XI.
+87	• č. 371 - ide do 7.VI. v ⑦, 6.IV., nejde 21., 28.XII., 5.IV.
+88	• č. 359, č. 360, č. 361, č. 363, č. 364, č. 365, č. 366, č. 366, č. 367, č. 368, č. 369, č. 370 - Humenné
+89	• č. 363 - ide od 20.XII. do 29.III. v ⑥, ⑦, od 3.IV. do 31.VIII. v ①, ⑤ - ⑦, od 5.IX. v ⑥, ⑦
+90	• por. č. 1 - ide 6.I., od 11.I. do 28.VI. v ⑦, 6.IV., 31.VIII., nejde 5.IV., ide od 6.IX. v ⑦
+91	• por. č. 1 - ide v ④, ⑤, ⑦, 6., 7.I., 1., 6., 7., 29.IV., 31.VIII., 28.X., nejde od 20.XII. do 5.I., 3., 5.IV., 1.V.
+92	• Vozne č. 370, 369, 368, 367, 366, 366, 365, 364, 363, 362, 361, 360, 359 budú zaradené do 29.III. v ⑥, ⑦, od 3.IV. do 31.VIII. v ①, ⑤ - ⑦, od 5.IX. v ⑥, ⑦ vo vlaku od ŽST Poprad-Tatry.
+93	• č. 362 - ide v ⑦, nejde 28.XII., 4.I.
+94	• č. 363, č. 364 - ide v ⑥, nejde 27.XII., 3.I.
+95	• č. 365, č. 366 - ide v ① - ⑥, nejde od 25. do 28.XII., 1.I.
+96	• č. 372 - nejde do 18.X. v ⑥, ⑦, od 25.X. v ⑦, 16.XI.
+97	• č. 364 - ide v ⑥, nejde 27.XII., 3.I.
+98	• č. 365, č. 366 - ide v ①, ⑥, nejde od 21.XII. do 4.I.
+99	• č. 372 - ide v ① - ⑥, nejde od 25. do 28.XII., 1.I.
+100	• č. 365, č. 366 - ide v ⑤, ⑦, nejde od 20.XII. do 3.I.
+101	• č. 365, č. 372 - ide v ⑦, nejde 21., 28.XII.
+102	• č. 366 - ide v ⑤, ⑦, nejde od 20.XII. do 3.I.
+103	• č. 365, č. 372 - ide v ⑦, nejde 21., 28.XII.
+104	• č. 366 - ide v ⑤, ⑦, nejde od 20.XII. do 3.I.
+105	• č. 366 - ide v ⑤, ⑦, nejde od 20.XII. do 3.I.
+0	• č. 27, č. 28 - ide od 29.VI.
+7	• č. 362, č. 363 - ide do 29.III. v ⑥, ⑦, od 3.IV. do 31.VIII. v ①, ⑤ - ⑦, od 5.IX. v ⑥, ⑦

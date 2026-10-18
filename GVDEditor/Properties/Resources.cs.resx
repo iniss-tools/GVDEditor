@@ -3838,4 +3838,64 @@ Před zápisem se uloží záloha.</value>
   <data name="Agent_DeleteTabTab" xml:space="preserve">
     <value>smazání sekce TabTab {0}</value>
   </data>
+  <data name="PlanRadenia_ProgramMissing" xml:space="preserve">
+    <value>Pomocný program {0} nebyl nalezen vedle GVDEditoru.</value>
+  </data>
+  <data name="PlanRadenia_OcrMissing" xml:space="preserve">
+    <value>Windows nemá nainstalované rozpoznávání textu pro slovenštinu. Přidejte slovenštinu v nastavení jazyka Windows.</value>
+  </data>
+  <data name="PlanRadenia_StationNotFound" xml:space="preserve">
+    <value>Stanice se v plánu řazení nenachází.</value>
+  </data>
+  <data name="PlanRadenia_ReaderFailed" xml:space="preserve">
+    <value>Plán řazení se nepodařilo přečíst. {0}</value>
+  </data>
+  <data name="PlanRadenia_StationNotInPlan" xml:space="preserve">
+    <value>Stanice {0} se v plánu řazení nenašla, řazení vlaků se nepřevezme.</value>
+  </data>
+  <data name="PlanRadenia_IssueMissingSound" xml:space="preserve">
+    <value>chybí zvuk {0}</value>
+  </data>
+  <data name="PlanRadenia_IssueUnknownKind" xml:space="preserve">
+    <value>neznámý druh vozu {0}</value>
+  </data>
+  <data name="PlanRadenia_IssueBistro" xml:space="preserve">
+    <value>bistro vůz hlášený jako jídelní</value>
+  </data>
+  <data name="PlanRadenia_IssueMixed" xml:space="preserve">
+    <value>vůz 1. a 2. třídy hlášený jako vůz 2. třídy</value>
+  </data>
+  <data name="PlanRadenia_IssueUnknownStation" xml:space="preserve">
+    <value>neznámá stanice {0}</value>
+  </data>
+  <data name="PlanRadenia_IssueBadNote" xml:space="preserve">
+    <value>nezpracovaná poznámka: {0}</value>
+  </data>
+  <data name="PlanRadenia_IssueUncertainNote" xml:space="preserve">
+    <value>nejistě přečtená poznámka: {0}</value>
+  </data>
+  <data name="PlanRadenia_IssueJoined" xml:space="preserve">
+    <value>vozy přidávané ve stanici {0}</value>
+  </data>
+  <data name="PlanRadenia_IssueNoLocomotive" xml:space="preserve">
+    <value>lokomotiva nenalezena, pořadí vozů zleva</value>
+  </data>
+  <data name="PlanRadenia_IssueCarFixed" xml:space="preserve">
+    <value>číslo vozu {0} v poznámce opraveno na {1}</value>
+  </data>
+  <data name="PlanRadenia_IssueCarMissing" xml:space="preserve">
+    <value>vůz {0} z poznámky není v řazení</value>
+  </data>
+  <data name="FELISImport_PlanFilter" xml:space="preserve">
+    <value>Plán řazení (*.pdf)</value>
+  </data>
+  <data name="FELISImport_PlanMissing" xml:space="preserve">
+    <value>Soubor plánu řazení neexistuje.</value>
+  </data>
+  <data name="FELISReview_RadenieAllDays" xml:space="preserve">
+    <value>každý den</value>
+  </data>
+  <data name="FELISReview_RadeniePlanError" xml:space="preserve">
+    <value>Plán řazení se nepřevezme: {0}</value>
+  </data>
 </root>

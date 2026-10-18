@@ -641,7 +641,7 @@ internal partial class FMain
         }
 
         //kratke hlasenie a poznamky vlakov skontroluje pouzivatel - volby sa tiez zapamataju
-        var review = ElisImportService.BuildReview(import, conversion);
+        var review = ElisImportService.BuildReview(import, conversion, _ctx.Document, _ctx.Workspace.Sounds);
         if (!review.IsEmpty)
         {
             var dialog = new FelisReview(_ctx, review);

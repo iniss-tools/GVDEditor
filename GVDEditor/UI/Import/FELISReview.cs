@@ -32,11 +32,58 @@ internal partial class FelisReview : Form
         InitializeComponent();
         dgvStations.AutoGenerateColumns = false;
         dgvRemarks.AutoGenerateColumns = false;
+        dgvRadenie.AutoGenerateColumns = false;
         this.ApplyThemeAndFonts();
 
         _review = review;
         FillStations();
         FillRemarks(context);
+        FillRadenie();
+    }
+
+    /// <summary>
+    /// Navrhy radenia z planu radenia: kazdy variant (dni s rovnakymi voznami) v samostatnom riadku.
+    /// </summary>
+    private void FillRadenie()
+    {
+        if (_review.Radenia.Count == 0 && _review.PlanError is null)
+        {
+            tcReview.TabPages.Remove(tpRadenie);
+            return;
+        }
+
+        if (_review.PlanError is { } error)
+            lRadenieInfo.Text = string.Format(CultureInfo.CurrentCulture, Resources.FELISReview_RadeniePlanError, error);
+
+        foreach (var proposal in _review.Radenia)
+        {
+            var days = proposal.Radenie.DatObm.Length != 0 ? proposal.Radenie.DatObm
+                : proposal.Radenie.Validity is { } validity ? $"{validity.From.ToString("d", CultureInfo.CurrentCulture)} - {validity.To.ToString("d", CultureInfo.CurrentCulture)}"
+                : Resources.FELISReview_RadenieAllDays;
+            var index = dgvRadenie.Rows.Add(proposal.Take, $"{proposal.Plan.Type} {proposal.TrainNumber}", days, proposal.Radenie.Text,
+                string.Join("; ", proposal.Issues.Distinct().Select(IssueText)));
+            dgvRadenie.Rows[index].Tag = proposal;
+        }
+    }
+
+    private static string IssueText(PlanRadeniaIssue issue)
+    {
+        var data = issue.Text.Split(' ', 2);
+        return issue.Kind switch
+        {
+            PlanRadeniaIssueKind.MissingSound => string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_IssueMissingSound, issue.Text),
+            PlanRadeniaIssueKind.UnknownKind => string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_IssueUnknownKind, issue.Text),
+            PlanRadeniaIssueKind.BistroAsRestaurant => Resources.PlanRadenia_IssueBistro,
+            PlanRadeniaIssueKind.MixedAsSecond => Resources.PlanRadenia_IssueMixed,
+            PlanRadeniaIssueKind.UnknownStation => string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_IssueUnknownStation, issue.Text),
+            PlanRadeniaIssueKind.BadNote => string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_IssueBadNote, issue.Text),
+            PlanRadeniaIssueKind.UncertainNote => string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_IssueUncertainNote, issue.Text),
+            PlanRadeniaIssueKind.JoinedCars => string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_IssueJoined, issue.Text),
+            PlanRadeniaIssueKind.NoLocomotive => Resources.PlanRadenia_IssueNoLocomotive,
+            PlanRadeniaIssueKind.CarFixed => string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_IssueCarFixed, data[0], data.Length > 1 ? data[1] : ""),
+            PlanRadeniaIssueKind.CarMissing => string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_IssueCarMissing, issue.Text),
+            _ => issue.Text
+        };
     }
 
     private void FillStations()
@@ -128,7 +175,6 @@ internal partial class FelisReview : Form
     {
         dgvStations.EndEdit();
         dgvRemarks.EndEdit();
-
         foreach (DataGridViewRow row in dgvStations.Rows)
             if (row.Tag is ElisStationChoice choice)
                 choice.Short = row.Cells[colStShort.Index].Value is true;
@@ -139,6 +185,11 @@ internal partial class FelisReview : Form
                     Value(_flags, row.Cells[colRemFlag.Index].Value, ElisTrainFlag.None),
                     Value(_additions, row.Cells[colRemAddition.Index].Value, ""),
                     Value(_lockouts, row.Cells[colRemLockout.Index].Value, 0));
+
+        dgvRadenie.EndEdit();
+        foreach (DataGridViewRow row in dgvRadenie.Rows)
+            if (row.Tag is RadenieProposal proposal)
+                proposal.Take = row.Cells[colRadTake.Index].Value is true;
 
         // Visible je false aj vtedy, ked je zobrazena druha karta - rozhoduje, ci su vlaky na prevzatie
         _review.KeepTrainShort = _review.Same.Count != 0 && cbKeepTrainShort.Checked;

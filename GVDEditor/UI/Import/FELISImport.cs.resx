@@ -138,6 +138,12 @@
   <data name="rbReplace.Text" xml:space="preserve">
     <value>Odstranit a nahradit naimportovanými</value>
   </data>
+  <data name="lPlan.Text" xml:space="preserve">
+    <value>Plán řazení vlaků ZSSK (PDF, nepovinné):</value>
+  </data>
+  <data name="bPlanBrowse.Text" xml:space="preserve">
+    <value>Procházet...</value>
+  </data>
   <data name="lLearn.Text" xml:space="preserve">
     <value>Krátké hlášení a hlášení dodatků převzít z grafikonu:</value>
   </data>

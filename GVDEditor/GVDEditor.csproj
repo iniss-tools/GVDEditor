@@ -38,6 +38,8 @@
 	<ItemGroup>
 		<!-- ElisData.cs je zdieľaný medzi GVDEditor (tento proces) a ELISBridge (samostatný x86 proces) -->
 		<Compile Include="..\ELISBridge\ElisData.cs" Link="Integration\ElisData.cs" />
+		<!-- PlanRadeniaData.cs je zdieľaný medzi GVDEditor a PlanRadeniaReader (samostatný proces s rozhraniami Windows) -->
+		<Compile Include="..\PlanRadeniaReader\PlanRadeniaData.cs" Link="Integration\PlanRadeniaData.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<Content Include="gvd.ico" />
@@ -213,6 +215,20 @@
 			<ELISBridgeOutput Include="..\ELISBridge\bin\$(Configuration)\net10.0-windows\*.*" />
 		</ItemGroup>
 		<Copy SourceFiles="@(ELISBridgeOutput)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" ContinueOnError="true" />
+	</Target>
+	<!-- PlanRadeniaReader cita plan radenia ZSSK (PDF) rozhraniami Windows (vykreslenie PDF, OCR) - cieli na verziu
+	     Windows, preto je to samostatny proces, ktory sa len zostavi a skopiruje vedla GVDEditor.exe. -->
+	<Target Name="BuildPlanRadeniaReader" BeforeTargets="Build">
+		<!-- vlastny OutDir: pri zostaveni GVDEditora s OutDir by sa inak citacka zapisala rovno tam a kopia nizsie by ju
+		     prepisala starsou z bin -->
+		<MSBuild Projects="..\PlanRadeniaReader\PlanRadeniaReader.csproj" Targets="Build"
+		         Properties="Configuration=$(Configuration);OutDir=$(MSBuildThisFileDirectory)..\PlanRadeniaReader\bin\$(Configuration)\net10.0-windows10.0.19041.0\" />
+	</Target>
+	<Target Name="CopyPlanRadeniaReader" AfterTargets="Build">
+		<ItemGroup>
+			<PlanRadeniaReaderOutput Include="..\PlanRadeniaReader\bin\$(Configuration)\net10.0-windows10.0.19041.0\*.*" />
+		</ItemGroup>
+		<Copy SourceFiles="@(PlanRadeniaReaderOutput)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" ContinueOnError="true" />
 	</Target>
 	<!-- Rozsirenie navrhara ExControls pre VS (editor kolekcie ExOptionsView.Panels) -->
 	<Import Project="..\..\ExControls\ExControls.Designer.targets" />

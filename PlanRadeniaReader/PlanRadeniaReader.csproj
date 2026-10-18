@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<!-- vykreslenie PDF (Windows.Data.Pdf) a OCR (Windows.Media.Ocr) su rozhrania Windows - preto samostatny
+		     proces a nie cast GVDEditora, ktory by inak musel cielit na verziu Windows a niest ich projekciu -->
+		<TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Iniss.PlanRadenia</RootNamespace>
+		<AssemblyName>PlanRadeniaReader</AssemblyName>
+		<LangVersion>default</LangVersion>
+		<SatelliteResourceLanguages>cs</SatelliteResourceLanguages>
+	</PropertyGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Digits.txt" LogicalName="Iniss.PlanRadenia.Digits.txt" />
+		<EmbeddedResource Include="Icons.txt" LogicalName="Iniss.PlanRadenia.Icons.txt" />
+		<EmbeddedResource Include="NoteGlyphs.txt" LogicalName="Iniss.PlanRadenia.NoteGlyphs.txt" />
+	</ItemGroup>
+</Project>

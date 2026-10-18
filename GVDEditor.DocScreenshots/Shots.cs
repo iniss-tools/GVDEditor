@@ -237,7 +237,11 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
 
             // import z ELIS: voľby importu, priradenie staníc, ktoré ELIS pomenúva inak, a kontrola krátkeho hlásenia a poznámok
             Shot("import-z-elis/import-z-elis", () => new FelisImport(gvdDir, trains.Count, Periods(main)),
-                form => ((TextBoxBase)Field(form, "tbAppPath")).Select(0, 0));
+                form =>
+                {
+                    ((TextBoxBase)Field(form, "tbPlan")).Text = @"C:\Plány\Radenie_vlakov_2026.pdf";
+                    ((TextBoxBase)Field(form, "tbAppPath")).Select(0, 0);
+                });
             Shot("import-z-elis/priradenie-stanic",
                 () => new FelisStations(Program.Context, ["Hraničná št.hr.", "Lipová zastávka", "Nová Obec", "Podhradie mesto"], Program.Context.Stations),
                 form => Resize(form, 720, 420));
@@ -732,6 +736,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 Choice("9900140", 6, ElisShortSource.ElisType, true, Iniss.Elis.ElisStop.TypeJunction | Iniss.Elis.ElisStop.TypeRegionalSeat),
                 Choice("9900020", 5, ElisShortSource.None, false, Iniss.Elis.ElisStop.TypeDistrictSeat)
             ],
+            Radenia = RadenieSample(trains),
             Remarks =
             [
                 new ElisRemarkChoice { Text = "vo vlaku je radený bezbariérový vozeň so zníženou podlahou a nástupnou rampou", Trains = 11,
@@ -742,6 +747,41 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 new ElisRemarkChoice { Text = "dámske kupé (kupé pre samostatne cestujúce ženy)", Trains = 2 }
             ]
         };
+    }
+
+    /// <summary>
+    /// Ukážkové návrhy radenia z plánu radenia: radenie s variantom bez vozňa, ktorý nejde každý deň, a radenie
+    /// s chýbajúcou nahrávkou čísla vozňa.
+    /// </summary>
+    private static List<RadenieProposal> RadenieSample(IList<Train> trains)
+    {
+        var from = new DateOnly(2026, 9, 1);
+        var to = new DateOnly(2026, 12, 12);
+
+        RadenieProposal Proposal(Train train, string text, string days, bool take, params PlanRadeniaIssue[] issues)
+        {
+            var proposal = new RadenieProposal
+            {
+                TrainNumber = train.Number,
+                Plan = new Iniss.PlanRadenia.PlanTrain { Type = train.Type.Key, Number = train.Number },
+                Radenie = new Radenie { CisloVlaku = train.Number, Text = text, DatObm = days, Validity = new ValidityPeriod(from, to), DestStation = null! },
+                Take = take
+            };
+            proposal.Issues.AddRange(issues);
+            return proposal;
+        }
+
+        var r1 = trains[0];
+        var r2 = trains[1];
+        return
+        [
+            Proposal(r1, "za rušňom sú radené vozne druhej triedy číslo 369 až 367 a ležadlový vozeň číslo 363.", "ide do 15.IX.", true),
+            Proposal(r1, "za rušňom sú radené vozne druhej triedy číslo 369 až 367.", "ide od 16.IX.", true,
+                new PlanRadeniaIssue(PlanRadeniaIssueKind.UncertainNote, "• č. 363 - ide do 15.IX.")),
+            Proposal(r2, "za rušňom sú radené vozeň prvej triedy číslo 1, vozne druhej triedy číslo 2 až 4 do stanice Veľká Ves a reštauračný vozeň číslo 5.", "", true,
+                new PlanRadeniaIssue(PlanRadeniaIssueKind.CarFixed, "8 5")),
+            Proposal(r2, "za rušňom je radený vozeň druhej triedy číslo", "ide v 6,7", false, new PlanRadeniaIssue(PlanRadeniaIssueKind.MissingSound, "CISLO3/381"))
+        ];
     }
 
     private static List<GVDDirectory> Periods(FMain main) => ((IEnumerable<GVDDirectory>)Field(main, "_periods")).ToList();

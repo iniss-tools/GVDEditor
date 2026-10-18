@@ -93,6 +93,13 @@ public partial class FelisImport : Form
         tbAppPath.Text = dialog.SelectedPath;
     }
 
+    private void bPlanBrowse_Click(object sender, EventArgs e)
+    {
+        using var dialog = new OpenFileDialog { Filter = Resources.FELISImport_PlanFilter + "|*.pdf", CheckFileExists = true };
+        if (dialog.ShowDialog(this) == DialogResult.OK)
+            tbPlan.Text = dialog.FileName;
+    }
+
     private void bImport_Click(object sender, EventArgs e)
     {
         if (!Directory.Exists(tbAppPath.Text))
@@ -105,6 +112,14 @@ public partial class FelisImport : Form
         if (!File.Exists(Path.Combine(tbAppPath.Text, "TT.dll")))
         {
             Utils.ShowError(Resources.FELISImport_V_zadanom_priečinku_sa_nenachádza_knižnica_TT_dll);
+            DialogResult = DialogResult.None;
+            return;
+        }
+
+        var plan = tbPlan.Text.Trim();
+        if (plan.Length != 0 && !File.Exists(plan))
+        {
+            Utils.ShowError(Resources.FELISImport_PlanMissing);
             DialogResult = DialogResult.None;
             return;
         }
@@ -132,7 +147,8 @@ public partial class FelisImport : Form
             ReorderTrains = cbReorder.Checked,
             Mode = mode,
             GenerateTableTexts = cbTableTexts.Checked,
-            LearnFrom = (cbLearn.SelectedItem as LearnItem)?.Grafikon
+            LearnFrom = (cbLearn.SelectedItem as LearnItem)?.Grafikon,
+            PlanPdf = plan.Length != 0 ? plan : null
         };
 
         DialogResult = DialogResult.OK;

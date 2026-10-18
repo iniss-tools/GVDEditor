@@ -101,7 +101,7 @@ public class ElisImportTests
         var savedRemarks = new Dictionary<string, ElisRemarkAction> { ["reštauračný alebo bistro vozeň"] = new(ElisTrainFlag.None, "1003", 0) };
         var import = Import(client, data, [source], new Dictionary<string, bool> { ["4"] = false }, savedRemarks);
 
-        var review = ElisImportService.BuildReview(import, conversion);
+        var review = ElisImportService.BuildReview(import, conversion, new GrafikonDocument(), []);
 
         var byId = review.Stations.ToDictionary(c => c.Station.ID);
         Assert.AreEqual(2, byId["4"].Trains);
@@ -125,7 +125,7 @@ public class ElisImportTests
             Stop(7, "Krajská", ElisStop.TypeRegionalSeat), Stop(5, "Prejazd", ElisStop.TypeDistrictSeat), Stop(6, "Cieľ")]));
         var client = Client();
 
-        var review = ElisImportService.BuildReview(Import(client, data), client.Convert(data));
+        var review = ElisImportService.BuildReview(Import(client, data), client.Convert(data), new GrafikonDocument(), []);
 
         CollectionAssert.AreEquivalent(new[] { "1", "4" }, review.Stations.Where(c => c.Short).Select(c => c.Station.ID).ToArray());
         Assert.IsTrue(review.Stations.Where(c => c.Short).All(c => c.Source == ElisShortSource.ElisType));
@@ -141,7 +141,7 @@ public class ElisImportTests
         var same = new Train { Number = "1", Name = "", Type = Os, Routing = Routing.Vychadzajuci, DateLimitText = "" };
         same.StaniceDoSmeru.AddRange([new Station("1", "Horná", false, true), new Station("6", "Cieľ", true, true)]);
 
-        var review = ElisImportService.BuildReview(Import(client, data, [same]), conversion);
+        var review = ElisImportService.BuildReview(Import(client, data, [same]), conversion, new GrafikonDocument(), []);
 
         Assert.IsEmpty(review.Same);
         Assert.AreEqual((ElisShortSource.ElisType, true), (review.Stations.Single().Source, review.Stations.Single().Short));
@@ -154,7 +154,7 @@ public class ElisImportTests
         var client = Client();
         var conversion = client.Convert(data);
         var import = Import(client, data);
-        var review = ElisImportService.BuildReview(import, conversion);
+        var review = ElisImportService.BuildReview(import, conversion, new GrafikonDocument(), []);
         review.Stations.Single(c => c.Station.ID == "4").Short = true;
         review.Remarks.Single().Action = new ElisRemarkAction(ElisTrainFlag.None, "1003", 0);
 
@@ -190,7 +190,7 @@ public class ElisImportTests
         var other = new Train { Number = "2", Name = "", Type = Os, Routing = Routing.Vychadzajuci, DateLimitText = "" };
         other.StaniceDoSmeru.AddRange([new Station("4", "Dolná", true, true), new Station("6", "Cieľ", true, true), new Station("7", "Krajská", true, true)]);
         var import = Import(client, data, [same, other]);
-        var review = ElisImportService.BuildReview(import, conversion);
+        var review = ElisImportService.BuildReview(import, conversion, new GrafikonDocument(), []);
 
         Assert.AreSame(same, review.Same[conversion.Trains[0]]);
         review.Stations.Single().Short = true;

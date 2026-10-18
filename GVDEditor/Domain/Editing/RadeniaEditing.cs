@@ -1,3 +1,5 @@
+using System.Collections;
+using GVDEditor.Domain.Calendar;
 using GVDEditor.Domain.Entities;
 
 namespace GVDEditor.Domain.Editing;
@@ -130,6 +132,45 @@ internal sealed class RadeniaEditing
             vlak.Radenia.Clear();
             vlak.Radenia.AddRange(globalRadenia.Where(r => r.CisloVlaku == vlak.Number));
         }
+    }
+
+    /// <summary>
+    /// Odoberie radeniu dni v obdobi <paramref name="period" /> - napr. ked ho v tom obdobi nahradi radenie z planu
+    /// radenia. Radenie bez obdobia platnosti plati cele obdobie grafikonu.
+    /// </summary>
+    /// <param name="radenie">Radenie (meni sa na mieste).</param>
+    /// <param name="period">Obdobie, v ktorom radenie uz neplati.</param>
+    /// <param name="gvdFrom">Zaciatok obdobia grafikonu.</param>
+    /// <param name="gvdTo">Koniec obdobia grafikonu.</param>
+    /// <returns><see langword="false" />, ak radeniu neostal ziadny den (treba ho odstranit).</returns>
+    public static bool WithoutPeriod(Radenie radenie, ValidityPeriod period, DateOnly gvdFrom, DateOnly gvdTo)
+    {
+        var validity = radenie.Validity ?? new ValidityPeriod(gvdFrom, gvdTo);
+        if (period.To < validity.From || period.From > validity.To)
+            return true;
+
+        var limit = new DateLimit(validity.From, validity.To, insertMarks: false);
+        BitArray bits;
+        try
+        {
+            bits = limit.TextToBitArray(radenie.DatObm ?? "");
+        }
+        catch (Exception e) when (e is DateLimit.ParseException or ArgumentException or FormatException)
+        {
+            // nespracovatelne dni - radenie ostane, ako je
+            return true;
+        }
+
+        for (var day = validity.From; day <= validity.To; day = day.AddDays(1))
+            if (day >= period.From && day <= period.To)
+                bits[day.DayNumber - validity.From.DayNumber] = false;
+
+        if (!bits.Cast<bool>().Any(b => b))
+            return false;
+
+        radenie.Validity = validity;
+        radenie.DatObm = limit.BitArrayToText(bits);
+        return true;
     }
 
     /// <summary>

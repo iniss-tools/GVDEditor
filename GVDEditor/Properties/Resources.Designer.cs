@@ -10965,5 +10965,185 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("Agent_DeleteTabTab", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pomocný program {0} sa nenašiel vedľa GVDEditora..
+        /// </summary>
+        internal static string PlanRadenia_ProgramMissing {
+            get {
+                return ResourceManager.GetString("PlanRadenia_ProgramMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows nemá nainštalované rozpoznávanie textu pre slovenčinu. Pridajte slovenčinu v nastaveniach jazyka Windows..
+        /// </summary>
+        internal static string PlanRadenia_OcrMissing {
+            get {
+                return ResourceManager.GetString("PlanRadenia_OcrMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanica sa v pláne radenia nenachádza..
+        /// </summary>
+        internal static string PlanRadenia_StationNotFound {
+            get {
+                return ResourceManager.GetString("PlanRadenia_StationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plán radenia sa nepodarilo prečítať. {0}.
+        /// </summary>
+        internal static string PlanRadenia_ReaderFailed {
+            get {
+                return ResourceManager.GetString("PlanRadenia_ReaderFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanica {0} sa v pláne radenia nenašla, radenie vlakov sa neprevezme..
+        /// </summary>
+        internal static string PlanRadenia_StationNotInPlan {
+            get {
+                return ResourceManager.GetString("PlanRadenia_StationNotInPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to chýba zvuk {0}.
+        /// </summary>
+        internal static string PlanRadenia_IssueMissingSound {
+            get {
+                return ResourceManager.GetString("PlanRadenia_IssueMissingSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to neznámy druh vozňa {0}.
+        /// </summary>
+        internal static string PlanRadenia_IssueUnknownKind {
+            get {
+                return ResourceManager.GetString("PlanRadenia_IssueUnknownKind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bistro vozeň hlásený ako reštauračný.
+        /// </summary>
+        internal static string PlanRadenia_IssueBistro {
+            get {
+                return ResourceManager.GetString("PlanRadenia_IssueBistro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to vozeň 1. a 2. triedy hlásený ako vozeň 2. triedy.
+        /// </summary>
+        internal static string PlanRadenia_IssueMixed {
+            get {
+                return ResourceManager.GetString("PlanRadenia_IssueMixed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to neznáma stanica {0}.
+        /// </summary>
+        internal static string PlanRadenia_IssueUnknownStation {
+            get {
+                return ResourceManager.GetString("PlanRadenia_IssueUnknownStation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to nespracovaná poznámka: {0}.
+        /// </summary>
+        internal static string PlanRadenia_IssueBadNote {
+            get {
+                return ResourceManager.GetString("PlanRadenia_IssueBadNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to neisto prečítaná poznámka: {0}.
+        /// </summary>
+        internal static string PlanRadenia_IssueUncertainNote {
+            get {
+                return ResourceManager.GetString("PlanRadenia_IssueUncertainNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to vozne pridávané v stanici {0}.
+        /// </summary>
+        internal static string PlanRadenia_IssueJoined {
+            get {
+                return ResourceManager.GetString("PlanRadenia_IssueJoined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to rušeň sa nenašiel, poradie vozňov zľava.
+        /// </summary>
+        internal static string PlanRadenia_IssueNoLocomotive {
+            get {
+                return ResourceManager.GetString("PlanRadenia_IssueNoLocomotive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to číslo vozňa {0} v poznámke opravené na {1}.
+        /// </summary>
+        internal static string PlanRadenia_IssueCarFixed {
+            get {
+                return ResourceManager.GetString("PlanRadenia_IssueCarFixed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to vozeň {0} z poznámky nie je v radení.
+        /// </summary>
+        internal static string PlanRadenia_IssueCarMissing {
+            get {
+                return ResourceManager.GetString("PlanRadenia_IssueCarMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plán radenia (*.pdf).
+        /// </summary>
+        internal static string FELISImport_PlanFilter {
+            get {
+                return ResourceManager.GetString("FELISImport_PlanFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor plánu radenia neexistuje..
+        /// </summary>
+        internal static string FELISImport_PlanMissing {
+            get {
+                return ResourceManager.GetString("FELISImport_PlanMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to každý deň.
+        /// </summary>
+        internal static string FELISReview_RadenieAllDays {
+            get {
+                return ResourceManager.GetString("FELISReview_RadenieAllDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plán radenia sa neprevezme: {0}.
+        /// </summary>
+        internal static string FELISReview_RadeniePlanError {
+            get {
+                return ResourceManager.GetString("FELISReview_RadeniePlanError", resourceCulture);
+            }
+        }
     }
 }

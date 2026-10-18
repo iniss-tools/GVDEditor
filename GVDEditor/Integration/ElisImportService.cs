@@ -6,6 +6,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.Properties;
 using Iniss.Elis;
+using Iniss.PlanRadenia;
 using ToolsCore.Iniss.Entities;
 using ToolsCore.XML;
 
@@ -59,6 +60,9 @@ internal sealed class ElisImportOptions
     /// stanice); <see langword="null" /> = nepreberat.
     /// </summary>
     public GVDDirectory? LearnFrom { get; init; }
+
+    /// <summary>Plan radenia vlakov ZSSK (PDF), z ktoreho sa vlakom navrhne radenie; <see langword="null" /> = bez radenia.</summary>
+    public string? PlanPdf { get; init; }
 }
 
 /// <summary>
@@ -97,6 +101,15 @@ internal sealed class ElisImport
     /// Priradenie poznamok vlakov z predchadzajuceho importu.
     /// </summary>
     public required Dictionary<string, ElisRemarkAction> SavedRemarks { get; init; }
+
+    /// <summary>Vlaky stanice v plane radenia; <see langword="null" />, ak sa plan necital alebo sa necital uspesne.</summary>
+    public PlanResult? Plan { get; init; }
+
+    /// <summary>Preco sa plan radenia nepodarilo precitat (sprava pre pouzivatela), inak <see langword="null" />.</summary>
+    public string? PlanError { get; init; }
+
+    /// <summary>Nazvy stanic pre poznamky planu a stanice grafikonu, ku ktorym patria.</summary>
+    public Dictionary<string, Station> PlanStations { get; init; } = [];
 }
 
 /// <summary>
@@ -169,8 +182,14 @@ internal sealed class ElisReview
     /// <summary>Ci si vlaky, ktore v grafikone su, ponechaju svoje kratke hlasenie.</summary>
     public bool KeepTrainShort { get; set; } = true;
 
+    /// <summary>Navrhy radenia vlakov z planu radenia.</summary>
+    public List<RadenieProposal> Radenia { get; init; } = [];
+
+    /// <summary>Preco sa plan radenia nepodarilo precitat, inak <see langword="null" />.</summary>
+    public string? PlanError { get; init; }
+
     /// <summary>Ci je co kontrolovat.</summary>
-    public bool IsEmpty => Stations.Count == 0 && Remarks.Count == 0;
+    public bool IsEmpty => Stations.Count == 0 && Remarks.Count == 0 && Radenia.Count == 0 && PlanError is null;
 }
 
 /// <summary>
@@ -207,7 +226,11 @@ internal static class ElisImportService
         var learnPath = learnFrom?.Dir.FullPath;
         var learnIsOther = learnPath != null && !PathsEqual(learnPath, gvdPath);
 
-        return Task.Run(() =>
+        var planPdf = options.PlanPdf;
+        var stationName = gvd.ThisStation.Name;
+        var candidates = string.IsNullOrEmpty(planPdf) ? [] : PlanStations.Candidates(stations.All);
+
+        return Task.Run(async () =>
         {
             var source = learnFrom is null ? [] : learnIsOther ? LoadTrains(learnFrom, workspace) : current;
 
@@ -237,6 +260,7 @@ internal static class ElisImportService
             };
 
             var data = client.LoadData();
+            var (plan, planError) = string.IsNullOrEmpty(planPdf) ? (null, null) : await ReadPlanAsync(planPdf, stationName, candidates).ConfigureAwait(false);
             return new ElisImport
             {
                 Client = client,
@@ -248,9 +272,32 @@ internal static class ElisImportService
                 GenerateTableTexts = options.GenerateTableTexts,
                 SourceTrains = source,
                 SavedShort = savedShort,
-                SavedRemarks = savedRemarks
+                SavedRemarks = savedRemarks,
+                Plan = plan,
+                PlanError = planError,
+                PlanStations = candidates
             };
         });
+    }
+
+    /// <summary>
+    /// Precita strany stanice v plane radenia (stanica podla nazvu v hlavicke strany).
+    /// </summary>
+    /// <returns>Plan, alebo sprava, preco sa ho nepodarilo precitat.</returns>
+    private static async Task<(PlanResult? Plan, string? Error)> ReadPlanAsync(string pdf, string stationName, Dictionary<string, Station> candidates)
+    {
+        try
+        {
+            var pages = (await PlanRadeniaReaderClient.ListStationsAsync(pdf, CancellationToken.None).ConfigureAwait(false))
+                .Where(p => PlanStations.Same(p.Station, stationName)).Select(p => p.Page).ToList();
+            if (pages.Count == 0)
+                return (null, string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_StationNotInPlan, stationName));
+            return (await PlanRadeniaReaderClient.ReadAsync(pdf, pages, candidates.Keys, null, CancellationToken.None).ConfigureAwait(false), null);
+        }
+        catch (Exception e) when (e is InvalidOperationException or IOException or InvalidDataException or System.Xml.XmlException)
+        {
+            return (null, e.Message);
+        }
     }
 
     /// <summary>
@@ -282,7 +329,11 @@ internal static class ElisImportService
     /// Pripravi volby na kontrolu: stanice hlasene medzi koncovymi a poznamky vlakov, s navrhom z predchadzajuceho
     /// importu, z vlakov grafikonu alebo podla druhu stanice v ELIS.
     /// </summary>
-    public static ElisReview BuildReview(ElisImport import, ElisConversion conversion)
+    /// <param name="import">Import.</param>
+    /// <param name="conversion">Naimportovane vlaky.</param>
+    /// <param name="document">Otvoreny grafikon - radenia (hlasenia, v ktorych sa radenie hlasi).</param>
+    /// <param name="sounds">Zvuky zakladneho jazyka banky - z nich sa sklada hlasenie radenia.</param>
+    public static ElisReview BuildReview(ElisImport import, ElisConversion conversion, GrafikonDocument document, IReadOnlyList<FyzSound> sounds)
     {
         // grafikon, ktory medzi koncovymi stanicami v kratkom hlaseni nehlasi nic (napr. z predchadzajuceho importu),
         // nie je vzor - prevzatie by len zopakovalo prazdne stlpce Smer a Zo smeru
@@ -315,8 +366,51 @@ internal static class ElisImportService
             .ThenBy(choice => choice.Text, StringComparer.CurrentCulture)
             .ToList();
 
-        return new ElisReview { Stations = stations, Remarks = remarks, Same = same };
+        return new ElisReview
+        {
+            Stations = stations,
+            Remarks = remarks,
+            Same = same,
+            Radenia = ProposeRadenia(import, conversion, document, sounds),
+            PlanError = import.PlanError
+        };
     }
+
+    /// <summary>
+    /// Navrhy radenia naimportovanych vlakov z planu radenia - vlak planu k vlakom s rovnakym cislom.
+    /// </summary>
+    private static List<RadenieProposal> ProposeRadenia(ElisImport import, ElisConversion conversion, GrafikonDocument document, IReadOnlyList<FyzSound> sounds)
+    {
+        if (import.Plan is not { } plan)
+            return [];
+
+        var gvd = import.GVDInfo;
+        var context = new PlanRadeniaContext
+        {
+            Sounds = sounds,
+            From = gvd.StartValidTimeTable,
+            To = gvd.EndValidTimeTable,
+            Station = name => PlanStations.Resolve(name, import.PlanStations),
+            // hlasenia, v ktorych sa radenie hlasi, ako ich ma vacsina radeni grafikonu
+            Reports = document.Radenia.Select(r => r.ChosenReports).Where(r => r.Count > 0)
+                .GroupBy(ReportsKey).OrderByDescending(g => g.Count()).Select(g => g.First()).FirstOrDefault() ?? []
+        };
+        var planFrom = DateOnly.TryParseExact(plan.ValidFrom, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var from) ? from : context.From;
+        var planTo = DateOnly.TryParseExact(plan.ValidTo, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var to) ? to : context.To;
+
+        var result = new List<RadenieProposal>();
+        foreach (var planTrain in plan.Stations.SelectMany(s => s.Trains).DistinctBy(p => p.Number))
+        {
+            var trains = conversion.Trains.Where(train => train.Number == planTrain.Number).ToList();
+            if (trains.Count > 0)
+                result.AddRange(PlanRadeniaConversion.Propose(planTrain, trains, planFrom, planTo, context));
+        }
+
+        return result;
+    }
+
+    private static string ReportsKey(List<ChosenReportType> reports) =>
+        string.Join(";", reports.Select(r => r.Type.Key + ":" + string.Join(",", r.Variants.Select(v => v.Key))));
 
     /// <summary>
     /// Ulozi volby do grafikonu, aby ich dalsi import navrhol. Volby stanic a poznamok, ktore tento import nemal,
@@ -379,6 +473,22 @@ internal static class ElisImportService
                     ? TrainDraft.CopyDodatok(template).ChosenReports
                     : AllReports(train.Routing, document.ReportTypes, document.ReportVariants)
             };
+        }
+
+        // prevzate radenia z planu nahradia radenia vlaku s tym istym cislom v obdobi planu; mimo neho ostanu
+        foreach (var group in review.Radenia.Where(p => p.Take).GroupBy(p => p.TrainNumber))
+        {
+            var period = group.First().Radenie.Validity ?? new ValidityPeriod(import.GVDInfo.StartValidTimeTable, import.GVDInfo.EndValidTimeTable);
+            foreach (var radenie in document.Radenia.Where(r => r.CisloVlaku == group.Key).ToList())
+                if (!RadeniaEditing.WithoutPeriod(radenie, period, import.GVDInfo.StartValidTimeTable, import.GVDInfo.EndValidTimeTable))
+                    document.Radenia.Remove(radenie);
+
+            foreach (var proposal in group)
+            {
+                if (proposal.Radenie.ChosenReports.Count == 0 && conversion.Trains.FirstOrDefault(t => t.Number == group.Key) is { } first)
+                    proposal.Radenie.ChosenReports = AllReports(first.Routing, document.ReportTypes, document.ReportVariants);
+                document.Radenia.Add(proposal.Radenie);
+            }
         }
 
         foreach (var train in conversion.Trains)

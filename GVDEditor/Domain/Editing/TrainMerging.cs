@@ -105,7 +105,7 @@ public static partial class TrainMerging
     /// <summary>
     /// Dni, v ktore vlak premava; prazdne, ak sa datumove obmedzenie neda spracovat.
     /// </summary>
-    private static HashSet<DateOnly> RunningDays(Train train)
+    internal static HashSet<DateOnly> RunningDays(Train train)
     {
         try
         {

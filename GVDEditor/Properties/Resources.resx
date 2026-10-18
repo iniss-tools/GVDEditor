@@ -3853,4 +3853,64 @@ Pred zápisom sa uloží záloha.</value>
   <data name="Agent_DeleteTabTab" xml:space="preserve">
     <value>zmazanie sekcie TabTab {0}</value>
   </data>
+  <data name="PlanRadenia_ProgramMissing" xml:space="preserve">
+    <value>Pomocný program {0} sa nenašiel vedľa GVDEditora.</value>
+  </data>
+  <data name="PlanRadenia_OcrMissing" xml:space="preserve">
+    <value>Windows nemá nainštalované rozpoznávanie textu pre slovenčinu. Pridajte slovenčinu v nastaveniach jazyka Windows.</value>
+  </data>
+  <data name="PlanRadenia_StationNotFound" xml:space="preserve">
+    <value>Stanica sa v pláne radenia nenachádza.</value>
+  </data>
+  <data name="PlanRadenia_ReaderFailed" xml:space="preserve">
+    <value>Plán radenia sa nepodarilo prečítať. {0}</value>
+  </data>
+  <data name="PlanRadenia_StationNotInPlan" xml:space="preserve">
+    <value>Stanica {0} sa v pláne radenia nenašla, radenie vlakov sa neprevezme.</value>
+  </data>
+  <data name="PlanRadenia_IssueMissingSound" xml:space="preserve">
+    <value>chýba zvuk {0}</value>
+  </data>
+  <data name="PlanRadenia_IssueUnknownKind" xml:space="preserve">
+    <value>neznámy druh vozňa {0}</value>
+  </data>
+  <data name="PlanRadenia_IssueBistro" xml:space="preserve">
+    <value>bistro vozeň hlásený ako reštauračný</value>
+  </data>
+  <data name="PlanRadenia_IssueMixed" xml:space="preserve">
+    <value>vozeň 1. a 2. triedy hlásený ako vozeň 2. triedy</value>
+  </data>
+  <data name="PlanRadenia_IssueUnknownStation" xml:space="preserve">
+    <value>neznáma stanica {0}</value>
+  </data>
+  <data name="PlanRadenia_IssueBadNote" xml:space="preserve">
+    <value>nespracovaná poznámka: {0}</value>
+  </data>
+  <data name="PlanRadenia_IssueUncertainNote" xml:space="preserve">
+    <value>neisto prečítaná poznámka: {0}</value>
+  </data>
+  <data name="PlanRadenia_IssueJoined" xml:space="preserve">
+    <value>vozne pridávané v stanici {0}</value>
+  </data>
+  <data name="PlanRadenia_IssueNoLocomotive" xml:space="preserve">
+    <value>rušeň sa nenašiel, poradie vozňov zľava</value>
+  </data>
+  <data name="PlanRadenia_IssueCarFixed" xml:space="preserve">
+    <value>číslo vozňa {0} v poznámke opravené na {1}</value>
+  </data>
+  <data name="PlanRadenia_IssueCarMissing" xml:space="preserve">
+    <value>vozeň {0} z poznámky nie je v radení</value>
+  </data>
+  <data name="FELISImport_PlanFilter" xml:space="preserve">
+    <value>Plán radenia (*.pdf)</value>
+  </data>
+  <data name="FELISImport_PlanMissing" xml:space="preserve">
+    <value>Súbor plánu radenia neexistuje.</value>
+  </data>
+  <data name="FELISReview_RadenieAllDays" xml:space="preserve">
+    <value>každý deň</value>
+  </data>
+  <data name="FELISReview_RadeniePlanError" xml:space="preserve">
+    <value>Plán radenia sa neprevezme: {0}</value>
+  </data>
 </root>

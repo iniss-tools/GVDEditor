@@ -314,4 +314,28 @@ public class RadeniaEditingTests
         CollectionAssert.AreEqual(new[] { r1 }, g.A.Radenia);
         CollectionAssert.DoesNotContain(g.Global, r2);
     }
+    [TestMethod]
+    public void BezObdobia_RadenieOstaneMimoObdobia()
+    {
+        var radenie = NewRadenie("1001", "");
+        radenie.Validity = null;
+        var gvdFrom = new DateOnly(2025, 12, 14);
+        var gvdTo = new DateOnly(2026, 12, 12);
+
+        var kept = RadeniaEditing.WithoutPeriod(radenie, new ValidityPeriod(new DateOnly(2026, 9, 1), gvdTo), gvdFrom, gvdTo);
+
+        Assert.IsTrue(kept);
+        Assert.AreEqual(new ValidityPeriod(gvdFrom, gvdTo), radenie.Validity);
+        Assert.AreEqual("ide do 31.VIII.", radenie.DatObm);
+    }
+
+    [TestMethod]
+    public void BezObdobia_CeleVObdobi_RadenieSaOdstrani()
+    {
+        var radenie = NewRadenie("1001", "");
+        radenie.Validity = new ValidityPeriod(new DateOnly(2026, 10, 1), new DateOnly(2026, 10, 31));
+
+        Assert.IsFalse(RadeniaEditing.WithoutPeriod(radenie, new ValidityPeriod(new DateOnly(2026, 9, 1), new DateOnly(2026, 12, 12)),
+            new DateOnly(2025, 12, 14), new DateOnly(2026, 12, 12)));
+    }
 }

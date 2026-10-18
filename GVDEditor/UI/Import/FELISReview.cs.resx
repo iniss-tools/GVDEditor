@@ -171,4 +171,25 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Kontrola importu z programu ELIS</value>
   </data>
+  <data name="colRadTake.HeaderText" xml:space="preserve">
+    <value>Převzít</value>
+  </data>
+  <data name="colRadTrain.HeaderText" xml:space="preserve">
+    <value>Vlak</value>
+  </data>
+  <data name="colRadDays.HeaderText" xml:space="preserve">
+    <value>Dny</value>
+  </data>
+  <data name="colRadText.HeaderText" xml:space="preserve">
+    <value>Hlášení řazení</value>
+  </data>
+  <data name="colRadIssues.HeaderText" xml:space="preserve">
+    <value>Zkontrolovat</value>
+  </data>
+  <data name="lRadenieInfo.Text" xml:space="preserve">
+    <value>Řazení vlaků z plánu řazení ZSSK. Vozy, které nejedou každý den, rozdělí řazení na více variant. Řazení s chybějícím zvukem ve zvukové bance se nepřevezme, dokud ho nezaškrtnete.</value>
+  </data>
+  <data name="tpRadenie.Text" xml:space="preserve">
+    <value>Řazení vlaků</value>
+  </data>
 </root>

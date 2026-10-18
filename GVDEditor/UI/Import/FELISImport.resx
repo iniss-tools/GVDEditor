@@ -282,6 +282,78 @@
   <data name="&gt;&gt;rbReplace.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="lPlan.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lPlan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 500</value>
+  </data>
+  <data name="lPlan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 20</value>
+  </data>
+  <data name="lPlan.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="lPlan.Text" xml:space="preserve">
+    <value>Plán radenia vlakov ZSSK (PDF, nepovinné):</value>
+  </data>
+  <data name="&gt;&gt;lPlan.Name" xml:space="preserve">
+    <value>lPlan</value>
+  </data>
+  <data name="&gt;&gt;lPlan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lPlan.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lPlan.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tbPlan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 524</value>
+  </data>
+  <data name="tbPlan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>520, 26</value>
+  </data>
+  <data name="tbPlan.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;tbPlan.Name" xml:space="preserve">
+    <value>tbPlan</value>
+  </data>
+  <data name="&gt;&gt;tbPlan.Type" xml:space="preserve">
+    <value>ExControls.ExTextBox, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tbPlan.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tbPlan.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="bPlanBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>543, 518</value>
+  </data>
+  <data name="bPlanBrowse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 40</value>
+  </data>
+  <data name="bPlanBrowse.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="bPlanBrowse.Text" xml:space="preserve">
+    <value>Prehľadávať...</value>
+  </data>
+  <data name="&gt;&gt;bPlanBrowse.Name" xml:space="preserve">
+    <value>bPlanBrowse</value>
+  </data>
+  <data name="&gt;&gt;bPlanBrowse.Type" xml:space="preserve">
+    <value>ExControls.ExButton, ExControls, Version=1.1.9741.36744, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bPlanBrowse.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bPlanBrowse.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="cbLearn.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 458</value>
   </data>
@@ -301,7 +373,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cbLearn.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="lLearn.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -328,7 +400,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lLearn.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="gbOptions.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 322</value>
@@ -352,7 +424,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;gbOptions.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="gbTrains.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 186</value>
@@ -376,7 +448,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;gbTrains.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="tbReg.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 108</value>
@@ -397,7 +469,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tbReg.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="lReg.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -424,7 +496,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lReg.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="lStation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -451,7 +523,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lStation.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -478,7 +550,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="bBrowse.Location" type="System.Drawing.Point, System.Drawing">
     <value>543, 32</value>
@@ -502,7 +574,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bBrowse.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="tbAppPath.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 38</value>
@@ -523,19 +595,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tbAppPath.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="bStorno.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 506</value>
+    <value>377, 572</value>
   </data>
   <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 38</value>
   </data>
   <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="bStorno.Text" xml:space="preserve">
     <value>Zrušiť</value>
@@ -550,19 +622,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bStorno.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="bImport.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="bImport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>224, 506</value>
+    <value>224, 572</value>
   </data>
   <data name="bImport.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 38</value>
   </data>
   <data name="bImport.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="bImport.Text" xml:space="preserve">
     <value>Import</value>
@@ -577,7 +649,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bImport.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -586,7 +658,7 @@
     <value>9, 20</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>688, 560</value>
+    <value>688, 626</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Import vlakov z programu ELIS</value>

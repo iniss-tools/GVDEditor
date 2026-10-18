@@ -46,6 +46,14 @@ namespace GVDEditor.UI.Import
             this.colRemFlag = new ExControls.DataGridViewExComboBoxColumn();
             this.colRemAddition = new ExControls.DataGridViewExComboBoxColumn();
             this.colRemLockout = new ExControls.DataGridViewExComboBoxColumn();
+            this.tpRadenie = new System.Windows.Forms.TabPage();
+            this.lRadenieInfo = new System.Windows.Forms.Label();
+            this.dgvRadenie = new System.Windows.Forms.DataGridView();
+            this.colRadTake = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colRadTrain = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRadDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRadText = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRadIssues = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bOK = new ExControls.ExButton();
             this.bStorno = new ExControls.ExButton();
             this.tcReview.SuspendLayout();
@@ -53,6 +61,8 @@ namespace GVDEditor.UI.Import
             ((System.ComponentModel.ISupportInitialize)(this.dgvStations)).BeginInit();
             this.tpRemarks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRemarks)).BeginInit();
+            this.tpRadenie.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRadenie)).BeginInit();
             this.SuspendLayout();
             //
             // tcReview
@@ -60,6 +70,7 @@ namespace GVDEditor.UI.Import
             resources.ApplyResources(this.tcReview, "tcReview");
             this.tcReview.Controls.Add(this.tpShort);
             this.tcReview.Controls.Add(this.tpRemarks);
+            this.tcReview.Controls.Add(this.tpRadenie);
             this.tcReview.Name = "tcReview";
             this.tcReview.SelectedIndex = 0;
             //
@@ -125,6 +136,32 @@ namespace GVDEditor.UI.Import
             this.dgvRemarks.Name = "dgvRemarks";
             this.dgvRemarks.RowHeadersVisible = false;
             this.dgvRemarks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            //
+            // tpRadenie
+            //
+            this.tpRadenie.Controls.Add(this.dgvRadenie);
+            this.tpRadenie.Controls.Add(this.lRadenieInfo);
+            resources.ApplyResources(this.tpRadenie, "tpRadenie");
+            this.tpRadenie.Name = "tpRadenie";
+            this.tpRadenie.UseVisualStyleBackColor = true;
+            //
+            // lRadenieInfo
+            //
+            resources.ApplyResources(this.lRadenieInfo, "lRadenieInfo");
+            this.lRadenieInfo.Name = "lRadenieInfo";
+            //
+            // dgvRadenie
+            //
+            this.dgvRadenie.AllowUserToAddRows = false;
+            this.dgvRadenie.AllowUserToDeleteRows = false;
+            this.dgvRadenie.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.dgvRadenie, "dgvRadenie");
+            this.dgvRadenie.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRadenie.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.colRadTake, this.colRadTrain, this.colRadDays, this.colRadText, this.colRadIssues });
+            this.dgvRadenie.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dgvRadenie.Name = "dgvRadenie";
+            this.dgvRadenie.RowHeadersVisible = false;
+            this.dgvRadenie.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             //
             // bOK
             //
@@ -203,12 +240,45 @@ namespace GVDEditor.UI.Import
             //
             resources.ApplyResources(this.colRemLockout, "colRemLockout");
             this.colRemLockout.Name = "colRemLockout";
+            //
+            // colRadTake
+            //
+            resources.ApplyResources(this.colRadTake, "colRadTake");
+            this.colRadTake.Name = "colRadTake";
+            //
+            // colRadTrain
+            //
+            resources.ApplyResources(this.colRadTrain, "colRadTrain");
+            this.colRadTrain.Name = "colRadTrain";
+            this.colRadTrain.ReadOnly = true;
+            //
+            // colRadDays
+            //
+            resources.ApplyResources(this.colRadDays, "colRadDays");
+            this.colRadDays.Name = "colRadDays";
+            this.colRadDays.ReadOnly = true;
+            //
+            // colRadText
+            //
+            this.colRadText.FillWeight = 70F;
+            resources.ApplyResources(this.colRadText, "colRadText");
+            this.colRadText.Name = "colRadText";
+            this.colRadText.ReadOnly = true;
+            //
+            // colRadIssues
+            //
+            this.colRadIssues.FillWeight = 30F;
+            resources.ApplyResources(this.colRadIssues, "colRadIssues");
+            this.colRadIssues.Name = "colRadIssues";
+            this.colRadIssues.ReadOnly = true;
             this.tcReview.ResumeLayout(false);
             this.tpShort.ResumeLayout(false);
             this.tpShort.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStations)).EndInit();
             this.tpRemarks.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRemarks)).EndInit();
+            this.tpRadenie.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRadenie)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
@@ -232,6 +302,14 @@ namespace GVDEditor.UI.Import
         private ExControls.DataGridViewExComboBoxColumn colRemFlag;
         private ExControls.DataGridViewExComboBoxColumn colRemAddition;
         private ExControls.DataGridViewExComboBoxColumn colRemLockout;
+        private System.Windows.Forms.TabPage tpRadenie;
+        private System.Windows.Forms.Label lRadenieInfo;
+        private System.Windows.Forms.DataGridView dgvRadenie;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colRadTake;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRadTrain;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRadDays;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRadText;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRadIssues;
         private ExControls.ExButton bOK;
         private ExControls.ExButton bStorno;
     }

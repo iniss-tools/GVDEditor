@@ -47,6 +47,9 @@ namespace GVDEditor.UI.Import
             this.tbReg = new ExControls.ExTextBox();
             this.lLearn = new System.Windows.Forms.Label();
             this.cbLearn = new ExControls.ExComboBox();
+            this.lPlan = new System.Windows.Forms.Label();
+            this.tbPlan = new ExControls.ExTextBox();
+            this.bPlanBrowse = new ExControls.ExButton();
             this.gbOptions.SuspendLayout();
             this.gbTrains.SuspendLayout();
             this.SuspendLayout();
@@ -193,12 +196,39 @@ namespace GVDEditor.UI.Import
             resources.ApplyResources(this.cbLearn, "cbLearn");
             this.cbLearn.Name = "cbLearn";
             //
+            // lPlan
+            //
+            resources.ApplyResources(this.lPlan, "lPlan");
+            this.lPlan.Name = "lPlan";
+            //
+            // tbPlan
+            //
+            this.tbPlan.BorderColor = System.Drawing.Color.DimGray;
+            this.tbPlan.DisabledBackColor = System.Drawing.SystemColors.Control;
+            this.tbPlan.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
+            this.tbPlan.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbPlan.HighlightColor = System.Drawing.SystemColors.Highlight;
+            this.tbPlan.HintForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbPlan.HintText = null;
+            resources.ApplyResources(this.tbPlan, "tbPlan");
+            this.tbPlan.Name = "tbPlan";
+            //
+            // bPlanBrowse
+            //
+            resources.ApplyResources(this.bPlanBrowse, "bPlanBrowse");
+            this.bPlanBrowse.Name = "bPlanBrowse";
+            this.bPlanBrowse.UseVisualStyleBackColor = true;
+            this.bPlanBrowse.Click += new System.EventHandler(this.bPlanBrowse_Click);
+            //
             // FELISImport
             //
             this.AcceptButton = this.bImport;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bStorno;
+            this.Controls.Add(this.bPlanBrowse);
+            this.Controls.Add(this.tbPlan);
+            this.Controls.Add(this.lPlan);
             this.Controls.Add(this.cbLearn);
             this.Controls.Add(this.lLearn);
             this.Controls.Add(this.gbOptions);
@@ -245,5 +275,8 @@ namespace GVDEditor.UI.Import
         private ExControls.ExTextBox tbReg;
         private System.Windows.Forms.Label lLearn;
         private ExControls.ExComboBox cbLearn;
+        private System.Windows.Forms.Label lPlan;
+        private ExControls.ExTextBox tbPlan;
+        private ExControls.ExButton bPlanBrowse;
     }
 }

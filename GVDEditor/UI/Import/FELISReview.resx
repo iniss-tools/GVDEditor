@@ -417,6 +417,150 @@
   <data name="&gt;&gt;tpRemarks.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="colRadTake.HeaderText" xml:space="preserve">
+    <value>Prevziať</value>
+  </data>
+  <data name="colRadTake.Width" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="&gt;&gt;colRadTake.Name" xml:space="preserve">
+    <value>colRadTake</value>
+  </data>
+  <data name="&gt;&gt;colRadTake.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colRadTrain.HeaderText" xml:space="preserve">
+    <value>Vlak</value>
+  </data>
+  <data name="colRadTrain.Width" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="&gt;&gt;colRadTrain.Name" xml:space="preserve">
+    <value>colRadTrain</value>
+  </data>
+  <data name="&gt;&gt;colRadTrain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colRadDays.HeaderText" xml:space="preserve">
+    <value>Dni</value>
+  </data>
+  <data name="colRadDays.Width" type="System.Int32, mscorlib">
+    <value>160</value>
+  </data>
+  <data name="&gt;&gt;colRadDays.Name" xml:space="preserve">
+    <value>colRadDays</value>
+  </data>
+  <data name="&gt;&gt;colRadDays.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colRadText.AutoSizeMode" type="System.Windows.Forms.DataGridViewAutoSizeColumnMode, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="colRadText.HeaderText" xml:space="preserve">
+    <value>Hlásenie radenia</value>
+  </data>
+  <data name="colRadText.MinimumWidth" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="&gt;&gt;colRadText.Name" xml:space="preserve">
+    <value>colRadText</value>
+  </data>
+  <data name="&gt;&gt;colRadText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colRadIssues.HeaderText" xml:space="preserve">
+    <value>Skontrolovať</value>
+  </data>
+  <data name="colRadIssues.AutoSizeMode" type="System.Windows.Forms.DataGridViewAutoSizeColumnMode, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="colRadIssues.MinimumWidth" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="&gt;&gt;colRadIssues.Name" xml:space="preserve">
+    <value>colRadIssues</value>
+  </data>
+  <data name="&gt;&gt;colRadIssues.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dgvRadenie.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="dgvRadenie.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 60</value>
+  </data>
+  <data name="dgvRadenie.Size" type="System.Drawing.Size, System.Drawing">
+    <value>884, 459</value>
+  </data>
+  <data name="dgvRadenie.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;dgvRadenie.Name" xml:space="preserve">
+    <value>dgvRadenie</value>
+  </data>
+  <data name="&gt;&gt;dgvRadenie.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvRadenie.Parent" xml:space="preserve">
+    <value>tpRadenie</value>
+  </data>
+  <data name="&gt;&gt;dgvRadenie.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lRadenieInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="lRadenieInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="lRadenieInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>884, 48</value>
+  </data>
+  <data name="lRadenieInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lRadenieInfo.Text" xml:space="preserve">
+    <value>Radenie vlakov z plánu radenia ZSSK. Vozne, ktoré nejdú každý deň, rozdelia radenie na viac variantov. Radenie s chýbajúcim zvukom v zvukovej banke sa nepreberie, kým ho nezaškrtnete.</value>
+  </data>
+  <data name="&gt;&gt;lRadenieInfo.Name" xml:space="preserve">
+    <value>lRadenieInfo</value>
+  </data>
+  <data name="&gt;&gt;lRadenieInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lRadenieInfo.Parent" xml:space="preserve">
+    <value>tpRadenie</value>
+  </data>
+  <data name="&gt;&gt;lRadenieInfo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tpRadenie.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="tpRadenie.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tpRadenie.Size" type="System.Drawing.Size, System.Drawing">
+    <value>900, 527</value>
+  </data>
+  <data name="tpRadenie.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tpRadenie.Text" xml:space="preserve">
+    <value>Radenie vlakov</value>
+  </data>
+  <data name="&gt;&gt;tpRadenie.Name" xml:space="preserve">
+    <value>tpRadenie</value>
+  </data>
+  <data name="&gt;&gt;tpRadenie.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tpRadenie.Parent" xml:space="preserve">
+    <value>tcReview</value>
+  </data>
+  <data name="&gt;&gt;tpRadenie.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="tcReview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -555,4 +699,19 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <metadata name="colRadTake.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colRadTrain.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colRadDays.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colRadText.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colRadIssues.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>
