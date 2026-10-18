@@ -30,8 +30,6 @@ internal partial class FAppSettings : FAppSettingsBase
     {
         _ctx = context;
         _mcp = mcp;
-        // ikony stromu ma zoznam zakladneho okna - stranka Agenti (MCP) je len v GVDEditore
-        optionsView.TreeView.ImageList?.Images.Add("artificial-intelligence.png", GlobalResources.artificial_intelligence);
         InitializeComponent();
         
         Shortcuts = new ExBindingList<CmdShortcut>(Config.Shortcuts.ToRows(GvdCommands.All));

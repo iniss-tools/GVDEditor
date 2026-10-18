@@ -8,6 +8,7 @@ using GVDEditor.Properties;
 using ScintillaNET;
 using ToolsCore;
 using ToolsCore.Commands;
+using ToolsCore.Icons;
 using ToolsCore.Iniss.Expressions;
 using ToolsCore.Iniss.TabTab;
 using ToolsCore.Tools;
@@ -55,9 +56,6 @@ internal partial class FTabTab : Form
     private IReadOnlyList<TabTabDiagnostic> _diagnostics = [];
     private string _validatedText = "";
     private readonly ExBindingList<ProblemRow> _problemRows = new() { Sortable = true };
-    private readonly ShellIcon _iconError = new(ShellIconType.Error, ShellIconSize.Small);
-    private readonly ShellIcon _iconWarning = new(ShellIconType.Warning, ShellIconSize.Small);
-    private readonly ShellIcon _iconInfo = new(ShellIconType.Info, ShellIconSize.Small);
     
     /// <summary>
     /// Vytvori novy formular typu <see cref="FTabTab"/>.
@@ -108,18 +106,12 @@ internal partial class FTabTab : Form
 
         tsbProbGoTo.Text = tsmiProbGoTo.Text = Resources.FTabTab_Problems_Zobrazit;
         tsbProbFix.Text = tsmiProbFix.Text = Resources.FTabTab_Problems_Opravit;
-        tsbProbErrors.Image = _iconError.ToBitmap();
-        tsbProbWarnings.Image = _iconWarning.ToBitmap();
-        tsbProbInfos.Image = _iconInfo.ToBitmap();
         dgvProblems.DataSource = _problemRows;
         dgvProblems.Sort(cProbLine, ListSortDirection.Ascending);
         dgvProblems_SelectionChanged(this, EventArgs.Empty);
         FormClosed += (_, _) =>
         {
             _validateTimer.Stop();
-            _iconError.Dispose();
-            _iconWarning.Dispose();
-            _iconInfo.Dispose();
         };
     }
 
@@ -158,6 +150,9 @@ internal partial class FTabTab : Form
         acMenu.Colors.BackColor = _ctx.UsingStyle.ControlsColorScheme.Panel.BackColor;
         acMenu.Colors.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Panel.ForeColor;
         acMenu.Colors.SelectedForeColor = _ctx.UsingStyle.ControlsColorScheme.Panel.ForeColor;
+        // poradie podla ImageIndex poloziek doplnovania (TabTabACItems): funkcia, konstanta, udalost
+        IconImages.Fill(acImages, LogicalToDeviceUnits(IconImages.Size), AppIcons.IsDarkBackground(acMenu.Colors.BackColor),
+            ["math-formula", "number-symbol", "flash"]);
 
         _sc.Styles[TabTabStyle.Default].ForeColor = _ctx.UsingStyle.TabTabEditorScheme.Default.ForeColor;
         _sc.Styles[TabTabStyle.Default].Bold = _ctx.UsingStyle.TabTabEditorScheme.Default.Bold;
@@ -351,13 +346,13 @@ internal partial class FTabTab : Form
 
         if (errors + warnings == 0)
         {
-            tsslProblems.Image = GlobalResources.correct;
+            tsslProblems.IconName = "status-ok";
             tsslProblems.Text = Resources.FTabTab_Bez_problemov;
             tsslProblems.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Panel.ForeColor;
         }
         else
         {
-            tsslProblems.Image = errors > 0 ? _iconError.ToBitmap() : _iconWarning.ToBitmap();
+            tsslProblems.IconName = errors > 0 ? "status-error" : "status-warning";
             tsslProblems.Text = string.Format(CultureInfo.CurrentCulture, Resources.FTabTab_Stav_kontroly, errors, warnings);
             tsslProblems.ForeColor = errors > 0 ? Color.Red : _ctx.UsingStyle.ControlsColorScheme.Panel.ForeColor;
         }
@@ -493,20 +488,24 @@ internal partial class FTabTab : Form
         switch (pr.Diagnostic.Severity)
         {
             case ExprSeverity.Error:
-                e.Value = _iconError.ToBitmap();
+                e.Value = ProblemIcon("status-error");
                 cell.ToolTipText = Resources.FTabTab_Problems_Chyba;
                 break;
             case ExprSeverity.Warning:
-                e.Value = _iconWarning.ToBitmap();
+                e.Value = ProblemIcon("status-warning");
                 cell.ToolTipText = Resources.FTabTab_Problems_Varovanie;
                 break;
             default:
-                e.Value = _iconInfo.ToBitmap();
+                e.Value = ProblemIcon("status-info");
                 cell.ToolTipText = Resources.FTabTab_Problems_Informacia;
                 break;
         }
         e.FormattingApplied = true;
     }
+
+    // ikona zavaznosti v zozname problemov - podla DPI a pozadia zoznamu
+    private Bitmap? ProblemIcon(string name) =>
+        AppIcons.Get(name, null, dgvProblems.LogicalToDeviceUnits(IconImages.Size), AppIcons.IsDarkBackground(dgvProblems.DefaultCellStyle.BackColor));
 
     private void dgvProblems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {

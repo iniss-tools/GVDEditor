@@ -161,7 +161,7 @@
     <value>tvNav</value>
   </data>
   <data name="&gt;&gt;tvNav.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ExControls.ExTreeView, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tvNav.Parent" xml:space="preserve">
     <value>scMain.Panel1</value>
@@ -622,35 +622,11 @@
   <data name="tsEvents.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tsbEvAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAe5JREFUSEvt
-        lrtKA0EUhgP6BF5ewcYbVl6qdGJ2JntGCKK+gGDlpRF8E4nXLuCcVdughW9gJagRaxW0T4j8IRvi2THZ
-        3QRs8sMHw84552d3ZudMJjNQB2XvssNe4C8pazZ14O8AjJU1i5iT8T1LWTOrrDlTTJ+Kqf4HH4jJX+Vn
-        ZH5i6Rs9ppjOFVPNYfQXNc10aqwZlfViybNmSjFVHIXj8oIasm5HNU2/HcUSoZm+9LWelPWdwifSTM+y
-        SFo8pteVUmFc+kSkmS5kcq9gzaXPL2FHxtlIW+XtevnttgHGct5BLX+Vn5N+LTV/GZkU4eD+sB4KYznv
-        wmM6kX4N4QBo/IuOJEkaY9R2HjKNEyka7CSlcV1fri5IX3zmTRkYgnWEQcjRQ7FljHH7XKc110zr0jej
-        A39fBoZgE8UVYmV+iMe0J30zeCgD+22srNmVvnjjjUhgk359ahX4a9L3/zZXoVQYUkzvMthFSmP37wTh
-        aHMkREhlbM2x9GspF/jTiqkaSRKkODKrXVtk3LdOSFH6RLRcKowopidHcloquMlIH6fQvNHEHUUSkegi
-        ECpnzYRiepTF4oLLRGLTUM3bCNa8a49uo4odjCWT9RILux39tEvbfEdM192bRjhkcPqgy4QXeoxzgT+P
-        ORk/ULt+AKeN9QnoFCnOAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="tsbEvAdd.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 22</value>
   </data>
   <data name="tsbEvAdd.Text" xml:space="preserve">
     <value>Pridať</value>
-  </data>
-  <data name="tsbEvEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAP9JREFUSEtj
-        YBgFUPCkqMj5SUmJJbo4VcCx+YsDnhYX/3laXPzjeXGxJ7o8RWD9viNhG/Yd/b1/5brDT4uL/4MsoZpP
-        /s9kCL2/PODkhn1Hf23Yd/Q/1JI/T0pKnNDVkgxAhv+fwfD7/wyG/w9W+J+BWvIbFFzoakkG/6czRPyf
-        wfAHZDgM318RdHTj/qMR6GpJBsguR8Igy2LQ1ZIMRg3HCkYNxwqGsOELGPzQcyiYP52B8hwKAv8PsO/6
-        v4L5FNVdDgJLGlT43m3n+f7/IPsPqCXUMxwEemuN88Kjnf+/3sr74/9+9h3/5zP4oquhCEys1Q8DWbKq
-        Q4kfXW5kAwCzWSgWANLyLQAAAABJRU5ErkJggg==
-</value>
   </data>
   <data name="tsbEvEdit.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 22</value>
@@ -658,49 +634,17 @@
   <data name="tsbEvEdit.Text" xml:space="preserve">
     <value>Upraviť</value>
   </data>
-  <data name="tsbEvDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAORJREFUSEvt
-        lrEOgjAQhlkUH4TNkVBX4rHwAD6ML6U4KA/WOtdcQ4meBVrCwdIvYer997VNG5okkcja6DpLFZyu+nLc
-        07EpMGOydZbSsVEwKKvioUBoVYlnSAOd5zsJ4m6yIFpdlgdaMwjOtguaT4JofFZuJgyi+c5iL1o3SDfr
-        20+DiZWTlXplnITIF5NafOSLSy1jcjapxSmH4tWffA6pxS1nllo6ObkuKC1aNilixGeyvdxi50Hi3mqX
-        9M19uFxS9uvk09inJoiQhiG1o8xpNCfzx3a/xa0eAgjKVn/6RCJL8AFJ8NPKaf1BCQAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
   <data name="tsbEvDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 22</value>
   </data>
   <data name="tsbEvDelete.Text" xml:space="preserve">
     <value>Odstrániť</value>
   </data>
-  <data name="tsbEvUp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAARpJREFUWEftlLFKA0EURTeCWIlVwMq8WYN+QJrUNn6DlR9hIKVfYBHc9yCQwk7w
-        C6z8gxSWFtYJCYi5swERdGQloLyNYZLsKsIcOM3uvHu7G0WBQCDwn9mXaSNTf/8V9uQ5JsaQ2I7N5eRA
-        /y+VegdVEvtgxLqZj7Uk3dXvSuGwN942gv638k9JcB93n3b0+0JpdN2mYdzq8i9xV++4LX1XDM5VDOMq
-        X6pkXEfnbkOfrw0JLnJlP0iMRN+vBXHa0iUenumclYgTe2IEb3MKFst4J0lPdd5SxGKPSPCSC/eUGK8k
-        6bHO9SJbOGILHbq0jGlNJk2dv5Bs5YxgkAtbURI78l7LOStXlH5rSYK2EXtThlm27gsEAoE/5wPB598h
-        BPvmVAAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="tsbEvUp.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
   <data name="tsbEvUp.Text" xml:space="preserve">
     <value>▲</value>
-  </data>
-  <data name="tsbEvDown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAR5JREFUWEft1LFKA0EQBuBLQAQhnaI2uRkNsbMwT2DlK9j5AHY2lj5A0oQ4A0dS
-        pLLwCWys0/gCFqkFbeLMCSLoSgoFZ6NJLncQYT/4m2X3/7uNoiAIgmUDLOfIel1Ext12z1NPZB1Y75HV
-        5ZwhdnXT7k1U5dEOsjxMKMkUYH3EznPd7vwJSfeBdGTL5g2QSrWTHtj+mcSkh8DyaktnDZC8AadHtncu
-        Mesxsrzb8qkh+QBOT2xfJsh66g1MC+mZ7VkIkLS8kV8jTft+cc6VkKTvj/0MsFxFF65sn+eikbgVJLmx
-        o9/jJLe1tlu173K1nbg1JB144yx3e72nir1fiFpbNsxvOYwv0y17r1Bfv2WmXy4vu/zSGMeeB0EQ/Cuf
-        +a3e9pYGznsAAAAASUVORK5CYII=
-</value>
   </data>
   <data name="tsbEvDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
@@ -777,51 +721,17 @@
   <data name="tsStarters.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tsbStAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAe5JREFUSEvt
-        lrtKA0EUhgP6BF5ewcYbVl6qdGJ2JntGCKK+gGDlpRF8E4nXLuCcVdughW9gJagRaxW0T4j8IRvi2THZ
-        3QRs8sMHw84552d3ZudMJjNQB2XvssNe4C8pazZ14O8AjJU1i5iT8T1LWTOrrDlTTJ+Kqf4HH4jJX+Vn
-        ZH5i6Rs9ppjOFVPNYfQXNc10aqwZlfViybNmSjFVHIXj8oIasm5HNU2/HcUSoZm+9LWelPWdwifSTM+y
-        SFo8pteVUmFc+kSkmS5kcq9gzaXPL2FHxtlIW+XtevnttgHGct5BLX+Vn5N+LTV/GZkU4eD+sB4KYznv
-        wmM6kX4N4QBo/IuOJEkaY9R2HjKNEyka7CSlcV1fri5IX3zmTRkYgnWEQcjRQ7FljHH7XKc110zr0jej
-        A39fBoZgE8UVYmV+iMe0J30zeCgD+22srNmVvnjjjUhgk359ahX4a9L3/zZXoVQYUkzvMthFSmP37wTh
-        aHMkREhlbM2x9GspF/jTiqkaSRKkODKrXVtk3LdOSFH6RLRcKowopidHcloquMlIH6fQvNHEHUUSkegi
-        ECpnzYRiepTF4oLLRGLTUM3bCNa8a49uo4odjCWT9RILux39tEvbfEdM192bRjhkcPqgy4QXeoxzgT+P
-        ORk/ULt+AKeN9QnoFCnOAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="tsbStAdd.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 22</value>
   </data>
   <data name="tsbStAdd.Text" xml:space="preserve">
     <value>Pridať</value>
   </data>
-  <data name="tsbStEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAP9JREFUSEtj
-        YBgFUPCkqMj5SUmJJbo4VcCx+YsDnhYX/3laXPzjeXGxJ7o8RWD9viNhG/Yd/b1/5brDT4uL/4MsoZpP
-        /s9kCL2/PODkhn1Hf23Yd/Q/1JI/T0pKnNDVkgxAhv+fwfD7/wyG/w9W+J+BWvIbFFzoakkG/6czRPyf
-        wfAHZDgM318RdHTj/qMR6GpJBsguR8Igy2LQ1ZIMRg3HCkYNxwqGsOELGPzQcyiYP52B8hwKAv8PsO/6
-        v4L5FNVdDgJLGlT43m3n+f7/IPsPqCXUMxwEemuN88Kjnf+/3sr74/9+9h3/5zP4oquhCEys1Q8DWbKq
-        Q4kfXW5kAwCzWSgWANLyLQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="tsbStEdit.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 22</value>
   </data>
   <data name="tsbStEdit.Text" xml:space="preserve">
     <value>Upraviť</value>
-  </data>
-  <data name="tsbStDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAORJREFUSEvt
-        lrEOgjAQhlkUH4TNkVBX4rHwAD6ML6U4KA/WOtdcQ4meBVrCwdIvYer997VNG5okkcja6DpLFZyu+nLc
-        07EpMGOydZbSsVEwKKvioUBoVYlnSAOd5zsJ4m6yIFpdlgdaMwjOtguaT4JofFZuJgyi+c5iL1o3SDfr
-        20+DiZWTlXplnITIF5NafOSLSy1jcjapxSmH4tWffA6pxS1nllo6ObkuKC1aNilixGeyvdxi50Hi3mqX
-        9M19uFxS9uvk09inJoiQhiG1o8xpNCfzx3a/xa0eAgjKVn/6RCJL8AFJ8NPKaf1BCQAAAABJRU5ErkJg
-        gg==
-</value>
   </data>
   <data name="tsbStDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 22</value>
@@ -895,15 +805,6 @@
   <data name="&gt;&gt;tsMain.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tsbSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAALZJREFUSEtj
-        YBgFpACTGbf/6/ec+q/ZsBOMc+bv/79h31GCGKTPZMbth6bTbimhm4kCiLVAzcgCjNEsIGwJFSz4bzzj
-        zn10c+GAGhaAMLq5cEAXCwwnXvyv2bALbEHgpL3/1+zFtAAZT9p6ijQLqIHRzYUDdIXkYnRz4QBdIbkY
-        3Vw4AEl2H3n1n1wA0kvQglln3oIVf/767f/z12+JwiC1IADSO2oBVjzCLKB5MqUGRjd3FOAFAPIf8no2
-        vVjaAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="tsbSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 22</value>
   </data>
@@ -913,20 +814,6 @@
   <data name="tsbSave.ToolTipText" xml:space="preserve">
     <value>Uložiť StateDgm.txt (Ctrl+S)</value>
   </data>
-  <data name="tsbCheck.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAeBJREFUSEvt
-        lE1LAmEQgPc39OPqZ0S3UDLo66JopmQHUxFXY9UgBNNyIcoOga540eqiUAeTyrYPzK8mZsJYX13R3e0S
-        PjAsrPPOw8y8K8fN4Dhu2eoFLbGy7c+xtaYCi0wLnrF6hS+LM3DF1psYreL3jybYUO7w59maE6FVjOiS
-        6xEjmuV6xYgmOVtkEtgbrgy2vipaxGrMxGNhxcHz6lDsn5bBGkzDqosHk80Hm54IxNNZeH55HTirS8xy
-        U7mDNTcPYVGCbEWGQr1HT16U6P1t5f431zAxdoTFxesHKD7BUGTKNfq9Ib9Rvi6xcsQ4Xj6TB6HYgIWd
-        HMwroi/nxTyNXbdYCe4Sx7oYKg1IleJsVYatvQPKN0xssvtop+yIlSHVu2C2+ylfl1g5aouL/+mYL6t3
-        XPmDjmOpLN3e6LgdZ/JweHJJ+YaJ+7caby87YgyxVAOLMwiPDZnycTVsfVVYMfvn4UlIYHGGIJTJ0UWi
-        77gqU6coxfP70WNod7oQSFxoF48Cv1P8ZHCXZruPnjhe7NQXS5HcE06AIOaMFY+j2+2BV0iSfH03Akt2
-        7xzrGIleMdJqd8AdOiK52eEvsI6RGCFGmp8t2KBVBIqsYyRGiZH4WWG6HRsVLj45ufhf8w2J+vo8pGmP
-        eQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="tsbCheck.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 22</value>
   </data>
@@ -935,20 +822,6 @@
   </data>
   <data name="tss1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
-  </data>
-  <data name="tsddNew.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAe5JREFUSEvt
-        lrtKA0EUhgP6BF5ewcYbVl6qdGJ2JntGCKK+gGDlpRF8E4nXLuCcVdughW9gJagRaxW0T4j8IRvi2THZ
-        3QRs8sMHw84552d3ZudMJjNQB2XvssNe4C8pazZ14O8AjJU1i5iT8T1LWTOrrDlTTJ+Kqf4HH4jJX+Vn
-        ZH5i6Rs9ppjOFVPNYfQXNc10aqwZlfViybNmSjFVHIXj8oIasm5HNU2/HcUSoZm+9LWelPWdwifSTM+y
-        SFo8pteVUmFc+kSkmS5kcq9gzaXPL2FHxtlIW+XtevnttgHGct5BLX+Vn5N+LTV/GZkU4eD+sB4KYznv
-        wmM6kX4N4QBo/IuOJEkaY9R2HjKNEyka7CSlcV1fri5IX3zmTRkYgnWEQcjRQ7FljHH7XKc110zr0jej
-        A39fBoZgE8UVYmV+iMe0J30zeCgD+22srNmVvnjjjUhgk359ahX4a9L3/zZXoVQYUkzvMthFSmP37wTh
-        aHMkREhlbM2x9GspF/jTiqkaSRKkODKrXVtk3LdOSFH6RLRcKowopidHcloquMlIH6fQvNHEHUUSkegi
-        ECpnzYRiepTF4oLLRGLTUM3bCNa8a49uo4odjCWT9RILux39tEvbfEdM192bRjhkcPqgy4QXeoxzgT+P
-        ORk/ULt+AKeN9QnoFCnOAAAAAElFTkSuQmCC
-</value>
   </data>
   <data name="tsddNew.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 22</value>
@@ -980,32 +853,11 @@
   <data name="tsmiNewTimePoint.Text" xml:space="preserve">
     <value>Časový bod</value>
   </data>
-  <data name="tsbDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAORJREFUSEvt
-        lrEOgjAQhlkUH4TNkVBX4rHwAD6ML6U4KA/WOtdcQ4meBVrCwdIvYer997VNG5okkcja6DpLFZyu+nLc
-        07EpMGOydZbSsVEwKKvioUBoVYlnSAOd5zsJ4m6yIFpdlgdaMwjOtguaT4JofFZuJgyi+c5iL1o3SDfr
-        20+DiZWTlXplnITIF5NafOSLSy1jcjapxSmH4tWffA6pxS1nllo6ObkuKC1aNilixGeyvdxi50Hi3mqX
-        9M19uFxS9uvk09inJoiQhiG1o8xpNCfzx3a/xa0eAgjKVn/6RCJL8AFJ8NPKaf1BCQAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
   <data name="tsbDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 22</value>
   </data>
   <data name="tsbDelete.Text" xml:space="preserve">
     <value>Odstrániť</value>
-  </data>
-  <data name="tsbUp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAARpJREFUWEftlLFKA0EURTeCWIlVwMq8WYN+QJrUNn6DlR9hIKVfYBHc9yCQwk7w
-        C6z8gxSWFtYJCYi5swERdGQloLyNYZLsKsIcOM3uvHu7G0WBQCDwn9mXaSNTf/8V9uQ5JsaQ2I7N5eRA
-        /y+VegdVEvtgxLqZj7Uk3dXvSuGwN942gv638k9JcB93n3b0+0JpdN2mYdzq8i9xV++4LX1XDM5VDOMq
-        X6pkXEfnbkOfrw0JLnJlP0iMRN+vBXHa0iUenumclYgTe2IEb3MKFst4J0lPdd5SxGKPSPCSC/eUGK8k
-        6bHO9SJbOGILHbq0jGlNJk2dv5Bs5YxgkAtbURI78l7LOStXlH5rSYK2EXtThlm27gsEAoE/5wPB598h
-        BPvmVAAAAABJRU5ErkJggg==
-</value>
   </data>
   <data name="tsbUp.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
@@ -1015,17 +867,6 @@
   </data>
   <data name="tsbUp.ToolTipText" xml:space="preserve">
     <value>Posunúť hore</value>
-  </data>
-  <data name="tsbDown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAR5JREFUWEft1LFKA0EQBuBLQAQhnaI2uRkNsbMwT2DlK9j5AHY2lj5A0oQ4A0dS
-        pLLwCWys0/gCFqkFbeLMCSLoSgoFZ6NJLncQYT/4m2X3/7uNoiAIgmUDLOfIel1Ext12z1NPZB1Y75HV
-        5ZwhdnXT7k1U5dEOsjxMKMkUYH3EznPd7vwJSfeBdGTL5g2QSrWTHtj+mcSkh8DyaktnDZC8AadHtncu
-        Mesxsrzb8qkh+QBOT2xfJsh66g1MC+mZ7VkIkLS8kV8jTft+cc6VkKTvj/0MsFxFF65sn+eikbgVJLmx
-        o9/jJLe1tlu173K1nbg1JB144yx3e72nir1fiFpbNsxvOYwv0y17r1Bfv2WmXy4vu/zSGMeeB0EQ/Cuf
-        +a3e9pYGznsAAAAASUVORK5CYII=
-</value>
   </data>
   <data name="tsbDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
@@ -1038,15 +879,6 @@
   </data>
   <data name="tss2.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
-  </data>
-  <data name="tsddTemplate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAOJJREFUWEdj
-        YBhsoLhnpkhFz+w0cnBVz+zpRb2z1NDNJAlU9Mw2nrx4w+eTF6//JxV3z171v3Xakl8UOQLkgOWb97/+
-        TwaYvGjD/3uPn/9vmbrkd0n3Qj10s4kClDoABChyBDUcAAJkO4JaDgABshxBTQeAAMmOoNQBT168xsAH
-        Tl783zR58e/q3qmy6PZhAEocsO/4+f/rdh7BiifMX/ejvHumN7p9GIASB+ADIDNBZqPbhwFGHTDqgFEH
-        jDpg1AGjDhh1wKgDRh0AUkRu1wwfBplJlAMo6ZwSwiCz0e0bcAAAh9CeoLltlNwAAAAASUVORK5CYII=
-</value>
   </data>
   <data name="tsddTemplate.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 22</value>
@@ -1074,14 +906,6 @@
   </data>
   <data name="tss3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
-  </data>
-  <data name="tsbCalendar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAHJJREFUSEtj
-        YBix4Liz8396YHR7wRZ/7++nKR61eOAtpgdGt5ehonvOf1oDkB3o9o5ajAGOXrkHxuTyQWBoWUwNMLgt
-        Rg8qSvkgMLgtpgUY3BajBxWpfGxgcFtMCzBq8cBb/PD1J5riwWcxPTC6vSMHAACY20swjjHq/wAAAABJ
-        RU5ErkJggg==
-</value>
   </data>
   <data name="tsbCalendar.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 22</value>
@@ -1318,61 +1142,61 @@
     <value>tsbEvAdd</value>
   </data>
   <data name="&gt;&gt;tsbEvAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsbEvEdit.Name" xml:space="preserve">
     <value>tsbEvEdit</value>
   </data>
   <data name="&gt;&gt;tsbEvEdit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsbEvDelete.Name" xml:space="preserve">
     <value>tsbEvDelete</value>
   </data>
   <data name="&gt;&gt;tsbEvDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsbEvUp.Name" xml:space="preserve">
     <value>tsbEvUp</value>
   </data>
   <data name="&gt;&gt;tsbEvUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsbEvDown.Name" xml:space="preserve">
     <value>tsbEvDown</value>
   </data>
   <data name="&gt;&gt;tsbEvDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsbStAdd.Name" xml:space="preserve">
     <value>tsbStAdd</value>
   </data>
   <data name="&gt;&gt;tsbStAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsbStEdit.Name" xml:space="preserve">
     <value>tsbStEdit</value>
   </data>
   <data name="&gt;&gt;tsbStEdit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsbStDelete.Name" xml:space="preserve">
     <value>tsbStDelete</value>
   </data>
   <data name="&gt;&gt;tsbStDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsbSave.Name" xml:space="preserve">
     <value>tsbSave</value>
   </data>
   <data name="&gt;&gt;tsbSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsbCheck.Name" xml:space="preserve">
     <value>tsbCheck</value>
   </data>
   <data name="&gt;&gt;tsbCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tss1.Name" xml:space="preserve">
     <value>tss1</value>
@@ -1384,7 +1208,7 @@
     <value>tsddNew</value>
   </data>
   <data name="&gt;&gt;tsddNew.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripDropDownButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsmiNewCategory.Name" xml:space="preserve">
     <value>tsmiNewCategory</value>
@@ -1414,19 +1238,19 @@
     <value>tsbDelete</value>
   </data>
   <data name="&gt;&gt;tsbDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsbUp.Name" xml:space="preserve">
     <value>tsbUp</value>
   </data>
   <data name="&gt;&gt;tsbUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsbDown.Name" xml:space="preserve">
     <value>tsbDown</value>
   </data>
   <data name="&gt;&gt;tsbDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tss2.Name" xml:space="preserve">
     <value>tss2</value>
@@ -1438,7 +1262,7 @@
     <value>tsddTemplate</value>
   </data>
   <data name="&gt;&gt;tsddTemplate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripDropDownButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsmiTplSK.Name" xml:space="preserve">
     <value>tsmiTplSK</value>
@@ -1468,7 +1292,7 @@
     <value>tsbCalendar</value>
   </data>
   <data name="&gt;&gt;tsbCalendar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsslStatus.Name" xml:space="preserve">
     <value>tsslStatus</value>

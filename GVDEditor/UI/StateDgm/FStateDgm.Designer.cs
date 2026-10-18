@@ -1,4 +1,5 @@
 ﻿using GVDEditor.UI.Controls;
+using ToolsCore.Icons;
 namespace GVDEditor.UI.StateDgm
 {
     partial class FStateDgm
@@ -32,7 +33,7 @@ namespace GVDEditor.UI.StateDgm
             ComponentResourceManager resources = new ComponentResourceManager(typeof(FStateDgm));
             scOuter = new SplitContainer();
             scMain = new SplitContainer();
-            tvNav = new TreeView();
+            tvNav = new ExControls.ExTreeView();
             scRight = new SplitContainer();
             tcCenter = new ExControls.ExTabControl();
             tpGraph = new TabPage();
@@ -51,20 +52,20 @@ namespace GVDEditor.UI.StateDgm
             cEvReport = new DataGridViewTextBoxColumn();
             cEvDialog = new DataGridViewTextBoxColumn();
             tsEvents = new ToolStrip();
-            tsbEvAdd = new ToolStripButton();
-            tsbEvEdit = new ToolStripButton();
-            tsbEvDelete = new ToolStripButton();
-            tsbEvUp = new ToolStripButton();
-            tsbEvDown = new ToolStripButton();
+            tsbEvAdd = new IconToolStripButton();
+            tsbEvEdit = new IconToolStripButton();
+            tsbEvDelete = new IconToolStripButton();
+            tsbEvUp = new IconToolStripButton();
+            tsbEvDown = new IconToolStripButton();
             tpStarters = new TabPage();
             dgvStarters = new DataGridView();
             cStKey = new DataGridViewTextBoxColumn();
             cStEvent = new DataGridViewTextBoxColumn();
             cStText = new DataGridViewTextBoxColumn();
             tsStarters = new ToolStrip();
-            tsbStAdd = new ToolStripButton();
-            tsbStEdit = new ToolStripButton();
-            tsbStDelete = new ToolStripButton();
+            tsbStAdd = new IconToolStripButton();
+            tsbStEdit = new IconToolStripButton();
+            tsbStDelete = new IconToolStripButton();
             tpProblems = new TabPage();
             dgvProblems = new DataGridView();
             cProbType = new DataGridViewImageColumn();
@@ -72,24 +73,24 @@ namespace GVDEditor.UI.StateDgm
             cProbPath = new DataGridViewTextBoxColumn();
             cProbMessage = new DataGridViewTextBoxColumn();
             tsMain = new ToolStrip();
-            tsbSave = new ToolStripButton();
-            tsbCheck = new ToolStripButton();
+            tsbSave = new IconToolStripButton();
+            tsbCheck = new IconToolStripButton();
             tss1 = new ToolStripSeparator();
-            tsddNew = new ToolStripDropDownButton();
+            tsddNew = new IconToolStripDropDownButton();
             tsmiNewCategory = new ToolStripMenuItem();
             tsmiNewState = new ToolStripMenuItem();
             tsmiNewDesign = new ToolStripMenuItem();
             tsmiNewTimePoint = new ToolStripMenuItem();
-            tsbDelete = new ToolStripButton();
-            tsbUp = new ToolStripButton();
-            tsbDown = new ToolStripButton();
+            tsbDelete = new IconToolStripButton();
+            tsbUp = new IconToolStripButton();
+            tsbDown = new IconToolStripButton();
             tss2 = new ToolStripSeparator();
-            tsddTemplate = new ToolStripDropDownButton();
+            tsddTemplate = new IconToolStripDropDownButton();
             tsmiTplSK = new ToolStripMenuItem();
             tsmiTplCZ = new ToolStripMenuItem();
             tsmiTplILTIS = new ToolStripMenuItem();
             tss3 = new ToolStripSeparator();
-            tsbCalendar = new ToolStripButton();
+            tsbCalendar = new IconToolStripButton();
             ssMain = new StatusStrip();
             tsslStatus = new ToolStripStatusLabel();
             ((ISupportInitialize)scOuter).BeginInit();
@@ -149,9 +150,12 @@ namespace GVDEditor.UI.StateDgm
             // tvNav
             // 
             resources.ApplyResources(tvNav, "tvNav");
+            tvNav.FullRowSelect = true;
             tvNav.HideSelection = false;
             tvNav.ItemHeight = 24;
             tvNav.Name = "tvNav";
+            tvNav.ShowLines = false;
+            tvNav.Style = ExControls.ExTreeViewStyle.Light;
             tvNav.AfterSelect += tvNav_AfterSelect;
             // 
             // scRight
@@ -269,18 +273,21 @@ namespace GVDEditor.UI.StateDgm
             // 
             resources.ApplyResources(tsbEvAdd, "tsbEvAdd");
             tsbEvAdd.Name = "tsbEvAdd";
+            tsbEvAdd.IconName = "add";
             tsbEvAdd.Click += tsbEvAdd_Click;
             // 
             // tsbEvEdit
             // 
             resources.ApplyResources(tsbEvEdit, "tsbEvEdit");
             tsbEvEdit.Name = "tsbEvEdit";
+            tsbEvEdit.IconName = "edit";
             tsbEvEdit.Click += tsbEvEdit_Click;
             // 
             // tsbEvDelete
             // 
             resources.ApplyResources(tsbEvDelete, "tsbEvDelete");
             tsbEvDelete.Name = "tsbEvDelete";
+            tsbEvDelete.IconName = "delete";
             tsbEvDelete.Click += tsbEvDelete_Click;
             // 
             // tsbEvUp
@@ -288,6 +295,7 @@ namespace GVDEditor.UI.StateDgm
             tsbEvUp.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbEvUp, "tsbEvUp");
             tsbEvUp.Name = "tsbEvUp";
+            tsbEvUp.IconName = "arrow-up";
             tsbEvUp.Click += tsbEvUp_Click;
             // 
             // tsbEvDown
@@ -295,6 +303,7 @@ namespace GVDEditor.UI.StateDgm
             tsbEvDown.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbEvDown, "tsbEvDown");
             tsbEvDown.Name = "tsbEvDown";
+            tsbEvDown.IconName = "arrow-down";
             tsbEvDown.Click += tsbEvDown_Click;
             // 
             // tpStarters
@@ -334,18 +343,21 @@ namespace GVDEditor.UI.StateDgm
             // 
             resources.ApplyResources(tsbStAdd, "tsbStAdd");
             tsbStAdd.Name = "tsbStAdd";
+            tsbStAdd.IconName = "add";
             tsbStAdd.Click += tsbStAdd_Click;
             // 
             // tsbStEdit
             // 
             resources.ApplyResources(tsbStEdit, "tsbStEdit");
             tsbStEdit.Name = "tsbStEdit";
+            tsbStEdit.IconName = "edit";
             tsbStEdit.Click += tsbStEdit_Click;
             // 
             // tsbStDelete
             // 
             resources.ApplyResources(tsbStDelete, "tsbStDelete");
             tsbStDelete.Name = "tsbStDelete";
+            tsbStDelete.IconName = "delete";
             tsbStDelete.Click += tsbStDelete_Click;
             // 
             // tpProblems
@@ -385,12 +397,14 @@ namespace GVDEditor.UI.StateDgm
             // 
             resources.ApplyResources(tsbSave, "tsbSave");
             tsbSave.Name = "tsbSave";
+            tsbSave.IconName = "save";
             tsbSave.Click += tsbSave_Click;
             // 
             // tsbCheck
             // 
             resources.ApplyResources(tsbCheck, "tsbCheck");
             tsbCheck.Name = "tsbCheck";
+            tsbCheck.IconName = "document-checkmark";
             tsbCheck.Click += tsbCheck_Click;
             // 
             // tss1
@@ -403,6 +417,7 @@ namespace GVDEditor.UI.StateDgm
             tsddNew.DropDownItems.AddRange(new ToolStripItem[] { tsmiNewCategory, tsmiNewState, tsmiNewDesign, tsmiNewTimePoint });
             resources.ApplyResources(tsddNew, "tsddNew");
             tsddNew.Name = "tsddNew";
+            tsddNew.IconName = "add";
             // 
             // tsmiNewCategory
             // 
@@ -432,6 +447,7 @@ namespace GVDEditor.UI.StateDgm
             // 
             resources.ApplyResources(tsbDelete, "tsbDelete");
             tsbDelete.Name = "tsbDelete";
+            tsbDelete.IconName = "delete";
             tsbDelete.Click += tsbDelete_Click;
             // 
             // tsbUp
@@ -439,6 +455,7 @@ namespace GVDEditor.UI.StateDgm
             tsbUp.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbUp, "tsbUp");
             tsbUp.Name = "tsbUp";
+            tsbUp.IconName = "arrow-up";
             tsbUp.Click += tsbUp_Click;
             // 
             // tsbDown
@@ -446,6 +463,7 @@ namespace GVDEditor.UI.StateDgm
             tsbDown.DisplayStyle = ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(tsbDown, "tsbDown");
             tsbDown.Name = "tsbDown";
+            tsbDown.IconName = "arrow-down";
             tsbDown.Click += tsbDown_Click;
             // 
             // tss2
@@ -458,6 +476,7 @@ namespace GVDEditor.UI.StateDgm
             tsddTemplate.DropDownItems.AddRange(new ToolStripItem[] { tsmiTplSK, tsmiTplCZ, tsmiTplILTIS });
             resources.ApplyResources(tsddTemplate, "tsddTemplate");
             tsddTemplate.Name = "tsddTemplate";
+            tsddTemplate.IconName = "document-copy";
             // 
             // tsmiTplSK
             // 
@@ -486,6 +505,7 @@ namespace GVDEditor.UI.StateDgm
             // 
             resources.ApplyResources(tsbCalendar, "tsbCalendar");
             tsbCalendar.Name = "tsbCalendar";
+            tsbCalendar.IconName = "calendar";
             tsbCalendar.Click += tsbCalendar_Click;
             // 
             // ssMain
@@ -665,27 +685,27 @@ namespace GVDEditor.UI.StateDgm
         #endregion
 
         private System.Windows.Forms.ToolStrip tsMain;
-        private System.Windows.Forms.ToolStripButton tsbSave;
-        private System.Windows.Forms.ToolStripButton tsbCheck;
+        private ToolsCore.Icons.IconToolStripButton tsbSave;
+        private ToolsCore.Icons.IconToolStripButton tsbCheck;
         private System.Windows.Forms.ToolStripSeparator tss1;
-        private System.Windows.Forms.ToolStripDropDownButton tsddNew;
+        private ToolsCore.Icons.IconToolStripDropDownButton tsddNew;
         private System.Windows.Forms.ToolStripMenuItem tsmiNewCategory;
         private System.Windows.Forms.ToolStripMenuItem tsmiNewState;
         private System.Windows.Forms.ToolStripMenuItem tsmiNewDesign;
         private System.Windows.Forms.ToolStripMenuItem tsmiNewTimePoint;
-        private System.Windows.Forms.ToolStripButton tsbDelete;
-        private System.Windows.Forms.ToolStripButton tsbUp;
-        private System.Windows.Forms.ToolStripButton tsbDown;
+        private ToolsCore.Icons.IconToolStripButton tsbDelete;
+        private ToolsCore.Icons.IconToolStripButton tsbUp;
+        private ToolsCore.Icons.IconToolStripButton tsbDown;
         private System.Windows.Forms.ToolStripSeparator tss2;
-        private System.Windows.Forms.ToolStripDropDownButton tsddTemplate;
+        private ToolsCore.Icons.IconToolStripDropDownButton tsddTemplate;
         private System.Windows.Forms.ToolStripMenuItem tsmiTplSK;
         private System.Windows.Forms.ToolStripMenuItem tsmiTplCZ;
         private System.Windows.Forms.ToolStripMenuItem tsmiTplILTIS;
         private System.Windows.Forms.ToolStripSeparator tss3;
-        private System.Windows.Forms.ToolStripButton tsbCalendar;
+        private ToolsCore.Icons.IconToolStripButton tsbCalendar;
         private System.Windows.Forms.SplitContainer scOuter;
         private System.Windows.Forms.SplitContainer scMain;
-        private System.Windows.Forms.TreeView tvNav;
+        private ExControls.ExTreeView tvNav;
         private System.Windows.Forms.SplitContainer scRight;
         private ExControls.ExTabControl tcCenter;
         private System.Windows.Forms.TabPage tpGraph;
@@ -704,20 +724,20 @@ namespace GVDEditor.UI.StateDgm
         private System.Windows.Forms.DataGridViewTextBoxColumn cEvReport;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEvDialog;
         private System.Windows.Forms.ToolStrip tsEvents;
-        private System.Windows.Forms.ToolStripButton tsbEvAdd;
-        private System.Windows.Forms.ToolStripButton tsbEvEdit;
-        private System.Windows.Forms.ToolStripButton tsbEvDelete;
-        private System.Windows.Forms.ToolStripButton tsbEvUp;
-        private System.Windows.Forms.ToolStripButton tsbEvDown;
+        private ToolsCore.Icons.IconToolStripButton tsbEvAdd;
+        private ToolsCore.Icons.IconToolStripButton tsbEvEdit;
+        private ToolsCore.Icons.IconToolStripButton tsbEvDelete;
+        private ToolsCore.Icons.IconToolStripButton tsbEvUp;
+        private ToolsCore.Icons.IconToolStripButton tsbEvDown;
         private System.Windows.Forms.TabPage tpStarters;
         private System.Windows.Forms.DataGridView dgvStarters;
         private System.Windows.Forms.DataGridViewTextBoxColumn cStKey;
         private System.Windows.Forms.DataGridViewTextBoxColumn cStEvent;
         private System.Windows.Forms.DataGridViewTextBoxColumn cStText;
         private System.Windows.Forms.ToolStrip tsStarters;
-        private System.Windows.Forms.ToolStripButton tsbStAdd;
-        private System.Windows.Forms.ToolStripButton tsbStEdit;
-        private System.Windows.Forms.ToolStripButton tsbStDelete;
+        private ToolsCore.Icons.IconToolStripButton tsbStAdd;
+        private ToolsCore.Icons.IconToolStripButton tsbStEdit;
+        private ToolsCore.Icons.IconToolStripButton tsbStDelete;
         private System.Windows.Forms.TabPage tpProblems;
         private System.Windows.Forms.DataGridView dgvProblems;
         private System.Windows.Forms.DataGridViewImageColumn cProbType;

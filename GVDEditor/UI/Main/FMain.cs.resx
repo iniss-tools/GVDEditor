@@ -157,33 +157,6 @@
   <data name="tsmiOpen.Text" xml:space="preserve">
     <value>Otevřít...</value>
   </data>
-  <data name="tsmiRecent.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAABOJJREFUSEvNVllPG1cUnvZ/dPkFXV7bh8T22A6JBJhI5IFESqKEl0SENi8hEKUV
-        iEWAUFS1QYlEk3RRmyp96KLwQKuqYDzeoDSlqBJggzFgExZvsWem8e35xsfFBi+Qp3zSlcbX557vLud8
-        50gvPZwWy7uK1drlramZctvt4QmTScXAt7umxq/YbJ2wYfPDYdJi6eVPA0KSXnHJcsOk2bzsP3EiNn/x
-        ohptbxfbnZ0iNTBgjO2uLoE5/Oez2+Mum22J7B3s4mBwWSyCdj5ofB858qbHbv9jur4+tnHjhoh3d4tA
-        S0t2xuGI+Y4fj03Isobhow3NNDTEgleuZGGz0dEhpuvqYuRnalyWXzccVwOIPbW1SVr0hcdq3VpuadHj
-        PT1itqkp7WlsTKw9fOhLr697NVVd03U9QyOpa9piJhJRVh48cLsdjuTs2bNprAlcuqTTM2xOHj36Prsv
-        DxAn+/rEVENDFteJodTXp7acTkXTtGeiAH8uroonNApBm0hsjI2Nu+rqUpFr14zTe2Q5XpUcxOmhIfFs
-        cFCsXr0q/A5Hmk4XZL9FAOle4uDKupgPhoWeSs35T5/eDF6+rOOZcHKnyfQG0xRD3Lz5ap4YAyf3nzqV
-        XRoeZreVoWm6aO8fETNzi7nfqhoBOU4eoA24ZdnPVMWgK7oF4lJj6e5dw1klfD86IW5/+SP/ygEnd9XW
-        phK9vUbAOc3meqbLAWkTDwRUtj80wutPxQedt8XWToJndoE3/5sCDu+NVGPKHMKPHjWx3aGRzWZF3/C3
-        4tfJaZ4pBgVcHNGOSEeeKybT20wrSVCkheZmFXm6dOfOJK85EH5TZkT3p1+L58+zPLMfofv33chziIwi
-        y51MS8Qkg1CfJ42NO+lQaJztqyIWT4oPu4bFcjjCM6VBua9AZKLXrwvPsWM+ppUkEou1HZI+r80WhyCw
-        fVngepXpOdHz2Tfiu59/59nygE9cM3QB2s60dGKTKZPs7xcTVivphJYsJQ6FAGlz25Axxr1/8ex+5P3A
-        J3yDA1w5VkKemMJdhVEpcShEIbHTV5447wcBRgKiGsSynM6xEqgqreKqUYHIKMDryoJu2iDv+uQr8cOY
-        wrPlQT4XUExQyYqvuiC4IPhsXxWb23EjuDa2YjxTGulwWJk5edIILq/d7mVaIqYivnD+fAbphCrD9gfC
-        T78o+xRrL5ZHRrxGOp07l3FbrR8xrSTRw7+DqEM9RbLjTXhNVej6v6Jj4HMxN7/MM8UgX7G8gNBp4y6z
-        +S2mzcFlty9B1lBPIXO87kAIrUZF5Ok2/ypGdHTUkEw8JQlVkOl2gXYFQo6doZ5C4HntC6OwSEyRb5fJ
-        VMt0xUC7gs4BpQwljUrbOvs4NLDWf+bMVqStTVAno3lstt2g2gv0SCjauHIUcZDTrmfZVxEqiYyeTP7z
-        fyNAvuCTiF9jmtJAm0InT6BzwMlx7XjzvQFXSmRgE338eALXG6HUMUip9SHxeI/dVwbIsUt0DngfBAci
-        c4WqDAQfggCFw8A35kL37nlgA1uswfXCx4FJ80CPhHYFAYedI+iCra1ZCAFUCNqLkW9vQ62thg2iF4GE
-        N616vZWAdgWdA/J8/sIFFeoD6YPuYhgNPc1BHJCnSJmy0fsiQOeAIo56Cr1FYcGgU624ac5ltX68Txxe
-        PkjSf+/RWRsLnF1/AAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="tsmiRecent.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 22</value>
   </data>
@@ -334,33 +307,6 @@
   <data name="tsmimImportData.Text" xml:space="preserve">
     <value>Data...</value>
   </data>
-  <data name="tssbRecentDirs.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAATTSURBVEhLzVZJT1tXFH7t/+jwCzpssmgXxPZ7dkgkpgVZ
-        kChZJCwJbTYhELkViEGAUFS1QYlEk3RQmypd0FZhQUtVMH4egNK0QpWYjQEzGA/PMbYb357v+jjY4AGy
-        yiddye/63vPde+453znKKw+HxfK+rmkdnsrKaZfN5h+rqEhg4LersnJKt1rbsYaXnwyTFks3/5QQivKa
-        U1XrHCbT6tS5c+H5q1cTW62tYq+9XcT6+uTY6+gQmMN/XlWNOK3WlUmzuZZNHA9Oi0XQyfvl74qKt902
-        258zNTXh7Vu3RKSzU9ibmtKztbVh79mz4WFVTWJ46UCYs1+7lsaa7bY2MVNdHSY70+Oq+qY0XA4gdlRV
-        GbTpK7fFEly6dCkV6eqCobirvj668eiRN7656UkkEhs7Ozv70WjUSCWTi/uBgL728KHLUVtrzFy+HMce
-        7KVn2J08ffpDNl8cIDZ6eoS9ri4Nd2KM1dTEgg6HHgqFnokc/LW4Lp7SyIVhGNHt0dHxserqWODGDXl7
-        N7m/LDmI4wMD4ll/v1i/fl1M0U2TicQy280DSA8TL69tivllv0jFYnNTFy7s4tZ4Jtyc4uQtpsmHsNtf
-        zxJjyJufP59eGRxks6WRTKZEa++QmJ1blN/0HAGQ4+bS7ao6xVT5IBfdBnGhsXLvnjRWCj+OTIg7X//E
-        Xxng5mNVVbFod7cMOIfZXMN0GSBtAktLCV5/Yvg3d8RH7XdEMBTlmQPgzRFweG+kGlNm4H/8uIHXnRjp
-        dFr0DH4vfpuc4Zl8xGKxCKIdkY48102md5lWUaBIC42NCeTpyt27k7znWPhdnxWdn38rnj9P88xR+B48
-        cCHPITK6qrYzLRGTDEJ9ntbXh+I+3zivL4twxBAfdwyKVX+AZwqDcl+HyGzdvCncZ854mVZR3Jq2ESLp
-        85ArIAi8vijgXn1mTnR98Z344Zc/eLY4YBNuhi5A25mWbnzq1L7R2yuGNS0JNSokDrkAaWPLgBzjnr95
-        9iiydmATtsEBrgwrIUuMaoNFhcQhF7nEDm9x4qwdBBhsS2JVjWdYCVRN1uFqVCByyxLvKwrytCTv+Owb
-        MTyq82xxkM0FFBNUsnxX5wQXBJ/Xl8XuXkQG13YwzDOFEff7XwSXx2bzMC0RUxFfaGjYRzqhyvD6Y+Hn
-        X/UjinUYq0NDHplOxOHStE+YVlEmNO09RB3qKZIdb8J7yiKV+k+09X0p5uZXeSYfZCucFRBkjdNsfodp
-        M3DabCuyiEPeSOZ437HgW98SgZ09/srH1siIlEw8JQnVMtMdAO0KhBwnQz2FwPPel0ZukZgm206TqYrp
-        8oF2BSUMpQwljUrbJts4MbDXffFiMNDSIlabmpJuq/UgqA4DPRKKNlyOA4CcTv0P28pDKZFJGca/LxoB
-        sgWbRPwG0xQG2hS6eRSdA24Ot+PNDwdcIZHBmq0nTybg3gCljiSlgKLu4wM2XxogxylxYlnEKTgQmWtU
-        ZSD4EAQoHDd7C5jz3b/vzjZ72AP3wsaxSbNAj4R2BQGHkyPo7M3NmfaWVAjai5Ftb33NzXINoheBhDct
-        695SQLuCzgF5Pn/lSgLqA+mD7mLIhp7mIA7IU6RM0eh9GaBzQBFHPYXeorBg0K3WXDTn1LRPj4jDqwdF
-        +R9MeFGnym8FMgAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="tsbAnalyze.Text" xml:space="preserve">
     <value>Analyzovat grafikon</value>
   </data>
@@ -384,16 +330,6 @@
   </data>
   <data name="tsbGlobalSettings.ToolTipText" xml:space="preserve">
     <value>Globální nastavení</value>
-  </data>
-  <data name="tsbAppSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADjSURBVEhLYxgFdAWZVX3eWRUT36ZV9v+nJQbZkV4zwQtq
-        LQNDVsWkt5v3n/5/4uJtmuLN+07/T6npeQO1loEB5BpsCmmBQXZBrYVYTE8MtZaBoaJ7zn96AZBdUGtH
-        LUaA+RsPQVnYAT55XHJD0+L+1Rf+l0w7AscT1lyEyiAATSwGWXboxX84BvHRAV18PJFePoYBv6qtUBYm
-        oLvFhOIfr8XEJB4QwGYxSD2++MdrMSHNMECMj9HjnyQfY0s8IIAvjnHJ4bUYBvAZDAKjFiMDiiymBRi1
-        GCxALwy1dhTQAzAwAABd5lF5oRG2KAAAAABJRU5ErkJggg==
-</value>
   </data>
   <data name="tsbAppSettings.ToolTipText" xml:space="preserve">
     <value>Nastavení programu</value>

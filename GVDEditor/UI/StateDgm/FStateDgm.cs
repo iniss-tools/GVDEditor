@@ -9,6 +9,7 @@ using GVDEditor.Properties;
 using JetBrains.Annotations;
 using ScintillaNET;
 using ToolsCore;
+using ToolsCore.Icons;
 using ToolsCore.Iniss.Expressions;
 using ToolsCore.Iniss.StateDgm;
 using ToolsCore.Iniss.Tools;
@@ -29,6 +30,17 @@ public partial class FStateDgm : Form
 
     private const string TAG_HEADER = "header";
     private const string TAG_DESIGNS = "designs";
+
+    // ikony uzlov stromu (nazvy z banky AppIcons)
+    private const string IconFile = "flowchart";
+    private const string IconDesigns = "color";
+    private const string IconDesign = "button";
+    private const string IconTimePoint = "clock";
+    private const string IconCategories = "folder";
+    private const string IconState = "train";
+    private const string IconDeparture = "departure";
+    private const string IconPassThrough = "pass-through";
+    private const string IconArrival = "arrival";
     private const string TAG_TIMEPOINTS = "timepoints";
     private const string TAG_CATEGORIES = "categories";
 
@@ -51,10 +63,7 @@ public partial class FStateDgm : Form
     private readonly ExBindingList<ProblemRow> _problems = new() { Sortable = true };
     private readonly BindingList<EventRow> _eventRows = [];
     private readonly BindingList<StarterRow> _starterRows = [];
-    private readonly ShellIcon _iconError = new(ShellIconType.Error, ShellIconSize.Small);
-    private readonly ShellIcon _iconWarning = new(ShellIconType.Warning, ShellIconSize.Small);
-    private readonly ShellIcon _iconInfo = new(ShellIconType.Info, ShellIconSize.Small);
-    private readonly ImageList _treeImages = new() { ColorDepth = ColorDepth.Depth32Bit, ImageSize = new Size(16, 16) };
+    private readonly ImageList _treeImages = new();
 
     private StateDgmCategory? _selCategory;
     private StateDgmState? _selState;
@@ -83,8 +92,8 @@ public partial class FStateDgm : Form
 
     private bool _settingText;
     private readonly ToolStrip _rawBar = new() { GripStyle = ToolStripGripStyle.Hidden, Dock = DockStyle.Top, Visible = false };
-    private readonly ToolStripButton _tsbRawApply = new() { DisplayStyle = ToolStripItemDisplayStyle.ImageAndText };
-    private readonly ToolStripLabel _rawInfo = new();
+    private readonly IconToolStripButton _tsbRawApply = new() { DisplayStyle = ToolStripItemDisplayStyle.ImageAndText, IconName = "checkmark" };
+    private readonly IconToolStripLabel _rawInfo = new() { IconName = "status-error" };
 
     /// <summary>
     /// Otvori editor diagramu grafikonu.
@@ -120,15 +129,8 @@ public partial class FStateDgm : Form
         _designEditor = new SdDesignEditor(_sd);
         _timePointEditor = new SdTimePointEditor(_sd);
 
-        _treeImages.Images.Add("file", GlobalResources.flow_chart);
-        _treeImages.Images.Add("designs", GlobalResources.colors);
-        _treeImages.Images.Add("timepoint", GlobalResources.clock);
-        _treeImages.Images.Add("categories", GlobalResources.folder);
-        _treeImages.Images.Add("cat0", GlobalResources.vychodzia_st);
-        _treeImages.Images.Add("cat1", GlobalResources.prechadza_st);
-        _treeImages.Images.Add("cat2", GlobalResources.konecna_st);
-        _treeImages.Images.Add("state", GlobalResources.train);
-        _treeImages.Images.Add("design", GlobalResources.push_button);
+        // kluce obrazkov uzlov su nazvy ikon z banky; strom uz ma farby temy
+        IconImages.Fill(_treeImages, tvNav, [IconFile, IconDesigns, IconTimePoint, IconCategories, IconDeparture, IconPassThrough, IconArrival, IconState, IconDesign]);
         tvNav.ImageList = _treeImages;
 
         foreach (var ed in Editors)
@@ -196,9 +198,7 @@ public partial class FStateDgm : Form
         };
         _tsbRawApply.Text = Resources.FStateDgm_Text_Nacitat;
         _tsbRawApply.ToolTipText = Resources.FStateDgm_Text_NacitatTip;
-        _tsbRawApply.Image = GlobalResources.correct;
         _tsbRawApply.Click += (_, _) => ApplyRawText();
-        _rawInfo.Image = _iconError.ToBitmap();
         _rawInfo.Click += (_, _) => GoToRawError();
         _rawBar.Items.Add(_tsbRawApply);
         _rawBar.Items.Add(new ToolStripSeparator());
@@ -405,29 +405,29 @@ public partial class FStateDgm : Form
         tvNav.BeginUpdate();
         tvNav.Nodes.Clear();
 
-        tvNav.Nodes.Add(new TreeNode(Resources.FStateDgm_Diagram) { ImageKey = @"file", SelectedImageKey = @"file", Tag = TAG_HEADER });
+        tvNav.Nodes.Add(new TreeNode(Resources.FStateDgm_Diagram) { ImageKey = IconFile, SelectedImageKey = IconFile, Tag = TAG_HEADER });
 
-        var designs = new TreeNode(Resources.FStateDgm_Vzhlady) { ImageKey = @"designs", SelectedImageKey = @"designs", Tag = TAG_DESIGNS };
+        var designs = new TreeNode(Resources.FStateDgm_Vzhlady) { ImageKey = IconDesigns, SelectedImageKey = IconDesigns, Tag = TAG_DESIGNS };
         foreach (var d in _d.Designs)
-            designs.Nodes.Add(new TreeNode(d.Key) { ImageKey = @"design", SelectedImageKey = @"design", Tag = d });
+            designs.Nodes.Add(new TreeNode(d.Key) { ImageKey = IconDesign, SelectedImageKey = IconDesign, Tag = d });
         tvNav.Nodes.Add(designs);
 
-        var tps = new TreeNode(Resources.FStateDgm_CasoveBody) { ImageKey = @"timepoint", SelectedImageKey = @"timepoint", Tag = TAG_TIMEPOINTS };
+        var tps = new TreeNode(Resources.FStateDgm_CasoveBody) { ImageKey = IconTimePoint, SelectedImageKey = IconTimePoint, Tag = TAG_TIMEPOINTS };
         foreach (var k in StateDgmKeys.BuiltInTimePoints)
-            tps.Nodes.Add(new TreeNode($"{k} {Resources.FStateDgm_Zabudovany}") { ImageKey = @"timepoint", SelectedImageKey = @"timepoint", Tag = k, ForeColor = SystemColors.GrayText });
+            tps.Nodes.Add(new TreeNode($"{k} {Resources.FStateDgm_Zabudovany}") { ImageKey = IconTimePoint, SelectedImageKey = IconTimePoint, Tag = k, ForeColor = SystemColors.GrayText });
         foreach (var t in _d.TimePoints)
-            tps.Nodes.Add(new TreeNode(TimePointText(t)) { ImageKey = @"timepoint", SelectedImageKey = @"timepoint", Tag = t });
+            tps.Nodes.Add(new TreeNode(TimePointText(t)) { ImageKey = IconTimePoint, SelectedImageKey = IconTimePoint, Tag = t });
         tvNav.Nodes.Add(tps);
 
-        var cats = new TreeNode(Resources.FStateDgm_Kategorie) { ImageKey = @"categories", SelectedImageKey = @"categories", Tag = TAG_CATEGORIES };
+        var cats = new TreeNode(Resources.FStateDgm_Kategorie) { ImageKey = IconCategories, SelectedImageKey = IconCategories, Tag = TAG_CATEGORIES };
         foreach (var c in _d.Categories)
         {
             var cn = new TreeNode(CategoryText(c)) { ImageKey = CategoryImage(c), SelectedImageKey = CategoryImage(c), Tag = c };
             foreach (var s in c.States)
             {
-                var sn = new TreeNode(StateText(s)) { ImageKey = @"state", SelectedImageKey = @"state", Tag = s };
+                var sn = new TreeNode(StateText(s)) { ImageKey = IconState, SelectedImageKey = IconState, Tag = s };
                 foreach (var t in s.TimePoints)
-                    sn.Nodes.Add(new TreeNode(TimePointText(t)) { ImageKey = @"timepoint", SelectedImageKey = @"timepoint", Tag = t });
+                    sn.Nodes.Add(new TreeNode(TimePointText(t)) { ImageKey = IconTimePoint, SelectedImageKey = IconTimePoint, Tag = t });
                 cn.Nodes.Add(sn);
             }
 
@@ -460,7 +460,8 @@ public partial class FStateDgm : Form
         return null;
     }
 
-    private TreeNode? FindNode(object tag) => FindNode(tvNav.Nodes, tag);
+    // zakladna kolekcia stromu - ExTreeView.Nodes je obal s viditelnymi uzlami (vsetky su viditelne)
+    private TreeNode? FindNode(object tag) => FindNode(((TreeView)tvNav).Nodes, tag);
 
     private static TreeNode? FindNode(TreeNodeCollection nodes, object tag)
     {
@@ -474,7 +475,7 @@ public partial class FStateDgm : Form
     }
 
     private static string CategoryText(StateDgmCategory c) => c.Name.Length > 0 ? c.Name : c.Key;
-    private static string CategoryImage(StateDgmCategory c) => c.Icon % 3 is 1 ? "cat1" : c.Icon % 3 is 2 ? "cat2" : "cat0";
+    private static string CategoryImage(StateDgmCategory c) => c.Icon % 3 is 1 ? IconPassThrough : c.Icon % 3 is 2 ? IconArrival : IconDeparture;
     private static string StateText(StateDgmState s) => s.Name.Length > 0 && s.Name != s.Key ? $"{s.Key} ({s.Name})" : s.Key;
     private static string TimePointText(StateDgmTimePoint t) => t.Key.Length > 0 ? t.Key : "?";
 
@@ -978,12 +979,16 @@ public partial class FStateDgm : Form
         if (dgvProblems.Rows[e.RowIndex].DataBoundItem is not ProblemRow pr) return;
         e.Value = pr.Diagnostic.Severity switch
         {
-            ExprSeverity.Error => _iconError.ToBitmap(),
-            ExprSeverity.Warning => _iconWarning.ToBitmap(),
-            _ => _iconInfo.ToBitmap()
+            ExprSeverity.Error => ProblemIcon("status-error"),
+            ExprSeverity.Warning => ProblemIcon("status-warning"),
+            _ => ProblemIcon("status-info")
         };
         e.FormattingApplied = true;
     }
+
+    // ikona zavaznosti v zozname problemov - podla DPI a pozadia zoznamu
+    private Bitmap? ProblemIcon(string name) =>
+        AppIcons.Get(name, null, dgvProblems.LogicalToDeviceUnits(IconImages.Size), AppIcons.IsDarkBackground(dgvProblems.DefaultCellStyle.BackColor));
 
     private void dgvProblems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {

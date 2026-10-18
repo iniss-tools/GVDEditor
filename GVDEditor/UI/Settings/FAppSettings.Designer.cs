@@ -94,11 +94,9 @@ namespace GVDEditor.UI.Settings
             this.optionsView.TreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.optionsView.TreeView.FullRowSelect = true;
             this.optionsView.TreeView.HideSelection = false;
-            this.optionsView.TreeView.ImageIndex = 0;
             this.optionsView.TreeView.ItemHeight = 20;
             this.optionsView.TreeView.Name = "treeView";
             this.optionsView.TreeView.PathSeparator = " / ";
-            this.optionsView.TreeView.SelectedImageIndex = 0;
             this.optionsView.TreeView.ShowLines = false;
             this.optionsView.TreeView.ShowNodeToolTips = true;
             this.optionsView.TreeView.Style = ExControls.ExTreeViewStyle.Light;
@@ -221,9 +219,7 @@ namespace GVDEditor.UI.Settings
             // 
             this.pMcp.Controls.Add(this.ppMcp);
             this.pMcp.Name = "pMcp";
-            optionsNodeMcp.ImageKey = "artificial-intelligence.png";
             optionsNodeMcp.Name = "";
-            optionsNodeMcp.SelectedImageKey = "artificial-intelligence.png";
             optionsNodeMcp.Text = resources.GetString("optionsNodeMcp.Text");
             this.pMcp.Node = optionsNodeMcp;
             this.pMcp.NodeText = resources.GetString("pMcp.NodeText");

@@ -6,6 +6,7 @@ using GVDEditor.Integration;
 using GVDEditor.Properties;
 using GVDEditor.UI.InissSettings;
 using GVDEditor.UI.Settings;
+using ToolsCore.Icons;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Main;
@@ -132,10 +133,10 @@ internal partial class FMain
         UpdateRunMenus();
     }
 
-    private ToolStripMenuItem RunItem(RunConfiguration config)
+    private IconToolStripMenuItem RunItem(RunConfiguration config)
     {
         var id = config.Id;
-        var item = new ToolStripMenuItem(config.Name) { Tag = id, ImageScaling = ToolStripItemImageScaling.SizeToFit };
+        var item = new IconToolStripMenuItem { Text = config.Name, Tag = id };
         item.Click += (_, _) =>
         {
             // vyber podla identifikatora - konfiguracia sa mohla medzitym nahradit
@@ -167,7 +168,8 @@ internal partial class FMain
             item.Checked = id == selected?.Id;
             item.Text = count > 1 ? string.Format(CultureInfo.CurrentCulture, Resources.Run_ItemInstances, config.Name, count) : config.Name;
             // beziaca konfiguracia ma ikonu spustenia (zaskrtnutie vybranej sa zobrazi vedla nej)
-            item.Image = count > 0 ? tssbStartINISS.Image : null;
+            if (item is IconToolStripMenuItem icon)
+                icon.IconName = count > 0 ? tssbStartINISS.IconName : null;
             item.ToolTipText = RunConfigurations.CommandLine(config);
         }
     }

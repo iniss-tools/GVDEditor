@@ -35,16 +35,16 @@ namespace GVDEditor.UI.TabTab
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbTabTabs = new System.Windows.Forms.ListBox();
             this.conMenuLbTabs = new System.Windows.Forms.ContextMenuStrip();
-            this.tsmiAddTabTab = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDeleteTabTab = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAddTabTab = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tsmiDeleteTabTab = new ToolsCore.Icons.IconToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiRenameTabTab = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRenameTabTab = new ToolsCore.Icons.IconToolStripMenuItem();
             this.conMenuScText = new System.Windows.Forms.ContextMenuStrip();
-            this.tsmiSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSaveAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSave = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tsmiSaveAll = new ToolsCore.Icons.IconToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiUndo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiRedo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiUndo = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tsmiRedo = new ToolsCore.Icons.IconToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiCut = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCopy = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,21 +53,21 @@ namespace GVDEditor.UI.TabTab
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.tsbSave = new System.Windows.Forms.ToolStripButton();
-            this.tsbSaveAll = new System.Windows.Forms.ToolStripButton();
-            this.tsbStorno = new System.Windows.Forms.ToolStripButton();
+            this.tsbSave = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbSaveAll = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbStorno = new ToolsCore.Icons.IconToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbUndo = new System.Windows.Forms.ToolStripButton();
-            this.tsbRedo = new System.Windows.Forms.ToolStripButton();
+            this.tsbUndo = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbRedo = new ToolsCore.Icons.IconToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbAddTab = new System.Windows.Forms.ToolStripButton();
-            this.tsbRemoveTab = new System.Windows.Forms.ToolStripButton();
+            this.tsbAddTab = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbRemoveTab = new ToolsCore.Icons.IconToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbRename = new System.Windows.Forms.ToolStripButton();
-            this.tsbFindReplace = new System.Windows.Forms.ToolStripButton();
-            this.tsbReformat = new System.Windows.Forms.ToolStripButton();
+            this.tsbRename = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbFindReplace = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbReformat = new ToolsCore.Icons.IconToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbPreview = new System.Windows.Forms.ToolStripButton();
+            this.tsbPreview = new ToolsCore.Icons.IconToolStripButton();
             this.acMenu = new AutocompleteMenuNS.AutocompleteMenu();
             this.acImages = new System.Windows.Forms.ImageList();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -92,17 +92,17 @@ namespace GVDEditor.UI.TabTab
             this.cProbMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cProbSolution = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsProblems = new System.Windows.Forms.ToolStrip();
-            this.tsbProbErrors = new System.Windows.Forms.ToolStripButton();
-            this.tsbProbWarnings = new System.Windows.Forms.ToolStripButton();
-            this.tsbProbInfos = new System.Windows.Forms.ToolStripButton();
+            this.tsbProbErrors = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbProbWarnings = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbProbInfos = new ToolsCore.Icons.IconToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbProbGoTo = new System.Windows.Forms.ToolStripButton();
-            this.tsbProbFix = new System.Windows.Forms.ToolStripButton();
+            this.tsbProbGoTo = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbProbFix = new ToolsCore.Icons.IconToolStripButton();
             this.conMenuProblems = new System.Windows.Forms.ContextMenuStrip();
-            this.tsmiProbGoTo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiProbFix = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiProbGoTo = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tsmiProbFix = new ToolsCore.Icons.IconToolStripMenuItem();
             this.splitterProblems = new System.Windows.Forms.Splitter();
-            this.tsslProblems = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslProblems = new ToolsCore.Icons.IconToolStripStatusLabel();
             this.toolStripContainer1.SuspendLayout();
             this.pProblems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProblems)).BeginInit();
@@ -167,11 +167,13 @@ namespace GVDEditor.UI.TabTab
             // 
             resources.ApplyResources(this.tsmiAddTabTab, "tsmiAddTabTab");
             this.tsmiAddTabTab.Name = "tsmiAddTabTab";
+            this.tsmiAddTabTab.IconName = "add";
             // 
             // tsmiDeleteTabTab
             // 
             resources.ApplyResources(this.tsmiDeleteTabTab, "tsmiDeleteTabTab");
             this.tsmiDeleteTabTab.Name = "tsmiDeleteTabTab";
+            this.tsmiDeleteTabTab.IconName = "delete";
             // 
             // toolStripSeparator8
             // 
@@ -182,6 +184,7 @@ namespace GVDEditor.UI.TabTab
             // 
             resources.ApplyResources(this.tsmiRenameTabTab, "tsmiRenameTabTab");
             this.tsmiRenameTabTab.Name = "tsmiRenameTabTab";
+            this.tsmiRenameTabTab.IconName = "rename";
             // 
             // conMenuScText
             // 
@@ -207,11 +210,13 @@ namespace GVDEditor.UI.TabTab
             // 
             resources.ApplyResources(this.tsmiSave, "tsmiSave");
             this.tsmiSave.Name = "tsmiSave";
+            this.tsmiSave.IconName = "save";
             // 
             // tsmiSaveAll
             // 
             resources.ApplyResources(this.tsmiSaveAll, "tsmiSaveAll");
             this.tsmiSaveAll.Name = "tsmiSaveAll";
+            this.tsmiSaveAll.IconName = "save-all";
             // 
             // toolStripSeparator7
             // 
@@ -222,11 +227,13 @@ namespace GVDEditor.UI.TabTab
             // 
             resources.ApplyResources(this.tsmiUndo, "tsmiUndo");
             this.tsmiUndo.Name = "tsmiUndo";
+            this.tsmiUndo.IconName = "undo";
             // 
             // tsmiRedo
             // 
             resources.ApplyResources(this.tsmiRedo, "tsmiRedo");
             this.tsmiRedo.Name = "tsmiRedo";
+            this.tsmiRedo.IconName = "redo";
             // 
             // toolStripSeparator5
             // 
@@ -293,23 +300,23 @@ namespace GVDEditor.UI.TabTab
             // tsbSave
             // 
             this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSave.Image = global::ToolsCore.GlobalResources.save;
             resources.ApplyResources(this.tsbSave, "tsbSave");
             this.tsbSave.Name = "tsbSave";
+            this.tsbSave.IconName = "save";
             // 
             // tsbSaveAll
             // 
             this.tsbSaveAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSaveAll.Image = global::ToolsCore.GlobalResources.save_all;
             resources.ApplyResources(this.tsbSaveAll, "tsbSaveAll");
             this.tsbSaveAll.Name = "tsbSaveAll";
+            this.tsbSaveAll.IconName = "save-all";
             // 
             // tsbStorno
             // 
             this.tsbStorno.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbStorno.Image = global::ToolsCore.GlobalResources.export;
             resources.ApplyResources(this.tsbStorno, "tsbStorno");
             this.tsbStorno.Name = "tsbStorno";
+            this.tsbStorno.IconName = "exit";
             this.tsbStorno.Click += new System.EventHandler(this.tsbStorno_Click);
             // 
             // toolStripSeparator1
@@ -320,16 +327,16 @@ namespace GVDEditor.UI.TabTab
             // tsbUndo
             // 
             this.tsbUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbUndo.Image = global::ToolsCore.GlobalResources.undo;
             resources.ApplyResources(this.tsbUndo, "tsbUndo");
             this.tsbUndo.Name = "tsbUndo";
+            this.tsbUndo.IconName = "undo";
             // 
             // tsbRedo
             // 
             this.tsbRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRedo.Image = global::ToolsCore.GlobalResources.redo;
             resources.ApplyResources(this.tsbRedo, "tsbRedo");
             this.tsbRedo.Name = "tsbRedo";
+            this.tsbRedo.IconName = "redo";
             // 
             // toolStripSeparator2
             // 
@@ -339,16 +346,16 @@ namespace GVDEditor.UI.TabTab
             // tsbAddTab
             // 
             this.tsbAddTab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAddTab.Image = global::ToolsCore.GlobalResources.add;
             resources.ApplyResources(this.tsbAddTab, "tsbAddTab");
             this.tsbAddTab.Name = "tsbAddTab";
+            this.tsbAddTab.IconName = "add";
             // 
             // tsbRemoveTab
             // 
             this.tsbRemoveTab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRemoveTab.Image = global::ToolsCore.GlobalResources.delete;
             resources.ApplyResources(this.tsbRemoveTab, "tsbRemoveTab");
             this.tsbRemoveTab.Name = "tsbRemoveTab";
+            this.tsbRemoveTab.IconName = "delete";
             // 
             // toolStripSeparator3
             // 
@@ -358,23 +365,23 @@ namespace GVDEditor.UI.TabTab
             // tsbRename
             // 
             this.tsbRename.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRename.Image = global::ToolsCore.GlobalResources.rename;
             resources.ApplyResources(this.tsbRename, "tsbRename");
             this.tsbRename.Name = "tsbRename";
+            this.tsbRename.IconName = "rename";
             // 
             // tsbFindReplace
             // 
             this.tsbFindReplace.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbFindReplace.Image = global::ToolsCore.GlobalResources.find_replace;
             resources.ApplyResources(this.tsbFindReplace, "tsbFindReplace");
             this.tsbFindReplace.Name = "tsbFindReplace";
+            this.tsbFindReplace.IconName = "search";
             // 
             // tsbReformat
             // 
             this.tsbReformat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbReformat.Image = global::ToolsCore.GlobalResources.wrench;
             resources.ApplyResources(this.tsbReformat, "tsbReformat");
             this.tsbReformat.Name = "tsbReformat";
+            this.tsbReformat.IconName = "text-indent";
             // 
             // toolStripSeparator10
             // 
@@ -382,8 +389,8 @@ namespace GVDEditor.UI.TabTab
             // 
             // tsbPreview
             // 
-            this.tsbPreview.Image = global::ToolsCore.GlobalResources.desktop;
             this.tsbPreview.Name = "tsbPreview";
+            this.tsbPreview.IconName = "eye";
             this.tsbPreview.Click += new System.EventHandler(this.tsbPreview_Click);
             // 
             // acMenu
@@ -401,11 +408,9 @@ namespace GVDEditor.UI.TabTab
             // 
             // acImages
             // 
-            this.acImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("acImages.ImageStream")));
+            this.acImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.acImages.ImageSize = new System.Drawing.Size(16, 16);
             this.acImages.TransparentColor = System.Drawing.Color.Transparent;
-            this.acImages.Images.SetKeyName(0, "function.png");
-            this.acImages.Images.SetKeyName(1, "constant.png");
-            this.acImages.Images.SetKeyName(2, "event.png");
             // 
             // statusStrip
             // 
@@ -560,6 +565,7 @@ namespace GVDEditor.UI.TabTab
             this.tsbProbErrors.CheckOnClick = true;
             this.tsbProbErrors.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsbProbErrors.Name = "tsbProbErrors";
+            this.tsbProbErrors.IconName = "status-error";
             this.tsbProbErrors.CheckedChanged += new System.EventHandler(this.tsbProbFilter_CheckedChanged);
             //
             // tsbProbWarnings
@@ -568,6 +574,7 @@ namespace GVDEditor.UI.TabTab
             this.tsbProbWarnings.CheckOnClick = true;
             this.tsbProbWarnings.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsbProbWarnings.Name = "tsbProbWarnings";
+            this.tsbProbWarnings.IconName = "status-warning";
             this.tsbProbWarnings.CheckedChanged += new System.EventHandler(this.tsbProbFilter_CheckedChanged);
             //
             // tsbProbInfos
@@ -576,6 +583,7 @@ namespace GVDEditor.UI.TabTab
             this.tsbProbInfos.CheckOnClick = true;
             this.tsbProbInfos.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tsbProbInfos.Name = "tsbProbInfos";
+            this.tsbProbInfos.IconName = "status-info";
             this.tsbProbInfos.CheckedChanged += new System.EventHandler(this.tsbProbFilter_CheckedChanged);
             //
             // toolStripSeparator9
@@ -584,14 +592,14 @@ namespace GVDEditor.UI.TabTab
             //
             // tsbProbGoTo
             //
-            this.tsbProbGoTo.Image = global::ToolsCore.GlobalResources.search;
             this.tsbProbGoTo.Name = "tsbProbGoTo";
+            this.tsbProbGoTo.IconName = "search";
             this.tsbProbGoTo.Click += new System.EventHandler(this.tsbProbGoTo_Click);
             //
             // tsbProbFix
             //
-            this.tsbProbFix.Image = global::ToolsCore.GlobalResources.wrench;
             this.tsbProbFix.Name = "tsbProbFix";
+            this.tsbProbFix.IconName = "wrench";
             this.tsbProbFix.Click += new System.EventHandler(this.tsbProbFix_Click);
             //
             // conMenuProblems
@@ -603,14 +611,14 @@ namespace GVDEditor.UI.TabTab
             //
             // tsmiProbGoTo
             //
-            this.tsmiProbGoTo.Image = global::ToolsCore.GlobalResources.search;
             this.tsmiProbGoTo.Name = "tsmiProbGoTo";
+            this.tsmiProbGoTo.IconName = "search";
             this.tsmiProbGoTo.Click += new System.EventHandler(this.tsbProbGoTo_Click);
             //
             // tsmiProbFix
             //
-            this.tsmiProbFix.Image = global::ToolsCore.GlobalResources.wrench;
             this.tsmiProbFix.Name = "tsmiProbFix";
+            this.tsmiProbFix.IconName = "wrench";
             this.tsmiProbFix.Click += new System.EventHandler(this.tsbProbFix_Click);
             // 
             // splitterProblems
@@ -723,31 +731,31 @@ namespace GVDEditor.UI.TabTab
         #endregion
         private MyScintilla scText;
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripButton tsbSave;
-        private System.Windows.Forms.ToolStripButton tsbStorno;
+        private ToolsCore.Icons.IconToolStripButton tsbSave;
+        private ToolsCore.Icons.IconToolStripButton tsbStorno;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsbUndo;
-        private System.Windows.Forms.ToolStripButton tsbRedo;
+        private ToolsCore.Icons.IconToolStripButton tsbUndo;
+        private ToolsCore.Icons.IconToolStripButton tsbRedo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private AutocompleteMenuNS.AutocompleteMenu acMenu;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListBox lbTabTabs;
         private System.Windows.Forms.ImageList acImages;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-        private System.Windows.Forms.ToolStripButton tsbAddTab;
-        private System.Windows.Forms.ToolStripButton tsbRemoveTab;
-        private System.Windows.Forms.ToolStripButton tsbSaveAll;
-        private System.Windows.Forms.ToolStripButton tsbReformat;
+        private ToolsCore.Icons.IconToolStripButton tsbAddTab;
+        private ToolsCore.Icons.IconToolStripButton tsbRemoveTab;
+        private ToolsCore.Icons.IconToolStripButton tsbSaveAll;
+        private ToolsCore.Icons.IconToolStripButton tsbReformat;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        private System.Windows.Forms.ToolStripButton tsbPreview;
+        private ToolsCore.Icons.IconToolStripButton tsbPreview;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton tsbRename;
-        private System.Windows.Forms.ToolStripButton tsbFindReplace;
+        private ToolsCore.Icons.IconToolStripButton tsbRename;
+        private ToolsCore.Icons.IconToolStripButton tsbFindReplace;
         private System.Windows.Forms.ContextMenuStrip conMenuScText;
-        private System.Windows.Forms.ToolStripMenuItem tsmiUndo;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSave;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmiUndo;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmiSave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripMenuItem tsmiRedo;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmiRedo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem tsmiCut;
         private System.Windows.Forms.ToolStripMenuItem tsmiCopy;
@@ -756,11 +764,11 @@ namespace GVDEditor.UI.TabTab
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem tsmiSelectAll;
         private System.Windows.Forms.ContextMenuStrip conMenuLbTabs;
-        private System.Windows.Forms.ToolStripMenuItem tsmiAddTabTab;
-        private System.Windows.Forms.ToolStripMenuItem tsmiDeleteTabTab;
-        private System.Windows.Forms.ToolStripMenuItem tsmiRenameTabTab;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmiAddTabTab;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmiDeleteTabTab;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmiRenameTabTab;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSaveAll;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmiSaveAll;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel tsslTabTabName;
         private System.Windows.Forms.ToolStripStatusLabel tsslLenText;
@@ -782,16 +790,16 @@ namespace GVDEditor.UI.TabTab
         private System.Windows.Forms.DataGridViewTextBoxColumn cProbMessage;
         private System.Windows.Forms.DataGridViewTextBoxColumn cProbSolution;
         private System.Windows.Forms.ToolStrip tsProblems;
-        private System.Windows.Forms.ToolStripButton tsbProbErrors;
-        private System.Windows.Forms.ToolStripButton tsbProbWarnings;
-        private System.Windows.Forms.ToolStripButton tsbProbInfos;
+        private ToolsCore.Icons.IconToolStripButton tsbProbErrors;
+        private ToolsCore.Icons.IconToolStripButton tsbProbWarnings;
+        private ToolsCore.Icons.IconToolStripButton tsbProbInfos;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripButton tsbProbGoTo;
-        private System.Windows.Forms.ToolStripButton tsbProbFix;
+        private ToolsCore.Icons.IconToolStripButton tsbProbGoTo;
+        private ToolsCore.Icons.IconToolStripButton tsbProbFix;
         private System.Windows.Forms.ContextMenuStrip conMenuProblems;
-        private System.Windows.Forms.ToolStripMenuItem tsmiProbGoTo;
-        private System.Windows.Forms.ToolStripMenuItem tsmiProbFix;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmiProbGoTo;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmiProbFix;
         private System.Windows.Forms.Splitter splitterProblems;
-        private System.Windows.Forms.ToolStripStatusLabel tsslProblems;
+        private ToolsCore.Icons.IconToolStripStatusLabel tsslProblems;
     }
 }

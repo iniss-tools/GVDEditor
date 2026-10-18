@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 using GVDEditor.Domain.Entities;
+using ToolsCore.Icons;
 
 namespace GVDEditor.UI.Main
 {
@@ -115,31 +116,31 @@ namespace GVDEditor.UI.Main
             titleBar = new ExTitleBar();
             mainMenu = new MenuStrip();
             tsmiSubor = new ToolStripMenuItem();
-            tsmiNew = new ToolStripMenuItem();
+            tsmiNew = new IconToolStripMenuItem();
             toolStripSeparator6 = new ToolStripSeparator();
-            tsmiOpen = new ToolStripMenuItem();
-            tsmiRecent = new ToolStripMenuItem();
+            tsmiOpen = new IconToolStripMenuItem();
+            tsmiRecent = new IconToolStripMenuItem();
             toolStripSeparator4 = new ToolStripSeparator();
-            tsmiImport = new ToolStripMenuItem();
+            tsmiImport = new IconToolStripMenuItem();
             tsmiImportData = new ToolStripMenuItem();
             tsmiImportGVD = new ToolStripMenuItem();
             tsmiImportELIS = new ToolStripMenuItem();
             toolStripSeparator3 = new ToolStripSeparator();
-            tsmiSave = new ToolStripMenuItem();
+            tsmiSave = new IconToolStripMenuItem();
             toolStripSeparator18 = new ToolStripSeparator();
-            tsmiAnalyze = new ToolStripMenuItem();
+            tsmiAnalyze = new IconToolStripMenuItem();
             tsmiUpravit = new ToolStripMenuItem();
-            tsmiUndo = new ToolStripMenuItem();
-            tsmiRedo = new ToolStripMenuItem();
+            tsmiUndo = new IconToolStripMenuItem();
+            tsmiRedo = new IconToolStripMenuItem();
             toolStripSeparator20 = new ToolStripSeparator();
-            tsmimAddTrain = new ToolStripMenuItem();
-            tsmimEditTrain = new ToolStripMenuItem();
+            tsmimAddTrain = new IconToolStripMenuItem();
+            tsmimEditTrain = new IconToolStripMenuItem();
             toolStripSeparator2 = new ToolStripSeparator();
-            tsmiDeleteTrain = new ToolStripMenuItem();
+            tsmiDeleteTrain = new IconToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
-            tsmiDuplikovat = new ToolStripMenuItem();
+            tsmiDuplikovat = new IconToolStripMenuItem();
             tsmiStanica = new ToolStripMenuItem();
-            tsmiVlastnostiStanice = new ToolStripMenuItem();
+            tsmiVlastnostiStanice = new IconToolStripMenuItem();
             tsmiGrafikon = new ToolStripMenuItem();
             tsmiJazykyHlaseni = new ToolStripMenuItem();
             tsmiStanice = new ToolStripMenuItem();
@@ -155,68 +156,68 @@ namespace GVDEditor.UI.Main
             tsmiTTexts = new ToolStripMenuItem();
             tsmiTFonts = new ToolStripMenuItem();
             toolStripSeparator17 = new ToolStripSeparator();
-            tsmiTabTabEditor = new ToolStripMenuItem();
-            tsmiGlobalSettings = new ToolStripMenuItem();
+            tsmiTabTabEditor = new IconToolStripMenuItem();
+            tsmiGlobalSettings = new IconToolStripMenuItem();
             tsmiGrafikony = new ToolStripMenuItem();
             tsmiLanguages = new ToolStripMenuItem();
             tsmiMeskania = new ToolStripMenuItem();
             tsmiTypyVlakov = new ToolStripMenuItem();
             tsmiAudio = new ToolStripMenuItem();
             toolStripSeparator5 = new ToolStripSeparator();
-            tsmiAppSettings = new ToolStripMenuItem();
+            tsmiAppSettings = new IconToolStripMenuItem();
             tsmiTools = new ToolStripMenuItem();
-            tsmiDatObm = new ToolStripMenuItem();
-            tsmiStateDgm = new ToolStripMenuItem();
+            tsmiDatObm = new IconToolStripMenuItem();
+            tsmiStateDgm = new IconToolStripMenuItem();
             tsmiRun = new ToolStripMenuItem();
-            tsmimStartupSettings = new ToolStripMenuItem();
+            tsmimStartupSettings = new IconToolStripMenuItem();
             tsmimInissSettings = new ToolStripMenuItem();
             toolStripSeparator9 = new ToolStripSeparator();
-            tsmimStartINISS = new ToolStripMenuItem();
-            tsmimShutdownINISS = new ToolStripMenuItem();
-            tsmimKillINISS = new ToolStripMenuItem();
-            tsmimRestartINISS = new ToolStripMenuItem();
+            tsmimStartINISS = new IconToolStripMenuItem();
+            tsmimShutdownINISS = new IconToolStripMenuItem();
+            tsmimKillINISS = new IconToolStripMenuItem();
+            tsmimRestartINISS = new IconToolStripMenuItem();
             toolStripSeparator14 = new ToolStripSeparator();
             tsmiNastavenia = new ToolStripMenuItem();
-            tsmiInformation = new ToolStripMenuItem();
+            tsmiInformation = new IconToolStripMenuItem();
             tsmiChangelog = new ToolStripMenuItem();
             toolMenu = new ToolStrip();
-            tsbSave = new ToolStripButton();
-            tsbOpen = new ToolStripButton();
-            tsbImport = new ToolStripSplitButton();
+            tsbSave = new IconToolStripButton();
+            tsbOpen = new IconToolStripButton();
+            tsbImport = new IconToolStripSplitButton();
             tsmimImportData = new ToolStripMenuItem();
             tsmimImportGVD = new ToolStripMenuItem();
             tsmimImportELIS = new ToolStripMenuItem();
-            tssbRecentDirs = new ToolStripSplitButton();
-            tssbUndo = new ToolStripSplitButton();
-            tssbRedo = new ToolStripSplitButton();
+            tssbRecentDirs = new IconToolStripSplitButton();
+            tssbUndo = new IconToolStripSplitButton();
+            tssbRedo = new IconToolStripSplitButton();
             toolStripSeparator21 = new ToolStripSeparator();
-            tsbAnalyze = new ToolStripButton();
-            tsbAddGVD = new ToolStripButton();
+            tsbAnalyze = new IconToolStripButton();
+            tsbAddGVD = new IconToolStripButton();
             toolStripSeparator12 = new ToolStripSeparator();
-            tsbAddTrain = new ToolStripButton();
-            tsbEditTrain = new ToolStripButton();
-            tsbDeleteTrain = new ToolStripButton();
-            tsbCopyTrain = new ToolStripButton();
+            tsbAddTrain = new IconToolStripButton();
+            tsbEditTrain = new IconToolStripButton();
+            tsbDeleteTrain = new IconToolStripButton();
+            tsbCopyTrain = new IconToolStripButton();
             toolStripSeparator10 = new ToolStripSeparator();
-            tsbStanica = new ToolStripButton();
-            tsbGlobalSettings = new ToolStripButton();
+            tsbStanica = new IconToolStripButton();
+            tsbGlobalSettings = new IconToolStripButton();
             toolStripSeparator11 = new ToolStripSeparator();
-            tsbAppSettings = new ToolStripButton();
-            tsbInformation = new ToolStripButton();
+            tsbAppSettings = new IconToolStripButton();
+            tsbInformation = new IconToolStripButton();
             toolStripSeparator13 = new ToolStripSeparator();
             toolStripLabel1 = new ToolStripLabel();
             tscbStanica = new ExToolStripComboBox();
             toolStripLabel2 = new ToolStripLabel();
             tscbObdobie = new ExToolStripComboBox();
             toolStripSeparator7 = new ToolStripSeparator();
-            tssbStartINISS = new ToolStripSplitButton();
-            tsmiStartupSettings = new ToolStripMenuItem();
+            tssbStartINISS = new IconToolStripSplitButton();
+            tsmiStartupSettings = new IconToolStripMenuItem();
             toolStripSeparator8 = new ToolStripSeparator();
-            tsbKillINISS = new ToolStripButton();
-            tsbShutdownINISS = new ToolStripButton();
-            tsbRestartINISS = new ToolStripButton();
+            tsbKillINISS = new IconToolStripButton();
+            tsbShutdownINISS = new IconToolStripButton();
+            tsbRestartINISS = new IconToolStripButton();
             toolStripSeparator19 = new ToolStripSeparator();
-            tsbDatObm = new ToolStripButton();
+            tsbDatObm = new IconToolStripButton();
             dgvTrains = new DataGridView();
             cisloDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -334,6 +335,8 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiNew, "tsmiNew");
             tsmiNew.Name = "tsmiNew";
+            tsmiNew.IconName = "table";
+            tsmiNew.IconBadge = "add";
             // 
             // toolStripSeparator6
             // 
@@ -344,10 +347,12 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiOpen, "tsmiOpen");
             tsmiOpen.Name = "tsmiOpen";
+            tsmiOpen.IconName = "folder-open";
             // 
             // tsmiRecent
             // 
             tsmiRecent.Name = "tsmiRecent";
+            tsmiRecent.IconName = "history";
             resources.ApplyResources(tsmiRecent, "tsmiRecent");
             // 
             // toolStripSeparator4
@@ -360,6 +365,7 @@ namespace GVDEditor.UI.Main
             tsmiImport.DropDownItems.AddRange(new ToolStripItem[] { tsmiImportData, tsmiImportGVD, tsmiImportELIS });
             resources.ApplyResources(tsmiImport, "tsmiImport");
             tsmiImport.Name = "tsmiImport";
+            tsmiImport.IconName = "import";
             // 
             // tsmiImportData
             // 
@@ -385,6 +391,7 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiSave, "tsmiSave");
             tsmiSave.Name = "tsmiSave";
+            tsmiSave.IconName = "save";
             // 
             // toolStripSeparator18
             // 
@@ -395,6 +402,7 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiAnalyze, "tsmiAnalyze");
             tsmiAnalyze.Name = "tsmiAnalyze";
+            tsmiAnalyze.IconName = "document-search";
             // 
             // tsmiUpravit
             // 
@@ -404,15 +412,15 @@ namespace GVDEditor.UI.Main
             // 
             // tsmiUndo
             // 
-            tsmiUndo.Image = global::ToolsCore.GlobalResources.undo;
             resources.ApplyResources(tsmiUndo, "tsmiUndo");
             tsmiUndo.Name = "tsmiUndo";
+            tsmiUndo.IconName = "undo";
             // 
             // tsmiRedo
             // 
-            tsmiRedo.Image = global::ToolsCore.GlobalResources.redo;
             resources.ApplyResources(tsmiRedo, "tsmiRedo");
             tsmiRedo.Name = "tsmiRedo";
+            tsmiRedo.IconName = "redo";
             // 
             // toolStripSeparator20
             // 
@@ -423,11 +431,15 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmimAddTrain, "tsmimAddTrain");
             tsmimAddTrain.Name = "tsmimAddTrain";
+            tsmimAddTrain.IconName = "train";
+            tsmimAddTrain.IconBadge = "add";
             // 
             // tsmimEditTrain
             // 
             resources.ApplyResources(tsmimEditTrain, "tsmimEditTrain");
             tsmimEditTrain.Name = "tsmimEditTrain";
+            tsmimEditTrain.IconName = "train";
+            tsmimEditTrain.IconBadge = "edit";
             // 
             // toolStripSeparator2
             // 
@@ -438,6 +450,8 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiDeleteTrain, "tsmiDeleteTrain");
             tsmiDeleteTrain.Name = "tsmiDeleteTrain";
+            tsmiDeleteTrain.IconName = "train";
+            tsmiDeleteTrain.IconBadge = "delete";
             // 
             // toolStripSeparator1
             // 
@@ -448,6 +462,8 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiDuplikovat, "tsmiDuplikovat");
             tsmiDuplikovat.Name = "tsmiDuplikovat";
+            tsmiDuplikovat.IconName = "train";
+            tsmiDuplikovat.IconBadge = "copy";
             // 
             // tsmiStanica
             // 
@@ -460,6 +476,8 @@ namespace GVDEditor.UI.Main
             tsmiVlastnostiStanice.DropDownItems.AddRange(new ToolStripItem[] { tsmiGrafikon, tsmiJazykyHlaseni, tsmiStanice, tsmiDopravcovia, toolStripSeparator16, tsmiPlatforms, tsmiKolaje, toolStripSeparator15, tsmiTPhysical, tsmiTLogical, tsmiTCatalog, tsmiTabTab, tsmiTTexts, tsmiTFonts, toolStripSeparator17, tsmiTabTabEditor });
             resources.ApplyResources(tsmiVlastnostiStanice, "tsmiVlastnostiStanice");
             tsmiVlastnostiStanice.Name = "tsmiVlastnostiStanice";
+            tsmiVlastnostiStanice.IconName = "building";
+            tsmiVlastnostiStanice.IconBadge = "settings";
             // 
             // tsmiGrafikon
             // 
@@ -540,12 +558,15 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiTabTabEditor, "tsmiTabTabEditor");
             tsmiTabTabEditor.Name = "tsmiTabTabEditor";
+            tsmiTabTabEditor.IconName = "code";
             // 
             // tsmiGlobalSettings
             // 
             tsmiGlobalSettings.DropDownItems.AddRange(new ToolStripItem[] { tsmiGrafikony, tsmiLanguages, tsmiMeskania, tsmiTypyVlakov, tsmiAudio });
             resources.ApplyResources(tsmiGlobalSettings, "tsmiGlobalSettings");
             tsmiGlobalSettings.Name = "tsmiGlobalSettings";
+            tsmiGlobalSettings.IconName = "globe";
+            tsmiGlobalSettings.IconBadge = "settings";
             // 
             // tsmiGrafikony
             // 
@@ -581,6 +602,7 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiAppSettings, "tsmiAppSettings");
             tsmiAppSettings.Name = "tsmiAppSettings";
+            tsmiAppSettings.IconName = "settings";
             // 
             // tsmiTools
             // 
@@ -592,11 +614,13 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiDatObm, "tsmiDatObm");
             tsmiDatObm.Name = "tsmiDatObm";
+            tsmiDatObm.IconName = "calendar-sparkle";
             // 
             // tsmiStateDgm
             // 
             resources.ApplyResources(tsmiStateDgm, "tsmiStateDgm");
             tsmiStateDgm.Name = "tsmiStateDgm";
+            tsmiStateDgm.IconName = "flowchart";
             // 
             // tsmiRun
             // 
@@ -608,6 +632,7 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmimStartupSettings, "tsmimStartupSettings");
             tsmimStartupSettings.Name = "tsmimStartupSettings";
+            tsmimStartupSettings.IconName = "edit";
             // 
             // tsmimInissSettings
             // 
@@ -623,21 +648,25 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmimStartINISS, "tsmimStartINISS");
             tsmimStartINISS.Name = "tsmimStartINISS";
+            tsmimStartINISS.IconName = "run";
             // 
             // tsmimShutdownINISS
             // 
             resources.ApplyResources(tsmimShutdownINISS, "tsmimShutdownINISS");
             tsmimShutdownINISS.Name = "tsmimShutdownINISS";
+            tsmimShutdownINISS.IconName = "stop";
             // 
             // tsmimKillINISS
             // 
             resources.ApplyResources(tsmimKillINISS, "tsmimKillINISS");
             tsmimKillINISS.Name = "tsmimKillINISS";
+            tsmimKillINISS.IconName = "kill";
             // 
             // tsmimRestartINISS
             // 
             resources.ApplyResources(tsmimRestartINISS, "tsmimRestartINISS");
             tsmimRestartINISS.Name = "tsmimRestartINISS";
+            tsmimRestartINISS.IconName = "rerun";
             // 
             // toolStripSeparator14
             // 
@@ -654,6 +683,7 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiInformation, "tsmiInformation");
             tsmiInformation.Name = "tsmiInformation";
+            tsmiInformation.IconName = "info";
             // 
             // tsmiChangelog
             // 
@@ -671,12 +701,14 @@ namespace GVDEditor.UI.Main
             // tsbSave
             // 
             tsbSave.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbSave.IconName = "save";
             resources.ApplyResources(tsbSave, "tsbSave");
             tsbSave.Name = "tsbSave";
             // 
             // tsbOpen
             // 
             tsbOpen.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbOpen.IconName = "folder-open";
             resources.ApplyResources(tsbOpen, "tsbOpen");
             tsbOpen.Name = "tsbOpen";
             // 
@@ -684,6 +716,7 @@ namespace GVDEditor.UI.Main
             // 
             tsbImport.DisplayStyle = ToolStripItemDisplayStyle.Image;
             tsbImport.DropDownItems.AddRange(new ToolStripItem[] { tsmimImportData, tsmimImportGVD, tsmimImportELIS });
+            tsbImport.IconName = "import";
             resources.ApplyResources(tsbImport, "tsbImport");
             tsbImport.Name = "tsbImport";
             // 
@@ -705,7 +738,7 @@ namespace GVDEditor.UI.Main
             // tssbUndo
             // 
             tssbUndo.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            tssbUndo.Image = global::ToolsCore.GlobalResources.undo;
+            tssbUndo.IconName = "undo";
             resources.ApplyResources(tssbUndo, "tssbUndo");
             tssbUndo.Name = "tssbUndo";
             tssbUndo.DropDownOpening += tssbUndo_DropDownOpening;
@@ -713,7 +746,7 @@ namespace GVDEditor.UI.Main
             // tssbRedo
             // 
             tssbRedo.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            tssbRedo.Image = global::ToolsCore.GlobalResources.redo;
+            tssbRedo.IconName = "redo";
             resources.ApplyResources(tssbRedo, "tssbRedo");
             tssbRedo.Name = "tssbRedo";
             tssbRedo.DropDownOpening += tssbRedo_DropDownOpening;
@@ -726,18 +759,22 @@ namespace GVDEditor.UI.Main
             // tssbRecentDirs
             // 
             tssbRecentDirs.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tssbRecentDirs.IconName = "history";
             resources.ApplyResources(tssbRecentDirs, "tssbRecentDirs");
             tssbRecentDirs.Name = "tssbRecentDirs";
             // 
             // tsbAnalyze
             // 
             tsbAnalyze.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbAnalyze.IconName = "document-search";
             resources.ApplyResources(tsbAnalyze, "tsbAnalyze");
             tsbAnalyze.Name = "tsbAnalyze";
             // 
             // tsbAddGVD
             // 
             tsbAddGVD.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbAddGVD.IconName = "table";
+            tsbAddGVD.IconBadge = "add";
             resources.ApplyResources(tsbAddGVD, "tsbAddGVD");
             tsbAddGVD.Name = "tsbAddGVD";
             // 
@@ -749,24 +786,32 @@ namespace GVDEditor.UI.Main
             // tsbAddTrain
             // 
             tsbAddTrain.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbAddTrain.IconName = "train";
+            tsbAddTrain.IconBadge = "add";
             resources.ApplyResources(tsbAddTrain, "tsbAddTrain");
             tsbAddTrain.Name = "tsbAddTrain";
             // 
             // tsbEditTrain
             // 
             tsbEditTrain.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbEditTrain.IconName = "train";
+            tsbEditTrain.IconBadge = "edit";
             resources.ApplyResources(tsbEditTrain, "tsbEditTrain");
             tsbEditTrain.Name = "tsbEditTrain";
             // 
             // tsbDeleteTrain
             // 
             tsbDeleteTrain.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbDeleteTrain.IconName = "train";
+            tsbDeleteTrain.IconBadge = "delete";
             resources.ApplyResources(tsbDeleteTrain, "tsbDeleteTrain");
             tsbDeleteTrain.Name = "tsbDeleteTrain";
             // 
             // tsbCopyTrain
             // 
             tsbCopyTrain.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbCopyTrain.IconName = "train";
+            tsbCopyTrain.IconBadge = "copy";
             resources.ApplyResources(tsbCopyTrain, "tsbCopyTrain");
             tsbCopyTrain.Name = "tsbCopyTrain";
             // 
@@ -778,12 +823,16 @@ namespace GVDEditor.UI.Main
             // tsbStanica
             // 
             tsbStanica.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbStanica.IconName = "building";
+            tsbStanica.IconBadge = "settings";
             resources.ApplyResources(tsbStanica, "tsbStanica");
             tsbStanica.Name = "tsbStanica";
             // 
             // tsbGlobalSettings
             // 
             tsbGlobalSettings.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbGlobalSettings.IconName = "globe";
+            tsbGlobalSettings.IconBadge = "settings";
             resources.ApplyResources(tsbGlobalSettings, "tsbGlobalSettings");
             tsbGlobalSettings.Name = "tsbGlobalSettings";
             // 
@@ -795,12 +844,14 @@ namespace GVDEditor.UI.Main
             // tsbAppSettings
             // 
             tsbAppSettings.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbAppSettings.IconName = "settings";
             resources.ApplyResources(tsbAppSettings, "tsbAppSettings");
             tsbAppSettings.Name = "tsbAppSettings";
             // 
             // tsbInformation
             // 
             tsbInformation.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbInformation.IconName = "info";
             resources.ApplyResources(tsbInformation, "tsbInformation");
             tsbInformation.Name = "tsbInformation";
             // 
@@ -848,11 +899,13 @@ namespace GVDEditor.UI.Main
             // 
             tssbStartINISS.DropDownItems.AddRange(new ToolStripItem[] { tsmiStartupSettings, toolStripSeparator8 });
             tssbStartINISS.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            tssbStartINISS.IconName = "run";
             resources.ApplyResources(tssbStartINISS, "tssbStartINISS");
             tssbStartINISS.Name = "tssbStartINISS";
             // 
             // tsmiStartupSettings
             // 
+            tsmiStartupSettings.IconName = "edit";
             resources.ApplyResources(tsmiStartupSettings, "tsmiStartupSettings");
             tsmiStartupSettings.Name = "tsmiStartupSettings";
             // 
@@ -864,18 +917,21 @@ namespace GVDEditor.UI.Main
             // tsbKillINISS
             // 
             tsbKillINISS.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbKillINISS.IconName = "kill";
             resources.ApplyResources(tsbKillINISS, "tsbKillINISS");
             tsbKillINISS.Name = "tsbKillINISS";
             // 
             // tsbShutdownINISS
             // 
             tsbShutdownINISS.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbShutdownINISS.IconName = "stop";
             resources.ApplyResources(tsbShutdownINISS, "tsbShutdownINISS");
             tsbShutdownINISS.Name = "tsbShutdownINISS";
             // 
             // tsbRestartINISS
             // 
             tsbRestartINISS.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbRestartINISS.IconName = "rerun";
             resources.ApplyResources(tsbRestartINISS, "tsbRestartINISS");
             tsbRestartINISS.Name = "tsbRestartINISS";
             // 
@@ -887,6 +943,7 @@ namespace GVDEditor.UI.Main
             // tsbDatObm
             // 
             tsbDatObm.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbDatObm.IconName = "calendar-sparkle";
             resources.ApplyResources(tsbDatObm, "tsbDatObm");
             tsbDatObm.Name = "tsbDatObm";
             // 
@@ -2102,53 +2159,53 @@ namespace GVDEditor.UI.Main
         private ExTitleBar titleBar;
         private MenuStrip mainMenu;
         private ToolStripMenuItem tsmiNastavenia;
-        private ToolStripMenuItem tsmiNew;
-        private ToolStripMenuItem tsmiOpen;
-        private ToolStripMenuItem tsmiInformation;
+        private IconToolStripMenuItem tsmiNew;
+        private IconToolStripMenuItem tsmiOpen;
+        private IconToolStripMenuItem tsmiInformation;
         private ToolStripMenuItem tsmiStanica;
         private ToolStrip toolMenu;
-        private ToolStripButton tsbAddGVD;
+        private IconToolStripButton tsbAddGVD;
         private ToolStripMenuItem tsmiSubor;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripSeparator toolStripSeparator6;
-        private ToolStripMenuItem tsmiSave;
+        private IconToolStripMenuItem tsmiSave;
         private ToolStripMenuItem tsmiUpravit;
-        private ToolStripMenuItem tsmiUndo;
-        private ToolStripMenuItem tsmiRedo;
+        private IconToolStripMenuItem tsmiUndo;
+        private IconToolStripMenuItem tsmiRedo;
         private ToolStripSeparator toolStripSeparator20;
-        private ToolStripSplitButton tssbUndo;
-        private ToolStripSplitButton tssbRedo;
+        private IconToolStripSplitButton tssbUndo;
+        private IconToolStripSplitButton tssbRedo;
         private ToolStripSeparator toolStripSeparator21;
-        private ToolStripMenuItem tsmiDuplikovat;
-        private ToolStripMenuItem tsmiVlastnostiStanice;
+        private IconToolStripMenuItem tsmiDuplikovat;
+        private IconToolStripMenuItem tsmiVlastnostiStanice;
 
         #endregion
-        private ToolStripButton tsbSave;
-        private ToolStripButton tsbOpen;
+        private IconToolStripButton tsbSave;
+        private IconToolStripButton tsbOpen;
         private ToolStripSeparator toolStripSeparator10;
-        private ToolStripButton tsbGlobalSettings;
-        private ToolStripButton tsbStanica;
+        private IconToolStripButton tsbGlobalSettings;
+        private IconToolStripButton tsbStanica;
         private ToolStripSeparator toolStripSeparator11;
-        private ToolStripButton tsbInformation;
+        private IconToolStripButton tsbInformation;
         private ToolStripSeparator toolStripSeparator12;
         private ExToolStripComboBox tscbStanica;
         private ExToolStripComboBox tscbObdobie;
         private ToolStripSeparator toolStripSeparator13;
         private ToolStripLabel toolStripLabel1;
         private ToolStripLabel toolStripLabel2;
-        private ToolStripMenuItem tsmiRecent;
-        private ToolStripMenuItem tsmiGlobalSettings;
+        private IconToolStripMenuItem tsmiRecent;
+        private IconToolStripMenuItem tsmiGlobalSettings;
         private DataGridView dgvTrains;
-        private ToolStripMenuItem tsmimAddTrain;
-        private ToolStripMenuItem tsmimEditTrain;
+        private IconToolStripMenuItem tsmimAddTrain;
+        private IconToolStripMenuItem tsmimEditTrain;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripSeparator toolStripSeparator2;
-        private ToolStripMenuItem tsmiDeleteTrain;
-        private ToolStripButton tsbAddTrain;
-        private ToolStripButton tsbEditTrain;
-        private ToolStripButton tsbDeleteTrain;
-        private ToolStripButton tsbCopyTrain;
-        private ToolStripButton tsbAppSettings;
+        private IconToolStripMenuItem tsmiDeleteTrain;
+        private IconToolStripButton tsbAddTrain;
+        private IconToolStripButton tsbEditTrain;
+        private IconToolStripButton tsbDeleteTrain;
+        private IconToolStripButton tsbCopyTrain;
+        private IconToolStripButton tsbAppSettings;
         private BindingSource vlakBindingSource;
         private BindingSource trackBindingSource;
         private BindingSource operatorBindingSource;
@@ -2158,7 +2215,7 @@ namespace GVDEditor.UI.Main
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
         private DataGridViewComboBoxColumn dataGridViewComboBoxColumn2;
-        private ToolStripSplitButton tssbRecentDirs;
+        private IconToolStripSplitButton tssbRecentDirs;
         private ToolStripMenuItem tsmiChangelog;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
@@ -2177,9 +2234,9 @@ namespace GVDEditor.UI.Main
         private DataGridViewComboBoxColumn dataGridViewComboBoxColumn9;
         private DataGridViewComboBoxColumn dataGridViewComboBoxColumn10;
         private ToolStripSeparator toolStripSeparator4;
-        private ToolStripMenuItem tsmiImport;
-        private ToolStripSplitButton tsbImport;
-        private ToolStripMenuItem tsmiAppSettings;
+        private IconToolStripMenuItem tsmiImport;
+        private IconToolStripSplitButton tsbImport;
+        private IconToolStripMenuItem tsmiAppSettings;
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem tsmiImportData;
         private ToolStripMenuItem tsmiImportGVD;
@@ -2195,21 +2252,21 @@ namespace GVDEditor.UI.Main
         private ToolStripStatusLabel tsslSelTrainName;
         private ToolStripStatusLabel tsslSelTrainVariants;
         private ToolStripSeparator toolStripSeparator7;
-        private ToolStripSplitButton tssbStartINISS;
-        private ToolStripMenuItem tsmiStartupSettings;
+        private IconToolStripSplitButton tssbStartINISS;
+        private IconToolStripMenuItem tsmiStartupSettings;
         private ToolStripSeparator toolStripSeparator8;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private DataGridViewExComboBoxColumn dataGridViewExComboBoxColumn1;
         private DataGridViewExComboBoxColumn dataGridViewExComboBoxColumn2;
-        private ToolStripButton tsbKillINISS;
+        private IconToolStripButton tsbKillINISS;
         private ToolStripMenuItem tsmiRun;
-        private ToolStripMenuItem tsmimStartupSettings;
+        private IconToolStripMenuItem tsmimStartupSettings;
         private ToolStripMenuItem tsmimInissSettings;
         private ToolStripSeparator toolStripSeparator9;
-        private ToolStripMenuItem tsmimStartINISS;
+        private IconToolStripMenuItem tsmimStartINISS;
         private ToolStripSeparator toolStripSeparator14;
-        private ToolStripMenuItem tsmimKillINISS;
+        private IconToolStripMenuItem tsmimKillINISS;
         private ToolStripMenuItem tsmiGrafikon;
         private ToolStripMenuItem tsmiJazykyHlaseni;
         private ToolStripMenuItem tsmiDopravcovia;
@@ -2237,8 +2294,8 @@ namespace GVDEditor.UI.Main
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private DataGridViewExComboBoxColumn dataGridViewExComboBoxColumn5;
         private DataGridViewExComboBoxColumn dataGridViewExComboBoxColumn6;
-        private ToolStripButton tsbRestartINISS;
-        private ToolStripMenuItem tsmimRestartINISS;
+        private IconToolStripButton tsbRestartINISS;
+        private IconToolStripMenuItem tsmimRestartINISS;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private DataGridViewExComboBoxColumn dataGridViewExComboBoxColumn7;
@@ -2274,17 +2331,17 @@ namespace GVDEditor.UI.Main
         private DataGridViewExComboBoxColumn Dopravca;
         private DataGridViewButtonColumn Ostatne;
         private ToolStripSeparator toolStripSeparator17;
-        private ToolStripMenuItem tsmiTabTabEditor;
+        private IconToolStripMenuItem tsmiTabTabEditor;
         private ToolStripSeparator toolStripSeparator18;
-        private ToolStripMenuItem tsmiAnalyze;
-        private ToolStripButton tsbAnalyze;
-        private ToolStripButton tsbShutdownINISS;
-        private ToolStripMenuItem tsmimShutdownINISS;
+        private IconToolStripMenuItem tsmiAnalyze;
+        private IconToolStripButton tsbAnalyze;
+        private IconToolStripButton tsbShutdownINISS;
+        private IconToolStripMenuItem tsmimShutdownINISS;
         private ToolStripMenuItem tsmiTools;
-        private ToolStripMenuItem tsmiDatObm;
-        private ToolStripMenuItem tsmiStateDgm;
+        private IconToolStripMenuItem tsmiDatObm;
+        private IconToolStripMenuItem tsmiStateDgm;
         private ToolStripSeparator toolStripSeparator19;
-        private ToolStripButton tsbDatObm;
+        private IconToolStripButton tsbDatObm;
         private Panel panelMain;
     }
 }
