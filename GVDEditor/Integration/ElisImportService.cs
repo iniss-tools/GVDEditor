@@ -8,6 +8,7 @@ using GVDEditor.Properties;
 using Iniss.Elis;
 using Iniss.PlanRadenia;
 using ToolsCore.Iniss.Entities;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.XML;
 
 namespace GVDEditor.Integration;
@@ -332,8 +333,8 @@ internal static class ElisImportService
     /// <param name="import">Import.</param>
     /// <param name="conversion">Naimportovane vlaky.</param>
     /// <param name="document">Otvoreny grafikon - radenia (hlasenia, v ktorych sa radenie hlasi).</param>
-    /// <param name="sounds">Zvuky zakladneho jazyka banky - z nich sa sklada hlasenie radenia.</param>
-    public static ElisReview BuildReview(ElisImport import, ElisConversion conversion, GrafikonDocument document, IReadOnlyList<FyzSound> sounds)
+    /// <param name="banks">Zvuky banky v jazykoch grafikonu (zakladny prvy) - z nich sa sklada hlasenie radenia.</param>
+    public static ElisReview BuildReview(ElisImport import, ElisConversion conversion, GrafikonDocument document, IReadOnlyList<RadenieBank> banks)
     {
         // grafikon, ktory medzi koncovymi stanicami v kratkom hlaseni nehlasi nic (napr. z predchadzajuceho importu),
         // nie je vzor - prevzatie by len zopakovalo prazdne stlpce Smer a Zo smeru
@@ -371,7 +372,7 @@ internal static class ElisImportService
             Stations = stations,
             Remarks = remarks,
             Same = same,
-            Radenia = ProposeRadenia(import, conversion, document, sounds),
+            Radenia = ProposeRadenia(import, conversion, document, banks),
             PlanError = import.PlanError
         };
     }
@@ -379,15 +380,15 @@ internal static class ElisImportService
     /// <summary>
     /// Navrhy radenia naimportovanych vlakov z planu radenia - vlak planu k vlakom s rovnakym cislom.
     /// </summary>
-    private static List<RadenieProposal> ProposeRadenia(ElisImport import, ElisConversion conversion, GrafikonDocument document, IReadOnlyList<FyzSound> sounds)
+    private static List<RadenieProposal> ProposeRadenia(ElisImport import, ElisConversion conversion, GrafikonDocument document, IReadOnlyList<RadenieBank> banks)
     {
-        if (import.Plan is not { } plan)
+        if (import.Plan is not { } plan || banks.Count == 0)
             return [];
 
         var gvd = import.GVDInfo;
         var context = new PlanRadeniaContext
         {
-            Sounds = sounds,
+            Banks = banks,
             From = gvd.StartValidTimeTable,
             To = gvd.EndValidTimeTable,
             Station = name => PlanStations.Resolve(name, import.PlanStations),
@@ -407,6 +408,22 @@ internal static class ElisImportService
         }
 
         return result;
+    }
+
+    /// <summary>
+    /// Banky jazykov grafikonu na skladanie radenia, zakladny jazyk prvy - len pri importe s planom radenia
+    /// (citanie bank dalsich jazykov z disku inak netreba).
+    /// </summary>
+    public static List<RadenieBank> RadenieBanks(ElisImport import, GrafikonDocument document, InissWorkspace workspace)
+    {
+        if (import.Plan is null)
+            return [];
+        var languages = document.LocalLanguages.ToList();
+        if (FyzLanguage.GetBasicLanguage(languages) is null && FyzLanguage.GetBasicLanguage(workspace.Languages) is { } basic)
+            languages.Insert(0, basic);
+        return languages.OrderByDescending(l => l.IsBasic)
+            .Select(l => new RadenieBank(l, l.IsBasic ? workspace.Sounds : RawBankParser.ReadFyzZvukFile(workspace.RawBankDir, l)))
+            .ToList();
     }
 
     private static string ReportsKey(List<ChosenReportType> reports) =>

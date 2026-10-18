@@ -19,9 +19,10 @@ public class PlanRadeniaConversionTests
     private static readonly Station NoveZamky = new("5613436", "Nové Zámky");
 
     private static readonly FyzLanguage Sk = new("SK", "Slovensky") { IsBasic = true };
+    private static readonly FyzLanguage Gb = new("GB", "Anglicky");
 
-    private static FyzSound Sound(string group, string key, string text) =>
-        new(new FyzGroup(Sk, group, group, group + "\\"), key, key, key + ".WAV", "", text, 0);
+    private static FyzSound Sound(string group, string key, string text, FyzLanguage? language = null) =>
+        new(new FyzGroup(language ?? Sk, group, group, group + "\\"), key, key, key + ".WAV", "", text, 0);
 
     /// <summary>Banka ako v staniciach ZSSK: druhy vozni v skupinach Vozy1-6 (M = mnozne cislo), cisla CISLO*, stanice R*.</summary>
     private static List<FyzSound> Bank(params string[] numbers)
@@ -64,9 +65,35 @@ public class PlanRadeniaConversionTests
         return sounds;
     }
 
-    private static PlanRadeniaContext Context(List<FyzSound> bank) => new()
+    /// <summary>Anglicka banka ako v staniciach ZSSK: skupiny vozni bez bodkovych variant, sloveso a poloha na konci.</summary>
+    private static List<FyzSound> BankGb(params string[] numbers)
     {
-        Sounds = bank,
+        var sounds = new List<FyzSound>
+        {
+            Sound("Poz3", "zalok", "behind the locomotive.", Gb),
+            Sound("SLOVA", "je_r", "is coupled", Gb),
+            Sound("SLOVA", "jsou_r", "are coupled", Gb),
+            Sound("SLOVA", "cislo", "no.", Gb),
+            Sound("SLOVA", "cisla", "nos.", Gb),
+            Sound("SLOVA", "DoStan", "to", Gb)
+        };
+        foreach (var (key, one, many) in new[] { ("v2", "second-class carriage", "second-class carriages"), ("lev", "couchette car", "couchette cars") })
+            foreach (var (group, prefix, end) in new[] { ("Vozy1", "", ""), ("Vozy2", "", ","), ("Vozy4", "and ", ""), ("Vozy7", "", ""), ("Vozy8", "", ",") })
+            {
+                sounds.Add(Sound(group, key, prefix + one + end, Gb));
+                sounds.Add(Sound(group + "M", key, prefix + many + end, Gb));
+            }
+
+        foreach (var number in numbers)
+            foreach (var (group, prefix, end) in new[] { ("CISLO1", "", ""), ("CISLO_", "", ","), ("CISLO4", "and ", ""), ("CISLO7", "to ", "") })
+                sounds.Add(Sound(group, number, prefix + number + end, Gb));
+        sounds.Add(Sound("R1", NoveZamky.ID, NoveZamky.Name + ",", Gb));
+        return sounds;
+    }
+
+    private static PlanRadeniaContext Context(List<FyzSound> bank, List<FyzSound>? english = null) => new()
+    {
+        Banks = english is null ? [new RadenieBank(Sk, bank)] : [new RadenieBank(Sk, bank), new RadenieBank(Gb, english)],
         From = Od,
         To = Do,
         Station = name => name == "Nové Zámky" ? NoveZamky : null,
@@ -96,7 +123,8 @@ public class PlanRadeniaConversionTests
         return plan;
     }
 
-    private static string Keys(Radenie radenie) => string.Join(" ", radenie.Sounds.Select(s => $"{s.Group.Key}/{s.Key}"));
+    private static string Keys(Radenie radenie, FyzLanguage? language = null) =>
+        string.Join(" ", radenie.Sounds.Where(s => s.Group.Language == (language ?? Sk)).Select(s => $"{s.Group.Key}/{s.Key}"));
 
     [TestMethod]
     public void Hlasenie_RadAzAPoslednaSkupinaSoSpojkou()
@@ -135,6 +163,59 @@ public class PlanRadeniaConversionTests
         Assert.AreEqual(
             "Poz7/zalok SLOVA/jsouraz Vozy1M/v2 SLOVA/cislo CISLO1/364 CISLO4/365 SLOVA/DoStan R3/5613436 Vozy4/v2 SLOVA/cislo CISLO1/366 SLOVA/DoStan R4/5613206",
             Keys(radenie));
+    }
+
+    [TestMethod]
+    public void Hlasenie_AnglickaVetaPoSlovenskej()
+    {
+        var plan = Plan(Car("369", "vozeň 2. triedy"), Car("368", "vozeň 2. triedy"), Car("367", "vozeň 2. triedy"), Car("363", "ležadlový vozeň"));
+
+        var proposal = PlanRadeniaConversion.Propose(plan, [Vlak()], Od, Do, Context(Bank("369", "367", "363"), BankGb("369", "367", "363")))[0];
+
+        Assert.AreEqual("Vozy7M/v2 SLOVA/cisla CISLO1/369 CISLO7/367 Vozy4/lev SLOVA/cislo CISLO1/363 SLOVA/jsou_r Poz3/zalok", Keys(proposal.Radenie, Gb));
+        Assert.AreSame(Sk, proposal.Radenie.Sounds[0].Group.Language, "zakladny jazyk prvy");
+        Assert.AreEqual(
+            "za rušňom sú radené vozne druhej triedy číslo 369 až 367 a ležadlový vozeň číslo 363. " +
+            "second-class carriages nos. 369 to 367 and couchette car no. 363 are coupled behind the locomotive.", proposal.Radenie.Text);
+    }
+
+    [TestMethod]
+    public void Hlasenie_AnglickyCielACiarkaZaPrvouSkupinou()
+    {
+        var plan = Plan(Car("364", "vozeň 2. triedy"), Car("365", "vozeň 2. triedy"), Car("366", "ležadlový vozeň"), Car("367", "vozeň 2. triedy"));
+        plan.Notes.Add(new PlanNote { Kind = PlanNoteKind.Destination, Cars = ["364", "365"], Station = "Nové Zámky" });
+        var english = BankGb("364", "365", "366", "367");
+        english.Add(Sound("R1", Kosice.ID, Kosice.Name + ",", Gb));
+
+        var radenie = PlanRadeniaConversion.Propose(plan, [Vlak()], Od, Do, Context(Bank("364", "365", "366", "367"), english))[0].Radenie;
+
+        Assert.AreEqual(
+            "Vozy7M/v2 SLOVA/cisla CISLO1/364 CISLO4/365 SLOVA/DoStan R1/5613436 Vozy1/lev SLOVA/cislo CISLO1/366 Vozy4/v2 SLOVA/cislo CISLO1/367 " +
+            "SLOVA/DoStan R1/5613206 SLOVA/jsou_r Poz3/zalok", Keys(radenie, Gb));
+    }
+
+    [TestMethod]
+    public void Hlasenie_ChybajuciZvukVDalsomJazyku_JazykSaVynecha()
+    {
+        var plan = Plan(Car("381", "vozeň 2. triedy"));
+
+        var proposal = PlanRadeniaConversion.Propose(plan, [Vlak()], Od, Do, Context(Bank("381"), BankGb()))[0];
+
+        Assert.AreEqual("", Keys(proposal.Radenie, Gb));
+        Assert.AreEqual("Poz7/zalok SLOVA/jeraz Vozy1/v2 SLOVA/cislo CISLO3/381", Keys(proposal.Radenie));
+        Assert.IsTrue(proposal.Take, "zakladny jazyk je uplny");
+        Assert.IsTrue(proposal.Issues.Any(i => i.Kind == PlanRadeniaIssueKind.LanguageMissing && i.Text == "GB: CISLO1/381"));
+    }
+
+    [TestMethod]
+    public void Hlasenie_JazykBezSlovRadenia_JazykSaVynecha()
+    {
+        var plan = Plan(Car("381", "vozeň 2. triedy"));
+
+        var proposal = PlanRadeniaConversion.Propose(plan, [Vlak()], Od, Do, Context(Bank("381"), [Sound("CISLO1", "381", "381", Gb)]))[0];
+
+        Assert.AreEqual("", Keys(proposal.Radenie, Gb));
+        Assert.IsTrue(proposal.Issues.Any(i => i.Kind == PlanRadeniaIssueKind.LanguageNoWords && i.Text == "GB"));
     }
 
     [TestMethod]

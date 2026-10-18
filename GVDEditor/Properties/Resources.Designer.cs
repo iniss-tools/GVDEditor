@@ -11145,5 +11145,23 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("FELISReview_RadeniePlanError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to v jazyku {0} chýba {1}, radenie sa v ňom nehlási.
+        /// </summary>
+        internal static string PlanRadenia_IssueLanguageMissing {
+            get {
+                return ResourceManager.GetString("PlanRadenia_IssueLanguageMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to banka jazyka {0} nemá slová radenia.
+        /// </summary>
+        internal static string PlanRadenia_IssueLanguageNoWords {
+            get {
+                return ResourceManager.GetString("PlanRadenia_IssueLanguageNoWords", resourceCulture);
+            }
+        }
     }
 }

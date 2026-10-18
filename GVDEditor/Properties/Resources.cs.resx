@@ -3898,4 +3898,10 @@ Před zápisem se uloží záloha.</value>
   <data name="FELISReview_RadeniePlanError" xml:space="preserve">
     <value>Plán řazení se nepřevezme: {0}</value>
   </data>
+  <data name="PlanRadenia_IssueLanguageMissing" xml:space="preserve">
+    <value>v jazyce {0} chybí {1}, řazení se v něm nehlásí</value>
+  </data>
+  <data name="PlanRadenia_IssueLanguageNoWords" xml:space="preserve">
+    <value>banka jazyka {0} nemá slova řazení</value>
+  </data>
 </root>

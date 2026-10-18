@@ -66,8 +66,19 @@ internal enum PlanRadeniaIssueKind
     CarFixed,
 
     /// <summary>Vozen z poznamky v radeni nie je (cislo vozna).</summary>
-    CarMissing
+    CarMissing,
+
+    /// <summary>V dalsom jazyku chyba zvuk - radenie sa v nom vynecha (jazyk a chybajuce zvuky).</summary>
+    LanguageMissing,
+
+    /// <summary>Banka dalsieho jazyka nema slova radenia - radenie sa v nom vynecha (jazyk).</summary>
+    LanguageNoWords
 }
+
+/// <summary>
+/// Zvuky banky v jednom jazyku grafikonu.
+/// </summary>
+internal sealed record RadenieBank(FyzLanguage Language, IReadOnlyList<FyzSound> Sounds);
 
 /// <summary>
 /// Upozornenie k navrhu radenia.
@@ -100,8 +111,11 @@ internal sealed class RadenieProposal
 /// </summary>
 internal sealed class PlanRadeniaContext
 {
-    /// <summary>Zvuky zakladneho jazyka banky.</summary>
-    public required IReadOnlyList<FyzSound> Sounds { get; init; }
+    /// <summary>
+    /// Zvuky banky po jazykoch grafikonu, zakladny jazyk prvy. Druh vozna sa urcuje podla zakladneho jazyka (kluce
+    /// nahravok su vo vsetkych jazykoch rovnake); veta sa sklada v kazdom jazyku, ktoreho banka ma slova radenia.
+    /// </summary>
+    public required IReadOnlyList<RadenieBank> Banks { get; init; }
 
     /// <summary>Obdobie grafikonu - k nemu sa vztahuju dni poznamok aj radenia.</summary>
     public required DateOnly From { get; init; }
@@ -133,7 +147,35 @@ internal static partial class PlanRadeniaConversion
     private static readonly string[] NumberUntil = ["CISLO7", "CISLO8", "CISLO9"];
     private static readonly string[] StationName = ["R3", "R1", "R4"];
     private const string Words = "SLOVA";
-    private const string Position = "Poz7";
+
+    // vety, v ktorych poloha a sloveso su na konci (anglicky): prva skupina z Vozy7/Vozy8, stanica vzdy s ciarkou
+    private static readonly string[] KindFirstAtEnd = ["Vozy7", "Vozy8", "Vozy7"];
+    private static readonly string[] StationAtEnd = ["R1", "R1", "R1"];
+
+    /// <summary>
+    /// Skladba vety radenia v jazyku banky - podla slov, ktore banka ma.
+    /// </summary>
+    private enum Grammar
+    {
+        /// <summary>
+        /// <c>Za rušňom sú radené: vozeň … číslo 381, … a vozeň … číslo 363.</c> – poloha (Poz7) a sloveso (jeraz,
+        /// jsouraz) na zaciatku, bodka za poslednym prvkom.
+        /// </summary>
+        PositionFirst,
+
+        /// <summary>
+        /// <c>Second-class carriage no. 381, … and couchette car no. 363 are coupled behind the locomotive.</c> –
+        /// skupiny vozni na zaciatku (prva z Vozy7), sloveso (je_r, jsou_r) a poloha s bodkou (Poz3) na konci; viac
+        /// cisel ma slovo cisla (nos.).
+        /// </summary>
+        PositionLast
+    }
+
+    /// <summary>Skladba vety podla slov banky, alebo <see langword="null" />, ak banka slova radenia nema.</summary>
+    private static Grammar? GrammarOf(SoundPicker picker) =>
+        picker.Has(Words, "jsou_r") || picker.Has(Words, "je_r") ? Grammar.PositionLast
+        : picker.Has(Words, "jsouraz") || picker.Has(Words, "jeraz") ? Grammar.PositionFirst
+        : null;
 
     /// <summary>Interpunkcia za prvkom hlasenia - vyberie skupinu zvuku.</summary>
     private enum Ending
@@ -253,8 +295,26 @@ internal static partial class PlanRadeniaConversion
         {
             if (running.Count == 0)
                 continue;
-            var picker = new SoundPicker(context.Sounds);
-            var sounds = Compose(running, ending, picker, out var variantIssues);
+            var basic = new SoundPicker(context.Banks[0].Sounds);
+            var groups = Groups(running, basic, out var variantIssues);
+            var sounds = Compose(groups, running.Count, ending, basic, GrammarOf(basic) ?? Grammar.PositionFirst);
+            foreach (var bank in context.Banks.Skip(1))
+            {
+                // dalsi jazyk: veta v jeho skladbe; ak v nom chyba zvuk, radenie sa v nom vynecha (bez dier v hlaseni)
+                var picker = new SoundPicker(bank.Sounds);
+                if (GrammarOf(picker) is not { } grammar)
+                {
+                    variantIssues.Add(new PlanRadeniaIssue(PlanRadeniaIssueKind.LanguageNoWords, bank.Language.Key));
+                    continue;
+                }
+
+                var translated = Compose(groups, running.Count, ending, picker, grammar);
+                if (picker.Missing.Count > 0)
+                    variantIssues.Add(new PlanRadeniaIssue(PlanRadeniaIssueKind.LanguageMissing, $"{bank.Language.Key}: {string.Join(", ", picker.Missing)}"));
+                else
+                    sounds.AddRange(translated);
+            }
+
             var allDays = days.Cast<bool>().All(b => b) && from == context.From && to == context.To;
             var radenie = new Radenie
             {
@@ -269,7 +329,7 @@ internal static partial class PlanRadeniaConversion
             var proposal = new RadenieProposal { TrainNumber = plan.Number, Plan = plan, Radenie = radenie };
             proposal.Issues.AddRange(issues);
             proposal.Issues.AddRange(variantIssues);
-            proposal.Issues.AddRange(picker.Missing.Select(m => new PlanRadeniaIssue(PlanRadeniaIssueKind.MissingSound, m)));
+            proposal.Issues.AddRange(basic.Missing.Select(m => new PlanRadeniaIssue(PlanRadeniaIssueKind.MissingSound, m)));
             proposal.Take = !proposal.HasMissingSounds;
             result.Add(proposal);
         }
@@ -396,15 +456,15 @@ internal static partial class PlanRadeniaConversion
     private sealed record Token(string[] Groups, string Key);
 
     /// <summary>
-    /// Hlasenie radenia zo zvukov banky: poloha (za rusnom), je/su radene a skupiny vozni s cislami a cielom.
+    /// Skupiny vozni v hlaseni: vozne za sebou s rovnakou nahravkou druhu (podla zakladneho jazyka) a cielom.
     /// </summary>
-    private static List<FyzSound> Compose(List<Car> cars, Station? ending, SoundPicker picker, out List<PlanRadeniaIssue> issues)
+    private static List<Group> Groups(List<Car> cars, SoundPicker basic, out List<PlanRadeniaIssue> issues)
     {
         issues = [];
         var groups = new List<Group>();
         foreach (var car in cars)
         {
-            var key = KindKey(car.Kind, picker, issues);
+            var key = KindKey(car.Kind, basic, issues);
             var numbered = car.Number.Length > 0;
             if (groups.Count == 0 || groups[^1].Key != key || !Same(groups[^1].Destination, car.Destination) ||
                 numbered != (groups[^1].Numbers.Count > 0))
@@ -414,24 +474,41 @@ internal static partial class PlanRadeniaConversion
                 groups[^1].Numbers.Add(car.Number);
         }
 
+        return groups;
+    }
+
+    /// <summary>
+    /// Hlasenie radenia zo zvukov banky jedneho jazyka: poloha (za rusnom), je/su radene a skupiny vozni s cislami
+    /// a cielom - v poradi podla skladby vety jazyka.
+    /// </summary>
+    private static List<FyzSound> Compose(List<Group> groups, int cars, Station? ending, SoundPicker picker, Grammar grammar)
+    {
+        var atEnd = grammar == Grammar.PositionLast;
         // ciel sa hlasi, ak niektore vozne idu inam nez vlak; vozne bez poznamky idu do cielovej stanice vlaku
         var destinations = groups.Any(g => g.Destination is not null && !Same(g.Destination, ending));
-        var tokens = new List<Token> { new([Position], "zalok"), new([Words], cars.Count == 1 ? "jeraz" : "jsouraz") };
+        var tokens = new List<Token>();
+        if (!atEnd)
+        {
+            tokens.Add(new Token(["Poz7"], "zalok"));
+            tokens.Add(new Token([Words], cars == 1 ? "jeraz" : "jsouraz"));
+        }
+
         for (var i = 0; i < groups.Count; i++)
         {
             var group = groups[i];
             var last = i == groups.Count - 1;
             var and = last && groups.Count > 1;
             var plural = group.Count > 1;
+            var kinds = KindGroups(atEnd && i == 0 && !and, and, plural);
             var kindKey = group.Key;
             // vozne bez cisla: nahravka s poctom (dva vozne druhej triedy), ak ju banka ma
-            if (plural && group.Numbers.Count == 0 && picker.Has(KindGroups(and, true)[0], group.Count + kindKey))
+            if (plural && group.Numbers.Count == 0 && picker.Has(kinds[0], group.Count + kindKey))
                 kindKey = group.Count + kindKey;
-            var groupTokens = new List<Token> { new(KindGroups(and, plural), kindKey) };
+            var groupTokens = new List<Token> { new(kinds, kindKey) };
 
             if (group.Numbers.Count > 0)
             {
-                groupTokens.Add(new Token([Words], "cislo"));
+                groupTokens.Add(new Token([Words], atEnd && group.Numbers.Count > 1 ? "cisla" : "cislo"));
                 groupTokens.AddRange(NumberTokens(group.Numbers));
             }
 
@@ -440,17 +517,23 @@ internal static partial class PlanRadeniaConversion
             if (destinations && destination is not null && (last || !Same(destination, nextDestination)))
             {
                 groupTokens.Add(new Token([Words], "DoStan"));
-                groupTokens.Add(new Token(StationName, destination.ID));
+                groupTokens.Add(new Token(atEnd ? StationAtEnd : StationName, destination.ID));
             }
 
-            // interpunkcia za skupinou: bodka na konci, pred poslednou skupinou (so spojkou a) nic, inak ciarka;
-            // prvky vnutri skupiny su bez interpunkcie
-            var end = last ? Ending.Period : i == groups.Count - 2 ? Ending.Plain : Ending.Comma;
+            // interpunkcia za skupinou: bodka na konci vety, pred poslednou skupinou (so spojkou a) nic, inak ciarka;
+            // prvky vnutri skupiny su bez interpunkcie; ked veta pokracuje slovesom, posledna skupina je bez bodky
+            var end = last ? atEnd ? Ending.Plain : Ending.Period : i == groups.Count - 2 ? Ending.Plain : Ending.Comma;
             for (var t = 0; t < groupTokens.Count; t++)
             {
                 var token = groupTokens[t];
                 tokens.Add(token with { Groups = [t == groupTokens.Count - 1 ? Pick(token.Groups, end) : token.Groups[0]] });
             }
+        }
+
+        if (atEnd)
+        {
+            tokens.Add(new Token([Words], cars == 1 ? "je_r" : "jsou_r"));
+            tokens.Add(new Token(["Poz3"], "zalok"));
         }
 
         var sounds = new List<FyzSound>();
@@ -462,9 +545,10 @@ internal static partial class PlanRadeniaConversion
 
     private static string Pick(string[] groups, Ending ending) => groups.Length == 1 ? groups[0] : groups[(int)ending];
 
-    private static string[] KindGroups(bool and, bool plural)
+    /// <param name="firstAtEnd">Prva skupina vety, ktora zacina skupinami vozni (Vozy7).</param>
+    private static string[] KindGroups(bool firstAtEnd, bool and, bool plural)
     {
-        var names = and ? KindSingleAnd : KindSingle;
+        var names = firstAtEnd ? KindFirstAtEnd : and ? KindSingleAnd : KindSingle;
         return plural ? names.Select(n => n + "M").ToArray() : names;
     }
 

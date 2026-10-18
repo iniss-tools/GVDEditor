@@ -82,6 +82,9 @@ internal partial class FelisReview : Form
             PlanRadeniaIssueKind.NoLocomotive => Resources.PlanRadenia_IssueNoLocomotive,
             PlanRadeniaIssueKind.CarFixed => string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_IssueCarFixed, data[0], data.Length > 1 ? data[1] : ""),
             PlanRadeniaIssueKind.CarMissing => string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_IssueCarMissing, issue.Text),
+            PlanRadeniaIssueKind.LanguageMissing => string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_IssueLanguageMissing,
+                issue.Text.Split(": ", 2)[0], issue.Text.Split(": ", 2).ElementAtOrDefault(1)),
+            PlanRadeniaIssueKind.LanguageNoWords => string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_IssueLanguageNoWords, issue.Text),
             _ => issue.Text
         };
     }

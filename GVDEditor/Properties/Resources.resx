@@ -3913,4 +3913,10 @@ Pred zápisom sa uloží záloha.</value>
   <data name="FELISReview_RadeniePlanError" xml:space="preserve">
     <value>Plán radenia sa neprevezme: {0}</value>
   </data>
+  <data name="PlanRadenia_IssueLanguageMissing" xml:space="preserve">
+    <value>v jazyku {0} chýba {1}, radenie sa v ňom nehlási</value>
+  </data>
+  <data name="PlanRadenia_IssueLanguageNoWords" xml:space="preserve">
+    <value>banka jazyka {0} nemá slová radenia</value>
+  </data>
 </root>
