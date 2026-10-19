@@ -32,23 +32,23 @@ public record TabTabEditorScheme() : IColorScheme
     /// <inheritdoc />
     [XmlIgnore]
     public string Name => Resources.Scheme_TabTabEditor;
-
+    
     [XmlIgnore]
     private static readonly Dictionary<string, ColorSetting> Props = new()
     {
-        [nameof(Number)] = new(Color.Purple) { Name = Resources.Scheme_Number, DisableBackColorEdit = true },
-        [nameof(String)] = new(Color.Red) { Name = Resources.Scheme_String, DisableBackColorEdit = true  },
-        [nameof(Comment)] = new(Color.Green) { Name = Resources.Scheme_Comment, DisableBackColorEdit = true },
-        [nameof(OnNewLine)] = new(Color.OrangeRed) { Name = Resources.Scheme_OnNewLine, DisableBackColorEdit = true },
-        [nameof(Operator)] = new(Color.Black) { Name = Resources.Scheme_Operator, DisableBackColorEdit = true },
-        [nameof(Constant)] = new(Color.DimGray) { Name = Resources.Scheme_Constant, DisableBackColorEdit = true },
-        [nameof(Default)] = new(Color.Black) { Name = Resources.Scheme_Default, DisableBackColorEdit = true },
-        [nameof(Var)] = new(Color.DarkSlateGray) { Name = Resources.Scheme_Var, DisableBackColorEdit = true },
-        [nameof(Event)] = new(Color.SaddleBrown) { Name = Resources.Scheme_Event, DisableBackColorEdit = true },
-        [nameof(Function)] = new(Color.Blue) { Name = Resources.Scheme_Function, DisableBackColorEdit = true },
-        [nameof(Identifier)] = new(Color.Teal) { Name = Resources.Scheme_Identifier, DisableBackColorEdit = true },
-        [nameof(SelBraces)] = new(Color.BlueViolet,Color.LightGray) { Name = Resources.Scheme_SelBraces },
-        [nameof(SelBraceBad)] = new(Color.LightGray, Color.Red) { Name = Resources.Scheme_SelBraceBad }
+        [nameof(Number)] = new(Color.Purple) { NameSource = () => Resources.Scheme_Number, DisableBackColorEdit = true },
+        [nameof(String)] = new(Color.Red) { NameSource = () => Resources.Scheme_String, DisableBackColorEdit = true  },
+        [nameof(Comment)] = new(Color.Green) { NameSource = () => Resources.Scheme_Comment, DisableBackColorEdit = true },
+        [nameof(OnNewLine)] = new(Color.OrangeRed) { NameSource = () => Resources.Scheme_OnNewLine, DisableBackColorEdit = true },
+        [nameof(Operator)] = new(Color.Black) { NameSource = () => Resources.Scheme_Operator, DisableBackColorEdit = true },
+        [nameof(Constant)] = new(Color.DimGray) { NameSource = () => Resources.Scheme_Constant, DisableBackColorEdit = true },
+        [nameof(Default)] = new(Color.Black) { NameSource = () => Resources.Scheme_Default, DisableBackColorEdit = true },
+        [nameof(Var)] = new(Color.DarkSlateGray) { NameSource = () => Resources.Scheme_Var, DisableBackColorEdit = true },
+        [nameof(Event)] = new(Color.SaddleBrown) { NameSource = () => Resources.Scheme_Event, DisableBackColorEdit = true },
+        [nameof(Function)] = new(Color.Blue) { NameSource = () => Resources.Scheme_Function, DisableBackColorEdit = true },
+        [nameof(Identifier)] = new(Color.Teal) { NameSource = () => Resources.Scheme_Identifier, DisableBackColorEdit = true },
+        [nameof(SelBraces)] = new(Color.BlueViolet,Color.LightGray) { NameSource = () => Resources.Scheme_SelBraces },
+        [nameof(SelBraceBad)] = new(Color.LightGray, Color.Red) { NameSource = () => Resources.Scheme_SelBraceBad }
     };
 
     #region Properties
@@ -245,7 +245,7 @@ public record TabTabEditorScheme() : IColorScheme
             prop = InitProperty(propname);
         else
         {
-            prop.Name = Props[propname].Name;
+            prop.NameSource = Props[propname].NameSource;
             prop.DisableBackColorEdit = Props[propname].DisableBackColorEdit;
             prop.DisableFontBoldEdit = Props[propname].DisableFontBoldEdit;
         }

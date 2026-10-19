@@ -2270,7 +2270,7 @@ Záloha pôvodných súborov: {1}
     <value>Zvýraznenie zátvoriek</value>
   </data>
   <data name="Scheme_SelBraceBad" xml:space="preserve">
-    <value>Zvýraznie zátvorky, ktorej chýba pár</value>
+    <value>Zvýraznenie zátvorky, ktorej chýba pár</value>
   </data>
   <data name="Scheme_TrainTypeColumn" xml:space="preserve">
     <value>Stĺpec typ vlaku</value>

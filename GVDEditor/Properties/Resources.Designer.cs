@@ -6332,7 +6332,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zvýraznie zátvorky, ktorej chýba pár.
+        ///   Looks up a localized string similar to Zvýraznenie zátvorky, ktorej chýba pár.
         /// </summary>
         internal static string Scheme_SelBraceBad {
             get {

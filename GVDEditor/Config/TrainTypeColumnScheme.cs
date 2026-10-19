@@ -36,10 +36,10 @@ public record TrainTypeColumnScheme() : IColorScheme
     [XmlIgnore]
     private static readonly Dictionary<string, ColorSetting> Props = new()
     {
-        [nameof(Os)] = new(Color.Transparent, Color.Black, true) { Name = "Os", Bold = false },
-        [nameof(R)] = new(Color.Transparent, Color.Red, true) { Name = "R", Bold = true },
-        [nameof(X)] = new(Color.Transparent, Color.Green, true) { Name = "X", Bold = true },
-        [nameof(Sl)] = new(Color.Transparent, Color.OrangeRed, true) { Name = "Sl", Bold = false },
+        [nameof(Os)] = new(Color.Transparent, Color.Black, true) { NameSource = () => "Os", Bold = false },
+        [nameof(R)] = new(Color.Transparent, Color.Red, true) { NameSource = () => "R", Bold = true },
+        [nameof(X)] = new(Color.Transparent, Color.Green, true) { NameSource = () => "X", Bold = true },
+        [nameof(Sl)] = new(Color.Transparent, Color.OrangeRed, true) { NameSource = () => "Sl", Bold = false },
     };
 
     #region Properties
@@ -110,7 +110,7 @@ public record TrainTypeColumnScheme() : IColorScheme
             prop = InitProperty(propname);
         else
         {
-            prop.Name = Props[propname].Name;
+            prop.NameSource = Props[propname].NameSource;
             prop.DisableBackColorEdit = Props[propname].DisableBackColorEdit;
             prop.DisableFontBoldEdit = Props[propname].DisableFontBoldEdit;
         }

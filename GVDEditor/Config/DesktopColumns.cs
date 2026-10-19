@@ -12,23 +12,24 @@ public record DesktopColumns()
 {
     private static readonly Type ClassType = typeof(DesktopColumns);
 
+    // nazov stlpca sa cita az pri pouziti - konfiguracia sa nacita skor, nez sa nastavi jazyk programu
     [XmlIgnore]
-    private static readonly Dictionary<string, (string name, int order, int minWidth, bool visible)> Props = new()
+    private static readonly Dictionary<string, (Func<string> name, int order, int minWidth, bool visible)> Props = new()
     {
-        [nameof(Number)] = (Resources.Column_Number, 0, 60, true),
-        [nameof(Type)] = (Resources.Column_Type, 1, 40, true),
-        [nameof(Name)] = (Resources.Column_Name, 2, 100, true),
-        [nameof(LinkaPrichod)] = (Resources.Column_LineArrival, 3, 50, false),
-        [nameof(LinkaOdchod)] = (Resources.Column_LineDeparture, 4, 50, false),
-        [nameof(Routing)] = (Resources.Column_Routing, 5, 100, true),
-        [nameof(Prichod)] = (Resources.Column_Arrival, 6, 60, true),
-        [nameof(Odchod)] = (Resources.Column_Departure, 7, 60, true),
-        [nameof(VychodziaStanica)] = (Resources.Column_StartStation, 8, 120, true),
-        [nameof(KonecnaStanica)] = (Resources.Column_EndStation, 9, 120, true),
-        [nameof(DateLimit)] = (Resources.Column_DateLimit, 10, 300, true),
-        [nameof(Track)] = (Resources.Column_Track, 11, 100, true),
-        [nameof(Operator)] = (Resources.Column_Operator, 12, 50, true),
-        [nameof(OtherBtn)] = (Resources.Column_Other, 13, 50, true)
+        [nameof(Number)] = (() => Resources.Column_Number, 0, 60, true),
+        [nameof(Type)] = (() => Resources.Column_Type, 1, 40, true),
+        [nameof(Name)] = (() => Resources.Column_Name, 2, 100, true),
+        [nameof(LinkaPrichod)] = (() => Resources.Column_LineArrival, 3, 50, false),
+        [nameof(LinkaOdchod)] = (() => Resources.Column_LineDeparture, 4, 50, false),
+        [nameof(Routing)] = (() => Resources.Column_Routing, 5, 100, true),
+        [nameof(Prichod)] = (() => Resources.Column_Arrival, 6, 60, true),
+        [nameof(Odchod)] = (() => Resources.Column_Departure, 7, 60, true),
+        [nameof(VychodziaStanica)] = (() => Resources.Column_StartStation, 8, 120, true),
+        [nameof(KonecnaStanica)] = (() => Resources.Column_EndStation, 9, 120, true),
+        [nameof(DateLimit)] = (() => Resources.Column_DateLimit, 10, 300, true),
+        [nameof(Track)] = (() => Resources.Column_Track, 11, 100, true),
+        [nameof(Operator)] = (() => Resources.Column_Operator, 12, 50, true),
+        [nameof(OtherBtn)] = (() => Resources.Column_Other, 13, 50, true)
     };
 
     #region Properties
@@ -239,6 +240,9 @@ public record DesktopColumns()
     {
         var properties = ClassType.GetProperties(BindingFlags.Instance | BindingFlags.Public);
         var ordered = properties.Select(prop => (DesktopColumn)prop.GetValue(this)!).ToList();
+        // nazvy v aktualnom jazyku programu
+        foreach (var column in ordered)
+            column.Name = Props[column.PropertyName].name();
         return ordered.OrderBy(i => i.Order).ToList();
     }
 
@@ -253,7 +257,7 @@ public record DesktopColumns()
     }
 
     private static DesktopColumn InitColumn(string propname)
-        => new(Props[propname].name, propname, Props[propname].order, Props[propname].minWidth, Props[propname].visible);
+        => new(Props[propname].name(), propname, Props[propname].order, Props[propname].minWidth, Props[propname].visible);
 
     private static void AssignColumnProps(ref DesktopColumn? obj, string propname)
     {
@@ -263,7 +267,7 @@ public record DesktopColumns()
         }
         else
         {
-            obj.Name = Props[propname].name;
+            obj.Name = Props[propname].name();
             obj.PropertyName = propname;
         }
     }
