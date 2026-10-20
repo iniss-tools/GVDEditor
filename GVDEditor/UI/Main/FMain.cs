@@ -109,7 +109,6 @@ internal partial class FMain : ExForm, IAnalyzerHost
         if (tscbObdobie.ComboBox != null) tscbObdobie.ComboBox.DataSource = _periods;
 
         this.ApplyThemeAndFonts();
-        ApplyStatusBarColors();
         UpdateCommandStates();
     }
 
@@ -249,19 +248,6 @@ internal partial class FMain : ExForm, IAnalyzerHost
         _commands.ApplyShortcuts(_ctx.Config.Shortcuts);
         Refresh();
         AppInit.MsgBoxStyleInit(_ctx.UsingStyle, _ctx.Config);
-        ApplyStatusBarColors();
-    }
-
-    private void ApplyStatusBarColors()
-    {
-        if (!_ctx.UsingStyle.HighlightStatusBar)
-            return;
-
-        statusStrip.BackColor = _ctx.UsingStyle.ControlsColorScheme.Highlight.BackColor;
-        tsslSelTrainName.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
-        tsslSelTrainVariants.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
-        tsslTrainCount.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
-        tsslTrainCountWithVariants.ForeColor = _ctx.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
     }
 
     private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
