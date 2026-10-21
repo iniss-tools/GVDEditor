@@ -14,7 +14,7 @@
 		     (ťahá ich System.IO.Ports). Pripnutie win-x64 nechá len tie windowsové.
 		     SelfContained=false: RID sám o sebe od .NET 8 self-contained neznamená, ale nech je to zjavné.
 		     AppendRuntimeIdentifierToOutputPath=false: inak by výstup skončil v podpriečinku win-x64
-		     a rozbil by cesty v gvdinstaller.iss aj v cieli CopyELISBridge. -->
+		     a rozbil by cesty v GVDEditorInstaller.iss aj v cieli CopyELISBridge. -->
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<SelfContained>false</SelfContained>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
