@@ -2740,16 +2740,16 @@ Směrování vlaku a/nebo stanice vlaku,
     <value>(žádné)</value>
   </data>
   <data name="DirListFlags_TipSpread" xml:space="preserve">
-    <value>Z – šíří zprávy na následující stanice trasy</value>
+    <value>Z – šíří traťovou kolej na následující stanice trasy</value>
   </data>
-  <data name="DirListFlags_TipDeparture" xml:space="preserve">
-    <value>O – zpráva mění kolej odjezdu</value>
+  <data name="DirListFlags_TipBothTracks" xml:space="preserve">
+    <value>O – odjezd a odjezdová cesta mění i kolej příjezdu</value>
   </data>
-  <data name="DirListFlags_TipCreate" xml:space="preserve">
-    <value>K – zakládá vlaky z externích zpráv</value>
+  <data name="DirListFlags_TipApplyToRoute" xml:space="preserve">
+    <value>K – zprávu pro vlak, který ve stanici není, uplatní na další stanice trasy</value>
   </data>
-  <data name="DirListFlags_TipCreateWithoutCategori" xml:space="preserve">
-    <value>M – zakládá vlaky z externích zpráv, nenačte varianty a jazyky hlášení</value>
+  <data name="DirListFlags_TipApplyToRouteWithoutCategori" xml:space="preserve">
+    <value>M – jako K, navíc nenačte varianty a jazyky hlášení</value>
   </data>
   <data name="DirListFlags_TipSwitch" xml:space="preserve">
     <value>{0} – aktivní jen s přepínačem /{0}</value>

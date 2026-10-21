@@ -7,7 +7,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-/// Dialog - priznaky grafikonu v zozname grafikonov (4. stlpec DirList.TXT): spracovanie externych sprav o vlakoch
+/// Dialog - priznaky grafikonu v zozname grafikonov (4. stlpec DirList.TXT): spracovanie sprav o vlakoch z ILTIS
 /// a prepinac, s ktorym je grafikon aktivny.
 /// </summary>
 internal partial class FDirListFlags : Form
@@ -31,15 +31,15 @@ internal partial class FDirListFlags : Form
             cbSwitch.Items.Add(string.Format(CultureInfo.CurrentCulture, Resources.DirListFlags_OnlyWithSwitch, i));
 
         cboxSpread.Checked = flags.Spread;
-        cboxDeparture.Checked = flags.DepartureTrack;
-        rbCreateNone.Checked = flags.TrainCreation == DirListTrainCreation.None;
-        rbCreate.Checked = flags.TrainCreation == DirListTrainCreation.Create;
-        rbCreateWithoutCategori.Checked = flags.TrainCreation == DirListTrainCreation.CreateWithoutCategori;
+        cboxBothTracks.Checked = flags.DepartureSetsBothTracks;
+        rbMissingIgnore.Checked = flags.MissingTrain == DirListMissingTrain.Ignore;
+        rbMissingApplyToRoute.Checked = flags.MissingTrain == DirListMissingTrain.ApplyToRoute;
+        rbMissingApplyToRouteWithoutCategori.Checked = flags.MissingTrain == DirListMissingTrain.ApplyToRouteWithoutCategori;
         cbSwitch.SelectedIndex = flags.Switch ?? 0;
 
-        foreach (var box in new[] { cboxSpread, cboxDeparture })
+        foreach (var box in new[] { cboxSpread, cboxBothTracks })
             box.CheckedChanged += (_, _) => UpdateCode();
-        foreach (var radio in new[] { rbCreateNone, rbCreate, rbCreateWithoutCategori })
+        foreach (var radio in new[] { rbMissingIgnore, rbMissingApplyToRoute, rbMissingApplyToRouteWithoutCategori })
             radio.CheckedChanged += (_, _) => UpdateCode();
         cbSwitch.SelectedIndexChanged += (_, _) => UpdateCode();
         UpdateCode();
@@ -55,10 +55,10 @@ internal partial class FDirListFlags : Form
     /// <summary>
     /// Priznaky nastavene v okne.
     /// </summary>
-    public DirListFlags Flags => new(cboxSpread.Checked, cboxDeparture.Checked,
-        rbCreate.Checked ? DirListTrainCreation.Create
-        : rbCreateWithoutCategori.Checked ? DirListTrainCreation.CreateWithoutCategori
-        : DirListTrainCreation.None,
+    public DirListFlags Flags => new(cboxSpread.Checked, cboxBothTracks.Checked,
+        rbMissingApplyToRoute.Checked ? DirListMissingTrain.ApplyToRoute
+        : rbMissingApplyToRouteWithoutCategori.Checked ? DirListMissingTrain.ApplyToRouteWithoutCategori
+        : DirListMissingTrain.Ignore,
         cbSwitch.SelectedIndex > 0 ? cbSwitch.SelectedIndex : null);
 
     // zapis v subore, ako ho pozna specifikacia - pre toho, kto subor cita alebo upravuje rucne

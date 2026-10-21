@@ -60,9 +60,9 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("novy-grafikon/novy-grafikon", () => new FNewGrafikon(Program.Context, Periods(main)), form =>
             {
                 foreach (var name in FromPickers)
-                    ((ExControls.ExDateTimePicker)Field(form, name)).Value = new DateTime(2026, 12, 13);
+                    ((ExDateTimePicker)Field(form, name)).Value = new DateTime(2026, 12, 13);
                 foreach (var name in ToPickers)
-                    ((ExControls.ExDateTimePicker)Field(form, name)).Value = new DateTime(2027, 12, 11);
+                    ((ExDateTimePicker)Field(form, name)).Value = new DateTime(2027, 12, 11);
                 var station = (ComboBox)Field(form, "cbStationName");
                 station.SelectedIndex = station.Items.Cast<object>().ToList().FindIndex(o => o.ToString() == "Veľká Ves");
                 ((TextBoxBase)Field(form, "tbDirIniss")).Select(0, 0);
@@ -92,7 +92,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
 
             // kópia rýchlika je jeho druhou variantou - skupina variant s prekrytím dní na stránke Platnosť
             Shot("uprava-vlaku/varianty", () => new FEditTrain(Program.Context, express, trains.Count, gvdDir.GVD, true, gvdDir.Dir.FullPath,
-                GVDEditor.UI.EditTrain.EditTrainPage.Platnost), form => Resize(form, 960, 680));
+                EditTrainPage.Platnost), form => Resize(form, 960, 680));
 
             // skladanie radenia: vybraná druhá nahrávka „číslo“ a priečinok s vlastnosťami vozňov
             Shot("radenie/uprava-radenia", () => new FRadenie(Program.Context, [.. express.Radenia[0].Sounds]), form =>
@@ -106,30 +106,31 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("lokalne-nastavenia", () => new FLocalSettings(Program.Context, gvdDir), form =>
             {
                 Resize(form, 980, 700);
-                Descendants(form).OfType<GVDEditor.UI.Settings.PlatformsTracksPage>().Single().SelectFirstTrack();
+                Descendants(form).OfType<PlatformsTracksPage>().Single().SelectFirstTrack();
             }, tabs: true);
             // vypnuta anglictina - pod zoznamom upozornenie na vlaky, ktore ju maju zapnutu (okno sa zavrie bez OK)
             Shot("lokalne-nastavenia/jazyky-hlaseni-upozornenie",
-                () => new FLocalSettings(Program.Context, gvdDir, GVDEditor.UI.Settings.LocalSettingsPage.JazykyHlaseni), form =>
+                () => new FLocalSettings(Program.Context, gvdDir, LocalSettingsPage.JazykyHlaseni), form =>
                 {
                     Resize(form, 980, 700);
-                    var page = Descendants(form).OfType<GVDEditor.UI.Settings.GrafikonLanguagesPage>().Single();
+                    var page = Descendants(form).OfType<GrafikonLanguagesPage>().Single();
                     Descendants(page).OfType<CheckedListBox>().Single().SetItemChecked(1, false);
                     Pump.Events();
                 });
             Shot("globalne-nastavenia",() => new FGlobalSettings(Program.Context, Periods(main)), form => Resize(form, 900, 620), tabs: true);
-            // grafikon, ktory zaklada vlaky z externych sprav, siri ich dalej a je aktivny len s prepinacom /3
+            // grafikon, ktory siri tratovu kolaj dalej, uplatni spravy pre vlak mimo stanice na dalsie stanice
+            // a je aktivny len s prepinacom /3
             Shot("globalne-nastavenia/priznaky-grafikonu",
-                () => new GVDEditor.UI.Settings.FDirListFlags(gvdDir, ToolsCore.Iniss.Grafikon.DirListFlags.Parse("ZK3")));
+                () => new FDirListFlags(gvdDir, DirListFlags.Parse("ZK3")));
 
             // chyba na stránke: dopravca bez názvu - okno sa zavrie bez OK, takže Zrušiť zmenu vráti
-            var errorForm = new FLocalSettings(Program.Context, gvdDir, GVDEditor.UI.Settings.LocalSettingsPage.Dopravcovia);
+            var errorForm = new FLocalSettings(Program.Context, gvdDir, LocalSettingsPage.Dopravcovia);
             Shot("okna-nastaveni/chyba", errorForm, form =>
             {
                 Resize(form, 900, 560);
                 // druha chyba na inej stranke - v strome je vidno cervenu stranku (vybrana by ju prekryla)
                 var view = Descendants(form).OfType<ExOptionsView>().Single();
-                var stations = Descendants(form).OfType<GVDEditor.UI.Settings.CustomStationsPage>().Single();
+                var stations = Descendants(form).OfType<CustomStationsPage>().Single();
                 var operatorsPanel = view.SelectedPanel;
                 view.SelectedPanel = (ExOptionsPanel)stations.Parent!;
                 Pump.Events();
@@ -139,7 +140,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 view.SelectedPanel = operatorsPanel;
                 Pump.Events();
 
-                var grid = Descendants(Descendants(form).OfType<GVDEditor.UI.Settings.OperatorsPage>().Single())
+                var grid = Descendants(Descendants(form).OfType<OperatorsPage>().Single())
                     .OfType<DataGridView>().Single();
                 grid.Rows[1].Cells[1].Value = "";
                 grid.CurrentCell = grid.Rows[1].Cells[0];
@@ -598,7 +599,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
         foreach (var control in Descendants(panel).Where(c => c.Visible && c.Name.Length > 0 && c.Width > 0))
         {
             if (control is not (ButtonBase or DataGridView or TextBoxBase or ComboBox or UpDownBase or TreeView or ListBox or Label
-                or GVDEditor.UI.Controls.CatalogRuler or GVDEditor.UI.Controls.LedPreview or Panel))
+                or CatalogRuler or LedPreview or Panel))
                 continue;
 
             var r = control.RectangleToScreen(control.ClientRectangle);

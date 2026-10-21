@@ -36,11 +36,11 @@ namespace GVDEditor.UI.Settings
             gbMessages = new ExGroupBox();
             flpMessages = new FlowLayoutPanel();
             cboxSpread = new ExCheckBox();
-            cboxDeparture = new ExCheckBox();
-            lCreate = new Label();
-            rbCreateNone = new ExRadioButton();
-            rbCreate = new ExRadioButton();
-            rbCreateWithoutCategori = new ExRadioButton();
+            cboxBothTracks = new ExCheckBox();
+            lMissingTrain = new Label();
+            rbMissingIgnore = new ExRadioButton();
+            rbMissingApplyToRoute = new ExRadioButton();
+            rbMissingApplyToRouteWithoutCategori = new ExRadioButton();
             gbActive = new ExGroupBox();
             flpActive = new FlowLayoutPanel();
             cbSwitch = new ExComboBox();
@@ -84,11 +84,11 @@ namespace GVDEditor.UI.Settings
             // 
             resources.ApplyResources(flpMessages, "flpMessages");
             flpMessages.Controls.Add(cboxSpread);
-            flpMessages.Controls.Add(cboxDeparture);
-            flpMessages.Controls.Add(lCreate);
-            flpMessages.Controls.Add(rbCreateNone);
-            flpMessages.Controls.Add(rbCreate);
-            flpMessages.Controls.Add(rbCreateWithoutCategori);
+            flpMessages.Controls.Add(cboxBothTracks);
+            flpMessages.Controls.Add(lMissingTrain);
+            flpMessages.Controls.Add(rbMissingIgnore);
+            flpMessages.Controls.Add(rbMissingApplyToRoute);
+            flpMessages.Controls.Add(rbMissingApplyToRouteWithoutCategori);
             flpMessages.Name = "flpMessages";
             // 
             // cboxSpread
@@ -99,40 +99,40 @@ namespace GVDEditor.UI.Settings
             cboxSpread.Name = "cboxSpread";
             cboxSpread.UseVisualStyleBackColor = true;
             // 
-            // cboxDeparture
+            // cboxBothTracks
             // 
-            resources.ApplyResources(cboxDeparture, "cboxDeparture");
-            cboxDeparture.BoxBackColor = Color.White;
-            cboxDeparture.HighlightColor = SystemColors.Highlight;
-            cboxDeparture.Name = "cboxDeparture";
-            cboxDeparture.UseVisualStyleBackColor = true;
+            resources.ApplyResources(cboxBothTracks, "cboxBothTracks");
+            cboxBothTracks.BoxBackColor = Color.White;
+            cboxBothTracks.HighlightColor = SystemColors.Highlight;
+            cboxBothTracks.Name = "cboxBothTracks";
+            cboxBothTracks.UseVisualStyleBackColor = true;
             // 
-            // lCreate
+            // lMissingTrain
             // 
-            resources.ApplyResources(lCreate, "lCreate");
-            lCreate.Name = "lCreate";
+            resources.ApplyResources(lMissingTrain, "lMissingTrain");
+            lMissingTrain.Name = "lMissingTrain";
             // 
-            // rbCreateNone
+            // rbMissingIgnore
             // 
-            resources.ApplyResources(rbCreateNone, "rbCreateNone");
-            rbCreateNone.HighlightColor = SystemColors.Highlight;
-            rbCreateNone.Name = "rbCreateNone";
-            rbCreateNone.TabStop = true;
-            rbCreateNone.UseVisualStyleBackColor = true;
+            resources.ApplyResources(rbMissingIgnore, "rbMissingIgnore");
+            rbMissingIgnore.HighlightColor = SystemColors.Highlight;
+            rbMissingIgnore.Name = "rbMissingIgnore";
+            rbMissingIgnore.TabStop = true;
+            rbMissingIgnore.UseVisualStyleBackColor = true;
             // 
-            // rbCreate
+            // rbMissingApplyToRoute
             // 
-            resources.ApplyResources(rbCreate, "rbCreate");
-            rbCreate.HighlightColor = SystemColors.Highlight;
-            rbCreate.Name = "rbCreate";
-            rbCreate.UseVisualStyleBackColor = true;
+            resources.ApplyResources(rbMissingApplyToRoute, "rbMissingApplyToRoute");
+            rbMissingApplyToRoute.HighlightColor = SystemColors.Highlight;
+            rbMissingApplyToRoute.Name = "rbMissingApplyToRoute";
+            rbMissingApplyToRoute.UseVisualStyleBackColor = true;
             // 
-            // rbCreateWithoutCategori
+            // rbMissingApplyToRouteWithoutCategori
             // 
-            resources.ApplyResources(rbCreateWithoutCategori, "rbCreateWithoutCategori");
-            rbCreateWithoutCategori.HighlightColor = SystemColors.Highlight;
-            rbCreateWithoutCategori.Name = "rbCreateWithoutCategori";
-            rbCreateWithoutCategori.UseVisualStyleBackColor = true;
+            resources.ApplyResources(rbMissingApplyToRouteWithoutCategori, "rbMissingApplyToRouteWithoutCategori");
+            rbMissingApplyToRouteWithoutCategori.HighlightColor = SystemColors.Highlight;
+            rbMissingApplyToRouteWithoutCategori.Name = "rbMissingApplyToRouteWithoutCategori";
+            rbMissingApplyToRouteWithoutCategori.UseVisualStyleBackColor = true;
             // 
             // gbActive
             // 
@@ -222,11 +222,11 @@ namespace GVDEditor.UI.Settings
         private ExGroupBox gbMessages;
         private FlowLayoutPanel flpMessages;
         private ExCheckBox cboxSpread;
-        private ExCheckBox cboxDeparture;
-        private Label lCreate;
-        private ExRadioButton rbCreateNone;
-        private ExRadioButton rbCreate;
-        private ExRadioButton rbCreateWithoutCategori;
+        private ExCheckBox cboxBothTracks;
+        private Label lMissingTrain;
+        private ExRadioButton rbMissingIgnore;
+        private ExRadioButton rbMissingApplyToRoute;
+        private ExRadioButton rbMissingApplyToRouteWithoutCategori;
         private ExGroupBox gbActive;
         private FlowLayoutPanel flpActive;
         private ExComboBox cbSwitch;

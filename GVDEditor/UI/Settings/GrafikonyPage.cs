@@ -100,12 +100,12 @@ public partial class GrafikonyPage : UserControl, ISettingsPage
         var lines = new List<string>();
         if (flags.Spread)
             lines.Add(Resources.DirListFlags_TipSpread);
-        if (flags.DepartureTrack)
-            lines.Add(Resources.DirListFlags_TipDeparture);
-        if (flags.TrainCreation == DirListTrainCreation.Create)
-            lines.Add(Resources.DirListFlags_TipCreate);
-        else if (flags.TrainCreation == DirListTrainCreation.CreateWithoutCategori)
-            lines.Add(Resources.DirListFlags_TipCreateWithoutCategori);
+        if (flags.DepartureSetsBothTracks)
+            lines.Add(Resources.DirListFlags_TipBothTracks);
+        if (flags.MissingTrain == DirListMissingTrain.ApplyToRoute)
+            lines.Add(Resources.DirListFlags_TipApplyToRoute);
+        else if (flags.MissingTrain == DirListMissingTrain.ApplyToRouteWithoutCategori)
+            lines.Add(Resources.DirListFlags_TipApplyToRouteWithoutCategori);
         if (flags.Switch is { } number)
             lines.Add(string.Format(CultureInfo.CurrentCulture, Resources.DirListFlags_TipSwitch, number));
         if (!DirListFlags.IsCanonical(text))

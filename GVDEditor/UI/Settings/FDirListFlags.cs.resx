@@ -118,28 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lIntro.Text" xml:space="preserve">
-    <value>Příznaky určují, jak INISS zpracuje externí zprávy o vlacích (například z ISOŘ) a kdy je grafikon aktivní. Projeví se po restartu INISSu.</value>
+    <value>Příznaky určují, jak INISS zpracuje zprávy o vlacích ze systému ILTIS a kdy je grafikon aktivní. Projeví se po restartu INISSu.</value>
   </data>
   <data name="gbMessages.Text" xml:space="preserve">
-    <value>Externí zprávy o vlacích</value>
+    <value>Zprávy o vlacích z ILTISu</value>
   </data>
   <data name="cboxSpread.Text" xml:space="preserve">
-    <value>Šířit zprávu na následující stanice trasy (Z)</value>
+    <value>Šířit traťovou kolej na následující stanice trasy (Z)</value>
   </data>
-  <data name="cboxDeparture.Text" xml:space="preserve">
-    <value>Zpráva mění kolej odjezdu, ne příjezdu (O)</value>
+  <data name="cboxBothTracks.Text" xml:space="preserve">
+    <value>Odjezd a odjezdová cesta mění i kolej příjezdu (O)</value>
   </data>
-  <data name="lCreate.Text" xml:space="preserve">
-    <value>Vlak, který INISS v grafikonu nemá:</value>
+  <data name="lMissingTrain.Text" xml:space="preserve">
+    <value>Vlak, který ve stanici tohoto grafikonu není:</value>
   </data>
-  <data name="rbCreateNone.Text" xml:space="preserve">
-    <value>nezakládat, zprávu jen zapsat do logu</value>
+  <data name="rbMissingIgnore.Text" xml:space="preserve">
+    <value>zprávu jen zapsat do logu</value>
   </data>
-  <data name="rbCreate.Text" xml:space="preserve">
-    <value>založit nový vlak (K)</value>
+  <data name="rbMissingApplyToRoute.Text" xml:space="preserve">
+    <value>uplatnit zprávu na další stanice trasy vlaku (K)</value>
   </data>
-  <data name="rbCreateWithoutCategori.Text" xml:space="preserve">
-    <value>založit nový vlak, nenačítat varianty a jazyky hlášení grafikonu (M)</value>
+  <data name="rbMissingApplyToRouteWithoutCategori.Text" xml:space="preserve">
+    <value>jako K, navíc nenačítat varianty a jazyky hlášení grafikonu (M)</value>
   </data>
   <data name="gbActive.Text" xml:space="preserve">
     <value>Kdy je grafikon aktivní</value>

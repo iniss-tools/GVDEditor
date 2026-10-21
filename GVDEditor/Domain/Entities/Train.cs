@@ -148,8 +148,8 @@ public sealed class Train
     public bool IsNizkopodlazny { get; set; }
 
     /// <summary>
-    /// Ci ma vlak priznak prestupovy (pismeno P v Export3A.TXT). INISS taky vlak v zozname podfarbuje a
-    /// kontroluje priznak pri spracovani externych sprav o kolaji.
+    /// Ci ma vlak priznak prestupovy (pismeno P v Export3A.TXT). INISS taky vlak v zozname podfarbuje a sprava
+    /// z ILTIS, ktora meni obe kolaje, mu nezmeni kolaj odchodu.
     /// </summary>
     public bool IsPrestupovy { get; set; }
 

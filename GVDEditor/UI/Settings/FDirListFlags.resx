@@ -143,7 +143,7 @@
     <value>0</value>
   </data>
   <data name="lIntro.Text" xml:space="preserve">
-    <value>Príznaky určujú, ako INISS spracuje externé správy o vlakoch (napríklad z ISOŘ) a kedy je grafikon aktívny. Prejavia sa po reštarte INISSu.</value>
+    <value>Príznaky určujú, ako INISS spracuje správy o vlakoch zo systému ILTIS a kedy je grafikon aktívny. Prejavia sa po reštarte INISSu.</value>
   </data>
   <data name="&gt;&gt;lIntro.Name" xml:space="preserve">
     <value>lIntro</value>
@@ -179,13 +179,13 @@
     <value>4, 3, 4, 3</value>
   </data>
   <data name="cboxSpread.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 19</value>
+    <value>286, 19</value>
   </data>
   <data name="cboxSpread.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="cboxSpread.Text" xml:space="preserve">
-    <value>Šíriť správu na nasledujúce stanice trasy (Z)</value>
+    <value>Šíriť traťovú koľaj na nasledujúce stanice trasy (Z)</value>
   </data>
   <data name="&gt;&gt;cboxSpread.Name" xml:space="preserve">
     <value>cboxSpread</value>
@@ -199,154 +199,154 @@
   <data name="&gt;&gt;cboxSpread.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="cboxDeparture.AutoSize" type="System.Boolean, mscorlib">
+  <data name="cboxBothTracks.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="cboxDeparture.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="cboxBothTracks.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 28</value>
   </data>
-  <data name="cboxDeparture.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="cboxBothTracks.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 3, 4, 3</value>
   </data>
-  <data name="cboxDeparture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 19</value>
+  <data name="cboxBothTracks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>319, 19</value>
   </data>
-  <data name="cboxDeparture.TabIndex" type="System.Int32, mscorlib">
+  <data name="cboxBothTracks.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="cboxDeparture.Text" xml:space="preserve">
-    <value>Správa mení koľaj odchodu, nie príchodu (O)</value>
+  <data name="cboxBothTracks.Text" xml:space="preserve">
+    <value>Odchod a odchodová cesta menia aj koľaj príchodu (O)</value>
   </data>
-  <data name="&gt;&gt;cboxDeparture.Name" xml:space="preserve">
-    <value>cboxDeparture</value>
+  <data name="&gt;&gt;cboxBothTracks.Name" xml:space="preserve">
+    <value>cboxBothTracks</value>
   </data>
-  <data name="&gt;&gt;cboxDeparture.Type" xml:space="preserve">
+  <data name="&gt;&gt;cboxBothTracks.Type" xml:space="preserve">
     <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;cboxDeparture.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cboxBothTracks.Parent" xml:space="preserve">
     <value>flpMessages</value>
   </data>
-  <data name="&gt;&gt;cboxDeparture.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cboxBothTracks.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lCreate.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lMissingTrain.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lCreate.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lMissingTrain.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 62</value>
   </data>
-  <data name="lCreate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="lMissingTrain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 12, 4, 2</value>
   </data>
-  <data name="lCreate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 15</value>
+  <data name="lMissingTrain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 15</value>
   </data>
-  <data name="lCreate.TabIndex" type="System.Int32, mscorlib">
+  <data name="lMissingTrain.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="lCreate.Text" xml:space="preserve">
-    <value>Vlak, ktorý INISS v grafikone nemá:</value>
+  <data name="lMissingTrain.Text" xml:space="preserve">
+    <value>Vlak, ktorý v stanici tohto grafikonu nie je:</value>
   </data>
-  <data name="&gt;&gt;lCreate.Name" xml:space="preserve">
-    <value>lCreate</value>
+  <data name="&gt;&gt;lMissingTrain.Name" xml:space="preserve">
+    <value>lMissingTrain</value>
   </data>
-  <data name="&gt;&gt;lCreate.Type" xml:space="preserve">
+  <data name="&gt;&gt;lMissingTrain.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lCreate.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lMissingTrain.Parent" xml:space="preserve">
     <value>flpMessages</value>
   </data>
-  <data name="&gt;&gt;lCreate.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lMissingTrain.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="rbCreateNone.AutoSize" type="System.Boolean, mscorlib">
+  <data name="rbMissingIgnore.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="rbCreateNone.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="rbMissingIgnore.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 82</value>
   </data>
-  <data name="rbCreateNone.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="rbMissingIgnore.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>23, 3, 4, 3</value>
   </data>
-  <data name="rbCreateNone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 19</value>
+  <data name="rbMissingIgnore.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 19</value>
   </data>
-  <data name="rbCreateNone.TabIndex" type="System.Int32, mscorlib">
+  <data name="rbMissingIgnore.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="rbCreateNone.Text" xml:space="preserve">
-    <value>nezakladať, správu len zapísať do logu</value>
+  <data name="rbMissingIgnore.Text" xml:space="preserve">
+    <value>správu len zapísať do logu</value>
   </data>
-  <data name="&gt;&gt;rbCreateNone.Name" xml:space="preserve">
-    <value>rbCreateNone</value>
+  <data name="&gt;&gt;rbMissingIgnore.Name" xml:space="preserve">
+    <value>rbMissingIgnore</value>
   </data>
-  <data name="&gt;&gt;rbCreateNone.Type" xml:space="preserve">
+  <data name="&gt;&gt;rbMissingIgnore.Type" xml:space="preserve">
     <value>ExControls.ExRadioButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;rbCreateNone.Parent" xml:space="preserve">
+  <data name="&gt;&gt;rbMissingIgnore.Parent" xml:space="preserve">
     <value>flpMessages</value>
   </data>
-  <data name="&gt;&gt;rbCreateNone.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;rbMissingIgnore.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="rbCreate.AutoSize" type="System.Boolean, mscorlib">
+  <data name="rbMissingApplyToRoute.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="rbCreate.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="rbMissingApplyToRoute.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 107</value>
   </data>
-  <data name="rbCreate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="rbMissingApplyToRoute.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>23, 3, 4, 3</value>
   </data>
-  <data name="rbCreate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 19</value>
+  <data name="rbMissingApplyToRoute.Size" type="System.Drawing.Size, System.Drawing">
+    <value>272, 19</value>
   </data>
-  <data name="rbCreate.TabIndex" type="System.Int32, mscorlib">
+  <data name="rbMissingApplyToRoute.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="rbCreate.Text" xml:space="preserve">
-    <value>založiť nový vlak (K)</value>
+  <data name="rbMissingApplyToRoute.Text" xml:space="preserve">
+    <value>uplatniť správu na ďalšie stanice trasy vlaku (K)</value>
   </data>
-  <data name="&gt;&gt;rbCreate.Name" xml:space="preserve">
-    <value>rbCreate</value>
+  <data name="&gt;&gt;rbMissingApplyToRoute.Name" xml:space="preserve">
+    <value>rbMissingApplyToRoute</value>
   </data>
-  <data name="&gt;&gt;rbCreate.Type" xml:space="preserve">
+  <data name="&gt;&gt;rbMissingApplyToRoute.Type" xml:space="preserve">
     <value>ExControls.ExRadioButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;rbCreate.Parent" xml:space="preserve">
+  <data name="&gt;&gt;rbMissingApplyToRoute.Parent" xml:space="preserve">
     <value>flpMessages</value>
   </data>
-  <data name="&gt;&gt;rbCreate.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;rbMissingApplyToRoute.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="rbCreateWithoutCategori.AutoSize" type="System.Boolean, mscorlib">
+  <data name="rbMissingApplyToRouteWithoutCategori.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="rbCreateWithoutCategori.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="rbMissingApplyToRouteWithoutCategori.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 132</value>
   </data>
-  <data name="rbCreateWithoutCategori.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="rbMissingApplyToRouteWithoutCategori.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>23, 3, 4, 3</value>
   </data>
-  <data name="rbCreateWithoutCategori.Size" type="System.Drawing.Size, System.Drawing">
-    <value>373, 19</value>
+  <data name="rbMissingApplyToRouteWithoutCategori.Size" type="System.Drawing.Size, System.Drawing">
+    <value>354, 19</value>
   </data>
-  <data name="rbCreateWithoutCategori.TabIndex" type="System.Int32, mscorlib">
+  <data name="rbMissingApplyToRouteWithoutCategori.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="rbCreateWithoutCategori.Text" xml:space="preserve">
-    <value>založiť nový vlak, nenačítať varianty a jazyky hlásení grafikonu (M)</value>
+  <data name="rbMissingApplyToRouteWithoutCategori.Text" xml:space="preserve">
+    <value>ako K, navyše nenačítať varianty a jazyky hlásení grafikonu (M)</value>
   </data>
-  <data name="&gt;&gt;rbCreateWithoutCategori.Name" xml:space="preserve">
-    <value>rbCreateWithoutCategori</value>
+  <data name="&gt;&gt;rbMissingApplyToRouteWithoutCategori.Name" xml:space="preserve">
+    <value>rbMissingApplyToRouteWithoutCategori</value>
   </data>
-  <data name="&gt;&gt;rbCreateWithoutCategori.Type" xml:space="preserve">
+  <data name="&gt;&gt;rbMissingApplyToRouteWithoutCategori.Type" xml:space="preserve">
     <value>ExControls.ExRadioButton, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;rbCreateWithoutCategori.Parent" xml:space="preserve">
+  <data name="&gt;&gt;rbMissingApplyToRouteWithoutCategori.Parent" xml:space="preserve">
     <value>flpMessages</value>
   </data>
-  <data name="&gt;&gt;rbCreateWithoutCategori.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;rbMissingApplyToRouteWithoutCategori.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="flpMessages.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -401,7 +401,7 @@
     <value>1</value>
   </data>
   <data name="gbMessages.Text" xml:space="preserve">
-    <value>Externé správy o vlakoch</value>
+    <value>Správy o vlakoch z ILTISu</value>
   </data>
   <data name="&gt;&gt;gbMessages.Name" xml:space="preserve">
     <value>gbMessages</value>

@@ -7781,7 +7781,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Z – šíri správy na nasledujúce stanice trasy.
+        ///   Looks up a localized string similar to Z – šíri traťovú koľaj na nasledujúce stanice trasy.
         /// </summary>
         internal static string DirListFlags_TipSpread {
             get {
@@ -7790,29 +7790,29 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O – správa mení koľaj odchodu.
+        ///   Looks up a localized string similar to O – odchod a odchodová cesta menia aj koľaj príchodu.
         /// </summary>
-        internal static string DirListFlags_TipDeparture {
+        internal static string DirListFlags_TipBothTracks {
             get {
-                return ResourceManager.GetString("DirListFlags_TipDeparture", resourceCulture);
+                return ResourceManager.GetString("DirListFlags_TipBothTracks", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to K – zakladá vlaky z externých správ.
+        ///   Looks up a localized string similar to K – správu pre vlak, ktorý v stanici nie je, uplatní na ďalšie stanice trasy.
         /// </summary>
-        internal static string DirListFlags_TipCreate {
+        internal static string DirListFlags_TipApplyToRoute {
             get {
-                return ResourceManager.GetString("DirListFlags_TipCreate", resourceCulture);
+                return ResourceManager.GetString("DirListFlags_TipApplyToRoute", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to M – zakladá vlaky z externých správ, nenačíta varianty a jazyky hlásení.
+        ///   Looks up a localized string similar to M – ako K, navyše nenačíta varianty a jazyky hlásení.
         /// </summary>
-        internal static string DirListFlags_TipCreateWithoutCategori {
+        internal static string DirListFlags_TipApplyToRouteWithoutCategori {
             get {
-                return ResourceManager.GetString("DirListFlags_TipCreateWithoutCategori", resourceCulture);
+                return ResourceManager.GetString("DirListFlags_TipApplyToRouteWithoutCategori", resourceCulture);
             }
         }
         

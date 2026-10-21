@@ -2755,16 +2755,16 @@ Smerovanie vlaku a/alebo stanice vlaku,
     <value>(žiadne)</value>
   </data>
   <data name="DirListFlags_TipSpread" xml:space="preserve">
-    <value>Z – šíri správy na nasledujúce stanice trasy</value>
+    <value>Z – šíri traťovú koľaj na nasledujúce stanice trasy</value>
   </data>
-  <data name="DirListFlags_TipDeparture" xml:space="preserve">
-    <value>O – správa mení koľaj odchodu</value>
+  <data name="DirListFlags_TipBothTracks" xml:space="preserve">
+    <value>O – odchod a odchodová cesta menia aj koľaj príchodu</value>
   </data>
-  <data name="DirListFlags_TipCreate" xml:space="preserve">
-    <value>K – zakladá vlaky z externých správ</value>
+  <data name="DirListFlags_TipApplyToRoute" xml:space="preserve">
+    <value>K – správu pre vlak, ktorý v stanici nie je, uplatní na ďalšie stanice trasy</value>
   </data>
-  <data name="DirListFlags_TipCreateWithoutCategori" xml:space="preserve">
-    <value>M – zakladá vlaky z externých správ, nenačíta varianty a jazyky hlásení</value>
+  <data name="DirListFlags_TipApplyToRouteWithoutCategori" xml:space="preserve">
+    <value>M – ako K, navyše nenačíta varianty a jazyky hlásení</value>
   </data>
   <data name="DirListFlags_TipSwitch" xml:space="preserve">
     <value>{0} – aktívny len s prepínačom /{0}</value>
