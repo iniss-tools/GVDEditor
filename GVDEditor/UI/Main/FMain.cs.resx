@@ -295,6 +295,9 @@
   <data name="tsmiChangelog.Text" xml:space="preserve">
     <value>Poznámky k aktualizacím...</value>
   </data>
+  <data name="tsmiCheckUpdates.Text" xml:space="preserve">
+    <value>Zkontrolovat aktualizace...</value>
+  </data>
   <data name="tsbSave.ToolTipText" xml:space="preserve">
     <value>Uložit</value>
   </data>

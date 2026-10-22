@@ -1,6 +1,7 @@
 using GVDEditor.UI.Settings;
 using ToolsCore.Commands;
 using ToolsCore.Tools;
+using ToolsCore.Updates;
 
 namespace GVDEditor.UI.Main;
 
@@ -81,6 +82,7 @@ internal partial class FMain
 
         Add(GvdCommands.InfoApp, ShowInfoApp, null, tsmiInformation, tsbInformation);
         Add(GvdCommands.UpdateNotes, () => Utils.OpenShell(GvdLinkConsts.LinkNews), null, tsmiChangelog);
+        Add(GvdCommands.CheckUpdates, () => AppUpdates.CheckNow(this), () => AppUpdates.Available, tsmiCheckUpdates);
         Add(GvdCommands.DateLimit, ShowDatObm, null, tsmiDatObm, tsbDatObm);
     }
 

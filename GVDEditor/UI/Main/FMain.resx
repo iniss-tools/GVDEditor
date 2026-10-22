@@ -594,6 +594,12 @@
   <data name="tsmiChangelog.Text" xml:space="preserve">
     <value>Poznámky k aktualizáciám...</value>
   </data>
+  <data name="tsmiCheckUpdates.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 22</value>
+  </data>
+  <data name="tsmiCheckUpdates.Text" xml:space="preserve">
+    <value>Skontrolovať aktualizácie...</value>
+  </data>
   <data name="tsmiNastavenia.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 19</value>
   </data>
@@ -2764,6 +2770,12 @@
     <value>tsmiChangelog</value>
   </data>
   <data name="&gt;&gt;tsmiChangelog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiCheckUpdates.Name" xml:space="preserve">
+    <value>tsmiCheckUpdates</value>
+  </data>
+  <data name="&gt;&gt;tsmiCheckUpdates.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsbSave.Name" xml:space="preserve">

@@ -2089,6 +2089,9 @@ Pokračovat?</value>
   <data name="Cmd_UpdateNotes" xml:space="preserve">
     <value>Poznámky k aktualizacím</value>
   </data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve">
+    <value>Zkontrolovat aktualizace</value>
+  </data>
   <data name="Cmd_DateLimit" xml:space="preserve">
     <value>Generátor datumových omezení</value>
   </data>

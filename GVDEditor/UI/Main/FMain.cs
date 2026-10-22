@@ -13,6 +13,7 @@ using ToolsCore.Commands;
 using ToolsCore.Forms;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
+using ToolsCore.Updates;
 using ToolsCore.XML;
 using ToolsCore;
 
@@ -116,6 +117,7 @@ internal partial class FMain : ExForm, IAnalyzerHost
     {
         AppRegistry.RegisterJumpList();
         StartMcp();
+        AppUpdates.CheckOnStartup(this, _ctx.Config);
 
         var path = Utils.GetProjectPathFromArgs();
         if (path is null && _ctx.Config.Startup == StartupType.LastProject)

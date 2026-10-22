@@ -5,7 +5,11 @@
 		<RootNamespace>GVDEditor</RootNamespace>
 		<AssemblyName>GVDEditor</AssemblyName>
 		<UseWindowsForms>true</UseWindowsForms>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<!-- verzia lokalnych zostav; vydanie ju prepise verziou zo znacky vX.Y (ToolsCore\Build\AppRelease.props) -->
+		<Version>1.9</Version>
+		<Description>Úprava textových súborov grafikonu</Description>
+		<Copyright>Copyright © 2022</Copyright>
+		<NeutralLanguage>sk</NeutralLanguage>
 		<StartupObject>GVDEditor.Program</StartupObject>
 		<ApplicationIcon>gvd.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
@@ -232,4 +236,6 @@
 	</Target>
 	<!-- Rozsirenie navrhara ExControls pre VS (editor kolekcie ExOptionsView.Panels) -->
 	<Import Project="..\..\ExControls\ExControls.Designer.targets" />
+	<!-- spolocne vlastnosti vydavanych programov: vyrobca, verzia a index aktualizacii z vydania -->
+	<Import Project="..\..\ToolsCore\Build\AppRelease.props" />
 </Project>

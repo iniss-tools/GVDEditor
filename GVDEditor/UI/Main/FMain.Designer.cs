@@ -180,6 +180,7 @@ namespace GVDEditor.UI.Main
             tsmiNastavenia = new ToolStripMenuItem();
             tsmiInformation = new IconToolStripMenuItem();
             tsmiChangelog = new ToolStripMenuItem();
+            tsmiCheckUpdates = new ToolStripMenuItem();
             toolMenu = new ToolStrip();
             tsbSave = new IconToolStripButton();
             tsbOpen = new IconToolStripButton();
@@ -675,7 +676,7 @@ namespace GVDEditor.UI.Main
             // 
             // tsmiNastavenia
             // 
-            tsmiNastavenia.DropDownItems.AddRange(new ToolStripItem[] { tsmiInformation, tsmiChangelog });
+            tsmiNastavenia.DropDownItems.AddRange(new ToolStripItem[] { tsmiInformation, tsmiChangelog, tsmiCheckUpdates });
             tsmiNastavenia.Name = "tsmiNastavenia";
             resources.ApplyResources(tsmiNastavenia, "tsmiNastavenia");
             // 
@@ -689,7 +690,12 @@ namespace GVDEditor.UI.Main
             // 
             resources.ApplyResources(tsmiChangelog, "tsmiChangelog");
             tsmiChangelog.Name = "tsmiChangelog";
-            // 
+            //
+            // tsmiCheckUpdates
+            //
+            resources.ApplyResources(tsmiCheckUpdates, "tsmiCheckUpdates");
+            tsmiCheckUpdates.Name = "tsmiCheckUpdates";
+            //
             // toolMenu
             // 
             toolMenu.BackColor = SystemColors.MenuBar;
@@ -2217,6 +2223,7 @@ namespace GVDEditor.UI.Main
         private DataGridViewComboBoxColumn dataGridViewComboBoxColumn2;
         private IconToolStripSplitButton tssbRecentDirs;
         private ToolStripMenuItem tsmiChangelog;
+        private ToolStripMenuItem tsmiCheckUpdates;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewComboBoxColumn dataGridViewComboBoxColumn3;

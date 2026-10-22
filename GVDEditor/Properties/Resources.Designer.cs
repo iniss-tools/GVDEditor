@@ -5889,6 +5889,15 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("Cmd_UpdateNotes", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Skontrolovať aktualizácie.
+        /// </summary>
+        internal static string Cmd_CheckUpdates {
+            get {
+                return ResourceManager.GetString("Cmd_CheckUpdates", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Generátor dátumových obmedzení.

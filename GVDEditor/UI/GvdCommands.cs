@@ -59,6 +59,7 @@ internal static class GvdCommands
 
     public static CommandInfo InfoApp => new("InfoApp", Resources.Cmd_InfoApp, Shortcut.F6);
     public static CommandInfo UpdateNotes => new("UpdateNotes", Resources.Cmd_UpdateNotes, Shortcut.None);
+    public static CommandInfo CheckUpdates => new("CheckUpdates", Resources.Cmd_CheckUpdates, Shortcut.None);
     public static CommandInfo DateLimit => new("DatObm", Resources.Cmd_DateLimit, Shortcut.F7);
 
     /// <summary>
@@ -73,6 +74,6 @@ internal static class GvdCommands
         LsGvd, LsLanguages, LsStations, LsOperators, LsPlatforms, LsTracks, LsPhysicalTables, LsLogicalTables,
         LsCatalogTables, LsTabTab, LsTableTexts, LsTableFonts, LsTabTabEditor, StateDgm,
         RunIniss, ShutdownIniss, KillIniss, RestartIniss, InissStartupSettings, InissSettings,
-        InfoApp, UpdateNotes, DateLimit
+        InfoApp, UpdateNotes, CheckUpdates, DateLimit
     ];
 }
