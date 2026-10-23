@@ -42,7 +42,6 @@ internal sealed class ElisImportOptions
     public const string DefaultElisDirectory = @"C:\Program Files (x86)\Cestovné poriadky";
 
     public string AppDirectory { get; init; } = null!;
-    public string RegistrationNumber { get; init; } = null!;
     public bool OmitPassingTrains { get; init; }
     public bool ReorderTrains { get; init; }
 
@@ -252,7 +251,6 @@ internal static class ElisImportService
             var client = new ElisBridgeClient(typeList, operatorList, gvd, track, stations)
             {
                 AppDirectory = options.AppDirectory,
-                RegistrationNumber = options.RegistrationNumber,
                 // cisla variant pridelene importom nesmu kolidovat s vlakmi, ktore v grafikone ostanu
                 DefinedTrains = options.Mode == ElisImportMode.Add ? current : [],
                 OmitPassingTrains = options.OmitPassingTrains,

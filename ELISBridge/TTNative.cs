@@ -4,7 +4,7 @@ using System.Text;
 namespace Iniss.Elis;
 
 /// <summary>
-/// Priama vrstva nad TT.dll z aplikacie Cestovne poriadky (CHAPS).
+/// Priama vrstva nad TT.dll z aplikacie Cestovne poriadky (INPROP).
 /// Vsetky exporty su <c>stdcall</c> s nedekorovanymi menami.
 /// </summary>
 /// <remarks>
@@ -37,14 +37,10 @@ internal static class TTNative
     public const int ErrDateOutOfRange = 18;
 
     /// <summary>
-    /// Chybove kody, ktorymi loader hlasi, ze platený cestovny poriadok nebolo mozne
-    /// zaregistrovat (nespravne alebo chybajuce registracne cislo). Takyto poriadok
-    /// sa zahodi a <see cref="TTTTCount" /> ho nezapocita.
+    /// Chybove kody, ktorymi loader hlasi, ze platený cestovny poriadok nie je zaregistrovany.
+    /// Takyto poriadok sa zahodi a <see cref="TTTTCount" /> ho nezapocita.
     /// </summary>
     private static readonly int[] RegistrationErrors = [27, 28, 29];
-
-    /// <summary>Prikaz <see cref="TTService" /> na pridanie registracneho cisla do zoznamu na overenie.</summary>
-    private const string SvcAddRegistration = "e271";
 
     [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
     private static extern bool SetDllDirectory(string path);
@@ -169,14 +165,6 @@ internal static class TTNative
     [DllImport(Dll)]
     public static extern void TTGetValidityRange(int category, int subcat, [Out] int[] from, [Out] int[] to);
 
-    /// <summary>Servisny prikaz kniznice; pouziva sa na vlozenie registracneho cisla pred nacitanim dat.</summary>
-    [DllImport(Dll, CharSet = CharSet.Ansi, BestFitMapping = false)]
-    public static extern int TTService(string command, string argument);
-
-    /// <summary>Nastavi identifikaciu klienta, ktora vstupuje do overenia registracie. Segmenty oddeluje '|'.</summary>
-    [DllImport(Dll, CharSet = CharSet.Ansi, BestFitMapping = false)]
-    public static extern void TTRegisterClient(string client);
-
     private static readonly Encoding Cp1250 = Encoding.GetEncoding(1250);
 
     /// <summary>
@@ -200,24 +188,7 @@ internal static class TTNative
             throw new DllNotFoundException($"Knižnicu {dll} sa nepodarilo zaviesť (chyba {Marshal.GetLastWin32Error()}).");
     }
 
-    /// <summary>
-    /// Zaregistruje platený cestovny poriadok - vlozi registracne cislo (a volitelne
-    /// identifikaciu klienta) do kniznice. MUSI sa zavolat PRED <see cref="TTInit" />,
-    /// lebo overenie prebieha pocas nacitania kazdeho .tt.
-    /// </summary>
-    /// <param name="registrationNumber">Zakupene registracne cislo; ak je prazdne, nerobi sa nic.</param>
-    /// <param name="client">Identifikacia klienta, ak ju dataset vyzaduje (inak <see langword="null" />).</param>
-    public static void Register(string? registrationNumber, string? client)
-    {
-        if (!string.IsNullOrWhiteSpace(client))
-            TTRegisterClient(client);
-
-        if (!string.IsNullOrWhiteSpace(registrationNumber))
-            // vysledok registracie sa prejavi az pri nacitani dat (TTError po TTInit)
-            _ = TTService(SvcAddRegistration, registrationNumber.Trim());
-    }
-
-    /// <summary>Ci je <paramref name="error" /> jeden z chybovych kodov neuspesnej registracie.</summary>
+    /// <summary>Ci je <paramref name="error" /> jeden z chybovych kodov nezaregistrovaneho poriadku.</summary>
     public static bool IsRegistrationError(int error) => Array.IndexOf(RegistrationErrors, error) >= 0;
 
     /// <summary>

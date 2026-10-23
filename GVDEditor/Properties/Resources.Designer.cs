@@ -3686,11 +3686,11 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Cestovný poriadok vyžaduje platné registračné číslo..
+        ///   Looks up a localized string similar to Cestovný poriadok nie je zaregistrovaný. Registračné číslo sa zadáva pri inštalácii dát v programe Cestovné poriadky..
         /// </summary>
-        internal static string ELISBridgeClient_Cestovný_poriadok_vyžaduje_platné_registračné_číslo {
+        internal static string ELISBridgeClient_Cestovný_poriadok_nie_je_zaregistrovaný {
             get {
-                return ResourceManager.GetString("ELISBridgeClient_Cestovný_poriadok_vyžaduje_platné_registračné_číslo", resourceCulture);
+                return ResourceManager.GetString("ELISBridgeClient_Cestovný_poriadok_nie_je_zaregistrovaný", resourceCulture);
             }
         }
 

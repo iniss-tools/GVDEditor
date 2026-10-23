@@ -13,7 +13,7 @@ internal static class Program
 
     private const string Usage =
         $"""
-         ELISBridge - vycitanie grafikonu z dat programu ELIS (Cestovne poriadky, CHAPS)
+         ELISBridge - vycitanie grafikonu z dat programu ELIS (Cestovne poriadky, INPROP)
                                     
            ELISBridge.exe (--code <SR70> | --station <nazov>) [--app <priecinok>] [--data <priecinok>] [--out <subor>]
            ELISBridge.exe --list-stations [--app <priecinok>] [--data <priecinok>]
@@ -24,22 +24,20 @@ internal static class Program
          --app            priecinok s TT.dll (predvolene \"{DefaultApp}\")
          --data           priecinok s .tt datami (predvolene <app>\\Data1)
          --out            subor pre vystup (bez neho ide na standardny vystup)
-         --reg            registracne cislo pre platene cestovne poriadky
-         --client         identifikacia klienta, ak ju platene data vyzaduju
          --list-stations  vypise nazvy vsetkych stanic v datach
          --station-codes  vypise stanice ako <kod SR70>,"<nazov>", zoradene podla nazvu;
                           do suboru (--out) sa zapisu v kodovani Windows-1250
          --version        vypise verziu TT.dll a ELISBridge.exe
 
          Navratove kody: 0 = ok, 1 = chyba, 2 = ziadny cestovny poriadok,
-                         3 = stanica nenajdena, 4 = chybne/chybajuce registracne cislo
+                         3 = stanica nenajdena, 4 = cestovny poriadok nie je zaregistrovany
          """;
 
     private static int Main(string[] args)
     {
         Console.OutputEncoding = Encoding.UTF8;
 
-        string? app = null, data = null, station = null, output = null, reg = null, client = null;
+        string? app = null, data = null, station = null, output = null;
         var code = 0;
         var listStations = false;
         var stationCodes = false;
@@ -66,13 +64,7 @@ internal static class Program
                     }
                     break;
                 case "--out": 
-                    output = Next(args, ref i); 
-                    break;
-                case "--reg": 
-                    reg = Next(args, ref i); 
-                    break;
-                case "--client": 
-                    client = Next(args, ref i); 
+                    output = Next(args, ref i);
                     break;
                 case "--list-stations": 
                     listStations = true; 
@@ -111,7 +103,7 @@ internal static class Program
         try
         {
             TTNative.LoadFrom(app);
-            var reader = new TTReader(data, reg, client);
+            var reader = new TTReader(data);
             reader.Open();
 
             if (listStations)
@@ -139,7 +131,7 @@ internal static class Program
                                     $" (platnosť {result.ValidFrom} - {result.ValidTo})");
             return 0;
         }
-        catch (RegistrationException e)
+        catch (NotRegisteredException e)
         {
             Console.Error.WriteLine(e.Message);
             return 4;

@@ -43,8 +43,6 @@ namespace GVDEditor.UI.Import
             this.bBrowse = new ExControls.ExButton();
             this.label1 = new System.Windows.Forms.Label();
             this.lStation = new System.Windows.Forms.Label();
-            this.lReg = new System.Windows.Forms.Label();
-            this.tbReg = new ExControls.ExTextBox();
             this.lLearn = new System.Windows.Forms.Label();
             this.cbLearn = new ExControls.ExComboBox();
             this.lPlan = new System.Windows.Forms.Label();
@@ -168,23 +166,6 @@ namespace GVDEditor.UI.Import
             resources.ApplyResources(this.lStation, "lStation");
             this.lStation.Name = "lStation";
             //
-            // lReg
-            //
-            resources.ApplyResources(this.lReg, "lReg");
-            this.lReg.Name = "lReg";
-            //
-            // tbReg
-            //
-            this.tbReg.BorderColor = System.Drawing.Color.DimGray;
-            this.tbReg.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.tbReg.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tbReg.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbReg.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.tbReg.HintForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbReg.HintText = null;
-            resources.ApplyResources(this.tbReg, "tbReg");
-            this.tbReg.Name = "tbReg";
-            //
             // lLearn
             //
             resources.ApplyResources(this.lLearn, "lLearn");
@@ -233,8 +214,6 @@ namespace GVDEditor.UI.Import
             this.Controls.Add(this.lLearn);
             this.Controls.Add(this.gbOptions);
             this.Controls.Add(this.gbTrains);
-            this.Controls.Add(this.tbReg);
-            this.Controls.Add(this.lReg);
             this.Controls.Add(this.lStation);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bBrowse);
@@ -271,8 +250,6 @@ namespace GVDEditor.UI.Import
         private ExControls.ExButton bBrowse;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lStation;
-        private System.Windows.Forms.Label lReg;
-        private ExControls.ExTextBox tbReg;
         private System.Windows.Forms.Label lLearn;
         private ExControls.ExComboBox cbLearn;
         private System.Windows.Forms.Label lPlan;

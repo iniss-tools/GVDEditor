@@ -46,7 +46,7 @@ public sealed partial class ElisBridgeClient
 
     private const int ExitNoTimetable = 2;
     private const int ExitStationNotFound = 3;
-    private const int ExitRegistrationFailed = 4;
+    private const int ExitNotRegistered = 4;
 
     /// <summary>Initializes a new instance of the <see cref="ElisBridgeClient" /> class.</summary>
     /// <param name="trainTypes">Vsetky typy vlakov definovane v stanici.</param>
@@ -115,16 +115,6 @@ public sealed partial class ElisBridgeClient
     public bool ReorderTrains { get; set; }
 
     /// <summary>
-    /// Registracne cislo pre platene cestovne poriadky. Voľne stiahnuteľné dáta ho nepotrebujú.
-    /// </summary>
-    public string RegistrationNumber { get; set; } = "";
-
-    /// <summary>
-    /// Identifikacia klienta, ak ju platene data vyzaduju.
-    /// </summary>
-    public string ClientString { get; set; } = "";
-
-    /// <summary>
     /// Priradenie nazvov stanic z ELIS k staniciam grafikonu: nazov -> ID stanice,
     /// alebo <see cref="ElisMapFile.ElisMapSkip" /> ak sa ma stanica z trasy vynechat.
     /// Pouzije sa este pred automatickym rozpoznavanim nazvu.
@@ -186,10 +176,6 @@ public sealed partial class ElisBridgeClient
                 arguments.Append(" --app \"").Append(AppDirectory.TrimEnd('\\')).Append('"');
             if (!string.IsNullOrEmpty(DataDirectory))
                 arguments.Append(" --data \"").Append(DataDirectory.TrimEnd('\\')).Append('"');
-            if (!string.IsNullOrEmpty(RegistrationNumber))
-                arguments.Append(" --reg \"").Append(RegistrationNumber.Trim()).Append('"');
-            if (!string.IsNullOrEmpty(ClientString))
-                arguments.Append(" --client \"").Append(ClientString.Trim()).Append('"');
 
             var info = new ProcessStartInfo(exe, arguments.ToString())
             {
@@ -218,8 +204,8 @@ public sealed partial class ElisBridgeClient
                     ExitNoTimetable => WithDetail(Resources.ELISBridgeClient_V_dátach_ELIS_sa_nenašiel_žiadny_cestovný_poriadok, error),
                     ExitStationNotFound => WithDetail(
                         string.Format(CultureInfo.InvariantCulture, Resources.ELISBridgeClient_Stanica_sa_v_dátach_ELIS_nenachádza, GVD.ThisStation.Name), error),
-                    ExitRegistrationFailed => string.IsNullOrEmpty(error)
-                        ? Resources.ELISBridgeClient_Cestovný_poriadok_vyžaduje_platné_registračné_číslo
+                    ExitNotRegistered => string.IsNullOrEmpty(error)
+                        ? Resources.ELISBridgeClient_Cestovný_poriadok_nie_je_zaregistrovaný
                         : error,
                     _ => WithDetail(Resources.ELISBridgeClient_Načítanie_dát_ELIS_zlyhalo, error)
                 });

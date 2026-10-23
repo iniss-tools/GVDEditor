@@ -7,12 +7,12 @@ using System.Text.RegularExpressions;
 namespace Iniss.Elis;
 
 /// <summary>
-/// Vyhodena, ked platene data vyzaduju registraciu a tu nebolo mozne vykonat
-/// (chybne alebo chybajuce registracne cislo).
+/// Vyhodena, ked platene data nie su zaregistrovane. Registracne cislo sa zadava
+/// pri instalacii dat v programe Cestovne poriadky, nie tu.
 /// </summary>
-internal sealed class RegistrationException : Exception
+internal sealed class NotRegisteredException : Exception
 {
-    public RegistrationException(string message) : base(message) { }
+    public NotRegisteredException(string message) : base(message) { }
 }
 
 /// <summary>
@@ -42,34 +42,23 @@ internal sealed partial class TTReader
     private const int RouteFlagsMask = 0xF800;
 
     private readonly string _dataPath;
-    private readonly string? _registrationNumber;
-    private readonly string? _client;
 
     /// <summary>Inicializuje citac nad priecinkom s datami (.tt subormi).</summary>
     /// <param name="dataPath">Priecinok s datami, typicky <c>&lt;instalacia&gt;\Data1</c>.</param>
-    /// <param name="registrationNumber">Registracne cislo pre platene poriadky, alebo <see langword="null" />.</param>
-    /// <param name="client">Identifikacia klienta, ak ju platene data vyzaduju, alebo <see langword="null" />.</param>
-    public TTReader(string dataPath, string? registrationNumber = null, string? client = null)
+    public TTReader(string dataPath)
     {
         if (!Directory.Exists(dataPath))
             throw new DirectoryNotFoundException($"Priečinok s dátami neexistuje: {dataPath}");
 
         // TTInit vnutri iba zretazi cestu s maskou *.tt, oddelovac nedoplna
         _dataPath = dataPath.EndsWith('\\') ? dataPath : dataPath + "\\";
-        _registrationNumber = registrationNumber;
-        _client = client;
     }
 
     /// <summary>Zavedie cestovne poriadky.</summary>
-    /// <exception cref="InvalidOperationException">
-    /// ak sa nenacital ziadny cestovny poriadok - vratane pripadu, ked platene data
-    /// vyzaduju registraciu a ta zlyhala (chybne/chybajuce cislo).
-    /// </exception>
+    /// <exception cref="NotRegisteredException">ak sa nenacital ziadny poriadok, lebo platene data nie su zaregistrovane</exception>
+    /// <exception cref="InvalidOperationException">ak sa nenacital ziadny cestovny poriadok z inej priciny</exception>
     public void Open()
     {
-        // registracia MUSI byt pred TTInit - overenie prebieha pocas nacitania kazdeho .tt
-        TTNative.Register(_registrationNumber, _client);
-
         TTNative.TTInit(_dataPath, IntPtr.Zero);
         var count = TTNative.TTTTCount();
         var error = TTNative.TTError();
@@ -77,9 +66,8 @@ internal sealed partial class TTReader
         if (count <= 0)
         {
             if (TTNative.IsRegistrationError(error))
-                throw new RegistrationException(string.IsNullOrWhiteSpace(_registrationNumber)
-                    ? "Dáta vyžadujú registračné číslo, ktoré nebolo zadané."
-                    : "Zadané registračné číslo nie je pre tieto dáta platné.");
+                throw new NotRegisteredException("Cestovný poriadok nie je zaregistrovaný. " +
+                                                 "Registračné číslo sa zadáva pri inštalácii dát v programe Cestovné poriadky.");
 
             var detail = error != 0 ? $" (TT.dll: {ErrorText(error)})" : string.Empty;
             throw new InvalidOperationException(
@@ -89,7 +77,7 @@ internal sealed partial class TTReader
         // nacital sa aspon jeden poriadok, ale niektory iny bol kvoli registracii zahodeny
         if (TTNative.IsRegistrationError(error))
             Console.Error.WriteLine("Upozornenie: niektoré cestovné poriadky boli vynechané, " +
-                                    "lebo vyžadujú platné registračné číslo.");
+                                    "lebo nie sú zaregistrované.");
     }
 
     /// <summary>Text chyby TT.dll; ak kniznica k danemu kodu text nema, vrati aspon kod.</summary>

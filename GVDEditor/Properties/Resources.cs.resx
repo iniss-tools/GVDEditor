@@ -1345,8 +1345,8 @@ Vynutit jeho ukončení a spustit ho znovu?</value>
   <data name="ELISBridgeClient_Stanica_sa_v_dátach_ELIS_nenachádza" xml:space="preserve">
     <value>Stanice {0} se v datech ELIS nenachází.</value>
   </data>
-  <data name="ELISBridgeClient_Cestovný_poriadok_vyžaduje_platné_registračné_číslo" xml:space="preserve">
-    <value>Jízdní řád vyžaduje platné registrační číslo.</value>
+  <data name="ELISBridgeClient_Cestovný_poriadok_nie_je_zaregistrovaný" xml:space="preserve">
+    <value>Jízdní řád není zaregistrován. Registrační číslo se zadává při instalaci dat v programu Cestovné poriadky.</value>
   </data>
   <data name="ELISBridgeClient_Načítanie_dát_ELIS_zlyhalo" xml:space="preserve">
     <value>Načtení dat ELIS selhalo.</value>

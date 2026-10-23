@@ -142,7 +142,6 @@ public partial class FelisImport : Form
         ResultOptions = new ElisImportOptions
         {
             AppDirectory = tbAppPath.Text,
-            RegistrationNumber = tbReg.Text.Trim(),
             OmitPassingTrains = cbSkipPassingTrains.Checked,
             ReorderTrains = cbReorder.Checked,
             Mode = mode,

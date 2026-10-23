@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 namespace Iniss.Elis;
 
 /// <summary>
-/// Vysledok jedneho vycitania dat z programu ELIS (Cestovne poriadky, CHAPS).
+/// Vysledok jedneho vycitania dat z programu ELIS (Cestovne poriadky, INPROP).
 /// Tento subor je zdielany medzi projektom ELISBridge (x86 host nad TT.dll)
 /// a GVDEditorom, ktory ho linkuje - preto nesmie zavisiet na niecom z GVDEditora.
 /// </summary>

@@ -153,9 +153,6 @@
   <data name="gbTrains.Text" xml:space="preserve">
     <value>Vlaky, které už jsou v grafikonu</value>
   </data>
-  <data name="lReg.Text" xml:space="preserve">
-    <value>Registrační číslo (volně dostupná data ho nepotřebují):</value>
-  </data>
   <data name="lStation.Text" xml:space="preserve">
     <value>Vlaky se načtou pro stanici:</value>
   </data>
