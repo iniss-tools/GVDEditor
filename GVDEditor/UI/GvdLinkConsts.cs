@@ -5,7 +5,7 @@
 /// </summary>
 internal static class GvdLinkConsts
 {
-    private const string DOCS = "http://iniss.6f.sk/docs/gvdeditor/";
+    private const string DOCS = "https://iniss-tools.fvat.sk/docs/gvdeditor/";
 
     public const string LinkEditTrain = DOCS + "vlaky/uprava-vlaku/";
     public const string LinkEditTrainRadenie = DOCS + "vlaky/radenie/";
@@ -36,6 +36,6 @@ internal static class GvdLinkConsts
     public const string LinkGlobalTypyVlakov = DOCS + "globalne-nastavenia/typy-vlakov/";
     public const string LinkGlobalAudio = DOCS + "globalne-nastavenia/audio/";
 
-    public const string LinkDocTabtab = "http://iniss.6f.sk/docs/iniss/formaty-suborov/local/tabtab/";
-    public const string LinkDocVyrazy = "http://iniss.6f.sk/docs/iniss/formaty-suborov/local/vyrazy/";
+    public const string LinkDocTabtab = "https://iniss-tools.fvat.sk/docs/iniss/formaty-suborov/local/tabtab/";
+    public const string LinkDocVyrazy = "https://iniss-tools.fvat.sk/docs/iniss/formaty-suborov/local/vyrazy/";
 }
