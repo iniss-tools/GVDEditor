@@ -209,6 +209,10 @@
 	<!-- ELISBridge je samostatny x86 proces (TT.dll je 32-bitova), preto sa nelinkuje
 	     ako referencia, ale iba zostavi a skopiruje vedla GVDEditor.exe. -->
 	<Target Name="BuildELISBridge" BeforeTargets="Build">
+		<!-- Restore GVDEditora ho neobnovi (nie je ProjectReference) - v cistom klone (vydanie) by chybal project.assets.json.
+		     Restore s inou globalnou vlastnostou (ako dotnet build -restore), aby Build nacital projekt az po nom. -->
+		<MSBuild Projects="..\ELISBridge\ELISBridge.csproj" Targets="Restore"
+		         Properties="Configuration=$(Configuration);MSBuildRestoreSessionId=$([System.Guid]::NewGuid())" />
 		<MSBuild Projects="..\ELISBridge\ELISBridge.csproj" Targets="Build" Properties="Configuration=$(Configuration)" />
 	</Target>
 	<Target Name="CopyELISBridge" AfterTargets="Build">
@@ -224,7 +228,9 @@
 	     Windows, preto je to samostatny proces, ktory sa len zostavi a skopiruje vedla GVDEditor.exe. -->
 	<Target Name="BuildPlanRadeniaReader" BeforeTargets="Build">
 		<!-- vlastny OutDir: pri zostaveni GVDEditora s OutDir by sa inak citacka zapisala rovno tam a kopia nizsie by ju
-		     prepisala starsou z bin -->
+		     prepisala starsou z bin; restore ako pri ELISBridge -->
+		<MSBuild Projects="..\PlanRadeniaReader\PlanRadeniaReader.csproj" Targets="Restore"
+		         Properties="Configuration=$(Configuration);MSBuildRestoreSessionId=$([System.Guid]::NewGuid())" />
 		<MSBuild Projects="..\PlanRadeniaReader\PlanRadeniaReader.csproj" Targets="Build"
 		         Properties="Configuration=$(Configuration);OutDir=$(MSBuildThisFileDirectory)..\PlanRadeniaReader\bin\$(Configuration)\net10.0-windows10.0.19041.0\" />
 	</Target>
