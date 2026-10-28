@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 using System.Xml.Serialization;
+using ToolsCore.Tools;
 
 namespace GVDEditor.Config;
 
