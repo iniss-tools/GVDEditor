@@ -812,7 +812,7 @@
     <value>Uložiť</value>
   </data>
   <data name="tsbSave.ToolTipText" xml:space="preserve">
-    <value>Uložiť StateDgm.txt (Ctrl+S)</value>
+    <value>Uložiť StateDgm.txt</value>
   </data>
   <data name="tsbCheck.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 22</value>

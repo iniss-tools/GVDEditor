@@ -117,8 +117,7 @@ public record GVDEditorStyle : Style
                 ForeColor = Color.Red,
                 BackColor = Color.LightGray,
                 Bold = false
-            },
-            Font = new Font("Consolas", 10f)
+            }
         };
     }
 
@@ -152,8 +151,7 @@ public record GVDEditorStyle : Style
                 ForeColor = Color.OrangeRed,
                 BackColor = Color.Transparent,
                 Bold = false
-            },
-            Font = new Font("Segoe UI", 9f)
+            }
         };
     }
 		

@@ -5,6 +5,7 @@ using GVDEditor.Properties;
 using ExControls;
 using ToolsCore.Tools;
 using ToolsCore;
+using ToolsCore.Commands;
 using ToolsCore.Forms;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.XML;
@@ -16,26 +17,32 @@ internal partial class FAppSettings : FAppSettingsBase
     private new GVDEditorConfig Config => (GVDEditorConfig)base.Config;
     private new Styles<GVDEditorStyle> Styles => (Styles<GVDEditorStyle>)base.Styles;
 
-    protected override IList<CmdShortcut> DefaultShortcuts => ShortcutMap.DefaultRows(GvdCommands.All);
-    
     protected override IList<DesktopColumn> DefaultColumns => new DesktopColumns().GetValues();
+
+    /// <inheritdoc />
+    protected override string ReopenLastText => Resources.Settings_ReopenLast;
+
+    /// <inheritdoc />
+    protected override string ColumnsPageText => Resources.Settings_ColumnsPage;
+
+    /// <inheritdoc />
+    protected override string EditorFontText => Resources.Settings_EditorFontHint;
 
     private readonly EditorContext _ctx;
     private readonly GvdMcpServer? _mcp;
 
     /// <param name="context">kontext editora</param>
     /// <param name="mcp">beziaci server MCP - jeho stav sa ukaze v nastaveni; null = bez stavu (harness snimok)</param>
-    public FAppSettings(EditorContext context, GvdMcpServer? mcp = null)
+    /// <param name="commands">prikazy hlavneho okna - strom skratiek podla jeho ponuky; null = podla katalogu</param>
+    public FAppSettings(EditorContext context, GvdMcpServer? mcp = null, IEnumerable<AppCommand>? commands = null)
         : base(context.Config, new Styles<GVDEditorStyle>(context.Session.Styles), context.UsingStyle, typeof(GVDEditorStyle))
     {
         _ctx = context;
         _mcp = mcp;
         InitializeComponent();
         
-        Shortcuts = new ExBindingList<CmdShortcut>(Config.Shortcuts.ToRows(GvdCommands.All));
+        SetCommands(GvdCommands.Settings, commands);
         Columns = new ExBindingList<DesktopColumn>(Config.DesktopCols.GetValues());
-
-        dgvShortcuts.DataSource = Shortcuts;
         dgvColumns.DataSource = Columns;
 
         cbDateLimitLanguage.BindEnum(new Dictionary<AppLanguage, string>
@@ -133,7 +140,6 @@ internal partial class FAppSettings : FAppSettingsBase
     /// <inheritdoc />
     protected override bool OnSaving()
     {
-        Config.Shortcuts.SetFromRows(Shortcuts);
         Config.DesktopCols.SetValues(Columns);
 
         Config.DateLimitLocate = (AppLanguage)cbDateLimitLanguage.SelectedValue!;

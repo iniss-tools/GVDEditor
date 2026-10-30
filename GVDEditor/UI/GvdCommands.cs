@@ -60,10 +60,50 @@ internal static class GvdCommands
     public static CommandInfo InfoApp => new("InfoApp", Resources.Cmd_InfoApp, Shortcut.F6);
     public static CommandInfo UpdateNotes => new("UpdateNotes", Resources.Cmd_UpdateNotes, Shortcut.None);
     public static CommandInfo CheckUpdates => new("CheckUpdates", Resources.Cmd_CheckUpdates, Shortcut.None);
+    public static CommandInfo ShowLogs => new("ShowLogs", Resources.Cmd_ShowLogs, Shortcut.None);
     public static CommandInfo DateLimit => new("DatObm", Resources.Cmd_DateLimit, Shortcut.F7);
 
+    // okno Uprava TabTab - identifikatory s predponou okna, skratky platia len v nom
+    public static CommandInfo TabTabSave => TabTab("Save", Resources.Cmd_TabTab_Save, Shortcut.CtrlS);
+    public static CommandInfo TabTabSaveAll => TabTab("SaveAll", Resources.Cmd_TabTab_SaveAll, Shortcut.CtrlShiftS);
+    public static CommandInfo TabTabUndo => TabTab("Undo", Resources.Cmd_TabTab_Undo, Shortcut.CtrlZ);
+    public static CommandInfo TabTabRedo => TabTab("Redo", Resources.Cmd_TabTab_Redo, Shortcut.CtrlY);
+    public static CommandInfo TabTabAddTab => TabTab("AddTab", Resources.Cmd_TabTab_AddTab, Shortcut.None);
+    public static CommandInfo TabTabRemoveTab => TabTab("RemoveTab", Resources.Cmd_TabTab_RemoveTab, Shortcut.None);
+    public static CommandInfo TabTabRenameTab => TabTab("RenameTab", Resources.Cmd_TabTab_RenameTab, Shortcut.F2);
+    public static CommandInfo TabTabFind => TabTab("Find", Resources.Cmd_TabTab_Find, Shortcut.CtrlF);
+    public static CommandInfo TabTabReplace => TabTab("Replace", Resources.Cmd_TabTab_Replace, Shortcut.CtrlH);
+    public static CommandInfo TabTabReformat => TabTab("Reformat", Resources.Cmd_TabTab_Reformat, Shortcut.None);
+
+    // okno Stavovy diagram
+    public static CommandInfo StateDgmSave => new("StateDgm.Save", Resources.Cmd_StateDgm_Save, Shortcut.CtrlS, Window: Resources.Cmd_Window_StateDgm);
+    public static CommandInfo StateDgmApplyText => new("StateDgm.ApplyText", Resources.Cmd_StateDgm_ApplyText, Keys.Control | Keys.Enter,
+        Window: Resources.Cmd_Window_StateDgm);
+
+    private static CommandInfo TabTab(string id, string text, Shortcut shortcut) =>
+        new("TabTab." + id, text, shortcut, Window: Resources.Cmd_Window_TabTab);
+
     /// <summary>
-    /// Vsetky prikazy v poradi, v akom ich ukazuju nastavenia skratiek.
+    /// Prikazy okna Uprava TabTab.
+    /// </summary>
+    public static IReadOnlyList<CommandInfo> TabTabAll =>
+    [
+        TabTabSave, TabTabSaveAll, TabTabUndo, TabTabRedo, TabTabAddTab, TabTabRemoveTab, TabTabRenameTab, TabTabFind,
+        TabTabReplace, TabTabReformat
+    ];
+
+    /// <summary>
+    /// Prikazy okna Stavovy diagram.
+    /// </summary>
+    public static IReadOnlyList<CommandInfo> StateDgmAll => [StateDgmSave, StateDgmApplyText];
+
+    /// <summary>
+    /// Vsetky prikazy programu pre nastavenia skratiek - hlavne okno a dalsie okna.
+    /// </summary>
+    public static IReadOnlyList<CommandInfo> Settings => [.. All, .. TabTabAll, .. StateDgmAll];
+
+    /// <summary>
+    /// Vsetky prikazy hlavneho okna v poradi, v akom ich ukazuju nastavenia skratiek.
     /// </summary>
     public static IReadOnlyList<CommandInfo> All =>
     [
@@ -74,6 +114,6 @@ internal static class GvdCommands
         LsGvd, LsLanguages, LsStations, LsOperators, LsPlatforms, LsTracks, LsPhysicalTables, LsLogicalTables,
         LsCatalogTables, LsTabTab, LsTableTexts, LsTableFonts, LsTabTabEditor, StateDgm,
         RunIniss, ShutdownIniss, KillIniss, RestartIniss, InissStartupSettings, InissSettings,
-        InfoApp, UpdateNotes, CheckUpdates, DateLimit
+        InfoApp, UpdateNotes, CheckUpdates, ShowLogs, DateLimit
     ];
 }

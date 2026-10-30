@@ -434,12 +434,6 @@ Naimportovaných vlaků: {1}
 Aktualizovaných vlaků s ponechanými údaji: {2}
 Přidaných textů na tabulích: {3}</value>
   </data>
-  <data name="FAppSettings_lShortcutHelp1" xml:space="preserve">
-    <value>Stiskněte klávesovou zkratku pro přiřazení ke příkazu.</value>
-  </data>
-  <data name="FAppSettings_lShortcutHelp2" xml:space="preserve">
-    <value>Neplatná klávesová zkratka. Stiskněte jinou.</value>
-  </data>
   <data name="FImportData_Nie_sú_zadané_údaje_pre_import" xml:space="preserve">
     <value>Nejsou zadané údaje pro import.</value>
   </data>
@@ -752,9 +746,6 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
   </data>
   <data name="FStateDgm_Text_Nacitat" xml:space="preserve">
     <value>Načíst text</value>
-  </data>
-  <data name="FStateDgm_Text_NacitatTip" xml:space="preserve">
-    <value>Rozloží upravený text (Ctrl+Enter). Pokud je bez chyby, otevře diagram v editoru</value>
   </data>
   <data name="FStateDgm_Text_Chyba" xml:space="preserve">
     <value>Řádek {0}: {1}</value>
@@ -1254,9 +1245,6 @@ Uložit grafikon před spuštěním INISSu?</value>
     <value>INISS se ani po 30 sekundách neukončil. Možná čeká na potvrzení ukončení.
 
 Vynutit jeho ukončení a spustit ho znovu?</value>
-  </data>
-  <data name="FMain_Nastavenia_po_restarte" xml:space="preserve">
-    <value>Jazyk uživatelského rozhraní a klasický design ovládacích prvků se projeví až po restartování GVDEditoru.</value>
   </data>
   <data name="FMain_Vynutit_ukoncenie_INISS" xml:space="preserve">
     <value>Vynutit ukončení INISSu? INISS se ukončí okamžitě, bez dotazů a bez řádného ukončení.</value>
@@ -3906,5 +3894,62 @@ Před zápisem se uloží záloha.</value>
   </data>
   <data name="PlanRadenia_IssueLanguageNoWords" xml:space="preserve">
     <value>banka jazyka {0} nemá slova řazení</value>
+  </data>
+  <data name="Settings_ReopenLast" xml:space="preserve">
+    <value>Při spuštění otevřít naposledy otevřenou instalaci INISSu</value>
+  </data>
+  <data name="Settings_ColumnsPage" xml:space="preserve">
+    <value>Tabulka vlaků</value>
+  </data>
+  <data name="Cmd_ShowLogs" xml:space="preserve">
+    <value>Otevřít složku s logy</value>
+  </data>
+  <data name="Cmd_Window_TabTab" xml:space="preserve">
+    <value>Editor TabTab</value>
+  </data>
+  <data name="Cmd_Window_StateDgm" xml:space="preserve">
+    <value>Stavový diagram</value>
+  </data>
+  <data name="Cmd_TabTab_Save" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+  <data name="Cmd_TabTab_SaveAll" xml:space="preserve">
+    <value>Uložit vše</value>
+  </data>
+  <data name="Cmd_TabTab_Undo" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="Cmd_TabTab_Redo" xml:space="preserve">
+    <value>Znovu</value>
+  </data>
+  <data name="Cmd_TabTab_AddTab" xml:space="preserve">
+    <value>Přidat TabTab</value>
+  </data>
+  <data name="Cmd_TabTab_RemoveTab" xml:space="preserve">
+    <value>Odstranit TabTab</value>
+  </data>
+  <data name="Cmd_TabTab_RenameTab" xml:space="preserve">
+    <value>Přejmenovat TabTab</value>
+  </data>
+  <data name="Cmd_TabTab_Find" xml:space="preserve">
+    <value>Hledat</value>
+  </data>
+  <data name="Cmd_TabTab_Replace" xml:space="preserve">
+    <value>Nahradit</value>
+  </data>
+  <data name="Cmd_TabTab_Reformat" xml:space="preserve">
+    <value>Formátovat</value>
+  </data>
+  <data name="Cmd_StateDgm_Save" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+  <data name="Cmd_StateDgm_ApplyText" xml:space="preserve">
+    <value>Použít upravený text</value>
+  </data>
+  <data name="FStateDgm_Text_NacitatTip" xml:space="preserve">
+    <value>Rozloží upravený text. Pokud je bez chyby, otevře diagram v editoru</value>
+  </data>
+  <data name="Settings_EditorFontHint" xml:space="preserve">
+    <value>Editor TabTab a text stavového diagramu.</value>
   </data>
 </root>

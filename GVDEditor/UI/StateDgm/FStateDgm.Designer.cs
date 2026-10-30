@@ -398,7 +398,6 @@ namespace GVDEditor.UI.StateDgm
             resources.ApplyResources(tsbSave, "tsbSave");
             tsbSave.Name = "tsbSave";
             tsbSave.IconName = "save";
-            tsbSave.Click += tsbSave_Click;
             // 
             // tsbCheck
             // 
@@ -645,7 +644,6 @@ namespace GVDEditor.UI.StateDgm
             WindowState = FormWindowState.Maximized;
             FormClosing += FStateDgm_FormClosing;
             Load += FStateDgm_Load;
-            KeyDown += FStateDgm_KeyDown;
             scOuter.Panel1.ResumeLayout(false);
             scOuter.Panel2.ResumeLayout(false);
             ((ISupportInitialize)scOuter).EndInit();

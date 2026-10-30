@@ -9,6 +9,7 @@ using GVDEditor.Properties;
 using JetBrains.Annotations;
 using ScintillaNET;
 using ToolsCore;
+using ToolsCore.Commands;
 using ToolsCore.Icons;
 using ToolsCore.Iniss.Expressions;
 using ToolsCore.Iniss.StateDgm;
@@ -27,6 +28,7 @@ public partial class FStateDgm : Form
     /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
     /// </summary>
     private readonly EditorContext _ctx;
+    private readonly CommandSet _commands = new();
 
     private const string TAG_HEADER = "header";
     private const string TAG_DESIGNS = "designs";
@@ -122,7 +124,7 @@ public partial class FStateDgm : Form
         SetupTextView();
 
         _sd = new SdEditorContext(new GvdExprSymbols(_ctx.Workspace, _ctx.Document),
-            _ctx.Document.ReportTypes ?? [], _ctx.UsingStyle.TabTabEditorScheme.Font);
+            _ctx.Document.ReportTypes ?? [], _ctx.Config.Fonts.EditorFont);
         _headerEditor = new SdHeaderEditor(_sd);
         _categoryEditor = new SdCategoryEditor(_sd);
         _stateEditor = new SdStateEditor(_sd);
@@ -164,8 +166,9 @@ public partial class FStateDgm : Form
         var style = _ctx.UsingStyle;
         _sc.DirectMessage(sciSetilexer, IntPtr.Zero, IntPtr.Zero);
         _sc.StyleResetDefault();
-        _sc.Styles[Style.Default].Font = style.TabTabEditorScheme.Font.Name;
-        _sc.Styles[Style.Default].SizeF = style.TabTabEditorScheme.Font.Size;
+        var editorFont = _ctx.Config.Fonts.EditorFont;
+        _sc.Styles[Style.Default].Font = editorFont.Name;
+        _sc.Styles[Style.Default].SizeF = editorFont.SizeInPoints;
         _sc.Styles[Style.Default].BackColor = style.ControlsColorScheme.Box.BackColor;
         _sc.Styles[Style.Default].ForeColor = style.ControlsColorScheme.Box.ForeColor;
         _sc.StyleClearAll();
@@ -198,7 +201,9 @@ public partial class FStateDgm : Form
         };
         _tsbRawApply.Text = Resources.FStateDgm_Text_Nacitat;
         _tsbRawApply.ToolTipText = Resources.FStateDgm_Text_NacitatTip;
-        _tsbRawApply.Click += (_, _) => ApplyRawText();
+        _commands.Add(GvdCommands.StateDgmApplyText, () => ApplyRawText(), () => _rawMode).Bind(_tsbRawApply);
+        _commands.Add(GvdCommands.StateDgmSave, () => Save()).Bind(tsbSave);
+        _commands.ApplyShortcuts(_ctx.Config.Shortcuts);
         _rawInfo.Click += (_, _) => GoToRawError();
         _rawBar.Items.Add(_tsbRawApply);
         _rawBar.Items.Add(new ToolStripSeparator());
@@ -696,21 +701,9 @@ public partial class FStateDgm : Form
         return true;
     }
 
-    private void tsbSave_Click(object sender, EventArgs e) => Save();
-
-    private void FStateDgm_KeyDown(object sender, KeyEventArgs e)
-    {
-        if (e.Control && e.KeyCode == Keys.S)
-        {
-            e.Handled = true;
-            Save();
-        }
-        else if (_rawMode && e.Control && e.KeyCode == Keys.Enter)
-        {
-            e.Handled = e.SuppressKeyPress = true;
-            ApplyRawText();
-        }
-    }
+    /// <inheritdoc />
+    protected override bool ProcessCmdKey(ref Message msg, Keys keyData) =>
+        _commands.ProcessShortcut(keyData) || base.ProcessCmdKey(ref msg, keyData);
 
     private void FStateDgm_FormClosing(object sender, FormClosingEventArgs e)
     {

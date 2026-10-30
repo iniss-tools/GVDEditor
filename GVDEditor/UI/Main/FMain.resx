@@ -282,9 +282,6 @@
   <data name="tsmiGrafikon.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="tsmiGrafikon.ShortcutKeyDisplayString" xml:space="preserve">
-    <value />
-  </data>
   <data name="tsmiGrafikon.Size" type="System.Drawing.Size, System.Drawing">
     <value>169, 22</value>
   </data>
@@ -671,7 +668,7 @@
     <value>toolStripButton6</value>
   </data>
   <data name="tsbSave.ToolTipText" xml:space="preserve">
-    <value>Uložiť (Ctrl+S)</value>
+    <value>Uložiť</value>
   </data>
   <data name="tsbOpen.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -681,9 +678,6 @@
   </data>
   <data name="tsbOpen.ToolTipText" xml:space="preserve">
     <value>Otvoriť...</value>
-  </data>
-  <data name="tsmimImportData.ShortcutKeyDisplayString" xml:space="preserve">
-    <value>Ctrl+I</value>
   </data>
   <data name="tsmimImportData.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 22</value>
@@ -3502,7 +3496,7 @@
     <value>Späť</value>
   </data>
   <data name="tssbUndo.ToolTipText" xml:space="preserve">
-    <value>Späť (Ctrl+Z)</value>
+    <value>Späť</value>
   </data>
   <data name="&gt;&gt;tssbUndo.Name" xml:space="preserve">
     <value>tssbUndo</value>
@@ -3520,7 +3514,7 @@
     <value>Znova</value>
   </data>
   <data name="tssbRedo.ToolTipText" xml:space="preserve">
-    <value>Znova (Ctrl+Y)</value>
+    <value>Znova</value>
   </data>
   <data name="&gt;&gt;tssbRedo.Name" xml:space="preserve">
     <value>tssbRedo</value>
@@ -3536,5 +3530,17 @@
   </data>
   <data name="&gt;&gt;toolStripSeparator21.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tsmiShowLogs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 22</value>
+  </data>
+  <data name="tsmiShowLogs.Text" xml:space="preserve">
+    <value>Otvoriť priečinok s logmi</value>
+  </data>
+  <data name="&gt;&gt;tsmiShowLogs.Name" xml:space="preserve">
+    <value>tsmiShowLogs</value>
+  </data>
+  <data name="&gt;&gt;tsmiShowLogs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

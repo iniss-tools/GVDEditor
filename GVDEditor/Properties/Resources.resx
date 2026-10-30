@@ -182,9 +182,6 @@ Reštartovať program teraz?</value>
   <data name="FEditTrain_Zadané_dátumové_obmedzenie_radenia_sa_prekrýva_s_iným_v_období" xml:space="preserve">
     <value>Zadané dátumové obmedzenie radenia sa prekrýva s iným v období {0}.</value>
   </data>
-  <data name="FAppSettings_lShortcutHelp1" xml:space="preserve">
-    <value>Stlačte klávesovú skratku pre priradenie ku príkazu.</value>
-  </data>
   <data name="FGlobalSettings_Názov_tejto_audio_linky_už_existuje" xml:space="preserve">
     <value>Názov tejto audio linky už existuje.</value>
   </data>
@@ -439,9 +436,6 @@ Zavrieť okno aj tak?</value>
   </data>
   <data name="FGlobalSettings_Nebola_zadaná_skratka_typu_vlaku" xml:space="preserve">
     <value>Nebola zadaná skratka typu vlaku.</value>
-  </data>
-  <data name="FAppSettings_lShortcutHelp2" xml:space="preserve">
-    <value>Neplatná klávesová skratka. Stlačte inú.</value>
   </data>
   <data name="SetTEOnNewLine" xml:space="preserve">
     <value>Znak konca riadku (prechod do ďalšieho riadku)</value>
@@ -779,9 +773,6 @@ INISS taký súbor nenačíta. Uložiť ho aj tak?</value>
   </data>
   <data name="FStateDgm_Text_Nacitat" xml:space="preserve">
     <value>Načítať text</value>
-  </data>
-  <data name="FStateDgm_Text_NacitatTip" xml:space="preserve">
-    <value>Rozloží upravený text (Ctrl+Enter). Ak je bez chyby, otvorí diagram v editore</value>
   </data>
   <data name="FStateDgm_Text_Chyba" xml:space="preserve">
     <value>Riadok {0}: {1}</value>
@@ -1281,9 +1272,6 @@ Uložiť grafikon pred spustením INISSu?</value>
     <value>INISS sa ani po 30 sekundách neukončil. Možno čaká na potvrdenie ukončenia.
 
 Vynútiť jeho ukončenie a spustiť ho znova?</value>
-  </data>
-  <data name="FMain_Nastavenia_po_restarte" xml:space="preserve">
-    <value>Jazyk používateľského rozhrania a klasický dizajn ovládacích prvkov sa prejavia až po reštartovaní GVDEditora.</value>
   </data>
   <data name="FMain_Vynutit_ukoncenie_INISS" xml:space="preserve">
     <value>Vynútiť ukončenie INISSu? INISS sa ukončí okamžite, bez otázok a bez riadneho ukončenia.</value>
@@ -3921,5 +3909,62 @@ Pred zápisom sa uloží záloha.</value>
   </data>
   <data name="PlanRadenia_IssueLanguageNoWords" xml:space="preserve">
     <value>banka jazyka {0} nemá slová radenia</value>
+  </data>
+  <data name="Settings_ReopenLast" xml:space="preserve">
+    <value>Pri spustení otvoriť naposledy otvorenú inštaláciu INISSu</value>
+  </data>
+  <data name="Settings_ColumnsPage" xml:space="preserve">
+    <value>Tabuľka vlakov</value>
+  </data>
+  <data name="Cmd_ShowLogs" xml:space="preserve">
+    <value>Otvoriť priečinok s logmi</value>
+  </data>
+  <data name="Cmd_Window_TabTab" xml:space="preserve">
+    <value>Editor TabTab</value>
+  </data>
+  <data name="Cmd_Window_StateDgm" xml:space="preserve">
+    <value>Stavový diagram</value>
+  </data>
+  <data name="Cmd_TabTab_Save" xml:space="preserve">
+    <value>Uložiť</value>
+  </data>
+  <data name="Cmd_TabTab_SaveAll" xml:space="preserve">
+    <value>Uložiť všetko</value>
+  </data>
+  <data name="Cmd_TabTab_Undo" xml:space="preserve">
+    <value>Späť</value>
+  </data>
+  <data name="Cmd_TabTab_Redo" xml:space="preserve">
+    <value>Znova</value>
+  </data>
+  <data name="Cmd_TabTab_AddTab" xml:space="preserve">
+    <value>Pridať TabTab</value>
+  </data>
+  <data name="Cmd_TabTab_RemoveTab" xml:space="preserve">
+    <value>Odstrániť TabTab</value>
+  </data>
+  <data name="Cmd_TabTab_RenameTab" xml:space="preserve">
+    <value>Premenovať TabTab</value>
+  </data>
+  <data name="Cmd_TabTab_Find" xml:space="preserve">
+    <value>Hľadať</value>
+  </data>
+  <data name="Cmd_TabTab_Replace" xml:space="preserve">
+    <value>Nahradiť</value>
+  </data>
+  <data name="Cmd_TabTab_Reformat" xml:space="preserve">
+    <value>Formátovať</value>
+  </data>
+  <data name="Cmd_StateDgm_Save" xml:space="preserve">
+    <value>Uložiť</value>
+  </data>
+  <data name="Cmd_StateDgm_ApplyText" xml:space="preserve">
+    <value>Použiť upravený text</value>
+  </data>
+  <data name="FStateDgm_Text_NacitatTip" xml:space="preserve">
+    <value>Rozloží upravený text. Ak je bez chyby, otvorí diagram v editore</value>
+  </data>
+  <data name="Settings_EditorFontHint" xml:space="preserve">
+    <value>Editor TabTab a text stavového diagramu.</value>
   </data>
 </root>

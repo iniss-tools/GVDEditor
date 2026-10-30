@@ -181,6 +181,7 @@ namespace GVDEditor.UI.Main
             tsmiInformation = new IconToolStripMenuItem();
             tsmiChangelog = new ToolStripMenuItem();
             tsmiCheckUpdates = new ToolStripMenuItem();
+            tsmiShowLogs = new ToolStripMenuItem();
             toolMenu = new ToolStrip();
             tsbSave = new IconToolStripButton();
             tsbOpen = new IconToolStripButton();
@@ -676,7 +677,7 @@ namespace GVDEditor.UI.Main
             // 
             // tsmiNastavenia
             // 
-            tsmiNastavenia.DropDownItems.AddRange(new ToolStripItem[] { tsmiInformation, tsmiChangelog, tsmiCheckUpdates });
+            tsmiNastavenia.DropDownItems.AddRange(new ToolStripItem[] { tsmiInformation, tsmiChangelog, tsmiCheckUpdates, tsmiShowLogs });
             tsmiNastavenia.Name = "tsmiNastavenia";
             resources.ApplyResources(tsmiNastavenia, "tsmiNastavenia");
             // 
@@ -695,6 +696,11 @@ namespace GVDEditor.UI.Main
             //
             resources.ApplyResources(tsmiCheckUpdates, "tsmiCheckUpdates");
             tsmiCheckUpdates.Name = "tsmiCheckUpdates";
+            //
+            // tsmiShowLogs
+            //
+            resources.ApplyResources(tsmiShowLogs, "tsmiShowLogs");
+            tsmiShowLogs.Name = "tsmiShowLogs";
             //
             // toolMenu
             // 
@@ -991,7 +997,6 @@ namespace GVDEditor.UI.Main
             dgvTrains.DataError += dgvTrains_DataError;
             dgvTrains.RowsAdded += dgvTrains_RowsAdded;
             dgvTrains.RowsRemoved += dgvTrains_RowsRemoved;
-            dgvTrains.KeyDown += dgvTrains_KeyDown;
             // 
             // cisloDataGridViewTextBoxColumn
             // 
@@ -2224,6 +2229,7 @@ namespace GVDEditor.UI.Main
         private IconToolStripSplitButton tssbRecentDirs;
         private ToolStripMenuItem tsmiChangelog;
         private ToolStripMenuItem tsmiCheckUpdates;
+        private ToolStripMenuItem tsmiShowLogs;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewComboBoxColumn dataGridViewComboBoxColumn3;

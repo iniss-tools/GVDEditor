@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="tsbSave.ToolTipText" xml:space="preserve">
-    <value>Uložit (Ctrl+S)</value>
+    <value>Uložit</value>
   </data>
   <data name="tsbUndo.ToolTipText" xml:space="preserve">
-    <value>Zpět (Ctrl+Z)</value>
+    <value>Zpět</value>
   </data>
   <data name="tsbRedo.ToolTipText" xml:space="preserve">
-    <value>Dopředu (Ctrl+Y)</value>
+    <value>Dopředu</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="toolStripLabel1.Size" type="System.Drawing.Size, System.Drawing">
@@ -143,7 +143,7 @@
     <value>Formátovat</value>
   </data>
   <data name="tsbRename.ToolTipText" xml:space="preserve">
-    <value>Přejmenovat... (F2)</value>
+    <value>Přejmenovat...</value>
   </data>
   <data name="tsmiUndo.Text" xml:space="preserve">
     <value>Zpět</value>
@@ -197,7 +197,7 @@
     <value>Odstranit TabTab</value>
   </data>
   <data name="tsbSaveAll.Text" xml:space="preserve">
-    <value>Uložit vše (Ctrl+Shift+S)</value>
+    <value>Uložit vše</value>
   </data>
   <data name="tsbStorno.ToolTipText" xml:space="preserve">
     <value>Odejít</value>

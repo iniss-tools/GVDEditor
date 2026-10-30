@@ -9,25 +9,28 @@ namespace GVDEditor.Config;
 /// </summary>
 public record TabTabEditorScheme() : IColorScheme
 {
-    /// <inheritdoc />
-    [XmlIgnore]
-    public bool DisableFontEdit => false;
-
     /// <summary>
-    /// Font v editore TabTab.
+    /// Pismo editora zo starsich stylov (dnes v nastaveniach pisiem programu) - len na prevzatie, nezapisuje sa.
     /// </summary>
-    [XmlIgnore] 
-    public Font Font { get; set; } = new("Consolas", 10);
-
-    /// <summary>
-    /// Font v editore TabTab vo formate XML.
-    /// </summary>
-    [XmlElement(Type = typeof(XmlFont), ElementName = "Font")]
-    public XmlFont FontXML
+    [XmlElement("Font")]
+    public XmlFont? LegacyFont
     {
-        get => XmlFont.FromFont(Font);
-        set => Font = XmlFont.ToFont(value);
+        get => null;
+        set
+        {
+            if (value is null)
+                return;
+
+            using var font = XmlFont.ToFont(value);
+            LegacyEditorFont = FontChoice.Of(font);
+        }
     }
+
+    /// <summary>
+    /// Pismo editora prevzate zo starsich stylov (<see langword="null" /> = styl ho neobsahoval).
+    /// </summary>
+    [XmlIgnore]
+    public FontChoice? LegacyEditorFont { get; private set; }
 
     /// <inheritdoc />
     [XmlIgnore]
@@ -266,6 +269,6 @@ public record TabTabEditorScheme() : IColorScheme
         if (original.Identifier != null) Identifier = original.Identifier with { };
         if (original.SelBraces != null) SelBraces = original.SelBraces with { };
         if (original.SelBraceBad != null) SelBraceBad = original.SelBraceBad with { };
-        Font = (Font)original.Font.Clone();
+        LegacyEditorFont = original.LegacyEditorFont;
     }
 }

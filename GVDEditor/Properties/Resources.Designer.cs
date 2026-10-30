@@ -89,33 +89,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vybrali ste typ debugovania, ktorý nie je určený pre bežných používateľov. To môže viesť k ....
-        /// </summary>
-        internal static string FAppSettings_cbDebugModeGUI_SelectedIndexChanged_Not_For_All_Users {
-            get {
-                return ResourceManager.GetString("FAppSettings_cbDebugModeGUI_SelectedIndexChanged_Not_For_All_Users", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stlačte klávesovú skratku pre priradenie ku príkazu..
-        /// </summary>
-        internal static string FAppSettings_lShortcutHelp1 {
-            get {
-                return ResourceManager.GetString("FAppSettings_lShortcutHelp1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Neplatná klávesová skratka. Stlačte inú..
-        /// </summary>
-        internal static string FAppSettings_lShortcutHelp2 {
-            get {
-                return ResourceManager.GetString("FAppSettings_lShortcutHelp2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Zmeny sa prejavia po reštarte programu..
         /// </summary>
         internal static string FAppSettings_Zmeny_sa_prejavia_po_reštarte_programu {
@@ -1922,15 +1895,6 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Rozloží upravený text (Ctrl+Enter). Ak je bez chyby, otvorí diagram v editore.
-        /// </summary>
-        internal static string FStateDgm_Text_NacitatTip {
-            get {
-                return ResourceManager.GetString("FStateDgm_Text_NacitatTip", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Riadok {0}: {1}.
         /// </summary>
         internal static string FStateDgm_Text_Chyba {
@@ -3412,15 +3376,6 @@ namespace GVDEditor.Properties {
         internal static string FMain_INISS_sa_neukoncil {
             get {
                 return ResourceManager.GetString("FMain_INISS_sa_neukoncil", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Jazyk používateľského rozhrania a klasický dizajn sa prejavia až po reštarte.
-        /// </summary>
-        internal static string FMain_Nastavenia_po_restarte {
-            get {
-                return ResourceManager.GetString("FMain_Nastavenia_po_restarte", resourceCulture);
             }
         }
         
@@ -11170,6 +11125,177 @@ namespace GVDEditor.Properties {
         internal static string PlanRadenia_IssueLanguageNoWords {
             get {
                 return ResourceManager.GetString("PlanRadenia_IssueLanguageNoWords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pri spustení otvoriť naposledy otvorenú inštaláciu INISSu.
+        /// </summary>
+        internal static string Settings_ReopenLast {
+            get {
+                return ResourceManager.GetString("Settings_ReopenLast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabuľka vlakov.
+        /// </summary>
+        internal static string Settings_ColumnsPage {
+            get {
+                return ResourceManager.GetString("Settings_ColumnsPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Otvoriť priečinok s logmi.
+        /// </summary>
+        internal static string Cmd_ShowLogs {
+            get {
+                return ResourceManager.GetString("Cmd_ShowLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editor TabTab.
+        /// </summary>
+        internal static string Cmd_Window_TabTab {
+            get {
+                return ResourceManager.GetString("Cmd_Window_TabTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stavový diagram.
+        /// </summary>
+        internal static string Cmd_Window_StateDgm {
+            get {
+                return ResourceManager.GetString("Cmd_Window_StateDgm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uložiť.
+        /// </summary>
+        internal static string Cmd_TabTab_Save {
+            get {
+                return ResourceManager.GetString("Cmd_TabTab_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uložiť všetko.
+        /// </summary>
+        internal static string Cmd_TabTab_SaveAll {
+            get {
+                return ResourceManager.GetString("Cmd_TabTab_SaveAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Späť.
+        /// </summary>
+        internal static string Cmd_TabTab_Undo {
+            get {
+                return ResourceManager.GetString("Cmd_TabTab_Undo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Znova.
+        /// </summary>
+        internal static string Cmd_TabTab_Redo {
+            get {
+                return ResourceManager.GetString("Cmd_TabTab_Redo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pridať TabTab.
+        /// </summary>
+        internal static string Cmd_TabTab_AddTab {
+            get {
+                return ResourceManager.GetString("Cmd_TabTab_AddTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odstrániť TabTab.
+        /// </summary>
+        internal static string Cmd_TabTab_RemoveTab {
+            get {
+                return ResourceManager.GetString("Cmd_TabTab_RemoveTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Premenovať TabTab.
+        /// </summary>
+        internal static string Cmd_TabTab_RenameTab {
+            get {
+                return ResourceManager.GetString("Cmd_TabTab_RenameTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hľadať.
+        /// </summary>
+        internal static string Cmd_TabTab_Find {
+            get {
+                return ResourceManager.GetString("Cmd_TabTab_Find", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nahradiť.
+        /// </summary>
+        internal static string Cmd_TabTab_Replace {
+            get {
+                return ResourceManager.GetString("Cmd_TabTab_Replace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Formátovať.
+        /// </summary>
+        internal static string Cmd_TabTab_Reformat {
+            get {
+                return ResourceManager.GetString("Cmd_TabTab_Reformat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uložiť.
+        /// </summary>
+        internal static string Cmd_StateDgm_Save {
+            get {
+                return ResourceManager.GetString("Cmd_StateDgm_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Použiť upravený text.
+        /// </summary>
+        internal static string Cmd_StateDgm_ApplyText {
+            get {
+                return ResourceManager.GetString("Cmd_StateDgm_ApplyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rozloží upravený text. Ak je bez chyby, otvorí diagram v editore.
+        /// </summary>
+        internal static string FStateDgm_Text_NacitatTip {
+            get {
+                return ResourceManager.GetString("FStateDgm_Text_NacitatTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editor TabTab a text stavového diagramu..
+        /// </summary>
+        internal static string Settings_EditorFontHint {
+            get {
+                return ResourceManager.GetString("Settings_EditorFontHint", resourceCulture);
             }
         }
     }

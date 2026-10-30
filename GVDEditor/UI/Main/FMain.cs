@@ -38,6 +38,8 @@ internal partial class FMain : ExForm, IAnalyzerHost
 
     private readonly List<GVDDirectory> _gvdDirs = [];
     private readonly CommandSet _commands = [];
+    // tucne pismo stlpca Typ vlaku podla aktualneho pisma tabulky
+    private Font? _boldCellFont;
     private readonly IInissProcess _iniss;
     private readonly IDialogService _dialogs;
 
@@ -84,14 +86,8 @@ internal partial class FMain : ExForm, IAnalyzerHost
 
         mainMenu.Renderer = new ToolStripProfessionalRenderer(new FormUtils.LightColorTable());
 
-        tsslSelTrainName.Font = _ctx.Config.Fonts.StateRow.Font;
-        tsslSelTrainVariants.Font = _ctx.Config.Fonts.StateRow.Font;
-        tsslTrainCount.Font = _ctx.Config.Fonts.StateRow.Font;
-        tsslTrainCountWithVariants.Font = _ctx.Config.Fonts.StateRow.Font;
         CreateVariantMenu();
         dgvTrains.CellPainting += dgvTrains_CellPainting;
-
-        dgvTrains.RowHeadersVisible = _ctx.Config.ShowRowsHeader;
 
         CreateCommands();
         _commands.ApplyShortcuts(_ctx.Config.Shortcuts);
@@ -174,26 +170,14 @@ internal partial class FMain : ExForm, IAnalyzerHost
            || ((keyData & Keys.KeyCode) is Keys.Z or Keys.Y && (keyData & Keys.Modifiers) == Keys.Control);
 
     /// <summary>
-    /// Ci sa maju chyby zachytit a ukazat pouzivatelovi (inak program pri chybe spadne - rezim ladenia).
+    /// Ci sa maju chyby zachytit a ukazat pouzivatelovi (inak program pri chybe spadne - len pri ladeni).
     /// </summary>
-    private bool CatchErrors => _ctx.Config.DebugModeGUI != DebugMode.AppCrash;
+    private static bool CatchErrors => ErrorReport.CatchErrors;
 
     /// <summary>
-    /// Zaznamena chybu a ukaze ju podla rezimu ladenia.
+    /// Zaznamena chybu do logu a ukaze ju.
     /// </summary>
-    private void ShowException(Exception e)
-    {
-        Log.Exception(e);
-        switch (_ctx.Config.DebugModeGUI)
-        {
-            case DebugMode.OnlyMessage:
-                FError.ShowError(e.Message);
-                break;
-            case DebugMode.DetailInfo:
-                FError.ShowError(e.ToString());
-                break;
-        }
-    }
+    private void ShowException(Exception e) => ErrorReport.Show(e, this);
 
     /// <summary>
     /// Naviaze tabulku vlakov a jej stlpce Kolaj a Dopravca na otvoreny grafikon.
@@ -215,16 +199,15 @@ internal partial class FMain : ExForm, IAnalyzerHost
     }
 
     /// <summary>
-    /// Zobrazi ponuku a panel nastrojov podla nastaveni. Bez panela nastrojov sa vyber stanice a obdobia presunie do ponuky.
+    /// Zobrazi panel nastrojov podla nastaveni (ponuka je vzdy). Bez panela nastrojov sa vyber stanice a obdobia presunie
+    /// do ponuky.
     /// </summary>
     private void ApplyMenuMode()
     {
-        var menu = _ctx.Config.DesktopMenuMode;
-        mainMenu.Visible = menu is DesktopMenu.MsTs or DesktopMenu.MsOnly;
-        toolMenu.Visible = menu is DesktopMenu.MsTs or DesktopMenu.TsOnly;
+        toolMenu.Visible = _ctx.Config.ShowToolbar;
 
         // polozka moze byt len v jednom ToolStripe - pridanie do jedneho ju z druheho odoberie
-        if (menu == DesktopMenu.MsOnly)
+        if (!_ctx.Config.ShowToolbar)
         {
             if (!mainMenu.Items.Contains(tscbStanica))
                 mainMenu.Items.AddRange([toolStripLabel1, tscbStanica, toolStripLabel2, tscbObdobie]);
@@ -242,7 +225,6 @@ internal partial class FMain : ExForm, IAnalyzerHost
     private void UpdateMainUI()
     {
         ApplyMenuMode();
-        dgvTrains.RowHeadersVisible = _ctx.Config.ShowRowsHeader;
 
         this.ApplyThemeAndFonts();
         SetColumns();
@@ -285,11 +267,6 @@ internal partial class FMain : ExForm, IAnalyzerHost
             _ctx.Document.Trains[e.RowIndex].Operator = _ctx.Document.Operators[0];
         else
             _dialogs.ShowError(Resources.FMain_dgvTrains_DataError_Tabuľka_obsahuje_nesprávny_údaj + e.Exception!.Message);
-    }
-
-    private void dgvTrains_KeyDown(object sender, KeyEventArgs e)
-    {
-        if (e.KeyData == Keys.Delete) DoDeleteTrains();
     }
 
     private void dgvTrains_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -423,6 +400,18 @@ internal partial class FMain : ExForm, IAnalyzerHost
         return Color.FromArgb((back.R * 4 + mark.R) / 5, (back.G * 4 + mark.G) / 5, (back.B * 4 + mark.B) / 5);
     }
 
+    private Font BoldCellFont(Font regular)
+    {
+        if (_boldCellFont is null || !_boldCellFont.FontFamily.Equals(regular.FontFamily) || _boldCellFont.Size != regular.Size)
+        {
+            var old = _boldCellFont;
+            _boldCellFont = new Font(regular, FontStyle.Bold);
+            old?.Dispose();
+        }
+
+        return _boldCellFont;
+    }
+
     private void dgvTrains_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
         void SetFromScheme(ColorSetting sett)
@@ -430,9 +419,9 @@ internal partial class FMain : ExForm, IAnalyzerHost
             e.CellStyle.ForeColor = sett.ForeColor != SystemColors.ControlText ? sett.ForeColor : Color.White;
             if (sett.BackColor != Color.Transparent)
                 e.CellStyle.BackColor = sett.BackColor;
-            e.CellStyle.Font = sett.Bold
-                ? new Font(_ctx.UsingStyle.TrainTypeColumnScheme.Font, FontStyle.Bold)
-                : _ctx.UsingStyle.TrainTypeColumnScheme.Font;
+            // pismo tabulky (aj zvacsene Ctrl + koliesko), tucne podla schemy
+            if (sett.Bold && e.CellStyle.Font is { } font)
+                e.CellStyle.Font = BoldCellFont(font);
         }
 
         if (e.RowIndex >= 0 && e.RowIndex < _ctx.Document.Trains.Count)
@@ -525,9 +514,7 @@ internal partial class FMain : ExForm, IAnalyzerHost
         SetCol(Dopravca, _ctx.Config.DesktopCols.Operator);
         SetCol(Ostatne, _ctx.Config.DesktopCols.OtherBtn);
 
-        dgvTrains.Columns[dgvTrains.Columns.Count - 1].AutoSizeMode = _ctx.Config.FitLastColumn
-            ? DataGridViewAutoSizeColumnMode.Fill
-            : DataGridViewAutoSizeColumnMode.None;
+        dgvTrains.FillLastVisibleColumn();
     }
 
     private void SetColumnsAutoWidth()
@@ -535,9 +522,11 @@ internal partial class FMain : ExForm, IAnalyzerHost
         // jeden dlhy text (napr. datumove obmedzenie s vela vynimkami) nesmie roztiahnut stlpec cez pol okna - skrateny
         // text ukaze bublina bunky a stlpec sa da rozsirit rucne
         var maxWidth = dgvTrains.ClientSize.Width / 4;
-        for (var i = 0; i < dgvTrains.Columns.Count - 1; i++)
+        var fill = dgvTrains.LastVisibleColumn();
+        foreach (DataGridViewColumn column in dgvTrains.Columns)
         {
-            var column = dgvTrains.Columns[i];
+            if (column == fill)
+                continue;
             column.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             var widthCol = column.Width;
             column.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;

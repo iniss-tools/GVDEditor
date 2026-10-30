@@ -11,26 +11,6 @@ public record TrainTypeColumnScheme() : IColorScheme
 {
     /// <inheritdoc />
     [XmlIgnore]
-    public bool DisableFontEdit => false;
-
-    /// <summary>
-    /// Font typu vlaku na pracovnej ploche v časti Typ vlaku.
-    /// </summary>
-    [XmlIgnore] 
-    public Font Font { get; set; } = new("Segoe UI", 9);
-
-    /// <summary>
-    /// Font typu vlaku na pracovnej ploche v časti Typ vlaku vo formate XML.
-    /// </summary>
-    [XmlElement(Type = typeof(XmlFont), ElementName = "Font")]
-    public XmlFont FontXML
-    {
-        get => XmlFont.FromFont(Font);
-        set => Font = XmlFont.ToFont(value);
-    }
-
-    /// <inheritdoc />
-    [XmlIgnore]
     public string Name => Resources.Scheme_TrainTypeColumn;
 
     [XmlIgnore]
@@ -122,6 +102,5 @@ public record TrainTypeColumnScheme() : IColorScheme
         if (original.R != null) R = original.R with { };
         if (original.X != null) X = original.X with { };
         if (original.Sl != null) Sl = original.Sl with { };
-        Font = (Font) original.Font.Clone();
     }
 }

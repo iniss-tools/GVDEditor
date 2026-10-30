@@ -1193,12 +1193,15 @@
     <value>Zpět</value>
   </data>
   <data name="tssbUndo.ToolTipText" xml:space="preserve">
-    <value>Zpět (Ctrl+Z)</value>
+    <value>Zpět</value>
   </data>
   <data name="tssbRedo.Text" xml:space="preserve">
     <value>Znovu</value>
   </data>
   <data name="tssbRedo.ToolTipText" xml:space="preserve">
-    <value>Znovu (Ctrl+Y)</value>
+    <value>Znovu</value>
+  </data>
+  <data name="tsmiShowLogs.Text" xml:space="preserve">
+    <value>Otevřít složku s logy</value>
   </data>
 </root>

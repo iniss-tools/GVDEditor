@@ -60,9 +60,6 @@ namespace GVDEditor.UI.Settings
             this.pGeneral.SuspendLayout();
             this.pConcreteGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optionsView)).BeginInit();
-            this.pDesktopComponents.SuspendLayout();
-            this.pLocalization.SuspendLayout();
-            this.pConcreteLocalization.SuspendLayout();
             this.exGroupBox2.SuspendLayout();
             this.exGroupBox4.SuspendLayout();
             this.exGroupBox5.SuspendLayout();
@@ -102,14 +99,11 @@ namespace GVDEditor.UI.Settings
             this.optionsView.TreeView.Style = ExControls.ExTreeViewStyle.Light;
             this.optionsView.TreeView.TabIndex = 0;
             // 
-            // pConcreteLocalization
-            // 
-            this.pConcreteLocalization.Controls.Add(this.cbDateLimitLanguage);
-            this.pConcreteLocalization.Controls.Add(this.label5);
-            // 
             // exGroupBox2
             // 
             resources.ApplyResources(this.exGroupBox2, "exGroupBox2");
+            this.exGroupBox2.Controls.Add(this.cbDateLimitLanguage);
+            this.exGroupBox2.Controls.Add(this.label5);
             this.exGroupBox2.Controls.Add(this.cboxTabTextAutoGenerate);
             this.exGroupBox2.DisabledForeColor = System.Drawing.SystemColors.GrayText;
             this.exGroupBox2.Name = "exGroupBox2";
@@ -354,12 +348,6 @@ namespace GVDEditor.UI.Settings
             this.pConcreteGeneral.ResumeLayout(false);
             this.pConcreteGeneral.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optionsView)).EndInit();
-            this.pDesktopComponents.ResumeLayout(false);
-            this.pDesktopComponents.PerformLayout();
-            this.pLocalization.ResumeLayout(false);
-            this.pLocalization.PerformLayout();
-            this.pConcreteLocalization.ResumeLayout(false);
-            this.pConcreteLocalization.PerformLayout();
             this.exGroupBox2.ResumeLayout(false);
             this.exGroupBox2.PerformLayout();
             this.exGroupBox4.ResumeLayout(false);

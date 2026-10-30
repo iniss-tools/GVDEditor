@@ -485,7 +485,7 @@ internal partial class FMain
         }
         catch (Exception e) when (CatchErrors)
         {
-            _dialogs.ShowError(_ctx.Config.DebugModeGUI == DebugMode.OnlyMessage ? e.Message : e.ToString());
+            ShowException(e);
             return false;
         }
 

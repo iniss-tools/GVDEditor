@@ -148,10 +148,10 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             errorForm.Close();
             errorForm.Dispose();
             Shot("nastavenia-programu/nastavenia-programu", () => new FAppSettings(Program.Context));
-            Shot("nastavenia-programu/komponenty", () =>
+            Shot("nastavenia-programu/vzhlad", () =>
             {
                 var form = new FAppSettings(Program.Context);
-                form.PreselectMenuItem("pDesktopComponents");
+                form.PreselectMenuItem("pAppearance");
                 return form;
             });
             Shot("nastavenia-programu/stlpce", () =>
@@ -160,15 +160,9 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 form.PreselectMenuItem("pDesktopColumns");
                 return form;
             });
-            Shot("nastavenia-programu/lokalizacia", () =>
-            {
-                var form = new FAppSettings(Program.Context);
-                form.PreselectMenuItem("pLocalization");
-                return form;
-            });
             Shot("nastavenia-programu/klavesove-skratky", () =>
             {
-                var form = new FAppSettings(Program.Context);
+                var form = new FAppSettings(Program.Context, null, (IEnumerable<ToolsCore.Commands.AppCommand>)Field(main, "_commands"));
                 form.PreselectMenuItem("pShortcuts");
                 return form;
             });
@@ -182,12 +176,6 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             {
                 var form = new FAppSettings(Program.Context);
                 form.PreselectMenuItem("pFonts");
-                return form;
-            });
-            Shot("nastavenia-programu/logovanie", () =>
-            {
-                var form = new FAppSettings(Program.Context);
-                form.PreselectMenuItem("pLogging");
                 return form;
             });
             Shot("nastavenia-programu/agenti", () =>
@@ -375,7 +363,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("stavovy-diagram/akcia", () =>
             {
                 var editor = new SdEventEditor(new SdEditorContext(new GvdExprSymbols(Program.Context.Workspace, Program.Context.Document),
-                    Program.Context.Document.ReportTypes, Program.Context.UsingStyle.TabTabEditorScheme.Font));
+                    Program.Context.Document.ReportTypes, Program.Context.Config.Fonts.EditorFont));
                 editor.Bind(departs, arrived.Controls.FirstOrDefault(c => c.EventKey == departs.Key),
                     passing.States.Select(s => s.Key), diagram.Designs.Select(d => d.Key), 0);
                 return new FStateDgmItem(Properties.Resources.FStateDgm_Akcia_Titul, editor, 520, 380);

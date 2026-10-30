@@ -704,7 +704,6 @@ namespace GVDEditor.UI.TabTab
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FTabTab_FormClosing);
             this.Load += new System.EventHandler(this.FTabTab_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FTabTab_KeyDown);
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
             this.pProblems.ResumeLayout(false);

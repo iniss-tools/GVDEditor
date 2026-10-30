@@ -53,11 +53,6 @@ public record GVDEditorConfig() : ConfigBase
     [XmlElement("DesktopCols")] 
     public DesktopColumns DesktopCols { get; set; } = new();
 
-    /// <summary>
-    /// Klávesové skratky pre akcie na pracovnej ploche programu.
-    /// </summary>
-    [XmlElement("Shortcuts")] 
-    public ShortcutMap Shortcuts { get; set; } = new();
 
     /// <summary>
     /// Povodne spolocne nastavenie spustania INISSu - len na prenos do konfiguracii spustania instalacie, ktora este
@@ -108,7 +103,6 @@ public record GVDEditorConfig() : ConfigBase
         TableSimulator = original.TableSimulator.Clone();
         McpServer = original.McpServer.Clone();
         DesktopCols = original.DesktopCols with { };
-        Shortcuts = original.Shortcuts.Clone();
         StartupINISSConfig = original.StartupINISSConfig with { };
         RunConfigurations = original.RunConfigurations.Select(r => r.DeepCopy()).ToList();
         LocalSettingsWindow = original.LocalSettingsWindow?.Clone();

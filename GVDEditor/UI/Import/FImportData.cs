@@ -90,19 +90,16 @@ internal partial class FImportData : Form
 
         var trains = new List<Train>(_dataTable.Rows.Count);
 
-        if (_ctx.Config.DebugModeGUI == DebugMode.AppCrash)
+        try
+        {
             Deserialize();
-        else
-            try
-            {
-                Deserialize();
-            }
-            catch (Exception ex)
-            {
-                Utils.ShowError(_ctx.Config.DebugModeGUI == DebugMode.OnlyMessage ? ex.Message : ex.ToString());
-                DialogResult = DialogResult.None;
-                return;
-            }
+        }
+        catch (Exception ex) when (ErrorReport.CatchErrors)
+        {
+            ErrorReport.Show(ex, this);
+            DialogResult = DialogResult.None;
+            return;
+        }
 
         ImportedTrains = trains;
         ReplaceTrains = rbRemoveAndInsert.Checked;

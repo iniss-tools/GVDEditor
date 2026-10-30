@@ -24,6 +24,7 @@ internal partial class FTabTab : Form
     /// Kontext editora - nastavenia programu, instalacia INISS a otvoreny grafikon.
     /// </summary>
     private readonly EditorContext _ctx;
+    private readonly CommandSet _commands = new();
 
     private static readonly string[] Operatory = ["AND", "OR", "NOT", "ODD"];
 
@@ -117,11 +118,12 @@ internal partial class FTabTab : Form
 
     private void FTabTab_Load(object sender, EventArgs e)
     {
-        lbTabTabs.Font = _ctx.Config.Fonts.Menu; //_ctx.UsingStyle.TabTabEditorScheme.Font;
+        lbTabTabs.Font = _ctx.Config.Fonts.Menus;
 
+        var editorFont = _ctx.Config.Fonts.EditorFont;
         _sc.StyleResetDefault();
-        _sc.Styles[Style.Default].Font = _ctx.UsingStyle.TabTabEditorScheme.Font.Name;
-        _sc.Styles[Style.Default].SizeF = _ctx.UsingStyle.TabTabEditorScheme.Font.Size;
+        _sc.Styles[Style.Default].Font = editorFont.Name;
+        _sc.Styles[Style.Default].SizeF = editorFont.SizeInPoints;
         _sc.Styles[Style.Default].BackColor = _ctx.UsingStyle.ControlsColorScheme.Box.BackColor;
         _sc.StyleClearAll();
         _sc.Styles[Style.LineNumber].BackColor = _ctx.UsingStyle.ControlsColorScheme.Button.BackColor;
@@ -703,25 +705,29 @@ internal partial class FTabTab : Form
     }
 
     /// <summary>
-    /// Prikazy panela nastrojov a kontextovych ponuk - tlacidlo a polozka ponuky robia to iste. Skratky su pevne
-    /// (zobrazene pri polozkach ponuky); Ctrl+S, Ctrl+F a Ctrl+H spracuva <see cref="FTabTab_KeyDown" />.
+    /// Prikazy panela nastrojov a kontextovych ponuk - tlacidlo a polozka ponuky robia to iste. Skratky su z nastaveni
+    /// programu (okno Editor TabTab), spracuva ich <see cref="ProcessCmdKey" />.
     /// </summary>
     private void CreateCommands()
     {
-        var commands = new CommandSet();
-        void Add(string id, Shortcut shortcut, Action execute, params ToolStripItem[] items) =>
-            commands.Add(new CommandInfo(id, id, shortcut), execute).Bind(items);
+        void Add(CommandInfo info, Action execute, params ToolStripItem[] items) => _commands.Add(info, execute).Bind(items);
 
-        Add("Save", Shortcut.None, DoSave, tsbSave, tsmiSave);
-        Add("SaveAll", Shortcut.CtrlShiftS, DoSaveAll, tsbSaveAll, tsmiSaveAll);
-        Add("Undo", Shortcut.CtrlZ, DoUndo, tsbUndo, tsmiUndo);
-        Add("Redo", Shortcut.CtrlY, DoRedo, tsbRedo, tsmiRedo);
-        Add("AddTab", Shortcut.None, DoAddTab, tsbAddTab, tsmiAddTabTab);
-        Add("RemoveTab", Shortcut.None, DoRemoveTab, tsbRemoveTab, tsmiDeleteTabTab);
-        Add("RenameTab", Shortcut.F2, DoRenameTab, tsbRename, tsmiRenameTabTab);
-        Add("FindReplace", Shortcut.None, () => DoFindReplace(), tsbFindReplace);
-        Add("Reformat", Shortcut.None, DoReformat, tsbReformat);
+        Add(GvdCommands.TabTabSave, DoSave, tsbSave, tsmiSave);
+        Add(GvdCommands.TabTabSaveAll, DoSaveAll, tsbSaveAll, tsmiSaveAll);
+        Add(GvdCommands.TabTabUndo, DoUndo, tsbUndo, tsmiUndo);
+        Add(GvdCommands.TabTabRedo, DoRedo, tsbRedo, tsmiRedo);
+        Add(GvdCommands.TabTabAddTab, DoAddTab, tsbAddTab, tsmiAddTabTab);
+        Add(GvdCommands.TabTabRemoveTab, DoRemoveTab, tsbRemoveTab, tsmiDeleteTabTab);
+        Add(GvdCommands.TabTabRenameTab, DoRenameTab, tsbRename, tsmiRenameTabTab);
+        Add(GvdCommands.TabTabFind, () => DoFindReplace(), tsbFindReplace);
+        Add(GvdCommands.TabTabReplace, () => DoFindReplace(true));
+        Add(GvdCommands.TabTabReformat, DoReformat, tsbReformat);
+        _commands.ApplyShortcuts(_ctx.Config.Shortcuts);
     }
+
+    /// <inheritdoc />
+    protected override bool ProcessCmdKey(ref Message msg, Keys keyData) =>
+        _commands.ProcessShortcut(keyData) || base.ProcessCmdKey(ref msg, keyData);
 
     private void tsbStorno_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
 
@@ -770,21 +776,6 @@ internal partial class FTabTab : Form
         const int padding = 2;
         _sc.Margins[0].Width = _sc.TextWidth(Style.LineNumber, new string('9', maxLength + 1)) + padding;
         _maxLineNumberCharLength = maxLength;
-    }
-
-    private void FTabTab_KeyDown(object sender, KeyEventArgs e)
-    {
-        e.Handled = true;
-        if (e.Control && e.Shift && e.KeyCode == Keys.S)
-            DoSaveAll();
-        else if (e.Control && e.KeyCode == Keys.S)
-            DoSave();
-        else if (e.Control && e.KeyCode is Keys.F)
-            DoFindReplace();
-        else if (e.Control && e.KeyCode is Keys.H)
-            DoFindReplace(true);
-        else
-            e.Handled = false;
     }
 
     private void scText_CharAdded(object sender, CharAddedEventArgs e) => InsertMatchedChars(e);

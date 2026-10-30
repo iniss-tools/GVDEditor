@@ -38,6 +38,19 @@ public class GVDEditorStyleTests
         }
     }
 
+    [TestMethod]
+    public void StaryStyl_PismoEditora_PrevezmeSaANezapisuje()
+    {
+        var xml = Serialize(GVDEditorStyle.DefaultLightStyle);
+        Assert.DoesNotContain("<Font ", xml);
+        xml = xml.Replace("<TabTabEditor>", """<TabTabEditor><Font family="Courier New" gunit="pt" size="12" style="r" />""", StringComparison.Ordinal);
+
+        var style = Deserialize(xml);
+
+        Assert.AreEqual(new ToolsCore.XML.FontChoice("Courier New", 12), style.TabTabEditorScheme.LegacyEditorFont);
+        Assert.DoesNotContain("<Font ", Serialize(style));
+    }
+
     private static string Serialize(GVDEditorStyle style)
     {
         using var writer = new StringWriter();

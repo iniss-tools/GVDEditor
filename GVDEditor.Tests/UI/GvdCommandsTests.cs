@@ -17,9 +17,24 @@ public class GvdCommandsTests
         var all = GvdCommands.All;
 
         Assert.HasCount(all.Count, all.Select(c => c.Id).Distinct().ToList());
-        var shortcuts = all.Where(c => c.DefaultShortcut != Shortcut.None).Select(c => c.DefaultShortcut).ToList();
+        var shortcuts = all.Where(c => c.DefaultKeys != Keys.None).Select(c => c.DefaultKeys).ToList();
         Assert.HasCount(shortcuts.Count, shortcuts.Distinct().ToList());
         Assert.IsTrue(all.All(c => !string.IsNullOrWhiteSpace(c.Text)));
+    }
+
+    [TestMethod]
+    public void Settings_DalsieOkna_JedinecneIdentifikatoryAPredvoleneSkratkyVKazdomOkne()
+    {
+        var all = GvdCommands.Settings;
+
+        Assert.HasCount(all.Count, all.Select(c => c.Id).Distinct().ToList());
+        foreach (var window in all.GroupBy(c => c.Window))
+        {
+            var shortcuts = window.Where(c => c.DefaultKeys != Keys.None).Select(c => c.DefaultKeys).ToList();
+            Assert.HasCount(shortcuts.Count, shortcuts.Distinct().ToList(), window.Key ?? "hlavne okno");
+        }
+
+        Assert.IsTrue(GvdCommands.TabTabAll.All(c => c.Window is not null && c.Id.StartsWith("TabTab.", StringComparison.Ordinal)));
     }
 
     /// <summary>
@@ -58,13 +73,13 @@ public class GvdCommandsTests
         var config = (GVDEditorConfig)new XmlSerializer(typeof(GVDEditorConfig)).Deserialize(XmlReader.Create(reader))!;
         var copy = config with { };
 
-        Assert.AreEqual(Shortcut.CtrlShiftO, config.Shortcuts.Get(GvdCommands.Open));
-        Assert.AreEqual(Shortcut.None, config.Shortcuts.Get(GvdCommands.Save));
-        Assert.AreEqual(Shortcut.CtrlS, new GVDEditorConfig().Shortcuts.Get(GvdCommands.Save));
+        Assert.AreEqual((Keys)Shortcut.CtrlShiftO, config.Shortcuts.Get(GvdCommands.Open));
+        Assert.AreEqual((Keys)Shortcut.None, config.Shortcuts.Get(GvdCommands.Save));
+        Assert.AreEqual((Keys)Shortcut.CtrlS, new GVDEditorConfig().Shortcuts.Get(GvdCommands.Save));
         Assert.IsTrue(config.AutoTableText);
 
         // kopia nastaveni (okno Nastavenia programu) nesmie menit povodne skratky
-        copy.Shortcuts.Set(GvdCommands.Open.Id, Shortcut.F2);
-        Assert.AreEqual(Shortcut.CtrlShiftO, config.Shortcuts.Get(GvdCommands.Open));
+        copy.Shortcuts.Set(GvdCommands.Open.Id, Keys.F2);
+        Assert.AreEqual((Keys)Shortcut.CtrlShiftO, config.Shortcuts.Get(GvdCommands.Open));
     }
 }

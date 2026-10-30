@@ -24,9 +24,14 @@ internal static class Program
         using var iniss = new InissProcessService();
         using var mcp = new GvdMcpServer();
 
+        // pismo editora TabTab bolo do etapy pisiem v nastaveniach sucastou stylu
+        if (context.Config.Fonts.Editor is null && context.UsingStyle.TabTabEditorScheme.LegacyEditorFont is { } legacy
+            && legacy != AppFonts.DefaultEditor)
+            context.Config.Fonts.Editor = legacy;
+
         // jazyk datumovych obmedzeni je okolite nastavenie (ako kultura) - meni sa len tu a po zmene nastaveni
         DateLimit.Loc = context.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
 
-        AppInit.Run(context.Config, () => new FMain(context, iniss, dialogs, mcp));
+        AppInit.Run(() => new FMain(context, iniss, dialogs, mcp));
     }
 }

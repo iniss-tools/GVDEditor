@@ -19,7 +19,7 @@ internal partial class FMain
     private void ShowAppSettings(string? page = null)
     {
         var old = _ctx.Config;
-        var form = new FAppSettings(_ctx, _mcp);
+        var form = new FAppSettings(_ctx, _mcp, _commands);
         if (page != null) form.PreselectMenuItem(page);
         if (form.ShowDialog() != DialogResult.OK)
             return;
@@ -28,14 +28,9 @@ internal partial class FMain
 
         // tieto nastavenia sa inak nacitaju len pri starte programu
         DateLimit.Loc = _ctx.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
-        Log.DoAppLogs = _ctx.Config.LoggingInfo;
-        Log.DoErrorLogs = _ctx.Config.LoggingError;
 
         if (!old.McpServer.SameAs(_ctx.Config.McpServer))
             StartMcp();
-
-        if (old.Language != _ctx.Config.Language || old.ClassicGUI != _ctx.Config.ClassicGUI)
-            _dialogs.ShowInfo(Resources.FMain_Nastavenia_po_restarte);
     }
 
     private void ShowInfoApp()
