@@ -1,0 +1,51 @@
+# GVDEditor – pokyny pre agentov
+
+Editor grafikonov (GVD) pre INISS (informačný systém železničných staníc). Repozitár je súčasťou pracovného priečinka `INISSTools` (nie je git repozitár, každý podpriečinok má vlastné repo); vedľa musia byť naklonované `ExControls`, `ToolsCore` a `TableSimulator` (`TableSimulator.Contracts`). Komunikácia, texty UI aj komentáre v kóde (bez diakritiky) sú slovenské.
+
+Pravidlá desktopových programov (WinForms, texty v `Resources`, ručné `*.Designer.cs`, príkazy `CommandSet`, téma, dialógy, ikony SVG) a logovania (Serilog) sú v `../ToolsCore/AGENTS.md` – platia aj tu.
+
+## Štruktúra
+
+- Projekty: `GVDEditor`, `GVDEditor.Tests` (zrkadlí štruktúru), `GVDEditor.DocScreenshots`, `ELISBridge` (import z ELIS cez TT.dll – samostatný proces x86, výsledok a chyby na `stderr`, kódy ukončenia), `PlanRadeniaReader` – plán radenia vlakov ZSSK z PDF ako samostatný proces s rozhraniami Windows: vykreslenie PDF a OCR hlavičiek, čísla vozňov a piktogramy podľa vzorov, poznámky vlastným rozpoznávaním s gramatikou `NoteDecoder`; nástroje na vzory číslic, piktogramov a písma poznámok `tools/` (pracovný priečinok `PLAN_WORK` mimo repozitára); GVDEditor linkuje `PlanRadeniaData.cs` a radenie skladá `Integration/PlanRadeniaConversion`. Pomocné procesy nemajú vlastný log – argumenty, kód ukončenia a celý `stderr` zapisuje GVDEditor (`ELISBridgeClient`, `PlanRadeniaReaderClient`).
+- Namespace = priečinok – `Domain/{Entities,Rules,Editing,Calendar,Analysis,Snapshots}`, `Formats/` (trieda na každý súbor INISS – `TrainsFile`, `Export3File`…, `GrafikonRepository`; tabule, DirList a hlavička grafikonu sú v ToolsCore.Iniss `Tables`/`Grafikon` – globálny `using`, snímky nastavení ich sledujú cez `LocalSettingsSnapshot.IsInissEntity`), `Services/` (`GrafikonService` – načítanie, uloženie, nový, import, globálne nastavenia bez UI), `Integration/` (aj `InissProcessService`, `ElisImportService`), `TabTabEditor/`, `Config/`, `UI/{Main,EditTrain,Settings,StateDgm,TabTab,Import,Dialogs,Controls}` (`FMain` rozdelený na partial `Commands/Grafikon/Settings/Iniss/Variants`); `EditorContext` a `Program` v koreni.
+- Server MCP pre agentov `Mcp/` beží v procese editora (ASP.NET Core `FrameworkReference`, Kestrel na 127.0.0.1, Streamable HTTP bez relácie; upozornenia servera idú do logu programu cez `AddSerilog`): `GvdMcpServer.ApplyAsync` podľa `Config/McpServerSettings` (zapnutie, povolenie zmien, port 5490, kľúč `gvd_` šifrovaný DPAPI cez `Config/UserSecret` – spoločne s kľúčom simulátora; stránka Agenti (MCP) v `FAppSettings`, reštart po uložení nastavení), `Bearer` kľúč a `Origin`, chyba spustenia v `Error`; nástroje sú `internal` (registruje ich sám, null sa zapisuje, `TimeOnly` bez `format`), statické metódy `Mcp/<Oblast>Tools.cs` nad otvoreným dokumentom cez `EditorAccess` (čítanie na vlákne okna `BeginInvoke`, bez okna priamo – testy), bez otvoreného grafikonu `grafikon.notOpen` (`McpGuards.Open`, `EditorContext.Directory`), chyby `McpException("kod: popis")`, výsledky záznamy v `Mcp/McpResults.cs`, popisy anglicky aj pri parametroch; zmeny len s voľbou `AllowWrites` (stránka Agenti (MCP), bez nej sa nástroje s `ReadOnly = false` neregistrujú) cez `EditorAccess.WriteAsync` – jedno volanie = jeden krok späť „… (agent)“ (`IAgentHost` = `FMain`: odmietne pri vypnutom okne/dialógu, `UseWaitCursor` a rozpísanej bunke – `editor.busy`), agent nikdy neukladá a nemá undo, pri chybe aj `dryRun` sa grafikon vráti zo snímky, `ChangeInfo.Changed` = `ObjectGraphSnapshot.SameAs` porovnáva hodnoty ako stromy (na inštanciách ani zdieľaní objektov nezáleží); nástroj so zmenou má `dryRun` a explicitne `Destructive`/`Idempotent`; tabule a písma `Mcp/TableEditTools` + `TableMapper` (`get_table` vracia hodnoty v tvare `set_*`, `set_*` mení len zadané hodnoty a vytvorí chýbajúci kľúč, zoznamy (stĺpce, poradie, zostava) nahrádza celé, hodnoty preberie bez orezania – spätné poslanie `get_table` nič nezmení; zmena nesmie pridať chybu pravidiel `*Rules` z okna, staršiu chybu znesie; použité nemaže – `table.inUse` so zoznamom), vlaky `Mcp/TrainEditTools` (koncept `TrainDraft` + `TrainRules.Check` + `TrainEditing.Save` – spoločne s oknom Upraviť vlak; id vlaku = poradie, po zmene `TrainVariants.Normalize` a `TrainEditing.Renumber`; dodatky a radenia nemení) a TabTab `Mcp/TabTabEditTools` (nová chyba kontroly zmenu odmietne, text CRLF a CP1250), `prepare_simulator` (`Mcp/SimulatorTools` + `Integration/SimulatorPreparation` – linky vybranej konfigurácie spúšťania ako Pripraviť v simulátore, .INI nemení: presmerovaná linka ide na port z .INI, ostatné na prvý port + číslo; adresa a kľúč z nastavenia `TableSimulator`, bez kroku späť), analýza s `NoHost` (opravy nie), text stĺpca tabule `TabTabEditor/BoardColumnComposer` (spoločne s náhľadom TabTab), opis jazyka pre agenta `Mcp/TabTabReference.cs` = skrátená špecifikácia z docs (pri zmene docs upraviť); testy `GVDEditor.Tests/Mcp` (pravidlá popisov, nástroje nad grafikonom z testu, server s kľúčom; `McpToolsServerTests` volá každý nástroj cez server a výsledok kontroluje voči `outputSchema` vrátane formátov – `OutputSchema` je kópia zo simulátora, nový nástroj tam pridať; snímka `Mcp/mcp-tools.json` s pokynmi oboch variant a všetkými nástrojmi, obnova `GVDEDITOR_UPDATE_MCP=1`); docs `gvdeditor/nastroje/mcp-pre-agentov.mdx`.
+
+## Zásady
+
+- Žiadny statický prístup k dátam: `Program` je composition root (ručné skladanie, bez DI kontajnera) – vytvorí `EditorContext`, `DialogService` (`IDialogService`, ToolsCore) a `InissProcessService` (`IInissProcess`) a odovzdá ich `FMain`. `EditorContext` – `Session` (ToolsCore `AppSession` – Config, Styles, UsingStyle), `Workspace` (`InissWorkspace`, načíta `WorkspaceRepository.Load`) a `Document` (`GrafikonDocument`, načíta `GrafikonRepository.Load`, otvára `EditorContext.OpenDocument`). Okná ho dostávajú v konštruktore (`_ctx`), stránky (UserControl z návrhára) v `LoadData(EditorContext context, …)`; doména a formáty len potrebné časti ako parametre (`GrafikonContext`, `dataDir`, `StationDirectory`, `AnalysisScope`/`IAnalyzerHost`). Varovania pri načítaní zbiera inštancia `LoadWarnings` (cez `GrafikonContext.Warnings` alebo parameter, každé varovanie ide aj do logu), nie statický zoznam. Čisté `*Rules`/`*Editing` ostávajú statické; ne-UI kód nezobrazuje dialógy (vráti text, okno ho ukáže). Jediné okolité nastavenie je `DateLimit.Loc` (jazyk dátumových obmedzení, ako kultúra). Testy si dokument a kontext stavajú priamo.
+- Formáty INISS vždy `CultureInfo.InvariantCulture`/`Ordinal` a text zapisovaný do súboru nikdy z názvu C# (`enum.ToString()`, `nameof`, `Enum.Parse`) – explicitné kľúče (napr. `StateDgmDynamic.WaitName`); časy vlaku `TimeOnly`, dátumy `DateOnly` (`DateLimit` a `DateTimePicker` cez `ToDateTime()`). Súbory INISS sú CP1250. Úplná špecifikácia v `iniss-tools-docs/docs/iniss/formaty-suborov/`.
+- Úpravy dát bez okna patria do `Domain/Editing` (`StateDgmEditing`, `TabTabSections.Apply`), okno len vyberá a obnovuje.
+- Ukladanie grafikonu aj globálnych nastavení je transakčné (`ToolsCore.Iniss/Tools/FileTransaction`) – nové súbory grafikonu patria do `GrafikonRepository.Save`, nové globálne súbory DATA do `GrafikonService.SaveGlobalSettings`.
+- Entity grafikonu (`Train`, `Track`, `Platform`, `Operator`, `TrainType`, `TableTabTab`) sa porovnávajú referenciou; hodnotové sú `Station`, `ReportType`, `ReportVariant`, `NumberVariant`.
+- Win32 deklarácie v net10 projektoch cez `[LibraryImport]`; `ELISBridge/TTNative` zámerne `DllImport` – ANSI reťazce (TT.dll, stdcall, CP1250).
+- `App.config` nesmie dostať binding redirect WinForms/Drawing na 6.0.2.0 (program by pri štarte spadol).
+- Príkazy hlavného okna cez katalóg `UI/GvdCommands` (ID = názov prvku skratky v config.xml, nemeniť).
+
+## Príkazy
+
+```bash
+dotnet build GVDEditor/GVDEditor.csproj -nologo -v q     # net10.0-windows
+dotnet test GVDEditor.Tests/GVDEditor.Tests.csproj
+GVDEDITOR_UPDATE_MCP=1 dotnet test GVDEditor.Tests/GVDEditor.Tests.csproj --filter Nastroje_ZodpovedajuSnimke   # nova snimka nastrojov MCP (Mcp/mcp-tools.json)
+"/c/Program Files/Inno Setup 7/ISCC.exe" GVDEditorInstaller.iss   # instalator do Output/; najprv Release build
+powershell -File ../ToolsCore/Installer/Build-Installer.ps1 -Project GVDEditor/GVDEditor.csproj -Installer GVDEditorInstaller.iss -Version 1.10   # instalator vo verzii vydania do artifacts/ (ako workflow)
+```
+
+Vydanie: značka `vX.Y` spustí `.github/workflows/release.yml` (spoločný postup v `ToolsCore/Installer/README.md`).
+
+## Spoločné pravidlá
+
+- `Directory.Build.props`: `TreatWarningsAsErrors`, `Nullable`, `ImplicitUsings`, `AnalysisLevel latest-recommended` – build bez jediného varovania; zámerne vypnuté pravidlá len tam (`NoWarn` s dôvodom), varovanie opraviť v kóde, výnimočné potlačenie priamo na nájdenom člene (`[SuppressMessage(..., Justification = ...)]`). Kopírovací konštruktor recordu s primárnym konštruktorom nespúšťa inicializátory polí – priradiť všetky členy.
+- Kultúra: UI `CultureInfo.CurrentCulture`, formáty a logy `InvariantCulture`.
+- GUI nespúšťať cez Bash – overuje ho používateľ ručne; bez klikania harness (reflexia + `DrawToBitmap`).
+- Testy MSTest, metódy `Oblast_CoOveruje`. Nové parsery/validátory overiť korpusovo nad `D:\INISSroot` (reálne dáta, len na stroji používateľa), taký test do repa nedávať; do repa len testy s vlastnými dátami (DataRow, `TestData`) vrátane round-trip testu.
+- Skripty: generátory ukladať ako súbor (bash heredoc mení `\\` a `\n`); v `.ps1` žiadna diakritika.
+
+## Commity (Conventional Commits)
+
+Commitovať len na požiadanie. Správy podľa [Conventional Commits](https://www.conventionalcommits.org/): `<typ>(<oblasť>): <popis>`.
+
+- Typ: `feat`, `fix`, `refactor`, `perf`, `docs`, `test`, `build` (projekty, balíky, inštalátor), `ci` (workflow), `style`, `chore`, `revert`.
+- Oblasť nepovinná, malými písmenami (napr. `mcp`, `tabtab`, `statedgm`, `elis`, `formats`, `settings`).
+- Popis anglicky v rozkazovacom spôsobe, malým písmenom, bez bodky, najviac 72 znakov; názvy tried v backtickoch. Telo po prázdnom riadku vysvetľuje prečo; nekompatibilná zmena (formát súborov grafikonu, config.xml, MCP nástroje) má `!` a pätičku `BREAKING CHANGE: …`.
+- Príklad: ``fix(formats): keep CP1250 when `TabTabFile` writes comments``.
