@@ -111,7 +111,7 @@ internal partial class FEditTrain : Form
         optionsView.HeaderNodeNameFont = new Font(optionsView.HeaderNodeNameFont, FontStyle.Bold);
         // v Designeri by odkazy vytvorili handle priskoro
         pGroupHlasenia.GenerateLinksToChildren = true;
-        SettingsWindow.ApplyPlacement(this, _ctx.Config.EditTrainWindow);
+        SettingsWindow.ApplyPlacement(this, _ctx.Config.Windows.EditTrain);
         // zobrazi sa len stranka, ktorou sa okno otvara - ostatne sa vytvoria az pri prvom zobrazeni
         _startPanel = startPage switch
         {
@@ -187,7 +187,7 @@ internal partial class FEditTrain : Form
 
     private void FEditTrain_FormClosed(object? sender, FormClosedEventArgs e)
     {
-        _ctx.Config.EditTrainWindow = SettingsWindow.CapturePlacement(this);
+        _ctx.Config.Windows.EditTrain = SettingsWindow.CapturePlacement(this);
         SettingsWindow.SaveConfig(_ctx.Config);
     }
 

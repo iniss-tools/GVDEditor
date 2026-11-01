@@ -154,23 +154,23 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 form.PreselectMenuItem("pAppearance");
                 return form;
             });
-            Shot("nastavenia-programu/stlpce", () =>
-            {
-                var form = new FAppSettings(Program.Context);
-                form.PreselectMenuItem("pDesktopColumns");
-                return form;
-            });
             Shot("nastavenia-programu/klavesove-skratky", () =>
             {
                 var form = new FAppSettings(Program.Context, null, (IEnumerable<ToolsCore.Commands.AppCommand>)Field(main, "_commands"));
                 form.PreselectMenuItem("pShortcuts");
                 return form;
             });
+            // vybrany sluzobny vlak - oranzova na bielom ukaze upozornenie na nizky kontrast
             Shot("nastavenia-programu/styly", () =>
             {
                 var form = new FAppSettings(Program.Context);
                 form.PreselectMenuItem("pStyles");
                 return form;
+            }, form =>
+            {
+                var tree = (TreeView)form.Controls.Find("tvKeys", true).Single();
+                tree.SelectedNode = tree.Nodes.Cast<TreeNode>().SelectMany(n => n.Nodes.Cast<TreeNode>())
+                    .First(n => (n.Tag as ToolsCore.XML.ColorKey)?.Id == "TrainType.Sl");
             });
             Shot("nastavenia-programu/pisma", () =>
             {

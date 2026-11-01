@@ -17,13 +17,10 @@ internal partial class FAppSettings : FAppSettingsBase
     private new GVDEditorConfig Config => (GVDEditorConfig)base.Config;
     private new Styles<GVDEditorStyle> Styles => (Styles<GVDEditorStyle>)base.Styles;
 
-    protected override IList<DesktopColumn> DefaultColumns => new DesktopColumns().GetValues();
 
     /// <inheritdoc />
     protected override string ReopenLastText => Resources.Settings_ReopenLast;
 
-    /// <inheritdoc />
-    protected override string ColumnsPageText => Resources.Settings_ColumnsPage;
 
     /// <inheritdoc />
     protected override string EditorFontText => Resources.Settings_EditorFontHint;
@@ -35,15 +32,13 @@ internal partial class FAppSettings : FAppSettingsBase
     /// <param name="mcp">beziaci server MCP - jeho stav sa ukaze v nastaveni; null = bez stavu (harness snimok)</param>
     /// <param name="commands">prikazy hlavneho okna - strom skratiek podla jeho ponuky; null = podla katalogu</param>
     public FAppSettings(EditorContext context, GvdMcpServer? mcp = null, IEnumerable<AppCommand>? commands = null)
-        : base(context.Config, new Styles<GVDEditorStyle>(context.Session.Styles), context.UsingStyle, typeof(GVDEditorStyle))
+        : base(context.Config, new Styles<GVDEditorStyle>(context.Session.Styles), context.UsingStyle)
     {
         _ctx = context;
         _mcp = mcp;
         InitializeComponent();
         
         SetCommands(GvdCommands.Settings, commands);
-        Columns = new ExBindingList<DesktopColumn>(Config.DesktopCols.GetValues());
-        dgvColumns.DataSource = Columns;
 
         cbDateLimitLanguage.BindEnum(new Dictionary<AppLanguage, string>
         {
@@ -51,19 +46,6 @@ internal partial class FAppSettings : FAppSettingsBase
             [AppLanguage.Czech] = "Čeština" 
         });
         cbDateLimitLanguage.SelectedValue = Config.DateLimitLocate;
-
-        // skupiny stranky Vseobecne siahaju po pravy okraj ako skupina zo zakladu okna - kotvy z navrhu pocitaju
-        // s inou sirkou panela, preto sa sirka nastavuje podla skutocneho panela
-        pConcreteGeneral.ClientSizeChanged += (_, _) => FitGeneralGroups();
-    }
-
-    private void FitGeneralGroups()
-    {
-        foreach (var box in new Control[] { exGroupBox2, exGroupBox4, exGroupBox5 })
-        {
-            box.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            box.Width = Math.Max(box.MinimumSize.Width, pConcreteGeneral.ClientSize.Width - box.Left);
-        }
     }
 
     /// <inheritdoc />
@@ -76,7 +58,6 @@ internal partial class FAppSettings : FAppSettingsBase
         cboxMcpEnabled.Checked = Config.McpServer.Enabled;
         cboxMcpWrites.Checked = Config.McpServer.AllowWrites;
         nudMcpPort.Value = Math.Clamp(Config.McpServer.Port, (int)nudMcpPort.Minimum, (int)nudMcpPort.Maximum);
-        FitGeneralGroups();
         UpdateMcpStatus();
     }
 
@@ -140,7 +121,6 @@ internal partial class FAppSettings : FAppSettingsBase
     /// <inheritdoc />
     protected override bool OnSaving()
     {
-        Config.DesktopCols.SetValues(Columns);
 
         Config.DateLimitLocate = (AppLanguage)cbDateLimitLanguage.SelectedValue!;
 
@@ -158,9 +138,10 @@ internal partial class FAppSettings : FAppSettingsBase
     /// <inheritdoc />
     protected override void SaveData()
     {
-        _ctx.Session.Config = Config;
-        _ctx.Session.UsingStyle = (GVDEditorStyle)UsingStyle;
-        _ctx.Session.Styles = Styles;
+        // kopie - okno po Pouzit ostava otvorene a dalsie upravy v nom nesmu menit nastavenia programu
+        _ctx.Session.Config = Config with { };
+        _ctx.Session.Styles = new Styles<GVDEditorStyle>(Styles);
+        _ctx.Session.UsingStyle = _ctx.Session.Styles[UsingStyle.Name];
         
         var configsDir = ToolsCore.AppPaths.ConfigDir;
         if (!Directory.Exists(configsDir))
@@ -168,43 +149,5 @@ internal partial class FAppSettings : FAppSettingsBase
 
         Styles<GVDEditorStyle>.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FileStyles)!, _ctx.Session.Styles);
         XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FileConfig)!, _ctx.Config);
-    }
-
-    /// <inheritdoc />
-    protected override Style CreateStyleInstance(string name) => new GVDEditorStyle {Name = name};
-
-    /// <inheritdoc />
-    protected override Style OnResetStyle(bool darkMode) => Styles<GVDEditorStyle>.GetDefaultStyle(darkMode);
-
-    /// <inheritdoc />
-    protected override void FillTreeViewStyles(object selectedStyle, ExTreeView tv)
-    {
-        if (selectedStyle is not GVDEditorStyle style)
-            return;
-        
-        base.FillTreeViewStyles(selectedStyle, tv);
-        
-        var tabtab = CreateParentNode(style.TabTabEditorScheme, nameof(style.TabTabEditorScheme));
-        CreateNode(style.TabTabEditorScheme.Number, nameof(style.TabTabEditorScheme.Number), tabtab);
-        CreateNode(style.TabTabEditorScheme.String, nameof(style.TabTabEditorScheme.String), tabtab);
-        CreateNode(style.TabTabEditorScheme.Comment, nameof(style.TabTabEditorScheme.Comment), tabtab);
-        CreateNode(style.TabTabEditorScheme.OnNewLine, nameof(style.TabTabEditorScheme.OnNewLine), tabtab);
-        CreateNode(style.TabTabEditorScheme.Operator, nameof(style.TabTabEditorScheme.Operator), tabtab);
-        CreateNode(style.TabTabEditorScheme.Constant, nameof(style.TabTabEditorScheme.Constant), tabtab);
-        CreateNode(style.TabTabEditorScheme.Default, nameof(style.TabTabEditorScheme.Default), tabtab);
-        CreateNode(style.TabTabEditorScheme.Var, nameof(style.TabTabEditorScheme.Var), tabtab);
-        CreateNode(style.TabTabEditorScheme.Event, nameof(style.TabTabEditorScheme.Event), tabtab);
-        CreateNode(style.TabTabEditorScheme.Function, nameof(style.TabTabEditorScheme.Function), tabtab);
-        CreateNode(style.TabTabEditorScheme.Identifier, nameof(style.TabTabEditorScheme.Identifier), tabtab);
-        CreateNode(style.TabTabEditorScheme.SelBraces, nameof(style.TabTabEditorScheme.SelBraces), tabtab);
-        CreateNode(style.TabTabEditorScheme.SelBraceBad, nameof(style.TabTabEditorScheme.SelBraceBad), tabtab);
-        tv.Nodes.Add(tabtab);
-
-        var traintype = CreateParentNode(style.TrainTypeColumnScheme, nameof(style.TrainTypeColumnScheme));
-        CreateNode(style.TrainTypeColumnScheme.Os, nameof(style.TrainTypeColumnScheme.Os), traintype);
-        CreateNode(style.TrainTypeColumnScheme.R, nameof(style.TrainTypeColumnScheme.R), traintype);
-        CreateNode(style.TrainTypeColumnScheme.Sl, nameof(style.TrainTypeColumnScheme.Sl), traintype);
-        CreateNode(style.TrainTypeColumnScheme.X, nameof(style.TrainTypeColumnScheme.X), traintype);
-        tv.Nodes.Add(traintype);
     }
 }

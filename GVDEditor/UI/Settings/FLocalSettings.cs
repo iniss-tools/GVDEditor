@@ -85,7 +85,7 @@ internal partial class FLocalSettings : Form
         AutoSize = false;
         // nazov stranky nad nou tucne ako v nastaveniach programu
         optionsView.HeaderNodeNameFont = new Font(optionsView.HeaderNodeNameFont, FontStyle.Bold);
-        SettingsWindow.ApplyPlacement(this, _ctx.Config.LocalSettingsWindow);
+        SettingsWindow.ApplyPlacement(this, _ctx.Config.Windows.LocalSettings);
         pGroupStanica.GenerateLinksToChildren = true;
         pGroupTabule.GenerateLinksToChildren = true;
 
@@ -286,7 +286,7 @@ internal partial class FLocalSettings : Form
     {
         EnableEvents(false);
 
-        _ctx.Config.LocalSettingsWindow = SettingsWindow.CapturePlacement(this);
+        _ctx.Config.Windows.LocalSettings = SettingsWindow.CapturePlacement(this);
         SettingsWindow.SaveConfig(_ctx.Config);
 
         // Zrusit, krizik aj Esc - vratia sa zmeny na vsetkych strankach

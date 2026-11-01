@@ -11138,15 +11138,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tabuľka vlakov.
-        /// </summary>
-        internal static string Settings_ColumnsPage {
-            get {
-                return ResourceManager.GetString("Settings_ColumnsPage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Otvoriť priečinok s logmi.
         /// </summary>
         internal static string Cmd_ShowLogs {

@@ -69,7 +69,7 @@ internal partial class FGlobalSettings : Form
         AutoSize = false;
         // nazov stranky nad nou tucne ako v nastaveniach programu
         optionsView.HeaderNodeNameFont = new Font(optionsView.HeaderNodeNameFont, FontStyle.Bold);
-        SettingsWindow.ApplyPlacement(this, _ctx.Config.GlobalSettingsWindow);
+        SettingsWindow.ApplyPlacement(this, _ctx.Config.Windows.GlobalSettings);
         _startPage = page;
         // zobrazi sa len stranka, ktorou sa okno otvara - ostatne sa vytvoria az pri prvom zobrazeni
         optionsView.SelectedPanel = PanelOf(page);
@@ -213,7 +213,7 @@ internal partial class FGlobalSettings : Form
     private void FGlobalSettings_FormClosed(object sender, FormClosedEventArgs e)
     {
         EnableEvents(false);
-        _ctx.Config.GlobalSettingsWindow = SettingsWindow.CapturePlacement(this);
+        _ctx.Config.Windows.GlobalSettings = SettingsWindow.CapturePlacement(this);
         SettingsWindow.SaveConfig(_ctx.Config);
     }
 

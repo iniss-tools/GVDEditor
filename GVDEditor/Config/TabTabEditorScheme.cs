@@ -1,274 +1,48 @@
-﻿using System.Xml.Serialization;
-using GVDEditor.Properties;
 using ToolsCore.XML;
 
 namespace GVDEditor.Config;
 
 /// <summary>
-/// Obsahuje zoznam všetkých štýlov pre text v editore TabTab.
+/// Farby editora TabTab (polozky <see cref="GvdColors" />).
 /// </summary>
-public record TabTabEditorScheme() : IColorScheme
+public sealed class TabTabEditorScheme
 {
-    /// <summary>
-    /// Pismo editora zo starsich stylov (dnes v nastaveniach pisiem programu) - len na prevzatie, nezapisuje sa.
-    /// </summary>
-    [XmlElement("Font")]
-    public XmlFont? LegacyFont
-    {
-        get => null;
-        set
-        {
-            if (value is null)
-                return;
+    /// <summary>Cislo.</summary>
+    public ColorSetting Number { get; } = new();
 
-            using var font = XmlFont.ToFont(value);
-            LegacyEditorFont = FontChoice.Of(font);
-        }
-    }
+    /// <summary>Retazec.</summary>
+    public ColorSetting String { get; } = new();
 
-    /// <summary>
-    /// Pismo editora prevzate zo starsich stylov (<see langword="null" /> = styl ho neobsahoval).
-    /// </summary>
-    [XmlIgnore]
-    public FontChoice? LegacyEditorFont { get; private set; }
+    /// <summary>Komentar.</summary>
+    public ColorSetting Comment { get; } = new();
 
-    /// <inheritdoc />
-    [XmlIgnore]
-    public string Name => Resources.Scheme_TabTabEditor;
-    
-    [XmlIgnore]
-    private static readonly Dictionary<string, ColorSetting> Props = new()
-    {
-        [nameof(Number)] = new(Color.Purple) { NameSource = () => Resources.Scheme_Number, DisableBackColorEdit = true },
-        [nameof(String)] = new(Color.Red) { NameSource = () => Resources.Scheme_String, DisableBackColorEdit = true  },
-        [nameof(Comment)] = new(Color.Green) { NameSource = () => Resources.Scheme_Comment, DisableBackColorEdit = true },
-        [nameof(OnNewLine)] = new(Color.OrangeRed) { NameSource = () => Resources.Scheme_OnNewLine, DisableBackColorEdit = true },
-        [nameof(Operator)] = new(Color.Black) { NameSource = () => Resources.Scheme_Operator, DisableBackColorEdit = true },
-        [nameof(Constant)] = new(Color.DimGray) { NameSource = () => Resources.Scheme_Constant, DisableBackColorEdit = true },
-        [nameof(Default)] = new(Color.Black) { NameSource = () => Resources.Scheme_Default, DisableBackColorEdit = true },
-        [nameof(Var)] = new(Color.DarkSlateGray) { NameSource = () => Resources.Scheme_Var, DisableBackColorEdit = true },
-        [nameof(Event)] = new(Color.SaddleBrown) { NameSource = () => Resources.Scheme_Event, DisableBackColorEdit = true },
-        [nameof(Function)] = new(Color.Blue) { NameSource = () => Resources.Scheme_Function, DisableBackColorEdit = true },
-        [nameof(Identifier)] = new(Color.Teal) { NameSource = () => Resources.Scheme_Identifier, DisableBackColorEdit = true },
-        [nameof(SelBraces)] = new(Color.BlueViolet,Color.LightGray) { NameSource = () => Resources.Scheme_SelBraces },
-        [nameof(SelBraceBad)] = new(Color.LightGray, Color.Red) { NameSource = () => Resources.Scheme_SelBraceBad }
-    };
+    /// <summary>Pokracovanie na dalsom riadku.</summary>
+    public ColorSetting OnNewLine { get; } = new();
 
-    #region Properties
+    /// <summary>Operator.</summary>
+    public ColorSetting Operator { get; } = new();
 
-    /// <summary>
-    /// Textový editor TabTab - Číslo.
-    /// </summary>
-    [XmlElement("Number")]
-    public ColorSetting Number
-    {
-        get => field ??= InitProperty(nameof(Number));
-        set
-        {
-            field = value;
-            AssignProperty(ref field, nameof(Number));
-        }
-    } = InitProperty(nameof(Number));
+    /// <summary>Konstanta.</summary>
+    public ColorSetting Constant { get; } = new();
 
-    /// <summary>
-    /// Textový editor TabTab - Reťazec.
-    /// </summary>
-    [XmlElement("String")]
-    public ColorSetting String
-    {
-        get => field ??= InitProperty(nameof(String));
-        set
-        {
-            field = value;
-            AssignProperty(ref field, nameof(String));
-        }
-    } = InitProperty(nameof(String));
+    /// <summary>Bezny text.</summary>
+    public ColorSetting Default { get; } = new();
 
-    /// <summary>
-    /// Textový editor TabTab - Komentár.
-    /// </summary>
-    [XmlElement("Comment")]
-    public ColorSetting Comment
-    {
-        get => field ??= InitProperty(nameof(Comment));
-        set
-        {
-            field = value;
-            AssignProperty(ref field, nameof(Comment));
-        }
-    } = InitProperty(nameof(Comment));
+    /// <summary>Premenna.</summary>
+    public ColorSetting Var { get; } = new();
 
-    /// <summary>
-    /// Textový editor TabTab - Znak konca riadku a prechod do ďalšieho.
-    /// </summary>
-    [XmlElement("OnNewLine")]
-    public ColorSetting OnNewLine
-    {
-        get => field ??= InitProperty(nameof(OnNewLine));
-        set
-        {
-            field = value;
-            AssignProperty(ref field, nameof(OnNewLine));
-        }
-    } = InitProperty(nameof(OnNewLine));
+    /// <summary>Udalost.</summary>
+    public ColorSetting Event { get; } = new();
 
-    /// <summary>
-    /// Textový editor TabTab - Operátor.
-    /// </summary>
-    [XmlElement("Operator")]
-    public ColorSetting Operator
-    {
-        get => field ??= InitProperty(nameof(Operator));
-        set
-        {
-            field = value;
-            AssignProperty(ref field, nameof(Operator));
-        }
-    } = InitProperty(nameof(Operator));
+    /// <summary>Funkcia.</summary>
+    public ColorSetting Function { get; } = new();
 
-    /// <summary>
-    /// Textový editor TabTab - Konštanta.
-    /// </summary>
-    [XmlElement("Constant")]
-    public ColorSetting Constant
-    {
-        get => field ??= InitProperty(nameof(Constant));
-        set
-        {
-            field = value;
-            AssignProperty(ref field, nameof(Constant));
-        }
-    } = InitProperty(nameof(Constant));
+    /// <summary>Identifikator.</summary>
+    public ColorSetting Identifier { get; } = new();
 
-    /// <summary>
-    /// Textový editor TabTab - Normálny text.
-    /// </summary>
-    [XmlElement("Default")]
-    public ColorSetting Default
-    {
-        get => field ??= InitProperty(nameof(Default));
-        set
-        {
-            field = value;
-            AssignProperty(ref field, nameof(Default));
-        }
-    } = InitProperty(nameof(Default));
+    /// <summary>Aktivne zatvorky.</summary>
+    public ColorSetting SelBraces { get; } = new();
 
-    /// <summary>
-    /// Textový editor TabTab - Označenie premennej.
-    /// </summary>
-    [XmlElement("Var")]
-    public ColorSetting Var
-    {
-        get => field ??= InitProperty(nameof(Var));
-        set
-        {
-            field = value;
-            AssignProperty(ref field, nameof(Var));
-        }
-    } = InitProperty(nameof(Var));
-
-    /// <summary>
-    /// Textový editor TabTab - Udalosť.
-    /// </summary>
-    [XmlElement("Event")]
-    public ColorSetting Event
-    {
-        get => field ??= InitProperty(nameof(Event));
-        set
-        {
-            field = value;
-            AssignProperty(ref field, nameof(Event));
-        }
-    } = InitProperty(nameof(Event));
-
-    /// <summary>
-    /// Textový editor TabTab - Funkcia.
-    /// </summary>
-    [XmlElement("Function")]
-    public ColorSetting Function
-    {
-        get => field ??= InitProperty(nameof(Function));
-        set
-        {
-            field = value;
-            AssignProperty(ref field, nameof(Function));
-        }
-    } = InitProperty(nameof(Function));
-
-    /// <summary>
-    /// Textový editor TabTab - Identifikátor.
-    /// </summary>
-    [XmlElement("Identifier")]
-    public ColorSetting Identifier
-    {
-        get => field ??= InitProperty(nameof(Identifier));
-        set
-        {
-            field = value;
-            AssignProperty(ref field, nameof(Identifier));
-        }
-    } = InitProperty(nameof(Identifier));
-
-    /// <summary>
-    /// Textový editor TabTab - Označenenie aktívnych zátvoriek.
-    /// </summary>
-    [XmlElement("SelBraces")]
-    public ColorSetting SelBraces
-    {
-        get => field ??= InitProperty(nameof(SelBraces));
-        set
-        {
-            field = value;
-            AssignProperty(ref field, nameof(SelBraces));
-        }
-    } = InitProperty(nameof(SelBraces));
-
-    /// <summary>
-    /// Textový editor TabTab - Označenenie aktívnej zátvorky, ktorá nemá páru.
-    /// </summary>
-    [XmlElement("SelBraceBad")]
-    public ColorSetting SelBraceBad
-    {
-        get => field ??= InitProperty(nameof(SelBraceBad));
-        set
-        {
-            field = value;
-            AssignProperty(ref field, nameof(SelBraceBad));
-        }
-    } = InitProperty(nameof(SelBraceBad));
-
-    #endregion
-
-    private static ColorSetting InitProperty(string propname) => Props[propname] with { };
-
-    private static void AssignProperty(ref ColorSetting? prop, string propname)
-    {
-        if (prop is null)
-            prop = InitProperty(propname);
-        else
-        {
-            prop.NameSource = Props[propname].NameSource;
-            prop.DisableBackColorEdit = Props[propname].DisableBackColorEdit;
-            prop.DisableFontBoldEdit = Props[propname].DisableFontBoldEdit;
-        }
-    }
-    
-    protected TabTabEditorScheme(TabTabEditorScheme original)
-    {
-        if (original.Number != null) Number = original.Number with { };
-        if (original.String != null) String = original.String with { };
-        if (original.Comment != null) Comment = original.Comment with { };
-        if (original.OnNewLine != null) OnNewLine = original.OnNewLine with { };
-        if (original.Operator != null) Operator = original.Operator with { };
-        if (original.Constant != null) Constant = original.Constant with { };
-        if (original.Default != null) Default = original.Default with { };
-        if (original.Var != null) Var = original.Var with { };
-        if (original.Event != null) Event = original.Event with { };
-        if (original.Function != null) Function = original.Function with { };
-        if (original.Identifier != null) Identifier = original.Identifier with { };
-        if (original.SelBraces != null) SelBraces = original.SelBraces with { };
-        if (original.SelBraceBad != null) SelBraceBad = original.SelBraceBad with { };
-        LegacyEditorFont = original.LegacyEditorFont;
-    }
+    /// <summary>Zatvorka bez paru.</summary>
+    public ColorSetting SelBraceBad { get; } = new();
 }

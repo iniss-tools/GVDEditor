@@ -1,36 +1,28 @@
 using System.Globalization;
-using System.Xml;
-using System.Xml.Serialization;
+using System.Xml.Linq;
 using GVDEditor.Config;
+using ToolsCore.XML;
 
 namespace GVDEditor.Tests.Config;
 
-/// <summary>Farby editora TabTab a stlpca typ vlaku - nazvy v jazyku programu, nie v jazyku pri nacitani styles.xml.</summary>
+/// <summary>Farby editora TabTab a stlpca typ vlaku - nazvy v jazyku programu a prevod stareho suboru stylov.</summary>
 [TestClass]
 public class GVDEditorStyleTests
 {
-    // AppInit cita styles.xml skor, nez nastavi jazyk programu - nazvy sa nesmu zapamatat pri nacitani
     [TestMethod]
-    [DataRow("sk", "cs", "Řetězec", "Funkce", "Výchozí", "Tlačítko")]
-    [DataRow("cs", "sk", "Reťazec", "Funkcia", "Predvolené", "Tlačidlo")]
-    public void NazvyFarieb_VJazykuProgramuPoNacitaniStylu(string loadCulture, string appCulture, string text, string function, string fallback, string button)
+    [DataRow("sk", "Reťazec", "Funkcia", "Predvolené")]
+    [DataRow("cs", "Řetězec", "Funkce", "Výchozí")]
+    public void NazvyFarieb_VJazykuProgramu(string culture, string text, string function, string fallback)
     {
         var old = CultureInfo.CurrentUICulture;
         try
         {
-            CultureInfo.CurrentUICulture = new CultureInfo(loadCulture);
-            var light = Deserialize(Serialize(GVDEditorStyle.DefaultLightStyle));
-            var dark = Deserialize(Serialize(GVDEditorStyle.DefaultDarkStyle));
+            CultureInfo.CurrentUICulture = new CultureInfo(culture);
 
-            CultureInfo.CurrentUICulture = new CultureInfo(appCulture);
-            foreach (var style in new[] { light, dark, dark with { TabTabEditorScheme = dark.TabTabEditorScheme with { } }, GVDEditorStyle.DefaultDarkStyle })
-            {
-                Assert.AreEqual(text, style.TabTabEditorScheme.String.Name);
-                Assert.AreEqual(function, style.TabTabEditorScheme.Function.Name);
-                Assert.AreEqual(fallback, style.TabTabEditorScheme.Default.ToString());
-                Assert.AreEqual("Os", style.TrainTypeColumnScheme.Os.Name);
-                Assert.AreEqual(button, style.ControlsColorScheme.Button.Name);
-            }
+            Assert.AreEqual(text, Key("TabTab.String").Name);
+            Assert.AreEqual(function, Key("TabTab.Function").Name);
+            Assert.AreEqual(fallback, Key("TabTab.Default").Name);
+            Assert.AreEqual("Os", Key("TrainType.Os").Name);
         }
         finally
         {
@@ -39,28 +31,45 @@ public class GVDEditorStyleTests
     }
 
     [TestMethod]
-    public void StaryStyl_PismoEditora_PrevezmeSaANezapisuje()
+    public void Zaklad_NastaviFarbyEditoraATypovVlakov()
     {
-        var xml = Serialize(GVDEditorStyle.DefaultLightStyle);
-        Assert.DoesNotContain("<Font ", xml);
-        xml = xml.Replace("<TabTabEditor>", """<TabTabEditor><Font family="Courier New" gunit="pt" size="12" style="r" />""", StringComparison.Ordinal);
+        var styles = Styles<GVDEditorStyle>.CreateDefault();
+        var light = styles[StyleNames.Light];
+        var dark = styles[StyleNames.Dark];
 
-        var style = Deserialize(xml);
-
-        Assert.AreEqual(new ToolsCore.XML.FontChoice("Courier New", 12), style.TabTabEditorScheme.LegacyEditorFont);
-        Assert.DoesNotContain("<Font ", Serialize(style));
+        Assert.AreEqual(Color.Purple, light.TabTabEditorScheme.Number.ForeColor);
+        Assert.AreEqual(Color.PaleGoldenrod, dark.TabTabEditorScheme.Number.ForeColor);
+        Assert.IsTrue(dark.TrainTypeColumnScheme.R.Bold);
+        Assert.AreEqual(Color.White, dark.TrainTypeColumnScheme.Os.ForeColor);
     }
 
-    private static string Serialize(GVDEditorStyle style)
+    [TestMethod]
+    public void StarySubor_PismoEditoraAZmenyFarieb()
     {
-        using var writer = new StringWriter();
-        new XmlSerializer(typeof(GVDEditorStyle)).Serialize(writer, style);
-        return writer.ToString();
+        var styles = Styles<GVDEditorStyle>.FromLegacy(XElement.Parse("""
+            <STYLES>
+              <GVDEditorStyle name="Dark" used="true">
+                <DarkTitlebar>true</DarkTitlebar>
+                <TrainType>
+                  <Font family="Segoe UI" gunit="pt" size="9" style="r" />
+                  <Os bold="false" b="Transparent" f="White" />
+                  <R bold="true" b="Transparent" f="Red" />
+                </TrainType>
+                <TabTabEditor>
+                  <Font family="Courier New" gunit="pt" size="12" style="r" />
+                  <Number bold="false" f="PaleGoldenrod" />
+                  <Comment bold="true" f="#1D9E75" />
+                </TabTabEditor>
+              </GVDEditorStyle>
+            </STYLES>
+            """));
+
+        var dark = styles[StyleNames.Dark];
+        Assert.AreEqual(new FontChoice("Courier New", 12), dark.LegacyEditorFont);
+        CollectionAssert.AreEquivalent(new[] { "TabTab.Comment" }, dark.Overrides.Keys.ToArray());
+        Assert.IsTrue(dark.TabTabEditorScheme.Comment.Bold);
+        Assert.AreEqual(Color.FromArgb(0x1D, 0x9E, 0x75).ToArgb(), dark.TabTabEditorScheme.Comment.ForeColor.ToArgb());
     }
 
-    private static GVDEditorStyle Deserialize(string xml)
-    {
-        using var reader = XmlReader.Create(new StringReader(xml), new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit });
-        return (GVDEditorStyle)new XmlSerializer(typeof(GVDEditorStyle)).Deserialize(reader)!;
-    }
+    private static ColorKey Key(string id) => new GVDEditorStyle().ColorKeys.Single(k => k.Id == id);
 }

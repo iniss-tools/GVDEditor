@@ -38,6 +38,7 @@ internal partial class FMain : ExForm, IAnalyzerHost
 
     private readonly List<GVDDirectory> _gvdDirs = [];
     private readonly CommandSet _commands = [];
+    private GridColumns _trainColumns = null!;
     // tucne pismo stlpca Typ vlaku podla aktualneho pisma tabulky
     private Font? _boldCellFont;
     private readonly IInissProcess _iniss;
@@ -93,7 +94,10 @@ internal partial class FMain : ExForm, IAnalyzerHost
         _commands.ApplyShortcuts(_ctx.Config.Shortcuts);
         dgvTrains.Sorted += (_, _) => _changeLabel ??= Resources.History_Sort;
         UpdateHistoryUi();
-        SetColumns();
+        // poradie, sirku a viditelnost stlpcov si tabulka pamata sama (tahanie hlavicky, ponuka na hlavicke)
+        _trainColumns = GridColumns.Attach(dgvTrains, "Trains", () => _ctx.Config, () => UI.Settings.SettingsWindow.SaveConfig(_ctx.Config),
+            LinkaPrichod.Name, LinkaOdchod.Name);
+        _trainColumns.Reset += (_, _) => SetColumnsAutoWidth();
         SetColumnsAutoWidth();
 
         ApplyMenuMode();
@@ -227,7 +231,6 @@ internal partial class FMain : ExForm, IAnalyzerHost
         ApplyMenuMode();
 
         this.ApplyThemeAndFonts();
-        SetColumns();
         SetColumnsAutoWidth();
         _commands.ApplyShortcuts(_ctx.Config.Shortcuts);
         Refresh();
@@ -490,33 +493,6 @@ internal partial class FMain : ExForm, IAnalyzerHost
             }
     }
 
-    private void SetColumns()
-    {
-        static void SetCol(DataGridViewColumn column, DesktopColumn format)
-        {
-            column.Visible = format.Visible;
-            column.MinimumWidth = format.MinWidth;
-            column.DisplayIndex = format.Order;
-        }
-
-        SetCol(cisloDataGridViewTextBoxColumn, _ctx.Config.DesktopCols.Number);
-        SetCol(typDataGridViewTextBoxColumn, _ctx.Config.DesktopCols.Type);
-        SetCol(nameDataGridViewTextBoxColumn, _ctx.Config.DesktopCols.Name);
-        SetCol(LinkaPrichod, _ctx.Config.DesktopCols.LinkaPrichod);
-        SetCol(LinkaOdchod, _ctx.Config.DesktopCols.LinkaOdchod);
-        SetCol(smerovanieDataGridViewTextBoxColumn, _ctx.Config.DesktopCols.Routing);
-        SetCol(prichodDataGridViewTextBoxColumn, _ctx.Config.DesktopCols.Prichod);
-        SetCol(odchodDataGridViewTextBoxColumn, _ctx.Config.DesktopCols.Odchod);
-        SetCol(dgvcVychodziaStanica, _ctx.Config.DesktopCols.VychodziaStanica);
-        SetCol(dgvcKonecnaStanica, _ctx.Config.DesktopCols.KonecnaStanica);
-        SetCol(DatumoveObmedzenieText, _ctx.Config.DesktopCols.DateLimit);
-        SetCol(Kolaj, _ctx.Config.DesktopCols.Track);
-        SetCol(Dopravca, _ctx.Config.DesktopCols.Operator);
-        SetCol(Ostatne, _ctx.Config.DesktopCols.OtherBtn);
-
-        dgvTrains.FillLastVisibleColumn();
-    }
-
     private void SetColumnsAutoWidth()
     {
         // jeden dlhy text (napr. datumove obmedzenie s vela vynimkami) nesmie roztiahnut stlpec cez pol okna - skrateny
@@ -525,7 +501,7 @@ internal partial class FMain : ExForm, IAnalyzerHost
         var fill = dgvTrains.LastVisibleColumn();
         foreach (DataGridViewColumn column in dgvTrains.Columns)
         {
-            if (column == fill)
+            if (column == fill || _trainColumns.HasUserWidth(column))
                 continue;
             column.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             var widthCol = column.Width;

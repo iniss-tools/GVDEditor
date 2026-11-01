@@ -47,11 +47,6 @@ public record GVDEditorConfig() : ConfigBase
     [XmlElement("McpServer")]
     public McpServerSettings McpServer { get; set; } = new();
 
-    /// <summary>
-    /// Stlpce zobrazujuce sa v tabulke na pracovnej ploche programu.
-    /// </summary>
-    [XmlElement("DesktopCols")] 
-    public DesktopColumns DesktopCols { get; set; } = new();
 
 
     /// <summary>
@@ -68,28 +63,10 @@ public record GVDEditorConfig() : ConfigBase
     public List<InstallationRunConfigurations> RunConfigurations { get; set; } = [];
 
     /// <summary>
-    /// Velkost okna Lokalne nastavenia; <see langword="null" /> = predvolena z navrhu.
+    /// Zapamatane velkosti okien (Lokalne a Globalne nastavenia, Nastavenia INISSu, Upravit vlak).
     /// </summary>
-    [XmlElement("LocalSettingsWindow")]
-    public WindowPlacement? LocalSettingsWindow { get; set; }
-
-    /// <summary>
-    /// Velkost okna Globalne nastavenia; <see langword="null" /> = predvolena z navrhu.
-    /// </summary>
-    [XmlElement("GlobalSettingsWindow")]
-    public WindowPlacement? GlobalSettingsWindow { get; set; }
-
-    /// <summary>
-    /// Velkost okna Nastavenia INISSu; <see langword="null" /> = predvolena z navrhu.
-    /// </summary>
-    [XmlElement("InissSettingsWindow")]
-    public WindowPlacement? InissSettingsWindow { get; set; }
-
-    /// <summary>
-    /// Velkost okna uprava vlaku; <see langword="null" /> = predvolena z navrhu.
-    /// </summary>
-    [XmlElement("EditTrainWindow")]
-    public WindowPlacement? EditTrainWindow { get; set; }
+    [XmlElement("Windows")]
+    public WindowPlacements Windows { get; set; } = new();
 
     /// <inheritdoc />
     public override string LinkAppSettingsGuide => GvdLinkConsts.LinkAppSettings;
@@ -102,12 +79,8 @@ public record GVDEditorConfig() : ConfigBase
         InissSettingsShowEvaluation = original.InissSettingsShowEvaluation;
         TableSimulator = original.TableSimulator.Clone();
         McpServer = original.McpServer.Clone();
-        DesktopCols = original.DesktopCols with { };
         StartupINISSConfig = original.StartupINISSConfig with { };
         RunConfigurations = original.RunConfigurations.Select(r => r.DeepCopy()).ToList();
-        LocalSettingsWindow = original.LocalSettingsWindow?.Clone();
-        GlobalSettingsWindow = original.GlobalSettingsWindow?.Clone();
-        EditTrainWindow = original.EditTrainWindow?.Clone();
-        InissSettingsWindow = original.InissSettingsWindow?.Clone();
+        Windows = original.Windows.Clone();
     }
 }

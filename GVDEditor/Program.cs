@@ -3,6 +3,7 @@ using GVDEditor.Domain.Calendar;
 using GVDEditor.Integration;
 using GVDEditor.Mcp;
 using GVDEditor.UI.Main;
+using GVDEditor.UI.Settings;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 using ToolsCore;
@@ -24,10 +25,13 @@ internal static class Program
         using var iniss = new InissProcessService();
         using var mcp = new GvdMcpServer();
 
-        // pismo editora TabTab bolo do etapy pisiem v nastaveniach sucastou stylu
-        if (context.Config.Fonts.Editor is null && context.UsingStyle.TabTabEditorScheme.LegacyEditorFont is { } legacy
-            && legacy != AppFonts.DefaultEditor)
+        // pismo editora TabTab bolo v starom subore stylov - pri jeho prevode sa presunie do konfiguracie
+        // (novy subor schem ho uz nema, preto sa konfiguracia hned zapise)
+        if (context.Config.Fonts.Editor is null && context.UsingStyle.LegacyEditorFont is { } legacy && legacy != AppFonts.DefaultEditor)
+        {
             context.Config.Fonts.Editor = legacy;
+            SettingsWindow.SaveConfig(context.Config);
+        }
 
         // jazyk datumovych obmedzeni je okolite nastavenie (ako kultura) - meni sa len tu a po zmene nastaveni
         DateLimit.Loc = context.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;

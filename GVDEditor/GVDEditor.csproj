@@ -6,7 +6,7 @@
 		<AssemblyName>GVDEditor</AssemblyName>
 		<UseWindowsForms>true</UseWindowsForms>
 		<!-- verzia lokalnych zostav; vydanie ju prepise verziou zo znacky vX.Y (ToolsCore\Build\AppRelease.props) -->
-		<Version>1.9</Version>
+		<Version>1.10</Version>
 		<Description>Úprava textových súborov grafikonu</Description>
 		<Copyright>Copyright © 2022</Copyright>
 		<NeutralLanguage>sk</NeutralLanguage>

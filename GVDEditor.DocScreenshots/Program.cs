@@ -8,6 +8,7 @@ using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.Main;
 using ToolsCore.Tools;
 using ToolsCore;
+using ToolsCore.XML;
 
 namespace GVDEditor.DocScreenshots;
 
@@ -110,7 +111,10 @@ internal static class Program
 
     private static void SetTheme(string theme)
     {
-        var style = theme == "dark" ? GVDEditorStyle.DefaultDarkStyle : GVDEditorStyle.DefaultLightStyle;
+        // zabudovana schema harnessu (svetla alebo tmava), zvolena aj na stranke Vzhlad
+        var style = Context.Session.Styles[theme == "dark" ? StyleNames.Dark : StyleNames.Light];
+        Context.Session.Styles.Active = style.Name;
+        Context.Session.Styles.FollowSystem = false;
         Context.Session.UsingStyle = style;
         AppInit.MsgBoxStyleInit(style, Context.Config);
     }

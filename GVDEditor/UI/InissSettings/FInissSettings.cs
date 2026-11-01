@@ -61,7 +61,7 @@ internal partial class FInissSettings : Form
         _iniss = iniss;
         _dialogs = dialogs;
         InitializeComponent();
-        GVDEditor.UI.Settings.SettingsWindow.ApplyPlacement(this, _ctx.Config.InissSettingsWindow);
+        GVDEditor.UI.Settings.SettingsWindow.ApplyPlacement(this, _ctx.Config.Windows.InissSettings);
         dgvValues.AutoGenerateColumns = false;
         // fyzicke tabule vsetkych grafikonov v poradi, v akom ich INISS indexuje (Tables\…<N>)
         _tables = InissTableMap.Build(_ctx.Workspace.GVDDirs);
@@ -1321,7 +1321,7 @@ internal partial class FInissSettings : Form
     {
         _iniss.StateChanged -= Iniss_StateChanged;
         // velkost okna sa pamata ako pri lokalnych a globalnych nastaveniach
-        _ctx.Config.InissSettingsWindow = GVDEditor.UI.Settings.SettingsWindow.CapturePlacement(this);
+        _ctx.Config.Windows.InissSettings = GVDEditor.UI.Settings.SettingsWindow.CapturePlacement(this);
         GVDEditor.UI.Settings.SettingsWindow.SaveConfig(_ctx.Config);
         base.OnFormClosed(e);
     }

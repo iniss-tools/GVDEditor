@@ -18,19 +18,22 @@ internal partial class FMain
 {
     private void ShowAppSettings(string? page = null)
     {
-        var old = _ctx.Config;
-        var form = new FAppSettings(_ctx, _mcp, _commands);
+        var mcp = _ctx.Config.McpServer;
+        using var form = new FAppSettings(_ctx, _mcp, _commands);
         if (page != null) form.PreselectMenuItem(page);
-        if (form.ShowDialog() != DialogResult.OK)
-            return;
+        // po kazdom ulozeni (aj tlacidlom Pouzit pri otvorenom okne)
+        form.Applied += (_, _) =>
+        {
+            UpdateMainUI();
 
-        UpdateMainUI();
+            // tieto nastavenia sa inak nacitaju len pri starte programu
+            DateLimit.Loc = _ctx.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
 
-        // tieto nastavenia sa inak nacitaju len pri starte programu
-        DateLimit.Loc = _ctx.Config.DateLimitLocate == AppLanguage.Czech ? DateLimit.Locale.Cz : DateLimit.Locale.Sk;
-
-        if (!old.McpServer.SameAs(_ctx.Config.McpServer))
-            StartMcp();
+            if (!mcp.SameAs(_ctx.Config.McpServer))
+                StartMcp();
+            mcp = _ctx.Config.McpServer;
+        };
+        form.ShowDialog();
     }
 
     private void ShowInfoApp()

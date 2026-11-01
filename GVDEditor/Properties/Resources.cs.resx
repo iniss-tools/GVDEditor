@@ -3898,9 +3898,6 @@ Před zápisem se uloží záloha.</value>
   <data name="Settings_ReopenLast" xml:space="preserve">
     <value>Při spuštění otevřít naposledy otevřenou instalaci INISSu</value>
   </data>
-  <data name="Settings_ColumnsPage" xml:space="preserve">
-    <value>Tabulka vlaků</value>
-  </data>
   <data name="Cmd_ShowLogs" xml:space="preserve">
     <value>Otevřít složku s logy</value>
   </data>
