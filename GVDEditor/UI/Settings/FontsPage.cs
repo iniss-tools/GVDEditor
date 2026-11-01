@@ -220,7 +220,8 @@ public partial class FontsPage : UserControl, ISettingsPage
     private void ShowCurrent()
     {
         var font = _current;
-        pDetail.Enabled = font is not null;
+        // popisy ostavaju povolene - zakazane by boli v tmavej scheme necitatelne
+        FormUtils.SetInputsEnabled(pDetail, font is not null);
         bDuplicate.Enabled = bDelete.Enabled = font is not null;
 
         _loading = true;

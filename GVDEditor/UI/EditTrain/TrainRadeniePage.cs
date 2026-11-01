@@ -6,6 +6,7 @@ using GVDEditor.Integration;
 using GVDEditor.UI.Settings;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Tools;
+using ToolsCore.Tools;
 
 namespace GVDEditor.UI.EditTrain;
 
@@ -128,7 +129,8 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
     {
         var radenie = Selected;
         _loading = true;
-        tlpDetail.Enabled = radenie != null;
+        // popisy ostavaju povolene - zakazane by boli v tmavej scheme necitatelne
+        FormUtils.SetInputsEnabled(tlpDetail, radenie != null);
         bDuplicate.Enabled = bRemove.Enabled = radenie != null;
 
         tbText.Text = radenie?.Text ?? "";
@@ -144,7 +146,7 @@ public partial class TrainRadeniePage : UserControl, ITrainPage
 
     private void UpdateValidityFields()
     {
-        dtpFrom.Enabled = dtpTo.Enabled = tbLimit.Enabled = bLimit.Enabled = cbValidity.Checked;
+        dtpFrom.Enabled = dtpTo.Enabled = tbLimit.Enabled = bLimit.Enabled = Selected != null && cbValidity.Checked;
         bPlay.Enabled = Selected is { Sounds.Count: > 0 };
     }
 

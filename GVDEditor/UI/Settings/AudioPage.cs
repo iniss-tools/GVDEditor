@@ -3,6 +3,7 @@ using ExControls;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
 using GVDEditor.Properties;
+using ToolsCore.Tools;
 using Field = GVDEditor.Domain.Rules.AudioRules.Field;
 
 namespace GVDEditor.UI.Settings;
@@ -151,7 +152,8 @@ public partial class AudioPage : UserControl, ISettingsPage
         pDetail.SuspendLayout();
         try
         {
-            tlpDetail.Enabled = audio is not null;
+            // popisy ostavaju povolene - zakazane by boli v tmavej scheme necitatelne
+            FormUtils.SetInputsEnabled(tlpDetail, audio is not null);
             tbName.Text = audio?.Name ?? "";
             tbShortName.Text = audio?.ShortName ?? "";
             tbQueue.Text = audio?.QueueName ?? "";

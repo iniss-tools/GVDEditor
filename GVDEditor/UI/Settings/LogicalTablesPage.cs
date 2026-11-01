@@ -194,7 +194,8 @@ public partial class LogicalTablesPage : UserControl, ISettingsPage
         pDetail.SuspendLayout();
         try
         {
-            tlpDetail.Enabled = table is not null;
+            // popisy ostavaju povolene - zakazane by boli v tmavej scheme necitatelne
+            FormUtils.SetInputsEnabled(tlpDetail, table is not null);
             tbName.Text = table?.Name ?? "";
             tbKey.Text = table?.Key ?? "";
             cbType.SelectedItem = table?.ViewType;

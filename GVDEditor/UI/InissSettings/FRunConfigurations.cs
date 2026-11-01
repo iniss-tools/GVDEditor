@@ -235,7 +235,8 @@ internal partial class FRunConfigurations : Form
         _updating = true;
         try
         {
-            tlpDetail.Enabled = config is not null;
+            // popisy ostavaju povolene - zakazane by boli v tmavej scheme necitatelne
+            FormUtils.SetInputsEnabled(tlpDetail, config is not null);
             bCopy.Enabled = bRemove.Enabled = config is not null;
             bRun.Enabled = config is not null;
             if (config is null)

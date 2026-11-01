@@ -150,7 +150,8 @@ public partial class TableTextsPage : UserControl, ISettingsPage
         pDetail.SuspendLayout();
         try
         {
-            tlpDetail.Enabled = text is not null;
+            // popisy ostavaju povolene - zakazane by boli v tmavej scheme necitatelne
+            FormUtils.SetInputsEnabled(tlpDetail, text is not null);
             tbName.Text = text?.Name ?? "";
             tbKey.Text = text?.Key ?? "";
             tbComment.Text = text?.Comment ?? "";
@@ -330,7 +331,7 @@ public partial class TableTextsPage : UserControl, ISettingsPage
         _loading = loading;
         cbFont.Enabled = train is not null;
         bTrainRemove.Enabled = train is not null;
-        cbAddTrain.Enabled = bTrainAdd.Enabled = cbAddTrain.Items.Count > 0;
+        cbAddTrain.Enabled = bTrainAdd.Enabled = _current is not null && cbAddTrain.Items.Count > 0;
         _fontTip.SetToolTip(bTrainAdd, cbAddTrain.Items.Count > 0 ? "" : Resources.TableTextsPage_Bez_vlakov);
     }
 
