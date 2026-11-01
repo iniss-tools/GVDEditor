@@ -16,6 +16,7 @@ using Microsoft.Extensions.Logging;
 using ModelContextProtocol;
 using ModelContextProtocol.Protocol;
 using ModelContextProtocol.Server;
+using Serilog;
 using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Mcp;
@@ -90,6 +91,7 @@ internal sealed class GvdMcpServer : IDisposable
         if (key.Length == 0)
         {
             Error = "no access key";
+            Log.Warning("MCP: server je zapnuty, ale nema pristupovy kluc - nespusti sa");
             return;
         }
 
@@ -98,12 +100,12 @@ internal sealed class GvdMcpServer : IDisposable
             // zostavenie a start servera mimo vlakna okna - pri starte GVDEditora by ho inak na chvilu zablokovali
             _app = await Task.Run(() => StartAsync(editor, settings.Port, key, settings.AllowWrites)).ConfigureAwait(false);
             Address = settings.Address;
-            Log.Info("MCP: server bezi na " + Address);
+            Log.Information("MCP: server bezi na {Address} (zmeny povolene: {AllowWrites})", Address, settings.AllowWrites);
         }
         catch (Exception e) when (e is IOException or InvalidOperationException or SocketException)
         {
             Error = e.Message;
-            Log.Exception(e, "MCP: server sa nespustil");
+            Log.Error(e, "MCP: server sa na porte {Port} nespustil", settings.Port);
         }
     }
 
@@ -111,7 +113,8 @@ internal sealed class GvdMcpServer : IDisposable
     {
         var builder = WebApplication.CreateSlimBuilder(new WebApplicationOptions { ContentRootPath = AppContext.BaseDirectory });
         builder.WebHost.ConfigureKestrel(options => options.Listen(IPAddress.Loopback, port));
-        builder.Logging.ClearProviders();
+        // do zaznamu programu len upozornenia a chyby servera (napr. vynimka v nastroji)
+        builder.Logging.ClearProviders().AddSerilog().SetMinimumLevel(LogLevel.Warning);
         builder.Services.AddSingleton(editor);
         builder.Services.AddMcpServer(options =>
             {

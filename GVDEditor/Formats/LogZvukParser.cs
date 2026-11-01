@@ -1,6 +1,7 @@
 using System.Globalization;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
+using Serilog;
 using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Formats;
@@ -76,7 +77,7 @@ internal static class LogZvukParser
         }
         catch (Exception e) when (e is IOException or InvalidDataException or ArgumentException)
         {
-            Log.Warning(string.Format(CultureInfo.CurrentCulture, Resources.LogZvuk_ReadPartial, file, texts.Count, e.Message));
+            Log.Warning(e, "Subor {File} sa precital len ciastocne ({Count} textov)", file, texts.Count);
         }
 
         return texts;

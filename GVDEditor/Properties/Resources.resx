@@ -545,7 +545,7 @@ Program GVDEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnos
     <value>… a ďalších {0} varovaní.</value>
   </data>
   <data name="LoadWarnings_Footer" xml:space="preserve">
-    <value>Preskočené položky sa pri uložení grafikonu nezapíšu. Podrobnosti sú v %LocalAppData%\GVDEditor\logs\info.log, ak je zapnuté logovanie.</value>
+    <value>Preskočené položky sa pri uložení grafikonu nezapíšu. Podrobnosti sú v logoch programu (Pomocník, Otvoriť priečinok s logmi).</value>
   </data>
   <data name="FTableLogical_Neplatné_číslo_stanice" xml:space="preserve">
     <value>Číslo stanice (IDSTATION) musí byť celé číslo alebo prázdne.</value>
@@ -2137,9 +2137,6 @@ Záloha pôvodných súborov: {1}
   <data name="Analyzer_ZpozdeniCacheOld_Fix" xml:space="preserve">
     <value>Zmazať {0} (INISS si ho pri štarte vytvorí znova)</value>
   </data>
-  <data name="Analyzer_DeleteFailed" xml:space="preserve">
-    <value>Nepodarilo sa zmazať {0}</value>
-  </data>
   <data name="Analyzer_TableCatalog" xml:space="preserve">
     <value>Katalógová</value>
   </data>
@@ -2347,9 +2344,6 @@ Záloha pôvodných súborov: {1}
   <data name="LogZvuk_UnknownDataObject" xml:space="preserve">
     <value>Neznámy objekt dát {0} pri položke {1}.</value>
   </data>
-  <data name="LogZvuk_ReadPartial" xml:space="preserve">
-    <value>Súbor {0} sa nepodarilo prečítať celý ({1} položiek načítaných): {2}</value>
-  </data>
   <data name="LogZvuk_BackRefUnsupported" xml:space="preserve">
     <value>Odkaz na už načítaný objekt nie je podporovaný.</value>
   </data>
@@ -2462,9 +2456,6 @@ Smerovanie vlaku a/alebo stanice vlaku,
   </data>
   <data name="Export3_RoutingMissing" xml:space="preserve">
     <value>Neexistujúce smerovanie vlaku {0}</value>
-  </data>
-  <data name="BlockMigrator_Split" xml:space="preserve">
-    <value>Grafikon {0} rozdelený na {1} priečinkov: {2}</value>
   </data>
   <data name="Vyluka_OnlyOne" xml:space="preserve">
     <value>Vlak nemôže mať v grafikone viac než jednu výluku.</value>

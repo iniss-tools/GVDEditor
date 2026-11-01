@@ -2,6 +2,7 @@ using System.Globalization;
 using GVDEditor.Domain.Snapshots;
 using GVDEditor.Properties;
 using ModelContextProtocol;
+using Serilog;
 
 namespace GVDEditor.Mcp;
 
@@ -66,13 +67,18 @@ internal sealed class EditorAccess(EditorContext context, Control? owner, IAgent
                 {
                     result = write(context);
                 }
-                catch
+                catch (Exception e)
                 {
+                    // McpException je odpoved agentovi (neplatna zmena, zaneprazdnene okno), ostatne chyby su necakane
+                    if (e is not McpException)
+                        Log.Warning(e, "MCP: zmena agenta {Step} zlyhala - grafikon vrateny", step);
                     before.Restore();
                     throw;
                 }
 
                 changed = !before.SameAs(GrafikonState.Capture(document, context.Directory));
+                if (changed && !dryRun)
+                    Log.Information("MCP: agent zmenil grafikon - {Step}", step);
                 if (!changed || !dryRun)
                     return changed ? step : null;
                 before.Restore();

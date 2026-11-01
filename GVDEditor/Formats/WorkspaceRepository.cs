@@ -2,6 +2,7 @@ using ExControls;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
+using Serilog;
 using ToolsCore.Iniss.Entities;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
@@ -50,8 +51,9 @@ internal static class WorkspaceRepository
         {
             workspace.TrainsTypes = new ExBindingList<TrainType>(TrTypesFile.Read(dataDir, warnings));
         }
-        catch (FileNotFoundException)
+        catch (FileNotFoundException e)
         {
+            Log.Warning("V instalacii {DataDir} chyba subor {File} - bez typov vlakov", dataDir, e.FileName);
         }
 
         try
@@ -59,8 +61,9 @@ internal static class WorkspaceRepository
             workspace.Audios = new ExBindingList<Audio>(AudioFile.Read(dataDir, stations, out var trailer));
             workspace.AudioTrailer = trailer;
         }
-        catch (FileNotFoundException)
+        catch (FileNotFoundException e)
         {
+            Log.Warning("V instalacii {DataDir} chyba subor {File} - bez nastaveni zvuku", dataDir, e.FileName);
         }
 
         return workspace;

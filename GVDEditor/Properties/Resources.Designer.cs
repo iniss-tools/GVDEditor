@@ -5927,15 +5927,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nepodarilo sa zmazať {0}.
-        /// </summary>
-        internal static string Analyzer_DeleteFailed {
-            get {
-                return ResourceManager.GetString("Analyzer_DeleteFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Katalógová.
         /// </summary>
         internal static string Analyzer_TableCatalog {
@@ -6557,15 +6548,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Súbor {0} sa nepodarilo prečítať celý ({1} položiek načítaných): {2}.
-        /// </summary>
-        internal static string LogZvuk_ReadPartial {
-            get {
-                return ResourceManager.GetString("LogZvuk_ReadPartial", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Odkaz na už načítaný objekt nie je podporovaný..
         /// </summary>
         internal static string LogZvuk_BackRefUnsupported {
@@ -6895,15 +6877,6 @@ namespace GVDEditor.Properties {
         internal static string Export3_RoutingMissing {
             get {
                 return ResourceManager.GetString("Export3_RoutingMissing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Grafikon {0} rozdelený na {1} priečinkov: {2}.
-        /// </summary>
-        internal static string BlockMigrator_Split {
-            get {
-                return ResourceManager.GetString("BlockMigrator_Split", resourceCulture);
             }
         }
         

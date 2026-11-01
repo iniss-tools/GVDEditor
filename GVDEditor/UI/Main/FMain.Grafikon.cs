@@ -10,6 +10,7 @@ using GVDEditor.Services;
 using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.EditTrain;
 using GVDEditor.UI.Import;
+using Serilog;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 using ToolsCore.XML;
@@ -53,6 +54,7 @@ internal partial class FMain
 
         try
         {
+            Log.Information("Otvara sa instalacia INISS {Path}", path);
             _ctx.OpenWorkspace(WorkspaceRepository.Load(path, _loadWarnings));
         }
         catch (Exception e) when (CatchErrors)
@@ -389,7 +391,7 @@ internal partial class FMain
         catch (Exception e)
         {
             //chybny Export3A ohlasi az nacitanie grafikonu
-            Log.Exception(e);
+            Log.Warning(e, "Bloky grafikonu {Path} sa nepodarilo zistit - nacita sa bez rozdelenia", dir.Dir.FullPath);
             return [];
         }
     }
@@ -417,7 +419,7 @@ internal partial class FMain
         }
         catch (Exception e)
         {
-            Log.Exception(e);
+            Log.Error(e, "Rozdelenie grafikonu {Path} na {Count} priecinkov zlyhalo", dir.Dir.FullPath, blocks.Count);
             _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Rozdelenie_zlyhalo, e.Message));
             return false;
         }
@@ -547,7 +549,7 @@ internal partial class FMain
         }
         catch (Exception e)
         {
-            Log.Exception(e);
+            Log.Warning(e, "Import grafikonu z {Source} zlyhal", dialog.SelectedPath);
             _dialogs.ShowError(e.Message);
             return;
         }
@@ -635,7 +637,7 @@ internal partial class FMain
         }
         catch (Exception exception)
         {
-            Log.Exception(exception);
+            Log.Error(exception, "Prevod udajov z ELIS pre grafikon {Path} zlyhal", import.GVDPath);
             _dialogs.ShowError(exception.Message);
             return;
         }
@@ -649,7 +651,7 @@ internal partial class FMain
                 return;
 
             if (ElisImportService.SaveChoices(import, review, _ctx.Stations, _ctx.Config.Language) is { } saveError)
-                Log.Exception(saveError);
+                Log.Warning(saveError, "Volby importu z ELIS (kratke hlasenia, poznamky) sa nepodarilo ulozit");
         }
 
         ElisImportService.Apply(import, conversion, review, _ctx.Document, _ctx.Workspace.Sounds);
@@ -683,6 +685,8 @@ internal partial class FMain
         _ctx.Document.Trains.ResetBindings();
 
         MarkChanged(Resources.History_ImportElis);
+        Log.Information("Import z ELIS do {Path} ({Mode}): odstranenych {Removed}, pridanych {Imported}, aktualizovanych {Updated}, textov tabul {Texts}",
+            import.GVDPath, import.Mode, removed, imported.Count, updated, texts);
 
         _dialogs.ShowInfo(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Import_z_ELIS_dokončený, removed, imported.Count, updated, texts));
     }
@@ -700,7 +704,7 @@ internal partial class FMain
 
         //ulozenie priradenia nie je kriticke - import moze pokracovat, len sa nabuduce spyta znova
         if (ElisImportService.SaveStationMap(import, dialog.Result, _ctx.Config.Language) is { } error)
-            Log.Exception(error);
+            Log.Warning(error, "Priradenie stanic z ELIS sa nepodarilo ulozit");
 
         return true;
     }

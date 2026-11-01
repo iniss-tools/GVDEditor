@@ -4,6 +4,7 @@ using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
+using Serilog;
 using ToolsCore.Iniss.Entities;
 using ToolsCore.Iniss.Tools;
 
@@ -95,7 +96,7 @@ internal static class GrafikonRepository
         }
         catch (Exception exception)
         {
-            Log.Exception(exception);
+            Log.Error(exception, "Grafikon {Path} sa nepodarilo ulozit - subory sa vracaju do stavu pred ulozenim", path);
 
             var message = transaction.TryRollback()
                 ? string.Format(CultureInfo.CurrentCulture, Resources.FMain_Uloženie_grafikonu_zlyhalo_zmeny_boli_vrátené, exception.Message)
@@ -120,6 +121,7 @@ internal static class GrafikonRepository
     {
         var document = context.Document;
 
+        Log.Information("Novy grafikon {Path} (stanica {Station}, {From} - {To})", path, gvd.ThisStation.Name, gvd.StartValidTimeTable, gvd.EndValidTimeTable);
         TrainsFile.Write(path, document.Trains, gvd, context);
         TablesFile.Write(path, document.TabTabs, document.TableCatalogs, document.TablePhysicals, document.TableLogicals);
         TextsFile.Write(path, document.TableTexts);

@@ -1,4 +1,5 @@
 using System.Globalization;
+using Serilog;
 using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Domain.Analysis;
@@ -29,7 +30,7 @@ internal sealed class LoadWarnings
     /// </summary>
     public void Add(string message)
     {
-        Log.Warning(message);
+        Log.Warning("Nacitanie: {Message}", message);
         lock (_locker)
             _items.Add(message);
     }

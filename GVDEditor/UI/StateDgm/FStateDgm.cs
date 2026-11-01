@@ -8,6 +8,7 @@ using GVDEditor.UI.Controls;
 using GVDEditor.Properties;
 using JetBrains.Annotations;
 using ScintillaNET;
+using Serilog;
 using ToolsCore;
 using ToolsCore.Commands;
 using ToolsCore.Icons;
@@ -664,9 +665,11 @@ public partial class FStateDgm : Form
             try
             {
                 StateDgmFile.WriteText(_dir, _ctx.Workspace.DataDir, _sc.Text);
+                Log.Information("Stavovy diagram grafikonu {Directory} ulozeny ako text s chybou syntaxe na riadku {Line}", _dir, _rawError.Line + 1);
             }
             catch (Exception e) when (e is IOException or UnauthorizedAccessException)
             {
+                Log.Error(e, "Stavovy diagram grafikonu {Directory} sa nepodarilo ulozit", _dir);
                 Utils.ShowError(e.Message);
                 return false;
             }
@@ -688,9 +691,11 @@ public partial class FStateDgm : Form
         try
         {
             StateDgmFile.Write(_dir, _ctx.Workspace.DataDir, _d);
+            Log.Information("Stavovy diagram grafikonu {Directory} ulozeny", _dir);
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException)
         {
+            Log.Error(e, "Stavovy diagram grafikonu {Directory} sa nepodarilo ulozit", _dir);
             Utils.ShowError(e.Message);
             return false;
         }

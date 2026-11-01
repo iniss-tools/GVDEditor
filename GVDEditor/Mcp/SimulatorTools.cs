@@ -4,6 +4,7 @@ using GVDEditor.Config;
 using GVDEditor.Integration;
 using ModelContextProtocol;
 using ModelContextProtocol.Server;
+using Serilog;
 using TableSimulator.Contracts.Station;
 
 namespace GVDEditor.Mcp;
@@ -83,9 +84,12 @@ internal static class SimulatorTools
         }
         catch (Exception e) when (e is HttpRequestException or JsonException or TaskCanceledException)
         {
+            Log.Warning(e, "MCP: priprava stanice v simulatore {Url} zlyhala", url);
             throw new McpException($"simulator.offline: The simulator at {url} does not answer or refused the request: {e.Message}");
         }
 
+        Log.Information("MCP: agent pripravil stanicu v simulatore {Url} pre konfiguraciu {Config}: linky pridane {LinesAdded}, upravene {LinesUpdated}",
+            url, config.Name, imported.LinesAdded, imported.LinesUpdated);
         return new SimulatorPrepareResult(false, url.ToString(), config.Name, lineInfos, plan.Request.XmlTables.Count, plan.Request.LogFolder,
             new SimulatorImportInfo(imported.LinesAdded, imported.LinesUpdated, imported.BoardsAdded, imported.BoardsKept, imported.VirtualBoardsAdded,
                 imported.VirtualBoardsKept, imported.UnsupportedLines, imported.SkippedBoards, imported.LogFolder switch

@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
+using Serilog;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 
@@ -203,7 +204,7 @@ internal static class BlockMigrator
         {
             foreach (var dir in created)
                 try { Directory.Delete(dir, true); }
-                catch (Exception e) { Log.Exception(e); }
+                catch (Exception e) { Log.Warning(e, "Priecinok {Directory} sa po neuspesnom rozdeleni nepodarilo zmazat", dir); }
             throw;
         }
 
@@ -226,7 +227,7 @@ internal static class BlockMigrator
         dirList.InsertRange(position, newDirs);
         DirListFile.Write(dataDir, dirList);
 
-        Log.Info(string.Format(CultureInfo.CurrentCulture, Resources.BlockMigrator_Split, gvdPath, blocks.Count, string.Join(", ", blocks.Select(b => b.DirName))));
+        Log.Information("Grafikon {Path} rozdeleny na {Count} priecinkov: {Directories}", gvdPath, blocks.Count, blocks.Select(b => b.DirName));
         return newDirs;
     }
 

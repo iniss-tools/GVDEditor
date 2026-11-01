@@ -1,4 +1,5 @@
 using GVDEditor.Config;
+using Serilog;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.XML;
 
@@ -59,7 +60,7 @@ internal static class SettingsWindow
         }
         catch (Exception e)
         {
-            Log.Exception(e);
+            Log.Warning(e, "Nastavenia programu sa nepodarilo ulozit");
         }
     }
 

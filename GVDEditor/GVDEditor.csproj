@@ -38,6 +38,8 @@
 		     s ním by autocomplete zlyhal pri runtime type-loade. Balík "Scintilla.NET" (s bodkou, VPKSoft)
 		     je nepomenovane-silný fork zo stejnej vetvy, kompatibilný s AutoCompleteMenu. -->
 		<PackageReference Include="Scintilla.NET" Version="5.3.2.9" />
+		<!-- upozornenia servera MCP (Kestrel, SDK) do zaznamu programu -->
+		<PackageReference Include="Serilog.Extensions.Logging" Version="10.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<!-- ElisData.cs je zdieľaný medzi GVDEditor (tento proces) a ELISBridge (samostatný x86 proces) -->

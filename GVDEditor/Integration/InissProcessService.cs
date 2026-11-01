@@ -1,6 +1,7 @@
 using System.Globalization;
 using GVDEditor.Config;
 using GVDEditor.Properties;
+using Serilog;
 using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Integration;
@@ -157,12 +158,15 @@ internal sealed class InissProcessService : IInissProcess
         }
         catch (Exception e) when (e is Win32Exception or InvalidOperationException or FileNotFoundException)
         {
+            Log.Error(e, "INISS {Config} sa nepodarilo spustit: {Path} {Arguments}", launch.Configuration.Name, launch.Path, launch.Arguments);
             // proces nebezi - nesmie ostat ako "beziaci"
             process.Exited -= OnExited;
             process.Dispose();
             throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.FMain_Nepodarilo_sa_spustiť_vybraný_program, e.Message), e);
         }
 
+        Log.Information("Spusteny INISS {Config}: {Path} {Arguments} (PID {Pid}, spravca {RunAsAdmin})", launch.Configuration.Name, launch.Path,
+            launch.Arguments, process.Id, launch.Configuration.RunAsAdmin);
         var instance = new InissInstance(launch, process);
         _instances.Add(instance);
         OnStateChanged();
@@ -179,11 +183,13 @@ internal sealed class InissProcessService : IInissProcess
         try
         {
             instance.Process.Kill();
+            Log.Information("INISS {Config} nasilne ukonceny", instance.Launch.Configuration.Name);
         }
         catch (Exception e) when (e is Win32Exception or NotSupportedException or InvalidOperationException)
         {
             if (HasExited(instance.Process))
                 return;
+            Log.Warning(e, "INISS {Config} sa nepodarilo ukoncit", instance.Launch.Configuration.Name);
             throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.FMain_INISS_neda_ukoncit, e.Message), e);
         }
     }
@@ -196,7 +202,10 @@ internal sealed class InissProcessService : IInissProcess
         try
         {
             if (!HasExited(instance.Process))
+            {
+                Log.Information("INISS {Config} sa ukoncuje riadne", instance.Launch.Configuration.Name);
                 instance.Process.CloseMainWindow();
+            }
         }
         catch (InvalidOperationException)
         {
@@ -227,6 +236,7 @@ internal sealed class InissProcessService : IInissProcess
                 }
                 catch (OperationCanceledException)
                 {
+                    Log.Warning("INISS {Config} sa neukoncil do {Timeout}", instance.Launch.Configuration.Name, RestartTimeout);
                     if (!confirmKill())
                         return;
 
@@ -293,6 +303,10 @@ internal sealed class InissProcessService : IInissProcess
 
         _instances.Remove(instance);
         var code = ExitCodeOf(instance.Process);
+        if (code == 0)
+            Log.Information("INISS {Config} skoncil", instance.Launch.Configuration.Name);
+        else
+            Log.Warning("INISS {Config} skoncil s kodom {ExitCode}", instance.Launch.Configuration.Name, code);
         instance.Process.Exited -= OnExited;
         instance.Process.Dispose();
         Exited?.Invoke(this, new InissExitedEventArgs(instance, code));

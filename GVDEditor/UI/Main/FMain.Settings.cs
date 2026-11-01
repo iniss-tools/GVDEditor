@@ -8,6 +8,7 @@ using GVDEditor.UI.Settings;
 using GVDEditor.UI.StateDgm;
 using GVDEditor.UI.TabTab;
 using Microsoft.VisualBasic.FileIO;
+using Serilog;
 using ToolsCore.Forms;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.XML;
@@ -166,9 +167,11 @@ internal partial class FMain
             try
             {
                 FileSystem.DeleteDirectory(gvd.Dir.FullPath, UIOption.AllDialogs, RecycleOption.SendToRecycleBin);
+                Log.Information("Odstraneny grafikon {Path} presunuty do Kosa", gvd.Dir.FullPath);
             }
             catch (Exception e)
             {
+                Log.Warning(e, "Odstraneny grafikon {Path} sa nepodarilo presunut do Kosa", gvd.Dir.FullPath);
                 _dialogs.ShowError(e.Message);
             }
         }

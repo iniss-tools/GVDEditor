@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Globalization;
 using GVDEditor.Properties;
 using Iniss.PlanRadenia;
+using Serilog;
 
 namespace GVDEditor.Integration;
 
@@ -123,13 +124,18 @@ internal static class PlanRadeniaReaderClient
         foreach (var argument in arguments)
             info.ArgumentList.Add(argument);
 
+        Log.Information("Spusta sa {Exe} {Arguments}", ExeName, info.ArgumentList);
         using var process = Process.Start(info)
                             ?? throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.PlanRadenia_ProgramMissing, ExeName));
         var errors = new System.Text.StringBuilder();
+        // cely vystup chyb aj so zasobnikom volani (pouzivatel ho nevidi) - len do zaznamu
+        var log = new System.Text.StringBuilder();
         process.ErrorDataReceived += (_, e) =>
         {
             if (e.Data is null)
                 return;
+            lock (log)
+                log.AppendLine(e.Data);
             // "strana 12: Kuty, vlakov 8"
             if (e.Data.StartsWith("strana ", StringComparison.Ordinal) &&
                 int.TryParse(e.Data.AsSpan(7, Math.Max(0, e.Data.IndexOf(':', StringComparison.Ordinal) - 7)), NumberStyles.Integer, CultureInfo.InvariantCulture,
@@ -151,6 +157,7 @@ internal static class PlanRadeniaReaderClient
             try
             {
                 process.Kill(true);
+                Log.Information("{Exe} zruseny - proces ukonceny", ExeName);
             }
             catch (InvalidOperationException)
             {
@@ -163,6 +170,9 @@ internal static class PlanRadeniaReaderClient
         string detail;
         lock (errors)
             detail = errors.ToString().Trim();
+        if (process.ExitCode != 0)
+            lock (log)
+                Log.Warning("{Exe} skoncil s kodom {ExitCode}: {Output}", ExeName, process.ExitCode, log.ToString().Trim());
         return process.ExitCode switch
         {
             0 => output,

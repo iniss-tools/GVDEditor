@@ -7,6 +7,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.Properties;
 using Iniss.Elis;
+using Serilog;
 using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Integration;
@@ -185,6 +186,7 @@ public sealed partial class ElisBridgeClient
                 StandardErrorEncoding = Encoding.UTF8
             };
 
+            Log.Information("Spusta sa {Exe} {Arguments}", exe, info.Arguments);
             string error;
             int exitCode;
             using (var process = Process.Start(info))
@@ -197,6 +199,11 @@ public sealed partial class ElisBridgeClient
                 process.WaitForExit();
                 exitCode = process.ExitCode;
             }
+
+            if (exitCode != 0)
+                Log.Warning("{Exe} skoncil s kodom {ExitCode}: {Output}", BridgeExeName, exitCode, error.Trim());
+            else
+                Log.Information("{Exe} skoncil: {Output}", BridgeExeName, error.Trim());
 
             if (exitCode != 0)
                 throw new InvalidOperationException(exitCode switch

@@ -3,6 +3,7 @@ using ExControls;
 using GVDEditor.Config;
 using GVDEditor.Integration;
 using GVDEditor.Properties;
+using Serilog;
 using TableSimulator.Contracts.Station;
 using ToolsCore.Iniss.Registry;
 using ToolsCore.Iniss.Tools;
@@ -839,6 +840,7 @@ internal partial class FInissSettings : Form
         }
         catch (InvalidOperationException ex)
         {
+            Log.Error(ex, "Restart INISS po zmene nastaveni zlyhal");
             _dialogs.ShowError(ex.Message);
         }
     }
@@ -861,6 +863,7 @@ internal partial class FInissSettings : Form
         }
         catch (Exception ex) when (ex is UnauthorizedAccessException or IOException or System.Security.SecurityException)
         {
+            Log.Error(ex, "Nastavenia INISS {AppName} sa nepodarilo zapisat", _appName);
             _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.InissSettings_SaveError, ex.Message));
             return false;
         }
@@ -963,6 +966,7 @@ internal partial class FInissSettings : Form
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException or System.Security.SecurityException)
         {
+            Log.Error(e, "Zalohu konfiguracie INISS {AppName} do {Directory} sa nepodarilo vytvorit", _appName, BackupDir);
             _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.InissTools_BackupFailed, e.Message));
             return false;
         }
@@ -996,9 +1000,11 @@ internal partial class FInissSettings : Form
             }
 
             file.Save(dialog.FileName);
+            Log.Information("Konfiguracia INISS {AppName} exportovana do {File}", _appName, dialog.FileName);
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException or System.Security.SecurityException)
         {
+            Log.Warning(e, "Export konfiguracie INISS {AppName} do {File} zlyhal", _appName, dialog.FileName);
             _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.InissTools_ExportFailed, e.Message));
         }
     }
@@ -1017,9 +1023,11 @@ internal partial class FInissSettings : Form
         try
         {
             RegTools.ToIni(m.Config, answer == DialogResult.Yes).Save(dialog.FileName);
+            Log.Information("Konfiguracia INISS {AppName} exportovana do {File}", _appName, dialog.FileName);
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException)
         {
+            Log.Warning(e, "Export konfiguracie INISS {AppName} do {File} zlyhal", _appName, dialog.FileName);
             _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.InissTools_ExportFailed, e.Message));
         }
     }
@@ -1081,6 +1089,7 @@ internal partial class FInissSettings : Form
         }
         catch (Exception e) when (e is UnauthorizedAccessException or IOException or System.Security.SecurityException)
         {
+            Log.Error(e, "Kopia konfiguracie INISS {AppName} do {Target} zlyhala", _appName, name);
             _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.InissSettings_SaveError, e.Message));
             return;
         }
@@ -1112,6 +1121,7 @@ internal partial class FInissSettings : Form
             }
             catch (Exception e) when (e is IOException or UnauthorizedAccessException)
             {
+                Log.Warning(e, "Zdielane konfiguracie spustania sa nepodarilo ulozit");
                 _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.Run_SaveSharedFailed, e.Message));
             }
 
@@ -1169,9 +1179,15 @@ internal partial class FInissSettings : Form
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException)
         {
+            Log.Error(e, "Presmerovanie liniek na simulator: subor {File} sa nepodarilo zapisat", iniPath);
             _dialogs.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_WriteFailed, iniPath, e.Message));
             return;
         }
+
+        if (f.Undo)
+            Log.Information("Presmerovanie liniek na simulator zrusene v {File}", iniPath);
+        else
+            Log.Information("Linky {Lines} presmerovane na simulator {Host} v {File}", tablePorts.Keys, host, iniPath);
 
         var message = new StringBuilder(f.Undo ? Resources.InissRedirect_Undone
             : string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_Done, string.Join(", ", tablePorts.Keys)));
@@ -1201,6 +1217,8 @@ internal partial class FInissSettings : Form
         try
         {
             var result = await TableSimulatorClient.ImportAsync(url, _ctx.Config.TableSimulator.ApiKey, station, CancellationToken.None);
+            Log.Information("Stanica pripravena v simulatore {Url}: linky pridane {LinesAdded}, upravene {LinesUpdated}, tabule pridane {BoardsAdded}, ponechane {BoardsKept}",
+                url, result.LinesAdded, result.LinesUpdated, result.BoardsAdded, result.BoardsKept);
             var text = new StringBuilder(string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_SimulatorDone,
                 result.LinesAdded, result.LinesUpdated, result.BoardsAdded, result.BoardsKept));
             if (result.UnsupportedLines.Count > 0)
@@ -1227,22 +1245,27 @@ internal partial class FInissSettings : Form
         }
         catch (SimulatorHttpsRequiredException e)
         {
+            Log.Warning("Simulator {Url} vyzaduje HTTPS ({HttpsUrl})", url, e.HttpsUrl);
             return string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_StatusHttpsRequired, e.HttpsUrl);
         }
         catch (HttpRequestException e) when (TableSimulatorClient.IsUntrustedCertificate(e))
         {
+            Log.Warning(e, "Certifikat simulatora {Url} nie je doveryhodny", url);
             return string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_StatusUntrusted, new Uri(url, "api/https/certificate"));
         }
         catch (HttpRequestException e) when (e.StatusCode is System.Net.HttpStatusCode.Unauthorized)
         {
+            Log.Warning("Simulator {Url} odmietol pristupovy kluc", url);
             return Resources.InissRedirect_SimulatorUnauthorized;
         }
         catch (HttpRequestException e) when (e.StatusCode is System.Net.HttpStatusCode.Forbidden)
         {
+            Log.Warning("Pristupovy kluc simulatora {Url} nema opravnenie na pripravu stanice", url);
             return Resources.InissRedirect_SimulatorForbidden;
         }
         catch (Exception e) when (e is HttpRequestException or System.Text.Json.JsonException or TaskCanceledException)
         {
+            Log.Warning(e, "Priprava stanice v simulatore {Url} zlyhala", url);
             return string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_SimulatorFailed, e.Message);
         }
         finally

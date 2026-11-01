@@ -4,6 +4,7 @@ using GVDEditor.Domain.Analysis;
 using GVDEditor.Integration;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
+using Serilog;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 using ToolsCore.Icons;
@@ -98,7 +99,7 @@ internal partial class FAnalyzer : Form
         }
         catch (Exception exception)
         {
-            Log.Exception(exception);
+            Log.Error(exception, "Analyza grafikonu zlyhala");
             Utils.ShowError(exception.Message);
         }
         finally

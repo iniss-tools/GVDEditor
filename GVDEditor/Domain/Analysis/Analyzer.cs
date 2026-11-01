@@ -4,6 +4,7 @@ using GVDEditor.Formats;
 using GVDEditor.Properties;
 using GVDEditor.TabTabEditor;
 using GVDEditor.UI.Settings;
+using Serilog;
 using ToolsCore.Iniss.Expressions;
 using ToolsCore.Iniss.TabTab;
 using ToolsCore.Iniss.Tools;
@@ -289,7 +290,7 @@ internal class StaleZpozdeniCache : IProblem
         }
         catch (Exception e)
         {
-            Log.Exception(e, string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_DeleteFailed, CachePath));
+            Log.Warning(e, "Vyrovnavaciu pamat meskani {Path} sa nepodarilo zmazat", CachePath);
             return FixResult.Error;
         }
     }

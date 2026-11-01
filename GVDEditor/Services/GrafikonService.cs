@@ -6,6 +6,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
 using GVDEditor.Formats;
 using GVDEditor.Properties;
+using Serilog;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 using static ToolsCore.Iniss.Grafikon.GvdFileConsts;
@@ -21,8 +22,12 @@ internal static class GrafikonService
     /// <summary>
     /// Nacita grafikon na pozadi do noveho dokumentu - otvoreny grafikon sa medzitym nemeni.
     /// </summary>
-    public static Task<GrafikonDocument> LoadAsync(GVDDirectory dir, InissWorkspace workspace, LoadWarnings warnings) =>
-        Task.Run(() => GrafikonRepository.Load(dir.Dir.FullPath, dir.GVD, workspace, warnings));
+    public static Task<GrafikonDocument> LoadAsync(GVDDirectory dir, InissWorkspace workspace, LoadWarnings warnings)
+    {
+        // chybu nacitania zapise az okno chyby - zaznam o zaciatku hovori, ktoreho grafikonu sa tyka
+        Log.Information("Nacitava sa grafikon {Path}", dir.Dir.FullPath);
+        return Task.Run(() => GrafikonRepository.Load(dir.Dir.FullPath, dir.GVD, workspace, warnings));
+    }
 
     /// <summary>
     /// Ulozi grafikon (transakcne, pozri <see cref="GrafikonRepository.Save" />). Pred ulozenim podla nastavenia
@@ -39,6 +44,7 @@ internal static class GrafikonService
         dir.GVD.CreateData = DateOnly.FromDateTime(DateTime.Today);
 
         GrafikonRepository.Save(dir.Dir.FullPath, dir.GVD, context);
+        Log.Information("Grafikon {Path} ulozeny ({Trains} vlakov)", dir.Dir.FullPath, document.Trains.Count);
     }
 
     /// <summary>
@@ -54,6 +60,7 @@ internal static class GrafikonService
 
         Directory.CreateDirectory(dir.FullPath);
         InfoGvdFile.Write(dir.FullPath, gvd);
+        Log.Information("Novy grafikon {Directory} zaregistrovany v zozname grafikonov {DataDir}", dir.DirName, workspace.DataDir);
         return new GVDDirectory(dir, gvd);
     }
 
@@ -90,6 +97,7 @@ internal static class GrafikonService
         DirListFile.Write(workspace.DataDir, dirs);
         workspace.GVDDirs.Add(dirList);
 
+        Log.Information("Grafikon importovany z {Source} do {Path}", sourcePath, newDirPath);
         return new GVDDirectory(dirList, gvd);
     }
 
@@ -113,7 +121,7 @@ internal static class GrafikonService
         }
         catch (Exception exception)
         {
-            Log.Exception(exception);
+            Log.Error(exception, "Globalne nastavenia v {DataDir} sa nepodarilo ulozit - subory sa vracaju do stavu pred ulozenim", dataDir);
 
             var message = transaction.TryRollback()
                 ? string.Format(CultureInfo.CurrentCulture, Resources.GlobalSettings_Ulozenie_zlyhalo_vratene, exception.Message)
@@ -123,6 +131,7 @@ internal static class GrafikonService
         }
 
         transaction.Commit();
+        Log.Information("Globalne nastavenia ulozene do {DataDir} ({Grafikons} grafikonov)", dataDir, dirs.Count);
         workspace.GVDDirs = dirs;
 
         // jazyky grafikonu si ponechavaju vlastny vyber - zmazany jazyk z neho vypadne, novy si zapne pouzivatel

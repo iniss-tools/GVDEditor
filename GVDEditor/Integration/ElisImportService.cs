@@ -7,6 +7,7 @@ using GVDEditor.Formats;
 using GVDEditor.Properties;
 using Iniss.Elis;
 using Iniss.PlanRadenia;
+using Serilog;
 using ToolsCore.Iniss.Entities;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.XML;
@@ -295,6 +296,7 @@ internal static class ElisImportService
         }
         catch (Exception e) when (e is InvalidOperationException or IOException or InvalidDataException or System.Xml.XmlException)
         {
+            Log.Warning(e, "Plan radenia {Pdf} pre stanicu {Station} sa nepodarilo precitat", pdf, stationName);
             return (null, e.Message);
         }
     }

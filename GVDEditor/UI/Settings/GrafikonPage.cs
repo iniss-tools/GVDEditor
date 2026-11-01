@@ -3,6 +3,7 @@ using ExControls;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.Properties;
+using Serilog;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 
@@ -220,10 +221,11 @@ public partial class GrafikonPage : UserControl, ISettingsPage
             try
             {
                 Directory.Move(oldFullPath, fullpath);
+                Log.Information("Priecinok grafikonu {OldPath} premenovany na {Path}", oldFullPath, fullpath);
             }
             catch (Exception exception)
             {
-                Log.Exception(exception);
+                Log.Warning(exception, "Priecinok grafikonu {OldPath} sa nepodarilo premenovat na {Path}", oldFullPath, fullpath);
                 Utils.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.FLocalSettings_Priečinok_grafikonu_sa_nepodarilo_premenovať,
                     dirname, exception.Message));
                 return false;
