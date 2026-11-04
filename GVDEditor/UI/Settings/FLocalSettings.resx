@@ -203,7 +203,7 @@
     <value>ExControls.ExOptionsPanel, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 31</value>
+    <value>88, 27</value>
   </data>
   <data name="pFyzTab.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -401,7 +401,7 @@
     <value>651, 355</value>
   </data>
   <data name="bSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 31</value>
+    <value>88, 27</value>
   </data>
   <data name="bSave.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

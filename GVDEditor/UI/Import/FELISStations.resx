@@ -193,13 +193,13 @@
     <value>True</value>
   </data>
   <data name="bOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>681, 597</value>
+    <value>681, 599</value>
   </data>
   <data name="bOK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
   </data>
   <data name="bOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 38</value>
+    <value>112, 36</value>
   </data>
   <data name="bOK.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -226,13 +226,13 @@
     <value>True</value>
   </data>
   <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>806, 597</value>
+    <value>806, 599</value>
   </data>
   <data name="bStorno.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
   </data>
   <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 38</value>
+    <value>112, 36</value>
   </data>
   <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -259,13 +259,13 @@
     <value>True</value>
   </data>
   <data name="bCreate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 597</value>
+    <value>18, 599</value>
   </data>
   <data name="bCreate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
   </data>
   <data name="bCreate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 38</value>
+    <value>285, 36</value>
   </data>
   <data name="bCreate.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -292,13 +292,13 @@
     <value>True</value>
   </data>
   <data name="bSkipAll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>312, 597</value>
+    <value>312, 599</value>
   </data>
   <data name="bSkipAll.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
   </data>
   <data name="bSkipAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 38</value>
+    <value>165, 36</value>
   </data>
   <data name="bSkipAll.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>

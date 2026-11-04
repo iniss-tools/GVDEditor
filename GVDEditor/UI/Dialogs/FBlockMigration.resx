@@ -230,10 +230,10 @@
     <value>Bottom, Right</value>
   </data>
   <data name="bOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>496, 303</value>
+    <value>496, 305</value>
   </data>
   <data name="bOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <data name="bOK.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -257,10 +257,10 @@
     <value>Bottom, Right</value>
   </data>
   <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>577, 303</value>
+    <value>577, 305</value>
   </data>
   <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>75, 23</value>
   </data>
   <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>

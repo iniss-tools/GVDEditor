@@ -369,7 +369,7 @@
     <value>3, 3</value>
   </data>
   <data name="bAddFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bAddFrom.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -399,7 +399,7 @@
     <value>3, 3</value>
   </data>
   <data name="bAddTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bAddTo.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>

@@ -592,10 +592,10 @@
     <value>True</value>
   </data>
   <data name="bOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>622, 588</value>
+    <value>622, 590</value>
   </data>
   <data name="bOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 38</value>
+    <value>150, 36</value>
   </data>
   <data name="bOK.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -622,10 +622,10 @@
     <value>True</value>
   </data>
   <data name="bStorno.Location" type="System.Drawing.Point, System.Drawing">
-    <value>782, 588</value>
+    <value>782, 590</value>
   </data>
   <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 38</value>
+    <value>140, 36</value>
   </data>
   <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>

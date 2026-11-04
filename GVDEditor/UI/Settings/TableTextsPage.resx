@@ -270,7 +270,7 @@
     <value>3, 3</value>
   </data>
   <data name="bAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bAdd.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -297,7 +297,7 @@
     <value>3, 3</value>
   </data>
   <data name="bDuplicate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bDuplicate.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -324,7 +324,7 @@
     <value>3, 3</value>
   </data>
   <data name="bDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bDelete.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -831,7 +831,7 @@
     <value>3, 3</value>
   </data>
   <data name="bRealAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bRealAdd.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -858,7 +858,7 @@
     <value>3, 3</value>
   </data>
   <data name="bRealDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bRealDelete.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -996,7 +996,7 @@
     <value>3, 3</value>
   </data>
   <data name="bTrainAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bTrainAdd.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1080,7 +1080,7 @@
     <value>3, 3</value>
   </data>
   <data name="bTrainRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bTrainRemove.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1107,7 +1107,7 @@
     <value>3, 3</value>
   </data>
   <data name="bGenerate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bGenerate.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

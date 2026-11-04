@@ -231,7 +231,7 @@
     <value>3, 60</value>
   </data>
   <data name="bOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 27</value>
+    <value>197, 23</value>
   </data>
   <data name="bOpen.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>

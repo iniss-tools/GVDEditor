@@ -228,7 +228,7 @@
     <value>3, 3</value>
   </data>
   <data name="bColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bColor.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -255,7 +255,7 @@
     <value>3, 3</value>
   </data>
   <data name="bNoColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bNoColor.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -282,7 +282,7 @@
     <value>3, 3</value>
   </data>
   <data name="bFlags.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bFlags.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -309,7 +309,7 @@
     <value>3, 3</value>
   </data>
   <data name="bUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 27</value>
+    <value>60, 23</value>
   </data>
   <data name="bUp.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -336,7 +336,7 @@
     <value>3, 3</value>
   </data>
   <data name="bDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 27</value>
+    <value>60, 23</value>
   </data>
   <data name="bDown.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -363,7 +363,7 @@
     <value>3, 3</value>
   </data>
   <data name="bOpenDir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bOpenDir.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -390,7 +390,7 @@
     <value>3, 3</value>
   </data>
   <data name="bDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bDelete.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>

@@ -270,7 +270,7 @@
     <value>3, 3</value>
   </data>
   <data name="bEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bEditor.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -297,7 +297,7 @@
     <value>3, 3</value>
   </data>
   <data name="bDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bDelete.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

@@ -231,7 +231,7 @@
     <value>3, 3</value>
   </data>
   <data name="bAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bAdd.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -258,7 +258,7 @@
     <value>3, 3</value>
   </data>
   <data name="bDuplicate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bDuplicate.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -285,7 +285,7 @@
     <value>3, 3</value>
   </data>
   <data name="bDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bDelete.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1401,7 +1401,7 @@
     <value>3, 3</value>
   </data>
   <data name="bDir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bDir.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

@@ -270,7 +270,7 @@
     <value>3, 3</value>
   </data>
   <data name="bAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bAdd.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -297,7 +297,7 @@
     <value>3, 3</value>
   </data>
   <data name="bDuplicate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bDuplicate.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -324,7 +324,7 @@
     <value>3, 3</value>
   </data>
   <data name="bDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bDelete.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -993,7 +993,7 @@
     <value>3, 3</value>
   </data>
   <data name="bColAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bColAdd.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1020,7 +1020,7 @@
     <value>3, 3</value>
   </data>
   <data name="bColDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bColDelete.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1047,7 +1047,7 @@
     <value>3, 3</value>
   </data>
   <data name="bColUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 27</value>
+    <value>32, 23</value>
   </data>
   <data name="bColUp.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1074,7 +1074,7 @@
     <value>3, 3</value>
   </data>
   <data name="bColDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 27</value>
+    <value>32, 23</value>
   </data>
   <data name="bColDown.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1683,7 +1683,7 @@
     <value>3, 3</value>
   </data>
   <data name="bColumnOrder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bColumnOrder.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1833,7 +1833,7 @@
     <value>3, 3</value>
   </data>
   <data name="bRowsSetAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bRowsSetAll.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

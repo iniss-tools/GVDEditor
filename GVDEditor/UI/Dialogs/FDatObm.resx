@@ -509,10 +509,10 @@
     <value>Bottom</value>
   </data>
   <data name="bGenerate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 346</value>
+    <value>364, 348</value>
   </data>
   <data name="bGenerate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 38</value>
+    <value>130, 36</value>
   </data>
   <data name="bGenerate.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>

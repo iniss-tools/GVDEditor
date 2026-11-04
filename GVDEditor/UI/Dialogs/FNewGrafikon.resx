@@ -571,7 +571,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bCreate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 29</value>
+    <value>56, 23</value>
   </data>
   <data name="bCreate.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -601,7 +601,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bZrusit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 27</value>
+    <value>56, 23</value>
   </data>
   <data name="bZrusit.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>

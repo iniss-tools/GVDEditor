@@ -288,7 +288,7 @@
     <value>300, 3</value>
   </data>
   <data name="bOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bOK.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -312,7 +312,7 @@
     <value>386, 3</value>
   </data>
   <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>

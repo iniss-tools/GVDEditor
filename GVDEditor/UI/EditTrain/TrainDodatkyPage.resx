@@ -345,7 +345,7 @@
     <value>3, 3</value>
   </data>
   <data name="bAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bAdd.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -372,7 +372,7 @@
     <value>3, 3</value>
   </data>
   <data name="bRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bRemove.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>

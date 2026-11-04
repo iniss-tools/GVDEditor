@@ -133,7 +133,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bStorno.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 27</value>
+    <value>56, 23</value>
   </data>
   <data name="bStorno.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -163,7 +163,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="bOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 27</value>
+    <value>56, 23</value>
   </data>
   <data name="bOK.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -193,7 +193,7 @@
     <value>2, 2, 30, 2</value>
   </data>
   <data name="bDontImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 27</value>
+    <value>81, 23</value>
   </data>
   <data name="bDontImport.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

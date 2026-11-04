@@ -315,7 +315,7 @@
     <value>3, 3</value>
   </data>
   <data name="bEditLimit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bEditLimit.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -633,7 +633,7 @@
     <value>3, 3</value>
   </data>
   <data name="bEditOther.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bEditOther.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -660,7 +660,7 @@
     <value>3, 3</value>
   </data>
   <data name="bGiveThis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bGiveThis.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -687,7 +687,7 @@
     <value>3, 3</value>
   </data>
   <data name="bGiveOther.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 27</value>
+    <value>75, 23</value>
   </data>
   <data name="bGiveOther.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>

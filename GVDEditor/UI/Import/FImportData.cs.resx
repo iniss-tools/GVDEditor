@@ -167,7 +167,7 @@
     <value>Načíst ze schránky</value>
   </data>
   <data name="bCSV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 27</value>
+    <value>167, 23</value>
   </data>
   <data name="bCSV.Text" xml:space="preserve">
     <value>Načíst z CSV souboru...</value>
@@ -176,7 +176,7 @@
     <value>325, 3</value>
   </data>
   <data name="bXLS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 27</value>
+    <value>174, 23</value>
   </data>
   <data name="bXLS.Text" xml:space="preserve">
     <value>Načíst ze XLS souboru...</value>
