@@ -76,7 +76,7 @@ public class TableSimulatorClientTests
             CultureInfo.CurrentUICulture = culture;
         }
 
-        Assert.AreEqual("""{"lines":[{"number":3,"tableClass":4,"port":47003,"name":"Driver"}],"boards":[{"line":3,"address":5,"manufacturer":"ELEN16","name":"ODCH1","flaps":null,"flapRecords":1,"face":null}],"logFolder":null,"xmlTables":[],"faceLanguage":"cs","facesForExisting":false}""", json);
+        Assert.AreEqual("""{"lines":[{"number":3,"tableClass":4,"port":47003,"name":"Driver","transport":"tcp"}],"boards":[{"line":3,"address":5,"manufacturer":"ELEN16","name":"ODCH1","flaps":null,"flapRecords":1,"face":null}],"logFolder":null,"xmlTables":[],"faceLanguage":"cs","facesForExisting":false}""", json);
     }
 
     [TestMethod]
