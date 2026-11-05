@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Text.RegularExpressions;
-using GVDEditor.Domain.Calendar;
+using ToolsCore.Iniss.Calendar;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using Iniss.PlanRadenia;

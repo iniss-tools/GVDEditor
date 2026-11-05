@@ -2,7 +2,7 @@ using System.Globalization;
 using ExControls;
 using AppRegistry = ToolsCore.Tools.AppRegistry;
 using GVDEditor.Domain.Analysis;
-using GVDEditor.Domain.Calendar;
+using ToolsCore.Iniss.Calendar;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
 using GVDEditor.Integration;

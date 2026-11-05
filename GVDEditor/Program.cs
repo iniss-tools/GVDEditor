@@ -1,5 +1,5 @@
 using GVDEditor.Config;
-using GVDEditor.Domain.Calendar;
+using ToolsCore.Iniss.Calendar;
 using GVDEditor.Integration;
 using GVDEditor.Mcp;
 using GVDEditor.UI.Main;

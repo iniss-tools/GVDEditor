@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using ExControls;
-using GVDEditor.Domain.Calendar;
+using ToolsCore.Iniss.Calendar;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;

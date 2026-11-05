@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using System.Globalization;
-using GVDEditor.Domain.Calendar;
+using ToolsCore.Iniss.Calendar;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
 using GVDEditor.UI.Settings;

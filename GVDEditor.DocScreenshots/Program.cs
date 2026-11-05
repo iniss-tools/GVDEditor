@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Reflection;
 using GVDEditor.Config;
-using GVDEditor.Domain.Calendar;
+using ToolsCore.Iniss.Calendar;
 using GVDEditor.Integration;
 using GVDEditor.Mcp;
 using GVDEditor.UI.Dialogs;

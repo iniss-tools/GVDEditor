@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Text;
 using ExControls;
 using GVDEditor.Config;
-using GVDEditor.Domain.Calendar;
+using ToolsCore.Iniss.Calendar;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
