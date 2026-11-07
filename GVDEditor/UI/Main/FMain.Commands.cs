@@ -34,6 +34,7 @@ internal partial class FMain
         Add(GvdCommands.ImportGvd, ShowImportGVD, installation, tsmiImportGVD, tsmimImportGVD);
         Add(GvdCommands.ImportData, ShowImportData, grafikon, tsmiImportData, tsmimImportData);
         Add(GvdCommands.ImportElis, ShowImportElis, grafikon, tsmiImportELIS, tsmimImportELIS);
+        Add(GvdCommands.ExportIniss2, ShowExportIniss2, grafikons, tsmiExportIniss2);
         Add(GvdCommands.Save, () => DoSave(), grafikon, tsmiSave, tsbSave);
         Add(GvdCommands.Analyze, ShowAnalyzeGVD, grafikon, tsmiAnalyze, tsbAnalyze);
 
@@ -97,6 +98,7 @@ internal partial class FMain
         // rozbalovacie ponuky bez vlastneho prikazu
         tsmiImport.Enabled = HasInstallation;
         tsbImport.Enabled = HasInstallation;
+        tsmiExport.Enabled = HasGrafikons;
         tsmiUpravit.Enabled = HasGrafikon;
         tscbStanica.Enabled = HasGrafikons;
         tscbObdobie.Enabled = HasGrafikons;

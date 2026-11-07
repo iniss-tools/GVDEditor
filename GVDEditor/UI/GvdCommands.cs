@@ -14,6 +14,7 @@ internal static class GvdCommands
     public static CommandInfo ImportGvd => new("ImportGVD", Resources.Cmd_ImportGvd, Shortcut.CtrlI);
     public static CommandInfo ImportData => new("ImportData", Resources.Cmd_ImportData, Shortcut.None);
     public static CommandInfo ImportElis => new("ImportELIS", Resources.Cmd_ImportElis, Shortcut.None);
+    public static CommandInfo ExportIniss2 => new("ExportINISS2", Resources.Cmd_ExportIniss2, Shortcut.None);
     public static CommandInfo Save => new("Save", Resources.Cmd_Save, Shortcut.CtrlS);
     public static CommandInfo Analyze => new("Analyze", Resources.Cmd_Analyze, Shortcut.CtrlShiftA);
 
@@ -107,7 +108,7 @@ internal static class GvdCommands
     /// </summary>
     public static IReadOnlyList<CommandInfo> All =>
     [
-        New, Open, ImportGvd, ImportData, ImportElis, Save, Analyze,
+        New, Open, ImportGvd, ImportData, ImportElis, ExportIniss2, Save, Analyze,
         Undo, Redo, AddTrain, EditTrain, DeleteTrains, DuplicateTrain,
         LocalSettings, GlobalSettings, AppSettings,
         GsGvds, GsLanguages, GsDelays, GsTrainTypes, GsAudio,

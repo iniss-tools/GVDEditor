@@ -12,6 +12,7 @@ using GVDEditor.TabTabEditor;
 using GVDEditor.UI.Controls;
 using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.EditTrain;
+using GVDEditor.UI.Export;
 using GVDEditor.UI.Import;
 using GVDEditor.UI.InissSettings;
 using GVDEditor.UI.Main;
@@ -235,6 +236,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 () => new FelisStations(Program.Context, ["Hraničná št.hr.", "Lipová zastávka", "Nová Obec", "Podhradie mesto"], Program.Context.Stations),
                 form => Resize(form, 720, 420));
             Shot("import-z-elis/kontrola", () => new FelisReview(Program.Context, ElisReviewSample(trains)), form => Resize(form, 900, 500), tabs: true);
+            ExportIniss2Shots(main);
 
             // analýza s nájdenými problémami: prázdny a nepoužitý TabTab a uplynutá platnosť dát (po snímke sa vráti)
             var emptyTab = new TableTabTab { Key = "Rezerva", Text = "" };
@@ -394,6 +396,58 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
         }
 
         return _count;
+    }
+
+    /// <summary>
+    /// Kroky sprievodcu exportu do INISS2 nad ukážkovou inštaláciou <see cref="DemoIniss2" /> (C:\INISS2 vedľa C:\INISS) s linkami
+    /// z <see cref="DemoIniss" />.
+    /// </summary>
+    private void ExportIniss2Shots(FMain main)
+    {
+        const BindingFlags any = BindingFlags.NonPublic | BindingFlags.Instance;
+        var ctx = Program.Context;
+        var root = DemoIniss2.Build(Path.Combine(Path.GetDirectoryName(Path.GetFullPath(options.WorkDir))!, "INISS2"));
+        var config = new RunConfiguration { Name = "Dolné Mesto", Program = DemoInstallation.ExeName };
+        ctx.RunConfigurations = new RunConfigurationSet(ctx.Workspace.INISSDir, [config], config.Id);
+        var form = new FIniss2Export(ctx, Periods(main), DemoIniss.Load);
+        object? Call(string name, params object[] args) => form.GetType().GetMethod(name, any)!.Invoke(form, args);
+
+        void Next(string? task = null)
+        {
+            if (task is not null)
+            {
+                var running = (Task<bool>)Call(task)!;
+                if (!Pump.Until(() => running.IsCompleted) || !running.Result)
+                    throw new InvalidOperationException($"Krok {task} sprievodcu exportu zlyhal.");
+            }
+
+            Call("ShowPage", (int)form.GetType().GetField("_page", any)!.GetValue(form)! + 1);
+            Pump.Events();
+        }
+
+        Shot("export-do-iniss2/grafikony", form, dispose: false);
+        Next("LeaveGrafikonsAsync");
+        Shot("export-do-iniss2/ciel", form, f =>
+        {
+            var installation = (TextBoxBase)Field(f, "tbInstallation");
+            installation.Text = root;
+            installation.Select(0, 0);
+        }, dispose: false);
+        if (!(bool)Call("LeaveTarget")!)
+            throw new InvalidOperationException("Cieľ exportu neprešiel kontrolou.");
+        Next();
+        Shot("export-do-iniss2/hlasenia", form, dispose: false);
+        Next();
+        // banka písem s rovnakou šírkou ako tabuľa (ELEN16)
+        Shot("export-do-iniss2/tabule", form, f =>
+        {
+            var grid = (DataGridView)Field(f, "dgvFonts");
+            foreach (DataGridViewRow row in grid.Rows)
+                row.Cells[1].Value = Path.Combine(root, "Server", "Data", "TableFonts", "16_demo.bin");
+            grid.ClearSelection();
+        }, dispose: false);
+        Next("BuildAsync");
+        Shot("export-do-iniss2/suhrn", form, f => ((DataGridView)Field(f, "dgvWarnings")).ClearSelection());
     }
 
     /// <summary>

@@ -68,6 +68,12 @@ public record GVDEditorConfig() : ConfigBase
     [XmlElement("Windows")]
     public WindowPlacements Windows { get; set; } = new();
 
+    /// <summary>
+    /// Posledna instalacia INISS2, do ktorej sa exportovali grafikony.
+    /// </summary>
+    [XmlElement("Iniss2ExportDir"), DefaultValue("")]
+    public string Iniss2ExportDir { get; set; } = "";
+
     /// <inheritdoc />
     public override string LinkAppSettingsGuide => GvdLinkConsts.LinkAppSettings;
 
@@ -82,5 +88,6 @@ public record GVDEditorConfig() : ConfigBase
         StartupINISSConfig = original.StartupINISSConfig with { };
         RunConfigurations = original.RunConfigurations.Select(r => r.DeepCopy()).ToList();
         Windows = original.Windows.Clone();
+        Iniss2ExportDir = original.Iniss2ExportDir;
     }
 }

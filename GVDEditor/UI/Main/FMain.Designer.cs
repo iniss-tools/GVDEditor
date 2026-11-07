@@ -124,6 +124,8 @@ namespace GVDEditor.UI.Main
             tsmiImport = new IconToolStripMenuItem();
             tsmiImportData = new ToolStripMenuItem();
             tsmiImportGVD = new ToolStripMenuItem();
+            tsmiExport = new IconToolStripMenuItem();
+            tsmiExportIniss2 = new ToolStripMenuItem();
             tsmiImportELIS = new ToolStripMenuItem();
             toolStripSeparator3 = new ToolStripSeparator();
             tsmiSave = new IconToolStripMenuItem();
@@ -329,7 +331,7 @@ namespace GVDEditor.UI.Main
             // 
             // tsmiSubor
             // 
-            tsmiSubor.DropDownItems.AddRange(new ToolStripItem[] { tsmiNew, toolStripSeparator6, tsmiOpen, tsmiRecent, toolStripSeparator4, tsmiImport, toolStripSeparator3, tsmiSave, toolStripSeparator18, tsmiAnalyze });
+            tsmiSubor.DropDownItems.AddRange(new ToolStripItem[] { tsmiNew, toolStripSeparator6, tsmiOpen, tsmiRecent, toolStripSeparator4, tsmiImport, tsmiExport, toolStripSeparator3, tsmiSave, toolStripSeparator18, tsmiAnalyze });
             tsmiSubor.Name = "tsmiSubor";
             resources.ApplyResources(tsmiSubor, "tsmiSubor");
             // 
@@ -383,6 +385,18 @@ namespace GVDEditor.UI.Main
             // 
             tsmiImportELIS.Name = "tsmiImportELIS";
             resources.ApplyResources(tsmiImportELIS, "tsmiImportELIS");
+            // 
+            // tsmiExport
+            // 
+            tsmiExport.DropDownItems.AddRange(new ToolStripItem[] { tsmiExportIniss2 });
+            resources.ApplyResources(tsmiExport, "tsmiExport");
+            tsmiExport.Name = "tsmiExport";
+            tsmiExport.IconName = "export";
+            // 
+            // tsmiExportIniss2
+            // 
+            tsmiExportIniss2.Name = "tsmiExportIniss2";
+            resources.ApplyResources(tsmiExportIniss2, "tsmiExportIniss2");
             // 
             // toolStripSeparator3
             // 
@@ -2253,6 +2267,8 @@ namespace GVDEditor.UI.Main
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem tsmiImportData;
         private ToolStripMenuItem tsmiImportGVD;
+        private IconToolStripMenuItem tsmiExport;
+        private ToolStripMenuItem tsmiExportIniss2;
         private ToolStripMenuItem tsmimImportData;
         private ToolStripMenuItem tsmimImportGVD;
         private ToolStripMenuItem tsmiImportELIS;

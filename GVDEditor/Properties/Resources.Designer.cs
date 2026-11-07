@@ -11190,5 +11190,608 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("Settings_EditorFontHint", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exportovať do INISS2.
+        /// </summary>
+        internal static string Cmd_ExportIniss2 {
+            get {
+                return ResourceManager.GetString("Cmd_ExportIniss2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Krok {0} z {1}: {2}.
+        /// </summary>
+        internal static string Iniss2Export_Step {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Step", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikony.
+        /// </summary>
+        internal static string Iniss2Export_Step1 {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Step1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vybrané grafikony budú v INISS2 jedným grafikonom. Vlaky s rovnakým číslom sa spoja..
+        /// </summary>
+        internal static string Iniss2Export_Step1Hint {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Step1Hint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cieľ.
+        /// </summary>
+        internal static string Iniss2Export_Step2 {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Step2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export založí v inštalácii INISS2 nový grafikon. Každá stanica dostane vlastný priečinok..
+        /// </summary>
+        internal static string Iniss2Export_Step2Hint {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Step2Hint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hlásenia.
+        /// </summary>
+        internal static string Iniss2Export_Step3 {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Step3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zo stanice šablóny sa prevezme stavový diagram a hlásenia. Typom hlásení INISS 3.39 priraďte jej hlásenia..
+        /// </summary>
+        internal static string Iniss2Export_Step3Hint {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Step3Hint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabule.
+        /// </summary>
+        internal static string Iniss2Export_Step4 {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Step4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linky tabúľ sa zistia z konfigurácie spúšťania INISSu. Tabule ELEN potrebujú banku písem..
+        /// </summary>
+        internal static string Iniss2Export_Step4Hint {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Step4Hint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súhrn.
+        /// </summary>
+        internal static string Iniss2Export_Step5 {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Step5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skontrolujte upozornenia. Server INISS2 musí byť pri exporte zastavený..
+        /// </summary>
+        internal static string Iniss2Export_Step5Hint {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Step5Hint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ďalej &gt;.
+        /// </summary>
+        internal static string Iniss2Export_Next {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exportovať.
+        /// </summary>
+        internal static string Iniss2Export_Export {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dáta inštalácie: {0}.
+        /// </summary>
+        internal static string Iniss2Export_Installation {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Installation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priečinok nie je inštalácia INISS2..
+        /// </summary>
+        internal static string Iniss2Export_NotInstallation {
+            get {
+                return ResourceManager.GetString("Iniss2Export_NotInstallation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte priečinok inštalácie INISS2.
+        /// </summary>
+        internal static string Iniss2Export_SelectInstallation {
+            get {
+                return ResourceManager.GetString("Iniss2Export_SelectInstallation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte aspoň jeden grafikon..
+        /// </summary>
+        internal static string Iniss2Export_NoGrafikon {
+            get {
+                return ResourceManager.GetString("Iniss2Export_NoGrafikon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov grafikonu je prázdny alebo obsahuje nepovolené znaky..
+        /// </summary>
+        internal static string Iniss2Export_GroupInvalid {
+            get {
+                return ResourceManager.GetString("Iniss2Export_GroupInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priečinok stanice {0} je prázdny alebo obsahuje nepovolené znaky..
+        /// </summary>
+        internal static string Iniss2Export_DirectoryInvalid {
+            get {
+                return ResourceManager.GetString("Iniss2Export_DirectoryInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priečinok {0} je zadaný dvakrát..
+        /// </summary>
+        internal static string Iniss2Export_DirectoryTwice {
+            get {
+                return ResourceManager.GetString("Iniss2Export_DirectoryTwice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon {0} sa nepodarilo načítať..
+        /// </summary>
+        internal static string Iniss2Export_LoadFailed {
+            get {
+                return ResourceManager.GetString("Iniss2Export_LoadFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (bez šablóny).
+        /// </summary>
+        internal static string Iniss2Export_NoTemplate {
+            get {
+                return ResourceManager.GetString("Iniss2Export_NoTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hlásenia sa prevezmú z typov hlásení INISS 3.39. Stavový diagram treba doplniť ručne..
+        /// </summary>
+        internal static string Iniss2Export_NoTemplateInfo {
+            get {
+                return ResourceManager.GetString("Iniss2Export_NoTemplateInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hlásenia šablóny: {0}.
+        /// </summary>
+        internal static string Iniss2Export_TemplateInfo {
+            get {
+                return ResourceManager.GetString("Iniss2Export_TemplateInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (neprehrať).
+        /// </summary>
+        internal static string Iniss2Export_NoReport {
+            get {
+                return ResourceManager.GetString("Iniss2Export_NoReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (bez liniek).
+        /// </summary>
+        internal static string Iniss2Export_NoLines {
+            get {
+                return ResourceManager.GetString("Iniss2Export_NoLines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabule ostanú bez linky. Linky treba doplniť v inštalácii INISS2..
+        /// </summary>
+        internal static string Iniss2Export_NoLinesInfo {
+            get {
+                return ResourceManager.GetString("Iniss2Export_NoLinesInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linky sa doplnia do inštalácie INISS2, jej doterajšie linky ostanú..
+        /// </summary>
+        internal static string Iniss2Export_LinesInfo {
+            get {
+                return ResourceManager.GetString("Iniss2Export_LinesInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikony nemajú tabule ELEN..
+        /// </summary>
+        internal static string Iniss2Export_NoFonts {
+            get {
+                return ResourceManager.GetString("Iniss2Export_NoFonts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (bez banky).
+        /// </summary>
+        internal static string Iniss2Export_NoFont {
+            get {
+                return ResourceManager.GetString("Iniss2Export_NoFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Banky písem ELEN (*.bin)|*.bin.
+        /// </summary>
+        internal static string Iniss2Export_FontFilter {
+            get {
+                return ResourceManager.GetString("Iniss2Export_FontFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon {0} so stanicami {1} sa založí v {2}..
+        /// </summary>
+        internal static string Iniss2Export_Summary {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upozornenia: {0}.
+        /// </summary>
+        internal static string Iniss2Export_Warnings {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Warnings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bez upozornení..
+        /// </summary>
+        internal static string Iniss2Export_NoWarnings {
+            get {
+                return ResourceManager.GetString("Iniss2Export_NoWarnings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: {1}.
+        /// </summary>
+        internal static string Iniss2Export_IssueDetail {
+            get {
+                return ResourceManager.GetString("Iniss2Export_IssueDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon {0} je v inštalácii INISS2 založený..
+        /// </summary>
+        internal static string Iniss2Export_Done {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export do INISS2 zlyhal..
+        /// </summary>
+        internal static string Iniss2Export_Failed {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanica nemá číslo, v trasách vlakov INISS2 chýba..
+        /// </summary>
+        internal static string Iniss2Export_Issue_StationWithoutNumber {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_StationWithoutNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trasa vlaku neobsahuje stanicu grafikonu, ostane len východisková a cieľová stanica..
+        /// </summary>
+        internal static string Iniss2Export_Issue_RouteWithoutStation {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_RouteWithoutStation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dátumová poznámka sa nedá rozvinúť, vlak nepôjde žiadny deň..
+        /// </summary>
+        internal static string Iniss2Export_Issue_BadValidity {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_BadValidity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obdobie vlaku má viac ako 400 dní, server poznámku nerozvinie..
+        /// </summary>
+        internal static string Iniss2Export_Issue_PeriodTooLong {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_PeriodTooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak má príznak D, server k nemu nepriradí správy GTN..
+        /// </summary>
+        internal static string Iniss2Export_Issue_LongDistanceFlag {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_LongDistanceFlag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Varianty vlaku idú v rovnaký deň, v spoločné dni ostane tá s menej dňami..
+        /// </summary>
+        internal static string Iniss2Export_Issue_VariantOverlap {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_VariantOverlap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlaky s rovnakým číslom majú v jeden deň rôzne koľaje, server pozná len jednu..
+        /// </summary>
+        internal static string Iniss2Export_Issue_SharedNumberTracks {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_SharedNumberTracks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Radenie patrí vlaku, ktorý v stanici nejde, server ho zahodí..
+        /// </summary>
+        internal static string Iniss2Export_Issue_CompositionWithoutTrain {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_CompositionWithoutTrain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Radenie neplatí v žiadny deň vlaku, nikdy sa neprehrá..
+        /// </summary>
+        internal static string Iniss2Export_Issue_CompositionOutsidePeriod {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_CompositionOutsidePeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Výluka alebo odklon neplatí v žiadny deň vlaku v stanici..
+        /// </summary>
+        internal static string Iniss2Export_Issue_NoticeOutsidePeriod {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_NoticeOutsidePeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cieľová inštalácia nemá skript hlásení, kľúče dodatkov, výluk a odklonov sa nedali overiť..
+        /// </summary>
+        internal static string Iniss2Export_Issue_LogTextMissing {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_LogTextMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skript hlásení nemá funkciu pre tento kľúč, dodatok, výluka alebo odklon sa neprehrá..
+        /// </summary>
+        internal static string Iniss2Export_Issue_LogTextFunctionMissing {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_LogTextFunctionMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak s rovnakým číslom v inej stanici sa nespojil, trasy alebo dni si nezodpovedajú..
+        /// </summary>
+        internal static string Iniss2Export_Issue_TrainNotMerged {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_TrainNotMerged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlak ide v deň mimo obdobia stanice, v ten deň neplatí koľaj ani dodatky..
+        /// </summary>
+        internal static string Iniss2Export_Issue_StationDayOutsidePeriod {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_StationDayOutsidePeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanica je medzi exportovanými grafikonmi dvakrát..
+        /// </summary>
+        internal static string Iniss2Export_Issue_StationTwice {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_StationTwice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS2 tento druh tabule nepozná, tabuľa sa neprevedie..
+        /// </summary>
+        internal static string Iniss2Export_Issue_TableUnsupported {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_TableUnsupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logická tabuľa nemá druh zobrazenia známy v INISS2, jej časť neukáže vlaky..
+        /// </summary>
+        internal static string Iniss2Export_Issue_TableViewUnknown {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_TableViewUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INISS2 obsah údaja nepozná, údaj ostane prázdny..
+        /// </summary>
+        internal static string Iniss2Export_Issue_ContentUnsupported {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_ContentUnsupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Údaj sa prekrýva s iným v tom istom riadku a vynechá sa..
+        /// </summary>
+        internal static string Iniss2Export_Issue_ColumnOverlap {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_ColumnOverlap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Niektoré pravidlá TabTab sa nedali previesť, treba ich prepísať vo VB.NET..
+        /// </summary>
+        internal static string Iniss2Export_Issue_TabTabNotConverted {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_TabTabNotConverted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Údaj odkazuje na tabuľku TabTab, ktorá v grafikone nie je, a neprekóduje sa..
+        /// </summary>
+        internal static string Iniss2Export_Issue_TabTabMissing {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_TabTabMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabuľka TabTab sa volá ako spoločná tabuľka cieľovej inštalácie, server sa nespustí..
+        /// </summary>
+        internal static string Iniss2Export_Issue_TabTabGlobalDuplicate {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_TabTabGlobalDuplicate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vlaky s rovnakým číslom majú v jeden deň rôzne texty na tabuli, server pozná len jeden..
+        /// </summary>
+        internal static string Iniss2Export_Issue_TableTextConflict {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_TableTextConflict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabuľa nemá linku, server vezme linku stanice alebo prvú vhodnú..
+        /// </summary>
+        internal static string Iniss2Export_Issue_TableWithoutLine {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_TableWithoutLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linka nemá v INISS2 obdobu, jej tabule ostanú bez linky..
+        /// </summary>
+        internal static string Iniss2Export_Issue_LineUnsupported {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_LineUnsupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Predloha ELEN nemá banku písem, server sa bez nej nespustí..
+        /// </summary>
+        internal static string Iniss2Export_Issue_FontBankMissing {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_FontBankMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stanice nemajú stavový diagram, pred spustením servera ho treba doplniť..
+        /// </summary>
+        internal static string Iniss2Export_Issue_StateDiagramMissing {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_StateDiagramMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server INISS2 beží. Pred exportom ho zastavte..
+        /// </summary>
+        internal static string Iniss2Export_Issue_ServerRunning {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_ServerRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon s týmto názvom už v inštalácii INISS2 je..
+        /// </summary>
+        internal static string Iniss2Export_Issue_GroupExists {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_GroupExists", resourceCulture);
+            }
+        }
     }
 }

@@ -1099,6 +1099,15 @@
   <data name="tsmiImportELIS.Text" xml:space="preserve">
     <value>Z programu ELIS</value>
   </data>
+  <data name="tsmiExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 22</value>
+  </data>
+  <data name="tsmiExport.Text" xml:space="preserve">
+    <value>Exportovat</value>
+  </data>
+  <data name="tsmiExportIniss2.Text" xml:space="preserve">
+    <value>Do INISS2...</value>
+  </data>
   <data name="tsmiGrafikon.Text" xml:space="preserve">
     <value>Grafikon</value>
   </data>

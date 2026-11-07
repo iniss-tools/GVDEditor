@@ -9,6 +9,7 @@ using GVDEditor.Properties;
 using GVDEditor.Services;
 using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.EditTrain;
+using GVDEditor.UI.Export;
 using GVDEditor.UI.Import;
 using Serilog;
 using ToolsCore.Iniss.Tools;
@@ -566,6 +567,12 @@ internal partial class FMain
             InitializeGUI();
         else
             UpdateCommandStates();
+    }
+
+    private void ShowExportIniss2()
+    {
+        using var form = new FIniss2Export(_ctx, [.. _periods]);
+        form.ShowDialog(this);
     }
 
     private void ShowImportData()

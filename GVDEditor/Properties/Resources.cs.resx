@@ -3916,4 +3916,205 @@ Před zápisem se uloží záloha.</value>
   <data name="Settings_EditorFontHint" xml:space="preserve">
     <value>Editor TabTab a text stavového diagramu.</value>
   </data>
+  <data name="Cmd_ExportIniss2" xml:space="preserve">
+    <value>Exportovat do INISS2</value>
+  </data>
+  <data name="Iniss2Export_Step" xml:space="preserve">
+    <value>Krok {0} z {1}: {2}</value>
+  </data>
+  <data name="Iniss2Export_Step1" xml:space="preserve">
+    <value>Grafikony</value>
+  </data>
+  <data name="Iniss2Export_Step1Hint" xml:space="preserve">
+    <value>Vybrané grafikony budou v INISS2 jedním grafikonem. Vlaky se stejným číslem se spojí.</value>
+  </data>
+  <data name="Iniss2Export_Step2" xml:space="preserve">
+    <value>Cíl</value>
+  </data>
+  <data name="Iniss2Export_Step2Hint" xml:space="preserve">
+    <value>Export založí v instalaci INISS2 nový grafikon. Každá stanice dostane vlastní složku.</value>
+  </data>
+  <data name="Iniss2Export_Step3" xml:space="preserve">
+    <value>Hlášení</value>
+  </data>
+  <data name="Iniss2Export_Step3Hint" xml:space="preserve">
+    <value>Ze stanice šablony se převezme stavový diagram a hlášení. Typům hlášení INISS 3.39 přiřaďte její hlášení.</value>
+  </data>
+  <data name="Iniss2Export_Step4" xml:space="preserve">
+    <value>Tabule</value>
+  </data>
+  <data name="Iniss2Export_Step4Hint" xml:space="preserve">
+    <value>Linky tabulí se zjistí z konfigurace spouštění INISSu. Tabule ELEN potřebují banku písem.</value>
+  </data>
+  <data name="Iniss2Export_Step5" xml:space="preserve">
+    <value>Souhrn</value>
+  </data>
+  <data name="Iniss2Export_Step5Hint" xml:space="preserve">
+    <value>Zkontrolujte upozornění. Server INISS2 musí být při exportu zastavený.</value>
+  </data>
+  <data name="Iniss2Export_Next" xml:space="preserve">
+    <value>Další &gt;</value>
+  </data>
+  <data name="Iniss2Export_Export" xml:space="preserve">
+    <value>Exportovat</value>
+  </data>
+  <data name="Iniss2Export_Installation" xml:space="preserve">
+    <value>Data instalace: {0}</value>
+  </data>
+  <data name="Iniss2Export_NotInstallation" xml:space="preserve">
+    <value>Složka není instalace INISS2.</value>
+  </data>
+  <data name="Iniss2Export_SelectInstallation" xml:space="preserve">
+    <value>Vyberte složku instalace INISS2</value>
+  </data>
+  <data name="Iniss2Export_NoGrafikon" xml:space="preserve">
+    <value>Vyberte alespoň jeden grafikon.</value>
+  </data>
+  <data name="Iniss2Export_GroupInvalid" xml:space="preserve">
+    <value>Název grafikonu je prázdný nebo obsahuje nepovolené znaky.</value>
+  </data>
+  <data name="Iniss2Export_DirectoryInvalid" xml:space="preserve">
+    <value>Složka stanice {0} je prázdná nebo obsahuje nepovolené znaky.</value>
+  </data>
+  <data name="Iniss2Export_DirectoryTwice" xml:space="preserve">
+    <value>Složka {0} je zadaná dvakrát.</value>
+  </data>
+  <data name="Iniss2Export_LoadFailed" xml:space="preserve">
+    <value>Grafikon {0} se nepodařilo načíst.</value>
+  </data>
+  <data name="Iniss2Export_NoTemplate" xml:space="preserve">
+    <value>(bez šablony)</value>
+  </data>
+  <data name="Iniss2Export_NoTemplateInfo" xml:space="preserve">
+    <value>Hlášení se převezmou z typů hlášení INISS 3.39. Stavový diagram je třeba doplnit ručně.</value>
+  </data>
+  <data name="Iniss2Export_TemplateInfo" xml:space="preserve">
+    <value>Hlášení šablony: {0}</value>
+  </data>
+  <data name="Iniss2Export_NoReport" xml:space="preserve">
+    <value>(nepřehrát)</value>
+  </data>
+  <data name="Iniss2Export_NoLines" xml:space="preserve">
+    <value>(bez linek)</value>
+  </data>
+  <data name="Iniss2Export_NoLinesInfo" xml:space="preserve">
+    <value>Tabule zůstanou bez linky. Linky je třeba doplnit v instalaci INISS2.</value>
+  </data>
+  <data name="Iniss2Export_LinesInfo" xml:space="preserve">
+    <value>Linky se doplní do instalace INISS2, její dosavadní linky zůstanou.</value>
+  </data>
+  <data name="Iniss2Export_NoFonts" xml:space="preserve">
+    <value>Grafikony nemají tabule ELEN.</value>
+  </data>
+  <data name="Iniss2Export_NoFont" xml:space="preserve">
+    <value>(bez banky)</value>
+  </data>
+  <data name="Iniss2Export_FontFilter" xml:space="preserve">
+    <value>Banky písem ELEN (*.bin)|*.bin</value>
+  </data>
+  <data name="Iniss2Export_Summary" xml:space="preserve">
+    <value>Grafikon {0} se stanicemi {1} se založí v {2}.</value>
+  </data>
+  <data name="Iniss2Export_Warnings" xml:space="preserve">
+    <value>Upozornění: {0}</value>
+  </data>
+  <data name="Iniss2Export_NoWarnings" xml:space="preserve">
+    <value>Bez upozornění.</value>
+  </data>
+  <data name="Iniss2Export_IssueDetail" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Iniss2Export_Done" xml:space="preserve">
+    <value>Grafikon {0} je v instalaci INISS2 založen.</value>
+  </data>
+  <data name="Iniss2Export_Failed" xml:space="preserve">
+    <value>Export do INISS2 selhal.</value>
+  </data>
+  <data name="Iniss2Export_Issue_StationWithoutNumber" xml:space="preserve">
+    <value>Stanice nemá číslo, v trasách vlaků INISS2 chybí.</value>
+  </data>
+  <data name="Iniss2Export_Issue_RouteWithoutStation" xml:space="preserve">
+    <value>Trasa vlaku neobsahuje stanici grafikonu, zůstane jen výchozí a cílová stanice.</value>
+  </data>
+  <data name="Iniss2Export_Issue_BadValidity" xml:space="preserve">
+    <value>Datumovou poznámku nelze rozvinout, vlak nepojede žádný den.</value>
+  </data>
+  <data name="Iniss2Export_Issue_PeriodTooLong" xml:space="preserve">
+    <value>Období vlaku má více než 400 dní, server poznámku nerozvine.</value>
+  </data>
+  <data name="Iniss2Export_Issue_LongDistanceFlag" xml:space="preserve">
+    <value>Vlak má příznak D, server k němu nepřiřadí zprávy GTN.</value>
+  </data>
+  <data name="Iniss2Export_Issue_VariantOverlap" xml:space="preserve">
+    <value>Varianty vlaku jedou ve stejný den, ve společné dny zůstane ta s méně dny.</value>
+  </data>
+  <data name="Iniss2Export_Issue_SharedNumberTracks" xml:space="preserve">
+    <value>Vlaky se stejným číslem mají v jeden den různé koleje, server zná jen jednu.</value>
+  </data>
+  <data name="Iniss2Export_Issue_CompositionWithoutTrain" xml:space="preserve">
+    <value>Řazení patří vlaku, který ve stanici nejede, server ho zahodí.</value>
+  </data>
+  <data name="Iniss2Export_Issue_CompositionOutsidePeriod" xml:space="preserve">
+    <value>Řazení neplatí v žádný den vlaku, nikdy se nepřehraje.</value>
+  </data>
+  <data name="Iniss2Export_Issue_NoticeOutsidePeriod" xml:space="preserve">
+    <value>Výluka nebo odklon neplatí v žádný den vlaku ve stanici.</value>
+  </data>
+  <data name="Iniss2Export_Issue_LogTextMissing" xml:space="preserve">
+    <value>Cílová instalace nemá skript hlášení, klíče dodatků, výluk a odklonů nešlo ověřit.</value>
+  </data>
+  <data name="Iniss2Export_Issue_LogTextFunctionMissing" xml:space="preserve">
+    <value>Skript hlášení nemá funkci pro tento klíč, dodatek, výluka nebo odklon se nepřehraje.</value>
+  </data>
+  <data name="Iniss2Export_Issue_TrainNotMerged" xml:space="preserve">
+    <value>Vlak se stejným číslem v jiné stanici se nespojil, trasy nebo dny si neodpovídají.</value>
+  </data>
+  <data name="Iniss2Export_Issue_StationDayOutsidePeriod" xml:space="preserve">
+    <value>Vlak jede v den mimo období stanice, v ten den neplatí kolej ani dodatky.</value>
+  </data>
+  <data name="Iniss2Export_Issue_StationTwice" xml:space="preserve">
+    <value>Stanice je mezi exportovanými grafikony dvakrát.</value>
+  </data>
+  <data name="Iniss2Export_Issue_TableUnsupported" xml:space="preserve">
+    <value>INISS2 tento druh tabule nezná, tabule se nepřevede.</value>
+  </data>
+  <data name="Iniss2Export_Issue_TableViewUnknown" xml:space="preserve">
+    <value>Logická tabule nemá druh zobrazení známý v INISS2, její část neukáže vlaky.</value>
+  </data>
+  <data name="Iniss2Export_Issue_ContentUnsupported" xml:space="preserve">
+    <value>INISS2 obsah údaje nezná, údaj zůstane prázdný.</value>
+  </data>
+  <data name="Iniss2Export_Issue_ColumnOverlap" xml:space="preserve">
+    <value>Údaj se překrývá s jiným ve stejném řádku a vynechá se.</value>
+  </data>
+  <data name="Iniss2Export_Issue_TabTabNotConverted" xml:space="preserve">
+    <value>Některá pravidla TabTab nešlo převést, je třeba je přepsat ve VB.NET.</value>
+  </data>
+  <data name="Iniss2Export_Issue_TabTabMissing" xml:space="preserve">
+    <value>Údaj odkazuje na tabulku TabTab, která v grafikonu není, a nepřekóduje se.</value>
+  </data>
+  <data name="Iniss2Export_Issue_TabTabGlobalDuplicate" xml:space="preserve">
+    <value>Tabulka TabTab se jmenuje jako společná tabulka cílové instalace, server se nespustí.</value>
+  </data>
+  <data name="Iniss2Export_Issue_TableTextConflict" xml:space="preserve">
+    <value>Vlaky se stejným číslem mají v jeden den různé texty na tabuli, server zná jen jeden.</value>
+  </data>
+  <data name="Iniss2Export_Issue_TableWithoutLine" xml:space="preserve">
+    <value>Tabule nemá linku, server vezme linku stanice nebo první vhodnou.</value>
+  </data>
+  <data name="Iniss2Export_Issue_LineUnsupported" xml:space="preserve">
+    <value>Linka nemá v INISS2 obdobu, její tabule zůstanou bez linky.</value>
+  </data>
+  <data name="Iniss2Export_Issue_FontBankMissing" xml:space="preserve">
+    <value>Předloha ELEN nemá banku písem, server se bez ní nespustí.</value>
+  </data>
+  <data name="Iniss2Export_Issue_StateDiagramMissing" xml:space="preserve">
+    <value>Stanice nemají stavový diagram, před spuštěním serveru je třeba ho doplnit.</value>
+  </data>
+  <data name="Iniss2Export_Issue_ServerRunning" xml:space="preserve">
+    <value>Server INISS2 běží. Před exportem ho zastavte.</value>
+  </data>
+  <data name="Iniss2Export_Issue_GroupExists" xml:space="preserve">
+    <value>Grafikon s tímto názvem už v instalaci INISS2 je.</value>
+  </data>
 </root>
