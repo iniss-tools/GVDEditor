@@ -3953,7 +3953,7 @@ Pred zápisom sa uloží záloha.</value>
     <value>Hlásenia</value>
   </data>
   <data name="Iniss2Export_Step3Hint" xml:space="preserve">
-    <value>Zo stanice šablóny sa prevezme stavový diagram a hlásenia. Typom hlásení INISS 3.39 priraďte jej hlásenia.</value>
+    <value>Zo stanice šablóny sa prevezmú hlásenia, stavový diagram len pre grafikony bez neho. Typom hlásení INISS 3.39 priraďte jej hlásenia.</value>
   </data>
   <data name="Iniss2Export_Step4" xml:space="preserve">
     <value>Tabule</value>
@@ -4001,7 +4001,7 @@ Pred zápisom sa uloží záloha.</value>
     <value>(bez šablóny)</value>
   </data>
   <data name="Iniss2Export_NoTemplateInfo" xml:space="preserve">
-    <value>Hlásenia sa prevezmú z typov hlásení INISS 3.39. Stavový diagram treba doplniť ručne.</value>
+    <value>Hlásenia sa prevezmú z typov hlásení INISS 3.39.</value>
   </data>
   <data name="Iniss2Export_TemplateInfo" xml:space="preserve">
     <value>Hlásenia šablóny: {0}</value>
@@ -4079,7 +4079,7 @@ Pred zápisom sa uloží záloha.</value>
     <value>Cieľová inštalácia nemá skript hlásení, kľúče dodatkov, výluk a odklonov sa nedali overiť.</value>
   </data>
   <data name="Iniss2Export_Issue_LogTextFunctionMissing" xml:space="preserve">
-    <value>Skript hlásení nemá funkciu pre tento kľúč, dodatok, výluka alebo odklon sa neprehrá.</value>
+    <value>Skript hlásení nemá funkciu pre tento kľúč, hlásenie sa neprehrá.</value>
   </data>
   <data name="Iniss2Export_Issue_TrainNotMerged" xml:space="preserve">
     <value>Vlak s rovnakým číslom v inej stanici sa nespojil, trasy alebo dni si nezodpovedajú.</value>
@@ -4124,7 +4124,22 @@ Pred zápisom sa uloží záloha.</value>
     <value>Predloha ELEN nemá banku písem, server sa bez nej nespustí.</value>
   </data>
   <data name="Iniss2Export_Issue_StateDiagramMissing" xml:space="preserve">
-    <value>Stanice nemajú stavový diagram, pred spustením servera ho treba doplniť.</value>
+    <value>Stanica nemá stavový diagram, pred spustením servera ho treba doplniť.</value>
+  </data>
+  <data name="Iniss2Export_Issue_StateDiagramUnreadable" xml:space="preserve">
+    <value>Stavový diagram sa nedá načítať, použije sa diagram šablóny.</value>
+  </data>
+  <data name="Iniss2Export_Issue_StateExpressionNotConverted" xml:space="preserve">
+    <value>Výraz stavového diagramu sa nedal preložiť do VB.NET, jeho časť sa vynechá.</value>
+  </data>
+  <data name="Iniss2Export_Issue_StatePartNotConverted" xml:space="preserve">
+    <value>Túto časť stavového diagramu INISS2 nevie vyjadriť, vynechá sa.</value>
+  </data>
+  <data name="Iniss2Export_Issue_StateReportConflict" xml:space="preserve">
+    <value>Do stavu vedú akcie s rôznymi hláseniami, INISS2 pozná pre stav len prvé.</value>
+  </data>
+  <data name="Iniss2Export_Issue_StateReportMissing" xml:space="preserve">
+    <value>Typ hlásenia nemá priradené hlásenie, stav ostane bez hlásenia.</value>
   </data>
   <data name="Iniss2Export_Issue_ServerRunning" xml:space="preserve">
     <value>Server INISS2 beží. Pred exportom ho zastavte.</value>

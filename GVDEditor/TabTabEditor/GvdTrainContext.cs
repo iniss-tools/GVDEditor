@@ -80,24 +80,24 @@ internal sealed class GvdTrainContext : IExprTrainContext
 
     public int HomeStationId => _homeStationId;
 
-    public int BaseStationId => StationId(_train.StartingStation);
+    // Export3A ma pri vychadzajucom vlaku vlastnu stanicu ako vychodiskovu a pri konciacom ako cielovu; model ju nedrzi
+    public int BaseStationId => _train.Routing == Routing.Vychadzajuci ? _homeStationId : StationId(_train.StartingStation);
 
-    public int EndStationId => StationId(_train.EndingStation);
+    public int EndStationId => _train.Routing == Routing.Konciaci ? _homeStationId : StationId(_train.EndingStation);
 
-    public bool IsLocal => _train.StartingStation is not null && StationId(_train.StartingStation) == _homeStationId
-                           || _train.EndingStation is not null && StationId(_train.EndingStation) == _homeStationId;
+    public bool IsLocal => BaseStationId == _homeStationId || EndStationId == _homeStationId;
 
     public bool IsFromStation(int stationId) => _train.StaniceZoSmeru.Any(s => StationId(s) == stationId);
 
     public bool IsToStation(int stationId) => _train.StaniceDoSmeru.Any(s => StationId(s) == stationId);
 
-    public string ArrivalTrack => _train.Arrival is null || _train.Track == Track.None ? "" : _train.Track.Name;
+    // Pozice.txt nastavi kolaj prichodu aj odchodu kazdemu vlaku bez ohladu na to, ci ma cas prichodu a odchodu
+    public string ArrivalTrack => _train.Track == Track.None ? "" : _train.Track.Name;
 
     public string DepartureTrack
     {
         get
         {
-            if (_train.Departure is null) return "";
             var t = _train.TrackDeparture ?? _train.Track;
             return t == Track.None ? "" : t.Name;
         }

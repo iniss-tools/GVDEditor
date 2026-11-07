@@ -3,6 +3,7 @@ using System.Globalization;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using ToolsCore.Iniss.Calendar;
+using ToolsCore.Iniss.StateDgm;
 using ToolsCore.Iniss2.Grafikon;
 
 namespace GVDEditor.Integration;
@@ -12,7 +13,8 @@ internal static partial class Iniss2Export
     /// <summary>
     /// Prevod grafikonu jednej stanice: najprv zaznamy vlakov na spojenie, potom subory stanice nad spojenym grafikonom.
     /// </summary>
-    private sealed partial class StationBuilder(GrafikonDocument document, GVDInfo gvd, string grafikon, Iniss2ExportSource source, ExportState state)
+    private sealed partial class StationBuilder(GrafikonDocument document, GVDInfo gvd, string grafikon, StateDgmDiagram? stateDgm, Iniss2ExportSource source,
+        ExportState state)
     {
         private readonly Dictionary<Train, BitArray> _days = [];
         private List<Train> _trains = [];
@@ -65,7 +67,7 @@ internal static partial class Iniss2Export
             var (tables, catalogs) = ToTables();
             return new Iniss2StationData(Station, document.Tracks.Where(track => track.Key != Track.None.Key).Select(ToTrack).ToList(),
                 ToPositions(numbers), ToMotorTrains(numbers), ToAdditions(numbers), ToCompositions(numbers), ToLanguages(numbers), ToReportKeys(),
-                tables, catalogs, ToTabTabs(catalogs), ToTrainTexts(numbers));
+                tables, catalogs, ToTabTabs(catalogs), ToTrainTexts(numbers)) { StateDiagram = ToStateDiagram() };
         }
 
         private StationRow Row(Train train)
@@ -406,8 +408,13 @@ internal static partial class Iniss2Export
                     var departures = DepartureTracks(running);
                     conflict |= arrivals.Count > 1 || departures.Count > 1;
 
+                    // Pozice.txt INISSu dava vlaku kolaj prichodu aj odchodu, aj ked prichod alebo odchod nema - vyrazy ju citaju
                     var arrival = arrivals.FirstOrDefault("");
+                    if (arrival.Length == 0)
+                        arrival = running.Select(train => TrackKey(train.Track)).FirstOrDefault(key => key.Length > 0, "");
                     var departure = departures.FirstOrDefault("");
+                    if (departure.Length == 0)
+                        departure = running.Select(train => TrackKey(train.TrackDeparture ?? train.Track)).FirstOrDefault(key => key.Length > 0, "");
                     if (arrival.Length == 0 && departure.Length == 0)
                         continue;
 

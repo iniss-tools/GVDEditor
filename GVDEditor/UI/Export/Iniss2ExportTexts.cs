@@ -41,6 +41,11 @@ internal static class Iniss2ExportTexts
         Iniss2ExportIssue.LineUnsupported => Resources.Iniss2Export_Issue_LineUnsupported,
         Iniss2ExportIssue.FontBankMissing => Resources.Iniss2Export_Issue_FontBankMissing,
         Iniss2ExportIssue.StateDiagramMissing => Resources.Iniss2Export_Issue_StateDiagramMissing,
+        Iniss2ExportIssue.StateDiagramUnreadable => Resources.Iniss2Export_Issue_StateDiagramUnreadable,
+        Iniss2ExportIssue.StateExpressionNotConverted => Resources.Iniss2Export_Issue_StateExpressionNotConverted,
+        Iniss2ExportIssue.StatePartNotConverted => Resources.Iniss2Export_Issue_StatePartNotConverted,
+        Iniss2ExportIssue.StateReportConflict => Resources.Iniss2Export_Issue_StateReportConflict,
+        Iniss2ExportIssue.StateReportMissing => Resources.Iniss2Export_Issue_StateReportMissing,
         Iniss2ExportIssue.ServerRunning => Resources.Iniss2Export_Issue_ServerRunning,
         Iniss2ExportIssue.GroupExists => Resources.Iniss2Export_Issue_GroupExists,
         _ => throw new ArgumentOutOfRangeException(nameof(issue), issue, null)

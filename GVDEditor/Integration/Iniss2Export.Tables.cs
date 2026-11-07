@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 using GVDEditor.Domain.Entities;
+using GVDEditor.TabTabEditor;
 using ToolsCore.Iniss.Elen;
 using ToolsCore.Iniss.TabTab;
 using ToolsCore.Iniss2.Tables;
@@ -39,6 +40,13 @@ internal static partial class Iniss2Export
         };
 
         private const int PointsPerCharacter = 8;
+
+        // riadok fiktivneho stlpca predlohy - server ho nezobrazi, text ma len pre ine stlpce
+        private const int FictiveRow = -1;
+
+        // druhy tabul, ktore nevedia striedat casti textu - #MERGE sa na nich sprava ako #MERGE2
+        private static readonly HashSet<TableManufacturer> SinglePartClasses =
+            [TableManufacturer.AdonBuse, TableManufacturer.Lcd, TableManufacturer.Ers, TableManufacturer.Fers];
 
         // druhy, ktorym server sirku pisma berie z binarnej banky; bez nej sa nespusti
         private static readonly HashSet<string> BankClasses = new(StringComparer.Ordinal) { "ELEN", "ELENOLD", "ELEN10", "ELEN16", "ELEN16KAM" };
@@ -219,6 +227,19 @@ internal static partial class Iniss2Export
                 columns.Add(Column(source, item, characters));
             }
 
+            // stlpce, na ktore odkazuje %meno% v pravidlach TabTab zobrazenych stlpcov - server ich text berie z predlohy, preto idu
+            // do predlohy ako fiktivne (riadok -1, nezobrazia sa)
+            for (var i = 0; i < columns.Count; i++)
+            {
+                foreach (var name in PeerNames(columns[i].Table1))
+                {
+                    var item = source.Items.FirstOrDefault(other => string.Equals(other.Name, name, StringComparison.OrdinalIgnoreCase)
+                                                                    || string.Equals(other.Key, name, StringComparison.OrdinalIgnoreCase));
+                    if (item is not null && !columns.Exists(column => column.Key == item.Key))
+                        columns.Add(Column(source, item, characters) with { Row = FictiveRow, Start = 0, End = 0 });
+                }
+            }
+
             // posledny riadok zaznamu bez udaja by server nepocital
             if (columns.Count == 0 || columns.Max(column => column.Row) < lines - 1)
                 columns.Add(new CatalogColumn($"Riadok {lines}", CatalogColumn.NoContent, lines - 1, 0, 0, "LEFT"));
@@ -347,27 +368,33 @@ internal static partial class Iniss2Export
             return sets;
         }
 
-        // tabulky TabTab, na ktore odkazuju prevedene predlohy; jednoduche pravidla idu do slovnika, ostatne ako komentar do vyrazu
+        // tabulky TabTab, na ktore odkazuju prevedene predlohy; jednoduche pravidla idu do slovnika, udalosti (#SWITCH…) do vyrazu,
+        // jednoduche pravidla s @ alebo %stlpec% ako komentar do vyrazu
         private List<TabTabTable> ToTabTabs(List<CatalogTable> catalogs)
         {
             var names = catalogs.SelectMany(catalog => catalog.Columns).SelectMany(column => new[] { column.Table1, column.Table2 })
                 .Where(name => name.Length > 0).ToHashSet(StringComparer.Ordinal);
+            var tracks = TrackKeys();
+            var transpiler = new Iniss2TabTabTranspiler(source.TrainTypeKeys, name => tracks.GetValueOrDefault(name));
 
-            return document.TabTabs.Where(table => names.Contains(table.Key)).Select(ToTabTab).ToList();
+            return document.TabTabs.Where(table => names.Contains(table.Key)).Select(table => ToTabTab(table, transpiler)).ToList();
         }
 
-        private TabTabTable ToTabTab(TableTabTab source)
+        private TabTabTable ToTabTab(TableTabTab table, Iniss2TabTabTranspiler transpiler)
         {
-            var section = TabTabSection.Parse(source.Text);
+            var section = TabTabSection.Parse(table.Text);
             var comparer = section.IgnoreCase ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal;
             var entries = new List<TabTabEntry>();
             var manual = new List<string>();
 
             foreach (var rule in section.Rules)
             {
+                if (rule.Event != TabTabEventKind.None)
+                    continue;
+
                 var left = TabTabText.Decode(rule.Left);
                 var right = TabTabText.Decode(rule.Right);
-                if (rule.Event != TabTabEventKind.None || Special(left.Text) || Special(right.Text))
+                if (Special(left.Text) || Special(right.Text))
                 {
                     manual.Add($"{rule.Left.Trim()} = {rule.Right.Trim()}");
                     continue;
@@ -378,16 +405,29 @@ internal static partial class Iniss2Export
                 entries.Add(new TabTabEntry(right.Text, TabTabTable.AnyFont, left.Text, left.Font ?? TabTabTable.AnyFont));
             }
 
-            var expression = "";
+            // predlohy, ktore tabulku pouzivaju ako prvu - podla nich miesto vyhodnotenia a striedanie casti
+            var uses = _catalogs.Where(catalog => catalog.Catalog.Columns.Any(column => column.Table1 == table.Key))
+                .Select(catalog => new Iniss2TabTabUse(catalog.Catalog.Key, BoardColumnComposer.SiteOf(catalog.Source),
+                    !SinglePartClasses.Contains(catalog.Source.Manufacturer)))
+                .ToList();
+            var problems = transpiler.Problems.Count;
+            var expression = transpiler.Expression(section, uses);
+            if (manual.Count > 0 || transpiler.Problems.Count > problems)
+                state.Warnings.Add(new Iniss2ExportWarning(Iniss2ExportIssue.TabTabNotConverted, table.Key));
+
             if (manual.Count > 0)
             {
-                state.Warnings.Add(new Iniss2ExportWarning(Iniss2ExportIssue.TabTabNotConverted, source.Key));
                 var lines = manual.SelectMany(rule => rule.Split('\n')).Select(line => "' " + line.TrimEnd('\r'));
-                expression = string.Join('\n', lines) + "\nReturn sOrig";
+                expression = string.Join('\n', lines) + "\n" + (expression.Length > 0 ? expression : "Return sOrig");
             }
 
-            return new TabTabTable(source.Key) { IgnoreCase = section.IgnoreCase, ViewValues = section.ViewValues, Expression = expression, Entries = entries };
+            return new TabTabTable(table.Key) { IgnoreCase = section.IgnoreCase, ViewValues = section.ViewValues, Expression = expression, Entries = entries };
         }
+
+        private IEnumerable<string> PeerNames(string table) =>
+            table.Length > 0 && document.TabTabs.FirstOrDefault(tab => tab.Key == table) is { } tabTab
+                ? Iniss2TabTabTranspiler.PeerNames(TabTabSection.Parse(tabTab.Text))
+                : [];
 
         // povodny text @, text ineho stlpca a riadiace znaky sa do slovnika nedaju zapisat
         private static bool Special(string text) => text.Contains('@', StringComparison.Ordinal) || ColumnReference().IsMatch(text) || text.Any(char.IsControl);

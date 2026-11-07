@@ -6,6 +6,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using Serilog;
 using ToolsCore.Iniss.Registry;
+using ToolsCore.Iniss.StateDgm;
 using ToolsCore.Iniss2;
 using ToolsCore.Iniss2.Grafikon;
 
@@ -177,9 +178,29 @@ internal static class Iniss2ExportService
             ReportLetters = plan.Template is null ? new Dictionary<string, string>() : plan.ReportLetters
         };
 
-        var inputs = plan.Grafikons.Select((dir, index) => new Iniss2StationInput(documents[index], dir.GVD) { Grafikon = dir.Dir.DirName }).ToList();
+        var stateWarnings = new List<Iniss2ExportWarning>();
+        var inputs = plan.Grafikons.Select((dir, index) => new Iniss2StationInput(documents[index], dir.GVD)
+        {
+            Grafikon = dir.Dir.DirName,
+            StateDgm = ReadStateDgm(dir.Dir.FullPath, dir.GVD.ThisStation.Name, stateWarnings)
+        }).ToList();
         var data = Iniss2Export.Build(inputs, source);
-        return data with { Warnings = [.. lineWarnings, .. data.Warnings] };
+        return data with { Warnings = [.. lineWarnings, .. stateWarnings, .. data.Warnings] };
+    }
+
+    // stavovy diagram grafikonu zo suboru - editor ho uklada hned, otvoreny grafikon ho v pamati nema
+    private static StateDgmDiagram? ReadStateDgm(string directory, string station, List<Iniss2ExportWarning> warnings)
+    {
+        try
+        {
+            return StateDgmFile.Read(directory);
+        }
+        catch (Exception e) when (e is StateDgmParseException or IOException or UnauthorizedAccessException)
+        {
+            Log.Warning(e, "Stavovy diagram grafikonu {Directory} sa nepodarilo nacitat, export pouzije diagram sablony", directory);
+            warnings.Add(new Iniss2ExportWarning(Iniss2ExportIssue.StateDiagramUnreadable, $"{station}: {e.Message}"));
+            return null;
+        }
     }
 
     /// <summary>
@@ -191,7 +212,10 @@ internal static class Iniss2ExportService
         warnings.AddRange(Iniss2Export.CheckLogText(dataDir, data));
         warnings.AddRange(Iniss2Export.CheckTabTabGlobal(dataDir, data));
         if (data.TemplateStation.Length == 0)
-            warnings.Add(new Iniss2ExportWarning(Iniss2ExportIssue.StateDiagramMissing, Iniss2Export.StateDiagramFile));
+        {
+            warnings.AddRange(data.Stations.Where(station => station.StateDiagram is null)
+                .Select(station => new Iniss2ExportWarning(Iniss2ExportIssue.StateDiagramMissing, station.Station.ToString(CultureInfo.InvariantCulture))));
+        }
 
         return warnings;
     }

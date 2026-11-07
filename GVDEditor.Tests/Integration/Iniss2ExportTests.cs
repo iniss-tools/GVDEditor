@@ -373,7 +373,7 @@ public class Iniss2ExportTests
     }
 
     [TestMethod]
-    public void Koliaje_PrenesuTextyAZvukyBezNeznamejKolaje()
+    public void Kolaje_PrenesuTextyAZvukyBezNeznamejKolaje()
     {
         var tracks = Build().Stations[0].Tracks;
 
@@ -385,7 +385,7 @@ public class Iniss2ExportTests
     }
 
     [TestMethod]
-    public void Koliaje_VlakJedinejKolajeBezPoznamky()
+    public void Kolaje_VlakJedinejKolajeBezPoznamky()
     {
         var train = Train("1001", Routing.Prechadzajuci, limit: "ide v 1-5");
         train.TrackDeparture = Two;
@@ -394,16 +394,17 @@ public class Iniss2ExportTests
     }
 
     [TestMethod]
-    public void Koliaje_VychadzajuciMaLenOdchodKonciaciLenPrichod()
+    public void Kolaje_VychadzajuciAjKonciaciMajuKolajPrichoduAjOdchodu()
     {
+        // Pozice.txt INISSu 3.39 dava jednu kolaj prichodu aj odchodu kazdemu vlaku - vyrazy KOLEJPRIJ/KOLEJODJ ju citaju
         var positions = Build(Train("1001", Routing.Vychadzajuci), Train("1002", Routing.Konciaci)).Stations[0].Positions;
 
-        Assert.AreEqual(new TrainPosition("1001", "", "1", ""), positions[0]);
-        Assert.AreEqual(new TrainPosition("1002", "1", "", ""), positions[1]);
+        Assert.AreEqual(new TrainPosition("1001", "1", "1", ""), positions[0]);
+        Assert.AreEqual(new TrainPosition("1002", "1", "1", ""), positions[1]);
     }
 
     [TestMethod]
-    public void Koliaje_RozneVDniMajuPoznamku()
+    public void Kolaje_RozneVDniMajuPoznamku()
     {
         var first = Train("1001", Routing.Prechadzajuci, variant: 1, limit: "ide v 1-5");
         var second = Train("1001", Routing.Prechadzajuci, variant: 2, limit: "ide v 6,7", track: Two);
@@ -416,7 +417,7 @@ public class Iniss2ExportTests
     }
 
     [TestMethod]
-    public void Koliaje_DvaVlakyJednehoCislaSpojiPrichodSOdchodomVychadzajuceho()
+    public void Kolaje_DvaVlakyJednehoCislaSpojiPrichodSOdchodomVychadzajuceho()
     {
         var starting = Train("1001", Routing.Vychadzajuci, track: Two);
         var through = Train("1001", Routing.Prechadzajuci);
@@ -430,7 +431,7 @@ public class Iniss2ExportTests
     }
 
     [TestMethod]
-    public void Koliaje_DvaVlakyJednehoCislaSpojiOdchodSPrichodomKonciaceho()
+    public void Kolaje_DvaVlakyJednehoCislaSpojiOdchodSPrichodomKonciaceho()
     {
         var ending = Train("1001", Routing.Konciaci, track: Two);
         var through = Train("1001", Routing.Prechadzajuci);
@@ -440,7 +441,7 @@ public class Iniss2ExportTests
     }
 
     [TestMethod]
-    public void Koliaje_VlakyJednehoCislaLenCastDniMajuDniOddelene()
+    public void Kolaje_VlakyJednehoCislaLenCastDniMajuDniOddelene()
     {
         var starting = Train("1001", Routing.Vychadzajuci, track: Two);
         var through = Train("1001", Routing.Prechadzajuci, limit: "ide v 1-5");
@@ -451,12 +452,12 @@ public class Iniss2ExportTests
         Assert.HasCount(2, positions);
         Assert.AreEqual(new TrainPosition("1001", "1", "2", GvValidity.Text(From, To, Days("11111001111100"))), positions[0]);
         Assert.AreEqual("00000110000011", Bits(GvValidity.Days(From, To, positions[1].Validity)));
-        Assert.AreEqual("", positions[1].ArrivalTrack);
+        Assert.AreEqual("2", positions[1].ArrivalTrack, "vychadzajuci vlak ma kolaj prichodu z kolaje vlaku");
         Assert.AreEqual("2", positions[1].DepartureTrack);
     }
 
     [TestMethod]
-    public void Koliaje_RovnakaKolajVlakovJednehoCislaNeupozorni()
+    public void Kolaje_RovnakaKolajVlakovJednehoCislaNeupozorni()
     {
         var starting = Train("1001", Routing.Vychadzajuci);
         var through = Train("1001", Routing.Prechadzajuci);
@@ -466,7 +467,7 @@ public class Iniss2ExportTests
     }
 
     [TestMethod]
-    public void Koliaje_NeznamaKolajNemaZaznam()
+    public void Kolaje_NeznamaKolajNemaZaznam()
     {
         Assert.IsEmpty(Build(Train("1001", Routing.Prechadzajuci, track: Track.None)).Stations[0].Positions);
     }
@@ -1161,7 +1162,7 @@ public class Iniss2ExportTests
     }
 
     [TestMethod]
-    public void TabTab_JednoduchePravidlaDoSlovnikaOstatneDoVyrazu()
+    public void TabTab_JednoduchePravidlaDoSlovnikaUdalostiDoVyrazu()
     {
         var data = Build(TableDocument(TableManufacturer.Elen16, out _, out _));
 
@@ -1171,8 +1172,22 @@ public class Iniss2ExportTests
         {
             new TabTabEntry("8:15", TabTabTable.AnyFont, "8:15", 74), new TabTabEntry("R", TabTabTable.AnyFont, "R", 66)
         }, table.Entries.ToArray(), "kluc bez pisma, posledne pravidlo vyhrava");
-        StringAssert.Contains(table.Expression, "' Bus = #VYLUKA");
-        StringAssert.EndsWith(table.Expression, "Return sOrig");
+        StringAssert.Contains(table.Expression, "If (.VylukaPrij Or .VylukaOdj) AndAlso accept(New TabString(\"Bus\", -1)) Then Return r");
+        StringAssert.EndsWith(table.Expression, "sOrig.iFont)))");
+        Assert.IsFalse(data.Warnings.Any(warning => warning.Issue == Iniss2ExportIssue.TabTabNotConverted));
+    }
+
+    [TestMethod]
+    public void TabTab_PravidloSInymStlpcomOstaneKomentarom()
+    {
+        var document = TableDocument(TableManufacturer.Elen16, out _, out _);
+        document.TabTabs[0].Text += "\nL = %Linka%";
+
+        var data = Build(document);
+
+        var table = data.Stations[0].TabTabs.Single();
+        Assert.StartsWith("' L = %Linka%\n", table.Expression);
+        StringAssert.Contains(table.Expression, "accept(New TabString(\"Bus\", -1))");
         CollectionAssert.Contains(data.Warnings.ToArray(), new Iniss2ExportWarning(Iniss2ExportIssue.TabTabNotConverted, "Odjezd"));
     }
 
@@ -1296,6 +1311,83 @@ public class Iniss2ExportTests
         Iniss2Export.Write(data, _dataDir, "2030", "01 Lipovec");
 
         Assert.AreEqual("<STATEDGM />", File.ReadAllText(Path.Combine(_dataDir, "2030", "01 Lipovec", Iniss2Export.StateDiagramFile)));
+    }
+
+    // cielova instalacia s jednou stanicou bez stavoveho diagramu
+    private void Installation()
+    {
+        DirListXml.AddStation(_dataDir, "2020", new DirListItem("01 Horany", Horany, "", "", DirListItemFlags.None));
+        DirListXml.WriteStationNumber(Path.Combine(_dataDir, "2020", "01 Horany"), Horany);
+    }
+
+    // stavovy diagram 3.39 s jednou kategoriou: tlacidlo Prichadza vedie do stavu s hlasenim Přijíždí
+    private static ToolsCore.Iniss.StateDgm.StateDgmDiagram StateDgm()
+    {
+        var category = new ToolsCore.Iniss.StateDgm.StateDgmCategory { Key = "#Projíždějící vlak" };
+        foreach (var key in new[] { "#Start", "Přijíždí" })
+        {
+            var state = new ToolsCore.Iniss.StateDgm.StateDgmState { Key = key };
+            state.Events.Add(new ToolsCore.Iniss.StateDgm.StateDgmEvent { Key = "#GoToPrijde", NextState = "Přijíždí", ReportKey = "Přijíždí" });
+            state.Controls.Add(new ToolsCore.Iniss.StateDgm.StateDgmControl { CtrlId = 4, DesignKey = "Príde3", EventKey = "#GoToPrijde" });
+            category.States.Add(state);
+        }
+
+        var diagram = new ToolsCore.Iniss.StateDgm.StateDgmDiagram();
+        diagram.Categories.Add(category);
+        return diagram;
+    }
+
+    [TestMethod]
+    public void StavovyDiagram_PrevedenyMaPrednostPredSablonou()
+    {
+        var template = TemplateStation();
+        var letters = new Dictionary<string, string> { ["Přijíždí"] = "P" };
+        var data = Iniss2Export.Build([new Iniss2StationInput(Document(Train("1001", Routing.Prechadzajuci)), Gvd) { StateDgm = StateDgm() }],
+            Source() with { TemplateStation = template, ReportTemplate = ReportKeysFile.Read(template), ReportLetters = letters });
+
+        Iniss2Export.Write(data, _dataDir, "2030", "01 Lipovec");
+
+        var nodes = StateDiagramFile.Read(Path.Combine(_dataDir, "2030", "01 Lipovec"))!.Graphs.Single().Nodes;
+        Assert.AreEqual(("Přijíždí", "Přijede", new StateButton("Príde", 4)), (nodes[1].Key, nodes[1].Report, nodes[1].Button),
+            "hlasenie sablony s pismenom typu");
+        Assert.IsEmpty(data.Warnings);
+    }
+
+    [TestMethod]
+    public void StavovyDiagram_BezSablonyHlasenieJeKlucTypu()
+    {
+        Installation();
+        var data = Iniss2Export.Build([new Iniss2StationInput(Document(Train("1001", Routing.Prechadzajuci)), Gvd) { StateDgm = StateDgm() }], Source());
+
+        Assert.AreEqual("Přijíždí", data.Stations[0].StateDiagram!.Graphs[0].Nodes[1].Report);
+        Assert.IsFalse(Iniss2ExportService.Check(_dataDir, data).Any(warning => warning.Issue == Iniss2ExportIssue.StateDiagramMissing));
+    }
+
+    [TestMethod]
+    public void StavovyDiagram_BezDiagramuASablonyUpozorni()
+    {
+        Installation();
+        var warnings = Iniss2ExportService.Check(_dataDir, Build(Document(Train("1001", Routing.Prechadzajuci))));
+
+        Assert.AreEqual(new Iniss2ExportWarning(Iniss2ExportIssue.StateDiagramMissing, "5400010"),
+            warnings.Single(warning => warning.Issue == Iniss2ExportIssue.StateDiagramMissing));
+    }
+
+    [TestMethod]
+    public void LogText_HlasenieStavuMusiBytMetoda()
+    {
+        File.WriteAllText(Path.Combine(_dataDir, "LogText.vb"), """
+            Public Class LogText
+                <ZakladniHlaseni("Príde")> _
+                Public Sub Odjede()
+                End Sub
+            End Class
+            """, ToolsCore.Iniss.Tools.Encodings.Win1250);
+        var data = Iniss2Export.Build([new Iniss2StationInput(Document(Train("1001", Routing.Prechadzajuci)), Gvd) { StateDgm = StateDgm() }], Source());
+
+        var warnings = Iniss2Export.CheckLogText(_dataDir, data);
+
+        Assert.AreEqual(new Iniss2ExportWarning(Iniss2ExportIssue.LogTextFunctionMissing, "Přijíždí"), warnings.Single());
     }
 
     [TestMethod]

@@ -4,6 +4,8 @@ using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using Serilog;
 using ToolsCore.Iniss.Entities;
+using ToolsCore.Iniss.Expressions;
+using ToolsCore.Iniss.StateDgm;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Iniss2.Grafikon;
 using ToolsCore.Iniss2.Tables;
@@ -94,8 +96,23 @@ internal enum Iniss2ExportIssue
     /// <summary>Predloha ELEN nema banku pisem; server sa bez nej nespusti.</summary>
     FontBankMissing,
 
-    /// <summary>Bez sablony nema stanica stavovy diagram; server sa bez neho nespusti.</summary>
+    /// <summary>Stanica nema stavovy diagram ani sablonu; server sa bez neho nespusti.</summary>
     StateDiagramMissing,
+
+    /// <summary>StateDgm.txt sa neda nacitat; stanica dostane diagram sablony.</summary>
+    StateDiagramUnreadable,
+
+    /// <summary>Vyraz stavoveho diagramu sa nedal prelozit; jeho cast sa vynecha.</summary>
+    StateExpressionNotConverted,
+
+    /// <summary>Cast stavoveho diagramu (akcia, starter, casovy bod) INISS2 nevie vyjadrit; vynecha sa.</summary>
+    StatePartNotConverted,
+
+    /// <summary>Akcie, ktore vedu do stavu, maju rozne hlasenia; uzol INISS2 ma jedno.</summary>
+    StateReportConflict,
+
+    /// <summary>Typ hlasenia 3.39 nema hlasenie v cieli; stav ostane bez hlasenia.</summary>
+    StateReportMissing,
 
     /// <summary>Server INISS2 na tomto pocitaci bezi; subory by pri dalsej uprave prepisal.</summary>
     ServerRunning,
@@ -151,7 +168,11 @@ internal sealed record Iniss2StationData(
     IReadOnlyList<TableDefinition> Tables,
     IReadOnlyList<CatalogTable> Catalogs,
     IReadOnlyList<TabTabTable> TabTabs,
-    IReadOnlyList<TrainTextSet> Texts);
+    IReadOnlyList<TrainTextSet> Texts)
+{
+    /// <summary>Stavovy diagram prevedeny zo StateDgm.txt; null = grafikon ho nema, stanica dostane diagram sablony.</summary>
+    public StateDiagram? StateDiagram { get; init; }
+}
 
 /// <summary>
 /// Grafikon INISS2 s jednou alebo viacerymi stanicami.
@@ -165,7 +186,7 @@ internal sealed record Iniss2StationData(
 /// <param name="Lines">linky tabul na doplnenie do CommLines.xml</param>
 /// <param name="FontFiles">banky pisem ELEN na skopirovanie do Data\TableFonts</param>
 /// <param name="Warnings">co sa nedalo preniest presne</param>
-/// <param name="TemplateStation">stanica cielovej instalacie, z ktorej sa skopiruje statedgm.xml; prazdne = bez kopie</param>
+/// <param name="TemplateStation">stanica cielovej instalacie, z ktorej sa skopiruje statedgm.xml staniciam bez vlastneho diagramu; prazdne = bez kopie</param>
 internal sealed record Iniss2ExportData(
     GvFile Timetable,
     IReadOnlyList<GvStation> RouteStations,
@@ -187,6 +208,9 @@ internal sealed record Iniss2StationInput(GrafikonDocument Document, GVDInfo Gvd
 {
     /// <summary>Priecinok grafikonu v DirList.TXT - podla neho sa hladaju linky tabul.</summary>
     public string Grafikon { get; init; } = "";
+
+    /// <summary>Stavovy diagram grafikonu; null = grafikon ho nema.</summary>
+    public StateDgmDiagram? StateDgm { get; init; }
 }
 
 /// <summary>
@@ -224,8 +248,8 @@ internal sealed record Iniss2ExportSource(
     public IReadOnlyDictionary<string, string> FontBanks { get; init; } = new Dictionary<string, string>();
 
     /// <summary>
-    /// Stanica cielovej instalacie, z ktorej sa prevezme statedgm.xml a hlasenia ReportKeys.xml; prazdne = hlasenia z typov 3.39
-    /// a statedgm.xml treba doplnit rucne.
+    /// Stanica cielovej instalacie, z ktorej sa prevezmu hlasenia ReportKeys.xml a statedgm.xml pre stanice bez StateDgm.txt;
+    /// prazdne = hlasenia z typov 3.39.
     /// </summary>
     public string TemplateStation { get; init; } = "";
 
@@ -238,6 +262,9 @@ internal sealed record Iniss2ExportSource(
     /// </summary>
     public IReadOnlyDictionary<string, string> ReportLetters { get; init; } = new Dictionary<string, string>();
 
+    /// <summary>Kluce druhov vlakov z TrTypes s indexom zabudovaneho druhu INISSu - pre preklad podmienok TabTab.</summary>
+    public IReadOnlyDictionary<string, int> TrainTypeKeys { get; init; } = new Dictionary<string, int>();
+
     /// <summary>
     /// Udaje nacitanej instalacie; vyluky a odklony obsluhy sa citaju zo suborov.
     /// </summary>
@@ -246,9 +273,17 @@ internal sealed record Iniss2ExportSource(
     {
         ArgumentNullException.ThrowIfNull(workspace);
 
+        var keys = new Dictionary<string, int>(StringComparer.Ordinal);
+        foreach (var type in workspace.TrainsTypes ?? [])
+        {
+            var index = ExprTrainTypes.IndexOf(type.CategoryTrain);
+            if (index >= 0 && !string.IsNullOrEmpty(type.Key))
+                keys.TryAdd(type.Key, index);
+        }
+
         return new Iniss2ExportSource(workspace.Languages, workspace.LogZvukTexts,
             Formats.TrainNoticesFile.Read(workspace.DataDir, Formats.TrainNoticesFile.FileLockouts),
-            Formats.TrainNoticesFile.Read(workspace.DataDir, Formats.TrainNoticesFile.FileDiversions));
+            Formats.TrainNoticesFile.Read(workspace.DataDir, Formats.TrainNoticesFile.FileDiversions)) { TrainTypeKeys = keys };
     }
 }
 
@@ -270,8 +305,8 @@ internal static partial class Iniss2Export
 
     private const string LogTextFile = "LogText.vb";
 
-    /// <summary>Stavovy diagram stanice; export ho neprevadza, kopiruje sa zo sablony.</summary>
-    public const string StateDiagramFile = "statedgm.xml";
+    /// <summary>Stavovy diagram stanice; prevedie sa zo StateDgm.txt, inak sa kopiruje zo sablony.</summary>
+    public const string StateDiagramFile = ToolsCore.Iniss2.Grafikon.StateDiagramFile.FileName;
 
     // mutex, ktorym server brani druhemu spusteniu
     private const string ServerMutex = "INISRV_MUTEX";
@@ -301,7 +336,7 @@ internal static partial class Iniss2Export
         ArgumentNullException.ThrowIfNull(source);
 
         var state = new ExportState();
-        var builders = stations.Select(input => new StationBuilder(input.Document, input.Gvd, input.Grafikon, source, state)).ToList();
+        var builders = stations.Select(input => new StationBuilder(input.Document, input.Gvd, input.Grafikon, input.StateDgm, source, state)).ToList();
         var rows = builders.SelectMany(builder => builder.Prepare()).ToList();
 
         var twice = builders.GroupBy(builder => builder.Station).FirstOrDefault(group => group.Count() > 1);
@@ -413,6 +448,16 @@ internal static partial class Iniss2Export
             Require(lockout.Key, "Vyluka");
         foreach (var diversion in data.Diversions.Where(diversion => !IsReportNumber(diversion.Key)))
             Require(diversion.Key, "Odklon");
+
+        // hlasenie stavu je metoda LogText s rovnakym nazvom; druh hlasenia urcuje atribut, preto sa overuje len nazov
+        foreach (var report in data.Stations.Where(station => station.StateDiagram is not null)
+                     .SelectMany(station => station.StateDiagram!.Graphs.SelectMany(graph => graph.Nodes)).Select(node => node.Report)
+                     .Where(report => report.Length > 0).Distinct(StringComparer.Ordinal))
+        {
+            var warning = new Iniss2ExportWarning(Iniss2ExportIssue.LogTextFunctionMissing, report);
+            if (!functions.ContainsKey(report) && !warnings.Contains(warning))
+                warnings.Add(warning);
+        }
 
         foreach (var report in data.UserReports)
         {
@@ -598,7 +643,12 @@ internal static partial class Iniss2Export
     {
         var stationDir = Path.Combine(dataDir, group, directory);
         var diagram = Path.Combine(template, StateDiagramFile);
-        if (template.Length > 0 && File.Exists(diagram))
+        if (station.StateDiagram is not null)
+        {
+            Directory.CreateDirectory(stationDir);
+            ToolsCore.Iniss2.Grafikon.StateDiagramFile.Write(stationDir, station.StateDiagram);
+        }
+        else if (template.Length > 0 && File.Exists(diagram))
         {
             Directory.CreateDirectory(stationDir);
             File.Copy(diagram, Path.Combine(stationDir, StateDiagramFile), true);

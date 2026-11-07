@@ -11255,7 +11255,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zo stanice šablóny sa prevezme stavový diagram a hlásenia. Typom hlásení INISS 3.39 priraďte jej hlásenia..
+        ///   Looks up a localized string similar to Zo stanice šablóny sa prevezmú hlásenia, stavový diagram len pre grafikony bez neho. Typom hlásení INISS 3.39 priraďte jej hlásenia..
         /// </summary>
         internal static string Iniss2Export_Step3Hint {
             get {
@@ -11399,7 +11399,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hlásenia sa prevezmú z typov hlásení INISS 3.39. Stavový diagram treba doplniť ručne..
+        ///   Looks up a localized string similar to Hlásenia sa prevezmú z typov hlásení INISS 3.39..
         /// </summary>
         internal static string Iniss2Export_NoTemplateInfo {
             get {
@@ -11633,7 +11633,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Skript hlásení nemá funkciu pre tento kľúč, dodatok, výluka alebo odklon sa neprehrá..
+        ///   Looks up a localized string similar to Skript hlásení nemá funkciu pre tento kľúč, hlásenie sa neprehrá..
         /// </summary>
         internal static string Iniss2Export_Issue_LogTextFunctionMissing {
             get {
@@ -11768,11 +11768,56 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stanice nemajú stavový diagram, pred spustením servera ho treba doplniť..
+        ///   Looks up a localized string similar to Stanica nemá stavový diagram, pred spustením servera ho treba doplniť..
         /// </summary>
         internal static string Iniss2Export_Issue_StateDiagramMissing {
             get {
                 return ResourceManager.GetString("Iniss2Export_Issue_StateDiagramMissing", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Stavový diagram sa nedá načítať, použije sa diagram šablóny..
+        /// </summary>
+        internal static string Iniss2Export_Issue_StateDiagramUnreadable {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_StateDiagramUnreadable", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Výraz stavového diagramu sa nedal preložiť do VB.NET, jeho časť sa vynechá..
+        /// </summary>
+        internal static string Iniss2Export_Issue_StateExpressionNotConverted {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_StateExpressionNotConverted", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Túto časť stavového diagramu INISS2 nevie vyjadriť, vynechá sa..
+        /// </summary>
+        internal static string Iniss2Export_Issue_StatePartNotConverted {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_StatePartNotConverted", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Do stavu vedú akcie s rôznymi hláseniami, INISS2 pozná pre stav len prvé..
+        /// </summary>
+        internal static string Iniss2Export_Issue_StateReportConflict {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_StateReportConflict", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Typ hlásenia nemá priradené hlásenie, stav ostane bez hlásenia..
+        /// </summary>
+        internal static string Iniss2Export_Issue_StateReportMissing {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_StateReportMissing", resourceCulture);
             }
         }
         
