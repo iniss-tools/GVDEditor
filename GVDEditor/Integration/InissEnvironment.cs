@@ -44,11 +44,12 @@ internal static class InissEnvironment
     /// <summary>
     /// Nastavenia INISSu tejto konfiguracie tak, ako ich INISS pri starte nacita (vetva, rezim spravcu).
     /// </summary>
-    public static ResolvedConfig Resolve(RunConfiguration config, string installationDir, IReadOnlyDictionary<int, RegTableInfo>? tables = null)
+    public static ResolvedConfig Resolve(RunConfiguration config, string installationDir, IReadOnlyDictionary<int, RegTableInfo>? tables = null,
+        Func<string, string?, InissRunMode, IReadOnlyDictionary<int, RegTableInfo>?, InissConfigSource>? loadSource = null)
     {
         var exe = PathUtils.CombinePath(installationDir, config.Program)!;
         var mode = config.RunAsAdmin ? InissRunMode.Elevated : InissRunMode.Normal;
-        return RegResolver.Resolve(InissRegistry.LoadSource(RunConfigurations.AppName(config), exe, mode, tables));
+        return RegResolver.Resolve((loadSource ?? InissRegistry.LoadSource)(RunConfigurations.AppName(config), exe, mode, tables));
     }
 
     /// <summary>
