@@ -11822,6 +11822,15 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Skriptu hlásení chýba funkcia dodatku, export ju doplní s nahrávkou z banky..
+        /// </summary>
+        internal static string Iniss2Export_Issue_LogTextFunctionAdded {
+            get {
+                return ResourceManager.GetString("Iniss2Export_Issue_LogTextFunctionAdded", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Server INISS2 beží. Pred exportom ho zastavte..
         /// </summary>
         internal static string Iniss2Export_Issue_ServerRunning {

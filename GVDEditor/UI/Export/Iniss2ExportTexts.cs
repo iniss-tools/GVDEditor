@@ -46,6 +46,7 @@ internal static class Iniss2ExportTexts
         Iniss2ExportIssue.StatePartNotConverted => Resources.Iniss2Export_Issue_StatePartNotConverted,
         Iniss2ExportIssue.StateReportConflict => Resources.Iniss2Export_Issue_StateReportConflict,
         Iniss2ExportIssue.StateReportMissing => Resources.Iniss2Export_Issue_StateReportMissing,
+        Iniss2ExportIssue.LogTextFunctionAdded => Resources.Iniss2Export_Issue_LogTextFunctionAdded,
         Iniss2ExportIssue.ServerRunning => Resources.Iniss2Export_Issue_ServerRunning,
         Iniss2ExportIssue.GroupExists => Resources.Iniss2Export_Issue_GroupExists,
         _ => throw new ArgumentOutOfRangeException(nameof(issue), issue, null)

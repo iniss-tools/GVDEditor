@@ -17,6 +17,7 @@ internal static partial class Iniss2Export
         ExportState state)
     {
         private readonly Dictionary<Train, BitArray> _days = [];
+        private readonly Dictionary<Train, StationRow> _rows = [];
         private List<Train> _trains = [];
 
         /// <summary>Cislo stanice; plati po <see cref="Prepare" />.</summary>
@@ -51,7 +52,10 @@ internal static partial class Iniss2Export
 
             groups.ForEach(SeparateVariants);
 
-            return groups.SelectMany(group => group).Select(Row).ToList();
+            var rows = groups.SelectMany(group => group).Select(Row).ToList();
+            foreach (var row in rows)
+                _rows[row.Train] = row;
+            return rows;
         }
 
         /// <summary>
@@ -65,9 +69,16 @@ internal static partial class Iniss2Export
             Diversions = ToDiversions(numbers, Station);
 
             var (tables, catalogs) = ToTables();
+            var reportStations = ToReportStations(numbers);
             return new Iniss2StationData(Station, document.Tracks.Where(track => track.Key != Track.None.Key).Select(ToTrack).ToList(),
                 ToPositions(numbers), ToMotorTrains(numbers), ToAdditions(numbers), ToCompositions(numbers), ToLanguages(numbers), ToReportKeys(),
-                tables, catalogs, ToTabTabs(catalogs), ToTrainTexts(numbers)) { StateDiagram = ToStateDiagram() };
+                tables, catalogs, ToTabTabs(catalogs), ToTrainTexts(numbers))
+            {
+                StateDiagram = ToStateDiagram(),
+                ReportStations = reportStations.Trains,
+                ShortReportPatterns = reportStations.ShortPatterns,
+                LongReportPatterns = reportStations.LongPatterns
+            };
         }
 
         private StationRow Row(Train train)
@@ -488,6 +499,8 @@ internal static partial class Iniss2Export
                     foreach (var addition in row.Train.Doplnky)
                     {
                         var key = AdditionPrefix + Dodatok.CodeFromKey(addition.Sound.Key);
+                        var description = addition.Sound.Text is { Length: > 0 } text ? text : addition.Sound.Name is { Length: > 0 } name ? name : key;
+                        state.AdditionFunctions.TryAdd(key, new LogTextAddition(key, description, $"{addition.Sound.Group.Key}/{addition.Sound.Key}"));
                         var reports = Reports(addition.ChosenReports, TypesFor(row.Train.Routing));
                         var index = records.FindIndex(record => record.Key == key && record.Reports == reports);
                         if (index < 0)

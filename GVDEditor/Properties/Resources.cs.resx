@@ -4126,6 +4126,9 @@ Před zápisem se uloží záloha.</value>
   <data name="Iniss2Export_Issue_StateReportMissing" xml:space="preserve">
     <value>Typ hlášení nemá přiřazené hlášení, stav zůstane bez hlášení.</value>
   </data>
+  <data name="Iniss2Export_Issue_LogTextFunctionAdded" xml:space="preserve">
+    <value>Skriptu hlášení chybí funkce dodatku, export ji doplní s nahrávkou z banky.</value>
+  </data>
   <data name="Iniss2Export_Issue_ServerRunning" xml:space="preserve">
     <value>Server INISS2 běží. Před exportem ho zastavte.</value>
   </data>

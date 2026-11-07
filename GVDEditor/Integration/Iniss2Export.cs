@@ -114,6 +114,9 @@ internal enum Iniss2ExportIssue
     /// <summary>Typ hlasenia 3.39 nema hlasenie v cieli; stav ostane bez hlasenia.</summary>
     StateReportMissing,
 
+    /// <summary>LogText cielovej instalacie nema funkciu dodatku; export ju doplni s nahravkou z banky.</summary>
+    LogTextFunctionAdded,
+
     /// <summary>Server INISS2 na tomto pocitaci bezi; subory by pri dalsej uprave prepisal.</summary>
     ServerRunning,
 
@@ -172,6 +175,15 @@ internal sealed record Iniss2StationData(
 {
     /// <summary>Stavovy diagram prevedeny zo StateDgm.txt; null = grafikon ho nema, stanica dostane diagram sablony.</summary>
     public StateDiagram? StateDiagram { get; init; }
+
+    /// <summary>Stanice hlasenia pri vlakoch (StaHlasVl.xml) - vyber INISS 3.39 v kratkom a dlhom hlaseni.</summary>
+    public IReadOnlyList<TrainReportStations> ReportStations { get; init; } = [];
+
+    /// <summary>Vzory trasy kratkeho hlasenia (StaHlasB.xml) pre prazdny vyber.</summary>
+    public IReadOnlyList<IReadOnlyList<ReportPatternStop>> ShortReportPatterns { get; init; } = [];
+
+    /// <summary>Vzory trasy dlheho hlasenia (StaHlasC.xml) pre prazdny vyber.</summary>
+    public IReadOnlyList<IReadOnlyList<ReportPatternStop>> LongReportPatterns { get; init; } = [];
 }
 
 /// <summary>
@@ -197,7 +209,14 @@ internal sealed record Iniss2ExportData(
     IReadOnlyList<CommLineDefinition> Lines,
     IReadOnlyList<Iniss2FontFile> FontFiles,
     IReadOnlyList<Iniss2ExportWarning> Warnings,
-    string TemplateStation = "");
+    string TemplateStation = "")
+{
+    /// <summary>Predvolene stanice hlasenia grafikonu (Default.Stations.xml).</summary>
+    public IReadOnlyList<DefaultStation> DefaultStations { get; init; } = [];
+
+    /// <summary>Funkcie dodatkov pre LogText.vb; zapis doplni tie, ktore v skripte nie su.</summary>
+    public IReadOnlyList<LogTextAddition> AdditionFunctions { get; init; } = [];
+}
 
 /// <summary>
 /// Grafikon jednej stanice INISS 3.39 na export.
@@ -354,7 +373,11 @@ internal static partial class Iniss2Export
         return new Iniss2ExportData(timetable, [.. state.Stations.Values], files, [.. builders.SelectMany(builder => builder.Lockouts).Distinct()],
             [.. builders.SelectMany(builder => builder.Diversions).Distinct()], [.. state.UserReports.Select(user => user.Report)],
             [.. state.Lines.Values], [.. state.FontFiles.Select(font => new Iniss2FontFile(font.Key, font.Value))], [.. state.Warnings.Distinct()],
-            source.TemplateStation);
+            source.TemplateStation)
+        {
+            DefaultStations = DefaultStations(builders.SelectMany(builder => builder.ReportedToStations()), state.Stations),
+            AdditionFunctions = [.. state.AdditionFunctions.Values]
+        };
     }
 
     /// <summary>
@@ -442,8 +465,20 @@ internal static partial class Iniss2Export
                 warnings.Add(warning);
         }
 
+        // chybajucu funkciu dodatku zapis doplni; funkciu s rovnakym nazvom bez oznacenia nie
         foreach (var addition in data.Stations.SelectMany(station => station.Additions).Where(addition => !IsReportNumber(addition.Key)))
-            Require(addition.Key, "Dodatek");
+        {
+            var added = new Iniss2ExportWarning(Iniss2ExportIssue.LogTextFunctionAdded, addition.Key);
+            if (!functions.ContainsKey(addition.Key) && data.AdditionFunctions.Any(function => function.Name == addition.Key))
+            {
+                if (!warnings.Contains(added))
+                    warnings.Add(added);
+            }
+            else
+            {
+                Require(addition.Key, "Dodatek");
+            }
+        }
         foreach (var lockout in data.Lockouts.Where(lockout => !IsReportNumber(lockout.Key)))
             Require(lockout.Key, "Vyluka");
         foreach (var diversion in data.Diversions.Where(diversion => !IsReportNumber(diversion.Key)))
@@ -558,6 +593,7 @@ internal static partial class Iniss2Export
             throw new ArgumentException("Pocet priecinkov nezodpoveda poctu stanic.", nameof(stationDirectories));
 
         var groupDir = Path.Combine(dataDir, group);
+        var logText = Path.Combine(dataDir, LogTextFile);
 
         if (File.Exists(Path.Combine(groupDir, GvFile.FileName)))
             throw new Iniss2ExportException(Iniss2ExportIssue.GroupExists, group);
@@ -582,8 +618,10 @@ internal static partial class Iniss2Export
             Path.Combine(groupDir, GvStationsFile.FileName),
             Path.Combine(groupDir, VylukyFile.FileName),
             Path.Combine(groupDir, OdklonyFile.FileName),
+            Path.Combine(groupDir, DefaultStationsFile.FileName),
             Path.Combine(dataDir, ConstReportsFile.FileName),
-            Path.Combine(dataDir, CommLinesXml.FileName)
+            Path.Combine(dataDir, CommLinesXml.FileName),
+            logText
         ];
         var fonts = data.FontFiles.Select(font => (Target: Path.Combine(dataDir, FontsDirectory, font.Name + ".bin"), font.Source))
             .Where(font => !File.Exists(font.Target)).ToList();
@@ -604,6 +642,9 @@ internal static partial class Iniss2Export
                 Path.Combine(stationDir, TableCatalogFile.FileName),
                 Path.Combine(stationDir, TabTabXml.StationFileName),
                 Path.Combine(stationDir, TrainTextsFile.FileName),
+                Path.Combine(stationDir, TrainReportStationsFile.FileName),
+                Path.Combine(stationDir, ReportPatternsFile.ShortFileName),
+                Path.Combine(stationDir, ReportPatternsFile.LongFileName),
                 Path.Combine(stationDir, StateDiagramFile)
             ]);
         }
@@ -616,6 +657,8 @@ internal static partial class Iniss2Export
             GvStationsFile.Write(groupDir, data.RouteStations);
             VylukyFile.Write(groupDir, lockouts);
             OdklonyFile.Write(groupDir, diversions);
+            if (data.DefaultStations.Count > 0)
+                DefaultStationsFile.Write(groupDir, data.DefaultStations);
             if (reports is not null)
                 ConstReportsFile.Write(dataDir, reports);
             CommLinesXml.Add(dataDir, data.Lines);
@@ -627,8 +670,15 @@ internal static partial class Iniss2Export
 
             for (var i = 0; i < data.Stations.Count; i++)
                 WriteStation(data.Stations[i], dataDir, group, stationDirectories[i], data.TemplateStation);
+
+            if (File.Exists(logText) && data.AdditionFunctions.Count > 0)
+            {
+                var added = AddAdditionFunctions(logText, data.AdditionFunctions);
+                if (added.Count > 0)
+                    Log.Information("Export do INISS2: do {File} doplnene funkcie dodatkov {Functions}", logText, added);
+            }
         }
-        catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException or FormatException)
         {
             Log.Error(e, "Export do INISS2 {Directory} zlyhal - subory sa vracaju do povodneho stavu", groupDir);
             transaction.TryRollback();
@@ -666,6 +716,11 @@ internal static partial class Iniss2Export
         TableCatalogFile.Write(stationDir, station.Catalogs);
         TabTabXml.Write(Path.Combine(stationDir, TabTabXml.StationFileName), station.TabTabs);
         TrainTextsFile.Write(stationDir, station.Texts);
+        TrainReportStationsFile.Write(stationDir, station.ReportStations);
+        if (station.ShortReportPatterns.Count > 0)
+            ReportPatternsFile.Write(stationDir, ReportPatternsFile.ShortFileName, station.ShortReportPatterns);
+        if (station.LongReportPatterns.Count > 0)
+            ReportPatternsFile.Write(stationDir, ReportPatternsFile.LongFileName, station.LongReportPatterns);
         DirListXml.AddStation(dataDir, group, new DirListItem(directory, station.Station, "", "", DirListItemFlags.None));
     }
 
@@ -688,5 +743,8 @@ internal static partial class Iniss2Export
 
         /// <summary>Banky pisem ELEN: nazov → subor .bin.</summary>
         public Dictionary<string, string> FontFiles { get; } = [];
+
+        /// <summary>Funkcie dodatkov pre LogText.vb podla kluca dodatku.</summary>
+        public Dictionary<string, LogTextAddition> AdditionFunctions { get; } = new(StringComparer.OrdinalIgnoreCase);
     }
 }

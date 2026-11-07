@@ -703,6 +703,82 @@ public class Iniss2ExportTests
         Assert.AreEqual("00000110000011", Bits(GvValidity.Days(From, To, languages[1].Validity)));
     }
 
+    // vlak s vyberom 3.39: zo smeru Horany v oboch hlaseniach, do smeru Javorina len v dlhom, Dubova v oboch
+    private static Train Announced(string number, int variant = -1, string limit = "", bool javorShort = false)
+    {
+        var train = Train(number, Routing.Prechadzajuci, variant: variant, limit: limit);
+        train.StaniceZoSmeru.Clear();
+        train.StaniceZoSmeru.Add(new Station(Hills.ID, Hills.Name, IsInShortReport: true, IsInLongReport: true));
+        train.StaniceDoSmeru.Clear();
+        train.StaniceDoSmeru.AddRange([new Station(Oak.ID, Oak.Name, IsInShortReport: javorShort, IsInLongReport: true),
+            new Station(Dub.ID, Dub.Name, IsInShortReport: true, IsInLongReport: true)]);
+        return train;
+    }
+
+    [TestMethod]
+    public void StaniceHlasenia_VyberPriVlaku()
+    {
+        var data = Build(Announced("1001"));
+
+        var record = data.Stations[0].ReportStations.Single();
+        Assert.AreEqual(("1001", ""), (record.Number, record.Validity));
+        CollectionAssert.AreEqual(new[] { Horany }, record.ShortFrom.ToArray());
+        CollectionAssert.AreEqual(new[] { Horany }, record.LongFrom.ToArray());
+        CollectionAssert.AreEqual(new[] { Dubova }, record.ShortTo.ToArray());
+        CollectionAssert.AreEqual(new[] { Javor, Dubova }, record.LongTo.ToArray());
+        Assert.IsEmpty(data.Stations[0].ShortReportPatterns);
+        Assert.IsEmpty(data.Stations[0].LongReportPatterns);
+        CollectionAssert.AreEqual(new[] { new DefaultStation(Javor, "Javorina") { Short = false }, new DefaultStation(Dubova, "Dubová") },
+            data.DefaultStations.ToArray());
+    }
+
+    [TestMethod]
+    public void StaniceHlasenia_VlakyJednehoCislaMajuOddeleneDni()
+    {
+        var records = Build(Announced("1001", 1, "ide v 1-5"), Announced("1001", 2, "ide v 6,7", javorShort: true)).Stations[0].ReportStations;
+
+        Assert.HasCount(2, records);
+        Assert.AreEqual("11111001111100", Bits(GvValidity.Days(From, To, records[0].Validity)));
+        CollectionAssert.AreEqual(new[] { Javor, Dubova }, records[1].ShortTo.ToArray());
+    }
+
+    [TestMethod]
+    public void StaniceHlasenia_PrazdnyVyberJeVzorBezStanic()
+    {
+        var data = Build(Train("1002", Routing.Vychadzajuci));
+
+        Assert.IsEmpty(data.Stations[0].ReportStations);
+        CollectionAssert.AreEqual(new[] { new ReportPatternStop(Lipovec, false) }, data.Stations[0].ShortReportPatterns[0].ToArray(),
+            "vychadzajuci vlak nema stanice zo smeru");
+        CollectionAssert.AreEqual(new[] { new ReportPatternStop(Lipovec, false), new ReportPatternStop(Javor, false) },
+            data.Stations[0].LongReportPatterns[1].ToArray());
+        Assert.IsEmpty(data.DefaultStations);
+    }
+
+    [TestMethod]
+    public void StaniceHlasenia_JedenVariantHlaseniaBerieDlhyVyber()
+    {
+        var document = Document(Announced("1001"));
+        document.ReportVariants.RemoveRange(1, document.ReportVariants.Count - 1);
+
+        var record = Build(document).Stations[0].ReportStations.Single();
+
+        CollectionAssert.AreEqual(new[] { Javor, Dubova }, record.ShortTo.ToArray());
+    }
+
+    [TestMethod]
+    public void StaniceHlasenia_ZapisSubory()
+    {
+        var data = Build(Announced("1001"), Train("1002", Routing.Vychadzajuci));
+
+        Iniss2Export.Write(data, _dataDir, "2030", "01 Lipovec");
+
+        var dir = Path.Combine(_dataDir, "2030", "01 Lipovec");
+        Assert.AreEqual("1001", TrainReportStationsFile.Read(dir).Single().Number);
+        Assert.HasCount(2, ReportPatternsFile.Read(dir, ReportPatternsFile.ShortFileName));
+        Assert.HasCount(2, DefaultStationsFile.Read(Path.Combine(_dataDir, "2030")));
+    }
+
     [TestMethod]
     public void Vyluky_ZVlakuZabudovanaJeFunkciaLogText()
     {
@@ -852,6 +928,49 @@ public class Iniss2ExportTests
             new Iniss2ExportWarning(Iniss2ExportIssue.LogTextFunctionMissing, "V1"),
             new Iniss2ExportWarning(Iniss2ExportIssue.LogTextFunctionMissing, "O1")
         }, warnings);
+    }
+
+    private const string Script = "Imports IniSrv\r\n\r\nPublic Class LogText\r\n    Inherits LogTextBase\r\n\r\n    Private Class Pomocna\r\n    End Class\r\n\r\n"
+                                  + "    ' End Class v komentari\r\n    <Dodatek(\"Bufet\")> _\r\n    Public Sub D1()\r\n        Zvuk(\"DODATKY/D1\")\r\n    End Sub\r\nEnd Class\r\n";
+
+    [TestMethod]
+    public void LogText_FunkcieDodatkovPredKoncomTriedy()
+    {
+        var text = Iniss2Export.InsertIntoLogText(Script, [new LogTextAddition("D1006", "Vlak má \"bufet\"", "DODATKY/D1006")]);
+
+        StringAssert.EndsWith(text, "    <Dodatek(\"Vlak má \"\"bufet\"\"\")> _\r\n    Public Sub D1006()\r\n        Zvuk(\"DODATKY/D1006\")\r\n    End Sub ' D1006\r\n\r\nEnd Class\r\n");
+        StringAssert.Contains(text, "    Private Class Pomocna\r\n    End Class\r\n", "vnorena trieda ostane");
+        Assert.DoesNotContain("\n\n", text.Replace("\r\n", "\r", StringComparison.Ordinal), "konce riadkov podla suboru");
+    }
+
+    [TestMethod]
+    public void LogText_ExistujucaFunkciaSaNezdvoji()
+    {
+        var file = Path.Combine(_dataDir, "LogText.vb");
+        File.WriteAllText(file, Script, ToolsCore.Iniss.Tools.Encodings.Win1250);
+
+        var added = Iniss2Export.AddAdditionFunctions(file, [new LogTextAddition("D1", "Bufet", "DODATKY/D1"), new LogTextAddition("D2", "Dva", "DODATKY/D2")]);
+
+        CollectionAssert.AreEqual(new[] { "D2" }, added);
+        var text = File.ReadAllText(file, ToolsCore.Iniss.Tools.Encodings.Win1250);
+        Assert.AreEqual(1, text.Split("Public Sub D1()").Length - 1);
+        Assert.IsEmpty(Iniss2Export.AddAdditionFunctions(file, [new LogTextAddition("D2", "Dva", "DODATKY/D2")]));
+    }
+
+    [TestMethod]
+    public void LogText_ZapisDoplniChybajuciDodatok()
+    {
+        File.WriteAllText(Path.Combine(_dataDir, "LogText.vb"), Script, ToolsCore.Iniss.Tools.Encodings.Win1250);
+        var train = Train("1001", Routing.Prechadzajuci);
+        train.Doplnky.Add(Addition(Routing.Prechadzajuci, "P"));
+        var data = Build(train);
+
+        var warnings = Iniss2Export.CheckLogText(_dataDir, data);
+        Iniss2Export.Write(data, _dataDir, "2030", "01 Lipovec");
+
+        Assert.AreEqual(new LogTextAddition("D1006", "Vlak má bufet", "DODATKY/D1006"), data.AdditionFunctions.Single());
+        Assert.AreEqual(new Iniss2ExportWarning(Iniss2ExportIssue.LogTextFunctionAdded, "D1006"), warnings.Single());
+        StringAssert.Contains(File.ReadAllText(Path.Combine(_dataDir, "LogText.vb"), ToolsCore.Iniss.Tools.Encodings.Win1250), "<Dodatek(\"Vlak má bufet\")> _");
     }
 
     [TestMethod]
