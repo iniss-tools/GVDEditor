@@ -1,5 +1,4 @@
 using System.Globalization;
-using GVDEditor.Domain.Entities;
 using GVDEditor.TabTabEditor;
 using GVDEditor.UI.TabTab;
 using GVDEditor.Properties;

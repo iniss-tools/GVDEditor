@@ -3,24 +3,9 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using Iniss.Elis.Data;
 
 namespace Iniss.Elis;
-
-/// <summary>
-/// Vyhodena, ked platene data nie su zaregistrovane. Registracne cislo sa zadava
-/// pri instalacii dat v programe Cestovne poriadky, nie tu.
-/// </summary>
-internal sealed class NotRegisteredException : Exception
-{
-    public NotRegisteredException(string message) : base(message) { }
-}
-
-/// <summary>
-/// Stanica aj s jej cislom v ciselniku dopravcu (pre zeleznicu kod SR70).
-/// </summary>
-/// <param name="Code">Cislo stanice, napr. 5613600.</param>
-/// <param name="Name">Nazov stanice tak, ako ho uvadza ELIS.</param>
-internal readonly record struct ElisStationCode(int Code, string Name);
 
 /// <summary>
 /// Vycita z dat ELIS vsetky vlaky prechadzajuce zadanou stanicou.

@@ -1,10 +1,13 @@
 using GVDEditor.Domain.Entities;
+using GVDEditor.Mcp.Results;
+using JetBrains.Annotations;
 using ModelContextProtocol.Server;
 
 namespace GVDEditor.Mcp;
 
 /// <summary>Nastroje MCP nad instalaciou INISS a otvorenym grafikonom.</summary>
 [McpServerToolType]
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
 internal static class GrafikonTools
 {
     [McpServerTool(Name = "get_grafikon", Title = "Open timetable", ReadOnly = true, Idempotent = true, OpenWorld = false, UseStructuredContent = true)]

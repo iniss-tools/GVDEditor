@@ -8,7 +8,6 @@ using ToolsCore.Iniss.Entities;
 using ToolsCore.Iniss.Tools;
 using TableFileReader = ToolsCore.Iniss.Tools.TableFileReader;
 using ToolsCore.Tools;
-using ToolsCore.XML;
 
 namespace GVDEditor.UI.Import;
 

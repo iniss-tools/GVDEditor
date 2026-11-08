@@ -1,6 +1,7 @@
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Integration;
+using GVDEditor.Mcp.Results;
 using GVDEditor.UI.Settings;
 using ModelContextProtocol.Server;
 

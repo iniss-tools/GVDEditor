@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 using GVDEditor.Config;
-using GVDEditor.Domain.Entities;
 using GVDEditor.Integration;
 
 namespace GVDEditor.Tests.Integration;

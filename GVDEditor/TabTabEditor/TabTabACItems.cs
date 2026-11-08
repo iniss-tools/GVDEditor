@@ -9,88 +9,6 @@ using GVDEditor.Properties;
 
 namespace GVDEditor.TabTabEditor;
 
-internal class FunctionItem : AutocompleteItem
-{
-    public FunctionItem(string fname, string text, string desc = "", FunReturnType returns = FunReturnType.Bool,
-        params FunParameter[] parameters) : base(text)
-    {
-        ImageIndex = 0;
-
-        var titleB = new StringBuilder();
-        titleB.Append(fname);
-        if (parameters.Length != 0)
-        {
-            titleB.Append('(');
-            foreach (var par in parameters)
-            {
-                titleB.Append(par.Type.ToString() + ' ');
-                titleB.Append(par.Name);
-            }
-
-            titleB.Append(')');
-        }
-
-        base.ToolTipTitle = $"(funkcia) {returns} {titleB}";
-        base.MenuText = titleB.ToString();
-
-        base.ToolTipText = desc;
-        FunctionName = fname;
-    }
-
-    public string FunctionName { get; }
-
-    public override CompareResult Compare(string fragmentText)
-    {
-        if (Text.StartsWith(fragmentText.ToUpperInvariant(), StringComparison.Ordinal))
-            return CompareResult.VisibleAndSelected;
-        if (Text.Contains(fragmentText.ToUpperInvariant(), StringComparison.Ordinal))
-            return CompareResult.Visible;
-        return CompareResult.Hidden;
-    }
-}
-
-internal class ConstantItem : AutocompleteItem
-{
-    public ConstantItem(string cname, string text, string desc = "") : base(text)
-    {
-        ImageIndex = 1;
-        base.ToolTipTitle = Resources.TabTabAC_Constant + cname;
-        base.MenuText = cname;
-        base.ToolTipText = desc;
-        ConstName = cname;
-    }
-
-    public string ConstName { get; }
-
-    public override CompareResult Compare(string fragmentText)
-    {
-        if (Text.StartsWith(fragmentText.ToUpperInvariant(), StringComparison.Ordinal))
-            return CompareResult.VisibleAndSelected;
-        if (Text.Contains(fragmentText.ToUpperInvariant(), StringComparison.Ordinal))
-            return CompareResult.Visible;
-
-        return CompareResult.Hidden;
-    }
-}
-
-internal class EventItem : AutocompleteItem
-{
-    public EventItem(string ename, string text, string desc = "") : base(text)
-    {
-        ImageIndex = 2;
-        base.ToolTipTitle = Resources.TabTabAC_Event + ename;
-        base.MenuText = ename;
-        base.ToolTipText = desc;
-    }
-
-    public override CompareResult Compare(string fragmentText)
-    {
-        if (Text.StartsWith(fragmentText.ToUpperInvariant(), StringComparison.Ordinal))
-            return CompareResult.VisibleAndSelected;
-        return CompareResult.Hidden;
-    }
-}
-
 internal static class TabTabACItems
 {
     private static readonly FunParameter pOperator = new(FunParameterType.String, Resources.TabTabAC_ParamName);
@@ -233,33 +151,5 @@ internal static class TabTabACItems
         var fields = typeof(TabTabACItems).GetFields(BindingFlags.Static | BindingFlags.Public);
 
         return fields.Where(field => field.GetValue(null) is EventItem).Select(field => (EventItem)field.GetValue(null)!).ToList();
-    }
-}
-
-internal enum FunReturnType
-{
-    Bool,
-    Int
-}
-
-internal enum FunParameterType
-{
-    Bool,
-    Int,
-    String,
-    TypVlaku,
-    StavVlaku,
-    Priznak
-}
-
-internal readonly struct FunParameter
-{
-    public readonly FunParameterType Type;
-    public readonly string Name;
-
-    public FunParameter(FunParameterType type, string name)
-    {
-        Type = type;
-        Name = name;
     }
 }

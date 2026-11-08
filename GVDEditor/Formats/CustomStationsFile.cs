@@ -1,5 +1,4 @@
-﻿using GVDEditor.Domain.Entities;
-using System.Globalization;
+﻿using System.Globalization;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.XML;
 using static ToolsCore.Iniss.Grafikon.GvdFileConsts;

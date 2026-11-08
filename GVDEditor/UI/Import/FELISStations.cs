@@ -2,7 +2,7 @@
 using ExControls;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
-using GVDEditor.Integration;
+using GVDEditor.Integration.Elis;
 using GVDEditor.Properties;
 using ToolsCore.Tools;
 

@@ -1,6 +1,5 @@
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Documents;
-using GVDEditor.Domain.Entities;
 using ToolsCore.XML;
 
 namespace GVDEditor.Formats;

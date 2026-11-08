@@ -42,10 +42,10 @@
 		<PackageReference Include="Serilog.Extensions.Logging" Version="10.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<!-- ElisData.cs je zdieľaný medzi GVDEditor (tento proces) a ELISBridge (samostatný x86 proces) -->
-		<Compile Include="..\ELISBridge\ElisData.cs" Link="Integration\ElisData.cs" />
-		<!-- PlanRadeniaData.cs je zdieľaný medzi GVDEditor a PlanRadeniaReader (samostatný proces s rozhraniami Windows) -->
-		<Compile Include="..\PlanRadeniaReader\PlanRadeniaData.cs" Link="Integration\PlanRadeniaData.cs" />
+		<!-- Priečinok Data je zdieľaný medzi GVDEditor (tento proces) a ELISBridge (samostatný x86 proces) -->
+		<Compile Include="..\ELISBridge\Data\*.cs" LinkBase="Integration\Elis\Data" />
+		<!-- Priečinok Data je zdieľaný medzi GVDEditor a PlanRadeniaReader (samostatný proces s rozhraniami Windows) -->
+		<Compile Include="..\PlanRadeniaReader\Data\*.cs" LinkBase="Integration\PlanRadenia\Data" />
 	</ItemGroup>
 	<ItemGroup>
 		<Content Include="gvd.ico" />

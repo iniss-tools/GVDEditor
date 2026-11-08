@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using GVDEditor.Integration;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Registry;
 using ToolsCore.Tools;

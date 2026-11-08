@@ -1,43 +1,12 @@
 using System.Globalization;
+using GVDEditor.Domain.Analysis.Problems;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
-using GVDEditor.Properties;
-using GVDEditor.UI.Settings;
 using ToolsCore.Iniss.Elen;
 using ToolsCore.Iniss.TabTab;
 
 namespace GVDEditor.Domain.Analysis;
-
-/// <summary>
-/// Miesto, odkial INISS posle tabuli cislo pisma.
-/// </summary>
-internal enum ElenFontSource
-{
-    /// <summary>Zoznam pisiem - INISS ich ponuka pri vkladani informacneho textu.</summary>
-    FontList,
-
-    /// <summary>Stlpec katalogovej tabule.</summary>
-    Column,
-
-    /// <summary>Text vlaku na tabuli.</summary>
-    TrainText,
-
-    /// <summary>Lava strana pravidla TabTab (koncove <c>{n}</c>).</summary>
-    TabTab
-}
-
-/// <summary>
-/// Polozka grafikonu s cislom pisma, ktore by tabula ELEN dostala ako riadiaci znak.
-/// </summary>
-/// <param name="Source">odkial sa pismo posiela</param>
-/// <param name="Item">polozka, ktora sa opravuje (<see cref="TableFont" />, <see cref="TableCatalog" />,
-/// <see cref="TableText" />, <see cref="TableTabTab" />)</param>
-/// <param name="Name">nazov alebo kluc polozky</param>
-/// <param name="Detail">prve zle miesto polozky - stlpec, vlak, cislo riadka TabTab; pri pisme zo zoznamu null</param>
-/// <param name="FontId">cislo pisma na prvom zlom mieste</param>
-/// <param name="Count">pocet zlych miest polozky</param>
-internal sealed record ElenFontFinding(ElenFontSource Source, object Item, string Name, string? Detail, int FontId, int Count);
 
 /// <summary>
 /// Cisla pisiem, ktore INISS posle tabuliam s protokolom ELEN (ELEN, ELENOLD, ELEN10, ELEN16, ELEN16Kam, ELEKON)
@@ -149,55 +118,4 @@ internal static class ElenFontChecks
             : $"„{item.Name}“";
 
     private static string TrainLabel(TableTrain train) => train.Train is null ? "" : TrainRules.Label(train.Train);
-}
-
-/// <summary>
-/// Cislo pisma, ktore by tabula ELEN dostala ako riadiaci znak - opravi sa na stranke alebo v editore polozky.
-/// </summary>
-internal sealed class ElenFontProblem(ElenFontFinding finding, AnalysisScope scope) : IProblem
-{
-    public string Text
-    {
-        get
-        {
-            var where = finding.Source switch
-            {
-                ElenFontSource.FontList => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_ElenFont_Font, finding.Name),
-                ElenFontSource.Column => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_ElenFont_Column, finding.Name, finding.Detail),
-                ElenFontSource.TrainText => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_ElenFont_Text, finding.Name, finding.Detail),
-                _ => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_ElenFont_TabTab, finding.Name, finding.Detail)
-            };
-            var text = string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_ElenFont, where, finding.FontId,
-                (finding.FontId & 0xFF).ToString("X2", CultureInfo.InvariantCulture));
-            return finding.Count > 1 ? text + " " + string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_More, finding.Count - 1) : text;
-        }
-    }
-
-    public string Solution => string.Format(CultureInfo.CurrentCulture, Resources.Analyzer_ElenFont_Fix, finding.FontId,
-        new ElenFontCode(finding.FontId).WithKeptBit.Id);
-
-    public ProblemType ProblemType => ProblemType.Warning;
-
-    public FixType FixType => FixType.Manual;
-
-    public FixResult FixProblem()
-    {
-        switch (finding.Item)
-        {
-            case TableFont font:
-                scope.Host.ShowLocalSettings(LocalSettingsPage.Pisma, select: font);
-                break;
-            case TableCatalog catalog:
-                scope.Host.ShowLocalSettings(LocalSettingsPage.KatalogoveTabule, select: catalog);
-                break;
-            case TableText text:
-                scope.Host.ShowLocalSettings(LocalSettingsPage.Texty, select: text);
-                break;
-            case TableTabTab tab:
-                scope.Host.EditTabTab(tab);
-                break;
-        }
-
-        return ElenFontChecks.Find(scope.Document).Any(f => ReferenceEquals(f.Item, finding.Item)) ? FixResult.NotSolved : FixResult.Done;
-    }
 }

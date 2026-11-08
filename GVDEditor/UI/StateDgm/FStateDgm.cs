@@ -9,7 +9,6 @@ using GVDEditor.Properties;
 using JetBrains.Annotations;
 using ScintillaNET;
 using Serilog;
-using ToolsCore;
 using ToolsCore.Commands;
 using ToolsCore.Icons;
 using ToolsCore.Iniss.Expressions;

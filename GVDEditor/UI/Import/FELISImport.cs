@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
 using GVDEditor.Domain.Entities;
+using GVDEditor.Integration.Elis;
 using GVDEditor.Properties;
 using ToolsCore.Tools;
-using GVDEditor.Integration;
 
 namespace GVDEditor.UI.Import;
 

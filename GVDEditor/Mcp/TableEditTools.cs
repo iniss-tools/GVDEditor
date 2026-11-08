@@ -4,6 +4,8 @@ using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
+using GVDEditor.Mcp.Inputs;
+using GVDEditor.Mcp.Results;
 using GVDEditor.Properties;
 using ModelContextProtocol;
 using ModelContextProtocol.Server;
@@ -478,7 +480,7 @@ internal static class TableEditTools
         };
         foreach (var mode in TableViewMode.GetValues())
             tab.TypeModeItems.Add(new TableTypeModeItem
-                { ViewMode = mode, ItemsKeys = [..(own.TryGetValue(mode, out var keys) ? keys : order.Columns ?? [])] });
+                { ViewMode = mode, ItemsKeys = [..own.TryGetValue(mode, out var keys) ? keys : order.Columns ?? []] });
         return tab;
     }
 

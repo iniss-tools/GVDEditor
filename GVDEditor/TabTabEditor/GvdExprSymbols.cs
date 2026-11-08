@@ -1,5 +1,4 @@
 using GVDEditor.Domain.Documents;
-using GVDEditor.Domain.Entities;
 using ToolsCore.Iniss.Expressions;
 using ToolsCore.Iniss.TabTab;
 

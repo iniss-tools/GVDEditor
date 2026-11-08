@@ -4,6 +4,7 @@ using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
+using GVDEditor.Mcp.Results;
 using ModelContextProtocol;
 using ToolsCore.Iniss.Elen;
 

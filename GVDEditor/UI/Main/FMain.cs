@@ -10,7 +10,6 @@ using GVDEditor.Mcp;
 using GVDEditor.Properties;
 using GVDEditor.UI.EditTrain;
 using ToolsCore.Commands;
-using ToolsCore.Forms;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 using ToolsCore.Updates;

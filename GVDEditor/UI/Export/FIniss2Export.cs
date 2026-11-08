@@ -2,7 +2,7 @@
 using GVDEditor.Config;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
-using GVDEditor.Integration;
+using GVDEditor.Integration.Iniss2;
 using GVDEditor.Properties;
 using GVDEditor.UI.Settings;
 using Serilog;

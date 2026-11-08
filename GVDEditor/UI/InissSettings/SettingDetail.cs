@@ -6,11 +6,6 @@ using ToolsCore.Icons;
 
 namespace GVDEditor.UI.InissSettings;
 
-/// <summary>Zmena v detaile - ciel zapisu alebo obnovenie predvolenej.</summary>
-/// <param name="Target">kam zapisat</param>
-/// <param name="Reset">obnovit predvolenu (zmazat zo vsetkych vrstiev)</param>
-internal sealed record SettingEdit(RegWriteTarget Target, bool Reset);
-
 /// <summary>
 /// Detail vybranej hodnoty: popis, ciel zapisu, obnovenie predvolenej, vrstvy (kde hodnota lezi) a zistenia.
 /// Samotna hodnota sa upravuje priamo v tabulke.

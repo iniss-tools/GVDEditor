@@ -1,5 +1,6 @@
 using System.Globalization;
 using GVDEditor.Domain.Snapshots;
+using GVDEditor.Mcp.Results;
 using GVDEditor.Properties;
 using ModelContextProtocol;
 using Serilog;
@@ -91,15 +92,4 @@ internal sealed class EditorAccess(EditorContext context, Control? owner, IAgent
                 host.Change(Apply);
             return (result, new ChangeInfo(dryRun, changed, changed && !dryRun ? step : null));
         });
-}
-
-/// <summary>Hlavne okno GVDEditora pri zmene grafikonu agentom.</summary>
-internal interface IAgentHost
-{
-    /// <summary>
-    /// Vykona zmenu <paramref name="change" /> na vlakne okna: ak sa grafikon teraz menit neda (otvorene okno, rozpisana
-    /// bunka, nacitavanie), hodi <see cref="McpException" /> s kodom <c>editor.busy</c>. Pocas zmeny potlaci udalosti
-    /// okna, potom obnovi zobrazenie a zapamata krok spat s popisom, ktory zmena vrati (null = grafikon sa nezmenil).
-    /// </summary>
-    void Change(Func<string?> change);
 }

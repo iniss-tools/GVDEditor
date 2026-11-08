@@ -1,5 +1,4 @@
 using System.Globalization;
-using ExControls;
 using GVDEditor.Config;
 using GVDEditor.Integration;
 using GVDEditor.Properties;

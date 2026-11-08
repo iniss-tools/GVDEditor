@@ -1,30 +1,10 @@
 using System.Globalization;
+using GVDEditor.Domain.Analysis.Problems;
 using GVDEditor.Domain.Entities;
-using GVDEditor.Formats;
-using GVDEditor.Integration;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Registry;
 
 namespace GVDEditor.Domain.Analysis;
-
-/// <summary>
-/// Nastavenia INISSu vybranej konfiguracie spustania pre kontroly analyzy.
-/// </summary>
-/// <param name="ConfigName">nazov konfiguracie spustania</param>
-/// <param name="Config">nastavenia tak, ako ich INISS nacita</param>
-/// <param name="Tables">fyzicke tabule instalacie v poradi INISSu</param>
-/// <param name="Exists">konfiguracia je v registri alebo v .INI (inak INISS bezi s predvolenymi)</param>
-internal sealed record InissRegistryView(string ConfigName, ResolvedConfig Config, IReadOnlyList<InissTable> Tables, bool Exists);
-
-/// <summary>
-/// Zistenie kontroly nastaveni INISSu voci grafikonu.
-/// </summary>
-/// <param name="Key">identita zistenia (na overenie po oprave)</param>
-/// <param name="Type">zavaznost</param>
-/// <param name="Text">text</param>
-/// <param name="Solution">navrh riesenia</param>
-/// <param name="Section">sekcia okna Nastavenia INISSu, ktora sa ma otvorit</param>
-internal sealed record InissFinding(string Key, ProblemType Type, string Text, string Solution, string? Section);
 
 /// <summary>
 /// Kontroly nastaveni INISSu (register, .INI) voci grafikonu: ci INISS tabuliam grafikonu nieco posle, ci su
@@ -153,29 +133,5 @@ internal static class InissChecks
     {
         var digits = name.Length - name.Reverse().TakeWhile(char.IsAsciiDigit).Count();
         return digits < name.Length && int.TryParse(name.AsSpan(digits), NumberStyles.None, CultureInfo.InvariantCulture, out var index) ? index : null;
-    }
-}
-
-/// <summary>
-/// Problem z kontroly nastaveni INISSu - opravi sa v okne Nastavenia INISSu, potom sa kontrola zopakuje.
-/// </summary>
-internal sealed class InissProblem(InissFinding finding, string grafikon, AnalysisScope scope) : IProblem
-{
-    public string Text => finding.Text;
-
-    public string Solution => finding.Solution;
-
-    public ProblemType ProblemType => finding.Type;
-
-    public FixType FixType => FixType.Manual;
-
-    // nastavenia INISSu sa zapisuju hned v ich okne, nie s grafikonom
-    public bool ChangesGrafikon => false;
-
-    public FixResult FixProblem()
-    {
-        scope.Host.ShowInissSettings(finding.Section);
-        if (scope.InissLoader?.Invoke() is not { } view) return FixResult.Done;
-        return InissChecks.Evaluate(grafikon, view).Any(f => f.Key == finding.Key) ? FixResult.NotSolved : FixResult.Done;
     }
 }

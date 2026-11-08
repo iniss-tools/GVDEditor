@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-using GVDEditor.Integration;
+using GVDEditor.Integration.Iniss2;
 using GVDEditor.Properties;
 
 namespace GVDEditor.UI.Export;

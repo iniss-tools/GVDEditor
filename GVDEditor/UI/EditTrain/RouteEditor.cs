@@ -1,5 +1,3 @@
-using GVDEditor.Domain.Entities;
-
 namespace GVDEditor.UI.EditTrain;
 
 /// <summary>

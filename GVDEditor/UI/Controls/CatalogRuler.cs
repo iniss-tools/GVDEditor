@@ -3,17 +3,6 @@ using System.Globalization;
 namespace GVDEditor.UI.Controls;
 
 /// <summary>
-/// Udalost kliknutia na stlpec pravitka - poradie stlpca v tabuli.
-/// </summary>
-public sealed class CatalogRulerEventArgs(int column) : EventArgs
-{
-    /// <summary>
-    /// Poradie stlpca v katalogovej tabuli.
-    /// </summary>
-    public int Column { get; } = column;
-}
-
-/// <summary>
 /// Pravitko katalogovej tabule: stlpce ako obdlzniky podla bodov (START–END) na svojich riadkoch. Stlpce, ktore sa
 /// na riadku prekryvaju (napr. alternativy pre rozne rezimy), idu pod seba. Vybrany stlpec je zvyrazneny, chybny
 /// cerveny; hranica tabule (napr. 512 bodov pri ELEN) je zvisla ciara.

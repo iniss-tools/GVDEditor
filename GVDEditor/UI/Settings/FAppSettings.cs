@@ -4,7 +4,6 @@ using GVDEditor.Mcp;
 using GVDEditor.Properties;
 using ExControls;
 using ToolsCore.Tools;
-using ToolsCore;
 using ToolsCore.Commands;
 using ToolsCore.Forms;
 using ToolsCore.Iniss.Tools;

@@ -2,11 +2,9 @@
 using AutocompleteMenuNS;
 using JetBrains.Annotations;
 using ExControls;
-using GVDEditor.Domain.Entities;
 using GVDEditor.TabTabEditor;
 using GVDEditor.Properties;
 using ScintillaNET;
-using ToolsCore;
 using ToolsCore.Commands;
 using ToolsCore.Icons;
 using ToolsCore.Iniss.Expressions;

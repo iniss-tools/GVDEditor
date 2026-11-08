@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using GVDEditor.Domain.Editing;
-using GVDEditor.Domain.Entities;
 
 namespace GVDEditor.Tests.Domain.Editing;
 

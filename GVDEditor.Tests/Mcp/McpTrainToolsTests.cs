@@ -1,5 +1,7 @@
 using GVDEditor.Domain.Entities;
 using GVDEditor.Mcp;
+using GVDEditor.Mcp.Inputs;
+using GVDEditor.Mcp.Results;
 using ModelContextProtocol;
 
 namespace GVDEditor.Tests.Mcp;

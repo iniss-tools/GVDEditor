@@ -1,8 +1,9 @@
 using System.Globalization;
 using GVDEditor.Domain.Entities;
-using GVDEditor.Integration;
+using GVDEditor.Integration.Elis;
+using GVDEditor.Integration.PlanRadenia;
 using GVDEditor.Properties;
-using Iniss.Elis;
+using Iniss.Elis.Data;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Import;

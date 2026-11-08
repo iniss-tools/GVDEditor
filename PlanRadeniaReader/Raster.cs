@@ -1,57 +1,6 @@
 namespace Iniss.PlanRadenia;
 
 /// <summary>
-/// Farba bodu obrazka.
-/// </summary>
-internal readonly record struct Rgb(byte R, byte G, byte B)
-{
-    public int Max => Math.Max(R, Math.Max(G, B));
-
-    public int Min => Math.Min(R, Math.Min(G, B));
-
-    /// <summary>Biely alebo takmer biely papier.</summary>
-    public bool IsWhite => Min > 225 && Max - Min < 25;
-
-    /// <summary>Cierna farba textu a obrysov (cisla vozni su cierne, karoseria farebna).</summary>
-    public bool IsBlack => Max < 110;
-
-    /// <summary>
-    /// Svetlosiva bez odtiena - deliace ciary tabulky. Ciara medzi dvoma riadkami bodov je po vykresleni len o malo
-    /// tmavsia nez papier (papier ma vsetky zlozky nad 250).
-    /// </summary>
-    public bool IsRule => Max > 100 && Min < 247 && Max - Min < 30;
-
-    /// <summary>Vzdialenost farieb (stvorec euklidovskej vzdialenosti).</summary>
-    public int Distance(Rgb other)
-    {
-        int r = R - other.R, g = G - other.G, b = B - other.B;
-        return r * r + g * g + b * b;
-    }
-}
-
-/// <summary>
-/// Obdlznik v bodoch obrazka.
-/// </summary>
-internal readonly record struct Box(int X, int Y, int Width, int Height)
-{
-    public int Right => X + Width;
-
-    public int Bottom => Y + Height;
-
-    public int CenterX => X + Width / 2;
-
-    public int CenterY => Y + Height / 2;
-
-    public static Box FromEdges(int left, int top, int right, int bottom) => new(left, top, right - left, bottom - top);
-
-    public Box Inflate(int dx, int dy) => new(X - dx, Y - dy, Width + 2 * dx, Height + 2 * dy);
-
-    public Box Clip(int width, int height) => FromEdges(Math.Max(0, X), Math.Max(0, Y), Math.Min(width, Right), Math.Min(height, Bottom));
-
-    public override string ToString() => $"{X},{Y} {Width}x{Height}";
-}
-
-/// <summary>
 /// Obrazok strany v pamati (BGRA, 8 bitov na zlozku).
 /// </summary>
 internal sealed class Raster(int width, int height, byte[] bgra)

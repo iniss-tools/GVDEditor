@@ -3,6 +3,8 @@ using System.Reflection;
 using System.Text;
 using ExControls;
 using GVDEditor.Config;
+using GVDEditor.Integration.Elis;
+using GVDEditor.Integration.PlanRadenia;
 using ToolsCore.Iniss.Calendar;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
@@ -22,7 +24,6 @@ using GVDEditor.UI.TabTab;
 using ToolsCore.Iniss.Entities;
 using ToolsCore.Iniss.StateDgm;
 using ToolsCore.Iniss.Tools;
-using ToolsCore;
 
 namespace GVDEditor.DocScreenshots;
 
@@ -776,8 +777,8 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                 Choice("9900110", 14, ElisShortSource.Grafikon, false, vote: new ShortReportVote(12, 1)),
                 Choice("9900130", 9, ElisShortSource.Saved, true),
                 Choice("9900115", 8, ElisShortSource.None, false),
-                Choice("9900140", 6, ElisShortSource.ElisType, true, Iniss.Elis.ElisStop.TypeJunction | Iniss.Elis.ElisStop.TypeRegionalSeat),
-                Choice("9900020", 5, ElisShortSource.None, false, Iniss.Elis.ElisStop.TypeDistrictSeat)
+                Choice("9900140", 6, ElisShortSource.ElisType, true, Iniss.Elis.Data.ElisStop.TypeJunction | Iniss.Elis.Data.ElisStop.TypeRegionalSeat),
+                Choice("9900020", 5, ElisShortSource.None, false, Iniss.Elis.Data.ElisStop.TypeDistrictSeat)
             ],
             Radenia = RadenieSample(trains),
             Remarks =
@@ -806,7 +807,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             var proposal = new RadenieProposal
             {
                 TrainNumber = train.Number,
-                Plan = new Iniss.PlanRadenia.PlanTrain { Type = train.Type.Key, Number = train.Number },
+                Plan = new Iniss.PlanRadenia.Data.PlanTrain { Type = train.Type.Key, Number = train.Number },
                 Radenie = new Radenie { CisloVlaku = train.Number, Text = text, DatObm = days, Validity = new ValidityPeriod(from, to), DestStation = null! },
                 Take = take
             };

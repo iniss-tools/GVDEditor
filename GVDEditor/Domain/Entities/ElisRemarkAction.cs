@@ -1,24 +1,6 @@
 namespace GVDEditor.Domain.Entities;
 
 /// <summary>
-/// Priznak vlaku, ktory import z ELIS nastavi podla poznamky vlaku.
-/// </summary>
-public enum ElisTrainFlag
-{
-    /// <summary>Ziadny.</summary>
-    None,
-
-    /// <summary><see cref="Train.IsMiestenkovy" />.</summary>
-    Reservation,
-
-    /// <summary><see cref="Train.IsNizkopodlazny" />.</summary>
-    LowFloor,
-
-    /// <summary><see cref="Train.IsIbaLozkovy" />.</summary>
-    SleeperOnly
-}
-
-/// <summary>
 /// Co import z ELIS urobi s vlakom, ktory ma danu poznamku.
 /// </summary>
 /// <param name="Flag">Priznak vlaku, ktory sa zapne.</param>

@@ -1,11 +1,9 @@
 ﻿using System.Globalization;
-using ExControls;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Integration;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
 using Serilog;
-using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 using ToolsCore.Icons;
 

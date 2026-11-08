@@ -7,18 +7,6 @@ using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Integration;
 
-/// <summary>Linka stanice pripravovana v simulatore tabul.</summary>
-/// <param name="Line">linka konfiguracie s tabulami, ktore jej INISS priradi</param>
-/// <param name="Port">port linky na simulatore</param>
-/// <param name="Redirected">.INI vedla programu linku uz presmerovava na simulator (port je z neho)</param>
-internal sealed record SimulatorLinePlan(DriverLine Line, int Port, bool Redirected);
-
-/// <summary>Co sa v simulatore zalozi: poziadavka a linky, z ktorych vznikla.</summary>
-/// <param name="Request">poziadavka pre simulator</param>
-/// <param name="Lines">pripravovane linky</param>
-/// <param name="Missing">vybrane cisla liniek, ktore konfiguracia nema alebo nie su aktivne (vtedy sa nic nepripravi)</param>
-internal sealed record SimulatorPlan(StationImportRequest Request, IReadOnlyList<SimulatorLinePlan> Lines, IReadOnlyList<int> Missing);
-
 /// <summary>
 /// Linky a tabule stanice pre simulator tabul podla konfiguracie spustania - ako Pripravit v simulatore v okne
 /// presmerovania, ale bez zmeny .INI: presmerovana linka ide na port z .INI, ostatne na prvy port + cislo linky.

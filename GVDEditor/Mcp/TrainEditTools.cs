@@ -3,6 +3,8 @@ using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
+using GVDEditor.Mcp.Inputs;
+using GVDEditor.Mcp.Results;
 using GVDEditor.Properties;
 using ModelContextProtocol;
 using ModelContextProtocol.Server;

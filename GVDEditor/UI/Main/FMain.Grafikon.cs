@@ -4,7 +4,7 @@ using GVDEditor.Domain.Editing;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
 using GVDEditor.Formats;
-using GVDEditor.Integration;
+using GVDEditor.Integration.Elis;
 using GVDEditor.Properties;
 using GVDEditor.Services;
 using GVDEditor.UI.Dialogs;
@@ -12,9 +12,7 @@ using GVDEditor.UI.EditTrain;
 using GVDEditor.UI.Export;
 using GVDEditor.UI.Import;
 using Serilog;
-using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
-using ToolsCore.XML;
 using AppRegistry = ToolsCore.Tools.AppRegistry;
 
 namespace GVDEditor.UI.Main;

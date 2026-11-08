@@ -2,6 +2,7 @@ using System.Net;
 using System.Text.Json;
 using GVDEditor.Config;
 using GVDEditor.Integration;
+using GVDEditor.Mcp.Results;
 using ModelContextProtocol;
 using ModelContextProtocol.Server;
 using Serilog;

@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using GVDEditor.Mcp;
+using GVDEditor.Mcp.Results;
 using ModelContextProtocol;
 using ModelContextProtocol.Server;
 using ToolsCore.Iniss.Entities;

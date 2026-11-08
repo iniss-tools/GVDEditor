@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using GVDEditor.Domain.Entities;
 using GVDEditor.TabTabEditor;
 
 namespace GVDEditor.Tests.TabTabEditor;

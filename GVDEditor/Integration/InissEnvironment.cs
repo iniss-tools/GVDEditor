@@ -1,7 +1,6 @@
 using GVDEditor.Config;
 using GVDEditor.Domain.Analysis;
 using GVDEditor.Domain.Documents;
-using GVDEditor.Formats;
 using ToolsCore.Iniss.Registry;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
