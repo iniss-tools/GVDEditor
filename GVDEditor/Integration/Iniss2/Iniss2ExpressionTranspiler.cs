@@ -36,7 +36,7 @@ internal sealed class Iniss2ExpressionTranspiler
         (0x80, "((.PriznakyStavu And NODEFLAGS.STOJI) <> 0)")
     ];
 
-    // udalosti ILTISu v hornom bajte hodnoty Wait a priznaky GTN zastavenia v INISS2
+    // udalosti GTN v hornom bajte hodnoty Wait a priznaky GTN zastavenia v INISS2
     private static readonly (uint Bit, string Name)[] WaitEvents =
     [
         (0x80000000u, "VVC"),

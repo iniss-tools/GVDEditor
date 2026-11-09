@@ -88,7 +88,7 @@ namespace GVDEditor.UI.StateDgm
             tsddTemplate = new IconToolStripDropDownButton();
             tsmiTplSK = new ToolStripMenuItem();
             tsmiTplCZ = new ToolStripMenuItem();
-            tsmiTplILTIS = new ToolStripMenuItem();
+            tsmiTplGtn = new ToolStripMenuItem();
             tss3 = new ToolStripSeparator();
             tsbCalendar = new IconToolStripButton();
             ssMain = new StatusStrip();
@@ -472,7 +472,7 @@ namespace GVDEditor.UI.StateDgm
             // 
             // tsddTemplate
             // 
-            tsddTemplate.DropDownItems.AddRange(new ToolStripItem[] { tsmiTplSK, tsmiTplCZ, tsmiTplILTIS });
+            tsddTemplate.DropDownItems.AddRange(new ToolStripItem[] { tsmiTplSK, tsmiTplCZ, tsmiTplGtn });
             resources.ApplyResources(tsddTemplate, "tsddTemplate");
             tsddTemplate.Name = "tsddTemplate";
             tsddTemplate.IconName = "document-copy";
@@ -489,11 +489,11 @@ namespace GVDEditor.UI.StateDgm
             resources.ApplyResources(tsmiTplCZ, "tsmiTplCZ");
             tsmiTplCZ.Click += tsmiTpl_Click;
             // 
-            // tsmiTplILTIS
+            // tsmiTplGtn
             // 
-            tsmiTplILTIS.Name = "tsmiTplILTIS";
-            resources.ApplyResources(tsmiTplILTIS, "tsmiTplILTIS");
-            tsmiTplILTIS.Click += tsmiTpl_Click;
+            tsmiTplGtn.Name = "tsmiTplGtn";
+            resources.ApplyResources(tsmiTplGtn, "tsmiTplGtn");
+            tsmiTplGtn.Click += tsmiTpl_Click;
             // 
             // tss3
             // 
@@ -698,7 +698,7 @@ namespace GVDEditor.UI.StateDgm
         private ToolsCore.Icons.IconToolStripDropDownButton tsddTemplate;
         private System.Windows.Forms.ToolStripMenuItem tsmiTplSK;
         private System.Windows.Forms.ToolStripMenuItem tsmiTplCZ;
-        private System.Windows.Forms.ToolStripMenuItem tsmiTplILTIS;
+        private System.Windows.Forms.ToolStripMenuItem tsmiTplGtn;
         private System.Windows.Forms.ToolStripSeparator tss3;
         private ToolsCore.Icons.IconToolStripButton tsbCalendar;
         private System.Windows.Forms.SplitContainer scOuter;

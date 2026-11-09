@@ -166,8 +166,8 @@
   <data name="tsmiTplCZ.Text" xml:space="preserve">
     <value>Česká (poloautomat)</value>
   </data>
-  <data name="tsmiTplILTIS.Text" xml:space="preserve">
-    <value>Slovenská s automatikou ILTIS</value>
+  <data name="tsmiTplGtn.Text" xml:space="preserve">
+    <value>Slovenská s automatikou GTN</value>
   </data>
   <data name="tsbCalendar.Text" xml:space="preserve">
     <value>Kalendář akcí</value>

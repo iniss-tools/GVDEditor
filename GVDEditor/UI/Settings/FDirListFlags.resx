@@ -143,7 +143,7 @@
     <value>0</value>
   </data>
   <data name="lIntro.Text" xml:space="preserve">
-    <value>Príznaky určujú, ako INISS spracuje správy o vlakoch zo systému ILTIS a kedy je grafikon aktívny. Prejavia sa po reštarte INISSu.</value>
+    <value>Príznaky určujú, ako INISS spracuje správy o vlakoch z rozhrania GTN a kedy je grafikon aktívny. Prejavia sa po reštarte INISSu.</value>
   </data>
   <data name="&gt;&gt;lIntro.Name" xml:space="preserve">
     <value>lIntro</value>
@@ -401,7 +401,7 @@
     <value>1</value>
   </data>
   <data name="gbMessages.Text" xml:space="preserve">
-    <value>Správy o vlakoch z ILTISu</value>
+    <value>Správy o vlakoch z GTN</value>
   </data>
   <data name="&gt;&gt;gbMessages.Name" xml:space="preserve">
     <value>gbMessages</value>

@@ -149,7 +149,7 @@ public sealed class Train
 
     /// <summary>
     /// Ci ma vlak priznak prestupovy (pismeno P v Export3A.TXT). INISS taky vlak v zozname podfarbuje a sprava
-    /// z ILTIS, ktora meni obe kolaje, mu nezmeni kolaj odchodu.
+    /// GTN, ktora meni obe kolaje, mu nezmeni kolaj odchodu.
     /// </summary>
     public bool IsPrestupovy { get; set; }
 

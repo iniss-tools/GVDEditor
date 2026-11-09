@@ -898,11 +898,11 @@
   <data name="tsmiTplCZ.Text" xml:space="preserve">
     <value>Česká (poloautomat)</value>
   </data>
-  <data name="tsmiTplILTIS.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmiTplGtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 22</value>
   </data>
-  <data name="tsmiTplILTIS.Text" xml:space="preserve">
-    <value>Slovenská s automatikou ILTIS</value>
+  <data name="tsmiTplGtn.Text" xml:space="preserve">
+    <value>Slovenská s automatikou GTN</value>
   </data>
   <data name="tss3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
@@ -1276,10 +1276,10 @@
   <data name="&gt;&gt;tsmiTplCZ.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tsmiTplILTIS.Name" xml:space="preserve">
-    <value>tsmiTplILTIS</value>
+  <data name="&gt;&gt;tsmiTplGtn.Name" xml:space="preserve">
+    <value>tsmiTplGtn</value>
   </data>
-  <data name="&gt;&gt;tsmiTplILTIS.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmiTplGtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tss3.Name" xml:space="preserve">

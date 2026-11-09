@@ -11,6 +11,6 @@ public enum StateDgmTemplate
     /// <summary>Ceske nazvy pre obsluhu, inak ako <see cref="Slovak" />.</summary>
     Czech,
 
-    /// <summary>Slovenska predloha s automatikou riadenou udalostami ILTIS (VVC, OVC, Vj, Odj).</summary>
-    SlovakIltis
+    /// <summary>Slovenska predloha s automatikou riadenou udalostami GTN (VVC, OVC, Vj, Odj).</summary>
+    SlovakGtn
 }

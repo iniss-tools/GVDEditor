@@ -11,6 +11,6 @@ internal enum Iniss2ExprIssue
     /// <summary>Stav vlaku, ktory INISS2 nepozna; podmienka neplati nikdy.</summary>
     UnknownState,
 
-    /// <summary>Udalost ILTISu nie je konstanta; automatika na udalost necaka.</summary>
+    /// <summary>Udalost GTN nie je konstanta; automatika na udalost necaka.</summary>
     WaitNotConstant
 }

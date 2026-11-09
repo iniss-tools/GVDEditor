@@ -7,7 +7,7 @@ namespace GVDEditor.Integration.Iniss2;
 /// <summary>
 /// Prevod stavoveho diagramu INISS 3.39 (StateDgm.txt) na statedgm.xml INISS2. Kategoria je graf, stav je uzol v rovnakom
 /// poradi. Tlacidlo stavu je ovladac 3.39, ktoreho akcia do stavu vedie (poradie CtrlID), hlasenie je typ hlasenia tychto akcii.
-/// Automatika stavu ostava automatikou uzla; cas je prichod alebo odchod s meskanim ako v 3.39, cakanie na udalost ILTISu
+/// Automatika stavu ostava automatikou uzla; cas je prichod alebo odchod s meskanim ako v 3.39, cakanie na udalost GTN
 /// je podmienka automatiky. Dialogy kolaje a meskania su pomocne uzly <c>Kolej</c> a <c>Zpozdeni</c>, starter je pomocny uzol
 /// s opakovanou automatikou, ktora plati len v stavoch so starterom. Tlacidla v INISS2 su dostupne v kazdom stave.
 /// </summary>
@@ -190,7 +190,7 @@ internal sealed class Iniss2StateDgmConverter(Iniss2ExpressionTranspiler transpi
         return flags;
     }
 
-    // automatika: rezim, cas prichodu alebo odchodu s meskanim a posunom, podmienka a cakanie na udalost ILTISu
+    // automatika: rezim, cas prichodu alebo odchodu s meskanim a posunom, podmienka a cakanie na udalost GTN
     private StateAutomation? Automation(StateDgmState state, string where)
     {
         if (!state.HasAutomation || state.AutoTimePoint is not { } point)

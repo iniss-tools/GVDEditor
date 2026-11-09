@@ -2,7 +2,7 @@
 C:"Slovensk˝ stav. diagram"
 C:"verze s p¯istavenÌm u v˝chozÌch
 C:"s tabulemi"
-C:"automatika riaden· udalosùami ILTIS (VVC, OVC, Vj, Odj)"
+C:"automatika riaden· udalosùami GTN (VVC, OVC, Vj, Odj)"
 
 ;
 ; Defnice Design˘ tlaËÌtek
@@ -374,7 +374,7 @@ P:"StateDgmCtrls\\StateDgm\\Categorie1"
 			B:"JeZobrazenaKolej"=Ne
 		}
 		;
-		; automatika - 2 min po odchode - rozhoduje odchod vlaku z ILTISu
+		; automatika - 2 min po odchode - rozhoduje odchod vlaku zo spr·vy GTN
 		I:"AutoMode"=2		; automat
 		I:"AutoTimePoint"=2		; Ëas odchodu
 		I:"AutoTimePointAdd"=120	; +2 min
@@ -605,7 +605,7 @@ P:"StateDgmCtrls\\StateDgm\\Categorie2"
 			B:"JeZobrazenaPozice"=Ano
 			B:"JeZobrazenaKolej"=Ano
 		}
-		; automatika - v Ëase prÌchodu - rozhoduje vchod vlaku z ILTISu
+		; automatika - v Ëase prÌchodu - rozhoduje vchod vlaku zo spr·vy GTN
 		I:"AutoMode"=2		; automat
 		I:"AutoTimePoint"=1		; Ëas prÌchodu
 		I:"AutoTimePointAdd"=0	; +0 min
@@ -925,7 +925,7 @@ P:"StateDgmCtrls\\StateDgm\\Categorie3"
 			B:"JeZobrazenaPozice"=Ano
 			B:"JeZobrazenaKolej"=Ano
 		}
-		; automatika - v Ëase prÌchodu - rozhoduje vchod vlaku z ILTISu
+		; automatika - v Ëase prÌchodu - rozhoduje vchod vlaku zo spr·vy GTN
 		I:"AutoMode"=2		; automat
 		I:"AutoTimePoint"=1		; Ëas prÌchodu
 		I:"AutoTimePointAdd"=0	; +0 min
@@ -1097,7 +1097,7 @@ P:"StateDgmCtrls\\StateDgm\\Categorie4"
 			B:"JeZobrazenaPozice"=Ne
 			B:"JeZobrazenaKolej"=Ne
 		}
-		; automatika - 2 min po odchode - rozhoduje odchod vlaku z ILTISu
+		; automatika - 2 min po odchode - rozhoduje odchod vlaku zo spr·vy GTN
 		I:"AutoMode"=2		; automat
 		I:"AutoTimePoint"=2		; Ëas odchodu
 		I:"AutoTimePointAdd"=120	; +2 min

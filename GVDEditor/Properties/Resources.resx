@@ -447,8 +447,8 @@ Zavrieť okno aj tak?</value>
   <data name="statedgmCZ" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\statedgmCZ.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
   </data>
-  <data name="statedgmILTIS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\statedgmILTIS.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  <data name="statedgmGTN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\statedgmGTN.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
   </data>
   <data name="FAppSettings_cbDebugModeGUI_SelectedIndexChanged_Not_For_All_Users" xml:space="preserve">
     <value>Vybrali ste typ debugovania, ktorý nie je určený pre bežných používateľov. To môže viesť k neočakávaným následkom.
@@ -749,8 +749,8 @@ Presunúť ho teraz do vlastného priečinka ({1} grafikon/y)?</value>
   <data name="FStateDgm_PredlohaCZ" xml:space="preserve">
     <value>Česká (poloautomat)</value>
   </data>
-  <data name="FStateDgm_PredlohaILTIS" xml:space="preserve">
-    <value>Slovenská s automatikou ILTIS</value>
+  <data name="FStateDgm_PredlohaGtn" xml:space="preserve">
+    <value>Slovenská s automatikou GTN</value>
   </data>
   <data name="FStateDgm_PredlohaOtazka" xml:space="preserve">
     <value>Nahradiť celý diagram predlohou „{0}“? Všetky úpravy sa stratia.</value>
@@ -1000,7 +1000,7 @@ INISS taký súbor nenačíta. Uložiť ho aj tak?</value>
     <value>2 – dlhé</value>
   </data>
   <data name="FStateDgm_Wait" xml:space="preserve">
-    <value>Čakať na ILTIS:</value>
+    <value>Čakať na GTN:</value>
   </data>
   <data name="FStateDgm_Wait_VVC" xml:space="preserve">
     <value>VVC – vchodová vlaková cesta</value>

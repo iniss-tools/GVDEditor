@@ -30,7 +30,7 @@ internal static class StateDgmFile
     public static string TemplateText(StateDgmTemplate template) => template switch
     {
         StateDgmTemplate.Czech => Resources.statedgmCZ,
-        StateDgmTemplate.SlovakIltis => Resources.statedgmILTIS,
+        StateDgmTemplate.SlovakGtn => Resources.statedgmGTN,
         _ => Resources.statedgmSK
     };
 

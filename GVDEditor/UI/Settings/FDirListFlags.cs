@@ -7,7 +7,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.Settings;
 
 /// <summary>
-/// Dialog - priznaky grafikonu v zozname grafikonov (4. stlpec DirList.TXT): spracovanie sprav o vlakoch z ILTIS
+/// Dialog - priznaky grafikonu v zozname grafikonov (4. stlpec DirList.TXT): spracovanie sprav GTN o vlakoch
 /// a prepinac, s ktorym je grafikon aktivny.
 /// </summary>
 internal partial class FDirListFlags : Form

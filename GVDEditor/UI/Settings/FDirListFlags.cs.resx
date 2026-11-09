@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lIntro.Text" xml:space="preserve">
-    <value>Příznaky určují, jak INISS zpracuje zprávy o vlacích ze systému ILTIS a kdy je grafikon aktivní. Projeví se po restartu INISSu.</value>
+    <value>Příznaky určují, jak INISS zpracuje zprávy o vlacích z rozhraní GTN a kdy je grafikon aktivní. Projeví se po restartu INISSu.</value>
   </data>
   <data name="gbMessages.Text" xml:space="preserve">
-    <value>Zprávy o vlacích z ILTISu</value>
+    <value>Zprávy o vlacích z GTN</value>
   </data>
   <data name="cboxSpread.Text" xml:space="preserve">
     <value>Šířit traťovou kolej na následující stanice trasy (Z)</value>

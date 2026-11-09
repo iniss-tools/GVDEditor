@@ -722,8 +722,8 @@ Přesunout jej nyní do vlastní složky ({1} grafikon/y)?</value>
   <data name="FStateDgm_PredlohaCZ" xml:space="preserve">
     <value>Česká (poloautomat)</value>
   </data>
-  <data name="FStateDgm_PredlohaILTIS" xml:space="preserve">
-    <value>Slovenská s automatikou ILTIS</value>
+  <data name="FStateDgm_PredlohaGtn" xml:space="preserve">
+    <value>Slovenská s automatikou GTN</value>
   </data>
   <data name="FStateDgm_PredlohaOtazka" xml:space="preserve">
     <value>Nahradit celý diagram předlohou „{0}“? Všechny úpravy se ztratí.</value>
@@ -973,7 +973,7 @@ INISS takový soubor nenačte. Uložit jej i tak?</value>
     <value>2 – dlouhé</value>
   </data>
   <data name="FStateDgm_Wait" xml:space="preserve">
-    <value>Čekat na ILTIS:</value>
+    <value>Čekat na GTN:</value>
   </data>
   <data name="FStateDgm_Wait_VVC" xml:space="preserve">
     <value>VVC – vjezdová vlaková cesta</value>

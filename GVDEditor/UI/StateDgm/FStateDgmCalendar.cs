@@ -13,7 +13,7 @@ namespace GVDEditor.UI.StateDgm;
 /// <summary>
 /// Nahlad Kalendara akcii vlaku: pre vybrany vlak a simulovany prevadzkovy stav urci kategoriu (IndCat) a pre kazdy
 /// stav kategorie vypocita to, co ukazuje INISS - rezim automatiky, ci je akcia naplanovana (AutoCondition),
-/// cas spustenia (casovy bod + posun + meskanie), cakanie na ILTIS a druh hlasenia. Dynamicke hodnoty sa
+/// cas spustenia (casovy bod + posun + meskanie), cakanie na udalost GTN a druh hlasenia. Dynamicke hodnoty sa
 /// vyhodnocuju rovnakym evaluatorom ako podmienky TabTab.
 /// </summary>
 public partial class FStateDgmCalendar : Form

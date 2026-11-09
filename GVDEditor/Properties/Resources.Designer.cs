@@ -1210,11 +1210,11 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to 0001 (slovenská predloha StateDgm.txt s automatikou ILTIS).
+        ///   Looks up a localized string similar to 0001 (slovenská predloha StateDgm.txt s automatikou GTN).
         /// </summary>
-        internal static string statedgmILTIS {
+        internal static string statedgmGTN {
             get {
-                return ResourceManager.GetString("statedgmILTIS", resourceCulture);
+                return ResourceManager.GetString("statedgmGTN", resourceCulture);
             }
         }
 
@@ -1832,11 +1832,11 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Slovenská s automatikou ILTIS.
+        ///   Looks up a localized string similar to Slovenská s automatikou GTN.
         /// </summary>
-        internal static string FStateDgm_PredlohaILTIS {
+        internal static string FStateDgm_PredlohaGtn {
             get {
-                return ResourceManager.GetString("FStateDgm_PredlohaILTIS", resourceCulture);
+                return ResourceManager.GetString("FStateDgm_PredlohaGtn", resourceCulture);
             }
         }
         
@@ -2570,7 +2570,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Čakať na ILTIS:.
+        ///   Looks up a localized string similar to Čakať na GTN:.
         /// </summary>
         internal static string FStateDgm_Wait {
             get {
