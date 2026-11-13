@@ -4,6 +4,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Integration.Iniss2;
 using ToolsCore.Iniss.Elen;
 using ToolsCore.Iniss.Entities;
+using ToolsCore.Iniss2;
 using ToolsCore.Iniss2.Grafikon;
 using ToolsCore.Iniss2.Tables;
 
@@ -1528,8 +1529,8 @@ public class Iniss2ExportTests
 
         Assert.AreEqual(template, stations.Single().Path, "stanica bez stavoveho diagramu sablonou nie je");
         Assert.HasCount(3, stations[0].Reports);
-        Assert.AreEqual(_dataDir, Iniss2ExportService.DataDirectory(_dataDir));
-        Assert.IsNull(Iniss2ExportService.DataDirectory(template));
+        Assert.AreEqual(_dataDir, Iniss2Installation.DataDirectory(_dataDir));
+        Assert.IsNull(Iniss2Installation.DataDirectory(template));
         Assert.IsFalse(Iniss2ExportService.GroupExists(_dataDir, "2020"));
     }
 

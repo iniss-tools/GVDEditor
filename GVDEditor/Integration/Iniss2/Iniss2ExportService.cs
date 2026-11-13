@@ -40,21 +40,6 @@ internal static class Iniss2ExportService
         string.Create(CultureInfo.InvariantCulture, $"{index + 1:00} {string.Concat(station.Split(Path.GetInvalidFileNameChars()))}");
 
     /// <summary>
-    /// Priecinok dat instalacie INISS2 podla vybraneho priecinka (instalacia, server alebo priamo data); null = nie je to INISS2.
-    /// </summary>
-    public static string? DataDirectory(string path)
-    {
-        if (string.IsNullOrWhiteSpace(path) || !Directory.Exists(path))
-            return null;
-
-        path = Path.GetFullPath(path);
-        if (File.Exists(Path.Combine(path, DirListXml.FileName)))
-            return path;
-
-        return Iniss2Installation.Find(path)?.DataDir;
-    }
-
-    /// <summary>
     /// Grafikon s tymto nazvom uz v instalacii ma vlaky.
     /// </summary>
     public static bool GroupExists(string dataDir, string group) => File.Exists(Path.Combine(dataDir, group, GvFile.FileName));
@@ -193,7 +178,8 @@ internal static class Iniss2ExportService
     {
         ArgumentNullException.ThrowIfNull(plan);
 
-        if (Iniss2Export.IsServerRunning())
+        // server cita priecinok Data vedla svojho programu
+        if (Iniss2Server.IsRunning(Path.GetDirectoryName(Path.GetFullPath(plan.DataDir)) ?? plan.DataDir))
             throw new Iniss2ExportException(Iniss2ExportIssue.ServerRunning, plan.DataDir);
 
         Log.Information("Export do INISS2: grafikony {Grafikons} do {DataDir}, grafikon {Group}", plan.Grafikons.Select(dir => dir.Dir.DirName), plan.DataDir,

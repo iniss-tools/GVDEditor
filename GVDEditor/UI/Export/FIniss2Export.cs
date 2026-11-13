@@ -7,6 +7,7 @@ using GVDEditor.Properties;
 using GVDEditor.UI.Settings;
 using Serilog;
 using ToolsCore.Iniss.Registry;
+using ToolsCore.Iniss2;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Export;
@@ -203,7 +204,7 @@ internal partial class FIniss2Export : Form
     private void UpdateInstallationInfo()
     {
         var path = tbInstallation.Text.Trim();
-        var dataDir = Iniss2ExportService.DataDirectory(path);
+        var dataDir = Iniss2Installation.DataDirectory(path);
         lInstallationInfo.Text = path.Length == 0 ? ""
             : dataDir is null ? Resources.Iniss2Export_NotInstallation
             : string.Format(CultureInfo.CurrentCulture, Resources.Iniss2Export_Installation, dataDir);
@@ -217,7 +218,7 @@ internal partial class FIniss2Export : Form
     private bool LeaveTarget()
     {
         dgvStations.EndEdit();
-        var dataDir = Iniss2ExportService.DataDirectory(tbInstallation.Text.Trim());
+        var dataDir = Iniss2Installation.DataDirectory(tbInstallation.Text.Trim());
         var group = tbGroup.Text.Trim();
         string? error = null;
         if (dataDir is null)

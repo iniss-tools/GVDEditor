@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Text.RegularExpressions;
 using GVDEditor.Domain.Documents;
 using GVDEditor.Domain.Entities;
 using Serilog;
@@ -26,13 +25,9 @@ internal static partial class Iniss2Export
     // typy hlasenia, pri ktorych sa dodatok ani radenie neprehra
     private const string NoReports = "-";
 
-    private const string LogTextFile = "LogText.vb";
-
     /// <summary>Stavovy diagram stanice; prevedie sa zo StateDgm.txt, inak sa kopiruje zo sablony.</summary>
     public const string StateDiagramFile = ToolsCore.Iniss2.Grafikon.StateDiagramFile.FileName;
 
-    // mutex, ktorym server brani druhemu spusteniu
-    private const string ServerMutex = "INISRV_MUTEX";
     private const string FontsDirectory = "TableFonts";
     private const char LockoutKind = 'V';
     private const char DiversionKind = 'O';
@@ -152,11 +147,9 @@ internal static partial class Iniss2Export
     {
         ArgumentNullException.ThrowIfNull(data);
 
-        var file = Path.Combine(dataDir, LogTextFile);
-        if (!File.Exists(file))
-            return [new Iniss2ExportWarning(Iniss2ExportIssue.LogTextMissing, LogTextFile)];
+        if (LogTextFile.ReadFunctions(dataDir) is not { } functions)
+            return [new Iniss2ExportWarning(Iniss2ExportIssue.LogTextMissing, LogTextFile.FileName)];
 
-        var functions = LogTextFunctions(File.ReadAllLines(file, Encodings.Win1250));
         var warnings = new List<Iniss2ExportWarning>();
 
         void Require(string name, string attribute)
@@ -211,18 +204,6 @@ internal static partial class Iniss2Export
     }
 
     /// <summary>
-    /// Server INISS2 na tomto pocitaci bezi. Pri zapise by subory pri dalsej uprave prepisal.
-    /// </summary>
-    public static bool IsServerRunning()
-    {
-        if (!Mutex.TryOpenExisting(ServerMutex, out var mutex))
-            return false;
-
-        mutex.Dispose();
-        return true;
-    }
-
-    /// <summary>
     /// Overi, ze tabulky TabTab stanic sa nevolaju rovnako ako spolocne tabulky cielovej instalacie. Server pouzije prvy
     /// TabTabGlobal.xml v poradi grafikonov a pri zhode nazvu sa nespusti.
     /// </summary>
@@ -232,47 +213,12 @@ internal static partial class Iniss2Export
     {
         ArgumentNullException.ThrowIfNull(data);
 
-        var global = DirListXml.Read(dataDir).Select(group => Path.Combine(dataDir, group.Name, TabTabXml.GlobalFileName)).FirstOrDefault(File.Exists);
-        if (global is null)
-            return [];
-
-        var names = TabTabXml.Read(global).Select(table => table.Name).ToHashSet(StringComparer.Ordinal);
+        var names = TabTabXml.ReadGlobal(dataDir).Select(table => table.Name).ToHashSet(StringComparer.Ordinal);
         return data.Stations.SelectMany(station => station.TabTabs).Where(table => names.Contains(table.Name))
             .Select(table => new Iniss2ExportWarning(Iniss2ExportIssue.TabTabGlobalDuplicate, table.Name)).Distinct().ToList();
     }
 
     private static bool IsReportNumber(string key) => int.TryParse(key, NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out _);
-
-    // funkcie LogText a oznacenia nad nimi; zakomentovane riadky sa preskocia, VB nerozlisuje velkost pismen
-    internal static Dictionary<string, HashSet<string>> LogTextFunctions(IEnumerable<string> lines)
-    {
-        var functions = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
-        var attributes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
-        foreach (var line in lines.Select(line => line.Trim()))
-        {
-            if (line.Length == 0 || line.StartsWith('\''))
-                continue;
-
-            foreach (Match attribute in AttributePattern().Matches(line))
-                attributes.Add(attribute.Groups[1].Value);
-
-            var function = FunctionPattern().Match(line);
-            if (!function.Success)
-                continue;
-
-            functions.TryAdd(function.Groups[1].Value, attributes);
-            attributes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        }
-
-        return functions;
-    }
-
-    [GeneratedRegex(@"<(\w+)\(")]
-    private static partial Regex AttributePattern();
-
-    [GeneratedRegex(@"\b(?:Sub|Function)\s+([\p{L}\p{N}_]+)\s*\(")]
-    private static partial Regex FunctionPattern();
 
     /// <summary>
     /// Zapise grafikon jednej stanice - pozri <see cref="Write(Iniss2ExportData, string, string, IReadOnlyList{string})" />.
@@ -297,7 +243,7 @@ internal static partial class Iniss2Export
             throw new ArgumentException("Pocet priecinkov nezodpoveda poctu stanic.", nameof(stationDirectories));
 
         var groupDir = Path.Combine(dataDir, group);
-        var logText = Path.Combine(dataDir, LogTextFile);
+        var logText = Path.Combine(dataDir, LogTextFile.FileName);
 
         if (File.Exists(Path.Combine(groupDir, GvFile.FileName)))
             throw new Iniss2ExportException(Iniss2ExportIssue.GroupExists, group);

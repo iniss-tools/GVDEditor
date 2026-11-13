@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using ToolsCore.Iniss.Tools;
+using ToolsCore.Iniss2.Grafikon;
 
 namespace GVDEditor.Integration.Iniss2;
 
@@ -15,7 +16,7 @@ internal static partial class Iniss2Export
     public static List<string> AddAdditionFunctions(string file, IEnumerable<LogTextAddition> additions)
     {
         var text = File.ReadAllText(file, Encodings.Win1250);
-        var existing = LogTextFunctions(text.Split('\n'));
+        var existing = LogTextFile.Functions(text.Split('\n'));
         var missing = additions.Where(addition => !existing.ContainsKey(addition.Name)).DistinctBy(addition => addition.Name).ToList();
         if (missing.Count == 0)
             return [];
