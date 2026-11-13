@@ -15,6 +15,7 @@ using ToolsCore.Tools;
 using ToolsCore.Updates;
 using ToolsCore.XML;
 using ToolsCore;
+using ToolsCore.Forms.Calendar;
 
 namespace GVDEditor.UI.Main;
 
@@ -314,7 +315,7 @@ internal partial class FMain : ExForm, IAnalyzerHost
                         train.Number, TrainName.ToDisplay(_ctx.Workspace.TrainNames, train.Name), obmand));
                     if (result == DialogResult.Yes)
                     {
-                        if (FDateLimitEdit.SetDateLimit(this, _ctx.UsingStyle, thistrain.ZaciatokPlatnosti.ToDateTime(), thistrain.KoniecPlatnosti.ToDateTime(), train,
+                        if (FDateLimitEdit.SetDateLimit(this, _ctx.UsingStyle, thistrain.ZaciatokPlatnosti.ToDateTime(), thistrain.KoniecPlatnosti.ToDateTime(), $"{train.Type} {train.Number} {train.Name}",
                                 true, train.DateLimitText) is { } limit)
                             train.DateLimitText = limit;
                     }

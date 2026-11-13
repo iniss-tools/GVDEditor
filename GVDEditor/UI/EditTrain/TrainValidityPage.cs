@@ -8,6 +8,7 @@ using GVDEditor.UI.Settings;
 using GVDEditor.Properties;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
+using ToolsCore.Forms.Calendar;
 
 namespace GVDEditor.UI.EditTrain;
 
@@ -132,7 +133,7 @@ public partial class TrainValidityPage : UserControl, ITrainPage
         if (!hasVariants)
             return;
 
-        strip.SetCalendar(VariantCalendar.Build(_draft, _others));
+        strip.SetCalendar(VariantCalendar.Build(_draft, _others).ToStrip());
         FillGrid(selected);
     }
 
@@ -179,14 +180,14 @@ public partial class TrainValidityPage : UserControl, ITrainPage
 
     private string Route(Station? start, Station? end) => $"{start?.Name ?? _homeStation} → {end?.Name ?? _homeStation}";
 
-    private string DayToolTip(DateTime date, IReadOnlyList<VariantCalendar.Row> running)
+    private string DayToolTip(DateTime date, IReadOnlyList<CalendarStripRow> running)
     {
         var lines = new List<string> { date.ToString("dddd d. M. yyyy", CultureInfo.CurrentCulture) };
         foreach (var row in running)
         {
-            var route = row.Train == null
-                ? Route(_draft.RouteFrom.FirstOrDefault(), _draft.RouteTo.LastOrDefault())
-                : Route(row.Train.StartingStation, row.Train.EndingStation);
+            var route = row.Tag is Train train
+                ? Route(train.StartingStation, train.EndingStation)
+                : Route(_draft.RouteFrom.FirstOrDefault(), _draft.RouteTo.LastOrDefault());
             lines.Add($"{row.Position}/{_others.Count + 1}  {route}");
         }
 
@@ -275,7 +276,7 @@ public partial class TrainValidityPage : UserControl, ITrainPage
             return;
 
         var proposal = _overlaps.ContainsKey(other) ? TrainVariants.WithoutCommonDays(_draft, other) : null;
-        if (FDateLimitEdit.SetDateLimit(form, _ctx.UsingStyle, _draft.ValidFrom.ToDateTime(), _draft.ValidTo.ToDateTime(), other, defaultValue: _draft.LimitOf(other),
+        if (FDateLimitEdit.SetDateLimit(form, _ctx.UsingStyle, _draft.ValidFrom.ToDateTime(), _draft.ValidTo.ToDateTime(), $"{other.Type} {other.Number} {other.Name}", defaultValue: _draft.LimitOf(other),
                 proposal: proposal) is not { } limit)
             return;
 

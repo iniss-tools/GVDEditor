@@ -1,6 +1,7 @@
 using ToolsCore.Iniss.Calendar;
 using GVDEditor.Domain.Entities;
 using ToolsCore.Iniss.Tools;
+using ToolsCore.Forms.Calendar;
 
 namespace GVDEditor.Domain.Editing;
 
@@ -65,6 +66,13 @@ internal sealed class VariantCalendar
             return count;
         }
     }
+
+    /// <summary>
+    /// Data pre pruh kalendara (ToolsCore <see cref="CalendarStrip" />): riadok upravovaneho vlaku je vlastny, ostatne maju vlak
+    /// v <see cref="CalendarStripRow.Tag" />.
+    /// </summary>
+    public CalendarStripData ToStrip() =>
+        new(From, To, [.. Rows.Select(row => new CalendarStripRow(row.Position, row.Runs, row.Invalid, row.Train is null, row.Train))]);
 
     /// <summary>
     /// Pruh pre koncept a jeho ostatne varianty (<paramref name="others" /> zoradene podla poradia); zmenene

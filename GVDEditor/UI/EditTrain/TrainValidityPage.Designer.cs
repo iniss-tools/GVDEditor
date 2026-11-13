@@ -46,7 +46,7 @@ namespace GVDEditor.UI.EditTrain
             llCalendar = new LinkLabel();
             lVariantHeader = new Label();
             lVariantInfo = new Label();
-            strip = new VariantCalendarStrip();
+            strip = new ToolsCore.Forms.Calendar.CalendarStrip();
             dgvVariants = new DataGridView();
             flpOther = new FlowLayoutPanel();
             bEditOther = new ExButton();
@@ -289,7 +289,7 @@ namespace GVDEditor.UI.EditTrain
         private LinkLabel llCalendar;
         private Label lVariantHeader;
         private Label lVariantInfo;
-        private VariantCalendarStrip strip;
+        private ToolsCore.Forms.Calendar.CalendarStrip strip;
         private DataGridView dgvVariants;
         private FlowLayoutPanel flpOther;
         private ExButton bEditOther;

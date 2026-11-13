@@ -558,7 +558,7 @@
     <value>strip</value>
   </data>
   <data name="&gt;&gt;strip.Type" xml:space="preserve">
-    <value>GVDEditor.UI.Controls.VariantCalendarStrip, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+    <value>ToolsCore.Forms.Calendar.CalendarStrip, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;strip.Parent" xml:space="preserve">
     <value>tlpMain</value>
