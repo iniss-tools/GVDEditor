@@ -76,6 +76,8 @@ internal partial class FMain : ExForm, IAnalyzerHost
         _iniss = iniss;
         _dialogs = dialogs;
         InitializeComponent();
+        _analysisView = CreateAnalysisView();
+        InitDocking();
 
         _iniss.StateChanged += Iniss_StateChanged;
         _iniss.Exited += Iniss_Exited;
@@ -110,6 +112,7 @@ internal partial class FMain : ExForm, IAnalyzerHost
         if (tscbObdobie.ComboBox != null) tscbObdobie.ComboBox.DataSource = _periods;
 
         this.ApplyThemeAndFonts();
+        AppDock.Restore(_dock, _ctx.Config.DockLayout);
         UpdateCommandStates();
     }
 
@@ -188,6 +191,8 @@ internal partial class FMain : ExForm, IAnalyzerHost
     /// </summary>
     private void BindDocument()
     {
+        // problemy patria predchadzajucemu grafikonu (alebo jeho starsiemu stavu z disku)
+        _analysisView.Clear();
         Kolaj.DataSource = _ctx.Document.Tracks;
         Dopravca.DataSource = _ctx.Document.Operators;
 
@@ -241,7 +246,12 @@ internal partial class FMain : ExForm, IAnalyzerHost
     {
         // pri neuspesnom ulozeni okno nezatvorit, zmeny by sa stratili
         if (!ConfirmSaveChanges())
+        {
             e.Cancel = true;
+            return;
+        }
+
+        SaveDockLayout();
     }
 
     // ------------------------------------------------------------------ tabulka vlakov

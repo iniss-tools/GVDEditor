@@ -3465,6 +3465,51 @@
   <data name="&gt;&gt;dataGridViewExComboBoxColumn16.Type" xml:space="preserve">
     <value>ExControls.DataGridViewExComboBoxColumn, ExControls, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="tsmiView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 19</value>
+  </data>
+  <data name="tsmiView.Text" xml:space="preserve">
+    <value>Zobraziť</value>
+  </data>
+  <data name="tsmiViewAnalysis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 22</value>
+  </data>
+  <data name="tsmiViewAnalysis.Text" xml:space="preserve">
+    <value>Analýza grafikonu</value>
+  </data>
+  <data name="tssView1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 6</value>
+  </data>
+  <data name="tsmiResetLayout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 22</value>
+  </data>
+  <data name="tsmiResetLayout.Text" xml:space="preserve">
+    <value>Obnoviť rozloženie okna</value>
+  </data>
+  <data name="&gt;&gt;tsmiView.Name" xml:space="preserve">
+    <value>tsmiView</value>
+  </data>
+  <data name="&gt;&gt;tsmiView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiViewAnalysis.Name" xml:space="preserve">
+    <value>tsmiViewAnalysis</value>
+  </data>
+  <data name="&gt;&gt;tsmiViewAnalysis.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tssView1.Name" xml:space="preserve">
+    <value>tssView1</value>
+  </data>
+  <data name="&gt;&gt;tssView1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiResetLayout.Name" xml:space="preserve">
+    <value>tsmiResetLayout</value>
+  </data>
+  <data name="&gt;&gt;tsmiResetLayout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FMain</value>
   </data>

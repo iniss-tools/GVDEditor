@@ -70,8 +70,16 @@ internal partial class FMain : IAgentHost
             return;
 
         // zmena, ktora grafikon v skutocnosti nezmenila (napr. prekreslenie tabulky) - ak je ulozeny stav, hviezdicka zmizne
-        if (!_history.Commit(label) && _history.IsSaved)
-            DataSaved = true;
+        if (!_history.Commit(label))
+        {
+            if (_history.IsSaved)
+                DataSaved = true;
+        }
+        // oprava z panela analyzy jeho vysledok neznehodnoti, ina uprava grafikonu ano
+        else if (label != Resources.History_Analysis)
+        {
+            _analysisView.MarkStale();
+        }
         UpdateHistoryUi();
     }
 
@@ -157,6 +165,7 @@ internal partial class FMain : IAgentHost
             RefreshStationAndPeriod(dir, oldStation, oldPeriod);
         if (row >= 0 && row < dgvTrains.RowCount && column >= 0 && dgvTrains.Columns[column].Visible)
             dgvTrains.CurrentCell = dgvTrains.Rows[row].Cells[column];
+        _analysisView.MarkStale();
     }
 
     /// <summary>Popisy prikazov a tlacidiel Spat a Znova podla historie.</summary>

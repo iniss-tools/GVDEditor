@@ -37,6 +37,8 @@ internal partial class FMain
         Add(GvdCommands.ExportIniss2, ShowExportIniss2, grafikons, tsmiExportIniss2);
         Add(GvdCommands.Save, () => DoSave(), grafikon, tsmiSave, tsbSave);
         Add(GvdCommands.Analyze, ShowAnalyzeGVD, grafikon, tsmiAnalyze, tsbAnalyze);
+        Add(GvdCommands.ViewAnalysis, () => _dock.ShowPanel(_analysisPanel), null, tsmiViewAnalysis);
+        Add(GvdCommands.ResetLayout, ResetLayout, null, tsmiResetLayout);
 
         Add(GvdCommands.Undo, Undo, () => _history?.CanUndo == true, tsmiUndo, tssbUndo);
         Add(GvdCommands.Redo, Redo, () => _history?.CanRedo == true, tsmiRedo, tssbRedo);

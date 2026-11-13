@@ -1213,4 +1213,13 @@
   <data name="tsmiShowLogs.Text" xml:space="preserve">
     <value>Otevřít složku s logy</value>
   </data>
+  <data name="tsmiView.Text" xml:space="preserve">
+    <value>Zobrazit</value>
+  </data>
+  <data name="tsmiViewAnalysis.Text" xml:space="preserve">
+    <value>Analýza grafikonu</value>
+  </data>
+  <data name="tsmiResetLayout.Text" xml:space="preserve">
+    <value>Obnovit rozložení okna</value>
+  </data>
 </root>

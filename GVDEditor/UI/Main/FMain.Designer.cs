@@ -132,6 +132,10 @@ namespace GVDEditor.UI.Main
             toolStripSeparator18 = new ToolStripSeparator();
             tsmiAnalyze = new IconToolStripMenuItem();
             tsmiUpravit = new ToolStripMenuItem();
+            tsmiView = new ToolStripMenuItem();
+            tsmiViewAnalysis = new IconToolStripMenuItem();
+            tssView1 = new ToolStripSeparator();
+            tsmiResetLayout = new ToolStripMenuItem();
             tsmiUndo = new IconToolStripMenuItem();
             tsmiRedo = new IconToolStripMenuItem();
             toolStripSeparator20 = new ToolStripSeparator();
@@ -323,7 +327,7 @@ namespace GVDEditor.UI.Main
             // 
             mainMenu.BackColor = SystemColors.Control;
             mainMenu.ImageScalingSize = new Size(20, 20);
-            mainMenu.Items.AddRange(new ToolStripItem[] { tsmiSubor, tsmiUpravit, tsmiStanica, tsmiTools, tsmiRun, tsmiNastavenia });
+            mainMenu.Items.AddRange(new ToolStripItem[] { tsmiSubor, tsmiUpravit, tsmiView, tsmiStanica, tsmiTools, tsmiRun, tsmiNastavenia });
             mainMenu.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
             resources.ApplyResources(mainMenu, "mainMenu");
             mainMenu.Name = "mainMenu";
@@ -425,6 +429,28 @@ namespace GVDEditor.UI.Main
             tsmiUpravit.DropDownItems.AddRange(new ToolStripItem[] { tsmiUndo, tsmiRedo, toolStripSeparator20, tsmimAddTrain, tsmimEditTrain, toolStripSeparator2, tsmiDeleteTrain, toolStripSeparator1, tsmiDuplikovat });
             resources.ApplyResources(tsmiUpravit, "tsmiUpravit");
             tsmiUpravit.Name = "tsmiUpravit";
+            // 
+            // tsmiView
+            // 
+            tsmiView.DropDownItems.AddRange(new ToolStripItem[] { tsmiViewAnalysis, tssView1, tsmiResetLayout });
+            tsmiView.Name = "tsmiView";
+            resources.ApplyResources(tsmiView, "tsmiView");
+            // 
+            // tsmiViewAnalysis
+            // 
+            tsmiViewAnalysis.IconName = "document-search";
+            tsmiViewAnalysis.Name = "tsmiViewAnalysis";
+            resources.ApplyResources(tsmiViewAnalysis, "tsmiViewAnalysis");
+            // 
+            // tssView1
+            // 
+            tssView1.Name = "tssView1";
+            resources.ApplyResources(tssView1, "tssView1");
+            // 
+            // tsmiResetLayout
+            // 
+            tsmiResetLayout.Name = "tsmiResetLayout";
+            resources.ApplyResources(tsmiResetLayout, "tsmiResetLayout");
             // 
             // tsmiUndo
             // 
@@ -2195,6 +2221,10 @@ namespace GVDEditor.UI.Main
         private ToolStripSeparator toolStripSeparator6;
         private IconToolStripMenuItem tsmiSave;
         private ToolStripMenuItem tsmiUpravit;
+        private ToolStripMenuItem tsmiView;
+        private IconToolStripMenuItem tsmiViewAnalysis;
+        private ToolStripSeparator tssView1;
+        private ToolStripMenuItem tsmiResetLayout;
         private IconToolStripMenuItem tsmiUndo;
         private IconToolStripMenuItem tsmiRedo;
         private ToolStripSeparator toolStripSeparator20;

@@ -11,6 +11,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Formats;
 using GVDEditor.Integration;
 using GVDEditor.TabTabEditor;
+using GVDEditor.UI.Analysis;
 using GVDEditor.UI.Controls;
 using GVDEditor.UI.Dialogs;
 using GVDEditor.UI.EditTrain;
@@ -24,6 +25,7 @@ using GVDEditor.UI.TabTab;
 using ToolsCore.Iniss.Entities;
 using ToolsCore.Iniss.StateDgm;
 using ToolsCore.Iniss.Tools;
+using ToolsCore.Forms.Calendar;
 
 namespace GVDEditor.DocScreenshots;
 
@@ -54,7 +56,8 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             // hlavné okno s vybraným rýchlikom
             Shot("hlavne-okno/hlavne-okno", main, form =>
             {
-                Resize(form, 1420, 600);
+                // panel Analyza grafikonu dole berie miesto tabulke vlakov
+                Resize(form, 1420, 760);
                 SelectTrain(form, trains.IndexOf(express));
             }, dispose: false);
 
@@ -244,16 +247,18 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             var endValidData = gvdDir.GVD.EndValidData;
             Program.Context.Document.TabTabs.Add(emptyTab);
             gvdDir.GVD.EndValidData = new DateOnly(2026, 6, 30);
-            Shot("analyza-grafikonu/analyza-grafikonu", () => new FAnalyzer(Program.Context, gvdDir, main), form =>
+            // panel Analyza grafikonu v hlavnom okne (prikaz Analyzovat grafikon), vybrany prvy problem
+            Shot("analyza-grafikonu/analyza-grafikonu", main, form =>
             {
-                Resize(form, 820, 360);
-                form.GetType().GetMethod("bAnalyze_Click", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(form, [form, EventArgs.Empty]);
-                Pump.Until(() => ((Task)Field(form, "_analysis")).IsCompleted);
+                form.GetType().GetMethod("ShowAnalyzeGVD", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(form, null);
+                var view = (AnalysisView)Field(form, "_analysisView");
+                Pump.Until(() => view.Analysis.IsCompleted);
                 Pump.Events();
-                var grid = (DataGridView)Field(form, "dgvResults");
-                grid.ClearSelection();
-                if (grid.Rows.Count > 0) grid.Rows[0].Selected = true;
-            });
+                view.Grid.ClearSelection();
+                if (view.Grid.Rows.Count > 0)
+                    view.Grid.CurrentCell = view.Grid.Rows[0].Cells[1];
+                ((DataGridView)Field(form, "dgvTrains")).ClearSelection();
+            }, dispose: false);
             Program.Context.Document.TabTabs.Remove(emptyTab);
             gvdDir.GVD.EndValidData = endValidData;
             // generátor s obdobím grafikonu a vygenerovaným poľom bitov
@@ -275,7 +280,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                     [Program.Context.UsingStyle], null)!;
                 var type = form.GetType();
                 var flags = BindingFlags.NonPublic | BindingFlags.Instance;
-                type.GetField("_train", flags)!.SetValue(form, express);
+                type.GetField("_title", flags)!.SetValue(form, $"{express.Type} {express.Number} {express.Name}");
                 type.GetField("_dateLimit", flags)!.SetValue(form,
                     new DateLimit(gvdInfo.StartValidTimeTable, gvdInfo.EndValidTimeTable, insertMarks: false));
                 type.GetField("_textChanging", flags)!.SetValue(form, true);
@@ -309,7 +314,7 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("tabule/editor-tabtab-problemy", () => new FTabTab(Program.Context, smer, station), form =>
             {
                 Resize(form, 1100, 620);
-                var scintilla = ((MyScintilla)Field(form, "scText")).Scintilla;
+                var scintilla = ((ToolsCore.CodeEditor.CodeEditorBox)Field(form, "scText")).Scintilla;
                 scintilla.Text = smer.Text + "\r\nTyp(Typ_RR), \"R\" = #SWITCH";
                 form.GetType().GetMethod("ValidateDocument", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(form, null);
                 Pump.Events();

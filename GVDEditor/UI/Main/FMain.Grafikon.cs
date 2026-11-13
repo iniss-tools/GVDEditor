@@ -352,6 +352,7 @@ internal partial class FMain
     /// </summary>
     private void CloseGrafikon()
     {
+        _analysisView.Clear();
         ClearHistory();
         _prechod = true;
         _ctx.CloseDocument();
@@ -496,19 +497,6 @@ internal partial class FMain
     }
 
     // ------------------------------------------------------------------ novy grafikon, import, analyza
-
-    private void ShowAnalyzeGVD()
-    {
-        var fan = new FAnalyzer(_ctx, (tscbObdobie.SelectedItem as GVDDirectory)!, this);
-        fan.ShowDialog();
-
-        // opravy menia grafikon v pamati - bez oznacenia by sa pri zatvoreni bez otazky stratili
-        if (fan.DataChanged)
-        {
-            MarkChanged(Resources.History_Analysis);
-            _ctx.Document.Trains.ResetBindings();
-        }
-    }
 
     private void ShowNewGVD()
     {

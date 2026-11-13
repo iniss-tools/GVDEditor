@@ -2164,33 +2164,6 @@ Záloha původních souborů: {1}
   <data name="Analyzer_DataExpired_Fix" xml:space="preserve">
     <value>Změnit platnost dat</value>
   </data>
-  <data name="FindReplace_FindNext" xml:space="preserve">
-    <value>Hledat další</value>
-  </data>
-  <data name="FindReplace_Count" xml:space="preserve">
-    <value>Spočítat</value>
-  </data>
-  <data name="FindReplace_Replace" xml:space="preserve">
-    <value>Nahradit</value>
-  </data>
-  <data name="FindReplace_ReplaceAll" xml:space="preserve">
-    <value>Nahradit vše</value>
-  </data>
-  <data name="FindReplace_InvalidInput" xml:space="preserve">
-    <value>Neplatný vstup pro hledání</value>
-  </data>
-  <data name="FindReplace_Found" xml:space="preserve">
-    <value>{0} nalezených</value>
-  </data>
-  <data name="FindReplace_EndOfDocument" xml:space="preserve">
-    <value>Dosáhli jste konce dokumentu</value>
-  </data>
-  <data name="FindReplace_Replaced" xml:space="preserve">
-    <value>Všech {0} výskytů bylo nahrazeno</value>
-  </data>
-  <data name="FindReplace_Ready" xml:space="preserve">
-    <value>Připraveno</value>
-  </data>
   <data name="Scheme_TabTabEditor" xml:space="preserve">
     <value>Editor TabTab</value>
   </data>
@@ -4134,5 +4107,29 @@ Před zápisem se uloží záloha.</value>
   </data>
   <data name="Iniss2Export_Issue_GroupExists" xml:space="preserve">
     <value>Grafikon s tímto názvem už v instalaci INISS2 je.</value>
+  </data>
+  <data name="Panel_Analysis" xml:space="preserve">
+    <value>Analýza grafikonu</value>
+  </data>
+  <data name="Cmd_ViewAnalysis" xml:space="preserve">
+    <value>Zobrazit panel Analýza grafikonu</value>
+  </data>
+  <data name="Cmd_ResetLayout" xml:space="preserve">
+    <value>Obnovit rozložení okna</value>
+  </data>
+  <data name="Analysis_Errors" xml:space="preserve">
+    <value>Chyby: {0}</value>
+  </data>
+  <data name="Analysis_Warnings" xml:space="preserve">
+    <value>Upozornění: {0}</value>
+  </data>
+  <data name="Analysis_Infos" xml:space="preserve">
+    <value>Informace: {0}</value>
+  </data>
+  <data name="Analysis_Hint" xml:space="preserve">
+    <value>Analýzu grafikonu spustí tlačítko Analyzovat.</value>
+  </data>
+  <data name="Analysis_Stale" xml:space="preserve">
+    <value>Grafikon se od analýzy změnil, analyzujte ho znovu.</value>
   </data>
 </root>

@@ -117,32 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 17</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Spustit analýzu:</value>
-  </data>
-  <data name="bAnalyze.Text" xml:space="preserve">
-    <value>Analyzovat</value>
-  </data>
-  <data name="bFixSelected.Text" xml:space="preserve">
-    <value>Opravit označené</value>
-  </data>
-  <data name="FixType.HeaderText" xml:space="preserve">
-    <value>Typ řešení</value>
-  </data>
-  <data name="solutionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Řešení</value>
-  </data>
-  <data name="ProblemType.HeaderText" xml:space="preserve">
-    <value>Typ problému</value>
-  </data>
-  <data name="textDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+  <data name="cProblem.HeaderText" xml:space="preserve">
     <value>Problém</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Analyzátor grafikonu</value>
+  <data name="cFix.HeaderText" xml:space="preserve">
+    <value>Typ řešení</value>
+  </data>
+  <data name="cSolution.HeaderText" xml:space="preserve">
+    <value>Řešení</value>
+  </data>
+  <data name="tsResults.Text" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="tsbErrors.ToolTipText" xml:space="preserve">
+    <value>Zobrazit chyby</value>
+  </data>
+  <data name="tsbWarnings.ToolTipText" xml:space="preserve">
+    <value>Zobrazit upozornění</value>
+  </data>
+  <data name="tsbInfos.ToolTipText" xml:space="preserve">
+    <value>Zobrazit informace</value>
+  </data>
+  <data name="tsbAnalyze.Text" xml:space="preserve">
+    <value>Analyzovat</value>
+  </data>
+  <data name="tsbAnalyze.ToolTipText" xml:space="preserve">
+    <value>Analyzovat grafikon znovu</value>
+  </data>
+  <data name="tsbFix.Text" xml:space="preserve">
+    <value>Opravit</value>
+  </data>
+  <data name="tsbFix.ToolTipText" xml:space="preserve">
+    <value>Opravit vybraný problém (i dvojklik)</value>
   </data>
 </root>

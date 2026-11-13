@@ -5540,6 +5540,78 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Analýza grafikonu
+        /// </summary>
+        internal static string Panel_Analysis {
+            get {
+                return ResourceManager.GetString("Panel_Analysis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zobraziť panel Analýza grafikonu
+        /// </summary>
+        internal static string Cmd_ViewAnalysis {
+            get {
+                return ResourceManager.GetString("Cmd_ViewAnalysis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obnoviť rozloženie okna
+        /// </summary>
+        internal static string Cmd_ResetLayout {
+            get {
+                return ResourceManager.GetString("Cmd_ResetLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chyby: {0}
+        /// </summary>
+        internal static string Analysis_Errors {
+            get {
+                return ResourceManager.GetString("Analysis_Errors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upozornenia: {0}
+        /// </summary>
+        internal static string Analysis_Warnings {
+            get {
+                return ResourceManager.GetString("Analysis_Warnings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informácie: {0}
+        /// </summary>
+        internal static string Analysis_Infos {
+            get {
+                return ResourceManager.GetString("Analysis_Infos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analýzu grafikonu spustí tlačidlo Analyzovať.
+        /// </summary>
+        internal static string Analysis_Hint {
+            get {
+                return ResourceManager.GetString("Analysis_Hint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grafikon sa od analýzy zmenil, analyzujte ho znova.
+        /// </summary>
+        internal static string Analysis_Stale {
+            get {
+                return ResourceManager.GetString("Analysis_Stale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Analyzovať grafikon.
         /// </summary>
         internal static string Cmd_Analyze {
@@ -6085,87 +6157,6 @@ namespace GVDEditor.Properties {
         internal static string Analyzer_DataExpired_Fix {
             get {
                 return ResourceManager.GetString("Analyzer_DataExpired_Fix", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hľadať ďalší.
-        /// </summary>
-        internal static string FindReplace_FindNext {
-            get {
-                return ResourceManager.GetString("FindReplace_FindNext", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Spočítať.
-        /// </summary>
-        internal static string FindReplace_Count {
-            get {
-                return ResourceManager.GetString("FindReplace_Count", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nahradiť.
-        /// </summary>
-        internal static string FindReplace_Replace {
-            get {
-                return ResourceManager.GetString("FindReplace_Replace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nahradiť všetky.
-        /// </summary>
-        internal static string FindReplace_ReplaceAll {
-            get {
-                return ResourceManager.GetString("FindReplace_ReplaceAll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Neplatný vstup pre hľadanie.
-        /// </summary>
-        internal static string FindReplace_InvalidInput {
-            get {
-                return ResourceManager.GetString("FindReplace_InvalidInput", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} nájdení.
-        /// </summary>
-        internal static string FindReplace_Found {
-            get {
-                return ResourceManager.GetString("FindReplace_Found", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prišli ste na koniec dokumentu.
-        /// </summary>
-        internal static string FindReplace_EndOfDocument {
-            get {
-                return ResourceManager.GetString("FindReplace_EndOfDocument", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Všetkých {0} výskytov boli nahradených.
-        /// </summary>
-        internal static string FindReplace_Replaced {
-            get {
-                return ResourceManager.GetString("FindReplace_Replaced", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Pripravený.
-        /// </summary>
-        internal static string FindReplace_Ready {
-            get {
-                return ResourceManager.GetString("FindReplace_Ready", resourceCulture);
             }
         }
         
