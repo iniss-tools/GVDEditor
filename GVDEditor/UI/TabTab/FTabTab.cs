@@ -679,7 +679,7 @@ internal partial class FTabTab : Form
 
     private void DoFindReplace(bool showReplace = false)
     {
-        var ffar = new FTabTabFindReplace(_sc, showReplace);
+        var ffar = new ToolsCore.CodeEditor.FFindReplace(_sc, showReplace);
         ffar.Show();
     }
 

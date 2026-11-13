@@ -83,7 +83,7 @@ namespace GVDEditor.UI.TabTab
             this.tsslCol = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslPosText = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslPos = new System.Windows.Forms.ToolStripStatusLabel();
-            this.scText = new GVDEditor.UI.Controls.MyScintilla();
+            this.scText = new ToolsCore.CodeEditor.CodeEditorBox();
             this.pProblems = new System.Windows.Forms.Panel();
             this.dgvProblems = new System.Windows.Forms.DataGridView();
             this.cProbType = new System.Windows.Forms.DataGridViewImageColumn();
@@ -728,7 +728,7 @@ namespace GVDEditor.UI.TabTab
         }
 
         #endregion
-        private MyScintilla scText;
+        private ToolsCore.CodeEditor.CodeEditorBox scText;
         private System.Windows.Forms.ToolStrip toolStrip;
         private ToolsCore.Icons.IconToolStripButton tsbSave;
         private ToolsCore.Icons.IconToolStripButton tsbStorno;

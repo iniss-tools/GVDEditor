@@ -512,7 +512,7 @@
     <value>scText</value>
   </data>
   <data name="&gt;&gt;scText.Type" xml:space="preserve">
-    <value>GVDEditor.UI.Controls.MyScintilla, GVDEditor, Culture=neutral, PublicKeyToken=null</value>
+    <value>ToolsCore.CodeEditor.CodeEditorBox, ToolsCore.CodeEditor, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;scText.Parent" xml:space="preserve">
     <value>tpText</value>

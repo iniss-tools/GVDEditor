@@ -39,7 +39,7 @@ namespace GVDEditor.UI.StateDgm
             tpGraph = new TabPage();
             pnlGraph = new Panel();
             tpText = new TabPage();
-            scText = new GVDEditor.UI.Controls.MyScintilla();
+            scText = new ToolsCore.CodeEditor.CodeEditorBox();
             pnlProps = new Panel();
             tcBottom = new ExControls.ExTabControl();
             tpEvents = new TabPage();
@@ -709,7 +709,7 @@ namespace GVDEditor.UI.StateDgm
         private System.Windows.Forms.TabPage tpGraph;
         private System.Windows.Forms.Panel pnlGraph;
         private System.Windows.Forms.TabPage tpText;
-        private GVDEditor.UI.Controls.MyScintilla scText;
+        private ToolsCore.CodeEditor.CodeEditorBox scText;
         private System.Windows.Forms.Panel pnlProps;
         private ExControls.ExTabControl tcBottom;
         private System.Windows.Forms.TabPage tpEvents;
