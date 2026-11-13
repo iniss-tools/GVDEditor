@@ -42,7 +42,7 @@ public class Iniss2TabTabTranspilerTests
     {
         var code = Transpiler().Expression(TabTabSection.Parse("Typ(Typ_R), \"@\"{93}, \\\n1, \"-\" =#SWITCH"), [Departure]);
 
-        StringAssert.Contains(code, "If (.Druh = \"R\") Then\n    v = New TabString(\"@\", 93)\nElseIf True Then\n    v = New TabString(\"-\", -1)\nElse\n    v = Nothing\nEnd If\nIf v IsNot Nothing AndAlso accept(v) Then Return r", code);
+        StringAssert.Contains(code, "If .Druh = \"R\" Then\n    v = New TabString(\"@\", 93)\nElseIf True Then\n    v = New TabString(\"-\", -1)\nElse\n    v = Nothing\nEnd If\nIf v IsNot Nothing AndAlso accept(v) Then Return r", code);
         StringAssert.Contains(code, "If t.sString.Contains(\"@\") Then", "text s @ caka na dalsi zdroj");
     }
 
@@ -53,8 +53,8 @@ public class Iniss2TabTabTranspilerTests
 
         var code = Transpiler().Expression(section, [Departure]);
 
-        StringAssert.Contains(code, "If (.Druh = \"R\") Then v = merge(v, \"\", New TabString(\"@\", 81), True)", code);
-        StringAssert.Contains(code, "If (Not (.LinkaIDS(False) = \"\")) Then v = merge(v, \"#\", peer(\"Linka\", -1), True)", code);
+        StringAssert.Contains(code, "If .Druh = \"R\" Then v = merge(v, \"\", New TabString(\"@\", 81), True)", code);
+        StringAssert.Contains(code, "If Not (.LinkaIDS(False) = \"\") Then v = merge(v, \"#\", peer(\"Linka\", -1), True)", code);
         StringAssert.Contains(code, "Dim peer = Function(name As String, font As Integer) As TabString", code);
         StringAssert.Contains(code, "Dim merge = Function(acc As TabString, sep As String, t As TabString, byParts As Boolean) As TabString", code);
     }

@@ -9,31 +9,33 @@ namespace GVDEditor.Integration.Iniss2;
 /// a pravda je nenulova hodnota; preklad drzi pri uzle logicky aj ciselny tvar a prevadza medzi nimi explicitne, aby VB.NET
 /// (bez Option Strict) nepremenil True na -1. Spojky sa vyhodnocuju bez skratenia (<c>And</c>, <c>Or</c>) ako v INISSe.
 /// Druh vlaku bez kluca v TrTypes a kolaj, ktora v grafikone nie je, sa prelozia na <c>False</c> - vlak ich mat nemoze.
+/// Zatvorky su len tam, kde ich vyzaduje priorita operatorov VB.NET, a pri miesani spojok <c>And</c>/<c>Or</c>/<c>Xor</c>,
+/// operatorov <c>\</c> a <c>Mod</c> s inymi aritmetickymi a pri <c>Not</c> nad porovnanim, kde by priorita citatela mylila.
 /// </summary>
 internal sealed class Iniss2ExpressionTranspiler
 {
     private static readonly CultureInfo Inv = CultureInfo.InvariantCulture;
 
     // bity slova priznakov vlaku 3.39 (Prizn_*) a ich obdoba vo VlakS; prestup je v INISS2 priznak bodu trasy
-    private static readonly (int Bit, string Code)[] FlagBits =
+    private static readonly (int Bit, Code Code)[] FlagBits =
     [
-        (0x100, ".VylukaPrij"),
-        (0x200, ".VylukaOdj"),
-        (0x1000, "((.PriznakyVlaku And VlajkyVarianty.M) <> 0)"),
-        (0x2000, "((.PriznakyVlaku And VlajkyVarianty.O) <> 0)"),
-        (0x4000, "((.PriznakyVlaku And VlajkyVarianty.D) <> 0)"),
-        (0x8000, "((.PriznakyVlaku And VlajkyVarianty.X) <> 0)"),
-        (0x10000, "((.PriznakyVlaku And VlajkyVarianty.R) <> 0)"),
-        (0x20000, "((.PriznakyVlaku And VlajkyVarianty.L) <> 0)"),
-        (0x40000, "((.PriznakyVlaku And VlajkyVarianty.N) <> 0)"),
-        (0x80000, "((.PriznakyStanice And VlajkyStanice.PR) <> 0)")
+        (0x100, Atom(".VylukaPrij")),
+        (0x200, Atom(".VylukaOdj")),
+        (0x1000, FlagSet(".PriznakyVlaku", "VlajkyVarianty.M")),
+        (0x2000, FlagSet(".PriznakyVlaku", "VlajkyVarianty.O")),
+        (0x4000, FlagSet(".PriznakyVlaku", "VlajkyVarianty.D")),
+        (0x8000, FlagSet(".PriznakyVlaku", "VlajkyVarianty.X")),
+        (0x10000, FlagSet(".PriznakyVlaku", "VlajkyVarianty.R")),
+        (0x20000, FlagSet(".PriznakyVlaku", "VlajkyVarianty.L")),
+        (0x40000, FlagSet(".PriznakyVlaku", "VlajkyVarianty.N")),
+        (0x80000, FlagSet(".PriznakyStanice", "VlajkyStanice.PR"))
     ];
 
     // stavove bity 3.39 (Stav_*) a priznaky stavu INISS2
-    private static readonly (int Bit, string Code)[] StateBits =
+    private static readonly (int Bit, Code Code)[] StateBits =
     [
-        (0x20, "((.PriznakyStavu And NODEFLAGS.ODBAVEN) <> 0)"),
-        (0x80, "((.PriznakyStavu And NODEFLAGS.STOJI) <> 0)")
+        (0x20, FlagSet(".PriznakyStavu", "NODEFLAGS.ODBAVEN")),
+        (0x80, FlagSet(".PriznakyStavu", "NODEFLAGS.STOJI"))
     ];
 
     // udalosti GTN v hornom bajte hodnoty Wait a priznaky GTN zastavenia v INISS2
@@ -78,22 +80,42 @@ internal sealed class Iniss2ExpressionTranspiler
     public string? Condition(string text) => Parse(text, ExprContext.Condition) is { } root ? Condition(root) : null;
 
     /// <summary>
+    /// Prelozi podmienku, ktora sa moze spojit s dalsou spojkou <c>AndAlso</c>: vrati vyraz a jeho tvar ako operand spojky
+    /// (podmienka so spojkou <c>Or</c> alebo <c>Xor</c> v zatvorkach); null = vyraz sa neda prelozit.
+    /// </summary>
+    public (string Code, string AndAlsoOperand)? JoinableCondition(string text)
+    {
+        if (Parse(text, ExprContext.Condition) is not { } root)
+            return null;
+
+        var code = AsBool(Emit(root));
+        return (code.Text, Operand(code, Level.And, false));
+    }
+
+    /// <summary>
     /// Prelozi ciselnu hodnotu (IndCat, AutoMode, AutoTimePointAdd…) na vyraz typu Integer; null = vyraz sa neda prelozit.
     /// </summary>
     public string? Number(string text) => Parse(text, ExprContext.Condition) is { } root ? Number(root) : null;
 
     /// <summary>
+    /// Prelozi porovnanie ciselnej hodnoty s cislom (napr. casovy bod automatiky); null = vyraz sa neda prelozit.
+    /// </summary>
+    public string? NumberEquals(string text, int value) =>
+        Parse(text, ExprContext.Condition) is { } root ? Binary(AsInt(Emit(root)), "=", Literal(value), Level.Comparison).Text : null;
+
+    /// <summary>
     /// Prelozi uzol na vyraz typu Boolean.
     /// </summary>
-    public string Condition(ExprNode node) => AsBool(Emit(node));
+    public string Condition(ExprNode node) => AsBool(Emit(node)).Text;
 
     /// <summary>
     /// Prelozi uzol na vyraz typu Integer.
     /// </summary>
-    public string Number(ExprNode node) => AsInt(Emit(node));
+    public string Number(ExprNode node) => AsInt(Emit(node)).Text;
 
     /// <summary>
-    /// Prelozi hodnotu kluca <c>Wait</c> na podmienku, ze prisli udalosti GTN; null = automatika na nic necaka.
+    /// Prelozi hodnotu kluca <c>Wait</c> na podmienku, ze prisli udalosti GTN; null = automatika na nic necaka. Viac udalosti
+    /// spaja <c>And</c>, takze podmienka moze byt operandom spojky <c>AndAlso</c> bez zatvoriek.
     /// </summary>
     public string? Wait(string text)
     {
@@ -106,13 +128,13 @@ internal sealed class Iniss2ExpressionTranspiler
             return null;
         }
 
-        return WaitCondition(unchecked((uint)value));
+        return WaitCondition(unchecked((uint)value))?.Text;
     }
 
     /// <summary>
     /// Podmienka kluca <c>WaitPath</c> - nenulova hodnota caka na vchodovu vlakovu cestu.
     /// </summary>
-    public static string WaitPath => WaitCondition(0x80000000u)!;
+    public static string WaitPath => WaitCondition(0x80000000u)!.Value.Text;
 
     /// <summary>
     /// Telo funkcie pre server: server doplni <c>Return</c>, len ked kod slovo <c>return</c> neobsahuje - napriklad v retazci.
@@ -123,15 +145,10 @@ internal sealed class Iniss2ExpressionTranspiler
         return expression.Contains("return ", StringComparison.OrdinalIgnoreCase) ? "Return " + expression : expression;
     }
 
-    private static string? WaitCondition(uint value)
+    private static Code? WaitCondition(uint value)
     {
-        var events = WaitEvents.Where(e => (value & e.Bit) != 0).Select(e => $"((.PriznakyGTN And StaniceVlaku.FLAGS.{e.Name}) <> 0)").ToList();
-        return events.Count switch
-        {
-            0 => null,
-            1 => events[0],
-            _ => "(" + string.Join(" And ", events) + ")"
-        };
+        var events = WaitEvents.Where(e => (value & e.Bit) != 0).Select(e => FlagSet(".PriznakyGTN", "StaniceVlaku.FLAGS." + e.Name)).ToList();
+        return events.Count == 0 ? null : Chain(events, "And", Level.And);
     }
 
     private ExprNode? Parse(string text, ExprContext context)
@@ -144,29 +161,87 @@ internal sealed class Iniss2ExpressionTranspiler
         return null;
     }
 
-    // tvar uzla: logicky, ciselny alebo oba (maska PRIZNAK - logicky tvar plati, ked je niektory bit nastaveny)
-    private sealed record Vb(string? Bool, string? Int, bool ZeroOne, int? Constant = null)
+    // priorita operatorov VB.NET od najnizsej (operatory, ktore preklad nepouziva, chybaju)
+    private enum Level
     {
-        public static Vb Logical(string code) => new(code, null, true);
+        Xor,
+        Or,
+        And,
+        Not,
+        Comparison,
+        Additive,
+        Modulus,
+        IntegerDivision,
+        Multiplicative,
+        Unary,
+        Primary
+    }
 
-        public static Vb Integer(string code) => new(null, code, false);
+    // kod a priorita jeho najvyssieho operatora; literal, clen, volanie a If(...) su Primary
+    private readonly record struct Code(string Text, Level Level);
+
+    // tvar uzla: logicky, ciselny alebo oba (maska PRIZNAK - logicky tvar plati, ked je niektory bit nastaveny)
+    private sealed record Vb(Code? Bool, Code? Int, bool ZeroOne, int? Constant = null)
+    {
+        public static Vb Logical(Code code) => new(code, null, true);
+
+        public static Vb Integer(Code code) => new(null, code, false);
 
         public static Vb Number(int value) => new(null, Literal(value), value is 0 or 1, value);
     }
 
-    private static string AsBool(Vb value) =>
-        value.Constant is { } constant ? constant != 0 ? "True" : "False" : value.Bool ?? $"({value.Int} <> 0)";
+    private static Code Atom(string text) => new(text, Level.Primary);
 
-    private static string AsInt(Vb value) => value.Int ?? $"If({value.Bool}, 1, 0)";
+    private static bool IsLogical(Level level) => level is Level.Xor or Level.Or or Level.And;
 
-    private static string Literal(int value) => value switch
+    private static bool IsArithmetic(Level level) => level is >= Level.Additive and <= Level.Multiplicative;
+
+    // operand binarneho operatora: zatvorky, ked ma nizsiu prioritu (pravy aj rovnaku - operatory su zlava; spojky And, Or
+    // a Xor nie, su asociativne a bez skratenia sa vyhodnotia vsetky operandy v rovnakom poradi), alebo ked by bez nich
+    // citatel prioritu lahko pomylil (rozne spojky, \ a Mod s inou aritmetikou, zaporne cislo za + a -)
+    private static string Operand(Code operand, Level parent, bool right)
     {
-        int.MinValue => "(-2147483647 - 1)",
-        < 0 => "(" + value.ToString(Inv) + ")",
-        _ => value.ToString(Inv)
+        var level = operand.Level;
+        var wrap = level < parent || (right && level == parent && !IsLogical(parent))
+                   || (IsLogical(parent) && IsLogical(level) && level != parent)
+                   || (IsArithmetic(parent) && IsArithmetic(level) && level != parent
+                       && (parent is Level.Modulus or Level.IntegerDivision || level is Level.Modulus or Level.IntegerDivision))
+                   || (parent == Level.Additive && right && level == Level.Unary);
+        return wrap ? "(" + operand.Text + ")" : operand.Text;
+    }
+
+    private static Code Binary(Code left, string op, Code right, Level level) =>
+        new($"{Operand(left, level, false)} {op} {Operand(right, level, true)}", level);
+
+    // viac operandov tej istej spojky zlava (a Or b Or c = (a Or b) Or c)
+    private static Code Chain(IEnumerable<Code> operands, string op, Level level) => operands.Aggregate((left, right) => Binary(left, op, right, level));
+
+    // Not nad porovnanim alebo aritmetikou ma zatvorky - VB.NET by ho vyhodnotil az po nich
+    private static Code Not(Code operand) =>
+        new("Not " + (operand.Level is Level.Not or Level.Unary or Level.Primary ? operand.Text : "(" + operand.Text + ")"), Level.Not);
+
+    private static Code Negate(Code operand) => new("-" + (operand.Level == Level.Primary ? operand.Text : "(" + operand.Text + ")"), Level.Unary);
+
+    // nastaveny priznak: (slovo And priznak) <> 0
+    private static Code FlagSet(string word, string flag) => Binary(Binary(Atom(word), "And", Atom(flag), Level.And), "<>", Atom("0"), Level.Comparison);
+
+    private static Code If(Code condition, Code whenTrue, Code whenFalse) => Atom($"If({condition.Text}, {whenTrue.Text}, {whenFalse.Text})");
+
+    private static Code EqualTo(Code left, Code right) => Binary(left, "=", right, Level.Comparison);
+
+    private static Code AsBool(Vb value) =>
+        value.Constant is { } constant ? Atom(constant != 0 ? "True" : "False") : value.Bool ?? Binary(value.Int!.Value, "<>", Atom("0"), Level.Comparison);
+
+    private static Code AsInt(Vb value) => value.Int ?? If(value.Bool!.Value, Atom("1"), Atom("0"));
+
+    private static Code Literal(int value) => value switch
+    {
+        int.MinValue => new Code("-2147483647 - 1", Level.Additive),
+        < 0 => new Code(value.ToString(Inv), Level.Unary),
+        _ => Atom(value.ToString(Inv))
     };
 
-    private static string Text(string value) => "\"" + value.Replace("\"", "\"\"", StringComparison.Ordinal) + "\"";
+    private static Code Text(string value) => Atom("\"" + value.Replace("\"", "\"\"", StringComparison.Ordinal) + "\"");
 
     private Vb Emit(ExprNode node)
     {
@@ -190,11 +265,11 @@ internal sealed class Iniss2ExpressionTranspiler
         var operand = Emit(node.Operand);
         return node.Operator switch
         {
-            ExprTokenKind.Not or ExprTokenKind.NotWord => Vb.Logical($"(Not {AsBool(operand)})"),
-            ExprTokenKind.BitNot => Vb.Integer($"(Not {AsInt(operand)})"),
-            ExprTokenKind.Minus => Vb.Integer($"(-{AsInt(operand)})"),
+            ExprTokenKind.Not or ExprTokenKind.NotWord => Vb.Logical(Not(AsBool(operand))),
+            ExprTokenKind.BitNot => Vb.Integer(Not(AsInt(operand))),
+            ExprTokenKind.Minus => Vb.Integer(Negate(AsInt(operand))),
             ExprTokenKind.Plus => operand,
-            ExprTokenKind.Odd => Vb.Integer($"({AsInt(operand)} Mod 2)"),
+            ExprTokenKind.Odd => Vb.Integer(Binary(AsInt(operand), "Mod", Atom("2"), Level.Modulus)),
             _ => throw new InvalidOperationException("Neznamy unarny operator.")
         };
     }
@@ -206,39 +281,44 @@ internal sealed class Iniss2ExpressionTranspiler
         switch (node.Operator)
         {
             case ExprTokenKind.And or ExprTokenKind.AndWord:
-                return Vb.Logical($"({AsBool(left)} And {AsBool(right)})");
+                return Vb.Logical(Binary(AsBool(left), "And", AsBool(right), Level.And));
             case ExprTokenKind.Or or ExprTokenKind.OrWord:
-                return Vb.Logical($"({AsBool(left)} Or {AsBool(right)})");
+                return Vb.Logical(Binary(AsBool(left), "Or", AsBool(right), Level.Or));
             case ExprTokenKind.BitAnd or ExprTokenKind.BitOr or ExprTokenKind.BitXor:
             {
-                var op = node.Operator == ExprTokenKind.BitAnd ? "And" : node.Operator == ExprTokenKind.BitOr ? "Or" : "Xor";
+                var (op, level) = node.Operator switch
+                {
+                    ExprTokenKind.BitAnd => ("And", Level.And),
+                    ExprTokenKind.BitOr => ("Or", Level.Or),
+                    _ => ("Xor", Level.Xor)
+                };
                 // bitove spojky dvoch hodnot 0/1 su logicke, inak sa pocita s cislami (napr. maska PRIZNAK)
                 return left.ZeroOne && right.ZeroOne
-                    ? Vb.Logical($"({AsBool(left)} {op} {AsBool(right)})")
-                    : Vb.Integer($"({AsInt(left)} {op} {AsInt(right)})");
+                    ? Vb.Logical(Binary(AsBool(left), op, AsBool(right), level))
+                    : Vb.Integer(Binary(AsInt(left), op, AsInt(right), level));
             }
             case ExprTokenKind.Equal or ExprTokenKind.NotEqual:
                 return LogicalEquality(left, right, node.Operator == ExprTokenKind.Equal)
                        ?? LogicalEquality(right, left, node.Operator == ExprTokenKind.Equal)
-                       ?? Vb.Logical($"({AsInt(left)} {(node.Operator == ExprTokenKind.Equal ? "=" : "<>")} {AsInt(right)})");
+                       ?? Vb.Logical(Binary(AsInt(left), node.Operator == ExprTokenKind.Equal ? "=" : "<>", AsInt(right), Level.Comparison));
             case ExprTokenKind.LessOrEqual:
-                return Vb.Logical($"({AsInt(left)} <= {AsInt(right)})");
+                return Vb.Logical(Binary(AsInt(left), "<=", AsInt(right), Level.Comparison));
             case ExprTokenKind.Less:
-                return Vb.Logical($"({AsInt(left)} < {AsInt(right)})");
+                return Vb.Logical(Binary(AsInt(left), "<", AsInt(right), Level.Comparison));
             case ExprTokenKind.GreaterOrEqual:
-                return Vb.Logical($"({AsInt(left)} >= {AsInt(right)})");
+                return Vb.Logical(Binary(AsInt(left), ">=", AsInt(right), Level.Comparison));
             case ExprTokenKind.Greater:
-                return Vb.Logical($"({AsInt(left)} > {AsInt(right)})");
+                return Vb.Logical(Binary(AsInt(left), ">", AsInt(right), Level.Comparison));
             case ExprTokenKind.Plus:
-                return Vb.Integer($"({AsInt(left)} + {AsInt(right)})");
+                return Vb.Integer(Binary(AsInt(left), "+", AsInt(right), Level.Additive));
             case ExprTokenKind.Minus:
-                return Vb.Integer($"({AsInt(left)} - {AsInt(right)})");
+                return Vb.Integer(Binary(AsInt(left), "-", AsInt(right), Level.Additive));
             case ExprTokenKind.Star:
-                return Vb.Integer($"({AsInt(left)} * {AsInt(right)})");
+                return Vb.Integer(Binary(AsInt(left), "*", AsInt(right), Level.Multiplicative));
             case ExprTokenKind.Slash:
-                return Vb.Integer($"({AsInt(left)} \\ {AsInt(right)})");
+                return Vb.Integer(Binary(AsInt(left), "\\", AsInt(right), Level.IntegerDivision));
             case ExprTokenKind.Percent:
-                return Vb.Integer($"({AsInt(left)} Mod {AsInt(right)})");
+                return Vb.Integer(Binary(AsInt(left), "Mod", AsInt(right), Level.Modulus));
             default:
                 throw new InvalidOperationException("Neznamy binarny operator.");
         }
@@ -250,7 +330,7 @@ internal sealed class Iniss2ExpressionTranspiler
         if (!logical.ZeroOne || logical.Constant is not null || constant.Constant is not (0 or 1))
             return null;
 
-        return equal == (constant.Constant == 1) ? Vb.Logical(AsBool(logical)) : Vb.Logical($"(Not {AsBool(logical)})");
+        return equal == (constant.Constant == 1) ? Vb.Logical(AsBool(logical)) : Vb.Logical(Not(AsBool(logical)));
     }
 
     private Vb Conditional(ExprConditionalNode node)
@@ -259,8 +339,8 @@ internal sealed class Iniss2ExpressionTranspiler
         var whenTrue = Emit(node.WhenTrue);
         var whenFalse = Emit(node.WhenFalse);
         return whenTrue.ZeroOne && whenFalse.ZeroOne
-            ? Vb.Logical($"If({condition}, {AsBool(whenTrue)}, {AsBool(whenFalse)})")
-            : Vb.Integer($"If({condition}, {AsInt(whenTrue)}, {AsInt(whenFalse)})");
+            ? Vb.Logical(If(condition, AsBool(whenTrue), AsBool(whenFalse)))
+            : Vb.Integer(If(condition, AsInt(whenTrue), AsInt(whenFalse)));
     }
 
     private Vb Function(ExprFunctionNode node)
@@ -271,10 +351,10 @@ internal sealed class Iniss2ExpressionTranspiler
             case ExprFunction.CVLAKU:
                 // cislo vlaku ako cislo - INISS cita veduce cislice (strtol), VB.NET Val
                 if (arg is null)
-                    return Vb.Integer("CInt(Val(.CVlaku))");
+                    return Vb.Integer(Atom("CInt(Val(.CVlaku))"));
                 return arg is ExprStringNode number
-                    ? Vb.Logical($"(.CVlaku = {Text(number.Value)})")
-                    : Vb.Logical($"(CInt(Val(.CVlaku)) = {AsInt(Emit(arg))})");
+                    ? Vb.Logical(EqualTo(Atom(".CVlaku"), Text(number.Value)))
+                    : Vb.Logical(EqualTo(Atom("CInt(Val(.CVlaku))"), AsInt(Emit(arg))));
 
             case ExprFunction.POZICE:
                 return Position(arg);
@@ -282,14 +362,14 @@ internal sealed class Iniss2ExpressionTranspiler
             case ExprFunction.TYP:
                 if (arg is null)
                     return Vb.Integer(TypeIndex());
-                return ExprEvaluator.TryFoldConstant(arg, out var index) ? TypeIs(index) : Vb.Logical($"({TypeIndex()} = {AsInt(Emit(arg))})");
+                return ExprEvaluator.TryFoldConstant(arg, out var index) ? TypeIs(index) : Vb.Logical(EqualTo(TypeIndex(), AsInt(Emit(arg))));
 
             case ExprFunction.PRIZNAK:
                 if (arg is null)
                     return Masked(FlagBits, unchecked((int)0xFFFFFF00));
                 return ExprEvaluator.TryFoldConstant(arg, out var mask)
                     ? Masked(FlagBits, mask)
-                    : Vb.Integer($"({AsInt(Masked(FlagBits, unchecked((int)0xFFFFFF00)))} And {AsInt(Emit(arg))})");
+                    : Vb.Integer(Binary(AsInt(Masked(FlagBits, unchecked((int)0xFFFFFF00))), "And", AsInt(Emit(arg)), Level.And));
 
             case ExprFunction.STAV:
                 return State(arg);
@@ -300,34 +380,34 @@ internal sealed class Iniss2ExpressionTranspiler
             case ExprFunction.VYLUKAZDE:
                 return Vb.Logical(_site switch
                 {
-                    ExprEvalSite.ArrivalTable => ".VylukaPrij",
-                    ExprEvalSite.DepartureTable => ".VylukaOdj",
-                    _ => "(.VylukaPrij Or .VylukaOdj)"
+                    ExprEvalSite.ArrivalTable => Atom(".VylukaPrij"),
+                    ExprEvalSite.DepartureTable => Atom(".VylukaOdj"),
+                    _ => Binary(Atom(".VylukaPrij"), "Or", Atom(".VylukaOdj"), Level.Or)
                 });
 
             case ExprFunction.ODKLON:
-                return Vb.Logical(".JeOdklonen");
+                return Vb.Logical(Atom(".JeOdklonen"));
 
             // INISS 3.39 meskanie drzi v sekundach a vracia cele minuty
             case ExprFunction.ZPOZDENIPRIJ:
-                return Vb.Integer("(.ZpozdeniSkutecnePrijezd \\ 60)");
+                return Vb.Integer(Minutes(".ZpozdeniSkutecnePrijezd"));
 
             case ExprFunction.ZPOZDENIODJ:
-                return Vb.Integer("(.ZpozdeniSkutecneOdjezd \\ 60)");
+                return Vb.Integer(Minutes(".ZpozdeniSkutecneOdjezd"));
 
             case ExprFunction.ZPOZDENI:
                 return Vb.Integer(_site switch
                 {
-                    ExprEvalSite.ArrivalTable => "(.ZpozdeniSkutecnePrijezd \\ 60)",
-                    ExprEvalSite.DepartureTable => "(.ZpozdeniSkutecneOdjezd \\ 60)",
-                    _ => "Math.Max(.ZpozdeniSkutecnePrijezd \\ 60, .ZpozdeniSkutecneOdjezd \\ 60)"
+                    ExprEvalSite.ArrivalTable => Minutes(".ZpozdeniSkutecnePrijezd"),
+                    ExprEvalSite.DepartureTable => Minutes(".ZpozdeniSkutecneOdjezd"),
+                    _ => Atom($"Math.Max({Minutes(".ZpozdeniSkutecnePrijezd").Text}, {Minutes(".ZpozdeniSkutecneOdjezd").Text})")
                 });
 
             case ExprFunction.DOBAPOBYTU:
-                return Vb.Integer(".DobaPobytu");
+                return Vb.Integer(Atom(".DobaPobytu"));
 
             case ExprFunction.PLANDOBAPOBYTU:
-                return Vb.Integer(".PlanDobaPobytu");
+                return Vb.Integer(Atom(".PlanDobaPobytu"));
 
             case ExprFunction.ZAJMSTANICE:
                 return ValueOrEquals(".Stanice.iSR70", arg);
@@ -340,16 +420,16 @@ internal sealed class Iniss2ExpressionTranspiler
 
             // miestny vlak v stanici zacina alebo konci
             case ExprFunction.MISTNI:
-                return Vb.Logical("(.JeVychozi Or .JeKoncici)");
+                return Vb.Logical(Local());
 
             case ExprFunction.CIZI:
-                return Vb.Logical("(Not (.JeVychozi Or .JeKoncici))");
+                return Vb.Logical(Not(Local()));
 
             case ExprFunction.ZESMERU:
-                return Vb.Logical($".ZeSmeru({AsInt(Emit(arg!))})");
+                return Vb.Logical(Atom($".ZeSmeru({AsInt(Emit(arg!)).Text})"));
 
             case ExprFunction.DOSMERU:
-                return Vb.Logical($".DoSmeru({AsInt(Emit(arg!))})");
+                return Vb.Logical(Atom($".DoSmeru({AsInt(Emit(arg!)).Text})"));
 
             case ExprFunction.KOLEJPRIJ:
                 return Track(".KlicPozicePrijSkut", StringArgument(node));
@@ -358,106 +438,104 @@ internal sealed class Iniss2ExpressionTranspiler
                 return Track(".KlicPoziceOdjSkut", StringArgument(node));
 
             case ExprFunction.DATUMPRIJ:
-                return Vb.Integer("CInt(.DatumPrij.ToOADate())");
+                return Vb.Integer(Atom("CInt(.DatumPrij.ToOADate())"));
 
             case ExprFunction.DATUMODJ:
-                return Vb.Integer("CInt(.DatumOdj.ToOADate())");
+                return Vb.Integer(Atom("CInt(.DatumOdj.ToOADate())"));
 
             // INISS 3.39 v sekundach od polnoci, vlak bez casu ma cas druhej strany; INISS2 v minutach, bez casu -1
             case ExprFunction.CASPRIJ:
-                return Vb.Integer("(If(.CasPrij < 0, .CasOdj, .CasPrij) * 60)");
+                return Vb.Integer(Binary(Atom("If(.CasPrij < 0, .CasOdj, .CasPrij)"), "*", Atom("60"), Level.Multiplicative));
 
             case ExprFunction.CASODJ:
-                return Vb.Integer("(If(.CasOdj < 0, .CasPrij, .CasOdj) * 60)");
+                return Vb.Integer(Binary(Atom("If(.CasOdj < 0, .CasPrij, .CasOdj)"), "*", Atom("60"), Level.Multiplicative));
 
             case ExprFunction.INDCAT6:
-                return Vb.Integer(".IndCat6()");
+                return Vb.Integer(Atom(".IndCat6()"));
 
             case ExprFunction.INDCAT8:
-                return Vb.Integer(".IndCat8()");
+                return Vb.Integer(Atom(".IndCat8()"));
 
             case ExprFunction.DATE:
-                return Vb.Integer("CInt(Now.Date.ToOADate())");
+                return Vb.Integer(Atom("CInt(Now.Date.ToOADate())"));
 
             case ExprFunction.TIME:
-                return Vb.Integer("(Now.Hour * 3600 + Now.Minute * 60 + Now.Second)");
+                return Vb.Integer(new Code("Now.Hour * 3600 + Now.Minute * 60 + Now.Second", Level.Additive));
 
             // dopravca a nazov vlaku bez ohladu na velkost pismen (INISS ceske triedenie)
             case ExprFunction.OPERATOR:
-                return Vb.Logical($"(StrComp(.Dopravce, {Text(StringArgument(node))}, CompareMethod.Text) = 0)");
+                return Vb.Logical(EqualTo(Atom($"StrComp(.Dopravce, {Text(StringArgument(node)).Text}, CompareMethod.Text)"), Atom("0")));
 
             case ExprFunction.NAZVLAKU:
-                return Vb.Logical($"(StrComp(.NazVlaku, {Text(StringArgument(node))}, CompareMethod.Text) = 0)");
+                return Vb.Logical(EqualTo(Atom($"StrComp(.NazVlaku, {Text(StringArgument(node)).Text}, CompareMethod.Text)"), Atom("0")));
 
             // linka sa v INISS2 zapisuje ako linka IDS bodu trasy; prvy a posledny bod ma jednu linku, preto vychadzajuci vlak
             // ma linku prichodu rovnaku ako odchodu a konciaci naopak - v 3.39 moze byt druha strana prazdna
             case ExprFunction.LINKAPRIJ:
-                return Vb.Logical($"(.LinkaIDS(True) = {Text(StringArgument(node))})");
+                return Vb.Logical(EqualTo(Atom(".LinkaIDS(True)"), Text(StringArgument(node))));
 
             case ExprFunction.LINKAODJ:
-                return Vb.Logical($"(.LinkaIDS(False) = {Text(StringArgument(node))})");
+                return Vb.Logical(EqualTo(Atom(".LinkaIDS(False)"), Text(StringArgument(node))));
 
             case ExprFunction.ZMENALINKY:
-                return Vb.Logical("(.LinkaIDS(True) <> .LinkaIDS(False))");
+                return Vb.Logical(Binary(Atom(".LinkaIDS(True)"), "<>", Atom(".LinkaIDS(False)"), Level.Comparison));
 
             default:
                 throw new InvalidOperationException("Neznama funkcia " + node.Function.Name + ".");
         }
     }
 
+    private static Code Minutes(string delay) => Binary(Atom(delay), "\\", Atom("60"), Level.IntegerDivision);
+
+    private static Code Local() => Binary(Atom(".JeVychozi"), "Or", Atom(".JeKoncici"), Level.Or);
+
     private static string StringArgument(ExprFunctionNode node) =>
         node.Argument is ExprStringNode text ? text.Value : throw new InvalidOperationException("Funkcia " + node.Function.Name + " potrebuje retazec.");
 
     private Vb ValueOrEquals(string value, ExprNode? arg) =>
-        arg is null ? Vb.Integer(value) : Vb.Logical($"({value} = {AsInt(Emit(arg))})");
+        arg is null ? Vb.Integer(Atom(value)) : Vb.Logical(EqualTo(Atom(value), AsInt(Emit(arg))));
 
     private Vb Position(ExprNode? arg)
     {
-        const string value = "If(.JeVychozi, 1, If(.JeKoncici, 3, 2))";
+        var value = Atom("If(.JeVychozi, 1, If(.JeKoncici, 3, 2))");
         if (arg is null)
             return Vb.Integer(value);
 
         if (!ExprEvaluator.TryFoldConstant(arg, out var position))
-            return Vb.Logical($"({value} = {AsInt(Emit(arg))})");
+            return Vb.Logical(EqualTo(value, AsInt(Emit(arg))));
 
         return position switch
         {
-            1 => Vb.Logical(".JeVychozi"),
-            2 => Vb.Logical("(Not (.JeVychozi Or .JeKoncici))"),
-            3 => Vb.Logical("(.JeKoncici And Not .JeVychozi)"),
+            1 => Vb.Logical(Atom(".JeVychozi")),
+            2 => Vb.Logical(Not(Local())),
+            3 => Vb.Logical(Binary(Atom(".JeKoncici"), "And", Not(Atom(".JeVychozi")), Level.And)),
             _ => Vb.Number(0)
         };
     }
 
     // index zabudovaneho druhu INISSu podla kluca druhu vlaku; druh mimo TrTypes ma 0 ako v INISSe
-    private string TypeIndex()
+    private Code TypeIndex()
     {
-        var code = "0";
+        var code = Atom("0");
         foreach (var group in _keysByIndex.OrderByDescending(group => group.Key))
-            code = $"If({AsBool(TypeIn([.. group]))}, {Literal(group.Key)}, {code})";
+            code = If(AsBool(TypeIn([.. group])), Literal(group.Key), code);
         return code;
     }
 
     private Vb TypeIs(int index) => TypeIn([.. _keysByIndex[index]]);
 
-    private static Vb TypeIn(List<string> keys) => keys.Count switch
-    {
-        0 => Vb.Number(0),
-        1 => Vb.Logical($"(.Druh = {Text(keys[0])})"),
-        _ => Vb.Logical("(" + string.Join(" Or ", keys.Select(key => $".Druh = {Text(key)}")) + ")")
-    };
+    private static Vb TypeIn(List<string> keys) =>
+        keys.Count == 0 ? Vb.Number(0) : Vb.Logical(Chain(keys.Select(key => EqualTo(Atom(".Druh"), Text(key))), "Or", Level.Or));
 
     // vybrane bity slova priznakov: logicky tvar = niektory je nastaveny, ciselny = maska ako v INISSe
-    private static Vb Masked((int Bit, string Code)[] bits, int mask)
+    private static Vb Masked((int Bit, Code Code)[] bits, int mask)
     {
         var selected = bits.Where(bit => (bit.Bit & mask) != 0).ToList();
         if (selected.Count == 0)
             return Vb.Number(0);
 
-        var logical = selected.Count == 1 ? selected[0].Code : "(" + string.Join(" Or ", selected.Select(bit => bit.Code)) + ")";
-        var number = selected.Count == 1
-            ? $"If({selected[0].Code}, {Literal(selected[0].Bit)}, 0)"
-            : "(" + string.Join(" Or ", selected.Select(bit => $"If({bit.Code}, {Literal(bit.Bit)}, 0)")) + ")";
+        var logical = Chain(selected.Select(bit => bit.Code), "Or", Level.Or);
+        var number = Chain(selected.Select(bit => If(bit.Code, Literal(bit.Bit), Atom("0"))), "Or", Level.Or);
         return new Vb(logical, number, false);
     }
 
@@ -471,7 +549,7 @@ internal sealed class Iniss2ExpressionTranspiler
         {
             var word = AsInt(Masked(StateBits, all));
             var value = AsInt(Emit(arg));
-            return Vb.Logical($"(({word} And {value}) = {value})");
+            return Vb.Logical(EqualTo(Binary(word, "And", value, Level.And), value));
         }
 
         // STAV(x) plati, ked su nastavene vsetky bity x; bit, ktory INISS2 nepozna, nie je nastaveny nikdy
@@ -482,20 +560,15 @@ internal sealed class Iniss2ExpressionTranspiler
         }
 
         var required = StateBits.Where(bit => (bit.Bit & mask) != 0).Select(bit => bit.Code).ToList();
-        return required.Count switch
-        {
-            0 => Vb.Number(1),
-            1 => Vb.Logical(required[0]),
-            _ => Vb.Logical("(" + string.Join(" And ", required) + ")")
-        };
+        return required.Count == 0 ? Vb.Number(1) : Vb.Logical(Chain(required, "And", Level.And));
     }
 
     private Vb Track(string member, string name)
     {
         if (name.Length == 0)
-            return Vb.Logical($"({member} = \"\")");
+            return Vb.Logical(EqualTo(Atom(member), Text("")));
 
-        return _trackKey(name) is { } key ? Vb.Logical($"({member} = {Text(key)})") : Vb.Number(0);
+        return _trackKey(name) is { } key ? Vb.Logical(EqualTo(Atom(member), Text(key))) : Vb.Number(0);
     }
 
     private sealed class Symbols(IReadOnlyDictionary<string, int> trainTypeKeys) : IExprSymbolProvider

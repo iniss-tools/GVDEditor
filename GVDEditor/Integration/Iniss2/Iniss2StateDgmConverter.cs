@@ -205,9 +205,10 @@ internal sealed class Iniss2StateDgmConverter(Iniss2ExpressionTranspiler transpi
         string time;
         if (point.IsExpression)
         {
-            if (Number(point.Expression!, where + StateDgmKeys.AutoTimePoint) is not { } pointCode)
+            var text = point.Expression!;
+            if (Translate($"{where}{StateDgmKeys.AutoTimePoint} = {text}", () => transpiler.NumberEquals(text, 2)) is not { } departure)
                 return null;
-            time = $"If({pointCode} = 2, .DatumCasOdj(True), .DatumCasPrij(True))";
+            time = $"If({departure}, .DatumCasOdj(True), .DatumCasPrij(True))";
         }
         else
         {
@@ -221,13 +222,11 @@ internal sealed class Iniss2StateDgmConverter(Iniss2ExpressionTranspiler transpi
                 time += $".AddSeconds({seconds})";
         }
 
-        var conditions = new List<string>();
-        if (!string.IsNullOrWhiteSpace(state.AutoCondition) && Condition(state.AutoCondition, where + StateDgmKeys.AutoCondition) is { } condition)
-            conditions.Add(condition);
-        if (state.Wait is { } wait && Wait(wait.Text, where) is { } events)
-            conditions.Add(events);
-        else if (state.WaitPath is { } path && (path.IsExpression || path.Number != 0))
-            conditions.Add(Iniss2ExpressionTranspiler.WaitPath);
+        // podmienka a cakanie na udalosti GTN; cakanie spaja udalosti spojkou And, zatvorky nepotrebuje
+        var condition = string.IsNullOrWhiteSpace(state.AutoCondition) ? null : JoinableCondition(state.AutoCondition, where + StateDgmKeys.AutoCondition);
+        var events = state.Wait is { } wait ? Wait(wait.Text, where) : null;
+        if (events is null && state.WaitPath is { } path && (path.IsExpression || path.Number != 0))
+            events = Iniss2ExpressionTranspiler.WaitPath;
 
         int? variant = null;
         if (state.AutoModif is { } modif)
@@ -241,7 +240,7 @@ internal sealed class Iniss2StateDgmConverter(Iniss2ExpressionTranspiler transpi
         return new StateAutomation(time)
         {
             Mode = mode,
-            Condition = string.Join(" AndAlso ", conditions.Select(Parenthesize)),
+            Condition = condition is not { } code ? events ?? "" : events is null ? code.Code : code.AndAlsoOperand + " AndAlso " + events,
             Variant = variant,
             Flags = [StateNodeFlags.KeepWithoutClient]
         };
@@ -303,7 +302,7 @@ internal sealed class Iniss2StateDgmConverter(Iniss2ExpressionTranspiler transpi
             {
                 Report = report,
                 Flags = [StateNodeFlags.Auxiliary],
-                Condition = string.Join(" OrElse ", states.Select(state => $"(.Node.sKey = {Quote(state)})")),
+                Condition = string.Join(" OrElse ", states.Select(state => $".Node.sKey = {Quote(state)}")),
                 Automation = new StateAutomation(time)
                 {
                     Mode = Literal((int)StateDgmAutoMode.Automatic),
@@ -362,12 +361,13 @@ internal sealed class Iniss2StateDgmConverter(Iniss2ExpressionTranspiler transpi
 
     private string? Number(string text, string where) => Translate($"{where} = {text}", () => transpiler.Number(text));
 
-    private string? Condition(string text, string where) => Translate($"{where} = {text}", () => transpiler.Condition(text));
+    private (string Code, string AndAlsoOperand)? JoinableCondition(string text, string where) =>
+        Translate($"{where} = {text}", () => transpiler.JoinableCondition(text));
 
     private string? Wait(string text, string where) => Translate($"{where}{StateDgmKeys.Wait} = {text}", () => transpiler.Wait(text));
 
     // problemy prekladu sa hlasia s miestom v diagrame
-    private string? Translate(string detail, Func<string?> translate)
+    private T Translate<T>(string detail, Func<T> translate)
     {
         var before = transpiler.Problems.Count;
         var result = translate();
@@ -398,11 +398,10 @@ internal sealed class Iniss2StateDgmConverter(Iniss2ExpressionTranspiler transpi
 
     private static string Where(StateDgmCategory category, StateDgmState state) => $"{category.Key}/{state.Key}: ";
 
-    private static string Parenthesize(string code) => "(" + code + ")";
-
     private static string Quote(string text) => "\"" + text.Replace("\"", "\"\"", StringComparison.Ordinal) + "\"";
 
-    private static string Literal(int value) => value < 0 ? "(" + value.ToString(Inv) + ")" : value.ToString(Inv);
+    // cisla su vzdy samostatna hodnota, argument alebo pravy operand porovnania ci nasobenia - zaporne zatvorky nepotrebuje
+    private static string Literal(int value) => value.ToString(Inv);
 
     private void Warn(Iniss2ExportIssue issue, string detail)
     {

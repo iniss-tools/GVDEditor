@@ -114,9 +114,26 @@ public class Iniss2StateDgmConverterTests
         CollectionAssert.AreEqual(new[] { StateNodeFlags.KeepWithoutClient }, arrival.Flags.ToArray());
         var departure = nodes[4].Automation!;
         Assert.AreEqual((".DatumCasOdj(True)", "1", 1), (departure.Time, departure.Mode, departure.Variant));
-        Assert.AreEqual("((.Druh = \"R\")) AndAlso (((.PriznakyGTN And StaniceVlaku.FLAGS.OVC) <> 0))", departure.Condition);
+        Assert.AreEqual(".Druh = \"R\" AndAlso (.PriznakyGTN And StaniceVlaku.FLAGS.OVC) <> 0", departure.Condition);
         Assert.AreEqual(".DatumCasOdj(True).AddSeconds(300)", nodes[5].Automation!.Time);
         Assert.IsNull(nodes[2].Automation);
+    }
+
+    [TestMethod]
+    [DataRow(true, "(.Druh = \"R\" Or .JeOdklonen) AndAlso (.PriznakyGTN And StaniceVlaku.FLAGS.OVC) <> 0")]
+    [DataRow(false, ".Druh = \"R\" Or .JeOdklonen")]
+    public void Prevod_PodmienkaSOrMaZatvorkyLenPriCakani(bool wait, string condition)
+    {
+        var category = Simple();
+        category.States[2].AutoCondition = "Typ(Typ_R) || ODKLON";
+        category.States[2].AutoTimePoint = StateDgmDynamic.FromExpression("POZICE & 3");
+        if (!wait)
+            category.States[2].Wait = null;
+
+        var auto = Converter().Convert(Diagram(category)).Graphs[0].Nodes[4].Automation!;
+
+        Assert.AreEqual(condition, auto.Condition);
+        Assert.AreEqual("If((If(.JeVychozi, 1, If(.JeKoncici, 3, 2)) And 3) = 2, .DatumCasOdj(True), .DatumCasPrij(True))", auto.Time);
     }
 
     [TestMethod]
@@ -129,7 +146,7 @@ public class Iniss2StateDgmConverterTests
 
         Assert.AreEqual("Dim c As Integer = .IndCat6() : Return If(c >= 1 AndAlso c <= 2, c, 2)", two.GraphIndex);
         Assert.AreEqual(".IndCat6()", six.GraphIndex);
-        Assert.AreEqual("Dim c As Integer = (If((.Druh = \"R\"), 1, 0) + 1) : Return If(c >= 1 AndAlso c <= 2, c, 2)", Converter().Convert(custom).GraphIndex);
+        Assert.AreEqual("Dim c As Integer = If(.Druh = \"R\", 1, 0) + 1 : Return If(c >= 1 AndAlso c <= 2, c, 2)", Converter().Convert(custom).GraphIndex);
     }
 
     [TestMethod]
@@ -150,7 +167,7 @@ public class Iniss2StateDgmConverterTests
 
         var starter = nodes.Single(node => node.Key == "AutoZpozdeni");
         Assert.AreEqual(2, nodes.IndexOf(starter), "pomocne stavy idu pred stavy");
-        Assert.AreEqual(("Zpoždění_", "(.Node.sKey = \"#Start\")"), (starter.Report, starter.Condition));
+        Assert.AreEqual(("Zpoždění_", ".Node.sKey = \"#Start\""), (starter.Report, starter.Condition));
         CollectionAssert.AreEqual(new[] { StateNodeFlags.Auxiliary }, starter.Flags.ToArray());
         var auto = starter.Automation!;
         Assert.AreEqual("Dim f As DateTime = .DatumCasOdj(False).AddSeconds(-360) : Return If(Now < f.AddSeconds(10), f, "
@@ -226,7 +243,7 @@ public class Iniss2StateDgmConverterTests
 
         var nodes = converter.Convert(Diagram(category)).Graphs[0].Nodes;
 
-        Assert.AreEqual("(((.PriznakyGTN And StaniceVlaku.FLAGS.OVC) <> 0))", nodes[4].Automation!.Condition, "neprelozitelna podmienka sa vynecha");
+        Assert.AreEqual("(.PriznakyGTN And StaniceVlaku.FLAGS.OVC) <> 0", nodes[4].Automation!.Condition, "neprelozitelna podmienka sa vynecha");
         CollectionAssert.AreEquivalent(new[]
         {
             new Iniss2ExportWarning(Iniss2ExportIssue.StatePartNotConverted, "#Projíždějící vlak/Přijíždí: Event #Skry"),
