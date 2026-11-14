@@ -134,8 +134,7 @@ internal partial class FTabTab : Form
         _sc.SetAdditionalSelBack(highlight.BackColor);
         _sc.SetAdditionalSelFore(highlight.ForeColor);
 
-        if (!_ctx.UsingStyle.ControlsDefaultStyle)
-            _sc.BorderStyle = ScintillaNET.BorderStyle.None;
+        scText.ApplyBorder(_ctx.UsingStyle);
 
         if (_ctx.UsingStyle.DarkScrollBar)
         {

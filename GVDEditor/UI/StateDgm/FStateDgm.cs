@@ -182,7 +182,7 @@ public partial class FStateDgm : Form
         _sc.Margins[1].Width = 0;
         _sc.WrapMode = WrapMode.None;
         _sc.ReadOnly = true;
-        if (!style.ControlsDefaultStyle) _sc.BorderStyle = ScintillaNET.BorderStyle.None;
+        scText.ApplyBorder(style);
         if (style.DarkScrollBar)
         {
             scText.VScrollBarControl.SetTheme(WindowsTheme.DarkExplorer);
