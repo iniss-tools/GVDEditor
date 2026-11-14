@@ -163,7 +163,7 @@ internal partial class AnalysisView : UserControl
         tsbFix.Enabled = _analysis.IsCompleted && !_stale && Selected is not null;
         if (!_analysis.IsCompleted)
             return;
-        tslStatus.Text = _stale ? Resources.Analysis_Stale : _analyzed ? "" : Resources.Analysis_Hint;
+        tslStatus.Text = _stale ? Resources.Analysis_Stale : "";
     }
 
     private void Repair(IProblem? problem)

@@ -4126,9 +4126,6 @@ Před zápisem se uloží záloha.</value>
   <data name="Analysis_Infos" xml:space="preserve">
     <value>Informace: {0}</value>
   </data>
-  <data name="Analysis_Hint" xml:space="preserve">
-    <value>Analýzu grafikonu spustí tlačítko Analyzovat.</value>
-  </data>
   <data name="Analysis_Stale" xml:space="preserve">
     <value>Grafikon se od analýzy změnil, analyzujte ho znovu.</value>
   </data>

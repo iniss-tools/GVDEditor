@@ -36,7 +36,7 @@ internal partial class FMain
         Add(GvdCommands.ImportElis, ShowImportElis, grafikon, tsmiImportELIS, tsmimImportELIS);
         Add(GvdCommands.ExportIniss2, ShowExportIniss2, grafikons, tsmiExportIniss2);
         Add(GvdCommands.Save, () => DoSave(), grafikon, tsmiSave, tsbSave);
-        Add(GvdCommands.Analyze, ShowAnalyzeGVD, grafikon, tsmiAnalyze, tsbAnalyze);
+        Add(GvdCommands.Analyze, ShowAnalyzeGVD, grafikon, tsmiAnalyze);
         Add(GvdCommands.ViewAnalysis, () => _dock.ShowPanel(_analysisPanel), null, tsmiViewAnalysis);
         Add(GvdCommands.ResetLayout, ResetLayout, null, tsmiResetLayout);
 

@@ -733,15 +733,6 @@
   <data name="tssbRecentDirs.ToolTipText" xml:space="preserve">
     <value>Nedávne</value>
   </data>
-  <data name="tsbAnalyze.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tsbAnalyze.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="tsbAnalyze.Text" xml:space="preserve">
-    <value>Analyzovať grafikon</value>
-  </data>
   <data name="tsbAddGVD.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -2840,12 +2831,6 @@
   </data>
   <data name="&gt;&gt;tssbRecentDirs.Type" xml:space="preserve">
     <value>ToolsCore.Icons.IconToolStripSplitButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;tsbAnalyze.Name" xml:space="preserve">
-    <value>tsbAnalyze</value>
-  </data>
-  <data name="&gt;&gt;tsbAnalyze.Type" xml:space="preserve">
-    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tsbAddGVD.Name" xml:space="preserve">
     <value>tsbAddGVD</value>

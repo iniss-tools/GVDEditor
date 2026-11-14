@@ -81,7 +81,7 @@ public class AnalysisViewTests
     }
 
     [TestMethod]
-    public void Analyza_BezGrafikonuPrazdnyZoznamSNapovedou()
+    public void Analyza_BezGrafikonuPrazdnyZoznamBezTextu()
     {
         using var view = View(null);
 
@@ -89,6 +89,6 @@ public class AnalysisViewTests
         view.MarkStale();
 
         Assert.AreEqual(0, view.Grid.Rows.Count);
-        Assert.AreEqual(Resources.Analysis_Hint, Field<ToolStripLabel>(view, "tslStatus").Text);
+        Assert.AreEqual("", Field<ToolStripLabel>(view, "tslStatus").Text);
     }
 }

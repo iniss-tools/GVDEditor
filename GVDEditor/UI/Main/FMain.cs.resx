@@ -310,9 +310,6 @@
   <data name="tsmimImportData.Text" xml:space="preserve">
     <value>Data...</value>
   </data>
-  <data name="tsbAnalyze.Text" xml:space="preserve">
-    <value>Analyzovat grafikon</value>
-  </data>
   <data name="tsbAddGVD.ToolTipText" xml:space="preserve">
     <value>Vytvořit nový...</value>
   </data>

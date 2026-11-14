@@ -5594,15 +5594,6 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Analýzu grafikonu spustí tlačidlo Analyzovať.
-        /// </summary>
-        internal static string Analysis_Hint {
-            get {
-                return ResourceManager.GetString("Analysis_Hint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Grafikon sa od analýzy zmenil, analyzujte ho znova.
         /// </summary>
         internal static string Analysis_Stale {

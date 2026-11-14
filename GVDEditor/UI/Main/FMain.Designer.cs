@@ -199,7 +199,6 @@ namespace GVDEditor.UI.Main
             tssbUndo = new IconToolStripSplitButton();
             tssbRedo = new IconToolStripSplitButton();
             toolStripSeparator21 = new ToolStripSeparator();
-            tsbAnalyze = new IconToolStripButton();
             tsbAddGVD = new IconToolStripButton();
             toolStripSeparator12 = new ToolStripSeparator();
             tsbAddTrain = new IconToolStripButton();
@@ -746,7 +745,7 @@ namespace GVDEditor.UI.Main
             // 
             toolMenu.BackColor = SystemColors.MenuBar;
             toolMenu.ImageScalingSize = new Size(20, 20);
-            toolMenu.Items.AddRange(new ToolStripItem[] { tsbSave, tsbOpen, tsbImport, tssbRecentDirs, tsbAnalyze, tsbAddGVD, toolStripSeparator12, tssbUndo, tssbRedo, toolStripSeparator21, tsbAddTrain, tsbEditTrain, tsbDeleteTrain, tsbCopyTrain, toolStripSeparator10, tsbStanica, tsbGlobalSettings, toolStripSeparator11, tsbAppSettings, tsbInformation, toolStripSeparator13, toolStripLabel1, tscbStanica, toolStripLabel2, tscbObdobie, toolStripSeparator7, tssbStartINISS, tsbKillINISS, tsbShutdownINISS, tsbRestartINISS, toolStripSeparator19, tsbDatObm });
+            toolMenu.Items.AddRange(new ToolStripItem[] { tsbSave, tsbOpen, tsbImport, tssbRecentDirs, tsbAddGVD, toolStripSeparator12, tssbUndo, tssbRedo, toolStripSeparator21, tsbAddTrain, tsbEditTrain, tsbDeleteTrain, tsbCopyTrain, toolStripSeparator10, tsbStanica, tsbGlobalSettings, toolStripSeparator11, tsbAppSettings, tsbInformation, toolStripSeparator13, toolStripLabel1, tscbStanica, toolStripLabel2, tscbObdobie, toolStripSeparator7, tssbStartINISS, tsbKillINISS, tsbShutdownINISS, tsbRestartINISS, toolStripSeparator19, tsbDatObm });
             resources.ApplyResources(toolMenu, "toolMenu");
             toolMenu.Name = "toolMenu";
             // 
@@ -814,13 +813,6 @@ namespace GVDEditor.UI.Main
             tssbRecentDirs.IconName = "history";
             resources.ApplyResources(tssbRecentDirs, "tssbRecentDirs");
             tssbRecentDirs.Name = "tssbRecentDirs";
-            // 
-            // tsbAnalyze
-            // 
-            tsbAnalyze.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            tsbAnalyze.IconName = "document-search";
-            resources.ApplyResources(tsbAnalyze, "tsbAnalyze");
-            tsbAnalyze.Name = "tsbAnalyze";
             // 
             // tsbAddGVD
             // 
@@ -2393,7 +2385,6 @@ namespace GVDEditor.UI.Main
         private IconToolStripMenuItem tsmiTabTabEditor;
         private ToolStripSeparator toolStripSeparator18;
         private IconToolStripMenuItem tsmiAnalyze;
-        private IconToolStripButton tsbAnalyze;
         private IconToolStripButton tsbShutdownINISS;
         private IconToolStripMenuItem tsmimShutdownINISS;
         private ToolStripMenuItem tsmiTools;
