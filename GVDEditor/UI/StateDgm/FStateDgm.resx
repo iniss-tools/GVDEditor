@@ -904,6 +904,12 @@
   <data name="tsmiTplGtn.Text" xml:space="preserve">
     <value>Slovenská s automatikou GTN</value>
   </data>
+  <data name="tsmiTplGtnCZ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 22</value>
+  </data>
+  <data name="tsmiTplGtnCZ.Text" xml:space="preserve">
+    <value>Česká s automatikou GTN</value>
+  </data>
   <data name="tss3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
@@ -1280,6 +1286,12 @@
     <value>tsmiTplGtn</value>
   </data>
   <data name="&gt;&gt;tsmiTplGtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiTplGtnCZ.Name" xml:space="preserve">
+    <value>tsmiTplGtnCZ</value>
+  </data>
+  <data name="&gt;&gt;tsmiTplGtnCZ.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tss3.Name" xml:space="preserve">

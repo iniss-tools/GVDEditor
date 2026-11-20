@@ -12,5 +12,8 @@ public enum StateDgmTemplate
     Czech,
 
     /// <summary>Slovenska predloha s automatikou riadenou udalostami GTN (VVC, OVC, Vj, Odj).</summary>
-    SlovakGtn
+    SlovakGtn,
+
+    /// <summary>Ceske nazvy pre obsluhu, inak ako <see cref="SlovakGtn" />.</summary>
+    CzechGtn
 }

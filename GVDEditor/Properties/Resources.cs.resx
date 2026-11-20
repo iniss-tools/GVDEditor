@@ -725,6 +725,9 @@ Přesunout jej nyní do vlastní složky ({1} grafikon/y)?</value>
   <data name="FStateDgm_PredlohaGtn" xml:space="preserve">
     <value>Slovenská s automatikou GTN</value>
   </data>
+  <data name="FStateDgm_PredlohaGtnCZ" xml:space="preserve">
+    <value>Česká s automatikou GTN</value>
+  </data>
   <data name="FStateDgm_PredlohaOtazka" xml:space="preserve">
     <value>Nahradit celý diagram předlohou „{0}“? Všechny úpravy se ztratí.</value>
   </data>

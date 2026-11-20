@@ -1219,6 +1219,15 @@ namespace GVDEditor.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to 0001 (česká predloha StateDgm.txt s automatikou GTN).
+        /// </summary>
+        internal static string statedgmGTNCZ {
+            get {
+                return ResourceManager.GetString("statedgmGTNCZ", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Pri načítaní grafikonu sa vyskytlo {0} varovaní. Dáta sú načítané, ale niektoré .
         /// </summary>
         internal static string LoadWarnings_Header {
@@ -1837,6 +1846,15 @@ namespace GVDEditor.Properties {
         internal static string FStateDgm_PredlohaGtn {
             get {
                 return ResourceManager.GetString("FStateDgm_PredlohaGtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Česká s automatikou GTN.
+        /// </summary>
+        internal static string FStateDgm_PredlohaGtnCZ {
+            get {
+                return ResourceManager.GetString("FStateDgm_PredlohaGtnCZ", resourceCulture);
             }
         }
         

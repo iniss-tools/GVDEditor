@@ -89,6 +89,7 @@ namespace GVDEditor.UI.StateDgm
             tsmiTplSK = new ToolStripMenuItem();
             tsmiTplCZ = new ToolStripMenuItem();
             tsmiTplGtn = new ToolStripMenuItem();
+            tsmiTplGtnCZ = new ToolStripMenuItem();
             tss3 = new ToolStripSeparator();
             tsbCalendar = new IconToolStripButton();
             ssMain = new StatusStrip();
@@ -472,7 +473,7 @@ namespace GVDEditor.UI.StateDgm
             // 
             // tsddTemplate
             // 
-            tsddTemplate.DropDownItems.AddRange(new ToolStripItem[] { tsmiTplSK, tsmiTplCZ, tsmiTplGtn });
+            tsddTemplate.DropDownItems.AddRange(new ToolStripItem[] { tsmiTplSK, tsmiTplCZ, tsmiTplGtn, tsmiTplGtnCZ });
             resources.ApplyResources(tsddTemplate, "tsddTemplate");
             tsddTemplate.Name = "tsddTemplate";
             tsddTemplate.IconName = "document-copy";
@@ -494,6 +495,12 @@ namespace GVDEditor.UI.StateDgm
             tsmiTplGtn.Name = "tsmiTplGtn";
             resources.ApplyResources(tsmiTplGtn, "tsmiTplGtn");
             tsmiTplGtn.Click += tsmiTpl_Click;
+            // 
+            // tsmiTplGtnCZ
+            // 
+            tsmiTplGtnCZ.Name = "tsmiTplGtnCZ";
+            resources.ApplyResources(tsmiTplGtnCZ, "tsmiTplGtnCZ");
+            tsmiTplGtnCZ.Click += tsmiTpl_Click;
             // 
             // tss3
             // 
@@ -699,6 +706,7 @@ namespace GVDEditor.UI.StateDgm
         private System.Windows.Forms.ToolStripMenuItem tsmiTplSK;
         private System.Windows.Forms.ToolStripMenuItem tsmiTplCZ;
         private System.Windows.Forms.ToolStripMenuItem tsmiTplGtn;
+        private System.Windows.Forms.ToolStripMenuItem tsmiTplGtnCZ;
         private System.Windows.Forms.ToolStripSeparator tss3;
         private ToolsCore.Icons.IconToolStripButton tsbCalendar;
         private System.Windows.Forms.SplitContainer scOuter;

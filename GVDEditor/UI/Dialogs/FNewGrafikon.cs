@@ -40,6 +40,7 @@ internal partial class FNewGrafikon : Form
     {
         1 => StateDgmTemplate.Czech,
         2 => StateDgmTemplate.SlovakGtn,
+        3 => StateDgmTemplate.CzechGtn,
         _ => StateDgmTemplate.Slovak
     };
 
@@ -65,7 +66,7 @@ internal partial class FNewGrafikon : Form
         nudIDStation.Enabled = false;
         tbStationName.Enabled = false;
 
-        cbStateDgmTemplate.Items.AddRange([Resources.FStateDgm_PredlohaSK, Resources.FStateDgm_PredlohaCZ, Resources.FStateDgm_PredlohaGtn]);
+        cbStateDgmTemplate.Items.AddRange([Resources.FStateDgm_PredlohaSK, Resources.FStateDgm_PredlohaCZ, Resources.FStateDgm_PredlohaGtn, Resources.FStateDgm_PredlohaGtnCZ]);
         cbStateDgmTemplate.SelectedIndex = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs" ? 1 : 0;
     }
 

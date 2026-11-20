@@ -169,6 +169,9 @@
   <data name="tsmiTplGtn.Text" xml:space="preserve">
     <value>Slovenská s automatikou GTN</value>
   </data>
+  <data name="tsmiTplGtnCZ.Text" xml:space="preserve">
+    <value>Česká s automatikou GTN</value>
+  </data>
   <data name="tsbCalendar.Text" xml:space="preserve">
     <value>Kalendář akcí</value>
   </data>

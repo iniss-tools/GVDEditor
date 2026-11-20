@@ -31,6 +31,7 @@ internal static class StateDgmFile
     {
         StateDgmTemplate.Czech => Resources.statedgmCZ,
         StateDgmTemplate.SlovakGtn => Resources.statedgmGTN,
+        StateDgmTemplate.CzechGtn => Resources.statedgmGTNCZ,
         _ => Resources.statedgmSK
     };
 

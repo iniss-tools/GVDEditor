@@ -787,6 +787,7 @@ public partial class FStateDgm : Form
     {
         var (template, name) = sender == tsmiTplCZ ? (StateDgmTemplate.Czech, Resources.FStateDgm_PredlohaCZ)
             : sender == tsmiTplGtn ? (StateDgmTemplate.SlovakGtn, Resources.FStateDgm_PredlohaGtn)
+            : sender == tsmiTplGtnCZ ? (StateDgmTemplate.CzechGtn, Resources.FStateDgm_PredlohaGtnCZ)
             : (StateDgmTemplate.Slovak, Resources.FStateDgm_PredlohaSK);
         if (Utils.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.FStateDgm_PredlohaOtazka, name)) != DialogResult.Yes) return;
         _d = StateDgmDiagram.Parse(StateDgmFile.TemplateText(template));
