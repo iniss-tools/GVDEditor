@@ -138,40 +138,10 @@
   <data name="cboxInissEvaluation.Text" xml:space="preserve">
     <value>Zobrazovat vyhodnocení hodnoty (odkud ji INISS bere)</value>
   </data>
-  <data name="exGroupBox6.Text" xml:space="preserve">
-    <value>Server</value>
-  </data>
-  <data name="cboxMcpEnabled.Text" xml:space="preserve">
-    <value>Zapnout server pro agenty (Claude Code, VS Code)</value>
-  </data>
-  <data name="lMcpPort.Text" xml:space="preserve">
-    <value>Port:</value>
-  </data>
-  <data name="bMcpClaude.Text" xml:space="preserve">
-    <value>Kopírovat pro Claude Code</value>
-  </data>
-  <data name="bMcpVsCode.Text" xml:space="preserve">
-    <value>Kopírovat pro VS Code</value>
-  </data>
-  <data name="bMcpNewKey.Text" xml:space="preserve">
-    <value>Nový klíč</value>
-  </data>
   <data name="optionsNodeMcp.Text" xml:space="preserve">
     <value>Agenti (MCP)</value>
   </data>
   <data name="pMcp.NodeText" xml:space="preserve">
     <value>Agenti (MCP)</value>
-  </data>
-  <data name="lMcpHint.Text" xml:space="preserve">
-    <value>Agent jako Claude Code nebo chat ve VS Code se připojí k otevřenému grafikonu a čte ho. Server běží jen na tomto počítači a vyžaduje přístupový klíč.</value>
-  </data>
-  <data name="exGroupBox7.Text" xml:space="preserve">
-    <value>Změny</value>
-  </data>
-  <data name="cboxMcpWrites.Text" xml:space="preserve">
-    <value>Povolit změny grafikonu přes agenta</value>
-  </data>
-  <data name="lMcpWritesHint.Text" xml:space="preserve">
-    <value>Agent mění jen otevřený grafikon a nikdy ho neuloží. Každou jeho změnu vrátíte příkazem Zpět.</value>
   </data>
 </root>

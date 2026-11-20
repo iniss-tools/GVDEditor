@@ -23,7 +23,7 @@ public sealed class GvdMcpServerTests
         return ((IPEndPoint)listener.LocalEndpoint).Port;
     }
 
-    private static McpServerSettings Enabled(int port) => new() { Enabled = true, Port = port, Key = McpServerSettings.NewKey() };
+    private static McpServerSettings Enabled(int port) => new() { Enabled = true, Port = port, Key = new McpServerSettings().CreateKey() };
 
     private static EditorAccess Editor() => new(new EditorContext(null!), null);
 
@@ -145,7 +145,7 @@ public sealed class GvdMcpServerTests
     public async Task Server_VypnutyAleboObsadenyPortNebezi()
     {
         using var server = new GvdMcpServer();
-        await server.ApplyAsync(Editor(), new McpServerSettings { Enabled = false, Port = FreePort(), Key = McpServerSettings.NewKey() });
+        await server.ApplyAsync(Editor(), new McpServerSettings { Enabled = false, Port = FreePort(), Key = new McpServerSettings().CreateKey() });
         Assert.IsNull(server.Address);
         Assert.IsNull(server.Error);
 
@@ -169,7 +169,7 @@ public sealed class GvdMcpServerTests
         using var reader = XmlReader.Create(new StringReader(writer.ToString()), new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit, XmlResolver = null });
         var read = (McpServerSettings)serializer.Deserialize(reader)!;
 
-        StringAssert.StartsWith(key, McpServerSettings.KeyPrefix);
+        StringAssert.StartsWith(key, McpServerSettings.Prefix);
         Assert.AreEqual(key, settings.EnsureKey(), "existujuci kluc sa nemeni");
         Assert.DoesNotContain(key, writer.ToString(), "kluc nie je v configu citatelny");
         Assert.AreEqual(key, read.Key);
@@ -177,6 +177,10 @@ public sealed class GvdMcpServerTests
         Assert.IsTrue(read.AllowWrites);
         Assert.IsFalse(read.SameAs(new McpServerSettings { Enabled = true, Port = 5491, ProtectedKey = settings.ProtectedKey }), "povolenie zmien = iny server");
         Assert.AreEqual("http://127.0.0.1:5491/mcp", read.Address);
-        Assert.AreNotEqual(McpServerSettings.NewKey(), McpServerSettings.NewKey());
+        // config.xml ma len tieto atributy - ako pred presunom nastavenia do ToolsCore.Mcp
+        var element = System.Xml.Linq.XElement.Parse(writer.ToString());
+        CollectionAssert.AreEquivalent(new[] { "Enabled", "AllowWrites", "Port", "Key" },
+            element.Attributes().Where(a => !a.IsNamespaceDeclaration).Select(a => a.Name.LocalName).ToArray());
+        Assert.AreNotEqual(new McpServerSettings().CreateKey(), new McpServerSettings().CreateKey());
     }
 }

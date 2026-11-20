@@ -84,7 +84,7 @@ public record GVDEditorConfig() : ConfigBase
         PlayerSoundsOffset = original.PlayerSoundsOffset;
         InissSettingsShowEvaluation = original.InissSettingsShowEvaluation;
         TableSimulator = original.TableSimulator.Clone();
-        McpServer = original.McpServer.Clone();
+        McpServer = (McpServerSettings)original.McpServer.Clone();
         StartupINISSConfig = original.StartupINISSConfig with { };
         RunConfigurations = original.RunConfigurations.Select(r => r.DeepCopy()).ToList();
         Windows = original.Windows.Clone();

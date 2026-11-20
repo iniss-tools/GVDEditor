@@ -10481,68 +10481,32 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vypnutý..
+        ///   Looks up a localized string similar to Agent alebo iný nástroj s podporou MCP, napríklad Claude Code alebo chat vo VS Code, sa pripojí k otvorenému grafikonu a číta ho. Server beží len na tomto počítači a vyžaduje prístupový kľúč..
         /// </summary>
-        internal static string FAppSettings_Mcp_Off {
+        internal static string FAppSettings_Mcp_Hint {
             get {
-                return ResourceManager.GetString("FAppSettings_Mcp_Off", resourceCulture);
+                return ResourceManager.GetString("FAppSettings_Mcp_Hint", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Beží na {0}.
+        ///   Looks up a localized string similar to Povoliť zmeny grafikonu cez agenta.
         /// </summary>
-        internal static string FAppSettings_Mcp_Running {
+        internal static string FAppSettings_Mcp_Writes {
             get {
-                return ResourceManager.GetString("FAppSettings_Mcp_Running", resourceCulture);
+                return ResourceManager.GetString("FAppSettings_Mcp_Writes", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Nespustil sa: {0}.
+        ///   Looks up a localized string similar to Agent mení len otvorený grafikon a nikdy ho neuloží. Každú jeho zmenu vrátite príkazom Späť..
         /// </summary>
-        internal static string FAppSettings_Mcp_Failed {
+        internal static string FAppSettings_Mcp_WritesHint {
             get {
-                return ResourceManager.GetString("FAppSettings_Mcp_Failed", resourceCulture);
+                return ResourceManager.GetString("FAppSettings_Mcp_WritesHint", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Zmeny sa prejavia po uložení nastavení..
-        /// </summary>
-        internal static string FAppSettings_Mcp_Pending {
-            get {
-                return ResourceManager.GetString("FAppSettings_Mcp_Pending", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Skopírované do schránky..
-        /// </summary>
-        internal static string FAppSettings_Mcp_Copied {
-            get {
-                return ResourceManager.GetString("FAppSettings_Mcp_Copied", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Skopírované do schránky. Platí po uložení nastavení..
-        /// </summary>
-        internal static string FAppSettings_Mcp_CopiedPending {
-            get {
-                return ResourceManager.GetString("FAppSettings_Mcp_CopiedPending", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Vytvoriť nový kľúč? Agenti so starým kľúčom stratia prístup po uložení nastavení..
-        /// </summary>
-        internal static string FAppSettings_Mcp_NewKey {
-            get {
-                return ResourceManager.GetString("FAppSettings_Mcp_NewKey", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Späť.
         /// </summary>

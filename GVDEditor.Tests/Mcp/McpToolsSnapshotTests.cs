@@ -27,7 +27,7 @@ public sealed partial class McpToolsTests
     private async Task<(string? Instructions, IList<McpClientTool> Tools)> ListTools(bool allowWrites)
     {
         using var server = new GvdMcpServer();
-        var settings = new McpServerSettings { Enabled = true, AllowWrites = allowWrites, Port = FreePort(), Key = McpServerSettings.NewKey() };
+        var settings = new McpServerSettings { Enabled = true, AllowWrites = allowWrites, Port = FreePort(), Key = new McpServerSettings().CreateKey() };
         await server.ApplyAsync(new EditorAccess(new EditorContext(null!), null), settings);
         var transport = new HttpClientTransport(new HttpClientTransportOptions
         {

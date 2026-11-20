@@ -81,7 +81,7 @@ public sealed partial class McpToolsTests
     private async Task CallEveryTool(string folder)
     {
         using var server = new GvdMcpServer();
-        var settings = new McpServerSettings { Enabled = true, AllowWrites = true, Port = FreePort(), Key = McpServerSettings.NewKey() };
+        var settings = new McpServerSettings { Enabled = true, AllowWrites = true, Port = FreePort(), Key = new McpServerSettings().CreateKey() };
         var editor = Editor(out var context);
         context.Workspace.INISSDir = context.Workspace.DataDir = folder;
         context.Directory!.Dir.FullPath = folder;
