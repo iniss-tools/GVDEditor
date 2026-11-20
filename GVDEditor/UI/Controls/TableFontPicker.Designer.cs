@@ -51,6 +51,7 @@ namespace GVDEditor.UI.Controls
             cbBlink = new ExCheckBox();
             cbTall = new ExCheckBox();
             led = new LedPreview();
+            llPreview = new LinkLabel();
             lResult = new Label();
             flpManual = new FlowLayoutPanel();
             llManual = new LinkLabel();
@@ -76,11 +77,13 @@ namespace GVDEditor.UI.Controls
             tlp.Controls.Add(lEffects, 0, 2);
             tlp.Controls.Add(flpEffects, 1, 2);
             tlp.Controls.Add(led, 0, 3);
-            tlp.Controls.Add(lResult, 0, 4);
-            tlp.Controls.Add(flpManual, 0, 5);
-            tlp.Controls.Add(lNote, 0, 6);
+            tlp.Controls.Add(llPreview, 0, 4);
+            tlp.Controls.Add(lResult, 0, 5);
+            tlp.Controls.Add(flpManual, 0, 6);
+            tlp.Controls.Add(lNote, 0, 7);
             tlp.Name = "tlp";
             tlp.SetColumnSpan(led, 2);
+            tlp.SetColumnSpan(llPreview, 2);
             tlp.SetColumnSpan(lResult, 2);
             tlp.SetColumnSpan(flpManual, 2);
             tlp.SetColumnSpan(lNote, 2);
@@ -218,6 +221,13 @@ namespace GVDEditor.UI.Controls
             resources.ApplyResources(led, "led");
             led.Name = "led";
             // 
+            // llPreview
+            // 
+            resources.ApplyResources(llPreview, "llPreview");
+            llPreview.Name = "llPreview";
+            llPreview.TabStop = true;
+            llPreview.LinkClicked += llPreview_LinkClicked;
+            // 
             // lResult
             // 
             resources.ApplyResources(lResult, "lResult");
@@ -303,6 +313,7 @@ namespace GVDEditor.UI.Controls
         private ExCheckBox cbBlink;
         private ExCheckBox cbTall;
         private LedPreview led;
+        private LinkLabel llPreview;
         private Label lResult;
         private FlowLayoutPanel flpManual;
         private LinkLabel llManual;

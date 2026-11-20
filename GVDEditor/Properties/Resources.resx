@@ -4138,4 +4138,33 @@ Pred zápisom sa uloží záloha.</value>
   <data name="FAppSettings_Mcp_WritesHint" xml:space="preserve">
     <value>Agent mení len otvorený grafikon a nikdy ho neuloží. Každú jeho zmenu vrátite príkazom Späť.</value>
   </data>
+  <data name="FontPicker_PreviewWindows" xml:space="preserve">
+    <value>Náhľad písmom Windows.</value>
+  </data>
+  <data name="FontPicker_PreviewFile" xml:space="preserve">
+    <value>Náhľad písmom zo súboru {0}.</value>
+  </data>
+  <data name="FontPicker_PreviewError" xml:space="preserve">
+    <value>Súbor {0} sa nedá načítať, náhľad písmom Windows.</value>
+  </data>
+  <data name="FontPicker_PreviewNoFont" xml:space="preserve">
+    <value>Súbor {0} nemá písmo {1}, náhľad písmom Windows.</value>
+  </data>
+  <data name="FontPicker_PreviewChoose" xml:space="preserve">
+    <value>Vybrať súbor písiem ELEN</value>
+  </data>
+  <data name="FontPicker_PreviewChange" xml:space="preserve">
+    <value>Zmeniť</value>
+  </data>
+  <data name="FontPicker_PreviewUseWindows" xml:space="preserve">
+    <value>Písmo Windows</value>
+  </data>
+  <data name="FontPicker_PreviewFilter" xml:space="preserve">
+    <value>Písma tabúľ ELEN (*.bin)|*.bin</value>
+  </data>
+  <data name="FontPicker_PreviewOpenFailed" xml:space="preserve">
+    <value>Súbor {0} sa nepodarilo načítať.
+
+{1}</value>
+  </data>
 </root>

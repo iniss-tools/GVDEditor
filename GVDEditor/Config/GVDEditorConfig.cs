@@ -74,6 +74,12 @@ public record GVDEditorConfig() : ConfigBase
     [XmlElement("Iniss2ExportDir"), DefaultValue("")]
     public string Iniss2ExportDir { get; set; } = "";
 
+    /// <summary>
+    /// Subor pisiem ELEN (.bin), ktorym nahlad pisma tabule kresli text ako panel; prazdny = pismo Windows.
+    /// </summary>
+    [XmlElement("ElenPreviewFonts"), DefaultValue("")]
+    public string ElenPreviewFonts { get; set; } = "";
+
     /// <inheritdoc />
     public override string LinkAppSettingsGuide => GvdLinkConsts.LinkAppSettings;
 
@@ -89,5 +95,6 @@ public record GVDEditorConfig() : ConfigBase
         RunConfigurations = original.RunConfigurations.Select(r => r.DeepCopy()).ToList();
         Windows = original.Windows.Clone();
         Iniss2ExportDir = original.Iniss2ExportDir;
+        ElenPreviewFonts = original.ElenPreviewFonts;
     }
 }

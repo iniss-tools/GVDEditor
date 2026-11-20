@@ -5,6 +5,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Domain.Rules;
 using GVDEditor.Properties;
 using GVDEditor.UI.Controls;
+using ToolsCore.Forms.Elen;
 using ToolsCore.Iniss.Elen;
 using ToolsCore.Tools;
 
@@ -92,6 +93,7 @@ public partial class FontsPage : UserControl, ISettingsPage
         _ctx = context;
         FontDir = fontDir;
         tbDir.Text = fontDir;
+        picker.PreviewFonts = ElenPreviewFonts.For(context);
 
         foreach (var header in new[] { lLook, lData, lUseHeader })
             header.Font = new Font(Font, FontStyle.Bold);
@@ -586,7 +588,7 @@ public partial class FontsPage : UserControl, ISettingsPage
         var bounds = e.Bounds;
         var dot = Math.Max(6, bounds.Height - 12);
         var code = new ElenFontCode(font.FontID);
-        using (var brush = new SolidBrush(LedPreview.LitColor(code.Color)))
+        using (var brush = new SolidBrush(ElenBoardView.LitColor(code.Color)))
         using (var pen = new Pen(Color.FromArgb(120, 0, 0, 0)))
         {
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;

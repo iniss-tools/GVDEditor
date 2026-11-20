@@ -11811,5 +11811,86 @@ namespace GVDEditor.Properties {
                 return ResourceManager.GetString("Iniss2Export_Issue_GroupExists", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Náhľad písmom Windows..
+        /// </summary>
+        internal static string FontPicker_PreviewWindows {
+            get {
+                return ResourceManager.GetString("FontPicker_PreviewWindows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Náhľad písmom zo súboru {0}..
+        /// </summary>
+        internal static string FontPicker_PreviewFile {
+            get {
+                return ResourceManager.GetString("FontPicker_PreviewFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor {0} sa nedá načítať, náhľad písmom Windows..
+        /// </summary>
+        internal static string FontPicker_PreviewError {
+            get {
+                return ResourceManager.GetString("FontPicker_PreviewError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor {0} nemá písmo {1}, náhľad písmom Windows..
+        /// </summary>
+        internal static string FontPicker_PreviewNoFont {
+            get {
+                return ResourceManager.GetString("FontPicker_PreviewNoFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vybrať súbor písiem ELEN.
+        /// </summary>
+        internal static string FontPicker_PreviewChoose {
+            get {
+                return ResourceManager.GetString("FontPicker_PreviewChoose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zmeniť.
+        /// </summary>
+        internal static string FontPicker_PreviewChange {
+            get {
+                return ResourceManager.GetString("FontPicker_PreviewChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo Windows.
+        /// </summary>
+        internal static string FontPicker_PreviewUseWindows {
+            get {
+                return ResourceManager.GetString("FontPicker_PreviewUseWindows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Písma tabúľ ELEN (*.bin)|*.bin.
+        /// </summary>
+        internal static string FontPicker_PreviewFilter {
+            get {
+                return ResourceManager.GetString("FontPicker_PreviewFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor {0} sa nepodarilo načítať.  {1}.
+        /// </summary>
+        internal static string FontPicker_PreviewOpenFailed {
+            get {
+                return ResourceManager.GetString("FontPicker_PreviewOpenFailed", resourceCulture);
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@ using GVDEditor.Domain.Entities;
 using GVDEditor.Properties;
 using GVDEditor.UI.Settings;
 using ToolsCore.Iniss.Elen;
+using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Controls;
 
@@ -71,6 +72,26 @@ public partial class TableFontPicker : UserControl
             Sync(true);
         }
     }
+
+    /// <summary>
+    /// Subor pisiem ELEN pre nahlad; null = nahlad len pismom Windows bez moznosti vyberu suboru.
+    /// </summary>
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    internal ElenPreviewFonts? PreviewFonts
+    {
+        get => _previewFonts;
+        set
+        {
+            _previewFonts = value;
+            Sync(false);
+        }
+    }
+
+    private ElenPreviewFonts? _previewFonts;
+
+    // dialog vyberu suboru pisiem este nedobehol
+    private bool _choosingFile;
 
     private bool IsElen => ElenFontCode.AppliesTo(_manufacturer);
 
@@ -150,6 +171,86 @@ public partial class TableFontPicker : UserControl
         SetValue(fixedCode.Id, true);
     }
 
+    /// <summary>
+    /// Nahlad pismom zo suboru pisiem ELEN, ak ho obsluha vybrala a pismo v nom je; popis s odkazmi na zmenu suboru.
+    /// </summary>
+    private void UpdatePreview(ElenFontCode code)
+    {
+        var file = _previewFonts?.File;
+        led.TextEncoding = ElenText.EncodingFor(_manufacturer);
+        led.Fonts = file;
+        if (_previewFonts is null)
+            return;
+
+        var name = Path.GetFileName(_previewFonts.Path);
+        var state = _previewFonts.Path.Length == 0 ? Resources.FontPicker_PreviewWindows
+            : file is null ? string.Format(CultureInfo.CurrentCulture, Resources.FontPicker_PreviewError, name)
+            : !led.UsesFontFile ? string.Format(CultureInfo.CurrentCulture, Resources.FontPicker_PreviewNoFont, name, code.FontIndex)
+            : string.Format(CultureInfo.CurrentCulture, Resources.FontPicker_PreviewFile, name);
+
+        // odkazy za popisom: vyber (zmena) suboru a navrat k pismu Windows
+        var choose = _previewFonts.Path.Length == 0 ? Resources.FontPicker_PreviewChoose : Resources.FontPicker_PreviewChange;
+        var text = state + " " + choose;
+        llPreview.Links.Clear();
+        llPreview.Text = _previewFonts.Path.Length == 0 ? text : text + "  " + Resources.FontPicker_PreviewUseWindows;
+        llPreview.Links.Add(state.Length + 1, choose.Length, PreviewLink.Choose);
+        if (_previewFonts.Path.Length > 0)
+            llPreview.Links.Add(text.Length + 2, Resources.FontPicker_PreviewUseWindows.Length, PreviewLink.Windows);
+    }
+
+    private enum PreviewLink
+    {
+        Choose,
+        Windows
+    }
+
+    private async void llPreview_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
+    {
+        // dialog este konci (Windows po zruseni chvilu doupratuje) - druhy dialog by sa otvoril cez neho
+        if (_previewFonts is null || _choosingFile)
+            return;
+
+        if (e.Link?.LinkData is PreviewLink.Windows)
+        {
+            _previewFonts.Set("");
+            Sync(false);
+            return;
+        }
+
+        using var dialog = new OpenFileDialog();
+        dialog.Filter = Resources.FontPicker_PreviewFilter;
+        var current = _previewFonts.Path;
+        dialog.InitialDirectory = current.Length > 0 ? Path.GetDirectoryName(current) : _previewFonts.FontsDirectory;
+        // dialog na vlastnom vlakne - po zruseni okno hned reaguje, hoci Windows dialog este doupratuje
+        _choosingFile = true;
+        DialogResult result;
+        try
+        {
+            result = await dialog.ShowDialogAsync(FindForm() ?? (IWin32Window)this);
+        }
+        finally
+        {
+            _choosingFile = false;
+        }
+
+        if (result != DialogResult.OK || IsDisposed)
+            return;
+
+        try
+        {
+            ElenFontFile.Load(dialog.FileName);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or FormatException)
+        {
+            Serilog.Log.Warning(ex, "Subor pisiem ELEN {Path} pre nahlad sa nepodarilo nacitat", dialog.FileName);
+            Utils.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.FontPicker_PreviewOpenFailed, dialog.FileName, ex.Message));
+            return;
+        }
+
+        _previewFonts.Set(dialog.FileName);
+        Sync(false);
+    }
+
     private void llManual_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
     {
         _manual = !_manual;
@@ -172,6 +273,7 @@ public partial class TableFontPicker : UserControl
 
             foreach (var control in new Control[] { lFace, flpFace, lColor, flpColor, lEffects, flpEffects, led, lResult })
                 control.Visible = elen;
+            llPreview.Visible = elen && _previewFonts is not null;
 
             var maxExt = ElenFontCode.MaxExtendedFont(_manufacturer);
             rbExt.Visible = nudExt.Visible = maxExt > 0 || code.ExtendedFont > 0;
@@ -189,6 +291,7 @@ public partial class TableFontPicker : UserControl
             cbTall.Checked = code.TallDigits;
 
             led.FontId = _value;
+            UpdatePreview(code);
             lResult.Text = string.Format(CultureInfo.CurrentCulture, Resources.FontPicker_Vysledok, _value,
                 _value < 0 ? "" : $" (0x{_value:X})", code.Describe());
 

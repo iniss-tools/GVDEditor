@@ -1,5 +1,6 @@
 using System.Globalization;
 using GVDEditor.Properties;
+using GVDEditor.UI.Controls;
 using ToolsCore.Tools;
 
 namespace GVDEditor.UI.Settings;
@@ -25,6 +26,7 @@ internal partial class FTableFontPicker : Form
         this.ApplyThemeAndFonts();
 
         picker.Manufacturer = manufacturer;
+        picker.PreviewFonts = ElenPreviewFonts.For(context);
         picker.Value = value;
         // okno s automatickou velkostou by volby zalomilo - najmensia sirka je ta, pri ktorej sa nezalomia
         picker.MinimumSize = new Size(picker.GetPreferredSize(Size.Empty).Width, 0);

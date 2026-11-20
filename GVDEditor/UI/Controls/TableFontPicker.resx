@@ -126,13 +126,13 @@
     <value>2</value>
   </data>
   <data name="tlp.RowCount" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="tlp.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="tlp.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lFace" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flpFace" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lColor" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flpColor" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lEffects" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flpEffects" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="led" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="lResult" Row="4" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="flpManual" Row="5" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="lNote" Row="6" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lFace" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flpFace" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lColor" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flpColor" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="lEffects" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flpEffects" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="led" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="llPreview" Row="4" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="lResult" Row="5" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="flpManual" Row="6" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="lNote" Row="7" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tlp.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -701,6 +701,36 @@
   <data name="&gt;&gt;led.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="llPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="llPreview.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="llPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 164</value>
+  </data>
+  <data name="llPreview.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 3</value>
+  </data>
+  <data name="llPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>444, 15</value>
+  </data>
+  <data name="llPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;llPreview.Name" xml:space="preserve">
+    <value>llPreview</value>
+  </data>
+  <data name="&gt;&gt;llPreview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;llPreview.Parent" xml:space="preserve">
+    <value>tlp</value>
+  </data>
+  <data name="&gt;&gt;llPreview.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="lResult.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
   </data>
@@ -729,7 +759,7 @@
     <value>tlp</value>
   </data>
   <data name="&gt;&gt;lResult.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="flpManual.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left, Right</value>
@@ -762,7 +792,7 @@
     <value>tlp</value>
   </data>
   <data name="&gt;&gt;flpManual.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="llManual.Text" xml:space="preserve">
     <value>Zadať číslo ručne</value>
@@ -882,7 +912,7 @@
     <value>tlp</value>
   </data>
   <data name="&gt;&gt;lNote.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
