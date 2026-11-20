@@ -84,19 +84,19 @@ public partial class FelisImport : Form
         }
     }
 
-    private void bBrowse_Click(object sender, EventArgs e)
+    private async void bBrowse_Click(object sender, EventArgs e)
     {
-        var dialog = new FolderBrowserDialog { Description = Resources.ElisImport_SelectFolder };
-        if (dialog.ShowDialog(this) == DialogResult.Cancel)
+        using var dialog = new FolderBrowserDialog { Description = Resources.ElisImport_SelectFolder };
+        if (await dialog.ShowDialogAsync(this) != DialogResult.OK || IsDisposed)
             return;
 
         tbAppPath.Text = dialog.SelectedPath;
     }
 
-    private void bPlanBrowse_Click(object sender, EventArgs e)
+    private async void bPlanBrowse_Click(object sender, EventArgs e)
     {
         using var dialog = new OpenFileDialog { Filter = Resources.FELISImport_PlanFilter + "|*.pdf", CheckFileExists = true };
-        if (dialog.ShowDialog(this) == DialogResult.OK)
+        if (await dialog.ShowDialogAsync(this) == DialogResult.OK && !IsDisposed)
             tbPlan.Text = dialog.FileName;
     }
 

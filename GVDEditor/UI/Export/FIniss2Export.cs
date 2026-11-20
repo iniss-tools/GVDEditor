@@ -80,8 +80,8 @@ internal partial class FIniss2Export : Form
 
         bBack.Click += (_, _) => ShowPage(_page - 1);
         bNext.Click += async (_, _) => await NextAsync();
-        bBrowse.Click += (_, _) => BrowseInstallation();
-        bAddFont.Click += (_, _) => AddFont();
+        bBrowse.Click += async (_, _) => await BrowseInstallation();
+        bAddFont.Click += async (_, _) => await AddFont();
         tbInstallation.TextChanged += (_, _) => UpdateInstallationInfo();
         cbTemplate.SelectedIndexChanged += (_, _) => FillReports();
         cbConfiguration.SelectedIndexChanged += (_, _) => UpdateLinesInfo();
@@ -192,12 +192,12 @@ internal partial class FIniss2Export : Form
             tbGroup.Text = Iniss2ExportService.DefaultGroup(_loaded[0].GVD);
     }
 
-    private void BrowseInstallation()
+    private async Task BrowseInstallation()
     {
         using var dialog = new FolderBrowserDialog { Description = Resources.Iniss2Export_SelectInstallation, UseDescriptionForTitle = true };
         if (Directory.Exists(tbInstallation.Text.Trim()))
             dialog.InitialDirectory = tbInstallation.Text.Trim();
-        if (dialog.ShowDialog(this) == DialogResult.OK)
+        if (await dialog.ShowDialogAsync(this) == DialogResult.OK && !IsDisposed)
             tbInstallation.Text = dialog.SelectedPath;
     }
 
@@ -344,10 +344,10 @@ internal partial class FIniss2Export : Form
         colFontFile.DisplayMember = nameof(Choice.Text);
     }
 
-    private void AddFont()
+    private async Task AddFont()
     {
         using var dialog = new OpenFileDialog { Filter = Resources.Iniss2Export_FontFilter };
-        if (dialog.ShowDialog(this) != DialogResult.OK)
+        if (await dialog.ShowDialogAsync(this) != DialogResult.OK || IsDisposed)
             return;
 
         var file = dialog.FileName;

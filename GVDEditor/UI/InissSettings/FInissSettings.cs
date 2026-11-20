@@ -925,8 +925,8 @@ internal partial class FInissSettings : Form
         var menu = new ContextMenuStrip();
         void Item(string text, Action action, bool enabled = true) => menu.Items.Add(new ToolStripMenuItem(text, null, (_, _) => action()) { Enabled = enabled });
         var loaded = m is not null;
-        Item(Resources.InissTools_ExportReg, ExportReg, loaded);
-        Item(Resources.InissTools_ExportIni, ExportIni, loaded);
+        Item(Resources.InissTools_ExportReg, () => _ = ExportRegAsync(), loaded);
+        Item(Resources.InissTools_ExportIni, () => _ = ExportIniAsync(), loaded);
         menu.Items.Add(new ToolStripSeparator());
         Item(Resources.InissTools_Compare, () => _ = CompareAsync(null), loaded);
         Item(Resources.InissTools_Import, () => _ = ImportAsync(), loaded);
@@ -982,13 +982,13 @@ internal partial class FInissSettings : Form
         return done;
     }
 
-    private void ExportReg()
+    private async Task ExportRegAsync()
     {
         using var dialog = new SaveFileDialog
         {
             Filter = Resources.InissTools_RegFilter, FileName = SafeFileName(_appName) + ".reg", Title = Resources.InissTools_ExportReg.TrimEnd('.', '…')
         };
-        if (dialog.ShowDialog(this) != DialogResult.OK) return;
+        if (await dialog.ShowDialogAsync(this) != DialogResult.OK || IsDisposed) return;
         try
         {
             var file = InissRegistry.Export(_appName);
@@ -1008,7 +1008,7 @@ internal partial class FInissSettings : Form
         }
     }
 
-    private void ExportIni()
+    private async Task ExportIniAsync()
     {
         if (_model is not { } m) return;
         var answer = _dialogs.ShowQuestion(Resources.InissTools_ExportIniQuestion, MessageBoxButtons.YesNoCancel);
@@ -1018,7 +1018,7 @@ internal partial class FInissSettings : Form
             Filter = Resources.InissTools_IniFilter, FileName = SafeFileName(_appName) + ".INI", Title = Resources.InissTools_ExportIni.TrimEnd('.', '…'),
             InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
         };
-        if (dialog.ShowDialog(this) != DialogResult.OK) return;
+        if (await dialog.ShowDialogAsync(this) != DialogResult.OK || IsDisposed) return;
         try
         {
             RegTools.ToIni(m.Config, answer == DialogResult.Yes).Save(dialog.FileName);
@@ -1037,7 +1037,7 @@ internal partial class FInissSettings : Form
     {
         if (!CanRunWritingTool()) return;
         using var dialog = new OpenFileDialog { Filter = Resources.InissCompare_FileFilter, Title = Resources.InissTools_Import.TrimEnd('.', '…') };
-        if (dialog.ShowDialog(this) == DialogResult.OK)
+        if (await dialog.ShowDialogAsync(this) == DialogResult.OK && !IsDisposed)
             await CompareAsync(dialog.FileName);
     }
 

@@ -21,10 +21,10 @@ internal partial class FMain
 {
     // ------------------------------------------------------------------ instalacia INISS
 
-    private void ShowOpenDir()
+    private async void ShowOpenDir()
     {
-        var dialog = new FolderBrowserDialog { Description = Resources.FMain_Vyberte_priecinok_s_INISS };
-        if (dialog.ShowDialog(this) == DialogResult.Cancel)
+        using var dialog = new FolderBrowserDialog { Description = Resources.FMain_Vyberte_priecinok_s_INISS };
+        if (await dialog.ShowDialogAsync(this) != DialogResult.OK || IsDisposed)
             return;
 
         OpenInstallation(dialog.SelectedPath);
@@ -523,10 +523,10 @@ internal partial class FMain
         tscbStanica.ComboBox.SelectedItem = gvd.ThisStation.Name;
     }
 
-    private void ShowImportGVD()
+    private async void ShowImportGVD()
     {
-        var dialog = new FolderBrowserDialog { Description = Resources.FMain_Vyberte_priecinok_s_grafikonom };
-        if (dialog.ShowDialog(this) == DialogResult.Cancel)
+        using var dialog = new FolderBrowserDialog { Description = Resources.FMain_Vyberte_priecinok_s_grafikonom };
+        if (await dialog.ShowDialogAsync(this) != DialogResult.OK || IsDisposed)
             return;
 
         GVDDirectory dgyv;

@@ -558,12 +558,15 @@ public partial class FontsPage : UserControl, ISettingsPage
         }
     }
 
-    private void bDir_Click(object? sender, EventArgs e)
+    private async void bDir_Click(object? sender, EventArgs e)
     {
+        if (FindForm() is not { } form)
+            return;
+
         using var dialog = new FolderBrowserDialog();
         if (Directory.Exists(FontDir))
             dialog.SelectedPath = FontDir;
-        if (dialog.ShowDialog(FindForm()) != DialogResult.OK)
+        if (await dialog.ShowDialogAsync(form) != DialogResult.OK || IsDisposed)
             return;
 
         FontDir = dialog.SelectedPath;

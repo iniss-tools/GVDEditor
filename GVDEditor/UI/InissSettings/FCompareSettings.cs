@@ -44,7 +44,7 @@ internal partial class FCompareSettings : Form
             if (_filling || cbOther.SelectedItem is not string app) return;
             ShowOther(LoadBranch(app), string.Format(CultureInfo.CurrentCulture, Resources.InissCompare_InfoBranch, app), false);
         };
-        bFile.Click += (_, _) => ChooseFile();
+        bFile.Click += async (_, _) => await ChooseFile();
         cboxDifferentOnly.CheckedChanged += (_, _) => FillGrid();
         cboxOtherExplicit.CheckedChanged += (_, _) => FillGrid();
         cboxHideApp.CheckedChanged += (_, _) => FillGrid();
@@ -135,10 +135,10 @@ internal partial class FCompareSettings : Form
         });
     }
 
-    private void ChooseFile()
+    private async Task ChooseFile()
     {
         using var dialog = new OpenFileDialog { Filter = Resources.InissCompare_FileFilter, Title = Resources.InissCompare_FileTitle };
-        if (dialog.ShowDialog(this) == DialogResult.OK)
+        if (await dialog.ShowDialogAsync(this) == DialogResult.OK && !IsDisposed)
             LoadFile(dialog.FileName, false);
     }
 

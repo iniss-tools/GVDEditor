@@ -449,11 +449,9 @@ internal partial class FImportData : Form
         LoadText(Clipboard.GetText());
     }
 
-    private void bCSV_Click(object sender, EventArgs e)
+    private async void bCSV_Click(object sender, EventArgs e)
     {
-        var result = ofDialogCSV.ShowDialog();
-
-        if (result == DialogResult.Cancel) return;
+        if (await ofDialogCSV.ShowDialogAsync(this) != DialogResult.OK || IsDisposed) return;
 
         LoadCsv(ofDialogCSV.FileName);
     }
@@ -474,11 +472,9 @@ internal partial class FImportData : Form
         SetTable(reader);
     }
 
-    private void bXLS_Click(object sender, EventArgs e)
+    private async void bXLS_Click(object sender, EventArgs e)
     {
-        var result = ofDialogXLS.ShowDialog();
-
-        if (result == DialogResult.Cancel) return;
+        if (await ofDialogXLS.ShowDialogAsync(this) != DialogResult.OK || IsDisposed) return;
 
         var reader = new XlsReader(ofDialogXLS.FileName);
         _lastCsvPath = null;
