@@ -88,7 +88,7 @@ internal static class InissChecks
                     Add("line:" + line.Section + ":" + problem.Text, problem.Severity == RegSeverity.Error ? ProblemType.Error : ProblemType.Warning,
                         string.Format(CultureInfo.CurrentCulture, Resources.InissCheck_Line, line.Section, problem.Text), Resources.InissCheck_Line_Fix, line.Section);
 
-                // skuska so simulatorom tabul, na ktoru sa lahko zabudne - skutocne tabule potom nedostanu nic
+                // skuska so StationSimulatorom, na ktoru sa lahko zabudne - skutocne tabule potom nedostanu nic
                 var redirected = SimulatorRedirect.Find(config.Source.Ini).Select(r => r.Section).ToHashSet(StringComparer.OrdinalIgnoreCase);
                 var toSimulator = lines.Lines.Where(l => redirected.Contains(l.Section) && l.Tables.Any(t => mine.Contains(t.Table))).Select(l => l.Section).ToList();
                 if (toSimulator.Count > 0)

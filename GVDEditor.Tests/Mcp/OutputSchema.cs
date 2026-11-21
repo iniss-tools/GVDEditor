@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 namespace GVDEditor.Tests.Mcp;
 
 /// <summary>
-/// Kopia kontroly z testov simulatora tabul (TableSimulator.Tests/Mcp/OutputSchema.cs).
+/// Kopia kontroly z testov StationSimulatora (StationSimulator.Tests/Mcp/OutputSchema.cs).
 /// Kontrola vysledku nastroja voci jeho scheme vystupu - podmnozina JSON Schema, ktoru generuje SDK: typ (aj s null),
 /// povinne a vnorene vlastnosti, polozky pola, slovnik, enum, format datumu a casu a odkaz <c>$ref</c> v ramci schemy.
 /// </summary>

@@ -6,11 +6,11 @@ using GVDEditor.Mcp.Results;
 using ModelContextProtocol;
 using ModelContextProtocol.Server;
 using Serilog;
-using TableSimulator.Contracts.Station;
+using StationSimulator.Contracts.Station;
 
 namespace GVDEditor.Mcp;
 
-/// <summary>Nastroje MCP nad simulatorom tabul (TableSimulator).</summary>
+/// <summary>Nastroje MCP nad StationSimulatorom.</summary>
 [McpServerToolType]
 internal static class SimulatorTools
 {
@@ -19,7 +19,7 @@ internal static class SimulatorTools
 
     [McpServerTool(Name = "prepare_simulator", Title = "Prepare board simulator", ReadOnly = false, Destructive = true, Idempotent = true, OpenWorld = false,
         UseStructuredContent = true)]
-    [Description("Creates the lines and boards of the station in the board simulator (TableSimulator) like 'Prepare in the simulator' in GVDEditor: "
+    [Description("Creates the lines and boards of the station in the board simulator (StationSimulator) like 'Prepare in the simulator' in GVDEditor: "
                  + "lines of the selected run configuration with the boards INISS assigns to them, their faces, virtual boards from the XML export and "
                  + "the INISS log folder. Existing boards stay. The INISS .INI does not change - INISS sends to the simulator only after its lines are "
                  + "redirected (" + RedirectWindow + "); notes list the lines that are not. Run it with dryRun first to see the lines.")]
@@ -37,13 +37,13 @@ internal static class SimulatorTools
                       ?? throw new McpException("iniss.noConfiguration: No run configuration is selected in GVDEditor; the user selects it on the toolbar.");
             if (run.Program.Length == 0 || context.Workspace is not { INISSDir.Length: > 0 } workspace)
                 throw new McpException($"iniss.noProgram: The run configuration '{run.Name}' has no INISS program or no installation is open.");
-            var simulator = context.Config.TableSimulator;
+            var simulator = context.Config.StationSimulator;
             return (run, workspace.INISSDir, (IReadOnlyList<DirList>)workspace.GVDDirs.ToList(),
                 workspace.Audios.Select(a => (a.Name, (string?)a.AmplifierPort, (string?)a.ExchangeParameter)).ToList(),
-                new TableSimulatorSettings { WebUrl = simulator.WebUrl, BasePort = simulator.BasePort, ProtectedApiKey = simulator.ProtectedApiKey });
+                new StationSimulatorSettings { WebUrl = simulator.WebUrl, BasePort = simulator.BasePort, ProtectedApiKey = simulator.ProtectedApiKey });
         }).ConfigureAwait(false);
 
-        var url = TableSimulatorClient.ParseUrl(settings.WebUrl)
+        var url = StationSimulatorClient.ParseUrl(settings.WebUrl)
                   ?? throw new McpException($"simulator.url: The simulator address '{settings.WebUrl}' is not valid; the user sets it in {RedirectWindow}.");
         var plan = await Task.Run(() => SimulatorPreparation.Plan(config, installationDir, grafikons, circuits, settings, lines?.ToList())).ConfigureAwait(false);
         if (plan.Missing.Count > 0)
@@ -64,13 +64,13 @@ internal static class SimulatorTools
         StationImportedDto imported;
         try
         {
-            imported = await TableSimulatorClient.ImportAsync(url, settings.ApiKey, plan.Request, CancellationToken.None).ConfigureAwait(false);
+            imported = await StationSimulatorClient.ImportAsync(url, settings.ApiKey, plan.Request, CancellationToken.None).ConfigureAwait(false);
         }
         catch (SimulatorHttpsRequiredException e)
         {
             throw new McpException($"simulator.httpsRequired: The simulator accepts only HTTPS from the network; the user sets its address to {e.HttpsUrl} in {RedirectWindow}.");
         }
-        catch (HttpRequestException e) when (TableSimulatorClient.IsUntrustedCertificate(e))
+        catch (HttpRequestException e) when (StationSimulatorClient.IsUntrustedCertificate(e))
         {
             throw new McpException($"simulator.untrustedCertificate: This computer does not trust the certificate of the simulator; the user installs its "
                                    + $"certification authority from {new Uri(url, "api/https/certificate")}.");

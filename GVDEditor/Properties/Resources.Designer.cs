@@ -10049,7 +10049,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Linky k tabuliam presmeruje na simulátor tabúľ zápisom do súboru {0} vedľa programu. Linka N bude ....
+        ///   Looks up a localized string similar to Linky k tabuliam presmeruje na StationSimulator zápisom do súboru {0} vedľa programu. Linka N bude ....
         /// </summary>
         internal static string InissRedirect_Intro {
             get {
@@ -10346,7 +10346,7 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tabule grafikonu dostáva len simulátor tabúľ, linky {0} sú v súbore .INI presmerované na simulátor..
+        ///   Looks up a localized string similar to Tabule grafikonu dostáva len StationSimulator, linky {0} sú v súbore .INI presmerované na simulátor..
         /// </summary>
         internal static string InissCheck_Redirected {
             get {

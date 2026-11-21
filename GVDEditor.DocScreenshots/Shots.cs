@@ -525,11 +525,11 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             return new FCleanupSettings(RunConfigurations.AppName(config), ToolsCore.Iniss.Registry.RegTools.FindCleanup(model.Config),
                 @"C:\Users\Dispečer\AppData\Local\GVDEditor\zalohy-registra");
         }, form => Resize(form, 980, 420));
-        // presmerovanie liniek na simulátor tabúľ - simulátor beží (stav sa nastaví ručne, harness ho nespúšťa)
+        // presmerovanie liniek na StationSimulator - simulátor beží (stav sa nastaví ručne, harness ho nespúšťa)
         Shot("nastavenia-iniss/presmerovanie", () =>
         {
             using var settings = Create();
-            return new FSimulatorRedirect(Field<DriverLineMap>(settings, "_lines"), [], new TableSimulatorSettings(), Path.ChangeExtension(DemoInstallation.ExeName, ".INI"));
+            return new FSimulatorRedirect(Field<DriverLineMap>(settings, "_lines"), [], new StationSimulatorSettings(), Path.ChangeExtension(DemoInstallation.ExeName, ".INI"));
         }, form =>
         {
             Resize(form, 900, 420);

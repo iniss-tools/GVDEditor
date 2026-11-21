@@ -5,21 +5,21 @@ using GVDEditor.Config;
 
 namespace GVDEditor.Tests.Config;
 
-/// <summary>Nastavenie simulatora tabul - API kluc ulozeny sifrovane (DPAPI).</summary>
+/// <summary>Nastavenie StationSimulatora - API kluc ulozeny sifrovane (DPAPI).</summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
-public class TableSimulatorSettingsTests
+public class StationSimulatorSettingsTests
 {
     [TestMethod]
     public void ApiKluc_VConfiguSifrovanyATamASpat()
     {
-        var settings = new TableSimulatorSettings { ApiKey = " ts_tajny-kluc " };
+        var settings = new StationSimulatorSettings { ApiKey = " ts_tajny-kluc " };
 
-        var serializer = new XmlSerializer(typeof(TableSimulatorSettings));
+        var serializer = new XmlSerializer(typeof(StationSimulatorSettings));
         using var writer = new StringWriter();
         serializer.Serialize(writer, settings);
         using var reader = XmlReader.Create(new StringReader(writer.ToString()), new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit });
-        var loaded = (TableSimulatorSettings)serializer.Deserialize(reader)!;
+        var loaded = (StationSimulatorSettings)serializer.Deserialize(reader)!;
 
         Assert.DoesNotContain("ts_tajny-kluc", writer.ToString());
         Assert.AreEqual("ts_tajny-kluc", loaded.ApiKey);
@@ -29,9 +29,9 @@ public class TableSimulatorSettingsTests
     [TestMethod]
     public void ApiKluc_PrazdnyANecitatelny()
     {
-        Assert.AreEqual("", new TableSimulatorSettings { ApiKey = "  " }.ProtectedApiKey);
+        Assert.AreEqual("", new StationSimulatorSettings { ApiKey = "  " }.ProtectedApiKey);
         // kluc ulozeny inym pouzivatelom Windows sa neda desifrovat - ostane prazdny
-        Assert.AreEqual("", new TableSimulatorSettings { ProtectedApiKey = Convert.ToBase64String(new byte[40]) }.ApiKey);
-        Assert.AreEqual("", new TableSimulatorSettings { ProtectedApiKey = "nie-je-base64" }.ApiKey);
+        Assert.AreEqual("", new StationSimulatorSettings { ProtectedApiKey = Convert.ToBase64String(new byte[40]) }.ApiKey);
+        Assert.AreEqual("", new StationSimulatorSettings { ProtectedApiKey = "nie-je-base64" }.ApiKey);
     }
 }

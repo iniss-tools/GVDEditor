@@ -63,8 +63,8 @@
 		<ProjectReference Include="..\..\ToolsCore\ToolsCore.Mcp\ToolsCore.Mcp.csproj" />
 		<!-- export grafikonu do INISS2 -->
 		<ProjectReference Include="..\..\ToolsCore\ToolsCore.Iniss2\ToolsCore.Iniss2.csproj" />
-		<!-- kontrakty API simulatora tabul (presmerovanie liniek INISSu na simulator) -->
-		<ProjectReference Include="..\..\TableSimulator\TableSimulator.Contracts\TableSimulator.Contracts.csproj" />
+		<!-- kontrakty API StationSimulatora (presmerovanie liniek INISSu na simulator) -->
+		<ProjectReference Include="..\..\StationSimulator\StationSimulator.Contracts\StationSimulator.Contracts.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 	  <EmbeddedResource Update="UI\Import\FColumnTypeSelect.cs.resx">

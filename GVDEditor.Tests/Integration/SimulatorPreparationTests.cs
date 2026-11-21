@@ -1,12 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
 using GVDEditor.Integration;
-using TableSimulator.Contracts.Station;
+using StationSimulator.Contracts.Station;
 using ToolsCore.Iniss.Registry;
 
 namespace GVDEditor.Tests.Integration;
 
 /// <summary>
-/// Linky stanice pre simulator tabul bez zmeny .INI: presmerovana linka ide na port z .INI, ostatne na prvy port + cislo.
+/// Linky stanice pre StationSimulator bez zmeny .INI: presmerovana linka ide na port z .INI, ostatne na prvy port + cislo.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]

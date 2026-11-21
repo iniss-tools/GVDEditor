@@ -4,9 +4,9 @@ using ToolsCore.Tools;
 namespace GVDEditor.Config;
 
 /// <summary>
-/// Kam GVDEditor presmerovava linky INISSu pri skuske so simulatorom tabul (TableSimulator).
+/// Kam GVDEditor presmerovava linky INISSu pri skuske so StationSimulatorom.
 /// </summary>
-public sealed class TableSimulatorSettings
+public sealed class StationSimulatorSettings
 {
     /// <summary>Predvoleny prvy port - linka N pocuva na porte 47000 + N (ako v simulatore).</summary>
     public const int DefaultBasePort = 47000;
@@ -43,8 +43,8 @@ public sealed class TableSimulatorSettings
     }
 
     /// <summary>Kopia.</summary>
-    public TableSimulatorSettings Clone() =>
+    public StationSimulatorSettings Clone() =>
         new() { Host = Host, BasePort = BasePort, WebUrl = WebUrl, Prepare = Prepare, ProtectedApiKey = ProtectedApiKey };
 
-    private static readonly byte[] Entropy = "GVDEditor.TableSimulator.ApiKey"u8.ToArray();
+    private static readonly byte[] Entropy = "GVDEditor.StationSimulator.ApiKey"u8.ToArray();
 }

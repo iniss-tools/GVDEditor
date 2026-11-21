@@ -22,4 +22,4 @@ jobs:
       tag: ${{ inputs.tag || github.ref_name }}
       project: GVDEditor/GVDEditor/GVDEditor.csproj
       installer: GVDEditor/GVDEditorInstaller.iss
-      dependencies: filif123/ExControls TableSimulator
+      dependencies: filif123/ExControls StationSimulator

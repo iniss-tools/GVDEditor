@@ -8,7 +8,7 @@ using ToolsCore.Tools;
 namespace GVDEditor.UI.InissSettings;
 
 /// <summary>
-/// Presmerovanie liniek INISSu na simulator tabul: ktore linky, kam (adresa a prvy port pre INISS) a ci v simulatore
+/// Presmerovanie liniek INISSu na StationSimulator: ktore linky, kam (adresa a prvy port pre INISS) a ci v simulatore
 /// zalozit linky a tabule stanice. Samotny zapis .INI a volanie simulatora robi okno Nastavenia INISSu.
 /// </summary>
 internal partial class FSimulatorRedirect : Form
@@ -29,7 +29,7 @@ internal partial class FSimulatorRedirect : Form
     /// <param name="redirected">linky, ktore .INI uz presmerovava</param>
     /// <param name="settings">posledne pouzity simulator</param>
     /// <param name="iniFile">nazov suboru .INI (do uvodu)</param>
-    public FSimulatorRedirect(DriverLineMap lines, IReadOnlyList<RedirectedLine> redirected, TableSimulatorSettings settings, string iniFile)
+    public FSimulatorRedirect(DriverLineMap lines, IReadOnlyList<RedirectedLine> redirected, StationSimulatorSettings settings, string iniFile)
     {
         _redirected = redirected;
         InitializeComponent();
@@ -93,10 +93,10 @@ internal partial class FSimulatorRedirect : Form
     }
 
     /// <summary>Simulator, ako ho obsluha zadala (na ulozenie do nastaveni).</summary>
-    public TableSimulatorSettings Settings => new()
+    public StationSimulatorSettings Settings => new()
     {
         Host = tbHost.Text.Trim(),
-        BasePort = BasePort() ?? TableSimulatorSettings.DefaultBasePort,
+        BasePort = BasePort() ?? StationSimulatorSettings.DefaultBasePort,
         WebUrl = tbUrl.Text.Trim(),
         Prepare = cboxPrepare.Checked,
         ApiKey = tbApiKey.Text.Trim()
@@ -109,7 +109,7 @@ internal partial class FSimulatorRedirect : Form
     public IReadOnlyDictionary<string, int> Ports { get; private set; } = new Dictionary<string, int>();
 
     /// <summary>Webova adresa simulatora, ak sa v nom maju zalozit linky a tabule; inak null.</summary>
-    public Uri? PrepareUrl => cboxPrepare.Checked ? TableSimulatorClient.ParseUrl(tbUrl.Text) : null;
+    public Uri? PrepareUrl => cboxPrepare.Checked ? StationSimulatorClient.ParseUrl(tbUrl.Text) : null;
 
     private bool IsRedirected(DriverLine line) => _redirected.Any(r => string.Equals(r.Section, line.Section, StringComparison.OrdinalIgnoreCase));
 
@@ -142,7 +142,7 @@ internal partial class FSimulatorRedirect : Form
     /// <summary>Zisti, ci simulator bezi a ake triedy liniek pozna; bez zasahu obsluhy odznaci linky, ktore by nezobrazil.</summary>
     private async Task ProbeAsync()
     {
-        if (TableSimulatorClient.ParseUrl(tbUrl.Text) is not { } url)
+        if (StationSimulatorClient.ParseUrl(tbUrl.Text) is not { } url)
         {
             lStatus.ForeColor = GVDEditor.UI.Settings.SettingsWindow.ProblemColor(this);
             lStatus.Text = Resources.InissRedirect_UrlInvalid;
@@ -154,7 +154,7 @@ internal partial class FSimulatorRedirect : Form
         lStatus.Text = Resources.InissRedirect_StatusChecking;
         try
         {
-            var probe = await TableSimulatorClient.ProbeAsync(url, tbApiKey.Text, TimeSpan.FromSeconds(2), _closing.Token);
+            var probe = await StationSimulatorClient.ProbeAsync(url, tbApiKey.Text, TimeSpan.FromSeconds(2), _closing.Token);
             if (IsDisposed) return;
             var state = probe.State;
             _supported = state?.SupportedClasses;

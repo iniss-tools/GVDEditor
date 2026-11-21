@@ -1,6 +1,6 @@
 namespace GVDEditor.Mcp.Results;
 
-/// <summary>Linka stanice v simulatore tabul.</summary>
+/// <summary>Linka stanice v StationSimulatore.</summary>
 internal sealed record SimulatorLineInfo(
     [property: Description("Line number.")] int Line,
     [property: Description("Driver section of the INISS settings (Driver, Driver0...).")] string Section,

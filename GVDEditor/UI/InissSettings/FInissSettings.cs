@@ -3,7 +3,7 @@ using GVDEditor.Config;
 using GVDEditor.Integration;
 using GVDEditor.Properties;
 using Serilog;
-using TableSimulator.Contracts.Station;
+using StationSimulator.Contracts.Station;
 using ToolsCore.Iniss.Registry;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
@@ -1143,7 +1143,7 @@ internal partial class FInissSettings : Form
     }
 
     /// <summary>
-    /// Presmeruje linky na simulator tabul (alebo presmerovanie zrusi) zapisom do .INI vedla programu a pripadne
+    /// Presmeruje linky na StationSimulator (alebo presmerovanie zrusi) zapisom do .INI vedla programu a pripadne
     /// zalozi linky a tabule stanice v beziacom simulatore.
     /// </summary>
     private async Task RedirectSimulatorAsync()
@@ -1158,9 +1158,9 @@ internal partial class FInissSettings : Form
         // subor .INI mohol medzicasom niekto zmenit - presmerovanie vychadza z aktualneho
         var current = InissIniFile.Load(iniPath);
         var redirected = SimulatorRedirect.Find(current);
-        using var f = new FSimulatorRedirect(_lines, redirected, _ctx.Config.TableSimulator, Path.GetFileName(iniPath));
+        using var f = new FSimulatorRedirect(_lines, redirected, _ctx.Config.StationSimulator, Path.GetFileName(iniPath));
         if (f.ShowDialog(this) != DialogResult.OK) return;
-        _ctx.Config.TableSimulator = f.Settings;
+        _ctx.Config.StationSimulator = f.Settings;
         GVDEditor.UI.Settings.SettingsWindow.SaveConfig(_ctx.Config);
         if (f.Undo && _dialogs.ShowQuestion(string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_UndoQuestion,
                 string.Join(", ", redirected.Select(r => r.Section)))) != DialogResult.Yes)
@@ -1215,7 +1215,7 @@ internal partial class FInissSettings : Form
         UseWaitCursor = true;
         try
         {
-            var result = await TableSimulatorClient.ImportAsync(url, _ctx.Config.TableSimulator.ApiKey, station, CancellationToken.None);
+            var result = await StationSimulatorClient.ImportAsync(url, _ctx.Config.StationSimulator.ApiKey, station, CancellationToken.None);
             Log.Information("Stanica pripravena v simulatore {Url}: linky pridane {LinesAdded}, upravene {LinesUpdated}, tabule pridane {BoardsAdded}, ponechane {BoardsKept}",
                 url, result.LinesAdded, result.LinesUpdated, result.BoardsAdded, result.BoardsKept);
             var text = new StringBuilder(string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_SimulatorDone,
@@ -1247,7 +1247,7 @@ internal partial class FInissSettings : Form
             Log.Warning("Simulator {Url} vyzaduje HTTPS ({HttpsUrl})", url, e.HttpsUrl);
             return string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_StatusHttpsRequired, e.HttpsUrl);
         }
-        catch (HttpRequestException e) when (TableSimulatorClient.IsUntrustedCertificate(e))
+        catch (HttpRequestException e) when (StationSimulatorClient.IsUntrustedCertificate(e))
         {
             Log.Warning(e, "Certifikat simulatora {Url} nie je doveryhodny", url);
             return string.Format(CultureInfo.CurrentCulture, Resources.InissRedirect_StatusUntrusted, new Uri(url, "api/https/certificate"));

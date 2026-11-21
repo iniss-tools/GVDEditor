@@ -1,4 +1,4 @@
-using TableSimulator.Contracts.Station;
+using StationSimulator.Contracts.Station;
 
 namespace GVDEditor.Integration;
 

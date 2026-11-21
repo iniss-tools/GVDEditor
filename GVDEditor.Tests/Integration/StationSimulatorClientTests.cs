@@ -8,18 +8,18 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using GVDEditor.Integration;
-using TableSimulator.Contracts.Faces;
-using TableSimulator.Contracts.Station;
+using StationSimulator.Contracts.Faces;
+using StationSimulator.Contracts.Station;
 using ToolsCore.Iniss.Registry;
 
 namespace GVDEditor.Tests.Integration;
 
 /// <summary>
-/// Linky a tabule stanice pre simulator tabul pri presmerovani liniek INISSu.
+/// Linky a tabule stanice pre StationSimulator pri presmerovani liniek INISSu.
 /// </summary>
 [TestClass]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores")]
-public class TableSimulatorClientTests
+public class StationSimulatorClientTests
 {
     private static readonly JsonSerializerOptions Web = new(JsonSerializerDefaults.Web);
 
@@ -126,7 +126,7 @@ public class TableSimulatorClientTests
         var board = SimulatorStation.From(DriverLines.Build(config, [table]), new Dictionary<string, int> { ["Driver"] = 47002 }).Boards.Single();
 
         Assert.AreEqual(6, board.FlapRecords);
-        Assert.AreEqual(new TableSimulator.Contracts.Boards.FlapModuleDto(0, 0, 1, "Ciel"), board.Flaps!.Modules.Single());
+        Assert.AreEqual(new StationSimulator.Contracts.Boards.FlapModuleDto(0, 0, 1, "Ciel"), board.Flaps!.Modules.Single());
         Assert.AreEqual("*BRATISLAVA", board.Flaps.Lists["Ciel"]["B"]);
     }
 
@@ -153,8 +153,8 @@ public class TableSimulatorClientTests
     public void Poziadavka_SKlucomHlavickaBearer()
     {
         var uri = new Uri("http://localhost:5470/api/state");
-        using var withKey = TableSimulatorClient.Request(HttpMethod.Get, uri, " ts_kluc ");
-        using var withoutKey = TableSimulatorClient.Request(HttpMethod.Get, uri, "");
+        using var withKey = StationSimulatorClient.Request(HttpMethod.Get, uri, " ts_kluc ");
+        using var withoutKey = StationSimulatorClient.Request(HttpMethod.Get, uri, "");
 
         Assert.AreEqual("Bearer ts_kluc", withKey.Headers.Authorization?.ToString());
         Assert.IsNull(withoutKey.Headers.Authorization);
@@ -219,7 +219,7 @@ public class TableSimulatorClientTests
     {
         var (url, served) = Serve("HTTP/1.1 308 Permanent Redirect\r\nLocation: https://simulator:5471/api/auth/me\r\nContent-Length: 0\r\nConnection: close\r\n\r\n");
 
-        var probe = await TableSimulatorClient.ProbeAsync(url, "kluc", TimeSpan.FromSeconds(5), CancellationToken.None);
+        var probe = await StationSimulatorClient.ProbeAsync(url, "kluc", TimeSpan.FromSeconds(5), CancellationToken.None);
         await served;
 
         Assert.AreEqual(SimulatorAccess.HttpsRequired, probe.Access);
@@ -236,7 +236,7 @@ public class TableSimulatorClientTests
         using var certificate = X509CertificateLoader.LoadPkcs12(created.Export(X509ContentType.Pkcs12), null);
         var (url, served) = Serve("HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n", certificate);
 
-        var probe = await TableSimulatorClient.ProbeAsync(url, null, TimeSpan.FromSeconds(5), CancellationToken.None);
+        var probe = await StationSimulatorClient.ProbeAsync(url, null, TimeSpan.FromSeconds(5), CancellationToken.None);
         await served;
 
         Assert.AreEqual(SimulatorAccess.UntrustedCertificate, probe.Access);
@@ -245,8 +245,8 @@ public class TableSimulatorClientTests
     [TestMethod]
     public void AdresaSimulatora_LenHttp()
     {
-        Assert.IsNotNull(TableSimulatorClient.ParseUrl("http://localhost:5470"));
-        Assert.IsNull(TableSimulatorClient.ParseUrl("localhost:5470"));
-        Assert.IsNull(TableSimulatorClient.ParseUrl("ftp://h"));
+        Assert.IsNotNull(StationSimulatorClient.ParseUrl("http://localhost:5470"));
+        Assert.IsNull(StationSimulatorClient.ParseUrl("localhost:5470"));
+        Assert.IsNull(StationSimulatorClient.ParseUrl("ftp://h"));
     }
 }

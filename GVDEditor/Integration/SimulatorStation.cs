@@ -1,11 +1,11 @@
 using System.Globalization;
-using TableSimulator.Contracts.Boards;
-using TableSimulator.Contracts.Faces;
-using TableSimulator.Contracts.Station;
+using StationSimulator.Contracts.Boards;
+using StationSimulator.Contracts.Faces;
+using StationSimulator.Contracts.Station;
 
 namespace GVDEditor.Integration;
 
-/// <summary>Linky a tabule stanice pre simulator tabul (kontrakt <see cref="StationImportRequest" />).</summary>
+/// <summary>Linky a tabule stanice pre StationSimulator (kontrakt <see cref="StationImportRequest" />).</summary>
 internal static class SimulatorStation
 {
     /// <summary>Vyrobca spinacej jednotky zosilnovaca v simulatore.</summary>

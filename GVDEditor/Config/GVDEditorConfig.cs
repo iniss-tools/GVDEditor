@@ -36,10 +36,10 @@ public record GVDEditorConfig() : ConfigBase
     public bool InissSettingsShowEvaluation { get; set; }
 
     /// <summary>
-    /// Simulator tabul, na ktory okno Nastavenia INISSu presmerovava linky.
+    /// StationSimulator, na ktory okno Nastavenia INISSu presmerovava linky.
     /// </summary>
-    [XmlElement("TableSimulator")]
-    public TableSimulatorSettings TableSimulator { get; set; } = new();
+    [XmlElement("StationSimulator")]
+    public StationSimulatorSettings StationSimulator { get; set; } = new();
 
     /// <summary>
     /// Server MCP pre agentov (Claude Code, VS Code).
@@ -89,7 +89,7 @@ public record GVDEditorConfig() : ConfigBase
         AutoTableText = original.AutoTableText;
         PlayerSoundsOffset = original.PlayerSoundsOffset;
         InissSettingsShowEvaluation = original.InissSettingsShowEvaluation;
-        TableSimulator = original.TableSimulator.Clone();
+        StationSimulator = original.StationSimulator.Clone();
         McpServer = (McpServerSettings)original.McpServer.Clone();
         StartupINISSConfig = original.StartupINISSConfig with { };
         RunConfigurations = original.RunConfigurations.Select(r => r.DeepCopy()).ToList();

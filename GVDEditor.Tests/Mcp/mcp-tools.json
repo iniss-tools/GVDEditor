@@ -2812,7 +2812,7 @@
     {
       "name": "prepare_simulator",
       "title": "Prepare board simulator",
-      "description": "Creates the lines and boards of the station in the board simulator (TableSimulator) like 'Prepare in the simulator' in GVDEditor: lines of the selected run configuration with the boards INISS assigns to them, their faces, virtual boards from the XML export and the INISS log folder. Existing boards stay. The INISS .INI does not change - INISS sends to the simulator only after its lines are redirected (GVDEditor > INISS settings > Redirect boards to the simulator); notes list the lines that are not. Run it with dryRun first to see the lines.",
+      "description": "Creates the lines and boards of the station in the board simulator (StationSimulator) like 'Prepare in the simulator' in GVDEditor: lines of the selected run configuration with the boards INISS assigns to them, their faces, virtual boards from the XML export and the INISS log folder. Existing boards stay. The INISS .INI does not change - INISS sends to the simulator only after its lines are redirected (GVDEditor > INISS settings > Redirect boards to the simulator); notes list the lines that are not. Run it with dryRun first to see the lines.",
       "inputSchema": {
         "type": "object",
         "properties": {

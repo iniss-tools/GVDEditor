@@ -3,17 +3,17 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Security.Authentication;
 using System.Text.Json;
-using TableSimulator.Contracts.Auth;
-using TableSimulator.Contracts.State;
-using TableSimulator.Contracts.Station;
+using StationSimulator.Contracts.Auth;
+using StationSimulator.Contracts.State;
+using StationSimulator.Contracts.Station;
 
 namespace GVDEditor.Integration;
 
 /// <summary>
-/// Volania weboveho API simulatora tabul (TableSimulator) s jeho kontraktmi: ci bezi a ake triedy liniek pozna,
+/// Volania weboveho API StationSimulatora s jeho kontraktmi: ci bezi a ake triedy liniek pozna,
 /// zalozenie liniek a tabul stanice. Ak simulator vyzaduje prihlasenie, ide s API klucom (<c>Authorization: Bearer</c>).
 /// </summary>
-internal static class TableSimulatorClient
+internal static class StationSimulatorClient
 {
     // opravnenie simulatora na zmenu liniek a tabul (kluc z /api/auth/me)
     private const string EditPermission = "simulator.edit";

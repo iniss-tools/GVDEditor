@@ -3510,7 +3510,7 @@ Před zápisem se uloží záloha.</value>
     <value>Přesměrovat tabule na simulátor...</value>
   </data>
   <data name="InissRedirect_Intro" xml:space="preserve">
-    <value>Linky k tabulím přesměruje na simulátor tabulí zápisem do souboru {0} vedle programu. Linka N bude posílat na port „první port + N“. Registr se nemění a zrušení přesměrování vrátí soubor do původního stavu. INISS změnu načte při nejbližším spuštění.</value>
+    <value>Linky k tabulím přesměruje na StationSimulator zápisem do souboru {0} vedle programu. Linka N bude posílat na port „první port + N“. Registr se nemění a zrušení přesměrování vrátí soubor do původního stavu. INISS změnu načte při nejbližším spuštění.</value>
   </data>
   <data name="InissRedirect_StatusChecking" xml:space="preserve">
     <value>Zjišťuji, zda simulátor běží…</value>
@@ -3609,7 +3609,7 @@ Před zápisem se uloží záloha.</value>
     <value>tabule přesměrované na simulátor</value>
   </data>
   <data name="InissCheck_Redirected" xml:space="preserve">
-    <value>Tabule grafikonu dostává jen simulátor tabulí, linky {0} jsou v souboru .INI přesměrované na simulátor.</value>
+    <value>Tabule grafikonu dostává jen StationSimulator, linky {0} jsou v souboru .INI přesměrované na simulátor.</value>
   </data>
   <data name="InissCheck_Redirected_Fix" xml:space="preserve">
     <value>Pokud nejde o zkoušku, zrušte přesměrování v okně Nastavení INISSu (Nástroje → Přesměrovat tabule na simulátor).</value>

@@ -1,14 +1,14 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 using GVDEditor.Config;
-using TableSimulator.Contracts.Station;
+using StationSimulator.Contracts.Station;
 using ToolsCore.Iniss.Registry;
 using ToolsCore.Iniss.Tools;
 
 namespace GVDEditor.Integration;
 
 /// <summary>
-/// Linky a tabule stanice pre simulator tabul podla konfiguracie spustania - ako Pripravit v simulatore v okne
+/// Linky a tabule stanice pre StationSimulator podla konfiguracie spustania - ako Pripravit v simulatore v okne
 /// presmerovania, ale bez zmeny .INI: presmerovana linka ide na port z .INI, ostatne na prvy port + cislo linky.
 /// </summary>
 internal static partial class SimulatorPreparation
@@ -24,7 +24,7 @@ internal static partial class SimulatorPreparation
     /// <param name="settings">simulator z nastaveni GVDEditora</param>
     /// <param name="lines">cisla liniek; null = predvoleny vyber</param>
     public static SimulatorPlan Plan(RunConfiguration config, string installationDir, IReadOnlyList<DirList> grafikons,
-        IEnumerable<(string Name, string? AmplifierPort, string? ExchangeParameter)> circuits, TableSimulatorSettings settings,
+        IEnumerable<(string Name, string? AmplifierPort, string? ExchangeParameter)> circuits, StationSimulatorSettings settings,
         IReadOnlyCollection<int>? lines)
     {
         var tables = InissTableMap.Build(grafikons);
@@ -34,7 +34,7 @@ internal static partial class SimulatorPreparation
             ElsvoUnits.FromCircuits(circuits), settings.BasePort, lines);
     }
 
-    /// <inheritdoc cref="Plan(RunConfiguration, string, IReadOnlyList{DirList}, IEnumerable{ValueTuple{string, string, string}}, TableSimulatorSettings, IReadOnlyCollection{int})" />
+    /// <inheritdoc cref="Plan(RunConfiguration, string, IReadOnlyList{DirList}, IEnumerable{ValueTuple{string, string, string}}, StationSimulatorSettings, IReadOnlyCollection{int})" />
     /// <param name="resolved">nastavenia INISSu konfiguracie</param>
     /// <param name="ini">subor .INI vedla programu; null = nie je</param>
     /// <param name="tables">fyzicke tabule instalacie v poradi INISSu</param>
