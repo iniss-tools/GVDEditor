@@ -11012,6 +11012,24 @@ namespace GVDEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nahlásiť chybu.
+        /// </summary>
+        internal static string Cmd_ReportBug {
+            get {
+                return ResourceManager.GetString("Cmd_ReportBug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navrhnúť funkciu.
+        /// </summary>
+        internal static string Cmd_SuggestFeature {
+            get {
+                return ResourceManager.GetString("Cmd_SuggestFeature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Editor TabTab.
         /// </summary>
         internal static string Cmd_Window_TabTab {

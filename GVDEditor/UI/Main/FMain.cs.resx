@@ -1210,6 +1210,12 @@
   <data name="tsmiShowLogs.Text" xml:space="preserve">
     <value>Otevřít složku s logy</value>
   </data>
+  <data name="tsmiReportBug.Text" xml:space="preserve">
+    <value>Nahlásit chybu...</value>
+  </data>
+  <data name="tsmiSuggestFeature.Text" xml:space="preserve">
+    <value>Navrhnout funkci...</value>
+  </data>
   <data name="tsmiView.Text" xml:space="preserve">
     <value>Zobrazit</value>
   </data>

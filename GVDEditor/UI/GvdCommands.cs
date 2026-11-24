@@ -65,6 +65,8 @@ internal static class GvdCommands
     public static CommandInfo UpdateNotes => new("UpdateNotes", Resources.Cmd_UpdateNotes, Shortcut.None);
     public static CommandInfo CheckUpdates => new("CheckUpdates", Resources.Cmd_CheckUpdates, Shortcut.None);
     public static CommandInfo ShowLogs => new("ShowLogs", Resources.Cmd_ShowLogs, Shortcut.None);
+    public static CommandInfo ReportBug => new("ReportBug", Resources.Cmd_ReportBug, Shortcut.None);
+    public static CommandInfo SuggestFeature => new("SuggestFeature", Resources.Cmd_SuggestFeature, Shortcut.None);
     public static CommandInfo DateLimit => new("DatObm", Resources.Cmd_DateLimit, Shortcut.F7);
 
     // okno Uprava TabTab - identifikatory s predponou okna, skratky platia len v nom
@@ -119,6 +121,6 @@ internal static class GvdCommands
         LsGvd, LsLanguages, LsStations, LsOperators, LsPlatforms, LsTracks, LsPhysicalTables, LsLogicalTables,
         LsCatalogTables, LsTabTab, LsTableTexts, LsTableFonts, LsTabTabEditor, StateDgm,
         RunIniss, ShutdownIniss, KillIniss, RestartIniss, InissStartupSettings, InissSettings,
-        InfoApp, UpdateNotes, CheckUpdates, ShowLogs, DateLimit
+        InfoApp, UpdateNotes, CheckUpdates, ShowLogs, ReportBug, SuggestFeature, DateLimit
     ];
 }

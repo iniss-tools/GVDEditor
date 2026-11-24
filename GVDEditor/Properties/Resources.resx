@@ -3841,6 +3841,12 @@ Pred zápisom sa uloží záloha.</value>
   <data name="Cmd_ShowLogs" xml:space="preserve">
     <value>Otvoriť priečinok s logmi</value>
   </data>
+  <data name="Cmd_ReportBug" xml:space="preserve">
+    <value>Nahlásiť chybu</value>
+  </data>
+  <data name="Cmd_SuggestFeature" xml:space="preserve">
+    <value>Navrhnúť funkciu</value>
+  </data>
   <data name="Cmd_Window_TabTab" xml:space="preserve">
     <value>Editor TabTab</value>
   </data>

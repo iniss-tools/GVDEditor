@@ -188,6 +188,8 @@ namespace GVDEditor.UI.Main
             tsmiChangelog = new ToolStripMenuItem();
             tsmiCheckUpdates = new ToolStripMenuItem();
             tsmiShowLogs = new ToolStripMenuItem();
+            tsmiReportBug = new ToolStripMenuItem();
+            tsmiSuggestFeature = new ToolStripMenuItem();
             toolMenu = new ToolStrip();
             tsbSave = new IconToolStripButton();
             tsbOpen = new IconToolStripButton();
@@ -716,7 +718,7 @@ namespace GVDEditor.UI.Main
             // 
             // tsmiNastavenia
             // 
-            tsmiNastavenia.DropDownItems.AddRange(new ToolStripItem[] { tsmiInformation, tsmiChangelog, tsmiCheckUpdates, tsmiShowLogs });
+            tsmiNastavenia.DropDownItems.AddRange(new ToolStripItem[] { tsmiInformation, tsmiChangelog, tsmiCheckUpdates, tsmiShowLogs, tsmiReportBug, tsmiSuggestFeature });
             tsmiNastavenia.Name = "tsmiNastavenia";
             resources.ApplyResources(tsmiNastavenia, "tsmiNastavenia");
             // 
@@ -740,6 +742,16 @@ namespace GVDEditor.UI.Main
             //
             resources.ApplyResources(tsmiShowLogs, "tsmiShowLogs");
             tsmiShowLogs.Name = "tsmiShowLogs";
+            //
+            // tsmiReportBug
+            //
+            resources.ApplyResources(tsmiReportBug, "tsmiReportBug");
+            tsmiReportBug.Name = "tsmiReportBug";
+            //
+            // tsmiSuggestFeature
+            //
+            resources.ApplyResources(tsmiSuggestFeature, "tsmiSuggestFeature");
+            tsmiSuggestFeature.Name = "tsmiSuggestFeature";
             //
             // toolMenu
             // 
@@ -2266,6 +2278,8 @@ namespace GVDEditor.UI.Main
         private ToolStripMenuItem tsmiChangelog;
         private ToolStripMenuItem tsmiCheckUpdates;
         private ToolStripMenuItem tsmiShowLogs;
+        private ToolStripMenuItem tsmiReportBug;
+        private ToolStripMenuItem tsmiSuggestFeature;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewComboBoxColumn dataGridViewComboBoxColumn3;

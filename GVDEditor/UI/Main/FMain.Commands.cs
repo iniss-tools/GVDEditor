@@ -87,6 +87,8 @@ internal partial class FMain
         Add(GvdCommands.UpdateNotes, () => Utils.OpenShell(GvdLinkConsts.LinkNews), null, tsmiChangelog);
         Add(GvdCommands.CheckUpdates, () => AppUpdates.CheckNow(this), () => AppUpdates.Available, tsmiCheckUpdates);
         Add(GvdCommands.ShowLogs, ErrorReport.OpenLogFolder, null, tsmiShowLogs);
+        Add(GvdCommands.ReportBug, () => IssueReport.ReportBug(), null, tsmiReportBug);
+        Add(GvdCommands.SuggestFeature, IssueReport.SuggestFeature, null, tsmiSuggestFeature);
         Add(GvdCommands.DateLimit, ShowDatObm, null, tsmiDatObm, tsbDatObm);
     }
 
